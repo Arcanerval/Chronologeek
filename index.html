@@ -51,7 +51,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .cp-fill{height:100%;border-radius:2px;transition:width .5s}
 .cnew{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:.6rem}
 /* TIMELINE PAGE */
-.tl-page{display:none;max-width:1020px;margin:0 auto;padding:2.5rem 2rem}.tl-page.v{display:block}
+.tl-page{display:none;max-width:1200px;margin:0 auto;padding:2.5rem 2rem}.tl-page.v{display:block}
 .bc{font-size:.78rem;color:var(--muted2);margin-bottom:1.25rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
 .bc:hover{color:var(--accent)}
 .page-title{font-size:2.1rem;font-weight:900;letter-spacing:-.5px;margin-bottom:.4rem}
@@ -119,7 +119,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .en-level-icon{font-size:1rem;line-height:1;min-height:1rem}
 .date-main{font-size:.82rem;font-weight:900;color:var(--text);text-align:center;line-height:1.2}
 .dim-badge{font-size:.52rem;font-weight:700;color:#a99fff;background:rgba(124,106,247,.15);border:1px solid rgba(124,106,247,.25);border-radius:4px;padding:1px 4px;text-align:center;line-height:1.4;margin-top:.1rem;max-width:92px;word-break:break-word}
-.ep{width:160px;min-width:160px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border-right:1px solid var(--border);cursor:pointer}
+.ep{width:200px;min-width:200px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border-right:1px solid var(--border);cursor:pointer}
 .ep img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .3s}
 .ep:hover img{transform:scale(1.06)}.pp{font-size:1.5rem;opacity:.15}
 .em{flex:1;padding:.7rem .9rem;min-width:0;display:flex;flex-direction:column;gap:.18rem}
@@ -157,7 +157,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 @media(max-width:700px){
   .tl-page{padding:1.25rem .75rem}
   .en-datebadge{width:76px;min-width:76px}
-  .ep{width:110px;min-width:110px}
+  .ep{width:130px;min-width:130px}
   .expand-poster{width:80px;min-width:80px}
   nav{gap:.75rem}.nav-links a{font-size:.8rem}
   .en.deviate{margin-left:20px}
@@ -167,7 +167,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 /* MISS MINUTE — scroll to top */
 #miss-minute{
   position:fixed;bottom:2rem;right:2rem;z-index:300;
-  width:72px;height:72px;cursor:pointer;
+  width:88px;height:88px;cursor:pointer;
   transition:transform .3s cubic-bezier(.34,1.56,.64,1);
   filter:drop-shadow(0 4px 16px rgba(0,0,0,.6));
   display:none;
@@ -413,7 +413,7 @@ const DATA_SW={
       {id:"mcu-smr3",img:"images/spider-man-3-2007.webp",type:"film",level:"important",tmdb:"559",media:"movie",title:"Spider-Man 3",date:"2005",dim:"TERRE-96283"},
       {id:"mcu-tasm1",img:"images/the-amazing-spider-man-2012.webp",type:"film",level:"important",tmdb:"1930",media:"movie",title:"The Amazing Spider-Man",date:"2013",dim:"TERRE-120703"},
       {id:"mcu-tasm2",img:"images/the-amazing-spider-man-2-2014.webp",type:"film",level:"important",tmdb:"102382",media:"movie",title:"The Amazing Spider-Man 2 : Le Destin d'un Héros",date:"2014",dim:"TERRE-120703"},
-      {id:"mcu-itsv",img:"images/spider-man-into-the-spider-verse-2018.webp",type:"filmanim",level:"bonus",tmdb:"569094",media:"movie",title:"Spider-Man : Into the Spider-Verse",date:"2023",dim:"TERRE-1610"},
+      {id:"mcu-itsv",img:"images/spider-man-into-the-spider-verse-2018.webp",type:"filmanim",level:"bonus",tmdb:"324857",media:"movie",title:"Spider-Man : Into the Spider-Verse",date:"2023",dim:"TERRE-1610"},
       {id:"mcu-venom1",img:"images/venom-2018.webp",type:"film",level:"bonus",tmdb:"335983",media:"movie",title:"Venom",date:"2023",dim:"TERRE-688"},
       {id:"mcu-venom2",img:"images/venom-let-there-be-carnage-2021.webp",type:"film",level:"bonus",tmdb:"580489",media:"movie",title:"Venom : Let There Be Carnage",date:"2024",dim:"TERRE-688"}
     ]},
@@ -461,7 +461,7 @@ const DATA_SW={
       {id:"mcu-marvelspc",img:"images/the-marvels-2023.webp",type:"video",level:"important",tmdb:"609681",media:"video",title:"Scène post-crédits The Marvels",date:"2026"},
       {id:"mcu-agatha",img:"images/agatha-all-along-season-1.webp",type:"serie",level:"bonus",tmdb:"138501",media:"tv",season:1,title:"Agatha All Along",date:"2026",subitems:["Saison 1"]},
       {id:"mcu-wi3",img:"images/what-if-season-3.webp",type:"anime",level:"important",tmdb:"91363",media:"tv",season:3,title:"What If…?",dim:"AUTRES RÉALITÉS",subitems:["Saison 3"]},
-      {id:"mcu-vfsm",img:"images/your-friendly-neighbourhood-spider-man.webp",type:"anime",level:"bonus",tmdb:"138503",media:"tv",title:"Votre fidèle serviteur Spider-Man",date:"2024",dim:"TERRE-86445",subitems:["Saison 1"]},
+      {id:"mcu-vfsm",img:"images/your-friendly-neighbourhood-spider-man-season-1.webp",type:"anime",level:"bonus",tmdb:"138503",media:"tv",title:"Votre fidèle serviteur Spider-Man",date:"2024",dim:"TERRE-86445",subitems:["Saison 1"]},
       {id:"mcu-dba1",img:"images/daredevil-born-again-season-1.webp",type:"serie",level:"important",tmdb:"202555",media:"tv",season:1,title:"Daredevil : Born Again",date:"2027",subitems:["Saison 1"]},
       {id:"mcu-cabf",img:"images/captain-america-brave-new-world-2025.webp",type:"film",level:"must",tmdb:"822119",media:"movie",title:"Captain America : Brave New World",date:"2027"},
       {id:"mcu-tb",img:"images/thunderbolts-2025.webp",type:"film",level:"must",tmdb:"986056",media:"movie",title:"Thunderbolts*",date:"2027"}
