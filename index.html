@@ -119,8 +119,8 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .en-level-icon{font-size:1rem;line-height:1;min-height:1rem}
 .date-main{font-size:.82rem;font-weight:900;color:var(--text);text-align:center;line-height:1.2}
 .dim-badge{font-size:.52rem;font-weight:700;color:#a99fff;background:rgba(124,106,247,.15);border:1px solid rgba(124,106,247,.25);border-radius:4px;padding:1px 4px;text-align:center;line-height:1.4;margin-top:.1rem;max-width:92px;word-break:break-word}
-.ep{width:64px;min-width:64px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border-right:1px solid var(--border);cursor:pointer}
-.ep img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.ep{width:120px;min-width:120px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border-right:1px solid var(--border);cursor:pointer}
+.ep img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .3s}
 .ep:hover img{transform:scale(1.06)}.pp{font-size:1.5rem;opacity:.15}
 .em{flex:1;padding:.7rem .9rem;min-width:0;display:flex;flex-direction:column;gap:.18rem}
 .tr{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
@@ -157,7 +157,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 @media(max-width:700px){
   .tl-page{padding:1.25rem .75rem}
   .en-datebadge{width:76px;min-width:76px}
-  .ep{width:52px;min-width:52px}
+  .ep{width:90px;min-width:90px}
   .expand-poster{width:80px;min-width:80px}
   nav{gap:.75rem}.nav-links a{font-size:.8rem}
   .en.deviate{margin-left:20px}
@@ -411,7 +411,7 @@ const DATA_SW={
       {id:"mcu-shehulk",type:"serie",level:"bonus",tmdb:"92783",media:"tv",season:1,title:"She-Hulk : Avocate",date:"2025",subitems:["Saison 1"]},
       {id:"mcu-mm",type:"serie",level:"must",tmdb:"92782",media:"tv",season:1,title:"Miss Marvel",date:"2025",subitems:["Saison 1"]},
       {id:"mcu-thor4",type:"film",level:"must",tmdb:"616037",media:"movie",title:"Thor : Love and Thunder",date:"2025"},
-      {id:"mcu-atsv",type:"filmanim",level:"bonus",tmdb:"569094",media:"movie",title:"Spider-Man : Across the Spider-Verse",date:"2025",dim:"TERRE-1610"},
+      {id:"mcu-atsv",type:"filmanim",level:"bonus",tmdb:"869626",media:"movie",title:"Spider-Man : Across the Spider-Verse",date:"2025",dim:"TERRE-1610"},
       {id:"mcu-ironheart",type:"serie",level:"bonus",tmdb:"114471",media:"tv",season:1,title:"Ironheart",date:"2025",subitems:["Saison 1"]},
       {id:"mcu-wwbn",type:"special",level:"bonus",tmdb:"894205",media:"movie",title:"Werewolf by Night",date:"2025"},
       {id:"mcu-gotgxmas",type:"special",level:"must",tmdb:"774752",media:"movie",title:"Les Gardiens de la Galaxie : Joyeuses Fêtes",date:"2025"},
@@ -422,7 +422,7 @@ const DATA_SW={
       {id:"mcu-loki2",type:"serie",level:"must",tmdb:"84958",media:"tv",season:2,title:"Loki",dim:"HORS DU TEMPS",subitems:["Saison 2"]},
       {id:"mcu-wi2",type:"anime",level:"important",tmdb:"91363",media:"tv",season:2,title:"What If…?",dim:"AUTRES RÉALITÉS",subitems:["Saison 2"]}
     ]},
-    {title:"SEGMENT FOX — avant Deadpool & Wolverine",special:"fox",entries:[
+    {title:"SEGMENT FOX — avant Deadpool & Wolverine et Avengers Doomsday",special:"fox",entries:[
       {id:"mcu-xfc",type:"film",level:"bonus",tmdb:"49538",media:"movie",title:"X-Men : Le Commencement",date:"1962",dim:"TERRE-10005A"},
       {id:"mcu-xow",type:"film",level:"bonus",tmdb:"2080",media:"movie",title:"X-Men Origins : Wolverine",date:"1979",dim:"TERRE-10005A"},
       {id:"mcu-xm1",type:"film",level:"important",tmdb:"36657",media:"movie",title:"X-Men",date:"1994",dim:"TERRE-10005A"},
@@ -441,7 +441,7 @@ const DATA_SW={
       {id:"mcu-marvelspc",type:"video",level:"important",tmdb:"609681",media:"video",title:"Scène post-crédits The Marvels",date:"2026"},
       {id:"mcu-agatha",type:"serie",level:"bonus",tmdb:"138501",media:"tv",season:1,title:"Agatha All Along",date:"2026",subitems:["Saison 1"]},
       {id:"mcu-wi3",type:"anime",level:"important",tmdb:"91363",media:"tv",season:3,title:"What If…?",dim:"AUTRES RÉALITÉS",subitems:["Saison 3"]},
-      {id:"mcu-vfsm",type:"film",level:"bonus",tmdb:"0",media:"movie",title:"Votre fidèle serviteur Spider-Man",date:"2016",dim:"TERRE-86445"},
+      {id:"mcu-vfsm",type:"anime",level:"bonus",tmdb:"138503",media:"tv",title:"Votre fidèle serviteur Spider-Man",date:"2024",dim:"TERRE-86445",subitems:["Saison 1"]},
       {id:"mcu-dba1",type:"serie",level:"important",tmdb:"202555",media:"tv",season:1,title:"Daredevil : Born Again",date:"2027",subitems:["Saison 1"]},
       {id:"mcu-cabf",type:"film",level:"must",tmdb:"822119",media:"movie",title:"Captain America : Brave New World",date:"2027"},
       {id:"mcu-tb",type:"film",level:"must",tmdb:"986056",media:"movie",title:"Thunderbolts*",date:"2027"}
@@ -451,7 +451,7 @@ const DATA_SW={
       {id:"mcu-ff",type:"film",level:"must",tmdb:"617126",media:"movie",title:"Les 4 Fantastiques : Premiers Pas",dim:"TERRE-828 ~1964"},
       {id:"mcu-wm",type:"serie",level:"bonus",tmdb:"198178",media:"tv",season:1,title:"Wonder Man",date:"2027",subitems:["Saison 1"]},
       {id:"mcu-dba2",type:"serie",level:"important",tmdb:"202555",media:"tv",season:2,title:"Daredevil : Born Again",date:"2027",subitems:["Saison 2"]},
-      {id:"mcu-pun-olk",type:"special",level:"important",tmdb:"1439930",media:"movie",title:"The Punisher : One Last Kill",date:"2027"}
+      {id:"mcu-pun-olk",type:"special",level:"important",tmdb:"1439930",media:"movie",title:"The Punisher : One Last Kill",date:"~2028"}
     ]}
   ]
 };
@@ -526,14 +526,14 @@ async function fetchPoster(id,type,season){
     const r=await fetch(url);
     if(!r.ok){posterCache[k]=null;return null}
     const d=await r.json();
-    posterCache[k]=d.poster_path||null;
+    posterCache[k]=d.backdrop_path||d.poster_path||null;
     return posterCache[k];
   }catch{posterCache[k]=null;return null}
 }
 function applyPoster(div,path){
   if(div.querySelector('img'))return;
   const img=document.createElement('img');
-  img.src=IMG+'w92'+path;
+  img.src=IMG+'w500'+path;
   img.dataset.full=IMG+'w500'+path;
   img.loading='lazy';
   img.onerror=()=>img.remove();
@@ -560,7 +560,7 @@ async function loadPosters(){
   for(let i=0;i<tasks.length;i+=5){
     await Promise.all(tasks.slice(i,i+5).map(async e=>{
       const id=e.dataset.tmdb,season=e.dataset.season||null;
-      const mt=e.dataset.media==='movie'?'movie':'tv';
+      const mt=(e.dataset.media==='movie'||e.dataset.media==='video')?'movie':'tv';
       if(!id||id==='0')return;
       const path=await fetchPoster(id,mt,season);
       if(path)applyPoster(e.querySelector('.ep'),path);
@@ -733,7 +733,7 @@ function buildTimeline(data){
   }
   if(hasNC){
     f+='<div class="filter-group">';
-    f+='<button class="fbt" id="btn-nc" onclick="toggleNCFilter(this)">Masquer non-confirmés</button>';
+    f+='<button class="fbt" id="btn-nc" onclick="toggleNCFilter(this)">Masquer canonicité non confirmée</button>';
     f+='</div>';
   }
   document.getElementById('filter-bar').innerHTML=f;
