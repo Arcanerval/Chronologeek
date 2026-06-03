@@ -155,13 +155,41 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .cs{display:none;text-align:center;padding:6rem 2rem;color:var(--muted2)}.cs.v{display:block}
 .cs h2{font-size:2rem;margin-bottom:1rem;color:var(--text)}
 @media(max-width:700px){
-  .tl-page{padding:1.25rem .75rem}
-  .en-datebadge{width:76px;min-width:76px}
-  .ep{width:130px;min-width:130px}
+  .tl-page{padding:1rem .6rem;max-width:100%}
+  .en-datebadge{width:56px;min-width:56px;padding:.3rem .2rem}
+  .date-main{font-size:.68rem}
+  .en-level-icon{font-size:.78rem}
+  .dim-badge{font-size:.48rem;max-width:52px}
+  .ep{width:88px;min-width:88px}
+  .em{padding:.5rem .6rem}
+  .en-name{font-size:.84rem}
+  .enote{font-size:.72rem}
+  .si{font-size:.71rem}
+  .b{font-size:.62rem;padding:2px 6px}
+  .nt,.ft,.dt{font-size:.6rem;padding:2px 5px}
+  .en-check{width:32px;min-width:32px}
   .expand-poster{width:80px;min-width:80px}
-  nav{gap:.75rem}.nav-links a{font-size:.8rem}
-  .en.deviate{margin-left:20px}
-  .segment-box{margin-left:20px}
+  .expand-info{padding:.65rem .75rem}
+  .expand-synopsis{font-size:.76rem;-webkit-line-clamp:4}
+  nav{gap:.5rem;height:auto;padding:.5rem 0;flex-wrap:wrap}
+  .nav-links{gap:.7rem}
+  .nav-links a{font-size:.78rem}
+  .disc-btn{padding:.3rem .7rem;font-size:.78rem}
+  .en.deviate{margin-left:14px}
+  .segment-box{margin-left:14px}
+  #miss-minute{width:62px;height:62px;bottom:1.25rem;right:1.25rem}
+  .filter-label{font-size:.67rem;min-width:44px}
+  .fbt{font-size:.73rem;padding:.28rem .65rem}
+  .progress-block{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .leg{padding:.75rem 1rem}
+  .nb{padding:.9rem 1rem}
+}
+@media(max-width:420px){
+  .ep{width:68px;min-width:68px}
+  .en-datebadge{width:48px;min-width:48px}
+  .en-check{width:28px;min-width:28px}
+  .en-name{font-size:.79rem}
+  .date-main{font-size:.63rem}
 }
 
 /* MISS MINUTE — scroll to top */
@@ -846,7 +874,9 @@ function showCS(){
 // Miss Minute — scroll to top
 window.addEventListener('scroll',()=>{
   const mm=document.getElementById('miss-minute');
-  if(mm)mm.classList.toggle('visible',window.scrollY>400);
+  if(!mm)return;
+  const tlActive=document.getElementById('tl-page').classList.contains('v');
+  mm.classList.toggle('visible',tlActive&&window.scrollY>400);
 });
 
 showHome();
