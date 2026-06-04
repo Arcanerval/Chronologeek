@@ -124,9 +124,9 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .ep:hover img{transform:scale(1.06)}.pp{font-size:1.5rem;opacity:.15}
 .em{flex:1;padding:.7rem .9rem;min-width:0;display:flex;flex-direction:column;gap:.18rem}
 .tr{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
-.en-name{font-weight:600;font-size:.92rem;line-height:1.3;color:var(--text)}
-.enote{font-size:.78rem;color:var(--muted2);font-style:italic;line-height:1.5}
-.edetails{font-size:.78rem;color:var(--muted2);line-height:1.5;padding:.25rem .5rem;border-left:2px solid var(--border2);background:rgba(124,106,247,.03);border-radius:0 4px 4px 0;margin-top:.1rem}
+.en-name{font-weight:700;font-size:1rem;line-height:1.3;color:var(--text)}
+.enote{font-size:.88rem;color:var(--muted2);font-style:italic;line-height:1.6}
+.edetails{font-size:.88rem;color:var(--muted2);line-height:1.6;padding:.25rem .5rem;border-left:2px solid var(--border2);background:rgba(124,106,247,.03);border-radius:0 4px 4px 0;margin-top:.1rem}
 .esub{padding-left:.5rem;border-left:2px solid var(--border2);margin-top:.25rem}
 .si{font-size:.76rem;color:var(--muted2);padding:.07rem 0 .07rem .45rem;line-height:1.4}
 .si strong{color:var(--muted2)}
@@ -548,7 +548,15 @@ async function toggleExpand(el,ev){
   if(genres)meta+='<span><strong>Genre</strong> '+genres+'</span>';
   if(rating)meta+='<span><strong>Note</strong> ⭐ '+rating+'/10</span>';
     const entryObj=currentData&&currentData.eras.flatMap(e=>e.entries).find(e=>e.id===el.dataset.id);
-  const faqHtml=entryObj&&entryObj.faq?entryObj.faq.map(item=>'<details class="faq-item"><summary class="faq-q">'+item.q+'</summary><div class="faq-a">'+item.a+'</div></details>').join(''):'';
+  const faqDef=entryObj&&entryObj.faq||{};
+  const mediaName=entryObj?entryObj.title:'ce média';
+  const faqCats=[
+    {key:'quand', q:'Quand se déroule '+mediaName+' dans le MCU ?', fallback:'Information non disponible.'},
+    {key:'comment', q:'Comment est relié '+mediaName+' au MCU ?', fallback:'Information non disponible.'},
+    {key:'pourquoi', q:'Pourquoi regarder '+mediaName+' maintenant dans la timeline ?', fallback:'Information non disponible.'},
+    {key:'postcredits', q:'La ou les scènes post-crédits ?', fallback:'Aucune information sur les scènes post-crédits pour ce média.'}
+  ];
+  const faqHtml=faqCats.map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+(faqDef[cat.key]||cat.fallback)+'</div></details>').join('');
   panel.innerHTML='<div class="expand-inner">'
     +(poster?'<div class="expand-poster" onclick="openPMurl(\''+IMG+'w500'+d.poster_path+'\')"><img src="'+poster+'" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>':'')
     +'<div class="expand-info"><div class="expand-synopsis">'+synopsis+'</div>'
@@ -670,9 +678,9 @@ function buildTimeline(data){
     f+='<button class="fbt active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Obligatoire</button>';
     f+='<button class="fbt active" id="lvl-imp" onclick="toggleLevelFilter(this)">🚨 Important</button>';
     f+='<button class="fbt active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Optionnel</button>';
+    if(hasNC){f+='<button class="fbt active" id="btn-nc" onclick="toggleNCFilter(this)">Canonicité non confirmée</button>';}
     f+='</div>';
   }
-  if(hasNC){f+='<button class="fbt active" id="btn-nc" onclick="toggleNCFilter(this)">Canonicité non confirmée</button>';}
   document.getElementById('filter-bar').innerHTML=f;
 
   // Contenu
