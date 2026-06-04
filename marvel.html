@@ -60,7 +60,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .pb-info{flex:1}.pb-label{font-size:.72rem;color:var(--muted2);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em}
 .pb-track{height:6px;background:var(--border2);border-radius:3px;overflow:hidden;margin-bottom:.35rem}
 .pb-fill{height:100%;border-radius:3px;transition:width .5s}
-.pb-counts{font-size:.78rem;color:var(--muted2)}.pb-counts strong{color:var(--text)}
+.pb-counts{font-size:.78rem;color:var(--muted2)}.pb-counts strong{color:var(--text)}.pb-hint{font-size:.74rem;color:var(--muted);margin-top:.2rem;font-style:italic}
 .pb-reset{background:transparent;border:1px solid var(--border2);color:var(--muted2);padding:.35rem .8rem;border-radius:8px;font-size:.75rem;cursor:pointer;transition:all .2s;white-space:nowrap}
 .pb-reset:hover{border-color:var(--red);color:var(--red)}
 .nb{background:linear-gradient(135deg,rgba(124,106,247,.08),rgba(240,98,146,.05));border:1px solid rgba(124,106,247,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.1rem 1.3rem;margin-bottom:1.5rem;font-size:.86rem;line-height:1.75;color:var(--muted2)}
@@ -240,9 +240,9 @@ details[open] .faq-q::after{transform:rotate(90deg)}
     <div class="pb-info">
       <div class="pb-label">Ma progression</div>
       <div class="pb-track"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div>
-      <div class="pb-counts" id="pb-counts">Coche les entrées que tu as vues</div>
+      <div class="pb-counts" id="pb-counts">0 / 0 &nbsp;·&nbsp; 0%</div><div class="pb-hint">Vous pouvez cocher votre progression qui sera sauvegardée sur ce navigateur</div>
     </div>
-    <button class="pb-reset" onclick="resetProgress()">À zéro</button>
+    <button class="pb-reset" onclick="resetProgress()">Reset</button>
   </div>
   <div class="nb" id="tl-notes"></div>
   <div class="leg" id="tl-legend"></div>
@@ -591,14 +591,14 @@ function buildEntry(e,showLevel,inSeg){
   if(e.subitems&&e.subitems.length)sub='<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>';
   const note=e.note?'<div class="enote">'+e.note+'</div>':'';
   const details=e.details?'<div class="edetails">'+e.details+'</div>':'';
-  return '<div class="en '+levelClass+devClass+ncClass+(isDone?' done':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+e.level+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'" data-nc="'+(isNC?'1':'0')+'"'+seasonAttr+' onclick="toggleExpand(this,event)">'
-    +'<div class="en-top">'
+  return '<div class="en '+levelClass+devClass+ncClass+(isDone?' done':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+e.level+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'" data-nc="'+(isNC?'1':'0')+'"'+seasonAttr+'>'
+    +'<div class="en-top" onclick="toggleExpand(this.closest(\'.en\'),event)">'
     +'<div class="en-check" onclick="toggleEntry(\''+e.id+'\',event)"><div class="checkmark">'+(isDone?'✓':'')+'</div></div>'
     +'<div class="en-datebadge"><div class="en-level-icon">'+levelIcon+'</div><div class="date-main">'+(e.date||'—')+'</div>'+dimBadge+'</div>'
     +'<div class="ep"'+imgAttr+'><div class="pp">'+ppIcon+'</div></div>'
     +'<div class="em"><div class="tr">'+pre+'<span class="b '+cls+'">'+label+'</span><span class="en-name">'+e.title+'</span></div>'+note+details+sub+'</div>'
     +'</div>'
-    +'<div class="en-expand"></div></div>';
+    +'<div class="en-expand" onclick="event.stopPropagation()"></div></div>';
 }
 
 // Filtrage avancé
@@ -608,7 +608,7 @@ function applyFilters(){
   const showMust=document.getElementById('lvl-must').classList.contains('active');
   const showImp=document.getElementById('lvl-imp').classList.contains('active');
   const showBonus=document.getElementById('lvl-bonus').classList.contains('active');
-  const hideNC=document.getElementById('btn-nc').classList.contains('active');
+  const hideNC=!document.getElementById('btn-nc').classList.contains('active');
 
   document.querySelectorAll('#tl-content .en').forEach(e=>{
     const type=e.dataset.type;
