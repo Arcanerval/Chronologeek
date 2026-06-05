@@ -861,7 +861,20 @@ async function toggleExpand(el,ev){
   if(panel.dataset.loaded)return;
   panel.dataset.loaded='1';
   const id=el.dataset.tmdb,media=el.dataset.media;
-  if(!id||id==='0'){panel.innerHTML='<div class="expand-no-data">Pas d\'informations TMDB pour cette entrée.</div>';return}
+  const entryObj=currentData&&currentData.eras.flatMap(e=>e.entries).find(e=>e.id===el.dataset.id);
+  const faqDef=entryObj&&entryObj.faq||{};
+  const mediaName=entryObj?entryObj.title:'ce média';
+  const faqCats=[
+    {key:'quand',q:'Quand se déroule '+mediaName+' dans le MCU ?',fallback:'Information non disponible.'},
+    {key:'comment',q:'Comment est relié '+mediaName+' au MCU ?',fallback:'Information non disponible.'},
+    {key:'pourquoi',q:'Pourquoi regarder '+mediaName+' maintenant dans la timeline ?',fallback:'Information non disponible.'},
+    {key:'postcredits',q:'La ou les scènes post-crédits ?',fallback:'Aucune information disponible.'}
+  ];
+  const faqHtml=faqCats.map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+(faqDef[cat.key]||cat.fallback)+'</div></details>').join('');
+  if(!id||id==='0'){
+    panel.innerHTML='<div class="expand-no-data">'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'Pas d\'informations TMDB pour cette entrée.')+'</div>';
+    return;
+  }
   panel.innerHTML='<div class="expand-loading">Chargement…</div>';
   const type=(media==='movie'||media==='video')?'movie':'tv';
   const k=type+id;
@@ -891,16 +904,7 @@ async function toggleExpand(el,ev){
   if(runtime)meta+='<span><strong>Durée</strong> '+runtime+'</span>';
   if(genres)meta+='<span><strong>Genre</strong> '+genres+'</span>';
   if(rating)meta+='<span><strong>Note</strong> ⭐ '+rating+'/10</span>';
-    const entryObj=currentData&&currentData.eras.flatMap(e=>e.entries).find(e=>e.id===el.dataset.id);
-  const faqDef=entryObj&&entryObj.faq||{};
-  const mediaName=entryObj?entryObj.title:'ce média';
-  const faqCats=[
-    {key:'quand', q:'Quand se déroule '+mediaName+' dans le MCU ?', fallback:'Information non disponible.'},
-    {key:'comment', q:'Comment est relié '+mediaName+' au MCU ?', fallback:'Information non disponible.'},
-    {key:'pourquoi', q:'Pourquoi regarder '+mediaName+' maintenant dans la timeline ?', fallback:'Information non disponible.'},
-    {key:'postcredits', q:'La ou les scènes post-crédits ?', fallback:'Aucune information sur les scènes post-crédits pour ce média.'}
-  ];
-  const faqHtml=faqCats.map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+(faqDef[cat.key]||cat.fallback)+'</div></details>').join('');
+    
   panel.innerHTML='<div class="expand-inner">'
     +(poster?'<div class="expand-poster" onclick="openPMurl(\''+IMG+'w500'+d.poster_path+'\')"><img src="'+poster+'" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>':'')
     +'<div class="expand-info"><div class="expand-synopsis">'+synopsis+'</div>'
