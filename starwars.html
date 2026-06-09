@@ -19,7 +19,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
 header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
 nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:28px;display:block;object-fit:contain;background:transparent}
+.logo img{height:30px;display:block;object-fit:contain;background:transparent}
 .logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;gap:1.25rem;align-items:center}
 .nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
@@ -212,8 +212,8 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 <body>
 <header>
   <nav>
-    <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer">
-      <img id="site-logo" src="images/logo-chronologeek.png" alt="Chronologeek"/>
+    <div class="logo" onclick="window.location.href='index.html'">
+      <img src="images/logo-chronologeek.png" alt="Chronologeek"/>
     </div>
     <div class="nav-links">
       <a onclick="window.location.href='index.html'">Accueil</a>
@@ -222,7 +222,8 @@ details[open] .faq-q::after{transform:rotate(90deg)}
       <a href="#">Dossiers</a>
       <a href="#">Communauté</a>
     </div>
-    <div class="nav-sp"></div><span class="nav-maj">À jour · juin 2026</span>
+    <div class="nav-sp"></div>
+    <span class="nav-maj">À jour · juin 2026</span>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
     <a href="#" class="disc-btn">Discord</a>
   </nav>

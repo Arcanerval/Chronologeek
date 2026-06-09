@@ -20,7 +20,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
 header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
 nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px}
 .logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:28px;display:block;object-fit:contain;background:transparent}
+.logo img{height:30px;display:block;object-fit:contain;background:transparent}
 .logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;gap:1.25rem;align-items:center}
 .nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
@@ -67,10 +67,10 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 <header>
   <nav>
     <div class="logo" onclick="window.location.href='index.html'">
-      <img id="site-logo" src="images/logo-chronologeek.png" alt="Chronologeek"/>
+      <img src="images/logo-chronologeek.png" alt="Chronologeek"/>
     </div>
     <div class="nav-links">
-      <a onclick="window.location.href='index.html'">Accueil</a>
+      <a onclick="window.location.href='index.html'" style="color:var(--text);font-weight:700">Accueil</a>
       <a onclick="window.location.href='starwars.html'">Star Wars</a>
       <a onclick="window.location.href='marvel.html'">Marvel</a>
       <a href="#">Dossiers</a>
