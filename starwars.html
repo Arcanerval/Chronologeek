@@ -14,11 +14,12 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(240,98,146,.08),transparent 60%);pointer-events:none}
+.nav-maj{font-size:.7rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
 nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:36px;display:none}.logo img.loaded{display:block}
+.logo img{height:26px;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));vertical-align:middle}
 .logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;gap:1.25rem;align-items:center}
 .nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
@@ -212,8 +213,7 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 <header>
   <nav>
     <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer">
-      <img id="site-logo" alt="Chronologeek" onload="this.classList.add('loaded');document.getElementById('logo-text').style.display='none'"/>
-      <span class="logo-text" id="logo-text">Chronologeek</span>
+      <img id="site-logo" src="images/logo-chronologeek.png" alt="Chronologeek"/>
     </div>
     <div class="nav-links">
       <a onclick="window.location.href='index.html'">Accueil</a>
@@ -222,7 +222,7 @@ details[open] .faq-q::after{transform:rotate(90deg)}
       <a href="#">Dossiers</a>
       <a href="#">Communauté</a>
     </div>
-    <div class="nav-sp"></div>
+    <div class="nav-sp"></div><span class="nav-maj">À jour · juin 2026</span>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
     <a href="#" class="disc-btn">Discord</a>
   </nav>
