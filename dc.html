@@ -208,62 +208,95 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 #grogu:hover .grogu-normal{display:none}
 #grogu:hover .grogu-hover{display:block}
 
-/* ── DC 4 colonnes ──────────────────────────────── */
-.tl-page{display:block}
+/* ── DC multi-colonnes ──────────────────────────────────────── */
+.tl-page{display:block;max-width:1600px;margin:0 auto;padding:2rem 1.5rem}
 
-.dc-header{display:flex;gap:6px;position:sticky;top:62px;z-index:100;background:var(--bg);padding:6px 0;border-bottom:1px solid var(--border)}
-.dc-col-head{flex:1;padding:.5rem .6rem;border-radius:8px 8px 0 0;background:var(--surface);display:flex;align-items:center;justify-content:space-between;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;min-width:0}
-.col-toggle{background:none;border:none;cursor:pointer;font-size:1rem;color:inherit;opacity:.8;padding:0 2px;line-height:1}
-.col-toggle:hover{opacity:1}
-.col-toggle.inactive{opacity:.3}
-
-.dc-body{display:flex;gap:6px;align-items:flex-start}
+/* Grille 4 colonnes */
+.dc-grid{display:flex;gap:10px;align-items:flex-start;width:100%}
 .dc-col{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
-.dc-section-label{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .4rem .25rem;opacity:.7;border-top:1px solid var(--border);margin-top:.5rem}
-.dc-section-label:first-child{border-top:none;margin-top:0}
+.dc-col[data-col="elseworlds"]{flex:2}
 
-/* Entrées DC : plus compactes que SW/Marvel */
-.en{border-radius:8px;margin-bottom:0;cursor:pointer;transition:filter .2s,transform .15s}
-.en:hover{filter:brightness(1.2);transform:translateX(2px)}
-.en-top{display:flex;align-items:flex-start;gap:6px;padding:.45rem .55rem}
-.en-check{width:18px;height:18px;flex-shrink:0;border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:1px}
+/* En-tête collant de colonne */
+.dc-col-sticky{position:sticky;top:62px;z-index:50;background:var(--bg);padding:.4rem .6rem;border-radius:8px 8px 0 0;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;margin-bottom:6px;backdrop-filter:blur(10px)}
+
+/* Spacer DCU — espace blanc pour que le DCU commence plus bas */
+.dcu-spacer{height:800px}
+
+/* Filtres colonnes */
+.col-filter-btn{background:transparent!important;border:1px solid!important;font-weight:600}
+.col-filter-btn:not(.active){opacity:.35;text-decoration:line-through}
+.cx-badge{font-size:.58rem;background:rgba(255,215,0,.2);color:#ffd700;padding:1px 5px;border-radius:3px;font-weight:700;letter-spacing:.05em}
+.crossover-en{border:1px solid rgba(255,215,0,.5)!important;background:rgba(255,215,0,.06)!important}
+
+/* Entrées DC — identiques aux autres pages */
+.en{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.5rem;overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.en:hover{border-color:var(--border2);box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.en.must{border-left:3px solid var(--accent)}
+.en.imp{border-left:3px solid rgba(255,100,0,.7)}
+.en.done{opacity:.55}
+.en.open{border-color:var(--accent);box-shadow:0 4px 20px rgba(124,106,247,.2)}
+.en-top{display:flex;align-items:flex-start;gap:.55rem;padding:.65rem .75rem;cursor:pointer}
+.en-check{width:20px;height:20px;flex-shrink:0;border:1px solid var(--border2);border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:1px;transition:background .15s,border .15s}
 .en-check:hover{border-color:var(--accent)}
 .en.done .en-check{background:var(--accent);border-color:var(--accent)}
-.checkmark{font-size:.65rem;color:#fff;font-weight:700}
-.en-datebadge{display:flex;flex-direction:column;gap:2px;flex-shrink:0;min-width:52px}
-.date-main{font-size:.68rem;color:var(--muted2);white-space:nowrap}
-.dim-badge{font-size:.58rem;background:rgba(255,255,255,.06);color:var(--muted);padding:1px 4px;border-radius:3px;white-space:nowrap;border:1px solid var(--border)}
+.checkmark{font-size:.7rem;color:#fff;font-weight:700}
+.en-datebadge{display:flex;flex-direction:column;gap:2px;flex-shrink:0;min-width:56px}
+.en-level-icon{font-size:.75rem;min-height:14px}
+.date-main{font-size:.72rem;color:var(--muted2);white-space:nowrap}
+.dim-badge{font-size:.6rem;background:rgba(255,255,255,.06);color:var(--muted);padding:1px 4px;border-radius:3px;white-space:nowrap;border:1px solid var(--border)}
+.ep{width:52px;height:36px;flex-shrink:0;border-radius:5px;overflow:hidden;background:var(--surface2);display:flex;align-items:center;justify-content:center;position:relative}
+.ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pp{font-size:1rem}
 .em{flex:1;min-width:0}
-.tr{display:flex;align-items:center;flex-wrap:wrap;gap:3px;margin-bottom:2px}
-.en-name{font-size:.78rem;font-weight:600;color:var(--text);line-height:1.3}
-.ft{font-size:.56rem;background:rgba(255,165,0,.2);color:#ffa500;padding:1px 4px;border-radius:3px;font-weight:700;letter-spacing:.05em;flex-shrink:0}
-.imp-badge{font-size:.7rem;flex-shrink:0}
-.soft-badge{font-size:.56rem;background:rgba(150,150,180,.15);color:var(--muted2);padding:1px 4px;border-radius:3px;font-weight:700;letter-spacing:.03em;flex-shrink:0}
-.enote{font-size:.68rem;color:var(--muted2);margin-top:2px;line-height:1.35;font-style:italic}
-.esub{margin-top:3px}
-.si{font-size:.68rem;color:var(--muted2);padding:0 0 0 .3rem;line-height:1.4}
+.tr{display:flex;align-items:center;flex-wrap:wrap;gap:.3rem;margin-bottom:2px}
+.en-name{font-size:.82rem;font-weight:600;color:var(--text);line-height:1.3}
+.enote{font-size:.72rem;color:var(--muted2);margin:.15rem 0;font-style:italic;line-height:1.4}
+.esub{margin-top:.2rem}
+.si{font-size:.72rem;color:var(--muted2);padding:.05rem 0 .05rem .4rem;line-height:1.4}
+.ft{font-size:.58rem;background:rgba(255,165,0,.2);color:#ffa500;padding:1px 5px;border-radius:3px;font-weight:700;letter-spacing:.05em;flex-shrink:0}
+.b{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:.15rem .45rem;border-radius:20px;flex-shrink:0}
+.bf{background:rgba(124,106,247,.2);color:#a78bfa;border:1px solid rgba(124,106,247,.3)}
+.bs{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
+.bfa{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.25)}
+.bsp{background:rgba(148,163,184,.15);color:#94a3b8;border:1px solid rgba(148,163,184,.25)}
+.bcx{background:rgba(255,215,0,.2);color:#ffd700;border:1px solid rgba(255,215,0,.4)}
+.dt{font-size:.6rem;background:rgba(255,255,255,.06);color:var(--muted2);padding:.1rem .4rem;border-radius:3px;border:1px solid var(--border)}
 
-/* Expand panel */
-.en-expand{display:none;border-top:1px solid var(--border);padding:.65rem .75rem}
+/* Expand */
+.en-expand{display:none;border-top:1px solid var(--border);padding:.75rem}
 .en.open .en-expand{display:block}
-.expand-inner{display:flex;gap:.75rem}
-.expand-poster{width:70px;flex-shrink:0}
-.expand-poster img{width:100%;border-radius:6px}
+.expand-inner{display:flex;gap:.85rem}
+.expand-poster{width:80px;flex-shrink:0;cursor:pointer;position:relative;border-radius:6px;overflow:hidden}
+.expand-poster img{width:100%;border-radius:6px;display:block}
+.expand-poster-ov{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:1.2rem}
+.expand-poster:hover .expand-poster-ov{opacity:1}
 .expand-info{flex:1;min-width:0}
-.expand-synopsis{font-size:.78rem;line-height:1.55;color:var(--muted2);margin-bottom:.5rem}
-.expand-meta{display:flex;flex-wrap:wrap;gap:.35rem .75rem;font-size:.72rem;color:var(--muted2);margin-bottom:.5rem}
+.expand-synopsis{font-size:.8rem;line-height:1.6;color:var(--muted2);margin-bottom:.5rem}
+.expand-meta{display:flex;flex-wrap:wrap;gap:.35rem .8rem;font-size:.75rem;color:var(--muted2);margin-bottom:.5rem}
 .expand-meta strong{color:var(--text)}
-.expand-trailer-link{display:inline-block;font-size:.72rem;color:var(--accent);text-decoration:none;margin-top:.25rem}
-.expand-loading{font-size:.78rem;color:var(--muted);padding:.3rem 0}
-.expand-no-data{font-size:.78rem;color:var(--muted);padding:.3rem 0}
+.expand-trailer-link{display:inline-block;font-size:.75rem;color:var(--accent);text-decoration:none;margin-top:.25rem}
+.expand-trailer-link:hover{text-decoration:underline}
+.expand-loading,.expand-no-data{font-size:.8rem;color:var(--muted);padding:.3rem 0}
 
-/* Crossover */
-.dc-crossover-marker{border:1px dashed;border-radius:8px;padding:.5rem .7rem;font-size:.75rem;font-weight:700;text-align:center;letter-spacing:.04em;margin:4px 0;grid-column:1/-1}
+/* Era nodes */
+.era-node{display:flex;align-items:center;gap:.5rem;padding:.3rem 0;margin:.4rem 0}
+.era-node-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.era-label{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;opacity:.8}
+
+/* Filtres */
+.filter-bar{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
+.filter-group{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem}
+.filter-label{font-size:.72rem;color:var(--muted);margin-right:.2rem;white-space:nowrap}
+.fbt{background:var(--surface);border:1px solid var(--border2);color:var(--muted2);border-radius:20px;padding:.25rem .7rem;font-size:.72rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.fbt.active{background:rgba(124,106,247,.15);border-color:var(--accent);color:var(--text)}
+.fbt:not(.active){opacity:.45;text-decoration:line-through}
 
 /* Mobile */
-@media(max-width:700px){
-  .dc-header,.dc-body{flex-direction:column}
-  .dc-col-head,.dc-col{width:100%}
+@media(max-width:900px){
+  .dc-grid{flex-direction:column}
+  .dc-col,.dc-col[data-col="elseworlds"]{flex:none;width:100%}
+  .dc-col-sticky{top:auto;position:relative}
+  .dcu-spacer{height:0}
   nav{flex-wrap:wrap;height:auto;padding:.5rem 0;gap:.3rem}
   .logo{width:100%;justify-content:center}
   .nav-links{width:100%;justify-content:center;flex-wrap:wrap;gap:.35rem .7rem}
@@ -271,7 +304,6 @@ details[open] .faq-q::after{transform:rotate(90deg)}
   .nav-sp,.nav-maj,.pbn{display:none}
   .disc-btn{margin:0 auto .2rem}
 }
-
 </style>
 </head>
 <body>
@@ -309,251 +341,222 @@ details[open] .faq-q::after{transform:rotate(90deg)}
     <button class="pb-reset" onclick="resetProgress()">Reset</button>
   </div>
   <div class="nb" id="tl-notes"></div>
+  <div class="leg" id="tl-legend"></div>
+  <div class="filter-bar" id="filter-bar"></div>
   <div id="tl-content"></div>
 </div>
 <script>
 const DATA_DC={
-  id:"dc",
-  title:"DC Multivers",
-  subtitle:"Timeline Optimisée",
+  id:"dc",title:"DC Multivers",subtitle:"Timeline Optimisée",
   description:"Elseworlds · Arrowverse · DCEU · DCU",
-  color:"#1e90ff",
-  glow:"rgba(30,144,255,.3)",
-  notes:`JE COMMENCERAIS PAR VOUS PRÉVENIR QUE CE DOSSIER EST UN ÉNORME BORDEL, BIEN QU'AYANT ENLEVÉ BEAUCOUP DE MÉDIAS, REGARDER TOUT LE RESTE NÉCESSITE BEAUCOUP BEAUCOUP DE TEMPS, SI VOUS ÊTES LÀ SEULEMENT POUR VOIR LE ARROW-VERSE, LE DCEU OU LE DCU VOUS POUVEZ CHOISIR DE LE FAIRE EN MASQUANT LES AUTRES COLONNES<br><br>
+  color:"#1e90ff",glow:"rgba(30,144,255,.3)",
+  notes:`Je commencerai par vous prévenir que ce dossier est un énorme bordel, bien qu'ayant enlevé beaucoup de médias, regarder tout le reste nécessite beaucoup beaucoup de temps. Si vous êtes là seulement pour voir l'Arrow-Verse, le DCEU ou le DCU, vous pouvez choisir de le faire en masquant les autres colonnes.
 
-<strong>QUESTION LÉGITIME : EN QUOI TOUT CE BORDEL EST RELIÉ ?</strong><br><br>
+<strong>Question légitime : en quoi tout ce bordel est relié ?</strong>
 
-CET ORDRE PRIVILÉGIE LA DÉCOUVERTE PROGRESSIVE DU MULTIVERS DC. PLUSIEURS SÉRIES ET FILMS SE DÉROULENT DANS DES RÉALITÉS DIFFÉRENTES MAIS FINISSENT PAR PARTAGER DES LIENS. REGARDER LES ŒUVRES DANS CET ORDRE PERMET DE MIEUX COMPRENDRE LES PERSONNAGES, LES RÉFÉRENCES ET LES ÉVÉNEMENTS QUI CONNECTENT CES UNIVERS, TOUT EN PRÉSERVANT LES SURPRISES MAJEURES.<br><br>
+Cet ordre privilégie la découverte progressive du Multivers DC. Plusieurs séries et films se déroulent dans des réalités différentes mais finissent par partager des liens. Regarder les œuvres dans cet ordre permet de mieux comprendre les personnages, les références et les événements qui connectent ces univers, tout en préservant les surprises majeures.
 
-IL MANQUE DES CHOSES MAIS ELLES NE SONT <strong>PAS DU TOUT</strong> IMPORTANTES POUR LA COMPRÉHENSION DE LA CHRONOLOGIE DU MULTIVERS ET DES ÉVÉNEMENTS IMPORTANTS (<strong>TOUS LES MÉDIAS SORTIS AVANT 1989, LES SÉRIES FLASH (1990), LOÏS &amp; CLARK, LUCIFER, KRYPTON, PENNYWORTH, WONDER WOMAN (1976), SWAMP-THING, DOOM PATROL, POWERLESS, LES ANGES DE LA NUIT, LE FILM CONSTANTINE (2005), LE FILM ET LA SÉRIE WATCHMEN, LES 2 FILMS JOKER, LE FILM GREEN LANTERN, LE FILM CATWOMAN, PLEIN D'AUTRES FILMS PEU CONNUS, PRESQUE TOUS LES FILMS D'ANIMATION ET DESSINS ANIMÉS, TOUS LES COMICS, TOUS LES JEUX-VIDÉO…</strong>)<br><br>
+Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs & Clark, Lucifer, Krypton, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)
 
-LES DEUX CHRONOLOGIES PRINCIPALES DE L'UNIVERS SE PASSENT SUR LA <strong>TERRE-PRIME</strong> ET LA <strong>TERRE-1</strong><br><br>
+Les deux chronologies principales de l'univers se passent sur la <strong>Terre-Prime</strong> et la <strong>Terre-1</strong>.
 
-LE TERME <strong>SOFT-CANON</strong> DÉSIGNE UN MÉDIA DONT LES ÉVÉNEMENTS SONT EN PARTIE SURVENUS DE LA MÊME MANIÈRE, PLUS D'INFOS DANS LES DESCRIPTIONS<br><br>
+Le terme <strong>soft-canon</strong> désigne un média dont les événements sont en partie survenus de la même manière, plus d'infos dans les descriptions.
 
-LE MULTIVERS DC FONCTIONNE D'UNE MANIÈRE PARTICULIÈRE, DEUX PERSONNAGES DIFFÉRENTS PEUVENT AVOIR EXACTEMENT LA MÊME TÊTE (EXEMPLES : LE PÈRE DE FLASH (2014) ET FLASH (1990), SUPERGIRL (1984) ET LA MÈRE DE SUPERMAN (SMALLVILLE) MAIS AUSSI LA MÈRE ADOPTIVE DE SUPERGIRL (2015))<br><br>
+Le Multivers DC fonctionne d'une manière particulière : deux personnages différents peuvent avoir exactement la même tête (exemples : le père de Flash (2014) et Flash (1990), Supergirl (1984) et la mère de Superman (Smallville) mais aussi la mère adoptive de Supergirl (2015)).
 
-CERTAINS ÉVÉNEMENTS SONT MIEUX À VOIR EN TANT QUE <strong>FLASHBACK</strong> POUR COMPRENDRE ET SONT DONC INDIQUÉS COMME TEL<br><br>
-
-<strong>TYPES :</strong> FILM / SÉRIE / SÉRIE ANIMÉE / VIDÉO<br>
-<strong>NIVEAUX :</strong> 🚨 = IMPORTANT<br>
-<strong>UNIVERS :</strong> ELSEWORLDS / ARROW-VERSE / DCEU / DCU`,
+Certains événements sont mieux à voir en tant que <strong>FLASHBACK</strong> pour comprendre et sont donc indiqués comme tel.`,
+  multiCol:true,
   columns:[
-    {
-      id:"elseworlds",
-      label:"Elseworlds",
-      color:"#c084fc",
-      glow:"rgba(192,132,252,.25)",
-      sections:[
-        {
-          label:"Origines de Superman",
-          entries:[
-            {id:"dc-smallville",type:"serie",tmdb:"1078",media:"tv",img:"images/smallville.webp",title:"Smallville",date:"2000–2010",dim:"TERRE-167",subitems:["Saison 1","Saison 2","Saison 3","Saison 4","Saison 5","Saison 6","Saison 7","Saison 8","Saison 9","Saison 10"]},
-            {id:"dc-supermanreturns",type:"film",tmdb:"1452",media:"movie",img:"images/supermanreturns.webp",title:"Superman Returns",date:"2006",dim:"TERRE-96",important:true},
-            {id:"dc-supermanlois",type:"serie",tmdb:"95057",media:"tv",img:"images/supermanlois.webp",title:"Superman et Loïs",date:"2021–2024",dim:"TERRE-TUD25",subitems:["Saison 1","Saison 2","Saison 3","Saison 4"]}
-          ]
-        },
-        {
-          label:"Origines de Batman",
-          entries:[
-            {id:"dc-batman89",type:"film",tmdb:"268",media:"movie",img:"images/batman89.webp",title:"Batman",date:"1989",dim:"TERRE-89",important:true},
-            {id:"dc-batmanreturns",type:"film",tmdb:"364",media:"movie",img:"images/batman89.webp",title:"Batman : Le Défi",date:"1992",dim:"TERRE-89",important:true},
-            {id:"dc-batmanbegins",type:"film",tmdb:"272",media:"movie",img:"images/batmanbegins.webp",title:"Batman Begins",date:"2005",dim:"TERRE-TDK"},
-            {id:"dc-tdk",type:"film",tmdb:"155",media:"movie",img:"images/tdk.webp",title:"The Dark Knight",date:"2008",dim:"TERRE-TDK"},
-            {id:"dc-tdkr",type:"film",tmdb:"49026",media:"movie",img:"images/tdk.webp",title:"The Dark Knight Rises",date:"2012",dim:"TERRE-TDK"},
-            {id:"dc-gotham",type:"serie",tmdb:"60708",media:"tv",img:"images/gotham.webp",title:"Gotham",date:"???",dim:"TERRE-2014",subitems:["Saison 1","Saison 2","Saison 3","Saison 4","Saison 5"]},
-            {id:"dc-thebatman",type:"film",tmdb:"414906",media:"movie",img:"images/thebatman.webp",title:"The Batman",date:"2022",dim:"TERRE-TB",important:true},
-            {id:"dc-thepenguin",type:"serie",tmdb:"119051",media:"tv",img:"images/thebatman.webp",title:"The Penguin",date:"2022",dim:"TERRE-TB",subitems:["Saison 1"]}
-          ]
-        },
-        {
-          label:"Autres",
-          entries:[
-            {id:"dc-titans-s1",type:"serie",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2018",dim:"TERRE-9",subitems:["Saison 1"]},
-            {id:"dc-titans-s2",type:"serie",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2019",dim:"TERRE-9",subitems:["Saison 2"]},
-            {id:"dc-stargirl-s1",type:"serie",tmdb:"89247",media:"tv",img:"images/stargirl.webp",title:"Stargirl",date:"2020",dim:"TERRE-2",subitems:["Saison 1"]},
-            {id:"dc-stargirl-s2",type:"serie",tmdb:"89247",media:"tv",img:"images/stargirl.webp",title:"Stargirl",date:"2021",dim:"TERRE-2",subitems:["Saison 2"]},
-            {id:"dc-stargirl-s3",type:"serie",tmdb:"89247",media:"tv",img:"images/stargirl.webp",title:"Stargirl",date:"2021",dim:"TERRE-2",subitems:["Saison 3"]},
-            {id:"dc-titans-s3",type:"serie",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2021",dim:"TERRE-9",subitems:["Saison 3"]},
-            {id:"dc-titans-s4",type:"serie",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2021",dim:"TERRE-9",subitems:["Saison 4"]}
-          ]
-        }
-      ]
-    },
-    {
-      id:"arrowverse",
-      label:"Arrowverse",
-      color:"#22c55e",
-      glow:"rgba(34,197,94,.25)",
-      sections:[{label:"",entries:[
-        {id:"av-arrow-s12",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2012–2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 1","Saison 2"]},
-        {id:"av-arrow-s3e1-3",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 1-3"]},
-        {id:"av-flash-s1e1-4",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisodes 1-4"]},
-        {id:"av-arrow-s3e4",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisode 4"]},
-        {id:"av-flash-s1e5",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisode 5"]},
-        {id:"av-arrow-s3e5",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisode 5"]},
-        {id:"av-flash-s1e6-7",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisodes 6-7"]},
-        {id:"av-arrow-s3e6-7",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 6-7"]},
-        {id:"av-flash-s1e8",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisode 8"]},
-        {id:"av-arrow-s3e8",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisode 8"]},
-        {id:"av-flash-s1e9-23",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014–2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisodes 9-23"]},
-        {id:"av-arrow-s3e9-23",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014–2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 9-23"]},
-        {id:"av-constantine",type:"serie",tmdb:"61811",media:"tv",img:"images/constantine.webp",title:"Constantine",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 1"]},
-        {id:"av-arrow-s4e1",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisode 1"]},
-        {id:"av-flash-s2e1-4",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 1-4"]},
-        {id:"av-arrow-s4e2-4",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 2-4"]},
-        {id:"av-sg-s1e1-4",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015",dim:"TERRE-38",important:true,subitems:["Saison 1 épisodes 1-4"]},
-        {id:"av-arrow-s4e5",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisode 5"]},
-        {id:"av-flash-s2e5-6",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 5-6"]},
-        {id:"av-sg-s1e5-7",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015",dim:"TERRE-38",important:true,subitems:["Saison 1 épisodes 5-7"]},
-        {id:"av-arrow-s4e6",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisode 6"]},
-        {id:"av-flash-s2e7",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisode 7"]},
-        {id:"av-sg-s1e8-9",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015",dim:"TERRE-38",important:true,subitems:["Saison 1 épisodes 8-9"]},
-        {id:"av-arrow-s4e7",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisode 7"]},
-        {id:"av-flash-s2e8",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisode 8"]},
-        {id:"av-arrow-s4e8",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisode 8"]},
-        {id:"av-sg-s1e10-11",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015–2016",dim:"TERRE-38",important:true,subitems:["Saison 1 épisodes 10-11"]},
-        {id:"av-arrow-s4e9-10",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015–2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 9-10"]},
-        {id:"av-flash-s2e9-10",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015–2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 9-10"]},
-        {id:"av-sg-s1e12-17",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015–2016",dim:"TERRE-38",important:true,subitems:["Saison 1 épisodes 12-17"]},
-        {id:"av-arrow-s4e11-17",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015–2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 11-17"]},
-        {id:"av-flash-s2e11-18",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015–2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 11-18"]},
-        {id:"av-sg-s1e18",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015–2016",dim:"TERRE-38",important:true,subitems:["Saison 1 épisode 18"]},
-        {id:"av-arrow-s4e18-23",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 18-23"]},
-        {id:"av-flash-s2e19-23",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 19-23"]},
-        {id:"av-sg-s1e19-20",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016",dim:"TERRE-38",important:true,subitems:["Saison 1 épisodes 19-20"]},
-        {id:"av-lot-s1",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 1"]},
-        {id:"av-sg-s2e1-7",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016",dim:"TERRE-38",important:true,subitems:["Saison 2 épisodes 1-7"]},
-        {id:"av-flash-s3e1-7",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 1-7"]},
-        {id:"av-arrow-s5e1-7",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 1-7"]},
-        {id:"av-lot-s2e1-6",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 1-6"]},
-        {id:"av-bl-s1e1-6",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2016",dim:"TERRE-TUD5",subitems:["Saison 1 épisodes 1-6"]},
-        {id:"av-sg-s2e8",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016",dim:"TERRE-38",important:true,subitems:["Saison 2 épisode 8"]},
-        {id:"av-flash-s3e8",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisode 8"]},
-        {id:"av-arrow-s5e8",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisode 8"]},
-        {id:"av-lot-s2e7",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisode 7"]},
-        {id:"av-sg-s2e9-22",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016–2017",dim:"TERRE-38",important:true,subitems:["Saison 2 épisodes 9-22"]},
-        {id:"av-flash-s3e9-23",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016–2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 9-23"]},
-        {id:"av-arrow-s5e9-23",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016–2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 9-23"]},
-        {id:"av-lot-s2e8-17",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016–2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 2 épisodes 8-17"]},
-        {id:"av-bl-s1e7-13",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2016–2017",dim:"TERRE-TUD5",subitems:["Saison 1 épisodes 7-13"]},
-        {id:"av-sg-s3e1-7",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2017",dim:"TERRE-38",important:true,subitems:["Saison 3 épisodes 1-7"]},
-        {id:"av-flash-s4e1-7",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 1-7"]},
-        {id:"av-arrow-s6e1-7",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 6 épisodes 1-7"]},
-        {id:"av-lot-s3e1-7",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 1-7"]},
-        {id:"av-bl-s2e1-7",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2017",dim:"TERRE-TUD5",subitems:["Saison 2 épisodes 1-7"]},
-        {id:"av-sg-s3e8",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2017",dim:"TERRE-38",important:true,subitems:["Saison 3 épisode 8"]},
-        {id:"av-flash-s4e8",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisode 8"]},
-        {id:"av-arrow-s6e8",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 6 épisode 8"]},
-        {id:"av-lot-s3e8",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2017",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisode 8"]},
-        {id:"av-sg-s3e9-23",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2017–2018",dim:"TERRE-38",important:true,subitems:["Saison 3 épisodes 9-23"]},
-        {id:"av-flash-s4e9-23",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2017–2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 9-23"]},
-        {id:"av-arrow-s6e9-23",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2017–2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 6 épisodes 9-23"]},
-        {id:"av-lot-s3e9-18",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2017–2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 3 épisodes 9-18"]},
-        {id:"av-bl-s2e8-16",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2017–2018",dim:"TERRE-TUD5",subitems:["Saison 2 épisodes 8-16"]},
-        {id:"av-sg-s4e1-8",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2018",dim:"TERRE-38",important:true,subitems:["Saison 4 épisodes 1-8"]},
-        {id:"av-flash-s5e1-7",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 1-7"]},
-        {id:"av-arrow-s7e1-8",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 7 épisodes 1-8"]},
-        {id:"av-lot-s4e1-7",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 1-7"]},
-        {id:"av-bl-s3e1-7",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2018",dim:"TERRE-TUD5",subitems:["Saison 3 épisodes 1-7"]},
-        {id:"av-bw-s1e1-4",type:"serie",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisodes 1-4"]},
-        {id:"av-flash-s5e8-9",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 8-9"]},
-        {id:"av-arrow-s7e9",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2018",dim:"TERRE-PRIME",important:true,subitems:["Saison 7 épisode 9"]},
-        {id:"av-sg-s4e9-22",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2018",dim:"TERRE-38",important:true,subitems:["Saison 4 épisodes 9-22"]},
-        {id:"av-flash-s5e10-22",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2018–2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 10-22"]},
-        {id:"av-arrow-s7e10-22",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2018–2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 7 épisodes 10-22"]},
-        {id:"av-lot-s4e8-16",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2018–2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 4 épisodes 8-16"]},
-        {id:"av-bl-s3e8",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2018–2019",dim:"TERRE-TUD5",subitems:["Saison 3 épisode 8"]},
-        {id:"av-sg-s5e1-8",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2019",dim:"TERRE-38",important:true,subitems:["Saison 5 épisodes 1-8"]},
-        {id:"av-bw-s1e5-8",type:"serie",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisodes 5-8"]},
-        {id:"av-flash-s6e1-8",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 6 épisodes 1-8"]},
-        {id:"av-arrow-s8e1-7",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 8 épisodes 1-7"]},
-        {id:"av-bl-s3e9",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2019",dim:"TERRE-TUD5",subitems:["Saison 3 épisode 9"]},
-        {id:"av-sg-s5e9",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2019",dim:"TERRE-38",important:true,subitems:["Saison 5 épisode 9"]},
-        {id:"av-bw-s1e9",type:"serie",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisode 9"]},
-        {id:"av-flash-s6e9",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 6 épisode 9"]},
-        {id:"av-arrow-s8e8",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 8 épisode 8"]},
-        {id:"av-lot-s5e1",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2019",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisode 1"]},
-        {id:"av-bl-s3e10-16",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 10-16"]},
-        {id:"av-crisis",type:"crossover",tmdb:"0",media:"tv",img:"images/crisis.webp",title:"Crisis on Infinite Earths",date:"2019–2020",dim:"TERRE-PRIME",important:true,crossover:true},
-        {id:"av-sg-s5e10-19",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2019–2020",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 10-19"]},
-        {id:"av-bw-s1e10-20",type:"serie",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2019–2020",dim:"TERRE-PRIME",important:true,subitems:["Saison 1 épisodes 10-20"]},
-        {id:"av-flash-s6e10-19",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2019–2020",dim:"TERRE-PRIME",important:true,subitems:["Saison 6 épisodes 10-19"]},
-        {id:"av-arrow-s8e9-10",type:"serie",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2019–2020",dim:"TERRE-PRIME",important:true,subitems:["Saison 8 épisodes 9-10"]},
-        {id:"av-lot-s5e2-15",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2019–2020",dim:"TERRE-PRIME",important:true,subitems:["Saison 5 épisodes 2-15"]},
-        {id:"av-sg-s6",type:"serie",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2020–2021",dim:"TERRE-PRIME",important:true,subitems:["Saison 6"]},
-        {id:"av-bw-s2",type:"serie",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2020–2021",dim:"TERRE-PRIME",important:true,subitems:["Saison 2"]},
-        {id:"av-flash-s7",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2020–2021",dim:"TERRE-PRIME",important:true,subitems:["Saison 7"]},
-        {id:"av-lot-s6",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2020–2021",dim:"TERRE-PRIME",important:true,subitems:["Saison 6"]},
-        {id:"av-bl-s4",type:"serie",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2020–2021",dim:"TERRE-PRIME",subitems:["Saison 4"]},
-        {id:"av-bw-s3",type:"serie",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2021",dim:"TERRE-PRIME",important:true,subitems:["Saison 3"]},
-        {id:"av-flash-s8e1-5",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2021",dim:"TERRE-PRIME",important:true,subitems:["Saison 8 épisodes 1-5"]},
-        {id:"av-lot-s7",type:"serie",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2021–2022",dim:"TERRE-PRIME",important:true,subitems:["Saison 7"]},
-        {id:"av-flash-s8e6-20",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2021–2022",dim:"TERRE-PRIME",important:true,subitems:["Saison 8 épisodes 6-20"]},
-        {id:"av-flash-s9",type:"serie",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2023",dim:"TERRE-PRIME",important:true,subitems:["Saison 9"]}
-      ]}]
-    },
-    {
-      id:"dceu",
-      label:"DCEU",
-      color:"#3b82f6",
-      glow:"rgba(59,130,246,.25)",
-      sections:[{label:"",entries:[
-        {id:"dceu-mos",type:"film",tmdb:"49521",media:"movie",img:"images/manofsteel.webp",title:"Man of Steel",date:"2013",dim:"TERRE-1",important:true},
-        {id:"dceu-bvs",type:"film",tmdb:"209112",media:"movie",img:"images/bvs.webp",title:"Batman V Superman : l'Aube de la Justice",date:"2015",dim:"TERRE-1",important:true,note:"Version Ultimate Edition !!!"},
-        {id:"dceu-ww",type:"film",tmdb:"297762",media:"movie",img:"images/wonderwoman.webp",title:"Wonder Woman",date:"1918",dim:"TERRE-1",important:true,tags:["flashback"]},
-        {id:"dceu-ww84",type:"film",tmdb:"464052",media:"movie",img:"images/ww84.webp",title:"Wonder Woman 1984",date:"1984",dim:"TERRE-1",tags:["flashback"]},
-        {id:"dceu-ss",type:"film",tmdb:"297802",media:"movie",img:"images/suicidesquad.webp",title:"Suicide Squad",date:"2016",dim:"TERRE-1",important:true},
-        {id:"dceu-jl",type:"film",tmdb:"791373",media:"movie",img:"images/justiceleague.webp",title:"Zack Snyder's Justice League",date:"2017",dim:"TERRE-1",important:true},
-        {id:"dceu-aquaman",type:"film",tmdb:"297802",media:"movie",img:"images/aquaman.webp",title:"Aquaman",date:"2017–2018",dim:"TERRE-1",important:true},
-        {id:"dceu-shazam",type:"film",tmdb:"287947",media:"movie",img:"images/shazam.webp",title:"Shazam!",date:"2018",dim:"TERRE-1"},
-        {id:"dceu-bop",type:"film",tmdb:"495764",media:"movie",img:"images/birdsofprey.webp",title:"Birds of Prey",date:"2020",dim:"TERRE-1",important:true},
-        {id:"dceu-tss",type:"film",tmdb:"436969",media:"movie",img:"images/thesuicidesquad.webp",title:"The Suicide Squad",date:"2020–2021",dim:"TERRE-1",important:true},
-        {id:"dceu-peacemaker",type:"serie",tmdb:"114472",media:"tv",img:"images/peacemaker.webp",title:"Peacemaker",date:"2021",dim:"TERRE-1",important:true,subitems:["Saison 1"]},
-        {id:"dceu-blackadam",type:"film",tmdb:"736073",media:"movie",img:"images/blackadam.webp",title:"Black Adam",date:"2021",dim:"TERRE-1",important:true},
-        {id:"dceu-shazam2",type:"film",tmdb:"594767",media:"movie",img:"images/shazam.webp",title:"Shazam 2 : La Rage des Dieux",date:"2022",dim:"TERRE-1"},
-        {id:"dceu-aquaman2",type:"film",tmdb:"572802",media:"movie",img:"images/aquaman.webp",title:"Aquaman et le Royaume Perdu",date:"2022",dim:"TERRE-1",important:true},
-        {id:"dceu-bluebeetle",type:"film",tmdb:"567811",media:"movie",img:"images/bluebeetle.webp",title:"Blue Beetle",date:"2023",dim:"TERRE-1"},
-        {id:"dceu-theflash",type:"film",tmdb:"298618",media:"movie",img:"images/dceuflash.webp",title:"The Flash",date:"2023",dim:"TERRE-1",important:true,note:"Pont DCEU → DCU"}
-      ]}]
-    },
-    {
-      id:"dcu",
-      label:"DCU",
-      color:"#f97316",
-      glow:"rgba(249,115,22,.25)",
-      sections:[{label:"",entries:[
-        {id:"dcu-cc",type:"serie",tmdb:"246063",media:"tv",img:"images/creaturecommandos.webp",title:"Creature Commandos",date:"2016",dim:"TERRE-1",subitems:["Saison 1"]},
-        {id:"dcu-superman",type:"film",tmdb:"986056",media:"movie",img:"images/supermandcu.webp",title:"Superman",date:"2025",dim:"TERRE-1",important:true},
-        {id:"dcu-peacemaker2",type:"serie",tmdb:"114472",media:"tv",img:"images/peacemaker.webp",title:"Peacemaker",date:"2025",dim:"TERRE-1",important:true,subitems:["Saison 2"]},
-        
-        
-        
-        
-        
-      ]}]
-    }
+    {id:"elseworlds",label:"Elseworlds",color:"#c084fc",wide:true},
+    {id:"arrowverse",label:"Arrowverse",color:"#22c55e"},
+    {id:"dceu",label:"DCEU",color:"#3b82f6"},
+    {id:"dcu",label:"DCU",color:"#f97316",startLate:true}
+  ],
+  eras:[
+    // ── ELSEWORLDS : Origines Superman ──────────────────────────────
+    {title:"Elseworlds — Origines de Superman",col:"elseworlds",entries:[
+      {id:"dc-smallville",type:"serie",level:"bonus",tmdb:"1078",media:"tv",img:"images/smallville.webp",title:"Smallville",date:"2000–2010",dim:"TERRE-167",subitems:["Saison 1","Saison 2","Saison 3","Saison 4","Saison 5","Saison 6","Saison 7","Saison 8","Saison 9","Saison 10"]},
+      {id:"dc-supermanreturns",type:"film",level:"important",tmdb:"1452",media:"movie",img:"images/supermanreturns.webp",title:"Superman Returns",date:"2006",dim:"TERRE-96"},
+      {id:"dc-supermanlois",type:"serie",level:"bonus",tmdb:"95057",media:"tv",img:"images/supermanlois.webp",title:"Superman et Loïs",date:"2021–2024",dim:"TERRE-TUD25",subitems:["Saison 1","Saison 2","Saison 3","Saison 4"]}
+    ]},
+    // ── ELSEWORLDS : Origines Batman ─────────────────────────────────
+    {title:"Elseworlds — Origines de Batman",col:"elseworlds",entries:[
+      {id:"dc-batman89",type:"film",level:"important",tmdb:"268",media:"movie",img:"images/batman89.webp",title:"Batman",date:"1989",dim:"TERRE-89"},
+      {id:"dc-batmanreturns",type:"film",level:"important",tmdb:"364",media:"movie",img:"images/batman89.webp",title:"Batman : Le Défi",date:"1992",dim:"TERRE-89"},
+      {id:"dc-batmanbegins",type:"film",level:"bonus",tmdb:"272",media:"movie",img:"images/batmanbegins.webp",title:"Batman Begins",date:"2005",dim:"TERRE-TDK"},
+      {id:"dc-tdk",type:"film",level:"bonus",tmdb:"155",media:"movie",img:"images/tdk.webp",title:"The Dark Knight",date:"2008",dim:"TERRE-TDK"},
+      {id:"dc-tdkr",type:"film",level:"bonus",tmdb:"49026",media:"movie",img:"images/tdk.webp",title:"The Dark Knight Rises",date:"2012",dim:"TERRE-TDK"},
+      {id:"dc-gotham",type:"serie",level:"bonus",tmdb:"60708",media:"tv",img:"images/gotham.webp",title:"Gotham",date:"???",dim:"TERRE-2014",subitems:["Saison 1","Saison 2","Saison 3","Saison 4","Saison 5"]},
+      {id:"dc-thebatman",type:"film",level:"important",tmdb:"414906",media:"movie",img:"images/thebatman.webp",title:"The Batman",date:"2022",dim:"TERRE-TB"},
+      {id:"dc-thepenguin",type:"serie",level:"bonus",tmdb:"119051",media:"tv",img:"images/thebatman.webp",title:"The Penguin",date:"2022",dim:"TERRE-TB",subitems:["Saison 1"]}
+    ]},
+    // ── ELSEWORLDS : Autres ──────────────────────────────────────────
+    {title:"Elseworlds — Autres",col:"elseworlds",entries:[
+      {id:"dc-titans-s1",type:"serie",level:"bonus",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2018",dim:"TERRE-9",subitems:["Saison 1"]},
+      {id:"dc-titans-s2",type:"serie",level:"bonus",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2019",dim:"TERRE-9",subitems:["Saison 2"]},
+      {id:"dc-stargirl-s1",type:"serie",level:"bonus",tmdb:"89247",media:"tv",img:"images/stargirl.webp",title:"Stargirl",date:"2020",dim:"TERRE-2",subitems:["Saison 1"]},
+      {id:"dc-stargirl-s2",type:"serie",level:"bonus",tmdb:"89247",media:"tv",img:"images/stargirl.webp",title:"Stargirl",date:"2021",dim:"TERRE-2",subitems:["Saison 2"]},
+      {id:"dc-stargirl-s3",type:"serie",level:"bonus",tmdb:"89247",media:"tv",img:"images/stargirl.webp",title:"Stargirl",date:"2021",dim:"TERRE-2",subitems:["Saison 3"]},
+      {id:"dc-titans-s3",type:"serie",level:"bonus",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2021",dim:"TERRE-9",subitems:["Saison 3"]},
+      {id:"dc-titans-s4",type:"serie",level:"bonus",tmdb:"73793",media:"tv",img:"images/titans.webp",title:"Titans",date:"2021",dim:"TERRE-9",subitems:["Saison 4"]}
+    ]},
+    // ── ARROWVERSE ───────────────────────────────────────────────────
+    {title:"Arrowverse",col:"arrowverse",entries:[
+      {id:"av-arrow-s12",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2012–2014",dim:"TERRE-PRIME",subitems:["Saison 1","Saison 2"]},
+      {id:"av-arrow-s3e1-3",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 1-3"]},
+      {id:"av-flash-s1e1-4",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 1 épisodes 1-4"]},
+      {id:"av-arrow-s3e4",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 3 épisode 4"]},
+      {id:"av-flash-s1e5",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 1 épisode 5"]},
+      {id:"av-arrow-s3e5",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 3 épisode 5"]},
+      {id:"av-flash-s1e6-7",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 1 épisodes 6-7"]},
+      {id:"av-arrow-s3e6-7",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 6-7"]},
+      {id:"av-flash-s1e8",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 1 épisode 8"]},
+      {id:"av-arrow-s3e8",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 3 épisode 8"]},
+      {id:"av-flash-s1e9-23",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2014–2015",dim:"TERRE-PRIME",subitems:["Saison 1 épisodes 9-23"]},
+      {id:"av-arrow-s3e9-23",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2014–2015",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 9-23"]},
+      {id:"av-constantine",type:"serie",level:"bonus",tmdb:"61811",media:"tv",img:"images/constantine.webp",title:"Constantine",date:"2014",dim:"TERRE-PRIME",subitems:["Saison 1"]},
+      {id:"av-arrow-s4e1",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 4 épisode 1"]},
+      {id:"av-flash-s2e1-4",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 1-4"]},
+      {id:"av-arrow-s4e2-4",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 2-4"]},
+      {id:"av-sg-s1e1-4",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015",dim:"TERRE-38",subitems:["Saison 1 épisodes 1-4"]},
+      {id:"av-arrow-s4e5",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 4 épisode 5"]},
+      {id:"av-flash-s2e5-6",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 5-6"]},
+      {id:"av-sg-s1e5-7",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015",dim:"TERRE-38",subitems:["Saison 1 épisodes 5-7"]},
+      {id:"av-arrow-s4e6",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 4 épisode 6"]},
+      {id:"av-flash-s2e7",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 2 épisode 7"]},
+      {id:"av-sg-s1e8-9",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015",dim:"TERRE-38",subitems:["Saison 1 épisodes 8-9"]},
+      {id:"av-arrow-s4e7",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 4 épisode 7"]},
+      {id:"av-flash-s2e8",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 2 épisode 8"]},
+      {id:"av-arrow-s4e8",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015",dim:"TERRE-PRIME",subitems:["Saison 4 épisode 8"]},
+      {id:"av-sg-s1e10-11",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015–2016",dim:"TERRE-38",subitems:["Saison 1 épisodes 10-11"]},
+      {id:"av-arrow-s4e9-10",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015–2016",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 9-10"]},
+      {id:"av-flash-s2e9-10",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015–2016",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 9-10"]},
+      {id:"av-sg-s1e12-17",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015–2016",dim:"TERRE-38",subitems:["Saison 1 épisodes 12-17"]},
+      {id:"av-arrow-s4e11-17",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2015–2016",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 11-17"]},
+      {id:"av-flash-s2e11-18",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2015–2016",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 11-18"]},
+      {id:"av-sg-s1e18",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2015–2016",dim:"TERRE-38",subitems:["Saison 1 épisode 18"]},
+      {id:"av-arrow-s4e18-23",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 18-23"]},
+      {id:"av-flash-s2e19-23",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 19-23"]},
+      {id:"av-sg-s1e19-20",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016",dim:"TERRE-38",subitems:["Saison 1 épisodes 19-20"]},
+      {id:"av-lot-s1",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 1"]},
+      {id:"av-sg-s2e1-7",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016",dim:"TERRE-38",subitems:["Saison 2 épisodes 1-7"]},
+      {id:"av-flash-s3e1-7",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 1-7"]},
+      {id:"av-arrow-s5e1-7",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 1-7"]},
+      {id:"av-lot-s2e1-6",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 1-6"]},
+      {id:"av-bl-s1e1-6",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2016",dim:"TERRE-TUD5",subitems:["Saison 1 épisodes 1-6"]},
+      {id:"av-sg-s2e8",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016",dim:"TERRE-38",subitems:["Saison 2 épisode 8"]},
+      {id:"av-flash-s3e8",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 3 épisode 8"]},
+      {id:"av-arrow-s5e8",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 5 épisode 8"]},
+      {id:"av-lot-s2e7",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016",dim:"TERRE-PRIME",subitems:["Saison 2 épisode 7"]},
+      {id:"av-sg-s2e9-22",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2016–2017",dim:"TERRE-38",subitems:["Saison 2 épisodes 9-22"]},
+      {id:"av-flash-s3e9-23",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2016–2017",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 9-23"]},
+      {id:"av-arrow-s5e9-23",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2016–2017",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 9-23"]},
+      {id:"av-lot-s2e8-17",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2016–2017",dim:"TERRE-PRIME",subitems:["Saison 2 épisodes 8-17"]},
+      {id:"av-bl-s1e7-13",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2016–2017",dim:"TERRE-TUD5",subitems:["Saison 1 épisodes 7-13"]},
+      {id:"av-sg-s3e1-7",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2017",dim:"TERRE-38",subitems:["Saison 3 épisodes 1-7"]},
+      {id:"av-flash-s4e1-7",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2017",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 1-7"]},
+      {id:"av-arrow-s6e1-7",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2017",dim:"TERRE-PRIME",subitems:["Saison 6 épisodes 1-7"]},
+      {id:"av-lot-s3e1-7",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2017",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 1-7"]},
+      {id:"av-bl-s2e1-7",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2017",dim:"TERRE-TUD5",subitems:["Saison 2 épisodes 1-7"]},
+      {id:"av-sg-s3e8",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2017",dim:"TERRE-38",subitems:["Saison 3 épisode 8"]},
+      {id:"av-flash-s4e8",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2017",dim:"TERRE-PRIME",subitems:["Saison 4 épisode 8"]},
+      {id:"av-arrow-s6e8",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2017",dim:"TERRE-PRIME",subitems:["Saison 6 épisode 8"]},
+      {id:"av-lot-s3e8",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2017",dim:"TERRE-PRIME",subitems:["Saison 3 épisode 8"]},
+      {id:"av-sg-s3e9-23",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2017–2018",dim:"TERRE-38",subitems:["Saison 3 épisodes 9-23"]},
+      {id:"av-flash-s4e9-23",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2017–2018",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 9-23"]},
+      {id:"av-arrow-s6e9-23",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2017–2018",dim:"TERRE-PRIME",subitems:["Saison 6 épisodes 9-23"]},
+      {id:"av-lot-s3e9-18",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2017–2018",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 9-18"]},
+      {id:"av-bl-s2e8-16",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2017–2018",dim:"TERRE-TUD5",subitems:["Saison 2 épisodes 8-16"]},
+      {id:"av-sg-s4e1-8",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2018",dim:"TERRE-38",subitems:["Saison 4 épisodes 1-8"]},
+      {id:"av-flash-s5e1-7",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2018",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 1-7"]},
+      {id:"av-arrow-s7e1-8",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2018",dim:"TERRE-PRIME",subitems:["Saison 7 épisodes 1-8"]},
+      {id:"av-lot-s4e1-7",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2018",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 1-7"]},
+      {id:"av-bl-s3e1-7",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2018",dim:"TERRE-TUD5",subitems:["Saison 3 épisodes 1-7"]},
+      {id:"av-bw-s1e1-4",type:"serie",level:"must",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2018",dim:"TERRE-PRIME",subitems:["Saison 1 épisodes 1-4"]},
+      {id:"av-flash-s5e8-9",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2018",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 8-9"]},
+      {id:"av-arrow-s7e9",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2018",dim:"TERRE-PRIME",subitems:["Saison 7 épisode 9"]},
+      {id:"av-sg-s4e9-22",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2018",dim:"TERRE-38",subitems:["Saison 4 épisodes 9-22"]},
+      {id:"av-flash-s5e10-22",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2018–2019",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 10-22"]},
+      {id:"av-arrow-s7e10-22",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2018–2019",dim:"TERRE-PRIME",subitems:["Saison 7 épisodes 10-22"]},
+      {id:"av-lot-s4e8-16",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2018–2019",dim:"TERRE-PRIME",subitems:["Saison 4 épisodes 8-16"]},
+      {id:"av-bl-s3e8",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2018–2019",dim:"TERRE-TUD5",subitems:["Saison 3 épisode 8"]},
+      {id:"av-sg-s5e1-8",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2019",dim:"TERRE-38",subitems:["Saison 5 épisodes 1-8"]},
+      {id:"av-bw-s1e5-8",type:"serie",level:"must",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 1 épisodes 5-8"]},
+      {id:"av-flash-s6e1-8",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 6 épisodes 1-8"]},
+      {id:"av-arrow-s8e1-7",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 8 épisodes 1-7"]},
+      {id:"av-bl-s3e9",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2019",dim:"TERRE-TUD5",subitems:["Saison 3 épisode 9"]},
+      {id:"av-sg-s5e9",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2019",dim:"TERRE-38",subitems:["Saison 5 épisode 9"]},
+      {id:"av-bw-s1e9",type:"serie",level:"must",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 1 épisode 9"]},
+      {id:"av-flash-s6e9",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 6 épisode 9"]},
+      {id:"av-arrow-s8e8",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 8 épisode 8"]},
+      {id:"av-lot-s5e1",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2019",dim:"TERRE-PRIME",subitems:["Saison 5 épisode 1"]},
+      {id:"av-bl-s3e10-16",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 3 épisodes 10-16"]},
+      {id:"av-crisis",type:"special",level:"must",tmdb:"0",media:"tv",img:"images/crisis.webp",title:"Crisis on Infinite Earths",date:"2019–2020",dim:"MULTIVERS",tags:["crossover"]},
+      {id:"av-sg-s5e10-19",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 10-19"]},
+      {id:"av-bw-s1e10-20",type:"serie",level:"must",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 1 épisodes 10-20"]},
+      {id:"av-flash-s6e10-19",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 6 épisodes 10-19"]},
+      {id:"av-arrow-s8e9-10",type:"serie",level:"must",tmdb:"1412",media:"tv",img:"images/arrow.webp",title:"Arrow",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 8 épisodes 9-10"]},
+      {id:"av-lot-s5e2-15",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2019–2020",dim:"TERRE-PRIME",subitems:["Saison 5 épisodes 2-15"]},
+      {id:"av-sg-s6",type:"serie",level:"must",tmdb:"62688",media:"tv",img:"images/supergirl.webp",title:"Supergirl",date:"2020–2021",dim:"TERRE-PRIME",subitems:["Saison 6"]},
+      {id:"av-bw-s2",type:"serie",level:"must",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2020–2021",dim:"TERRE-PRIME",subitems:["Saison 2"]},
+      {id:"av-flash-s7",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2020–2021",dim:"TERRE-PRIME",subitems:["Saison 7"]},
+      {id:"av-lot-s6",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2020–2021",dim:"TERRE-PRIME",subitems:["Saison 6"]},
+      {id:"av-bl-s4",type:"serie",level:"bonus",tmdb:"75219",media:"tv",img:"images/blacklightning.webp",title:"Black Lightning",date:"2020–2021",dim:"TERRE-PRIME",subitems:["Saison 4"]},
+      {id:"av-bw-s3",type:"serie",level:"must",tmdb:"89247",media:"tv",img:"images/batwoman.webp",title:"Batwoman",date:"2021",dim:"TERRE-PRIME",subitems:["Saison 3"]},
+      {id:"av-flash-s8e1-5",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2021",dim:"TERRE-PRIME",subitems:["Saison 8 épisodes 1-5"]},
+      {id:"av-lot-s7",type:"serie",level:"must",tmdb:"62643",media:"tv",img:"images/legendsoftomorrow.webp",title:"Legends of Tomorrow",date:"2021–2022",dim:"TERRE-PRIME",subitems:["Saison 7"]},
+      {id:"av-flash-s8e6-20",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2021–2022",dim:"TERRE-PRIME",subitems:["Saison 8 épisodes 6-20"]},
+      {id:"av-flash-s9",type:"serie",level:"must",tmdb:"60735",media:"tv",img:"images/flash.webp",title:"The Flash",date:"2023",dim:"TERRE-PRIME",subitems:["Saison 9"]}
+    ]},
+    // ── DCEU ─────────────────────────────────────────────────────────
+    {title:"DCEU",col:"dceu",entries:[
+      {id:"dceu-mos",type:"film",level:"must",tmdb:"49521",media:"movie",img:"images/manofsteel.webp",title:"Man of Steel",date:"2013",dim:"TERRE-1"},
+      {id:"dceu-bvs",type:"film",level:"must",tmdb:"209112",media:"movie",img:"images/bvs.webp",title:"Batman V Superman : l'Aube de la Justice",date:"2015",dim:"TERRE-1",note:"Version Ultimate Edition !!!"},
+      {id:"dceu-ww",type:"film",level:"must",tmdb:"297762",media:"movie",img:"images/wonderwoman.webp",title:"Wonder Woman",date:"1918",dim:"TERRE-1",tags:["flashback"]},
+      {id:"dceu-ww84",type:"film",level:"bonus",tmdb:"464052",media:"movie",img:"images/ww84.webp",title:"Wonder Woman 1984",date:"1984",dim:"TERRE-1",tags:["flashback"]},
+      {id:"dceu-ss",type:"film",level:"must",tmdb:"297802",media:"movie",img:"images/suicidesquad.webp",title:"Suicide Squad",date:"2016",dim:"TERRE-1"},
+      {id:"dceu-jl",type:"film",level:"must",tmdb:"791373",media:"movie",img:"images/justiceleague.webp",title:"Zack Snyder's Justice League",date:"2017",dim:"TERRE-1"},
+      {id:"dceu-aquaman",type:"film",level:"must",tmdb:"297802",media:"movie",img:"images/aquaman.webp",title:"Aquaman",date:"2017–2018",dim:"TERRE-1"},
+      {id:"dceu-shazam",type:"film",level:"bonus",tmdb:"287947",media:"movie",img:"images/shazam.webp",title:"Shazam!",date:"2018",dim:"TERRE-1"},
+      {id:"dceu-bop",type:"film",level:"must",tmdb:"495764",media:"movie",img:"images/birdsofprey.webp",title:"Birds of Prey",date:"2020",dim:"TERRE-1"},
+      {id:"dceu-tss",type:"film",level:"must",tmdb:"436969",media:"movie",img:"images/thesuicidesquad.webp",title:"The Suicide Squad",date:"2020–2021",dim:"TERRE-1"},
+      {id:"dceu-peacemaker",type:"serie",level:"must",tmdb:"114472",media:"tv",img:"images/peacemaker.webp",title:"Peacemaker",date:"2021",dim:"TERRE-1",subitems:["Saison 1"]},
+      {id:"dceu-blackadam",type:"film",level:"must",tmdb:"736073",media:"movie",img:"images/blackadam.webp",title:"Black Adam",date:"2021",dim:"TERRE-1"},
+      {id:"dceu-shazam2",type:"film",level:"bonus",tmdb:"594767",media:"movie",img:"images/shazam.webp",title:"Shazam 2 : La Rage des Dieux",date:"2022",dim:"TERRE-1"},
+      {id:"dceu-aquaman2",type:"film",level:"must",tmdb:"572802",media:"movie",img:"images/aquaman.webp",title:"Aquaman et le Royaume Perdu",date:"2022",dim:"TERRE-1"},
+      {id:"dceu-bluebeetle",type:"film",level:"bonus",tmdb:"567811",media:"movie",img:"images/bluebeetle.webp",title:"Blue Beetle",date:"2023",dim:"TERRE-1"},
+      {id:"dceu-theflash",type:"film",level:"must",tmdb:"298618",media:"movie",img:"images/dceuflash.webp",title:"The Flash",date:"2023",dim:"TERRE-1",note:"Pont DCEU → DCU"}
+    ]},
+    // ── DCU ──────────────────────────────────────────────────────────
+    {title:"DCU",col:"dcu",entries:[
+      {id:"dcu-cc",type:"serie",level:"bonus",tmdb:"246063",media:"tv",img:"images/creaturecommandos.webp",title:"Creature Commandos",date:"2016",dim:"TERRE-1",subitems:["Saison 1"]},
+      {id:"dcu-superman",type:"film",level:"must",tmdb:"986056",media:"movie",img:"images/supermandcu.webp",title:"Superman",date:"2025",dim:"TERRE-1"},
+      {id:"dcu-peacemaker2",type:"serie",level:"must",tmdb:"114472",media:"tv",img:"images/peacemaker.webp",title:"Peacemaker",date:"2025",dim:"TERRE-1",subitems:["Saison 2"]}
+    ]}
   ]
 };
-
 const TMDB_KEY='6257b37bf29ab31357853fce00232314';
 const IMG='https://image.tmdb.org/t/p/';
+
+// Badges types DC
 const BADGES={
-  film:['bf','FILM'],serie:['bs','SÉRIE'],crossover:['bcx','CROSSOVER']
+  film:['bf','FILM'],serie:['bs','SÉRIE'],filmanim:['bfa','FILM ANIMÉ'],
+  special:['bsp','SPECIAL'],crossover:['bcx','CROSSOVER']
 };
 
-// Couleurs par série pour l'Arrowverse
+// Couleurs par série Arrowverse pour la bordure gauche
 const AV_COLORS={
-  'Arrow':        {bg:'rgba(0,200,80,.15)',  border:'rgba(0,200,80,.4)',  dot:'#00c850'},
-  'The Flash':    {bg:'rgba(255,200,0,.12)', border:'rgba(255,200,0,.4)', dot:'#ffc800'},
-  'Supergirl':    {bg:'rgba(120,80,255,.12)',border:'rgba(120,80,255,.4)',dot:'#7850ff'},
-  'Legends of Tomorrow':{bg:'rgba(255,100,0,.12)',border:'rgba(255,100,0,.4)',dot:'#ff6400'},
-  'Batwoman':     {bg:'rgba(255,40,80,.12)', border:'rgba(255,40,80,.4)', dot:'#ff2850'},
-  'Black Lightning':{bg:'rgba(80,180,255,.1)',border:'rgba(80,180,255,.3)',dot:'#50b4ff'},
-  'Constantine':  {bg:'rgba(160,120,255,.1)',border:'rgba(160,120,255,.3)',dot:'#a078ff'},
-  'Crisis on Infinite Earths':{bg:'rgba(255,220,0,.15)',border:'rgba(255,220,0,.5)',dot:'#ffdc00'},
+  'Arrow':                   '#00c850',
+  'The Flash':               '#ffc800',
+  'Supergirl':               '#a78bfa',
+  'Legends of Tomorrow':     '#f97316',
+  'Batwoman':                '#f43f5e',
+  'Black Lightning':         '#60a5fa',
+  'Constantine':             '#c084fc',
+  'Crisis on Infinite Earths':'#ffd700',
 };
 
+// État des colonnes visibles
 let colVisible={elseworlds:true,arrowverse:true,dceu:true,dcu:true};
 let currentData=null;
 const posterCache={},detailCache={};
@@ -569,35 +572,41 @@ function toggleEntry(id,ev){
   saveProgress(currentData.id,prog);
   renderProgress();
 }
+
 function resetProgress(){
   if(!currentData||!confirm('Réinitialiser ta progression ?'))return;
   localStorage.removeItem('cg_'+currentData.id);
   renderProgress();
 }
+
 function renderProgress(){
   if(!currentData)return;
   const prog=getProgress(currentData.id);
   let total=0,done=0;
-  currentData.columns.forEach(col=>
-    col.sections.forEach(sec=>
-      sec.entries.forEach(e=>{
-        total++;
-        const el=document.querySelector('.en[data-id="'+e.id+'"]');
-        if(!el)return;
-        const checked=!!prog[e.id];
-        el.classList.toggle('done',checked);
-        const cm=el.querySelector('.checkmark');
-        if(cm)cm.textContent=checked?'✓':'';
-        if(checked)done++;
-      })
-    )
-  );
+  currentData.eras.forEach(era=>era.entries.forEach(e=>{
+    total++;
+    const el=document.querySelector('.en[data-id="'+e.id+'"]');
+    if(!el)return;
+    const checked=!!prog[e.id];
+    el.classList.toggle('done',checked);
+    const cm=el.querySelector('.checkmark');
+    if(cm)cm.textContent=checked?'✓':'';
+    if(checked)done++;
+  }));
   const pct=total?Math.round(done/total*100):0;
-  const grad='linear-gradient(90deg,var(--accent),var(--accent2))';
+  const grad='linear-gradient(90deg,var(--tl-color,var(--accent)),var(--accent2))';
   const pb=document.getElementById('pb-fill');
   if(pb)pb.style.cssText='width:'+pct+'%;background:'+grad;
   const pc=document.getElementById('pb-counts');
   if(pc)pc.innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>';
+  const pbn=document.getElementById('pbn');
+  if(pbn){
+    pbn.classList.toggle('show',total>0);
+    const pl=document.getElementById('pbn-label');
+    if(pl)pl.textContent=done+'/'+total;
+    const pf=document.getElementById('pbn-fill');
+    if(pf)pf.style.cssText='width:'+pct+'%;background:'+grad;
+  }
 }
 
 async function toggleExpand(el,ev){
@@ -610,16 +619,13 @@ async function toggleExpand(el,ev){
   if(panel.dataset.loaded)return;
   panel.dataset.loaded='1';
 
-  // Trouver l'entrée dans les données
+  // Trouver l'entrée
   let entryObj=null;
-  currentData.columns.forEach(col=>col.sections.forEach(sec=>
-    sec.entries.forEach(e=>{ if(e.id===el.dataset.id)entryObj=e; })
-  ));
-  const mediaName=entryObj?entryObj.title:'ce média';
+  currentData.eras.forEach(era=>era.entries.forEach(e=>{if(e.id===el.dataset.id)entryObj=e;}));
 
   const id=el.dataset.tmdb,media=el.dataset.media;
   if(!id||id==='0'){
-    panel.innerHTML='<div class="expand-no-data">Pas d\'informations TMDB disponibles.</div>';
+    panel.innerHTML='<div class="expand-no-data">Pas d\'informations TMDB pour cette entrée.</div>';
     return;
   }
   panel.innerHTML='<div class="expand-loading">Chargement…</div>';
@@ -653,7 +659,7 @@ async function toggleExpand(el,ev){
   if(rating)meta+='<span><strong>Note</strong> ⭐ '+rating+'/10</span>';
   if(entryObj?.dim)meta+='<span><strong>Univers</strong> '+entryObj.dim+'</span>';
   panel.innerHTML='<div class="expand-inner">'
-    +(poster?'<div class="expand-poster"><img src="'+poster+'" loading="lazy"/></div>':'')
+    +(poster?'<div class="expand-poster" onclick="openPMurl(\''+IMG+'w500'+d.poster_path+'\')"><img src="'+poster+'" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>':'')
     +'<div class="expand-info"><div class="expand-synopsis">'+synopsis+'</div>'
     +(meta?'<div class="expand-meta">'+meta+'</div>':'')
     +(ytUrl?'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">▶ Bande-annonce YouTube</a>':'')
@@ -663,117 +669,171 @@ async function toggleExpand(el,ev){
 function openPMurl(url){const pm=document.getElementById('pm');const pmi=document.getElementById('pmi');if(pm&&pmi){pmi.src=url;pm.classList.add('o')}}
 function closePM(){document.getElementById('pm')?.classList.remove('o')}
 
-function buildEntry(e,colId){
+function buildEntry(e){
+  const [cls,label]=BADGES[e.type]||['bsp','?'];
   const prog=getProgress(currentData.id);
   const isDone=!!prog[e.id];
-  const isImportant=!!e.important;
-  const isSoftCanon=!!e.softcanon;
-  const isCrossover=!!e.crossover;
+  const isMust=e.level==='must';
+  const levelIcon=isMust?'⭐':e.level==='important'?'🚨':'';
+  const levelClass=isMust?'must':e.level==='important'?'imp':'';
+  const isCrossover=e.tags&&e.tags.includes('crossover');
+  const mediaAttr=e.media==='movie'?'movie':'tv';
 
-  // Couleur de l'entrée
-  let bgColor,borderColor;
-  const colDef=currentData.columns.find(c=>c.id===colId);
-  if(colId==='arrowverse'){
-    const c=AV_COLORS[e.title]||{bg:'rgba(34,197,94,.1)',border:'rgba(34,197,94,.3)'};
-    bgColor=c.bg; borderColor=c.border;
-  } else {
-    const col=currentData.columns.find(c=>c.id===colId);
-    const r=col?.color||'#fff';
-    bgColor=r.replace('#','rgba(').replace(/([0-9a-f]{2})/gi,(_,h)=>parseInt(h,16)+',').replace(',','').replace(/,$/,', .1)');
-    // Simplifié
-    bgColor=`rgba(${parseInt(col?.color?.slice(1,3)||'ff',16)},${parseInt(col?.color?.slice(3,5)||'ff',16)},${parseInt(col?.color?.slice(5,7)||'ff',16)},.1)`;
-    borderColor=`rgba(${parseInt(col?.color?.slice(1,3)||'ff',16)},${parseInt(col?.color?.slice(3,5)||'ff',16)},${parseInt(col?.color?.slice(5,7)||'ff',16)},.3)`;
+  // Bordure gauche colorée pour Arrowverse
+  const col=currentData.eras.find(era=>era.entries.some(x=>x.id===e.id))?.col;
+  let leftBorder='';
+  if(col==='arrowverse'){
+    const avColor=AV_COLORS[e.title]||'#22c55e';
+    leftBorder=`border-left:3px solid ${avColor}!important;`;
   }
-  if(isSoftCanon){bgColor='rgba(150,150,180,.08)';borderColor='rgba(150,150,180,.25)'}
-  if(isCrossover){bgColor='rgba(255,215,0,.12)';borderColor='rgba(255,215,0,.5)'}
 
-  const dimBadge=e.dim?`<span class="dim-badge">${e.dim}</span>`:'';
-  const flashBadge=e.tags?.includes('flashback')?'<span class="ft">FLASHBACK</span>':'';
-  const importBadge=isImportant?'<span class="imp-badge">🚨</span>':'';
-  const softBadge=isSoftCanon?'<span class="soft-badge">SOFT-CANON</span>':'';
-  const noteTxt=e.note?`<div class="enote">${e.note}</div>`:'';
-  const subTxt=e.subitems?.length?`<div class="esub">${e.subitems.map(s=>`<div class="si">${s}</div>`).join('')}</div>`:'';
+  let pre='';
+  if(e.tags&&e.tags.includes('flashback'))pre+='<span class="ft">FLASHBACK</span>';
+  if(isCrossover)pre+='<span class="cx-badge">CROSSOVER</span>';
+  const dimBadge=e.dim?'<div class="dim-badge">'+e.dim+'</div>':'';
+  const ppIcon=e.type==='film'||e.type==='filmanim'?'🎬':'📺';
+  const imgAttr=e.img?' data-img="'+e.img+'"':'';
+  const note=e.note?'<div class="enote">'+e.note+'</div>':'';
+  const sub=e.subitems?.length?'<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>':'';
 
-  return `<div class="en${isDone?' done':''}" data-id="${e.id}" data-tmdb="${e.tmdb||'0'}" data-media="${e.media||'tv'}"
-    style="background:${bgColor};border:1px solid ${borderColor}"
-    onclick="toggleExpand(this,event)">
-    <div class="en-top" onclick="toggleExpand(this.closest('.en'),event)">
-      <div class="en-check" onclick="toggleEntry('${e.id}',event)"><div class="checkmark">${isDone?'✓':''}</div></div>
-      <div class="en-datebadge"><div class="date-main">${e.date||'—'}</div>${dimBadge}</div>
-      <div class="em">
-        <div class="tr">${flashBadge}${importBadge}${softBadge}<span class="en-name">${e.title}</span></div>
-        ${noteTxt}${subTxt}
-      </div>
-    </div>
-    <div class="en-expand" onclick="event.stopPropagation()"></div>
-  </div>`;
-}
-
-function toggleColumn(colId){
-  colVisible[colId]=!colVisible[colId];
-  const btn=document.querySelector(`.col-toggle[data-col="${colId}"]`);
-  if(btn)btn.classList.toggle('inactive',!colVisible[colId]);
-  const colEl=document.querySelector(`.dc-col[data-col="${colId}"]`);
-  const headEl=document.querySelector(`.dc-col-head[data-col="${colId}"]`);
-  if(colEl)colEl.style.display=colVisible[colId]?'':'none';
-  if(headEl)headEl.style.display=colVisible[colId]?'':'none';
-  // Rebalancer les colonnes visibles
-  const visCount=Object.values(colVisible).filter(Boolean).length;
-  document.querySelectorAll('.dc-col,.dc-col-head').forEach(el=>{
-    if(el.style.display!=='none')el.style.flex=`1`;
-  });
+  return '<div class="en '+levelClass+(isDone?' done':'')+(isCrossover?' crossover-en':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+(e.level||'bonus')+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'" style="'+leftBorder+'">'
+    +'<div class="en-top" onclick="toggleExpand(this.closest(\'.en\'),event)">'
+    +'<div class="en-check" onclick="toggleEntry(\''+e.id+'\',event)"><div class="checkmark">'+(isDone?'✓':'')+'</div></div>'
+    +'<div class="en-datebadge"><div class="en-level-icon">'+levelIcon+'</div><div class="date-main">'+(e.date||'—')+'</div>'+dimBadge+'</div>'
+    +'<div class="ep"'+imgAttr+'><div class="pp">'+ppIcon+'</div></div>'
+    +'<div class="em"><div class="tr">'+pre+'<span class="b '+cls+'">'+label+'</span><span class="en-name">'+e.title+'</span></div>'+note+sub+'</div>'
+    +'</div>'
+    +'<div class="en-expand" onclick="event.stopPropagation()"></div></div>';
 }
 
 function buildDCTimeline(data){
   document.documentElement.style.setProperty('--tl-color',data.color||'#1e90ff');
-  const container=document.getElementById('tl-content');
 
-  // Header colonnes avec boutons toggle
-  let headerHtml='<div class="dc-header">';
-  data.columns.forEach(col=>{
-    headerHtml+=`<div class="dc-col-head" data-col="${col.id}" style="border-top:2px solid ${col.color};color:${col.color}">
-      <span>${col.label}</span>
-      <button class="col-toggle active" data-col="${col.id}" onclick="toggleColumn('${col.id}')" title="Masquer/Afficher">⊙</button>
-    </div>`;
+  // Légende
+  const allTypes=[...new Set(data.eras.flatMap(era=>era.entries.map(e=>e.type)))];
+  let leg='<div class="leg-title">Légende</div>';
+  allTypes.forEach(t=>{const[c,l]=BADGES[t]||[];if(c)leg+='<span class="b '+c+'">'+l+'</span>';});
+  leg+='<div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;width:100%;margin-top:.15rem">';
+  leg+='<span>⭐ Obligatoire</span><span>🚨 Important</span>';
+  leg+='<span class="ft">FLASHBACK</span>';
+  leg+='<span class="dt">TERRE-XXXX</span>';
+  leg+='</div>';
+  document.getElementById('tl-legend').innerHTML=leg;
+
+  // Filtres de types
+  let f='<div class="filter-group"><span class="filter-label">Types :</span>';
+  allTypes.forEach(t=>{
+    const[,l]=BADGES[t]||['','?'];
+    f+='<button class="fbt type-filter-btn active" data-type="'+t+'" onclick="toggleTypeFilter(this)">'+l+'</button>';
   });
-  headerHtml+='</div>';
+  f+='</div>';
 
-  // Corps des colonnes
-  let bodyHtml='<div class="dc-body">';
+  // Filtres de niveaux
+  f+='<div class="filter-group"><span class="filter-label">Niveaux :</span>'
+    +'<button class="fbt level-filter-btn active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Obligatoire</button>'
+    +'<button class="fbt level-filter-btn active" id="lvl-imp" onclick="toggleLevelFilter(this)">🚨 Important</button>'
+    +'<button class="fbt level-filter-btn active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Bonus</button>'
+    +'</div>';
+
+  // Filtres de colonnes
+  f+='<div class="filter-group"><span class="filter-label">Univers :</span>';
   data.columns.forEach(col=>{
-    bodyHtml+=`<div class="dc-col" data-col="${col.id}">`;
-    col.sections.forEach(sec=>{
-      if(sec.label){
-        bodyHtml+=`<div class="dc-section-label" style="color:${col.color}">${sec.label}</div>`;
-      }
-      sec.entries.forEach(e=>{
-        // Crossover : pleine largeur marqué spécialement
-        if(e.crossover){
-          bodyHtml+=`<div class="dc-crossover-marker" style="border-color:gold;color:gold">
-            ⚡ ${e.title} — ${e.date}
-          </div>`;
-        } else {
-          bodyHtml+=buildEntry(e,col.id);
-        }
-      });
-    });
-    bodyHtml+='</div>';
+    f+='<button class="fbt col-filter-btn active" data-col="'+col.id+'" style="border-color:'+col.color+';color:'+col.color+'" onclick="toggleColFilter(this)">'+col.label+'</button>';
+  });
+  f+='</div>';
+
+  document.getElementById('filter-bar').innerHTML=f;
+
+  // Construire les colonnes
+  const colsByColId={};
+  data.columns.forEach(c=>{colsByColId[c.id]=[];});
+  data.eras.forEach(era=>{
+    if(!colsByColId[era.col])return;
+    const colDef=data.columns.find(c=>c.id===era.col);
+    const eraColor=colDef?.color||'#fff';
+    let eraHtml='';
+    // Titre de section
+    eraHtml+='<div class="era-node" data-era><div class="era-node-dot" style="background:'+eraColor+'"></div><div class="era-label" style="color:'+eraColor+'">'+era.title+'</div></div>';
+    era.entries.forEach(e=>{eraHtml+=buildEntry(e);});
+    colsByColId[era.col].push(eraHtml);
+  });
+
+  // Assembler le HTML multi-colonnes
+  // Elseworlds = flex:2 (plus large), DCU = commence après un espaceur
+  let bodyHtml='<div class="dc-grid" id="dc-grid">';
+  data.columns.forEach(col=>{
+    const flex=col.wide?2:1;
+    const colHtml=colsByColId[col.id].join('');
+    const dcu_spacer=col.startLate?'<div class="dcu-spacer"></div>':'';
+    bodyHtml+=`<div class="dc-col" data-col="${col.id}" style="flex:${flex}">
+      <div class="dc-col-sticky" style="border-top:3px solid ${col.color};color:${col.color}">
+        <span>${col.label}</span>
+      </div>
+      ${dcu_spacer}
+      ${colHtml}
+    </div>`;
   });
   bodyHtml+='</div>';
 
-  container.innerHTML=headerHtml+bodyHtml;
-  renderProgress();
+  document.getElementById('tl-content').innerHTML=bodyHtml;
+  loadPosters();
+}
+
+async function loadPosters(){
+  document.querySelectorAll('#tl-content .ep[data-img]').forEach(ep=>{
+    if(ep.querySelector('img'))return;
+    const img=document.createElement('img');
+    img.src=ep.dataset.img;img.loading='lazy';
+    img.onerror=()=>img.remove();
+    ep.querySelector('.pp')?.remove();
+    ep.appendChild(img);
+  });
 }
 
 function applyFilters(){
-  // Pas de filtres de niveaux sur DC, juste les colonnes
+  const showTypes=new Set();
+  document.querySelectorAll('.type-filter-btn.active').forEach(b=>showTypes.add(b.dataset.type));
+  const lvlMust=document.getElementById('lvl-must')?.classList.contains('active')??true;
+  const lvlImp=document.getElementById('lvl-imp')?.classList.contains('active')??true;
+  const lvlBonus=document.getElementById('lvl-bonus')?.classList.contains('active')??true;
+  const showCols=new Set();
+  document.querySelectorAll('.col-filter-btn.active').forEach(b=>showCols.add(b.dataset.col));
+
+  document.querySelectorAll('#tl-content .en').forEach(e=>{
+    const typeOk=showTypes.size===0||showTypes.has(e.dataset.type);
+    const lvl=e.dataset.level;
+    const lvlOk=(lvl==='must'&&lvlMust)||(lvl==='important'&&lvlImp)||(lvl==='bonus'&&lvlBonus)||(!lvl&&lvlBonus);
+    e.style.display=(typeOk&&lvlOk)?'':'none';
+  });
+
+  // Masquer/montrer les colonnes entières
+  document.querySelectorAll('#tl-content .dc-col').forEach(col=>{
+    const colId=col.dataset.col;
+    const visible=showCols.size===0||showCols.has(colId);
+    col.style.display=visible?'':'none';
+  });
+
+  // Masquer les era-nodes sans entrées visibles
+  document.querySelectorAll('#tl-content .era-node').forEach(h=>{
+    let n=h.nextElementSibling,vis=false;
+    while(n&&!n.dataset?.era){
+      if(n.classList.contains('en')&&n.style.display!=='none')vis=true;
+      n=n.nextElementSibling;
+    }
+    h.style.display=vis?'':'none';
+  });
 }
+
+function toggleTypeFilter(btn){btn.classList.toggle('active');applyFilters();}
+function toggleLevelFilter(btn){btn.classList.toggle('active');applyFilters();}
+function toggleColFilter(btn){btn.classList.toggle('active');applyFilters();}
 
 function showHome(){window.location.href='index.html';}
 
 function showUniverse(uid){
   if(uid!=='dc')return;
   currentData=DATA_DC;
+  document.documentElement.style.setProperty('--tl-color',currentData.color||'#1e90ff');
   const el=id=>document.getElementById(id);
   if(el('tl-title')){
     el('tl-title').textContent=currentData.title+' — '+currentData.subtitle;
@@ -784,6 +844,7 @@ function showUniverse(uid){
   if(el('tl-notes'))el('tl-notes').innerHTML=currentData.notes;
   if(el('pb-fill'))el('pb-fill').style.background='linear-gradient(90deg,'+currentData.color+',var(--accent2))';
   buildDCTimeline(currentData);
+  renderProgress();
   window.scrollTo(0,0);
 }
 
