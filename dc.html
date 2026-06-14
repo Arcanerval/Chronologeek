@@ -178,17 +178,28 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .faq-a{font-size:.76rem;color:var(--muted2);line-height:1.6;padding:.4rem .5rem .2rem}
 
 #batsignal{
-  position:fixed;bottom:2rem;right:2rem;z-index:300;
-  width:90px;height:90px;cursor:pointer;
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;
+  width:100px;height:114px;cursor:pointer;
   display:none;opacity:0;
+  overflow:hidden;
   transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);
-  filter:drop-shadow(0 4px 20px rgba(0,0,0,.8));
 }
 #batsignal.visible{display:block;opacity:1}
-#batsignal:hover{transform:scale(1.12) rotate(-3deg)}
-#batsignal img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .2s}
-.bat-normal{opacity:1}
-.bat-hover{opacity:0}
+#batsignal:hover{transform:scale(1.1)}
+.bat-normal{
+  position:absolute;
+  width:100%;height:100%;
+  object-fit:contain;
+  transition:opacity .25s;
+  opacity:1;
+}
+.bat-hover{
+  position:absolute;
+  width:1012px;height:569px;
+  left:-591px;top:-104px;
+  transition:opacity .25s;
+  opacity:0;
+}
 #batsignal:hover .bat-normal{opacity:0}
 #batsignal:hover .bat-hover{opacity:1}
 
@@ -252,7 +263,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
     <span style="width:1px;height:16px;background:var(--border2);margin:0 .3rem;flex-shrink:0"></span>
     <span style="font-size:.7rem;color:var(--muted)">Niveaux :</span>
     <button class="fbt active" id="fbt-imp" onclick="this.classList.toggle('active');applyLevelFilter()">🚨 Important</button>
-    <button class="fbt active" id="fbt-bonus" onclick="this.classList.toggle('active');applyLevelFilter()">Bonus</button>
+    <button class="fbt active" id="fbt-bonus" onclick="this.classList.toggle('active');applyLevelFilter()">Optionnel</button>
   </div>
 
   <!-- ZONE 1 : Elseworlds -->
@@ -389,7 +400,7 @@ Les deux chronologies principales de l'univers se passent sur la <strong>Terre-P
 Le terme <strong>soft-canon</strong> désigne un média dont les événements sont en partie survenus de la même manière, plus d'infos dans les descriptions.<br><br>
 Le Multivers DC fonctionne d'une manière particulière, deux personnages différents peuvent avoir exactement la même tête (exemples : le père de Flash (2014) et Flash (1990), Supergirl (1984) et la mère de Superman (Smallville) mais aussi la mère adoptive de Supergirl (2015)).<br><br>
 Certains événements sont mieux à voir en tant que <strong>FLASHBACK</strong> pour comprendre et sont donc indiqués comme tel.<br><br>
-<strong>Types :</strong> <span class="b bf">FILM</span> <span class="b bs">SÉRIE</span> &nbsp;·&nbsp; <strong>Niveaux :</strong> 🚨 = Important &nbsp;·&nbsp; <span class="ft">FLASHBACK</span> &nbsp;·&nbsp; <span class="dim-badge">TERRE-XXXX</span> = Univers`;
+`;
 
 const TMDB_KEY='6257b37bf29ab31357853fce00232314';
 const IMG='https://image.tmdb.org/t/p/';
@@ -736,10 +747,14 @@ function toggleUniversFilter(btn){
     ['col-av-pre','col-av-post'].forEach(id=>{
       const el=document.getElementById(id);if(el)el.closest('.zcol').style.display=visible?'':'none';
     });
-    // Masquer aussi les barres Crisis
+    // Masquer les barres crisis dans les colonnes
     document.querySelectorAll('.en-sep-start,.en-sep-end').forEach(el=>{
       el.style.display=visible?'':'none';
     });
+    // Masquer la zone-event (grande barre crisis) et le séparateur
+    const ze=document.querySelector('.zone-event');
+    if(ze)ze.style.display=visible?'':'none';
+    // Masquer aussi la zone-post si on masque l'Arrowverse ? Non — juste la barre
   }
   // DCEU = col-dceu + col-dceu dans post
   if(u==='dceu'){
