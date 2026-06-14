@@ -15,20 +15,20 @@
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.1),transparent 60%);pointer-events:none}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-header{background:rgba(8,8,15,.92);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:300;backdrop-filter:blur(20px)}
-nav{max-width:100%;display:flex;align-items:center;gap:1.5rem;height:62px}
-.logo{display:flex;align-items:center;cursor:pointer;flex-shrink:0}
-.logo img{height:28px;display:block;object-fit:contain}
+header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
+nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px}
+.logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
+.logo img{height:30px;display:block;object-fit:contain;background:transparent}
 .nav-links{display:flex;gap:1.25rem;align-items:center}
 .nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--text)}
 .nav-sp{flex:1}
-.nav-maj{font-size:.7rem;color:var(--muted);white-space:nowrap}
+.nav-maj{font-size:.7rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
 .disc-btn{background:linear-gradient(135deg,#5865f2,#4752c4);color:#fff!important;padding:.4rem 1rem;border-radius:8px;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none}
 .pbn{display:none;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted2)}
 .pbn.show{display:flex}
-.pbn-track{width:80px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.pbn-fill{height:100%;border-radius:2px;transition:width .4s}
+.pbn-track{width:100px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
+.pbn-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .3s}
 .page-wrap{max-width:1400px;margin:0 auto;padding:1.5rem 2rem 4rem}
 .bc{font-size:.8rem;color:var(--muted);cursor:pointer;margin-bottom:.8rem;display:inline-flex;align-items:center;gap:.4rem}
 .bc:hover{color:var(--text)}
@@ -276,24 +276,24 @@ nav{max-width:100%;display:flex;align-items:center;gap:1.5rem;height:62px}
     <div class="zone-head" style="cursor:default">
       <div class="zone-icon">⚡</div>
       <div class="zone-label-wrap">
-        <div class="zone-name">Événement Majeur — Le Multivers converge</div>
-        <div class="zone-desc">Tous les univers se croisent. Regardez uniquement quand vous avez terminé la zone précédente.</div>
+        <div class="zone-name">Événement Majeur</div>
+        <div class="zone-desc">Regardez uniquement quand vous avez terminé la zone précédente.</div>
       </div>
     </div>
     <div class="crisis-content">
       <div class="crisis-block">
-        <div class="crisis-title">⚡ Événement Majeur — Crisis</div>
-        <div class="crisis-eps">
-          Arrow — Saison 8 épisode 8<br>
-          The Flash — Saison 6 épisode 9<br>
-          Supergirl — Saison 5 épisode 9<br>
-          Batwoman — Saison 1 épisode 9<br>
-          Legends of Tomorrow — Saison 5 épisode 1
-        </div>
+        <div class="crisis-title">⚡ Un événement majeur se produit</div>
         <details class="crisis-spoil">
           <summary>⚠️ Révéler les détails — SPOILERS</summary>
           <div class="crisis-spoil-content">
-            Il s'agit de <strong>Crisis on Infinite Earths</strong>, le plus grand crossover de l'Arrowverse. Le Multivers DC est détruit et recréé. Les personnages de Smallville, Superman Returns, Batman (1989), Titans et d'autres univers parallèles y participent. Après cet événement, toutes les séries Arrowverse se déroulent sur une Terre-Prime unifiée.
+            Il s'agit de <strong>Crisis on Infinite Earths</strong>, le plus grand crossover de toute l'histoire de DC. Le Multivers entier est rébooté à zéro — certaines réalités disparaissent, d'autres sont fusionnées. Des dizaines de personnages issus de dizaines de films et séries DC à travers toute l'histoire de la franchise font des caméos. C'est un événement sans précédent.<br><br>
+            <strong>Épisodes :</strong><br>
+            Arrow — Saison 8 épisode 8<br>
+            The Flash — Saison 6 épisode 9<br>
+            Supergirl — Saison 5 épisode 9<br>
+            Batwoman — Saison 1 épisode 9<br>
+            Legends of Tomorrow — Saison 5 épisode 1<br><br>
+            <em>Titans, Stargirl, Smallville, Superman Returns et Batman (1989) y participent également.</em>
           </div>
         </details>
       </div>
@@ -457,7 +457,6 @@ const DATA={
     {id:'av-flash-s6e9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisode 9']},
     {id:'av-arrow-s8e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisode 8']},
     {id:'av-lot-s5e1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 5 Épisode 1']},
-    {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 10-16']},
   ],
   dceu:[
     {id:'dceu-mos',type:'film',level:'imp',tmdb:'49521',media:'movie',title:'Man of Steel',date:'2013',dim:'TERRE-1'},
@@ -478,6 +477,7 @@ const DATA={
     {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Pont DCEU → DCU'},
   ],
   av_post:[
+    {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 10-16']},
     {id:'av-sg-s5e10-19',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 10-19']},
     {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 10-20']},
     {id:'av-flash-s6e10-19',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 10-19']},
