@@ -77,7 +77,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .zone-body.open{display:block}
 .zone-grid{display:grid;gap:8px}
 .zg-1{grid-template-columns:1fr}
-.zg-2{grid-template-columns:1fr 1fr}
+.zg-2{grid-template-columns:1fr 1fr}.zg-3{grid-template-columns:2fr 1fr 1fr}
 .zg-2e{grid-template-columns:2fr 1fr}
 .zg-4{grid-template-columns:2fr 1.5fr 1fr 1fr}
 .zg-elseworlds{grid-template-columns:1fr 1fr}
@@ -143,7 +143,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .pm img{max-width:90vw;max-height:90vh;border-radius:10px}
 .pm-x{position:fixed;top:1rem;right:1.5rem;font-size:1.5rem;color:#fff;cursor:pointer;z-index:601}
 @media(max-width:700px){
-  .zg-2,.zg-2e,.zg-4,.zg-elseworlds{grid-template-columns:1fr}
+  .zg-2,.zg-2e,.zg-3,.zg-4,.zg-elseworlds{grid-template-columns:1fr}
   nav{flex-wrap:wrap;height:auto;padding:.5rem 0;gap:.3rem}
   .logo{width:100%;justify-content:center}
   .nav-links{width:100%;justify-content:center;flex-wrap:wrap;gap:.35rem .7rem}
@@ -277,7 +277,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
       <div class="zone-icon">⚡</div>
       <div class="zone-label-wrap">
         <div class="zone-name">Événement Majeur</div>
-        <div class="zone-desc">Regardez uniquement quand vous avez terminé la zone précédente.</div>
+        <div class="zone-desc">Un événement sans précédent qui change tout.</div>
       </div>
     </div>
     <div class="crisis-content">
@@ -341,7 +341,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 const NOTES=`Je commencerai par vous prévenir que ce dossier est un <strong>énorme bordel</strong>, bien qu'ayant enlevé beaucoup de médias, regarder tout le reste nécessite beaucoup beaucoup de temps. Si vous êtes là seulement pour voir l'Arrow-Verse, le DCEU ou le DCU vous pouvez choisir de le faire plus bas.<br><br>
 <strong>Question légitime : en quoi tout ce bordel est relié ?</strong><br><br>
 Cet ordre privilégie la découverte progressive du Multivers DC. Plusieurs séries et films se déroulent dans des réalités différentes mais finissent par partager des liens. Regarder les œuvres dans cet ordre permet de mieux comprendre les personnages, les références et les événements qui connectent ces univers, tout en préservant les surprises majeures.<br><br>
-Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Krypton, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
+Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
 Les deux chronologies principales de l'univers se passent sur la <strong>Terre-Prime</strong> et la <strong>Terre-1</strong>.<br><br>
 Le terme <strong>soft-canon</strong> désigne un média dont les événements sont en partie survenus de la même manière, plus d'infos dans les descriptions.<br><br>
 Le Multivers DC fonctionne d'une manière particulière, deux personnages différents peuvent avoir exactement la même tête (exemples : le père de Flash (2014) et Flash (1990), Supergirl (1984) et la mère de Superman (Smallville) mais aussi la mère adoptive de Supergirl (2015)).<br><br>
@@ -381,7 +381,7 @@ const DATA={
     {id:'av-arrow-s3e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 3 Épisode 8']},
     {id:'av-flash-s1e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014–2015',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 9-23']},
     {id:'av-arrow-s3e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014–2015',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 9-23']},
-    {id:'av-constantine',type:'serie',level:'bonus',tmdb:'61811',media:'tv',title:'Constantine',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1']},
+    {id:'av-constantine',type:'serie',level:'bonus',tmdb:'60743',media:'tv',title:'Constantine',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1']},
     {id:'av-arrow-s4e1',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 1']},
     {id:'av-flash-s2e1-4',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 1-4']},
     {id:'av-arrow-s4e2-4',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 2-4']},
@@ -439,7 +439,7 @@ const DATA={
     {id:'av-arrow-s7e1-8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 7 Épisodes 1-8']},
     {id:'av-lot-s4e1-7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 1-7']},
     {id:'av-bl-s3e1-7',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2018',dim:'TERRE-TUD5',subitems:['Saison 3 Épisodes 1-7']},
-    {id:'av-bw-s1e1-4',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 1-4']},
+    {id:'av-bw-s1e1-4',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 1-4']},
     {id:'av-flash-s5e8-9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 8-9']},
     {id:'av-arrow-s7e9',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 7 Épisode 9']},
     {id:'av-sg-s4e9-22',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2018',dim:'TERRE-38',subitems:['Saison 4 Épisodes 9-22']},
@@ -448,12 +448,12 @@ const DATA={
     {id:'av-lot-s4e8-16',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2018–2019',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 8-16']},
     {id:'av-bl-s3e8',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2018–2019',dim:'TERRE-TUD5',subitems:['Saison 3 Épisode 8']},
     {id:'av-sg-s5e1-8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'TERRE-38',subitems:['Saison 5 Épisodes 1-8']},
-    {id:'av-bw-s1e5-8',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 5-8']},
+    {id:'av-bw-s1e5-8',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 5-8']},
     {id:'av-flash-s6e1-8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 1-8']},
     {id:'av-arrow-s8e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 1-7']},
     {id:'av-bl-s3e9',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019',dim:'TERRE-TUD5',subitems:['Saison 3 Épisode 9']},
     {id:'av-sg-s5e9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'TERRE-38',subitems:['Saison 5 Épisode 9']},
-    {id:'av-bw-s1e9',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 9']},
+    {id:'av-bw-s1e9',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 9']},
     {id:'av-flash-s6e9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisode 9']},
     {id:'av-arrow-s8e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisode 8']},
     {id:'av-lot-s5e1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 5 Épisode 1']},
@@ -474,21 +474,21 @@ const DATA={
     {id:'dceu-shazam2',type:'film',level:'bonus',tmdb:'594767',media:'movie',title:'Shazam 2 : La Rage des Dieux',date:'2022',dim:'TERRE-1'},
     {id:'dceu-aquaman2',type:'film',level:'imp',tmdb:'572802',media:'movie',title:'Aquaman et le Royaume Perdu',date:'2022',dim:'TERRE-1'},
     {id:'dceu-bluebeetle',type:'film',level:'bonus',tmdb:'565770',media:'movie',title:'Blue Beetle',date:'2023',dim:'TERRE-1'},
-    {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Pont DCEU → DCU'},
+    {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Dernier film du DCEU — Reboot de l\'univers vers le DCU'},
   ],
   av_post:[
     {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 10-16']},
     {id:'av-sg-s5e10-19',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 10-19']},
-    {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 10-20']},
+    {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 10-20']},
     {id:'av-flash-s6e10-19',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 10-19']},
     {id:'av-arrow-s8e9-10',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 9-10 (final)']},
     {id:'av-lot-s5e2-15',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 2-15']},
     {id:'av-sg-s6',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 6 (finale)']},
-    {id:'av-bw-s2',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 2']},
+    {id:'av-bw-s2',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 2']},
     {id:'av-flash-s7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 7']},
     {id:'av-lot-s6',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 6']},
     {id:'av-bl-s4',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 4 (finale)']},
-    {id:'av-bw-s3',type:'serie',level:'imp',tmdb:'80986',media:'tv',title:'Batwoman',date:'2021',dim:'TERRE-PRIME',subitems:['Saison 3 (finale)']},
+    {id:'av-bw-s3',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2021',dim:'TERRE-PRIME',subitems:['Saison 3 (finale)']},
     {id:'av-flash-s8e1-5',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2021',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 1-5']},
     {id:'av-lot-s7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2021–2022',dim:'TERRE-PRIME',subitems:['Saison 7 (finale)']},
     {id:'av-flash-s8e6-20',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2021–2022',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 6-20']},
