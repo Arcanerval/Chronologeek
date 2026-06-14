@@ -179,30 +179,24 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 
 #batsignal{
   position:fixed;bottom:2rem;right:2rem;z-index:300;
-  width:80px;height:80px;cursor:pointer;
+  width:90px;height:90px;cursor:pointer;
   display:none;opacity:0;
   transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);
-  filter:drop-shadow(0 4px 16px rgba(0,0,0,.7));
+  filter:drop-shadow(0 4px 20px rgba(0,0,0,.8));
 }
 #batsignal.visible{display:block;opacity:1}
-#batsignal:hover{transform:scale(1.12)}
+#batsignal:hover{transform:scale(1.12) rotate(-3deg)}
+#batsignal img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .2s}
+.bat-normal{opacity:1}
+.bat-hover{opacity:0}
+#batsignal:hover .bat-normal{opacity:0}
+#batsignal:hover .bat-hover{opacity:1}
 
-/* Projecteur corps */
-.bs-body{transition:fill .25s}
-/* Lentille */
-.bs-lens{transition:fill .25s,filter .25s}
-/* Faisceau */
-.bs-beam{opacity:0;transition:opacity .3s}
-/* Logo chauve-souris */
-.bs-bat{transition:fill .25s}
-/* Signal projeté */
-.bs-proj{opacity:0;transition:opacity .3s}
 
-#batsignal:hover .bs-beam{opacity:1}
-#batsignal:hover .bs-proj{opacity:1}
-#batsignal:hover .bs-lens{fill:#ffe840;filter:drop-shadow(0 0 8px #ffd700)}
-#batsignal:hover .bs-bat-proj{opacity:1}
 
+.leg{display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.78rem;color:var(--muted2)}
+.leg-title{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.3rem}
+.bfa{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.25)}
 </style>
 </head>
 <body>
@@ -228,58 +222,8 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 
 
 <div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
-<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- Faisceau de lumière projeté -->
-  <defs>
-    <radialGradient id="beamGrad" cx="50%" cy="100%" r="80%">
-      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="beamClip">
-      <polygon points="20,38 60,38 72,2 8,2"/>
-    </clipPath>
-  </defs>
-
-  <!-- Faisceau -->
-  <polygon class="bs-beam" points="20,38 60,38 72,2 8,2" fill="url(#beamGrad)" clip-path="url(#beamClip)"/>
-
-  <!-- Signal projeté (ovale + chauve-souris) en haut -->
-  <g class="bs-proj">
-    <!-- Ovale jaune -->
-    <ellipse cx="40" cy="10" rx="22" ry="8" fill="#ffd700" opacity="0.9"/>
-    <!-- Chauve-souris projetée (noir) -->
-    <g transform="translate(40,10) scale(0.55)">
-      <path d="M0,-6 C-2,-6 -4,-4 -6,-2 C-10,-2 -14,0 -16,3 C-12,3 -10,2 -8,4 C-6,5 -4,6 0,6 C4,6 6,5 8,4 C10,2 12,3 16,3 C14,0 10,-2 6,-2 C4,-4 2,-6 0,-6Z" fill="#111"/>
-    </g>
-  </g>
-
-  <!-- Socle -->
-  <ellipse class="bs-body" cx="40" cy="74" rx="18" ry="5" fill="#3a3a4a"/>
-  <rect class="bs-body" x="32" y="60" width="16" height="14" rx="3" fill="#3a3a4a"/>
-
-  <!-- Bras support -->
-  <rect class="bs-body" x="34" y="56" width="4" height="8" rx="2" fill="#2a2a38"/>
-  <rect class="bs-body" x="42" y="56" width="4" height="8" rx="2" fill="#2a2a38"/>
-
-  <!-- Corps cylindrique du projecteur -->
-  <ellipse cx="40" cy="42" rx="20" ry="5" fill="#4a4a5a"/>
-  <rect class="bs-body" x="20" y="36" width="40" height="14" rx="4" fill="#4a4a5a"/>
-  <ellipse cx="40" cy="50" rx="20" ry="5" fill="#3a3a4a"/>
-
-  <!-- Anneaux déco -->
-  <rect x="20" y="38" width="40" height="2" rx="1" fill="#555568" opacity="0.6"/>
-  <rect x="20" y="45" width="40" height="2" rx="1" fill="#555568" opacity="0.6"/>
-
-  <!-- Lentille frontale -->
-  <ellipse class="bs-lens" cx="40" cy="36" rx="14" ry="6" fill="#c8a000"/>
-  <ellipse cx="40" cy="36" rx="10" ry="4" fill="#1a1a1a" opacity="0.4"/>
-
-  <!-- Logo Batman sur la lentille -->
-  <g transform="translate(40,36) scale(0.38)">
-    <ellipse rx="18" ry="8" fill="#ffd700"/>
-    <path class="bs-bat" d="M0,-4 C-1.5,-4 -3,-2.5 -4.5,-1 C-7.5,-1 -10.5,0.5 -12,2.5 C-9,2.5 -7,1.5 -5.5,3 C-4,4 -2.5,4.5 0,4.5 C2.5,4.5 4,4 5.5,3 C7,1.5 9,2.5 12,2.5 C10.5,0.5 7.5,-1 4.5,-1 C3,-2.5 1.5,-4 0,-4Z" fill="#111"/>
-  </g>
-</svg>
+  <img class="bat-normal" src="images/batsignal.png" alt="Bat-Signal"/>
+  <img class="bat-hover" src="images/batsignalmouseover.png" alt="Bat-Signal allumé"/>
 </div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 
@@ -297,6 +241,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
     <button class="pb-reset" onclick="resetProgress()">Reset</button>
   </div>
   <div class="nb" id="tl-notes"></div>
+  <div class="leg" id="tl-legend" style="margin-bottom:1rem"></div>
 
   <div class="filter-row">
     <span style="font-size:.7rem;color:var(--muted)">Univers :</span>
@@ -607,7 +552,7 @@ const DATA={
   dcu:[
     {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'TERRE-1',softcanon:true,faq:{quand:'Le film se déroule en 2020-2021.',pourquoi:'La plupart des événements se déroulent comme dans le DCEU. On ne sait pas encore si tous les personnages auront le même visage dans le DCU.'}},
     {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'TERRE-1',softcanon:true,subitems:['Saison 1'],faq:{quand:'La série se déroule en 2021 après The Suicide Squad.',pourquoi:'La plupart des événements se déroulent comme dans le DCEU, à l\'exception notamment de la scène avec les autres héros.'}},
-    {id:'dcu-cc',type:'serie',level:'bonus',tmdb:'219543',media:'tv',title:'Creature Commandos',date:'2024',dim:'TERRE-1',subitems:['Saison 1']},
+    {id:'dcu-cc',type:'anime',level:'bonus',tmdb:'219543',media:'tv',title:'Creature Commandos',date:'2024',dim:'TERRE-1',subitems:['Saison 1']},
     {id:'dcu-superman',type:'film',level:'imp',tmdb:'1061474',media:'movie',title:'Superman',date:'2025',dim:'TERRE-1',faq:{quand:'Le film se déroule en 2025 dans le tout nouveau DCU.',pourquoi:'Premier grand film du DCU de James Gunn. Un nouveau départ complet pour Superman et l\'univers DC au cinéma.'}},
     {id:'dcu-peacemaker2',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2025',dim:'TERRE-1',subitems:['Saison 2']},
   ],
@@ -665,6 +610,8 @@ function buildEntry(e,borderColor){
   }
   const p=getP();const isDone=!!p[e.id];
   const tags=e.tags||[];const isFB=tags.includes('flashback');
+  const typeLabel=e.type==='film'?'FILM':e.type==='anime'?'SÉRIE ANIMÉE':'SÉRIE';
+  const typeCss=e.type==='film'?'bf':e.type==='anime'?'bfa':'bs';
   const sub=e.subitems?.length?'<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>':'';
   const note=e.note?'<div class="enote">'+e.note+'</div>':'';
   const bignote=e.bignote?'<div style="font-size:.78rem;font-weight:700;color:#f97316;padding:.2rem .6rem .5rem;letter-spacing:.01em">'+e.bignote+'</div>':'';
@@ -683,7 +630,7 @@ function buildEntry(e,borderColor){
       <div class="tr">
         ${isFB?'<span class="ft">FLASHBACK</span>':''}
         ${soft}
-        <span class="b ${e.type==='film'?'bf':'bs'}">${e.type==='film'?'FILM':'SÉRIE'}</span>
+        <span class="b ${typeCss}">${typeLabel}</span>
         <span class="en-name">${e.title}</span>
       </div>
     </div>
@@ -789,6 +736,10 @@ function toggleUniversFilter(btn){
     ['col-av-pre','col-av-post'].forEach(id=>{
       const el=document.getElementById(id);if(el)el.closest('.zcol').style.display=visible?'':'none';
     });
+    // Masquer aussi les barres Crisis
+    document.querySelectorAll('.en-sep-start,.en-sep-end').forEach(el=>{
+      el.style.display=visible?'':'none';
+    });
   }
   // DCEU = col-dceu + col-dceu dans post
   if(u==='dceu'){
@@ -860,6 +811,20 @@ document.querySelectorAll('#col-av-pre .en, #col-av-post .en').forEach(el=>{
   const c=AV_C[t]||Object.entries(AV_C).find(([k])=>t.startsWith(k))?.[1];
   if(c)el.style.borderLeft='3px solid '+c;
 });
+
+// Légende
+const legEl=document.getElementById('tl-legend');
+if(legEl){
+  legEl.innerHTML='<span class="leg-title">Légende</span>'
+    +'<span class="b bf">FILM</span>'
+    +'<span class="b bs">SÉRIE</span>'
+    +'<span class="b bfa">SÉRIE ANIMÉE</span>'
+    +' &nbsp;·&nbsp; '
+    +'<span style="font-size:.78rem">🚨 Important</span>'
+    +'<span class="ft">FLASHBACK</span>'
+    +'<span class="soft-badge">SOFT-CANON</span>'
+    +'<span class="dim-badge" style="font-size:.68rem">TERRE-XXXX = Univers</span>';
+}
 
 loadPosters();
 renderProgress();
