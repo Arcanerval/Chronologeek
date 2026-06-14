@@ -160,6 +160,22 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .crisis-spoil[open] summary::before{content:'▼ '}
 .crisis-spoil-content{font-size:.75rem;color:var(--muted2);line-height:1.6;padding:.5rem .5rem .2rem;border-top:1px solid rgba(255,215,0,.2);margin-top:.3rem}
 .crisis-spoil-content strong{color:var(--text)}
+
+.en-sep-start{background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,165,0,.1));border:1px solid rgba(255,215,0,.6)!important;border-left:4px solid #ffd700!important;text-align:left;cursor:default}
+.en-sep-start:hover{box-shadow:0 0 16px rgba(255,215,0,.2)!important;border-color:rgba(255,215,0,.8)!important}
+.en-sep-start .en-name{color:#ffd700;font-weight:700;font-size:.8rem}
+.en-sep-end{border-top:2px solid rgba(255,215,0,.5)!important;border-bottom:none!important;border-left:none!important;border-right:none!important;background:none!important;padding:.1rem 0;margin:.4rem 0}
+.en-sep-end .en-name{color:rgba(255,215,0,.6);font-size:.72rem;font-weight:600}
+.en-sep-end:hover{box-shadow:none!important}
+
+.expand-faq{border-top:1px solid var(--border);margin-top:.5rem;padding-top:.5rem}
+.faq-item{border-radius:6px;overflow:hidden;margin-bottom:.25rem}
+.faq-q{font-size:.74rem;font-weight:600;color:var(--muted2);cursor:pointer;padding:.3rem .5rem;list-style:none;user-select:none;background:rgba(255,255,255,.03);border-radius:6px}
+.faq-q::-webkit-details-marker{display:none}
+.faq-spoil .faq-q{color:#f97316}
+.faq-q::before{content:'▶ ';font-size:.58rem;color:var(--accent)}
+.faq-item[open] .faq-q::before{content:'▼ '}
+.faq-a{font-size:.76rem;color:var(--muted2);line-height:1.6;padding:.4rem .5rem .2rem}
 </style>
 </head>
 <body>
@@ -246,7 +262,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
     <div class="zone-head" onclick="toggleZone('z-pre')">
       <div class="zone-icon">📺</div>
       <div class="zone-label-wrap">
-        <div class="zone-name">Le Multivers en action</div>
+        <div class="zone-name">Les 2 univers principaux</div>
         <div class="zone-desc">L'Arrowverse et le DCEU en parallèle. Regardez chaque colonne séparément ou alternez entre elles à votre convenance.</div>
       </div>
       <div class="zone-toggle open" id="toggle-z-pre">▼</div>
@@ -354,19 +370,19 @@ const AV_C={'Arrow':'#00c850','The Flash':'#ffc800','Supergirl':'#a78bfa','Legen
 
 const DATA={
   superman:[
-    {id:'dc-smallville',type:'serie',level:'imp',tmdb:'4604',media:'tv',title:'Smallville',date:'2001–2011',dim:'TERRE-167',subitems:['Saison 1','Saison 2','Saison 3','Saison 4','Saison 5','Saison 6','Saison 7','Saison 8','Saison 9','Saison 10']},
-    {id:'dc-krypton-s1',type:'serie',level:'bonus',tmdb:'71340',media:'tv',title:'Krypton',date:'???',dim:'TERRE-?',subitems:['Saison 1','Saison 2']},
-    {id:'dc-supermanreturns',type:'film',level:'imp',tmdb:'1452',media:'movie',title:'Superman Returns',date:'2006',dim:'TERRE-96'},
+    {id:'dc-smallville',type:'serie',level:'imp',tmdb:'4604',media:'tv',title:'Smallville',date:'2001–2011',dim:'TERRE-167',faq:{quand:'La série se déroule entre 2001 et 2011 dans un univers parallèle.',pourquoi:'Meilleur média pour introduire l\'entourage de Superman et les vilains emblématiques.',spoil:'Ce Superman fait une courte apparition pendant l\'événement majeur Crisis on Infinite Earths.'},subitems:['Saison 1','Saison 2','Saison 3','Saison 4','Saison 5','Saison 6','Saison 7','Saison 8','Saison 9','Saison 10']},
+    {id:'dc-krypton-s1',type:'serie',level:'bonus',tmdb:'71340',media:'tv',title:'Krypton',date:'???',dim:'TERRE-?',subitems:['Saison 1','Saison 2'],faq:{quand:'La série se déroule dans le futur lointain sur la planète Krypton.',pourquoi:'Au départ prévu comme un préquel à Man of Steel, Krypton se déroule finalement dans son propre univers. Annulé après 2 saisons mais sympa pour développer le lore de Superman.'}},
+    {id:'dc-supermanreturns',type:'film',level:'imp',tmdb:'1452',media:'movie',title:'Superman Returns',date:'2006',dim:'TERRE-96',faq:{quand:'Le film se déroule plusieurs décennies après Superman et Superman II.',pourquoi:'Suite soft-canon de Superman et Superman II — les événements se sont déroulés de la même manière mais à des époques différentes.',spoil:'Ce Superman a un rôle important pendant l\'événement majeur Crisis on Infinite Earths.'}},
   ],
   batman:[
-    {id:'dc-batman89',type:'film',level:'imp',tmdb:'268',media:'movie',title:'Batman',date:'1989',dim:'TERRE-89'},
-    {id:'dc-batmanreturns',type:'film',level:'imp',tmdb:'364',media:'movie',title:'Batman : Le Défi',date:'1992',dim:'TERRE-89'},
+    {id:'dc-batman89',type:'film',level:'imp',tmdb:'268',media:'movie',title:'Batman',date:'1989',dim:'TERRE-89',faq:{quand:'Le film se déroule en 1989 dans un univers parallèle.',pourquoi:'L\'un des films de super-héros les plus emblématiques et fondateurs du genre.',spoil:'En plus d\'un court caméo pendant l\'événement majeur, cet univers (ou une branche très proche) est un élément central du film The Flash.'}},
+    {id:'dc-batmanreturns',type:'film',level:'imp',tmdb:'364',media:'movie',title:'Batman : Le Défi',date:'1992',dim:'TERRE-89',faq:{quand:'Suite directe de Batman (1989) dans le même univers.',pourquoi:'Les 2 suites Batman Forever et Batman & Robin ont été officiellement décanonisées et se passent dans une réalité alternée proche des 2 films de Burton.',spoil:'La fin de The Flash confirme ce canon avec l\'apparition de George Clooney.'}},
     {id:'dc-batmanbegins',type:'film',level:'bonus',tmdb:'272',media:'movie',title:'Batman Begins',date:'2005',dim:'TERRE-TDK'},
     {id:'dc-tdk',type:'film',level:'bonus',tmdb:'155',media:'movie',title:'The Dark Knight',date:'2008',dim:'TERRE-TDK'},
     {id:'dc-tdkr',type:'film',level:'bonus',tmdb:'49026',media:'movie',title:'The Dark Knight Rises',date:'2016',dim:'TERRE-TDK'},
-    {id:'dc-gotham',type:'serie',level:'bonus',tmdb:'60708',media:'tv',title:'Gotham',date:'???',dim:'TERRE-2014',subitems:['Saison 1','Saison 2','Saison 3','Saison 4','Saison 5']},
-    {id:'dc-titans-s1',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2018',dim:'TERRE-9',subitems:['Saison 1']},
-    {id:'dc-titans-s2',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2019',dim:'TERRE-9',subitems:['Saison 2']},
+    {id:'dc-gotham',type:'serie',level:'bonus',tmdb:'60708',media:'tv',title:'Gotham',date:'???',dim:'TERRE-2014',subitems:['Saison 1','Saison 2','Saison 3','Saison 4','Saison 5'],faq:{quand:'La série se déroule dans les années précédant l\'apparition de Batman.',pourquoi:'Sympa comme Smallville pour les origines de l\'entourage de Batman et des vilains emblématiques.'}},
+    {id:'dc-titans-s1',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2018',dim:'TERRE-9',subitems:['Saison 1'],faq:{quand:'La saison 1 se déroule en 2018 dans un univers parallèle.',spoil:'Des personnages de cette série font un caméo pendant l\'événement majeur Crisis on Infinite Earths.'}},
+    {id:'dc-titans-s2',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2019',dim:'TERRE-9',subitems:['Saison 2'],faq:{quand:'La saison 2 se déroule en 2019 dans le même univers.',spoil:'Des personnages de cette série font un caméo pendant l\'événement majeur Crisis on Infinite Earths.'}},
   ],
   av_pre:[
     {id:'av-arrow-s12',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2012–2014',dim:'TERRE-PRIME',subitems:['Saison 1','Saison 2']},
@@ -451,6 +467,7 @@ const DATA={
     {id:'av-bw-s1e5-8',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 5-8']},
     {id:'av-flash-s6e1-8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 1-8']},
     {id:'av-arrow-s8e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 1-7']},
+    {id:'crisis-start',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'⚡ Début de l\'événement majeur',date:'2019–2020'},
     {id:'av-bl-s3e9',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019',dim:'TERRE-TUD5',subitems:['Saison 3 Épisode 9']},
     {id:'av-sg-s5e9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'TERRE-38',subitems:['Saison 5 Épisode 9']},
     {id:'av-bw-s1e9',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 9']},
@@ -459,7 +476,7 @@ const DATA={
     {id:'av-lot-s5e1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 5 Épisode 1']},
   ],
   dceu:[
-    {id:'dceu-mos',type:'film',level:'imp',tmdb:'49521',media:'movie',title:'Man of Steel',date:'2013',dim:'TERRE-1'},
+    {id:'dceu-mos',type:'film',level:'imp',tmdb:'49521',media:'movie',title:'Man of Steel',date:'2013',dim:'TERRE-1',faq:{quand:'Le film se déroule en 2013 et marque le début du DCEU sur la Terre-1.',pourquoi:'C\'est le point de départ du DCEU, l\'univers cinématographique DC. Regardez-le avant Batman V Superman.'}},
     {id:'dceu-bvs',type:'film',level:'imp',tmdb:'209112',media:'movie',title:'Batman V Superman : l\'Aube de la Justice',date:'2015',dim:'TERRE-1',bignote:'⚠️ Version Ultimate Edition !!!'},
     {id:'dceu-ww',type:'film',level:'imp',tmdb:'297762',media:'movie',title:'Wonder Woman',date:'1918',dim:'TERRE-1',tags:['flashback']},
     {id:'dceu-ww84',type:'film',level:'bonus',tmdb:'464052',media:'movie',title:'Wonder Woman 1984',date:'1984',dim:'TERRE-1',tags:['flashback']},
@@ -474,9 +491,10 @@ const DATA={
     {id:'dceu-shazam2',type:'film',level:'bonus',tmdb:'594767',media:'movie',title:'Shazam 2 : La Rage des Dieux',date:'2022',dim:'TERRE-1'},
     {id:'dceu-aquaman2',type:'film',level:'imp',tmdb:'572802',media:'movie',title:'Aquaman et le Royaume Perdu',date:'2022',dim:'TERRE-1'},
     {id:'dceu-bluebeetle',type:'film',level:'bonus',tmdb:'565770',media:'movie',title:'Blue Beetle',date:'2023',dim:'TERRE-1'},
-    {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Dernier film du DCEU — Reboot de l\'univers vers le DCU'},
+    {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Dernier film du DCEU — Reboot de l\'univers vers le DCU',faq:{quand:'Le film se déroule en 2023 et conclut le DCEU.',pourquoi:'Ce film est le pont entre le DCEU et le DCU. Il réinitialise l\'univers et introduit la nouvelle ère DC de James Gunn. À regarder avant Creature Commandos.'}},
   ],
   av_post:[
+    {id:'crisis-end',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'✓ Événement majeur terminé',date:'2020'},
     {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 10-16']},
     {id:'av-sg-s5e10-19',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 10-19']},
     {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 10-20']},
@@ -495,20 +513,20 @@ const DATA={
     {id:'av-flash-s9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2023',dim:'TERRE-PRIME',subitems:['Saison 9 (finale)']},
   ],
   else_post:[
-    {id:'dc-stargirl-s1',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2020',dim:'TERRE-2',subitems:['Saison 1']},
+    {id:'dc-stargirl-s1',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2020',dim:'TERRE-2',subitems:['Saison 1'],faq:{quand:'La saison 1 se déroule en 2020 sur la nouvelle Terre-2.',spoil:'La série se passe sur la nouvelle Terre-2 créée après l\'événement majeur. Stargirl fait un caméo dans la saison finale de Titans.'}},
     {id:'dc-stargirl-s2',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'TERRE-2',subitems:['Saison 2']},
     {id:'dc-stargirl-s3',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'TERRE-2',subitems:['Saison 3']},
-    {id:'dc-titans-s3',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 3']},
-    {id:'dc-titans-s4',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 4 (finale)']},
-    {id:'dc-supermanlois',type:'serie',level:'bonus',tmdb:'95057',media:'tv',title:'Superman et Loïs',date:'2021–2024',dim:'TERRE-TUD25',subitems:['Saison 1','Saison 2','Saison 3','Saison 4 (finale)']},
+    {id:'dc-titans-s3',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 3'],faq:{quand:'La saison 3 se déroule en 2021 post-Crisis.',pourquoi:'Suite directe après l\'événement majeur dans un univers qui a changé.'}},
+    {id:'dc-titans-s4',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 4 (finale)'],faq:{quand:'La saison 4 et finale se déroule en 2021.',spoil:'Un épisode contient beaucoup de caméos de personnages DC, dans le même esprit que l\'événement majeur, dont Stargirl.'}},
+    {id:'dc-supermanlois',type:'serie',level:'bonus',tmdb:'95057',media:'tv',title:'Superman et Loïs',date:'2021–2024',dim:'TERRE-TUD25',subitems:['Saison 1','Saison 2','Saison 3','Saison 4 (finale)'],faq:{quand:'La série se déroule entre 2021 et 2024.',pourquoi:'Au départ pensée comme la suite du Superman de Supergirl, la série se déroule finalement dans une réalité très proche mais distincte.'}},
     {id:'dc-thebatman',type:'film',level:'imp',tmdb:'414906',media:'movie',title:'The Batman',date:'2022',dim:'TERRE-TB'},
     {id:'dc-thepenguin',type:'serie',level:'bonus',tmdb:'194764',media:'tv',title:'The Penguin',date:'2022',dim:'TERRE-TB',subitems:['Saison 1']},
   ],
   dcu:[
-    {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'TERRE-1',softcanon:true},
-    {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'TERRE-1',softcanon:true,subitems:['Saison 1']},
+    {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'TERRE-1',softcanon:true,faq:{quand:'Le film se déroule en 2020-2021.',pourquoi:'La plupart des événements se déroulent comme dans le DCEU. On ne sait pas encore si tous les personnages auront le même visage dans le DCU.'}},
+    {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'TERRE-1',softcanon:true,subitems:['Saison 1'],faq:{quand:'La série se déroule en 2021 après The Suicide Squad.',pourquoi:'La plupart des événements se déroulent comme dans le DCEU, à l\'exception notamment de la scène avec les autres héros.'}},
     {id:'dcu-cc',type:'serie',level:'bonus',tmdb:'219543',media:'tv',title:'Creature Commandos',date:'2024',dim:'TERRE-1',subitems:['Saison 1']},
-    {id:'dcu-superman',type:'film',level:'imp',tmdb:'1061474',media:'movie',title:'Superman',date:'2025',dim:'TERRE-1'},
+    {id:'dcu-superman',type:'film',level:'imp',tmdb:'1061474',media:'movie',title:'Superman',date:'2025',dim:'TERRE-1',faq:{quand:'Le film se déroule en 2025 dans le tout nouveau DCU.',pourquoi:'Premier grand film du DCU de James Gunn. Un nouveau départ complet pour Superman et l\'univers DC au cinéma.'}},
     {id:'dcu-peacemaker2',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2025',dim:'TERRE-1',subitems:['Saison 2']},
   ],
 };
@@ -553,6 +571,16 @@ function renderProgress(){
 }
 
 function buildEntry(e,borderColor){
+  // Séparateur spécial
+  if(e.type==='separator'){
+    const cls=e.id==='crisis-start'?'en-sep-start':'en-sep-end';
+    return `<div class="en ${cls}" data-id="${e.id}" data-type="separator" data-level="${e.level||'imp'}">
+      <div class="en-top" style="cursor:default">
+        <div class="en-datebadge"><div class="date-main">${e.date||''}</div></div>
+        <div class="em"><div class="tr"><span class="en-name">${e.title}</span></div></div>
+      </div>
+    </div>`;
+  }
   const p=getP();const isDone=!!p[e.id];
   const tags=e.tags||[];const isFB=tags.includes('flashback');
   const sub=e.subitems?.length?'<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>':'';
@@ -583,6 +611,29 @@ function buildEntry(e,borderColor){
 </div>`;
 }
 
+function findEntry(id){
+  const allData=[...DATA.superman,...DATA.batman,...DATA.av_pre,...DATA.dceu,...DATA.av_post,...DATA.else_post,...DATA.dcu];
+  return allData.find(e=>e.id===id)||null;
+}
+function buildFaq(e){
+  if(!e||!e.faq)return '';
+  const cats=[
+    {key:'quand',q:'Quand se déroule '+e.title+' ?',spoil:false},
+    {key:'pourquoi',q:'Pourquoi regarder '+e.title+' ?',spoil:false},
+    {key:'spoil',q:'Connexions avec les autres univers',spoil:true},
+  ];
+  const items=cats.filter(c=>e.faq[c.key]).map(c=>c.spoil
+    ?`<details class="faq-item faq-spoil">
+      <summary class="faq-q">⚠️ ${c.q} — SPOILERS</summary>
+      <div class="faq-a">${e.faq[c.key]}</div>
+    </details>`
+    :`<details class="faq-item">
+      <summary class="faq-q">${c.q}</summary>
+      <div class="faq-a">${e.faq[c.key]}</div>
+    </details>`
+  ).join('');
+  return items?`<div class="expand-faq">${items}</div>`:'';
+}
 async function toggleExpand(el,ev){
   if(ev.target.closest('.en-check'))return;
   const wasOpen=el.classList.contains('open');
@@ -592,6 +643,8 @@ async function toggleExpand(el,ev){
   const panel=el.querySelector('.en-expand');
   if(panel.dataset.loaded)return;
   panel.dataset.loaded='1';
+  // Trouver l'entrée pour la FAQ
+  const e=findEntry(el.dataset.id);
   const tmdb=el.dataset.tmdb,media=el.dataset.media;
   if(!tmdb||tmdb==='0'){panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Pas d\'informations TMDB.</div>';return}
   panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Chargement…</div>';
@@ -625,7 +678,8 @@ async function toggleExpand(el,ev){
       ${meta?`<div class="expand-meta">${meta}</div>`:''}
       ${trailer?`<a class="expand-trailer" href="https://www.youtube.com/watch?v=${trailer.key}" target="_blank" rel="noopener">▶ Bande-annonce YouTube</a>`:''}
     </div>
-  </div>`;
+  </div>
+  ${buildFaq(e)}`;
 }
 
 function openPMurl(url){document.getElementById('pmi').src=url;document.getElementById('pm').classList.add('o')}
@@ -685,7 +739,9 @@ async function loadPosters(){
   const entries=[...document.querySelectorAll('.en[data-tmdb]')];
   for(let i=0;i<entries.length;i+=10){
     await Promise.all(entries.slice(i,i+10).map(async el=>{
-      const tmdb=el.dataset.tmdb,media=el.dataset.media;
+      // Trouver l'entrée pour la FAQ
+  const e=findEntry(el.dataset.id);
+  const tmdb=el.dataset.tmdb,media=el.dataset.media;
       if(!tmdb||tmdb==='0')return;
       const type=media==='movie'?'movie':'tv';const k=type+tmdb;
       if(seen.has(k)){const d=detailCache[k];if(d){const p=d.backdrop_path||d.poster_path;if(p)applyThumb(el,IMG+'w92'+p);}return;}
