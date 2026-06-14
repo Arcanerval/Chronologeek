@@ -864,6 +864,12 @@ document.querySelectorAll('#col-av-pre .en, #col-av-post .en').forEach(el=>{
 loadPosters();
 renderProgress();
 
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('batsignal');
+  if(b)b.classList.toggle('visible',window.scrollY>400);
+});
+
 </script>
+
 </body>
 </html>
