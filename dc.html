@@ -181,22 +181,25 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
   position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;
   width:100px;height:114px;cursor:pointer;
   display:none;opacity:0;
-  overflow:hidden;
+  overflow:visible;
   transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.8));
 }
 #batsignal.visible{display:block;opacity:1}
 #batsignal:hover{transform:scale(1.1)}
 .bat-normal{
   position:absolute;
-  width:100%;height:100%;
+  width:100px;height:114px;
+  top:0;left:0;
   object-fit:contain;
   transition:opacity .25s;
   opacity:1;
 }
 .bat-hover{
   position:absolute;
-  width:1012px;height:569px;
-  left:-591px;top:-104px;
+  width:217px;height:122px;
+  left:-127px;top:-4px;
+  object-fit:contain;
   transition:opacity .25s;
   opacity:0;
 }
