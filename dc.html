@@ -176,6 +176,33 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .faq-q::before{content:'▶ ';font-size:.58rem;color:var(--accent)}
 .faq-item[open] .faq-q::before{content:'▼ '}
 .faq-a{font-size:.76rem;color:var(--muted2);line-height:1.6;padding:.4rem .5rem .2rem}
+
+#batsignal{
+  position:fixed;bottom:2rem;right:2rem;z-index:300;
+  width:80px;height:80px;cursor:pointer;
+  display:none;opacity:0;
+  transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.7));
+}
+#batsignal.visible{display:block;opacity:1}
+#batsignal:hover{transform:scale(1.12)}
+
+/* Projecteur corps */
+.bs-body{transition:fill .25s}
+/* Lentille */
+.bs-lens{transition:fill .25s,filter .25s}
+/* Faisceau */
+.bs-beam{opacity:0;transition:opacity .3s}
+/* Logo chauve-souris */
+.bs-bat{transition:fill .25s}
+/* Signal projeté */
+.bs-proj{opacity:0;transition:opacity .3s}
+
+#batsignal:hover .bs-beam{opacity:1}
+#batsignal:hover .bs-proj{opacity:1}
+#batsignal:hover .bs-lens{fill:#ffe840;filter:drop-shadow(0 0 8px #ffd700)}
+#batsignal:hover .bs-bat-proj{opacity:1}
+
 </style>
 </head>
 <body>
@@ -199,6 +226,61 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
   </nav>
 </header>
 
+
+<div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Faisceau de lumière projeté -->
+  <defs>
+    <radialGradient id="beamGrad" cx="50%" cy="100%" r="80%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="beamClip">
+      <polygon points="20,38 60,38 72,2 8,2"/>
+    </clipPath>
+  </defs>
+
+  <!-- Faisceau -->
+  <polygon class="bs-beam" points="20,38 60,38 72,2 8,2" fill="url(#beamGrad)" clip-path="url(#beamClip)"/>
+
+  <!-- Signal projeté (ovale + chauve-souris) en haut -->
+  <g class="bs-proj">
+    <!-- Ovale jaune -->
+    <ellipse cx="40" cy="10" rx="22" ry="8" fill="#ffd700" opacity="0.9"/>
+    <!-- Chauve-souris projetée (noir) -->
+    <g transform="translate(40,10) scale(0.55)">
+      <path d="M0,-6 C-2,-6 -4,-4 -6,-2 C-10,-2 -14,0 -16,3 C-12,3 -10,2 -8,4 C-6,5 -4,6 0,6 C4,6 6,5 8,4 C10,2 12,3 16,3 C14,0 10,-2 6,-2 C4,-4 2,-6 0,-6Z" fill="#111"/>
+    </g>
+  </g>
+
+  <!-- Socle -->
+  <ellipse class="bs-body" cx="40" cy="74" rx="18" ry="5" fill="#3a3a4a"/>
+  <rect class="bs-body" x="32" y="60" width="16" height="14" rx="3" fill="#3a3a4a"/>
+
+  <!-- Bras support -->
+  <rect class="bs-body" x="34" y="56" width="4" height="8" rx="2" fill="#2a2a38"/>
+  <rect class="bs-body" x="42" y="56" width="4" height="8" rx="2" fill="#2a2a38"/>
+
+  <!-- Corps cylindrique du projecteur -->
+  <ellipse cx="40" cy="42" rx="20" ry="5" fill="#4a4a5a"/>
+  <rect class="bs-body" x="20" y="36" width="40" height="14" rx="4" fill="#4a4a5a"/>
+  <ellipse cx="40" cy="50" rx="20" ry="5" fill="#3a3a4a"/>
+
+  <!-- Anneaux déco -->
+  <rect x="20" y="38" width="40" height="2" rx="1" fill="#555568" opacity="0.6"/>
+  <rect x="20" y="45" width="40" height="2" rx="1" fill="#555568" opacity="0.6"/>
+
+  <!-- Lentille frontale -->
+  <ellipse class="bs-lens" cx="40" cy="36" rx="14" ry="6" fill="#c8a000"/>
+  <ellipse cx="40" cy="36" rx="10" ry="4" fill="#1a1a1a" opacity="0.4"/>
+
+  <!-- Logo Batman sur la lentille -->
+  <g transform="translate(40,36) scale(0.38)">
+    <ellipse rx="18" ry="8" fill="#ffd700"/>
+    <path class="bs-bat" d="M0,-4 C-1.5,-4 -3,-2.5 -4.5,-1 C-7.5,-1 -10.5,0.5 -12,2.5 C-9,2.5 -7,1.5 -5.5,3 C-4,4 -2.5,4.5 0,4.5 C2.5,4.5 4,4 5.5,3 C7,1.5 9,2.5 12,2.5 C10.5,0.5 7.5,-1 4.5,-1 C3,-2.5 1.5,-4 0,-4Z" fill="#111"/>
+  </g>
+</svg>
+</div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 
 <div class="page-wrap">
