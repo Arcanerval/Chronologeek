@@ -51,7 +51,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .fbt:not(.active){opacity:.4;text-decoration:line-through}
 /* ZONES */
 .zone{margin-bottom:1.5rem;border-radius:14px;overflow:hidden;border:1px solid}
-.zone-optional{border-color:rgba(192,132,252,.2);background:rgba(192,132,252,.03)}
+.zone-optional{border-color:rgba(192,132,252,.45);background:rgba(192,132,252,.05);box-shadow:0 0 0 1px rgba(192,132,252,.2),0 4px 24px rgba(192,132,252,.08)}
 .zone-pre{border-color:rgba(34,197,94,.15);background:rgba(34,197,94,.02)}
 .zone-event{border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.05)}
 .zone-post{border-color:rgba(59,130,246,.15);background:rgba(59,130,246,.02)}
@@ -61,7 +61,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .zone-label-wrap{flex:1}
 .zone-name{font-size:1rem;font-weight:800;letter-spacing:-.2px;margin-bottom:.1rem}
 .zone-desc{font-size:.75rem;color:var(--muted2);line-height:1.4}
-.zone-optional .zone-name{color:var(--c-else)}
+.zone-optional .zone-name{color:var(--c-else)}.zone-optional .zone-head{background:rgba(192,132,252,.07);border-radius:14px 14px 0 0}
 .zone-pre .zone-name{color:var(--c-av)}
 .zone-event .zone-name{color:#ffd700}
 .zone-post .zone-name{color:var(--c-dceu)}
@@ -363,29 +363,29 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
       <div class="zone-icon">🎬</div>
       <div class="zone-label-wrap">
         <div class="zone-name">Après l'événement</div>
-        <div class="zone-desc">L'Arrowverse post-Crisis, les Elseworlds issus de l'événement, et le tout nouveau DCU.</div>
+        <div class="zone-desc">L'Arrowverse post-événement, les Elseworlds issus de l'événement, et le tout nouveau DCU.</div>
       </div>
       <div class="zone-toggle open" id="toggle-z-post">▼</div>
     </div>
     <div class="zone-badges">
       <span class="zbadge zbadge-av">Arrowverse</span>
-      <span class="zbadge zbadge-else">Elseworlds post-Crisis</span>
+      <span class="zbadge zbadge-else">Elseworlds post-événement</span>
       <span class="zbadge zbadge-dcu">DCU</span>
     </div>
     <div class="zone-body open" id="z-post">
       <div class="zone-grid zg-3">
         <div class="zcol zcol-av">
-          <div class="zcol-head">Arrowverse — Post-Crisis</div>
+          <div class="zcol-head">Arrowverse — Après l'événement</div>
           <div id="col-av-post"></div>
         </div>
         <div class="zcol zcol-else">
-          <div class="zcol-head">Elseworlds post-Crisis</div>
+          <div class="zcol-head">Elseworlds post-événement</div>
           <div class="zcol-hint">Univers révélés ou nés après l'événement</div>
           <div id="col-else-post"></div>
         </div>
         <div class="zcol zcol-dcu">
           <div class="zcol-head">DCU — Nouvel Univers</div>
-          <div class="zcol-hint">Le nouveau DC Universe de James Gunn, connecté au DCEU via The Flash (2023)</div>
+          <div class="zcol-hint">Nouvel univers connecté au DCEU via The Flash (2023)</div>
           <div id="col-dcu"></div>
         </div>
       </div>
@@ -398,7 +398,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 const NOTES=`Je commencerai par vous prévenir que ce dossier est un <strong>énorme bordel</strong>, bien qu'ayant enlevé beaucoup de médias, regarder tout le reste nécessite beaucoup beaucoup de temps. Si vous êtes là seulement pour voir l'Arrow-Verse, le DCEU ou le DCU vous pouvez choisir de le faire plus bas.<br><br>
 <strong>Question légitime : en quoi tout ce bordel est relié ?</strong><br><br>
 Cet ordre privilégie la découverte progressive du Multivers DC. Plusieurs séries et films se déroulent dans des réalités différentes mais finissent par partager des liens. Regarder les œuvres dans cet ordre permet de mieux comprendre les personnages, les références et les événements qui connectent ces univers, tout en préservant les surprises majeures.<br><br>
-Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
+Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Krypton, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
 Les deux chronologies principales de l'univers se passent sur la <strong>Terre-Prime</strong> et la <strong>Terre-1</strong>.<br><br>
 Le terme <strong>soft-canon</strong> désigne un média dont les événements sont en partie survenus de la même manière, plus d'infos dans les descriptions.<br><br>
 Le Multivers DC fonctionne d'une manière particulière, deux personnages différents peuvent avoir exactement la même tête (exemples : le père de Flash (2014) et Flash (1990), Supergirl (1984) et la mère de Superman (Smallville) mais aussi la mère adoptive de Supergirl (2015)).<br><br>
@@ -508,7 +508,7 @@ const DATA={
     {id:'av-bw-s1e5-8',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 5-8']},
     {id:'av-flash-s6e1-8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 1-8']},
     {id:'av-arrow-s8e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 1-7']},
-    {id:'crisis-start',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'⚡ Début de l\'événement majeur',date:'2019–2020'},
+    {id:'crisis-start',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'⚡ Début de l\'événement majeur',date:'2019–2020',note:'Si vous comptiez regarder des médias Elseworlds (marqués 🚨) ou le DCEU, faites-le avant cet événement — pour le DCEU, au moins jusqu\'à Justice League inclus.'},
     {id:'av-bl-s3e9',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019',dim:'TERRE-TUD5',subitems:['Saison 3 Épisode 9']},
     {id:'av-sg-s5e9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'TERRE-38',subitems:['Saison 5 Épisode 9']},
     {id:'av-bw-s1e9',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 9']},
@@ -535,7 +535,6 @@ const DATA={
     {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Dernier film du DCEU — Reboot de l\'univers vers le DCU',faq:{quand:'Le film se déroule en 2023 et conclut le DCEU.',pourquoi:'Ce film est le pont entre le DCEU et le DCU. Il réinitialise l\'univers et introduit la nouvelle ère DC de James Gunn. À regarder avant Creature Commandos.'}},
   ],
   av_post:[
-    {id:'crisis-end',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'✓ Événement majeur terminé',date:'2020'},
     {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 10-16']},
     {id:'av-sg-s5e10-19',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 10-19']},
     {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 10-20']},
@@ -557,7 +556,7 @@ const DATA={
     {id:'dc-stargirl-s1',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2020',dim:'TERRE-2',subitems:['Saison 1'],faq:{quand:'La saison 1 se déroule en 2020 sur la nouvelle Terre-2.',spoil:'La série se passe sur la nouvelle Terre-2 créée après l\'événement majeur. Stargirl fait un caméo dans la saison finale de Titans.'}},
     {id:'dc-stargirl-s2',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'TERRE-2',subitems:['Saison 2']},
     {id:'dc-stargirl-s3',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'TERRE-2',subitems:['Saison 3']},
-    {id:'dc-titans-s3',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 3'],faq:{quand:'La saison 3 se déroule en 2021 post-Crisis.',pourquoi:'Suite directe après l\'événement majeur dans un univers qui a changé.'}},
+    {id:'dc-titans-s3',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 3'],faq:{quand:'La saison 3 se déroule en 2021 post-événement.',pourquoi:'Suite directe après l\'événement majeur dans un univers qui a changé.'}},
     {id:'dc-titans-s4',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 4 (finale)'],faq:{quand:'La saison 4 et finale se déroule en 2021.',spoil:'Un épisode contient beaucoup de caméos de personnages DC, dans le même esprit que l\'événement majeur, dont Stargirl.'}},
     {id:'dc-supermanlois',type:'serie',level:'bonus',tmdb:'95057',media:'tv',title:'Superman et Loïs',date:'2021–2024',dim:'TERRE-TUD25',subitems:['Saison 1','Saison 2','Saison 3','Saison 4 (finale)'],faq:{quand:'La série se déroule entre 2021 et 2024.',pourquoi:'Au départ pensée comme la suite du Superman de Supergirl, la série se déroule finalement dans une réalité très proche mais distincte.'}},
     {id:'dc-thebatman',type:'film',level:'imp',tmdb:'414906',media:'movie',title:'The Batman',date:'2022',dim:'TERRE-TB'},
