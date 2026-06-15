@@ -339,8 +339,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
     </div>
     <div class="crisis-content">
       <div class="crisis-block">
-        <div class="crisis-title">⚡ Un événement majeur se produit</div>
-        <details class="crisis-spoil">
+<details class="crisis-spoil">
           <summary>⚠️ Révéler les détails — SPOILERS</summary>
           <div class="crisis-spoil-content">
             Il s'agit de <strong>Crisis on Infinite Earths</strong>, le plus grand crossover de toute l'histoire de DC. Le Multivers entier est rébooté à zéro — certaines réalités disparaissent, d'autres sont fusionnées. Des dizaines de personnages issus de dizaines de films et séries DC à travers toute l'histoire de la franchise font des caméos. C'est un événement sans précédent.<br><br>
@@ -398,7 +397,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 const NOTES=`Je commencerai par vous prévenir que ce dossier est un <strong>énorme bordel</strong>, bien qu'ayant enlevé beaucoup de médias, regarder tout le reste nécessite beaucoup beaucoup de temps. Si vous êtes là seulement pour voir l'Arrow-Verse, le DCEU ou le DCU vous pouvez choisir de le faire plus bas.<br><br>
 <strong>Question légitime : en quoi tout ce bordel est relié ?</strong><br><br>
 Cet ordre privilégie la découverte progressive du Multivers DC. Plusieurs séries et films se déroulent dans des réalités différentes mais finissent par partager des liens. Regarder les œuvres dans cet ordre permet de mieux comprendre les personnages, les références et les événements qui connectent ces univers, tout en préservant les surprises majeures.<br><br>
-Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Krypton, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
+Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
 Les deux chronologies principales de l'univers se passent sur la <strong>Terre-Prime</strong> et la <strong>Terre-1</strong>.<br><br>
 Le terme <strong>soft-canon</strong> désigne un média dont les événements sont en partie survenus de la même manière, plus d'infos dans les descriptions.<br><br>
 Le Multivers DC fonctionne d'une manière particulière, deux personnages différents peuvent avoir exactement la même tête (exemples : le père de Flash (2014) et Flash (1990), Supergirl (1984) et la mère de Superman (Smallville) mais aussi la mère adoptive de Supergirl (2015)).<br><br>
@@ -617,7 +616,10 @@ function buildEntry(e,borderColor){
     return `<div class="en ${cls}" data-id="${e.id}" data-type="separator" data-level="${e.level||'imp'}">
       <div class="en-top" style="cursor:default">
         <div class="en-datebadge"><div class="date-main">${e.date||''}</div></div>
-        <div class="em"><div class="tr"><span class="en-name">${e.title}</span></div></div>
+        <div class="em">
+          <div class="tr"><span class="en-name">${e.title}</span></div>
+          ${e.note?`<div style="font-size:.72rem;color:rgba(255,215,0,.75);margin-top:.25rem;line-height:1.5">${e.note}</div>`:''}
+        </div>
       </div>
     </div>`;
   }
