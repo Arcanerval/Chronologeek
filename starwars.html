@@ -209,7 +209,7 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 #grogu:hover .grogu-hover{display:block}
 </style>
 </head>
-<body>
+<body data-universe="sw">
 <header>
   <nav>
     <div class="logo" onclick="window.location.href='index.html'">
@@ -370,6 +370,10 @@ function toggleEntry(id,ev){
   prog[id]?delete prog[id]:(prog[id]=1);
   saveProgress(currentData.id,prog);
   renderProgress();
+  if(typeof checkBadges==='function'&&prog[id]){
+    const allIds=currentData.eras.flatMap(era=>era.entries.map(e=>e.id));
+    checkBadges('sw',prog,allIds);
+  }
 }
 function resetProgress(){
   if(!currentData||!confirm('Réinitialiser ta progression ?'))return;
@@ -636,5 +640,6 @@ window.addEventListener('scroll',()=>{
   if(g)g.classList.toggle('visible',window.scrollY>400);
 });
 </script>
+<script src="badges.js"></script>
 </body>
 </html>

@@ -213,7 +213,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .bfa{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.25)}
 </style>
 </head>
-<body>
+<body data-universe="dc">
 <header>
   <nav>
     <div class="logo" onclick="window.location.href='index.html'">
@@ -578,6 +578,10 @@ function saveP(o){localStorage.setItem('cg_dc',JSON.stringify(o))}
 function toggleEntry(id,ev){
   ev.stopPropagation();
   const p=getP();p[id]?delete p[id]:(p[id]=1);saveP(p);
+  if(typeof checkBadges==='function'&&p[id]){
+    const allIds=[...document.querySelectorAll('.en[data-id]')].map(e=>e.dataset.id).filter(i=>!i.startsWith('crisis'));
+    checkBadges('dc',p,allIds);
+  }
   document.querySelectorAll(`.en[data-id="${id}"]`).forEach(el=>{
     el.classList.toggle('done',!!p[id]);
     const cm=el.querySelector('.checkmark');if(cm)cm.textContent=p[id]?'✓':'';
@@ -855,5 +859,6 @@ window.addEventListener('scroll',function(){
 
 </script>
 
+<script src="badges.js"></script>
 </body>
 </html>
