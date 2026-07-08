@@ -126,6 +126,38 @@ const BADGE_DEFS = {
     icon: '🌐', color: '#1e90ff',
     trigger: '100pct', universe_key: 'dc'
   },
+
+  // ── AVATAR ────────────────────────────────────────────────
+  avt_eau: {
+    id: 'avt_eau', universe: 'avatar', label: "Maître de l'Eau",
+    desc: 'Livre 1 : L\'Eau terminé',
+    icon: '🌊', color: '#4fc3f7',
+    trigger: 'last', ids: ['avt-1x20']
+  },
+  avt_terre: {
+    id: 'avt_terre', universe: 'avatar', label: 'Maître de la Terre',
+    desc: 'Livre 2 : La Terre terminé',
+    icon: '🗿', color: '#8bc34a',
+    trigger: 'last', ids: ['avt-2x20']
+  },
+  avt_feu: {
+    id: 'avt_feu', universe: 'avatar', label: 'Maître du Feu',
+    desc: 'Livre 3 : Le Feu terminé',
+    icon: '🔥', color: '#ff7043',
+    trigger: 'last', ids: ['avt-3x21']
+  },
+  avt_equilibre: {
+    id: 'avt_equilibre', universe: 'avatar', label: "Gardien de l'Équilibre",
+    desc: "L'ère de Korra terminée",
+    icon: '💨', color: '#b39ddb',
+    trigger: 'last', ids: ['avt-la-legende-de-korra-livre-4-l-equilibre']
+  },
+  avt_100: {
+    id: 'avt_100', universe: 'avatar', label: 'Avatar Accompli',
+    desc: '100% Avatar complété',
+    icon: '☯️', color: '#ffd700',
+    trigger: '100pct', universe_key: 'avatar'
+  },
 };
 
 // Couleurs confettis par univers
@@ -133,6 +165,7 @@ const CONFETTI_COLORS = {
   sw:  ['#ffe81f','#fff','#4ade80','#60a5fa','#f87171'],
   mcu: ['#f43f5e','#fbbf24','#60a5fa','#fff','#a78bfa'],
   dc:  ['#1e90ff','#ffd700','#c084fc','#22c55e','#fff'],
+  avatar: ['#4fc3f7','#8bc34a','#ff7043','#b39ddb','#fff'],
 };
 
 // ── Confettis ────────────────────────────────────────────────
