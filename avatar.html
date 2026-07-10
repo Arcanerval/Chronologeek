@@ -215,6 +215,12 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 .lang-note{font-size:.6rem;font-weight:600;margin-top:1px;letter-spacing:.02em}
 .lang-note.lf{color:#4ade80}
 .lang-note.lv{color:#94a3b8}
+
+#appa img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .25s}
+.appa-normal{opacity:1}
+.appa-hover{opacity:0}
+#appa:hover .appa-normal{opacity:0}
+#appa:hover .appa-hover{opacity:1}
 </style>
 </head>
 <body data-universe="avatar">
@@ -238,7 +244,10 @@ details[open] .faq-q::after{transform:rotate(90deg)}
     <a href="#" class="disc-btn">Discord</a>
   </nav>
 </header>
-<div id="appa" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Yip yip !"><img src="images/appa.png" alt="Appa" onerror="this.parentElement.style.display='none'"/></div>
+<div id="appa" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Yip yip !">
+  <img class="appa-normal" src="images/appa1.png" alt="Appa" onerror="this.parentElement.style.display='none'"/>
+  <img class="appa-hover" src="images/appa2.png" alt="Appa vole"/>
+</div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 <div class="tl-page" id="tl-page">
   <div class="bc" onclick="window.location.href='index.html'">← Accueil</div>
@@ -266,16 +275,16 @@ details[open] .faq-q::after{transform:rotate(90deg)}
   notes:`L'univers Avatar se déguste dans l'<strong>ordre chronologique in-universe</strong> : les romans des Avatars passés (Yangchen, Kyoshi, Roku) d'abord, puis la série Avatar : Le Dernier Maître de l'Air avec les <strong>comics intercalés</strong> aux bons moments, les comics d'après-guerre, et enfin l'ère de Korra.<br><br>L'an 0 du calendrier est le Génocide des Nomades de l'Air donc <strong>BG</strong> = Before Genocide / <strong>AG</strong> = After Genocide.<br><br>Les médias marqués 🚨 sont le cœur du voyage — les médias marqués <strong>Optionnel</strong> peuvent être sautés sans rien perdre. La disponibilité en français est indiquée sous chaque roman et comic.<br><br><em>Escape from the Spirit World</em> se trouve gratuitement sur YouTube.<br><br>Le placement de <strong>The Kyoshi Warriors</strong> est provisoire jusqu'à la sortie du #3 (15 juillet 2026).`,
   eras:[
     {title:"ÈRE DE YANGCHEN",entries:[
-      {id:"avt-the-dawn-of-yangchen",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Dawn of Yangchen",date:"~483 BG",lang:"vf",ol:{q:"dawn of yangchen",inc:["dawn of yangchen"]},desc:"Jeune Avatar hantée par les souvenirs de ses vies antérieures, Yangchen navigue entre diplomatie et complots dans la ville corrompue de Bin-Er."},
+      {id:"avt-the-dawn-of-yangchen",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Dawn of Yangchen",date:"~483 BG",lang:"vo",ol:{q:"dawn of yangchen",inc:["dawn of yangchen"]},desc:"Jeune Avatar hantée par les souvenirs de ses vies antérieures, Yangchen navigue entre diplomatie et complots dans la ville corrompue de Bin-Er."},
       {id:"avt-the-legacy-of-yangchen",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Legacy of Yangchen",date:"~482 BG",lang:"vo",ol:{q:"legacy of yangchen",inc:["legacy of yangchen"]},desc:"Yangchen affronte les conséquences de ses choix et un complot qui menace l'équilibre entre les nations."},
     ]},
     {title:"ÈRE DE KYOSHI",entries:[
-      {id:"avt-the-rise-of-kyoshi",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Rise of Kyoshi",date:"296 BG",lang:"vf",ol:{q:"rise of kyoshi",inc:["rise of kyoshi"]},desc:"Servante ignorant qu'elle est l'Avatar, Kyoshi fuit après une tragédie et apprend à survivre auprès de hors-la-loi. L'origine brutale de la plus légendaire des Avatars."},
-      {id:"avt-the-shadow-of-kyoshi",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Shadow of Kyoshi",date:"295 BG",lang:"vf",ol:{q:"shadow of kyoshi",inc:["shadow of kyoshi"]},desc:"Deux ans plus tard, Kyoshi est convoquée à la Nation du Feu, où une menace venue du Monde des Esprits couve derrière la politique."},
+      {id:"avt-the-rise-of-kyoshi",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Rise of Kyoshi",date:"296 BG",lang:"vo",ol:{q:"rise of kyoshi",inc:["rise of kyoshi"]},desc:"Servante ignorant qu'elle est l'Avatar, Kyoshi fuit après une tragédie et apprend à survivre auprès de hors-la-loi. L'origine brutale de la plus légendaire des Avatars.<br><a href='https://www.youtube.com/playlist?list=PLOE7qBj7RtTLX4Dg8FI3o9gkrVmniYaqt' target='_blank' rel='noopener' class='expand-trailer'>▶ Écouter en lecture audio sur YouTube</a>"},
+      {id:"avt-the-shadow-of-kyoshi",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Shadow of Kyoshi",date:"295 BG",lang:"vo",ol:{q:"shadow of kyoshi",inc:["shadow of kyoshi"]},desc:"Deux ans plus tard, Kyoshi est convoquée à la Nation du Feu, où une menace venue du Monde des Esprits couve derrière la politique."},
     ]},
     {title:"ÈRE DE ROKU",entries:[
       {id:"avt-the-reckoning-of-roku",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Reckoning of Roku",date:"~65 BG",lang:"vo",ol:{q:"reckoning of roku",inc:["reckoning of roku"]},desc:"Le jeune Roku accepte une mission secrète du prince Sozin et découvre des agendas cachés sur une île isolée, aux côtés de son nouvel ami Gyatso."},
-      {id:"avt-the-awakening-of-roku",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Awakening of Roku",date:"~63 BG",lang:"vo",ol:{q:"awakening of roku",inc:["awakening of roku"]},desc:"Impatient de maîtriser l'État d'Avatar, Roku canalise l'énergie du solstice d'hiver — et déclenche le chaos sur l'Île du Croissant."},
+      {id:"avt-the-awakening-of-roku",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Awakening of Roku",date:"~63 BG",lang:"vo",img:"images/roku.jpg",desc:"Impatient de maîtriser l'État d'Avatar, Roku canalise l'énergie du solstice d'hiver — et déclenche le chaos sur l'Île du Croissant."},
     ]},
     {title:"LIVRE 1 : L'EAU",entries:[
       {id:"avt-1x01",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×01 · The Boy in the Iceberg",date:"99 AG"},
@@ -310,14 +319,14 @@ details[open] .faq-q::after{transform:rotate(90deg)}
       {id:"avt-2x02",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×02 · The Cave of Two Lovers",date:"100 AG"},
       {id:"avt-2x03",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×03 · Return to Omashu",date:"100 AG"},
       {id:"avt-2x04",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×04 · The Swamp",date:"100 AG"},
-      {id:"avt-origami",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Origami",date:"—",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte du recueil Team Avatar Tales (VF : Les Aventures Oubliées)."},
+      {id:"avt-origami",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Origami",date:"—",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte du recueil Team Avatar Tales (VF : Les Aventures Oubliées)."},
       {id:"avt-2x05",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×05 · Avatar Day",date:"100 AG"},
       {id:"avt-2x06",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×06 · The Blind Bandit",date:"100 AG"},
       {id:"avt-2x07",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×07 · Zuko Alone",date:"100 AG"},
       {id:"avt-lost-and-found",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Lost and Found",date:"—",lang:"vo"},
       {id:"avt-2x08",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×08 · The Chase",date:"100 AG"},
       {id:"avt-2x09",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×09 · Bitter Work",date:"100 AG"},
-      {id:"avt-katara-and-the-pirate-s-silver",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Katara and the Pirate's Silver",date:"100 AG",lang:"vf",ol:{q:"katara and the pirate's silver",inc:["pirate"]},desc:"Séparée du groupe après une embuscade, Katara doit s'allier à des pirates pour retrouver ses amis."},
+      {id:"avt-katara-and-the-pirate-s-silver",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Katara and the Pirate's Silver",date:"100 AG",lang:"vf",img:"images/pirates.jpg",desc:"Séparée du groupe après une embuscade, Katara doit s'allier à des pirates pour retrouver ses amis."},
       {id:"avt-sleepbending",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sleepbending",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
       {id:"avt-lessons",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Lessons",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
       {id:"avt-sokka-the-avatar",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sokka the Avatar",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
@@ -346,7 +355,7 @@ details[open] .faq-q::after{transform:rotate(90deg)}
       {id:"avt-private-fire",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Private Fire",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
       {id:"avt-3x03",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×03 · The Painted Lady",date:"100 AG"},
       {id:"avt-night-animals",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Night Animals",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
-      {id:"avt-the-substitute",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Substitute",date:"—",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte du recueil Team Avatar Tales (VF : Les Aventures Oubliées)."},
+      {id:"avt-the-substitute",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Substitute",date:"—",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte du recueil Team Avatar Tales (VF : Les Aventures Oubliées)."},
       {id:"avt-3x04",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×04 · Sokka's Master",date:"100 AG"},
       {id:"avt-boys-day-out",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Boys' Day Out",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
       {id:"avt-3x05",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×05 · The Beach",date:"100 AG"},
@@ -363,7 +372,7 @@ details[open] .faq-q::after{transform:rotate(90deg)}
       {id:"avt-3x13",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×13 · The Firebending Masters",date:"100 AG"},
       {id:"avt-swordbending",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Swordbending",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
       {id:"avt-no-benders-allowed",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"No Benders Allowed",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
-      {id:"avt-suki-alone",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Suki, Alone",date:"100 AG",tags:["flashback"],lang:"vf",ol:{q:"suki alone avatar",inc:["suki"]},desc:"Prisonnière à la Roche Bouillante, Suki organise en secret un jardin — et une rébellion — parmi les détenus."},
+      {id:"avt-suki-alone",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Suki, Alone",date:"100 AG",tags:["flashback"],lang:"vf",img:"images/suki.jpg",desc:"Prisonnière à la Roche Bouillante, Suki organise en secret un jardin — et une rébellion — parmi les détenus."},
       {id:"avt-3x14",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×14 · The Boiling Rock, Part 1",date:"100 AG"},
       {id:"avt-love-is-a-battlefield",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Love Is a Battlefield",date:"—",lang:"vf",ol:{q:"avatar last airbender lost adventures",inc:["lost adventures"]},desc:"Histoire courte du recueil The Lost Adventures (VF : Les Aventures Oubliées)."},
       {id:"avt-3x15",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×15 · The Boiling Rock, Part 2",date:"100 AG"},
@@ -380,23 +389,23 @@ details[open] .faq-q::after{transform:rotate(90deg)}
     {title:"APRÈS LA GUERRE — LES COMICS",entries:[
       {id:"avt-avatar-legends-city-of-echoes",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"Avatar Legends: City of Echoes",date:"—",tags:["flashback"],lang:"vo",ol:{q:"avatar city of echoes",inc:["city of echoes"]},desc:"Roman jeunesse de l'univers Avatar Legends, entre esprits et mystères."},
       {id:"avt-la-promesse-the-promise",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"La Promesse (The Promise) · 3 parties",date:"101 AG",lang:"vf",ol:{q:"avatar last airbender the promise",inc:["promise"]},desc:"Aang et Zuko s'opposent sur le sort des colonies de la Nation du Feu — la naissance douloureuse d'un nouveau monde après la guerre."},
-      {id:"avt-rebound",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Rebound",date:"101 AG",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte de l'après-guerre."},
-      {id:"avt-shells",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Shells",date:"101 AG",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte de l'après-guerre."},
-      {id:"avt-sisters",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sisters",date:"101 AG",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte de l'après-guerre."},
+      {id:"avt-rebound",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Rebound",date:"101 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte de l'après-guerre."},
+      {id:"avt-shells",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Shells",date:"101 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte de l'après-guerre."},
+      {id:"avt-sisters",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sisters",date:"101 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte de l'après-guerre."},
       {id:"avt-la-recherche-the-search",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"La Recherche (The Search) · 3 parties",date:"102 AG",lang:"vf",ol:{q:"avatar last airbender the search",inc:["search"],exc:["research"]},desc:"Zuko part enfin à la recherche de sa mère Ursa, accompagné d'une Azula imprévisible. La vérité l'attend dans une vallée peuplée d'esprits."},
       {id:"avt-smoke-and-shadow-partie-1",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Smoke and Shadow — Partie 1",date:"102 AG",lang:"vf",ol:{q:"avatar smoke and shadow part one",inc:["smoke and shadow","part one"],inc2:["smoke and shadow"]},desc:"Zuko rentre dans une Nation du Feu rongée par la peur : la Société de la Nouvelle Ozai complote et des enfants disparaissent, enlevés par les mystérieux Kemurikage."},
       {id:"avt-the-rift",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"The Rift · 3 parties",date:"102 AG",lang:"vf",ol:{q:"avatar last airbender the rift",inc:["rift"]},desc:"Aang veut honorer un festival oublié des Nomades de l'Air, mais découvre une raffinerie sur une terre sacrée — dirigée par le père de Toph."},
       {id:"avt-smoke-and-shadow-parties-2-3",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Smoke and Shadow — Parties 2 & 3",date:"102 AG",lang:"vf",ol:{q:"avatar smoke and shadow part two",inc:["smoke and shadow","part two"],inc2:["smoke and shadow"]},desc:"La traque des Kemurikage s'intensifie — Zuko doit choisir entre la peur et la confiance, tandis qu'Azula tire les ficelles dans l'ombre."},
       {id:"avt-north-and-south",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"North and South · 3 parties",date:"102 AG",lang:"vf",ol:{q:"avatar last airbender north and south",inc:["north and south"]},desc:"Katara et Sokka rentrent au Pôle Sud et découvrent leur tribu transformée par la modernité — et convoitée par des intérêts étrangers."},
-      {id:"avt-sokka-s-poem",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sokka's Poem",date:"102 AG",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte de l'après-guerre."},
+      {id:"avt-sokka-s-poem",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sokka's Poem",date:"102 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte de l'après-guerre."},
       {id:"avt-matcha-makers",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Matcha Makers",date:"102 AG",lang:"vo",img:"images/matcha.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day."},
       {id:"avt-azula-in-the-spirit-temple",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Azula in the Spirit Temple",date:"~102 AG",lang:"vo",ol:{q:"azula in the spirit temple",inc:["spirit temple"]},desc:"Seule et en fuite, Azula arrive dans un temple mystérieux où des esprits la confrontent à ses souvenirs et à ses choix."},
       {id:"avt-toph-beifong-s-metalbending-academy",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Toph Beifong's Metalbending Academy",date:"102 AG",lang:"vf",ol:{q:"toph beifong metalbending academy",inc:["metalbending"]},desc:"Toph a ouvert la première académie de maîtrise du métal, mais ses élèves peinent — et l'inspiration lui manque."},
       {id:"avt-the-bounty-hunter-and-the-tea-brewer",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Bounty Hunter and the Tea Brewer",date:"~102 AG",lang:"vo",ol:{q:"avatar bounty hunter and the tea brewer",inc:["bounty hunter"]},desc:"June la chasseuse de primes accepte un contrat qui la mène droit au salon de thé d'Iroh."},
       {id:"avt-ashes-of-the-academy",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Ashes of the Academy",date:"~102 AG",lang:"vo",ol:{q:"avatar ashes of the academy",inc:["ashes of the academy"]},desc:"Mai est nommée à la tête de la réforme de l'éducation de la Nation du Feu — entre souvenirs d'Azula et menaces des loyalistes."},
-      {id:"avt-the-scarecrow",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Scarecrow",date:"102 AG",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Histoire courte publiée pour le Free Comic Book Day."},
+      {id:"avt-the-scarecrow",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Scarecrow",date:"102 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day."},
       {id:"avt-imbalance",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Imbalance · 3 parties",date:"102 AG",lang:"vf",ol:{q:"avatar last airbender imbalance",inc:["imbalance"],exc:["star trek"]},desc:"À Cranefish Town, Team Avatar affronte une montée des tensions entre maîtres et non-maîtres qui annonce les conflits de l'ère de Korra."},
-      {id:"avt-toph-and-the-boulder",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Toph and the Boulder",date:"102 AG",lang:"vf",ol:{q:"avatar team avatar tales",inc:["team avatar tales"]},desc:"Toph croise la route du Boulder pour un affrontement haut en couleur."},
+      {id:"avt-toph-and-the-boulder",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Toph and the Boulder",date:"102 AG",lang:"vf",img:"images/tales.jpg",desc:"Toph croise la route du Boulder pour un affrontement haut en couleur."},
       {id:"avt-aang-the-last-airbender",type:"film",tmdb:"980431",media:"movie",level:"imp",title:"Aang : The Last Airbender",date:"—"},
       {id:"avt-legacy",type:"livre",tmdb:"0",media:"tv",level:"bonus",title:"Legacy",date:"—",lang:"vo",ol:{q:"avatar the last airbender legacy",inc:["legacy"],exc:["fire nation","yangchen","dungeons","d&d"]},desc:"Livre-objet : Aang transmet souvenirs et reliques à son fils Tenzin."},
     ]},
@@ -505,9 +514,9 @@ function olMatch(docs,inc,exc){
   });
 }
 async function fetchBook(e){
-  const key=e.id;
+  if(!e.ol)return null;
+  const key=e.ol.q+'|'+(e.ol.inc||[]).join(',');
   if(bookCache[key]!==undefined)return bookCache[key];
-  if(!e.ol){bookCache[key]=null;return null}
   try{
     const r=await fetch('https://openlibrary.org/search.json?q='+encodeURIComponent(e.ol.q)+'&limit=20&fields=cover_i,title');
     const d=await r.json();
@@ -537,15 +546,15 @@ async function loadPosters(){
   }
   // Google Books pour comics/romans/livres
   const bookEntries=currentData.eras.flatMap(er=>er.entries).filter(e=>e.ol);
-  for(let i=0;i<bookEntries.length;i+=4){
-    await Promise.all(bookEntries.slice(i,i+4).map(async e=>{
-      const v=await fetchBook(e);
-      if(v&&v.cover){
-        const el=document.querySelector('#tl-content .en[data-id="'+e.id+'"] .ep');
-        if(el)applyImg(el,v.cover);
-      }
-    }));
-    await new Promise(r=>setTimeout(r,120));
+  for(const e of bookEntries){
+    const key=e.ol.q+'|'+(e.ol.inc||[]).join(',');
+    const cached=bookCache[key]!==undefined;
+    const v=await fetchBook(e);
+    if(v&&v.cover){
+      const el=document.querySelector('#tl-content .en[data-id="'+e.id+'"] .ep');
+      if(el)applyImg(el,v.cover);
+    }
+    if(!cached)await new Promise(r=>setTimeout(r,350));
   }
 }
 
