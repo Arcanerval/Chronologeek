@@ -1,7 +1,13 @@
 // Chronologeek PWA — enregistrement + bannière d'installation
 (function(){
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    navigator.serviceWorker.register('/sw.js').then(reg => {
+      // Auto-update : re-vérifie le SW quand on revient sur l'app + toutes les heures
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(()=>{});
+      });
+      setInterval(() => reg.update().catch(()=>{}), 3600000);
+    }).catch(()=>{});
   }
 
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
