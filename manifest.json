@@ -1,0 +1,17 @@
+{
+  "name": "Chronologeek — Timelines geek",
+  "short_name": "Chronologeek",
+  "description": "Ordres de visionnage et timelines interactives : Star Wars, Marvel, DC, Avatar. Progression, badges, zéro spoil.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#08080f",
+  "theme_color": "#08080f",
+  "lang": "fr",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "images/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
