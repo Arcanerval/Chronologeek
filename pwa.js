@@ -2,15 +2,17 @@
 (function(){
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').then(reg => {
+      console.log('[CG PWA] Service worker enregistré ✓', reg.scope);
       // Auto-update : re-vérifie le SW quand on revient sur l'app + toutes les heures
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') reg.update().catch(()=>{});
       });
       setInterval(() => reg.update().catch(()=>{}), 3600000);
-    }).catch(()=>{});
-  }
+    }).catch(err => console.error('[CG PWA] Échec service worker ✗', err));
+  } else { console.warn('[CG PWA] serviceWorker non supporté'); }
 
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  console.log('[CG PWA] standalone:', isStandalone, '| dismiss:', localStorage.getItem('cg_pwa_dismiss'));
   if (isStandalone) return;
   const dismissed = localStorage.getItem('cg_pwa_dismiss');
   if (dismissed && Date.now() - Number(dismissed) < 7*24*3600*1000) return;
@@ -35,6 +37,7 @@
   // Android / Chrome : vraie installation
   let deferredPrompt = null;
   window.addEventListener('beforeinstallprompt', e => {
+    console.log('[CG PWA] beforeinstallprompt reçu ✓');
     e.preventDefault();
     deferredPrompt = e;
     banner(
