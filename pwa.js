@@ -54,7 +54,7 @@
   });
 
   // iOS Safari : tutoriel (pas d'install auto possible)
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
   if (isIOS) {
     window.addEventListener('load', () => setTimeout(() => {
       if (document.getElementById('cg-pwa-banner')) return;

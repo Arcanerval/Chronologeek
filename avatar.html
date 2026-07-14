@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
 <title>Avatar — Chronologeek</title>
 <style>
 :root{
@@ -227,6 +227,31 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 .appa-hover{opacity:0}
 #appa:hover .appa-normal{opacity:0}
 #appa:hover .appa-hover{opacity:1}
+
+/* ═══ Mobile App Polish ═══ */
+html,body{overflow-x:hidden;max-width:100vw}
+*{-webkit-tap-highlight-color:transparent}
+.en-check{flex:0 0 18px;width:18px;height:18px;box-sizing:border-box}
+.logo img{width:auto;object-fit:contain}
+@media(max-width:700px){
+  .logo img{height:22px;max-width:44vw}
+  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
+  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
+  .nav-links{flex:1;width:auto;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;gap:1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:.84rem;padding:.2rem 0}
+  .nav-sp,.nav-maj,.disc-btn{display:none}
+  .en-check{flex:0 0 22px;width:22px;height:22px}
+  .checkmark{font-size:.72rem}
+  #appa{width:62px;height:62px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
+}
+/* Hover réservé aux appareils avec souris (fini le hover collé au doigt) */
+@media(hover:none){
+  #appa:hover{transform:none}
+  #appa:hover .appa-normal{opacity:1}
+  #appa:hover .appa-hover{opacity:0}
+}
+
 </style>
 </head>
 <body data-universe="avatar">
@@ -242,7 +267,6 @@ details[open] .faq-q::after{transform:rotate(90deg)}
       <a onclick="window.location.href='dc.html'">DC</a>
       <a onclick="window.location.href='avatar.html'" style="color:var(--text);font-weight:700">Avatar</a>
       <a href="#">Dossiers</a>
-      <a href="#">Communauté</a>
     </div>
     <div class="nav-sp"></div>
     <span class="nav-maj">À jour · juillet 2026</span>

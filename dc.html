@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
 <title>DC Multivers — Chronologeek</title>
 <style>
 :root{
@@ -217,6 +217,31 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .leg{display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.78rem;color:var(--muted2)}
 .leg-title{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.3rem}
 .bfa{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.25)}
+
+/* ═══ Mobile App Polish ═══ */
+html,body{overflow-x:hidden;max-width:100vw}
+*{-webkit-tap-highlight-color:transparent}
+.en-check{flex:0 0 18px;width:18px;height:18px;box-sizing:border-box}
+.logo img{width:auto;object-fit:contain}
+@media(max-width:700px){
+  .logo img{height:22px;max-width:44vw}
+  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
+  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
+  .nav-links{flex:1;width:auto;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;gap:1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:.84rem;padding:.2rem 0}
+  .nav-sp,.nav-maj,.disc-btn{display:none}
+  .en-check{flex:0 0 22px;width:22px;height:22px}
+  .checkmark{font-size:.72rem}
+  #batsignal{width:68px;height:78px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
+}
+/* Hover réservé aux appareils avec souris (fini le hover collé au doigt) */
+@media(hover:none){
+  #batsignal:hover{transform:none}
+  #batsignal:hover .bat-normal{opacity:1}
+  #batsignal:hover .bat-hover{opacity:0}
+}
+
 </style>
 </head>
 <body data-universe="dc">
@@ -232,7 +257,6 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
       <a onclick="window.location.href='dc.html'" style="color:var(--text);font-weight:700">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
       <a href="#">Dossiers</a>
-      <a href="#">Communauté</a>
     </div>
     <div class="nav-sp"></div>
     <span class="nav-maj">À jour · juillet 2026</span>
