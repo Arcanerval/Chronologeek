@@ -35,7 +35,6 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .pbn{display:none;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted2)}.pbn.show{display:flex}
 .pbn-track{width:100px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
 .pbn-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .4s}
-.disc-btn{background:linear-gradient(135deg,#5865f2,#4752c4);color:#fff!important;padding:.4rem 1rem;border-radius:8px;font-size:.82rem;font-weight:600;white-space:nowrap}
 /* HOME */
 #home-page{display:none}#home-page.v{display:block}
 .hero{padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
@@ -180,8 +179,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
   nav{gap:.5rem;height:auto;padding:.5rem 0;flex-wrap:wrap}
   .nav-links{gap:.7rem}
   .nav-links a{font-size:.78rem}
-  .disc-btn{padding:.3rem .7rem;font-size:.78rem}
-  .en.deviate{margin-left:10px}
+    .en.deviate{margin-left:10px}
   .segment-box{margin-left:10px}
   #miss-minute{width:64px;height:64px;bottom:1.25rem;right:1.25rem}
   .filter-group{gap:.35rem}
@@ -218,37 +216,34 @@ details[open] .faq-q::after{transform:rotate(90deg)}
 /* ═══ Mobile App Polish ═══ */
 html,body{overflow-x:clip}
 *{-webkit-tap-highlight-color:transparent}
-.en-check{flex:0 0 18px;width:18px;height:18px;box-sizing:border-box}
 .logo img{width:auto;object-fit:contain}
 @media(max-width:700px){
   .logo img{height:22px;max-width:44vw}
   nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
   .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  .nav-sp,.nav-maj,.disc-btn{display:none}
+  .nav-sp,.nav-maj,  #miss-minute{width:52px;height:52px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
+}
+
+
+
+
+/* ═══ Menu mobile v2 ═══ */
+.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
+#mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
+#mmenu.open{display:flex}
+#mmenu a{color:var(--muted2);font-size:1.25rem;text-decoration:none;cursor:pointer;font-weight:600}
+#mmenu a.cur{color:var(--text);font-weight:800}
+#mmenu a.doss{color:var(--accent2)}
+.nav-links a.doss{color:var(--accent2);font-weight:700}
+@media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
+/* ═══ Checkboxes v3 : carrées, centrées ═══ */
+.en-top{align-items:center;user-select:none;-webkit-user-select:none}
+.en-check{flex:0 0 18px;width:18px;height:18px;margin-top:0;box-sizing:border-box;touch-action:manipulation}
+@media(max-width:700px){
   .en-check{flex:0 0 22px;width:22px;height:22px}
   .checkmark{font-size:.72rem}
-  #miss-minute{width:52px;height:52px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
 }
-/* Hover réservé aux appareils avec souris (fini le hover collé au doigt) */
-@media(hover:none){
-  #miss-minute:hover{transform:none}
-  #miss-minute:hover .mm-normal{opacity:1}
-  #miss-minute:hover .mm-hover{opacity:0}
-}
-
-
-/* ═══ Burger nav ═══ */
-.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
-@media(max-width:700px){
-  .burger{display:block}
-  .nav-links{display:none !important;position:fixed;inset:0;background:rgba(8,8,15,.97);backdrop-filter:blur(14px);flex-direction:column;justify-content:center;align-items:center;gap:1.4rem;z-index:150;overflow:visible;padding-top:60px}
-  .nav-links.open{display:flex !important}
-  .nav-links a{font-size:1.2rem;padding:.3rem 1rem}
-}
-
-/* Cases carrées, définitivement */
-.en-check{min-width:22px;max-width:22px;min-height:22px;max-height:22px;aspect-ratio:1/1}
-@media(min-width:701px){.en-check{min-width:18px;max-width:18px;min-height:18px;max-height:18px}}
 </style>
 </head>
 <body data-universe="mcu">
@@ -259,20 +254,28 @@ html,body{overflow-x:clip}
     </div>
     <div class="nav-links">
       <a onclick="window.location.href='index.html'">Accueil</a>
+      <a href="#" class="doss">Dossiers</a>
       <a onclick="window.location.href='starwars.html'">Star Wars</a>
       <a onclick="window.location.href='marvel.html'" style="color:var(--text);font-weight:700">Marvel</a>
       <a onclick="window.location.href='dc.html'">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a href="#">Dossiers</a>
       <a onclick="window.location.href='nouveautes.html'">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
     <span class="nav-maj">À jour · juin 2026</span>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
-    <button class="burger" onclick="document.querySelector('.nav-links').classList.toggle('open');this.textContent=this.textContent==='☰'?'✕':'☰'">☰</button>
-    <a href="#" class="disc-btn">Discord</a>
+    <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
   </nav>
 </header>
+<div id="mmenu">
+  <a href="index.html">Accueil</a>
+  <a href="#" class="doss">Dossiers</a>
+  <a href="starwars.html">Star Wars</a>
+  <a href="marvel.html" class="cur">Marvel</a>
+  <a href="dc.html">DC</a>
+  <a href="avatar.html">Avatar</a>
+  <a href="nouveautes.html">Nouveautés</a>
+</div>
 <div id="miss-minute" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
   <img class="mm-normal" src="images/miss-minutes.png" alt=""/>
   <img class="mm-hover" src="images/miss-minutes-overclick.png" alt=""/>
@@ -289,7 +292,7 @@ html,body{overflow-x:clip}
       <div class="pb-counts" id="pb-counts">0 / 0 · 0%</div>
       <div class="pb-hint">Vous pouvez cocher votre progression qui sera sauvegardée sur ce navigateur</div>
     </div>
-    <button class="pb-reset" onclick="resetProgress()">Reset</button>
+    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Reprendre</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
   </div>
   <div class="nb" id="tl-notes"></div>
   <div class="leg" id="tl-legend"></div>
@@ -780,6 +783,20 @@ function showCS(){window.location.href='index.html';}
 
 
 
+
+function cgResume(){
+  var els=document.querySelectorAll('.en');
+  for(var i=0;i<els.length;i++){
+    var e=els[i];
+    if(e.dataset&&e.dataset.type==='separator')continue;
+    if(!e.classList.contains('done')&&e.offsetParent!==null){
+      e.scrollIntoView({behavior:'smooth',block:'center'});
+      e.style.boxShadow='0 0 0 2px var(--accent),0 0 24px rgba(124,106,247,.35)';
+      (function(x){setTimeout(function(){x.style.boxShadow=''},1800)})(e);
+      return;
+    }
+  }
+}
 function cgScrollTop(){return window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0}
 function cgTopBtn(){const g=document.getElementById('miss-minute');if(g)g.classList.toggle('visible',cgScrollTop()>400)}
 window.addEventListener('scroll',cgTopBtn,{passive:true});
