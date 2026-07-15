@@ -103,6 +103,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+.nav-links a.news,#mmenu a.news{color:#4fc3f7}
 </style>
 </head>
 <body>
@@ -110,7 +111,7 @@ html,body{overflow-x:clip}
 <header>
   <nav>
     <div class="logo" onclick="window.location.href='index.html'">
-      <img src="images/logo-chronologeek.png" alt="Chronologeek"/>
+      <img src="images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
     </div>
     <div class="nav-links">
       <a onclick="window.location.href='index.html'">Accueil</a>
@@ -119,7 +120,7 @@ html,body{overflow-x:clip}
       <a onclick="window.location.href='marvel.html'">Marvel</a>
       <a onclick="window.location.href='dc.html'">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'" style="color:var(--text);font-weight:700">Nouveautés</a>
+      <a class="news" onclick="window.location.href='nouveautes.html'" style="color:var(--text);font-weight:700">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
@@ -132,7 +133,7 @@ html,body{overflow-x:clip}
   <a href="marvel.html">Marvel</a>
   <a href="dc.html">DC</a>
   <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html" class="cur">Nouveautés</a>
+  <a href="nouveautes.html" class="cur news">Nouveautés</a>
 </div>
 
 <div style="max-width:820px;margin:0 auto;padding:2rem 1.2rem 4rem">

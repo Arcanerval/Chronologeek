@@ -237,20 +237,35 @@ html,body{overflow-x:clip}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
 
-/* ═══ Checkboxes v3 : carrées, centrées ═══ */
-.en-top{align-items:center;user-select:none;-webkit-user-select:none}
-.en-check{flex:0 0 18px;width:18px;height:18px;margin-top:0;box-sizing:border-box;touch-action:manipulation}
+
+/* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
+.checkmark{width:20px;height:20px;min-width:20px;border:2px solid var(--border2);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
+.en.done .checkmark{background:var(--accent);border-color:var(--accent);color:#fff}
+.en-check:hover .checkmark{border-color:var(--accent)}
+@media(max-width:700px){.checkmark{width:24px;height:24px;min-width:24px;font-size:.8rem}}
+
+/* ═══ Harmonisation typographique ═══ */
+.page-title{font-size:2.1rem !important}
+.en-name{font-size:.92rem !important}
+.b{font-size:.66rem !important}
+.leg,#tl-legend{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;font-size:.8rem;color:var(--muted2)}
+
+/* ═══ Progress block uniforme ═══ */
+.progress-block{width:100%;box-sizing:border-box;flex-wrap:wrap;gap:.6rem}
 @media(max-width:700px){
-  .en-check{flex:0 0 22px;width:22px;height:22px}
-  .checkmark{font-size:.72rem}
+  .progress-block{flex-direction:row}
+  .pb-info{flex:1 1 100%}
+  .progress-block button{flex:1;white-space:nowrap}
+  .pbn{display:none !important}
 }
+.nav-links a.news,#mmenu a.news{color:#4fc3f7}
 </style>
 </head>
 <body data-universe="mcu">
 <header>
   <nav>
     <div class="logo" onclick="window.location.href='index.html'">
-      <img src="images/logo-chronologeek.png" alt="Chronologeek"/>
+      <img src="images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
     </div>
     <div class="nav-links">
       <a onclick="window.location.href='index.html'">Accueil</a>
@@ -259,7 +274,7 @@ html,body{overflow-x:clip}
       <a onclick="window.location.href='marvel.html'" style="color:var(--text);font-weight:700">Marvel</a>
       <a onclick="window.location.href='dc.html'">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'">Nouveautés</a>
+      <a onclick="window.location.href='nouveautes.html'" class="news">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
     <span class="nav-maj">À jour · juin 2026</span>
@@ -274,7 +289,7 @@ html,body{overflow-x:clip}
   <a href="marvel.html" class="cur">Marvel</a>
   <a href="dc.html">DC</a>
   <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html">Nouveautés</a>
+  <a href="nouveautes.html" class="news">Nouveautés</a>
 </div>
 <div id="miss-minute" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
   <img class="mm-normal" src="images/miss-minutes.png" alt=""/>

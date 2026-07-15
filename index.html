@@ -103,6 +103,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+.nav-links a.news,#mmenu a.news{color:#4fc3f7}
 </style>
 </head>
 <body>
@@ -119,7 +120,7 @@ html,body{overflow-x:clip}
       <a onclick="window.location.href='marvel.html'">Marvel</a>
       <a onclick="window.location.href='dc.html'">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'">Nouveautés</a>
+      <a onclick="window.location.href='nouveautes.html'" class="news">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
@@ -132,7 +133,7 @@ html,body{overflow-x:clip}
   <a href="marvel.html">Marvel</a>
   <a href="dc.html">DC</a>
   <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html">Nouveautés</a>
+  <a href="nouveautes.html" class="news">Nouveautés</a>
 </div>
 
 <section class="hero">
