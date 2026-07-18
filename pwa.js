@@ -1,5 +1,17 @@
 // Chronologeek PWA — enregistrement + bannière d'installation
 (function(){
+  const FR = document.documentElement.lang === 'fr' || location.pathname.startsWith('/fr/');
+  const T = FR ? {
+    title:'Installer Chronologeek',
+    android:'progression et timelines, même hors-ligne',
+    btn:'Installer',
+    ios:'appuie sur <strong>Partager</strong> puis « Sur l\u2019écran d\u2019accueil »'
+  } : {
+    title:'Install Chronologeek',
+    android:'your progress and timelines, even offline',
+    btn:'Install',
+    ios:'tap <strong>Share</strong> then \u201CAdd to Home Screen\u201D'
+  };
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').then(reg => {
       console.log('[CG PWA] Service worker enregistré ✓', reg.scope);
@@ -41,8 +53,8 @@
     e.preventDefault();
     deferredPrompt = e;
     banner(
-      '<span style="font-size:1.2rem">📲</span><span style="flex:1"><strong>Installer Chronologeek</strong> — progression et timelines, même hors-ligne</span>'+
-      '<button class="cg-pwa-install" style="background:linear-gradient(135deg,#7c6af7,#f06292);color:#fff;border:none;border-radius:8px;padding:.4rem .9rem;font-size:.8rem;font-weight:700;cursor:pointer">Installer</button>'+
+      '<span style="font-size:1.2rem">📲</span><span style="flex:1"><strong>'+T.title+'</strong> — '+T.android+'</span>'+
+      '<button class="cg-pwa-install" style="background:linear-gradient(135deg,#7c6af7,#f06292);color:#fff;border:none;border-radius:8px;padding:.4rem .9rem;font-size:.8rem;font-weight:700;cursor:pointer">'+T.btn+'</button>'+
       '<button class="cg-pwa-close" style="background:none;border:none;color:#686880;font-size:1rem;cursor:pointer">✕</button>',
       async () => {
         deferredPrompt.prompt();
@@ -59,7 +71,7 @@
     window.addEventListener('load', () => setTimeout(() => {
       if (document.getElementById('cg-pwa-banner')) return;
       banner(
-        '<span style="font-size:1.2rem">📲</span><span style="flex:1"><strong>Installer Chronologeek</strong> — appuie sur <strong>Partager</strong> puis « Sur l\'écran d\'accueil »</span>'+
+        '<span style="font-size:1.2rem">📲</span><span style="flex:1"><strong>'+T.title+'</strong> — '+T.ios+'</span>'+
         '<button class="cg-pwa-close" style="background:none;border:none;color:#686880;font-size:1rem;cursor:pointer">✕</button>'
       );
     }, 1500));
