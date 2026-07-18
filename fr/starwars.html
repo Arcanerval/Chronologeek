@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
-<title>Star Wars Timeline — Chronologeek</title>
+<title>Star Wars — Chronologeek</title>
 <link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars.html"/>
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars.html"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/starwars.html"/>
@@ -275,47 +275,47 @@ html,body{overflow-x:clip}
       <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
     </div>
     <div class="nav-links">
-      <a onclick="window.location.href='index.html'">Home</a>
-      <a href="#" class="doss">Deep Dives</a>
+      <a onclick="window.location.href='index.html'">Accueil</a>
+      <a href="#" class="doss">Dossiers</a>
       <a onclick="window.location.href='starwars.html'" style="color:var(--text);font-weight:700">Star Wars</a>
       <a onclick="window.location.href='marvel.html'">Marvel</a>
       <a onclick="window.location.href='dc.html'">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'" class="news">What's New</a>
+      <a onclick="window.location.href='nouveautes.html'" class="news">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
-    <span class="nav-maj">Updated · June 2026</span>
+    <span class="nav-maj">À jour · juin 2026</span>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
-    <a class="lang-btn" href="/fr/starwars.html" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
+    <a class="lang-btn" href="/starwars.html" title="English version"><svg class="flag" viewBox="0 0 60 30"><clipPath id="ukc"><path d="M0,0 v30 h60 v-30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></a>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
   </nav>
 </header>
 <div id="mmenu">
-  <a href="index.html">Home</a>
-  <a href="#" class="doss">Deep Dives</a>
+  <a href="index.html">Accueil</a>
+  <a href="#" class="doss">Dossiers</a>
   <a href="starwars.html" class="cur">Star Wars</a>
   <a href="marvel.html">Marvel</a>
   <a href="dc.html">DC</a>
   <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html" class="news">What's New</a>
+  <a href="nouveautes.html" class="news">Nouveautés</a>
 </div>
-<div id="grogu" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+<div id="grogu" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
   <img class="grogu-normal" src="/images/grogu.png" alt="Grogu"/>
   <img class="grogu-hover" src="/images/grogumouseover.png" alt="Grogu"/>
 </div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 <div class="tl-page" id="tl-page">
-  <div class="bc" onclick="window.location.href='index.html'">← Home</div>
+  <div class="bc" onclick="window.location.href='index.html'">← Accueil</div>
   <div class="page-title" id="tl-title"></div>
   <div class="page-sub" id="tl-sub"></div>
   <div class="progress-block">
     <div class="pb-info">
-      <div class="pb-label">My progress</div>
+      <div class="pb-label">Ma progression</div>
       <div class="pb-track"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div>
       <div class="pb-counts" id="pb-counts">0 / 0 · 0%</div>
-      <div class="pb-hint">Check off what you've watched — your progress is saved in this browser</div>
+      <div class="pb-hint">Vous pouvez cocher votre progression qui sera sauvegardée sur ce navigateur</div>
     </div>
-    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Resume</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
+    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Reprendre</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
   </div>
   <div class="nb" id="tl-notes"></div>
   <div class="leg" id="tl-legend"></div>
@@ -323,97 +323,97 @@ html,body{overflow-x:clip}
   <div id="tl-content"></div>
 </div>
 <script>const DATA_SW={
-  id:"sw",title:"Star Wars",subtitle:"Canon Timeline",
-  description:"Movies · TV Shows · Animation · Video Games",
+  id:"sw",title:"Star Wars",subtitle:"Timeline Canonique",
+  description:"Films · Séries · Animés · Jeux vidéo",
   color:"#4d9fff",glow:"rgba(77,159,255,.35)",
   tmdb_banner:{type:"tv",id:"82856"},
-  notes:`Some things are missing, but they're <strong>not important for understanding the saga</strong> (<strong>The Acolyte, some episodes of The Clone Wars, Resistance, the kids' animated shows… and of course all the mobile games, novels and comics</strong>)<br><br>Year 0 of the calendar is the Battle of Yavin (Star Wars Episode IV), so <strong>BBY</strong> = Before the Battle of Yavin / <strong>ABY</strong> = After the Battle of Yavin<br><br>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such<br><br>If you don't want to play the games, search <em>"GAME NAME full movie"</em> on YouTube or click the link in the media's description`,
+  notes:`Il manque des choses mais elles ne sont <strong>pas importantes pour la compréhension de la saga</strong> (<strong>The Acolyte, certains épisodes de The Clone Wars, Résistance, les séries d'animations pour enfants… et bien sûr tous les jeux mobiles, romans et comics</strong>)<br><br>L'an 0 du calendrier est la Bataille de Yavin (Star Wars Épisode IV) donc <strong>BBY</strong> = Before Battle of Yavin / <strong>ABY</strong> = After Battle of Yavin<br><br>Certains événements sont mieux à voir en tant que <strong>FLASHBACK</strong> pour comprendre et sont donc indiqués comme tel<br><br>Si vous ne voulez pas faire les jeux tapez <em>"NOM DU JEU film complet"</em> sur YouTube ou cliquez sur le lien dans la description du média`,
   eras:[
-    {title:"THE REPUBLIC ERA",entries:[
-      {id:"sw-ep1",type:"film",tmdb:"1893",media:"movie",img:"/images/starwars1.webp",title:"Episode I: The Phantom Menace",date:"32 BBY",faq:{quand:"The movie takes place in 32 BBY during the age of the Republic",pourquoi:"Because the movie lays the foundations of the saga, and you need to see it first for context on the characters"}},
-      {id:"sw-ep2",type:"film",tmdb:"1894",media:"movie",img:"/images/starwars2.webp",title:"Episode II: Attack of the Clones",date:"22 BBY",faq:{quand:"The movie takes place 10 years after Episode I",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-toj2",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 2",date:"~60 BBY",tags:["flashback"],faq:{quand:"The episode takes place about 30 years before The Phantom Menace",pourquoi:"Because it's better to already know the characters and experience this story as a flashback for better understanding"}},
-      {id:"sw-toj3",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 3",date:"~50 BBY",tags:["flashback"],faq:{quand:"The episode takes place about 10 years after the previous one",pourquoi:"Because it's better to already know the characters and experience this story as a flashback for better understanding"}},
-      {id:"sw-toj4",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 4",date:"32 BBY",note:"During The Phantom Menace",tags:["flashback"],faq:{quand:"The episode takes place at the same time as The Phantom Menace",pourquoi:"Because it's better to already know the characters and experience this story as a flashback for better understanding"}}
+    {title:"L'ÈRE DE LA RÉPUBLIQUE",entries:[
+      {id:"sw-ep1",type:"film",tmdb:"1893",media:"movie",img:"/images/starwars1.webp",title:"Épisode I : La Menace Fantôme",date:"32 BBY",faq:{quand:"Le film se déroule en 32 BBY pendant l'âge de la République",pourquoi:"Parce que le film pose les fondations de la saga et qu'il faut d'abord le voir pour avoir du contexte sur les différents personnages"}},
+      {id:"sw-ep2",type:"film",tmdb:"1894",media:"movie",img:"/images/starwars2.webp",title:"Épisode II : L'Attaque des Clones",date:"22 BBY",faq:{quand:"Le film se déroule 10 ans après l'Épisode I",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-toj2",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 2",date:"~60 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule environ 30 ans avant La Menace Fantôme",pourquoi:"Parce qu'il vaut mieux déjà connaître les personnages et voir cette histoire sous forme de flashback pour mieux comprendre"}},
+      {id:"sw-toj3",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 3",date:"~50 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule environ 10 ans après l'épisode précédent",pourquoi:"Parce qu'il vaut mieux déjà connaître les personnages et voir cette histoire sous forme de flashback pour mieux comprendre"}},
+      {id:"sw-toj4",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 4",date:"32 BBY",note:"Pendant La Menace Fantôme",tags:["flashback"],faq:{quand:"L'épisode se déroule au même moment que La Menace Fantôme",pourquoi:"Parce qu'il vaut mieux déjà connaître les personnages et voir cette histoire sous forme de flashback pour mieux comprendre"}}
     ]},
-    {title:"THE CLONE WARS",entries:[
-      {id:"sw-tcw-pre",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY (before the movie)",date:"22 BBY",
-        note:"The episodes grouped below are story arcs, separated by blank lines",
-        subitems:["Season 2 Episode 16","Season 1 Episode 16"],
-        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Parce qu'ils se situent ici chronologiquement"}},
-      {id:"sw-toj1",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 1",date:"36–35 BBY",tags:["flashback"],faq:{quand:"The episode is set a few years before The Phantom Menace",pourquoi:"An extremely important character is introduced in the animated The Clone Wars movie, and this episode serves as their origin story — watch it before or after the movie, as you prefer"}},
-      {id:"sw-tcwfilm",type:"filmanim",tmdb:"12180",media:"movie",img:"/images/clonewarsfilm.webp",title:"Star Wars: The Clone Wars",date:"22 BBY",faq:{quand:"The movie takes place at the start of the Clone Wars in 22 BBY",pourquoi:"Because this is where it falls chronologically"}},
+    {title:"LA GUERRE DES CLONES",entries:[
+      {id:"sw-tcw-pre",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY (avant le film)",date:"22 BBY",
+        note:"Les épisodes regroupés ci-dessous sont des arcs narratifs, séparés par des lignes vides",
+        subitems:["Saison 2 épisode 16","Saison 1 épisode 16"],
+        faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce qu'ils se situent ici chronologiquement"}},
+      {id:"sw-toj1",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 1",date:"36–35 BBY",tags:["flashback"],faq:{quand:"L'épisode se situe quelques années avant La Menace Fantôme",pourquoi:"Un personnage extrêmement important est introduit dans le film animé The Clone Wars et cet épisode lui sert d'origin story que vous pouvez voir avant ou après le film à votre convenance"}},
+      {id:"sw-tcwfilm",type:"filmanim",tmdb:"12180",media:"movie",img:"/images/clonewarsfilm.webp",title:"Star Wars : The Clone Wars",date:"22 BBY",faq:{quand:"Le film se déroule au début de la Guerre des Clones en 22 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
       {id:"sw-tcw-22",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY",date:"22 BBY",
-        subitems:["Season 3 Episode 1"," ","Season 3 Episode 3"," ","Season 1 Episode 1"," ","Season 1 Episode 2","Season 1 Episode 3","Season 1 Episode 4","Season 1 Episode 5"," ","Season 1 Episode 9","Season 1 Episode 10"],
-        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Because this is the show's chronological order, arc by arc, without the filler episodes"}},
+        subitems:["Saison 3 épisode 1"," ","Saison 3 épisode 3"," ","Saison 1 épisode 1"," ","Saison 1 épisode 2","Saison 1 épisode 3","Saison 1 épisode 4","Saison 1 épisode 5"," ","Saison 1 épisode 9","Saison 1 épisode 10"],
+        faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
       {id:"sw-tcw-21",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 21 BBY",date:"21 BBY",
-        subitems:["Season 1 Episode 11","Season 1 Episode 12"," ","Season 1 Episode 15"," ","Season 1 Episode 19","Season 1 Episode 20","Season 1 Episode 21"," ","Season 2 Episode 1","Season 2 Episode 2","Season 2 Episode 3"," ","Season 2 Episode 17"," ","Season 2 Episode 18","Season 2 Episode 19"," ","Season 2 Episode 4","Season 2 Episode 5","Season 2 Episode 6","Season 2 Episode 7","Season 2 Episode 8"," ","Season 2 Episode 9","Season 2 Episode 10"," ","Season 2 Episode 12","Season 2 Episode 13","Season 2 Episode 14"," ","Season 2 Episode 20","Season 2 Episode 21","Season 2 Episode 22"," ","Season 3 Episode 5","Season 3 Episode 6"," ","Season 3 Episode 7"," ","Season 3 Episode 2"," ","Season 3 Episode 8","Season 1 Episode 22","Season 3 Episode 9"," ","Season 3 Episode 10"," ","Season 3 Episode 12","Season 3 Episode 13","Season 3 Episode 14"],
-        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Because this is the show's chronological order, arc by arc, without the filler episodes"}},
+        subitems:["Saison 1 épisode 11","Saison 1 épisode 12"," ","Saison 1 épisode 15"," ","Saison 1 épisode 19","Saison 1 épisode 20","Saison 1 épisode 21"," ","Saison 2 épisode 1","Saison 2 épisode 2","Saison 2 épisode 3"," ","Saison 2 épisode 17"," ","Saison 2 épisode 18","Saison 2 épisode 19"," ","Saison 2 épisode 4","Saison 2 épisode 5","Saison 2 épisode 6","Saison 2 épisode 7","Saison 2 épisode 8"," ","Saison 2 épisode 9","Saison 2 épisode 10"," ","Saison 2 épisode 12","Saison 2 épisode 13","Saison 2 épisode 14"," ","Saison 2 épisode 20","Saison 2 épisode 21","Saison 2 épisode 22"," ","Saison 3 épisode 5","Saison 3 épisode 6"," ","Saison 3 épisode 7"," ","Saison 3 épisode 2"," ","Saison 3 épisode 8","Saison 1 épisode 22","Saison 3 épisode 9"," ","Saison 3 épisode 10"," ","Saison 3 épisode 12","Saison 3 épisode 13","Saison 3 épisode 14"],
+        faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
       {id:"sw-tcw-20",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 20 BBY",date:"20 BBY",
-        subitems:["Season 3 Episode 15","Season 3 Episode 16","Season 3 Episode 17","Season 3 Episode 18","Season 3 Episode 19","Season 3 Episode 20"," ","Season 3 Episode 21","Season 3 Episode 22"," ","Season 4 Episode 7","Season 4 Episode 8","Season 4 Episode 9","Season 4 Episode 10"," ","Season 4 Episode 14"," ","Season 4 Episode 15","Season 4 Episode 16","Season 4 Episode 17","Season 4 Episode 18"," ","Season 4 Episode 19","Season 4 Episode 20","Season 4 Episode 21","Season 4 Episode 22"," ","Season 5 Episode 2","Season 5 Episode 3","Season 5 Episode 4","Season 5 Episode 5"," ","Season 5 Episode 6","Season 5 Episode 7","Season 5 Episode 8","Season 5 Episode 9"," ","Season 5 Episode 12"],
-        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Because this is the show's chronological order, arc by arc, without the filler episodes"}},
+        subitems:["Saison 3 épisode 15","Saison 3 épisode 16","Saison 3 épisode 17","Saison 3 épisode 18","Saison 3 épisode 19","Saison 3 épisode 20"," ","Saison 3 épisode 21","Saison 3 épisode 22"," ","Saison 4 épisode 7","Saison 4 épisode 8","Saison 4 épisode 9","Saison 4 épisode 10"," ","Saison 4 épisode 14"," ","Saison 4 épisode 15","Saison 4 épisode 16","Saison 4 épisode 17","Saison 4 épisode 18"," ","Saison 4 épisode 19","Saison 4 épisode 20","Saison 4 épisode 21","Saison 4 épisode 22"," ","Saison 5 épisode 2","Saison 5 épisode 3","Saison 5 épisode 4","Saison 5 épisode 5"," ","Saison 5 épisode 6","Saison 5 épisode 7","Saison 5 épisode 8","Saison 5 épisode 9"," ","Saison 5 épisode 12"],
+        faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
       {id:"sw-tcw-19",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 19 BBY",date:"19 BBY",
-        subitems:["Season 5 Episode 1","Season 5 Episode 14","Season 5 Episode 15","Season 5 Episode 16"," ","Season 5 Episode 17","Season 5 Episode 18","Season 5 Episode 19","Season 5 Episode 20"," ","Season 6 Episode 1","Season 6 Episode 2","Season 6 Episode 3","Season 6 Episode 4"," ","Season 6 Episode 5","Season 6 Episode 6","Season 6 Episode 7"," ","Season 6 Episode 10","Season 6 Episode 11","Season 6 Episode 12","Season 6 Episode 13"," ","Season 7 Episode 5","Season 7 Episode 6","Season 7 Episode 7","Season 7 Episode 8"," ","Season 7 Episode 1","Season 7 Episode 2","Season 7 Episode 3","Season 7 Episode 4"],
-        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Because this is the show's chronological order, arc by arc, without the filler episodes"}},
-      {id:"sw-ep3",type:"film",tmdb:"1895",media:"movie",img:"/images/starwars3.webp",title:"Episode III: Revenge of the Sith",date:"19 BBY",faq:{quand:"The movie takes place at the end of the Clone Wars in 19 BBY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-tcw-rsith",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — during Revenge of the Sith",date:"19 BBY",
-        subitems:["Season 7 Episode 9","Season 7 Episode 10","Season 7 Episode 11","Season 7 Episode 12 (epilogue ~17 BBY)"],
-        faq:{quand:"The episodes take place in parallel with the events of Revenge of the Sith",pourquoi:"Because you'd better have seen the movie first, for obvious spoiler reasons"}},
-      {id:"sw-toj5",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 5",date:"~22–19 BBY",tags:["flashback"],faq:{quand:"The episode spans several periods during the Clone Wars",pourquoi:"The end of the episode spoils an episode of The Clone Wars, so it's better to watch it afterward"}},
-      {id:"sw-toe4",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Episode 4",date:"19 BBY",note:"Pendant La Revanche des Sith",faq:{quand:"The episode takes place in parallel with the events of Revenge of the Sith",pourquoi:"Because the episode spoils the movie"}},
-      {id:"sw-toe5",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Episode 5",date:"19 BBY",faq:{quand:"The episode takes place shortly after Revenge of the Sith",pourquoi:"Because this is where it falls chronologically"}}
+        subitems:["Saison 5 épisode 1","Saison 5 épisode 14","Saison 5 épisode 15","Saison 5 épisode 16"," ","Saison 5 épisode 17","Saison 5 épisode 18","Saison 5 épisode 19","Saison 5 épisode 20"," ","Saison 6 épisode 1","Saison 6 épisode 2","Saison 6 épisode 3","Saison 6 épisode 4"," ","Saison 6 épisode 5","Saison 6 épisode 6","Saison 6 épisode 7"," ","Saison 6 épisode 10","Saison 6 épisode 11","Saison 6 épisode 12","Saison 6 épisode 13"," ","Saison 7 épisode 5","Saison 7 épisode 6","Saison 7 épisode 7","Saison 7 épisode 8"," ","Saison 7 épisode 1","Saison 7 épisode 2","Saison 7 épisode 3","Saison 7 épisode 4"],
+        faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
+      {id:"sw-ep3",type:"film",tmdb:"1895",media:"movie",img:"/images/starwars3.webp",title:"Épisode III : La Revanche des Sith",date:"19 BBY",faq:{quand:"Le film se déroule à la fin de la Guerre des Clones en 19 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-tcw-rsith",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — pendant La Revanche des Sith",date:"19 BBY",
+        subitems:["Saison 7 épisode 9","Saison 7 épisode 10","Saison 7 épisode 11","Saison 7 épisode 12 (épilogue ~17 BBY)"],
+        faq:{quand:"Les épisodes se déroulent en parallèle des évènements de La Revanche des Sith",pourquoi:"Parce qu'il vaut mieux avoir vu le film avant pour des questions évidentes de spoil"}},
+      {id:"sw-toj5",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 5",date:"~22–19 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule sur plusieurs périodes pendant la Guerre des Clones",pourquoi:"La fin de l'épisode spoile un épisode de The Clone Wars donc il vaut mieux le regarder après"}},
+      {id:"sw-toe4",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 4",date:"19 BBY",note:"Pendant La Revanche des Sith",faq:{quand:"L'épisode se déroule en parallèle des évènements de La Revanche des Sith",pourquoi:"Parce que l'épisode spoile le film"}},
+      {id:"sw-toe5",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 5",date:"19 BBY",faq:{quand:"L'épisode se déroule peu de temps après La Revanche des Sith",pourquoi:"Parce qu'il se situe ici chronologiquement"}}
     ]},
-    {title:"THE IMPERIAL ERA",entries:[
-      {id:"sw-bb1",type:"anime",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch — Season 1",date:"19 BBY",note:"Episode 1 during Revenge of the Sith",subitems:["Season 1"],faq:{quand:"Season 1 starts during Revenge of the Sith and continues after the events of the movie",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-bb2",type:"anime",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch — Seasons 2 & 3",date:"18 BBY",subitems:["Season 2","Season 3"],faq:{quand:"The show takes place in 18 BBY, after the events of Revenge of the Sith",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-totu1",type:"anime",tmdb:"288055",media:"tv",img:"/images/talesoftheunderground.webp",title:"Tales of the Underworld — Episode 1",date:"~17–16 BBY",note:"prologue before Revenge of the Sith; the death of this episode's character happens in the novel Dark Disciple (read a summary if you're curious)",faq:{quand:"The episode starts a little before Revenge of the Sith, with the rest probably taking place between 18 and 16 BBY",pourquoi:"Because the episode continues the adventures of a character who appears in The Bad Batch"}},
-      {id:"sw-totu23",type:"anime",tmdb:"288055",media:"tv",img:"/images/talesoftheunderground.webp",title:"Tales of the Underworld — Episodes 2-3",date:"~17–16 BBY",faq:{quand:"The episodes probably take place between 18 and 16 BBY",pourquoi:"Because the episodes continue the adventures of a character who appears in The Bad Batch"}},
-      {id:"sw-maul",type:"anime",tmdb:"289219",media:"tv",img:"/images/maul.webp",title:"Maul: Shadow Lord",date:"~17–16 BBY",faq:{quand:"Season 1 probably takes place shortly after Revenge of the Sith, between 18 and 16 BBY",pourquoi:"Because this is where it falls chronologically"},desc:"Maul: Shadow Lord is an animated series following Maul\'s journey after the events of The Clone Wars."},
-      {id:"sw-toj6",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 6",date:"~16–15 BBY",note:"Prologue during Revenge of the Sith",faq:{quand:"The episode opens during Revenge of the Sith, then unfolds over an undetermined period between 16 and 14 BBY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-fo",type:"jeu",tmdb:"0",media:"game",img:"/images/fallenorder.jpg",title:"Star Wars Jedi: Fallen Order",date:"14 BBY",faq:{quand:"The game takes place in 14 BBY, 5 years after Episode III",pourquoi:"Because this is where it falls chronologically"},desc:"Developed by Respawn Entertainment, Jedi: Fallen Order sets its story between the third and fourth entries of the saga. You play as a young Padawan on the run from the Empire and its hunt for the last surviving Jedi — a manhunt led by Darth Vader."},
-      {id:"sw-solo",type:"film",tmdb:"348350",media:"movie",img:"/images/solo.webp",title:"Solo: A Star Wars Story",date:"10 BBY",faq:{quand:"The movie mostly takes place in 10 BBY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-kenobi",type:"serie",tmdb:"92830",media:"tv",img:"/images/kenobi.webp",title:"Obi-Wan Kenobi",date:"9 BBY",faq:{quand:"The show takes place in 9 BBY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-toe6",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Episode 6",date:"~9–6 BBY",faq:{quand:"We don't know exactly when the episode takes place, but probably after the Obi-Wan Kenobi series, in the following months or years",pourquoi:"Because the episode features a character from Obi-Wan Kenobi and works well as a direct follow-up"}},
-      {id:"sw-survivor",type:"jeu",tmdb:"0",media:"game",img:"/images/survivor.jpg",title:"Star Wars Jedi: Survivor",date:"9 BBY",faq:{quand:"The game takes place 5 years after Fallen Order",pourquoi:"Because the game works better after the events of Obi-Wan Kenobi"},desc:"Star Wars Jedi: Survivor takes place five years after Fallen Order and once again follows the story of Cal Kestis. Now a fully-fledged Jedi, our hero fights to survive on the far edges of the Galaxy. Still accompanied by BD-1, he will face the terrible Galactic Empire once more."}
+    {title:"L'ÈRE DE L'EMPIRE",entries:[
+      {id:"sw-bb1",type:"anime",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch — Saison 1",date:"19 BBY",note:"Épisode 1 pendant La Revanche des Sith",subitems:["Saison 1"],faq:{quand:"La saison 1 commence pendant La Revanche des Sith et se poursuit après les évènements du film",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-bb2",type:"anime",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch — Saisons 2 & 3",date:"18 BBY",subitems:["Saison 2","Saison 3"],faq:{quand:"La série se déroule en 18 BBY après les évènements de La Revanche des Sith",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-totu1",type:"anime",tmdb:"288055",media:"tv",img:"/images/talesoftheunderground.webp",title:"Tales of the Underworld — Épisode 1",date:"~17–16 BBY",note:"prologue avant La Revanche des Sith, la mort du personnage de l'épisode se passe dans le livre Dark Disciple (lisez un résumé si ça vous intéresse)",faq:{quand:"L'épisode commence un peu avant La Revanche des Sith et la suite se déroule probablement entre 18 et 16 BBY",pourquoi:"Parce que l'épisode poursuit les aventures d'un personnage apparaissant dans The Bad Batch"}},
+      {id:"sw-totu23",type:"anime",tmdb:"288055",media:"tv",img:"/images/talesoftheunderground.webp",title:"Tales of the Underworld — Épisodes 2-3",date:"~17–16 BBY",faq:{quand:"Les épisodes se déroulent probablement entre 18 et 16 BBY",pourquoi:"Parce que les épisodes poursuivent les aventures d'un personnage apparaissant dans The Bad Batch"}},
+      {id:"sw-maul",type:"anime",tmdb:"289219",media:"tv",img:"/images/maul.webp",title:"Maul : Seigneur de l'Ombre",date:"~17–16 BBY",faq:{quand:"La saison 1 se déroule probablement peu de temps après La Revanche des Sith, entre 18 et 16 BBY",pourquoi:"Parce qu'elle se situe ici chronologiquement"},desc:"Maul : Seigneur de l\'Ombre est une série animée suivant les aventures de Maul après les événements de The Clone Wars."},
+      {id:"sw-toj6",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 6",date:"~16–15 BBY",note:"Prologue pendant La Revanche des Sith",faq:{quand:"L'épisode débute pendant La Revanche des Sith et se déroule ensuite dans une période indéterminée entre 16 et 14 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-fo",type:"jeu",tmdb:"0",media:"game",img:"/images/fallenorder.jpg",title:"Star Wars Jedi : Fallen Order",date:"14 BBY",faq:{quand:"Le jeu se déroule en 14 BBY, 5 ans après l'Épisode III",pourquoi:"Parce qu'il se situe ici chronologiquement"},desc:"Jeu développé par Respawn Entertainment, Jedi Fallen Order installe son intrigue entre le troisième et le quatrième volet de la saga. Le joueur incarne un jeune Padawan cherchant à fuir l\'Empire et la traque des derniers Jedi encore en vie, une chasse à l\'homme menée par Darth Vader."},
+      {id:"sw-solo",type:"film",tmdb:"348350",media:"movie",img:"/images/solo.webp",title:"Solo : A Star Wars Story",date:"10 BBY",faq:{quand:"Le film se déroule en majorité en 10 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-kenobi",type:"serie",tmdb:"92830",media:"tv",img:"/images/kenobi.webp",title:"Obi-Wan Kenobi",date:"9 BBY",faq:{quand:"La série se déroule en 9 BBY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-toe6",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 6",date:"~9–6 BBY",faq:{quand:"On ne sait pas exactement quand se déroule l'épisode mais probablement à suite de la série Obi-Wan Kenobi, dans les mois ou années qui suivent",pourquoi:"Parce que l'épisode inclut un personnage de Obi-Wan Kenobi et marche bien à la suite directe"}},
+      {id:"sw-survivor",type:"jeu",tmdb:"0",media:"game",img:"/images/survivor.jpg",title:"Star Wars Jedi : Survivor",date:"9 BBY",faq:{quand:"Le jeu se déroule 5 ans après Fallen Order",pourquoi:"Parce que le jeu fonctionne mieux après les évènements de Obi-Wan Kenobi"},desc:"Star Wars Jedi : Survivor se passe cinq années après Fallen Order et plonge le joueur une nouvelle fois dans l\'histoire de Cal Kestis. Notre héros est désormais un Jedi accompli et tente de survivre aux confins de la Galaxie. Toujours accompagné de BD-1, le Jedi affrontera à nouveau le terrible Empire galactique."}
     ]},
-    {title:"THE REBELLION ERA",entries:[
-      {id:"sw-andors1",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors1.webp",title:"Andor — Season 1",date:"5 BBY",note:"We'll be alternating between an animated show and a live-action show quite a few times. If the big tonal shift between Andor and Rebels really bothers you, watch Rebels first (except the finale's epilogue, as noted below), then Andor. But honestly, trust me — it's worth it narratively",subitems:["Season 1"],faq:{quand:"The first season takes place in 5 BBY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-rebels-s1",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"5–4 BBY",note:"I'm adding episode names because depending on where you watch, some season premieres or finales are grouped into TV movies, which changes the season's episode count and can shift everything",subitems:["Shorts 1-4 (The Machine in the Ghost, Art Attack, Entanglement, Property of Ezra Bridger)","Season 1","Season 2 Episodes 1-9 (Stealth Strike)"],faq:{quand:"The shorts, the first season and the start of season 2 take place between 5 and 4 BBY",pourquoi:"Because the episodes fall here chronologically"}},
-      {id:"sw-andors2-1",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Season 2 Episodes 1-6",date:"4–3 BBY",subitems:["Season 2 Episodes 1-6"],faq:{quand:"The first episodes of the season take place in 4 BBY, one year after season 1, then we jump another year for what follows",pourquoi:"Because the episodes fall here chronologically"}},
-      {id:"sw-rebels-s2",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"3–2 BBY",subitems:["Season 2 Episodes 10-22","Season 3 Episodes 1-17 (Through Imperial Eyes)"],faq:{quand:"The rest of season 2 takes place in 3 BBY, and season 3 takes place in 2 BBY",pourquoi:"Because the episodes fall here chronologically"}},
-      {id:"sw-andors2-2",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Season 2 Episodes 7-9",date:"2 BBY",subitems:["Season 2 Episodes 7-8-9"],faq:{quand:"The episodes take place one year after the previous ones, in 2 BBY",pourquoi:"Because the episodes tell of an event that will be brought to light later in Rebels"}},
-      {id:"sw-rebels-s3",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"2 BBY",subitems:["Season 3 Episodes 18-22"],faq:{quand:"The episodes take place in 2 BBY, right after Andor",pourquoi:"Because episode 18 runs in parallel with episode 9 of Andor"}},
-      {id:"sw-rebels-s4",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels — Season 4",date:"1 BBY",note:"Stop the series finale at the 42-minute mark if you've never seen Star Wars IV-V-VI. The epilogue takes place later.",subitems:["Season 4"],faq:{quand:"The season takes place in 1 BBY",pourquoi:"Because although it runs in parallel with the end of Andor, that ending is much better watched right before Rogue One"}},
-      {id:"sw-andors2-3",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Season 2 Episodes 10-12",date:"1 BBY",subitems:["Season 2 Episodes 10-11-12"],faq:{quand:"The season ends one year after the previous episodes, just before Rogue One in 1 BBY",pourquoi:"Because the end of Andor and Rogue One flow perfectly into each other"}},
-      {id:"sw-rogue",type:"film",tmdb:"330459",media:"movie",img:"/images/rogueone.webp",title:"Rogue One: A Star Wars Story",date:"1 BBY",faq:{quand:"The movie picks up right after the end of Andor and concludes at the start of Episode IV in 1 BBY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-ep4",type:"film",tmdb:"11",media:"movie",img:"/images/starwars4.webp",title:"Episode IV: A New Hope",date:"1 BBY – 0 ABY",faq:{quand:"The movie takes place between 1 BBY and 0 ABY, making it the calendar's starting point",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-ep5",type:"film",tmdb:"1891",media:"movie",img:"/images/starwars5.webp",title:"Episode V: The Empire Strikes Back",date:"3 ABY",faq:{quand:"The movie takes place 3 years after A New Hope, in 3 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-outlaws",type:"jeu",tmdb:"0",media:"game",img:"/images/outlaws.avif",title:"Star Wars Outlaws + DLC Wild Card + DLC A Pirate's Fortune",date:"3 ABY",faq:{quand:"The game takes place during the year separating Episode V from Episode VI, in 3 ABY",pourquoi:"Because this is where it falls chronologically"},desc:"Star Wars Outlaws is a video game developed by Massive Entertainment, published by Ubisoft under the LucasFilm license. It is an open-world adventure set in the Star Wars universe, between The Empire Strikes Back and Return of the Jedi."},
-      {id:"sw-ep6",type:"film",tmdb:"1892",media:"movie",img:"/images/starwars6.webp",title:"Episode VI: Return of the Jedi",date:"4 ABY",faq:{quand:"The movie takes place 1 year after The Empire Strikes Back, in 4 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-bf2-prologue",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Prologue: The Cleaner",date:"4 ABY",tags:["flashback"],faq:{quand:"The game's prologue takes place just before the events of Return of the Jedi",pourquoi:"Because even though it serves as the game's introduction and takes place earlier, it's better to play the Prologue then the rest of the missions without pausing to watch a movie"},desc:"Star Wars Battlefront II is an FPS set in the universe of the hit saga. Take part in ground and aerial battles across the movies\' most iconic locations. Join the ranks of the Empire or the Rebellion in frantic multiplayer matches, or dive into a brand-new solo campaign as an Imperial soldier."},
-      {id:"sw-bf2-c1",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campaign: Missions 1-6",date:"4 ABY",faq:{quand:"The first 6 missions take place right after Return of the Jedi, in 4 ABY",pourquoi:"Because this is where it falls chronologically"},desc:"Star Wars Battlefront II is an FPS set in the universe of the hit saga. Take part in ground and aerial battles across the movies\' most iconic locations. Join the ranks of the Empire or the Rebellion in frantic multiplayer matches, or dive into a brand-new solo campaign as an Imperial soldier."},
-      {id:"sw-squadrons",type:"jeu",tmdb:"0",media:"game",img:"/images/squadrons.jpg",title:"Star Wars Squadrons",date:"4 ABY",faq:{quand:"The prologue takes place during Episode IV, and the rest of the game runs in parallel with the events of Battlefront II",pourquoi:"Because the 2 games take place at roughly the same time, and Battlefront II's campaign then jumps forward a year — so might as well play this one here"},desc:"Star Wars: Squadrons is a first-person space combat game. You play as a pilot at the controls of the franchise\'s most iconic ships. The game takes place after the events of Episode VI, Return of the Jedi. It features a story mode as well as 5v5 multiplayer."},
-      {id:"sw-bf2-c2",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campaign: Missions 7-11",date:"5 ABY",faq:{quand:"The rest of the game takes place one year after the previous missions",pourquoi:"Because this is where it falls chronologically"},desc:"Star Wars Battlefront II is an FPS set in the universe of the hit saga. Take part in ground and aerial battles across the movies\' most iconic locations. Join the ranks of the Empire or the Rebellion in frantic multiplayer matches, or dive into a brand-new solo campaign as an Imperial soldier."}
+    {title:"L'ÈRE DE LA RÉBELLION",entries:[
+      {id:"sw-andors1",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors1.webp",title:"Andor — Saison 1",date:"5 BBY",note:"On va alterner entre une série animée et une série live action pas mal de fois, si le changement de ton très important entre Andor et Rebels vous dérange vraiment regardez Rebels d'abord (sauf épilogue du dernier épisode comme indiqué plus bas), puis Andor. Mais en vrai faites moi confiance ça vaut le coup en terme de narration",subitems:["Saison 1"],faq:{quand:"La première saison se déroule en 5 BBY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-rebels-s1",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"5–4 BBY",note:"je rajoute le nom des épisodes car selon où vous regardez les épisodes certains season premiere ou season finale sont regroupés en téléfilms et cela change donc le nombre d'épisodes de la saison et peut tout décaler",subitems:["Courts-métrages 1-4 (La Machine dans le Ghost, Attaque Artistique, Confusion, Propriété d'Ezra Bridger)","Saison 1","Saison 2 épisodes 1-9 (Le Commando)"],faq:{quand:"Les courts-métrages, la première saison et le début de la saison 2 se déroulent entre 5 et 4 BBY",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
+      {id:"sw-andors2-1",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Saison 2 épisodes 1-6",date:"4–3 BBY",subitems:["Saison 2 épisodes 1-6"],faq:{quand:"Les premiers épisodes de la saison se déroulent en 4 BBY, un an après la première saison puis on saute encore d'un an pour la suite",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
+      {id:"sw-rebels-s2",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"3–2 BBY",subitems:["Saison 2 épisodes 10-22","Saison 3 épisodes 1-17 (Un Espion en Danger)"],faq:{quand:"La suite de la saison 2 se déroule en 3 BBY et la saison 3 se déroule en 2 BBY",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
+      {id:"sw-andors2-2",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Saison 2 épisodes 7-9",date:"2 BBY",subitems:["Saison 2 épisodes 7-8-9"],faq:{quand:"Les épisodes se déroulent un an après les précédents en 2 BBY",pourquoi:"Parce que les épisodes racontent un événement qui sera mis en lumière dans la suite de Rebels"}},
+      {id:"sw-rebels-s3",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"2 BBY",subitems:["Saison 3 épisodes 18-22"],faq:{quand:"Les épisodes se déroulent en 2 BBY à la suite d'Andor",pourquoi:"Parce que l'épisode 18 se passe en parallèle de l'épisode 9 de Andor"}},
+      {id:"sw-rebels-s4",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels — Saison 4",date:"1 BBY",note:"Arrêtez l'épisode final à 42min si vous n'avez jamais vu Star Wars IV-V-VI. L'épilogue se passe plus tard.",subitems:["Saison 4"],faq:{quand:"La saison se déroule en 1 BBY",pourquoi:"Parce que bien que se passant en parallèle de la fin d'Andor, cette dernière est beaucoup mieux à voir juste avant Rogue One"}},
+      {id:"sw-andors2-3",type:"serie",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Saison 2 épisodes 10-12",date:"1 BBY",subitems:["Saison 2 épisodes 10-11-12"],faq:{quand:"La saison se termine un an après les évènements des épisodes précédents et juste avant Rogue One en 1 BBY",pourquoi:"Parce que la fin d'Andor et Rogue One se suivent parfaitement"}},
+      {id:"sw-rogue",type:"film",tmdb:"330459",media:"movie",img:"/images/rogueone.webp",title:"Rogue One : A Star Wars Story",date:"1 BBY",faq:{quand:"Le film se déroule juste à la suite de la fin d'Andor et se conclue au début de l'Épisode IV en 1 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-ep4",type:"film",tmdb:"11",media:"movie",img:"/images/starwars4.webp",title:"Épisode IV : Un Nouvel Espoir",date:"1 BBY – 0 ABY",faq:{quand:"Le film se déroule entre 1 BBY et 0 ABY et est donc le point de départ du calendrier",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-ep5",type:"film",tmdb:"1891",media:"movie",img:"/images/starwars5.webp",title:"Épisode V : L'Empire Contre-Attaque",date:"3 ABY",faq:{quand:"Le film se déroule 3 ans après Un Nouvel Espoir en 3 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-outlaws",type:"jeu",tmdb:"0",media:"game",img:"/images/outlaws.avif",title:"Star Wars Outlaws + DLC Wild Card + DLC A Pirate's Fortune",date:"3 ABY",faq:{quand:"Le jeu se déroule pendant l'an séparant l'Épisode V de l'Épisode VI en 3 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"},desc:"Star Wars Outlaws est un jeu vidéo développé par Massive Entertainment, édité par Ubisoft et sous licence LucasFilm. C\'est un titre d\'aventure en monde ouvert prenant place dans l\'univers de Star Wars et plus précisément entre les films l\'Empire Contre-Attaque et le Retour du Jedi."},
+      {id:"sw-ep6",type:"film",tmdb:"1892",media:"movie",img:"/images/starwars6.webp",title:"Épisode VI : Le Retour du Jedi",date:"4 ABY",faq:{quand:"Le film se déroule 1 an après L'Empire Contre-Attaque en 4 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-bf2-prologue",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Prologue : The Cleaner",date:"4 ABY",tags:["flashback"],faq:{quand:"Le prologue du jeu se déroule juste avant les événements du Retour du Jedi",pourquoi:"Parce que bien que servant d'introduction au jeu et se déroulant avant, il est mieux de jouer le Prologue puis le reste des missions sans faire une pause pour regarder un film"},desc:"Star Wars Battlefront II est un FPS se déroulant dans l\'univers de la saga à succès. Le titre vous permet de prendre part à des combats sur Terre ou dans les airs dans les lieux emblématiques des films. Rejoignez les rangs de l\'Empire ou ceux de la Rébellion dans des parties multijoueur endiablées et profitez d\'une expérience solo inédite aux commandes d\'un soldat de l\'Empire."},
+      {id:"sw-bf2-c1",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campagne : Missions 1-6",date:"4 ABY",faq:{quand:"Les 6 premières missions se déroulent juste après Le Retour du Jedi en 4 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"},desc:"Star Wars Battlefront II est un FPS se déroulant dans l\'univers de la saga à succès. Le titre vous permet de prendre part à des combats sur Terre ou dans les airs dans les lieux emblématiques des films. Rejoignez les rangs de l\'Empire ou ceux de la Rébellion dans des parties multijoueur endiablées et profitez d\'une expérience solo inédite aux commandes d\'un soldat de l\'Empire."},
+      {id:"sw-squadrons",type:"jeu",tmdb:"0",media:"game",img:"/images/squadrons.jpg",title:"Star Wars Squadrons",date:"4 ABY",faq:{quand:"Le prologue se déroule pendant l'Épisode IV et la suite du jeu se passe en parallèle des évènements de Battlefront II",pourquoi:"Parce que les 2 jeux se passent à peu près en même temps et que la suite de Battlefront II fait un bond dans le temps d'un an donc autant faire celui-là ici"},desc:"Star Wars : Squadrons est un jeu de combat spatial à la première personne. Vous incarnerez un pilote, et devrez contrôler les vaisseaux les plus emblématiques de la licence. Le jeu se déroule après les événement de l\'épisode VI de la saga, Le Retour du Jedi. Il propose un mode histoire mais aussi un mode multi en 5c5."},
+      {id:"sw-bf2-c2",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campagne : Missions 7-11",date:"5 ABY",faq:{quand:"La suite du jeu se déroule une année après les précédentes missions",pourquoi:"Parce qu'il se situe ici chronologiquement"},desc:"Star Wars Battlefront II est un FPS se déroulant dans l\'univers de la saga à succès. Le titre vous permet de prendre part à des combats sur Terre ou dans les airs dans les lieux emblématiques des films. Rejoignez les rangs de l\'Empire ou ceux de la Rébellion dans des parties multijoueur endiablées et profitez d\'une expérience solo inédite aux commandes d\'un soldat de l\'Empire."}
     ]},
-    {title:"THE NEW REPUBLIC ERA",entries:[
-      {id:"sw-mando-s1",type:"serie",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian",date:"9 ABY",subitems:["Season 1","Season 2 Episodes 1-5"],faq:{quand:"The show takes place in 9 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-toe1",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Episode 1",date:"20 BBY",note:"During The Clone Wars",tags:["flashback"],faq:{quand:"The episode takes place during The Clone Wars, in 20 BBY",pourquoi:"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
-      {id:"sw-toe2",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Episode 2",date:"~9–5 BBY",tags:["flashback"],faq:{quand:"The episode takes place before the start of Rebels, between 9 and 5 BBY",pourquoi:"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
-      {id:"sw-toe3",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Episode 3",date:"~8–9 ABY",tags:["flashback"],faq:{quand:"The episode probably takes place at most a few months before the The Mandalorian episode",pourquoi:"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
-      {id:"sw-mando-s2b",type:"serie",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian — Season 2 Episodes 6-8",date:"9 ABY",subitems:["Season 2 Episodes 6-8"],faq:{quand:"The show takes place in 9 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-boba",type:"serie",tmdb:"115036",media:"tv",img:"/images/bobafett.webp",title:"The Book of Boba Fett",date:"9 ABY",faq:{quand:"The show takes place in 9 ABY, after season 2 of The Mandalorian",pourquoi:"Because this is where it falls chronologically, and 2 episodes are dedicated to the Mandalorian — skip this show and you won't understand what comes next"}},
-      {id:"sw-mando-s3",type:"serie",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian — Season 3",date:"9 ABY",subitems:["Season 3"],faq:{quand:"The show takes place in 9 ABY and picks up directly after The Book of Boba Fett",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-mag",type:"film",tmdb:"1228710",media:"movie",img:"/images/mandalorianandgrogu.webp",title:"The Mandalorian and Grogu",date:"~9–11 ABY",faq:{quand:"The movie takes place some time after the end of season 3 — anywhere from several months to two years",pourquoi:"Because it follows the series and is best watched here"}},
-      {id:"sw-rebels-ep",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels Series Finale — Epilogue",date:"9 ABY",faq:{quand:"The Rebels epilogue takes place in 9 ABY, during the Ahsoka series",pourquoi:"Because besides spoiling the original trilogy if watched at the end of Rebels, watching it now gets you back up to speed and reminds you of the show's events"}},
-      {id:"sw-ahsoka",type:"serie",tmdb:"114461",media:"tv",img:"/images/ahsoka.webp",title:"Ahsoka",date:"9 ABY",faq:{quand:"The show takes place right after season 2 of The Mandalorian, in 9 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-skelcrew",type:"serie",tmdb:"202879",media:"tv",img:"/images/skeletoncrew.webp",title:"Skeleton Crew",date:"~9 ABY",faq:{quand:"The show probably takes place at the same time as the others from this period, in 9 ABY",pourquoi:"Because this is where it falls chronologically"}}
+    {title:"L'ÈRE DE LA NOUVELLE RÉPUBLIQUE",entries:[
+      {id:"sw-mando-s1",type:"serie",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian",date:"9 ABY",subitems:["Saison 1","Saison 2 épisodes 1-5"],faq:{quand:"La série se déroule en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-toe1",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 1",date:"20 BBY",note:"Pendant The Clone Wars",tags:["flashback"],faq:{quand:"L'épisode se déroule pendant The Clone Wars en 20 BBY",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
+      {id:"sw-toe2",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 2",date:"~9–5 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule avant le début de Rebels, entre 9 et 5 BBY",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
+      {id:"sw-toe3",type:"anime",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 3",date:"~8–9 ABY",tags:["flashback"],faq:{quand:"L'épisode se déroule probablement quelques mois maximum avant l'épisode de The Mandalorian",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus son passé après sa rencontre est mieux pour la comprendre"}},
+      {id:"sw-mando-s2b",type:"serie",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian — Saison 2 épisodes 6-8",date:"9 ABY",subitems:["Saison 2 épisodes 6-8"],faq:{quand:"La série se déroule en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-boba",type:"serie",tmdb:"115036",media:"tv",img:"/images/bobafett.webp",title:"Le Livre de Boba Fett",date:"9 ABY",faq:{quand:"La série se déroule en 9 ABY après la saison 2 de The Mandalorian",pourquoi:"Parce qu'elle se situe ici chronologiquement et que 2 épisodes sont dédiés au Mandalorien, si vous ne regardez pas cette série vous ne comprendrez pas la suite"}},
+      {id:"sw-mando-s3",type:"serie",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian — Saison 3",date:"9 ABY",subitems:["Saison 3"],faq:{quand:"La série se déroule en 9 ABY et reprend directement la suite du Livre de Boba Fett",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-mag",type:"film",tmdb:"1228710",media:"movie",img:"/images/mandalorianandgrogu.webp",title:"The Mandalorian and Grogu",date:"~9–11 ABY",faq:{quand:"Le film se passe quelques temps après la fin de la saison 3, entre plusieurs mois et deux ans",pourquoi:"Parce que ça fait suite à la série et se regarde mieux ici"}},
+      {id:"sw-rebels-ep",type:"anime",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Épilogue de l'épisode final de Rebels",date:"9 ABY",faq:{quand:"L'épilogue de Rebels se déroule en 9 ABY pendant la série Ahsoka",pourquoi:"Parce qu'en plus de spoiler la trilogie originale si regardé à la fin de Rebels, le regarder maintenant permet de se remettre dans le bain et de se rappeler des évènements de la série"}},
+      {id:"sw-ahsoka",type:"serie",tmdb:"114461",media:"tv",img:"/images/ahsoka.webp",title:"Ahsoka",date:"9 ABY",faq:{quand:"La série se déroule juste après la saison 2 de The Mandalorian en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-skelcrew",type:"serie",tmdb:"202879",media:"tv",img:"/images/skeletoncrew.webp",title:"Skeleton Crew",date:"~9 ABY",faq:{quand:"La série se déroule probablement au même moment que les autres de cette période en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}}
     ]},
-    {title:"THE FIRST ORDER ERA",entries:[
-      {id:"sw-ep7",type:"film",tmdb:"140607",media:"movie",img:"/images/starwars7.webp",title:"Episode VII: The Force Awakens",date:"34 ABY",faq:{quand:"The movie takes place in 34 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-bf2-m12",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campaign: Mission 12",date:"~34 ABY",tags:["flashback"],faq:{quand:"The mission takes place shortly before Episode VII",pourquoi:"Because it's better to first meet the characters in the movie"},desc:"Star Wars Battlefront II is an FPS set in the universe of the hit saga. Take part in ground and aerial battles across the movies\' most iconic locations. Join the ranks of the Empire or the Rebellion in frantic multiplayer matches, or dive into a brand-new solo campaign as an Imperial soldier."},
-      {id:"sw-bf2res",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campaign: Resurrection",date:"34 ABY",faq:{quand:"The 3 missions take place before, during and after The Force Awakens",pourquoi:"Because it's a good companion to the previous movie and a good introduction to the next one"},desc:"Star Wars Battlefront II is an FPS set in the universe of the hit saga. Take part in ground and aerial battles across the movies\' most iconic locations. Join the ranks of the Empire or the Rebellion in frantic multiplayer matches, or dive into a brand-new solo campaign as an Imperial soldier."},
-      {id:"sw-ep8",type:"film",tmdb:"181808",media:"movie",img:"/images/starwars8.webp",title:"Episode VIII: The Last Jedi",date:"34 ABY",faq:{quand:"The movie takes place right after the events of Episode VII, in 34 ABY",pourquoi:"Because this is where it falls chronologically"}},
-      {id:"sw-ep9",type:"film",tmdb:"181812",media:"movie",img:"/images/starwars9.webp",title:"Episode IX: The Rise of Skywalker",date:"35 ABY",faq:{quand:"The movie takes place one year after The Last Jedi",pourquoi:"Because this is where it falls chronologically"}}
+    {title:"L'ÈRE DU PREMIER ORDRE",entries:[
+      {id:"sw-ep7",type:"film",tmdb:"140607",media:"movie",img:"/images/starwars7.webp",title:"Épisode VII : Le Réveil de la Force",date:"34 ABY",faq:{quand:"Le film se déroule en 34 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-bf2-m12",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campagne : Mission 12",date:"~34 ABY",tags:["flashback"],faq:{quand:"La mission se déroule peu de temps avant l'Épisode VII",pourquoi:"Parce qu'il vaut mieux découvrir d'abord les personnages dans le film"},desc:"Star Wars Battlefront II est un FPS se déroulant dans l\'univers de la saga à succès. Le titre vous permet de prendre part à des combats sur Terre ou dans les airs dans les lieux emblématiques des films. Rejoignez les rangs de l\'Empire ou ceux de la Rébellion dans des parties multijoueur endiablées et profitez d\'une expérience solo inédite aux commandes d\'un soldat de l\'Empire."},
+      {id:"sw-bf2res",type:"jeu",tmdb:"0",media:"game",img:"/images/battlefront.png",title:"Star Wars Battlefront II Campagne : Résurrection",date:"34 ABY",faq:{quand:"Les 3 missions se déroulent avant, pendant et après Le Réveil de la Force",pourquoi:"Parce que c'est un bon compagnon au film précédent et une bonne introduction au film suivant"},desc:"Star Wars Battlefront II est un FPS se déroulant dans l\'univers de la saga à succès. Le titre vous permet de prendre part à des combats sur Terre ou dans les airs dans les lieux emblématiques des films. Rejoignez les rangs de l\'Empire ou ceux de la Rébellion dans des parties multijoueur endiablées et profitez d\'une expérience solo inédite aux commandes d\'un soldat de l\'Empire."},
+      {id:"sw-ep8",type:"film",tmdb:"181808",media:"movie",img:"/images/starwars8.webp",title:"Épisode VIII : Les Derniers Jedi",date:"34 ABY",faq:{quand:"Le film se passe juste après les évènements de l'Épisode VII en 34 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {id:"sw-ep9",type:"film",tmdb:"181812",media:"movie",img:"/images/starwars9.webp",title:"Épisode IX : L'Ascension de Skywalker",date:"35 ABY",faq:{quand:"Le film se passe un an après Les Derniers Jedi",pourquoi:"Parce qu'il se situe ici chronologiquement"}}
     ]}
   ]
 };
@@ -423,11 +423,11 @@ const TMDB_KEY='6257b37bf29ab31357853fce00232314';
 const RAWG_KEY='ddc66eb38db74a77b5f41323db00d434';
 const IMG='https://image.tmdb.org/t/p/';
 const BADGES={
-  film:['bf','MOVIE'],filmanim:['bfa','ANIMATED MOVIE'],
-  serie:['bs','TV SHOW'],anime:['ba','ANIMATED SHOW'],
-  jeu:['bj','VIDEO GAME']
+  film:['bf','FILM'],filmanim:['bfa','FILM ANIMÉ'],
+  serie:['bs','SÉRIE'],anime:['ba','SÉRIE ANIMÉE'],
+  jeu:['bj','JEU VIDÉO']
 };
-const BADGE_LABELS={film:'Movies',filmanim:'Animated movies',serie:'TV shows',anime:'Animated shows',jeu:'Games'};
+const BADGE_LABELS={film:'Films',filmanim:'Films animés',serie:'Séries',anime:'Séries animées',jeu:'Jeux'};
 let currentData=null;
 const posterCache={},detailCache={};
 
@@ -446,7 +446,7 @@ function toggleEntry(id,ev){
   }
 }
 function resetProgress(){
-  if(!currentData||!confirm('Reset your progress?'))return;
+  if(!currentData||!confirm('Réinitialiser ta progression ?'))return;
   localStorage.removeItem('cg_'+currentData.id);
   renderProgress();
 }
@@ -531,10 +531,10 @@ async function toggleExpand(el,ev){
   // FAQ depuis les données
   const entryObj=currentData&&currentData.eras.flatMap(e=>e.entries).find(e=>e.id===el.dataset.id);
   const faqDef=entryObj&&entryObj.faq||{};
-  const mediaName=entryObj?entryObj.title:'this title';
+  const mediaName=entryObj?entryObj.title:'ce média';
   const faqCats=[
-    {key:'quand',q:'When does '+mediaName+' take place in the Star Wars universe?',fallback:'No information available.'},
-    {key:'pourquoi',q:'Why watch '+mediaName+' at this point in the timeline?',fallback:'No information available.'}
+    {key:'quand',q:'Quand se déroule '+mediaName+' dans l\'univers Star Wars ?',fallback:'Information non disponible.'},
+    {key:'pourquoi',q:'Pourquoi regarder '+mediaName+' maintenant dans la timeline ?',fallback:'Information non disponible.'}
   ];
   const faqHtml=faqCats.map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+(faqDef[cat.key]||cat.fallback)+'</div></details>').join('');
 
@@ -544,20 +544,20 @@ async function toggleExpand(el,ev){
       // Charger depuis RAWG.io
       panel.innerHTML='<div class="expand-loading">Chargement…</div>';
       const gameTitle=entryObj?entryObj.title:'';
-      const ytUrl='https://www.youtube.com/results?search_query='+encodeURIComponent(gameTitle+' full movie');
+      const ytUrl='https://www.youtube.com/results?search_query='+encodeURIComponent(gameTitle+' film complet');
       try{
         const rawgUrl='https://api.rawg.io/api/games?search='+encodeURIComponent(gameTitle.replace(/[:.+]/g,' '))+'&page_size=1&key='+RAWG_KEY;
         const rg=await fetch(rawgUrl);
         const rgd=await rg.json();
         const g=rgd.results&&rgd.results[0];
         const bg=g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+'" loading="lazy"/></div>':'';
-        const desc=(entryObj&&entryObj.desc)||(g&&g.description_raw?g.description_raw.substring(0,300)+'…':'Star Wars video game. '+((entryObj&&entryObj.note)||''));
+        const desc=(entryObj&&entryObj.desc)||(g&&g.description_raw?g.description_raw.substring(0,300)+'…':'Jeu vidéo Star Wars. '+((entryObj&&entryObj.note)||''));
         const rating=g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':'';
         const released=g&&g.released?g.released.substring(0,4):'';
         let meta='';
-        if(released)meta+='<span><strong>Released</strong> '+released+'</span>';
-        if(rating)meta+='<span><strong>Rating</strong> '+rating+'</span>';
-        if(entryObj&&entryObj.date)meta+='<span><strong>SW period</strong> '+entryObj.date+'</span>';
+        if(released)meta+='<span><strong>Sortie</strong> '+released+'</span>';
+        if(rating)meta+='<span><strong>Note</strong> '+rating+'</span>';
+        if(entryObj&&entryObj.date)meta+='<span><strong>Période SW</strong> '+entryObj.date+'</span>';
         panel.innerHTML='<div class="expand-inner">'+bg
           +'<div class="expand-info"><div class="expand-synopsis">'+desc+'</div>'
           +(meta?'<div class="expand-meta">'+meta+'</div>':'')
@@ -566,8 +566,8 @@ async function toggleExpand(el,ev){
           +(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
       }catch{
         panel.innerHTML='<div class="expand-inner"><div class="expand-info">'
-          +'<div class="expand-synopsis">'+((entryObj&&entryObj.note)||'Star Wars video game.')+'</div>'
-          +(entryObj&&entryObj.date?'<div class="expand-meta"><span><strong>SW period</strong> '+entryObj.date+'</span></div>':'')
+          +'<div class="expand-synopsis">'+((entryObj&&entryObj.note)||'Jeu vidéo Star Wars.')+'</div>'
+          +(entryObj&&entryObj.date?'<div class="expand-meta"><span><strong>Période SW</strong> '+entryObj.date+'</span></div>':'')
           +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Voir le film complet sur YouTube</a>'
           +'</div></div>'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
       }
@@ -580,7 +580,7 @@ async function toggleExpand(el,ev){
   let d=detailCache[k];
   if(!d){
     try{
-      const rFr=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+TMDB_KEY+'&language=en-US&append_to_response=videos');
+      const rFr=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+TMDB_KEY+'&language=fr-FR&append_to_response=videos');
       d=await rFr.json();
       if(!d.videos||!d.videos.results||!d.videos.results.find(v=>v.type==='Trailer'&&v.site==='YouTube')){
         const rEn=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+TMDB_KEY+'&language=en-US');
@@ -590,8 +590,8 @@ async function toggleExpand(el,ev){
       detailCache[k]=d;
     }catch{panel.innerHTML='<div class="expand-loading">Erreur de chargement.</div>';return}
   }
-  const synopsis=d.overview||'No synopsis available.';
-  const runtime=d.runtime?(d.runtime+' min'):(d.episode_run_time&&d.episode_run_time[0]?(d.episode_run_time[0]+' min/ep'):null);
+  const synopsis=d.overview||'Pas de synopsis disponible.';
+  const runtime=d.runtime?(d.runtime+' min'):(d.episode_run_time&&d.episode_run_time[0]?(d.episode_run_time[0]+' min/ép'):null);
   const genres=(d.genres||[]).map(g=>g.name).join(', ')||null;
   const year=(d.release_date||d.first_air_date||'').substring(0,4)||null;
   const rating=d.vote_average?d.vote_average.toFixed(1):null;
@@ -599,10 +599,10 @@ async function toggleExpand(el,ev){
   const trailer=(d.videos&&d.videos.results||[]).find(v=>v.type==='Trailer'&&v.site==='YouTube');
   const ytUrl=trailer?'https://www.youtube.com/watch?v='+trailer.key:null;
   let meta='';
-  if(year)meta+='<span><strong>Year</strong> '+year+'</span>';
-  if(runtime)meta+='<span><strong>Runtime</strong> '+runtime+'</span>';
+  if(year)meta+='<span><strong>Année</strong> '+year+'</span>';
+  if(runtime)meta+='<span><strong>Durée</strong> '+runtime+'</span>';
   if(genres)meta+='<span><strong>Genre</strong> '+genres+'</span>';
-  if(rating)meta+='<span><strong>Rating</strong> ⭐ '+rating+'/10</span>';
+  if(rating)meta+='<span><strong>Note</strong> ⭐ '+rating+'/10</span>';
   panel.innerHTML='<div class="expand-inner">'
     +(poster?'<div class="expand-poster" onclick="openPMurl(\''+IMG+'w500'+d.poster_path+'\')"><img src="'+poster+'" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>':'')
     +'<div class="expand-info"><div class="expand-synopsis">'+synopsis+'</div>'
@@ -646,13 +646,13 @@ function buildTimeline(data){
   const types=[...new Set(data.eras.flatMap(era=>era.entries.map(e=>e.type)))];
   const hasFB=data.eras.some(era=>era.entries.some(e=>e.tags&&e.tags.includes('flashback')));
 
-  let leg='<div class="leg-title">Legend</div>';
+  let leg='<div class="leg-title">Légende</div>';
   types.forEach(t=>{const[c,l]=BADGES[t]||[];if(c)leg+='<span class="b '+c+'">'+l+'</span>';});
   if(hasFB)leg+='<span class="ft">FLASHBACK</span>';
   document.getElementById('tl-legend').innerHTML=leg;
 
   // Filtres par type seulement (pas de niveaux pour SW)
-  let f='<div class="filter-group"><span class="filter-label">Types:</span>';
+  let f='<div class="filter-group"><span class="filter-label">Types :</span>';
   types.forEach(t=>{
     const[,l]=BADGES[t]||['','?'];
     f+='<button class="fbt type-filter-btn active" data-type="'+t+'" onclick="toggleTypeFilter(this)">'+l+'</button>';
