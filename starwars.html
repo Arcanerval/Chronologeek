@@ -125,7 +125,7 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 .en-top{display:flex;overflow:hidden;min-height:86px}
 .en-check{width:40px;min-width:40px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);flex-shrink:0;transition:background .2s;cursor:pointer}
 .en-check:hover{background:rgba(124,106,247,.08)}
-.checkmark{width:20px;height:20px;border-radius:6px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:.75rem;color:#fff;font-weight:700}
+.checkmark{width:20px;height:20px;border-radius:6px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:.75rem;color:#fff;font-weight:700}
 .en-check:hover .checkmark{border-color:var(--accent)}
 .en.done .checkmark{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent}
 /* Date badge — grande */
@@ -228,7 +228,7 @@ html,body{overflow-x:clip}
   .logo img{height:22px;max-width:44vw}
   nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
   .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  .nav-sp,.nav-maj,  #grogu{width:60px;height:60px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
+  #grogu{width:60px;height:60px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
 }
 
 
@@ -263,7 +263,10 @@ html,body{overflow-x:clip}
   .progress-block{flex-direction:row}
   .pb-info{flex:1 1 100%}
   .progress-block button{flex:1;white-space:nowrap}
-  .pbn{display:none !important}
+  .pbn{gap:.4rem;font-size:.68rem}
+  .pbn-track{width:54px}
+  .pbn.show{margin-left:auto}
+  .pbn.show~.lang-btn{margin-left:.15rem}
 }
 .nav-links a.news,#mmenu a.news{color:#4fc3f7}
 </style>
@@ -284,7 +287,6 @@ html,body{overflow-x:clip}
       <a onclick="window.location.href='nouveautes.html'" class="news">What's New</a>
     </div>
     <div class="nav-sp"></div>
-    <span class="nav-maj">Updated · June 2026</span>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
     <a class="lang-btn" href="/fr/starwars.html" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
@@ -305,7 +307,7 @@ html,body{overflow-x:clip}
 </div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 <div class="tl-page" id="tl-page">
-  <div class="bc" onclick="window.location.href='index.html'">← Home</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='index.html'" style="margin-bottom:0">← Home</div><span class="nav-maj">Updated · June 2026</span></div>
   <div class="page-title" id="tl-title"></div>
   <div class="page-sub" id="tl-sub"></div>
   <div class="progress-block">
@@ -561,14 +563,14 @@ async function toggleExpand(el,ev){
         panel.innerHTML='<div class="expand-inner">'+bg
           +'<div class="expand-info"><div class="expand-synopsis">'+desc+'</div>'
           +(meta?'<div class="expand-meta">'+meta+'</div>':'')
-          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Voir le film complet sur YouTube</a>'
+          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Watch the full movie on YouTube</a>'
           +'</div></div>'
           +(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
       }catch{
         panel.innerHTML='<div class="expand-inner"><div class="expand-info">'
           +'<div class="expand-synopsis">'+((entryObj&&entryObj.note)||'Star Wars video game.')+'</div>'
           +(entryObj&&entryObj.date?'<div class="expand-meta"><span><strong>SW period</strong> '+entryObj.date+'</span></div>':'')
-          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Voir le film complet sur YouTube</a>'
+          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Watch the full movie on YouTube</a>'
           +'</div></div>'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
       }
       return;

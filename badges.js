@@ -5,6 +5,41 @@
 
 const CG_BADGES_KEY = 'cg_badges';
 
+// ── i18n ──────────────────────────────────────────────────
+const CG_EN = document.documentElement.lang !== 'fr' && !location.pathname.startsWith('/fr/');
+const BADGE_EN = {
+  sw_padawan: {label:'Padawan', desc:'The Republic Era completed'},
+  sw_chevalier: {label:'Jedi Knight', desc:'The Clone Wars completed'},
+  sw_fuite: {label:'Jedi on the Run', desc:'The Imperial Era completed'},
+  sw_rebelle: {label:'Rebel Jedi', desc:'The Rebellion Era completed'},
+  sw_survivant: {label:'Jedi Survivor', desc:'The New Republic Era completed'},
+  sw_dernier: {label:'Last Jedi', desc:'The First Order Era completed'},
+  sw_force: {label:'May the Force be with you', desc:'Star Wars 100% completed'},
+  mcu_avenger: {label:'Avenger', desc:'Marvel 100% completed'},
+  mcu_spidey: {label:'Friendly Neighborhood Spider', desc:'Every Spider-Man watched'},
+  mcu_mutant: {label:'Omega Mutant', desc:'All X-Men and Deadpool watched'},
+  mcu_thanos: {label:'Thanos', desc:'The Infinity Saga completed'},
+  mcu_defender: {label:'Defender', desc:'All Defenders shows watched'},
+  mcu_shield: {label:'S.H.I.E.L.D. Agent', desc:'Agent Carter and Agents of SHIELD completed'},
+  dc_survivant: {label:'Event Survivor', desc:'The major event reached'},
+  dc_superman: {label:'Superman Prime', desc:'All Superman origins watched'},
+  dc_batman: {label:'Dark Knight Returns', desc:'All Batman origins watched'},
+  dc_spectre: {label:'Spectre', desc:'The entire Arrowverse completed'},
+  dc_voyageur: {label:'Time Traveler', desc:'The entire DCEU completed'},
+  dc_maitre: {label:'Master of the Multiverse', desc:'DC 100% completed'},
+  avt_eau: {label:'Waterbending Master', desc:'Book One: Water completed'},
+  avt_terre: {label:'Earthbending Master', desc:'Book Two: Earth completed'},
+  avt_feu: {label:'Firebending Master', desc:'Book Three: Fire completed'},
+  avt_equilibre: {label:'Guardian of Balance', desc:'The Korra era completed'},
+  avt_100: {label:'Fully Realized Avatar', desc:'Avatar 100% completed'},
+};
+const CG_BT = CG_EN
+  ? {unlocked:'Badge unlocked!', my:'My Badges', count:'unlocked', on:'Unlocked on', locked:'🔒 Locked', locale:'en-US'}
+  : {unlocked:'Badge débloqué !', my:'Mes Badges', count:'débloqués', on:'Débloqué le', locked:'🔒 Verrouillé', locale:'fr-FR'};
+function bL(b){return CG_EN&&BADGE_EN[b.id]?BADGE_EN[b.id].label:b.label}
+function bD(b){return CG_EN&&BADGE_EN[b.id]?BADGE_EN[b.id].desc:b.desc}
+
+
 // Définition de tous les badges
 const BADGE_DEFS = {
   // ── STAR WARS ─────────────────────────────────────────────
@@ -227,9 +262,9 @@ function showBadgeToast(badge){
   toast.innerHTML=`
     <div style="font-size:1.8rem;flex-shrink:0">${badge.icon}</div>
     <div>
-      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${badge.color};margin-bottom:.15rem">Badge débloqué !</div>
-      <div style="font-size:.88rem;font-weight:700;color:#e2e2f0">${badge.label}</div>
-      <div style="font-size:.72rem;color:#9090b0;margin-top:.1rem">${badge.desc}</div>
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${badge.color};margin-bottom:.15rem">${CG_BT.unlocked}</div>
+      <div style="font-size:.88rem;font-weight:700;color:#e2e2f0">${bL(badge)}</div>
+      <div style="font-size:.72rem;color:#9090b0;margin-top:.1rem">${bD(badge)}</div>
     </div>
   `;
 
@@ -331,13 +366,13 @@ function openBadgeModal(){
       position:absolute;top:.8rem;right:.8rem;background:none;border:none;
       color:#686880;font-size:1.2rem;cursor:pointer;
     ">✕</button>
-    <div style="font-size:1.1rem;font-weight:800;color:#e2e2f0;margin-bottom:.3rem">Mes Badges</div>
-    <div style="font-size:.78rem;color:#686880;margin-bottom:1.25rem">${unlockedCount} / ${univBadges.length} débloqués</div>
+    <div style="font-size:1.1rem;font-weight:800;color:#e2e2f0;margin-bottom:.3rem">${CG_BT.my}</div>
+    <div style="font-size:.78rem;color:#686880;margin-bottom:1.25rem">${unlockedCount} / ${univBadges.length} ${CG_BT.count}</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">`;
 
   univBadges.forEach(badge=>{
     const unlocked=!!saved[badge.id];
-    const date=saved[badge.id]?new Date(saved[badge.id]).toLocaleDateString('fr-FR'):'';
+    const date=saved[badge.id]?new Date(saved[badge.id]).toLocaleDateString(CG_BT.locale):'';
     html+=`<div style="
       background:${unlocked?'rgba('+hexToRgb(badge.color)+',.08)':'#161625'};
       border:1px solid ${unlocked?badge.color+'66':'#1e1e35'};
@@ -346,10 +381,10 @@ function openBadgeModal(){
       transition:all .2s;
     ">
       <div style="font-size:1.6rem;margin-bottom:.3rem;filter:${unlocked?'none':'grayscale(1)'}">${badge.icon}</div>
-      <div style="font-size:.78rem;font-weight:700;color:${unlocked?badge.color:'#686880'};margin-bottom:.15rem">${badge.label}</div>
-      <div style="font-size:.67rem;color:#686880;line-height:1.4">${badge.desc}</div>
-      ${unlocked&&date?`<div style="font-size:.6rem;color:#2a2a48;margin-top:.3rem">Débloqué le ${date}</div>`:''}
-      ${!unlocked?`<div style="font-size:.6rem;color:#2a2a48;margin-top:.3rem">🔒 Verrouillé</div>`:''}
+      <div style="font-size:.78rem;font-weight:700;color:${unlocked?badge.color:'#686880'};margin-bottom:.15rem">${bL(badge)}</div>
+      <div style="font-size:.67rem;color:#686880;line-height:1.4">${bD(badge)}</div>
+      ${unlocked&&date?`<div style="font-size:.6rem;color:#2a2a48;margin-top:.3rem">${CG_BT.on} ${date}</div>`:''}
+      ${!unlocked?`<div style="font-size:.6rem;color:#2a2a48;margin-top:.3rem">${CG_BT.locked}</div>`:''}
     </div>`;
   });
 
