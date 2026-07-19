@@ -16,12 +16,12 @@
 <meta property="og:title" content="Marvel MCU Timeline — Chronologeek"/>
 <meta property="og:description" content="The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free."/>
 <meta property="og:image" content="https://chronologeek.app/images/mcu.webp"/>
-<meta property="og:url" content="https://chronologeek.app/marvel.html"/>
+<meta property="og:url" content="https://chronologeek.app/marvel"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="description" content="The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free."/>
-<link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel.html"/>
-<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel.html"/>
-<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/marvel.html"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/marvel"/>
 <style>
 :root{
   --bg:#08080f;--surface:#0f0f1a;--surface2:#161625;--border:#1e1e35;--border2:#2a2a48;
@@ -282,32 +282,32 @@ html,body{overflow-x:clip}
 <body data-universe="mcu">
 <header>
   <nav>
-    <div class="logo" onclick="window.location.href='index.html'">
+    <div class="logo" onclick="window.location.href='/'">
       <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
     </div>
     <div class="nav-links">
-      <a onclick="window.location.href='index.html'">Home</a>
+      <a onclick="window.location.href='/'">Home</a>
       <a href="#" class="doss">Deep Dives</a>
-      <a onclick="window.location.href='starwars.html'">Star Wars</a>
-      <a onclick="window.location.href='marvel.html'" style="color:var(--text);font-weight:700">Marvel</a>
-      <a onclick="window.location.href='dc.html'">DC</a>
-      <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'" class="news">What's New</a>
+      <a onclick="window.location.href='/starwars'">Star Wars</a>
+      <a onclick="window.location.href='/marvel'" style="color:var(--text);font-weight:700">Marvel</a>
+      <a onclick="window.location.href='/dc'">DC</a>
+      <a onclick="window.location.href='/avatar'">Avatar</a>
+      <a onclick="window.location.href='/nouveautes'" class="news">What's New</a>
     </div>
     <div class="nav-sp"></div>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
-    <a class="lang-btn" href="/fr/marvel.html" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
+    <a class="lang-btn" href="/fr/marvel" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
   </nav>
 </header>
 <div id="mmenu">
-  <a href="index.html">Home</a>
+  <a href="/">Home</a>
   <a href="#" class="doss">Deep Dives</a>
-  <a href="starwars.html">Star Wars</a>
-  <a href="marvel.html" class="cur">Marvel</a>
-  <a href="dc.html">DC</a>
-  <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html" class="news">What's New</a>
+  <a href="/starwars">Star Wars</a>
+  <a href="/marvel" class="cur">Marvel</a>
+  <a href="/dc">DC</a>
+  <a href="/avatar">Avatar</a>
+  <a href="/nouveautes" class="news">What's New</a>
 </div>
 <div id="miss-minute" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
   <img class="mm-normal" src="/images/miss-minutes.png" alt=""/>
@@ -315,7 +315,7 @@ html,body{overflow-x:clip}
 </div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 <div class="tl-page" id="tl-page">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='index.html'" style="margin-bottom:0">← Home</div><span class="nav-maj">Updated · June 2026</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='/'" style="margin-bottom:0">← Home</div><span class="nav-maj">Updated · June 2026</span></div>
   <div class="page-title" id="tl-title"></div>
   <div class="page-sub" id="tl-sub"></div>
   <div class="progress-block">
@@ -798,7 +798,7 @@ function buildTimeline(data){
 
 
 
-function showHome(){window.location.href='index.html';}
+function showHome(){window.location.href='/';}
 function showUniverse(uid){
   const u=UNIVERSES.find(x=>x.data&&x.data.id===uid);
   if(!u){showCS();return}
@@ -812,7 +812,7 @@ function showUniverse(uid){
   buildTimeline(currentData);renderProgress();
   window.scrollTo(0,0);loadPosters();
 }
-function showCS(){window.location.href='index.html';}
+function showCS(){window.location.href='/';}
 
 
 

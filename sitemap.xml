@@ -5,30 +5,30 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
-  <url><loc>https://chronologeek.app/starwars.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars.html"/>
+  <url><loc>https://chronologeek.app/starwars</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
-  <url><loc>https://chronologeek.app/marvel.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel.html"/>
+  <url><loc>https://chronologeek.app/marvel</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
   </url>
-  <url><loc>https://chronologeek.app/dc.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc.html"/>
+  <url><loc>https://chronologeek.app/dc</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
   </url>
-  <url><loc>https://chronologeek.app/avatar.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar.html"/>
+  <url><loc>https://chronologeek.app/avatar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
   </url>
-  <url><loc>https://chronologeek.app/nouveautes.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/nouveautes.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes.html"/>
+  <url><loc>https://chronologeek.app/nouveautes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/nouveautes"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
   <url><loc>https://chronologeek.app/fr/</loc></url>
-  <url><loc>https://chronologeek.app/fr/starwars.html</loc></url>
-  <url><loc>https://chronologeek.app/fr/marvel.html</loc></url>
-  <url><loc>https://chronologeek.app/fr/dc.html</loc></url>
-  <url><loc>https://chronologeek.app/fr/avatar.html</loc></url>
-  <url><loc>https://chronologeek.app/fr/nouveautes.html</loc></url>
+  <url><loc>https://chronologeek.app/fr/starwars</loc></url>
+  <url><loc>https://chronologeek.app/fr/marvel</loc></url>
+  <url><loc>https://chronologeek.app/fr/dc</loc></url>
+  <url><loc>https://chronologeek.app/fr/avatar</loc></url>
+  <url><loc>https://chronologeek.app/fr/nouveautes</loc></url>
 </urlset>

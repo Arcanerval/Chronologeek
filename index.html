@@ -124,31 +124,31 @@ html,body{overflow-x:clip}
 
 <header>
   <nav>
-    <div class="logo" onclick="window.location.href='index.html'">
+    <div class="logo" onclick="window.location.href='/'">
       <img src="/images/logo-chronologeek.png" alt="Chronologeek"/>
     </div>
     <div class="nav-links">
-      <a onclick="window.location.href='index.html'" style="color:var(--text);font-weight:700">Home</a>
+      <a onclick="window.location.href='/'" style="color:var(--text);font-weight:700">Home</a>
       <a href="#" class="doss">Deep Dives</a>
-      <a onclick="window.location.href='starwars.html'">Star Wars</a>
-      <a onclick="window.location.href='marvel.html'">Marvel</a>
-      <a onclick="window.location.href='dc.html'">DC</a>
-      <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'" class="news">What's New</a>
+      <a onclick="window.location.href='/starwars'">Star Wars</a>
+      <a onclick="window.location.href='/marvel'">Marvel</a>
+      <a onclick="window.location.href='/dc'">DC</a>
+      <a onclick="window.location.href='/avatar'">Avatar</a>
+      <a onclick="window.location.href='/nouveautes'" class="news">What's New</a>
     </div>
     <div class="nav-sp"></div>
-    <a class="lang-btn" href="/fr/index.html" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
+    <a class="lang-btn" href="/fr/" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
   </nav>
 </header>
 <div id="mmenu">
-  <a href="index.html" class="cur">Home</a>
+  <a href="/" class="cur">Home</a>
   <a href="#" class="doss">Deep Dives</a>
-  <a href="starwars.html">Star Wars</a>
-  <a href="marvel.html">Marvel</a>
-  <a href="dc.html">DC</a>
-  <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html" class="news">What's New</a>
+  <a href="/starwars">Star Wars</a>
+  <a href="/marvel">Marvel</a>
+  <a href="/dc">DC</a>
+  <a href="/avatar">Avatar</a>
+  <a href="/nouveautes" class="news">What's New</a>
 </div>
 
 <section class="hero">
@@ -160,7 +160,7 @@ html,body{overflow-x:clip}
     <div class="ugrid">
 
       <!-- Star Wars -->
-      <a class="ucard" href="starwars.html">
+      <a class="ucard" href="/starwars">
         <div class="cbanner">
           <img src="/images/starwars-banner.webp" alt="Star Wars"/>
         </div>
@@ -172,7 +172,7 @@ html,body{overflow-x:clip}
       </a>
 
       <!-- Marvel -->
-      <a class="ucard" href="marvel.html">
+      <a class="ucard" href="/marvel">
         <div class="cbanner">
           <img src="/images/mcu.webp" alt="Marvel" onerror="this.style.display='none'"/>
         </div>
@@ -184,7 +184,7 @@ html,body{overflow-x:clip}
       </a>
 
       <!-- DC -->
-      <a class="ucard" href="dc.html">
+      <a class="ucard" href="/dc">
         <div class="cbanner">
           <img src="/images/dcmultivers.jpg" alt="DC Multiverse"/>
         </div>
@@ -196,7 +196,7 @@ html,body{overflow-x:clip}
       </a>
 
       <!-- Avatar -->
-      <a class="ucard" href="avatar.html">
+      <a class="ucard" href="/avatar">
         <div class="cbanner">
           <img src="/images/avatar.png" alt="Avatar"/>
         </div>
