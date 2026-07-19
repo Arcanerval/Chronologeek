@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
-<title>DC Multiverse — Chronologeek</title>
+<title>DC Multivers — Chronologeek</title>
 <link rel="alternate" hreflang="en" href="https://chronologeek.app/dc.html"/>
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc.html"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dc.html"/>
@@ -251,7 +251,7 @@ html,body{overflow-x:clip}
 
 /* ═══ Checkbox v4 : case visible ═══ */
 .en-top{align-items:center}
-.en-check{width:20px;height:20px;flex:0 0 20px;margin-top:0;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;background:rgba(255,255,255,.04);box-sizing:border-box}
+.en-check{width:20px;height:20px;flex:0 0 20px;margin-top:0;border:2px solid var(--border2);border-radius:5px;background:rgba(255,255,255,.04);box-sizing:border-box}
 .en-check:hover{border-color:var(--accent)}
 @media(max-width:700px){.en-check{width:24px;height:24px;flex:0 0 24px}.checkmark{font-size:.78rem}}
 
@@ -282,63 +282,63 @@ html,body{overflow-x:clip}
       <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
     </div>
     <div class="nav-links">
-      <a onclick="window.location.href='index.html'">Home</a>
-      <a href="#" class="doss">Deep Dives</a>
+      <a onclick="window.location.href='index.html'">Accueil</a>
+      <a href="#" class="doss">Dossiers</a>
       <a onclick="window.location.href='starwars.html'">Star Wars</a>
       <a onclick="window.location.href='marvel.html'">Marvel</a>
       <a onclick="window.location.href='dc.html'" style="color:var(--text);font-weight:700">DC</a>
       <a onclick="window.location.href='avatar.html'">Avatar</a>
-      <a onclick="window.location.href='nouveautes.html'" class="news">What's New</a>
+      <a onclick="window.location.href='nouveautes.html'" class="news">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
     <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill"></div></div></div>
-    <a class="lang-btn" href="/fr/dc.html" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
+    <a class="lang-btn" href="/dc.html" title="English version"><svg class="flag" viewBox="0 0 60 30"><clipPath id="ukc"><path d="M0,0 v30 h60 v-30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></a>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
   </nav>
 </header>
 <div id="mmenu">
-  <a href="index.html">Home</a>
-  <a href="#" class="doss">Deep Dives</a>
+  <a href="index.html">Accueil</a>
+  <a href="#" class="doss">Dossiers</a>
   <a href="starwars.html">Star Wars</a>
   <a href="marvel.html">Marvel</a>
   <a href="dc.html" class="cur">DC</a>
   <a href="avatar.html">Avatar</a>
-  <a href="nouveautes.html" class="news">What's New</a>
+  <a href="nouveautes.html" class="news">Nouveautés</a>
 </div>
 
 
-<div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+<div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
   <img class="bat-normal" src="/images/batsignal.png" alt="Bat-Signal"/>
-  <img class="bat-hover" src="/images/batsignalmouseover.png" alt="Bat-Signal lit"/>
+  <img class="bat-hover" src="/images/batsignalmouseover.png" alt="Bat-Signal allumé"/>
 </div>
 <div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
 
 <div class="page-wrap">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='index.html'" style="margin-bottom:0">← Home</div><span class="nav-maj">Updated · July 2026</span></div>
-  <div class="page-title">DC Multiverse — Watch Guide</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='index.html'" style="margin-bottom:0">← Accueil</div><span class="nav-maj">À jour · juillet 2026</span></div>
+  <div class="page-title">DC Multivers — Guide de Visionnage</div>
   <div class="page-sub">Elseworlds · Arrowverse · DCEU · DCU</div>
   <div class="progress-block">
     <div class="pb-info">
-      <div class="pb-label">My progress</div>
+      <div class="pb-label">Ma progression</div>
       <div class="pb-track"><div class="pb-fill" id="pb-fill"></div></div>
       <div class="pb-counts" id="pb-counts">0 / 0 · 0%</div>
-      <div class="pb-hint">Check off what you've watched — your progress is saved in this browser</div>
+      <div class="pb-hint">Vous pouvez cocher votre progression qui sera sauvegardée sur ce navigateur</div>
     </div>
-    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Resume</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
+    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Reprendre</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
   </div>
   <div class="nb" id="tl-notes"></div>
   <div class="leg" id="tl-legend" style="margin-bottom:1rem"></div>
 
   <div class="filter-row">
-    <span style="font-size:.7rem;color:var(--muted)">Universes:</span>
+    <span style="font-size:.7rem;color:var(--muted)">Univers :</span>
     <button class="fbt active" data-univ="elseworlds" onclick="toggleUniversFilter(this)" style="border-color:var(--c-else);color:var(--c-else)">Elseworlds</button>
     <button class="fbt active" data-univ="arrowverse" onclick="toggleUniversFilter(this)" style="border-color:var(--c-av);color:var(--c-av)">Arrowverse</button>
     <button class="fbt active" data-univ="dceu" onclick="toggleUniversFilter(this)" style="border-color:var(--c-dceu);color:var(--c-dceu)">DCEU</button>
     <button class="fbt active" data-univ="dcu" onclick="toggleUniversFilter(this)" style="border-color:var(--c-dcu);color:var(--c-dcu)">DCU</button>
     <span style="width:1px;height:16px;background:var(--border2);margin:0 .3rem;flex-shrink:0"></span>
-    <span style="font-size:.7rem;color:var(--muted)">Levels:</span>
+    <span style="font-size:.7rem;color:var(--muted)">Niveaux :</span>
     <button class="fbt active" id="fbt-imp" onclick="this.classList.toggle('active');applyLevelFilter()">🚨 Important</button>
-    <button class="fbt active" id="fbt-bonus" onclick="this.classList.toggle('active');applyLevelFilter()">Optional</button>
+    <button class="fbt active" id="fbt-bonus" onclick="this.classList.toggle('active');applyLevelFilter()">Optionnel</button>
   </div>
 
   <!-- ZONE 1 : Elseworlds -->
@@ -347,7 +347,7 @@ html,body{overflow-x:clip}
       <div class="zone-icon">🌐</div>
       <div class="zone-label-wrap">
         <div class="zone-name">Elseworlds</div>
-        <div class="zone-desc">These stories — although some are connected to each other and to the other universes — mostly serve to flesh out the lore and origins of DC's two greatest heroes. Watch them whenever you like, before or alongside the other zones.</div>
+        <div class="zone-desc">Ces histoires, bien que certaines reliées entre elles et aux autres univers, servent surtout à développer le lore et les origines des deux plus grands héros DC. Regardez quand vous voulez, avant ou pendant les autres zones.</div>
       </div>
       <div class="zone-toggle" id="toggle-z-optional">▼</div>
     </div>
@@ -357,13 +357,13 @@ html,body{overflow-x:clip}
     <div class="zone-body" id="z-optional">
       <div class="zone-grid zg-elseworlds">
         <div class="zcol zcol-else">
-          <div class="zcol-head">Superman origins</div>
-          <div class="zcol-hint">Parallel universes — some connect to the other columns</div>
+          <div class="zcol-head">Origines de Superman</div>
+          <div class="zcol-hint">Univers parallèles — certains ont des connexions avec les autres colonnes</div>
           <div id="col-superman"></div>
         </div>
         <div class="zcol zcol-else">
-          <div class="zcol-head">Batman origins</div>
-          <div class="zcol-hint">Parallel universes — some connect to the other columns</div>
+          <div class="zcol-head">Origines de Batman</div>
+          <div class="zcol-hint">Univers parallèles — certains ont des connexions avec les autres colonnes</div>
           <div id="col-batman"></div>
         </div>
       </div>
@@ -375,8 +375,8 @@ html,body{overflow-x:clip}
     <div class="zone-head" onclick="toggleZone('z-pre')">
       <div class="zone-icon">📺</div>
       <div class="zone-label-wrap">
-        <div class="zone-name">The 2 main universes</div>
-        <div class="zone-desc">The Arrowverse and the DCEU side by side. Watch each column separately or alternate between them as you like.</div>
+        <div class="zone-name">Les 2 univers principaux</div>
+        <div class="zone-desc">L'Arrowverse et le DCEU en parallèle. Regardez chaque colonne séparément ou alternez entre elles à votre convenance.</div>
       </div>
       <div class="zone-toggle open" id="toggle-z-pre">▼</div>
     </div>
@@ -388,12 +388,12 @@ html,body{overflow-x:clip}
       <div class="zone-grid zg-2">
         <div class="zcol zcol-av">
           <div class="zcol-head">Arrowverse</div>
-          <div class="zcol-hint">Watch in order — these shows interweave episode by episode</div>
+          <div class="zcol-hint">Regardez dans l'ordre — ces séries s'entrelacent épisode par épisode</div>
           <div id="col-av-pre"></div>
         </div>
         <div class="zcol zcol-dceu">
           <div class="zcol-head">DCEU</div>
-          <div class="zcol-hint">Independent from the Arrowverse — watch alongside whenever you like</div>
+          <div class="zcol-hint">Univers indépendant de l'Arrowverse — regardez quand vous voulez en parallèle</div>
           <div id="col-dceu"></div>
         </div>
       </div>
@@ -405,23 +405,23 @@ html,body{overflow-x:clip}
     <div class="zone-head" style="cursor:default">
       <div class="zone-icon">⚡</div>
       <div class="zone-label-wrap">
-        <div class="zone-name">Major Event</div>
-        <div class="zone-desc">An unprecedented event that changes everything.</div>
+        <div class="zone-name">Événement Majeur</div>
+        <div class="zone-desc">Un événement sans précédent qui change tout.</div>
       </div>
     </div>
     <div class="crisis-content">
       <div class="crisis-block">
 <details class="crisis-spoil">
-          <summary>⚠️ Reveal the details — SPOILERS</summary>
+          <summary>⚠️ Révéler les détails — SPOILERS</summary>
           <div class="crisis-spoil-content">
-            This is <strong>Crisis on Infinite Earths</strong>, the biggest crossover in all of DC history. The entire Multiverse is rebooted from scratch — some realities disappear, others are merged. Dozens of characters from dozens of DC movies and shows across the franchise's entire history make cameos. It's an unprecedented event.<br><br>
-            <strong>Episodes:</strong><br>
-            Arrow — Season 8 Episode 8<br>
-            The Flash — Season 6 Episode 9<br>
-            Supergirl — Season 5 Episode 9<br>
-            Batwoman — Season 1 Episode 9<br>
-            Legends of Tomorrow — Season 5 Episode 1<br><br>
-            <em>Titans, Stargirl, Smallville, Superman Returns and Batman (1989) also take part.</em>
+            Il s'agit de <strong>Crisis on Infinite Earths</strong>, le plus grand crossover de toute l'histoire de DC. Le Multivers entier est rébooté à zéro — certaines réalités disparaissent, d'autres sont fusionnées. Des dizaines de personnages issus de dizaines de films et séries DC à travers toute l'histoire de la franchise font des caméos. C'est un événement sans précédent.<br><br>
+            <strong>Épisodes :</strong><br>
+            Arrow — Saison 8 épisode 8<br>
+            The Flash — Saison 6 épisode 9<br>
+            Supergirl — Saison 5 épisode 9<br>
+            Batwoman — Saison 1 épisode 9<br>
+            Legends of Tomorrow — Saison 5 épisode 1<br><br>
+            <em>Titans, Stargirl, Smallville, Superman Returns et Batman (1989) y participent également.</em>
           </div>
         </details>
       </div>
@@ -433,30 +433,30 @@ html,body{overflow-x:clip}
     <div class="zone-head" onclick="toggleZone('z-post')">
       <div class="zone-icon">🎬</div>
       <div class="zone-label-wrap">
-        <div class="zone-name">After the event</div>
-        <div class="zone-desc">The post-event Arrowverse, the Elseworlds born from the event, and the brand-new DCU.</div>
+        <div class="zone-name">Après l'événement</div>
+        <div class="zone-desc">L'Arrowverse post-événement, les Elseworlds issus de l'événement, et le tout nouveau DCU.</div>
       </div>
       <div class="zone-toggle open" id="toggle-z-post">▼</div>
     </div>
     <div class="zone-badges">
       <span class="zbadge zbadge-av">Arrowverse</span>
-      <span class="zbadge zbadge-else">Post-event Elseworlds</span>
+      <span class="zbadge zbadge-else">Elseworlds post-événement</span>
       <span class="zbadge zbadge-dcu">DCU</span>
     </div>
     <div class="zone-body open" id="z-post">
       <div class="zone-grid zg-3">
         <div class="zcol zcol-av">
-          <div class="zcol-head">Arrowverse — After the event</div>
+          <div class="zcol-head">Arrowverse — Après l'événement</div>
           <div id="col-av-post"></div>
         </div>
         <div class="zcol zcol-else">
-          <div class="zcol-head">Post-event Elseworlds</div>
-          <div class="zcol-hint">Universes revealed or born after the event</div>
+          <div class="zcol-head">Elseworlds post-événement</div>
+          <div class="zcol-hint">Univers révélés ou nés après l'événement</div>
           <div id="col-else-post"></div>
         </div>
         <div class="zcol zcol-dcu">
-          <div class="zcol-head">DCU — New Universe</div>
-          <div class="zcol-hint">New universe connected to the DCEU through The Flash (2023)</div>
+          <div class="zcol-head">DCU — Nouvel Univers</div>
+          <div class="zcol-hint">Nouvel univers connecté au DCEU via The Flash (2023)</div>
           <div id="col-dcu"></div>
         </div>
       </div>
@@ -466,14 +466,14 @@ html,body{overflow-x:clip}
 </div>
 
 <script>
-const NOTES=`Fair warning: this section is a <strong>huge mess</strong>. Even though a lot of media has been cut, watching everything that's left still takes a lot — a LOT — of time. If you're only here for the Arrow-Verse, the DCEU or the DCU, you can skip straight to them below.<br><br>
-<strong>Fair question: how is this whole mess connected?</strong><br><br>
-This order favors a progressive discovery of the DC Multiverse. Several shows and movies take place in different realities but end up sharing connections. Watching everything in this order helps you understand the characters, references and events that tie these universes together, while preserving the major surprises.<br><br>
-Some things are missing, but they're <strong>not at all</strong> important for understanding the Multiverse's chronology and its key events (<strong>everything released before 1989, the Flash (1990) series, Lois &amp; Clark, Lucifer, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, the Birds of Prey show (2002), the Constantine movie (2005), the Watchmen movie and show, both Joker movies, the Green Lantern movie, the Catwoman movie, plenty of other lesser-known movies, almost every animated movie and cartoon, every comic, every video game…</strong>)<br><br>
-The universe's two main chronologies take place on <strong>Earth-Prime</strong> and <strong>Earth-1</strong>.<br><br>
-The term <strong>soft-canon</strong> refers to media whose events partly happened the same way — more info in the descriptions.<br><br>
-The DC Multiverse works in a peculiar way: two different characters can have the exact same face (examples: Flash's father (2014) and Flash (1990), Supergirl (1984) and Superman's mother (Smallville) but also Supergirl's adoptive mother (2015)).<br><br>
-Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.<br><br>
+const NOTES=`Je commencerai par vous prévenir que ce dossier est un <strong>énorme bordel</strong>, bien qu'ayant enlevé beaucoup de médias, regarder tout le reste nécessite beaucoup beaucoup de temps. Si vous êtes là seulement pour voir l'Arrow-Verse, le DCEU ou le DCU vous pouvez choisir de le faire plus bas.<br><br>
+<strong>Question légitime : en quoi tout ce bordel est relié ?</strong><br><br>
+Cet ordre privilégie la découverte progressive du Multivers DC. Plusieurs séries et films se déroulent dans des réalités différentes mais finissent par partager des liens. Regarder les œuvres dans cet ordre permet de mieux comprendre les personnages, les références et les événements qui connectent ces univers, tout en préservant les surprises majeures.<br><br>
+Il manque des choses mais elles ne sont <strong>pas du tout</strong> importantes pour la compréhension de la chronologie du Multivers et des événements importants (<strong>tous les médias sortis avant 1989, les séries Flash (1990), Loïs &amp; Clark, Lucifer, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, les Anges de la Nuit, le film Constantine (2005), le film et la série Watchmen, les 2 films Joker, le film Green Lantern, le film Catwoman, plein d'autres films peu connus, presque tous les films d'animation et dessins animés, tous les comics, tous les jeux-vidéo…</strong>)<br><br>
+Les deux chronologies principales de l'univers se passent sur la <strong>Terre-Prime</strong> et la <strong>Terre-1</strong>.<br><br>
+Le terme <strong>soft-canon</strong> désigne un média dont les événements sont en partie survenus de la même manière, plus d'infos dans les descriptions.<br><br>
+Le Multivers DC fonctionne d'une manière particulière, deux personnages différents peuvent avoir exactement la même tête (exemples : le père de Flash (2014) et Flash (1990), Supergirl (1984) et la mère de Superman (Smallville) mais aussi la mère adoptive de Supergirl (2015)).<br><br>
+Certains événements sont mieux à voir en tant que <strong>FLASHBACK</strong> pour comprendre et sont donc indiqués comme tel.<br><br>
 `;
 
 const TMDB_KEY='6257b37bf29ab31357853fce00232314';
@@ -482,164 +482,164 @@ const AV_C={'Arrow':'#00c850','The Flash':'#ffc800','Supergirl':'#a78bfa','Legen
 
 const DATA={
   superman:[
-    {id:'dc-smallville',type:'serie',level:'imp',tmdb:'4604',media:'tv',title:'Smallville',date:'2001–2011',dim:'EARTH-167',faq:{quand:'The show takes place between 2001 and 2011 in a parallel universe.',pourquoi:'The best media to introduce Superman\'s entourage and iconic villains.',spoil:'This Superman makes a brief appearance during the major event Crisis on Infinite Earths.'},subitems:['Season 1','Season 2','Season 3','Season 4','Season 5','Season 6','Season 7','Season 8','Season 9','Season 10']},
-    {id:'dc-krypton-s1',type:'serie',level:'bonus',tmdb:'71340',media:'tv',title:'Krypton',date:'???',dim:'EARTH-?',subitems:['Season 1','Season 2'],faq:{quand:'The show takes place 200 years before Superman\'s birth on the planet Krypton.',pourquoi:'Originally planned as a Man of Steel prequel, Krypton ultimately takes place in its own universe. Canceled after 2 seasons, but a nice way to expand Superman\'s lore.'}},
-    {id:'dc-supermanreturns',type:'film',level:'imp',tmdb:'1452',media:'movie',title:'Superman Returns',date:'2006',dim:'EARTH-96',faq:{quand:'The movie takes place in 2006, after the soft-canon events of Superman and Superman II, which happened the same way but in different eras.',pourquoi:'Soft-canon sequel to Superman and Superman II — the events happened the same way but in different eras.',spoil:'This Superman plays an important role during the major event Crisis on Infinite Earths.'}},
+    {id:'dc-smallville',type:'serie',level:'imp',tmdb:'4604',media:'tv',title:'Smallville',date:'2001–2011',dim:'TERRE-167',faq:{quand:'La série se déroule entre 2001 et 2011 dans un univers parallèle.',pourquoi:'Meilleur média pour introduire l\'entourage de Superman et les vilains emblématiques.',spoil:'Ce Superman fait une courte apparition pendant l\'événement majeur Crisis on Infinite Earths.'},subitems:['Saison 1','Saison 2','Saison 3','Saison 4','Saison 5','Saison 6','Saison 7','Saison 8','Saison 9','Saison 10']},
+    {id:'dc-krypton-s1',type:'serie',level:'bonus',tmdb:'71340',media:'tv',title:'Krypton',date:'???',dim:'TERRE-?',subitems:['Saison 1','Saison 2'],faq:{quand:'La série se déroule 200 ans avant la naissance de Superman sur la planète Krypton.',pourquoi:'Au départ prévu comme un préquel à Man of Steel, Krypton se déroule finalement dans son propre univers. Annulé après 2 saisons mais sympa pour développer le lore de Superman.'}},
+    {id:'dc-supermanreturns',type:'film',level:'imp',tmdb:'1452',media:'movie',title:'Superman Returns',date:'2006',dim:'TERRE-96',faq:{quand:'Le film se déroule en 2006, après les évènements soft-canon de Superman et Superman II dont les faits se sont déroulés de la même manière mais à des époques différentes.',pourquoi:'Suite soft-canon de Superman et Superman II — les événements se sont déroulés de la même manière mais à des époques différentes.',spoil:'Ce Superman a un rôle important pendant l\'événement majeur Crisis on Infinite Earths.'}},
   ],
   batman:[
-    {id:'dc-batman89',type:'film',level:'imp',tmdb:'268',media:'movie',title:'Batman',date:'1989',dim:'EARTH-89',faq:{quand:'The movie takes place in 1989 in a parallel universe.',pourquoi:'One of the most iconic and genre-defining superhero movies.',spoil:'Besides a brief cameo during the major event, this universe (or a very close branch of it) is a central element of The Flash movie.'}},
-    {id:'dc-batmanreturns',type:'film',level:'imp',tmdb:'364',media:'movie',title:'Batman Returns',date:'1992',dim:'EARTH-89',faq:{quand:'Direct sequel to Batman (1989) in the same universe.',pourquoi:'The 2 sequels Batman Forever and Batman &amp; Robin were officially decanonized and take place in an alternate reality close to Burton\'s 2 movies.',spoil:'The ending of The Flash confirms this canon with George Clooney\'s appearance.'}},
-    {id:'dc-batmanbegins',type:'film',level:'bonus',tmdb:'272',media:'movie',title:'Batman Begins',date:'2005',dim:'EARTH-TDK'},
-    {id:'dc-tdk',type:'film',level:'bonus',tmdb:'155',media:'movie',title:'The Dark Knight',date:'2008',dim:'EARTH-TDK'},
-    {id:'dc-tdkr',type:'film',level:'bonus',tmdb:'49026',media:'movie',title:'The Dark Knight Rises',date:'2016',dim:'EARTH-TDK'},
-    {id:'dc-gotham',type:'serie',level:'bonus',tmdb:'60708',media:'tv',title:'Gotham',date:'???',dim:'EARTH-2014',subitems:['Season 1','Season 2','Season 3','Season 4','Season 5'],faq:{quand:'The show takes place in an alternate past with no precise date, before Batman\'s appearance.',pourquoi:'Like Smallville, a nice way to explore the origins of Batman\'s entourage and iconic villains.'}},
-    {id:'dc-titans-s1',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2018',dim:'EARTH-9',subitems:['Season 1'],faq:{quand:'Season 1 takes place in 2018 in a parallel universe.',spoil:'Characters from this show make a cameo during the major event Crisis on Infinite Earths.'}},
-    {id:'dc-titans-s2',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2019',dim:'EARTH-9',subitems:['Season 2'],faq:{quand:'Season 2 takes place in 2019 in the same universe.',spoil:'Characters from this show make a cameo during the major event Crisis on Infinite Earths.'}},
+    {id:'dc-batman89',type:'film',level:'imp',tmdb:'268',media:'movie',title:'Batman',date:'1989',dim:'TERRE-89',faq:{quand:'Le film se déroule en 1989 dans un univers parallèle.',pourquoi:'L\'un des films de super-héros les plus emblématiques et fondateurs du genre.',spoil:'En plus d\'un court caméo pendant l\'événement majeur, cet univers (ou une branche très proche) est un élément central du film The Flash.'}},
+    {id:'dc-batmanreturns',type:'film',level:'imp',tmdb:'364',media:'movie',title:'Batman : Le Défi',date:'1992',dim:'TERRE-89',faq:{quand:'Suite directe de Batman (1989) dans le même univers.',pourquoi:'Les 2 suites Batman Forever et Batman & Robin ont été officiellement décanonisées et se passent dans une réalité alternée proche des 2 films de Burton.',spoil:'La fin de The Flash confirme ce canon avec l\'apparition de George Clooney.'}},
+    {id:'dc-batmanbegins',type:'film',level:'bonus',tmdb:'272',media:'movie',title:'Batman Begins',date:'2005',dim:'TERRE-TDK'},
+    {id:'dc-tdk',type:'film',level:'bonus',tmdb:'155',media:'movie',title:'The Dark Knight',date:'2008',dim:'TERRE-TDK'},
+    {id:'dc-tdkr',type:'film',level:'bonus',tmdb:'49026',media:'movie',title:'The Dark Knight Rises',date:'2016',dim:'TERRE-TDK'},
+    {id:'dc-gotham',type:'serie',level:'bonus',tmdb:'60708',media:'tv',title:'Gotham',date:'???',dim:'TERRE-2014',subitems:['Saison 1','Saison 2','Saison 3','Saison 4','Saison 5'],faq:{quand:'La série se déroule dans un passé alternatif sans date précise, avant l\'apparition de Batman.',pourquoi:'Sympa comme Smallville pour les origines de l\'entourage de Batman et des vilains emblématiques.'}},
+    {id:'dc-titans-s1',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2018',dim:'TERRE-9',subitems:['Saison 1'],faq:{quand:'La saison 1 se déroule en 2018 dans un univers parallèle.',spoil:'Des personnages de cette série font un caméo pendant l\'événement majeur Crisis on Infinite Earths.'}},
+    {id:'dc-titans-s2',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2019',dim:'TERRE-9',subitems:['Saison 2'],faq:{quand:'La saison 2 se déroule en 2019 dans le même univers.',spoil:'Des personnages de cette série font un caméo pendant l\'événement majeur Crisis on Infinite Earths.'}},
   ],
   av_pre:[
-    {id:'av-arrow-s12',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2012–2014',dim:'EARTH-PRIME',subitems:['Season 1','Season 2']},
-    {id:'av-arrow-s3e1-3',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 1-3']},
-    {id:'av-flash-s1e1-4',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'EARTH-PRIME',subitems:['Season 1 Episodes 1-4']},
-    {id:'av-arrow-s3e4',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'EARTH-PRIME',subitems:['Season 3 Episode 4']},
-    {id:'av-flash-s1e5',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'EARTH-PRIME',subitems:['Season 1 Episode 5']},
-    {id:'av-arrow-s3e5',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'EARTH-PRIME',subitems:['Season 3 Episode 5']},
-    {id:'av-flash-s1e6-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'EARTH-PRIME',subitems:['Season 1 Episodes 6-7']},
-    {id:'av-arrow-s3e6-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 6-7']},
-    {id:'av-flash-s1e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'EARTH-PRIME',subitems:['Season 1 Episode 8']},
-    {id:'av-arrow-s3e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'EARTH-PRIME',subitems:['Season 3 Episode 8']},
-    {id:'av-flash-s1e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014–2015',dim:'EARTH-PRIME',subitems:['Season 1 Episodes 9-23']},
-    {id:'av-arrow-s3e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014–2015',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 9-23']},
-    {id:'av-constantine',type:'serie',level:'bonus',tmdb:'60743',media:'tv',title:'Constantine',date:'2014',dim:'EARTH-PRIME',subitems:['Season 1']},
-    {id:'av-arrow-s4e1',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'EARTH-PRIME',subitems:['Season 4 Episode 1']},
-    {id:'av-flash-s2e1-4',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 1-4']},
-    {id:'av-arrow-s4e2-4',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 2-4']},
-    {id:'av-sg-s1e1-4',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015',dim:'EARTH-38',subitems:['Season 1 Episodes 1-4']},
-    {id:'av-arrow-s4e5',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'EARTH-PRIME',subitems:['Season 4 Episode 5']},
-    {id:'av-flash-s2e5-6',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 5-6']},
-    {id:'av-sg-s1e5-7',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015',dim:'EARTH-38',subitems:['Season 1 Episodes 5-7']},
-    {id:'av-arrow-s4e6',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'EARTH-PRIME',subitems:['Season 4 Episode 6']},
-    {id:'av-flash-s2e7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'EARTH-PRIME',subitems:['Season 2 Episode 7']},
-    {id:'av-sg-s1e8-9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015',dim:'EARTH-38',subitems:['Season 1 Episodes 8-9']},
-    {id:'av-arrow-s4e7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'EARTH-PRIME',subitems:['Season 4 Episode 7']},
-    {id:'av-flash-s2e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'EARTH-PRIME',subitems:['Season 2 Episode 8']},
-    {id:'av-arrow-s4e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'EARTH-PRIME',subitems:['Season 4 Episode 8']},
-    {id:'av-sg-s1e10-11',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015–2016',dim:'EARTH-38',subitems:['Season 1 Episodes 10-11']},
-    {id:'av-arrow-s4e9-10',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015–2016',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 9-10']},
-    {id:'av-flash-s2e9-10',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015–2016',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 9-10']},
-    {id:'av-sg-s1e12-17',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015–2016',dim:'EARTH-38',subitems:['Season 1 Episodes 12-17']},
-    {id:'av-arrow-s4e11-17',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015–2016',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 11-17']},
-    {id:'av-flash-s2e11-18',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015–2016',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 11-18']},
-    {id:'av-sg-s1e18',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015–2016',dim:'EARTH-38',subitems:['Season 1 Episode 18']},
-    {id:'av-arrow-s4e18-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 18-23']},
-    {id:'av-flash-s2e19-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 19-23']},
-    {id:'av-sg-s1e19-20',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016',dim:'EARTH-38',subitems:['Season 1 Episodes 19-20']},
-    {id:'av-lot-s1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016',dim:'EARTH-PRIME',subitems:['Season 1']},
-    {id:'av-sg-s2e1-7',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016',dim:'EARTH-38',subitems:['Season 2 Episodes 1-7']},
-    {id:'av-flash-s3e1-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 1-7']},
-    {id:'av-arrow-s5e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 1-7']},
-    {id:'av-lot-s2e1-6',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 1-6']},
-    {id:'av-bl-s1e1-6',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2016',dim:'EARTH-TUD5',subitems:['Season 1 Episodes 1-6']},
-    {id:'av-sg-s2e8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016',dim:'EARTH-38',subitems:['Season 2 Episode 8']},
-    {id:'av-flash-s3e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016',dim:'EARTH-PRIME',subitems:['Season 3 Episode 8']},
-    {id:'av-arrow-s5e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016',dim:'EARTH-PRIME',subitems:['Season 5 Episode 8']},
-    {id:'av-lot-s2e7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016',dim:'EARTH-PRIME',subitems:['Season 2 Episode 7']},
-    {id:'av-sg-s2e9-22',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016–2017',dim:'EARTH-38',subitems:['Season 2 Episodes 9-22']},
-    {id:'av-flash-s3e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016–2017',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 9-23']},
-    {id:'av-arrow-s5e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016–2017',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 9-23']},
-    {id:'av-lot-s2e8-17',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016–2017',dim:'EARTH-PRIME',subitems:['Season 2 Episodes 8-17']},
-    {id:'av-bl-s1e7-13',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2016–2017',dim:'EARTH-TUD5',subitems:['Season 1 Episodes 7-13']},
-    {id:'av-sg-s3e1-7',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2017',dim:'EARTH-38',subitems:['Season 3 Episodes 1-7']},
-    {id:'av-flash-s4e1-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2017',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 1-7']},
-    {id:'av-arrow-s6e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2017',dim:'EARTH-PRIME',subitems:['Season 6 Episodes 1-7']},
-    {id:'av-lot-s3e1-7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2017',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 1-7']},
-    {id:'av-bl-s2e1-7',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2017',dim:'EARTH-TUD5',subitems:['Season 2 Episodes 1-7']},
-    {id:'av-sg-s3e8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2017',dim:'EARTH-38',subitems:['Season 3 Episode 8']},
-    {id:'av-flash-s4e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2017',dim:'EARTH-PRIME',subitems:['Season 4 Episode 8']},
-    {id:'av-arrow-s6e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2017',dim:'EARTH-PRIME',subitems:['Season 6 Episode 8']},
-    {id:'av-lot-s3e8',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2017',dim:'EARTH-PRIME',subitems:['Season 3 Episode 8']},
-    {id:'av-sg-s3e9-23',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2017–2018',dim:'EARTH-38',subitems:['Season 3 Episodes 9-23']},
-    {id:'av-flash-s4e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2017–2018',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 9-23']},
-    {id:'av-arrow-s6e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2017–2018',dim:'EARTH-PRIME',subitems:['Season 6 Episodes 9-23']},
-    {id:'av-lot-s3e9-18',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2017–2018',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 9-18']},
-    {id:'av-bl-s2e8-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2017–2018',dim:'EARTH-TUD5',subitems:['Season 2 Episodes 8-16']},
-    {id:'av-sg-s4e1-8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2018',dim:'EARTH-38',subitems:['Season 4 Episodes 1-8']},
-    {id:'av-flash-s5e1-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 1-7']},
-    {id:'av-arrow-s7e1-8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018',dim:'EARTH-PRIME',subitems:['Season 7 Episodes 1-8']},
-    {id:'av-lot-s4e1-7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2018',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 1-7']},
-    {id:'av-bl-s3e1-7',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2018',dim:'EARTH-TUD5',subitems:['Season 3 Episodes 1-7']},
-    {id:'av-bw-s1e1-4',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2018',dim:'EARTH-PRIME',subitems:['Season 1 Episodes 1-4']},
-    {id:'av-flash-s5e8-9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 8-9']},
-    {id:'av-arrow-s7e9',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018',dim:'EARTH-PRIME',subitems:['Season 7 Episode 9']},
-    {id:'av-sg-s4e9-22',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2018',dim:'EARTH-38',subitems:['Season 4 Episodes 9-22']},
-    {id:'av-flash-s5e10-22',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018–2019',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 10-22']},
-    {id:'av-arrow-s7e10-22',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018–2019',dim:'EARTH-PRIME',subitems:['Season 7 Episodes 10-22']},
-    {id:'av-lot-s4e8-16',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2018–2019',dim:'EARTH-PRIME',subitems:['Season 4 Episodes 8-16']},
-    {id:'av-bl-s3e8',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2018–2019',dim:'EARTH-TUD5',subitems:['Season 3 Episode 8']},
-    {id:'av-sg-s5e1-8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'EARTH-38',subitems:['Season 5 Episodes 1-8']},
-    {id:'av-bw-s1e5-8',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'EARTH-PRIME',subitems:['Season 1 Episodes 5-8']},
-    {id:'av-flash-s6e1-8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'EARTH-PRIME',subitems:['Season 6 Episodes 1-8']},
-    {id:'av-arrow-s8e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'EARTH-PRIME',subitems:['Season 8 Episodes 1-7']},
-    {id:'crisis-start',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'⚡ The major event begins',date:'2019–2020',note:'If you were planning to watch any Elseworlds media (marked 🚨) or the DCEU, do it before this event — for the DCEU, at least up to and including Justice League.'},
-    {id:'av-bl-s3e9',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019',dim:'EARTH-TUD5',subitems:['Season 3 Episode 9']},
-    {id:'av-sg-s5e9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'EARTH-38',subitems:['Season 5 Episode 9']},
-    {id:'av-bw-s1e9',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'EARTH-PRIME',subitems:['Season 1 Episode 9']},
-    {id:'av-flash-s6e9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'EARTH-PRIME',subitems:['Season 6 Episode 9']},
-    {id:'av-arrow-s8e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'EARTH-PRIME',subitems:['Season 8 Episode 8']},
-    {id:'av-lot-s5e1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019',dim:'EARTH-PRIME',subitems:['Season 5 Episode 1']},
+    {id:'av-arrow-s12',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2012–2014',dim:'TERRE-PRIME',subitems:['Saison 1','Saison 2']},
+    {id:'av-arrow-s3e1-3',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 1-3']},
+    {id:'av-flash-s1e1-4',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 1-4']},
+    {id:'av-arrow-s3e4',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 3 Épisode 4']},
+    {id:'av-flash-s1e5',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 5']},
+    {id:'av-arrow-s3e5',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 3 Épisode 5']},
+    {id:'av-flash-s1e6-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 6-7']},
+    {id:'av-arrow-s3e6-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 6-7']},
+    {id:'av-flash-s1e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 8']},
+    {id:'av-arrow-s3e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 3 Épisode 8']},
+    {id:'av-flash-s1e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2014–2015',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 9-23']},
+    {id:'av-arrow-s3e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2014–2015',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 9-23']},
+    {id:'av-constantine',type:'serie',level:'bonus',tmdb:'60743',media:'tv',title:'Constantine',date:'2014',dim:'TERRE-PRIME',subitems:['Saison 1']},
+    {id:'av-arrow-s4e1',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 1']},
+    {id:'av-flash-s2e1-4',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 1-4']},
+    {id:'av-arrow-s4e2-4',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 2-4']},
+    {id:'av-sg-s1e1-4',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015',dim:'TERRE-38',subitems:['Saison 1 Épisodes 1-4']},
+    {id:'av-arrow-s4e5',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 5']},
+    {id:'av-flash-s2e5-6',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 5-6']},
+    {id:'av-sg-s1e5-7',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015',dim:'TERRE-38',subitems:['Saison 1 Épisodes 5-7']},
+    {id:'av-arrow-s4e6',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 6']},
+    {id:'av-flash-s2e7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 2 Épisode 7']},
+    {id:'av-sg-s1e8-9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015',dim:'TERRE-38',subitems:['Saison 1 Épisodes 8-9']},
+    {id:'av-arrow-s4e7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 7']},
+    {id:'av-flash-s2e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 2 Épisode 8']},
+    {id:'av-arrow-s4e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 8']},
+    {id:'av-sg-s1e10-11',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015–2016',dim:'TERRE-38',subitems:['Saison 1 Épisodes 10-11']},
+    {id:'av-arrow-s4e9-10',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015–2016',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 9-10']},
+    {id:'av-flash-s2e9-10',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015–2016',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 9-10']},
+    {id:'av-sg-s1e12-17',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015–2016',dim:'TERRE-38',subitems:['Saison 1 Épisodes 12-17']},
+    {id:'av-arrow-s4e11-17',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2015–2016',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 11-17']},
+    {id:'av-flash-s2e11-18',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2015–2016',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 11-18']},
+    {id:'av-sg-s1e18',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2015–2016',dim:'TERRE-38',subitems:['Saison 1 Épisode 18']},
+    {id:'av-arrow-s4e18-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 18-23']},
+    {id:'av-flash-s2e19-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 19-23']},
+    {id:'av-sg-s1e19-20',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016',dim:'TERRE-38',subitems:['Saison 1 Épisodes 19-20']},
+    {id:'av-lot-s1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 1']},
+    {id:'av-sg-s2e1-7',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016',dim:'TERRE-38',subitems:['Saison 2 Épisodes 1-7']},
+    {id:'av-flash-s3e1-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 1-7']},
+    {id:'av-arrow-s5e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 1-7']},
+    {id:'av-lot-s2e1-6',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 1-6']},
+    {id:'av-bl-s1e1-6',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2016',dim:'TERRE-TUD5',subitems:['Saison 1 Épisodes 1-6']},
+    {id:'av-sg-s2e8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016',dim:'TERRE-38',subitems:['Saison 2 Épisode 8']},
+    {id:'av-flash-s3e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 3 Épisode 8']},
+    {id:'av-arrow-s5e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 5 Épisode 8']},
+    {id:'av-lot-s2e7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016',dim:'TERRE-PRIME',subitems:['Saison 2 Épisode 7']},
+    {id:'av-sg-s2e9-22',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2016–2017',dim:'TERRE-38',subitems:['Saison 2 Épisodes 9-22']},
+    {id:'av-flash-s3e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2016–2017',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 9-23']},
+    {id:'av-arrow-s5e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2016–2017',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 9-23']},
+    {id:'av-lot-s2e8-17',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2016–2017',dim:'TERRE-PRIME',subitems:['Saison 2 Épisodes 8-17']},
+    {id:'av-bl-s1e7-13',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2016–2017',dim:'TERRE-TUD5',subitems:['Saison 1 Épisodes 7-13']},
+    {id:'av-sg-s3e1-7',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2017',dim:'TERRE-38',subitems:['Saison 3 Épisodes 1-7']},
+    {id:'av-flash-s4e1-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2017',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 1-7']},
+    {id:'av-arrow-s6e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2017',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 1-7']},
+    {id:'av-lot-s3e1-7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2017',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 1-7']},
+    {id:'av-bl-s2e1-7',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2017',dim:'TERRE-TUD5',subitems:['Saison 2 Épisodes 1-7']},
+    {id:'av-sg-s3e8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2017',dim:'TERRE-38',subitems:['Saison 3 Épisode 8']},
+    {id:'av-flash-s4e8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2017',dim:'TERRE-PRIME',subitems:['Saison 4 Épisode 8']},
+    {id:'av-arrow-s6e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2017',dim:'TERRE-PRIME',subitems:['Saison 6 Épisode 8']},
+    {id:'av-lot-s3e8',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2017',dim:'TERRE-PRIME',subitems:['Saison 3 Épisode 8']},
+    {id:'av-sg-s3e9-23',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2017–2018',dim:'TERRE-38',subitems:['Saison 3 Épisodes 9-23']},
+    {id:'av-flash-s4e9-23',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2017–2018',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 9-23']},
+    {id:'av-arrow-s6e9-23',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2017–2018',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 9-23']},
+    {id:'av-lot-s3e9-18',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2017–2018',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 9-18']},
+    {id:'av-bl-s2e8-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2017–2018',dim:'TERRE-TUD5',subitems:['Saison 2 Épisodes 8-16']},
+    {id:'av-sg-s4e1-8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2018',dim:'TERRE-38',subitems:['Saison 4 Épisodes 1-8']},
+    {id:'av-flash-s5e1-7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 1-7']},
+    {id:'av-arrow-s7e1-8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 7 Épisodes 1-8']},
+    {id:'av-lot-s4e1-7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 1-7']},
+    {id:'av-bl-s3e1-7',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2018',dim:'TERRE-TUD5',subitems:['Saison 3 Épisodes 1-7']},
+    {id:'av-bw-s1e1-4',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 1-4']},
+    {id:'av-flash-s5e8-9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 8-9']},
+    {id:'av-arrow-s7e9',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018',dim:'TERRE-PRIME',subitems:['Saison 7 Épisode 9']},
+    {id:'av-sg-s4e9-22',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2018',dim:'TERRE-38',subitems:['Saison 4 Épisodes 9-22']},
+    {id:'av-flash-s5e10-22',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2018–2019',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 10-22']},
+    {id:'av-arrow-s7e10-22',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2018–2019',dim:'TERRE-PRIME',subitems:['Saison 7 Épisodes 10-22']},
+    {id:'av-lot-s4e8-16',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2018–2019',dim:'TERRE-PRIME',subitems:['Saison 4 Épisodes 8-16']},
+    {id:'av-bl-s3e8',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2018–2019',dim:'TERRE-TUD5',subitems:['Saison 3 Épisode 8']},
+    {id:'av-sg-s5e1-8',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'TERRE-38',subitems:['Saison 5 Épisodes 1-8']},
+    {id:'av-bw-s1e5-8',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 5-8']},
+    {id:'av-flash-s6e1-8',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 1-8']},
+    {id:'av-arrow-s8e1-7',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 1-7']},
+    {id:'crisis-start',type:'separator',level:'imp',tmdb:'0',media:'tv',title:'⚡ Début de l\'événement majeur',date:'2019–2020',note:'Si vous comptiez regarder des médias Elseworlds (marqués 🚨) ou le DCEU, faites-le avant cet événement — pour le DCEU, au moins jusqu\'à Justice League inclus.'},
+    {id:'av-bl-s3e9',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019',dim:'TERRE-TUD5',subitems:['Saison 3 Épisode 9']},
+    {id:'av-sg-s5e9',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019',dim:'TERRE-38',subitems:['Saison 5 Épisode 9']},
+    {id:'av-bw-s1e9',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 1 Épisode 9']},
+    {id:'av-flash-s6e9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 6 Épisode 9']},
+    {id:'av-arrow-s8e8',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 8 Épisode 8']},
+    {id:'av-lot-s5e1',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019',dim:'TERRE-PRIME',subitems:['Saison 5 Épisode 1']},
   ],
   dceu:[
-    {id:'dceu-mos',type:'film',level:'imp',tmdb:'49521',media:'movie',title:'Man of Steel',date:'2013',dim:'EARTH-1',faq:{quand:'The movie takes place in 2013 and marks the start of the DCEU on Earth-1.',pourquoi:'It\'s the starting point of the DCEU, DC\'s cinematic universe. Watch it before Batman v Superman.'}},
-    {id:'dceu-bvs',type:'film',level:'imp',tmdb:'209112',media:'movie',title:'Batman v Superman: Dawn of Justice',date:'2015',dim:'EARTH-1',bignote:'⚠️ Ultimate Edition version!!!'},
-    {id:'dceu-ww',type:'film',level:'imp',tmdb:'297762',media:'movie',title:'Wonder Woman',date:'1918',dim:'EARTH-1',tags:['flashback']},
-    {id:'dceu-ww84',type:'film',level:'bonus',tmdb:'464052',media:'movie',title:'Wonder Woman 1984',date:'1984',dim:'EARTH-1',tags:['flashback']},
-    {id:'dceu-ss',type:'film',level:'imp',tmdb:'297761',media:'movie',title:'Suicide Squad',date:'2016',dim:'EARTH-1'},
-    {id:'dceu-jl',type:'film',level:'imp',tmdb:'791373',media:'movie',title:'Zack Snyder\'s Justice League',date:'2017',dim:'EARTH-1'},
-    {id:'dceu-aquaman',type:'film',level:'imp',tmdb:'297802',media:'movie',title:'Aquaman',date:'2017–2018',dim:'EARTH-1'},
-    {id:'dceu-shazam',type:'film',level:'bonus',tmdb:'287947',media:'movie',title:'Shazam!',date:'2018',dim:'EARTH-1'},
-    {id:'dceu-bop',type:'film',level:'imp',tmdb:'495764',media:'movie',title:'Birds of Prey',date:'2020',dim:'EARTH-1'},
-    {id:'dceu-tss',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'EARTH-1'},
-    {id:'dceu-peacemaker',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'EARTH-1',subitems:['Season 1']},
-    {id:'dceu-blackadam',type:'film',level:'imp',tmdb:'436270',media:'movie',title:'Black Adam',date:'2021',dim:'EARTH-1'},
-    {id:'dceu-shazam2',type:'film',level:'bonus',tmdb:'594767',media:'movie',title:'Shazam! Fury of the Gods',date:'2022',dim:'EARTH-1'},
-    {id:'dceu-aquaman2',type:'film',level:'imp',tmdb:'572802',media:'movie',title:'Aquaman and the Lost Kingdom',date:'2022',dim:'EARTH-1'},
-    {id:'dceu-bluebeetle',type:'film',level:'bonus',tmdb:'565770',media:'movie',title:'Blue Beetle',date:'2023',dim:'EARTH-1'},
-    {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'EARTH-1',note:'Final DCEU movie — reboots the universe into the DCU',faq:{quand:'The movie takes place in 2023 and closes out the DCEU.',pourquoi:'This movie is the bridge between the DCEU and the DCU. It resets the universe and introduces James Gunn\'s new DC era. Watch it before Creature Commandos.'}},
+    {id:'dceu-mos',type:'film',level:'imp',tmdb:'49521',media:'movie',title:'Man of Steel',date:'2013',dim:'TERRE-1',faq:{quand:'Le film se déroule en 2013 et marque le début du DCEU sur la Terre-1.',pourquoi:'C\'est le point de départ du DCEU, l\'univers cinématographique DC. Regardez-le avant Batman V Superman.'}},
+    {id:'dceu-bvs',type:'film',level:'imp',tmdb:'209112',media:'movie',title:'Batman V Superman : l\'Aube de la Justice',date:'2015',dim:'TERRE-1',bignote:'⚠️ Version Ultimate Edition !!!'},
+    {id:'dceu-ww',type:'film',level:'imp',tmdb:'297762',media:'movie',title:'Wonder Woman',date:'1918',dim:'TERRE-1',tags:['flashback']},
+    {id:'dceu-ww84',type:'film',level:'bonus',tmdb:'464052',media:'movie',title:'Wonder Woman 1984',date:'1984',dim:'TERRE-1',tags:['flashback']},
+    {id:'dceu-ss',type:'film',level:'imp',tmdb:'297761',media:'movie',title:'Suicide Squad',date:'2016',dim:'TERRE-1'},
+    {id:'dceu-jl',type:'film',level:'imp',tmdb:'791373',media:'movie',title:'Zack Snyder\'s Justice League',date:'2017',dim:'TERRE-1'},
+    {id:'dceu-aquaman',type:'film',level:'imp',tmdb:'297802',media:'movie',title:'Aquaman',date:'2017–2018',dim:'TERRE-1'},
+    {id:'dceu-shazam',type:'film',level:'bonus',tmdb:'287947',media:'movie',title:'Shazam!',date:'2018',dim:'TERRE-1'},
+    {id:'dceu-bop',type:'film',level:'imp',tmdb:'495764',media:'movie',title:'Birds of Prey',date:'2020',dim:'TERRE-1'},
+    {id:'dceu-tss',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'TERRE-1'},
+    {id:'dceu-peacemaker',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'TERRE-1',subitems:['Saison 1']},
+    {id:'dceu-blackadam',type:'film',level:'imp',tmdb:'436270',media:'movie',title:'Black Adam',date:'2021',dim:'TERRE-1'},
+    {id:'dceu-shazam2',type:'film',level:'bonus',tmdb:'594767',media:'movie',title:'Shazam 2 : La Rage des Dieux',date:'2022',dim:'TERRE-1'},
+    {id:'dceu-aquaman2',type:'film',level:'imp',tmdb:'572802',media:'movie',title:'Aquaman et le Royaume Perdu',date:'2022',dim:'TERRE-1'},
+    {id:'dceu-bluebeetle',type:'film',level:'bonus',tmdb:'565770',media:'movie',title:'Blue Beetle',date:'2023',dim:'TERRE-1'},
+    {id:'dceu-theflash',type:'film',level:'imp',tmdb:'298618',media:'movie',title:'The Flash',date:'2023',dim:'TERRE-1',note:'Dernier film du DCEU — Reboot de l\'univers vers le DCU',faq:{quand:'Le film se déroule en 2023 et conclut le DCEU.',pourquoi:'Ce film est le pont entre le DCEU et le DCU. Il réinitialise l\'univers et introduit la nouvelle ère DC de James Gunn. À regarder avant Creature Commandos.'}},
   ],
   av_post:[
-    {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'EARTH-PRIME',subitems:['Season 3 Episodes 10-16']},
-    {id:'av-sg-s5e10-19',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019–2020',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 10-19']},
-    {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019–2020',dim:'EARTH-PRIME',subitems:['Season 1 Episodes 10-20']},
-    {id:'av-flash-s6e10-19',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019–2020',dim:'EARTH-PRIME',subitems:['Season 6 Episodes 10-19']},
-    {id:'av-arrow-s8e9-10',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019–2020',dim:'EARTH-PRIME',subitems:['Season 8 Episodes 9-10 (final)']},
-    {id:'av-lot-s5e2-15',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019–2020',dim:'EARTH-PRIME',subitems:['Season 5 Episodes 2-15']},
-    {id:'av-sg-s6',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2020–2021',dim:'EARTH-PRIME',subitems:['Season 6 (final)']},
-    {id:'av-bw-s2',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2020–2021',dim:'EARTH-PRIME',subitems:['Season 2']},
-    {id:'av-flash-s7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2020–2021',dim:'EARTH-PRIME',subitems:['Season 7']},
-    {id:'av-lot-s6',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2020–2021',dim:'EARTH-PRIME',subitems:['Season 6']},
-    {id:'av-bl-s4',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2020–2021',dim:'EARTH-PRIME',subitems:['Season 4 (final)']},
-    {id:'av-bw-s3',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2021',dim:'EARTH-PRIME',subitems:['Season 3 (final)']},
-    {id:'av-flash-s8e1-5',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2021',dim:'EARTH-PRIME',subitems:['Season 8 Episodes 1-5']},
-    {id:'av-lot-s7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2021–2022',dim:'EARTH-PRIME',subitems:['Season 7 (final)']},
-    {id:'av-flash-s8e6-20',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2021–2022',dim:'EARTH-PRIME',subitems:['Season 8 Episodes 6-20']},
-    {id:'av-flash-s9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2023',dim:'EARTH-PRIME',subitems:['Season 9 (final)']},
+    {id:'av-bl-s3e10-16',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 3 Épisodes 10-16']},
+    {id:'av-sg-s5e10-19',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 10-19']},
+    {id:'av-bw-s1e10-20',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 1 Épisodes 10-20']},
+    {id:'av-flash-s6e10-19',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 6 Épisodes 10-19']},
+    {id:'av-arrow-s8e9-10',type:'serie',level:'imp',tmdb:'1412',media:'tv',title:'Arrow',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 9-10 (final)']},
+    {id:'av-lot-s5e2-15',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2019–2020',dim:'TERRE-PRIME',subitems:['Saison 5 Épisodes 2-15']},
+    {id:'av-sg-s6',type:'serie',level:'imp',tmdb:'62688',media:'tv',title:'Supergirl',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 6 (finale)']},
+    {id:'av-bw-s2',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 2']},
+    {id:'av-flash-s7',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 7']},
+    {id:'av-lot-s6',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 6']},
+    {id:'av-bl-s4',type:'serie',level:'bonus',tmdb:'71663',media:'tv',title:'Black Lightning',date:'2020–2021',dim:'TERRE-PRIME',subitems:['Saison 4 (finale)']},
+    {id:'av-bw-s3',type:'serie',level:'imp',tmdb:'89247',media:'tv',title:'Batwoman',date:'2021',dim:'TERRE-PRIME',subitems:['Saison 3 (finale)']},
+    {id:'av-flash-s8e1-5',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2021',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 1-5']},
+    {id:'av-lot-s7',type:'serie',level:'imp',tmdb:'62643',media:'tv',title:'Legends of Tomorrow',date:'2021–2022',dim:'TERRE-PRIME',subitems:['Saison 7 (finale)']},
+    {id:'av-flash-s8e6-20',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2021–2022',dim:'TERRE-PRIME',subitems:['Saison 8 Épisodes 6-20']},
+    {id:'av-flash-s9',type:'serie',level:'imp',tmdb:'60735',media:'tv',title:'The Flash',date:'2023',dim:'TERRE-PRIME',subitems:['Saison 9 (finale)']},
   ],
   else_post:[
-    {id:'dc-stargirl-s1',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2020',dim:'EARTH-2',subitems:['Season 1'],faq:{quand:'Season 1 takes place in 2020 on the new Earth-2.',spoil:'The show takes place on the new Earth-2 created after the major event. Stargirl makes a cameo in the final season of Titans.'}},
-    {id:'dc-stargirl-s2',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'EARTH-2',subitems:['Season 2']},
-    {id:'dc-stargirl-s3',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'EARTH-2',subitems:['Season 3']},
-    {id:'dc-titans-s3',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'EARTH-9',subitems:['Season 3'],faq:{quand:'Season 3 takes place in 2021, post-event.',pourquoi:'A direct continuation after the major event, in a universe that has changed.'}},
-    {id:'dc-titans-s4',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'EARTH-9',subitems:['Season 4 (final)'],faq:{quand:'The fourth and final season takes place in 2021.',spoil:'One episode features many DC character cameos, in the same spirit as the major event, including Stargirl.'}},
-    {id:'dc-supermanlois',type:'serie',level:'bonus',tmdb:'95057',media:'tv',title:'Superman &amp; Lois',date:'2021–2024',dim:'EARTH-TUD25',subitems:['Season 1','Season 2','Season 3','Season 4 (final)'],faq:{quand:'The show takes place between 2021 and 2024.',pourquoi:'Originally conceived as a continuation of Supergirl\'s Superman, the show ultimately takes place in a very close but distinct reality.'}},
-    {id:'dc-thebatman',type:'film',level:'bonus',tmdb:'414906',media:'movie',title:'The Batman',date:'2022',dim:'EARTH-TB'},
-    {id:'dc-thepenguin',type:'serie',level:'bonus',tmdb:'194764',media:'tv',title:'The Penguin',date:'2022',dim:'EARTH-TB',subitems:['Season 1']},
+    {id:'dc-stargirl-s1',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2020',dim:'TERRE-2',subitems:['Saison 1'],faq:{quand:'La saison 1 se déroule en 2020 sur la nouvelle Terre-2.',spoil:'La série se passe sur la nouvelle Terre-2 créée après l\'événement majeur. Stargirl fait un caméo dans la saison finale de Titans.'}},
+    {id:'dc-stargirl-s2',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'TERRE-2',subitems:['Saison 2']},
+    {id:'dc-stargirl-s3',type:'serie',level:'bonus',tmdb:'80986',media:'tv',title:'Stargirl',date:'2021',dim:'TERRE-2',subitems:['Saison 3']},
+    {id:'dc-titans-s3',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 3'],faq:{quand:'La saison 3 se déroule en 2021 post-événement.',pourquoi:'Suite directe après l\'événement majeur dans un univers qui a changé.'}},
+    {id:'dc-titans-s4',type:'serie',level:'bonus',tmdb:'75450',media:'tv',title:'Titans',date:'2021',dim:'TERRE-9',subitems:['Saison 4 (finale)'],faq:{quand:'La saison 4 et finale se déroule en 2021.',spoil:'Un épisode contient beaucoup de caméos de personnages DC, dans le même esprit que l\'événement majeur, dont Stargirl.'}},
+    {id:'dc-supermanlois',type:'serie',level:'bonus',tmdb:'95057',media:'tv',title:'Superman et Loïs',date:'2021–2024',dim:'TERRE-TUD25',subitems:['Saison 1','Saison 2','Saison 3','Saison 4 (finale)'],faq:{quand:'La série se déroule entre 2021 et 2024.',pourquoi:'Au départ pensée comme la suite du Superman de Supergirl, la série se déroule finalement dans une réalité très proche mais distincte.'}},
+    {id:'dc-thebatman',type:'film',level:'bonus',tmdb:'414906',media:'movie',title:'The Batman',date:'2022',dim:'TERRE-TB'},
+    {id:'dc-thepenguin',type:'serie',level:'bonus',tmdb:'194764',media:'tv',title:'The Penguin',date:'2022',dim:'TERRE-TB',subitems:['Saison 1']},
   ],
   dcu:[
-    {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'EARTH-1',softcanon:true,faq:{quand:'The movie takes place in 2020-2021.',pourquoi:'Most of the events happen just like in the DCEU. We don\'t know yet whether every character will have the same face in the DCU.'}},
-    {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'EARTH-1',softcanon:true,subitems:['Season 1'],faq:{quand:'The show takes place in 2021, after The Suicide Squad.',pourquoi:'Most of the events happen just like in the DCEU, with the notable exception of the scene with the other heroes.'}},
-    {id:'dcu-cc',type:'anime',level:'bonus',tmdb:'219543',media:'tv',title:'Creature Commandos',date:'2024',dim:'EARTH-1',subitems:['Season 1']},
-    {id:'dcu-superman',type:'film',level:'imp',tmdb:'1061474',media:'movie',title:'Superman',date:'2025',dim:'EARTH-1',faq:{quand:'The movie takes place in 2025 in the brand-new DCU.',pourquoi:'The first big movie of James Gunn\'s DCU. A complete fresh start for Superman and the DC universe on the big screen.'}},
-    {id:'dcu-peacemaker2',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2025',dim:'EARTH-1',subitems:['Season 2']},
-    {id:'dcu-supergirl',type:'film',level:'imp',tmdb:'1081003',media:'movie',title:'Supergirl',date:'2026',dim:'EARTH-1'},
+    {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'TERRE-1',softcanon:true,faq:{quand:'Le film se déroule en 2020-2021.',pourquoi:'La plupart des événements se déroulent comme dans le DCEU. On ne sait pas encore si tous les personnages auront le même visage dans le DCU.'}},
+    {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'TERRE-1',softcanon:true,subitems:['Saison 1'],faq:{quand:'La série se déroule en 2021 après The Suicide Squad.',pourquoi:'La plupart des événements se déroulent comme dans le DCEU, à l\'exception notamment de la scène avec les autres héros.'}},
+    {id:'dcu-cc',type:'anime',level:'bonus',tmdb:'219543',media:'tv',title:'Creature Commandos',date:'2024',dim:'TERRE-1',subitems:['Saison 1']},
+    {id:'dcu-superman',type:'film',level:'imp',tmdb:'1061474',media:'movie',title:'Superman',date:'2025',dim:'TERRE-1',faq:{quand:'Le film se déroule en 2025 dans le tout nouveau DCU.',pourquoi:'Premier grand film du DCU de James Gunn. Un nouveau départ complet pour Superman et l\'univers DC au cinéma.'}},
+    {id:'dcu-peacemaker2',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2025',dim:'TERRE-1',subitems:['Saison 2']},
+    {id:'dcu-supergirl',type:'film',level:'imp',tmdb:'1081003',media:'movie',title:'Supergirl',date:'2026',dim:'TERRE-1'},
   ],
 };
 
@@ -664,7 +664,7 @@ function toggleEntry(id,ev){
 }
 
 function resetProgress(){
-  if(!confirm('Reset?'))return;
+  if(!confirm('Réinitialiser ?'))return;
   localStorage.removeItem('cg_dc');
   document.querySelectorAll('.en.done').forEach(el=>{
     el.classList.remove('done');
@@ -702,7 +702,7 @@ function buildEntry(e,borderColor){
   }
   const p=getP();const isDone=!!p[e.id];
   const tags=e.tags||[];const isFB=tags.includes('flashback');
-  const typeLabel=e.type==='film'?'MOVIE':e.type==='anime'?'ANIMATED SHOW':'TV SHOW';
+  const typeLabel=e.type==='film'?'FILM':e.type==='anime'?'SÉRIE ANIMÉE':'SÉRIE';
   const typeCss=e.type==='film'?'bf':e.type==='anime'?'bfa':'bs';
   const sub=e.subitems?.length?'<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>':'';
   const note=e.note?'<div class="enote">'+e.note+'</div>':'';
@@ -739,9 +739,9 @@ function findEntry(id){
 function buildFaq(e){
   if(!e||!e.faq)return '';
   const cats=[
-    {key:'quand',q:'When does '+e.title+' take place?',spoil:false},
-    {key:'pourquoi',q:'Why watch '+e.title+'?',spoil:false},
-    {key:'spoil',q:'Connections with the other universes',spoil:true},
+    {key:'quand',q:'Quand se déroule '+e.title+' ?',spoil:false},
+    {key:'pourquoi',q:'Pourquoi regarder '+e.title+' ?',spoil:false},
+    {key:'spoil',q:'Connexions avec les autres univers',spoil:true},
   ];
   const items=cats.filter(c=>e.faq[c.key]).map(c=>c.spoil
     ?`<details class="faq-item faq-spoil">
@@ -768,12 +768,12 @@ async function toggleExpand(el,ev){
   const e=findEntry(el.dataset.id);
   const tmdb=el.dataset.tmdb,media=el.dataset.media;
   if(!tmdb||tmdb==='0'){panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Pas d\'informations TMDB.</div>';return}
-  panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Loading…</div>';
+  panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Chargement…</div>';
   const type=media==='movie'?'movie':'tv';const k=type+tmdb;
   let d=detailCache[k];
   if(!d){
     try{
-      const rFr=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}?api_key=${TMDB_KEY}&language=en-US&append_to_response=videos`);
+      const rFr=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}?api_key=${TMDB_KEY}&language=fr-FR&append_to_response=videos`);
       d=await rFr.json();
       if(!d.videos?.results?.find(v=>v.type==='Trailer'&&v.site==='YouTube')){
         const rEn=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}/videos?api_key=${TMDB_KEY}&language=en-US`);
@@ -783,15 +783,15 @@ async function toggleExpand(el,ev){
     }catch{panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Erreur.</div>';return}
   }
   const poster=d.poster_path?IMG+'w300'+d.poster_path:null;
-  const synopsis=d.overview||'No synopsis.';
+  const synopsis=d.overview||'Pas de synopsis.';
   const trailer=(d.videos?.results||[]).find(v=>v.type==='Trailer'&&v.site==='YouTube');
   const year=(d.release_date||d.first_air_date||'').substring(0,4);
   const rating=d.vote_average?d.vote_average.toFixed(1):'';
   const runtime=d.runtime?(d.runtime+' min'):null;
   let meta='';
-  if(year)meta+=`<span><strong>Year</strong> ${year}</span>`;
-  if(runtime)meta+=`<span><strong>Runtime</strong> ${runtime}</span>`;
-  if(rating)meta+=`<span><strong>Rating</strong> ⭐ ${rating}/10</span>`;
+  if(year)meta+=`<span><strong>Année</strong> ${year}</span>`;
+  if(runtime)meta+=`<span><strong>Durée</strong> ${runtime}</span>`;
+  if(rating)meta+=`<span><strong>Note</strong> ⭐ ${rating}/10</span>`;
   panel.innerHTML=`<div class="expand-inner">
     ${poster?`<div class="expand-poster" onclick="openPMurl('${IMG}w500${d.poster_path}')"><img src="${poster}" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>`:''}
     <div class="expand-info">
@@ -876,7 +876,7 @@ async function loadPosters(){
       if(seen.has(k)){const d=detailCache[k];if(d){const p=d.backdrop_path||d.poster_path;if(p)applyThumb(el,IMG+'w92'+p);}return;}
       seen.add(k);
       try{
-        const r=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}?api_key=${TMDB_KEY}&language=en-US`);
+        const r=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}?api_key=${TMDB_KEY}&language=fr-FR`);
         const d=await r.json();detailCache[k]=d;
         const p=d.backdrop_path||d.poster_path;
         if(p)document.querySelectorAll(`.en[data-tmdb="${tmdb}"][data-media="${media}"]`).forEach(e2=>applyThumb(e2,IMG+'w92'+p));
@@ -911,15 +911,15 @@ document.querySelectorAll('#col-av-pre .en, #col-av-post .en').forEach(el=>{
 // Légende
 const legEl=document.getElementById('tl-legend');
 if(legEl){
-  legEl.innerHTML='<span class="leg-title">Legend</span>'
-    +'<span class="b bf">MOVIE</span>'
-    +'<span class="b bs">TV SHOW</span>'
-    +'<span class="b bfa">ANIMATED SHOW</span>'
+  legEl.innerHTML='<span class="leg-title">Légende</span>'
+    +'<span class="b bf">FILM</span>'
+    +'<span class="b bs">SÉRIE</span>'
+    +'<span class="b bfa">SÉRIE ANIMÉE</span>'
     +' &nbsp;·&nbsp; '
     +'<span style="font-size:.78rem">🚨 Important</span>'
     +'<span class="ft">FLASHBACK</span>'
     +'<span class="soft-badge">SOFT-CANON</span>'
-    +'<span class="dim-badge" style="font-size:.68rem">EARTH-XXXX = Universe</span>';
+    +'<span class="dim-badge" style="font-size:.68rem">TERRE-XXXX = Univers</span>';
 }
 
 loadPosters();
