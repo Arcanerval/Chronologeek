@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://chronologeek.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
+  </url>
+  <url><loc>https://chronologeek.app/starwars.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars.html"/>
+  </url>
+  <url><loc>https://chronologeek.app/marvel.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel.html"/>
+  </url>
+  <url><loc>https://chronologeek.app/dc.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc.html"/>
+  </url>
+  <url><loc>https://chronologeek.app/avatar.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar.html"/>
+  </url>
+  <url><loc>https://chronologeek.app/nouveautes.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/nouveautes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes.html"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/</loc></url>
+  <url><loc>https://chronologeek.app/fr/starwars.html</loc></url>
+  <url><loc>https://chronologeek.app/fr/marvel.html</loc></url>
+  <url><loc>https://chronologeek.app/fr/dc.html</loc></url>
+  <url><loc>https://chronologeek.app/fr/avatar.html</loc></url>
+  <url><loc>https://chronologeek.app/fr/nouveautes.html</loc></url>
+</urlset>
