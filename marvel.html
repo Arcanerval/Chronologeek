@@ -752,7 +752,7 @@ function buildTimeline(data){
   let leg='<div class="leg-title">Legend</div>';
   types.forEach(t=>{const[c,l]=BADGES[t]||[];if(c)leg+='<span class="b '+c+'">'+l+'</span>'});
   leg+='<div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;width:100%;margin-top:.15rem">';
-  if(showLevel)leg+='<span>⭐ Obligatoire</span> <span>🚨 Important</span>';
+  if(showLevel)leg+='<span>⭐ Essential</span> <span>🚨 Important</span>';
   if(hasFB)leg+='<span class="ft">FLASHBACK</span>';
   if(hasNC)leg+='<span class="nt">CANONICITY NOT CONFIRMED</span>';
   if(hasDim)leg+='<span class="dt">EARTH-XXXX</span>';
@@ -768,9 +768,9 @@ function buildTimeline(data){
   f+='</div>';
   if(showLevel){
     f+='<div class="filter-group"><span class="filter-label">Niveau :</span>';
-    f+='<button class="fbt active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Obligatoire</button>';
+    f+='<button class="fbt active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Essential</button>';
     f+='<button class="fbt active" id="lvl-imp" onclick="toggleLevelFilter(this)">🚨 Important</button>';
-    f+='<button class="fbt active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Optionnel</button>';
+    f+='<button class="fbt active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Optional</button>';
     if(hasNC){f+='<button class="fbt active" id="btn-nc" onclick="toggleNCFilter(this)">Canonicity not confirmed</button>';}
     f+='</div>';
   }
