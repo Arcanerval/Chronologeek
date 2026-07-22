@@ -61,14 +61,14 @@ def log(msg):
     print(msg)
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day"):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
     results.append({
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
-        "precision": precision,
+        "precision": precision, "era": era,
     })
 
 
@@ -173,6 +173,20 @@ def loose_date(txt):
     t = (txt or "").strip()
     if not t or t.upper() in ("TBA", "TBD"):
         return ("9999-99-99", "À confirmer", "tba")
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", t)          # ISO : 2026-10-14
+    if m:
+        try:
+            d = datetime.date(*map(int, m.groups()))
+            return (d.isoformat(), d.strftime("%d/%m/%Y"), "day")
+        except ValueError:
+            pass
+    m = re.search(r"(\d{1,2})/(\d{1,2})/(\d{4})", t)      # 14/10/2026
+    if m:
+        try:
+            d = datetime.date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+            return (d.isoformat(), d.strftime("%d/%m/%Y"), "day")
+        except ValueError:
+            pass
     m = re.match(r"([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})", t)
     if m and m.group(1).lower() in MONTHS:
         d = datetime.date(int(m.group(3)), MONTHS[m.group(1).lower()], int(m.group(2)))
@@ -308,28 +322,47 @@ def source_wookieepedia():
                 if re.search(rf"\b{key}\b", klass):
                     kind = label
                     break
+
             cells = [c.get_text(" ", strip=True) for c in tr.find_all(["td", "th"])]
             cells = [c for c in cells if c]
             if not cells:
                 continue
-            cand = [c for c in cells
-                    if not re.fullmatch(r"[\d\s.,\u2013-]+(ABY|BBY)?", c) and len(c) > 3]
-            if not cand:
-                continue
-            link = tr.find("a", string=True)
-            title = (link.get_text(" ", strip=True) if link and len(link.get_text(strip=True)) > 3
-                     else max(cand, key=len))
+
+            ERA = re.compile(r"^[~\u2020\d\s.,\u2013-]*\d\s*(BBY|ABY)\b", re.I)
+            # date in-universe : la cellule qui parle en BBY/ABY
+            era = next((c for c in cells if ERA.match(c)), "")
+
+            # titre : premier lien qui n'est PAS une année in-universe
+            title = ""
+            for a in tr.find_all("a"):
+                t = a.get_text(" ", strip=True)
+                if len(t) > 3 and not ERA.match(t) and not re.fullmatch(r"[\d\W]+", t):
+                    title = t
+                    break
+            if not title:
+                cand = [c for c in cells if len(c) > 3 and not ERA.match(c)]
+                if not cand:
+                    continue
+                title = max(cand, key=len)
+
+            # date de sortie réelle : ISO, JJ/MM/AAAA ou "Month YYYY" — jamais BBY/ABY
             date_txt = ""
             for c in cells:
-                if re.search(r"\b20\d{2}\b", c) and not re.search(r"(ABY|BBY)", c):
+                if ERA.match(c):
+                    continue
+                if re.search(r"\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{4}", c) or \
+                   re.search(r"(January|February|March|April|May|June|July|August|"
+                             r"September|October|November|December)\s+\d", c, re.I):
                     date_txt = c
                     break
             ds, dt, prec = (loose_date(date_txt) if date_txt
                             else ("9999-99-99", "À confirmer", "tba"))
-            add("starwars", title, ds, dt, kind, "Wookieepedia", prec)
+            if prec == "tba":          # pas de date de sortie connue -> on ignore
+                continue
+            add("starwars", title, ds, dt, kind, "Wookieepedia", prec, era)
             n += 1
-            if prec != "tba":
-                dated += 1
+            dated += 1
+
         msg = f"Wookiee   : {n} entrée(s) (via {how}), dont {dated} datée(s)"
         if n == 0:
             msg += "  ⚠ aucune ligne 'unreleased' — marqueur à revoir"
@@ -359,15 +392,21 @@ h1{{font-size:1.5rem;letter-spacing:.02em}}
 .uni{{margin:2rem 0 .75rem;font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:.6rem}}
 .dot{{width:10px;height:10px;border-radius:50%}}
 .count{{font-size:.75rem;color:#8a8aa0;font-weight:400}}
-.row{{display:flex;gap:.9rem;align-items:flex-start;padding:.7rem .9rem;border:1px solid #23233a;border-radius:10px;margin-bottom:.5rem;background:#0d0d18}}
-.row.new{{border-color:#7c6af7;box-shadow:0 0 0 1px rgba(124,106,247,.2)}}
-.date{{min-width:92px;font-variant-numeric:tabular-nums;color:#b9b9d0;font-size:.85rem;padding-top:.1rem}}
-.main{{flex:1;min-width:0}}
-.t{{font-weight:600;font-size:.95rem;line-height:1.35}}
-.meta{{color:#8a8aa0;font-size:.75rem;margin-top:.2rem}}
-.tag{{font-size:.65rem;padding:.15rem .5rem;border-radius:20px;white-space:nowrap;letter-spacing:.04em}}
-.tag.new{{background:rgba(124,106,247,.18);color:#a99cf9;border:1px solid rgba(124,106,247,.45)}}
-.tag.ok{{background:rgba(80,200,120,.12);color:#6ec98a;border:1px solid rgba(80,200,120,.3)}}
+.head,.row{{display:grid;grid-template-columns:108px 1fr 132px 104px;gap:1rem;align-items:center}}
+.head{{padding:0 .9rem .45rem;font-size:.68rem;letter-spacing:.08em;color:#6f6f88;text-transform:uppercase}}
+.row{{padding:.65rem .9rem;border:1px solid #23233a;border-radius:10px;margin-bottom:.45rem;background:#0d0d18}}
+.date{{font-variant-numeric:tabular-nums;color:#b9b9d0;font-size:.85rem;white-space:nowrap}}
+.t{{font-weight:600;font-size:.95rem;line-height:1.35;min-width:0}}
+.kind{{color:#8a8aa0;font-size:.78rem}}
+.era{{color:#7f7f9a;font-size:.78rem;font-variant-numeric:tabular-nums;white-space:nowrap}}
+@media(max-width:700px){{
+ .head{{display:none}}
+ .row{{grid-template-columns:1fr auto;gap:.25rem .8rem;padding:.7rem .85rem}}
+ .t{{grid-column:1/-1;order:1}}
+ .date{{order:2}}
+ .era{{order:3;text-align:right}}
+ .kind{{grid-column:1/-1;order:4}}
+}}
 .rep{{margin-top:2.5rem;padding:.9rem 1rem;border:1px dashed #23233a;border-radius:10px;color:#8a8aa0;font-size:.78rem;line-height:1.7;white-space:pre-wrap;font-family:ui-monospace,monospace}}
 </style></head><body>
 <h1>🛰️ Radar des sorties</h1>
@@ -386,15 +425,19 @@ def render(entries):
         sub.sort(key=lambda e: (e["date_sort"], e["title"]))
         rows = []
         for e in sub:
-            meta_line = " · ".join(x for x in (e["kind"], e["source"]) if x)
             rows.append(
                 f'<div class="row">'
                 f'<div class="date">{html.escape(e["date_txt"])}</div>'
-                f'<div class="main"><div class="t">{html.escape(e["title"])}</div>'
-                f'<div class="meta">{html.escape(meta_line)}</div></div></div>')
+                f'<div class="t">{html.escape(e["title"])}</div>'
+                f'<div class="kind">{html.escape(e["kind"] or "—")}</div>'
+                f'<div class="era">{html.escape(e["era"] or "")}</div>'
+                f'</div>')
         blocks.append(
             f'<div class="uni"><span class="dot" style="background:{meta["color"]}"></span>'
-            f'{meta["label"]} <span class="count">{len(sub)}</span></div>' + "".join(rows))
+            f'{meta["label"]} <span class="count">{len(sub)}</span></div>'
+            + '<div class="head"><div>Sortie</div><div>Titre</div>'
+              '<div>Type</div><div>Chronologie</div></div>'
+            + "".join(rows))
     return "".join(blocks)
 
 
@@ -407,14 +450,16 @@ def main():
 
     # dédoublonnage (même titre + même univers)
     seen, uniq = set(), []
-    for e in sorted(results, key=lambda x: x["date_sort"]):
+    dropped = sum(1 for e in results if e["precision"] == "tba")
+    for e in sorted([r for r in results if r["precision"] != "tba"],
+                    key=lambda x: x["date_sort"]):
         k = (e["universe"], normalize(e["title"]))
         if k in seen:
             continue
         seen.add(k)
         uniq.append(e)
 
-    log(f"TOTAL     : {len(uniq)} sortie(s) à venir")
+    log(f"TOTAL     : {len(uniq)} sortie(s) datée(s) · {dropped} sans date écartée(s)")
 
     page = PAGE.format(
         gen=datetime.datetime.now().strftime("%d/%m/%Y à %H:%M"),
