@@ -1,5 +1,149 @@
 [
  {
+  "universe": "starwars",
+  "title": "362 BBY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-08-19",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "48 BBY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-10-20",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "20 BBY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-08-27",
+  "kind": "Jeu vidéo",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "19 BBY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-09-01",
+  "kind": "Roman jeunesse",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "6 BBY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-09-15",
+  "kind": "Roman",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-10-06",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "1 BBY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-10-14",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "5 ABY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-10-06",
+  "kind": "Jeu vidéo",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "9 ABY",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-09-09",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "Legacy †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-07-28",
+  "kind": "Roman",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "Galaxy's Edge – Echoes of the Empire 5 †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-08-19",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "The Fall of Kylo Ren 1 †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-08-12",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "The Fall of Kylo Ren 2 †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-09-16",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "The Fall of Kylo Ren 3 †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-XX-XX",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "The Fall of Kylo Ren 4 †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-XX-XX",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "The Fall of Kylo Ren 5 †",
+  "date_sort": "2026-06-30",
+  "date_txt": "2026-XX-XX",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
   "universe": "avatar",
   "title": "Avatar Aang: The Last Airbender",
   "date_sort": "2026-07-24",
@@ -153,6 +297,42 @@
   "precision": "day"
  },
  {
+  "universe": "starwars",
+  "title": "Tales from the Outer Rim: The Legend of Beggar's Canyon",
+  "date_sort": "2027-06-30",
+  "date_txt": "2027-01-26",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "Reign of the Empire: From the Ashes",
+  "date_sort": "2027-06-30",
+  "date_txt": "2027-XX-XX",
+  "kind": "Roman",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "Star Wars: The Mandalorian and Grogu: The Deluxe Junior Novelization",
+  "date_sort": "2027-06-30",
+  "date_txt": "2027-02-23",
+  "kind": "Roman jeunesse",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
+  "universe": "starwars",
+  "title": "40 ABY",
+  "date_sort": "2027-06-30",
+  "date_txt": "2027-05-27",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "vague"
+ },
+ {
   "universe": "dc",
   "title": "Man of Tomorrow",
   "date_sort": "2027-07-07",
@@ -169,5 +349,167 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day"
+ },
+ {
+  "universe": "starwars",
+  "title": "(click to hide)",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "25,000 BBY",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Star Wars: The High Republic: The Broken Blade",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "What is the Story of Princess Leia?",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Young readers",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Untitled Star Wars film (Dave Filoni)",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "50 ABY",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "35 ABY",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Star Wars Eclipse",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Jeu vidéo",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Lando",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Rogue Squadron",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "A Droid Story",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Untitled Star Wars film (Taika Waititi)",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Film",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Hyperspace Stories: Obi-Wan",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Hyperspace Stories: Darth Vader",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Hyperspace Stories: Princess Leia",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Hyperspace Stories: Luke Skywalker",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Hyperspace Stories: Kylo Ren",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
+ },
+ {
+  "universe": "starwars",
+  "title": "Hyperspace Stories: Rey",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "tba"
  }
 ]
