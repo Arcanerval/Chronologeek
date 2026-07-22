@@ -16,6 +16,13 @@ TODAY = datetime.date.today()
 HORIZON = TODAY + datetime.timedelta(days=540)   # on regarde 18 mois devant
 TMDB_KEY = os.environ.get("TMDB_KEY", "")
 UA = {"User-Agent": "Chronologeek-Radar/1.0 (+https://chronologeek.app)"}
+# Fandom bloque les user-agents non navigateurs (403) : on se présente autrement
+UA_BROWSER = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"),
+    "Accept": "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 
 UNIVERSES = {
     "starwars": {"label": "Star Wars",     "color": "#4d9fff", "file": "starwars.html"},
@@ -24,12 +31,12 @@ UNIVERSES = {
     "avatar":   {"label": "Avatar",        "color": "#7dd3fc", "file": "avatar.html"},
 }
 
-# Sociétés TMDB par univers (ajustables si une source renvoie 0)
-TMDB_COMPANIES = {
-    "starwars": [1],                 # Lucasfilm
-    "marvel":   [420, 7505],         # Marvel Studios, Marvel Entertainment
-    "dc":       [9993, 128064],      # DC Entertainment, DC Studios
-    "avatar":   [],                  # couvert par Avatar Almanac
+# Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
+TMDB_COMPANY_NAMES = {
+    "starwars": ["Lucasfilm"],
+    "marvel":   ["Marvel Studios", "Marvel Television", "Marvel Entertainment"],
+    "dc":       ["DC Studios", "DC Films", "DC Entertainment", "DC Comics"],
+    "avatar":   ["Avatar Studios", "Nickelodeon Animation Studio"],
 }
 
 # Séries en cours à surveiller : prochain épisode (id TMDB -> univers)
@@ -64,40 +71,71 @@ def parse_iso(d):
         return None
 
 
+def tmdb_company_ids(name):
+    """Résout un nom de société en IDs TMDB (évite les IDs en dur qui périment)."""
+    try:
+        r = requests.get("https://api.themoviedb.org/3/search/company", timeout=25,
+                         headers=UA, params={"api_key": TMDB_KEY, "query": name})
+        r.raise_for_status()
+        out = []
+        for c in r.json().get("results", [])[:4]:
+            if name.lower().split()[0] in (c.get("name") or "").lower():
+                out.append(c["id"])
+        return out
+    except Exception as e:
+        log(f"TMDB      : recherche société '{name}' — {e}")
+        return []
+
+
 def source_tmdb():
     if not TMDB_KEY:
         log("TMDB      : ⚠ pas de clé (secret TMDB_KEY absent)")
         return
     base = "https://api.themoviedb.org/3"
     total = 0
-    for uni, companies in TMDB_COMPANIES.items():
-        for cid in companies:
-            for kind, path, datefield in (
-                ("Film",   "/discover/movie", "primary_release_date"),
-                ("Série",  "/discover/tv",    "first_air_date"),
-            ):
+    for uni, names in TMDB_COMPANY_NAMES.items():
+        ids = []
+        for n in names:
+            ids += tmdb_company_ids(n)
+        ids = sorted(set(ids))
+        if not ids:
+            log(f"TMDB      : {uni} — aucune société trouvée")
+            continue
+        joined = "|".join(str(i) for i in ids)      # | = OU chez TMDB
+        found = 0
+        for kind, path, datefield in (
+            ("Film",  "/discover/movie", "primary_release_date"),
+            ("Série", "/discover/tv",    "first_air_date"),
+        ):
+            for page in (1, 2):
                 try:
                     r = requests.get(base + path, timeout=25, headers=UA, params={
                         "api_key": TMDB_KEY,
-                        "with_companies": cid,
+                        "with_companies": joined,
                         f"{datefield}.gte": TODAY.isoformat(),
                         f"{datefield}.lte": HORIZON.isoformat(),
                         "sort_by": f"{datefield}.asc",
                         "language": "en-US",
                         "include_adult": "false",
+                        "page": page,
                     })
                     r.raise_for_status()
-                    for it in r.json().get("results", []):
+                    j = r.json()
+                    for it in j.get("results", []):
                         raw = it.get("release_date") or it.get("first_air_date")
                         d = parse_iso(raw or "")
                         if not d or d < TODAY:
                             continue
                         add(uni, it.get("title") or it.get("name"), d.isoformat(),
                             d.strftime("%d/%m/%Y"), kind, "TMDB")
-                        total += 1
+                        found += 1
+                    if page >= j.get("total_pages", 1):
+                        break
                 except Exception as e:
-                    log(f"TMDB      : erreur société {cid} ({kind}) — {e}")
-    # prochains épisodes des séries suivies
+                    log(f"TMDB      : erreur {uni} ({kind}) — {e}")
+                    break
+        log(f"TMDB      : {uni} — sociétés {joined} → {found} entrée(s)")
+        total += found
     for show_id, uni in TRACKED_SHOWS.items():
         try:
             r = requests.get(f"{base}/tv/{show_id}", timeout=25, headers=UA,
@@ -107,12 +145,12 @@ def source_tmdb():
             nxt = j.get("next_episode_to_air") or {}
             d = parse_iso(nxt.get("air_date") or "")
             if d and d >= TODAY:
-                label = f"{j.get('name')} — S{nxt.get('season_number')}E{nxt.get('episode_number')}"
-                add(uni, label, d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB")
+                add(uni, f"{j.get('name')} — S{nxt.get('season_number')}E{nxt.get('episode_number')}",
+                    d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB")
                 total += 1
         except Exception as e:
             log(f"TMDB      : erreur série {show_id} — {e}")
-    log(f"TMDB      : {total} entrée(s)")
+    log(f"TMDB      : {total} entrée(s) au total")
 
 
 # ────────────────────────────────────────── SOURCE 2 : Avatar Almanac
@@ -146,26 +184,35 @@ def source_avatar_almanac():
                          timeout=30, headers=UA)
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
+        heads = soup.find_all(re.compile(r"^h[3-5]$"))
         n = 0
-        for h in soup.find_all(re.compile(r"^h[3-5]$")):
+        for h in heads:
             title = h.get_text(" ", strip=True)
             if not title or len(title) < 3:
                 continue
             low = title.lower()
-            if low.startswith(("table of", "color key", "upcoming", "what exactly")) \
+            if low.startswith(("table of", "color key", "upcoming", "what exactly",
+                               "canon media", "comics", "about", "changelog")) \
                or re.fullmatch(r"\d{4} releases|undated releases", low):
                 continue
+            # parcours en ordre document (et pas en fratrie : WordPress imbrique les blocs)
             kind = date_raw = ""
-            for sib in h.find_next_siblings():
-                if sib.name and re.match(r"^h[1-5]$", sib.name):
+            for el in h.find_all_next():
+                if el.name and re.match(r"^h[1-5]$", el.name):
                     break
-                txt = sib.get_text(" ", strip=True)
-                m = re.search(r"Media Type:\s*(.+?)(?:\s{2,}|$)", txt)
-                if m and not kind:
-                    kind = m.group(1).strip()
-                m = re.search(r"Release Date:\s*(.+?)(?:\s{2,}|$)", txt)
-                if m and not date_raw:
-                    date_raw = m.group(1).strip()
+                if el.name not in ("p", "li", "figcaption", "div", "span"):
+                    continue
+                txt = el.get_text(" ", strip=True)
+                if not kind:
+                    m = re.search(r"Media Type:\s*(.+)$", txt)
+                    if m:
+                        kind = m.group(1).strip()[:60]
+                if not date_raw:
+                    m = re.search(r"Release Date:\s*(.+)$", txt)
+                    if m:
+                        date_raw = m.group(1).strip()[:40]
+                if kind and date_raw:
+                    break
             if not date_raw:
                 continue
             ds, dt = loose_date(date_raw)
@@ -173,50 +220,77 @@ def source_avatar_almanac():
                 continue
             add("avatar", title, ds, dt, kind, "Avatar Almanac")
             n += 1
-        log(f"Almanac   : {n} entrée(s)")
+        log(f"Almanac   : {n} entrée(s) ({len(heads)} titre(s) scanné(s))")
     except Exception as e:
         log(f"Almanac   : ÉCHEC — {e}")
 
 
 # ────────────────────────────────────────── SOURCE 3 : Wookieepedia
-def source_wookieepedia():
-    """Timeline of canon media — lignes marquées 'not yet released'."""
+def fetch_wookiee_html():
+    """Essaie l'API MediaWiki puis la page brute. Renvoie (html, méthode)."""
+    api = ("https://starwars.fandom.com/api.php?action=parse"
+           "&page=Timeline_of_canon_media&prop=text&format=json&formatversion=2")
+    try:
+        r = requests.get(api, timeout=45, headers=UA_BROWSER)
+        if r.status_code == 200:
+            txt = r.json().get("parse", {}).get("text", "")
+            if isinstance(txt, dict):
+                txt = txt.get("*", "")
+            if txt:
+                return txt, "API"
+        else:
+            log(f"Wookiee   : API → HTTP {r.status_code}")
+    except Exception as e:
+        log(f"Wookiee   : API indisponible — {e}")
     try:
         r = requests.get("https://starwars.fandom.com/wiki/Timeline_of_canon_media",
-                         timeout=45, headers=UA)
+                         timeout=45, headers=UA_BROWSER)
         r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
-        rows, n = [], 0
+        return r.text, "HTML"
+    except Exception as e:
+        log(f"Wookiee   : page brute — {e}")
+    return "", "aucune"
+
+
+def source_wookieepedia():
+    raw, how = fetch_wookiee_html()
+    if not raw:
+        log("Wookiee   : ÉCHEC — aucune méthode n'a abouti")
+        return
+    try:
+        soup = BeautifulSoup(raw, "html.parser")
+        n = 0
         for tr in soup.find_all("tr"):
-            classes = " ".join(tr.get("class") or [])
-            style = tr.get("style") or ""
-            unreleased = ("unrelease" in classes.lower()
-                          or "unrelease" in style.lower()
-                          or tr.find(attrs={"class": re.compile("unrelease", re.I)}) is not None)
-            if unreleased:
-                rows.append(tr)
-        for tr in rows:
+            blob = (" ".join(tr.get("class") or []) + " " + (tr.get("style") or "")
+                    + " " + " ".join(
+                        " ".join(c.get("class") or []) + " " + (c.get("style") or "")
+                        for c in tr.find_all(["td", "th"]))).lower()
+            # les lignes non sorties portent un marqueur de classe ou un fond coloré
+            if not re.search(r"unrelease|notyet|upcoming", blob):
+                continue
             cells = [c.get_text(" ", strip=True) for c in tr.find_all(["td", "th"])]
             cells = [c for c in cells if c]
             if not cells:
                 continue
-            # titre = cellule la plus longue non numérique
-            cand = [c for c in cells if not re.fullmatch(r"[\d\s.,–-]+(ABY|BBY)?", c)]
+            cand = [c for c in cells
+                    if not re.fullmatch(r"[\d\s.,\u2013-]+(ABY|BBY)?", c) and len(c) > 3]
             if not cand:
                 continue
             title = max(cand, key=len)
             date_txt = ""
             for c in cells:
-                if re.search(r"\b(20\d{2})\b", c) and not re.search(r"(ABY|BBY)", c):
+                if re.search(r"\b20\d{2}\b", c) and not re.search(r"(ABY|BBY)", c):
                     date_txt = c
                     break
             ds, dt = loose_date(date_txt) if date_txt else ("9999-99-99", "À confirmer")
             add("starwars", title, ds, dt, "", "Wookieepedia")
             n += 1
-        log(f"Wookiee   : {n} entrée(s)"
-            + ("  ⚠ 0 ligne détectée, le marqueur 'unreleased' a peut-être changé" if n == 0 else ""))
+        msg = f"Wookiee   : {n} entrée(s) (via {how})"
+        if n == 0:
+            msg += "  ⚠ aucune ligne 'unreleased' — marqueur à revoir"
+        log(msg)
     except Exception as e:
-        log(f"Wookiee   : ÉCHEC — {e}")
+        log(f"Wookiee   : parsing — {e}")
 
 
 # ────────────────────────────────────────── Croisement avec le site
