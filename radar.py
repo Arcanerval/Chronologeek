@@ -390,34 +390,66 @@ def normalize(s):
     return re.sub(r"\s+", " ", s).strip()
 
 
+def _wiki_extracts(chunk):
+    """Méthode 1 : API MediaWiki standard (prop=extracts)."""
+    r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
+                     headers=UA_BROWSER, params={
+                         "action": "query", "prop": "extracts",
+                         "exintro": 1, "explaintext": 1, "redirects": 1,
+                         "format": "json", "formatversion": 2,
+                         "titles": "|".join(e["wiki"] for e in chunk),
+                     })
+    r.raise_for_status()
+    j = r.json()
+    if j.get("warnings"):
+        raise RuntimeError(str(j["warnings"])[:120])
+    return {p.get("title", "").lower(): (p.get("extract") or "")
+            for p in j.get("query", {}).get("pages", [])}
+
+
+def _wiki_fandom_v1(chunk):
+    """Méthode 2 : API maison Fandom (abstract) — dispo quand extracts ne l'est pas."""
+    r = requests.get("https://starwars.fandom.com/api/v1/Articles/Details",
+                     timeout=45, headers=UA_BROWSER, params={
+                         "titles": ",".join(e["wiki"].replace(" ", "_") for e in chunk),
+                         "abstract": 500,
+                     })
+    r.raise_for_status()
+    out = {}
+    for item in (r.json().get("items") or {}).values():
+        t = (item.get("title") or "").lower()
+        out[t] = item.get("abstract") or ""
+    return out
+
+
 def fill_wiki_synopses(entries):
-    """Récupère l'intro de chaque page Wookieepedia, par lots de 20."""
+    """Récupère l'intro de chaque page Wookieepedia, par lots, avec repli."""
     todo = [e for e in entries if e.get("wiki") and not e.get("syn")]
     if not todo:
         return
-    got = 0
+    got, used = 0, []
     for i in range(0, len(todo), 20):
         chunk = todo[i:i + 20]
-        try:
-            r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
-                             headers=UA_BROWSER, params={
-                                 "action": "query", "prop": "extracts",
-                                 "exintro": 1, "explaintext": 1, "redirects": 1,
-                                 "format": "json", "formatversion": 2,
-                                 "titles": "|".join(e["wiki"] for e in chunk),
-                             })
-            r.raise_for_status()
-            pages = {p.get("title", "").lower(): (p.get("extract") or "")
-                     for p in r.json().get("query", {}).get("pages", [])}
-            for e in chunk:
-                txt = pages.get(e["wiki"].lower(), "")
-                if txt:
-                    txt = re.sub(r"\s+", " ", txt).strip()
-                    e["syn"] = txt[:400] + ("…" if len(txt) > 400 else "")
-                    got += 1
-        except Exception as ex:
-            log(f"Résumés   : lot {i//20 + 1} — {ex}")
-    log(f"Résumés   : {got}/{len(todo)} synopsis Wookieepedia récupéré(s)")
+        pages = {}
+        for name, fn in (("extracts", _wiki_extracts), ("fandom-v1", _wiki_fandom_v1)):
+            try:
+                pages = fn(chunk)
+                if any(v for v in pages.values()):
+                    if name not in used:
+                        used.append(name)
+                    break
+            except Exception as ex:
+                if i == 0:
+                    log(f"Résumés   : méthode {name} KO — {ex}")
+                pages = {}
+        for e in chunk:
+            txt = pages.get(e["wiki"].lower(), "")
+            if txt:
+                txt = re.sub(r"\s+", " ", txt).strip()
+                e["syn"] = txt[:400] + ("…" if len(txt) > 400 else "")
+                got += 1
+    log(f"Résumés   : {got}/{len(todo)} synopsis Wookieepedia"
+        + (f" (via {', '.join(used)})" if used else " — aucune méthode n'a répondu"))
 
 
 # ────────────────────────────────────────── Rendu HTML
@@ -476,8 +508,10 @@ details.row{{cursor:pointer}}
 details.row>summary{{list-style:none;display:block}}
 details.row>summary::-webkit-details-marker{{display:none}}
 details.row[open]{{background:#111120}}
-details.row>summary .t::after{{content:'  ▾';color:#5a5a75;font-size:.7rem}}
-details.row[open]>summary .t::after{{content:'  ▴'}}
+details.row{{position:relative;padding-right:2.4rem}}
+.chev{{position:absolute;right:.6rem;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:#1b1b2e;border:1px solid #3a3a58;color:#c9c9e0;font-size:.72rem;display:flex;align-items:center;justify-content:center;transition:all .18s}}
+details.row:hover .chev{{border-color:#7c6af7;color:#fff}}
+details.row[open] .chev{{background:#7c6af7;border-color:#7c6af7;color:#fff;transform:translateY(-50%) rotate(180deg)}}
 .syn{{margin-top:.5rem;padding-top:.5rem;border-top:1px solid #23233a;color:#a8a8c0;font-size:.75rem;line-height:1.55;cursor:auto}}
 .date{{font-variant-numeric:tabular-nums;color:#b9b9d0;font-size:.76rem}}
 .t{{font-weight:600;font-size:.85rem;line-height:1.3;margin:.15rem 0}}
@@ -509,7 +543,7 @@ def render(entries):
             if e.get("syn"):
                 rows.append(
                     f'<details class="row" style="border-left-color:{col}">'
-                    f'<summary>{head}</summary>'
+                    f'<summary>{head}<span class="chev">▾</span></summary>'
                     f'<div class="syn">{html.escape(e["syn"])}</div></details>')
             else:
                 rows.append(f'<div class="row" style="border-left-color:{col}">{head}</div>')
