@@ -288,14 +288,26 @@ def source_wookieepedia():
             log(f"Wookiee   : classes de lignes vues → {top}")
         else:
             log(f"Wookiee   : aucune classe sur les <tr> ({len(soup.find_all('tr'))} lignes)")
+        dated = 0
         for tr in soup.find_all("tr"):
             blob = (" ".join(tr.get("class") or []) + " " + (tr.get("style") or "")
                     + " " + " ".join(
                         " ".join(c.get("class") or []) + " " + (c.get("style") or "")
                         for c in tr.find_all(["td", "th"]))).lower()
             # les lignes non sorties portent un marqueur de classe ou un fond coloré
-            if not re.search(r"unrelease|notyet|upcoming", blob):
+            if not re.search(r"unpublished|unrelease|notyet|upcoming", blob):
                 continue
+            klass = " ".join(tr.get("class") or []).lower()
+            kind = ""
+            for key, label in (("comic", "Comic"), ("videogame", "Jeu vidéo"),
+                               ("tv", "Série"), ("film", "Film"),
+                               ("junior", "Roman jeunesse"), ("young", "Young readers"),
+                               ("novel", "Roman"), ("short", "Nouvelle"),
+                               ("audio", "Audio"), ("promotional", "Promo"),
+                               ("rpg", "JDR")):
+                if re.search(rf"\b{key}\b", klass):
+                    kind = label
+                    break
             cells = [c.get_text(" ", strip=True) for c in tr.find_all(["td", "th"])]
             cells = [c for c in cells if c]
             if not cells:
@@ -304,7 +316,9 @@ def source_wookieepedia():
                     if not re.fullmatch(r"[\d\s.,\u2013-]+(ABY|BBY)?", c) and len(c) > 3]
             if not cand:
                 continue
-            title = max(cand, key=len)
+            link = tr.find("a", string=True)
+            title = (link.get_text(" ", strip=True) if link and len(link.get_text(strip=True)) > 3
+                     else max(cand, key=len))
             date_txt = ""
             for c in cells:
                 if re.search(r"\b20\d{2}\b", c) and not re.search(r"(ABY|BBY)", c):
@@ -312,9 +326,11 @@ def source_wookieepedia():
                     break
             ds, dt, prec = (loose_date(date_txt) if date_txt
                             else ("9999-99-99", "À confirmer", "tba"))
-            add("starwars", title, ds, dt, "", "Wookieepedia", prec)
+            add("starwars", title, ds, dt, kind, "Wookieepedia", prec)
             n += 1
-        msg = f"Wookiee   : {n} entrée(s) (via {how})"
+            if prec != "tba":
+                dated += 1
+        msg = f"Wookiee   : {n} entrée(s) (via {how}), dont {dated} datée(s)"
         if n == 0:
             msg += "  ⚠ aucune ligne 'unreleased' — marqueur à revoir"
         log(msg)
