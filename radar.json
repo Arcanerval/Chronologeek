@@ -7,7 +7,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Avatar Aang, the world's last Airbender, learns of an ancient power that could save his culture from extinction. With the help of his friends, he embarks on a global quest to find it before it falls into the wrong hands and threatens to upend the peace they sacrificed everything to achieve.",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -17,7 +19,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "9 ABY"
+  "era": "9 ABY",
+  "syn": "",
+  "wiki": "The Mandalorian and Grogu: Danger in the Dark"
  },
  {
   "universe": "marvel",
@@ -27,7 +31,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
+  "wiki": ""
  },
  {
   "universe": "avatar",
@@ -37,7 +43,9 @@
   "kind": "Graphic Novel Chronology: XXX AG Release Date: July 28, 2026",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -47,7 +55,9 @@
   "kind": "Roman",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Legacy (novel)"
  },
  {
   "universe": "starwars",
@@ -57,7 +67,9 @@
   "kind": "Série",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Kara and her ragtag Jedi crew seek out to find worthy Jedi to fight against an increasingly powerful warlord.",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -67,7 +79,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "The Fall of Kylo Ren 1"
  },
  {
   "universe": "dc",
@@ -77,7 +91,9 @@
   "kind": "Série",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, earth-based mystery as they investigate a murder in the American heartland.",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -87,7 +103,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "c. 362 BBY [ 32 ]"
+  "era": "c. 362 BBY",
+  "syn": "",
+  "wiki": "The High Republic Adventures – Pathfinders 4"
  },
  {
   "universe": "starwars",
@@ -97,7 +115,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Galaxy's Edge – Echoes of the Empire 5"
  },
  {
   "universe": "avatar",
@@ -107,7 +127,9 @@
   "kind": "Graphic Novel Release Date: August 25, 2026",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -117,7 +139,9 @@
   "kind": "Jeu vidéo",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "20 BBY [ 95 ]"
+  "era": "20 BBY",
+  "syn": "",
+  "wiki": "Star Wars Zero Company"
  },
  {
   "universe": "avatar",
@@ -127,7 +151,9 @@
   "kind": "Young Readers Novel Release Date: September 1, 2026",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -137,7 +163,9 @@
   "kind": "Roman jeunesse",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "c. 19 BBY – 4 ABY"
+  "era": "c. 19 BBY – 4 ABY",
+  "syn": "",
+  "wiki": "Hiding from the Dark"
  },
  {
   "universe": "starwars",
@@ -147,7 +175,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Filled with unexpected laughs and action-packed fun, this new animated galactic adventure celebrates your favorite stories and characters from all three seasons of The Mandalorian.",
+  "wiki": ""
  },
  {
   "universe": "avatar",
@@ -157,7 +187,9 @@
   "kind": "Graphic Novel Release Date: September 8, 2026",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -167,7 +199,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "c. 362 BBY [ 32 ]"
+  "era": "c. 362 BBY",
+  "syn": "",
+  "wiki": "The High Republic Adventures – Pathfinders 5"
  },
  {
   "universe": "starwars",
@@ -177,7 +211,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "9 ABY [ 163 ]"
+  "era": "9 ABY",
+  "syn": "",
+  "wiki": "The Book of Boba Fett 1"
  },
  {
   "universe": "starwars",
@@ -187,7 +223,9 @@
   "kind": "Roman",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "6 BBY [ 136 ]"
+  "era": "6 BBY",
+  "syn": "",
+  "wiki": "Reign of the Empire: Edge of the Abyss"
  },
  {
   "universe": "starwars",
@@ -197,7 +235,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "The Fall of Kylo Ren 2"
  },
  {
   "universe": "starwars",
@@ -207,7 +247,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "9 ABY [ 163 ]"
+  "era": "9 ABY",
+  "syn": "",
+  "wiki": "The Book of Boba Fett 2"
  },
  {
   "universe": "starwars",
@@ -217,7 +259,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty"
  },
  {
   "universe": "starwars",
@@ -227,7 +271,9 @@
   "kind": "Jeu vidéo",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Star Wars: Galactic Racer"
  },
  {
   "universe": "avatar",
@@ -237,7 +283,9 @@
   "kind": "Junior Novel Release Date: October 13, 2026",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "marvel",
@@ -247,7 +295,9 @@
   "kind": "Série",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "After the events of WandaVision, White Vision struggles to connect with the memories given to him as he lacks the emotions or feelings associated with them.",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -257,7 +307,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "1 BBY"
+  "era": "1 BBY",
+  "syn": "",
+  "wiki": "Rogue One – Chirrut & Baze 1"
  },
  {
   "universe": "starwars",
@@ -267,7 +319,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Hyperspace Stories: Mace"
  },
  {
   "universe": "dc",
@@ -277,7 +331,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Follow the terrifying descent into hell of a promising Hollywood actor who has become a monster driven by revenge, exploring the loss of identity and humanity, the ravages of toxic love and the dark side of scientific ambition.",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -287,7 +343,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "c. 362 BBY [ 32 ]"
+  "era": "c. 362 BBY",
+  "syn": "",
+  "wiki": "The High Republic Adventures – Pathfinders 6"
  },
  {
   "universe": "starwars",
@@ -297,7 +355,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": "1 BBY"
+  "era": "1 BBY",
+  "syn": "",
+  "wiki": "Rogue One – Darth Vader 1"
  },
  {
   "universe": "avatar",
@@ -307,7 +367,9 @@
   "kind": "Adult Novel Release Date: November 10, 2026",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "marvel",
@@ -317,7 +379,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+  "wiki": ""
  },
  {
   "universe": "avatar",
@@ -327,7 +391,9 @@
   "kind": "Junior Novel Chronology: XXX BG Release Date: January 5, 202",
   "source": "Avatar Almanac",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": ""
  },
  {
   "universe": "starwars",
@@ -337,7 +403,9 @@
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Tales from the Outer Rim: The Legend of Beggar's Canyon"
  },
  {
   "universe": "starwars",
@@ -347,7 +415,9 @@
   "kind": "Roman jeunesse",
   "source": "Wookieepedia",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "",
+  "wiki": "Star Wars: The Mandalorian and Grogu: The Deluxe Junior Novelization"
  },
  {
   "universe": "starwars",
@@ -357,7 +427,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "An original story set approximately five years after the events of Star Wars: The Rise of Skywalker.",
+  "wiki": ""
  },
  {
   "universe": "marvel",
@@ -367,7 +439,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Hunted by Miguel O'Hara's Spider Society and betrayed by his friends, Miles finds himself in the darkest corners of the Spider-Verse in search of a way home. Knowing that his family has been not only fractured but endangered by his calling, it's a race against the clock for Miles to travel across the wildest reaches of time and space to fight for and reunite everything he holds most dear.",
+  "wiki": ""
  },
  {
   "universe": "dc",
@@ -377,7 +451,9 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "Superman and Lex Luthor team up to face a larger threat.",
+  "wiki": ""
  },
  {
   "universe": "marvel",
@@ -387,6 +463,8 @@
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
-  "era": ""
+  "era": "",
+  "syn": "An upcoming film in Phase Six of the Marvel Cinematic Universe (MCU) and the finale of The Multiverse Saga. Plot TBA.",
+  "wiki": ""
  }
 ]
