@@ -66,14 +66,14 @@ def log(msg):
     print(msg)
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day", era=""):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
     results.append({
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
-        "precision": precision, "era": era,
+        "precision": precision, "era": era, "syn": syn, "wiki": wiki,
     })
 
 
@@ -141,7 +141,8 @@ def source_tmdb():
                         if not d or d < TODAY:
                             continue
                         add(uni, it.get("title") or it.get("name"), d.isoformat(),
-                            d.strftime("%d/%m/%Y"), kind, "TMDB")
+                            d.strftime("%d/%m/%Y"), kind, "TMDB",
+                            syn=(it.get("overview") or "").strip())
                         found += 1
                     if page >= j.get("total_pages", 1):
                         break
@@ -316,6 +317,8 @@ def source_wookieepedia():
             # les lignes non sorties portent un marqueur de classe ou un fond coloré
             if not re.search(r"unpublished|unrelease|notyet|upcoming", blob):
                 continue
+            for sup in tr.find_all("sup"):      # appels de note [95]
+                sup.decompose()
             klass = " ".join(tr.get("class") or []).lower()
             kind = ""
             for key, label in (("comic", "Comic"), ("videogame", "Jeu vidéo"),
@@ -338,11 +341,15 @@ def source_wookieepedia():
             era = next((c for c in cells if ERA.match(c)), "")
 
             # titre : premier lien qui n'est PAS une année in-universe
-            title = ""
+            title = wiki = ""
             for a in tr.find_all("a"):
                 t = a.get_text(" ", strip=True)
                 if len(t) > 3 and not ERA.match(t) and not re.fullmatch(r"[\d\W]+", t):
                     title = t
+                    href = a.get("href") or ""
+                    m = re.search(r"/wiki/([^?#]+)", href)
+                    if m:
+                        wiki = requests.utils.unquote(m.group(1)).replace("_", " ")
                     break
             if not title:
                 cand = [c for c in cells if len(c) > 3 and not ERA.match(c)]
@@ -364,7 +371,8 @@ def source_wookieepedia():
                             else ("9999-99-99", "À confirmer", "tba"))
             if prec == "tba":          # pas de date de sortie connue -> on ignore
                 continue
-            add("starwars", title, ds, dt, kind, "Wookieepedia", prec, era)
+            era = re.sub(r"\[\s*\d+\s*\]", "", era).strip()
+            add("starwars", title, ds, dt, kind, "Wookieepedia", prec, era, wiki=wiki)
             n += 1
             dated += 1
 
@@ -380,6 +388,36 @@ def normalize(s):
     s = html.unescape(s or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s)
     return re.sub(r"\s+", " ", s).strip()
+
+
+def fill_wiki_synopses(entries):
+    """Récupère l'intro de chaque page Wookieepedia, par lots de 20."""
+    todo = [e for e in entries if e.get("wiki") and not e.get("syn")]
+    if not todo:
+        return
+    got = 0
+    for i in range(0, len(todo), 20):
+        chunk = todo[i:i + 20]
+        try:
+            r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
+                             headers=UA_BROWSER, params={
+                                 "action": "query", "prop": "extracts",
+                                 "exintro": 1, "explaintext": 1, "redirects": 1,
+                                 "format": "json", "formatversion": 2,
+                                 "titles": "|".join(e["wiki"] for e in chunk),
+                             })
+            r.raise_for_status()
+            pages = {p.get("title", "").lower(): (p.get("extract") or "")
+                     for p in r.json().get("query", {}).get("pages", [])}
+            for e in chunk:
+                txt = pages.get(e["wiki"].lower(), "")
+                if txt:
+                    txt = re.sub(r"\s+", " ", txt).strip()
+                    e["syn"] = txt[:400] + ("…" if len(txt) > 400 else "")
+                    got += 1
+        except Exception as ex:
+            log(f"Résumés   : lot {i//20 + 1} — {ex}")
+    log(f"Résumés   : {got}/{len(todo)} synopsis Wookieepedia récupéré(s)")
 
 
 # ────────────────────────────────────────── Rendu HTML
@@ -434,6 +472,13 @@ h1{{font-size:1.4rem;letter-spacing:.02em}}
 .dot{{width:9px;height:9px;border-radius:50%;flex-shrink:0}}
 .count{{font-size:.72rem;color:#8a8aa0;font-weight:400}}
 .row{{padding:.55rem .7rem;border:1px solid #23233a;border-left:3px solid #6b7280;border-radius:8px;margin-bottom:.4rem;background:#0d0d18}}
+details.row{{cursor:pointer}}
+details.row>summary{{list-style:none;display:block}}
+details.row>summary::-webkit-details-marker{{display:none}}
+details.row[open]{{background:#111120}}
+details.row>summary .t::after{{content:'  ▾';color:#5a5a75;font-size:.7rem}}
+details.row[open]>summary .t::after{{content:'  ▴'}}
+.syn{{margin-top:.5rem;padding-top:.5rem;border-top:1px solid #23233a;color:#a8a8c0;font-size:.75rem;line-height:1.55;cursor:auto}}
 .date{{font-variant-numeric:tabular-nums;color:#b9b9d0;font-size:.76rem}}
 .t{{font-weight:600;font-size:.85rem;line-height:1.3;margin:.15rem 0}}
 .meta{{color:#7f7f9a;font-size:.7rem;display:flex;justify-content:space-between;gap:.5rem}}
@@ -457,13 +502,17 @@ def render(entries):
         rows = []
         for e in sub:
             col = kind_color(e["kind"])
-            right = html.escape(e["era"] or "")
-            rows.append(
-                f'<div class="row" style="border-left-color:{col}">'
-                f'<div class="date">{html.escape(e["date_txt"])}</div>'
-                f'<div class="t">{html.escape(e["title"])}</div>'
-                f'<div class="meta"><span>{html.escape(e["kind"] or "—")}</span>'
-                f'<span>{right}</span></div></div>')
+            head = (f'<div class="date">{html.escape(e["date_txt"])}</div>'
+                    f'<div class="t">{html.escape(e["title"])}</div>'
+                    f'<div class="meta"><span>{html.escape(e["kind"] or "—")}</span>'
+                    f'<span>{html.escape(e["era"] or "")}</span></div>')
+            if e.get("syn"):
+                rows.append(
+                    f'<details class="row" style="border-left-color:{col}">'
+                    f'<summary>{head}</summary>'
+                    f'<div class="syn">{html.escape(e["syn"])}</div></details>')
+            else:
+                rows.append(f'<div class="row" style="border-left-color:{col}">{head}</div>')
         cols.append(
             f'<div class="col"><div class="uni">'
             f'<span class="dot" style="background:{meta["color"]}"></span>'
@@ -491,6 +540,7 @@ def main():
         seen.add(k)
         uniq.append(e)
 
+    fill_wiki_synopses(uniq)
     log(f"TOTAL     : {len(uniq)} sortie(s) datée(s) · {dropped} sans date écartée(s)")
 
     page = PAGE.format(
