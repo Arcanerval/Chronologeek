@@ -1,0 +1,66 @@
+[
+ {
+  "universe": "marvel",
+  "title": "Spider-Man: Brand New Day",
+  "date_sort": "2026-07-28",
+  "date_txt": "28/07/2026",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
+  "universe": "starwars",
+  "title": "Star Wars: Visions Presents - The Ninth Jedi",
+  "date_sort": "2026-08-05",
+  "date_txt": "05/08/2026",
+  "kind": "Série",
+  "source": "TMDB"
+ },
+ {
+  "universe": "starwars",
+  "title": "LEGO Star Wars: The Mandalorian",
+  "date_sort": "2026-09-02",
+  "date_txt": "02/09/2026",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
+  "universe": "marvel",
+  "title": "VisionQuest",
+  "date_sort": "2026-10-14",
+  "date_txt": "14/10/2026",
+  "kind": "Série",
+  "source": "TMDB"
+ },
+ {
+  "universe": "marvel",
+  "title": "Avengers: Doomsday",
+  "date_sort": "2026-12-16",
+  "date_txt": "16/12/2026",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
+  "universe": "starwars",
+  "title": "Star Wars: Starfighter",
+  "date_sort": "2027-05-26",
+  "date_txt": "26/05/2027",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
+  "universe": "marvel",
+  "title": "Spider-Man: Beyond the Spider-Verse",
+  "date_sort": "2027-06-17",
+  "date_txt": "17/06/2027",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
+  "universe": "marvel",
+  "title": "Avengers: Secret Wars",
+  "date_sort": "2027-12-16",
+  "date_txt": "16/12/2027",
+  "kind": "Film",
+  "source": "TMDB"
+ }
+]
