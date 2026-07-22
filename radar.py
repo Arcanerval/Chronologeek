@@ -9,6 +9,11 @@ Chaque source est isolée : si l'une casse, les autres continuent.
 """
 
 import os, re, json, html, datetime, traceback
+try:
+    from zoneinfo import ZoneInfo
+    TZ = ZoneInfo("Europe/Paris")
+except Exception:
+    TZ = None
 import requests
 from bs4 import BeautifulSoup
 
@@ -328,7 +333,7 @@ def source_wookieepedia():
             if not cells:
                 continue
 
-            ERA = re.compile(r"^[~\u2020\d\s.,\u2013-]*\d\s*(BBY|ABY)\b", re.I)
+            ERA = re.compile(r"^(c\.|ca\.|circa|approx\.?)?[~\u2020\d\s.,\u2013-]*\d\s*(BBY|ABY)\b", re.I)
             # date in-universe : la cellule qui parle en BBY/ABY
             era = next((c for c in cells if ERA.match(c)), "")
 
@@ -378,6 +383,37 @@ def normalize(s):
 
 
 # ────────────────────────────────────────── Rendu HTML
+KIND_STYLE = (
+    ("comic",       "#e879f9"),
+    ("graphic",     "#e879f9"),
+    ("film",        "#f5a524"),
+    ("movie",       "#f5a524"),
+    ("série",       "#38bdf8"),
+    ("serie",       "#38bdf8"),
+    ("tv",          "#38bdf8"),
+    ("épisode",     "#38bdf8"),
+    ("jeu",         "#a78bfa"),
+    ("game",        "#a78bfa"),
+    ("roman",       "#4ade80"),
+    ("novel",       "#4ade80"),
+    ("young",       "#4ade80"),
+    ("junior",      "#4ade80"),
+    ("nouvelle",    "#2dd4bf"),
+    ("short",       "#2dd4bf"),
+    ("audio",       "#fb7185"),
+)
+LEGEND = (("Film", "#f5a524"), ("Série", "#38bdf8"), ("Comic", "#e879f9"),
+          ("Roman", "#4ade80"), ("Jeu vidéo", "#a78bfa"), ("Autre", "#6b7280"))
+
+
+def kind_color(kind):
+    k = (kind or "").lower()
+    for key, col in KIND_STYLE:
+        if key in k:
+            return col
+    return "#6b7280"
+
+
 PAGE = """<!DOCTYPE html>
 <html lang="fr"><head>
 <meta charset="utf-8"/>
@@ -386,59 +422,55 @@ PAGE = """<!DOCTYPE html>
 <title>Radar des sorties — Chronologeek</title>
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:#08080f;color:#e8e8f0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:1.5rem;max-width:1000px;margin:0 auto}}
-h1{{font-size:1.5rem;letter-spacing:.02em}}
-.sub{{color:#8a8aa0;font-size:.85rem;margin:.35rem 0 1.5rem}}
-.uni{{margin:2rem 0 .75rem;font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:.6rem}}
-.dot{{width:10px;height:10px;border-radius:50%}}
-.count{{font-size:.75rem;color:#8a8aa0;font-weight:400}}
-.head,.row{{display:grid;grid-template-columns:108px 1fr 132px 104px;gap:1rem;align-items:center}}
-.head{{padding:0 .9rem .45rem;font-size:.68rem;letter-spacing:.08em;color:#6f6f88;text-transform:uppercase}}
-.row{{padding:.65rem .9rem;border:1px solid #23233a;border-radius:10px;margin-bottom:.45rem;background:#0d0d18}}
-.date{{font-variant-numeric:tabular-nums;color:#b9b9d0;font-size:.85rem;white-space:nowrap}}
-.t{{font-weight:600;font-size:.95rem;line-height:1.35;min-width:0}}
-.kind{{color:#8a8aa0;font-size:.78rem}}
-.era{{color:#7f7f9a;font-size:.78rem;font-variant-numeric:tabular-nums;white-space:nowrap}}
-@media(max-width:700px){{
- .head{{display:none}}
- .row{{grid-template-columns:1fr auto;gap:.25rem .8rem;padding:.7rem .85rem}}
- .t{{grid-column:1/-1;order:1}}
- .date{{order:2}}
- .era{{order:3;text-align:right}}
- .kind{{grid-column:1/-1;order:4}}
-}}
-.rep{{margin-top:2.5rem;padding:.9rem 1rem;border:1px dashed #23233a;border-radius:10px;color:#8a8aa0;font-size:.78rem;line-height:1.7;white-space:pre-wrap;font-family:ui-monospace,monospace}}
+body{{background:#08080f;color:#e8e8f0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:1.4rem;max-width:1600px;margin:0 auto}}
+h1{{font-size:1.4rem;letter-spacing:.02em}}
+.sub{{color:#8a8aa0;font-size:.83rem;margin:.3rem 0 1rem}}
+.legend{{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.4rem;font-size:.72rem;color:#8a8aa0}}
+.legend span{{display:flex;align-items:center;gap:.35rem}}
+.legend i{{width:9px;height:9px;border-radius:2px;display:block}}
+.grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;align-items:start}}
+.col{{min-width:0}}
+.uni{{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;padding:.5rem .2rem .7rem;position:sticky;top:0;background:#08080f;z-index:2}}
+.dot{{width:9px;height:9px;border-radius:50%;flex-shrink:0}}
+.count{{font-size:.72rem;color:#8a8aa0;font-weight:400}}
+.row{{padding:.55rem .7rem;border:1px solid #23233a;border-left:3px solid #6b7280;border-radius:8px;margin-bottom:.4rem;background:#0d0d18}}
+.date{{font-variant-numeric:tabular-nums;color:#b9b9d0;font-size:.76rem}}
+.t{{font-weight:600;font-size:.85rem;line-height:1.3;margin:.15rem 0}}
+.meta{{color:#7f7f9a;font-size:.7rem;display:flex;justify-content:space-between;gap:.5rem}}
+.rep{{margin-top:2rem;padding:.85rem 1rem;border:1px dashed #23233a;border-radius:10px;color:#8a8aa0;font-size:.75rem;line-height:1.65;white-space:pre-wrap;font-family:ui-monospace,monospace}}
+@media(max-width:1200px){{.grid{{grid-template-columns:repeat(2,1fr)}}}}
+@media(max-width:640px){{.grid{{grid-template-columns:1fr}}}}
 </style></head><body>
 <h1>🛰️ Radar des sorties</h1>
 <div class="sub">Généré le {gen} · {total} sortie(s) à venir</div>
-{body}
+<div class="legend">{legend}</div>
+<div class="grid">{body}</div>
 <div class="rep">{report}</div>
 </body></html>"""
 
 
 def render(entries):
-    blocks = []
+    cols = []
     for uni, meta in UNIVERSES.items():
         sub = [e for e in entries if e["universe"] == uni]
-        if not sub:
-            continue
         sub.sort(key=lambda e: (e["date_sort"], e["title"]))
         rows = []
         for e in sub:
+            col = kind_color(e["kind"])
+            right = html.escape(e["era"] or "")
             rows.append(
-                f'<div class="row">'
+                f'<div class="row" style="border-left-color:{col}">'
                 f'<div class="date">{html.escape(e["date_txt"])}</div>'
                 f'<div class="t">{html.escape(e["title"])}</div>'
-                f'<div class="kind">{html.escape(e["kind"] or "—")}</div>'
-                f'<div class="era">{html.escape(e["era"] or "")}</div>'
-                f'</div>')
-        blocks.append(
-            f'<div class="uni"><span class="dot" style="background:{meta["color"]}"></span>'
+                f'<div class="meta"><span>{html.escape(e["kind"] or "—")}</span>'
+                f'<span>{right}</span></div></div>')
+        cols.append(
+            f'<div class="col"><div class="uni">'
+            f'<span class="dot" style="background:{meta["color"]}"></span>'
             f'{meta["label"]} <span class="count">{len(sub)}</span></div>'
-            + '<div class="head"><div>Sortie</div><div>Titre</div>'
-              '<div>Type</div><div>Chronologie</div></div>'
-            + "".join(rows))
-    return "".join(blocks)
+            + ("".join(rows) or '<div class="row" style="border-left-color:#23233a">'
+                                '<div class="meta">Rien à venir</div></div>') + '</div>')
+    return "".join(cols)
 
 
 def main():
@@ -462,9 +494,11 @@ def main():
     log(f"TOTAL     : {len(uniq)} sortie(s) datée(s) · {dropped} sans date écartée(s)")
 
     page = PAGE.format(
-        gen=datetime.datetime.now().strftime("%d/%m/%Y à %H:%M"),
+        gen=datetime.datetime.now(TZ).strftime("%d/%m/%Y à %H:%M"),
         total=len(uniq),
-        body=render(uniq) or "<p>Aucune sortie trouvée.</p>",
+        legend="".join(f'<span><i style="background:{c}"></i>{l}</span>'
+                       for l, c in LEGEND),
+        body=render(uniq),
         report=html.escape("\n".join(report)))
     with open("radar.html", "w", encoding="utf-8") as f:
         f.write(page)
