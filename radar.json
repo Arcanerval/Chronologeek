@@ -1,11 +1,35 @@
 [
  {
+  "universe": "avatar",
+  "title": "Avatar Legends: The Fighting Game",
+  "date_sort": "2026-07-23",
+  "date_txt": "23/07/2026",
+  "kind": "Console Video Game Release Date: July 23, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Aang: The Last Airbender",
+  "date_sort": "2026-07-24",
+  "date_txt": "24/07/2026",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
   "universe": "marvel",
   "title": "Spider-Man: Brand New Day",
   "date_sort": "2026-07-28",
   "date_txt": "28/07/2026",
   "kind": "Film",
   "source": "TMDB"
+ },
+ {
+  "universe": "avatar",
+  "title": "Kya and the Secret of the Sand",
+  "date_sort": "2026-07-28",
+  "date_txt": "28/07/2026",
+  "kind": "Graphic Novel Chronology: XXX AG Release Date: July 28, 2026",
+  "source": "Avatar Almanac"
  },
  {
   "universe": "starwars",
@@ -16,12 +40,84 @@
   "source": "TMDB"
  },
  {
+  "universe": "avatar",
+  "title": "Avatar The Last Airbender Color-By-Number",
+  "date_sort": "2026-08-11",
+  "date_txt": "11/08/2026",
+  "kind": "Miscellaneous (Coloring Book) Release Date: August 11, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "dc",
+  "title": "Lanterns",
+  "date_sort": "2026-08-16",
+  "date_txt": "16/08/2026",
+  "kind": "Série",
+  "source": "TMDB"
+ },
+ {
+  "universe": "avatar",
+  "title": "Masters of the Elements Volume 1",
+  "date_sort": "2026-08-25",
+  "date_txt": "25/08/2026",
+  "kind": "Graphic Novel Release Date: August 25, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar: The Last Airbender: The Official Book of Amigurumi",
+  "date_sort": "2026-08-25",
+  "date_txt": "25/08/2026",
+  "kind": "Miscellaneous Release Date: August 25, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Meet Team Avatar (Avatar Aang: The Last Airbender)",
+  "date_sort": "2026-09-01",
+  "date_txt": "01/09/2026",
+  "kind": "Young Readers Novel Release Date: September 1, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Aang: The Last Airbender: Official Activity Book",
+  "date_sort": "2026-09-01",
+  "date_txt": "01/09/2026",
+  "kind": "Miscellaneous (Activity Book) Release Date: September 1, 202",
+  "source": "Avatar Almanac"
+ },
+ {
   "universe": "starwars",
   "title": "LEGO Star Wars: The Mandalorian",
   "date_sort": "2026-09-02",
   "date_txt": "02/09/2026",
   "kind": "Film",
   "source": "TMDB"
+ },
+ {
+  "universe": "avatar",
+  "title": "Jet: Rebels and Rhinos",
+  "date_sort": "2026-09-08",
+  "date_txt": "08/09/2026",
+  "kind": "Graphic Novel Release Date: September 8, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Legends: The Roleplaying Game – Voyage of the Unity",
+  "date_sort": "2026-09-15",
+  "date_txt": "September 2026",
+  "kind": "TTRPG Adventure Set Release Date: September 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Aang: The Last Airbender: The Junior Novelization",
+  "date_sort": "2026-10-13",
+  "date_txt": "13/10/2026",
+  "kind": "Junior Novel Release Date: October 13, 2026",
+  "source": "Avatar Almanac"
  },
  {
   "universe": "marvel",
@@ -32,12 +128,76 @@
   "source": "TMDB"
  },
  {
+  "universe": "dc",
+  "title": "Clayface",
+  "date_sort": "2026-10-21",
+  "date_txt": "21/10/2026",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Legends: The Official Character Encyclopedia",
+  "date_sort": "2026-11-03",
+  "date_txt": "03/11/2026",
+  "kind": "Miscellaneous Release Date: November 3, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Avatar Aang: The Last Airbender Adult Novelization",
+  "date_sort": "2026-11-10",
+  "date_txt": "10/11/2026",
+  "kind": "Adult Novel Release Date: November 10, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Aang: The Last Airbender: The Art of the Movie",
+  "date_sort": "2026-11-10",
+  "date_txt": "10/11/2026",
+  "kind": "Artbook Release Date: November 10, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar The Last Airbender Visual Dictionary",
+  "date_sort": "2026-11-10",
+  "date_txt": "10/11/2026",
+  "kind": "Miscellaneous Release Date: November 10, 2026",
+  "source": "Avatar Almanac"
+ },
+ {
   "universe": "marvel",
   "title": "Avengers: Doomsday",
   "date_sort": "2026-12-16",
   "date_txt": "16/12/2026",
   "kind": "Film",
   "source": "TMDB"
+ },
+ {
+  "universe": "avatar",
+  "title": "Build the Flame!",
+  "date_sort": "2027-01-05",
+  "date_txt": "05/01/2027",
+  "kind": "Junior Novel Chronology: XXX BG Release Date: January 5, 202",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar The Last Airbender Handbook",
+  "date_sort": "2027-03-02",
+  "date_txt": "02/03/2027",
+  "kind": "Miscellaneous Release Date: March 2, 2027",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar: The Last Airbender: The Official Pop-Up Book",
+  "date_sort": "2027-04-13",
+  "date_txt": "13/04/2027",
+  "kind": "Miscellaneous Release Date: April 13, 2027",
+  "source": "Avatar Almanac"
  },
  {
   "universe": "starwars",
@@ -56,11 +216,91 @@
   "source": "TMDB"
  },
  {
+  "universe": "avatar",
+  "title": "Avatar: Seven Havens – Book 1",
+  "date_sort": "2027-06-30",
+  "date_txt": "2027",
+  "kind": "TV Series Release Date: 2027",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "dc",
+  "title": "Man of Tomorrow",
+  "date_sort": "2027-07-07",
+  "date_txt": "07/07/2027",
+  "kind": "Film",
+  "source": "TMDB"
+ },
+ {
   "universe": "marvel",
   "title": "Avengers: Secret Wars",
   "date_sort": "2027-12-16",
   "date_txt": "16/12/2027",
   "kind": "Film",
   "source": "TMDB"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar: Seven Havens – Book 2",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "TV Series Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Chronicles of the Avatar Book #7",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Young Adult Novel Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Avatar: The Last Airbender One-Shot Comic #8",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Graphic Novel Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Avatar: The Last Airbender One-Shot Comic #9",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Graphic Novel Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled The Legend of Korra One-Shot Comic #3",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Graphic Novel Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Avatar Legends: The Roleplaying Game – The Spirit World",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "TTRPG Book Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Animated Movie #2",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Movie Release Date: TBA",
+  "source": "Avatar Almanac"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Animated Movie #3",
+  "date_sort": "9999-99-99",
+  "date_txt": "À confirmer",
+  "kind": "Movie Release Date: TBA",
+  "source": "Avatar Almanac"
  }
 ]
