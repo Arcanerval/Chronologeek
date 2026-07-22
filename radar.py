@@ -390,64 +390,108 @@ def normalize(s):
     return re.sub(r"\s+", " ", s).strip()
 
 
-def _wiki_extracts(chunk):
-    """Méthode 1 : API MediaWiki standard (prop=extracts)."""
+def clean_wikitext(txt):
+    """Wikitexte -> première phrase lisible."""
+    t = txt or ""
+    t = re.sub(r"<!--.*?-->", " ", t, flags=re.S)
+    t = re.sub(r"<ref[^>]*/>", " ", t)
+    t = re.sub(r"<ref.*?</ref>", " ", t, flags=re.S)
+    for _ in range(8):                       # modèles imbriqués {{...}}
+        nt = re.sub(r"\{\{[^{}]*\}\}", " ", t)
+        if nt == t:
+            break
+        t = nt
+    for _ in range(6):                       # fichiers et images
+        t = re.sub(r"\[\[(?:File|Image|Fichier):[^\[\]]*\]\]", " ", t, flags=re.I)
+    t = re.sub(r"\{\|.*?\|\}", " ", t, flags=re.S)          # tableaux
+    t = re.sub(r"\[\[[^\]|]*\|([^\]]*)\]\]", r"\1", t)      # [[cible|texte]]
+    t = re.sub(r"\[\[([^\]]*)\]\]", r"\1", t)
+    t = re.sub(r"<[^>]+>", " ", t)
+    t = t.replace(chr(39) * 3, "").replace(chr(39) * 2, "")  # gras / italique wiki
+    for line in t.split("\n"):
+        line = line.strip()
+        if len(line) > 60 and not line.startswith(("=", "*", "|", "!", ":", ";")):
+            line = re.sub(r"\s+", " ", line)
+            return line[:400] + ("…" if len(line) > 400 else "")
+    return ""
+
+
+def _wiki_revisions(chunk):
+    """Méthode 1 : wikitexte par lots via api.php."""
     r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
                      headers=UA_BROWSER, params={
-                         "action": "query", "prop": "extracts",
-                         "exintro": 1, "explaintext": 1, "redirects": 1,
+                         "action": "query", "prop": "revisions",
+                         "rvprop": "content", "rvslots": "main", "redirects": 1,
                          "format": "json", "formatversion": 2,
                          "titles": "|".join(e["wiki"] for e in chunk),
                      })
     r.raise_for_status()
-    j = r.json()
-    if j.get("warnings"):
-        raise RuntimeError(str(j["warnings"])[:120])
-    return {p.get("title", "").lower(): (p.get("extract") or "")
-            for p in j.get("query", {}).get("pages", [])}
-
-
-def _wiki_fandom_v1(chunk):
-    """Méthode 2 : API maison Fandom (abstract) — dispo quand extracts ne l'est pas."""
-    r = requests.get("https://starwars.fandom.com/api/v1/Articles/Details",
-                     timeout=45, headers=UA_BROWSER, params={
-                         "titles": ",".join(e["wiki"].replace(" ", "_") for e in chunk),
-                         "abstract": 500,
-                     })
-    r.raise_for_status()
     out = {}
-    for item in (r.json().get("items") or {}).values():
-        t = (item.get("title") or "").lower()
-        out[t] = item.get("abstract") or ""
+    for p in r.json().get("query", {}).get("pages", []):
+        revs = p.get("revisions") or []
+        if not revs:
+            continue
+        content = (revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
+        out[(p.get("title") or "").lower()] = clean_wikitext(content)
     return out
 
 
+def _wiki_parse_one(title):
+    """Méthode 2 : rendu de la section d'intro, page par page."""
+    r = requests.get("https://starwars.fandom.com/api.php", timeout=30,
+                     headers=UA_BROWSER, params={
+                         "action": "parse", "page": title, "prop": "text",
+                         "section": 0, "redirects": 1,
+                         "format": "json", "formatversion": 2,
+                     })
+    r.raise_for_status()
+    txt = r.json().get("parse", {}).get("text", "")
+    if isinstance(txt, dict):
+        txt = txt.get("*", "")
+    soup = BeautifulSoup(txt or "", "html.parser")
+    for bad in soup.find_all(["sup", "table", "aside", "figure", "div"]):
+        bad.decompose()
+    for p in soup.find_all("p"):
+        s2 = re.sub(r"\s+", " ", p.get_text(" ", strip=True))
+        if len(s2) > 60:
+            return s2[:400] + ("…" if len(s2) > 400 else "")
+    return ""
+
+
 def fill_wiki_synopses(entries):
-    """Récupère l'intro de chaque page Wookieepedia, par lots, avec repli."""
     todo = [e for e in entries if e.get("wiki") and not e.get("syn")]
     if not todo:
         return
     got, used = 0, []
     for i in range(0, len(todo), 20):
         chunk = todo[i:i + 20]
-        pages = {}
-        for name, fn in (("extracts", _wiki_extracts), ("fandom-v1", _wiki_fandom_v1)):
+        try:
+            pages = _wiki_revisions(chunk)
+            for e in chunk:
+                txt = pages.get(e["wiki"].lower(), "")
+                if txt:
+                    e["syn"] = txt
+                    got += 1
+            if any(e.get("syn") for e in chunk) and "wikitexte" not in used:
+                used.append("wikitexte")
+        except Exception as ex:
+            if i == 0:
+                log(f"Résumés   : wikitexte KO — {str(ex)[:120]}")
+    rest = [e for e in todo if not e.get("syn")][:60]
+    if rest:
+        ok = 0
+        for e in rest:
             try:
-                pages = fn(chunk)
-                if any(v for v in pages.values()):
-                    if name not in used:
-                        used.append(name)
-                    break
+                txt = _wiki_parse_one(e["wiki"])
+                if txt:
+                    e["syn"] = txt
+                    got += 1
+                    ok += 1
             except Exception as ex:
-                if i == 0:
-                    log(f"Résumés   : méthode {name} KO — {ex}")
-                pages = {}
-        for e in chunk:
-            txt = pages.get(e["wiki"].lower(), "")
-            if txt:
-                txt = re.sub(r"\s+", " ", txt).strip()
-                e["syn"] = txt[:400] + ("…" if len(txt) > 400 else "")
-                got += 1
+                if ok == 0 and e is rest[0]:
+                    log(f"Résumés   : intro-page KO — {str(ex)[:120]}")
+        if ok and "intro-page" not in used:
+            used.append("intro-page")
     log(f"Résumés   : {got}/{len(todo)} synopsis Wookieepedia"
         + (f" (via {', '.join(used)})" if used else " — aucune méthode n'a répondu"))
 
