@@ -39,6 +39,14 @@ TMDB_COMPANY_NAMES = {
     "avatar":   ["Avatar Studios", "Nickelodeon Animation Studio"],
 }
 
+# Avatar : seuls ces types de médias nous intéressent (le reste = goodies)
+AVATAR_KEEP = ("movie", "tv series", "micro series", "series", "comic",
+               "graphic novel", "comic story", "novel")
+AVATAR_DROP = ("video game", "ttrpg", "coloring", "colouring", "color-by",
+               "activity", "artbook", "scrapbook", "amigurumi", "pop-up",
+               "audio drama", "website", "encyclopedia", "dictionary",
+               "handbook", "miscellaneous", "tonie")
+
 # Séries en cours à surveiller : prochain épisode (id TMDB -> univers)
 TRACKED_SHOWS = {
     # exemple : 202555: "marvel",
@@ -53,13 +61,14 @@ def log(msg):
     print(msg)
 
 
-def add(universe, title, date_sort, date_txt, kind, source):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day"):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
     results.append({
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
+        "precision": precision,
     })
 
 
@@ -160,22 +169,22 @@ MONTHS = {m: i for i, m in enumerate(
 
 
 def loose_date(txt):
-    """'July 25, 2026' / 'September 2026' / 'Fall 2026' / 'TBA' -> (tri, affichage)"""
+    """-> (tri, affichage, précision)  précision = day | month | vague | tba"""
     t = (txt or "").strip()
     if not t or t.upper() in ("TBA", "TBD"):
-        return ("9999-99-99", "À confirmer")
+        return ("9999-99-99", "À confirmer", "tba")
     m = re.match(r"([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})", t)
     if m and m.group(1).lower() in MONTHS:
         d = datetime.date(int(m.group(3)), MONTHS[m.group(1).lower()], int(m.group(2)))
-        return (d.isoformat(), d.strftime("%d/%m/%Y"))
+        return (d.isoformat(), d.strftime("%d/%m/%Y"), "day")
     m = re.match(r"([A-Za-z]+)\s+(\d{4})", t)
     if m and m.group(1).lower() in MONTHS:
         y, mo = int(m.group(2)), MONTHS[m.group(1).lower()]
-        return (f"{y:04d}-{mo:02d}-15", t)
+        return (f"{y:04d}-{mo:02d}-15", t, "month")
     m = re.search(r"(\d{4})", t)
     if m:
-        return (f"{m.group(1)}-06-30", t)
-    return ("9999-99-99", t)
+        return (f"{m.group(1)}-06-30", t, "vague")
+    return ("9999-99-99", t, "tba")
 
 
 def source_avatar_almanac():
@@ -185,7 +194,7 @@ def source_avatar_almanac():
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
         heads = soup.find_all(re.compile(r"^h[3-5]$"))
-        n = 0
+        n = skipped = 0
         for h in heads:
             title = h.get_text(" ", strip=True)
             if not title or len(title) < 3:
@@ -215,12 +224,20 @@ def source_avatar_almanac():
                     break
             if not date_raw:
                 continue
-            ds, dt = loose_date(date_raw)
-            if ds != "9999-99-99" and ds < TODAY.isoformat():
+            k = kind.lower()
+            if any(x in k for x in AVATAR_DROP) or not any(x in k for x in AVATAR_KEEP):
+                skipped += 1
                 continue
-            add("avatar", title, ds, dt, kind, "Avatar Almanac")
+            ds, dt, prec = loose_date(date_raw)
+            if prec not in ("day", "month"):      # pas de date confirmée -> on ignore
+                skipped += 1
+                continue
+            if ds < TODAY.isoformat():
+                continue
+            add("avatar", title, ds, dt, kind, "Avatar Almanac", prec)
             n += 1
-        log(f"Almanac   : {n} entrée(s) ({len(heads)} titre(s) scanné(s))")
+        log(f"Almanac   : {n} entrée(s) retenue(s), {skipped} écartée(s) "
+            f"(goodies ou date non confirmée)")
     except Exception as e:
         log(f"Almanac   : ÉCHEC — {e}")
 
@@ -260,6 +277,17 @@ def source_wookieepedia():
     try:
         soup = BeautifulSoup(raw, "html.parser")
         n = 0
+        # diagnostic : quelles classes portent réellement les lignes ?
+        from collections import Counter
+        cnt = Counter()
+        for tr in soup.find_all("tr"):
+            for c in (tr.get("class") or []):
+                cnt[c] += 1
+        if cnt:
+            top = ", ".join(f"{c}×{k}" for c, k in cnt.most_common(12))
+            log(f"Wookiee   : classes de lignes vues → {top}")
+        else:
+            log(f"Wookiee   : aucune classe sur les <tr> ({len(soup.find_all('tr'))} lignes)")
         for tr in soup.find_all("tr"):
             blob = (" ".join(tr.get("class") or []) + " " + (tr.get("style") or "")
                     + " " + " ".join(
@@ -282,8 +310,9 @@ def source_wookieepedia():
                 if re.search(r"\b20\d{2}\b", c) and not re.search(r"(ABY|BBY)", c):
                     date_txt = c
                     break
-            ds, dt = loose_date(date_txt) if date_txt else ("9999-99-99", "À confirmer")
-            add("starwars", title, ds, dt, "", "Wookieepedia")
+            ds, dt, prec = (loose_date(date_txt) if date_txt
+                            else ("9999-99-99", "À confirmer", "tba"))
+            add("starwars", title, ds, dt, "", "Wookieepedia", prec)
             n += 1
         msg = f"Wookiee   : {n} entrée(s) (via {how})"
         if n == 0:
@@ -293,30 +322,10 @@ def source_wookieepedia():
         log(f"Wookiee   : parsing — {e}")
 
 
-# ────────────────────────────────────────── Croisement avec le site
 def normalize(s):
     s = html.unescape(s or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s)
     return re.sub(r"\s+", " ", s).strip()
-
-
-def load_existing():
-    store = {}
-    for uni, meta in UNIVERSES.items():
-        try:
-            with open(meta["file"], encoding="utf-8") as f:
-                store[uni] = normalize(f.read())
-        except Exception:
-            store[uni] = ""
-    return store
-
-
-def already_in_site(entry, existing):
-    t = normalize(entry["title"])
-    t = re.sub(r"^(untitled|the) ", "", t)
-    if len(t) < 5:
-        return False
-    return t in existing.get(entry["universe"], "")
 
 
 # ────────────────────────────────────────── Rendu HTML
@@ -346,13 +355,13 @@ h1{{font-size:1.5rem;letter-spacing:.02em}}
 .rep{{margin-top:2.5rem;padding:.9rem 1rem;border:1px dashed #23233a;border-radius:10px;color:#8a8aa0;font-size:.78rem;line-height:1.7;white-space:pre-wrap;font-family:ui-monospace,monospace}}
 </style></head><body>
 <h1>🛰️ Radar des sorties</h1>
-<div class="sub">Généré le {gen} · {total} sortie(s) à venir · <b style="color:#a99cf9">{news} à ajouter au site</b></div>
+<div class="sub">Généré le {gen} · {total} sortie(s) à venir</div>
 {body}
 <div class="rep">{report}</div>
 </body></html>"""
 
 
-def render(entries, existing):
+def render(entries):
     blocks = []
     for uni, meta in UNIVERSES.items():
         sub = [e for e in entries if e["universe"] == uni]
@@ -361,15 +370,12 @@ def render(entries, existing):
         sub.sort(key=lambda e: (e["date_sort"], e["title"]))
         rows = []
         for e in sub:
-            known = already_in_site(e, existing)
-            tag = ('<span class="tag ok">DANS LE SITE</span>' if known
-                   else '<span class="tag new">À AJOUTER</span>')
             meta_line = " · ".join(x for x in (e["kind"], e["source"]) if x)
             rows.append(
-                f'<div class="row{"" if known else " new"}">'
+                f'<div class="row">'
                 f'<div class="date">{html.escape(e["date_txt"])}</div>'
                 f'<div class="main"><div class="t">{html.escape(e["title"])}</div>'
-                f'<div class="meta">{html.escape(meta_line)}</div></div>{tag}</div>')
+                f'<div class="meta">{html.escape(meta_line)}</div></div></div>')
         blocks.append(
             f'<div class="uni"><span class="dot" style="background:{meta["color"]}"></span>'
             f'{meta["label"]} <span class="count">{len(sub)}</span></div>' + "".join(rows))
@@ -392,14 +398,12 @@ def main():
         seen.add(k)
         uniq.append(e)
 
-    existing = load_existing()
-    news = sum(1 for e in uniq if not already_in_site(e, existing))
-    log(f"TOTAL     : {len(uniq)} sortie(s) · {news} à ajouter")
+    log(f"TOTAL     : {len(uniq)} sortie(s) à venir")
 
     page = PAGE.format(
         gen=datetime.datetime.now().strftime("%d/%m/%Y à %H:%M"),
-        total=len(uniq), news=news,
-        body=render(uniq, existing) or "<p>Aucune sortie trouvée.</p>",
+        total=len(uniq),
+        body=render(uniq) or "<p>Aucune sortie trouvée.</p>",
         report=html.escape("\n".join(report)))
     with open("radar.html", "w", encoding="utf-8") as f:
         f.write(page)
