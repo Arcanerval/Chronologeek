@@ -1215,7 +1215,7 @@
    "Réunion de famille, deuxième partie"
   ]
  },
- "__version__": 2,
+ "__version__": 3,
  "A Crash of Fate": {
   "cats": [
    "2019 releases",
@@ -1230,6 +1230,7 @@
    "Star Wars: Galaxy's Edge",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "A Crash of Fate",
   "frOk": false
  },
@@ -1246,16 +1247,19 @@
    "Star Wars Rebels",
    "TikTok usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "A New Legacy: For the Love of the Empire": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "A New Legacy: Rogue's Gambit": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1271,6 +1275,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1291,6 +1296,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Riposte",
   "frOk": true
  },
@@ -1306,6 +1312,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Riposte : Chute de l'Empire",
   "frOk": true
  },
@@ -1322,11 +1329,13 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Age of Rebellion Special: Stolen Valor": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1338,11 +1347,13 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Age of Rebellion Special: The Trial of Dagobah": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1358,6 +1369,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1370,6 +1382,7 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1382,6 +1395,7 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Rébellion : Grand Moff Tarkin 1",
   "frOk": true
  },
@@ -1394,6 +1408,7 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1406,6 +1421,7 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1419,6 +1435,7 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Rébellion : Lando Calrissian 1",
   "frOk": true
  },
@@ -1431,6 +1448,7 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Rébellion : Luke Skywalker 1",
   "frOk": true
  },
@@ -1444,16 +1462,19 @@
    "Real-world media",
    "Star Wars: Age of Rebellion issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Rébellion : Princesse Leia 1",
   "frOk": true
  },
  "Age of Republic Special: 501 Plus One": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Age of Republic Special: Sisters": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1466,6 +1487,7 @@
    "Star Wars: Age of Republic issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1480,6 +1502,7 @@
    "Star Wars: Age of Republic issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1493,6 +1516,7 @@
    "Real-world media",
    "Star Wars: Age of Republic issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1505,6 +1529,7 @@
    "Real-world media",
    "Star Wars: Age of Republic issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1518,6 +1543,7 @@
    "Real-world media",
    "Star Wars: Age of Republic issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1531,6 +1557,7 @@
    "Real-world media",
    "Star Wars: Age of Republic issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1545,6 +1572,7 @@
    "Star Wars: Age of Republic issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1557,6 +1585,7 @@
    "Real-world media",
    "Star Wars: Age of Republic issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -1569,6 +1598,7 @@
    "Real-world media",
    "Star Wars: Age of Republic issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1580,16 +1610,19 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Age of Resistance Special: Robot Resistance": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Age of Resistance Special: The Bridge": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1602,6 +1635,7 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Résistance : Capitaine Phasma 1",
   "frOk": true
  },
@@ -1615,6 +1649,7 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1627,6 +1662,7 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1639,6 +1675,7 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1652,6 +1689,7 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Résistance : Poe Dameron 1",
   "frOk": true
  },
@@ -1666,6 +1704,7 @@
    "Star Wars: Age of Resistance issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1679,8 +1718,9 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
-  "fr": "L'Ère de la Résistance : Rose Tico 1",
-  "frOk": true
+  "byText": "",
+  "fr": "",
+  "frOk": null
  },
  "Age of Resistance: Supreme Leader Snoke": {
   "cats": [
@@ -1691,6 +1731,7 @@
    "Real-world media",
    "Star Wars: Age of Resistance issues"
   ],
+  "byText": "",
   "fr": "L'Ère de la Résistance : Suprême Leader Snoke 1",
   "frOk": true
  },
@@ -1705,6 +1746,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Star Wars: Ahsoka",
   "frOk": false
  },
@@ -1717,6 +1759,7 @@
    "Real-world media",
    "Star Wars: Allegiance issues"
   ],
+  "byText": "comic",
   "fr": "Allégeance 1",
   "frOk": true
  },
@@ -1727,6 +1770,7 @@
    "Canon novel series",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "L'Escadron Alphabet",
   "frOk": true
  },
@@ -1740,11 +1784,13 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Insurgency Rising issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
  "Battle of Jakku: Insurgency Rising 1 - The Rising": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1758,6 +1804,7 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Insurgency Rising issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1771,6 +1818,7 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Insurgency Rising issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1784,11 +1832,13 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Last Stand issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Battle of Jakku: Last Stand 1 - False Histories": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1802,6 +1852,7 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Last Stand issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1815,6 +1866,7 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Last Stand issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1828,11 +1880,13 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Republic Under Siege issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Battle of Jakku: Republic Under Siege 1 - Consolidation": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1846,6 +1900,7 @@
    "Real-world media",
    "Star Wars: Battle of Jakku — Republic Under Siege issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1861,6 +1916,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Battlefront II : L'Escouade Inferno",
   "frOk": true
  },
@@ -1874,6 +1930,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Tobias Beckett",
   "frOk": false
  },
@@ -1889,6 +1946,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Avant le Réveil",
   "frOk": true
  },
@@ -1905,6 +1963,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -1919,6 +1978,7 @@
    "Star Wars: Bounty Hunters issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 1 : Les plus dangereux de la galaxie 1",
   "frOk": true
  },
@@ -1932,6 +1992,7 @@
    "Real-world media",
    "Star Wars: Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 11 : La Grand-Chasse de Malastare",
   "frOk": true
  },
@@ -1946,6 +2007,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 13",
   "frOk": true
  },
@@ -1960,6 +2022,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 14",
   "frOk": true
  },
@@ -1974,6 +2037,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 16",
   "frOk": true
  },
@@ -1988,6 +2052,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 17",
   "frOk": true
  },
@@ -2002,6 +2067,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: Crimson Reign crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 18",
   "frOk": true
  },
@@ -2017,6 +2083,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: Crimson Reign crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 21",
   "frOk": true
  },
@@ -2031,6 +2098,7 @@
    "Real-world media",
    "Star Wars: Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 27",
   "frOk": true
  },
@@ -2046,6 +2114,7 @@
    "Star Wars: Hidden Empire crossover issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Bounty Hunters 29",
   "frOk": true
  },
@@ -2062,6 +2131,7 @@
    "Star Wars: Bounty Hunters issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 35",
   "frOk": true
  },
@@ -2078,6 +2148,7 @@
    "Star Wars: Dark Droids crossover issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 37",
   "frOk": true
  },
@@ -2095,6 +2166,7 @@
    "Star Wars: Dark Droids crossover issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 40",
   "frOk": true
  },
@@ -2110,6 +2182,7 @@
    "Star Wars: Bounty Hunters issues",
    "Star Wars: Dark Droids crossover issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 41",
   "frOk": true
  },
@@ -2127,6 +2200,7 @@
    "Star Wars: Bounty Hunters issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 42",
   "frOk": true
  },
@@ -2140,6 +2214,7 @@
    "Real-world media",
    "Star Wars: Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 7 : Cible : Valance 2",
   "frOk": true
  },
@@ -2153,6 +2228,7 @@
    "Real-world media",
    "Star Wars: Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "Bounty Hunters 8 : Affrontement au Terminus 1",
   "frOk": true
  },
@@ -2171,6 +2247,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Brotherhood",
   "frOk": false
  },
@@ -2183,6 +2260,7 @@
    "Real-world media",
    "Star Wars: Captain Phasma issues"
   ],
+  "byText": "comic",
   "fr": "Capitaine Phasma 1",
   "frOk": true
  },
@@ -2195,6 +2273,7 @@
    "Real-world media",
    "Star Wars: Captain Phasma issues"
   ],
+  "byText": "comic",
   "fr": "Capitaine Phasma 2",
   "frOk": true
  },
@@ -2209,6 +2288,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Catalyseur : A Rogue One Novel",
   "frOk": true
  },
@@ -2224,6 +2304,7 @@
    "True Believers",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -2243,6 +2324,7 @@
    "Twitter usages with the same archivedate value",
    "YouTube usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Crimson Climb",
   "frOk": false
  },
@@ -2256,6 +2338,7 @@
    "Star Wars: Crimson Reign issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Crimson Reign 1",
   "frOk": true
  },
@@ -2269,6 +2352,7 @@
    "Real-world media",
    "Star Wars: Crimson Reign issues"
   ],
+  "byText": "comic",
   "fr": "Crimson Reign 2",
   "frOk": true
  },
@@ -2282,6 +2366,7 @@
    "Real-world media",
    "Star Wars: Crimson Reign issues"
   ],
+  "byText": "comic",
   "fr": "Crimson Reign 3",
   "frOk": true
  },
@@ -2296,6 +2381,7 @@
    "Star Wars: Crimson Reign issues",
    "WebCite usages without work parameter"
   ],
+  "byText": "comic",
   "fr": "Crimson Reign 5",
   "frOk": true
  },
@@ -2316,6 +2402,7 @@
    "WebCite usages with author but no work parameter",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Sombre Apprenti",
   "frOk": true
  },
@@ -2330,6 +2417,7 @@
    "Real-world media",
    "Star Wars: Dark Droids issues"
   ],
+  "byText": "",
   "fr": "Dark Droids 1",
   "frOk": true
  },
@@ -2344,6 +2432,7 @@
    "Real-world media",
    "Star Wars: Dark Droids issues"
   ],
+  "byText": "",
   "fr": "Dark Droids 2",
   "frOk": true
  },
@@ -2359,6 +2448,7 @@
    "Star Wars: Dark Droids issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Dark Droids 3",
   "frOk": true
  },
@@ -2373,6 +2463,7 @@
    "Real-world media",
    "Star Wars: Dark Droids issues"
   ],
+  "byText": "",
   "fr": "Dark Droids 4",
   "frOk": true
  },
@@ -2387,6 +2478,7 @@
    "Real-world media",
    "Star Wars: Dark Droids issues"
   ],
+  "byText": "",
   "fr": "Dark Droids 5",
   "frOk": true
  },
@@ -2401,6 +2493,7 @@
    "Real-world media",
    "Star Wars: Dark Droids: D-Squad issues"
   ],
+  "byText": "",
   "fr": "Dark Droids: D-Squad 1",
   "frOk": true
  },
@@ -2415,11 +2508,13 @@
    "Star Wars: Darth Maul (2017) issues",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Dark Maul 1",
   "frOk": true
  },
  "Darth Maul (2017): Probe Droid Problem": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2435,6 +2530,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2449,6 +2545,7 @@
    "True Believers",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 1: Vador 1",
   "frOk": true
  },
@@ -2462,6 +2559,7 @@
    "Star Wars: Darth Vader (2015) issues",
    "Star Wars: Vader Down crossover issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 13 : Vador Abattu 2",
   "frOk": true
  },
@@ -2475,6 +2573,7 @@
    "Star Wars: Darth Vader (2015) issues",
    "Star Wars: Vader Down crossover issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 14 : Vador Abattu 4",
   "frOk": true
  },
@@ -2488,6 +2587,7 @@
    "Star Wars: Darth Vader (2015) issues",
    "Star Wars: Vader Down crossover issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 15 : Vador Abattu 6",
   "frOk": true
  },
@@ -2500,6 +2600,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 16: La Guerre de Shu-Torun 1",
   "frOk": true
  },
@@ -2512,6 +2613,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 2: Vador 2",
   "frOk": true
  },
@@ -2525,6 +2627,7 @@
    "Star Wars: Darth Vader (2015) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 20: En Bout de Course 1",
   "frOk": true
  },
@@ -2538,6 +2641,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 21: En Bout de Course 2",
   "frOk": true
  },
@@ -2551,6 +2655,7 @@
    "Star Wars: Darth Vader (2015) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 25: En Bout de Course 6",
   "frOk": true
  },
@@ -2563,6 +2668,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 5: Vador 5",
   "frOk": true
  },
@@ -2575,6 +2681,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 6: Vador 6",
   "frOk": true
  },
@@ -2587,6 +2694,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 7: Ombres et Mensonges 1",
   "frOk": true
  },
@@ -2601,6 +2709,7 @@
    "True Believers",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 1 : L'Élu 1",
   "frOk": true
  },
@@ -2613,6 +2722,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2017) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 13 : Mers de Feu 1",
   "frOk": true
  },
@@ -2625,6 +2735,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2017) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 18 : Terrain Dangereux",
   "frOk": true
  },
@@ -2637,6 +2748,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2017) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 23 : La Forteresse de Vador 5",
   "frOk": true
  },
@@ -2649,6 +2761,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2017) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 6 : L'Élu 6",
   "frOk": true
  },
@@ -2662,11 +2775,13 @@
    "Star Wars: Darth Vader (2017) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 7 : Les Ténèbres Étouffent la Lumière 1",
   "frOk": true
  },
  "Darth Vader (2017): No Good Deed": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2682,6 +2797,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Dark Vador 1 : Le cœur sombre des Sith 1",
   "frOk": true
  },
@@ -2696,6 +2812,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Dark Vador 12",
   "frOk": true
  },
@@ -2710,6 +2827,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Dark Vador 13",
   "frOk": true
  },
@@ -2724,6 +2842,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Dark Vador 15",
   "frOk": true
  },
@@ -2737,6 +2856,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 16",
   "frOk": true
  },
@@ -2751,6 +2871,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Dark Vador 17",
   "frOk": true
  },
@@ -2765,6 +2886,7 @@
    "Star Wars: Crimson Reign crossover issues",
    "Star Wars: Darth Vader (2020) issues"
   ],
+  "byText": "",
   "fr": "Dark Vador 18",
   "frOk": true
  },
@@ -2779,6 +2901,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Dark Vador 2 : Le cœur sombre des Sith 2",
   "frOk": true
  },
@@ -2794,6 +2917,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Dark Vador 29",
   "frOk": true
  },
@@ -2810,6 +2934,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Dark Vador 37",
   "frOk": true
  },
@@ -2827,6 +2952,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Dark Vador 40",
   "frOk": true
  },
@@ -2844,6 +2970,7 @@
    "Star Wars: Darth Vader (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Dark Vador 41",
   "frOk": true
  },
@@ -2857,6 +2984,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 42",
   "frOk": true
  },
@@ -2870,6 +2998,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Dark Vador 46",
   "frOk": true
  },
@@ -2884,6 +3013,7 @@
    "Real-world media",
    "Star Wars: Darth Vader (2015) issues"
   ],
+  "byText": "",
   "fr": "Dark Vador Annuel 1",
   "frOk": true
  },
@@ -2898,16 +3028,19 @@
    "Real-world media",
    "Star Wars: Darth Vader (2017) issues"
   ],
+  "byText": "",
   "fr": "Dark Vador Annuel 2",
   "frOk": true
  },
  "Darth Vader: Black, White & Red 1 - Dissolution of Hope": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Darth Vader: Black, White & Red 1 - Hard Shutdown": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2919,11 +3052,13 @@
    "Real-world media",
    "Star Wars: Darth Vader – Black, White & Red issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Darth Vader: Black, White & Red 2 - Power": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2935,6 +3070,7 @@
    "Real-world media",
    "Star Wars: Darth Vader – Black, White & Red issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2946,16 +3082,19 @@
    "Real-world media",
    "Star Wars: Darth Vader – Black, White & Red issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Darth Vader: Black, White & Red 3 - Diplomatic Impunity": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Darth Vader: Black, White & Red 4 - Return of Hoth": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2967,6 +3106,7 @@
    "Real-world media",
    "Star Wars: Darth Vader – Black, White & Red issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -2979,6 +3119,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 1: Aphra 1",
   "frOk": true
  },
@@ -2991,6 +3132,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 14: Hiérarchisation 1",
   "frOk": true
  },
@@ -3003,6 +3145,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 32: L'effroyable super-arme rebelle 1",
   "frOk": true
  },
@@ -3015,6 +3158,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 37: La fin d'une vaurienne 1",
   "frOk": true
  },
@@ -3028,6 +3172,7 @@
    "Star Wars: Doctor Aphra (2016) issues",
    "Star Wars: The Screaming Citadel crossover issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 7 : La Citadelle Hurlante 3",
   "frOk": true
  },
@@ -3041,6 +3186,7 @@
    "Star Wars: Doctor Aphra (2016) issues",
    "Star Wars: The Screaming Citadel crossover issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 8 : La Citadelle Hurlante 5",
   "frOk": true
  },
@@ -3053,6 +3199,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 9: L'Énorme Magot 1",
   "frOk": true
  },
@@ -3067,6 +3214,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Docteur Aphra 1 : Destin et fortune 1",
   "frOk": true
  },
@@ -3081,6 +3229,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 11",
   "frOk": true
  },
@@ -3096,6 +3245,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 12",
   "frOk": true
  },
@@ -3110,6 +3260,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 13",
   "frOk": true
  },
@@ -3124,6 +3275,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 14",
   "frOk": true
  },
@@ -3138,6 +3290,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: War of the Bounty Hunters crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 15",
   "frOk": true
  },
@@ -3152,6 +3305,7 @@
    "Star Wars: Crimson Reign crossover issues",
    "Star Wars: Doctor Aphra (2020) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 16",
   "frOk": true
  },
@@ -3167,6 +3321,7 @@
    "Star Wars: Crimson Reign crossover issues",
    "Star Wars: Doctor Aphra (2020) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 19",
   "frOk": true
  },
@@ -3181,6 +3336,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2020) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 22",
   "frOk": true
  },
@@ -3196,6 +3352,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: Hidden Empire crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 28",
   "frOk": true
  },
@@ -3211,6 +3368,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Star Wars: Hidden Empire crossover issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 30",
   "frOk": true
  },
@@ -3226,6 +3384,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 32",
   "frOk": true
  },
@@ -3241,6 +3400,7 @@
    "Star Wars: Dark Droids crossover issues",
    "Star Wars: Doctor Aphra (2020) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 35",
   "frOk": true
  },
@@ -3258,6 +3418,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 38",
   "frOk": true
  },
@@ -3274,6 +3435,7 @@
    "Star Wars: Doctor Aphra (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Docteur Aphra 40",
   "frOk": true
  },
@@ -3288,6 +3450,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra Annuel 1",
   "frOk": true
  },
@@ -3302,6 +3465,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra Annuel 2",
   "frOk": true
  },
@@ -3317,6 +3481,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra (2016) issues"
   ],
+  "byText": "",
   "fr": "Docteur Aphra Annuel 3",
   "frOk": true
  },
@@ -3331,6 +3496,7 @@
    "Real-world media",
    "Star Wars: Doctor Aphra – Chaos Agent issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3347,21 +3513,25 @@
    "Real-world media",
    "WebCite usages with author but no work parameter"
   ],
+  "byText": "audio",
   "fr": "Dooku : Jedi égaré",
   "frOk": false
  },
  "Empire Ascendant: An Echo of Victory": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Empire Ascendant: Epilogue": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Empire Ascendant: In Service of the Empire": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3376,6 +3546,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3391,6 +3562,7 @@
    "Star Wars: Ewoks (1985) issues",
    "True Believers"
   ],
+  "byText": "",
   "fr": "Ewoks 1",
   "frOk": true
  },
@@ -3407,6 +3579,7 @@
    "Real-world media",
    "Star Wars genre initiative"
   ],
+  "byText": "",
   "fr": "Eyes Like Stars",
   "frOk": true
  },
@@ -3421,6 +3594,7 @@
    "Real-world media",
    "Star Wars Rebels young-reader novels"
   ],
+  "byText": "",
   "fr": "Les Aventures d'Ezra",
   "frOk": false
  },
@@ -3438,6 +3612,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Le Collectionneur",
   "frOk": true
  },
@@ -3452,6 +3627,7 @@
    "Star Wars: The High Republic one-shot comics",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3465,6 +3641,7 @@
    "Real-world media",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Free Comic Book Day 2024: Star Wars 1",
   "frOk": true
  },
@@ -3478,11 +3655,13 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Free Comic Book Day 2025: Star Wars 1",
   "frOk": false
  },
  "Free Comic Book Day 2026": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3495,6 +3674,7 @@
    "Real-world media",
    "Star Wars: Galaxy's Edge issues"
   ],
+  "byText": "comic",
   "fr": "Galaxy's Edge 1",
   "frOk": true
  },
@@ -3513,6 +3693,7 @@
    "Star Wars: Galaxy's Edge",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Galaxy's Edge: Black Spire",
   "frOk": true
  },
@@ -3525,8 +3706,9 @@
    "Real-world media",
    "Star Wars: Galaxy's Edge – Echoes of the Empire issues"
   ],
-  "fr": "Galaxy's Edge – Echoes of the Empire 1",
-  "frOk": false
+  "byText": "",
+  "fr": "",
+  "frOk": null
  },
  "Guardians of the Whills": {
   "cats": [
@@ -3544,6 +3726,7 @@
    "Real-world media",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "A Rogue One Story : Gardiens des Whills",
   "frOk": true
  },
@@ -3557,6 +3740,7 @@
    "Real-world media",
    "Star Wars: Halcyon Legacy issues"
   ],
+  "byText": "comic",
   "fr": "Halcyon Legacy 1",
   "frOk": true
  },
@@ -3569,6 +3753,7 @@
    "Real-world media",
    "Star Wars: Han Solo issues"
   ],
+  "byText": "comic",
   "fr": "Han Solo 1",
   "frOk": true
  },
@@ -3582,6 +3767,7 @@
    "Real-world media",
    "Star Wars: Han Solo - Hunt for the Falcon issues"
   ],
+  "byText": "",
   "fr": "Han Solo - Hunt for the Falcon 1",
   "frOk": true
  },
@@ -3595,6 +3781,7 @@
    "Real-world media",
    "Star Wars: Han Solo - Imperial Cadet issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3612,6 +3799,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "L'Héritier des Jedi",
   "frOk": true
  },
@@ -3625,6 +3813,7 @@
    "Real-world media",
    "Star Wars: Hidden Empire issues"
   ],
+  "byText": "comic",
   "fr": "Hidden Empire 1",
   "frOk": true
  },
@@ -3638,6 +3827,7 @@
    "Real-world media",
    "Star Wars: Hidden Empire issues"
   ],
+  "byText": "comic",
   "fr": "Hidden Empire 2",
   "frOk": true
  },
@@ -3651,6 +3841,7 @@
    "Real-world media",
    "Star Wars: Hidden Empire issues"
   ],
+  "byText": "comic",
   "fr": "Hidden Empire 4",
   "frOk": true
  },
@@ -3664,6 +3855,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories issues"
   ],
+  "byText": "comic",
   "fr": "Histoires de l'hyperespace 1",
   "frOk": true
  },
@@ -3679,6 +3871,7 @@
    "Star Wars: Hyperspace Stories issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Histoires de l'hyperespace 10",
   "frOk": true
  },
@@ -3692,6 +3885,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories issues"
   ],
+  "byText": "comic",
   "fr": "Histoires de l'hyperespace 11",
   "frOk": true
  },
@@ -3706,6 +3900,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories issues"
   ],
+  "byText": "",
   "fr": "Histoires de l'hyperespace 12",
   "frOk": true
  },
@@ -3719,6 +3914,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories issues"
   ],
+  "byText": "comic",
   "fr": "Histoires de l'hyperespace 2",
   "frOk": true
  },
@@ -3734,6 +3930,7 @@
    "Star Wars: Hyperspace Stories issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Histoires de l'hyperespace 4",
   "frOk": true
  },
@@ -3747,6 +3944,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories issues"
   ],
+  "byText": "comic",
   "fr": "Histoires de l'hyperespace 5",
   "frOk": true
  },
@@ -3762,6 +3960,7 @@
    "Star Wars: Hyperspace Stories issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Histoires de l'hyperespace 7",
   "frOk": true
  },
@@ -3777,6 +3976,7 @@
    "Star Wars: Hyperspace Stories issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Histoires de l'hyperespace 8",
   "frOk": true
  },
@@ -3792,6 +3992,7 @@
    "Star Wars: Hyperspace Stories issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Histoires de l'hyperespace 9",
   "frOk": true
  },
@@ -3805,6 +4006,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories—Codebreaker issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3822,6 +4024,7 @@
    "Star Wars: Hyperspace Stories graphic novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Histoires de l'hyperespace : Grievous",
   "frOk": true
  },
@@ -3836,6 +4039,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories graphic novels"
   ],
+  "byText": "",
   "fr": "Histoires de l'hyperespace : Qui-Gon",
   "frOk": true
  },
@@ -3851,6 +4055,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories: The Bad Batch—Ghost Agents issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3865,6 +4070,7 @@
    "Real-world media",
    "Star Wars: Hyperspace Stories: The Bad Batch—Rogue Agents issues"
   ],
+  "byText": "",
   "fr": "Hyperspace Stories: The Bad Batch—Rogue Agents 1",
   "frOk": false
  },
@@ -3887,6 +4093,7 @@
    "Twitter usages with the same archivedate value",
    "YouTube usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Inquisitorius : L'Éveil de la lame rouge",
   "frOk": true
  },
@@ -3900,6 +4107,7 @@
    "Real-world media",
    "Star Wars: Inquisitors issues"
   ],
+  "byText": "comic",
   "fr": "Inquisitors 1",
   "frOk": true
  },
@@ -3915,6 +4123,7 @@
    "Star Wars: Jango Fett issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Jango Fett 1",
   "frOk": true
  },
@@ -3930,6 +4139,7 @@
    "Star Wars: Jango Fett issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Jango Fett 2",
   "frOk": true
  },
@@ -3947,8 +4157,9 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
-  "fr": "Jar Jar Binks",
-  "frOk": false
+  "byText": "",
+  "fr": "",
+  "frOk": null
  },
  "Jedi Fallen Order: Dark Temple 1": {
   "cats": [
@@ -3959,8 +4170,9 @@
    "Real-world media",
    "Star Wars: Jedi Fallen Order - Dark Temple issues"
   ],
-  "fr": "Jedi: Fallen Order – Dark Temple 1",
-  "frOk": true
+  "byText": "",
+  "fr": "",
+  "frOk": null
  },
  "Jedi of the Republic: Mace Windu 1": {
   "cats": [
@@ -3971,6 +4183,7 @@
    "Real-world media",
    "Star Wars: Jedi of the Republic – Mace Windu issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -3986,6 +4199,7 @@
    "Real-world media",
    "Star Wars: Join the Resistance books"
   ],
+  "byText": "roman",
   "fr": "Rejoins la Résistance 3",
   "frOk": false
  },
@@ -4001,6 +4215,7 @@
    "Real-world media",
    "Star Wars: Join the Resistance books"
   ],
+  "byText": "roman",
   "fr": "",
   "frOk": null
  },
@@ -4017,6 +4232,7 @@
    "Star Wars: Join the Resistance books",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "roman",
   "fr": "",
   "frOk": null
  },
@@ -4030,6 +4246,7 @@
    "Star Wars: Kanan issues",
    "True Believers"
   ],
+  "byText": "comic",
   "fr": "Kanan 1 : Le dernier Padawan 1",
   "frOk": true
  },
@@ -4042,6 +4259,7 @@
    "Real-world media",
    "Star Wars: Kanan issues"
   ],
+  "byText": "comic",
   "fr": "Kanan 7 : Premier Sang 1",
   "frOk": true
  },
@@ -4056,6 +4274,7 @@
    "True Believers",
    "WebCite usages without work parameter"
   ],
+  "byText": "comic",
   "fr": "Lando 1",
   "frOk": true
  },
@@ -4070,6 +4289,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Le Globe du Solstice",
   "frOk": false
  },
@@ -4082,6 +4302,7 @@
    "Real-world media",
    "Star Wars: Lando - Double or Nothing issues"
   ],
+  "byText": "comic",
   "fr": "Lando : Quitte ou double 1",
   "frOk": true
  },
@@ -4100,6 +4321,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Baroud d'honneur",
   "frOk": true
  },
@@ -4113,6 +4335,7 @@
    "Real-world media",
    "Star Wars: Legacy of Vader issues"
   ],
+  "byText": "comic",
   "fr": "L'héritage de Vador 1",
   "frOk": true
  },
@@ -4133,6 +4356,7 @@
    "Twitter usages with the same archivedate value",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "Leia : Princesse d'Alderaan",
   "frOk": true
  },
@@ -4147,6 +4371,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Les Seigneurs des Sith",
   "frOk": true
  },
@@ -4165,6 +4390,7 @@
    "WebCite usages with author but no work parameter",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Étoiles Perdues",
   "frOk": true
  },
@@ -4178,6 +4404,7 @@
    "Real-world media",
    "WebCite usages with author but no work parameter"
   ],
+  "byText": "",
   "fr": "Mace Windu",
   "frOk": false
  },
@@ -4195,6 +4422,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Mace Windu : L'Abîme de cristal",
   "frOk": true
  },
@@ -4212,6 +4440,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Maître et Apprenti",
   "frOk": true
  },
@@ -4229,6 +4458,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Maître du mal",
   "frOk": true
  },
@@ -4242,6 +4472,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Morts ou vifs",
   "frOk": true
  },
@@ -4257,6 +4488,7 @@
    "Real-world media",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Cible mouvante",
   "frOk": true
  },
@@ -4270,6 +4502,7 @@
    "Real-world media",
    "Star Wars: Obi-Wan issues"
   ],
+  "byText": "comic",
   "fr": "Obi-Wan 1",
   "frOk": true
  },
@@ -4282,6 +4515,7 @@
    "Real-world media",
    "Star Wars: Obi-Wan and Anakin issues"
   ],
+  "byText": "comic",
   "fr": "Obi-Wan & Anakin 1",
   "frOk": true
  },
@@ -4299,6 +4533,7 @@
    "Real-world media",
    "Threads usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Padawan",
   "frOk": false
  },
@@ -4320,6 +4555,7 @@
    "WebCite usages without work parameter",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "Phasma",
   "frOk": false
  },
@@ -4337,6 +4573,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Le Prix de la Liberté",
   "frOk": false
  },
@@ -4350,6 +4587,7 @@
    "Star Wars: Poe Dameron issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Poe Dameron 1 : L'Escadron Black 1",
   "frOk": true
  },
@@ -4363,6 +4601,7 @@
    "Real-world media",
    "Star Wars: Poe Dameron issues"
   ],
+  "byText": "",
   "fr": "Poe Dameron 20 : La Légende Retrouvée 1",
   "frOk": true
  },
@@ -4376,6 +4615,7 @@
    "Real-world media",
    "Star Wars: Poe Dameron issues"
   ],
+  "byText": "",
   "fr": "Poe Dameron 26 : Le Réveil 1",
   "frOk": true
  },
@@ -4388,6 +4628,7 @@
    "Real-world media",
    "Star Wars: Poe Dameron issues"
   ],
+  "byText": "comic",
   "fr": "Poe Dameron 7 : Avis de Tempête",
   "frOk": true
  },
@@ -4403,6 +4644,7 @@
    "Real-world media",
    "Star Wars: Poe Dameron issues"
   ],
+  "byText": "",
   "fr": "Poe Dameron Annuel 1",
   "frOk": true
  },
@@ -4416,6 +4658,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Poe Dameron : Chute libre",
   "frOk": true
  },
@@ -4432,6 +4675,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "comic",
   "fr": "Princesse Leia 1",
   "frOk": true
  },
@@ -4444,6 +4688,7 @@
    "Real-world media",
    "Star Wars: Princess Leia issues"
   ],
+  "byText": "comic",
   "fr": "Princesse Leia 2",
   "frOk": true
  },
@@ -4462,6 +4707,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "L'Espoir de la reine",
   "frOk": true
  },
@@ -4478,6 +4724,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Le Péril de la reine",
   "frOk": true
  },
@@ -4494,6 +4741,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "L'Ombre de la reine",
   "frOk": true
  },
@@ -4510,6 +4758,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Soulèvement Rebelle",
   "frOk": true
  },
@@ -4531,6 +4780,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Le Règne de l'Empire : Le Masque de la peur",
   "frOk": true
  },
@@ -4546,32 +4796,19 @@
    "Real-world media",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Renaissance",
   "frOk": true
  },
  "Return of the Jedi: Ewoks": {
-  "cats": [
-   "2023 releases",
-   "Canon media",
-   "Incomplete Appearances",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media",
-   "Star Wars: Return of the Jedi one-shots"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Return of the Jedi: Jabba's Palace": {
-  "cats": [
-   "2023 releases",
-   "Canon media",
-   "Incomplete Appearances",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media",
-   "Star Wars: Return of the Jedi one-shots"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4585,6 +4822,7 @@
    "Real-world media",
    "Star Wars: Return of the Jedi one-shots"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4598,8 +4836,9 @@
    "Real-world media",
    "Star Wars: Return of the Jedi one-shots"
   ],
-  "fr": "Le Retour du Jedi : Max Rebo 1",
-  "frOk": true
+  "byText": "",
+  "fr": "",
+  "frOk": null
  },
  "Return of the Jedi: The Empire": {
   "cats": [
@@ -4611,69 +4850,61 @@
    "Real-world media",
    "Star Wars: Return of the Jedi one-shots"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Return of the Jedi: The Rebellion": {
-  "cats": [
-   "2023 releases",
-   "Canon media",
-   "Comics that need plot summary",
-   "Incomplete Appearances",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media",
-   "Star Wars: Return of the Jedi one-shots"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2022)": {
-  "cats": [
-   "2022 releases",
-   "Canon media",
-   "Canon one-shot comics",
-   "Incomplete Appearances",
-   "Marvel Comics one-shot comics",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "Revelations 1 (2022)",
   "frOk": true
  },
  "Revelations (2023): A Trick of the Mind": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2023): All the Republic": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2023): Duel of the Reprobates": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2023): Showdown at Ocean's Deep": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2023): Stolen Hope": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2023): Tall Tales": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2023): Tool of the Empire": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4688,6 +4919,7 @@
    "Real-world media",
    "Star Wars: Rogue One one-shots"
   ],
+  "byText": "",
   "fr": "Rogue One – Saw Gerrera 1",
   "frOk": false
  },
@@ -4703,6 +4935,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4716,6 +4949,7 @@
    "Star Wars: Rogue One one-shots",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Rogue One – Cassian Andor 1",
   "frOk": false
  },
@@ -4730,6 +4964,7 @@
    "Star Wars: Rogue One one-shots",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Rogue One – Jyn Erso 1",
   "frOk": false
  },
@@ -4744,6 +4979,7 @@
    "Real-world media",
    "Star Wars: Sana Starros issues"
   ],
+  "byText": "",
   "fr": "Sana Starros 1",
   "frOk": true
  },
@@ -4762,6 +4998,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Sanctuary",
   "frOk": true
  },
@@ -4776,6 +5013,7 @@
    "Real-world media",
    "Star Wars Rebels: Servants of the Empire books"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4792,6 +5030,7 @@
    "Real-world media",
    "Star Wars Rebels: Servants of the Empire books"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4806,6 +5045,7 @@
    "Real-world media",
    "Star Wars Rebels: Servants of the Empire books"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -4822,6 +5062,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Où l'ombre s'abat",
   "frOk": true
  },
@@ -4835,6 +5076,7 @@
    "Real-world media",
    "Star Wars: Shadow of Maul issues"
   ],
+  "byText": "comic",
   "fr": "Shadow of Maul 1",
   "frOk": true
  },
@@ -4852,6 +5094,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "L'Ombre des Sith",
   "frOk": true
  },
@@ -4865,6 +5108,7 @@
    "Star Wars: Shattered Empire issues",
    "True Believers"
   ],
+  "byText": "comic",
   "fr": "Les Ruines de l'Empire 1",
   "frOk": true
  },
@@ -4877,6 +5121,7 @@
    "Real-world media",
    "Star Wars: Shattered Empire issues"
   ],
+  "byText": "comic",
   "fr": "Les Ruines de l'Empire 2",
   "frOk": true
  },
@@ -4889,6 +5134,7 @@
    "Real-world media",
    "Star Wars: Shattered Empire issues"
   ],
+  "byText": "comic",
   "fr": "Les Ruines de l'Empire 3",
   "frOk": true
  },
@@ -4901,6 +5147,7 @@
    "Real-world media",
    "Star Wars: Shattered Empire issues"
   ],
+  "byText": "comic",
   "fr": "Les Ruines de l'Empire 4",
   "frOk": true
  },
@@ -4918,6 +5165,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "La Cavale du contrebandier",
   "frOk": true
  },
@@ -4935,6 +5183,7 @@
    "Real-world media",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "Spark of the Resistance",
   "frOk": false
  },
@@ -4950,6 +5199,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "comic",
   "fr": "Star Wars 1: Skywalker passe à l'Attaque 1",
   "frOk": true
  },
@@ -4963,6 +5213,7 @@
    "Star Wars: Vader Down crossover issues",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 13 : Vador Abattu 3",
   "frOk": true
  },
@@ -4976,6 +5227,7 @@
    "Star Wars: Vader Down crossover issues",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 14 : Vador Abattu 5",
   "frOk": true
  },
@@ -4988,6 +5240,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 15: Extrait du Journal du vieux Ben Kenobi",
   "frOk": true
  },
@@ -5000,6 +5253,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 16: Prison Rebelle 1",
   "frOk": true
  },
@@ -5012,6 +5266,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 20: Extrait du Journal du vieux Ben Kenobi",
   "frOk": true
  },
@@ -5025,6 +5280,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "",
   "fr": "Star Wars 21: Le Dernier Vol du Harbinger 1",
   "frOk": true
  },
@@ -5038,6 +5294,7 @@
    "Star Wars: The Screaming Citadel crossover issues",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 31 : La Citadelle Hurlante 2",
   "frOk": true
  },
@@ -5051,6 +5308,7 @@
    "Star Wars: The Screaming Citadel crossover issues",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 32 : La Citadelle Hurlante 4",
   "frOk": true
  },
@@ -5063,6 +5321,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 33: Des Rebelles Naufragés",
   "frOk": true
  },
@@ -5075,6 +5334,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 37: Fierté Impériale",
   "frOk": true
  },
@@ -5087,6 +5347,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 38: Les Cendres de Jedha 1",
   "frOk": true
  },
@@ -5099,6 +5360,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 4: Skywalker passe à l'Attaque 4",
   "frOk": true
  },
@@ -5111,6 +5373,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 44: Mutinerie sur Mon Cala 1",
   "frOk": true
  },
@@ -5123,6 +5386,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 5: Skywalker passe à l'Attaque 5",
   "frOk": true
  },
@@ -5135,6 +5399,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 50: La Mort de l'Espoir 1",
   "frOk": true
  },
@@ -5147,6 +5412,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 6: Skywalker passe à l'Attaque 6",
   "frOk": true
  },
@@ -5159,6 +5425,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 68: Rebelles et renégats 1",
   "frOk": true
  },
@@ -5171,6 +5438,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 7: Le dernier de ses semblables",
   "frOk": true
  },
@@ -5183,6 +5451,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 1 : La Voie du destin 1",
   "frOk": true
  },
@@ -5199,6 +5468,7 @@
    "Twitch usages with the same archivedate value",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Star Wars 13 (2020)",
   "frOk": true
  },
@@ -5212,6 +5482,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 14 (2020)",
   "frOk": true
  },
@@ -5226,6 +5497,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 15 (2020)",
   "frOk": true
  },
@@ -5240,6 +5512,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 16 (2020)",
   "frOk": true
  },
@@ -5253,6 +5526,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 17 (2020)",
   "frOk": true
  },
@@ -5266,6 +5540,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 18 (2020)",
   "frOk": true
  },
@@ -5279,6 +5554,7 @@
    "Star Wars: Crimson Reign crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 19 (2020)",
   "frOk": true
  },
@@ -5293,6 +5569,7 @@
    "Star Wars: Crimson Reign crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 21 (2020)",
   "frOk": true
  },
@@ -5308,6 +5585,7 @@
    "Star Wars (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Star Wars 22 (2020)",
   "frOk": true
  },
@@ -5321,6 +5599,7 @@
    "Star Wars (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Star Wars 25 (2020)",
   "frOk": true
  },
@@ -5334,6 +5613,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 26 (2020)",
   "frOk": true
  },
@@ -5347,6 +5627,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 29 (2020)",
   "frOk": true
  },
@@ -5361,6 +5642,7 @@
    "Star Wars (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Star Wars 3 : La Voie du destin 3",
   "frOk": true
  },
@@ -5374,6 +5656,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 34 (2020)",
   "frOk": true
  },
@@ -5387,6 +5670,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 36 (2020)",
   "frOk": true
  },
@@ -5402,6 +5686,7 @@
    "Star Wars (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Star Wars 37 (2020)",
   "frOk": true
  },
@@ -5416,6 +5701,7 @@
    "Star Wars: Dark Droids crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 38 (2020)",
   "frOk": true
  },
@@ -5430,6 +5716,7 @@
    "Star Wars: Dark Droids crossover issues",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 40 (2020)",
   "frOk": true
  },
@@ -5446,6 +5733,7 @@
    "Star Wars (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Star Wars 41 (2020)",
   "frOk": true
  },
@@ -5459,6 +5747,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 42 (2020)",
   "frOk": true
  },
@@ -5475,6 +5764,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with author but no work parameter"
   ],
+  "byText": "comic",
   "fr": "Star Wars 45 (2020)",
   "frOk": true
  },
@@ -5490,6 +5780,7 @@
    "Star Wars (2020) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Star Wars 50 (2020)",
   "frOk": true
  },
@@ -5505,6 +5796,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "comic",
   "fr": "Star Wars 7 : Le testament de Tarkin 1",
   "frOk": true
  },
@@ -5517,6 +5809,7 @@
    "Real-world media",
    "Star Wars (2020) issues"
   ],
+  "byText": "comic",
   "fr": "Star Wars 9 : Opération Flambeau 1",
   "frOk": true
  },
@@ -5531,6 +5824,7 @@
    "Star Wars (2025) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "Star Wars 1 (2025)",
   "frOk": true
  },
@@ -5544,6 +5838,7 @@
    "Star Wars Adventures (2017) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "Star Wars Aventures 25",
   "frOk": false
  },
@@ -5556,6 +5851,7 @@
    "Star Wars Adventures (2020) issues",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 1 (2020)",
   "frOk": false
  },
@@ -5568,6 +5864,7 @@
    "Star Wars Adventures (2020) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 12 (2020)",
   "frOk": false
  },
@@ -5579,6 +5876,7 @@
    "Real-world media",
    "Star Wars Adventures (2020) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 13 (2020)",
   "frOk": false
  },
@@ -5590,6 +5888,7 @@
    "Real-world media",
    "Star Wars Adventures (2020) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 3 (2020)",
   "frOk": false
  },
@@ -5601,6 +5900,7 @@
    "Real-world media",
    "Star Wars Adventures (2020) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 4 (2020)",
   "frOk": true
  },
@@ -5612,6 +5912,7 @@
    "Real-world media",
    "Star Wars Adventures (2020) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 5 (2020)",
   "frOk": false
  },
@@ -5623,6 +5924,7 @@
    "Real-world media",
    "Star Wars Adventures (2020) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 6 (2020)",
   "frOk": false
  },
@@ -5634,6 +5936,7 @@
    "Real-world media",
    "Star Wars Adventures (2020) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures 7 (2020)",
   "frOk": false
  },
@@ -5648,6 +5951,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures Free Comic Book Day 2019",
   "frOk": true
  },
@@ -5660,6 +5964,7 @@
    "Real-world media",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures: Destroyer Down 3",
   "frOk": false
  },
@@ -5672,6 +5977,7 @@
    "Real-world media",
    "Star Wars Adventures: Destroyer Down issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -5687,6 +5993,7 @@
    "Real-world media",
    "Star Wars Adventures (2017) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Aventures: Flight of the Falcon",
   "frOk": true
  },
@@ -5700,6 +6007,7 @@
    "Real-world media",
    "Star Wars Adventures: Ghosts of Vader's Castle issues"
   ],
+  "byText": "",
   "fr": "Ghosts of Vader's Castle 1",
   "frOk": true
  },
@@ -5713,6 +6021,7 @@
    "Real-world media",
    "Star Wars Adventures: Return to Vader's Castle issues"
   ],
+  "byText": "",
   "fr": "Return to Vader's Castle 1: Beware the Horned Devil!",
   "frOk": true
  },
@@ -5728,6 +6037,7 @@
    "Real-world media",
    "Vader's Castle series"
   ],
+  "byText": "",
   "fr": "Shadow of Vader's Castle 1",
   "frOk": true
  },
@@ -5741,8 +6051,9 @@
    "Star Wars Adventures: Tales from Vader's Castle issues",
    "Twitter usages with the same archivedate value"
   ],
-  "fr": "",
-  "frOk": null
+  "byText": "comic",
+  "fr": "Star Wars Adventures: Tales from Vader's Castle",
+  "frOk": true
  },
  "Star Wars Adventures: Tales from Vader's Castle 4": {
   "cats": [
@@ -5754,6 +6065,7 @@
    "Real-world media",
    "Star Wars Adventures: Tales from Vader's Castle issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -5769,6 +6081,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "The Clone Wars – Battle Tales 1",
   "frOk": false
  },
@@ -5785,6 +6098,7 @@
    "Star Wars (2015) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Star Wars Annuel 1",
   "frOk": true
  },
@@ -5800,6 +6114,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Annuel 2",
   "frOk": true
  },
@@ -5815,6 +6130,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Annuel 3",
   "frOk": true
  },
@@ -5830,6 +6146,7 @@
    "Real-world media",
    "Star Wars (2015) issues"
   ],
+  "byText": "",
   "fr": "Star Wars Annuel 4",
   "frOk": true
  },
@@ -5849,6 +6166,7 @@
    "Star Wars Jedi",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Jedi: Battle Scars",
   "frOk": true
  },
@@ -5865,211 +6183,253 @@
    "PenguinRandomHouse usages with the same archivedate value",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Outlaws: Low Red Moon",
   "frOk": true
  },
  "Star Wars Rebels Magazine: A Day's Duty": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: A Time to Survive": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: A Trooper's Worth": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: A Youth Unpromising": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Academy Cadets": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Always Bet on Chop": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Assessment": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Becoming Hunted": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Crossing the Line": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Divide and Conquer": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Escaping the Scrap Pile": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Eyes on the Prize": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Ezra's Vision": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Fifth and Final": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Final Round": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Ice Breaking": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Kallu's Hunt": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Learning Patience": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Never Far Behind": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: No Sympathy": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Ocean Rescue": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Off the Rails": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Puffer Problems": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Return of the Slavers": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Ring Race": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Sabotaged Supplies": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Secrets of Sienar": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Senate Perspective": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Sons of the Sky": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Ballad of 264": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Beast Within": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Fake Jedi": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Gangsters of Galzez": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Line of Duty": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Second Chance": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Size of the Fight": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Thune Cargo": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Wrong Crowd": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: To Thy Metal Heart Be True": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Too Late to Change": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: Vulnerable Areas": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6084,6 +6444,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6097,6 +6458,7 @@
    "Real-world media",
    "Star Wars: TIE Fighter issues"
   ],
+  "byText": "",
   "fr": "TIE Fighter 1",
   "frOk": true
  },
@@ -6110,6 +6472,7 @@
    "Real-world media",
    "Star Wars: TIE Fighter issues"
   ],
+  "byText": "",
   "fr": "TIE Fighter 5",
   "frOk": true
  },
@@ -6120,6 +6483,7 @@
    "Dark Horse Comics comic miniseries",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Tales From the Nightlands 1",
   "frOk": true
  },
@@ -6132,6 +6496,7 @@
    "Real-world media",
    "Star Wars: Target Vader issues"
   ],
+  "byText": "comic",
   "fr": "Cible – Vador 1",
   "frOk": true
  },
@@ -6147,20 +6512,13 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Wilhuff Tarkin",
   "frOk": false
  },
  "The Acolyte: Kelnacca": {
-  "cats": [
-   "2024 releases",
-   "Canon media",
-   "Canon one-shot comics",
-   "Incomplete Appearances",
-   "Marvel Comics one-shot comics",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "The Acolyte – Kelnacca 1",
   "frOk": false
  },
@@ -6178,6 +6536,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "The Acolyte: The Crystal Crown",
   "frOk": false
  },
@@ -6192,6 +6551,7 @@
    "Star Wars: The High Republic (2021) issues",
    "WebCite usages with author but no work parameter"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6204,6 +6564,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6217,6 +6578,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6230,6 +6592,7 @@
    "Star Wars: The High Republic (2021) issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6242,6 +6605,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6255,6 +6619,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6268,6 +6633,7 @@
    "Star Wars: The High Republic (2021) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6280,6 +6646,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6294,6 +6661,7 @@
    "Star Wars: The High Republic (2022) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6308,6 +6676,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2022) issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6321,11 +6690,13 @@
    "Real-world media",
    "Star Wars: The High Republic (2022) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
  "The High Republic (2022): Peace and Unity": {
   "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6339,6 +6710,7 @@
    "Real-world media",
    "Star Wars: The High Republic (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6355,6 +6727,7 @@
    "WebCite solicitation listings",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6367,6 +6740,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6379,6 +6753,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6395,6 +6770,7 @@
    "Star Wars: The High Republic Adventures (2021) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6408,6 +6784,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6421,6 +6798,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6435,6 +6813,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2021) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6448,6 +6827,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2022) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6461,6 +6841,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2022) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6476,6 +6857,7 @@
    "Star Wars: The High Republic Adventures (2023) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6489,6 +6871,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6501,6 +6884,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6514,6 +6898,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6526,6 +6911,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6538,6 +6924,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6550,6 +6937,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6565,6 +6953,7 @@
    "Star Wars: The High Republic Adventures (2023) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6578,6 +6967,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures (2023) issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6593,6 +6983,7 @@
    "Star Wars: The High Republic Adventures (2023) issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6609,6 +7000,7 @@
    "Star Wars: The High Republic one-shot comics",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6625,6 +7017,7 @@
    "Star Wars: The High Republic one-shot comics",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6640,6 +7033,7 @@
    "Star Wars: The High Republic Adventures (2023) issues",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "The High Republic Adventures Annual 2025",
   "frOk": true
  },
@@ -6653,6 +7047,7 @@
    "Real-world media",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6669,6 +7064,7 @@
    "Star Wars: The High Republic one-shot comics",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6684,6 +7080,7 @@
    "Star Wars: The High Republic Adventures – Echoes of Fear issues",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "comic",
   "fr": "La Haute République : Les Aventures : Les Échos de la peur 1",
   "frOk": true
  },
@@ -6697,6 +7094,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures – Saber for Hire issues"
   ],
+  "byText": "comic",
   "fr": "La Haute République : Les Aventures : Sabre à louer 1",
   "frOk": true
  },
@@ -6710,6 +7108,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures – The Nameless Terror issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6724,6 +7123,7 @@
    "Real-world media",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "The High Republic Adventures: Crash Landing",
   "frOk": true
  },
@@ -6738,6 +7138,7 @@
    "Real-world media",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "The High Republic Adventures: Crash and Burn",
   "frOk": true
  },
@@ -6751,6 +7152,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures – Dispatches from the Occlusion Zone issues"
   ],
+  "byText": "comic",
   "fr": "La Haute République : Les Aventures : Messages de la Zone d'Occlusion 1",
   "frOk": true
  },
@@ -6764,6 +7166,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures – Dispatches from the Occlusion Zone issues"
   ],
+  "byText": "comic",
   "fr": "La Haute République : Les Aventures : Messages de la Zone d'Occlusion 3",
   "frOk": true
  },
@@ -6779,6 +7182,7 @@
    "Real-world media",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6793,6 +7197,7 @@
    "Real-world media",
    "The High Republic Adventures – Pathfinders issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -6807,6 +7212,7 @@
    "Real-world media",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "La Haute République : Les Aventures : La Quête des Jedi",
   "frOk": true
  },
@@ -6820,6 +7226,7 @@
    "Real-world media",
    "Star Wars: The High Republic Adventures — The Monster of Temple Peak issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6835,6 +7242,7 @@
    "Star Wars: The High Republic junior novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Une épreuve de courage",
   "frOk": true
  },
@@ -6850,6 +7258,7 @@
    "Real-world media",
    "Star Wars: The High Republic junior novels"
   ],
+  "byText": "",
   "fr": "The High Republic: A Valiant Vow",
   "frOk": false
  },
@@ -6867,6 +7276,7 @@
    "Star Wars: The High Republic junior novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Gare aux Sans-noms",
   "frOk": true
  },
@@ -6884,6 +7294,7 @@
    "Star Wars: The High Republic adult novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Cataclysme",
   "frOk": true
  },
@@ -6900,6 +7311,7 @@
    "Star Wars: The High Republic adult novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Convergence",
   "frOk": true
  },
@@ -6915,6 +7327,7 @@
    "Star Wars: The High Republic young-adult novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Braver la tempête",
   "frOk": true
  },
@@ -6932,6 +7345,7 @@
    "Star Wars: The High Republic junior novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Sauvetage sur Valo",
   "frOk": true
  },
@@ -6944,18 +7358,13 @@
    "Real-world media",
    "Star Wars: The High Republic: Eye of the Storm issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
  "The High Republic: Fear of the Jedi 1": {
-  "cats": [
-   "2025 releases",
-   "Canon media",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media",
-   "Star Wars: The High Republic – Fear of the Jedi issues"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6968,6 +7377,7 @@
    "Real-world media",
    "Star Wars: The High Republic – Fear of the Jedi issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -6985,6 +7395,7 @@
    "WebCite usages with unnecessary work parameters",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "La Haute République : En pleines ténèbres",
   "frOk": true
  },
@@ -7002,6 +7413,7 @@
    "Real-world media",
    "Star Wars: The High Republic young-adult novels"
   ],
+  "byText": "",
   "fr": "La Haute République : En pleine lumière",
   "frOk": true
  },
@@ -7017,6 +7429,7 @@
    "Star Wars: The High Republic adult novels",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "La Haute République : La Lumière des Jedi",
   "frOk": true
  },
@@ -7034,6 +7447,7 @@
    "Star Wars: The High Republic young-adult novels",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "La Haute République : Horizon funèbre",
   "frOk": true
  },
@@ -7050,6 +7464,7 @@
    "Star Wars: The High Republic young-adult novels",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "La Haute République : Hors de l'ombre",
   "frOk": true
  },
@@ -7066,6 +7481,7 @@
    "Real-world media",
    "Star Wars: The High Republic young-adult novels"
   ],
+  "byText": "",
   "fr": "La Haute République : La Voie de la duperie",
   "frOk": true
  },
@@ -7084,6 +7500,7 @@
    "Star Wars: The High Republic young-adult novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : La Voie de la vengeance",
   "frOk": true
  },
@@ -7099,6 +7516,7 @@
    "Real-world media",
    "Star Wars: The High Republic junior novels"
   ],
+  "byText": "",
   "fr": "La Haute République : La quête de la Planète X",
   "frOk": true
  },
@@ -7115,6 +7533,7 @@
    "Real-world media",
    "Star Wars: The High Republic junior novels"
   ],
+  "byText": "",
   "fr": "La Haute République : La quête de la cité perdue",
   "frOk": true
  },
@@ -7131,6 +7550,7 @@
    "Twitter usages with the same archivedate value",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "La Haute République : La tour des Trompe-la-mort",
   "frOk": true
  },
@@ -7147,6 +7567,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -7163,6 +7584,7 @@
    "Star Wars: The High Republic young-adult novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : Les Larmes des Sans-noms",
   "frOk": true
  },
@@ -7182,6 +7604,7 @@
    "Star Wars: The High Republic",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "audio",
   "fr": "La Haute République : Brise-Tempête",
   "frOk": false
  },
@@ -7201,6 +7624,7 @@
    "Star Wars: The High Republic",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "audio",
   "fr": "La Haute République : Maître-Tempête",
   "frOk": false
  },
@@ -7217,6 +7641,7 @@
    "Star Wars: The High Republic adult novels",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : La Tentation de la Force",
   "frOk": true
  },
@@ -7233,6 +7658,7 @@
    "Star Wars: The High Republic",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "audio",
   "fr": "La Haute République : La Bataille de Jedha",
   "frOk": false
  },
@@ -7246,6 +7672,7 @@
    "Real-world media",
    "Star Wars: The High Republic — The Blade issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7264,6 +7691,7 @@
    "Web citation template usages with author or date parameters",
    "WordPress usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Haute République : L'Œil des ténèbres",
   "frOk": true
  },
@@ -7279,6 +7707,7 @@
    "Real-world media",
    "Star Wars: The High Republic adult novels"
   ],
+  "byText": "",
   "fr": "La Haute République : La Chute de l'étoile",
   "frOk": true
  },
@@ -7292,6 +7721,7 @@
    "Real-world media",
    "Star Wars: The High Republic one-shot comics"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7310,6 +7740,7 @@
    "Star Wars: The High Republic adult novels",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "La Haute République : L'orage gronde",
   "frOk": true
  },
@@ -7322,6 +7753,7 @@
    "Real-world media",
    "Star Wars: The High Republic: Trail of Shadows issues"
   ],
+  "byText": "comic",
   "fr": "",
   "frOk": null
  },
@@ -7336,6 +7768,7 @@
    "Real-world media",
    "Star Wars: The High Republic: Trail of Shadows issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7349,6 +7782,7 @@
    "Real-world media",
    "Star Wars: The High Republic: Trail of Shadows issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7362,6 +7796,7 @@
    "Real-world media",
    "Star Wars: The High Republic: Trail of Shadows issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7376,6 +7811,7 @@
    "Real-world media",
    "Star Wars: The High Republic: Trail of Shadows issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7395,6 +7831,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "La Haute République : Les Épreuves des Jedi",
   "frOk": true
  },
@@ -7408,6 +7845,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "The Last Jedi: Cobalt Squadron",
   "frOk": false
  },
@@ -7423,19 +7861,13 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
  "The Last Jedi: The Storms of Crait": {
-  "cats": [
-   "2017 releases",
-   "Canon media",
-   "Canon one-shot comics",
-   "Marvel Comics one-shot comics",
-   "Media that should be listed in Appearances",
-   "Media using Template:App",
-   "Real-world media"
-  ],
+  "cats": [],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7452,6 +7884,7 @@
    "Real-world media",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Le Dernier Ordre",
   "frOk": true
  },
@@ -7468,6 +7901,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Luke Skywalker : Légendes",
   "frOk": true
  },
@@ -7488,6 +7922,7 @@
    "WebCite usages with unnecessary work parameters",
    "Web citation template usages with author or date parameters"
   ],
+  "byText": "",
   "fr": "La Force Vivante",
   "frOk": true
  },
@@ -7502,6 +7937,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "The Mandalorian and Grogu: Danger in the Dark",
   "frOk": false
  },
@@ -7516,6 +7952,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7530,6 +7967,7 @@
    "Media using Template:App",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7547,6 +7985,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "La Princesse et le vaurien",
   "frOk": true
  },
@@ -7560,6 +7999,7 @@
    "Star Wars: The Rise of Kylo Ren issues",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "comic",
   "fr": "L'Ascension de Kylo Ren 1",
   "frOk": true
  },
@@ -7569,6 +8009,7 @@
    "Comic maxi-series and crossover events",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7589,6 +8030,7 @@
    "WebCite usages without work parameter",
    "WordPress usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "L'Arme du Jedi",
   "frOk": true
  },
@@ -7601,6 +8043,7 @@
    "Real-world media",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "Mitth'raw'nuruodo",
   "frOk": false
  },
@@ -7614,6 +8057,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Chaos croissant",
   "frOk": true
  },
@@ -7629,6 +8073,7 @@
    "Real-world media",
    "Twitter usages with the same archivedate value"
   ],
+  "byText": "",
   "fr": "Bien commun",
   "frOk": true
  },
@@ -7647,6 +8092,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Moindre mal",
   "frOk": true
  },
@@ -7662,6 +8108,7 @@
    "Real-world media",
    "WebCite usages without work parameter"
   ],
+  "byText": "",
   "fr": "Thrawn : Alliances",
   "frOk": true
  },
@@ -7678,6 +8125,7 @@
    "Twitter usages with the same archivedate value",
    "WebCite usages with author but no work parameter"
   ],
+  "byText": "",
   "fr": "Thrawn : Trahison",
   "frOk": true
  },
@@ -7688,6 +8136,7 @@
    "Real-world media",
    "WebCite usages with unnecessary work parameters"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7700,6 +8149,7 @@
    "Real-world media",
    "Star Wars: Vader - Dark Visions issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7712,6 +8162,7 @@
    "Real-world media",
    "Star Wars: Vader - Dark Visions issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7724,6 +8175,7 @@
    "Real-world media",
    "Star Wars: Vader - Dark Visions issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7737,6 +8189,7 @@
    "Star Wars: Vader - Dark Visions issues",
    "WebCite usages with author but no work parameter"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7753,6 +8206,7 @@
    "Media with defined ISBN",
    "Real-world media"
   ],
+  "byText": "",
   "fr": "Le Prix de la victoire",
   "frOk": true
  },
@@ -7767,6 +8221,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "comic",
   "fr": "War of the Bounty Hunters 1",
   "frOk": true
  },
@@ -7781,6 +8236,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "comic",
   "fr": "War of the Bounty Hunters 2",
   "frOk": true
  },
@@ -7795,6 +8251,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "comic",
   "fr": "War of the Bounty Hunters 3",
   "frOk": true
  },
@@ -7808,6 +8265,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "comic",
   "fr": "War of the Bounty Hunters 4",
   "frOk": true
  },
@@ -7822,6 +8280,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "War of the Bounty Hunters 5",
   "frOk": true
  },
@@ -7835,6 +8294,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7848,6 +8308,7 @@
    "Star Wars: War of the Bounty Hunters crossover issues",
    "Star Wars: War of the Bounty Hunters issues"
   ],
+  "byText": "",
   "fr": "",
   "frOk": null
  },
@@ -7862,6 +8323,7 @@
    "Real-world media",
    "Star Wars: Yoda issues"
   ],
+  "byText": "",
   "fr": "Yoda 1",
   "frOk": true
  }
