@@ -116,8 +116,8 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
-.nav-links a.news,#mmenu a.news{color:#4fc3f7}
-.nav-links a.upc,#mmenu a.upc{color:#a99cf9}
+.nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
+.nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
 .tabs{display:flex;gap:.5rem;margin:0 0 1.6rem;flex-wrap:wrap}
 .tab{background:var(--surface);border:1px solid var(--border);color:var(--muted2);font:inherit;font-size:.82rem;font-weight:600;padding:.5rem 1rem;border-radius:22px;cursor:pointer;transition:all .2s}
 .tab:hover{color:var(--text);border-color:#7c6af7}
@@ -216,6 +216,7 @@ details.rd-card[open] .rd-chev{background:#7c6af7;border-color:#7c6af7;color:#ff
              : {none:'Nothing announced yet',
                 err:'Could not load upcoming releases right now.',
                 note:'Updated automatically every day \u00b7 sources: TMDB, Wookieepedia, Avatar Almanac'};
+  var NONLATIN = /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0400-\u04ff\u0590-\u06ff]/;
   var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
   function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
@@ -256,7 +257,7 @@ details.rd-card[open] .rd-chev{background:#7c6af7;border-color:#7c6af7;color:#ff
           var syn = '', enMark = false;
           if(FR){ if(e.syn_fr){ syn = e.syn_fr; } else if(e.syn){ syn = e.syn; enMark = true; } }
           else { syn = e.syn || ''; }
-          var title = (FR && e.title_fr) ? e.title_fr : e.title;
+          var title = (FR && e.title_fr && !NONLATIN.test(e.title_fr)) ? e.title_fr : e.title;
           var head = '<div class="rd-date">'+esc(fmt(e))+'</div>'
                    + '<div class="rd-t">'+esc(title)+'</div>'
                    + '<div class="rd-meta"><span>'+esc(LBL[key]||e.kind||'')+'</span>'

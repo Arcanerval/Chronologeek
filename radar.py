@@ -76,10 +76,32 @@ def log(msg):
     print(msg)
 
 
+# Titres à ne jamais traduire (le média sort sous son titre original en France).
+# Mettre "" pour forcer le titre original, ou une chaîne pour imposer une VF précise.
+TITLE_FR_OVERRIDE = {
+    "man of tomorrow": "",
+}
+# Alphabets non latins : un « titre français » en japonais ou en russe est une erreur de source
+_NON_LATIN = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0400-\u04ff\u0590-\u06ff]")
+
+
+def fr_title_ok(en_title, fr_title):
+    """Filtre les titres FR douteux avant de les publier."""
+    ov = TITLE_FR_OVERRIDE.get(_norm_title(en_title))
+    if ov is not None:
+        return ov
+    if not fr_title or _norm_title(fr_title) == _norm_title(en_title):
+        return ""
+    if _NON_LATIN.search(fr_title):
+        return ""
+    return fr_title
+
+
 def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
+    title_fr = fr_title_ok(title, title_fr)
     blob = f"{title} {kind or ''}"
     for pat in EXCLUDE.get(universe, []) + EXCLUDE.get("*", []):
         if re.search(pat, blob, re.I):
