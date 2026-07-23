@@ -44,6 +44,15 @@ TMDB_COMPANY_NAMES = {
     "avatar":   ["Avatar Studios", "Nickelodeon Animation Studio"],
 }
 
+# Exclusions : jamais canon ou hors périmètre. Motifs testés sur "titre + type".
+EXCLUDE = {
+    "avatar":   [r"noveli[sz]ation"],
+    "starwars": [r"\blego\b", r"noveli[sz]ation"],
+    "marvel":   [r"\blego\b"],
+    "dc":       [r"\blego\b"],
+    "*":        [],
+}
+
 # Avatar : seuls ces types de médias nous intéressent (le reste = goodies)
 AVATAR_KEEP = ("movie", "tv series", "micro series", "series", "comic",
                "graphic novel", "comic story", "novel")
@@ -59,6 +68,7 @@ TRACKED_SHOWS = {
 
 results = []      # {universe, title, date_txt, date_sort, kind, source}
 report  = []      # lignes de diagnostic
+excluded = []     # entrées filtrées par EXCLUDE
 
 
 def log(msg):
@@ -70,6 +80,11 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
+    blob = f"{title} {kind or ''}"
+    for pat in EXCLUDE.get(universe, []) + EXCLUDE.get("*", []):
+        if re.search(pat, blob, re.I):
+            excluded.append(f"{universe}: {title}")
+            return
     results.append({
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
@@ -619,6 +634,9 @@ def main():
         uniq.append(e)
 
     fill_wiki_synopses(uniq)
+    if excluded:
+        log(f"Exclus    : {len(excluded)} (LEGO / novélisations) — "
+            + "; ".join(excluded[:6]) + ("…" if len(excluded) > 6 else ""))
     log(f"TOTAL     : {len(uniq)} sortie(s) datée(s) · {dropped} sans date écartée(s)")
 
     page = PAGE.format(
