@@ -11,7 +11,8 @@ Le type de média n'est jamais deviné : il vient des catégories de l'article.
 
 import os, re, json, html, datetime, difflib
 import requests
-from dossier_i18n import SCREEN, SHOWS, NOTES, ERAS, INTRO_FR, INTRO_EN
+from dossier_i18n import (SCREEN, SHOWS, NOTES, ERAS, INTRO_FR, INTRO_EN,
+                          SERIES_KIND, TITLE_KIND)
 
 TMDB_KEY = os.environ.get("TMDB_KEY", "")
 TMDB = "https://api.themoviedb.org/3"
@@ -265,6 +266,19 @@ def classify_from_text(txt, cats):
         return "roman"
     if re.search(r'\{\{\s*short story', low):
         return "comic" if re.search(r'\b\d+ stories\b', blob) else "nouvelle"
+    return ""
+
+
+def fallback_kind(title, span):
+    """Dernier recours : structure du titre, puis série connue."""
+    key = re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9 ]+', ' ', title.lower())).strip()
+    if key in TITLE_KIND:
+        return TITLE_KIND[key]
+    if span or re.search(r'\(20\d\d\)', title):     # numéro de fascicule ou année de série
+        return "comic"
+    for prefix, kind in SERIES_KIND.items():
+        if key.startswith(prefix):
+            return kind
     return ""
 
 
@@ -675,8 +689,12 @@ def main():
 
     stats, unknown = {}, []
     for e in books:
+        _k = re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9 ]+', ' ', e["title"].lower())).strip()
         c = cache.get(e["wiki"], {})
-        e["kind"] = classify(c.get("cats", []), e["title"]) or c.get("byText", "")
+        e["kind"] = TITLE_KIND.get(_k) or (classify(c.get("cats", []), e["title"])
+                     or c.get("byText", "")
+                     or fallback_kind(e["title"], e["span"]))
+        e["kind"] = e["kind"] or ""
         e["fr"] = keep_fr(e["title"], c.get("fr", ""))
         e["frOk"] = c.get("frOk")
         stats[e["kind"] or "?"] = stats.get(e["kind"] or "?", 0) + 1

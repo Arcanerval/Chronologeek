@@ -140,3 +140,28 @@ INTRO_EN = (
  "(besides <strong>Star Wars: Young Jedi Adventures</strong>) set during the High Republic.<br><br>"
  "The omitted comics are throwaway one-shots, comics aimed at young children, or adaptations of "
  "screen productions.")
+
+
+# ── Filet de sécurité : appliqué UNIQUEMENT si Wookieepedia n'a rien donné.
+# Séries dont tous les titres du dossier sont des comics.
+SERIES_KIND = {
+    "star wars rebels magazine": "comic",
+    "age of republic": "comic",
+    "age of rebellion": "comic",
+    "age of resistance": "comic",
+    "empire ascendant": "comic",
+    "battle of jakku": "comic",
+    "war of the bounty hunters": "comic",
+    "a new legacy": "comic",
+    "darth vader": "comic",
+    "return of the jedi": "comic",
+    "the last jedi": "comic",
+    "the acolyte": "comic",
+    "free comic book day": "comic",
+    "hyperspace stories": "comic",
+    "star wars adventures": "comic",
+}
+# Titres exacts qui échappent aux règles ci-dessus
+TITLE_KIND = {
+    "ahsoka": "roman",              # le roman d'E. K. Johnston, et non un comic
+}
