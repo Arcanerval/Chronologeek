@@ -84,7 +84,6 @@ html,body{overflow-x:clip}
   .logo img{height:22px;max-width:44vw}
   nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
   .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  .nav-sp,.nav-maj,  
 }
 
 
@@ -100,82 +99,49 @@ html,body{overflow-x:clip}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
 .nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
 .nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
-.tabs{display:flex;gap:.5rem;margin:0 0 1.6rem;flex-wrap:wrap}
-.tab{background:var(--surface);border:1px solid var(--border);color:var(--muted2);font:inherit;font-size:.82rem;font-weight:600;padding:.5rem 1rem;border-radius:22px;cursor:pointer;transition:all .2s}
-.tab:hover{color:var(--text);border-color:#7c6af7}
-.tab.active{background:rgba(124,106,247,.16);border-color:#7c6af7;color:#fff}
-.rd-legend{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.3rem;font-size:.7rem;color:var(--muted2)}
-.rd-legend span{display:flex;align-items:center;gap:.35rem}
-.rd-legend i{width:9px;height:9px;border-radius:2px;display:block}
-.rd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;align-items:start}
-.rd-col{min-width:0}
-.rd-uni{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:.9rem;padding:.4rem .2rem .7rem}
-.rd-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.rd-n{font-size:.7rem;color:var(--muted2);font-weight:400}
-.rd-card{position:relative;padding:.6rem .7rem;padding-right:2.3rem;border:1px solid var(--border);border-left:3px solid #6b7280;border-radius:9px;margin-bottom:.45rem;background:var(--surface)}
-.rd-date{font-variant-numeric:tabular-nums;color:var(--muted2);font-size:.74rem}
-.rd-t{font-weight:600;font-size:.85rem;line-height:1.32;margin:.15rem 0;color:var(--text)}
-.rd-meta{color:var(--muted);font-size:.7rem;display:flex;justify-content:space-between;gap:.5rem}
-details.rd-card{cursor:pointer}
-details.rd-card>summary{list-style:none;display:block}
-details.rd-card>summary::-webkit-details-marker{display:none}
-.rd-chev{position:absolute;right:.55rem;top:.9rem;width:21px;height:21px;border-radius:50%;background:rgba(124,106,247,.12);border:1px solid var(--border2);color:var(--muted2);font-size:.68rem;display:flex;align-items:center;justify-content:center;transition:all .18s}
-details.rd-card:hover .rd-chev{border-color:#7c6af7;color:var(--text)}
-details.rd-card[open] .rd-chev{background:#7c6af7;border-color:#7c6af7;color:#fff;transform:rotate(180deg)}
-.rd-syn{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);color:var(--muted2);font-size:.75rem;line-height:1.55;cursor:auto}
-.rd-en{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:.05rem .3rem;border-radius:4px;background:rgba(148,163,184,.18);color:#94a3b8;vertical-align:1px;margin-right:.15rem}
-.rd-note{color:var(--muted);font-size:.72rem;margin-top:1.5rem;text-align:center}
-@media(max-width:1100px){.rd-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.rd-grid{grid-template-columns:1fr}}
-</style>
-<style>
-.nvx{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.2rem}
-.nvx-date{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7c6af7;margin-bottom:.6rem}
-.nvx ul{margin:0;padding-left:1.1rem}
-.nvx li{font-size:.86rem;color:var(--muted2);line-height:1.65;margin-bottom:.55rem}
-.nvx li strong{color:var(--text)}
 .lang-btn{display:flex;align-items:center;flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);line-height:0;transition:transform .2s,box-shadow .2s,border-color .2s;text-decoration:none}
 .lang-btn .flag{height:20px;width:30px;display:block}
 .lang-btn:hover{transform:scale(1.08);border-color:var(--accent);box-shadow:0 0 14px rgba(124,106,247,.45)}
 @media(max-width:700px){.lang-btn{margin-left:auto}.burger{margin-left:.3rem}}
 </style>
 <style>
-.wrap{max-width:900px;margin:0 auto;padding:2.5rem 1.2rem 4rem}
-h1{font-size:1.8rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#7c6af7,#f06292);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{color:var(--muted2);font-size:.9rem;margin:.45rem 0 2rem;max-width:62ch;line-height:1.6}
-.card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--border);
-      border-left:4px solid var(--c);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:.9rem;transition:all .2s}
-.card:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 8px 26px rgba(0,0,0,.4)}
-.ct{font-weight:800;font-size:1.05rem;color:var(--c)}
-.cd{color:var(--muted2);font-size:.84rem;margin-top:.3rem;line-height:1.5}
-.soon{opacity:.45;pointer-events:none}
+.dwrap{max-width:1180px;margin:0 auto;padding:2.6rem 1.2rem 4.5rem;text-align:center}
+.dtitle{font-size:2rem;font-weight:900;letter-spacing:-.6px;background:linear-gradient(135deg,#7c6af7,#f06292);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.dsub{color:var(--muted2);font-size:.95rem;margin:.6rem auto 2.6rem;max-width:60ch;line-height:1.65}
+.soon{opacity:.4;pointer-events:none}
 </style></head>
 <body><nav>
     <div class="logo" onclick="window.location.href='/fr/'">
-      <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
+      <img src="/images/logo-chronologeek.png" alt="Chronologeek"/>
     </div>
     <div class="nav-links">
       <a onclick="window.location.href='/fr/'">Accueil</a>
-      <a href="/fr/dossiers/" class="doss" style="color:var(--text);font-weight:700">Dossiers</a>
+      <a href="/fr/dossiers/" class="doss">Dossiers</a>
       <a onclick="window.location.href='/fr/starwars'">Star Wars</a>
       <a onclick="window.location.href='/fr/marvel'">Marvel</a>
       <a onclick="window.location.href='/fr/dc'">DC</a>
       <a onclick="window.location.href='/fr/avatar'">Avatar</a>
       <a onclick="window.location.href='/fr/a-venir'" class="upc">À venir</a>
-      <a class="news" onclick="window.location.href='/fr/nouveautes'">Nouveautés</a>
+      <a onclick="window.location.href='/fr/nouveautes'" class="news">Nouveautés</a>
     </div>
     <div class="nav-sp"></div>
     <a class="lang-btn" href="/deep-dives/" title="English version"><svg class="flag" viewBox="0 0 60 30"><clipPath id="ukc"><path d="M0,0 v30 h60 v-30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></a>
     <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
   </nav><div id="mmenu">
-  <a href="/fr/">Accueil</a>
-  <a href="/fr/dossiers/" class="cur doss">Dossiers</a>
+  <a href="/fr/" class="cur">Accueil</a>
+  <a href="/fr/dossiers/" class="doss">Dossiers</a>
   <a href="/fr/starwars">Star Wars</a>
   <a href="/fr/marvel">Marvel</a>
   <a href="/fr/dc">DC</a>
   <a href="/fr/avatar">Avatar</a>
   <a href="/fr/a-venir" class="upc">À venir</a>
       <a href="/fr/nouveautes" class="news">Nouveautés</a>
-</div><div class="wrap"><h1>Dossiers</h1><p class="sub">Les guides qui vont plus loin que la timeline : ordres de lecture, analyses et parcours thématiques, univers par univers.</p><a class="card" href="/fr/dossiers/star-wars" style="--c:#4d9fff"><div class="ct">Star Wars</div><div class="cd">Romans, romans jeunesse et comics — l'ordre de lecture complet du canon.</div></a></div><script src="/pwa.js"></script>
+</div>
+<div class="dwrap">
+<div class="dtitle">Dossiers</div>
+<p class="dsub">Les guides qui vont plus loin que la timeline : ordres de lecture, analyses et parcours thématiques, univers par univers.</p>
+<div class="ugrid"><a class="ucard" href="/fr/dossiers/star-wars"><div class="cbanner"><img src="/images/starwarscomics.jpg" alt="Star Wars" onerror="this.style.display='none'"/></div><div class="cbody"><div class="ctitle" style="color:#4d9fff">Star Wars</div><div class="csub">Romans · Romans jeunesse · Comics — l'ordre de lecture complet du canon, replacé entre les films et les séries.</div><div class="ctag-row"><span class="ctag tag-live">Disponible</span></div></div></a></div>
+</div>
+<script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script></body></html>
