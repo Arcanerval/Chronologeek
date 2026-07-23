@@ -42,7 +42,7 @@
   "wiki": "",
   "syn_fr": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
   "kindKey": "film",
-  "title_fr": "Spider-Man: Brand New Day"
+  "title_fr": ""
  },
  {
   "universe": "avatar",
@@ -87,7 +87,7 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "スター・ウォーズ：ビジョンズ／九人目のジェダイ"
+  "title_fr": ""
  },
  {
   "universe": "starwars",
@@ -117,7 +117,7 @@
   "wiki": "",
   "syn_fr": "Deux flics intergalactiques, la nouvelle recrue John Stewart et le légendaire Hal Jordan, sont confrontés à un sombre mystère sur Terre alors qu’ils enquêtent sur un meurtre au fin fond de l’Amérique.",
   "kindKey": "tv",
-  "title_fr": "Lanterns"
+  "title_fr": ""
  },
  {
   "universe": "starwars",
@@ -342,7 +342,7 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "VisionQuest"
+  "title_fr": ""
  },
  {
   "universe": "starwars",
@@ -387,7 +387,7 @@
   "wiki": "",
   "syn_fr": "L'ascension fulgurante de Matt Hagen, de gamin des rues de Gotham à star hollywoodienne, est brutalement interrompue lorsqu'un baron du crime le laisse atrocement défiguré. Abandonné de tous et n'ayant plus rien à perdre, Matt se tourne vers un traitement expérimental qui lui rend miraculeusement son apparence... mais altère profondément sa perception de la réalité. Il sombre alors dans une spirale destructrice, consumé par un irrépressible désir de vengeance.",
   "kindKey": "film",
-  "title_fr": "Clayface"
+  "title_fr": ""
  },
  {
   "universe": "starwars",
@@ -432,7 +432,7 @@
   "wiki": "",
   "syn_fr": "Les Avengers, les Wakandais, les Quatre Fantastiques, les New Avengers et les X-Men, tous héros issus de trois univers distincts se retrouvent sur une trajectoire de collision mortelle et font face à une menace existentielle sans précédent, comme ils n'en ont jamais rencontré auparavant, le Docteur Doom.",
   "kindKey": "film",
-  "title_fr": "Avengers: Doomsday"
+  "title_fr": ""
  },
  {
   "universe": "avatar",
@@ -477,7 +477,7 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "film",
-  "title_fr": "Star Wars: Starfighter"
+  "title_fr": ""
  },
  {
   "universe": "marvel",
@@ -492,7 +492,7 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "film",
-  "title_fr": "Spider-Man: Beyond the Spider-Verse"
+  "title_fr": ""
  },
  {
   "universe": "dc",
@@ -507,7 +507,7 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "film",
-  "title_fr": "L'Homme de demain"
+  "title_fr": ""
  },
  {
   "universe": "marvel",
@@ -522,6 +522,6 @@
   "wiki": "",
   "syn_fr": "Adaptation de Secret Wars de Jim Shooter et un prochain film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du multivers.",
   "kindKey": "film",
-  "title_fr": "Avengers: Secret Wars"
+  "title_fr": ""
  }
 ]
