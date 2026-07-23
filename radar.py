@@ -76,7 +76,7 @@ def log(msg):
     print(msg)
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki=""):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
@@ -89,6 +89,7 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
         "precision": precision, "era": era, "syn": syn, "wiki": wiki,
+        "syn_fr": syn_fr, "kindKey": kind_key(kind),
     })
 
 
@@ -137,19 +138,26 @@ def source_tmdb():
             ("Série", "/discover/tv",    "first_air_date"),
         ):
             for page in (1, 2):
-                try:
+                def query(lang):
                     r = requests.get(base + path, timeout=25, headers=UA, params={
                         "api_key": TMDB_KEY,
                         "with_companies": joined,
                         f"{datefield}.gte": TODAY.isoformat(),
                         f"{datefield}.lte": HORIZON.isoformat(),
                         "sort_by": f"{datefield}.asc",
-                        "language": "en-US",
+                        "language": lang,
                         "include_adult": "false",
                         "page": page,
                     })
                     r.raise_for_status()
-                    j = r.json()
+                    return r.json()
+                try:
+                    j = query("en-US")
+                    try:                      # synopsis français (même requête, autre langue)
+                        fr = {it.get("id"): (it.get("overview") or "").strip()
+                              for it in query("fr-FR").get("results", [])}
+                    except Exception:
+                        fr = {}
                     for it in j.get("results", []):
                         raw = it.get("release_date") or it.get("first_air_date")
                         d = parse_iso(raw or "")
@@ -157,7 +165,8 @@ def source_tmdb():
                             continue
                         add(uni, it.get("title") or it.get("name"), d.isoformat(),
                             d.strftime("%d/%m/%Y"), kind, "TMDB",
-                            syn=(it.get("overview") or "").strip())
+                            syn=(it.get("overview") or "").strip(),
+                            syn_fr=fr.get(it.get("id"), ""))
                         found += 1
                     if page >= j.get("total_pages", 1):
                         break
@@ -512,35 +521,57 @@ def fill_wiki_synopses(entries):
 
 
 # ────────────────────────────────────────── Rendu HTML
-KIND_STYLE = (
-    ("comic",       "#e879f9"),
-    ("graphic",     "#e879f9"),
-    ("film",        "#f5a524"),
-    ("movie",       "#f5a524"),
-    ("série",       "#38bdf8"),
-    ("serie",       "#38bdf8"),
-    ("tv",          "#38bdf8"),
-    ("épisode",     "#38bdf8"),
-    ("jeu",         "#a78bfa"),
-    ("game",        "#a78bfa"),
-    ("roman",       "#4ade80"),
-    ("novel",       "#4ade80"),
-    ("young",       "#4ade80"),
-    ("junior",      "#4ade80"),
-    ("nouvelle",    "#2dd4bf"),
-    ("short",       "#2dd4bf"),
-    ("audio",       "#fb7185"),
+# Palette canonique du site (identique aux badges des timelines)
+KIND_COLORS = {
+    "film":    "#64b5f6",
+    "tv":      "#81c784",
+    "comic":   "#fb923c",
+    "novel":   "#a78bfa",
+    "game":    "#ffb74d",
+    "book":    "#94a3b8",
+    "video":   "#f472b6",
+    "special": "#ffa726",
+    "other":   "#6b7280",
+}
+KIND_LABELS_FR = {
+    "film": "Film", "tv": "Série", "comic": "Comic", "novel": "Roman",
+    "game": "Jeu vidéo", "book": "Livre", "video": "Vidéo",
+    "special": "Spécial", "other": "Autre",
+}
+KIND_LABELS_EN = {
+    "film": "Movie", "tv": "TV show", "comic": "Comic", "novel": "Novel",
+    "game": "Video game", "book": "Book", "video": "Video",
+    "special": "Special", "other": "Other",
+}
+_KIND_MATCH = (
+    ("graphic", "comic"), ("comic", "comic"),
+    ("jeu", "game"), ("game", "game"),
+    ("roman", "novel"), ("novel", "novel"),
+    ("young", "novel"), ("junior", "novel"),
+    ("nouvelle", "short"), ("short", "book"),
+    ("audio", "video"), ("vidéo", "video"), ("video", "video"),
+    ("livre", "book"), ("book", "book"),
+    ("spécial", "special"), ("special", "special"), ("promo", "special"),
+    ("épisode", "tv"), ("episode", "tv"), ("série", "tv"), ("serie", "tv"),
+    ("tv", "tv"), ("mini", "tv"),
+    ("film", "film"), ("movie", "film"),
 )
-LEGEND = (("Film", "#f5a524"), ("Série", "#38bdf8"), ("Comic", "#e879f9"),
-          ("Roman", "#4ade80"), ("Jeu vidéo", "#a78bfa"), ("Autre", "#6b7280"))
+
+
+def kind_key(kind):
+    k = (kind or "").lower()
+    for token, key in _KIND_MATCH:
+        if token in k:
+            return key
+    return "other"
 
 
 def kind_color(kind):
-    k = (kind or "").lower()
-    for key, col in KIND_STYLE:
-        if key in k:
-            return col
-    return "#6b7280"
+    return KIND_COLORS.get(kind_key(kind), KIND_COLORS["other"])
+
+
+LEGEND = [(KIND_LABELS_FR[k], KIND_COLORS[k])
+          for k in ("film", "tv", "comic", "novel", "game", "book", "video", "other")]
 
 
 PAGE = """<!DOCTYPE html>
