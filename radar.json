@@ -168,18 +168,6 @@
   "wiki": "Hiding from the Dark"
  },
  {
-  "universe": "starwars",
-  "title": "LEGO Star Wars: The Mandalorian",
-  "date_sort": "2026-09-02",
-  "date_txt": "02/09/2026",
-  "kind": "Film",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Filled with unexpected laughs and action-packed fun, this new animated galactic adventure celebrates your favorite stories and characters from all three seasons of The Mandalorian.",
-  "wiki": ""
- },
- {
   "universe": "avatar",
   "title": "Jet: Rebels and Rhinos",
   "date_sort": "2026-09-08",
@@ -276,18 +264,6 @@
   "wiki": "Star Wars: Galactic Racer"
  },
  {
-  "universe": "avatar",
-  "title": "Avatar Aang: The Last Airbender: The Junior Novelization",
-  "date_sort": "2026-10-13",
-  "date_txt": "13/10/2026",
-  "kind": "Junior Novel Release Date: October 13, 2026",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": ""
- },
- {
   "universe": "marvel",
   "title": "VisionQuest",
   "date_sort": "2026-10-14",
@@ -360,18 +336,6 @@
   "wiki": "Rogue One – Darth Vader 1"
  },
  {
-  "universe": "avatar",
-  "title": "Untitled Avatar Aang: The Last Airbender Adult Novelization",
-  "date_sort": "2026-11-10",
-  "date_txt": "10/11/2026",
-  "kind": "Adult Novel Release Date: November 10, 2026",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": ""
- },
- {
   "universe": "marvel",
   "title": "Avengers: Doomsday",
   "date_sort": "2026-12-16",
@@ -406,18 +370,6 @@
   "era": "",
   "syn": "Tales from the Outer Rim: The Legend of Beggar's Canyon is the first entry in Star Wars: Tales from the Outer Rim, a line of canon graphic novels published by Mad Cave Studios. Written by Greg Pak and illustrated by Brent Schoonover, it will be released on January 26, 2027, though it was originally solicited for October 13, 2026.",
   "wiki": "Tales from the Outer Rim: The Legend of Beggar's Canyon"
- },
- {
-  "universe": "starwars",
-  "title": "Star Wars: The Mandalorian and Grogu: The Deluxe Junior Novelization",
-  "date_sort": "2027-02-23",
-  "date_txt": "23/02/2027",
-  "kind": "Roman jeunesse",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "",
-  "syn": "Star Wars: The Mandalorian and Grogu: The Deluxe Junior Novelization is a forthcoming junior novelization of the film The Mandalorian and Grogu. It will be published by Random House and is set to be released after the film on February 23, 2027.",
-  "wiki": "Star Wars: The Mandalorian and Grogu: The Deluxe Junior Novelization"
  },
  {
   "universe": "starwars",
