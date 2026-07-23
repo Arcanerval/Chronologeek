@@ -524,8 +524,15 @@ def fill_wiki_synopses(entries):
 FR_WIKI = "https://starwars.fandom.com/fr/api.php"
 
 
-def _wiki_fr_titles(chunk):
-    """Titre EN -> titre FR via les liens interlangue de Fandom."""
+def _norm_title(t):
+    t = (t or "").lower()
+    t = re.sub(r"\((roman|novel|comics?|bd|jeu|game|film|s[ée]rie)\)", " ", t)
+    t = re.sub(r"[^a-z0-9]+", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _wiki_fr_langlinks(chunk):
+    """Passe 1 : liens interlangue (absents sur Wookieepedia, gardés au cas où)."""
     r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
                      headers=UA_BROWSER, params={
                          "action": "query", "prop": "langlinks",
@@ -542,10 +549,9 @@ def _wiki_fr_titles(chunk):
     return out
 
 
-def _wiki_fr_intros(fr_titles):
+def _fr_intros(titles):
     """Intro française par lots depuis la Wookieepedia FR."""
-    out = {}
-    titles = list(fr_titles)
+    out, titles = {}, [t for t in titles if t]
     for i in range(0, len(titles), 20):
         part = titles[i:i + 20]
         try:
@@ -557,45 +563,97 @@ def _wiki_fr_intros(fr_titles):
             })
             r.raise_for_status()
             for p in r.json().get("query", {}).get("pages", []):
+                if p.get("missing"):
+                    continue
                 revs = p.get("revisions") or []
                 if not revs:
                     continue
                 content = (revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
                 txt = clean_wikitext(content)
                 if txt:
-                    out[(p.get("title") or "").lower()] = txt
+                    out[_norm_title(p.get("title"))] = txt
         except Exception as e:
-            log(f"Résumés FR: lot {i // 20 + 1} — {str(e)[:100]}")
+            log(f"Résumés FR: lecture lot {i // 20 + 1} — {str(e)[:90]}")
     return out
 
 
+def _fr_search(title):
+    """Passe 3 : renvoie jusqu'à 3 pages candidates du wiki FR."""
+    r = requests.get(FR_WIKI, timeout=30, headers=UA_BROWSER, params={
+        "action": "query", "list": "search", "srsearch": f'"{title}"',
+        "srlimit": 3, "format": "json", "formatversion": 2,
+    })
+    r.raise_for_status()
+    return [h.get("title") for h in r.json().get("query", {}).get("search", []) if h.get("title")]
+
+
+def _validate(en_title, fr_title, fr_text):
+    """Accepte si le texte FR cite le titre anglais, ou si les titres se ressemblent."""
+    from difflib import SequenceMatcher
+    if not fr_text:
+        return False
+    if _norm_title(en_title) in _norm_title(fr_text):
+        return True
+    return SequenceMatcher(None, _norm_title(en_title), _norm_title(fr_title)).ratio() >= 0.78
+
+
 def fill_wiki_synopses_fr(entries):
-    """Complète syn_fr pour les entrées Star Wars issues de Wookieepedia."""
+    """syn_fr pour les entrées Star Wars, en trois passes successives."""
     todo = [e for e in entries if e.get("wiki") and not e.get("syn_fr")]
     if not todo:
         return
+    stats = {"langlinks": 0, "titre identique": 0, "recherche": 0}
+
+    # passe 1 — liens interlangue
     mapping = {}
     for i in range(0, len(todo), 20):
-        chunk = todo[i:i + 20]
         try:
-            mapping.update(_wiki_fr_titles(chunk))
+            mapping.update(_wiki_fr_langlinks(todo[i:i + 20]))
         except Exception as e:
             if i == 0:
-                log(f"Résumés FR: liens interlangue KO — {str(e)[:110]}")
-            return
-    if not mapping:
-        log("Résumés FR: aucune page française correspondante (liens interlangue absents)")
-        return
-    intros = _wiki_fr_intros(set(mapping.values()))
-    got = 0
+                log(f"Résumés FR: liens interlangue KO — {str(e)[:90]}")
+            break
+
+    # passe 2 — le titre anglais existe tel quel sur le wiki FR
+    wanted = {}
     for e in todo:
-        fr_title = mapping.get(e["wiki"].lower())
-        if fr_title:
-            txt = intros.get(fr_title.lower())
-            if txt:
-                e["syn_fr"] = txt
-                got += 1
-    log(f"Résumés FR: {got}/{len(todo)} synopsis français (Wookieepedia FR)")
+        fr = mapping.get(e["wiki"].lower())
+        wanted[e["wiki"]] = fr or e["wiki"]
+    intros = _fr_intros(set(wanted.values()))
+    for e in todo:
+        txt = intros.get(_norm_title(wanted[e["wiki"]]))
+        if txt:
+            e["syn_fr"] = txt
+            stats["langlinks" if mapping.get(e["wiki"].lower()) else "titre identique"] += 1
+
+    # passe 3 — recherche, validée sur le contenu de la page trouvée
+    rest = [e for e in todo if not e.get("syn_fr")][:40]
+    if rest:
+        cands = {}
+        for e in rest:
+            try:
+                hits = _fr_search(e["wiki"])
+                if hits:
+                    cands[e["wiki"]] = hits
+            except Exception as ex:
+                if e is rest[0]:
+                    log(f"Résumés FR: recherche KO — {str(ex)[:90]}")
+                break
+        if cands:
+            allc = {t for lst in cands.values() for t in lst}
+            intros2 = _fr_intros(allc)
+            for e in rest:
+                for hit in cands.get(e["wiki"], []):
+                    txt = intros2.get(_norm_title(hit))
+                    if txt and _validate(e["wiki"], hit, txt):
+                        e["syn_fr"] = txt
+                        stats["recherche"] += 1
+                        break
+
+    got = sum(1 for e in todo if e.get("syn_fr"))
+    detail = ", ".join(f"{k}: {v}" for k, v in stats.items() if v)
+    log(f"Résumés FR: {got}/{len(todo)} synopsis français"
+        + (f" ({detail})" if detail else " — le wiki FR n'a pas ces pages"))
 
 
 # Palette canonique du site (identique aux badges des timelines)
