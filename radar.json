@@ -9,7 +9,9 @@
   "precision": "day",
   "era": "",
   "syn": "Avatar Aang, the world's last Airbender, learns of an ancient power that could save his culture from extinction. With the help of his friends, he embarks on a global quest to find it before it falls into the wrong hands and threatens to upend the peace they sacrificed everything to achieve.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "Les aventures du successeur du dernier Avatar qui doit empêcher la nation du Feu d’asservir les nations de la Terre, de l’Eau et de l’Air...",
+  "kindKey": "film"
  },
  {
   "universe": "starwars",
@@ -21,7 +23,9 @@
   "precision": "day",
   "era": "9 ABY",
   "syn": "The Mandalorian and Grogu: Danger in the Dark is a one-shot comic book that serves as a prequel to the 2026 film Star Wars: The Mandalorian and Grogu. First announced on May 4, it was published by Mad Cave Studios' PaperCutz imprint on July 22, and was written by Delilah S. Dawson.",
-  "wiki": "The Mandalorian and Grogu: Danger in the Dark"
+  "wiki": "The Mandalorian and Grogu: Danger in the Dark",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "marvel",
@@ -33,7 +37,9 @@
   "precision": "day",
   "era": "",
   "syn": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+  "kindKey": "film"
  },
  {
   "universe": "avatar",
@@ -45,7 +51,9 @@
   "precision": "day",
   "era": "",
   "syn": "",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -57,7 +65,9 @@
   "precision": "day",
   "era": "",
   "syn": "Legacy is an upcoming Star Wars novel that will be published in hardcover by Random House Worlds on July 28, 2026 alongside its audiobook. It was officially announced at New York Comic Con on October 11, 2025, where it was revealed to be a story written by Madeleine Roux focusing on Rey's Jedi training between the events of Star Wars: Episode VIII The Last Jedi and Star Wars: Episode IX The Rise o…",
-  "wiki": "Legacy (novel)"
+  "wiki": "Legacy (novel)",
+  "syn_fr": "",
+  "kindKey": "novel"
  },
  {
   "universe": "starwars",
@@ -69,7 +79,9 @@
   "precision": "day",
   "era": "",
   "syn": "Kara and her ragtag Jedi crew seek out to find worthy Jedi to fight against an increasingly powerful warlord.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv"
  },
  {
   "universe": "starwars",
@@ -81,7 +93,9 @@
   "precision": "day",
   "era": "",
   "syn": "The Fall of Kylo Ren 1 is the first issue of the upcoming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney, and published by Marvel Comics on August 12, 2026.",
-  "wiki": "The Fall of Kylo Ren 1"
+  "wiki": "The Fall of Kylo Ren 1",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "dc",
@@ -93,7 +107,9 @@
   "precision": "day",
   "era": "",
   "syn": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, earth-based mystery as they investigate a murder in the American heartland.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "Deux flics intergalactiques, la nouvelle recrue John Stewart et le légendaire Hal Jordan, sont confrontés à un sombre mystère sur Terre alors qu’ils enquêtent sur un meurtre au fin fond de l’Amérique.",
+  "kindKey": "tv"
  },
  {
   "universe": "starwars",
@@ -105,7 +121,9 @@
   "precision": "day",
   "era": "c. 362 BBY",
   "syn": "The High Republic Adventures – Pathfinders 4 is the upcoming fourth issue of the 2026 comic book series Star Wars: The High Republic Adventures – Pathfinders. The issue will be written by George Mann, illustrated by Partha Pratim, Jagdish Kumar, and Michael Atiyeh, and published by Dark Horse Comics on August 19, 2026.",
-  "wiki": "The High Republic Adventures – Pathfinders 4"
+  "wiki": "The High Republic Adventures – Pathfinders 4",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -117,7 +135,9 @@
   "precision": "day",
   "era": "",
   "syn": "Galaxy's Edge – Echoes of the Empire 5 is the upcoming fifth and final issue of the canon 2026 comic book miniseries Star Wars: Galaxy's Edge – Echoes of the Empire. The issue will be written by Ethan Sacks, illustrated by Roi Mercado and Jethro Morales, and published by Marvel Comics on August 19, 2026.",
-  "wiki": "Galaxy's Edge – Echoes of the Empire 5"
+  "wiki": "Galaxy's Edge – Echoes of the Empire 5",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "avatar",
@@ -129,7 +149,9 @@
   "precision": "day",
   "era": "",
   "syn": "",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -141,7 +163,9 @@
   "precision": "day",
   "era": "20 BBY",
   "syn": "Star Wars Zero Company is an upcoming canon single-player turn-based tactics video game that takes place during the Clone Wars. The game is developed by Bit Reactor in collaboration with Electronic Arts's Respawn Entertainment and published by EA and Lucasfilm Games, set to release on August 27, 2026.",
-  "wiki": "Star Wars Zero Company"
+  "wiki": "Star Wars Zero Company",
+  "syn_fr": "",
+  "kindKey": "game"
  },
  {
   "universe": "avatar",
@@ -153,7 +177,9 @@
   "precision": "day",
   "era": "",
   "syn": "",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "novel"
  },
  {
   "universe": "starwars",
@@ -165,7 +191,9 @@
   "precision": "day",
   "era": "c. 19 BBY – 4 ABY",
   "syn": "Hiding from the Dark is a horror-themed middle grade novel written by Kiersten White that will be published by Random House on September 1, 2026.",
-  "wiki": "Hiding from the Dark"
+  "wiki": "Hiding from the Dark",
+  "syn_fr": "",
+  "kindKey": "game"
  },
  {
   "universe": "avatar",
@@ -177,7 +205,9 @@
   "precision": "day",
   "era": "",
   "syn": "",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -189,7 +219,9 @@
   "precision": "day",
   "era": "c. 362 BBY",
   "syn": "The High Republic Adventures – Pathfinders 5 is the upcoming fifth issue of the 2026 comic book series Star Wars: The High Republic Adventures – Pathfinders. The issue will be written by George Mann, illustrated by Vincenzo Riccardi, Jagdish Kumar, and Michael Atiyeh, and published by Dark Horse Comics on September 9, 2026.",
-  "wiki": "The High Republic Adventures – Pathfinders 5"
+  "wiki": "The High Republic Adventures – Pathfinders 5",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -201,7 +233,9 @@
   "precision": "day",
   "era": "9 ABY",
   "syn": "The Book of Boba Fett 1 is the first issue of the upcoming comic adaptation of the television series Star Wars: The Book of Boba Fett. Written by Rodney Barnes and drawn by Will Sliney, it will adapt \"Chapter 1: Stranger in a Strange Land\" and will be published on September 9, 2026.",
-  "wiki": "The Book of Boba Fett 1"
+  "wiki": "The Book of Boba Fett 1",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -213,7 +247,9 @@
   "precision": "day",
   "era": "6 BBY",
   "syn": "Reign of the Empire: Edge of the Abyss is an upcoming canon novel and the second entry of the Star Wars: Reign of the Empire trilogy written by Rebecca Roanhorse and set to be published by Random House Worlds on September 15, 2026. An audiobook version is set to be released along side the novel. It will be set in 6 BBY, one year before the first season of Star Wars: Andor.",
-  "wiki": "Reign of the Empire: Edge of the Abyss"
+  "wiki": "Reign of the Empire: Edge of the Abyss",
+  "syn_fr": "",
+  "kindKey": "novel"
  },
  {
   "universe": "starwars",
@@ -225,7 +261,9 @@
   "precision": "day",
   "era": "",
   "syn": "The Fall of Kylo Ren 2 is the second issue of the upcoming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney, and published by Marvel Comics on September 16, 2026.",
-  "wiki": "The Fall of Kylo Ren 2"
+  "wiki": "The Fall of Kylo Ren 2",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -237,7 +275,9 @@
   "precision": "day",
   "era": "9 ABY",
   "syn": "The Book of Boba Fett 2 is the upcoming second issue of the comic adaptation of the television series Star Wars: The Book of Boba Fett. Written by Rodney Barnes and drawn by Will Sliney, it will adapt \"Chapter 2: The Tribes of Tatooine\" and will be published on September 23, 2026.",
-  "wiki": "The Book of Boba Fett 2"
+  "wiki": "The Book of Boba Fett 2",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -249,7 +289,9 @@
   "precision": "day",
   "era": "",
   "syn": "Smugglers and Scoundrels: The Race for Jabba's Bounty is the first entry in Star Wars: Smugglers and Scoundrels, a line of canon graphic novels published by Mad Cave Studios. Written by Cavan Scott and illustrated by Christian Colbert, it will be released on October 6, 2026.",
-  "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty"
+  "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -261,7 +303,9 @@
   "precision": "day",
   "era": "",
   "syn": "Star Wars: Galactic Racer is an upcoming canon Star Wars racing video game developed by Fuse Games and published by Lucasfilm Games alongside Secret Mode. The game will be released for PC, PlayStation 5, and Xbox Series X/S on October 6, 2026.",
-  "wiki": "Star Wars: Galactic Racer"
+  "wiki": "Star Wars: Galactic Racer",
+  "syn_fr": "",
+  "kindKey": "game"
  },
  {
   "universe": "marvel",
@@ -273,7 +317,9 @@
   "precision": "day",
   "era": "",
   "syn": "After the events of WandaVision, White Vision struggles to connect with the memories given to him as he lacks the emotions or feelings associated with them.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv"
  },
  {
   "universe": "starwars",
@@ -285,7 +331,9 @@
   "precision": "day",
   "era": "1 BBY",
   "syn": "Rogue One – Chirrut & Baze 1 is a canon one-shot comic that will be published by Marvel Comics as part of the Star Wars: Rogue One one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. Focusing on Baze Malbus and Chirrut Îmwe, it will be written by Stephanie Phillips with art by Kieran McKeown, and will be released on October 14, 2026.",
-  "wiki": "Rogue One – Chirrut & Baze 1"
+  "wiki": "Rogue One – Chirrut & Baze 1",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -297,7 +345,9 @@
   "precision": "day",
   "era": "",
   "syn": "Hyperspace Stories: Mace is an upcoming graphic novel in the Star Wars: Hyperspace Stories series of graphic novels featuring a young Mace Windu. The issue will be written by Justina Ireland, illustrated by Georges Duarte and PH Gomes, and published by Dark Horse Comics on October 20, 2026.",
-  "wiki": "Hyperspace Stories: Mace"
+  "wiki": "Hyperspace Stories: Mace",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "dc",
@@ -309,7 +359,9 @@
   "precision": "day",
   "era": "",
   "syn": "Follow the terrifying descent into hell of a promising Hollywood actor who has become a monster driven by revenge, exploring the loss of identity and humanity, the ravages of toxic love and the dark side of scientific ambition.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "L'ascension fulgurante de Matt Hagen, de gamin des rues de Gotham à star hollywoodienne, est brutalement interrompue lorsqu'un baron du crime le laisse atrocement défiguré. Abandonné de tous et n'ayant plus rien à perdre, Matt se tourne vers un traitement expérimental qui lui rend miraculeusement son apparence... mais altère profondément sa perception de la réalité. Il sombre alors dans une spirale destructrice, consumé par un irrépressible désir de vengeance.",
+  "kindKey": "film"
  },
  {
   "universe": "starwars",
@@ -321,7 +373,9 @@
   "precision": "day",
   "era": "c. 362 BBY",
   "syn": "The High Republic Adventures – Pathfinders 6 is the upcoming sixth and final issue of the 2026 comic book series Star Wars: The High Republic Adventures – Pathfinders. The issue will be written by George Mann, illustrated by Vincenzo Riccardi, and published by Dark Horse Comics on October 21, 2026.",
-  "wiki": "The High Republic Adventures – Pathfinders 6"
+  "wiki": "The High Republic Adventures – Pathfinders 6",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -333,7 +387,9 @@
   "precision": "day",
   "era": "1 BBY",
   "syn": "Rogue One – Darth Vader 1 is a canon one-shot comic that will be published by Marvel Comics as part of the Star Wars: Rogue One one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. Focusing on Darth Vader, it will be written by Chris Condon with art by Luke Ross, and will be published on October 28, 2026.",
-  "wiki": "Rogue One – Darth Vader 1"
+  "wiki": "Rogue One – Darth Vader 1",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "marvel",
@@ -345,7 +401,9 @@
   "precision": "day",
   "era": "",
   "syn": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "Les Avengers, les Wakandais, les Quatre Fantastiques, les New Avengers et les X-Men, tous héros issus de trois univers distincts se retrouvent sur une trajectoire de collision mortelle et font face à une menace existentielle sans précédent, comme ils n'en ont jamais rencontré auparavant, le Docteur Doom.",
+  "kindKey": "film"
  },
  {
   "universe": "avatar",
@@ -357,7 +415,9 @@
   "precision": "day",
   "era": "",
   "syn": "",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "novel"
  },
  {
   "universe": "starwars",
@@ -369,7 +429,9 @@
   "precision": "day",
   "era": "",
   "syn": "Tales from the Outer Rim: The Legend of Beggar's Canyon is the first entry in Star Wars: Tales from the Outer Rim, a line of canon graphic novels published by Mad Cave Studios. Written by Greg Pak and illustrated by Brent Schoonover, it will be released on January 26, 2027, though it was originally solicited for October 13, 2026.",
-  "wiki": "Tales from the Outer Rim: The Legend of Beggar's Canyon"
+  "wiki": "Tales from the Outer Rim: The Legend of Beggar's Canyon",
+  "syn_fr": "",
+  "kindKey": "comic"
  },
  {
   "universe": "starwars",
@@ -381,7 +443,9 @@
   "precision": "day",
   "era": "",
   "syn": "An original story set approximately five years after the events of Star Wars: The Rise of Skywalker.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film"
  },
  {
   "universe": "marvel",
@@ -393,7 +457,9 @@
   "precision": "day",
   "era": "",
   "syn": "Hunted by Miguel O'Hara's Spider Society and betrayed by his friends, Miles finds himself in the darkest corners of the Spider-Verse in search of a way home. Knowing that his family has been not only fractured but endangered by his calling, it's a race against the clock for Miles to travel across the wildest reaches of time and space to fight for and reunite everything he holds most dear.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film"
  },
  {
   "universe": "dc",
@@ -405,7 +471,9 @@
   "precision": "day",
   "era": "",
   "syn": "Superman and Lex Luthor team up to face a larger threat.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film"
  },
  {
   "universe": "marvel",
@@ -417,6 +485,8 @@
   "precision": "day",
   "era": "",
   "syn": "An upcoming film in Phase Six of the Marvel Cinematic Universe (MCU) and the finale of The Multiverse Saga. Plot TBA.",
-  "wiki": ""
+  "wiki": "",
+  "syn_fr": "Adaptation de Secret Wars de Jim Shooter et un prochain film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du multivers.",
+  "kindKey": "film"
  }
 ]
