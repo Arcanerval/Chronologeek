@@ -134,6 +134,67 @@ def fetch_categories(titles):
     return out
 
 
+def en_search(title):
+    try:
+        r = requests.get(EN_API, timeout=30, headers=UA, params={
+            "action": "query", "list": "search", "srsearch": f'"{title}"',
+            "srlimit": 3, "format": "json", "formatversion": 2})
+        r.raise_for_status()
+        return [h["title"] for h in r.json().get("query", {}).get("search", [])]
+    except Exception:
+        return []
+
+
+def resolve_categories(titles):
+    """Trouve la page Wookieepedia de chaque titre, en essayant plusieurs formes."""
+    found, stats = {}, {}
+    pending = list(titles)
+
+    def take(mapping, label):
+        nonlocal pending
+        cats = fetch_categories(list(mapping))
+        got = 0
+        for probe, cs in cats.items():
+            src = mapping[probe]
+            if src not in found:
+                found[src] = (probe, cs); got += 1
+        if got:
+            stats[label] = got
+        pending = [t for t in pending if t not in found]
+
+    take({t: t for t in pending}, "titre exact")
+    if pending:
+        take({f"Star Wars: {t}": t for t in pending}, "préfixe Star Wars")
+    if pending:                                    # page de série : on retire le numéro
+        m = {}
+        for t in pending:
+            base = re.sub(r'\s+\d+$', '', t)
+            if base != t:
+                m.setdefault(base, t)
+        if m:
+            take(m, "page de série")
+    if pending:
+        m = {}
+        for t in pending:
+            base = re.sub(r'\s+\d+$', '', t)
+            if base != t:
+                m.setdefault(f"Star Wars: {base}", t)
+        if m:
+            take(m, "série + préfixe")
+    if pending:                                    # dernier recours : recherche
+        m = {}
+        for t in pending[:250]:
+            for hit in en_search(t):
+                if difflib.SequenceMatcher(None, norm(t), norm(hit)).ratio() >= 0.72:
+                    m.setdefault(hit, t)
+                    break
+        if m:
+            take(m, "recherche")
+    log("Résolution: " + " · ".join(f"{k}: {v}" for k, v in stats.items())
+        + (f" · introuvable: {len(pending)}" if pending else ""))
+    return found
+
+
 def classify(cats, title):
     """Type de média déduit des catégories de l'article (jamais deviné)."""
     blob = " | ".join(cats).lower()
@@ -502,7 +563,8 @@ def main():
     log(f"Wookiee   : {len(todo)} titre(s) à interroger ({len(cache)} en cache)")
 
     if todo:
-        cats = fetch_categories(todo)
+        resolved = resolve_categories(todo)
+        cats = {t: v[1] for t, v in resolved.items()}
         frs = fetch_fr(todo)
         missing_fr = [t for t in todo if t not in frs]
         found = {}
@@ -557,12 +619,22 @@ def main():
         page = TEMPLATE.format(
             lang=lang, title=title, desc=desc, h1=h1, intro=intro, chips=chips, rows=rows,
             cnt=("%s œuvres affichées sur %t" if lang == "fr" else "%s of %t entries shown"))
-        os.makedirs(os.path.dirname(out), exist_ok=True)
+        d = os.path.dirname(out)
+        if d and os.path.isfile(d):
+            os.remove(d)
+            log(f"Nettoyage : fichier parasite « {d} » supprimé")
+        if d:
+            os.makedirs(d, exist_ok=True)
         open(out, 'w', encoding='utf-8').write(page)
         log(f"Page      : {out} généré")
 
     for lang, out in (("fr", IDX_FR), ("en", IDX_EN)):
-        os.makedirs(os.path.dirname(out), exist_ok=True)
+        d = os.path.dirname(out)
+        if d and os.path.isfile(d):
+            os.remove(d)
+            log(f"Nettoyage : fichier parasite « {d} » supprimé")
+        if d:
+            os.makedirs(d, exist_ok=True)
         open(out, 'w', encoding='utf-8').write(build_index(lang))
     log("Index     : pages Dossiers / Deep Dives générées")
     json.dump(data, open('dossier-data.json', 'w', encoding='utf-8'),
