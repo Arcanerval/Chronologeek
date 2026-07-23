@@ -5,10 +5,150 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek</title>
 <meta name="description" content="L'ordre de lecture complet des romans, romans jeunesse et comics Star Wars canon, replacé dans la chronologie des films et séries."/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/deep-dives/star-wars"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Chronologeek"/>
+<meta property="og:title" content="Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek"/>
+<meta property="og:description" content="L'ordre de lecture complet des romans, romans jeunesse et comics Star Wars canon, replacé dans la chronologie des films et séries."/>
+<meta property="og:image" content="https://chronologeek.app/images/starwars-banner.webp"/>
+<meta property="og:url" content="https://chronologeek.app/fr/dossiers/star-wars"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <style>
-:root{--bg:#08080f;--surface:#0d0d18;--border:#23233a;--text:#e8e8f0;--muted:#8a8aa0;--muted2:#b9b9d0;--accent:#7c6af7}
+:root{
+  --bg:#08080f;--surface:#0f0f1a;--surface2:#161625;--border:#1e1e35;--border2:#2a2a48;
+  --accent:#7c6af7;--accent2:#f06292;--gold:#f5c842;--text:#e2e2f0;--muted:#686880;
+  --muted2:#9090b0;--green:#56c27a;--radius:12px;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(240,98,146,.08),transparent 60%);pointer-events:none}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── HEADER ── */
+header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
+nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px}
+.logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
+.logo img{height:30px;display:block;object-fit:contain;background:transparent}
+.logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:1.25rem;align-items:center}
+.nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-sp{flex:1}
+
+/* ── HERO ── */
+.hero{padding:5rem 2rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(124,106,247,.15),transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+.hero-logo{display:block;height:clamp(48px,8vw,90px);margin:0 auto 1.5rem;filter:drop-shadow(0 0 40px rgba(124,106,247,.4))}
+.hero-tagline{color:var(--muted2);font-size:1.05rem;max-width:520px;margin:0 auto 3rem;line-height:1.65}
+
+/* ── GRILLE UNIVERS ── */
+.ugrid{display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.ucard{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--border2);border-radius:18px;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;width:260px;overflow:hidden;text-decoration:none;display:block}
+.ucard:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 60px rgba(124,106,247,.25),0 0 0 1px rgba(124,106,247,.3)}
+.cbanner{height:140px;position:relative;overflow:hidden;background:var(--surface2)}
+.cbanner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .3s}
+.ucard:hover .cbanner img{opacity:1}
+.cbanner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(15,15,26,.85) 100%);pointer-events:none}
+.cbody{padding:1.1rem 1.25rem 1.4rem}
+.ctitle{font-size:1.1rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.3px}
+.csub{font-size:.78rem;color:var(--muted2);line-height:1.5}
+.ctag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:20px}.ctag-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem}.cmaj{font-size:.68rem;color:var(--muted);letter-spacing:.03em}
+.tag-live{background:rgba(86,194,122,.15);color:var(--green);border:1px solid rgba(86,194,122,.3)}
+.tag-soon{background:rgba(124,106,247,.12);color:var(--accent);border:1px solid rgba(124,106,247,.25)}
+
+/* ── SOON SECTION ── */
+.soon-section{max-width:960px;margin:0 auto;padding:0 2rem 5rem}
+.soon-title{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;text-align:center}
+.soon-grid{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.soon-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.4rem;display:flex;align-items:center;gap:.9rem;width:220px;opacity:.7;transition:opacity .2s}
+.soon-card:hover{opacity:1}
+.soon-card-img{width:44px;height:44px;border-radius:10px;object-fit:cover;flex-shrink:0;background:var(--surface2)}
+.soon-card-name{font-size:.88rem;font-weight:700}
+.soon-card-sub{font-size:.72rem;color:var(--muted2);margin-top:.15rem}
+
+@media(max-width:700px){
+  nav{flex-wrap:wrap;height:auto;padding:.5rem 0;gap:.3rem}
+  .logo{width:100%;justify-content:center;padding:.15rem 0}
+  .logo img{height:22px}
+  .nav-links{width:100%;justify-content:center;flex-wrap:wrap;gap:.35rem .7rem}
+  .nav-links a{font-size:.78rem;white-space:nowrap}
+  .nav-sp{display:none}
+    .hero{padding:2rem .8rem 1.5rem}
+  .hero-logo{height:auto !important;width:min(86vw,420px);object-fit:contain}
+  .ugrid{flex-direction:column;align-items:center;gap:1.25rem;padding:0 1rem}
+  .ucard{width:100%;max-width:360px}
+  .cbanner{height:120px}
+}
+
+/* ═══ Mobile App Polish ═══ */
+html,body{overflow-x:clip}
+*{-webkit-tap-highlight-color:transparent}
+.logo img{width:auto;object-fit:contain}
+@media(max-width:700px){
+  .logo img{height:22px;max-width:44vw}
+  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
+  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
+  .nav-sp,.nav-maj,  
+}
+
+
+
+/* ═══ Menu mobile v2 ═══ */
+.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
+#mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
+#mmenu.open{display:flex}
+#mmenu a{color:var(--muted2);font-size:1.25rem;text-decoration:none;cursor:pointer;font-weight:600}
+#mmenu a.cur{color:var(--text);font-weight:800}
+#mmenu a.doss{color:var(--accent2)}
+.nav-links a.doss{color:var(--accent2);font-weight:700}
+@media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+.nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
+.nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
+.tabs{display:flex;gap:.5rem;margin:0 0 1.6rem;flex-wrap:wrap}
+.tab{background:var(--surface);border:1px solid var(--border);color:var(--muted2);font:inherit;font-size:.82rem;font-weight:600;padding:.5rem 1rem;border-radius:22px;cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--text);border-color:#7c6af7}
+.tab.active{background:rgba(124,106,247,.16);border-color:#7c6af7;color:#fff}
+.rd-legend{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.3rem;font-size:.7rem;color:var(--muted2)}
+.rd-legend span{display:flex;align-items:center;gap:.35rem}
+.rd-legend i{width:9px;height:9px;border-radius:2px;display:block}
+.rd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;align-items:start}
+.rd-col{min-width:0}
+.rd-uni{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:.9rem;padding:.4rem .2rem .7rem}
+.rd-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.rd-n{font-size:.7rem;color:var(--muted2);font-weight:400}
+.rd-card{position:relative;padding:.6rem .7rem;padding-right:2.3rem;border:1px solid var(--border);border-left:3px solid #6b7280;border-radius:9px;margin-bottom:.45rem;background:var(--surface)}
+.rd-date{font-variant-numeric:tabular-nums;color:var(--muted2);font-size:.74rem}
+.rd-t{font-weight:600;font-size:.85rem;line-height:1.32;margin:.15rem 0;color:var(--text)}
+.rd-meta{color:var(--muted);font-size:.7rem;display:flex;justify-content:space-between;gap:.5rem}
+details.rd-card{cursor:pointer}
+details.rd-card>summary{list-style:none;display:block}
+details.rd-card>summary::-webkit-details-marker{display:none}
+.rd-chev{position:absolute;right:.55rem;top:.9rem;width:21px;height:21px;border-radius:50%;background:rgba(124,106,247,.12);border:1px solid var(--border2);color:var(--muted2);font-size:.68rem;display:flex;align-items:center;justify-content:center;transition:all .18s}
+details.rd-card:hover .rd-chev{border-color:#7c6af7;color:var(--text)}
+details.rd-card[open] .rd-chev{background:#7c6af7;border-color:#7c6af7;color:#fff;transform:rotate(180deg)}
+.rd-syn{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);color:var(--muted2);font-size:.75rem;line-height:1.55;cursor:auto}
+.rd-en{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:.05rem .3rem;border-radius:4px;background:rgba(148,163,184,.18);color:#94a3b8;vertical-align:1px;margin-right:.15rem}
+.rd-note{color:var(--muted);font-size:.72rem;margin-top:1.5rem;text-align:center}
+@media(max-width:1100px){.rd-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.rd-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.nvx{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.2rem}
+.nvx-date{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7c6af7;margin-bottom:.6rem}
+.nvx ul{margin:0;padding-left:1.1rem}
+.nvx li{font-size:.86rem;color:var(--muted2);line-height:1.65;margin-bottom:.55rem}
+.nvx li strong{color:var(--text)}
+.lang-btn{display:flex;align-items:center;flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);line-height:0;transition:transform .2s,box-shadow .2s,border-color .2s;text-decoration:none}
+.lang-btn .flag{height:20px;width:30px;display:block}
+.lang-btn:hover{transform:scale(1.08);border-color:var(--accent);box-shadow:0 0 14px rgba(124,106,247,.45)}
+@media(max-width:700px){.lang-btn{margin-left:auto}.burger{margin-left:.3rem}}
+</style>
+<style>
 .wrap{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 4rem}
 h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#4d9fff,#7c6af7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{color:var(--muted2);font-size:.86rem;margin:.5rem 0 1.6rem;line-height:1.65;max-width:76ch}
@@ -36,6 +176,34 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 </style>
 </head>
 <body>
+<nav>
+    <div class="logo" onclick="window.location.href='/fr/'">
+      <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
+    </div>
+    <div class="nav-links">
+      <a onclick="window.location.href='/fr/'">Accueil</a>
+      <a href="/fr/dossiers/" class="doss" style="color:var(--text);font-weight:700">Dossiers</a>
+      <a onclick="window.location.href='/fr/starwars'">Star Wars</a>
+      <a onclick="window.location.href='/fr/marvel'">Marvel</a>
+      <a onclick="window.location.href='/fr/dc'">DC</a>
+      <a onclick="window.location.href='/fr/avatar'">Avatar</a>
+      <a onclick="window.location.href='/fr/a-venir'" class="upc">À venir</a>
+      <a class="news" onclick="window.location.href='/fr/nouveautes'">Nouveautés</a>
+    </div>
+    <div class="nav-sp"></div>
+    <a class="lang-btn" href="/deep-dives/star-wars" title="English version"><svg class="flag" viewBox="0 0 60 30"><clipPath id="ukc"><path d="M0,0 v30 h60 v-30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></a>
+    <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
+  </nav>
+<div id="mmenu">
+  <a href="/fr/">Accueil</a>
+  <a href="/fr/dossiers/" class="cur doss">Dossiers</a>
+  <a href="/fr/starwars">Star Wars</a>
+  <a href="/fr/marvel">Marvel</a>
+  <a href="/fr/dc">DC</a>
+  <a href="/fr/avatar">Avatar</a>
+  <a href="/fr/a-venir" class="upc">À venir</a>
+      <a href="/fr/nouveautes" class="news">Nouveautés</a>
+</div>
 <div class="wrap">
 <h1>Dossier Star Wars<span class='h1sub'>Romans &amp; Comics</span></h1>
 <p class="sub">Si vous souhaitez découvrir les romans et comics Star Wars, vous êtes au bon endroit. Je considère que si vous êtes ici, vous avez déjà regardé les médias animés et live action.<br><br>Les médias omis sont les mêmes que pour la timeline principale, sauf <strong>The Acolyte</strong>, qui est peut-être intéressant à voir si vous lisez les comics : c'est le seul média cinématographique (hors <strong>Star Wars: Young Jedi Adventures</strong>) se déroulant pendant la Haute République.<br><br>Les comics omis sont des one shots inutiles, des comics pour enfants ou des adaptations de médias cinématographiques.</p>
@@ -189,7 +357,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="dt">19 BBY</span><span class="tt">Star Wars Aventures 3 (2020)<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Comic</span></div>
 <div class="screen" data-k="screen" style="--c:#64b5f6"><span class="dt">19 BBY</span><span class="tt">THE CLONE WARS — S5E18 · LE JEDI QUI EN SAVAIT TROP</span><span class="kd">Écran</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="dt">19 BBY</span><span class="tt">Age of Republic Special : Sisters</span><span class="kd">Comic</span></div>
-<div class="screen" data-k="screen" style="--c:#64b5f6"><span class="dt">19 BBY</span><span class="tt">THE CLONE WARS — THE BIG BANG</span><span class="kd">Écran</span></div>
+<div class="screen" data-k="screen" style="--c:#64b5f6"><span class="dt">19 BBY</span><span class="tt">THE CLONE WARS — S6E13 · LE SACRIFICE</span><span class="kd">Écran</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="dt">~21-19 BBY</span><span class="tt">Histoires de l&#x27;hyperespace 9</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="dt">19 BBY</span><span class="tt">Darth Maul : Son of Dathomir 1-4</span><span class="kd">Comic</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="dt">19 BBY</span><span class="tt">Sombre Apprenti</span><span class="kd">Roman</span><div class="note">avant et après Darth Maul: Son of Dathomir</div></div>
@@ -644,6 +812,9 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="dt">34 ABY</span><span class="tt">Star Wars 25 (2020)</span><span class="kd">Comic</span></div>
 <div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="dt">34 ABY</span><span class="tt">Le Dernier Ordre</span><span class="kd">Roman jeunesse</span></div>
 </div>
+<script src="/pwa.js"></script>
+<script data-goatcounter="https://arcanerval.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 <script>
 (function(){
   var chips=document.querySelectorAll('.chip');
