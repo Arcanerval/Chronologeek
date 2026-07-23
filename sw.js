@@ -4,7 +4,7 @@
 const CACHE = 'cg-app';
 const IMG_CACHE = 'cg-img';
 const PRECACHE = [
-  '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html', '/nouveautes.html',
+  '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html', '/whats-new.html', '/upcoming.html',
   '/badges.js', '/pwa.js', '/manifest.json'
 ];
 

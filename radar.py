@@ -76,7 +76,7 @@ def log(msg):
     print(msg)
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr=""):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
@@ -89,7 +89,7 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
         "precision": precision, "era": era, "syn": syn, "wiki": wiki,
-        "syn_fr": syn_fr, "kindKey": kind_key(kind),
+        "syn_fr": syn_fr, "kindKey": kind_key(kind), "title_fr": title_fr,
     })
 
 
@@ -154,7 +154,8 @@ def source_tmdb():
                 try:
                     j = query("en-US")
                     try:                      # synopsis français (même requête, autre langue)
-                        fr = {it.get("id"): (it.get("overview") or "").strip()
+                        fr = {it.get("id"): ((it.get("overview") or "").strip(),
+                                             (it.get("title") or it.get("name") or "").strip())
                               for it in query("fr-FR").get("results", [])}
                     except Exception:
                         fr = {}
@@ -166,7 +167,8 @@ def source_tmdb():
                         add(uni, it.get("title") or it.get("name"), d.isoformat(),
                             d.strftime("%d/%m/%Y"), kind, "TMDB",
                             syn=(it.get("overview") or "").strip(),
-                            syn_fr=fr.get(it.get("id"), ""))
+                            syn_fr=fr.get(it.get("id"), ("", ""))[0],
+                            title_fr=fr.get(it.get("id"), ("", ""))[1])
                         found += 1
                     if page >= j.get("total_pages", 1):
                         break
@@ -531,6 +533,12 @@ def _norm_title(t):
     return re.sub(r"\s+", " ", t).strip()
 
 
+def _clean_fr_title(t):
+    """Retire le suffixe de désambiguïsation : « Legacy (roman) » -> « Legacy »."""
+    return re.sub(r"\s*\((roman|nouvelle|comics?|bd|jeu vid[ée]o|jeu|film|s[ée]rie[^)]*|livre)\)\s*$",
+                  "", t or "", flags=re.I).strip()
+
+
 def _wiki_fr_langlinks(chunk):
     """Passe 1 : liens interlangue (absents sur Wookieepedia, gardés au cas où)."""
     r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
@@ -571,7 +579,7 @@ def _fr_intros(titles):
                 content = (revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
                 txt = clean_wikitext(content)
                 if txt:
-                    out[_norm_title(p.get("title"))] = txt
+                    out[_norm_title(p.get("title"))] = (p.get("title") or "", txt)
         except Exception as e:
             log(f"Résumés FR: lecture lot {i // 20 + 1} — {str(e)[:90]}")
     return out
@@ -621,9 +629,12 @@ def fill_wiki_synopses_fr(entries):
         wanted[e["wiki"]] = fr or e["wiki"]
     intros = _fr_intros(set(wanted.values()))
     for e in todo:
-        txt = intros.get(_norm_title(wanted[e["wiki"]]))
-        if txt:
+        hit = intros.get(_norm_title(wanted[e["wiki"]]))
+        if hit:
+            fr_title, txt = hit
             e["syn_fr"] = txt
+            if fr_title and _norm_title(fr_title) != _norm_title(e["wiki"]):
+                e["title_fr"] = _clean_fr_title(fr_title)
             stats["langlinks" if mapping.get(e["wiki"].lower()) else "titre identique"] += 1
 
     # passe 3 — recherche, validée sur le contenu de la page trouvée
@@ -644,9 +655,11 @@ def fill_wiki_synopses_fr(entries):
             intros2 = _fr_intros(allc)
             for e in rest:
                 for hit in cands.get(e["wiki"], []):
-                    txt = intros2.get(_norm_title(hit))
-                    if txt and _validate(e["wiki"], hit, txt):
-                        e["syn_fr"] = txt
+                    got2 = intros2.get(_norm_title(hit))
+                    if got2 and _validate(e["wiki"], hit, got2[1]):
+                        e["syn_fr"] = got2[1]
+                        if got2[0] and _norm_title(got2[0]) != _norm_title(e["wiki"]):
+                            e["title_fr"] = _clean_fr_title(got2[0])
                         stats["recherche"] += 1
                         break
 

@@ -21,8 +21,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
   </url>
-  <url><loc>https://chronologeek.app/nouveautes</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/nouveautes"/>
+  <url><loc>https://chronologeek.app/upcoming</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
+  </url>
+  <url><loc>https://chronologeek.app/whats-new</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
   <url><loc>https://chronologeek.app/fr/</loc></url>
@@ -30,5 +34,6 @@
   <url><loc>https://chronologeek.app/fr/marvel</loc></url>
   <url><loc>https://chronologeek.app/fr/dc</loc></url>
   <url><loc>https://chronologeek.app/fr/avatar</loc></url>
+  <url><loc>https://chronologeek.app/fr/a-venir</loc></url>
   <url><loc>https://chronologeek.app/fr/nouveautes</loc></url>
 </urlset>
