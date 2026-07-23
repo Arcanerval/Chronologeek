@@ -777,7 +777,7 @@
   "screen": false,
   "wiki": "Free Comic Book Day 2023",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1412,7 +1412,7 @@
   "screen": false,
   "wiki": "Mace Windu",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": false
@@ -1425,7 +1425,7 @@
   "screen": false,
   "wiki": "Padawan",
   "span": null,
-  "kind": "",
+  "kind": "jeunesse",
   "fr": "",
   "en": "",
   "frOk": false
@@ -1749,7 +1749,7 @@
   "screen": false,
   "wiki": "Jar Jar",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "Jar Jar Binks",
   "en": "",
   "frOk": false
@@ -2282,7 +2282,7 @@
   "screen": false,
   "wiki": "Sanctuary",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "",
   "en": "",
   "frOk": true
@@ -2447,7 +2447,7 @@
   "screen": false,
   "wiki": "Thrawn",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "Mitth'raw'nuruodo",
   "en": "",
   "frOk": false
@@ -2473,7 +2473,7 @@
   "screen": false,
   "wiki": "Tarkin",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "Wilhuff Tarkin",
   "en": "",
   "frOk": false
@@ -2657,7 +2657,7 @@
   "screen": false,
   "wiki": "Beckett",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "Tobias Beckett",
   "en": "",
   "frOk": false
@@ -2929,7 +2929,7 @@
   "screen": false,
   "wiki": "A New Dawn",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3546,7 +3546,7 @@
   "screen": false,
   "wiki": "A New Legacy: The Grand Imperial Jubilee",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4135,7 +4135,7 @@
   "screen": false,
   "wiki": "Guardians of the Whills",
   "span": null,
-  "kind": "",
+  "kind": "audio",
   "fr": "A Rogue One Story : Gardiens des Whills",
   "en": "",
   "frOk": true
@@ -4807,7 +4807,7 @@
   "screen": false,
   "wiki": "The Screaming Citadel",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7306,7 +7306,7 @@
   "screen": false,
   "wiki": "Alphabet Squadron",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "L'Escadron Alphabet",
   "en": "",
   "frOk": true
@@ -7319,7 +7319,7 @@
   "screen": false,
   "wiki": "Aftermath",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "Riposte",
   "en": "",
   "frOk": true
@@ -7713,7 +7713,7 @@
   "screen": false,
   "wiki": "Bloodline",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "",
   "en": "",
   "frOk": null
@@ -8033,7 +8033,7 @@
   "screen": false,
   "wiki": "Phasma",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "",
   "en": "",
   "frOk": false

@@ -1,4 +1,1221 @@
 {
+ "__eps__THE CLONE WARS": {
+  "ambush": [
+   1,
+   1,
+   "Ambush",
+   "Embuscade"
+  ],
+  "rising malevolence": [
+   1,
+   2,
+   "Rising Malevolence",
+   "L'aube du Malveillant"
+  ],
+  "shadow of malevolence": [
+   1,
+   3,
+   "Shadow of Malevolence",
+   "L'ombre du Malveillant"
+  ],
+  "destroy malevolence": [
+   1,
+   4,
+   "Destroy Malevolence",
+   "Détruisez le Malveillant"
+  ],
+  "rookies": [
+   1,
+   5,
+   "Rookies",
+   "Les bleus"
+  ],
+  "downfall of a droid": [
+   1,
+   6,
+   "Downfall of a Droid",
+   "La chute du droïde"
+  ],
+  "duel of the droids": [
+   1,
+   7,
+   "Duel of the Droids",
+   "Duel de droïdes"
+  ],
+  "bombad jedi": [
+   1,
+   8,
+   "Bombad Jedi",
+   "Jedi bombad"
+  ],
+  "cloak of darkness": [
+   1,
+   9,
+   "Cloak of Darkness",
+   "La cape des ténèbres"
+  ],
+  "lair of grievous": [
+   1,
+   10,
+   "Lair of Grievous",
+   "L'antre de Grievous"
+  ],
+  "dooku captured": [
+   1,
+   11,
+   "Dooku Captured",
+   "La capture du comte Dooku"
+  ],
+  "the gungan general": [
+   1,
+   12,
+   "The Gungan General",
+   "Le général Gungan"
+  ],
+  "jedi crash": [
+   1,
+   13,
+   "Jedi Crash",
+   "Le crash"
+  ],
+  "defenders of peace": [
+   1,
+   14,
+   "Defenders of Peace",
+   "Les défenseurs de la paix"
+  ],
+  "trespass": [
+   1,
+   15,
+   "Trespass",
+   "Intrusion"
+  ],
+  "the hidden enemy": [
+   1,
+   16,
+   "The Hidden Enemy",
+   "L'ennemi caché"
+  ],
+  "blue shadow virus": [
+   1,
+   17,
+   "Blue Shadow Virus",
+   "Le virus de l'ombre bleue"
+  ],
+  "mystery of a thousand moons": [
+   1,
+   18,
+   "Mystery of a Thousand Moons",
+   "Les mystères des mille lunes"
+  ],
+  "storm over ryloth": [
+   1,
+   19,
+   "Storm Over Ryloth",
+   "Tempête sur Ryloth"
+  ],
+  "innocents of ryloth": [
+   1,
+   20,
+   "Innocents of Ryloth",
+   "Les innocents de Ryloth"
+  ],
+  "liberty on ryloth": [
+   1,
+   21,
+   "Liberty on Ryloth",
+   "Liberté sur Ryloth"
+  ],
+  "hostage crisis": [
+   1,
+   22,
+   "Hostage Crisis",
+   "Prise d'otage"
+  ],
+  "holocron heist": [
+   2,
+   1,
+   "Holocron Heist",
+   "Le vol de l'holocron"
+  ],
+  "cargo of doom": [
+   2,
+   2,
+   "Cargo of Doom",
+   "La dangereuse cargaison"
+  ],
+  "children of the force": [
+   2,
+   3,
+   "Children of the Force",
+   "Les enfants de la Force"
+  ],
+  "senate spy": [
+   2,
+   4,
+   "Senate Spy",
+   "Un espion au sénat"
+  ],
+  "landing at point rain": [
+   2,
+   5,
+   "Landing at Point Rain",
+   "Atterrissage mouvementé"
+  ],
+  "weapons factory": [
+   2,
+   6,
+   "Weapons Factory",
+   "L’usine d'armement"
+  ],
+  "legacy of terror": [
+   2,
+   7,
+   "Legacy of Terror",
+   "L'héritage de la terreur"
+  ],
+  "brain invaders": [
+   2,
+   8,
+   "Brain Invaders",
+   "Les envahisseurs mentaux (alias Les vers parasites)"
+  ],
+  "grievous intrigue": [
+   2,
+   9,
+   "Grievous Intrigue",
+   "L'intrigue de Grievous"
+  ],
+  "the deserter": [
+   2,
+   10,
+   "The Deserter",
+   "Le déserteur"
+  ],
+  "lightsaber lost": [
+   2,
+   11,
+   "Lightsaber Lost",
+   "Le sabre laser perdu"
+  ],
+  "the mandalore plot": [
+   2,
+   12,
+   "The Mandalore Plot",
+   "Le complot de Mandalore"
+  ],
+  "voyage of temptation": [
+   2,
+   13,
+   "Voyage of Temptation",
+   "Le voyage de la tentation"
+  ],
+  "duchess of mandalore": [
+   2,
+   14,
+   "Duchess of Mandalore",
+   "La duchesse de Mandalore"
+  ],
+  "senate murders": [
+   2,
+   15,
+   "Senate Murders",
+   "Meurtres au sénat"
+  ],
+  "cat and mouse": [
+   2,
+   16,
+   "Cat and Mouse",
+   "Le chat et la souris"
+  ],
+  "bounty hunters": [
+   2,
+   17,
+   "Bounty Hunters",
+   "Les chasseurs de prime"
+  ],
+  "the zillo beast": [
+   2,
+   18,
+   "The Zillo Beast",
+   "La bête de Zillo"
+  ],
+  "the zillo beast strikes back": [
+   2,
+   19,
+   "The Zillo Beast Strikes Back",
+   "La bête de Zillo contre-attaque"
+  ],
+  "death trap": [
+   2,
+   20,
+   "Death Trap",
+   "Piège mortel"
+  ],
+  "r2 come home": [
+   2,
+   21,
+   "R2 Come Home",
+   "R2 rentre au bercail"
+  ],
+  "lethal trackdown": [
+   2,
+   22,
+   "Lethal Trackdown",
+   "La traque mortelle"
+  ],
+  "clone cadets": [
+   3,
+   1,
+   "Clone Cadets",
+   "Les clones cadets"
+  ],
+  "arc troopers": [
+   3,
+   2,
+   "ARC Troopers",
+   "Les ARC troopers"
+  ],
+  "supply lines": [
+   3,
+   3,
+   "Supply Lines",
+   "Les renforts"
+  ],
+  "sphere of influence": [
+   3,
+   4,
+   "Sphere of Influence",
+   "La sphère de l'influence"
+  ],
+  "corruption": [
+   3,
+   5,
+   "Corruption",
+   "Corruption"
+  ],
+  "the academy": [
+   3,
+   6,
+   "The Academy",
+   "L’académie"
+  ],
+  "assassin": [
+   3,
+   7,
+   "Assassin",
+   "Assassin"
+  ],
+  "evil plans": [
+   3,
+   8,
+   "Evil Plans",
+   "Plans malveillants"
+  ],
+  "hunt for ziro": [
+   3,
+   9,
+   "Hunt for Ziro",
+   "La chasse de Ziro"
+  ],
+  "heroes on both sides": [
+   3,
+   10,
+   "Heroes on Both Sides",
+   "Héros des deux côtés"
+  ],
+  "pursuit of peace": [
+   3,
+   11,
+   "Pursuit of Peace",
+   "À la poursuite de la paix"
+  ],
+  "nightsisters": [
+   3,
+   12,
+   "Nightsisters",
+   "Les sœurs de la nuit"
+  ],
+  "monster": [
+   3,
+   13,
+   "Monster",
+   "Monstre"
+  ],
+  "witches of the mist": [
+   3,
+   14,
+   "Witches of the Mist",
+   "Les sorcières de la brume"
+  ],
+  "overlords": [
+   3,
+   15,
+   "Overlords",
+   "Les grands seigneurs"
+  ],
+  "altar of mortis": [
+   3,
+   16,
+   "Altar of Mortis",
+   "L’autel de Mortis"
+  ],
+  "ghosts of mortis": [
+   3,
+   17,
+   "Ghosts of Mortis",
+   "Les fantômes de Mortis"
+  ],
+  "the citadel": [
+   3,
+   18,
+   "The Citadel",
+   "La citadelle"
+  ],
+  "counterattack": [
+   3,
+   19,
+   "Counterattack",
+   "Contre-attaque"
+  ],
+  "citadel rescue": [
+   3,
+   20,
+   "Citadel Rescue",
+   "Sauvetage à la citadelle"
+  ],
+  "padawan lost": [
+   3,
+   21,
+   "Padawan Lost",
+   "La padawan perdue"
+  ],
+  "wookiee hunt": [
+   3,
+   22,
+   "Wookiee Hunt",
+   "La chasse au wookie"
+  ],
+  "water war": [
+   4,
+   1,
+   "Water War",
+   "Guerre aquatique"
+  ],
+  "gungan attack": [
+   4,
+   2,
+   "Gungan Attack",
+   "L'attaque gungan"
+  ],
+  "prisoners": [
+   4,
+   3,
+   "Prisoners",
+   "Prisonniers"
+  ],
+  "shadow warrior": [
+   4,
+   4,
+   "Shadow Warrior",
+   "Le guerrier de l'ombre"
+  ],
+  "mercy mission": [
+   4,
+   5,
+   "Mercy Mission",
+   "Mission humanitaire"
+  ],
+  "nomad droids": [
+   4,
+   6,
+   "Nomad Droids",
+   "Les droïdes nomades"
+  ],
+  "darkness on umbara": [
+   4,
+   7,
+   "Darkness on Umbara",
+   "Obscurité sur Umbara"
+  ],
+  "the general": [
+   4,
+   8,
+   "The General",
+   "Le général"
+  ],
+  "plan of dissent": [
+   4,
+   9,
+   "Plan of Dissent",
+   "Insubordination"
+  ],
+  "carnage of krell": [
+   4,
+   10,
+   "Carnage of Krell",
+   "Le carnage de Krell"
+  ],
+  "kidnapped": [
+   4,
+   11,
+   "Kidnapped",
+   "L'enlèvement"
+  ],
+  "slaves of the republic": [
+   4,
+   12,
+   "Slaves of the Republic",
+   "Les esclaves de la République"
+  ],
+  "escape from kadavo": [
+   4,
+   13,
+   "Escape from Kadavo",
+   "Les évadés de Kadavo"
+  ],
+  "a friend in need": [
+   4,
+   14,
+   "A Friend in Need",
+   "Un ami dans le besoin"
+  ],
+  "deception": [
+   4,
+   15,
+   "Deception",
+   "Manigance"
+  ],
+  "friends and enemies": [
+   4,
+   16,
+   "Friends and Enemies",
+   "Amis et ennemis"
+  ],
+  "the box": [
+   4,
+   17,
+   "The Box",
+   "La boîte"
+  ],
+  "crisis on naboo": [
+   4,
+   18,
+   "Crisis on Naboo",
+   "Crise sur Naboo"
+  ],
+  "massacre": [
+   4,
+   19,
+   "Massacre",
+   "Le massacre"
+  ],
+  "bounty": [
+   4,
+   20,
+   "Bounty",
+   "Les chasseurs"
+  ],
+  "brothers": [
+   4,
+   21,
+   "Brothers",
+   "Les frères"
+  ],
+  "revenge": [
+   4,
+   22,
+   "Revenge",
+   "Vengeance"
+  ],
+  "revival": [
+   5,
+   1,
+   "Revival",
+   "Retour en force"
+  ],
+  "a war on two fronts": [
+   5,
+   2,
+   "A War on Two Fronts",
+   "Une guerre sur deux fronts"
+  ],
+  "front runners": [
+   5,
+   3,
+   "Front Runners",
+   "Les meneurs"
+  ],
+  "the soft war": [
+   5,
+   4,
+   "The Soft War",
+   "La reconquête"
+  ],
+  "tipping points": [
+   5,
+   5,
+   "Tipping Points",
+   "Points de rupture"
+  ],
+  "the gathering": [
+   5,
+   6,
+   "The Gathering",
+   "La collecte"
+  ],
+  "a test of strength": [
+   5,
+   7,
+   "A Test of Strength",
+   "Le test de résistance"
+  ],
+  "bound for rescue": [
+   5,
+   8,
+   "Bound for Rescue",
+   "Sauvetage en cours"
+  ],
+  "a necessary bond": [
+   5,
+   9,
+   "A Necessary Bond",
+   "Une alliance nécessaire"
+  ],
+  "secret weapons": [
+   5,
+   10,
+   "Secret Weapons",
+   "Les armes secrètes"
+  ],
+  "a sunny day in the void": [
+   5,
+   11,
+   "A Sunny Day in the Void",
+   "Une journée ensoleillée dans le néant"
+  ],
+  "missing in action": [
+   5,
+   12,
+   "Missing in Action",
+   "Porté disparu"
+  ],
+  "point of no return": [
+   5,
+   13,
+   "Point of No Return",
+   "Point de non-retour"
+  ],
+  "eminence": [
+   5,
+   14,
+   "Eminence",
+   "L'alliance"
+  ],
+  "shades of reason": [
+   5,
+   15,
+   "Shades of Reason",
+   "La conspiration"
+  ],
+  "the lawless": [
+   5,
+   16,
+   "The Lawless",
+   "Sans foi ni loi"
+  ],
+  "sabotage": [
+   5,
+   17,
+   "Sabotage",
+   "L'attentat"
+  ],
+  "the jedi who knew too much": [
+   5,
+   18,
+   "The Jedi Who Knew Too Much",
+   "Le Jedi qui en savait trop"
+  ],
+  "to catch a jedi": [
+   5,
+   19,
+   "To Catch a Jedi",
+   "À la poursuite d'un Jedi"
+  ],
+  "the wrong jedi": [
+   5,
+   20,
+   "The Wrong Jedi",
+   "La fausse coupable"
+  ],
+  "the unknown": [
+   6,
+   1,
+   "The Unknown",
+   "L'inconnu"
+  ],
+  "conspiracy": [
+   6,
+   2,
+   "Conspiracy",
+   "Le complot"
+  ],
+  "fugitive": [
+   6,
+   3,
+   "Fugitive",
+   "Le fugitif"
+  ],
+  "orders": [
+   6,
+   4,
+   "Orders",
+   "Les ordres"
+  ],
+  "an old friend": [
+   6,
+   5,
+   "An Old Friend",
+   "Une vieille connaissance"
+  ],
+  "the rise of clovis": [
+   6,
+   6,
+   "The Rise of Clovis",
+   "L'ascension de Clovis"
+  ],
+  "crisis at the heart": [
+   6,
+   7,
+   "Crisis at the Heart",
+   "Système en crise"
+  ],
+  "the disappeared 1": [
+   6,
+   8,
+   "The Disappeared (1)",
+   "Les disparus (1/2)"
+  ],
+  "the disappeared 2": [
+   6,
+   9,
+   "The Disappeared (2)",
+   "Les disparus (2/2)"
+  ],
+  "the lost one": [
+   6,
+   10,
+   "The Lost One",
+   "Le Jedi oublié"
+  ],
+  "voices": [
+   6,
+   11,
+   "Voices",
+   "Les voix"
+  ],
+  "destiny": [
+   6,
+   12,
+   "Destiny",
+   "La destinée"
+  ],
+  "sacrifice": [
+   6,
+   13,
+   "Sacrifice",
+   "Le sacrifice"
+  ],
+  "the bad batch": [
+   7,
+   1,
+   "The Bad Batch",
+   "Le Bad Batch"
+  ],
+  "a distant echo": [
+   7,
+   2,
+   "A Distant Echo",
+   "Un écho distant"
+  ],
+  "on the wings of keeradaks": [
+   7,
+   3,
+   "On the Wings of Keeradaks",
+   "Sur les ailes des Keeradaks"
+  ],
+  "unfinished business": [
+   7,
+   4,
+   "Unfinished Business",
+   "Une affaire en suspens"
+  ],
+  "gone with a trace": [
+   7,
+   5,
+   "Gone With a Trace",
+   "Une amitié de haut vol"
+  ],
+  "deal no deal": [
+   7,
+   6,
+   "Deal No Deal",
+   "Une affaire douteuse"
+  ],
+  "dangerous debt": [
+   7,
+   7,
+   "Dangerous Debt",
+   "Une dette dangereuse"
+  ],
+  "together again": [
+   7,
+   8,
+   "Together Again",
+   "Réunis à nouveau"
+  ],
+  "old friends not forgotten": [
+   7,
+   9,
+   "Old Friends Not Forgotten",
+   "Amis envers et contre tout"
+  ],
+  "the phantom apprentice": [
+   7,
+   10,
+   "The Phantom Apprentice",
+   "L'Apprentie fantôme"
+  ],
+  "shattered": [
+   7,
+   11,
+   "Shattered",
+   "Anéantie"
+  ],
+  "victory and death": [
+   7,
+   12,
+   "Victory and Death",
+   "La victoire et la mort"
+  ]
+ },
+ "__eps__STAR WARS REBELS": {
+  "droids in distress": [
+   1,
+   1,
+   "Droids in Distress",
+   "Droïdes en détresse"
+  ],
+  "fighter flight": [
+   1,
+   2,
+   "Fighter Flight",
+   "La Mission impossible"
+  ],
+  "rise of the old masters": [
+   1,
+   3,
+   "Rise of the Old Masters",
+   "Au secours des anciens maîtres"
+  ],
+  "breaking ranks": [
+   1,
+   4,
+   "Breaking Ranks",
+   "Le Cadet impérial"
+  ],
+  "out of darkness": [
+   1,
+   5,
+   "Out of Darkness",
+   "Hors des ténèbres"
+  ],
+  "empire day": [
+   1,
+   6,
+   "Empire Day",
+   "Le Jour de l'Empire"
+  ],
+  "gathering forces": [
+   1,
+   7,
+   "Gathering Forces",
+   "La Force sous contrôle"
+  ],
+  "path of the jedi": [
+   1,
+   8,
+   "Path of the Jedi",
+   "L'Épreuve du Jedi"
+  ],
+  "idiot s array": [
+   1,
+   9,
+   "Idiot's Array",
+   "La Main gagnante"
+  ],
+  "vision of hope": [
+   1,
+   10,
+   "Vision of Hope",
+   "Vision d'espoir"
+  ],
+  "call to action": [
+   1,
+   11,
+   "Call to Action",
+   "L'Appel de l'action"
+  ],
+  "rebel resolve": [
+   1,
+   12,
+   "Rebel Resolve",
+   "Les Rebelles résolus"
+  ],
+  "fire across the galaxy": [
+   1,
+   13,
+   "Fire Across the Galaxy",
+   "Galaxie en flammes"
+  ],
+  "the lost commanders": [
+   2,
+   1,
+   "The Lost Commanders",
+   "Les Commandants perdus"
+  ],
+  "relics of the old republic": [
+   2,
+   2,
+   "Relics of the Old Republic",
+   "Les Reliques de l’Ancienne République"
+  ],
+  "always two there are": [
+   2,
+   3,
+   "Always Two There Are",
+   "Toujours par deux ils vont"
+  ],
+  "brothers of the broken horn": [
+   2,
+   4,
+   "Brothers of the Broken Horn",
+   "Les Frères du Broken Horn"
+  ],
+  "wings of the master": [
+   2,
+   5,
+   "Wings of the Master",
+   "Le Faiseur d'ailes"
+  ],
+  "blood sisters": [
+   2,
+   6,
+   "Blood Sisters",
+   "Retrouvailles"
+  ],
+  "stealth strike": [
+   2,
+   7,
+   "Stealth Strike",
+   "Le Commando"
+  ],
+  "the future of the force": [
+   2,
+   8,
+   "The Future of the Force",
+   "L'Avenir de la Force"
+  ],
+  "legacy": [
+   2,
+   9,
+   "Legacy",
+   "L’Héritage"
+  ],
+  "a princess on lothal": [
+   2,
+   10,
+   "A Princess on Lothal",
+   "Une princesse sur Lothal"
+  ],
+  "the protector of concord dawn": [
+   2,
+   11,
+   "The Protector of Concord Dawn",
+   "Duel entre Mandaloriens"
+  ],
+  "legends of the lasat": [
+   2,
+   12,
+   "Legends of the Lasat",
+   "La Légende des Lasats"
+  ],
+  "the call": [
+   2,
+   13,
+   "The Call",
+   "L'Appel"
+  ],
+  "homecoming": [
+   2,
+   14,
+   "Homecoming",
+   "Retour au bercail"
+  ],
+  "the honorable ones": [
+   2,
+   15,
+   "The Honorable Ones",
+   "À la loyale"
+  ],
+  "shroud of darkness": [
+   2,
+   16,
+   "Shroud of Darkness",
+   "Au cœur des ténèbres"
+  ],
+  "the forgotten droid": [
+   2,
+   17,
+   "The Forgotten Droid",
+   "Mon ami le droïde"
+  ],
+  "the mystery of chopper base": [
+   2,
+   18,
+   "The Mystery of Chopper Base",
+   "La Base mystérieuse"
+  ],
+  "twilight of the apprentice": [
+   2,
+   19,
+   "Twilight of the Apprentice",
+   "La Chute de l'apprentie"
+  ],
+  "steps into shadow": [
+   3,
+   1,
+   "Steps Into Shadow",
+   "Au cœur des ténèbres"
+  ],
+  "the holocrons of fate": [
+   3,
+   2,
+   "The Holocrons of Fate",
+   "L'Épreuve du destin"
+  ],
+  "the antilles extraction": [
+   3,
+   3,
+   "The Antilles Extraction",
+   "Cadets en danger"
+  ],
+  "hera s heroes": [
+   3,
+   4,
+   "Hera's Heroes",
+   "Le Culte des ancêtres"
+  ],
+  "the last battle": [
+   3,
+   5,
+   "The Last Battle",
+   "Le Dernier Combat"
+  ],
+  "imperial supercommandos": [
+   3,
+   6,
+   "Imperial Supercommandos",
+   "Un ralliement imprévu"
+  ],
+  "iron squadron": [
+   3,
+   7,
+   "Iron Squadron",
+   "Affaire de famille"
+  ],
+  "the wynkahthu job": [
+   3,
+   8,
+   "The Wynkahthu Job",
+   "Mission périlleuse"
+  ],
+  "an inside man": [
+   3,
+   9,
+   "An Inside Man",
+   "La Taupe"
+  ],
+  "visions and voices": [
+   3,
+   10,
+   "Visions and Voices",
+   "Les Forces occultes"
+  ],
+  "ghosts of geonosis 1": [
+   3,
+   11,
+   "Ghosts of Geonosis (1)",
+   "Les Fantômes de Géonosis, première partie"
+  ],
+  "ghosts of geonosis 2": [
+   3,
+   12,
+   "Ghosts of Geonosis (2)",
+   "Les Fantômes de Géonosis, deuxième partie"
+  ],
+  "warhead": [
+   3,
+   13,
+   "Warhead",
+   "Mission de repérage"
+  ],
+  "trials of the darksaber": [
+   3,
+   14,
+   "Trials of the Darksaber",
+   "Le Sabre du pouvoir"
+  ],
+  "legacy of mandalore": [
+   3,
+   15,
+   "Legacy of Mandalore",
+   "L'Héritage de Mandalore"
+  ],
+  "through imperial eyes": [
+   3,
+   16,
+   "Through Imperial Eyes",
+   "Un espion en danger"
+  ],
+  "secret cargo": [
+   3,
+   17,
+   "Secret Cargo",
+   "Rencontre imprévue"
+  ],
+  "double agent droid": [
+   3,
+   18,
+   "Double Agent Droid",
+   "La Trahison de Chopper"
+  ],
+  "twin suns": [
+   3,
+   19,
+   "Twin Suns",
+   "Au cœur du désert"
+  ],
+  "zero hour 1": [
+   3,
+   20,
+   "Zero Hour (1)",
+   "Assiégés, première partie"
+  ],
+  "zero hour 2": [
+   3,
+   21,
+   "Zero Hour (2)",
+   "Assiégés, deuxième partie"
+  ],
+  "heroes of mandalore 1": [
+   4,
+   1,
+   "Heroes of Mandalore (1)",
+   "Les Héros de Mandalore (1)"
+  ],
+  "heroes of mandalore 2": [
+   4,
+   2,
+   "Heroes of Mandalore (2)",
+   "Les Héros de Mandalore (2)"
+  ],
+  "in the name of the rebellion 1": [
+   4,
+   3,
+   "In the Name of the Rebellion (1)",
+   "Au nom de la rébellion (1)"
+  ],
+  "in the name of the rebellion 2": [
+   4,
+   4,
+   "In the Name of the Rebellion (2)",
+   "Au nom de la rébellion (2)"
+  ],
+  "the occupation": [
+   4,
+   5,
+   "The Occupation",
+   "L'Occupation"
+  ],
+  "flight of the defender": [
+   4,
+   6,
+   "Flight of the Defender",
+   "Le Vol du Defender"
+  ],
+  "kindred": [
+   4,
+   7,
+   "Kindred",
+   "L’Âme-sœur"
+  ],
+  "crawler commandeers": [
+   4,
+   8,
+   "Crawler Commandeers",
+   "Réquisition de chenille"
+  ],
+  "rebel assault": [
+   4,
+   9,
+   "Rebel Assault",
+   "L'Assaut des Rebelles"
+  ],
+  "jedi night": [
+   4,
+   10,
+   "Jedi Night",
+   "Mission de sauvetage"
+  ],
+  "dume": [
+   4,
+   11,
+   "DUME",
+   "Les Loups"
+  ],
+  "wolves and a door": [
+   4,
+   12,
+   "Wolves and a Door",
+   "Les Loups et le passage"
+  ],
+  "a world between worlds": [
+   4,
+   13,
+   "A World Between Worlds",
+   "À la croisée des mondes"
+  ],
+  "a fool s hope": [
+   4,
+   14,
+   "A Fool's Hope",
+   "Le Dernier Espoir"
+  ],
+  "family reunion and farewell 1": [
+   4,
+   15,
+   "Family Reunion - and Farewell (1)",
+   "Réunion de famille, première partie"
+  ],
+  "family reunion and farewell 2": [
+   4,
+   16,
+   "Family Reunion - and Farewell (2)",
+   "Réunion de famille, deuxième partie"
+  ]
+ },
+ "__version__": 2,
  "A Crash of Fate": {
   "cats": [
    "2019 releases",
@@ -18,9 +1235,16 @@
  },
  "A New Dawn": {
   "cats": [
-   "Canon articles",
-   "New Republic propaganda",
-   "Paintings and posters"
+   "2014 releases",
+   "Canon adult novels",
+   "Canon media",
+   "Facebook usages with the same archivedate value",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "Star Wars Rebels",
+   "TikTok usages with the same archivedate value"
   ],
   "fr": "",
   "frOk": null
@@ -52,9 +1276,20 @@
  },
  "Aftermath": {
   "cats": [
-   "Canon articles",
-   "General location stubs",
-   "Grand Arena battlefields"
+   "2015 releases",
+   "ArchiveAccess usages with archivetoday links/Social",
+   "Canon adult novels",
+   "Canon media",
+   "Facebook usages with the same archivedate value",
+   "Journey to Star Wars: The Force Awakens",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "Twitter usages with the same archivedate value",
+   "WebCite usages with author but no work parameter",
+   "WebCite usages with unnecessary work parameters",
+   "WebCite usages without work parameter"
   ],
   "fr": "Riposte",
   "frOk": true
@@ -461,34 +1696,14 @@
  },
  "Ahsoka": {
   "cats": [
-   "Articles in need of updating",
-   "Articles needing illustration",
-   "Articles with an excess of redlinks",
-   "Articles with conflicting sources",
-   "Articles with infobox galleries",
-   "Articles with multiple issues",
-   "Blue Squadron (Galactic Republic) personnel",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "Exiled Jedi",
-   "Females",
-   "Force-Sensitive Outcasts",
-   "Fulcrum",
-   "Individuals with she/her pronouns",
-   "Jedi Commanders",
-   "Jedi Purge survivors",
-   "Jedi trainees of the Jedi Order",
-   "Mechanics",
-   "Members of Bail Organa's resistance movement",
-   "Officers of the 501st Legion (Galactic Republic)",
-   "Phoenix Cell personnel",
-   "Revived individuals",
-   "SWIA usages with cardname",
-   "Shadow Squadron personnel",
-   "Super-semi-protected pages",
-   "Tano family",
-   "Togruta",
-   "Web citation template usages with author or date parameters"
+   "ArchiveAccess usages with archivetoday links/Social",
+   "Canon live-action television series",
+   "Canon media",
+   "Disney+ Originals",
+   "Instagram usages with the same archivedate value",
+   "Real-world media",
+   "Twitter usages with the same archivedate value",
+   "WebCite usages with unnecessary work parameters"
   ],
   "fr": "Star Wars: Ahsoka",
   "frOk": false
@@ -507,8 +1722,10 @@
  },
  "Alphabet Squadron": {
   "cats": [
-   "Canon articles",
-   "New Republic intelligence organizations"
+   "Book stubs",
+   "Canon media",
+   "Canon novel series",
+   "Real-world media"
   ],
   "fr": "L'Escadron Alphabet",
   "frOk": true
@@ -649,18 +1866,13 @@
  },
  "Beckett": {
   "cats": [
-   "ArchiveAccess usages with archivetoday links/Social",
-   "Articles in need of updating",
-   "Articles with unpopulated family parameters",
-   "Canon articles",
-   "Humans",
-   "Impersonators",
-   "Individuals with he/him pronouns",
-   "Males",
-   "Thieves",
-   "Tobias Beckett's crew members",
-   "Twitter usages with the same archivedate value",
-   "WebCite usages with unnecessary work parameters"
+   "2018 releases",
+   "Canon media",
+   "Canon one-shot comics",
+   "Marvel Comics one-shot comics",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media"
   ],
   "fr": "Tobias Beckett",
   "frOk": false
@@ -682,10 +1894,16 @@
  },
  "Bloodline": {
   "cats": [
-   "Legends articles",
-   "Praxon products",
-   "Speeder bike models",
-   "Vehicle stubs"
+   "2016 releases",
+   "Canon adult novels",
+   "Canon media",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "TOMCite usages with non-Database articles",
+   "Twitter usages with the same archivedate value",
+   "WebCite usages with unnecessary work parameters"
   ],
   "fr": "",
   "frOk": null
@@ -2225,8 +3443,14 @@
  },
  "Free Comic Book Day 2023": {
   "cats": [
-   "Real-world articles",
-   "Real-world events"
+   "2023 releases",
+   "Canon media",
+   "Dark Horse Comics one-shot comics",
+   "Free Comic Book Day comics",
+   "Media that should be listed in Appearances",
+   "Real-world media",
+   "Star Wars: The High Republic one-shot comics",
+   "WebCite usages without work parameter"
   ],
   "fr": "",
   "frOk": null
@@ -2258,10 +3482,7 @@
   "frOk": false
  },
  "Free Comic Book Day 2026": {
-  "cats": [
-   "Real-world articles",
-   "Real-world events"
-  ],
+  "cats": [],
   "fr": "",
   "frOk": null
  },
@@ -2309,8 +3530,19 @@
  },
  "Guardians of the Whills": {
   "cats": [
-   "Canon articles",
-   "Force-based organizations"
+   "2017 releases",
+   "ArchiveAccess usages with archivetoday links/Social",
+   "Articles that need plot summary",
+   "Articles with an excess of redlinks",
+   "Books without audiobook",
+   "Canon media",
+   "Canon middle-grade novels",
+   "Facebook usages with the same archivedate value",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "WebCite usages without work parameter"
   ],
   "fr": "A Rogue One Story : Gardiens des Whills",
   "frOk": true
@@ -2703,31 +3935,17 @@
  },
  "Jar Jar": {
   "cats": [
-   "Admirals and generals",
-   "ArchiveAccess usages with archivetoday links",
-   "Articles in need of updating",
-   "Articles needing illustration",
-   "Articles to be expanded",
-   "Articles with multiple issues",
-   "Articles with unpopulated family parameters",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "Galactic Empire senators",
-   "Galactic Republic senators",
-   "Incomplete lists",
-   "Individuals with he/him pronouns",
-   "Legislators and councilors",
-   "Males",
-   "Naboo residents",
-   "Otolla Gungans",
-   "Reddit usages with the same archivedate value",
-   "Semi-protected pages",
-   "Thieves",
-   "Twitch usages with the same archivedate value",
-   "Twitter usages with the same archivedate value",
-   "WebCite usages with unnecessary work parameters",
-   "WebCite usages without work parameter",
-   "Web citation template usages with author or date parameters"
+   "2026 releases",
+   "ArchiveAccess usages with archivetoday links/Social",
+   "Articles that need plot summary",
+   "Articles with an excess of redlinks",
+   "Canon media",
+   "Canon one-shot comics",
+   "Marvel Comics one-shot comics",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media",
+   "Twitter usages with the same archivedate value"
   ],
   "fr": "Jar Jar Binks",
   "frOk": false
@@ -2952,25 +4170,13 @@
  },
  "Mace Windu": {
   "cats": [
-   "Actors",
-   "Articles in need of updating",
-   "Articles with infobox galleries",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "EA usages with the same archivedate value",
-   "Humans",
-   "Individuals with he/him pronouns",
-   "Jedi Generals",
-   "Jedi High Council members",
-   "Jedi Purge victims",
-   "Jedi Vanguards",
-   "Jedi assault team members",
-   "Males",
-   "Members of Lightning Squadron",
-   "Members of the 187th Legion",
-   "Pilots",
-   "Semi-protected pages",
-   "WebCite usages with unnecessary work parameters"
+   "Canon comic miniseries",
+   "Canon media",
+   "Comic stubs",
+   "Instagram usages with the same archivedate value",
+   "Marvel Comics comic miniseries",
+   "Real-world media",
+   "WebCite usages with author but no work parameter"
   ],
   "fr": "Mace Windu",
   "frOk": false
@@ -3081,30 +4287,38 @@
  },
  "Padawan": {
   "cats": [
-   "Articles to be expanded",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "Jedi ranks"
+   "2022 releases",
+   "Articles that need plot summary",
+   "Articles with an excess of redlinks",
+   "Canon media",
+   "Canon young-adult novels",
+   "Incomplete Appearances",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "Threads usages with the same archivedate value"
   ],
   "fr": "Padawan",
   "frOk": false
  },
  "Phasma": {
   "cats": [
-   "Articles in need of updating",
-   "Articles to be expanded",
-   "Articles with infobox galleries",
-   "Articles with multiple issues",
-   "Canon articles",
-   "Captains",
-   "Females",
-   "Incomplete lists",
-   "Individuals with she/her pronouns",
-   "Pilots",
-   "Scyre clan members",
-   "Stormtrooper officers of the First Order",
+   "2017 releases",
+   "ArchiveAccess usages with archivetoday links/Social",
+   "Articles with an excess of redlinks",
+   "Canon adult novels",
+   "Canon media",
+   "Incomplete Appearances",
+   "Journey to Star Wars: The Last Jedi",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "Target usages with the same archivedate value",
    "Twitter usages with the same archivedate value",
-   "WebCite usages with unnecessary work parameters"
+   "WebCite usages without work parameter",
+   "Web citation template usages with author or date parameters"
   ],
   "fr": "Phasma",
   "frOk": false
@@ -3535,13 +4749,18 @@
  },
  "Sanctuary": {
   "cats": [
-   "Astronomical objects in the Outer Rim Territories",
-   "Astronomical objects in the Slice",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "Locations unlisted in the Appendix",
-   "Safe worlds",
-   "Wookieepedia Comprehensive articles"
+   "2025 releases",
+   "ArchiveAccess usages with archivetoday links/Social",
+   "Articles that need plot summary",
+   "Articles with an excess of redlinks",
+   "Bluesky usages with the same archivedate value",
+   "Canon adult novels",
+   "Canon media",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media",
+   "Twitter usages with the same archivedate value"
   ],
   "fr": "Sanctuary",
   "frOk": true
@@ -4795,12 +6014,7 @@
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Ballad of 264": {
-  "cats": [
-   "2016 releases",
-   "Magazine issue stubs",
-   "Real-world media",
-   "Star Wars Rebels Magazine issues"
-  ],
+  "cats": [],
   "fr": "",
   "frOk": null
  },
@@ -4820,22 +6034,12 @@
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Line of Duty": {
-  "cats": [
-   "2016 releases",
-   "Magazine issue stubs",
-   "Real-world media",
-   "Star Wars Rebels Magazine issues"
-  ],
+  "cats": [],
   "fr": "",
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Second Chance": {
-  "cats": [
-   "2016 releases",
-   "Magazine issue stubs",
-   "Real-world media",
-   "Star Wars Rebels Magazine issues"
-  ],
+  "cats": [],
   "fr": "",
   "frOk": null
  },
@@ -4850,12 +6054,7 @@
   "frOk": null
  },
  "Star Wars Rebels Magazine: The Wrong Crowd": {
-  "cats": [
-   "2017 releases",
-   "Magazine issue stubs",
-   "Real-world media",
-   "Star Wars Rebels Magazine issues"
-  ],
+  "cats": [],
   "fr": "",
   "frOk": null
  },
@@ -4938,30 +6137,15 @@
  },
  "Tarkin": {
   "cats": [
-   "Archiveurl usages with non-Wayback URLs",
-   "Articles in need of updating",
-   "Articles needing illustration",
-   "Articles with infobox galleries",
-   "Articles with multiple issues",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "Death Star residents",
-   "Eriaduans",
-   "Grand Moffs of the Galactic Empire",
-   "Humans",
-   "Imperial Navy admirals of the Galactic Empire",
-   "Individuals with he/him pronouns",
-   "LGBTQIA+ individuals",
-   "Males",
-   "Move protected pages",
-   "Republic Army officers",
-   "Republic Navy admirals",
-   "Republic Navy captains",
-   "SWU usages with the same archivedate value",
-   "Tarkin family",
-   "Twitter usages with the same archivedate value",
-   "WebCite usages with unnecessary work parameters",
-   "Web citation template usages with author or date parameters"
+   "2014 releases",
+   "Articles with an excess of redlinks",
+   "Canon adult novels",
+   "Canon media",
+   "Facebook usages with the same archivedate value",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Media with defined ISBN",
+   "Real-world media"
   ],
   "fr": "Wilhuff Tarkin",
   "frOk": false
@@ -6381,9 +7565,9 @@
  },
  "The Screaming Citadel": {
   "cats": [
-   "Canon articles",
-   "Structure stubs",
-   "Structures"
+   "Canon media",
+   "Comic maxi-series and crossover events",
+   "Real-world media"
   ],
   "fr": "",
   "frOk": null
@@ -6410,40 +7594,11 @@
  },
  "Thrawn": {
   "cats": [
-   "96th Task Force personnel",
-   "ArchiveAccess usages with archivetoday links/Social",
-   "Archiveurl usages with non-Wayback URLs",
-   "Articles in need of major additions",
-   "Articles in need of updating",
-   "Articles to be expanded",
-   "Articles with incorrect tense",
-   "Articles with infobox galleries",
-   "Authors",
-   "Canon articles",
-   "Canon articles with Legends counterparts",
-   "Chiss",
-   "Chiss Expansionary Defense Fleet officers",
-   "Collectors",
-   "Executive officers",
-   "Facebook usages with the same archivedate value",
-   "Grand Admirals of the Galactic Empire",
-   "Individuals honored with -odo",
-   "Individuals with he/him pronouns",
-   "Males",
-   "Martial artists",
-   "Members of Imperial High Command",
-   "Mitth family",
-   "Naporar residents",
-   "Personnel of Thrawn's forces",
-   "Pilots",
-   "SWU usages with the same archivedate value",
-   "Seventh Fleet personnel",
-   "Shadow Council members",
-   "Trial-borns",
-   "Twitter usages with custom archivedate",
-   "Twitter usages with the same archivedate value",
-   "Weapons officers",
-   "WebCite usages with author but no work parameter",
+   "Canon comic miniseries",
+   "Canon media",
+   "Comic book adaptations",
+   "Marvel Comics comic miniseries",
+   "Real-world media",
    "WebCite usages with unnecessary work parameters"
   ],
   "fr": "Mitth'raw'nuruodo",
@@ -6709,1221 +7864,5 @@
   ],
   "fr": "Yoda 1",
   "frOk": true
- },
- "__eps__THE CLONE WARS": {
-  "ambush": [
-   1,
-   1,
-   "Ambush",
-   "Embuscade"
-  ],
-  "rising malevolence": [
-   1,
-   2,
-   "Rising Malevolence",
-   "L'aube du Malveillant"
-  ],
-  "shadow of malevolence": [
-   1,
-   3,
-   "Shadow of Malevolence",
-   "L'ombre du Malveillant"
-  ],
-  "destroy malevolence": [
-   1,
-   4,
-   "Destroy Malevolence",
-   "Détruisez le Malveillant"
-  ],
-  "rookies": [
-   1,
-   5,
-   "Rookies",
-   "Les bleus"
-  ],
-  "downfall of a droid": [
-   1,
-   6,
-   "Downfall of a Droid",
-   "La chute du droïde"
-  ],
-  "duel of the droids": [
-   1,
-   7,
-   "Duel of the Droids",
-   "Duel de droïdes"
-  ],
-  "bombad jedi": [
-   1,
-   8,
-   "Bombad Jedi",
-   "Jedi bombad"
-  ],
-  "cloak of darkness": [
-   1,
-   9,
-   "Cloak of Darkness",
-   "La cape des ténèbres"
-  ],
-  "lair of grievous": [
-   1,
-   10,
-   "Lair of Grievous",
-   "L'antre de Grievous"
-  ],
-  "dooku captured": [
-   1,
-   11,
-   "Dooku Captured",
-   "La capture du comte Dooku"
-  ],
-  "the gungan general": [
-   1,
-   12,
-   "The Gungan General",
-   "Le général Gungan"
-  ],
-  "jedi crash": [
-   1,
-   13,
-   "Jedi Crash",
-   "Le crash"
-  ],
-  "defenders of peace": [
-   1,
-   14,
-   "Defenders of Peace",
-   "Les défenseurs de la paix"
-  ],
-  "trespass": [
-   1,
-   15,
-   "Trespass",
-   "Intrusion"
-  ],
-  "the hidden enemy": [
-   1,
-   16,
-   "The Hidden Enemy",
-   "L'ennemi caché"
-  ],
-  "blue shadow virus": [
-   1,
-   17,
-   "Blue Shadow Virus",
-   "Le virus de l'ombre bleue"
-  ],
-  "mystery of a thousand moons": [
-   1,
-   18,
-   "Mystery of a Thousand Moons",
-   "Les mystères des mille lunes"
-  ],
-  "storm over ryloth": [
-   1,
-   19,
-   "Storm Over Ryloth",
-   "Tempête sur Ryloth"
-  ],
-  "innocents of ryloth": [
-   1,
-   20,
-   "Innocents of Ryloth",
-   "Les innocents de Ryloth"
-  ],
-  "liberty on ryloth": [
-   1,
-   21,
-   "Liberty on Ryloth",
-   "Liberté sur Ryloth"
-  ],
-  "hostage crisis": [
-   1,
-   22,
-   "Hostage Crisis",
-   "Prise d'otage"
-  ],
-  "holocron heist": [
-   2,
-   1,
-   "Holocron Heist",
-   "Le vol de l'holocron"
-  ],
-  "cargo of doom": [
-   2,
-   2,
-   "Cargo of Doom",
-   "La dangereuse cargaison"
-  ],
-  "children of the force": [
-   2,
-   3,
-   "Children of the Force",
-   "Les enfants de la Force"
-  ],
-  "senate spy": [
-   2,
-   4,
-   "Senate Spy",
-   "Un espion au sénat"
-  ],
-  "landing at point rain": [
-   2,
-   5,
-   "Landing at Point Rain",
-   "Atterrissage mouvementé"
-  ],
-  "weapons factory": [
-   2,
-   6,
-   "Weapons Factory",
-   "L’usine d'armement"
-  ],
-  "legacy of terror": [
-   2,
-   7,
-   "Legacy of Terror",
-   "L'héritage de la terreur"
-  ],
-  "brain invaders": [
-   2,
-   8,
-   "Brain Invaders",
-   "Les envahisseurs mentaux (alias Les vers parasites)"
-  ],
-  "grievous intrigue": [
-   2,
-   9,
-   "Grievous Intrigue",
-   "L'intrigue de Grievous"
-  ],
-  "the deserter": [
-   2,
-   10,
-   "The Deserter",
-   "Le déserteur"
-  ],
-  "lightsaber lost": [
-   2,
-   11,
-   "Lightsaber Lost",
-   "Le sabre laser perdu"
-  ],
-  "the mandalore plot": [
-   2,
-   12,
-   "The Mandalore Plot",
-   "Le complot de Mandalore"
-  ],
-  "voyage of temptation": [
-   2,
-   13,
-   "Voyage of Temptation",
-   "Le voyage de la tentation"
-  ],
-  "duchess of mandalore": [
-   2,
-   14,
-   "Duchess of Mandalore",
-   "La duchesse de Mandalore"
-  ],
-  "senate murders": [
-   2,
-   15,
-   "Senate Murders",
-   "Meurtres au sénat"
-  ],
-  "cat and mouse": [
-   2,
-   16,
-   "Cat and Mouse",
-   "Le chat et la souris"
-  ],
-  "bounty hunters": [
-   2,
-   17,
-   "Bounty Hunters",
-   "Les chasseurs de prime"
-  ],
-  "the zillo beast": [
-   2,
-   18,
-   "The Zillo Beast",
-   "La bête de Zillo"
-  ],
-  "the zillo beast strikes back": [
-   2,
-   19,
-   "The Zillo Beast Strikes Back",
-   "La bête de Zillo contre-attaque"
-  ],
-  "death trap": [
-   2,
-   20,
-   "Death Trap",
-   "Piège mortel"
-  ],
-  "r2 come home": [
-   2,
-   21,
-   "R2 Come Home",
-   "R2 rentre au bercail"
-  ],
-  "lethal trackdown": [
-   2,
-   22,
-   "Lethal Trackdown",
-   "La traque mortelle"
-  ],
-  "clone cadets": [
-   3,
-   1,
-   "Clone Cadets",
-   "Les clones cadets"
-  ],
-  "arc troopers": [
-   3,
-   2,
-   "ARC Troopers",
-   "Les ARC troopers"
-  ],
-  "supply lines": [
-   3,
-   3,
-   "Supply Lines",
-   "Les renforts"
-  ],
-  "sphere of influence": [
-   3,
-   4,
-   "Sphere of Influence",
-   "La sphère de l'influence"
-  ],
-  "corruption": [
-   3,
-   5,
-   "Corruption",
-   "Corruption"
-  ],
-  "the academy": [
-   3,
-   6,
-   "The Academy",
-   "L’académie"
-  ],
-  "assassin": [
-   3,
-   7,
-   "Assassin",
-   "Assassin"
-  ],
-  "evil plans": [
-   3,
-   8,
-   "Evil Plans",
-   "Plans malveillants"
-  ],
-  "hunt for ziro": [
-   3,
-   9,
-   "Hunt for Ziro",
-   "La chasse de Ziro"
-  ],
-  "heroes on both sides": [
-   3,
-   10,
-   "Heroes on Both Sides",
-   "Héros des deux côtés"
-  ],
-  "pursuit of peace": [
-   3,
-   11,
-   "Pursuit of Peace",
-   "À la poursuite de la paix"
-  ],
-  "nightsisters": [
-   3,
-   12,
-   "Nightsisters",
-   "Les sœurs de la nuit"
-  ],
-  "monster": [
-   3,
-   13,
-   "Monster",
-   "Monstre"
-  ],
-  "witches of the mist": [
-   3,
-   14,
-   "Witches of the Mist",
-   "Les sorcières de la brume"
-  ],
-  "overlords": [
-   3,
-   15,
-   "Overlords",
-   "Les grands seigneurs"
-  ],
-  "altar of mortis": [
-   3,
-   16,
-   "Altar of Mortis",
-   "L’autel de Mortis"
-  ],
-  "ghosts of mortis": [
-   3,
-   17,
-   "Ghosts of Mortis",
-   "Les fantômes de Mortis"
-  ],
-  "the citadel": [
-   3,
-   18,
-   "The Citadel",
-   "La citadelle"
-  ],
-  "counterattack": [
-   3,
-   19,
-   "Counterattack",
-   "Contre-attaque"
-  ],
-  "citadel rescue": [
-   3,
-   20,
-   "Citadel Rescue",
-   "Sauvetage à la citadelle"
-  ],
-  "padawan lost": [
-   3,
-   21,
-   "Padawan Lost",
-   "La padawan perdue"
-  ],
-  "wookiee hunt": [
-   3,
-   22,
-   "Wookiee Hunt",
-   "La chasse au wookie"
-  ],
-  "water war": [
-   4,
-   1,
-   "Water War",
-   "Guerre aquatique"
-  ],
-  "gungan attack": [
-   4,
-   2,
-   "Gungan Attack",
-   "L'attaque gungan"
-  ],
-  "prisoners": [
-   4,
-   3,
-   "Prisoners",
-   "Prisonniers"
-  ],
-  "shadow warrior": [
-   4,
-   4,
-   "Shadow Warrior",
-   "Le guerrier de l'ombre"
-  ],
-  "mercy mission": [
-   4,
-   5,
-   "Mercy Mission",
-   "Mission humanitaire"
-  ],
-  "nomad droids": [
-   4,
-   6,
-   "Nomad Droids",
-   "Les droïdes nomades"
-  ],
-  "darkness on umbara": [
-   4,
-   7,
-   "Darkness on Umbara",
-   "Obscurité sur Umbara"
-  ],
-  "the general": [
-   4,
-   8,
-   "The General",
-   "Le général"
-  ],
-  "plan of dissent": [
-   4,
-   9,
-   "Plan of Dissent",
-   "Insubordination"
-  ],
-  "carnage of krell": [
-   4,
-   10,
-   "Carnage of Krell",
-   "Le carnage de Krell"
-  ],
-  "kidnapped": [
-   4,
-   11,
-   "Kidnapped",
-   "L'enlèvement"
-  ],
-  "slaves of the republic": [
-   4,
-   12,
-   "Slaves of the Republic",
-   "Les esclaves de la République"
-  ],
-  "escape from kadavo": [
-   4,
-   13,
-   "Escape from Kadavo",
-   "Les évadés de Kadavo"
-  ],
-  "a friend in need": [
-   4,
-   14,
-   "A Friend in Need",
-   "Un ami dans le besoin"
-  ],
-  "deception": [
-   4,
-   15,
-   "Deception",
-   "Manigance"
-  ],
-  "friends and enemies": [
-   4,
-   16,
-   "Friends and Enemies",
-   "Amis et ennemis"
-  ],
-  "the box": [
-   4,
-   17,
-   "The Box",
-   "La boîte"
-  ],
-  "crisis on naboo": [
-   4,
-   18,
-   "Crisis on Naboo",
-   "Crise sur Naboo"
-  ],
-  "massacre": [
-   4,
-   19,
-   "Massacre",
-   "Le massacre"
-  ],
-  "bounty": [
-   4,
-   20,
-   "Bounty",
-   "Les chasseurs"
-  ],
-  "brothers": [
-   4,
-   21,
-   "Brothers",
-   "Les frères"
-  ],
-  "revenge": [
-   4,
-   22,
-   "Revenge",
-   "Vengeance"
-  ],
-  "revival": [
-   5,
-   1,
-   "Revival",
-   "Retour en force"
-  ],
-  "a war on two fronts": [
-   5,
-   2,
-   "A War on Two Fronts",
-   "Une guerre sur deux fronts"
-  ],
-  "front runners": [
-   5,
-   3,
-   "Front Runners",
-   "Les meneurs"
-  ],
-  "the soft war": [
-   5,
-   4,
-   "The Soft War",
-   "La reconquête"
-  ],
-  "tipping points": [
-   5,
-   5,
-   "Tipping Points",
-   "Points de rupture"
-  ],
-  "the gathering": [
-   5,
-   6,
-   "The Gathering",
-   "La collecte"
-  ],
-  "a test of strength": [
-   5,
-   7,
-   "A Test of Strength",
-   "Le test de résistance"
-  ],
-  "bound for rescue": [
-   5,
-   8,
-   "Bound for Rescue",
-   "Sauvetage en cours"
-  ],
-  "a necessary bond": [
-   5,
-   9,
-   "A Necessary Bond",
-   "Une alliance nécessaire"
-  ],
-  "secret weapons": [
-   5,
-   10,
-   "Secret Weapons",
-   "Les armes secrètes"
-  ],
-  "a sunny day in the void": [
-   5,
-   11,
-   "A Sunny Day in the Void",
-   "Une journée ensoleillée dans le néant"
-  ],
-  "missing in action": [
-   5,
-   12,
-   "Missing in Action",
-   "Porté disparu"
-  ],
-  "point of no return": [
-   5,
-   13,
-   "Point of No Return",
-   "Point de non-retour"
-  ],
-  "eminence": [
-   5,
-   14,
-   "Eminence",
-   "L'alliance"
-  ],
-  "shades of reason": [
-   5,
-   15,
-   "Shades of Reason",
-   "La conspiration"
-  ],
-  "the lawless": [
-   5,
-   16,
-   "The Lawless",
-   "Sans foi ni loi"
-  ],
-  "sabotage": [
-   5,
-   17,
-   "Sabotage",
-   "L'attentat"
-  ],
-  "the jedi who knew too much": [
-   5,
-   18,
-   "The Jedi Who Knew Too Much",
-   "Le Jedi qui en savait trop"
-  ],
-  "to catch a jedi": [
-   5,
-   19,
-   "To Catch a Jedi",
-   "À la poursuite d'un Jedi"
-  ],
-  "the wrong jedi": [
-   5,
-   20,
-   "The Wrong Jedi",
-   "La fausse coupable"
-  ],
-  "the unknown": [
-   6,
-   1,
-   "The Unknown",
-   "L'inconnu"
-  ],
-  "conspiracy": [
-   6,
-   2,
-   "Conspiracy",
-   "Le complot"
-  ],
-  "fugitive": [
-   6,
-   3,
-   "Fugitive",
-   "Le fugitif"
-  ],
-  "orders": [
-   6,
-   4,
-   "Orders",
-   "Les ordres"
-  ],
-  "an old friend": [
-   6,
-   5,
-   "An Old Friend",
-   "Une vieille connaissance"
-  ],
-  "the rise of clovis": [
-   6,
-   6,
-   "The Rise of Clovis",
-   "L'ascension de Clovis"
-  ],
-  "crisis at the heart": [
-   6,
-   7,
-   "Crisis at the Heart",
-   "Système en crise"
-  ],
-  "the disappeared 1": [
-   6,
-   8,
-   "The Disappeared (1)",
-   "Les disparus (1/2)"
-  ],
-  "the disappeared 2": [
-   6,
-   9,
-   "The Disappeared (2)",
-   "Les disparus (2/2)"
-  ],
-  "the lost one": [
-   6,
-   10,
-   "The Lost One",
-   "Le Jedi oublié"
-  ],
-  "voices": [
-   6,
-   11,
-   "Voices",
-   "Les voix"
-  ],
-  "destiny": [
-   6,
-   12,
-   "Destiny",
-   "La destinée"
-  ],
-  "sacrifice": [
-   6,
-   13,
-   "Sacrifice",
-   "Le sacrifice"
-  ],
-  "the bad batch": [
-   7,
-   1,
-   "The Bad Batch",
-   "Le Bad Batch"
-  ],
-  "a distant echo": [
-   7,
-   2,
-   "A Distant Echo",
-   "Un écho distant"
-  ],
-  "on the wings of keeradaks": [
-   7,
-   3,
-   "On the Wings of Keeradaks",
-   "Sur les ailes des Keeradaks"
-  ],
-  "unfinished business": [
-   7,
-   4,
-   "Unfinished Business",
-   "Une affaire en suspens"
-  ],
-  "gone with a trace": [
-   7,
-   5,
-   "Gone With a Trace",
-   "Une amitié de haut vol"
-  ],
-  "deal no deal": [
-   7,
-   6,
-   "Deal No Deal",
-   "Une affaire douteuse"
-  ],
-  "dangerous debt": [
-   7,
-   7,
-   "Dangerous Debt",
-   "Une dette dangereuse"
-  ],
-  "together again": [
-   7,
-   8,
-   "Together Again",
-   "Réunis à nouveau"
-  ],
-  "old friends not forgotten": [
-   7,
-   9,
-   "Old Friends Not Forgotten",
-   "Amis envers et contre tout"
-  ],
-  "the phantom apprentice": [
-   7,
-   10,
-   "The Phantom Apprentice",
-   "L'Apprentie fantôme"
-  ],
-  "shattered": [
-   7,
-   11,
-   "Shattered",
-   "Anéantie"
-  ],
-  "victory and death": [
-   7,
-   12,
-   "Victory and Death",
-   "La victoire et la mort"
-  ]
- },
- "__eps__STAR WARS REBELS": {
-  "droids in distress": [
-   1,
-   1,
-   "Droids in Distress",
-   "Droïdes en détresse"
-  ],
-  "fighter flight": [
-   1,
-   2,
-   "Fighter Flight",
-   "La Mission impossible"
-  ],
-  "rise of the old masters": [
-   1,
-   3,
-   "Rise of the Old Masters",
-   "Au secours des anciens maîtres"
-  ],
-  "breaking ranks": [
-   1,
-   4,
-   "Breaking Ranks",
-   "Le Cadet impérial"
-  ],
-  "out of darkness": [
-   1,
-   5,
-   "Out of Darkness",
-   "Hors des ténèbres"
-  ],
-  "empire day": [
-   1,
-   6,
-   "Empire Day",
-   "Le Jour de l'Empire"
-  ],
-  "gathering forces": [
-   1,
-   7,
-   "Gathering Forces",
-   "La Force sous contrôle"
-  ],
-  "path of the jedi": [
-   1,
-   8,
-   "Path of the Jedi",
-   "L'Épreuve du Jedi"
-  ],
-  "idiot s array": [
-   1,
-   9,
-   "Idiot's Array",
-   "La Main gagnante"
-  ],
-  "vision of hope": [
-   1,
-   10,
-   "Vision of Hope",
-   "Vision d'espoir"
-  ],
-  "call to action": [
-   1,
-   11,
-   "Call to Action",
-   "L'Appel de l'action"
-  ],
-  "rebel resolve": [
-   1,
-   12,
-   "Rebel Resolve",
-   "Les Rebelles résolus"
-  ],
-  "fire across the galaxy": [
-   1,
-   13,
-   "Fire Across the Galaxy",
-   "Galaxie en flammes"
-  ],
-  "the lost commanders": [
-   2,
-   1,
-   "The Lost Commanders",
-   "Les Commandants perdus"
-  ],
-  "relics of the old republic": [
-   2,
-   2,
-   "Relics of the Old Republic",
-   "Les Reliques de l’Ancienne République"
-  ],
-  "always two there are": [
-   2,
-   3,
-   "Always Two There Are",
-   "Toujours par deux ils vont"
-  ],
-  "brothers of the broken horn": [
-   2,
-   4,
-   "Brothers of the Broken Horn",
-   "Les Frères du Broken Horn"
-  ],
-  "wings of the master": [
-   2,
-   5,
-   "Wings of the Master",
-   "Le Faiseur d'ailes"
-  ],
-  "blood sisters": [
-   2,
-   6,
-   "Blood Sisters",
-   "Retrouvailles"
-  ],
-  "stealth strike": [
-   2,
-   7,
-   "Stealth Strike",
-   "Le Commando"
-  ],
-  "the future of the force": [
-   2,
-   8,
-   "The Future of the Force",
-   "L'Avenir de la Force"
-  ],
-  "legacy": [
-   2,
-   9,
-   "Legacy",
-   "L’Héritage"
-  ],
-  "a princess on lothal": [
-   2,
-   10,
-   "A Princess on Lothal",
-   "Une princesse sur Lothal"
-  ],
-  "the protector of concord dawn": [
-   2,
-   11,
-   "The Protector of Concord Dawn",
-   "Duel entre Mandaloriens"
-  ],
-  "legends of the lasat": [
-   2,
-   12,
-   "Legends of the Lasat",
-   "La Légende des Lasats"
-  ],
-  "the call": [
-   2,
-   13,
-   "The Call",
-   "L'Appel"
-  ],
-  "homecoming": [
-   2,
-   14,
-   "Homecoming",
-   "Retour au bercail"
-  ],
-  "the honorable ones": [
-   2,
-   15,
-   "The Honorable Ones",
-   "À la loyale"
-  ],
-  "shroud of darkness": [
-   2,
-   16,
-   "Shroud of Darkness",
-   "Au cœur des ténèbres"
-  ],
-  "the forgotten droid": [
-   2,
-   17,
-   "The Forgotten Droid",
-   "Mon ami le droïde"
-  ],
-  "the mystery of chopper base": [
-   2,
-   18,
-   "The Mystery of Chopper Base",
-   "La Base mystérieuse"
-  ],
-  "twilight of the apprentice": [
-   2,
-   19,
-   "Twilight of the Apprentice",
-   "La Chute de l'apprentie"
-  ],
-  "steps into shadow": [
-   3,
-   1,
-   "Steps Into Shadow",
-   "Au cœur des ténèbres"
-  ],
-  "the holocrons of fate": [
-   3,
-   2,
-   "The Holocrons of Fate",
-   "L'Épreuve du destin"
-  ],
-  "the antilles extraction": [
-   3,
-   3,
-   "The Antilles Extraction",
-   "Cadets en danger"
-  ],
-  "hera s heroes": [
-   3,
-   4,
-   "Hera's Heroes",
-   "Le Culte des ancêtres"
-  ],
-  "the last battle": [
-   3,
-   5,
-   "The Last Battle",
-   "Le Dernier Combat"
-  ],
-  "imperial supercommandos": [
-   3,
-   6,
-   "Imperial Supercommandos",
-   "Un ralliement imprévu"
-  ],
-  "iron squadron": [
-   3,
-   7,
-   "Iron Squadron",
-   "Affaire de famille"
-  ],
-  "the wynkahthu job": [
-   3,
-   8,
-   "The Wynkahthu Job",
-   "Mission périlleuse"
-  ],
-  "an inside man": [
-   3,
-   9,
-   "An Inside Man",
-   "La Taupe"
-  ],
-  "visions and voices": [
-   3,
-   10,
-   "Visions and Voices",
-   "Les Forces occultes"
-  ],
-  "ghosts of geonosis 1": [
-   3,
-   11,
-   "Ghosts of Geonosis (1)",
-   "Les Fantômes de Géonosis, première partie"
-  ],
-  "ghosts of geonosis 2": [
-   3,
-   12,
-   "Ghosts of Geonosis (2)",
-   "Les Fantômes de Géonosis, deuxième partie"
-  ],
-  "warhead": [
-   3,
-   13,
-   "Warhead",
-   "Mission de repérage"
-  ],
-  "trials of the darksaber": [
-   3,
-   14,
-   "Trials of the Darksaber",
-   "Le Sabre du pouvoir"
-  ],
-  "legacy of mandalore": [
-   3,
-   15,
-   "Legacy of Mandalore",
-   "L'Héritage de Mandalore"
-  ],
-  "through imperial eyes": [
-   3,
-   16,
-   "Through Imperial Eyes",
-   "Un espion en danger"
-  ],
-  "secret cargo": [
-   3,
-   17,
-   "Secret Cargo",
-   "Rencontre imprévue"
-  ],
-  "double agent droid": [
-   3,
-   18,
-   "Double Agent Droid",
-   "La Trahison de Chopper"
-  ],
-  "twin suns": [
-   3,
-   19,
-   "Twin Suns",
-   "Au cœur du désert"
-  ],
-  "zero hour 1": [
-   3,
-   20,
-   "Zero Hour (1)",
-   "Assiégés, première partie"
-  ],
-  "zero hour 2": [
-   3,
-   21,
-   "Zero Hour (2)",
-   "Assiégés, deuxième partie"
-  ],
-  "heroes of mandalore 1": [
-   4,
-   1,
-   "Heroes of Mandalore (1)",
-   "Les Héros de Mandalore (1)"
-  ],
-  "heroes of mandalore 2": [
-   4,
-   2,
-   "Heroes of Mandalore (2)",
-   "Les Héros de Mandalore (2)"
-  ],
-  "in the name of the rebellion 1": [
-   4,
-   3,
-   "In the Name of the Rebellion (1)",
-   "Au nom de la rébellion (1)"
-  ],
-  "in the name of the rebellion 2": [
-   4,
-   4,
-   "In the Name of the Rebellion (2)",
-   "Au nom de la rébellion (2)"
-  ],
-  "the occupation": [
-   4,
-   5,
-   "The Occupation",
-   "L'Occupation"
-  ],
-  "flight of the defender": [
-   4,
-   6,
-   "Flight of the Defender",
-   "Le Vol du Defender"
-  ],
-  "kindred": [
-   4,
-   7,
-   "Kindred",
-   "L’Âme-sœur"
-  ],
-  "crawler commandeers": [
-   4,
-   8,
-   "Crawler Commandeers",
-   "Réquisition de chenille"
-  ],
-  "rebel assault": [
-   4,
-   9,
-   "Rebel Assault",
-   "L'Assaut des Rebelles"
-  ],
-  "jedi night": [
-   4,
-   10,
-   "Jedi Night",
-   "Mission de sauvetage"
-  ],
-  "dume": [
-   4,
-   11,
-   "DUME",
-   "Les Loups"
-  ],
-  "wolves and a door": [
-   4,
-   12,
-   "Wolves and a Door",
-   "Les Loups et le passage"
-  ],
-  "a world between worlds": [
-   4,
-   13,
-   "A World Between Worlds",
-   "À la croisée des mondes"
-  ],
-  "a fool s hope": [
-   4,
-   14,
-   "A Fool's Hope",
-   "Le Dernier Espoir"
-  ],
-  "family reunion and farewell 1": [
-   4,
-   15,
-   "Family Reunion - and Farewell (1)",
-   "Réunion de famille, première partie"
-  ],
-  "family reunion and farewell 2": [
-   4,
-   16,
-   "Family Reunion - and Farewell (2)",
-   "Réunion de famille, deuxième partie"
-  ]
  }
 }
