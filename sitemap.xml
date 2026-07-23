@@ -21,6 +21,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
   </url>
+  <url><loc>https://chronologeek.app/deep-dives/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
+  </url>
+  <url><loc>https://chronologeek.app/deep-dives/star-wars</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
+  </url>
   <url><loc>https://chronologeek.app/upcoming</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
@@ -34,6 +42,8 @@
   <url><loc>https://chronologeek.app/fr/marvel</loc></url>
   <url><loc>https://chronologeek.app/fr/dc</loc></url>
   <url><loc>https://chronologeek.app/fr/avatar</loc></url>
+  <url><loc>https://chronologeek.app/fr/dossiers/</loc></url>
+  <url><loc>https://chronologeek.app/fr/dossiers/star-wars</loc></url>
   <url><loc>https://chronologeek.app/fr/a-venir</loc></url>
   <url><loc>https://chronologeek.app/fr/nouveautes</loc></url>
 </urlset>
