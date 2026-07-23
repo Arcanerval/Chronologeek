@@ -62,7 +62,7 @@
    1,
    4
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -104,7 +104,7 @@
   "screen": false,
   "wiki": "The High Republic (2022): Peace and Unity",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -413,7 +413,7 @@
    1,
    4
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -854,7 +854,7 @@
   "screen": false,
   "wiki": "Revelations (2023): All the Republic",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1244,7 +1244,7 @@
    1,
    2
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1276,7 +1276,7 @@
    3,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1347,7 +1347,7 @@
   "screen": false,
   "wiki": "The Acolyte: Kelnacca",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "The Acolyte – Kelnacca 1",
   "en": "",
   "frOk": false
@@ -1399,7 +1399,7 @@
   "screen": false,
   "wiki": "Revelations (2023): Showdown at Ocean's Deep",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1451,7 +1451,7 @@
   "screen": false,
   "wiki": "Age of Republic: Qui-Gon Jinn",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1464,7 +1464,7 @@
   "screen": false,
   "wiki": "Age of Republic Special: The Weapon",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1522,7 +1522,7 @@
   "screen": false,
   "wiki": "Revelations (2023): Stolen Hope",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1551,7 +1551,7 @@
   "screen": false,
   "wiki": "Age of Republic: Darth Maul",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1616,7 +1616,7 @@
   "screen": false,
   "wiki": "Darth Maul (2017): Probe Droid Problem",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1765,7 +1765,7 @@
    1,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -1852,7 +1852,7 @@
   "screen": false,
   "wiki": "Age of Republic Special: 501 Plus One",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2059,7 +2059,7 @@
   "screen": false,
   "wiki": "Age of Republic Special: Sisters",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2340,7 +2340,7 @@
   "screen": false,
   "wiki": "Darth Vader (2017): No Good Deed",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2353,7 +2353,7 @@
   "screen": false,
   "wiki": "Ahsoka",
   "span": null,
-  "kind": "",
+  "kind": "roman",
   "fr": "Star Wars: Ahsoka",
   "en": "",
   "frOk": false
@@ -2531,7 +2531,7 @@
    1,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2560,7 +2560,7 @@
    1,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2783,7 +2783,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Ring Race",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2809,7 +2809,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Learning Patience",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2848,7 +2848,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Fake Jedi",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2861,7 +2861,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Kallu's Hunt",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2887,7 +2887,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Return of the Slavers",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2900,7 +2900,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Eyes on the Prize",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -2971,7 +2971,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Sabotaged Supplies",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3023,7 +3023,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Ezra's Vision",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3036,7 +3036,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Becoming Hunted",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3049,7 +3049,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Assessment",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3088,7 +3088,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Senate Perspective",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3101,7 +3101,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Ocean Rescue",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3114,7 +3114,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Puffer Problems",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3140,7 +3140,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Secrets of Sienar",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3166,7 +3166,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: No Sympathy",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3192,7 +3192,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Too Late to Change",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3205,7 +3205,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Always Bet on Chop",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3231,7 +3231,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: A Day's Duty",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3270,7 +3270,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Ice Breaking",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3283,7 +3283,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Vulnerable Areas",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3296,7 +3296,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Size of the Fight",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3322,7 +3322,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Academy Cadets",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3348,7 +3348,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Escaping the Scrap Pile",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3364,7 +3364,7 @@
    264,
    264
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3377,7 +3377,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Off the Rails",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3403,7 +3403,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: A Time to Survive",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3416,7 +3416,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Wrong Crowd",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3442,7 +3442,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Gangsters of Galzez",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3455,7 +3455,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Second Chance",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3481,7 +3481,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Thune Cargo",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3494,7 +3494,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Line of Duty",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3520,7 +3520,7 @@
   "screen": false,
   "wiki": "Age of Rebellion: Darth Vader",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3572,7 +3572,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Sons of the Sky",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3598,7 +3598,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: A Trooper's Worth",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3611,7 +3611,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Divide and Conquer",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3637,7 +3637,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: To Thy Metal Heart Be True",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3650,7 +3650,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: A Youth Unpromising",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3676,7 +3676,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Final Round",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3689,7 +3689,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Fifth and Final",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3715,7 +3715,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: The Beast Within",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3744,7 +3744,7 @@
    1,
    1
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3760,7 +3760,7 @@
    3,
    3
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3815,7 +3815,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Never Far Behind",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3841,7 +3841,7 @@
   "screen": false,
   "wiki": "Star Wars Rebels Magazine: Crossing the Line",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3973,7 +3973,7 @@
    2,
    2
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -3989,7 +3989,7 @@
    4,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4002,7 +4002,7 @@
   "screen": false,
   "wiki": "Darth Vader: Black, White & Red 1 - Hard Shutdown",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4028,7 +4028,7 @@
   "screen": false,
   "wiki": "Darth Vader: Black, White & Red 1 - Dissolution of Hope",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4054,7 +4054,7 @@
   "screen": false,
   "wiki": "Darth Vader: Black, White & Red 2 - Power",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4093,7 +4093,7 @@
   "screen": false,
   "wiki": "Age of Rebellion Special: Stolen Valor",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4200,7 +4200,7 @@
   "screen": false,
   "wiki": "Age of Rebellion: Grand Moff Tarkin",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "L'Ère de la Rébellion : Grand Moff Tarkin 1",
   "en": "",
   "frOk": true
@@ -4255,7 +4255,7 @@
   "screen": false,
   "wiki": "Age of Rebellion: Han Solo",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4316,7 +4316,7 @@
   "screen": false,
   "wiki": "Age of Resistance Special: The Bridge",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4579,7 +4579,7 @@
   "screen": false,
   "wiki": "A New Legacy: Rogue's Gambit",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -4746,7 +4746,7 @@
   "screen": false,
   "wiki": "Darth Vader: Black, White & Red 3 - Diplomatic Impunity",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5025,7 +5025,7 @@
   "screen": false,
   "wiki": "The Last Jedi: The Storms of Crait",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5054,7 +5054,7 @@
   "screen": false,
   "wiki": "A New Legacy: For the Love of the Empire",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5080,7 +5080,7 @@
   "screen": false,
   "wiki": "Age of Rebellion: Jabba the Hutt",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5173,7 +5173,7 @@
   "screen": false,
   "wiki": "Empire Ascendant: Epilogue",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5186,7 +5186,7 @@
   "screen": false,
   "wiki": "Empire Ascendant: An Echo of Victory",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5241,7 +5241,7 @@
   "screen": false,
   "wiki": "Empire Ascendant: In Service of the Empire",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5309,7 +5309,7 @@
   "screen": false,
   "wiki": "Age of Rebellion Special: The Trial of Dagobah",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5921,7 +5921,7 @@
   "screen": false,
   "wiki": "War of the Bounty Hunters: IG-88",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -5950,7 +5950,7 @@
   "screen": false,
   "wiki": "War of the Bounty Hunters: Boushh",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -6245,7 +6245,7 @@
   "screen": false,
   "wiki": "Revelations (2022)",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "Revelations 1 (2022)",
   "en": "",
   "frOk": true
@@ -6796,7 +6796,7 @@
   "screen": false,
   "wiki": "Revelations (2023): A Trick of the Mind",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -6825,7 +6825,7 @@
   "screen": false,
   "wiki": "Revelations (2023): Tool of the Empire",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -6883,7 +6883,7 @@
   "screen": false,
   "wiki": "Revelations (2023): Tall Tales",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -6896,7 +6896,7 @@
   "screen": false,
   "wiki": "Revelations (2023): Duel of the Reprobates",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -6925,7 +6925,7 @@
   "screen": false,
   "wiki": "Darth Vader: Black, White & Red 4 - Return of Hoth",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -6980,7 +6980,7 @@
   "screen": false,
   "wiki": "Age of Rebellion: Luke Skywalker",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "L'Ère de la Rébellion : Luke Skywalker 1",
   "en": "",
   "frOk": true
@@ -7006,7 +7006,7 @@
   "screen": false,
   "wiki": "Return of the Jedi: The Rebellion",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7032,7 +7032,7 @@
   "screen": false,
   "wiki": "Return of the Jedi: Jabba's Palace",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7106,7 +7106,7 @@
   "screen": false,
   "wiki": "Battle of Jakku: Insurgency Rising 1 - The Rising",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7177,7 +7177,7 @@
    2,
    2
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7206,7 +7206,7 @@
   "screen": false,
   "wiki": "Return of the Jedi: Ewoks",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7251,7 +7251,7 @@
    3,
    4
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7419,7 +7419,7 @@
    1,
    1
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7432,7 +7432,7 @@
   "screen": false,
   "wiki": "Battle of Jakku: Republic Under Siege 1 - Consolidation",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7448,7 +7448,7 @@
    2,
    4
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7464,7 +7464,7 @@
    1,
    1
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7477,7 +7477,7 @@
   "screen": false,
   "wiki": "Battle of Jakku: Last Stand 1 - False Histories",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7493,7 +7493,7 @@
    2,
    2
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7535,7 +7535,7 @@
    3,
    4
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7742,7 +7742,7 @@
   "screen": false,
   "wiki": "Age of Resistance: Supreme Leader Snoke",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "L'Ère de la Résistance : Suprême Leader Snoke 1",
   "en": "",
   "frOk": true
@@ -7784,7 +7784,7 @@
    1,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "Han Solo - Hunt for the Falcon 1",
   "en": "",
   "frOk": true
@@ -7917,7 +7917,7 @@
   "screen": false,
   "wiki": "Age of Resistance Special: Robot Resistance",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7930,7 +7930,7 @@
   "screen": false,
   "wiki": "Age of Resistance: General Hux",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -7943,7 +7943,7 @@
   "screen": false,
   "wiki": "Age of Resistance: Kylo Ren",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -8085,7 +8085,7 @@
   "screen": false,
   "wiki": "Age of Resistance: Captain Phasma",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "L'Ère de la Résistance : Capitaine Phasma 1",
   "en": "",
   "frOk": true
@@ -8276,7 +8276,7 @@
   "screen": false,
   "wiki": "Free Comic Book Day 2026",
   "span": null,
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
@@ -8437,7 +8437,7 @@
    1,
    5
   ],
-  "kind": "",
+  "kind": "comic",
   "fr": "",
   "en": "",
   "frOk": null
