@@ -107,30 +107,41 @@ def batch(seq, n):
 
 
 def fetch_categories(titles):
-    """{titre normalisé: [catégories]} — 50 titres par requête."""
+    """{titre demandé: [catégories]} — gère la continuation de l'API."""
     out = {}
-    for part in batch(titles, 50):
-        try:
-            r = requests.get(EN_API, timeout=60, headers=UA, params={
-                "action": "query", "prop": "categories", "cllimit": "max",
-                "redirects": 1, "format": "json", "formatversion": 2,
-                "titles": "|".join(part)})
-            r.raise_for_status()
-            j = r.json().get("query", {})
-            norm = {n["from"]: n["to"] for n in j.get("normalized", [])}
-            norm.update({n["from"]: n["to"] for n in j.get("redirects", [])})
-            pages = {}
-            for p in j.get("pages", []):
+    for part in batch(titles, 20):
+        pages, alias, cont = {}, {}, {}
+        for _ in range(12):                      # sécurité anti-boucle infinie
+            try:
+                params = {"action": "query", "prop": "categories", "cllimit": "max",
+                          "redirects": 1, "format": "json", "formatversion": 2,
+                          "titles": "|".join(part)}
+                params.update(cont)
+                r = requests.get(EN_API, timeout=60, headers=UA, params=params)
+                r.raise_for_status()
+                j = r.json()
+            except Exception as e:
+                log(f"Catégories : lot ignoré — {str(e)[:80]}")
+                break
+            q = j.get("query", {})
+            for n in q.get("normalized", []) + q.get("redirects", []):
+                alias[n["from"]] = n["to"]
+            for p in q.get("pages", []):
                 if p.get("missing") or not p.get("title"):
                     continue
-                pages[p["title"]] = [c.get("title", "").replace("Category:", "")
-                                     for c in (p.get("categories") or [])]
-            for t in part:
-                key = norm.get(t, t)
-                if key in pages:
-                    out[t] = pages[key]
-        except Exception as e:
-            log(f"Catégories : lot ignoré — {str(e)[:90]}")
+                pages.setdefault(p["title"], []).extend(
+                    c.get("title", "").replace("Category:", "")
+                    for c in (p.get("categories") or []))
+            if "continue" in j:
+                cont = j["continue"]
+            else:
+                break
+        for t in part:
+            key = t
+            for _ in range(4):
+                key = alias.get(key, key)
+            if key in pages:
+                out[t] = pages[key]
     return out
 
 
@@ -150,13 +161,18 @@ def resolve_categories(titles):
     found, stats = {}, {}
     pending = list(titles)
 
+    def is_media(cs):
+        low = [c.lower() for c in cs]
+        return ("canon media" in low or "legends media" in low
+                or any(re.search(r'canon (novel|comic|junior|young|audio|short)', c) for c in low))
+
     def take(mapping, label):
         nonlocal pending
         cats = fetch_categories(list(mapping))
         got = 0
         for probe, cs in cats.items():
             src = mapping[probe]
-            if src not in found:
+            if src not in found and is_media(cs):
                 found[src] = (probe, cs); got += 1
         if got:
             stats[label] = got
@@ -181,6 +197,10 @@ def resolve_categories(titles):
                 m.setdefault(f"Star Wars: {base}", t)
         if m:
             take(m, "série + préfixe")
+    for suffix in (" (novel)", " (comic)", " (short story)", " (audio drama)"):
+        if not pending:
+            break
+        take({t + suffix: t for t in pending}, f"désambiguïsation{suffix}")
     if pending:                                    # dernier recours : recherche
         m = {}
         for t in pending[:250]:
@@ -205,6 +225,8 @@ def classify(cats, title):
     if re.search(r'young[- ]adult', blob):
         return "jeunesse"
     if re.search(r'comic|graphic novel|manga|trade paperback|one[- ]shot', blob):
+        return "comic"
+    if re.search(r'\b\d+ stories\b', blob):        # récit publié dans un comic anthologie
         return "comic"
     if re.search(r'\bnovels?\b|novella', blob):
         return "roman"
@@ -552,14 +574,23 @@ def main():
     log(f"Source    : {len(data)} lignes · {len(books)} œuvres · "
         f"{len(data)-len(books)} repères écran")
 
+    CACHE_VERSION = 2
     cache = {}
     if os.path.exists(CACHE):
         try:
             cache = json.load(open(CACHE, encoding='utf-8'))
         except Exception:
             cache = {}
+    if cache.get("__version__") != CACHE_VERSION:
+        keep = {k: v for k, v in cache.items() if k.startswith("__eps__")}
+        if cache:
+            log(f"Cache     : version {cache.get('__version__', 1)} → {CACHE_VERSION}, "
+                f"catégories réinterrogées ({len(keep)} index TMDB conservé(s))")
+        cache = keep
+        cache["__version__"] = CACHE_VERSION
 
-    todo = sorted({e["wiki"] for e in books if e["wiki"] and e["wiki"] not in cache})
+    todo = sorted({e["wiki"] for e in books
+                   if e["wiki"] and e["wiki"] not in cache})
     log(f"Wookiee   : {len(todo)} titre(s) à interroger ({len(cache)} en cache)")
 
     if todo:
