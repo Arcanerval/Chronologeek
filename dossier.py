@@ -517,10 +517,18 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>{title}</title>
 <meta name="description" content="{desc}"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/deep-dives/star-wars"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Chronologeek"/>
+<meta property="og:title" content="{title}"/>
+<meta property="og:description" content="{desc}"/>
+<meta property="og:image" content="https://chronologeek.app/images/starwars-banner.webp"/>
+<meta property="og:url" content="{canon}"/>
+<meta name="twitter:card" content="summary_large_image"/>
+{siteStyles}
 <style>
-:root{{--bg:#08080f;--surface:#0d0d18;--border:#23233a;--text:#e8e8f0;--muted:#8a8aa0;--muted2:#b9b9d0;--accent:#7c6af7}}
-*{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}}
 .wrap{{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 4rem}}
 h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#4d9fff,#7c6af7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
 .sub{{color:var(--muted2);font-size:.86rem;margin:.5rem 0 1.6rem;line-height:1.65;max-width:76ch}}
@@ -548,6 +556,8 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 </style>
 </head>
 <body>
+{nav}
+{mmenu}
 <div class="wrap">
 <h1>{h1}</h1>
 <p class="sub">{intro}</p>
@@ -555,6 +565,7 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 <div class="count" id="count"></div>
 {rows}
 </div>
+{scripts}
 <script>
 (function(){{
   var chips=document.querySelectorAll('.chip');
@@ -579,6 +590,44 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 """
 
 
+SHELL_SRC = {"fr": "fr/nouveautes.html", "en": "whats-new.html"}
+DOSS_HREF = {"fr": "/fr/dossiers/", "en": "/deep-dives/"}
+
+
+def site_shell(lang, alt_href):
+    """Reprend l'ossature du site (styles, nav, menu mobile) depuis une page existante."""
+    try:
+        src = open(SHELL_SRC[lang], encoding='utf-8').read()
+    except Exception as e:
+        log(f"Coquille  : {SHELL_SRC[lang]} illisible ({e}) — page autonome")
+        return None
+
+    styles = "\n".join(f"<style>{m}</style>"
+                       for m in re.findall(r'<style>(.*?)</style>', src, re.S))
+    nav_m = re.search(r'<nav.*?</nav>', src, re.S)
+    mm_m = re.search(r'<div id="mmenu".*?</div>', src, re.S)
+    if not nav_m or not mm_m:
+        log("Coquille  : nav introuvable — page autonome")
+        return None
+    nav, mmenu = nav_m.group(0), mm_m.group(0)
+
+    # la page courante n'est plus « Nouveautés » mais « Dossiers »
+    nav = re.sub(r'\s*style="color:var\(--text\);font-weight:700"', '', nav)
+    mmenu = mmenu.replace('class="cur news"', 'class="news"')
+    href = DOSS_HREF[lang]
+    nav = nav.replace('<a href="#" class="doss">',
+                      f'<a href="{href}" class="doss" style="color:var(--text);font-weight:700">')
+    mmenu = mmenu.replace('<a href="#" class="doss">', f'<a href="{href}" class="cur doss">')
+    # bouton de langue vers la page équivalente
+    nav = re.sub(r'(<a class="lang-btn" href=")[^"]*(")',
+                 lambda m: m.group(1) + alt_href + m.group(2), nav)
+
+    scripts = ('<script src="/pwa.js"></script>\n'
+               '<script data-goatcounter="https://arcanerval.goatcounter.com/count"\n'
+               '        async src="//gc.zgo.at/count.js"></script>')
+    return {"styles": styles, "nav": nav, "mmenu": mmenu, "scripts": scripts}
+
+
 OUT_FR = "fr/dossiers/star-wars.html"
 OUT_EN = "deep-dives/star-wars.html"
 IDX_FR = "fr/dossiers/index.html"
@@ -595,10 +644,12 @@ INDEX_TPL = """<!DOCTYPE html>
 <html lang="{lang}">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>{title}</title><meta name="description" content="{desc}"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
+<meta property="og:title" content="{title}"/><meta property="og:description" content="{desc}"/>
+<meta property="og:image" content="https://chronologeek.app/images/og-banner.png"/>
+{siteStyles}
 <style>
-:root{{--bg:#08080f;--surface:#0d0d18;--border:#23233a;--text:#e8e8f0;--muted:#8a8aa0;--muted2:#b9b9d0}}
-*{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}}
 .wrap{{max-width:900px;margin:0 auto;padding:2.5rem 1.2rem 4rem}}
 h1{{font-size:1.8rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#7c6af7,#f06292);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
 .sub{{color:var(--muted2);font-size:.9rem;margin:.45rem 0 2rem;max-width:62ch;line-height:1.6}}
@@ -609,12 +660,14 @@ h1{{font-size:1.8rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 .cd{{color:var(--muted2);font-size:.84rem;margin-top:.3rem;line-height:1.5}}
 .soon{{opacity:.45;pointer-events:none}}
 </style></head>
-<body><div class="wrap"><h1>{h1}</h1><p class="sub">{intro}</p>{cards}</div></body></html>
+<body>{nav}{mmenu}<div class="wrap"><h1>{h1}</h1><p class="sub">{intro}</p>{cards}</div>{scripts}</body></html>
 """
 
 
 def build_index(lang):
     fr = lang == "fr"
+    sh = site_shell(lang, "/deep-dives/" if fr else "/fr/dossiers/") or {
+        "styles": "", "nav": "", "mmenu": "", "scripts": ""}
     cards = []
     for d in DOSSIERS:
         href = (f"/fr/dossiers/{d['slug']}" if fr else f"/deep-dives/{d['slug']}")
@@ -632,7 +685,8 @@ def build_index(lang):
                "analyses et parcours thématiques, univers par univers."
                if fr else "The guides that go further than the timeline: reading orders, "
                           "breakdowns and themed paths, universe by universe."),
-        cards="".join(cards))
+        cards="".join(cards),
+        siteStyles=sh["styles"], nav=sh["nav"], mmenu=sh["mmenu"], scripts=sh["scripts"])
 
 
 def main():
@@ -711,6 +765,9 @@ def main():
     resolve_screen(data, cache)
     json.dump(cache, open(CACHE, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
+    ALT = {"fr": "/deep-dives/star-wars", "en": "/fr/dossiers/star-wars"}
+    CANON = {"fr": "https://chronologeek.app/fr/dossiers/star-wars",
+             "en": "https://chronologeek.app/deep-dives/star-wars"}
     for lang, out, title, desc, h1, intro in (
         ("fr", OUT_FR,
          "Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek",
@@ -723,8 +780,11 @@ def main():
          "placed within the movie and show chronology.",
          "Star Wars Deep Dive<span class=\'h1sub\'>Novels &amp; Comics</span>", INTRO_EN)):
         chips, rows = build_page(data, lang)
+        sh = site_shell(lang, ALT[lang]) or {"styles": "", "nav": "", "mmenu": "", "scripts": ""}
         page = TEMPLATE.format(
             lang=lang, title=title, desc=desc, h1=h1, intro=intro, chips=chips, rows=rows,
+            siteStyles=sh["styles"], nav=sh["nav"], mmenu=sh["mmenu"],
+            scripts=sh["scripts"], canon=CANON[lang],
             cnt=("%s œuvres affichées sur %t" if lang == "fr" else "%s of %t entries shown"))
         d = os.path.dirname(out)
         if d and os.path.isfile(d):
