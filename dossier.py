@@ -215,6 +215,59 @@ def resolve_categories(titles):
     return found
 
 
+def fetch_wikitext(titles):
+    """{titre demandé: début du wikitexte} — pour lire l'infobox."""
+    out = {}
+    for part in batch(titles, 25):
+        try:
+            r = requests.get(EN_API, timeout=60, headers=UA, params={
+                "action": "query", "prop": "revisions", "rvprop": "content",
+                "rvslots": "main", "redirects": 1, "format": "json",
+                "formatversion": 2, "titles": "|".join(part)})
+            r.raise_for_status()
+            q = r.json().get("query", {})
+            alias = {}
+            for n in q.get("normalized", []) + q.get("redirects", []):
+                alias[n["from"]] = n["to"]
+            pages = {}
+            for p in q.get("pages", []):
+                if p.get("missing") or not p.get("title"):
+                    continue
+                revs = p.get("revisions") or []
+                txt = ((revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
+                       if revs else "")
+                pages[p["title"]] = txt[:3000]
+            for t in part:
+                key = t
+                for _ in range(4):
+                    key = alias.get(key, key)
+                if key in pages:
+                    out[t] = pages[key]
+        except Exception as e:
+            log(f"Infobox   : lot ignoré — {str(e)[:80]}")
+    return out
+
+
+def classify_from_text(txt, cats):
+    """Type déduit de l'infobox quand les catégories ne disent rien."""
+    t = (txt or "")
+    low = t.lower()
+    blob = " | ".join(cats).lower()
+    if re.search(r'\{\{\s*(audio|radio)\b', low) or 'audio drama' in blob:
+        return "audio"
+    if re.search(r'\{\{\s*comic', low) or re.search(r'\|\s*(penciller|inker|colorist|letterer)\s*=', low):
+        return "comic"
+    if re.search(r'\{\{\s*(book|novel)', low) or re.search(r'\|\s*isbn\s*=', low):
+        if re.search(r'junior|young[- ]reader|chapter book', blob):
+            return "jeunesse"
+        if re.search(r'young[- ]adult', blob):
+            return "jeunesse"
+        return "roman"
+    if re.search(r'\{\{\s*short story', low):
+        return "comic" if re.search(r'\b\d+ stories\b', blob) else "nouvelle"
+    return ""
+
+
 def classify(cats, title):
     """Type de média déduit des catégories de l'article (jamais deviné)."""
     blob = " | ".join(cats).lower()
@@ -574,7 +627,7 @@ def main():
     log(f"Source    : {len(data)} lignes · {len(books)} œuvres · "
         f"{len(data)-len(books)} repères écran")
 
-    CACHE_VERSION = 2
+    CACHE_VERSION = 3
     cache = {}
     if os.path.exists(CACHE):
         try:
@@ -609,8 +662,13 @@ def main():
             for en, hit in found.items():
                 if hit in extra:
                     frs[en] = extra[hit]
+        blind = [t for t in todo if not classify(cats.get(t, []), t)]
+        texts = fetch_wikitext(blind) if blind else {}
+        if blind:
+            log(f"Infobox   : {len(texts)}/{len(blind)} article(s) relu(s) pour le type")
         for t in todo:
             cache[t] = {"cats": cats.get(t, []),
+                        "byText": classify_from_text(texts.get(t, ""), cats.get(t, [])),
                         "fr": frs.get(t, ("", None))[0],
                         "frOk": frs.get(t, ("", None))[1]}
         json.dump(cache, open(CACHE, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
@@ -618,7 +676,7 @@ def main():
     stats, unknown = {}, []
     for e in books:
         c = cache.get(e["wiki"], {})
-        e["kind"] = classify(c.get("cats", []), e["title"])
+        e["kind"] = classify(c.get("cats", []), e["title"]) or c.get("byText", "")
         e["fr"] = keep_fr(e["title"], c.get("fr", ""))
         e["frOk"] = c.get("frOk")
         stats[e["kind"] or "?"] = stats.get(e["kind"] or "?", 0) + 1
