@@ -477,6 +477,15 @@ KIND = {
 FILTERS = ["roman", "jeunesse", "comic", "audio"]
 
 
+def slug(e):
+    base = f'{e["date"]}|{e["title"]}'
+    out = re.sub(r'[^a-z0-9]+', '-', base.lower()).strip('-')
+    if len(out) > 58:                       # tronquer sans jamais créer de doublon
+        import hashlib
+        out = out[:58] + '-' + hashlib.md5(base.encode('utf-8')).hexdigest()[:6]
+    return out
+
+
 def build_page(data, lang="fr"):
     fr = lang == "fr"
     kinds = {k: (v[0] if fr else v[1]) for k, v in KIND.items()}
@@ -499,9 +508,10 @@ def build_page(data, lang="fr"):
         tn = NOTES.get(raw_note)
         shown_note = (tn[0] if fr else tn[1]) if tn else raw_note
         note = (f'<div class="note">{html.escape(shown_note)}</div>' if shown_note else "")
+        ck = "" if e["screen"] else f'<span class="ck" data-id="{slug(e)}">✓</span>'
         rows.append(
             f'<div class="{cls}" data-k="{k}" style="--c:{colors.get(k, "#6b7280")}">'
-            f'<span class="dt">{html.escape(e["date"])}</span>'
+            f'{ck}<span class="dt">{html.escape(e["date"])}</span>'
             f'<span class="tt">{html.escape(title)}{vo}</span>'
             f'<span class="kd">{html.escape(kinds.get(k, ""))}</span>{note}</div>')
     chips = "".join(
@@ -531,28 +541,47 @@ TEMPLATE = """<!DOCTYPE html>
 <style>
 .wrap{{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 4rem}}
 h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#4d9fff,#7c6af7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
-.sub{{color:var(--muted2);font-size:.86rem;margin:.5rem 0 1.6rem;line-height:1.65;max-width:76ch}}
+.sub{{color:var(--muted2);font-size:.86rem;margin:.5rem 0 1.5rem;line-height:1.65}}
 .h1sub{{display:block;font-size:.92rem;font-weight:600;letter-spacing:.02em;-webkit-text-fill-color:var(--muted);margin-top:.15rem}}
 .chips{{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem}}
 .chip{{font:inherit;font-size:.78rem;font-weight:700;padding:.42rem .9rem;border-radius:20px;cursor:pointer;
       background:transparent;border:1px solid var(--border);color:var(--muted);transition:all .18s}}
 .chip.on{{background:color-mix(in srgb,var(--c) 16%,transparent);border-color:var(--c);color:var(--c)}}
 .chip:hover{{border-color:var(--c)}}
-.count{{color:var(--muted);font-size:.75rem;margin-bottom:1.6rem}}
+.count{{color:var(--muted);font-size:.75rem}}
+.prog{{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:.9rem 0 1.7rem;
+      padding:.7rem .9rem;border:1px solid var(--border);border-radius:10px;background:var(--surface)}}
+.pbar{{flex:1;min-width:140px;height:7px;border-radius:6px;background:var(--border);overflow:hidden}}
+.pbar i{{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c6af7,#f06292);transition:width .3s}}
+.pnum{{font-size:.76rem;color:var(--muted2);font-variant-numeric:tabular-nums;white-space:nowrap}}
+.preset{{font:inherit;font-size:.7rem;padding:.3rem .7rem;border-radius:14px;cursor:pointer;
+        background:transparent;border:1px solid var(--border2);color:var(--muted)}}
+.preset:hover{{border-color:#f06292;color:#f06292}}
+.ck{{width:18px;height:18px;flex-shrink:0;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
+    border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-size:.7rem;color:transparent;transition:all .18s;align-self:center}}
+.ck:hover{{border-color:var(--accent)}}
+.it.read .ck{{background:var(--accent);border-color:var(--accent);color:#fff}}
+.it.read .tt{{opacity:.5;text-decoration:line-through}}
 .era{{font-size:.78rem;font-weight:800;letter-spacing:.12em;color:var(--muted);
      border-bottom:1px solid var(--border);padding:1.8rem 0 .5rem;margin-bottom:.7rem}}
-.it,.screen{{display:grid;grid-template-columns:104px 1fr auto;gap:.3rem .9rem;align-items:baseline;
+.it,.screen{{display:grid;grid-template-columns:22px 104px 1fr auto;gap:.3rem .8rem;align-items:baseline;
      padding:.5rem .8rem;border-left:3px solid var(--c);border-radius:7px;margin-bottom:.3rem;background:var(--surface)}}
 .screen{{background:transparent;border-left-style:dashed;opacity:.62}}
 .screen .tt{{font-weight:800;letter-spacing:.04em;font-size:.78rem;color:#9fd0ff}}
 .dt{{color:var(--muted);font-size:.75rem;font-variant-numeric:tabular-nums;white-space:nowrap}}
 .tt{{font-size:.9rem;line-height:1.35}}
 .kd{{font-size:.68rem;color:var(--c);font-weight:700;white-space:nowrap}}
-.note{{grid-column:2/-1;color:var(--muted);font-size:.72rem;font-style:italic;margin-top:.1rem}}
+.note{{grid-column:3/-1;color:var(--muted);font-size:.72rem;font-style:italic;margin-top:.1rem}}
 .vo{{font-size:.58rem;font-weight:800;letter-spacing:.06em;padding:.05rem .32rem;border-radius:4px;
     background:rgba(148,163,184,.16);color:#94a3b8;margin-left:.4rem;vertical-align:2px}}
 .hide{{display:none}}
-@media(max-width:640px){{.it,.screen{{grid-template-columns:1fr auto}}.dt{{grid-column:1/-1}}}}
+@media(max-width:640px){{
+  .it{{grid-template-columns:22px 1fr auto}}
+  .screen{{grid-template-columns:1fr auto}}
+  .it .dt{{grid-column:2/-1}}
+  .note{{grid-column:1/-1}}
+}}
 </style>
 </head>
 <body>
@@ -562,27 +591,64 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 <h1>{h1}</h1>
 <p class="sub">{intro}</p>
 <div class="chips">{chips}</div>
+<div class="prog">
+  <span class="pnum" id="pnum"></span>
+  <div class="pbar"><i id="pfill"></i></div>
+  <button class="preset" id="preset">{reset}</button>
+</div>
 <div class="count" id="count"></div>
 {rows}
 </div>
 {scripts}
 <script>
 (function(){{
-  var chips=document.querySelectorAll('.chip');
-  function apply(){{
+  var KEY='cg_dossier_starwars';
+  var done={{}};
+  try{{ done=JSON.parse(localStorage.getItem(KEY)||'{{}}')||{{}}; }}catch(e){{ done={{}}; }}
+  function save(){{ try{{ localStorage.setItem(KEY,JSON.stringify(done)); }}catch(e){{}} }}
+
+  var items=[].slice.call(document.querySelectorAll('.it'));
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var pnum=document.getElementById('pnum');
+  var pfill=document.getElementById('pfill');
+
+  function refresh(){{
     var off={{}};
     chips.forEach(function(c){{ if(!c.classList.contains('on')) off[c.dataset.f]=1; }});
-    var shown=0, total=0;
-    document.querySelectorAll('.it').forEach(function(el){{
-      total++;
-      var hide=off[el.dataset.k];
-      el.classList.toggle('hide',!!hide);
-      if(!hide) shown++;
+    var shown=0, read=0;
+    items.forEach(function(el){{
+      var hide=!!off[el.dataset.k];
+      el.classList.toggle('hide',hide);
+      if(!hide){{
+        shown++;
+        if(done[el.querySelector('.ck').dataset.id]) read++;
+      }}
     }});
-    document.getElementById('count').textContent='{cnt}'.replace('%s',shown).replace('%t',total);
+    document.getElementById('count').textContent='{cnt}'.replace('%s',shown).replace('%t',items.length);
+    pnum.textContent='{pn}'.replace('%r',read).replace('%s',shown);
+    pfill.style.width=(shown?Math.round(read/shown*100):0)+'%';
   }}
-  chips.forEach(function(c){{ c.addEventListener('click',function(){{ c.classList.toggle('on'); apply(); }}); }});
-  apply();
+
+  items.forEach(function(el){{
+    var ck=el.querySelector('.ck');
+    if(done[ck.dataset.id]) el.classList.add('read');
+    ck.addEventListener('click',function(ev){{
+      ev.stopPropagation();
+      var id=ck.dataset.id;
+      if(done[id]){{ delete done[id]; el.classList.remove('read'); }}
+      else {{ done[id]=1; el.classList.add('read'); }}
+      save(); refresh();
+    }});
+  }});
+
+  chips.forEach(function(c){{ c.addEventListener('click',function(){{ c.classList.toggle('on'); refresh(); }}); }});
+  document.getElementById('preset').addEventListener('click',function(){{
+    if(!confirm('{conf}')) return;
+    done={{}}; save();
+    items.forEach(function(el){{ el.classList.remove('read'); }});
+    refresh();
+  }});
+  refresh();
 }})();
 </script>
 </body>
@@ -590,7 +656,7 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 """
 
 
-SHELL_SRC = {"fr": "fr/nouveautes.html", "en": "whats-new.html"}
+SHELL_SRC = {"fr": "fr/index.html", "en": "index.html"}
 DOSS_HREF = {"fr": "/fr/dossiers/", "en": "/deep-dives/"}
 
 
@@ -635,9 +701,12 @@ IDX_EN = "deep-dives/index.html"
 
 DOSSIERS = [
     {"slug": "star-wars", "fr": "Star Wars", "en": "Star Wars", "color": "#4d9fff",
-     "dfr": "Romans, romans jeunesse et comics — l'ordre de lecture complet du canon.",
-     "den": "Novels, young-reader books and comics — the complete canon reading order.",
-     "ready": True},
+     "img": "/images/starwarscomics.jpg",
+     "dfr": "Romans · Romans jeunesse · Comics — l'ordre de lecture complet du canon, "
+            "replacé entre les films et les séries.",
+     "den": "Novels · Young readers · Comics — the complete canon reading order, "
+            "placed between the movies and shows.",
+     "tfr": "Disponible", "ten": "Available", "ready": True},
 ]
 
 INDEX_TPL = """<!DOCTYPE html>
@@ -650,17 +719,18 @@ INDEX_TPL = """<!DOCTYPE html>
 <meta property="og:image" content="https://chronologeek.app/images/og-banner.png"/>
 {siteStyles}
 <style>
-.wrap{{max-width:900px;margin:0 auto;padding:2.5rem 1.2rem 4rem}}
-h1{{font-size:1.8rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#7c6af7,#f06292);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
-.sub{{color:var(--muted2);font-size:.9rem;margin:.45rem 0 2rem;max-width:62ch;line-height:1.6}}
-.card{{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--border);
-      border-left:4px solid var(--c);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:.9rem;transition:all .2s}}
-.card:hover{{transform:translateY(-2px);border-color:var(--c);box-shadow:0 8px 26px rgba(0,0,0,.4)}}
-.ct{{font-weight:800;font-size:1.05rem;color:var(--c)}}
-.cd{{color:var(--muted2);font-size:.84rem;margin-top:.3rem;line-height:1.5}}
-.soon{{opacity:.45;pointer-events:none}}
+.dwrap{{max-width:1180px;margin:0 auto;padding:2.6rem 1.2rem 4.5rem;text-align:center}}
+.dtitle{{font-size:2rem;font-weight:900;letter-spacing:-.6px;background:linear-gradient(135deg,#7c6af7,#f06292);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
+.dsub{{color:var(--muted2);font-size:.95rem;margin:.6rem auto 2.6rem;max-width:60ch;line-height:1.65}}
+.soon{{opacity:.4;pointer-events:none}}
 </style></head>
-<body>{nav}{mmenu}<div class="wrap"><h1>{h1}</h1><p class="sub">{intro}</p>{cards}</div>{scripts}</body></html>
+<body>{nav}{mmenu}
+<div class="dwrap">
+<div class="dtitle">{h1}</div>
+<p class="dsub">{intro}</p>
+<div class="ugrid">{cards}</div>
+</div>
+{scripts}</body></html>
 """
 
 
@@ -672,9 +742,15 @@ def build_index(lang):
     for d in DOSSIERS:
         href = (f"/fr/dossiers/{d['slug']}" if fr else f"/deep-dives/{d['slug']}")
         cards.append(
-            f'<a class="card" href="{href}" style="--c:{d["color"]}">'
-            f'<div class="ct">{d["fr"] if fr else d["en"]}</div>'
-            f'<div class="cd">{d["dfr"] if fr else d["den"]}</div></a>')
+            f'<a class="ucard{"" if d.get("ready") else " soon"}" href="{href}">'
+            f'<div class="cbanner"><img src="{d["img"]}" alt="{d["en"]}" '
+            f'onerror="this.style.display=\'none\'"/></div>'
+            f'<div class="cbody">'
+            f'<div class="ctitle" style="color:{d["color"]}">{d["fr"] if fr else d["en"]}</div>'
+            f'<div class="csub">{d["dfr"] if fr else d["den"]}</div>'
+            f'<div class="ctag-row"><span class="ctag tag-live">'
+            f'{d["tfr"] if fr else d["ten"]}</span></div>'
+            f'</div></a>')
     return INDEX_TPL.format(
         lang=lang,
         title=("Dossiers — Chronologeek" if fr else "Deep Dives — Chronologeek"),
@@ -785,7 +861,11 @@ def main():
             lang=lang, title=title, desc=desc, h1=h1, intro=intro, chips=chips, rows=rows,
             siteStyles=sh["styles"], nav=sh["nav"], mmenu=sh["mmenu"],
             scripts=sh["scripts"], canon=CANON[lang],
-            cnt=("%s œuvres affichées sur %t" if lang == "fr" else "%s of %t entries shown"))
+            cnt=("%s œuvres affichées sur %t" if lang == "fr" else "%s of %t entries shown"),
+            reset=("Réinitialiser" if lang == "fr" else "Reset"),
+            pn=("%r lu(s) sur %s" if lang == "fr" else "%r of %s read"),
+            conf=("Réinitialiser ta progression ?" if lang == "fr"
+                  else "Reset your progress?"))
         d = os.path.dirname(out)
         if d and os.path.isfile(d):
             os.remove(d)
