@@ -1,0 +1,8529 @@
+[
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : Convergence",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Convergence",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : Convergence",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : Quest for the Hidden City",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Quest for the Hidden City",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : La quête de la cité perdue",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : Path of Deceit",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Path of Deceit",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : La Voie de la duperie",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic Adventures : Quest of the Jedi",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Quest of the Jedi",
+  "span": null,
+  "kind": "comic",
+  "fr": "La Haute République : Les Aventures : La Quête des Jedi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : The Blade 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: The Blade 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic Adventures (2022) 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2022) 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : The Battle of Jedha",
+  "note": "audiobook but script book available",
+  "screen": false,
+  "wiki": "The High Republic: The Battle of Jedha",
+  "span": null,
+  "kind": "audio",
+  "fr": "La Haute République : La Bataille de Jedha",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic (2022) : Peace and Unity",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2022): Peace and Unity",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic (2022) 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2022) 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic Adventures (2022) 5-8",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2022) 5",
+  "span": [
+   5,
+   8
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic (2022) 6-9",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2022) 6",
+  "span": [
+   6,
+   9
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : Path of Vengeance",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Path of Vengeance",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : La Voie de la vengeance",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic (2022) 10",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2022) 10",
+  "span": [
+   10,
+   10
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : Cataclysm",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Cataclysm",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : Cataclysme",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "382 BBY",
+  "title": "The High Republic : Quest for Planet X",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Quest for Planet X",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : La quête de la Planète X",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "362 BBY",
+  "title": "The High Republic Adventures : Pathfinders 1-6",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Pathfinders 1",
+  "span": [
+   1,
+   6
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "~247-232 BBY",
+  "title": "The High Republic Adventures Annual 2021 : Set for Life",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Annual 2021",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "~233 BBY",
+  "title": "The High Republic Adventures Annual 2021 : First Mission",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Annual 2021",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic : Into the Dark",
+  "note": "avant et pendant The High Republic: Light of the Jedi",
+  "screen": false,
+  "wiki": "The High Republic: Into the Dark",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : En pleines ténèbres",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic : Light of the Jedi",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Light of the Jedi",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : La Lumière des Jedi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "Star Wars Adventures (2020) 6 : Tales of Villainy - The Gaze Electric",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 6",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 6 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic Adventures (2021) 1-2",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic : A Test of Courage",
+  "note": "pendant The High Republic: Light of the Jedi",
+  "screen": false,
+  "wiki": "The High Republic: A Test of Courage",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Une épreuve de courage",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic (2021) 1",
+  "note": "pendant The High Republic: Light of the Jedi",
+  "screen": false,
+  "wiki": "The High Republic (2021) 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic Adventures (2021) 3-5",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 3",
+  "span": [
+   3,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "232 BBY",
+  "title": "The High Republic (2021) 2-5",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2021) 2",
+  "span": [
+   2,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic Adventures (2021) 6-7",
+  "note": "pendant The High Republic: The Rising Storm",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 6",
+  "span": [
+   6,
+   7
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic (2021) 6",
+  "note": "pendant The High Republic: The Rising Storm",
+  "screen": false,
+  "wiki": "The High Republic (2021) 6",
+  "span": [
+   6,
+   6
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic Adventures : The Monster of Temple Peak 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: The Monster of Temple Peak 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic : The Rising Storm",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: The Rising Storm",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : L'orage gronde",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic (2021) 7",
+  "note": "pendant The High Republic: The Rising Storm",
+  "screen": false,
+  "wiki": "The High Republic (2021) 7",
+  "span": [
+   7,
+   7
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic : Race to Crashpoint Tower",
+  "note": "pendant The High Republic: The Rising Storm",
+  "screen": false,
+  "wiki": "The High Republic: Race to Crashpoint Tower",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : La tour des Trompe-la-mort",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic Adventures Free Comic Book Day 2021",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Free Comic Book Day 2021",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic (2021) 8",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2021) 8",
+  "span": [
+   8,
+   8
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic : Trail of Shadows 1",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Trail of Shadows 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic Adventures (2021) 8-10",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 8",
+  "span": [
+   8,
+   10
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic : Out of the Shadows",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Out of the Shadows",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Hors de l'ombre",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic : Tempest Runner",
+  "note": "audiobook but script book available",
+  "screen": false,
+  "wiki": "The High Republic: Tempest Runner",
+  "span": null,
+  "kind": "audio",
+  "fr": "La Haute République : Maître-Tempête",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic : Trail of Shadows 2",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Trail of Shadows 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic (2021) 9-11",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2021) 9",
+  "span": [
+   9,
+   11
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "231 BBY",
+  "title": "The High Republic Adventures Annual 2021 : The Haul",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Annual 2021",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures: Galactic Bake-Off Spectacular",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Galactic Bake-Off Spectacular",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic : Trail of Shadows 3",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Trail of Shadows 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures (2021) 11",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 11",
+  "span": [
+   11,
+   11
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures Annual 2021 : Crash and the Crew Do What They Do",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Annual 2021",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures Annual 2021 : No Stone Unturned",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Annual 2021",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic : Midnight Horizon",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Midnight Horizon",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Horizon funèbre",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures (2021) 12",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 12",
+  "span": [
+   12,
+   12
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic : The Fallen Star",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: The Fallen Star",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : La Chute de l'étoile",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic (2021) 12-14",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2021) 12",
+  "span": [
+   12,
+   14
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures (2021) 13",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2021) 13",
+  "span": [
+   13,
+   13
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic : Trail of Shadows 4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Trail of Shadows 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic (2021) 15",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2021) 15",
+  "span": [
+   15,
+   15
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "Free Comic Book Day 2023 : All Ages - Starlight Coda",
+  "note": "",
+  "screen": false,
+  "wiki": "Free Comic Book Day 2023",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic : Trail of Shadows 5",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Trail of Shadows 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic : Shadows of Starlight 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Shadows of Starlight 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic: Eye of the Storm 1-2",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Eye of the Storm 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "230 BBY",
+  "title": "The High Republic Adventures – The Nameless Terror 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures – The Nameless Terror 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "229 BBY",
+  "title": "Revelations (2023) : All the Republic",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): All the Republic",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "229 BBY",
+  "title": "The High Republic : Escape from Valo",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Escape from Valo",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Sauvetage sur Valo",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "229 BBY",
+  "title": "The High Republic : The Eye of Darkness",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: The Eye of Darkness",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : L'Œil des ténèbres",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "229 BBY",
+  "title": "The High Republic Adventures (2023) 1-2",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "229 BBY",
+  "title": "The High Republic Adventures: Crash Landing",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Crash Landing",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 3-6",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 3",
+  "span": [
+   3,
+   6
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Defy the Storm",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Defy the Storm",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Braver la tempête",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 7-8",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 7",
+  "span": [
+   7,
+   8
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures: Crash and Burn",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Crash and Burn",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 9-10",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 9",
+  "span": [
+   9,
+   10
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Temptation of the Force",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Temptation of the Force",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : La Tentation de la Force",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Tears of the Nameless",
+  "note": "prologue pendant The High Republic: Temptation of the Force",
+  "screen": false,
+  "wiki": "The High Republic: Tears of the Nameless",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Les Larmes des Sans-noms",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Beware the Nameless",
+  "note": "pendant The High Republic: Tears of the Nameless",
+  "screen": false,
+  "wiki": "The High Republic: Beware the Nameless",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : Gare aux Sans-noms",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures – Echoes of Fear 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures – Echoes of Fear 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "La Haute République : Les Aventures : Les Échos de la peur 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures – Saber for Hire 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures – Saber for Hire 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "La Haute République : Les Aventures : Sabre à louer 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic (2023) 1-10",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic (2023) 1",
+  "span": [
+   1,
+   10
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Tempest Breaker",
+  "note": "audiobook but script book available",
+  "screen": false,
+  "wiki": "The High Republic: Tempest Breaker",
+  "span": null,
+  "kind": "audio",
+  "fr": "La Haute République : Brise-Tempête",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures Phase III Annual",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Phase III Annual",
+  "span": null,
+  "kind": "comic",
+  "fr": "The High Republic Adventures Annual 2025",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 11",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 11",
+  "span": [
+   11,
+   11
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures: Dispatches from the Occlusion Zone 1-2",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Dispatches from the Occlusion Zone 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "",
+  "fr": "La Haute République : Les Aventures : Messages de la Zone d'Occlusion 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 12-13",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 12",
+  "span": [
+   12,
+   13
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures: Dispatches from the Occlusion Zone 3-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures: Dispatches from the Occlusion Zone 3",
+  "span": [
+   3,
+   4
+  ],
+  "kind": "",
+  "fr": "La Haute République : Les Aventures : Messages de la Zone d'Occlusion 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Into the Light",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Into the Light",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "La Haute République : En pleine lumière",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Trials of the Jedi",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Trials of the Jedi",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Haute République : Les Épreuves des Jedi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures Phase III : The Wedding Spectacular",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Phase III: The Wedding Spectacular",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 14-15",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 14",
+  "span": [
+   14,
+   15
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures Phase III : The Battle of Eriadu",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures Phase III: The Battle of Eriadu",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Fear of the Jedi 1-2",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Fear of the Jedi 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 16",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 16",
+  "span": [
+   16,
+   16
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : Fear of the Jedi 3-5",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: Fear of the Jedi 3",
+  "span": [
+   3,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 17",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 17",
+  "span": [
+   17,
+   17
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : A Valiant Vow",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: A Valiant Vow",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic Adventures (2023) 18-20",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic Adventures (2023) 18",
+  "span": [
+   18,
+   20
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "228 BBY",
+  "title": "The High Republic : The Finale",
+  "note": "",
+  "screen": false,
+  "wiki": "The High Republic: The Finale",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "149 BBY",
+  "title": "The Acolyte : Kelnacca",
+  "note": "",
+  "screen": false,
+  "wiki": "The Acolyte: Kelnacca",
+  "span": null,
+  "kind": "comic",
+  "fr": "The Acolyte – Kelnacca 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "148 BBY",
+  "title": "THE ACOLYTE EPISODES 1-2",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE ACOLYTE — ÉPISODES 1-2",
+  "en": "THE ACOLYTE — EPISODES 1-2",
+  "frOk": null
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "134 BBY",
+  "title": "The Acolyte : The Crystal Crown",
+  "note": "",
+  "screen": false,
+  "wiki": "The Acolyte: The Crystal Crown",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE HIGH REPUBLIC ERA",
+  "date": "132 BBY",
+  "title": "THE ACOLYTE EPISODES 3-8",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE ACOLYTE — ÉPISODES 3-8",
+  "en": "THE ACOLYTE — EPISODES 3-8",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "48 BBY",
+  "title": "Revelations (2023) : Showdown at Ocean's Deep",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): Showdown at Ocean's Deep",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "48 BBY",
+  "title": "Mace Windu",
+  "note": "",
+  "screen": false,
+  "wiki": "Mace Windu",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "41 BBY",
+  "title": "Padawan",
+  "note": "",
+  "screen": false,
+  "wiki": "Padawan",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "40 BBY",
+  "title": "Master & Apprentice",
+  "note": "epilogue pendant EPISODE 1 LA MENACE FANTOME",
+  "screen": false,
+  "wiki": "Master & Apprentice",
+  "span": null,
+  "kind": "roman",
+  "fr": "Maître et Apprenti",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "37 BBY",
+  "title": "Age of Republic : Qui-Gon Jinn",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Qui-Gon Jinn",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "34 BBY",
+  "title": "Age of Republic Special : The Weapon",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic Special: The Weapon",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "33 BBY",
+  "title": "The Living Force",
+  "note": "",
+  "screen": false,
+  "wiki": "The Living Force",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Force Vivante",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "33 BBY",
+  "title": "Darth Maul (2017) 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Maul (2017) 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "Dark Maul 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "33 BBY",
+  "title": "Jango Fett 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Jango Fett 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "33 BBY",
+  "title": "Revelations (2023) : Stolen Hope",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): Stolen Hope",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "33 BBY",
+  "title": "Jango Fett 2-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Jango Fett 2",
+  "span": [
+   2,
+   4
+  ],
+  "kind": "",
+  "fr": "Jango Fett 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "Age of Republic : Darth Maul",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Darth Maul",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "Hyperspace Stories : Qui-Gon",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories: Qui-Gon",
+  "span": null,
+  "kind": "comic",
+  "fr": "Histoires de l'hyperespace : Qui-Gon",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "The Phantom Menace 25th Anniversary Special",
+  "note": "pendant EPISODE 1 LA MENACE FANTOME",
+  "screen": false,
+  "wiki": "The Phantom Menace 25th Anniversary Special",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "EPISODE 1 LA MENACE FANTOME",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE I : LA MENACE FANTÔME",
+  "en": "EPISODE I: THE PHANTOM MENACE",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "Queen's Peril",
+  "note": "avant et pendant EPISODE 1 LA MENACE FANTOME, epilogue PENDANT EPISODE IV A NEW HOPE",
+  "screen": false,
+  "wiki": "Queen's Peril",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Le Péril de la reine",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "Darth Maul (2017) : Probe Droid Problem",
+  "note": "pendant EPISODE 1 LA MENACE FANTOME",
+  "screen": false,
+  "wiki": "Darth Maul (2017): Probe Droid Problem",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "32 BBY",
+  "title": "Mace Windu : The Glass Abyss",
+  "note": "",
+  "screen": false,
+  "wiki": "Mace Windu: The Glass Abyss",
+  "span": null,
+  "kind": "roman",
+  "fr": "Mace Windu : L'Abîme de cristal",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "~32-29 BBY",
+  "title": "Age of Republic : Obi-Wan Kenobi",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Obi-Wan Kenobi",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "29 BBY",
+  "title": "Obi-Wan and Anakin 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Obi-Wan and Anakin 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Obi-Wan & Anakin 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "28 BBY",
+  "title": "Queen's Shadow",
+  "note": "prologue pendant EPISODE 1 LA MENACE FANTOME, epilogue pendant EPISODE III LA REVANCHE DES SITH",
+  "screen": false,
+  "wiki": "Queen's Shadow",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "L'Ombre de la reine",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "26 BBY",
+  "title": "Age of Republic : Count Dooku",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Count Dooku",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "23 BBY",
+  "title": "Age of Republic : Jango Fett",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Jango Fett",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "23 BBY",
+  "title": "Dooku : Jedi Lost",
+  "note": "audiobook but script book available",
+  "screen": false,
+  "wiki": "Dooku: Jedi Lost",
+  "span": null,
+  "kind": "audio",
+  "fr": "Dooku : Jedi égaré",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "22 BBY",
+  "title": "EPISODE 2 L'ATTAQUE DES CLONES",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE II : L'ATTAQUE DES CLONES",
+  "en": "EPISODE II: ATTACK OF THE CLONES",
+  "frOk": null
+ },
+ {
+  "era": "THE REPUBLIC ERA",
+  "date": "22 BBY",
+  "title": "Queen's Hope",
+  "note": "pendant et après EPISODE II ATTACK FO THE CLONES",
+  "screen": false,
+  "wiki": "Queen's Hope",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "L'Espoir de la reine",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Jar Jar",
+  "note": "",
+  "screen": false,
+  "wiki": "Jar Jar",
+  "span": null,
+  "kind": "",
+  "fr": "Jar Jar Binks",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Jedi of the Republic : Mace Windu 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Jedi of the Republic: Mace Windu 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Brotherhood",
+  "note": "",
+  "screen": false,
+  "wiki": "Brotherhood",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22-20 BBY",
+  "title": "Hyperspace Stories : Grievous",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories: Grievous",
+  "span": null,
+  "kind": "comic",
+  "fr": "Histoires de l'hyperespace : Grievous",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Hyperspace Stories 11",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 11",
+  "span": [
+   11,
+   11
+  ],
+  "kind": "",
+  "fr": "Histoires de l'hyperespace 11",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Hyperspace Stories 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "Histoires de l'hyperespace 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Hyperspace Stories 5",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "",
+  "fr": "Histoires de l'hyperespace 5",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Age of Republic Special : 501 Plus One",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic Special: 501 Plus One",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Star Wars Adventures : The Clone Wars - Battle Tales 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: The Clone Wars - Battle Tales 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "The Clone Wars – Battle Tales 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "Age of Republic : Anakin Skywalker",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Anakin Skywalker",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "22 BBY",
+  "title": "THE CLONE WARS FILM",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — LE FILM",
+  "en": "THE CLONE WARS — THE MOVIE",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "21 BBY",
+  "title": "THE CLONE WARS EPISODE ARC TROOPERS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — S3E2 · LES ARC TROOPERS",
+  "en": "THE CLONE WARS — S3E2 · ARC TROOPERS",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "21 BBY",
+  "title": "Hyperspace Stories 10",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 10",
+  "span": [
+   10,
+   10
+  ],
+  "kind": "",
+  "fr": "Histoires de l'hyperespace 10",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "21 BBY",
+  "title": "Hyperspace Stories : The Bad Batch - Ghost Agents 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories: The Bad Batch - Ghost Agents 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "21 BBY",
+  "title": "Hyperspace Stories : The Bad Batch - Rogue Agents 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories: The Bad Batch - Rogue Agents 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "comic",
+  "fr": "Hyperspace Stories: The Bad Batch—Rogue Agents 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "21 BBY",
+  "title": "THE CLONE WARS EPISODE HOSTAGE CRISIS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — S1E22 · PRISE D'OTAGE",
+  "en": "THE CLONE WARS — S1E22 · HOSTAGE CRISIS",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "21 BBY",
+  "title": "Star Wars Adventures (2020) 12 : Tales of Villainy - Give & Take",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 12",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 12 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "20 BBY",
+  "title": "THE CLONE WARS EPISODE CARNAGE OF KRELL",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — S4E10 · LE CARNAGE DE KRELL",
+  "en": "THE CLONE WARS — S4E10 · CARNAGE OF KRELL",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "20 BBY",
+  "title": "Age of Republic : General Grievous",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: General Grievous",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "THE CLONE WARS EPISODE EMINENCE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — S5E14 · L'ALLIANCE",
+  "en": "THE CLONE WARS — S5E14 · EMINENCE",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "Star Wars Adventures (2020) 3 : Tales of Villainy - The Hostage",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 3",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 3 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "THE CLONE WARS EPISODE THE JEDI WHO KNEW TOO MUCH",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — S5E18 · LE JEDI QUI EN SAVAIT TROP",
+  "en": "THE CLONE WARS — S5E18 · THE JEDI WHO KNEW TOO MUCH",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "Age of Republic Special : Sisters",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic Special: Sisters",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "THE CLONE WARS EPISODE THE BIG BANG",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE CLONE WARS — THE BIG BANG",
+  "en": "THE CLONE WARS — THE BIG BANG",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "~21-19 BBY",
+  "title": "Hyperspace Stories 9",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 9",
+  "span": [
+   9,
+   9
+  ],
+  "kind": "comic",
+  "fr": "Histoires de l'hyperespace 9",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "Darth Maul : Son of Dathomir 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Maul: Son of Dathomir 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "Dark Disciple",
+  "note": "before and after Darth Maul : Son of Dathomir",
+  "screen": false,
+  "wiki": "Dark Disciple",
+  "span": null,
+  "kind": "roman",
+  "fr": "Sombre Apprenti",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "~22-19 BBY",
+  "title": "Age of Republic : Padmé Amidala",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Republic: Padmé Amidala",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "Thrawn Ascendancy : Chaos Rising",
+  "note": "",
+  "screen": false,
+  "wiki": "Thrawn Ascendancy: Chaos Rising",
+  "span": null,
+  "kind": "roman",
+  "fr": "Chaos croissant",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE CLONE WARS ERA",
+  "date": "19 BBY",
+  "title": "EPISODE 3 LA REVANCHE DES SITH",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE III : LA REVANCHE DES SITH",
+  "en": "EPISODE III: REVENGE OF THE SITH",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "Darth Vader (2017) 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017) 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Dark Vador : Le Seigneur Noir des Sith 1 : L'Élu 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "Master of Evil",
+  "note": "",
+  "screen": false,
+  "wiki": "Master of Evil",
+  "span": null,
+  "kind": "roman",
+  "fr": "Maître du mal",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "Darth Vader (2017) 6",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017) 6",
+  "span": [
+   6,
+   6
+  ],
+  "kind": "",
+  "fr": "Dark Vador : Le Seigneur Noir des Sith 6 : L'Élu 6",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "THE BAD BATCH SAISON 1 EPISODE 6",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE BAD BATCH — S1E6",
+  "en": "THE BAD BATCH — S1E6",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "Darth Vader (2017) 7-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017) 7",
+  "span": [
+   7,
+   12
+  ],
+  "kind": "",
+  "fr": "Dark Vador : Le Seigneur Noir des Sith 7 : Les Ténèbres Étouffent la Lumière 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "THE BAD BATCH SAISON 1 FINAL",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE BAD BATCH — FINAL DE LA SAISON 1",
+  "en": "THE BAD BATCH — SEASON 1 FINALE",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "19 BBY",
+  "title": "Reign of the Empire: The Mask of Fear",
+  "note": "",
+  "screen": false,
+  "wiki": "Reign of the Empire: The Mask of Fear",
+  "span": null,
+  "kind": "roman",
+  "fr": "Le Règne de l'Empire : Le Masque de la peur",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "THE BAD BATCH SAISON 2 EPISODE 13",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE BAD BATCH — S2E13",
+  "en": "THE BAD BATCH — S2E13",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "Sanctuary",
+  "note": "",
+  "screen": false,
+  "wiki": "Sanctuary",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "THE BAD BATCH FINAL",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE BAD BATCH — FINAL DE SÉRIE",
+  "en": "THE BAD BATCH — SERIES FINALE",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "Darth Vader (2017) 13-17",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017) 13",
+  "span": [
+   13,
+   17
+  ],
+  "kind": "",
+  "fr": "Dark Vador : Le Seigneur Noir des Sith 13 : Mers de Feu 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "Darth Vader Annual 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader Annual 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador Annuel 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "Darth Vader (2017) : No Good Deed",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017): No Good Deed",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "Ahsoka",
+  "note": "",
+  "screen": false,
+  "wiki": "Ahsoka",
+  "span": null,
+  "kind": "",
+  "fr": "Star Wars: Ahsoka",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "~18 BBY",
+  "title": "Thrawn Ascendancy : Greater Good",
+  "note": "",
+  "screen": false,
+  "wiki": "Thrawn Ascendancy: Greater Good",
+  "span": null,
+  "kind": "roman",
+  "fr": "Bien commun",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "18 BBY",
+  "title": "Thrawn Ascendancy : Lesser Evil",
+  "note": "",
+  "screen": false,
+  "wiki": "Thrawn Ascendancy: Lesser Evil",
+  "span": null,
+  "kind": "roman",
+  "fr": "Moindre mal",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "21-17 BBY",
+  "title": "Catalyst : A Rogue One Novel",
+  "note": "",
+  "screen": false,
+  "wiki": "Catalyst: A Rogue One Novel",
+  "span": null,
+  "kind": "roman",
+  "fr": "Catalyseur : A Rogue One Novel",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "17 BBY",
+  "title": "Rogue One - Saw Guerrera",
+  "note": "",
+  "screen": false,
+  "wiki": "Rogue One - Saw Guerrera",
+  "span": null,
+  "kind": "comic",
+  "fr": "Rogue One – Saw Gerrera 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "17 BBY",
+  "title": "Shadow of Maul 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Shadow of Maul 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Shadow of Maul 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "17 BBY",
+  "title": "MAUL SHADOW LORD",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "MAUL : SEIGNEUR DE L'OMBRE",
+  "en": "MAUL: SHADOW LORD",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "15-2 BBY",
+  "title": "Thrawn",
+  "note": "",
+  "screen": false,
+  "wiki": "Thrawn",
+  "span": null,
+  "kind": "",
+  "fr": "Mitth'raw'nuruodo",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "14 BBY",
+  "title": "Lords of the Sith",
+  "note": "",
+  "screen": false,
+  "wiki": "Lords of the Sith",
+  "span": null,
+  "kind": "roman",
+  "fr": "Les Seigneurs des Sith",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "14 BBY",
+  "title": "Tarkin",
+  "note": "",
+  "screen": false,
+  "wiki": "Tarkin",
+  "span": null,
+  "kind": "",
+  "fr": "Wilhuff Tarkin",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "14 BBY",
+  "title": "Darth Vader (2017) 18-22",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017) 18",
+  "span": [
+   18,
+   22
+  ],
+  "kind": "",
+  "fr": "Dark Vador : Le Seigneur Noir des Sith 18 : Terrain Dangereux",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "22-14 BBY",
+  "title": "Inquisitor : Rise of the Red Blade",
+  "note": "pendant et après EPISODE II ATTACK OF THE CLONES",
+  "screen": false,
+  "wiki": "Inquisitor: Rise of the Red Blade",
+  "span": null,
+  "kind": "roman",
+  "fr": "Inquisitorius : L'Éveil de la lame rouge",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "14 BBY",
+  "title": "JEDI FALLEN ORDER",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "JEDI : FALLEN ORDER",
+  "en": "JEDI: FALLEN ORDER",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "14 BBY",
+  "title": "Jedi Fallen Order : Dark Temple 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Jedi Fallen Order: Dark Temple 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Jedi: Fallen Order – Dark Temple 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "13 BBY",
+  "title": "Most Wanted",
+  "note": "",
+  "screen": false,
+  "wiki": "Most Wanted",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Morts ou vifs",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "13 BBY",
+  "title": "Han Solo : Imperial Cadet 1-5",
+  "note": "avant et pendant SOLO",
+  "screen": false,
+  "wiki": "Han Solo: Imperial Cadet 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "13-12 BBY",
+  "title": "Crimson Climb",
+  "note": "",
+  "screen": false,
+  "wiki": "Crimson Climb",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "~12-11 BBY",
+  "title": "Star Wars Jedi : Battle Scars",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Jedi: Battle Scars",
+  "span": null,
+  "kind": "roman",
+  "fr": "Jedi: Battle Scars",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "12 BBY",
+  "title": "Darth Vader (2017) 23-25",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2017) 23",
+  "span": [
+   23,
+   25
+  ],
+  "kind": "",
+  "fr": "Dark Vador : Le Seigneur Noir des Sith 23 : La Forteresse de Vador 5",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "~12-9 BBY",
+  "title": "Inquisitors 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Inquisitors 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "Inquisitors 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "11 BBY",
+  "title": "Lando's Luck",
+  "note": "",
+  "screen": false,
+  "wiki": "Lando's Luck",
+  "span": null,
+  "kind": "roman",
+  "fr": "Le Globe du Solstice",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "10 BBY",
+  "title": "Star Wars Adventures (2020) 4 : Tales of Villainy - Credits",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 4",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 4 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "10 BBY",
+  "title": "Beckett",
+  "note": "",
+  "screen": false,
+  "wiki": "Beckett",
+  "span": null,
+  "kind": "",
+  "fr": "Tobias Beckett",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "10 BBY",
+  "title": "SOLO",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "SOLO",
+  "en": "SOLO",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "10 BBY",
+  "title": "Lando : Double or Nothing 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Lando: Double or Nothing 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Lando : Quitte ou double 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "9 BBY",
+  "title": "OWI WAN KENOBI",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "OBI-WAN KENOBI",
+  "en": "OBI-WAN KENOBI",
+  "frOk": null
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "8 BBY",
+  "title": "Star Wars (2015) 15",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 15",
+  "span": [
+   15,
+   15
+  ],
+  "kind": "",
+  "fr": "Star Wars 15: Extrait du Journal du vieux Ben Kenobi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE IMPERIAL ERA",
+  "date": "8 BBY",
+  "title": "Star Wars (2015) 20",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 20",
+  "span": [
+   20,
+   20
+  ],
+  "kind": "",
+  "fr": "Star Wars 20: Extrait du Journal du vieux Ben Kenobi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "ANDOR SAISON 1",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ANDOR — SAISON 1",
+  "en": "ANDOR — SEASON 1",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "Ezra's Gamble",
+  "note": "",
+  "screen": false,
+  "wiki": "Ezra's Gamble",
+  "span": null,
+  "kind": "audio",
+  "fr": "Les Aventures d'Ezra",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "STAR WARS REBELS EPISODE FIGHTER FLIGHT",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E2 · LA MISSION IMPOSSIBLE",
+  "en": "STAR WARS REBELS — S1E2 · FIGHTER FLIGHT",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "Star Wars Rebels Magazine : Ring Race",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Ring Race",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "STAR WARS REBELS EPISODE RISE OF THE OLD MASTERS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E3 · AU SECOURS DES ANCIENS MAÎTRES",
+  "en": "STAR WARS REBELS — S1E3 · RISE OF THE OLD MASTERS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "Star Wars Rebels Magazine : Learning Patience",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Learning Patience",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "Servants of the Empire : Rebel in the Ranks",
+  "note": "avant et pendant BREAKING RANKS",
+  "screen": false,
+  "wiki": "Servants of the Empire: Rebel in the Ranks",
+  "span": null,
+  "kind": "audio",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "STAR WARS REBELS EPISODE BREAKING RANKS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E4 · LE CADET IMPÉRIAL",
+  "en": "STAR WARS REBELS — S1E4 · BREAKING RANKS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "Star Wars Rebels Magazine : The Fake Jedi",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Fake Jedi",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "Star Wars Rebels Magazine : Kallu's Hunt",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Kallu's Hunt",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 BBY",
+  "title": "STAR WARS REBELS EPISODE GATHERING FORCES",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E7 · LA FORCE SOUS CONTRÔLE",
+  "en": "STAR WARS REBELS — S1E7 · GATHERING FORCES",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Return of the Slavers",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Return of the Slavers",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Eyes on the Prize",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Eyes on the Prize",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Kanan 1-6",
+  "note": "",
+  "screen": false,
+  "wiki": "Kanan 1",
+  "span": [
+   1,
+   6
+  ],
+  "kind": "",
+  "fr": "Kanan 1 : Le dernier Padawan 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "11 BBY",
+  "title": "A New Dawn",
+  "note": "prologue during Kanan 7",
+  "screen": false,
+  "wiki": "A New Dawn",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Kanan 7-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Kanan 7",
+  "span": [
+   7,
+   12
+  ],
+  "kind": "",
+  "fr": "Kanan 7 : Premier Sang 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE PATH OF THE JEDI",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E8 · L'ÉPREUVE DU JEDI",
+  "en": "STAR WARS REBELS — S1E8 · PATH OF THE JEDI",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Sabotaged Supplies",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Sabotaged Supplies",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE IDIOT'S ARRAY",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E9 · LA MAIN GAGNANTE",
+  "en": "STAR WARS REBELS — S1E9 · IDIOT'S ARRAY",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Servants of the Empire : Imperial Justice",
+  "note": "avant et pendant VISION OF HOPE",
+  "screen": false,
+  "wiki": "Servants of the Empire: Imperial Justice",
+  "span": null,
+  "kind": "audio",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE VISION OF HOPE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E10 · VISION D'ESPOIR",
+  "en": "STAR WARS REBELS — S1E10 · VISION OF HOPE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Ezra's Vision",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Ezra's Vision",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Becoming Hunted",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Becoming Hunted",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Assessment",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Assessment",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Servants of the Empire : The Secret Academy",
+  "note": "avant, pendant et après FIRE ACROSS THE GALAXY",
+  "screen": false,
+  "wiki": "Servants of the Empire: The Secret Academy",
+  "span": null,
+  "kind": "audio",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE FIRE ACROSS THE GALAXY",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S1E13 · GALAXIE EN FLAMMES",
+  "en": "STAR WARS REBELS — S1E13 · FIRE ACROSS THE GALAXY",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Senate Perspective",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Senate Perspective",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Ocean Rescue",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Ocean Rescue",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Puffer Problems",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Puffer Problems",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE RELICS OF THE OLD REPUBLIC",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E2 · LES RELIQUES DE L’ANCIENNE RÉPUBLIQUE",
+  "en": "STAR WARS REBELS — S2E2 · RELICS OF THE OLD REPUBLIC",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Secrets of Sienar",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Secrets of Sienar",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE WINGS OF THE MASTER",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E5 · LE FAISEUR D'AILES",
+  "en": "STAR WARS REBELS — S2E5 · WINGS OF THE MASTER",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : No Sympathy",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: No Sympathy",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE BLOOD SISTERS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E6 · RETROUVAILLES",
+  "en": "STAR WARS REBELS — S2E6 · BLOOD SISTERS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Too Late to Change",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Too Late to Change",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : Always Bet on Chop",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Always Bet on Chop",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "STAR WARS REBELS EPISODE STEALTH STRIKE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E7 · LE COMMANDO",
+  "en": "STAR WARS REBELS — S2E7 · STEALTH STRIKE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 BBY",
+  "title": "Star Wars Rebels Magazine : A Day's Duty",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: A Day's Duty",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "STAR WARS REBELS EPISODE THE FUTURE OF THE FORCE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E8 · L'AVENIR DE LA FORCE",
+  "en": "STAR WARS REBELS — S2E8 · THE FUTURE OF THE FORCE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Leia, Princess of Alderaan",
+  "note": "",
+  "screen": false,
+  "wiki": "Leia, Princess of Alderaan",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Leia : Princesse d'Alderaan",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : Ice Breaking",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Ice Breaking",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : Vulnerable Areas",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Vulnerable Areas",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Size of the Fight",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Size of the Fight",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "STAR WARS REBELS EPISODE LEGENDS OF THE LASAT",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E12 · LA LÉGENDE DES LASATS",
+  "en": "STAR WARS REBELS — S2E12 · LEGENDS OF THE LASAT",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : Academy Cadets",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Academy Cadets",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "STAR WARS REBELS EPISODE THE CALL",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E13 · L'APPEL",
+  "en": "STAR WARS REBELS — S2E13 · THE CALL",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : Escaping the Scrap Pile",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Escaping the Scrap Pile",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Ballad of 264",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Ballad of 264",
+  "span": [
+   264,
+   264
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : Off the Rails",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Off the Rails",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "STAR WARS REBELS EPISODE HOMECOMING",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E14 · RETOUR AU BERCAIL",
+  "en": "STAR WARS REBELS — S2E14 · HOMECOMING",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : A Time to Survive",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: A Time to Survive",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Wrong Crowd",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Wrong Crowd",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "STAR WARS REBELS EPISODE SHROUD OF DARKNESS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E16 · AU CŒUR DES TÉNÈBRES",
+  "en": "STAR WARS REBELS — S2E16 · SHROUD OF DARKNESS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Gangsters of Galzez",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Gangsters of Galzez",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Second Chance",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Second Chance",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "STAR WARS REBELS EPISODE THE MYSTERY OF CHOPPER BASE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S2E18 · LA BASE MYSTÉRIEUSE",
+  "en": "STAR WARS REBELS — S2E18 · THE MYSTERY OF CHOPPER BASE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Thune Cargo",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Thune Cargo",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 BBY",
+  "title": "Star Wars Rebels Magazine : The Line of Duty",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Line of Duty",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Rogue One : Cassian & K-2SO Special",
+  "note": "",
+  "screen": false,
+  "wiki": "Rogue One: Cassian & K-2SO Special",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Age of Rebellion : Darth Vader",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Darth Vader",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Age of Rebellion Special : The Long Game",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion Special: The Long Game",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "A New Legacy : The Grand Imperial Jubilee",
+  "note": "",
+  "screen": false,
+  "wiki": "A New Legacy: The Grand Imperial Jubilee",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "STAR WARS REBELS EPISODE HERA'S HEROES",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S3E4 · LE CULTE DES ANCÊTRES",
+  "en": "STAR WARS REBELS — S3E4 · HERA'S HEROES",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : Sons of the Sky",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Sons of the Sky",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "STAR WARS REBELS EPISODE IMPERIAL SUPERCOMMANDOS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S3E6 · UN RALLIEMENT IMPRÉVU",
+  "en": "STAR WARS REBELS — S3E6 · IMPERIAL SUPERCOMMANDOS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : A Trooper's Worth",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: A Trooper's Worth",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : Divide and Conquer",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Divide and Conquer",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "STAR WARS REBELS EPISODE AN INSIDE MAN",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S3E9 · LA TAUPE",
+  "en": "STAR WARS REBELS — S3E9 · AN INSIDE MAN",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : To Thy Metal Heart Be True",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: To Thy Metal Heart Be True",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : A Youth Unpromising",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: A Youth Unpromising",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "STAR WARS REBELS EPISODE VISIONS AND VOICES",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S3E10 · LES FORCES OCCULTES",
+  "en": "STAR WARS REBELS — S3E10 · VISIONS AND VOICES",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : Final Round",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Final Round",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : Fifth and Final",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Fifth and Final",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "STAR WARS REBELS EPISODE SECRET CARGO",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S3E17 · RENCONTRE IMPRÉVUE",
+  "en": "STAR WARS REBELS — S3E17 · SECRET CARGO",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Star Wars Rebels Magazine : The Beast Within",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: The Beast Within",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 BBY",
+  "title": "Thrawn : Alliances",
+  "note": "",
+  "screen": false,
+  "wiki": "Thrawn: Alliances",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2-1 BBY",
+  "title": "Vader : Dark Visions 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Vader: Dark Visions 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2-1 BBY",
+  "title": "Vader : Dark Visions 3",
+  "note": "",
+  "screen": false,
+  "wiki": "Vader: Dark Visions 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Target Vader 1-6",
+  "note": "",
+  "screen": false,
+  "wiki": "Target Vader 1",
+  "span": [
+   1,
+   6
+  ],
+  "kind": "",
+  "fr": "Cible – Vador 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "The Mighty Chewbacca in the Forest of Fear !",
+  "note": "",
+  "screen": false,
+  "wiki": "The Mighty Chewbacca in the Forest of Fear !",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "STAR WARS REBELS EPISODE IN THE NAME OF THE REBELLION",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S4E4 · AU NOM DE LA RÉBELLION (2)",
+  "en": "STAR WARS REBELS — S4E4 · IN THE NAME OF THE REBELLION (2)",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Star Wars Rebels Magazine : Never Far Behind",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Never Far Behind",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "STAR WARS REBELS EPISODE CRAWLER COMMANDEERS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — S4E8 · RÉQUISITION DE CHENILLE",
+  "en": "STAR WARS REBELS — S4E8 · CRAWLER COMMANDEERS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Star Wars Rebels Magazine : Crossing the Line",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Rebels Magazine: Crossing the Line",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Thrawn : Treason",
+  "note": "",
+  "screen": false,
+  "wiki": "Thrawn: Treason",
+  "span": null,
+  "kind": "roman",
+  "fr": "Thrawn : Trahison",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "STAR WARS REBELES EPISODE FINAL",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS REBELS — FINAL DE SÉRIE",
+  "en": "STAR WARS REBELS — SERIES FINALE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Star Wars (2015) 37 : The Sand Will Provide",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 37",
+  "span": null,
+  "kind": "",
+  "fr": "Star Wars 37: Fierté Impériale",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Star Wars Adventures (2017) 25",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2017) 25",
+  "span": [
+   25,
+   25
+  ],
+  "kind": "",
+  "fr": "Star Wars Aventures 25",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Star Wars Adventures : Tales from Vader's Castle 1-3",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Tales from Vader's Castle 1",
+  "span": [
+   1,
+   3
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Star Wars Adventures Free Comic Book Day 2019",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures Free Comic Book Day 2019",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures Free Comic Book Day 2019",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Star Wars Adventures : Tales from Vader's Castle 4-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Tales from Vader's Castle 4",
+  "span": [
+   4,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Star Wars Adventures : Return to Vader's Castle 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Return to Vader's Castle 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "Return to Vader's Castle 1: Beware the Horned Devil!",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Vader : Dark Visions 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Vader: Dark Visions 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Vader : Dark Visions 4-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Vader: Dark Visions 4",
+  "span": [
+   4,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 1 - Hard Shutdown",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 1 - Hard Shutdown",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 1 - Inescapable",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 1 - Inescapable",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 1 - Dissolution of Hope",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 1 - Dissolution of Hope",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 2 - The Endless Mercy",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 2 - The Endless Mercy",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 2 - Power",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 2 - Power",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 3 - Annihilated",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 3 - Annihilated",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Darth Vader : Black, White & Red 4 - The Inhabitant",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 4 - The Inhabitant",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Age of Rebellion Special : Stolen Valor",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion Special: Stolen Valor",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~1 BBY",
+  "title": "Star Wars Adventures (2020) 5 : Tales of Villainy - The Short Goodbye",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 5",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 5 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Obi-Wan 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Obi-Wan 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Obi-Wan 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Guardians of the Whills",
+  "note": "",
+  "screen": false,
+  "wiki": "Guardians of the Whills",
+  "span": null,
+  "kind": "",
+  "fr": "A Rogue One Story : Gardiens des Whills",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "13-1 BBY",
+  "title": "Rebel Rising",
+  "note": "",
+  "screen": false,
+  "wiki": "Rebel Rising",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Soulèvement Rebelle",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Rogue One : Jyn Erso",
+  "note": "",
+  "screen": false,
+  "wiki": "Rogue One: Jyn Erso",
+  "span": null,
+  "kind": "comic",
+  "fr": "Rogue One – Jyn Erso 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Rogue One : Cassian Andor",
+  "note": "",
+  "screen": false,
+  "wiki": "Rogue One: Cassian Andor",
+  "span": null,
+  "kind": "comic",
+  "fr": "Rogue One – Cassian Andor 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "ROGUE ONE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ROGUE ONE",
+  "en": "ROGUE ONE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY",
+  "title": "Age of Rebellion : Grand Moff Tarkin",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Grand Moff Tarkin",
+  "span": null,
+  "kind": "",
+  "fr": "L'Ère de la Rébellion : Grand Moff Tarkin 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 BBY-0 ABY",
+  "title": "EPISODE IV A NEW HOPE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE IV : UN NOUVEL ESPOIR",
+  "en": "EPISODE IV: A NEW HOPE",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Battlefront II : Inferno Squad",
+  "note": "pendant et après EPISODE IV A NEW HOPE",
+  "screen": false,
+  "wiki": "Battlefront II: Inferno Squad",
+  "span": null,
+  "kind": "roman",
+  "fr": "Battlefront II : L'Escouade Inferno",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Princess Leia 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Princess Leia 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "Princesse Leia 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Age of Rebellion : Han Solo",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Han Solo",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Princess Leia 2-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Princess Leia 2",
+  "span": [
+   2,
+   5
+  ],
+  "kind": "",
+  "fr": "Princesse Leia 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Lando 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Lando 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Lando 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Chewbacca (2015) 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Chewbacca (2015) 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Age of Resistance Special : The Bridge",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance Special: The Bridge",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars Annual (2015) 4",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Annual (2015) 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "comic",
+  "fr": "Star Wars Annuel 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Han Solo 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Han Solo 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Han Solo 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Heir to the Jedi",
+  "note": "",
+  "screen": false,
+  "wiki": "Heir to the Jedi",
+  "span": null,
+  "kind": "roman",
+  "fr": "L'Héritier des Jedi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 1-3",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 1",
+  "span": [
+   1,
+   3
+  ],
+  "kind": "",
+  "fr": "Star Wars 1: Skywalker passe à l'Attaque 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "Dark Vador 1: Vador 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 25 : Coda",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 25",
+  "span": null,
+  "kind": "",
+  "fr": "Dark Vador 25: En Bout de Course 6",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 4",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "",
+  "fr": "Star Wars 4: Skywalker passe à l'Attaque 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars Annual (2015) 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Annual (2015) 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "comic",
+  "fr": "Star Wars Annuel 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 2-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 2",
+  "span": [
+   2,
+   4
+  ],
+  "kind": "",
+  "fr": "Dark Vador 2: Vador 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 5",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "",
+  "fr": "Star Wars 5: Skywalker passe à l'Attaque 5",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 5",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "",
+  "fr": "Dark Vador 5: Vador 5",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 6",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 6",
+  "span": [
+   6,
+   6
+  ],
+  "kind": "",
+  "fr": "Star Wars 6: Skywalker passe à l'Attaque 6",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 6",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 6",
+  "span": [
+   6,
+   6
+  ],
+  "kind": "",
+  "fr": "Dark Vador 6: Vador 6",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 7-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 7",
+  "span": [
+   7,
+   12
+  ],
+  "kind": "",
+  "fr": "Star Wars 7: Le dernier de ses semblables",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 7-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 7",
+  "span": [
+   7,
+   12
+  ],
+  "kind": "",
+  "fr": "Dark Vador 7: Ombres et Mensonges 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader Annual 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader Annual 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador Annuel 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "A New Legacy : Rogue's Gambit",
+  "note": "",
+  "screen": false,
+  "wiki": "A New Legacy: Rogue's Gambit",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Vader Down",
+  "note": "",
+  "screen": false,
+  "wiki": "Vader Down",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 13",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 13",
+  "span": [
+   13,
+   13
+  ],
+  "kind": "",
+  "fr": "Dark Vador 13 : Vador Abattu 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 13",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 13",
+  "span": [
+   13,
+   13
+  ],
+  "kind": "",
+  "fr": "Star Wars 13 : Vador Abattu 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 14",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 14",
+  "span": [
+   14,
+   14
+  ],
+  "kind": "",
+  "fr": "Dark Vador 14 : Vador Abattu 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 14",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 14",
+  "span": [
+   14,
+   14
+  ],
+  "kind": "",
+  "fr": "Star Wars 14 : Vador Abattu 5",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 15",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 15",
+  "span": [
+   15,
+   15
+  ],
+  "kind": "",
+  "fr": "Dark Vador 15 : Vador Abattu 6",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 16-19",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 16",
+  "span": [
+   16,
+   19
+  ],
+  "kind": "",
+  "fr": "Star Wars 16: Prison Rebelle 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 16-20",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 16",
+  "span": [
+   16,
+   20
+  ],
+  "kind": "",
+  "fr": "Dark Vador 16: La Guerre de Shu-Torun 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 20 : The Misadventure of Triple-Zero and Beetee",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 20",
+  "span": null,
+  "kind": "",
+  "fr": "Dark Vador 20: En Bout de Course 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader (2015) 21-25",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2015) 21",
+  "span": [
+   21,
+   25
+  ],
+  "kind": "",
+  "fr": "Dark Vador 21: En Bout de Course 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Darth Vader : Black, White & Red 3 - Diplomatic Impunity",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 3 - Diplomatic Impunity",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 21-30",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 21",
+  "span": [
+   21,
+   30
+  ],
+  "kind": "comic",
+  "fr": "Star Wars 21: Le Dernier Vol du Harbinger 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars Annual (2015) 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Annual (2015) 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "comic",
+  "fr": "Star Wars Annuel 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Doctor Aphra (2016) 1-6",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 1",
+  "span": [
+   1,
+   6
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 1: Aphra 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "The Screaming Citadel",
+  "note": "",
+  "screen": false,
+  "wiki": "The Screaming Citadel",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 31",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 31",
+  "span": [
+   31,
+   31
+  ],
+  "kind": "",
+  "fr": "Star Wars 31 : La Citadelle Hurlante 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Doctor Aphra (2016) 7",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 7",
+  "span": [
+   7,
+   7
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 7 : La Citadelle Hurlante 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Star Wars (2015) 32",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 32",
+  "span": [
+   32,
+   32
+  ],
+  "kind": "",
+  "fr": "Star Wars 32 : La Citadelle Hurlante 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0 ABY",
+  "title": "Doctor Aphra (2016) 8",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 8",
+  "span": [
+   8,
+   8
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 8 : La Citadelle Hurlante 5",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "0-1 ABY",
+  "title": "Star Wars (2015) 33-36",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 33",
+  "span": [
+   33,
+   36
+  ],
+  "kind": "",
+  "fr": "Star Wars 33: Des Rebelles Naufragés",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Star Wars Annual (2015) 3",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Annual (2015) 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "comic",
+  "fr": "Star Wars Annuel 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Star Wars (2015) 50 : Sho-Torun Lives",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 50",
+  "span": null,
+  "kind": "",
+  "fr": "Star Wars 50: La Mort de l'Espoir 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Star Wars (2015) 37",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 37",
+  "span": [
+   37,
+   37
+  ],
+  "kind": "",
+  "fr": "Star Wars 37: Fierté Impériale",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Doctor Aphra Annual 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra Annual 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra Annuel 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Doctor Aphra (2016) 9-13",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 9",
+  "span": [
+   9,
+   13
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 9: L'Énorme Magot 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Doctor Aphra Annual 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra Annual 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra Annuel 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Doctor Aphra (2016) 14-31",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 14",
+  "span": [
+   14,
+   31
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 14: Hiérarchisation 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "Star Wars (2015) 38-43",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 38",
+  "span": [
+   38,
+   43
+  ],
+  "kind": "",
+  "fr": "Star Wars 38: Les Cendres de Jedha 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1 ABY",
+  "title": "The Last Jedi : The Storms of Crait",
+  "note": "",
+  "screen": false,
+  "wiki": "The Last Jedi: The Storms of Crait",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "1-2 ABY",
+  "title": "Star Wars (2015) 44-67",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 44",
+  "span": [
+   44,
+   67
+  ],
+  "kind": "",
+  "fr": "Star Wars 44: Mutinerie sur Mon Cala 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 ABY",
+  "title": "A New Legacy : For the Love of the Empire",
+  "note": "",
+  "screen": false,
+  "wiki": "A New Legacy: For the Love of the Empire",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 ABY",
+  "title": "Age of Rebellion : Lando Calrissian",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Lando Calrissian",
+  "span": null,
+  "kind": "comic",
+  "fr": "L'Ère de la Rébellion : Lando Calrissian 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 ABY",
+  "title": "Age of Rebellion : Jabba the Hutt",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Jabba the Hutt",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 ABY",
+  "title": "Hyperspace Stories 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "Histoires de l'hyperespace 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 ABY",
+  "title": "Star Wars (2015) 68-75",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2015) 68",
+  "span": [
+   68,
+   75
+  ],
+  "kind": "",
+  "fr": "Star Wars 68: Rebelles et renégats 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "2 ABY",
+  "title": "Doctor Aphra (2016) 32-36",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 32",
+  "span": [
+   32,
+   36
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 32: L'effroyable super-arme rebelle 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra Annual 3",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra Annual 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra Annuel 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2016) 37-40",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2016) 37",
+  "span": [
+   37,
+   40
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 37: La fin d'une vaurienne 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Empire Ascendant : Epilogue",
+  "note": "",
+  "screen": false,
+  "wiki": "Empire Ascendant: Epilogue",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Empire Ascendant : An Echo of Victory",
+  "note": "",
+  "screen": false,
+  "wiki": "Empire Ascendant: An Echo of Victory",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3 ABY",
+  "title": "Age of Rebellion : Boba Fett",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Boba Fett",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Hyperspace Stories 7",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 7",
+  "span": [
+   7,
+   7
+  ],
+  "kind": "comic",
+  "fr": "Histoires de l'hyperespace 7",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Star Wars Adventures (2020) 13 : Tales of Villainy - A Last Chapter",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 13",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 13 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3 ABY",
+  "title": "Empire Ascendant : In Service of the Empire",
+  "note": "",
+  "screen": false,
+  "wiki": "Empire Ascendant: In Service of the Empire",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3 ABY",
+  "title": "Empire Ascendant : Two Sides to Every Sortie",
+  "note": "",
+  "screen": false,
+  "wiki": "Empire Ascendant: Two Sides to Every Sortie",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Yoda 1-10",
+  "note": "",
+  "screen": false,
+  "wiki": "Yoda 1",
+  "span": [
+   1,
+   10
+  ],
+  "kind": "comic",
+  "fr": "Yoda 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "EPISODE V L'EMPIRE CONTRE ATTAQUE",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE V : L'EMPIRE CONTRE-ATTAQUE",
+  "en": "EPISODE V: THE EMPIRE STRIKES BACK",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars Adventures (2020) 1 : Tales of Villainy - Invasion of Echo Base",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 1",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 1 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Age of Rebellion Special : The Trial of Dagobah",
+  "note": "pendant EPISODE V L'EMPIRE CONTRE ATTAQUE",
+  "screen": false,
+  "wiki": "Age of Rebellion Special: The Trial of Dagobah",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 1",
+  "note": "pendant EPISODE V L'EMPIRE CONTRE ATTAQUE",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 1 : Le cœur sombre des Sith 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 1-2",
+  "note": "pendant EPISODE V L'EMPIRE CONTRE ATTAQUE",
+  "screen": false,
+  "wiki": "Star Wars (2020) 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "",
+  "fr": "Star Wars 1 : La Voie du destin 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 3-6",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 3",
+  "span": [
+   3,
+   6
+  ],
+  "kind": "",
+  "fr": "Star Wars 3 : La Voie du destin 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 2-11",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 2",
+  "span": [
+   2,
+   11
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 2 : Le cœur sombre des Sith 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 1-6",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 1",
+  "span": [
+   1,
+   6
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 1 : Les plus dangereux de la galaxie 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 7-8",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 7",
+  "span": [
+   7,
+   8
+  ],
+  "kind": "",
+  "fr": "Star Wars 7 : Le testament de Tarkin 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 7",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 7",
+  "span": [
+   7,
+   7
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 7 : Cible : Valance 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 9-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 9",
+  "span": [
+   9,
+   12
+  ],
+  "kind": "",
+  "fr": "Star Wars 9 : Opération Flambeau 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 1-10",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 1",
+  "span": [
+   1,
+   10
+  ],
+  "kind": "",
+  "fr": "Docteur Aphra 1 : Destin et fortune 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 8-10",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 8",
+  "span": [
+   8,
+   10
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 8 : Affrontement au Terminus 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 1 : Aphra",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 1",
+  "span": null,
+  "kind": "",
+  "fr": "War of the Bounty Hunters 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 13",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 13",
+  "span": [
+   13,
+   13
+  ],
+  "kind": "",
+  "fr": "Star Wars 13 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 1 : Jabba the Hutt",
+  "note": "avant et pendant War of the Bounty Hunters : Aphra",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 1",
+  "span": null,
+  "kind": "",
+  "fr": "War of the Bounty Hunters 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 11-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 11",
+  "span": [
+   11,
+   12
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 11 : La Grand-Chasse de Malastare",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 1",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 1 : 4-LOM & Zuckuss",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 1",
+  "span": null,
+  "kind": "",
+  "fr": "War of the Bounty Hunters 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 13",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 13",
+  "span": [
+   13,
+   13
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 14",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 14",
+  "span": [
+   14,
+   14
+  ],
+  "kind": "",
+  "fr": "Star Wars 14 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 12",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 12",
+  "span": [
+   12,
+   12
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 12",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 15",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 15",
+  "span": [
+   15,
+   15
+  ],
+  "kind": "",
+  "fr": "Star Wars 15 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 13-14",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 13",
+  "span": [
+   13,
+   14
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 13",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 11",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 11",
+  "span": [
+   11,
+   11
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 11",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 14-15",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 14",
+  "span": [
+   14,
+   15
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 14",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 15",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 15",
+  "span": [
+   15,
+   15
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 15",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 2",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 12",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 12",
+  "span": [
+   12,
+   12
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 12",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 16",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 16",
+  "span": [
+   16,
+   16
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 13",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 13",
+  "span": [
+   13,
+   13
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 13",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 3",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 16",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 16",
+  "span": [
+   16,
+   16
+  ],
+  "kind": "",
+  "fr": "Star Wars 16 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 14",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 14",
+  "span": [
+   14,
+   14
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 14",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 16",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 16",
+  "span": [
+   16,
+   16
+  ],
+  "kind": "",
+  "fr": "Dark Vador 16",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 4",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 17",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 17",
+  "span": [
+   17,
+   17
+  ],
+  "kind": "",
+  "fr": "Star Wars 17 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters 5",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 17",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 17",
+  "span": [
+   17,
+   17
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 17",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 17",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 17",
+  "span": [
+   17,
+   17
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 15",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 15",
+  "span": [
+   15,
+   15
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 15",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters : IG-88",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters: IG-88",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 18",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 18",
+  "span": [
+   18,
+   18
+  ],
+  "kind": "",
+  "fr": "Star Wars 18 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "War of the Bounty Hunters : Boushh",
+  "note": "",
+  "screen": false,
+  "wiki": "War of the Bounty Hunters: Boushh",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Crimson Reign 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Crimson Reign 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 19-20",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 19",
+  "span": [
+   19,
+   20
+  ],
+  "kind": "",
+  "fr": "Star Wars 19 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 16-18",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 16",
+  "span": [
+   16,
+   18
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 16",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 18-20",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 18",
+  "span": [
+   18,
+   20
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 18",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 21",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 21",
+  "span": [
+   21,
+   21
+  ],
+  "kind": "",
+  "fr": "Star Wars 21 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Crimson Reign 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Crimson Reign 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 22-24",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 22",
+  "span": [
+   22,
+   24
+  ],
+  "kind": "",
+  "fr": "Star Wars 22 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Crimson Reign 3-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Crimson Reign 3",
+  "span": [
+   3,
+   4
+  ],
+  "kind": "",
+  "fr": "Crimson Reign 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 18-28",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 18",
+  "span": [
+   18,
+   28
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 18",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 21-26",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 21",
+  "span": [
+   21,
+   26
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 21",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "19-10 BBY",
+  "title": "Star Wars Outlaws: Low Red Moon",
+  "note": "epilogue pendant STAR WARS OUTLAWS",
+  "screen": false,
+  "wiki": "Star Wars Outlaws: Low Red Moon",
+  "span": null,
+  "kind": "roman",
+  "fr": "Outlaws: Low Red Moon",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "STAR WARS OUTLAWS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "STAR WARS OUTLAWS",
+  "en": "STAR WARS OUTLAWS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Crimson Reign 5",
+  "note": "",
+  "screen": false,
+  "wiki": "Crimson Reign 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 26-28",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 26",
+  "span": [
+   26,
+   28
+  ],
+  "kind": "",
+  "fr": "Star Wars 26 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 19-21",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 19",
+  "span": [
+   19,
+   21
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 19",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 27-28",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 27",
+  "span": [
+   27,
+   28
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 27",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 22-27",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 22",
+  "span": [
+   22,
+   27
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 22",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Hidden Empire 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Hidden Empire 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Revelations (2022)",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2022)",
+  "span": null,
+  "kind": "comic",
+  "fr": "Revelations 1 (2022)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Hidden Empire 2-3",
+  "note": "",
+  "screen": false,
+  "wiki": "Hidden Empire 2",
+  "span": [
+   2,
+   3
+  ],
+  "kind": "",
+  "fr": "Hidden Empire 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 28-29",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 28",
+  "span": [
+   28,
+   29
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 28",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Hidden Empire 4-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Hidden Empire 4",
+  "span": [
+   4,
+   5
+  ],
+  "kind": "",
+  "fr": "Hidden Empire 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 30-31",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 30",
+  "span": [
+   30,
+   31
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 30",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Sana Starros 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Sana Starros 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "Sana Starros 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 29-34",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 29",
+  "span": [
+   29,
+   34
+  ],
+  "kind": "",
+  "fr": "Bounty Hunters 29",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 29-33",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 29",
+  "span": [
+   29,
+   33
+  ],
+  "kind": "",
+  "fr": "Star Wars 29 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 29-36",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 29",
+  "span": [
+   29,
+   36
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 29",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 32-34",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 32",
+  "span": [
+   32,
+   34
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 32",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 34-35",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 34",
+  "span": [
+   34,
+   35
+  ],
+  "kind": "",
+  "fr": "Star Wars 34 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 35-36",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 35",
+  "span": [
+   35,
+   36
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 35",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 36",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 36",
+  "span": [
+   36,
+   36
+  ],
+  "kind": "",
+  "fr": "Star Wars 36 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Free Comic Book Day 2024 : Return to Echo Base",
+  "note": "",
+  "screen": false,
+  "wiki": "Free Comic Book Day 2024",
+  "span": null,
+  "kind": "comic",
+  "fr": "Free Comic Book Day 2024: Star Wars 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids : D-Squad 1 : The Book of Ajax",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids: D-Squad 1",
+  "span": null,
+  "kind": "comic",
+  "fr": "Dark Droids: D-Squad 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 37",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 37",
+  "span": [
+   37,
+   37
+  ],
+  "kind": "",
+  "fr": "Star Wars 37 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 37-39",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 37",
+  "span": [
+   37,
+   39
+  ],
+  "kind": "comic",
+  "fr": "Bounty Hunters 37",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids 3",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 35-37",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 35",
+  "span": [
+   35,
+   37
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 35",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 37-39",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 37",
+  "span": [
+   37,
+   39
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 37",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids : D-Squad 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids: D-Squad 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "comic",
+  "fr": "Dark Droids: D-Squad 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 38-39",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 38",
+  "span": [
+   38,
+   39
+  ],
+  "kind": "",
+  "fr": "Star Wars 38 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids 4",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 40",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 40",
+  "span": [
+   40,
+   40
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 40",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 38-39",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 38",
+  "span": [
+   38,
+   39
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 38",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 40",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 40",
+  "span": [
+   40,
+   40
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 40",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 40",
+  "span": [
+   40,
+   40
+  ],
+  "kind": "",
+  "fr": "Star Wars 40 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Darth Vader (2020) 41",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 41",
+  "span": [
+   41,
+   41
+  ],
+  "kind": "comic",
+  "fr": "Dark Vador 41",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Dark Droids 5",
+  "note": "",
+  "screen": false,
+  "wiki": "Dark Droids 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 41",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 41",
+  "span": [
+   41,
+   41
+  ],
+  "kind": "",
+  "fr": "Star Wars 41 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Bounty Hunters 41",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 41",
+  "span": [
+   41,
+   41
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Doctor Aphra (2020) 40",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra (2020) 40",
+  "span": [
+   40,
+   40
+  ],
+  "kind": "comic",
+  "fr": "Docteur Aphra 40",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "3 ABY",
+  "title": "Star Wars (2020) 42-44",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 42",
+  "span": [
+   42,
+   44
+  ],
+  "kind": "",
+  "fr": "Star Wars 42 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Revelations (2023) : A Trick of the Mind",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): A Trick of the Mind",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Star Wars (2020) 45-49",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 45",
+  "span": [
+   45,
+   49
+  ],
+  "kind": "",
+  "fr": "Star Wars 45 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Revelations (2023) : Tool of the Empire",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): Tool of the Empire",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Darth Vader (2020) 42-45",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 42",
+  "span": [
+   42,
+   45
+  ],
+  "kind": "",
+  "fr": "Dark Vador 42",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Free Comic Book Day 2024 : The Curse",
+  "note": "",
+  "screen": false,
+  "wiki": "Free Comic Book Day 2024",
+  "span": null,
+  "kind": "comic",
+  "fr": "Free Comic Book Day 2024: Star Wars 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Darth Vader (2020) 46-50",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader (2020) 46",
+  "span": [
+   46,
+   50
+  ],
+  "kind": "",
+  "fr": "Dark Vador 46",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Revelations (2023) : Tall Tales",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): Tall Tales",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Revelations (2023) : Duel of the Reprobates",
+  "note": "",
+  "screen": false,
+  "wiki": "Revelations (2023): Duel of the Reprobates",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Bounty Hunters 42",
+  "note": "",
+  "screen": false,
+  "wiki": "Bounty Hunters 42",
+  "span": [
+   42,
+   42
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "~3-4 ABY",
+  "title": "Darth Vader : Black, White & Red 4 - Return of Hoth",
+  "note": "",
+  "screen": false,
+  "wiki": "Darth Vader: Black, White & Red 4 - Return of Hoth",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Return of the Jedi : The Empire",
+  "note": "",
+  "screen": false,
+  "wiki": "Return of the Jedi: The Empire",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Return of the Jedi : Lando",
+  "note": "",
+  "screen": false,
+  "wiki": "Return of the Jedi: Lando",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Hyperspace Stories 12",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 12",
+  "span": [
+   12,
+   12
+  ],
+  "kind": "comic",
+  "fr": "Histoires de l'hyperespace 12",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Age of Rebellion : Luke Skywalker",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Luke Skywalker",
+  "span": null,
+  "kind": "",
+  "fr": "L'Ère de la Rébellion : Luke Skywalker 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Age of Rebellion : Princess Leia",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Rebellion: Princess Leia",
+  "span": null,
+  "kind": "comic",
+  "fr": "L'Ère de la Rébellion : Princesse Leia 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Return of the Jedi : The Rebellion",
+  "note": "",
+  "screen": false,
+  "wiki": "Return of the Jedi: The Rebellion",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "EPISODE VI RETURN OF THE JEDI",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE VI : LE RETOUR DU JEDI",
+  "en": "EPISODE VI: RETURN OF THE JEDI",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Return of the Jedi : Jabba's Palace",
+  "note": "",
+  "screen": false,
+  "wiki": "Return of the Jedi: Jabba's Palace",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "TIE Fighter 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "TIE Fighter 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "comic",
+  "fr": "TIE Fighter 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "BATTLEFRONT II MISSION 1",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "BATTLEFRONT II — MISSION 1",
+  "en": "BATTLEFRONT II — MISSION 1",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Shattered Empire 1",
+  "note": "pendant et après EPISODE VI RETURN OF THE JEDI",
+  "screen": false,
+  "wiki": "Shattered Empire 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "Les Ruines de l'Empire 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Battle of Jakku : Insurgency Rising 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Insurgency Rising 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Battle of Jakku : Insurgency Rising 1 - The Rising",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Insurgency Rising 1 - The Rising",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "TIE Fighter 5",
+  "note": "",
+  "screen": false,
+  "wiki": "TIE Fighter 5",
+  "span": [
+   5,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "The Princess and the Scoundrel",
+  "note": "",
+  "screen": false,
+  "wiki": "The Princess and the Scoundrel",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Princesse et le vaurien",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Return of the Jedi : Max Rebo",
+  "note": "",
+  "screen": false,
+  "wiki": "Return of the Jedi: Max Rebo",
+  "span": null,
+  "kind": "comic",
+  "fr": "Le Retour du Jedi : Max Rebo 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Star Wars Adventures : Shadow of Vader's Castle",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Shadow of Vader's Castle",
+  "span": null,
+  "kind": "comic",
+  "fr": "Shadow of Vader's Castle 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Battle of Jakku : Insurgency Rising 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Insurgency Rising 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Ewoks 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Ewoks 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "comic",
+  "fr": "Ewoks 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Return of the Jedi : Ewoks",
+  "note": "",
+  "screen": false,
+  "wiki": "Return of the Jedi: Ewoks",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Shattered Empire 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Shattered Empire 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "Les Ruines de l'Empire 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "BATTLEFRONT II MISSION 2-3",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "BATTLEFRONT II — MISSIONS 2-3",
+  "en": "BATTLEFRONT II — MISSIONS 2-3",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Battle of Jakku : Insurgency Rising 3-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Insurgency Rising 3",
+  "span": [
+   3,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "BATTLEFRONT II MISSION 4",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "BATTLEFRONT II — MISSION 4",
+  "en": "BATTLEFRONT II — MISSION 4",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Shattered Empire 3",
+  "note": "",
+  "screen": false,
+  "wiki": "Shattered Empire 3",
+  "span": [
+   3,
+   3
+  ],
+  "kind": "",
+  "fr": "Les Ruines de l'Empire 3",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "BATTLEFRONT II MISSION 5-6",
+  "note": "pendant et après Shattered Empire 3",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "BATTLEFRONT II — MISSIONS 5-6",
+  "en": "BATTLEFRONT II — MISSIONS 5-6",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Alphabet Squadron",
+  "note": "",
+  "screen": false,
+  "wiki": "Alphabet Squadron",
+  "span": null,
+  "kind": "",
+  "fr": "L'Escadron Alphabet",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Aftermath",
+  "note": "prologue pendant EPISODE VI RETURN OF THE JEDI",
+  "screen": false,
+  "wiki": "Aftermath",
+  "span": null,
+  "kind": "",
+  "fr": "Riposte",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Star Wars Adventures : Ghosts of Vader's Castle 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Ghosts of Vader's Castle 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "Ghosts of Vader's Castle 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "Shattered Empire 4",
+  "note": "",
+  "screen": false,
+  "wiki": "Shattered Empire 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "",
+  "fr": "Les Ruines de l'Empire 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "4 ABY",
+  "title": "SQUADRONS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "SQUADRONS",
+  "en": "SQUADRONS",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "BATTLEFRONT II MISSION 7-9",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "BATTLEFRONT II — MISSIONS 7-9",
+  "en": "BATTLEFRONT II — MISSIONS 7-9",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Shadow Fall : An Alphabet Squadron Novel",
+  "note": "",
+  "screen": false,
+  "wiki": "Shadow Fall: An Alphabet Squadron Novel",
+  "span": null,
+  "kind": "roman",
+  "fr": "Où l'ombre s'abat",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Aftermath : Life Debth",
+  "note": "",
+  "screen": false,
+  "wiki": "Aftermath: Life Debth",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Republic Under Siege 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Republic Under Siege 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Republic Under Siege 1 - Consolidation",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Republic Under Siege 1 - Consolidation",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Republic Under Siege 2-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Republic Under Siege 2",
+  "span": [
+   2,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Last Stand 1",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Last Stand 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Last Stand 1 - False Histories",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Last Stand 1 - False Histories",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Last Stand 2",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Last Stand 2",
+  "span": [
+   2,
+   2
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Victory's Price : An Alphabet Squadron Novel",
+  "note": "",
+  "screen": false,
+  "wiki": "Victory's Price: An Alphabet Squadron Novel",
+  "span": null,
+  "kind": "roman",
+  "fr": "Le Prix de la victoire",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Aftermath : Empire's End",
+  "note": "prologue pendant EPISODE VI RETURN OF THE JEDI",
+  "screen": false,
+  "wiki": "Aftermath: Empire's End",
+  "span": null,
+  "kind": "roman",
+  "fr": "Riposte : Chute de l'Empire",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "Battle of Jakku : Last Stand 3-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Battle of Jakku: Last Stand 3",
+  "span": [
+   3,
+   4
+  ],
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "5 ABY",
+  "title": "BATTLEFRONT II MISSION 10-11",
+  "note": "pendant Aftermath : Empire's End",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "BATTLEFRONT II — MISSIONS 10-11",
+  "en": "BATTLEFRONT II — MISSIONS 10-11",
+  "frOk": null
+ },
+ {
+  "era": "THE REBELLION ERA",
+  "date": "6 BBY-5 ABY",
+  "title": "Lost Stars",
+  "note": "avant, pendant et après EPISODES IV - V - VI, prologue en 11 BBY",
+  "screen": false,
+  "wiki": "Lost Stars",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Étoiles Perdues",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "6 ABY",
+  "title": "Doctor Aphra : Chaos Agent 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Doctor Aphra: Chaos Agent 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "6 ABY",
+  "title": "Free Comic Book Day 2025 : Past is Prologue",
+  "note": "",
+  "screen": false,
+  "wiki": "Free Comic Book Day 2025",
+  "span": null,
+  "kind": "comic",
+  "fr": "Free Comic Book Day 2025: Star Wars 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "6 ABY",
+  "title": "Star Wars (2025) 1-10",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2025) 1",
+  "span": [
+   1,
+   10
+  ],
+  "kind": "",
+  "fr": "Star Wars 1 (2025)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "7 ABY",
+  "title": "Last Shot",
+  "note": "",
+  "screen": false,
+  "wiki": "Last Shot",
+  "span": null,
+  "kind": "roman",
+  "fr": "Baroud d'honneur",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "9 ABY",
+  "title": "The Mandalorian and Grogu : Danger in the Dark",
+  "note": "",
+  "screen": false,
+  "wiki": "The Mandalorian and Grogu: Danger in the Dark",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "9-11 ABY",
+  "title": "THE MANDALORIAN AND GROGU",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "THE MANDALORIAN ET GROGU",
+  "en": "THE MANDALORIAN AND GROGU",
+  "frOk": null
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "18-19 ABY",
+  "title": "Poe Dameron : Free Fall",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron: Free Fall",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Poe Dameron : Chute libre",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "21 ABY",
+  "title": "Shadow of the Sith",
+  "note": "",
+  "screen": false,
+  "wiki": "Shadow of the Sith",
+  "span": null,
+  "kind": "roman",
+  "fr": "L'Ombre des Sith",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE NEW REPUBLIC ERA",
+  "date": "15-28 ABY",
+  "title": "Star Wars (2020) 50",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 50",
+  "span": [
+   50,
+   50
+  ],
+  "kind": "",
+  "fr": "Star Wars 50 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "26-34 ABY",
+  "title": "Age of Resistance : Rose Tico",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: Rose Tico",
+  "span": null,
+  "kind": "comic",
+  "fr": "L'Ère de la Résistance : Rose Tico 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "28 ABY",
+  "title": "Bloodline",
+  "note": "",
+  "screen": false,
+  "wiki": "Bloodline",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "28 ABY",
+  "title": "The Rise of Kylo Ren 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "The Rise of Kylo Ren 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "L'Ascension de Kylo Ren 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "28 ABY",
+  "title": "Age of Resistance : Supreme Leader Snoke",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: Supreme Leader Snoke",
+  "span": null,
+  "kind": "",
+  "fr": "L'Ère de la Résistance : Suprême Leader Snoke 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "~29-31 ABY",
+  "title": "Age of Resistance Special : Maz's Scoundrels",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance Special: Maz's Scoundrels",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "~28-34 ABY",
+  "title": "The Legends of Luke Skywalker",
+  "note": "",
+  "screen": false,
+  "wiki": "The Legends of Luke Skywalker",
+  "span": null,
+  "kind": "roman",
+  "fr": "Luke Skywalker : Légendes",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "~31-34 ABY",
+  "title": "Han Solo : Hunt for the Falcon 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Han Solo: Hunt for the Falcon 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Han Solo - Hunt for the Falcon 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "~31 ABY",
+  "title": "Star Wars Adventures (2020) 7 : Tales of Villainy - The Crimson Corsair and the Crime Lords of the Barren Rim",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures (2020) 7",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures 7 (2020)",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "~31 ABY",
+  "title": "Age of Resistance : Poe Dameron",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: Poe Dameron",
+  "span": null,
+  "kind": "comic",
+  "fr": "L'Ère de la Résistance : Poe Dameron 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "~31-34 ABY",
+  "title": "Before the Awakening",
+  "note": "",
+  "screen": false,
+  "wiki": "Before the Awakening",
+  "span": null,
+  "kind": "roman",
+  "fr": "Avant le Réveil",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "32 ABY",
+  "title": "Poe Dameron 1 : SaBBotage",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron 1",
+  "span": null,
+  "kind": "",
+  "fr": "Poe Dameron 1 : L'Escadron Black 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "32 ABY",
+  "title": "Poe Dameron 1-6",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron 1",
+  "span": [
+   1,
+   6
+  ],
+  "kind": "",
+  "fr": "Poe Dameron 1 : L'Escadron Black 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "32 ABY",
+  "title": "Star Wars Special : C-3PO",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Special: C-3PO",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "32 ABY",
+  "title": "Force Collector",
+  "note": "",
+  "screen": false,
+  "wiki": "Force Collector",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Le Collectionneur",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "33 ABY",
+  "title": "Eyes Like Stars",
+  "note": "",
+  "screen": false,
+  "wiki": "Eyes Like Stars",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "33 ABY",
+  "title": "Age of Resistance : Finn",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: Finn",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "33 ABY",
+  "title": "Age of Resistance Special : Robot Resistance",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance Special: Robot Resistance",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "33 ABY",
+  "title": "Age of Resistance : General Hux",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: General Hux",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "33 ABY",
+  "title": "Age of Resistance : Kylo Ren",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: Kylo Ren",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Join the Resistance",
+  "note": "",
+  "screen": false,
+  "wiki": "Join the Resistance",
+  "span": null,
+  "kind": "",
+  "fr": "Rejoins la Résistance 3",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Poe Dameron 7-19",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron 7",
+  "span": [
+   7,
+   19
+  ],
+  "kind": "",
+  "fr": "Poe Dameron 7 : Avis de Tempête",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Poe Dameron Annual 1-2",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron Annual 1",
+  "span": [
+   1,
+   2
+  ],
+  "kind": "comic",
+  "fr": "Poe Dameron Annuel 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Poe Dameron 20-25",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron 20",
+  "span": [
+   20,
+   25
+  ],
+  "kind": "comic",
+  "fr": "Poe Dameron 20 : La Légende Retrouvée 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Hyperspace Stories : Codebreaker 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories: Codebreaker 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Phasma",
+  "note": "",
+  "screen": false,
+  "wiki": "Phasma",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Join the Resistance : Escape from Vodran",
+  "note": "",
+  "screen": false,
+  "wiki": "Join the Resistance: Escape from Vodran",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "5 ABY",
+  "title": "Star Wars Adventures : Destroyer Down - The Ghost Ship",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Destroyer Down - The Ghost Ship",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Star Wars Adventures : Destroyer Down",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Destroyer Down",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures: Destroyer Down 3",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Age of Resistance : Captain Phasma",
+  "note": "",
+  "screen": false,
+  "wiki": "Age of Resistance: Captain Phasma",
+  "span": null,
+  "kind": "",
+  "fr": "L'Ère de la Résistance : Capitaine Phasma 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Hyperspace Stories 8",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 8",
+  "span": [
+   8,
+   8
+  ],
+  "kind": "comic",
+  "fr": "Histoires de l'hyperespace 8",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "0 ABY",
+  "title": "Smuggler's Run : A Han Solo & Chewbacca Adventure",
+  "note": "prologue et epilogue just before EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "Smuggler's Run: A Han Solo & Chewbacca Adventure",
+  "span": null,
+  "kind": "roman",
+  "fr": "La Cavale du contrebandier",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "0 ABY",
+  "title": "The Weapon of a Jedi : A Luke Skywalker Adventure",
+  "note": "prologue et epilogue just before EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "The Weapon of a Jedi: A Luke Skywalker Adventure",
+  "span": null,
+  "kind": "roman",
+  "fr": "L'Arme du Jedi",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "4 ABY",
+  "title": "Moving Target : A Princess Leia Adventure",
+  "note": "prologue et epilogue just before EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "Moving Target: A Princess Leia Adventure",
+  "span": null,
+  "kind": "roman",
+  "fr": "Cible mouvante",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "EPISODE VII THE FORCE AWAKENS",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE VII : LE RÉVEIL DE LA FORCE",
+  "en": "EPISODE VII: THE FORCE AWAKENS",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "The Last Jedi : Cobalt Squadron",
+  "note": "pendant et après EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "The Last Jedi: Cobalt Squadron",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Galaxy's Edge : Black Spire",
+  "note": "",
+  "screen": false,
+  "wiki": "Galaxy's Edge: Black Spire",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Join the Resistance : Attack on Starkiller Base",
+  "note": "pendant EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "Join the Resistance: Attack on Starkiller Base",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Captain Phasma 1",
+  "note": "pendant EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "Captain Phasma 1",
+  "span": [
+   1,
+   1
+  ],
+  "kind": "",
+  "fr": "Capitaine Phasma 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Age of Resistance : Rey",
+  "note": "pendant EPISODE VII THE FORCE AWAKENS",
+  "screen": false,
+  "wiki": "Age of Resistance: Rey",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Captain Phasma 2-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Captain Phasma 2",
+  "span": [
+   2,
+   4
+  ],
+  "kind": "",
+  "fr": "Capitaine Phasma 2",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "The Last Jedi : DJ - Most Wanted",
+  "note": "",
+  "screen": false,
+  "wiki": "The Last Jedi: DJ - Most Wanted",
+  "span": null,
+  "kind": "comic",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "EPISODE VII THE LAST JEDI",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE VIII : LES DERNIERS JEDI",
+  "en": "EPISODE VIII: THE LAST JEDI",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Free Comic Book Day 2026 : Legacy of Vaneé",
+  "note": "",
+  "screen": false,
+  "wiki": "Free Comic Book Day 2026",
+  "span": null,
+  "kind": "",
+  "fr": "",
+  "en": "",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Legacy of Vader 1-12",
+  "note": "",
+  "screen": false,
+  "wiki": "Legacy of Vader 1",
+  "span": [
+   1,
+   12
+  ],
+  "kind": "",
+  "fr": "L'héritage de Vador 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Poe Dameron 26-31",
+  "note": "",
+  "screen": false,
+  "wiki": "Poe Dameron 26",
+  "span": [
+   26,
+   31
+  ],
+  "kind": "comic",
+  "fr": "Poe Dameron 26 : Le Réveil 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Resistance Reborn",
+  "note": "",
+  "screen": false,
+  "wiki": "Resistance Reborn",
+  "span": null,
+  "kind": "roman",
+  "fr": "Renaissance",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Allegiance 1-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Allegiance 1",
+  "span": [
+   1,
+   4
+  ],
+  "kind": "",
+  "fr": "Allégeance 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Spark of the Resistance",
+  "note": "",
+  "screen": false,
+  "wiki": "Spark of the Resistance",
+  "span": null,
+  "kind": "roman",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Pirate's Price",
+  "note": "",
+  "screen": false,
+  "wiki": "Pirate's Price",
+  "span": null,
+  "kind": "roman",
+  "fr": "Le Prix de la Liberté",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Star Wars Adventures : Flight of the Falcon",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars Adventures: Flight of the Falcon",
+  "span": null,
+  "kind": "comic",
+  "fr": "Star Wars Aventures: Flight of the Falcon",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Galaxy's Edge 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Galaxy's Edge 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Galaxy's Edge 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "A Crash of Fate",
+  "note": "",
+  "screen": false,
+  "wiki": "A Crash of Fate",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Halcyon Legacy 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Halcyon Legacy 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Halcyon Legacy 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Galaxy's Edge : Echoes of the Empire 1-5",
+  "note": "",
+  "screen": false,
+  "wiki": "Galaxy's Edge: Echoes of the Empire 1",
+  "span": [
+   1,
+   5
+  ],
+  "kind": "",
+  "fr": "Galaxy's Edge – Echoes of the Empire 1",
+  "en": "",
+  "frOk": false
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Star Wars (2020) 25 : See You Around, Kid",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 25",
+  "span": null,
+  "kind": "",
+  "fr": "Star Wars 25 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Hyperspace Stories 4-4",
+  "note": "",
+  "screen": false,
+  "wiki": "Hyperspace Stories 4",
+  "span": [
+   4,
+   4
+  ],
+  "kind": "",
+  "fr": "Histoires de l'hyperespace 4",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "19 BBY-35 ABY",
+  "title": "Tales from the Nightlands 1-3",
+  "note": "",
+  "screen": false,
+  "wiki": "Tales from the Nightlands 1",
+  "span": [
+   1,
+   3
+  ],
+  "kind": "comic",
+  "fr": "Tales From the Nightlands 1",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "EPISODE IX THE RISE OF SKYWALKER",
+  "note": "",
+  "screen": true,
+  "wiki": "",
+  "span": null,
+  "kind": "screen",
+  "fr": "ÉPISODE IX : L'ASCENSION DE SKYWALKER",
+  "en": "EPISODE IX: THE RISE OF SKYWALKER",
+  "frOk": null
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "Star Wars (2020) 25 : A Eulogy for Snap",
+  "note": "",
+  "screen": false,
+  "wiki": "Star Wars (2020) 25",
+  "span": null,
+  "kind": "",
+  "fr": "Star Wars 25 (2020)",
+  "en": "",
+  "frOk": true
+ },
+ {
+  "era": "THE FIRST ORDER ERA",
+  "date": "34 ABY",
+  "title": "The Last Order",
+  "note": "",
+  "screen": false,
+  "wiki": "The Last Order",
+  "span": null,
+  "kind": "jeunesse",
+  "fr": "Le Dernier Ordre",
+  "en": "",
+  "frOk": true
+ }
+]
