@@ -610,14 +610,14 @@ async function toggleExpand(el,ev){
   const faqDef=entryObj&&entryObj.faq||{};
   const mediaName=entryObj?entryObj.title:'this title';
   const faqCats=[
-    {key:'quand',q:'When does '+mediaName+' dans le MCU ?',fallback:'No information available.'},
+    {key:'quand',q:'When does '+mediaName+' take place in the MCU?',fallback:'No information available.'},
     {key:'comment',q:'How is '+mediaName+' connected to the MCU?',fallback:'No information available.'},
     {key:'pourquoi',q:'Why watch '+mediaName+' at this point in the timeline?',fallback:'No information available.'},
     {key:'postcredits',q:'What about the post-credits scene(s)?',fallback:'No information available.'}
   ];
   const faqHtml=faqCats.map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+(faqDef[cat.key]||cat.fallback)+'</div></details>').join('');
   if(!id||id==='0'){
-    panel.innerHTML='<div class="expand-no-data">'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'Pas d\'informations TMDB pour cette entrée.')+'</div>';
+    panel.innerHTML='<div class="expand-no-data">'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'No TMDB information for this entry.')+'</div>';
     return;
   }
   panel.innerHTML='<div class="expand-loading">Loading…</div>';
@@ -634,7 +634,7 @@ async function toggleExpand(el,ev){
         if(enV.results)d.videos={results:[...((d.videos&&d.videos.results)||[]),...enV.results]};
       }
       detailCache[k]=d;
-    }catch{panel.innerHTML='<div class="expand-loading">Erreur de chargement.</div>';return}
+    }catch{panel.innerHTML='<div class="expand-loading">Failed to load.</div>';return}
   }
   const synopsis=d.overview||'No synopsis available.';
   const runtime=d.runtime?(d.runtime+' min'):(d.episode_run_time&&d.episode_run_time[0]?(d.episode_run_time[0]+' min/ep'):null);

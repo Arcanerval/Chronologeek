@@ -552,7 +552,7 @@ async function toggleExpand(el,ev){
   if(!id||id==='0'){
     if(el.dataset.media==='game'){
       // Charger depuis RAWG.io
-      panel.innerHTML='<div class="expand-loading">Chargement…</div>';
+      panel.innerHTML='<div class="expand-loading">Loading…</div>';
       const gameTitle=entryObj?entryObj.title:'';
       const ytUrl='https://www.youtube.com/results?search_query='+encodeURIComponent(gameTitle+' full movie');
       try{
@@ -584,7 +584,7 @@ async function toggleExpand(el,ev){
       return;
     }
   }
-  panel.innerHTML='<div class="expand-loading">Chargement…</div>';
+  panel.innerHTML='<div class="expand-loading">Loading…</div>';
   const type=(media==='movie')?'movie':'tv';
   const k=type+id;
   let d=detailCache[k];
@@ -598,7 +598,7 @@ async function toggleExpand(el,ev){
         if(enV.results)d.videos={results:[...((d.videos&&d.videos.results)||[]),...enV.results]};
       }
       detailCache[k]=d;
-    }catch{panel.innerHTML='<div class="expand-loading">Erreur de chargement.</div>';return}
+    }catch{panel.innerHTML='<div class="expand-loading">Failed to load.</div>';return}
   }
   const synopsis=d.overview||'No synopsis available.';
   const runtime=d.runtime?(d.runtime+' min'):(d.episode_run_time&&d.episode_run_time[0]?(d.episode_run_time[0]+' min/ep'):null);

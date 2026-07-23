@@ -775,7 +775,7 @@ async function toggleExpand(el,ev){
   // Trouver l'entrée pour la FAQ
   const e=findEntry(el.dataset.id);
   const tmdb=el.dataset.tmdb,media=el.dataset.media;
-  if(!tmdb||tmdb==='0'){panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Pas d\'informations TMDB.</div>';return}
+  if(!tmdb||tmdb==='0'){panel.innerHTML='<div class="expand-loading" style="padding:.5rem">No TMDB information.</div>';return}
   panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Loading…</div>';
   const type=media==='movie'?'movie':'tv';const k=type+tmdb;
   let d=detailCache[k];
@@ -788,7 +788,7 @@ async function toggleExpand(el,ev){
         const ev2=await rEn.json();if(ev2.results)d.videos={results:[...((d.videos?.results)||[]),...ev2.results]};
       }
       detailCache[k]=d;
-    }catch{panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Erreur.</div>';return}
+    }catch{panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Error.</div>';return}
   }
   const poster=d.poster_path?IMG+'w300'+d.poster_path:null;
   const synopsis=d.overview||'No synopsis.';
