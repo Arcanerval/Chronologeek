@@ -121,9 +121,9 @@ def fetch_categories(titles):
             norm.update({n["from"]: n["to"] for n in j.get("redirects", [])})
             pages = {}
             for p in j.get("pages", []):
-                if p.get("missing"):
+                if p.get("missing") or not p.get("title"):
                     continue
-                pages[p["title"]] = [c["title"].replace("Category:", "")
+                pages[p["title"]] = [c.get("title", "").replace("Category:", "")
                                      for c in (p.get("categories") or [])]
             for t in part:
                 key = norm.get(t, t)
@@ -181,7 +181,7 @@ def fetch_fr(titles):
             norm_map.update({n["from"]: n["to"] for n in j.get("redirects", [])})
             pages = {}
             for p in j.get("pages", []):
-                if p.get("missing"):
+                if p.get("missing") or not p.get("title"):
                     continue
                 revs = p.get("revisions") or []
                 txt = ((revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
@@ -300,13 +300,15 @@ def resolve_screen(entries, cache):
             if not hit:
                 close = difflib.get_close_matches(_norm_ep(epname), list(idx), 1, 0.86)
                 hit = idx[close[0]] if close else None
-            if hit:
+            if hit and len(hit) == 4:
                 sn, en_, name_en, name_fr = hit
                 e["fr"] = f"{show} — S{sn}E{en_} · {name_fr.upper()}"
                 e["en"] = f"{show} — S{sn}E{en_} · {name_en.upper()}"
             else:
                 e["fr"] = e["en"] = f"{show} — {epname}"
                 miss.append(epname)
+            if not e.get("fr"):
+                e["fr"] = e["en"] = raw
         if miss:
             log(f"Épisodes  : {show} — non résolu(s) : {', '.join(miss[:6])}")
 
@@ -568,4 +570,17 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import traceback, sys
+    try:
+        main()
+    except Exception:
+        print("\n" + "=" * 60)
+        print("ÉCHEC — trace complète :")
+        traceback.print_exc()
+        print("=" * 60)
+        try:
+            open("dossier-erreur.txt", "w", encoding="utf-8").write(
+                "\n".join(report) + "\n\n" + traceback.format_exc())
+        except Exception:
+            pass
+        sys.exit(1)
