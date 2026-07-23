@@ -521,6 +521,83 @@ def fill_wiki_synopses(entries):
 
 
 # ────────────────────────────────────────── Rendu HTML
+FR_WIKI = "https://starwars.fandom.com/fr/api.php"
+
+
+def _wiki_fr_titles(chunk):
+    """Titre EN -> titre FR via les liens interlangue de Fandom."""
+    r = requests.get("https://starwars.fandom.com/api.php", timeout=45,
+                     headers=UA_BROWSER, params={
+                         "action": "query", "prop": "langlinks",
+                         "lllang": "fr", "lllimit": "max", "redirects": 1,
+                         "format": "json", "formatversion": 2,
+                         "titles": "|".join(e["wiki"] for e in chunk),
+                     })
+    r.raise_for_status()
+    out = {}
+    for p in r.json().get("query", {}).get("pages", []):
+        for ll in (p.get("langlinks") or []):
+            if ll.get("lang") == "fr" and ll.get("title"):
+                out[(p.get("title") or "").lower()] = ll["title"]
+    return out
+
+
+def _wiki_fr_intros(fr_titles):
+    """Intro française par lots depuis la Wookieepedia FR."""
+    out = {}
+    titles = list(fr_titles)
+    for i in range(0, len(titles), 20):
+        part = titles[i:i + 20]
+        try:
+            r = requests.get(FR_WIKI, timeout=45, headers=UA_BROWSER, params={
+                "action": "query", "prop": "revisions", "rvprop": "content",
+                "rvslots": "main", "redirects": 1,
+                "format": "json", "formatversion": 2,
+                "titles": "|".join(part),
+            })
+            r.raise_for_status()
+            for p in r.json().get("query", {}).get("pages", []):
+                revs = p.get("revisions") or []
+                if not revs:
+                    continue
+                content = (revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
+                txt = clean_wikitext(content)
+                if txt:
+                    out[(p.get("title") or "").lower()] = txt
+        except Exception as e:
+            log(f"Résumés FR: lot {i // 20 + 1} — {str(e)[:100]}")
+    return out
+
+
+def fill_wiki_synopses_fr(entries):
+    """Complète syn_fr pour les entrées Star Wars issues de Wookieepedia."""
+    todo = [e for e in entries if e.get("wiki") and not e.get("syn_fr")]
+    if not todo:
+        return
+    mapping = {}
+    for i in range(0, len(todo), 20):
+        chunk = todo[i:i + 20]
+        try:
+            mapping.update(_wiki_fr_titles(chunk))
+        except Exception as e:
+            if i == 0:
+                log(f"Résumés FR: liens interlangue KO — {str(e)[:110]}")
+            return
+    if not mapping:
+        log("Résumés FR: aucune page française correspondante (liens interlangue absents)")
+        return
+    intros = _wiki_fr_intros(set(mapping.values()))
+    got = 0
+    for e in todo:
+        fr_title = mapping.get(e["wiki"].lower())
+        if fr_title:
+            txt = intros.get(fr_title.lower())
+            if txt:
+                e["syn_fr"] = txt
+                got += 1
+    log(f"Résumés FR: {got}/{len(todo)} synopsis français (Wookieepedia FR)")
+
+
 # Palette canonique du site (identique aux badges des timelines)
 KIND_COLORS = {
     "film":    "#64b5f6",
@@ -665,6 +742,7 @@ def main():
         uniq.append(e)
 
     fill_wiki_synopses(uniq)
+    fill_wiki_synopses_fr(uniq)
     if excluded:
         log(f"Exclus    : {len(excluded)} (LEGO / novélisations) — "
             + "; ".join(excluded[:6]) + ("…" if len(excluded) > 6 else ""))
