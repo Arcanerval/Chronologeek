@@ -129,8 +129,13 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 .pbar{flex:1;min-width:140px;height:7px;border-radius:6px;background:var(--border);overflow:hidden}
 .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c6af7,#f06292);transition:width .3s}
 .pnum{font-size:.76rem;color:var(--muted2);font-variant-numeric:tabular-nums;white-space:nowrap}
-.preset{font:inherit;font-size:.7rem;padding:.3rem .7rem;border-radius:14px;cursor:pointer;
+.preset,.presume{font:inherit;font-size:.7rem;padding:.3rem .7rem;border-radius:14px;cursor:pointer;
         background:transparent;border:1px solid var(--border2);color:var(--muted)}
+.presume{border-color:var(--accent);color:#a99cf9;font-weight:700}
+.presume:hover{background:rgba(124,106,247,.14);color:#fff}
+.presume[disabled]{opacity:.35;cursor:default;border-color:var(--border2);color:var(--muted)}
+.it.flash{animation:fl 1.6s ease-out}
+@keyframes fl{0%,40%{box-shadow:0 0 0 2px var(--accent),0 0 22px rgba(124,106,247,.5)}100%{box-shadow:none}}
 .preset:hover{border-color:#f06292;color:#f06292}
 .ck{width:18px;height:18px;flex-shrink:0;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
     border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;
@@ -197,6 +202,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="prog">
   <span class="pnum" id="pnum"></span>
   <div class="pbar"><i id="pfill"></i></div>
+  <button class="presume" id="presume">▼ Reprendre</button>
   <button class="preset" id="preset">Réinitialiser</button>
 </div>
 <div class="count" id="count"></div>
@@ -290,17 +296,17 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="228-bby-the-high-republic-adventures-2023-16">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic Adventures (2023) 16</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="228-bby-the-high-republic-fear-of-the-jedi-3-5">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic : Fear of the Jedi 3-5</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="228-bby-the-high-republic-adventures-2023-17">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic Adventures (2023) 17</span><span class="kd">Comic</span></div>
-<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="228-bby-the-high-republic-a-valiant-vow">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic : A Valiant Vow<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman jeune adulte</span></div>
+<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="228-bby-the-high-republic-a-valiant-vow">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic : A Valiant Vow</span><span class="kd">Roman jeune adulte</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="228-bby-the-high-republic-adventures-2023-18-20">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic Adventures (2023) 18-20</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="228-bby-the-high-republic-the-finale">✓</span><span class="dt">228 BBY</span><span class="tt">The High Republic : The Finale</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="149-bby-the-acolyte-kelnacca">✓</span><span class="dt">149 BBY</span><span class="tt">The Acolyte – Kelnacca 1</span><span class="kd">Comic</span></div>
 <div class="screen" data-k="screen" style="--c:#64b5f6"><span class="ckx"></span><span class="dt">148 BBY</span><span class="tt">THE ACOLYTE — ÉPISODES 1-2</span><span class="kd">Écran</span></div>
-<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="134-bby-the-acolyte-the-crystal-crown">✓</span><span class="dt">134 BBY</span><span class="tt">The Acolyte : The Crystal Crown<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman jeune adulte</span></div>
+<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="134-bby-the-acolyte-the-crystal-crown">✓</span><span class="dt">134 BBY</span><span class="tt">The Acolyte : The Crystal Crown</span><span class="kd">Roman jeune adulte</span></div>
 <div class="screen" data-k="screen" style="--c:#64b5f6"><span class="ckx"></span><span class="dt">132 BBY</span><span class="tt">THE ACOLYTE — ÉPISODES 3-8</span><span class="kd">Écran</span></div>
 <div class="era">L&#x27;ÈRE DE LA RÉPUBLIQUE</div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="48-bby-revelations-2023-showdown-at-ocean-s-deep">✓</span><span class="dt">48 BBY</span><span class="tt">Revelations (2023) : Showdown at Ocean&#x27;s Deep</span><span class="kd">Comic</span></div>
-<div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="48-bby-mace-windu">✓</span><span class="dt">48 BBY</span><span class="tt">Mace Windu<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Comic</span></div>
-<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="41-bby-padawan">✓</span><span class="dt">41 BBY</span><span class="tt">Padawan<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman jeune adulte</span></div>
+<div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="48-bby-mace-windu">✓</span><span class="dt">48 BBY</span><span class="tt">Mace Windu</span><span class="kd">Comic</span></div>
+<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="41-bby-padawan">✓</span><span class="dt">41 BBY</span><span class="tt">Padawan</span><span class="kd">Roman jeune adulte</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="40-bby-master-apprentice">✓</span><span class="dt">40 BBY</span><span class="tt">Maître et Apprenti</span><span class="kd">Roman</span><div class="note">épilogue pendant l&#x27;Épisode I</div></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="37-bby-age-of-republic-qui-gon-jinn">✓</span><span class="dt">37 BBY</span><span class="tt">Age of Republic : Qui-Gon Jinn</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-bby-age-of-republic-special-the-weapon">✓</span><span class="dt">34 BBY</span><span class="tt">Age of Republic Special : The Weapon</span><span class="kd">Comic</span></div>
@@ -327,7 +333,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="era">LA GUERRE DES CLONES</div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="22-bby-jar-jar">✓</span><span class="dt">22 BBY</span><span class="tt">Jar Jar Binks</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="22-bby-jedi-of-the-republic-mace-windu-1-5">✓</span><span class="dt">22 BBY</span><span class="tt">Jedi of the Republic : Mace Windu 1-5</span><span class="kd">Comic</span></div>
-<div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="22-bby-brotherhood">✓</span><span class="dt">22 BBY</span><span class="tt">Brotherhood<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman</span></div>
+<div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="22-bby-brotherhood">✓</span><span class="dt">22 BBY</span><span class="tt">Brotherhood</span><span class="kd">Roman</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="22-20-bby-hyperspace-stories-grievous">✓</span><span class="dt">22-20 BBY</span><span class="tt">Histoires de l&#x27;Hyperespace : Grievous</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="22-bby-hyperspace-stories-11">✓</span><span class="dt">22 BBY</span><span class="tt">Histoires de l&#x27;Hyperespace 11</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="22-bby-hyperspace-stories-1">✓</span><span class="dt">22 BBY</span><span class="tt">Histoires de l&#x27;Hyperespace 1</span><span class="kd">Comic</span></div>
@@ -385,7 +391,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="14-bby-jedi-fallen-order-dark-temple-1-5">✓</span><span class="dt">14 BBY</span><span class="tt">Jedi: Fallen Order – Dark Temple 1</span><span class="kd">Comic</span></div>
 <div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="13-bby-most-wanted">✓</span><span class="dt">13 BBY</span><span class="tt">Morts Ou Vifs</span><span class="kd">Roman jeune adulte</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="13-bby-han-solo-imperial-cadet-1-5">✓</span><span class="dt">13 BBY</span><span class="tt">Han Solo : Imperial Cadet 1-5</span><span class="kd">Comic</span><div class="note">avant et pendant Solo</div></div>
-<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="13-12-bby-crimson-climb">✓</span><span class="dt">13-12 BBY</span><span class="tt">Crimson Climb<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman jeune adulte</span></div>
+<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="13-12-bby-crimson-climb">✓</span><span class="dt">13-12 BBY</span><span class="tt">Crimson Climb</span><span class="kd">Roman jeune adulte</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="12-11-bby-star-wars-jedi-battle-scars">✓</span><span class="dt">~12-11 BBY</span><span class="tt">Jedi: Battle Scars</span><span class="kd">Roman</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="12-bby-darth-vader-2017-23-25">✓</span><span class="dt">12 BBY</span><span class="tt">Dark Vador : Le Seigneur Noir des Sith 23 : La Forteresse de Vador 5</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="12-9-bby-inquisitors-1-4">✓</span><span class="dt">~12-9 BBY</span><span class="tt">Inquisitors 1</span><span class="kd">Comic</span></div>
@@ -736,7 +742,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="6-aby-free-comic-book-day-2025-past-is-prologue">✓</span><span class="dt">6 ABY</span><span class="tt">Free Comic Book Day 2025: Star Wars 1</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="6-aby-star-wars-2025-1-10">✓</span><span class="dt">6 ABY</span><span class="tt">Star Wars 1 (2025)</span><span class="kd">Comic</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="7-aby-last-shot">✓</span><span class="dt">7 ABY</span><span class="tt">Baroud d&#x27;Honneur</span><span class="kd">Roman</span></div>
-<div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="9-aby-the-mandalorian-and-grogu-danger-in-the-dark">✓</span><span class="dt">9 ABY</span><span class="tt">The Mandalorian and Grogu : Danger in the Dark<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Comic</span></div>
+<div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="9-aby-the-mandalorian-and-grogu-danger-in-the-dark">✓</span><span class="dt">9 ABY</span><span class="tt">The Mandalorian and Grogu : Danger in the Dark</span><span class="kd">Comic</span></div>
 <div class="screen" data-k="screen" style="--c:#64b5f6"><span class="ckx"></span><span class="dt">9-11 ABY</span><span class="tt">THE MANDALORIAN ET GROGU</span><span class="kd">Écran</span></div>
 <div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="18-19-aby-poe-dameron-free-fall">✓</span><span class="dt">18-19 ABY</span><span class="tt">Poe Dameron : Chute Libre</span><span class="kd">Roman jeune adulte</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="21-aby-shadow-of-the-sith">✓</span><span class="dt">21 ABY</span><span class="tt">L&#x27;Ombre des Sith</span><span class="kd">Roman</span></div>
@@ -776,7 +782,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="0-aby-the-weapon-of-a-jedi-a-luke-skywalker-adventure">✓</span><span class="dt">0 ABY</span><span class="tt">L&#x27;Arme du Jedi</span><span class="kd">Roman</span><div class="note">prologue et épilogue juste avant l&#x27;Épisode VII</div></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="4-aby-moving-target-a-princess-leia-adventure">✓</span><span class="dt">4 ABY</span><span class="tt">Cible Mouvante</span><span class="kd">Roman</span><div class="note">prologue et épilogue juste avant l&#x27;Épisode VII</div></div>
 <div class="screen" data-k="screen" style="--c:#64b5f6"><span class="ckx"></span><span class="dt">34 ABY</span><span class="tt">ÉPISODE VII : LE RÉVEIL DE LA FORCE</span><span class="kd">Écran</span></div>
-<div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-the-last-jedi-cobalt-squadron">✓</span><span class="dt">34 ABY</span><span class="tt">The Last Jedi : Cobalt Squadron<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman</span><div class="note">pendant et après l&#x27;Épisode VII</div></div>
+<div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-the-last-jedi-cobalt-squadron">✓</span><span class="dt">34 ABY</span><span class="tt">The Last Jedi : Cobalt Squadron</span><span class="kd">Roman</span><div class="note">pendant et après l&#x27;Épisode VII</div></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-galaxy-s-edge-black-spire">✓</span><span class="dt">34 ABY</span><span class="tt">Galaxy&#x27;s Edge : Black Spire</span><span class="kd">Roman</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-join-the-resistance-attack-on-starkiller-base">✓</span><span class="dt">34 ABY</span><span class="tt">Join the Resistance : Attack on Starkiller Base</span><span class="kd">Roman</span><div class="note">pendant l&#x27;Épisode VII</div></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-captain-phasma-1">✓</span><span class="dt">34 ABY</span><span class="tt">Capitaine Phasma 1</span><span class="kd">Comic</span><div class="note">pendant l&#x27;Épisode VII</div></div>
@@ -789,11 +795,11 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-poe-dameron-26-31">✓</span><span class="dt">34 ABY</span><span class="tt">Poe Dameron 26 : Le Réveil 1</span><span class="kd">Comic</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-resistance-reborn">✓</span><span class="dt">34 ABY</span><span class="tt">Renaissance</span><span class="kd">Roman</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-allegiance-1-4">✓</span><span class="dt">34 ABY</span><span class="tt">Allégeance 1</span><span class="kd">Comic</span></div>
-<div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-spark-of-the-resistance">✓</span><span class="dt">34 ABY</span><span class="tt">Spark of the Resistance<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman</span></div>
+<div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-spark-of-the-resistance">✓</span><span class="dt">34 ABY</span><span class="tt">Spark of the Resistance</span><span class="kd">Roman</span></div>
 <div class="it" data-k="roman" style="--c:#a78bfa"><span class="ck" data-id="34-aby-pirate-s-price">✓</span><span class="dt">34 ABY</span><span class="tt">Le Prix de la Liberté</span><span class="kd">Roman</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-star-wars-adventures-flight-of-the-falcon">✓</span><span class="dt">34 ABY</span><span class="tt">Star Wars Aventures: Flight of the Falcon</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-galaxy-s-edge-1-5">✓</span><span class="dt">34 ABY</span><span class="tt">Galaxy&#x27;S Edge 1</span><span class="kd">Comic</span></div>
-<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="34-aby-a-crash-of-fate">✓</span><span class="dt">34 ABY</span><span class="tt">A Crash of Fate<span class="vo" title="pas de version française connue">VO</span></span><span class="kd">Roman jeune adulte</span></div>
+<div class="it" data-k="jeunesse" style="--c:#4ade80"><span class="ck" data-id="34-aby-a-crash-of-fate">✓</span><span class="dt">34 ABY</span><span class="tt">A Crash of Fate</span><span class="kd">Roman jeune adulte</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-halcyon-legacy-1-5">✓</span><span class="dt">34 ABY</span><span class="tt">Halcyon Legacy 1</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-galaxy-s-edge-echoes-of-the-empire-1-5">✓</span><span class="dt">34 ABY</span><span class="tt">Galaxy&#x27;S Edge – Echoes of the Empire 1</span><span class="kd">Comic</span></div>
 <div class="it" data-k="comic" style="--c:#fb923c"><span class="ck" data-id="34-aby-star-wars-2020-25-see-you-around-kid">✓</span><span class="dt">34 ABY</span><span class="tt">Star Wars 25 (2020)</span><span class="kd">Comic</span></div>
@@ -833,6 +839,8 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
     document.getElementById('count').textContent='%s œuvres affichées sur %t'.replace('%s',shown).replace('%t',items.length);
     pnum.textContent='%r lu(s) sur %s'.replace('%r',read).replace('%s',shown);
     pfill.style.width=(shown?Math.round(read/shown*100):0)+'%';
+    var pr=document.getElementById('presume');
+    if(pr) pr.disabled=(shown===0||read>=shown);
   }
 
   items.forEach(function(el){
@@ -848,6 +856,21 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
   });
 
   chips.forEach(function(c){ c.addEventListener('click',function(){ c.classList.toggle('on'); refresh(); }); });
+  var presume=document.getElementById('presume');
+  presume.addEventListener('click',function(){
+    var next=null;
+    for(var i=0;i<items.length;i++){
+      var el=items[i];
+      if(el.classList.contains('hide')||el.classList.contains('read')) continue;
+      next=el; break;
+    }
+    if(!next) return;
+    next.scrollIntoView({behavior:'smooth',block:'center'});
+    next.classList.remove('flash');
+    void next.offsetWidth;
+    next.classList.add('flash');
+  });
+
   document.getElementById('preset').addEventListener('click',function(){
     if(!confirm('Réinitialiser ta progression ?')) return;
     done={}; save();

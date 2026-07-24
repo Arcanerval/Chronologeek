@@ -10,7 +10,7 @@
   "kind": "roman",
   "fr": "La Haute République : Convergence",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -23,7 +23,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : La quête de la cité perdue",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -36,7 +36,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : La Voie de la duperie",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -49,7 +49,7 @@
   "kind": "comic",
   "fr": "La Haute République : Les Aventures : La Quête des Jedi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -94,7 +94,7 @@
   "kind": "audio",
   "fr": "La Haute République : La Bataille de Jedha",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -168,7 +168,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : La Voie de la vengeance",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -197,7 +197,7 @@
   "kind": "roman",
   "fr": "La Haute République : Cataclysme",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -210,7 +210,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : La quête de la Planète X",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -265,7 +265,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : En pleines ténèbres",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -278,7 +278,7 @@
   "kind": "roman",
   "fr": "La Haute République : La Lumière des Jedi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -291,7 +291,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 6 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -320,7 +320,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Une épreuve de courage",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -429,7 +429,7 @@
   "kind": "roman",
   "fr": "La Haute République : L'orage gronde",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -458,7 +458,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : La tour des Trompe-la-mort",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -532,7 +532,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Hors de l'ombre",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -545,7 +545,7 @@
   "kind": "audio",
   "fr": "La Haute République : Maître-Tempête",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -674,7 +674,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Horizon funèbre",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -703,7 +703,7 @@
   "kind": "roman",
   "fr": "La Haute République : La Chute de l'étoile",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -870,7 +870,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Sauvetage sur Valo",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -883,7 +883,7 @@
   "kind": "roman",
   "fr": "La Haute République : L'Œil des ténèbres",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -912,7 +912,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -941,7 +941,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Braver la tempête",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -970,7 +970,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -999,7 +999,7 @@
   "kind": "roman",
   "fr": "La Haute République : La Tentation de la Force",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1012,7 +1012,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Les Larmes des Sans-noms",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1025,7 +1025,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : Gare aux Sans-noms",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1041,7 +1041,7 @@
   "kind": "comic",
   "fr": "La Haute République : Les Aventures : Les Échos de la peur 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1057,7 +1057,7 @@
   "kind": "comic",
   "fr": "La Haute République : Les Aventures : Sabre à louer 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1086,7 +1086,7 @@
   "kind": "audio",
   "fr": "La Haute République : Brise-Tempête",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1099,7 +1099,7 @@
   "kind": "comic",
   "fr": "The High Republic Adventures Annual 2025",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1131,7 +1131,7 @@
   "kind": "comic",
   "fr": "La Haute République : Les Aventures : Messages de la Zone d'Occlusion 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1163,7 +1163,7 @@
   "kind": "comic",
   "fr": "La Haute République : Les Aventures : Messages de la Zone d'Occlusion 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1176,7 +1176,7 @@
   "kind": "jeunesse",
   "fr": "La Haute République : En pleine lumière",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1189,7 +1189,7 @@
   "kind": "roman",
   "fr": "La Haute République : Les Épreuves des Jedi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1308,7 +1308,7 @@
   "kind": "jeunesse",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1350,7 +1350,7 @@
   "kind": "comic",
   "fr": "The Acolyte – Kelnacca 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1376,7 +1376,7 @@
   "kind": "jeunesse",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1415,7 +1415,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1428,7 +1428,7 @@
   "kind": "jeunesse",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1441,7 +1441,7 @@
   "kind": "roman",
   "fr": "Maître et Apprenti",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1480,7 +1480,7 @@
   "kind": "roman",
   "fr": "La Force Vivante",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1496,7 +1496,7 @@
   "kind": "comic",
   "fr": "Dark Maul 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1512,7 +1512,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1541,7 +1541,7 @@
   "kind": "comic",
   "fr": "Jango Fett 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1567,7 +1567,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace : Qui-Gon",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1606,7 +1606,7 @@
   "kind": "jeunesse",
   "fr": "Le Péril de la reine",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1632,7 +1632,7 @@
   "kind": "roman",
   "fr": "Mace Windu : L'Abîme de cristal",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1661,7 +1661,7 @@
   "kind": "comic",
   "fr": "Obi-Wan & Anakin 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1674,7 +1674,7 @@
   "kind": "jeunesse",
   "fr": "L'Ombre de la reine",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1713,7 +1713,7 @@
   "kind": "audio",
   "fr": "Dooku : Jedi égaré",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1739,7 +1739,7 @@
   "kind": "jeunesse",
   "fr": "L'Espoir de la reine",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1752,7 +1752,7 @@
   "kind": "comic",
   "fr": "Jar Jar Binks",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1781,7 +1781,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1794,7 +1794,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace : Grievous",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1810,7 +1810,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 11",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1826,7 +1826,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1842,7 +1842,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 5",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1871,7 +1871,7 @@
   "kind": "comic",
   "fr": "The Clone Wars – Battle Tales 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1926,7 +1926,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 10",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1958,7 +1958,7 @@
   "kind": "comic",
   "fr": "Hyperspace Stories: The Bad Batch—Rogue Agents 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1984,7 +1984,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 12 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2036,7 +2036,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 3 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2091,7 +2091,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 9",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2120,7 +2120,7 @@
   "kind": "roman",
   "fr": "Sombre Apprenti",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2146,7 +2146,7 @@
   "kind": "roman",
   "fr": "Chaos croissant",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2175,7 +2175,7 @@
   "kind": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 1 : L'Élu 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2188,7 +2188,7 @@
   "kind": "roman",
   "fr": "Maître du mal",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2204,7 +2204,7 @@
   "kind": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 6 : L'Élu 6",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2233,7 +2233,7 @@
   "kind": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 7 : Les Ténèbres Étouffent la Lumière 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2259,7 +2259,7 @@
   "kind": "roman",
   "fr": "Le Règne de l'Empire : Le Masque de la peur",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2285,7 +2285,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2314,7 +2314,7 @@
   "kind": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 13 : Mers de Feu 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2330,7 +2330,7 @@
   "kind": "comic",
   "fr": "Dark Vador Annuel 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2356,7 +2356,7 @@
   "kind": "roman",
   "fr": "Star Wars: Ahsoka",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2369,7 +2369,7 @@
   "kind": "roman",
   "fr": "Bien commun",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2382,7 +2382,7 @@
   "kind": "roman",
   "fr": "Moindre mal",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2395,7 +2395,7 @@
   "kind": "roman",
   "fr": "Catalyseur : A Rogue One Novel",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2408,7 +2408,7 @@
   "kind": "comic",
   "fr": "Rogue One – Saw Gerrera 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2424,7 +2424,7 @@
   "kind": "comic",
   "fr": "Shadow of Maul 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2450,7 +2450,7 @@
   "kind": "comic",
   "fr": "Mitth'raw'nuruodo",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2463,7 +2463,7 @@
   "kind": "roman",
   "fr": "Les Seigneurs des Sith",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2476,7 +2476,7 @@
   "kind": "roman",
   "fr": "Wilhuff Tarkin",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2492,7 +2492,7 @@
   "kind": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 18 : Terrain Dangereux",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2505,7 +2505,7 @@
   "kind": "roman",
   "fr": "Inquisitorius : L'Éveil de la lame rouge",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2534,7 +2534,7 @@
   "kind": "comic",
   "fr": "Jedi: Fallen Order – Dark Temple 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2547,7 +2547,7 @@
   "kind": "jeunesse",
   "fr": "Morts ou vifs",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2576,7 +2576,7 @@
   "kind": "jeunesse",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2589,7 +2589,7 @@
   "kind": "roman",
   "fr": "Jedi: Battle Scars",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2605,7 +2605,7 @@
   "kind": "comic",
   "fr": "Dark Vador : Le Seigneur Noir des Sith 23 : La Forteresse de Vador 5",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2621,7 +2621,7 @@
   "kind": "comic",
   "fr": "Inquisitors 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2634,7 +2634,7 @@
   "kind": "roman",
   "fr": "Le Globe du Solstice",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2647,7 +2647,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 4 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2660,7 +2660,7 @@
   "kind": "comic",
   "fr": "Tobias Beckett",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2689,7 +2689,7 @@
   "kind": "comic",
   "fr": "Lando : Quitte ou double 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2718,7 +2718,7 @@
   "kind": "comic",
   "fr": "Star Wars 15: Extrait du Journal du vieux Ben Kenobi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2734,7 +2734,7 @@
   "kind": "comic",
   "fr": "Star Wars 20: Extrait du Journal du vieux Ben Kenobi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -2760,7 +2760,7 @@
   "kind": "audio",
   "fr": "Les Aventures d'Ezra",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -2919,7 +2919,7 @@
   "kind": "comic",
   "fr": "Kanan 1 : Le dernier Padawan 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -2948,7 +2948,7 @@
   "kind": "comic",
   "fr": "Kanan 7 : Premier Sang 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3260,7 +3260,7 @@
   "kind": "jeunesse",
   "fr": "Leia : Princesse d'Alderaan",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3731,7 +3731,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3779,7 +3779,7 @@
   "kind": "comic",
   "fr": "Cible – Vador 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3857,7 +3857,7 @@
   "kind": "roman",
   "fr": "Thrawn : Trahison",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3883,7 +3883,7 @@
   "kind": "comic",
   "fr": "Star Wars 37: Fierté Impériale",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3899,7 +3899,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 25",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3928,7 +3928,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures Free Comic Book Day 2019",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -3960,7 +3960,7 @@
   "kind": "comic",
   "fr": "Return to Vader's Castle 1: Beware the Horned Devil!",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4109,7 +4109,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 5 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4125,7 +4125,7 @@
   "kind": "comic",
   "fr": "Obi-Wan 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4138,7 +4138,7 @@
   "kind": "audio",
   "fr": "A Rogue One Story : Gardiens des Whills",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4151,7 +4151,7 @@
   "kind": "jeunesse",
   "fr": "Soulèvement Rebelle",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4164,7 +4164,7 @@
   "kind": "comic",
   "fr": "Rogue One – Jyn Erso 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4177,7 +4177,7 @@
   "kind": "comic",
   "fr": "Rogue One – Cassian Andor 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4203,7 +4203,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Rébellion : Grand Moff Tarkin 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4229,7 +4229,7 @@
   "kind": "roman",
   "fr": "Battlefront II : L'Escouade Inferno",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4245,7 +4245,7 @@
   "kind": "comic",
   "fr": "Princesse Leia 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4274,7 +4274,7 @@
   "kind": "comic",
   "fr": "Princesse Leia 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4290,7 +4290,7 @@
   "kind": "comic",
   "fr": "Lando 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4335,7 +4335,7 @@
   "kind": "comic",
   "fr": "Star Wars Annuel 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4351,7 +4351,7 @@
   "kind": "comic",
   "fr": "Han Solo 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4364,7 +4364,7 @@
   "kind": "roman",
   "fr": "L'Héritier des Jedi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4380,7 +4380,7 @@
   "kind": "comic",
   "fr": "Star Wars 1: Skywalker passe à l'Attaque 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4396,7 +4396,7 @@
   "kind": "comic",
   "fr": "Dark Vador 1: Vador 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4409,7 +4409,7 @@
   "kind": "comic",
   "fr": "Dark Vador 25: En Bout de Course 6",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4425,7 +4425,7 @@
   "kind": "comic",
   "fr": "Star Wars 4: Skywalker passe à l'Attaque 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4441,7 +4441,7 @@
   "kind": "comic",
   "fr": "Star Wars Annuel 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4457,7 +4457,7 @@
   "kind": "comic",
   "fr": "Dark Vador 2: Vador 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4473,7 +4473,7 @@
   "kind": "comic",
   "fr": "Star Wars 5: Skywalker passe à l'Attaque 5",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4489,7 +4489,7 @@
   "kind": "comic",
   "fr": "Dark Vador 5: Vador 5",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4505,7 +4505,7 @@
   "kind": "comic",
   "fr": "Star Wars 6: Skywalker passe à l'Attaque 6",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4521,7 +4521,7 @@
   "kind": "comic",
   "fr": "Dark Vador 6: Vador 6",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4537,7 +4537,7 @@
   "kind": "comic",
   "fr": "Star Wars 7: Le dernier de ses semblables",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4553,7 +4553,7 @@
   "kind": "comic",
   "fr": "Dark Vador 7: Ombres et Mensonges 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4569,7 +4569,7 @@
   "kind": "comic",
   "fr": "Dark Vador Annuel 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4611,7 +4611,7 @@
   "kind": "comic",
   "fr": "Dark Vador 13 : Vador Abattu 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4627,7 +4627,7 @@
   "kind": "comic",
   "fr": "Star Wars 13 : Vador Abattu 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4643,7 +4643,7 @@
   "kind": "comic",
   "fr": "Dark Vador 14 : Vador Abattu 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4659,7 +4659,7 @@
   "kind": "comic",
   "fr": "Star Wars 14 : Vador Abattu 5",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4675,7 +4675,7 @@
   "kind": "comic",
   "fr": "Dark Vador 15 : Vador Abattu 6",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4691,7 +4691,7 @@
   "kind": "comic",
   "fr": "Star Wars 16: Prison Rebelle 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4707,7 +4707,7 @@
   "kind": "comic",
   "fr": "Dark Vador 16: La Guerre de Shu-Torun 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4720,7 +4720,7 @@
   "kind": "comic",
   "fr": "Dark Vador 20: En Bout de Course 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4736,7 +4736,7 @@
   "kind": "comic",
   "fr": "Dark Vador 21: En Bout de Course 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4765,7 +4765,7 @@
   "kind": "comic",
   "fr": "Star Wars 21: Le Dernier Vol du Harbinger 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4781,7 +4781,7 @@
   "kind": "comic",
   "fr": "Star Wars Annuel 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4797,7 +4797,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 1: Aphra 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4826,7 +4826,7 @@
   "kind": "comic",
   "fr": "Star Wars 31 : La Citadelle Hurlante 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4842,7 +4842,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 7 : La Citadelle Hurlante 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4858,7 +4858,7 @@
   "kind": "comic",
   "fr": "Star Wars 32 : La Citadelle Hurlante 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4874,7 +4874,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 8 : La Citadelle Hurlante 5",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4890,7 +4890,7 @@
   "kind": "comic",
   "fr": "Star Wars 33: Des Rebelles Naufragés",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4906,7 +4906,7 @@
   "kind": "comic",
   "fr": "Star Wars Annuel 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4919,7 +4919,7 @@
   "kind": "comic",
   "fr": "Star Wars 50: La Mort de l'Espoir 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4935,7 +4935,7 @@
   "kind": "comic",
   "fr": "Star Wars 37: Fierté Impériale",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4951,7 +4951,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra Annuel 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4967,7 +4967,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 9: L'Énorme Magot 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4983,7 +4983,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra Annuel 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4999,7 +4999,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 14: Hiérarchisation 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5015,7 +5015,7 @@
   "kind": "comic",
   "fr": "Star Wars 38: Les Cendres de Jedha 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5044,7 +5044,7 @@
   "kind": "comic",
   "fr": "Star Wars 44: Mutinerie sur Mon Cala 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5070,7 +5070,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Rébellion : Lando Calrissian 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5099,7 +5099,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5115,7 +5115,7 @@
   "kind": "comic",
   "fr": "Star Wars 68: Rebelles et renégats 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5131,7 +5131,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 32: L'effroyable super-arme rebelle 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5147,7 +5147,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra Annuel 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5163,7 +5163,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 37: La fin d'une vaurienne 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5218,7 +5218,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 7",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5231,7 +5231,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 13 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5273,7 +5273,7 @@
   "kind": "comic",
   "fr": "Yoda 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5299,7 +5299,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 1 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5328,7 +5328,7 @@
   "kind": "comic",
   "fr": "Dark Vador 1 : Le cœur sombre des Sith 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5344,7 +5344,7 @@
   "kind": "comic",
   "fr": "Star Wars 1 : La Voie du destin 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5360,7 +5360,7 @@
   "kind": "comic",
   "fr": "Star Wars 3 : La Voie du destin 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5376,7 +5376,7 @@
   "kind": "comic",
   "fr": "Dark Vador 2 : Le cœur sombre des Sith 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5392,7 +5392,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 1 : Les plus dangereux de la galaxie 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5408,7 +5408,7 @@
   "kind": "comic",
   "fr": "Star Wars 7 : Le testament de Tarkin 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5424,7 +5424,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 7 : Cible : Valance 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5440,7 +5440,7 @@
   "kind": "comic",
   "fr": "Star Wars 9 : Opération Flambeau 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5456,7 +5456,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 1 : Destin et fortune 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5472,7 +5472,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 8 : Affrontement au Terminus 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5485,7 +5485,7 @@
   "kind": "comic",
   "fr": "War of the Bounty Hunters 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5501,7 +5501,7 @@
   "kind": "comic",
   "fr": "Star Wars 13 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5514,7 +5514,7 @@
   "kind": "comic",
   "fr": "War of the Bounty Hunters 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5530,7 +5530,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 11 : La Grand-Chasse de Malastare",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5546,7 +5546,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5559,7 +5559,7 @@
   "kind": "comic",
   "fr": "War of the Bounty Hunters 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5575,7 +5575,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5591,7 +5591,7 @@
   "kind": "comic",
   "fr": "Star Wars 14 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5607,7 +5607,7 @@
   "kind": "comic",
   "fr": "Dark Vador 12",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5623,7 +5623,7 @@
   "kind": "comic",
   "fr": "Star Wars 15 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5639,7 +5639,7 @@
   "kind": "comic",
   "fr": "Dark Vador 13",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5655,7 +5655,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 11",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5671,7 +5671,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 14",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5687,7 +5687,7 @@
   "kind": "comic",
   "fr": "Dark Vador 15",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5703,7 +5703,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5719,7 +5719,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 12",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5735,7 +5735,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5751,7 +5751,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 13",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5767,7 +5767,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5783,7 +5783,7 @@
   "kind": "comic",
   "fr": "Star Wars 16 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5799,7 +5799,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 14",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5815,7 +5815,7 @@
   "kind": "comic",
   "fr": "Dark Vador 16",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5831,7 +5831,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5847,7 +5847,7 @@
   "kind": "comic",
   "fr": "Star Wars 17 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5863,7 +5863,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5879,7 +5879,7 @@
   "kind": "comic",
   "fr": "Dark Vador 17",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5895,7 +5895,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5911,7 +5911,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 15",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5940,7 +5940,7 @@
   "kind": "comic",
   "fr": "Star Wars 18 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5969,7 +5969,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -5985,7 +5985,7 @@
   "kind": "comic",
   "fr": "Star Wars 19 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6001,7 +6001,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 16",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6017,7 +6017,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 18",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6033,7 +6033,7 @@
   "kind": "comic",
   "fr": "Star Wars 21 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6049,7 +6049,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6065,7 +6065,7 @@
   "kind": "comic",
   "fr": "Star Wars 22 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6081,7 +6081,7 @@
   "kind": "comic",
   "fr": "Crimson Reign 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6097,7 +6097,7 @@
   "kind": "comic",
   "fr": "Dark Vador 18",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6113,7 +6113,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 21",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6126,7 +6126,7 @@
   "kind": "roman",
   "fr": "Outlaws: Low Red Moon",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6155,7 +6155,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6171,7 +6171,7 @@
   "kind": "comic",
   "fr": "Star Wars 26 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6187,7 +6187,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 19",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6203,7 +6203,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 27",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6219,7 +6219,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 22",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6235,7 +6235,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6248,7 +6248,7 @@
   "kind": "comic",
   "fr": "Revelations 1 (2022)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6264,7 +6264,7 @@
   "kind": "comic",
   "fr": "Hidden Empire 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6280,7 +6280,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 28",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6296,7 +6296,7 @@
   "kind": "comic",
   "fr": "Hidden Empire 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6312,7 +6312,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 30",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6328,7 +6328,7 @@
   "kind": "comic",
   "fr": "Sana Starros 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6344,7 +6344,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 29",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6360,7 +6360,7 @@
   "kind": "comic",
   "fr": "Star Wars 29 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6376,7 +6376,7 @@
   "kind": "comic",
   "fr": "Dark Vador 29",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6392,7 +6392,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 32",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6408,7 +6408,7 @@
   "kind": "comic",
   "fr": "Star Wars 34 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6424,7 +6424,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 35",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6440,7 +6440,7 @@
   "kind": "comic",
   "fr": "Star Wars 36 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6453,7 +6453,7 @@
   "kind": "comic",
   "fr": "Free Comic Book Day 2024: Star Wars 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6466,7 +6466,7 @@
   "kind": "comic",
   "fr": "Dark Droids: D-Squad 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6482,7 +6482,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6498,7 +6498,7 @@
   "kind": "comic",
   "fr": "Star Wars 37 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6514,7 +6514,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6530,7 +6530,7 @@
   "kind": "comic",
   "fr": "Bounty Hunters 37",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6546,7 +6546,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6562,7 +6562,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 35",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6578,7 +6578,7 @@
   "kind": "comic",
   "fr": "Dark Vador 37",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6594,7 +6594,7 @@
   "kind": "comic",
   "fr": "Dark Droids: D-Squad 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6610,7 +6610,7 @@
   "kind": "comic",
   "fr": "Star Wars 38 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6626,7 +6626,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6642,7 +6642,7 @@
   "kind": "comic",
   "fr": "Dark Vador 40",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6658,7 +6658,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 38",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6674,7 +6674,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6690,7 +6690,7 @@
   "kind": "comic",
   "fr": "Star Wars 40 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6706,7 +6706,7 @@
   "kind": "comic",
   "fr": "Dark Vador 41",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6722,7 +6722,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6738,7 +6738,7 @@
   "kind": "comic",
   "fr": "Star Wars 41 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6754,7 +6754,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6770,7 +6770,7 @@
   "kind": "comic",
   "fr": "Docteur Aphra 40",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6786,7 +6786,7 @@
   "kind": "comic",
   "fr": "Star Wars 42 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6815,7 +6815,7 @@
   "kind": "comic",
   "fr": "Star Wars 45 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6844,7 +6844,7 @@
   "kind": "comic",
   "fr": "Dark Vador 42",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6857,7 +6857,7 @@
   "kind": "comic",
   "fr": "Free Comic Book Day 2024: Star Wars 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6873,7 +6873,7 @@
   "kind": "comic",
   "fr": "Dark Vador 46",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6915,7 +6915,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6970,7 +6970,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 12",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6983,7 +6983,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Rébellion : Luke Skywalker 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -6996,7 +6996,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Rébellion : Princesse Leia 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7051,7 +7051,7 @@
   "kind": "comic",
   "fr": "TIE Fighter 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7080,7 +7080,7 @@
   "kind": "comic",
   "fr": "Les Ruines de l'Empire 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7125,7 +7125,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7138,7 +7138,7 @@
   "kind": "roman",
   "fr": "La Princesse et le vaurien",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7151,7 +7151,7 @@
   "kind": "comic",
   "fr": "Le Retour du Jedi : Max Rebo 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7164,7 +7164,7 @@
   "kind": "comic",
   "fr": "Shadow of Vader's Castle 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7196,7 +7196,7 @@
   "kind": "comic",
   "fr": "Ewoks 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7225,7 +7225,7 @@
   "kind": "comic",
   "fr": "Les Ruines de l'Empire 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7283,7 +7283,7 @@
   "kind": "comic",
   "fr": "Les Ruines de l'Empire 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7309,7 +7309,7 @@
   "kind": "roman",
   "fr": "L'Escadron Alphabet",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7322,7 +7322,7 @@
   "kind": "roman",
   "fr": "Riposte",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7338,7 +7338,7 @@
   "kind": "comic",
   "fr": "Ghosts of Vader's Castle 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7354,7 +7354,7 @@
   "kind": "comic",
   "fr": "Les Ruines de l'Empire 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7393,7 +7393,7 @@
   "kind": "roman",
   "fr": "Où l'ombre s'abat",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7509,7 +7509,7 @@
   "kind": "roman",
   "fr": "Le Prix de la victoire",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7522,7 +7522,7 @@
   "kind": "roman",
   "fr": "Riposte : Chute de l'Empire",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -7564,7 +7564,7 @@
   "kind": "jeunesse",
   "fr": "Étoiles Perdues",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7593,7 +7593,7 @@
   "kind": "comic",
   "fr": "Free Comic Book Day 2025: Star Wars 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7609,7 +7609,7 @@
   "kind": "comic",
   "fr": "Star Wars 1 (2025)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7622,7 +7622,7 @@
   "kind": "roman",
   "fr": "Baroud d'honneur",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7635,7 +7635,7 @@
   "kind": "comic",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7661,7 +7661,7 @@
   "kind": "jeunesse",
   "fr": "Poe Dameron : Chute libre",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7674,7 +7674,7 @@
   "kind": "roman",
   "fr": "L'Ombre des Sith",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7690,7 +7690,7 @@
   "kind": "comic",
   "fr": "Star Wars 50 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7703,7 +7703,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Résistance : Rose Tico 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7732,7 +7732,7 @@
   "kind": "comic",
   "fr": "L'Ascension de Kylo Ren 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7745,7 +7745,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Résistance : Suprême Leader Snoke 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7771,7 +7771,7 @@
   "kind": "roman",
   "fr": "Luke Skywalker : Légendes",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7787,7 +7787,7 @@
   "kind": "comic",
   "fr": "Han Solo - Hunt for the Falcon 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7800,7 +7800,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 7 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7813,7 +7813,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Résistance : Poe Dameron 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7826,7 +7826,7 @@
   "kind": "roman",
   "fr": "Avant le Réveil",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7839,7 +7839,7 @@
   "kind": "comic",
   "fr": "Poe Dameron 1 : L'Escadron Black 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7855,7 +7855,7 @@
   "kind": "comic",
   "fr": "Poe Dameron 1 : L'Escadron Black 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7881,7 +7881,7 @@
   "kind": "jeunesse",
   "fr": "Le Collectionneur",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7894,7 +7894,7 @@
   "kind": "jeunesse",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7959,7 +7959,7 @@
   "kind": "roman",
   "fr": "Rejoins la Résistance 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7975,7 +7975,7 @@
   "kind": "comic",
   "fr": "Poe Dameron 7 : Avis de Tempête",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7991,7 +7991,7 @@
   "kind": "comic",
   "fr": "Poe Dameron Annuel 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8007,7 +8007,7 @@
   "kind": "comic",
   "fr": "Poe Dameron 20 : La Légende Retrouvée 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8036,7 +8036,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8075,7 +8075,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures: Destroyer Down 3",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8088,7 +8088,7 @@
   "kind": "comic",
   "fr": "L'Ère de la Résistance : Capitaine Phasma 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8104,7 +8104,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 8",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8117,7 +8117,7 @@
   "kind": "roman",
   "fr": "La Cavale du contrebandier",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8130,7 +8130,7 @@
   "kind": "roman",
   "fr": "L'Arme du Jedi",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8143,7 +8143,7 @@
   "kind": "roman",
   "fr": "Cible mouvante",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8169,7 +8169,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8182,7 +8182,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8211,7 +8211,7 @@
   "kind": "comic",
   "fr": "Capitaine Phasma 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8240,7 +8240,7 @@
   "kind": "comic",
   "fr": "Capitaine Phasma 2",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8295,7 +8295,7 @@
   "kind": "comic",
   "fr": "L'héritage de Vador 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8311,7 +8311,7 @@
   "kind": "comic",
   "fr": "Poe Dameron 26 : Le Réveil 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8324,7 +8324,7 @@
   "kind": "roman",
   "fr": "Renaissance",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8340,7 +8340,7 @@
   "kind": "comic",
   "fr": "Allégeance 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8353,7 +8353,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8366,7 +8366,7 @@
   "kind": "roman",
   "fr": "Le Prix de la Liberté",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8379,7 +8379,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures: Flight of the Falcon",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8395,7 +8395,7 @@
   "kind": "comic",
   "fr": "Galaxy's Edge 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8408,7 +8408,7 @@
   "kind": "jeunesse",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8424,7 +8424,7 @@
   "kind": "comic",
   "fr": "Halcyon Legacy 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8440,7 +8440,7 @@
   "kind": "comic",
   "fr": "Galaxy's Edge – Echoes of the Empire 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8453,7 +8453,7 @@
   "kind": "comic",
   "fr": "Star Wars 25 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8469,7 +8469,7 @@
   "kind": "comic",
   "fr": "Histoires de l'hyperespace 4",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8485,7 +8485,7 @@
   "kind": "comic",
   "fr": "Tales From the Nightlands 1",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8511,7 +8511,7 @@
   "kind": "comic",
   "fr": "Star Wars 25 (2020)",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8524,6 +8524,6 @@
   "kind": "jeunesse",
   "fr": "Le Dernier Ordre",
   "en": "",
-  "frOk": true
+  "frOk": null
  }
 ]
