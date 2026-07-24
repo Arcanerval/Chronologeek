@@ -1215,7 +1215,7 @@
    "Réunion de famille, deuxième partie"
   ]
  },
- "__version__": 3,
+ "__version__": 4,
  "A Crash of Fate": {
   "cats": [
    "2019 releases",
@@ -1719,8 +1719,8 @@
    "Star Wars: Age of Resistance issues"
   ],
   "byText": "",
-  "fr": "",
-  "frOk": null
+  "fr": "L'Ère de la Résistance : Rose Tico 1",
+  "frOk": true
  },
  "Age of Resistance: Supreme Leader Snoke": {
   "cats": [
@@ -3707,8 +3707,8 @@
    "Star Wars: Galaxy's Edge – Echoes of the Empire issues"
   ],
   "byText": "",
-  "fr": "",
-  "frOk": null
+  "fr": "Galaxy's Edge – Echoes of the Empire 1",
+  "frOk": false
  },
  "Guardians of the Whills": {
   "cats": [
@@ -4114,14 +4114,12 @@
  "Jango Fett 1": {
   "cats": [
    "2024 releases",
-   "Archiveurl usages with non-Wayback URLs",
    "Canon media",
    "Incomplete Appearances",
    "Media that should be listed in Appearances",
    "Media using Template:App",
    "Real-world media",
-   "Star Wars: Jango Fett issues",
-   "Twitter usages with the same archivedate value"
+   "Star Wars: Jango Fett issues"
   ],
   "byText": "comic",
   "fr": "Jango Fett 1",
@@ -4130,14 +4128,12 @@
  "Jango Fett 2": {
   "cats": [
    "2024 releases",
-   "Archiveurl usages with non-Wayback URLs",
    "Canon media",
    "Incomplete Appearances",
    "Media that should be listed in Appearances",
    "Media using Template:App",
    "Real-world media",
-   "Star Wars: Jango Fett issues",
-   "Twitter usages with the same archivedate value"
+   "Star Wars: Jango Fett issues"
   ],
   "byText": "comic",
   "fr": "Jango Fett 2",
@@ -4158,8 +4154,8 @@
    "Twitter usages with the same archivedate value"
   ],
   "byText": "",
-  "fr": "",
-  "frOk": null
+  "fr": "Jar Jar Binks",
+  "frOk": true
  },
  "Jedi Fallen Order: Dark Temple 1": {
   "cats": [
@@ -4171,8 +4167,8 @@
    "Star Wars: Jedi Fallen Order - Dark Temple issues"
   ],
   "byText": "",
-  "fr": "",
-  "frOk": null
+  "fr": "Jedi: Fallen Order – Dark Temple 1",
+  "frOk": true
  },
  "Jedi of the Republic: Mace Windu 1": {
   "cats": [
@@ -4557,7 +4553,7 @@
   ],
   "byText": "",
   "fr": "Phasma",
-  "frOk": false
+  "frOk": true
  },
  "Pirate's Price": {
   "cats": [
@@ -4801,13 +4797,29 @@
   "frOk": true
  },
  "Return of the Jedi: Ewoks": {
-  "cats": [],
+  "cats": [
+   "2023 releases",
+   "Canon media",
+   "Incomplete Appearances",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media",
+   "Star Wars: Return of the Jedi one-shots"
+  ],
   "byText": "",
   "fr": "",
   "frOk": null
  },
  "Return of the Jedi: Jabba's Palace": {
-  "cats": [],
+  "cats": [
+   "2023 releases",
+   "Canon media",
+   "Incomplete Appearances",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media",
+   "Star Wars: Return of the Jedi one-shots"
+  ],
   "byText": "",
   "fr": "",
   "frOk": null
@@ -4837,8 +4849,8 @@
    "Star Wars: Return of the Jedi one-shots"
   ],
   "byText": "",
-  "fr": "",
-  "frOk": null
+  "fr": "Le Retour du Jedi : Max Rebo 1",
+  "frOk": true
  },
  "Return of the Jedi: The Empire": {
   "cats": [
@@ -4855,13 +4867,31 @@
   "frOk": null
  },
  "Return of the Jedi: The Rebellion": {
-  "cats": [],
+  "cats": [
+   "2023 releases",
+   "Canon media",
+   "Comics that need plot summary",
+   "Incomplete Appearances",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media",
+   "Star Wars: Return of the Jedi one-shots"
+  ],
   "byText": "",
   "fr": "",
   "frOk": null
  },
  "Revelations (2022)": {
-  "cats": [],
+  "cats": [
+   "2022 releases",
+   "Canon media",
+   "Canon one-shot comics",
+   "Incomplete Appearances",
+   "Marvel Comics one-shot comics",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media"
+  ],
   "byText": "",
   "fr": "Revelations 1 (2022)",
   "frOk": true
@@ -6052,8 +6082,8 @@
    "Twitter usages with the same archivedate value"
   ],
   "byText": "comic",
-  "fr": "Star Wars Adventures: Tales from Vader's Castle",
-  "frOk": true
+  "fr": "",
+  "frOk": null
  },
  "Star Wars Adventures: Tales from Vader's Castle 4": {
   "cats": [
@@ -6185,7 +6215,7 @@
   ],
   "byText": "",
   "fr": "Outlaws: Low Red Moon",
-  "frOk": true
+  "frOk": false
  },
  "Star Wars Rebels Magazine: A Day's Duty": {
   "cats": [],
@@ -6517,7 +6547,16 @@
   "frOk": false
  },
  "The Acolyte: Kelnacca": {
-  "cats": [],
+  "cats": [
+   "2024 releases",
+   "Canon media",
+   "Canon one-shot comics",
+   "Incomplete Appearances",
+   "Marvel Comics one-shot comics",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media"
+  ],
   "byText": "",
   "fr": "The Acolyte – Kelnacca 1",
   "frOk": false
@@ -7244,7 +7283,7 @@
   ],
   "byText": "",
   "fr": "La Haute République : Une épreuve de courage",
-  "frOk": true
+  "frOk": false
  },
  "The High Republic: A Valiant Vow": {
   "cats": [
@@ -7278,7 +7317,7 @@
   ],
   "byText": "",
   "fr": "La Haute République : Gare aux Sans-noms",
-  "frOk": true
+  "frOk": false
  },
  "The High Republic: Cataclysm": {
   "cats": [
@@ -7347,7 +7386,7 @@
   ],
   "byText": "",
   "fr": "La Haute République : Sauvetage sur Valo",
-  "frOk": true
+  "frOk": false
  },
  "The High Republic: Eye of the Storm 1": {
   "cats": [
@@ -7363,7 +7402,14 @@
   "frOk": null
  },
  "The High Republic: Fear of the Jedi 1": {
-  "cats": [],
+  "cats": [
+   "2025 releases",
+   "Canon media",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media",
+   "Star Wars: The High Republic – Fear of the Jedi issues"
+  ],
   "byText": "",
   "fr": "",
   "frOk": null
@@ -7518,7 +7564,7 @@
   ],
   "byText": "",
   "fr": "La Haute République : La quête de la Planète X",
-  "frOk": true
+  "frOk": false
  },
  "The High Republic: Quest for the Hidden City": {
   "cats": [
@@ -7535,7 +7581,7 @@
   ],
   "byText": "",
   "fr": "La Haute République : La quête de la cité perdue",
-  "frOk": true
+  "frOk": false
  },
  "The High Republic: Race to Crashpoint Tower": {
   "cats": [
@@ -7552,7 +7598,7 @@
   ],
   "byText": "",
   "fr": "La Haute République : La tour des Trompe-la-mort",
-  "frOk": true
+  "frOk": false
  },
  "The High Republic: Shadows of Starlight 1": {
   "cats": [
@@ -7866,7 +7912,15 @@
   "frOk": null
  },
  "The Last Jedi: The Storms of Crait": {
-  "cats": [],
+  "cats": [
+   "2017 releases",
+   "Canon media",
+   "Canon one-shot comics",
+   "Marvel Comics one-shot comics",
+   "Media that should be listed in Appearances",
+   "Media using Template:App",
+   "Real-world media"
+  ],
   "byText": "",
   "fr": "",
   "frOk": null

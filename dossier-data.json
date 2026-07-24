@@ -94,7 +94,7 @@
   "kind": "audio",
   "fr": "La Haute République : La Bataille de Jedha",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -291,7 +291,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 6 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -545,7 +545,7 @@
   "kind": "audio",
   "fr": "La Haute République : Maître-Tempête",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1086,7 +1086,7 @@
   "kind": "audio",
   "fr": "La Haute République : Brise-Tempête",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1350,7 +1350,7 @@
   "kind": "comic",
   "fr": "The Acolyte – Kelnacca 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE HIGH REPUBLIC ERA",
@@ -1713,7 +1713,7 @@
   "kind": "audio",
   "fr": "Dooku : Jedi égaré",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REPUBLIC ERA",
@@ -1750,9 +1750,9 @@
   "wiki": "Jar Jar",
   "span": null,
   "kind": "comic",
-  "fr": "",
+  "fr": "Jar Jar Binks",
   "en": "",
-  "frOk": null
+  "frOk": true
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1871,7 +1871,7 @@
   "kind": "comic",
   "fr": "The Clone Wars – Battle Tales 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1958,7 +1958,7 @@
   "kind": "comic",
   "fr": "Hyperspace Stories: The Bad Batch—Rogue Agents 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -1984,7 +1984,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 12 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2036,7 +2036,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 3 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE CLONE WARS ERA",
@@ -2356,7 +2356,7 @@
   "kind": "roman",
   "fr": "Star Wars: Ahsoka",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2408,7 +2408,7 @@
   "kind": "comic",
   "fr": "Rogue One – Saw Gerrera 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2450,7 +2450,7 @@
   "kind": "comic",
   "fr": "Mitth'raw'nuruodo",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2476,7 +2476,7 @@
   "kind": "roman",
   "fr": "Wilhuff Tarkin",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2532,9 +2532,9 @@
    5
   ],
   "kind": "comic",
-  "fr": "",
+  "fr": "Jedi: Fallen Order – Dark Temple 1",
   "en": "",
-  "frOk": null
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2634,7 +2634,7 @@
   "kind": "roman",
   "fr": "Le Globe du Solstice",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2660,7 +2660,7 @@
   "kind": "comic",
   "fr": "Tobias Beckett",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE IMPERIAL ERA",
@@ -2760,7 +2760,7 @@
   "kind": "audio",
   "fr": "Les Aventures d'Ezra",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -3899,7 +3899,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 25",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -3913,9 +3913,9 @@
    3
   ],
   "kind": "comic",
-  "fr": "Star Wars Adventures: Tales from Vader's Castle",
+  "fr": "",
   "en": "",
-  "frOk": true
+  "frOk": null
  },
  {
   "era": "THE REBELLION ERA",
@@ -4109,7 +4109,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 5 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -4164,7 +4164,7 @@
   "kind": "comic",
   "fr": "Rogue One – Jyn Erso 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -4177,7 +4177,7 @@
   "kind": "comic",
   "fr": "Rogue One – Cassian Andor 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -5231,7 +5231,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 13 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -5299,7 +5299,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 1 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -7149,9 +7149,9 @@
   "wiki": "Return of the Jedi: Max Rebo",
   "span": null,
   "kind": "comic",
-  "fr": "",
+  "fr": "Le Retour du Jedi : Max Rebo 1",
   "en": "",
-  "frOk": null
+  "frOk": true
  },
  {
   "era": "THE REBELLION ERA",
@@ -7593,7 +7593,7 @@
   "kind": "comic",
   "fr": "Free Comic Book Day 2025: Star Wars 1",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE NEW REPUBLIC ERA",
@@ -7701,9 +7701,9 @@
   "wiki": "Age of Resistance: Rose Tico",
   "span": null,
   "kind": "comic",
-  "fr": "",
+  "fr": "L'Ère de la Résistance : Rose Tico 1",
   "en": "",
-  "frOk": null
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7800,7 +7800,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures 7 (2020)",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -7959,7 +7959,7 @@
   "kind": "roman",
   "fr": "Rejoins la Résistance 3",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8036,7 +8036,7 @@
   "kind": "roman",
   "fr": "",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8075,7 +8075,7 @@
   "kind": "comic",
   "fr": "Star Wars Aventures: Destroyer Down 3",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8366,7 +8366,7 @@
   "kind": "roman",
   "fr": "Le Prix de la Liberté",
   "en": "",
-  "frOk": false
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
@@ -8438,9 +8438,9 @@
    5
   ],
   "kind": "comic",
-  "fr": "",
+  "fr": "Galaxy's Edge – Echoes of the Empire 1",
   "en": "",
-  "frOk": null
+  "frOk": true
  },
  {
   "era": "THE FIRST ORDER ERA",
