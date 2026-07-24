@@ -822,6 +822,7 @@ def site_shell(lang, alt_href):
                  lambda m: m.group(1) + alt_href + m.group(2), nav)
 
     scripts = ('<script src="/pwa.js"></script>\n'
+               '<script src="/anim.js"></script>\n'
                '<script data-goatcounter="https://arcanerval.goatcounter.com/count"\n'
                '        async src="//gc.zgo.at/count.js"></script>')
     return {"styles": styles, "nav": nav, "mmenu": mmenu, "scripts": scripts}
