@@ -76,6 +76,11 @@ def log(msg):
     print(msg)
 
 
+# Corriger un type mal renseigné à la source (clé = titre en minuscules sans ponctuation)
+KIND_OVERRIDE = {
+    "hiding from the dark": "Roman jeunesse",   # roman middle grade, pas un jeu vidéo
+}
+
 # Titres à ne jamais traduire (le média sort sous son titre original en France).
 # Mettre "" pour forcer le titre original, ou une chaîne pour imposer une VF précise.
 TITLE_FR_OVERRIDE = {
@@ -102,6 +107,7 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
     if not title:
         return
     title_fr = fr_title_ok(title, title_fr)
+    kind = KIND_OVERRIDE.get(_norm_title(title), kind)
     blob = f"{title} {kind or ''}"
     for pat in EXCLUDE.get(universe, []) + EXCLUDE.get("*", []):
         if re.search(pat, blob, re.I):

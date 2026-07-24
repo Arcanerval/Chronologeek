@@ -306,8 +306,11 @@ def classify(cats, title):
 
 # ───────────────────────────────────────────────── 3. TITRES FRANÇAIS
 NON_LATIN = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0400-\u04ff]")
-FR_PUB = re.compile(r'\b(Panini|Delcourt|Pocket|Nathan|Hachette|Bragelonne|Fleuve|'
-                    r'Milan|Glénat|Huginn|Le Masque|Éditions?)\b', re.I)
+FR_PUB = re.compile(
+    r'\b(Panini|Delcourt|Pocket|Nathan|Hachette|Bragelonne|Fleuve[- ]?(?:Noir|Éditions)?|'
+    r'Milan|Gl[ée]nat|Huginn|Le Masque|Presses de la Cit[ée]|Castelmore|Lumen|'
+    r'Éditions?\s+\w+|traduction française|[ée]dition française|version française|'
+    r'sortie française|titre français|publi[ée] en France|en français)\b', re.I)
 
 
 def norm(t):
@@ -340,7 +343,7 @@ def fetch_fr(titles):
             for t in part:
                 key = norm_map.get(t, t)
                 if key in pages:
-                    out[t] = (key, bool(FR_PUB.search(pages[key][:4000])))
+                    out[t] = (key, bool(FR_PUB.search(pages[key])))
         except Exception as e:
             log(f"Titres FR : lot ignoré — {str(e)[:90]}")
     return out
@@ -466,7 +469,7 @@ def resolve_screen(entries, cache):
 # ───────────────────────────────────────────────── 4. PAGE
 KIND = {
     "roman":    ("Roman",          "Novel",         "#a78bfa"),
-    "jeunesse": ("Roman jeunesse", "Young readers", "#4ade80"),
+    "jeunesse": ("Roman jeune adulte", "Young adult novel", "#4ade80"),
     "comic":    ("Comic",          "Comic",         "#fb923c"),
     "audio":    ("Audio",          "Audio",         "#f472b6"),
     "nouvelle": ("Nouvelle",       "Short story",   "#94a3b8"),
@@ -475,6 +478,37 @@ KIND = {
     "":         ("À vérifier",     "Unverified",    "#6b7280"),
 }
 FILTERS = ["roman", "jeunesse", "comic", "audio"]
+
+
+SMALL = {"de", "du", "des", "la", "le", "les", "l", "un", "une", "et", "à", "au", "aux",
+         "en", "sur", "dans", "par", "pour", "d", "of", "the", "a", "an", "and", "or",
+         "in", "on", "at", "to", "for", "from", "with", "vs"}
+
+
+def titlecase(t):
+    """Majuscule à chaque mot sauf mots-outils. Ne touche jamais à ce qui est déjà capitalisé."""
+    if not t:
+        return t
+    parts = re.split(r"(\s+|[:\u2013\u2014-]|(?<=[\u2019'])(?=\w))", t)
+    out, first = [], True
+    for p in parts:
+        if not p.strip() or re.fullmatch(r'[\s:\u2013\u2014-]+', p):
+            out.append(p)
+            continue
+        low = p.lower().strip("'\u2019")
+        if p[:1].isupper() or p.isdigit() or not p[:1].isalpha():
+            out.append(p)                      # déjà correct, chiffre ou ponctuation
+        elif first or low not in SMALL:
+            out.append(p[:1].upper() + p[1:])
+        else:
+            out.append(p)
+        if p.strip():
+            first = False
+    res = "".join(out)
+    # après un deux-points, on repart sur une majuscule
+    res = re.sub(r'(:\s+)([a-zà-ÿ])', lambda m: m.group(1) + m.group(2).upper(), res)
+    # « l'escadron » -> « l'Escadron »
+    return re.sub(r"([\u2019'])([a-zà-ÿ])", lambda m: m.group(1) + m.group(2).upper(), res)
 
 
 def slug(e):
@@ -500,7 +534,7 @@ def build_page(data, lang="fr"):
         if e["screen"]:
             title = (e.get("fr") or e["title"]) if fr else (e.get("en") or e["title"])
         else:
-            title = (e["fr"] if (fr and e["fr"]) else e["title"])
+            title = titlecase(e["fr"]) if (fr and e["fr"]) else e["title"]
         cls = "screen" if e["screen"] else "it"
         vo = ('<span class="vo" title="pas de version française connue">VO</span>'
               if (fr and not e["screen"] and e["frOk"] is False) else "")
@@ -508,7 +542,8 @@ def build_page(data, lang="fr"):
         tn = NOTES.get(raw_note)
         shown_note = (tn[0] if fr else tn[1]) if tn else raw_note
         note = (f'<div class="note">{html.escape(shown_note)}</div>' if shown_note else "")
-        ck = "" if e["screen"] else f'<span class="ck" data-id="{slug(e)}">✓</span>'
+        ck = ('<span class="ckx"></span>' if e["screen"]
+              else f'<span class="ck" data-id="{slug(e)}">✓</span>')
         rows.append(
             f'<div class="{cls}" data-k="{k}" style="--c:{colors.get(k, "#6b7280")}">'
             f'{ck}<span class="dt">{html.escape(e["date"])}</span>'
@@ -563,8 +598,9 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 .ck:hover{{border-color:var(--accent)}}
 .it.read .ck{{background:var(--accent);border-color:var(--accent);color:#fff}}
 .it.read .tt{{opacity:.5;text-decoration:line-through}}
-.era{{font-size:.78rem;font-weight:800;letter-spacing:.12em;color:var(--muted);
-     border-bottom:1px solid var(--border);padding:1.8rem 0 .5rem;margin-bottom:.7rem}}
+.era{{font-size:.82rem;font-weight:800;letter-spacing:.12em;color:var(--muted2);
+     border-bottom:1px solid var(--border);padding:3.4rem 0 .6rem;margin-bottom:1rem}}
+.era:first-of-type{{padding-top:1rem}}
 .it,.screen{{display:grid;grid-template-columns:22px 104px 1fr auto;gap:.3rem .8rem;align-items:baseline;
      padding:.5rem .8rem;border-left:3px solid var(--c);border-radius:7px;margin-bottom:.3rem;background:var(--surface)}}
 .screen{{background:transparent;border-left-style:dashed;opacity:.62}}
@@ -575,11 +611,12 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 .note{{grid-column:3/-1;color:var(--muted);font-size:.72rem;font-style:italic;margin-top:.1rem}}
 .vo{{font-size:.58rem;font-weight:800;letter-spacing:.06em;padding:.05rem .32rem;border-radius:4px;
     background:rgba(148,163,184,.16);color:#94a3b8;margin-left:.4rem;vertical-align:2px}}
+.ckx{{width:18px;flex-shrink:0}}
 .hide{{display:none}}
 @media(max-width:640px){{
   .it{{grid-template-columns:22px 1fr auto}}
-  .screen{{grid-template-columns:1fr auto}}
-  .it .dt{{grid-column:2/-1}}
+  .screen{{grid-template-columns:22px 1fr auto}}
+  .it .dt,.screen .dt{{grid-column:2/-1}}
   .note{{grid-column:1/-1}}
 }}
 </style>
@@ -771,7 +808,7 @@ def main():
     log(f"Source    : {len(data)} lignes · {len(books)} œuvres · "
         f"{len(data)-len(books)} repères écran")
 
-    CACHE_VERSION = 3
+    CACHE_VERSION = 4
     cache = {}
     if os.path.exists(CACHE):
         try:
@@ -826,7 +863,8 @@ def main():
                      or fallback_kind(e["title"], e["span"]))
         e["kind"] = e["kind"] or ""
         e["fr"] = keep_fr(e["title"], c.get("fr", ""))
-        e["frOk"] = c.get("frOk")
+        # un titre traduit prouve à lui seul l'existence d'une VF
+        e["frOk"] = True if e["fr"] else c.get("frOk")
         stats[e["kind"] or "?"] = stats.get(e["kind"] or "?", 0) + 1
         if not e["kind"]:
             unknown.append(e["title"])
