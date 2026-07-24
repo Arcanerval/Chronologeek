@@ -918,7 +918,9 @@ def main():
                      or c.get("byText", "")
                      or fallback_kind(e["title"], e["span"]))
         e["kind"] = e["kind"] or ""
-        e["fr"] = keep_fr(e["title"], c.get("fr", ""))
+        wiki_fr = keep_fr(e["title"], c.get("fr", ""))
+        e["fr"], _forced = french_title(e, wiki_fr)
+        e["frOk"] = _forced if _forced is not None else c.get("frOk")
 
         stats[e["kind"] or "?"] = stats.get(e["kind"] or "?", 0) + 1
         if not e["kind"]:
