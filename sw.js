@@ -5,7 +5,7 @@ const CACHE = 'cg-app';
 const IMG_CACHE = 'cg-img';
 const PRECACHE = [
   '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html', '/whats-new.html', '/upcoming.html',
-  '/badges.js', '/pwa.js', '/manifest.json'
+  '/badges.js', '/pwa.js', '/anim.js', '/manifest.json'
 ];
 
 self.addEventListener('install', e => {
