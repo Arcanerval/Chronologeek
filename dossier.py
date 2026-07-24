@@ -12,7 +12,7 @@ Le type de média n'est jamais deviné : il vient des catégories de l'article.
 import os, re, json, html, datetime, difflib
 import requests
 from dossier_i18n import (SCREEN, SHOWS, NOTES, ERAS, INTRO_FR, INTRO_EN,
-                          SERIES_KIND, TITLE_KIND)
+                          SERIES_KIND, TITLE_KIND, FR_OVERRIDE_RAW, FR_PREFIX)
 
 TMDB_KEY = os.environ.get("TMDB_KEY", "")
 TMDB = "https://api.themoviedb.org/3"
@@ -511,6 +511,39 @@ def titlecase(t):
     return re.sub(r"([\u2019'])([a-zà-ÿ])", lambda m: m.group(1) + m.group(2).upper(), res)
 
 
+def _base_key(t):
+    """Titre sans année de série ni numérotation, pour apparier les corrections."""
+    t = re.sub(r'\s*\((?:19|20)\d\d\)', ' ', t or '')
+    t = re.sub(r'\s+\d+(\s*[-\u2013]\s*\d+)?\s*$', '', t)
+    return re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9]+', ' ', t.lower())).strip()
+
+
+FR_OVERRIDE = {_base_key(k): v for k, v in FR_OVERRIDE_RAW.items()}
+
+
+def align_numbering(en_title, fr_title):
+    """Reporte la numérotation du titre original sur le titre français."""
+    if not fr_title:
+        return fr_title
+    m = re.search(r'\s(\d+\s*[-\u2013]\s*\d+|\d+)\s*$', en_title)
+    fr_clean = re.sub(r'\s+\d+(\s*[-\u2013]\s*\d+)?\s*$', '', fr_title).rstrip()
+    return f"{fr_clean} {m.group(1)}" if m else fr_clean
+
+
+def french_title(e, wiki_fr):
+    """(titre français, existe en VF ?) — la table manuelle prime sur le wiki."""
+    key = _base_key(e["title"])
+    if key in FR_OVERRIDE:
+        val = FR_OVERRIDE[key]
+        if val is None:
+            return "", False                       # pas de version française
+        return align_numbering(e["title"], val), True
+    for en_pre, fr_pre in FR_PREFIX.items():
+        if e["title"].startswith(en_pre):
+            return fr_pre + e["title"][len(en_pre):], True
+    return align_numbering(e["title"], wiki_fr), (True if wiki_fr else None)
+
+
 def slug(e):
     base = f'{e["date"]}|{e["title"]}'
     out = re.sub(r'[^a-z0-9]+', '-', base.lower()).strip('-')
@@ -863,8 +896,7 @@ def main():
                      or fallback_kind(e["title"], e["span"]))
         e["kind"] = e["kind"] or ""
         e["fr"] = keep_fr(e["title"], c.get("fr", ""))
-        # un titre traduit prouve à lui seul l'existence d'une VF
-        e["frOk"] = True if e["fr"] else c.get("frOk")
+
         stats[e["kind"] or "?"] = stats.get(e["kind"] or "?", 0) + 1
         if not e["kind"]:
             unknown.append(e["title"])
