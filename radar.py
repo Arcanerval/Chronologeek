@@ -722,6 +722,7 @@ KIND_LABELS_EN = {
 _KIND_MATCH = (
     ("graphic", "comic"), ("comic", "comic"),
     ("jeu", "game"), ("game", "game"),
+    ("jeunesse", "novel"), ("middle grade", "novel"),
     ("roman", "novel"), ("novel", "novel"),
     ("young", "novel"), ("junior", "novel"),
     ("nouvelle", "short"), ("short", "book"),
@@ -735,9 +736,10 @@ _KIND_MATCH = (
 
 
 def kind_key(kind):
+    """Mot entier obligatoire : « jeu » ne doit pas matcher « jeunesse »."""
     k = (kind or "").lower()
     for token, key in _KIND_MATCH:
-        if token in k:
+        if re.search(r'\b' + re.escape(token) + r'\b', k):
             return key
     return "other"
 
