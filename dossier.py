@@ -553,6 +553,32 @@ def slug(e):
     return out
 
 
+def stats_block(data, lang):
+    """Compteurs du dossier : séries de comics regroupées, pas les fascicules."""
+    import collections
+    groups = collections.defaultdict(set)
+    for e in data:
+        if e["screen"] or not e["kind"]:
+            continue
+        base = re.sub(r'\s+\d+(\s*[-\u2013]\s*\d+)?\s*$', '', e["title"])
+        base = re.sub(r'\s*\((?:19|20)\d\d\)', '', base)
+        base = re.sub(r'\s*[:\u2013-]\s*[^:\u2013-]+$', '', base) if e["kind"] == "comic" else base
+        groups[e["kind"]].add(re.sub(r'\s+', ' ', base).strip().lower())
+    lab = {"comic": ("Séries de comics", "Comic series"),
+           "roman": ("Romans", "Novels"),
+           "jeunesse": ("Romans jeune adulte", "Young adult novels"),
+           "audio": ("Fictions audio", "Audio dramas")}
+    total = sum(1 for e in data if not e["screen"])
+    cells = [f'<div class="stat"><b>{total}</b><span>'
+             f'{"Œuvres au total" if lang == "fr" else "Entries in total"}</span></div>']
+    for k in ("comic", "roman", "jeunesse", "audio"):
+        n = len(groups.get(k, ()))
+        if n:
+            cells.append(f'<div class="stat"><b>{n}</b>'
+                         f'<span>{lab[k][0 if lang == "fr" else 1]}</span></div>')
+    return '<div class="stats">' + "".join(cells) + '</div>'
+
+
 def build_page(data, lang="fr"):
     fr = lang == "fr"
     kinds = {k: (v[0] if fr else v[1]) for k, v in KIND.items()}
@@ -611,6 +637,13 @@ TEMPLATE = """<!DOCTYPE html>
 h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#4d9fff,#7c6af7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
 .sub{{color:var(--muted2);font-size:.86rem;margin:.5rem 0 1.5rem;line-height:1.65}}
 .h1sub{{display:block;font-size:.92rem;font-weight:600;letter-spacing:.02em;-webkit-text-fill-color:var(--muted);margin-top:.15rem}}
+.stats{{display:flex;flex-wrap:wrap;gap:0;margin:1.5rem 0 1.6rem;border-top:1px solid var(--border);
+       border-bottom:1px solid var(--border);padding:1.1rem 0}}
+.stat{{flex:1 1 0;min-width:100px;padding:0 1rem}}
+.stat+.stat{{border-left:1px solid var(--border)}}
+.stat b{{display:block;font-size:2rem;font-weight:900;line-height:1;letter-spacing:-1px;color:var(--text);font-variant-numeric:tabular-nums}}
+.stat span{{display:block;margin-top:.45rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}}
+@media(max-width:640px){{.stats{{padding:.9rem 0;gap:.9rem 0}}.stat{{flex:1 1 44%;padding:0 .7rem}}.stat:nth-child(odd){{border-left:none}}.stat b{{font-size:1.5rem}}}}
 .chips{{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem}}
 .chip{{font:inherit;font-size:.78rem;font-weight:700;padding:.42rem .9rem;border-radius:20px;cursor:pointer;
       background:transparent;border:1px solid var(--border);color:var(--muted);transition:all .18s}}
@@ -671,6 +704,7 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 <div class="wrap">
 <h1>{h1}</h1>
 <p class="sub">{intro}</p>
+{stats}
 <div class="chips">{chips}</div>
 <div class="prog">
   <span class="pnum" id="pnum"></span>
@@ -960,6 +994,7 @@ def main():
         sh = site_shell(lang, ALT[lang]) or {"styles": "", "nav": "", "mmenu": "", "scripts": ""}
         page = TEMPLATE.format(
             lang=lang, title=title, desc=desc, h1=h1, intro=intro, chips=chips, rows=rows,
+            stats=stats_block(data, lang),
             siteStyles=sh["styles"], nav=sh["nav"], mmenu=sh["mmenu"],
             scripts=sh["scripts"], canon=CANON[lang],
             cnt=("%s œuvres affichées sur %t" if lang == "fr" else "%s of %t entries shown"),
