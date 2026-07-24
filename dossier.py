@@ -622,8 +622,13 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 .pbar{{flex:1;min-width:140px;height:7px;border-radius:6px;background:var(--border);overflow:hidden}}
 .pbar i{{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c6af7,#f06292);transition:width .3s}}
 .pnum{{font-size:.76rem;color:var(--muted2);font-variant-numeric:tabular-nums;white-space:nowrap}}
-.preset{{font:inherit;font-size:.7rem;padding:.3rem .7rem;border-radius:14px;cursor:pointer;
+.preset,.presume{{font:inherit;font-size:.7rem;padding:.3rem .7rem;border-radius:14px;cursor:pointer;
         background:transparent;border:1px solid var(--border2);color:var(--muted)}}
+.presume{{border-color:var(--accent);color:#a99cf9;font-weight:700}}
+.presume:hover{{background:rgba(124,106,247,.14);color:#fff}}
+.presume[disabled]{{opacity:.35;cursor:default;border-color:var(--border2);color:var(--muted)}}
+.it.flash{{animation:fl 1.6s ease-out}}
+@keyframes fl{{0%,40%{{box-shadow:0 0 0 2px var(--accent),0 0 22px rgba(124,106,247,.5)}}100%{{box-shadow:none}}}}
 .preset:hover{{border-color:#f06292;color:#f06292}}
 .ck{{width:18px;height:18px;flex-shrink:0;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
     border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;
@@ -664,6 +669,7 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
 <div class="prog">
   <span class="pnum" id="pnum"></span>
   <div class="pbar"><i id="pfill"></i></div>
+  <button class="presume" id="presume">▼ {resume}</button>
   <button class="preset" id="preset">{reset}</button>
 </div>
 <div class="count" id="count"></div>
@@ -697,6 +703,8 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
     document.getElementById('count').textContent='{cnt}'.replace('%s',shown).replace('%t',items.length);
     pnum.textContent='{pn}'.replace('%r',read).replace('%s',shown);
     pfill.style.width=(shown?Math.round(read/shown*100):0)+'%';
+    var pr=document.getElementById('presume');
+    if(pr) pr.disabled=(shown===0||read>=shown);
   }}
 
   items.forEach(function(el){{
@@ -712,6 +720,21 @@ h1{{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-grad
   }});
 
   chips.forEach(function(c){{ c.addEventListener('click',function(){{ c.classList.toggle('on'); refresh(); }}); }});
+  var presume=document.getElementById('presume');
+  presume.addEventListener('click',function(){{
+    var next=null;
+    for(var i=0;i<items.length;i++){{
+      var el=items[i];
+      if(el.classList.contains('hide')||el.classList.contains('read')) continue;
+      next=el; break;
+    }}
+    if(!next) return;
+    next.scrollIntoView({{behavior:'smooth',block:'center'}});
+    next.classList.remove('flash');
+    void next.offsetWidth;
+    next.classList.add('flash');
+  }});
+
   document.getElementById('preset').addEventListener('click',function(){{
     if(!confirm('{conf}')) return;
     done={{}}; save();
@@ -933,6 +956,7 @@ def main():
             scripts=sh["scripts"], canon=CANON[lang],
             cnt=("%s œuvres affichées sur %t" if lang == "fr" else "%s of %t entries shown"),
             reset=("Réinitialiser" if lang == "fr" else "Reset"),
+            resume=("Reprendre" if lang == "fr" else "Resume"),
             pn=("%r lu(s) sur %s" if lang == "fr" else "%r of %s read"),
             conf=("Réinitialiser ta progression ?" if lang == "fr"
                   else "Reset your progress?"))
