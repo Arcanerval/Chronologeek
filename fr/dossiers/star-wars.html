@@ -159,10 +159,16 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 .ckx{width:18px;flex-shrink:0}
 .hide{display:none}
 @media(max-width:640px){
-  .it{grid-template-columns:22px 1fr auto}
-  .screen{grid-template-columns:22px 1fr auto}
-  .it .dt,.screen .dt{grid-column:2/-1}
-  .note{grid-column:1/-1}
+  .it,.screen{grid-template-columns:22px 1fr;gap:.15rem .65rem;align-items:start;padding:.6rem .7rem}
+  .ck,.ckx{grid-column:1;grid-row:1;margin-top:.1rem}
+  .tt{grid-column:2;grid-row:1;font-size:.88rem}
+  .dt{grid-column:2;grid-row:2}
+  .kd{grid-column:2;grid-row:3;justify-self:start;white-space:normal}
+  .note{grid-column:2;grid-row:4}
+  .screen .tt{grid-row:1}
+  .prog{gap:.5rem}
+  .pnum{order:1;flex:1 0 100%}
+  .pbar{order:2}
 }
 </style>
 </head>
