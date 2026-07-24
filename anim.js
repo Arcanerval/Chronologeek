@@ -16,7 +16,7 @@
     'html.cg-cursor .fbt,html.cg-cursor .ck,html.cg-cursor .tab,html.cg-cursor .lang-btn,',
     'html.cg-cursor .ucard,html.cg-cursor .burger,html.cg-cursor [onclick],',
     'html.cg-cursor .preset,html.cg-cursor .presume{',
-    '  cursor:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4Ij48ZmlsdGVyIGlkPSJzIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMSIgc3RkRGV2aWF0aW9uPSIxLjIiIGZsb29kLWNvbG9yPSJyZ2JhKDI0MCw5OCwxNDYsLjkpIiBmbG9vZC1vcGFjaXR5PSIuODUiLz48L2ZpbHRlcj48cGF0aCBkPSJNNSAyLjUgTDUgMjEgTDkuNyAxNi42IEwxMi42IDIyLjQgTDE1LjQgMjEgTDEyLjUgMTUuNCBMMTkgMTUuNCBaIiBmaWxsPSIjZjA2MjkyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWx0ZXI9InVybCgjcykiLz48L3N2Zz4=") 5 2,pointer}',
+    '  cursor:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDMwIDMwIj48ZmlsdGVyIGlkPSJzIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMSIgc3RkRGV2aWF0aW9uPSIxLjEiIGZsb29kLWNvbG9yPSJyZ2JhKDI0MCw5OCwxNDYsLjkpIiBmbG9vZC1vcGFjaXR5PSIuOCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0xMS40IDMuMWMwLTEgLjgtMS44IDEuOC0xLjhzMS44LjggMS44IDEuOHY3LjRoLjZWOC42YzAtLjkuOC0xLjcgMS43LTEuN3MxLjcuOCAxLjcgMS43djIuM2guNlY5LjdjMC0uOS44LTEuNyAxLjctMS43czEuNy44IDEuNyAxLjd2MS41aC42YzEgMCAxLjguOCAxLjggMS44djMuNmMwIDQuMi0yLjkgNy42LTcgNy42aC0xLjljLTIuMSAwLTMuNi0uOS00LjgtMi41bC0zLjYtNC45Yy0uNi0uOC0uNC0xLjkuNC0yLjUuOC0uNiAxLjktLjQgMi41LjRsMS40IDEuOVYzLjF6IiBmaWxsPSIjZjA2MjkyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbHRlcj0idXJsKCNzKSIvPjwvc3ZnPg==") 12 2,pointer}',
     'html.cg-cursor input,html.cg-cursor textarea{cursor:text}',
     /* point rouge « en direct » */
     '.cg-live{display:inline-block;width:7px;height:7px;border-radius:50%;',
@@ -34,12 +34,10 @@
     '  box-shadow:0 0 16px rgba(124,106,247,.35)}',
     '.ucard:hover{box-shadow:0 12px 34px rgba(0,0,0,.45),0 0 22px rgba(124,106,247,.22)}',
 
-    /* apparition au défilement */
-    '.cg-anim .en,.cg-anim .it,.cg-anim .rd-card,.cg-anim .ucard{',
-    '  opacity:0;transform:translateY(10px);',
-    '  transition:opacity .5s ease,transform .5s ease}',
-    '.cg-anim .en.cg-in,.cg-anim .it.cg-in,.cg-anim .rd-card.cg-in,',
-    '.cg-anim .ucard.cg-in{opacity:1;transform:none}'
+    /* apparition : une animation qui ne laisse aucune trace après coup */
+    '.cg-anim .cg-wait{opacity:0}',
+    '.cg-play{animation:cgIn .5s ease}',
+    '@keyframes cgIn{from{opacity:0;transform:translateY(10px)}}'
   ].join('');
   document.head.appendChild(css);
 
@@ -58,40 +56,63 @@
   }
 
   /* ── apparition au défilement ──────────────────────────── */
+  var SEL = '.en,.it,.rd-card,.ucard';
+
+  function reveal(el, delay) {
+    el.classList.remove('cg-wait');
+    if (delay) el.style.animationDelay = delay + 'ms';
+    el.classList.add('cg-play');
+    el.addEventListener('animationend', function done() {
+      el.classList.remove('cg-play');       // l'élément retrouve son CSS d'origine
+      el.style.animationDelay = '';
+      el.removeEventListener('animationend', done);
+    });
+  }
+
   var io = null;
   if ('IntersectionObserver' in window) {
     document.documentElement.classList.add('cg-anim');
     io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('cg-in');
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) { reveal(e.target, 0); io.unobserve(e.target); }
       });
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.02 });
   }
+
+  var firstPass = true, staged = 0;
 
   function scan() {
     liveDot();
     if (!io) return;
     var vh = window.innerHeight || document.documentElement.clientHeight;
-    var els = document.querySelectorAll('.en:not(.cg-in),.it:not(.cg-in),' +
-                                        '.rd-card:not(.cg-in),.ucard:not(.cg-in)');
+    var els = document.querySelectorAll(SEL);
+    var found = 0;
     for (var i = 0; i < els.length; i++) {
       if (els[i].dataset.cgSeen) continue;
       els[i].dataset.cgSeen = '1';
       var r = els[i].getBoundingClientRect();
       if (r.top < vh && r.bottom > 0) {
-        els[i].classList.add('cg-in');   // déjà à l'écran : visible tout de suite
+        if (firstPass) {
+          els[i].classList.add('cg-wait');
+          (function (el, d) {
+            requestAnimationFrame(function () { reveal(el, d); });
+          })(els[i], Math.min(staged * 55, 480));
+          staged++;
+        }
+        found++;
       } else {
+        els[i].classList.add('cg-wait');
         io.observe(els[i]);
       }
     }
+    if (found) { firstPass = false; staged = 0; }
   }
 
   /* filet de sécurité : rien ne doit rester invisible */
   function revealAll() {
     document.documentElement.classList.remove('cg-anim');
+    var w = document.querySelectorAll('.cg-wait');
+    for (var i = 0; i < w.length; i++) w[i].classList.remove('cg-wait');
   }
 
   scan();
