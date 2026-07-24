@@ -10,13 +10,18 @@
   /* ── styles ────────────────────────────────────────────── */
   var css = document.createElement('style');
   css.textContent = [
-    /* halo qui suit la souris, très léger, derrière tout le contenu */
-    '#cg-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;',
-    '  transition:opacity .6s ease;',
-    '  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),',
-    '  rgba(124,106,247,.13),transparent 70%)}',
-    '#cg-glow.on{opacity:1}',
-
+    /* curseur personnalisé */
+    'html.cg-cursor,html.cg-cursor *{cursor:none !important}',
+    'html.cg-cursor input,html.cg-cursor textarea{cursor:text !important}',
+    '#cg-dot,#cg-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:99999;',
+    '  border-radius:50%;will-change:transform;opacity:0;transition:opacity .25s}',
+    '#cg-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:#f0f0ff}',
+    '#cg-ring{width:30px;height:30px;margin:-15px 0 0 -15px;border:1.5px solid rgba(124,106,247,.75);',
+    '  transition:opacity .25s,width .2s,height .2s,margin .2s,border-color .2s,background .2s}',
+    '#cg-dot.on,#cg-ring.on{opacity:1}',
+    '#cg-ring.hot{width:46px;height:46px;margin:-23px 0 0 -23px;',
+    '  border-color:rgba(240,98,146,.9);background:rgba(124,106,247,.12)}',
+    '#cg-ring.tap{width:20px;height:20px;margin:-10px 0 0 -10px}',
     /* point rouge « en direct » */
     '.cg-live{display:inline-block;width:7px;height:7px;border-radius:50%;',
     '  background:#ff4d5a;margin-right:.45rem;vertical-align:middle;',
@@ -42,28 +47,52 @@
   ].join('');
   document.head.appendChild(css);
 
-  /* ── halo qui suit la souris (ordinateur uniquement) ───── */
+  /* ── curseur personnalisé (ordinateur uniquement) ──────── */
   if (fine) {
-    var glow = document.createElement('div');
-    glow.id = 'cg-glow';
-    document.body.appendChild(glow);
-    var x = 0, y = 0, pending = false;
+    var dot = document.createElement('div'); dot.id = 'cg-dot';
+    var ring = document.createElement('div'); ring.id = 'cg-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    document.documentElement.classList.add('cg-cursor');
+
+    var mx = -100, my = -100, rx = -100, ry = -100, started = false;
     window.addEventListener('mousemove', function (e) {
-      x = e.clientX; y = e.clientY;
-      if (pending) return;
-      pending = true;
-      requestAnimationFrame(function () {
-        glow.style.setProperty('--mx', x + 'px');
-        glow.style.setProperty('--my', y + 'px');
-        glow.classList.add('on');
-        pending = false;
-      });
+      mx = e.clientX; my = e.clientY;
+      if (!started) {
+        started = true; rx = mx; ry = my;
+        dot.classList.add('on'); ring.classList.add('on');
+      }
     }, { passive: true });
+
+    (function loop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(loop);
+    })();
+
+    var HOT = 'a,button,.chip,.fbt,.ck,.tab,.lang-btn,.ucard,.burger,summary,' +
+              '.preset,.presume,input,select,[onclick],[role="button"]';
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.closest && e.target.closest(HOT)) ring.classList.add('hot');
+    });
+    document.addEventListener('mouseout', function (e) {
+      if (e.target.closest && e.target.closest(HOT)) ring.classList.remove('hot');
+    });
+    document.addEventListener('mousedown', function () { ring.classList.add('tap'); });
+    document.addEventListener('mouseup', function () { ring.classList.remove('tap'); });
+    document.addEventListener('mouseleave', function () {
+      dot.classList.remove('on'); ring.classList.remove('on');
+    });
+    document.addEventListener('mouseenter', function () {
+      if (started) { dot.classList.add('on'); ring.classList.add('on'); }
+    });
   }
 
   /* ── point rouge à côté de la progression ──────────────── */
   function liveDot() {
-    var targets = document.querySelectorAll('.pb-label,.pnum,.rd-note');
+    var targets = document.querySelectorAll('.pb-label,.pnum,.rd-note,#pbn-label');
     for (var i = 0; i < targets.length; i++) {
       var t = targets[i];
       if (t.querySelector('.cg-live')) continue;
