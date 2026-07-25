@@ -227,7 +227,6 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 #batsignal:hover .bat-hover{opacity:1}
 
 
-
 .leg{display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.78rem;color:var(--muted2)}
 .leg-title{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.3rem}
 .bfa{background:rgba(206,147,216,.14);color:#ce93d8;border:1px solid rgba(206,147,216,.28)}
@@ -245,7 +244,6 @@ html,body{overflow-x:clip}
 
 
 
-
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -255,7 +253,6 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
-
 
 /* ═══ Checkbox v4 : case visible ═══ */
 .en-top{align-items:center}
@@ -331,7 +328,6 @@ html,body{overflow-x:clip}
   <a href="/fr/a-venir" class="upc">À venir</a>
       <a href="/fr/nouveautes" class="news">Nouveautés</a>
 </div>
-
 
 <div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Remonter en haut">
   <img class="bat-normal" src="/images/batsignal.png" alt="Bat-Signal"/>
@@ -670,8 +666,28 @@ const DATA={
   ],
 };
 
-
 const detailCache={};
+/* == CG-RUNTIME START (genere par runtime.py) == */
+const RT={"av-arrow-s12": 1937, "av-arrow-s3e1-3": 129, "av-arrow-s3e4": 42, "av-arrow-s3e5": 43, "av-arrow-s3e6-7": 82, "av-arrow-s3e8": 41, "av-arrow-s3e9-23": 643, "av-arrow-s4e1": 42, "av-arrow-s4e11-17": 292, "av-arrow-s4e18-23": 247, "av-arrow-s4e2-4": 126, "av-arrow-s4e5": 42, "av-arrow-s4e6": 42, "av-arrow-s4e7": 42, "av-arrow-s4e8": 44, "av-arrow-s4e9-10": 84, "av-arrow-s5e1-7": 293, "av-arrow-s5e8": 42, "av-arrow-s5e9-23": 629, "av-arrow-s6e1-7": 294, "av-arrow-s6e8": 42, "av-arrow-s6e9-23": 630, "av-arrow-s7e1-8": 335, "av-arrow-s7e10-22": 544, "av-arrow-s7e9": 42, "av-arrow-s8e1-7": 294, "av-arrow-s8e8": 42, "av-arrow-s8e9-10": 85, "av-bl-s1e1-6": 258, "av-bl-s1e7-13": 296, "av-bl-s2e1-7": 301, "av-bl-s2e8-16": 384, "av-bl-s3e1-7": 300, "av-bl-s3e10-16": 299, "av-bl-s3e8": 43, "av-bl-s3e9": 43, "av-bl-s4": 557, "av-bw-s1e1-4": 168, "av-bw-s1e10-20": 462, "av-bw-s1e5-8": 168, "av-bw-s1e9": 42, "av-bw-s2": 771, "av-bw-s3": 552, "av-constantine": 551, "av-flash-s1e1-4": 167, "av-flash-s1e5": 41, "av-flash-s1e6-7": 82, "av-flash-s1e8": 41, "av-flash-s1e9-23": 618, "av-flash-s2e1-4": 164, "av-flash-s2e11-18": 325, "av-flash-s2e19-23": 206, "av-flash-s2e5-6": 81, "av-flash-s2e7": 41, "av-flash-s2e8": 42, "av-flash-s2e9-10": 82, "av-flash-s3e1-7": 294, "av-flash-s3e8": 41, "av-flash-s3e9-23": 628, "av-flash-s4e1-7": 291, "av-flash-s4e8": 42, "av-flash-s4e9-23": 627, "av-flash-s5e1-7": 292, "av-flash-s5e10-22": 544, "av-flash-s5e8-9": 84, "av-flash-s6e1-8": 336, "av-flash-s6e10-19": 419, "av-flash-s6e9": 42, "av-flash-s7": 755, "av-flash-s8e1-5": 214, "av-flash-s8e6-20": 641, "av-flash-s9": 555, "av-lot-s1": 660, "av-lot-s2e1-6": 252, "av-lot-s2e7": 42, "av-lot-s2e8-17": 419, "av-lot-s3e1-7": 294, "av-lot-s3e8": 42, "av-lot-s3e9-18": 420, "av-lot-s4e1-7": 294, "av-lot-s4e8-16": 377, "av-lot-s5e1": 42, "av-lot-s5e2-15": 588, "av-lot-s6": 629, "av-lot-s7": 539, "av-sg-s1e1-4": 172, "av-sg-s1e10-11": 84, "av-sg-s1e12-17": 252, "av-sg-s1e18": 43, "av-sg-s1e19-20": 84, "av-sg-s1e5-7": 126, "av-sg-s1e8-9": 84, "av-sg-s2e1-7": 294, "av-sg-s2e8": 43, "av-sg-s2e9-22": 588, "av-sg-s3e1-7": 294, "av-sg-s3e8": 42, "av-sg-s3e9-23": 630, "av-sg-s4e1-8": 336, "av-sg-s4e9-22": 589, "av-sg-s5e1-8": 336, "av-sg-s5e10-19": 420, "av-sg-s5e9": 42, "av-sg-s6": 843, "crisis-start": 0, "dc-batman89": 126, "dc-batmanbegins": 140, "dc-batmanreturns": 126, "dc-gotham": 4375, "dc-krypton-s1": 851, "dc-smallville": 9174, "dc-stargirl-s1": 576, "dc-stargirl-s2": 545, "dc-stargirl-s3": 542, "dc-supermanlois": 2300, "dc-supermanreturns": 154, "dc-tdk": 152, "dc-tdkr": 165, "dc-thebatman": 177, "dc-thepenguin": 467, "dc-titans-s1": 505, "dc-titans-s2": 599, "dc-titans-s3": 609, "dc-titans-s4": 595, "dceu-aquaman": 143, "dceu-aquaman2": 124, "dceu-blackadam": 125, "dceu-bluebeetle": 128, "dceu-bop": 109, "dceu-bvs": 152, "dceu-jl": 242, "dceu-mos": 143, "dceu-peacemaker": 349, "dceu-peacemaker-sc": 349, "dceu-shazam": 132, "dceu-shazam2": 130, "dceu-ss": 122, "dceu-theflash": 144, "dceu-tss": 132, "dceu-tss-sc": 132, "dceu-ww": 141, "dceu-ww84": 151, "dcu-cc": 165, "dcu-peacemaker2": 339, "dcu-supergirl": 108, "dcu-superman": 130};
+function cgFmtTime(m){
+  const h=Math.floor(m/60),mn=m%60;
+  if(h===0)return mn+' min';
+  if(h<10&&mn)return h+' h '+String(mn).padStart(2,'0');
+  return h+' h';
+}
+function cgTimeLeft(){
+  let left=0,unknown=0;
+  document.querySelectorAll('#tl-content .en[data-id]').forEach(el=>{
+    if(el.classList.contains('done'))return;
+    const v=RT[el.dataset.id];
+    if(v==null){unknown++;return;}
+    left+=v;
+  });
+  const t=left<=0 ? ' · <strong>terminé</strong>'
+                  : ' · <strong>'+cgFmtTime(left)+'</strong> de visionnage restant';
+  return unknown?t+'<span title="durée inconnue pour certaines entrées" style="opacity:.5"> *</span>':t;
+}
+/* == CG-RUNTIME END == */
 function getP(){try{return JSON.parse(localStorage.getItem('cg_dc')||'{}')}catch{return{}}}
 function saveP(o){localStorage.setItem('cg_dc',JSON.stringify(o))}
 
@@ -708,7 +724,7 @@ function renderProgress(){
   const pct=total?Math.round(done/total*100):0;
   const grad='linear-gradient(90deg,#1e90ff,var(--accent2))';
   const pb=document.getElementById('pb-fill');if(pb)pb.style.cssText='width:'+pct+'%;background:'+grad;
-  const pc=document.getElementById('pb-counts');if(pc)pc.innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>';
+  const pc=document.getElementById('pb-counts');if(pc)pc.innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>'+cgTimeLeft();
   const pbn=document.getElementById('pbn');
   if(pbn){pbn.classList.toggle('show',total>0);document.getElementById('pbn-label').textContent=done+'/'+total;document.getElementById('pbn-fill').style.cssText='width:'+pct+'%;background:'+grad}
 }
@@ -951,7 +967,6 @@ if(legEl){
 
 loadPosters();
 renderProgress();
-
 
 function cgResume(){
   var els=document.querySelectorAll('.en');
