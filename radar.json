@@ -1,20 +1,5 @@
 [
  {
-  "universe": "avatar",
-  "title": "Avatar Aang: The Last Airbender",
-  "date_sort": "2026-07-24",
-  "date_txt": "24/07/2026",
-  "kind": "Film",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Avatar Aang, the world's last Airbender, learns of an ancient power that could save his culture from extinction. With the help of his friends, he embarks on a global quest to find it before it falls into the wrong hands and threatens to upend the peace they sacrificed everything to achieve.",
-  "wiki": "",
-  "syn_fr": "Les aventures du successeur du dernier Avatar qui doit empêcher la nation du Feu d’asservir les nations de la Terre, de l’Eau et de l’Air...",
-  "kindKey": "film",
-  "title_fr": "La Légende de Aang - le dernier maître de l'air"
- },
- {
   "universe": "marvel",
   "title": "Spider-Man: Brand New Day",
   "date_sort": "2026-07-28",
@@ -293,7 +278,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "Smugglers and Scoundrels: The Race for Jabba's Bounty is the first entry in Star Wars: Smugglers and Scoundrels, a line of canon graphic novels published by Mad Cave Studios. Written by Cavan Scott and illustrated by Christian Colbert, it will be released on October 6, 2026.",
+  "syn": "Smugglers and Scoundrels: The Race for Jabba's Bounty is the first entry in Star Wars: Smugglers and Scoundrels, a line of canon graphic novels published by Mad Cave Studios. Originally announced for a September 13, 2026 release, it will be written by Cavan Scott and illustrated by Christian Colbert, and will be released on October 6.",
   "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
   "syn_fr": "Smugglers and Scoundrels: The Race for Jabba's Bounty est une bande dessinée one-shot écrite par Cavan Scott.",
   "kindKey": "comic",
@@ -480,6 +465,21 @@
   "title_fr": ""
  },
  {
+  "universe": "avatar",
+  "title": "Avatar Aang: The Last Airbender: A Novel Based on the Animated Film on Paramount+",
+  "date_sort": "2026-11-10",
+  "date_txt": "10/11/2026",
+  "kind": "Adult Novel Release Date: November 10, 2026",
+  "source": "Avatar Almanac",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "novel",
+  "title_fr": ""
+ },
+ {
   "universe": "marvel",
   "title": "Avengers: Doomsday",
   "date_sort": "2026-12-16",
@@ -518,7 +518,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "Tales from the Outer Rim: The Legend of Beggar's Canyon is the first entry in Star Wars: Tales from the Outer Rim, a line of canon graphic novels published by Mad Cave Studios. Written by Greg Pak and illustrated by Brent Schoonover, it will be released on January 26, 2027, though it was originally solicited for October 13, 2026.",
+  "syn": "Tales from the Outer Rim: The Legend of Beggar's Canyon is the first entry in Star Wars: Tales from the Outer Rim, a line of canon graphic novels published by Mad Cave Studios. Written by Greg Pak and illustrated by Brent Schoonover, it will be released on March 9, 2027, though it was originally solicited for October 13, 2026 and later pushed to January 26, 2027.",
   "wiki": "Tales from the Outer Rim: The Legend of Beggar's Canyon",
   "syn_fr": "Tales from the Outer Rim: The Legend of Beggar's Canyon est une bande dessinée one-shot écrite par Greg Pak.",
   "kindKey": "comic",
