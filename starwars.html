@@ -239,6 +239,9 @@ html,body{overflow-x:clip}
   #grogu{width:60px;height:60px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
 }
 
+
+
+
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -248,6 +251,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
 
 /* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
 .checkmark{width:20px;height:20px;min-width:20px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
@@ -291,6 +295,7 @@ html,body{overflow-x:clip}
 }
 </style>
   <link rel="stylesheet" href="/progress.css"/>
+  <link rel="stylesheet" href="/intro.css"/>
 </head>
 <body data-universe="sw">
 <header>
@@ -353,7 +358,7 @@ html,body{overflow-x:clip}
   description:"Movies · TV Shows · Animation · Video Games",
   color:"#4d9fff",glow:"rgba(77,159,255,.35)",
   tmdb_banner:{type:"tv",id:"82856"},
-  notes:`Some things are missing, but they're <strong>not important for understanding the saga</strong> (<strong>The Acolyte, some episodes of The Clone Wars, Resistance, the kids' animated shows… and of course all the mobile games, novels and comics</strong>)<br><br><strong>Why these cuts?</strong><br><strong>The Acolyte</strong> — the show was canceled, so until another media picks up its story, there's no point in watching it.<br><strong>The skipped Clone Wars episodes</strong> — they're filler episodes centered on Jar Jar or C-3PO/R2-D2 that add nothing to the story.<br><strong>Tales of the Underworld (Cad Bane episodes)</strong> — I don't find them interesting, but if you're a true fan of the character, watch them whenever you want: his youth takes place before Episode I.<br><strong>Resistance</strong> — a fairly childish animated show, packed with fillers, that adds very little to the saga as a whole.<br><br>Year 0 of the calendar is the Battle of Yavin (Star Wars Episode IV), so <strong>BBY</strong> = Before the Battle of Yavin / <strong>ABY</strong> = After the Battle of Yavin<br><br>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such<br><br>If you don't want to play the games, search <em>"GAME NAME full movie"</em> on YouTube or click the link in the media's description`,
+  notes:`<p class="intro-lead">If you're here, it's because you want to explore the entire Star Wars cinematic universe in its most optimized order, thought through and studied over years. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><p class="intro-lead">If you're still not satisfied after all that, I recommend the Star Wars comics and novels Dossier on this same site.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works for first-time watches as well as rewatches.</span></div><div class="keys-title">How to read this</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>The calendar</div><p>Year 0 of the calendar is the Battle of Yavin (Star Wars Episode IV), so <strong>BBY</strong> = Before the Battle of Yavin / <strong>ABY</strong> = After the Battle of Yavin.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Flashbacks</div><p>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/></svg>The video games</div><p>If the video games' stories interest you (all of them are very interesting except Squadrons and Outlaws, which are more forgettable) but you don't want to play them, there's a link in each game's description to watch a summary of the story on YouTube.</p></div></div><details class="cuts"><summary>What's left out, and why<span class="n">7 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Some media is intentionally left out, and the explanations are below:</p><dl class="cuts-list"><div class="cut"><dt>The Acolyte</dt><dd>The show was canceled, so until another media picks up its story, there's no point in watching it.</dd></div><div class="cut"><dt>The skipped Clone Wars episodes</dt><dd>They're filler episodes centered on Jar Jar or C-3PO/R2-D2 that add nothing to the story; you'll sometimes get a recap at the start of the next episode.</dd></div><div class="cut"><dt>Tales of the Underworld (the Cad Bane episodes)</dt><dd>Only watch them if you're a true fan of the character, and watch them whenever you want: his youth takes place before Episode I but doesn't add much.</dd></div><div class="cut"><dt>Resistance</dt><dd>A fairly childish animated show, packed with fillers, that adds very little to the saga as a whole.</dd></div><div class="cut"><dt>Kids' shows</dt><dd>Only watch them if you're under 10.</dd></div><div class="cut"><dt>Mobile games</dt><dd>No longer available, no solo campaign, nothing added to the story, not interesting…</dd></div><div class="cut"><dt>Comics and novels</dt><dd>Find them in the dedicated Dossier — the timeline here is already long enough.</dd></div></dl></div></details>`,
   eras:[
     {title:"THE REPUBLIC ERA",entries:[
       {id:"sw-ep1",type:"film",tmdb:"1893",media:"movie",img:"/images/starwars1.webp",title:"Episode I: The Phantom Menace",date:"32 BBY",faq:{quand:"The movie takes place in 32 BBY during the age of the Republic",pourquoi:"Because the movie lays the foundations of the saga, and you need to see it first for context on the characters"}},
@@ -454,11 +459,6 @@ const BADGES={
   jeu:['bj','VIDEO GAME']
 };
 const BADGE_LABELS={film:'Movies',filmanim:'Animated movies',serie:'TV shows',anime:'Animated shows',jeu:'Games'};
-
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"sw-ahsoka": 375, "sw-andors1": 582, "sw-andors2-1": 329, "sw-andors2-2": 156, "sw-andors2-3": 145, "sw-bb1": 512, "sw-bb2": 885, "sw-bf2-c1": 180, "sw-bf2-c2": 150, "sw-bf2-m12": 30, "sw-bf2-prologue": 30, "sw-bf2res": 90, "sw-boba": 347, "sw-ep1": 136, "sw-ep2": 142, "sw-ep3": 140, "sw-ep4": 121, "sw-ep5": 124, "sw-ep6": 132, "sw-ep7": 136, "sw-ep8": 152, "sw-ep9": 142, "sw-fo": 1200, "sw-kenobi": 280, "sw-mag": 132, "sw-mando-s1": 556, "sw-mando-s2b": 123, "sw-mando-s3": 362, "sw-maul": 260, "sw-outlaws": 2280, "sw-rebels-ep": 0, "sw-rebels-s1": 540, "sw-rebels-s2": 688, "sw-rebels-s3": 96, "sw-rebels-s4": 384, "sw-rogue": 133, "sw-skelcrew": 316, "sw-solo": 135, "sw-squadrons": 540, "sw-survivor": 1800, "sw-tcw-19": 628, "sw-tcw-20": 664, "sw-tcw-21": 801, "sw-tcw-22": 205, "sw-tcw-pre": 44, "sw-tcw-rsith": 114, "sw-tcwfilm": 98, "sw-toe1": 17, "sw-toe2": 15, "sw-toe3": 14, "sw-toe4": 17, "sw-toe5": 13, "sw-toe6": 17, "sw-toj1": 19, "sw-toj2": 16, "sw-toj3": 16, "sw-toj4": 18, "sw-toj5": 13, "sw-toj6": 17, "sw-totu1": 17, "sw-totu23": 34};
-window.RT=RT;
-/* == CG-RUNTIME END == */
 let currentData=null;
 const posterCache={},detailCache={};
 
@@ -734,6 +734,8 @@ function showUniverse(uid){
   window.scrollTo(0,0);loadPosters();
 }
 showUniverse('sw');
+
+
 
 function cgResume(){
   var els=document.querySelectorAll('.en');

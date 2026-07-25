@@ -239,6 +239,9 @@ html,body{overflow-x:clip}
   .nav-sp,.nav-maj,  #miss-minute{width:52px;height:52px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
 }
 
+
+
+
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -248,6 +251,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
 
 /* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
 .checkmark{width:20px;height:20px;min-width:20px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
@@ -291,6 +295,7 @@ html,body{overflow-x:clip}
 }
 </style>
   <link rel="stylesheet" href="/progress.css"/>
+  <link rel="stylesheet" href="/intro.css"/>
 </head>
 <body data-universe="mcu">
 <header>
@@ -354,7 +359,7 @@ const DATA_MCU={
   description:"Movies · TV Shows · Spider-Verse · Fox",
   color:"#e23636",glow:"rgba(226,54,54,.3)",
   tmdb_banner:{type:"movie",id:"299534"},
-  notes:`If you're here, it's because you want to watch the Marvel Cinematic Universe in its most optimized order — a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.<br><br>Some things are missing, but they're <strong>not at all important</strong> for understanding (<strong>the old Punisher movies, the Blade trilogy, Daredevil and Elektra, The New Mutants and the X-Men shows, the old Fantastic Four, Spider-Noir, I Am Groot, the SSU movies besides Venom, plenty of cartoons with no direct connection, the prelude comics…</strong>)<br><br><strong>Why these cuts?</strong><br><strong>The old Punisher movies</strong> — the show is way better.<br><strong>The Blade trilogy and Daredevil/Elektra</strong> — just remember who plays the main characters; beyond that, they add nothing.<br><strong>The New Mutants</strong> — although part of the X-Men universe, the movie references none of the other films and tells its own story.<br><strong>The X-Men shows</strong> — they were never confirmed as canon to the X-Men universe.<br><strong>The old Fantastic Four movies</strong> — just remember who plays the main characters; beyond that, they add nothing.<br><strong>Spider-Noir</strong> — the show takes place in its own reality, with no ties to the multiverse whatsoever. But it's good.<br><strong>I Am Groot</strong> — a string of pointless comedy shorts.<br><strong>The SSU (besides Venom)</strong> — a universe of bad movies with more than questionable connections.<br><br>The universe's main chronology takes place on <strong>Earth-616</strong> (sometimes also called Earth-199999). If nothing is specified, it takes place in the main timeline.<br><br>Two shows fall under the <strong>"Canonicity not confirmed"</strong> category and have therefore never been officially declared part of Earth-616's main timeline by Marvel Studios. I only recommend <strong>Agent Carter</strong> and <strong>Agents of S.H.I.E.L.D.</strong> (<strong>Cloak & Dagger, Inhumans, The Runaways</strong> are in the same situation but nothing really important happens in them). <strong>Every</strong> existing Marvel audiovisual production is part of the global multiverse anyway, so you can skip the shows if you want (but they're cool — they add a lot of lore and contradict nothing in the official canon).<br><br>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.<br><br>When watching in chronological order, some post-credits scenes spoil later elements, so I indicate when you should <strong>not</strong> watch them at that point, and also when you should.`,
+  notes:`<p class="intro-lead">If you're here, it's because you want to watch the Marvel Cinematic Universe in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works for first-time watches as well as rewatches.</span></div><div class="keys-title">How to read this</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>The main Earth</div><p>The universe's main chronology takes place on <strong>Earth-616</strong> (sometimes also called Earth-199999). If nothing is specified, it takes place on the main Earth.</p></div><div class="key wide"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>Canonicity not confirmed</div><p>Two shows fall under the <strong>"Canonicity not confirmed"</strong> category and have therefore never been officially declared part of Earth-616's main timeline by Marvel Studios (Netflix's Defenders shows were no longer canon before becoming canon again). This guide still includes <strong>Agent Carter</strong> and <strong>Agents of S.H.I.E.L.D.</strong> (<strong>Cloak &amp; Dagger, Inhumans, The Runaways</strong> are in the same situation but nothing really important happens in them). <strong>Every</strong> existing Marvel audiovisual production is part of the global multiverse anyway, so you can skip them if you want (but they're cool — they add a lot of lore and contradict nothing in the official canon).</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Flashbacks</div><p>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 20V4M17 20V4M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>Post-credits scenes</div><p>When watching in chronological order, some post-credits scenes spoil later elements, so I indicate when you should <strong>not</strong> watch them at that point, and also when you should.</p></div></div><details class="cuts"><summary>What's left out, and why<span class="n">10 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Some media is intentionally left out, and the explanations are below:</p><dl class="cuts-list"><div class="cut"><dt>The old Punisher movies</dt><dd>No ties to the rest of the MCU, and the show is way better.</dd></div><div class="cut"><dt>The Blade trilogy and Daredevil/Elektra</dt><dd>Just remember who plays the main characters; beyond that, they add nothing.</dd></div><div class="cut"><dt>The New Mutants</dt><dd>Although part of the X-Men universe, the movie references none of the others and tells its own story.</dd></div><div class="cut"><dt>The X-Men shows</dt><dd>They were never confirmed as canon to the X-Men universe.</dd></div><div class="cut"><dt>The old Fantastic Four movies</dt><dd>Just remember who plays the main characters; beyond that, they add nothing.</dd></div><div class="cut"><dt>Spider-Noir</dt><dd>The show takes place in its own reality, with no ties to the multiverse whatsoever. But it's really good — watch it after the Spider-Verse movies if you want, to get to know the characters.</dd></div><div class="cut"><dt>I Am Groot</dt><dd>A string of comedy shorts with no developed story; you can watch only the 1st episode, which bridges Guardians of the Galaxy 1 and 2.</dd></div><div class="cut"><dt>The SSU (besides Venom)</dt><dd>A universe of mediocre movies with more than questionable connections (even Venom might leave the guide one day).</dd></div><div class="cut"><dt>Cartoons with no ties (X-Men '92, X-Men '97, Spider-Man '94, Marvel Rising, M.O.D.O.K, Hit-Monkey, Moon Girl and Devil Dinosaur…)</dt><dd>No ties, but they are part of the Multiverse.</dd></div><div class="cut"><dt>Prelude comics</dt><dd>Canon until a movie contradicts them.</dd></div></dl></div></details>`,
   eras:[
     {title:"PHASE I — The Infinity Saga",entries:[
       {id:"mcu-cap1",img:"/images/captain-america-first-avenger-2011.webp",type:"film",level:"must",tmdb:"1771",media:"movie",title:"Captain America: The First Avenger",date:"1942–1945",tags:["flashback"],note:"Don't watch the post-credits scene.",faq:{quand:"Aside from the prologue and epilogue, which take place in 2011 and set up Avengers, the entire movie is a flashback spanning 1942 to 1945",comment:"The movie takes place in the main timeline",pourquoi:"Because it's the first movie in chronological order, and it introduces very important characters and elements",postcredits:"The movie has a single post-credits scene that serves as a teaser for Avengers — there's no point in watching it"}},
@@ -513,11 +518,6 @@ const BADGE_LABELS={
   film:'Movies',filmanim:'Animated movies',serie:'TV shows',
   anime:'Animated shows',jeu:'Games',special:'Specials',video:'Videos'
 };
-
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"mcu-ac-os": 15, "mcu-ac-serie": 777, "mcu-agatha": 379, "mcu-antman1": 117, "mcu-antman2": 119, "mcu-antman2pc": 0, "mcu-antman3": 125, "mcu-aos-s1a": 303, "mcu-aos-s1b": 346, "mcu-aos-s1c": 303, "mcu-aos-s2a": 822, "mcu-aos-s2b": 132, "mcu-aos-s3a": 782, "mcu-aos-s3b": 172, "mcu-aos-s4": 960, "mcu-aos-s5a": 570, "mcu-aos-s5b": 218, "mcu-aos-s5c": 175, "mcu-aos-s6": 576, "mcu-aos-s7": 573, "mcu-aou": 141, "mcu-atsv": 140, "mcu-av1": 143, "mcu-bp1": 135, "mcu-bp2": 162, "mcu-bw": 134, "mcu-bwpc": 0, "mcu-cabf": 119, "mcu-cap1": 124, "mcu-cap2": 136, "mcu-cm": 124, "mcu-cmpc": 0, "mcu-consultant": 4, "mcu-cw": 147, "mcu-dba1": 455, "mcu-dba2": 413, "mcu-dd1": 712, "mcu-dd2": 712, "mcu-dd3": 676, "mcu-defenders": 394, "mcu-dofp": 132, "mcu-dp1": 108, "mcu-dp2": 120, "mcu-dpw": 128, "mcu-ds1": 115, "mcu-echo": 213, "mcu-eg": 181, "mcu-eow": 125, "mcu-eternals": 156, "mcu-fatws": 330, "mcu-ff": 115, "mcu-gotg1": 121, "mcu-gotg2": 137, "mcu-gotg3": 150, "mcu-gotgxmas": 45, "mcu-hawkeye": 297, "mcu-hulk": 114, "mcu-if1": 726, "mcu-if2": 526, "mcu-im1": 126, "mcu-im2": 124, "mcu-im3": 130, "mcu-ironheart": 305, "mcu-item47": 12, "mcu-itsv": 117, "mcu-iw": 149, "mcu-jj1": 698, "mcu-jj2": 673, "mcu-jj3": 659, "mcu-lc1": 704, "mcu-lc2": 763, "mcu-logan": 137, "mcu-loki1": 302, "mcu-loki2": 313, "mcu-marvels": 105, "mcu-marvelspc": 0, "mcu-mk": 302, "mcu-mm": 289, "mcu-mom": 126, "mcu-mz": 137, "mcu-nwh": 148, "mcu-pun-olk": 51, "mcu-pun1": 699, "mcu-pun2": 685, "mcu-roi": 14, "mcu-sc": 132, "mcu-shehulk": 309, "mcu-si": 262, "mcu-sm1": 133, "mcu-smffh": 129, "mcu-smr1": 121, "mcu-smr2": 127, "mcu-smr3": 139, "mcu-tasm1": 136, "mcu-tasm2": 141, "mcu-tb": 127, "mcu-tb-pc2": 0, "mcu-thor1": 115, "mcu-thor2": 112, "mcu-thor3": 131, "mcu-thor3pc": 0, "mcu-thor4": 119, "mcu-twolv": 126, "mcu-venom1": 112, "mcu-venom2": 97, "mcu-venom3": 109, "mcu-vfsm": 317, "mcu-wi1": 323, "mcu-wi2": 289, "mcu-wi3": 253, "mcu-wm": 267, "mcu-wv": 363, "mcu-wwbn": 55, "mcu-xdp": 114, "mcu-xfc": 132, "mcu-xm1": 104, "mcu-xm2": 133, "mcu-xm3": 104, "mcu-xma": 144, "mcu-xow": 107};
-window.RT=RT;
-/* == CG-RUNTIME END == */
 let currentData=null;
 let activeFilters=new Set(['film','filmanim','serie','anime','jeu','special','video','must','important','bonus']);
 let showNC=true;
@@ -705,7 +705,7 @@ function buildEntry(e,showLevel,inSeg){
   if(e.subitems&&e.subitems.length)sub='<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>';
   const note=e.note?'<div class="enote">'+e.note+'</div>':'';
   const details=e.details?'<div class="edetails">'+e.details+'</div>':'';
-  return '<div class="en '+levelClass+devClass+ncClass+(isDone?' done':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+e.level+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'" data-nc="'+(isNC?'1':'0')+'"'+seasonAttr+'>'
+  return '<div class="en '+levelClass+devClass+ncClass+(isDone?' done':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+e.level+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'" data-nc="'+(isNC?'1':'0')+'"'+' data-def="'+(DEFENDERS.has(e.id)?'1':'0')+'"'+seasonAttr+'>'
     +'<div class="en-top" onclick="toggleExpand(this.closest(\'.en\'),event)">'
     +'<div class="en-check" onclick="toggleEntry(\''+e.id+'\',event)"><div class="checkmark">'+(isDone?'✓':'')+'</div></div>'
     +'<div class="en-datebadge"><div class="en-level-icon">'+levelIcon+'</div><div class="date-main">'+(e.date||'—')+'</div>'+dimBadge+'</div>'
@@ -716,6 +716,10 @@ function buildEntry(e,showLevel,inSeg){
 }
 
 // Filtrage avancé
+// Series Defenders (Netflix + Born Again) : regroupees pour pouvoir
+// les decocher d'un bloc dans les filtres.
+const DEFENDERS=new Set(["mcu-dd1", "mcu-dd2", "mcu-dd3", "mcu-dba1", "mcu-dba2", "mcu-pun1", "mcu-pun2", "mcu-pun-olk", "mcu-jj1", "mcu-jj2", "mcu-jj3", "mcu-lc1", "mcu-lc2", "mcu-if1", "mcu-if2", "mcu-defenders"]);
+
 function applyFilters(){
   const showTypes=new Set();
   document.querySelectorAll('.type-filter-btn.active').forEach(b=>showTypes.add(b.dataset.type));
@@ -723,6 +727,8 @@ function applyFilters(){
   const showImp=document.getElementById('lvl-imp').classList.contains('active');
   const showBonus=document.getElementById('lvl-bonus').classList.contains('active');
   const hideNC=!document.getElementById('btn-nc').classList.contains('active');
+  const defBtn=document.getElementById('btn-def');
+  const hideDef=!!defBtn&&!defBtn.classList.contains('active');
 
   document.querySelectorAll('#tl-content .en').forEach(e=>{
     const type=e.dataset.type;
@@ -731,7 +737,8 @@ function applyFilters(){
     const typeOK=showTypes.has(type)||showTypes.size===0;
     const levelOK=(level==='must'&&showMust)||(level==='important'&&showImp)||(level==='bonus'&&showBonus);
     const ncOK=!(hideNC&&nc);
-    e.style.display=(typeOK&&levelOK&&ncOK)?'':'none';
+    const defOK=!(hideDef&&e.dataset.def==='1');
+    e.style.display=(typeOK&&levelOK&&ncOK&&defOK)?'':'none';
   });
   document.querySelectorAll('#tl-content .era-node').forEach(h=>{
     let n=h.nextElementSibling,vis=false;
@@ -788,11 +795,12 @@ function buildTimeline(data){
   });
   f+='</div>';
   if(showLevel){
-    f+='<div class="filter-group"><span class="filter-label">Niveau :</span>';
+    f+='<div class="filter-group"><span class="filter-label">Level:</span>';
     f+='<button class="fbt active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Essential</button>';
     f+='<button class="fbt active" id="lvl-imp" onclick="toggleLevelFilter(this)">🚨 Important</button>';
     f+='<button class="fbt active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Optional</button>';
     if(hasNC){f+='<button class="fbt active" id="btn-nc" onclick="toggleNCFilter(this)">Canonicity not confirmed</button>';}
+    if(data.eras.some(era=>era.entries.some(e=>DEFENDERS.has(e.id)))){f+='<button class="fbt active" id="btn-def" onclick="toggleNCFilter(this)">Defenders series</button>';}
     f+='</div>';
   }
   document.getElementById('filter-bar').innerHTML=f;
@@ -817,6 +825,8 @@ function buildTimeline(data){
   document.getElementById('tl-content').innerHTML=html;
 }
 
+
+
 function showHome(){window.location.href='/';}
 function showUniverse(uid){
   const u=UNIVERSES.find(x=>x.data&&x.data.id===uid);
@@ -832,6 +842,9 @@ function showUniverse(uid){
   window.scrollTo(0,0);loadPosters();
 }
 function showCS(){window.location.href='/';}
+
+
+
 
 function cgResume(){
   var els=document.querySelectorAll('.en');
@@ -852,6 +865,7 @@ window.addEventListener('scroll',cgTopBtn,{passive:true});
 document.addEventListener('scroll',cgTopBtn,{passive:true,capture:true});
 setInterval(cgTopBtn,800);
 showUniverse('mcu');
+
 
 window.addEventListener('scroll',()=>{
   const mm=document.getElementById('miss-minute');

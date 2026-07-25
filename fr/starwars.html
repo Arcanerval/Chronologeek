@@ -239,6 +239,9 @@ html,body{overflow-x:clip}
   #grogu{width:60px;height:60px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
 }
 
+
+
+
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -248,6 +251,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
 
 /* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
 .checkmark{width:20px;height:20px;min-width:20px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
@@ -291,6 +295,7 @@ html,body{overflow-x:clip}
 }
 </style>
   <link rel="stylesheet" href="/progress.css"/>
+  <link rel="stylesheet" href="/intro.css"/>
 </head>
 <body data-universe="sw">
 <header>
@@ -353,7 +358,7 @@ html,body{overflow-x:clip}
   description:"Films · Séries · Animés · Jeux vidéo",
   color:"#4d9fff",glow:"rgba(77,159,255,.35)",
   tmdb_banner:{type:"tv",id:"82856"},
-  notes:`Il manque des choses mais elles ne sont <strong>pas importantes pour la compréhension de la saga</strong> (<strong>The Acolyte, certains épisodes de The Clone Wars, Résistance, les séries d'animations pour enfants… et bien sûr tous les jeux mobiles, romans et comics</strong>)<br><br><strong>Pourquoi ces choix ?</strong><br><strong>The Acolyte</strong> — la série a été annulée, donc tant qu'aucun média n'en reprend la suite, la regarder ne sert à rien.<br><strong>Les épisodes écartés de The Clone Wars</strong> — ce sont des fillers centrés sur Jar Jar ou C-3PO/R2-D2 qui n'apportent rien à l'histoire.<br><strong>Tales of the Underworld (épisodes Cad Bane)</strong> — je ne les trouve pas intéressants, mais si vous êtes vraiment fan du personnage, regardez-les quand vous voulez : sa jeunesse se déroule avant l'Épisode I.<br><strong>Resistance</strong> — une série animée assez enfantine, remplie de fillers, qui n'apporte que très peu à l'ensemble de la saga.<br><br>L'an 0 du calendrier est la Bataille de Yavin (Star Wars Épisode IV) donc <strong>BBY</strong> = Before Battle of Yavin / <strong>ABY</strong> = After Battle of Yavin<br><br>Certains événements sont mieux à voir en tant que <strong>FLASHBACK</strong> pour comprendre et sont donc indiqués comme tel<br><br>Si vous ne voulez pas faire les jeux tapez <em>"NOM DU JEU film complet"</em> sur YouTube ou cliquez sur le lien dans la description du média`,
+  notes:`<p class="intro-lead">Si vous êtes ici c'est que vous souhaitez explorer tout l'univers cinématographique Star Wars dans son ordre le plus optimisé, réfléchis et étudié pendant des années, vous trouverez des détails supplémentaires en cliquant sur chaque média et tout ce site est garanti sans spoil majeur.</p><p class="intro-lead">Si après tout ça vous n'êtes pas rassasié je vous conseille le Dossier sur les comics et romans Star Wars sur ce même site.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ce guide marche pour les premiers visionnages ainsi que les revisionnages.</span></div><div class="keys-title">Repères de lecture</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>Le calendrier</div><p>L'an 0 du calendrier est la Bataille de Yavin (Star Wars Épisode IV) donc BBY = Before Battle of Yavin / ABY = After Battle of Yavin.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Les flashbacks</div><p>Certains événements sont mieux à voir en tant que FLASHBACK pour comprendre et sont donc indiqués comme tel.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/></svg>Les jeux vidéo</div><p>Si l'histoire des jeux vidéo (toutes très intéressantes sauf Squadrons et Outlaws plus oubliables) vous intéressent mais que vous ne souhaitez pas faire les jeux, vous avez un lien dans la description du jeu pour voir un condensé de l'histoire sur Youtube.</p></div></div><details class="cuts"><summary>Ce qui est écarté, et pourquoi<span class="n">7 entrées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Certains médias sont omis intentionnellement et les explications se trouvent ci-dessous :</p><dl class="cuts-list"><div class="cut"><dt>The Acolyte</dt><dd>La série a été annulée, donc tant qu'aucun média cinématographique n'en reprend la suite, la regarder ne sert à rien.</dd></div><div class="cut"><dt>Les épisodes écartés de The Clone Wars</dt><dd>Ce sont des fillers centrés sur Jar Jar ou C-3PO/R2-D2 qui n'apportent rien à l'histoire, vous aurez parfois un résumé au début de l'épisode suivant.</dd></div><div class="cut"><dt>Tales of the Underworld (les épisodes sur Cad Bane)</dt><dd>À regarder seulement si vous êtes vraiment fan du personnage, regardez les quand vous voulez, sa jeunesse se déroule avant l'Épisode I mais n'apporte pas grand chose.</dd></div><div class="cut"><dt>Resistance</dt><dd>Une série animée assez enfantine et plutôt moyenne, remplie de fillers, qui n'apporte que très peu à l'ensemble de la saga.</dd></div><div class="cut"><dt>Séries pour enfants</dt><dd>À regarder seulement si vous avez moins de 10 ans.</dd></div><div class="cut"><dt>Jeux mobiles</dt><dd>Plus disponibles, pas de campagne solo, aucuns apports à l'histoire, pas intéressants...</dd></div><div class="cut"><dt>Comics et romans</dt><dd>À retrouver dans le Dossier dédié, la timeline ici est déjà assez longue.</dd></div></dl></div></details>`,
   eras:[
     {title:"L'ÈRE DE LA RÉPUBLIQUE",entries:[
       {id:"sw-ep1",type:"film",tmdb:"1893",media:"movie",img:"/images/starwars1.webp",title:"Épisode I : La Menace Fantôme",date:"32 BBY",faq:{quand:"Le film se déroule en 32 BBY pendant l'âge de la République",pourquoi:"Parce que le film pose les fondations de la saga et qu'il faut d'abord le voir pour avoir du contexte sur les différents personnages"}},
@@ -454,11 +459,6 @@ const BADGES={
   jeu:['bj','JEU VIDÉO']
 };
 const BADGE_LABELS={film:'Films',filmanim:'Films animés',serie:'Séries',anime:'Séries animées',jeu:'Jeux'};
-
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"sw-ahsoka": 375, "sw-andors1": 582, "sw-andors2-1": 329, "sw-andors2-2": 156, "sw-andors2-3": 145, "sw-bb1": 512, "sw-bb2": 885, "sw-bf2-c1": 180, "sw-bf2-c2": 150, "sw-bf2-m12": 30, "sw-bf2-prologue": 30, "sw-bf2res": 90, "sw-boba": 347, "sw-ep1": 136, "sw-ep2": 142, "sw-ep3": 140, "sw-ep4": 121, "sw-ep5": 124, "sw-ep6": 132, "sw-ep7": 136, "sw-ep8": 152, "sw-ep9": 142, "sw-fo": 1200, "sw-kenobi": 280, "sw-mag": 132, "sw-mando-s1": 556, "sw-mando-s2b": 123, "sw-mando-s3": 362, "sw-maul": 260, "sw-outlaws": 2280, "sw-rebels-ep": 0, "sw-rebels-s1": 540, "sw-rebels-s2": 688, "sw-rebels-s3": 96, "sw-rebels-s4": 384, "sw-rogue": 133, "sw-skelcrew": 316, "sw-solo": 135, "sw-squadrons": 540, "sw-survivor": 1800, "sw-tcw-19": 628, "sw-tcw-20": 664, "sw-tcw-21": 801, "sw-tcw-22": 205, "sw-tcw-pre": 44, "sw-tcw-rsith": 114, "sw-tcwfilm": 98, "sw-toe1": 17, "sw-toe2": 15, "sw-toe3": 14, "sw-toe4": 17, "sw-toe5": 13, "sw-toe6": 17, "sw-toj1": 19, "sw-toj2": 16, "sw-toj3": 16, "sw-toj4": 18, "sw-toj5": 13, "sw-toj6": 17, "sw-totu1": 17, "sw-totu23": 34};
-window.RT=RT;
-/* == CG-RUNTIME END == */
 let currentData=null;
 const posterCache={},detailCache={};
 
@@ -734,6 +734,8 @@ function showUniverse(uid){
   window.scrollTo(0,0);loadPosters();
 }
 showUniverse('sw');
+
+
 
 function cgResume(){
   var els=document.querySelectorAll('.en');

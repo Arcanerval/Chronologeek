@@ -226,6 +226,8 @@ nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;he
 #batsignal:hover .bat-normal{opacity:0}
 #batsignal:hover .bat-hover{opacity:1}
 
+
+
 .leg{display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.78rem;color:var(--muted2)}
 .leg-title{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.3rem}
 .bfa{background:rgba(206,147,216,.14);color:#ce93d8;border:1px solid rgba(206,147,216,.28)}
@@ -241,6 +243,9 @@ html,body{overflow-x:clip}
   .nav-sp,.nav-maj,  #batsignal{width:68px;height:78px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
 }
 
+
+
+
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -250,6 +255,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
 
 /* ═══ Checkbox v4 : case visible ═══ */
 .en-top{align-items:center}
@@ -293,6 +299,7 @@ html,body{overflow-x:clip}
 }
 </style>
   <link rel="stylesheet" href="/progress.css"/>
+  <link rel="stylesheet" href="/intro.css"/>
 </head>
 <body data-universe="dc">
 <header>
@@ -326,6 +333,7 @@ html,body{overflow-x:clip}
   <a href="/upcoming" class="upc">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
 </div>
+
 
 <div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
   <img class="bat-normal" src="/images/batsignal.png" alt="Bat-Signal"/>
@@ -487,15 +495,7 @@ html,body{overflow-x:clip}
 </div>
 
 <script>
-const NOTES=`Fair warning: this section is a <strong>huge mess</strong>. Even though a lot of media has been cut, watching everything that's left still takes a lot — a LOT — of time. If you're only here for the Arrow-Verse, the DCEU or the DCU, you can skip straight to them below.<br><br>
-<strong>Fair question: how is this whole mess connected?</strong><br><br>
-This order favors a progressive discovery of the DC Multiverse. Several shows and movies take place in different realities but end up sharing connections. Watching everything in this order helps you understand the characters, references and events that tie these universes together, while preserving the major surprises.<br><br>
-Some things are missing, but they're <strong>not at all</strong> important for understanding the Multiverse's chronology and its key events (<strong>everything released before 1989, the Flash (1990) series, Lois &amp; Clark, Lucifer, Pennyworth, Wonder Woman (1976), Swamp-Thing, Doom Patrol, Powerless, the Birds of Prey show (2002), the Constantine movie (2005), the Watchmen movie and show, both Joker movies, the Green Lantern movie, the Catwoman movie, plenty of other lesser-known movies, almost every animated movie and cartoon, every comic, every video game…</strong>)<br><br>
-The universe's two main chronologies take place on <strong>Earth-Prime</strong> and <strong>Earth-1</strong>.<br><br>
-The term <strong>soft-canon</strong> refers to media whose events partly happened the same way — more info in the descriptions.<br><br>
-The DC Multiverse works in a peculiar way: two different characters can have the exact same face (examples: Flash's father (2014) and Flash (1990), Supergirl (1984) and Superman's mother (Smallville) but also Supergirl's adoptive mother (2015)).<br><br>
-Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.<br><br>
-`;
+const NOTES=`<p class="intro-lead">If you're here, it's because you want to discover the DC Multiverse, or watch one of its branches, in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works for first-time watches as well as rewatches.</span></div><p class="intro-note">Fair warning: this section is a <strong>huge mess</strong>. Even though a lot of media has been cut, watching everything that's left still takes a lot — a LOT — of time. If you're only here for the Arrow-Verse, the DCEU or the DCU, you can pick below by unchecking what you don't want to see.</p><div class="intro-qa"><p class="q">Fair question: how is this whole mess connected?</p><p class="a">This order favors a progressive discovery of the DC Multiverse. Several shows and movies take place in different realities but end up sharing connections. Watching everything in this order helps you understand the characters, references and events that tie these universes together, while preserving the major surprises.</p></div><div class="keys-title">How to read this</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>The main chronologies</div><p>The universe's two main chronologies take place on <strong>Earth-Prime</strong> and <strong>Earth-1</strong>.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>Soft-canon</div><p>The term <strong>soft-canon</strong> refers to media whose events partly happened the same way in another universe — more info in the descriptions.</p></div><div class="key wide"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="4"/><path d="M2 21a7 7 0 0 1 14 0M17 6a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></svg>Duplicate faces</div><p>The DC Multiverse works in a peculiar way: two different characters can have the exact same face (examples: Flash's father (2014) and Flash (1990), Supergirl (1984) and Superman's mother (Smallville) but also Supergirl's adoptive mother (2015)).</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Flashbacks</div><p>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.</p></div></div><details class="cuts"><summary>What's left out, and why<span class="n">4 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Some media is intentionally left out because it's not at all important for understanding the Multiverse's chronology and its key events.</p><dl class="cuts-list"><div class="cut"><dt>Everything released before 1989</dt><dd>Every media released before 1989.</dd></div><div class="cut"><dt>The shows</dt><dd>Flash (1990), Lois &amp; Clark, Lucifer, Pennyworth, Swamp-Thing, Doom Patrol, Powerless, Birds of Prey (2002).</dd></div><div class="cut"><dt>The movies</dt><dd>Constantine (2005), the Watchmen movie and show, both Joker movies, the Green Lantern movie, the Catwoman movie.</dd></div><div class="cut"><dt>The rest</dt><dd>Plenty of other lesser-known movies and shows, almost every animated movie and show, every comic, every video game.</dd></div></dl></div></details>`;
 
 const TMDB_KEY='6257b37bf29ab31357853fce00232314';
 const IMG='https://image.tmdb.org/t/p/';
@@ -664,12 +664,8 @@ const DATA={
   ],
 };
 
-const detailCache={};
 
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"av-arrow-s12": 1937, "av-arrow-s3e1-3": 129, "av-arrow-s3e4": 42, "av-arrow-s3e5": 43, "av-arrow-s3e6-7": 82, "av-arrow-s3e8": 41, "av-arrow-s3e9-23": 643, "av-arrow-s4e1": 42, "av-arrow-s4e11-17": 292, "av-arrow-s4e18-23": 247, "av-arrow-s4e2-4": 126, "av-arrow-s4e5": 42, "av-arrow-s4e6": 42, "av-arrow-s4e7": 42, "av-arrow-s4e8": 44, "av-arrow-s4e9-10": 84, "av-arrow-s5e1-7": 293, "av-arrow-s5e8": 42, "av-arrow-s5e9-23": 629, "av-arrow-s6e1-7": 294, "av-arrow-s6e8": 42, "av-arrow-s6e9-23": 630, "av-arrow-s7e1-8": 335, "av-arrow-s7e10-22": 544, "av-arrow-s7e9": 42, "av-arrow-s8e1-7": 294, "av-arrow-s8e8": 42, "av-arrow-s8e9-10": 85, "av-bl-s1e1-6": 258, "av-bl-s1e7-13": 296, "av-bl-s2e1-7": 301, "av-bl-s2e8-16": 384, "av-bl-s3e1-7": 300, "av-bl-s3e10-16": 299, "av-bl-s3e8": 43, "av-bl-s3e9": 43, "av-bl-s4": 557, "av-bw-s1e1-4": 168, "av-bw-s1e10-20": 462, "av-bw-s1e5-8": 168, "av-bw-s1e9": 42, "av-bw-s2": 771, "av-bw-s3": 552, "av-constantine": 551, "av-flash-s1e1-4": 167, "av-flash-s1e5": 41, "av-flash-s1e6-7": 82, "av-flash-s1e8": 41, "av-flash-s1e9-23": 618, "av-flash-s2e1-4": 164, "av-flash-s2e11-18": 325, "av-flash-s2e19-23": 206, "av-flash-s2e5-6": 81, "av-flash-s2e7": 41, "av-flash-s2e8": 42, "av-flash-s2e9-10": 82, "av-flash-s3e1-7": 294, "av-flash-s3e8": 41, "av-flash-s3e9-23": 628, "av-flash-s4e1-7": 291, "av-flash-s4e8": 42, "av-flash-s4e9-23": 627, "av-flash-s5e1-7": 292, "av-flash-s5e10-22": 544, "av-flash-s5e8-9": 84, "av-flash-s6e1-8": 336, "av-flash-s6e10-19": 419, "av-flash-s6e9": 42, "av-flash-s7": 755, "av-flash-s8e1-5": 214, "av-flash-s8e6-20": 641, "av-flash-s9": 555, "av-lot-s1": 660, "av-lot-s2e1-6": 252, "av-lot-s2e7": 42, "av-lot-s2e8-17": 419, "av-lot-s3e1-7": 294, "av-lot-s3e8": 42, "av-lot-s3e9-18": 420, "av-lot-s4e1-7": 294, "av-lot-s4e8-16": 377, "av-lot-s5e1": 42, "av-lot-s5e2-15": 588, "av-lot-s6": 629, "av-lot-s7": 539, "av-sg-s1e1-4": 172, "av-sg-s1e10-11": 84, "av-sg-s1e12-17": 252, "av-sg-s1e18": 43, "av-sg-s1e19-20": 84, "av-sg-s1e5-7": 126, "av-sg-s1e8-9": 84, "av-sg-s2e1-7": 294, "av-sg-s2e8": 43, "av-sg-s2e9-22": 588, "av-sg-s3e1-7": 294, "av-sg-s3e8": 42, "av-sg-s3e9-23": 630, "av-sg-s4e1-8": 336, "av-sg-s4e9-22": 589, "av-sg-s5e1-8": 336, "av-sg-s5e10-19": 420, "av-sg-s5e9": 42, "av-sg-s6": 843, "crisis-start": 0, "dc-batman89": 126, "dc-batmanbegins": 140, "dc-batmanreturns": 126, "dc-gotham": 4375, "dc-krypton-s1": 851, "dc-smallville": 9174, "dc-stargirl-s1": 576, "dc-stargirl-s2": 545, "dc-stargirl-s3": 542, "dc-supermanlois": 2300, "dc-supermanreturns": 154, "dc-tdk": 152, "dc-tdkr": 165, "dc-thebatman": 177, "dc-thepenguin": 467, "dc-titans-s1": 505, "dc-titans-s2": 599, "dc-titans-s3": 609, "dc-titans-s4": 595, "dceu-aquaman": 143, "dceu-aquaman2": 124, "dceu-blackadam": 125, "dceu-bluebeetle": 128, "dceu-bop": 109, "dceu-bvs": 152, "dceu-jl": 242, "dceu-mos": 143, "dceu-peacemaker": 349, "dceu-peacemaker-sc": 349, "dceu-shazam": 132, "dceu-shazam2": 130, "dceu-ss": 122, "dceu-theflash": 144, "dceu-tss": 132, "dceu-tss-sc": 132, "dceu-ww": 141, "dceu-ww84": 151, "dcu-cc": 165, "dcu-peacemaker2": 339, "dcu-supergirl": 108, "dcu-superman": 130};
-window.RT=RT;
-/* == CG-RUNTIME END == */
+const detailCache={};
 function getP(){try{return JSON.parse(localStorage.getItem('cg_dc')||'{}')}catch{return{}}}
 function saveP(o){localStorage.setItem('cg_dc',JSON.stringify(o))}
 
@@ -949,6 +945,7 @@ if(legEl){
 
 loadPosters();
 renderProgress();
+
 
 function cgResume(){
   var els=document.querySelectorAll('.en');

@@ -1,0 +1,91 @@
+/* ═══════════════════════════════════════════════════════════
+   CHRONOLOGEEK — Intro de page
+   Le bloc s'affiche dans #tl-notes, qui porte encore la classe
+   .nb (encadre violet). On neutralise cet encadre : un cadre
+   contenant des cartes ferait doublon. Le selecteur #tl-notes.nb
+   porte un id, il gagne donc sur .nb quel que soit l'ordre.
+   L'accent vient de --tl-color, pose par chaque page.
+   ═══════════════════════════════════════════════════════════ */
+
+#tl-notes.nb{
+  background:none;border:0;border-width:0;border-radius:0;
+  padding:0;font-size:inherit;line-height:inherit;color:inherit;
+  margin-bottom:1.75rem;
+}
+
+/* ── accroche ─────────────────────────────────────────────── */
+#tl-notes .intro-lead{font-size:.95rem;color:var(--muted2);line-height:1.75;
+  max-width:70ch;margin:0 0 .7rem}
+
+/* ── la bulle ─────────────────────────────────────────────── */
+#tl-notes .intro-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 1.5rem}
+#tl-notes .itag{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;
+  font-weight:500;color:var(--muted2);background:var(--tl-soft,rgba(124,106,247,.12));
+  border:1px solid var(--tl-color,var(--accent));border-radius:999px;
+  padding:.35rem .85rem;line-height:1.4}
+#tl-notes .itag svg{width:13px;height:13px;stroke:var(--tl-color,var(--accent));fill:none;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+
+/* ── encart d'avertissement ───────────────────────────────── */
+#tl-notes .intro-note{background:var(--tl-soft,rgba(124,106,247,.1));
+  border-left:3px solid var(--tl-color,var(--accent));border-radius:0 8px 8px 0;
+  padding:.85rem 1.05rem;margin:0 0 1.5rem;font-size:.85rem;color:var(--muted2);
+  line-height:1.65;max-width:74ch}
+
+/* ── question / reponse ───────────────────────────────────── */
+#tl-notes .intro-qa{border:1px solid var(--border2);border-radius:var(--radius);
+  padding:1rem 1.15rem;margin-bottom:1.6rem;background:var(--surface)}
+#tl-notes .intro-qa .q{font-size:.9rem;font-weight:700;color:var(--text);margin:0 0 .45rem}
+#tl-notes .intro-qa .a{font-size:.85rem;color:var(--muted2);margin:0;line-height:1.7}
+
+/* ── reperes ──────────────────────────────────────────────── */
+#tl-notes .keys-title,
+#tl-notes .cuts>summary{font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted)}
+#tl-notes .keys-title{margin-bottom:.75rem}
+#tl-notes .keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:.7rem;margin-bottom:1.75rem}
+#tl-notes .key{background:var(--surface);border:1px solid var(--border2);
+  border-radius:10px;padding:.85rem .95rem}
+#tl-notes .key.wide{grid-column:1/-1}
+#tl-notes .key-h{display:flex;align-items:center;gap:.45rem;font-size:.78rem;
+  font-weight:700;color:var(--text);margin-bottom:.35rem}
+#tl-notes .key-h svg{width:15px;height:15px;stroke:var(--tl-color,var(--accent));fill:none;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+#tl-notes .key p{margin:0;font-size:.79rem;color:var(--muted2);line-height:1.6}
+
+/* ── ce qui est ecarte, replie par defaut ─────────────────── */
+#tl-notes .cuts{background:var(--surface);border:1px solid var(--border2);
+  border-radius:var(--radius);margin-bottom:0;overflow:hidden}
+#tl-notes .cuts>summary{padding:.9rem 1.15rem;cursor:pointer;display:flex;
+  align-items:center;gap:.6rem;list-style:none;transition:background .16s}
+#tl-notes .cuts>summary::-webkit-details-marker{display:none}
+#tl-notes .cuts>summary::marker{content:''}
+#tl-notes .cuts>summary:hover{background:var(--surface2)}
+#tl-notes .cuts>summary:focus-visible{outline:2px solid var(--tl-color,var(--accent));
+  outline-offset:-2px}
+/* le compte est pousse a droite, la fleche vient apres */
+#tl-notes .cuts>summary .n{margin-left:auto;font-size:.7rem;
+  color:var(--tl-color,var(--accent));letter-spacing:0;text-transform:none;
+  font-weight:600;white-space:nowrap}
+#tl-notes .cuts>summary .chev{width:13px;height:13px;stroke:var(--muted);fill:none;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s;flex:0 0 auto}
+#tl-notes .cuts[open]>summary .chev{transform:rotate(180deg)}
+#tl-notes .cuts-body{padding:.9rem 1.15rem 1.1rem;border-top:1px solid var(--border)}
+#tl-notes .cuts-intro{margin:0 0 .35rem;font-size:.8rem;color:var(--muted);line-height:1.6}
+#tl-notes .cuts-list{margin:0}
+#tl-notes .cut{padding:.7rem 0;border-bottom:1px solid var(--border)}
+#tl-notes .cut:last-child{border-bottom:none;padding-bottom:0}
+#tl-notes .cut dt{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.15rem}
+#tl-notes .cut dd{margin:0;font-size:.79rem;color:var(--muted2);line-height:1.6}
+
+@media (prefers-reduced-motion:reduce){
+  #tl-notes .cuts>summary .chev{transition:none}
+}
+
+@media(max-width:620px){
+  #tl-notes .keys{grid-template-columns:1fr}
+  #tl-notes .intro-lead{font-size:.9rem}
+  #tl-notes .cuts>summary{gap:.4rem}
+}
