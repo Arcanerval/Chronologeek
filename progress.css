@@ -18,20 +18,21 @@
   box-sizing:border-box;
 }
 
-[data-cgv="2"] .pb-head{display:flex;align-items:baseline;justify-content:space-between;
-  gap:1rem;margin-bottom:1.05rem}
+[data-cgv="2"] .pb-head{display:flex;align-items:baseline;justify-content:center;
+  gap:1rem;margin-bottom:1.05rem;text-align:center}
 [data-cgv="2"] .pb-eyebrow{font-size:.66rem;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted)}
 [data-cgv="2"] .pb-eyebrow em{font-style:normal;color:var(--tl)}
 
-[data-cgv="2"] .pb-body{display:flex;align-items:flex-end;justify-content:space-between;
-  gap:1.5rem;flex-wrap:wrap;margin-bottom:1.15rem}
+/* Tout est centre : les chiffres sur une ligne, les actions dessous. */
+[data-cgv="2"] .pb-body{display:flex;flex-direction:column;align-items:center;
+  gap:1.25rem;margin-bottom:1.15rem}
 
 /* ── les chiffres ─────────────────────────────────────────── */
-[data-cgv="2"] .pb-reads{display:flex;align-items:stretch;gap:0}
-[data-cgv="2"] .rd{padding:0 1.25rem;border-left:1px solid var(--border);min-width:0;
+[data-cgv="2"] .pb-reads{display:flex;align-items:stretch;justify-content:center;gap:0}
+[data-cgv="2"] .rd{padding:0 1.6rem;border-left:1px solid var(--border);min-width:0;
   text-align:center}
-[data-cgv="2"] .rd:first-child{padding-left:0;border-left:none}
+[data-cgv="2"] .rd:first-child{border-left:none}
 [data-cgv="2"] .rd[hidden]{display:none}
 [data-cgv="2"] .rd-val{display:flex;align-items:baseline;justify-content:center;gap:.28rem;
   font-family:ui-monospace,'SF Mono','JetBrains Mono','Cascadia Mono',monospace;
@@ -84,9 +85,9 @@
 
 @media(max-width:720px){
   .progress-block[data-cgv="2"]{padding:1rem 1.1rem 1.05rem;flex-wrap:nowrap}
-  [data-cgv="2"] .pb-body{align-items:flex-start;gap:1.1rem}
-  [data-cgv="2"] .pb-reads{width:100%;justify-content:space-between;gap:0}
-  [data-cgv="2"] .rd{padding:0 .6rem;flex:1 1 0}
+  [data-cgv="2"] .pb-body{gap:1.1rem}
+  [data-cgv="2"] .pb-reads{width:100%;gap:0}
+  [data-cgv="2"] .rd{padding:0 .5rem;flex:1 1 0}
   [data-cgv="2"] .rd-val{font-size:1.95rem}
   [data-cgv="2"] .rd.is-done .rd-val{font-size:1.35rem}
   [data-cgv="2"] .pb-acts{width:100%}

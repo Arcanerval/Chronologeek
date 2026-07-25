@@ -343,6 +343,7 @@ RT_MARK_CLOSE = "/* == CG-RUNTIME END == */"
 
 JS_TPL = """%(open)s
 const RT=%(table)s;
+window.RT=RT;
 %(close)s"""
 
 

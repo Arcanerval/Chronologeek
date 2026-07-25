@@ -125,12 +125,21 @@
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, FR ? '\u202f' : ',');
   }
 
+  // runtime.py declare la table avec `const RT`. Un const de premier niveau
+  // vit dans la portee lexicale globale et n'apparait PAS sur window : on lit
+  // donc l'identifiant nu, protege par typeof (qui ne leve jamais).
+  function table() {
+    if (typeof RT !== 'undefined' && RT) return RT;
+    if (window.RT) return window.RT;
+    return null;
+  }
+
   function paint() {
     var el = document.getElementById('cg-done');
     if (!el) return;
 
     var rows = document.querySelectorAll('.en[data-id]');
-    var RT = window.RT;
+    var RT = table();
     var total = 0, done = 0, left = 0, unknown = 0;
 
     for (var i = 0; i < rows.length; i++) {
