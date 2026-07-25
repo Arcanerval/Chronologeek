@@ -296,6 +296,7 @@ html,body{overflow-x:clip}
 </style>
   <link rel="stylesheet" href="/progress.css"/>
   <link rel="stylesheet" href="/intro.css"/>
+  <link rel="stylesheet" href="/filters.css"/>
 </head>
 <body data-universe="sw">
 <header>
@@ -681,6 +682,7 @@ function buildTimeline(data){
 
   let leg='<div class="leg-title">Légende</div>';
   types.forEach(t=>{const[c,l]=BADGES[t]||[];if(c)leg+='<span class="b '+c+'">'+l+'</span>';});
+  leg+='<span>⭐ Obligatoire</span> <span>🚨 Important</span>';
   if(hasFB)leg+='<span class="ft">FLASHBACK</span>';
   document.getElementById('tl-legend').innerHTML=leg;
 
@@ -690,6 +692,11 @@ function buildTimeline(data){
     const[,l]=BADGES[t]||['','?'];
     f+='<button class="fbt type-filter-btn active" data-type="'+t+'" onclick="toggleTypeFilter(this)">'+l+'</button>';
   });
+  f+='</div>';
+  f+='<div class="filter-group"><span class="filter-label">Niveau :</span>';
+  f+='<button class="fbt active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Obligatoire</button>';
+  f+='<button class="fbt active" id="lvl-imp" onclick="toggleLevelFilter(this)">🚨 Important</button>';
+  f+='<button class="fbt active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Optionnel</button>';
   f+='</div>';
   document.getElementById('filter-bar').innerHTML=f;
 
@@ -704,9 +711,16 @@ function buildTimeline(data){
 function applyFilters(){
   const showTypes=new Set();
   document.querySelectorAll('.type-filter-btn.active').forEach(b=>showTypes.add(b.dataset.type));
+  const lv=id=>{const b=document.getElementById(id);return !b||b.classList.contains('active')};
+  const showMust=lv('lvl-must'),showImp=lv('lvl-imp'),showBonus=lv('lvl-bonus');
   document.querySelectorAll('#tl-content .en').forEach(e=>{
-    const ok=showTypes.size===0||showTypes.has(e.dataset.type);
-    e.style.display=ok?'':'none';
+    // Aucun type coche = rien a afficher. Sans ca, tout decocher
+    // reaffichait la timeline entiere, l'inverse de ce qu'on attend.
+    const typeOK=showTypes.has(e.dataset.type);
+    const l=e.dataset.level;
+    const levelOK=(l==='must'&&showMust)||(l==='important'&&showImp)
+                ||(l==='bonus'&&showBonus)||!l;
+    e.style.display=(typeOK&&levelOK)?'':'none';
   });
   document.querySelectorAll('#tl-content .era-node').forEach(h=>{
     let n=h.nextElementSibling,vis=false;
@@ -716,6 +730,10 @@ function applyFilters(){
     }
     h.style.display=vis?'':'none';
   });
+}
+function toggleLevelFilter(btn){
+  btn.classList.toggle('active');
+  applyFilters();
 }
 function toggleTypeFilter(btn){
   btn.classList.toggle('active');
@@ -760,6 +778,7 @@ setInterval(cgTopBtn,800);
 </script>
 <script src="/badges.js"></script>
 <script src="/progress.js"></script>
+<script src="/filters.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

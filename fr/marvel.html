@@ -241,6 +241,7 @@ html,body{overflow-x:clip}
 
 
 
+
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -250,6 +251,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
 
 /* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
 .checkmark{width:20px;height:20px;min-width:20px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
@@ -294,6 +296,7 @@ html,body{overflow-x:clip}
 </style>
   <link rel="stylesheet" href="/progress.css"/>
   <link rel="stylesheet" href="/intro.css"/>
+  <link rel="stylesheet" href="/filters.css"/>
 </head>
 <body data-universe="mcu">
 <header>
@@ -516,10 +519,6 @@ const BADGE_LABELS={
   film:'Films',filmanim:'Films animés',serie:'Séries',
   anime:'Séries animées',jeu:'Jeux',special:'Spéciaux',video:'Vidéos'
 };
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"mcu-ac-os": 15, "mcu-ac-serie": 777, "mcu-agatha": 379, "mcu-antman1": 117, "mcu-antman2": 119, "mcu-antman2pc": 0, "mcu-antman3": 125, "mcu-aos-s1a": 303, "mcu-aos-s1b": 346, "mcu-aos-s1c": 303, "mcu-aos-s2a": 822, "mcu-aos-s2b": 132, "mcu-aos-s3a": 782, "mcu-aos-s3b": 172, "mcu-aos-s4": 960, "mcu-aos-s5a": 570, "mcu-aos-s5b": 218, "mcu-aos-s5c": 175, "mcu-aos-s6": 576, "mcu-aos-s7": 573, "mcu-aou": 141, "mcu-atsv": 140, "mcu-av1": 143, "mcu-bp1": 135, "mcu-bp2": 162, "mcu-bw": 134, "mcu-bwpc": 0, "mcu-cabf": 119, "mcu-cap1": 124, "mcu-cap2": 136, "mcu-cm": 124, "mcu-cmpc": 0, "mcu-consultant": 4, "mcu-cw": 147, "mcu-dba1": 455, "mcu-dba2": 413, "mcu-dd1": 712, "mcu-dd2": 712, "mcu-dd3": 676, "mcu-defenders": 394, "mcu-dofp": 132, "mcu-dp1": 108, "mcu-dp2": 120, "mcu-dpw": 128, "mcu-ds1": 115, "mcu-echo": 213, "mcu-eg": 181, "mcu-eow": 125, "mcu-eternals": 156, "mcu-fatws": 330, "mcu-ff": 115, "mcu-gotg1": 121, "mcu-gotg2": 137, "mcu-gotg3": 150, "mcu-gotgxmas": 45, "mcu-hawkeye": 297, "mcu-hulk": 114, "mcu-if1": 726, "mcu-if2": 526, "mcu-im1": 126, "mcu-im2": 124, "mcu-im3": 130, "mcu-ironheart": 305, "mcu-item47": 12, "mcu-itsv": 117, "mcu-iw": 149, "mcu-jj1": 698, "mcu-jj2": 673, "mcu-jj3": 659, "mcu-lc1": 704, "mcu-lc2": 763, "mcu-logan": 137, "mcu-loki1": 302, "mcu-loki2": 313, "mcu-marvels": 105, "mcu-marvelspc": 0, "mcu-mk": 302, "mcu-mm": 289, "mcu-mom": 126, "mcu-mz": 137, "mcu-nwh": 148, "mcu-pun-olk": 51, "mcu-pun1": 699, "mcu-pun2": 685, "mcu-roi": 14, "mcu-sc": 132, "mcu-shehulk": 309, "mcu-si": 262, "mcu-sm1": 133, "mcu-smffh": 129, "mcu-smr1": 121, "mcu-smr2": 127, "mcu-smr3": 139, "mcu-tasm1": 136, "mcu-tasm2": 141, "mcu-tb": 127, "mcu-tb-pc2": 0, "mcu-thor1": 115, "mcu-thor2": 112, "mcu-thor3": 131, "mcu-thor3pc": 0, "mcu-thor4": 119, "mcu-twolv": 126, "mcu-venom1": 112, "mcu-venom2": 97, "mcu-venom3": 109, "mcu-vfsm": 317, "mcu-wi1": 323, "mcu-wi2": 289, "mcu-wi3": 253, "mcu-wm": 267, "mcu-wv": 363, "mcu-wwbn": 55, "mcu-xdp": 114, "mcu-xfc": 132, "mcu-xm1": 104, "mcu-xm2": 133, "mcu-xm3": 104, "mcu-xma": 144, "mcu-xow": 107};
-window.RT=RT;
-/* == CG-RUNTIME END == */
 let currentData=null;
 let activeFilters=new Set(['film','filmanim','serie','anime','jeu','special','video','must','important','bonus']);
 let showNC=true;
@@ -736,7 +735,8 @@ function applyFilters(){
     const type=e.dataset.type;
     const level=e.dataset.level;
     const nc=e.dataset.nc==='1';
-    const typeOK=showTypes.has(type)||showTypes.size===0;
+    // Aucun type coche = rien a afficher (voir Star Wars).
+    const typeOK=showTypes.has(type);
     const levelOK=(level==='must'&&showMust)||(level==='important'&&showImp)||(level==='bonus'&&showBonus);
     const ncOK=!(hideNC&&nc);
     const defOK=!(hideDef&&e.dataset.def==='1');
@@ -828,6 +828,7 @@ function buildTimeline(data){
 }
 
 
+
 function showHome(){window.location.href='/fr/';}
 function showUniverse(uid){
   const u=UNIVERSES.find(x=>x.data&&x.data.id===uid);
@@ -843,6 +844,7 @@ function showUniverse(uid){
   window.scrollTo(0,0);loadPosters();
 }
 function showCS(){window.location.href='/fr/';}
+
 
 
 
@@ -866,6 +868,7 @@ document.addEventListener('scroll',cgTopBtn,{passive:true,capture:true});
 setInterval(cgTopBtn,800);
 showUniverse('mcu');
 
+
 window.addEventListener('scroll',()=>{
   const mm=document.getElementById('miss-minute');
   if(mm)mm.classList.toggle('visible',window.scrollY>400);
@@ -874,6 +877,7 @@ showUniverse('mcu');
 </script>
 <script src="/badges.js"></script>
 <script src="/progress.js"></script>
+<script src="/filters.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
