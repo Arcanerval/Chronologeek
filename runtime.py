@@ -343,37 +343,12 @@ RT_MARK_CLOSE = "/* == CG-RUNTIME END == */"
 
 JS_TPL = """%(open)s
 const RT=%(table)s;
-function cgFmtTime(m){
-  const h=Math.floor(m/60),mn=m%%60;
-  if(h===0)return mn+' min';
-  if(h<10&&mn)return h+' h '+String(mn).padStart(2,'0');
-  return h+' h';
-}
-function cgTimeLeft(){
-  let left=0,unknown=0;
-  document.querySelectorAll('#tl-content .en[data-id]').forEach(el=>{
-    if(el.classList.contains('done'))return;
-    const v=RT[el.dataset.id];
-    if(v==null){unknown++;return;}
-    left+=v;
-  });
-  const t=left<=0 ? ' · <strong>%(zero)s</strong>'
-                  : ' · <strong>'+cgFmtTime(left)+'</strong> %(label)s';
-  return unknown?t+'<span title="%(unk)s" style="opacity:.5"> *</span>':t;
-}
 %(close)s"""
 
-LABEL = {
-    "en": ("left to watch", "no runtime data for some entries", "all done"),
-    "fr": ("de visionnage restant", "durée inconnue pour certaines entrées", "terminé"),
-}
-
-COUNTER_RE = re.compile(
-    r"(innerHTML\s*=\s*'<strong>'\+done\+'</strong> / '\+total\+"
-    r"' (?:watched|vus) · <strong>'\+pct\+'%</strong>')")
 
 
-def patch_page(path, table, lang, dry=False):
+
+def patch_page(path, table, dry=False):
     src = open(path, encoding="utf-8").read()
     orig = src
 
@@ -382,11 +357,9 @@ def patch_page(path, table, lang, dry=False):
                  "", src, flags=re.S).replace("\n\n\n", "\n\n")
     src = src.replace("+cgTimeLeft()", "")
 
-    label, unk, zero = LABEL[lang]
     block = JS_TPL % {
         "open": RT_MARK_OPEN, "close": RT_MARK_CLOSE,
         "table": json.dumps(table, ensure_ascii=False, sort_keys=True),
-        "label": label, "unk": unk, "zero": zero,
     }
 
     # 2) on pose le bloc juste avant la declaration de currentData / getP
@@ -400,15 +373,10 @@ def patch_page(path, table, lang, dry=False):
         return f"!! {path} : point d'ancrage JS introuvable, page non modifiee"
     src = src[:anchor] + block + "\n" + src[anchor:]
 
-    # 3) on branche le compteur sur l'affichage existant
-    src, n = COUNTER_RE.subn(r"\1+cgTimeLeft()", src)
-    if n == 0:
-        return f"!! {path} : compteur pb-counts introuvable, temps non affiche"
-
     if not dry:
         open(path, "w", encoding="utf-8").write(src)
     delta = len(src) - len(orig)
-    return f"   {path:22} compteur x{n}  ({delta:+d} octets)"
+    return f"   {path:22} table RT injectee  ({delta:+d} octets)"
 
 # ─────────────────────────────────────────────────────────────── main
 
@@ -425,7 +393,6 @@ def main():
         if not os.path.exists(path):
             print(f"!! {path} introuvable, ignore")
             continue
-        lang = "fr" if path.startswith("fr/") else "en"
         src = open(path, encoding="utf-8").read()
         entries = parse_entries(src)
 
@@ -440,7 +407,32 @@ def main():
         print(f"== {path}")
         print(f"   {len(entries)} entrees, {len(table)} chiffrees, "
               f"total {total//60} h {total%60:02d}")
-        print("  ", patch_page(path, table, lang, dry).strip())
+
+        # detail par categorie : permet de reperer d'un coup d'oeil
+        # une famille entiere qui serait passee a la trappe.
+        by_kind = {}
+        for e in entries:
+            m = table.get(e["id"])
+            if m is None:
+                continue
+            k = "jeu" if (e["media"] == "game" or e["type"] == "jeu") else e["media"]
+            n, mins = by_kind.get(k, (0, 0))
+            by_kind[k] = (n + 1, mins + m)
+        for k in sorted(by_kind):
+            n, mins = by_kind[k]
+            print(f"     {k:8} {n:4} entrees  {mins//60:5} h {mins%60:02d}")
+
+        # On ne signale que les overrides censes concerner CETTE page,
+        # reconnus par le prefixe des ids ("sw-", "mcu-", "dc-"…).
+        page_ids = {e["id"] for e in entries}
+        prefixes = {i.split("-")[0] for i in page_ids}
+        orphans = [i for i in (set(GAME_MINUTES) | set(ONESHOT_MINUTES) |
+                               set(MANUAL_MINUTES))
+                   if i not in page_ids and i.split("-")[0] in prefixes]
+        if orphans:
+            print(f"     (!) ids d'override absents de cette page : "
+                  f"{', '.join(sorted(orphans))}")
+        print("  ", patch_page(path, table, dry).strip())
         if problems:
             print(f"   {len(problems)} trou(s) :")
             for eid, why in problems[:25]:

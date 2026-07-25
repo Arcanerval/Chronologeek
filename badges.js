@@ -34,8 +34,8 @@ const BADGE_EN = {
   avt_100: {label:'Fully Realized Avatar', desc:'Avatar 100% completed'},
 };
 const CG_BT = CG_EN
-  ? {unlocked:'Badge unlocked!', my:'My Badges', count:'unlocked', on:'Unlocked on', locked:'🔒 Locked', locale:'en-US'}
-  : {unlocked:'Badge débloqué !', my:'Mes Badges', count:'débloqués', on:'Débloqué le', locked:'🔒 Verrouillé', locale:'fr-FR'};
+  ? {unlocked:'Badge unlocked!', my:'My Badges', count:'unlocked', on:'Unlocked on', locked:'🔒 Locked', close:'Close', locale:'en-US'}
+  : {unlocked:'Badge débloqué !', my:'Mes Badges', count:'débloqués', on:'Débloqué le', locked:'🔒 Verrouillé', close:'Fermer', locale:'fr-FR'};
 function bL(b){return CG_EN&&BADGE_EN[b.id]?BADGE_EN[b.id].label:b.label}
 function bD(b){return CG_EN&&BADGE_EN[b.id]?BADGE_EN[b.id].desc:b.desc}
 
@@ -352,22 +352,47 @@ function openBadgeModal(){
 
   const unlockedCount=univBadges.filter(b=>saved[b.id]).length;
 
+  // Meme accent que le bloc progression (pose par progress.js).
+  const accent=getComputedStyle(document.documentElement)
+                 .getPropertyValue('--tl').trim()||'#7c6af7';
+  const pct=univBadges.length
+    ? Math.round(unlockedCount/univBadges.length*100) : 0;
+  const mono="ui-monospace,'SF Mono','JetBrains Mono','Cascadia Mono',monospace";
+
   let html=`<div id="cg-badge-modal" style="
     position:fixed;inset:0;z-index:7000;
     background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
     display:flex;align-items:center;justify-content:center;padding:1rem;
   " onclick="if(event.target===this)this.remove()">
-  <div style="
-    background:#0f0f1a;border:1px solid #2a2a48;border-radius:18px;
+  <div role="dialog" aria-modal="true" aria-label="${CG_BT.my}" style="
+    background:#0f0f1a;border:1px solid #2a2a48;border-radius:12px;
     max-width:480px;width:100%;max-height:85vh;overflow-y:auto;
-    padding:1.5rem;position:relative;
+    padding:1.4rem;position:relative;
   ">
-    <button onclick="document.getElementById('cg-badge-modal').remove()" style="
-      position:absolute;top:.8rem;right:.8rem;background:none;border:none;
-      color:#686880;font-size:1.2rem;cursor:pointer;
-    ">✕</button>
-    <div style="font-size:1.1rem;font-weight:800;color:#e2e2f0;margin-bottom:.3rem">${CG_BT.my}</div>
-    <div style="font-size:.78rem;color:#686880;margin-bottom:1.25rem">${unlockedCount} / ${univBadges.length} ${CG_BT.count}</div>
+    <button onclick="document.getElementById('cg-badge-modal').remove()"
+      aria-label="${CG_BT.close}" style="
+      position:absolute;top:.9rem;right:.9rem;background:none;border:none;
+      color:#686880;cursor:pointer;line-height:0;padding:.25rem;
+    "><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12"/></svg></button>
+
+    <div style="font-size:.66rem;font-weight:700;letter-spacing:.16em;
+      text-transform:uppercase;color:#686880;margin-bottom:.9rem">${CG_BT.my}</div>
+
+    <div style="display:flex;align-items:baseline;gap:.28rem;font-family:${mono};
+      font-size:2.55rem;font-weight:700;line-height:.92;letter-spacing:-.03em;
+      font-variant-numeric:tabular-nums;color:${accent};margin-bottom:.5rem">
+      ${unlockedCount}<span style="font-size:1.05rem;font-weight:500;color:#686880;
+        letter-spacing:0">/ ${univBadges.length}</span></div>
+    <div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+      color:#686880;margin-bottom:.9rem">${CG_BT.count}</div>
+
+    <div style="height:18px;border-radius:9px;background:#161625;border:1px solid #1e1e35;
+      overflow:hidden;margin-bottom:1.25rem">
+      <div style="height:100%;width:${pct}%;border-radius:9px;background:${accent};
+        transition:width .5s cubic-bezier(.4,0,.2,1)"></div></div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">`;
 
   univBadges.forEach(badge=>{
@@ -377,14 +402,13 @@ function openBadgeModal(){
       background:${unlocked?'rgba('+hexToRgb(badge.color)+',.08)':'#161625'};
       border:1px solid ${unlocked?badge.color+'66':'#1e1e35'};
       border-radius:10px;padding:.75rem;
-      opacity:${unlocked?'1':'.4'};
       transition:all .2s;
     ">
-      <div style="font-size:1.6rem;margin-bottom:.3rem;filter:${unlocked?'none':'grayscale(1)'}">${badge.icon}</div>
-      <div style="font-size:.78rem;font-weight:700;color:${unlocked?badge.color:'#686880'};margin-bottom:.15rem">${bL(badge)}</div>
-      <div style="font-size:.67rem;color:#686880;line-height:1.4">${bD(badge)}</div>
-      ${unlocked&&date?`<div style="font-size:.6rem;color:#2a2a48;margin-top:.3rem">${CG_BT.on} ${date}</div>`:''}
-      ${!unlocked?`<div style="font-size:.6rem;color:#2a2a48;margin-top:.3rem">${CG_BT.locked}</div>`:''}
+      <div style="font-size:1.6rem;margin-bottom:.3rem;filter:${unlocked?'none':'grayscale(1) opacity(.45)'}">${badge.icon}</div>
+      <div style="font-size:.78rem;font-weight:700;color:${unlocked?badge.color:'#5a5a70'};margin-bottom:.15rem">${bL(badge)}</div>
+      <div style="font-size:.67rem;color:${unlocked?'#9090b0':'#4a4a60'};line-height:1.4">${bD(badge)}</div>
+      ${unlocked&&date?`<div style="font-size:.6rem;color:#686880;margin-top:.3rem">${CG_BT.on} ${date}</div>`:''}
+      ${!unlocked?`<div style="font-size:.6rem;color:#3a3a55;margin-top:.3rem">${CG_BT.locked}</div>`:''}
     </div>`;
   });
 
@@ -408,6 +432,9 @@ function updateBadgeModal(){
 function initBadgeButton(){
   const pb=document.querySelector('.progress-block');
   if(!pb||pb.querySelector('.badge-btn'))return;
+  // progress.js fournit deja un bouton Badges dans le groupe d'actions :
+  // on n'en ajoute pas un second.
+  if(pb.querySelector('.pb-acts'))return;
   const btn=document.createElement('button');
   btn.className='badge-btn';
   btn.innerHTML='🏆 Badges';

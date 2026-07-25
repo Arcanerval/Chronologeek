@@ -241,6 +241,7 @@ html,body{overflow-x:clip}
 
 
 
+
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -250,6 +251,7 @@ html,body{overflow-x:clip}
 #mmenu a.doss{color:var(--accent2)}
 .nav-links a.doss{color:var(--accent2);font-weight:700}
 @media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
+
 
 /* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
 .checkmark{width:20px;height:20px;min-width:20px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
@@ -292,6 +294,7 @@ html,body{overflow-x:clip}
   .stat b{font-size:1.6rem}
 }
 </style>
+  <link rel="stylesheet" href="/progress.css"/>
 </head>
 <body data-universe="sw">
 <header>
@@ -455,27 +458,6 @@ const BADGES={
   jeu:['bj','VIDEO GAME']
 };
 const BADGE_LABELS={film:'Movies',filmanim:'Animated movies',serie:'TV shows',anime:'Animated shows',jeu:'Games'};
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"sw-ahsoka": 375, "sw-andors1": 582, "sw-andors2-1": 329, "sw-andors2-2": 156, "sw-andors2-3": 145, "sw-bb1": 512, "sw-bb2": 885, "sw-bf2-c1": 180, "sw-bf2-c2": 150, "sw-bf2-m12": 30, "sw-bf2-prologue": 30, "sw-bf2res": 90, "sw-boba": 347, "sw-ep1": 136, "sw-ep2": 142, "sw-ep3": 140, "sw-ep4": 121, "sw-ep5": 124, "sw-ep6": 132, "sw-ep7": 136, "sw-ep8": 152, "sw-ep9": 142, "sw-fo": 1200, "sw-kenobi": 280, "sw-mag": 132, "sw-mando-s1": 556, "sw-mando-s2b": 123, "sw-mando-s3": 362, "sw-maul": 260, "sw-outlaws": 2280, "sw-rebels-ep": 0, "sw-rebels-s1": 540, "sw-rebels-s2": 688, "sw-rebels-s3": 96, "sw-rebels-s4": 384, "sw-rogue": 133, "sw-skelcrew": 316, "sw-solo": 135, "sw-squadrons": 540, "sw-survivor": 1800, "sw-tcw-19": 628, "sw-tcw-20": 664, "sw-tcw-21": 801, "sw-tcw-22": 205, "sw-tcw-pre": 44, "sw-tcw-rsith": 114, "sw-tcwfilm": 98, "sw-toe1": 17, "sw-toe2": 15, "sw-toe3": 14, "sw-toe4": 17, "sw-toe5": 13, "sw-toe6": 17, "sw-toj1": 19, "sw-toj2": 16, "sw-toj3": 16, "sw-toj4": 18, "sw-toj5": 13, "sw-toj6": 17, "sw-totu1": 17, "sw-totu23": 34};
-function cgFmtTime(m){
-  const h=Math.floor(m/60),mn=m%60;
-  if(h===0)return mn+' min';
-  if(h<10&&mn)return h+' h '+String(mn).padStart(2,'0');
-  return h+' h';
-}
-function cgTimeLeft(){
-  let left=0,unknown=0;
-  document.querySelectorAll('#tl-content .en[data-id]').forEach(el=>{
-    if(el.classList.contains('done'))return;
-    const v=RT[el.dataset.id];
-    if(v==null){unknown++;return;}
-    left+=v;
-  });
-  const t=left<=0 ? ' · <strong>all done</strong>'
-                  : ' · <strong>'+cgFmtTime(left)+'</strong> left to watch';
-  return unknown?t+'<span title="no runtime data for some entries" style="opacity:.5"> *</span>':t;
-}
-/* == CG-RUNTIME END == */
 let currentData=null;
 const posterCache={},detailCache={};
 
@@ -514,7 +496,7 @@ function renderProgress(){
   const pct=total?Math.round(done/total*100):0;
   const grad='linear-gradient(90deg,var(--accent),var(--accent2))';
   document.getElementById('pb-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>'+cgTimeLeft();
+  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>';
   const pbn=document.getElementById('pbn');
   if(pbn){
     pbn.classList.toggle('show',total>0);
@@ -753,6 +735,7 @@ function showUniverse(uid){
 showUniverse('sw');
 
 
+
 function cgResume(){
   var els=document.querySelectorAll('.en');
   for(var i=0;i<els.length;i++){
@@ -773,6 +756,7 @@ document.addEventListener('scroll',cgTopBtn,{passive:true,capture:true});
 setInterval(cgTopBtn,800);
 </script>
 <script src="/badges.js"></script>
+<script src="/progress.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
