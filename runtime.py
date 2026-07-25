@@ -8,8 +8,6 @@ dans les pages sous forme d'une table `const RT={id:minutes}`, plus un
 compteur "temps restant" qui baisse quand on coche une entree.
 
 Usage :
-    set TMDB_API_KEY=ta_cle          (Windows CMD)
-    $env:TMDB_API_KEY="ta_cle"       (PowerShell)
     python runtime.py                 -> patche toutes les pages
     python runtime.py --dry           -> analyse sans ecrire, montre les trous
     python runtime.py starwars.html   -> une seule page
@@ -24,11 +22,14 @@ import sys
 import json
 import time
 import urllib.request
+import urllib.parse
 import urllib.error
 
 # ─────────────────────────────────────────────────────────────── config
 
-TMDB_KEY = os.environ.get("6257b37bf29ab31357853fce00232314", "").strip()
+# Meme nom de variable que radar.py, pour reutiliser le secret TMDB_KEY
+TMDB_KEY = (os.environ.get("TMDB_KEY")
+            or os.environ.get("TMDB_API_KEY") or "").strip()
 API = "https://api.themoviedb.org/3"
 CACHE_FILE = "runtime-cache.json"
 CACHE_VERSION = 1
@@ -107,7 +108,7 @@ _calls = [0]
 
 def tmdb(path, **params):
     if not TMDB_KEY:
-        raise SystemExit("!! TMDB_API_KEY absente de l'environnement.")
+        raise SystemExit("!! TMDB_KEY absente de l'environnement.")
     params["api_key"] = TMDB_KEY
     url = f"{API}{path}?" + urllib.parse.urlencode(params)
     for attempt in range(4):
@@ -452,5 +453,4 @@ def main():
 
 
 if __name__ == "__main__":
-    import urllib.parse  # noqa: E402  (utilise dans tmdb())
     main()
