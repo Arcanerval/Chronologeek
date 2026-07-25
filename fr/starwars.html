@@ -240,7 +240,6 @@ html,body{overflow-x:clip}
 }
 
 
-
 /* ═══ Menu mobile v2 ═══ */
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
 #mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
@@ -456,6 +455,7 @@ const BADGES={
   jeu:['bj','JEU VIDÉO']
 };
 const BADGE_LABELS={film:'Films',filmanim:'Films animés',serie:'Séries',anime:'Séries animées',jeu:'Jeux'};
+
 /* == CG-RUNTIME START (genere par runtime.py) == */
 const RT={"sw-ahsoka": 375, "sw-andors1": 582, "sw-andors2-1": 329, "sw-andors2-2": 156, "sw-andors2-3": 145, "sw-bb1": 512, "sw-bb2": 885, "sw-bf2-c1": 180, "sw-bf2-c2": 150, "sw-bf2-m12": 30, "sw-bf2-prologue": 30, "sw-bf2res": 90, "sw-boba": 347, "sw-ep1": 136, "sw-ep2": 142, "sw-ep3": 140, "sw-ep4": 121, "sw-ep5": 124, "sw-ep6": 132, "sw-ep7": 136, "sw-ep8": 152, "sw-ep9": 142, "sw-fo": 1200, "sw-kenobi": 280, "sw-mag": 132, "sw-mando-s1": 556, "sw-mando-s2b": 123, "sw-mando-s3": 362, "sw-maul": 260, "sw-outlaws": 2280, "sw-rebels-ep": 0, "sw-rebels-s1": 540, "sw-rebels-s2": 688, "sw-rebels-s3": 96, "sw-rebels-s4": 384, "sw-rogue": 133, "sw-skelcrew": 316, "sw-solo": 135, "sw-squadrons": 540, "sw-survivor": 1800, "sw-tcw-19": 628, "sw-tcw-20": 664, "sw-tcw-21": 801, "sw-tcw-22": 205, "sw-tcw-pre": 44, "sw-tcw-rsith": 114, "sw-tcwfilm": 98, "sw-toe1": 17, "sw-toe2": 15, "sw-toe3": 14, "sw-toe4": 17, "sw-toe5": 13, "sw-toe6": 17, "sw-toj1": 19, "sw-toj2": 16, "sw-toj3": 16, "sw-toj4": 18, "sw-toj5": 13, "sw-toj6": 17, "sw-totu1": 17, "sw-totu23": 34};
 /* == CG-RUNTIME END == */
@@ -734,7 +734,6 @@ function showUniverse(uid){
   window.scrollTo(0,0);loadPosters();
 }
 showUniverse('sw');
-
 
 function cgResume(){
   var els=document.querySelectorAll('.en');
