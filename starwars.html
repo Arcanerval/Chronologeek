@@ -369,7 +369,7 @@ html,body{overflow-x:clip}
       {id:"sw-tcw-pre",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY (before the movie)",date:"22 BBY",
         note:"The episodes grouped below are story arcs, separated by blank lines",
         subitems:["Season 2 Episode 16","Season 1 Episode 16"],
-        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Parce qu'ils se situent ici chronologiquement"}},
+        faq:{quand:"Originally conceived as an anthology series with standalone stories, the show transitioned to a more classic format from season 4 onward and works much better watched in chronological order",pourquoi:"Because this is where they fall chronologically"}},
       {id:"sw-toj1",type:"anime",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Episode 1",date:"36–35 BBY",tags:["flashback"],faq:{quand:"The episode is set a few years before The Phantom Menace",pourquoi:"An extremely important character is introduced in the animated The Clone Wars movie, and this episode serves as their origin story — watch it before or after the movie, as you prefer"}},
       {id:"sw-tcwfilm",type:"filmanim",tmdb:"12180",media:"movie",img:"/images/clonewarsfilm.webp",title:"Star Wars: The Clone Wars",date:"22 BBY",faq:{quand:"The movie takes place at the start of the Clone Wars in 22 BBY",pourquoi:"Because this is where it falls chronologically"}},
       {id:"sw-tcw-22",type:"anime",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY",date:"22 BBY",
@@ -495,7 +495,7 @@ function renderProgress(){
   const pct=total?Math.round(done/total*100):0;
   const grad='linear-gradient(90deg,var(--accent),var(--accent2))';
   document.getElementById('pb-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>';
+  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>';
   const pbn=document.getElementById('pbn');
   if(pbn){
     pbn.classList.toggle('show',total>0);

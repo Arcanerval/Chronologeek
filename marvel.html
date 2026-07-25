@@ -556,7 +556,7 @@ function renderProgress(){
   const pct=total?Math.round(done/total*100):0;
   const grad=pct===100?'linear-gradient(90deg,#56c27a,#7c6af7)':'linear-gradient(90deg,var(--accent),var(--accent2))';
   document.getElementById('pb-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>';
+  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>';
   const pbn=document.getElementById('pbn');
   if(pbn){pbn.classList.toggle('show',total>0);document.getElementById('pbn-label').textContent=done+'/'+total;document.getElementById('pbn-fill').style.cssText='width:'+pct+'%;background:'+grad;}
 }

@@ -708,7 +708,7 @@ function renderProgress(){
   const pct=total?Math.round(done/total*100):0;
   const grad='linear-gradient(90deg,#1e90ff,var(--accent2))';
   const pb=document.getElementById('pb-fill');if(pb)pb.style.cssText='width:'+pct+'%;background:'+grad;
-  const pc=document.getElementById('pb-counts');if(pc)pc.innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>';
+  const pc=document.getElementById('pb-counts');if(pc)pc.innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>';
   const pbn=document.getElementById('pbn');
   if(pbn){pbn.classList.toggle('show',total>0);document.getElementById('pbn-label').textContent=done+'/'+total;document.getElementById('pbn-fill').style.cssText='width:'+pct+'%;background:'+grad}
 }
