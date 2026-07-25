@@ -105,3 +105,30 @@
   .filter-bar .filter-label{width:100%;text-align:center;min-width:0;margin-bottom:.1rem}
   .filter-bar .fbt{font-size:.68rem;padding:.26rem .6rem}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Barre de stats (« 13 films · 13 séries · 5 jeux vidéo »)
+   Les pages la posaient a gauche, et sur mobile un flex:1 1 44%
+   forcait deux items par ligne. Il n'y en a jamais plus de trois,
+   donc une seule ligne tient partout : on repartit a egalite et on
+   centre chaque item dans sa case.
+   Le double .stats et le selecteur .stats .stat suffisent a battre
+   les regles des pages sans !important, quel que soit l'ordre.
+   ═══════════════════════════════════════════════════════════ */
+.stats.stats{flex-wrap:nowrap;gap:0}
+.stats .stat{flex-grow:1;flex-shrink:1;flex-basis:0;min-width:0;
+  text-align:center;padding:0 .6rem}
+.stats .stat+.stat{border-left-width:1px;border-left-style:solid;
+  border-left-color:var(--border)}
+.stats .stat:first-child{border-left-style:none}
+
+@media(max-width:640px){
+  .stats.stats{padding:.9rem 0;gap:0}
+  .stats .stat{flex-grow:1;flex-shrink:1;flex-basis:0;padding:0 .35rem}
+  .stats .stat b{font-size:1.45rem;letter-spacing:-.5px}
+  .stats .stat span{font-size:.55rem;letter-spacing:.08em;margin-top:.35rem}
+}
+@media(max-width:360px){
+  .stats .stat b{font-size:1.25rem}
+  .stats .stat span{font-size:.5rem;letter-spacing:.05em}
+}
