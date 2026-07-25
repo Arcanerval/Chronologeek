@@ -15,12 +15,12 @@
   var T = FR ? {
     eyebrow: 'Ma progression', watched: 'vus', left: 'restantes', done: 'terminé',
     resume: 'Reprendre', badges: 'Badges', reset: 'Remettre à zéro',
-    hint: 'progression enregistrée dans ce navigateur',
+    hint: 'Cochez votre progression, elle est sauvegardée sur ce navigateur',
     unknown: 'Durée inconnue pour certaines entrées'
   } : {
     eyebrow: 'My progress', watched: 'watched', left: 'left', done: 'done',
     resume: 'Resume', badges: 'Badges', reset: 'Reset',
-    hint: 'progress saved in this browser',
+    hint: 'Check off your progress — it stays saved in this browser',
     unknown: 'No runtime data for some entries'
   };
 
