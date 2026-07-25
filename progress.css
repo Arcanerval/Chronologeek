@@ -95,7 +95,13 @@
     padding:.7rem .4rem}
 }
 
+/* Sur tres petit ecran on garde le libelle a cote de l'icone :
+   on rogne la typo et les espacements plutot que de masquer le texte. */
 @media(max-width:420px){
-  .progress-block[data-cgv="2"] .pb-acts button span{display:none}
-  .progress-block[data-cgv="2"] .pb-acts button{padding:.7rem .3rem}
+  .progress-block[data-cgv="2"] .pb-acts button{padding:.65rem .3rem;font-size:.68rem;
+    gap:.28rem}
+  [data-cgv="2"] .pb-acts .ico{width:13px;height:13px}
+}
+@media(max-width:340px){
+  .progress-block[data-cgv="2"] .pb-acts button{font-size:.63rem;padding:.6rem .2rem}
 }

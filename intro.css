@@ -15,7 +15,7 @@
 
 /* ── accroche ─────────────────────────────────────────────── */
 #tl-notes .intro-lead{font-size:.95rem;color:var(--muted2);line-height:1.75;
-  max-width:70ch;margin:0 0 .7rem}
+  margin:0 0 .7rem}
 
 /* ── la bulle ─────────────────────────────────────────────── */
 #tl-notes .intro-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 1.5rem}
@@ -30,7 +30,7 @@
 #tl-notes .intro-note{background:var(--tl-soft,rgba(124,106,247,.1));
   border-left:3px solid var(--tl-color,var(--accent));border-radius:0 8px 8px 0;
   padding:.85rem 1.05rem;margin:0 0 1.5rem;font-size:.85rem;color:var(--muted2);
-  line-height:1.65;max-width:74ch}
+  line-height:1.65}
 
 /* ── question / reponse ───────────────────────────────────── */
 #tl-notes .intro-qa{border:1px solid var(--border2);border-radius:var(--radius);
@@ -43,7 +43,7 @@
 #tl-notes .cuts>summary{font-size:.66rem;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted)}
 #tl-notes .keys-title{margin-bottom:.75rem}
-#tl-notes .keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+#tl-notes .keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:.7rem;margin-bottom:1.75rem}
 #tl-notes .key{background:var(--surface);border:1px solid var(--border2);
   border-radius:10px;padding:.85rem .95rem}
@@ -88,4 +88,20 @@
   #tl-notes .keys{grid-template-columns:1fr}
   #tl-notes .intro-lead{font-size:.9rem}
   #tl-notes .cuts>summary{gap:.4rem}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Legende et filtres : sur mobile ils debordent sur plusieurs
+   lignes. On compacte et on centre pour que le bloc reste lisible
+   au lieu d'etre ferre a gauche en escalier.
+   ═══════════════════════════════════════════════════════════ */
+@media(max-width:620px){
+  #tl-legend{justify-content:center;gap:.35rem .45rem;text-align:center}
+  #tl-legend .b{font-size:.62rem;padding:2px 6px}
+  .leg{justify-content:center;gap:.4rem .6rem}
+  .leg .b{font-size:.62rem;padding:2px 6px}
+  .leg-title{text-align:center}
+  .filter-bar .filter-group{justify-content:center;width:100%}
+  .filter-bar .filter-label{width:100%;text-align:center;min-width:0;margin-bottom:.1rem}
+  .filter-bar .fbt{font-size:.68rem;padding:.26rem .6rem}
 }
