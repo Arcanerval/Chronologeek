@@ -28,7 +28,7 @@ import urllib.error
 
 # ─────────────────────────────────────────────────────────────── config
 
-TMDB_KEY = os.environ.get("TMDB_API_KEY", "").strip()
+TMDB_KEY = os.environ.get("6257b37bf29ab31357853fce00232314", "").strip()
 API = "https://api.themoviedb.org/3"
 CACHE_FILE = "runtime-cache.json"
 CACHE_VERSION = 1
