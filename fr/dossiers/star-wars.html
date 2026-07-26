@@ -179,8 +179,10 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 }
 </style>
   <link rel="stylesheet" href="/intro.css"/>
+  <link rel="stylesheet" href="/progress.css"/>
+  <link rel="stylesheet" href="/filters.css"/>
 </head>
-<body>
+<body data-universe="sw">
 <nav>
     <div class="logo" onclick="window.location.href='/fr/'">
       <img src="/images/logo-chronologeek.png" alt="Chronologeek"/>
@@ -211,7 +213,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 </div>
 <div class="wrap">
 <h1>Dossier Star Wars<span class='h1sub'>Romans &amp; Comics</span></h1>
-<p class="sub">Si vous souhaitez découvrir les romans et comics Star Wars, vous êtes au bon endroit. Je considère que si vous êtes ici, vous avez déjà regardé les médias animés et live action.<br><br>Les médias omis sont les mêmes que pour la timeline principale, sauf <strong>The Acolyte</strong>, qui est peut-être intéressant à voir si vous lisez les comics : c'est le seul média cinématographique (hors <strong>Star Wars: Young Jedi Adventures</strong>) se déroulant pendant la Haute République.<br><br>Les comics omis sont des one shots inutiles, des comics pour enfants ou des adaptations de médias cinématographiques.</p>
+<div class="nb" id="tl-notes"><p class="intro-lead">Si vous souhaitez découvrir les romans et comics Star Wars, vous êtes au bon endroit.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Je considère que si vous êtes ici, vous avez déjà regardé les médias animés et live action.</span></div><details class="cuts"><summary>Ce qui est écarté, et pourquoi<span class="n">2 entrées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-prose" style="margin:0 0 .6rem">Les médias omis sont les mêmes que pour la timeline principale, sauf <strong>The Acolyte</strong>, qui est peut-être intéressant à voir si vous lisez les comics : c'est le seul média cinématographique (hors <strong>Star Wars: Young Jedi Adventures</strong>) se déroulant pendant la Haute République.</p><p class="cuts-prose" style="margin:0 0 .6rem">Les comics omis sont des one shots inutiles, des comics pour enfants ou des adaptations de médias cinématographiques.</p></div></details></div>
 <div class="stats"><div class="stat"><b>532</b><span>Œuvres au total</span></div><div class="stat"><b>111</b><span>Séries de comics</span></div><div class="stat"><b>57</b><span>Romans</span></div><div class="stat"><b>30</b><span>Romans jeune adulte</span></div><div class="stat"><b>9</b><span>Fictions audio</span></div></div>
 <div class="chips"><button class="chip on" data-f="roman" style="--c:#a78bfa">Roman</button><button class="chip on" data-f="jeunesse" style="--c:#4ade80">Roman jeune adulte</button><button class="chip on" data-f="comic" style="--c:#fb923c">Comic</button><button class="chip on" data-f="audio" style="--c:#f472b6">Audio</button></div>
 <div class="prog">
@@ -896,5 +898,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
   refresh();
 })();
 </script>
+  <script src="/progress.js"></script>
+  <script src="/filters.js"></script>
 </body>
 </html>

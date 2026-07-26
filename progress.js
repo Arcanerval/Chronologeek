@@ -9,6 +9,17 @@
 
   var COLORS = { sw: '#4d9fff', mcu: '#e23636', dc: '#f5c842', avatar: '#7dd3fc' };
 
+  // Deux conventions coexistent sur le site : les timelines (.progress-block,
+  // entrees .en marquees .done) et le Dossier (.prog, entrees .it marquees
+  // .read, avec ses propres boutons deja cablees). On detecte laquelle.
+  var PROFILE = document.querySelector('.progress-block') ? {
+    block: '.progress-block', rows: '.en[data-id]', done: 'done',
+    hide: null, badges: true, ownButtons: false
+  } : document.querySelector('.prog') ? {
+    block: '.prog', rows: '.it', done: 'read',
+    hide: 'hide', badges: false, ownButtons: true
+  } : null;
+
   var FR = document.documentElement.lang === 'fr' ||
            location.pathname.indexOf('/fr/') === 0;
 
@@ -65,12 +76,38 @@
            '</svg><span>' + label + '</span></button>';
   }
 
+  // Rhabille un bouton de la page et le replace dans le groupe d'actions.
+  // On ne le recree jamais : il garde son addEventListener d'origine.
+  function adopt(block, src, icon, label, cls) {
+    var acts = block.querySelector('.pb-acts');
+    if (!src || !acts) return;
+    src.className = cls || '';
+    src.innerHTML = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' +
+      ICONS[icon] + '</svg><span>' + label + '</span>';
+    acts.appendChild(src);
+  }
+
   function build() {
-    var pb = document.querySelector('.progress-block');
+    if (!PROFILE) return false;
+    var pb = document.querySelector(PROFILE.block);
     if (!pb || pb.dataset.cgv === '2') return false;
     pb.dataset.cgv = '2';
+    // Le Dossier nomme son bloc .prog : on lui ajoute la classe commune
+    // pour que toute la feuille progress.css s'applique telle quelle.
+    pb.classList.add('progress-block');
 
     var name = universeName();
+
+    // Le Dossier cable ses boutons par addEventListener : il faut les
+    // sortir du bloc AVANT d'en ecraser le contenu, sinon ils sont detruits
+    // avec leurs ecouteurs et le panneau se retrouve sans actions.
+    var carried = {};
+    if (PROFILE.ownButtons) {
+      ['presume', 'preset'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && el.parentNode) { el.parentNode.removeChild(el); carried[id] = el; }
+      });
+    }
 
     pb.innerHTML =
       '<div class="pb-head"><div class="pb-eyebrow">' + T.eyebrow +
@@ -95,9 +132,10 @@
           '</div>' +
         '</div>' +
         '<div class="pb-acts">' +
-          btn('cg-b-resume', 'resume', T.resume) +
-          btn('cg-b-badges', 'badges', T.badges) +
-          btn('cg-b-reset', 'reset', T.reset, 'pb-danger') +
+          (PROFILE.ownButtons ? '' :
+            btn('cg-b-resume', 'resume', T.resume) +
+            (PROFILE.badges ? btn('cg-b-badges', 'badges', T.badges) : '') +
+            btn('cg-b-reset', 'reset', T.reset, 'pb-danger')) +
         '</div>' +
       '</div>' +
 
@@ -105,18 +143,29 @@
       '<div class="pb-hint">' + T.hint + '</div>' +
 
       // Noeuds conserves : le code des pages ecrit encore dedans.
-      '<div class="pb-legacy"><div id="pb-fill"></div>' +
-      '<span id="pb-counts"></span></div>';
+      // Sur le Dossier, refresh() vise #pnum et #pfill : les supprimer
+      // ferait planter la page a chaque clic.
+      '<div class="pb-legacy">' +
+      (PROFILE.ownButtons
+        ? '<span id="pnum"></span><div class="pbar"><i id="pfill"></i></div>'
+        : '<div id="pb-fill"></div><span id="pb-counts"></span>') +
+      '</div>';
 
-    document.getElementById('cg-b-resume').onclick = function () {
-      if (typeof window.cgResume === 'function') window.cgResume();
-    };
-    document.getElementById('cg-b-badges').onclick = function () {
-      if (typeof window.openBadgeModal === 'function') window.openBadgeModal();
-    };
-    document.getElementById('cg-b-reset').onclick = function () {
-      if (typeof window.resetProgress === 'function') window.resetProgress();
-    };
+    if (PROFILE.ownButtons) {
+      adopt(pb, carried.presume, 'resume', T.resume, '');
+      adopt(pb, carried.preset, 'reset', T.reset, 'pb-danger');
+    } else {
+      document.getElementById('cg-b-resume').onclick = function () {
+        if (typeof window.cgResume === 'function') window.cgResume();
+      };
+      var bb = document.getElementById('cg-b-badges');
+      if (bb) bb.onclick = function () {
+        if (typeof window.openBadgeModal === 'function') window.openBadgeModal();
+      };
+      document.getElementById('cg-b-reset').onclick = function () {
+        if (typeof window.resetProgress === 'function') window.resetProgress();
+      };
+    }
     return true;
   }
 
@@ -138,15 +187,18 @@
     var el = document.getElementById('cg-done');
     if (!el) return;
 
-    var rows = document.querySelectorAll('.en[data-id]');
+    var rows = document.querySelectorAll(PROFILE.rows);
     var RT = table();
     var total = 0, done = 0, left = 0, unknown = 0;
 
     for (var i = 0; i < rows.length; i++) {
+      if (PROFILE.hide && rows[i].classList.contains(PROFILE.hide)) continue;
       total++;
-      if (rows[i].classList.contains('done')) { done++; continue; }
+      if (rows[i].classList.contains(PROFILE.done)) { done++; continue; }
       if (!RT) continue;
-      var v = RT[rows[i].dataset.id];
+      var key = rows[i].dataset.id ||
+        (rows[i].querySelector('[data-id]') || {dataset:{}}).dataset.id;
+      var v = RT[key];
       if (v === undefined || v === null) { unknown++; continue; }
       left += v;
     }
@@ -167,17 +219,20 @@
   }
 
   // ── branchement sur le rendu existant des pages ──────────
+  // Le refresh() du Dossier vit dans une IIFE : impossible de l'envelopper.
+  // On repeint donc apres chaque clic, une fois le gestionnaire de la page
+  // passe. Sur les timelines, on enveloppe renderProgress comme avant.
   function hook() {
-    if (typeof window.renderProgress !== 'function' ||
-        window.renderProgress.cgWrapped) return;
-    var orig = window.renderProgress;
+    var name = typeof window.renderProgress === 'function' ? 'renderProgress' : null;
+    if (!name || window[name].cgWrapped) return;
+    var orig = window[name];
     var wrapped = function () {
       var out = orig.apply(this, arguments);
       paint();
       return out;
     };
     wrapped.cgWrapped = true;
-    window.renderProgress = wrapped;
+    window[name] = wrapped;
   }
 
   function start() {
@@ -189,7 +244,7 @@
     // La timeline peut etre construite apres nous : on repeint
     // quand des entrees arrivent. On ignore les mutations venant du
     // bloc lui-meme, sinon nos propres ecritures relanceraient la boucle.
-    var block = document.querySelector('.progress-block');
+    var block = PROFILE ? document.querySelector(PROFILE.block) : null;
     var pending = null;
     new MutationObserver(function (muts) {
       for (var i = 0; i < muts.length; i++) {
@@ -207,6 +262,8 @@
   } else {
     start();
   }
+
+  document.addEventListener('click', function () { setTimeout(paint, 0); });
 
   window.cgPaintProgress = paint;
 })();

@@ -29,6 +29,21 @@
   var CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
   var LEVEL_IDS = ['lvl-must', 'lvl-imp', 'lvl-bonus', 'fbt-imp', 'fbt-bonus'];
 
+  // Deux conventions : les timelines utilisent .fbt + classe .active,
+  // le Dossier .chip + classe .on. Le reste du code est commun.
+  function profile() {
+    if (document.querySelector('.filter-bar .fbt, .filter-row .fbt')) return {
+      bar: '.filter-bar, .filter-row', btn: '.fbt', on: 'active',
+      rows: '.en[data-id]', hide: null, after: null
+    };
+    if (document.querySelector('.chips .chip')) return {
+      bar: '.chips', btn: '.chip', on: 'on',
+      rows: '.it', hide: 'hide', after: '.prog'
+    };
+    return null;
+  }
+  var P = null;
+
   function el(tag, cls, html) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -41,6 +56,8 @@
   // reperee par le libelle identique. Pour une branche DC : la
   // couleur est deja en style inline sur le bouton.
   function colorFor(btn, legend) {
+    var c = btn.style && btn.style.getPropertyValue('--c');
+    if (c) return c.trim();
     if (btn.style && btn.style.color) return btn.style.color;
     if (!legend) return '';
     var label = btn.textContent.trim().toLowerCase();
@@ -54,6 +71,8 @@
   }
 
   // ── habillage d'un bouton en case a cocher ───────────────
+  function isOn(b) { return b.classList.contains(P.on); }
+
   function dress(btn, color) {
     if (btn.dataset.fpDressed) return;
     btn.dataset.fpDressed = '1';
@@ -65,7 +84,7 @@
     btn.style.borderColor = '';       // DC posait la couleur en inline
     btn.style.color = '';
     btn.setAttribute('role', 'checkbox');
-    btn.setAttribute('aria-checked', btn.classList.contains('active'));
+    btn.setAttribute('aria-checked', isOn(btn));
   }
 
   function section(labelText, buttons, panelBody) {
@@ -85,9 +104,11 @@
   }
 
   function build() {
-    var bar = document.querySelector('.filter-bar, .filter-row');
+    P = profile();
+    if (!P) return false;
+    var bar = document.querySelector(P.bar);
     if (!bar) return false;
-    var buttons = [].slice.call(bar.querySelectorAll('.fbt'));
+    var buttons = [].slice.call(bar.querySelectorAll(P.btn));
     if (!buttons.length) return false;
 
     var legend = document.getElementById('tl-legend');
@@ -97,7 +118,8 @@
     // classement
     var g = { types: [], levels: [], branches: [], opts: [] };
     buttons.forEach(function (b) {
-      if (b.classList.contains('type-filter-btn')) g.types.push(b);
+      if (b.dataset.f) g.types.push(b);                      // Dossier
+      else if (b.classList.contains('type-filter-btn')) g.types.push(b);
       else if (b.dataset.univ) g.branches.push(b);
       else if (LEVEL_IDS.indexOf(b.id) !== -1) g.levels.push(b);
       else g.opts.push(b);
@@ -148,7 +170,15 @@
     }
 
     bar.classList.add('fp-source');
-    bar.parentNode.insertBefore(fp, bar);
+    var anchor = P.after ? document.querySelector(P.after) : null;
+    if (anchor && anchor.parentNode) {
+      anchor.parentNode.insertBefore(fp, anchor.nextSibling);   // sous la progression
+    } else {
+      bar.parentNode.insertBefore(fp, bar);
+    }
+    // le compteur du Dossier fait doublon avec le notre
+    var cnt = document.getElementById('count');
+    if (cnt && P.after) cnt.classList.add('fp-source');
     recount();
     return true;
   }
@@ -166,16 +196,17 @@
   function recount() {
     var out = document.getElementById('fp-count');
     if (!out) return;
-    var rows = document.querySelectorAll('.en[data-id]');
+    var rows = document.querySelectorAll(P.rows);
     var shown = 0;
     for (var i = 0; i < rows.length; i++) {
+      if (P.hide && rows[i].classList.contains(P.hide)) continue;
       if (!hidden(rows[i])) shown++;
     }
     out.textContent = shown + ' / ' + rows.length + ' ' + T.shown;
     var fp = document.querySelector('.fp');
     if (fp) {
-      [].slice.call(fp.querySelectorAll('.fbt')).forEach(function (b) {
-        b.setAttribute('aria-checked', b.classList.contains('active'));
+      [].slice.call(fp.querySelectorAll(P.btn)).forEach(function (b) {
+        b.setAttribute('aria-checked', isOn(b));
       });
     }
   }
@@ -189,19 +220,20 @@
     if (bulk) {
       var want = !!bulk.hasAttribute('data-fp-all');
       var sec = bulk.closest('.fp-sec');
-      [].slice.call(sec.querySelectorAll('.fbt')).forEach(function (b) {
+      [].slice.call(sec.querySelectorAll(P.btn)).forEach(function (b) {
         // on passe par le clic du bouton : sa propre logique fait le filtrage
-        if (b.classList.contains('active') !== want) b.click();
+        if (isOn(b) !== want) b.click();
       });
       recount();
       return;
     }
-    if (e.target.closest('.fbt')) { recount(); setTimeout(recount, 0); }
+    if (e.target.closest(P.btn)) { recount(); setTimeout(recount, 0); }
   });
 
   function start() {
     var built = build();
-    var bar = document.querySelector('.filter-bar, .filter-row');
+    var pr = profile();
+    var bar = pr ? document.querySelector(pr.bar) : null;
     if (bar) {
       // la barre est remplie par buildTimeline, parfois apres nous :
       // on observe uniquement la barre, jamais le panneau, donc nos
