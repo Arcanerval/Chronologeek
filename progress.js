@@ -14,22 +14,24 @@
   // .read, avec ses propres boutons deja cablees). On detecte laquelle.
   var PROFILE = document.querySelector('.progress-block') ? {
     block: '.progress-block', rows: '.en[data-id]', done: 'done',
-    hide: null, badges: true, ownButtons: false
+    hide: null, badges: true, ownButtons: false, verb: 'watched'
   } : document.querySelector('.prog') ? {
     block: '.prog', rows: '.it', done: 'read',
-    hide: 'hide', badges: false, ownButtons: true
+    hide: 'hide', badges: false, ownButtons: true, verb: 'read'
   } : null;
 
   var FR = document.documentElement.lang === 'fr' ||
            location.pathname.indexOf('/fr/') === 0;
 
   var T = FR ? {
-    eyebrow: 'Ma progression', watched: 'vus', left: 'restantes', done: 'terminé',
+    eyebrow: 'Ma progression', watched: 'vus', read: 'lus',
+    left: 'restantes', done: 'terminé',
     resume: 'Reprendre', badges: 'Badges', reset: 'Remettre à zéro',
     hint: 'Cochez votre progression, elle est sauvegardée sur ce navigateur',
     unknown: 'Durée inconnue pour certaines entrées'
   } : {
-    eyebrow: 'My progress', watched: 'watched', left: 'left', done: 'done',
+    eyebrow: 'My progress', watched: 'watched', read: 'read',
+    left: 'left', done: 'done',
     resume: 'Resume', badges: 'Badges', reset: 'Reset',
     hint: 'Check off your progress — it stays saved in this browser',
     unknown: 'No runtime data for some entries'
@@ -118,7 +120,7 @@
           '<div class="rd">' +
             '<div class="rd-val"><span id="cg-done">0</span>' +
             '<span class="of" id="cg-total">/ 0</span></div>' +
-            '<div class="rd-lab">' + T.watched + '</div>' +
+            '<div class="rd-lab">' + T[PROFILE.verb] + '</div>' +
           '</div>' +
           '<div class="rd is-time" id="cg-rd-time" hidden>' +
             '<div class="rd-val"><span id="cg-h">0</span>' +
