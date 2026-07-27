@@ -1,0 +1,42 @@
+name: Temps de visionnage
+
+# Pas de schedule : les durees ne bougent que quand tu ajoutes des entrees.
+# Tu lances a la main depuis l'onglet Actions -> "Run workflow".
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # runtime.py n'utilise que la bibliotheque standard : rien a installer.
+
+      - name: Restaurer le cache TMDB
+        uses: actions/cache@v4
+        with:
+          path: runtime-cache.json
+          key: runtime-cache-${{ github.run_id }}
+          restore-keys: runtime-cache-
+
+      - name: Calculer les durees
+        env:
+          TMDB_KEY: ${{ secrets.TMDB_KEY }}
+        run: python runtime.py
+
+      - name: Commit si changement
+        run: |
+          git config user.name  "Runtime bot"
+          git config user.email "actions@github.com"
+          git add starwars.html marvel.html dc.html \
+                  fr/starwars.html fr/marvel.html fr/dc.html
+          git diff --staged --quiet || git commit -m "Runtime : mise a jour des temps de visionnage"
+          git push

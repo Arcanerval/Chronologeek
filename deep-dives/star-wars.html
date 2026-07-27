@@ -178,8 +178,11 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
   .pbar{order:2}
 }
 </style>
+  <link rel="stylesheet" href="/intro.css"/>
+  <link rel="stylesheet" href="/progress.css"/>
+  <link rel="stylesheet" href="/filters.css"/>
 </head>
-<body>
+<body data-universe="sw">
 <nav>
     <div class="logo" onclick="window.location.href='/'">
       <img src="/images/logo-chronologeek.png" alt="Chronologeek"/>
@@ -210,7 +213,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
 </div>
 <div class="wrap">
 <h1>Star Wars Deep Dive<span class='h1sub'>Novels &amp; Comics</span></h1>
-<p class="sub">If you want to get into the Star Wars novels and comics, you're in the right place. I'm assuming that if you're here, you've already watched the animated and live-action media.<br><br>The omitted media are the same as on the main timeline, except <strong>The Acolyte</strong>, which may be worth watching if you read the comics: it's the only screen production (besides <strong>Star Wars: Young Jedi Adventures</strong>) set during the High Republic.<br><br>The omitted comics are throwaway one-shots, comics aimed at young children, or adaptations of screen productions.</p>
+<div class="nb" id="tl-notes"><p class="intro-lead">If you want to get into the Star Wars novels and comics, you're in the right place.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>I'm assuming that if you're here, you've already watched the animated and live-action media.</span></div><details class="cuts"><summary>What's left out, and why<span class="n">2 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-prose" style="margin:0 0 .6rem">The omitted media are the same as on the main timeline, except <strong>The Acolyte</strong>, which may be worth watching if you read the comics: it's the only screen production (besides <strong>Star Wars: Young Jedi Adventures</strong>) set during the High Republic.</p><p class="cuts-prose" style="margin:0 0 .6rem">The omitted comics are throwaway one-shots, comics aimed at young children, or adaptations of screen productions.</p></div></details></div>
 <div class="stats"><div class="stat"><b>532</b><span>Entries in total</span></div><div class="stat"><b>111</b><span>Comic series</span></div><div class="stat"><b>57</b><span>Novels</span></div><div class="stat"><b>30</b><span>Young adult novels</span></div><div class="stat"><b>9</b><span>Audio dramas</span></div></div>
 <div class="chips"><button class="chip on" data-f="roman" style="--c:#a78bfa">Novel</button><button class="chip on" data-f="jeunesse" style="--c:#4ade80">Young adult novel</button><button class="chip on" data-f="comic" style="--c:#fb923c">Comic</button><button class="chip on" data-f="audio" style="--c:#f472b6">Audio</button></div>
 <div class="prog">
@@ -895,5 +898,7 @@ h1{font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradi
   refresh();
 })();
 </script>
+  <script src="/progress.js"></script>
+  <script src="/filters.js"></script>
 </body>
 </html>

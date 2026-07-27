@@ -1,0 +1,120 @@
+# Chronologeek
+
+Référence mondiale des timelines geek, publiée sur GitHub Pages à `chronologeek.app`.
+Site statique : HTML/CSS/JS vanilla, pas de build front, pas de framework.
+Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitHub Actions.
+
+## Structure
+
+- Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`, `avatar.html`
+- `/fr/` = version **française**, mêmes noms de fichiers
+- `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier (532 romans, comics, fictions audio)
+- `index.html`, `whats-new.html` / `nouveautes.html`, `upcoming.html` / `a-venir.html`, `radar.html`
+
+**Règle absolue : toute modification d'une page racine doit être répliquée dans `/fr/`.**
+Vérifier après coup que les deux versions produisent les mêmes comptes d'entrées.
+
+## Charte couleurs
+
+Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar `#7dd3fc`.
+Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
+Badges de type : film `#64b5f6`, film animé `#90caf9`, série `#81c784`, série animée `#ce93d8`,
+jeu `#ffb74d`, spécial `#ffa726`, vidéo `#f472b6`.
+Cases à cocher : `border:2px solid #7e7ea8` + `box-shadow:0 0 0 1px rgba(126,126,168,.25)`.
+
+## Composants partagés
+
+Quatre fichiers à la racine, chargés par toutes les pages timeline et par le Dossier.
+
+- `progress.css` / `progress.js` — bloc de progression. Tout est scopé sous
+  `[data-cgv="2"]`, posé par le script, pour battre les anciennes règles `.progress-block`
+  sans `!important` et sans dépendre de l'ordre de chargement.
+- `intro.css` — intro de page (accroche, bulle, cartes de repères, dépliant des omissions),
+  plus la barre de stats. Neutralise `#tl-notes.nb` avec un sélecteur d'id.
+- `filters.css` / `filters.js` — panneau unique qui remplace la légende et la barre de filtres.
+  Tout est scopé sous `.fp` parce que le Dossier utilise déjà `.chip` et `.chips`.
+
+### Principe de conception à respecter
+
+`progress.js` et `filters.js` **déplacent** les boutons existants des pages au lieu d'en
+recréer. Ils gardent leur `id`, leur `onclick` et leurs `addEventListener`, donc
+`applyFilters()`, `applyLevelFilter()` et `refresh()` des pages continuent de tourner
+sans modification. Ne jamais casser ça : c'est ce qui rend les composants sûrs.
+
+Corollaire : détacher un bouton **avant** d'écraser l'`innerHTML` du bloc parent,
+sinon il est détruit avec ses écouteurs.
+
+Les nœuds que le code des pages alimente encore (`#pb-counts`, `#pb-fill` sur les
+timelines, `#pnum`, `#pfill` sur le Dossier) sont conservés cachés dans `.pb-legacy`.
+Les supprimer fait planter les pages au premier clic.
+
+### Deux conventions coexistent
+
+| | Timelines | Dossier |
+|---|---|---|
+| bloc progression | `.progress-block` | `.prog` |
+| entrées | `.en[data-id]`, terminé = `.done` | `.it`, lu = `.read`, filtré = `.hide` |
+| filtres | `.fbt`, actif = `.active` | `.chip`, actif = `.on` |
+| conteneur filtres | `.filter-bar` (SW, Marvel), `.filter-row` (DC) | `.chips` |
+| verbe | « vus » / « watched » | « lus » / « read » |
+
+## Scripts de génération
+
+Tous lisent leur clé TMDB dans la variable d'environnement `TMDB_KEY`
+(secret GitHub du même nom). Tous sont rejouables : ils nettoient leur propre bloc
+avant de réinjecter.
+
+- `dossier.py`, `dossier_i18n.py` — génèrent le Dossier dans les deux langues.
+  Table `FR_OVERRIDE_RAW` pour les titres français corrigés à la main.
+- `runtime.py` — calcule le temps de visionnage par entrée et injecte
+  `const RT={id:minutes}`. Workflow `runtime.yml`, déclenchement manuel.
+- `radar.py` — radar des sorties, workflow `radar.yml`, toutes les 6 h.
+
+Après avoir poussé une page à la main, **relancer l'action concernée** : les pages
+livrées n'ont pas la table `RT`, c'est l'action qui l'injecte. Pousser d'abord,
+lancer ensuite, sinon le push écrase la table.
+
+## Niveaux d'importance
+
+`level:"must"` (⭐), `level:"important"` (🚨), `level:"bonus"` (rien).
+Rendu : classe `.must` / `.imp` sur `.en` (liseré or / orange), icône dans `.en-level-icon`,
+attribut `data-level` pour le filtrage.
+Star Wars : 9 must, 37 important, 15 bonus. Marvel et DC ont leurs propres répartitions.
+
+## Pièges déjà rencontrés
+
+- `const RT` au premier niveau d'un script **n'est pas** sur `window` : lire l'identifiant
+  nu protégé par `typeof`, jamais `window.RT`.
+- DC n'a pas de `#tl-content` : utiliser `.en[data-id]` sans préfixe de conteneur.
+- DC masque des **colonnes entières** (`.zcol`) et pas les entrées : pour compter les
+  entrées visibles, remonter la chaîne des parents.
+- DC écrit ses objets JS avec des **apostrophes simples**, SW et Marvel avec des doubles.
+  Un parseur doit gérer les deux, et les apostrophes internes (`Propriété d'Ezra Bridger`)
+  cassent un regex naïf : apparier la même quote.
+- Wookieepedia : l'API `/api/v1` de Fandom renvoie 403, passer par l'API MediaWiki standard.
+- TMDB : résoudre les identifiants de société dynamiquement, jamais en dur.
+- OpenLibrary : espacer les requêtes de 350 ms, dédupliquer le cache, préférer les ISBN directs.
+- Les émojis drapeaux ne s'affichent pas sur Windows : utiliser des SVG pour les
+  sélecteurs de langue.
+- `openpyxl` en `read_only` : vérifier la longueur des tuples, les lignes vides en
+  renvoient des courts.
+- Ne pas remettre l'échappatoire `showTypes.size===0` dans `applyFilters` : zéro type
+  coché doit afficher zéro entrée, sinon décocher tout réaffiche toute la timeline.
+
+## Les textes de Niko
+
+**Ne jamais réécrire ses textes.** Quand il fournit un texte, l'extraire mot pour mot
+et vérifier par script que chaque fragment affiché existe à l'identique dans la source.
+Reformuler, condenser ou « améliorer » sa prose est une erreur, pas une initiative.
+
+Seules exceptions admises, et à signaler explicitement : les intitulés de structure
+(titres de cartes, libellés de catégories) quand sa version en prose n'en a pas,
+et la majuscule initiale quand on découpe une phrase.
+
+## Ce qui reste à faire
+
+- Reconstruire `avatar.html` avec les quatre composants partagés (132 entrées, 8 ères,
+  calendrier BG/AG). La version anglaise à la racine est encore la page française
+  non traduite.
+- Passer les pages « Nouveautés » et « À venir » aux composants partagés.
+- Monétisation : Patreon ou Ko-fi, pas encore activée.

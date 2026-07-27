@@ -1,0 +1,14 @@
+# Outillage agent (ruflo / Claude Code) — purement local, ne fait pas partie du site.
+# Se réinstalle avec la commande d'installation de ruflo, donc rien à versionner.
+.claude/*
+!.claude/launch.json
+.claude-flow/
+.agents/
+.swarm/
+.mcp.json
+
+# Bases de données runtime générées par ruflo
+ruvector.db
+*.db-journal
+*.db-wal
+*.db-shm
