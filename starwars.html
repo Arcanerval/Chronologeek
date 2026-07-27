@@ -22,337 +22,154 @@
 <link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/starwars"/>
-<style>
-:root{
-  --bg:#08080f;--surface:#0f0f1a;--surface2:#161625;--border:#1e1e35;--border2:#2a2a48;
-  --accent:#7c6af7;--accent2:#f06292;--gold:#f5c842;--text:#e2e2f0;--muted:#686880;
-  --muted2:#9090b0;--green:#56c27a;--orange:#f09642;--red:#e05555;--radius:12px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(240,98,146,.08),transparent 60%);pointer-events:none}
-.nav-maj{font-size:.7rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
-.lang-btn{display:flex;align-items:center;flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);line-height:0;transition:transform .2s,box-shadow .2s,border-color .2s;text-decoration:none}
-.lang-btn .flag{height:20px;width:30px;display:block}
-.lang-btn:hover{transform:scale(1.08);border-color:var(--accent);box-shadow:0 0 14px rgba(124,106,247,.45)}
-@media(max-width:700px){.lang-btn{margin-left:auto}.burger{margin-left:.3rem}}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
-nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:30px;display:block;object-fit:contain;background:transparent}
-.logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:1.25rem;align-items:center}
-.nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
-.nav-sp{flex:1}
-.pbn{display:none;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted2)}.pbn.show{display:flex}
-.pbn-track{width:100px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.pbn-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .4s}
-/* HOME */
-#home-page{display:none}#home-page.v{display:block}
-.hero{padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(124,106,247,.15),transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:1}
-.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,var(--accent) 45%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.25rem;line-height:1}
-.hero-rune{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-.hero-tagline{color:var(--muted2);font-size:1.05rem;max-width:540px;margin:0 auto 3.5rem;line-height:1.65}
-.ugrid{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;max-width:960px;margin:0 auto}
-.ucard{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--border2);border-radius:18px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);width:240px;overflow:hidden}
-.ucard:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 60px rgba(124,106,247,.25),0 0 0 1px rgba(124,106,247,.3)}
-.cbanner{height:130px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
-.cbanner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
-.cbanner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,var(--surface) 100%);pointer-events:none}
-.cicon{position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.9))}
-.cbody{padding:1.1rem 1.25rem 1.25rem}
-.cname{font-weight:800;font-size:1.05rem;margin-bottom:.3rem}
-.csub{font-size:.78rem;color:var(--muted2);line-height:1.4}
-.cprogress{margin-top:.75rem;display:flex;align-items:center;gap:.6rem;font-size:.72rem;color:var(--muted2)}
-.cp-track{flex:1;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.cp-fill{height:100%;border-radius:2px;transition:width .5s}
-.cnew{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:.6rem}
-/* TIMELINE PAGE */
-.tl-page{display:block;max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
-.bc{font-size:.78rem;color:var(--muted2);margin-bottom:1.25rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
-.bc:hover{color:var(--accent)}
-.page-title{font-size:2.1rem;font-weight:900;letter-spacing:-.5px;margin-bottom:.4rem}
-.page-sub{color:var(--muted2);font-size:.9rem;line-height:1.55;margin-bottom:1.5rem}
-.progress-block{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem}
-.pb-info{flex:1}.pb-label{font-size:.72rem;color:var(--muted2);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em}
-.pb-track{height:6px;background:var(--border2);border-radius:3px;overflow:hidden;margin-bottom:.35rem}
-.pb-fill{height:100%;border-radius:3px;transition:width .5s}
-.pb-counts{font-size:.78rem;color:var(--muted2)}.pb-counts strong{color:var(--text)}
-.pb-reset{background:transparent;border:1px solid var(--border2);color:var(--muted2);padding:.35rem .8rem;border-radius:8px;font-size:.75rem;cursor:pointer;transition:all .2s;white-space:nowrap}
-.pb-reset:hover{border-color:var(--red);color:var(--red)}
-.nb{background:linear-gradient(135deg,rgba(124,106,247,.08),rgba(240,98,146,.05));border:1px solid rgba(124,106,247,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.1rem 1.3rem;margin-bottom:1.5rem;font-size:.86rem;line-height:1.75;color:var(--muted2)}
-.nb strong{color:var(--text)}
-.leg{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;font-size:.82rem}
-.leg-title{width:100%;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.1rem}
-/* BADGES */
-.b{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;font-size:.69rem;font-weight:700;white-space:nowrap}
-.bf{background:rgba(100,181,246,.14);color:#64b5f6;border:1px solid rgba(100,181,246,.28)}
-.bfa{background:rgba(144,202,249,.14);color:#90caf9;border:1px solid rgba(144,202,249,.28)}
-.bs{background:rgba(129,199,132,.14);color:#81c784;border:1px solid rgba(129,199,132,.28)}
-.ba{background:rgba(206,147,216,.14);color:#ce93d8;border:1px solid rgba(206,147,216,.28)}
-.bj{background:rgba(255,183,77,.14);color:#ffb74d;border:1px solid rgba(255,183,77,.28)}
-.bsp{background:rgba(255,167,38,.14);color:#ffa726;border:1px solid rgba(255,167,38,.28)}
-.bv{background:rgba(244,114,182,.14);color:#f472b6;border:1px solid rgba(244,114,182,.28)}
-.nt{display:inline-flex;font-size:.65rem;padding:2px 7px;border-radius:5px;font-weight:700;white-space:nowrap;background:rgba(224,85,85,.12);color:var(--red);border:1px solid rgba(224,85,85,.25)}
-.ft{display:inline-flex;font-size:.65rem;padding:2px 7px;border-radius:5px;white-space:nowrap;background:rgba(240,150,66,.12);color:var(--orange);border:1px solid rgba(240,150,66,.25)}
-.dt{display:inline-flex;font-size:.65rem;padding:2px 7px;border-radius:5px;white-space:nowrap;background:rgba(124,106,247,.12);color:#a99fff;border:1px solid rgba(124,106,247,.25)}
-/* FILTRES */
-.filter-bar{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
-.filter-group{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
-.filter-label{font-size:.72rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;white-space:nowrap;min-width:56px}
-.fbt{background:var(--surface2);border:1px solid var(--border2);color:var(--muted2);padding:.35rem .85rem;border-radius:20px;cursor:pointer;font-size:.79rem;transition:all .2s;user-select:none}
-.fbt:hover{border-color:var(--accent);color:var(--text)}
-.fbt.active{background:rgba(124,106,247,.2);border-color:var(--accent);color:#c4baff;font-weight:600}
-/* ERA */
-.era-node{display:flex;align-items:flex-start;margin:2.5rem 0 .6rem;position:relative}
-.era-node-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px;z-index:2;margin-right:10px}
-.era-node-dot.sv{background:#90caf9}.era-node-dot.fox{background:#ffb74d}
-.era-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);line-height:1.3}
-.era-label.sv{color:#90caf9}.era-label.fox{color:#ffb74d}
-/* SEGMENTS */
-.segment-box{margin:.4rem 0 1rem;border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:linear-gradient(160deg,var(--surface),var(--surface2));margin-left:40px}
-.segment-header{padding:.7rem 1rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--border2)}
-.segment-header.sv{background:linear-gradient(135deg,rgba(144,202,249,.08),rgba(206,147,216,.05))}
-.segment-header.fox{background:linear-gradient(135deg,rgba(255,183,77,.08),rgba(224,85,85,.05))}
-.segment-icon{font-size:1.2rem}.segment-title{font-weight:800;font-size:.88rem}
-.segment-header.sv .segment-title{color:#90caf9}.segment-header.fox .segment-title{color:#ffb74d}
-.segment-sub{font-size:.72rem;color:var(--muted2);margin-left:auto}.segment-body{padding:.5rem .65rem}
-/* ENTRY */
-.en{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.75rem;display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s,background .2s,box-shadow .2s;cursor:pointer}
-.en:hover{border-color:var(--border2);background:var(--surface2);box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.en.must{border-left:3px solid var(--gold)}.en.imp{border-left:3px solid var(--orange)}
-.en.done{opacity:.5}.en.done .en-name{text-decoration:line-through;text-decoration-color:var(--muted)}
-.en.open{border-color:var(--accent);box-shadow:0 0 0 1px rgba(124,106,247,.2),0 8px 30px rgba(0,0,0,.4)}
-/* Décalage droite pour les non-616 — amplifié */
-.en.deviate{margin-left:40px;border-left-style:dashed}
-.en-top{display:flex;overflow:hidden;min-height:86px}
-.en-check{width:40px;min-width:40px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);flex-shrink:0;transition:background .2s;cursor:pointer}
-.en-check:hover{background:rgba(124,106,247,.08)}
-.checkmark{width:20px;height:20px;border-radius:6px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:.75rem;color:#fff;font-weight:700}
-.en-check:hover .checkmark{border-color:var(--accent)}
-.en.done .checkmark{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent}
-/* Date badge — grande */
-.en-datebadge{width:100px;min-width:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border);flex-shrink:0;padding:.4rem .35rem;background:rgba(124,106,247,.04);gap:.12rem}
-.en-level-icon{font-size:1rem;line-height:1;min-height:1rem}
-.date-main{font-size:.82rem;font-weight:900;color:var(--text);text-align:center;line-height:1.2}
-.dim-badge{font-size:.52rem;font-weight:700;color:#a99fff;background:rgba(124,106,247,.15);border:1px solid rgba(124,106,247,.25);border-radius:4px;padding:1px 4px;text-align:center;line-height:1.4;margin-top:.1rem;max-width:92px;word-break:break-word}
-.ep{width:200px;min-width:200px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border-right:1px solid var(--border);cursor:pointer}
-.ep img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .3s}
-.ep:hover img{transform:scale(1.06)}.pp{font-size:1.5rem;opacity:.15}
-.em{flex:1;padding:.7rem .9rem;min-width:0;display:flex;flex-direction:column;gap:.18rem}
-.tr{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
-.en-name{font-weight:600;font-size:.92rem;line-height:1.3;color:var(--text)}
-.enote{font-size:.78rem;color:var(--muted2);font-style:italic;line-height:1.5}
-.edetails{font-size:.78rem;color:var(--muted2);line-height:1.5;padding:.25rem .5rem;border-left:2px solid var(--border2);background:rgba(124,106,247,.03);border-radius:0 4px 4px 0;margin-top:.1rem}
-.esub{padding-left:.5rem;border-left:2px solid var(--border2);margin-top:.25rem}
-.si{font-size:.76rem;color:var(--muted2);padding:.07rem 0 .07rem .45rem;line-height:1.4}.si.sep{height:.1rem;margin:.7rem 0 .7rem .45rem;background:rgba(124,106,247,.3);border-radius:2px;padding:0;border:none;display:block}
-.si strong{color:var(--muted2)}
-/* EXPAND */
-.en-expand{display:none;border-top:1px solid var(--border);background:rgba(0,0,0,.25)}
-.en.open .en-expand{display:block}
-.expand-inner{display:flex;min-height:150px}
-.expand-poster{width:100px;min-width:100px;flex-shrink:0;cursor:pointer;overflow:hidden;position:relative}
-.expand-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-.expand-poster:hover img{transform:scale(1.04)}
-.expand-poster-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s;font-size:1.6rem;opacity:0}
-.expand-poster:hover .expand-poster-ov{background:rgba(0,0,0,.45);opacity:1}
-.expand-info{flex:1;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.45rem;overflow:hidden}
-.expand-synopsis{font-size:.8rem;color:var(--muted2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-.expand-meta{display:flex;flex-wrap:wrap;gap:.25rem .6rem;font-size:.74rem;color:var(--muted2)}
-.expand-meta span strong{color:var(--text)}
-.expand-trailer-link{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,0,0,.1);border:1px solid rgba(255,0,0,.25);color:#ff6b6b;padding:.28rem .7rem;border-radius:8px;font-size:.77rem;font-weight:600;text-decoration:none;transition:all .2s;width:fit-content}
-.expand-trailer-link:hover{background:rgba(255,0,0,.2)}
-.expand-loading{padding:1.5rem;color:var(--muted);font-size:.8rem;text-align:center}
-.expand-no-data{padding:1rem;color:var(--muted);font-size:.8rem}
-/* MODAL */
-.pm{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;backdrop-filter:blur(8px);cursor:pointer}
-.pm.o{display:flex}.pm img{max-height:88vh;max-width:88vw;border-radius:14px;box-shadow:0 30px 100px rgba(0,0,0,.9)}
-.pm-x{position:absolute;top:1.25rem;right:1.75rem;color:#fff;font-size:1.8rem;cursor:pointer;opacity:.6}
-/* CS */
-.cs{display:none;text-align:center;padding:6rem 2rem;color:var(--muted2)}.cs.v{display:block}
-.cs h2{font-size:2rem;margin-bottom:1rem;color:var(--text)}
-@media(max-width:700px){
-  .tl-page{padding:1rem .6rem;max-width:100%}
-  .en-top{flex-direction:column;min-height:unset}
-  .ep{width:100%!important;min-width:unset!important;height:120px;border-right:none;border-bottom:1px solid var(--border)}
-  .ep img{object-position:center 25%}
-  .en-check{width:100%;height:34px;border-right:none;border-bottom:1px solid var(--border);justify-content:flex-start;padding-left:1rem}
-  .en-datebadge{width:100%!important;min-width:unset!important;flex-direction:row;gap:.6rem;justify-content:flex-start;border-right:none;border-bottom:1px solid var(--border);padding:.3rem .75rem;background:rgba(124,106,247,.05)}
-  .en-level-icon{min-height:unset}
-  .dim-badge{max-width:none;font-size:.6rem}
-  .em{padding:.6rem .75rem}
-  .en-name{font-size:.88rem}
-  .enote{font-size:.75rem}
-  .b{font-size:.64rem;padding:2px 6px}
-  .nt,.ft,.dt{font-size:.62rem;padding:2px 5px}
-  .expand-poster{width:80px;min-width:80px}
-  nav{gap:.5rem;height:auto;padding:.5rem 0;flex-wrap:wrap}
-  .nav-links{gap:.7rem}
-  .nav-links a{font-size:.78rem}
-    .en.deviate{margin-left:10px}
-  .segment-box{margin-left:10px}
-  #miss-minute{width:64px;height:64px;bottom:1.25rem;right:1.25rem}
-  .filter-group{gap:.35rem}
-  .fbt{font-size:.73rem;padding:.28rem .65rem}
-  .progress-block{flex-direction:column;align-items:flex-start;gap:.75rem}
-}
-@media(max-width:420px){
-  .ep{height:90px}
-  .en-name{font-size:.82rem}
-}
-@media(max-width:420px){
-  .ep{width:60px;min-width:60px}
-  .en-check{width:28px;min-width:28px}
-  .en-name{font-size:.79rem}
-  .date-main{font-size:.63rem}
-}
-
-.expand-faq{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.35rem}
-.faq-item{border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--surface)}
-.faq-q{padding:.5rem .85rem;font-size:.82rem;font-weight:600;color:var(--accent);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;user-select:none}
-.faq-q::-webkit-details-marker{display:none}
-.faq-q::after{content:'›';font-size:1.2rem;transition:transform .2s;color:var(--muted2)}
-details[open] .faq-q::after{transform:rotate(90deg)}
-.faq-a{padding:.5rem .85rem .65rem;font-size:.81rem;color:var(--muted2);line-height:1.65;border-top:1px solid var(--border)}
-
-#grogu{position:fixed;bottom:2rem;right:2rem;z-index:300;width:88px;height:88px;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 4px 16px rgba(0,0,0,.6));display:none}
-#grogu.visible{display:block}
-#grogu img{width:100%;height:100%;object-fit:contain}
-#grogu:hover{transform:scale(1.15) rotate(8deg)}
-.grogu-normal{display:block}.grogu-hover{display:none}
-#grogu:hover .grogu-normal{display:none}
-#grogu:hover .grogu-hover{display:block}
-
-/* ═══ Mobile App Polish ═══ */
-html,body{overflow-x:clip}
-*{-webkit-tap-highlight-color:transparent}
-.logo img{width:auto;object-fit:contain}
-@media(max-width:700px){
-  .logo img{height:22px;max-width:44vw}
-  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
-  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  #grogu{width:60px;height:60px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
-}
-
-
-
-/* ═══ Menu mobile v2 ═══ */
-.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
-#mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
-#mmenu.open{display:flex}
-#mmenu a{color:var(--muted2);font-size:1.25rem;text-decoration:none;cursor:pointer;font-weight:600}
-#mmenu a.cur{color:var(--text);font-weight:800}
-#mmenu a.doss{color:var(--accent2)}
-.nav-links a.doss{color:var(--accent2);font-weight:700}
-@media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
-
-/* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
-.checkmark{width:20px;height:20px;min-width:20px;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
-.en.done .checkmark{background:var(--accent);border-color:var(--accent);color:#fff}
-.en-check:hover .checkmark{border-color:var(--accent)}
-@media(max-width:700px){.checkmark{width:24px;height:24px;min-width:24px;font-size:.8rem}}
-
-/* ═══ Harmonisation typographique ═══ */
-.page-title{font-size:2.1rem !important}
-.en-name{font-size:.92rem !important}
-.b{font-size:.66rem !important}
-.leg,#tl-legend{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;font-size:.8rem;color:var(--muted2)}
-
-/* ═══ Progress block uniforme ═══ */
-.progress-block{width:100%;box-sizing:border-box;flex-wrap:wrap;gap:.6rem}
-@media(max-width:700px){
-  .progress-block{flex-direction:row}
-  .pb-info{flex:1 1 100%}
-  .progress-block button{flex:1;white-space:nowrap}
-  .pbn{gap:.4rem;font-size:.68rem}
-  .pbn-track{width:54px}
-  .pbn.show{margin-left:auto}
-  .pbn.show~.lang-btn{margin-left:.15rem}
-}
-.nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
-.nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
-
-.stats{display:flex;flex-wrap:wrap;gap:0;margin:1.6rem 0 1.4rem;border-top:1px solid var(--border);
-       border-bottom:1px solid var(--border);padding:1.2rem 0}
-.stat{flex:1 1 0;min-width:104px;padding:0 1rem;position:relative;text-align:left}
-.stat+.stat{border-left:1px solid var(--border)}
-.stat b{display:block;font-size:2.1rem;font-weight:900;line-height:1;letter-spacing:-1px;
-        color:var(--text);font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:.45rem;font-size:.62rem;letter-spacing:.16em;
-           text-transform:uppercase;color:var(--muted)}
-@media(max-width:640px){
-  .stats{padding:.9rem 0;gap:.9rem 0}
-  .stat{flex:1 1 44%;min-width:0;padding:0 .7rem}
-  .stat:nth-child(odd){border-left:none}
-  .stat b{font-size:1.6rem}
-}
-</style>
-  <link rel="stylesheet" href="/progress.css"/>
-  <link rel="stylesheet" href="/intro.css"/>
-  <link rel="stylesheet" href="/filters.css"/>
+<link rel="stylesheet" href="/cg.css"/>
+<link rel="canonical" href="https://chronologeek.app/starwars"/>
+<script>window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","resetSW":"Reset your Star Wars progress?","resetMCU":"Reset your Marvel progress?","resetDC":"Reset your DC progress?","resetDos":"Reset your Deep Dive progress?","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's new","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project."},"universe":"sw","badgeLabels":{"film":["bf","MOVIE"],"filmanim":["bfa","ANIMATED MOVIE"],"serie":["bs","TV SHOW"],"anime":["ba","ANIMATED SHOW"],"jeu":["bj","VIDEO GAME"]},"badges":[{"id":"sw_padawan","universe":"sw","icon":"🌱","color":"#4ade80","trigger":"last","ids":["sw-toj4"],"label":"Padawan","desc":"The Republic Era completed"},{"id":"sw_chevalier","universe":"sw","icon":"⚔️","color":"#60a5fa","trigger":"last","ids":["sw-toe5"],"label":"Jedi Knight","desc":"The Clone Wars completed"},{"id":"sw_fuite","universe":"sw","icon":"🌑","color":"#f87171","trigger":"last","ids":["sw-survivor"],"label":"Jedi on the Run","desc":"The Imperial Era completed"},{"id":"sw_rebelle","universe":"sw","icon":"✊","color":"#fb923c","trigger":"last","ids":["sw-bf2-c2"],"label":"Rebel Jedi","desc":"The Rebellion Era completed"},{"id":"sw_survivant","universe":"sw","icon":"🌿","color":"#34d399","trigger":"last","ids":["sw-skelcrew"],"label":"Jedi Survivor","desc":"The New Republic Era completed"},{"id":"sw_dernier","universe":"sw","icon":"⚡","color":"#a78bfa","trigger":"last","ids":["sw-ep9"],"label":"Last Jedi","desc":"The First Order Era completed"},{"id":"sw_force","universe":"sw","icon":"🌟","color":"#ffd700","trigger":"100pct","ids":[],"label":"May the Force be with you","desc":"Star Wars 100% completed"}],"faqCats":[{"key":"quand","q":"When does {name} take place in the Star Wars universe?"},{"key":"pourquoi","q":"Why watch {name} at this point in the timeline?"}],"resetMsg":"Reset your Star Wars progress?"};</script>
 </head>
 <body data-universe="sw">
+
+<a class="skip" href="#main">Skip to content</a>
 <header>
-  <nav>
-    <div class="logo" onclick="window.location.href='/'">
-      <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
-    </div>
+  <nav class="nav" aria-label="Navigation">
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
     <div class="nav-links">
-      <a onclick="window.location.href='/'">Home</a>
+      <a href="/">Home</a>
       <a href="/deep-dives/" class="doss">Deep Dives</a>
-      <a onclick="window.location.href='/starwars'" style="color:var(--text);font-weight:700">Star Wars</a>
-      <a onclick="window.location.href='/marvel'">Marvel</a>
-      <a onclick="window.location.href='/dc'">DC</a>
-      <a onclick="window.location.href='/avatar'">Avatar</a>
-      <a onclick="window.location.href='/upcoming'" class="upc">Upcoming</a>
-      <a onclick="window.location.href='/whats-new'" class="news">What's New</a>
+      <a href="/starwars" aria-current="page">Star Wars</a>
+      <a href="/marvel">Marvel</a>
+      <a href="/dc">DC</a>
+      <a href="/avatar">Avatar</a>
+      <a href="/upcoming" class="upc">Upcoming</a>
+      <a href="/whats-new" class="news">What's New</a>
     </div>
     <div class="nav-sp"></div>
-    <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
-    <a class="lang-btn" href="/fr/starwars" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
-    <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="/fr/starwars" aria-label="Passer en français" title="Passer en français">
+        <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+      </a>
+      <button class="icon-btn burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </nav>
 </header>
-<div id="mmenu">
-  <a href="/">Home</a>
-  <a href="/deep-dives/" class="doss">Deep Dives</a>
-  <a href="/starwars" class="cur">Star Wars</a>
-  <a href="/marvel">Marvel</a>
-  <a href="/dc">DC</a>
-  <a href="/avatar">Avatar</a>
-  <a href="/upcoming" class="upc">Upcoming</a>
-      <a href="/whats-new" class="news">What's New</a>
-</div>
-<div id="grogu" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
-  <img class="grogu-normal" src="/images/grogu.png" alt="Grogu"/>
-  <img class="grogu-hover" src="/images/grogumouseover.png" alt="Grogu"/>
-</div>
-<div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
-<div class="tl-page" id="tl-page">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='/'" style="margin-bottom:0">← Home</div><span class="nav-maj">Updated · June 2026</span></div>
-  <div class="page-title" id="tl-title"></div>
-  <div class="page-sub" id="tl-sub"></div>
-  <div class="stats"><div class="stat"><b>13</b><span>Feature films</span></div><div class="stat"><b>13</b><span>Series</span></div><div class="stat"><b>5</b><span>Video games</span></div></div>
-  <div class="progress-block">
-    <div class="pb-info">
-      <div class="pb-label">My progress</div>
-      <div class="pb-track"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div>
-      <div class="pb-counts" id="pb-counts">0 / 0 · 0%</div>
-      <div class="pb-hint">Check off what you've watched — your progress is saved in this browser</div>
-    </div>
-    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Resume</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
+
+<div class="subbar"><div class="subbar-in">
+  <div class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <label class="skip" for="q">Search the timeline</label>
+    <input id="q" type="search" placeholder="Search…  ( / )" autocomplete="off"/>
+    <button class="search-clear" id="q-clear" aria-label="Clear search">✕</button>
   </div>
-  <div class="nb" id="tl-notes"></div>
-  <div class="leg" id="tl-legend"></div>
-  <div class="filter-bar" id="filter-bar"></div>
-  <div id="tl-content"></div>
-</div>
-<script>const DATA_SW={
+  <div class="sub-sp"></div>
+  <button class="toggle" id="hide-done" aria-pressed="false">
+    <span class="sw" aria-hidden="true"></span><span class="lbl">Hide watched</span>
+  </button>
+  <div class="mini">
+    <span class="live" aria-hidden="true"></span>
+    <span class="mini-num" id="mini-num">0/61</span>
+    <div class="mini-track"><div class="mini-fill" id="mini-fill"></div></div>
+  </div>
+</div></div>
+
+<main class="shell" id="main">
+  <a class="crumb" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All universes</a>
+  <div class="page-head">
+    <h1><span class="u">Star Wars</span> — Canon Timeline</h1>
+    <p class="sub">Movies · TV Shows · Animation · Video Games — the whole saga in the order it happened.</p>
+    <p class="upd"><span class="dot"></span> Updated · June 2026</p>
+  </div>
+  <div class="stats"><div class="s"><b>13</b><span>Feature films</span></div><div class="s"><b>13</b><span>Series</span></div><div class="s"><b>5</b><span>Video games</span></div></div>
+
+  <section class="prog" aria-labelledby="prog-h">
+    <h2 id="prog-h" class="skip">My progress</h2>
+    <p class="prog-head">My progress · <em>Star Wars — Canon Timeline</em></p>
+    <div class="prog-top">
+      <div class="prog-nums">
+        <div class="stat-big"><div class="v"><span id="n-done">0</span><span class="u" id="n-total">/ 61</span></div><div class="l">Watched</div></div>
+        <div class="stat-big accent"><div class="v"><span id="n-h">0</span><span class="u" id="n-hu">h</span><span class="u" id="star" title="No runtime data for some entries">*</span></div><div class="l">Left to watch</div></div>
+        <div class="stat-big"><div class="v"><span id="n-pct">0</span><span class="u">%</span></div><div class="l">Done</div></div>
+      </div>
+      <div class="prog-acts">
+        <button class="btn primary" data-resume><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Resume</button>
+        <button class="btn" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export</button>
+        <button class="btn" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Import</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
+        <button class="btn danger" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Reset</button>
+      </div>
+    </div>
+    <div class="bar"><i id="bar"></i></div>
+    <p class="prog-hint">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Your progression is saved in this browser — use <b>Export</b> to keep a backup or import on another device or browser
+    </p>
+  </section>
+
+  <div class="intro" id="intro"></div>
+
+  <details class="fp">
+    <summary><span class="fp-title">Filters</span>
+      <span class="fp-count" id="fp-count">61 / 61 shown</span>
+      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="fp-body">
+      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Media types</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-types"></div></div>
+      <div class="fp-sec" hidden><div class="fp-sec-head"><span class="fp-sec-lab">Options</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-opts"></div></div>
+      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Level</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-levels"></div></div>
+    </div>
+    <div class="fp-marks"><span class="fp-marks-lab">Markers</span>
+      <span class="ft">FLASHBACK</span><span style="font-size:.78rem;color:var(--muted2)">⭐ Essential · 🚨 Important</span></div>
+  </details>
+
+  <nav class="rail" id="rail" aria-label="Jump to an era"></nav>
+  <div id="timeline"></div>
+  <div class="empty" id="empty">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <h3>Nothing matches <span id="empty-q"></span></h3>
+    <p>Try another spelling, or bring back the filters you turned off.</p>
+    <button class="btn" id="clear-filters">Clear everything</button>
+  </div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="about"><h4>Chronologeek</h4><p>Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.</p></div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="/starwars">Star Wars</a></li>
+      <li><a href="/marvel">Marvel — MCU</a></li>
+      <li><a href="/dc">DC Multiverse</a></li>
+      <li><a href="/avatar">Avatar</a></li>
+      <li><a href="/deep-dives/">Deep Dives</a></li>
+    </ul></div>
+    <div><h4>More</h4><ul>
+      <li><a href="/upcoming">Upcoming releases</a></li>
+      <li><a href="/whats-new">What's new</a></li>
+      <li><a href="#">Support the site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      API but is not endorsed or certified by TMDB. Book data from <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.
+      <br/>© 2026 Chronologeek — <a href="/">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+
+<button id="totop" aria-label="Back to top" title="Back to top">
+  <img class="nl" src="/images/grogu.png" alt=""/>
+  <img class="hv" src="/images/grogumouseover.png" alt=""/>
+</button>
+
+<script>
+const DATA_SW={
   id:"sw",title:"Star Wars",subtitle:"Canon Timeline",
   description:"Movies · TV Shows · Animation · Video Games",
   color:"#4d9fff",glow:"rgba(77,159,255,.35)",
@@ -463,326 +280,17 @@ const RT={"sw-ahsoka": 375, "sw-andors1": 582, "sw-andors2-1": 329, "sw-andors2-
 window.RT=RT;
 /* == CG-RUNTIME END == */
 let currentData=null;
-const posterCache={},detailCache={};
-
-function getProgress(uid){try{return JSON.parse(localStorage.getItem('cg_'+uid)||'{}')}catch{return{}}}
-function saveProgress(uid,obj){localStorage.setItem('cg_'+uid,JSON.stringify(obj))}
-function toggleEntry(id,ev){
-  ev.stopPropagation();
-  if(!currentData)return;
-  const prog=getProgress(currentData.id);
-  prog[id]?delete prog[id]:(prog[id]=1);
-  saveProgress(currentData.id,prog);
-  renderProgress();
-  if(typeof checkBadges==='function'&&prog[id]){
-    const allIds=currentData.eras.flatMap(era=>era.entries.map(e=>e.id));
-    checkBadges('sw',prog,allIds);
-  }
-}
-function resetProgress(){
-  if(!currentData||!confirm('Reset your progress?'))return;
-  localStorage.removeItem('cg_'+currentData.id);
-  renderProgress();
-}
-function renderProgress(){
-  if(!currentData)return;
-  const prog=getProgress(currentData.id);
-  let total=0,done=0;
-  currentData.eras.forEach(era=>era.entries.forEach(e=>{
-    total++;
-    const el=document.querySelector('.en[data-id="'+e.id+'"]');
-    if(!el)return;
-    const checked=!!prog[e.id];
-    el.classList.toggle('done',checked);
-    el.querySelector('.checkmark').textContent=checked?'✓':'';
-    if(checked)done++;
-  }));
-  const pct=total?Math.round(done/total*100):0;
-  const grad='linear-gradient(90deg,var(--accent),var(--accent2))';
-  document.getElementById('pb-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>';
-  const pbn=document.getElementById('pbn');
-  if(pbn){
-    pbn.classList.toggle('show',total>0);
-    document.getElementById('pbn-label').textContent=done+'/'+total;
-    document.getElementById('pbn-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  }
-}
-
-async function fetchBackdrop(id,type){
-  if(!id||id==='0')return null;
-  const k=type+'-'+id;
-  if(posterCache[k]!==undefined)return posterCache[k];
-  try{
-    const r=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+TMDB_KEY);
-    if(!r.ok){posterCache[k]=null;return null}
-    const d=await r.json();
-    posterCache[k]=d.backdrop_path||null;
-    return posterCache[k];
-  }catch{posterCache[k]=null;return null}
-}
-function applyImg(div,path){
-  if(div.querySelector('img'))return;
-  const img=document.createElement('img');
-  img.src=path;img.loading='lazy';
-  img.onerror=()=>img.remove();
-  div.querySelector('.pp').style.display='none';
-  div.appendChild(img);
-}
-async function loadPosters(){
-  // Images locales en priorité
-  document.querySelectorAll('#tl-content .ep[data-img]').forEach(ep=>{
-    if(ep.querySelector('img'))return;
-    applyImg(ep,ep.dataset.img);
-  });
-  // TMDB backdrop pour les entrées sans image locale
-  const entries=[...document.querySelectorAll('#tl-content .en[data-tmdb]:not([data-tmdb="0"])')];
-  const seen=new Set();
-  for(let i=0;i<entries.length;i+=5){
-    await Promise.all(entries.slice(i,i+5).map(async e=>{
-      if(e.querySelector('.ep[data-img]'))return;
-      const id=e.dataset.tmdb,media=e.dataset.media==='movie'?'movie':'tv';
-      const k=media+'-'+id;
-      if(seen.has(k))return;
-      seen.add(k);
-      const path=await fetchBackdrop(id,media);
-      if(path)applyImg(e.querySelector('.ep'),IMG+'w500'+path);
-    }));
-    await new Promise(r=>setTimeout(r,100));
-  }
-}
-
-async function toggleExpand(el,ev){
-  if(ev.target.closest('.en-check'))return;
-  const wasOpen=el.classList.contains('open');
-  document.querySelectorAll('.en.open').forEach(x=>x.classList.remove('open'));
-  if(wasOpen)return;
-  el.classList.add('open');
-  const panel=el.querySelector('.en-expand');
-  if(panel.dataset.loaded)return;
-  panel.dataset.loaded='1';
-
-  // FAQ depuis les données
-  const entryObj=currentData&&currentData.eras.flatMap(e=>e.entries).find(e=>e.id===el.dataset.id);
-  const faqDef=entryObj&&entryObj.faq||{};
-  const mediaName=entryObj?entryObj.title:'this title';
-  const faqCats=[
-    {key:'quand',q:'When does '+mediaName+' take place in the Star Wars universe?',fallback:'No information available.'},
-    {key:'pourquoi',q:'Why watch '+mediaName+' at this point in the timeline?',fallback:'No information available.'}
-  ];
-  const faqHtml=faqCats.map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+(faqDef[cat.key]||cat.fallback)+'</div></details>').join('');
-
-  const id=el.dataset.tmdb,media=el.dataset.media;
-  if(!id||id==='0'){
-    if(el.dataset.media==='game'){
-      // Charger depuis RAWG.io
-      panel.innerHTML='<div class="expand-loading">Loading…</div>';
-      const gameTitle=entryObj?entryObj.title:'';
-      const ytUrl='https://www.youtube.com/results?search_query='+encodeURIComponent(gameTitle+' full movie');
-      try{
-        const rawgUrl='https://api.rawg.io/api/games?search='+encodeURIComponent(gameTitle.replace(/[:.+]/g,' '))+'&page_size=1&key='+RAWG_KEY;
-        const rg=await fetch(rawgUrl);
-        const rgd=await rg.json();
-        const g=rgd.results&&rgd.results[0];
-        const bg=g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+'" loading="lazy"/></div>':'';
-        const desc=(entryObj&&entryObj.desc)||(g&&g.description_raw?g.description_raw.substring(0,300)+'…':'Star Wars video game. '+((entryObj&&entryObj.note)||''));
-        const rating=g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':'';
-        const released=g&&g.released?g.released.substring(0,4):'';
-        let meta='';
-        if(released)meta+='<span><strong>Released</strong> '+released+'</span>';
-        if(rating)meta+='<span><strong>Rating</strong> '+rating+'</span>';
-        if(entryObj&&entryObj.date)meta+='<span><strong>SW period</strong> '+entryObj.date+'</span>';
-        panel.innerHTML='<div class="expand-inner">'+bg
-          +'<div class="expand-info"><div class="expand-synopsis">'+desc+'</div>'
-          +(meta?'<div class="expand-meta">'+meta+'</div>':'')
-          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Watch the full movie on YouTube</a>'
-          +'</div></div>'
-          +(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-      }catch{
-        panel.innerHTML='<div class="expand-inner"><div class="expand-info">'
-          +'<div class="expand-synopsis">'+((entryObj&&entryObj.note)||'Star Wars video game.')+'</div>'
-          +(entryObj&&entryObj.date?'<div class="expand-meta"><span><strong>SW period</strong> '+entryObj.date+'</span></div>':'')
-          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Watch the full movie on YouTube</a>'
-          +'</div></div>'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-      }
-      return;
-    }
-  }
-  panel.innerHTML='<div class="expand-loading">Loading…</div>';
-  const type=(media==='movie')?'movie':'tv';
-  const k=type+id;
-  let d=detailCache[k];
-  if(!d){
-    try{
-      const rFr=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+TMDB_KEY+'&language=en-US&append_to_response=videos');
-      d=await rFr.json();
-      if(!d.videos||!d.videos.results||!d.videos.results.find(v=>v.type==='Trailer'&&v.site==='YouTube')){
-        const rEn=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+TMDB_KEY+'&language=en-US');
-        const enV=await rEn.json();
-        if(enV.results)d.videos={results:[...((d.videos&&d.videos.results)||[]),...enV.results]};
-      }
-      detailCache[k]=d;
-    }catch{panel.innerHTML='<div class="expand-loading">Failed to load.</div>';return}
-  }
-  const synopsis=d.overview||'No synopsis available.';
-  const runtime=d.runtime?(d.runtime+' min'):(d.episode_run_time&&d.episode_run_time[0]?(d.episode_run_time[0]+' min/ep'):null);
-  const genres=(d.genres||[]).map(g=>g.name).join(', ')||null;
-  const year=(d.release_date||d.first_air_date||'').substring(0,4)||null;
-  const rating=d.vote_average?d.vote_average.toFixed(1):null;
-  const poster=d.poster_path?IMG+'w300'+d.poster_path:null;
-  const trailer=(d.videos&&d.videos.results||[]).find(v=>v.type==='Trailer'&&v.site==='YouTube');
-  const ytUrl=trailer?'https://www.youtube.com/watch?v='+trailer.key:null;
-  let meta='';
-  if(year)meta+='<span><strong>Year</strong> '+year+'</span>';
-  if(runtime)meta+='<span><strong>Runtime</strong> '+runtime+'</span>';
-  if(genres)meta+='<span><strong>Genre</strong> '+genres+'</span>';
-  if(rating)meta+='<span><strong>Rating</strong> ⭐ '+rating+'/10</span>';
-  panel.innerHTML='<div class="expand-inner">'
-    +(poster?'<div class="expand-poster" onclick="openPMurl(\''+IMG+'w500'+d.poster_path+'\')"><img src="'+poster+'" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>':'')
-    +'<div class="expand-info"><div class="expand-synopsis">'+synopsis+'</div>'
-    +(meta?'<div class="expand-meta">'+meta+'</div>':'')
-    +(ytUrl?'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">▶ YouTube trailer</a>':'')
-    +'</div></div>'
-    +(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-}
-function openPMurl(url){document.getElementById('pmi').src=url;document.getElementById('pm').classList.add('o')}
-function closePM(){document.getElementById('pm').classList.remove('o')}
-
-function buildEntry(e){
-  const [cls,label]=BADGES[e.type]||['bsp','?'];
-  const prog=getProgress(currentData.id);
-  const isDone=!!prog[e.id];
-  const isGame=e.media==='game';
-  const mediaAttr=isGame?'game':(e.media==='movie'?'movie':'tv');
-  const imgAttr=e.img?' data-img="'+e.img+'"':'';
-  const isNC=e.tags&&e.tags.includes('nc');
-  const devClass=e.dim?' deviate':'';
-  const ncClass=isNC?' nc-entry':'';
-  const levelClass=e.level==='must'?'must':e.level==='important'?'imp':'';
-  const levelIcon=e.level==='must'?'⭐':e.level==='important'?'🚨':'';
-  let pre='';
-  if(e.tags&&e.tags.includes('flashback'))pre+='<span class="ft">FLASHBACK</span>';
-  const dimBadge=e.dim?'<div class="dim-badge">'+e.dim+'</div>':'';
-  const ppIcon=isGame?'🎮':e.type==='film'||e.type==='filmanim'?'🎬':'📺';
-  let sub='';
-  if(e.subitems&&e.subitems.length)sub='<div class="esub">'+e.subitems.map(s=>s.trim()===''?'<div class="si sep"></div>':'<div class="si">'+s+'</div>').join('')+'</div>';
-  const note=e.note?'<div class="enote">'+e.note+'</div>':'';
-  return '<div class="en'+(levelClass?' '+levelClass:'')+devClass+ncClass+(isDone?' done':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+(e.level||'bonus')+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'">'
-    +'<div class="en-top" onclick="toggleExpand(this.closest(\'.en\'),event)">'
-    +'<div class="en-check" onclick="toggleEntry(\''+e.id+'\',event)"><div class="checkmark">'+(isDone?'✓':'')+'</div></div>'
-    +'<div class="en-datebadge"><div class="en-level-icon">'+levelIcon+'</div><div class="date-main">'+(e.date||'—')+'</div>'+dimBadge+'</div>'
-    +'<div class="ep"'+imgAttr+'><div class="pp">'+ppIcon+'</div></div>'
-    +'<div class="em"><div class="tr">'+pre+'<span class="b '+cls+'">'+label+'</span><span class="en-name">'+e.title+'</span></div>'+note+sub+'</div>'
-    +'</div>'
-    +'<div class="en-expand" onclick="event.stopPropagation()"></div></div>';
-}
-
-function buildTimeline(data){
-  document.documentElement.style.setProperty('--tl-color',data.color||'var(--accent)');
-  const types=[...new Set(data.eras.flatMap(era=>era.entries.map(e=>e.type)))];
-  const hasFB=data.eras.some(era=>era.entries.some(e=>e.tags&&e.tags.includes('flashback')));
-
-  let leg='<div class="leg-title">Legend</div>';
-  types.forEach(t=>{const[c,l]=BADGES[t]||[];if(c)leg+='<span class="b '+c+'">'+l+'</span>';});
-  leg+='<span>⭐ Essential</span> <span>🚨 Important</span>';
-  if(hasFB)leg+='<span class="ft">FLASHBACK</span>';
-  document.getElementById('tl-legend').innerHTML=leg;
-
-  // Filtres par type seulement (pas de niveaux pour SW)
-  let f='<div class="filter-group"><span class="filter-label">Types:</span>';
-  types.forEach(t=>{
-    const[,l]=BADGES[t]||['','?'];
-    f+='<button class="fbt type-filter-btn active" data-type="'+t+'" onclick="toggleTypeFilter(this)">'+l+'</button>';
-  });
-  f+='</div>';
-  f+='<div class="filter-group"><span class="filter-label">Level:</span>';
-  f+='<button class="fbt active" id="lvl-must" onclick="toggleLevelFilter(this)">⭐ Essential</button>';
-  f+='<button class="fbt active" id="lvl-imp" onclick="toggleLevelFilter(this)">🚨 Important</button>';
-  f+='<button class="fbt active" id="lvl-bonus" onclick="toggleLevelFilter(this)">Optional</button>';
-  f+='</div>';
-  document.getElementById('filter-bar').innerHTML=f;
-
-  let html='';
-  data.eras.forEach(era=>{
-    html+='<div class="era-node" data-era><div class="era-node-dot"></div><div class="era-label">'+era.title+'</div></div>';
-    era.entries.forEach(e=>{html+=buildEntry(e);});
-  });
-  document.getElementById('tl-content').innerHTML=html;
-}
-
-function applyFilters(){
-  const showTypes=new Set();
-  document.querySelectorAll('.type-filter-btn.active').forEach(b=>showTypes.add(b.dataset.type));
-  const lv=id=>{const b=document.getElementById(id);return !b||b.classList.contains('active')};
-  const showMust=lv('lvl-must'),showImp=lv('lvl-imp'),showBonus=lv('lvl-bonus');
-  document.querySelectorAll('#tl-content .en').forEach(e=>{
-    // Aucun type coche = rien a afficher. Sans ca, tout decocher
-    // reaffichait la timeline entiere, l'inverse de ce qu'on attend.
-    const typeOK=showTypes.has(e.dataset.type);
-    const l=e.dataset.level;
-    const levelOK=(l==='must'&&showMust)||(l==='important'&&showImp)
-                ||(l==='bonus'&&showBonus)||!l;
-    e.style.display=(typeOK&&levelOK)?'':'none';
-  });
-  document.querySelectorAll('#tl-content .era-node').forEach(h=>{
-    let n=h.nextElementSibling,vis=false;
-    while(n&&!n.dataset.era){
-      if(n.classList.contains('en')&&n.style.display!=='none')vis=true;
-      n=n.nextElementSibling;
-    }
-    h.style.display=vis?'':'none';
-  });
-}
-function toggleLevelFilter(btn){
-  btn.classList.toggle('active');
-  applyFilters();
-}
-function toggleTypeFilter(btn){
-  btn.classList.toggle('active');
-  applyFilters();
-}
-function showHome(){window.location.href='/';}
-function showUniverse(uid){
-  const u=UNIVERSES.find(x=>x.data&&x.data.id===uid);
-  if(!u)return;
-  currentData=u.data;
-  document.getElementById('tl-title').textContent=currentData.title+' — '+currentData.subtitle;
-  document.getElementById('tl-title').style.color=currentData.color||'var(--text)';
-  document.getElementById('tl-title').style.textShadow='0 0 40px '+(currentData.glow||'transparent');
-  document.getElementById('tl-sub').textContent=currentData.description||'';
-  document.getElementById('tl-notes').innerHTML=currentData.notes||'';
-  document.getElementById('pb-fill').style.background='linear-gradient(90deg,'+(currentData.color||'var(--accent)')+',var(--accent2))';
-  buildTimeline(currentData);renderProgress();
-  window.scrollTo(0,0);loadPosters();
-}
-showUniverse('sw');
-
-
-function cgResume(){
-  var els=document.querySelectorAll('.en');
-  for(var i=0;i<els.length;i++){
-    var e=els[i];
-    if(e.dataset&&e.dataset.type==='separator')continue;
-    if(!e.classList.contains('done')&&e.offsetParent!==null){
-      e.scrollIntoView({behavior:'smooth',block:'center'});
-      e.style.boxShadow='0 0 0 2px var(--accent),0 0 24px rgba(124,106,247,.35)';
-      (function(x){setTimeout(function(){x.style.boxShadow=''},1800)})(e);
-      return;
-    }
-  }
-}
-function cgScrollTop(){return window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0}
-function cgTopBtn(){const g=document.getElementById('grogu');if(g)g.classList.toggle('visible',cgScrollTop()>400)}
-window.addEventListener('scroll',cgTopBtn,{passive:true});
-document.addEventListener('scroll',cgTopBtn,{passive:true,capture:true});
-setInterval(cgTopBtn,800);
+window.CG_DATA = DATA_SW;
 </script>
-<script src="/badges.js"></script>
-<script src="/progress.js"></script>
-<script src="/filters.js"></script>
+<script src="/cg-badges-fx.js"></script>
+<script src="/cg-timeline.js"></script>
+<script>
+(function(){var b=document.getElementById('totop');
+ b.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+ addEventListener('scroll',function(){b.classList.toggle('on',scrollY>400)},{passive:true});})();
+</script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<script src="/anim.js"></script>
 </body>
 </html>

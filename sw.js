@@ -6,7 +6,9 @@ const IMG_CACHE = 'cg-img';
 const PRECACHE = [
   '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html', '/whats-new.html', '/upcoming.html',
   '/badges.js', '/pwa.js', '/anim.js', '/manifest.json',
-  '/progress.css', '/progress.js', '/intro.css', '/filters.css', '/filters.js'
+  '/progress.css', '/progress.js', '/intro.css', '/filters.css', '/filters.js',
+  // composants de la refonte — coexistent avec les anciens pendant la migration
+  '/cg.css', '/cg-timeline.js', '/cg-dc.js', '/cg-dossier.js', '/cg-badges-fx.js'
 ];
 
 self.addEventListener('install', e => {

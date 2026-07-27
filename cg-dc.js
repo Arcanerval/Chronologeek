@@ -1,0 +1,628 @@
+/* ═══════════════════════════════════════════════════════════
+   CHRONOLOGEEK — DC (prototype)
+   L'architecture en zones de la prod, reconstruite :
+     · Elseworlds     → Superman + Batman origins côte à côte, replié
+     · 2 univers      → Arrowverse + DCEU côte à côte
+     · Major Event    → pleine largeur, sans spoil
+     · After the event→ Arrowverse post + Elseworlds post + DCU, 3 colonnes
+   Les colonnes DISENT quelque chose : ces branches coexistent. On garde,
+   et on ajoute par-dessus la recherche, la progression et les filtres.
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var CG = window.CG || {};
+  var T = CG.t || {};
+  var KEY = 'cg_dc';
+  var CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  var CHEV  = '<svg class="en-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+  var LINK  = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>';
+  var BADGES = CG.badgeLabels || {
+    film: ['bf', 'MOVIE'], serie: ['bs', 'TV SHOW'], anime: ['ba', 'ANIMATED SHOW'],
+    filmanim: ['bfa', 'ANIMATED MOVIE'], comic: ['bc', 'COMIC'] };
+  var COLKEY = { optional: ['superman', 'batman'], pre: ['av_pre', 'dceu'],
+                 event: [], post: ['av_post', 'else_post', 'dcu'] };
+  var FAQ = CG.faqCats || [
+    { key: 'quand',    q: 'When does {name} take place?' },
+    { key: 'pourquoi', q: 'Why watch {name} at this point?' },
+    { key: 'spoil',    q: 'How does {name} connect to the major event?' }
+  ];
+
+  // Mapping repris tel quel de toggleUniversFilter() dans dc.html :
+  // décocher une branche masque ses colonnes, et l'Arrowverse emporte
+  // avec lui toutes les mentions de l'événement (barre Major Event comprise).
+  var BRANCH = CG.branches || {
+    elseworlds: { label: 'Elseworlds', c: '#c084fc', cols: ['superman', 'batman', 'else_post'] },
+    arrowverse: { label: 'Arrowverse', c: '#22c55e', cols: ['av_pre', 'av_post'], crisis: true },
+    dceu:       { label: 'DCEU',       c: '#3b82f6', cols: ['dceu'] },
+    dcu:        { label: 'DCU',        c: '#f97316', cols: ['dcu'] }
+  };
+  var COLBRANCH = {};
+  Object.keys(BRANCH).forEach(function (b) {
+    BRANCH[b].cols.forEach(function (c) { COLBRANCH[c] = b; });
+  });
+
+  var BADGES_DC = CG.badges || [];
+
+  var DATA = null, ZONES = null, RT = {};
+  var state = { q: '', hideDone: false, types: {}, levels: {}, branches: {} };
+
+  // Données en dur dans la page, ou à défaut un JSON (voir CLAUDE.md :
+  // un const de premier niveau ne vit pas sur window).
+  function grab(name, url) {
+    if (window[name]) return Promise.resolve(window[name]);
+    if (!url) return Promise.resolve(null);
+    return fetch(url).then(function (r) { return r.json(); })
+                     .catch(function () { return null; });
+  }
+
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
+
+  function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
+  function save() { localStorage.setItem(KEY, JSON.stringify(prog)); }
+  var prog = load();
+
+  function isSep(e) { return e.type === 'separator'; }
+
+  function badgeMap() {
+    var out = {};
+    BADGES_DC.forEach(function (b) {
+      if (b.trigger === '100pct') {
+        out[b.id] = allEntries().every(function (e) { return prog[e.id]; });
+      } else if (b.trigger === 'all') {
+        out[b.id] = b.ids.length > 0 && b.ids.every(function (id) { return prog[id]; });
+      } else {
+        out[b.id] = !!prog[b.ids[0]];
+      }
+    });
+    return out;
+  }
+  function allEntries() {
+    var out = [];
+    Object.keys(DATA.branches).forEach(function (k) {
+      DATA.branches[k].forEach(function (e) { if (!isSep(e)) out.push(e); });
+    });
+    return out;
+  }
+
+  // ── une entrée ───────────────────────────────────────────
+  function entryHTML(e) {
+    if (isSep(e)) {
+      return '<div class="en-wrap is-sep" data-title="' +
+          e.title.toLowerCase().replace(/"/g, '') + '"><div class="ensep">' +
+        '<span class="ensep-t">' + e.title + '</span>' +
+        (e.date ? '<span class="ensep-d">' + e.date + '</span>' : '') +
+        (e.note ? '<p class="ensep-n">' + e.note + '</p>' : '') +
+      '</div></div>';
+    }
+    var bd = BADGES[e.type] || ['bs', String(e.type || '').toUpperCase()];
+    var LV = e.level === 'important' ? 'imp' : (e.level || 'bonus');
+    var ico = LV === 'must' ? '⭐' : LV === 'imp' ? '🚨' : '';
+    var rt = RT[e.id];
+    var rtTxt = rt ? (rt >= 60 ? Math.floor(rt / 60) + 'h' : rt + 'min') : '';
+    var sub = (e.subitems || []).length
+      ? '<div class="en-sub">' + e.subitems.map(function (x) {
+          return x.trim() ? '<div class="si">' + x + '</div>' : '<div class="si sep"></div>';
+        }).join('') + '</div>' : '';
+    var faq = '';
+    if (e.faq) FAQ.forEach(function (c) {
+      if (!e.faq[c.key]) return;
+      faq += '<details class="faq"><summary>' + c.q.replace('{name}', e.title) +
+             '</summary><div class="a">' + e.faq[c.key] + '</div></details>';
+    });
+
+    return '<div class="en-wrap" data-id="' + e.id + '" data-type="' + e.type + '"' +
+        ' data-level="' + LV + '" data-title="' + e.title.toLowerCase().replace(/"/g, '') + '">' +
+      '<div class="en' + (LV === 'must' ? ' must' : LV === 'imp' ? ' imp' : '') +
+        (prog[e.id] ? ' done' : '') + '" id="' + e.id + '">' +
+        '<button type="button" class="en-check" role="checkbox" data-check' +
+          ' aria-checked="' + (prog[e.id] ? 'true' : 'false') + '"' +
+          ' aria-label="' + (T.markWatched || 'Mark “{t}” as watched').replace('{t}', e.title.replace(/"/g, '')) + '">' +
+          '<span class="mark">' + CHECK + '</span></button>' +
+        '<span class="en-col">' +
+          '<button type="button" class="en-main" data-toggle aria-expanded="false">' +
+            '<span class="en-date"><span class="lv">' + ico + '</span>' +
+              '<span class="d">' + (e.date || '—') + '</span>' +
+              (e.dim ? '<span class="dim-badge">' + e.dim + '</span>' : '') +
+            '</span>' +
+            '<span class="en-body">' +
+              '<span class="en-tags"><span class="dchip">' + (ico ? ico + ' ' : '') +
+                (e.date || '—') + '</span>' +
+                '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' +
+                // repris de dc.html:731
+                (e.softcanon ? '<span class="soft-badge">SOFT-CANON</span>' : '') +
+              '</span>' +
+              '<span class="en-title">' + e.title + '</span>' +
+              (e.note ? '<span class="en-note">' + e.note + '</span>' : '') +
+            '</span>' +
+            (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') + CHEV +
+          '</button>' + sub +
+        '</span>' +
+        '<a class="en-link" href="#' + e.id + '" data-copy title="' + (T.copyLink || 'Copy link to this entry') + '">' +
+          LINK + '</a>' +
+      '</div>' +
+      '<div class="en-panel">' +
+        (faq ? '<div class="en-faq">' + faq + '</div>' : '') +
+      '</div></div>';
+  }
+
+  // ── les zones ────────────────────────────────────────────
+  function build() {
+    var html = '', rail = '';
+
+    ZONES.forEach(function (z, zi) {
+      var keys = COLKEY[z.id] || [];
+      var slug = 'zone-' + z.id;
+      var n = keys.reduce(function (a, k) {
+        return a + DATA.branches[k].filter(function (e) { return !isSep(e); }).length;
+      }, 0);
+
+      if (n) {
+        rail += '<a href="#' + slug + '" data-rail="' + slug + '">' +
+          '<span class="n">' + z.icon + ' ' + z.name + '</span>' +
+          '<span class="m" data-rail-m="' + slug + '">0/' + n + '</span>' +
+          '<span class="t"><i data-rail-f="' + slug + '"></i></span></a>';
+      }
+
+      var open = z.open ? ' open' : '';
+      html += '<section class="zone zone-' + z.id + '" id="' + slug + '" data-zone="' + z.id + '">' +
+        '<' + (keys.length ? 'button type="button" class="zone-head" data-zone-toggle' +
+              ' aria-expanded="' + (z.open ? 'true' : 'false') + '"' +
+              ' aria-controls="body-' + z.id + '"' : 'div class="zone-head is-static"') + '>' +
+          '<span class="zone-icon" aria-hidden="true">' + z.icon + '</span>' +
+          '<span class="zone-label">' +
+            '<span class="zone-name">' + z.name + '</span>' +
+            '<span class="zone-desc">' + z.desc + '</span>' +
+          '</span>' +
+          (n ? '<span class="zone-count" data-zone-m="' + z.id + '">0 / ' + n + '</span>' : '') +
+          (keys.length ? '<svg class="zone-chev" viewBox="0 0 24 24" aria-hidden="true">' +
+            '<path d="m6 9 6 6 6-6"/></svg>' : '') +
+        '</' + (keys.length ? 'button' : 'div') + '>';
+
+      if (keys.length) {
+        html += '<div class="zone-body' + open + '" id="body-' + z.id + '"' +
+                (z.open ? '' : ' hidden') + '>' +
+          '<div class="zone-grid zg-' + keys.length + '">' +
+            keys.map(function (k, i) {
+              var col = z.cols[i] || {};
+              return '<div class="zcol zcol-' + (col.kind || 'else') + '" data-col="' + k + '">' +
+                '<h3 class="zcol-head">' + (col.title || k) +
+                  '<span class="zcol-n" data-col-m="' + k + '"></span></h3>' +
+                (col.hint ? '<p class="zcol-hint">' + col.hint + '</p>' : '') +
+                '<div class="zcol-body">' +
+                  DATA.branches[k].map(entryHTML).join('') +
+                '</div></div>';
+            }).join('') +
+          '</div>' +
+          // Sur mobile la grille devient un carrousel : on l'annonce.
+          (keys.length > 1
+            ? '<p class="zswipe">Swipe to see the other branches →</p>'
+            : '') +
+        '</div>';
+      }
+      // La zone Major Event porte le bloc Crisis et son dépliant SPOILERS,
+      // repris mot pour mot de dc.html.
+      if (z.id === 'event' && DATA.crisis) html += DATA.crisis;
+      html += '</section>';
+    });
+
+    $('#zones').innerHTML = html;
+    $('#rail').innerHTML = rail;
+    railArrows();
+    carousels();
+    buildFilters();
+  }
+
+  // ── carrousel des colonnes (mobile) ──────────────────────
+  // Empiler les branches ferait perdre l'idée qu'elles sont parallèles :
+  // sur mobile la grille glisse à l'horizontale, avec accroche.
+  // L'indication « swipe » ne s'affiche que s'il reste plus d'une colonne
+  // visible après filtrage.
+  function carousels() {
+    $$('.zone-grid').forEach(function (grid) {
+      function sync() {
+        var visible = $$('.zcol', grid).filter(function (c) { return !c.hidden; });
+        var sw = grid.parentNode.querySelector('.zswipe');
+        if (sw) sw.hidden = visible.length < 2;
+      }
+      window.addEventListener('resize', sync);
+      grid._sync = sync;
+      sync();
+    });
+  }
+  function syncCarousels() {
+    $$('.zone-grid').forEach(function (g) { if (g._sync) g._sync(); });
+  }
+
+
+  function buildFilters() {
+    var all = allEntries(), types = {};
+    all.forEach(function (e) { types[e.type] = (types[e.type] || 0) + 1; });
+    $('#f-types').innerHTML = Object.keys(types).map(function (t) {
+      state.types[t] = true;
+      var bd = BADGES[t] || ['bs', t];
+      return '<button type="button" class="ck" role="checkbox" aria-checked="true"' +
+        ' data-f="type" data-v="' + t + '">' +
+        '<span class="box">' + CHECK + '</span>' +
+        '<span class="txt">' + bd[1] + ' <span style="opacity:.55">' + types[t] + '</span></span>' +
+        '</button>';
+    }).join('');
+
+    var lv = [['imp', (T.important || '🚨 Important')], ['bonus', (T.optional || 'Optional')]];
+    $('#f-branches').innerHTML = Object.keys(BRANCH).map(function (b) {
+      state.branches[b] = true;
+      var d = BRANCH[b];
+      var n = d.cols.reduce(function (a, k) {
+        return a + (DATA.branches[k] || []).filter(function (e) { return !isSep(e); }).length;
+      }, 0);
+      return '<button type="button" class="ck" role="checkbox" aria-checked="true"' +
+        ' data-f="branch" data-v="' + b + '" style="--ck:' + d.c + '">' +
+        '<span class="box">' + CHECK + '</span>' +
+        '<span class="dot" style="background:' + d.c + '"></span>' +
+        '<span class="txt">' + d.label +
+          ' <span style="opacity:.55">' + n + '</span></span>' +
+        '</button>';
+    }).join('');
+
+    $('#f-levels').innerHTML = lv.filter(function (p) {
+      return all.some(function (e) {
+        return (e.level === 'important' ? 'imp' : (e.level || 'bonus')) === p[0];
+      });
+    }).map(function (p) {
+      state.levels[p[0]] = true;
+      var n = all.filter(function (e) {
+        return (e.level === 'important' ? 'imp' : (e.level || 'bonus')) === p[0];
+      }).length;
+      return '<button type="button" class="ck" role="checkbox" aria-checked="true"' +
+        ' data-f="level" data-v="' + p[0] + '">' +
+        '<span class="box">' + CHECK + '</span>' +
+        '<span class="txt">' + p[1] + ' <span style="opacity:.55">' + n + '</span></span>' +
+        '</button>';
+    }).join('');
+  }
+
+  // ── filtrage ─────────────────────────────────────────────
+  function apply() {
+    var q = state.q.trim().toLowerCase(), shown = 0;
+    $$('.en-wrap').forEach(function (w) {
+      if (w.classList.contains('is-sep')) {
+        w.hidden = !!q && w.dataset.title.indexOf(q) === -1;
+        return;
+      }
+      var col = w.closest('.zcol');
+      var br = col ? COLBRANCH[col.dataset.col] : null;
+      var ok = (!br || state.branches[br] !== false) &&
+               state.types[w.dataset.type] !== false &&
+               state.levels[w.dataset.level] !== false &&
+               (!q || w.dataset.title.indexOf(q) !== -1) &&
+               !(state.hideDone && prog[w.dataset.id]);
+      w.hidden = !ok;
+      if (ok) shown++;
+    });
+    // une colonne se retire si sa branche est décochée ou si elle est vide
+    $$('.zcol').forEach(function (c) {
+      var b = COLBRANCH[c.dataset.col];
+      var offByBranch = b && state.branches[b] === false;
+      c.hidden = offByBranch ||
+        !$$('.en-wrap:not(.is-sep)', c).some(function (w) { return !w.hidden; });
+    });
+    // Décocher l'Arrowverse fait disparaître TOUTES les mentions de l'événement :
+    // la barre Major Event et le jalon planté dans la colonne.
+    var crisisOn = state.branches.arrowverse !== false;
+    $$('.en-wrap.is-sep').forEach(function (w) { if (!crisisOn) w.hidden = true; });
+    $$('.zone').forEach(function (z) {
+      var cols = $$('.zcol', z);
+      // la zone Major Event n'a pas de colonne : elle suit l'Arrowverse
+      z.hidden = z.dataset.zone === 'event'
+        ? !crisisOn
+        : cols.length > 0 && cols.every(function (c) { return c.hidden; });
+      var r = $('[data-rail="zone-' + z.dataset.zone + '"]');
+      if (r) r.hidden = z.hidden;
+      // une zone repliée qui contient un résultat s'ouvre d'elle-même
+      if (q && !z.hidden) openZone(z, true);
+    });
+    $('#fp-count').textContent = shown + ' / ' + allEntries().length + ' ' + (T.shown || 'shown');
+    $('#empty').classList.toggle('on', shown === 0);
+    $('#empty-q').textContent = q ? '“' + state.q.trim() + '”' : (T.emptyThese || 'these filters');
+    syncCarousels();
+    paint();
+  }
+
+  function openZone(z, on) {
+    var head = $('[data-zone-toggle]', z), body = $('.zone-body', z);
+    if (!head || !body) return;
+    head.setAttribute('aria-expanded', on ? 'true' : 'false');
+    body.hidden = !on;
+    body.classList.toggle('open', on);
+  }
+
+  function paint() {
+    var all = allEntries(), total = all.length;
+    var done = all.filter(function (e) { return prog[e.id]; }).length;
+    var pct = total ? Math.round(done / total * 100) : 0;
+    var left = 0, unknown = 0;
+    all.forEach(function (e) {
+      if (prog[e.id]) return;
+      var v = RT[e.id];
+      if (v === undefined) { unknown++; return; }
+      left += v;
+    });
+    $('#n-done').textContent = done;
+    $('#n-total').textContent = '/ ' + total;
+    $('#n-pct').textContent = pct;
+    $('#bar').style.width = pct + '%';
+    $('#n-h').textContent = left >= 60 ? Math.floor(left / 60) : left;
+    $('#n-hu').textContent = left >= 60 ? 'h' : 'min';
+    $('#star').hidden = !unknown;
+    $('#mini-num').textContent = done + '/' + total;
+    $('#mini-fill').style.width = pct + '%';
+
+    Object.keys(DATA.branches).forEach(function (k) {
+      var its = DATA.branches[k].filter(function (e) { return !isSep(e); });
+      var d = its.filter(function (e) { return prog[e.id]; }).length;
+      var m = $('[data-col-m="' + k + '"]');
+      if (m) m.textContent = d + ' / ' + its.length;
+    });
+    ZONES.forEach(function (z) {
+      var keys = COLKEY[z.id] || [];
+      if (!keys.length) return;
+      var its = keys.reduce(function (a, k) {
+        return a.concat(DATA.branches[k].filter(function (e) { return !isSep(e); }));
+      }, []);
+      var d = its.filter(function (e) { return prog[e.id]; }).length;
+      var m = $('[data-zone-m="' + z.id + '"]'); if (m) m.textContent = d + ' / ' + its.length;
+      var rm = $('[data-rail-m="zone-' + z.id + '"]'); if (rm) rm.textContent = d + '/' + its.length;
+      var rf = $('[data-rail-f="zone-' + z.id + '"]');
+      if (rf) rf.style.width = (its.length ? d / its.length * 100 : 0) + '%';
+      var ra = $('[data-rail="zone-' + z.id + '"]');
+      if (ra) ra.classList.toggle('on', d === its.length && its.length > 0);
+    });
+  }
+
+  // ── rail ─────────────────────────────────────────────────
+  function railArrows() {
+    var rail = $('#rail'), wrap = rail.parentNode;
+    if (!wrap.classList.contains('rail-wrap')) {
+      var box = document.createElement('div');
+      box.className = 'rail-wrap';
+      rail.parentNode.insertBefore(box, rail);
+      box.appendChild(rail);
+      ['prev', 'next'].forEach(function (dir) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'rail-arrow rail-' + dir;
+        b.setAttribute('aria-label', dir === 'prev' ? 'Scroll left' : 'Scroll right');
+        b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' +
+          (dir === 'prev' ? 'm15 18-6-6 6-6' : 'm9 18 6-6-6-6') + '"/></svg>';
+        b.addEventListener('click', function () {
+          rail.scrollBy({ left: (dir === 'prev' ? -1 : 1) * rail.clientWidth * 0.7, behavior: 'smooth' });
+        });
+        box.appendChild(b);
+      });
+      rail.addEventListener('scroll', railState, { passive: true });
+      window.addEventListener('resize', railState);
+    }
+    railState();
+  }
+  function railState() {
+    var rail = $('#rail'); if (!rail) return;
+    var box = rail.parentNode;
+    box.classList.toggle('is-over', rail.scrollWidth - rail.clientWidth > 4);
+    box.classList.toggle('at-start', rail.scrollLeft <= 2);
+    box.classList.toggle('at-end', rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2);
+  }
+
+  // ── interactions ─────────────────────────────────────────
+  function toggleEntry(btn) {
+    var id = btn.closest('.en-wrap').dataset.id;
+    var before = DATA ? badgeMap() : {};
+    if (prog[id]) delete prog[id]; else prog[id] = 1;
+    save();
+    if (DATA && window.cgBadgeFx) window.cgBadgeFx('dc', before, badgeMap(), BADGES_DC);
+    localStorage.setItem('cg_last', JSON.stringify({ u: 'dc', t: Date.now() }));
+    btn.setAttribute('aria-checked', prog[id] ? 'true' : 'false');
+    btn.closest('.en').classList.toggle('done', !!prog[id]);
+    apply();
+  }
+
+  function wire() {
+    document.addEventListener('click', function (ev) {
+      var c = ev.target.closest('[data-check]');
+      if (c) { toggleEntry(c); return; }
+      var zt = ev.target.closest('[data-zone-toggle]');
+      if (zt) {
+        var z = zt.closest('.zone');
+        openZone(z, zt.getAttribute('aria-expanded') !== 'true');
+        return;
+      }
+      var t = ev.target.closest('[data-toggle]');
+      if (t) {
+        var w = t.closest('.en-wrap');
+        t.setAttribute('aria-expanded', w.classList.toggle('open') ? 'true' : 'false');
+        return;
+      }
+      var f = ev.target.closest('[data-f]');
+      if (f) {
+        var on = f.getAttribute('aria-checked') !== 'true';
+        f.setAttribute('aria-checked', on ? 'true' : 'false');
+        var bag = f.dataset.f === 'type' ? state.types
+                : f.dataset.f === 'branch' ? state.branches : state.levels;
+        bag[f.dataset.v] = on;
+        apply(); return;
+      }
+      var bulk = ev.target.closest('[data-bulk]');
+      if (bulk) {
+        var want = bulk.dataset.bulk === 'all';
+        $$('[data-f]', bulk.closest('.fp-sec')).forEach(function (b) {
+          b.setAttribute('aria-checked', want ? 'true' : 'false');
+          var bg = b.dataset.f === 'type' ? state.types
+                 : b.dataset.f === 'branch' ? state.branches : state.levels;
+          bg[b.dataset.v] = want;
+        });
+        apply(); return;
+      }
+      var cp = ev.target.closest('[data-copy]');
+      if (cp) {
+        ev.preventDefault();
+        navigator.clipboard && navigator.clipboard.writeText(
+          location.origin + location.pathname + cp.getAttribute('href'));
+        cp.title = T.copied || 'Copied!';
+        setTimeout(function () { cp.title = (T.copyLink || 'Copy link to this entry'); }, 1400);
+        location.hash = cp.getAttribute('href');
+      }
+    });
+
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === ' ' || ev.key === 'Spacebar') {
+        var c = ev.target.closest && ev.target.closest('[data-check]');
+        if (c) { ev.preventDefault(); toggleEntry(c); }
+      }
+      if (ev.key === '/' && document.activeElement.tagName !== 'INPUT') {
+        ev.preventDefault(); $('#q').focus();
+      }
+    });
+
+    var box = $('#q'), pending;
+    box.addEventListener('input', function () {
+      state.q = box.value;
+      box.parentNode.classList.toggle('has-value', !!box.value);
+      clearTimeout(pending); pending = setTimeout(apply, 90);
+    });
+    $('#q-clear').addEventListener('click', function () {
+      box.value = ''; state.q = '';
+      box.parentNode.classList.remove('has-value'); box.focus(); apply();
+    });
+
+    var hd = $('#hide-done');
+    hd.addEventListener('click', function () {
+      state.hideDone = !state.hideDone;
+      hd.setAttribute('aria-pressed', state.hideDone ? 'true' : 'false');
+      apply();
+    });
+
+    $('[data-resume]').addEventListener('click', function () {
+      var next = $$('.en-wrap').filter(function (w) {
+        return !w.hidden && !w.classList.contains('is-sep') && !prog[w.dataset.id];
+      })[0];
+      if (!next) return;
+      var z = next.closest('.zone'); if (z) openZone(z, true);
+      next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var en = $('.en', next);
+      en.classList.add('hit');
+      setTimeout(function () { en.classList.remove('hit'); }, 2000);
+    });
+
+    $('#export').addEventListener('click', function () {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify({ v: 1, dc: prog }, null, 2)],
+        { type: 'application/json' }));
+      a.download = 'chronologeek-dc.json'; a.click(); URL.revokeObjectURL(a.href);
+    });
+    $('#import').addEventListener('click', function () { $('#import-file').click(); });
+    $('#import-file').addEventListener('change', function (ev) {
+      var f = ev.target.files[0]; if (!f) return;
+      var r = new FileReader();
+      r.onload = function () {
+        try {
+          var d = JSON.parse(r.result);
+          prog = d.dc || d; save();
+          $$('.en-wrap:not(.is-sep)').forEach(function (w) {
+            var on = !!prog[w.dataset.id];
+            $('.en', w).classList.toggle('done', on);
+            $('[data-check]', w).setAttribute('aria-checked', on ? 'true' : 'false');
+          });
+          apply();
+        } catch (e) { alert(T.badFile || 'Unreadable file.'); }
+      };
+      r.readAsText(f); ev.target.value = '';
+    });
+
+    $('#reset').addEventListener('click', function () {
+      if (!confirm(T.resetMsg || 'Reset your DC progress?')) return;
+      prog = {}; save();
+      $$('.en-wrap:not(.is-sep)').forEach(function (w) {
+        $('.en', w).classList.remove('done');
+        $('[data-check]', w).setAttribute('aria-checked', 'false');
+      });
+      apply();
+    });
+
+    // ── badges ────────────────────────────────────────────
+    function badgeState(b) {
+      if (b.trigger === '100pct') {
+        return allEntries().every(function (e) { return prog[e.id]; });
+      }
+      if (b.trigger === 'all') {
+        return b.ids.length > 0 && b.ids.every(function (id) { return prog[id]; });
+      }
+      return !!prog[b.ids[0]];
+    }
+
+    $('#badges-btn').addEventListener('click', function () {
+      var got = BADGES_DC.filter(badgeState).length;
+      var m = document.createElement('div');
+      m.className = 'modal';
+      m.setAttribute('role', 'dialog');
+      m.setAttribute('aria-modal', 'true');
+      m.setAttribute('aria-label', 'My badges');
+      m.innerHTML = '<div class="modal-box">' +
+        '<div class="modal-head"><h2>' + (T.myBadges || 'My Badges') + '</h2>' +
+          '<span class="n">' + got + ' / ' + BADGES_DC.length + ' ' + (T.unlockedN || 'unlocked') + '</span>' +
+          '<button class="modal-x" aria-label="Close">✕</button></div>' +
+        '<div class="badges">' + BADGES_DC.map(function (b) {
+          var on = badgeState(b);
+          return '<div class="bdg ' + (on ? 'on' : 'locked') + '" style="--bc:' + b.color + '">' +
+            '<span class="ic">' + (on ? b.icon : '🔒') + '</span>' +
+            '<span class="nm">' + b.label + '</span>' +
+            '<span class="ds">' + b.desc + '</span></div>';
+        }).join('') + '</div></div>';
+      document.body.appendChild(m);
+      var x = m.querySelector('.modal-x');
+      x.focus();
+      function close() {
+        m.remove();
+        document.removeEventListener('keydown', esc);
+        $('#badges-btn').focus();
+      }
+      function esc(ev) { if (ev.key === 'Escape') close(); }
+      x.addEventListener('click', close);
+      m.addEventListener('click', function (ev) { if (ev.target === m) close(); });
+      document.addEventListener('keydown', esc);
+    });
+
+    $('#clear-filters').addEventListener('click', function () {
+      state.q = ''; $('#q').value = '';
+      $('#q').parentNode.classList.remove('has-value');
+      state.hideDone = false;
+      $('#hide-done').setAttribute('aria-pressed', 'false');
+      $$('[data-f]').forEach(function (b) {
+        b.setAttribute('aria-checked', 'true');
+        var bg2 = b.dataset.f === 'type' ? state.types
+                : b.dataset.f === 'branch' ? state.branches : state.levels;
+        bg2[b.dataset.v] = true;
+      });
+      apply();
+    });
+  }
+
+  Promise.all([
+    // les URL viennent de la page : elles changent selon la langue
+    grab('CG_DATA',  CG.data),
+    grab('CG_ZONES', CG.zones),
+    grab('RT',       CG.rt)
+  ]).then(function (res) {
+    DATA = res[0]; ZONES = res[1]; RT = res[2] || {};
+    $('#intro').innerHTML = DATA.notes || '';
+    build(); wire(); apply();
+    if (location.hash) {
+      var el = document.getElementById(location.hash.slice(1));
+      if (el) {
+        var z = el.closest('.zone'); if (z) openZone(z, true);
+        setTimeout(function () {
+          el.scrollIntoView({ block: 'center' }); el.classList.add('hit');
+        }, 120);
+      }
+    }
+  });
+})();
