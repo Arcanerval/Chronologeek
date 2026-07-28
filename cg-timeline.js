@@ -181,11 +181,141 @@
         '<a class="en-link" href="#' + e.id + '" data-copy title="' + (T.copyLink || 'Copy link to this entry') + '">' +
           ICO.link + '</a>' +
       '</div>' +
-      '<div class="en-panel">' +
-        (e.desc ? '<p class="en-desc">' + e.desc + '</p>' : '') +
+      '<div class="en-panel" data-tmdb="' + (e.tmdb || '0') +
+          '" data-media="' + (e.media || 'tv') + '">' +
+        '<div class="en-rich"></div>' +
         (faq ? '<div class="en-faq">' + faq + '</div>' : '') +
       '</div>' +
     '</div>';
+  }
+
+  // ── fiche TMDB / RAWG ────────────────────────────────────
+  // Portée de l'ancienne toggleExpand() : affiche, synopsis, méta et bande
+  // annonce. La durée n'est plus dans la méta, elle vit sur la ligne.
+  var detailCache = {};
+
+  function meta(pairs) {
+    var s = pairs.filter(function (p) { return p[1]; })
+      .map(function (p) { return '<span><strong>' + p[0] + '</strong> ' + p[1] + '</span>'; })
+      .join('');
+    return s ? '<div class="expand-meta">' + s + '</div>' : '';
+  }
+
+  function lightbox(url) {
+    var pm = $('#cg-pm');
+    if (!pm) {
+      pm = document.createElement('div');
+      pm.id = 'cg-pm';
+      pm.className = 'pm';
+      pm.innerHTML = '<button class="pm-x" aria-label="' + (T.close || 'Close') + '">✕</button>' +
+                     '<img id="cg-pmi" alt=""/>';
+      pm.addEventListener('click', function () { pm.classList.remove('o'); });
+      document.body.appendChild(pm);
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape') pm.classList.remove('o');
+      });
+    }
+    $('#cg-pmi').src = url;
+    pm.classList.add('o');
+  }
+
+  function loadRich(wrap) {
+    var panel = $('.en-panel', wrap), box = $('.en-rich', panel);
+    if (!box || panel.dataset.loaded) return;
+    panel.dataset.loaded = '1';
+
+    var e = allEntries().filter(function (x) { return x.id === wrap.dataset.id; })[0] || {};
+    var id = panel.dataset.tmdb, type = panel.dataset.media === 'movie' ? 'movie' : 'tv';
+    var IMG = CFG.img || 'https://image.tmdb.org/t/p/';
+    box.innerHTML = '<div class="expand-loading">' + (T.loading || 'Loading…') + '</div>';
+
+    // ── jeux vidéo : RAWG, comme en prod ───────────────────
+    if ((!id || id === '0') && panel.dataset.media === 'game') {
+      var yt = 'https://www.youtube.com/results?search_query=' +
+               encodeURIComponent(e.title + ' full movie');
+      var link = '<a class="expand-trailer-link" href="' + yt + '" target="_blank"' +
+                 ' rel="noopener">🎮 ' + (T.watchGame || 'Watch the full movie on YouTube') + '</a>';
+      if (!CFG.rawgKey) {
+        box.innerHTML = '<div class="expand-inner"><div class="expand-info">' +
+          '<div class="expand-synopsis">' + (e.desc || e.note || '') + '</div>' +
+          meta([[T.mYear || 'Period', e.date]]) + link + '</div></div>';
+        return;
+      }
+      fetch('https://api.rawg.io/api/games?search=' +
+            encodeURIComponent(String(e.title).replace(/[:.+]/g, ' ')) +
+            '&page_size=1&key=' + CFG.rawgKey)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          var g = d.results && d.results[0];
+          box.innerHTML = '<div class="expand-inner">' +
+            (g && g.background_image
+              ? '<div class="expand-poster"><img src="' + g.background_image + '" loading="lazy" alt=""/></div>' : '') +
+            '<div class="expand-info"><div class="expand-synopsis">' +
+              (e.desc || (g && g.description_raw ? g.description_raw.substring(0, 300) + '…' : e.note || '')) +
+            '</div>' +
+            meta([[T.mReleased || 'Released', g && g.released ? g.released.substring(0, 4) : ''],
+                  [T.mRating || 'Rating', g && g.rating ? '⭐ ' + g.rating.toFixed(1) + '/5' : ''],
+                  [T.mPeriod || 'Period', e.date]]) +
+            link + '</div></div>';
+        })
+        .catch(function () {
+          box.innerHTML = '<div class="expand-inner"><div class="expand-info">' +
+            '<div class="expand-synopsis">' + (e.desc || e.note || '') + '</div>' +
+            meta([[T.mPeriod || 'Period', e.date]]) + link + '</div></div>';
+        });
+      return;
+    }
+
+    if (!id || id === '0' || !CFG.tmdbKey) {
+      box.innerHTML = e.desc ? '<p class="en-desc">' + e.desc + '</p>' : '';
+      return;
+    }
+
+    // ── films et séries : TMDB ─────────────────────────────
+    var key = type + id;
+    var got = detailCache[key]
+      ? Promise.resolve(detailCache[key])
+      : fetch('https://api.themoviedb.org/3/' + type + '/' + id +
+              '?api_key=' + CFG.tmdbKey + '&language=' + (CFG.tmdbLang || 'en-US') +
+              '&append_to_response=videos')
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            var v = (d.videos && d.videos.results) || [];
+            var has = v.some(function (x) { return x.type === 'Trailer' && x.site === 'YouTube'; });
+            if (has) { detailCache[key] = d; return d; }
+            // pas de bande annonce dans la langue : on complète en anglais
+            return fetch('https://api.themoviedb.org/3/' + type + '/' + id +
+                         '/videos?api_key=' + CFG.tmdbKey + '&language=en-US')
+              .then(function (r) { return r.json(); })
+              .then(function (en) {
+                d.videos = { results: v.concat(en.results || []) };
+                detailCache[key] = d;
+                return d;
+              });
+          });
+
+    got.then(function (d) {
+      var trailer = ((d.videos && d.videos.results) || []).filter(function (v) {
+        return v.type === 'Trailer' && v.site === 'YouTube';
+      })[0];
+      var poster = d.poster_path ? IMG + 'w300' + d.poster_path : null;
+      box.innerHTML = '<div class="expand-inner">' +
+        (poster ? '<button type="button" class="expand-poster" data-big="' +
+            IMG + 'w780' + d.poster_path + '" aria-label="' + (T.zoom || 'Enlarge poster') + '">' +
+            '<img src="' + poster + '" loading="lazy" alt=""/>' +
+            '<span class="expand-poster-ov">🔍</span></button>' : '') +
+        '<div class="expand-info">' +
+          '<div class="expand-synopsis">' + (d.overview || (T.noSynopsis || 'No synopsis available.')) + '</div>' +
+          meta([[T.mYear || 'Year', (d.release_date || d.first_air_date || '').substring(0, 4)],
+                [T.mGenre || 'Genre', (d.genres || []).map(function (g) { return g.name; }).join(', ')],
+                [T.mRating || 'Rating', d.vote_average ? '⭐ ' + d.vote_average.toFixed(1) + '/10' : '']]) +
+          (trailer ? '<a class="expand-trailer-link" href="https://www.youtube.com/watch?v=' +
+            trailer.key + '" target="_blank" rel="noopener">▶ ' +
+            (T.trailer || 'YouTube trailer') + '</a>' : '') +
+        '</div></div>';
+    }).catch(function () {
+      box.innerHTML = '<div class="expand-loading">' + (T.loadFail || 'Failed to load.') + '</div>';
+    });
   }
 
   function build() {
@@ -442,10 +572,15 @@
       var c = ev.target.closest('[data-check]');
       if (c) { toggleEntry(c); return; }
 
+      // agrandissement de l'affiche
+      var big = ev.target.closest('[data-big]');
+      if (big) { lightbox(big.dataset.big); return; }
+
       var t = ev.target.closest('[data-toggle]');
       if (t) {
         var w = t.closest('.en-wrap'), open = w.classList.toggle('open');
         t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) loadRich(w);
         return;
       }
 
@@ -684,6 +819,7 @@
         var w = el.closest('.en-wrap');
         w.classList.add('open');
         $('[data-toggle]', w).setAttribute('aria-expanded', 'true');
+        loadRich(w);
         setTimeout(function () {
           el.scrollIntoView({ block: 'center' });
           el.classList.add('hit');

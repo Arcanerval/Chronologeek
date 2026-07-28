@@ -1099,3 +1099,41 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
    pas en chasse fixe dans une carte de 274 px. */
 .ucard .upd{flex:0 1 auto;min-width:0;font-size:.68rem;white-space:nowrap;
   font-family:var(--font-body);overflow:hidden;text-overflow:ellipsis}
+
+/* ═══════════ FICHE TMDB / RAWG ═══════════
+   Portée de l'ancienne page : affiche cliquable, synopsis, méta, bande
+   annonce. La durée n'est plus ici, elle est sur la ligne de l'entrée. */
+.en-rich:empty{display:none}
+.expand-inner{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.8rem}
+.expand-poster{flex:0 0 auto;width:104px;padding:0;border:0;background:none;
+  border-radius:10px;overflow:hidden;position:relative;cursor:pointer;display:block}
+.expand-poster img{width:100%;height:auto;display:block;transition:transform .3s}
+.expand-poster:hover img{transform:scale(1.05)}
+.expand-poster-ov{position:absolute;inset:0;display:grid;place-items:center;
+  font-size:1.5rem;background:rgba(0,0,0,0);opacity:0;transition:.2s}
+.expand-poster:hover .expand-poster-ov{background:rgba(0,0,0,.45);opacity:1}
+.expand-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.55rem}
+.expand-synopsis{font-size:.85rem;color:var(--muted2);line-height:1.65}
+.expand-meta{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-size:.78rem;color:var(--muted2)}
+.expand-meta span strong{color:var(--text);font-weight:600;margin-right:.2rem}
+.expand-trailer-link{display:inline-flex;align-items:center;gap:.4rem;width:fit-content;
+  background:rgba(255,0,0,.1);border:1px solid rgba(255,0,0,.25);color:#ff6b6b;
+  padding:.4rem .8rem;border-radius:8px;font-size:.8rem;font-weight:600;
+  text-decoration:none;min-height:38px;transition:.2s}
+.expand-trailer-link:hover{background:rgba(255,0,0,.2)}
+.expand-loading{padding:1.2rem;color:var(--muted);font-size:.82rem;text-align:center}
+
+/* la visionneuse d'affiche */
+.pm{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.92);
+  align-items:center;justify-content:center;backdrop-filter:blur(8px);cursor:zoom-out}
+.pm.o{display:flex}
+.pm img{max-height:88vh;max-width:88vw;border-radius:14px;
+  box-shadow:0 30px 100px rgba(0,0,0,.9)}
+.pm-x{position:absolute;top:1.25rem;right:1.5rem;width:42px;height:42px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);
+  color:#fff;font-size:1.2rem;cursor:pointer}
+.pm-x:hover{background:rgba(255,255,255,.15)}
+@media(max-width:640px){
+  .expand-inner{gap:.7rem}
+  .expand-poster{width:78px}
+}
