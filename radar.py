@@ -51,11 +51,13 @@ EXCLUDE = {
     # livres dérivés qui mettent le film entre parenthèses après leur titre
     # (« Meet Team Avatar (Avatar Aang: The Last Airbender) ») : le film cité
     # ainsi n'est jamais l'œuvre elle-même, c'est toujours un produit dérivé.
-    # Les romans pour enfants sont hors périmètre eux aussi : « Junior Novel »,
-    # « Young Readers Novel ». Sans mordre sur les « Graphic Novel », qui restent.
+    # Les « Junior Novel » sont des romans pour enfants, hors périmètre. La
+    # littérature young adult reste, elle : seules ses novélisations sautent,
+    # attrapées par les motifs ci-dessus. Ne pas mordre sur les « Graphic
+    # Novel », qui restent aussi.
     "avatar":   [r"noveli[sz]ation", r"a novel based on",
                  r"\(avatar aang: the last airbender\)",
-                 r"junior novel", r"young readers? novel"],
+                 r"junior novel"],
     # Visions Presents – The Ninth Jedi n'est pas canon.
     "starwars": [r"\blego\b", r"noveli[sz]ation", r"the ninth jedi"],
     "marvel":   [r"\blego\b"],
@@ -857,7 +859,7 @@ details.row[open] .chev{{background:#7c6af7;border-color:#7c6af7;color:#fff;tran
 @media(max-width:1200px){{.grid{{grid-template-columns:repeat(2,1fr)}}}}
 @media(max-width:640px){{.grid{{grid-template-columns:1fr}}}}
 </style></head><body>
-<h1>🛰️ Radar des sorties</h1>
+<h1>Radar des sorties</h1>
 <div class="sub">Généré le {gen} · {total} sortie(s) à venir</div>
 <div class="legend">{legend}</div>
 <div class="grid">{body}</div>

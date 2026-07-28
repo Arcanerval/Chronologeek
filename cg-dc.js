@@ -324,7 +324,6 @@
         '<' + (keys.length ? 'button type="button" class="zone-head" data-zone-toggle' +
               ' aria-expanded="' + (z.open ? 'true' : 'false') + '"' +
               ' aria-controls="body-' + z.id + '"' : 'div class="zone-head is-static"') + '>' +
-          '<span class="zone-icon" aria-hidden="true">' + z.icon + '</span>' +
           '<span class="zone-label">' +
             '<span class="zone-name">' + z.name + '</span>' +
             '<span class="zone-desc">' + z.desc + '</span>' +

@@ -75,7 +75,9 @@ avant de réinjecter.
   modifier le JSON dans la page, ou régénérer puis repasser `_run_dossier.js`.
 - `runtime.py` — calcule le temps de visionnage par entrée et injecte
   `const RT={id:minutes}`. Workflow `runtime.yml`, déclenchement manuel.
-- `radar.py` — radar des sorties, workflow `radar.yml`, toutes les 6 h.
+- `radar.py` — radar des sorties, workflow `radar.yml`, une fois par jour
+  (`cron: "0 6 * * *"`, soit 8 h à Paris en été, 7 h en hiver). Il n'y a pas
+  assez de sorties pour tourner plus souvent.
 
 Après avoir poussé une page à la main, **relancer l'action concernée** : les pages
 livrées n'ont pas la table `RT`, c'est l'action qui l'injecte. Pousser d'abord,
