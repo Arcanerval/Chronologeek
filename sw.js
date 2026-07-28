@@ -8,7 +8,8 @@ const PRECACHE = [
   '/badges.js', '/pwa.js', '/anim.js', '/manifest.json',
   '/progress.css', '/progress.js', '/intro.css', '/filters.css', '/filters.js',
   // composants de la refonte — coexistent avec les anciens pendant la migration
-  '/cg.css', '/cg-timeline.js', '/cg-dc.js', '/cg-dossier.js', '/cg-badges-fx.js'
+  '/cg.css', '/cg-timeline.js', '/cg-dc.js', '/cg-dossier.js', '/cg-badges-fx.js',
+  '/cg-upcoming.js'
 ];
 
 self.addEventListener('install', e => {

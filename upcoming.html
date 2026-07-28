@@ -24,264 +24,88 @@
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
 </div>
 
-<style>
-:root{
-  --bg:#08080f;--surface:#0f0f1a;--surface2:#161625;--border:#1e1e35;--border2:#2a2a48;
-  --accent:#7c6af7;--accent2:#f06292;--gold:#f5c842;--text:#e2e2f0;--muted:#686880;
-  --muted2:#9090b0;--green:#56c27a;--radius:12px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(240,98,146,.08),transparent 60%);pointer-events:none}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-
-/* ── HEADER ── */
-header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
-nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px}
-.logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:30px;display:block;object-fit:contain;background:transparent}
-.logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:1.25rem;align-items:center}
-.nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
-.nav-sp{flex:1}
-
-/* ── HERO ── */
-.hero{padding:5rem 2rem 4.5rem;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(124,106,247,.15),transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:1}
-.hero-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
-.hero-logo{display:block;height:clamp(48px,8vw,90px);margin:0 auto 1.5rem;filter:drop-shadow(0 0 40px rgba(124,106,247,.4))}
-.hero-tagline{color:var(--muted2);font-size:1.05rem;max-width:520px;margin:0 auto 3rem;line-height:1.65}
-
-/* ── GRILLE UNIVERS ── */
-.ugrid{display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;max-width:1000px;margin:0 auto}
-.ucard{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--border2);border-radius:18px;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;width:260px;overflow:hidden;text-decoration:none;display:block}
-.ucard:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 60px rgba(124,106,247,.25),0 0 0 1px rgba(124,106,247,.3)}
-.cbanner{height:140px;position:relative;overflow:hidden;background:var(--surface2)}
-.cbanner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .3s}
-.ucard:hover .cbanner img{opacity:1}
-.cbanner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(15,15,26,.85) 100%);pointer-events:none}
-.cbody{padding:1.1rem 1.25rem 1.4rem}
-.ctitle{font-size:1.1rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.3px}
-.csub{font-size:.78rem;color:var(--muted2);line-height:1.5}
-.ctag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:20px}.ctag-row{display:flex;align-items:center;gap:.6rem;margin-top:.6rem}.cmaj{font-size:.68rem;color:var(--muted);letter-spacing:.03em}
-.tag-live{background:rgba(86,194,122,.15);color:var(--green);border:1px solid rgba(86,194,122,.3)}
-.tag-soon{background:rgba(124,106,247,.12);color:var(--accent);border:1px solid rgba(124,106,247,.25)}
-
-/* ── SOON SECTION ── */
-.soon-section{max-width:960px;margin:0 auto;padding:0 2rem 5rem}
-.soon-title{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;text-align:center}
-.soon-grid{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.soon-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.4rem;display:flex;align-items:center;gap:.9rem;width:220px;opacity:.7;transition:opacity .2s}
-.soon-card:hover{opacity:1}
-.soon-card-img{width:44px;height:44px;border-radius:10px;object-fit:cover;flex-shrink:0;background:var(--surface2)}
-.soon-card-name{font-size:.88rem;font-weight:700}
-.soon-card-sub{font-size:.72rem;color:var(--muted2);margin-top:.15rem}
-
-@media(max-width:700px){
-  nav{flex-wrap:wrap;height:auto;padding:.5rem 0;gap:.3rem}
-  .logo{width:100%;justify-content:center;padding:.15rem 0}
-  .logo img{height:22px}
-  .nav-links{width:100%;justify-content:center;flex-wrap:wrap;gap:.35rem .7rem}
-  .nav-links a{font-size:.78rem;white-space:nowrap}
-  .nav-sp{display:none}
-    .hero{padding:2rem .8rem 1.5rem}
-  .hero-logo{height:auto !important;width:min(86vw,420px);object-fit:contain}
-  .ugrid{flex-direction:column;align-items:center;gap:1.25rem;padding:0 1rem}
-  .ucard{width:100%;max-width:360px}
-  .cbanner{height:120px}
-}
-
-/* ═══ Mobile App Polish ═══ */
-html,body{overflow-x:clip}
-*{-webkit-tap-highlight-color:transparent}
-.logo img{width:auto;object-fit:contain}
-@media(max-width:700px){
-  .logo img{height:22px;max-width:44vw}
-  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
-  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  .nav-sp,.nav-maj,  
-}
-
-
-
-/* ═══ Menu mobile v2 ═══ */
-.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
-#mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
-#mmenu.open{display:flex}
-#mmenu a{color:var(--muted2);font-size:1.25rem;text-decoration:none;cursor:pointer;font-weight:600}
-#mmenu a.cur{color:var(--text);font-weight:800}
-#mmenu a.doss{color:var(--accent2)}
-.nav-links a.doss{color:var(--accent2);font-weight:700}
-@media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
-.nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
-.nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
-.tabs{display:flex;gap:.5rem;margin:0 0 1.6rem;flex-wrap:wrap}
-.tab{background:var(--surface);border:1px solid var(--border);color:var(--muted2);font:inherit;font-size:.82rem;font-weight:600;padding:.5rem 1rem;border-radius:22px;cursor:pointer;transition:all .2s}
-.tab:hover{color:var(--text);border-color:#7c6af7}
-.tab.active{background:rgba(124,106,247,.16);border-color:#7c6af7;color:#fff}
-.rd-legend{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.3rem;font-size:.7rem;color:var(--muted2)}
-.rd-legend span{display:flex;align-items:center;gap:.35rem}
-.rd-legend i{width:9px;height:9px;border-radius:2px;display:block}
-.rd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;align-items:start}
-.rd-col{min-width:0}
-.rd-uni{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:.9rem;padding:.4rem .2rem .7rem}
-.rd-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.rd-n{font-size:.7rem;color:var(--muted2);font-weight:400}
-.rd-card{position:relative;padding:.6rem .7rem;padding-right:2.3rem;border:1px solid var(--border);border-left:3px solid #6b7280;border-radius:9px;margin-bottom:.45rem;background:var(--surface)}
-.rd-date{font-variant-numeric:tabular-nums;color:var(--muted2);font-size:.74rem}
-.rd-t{font-weight:600;font-size:.85rem;line-height:1.32;margin:.15rem 0;color:var(--text)}
-.rd-meta{color:var(--muted);font-size:.7rem;display:flex;justify-content:space-between;gap:.5rem}
-details.rd-card{cursor:pointer}
-details.rd-card>summary{list-style:none;display:block}
-details.rd-card>summary::-webkit-details-marker{display:none}
-.rd-chev{position:absolute;right:.55rem;top:.9rem;width:21px;height:21px;border-radius:50%;background:rgba(124,106,247,.12);border:1px solid var(--border2);color:var(--muted2);font-size:.68rem;display:flex;align-items:center;justify-content:center;transition:all .18s}
-details.rd-card:hover .rd-chev{border-color:#7c6af7;color:var(--text)}
-details.rd-card[open] .rd-chev{background:#7c6af7;border-color:#7c6af7;color:#fff;transform:rotate(180deg)}
-.rd-syn{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);color:var(--muted2);font-size:.75rem;line-height:1.55;cursor:auto}
-.rd-en{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:.05rem .3rem;border-radius:4px;background:rgba(148,163,184,.18);color:#94a3b8;vertical-align:1px;margin-right:.15rem}
-.rd-note{color:var(--muted);font-size:.72rem;margin-top:1.5rem;text-align:center}
-@media(max-width:1100px){.rd-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.rd-grid{grid-template-columns:1fr}}
-</style>
+<link rel="stylesheet" href="/cg.css"/>
+<link rel="canonical" href="https://chronologeek.app/upcoming"/>
+<script>window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","resetSW":"Reset your Star Wars progress?","resetMCU":"Reset your Marvel progress?","resetDC":"Reset your DC progress?","resetDos":"Reset your Deep Dive progress?","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's new","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project."},"kinds":{"film":"Movie","tv":"TV show","comic":"Comic","novel":"Novel","game":"Video game","book":"Book","video":"Video","special":"Special","other":"Other"}};</script>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
 <header>
-  <nav>
-    <div class="logo" onclick="window.location.href='/'">
-      <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
-    </div>
+  <nav class="nav" aria-label="Navigation">
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
     <div class="nav-links">
-      <a onclick="window.location.href='/'">Home</a>
+      <a href="/">Home</a>
       <a href="/deep-dives/" class="doss">Deep Dives</a>
-      <a onclick="window.location.href='/starwars'">Star Wars</a>
-      <a onclick="window.location.href='/marvel'">Marvel</a>
-      <a onclick="window.location.href='/dc'">DC</a>
-      <a onclick="window.location.href='/avatar'">Avatar</a>
-      <a class="upc" onclick="window.location.href='/upcoming'" style="color:var(--text);font-weight:700">Upcoming</a>
-      <a onclick="window.location.href='/whats-new'" class="news">What's New</a>
+      <a href="/starwars">Star Wars</a>
+      <a href="/marvel">Marvel</a>
+      <a href="/dc">DC</a>
+      <a href="/avatar">Avatar</a>
+      <a href="/upcoming" class="upc" aria-current="page">Upcoming</a>
+      <a href="/whats-new" class="news">What's New</a>
     </div>
     <div class="nav-sp"></div>
-    <a class="lang-btn" href="/fr/a-venir" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
-    <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="/fr/a-venir" aria-label="Passer en français" title="Passer en français">
+        <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+      </a>
+      <button class="icon-btn burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </nav>
 </header>
-<div id="mmenu">
-  <a href="/">Home</a>
-  <a href="/deep-dives/" class="doss">Deep Dives</a>
-  <a href="/starwars">Star Wars</a>
-  <a href="/marvel">Marvel</a>
-  <a href="/dc">DC</a>
-  <a href="/avatar">Avatar</a>
-  <a href="/upcoming" class="cur upc">Upcoming</a>
-      <a href="/whats-new" class="news">What's New</a>
-</div>
-
-<div style="max-width:1400px;margin:0 auto;padding:2rem 1.2rem 0">
-<div style="font-size:1.7rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#7c6af7,#f06292);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3rem">Upcoming Releases</div>
-<div style="font-size:.85rem;color:var(--muted2);margin-bottom:1.4rem">Every upcoming Star Wars, Marvel, DC and Avatar release — updated every single day.</div>
-  <div id="rd-body" style="padding-bottom:3.5rem"></div>
-</div>
-<style>
-.nvx{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.2rem}
-.nvx-date{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7c6af7;margin-bottom:.6rem}
-.nvx ul{margin:0;padding-left:1.1rem}
-.nvx li{font-size:.86rem;color:var(--muted2);line-height:1.65;margin-bottom:.55rem}
-.nvx li strong{color:var(--text)}
-.lang-btn{display:flex;align-items:center;flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);line-height:0;transition:transform .2s,box-shadow .2s,border-color .2s;text-decoration:none}
-.lang-btn .flag{height:20px;width:30px;display:block}
-.lang-btn:hover{transform:scale(1.08);border-color:var(--accent);box-shadow:0 0 14px rgba(124,106,247,.45)}
-@media(max-width:700px){.lang-btn{margin-left:auto}.burger{margin-left:.3rem}}
-</style>
+<div class="subbar"><div class="subbar-in">
+  <div class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <label class="skip" for="q">Search the timeline</label>
+    <input id="q" type="search" placeholder="Search…  ( / )" autocomplete="off"/>
+    <button class="search-clear" id="q-clear" aria-label="Clear search">✕</button>
+  </div>
+  <div class="sub-sp"></div>
+  <div class="mini"><span class="live" aria-hidden="true"></span>
+    <span class="mini-num" id="up-count">…</span></div>
+</div></div>
+<main class="shell wide" id="main">
+  <div class="page-head">
+    <h1>Upcoming Releases</h1>
+    <p class="sub">Every upcoming Star Wars, Marvel, DC and Avatar release — updated every single day.</p>
+  </div>
+  <div id="rd-body"></div>
+  <div class="empty" id="empty">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <h3>Nothing matches <span id="empty-q"></span></h3>
+    <p>Try another spelling.</p>
+  </div>
+</main>
+<footer>
+  <div class="foot">
+    <div class="about"><h4>Chronologeek</h4><p>Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.</p></div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="/starwars">Star Wars</a></li>
+      <li><a href="/marvel">Marvel — MCU</a></li>
+      <li><a href="/dc">DC Multiverse</a></li>
+      <li><a href="/avatar">Avatar</a></li>
+      <li><a href="/deep-dives/">Deep Dives</a></li>
+    </ul></div>
+    <div><h4>More</h4><ul>
+      <li><a href="/upcoming">Upcoming releases</a></li>
+      <li><a href="/whats-new">What's new</a></li>
+      <li><a href="#">Support the site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      API but is not endorsed or certified by TMDB. Book data from <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.
+      <br/>© 2026 Chronologeek — <a href="/">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+<script src="/cg-upcoming.js"></script>
+<script src="/anim.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<script>
-(function(){
-  var FR = document.documentElement.lang === 'fr';
-  var UNI = [['starwars','Star Wars','#4d9fff'],['marvel','Marvel','#e23636'],
-             ['dc','DC','#f5c842'],['avatar','Avatar','#7dd3fc']];
-  var COL = {film:'#64b5f6',tv:'#81c784',comic:'#fb923c',novel:'#a78bfa',
-             game:'#ffb74d',book:'#94a3b8',video:'#f472b6',special:'#ffa726',other:'#6b7280'};
-  var LBL = FR ? {film:'Film',tv:'Série',comic:'Comic',novel:'Roman',game:'Jeu vidéo',
-                  book:'Livre',video:'Vidéo',special:'Spécial',other:'Autre'}
-               : {film:'Movie',tv:'TV show',comic:'Comic',novel:'Novel',game:'Video game',
-                  book:'Book',video:'Video',special:'Special',other:'Other'};
-  var T = FR ? {none:'Rien d\u2019annonc\u00e9 pour l\u2019instant',
-                err:'Impossible de charger les sorties pour le moment.',
-                note:'Mis \u00e0 jour automatiquement chaque jour \u00b7 sources : TMDB, Wookieepedia, Avatar Almanac'}
-             : {none:'Nothing announced yet',
-                err:'Could not load upcoming releases right now.',
-                note:'Updated automatically every day \u00b7 sources: TMDB, Wookieepedia, Avatar Almanac'};
-  var NONLATIN = /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0400-\u04ff\u0590-\u06ff]/;
-  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
-  function fmt(e){
-    if(FR) return e.date_txt || '';
-    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(e.date_sort||'');
-    if(!m) return e.date_txt || '';
-    return MON[parseInt(m[2],10)-1] + ' ' + parseInt(m[3],10) + ', ' + m[1];
-  }
-
-  var MATCH = [['graphic','comic'],['comic','comic'],['jeu','game'],['game','game'],
-               ['roman','novel'],['novel','novel'],['young','novel'],['junior','novel'],
-               ['nouvelle','book'],['short','book'],['livre','book'],['book','book'],
-               ['audio','video'],['vid','video'],['spécial','special'],['special','special'],
-               ['promo','special'],['épisode','tv'],['episode','tv'],['série','tv'],
-               ['serie','tv'],['tv','tv'],['film','film'],['movie','film']];
-  function keyOf(e){
-    if(e.kindKey) return e.kindKey;
-    var k=(e.kind||'').toLowerCase();
-    for(var i=0;i<MATCH.length;i++){ if(k.indexOf(MATCH[i][0])>-1) return MATCH[i][1]; }
-    return 'other';
-  }
-
-  var host = document.getElementById('rd-body');
-  if(!host) return;
-
-  fetch('/radar.json', {cache:'no-cache'})
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(data){
-      var legend = '<div class="rd-legend">' + ['film','tv','comic','novel','game','book','video','other']
-        .map(function(k){ return '<span><i style="background:'+COL[k]+'"></i>'+LBL[k]+'</span>'; }).join('') + '</div>';
-      var grid = UNI.map(function(u){
-        var list = data.filter(function(e){ return e.universe === u[0]; })
-                       .sort(function(a,b){ return (a.date_sort||'').localeCompare(b.date_sort||''); });
-        var cards = list.map(function(e){
-          var key = keyOf(e);
-          var c = COL[key] || COL.other;
-          var syn = '', enMark = false;
-          if(FR){ if(e.syn_fr){ syn = e.syn_fr; } else if(e.syn){ syn = e.syn; enMark = true; } }
-          else { syn = e.syn || ''; }
-          var title = (FR && e.title_fr && !NONLATIN.test(e.title_fr)) ? e.title_fr : e.title;
-          var head = '<div class="rd-date">'+esc(fmt(e))+'</div>'
-                   + '<div class="rd-t">'+esc(title)+'</div>'
-                   + '<div class="rd-meta"><span>'+esc(LBL[key]||e.kind||'')+'</span>'
-                   + '<span>'+esc(e.era||'')+'</span></div>';
-          if(syn){
-            return '<details class="rd-card" style="border-left-color:'+c+'">'
-                 + '<summary>'+head+'<span class="rd-chev">\u25be</span></summary>'
-                 + '<div class="rd-syn">'+(enMark?'<span class="rd-en">EN</span> ':'')+esc(syn)+'</div></details>';
-          }
-          return '<div class="rd-card" style="border-left-color:'+c+'">'+head+'</div>';
-        }).join('');
-        if(!cards) cards = '<div class="rd-card" style="border-left-color:var(--border)">'
-                         + '<div class="rd-meta">'+T.none+'</div></div>';
-        return '<div class="rd-col"><div class="rd-uni">'
-             + '<span class="rd-dot" style="background:'+u[2]+'"></span>'+u[1]
-             + ' <span class="rd-n">'+list.length+'</span></div>'+cards+'</div>';
-      }).join('');
-      host.innerHTML = legend + '<div class="rd-grid">'+grid+'</div>'
-                     + '<div class="rd-note">'+T.note+'</div>';
-    })
-    .catch(function(){ host.innerHTML = '<div class="rd-note">'+T.err+'</div>'; });
-
-})();
-</script>
-<script src="/anim.js"></script>
 </body>
 </html>
