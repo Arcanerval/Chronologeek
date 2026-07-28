@@ -13,6 +13,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 **Règle absolue : toute modification d'une page racine doit être répliquée dans `/fr/`.**
 Vérifier après coup que les deux versions produisent les mêmes comptes d'entrées.
+`py sync.py check` fait cette vérification ; voir « Synchronisation FR/EN » plus bas.
 
 ## Charte couleurs
 
@@ -66,6 +67,12 @@ avant de réinjecter.
 
 - `dossier.py`, `dossier_i18n.py` — génèrent le Dossier dans les deux langues.
   Table `FR_OVERRIDE_RAW` pour les titres français corrigés à la main.
+  **Ne plus les lancer tels quels.** Depuis la refonte, le Dossier est une page
+  aux composants partagés dont les 532 entrées vivent dans `window.CG_DATA` ;
+  ces deux scripts produisent encore l'ancien HTML et écraseraient la refonte.
+  Leur workflow est en `workflow_dispatch` seul, donc rien ne part tout seul :
+  le risque, c'est un clic sur « Run workflow ». Pour ajouter des entrées,
+  modifier le JSON dans la page, ou régénérer puis repasser `_run_dossier.js`.
 - `runtime.py` — calcule le temps de visionnage par entrée et injecte
   `const RT={id:minutes}`. Workflow `runtime.yml`, déclenchement manuel.
 - `radar.py` — radar des sorties, workflow `radar.yml`, toutes les 6 h.
@@ -73,6 +80,29 @@ avant de réinjecter.
 Après avoir poussé une page à la main, **relancer l'action concernée** : les pages
 livrées n'ont pas la table `RT`, c'est l'action qui l'injecte. Pousser d'abord,
 lancer ensuite, sinon le push écrase la table.
+
+## Synchronisation FR/EN
+
+`sync.py` sert la règle absolue ci-dessus. Contrairement aux scripts de génération,
+il n'utilise pas `TMDB_KEY` et aucune action ne le lance : il s'appelle à la main.
+L'interpréteur est `py` sur la machine de Niko, pas `python`.
+
+- `py sync.py check` — vérifie que chaque paire racine / `fr/` a le même nombre de
+  lignes, le même nombre d'entrées et les mêmes `id`. Signale `avatar.html`, qui
+  n'a pas encore de version française.
+- `py sync.py show <univers> <id>` — affiche une entrée dans les deux langues sans
+  ouvrir les pages entières. `<univers>` vaut `sw`, `mcu`, `dc` ou `avatar`.
+- `py sync.py mirror <univers> "<ancien>" "<nouveau>"` — remplace dans les deux
+  versions à la fois.
+
+Le script s'appuie sur le fait que les deux versions sont **parallèles ligne à ligne**.
+`mirror` n'écrit que sur les lignes strictement identiques entre EN et FR, donc sur
+le code ; dès qu'une ligne porte un texte traduit il refuse et la signale. Les textes
+restent à écrire à la main dans chaque langue, conformément à la section sur les
+textes de Niko.
+
+Lecture / écriture avec `newline=""` : sans ça Python retraduit CRLF en LF et
+réécrit les fichiers entiers alors que le dépôt les stocke en LF.
 
 ## Niveaux d'importance
 
