@@ -46,16 +46,22 @@ TMDB_COMPANY_NAMES = {
 
 # Exclusions : jamais canon ou hors périmètre. Motifs testés sur "titre + type".
 EXCLUDE = {
-    "avatar":   [r"noveli[sz]ation"],
-    "starwars": [r"\blego\b", r"noveli[sz]ation"],
+    # « A Novel Based on the Animated Film » est une novélisation qui ne dit pas
+    # son nom : le motif noveli[sz]ation ne l'attrape pas.
+    "avatar":   [r"noveli[sz]ation", r"a novel based on"],
+    # Visions Presents – The Ninth Jedi n'est pas canon.
+    "starwars": [r"\blego\b", r"noveli[sz]ation", r"the ninth jedi"],
     "marvel":   [r"\blego\b"],
     "dc":       [r"\blego\b"],
     "*":        [],
 }
 
-# Avatar : seuls ces types de médias nous intéressent (le reste = goodies)
-AVATAR_KEEP = ("movie", "tv series", "micro series", "series", "comic",
-               "graphic novel", "comic story", "novel")
+# Avatar : seuls ces types de médias nous intéressent (le reste = goodies).
+# Les films et les séries sont VOLONTAIREMENT absents : TMDB les fournit déjà,
+# et l'Almanac les redonnait sous un autre libellé — d'où « Avatar: Seven
+# Havens » en double, une fois par source. L'Almanac ne sert plus que pour
+# l'écrit, que TMDB ne couvre pas.
+AVATAR_KEEP = ("comic", "graphic novel", "comic story", "novel")
 AVATAR_DROP = ("video game", "ttrpg", "coloring", "colouring", "color-by",
                "activity", "artbook", "scrapbook", "amigurumi", "pop-up",
                "audio drama", "website", "encyclopedia", "dictionary",
@@ -368,9 +374,12 @@ def source_wookieepedia():
                     + " " + " ".join(
                         " ".join(c.get("class") or []) + " " + (c.get("style") or "")
                         for c in tr.find_all(["td", "th"]))).lower()
-            # les lignes non sorties portent un marqueur de classe ou un fond coloré
-            if not re.search(r"unpublished|unrelease|notyet|upcoming", blob):
-                continue
+            # Les lignes non sorties portent un marqueur de classe ou un fond coloré.
+            # On ne tranche PAS tout de suite : Wookieepedia retire ce marqueur le
+            # jour même de la sortie, et l'entrée disparaissait donc du radar le
+            # jour J au lieu du lendemain. La décision est reprise plus bas, une
+            # fois la date de sortie connue.
+            upcoming = bool(re.search(r"unpublished|unrelease|notyet|upcoming", blob))
             for sup in tr.find_all("sup"):      # appels de note [95]
                 sup.decompose()
             klass = " ".join(tr.get("class") or []).lower()
@@ -424,6 +433,10 @@ def source_wookieepedia():
             ds, dt, prec = (loose_date(date_txt) if date_txt
                             else ("9999-99-99", "À confirmer", "tba"))
             if prec == "tba":          # pas de date de sortie connue -> on ignore
+                continue
+            # Une sortie reste au radar TANT QUE le jour J n'est pas passé, même
+            # si le wiki l'a déjà basculée en « parue ». Elle s'en va le lendemain.
+            if not upcoming and ds < TODAY.isoformat():
                 continue
             era = re.sub(r"\[\s*\d+\s*\]", "", era).strip()
             add("starwars", title, ds, dt, kind, "Wookieepedia", prec, era, wiki=wiki)
