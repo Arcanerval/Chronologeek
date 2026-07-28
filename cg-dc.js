@@ -43,6 +43,20 @@
     BRANCH[b].cols.forEach(function (c) { COLBRANCH[c] = b; });
   });
 
+  // Les bulles de complétion du rail suivent les branches et non les zones :
+  // une zone dit où on en est dans la lecture, une branche dit où on en est
+  // dans DC. L'Arrowverse d'avant et d'après l'événement ne font qu'une bulle.
+  // Aucun libellé en dur : ils viennent des colonnes et des branches de la
+  // page, donc déjà traduits.
+  var RAILS = [
+    { key: 'superman',   icon: '🦸', cols: ['superman'] },
+    { key: 'batman',     icon: '🦇', cols: ['batman'] },
+    { key: 'arrowverse', icon: '🏹', cols: ['av_pre', 'av_post'], branch: 'arrowverse' },
+    { key: 'dceu',       icon: '🎬', cols: ['dceu'], branch: 'dceu' },
+    { key: 'dcu',        icon: '🌟', cols: ['dcu'],  branch: 'dcu' },
+    { key: 'else_post',  icon: '🌐', cols: ['else_post'] }
+  ];
+
   var BADGES_DC = CG.badges || [];
 
   var DATA = null, ZONES = null, RT = {};
@@ -138,10 +152,18 @@
             '</span>' +
             thumb +
             '<span class="en-body">' +
+              // En colonne, .en-date et .en-rt n'ont pas la place : la date,
+              // l'univers et la durée repassent en puces dans la ligne de
+              // badges (la puce de date vient de _preview/dc.js, dont le
+              // crochet .zcol .dchip était resté seul dans cg.css).
               '<span class="en-tags">' + fb +
+                '<span class="dchip">' + (ico ? ico + ' ' : '') +
+                  (e.date || '—') + '</span>' +
+                (e.dim ? '<span class="dt">' + e.dim + '</span>' : '') +
                 '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' +
                 // repris de dc.html:731
                 (e.softcanon ? '<span class="soft-badge">SOFT-CANON</span>' : '') +
+                (rtTxt ? '<span class="rtchip">' + rtTxt + '</span>' : '') +
               '</span>' +
               '<span class="en-title">' + e.title + '</span>' +
               (e.note ? '<span class="en-note">' + e.note + '</span>' : '') +
@@ -290,7 +312,7 @@
 
   // ── les zones ────────────────────────────────────────────
   function build() {
-    var html = '', rail = '';
+    var html = '';
 
     ZONES.forEach(function (z, zi) {
       var keys = COLKEY[z.id] || [];
@@ -298,13 +320,6 @@
       var n = keys.reduce(function (a, k) {
         return a + DATA.branches[k].filter(function (e) { return !isSep(e); }).length;
       }, 0);
-
-      if (n) {
-        rail += '<a href="#' + slug + '" data-rail="' + slug + '">' +
-          '<span class="n">' + z.icon + ' ' + z.name + '</span>' +
-          '<span class="m" data-rail-m="' + slug + '">0/' + n + '</span>' +
-          '<span class="t"><i data-rail-f="' + slug + '"></i></span></a>';
-      }
 
       var open = z.open ? ' open' : '';
       html += '<section class="zone zone-' + z.id + '" id="' + slug + '" data-zone="' + z.id + '">' +
@@ -327,7 +342,9 @@
           '<div class="zone-grid zg-' + keys.length + '">' +
             keys.map(function (k, i) {
               var col = z.cols[i] || {};
-              return '<div class="zcol zcol-' + (col.kind || 'else') + '" data-col="' + k + '">' +
+              // l'id est la cible des bulles du rail
+              return '<div class="zcol zcol-' + (col.kind || 'else') + '" data-col="' + k + '"' +
+                  ' id="col-' + k + '">' +
                 '<h3 class="zcol-head">' + (col.title || k) +
                   '<span class="zcol-n" data-col-m="' + k + '"></span></h3>' +
                 (col.hint ? '<p class="zcol-hint">' + col.hint + '</p>' : '') +
@@ -349,10 +366,49 @@
     });
 
     $('#zones').innerHTML = html;
-    $('#rail').innerHTML = rail;
-    railArrows();
+    buildRail();
     carousels();
     buildFilters();
+  }
+
+  // ── les bulles de branche du rail ────────────────────────
+  function colTitle(key) {
+    var t = null;
+    ZONES.forEach(function (z) {
+      (COLKEY[z.id] || []).forEach(function (k, i) {
+        if (k === key) t = (z.cols[i] || {}).title;
+      });
+    });
+    return t || key;
+  }
+  function railLabel(r) {
+    return r.branch && BRANCH[r.branch] ? BRANCH[r.branch].label : colTitle(r.cols[0]);
+  }
+  function railItems(r) {
+    return r.cols.reduce(function (a, k) {
+      return a.concat((DATA.branches[k] || []).filter(function (e) { return !isSep(e); }));
+    }, []);
+  }
+  // --tl-soft sert de fond à la bulle terminée : sans lui le fond resterait
+  // au jaune DC sous une bordure de branche.
+  function soft(hex) {
+    var n = parseInt(hex.slice(1), 16);
+    return 'rgba(' + (n >> 16 & 255) + ',' + (n >> 8 & 255) + ',' + (n & 255) + ',.14)';
+  }
+  function buildRail() {
+    $('#rail').innerHTML = RAILS.map(function (r) {
+      var n = railItems(r).length;
+      if (!n) return '';
+      // --tl posé sur la bulle : la barre de progression, la bordure au survol
+      // et l'état terminé prennent la couleur de la branche.
+      var b = BRANCH[COLBRANCH[r.cols[0]]];
+      return '<a href="#col-' + r.cols[0] + '" data-rail="' + r.key + '"' +
+          (b ? ' style="--tl:' + b.c + ';--tl-soft:' + soft(b.c) + '"' : '') + '>' +
+        '<span class="n">' + r.icon + ' ' + railLabel(r) + '</span>' +
+        '<span class="m" data-rail-m="' + r.key + '">0/' + n + '</span>' +
+        '<span class="t"><i data-rail-f="' + r.key + '"></i></span></a>';
+    }).join('');
+    railArrows();
   }
 
   // ── carrousel des colonnes (mobile) ──────────────────────
@@ -458,11 +514,19 @@
       z.hidden = z.dataset.zone === 'event'
         ? !crisisOn
         : cols.length > 0 && cols.every(function (c) { return c.hidden; });
-      var r = $('[data-rail="zone-' + z.dataset.zone + '"]');
-      if (r) r.hidden = z.hidden;
       // une zone repliée qui contient un résultat s'ouvre d'elle-même
       if (q && !z.hidden) openZone(z, true);
     });
+    // une bulle de branche se retire quand toutes ses colonnes sont parties
+    RAILS.forEach(function (r) {
+      var a = $('[data-rail="' + r.key + '"]');
+      if (!a) return;
+      a.hidden = r.cols.every(function (k) {
+        var c = $('.zcol[data-col="' + k + '"]');
+        return !c || c.hidden || c.closest('.zone').hidden;
+      });
+    });
+    railState();
     $('#fp-count').textContent = shown + ' / ' + allEntries().length + ' ' + (T.shown || 'shown');
     $('#empty').classList.toggle('on', shown === 0);
     $('#empty-q').textContent = q ? '“' + state.q.trim() + '”' : (T.emptyThese || 'these filters');
@@ -513,11 +577,16 @@
       }, []);
       var d = its.filter(function (e) { return prog[e.id]; }).length;
       var m = $('[data-zone-m="' + z.id + '"]'); if (m) m.textContent = d + ' / ' + its.length;
-      var rm = $('[data-rail-m="zone-' + z.id + '"]'); if (rm) rm.textContent = d + '/' + its.length;
-      var rf = $('[data-rail-f="zone-' + z.id + '"]');
-      if (rf) rf.style.width = (its.length ? d / its.length * 100 : 0) + '%';
-      var ra = $('[data-rail="zone-' + z.id + '"]');
-      if (ra) ra.classList.toggle('on', d === its.length && its.length > 0);
+    });
+    RAILS.forEach(function (r) {
+      var its = railItems(r);
+      if (!its.length) return;
+      var d = its.filter(function (e) { return prog[e.id]; }).length;
+      var rm = $('[data-rail-m="' + r.key + '"]'); if (rm) rm.textContent = d + '/' + its.length;
+      var rf = $('[data-rail-f="' + r.key + '"]');
+      if (rf) rf.style.width = d / its.length * 100 + '%';
+      var ra = $('[data-rail="' + r.key + '"]');
+      if (ra) ra.classList.toggle('on', d === its.length);
     });
   }
 
@@ -571,6 +640,18 @@
     document.addEventListener('click', function (ev) {
       var c = ev.target.closest('[data-check]');
       if (c) { toggleEntry(c); return; }
+      // Le rail vise une colonne, qui peut vivre dans une zone repliée :
+      // l'ancre seule n'y arriverait pas, on ouvre la zone avant de sauter.
+      var rl = ev.target.closest('[data-rail]');
+      if (rl) {
+        var col = document.getElementById(rl.getAttribute('href').slice(1));
+        if (col) {
+          ev.preventDefault();
+          var cz = col.closest('.zone'); if (cz) openZone(cz, true);
+          col.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
       var zt = ev.target.closest('[data-zone-toggle]');
       if (zt) {
         var z = zt.closest('.zone');
