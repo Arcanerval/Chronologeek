@@ -108,7 +108,41 @@ def fr_title_ok(en_title, fr_title):
     return fr_title
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr=""):
+def tmdb_country_dates(base, movie_id):
+    """Dates de sortie US et FR d'un film. TMDB ne donne dans /discover que la
+    « primary release date », qui est la première au monde : un film sorti en
+    France avant les États-Unis affichait donc la date française côté anglais,
+    et inversement. On va chercher les sorties pays par pays.
+
+    Types TMDB : 1 première, 2 sortie limitée, 3 sortie nationale, 4 numérique,
+    5 physique, 6 TV. On prend la sortie en salle, puis le numérique à défaut.
+    """
+    out = {}
+    try:
+        r = requests.get(f"{base}/movie/{movie_id}/release_dates",
+                         timeout=20, headers=UA, params={"api_key": TMDB_KEY})
+        r.raise_for_status()
+        for entry in r.json().get("results", []):
+            pays = entry.get("iso_3166_1")
+            if pays not in ("US", "FR"):
+                continue
+            best = None
+            for prefere in (3, 2, 1, 4):
+                for rd in entry.get("release_dates", []):
+                    if rd.get("type") == prefere:
+                        best = parse_iso((rd.get("release_date") or "")[:10])
+                        if best:
+                            break
+                if best:
+                    break
+            if best:
+                out[pays] = best
+    except Exception:
+        pass
+    return out
+
+
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr="", date_sort_fr="", date_txt_fr=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
@@ -124,6 +158,9 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
         "date_txt": date_txt, "kind": kind or "", "source": source,
         "precision": precision, "era": era, "syn": syn, "wiki": wiki,
         "syn_fr": syn_fr, "kindKey": kind_key(kind), "title_fr": title_fr,
+        # Date de sortie française quand elle diffère. Vide = mêmes dates,
+        # l'affichage retombe alors sur date_sort / date_txt.
+        "date_sort_fr": date_sort_fr, "date_txt_fr": date_txt_fr,
     })
 
 
@@ -198,11 +235,23 @@ def source_tmdb():
                         d = parse_iso(raw or "")
                         if not d or d < TODAY:
                             continue
+                        # Un film n'a pas la même date des deux côtés de
+                        # l'Atlantique : la version anglaise annonce la sortie
+                        # américaine, la française la sortie française.
+                        d_fr = None
+                        if kind == "Film":
+                            pays = tmdb_country_dates(base, it.get("id"))
+                            d = pays.get("US") or d
+                            d_fr = pays.get("FR")
+                        if d < TODAY and (not d_fr or d_fr < TODAY):
+                            continue
                         add(uni, it.get("title") or it.get("name"), d.isoformat(),
                             d.strftime("%d/%m/%Y"), kind, "TMDB",
                             syn=(it.get("overview") or "").strip(),
                             syn_fr=fr.get(it.get("id"), ("", ""))[0],
-                            title_fr=fr.get(it.get("id"), ("", ""))[1])
+                            title_fr=fr.get(it.get("id"), ("", ""))[1],
+                            date_sort_fr=(d_fr.isoformat() if d_fr and d_fr != d else ""),
+                            date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""))
                         found += 1
                     if page >= j.get("total_pages", 1):
                         break
@@ -813,11 +862,13 @@ def render(entries):
     cols = []
     for uni, meta in UNIVERSES.items():
         sub = [e for e in entries if e["universe"] == uni]
-        sub.sort(key=lambda e: (e["date_sort"], e["title"]))
+        # radar.html est la page française : elle annonce la sortie française
+        # quand elle existe, et se trie dessus. date_sort reste la date US.
+        sub.sort(key=lambda e: (e.get("date_sort_fr") or e["date_sort"], e["title"]))
         rows = []
         for e in sub:
             col = kind_color(e["kind"])
-            head = (f'<div class="date">{html.escape(e["date_txt"])}</div>'
+            head = (f'<div class="date">{html.escape(e.get("date_txt_fr") or e["date_txt"])}</div>'
                     f'<div class="t">{html.escape(e["title"])}</div>'
                     f'<div class="meta"><span>{html.escape(e["kind"] or "—")}</span>'
                     f'<span>{html.escape(e["era"] or "")}</span></div>')

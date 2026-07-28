@@ -54,8 +54,13 @@
     return d.innerHTML;
   }
 
+  // Un film ne sort pas le même jour des deux côtés de l'Atlantique : radar.py
+  // fournit la sortie US dans date_sort / date_txt et la sortie française dans
+  // date_sort_fr / date_txt_fr, laissées vides quand les deux coïncident.
+  function dateIso(e) { return (FR && e.date_sort_fr) || e.date_sort || ''; }
+
   function fmt(e) {
-    if (FR) return e.date_txt || '';
+    if (FR) return e.date_txt_fr || e.date_txt || '';
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(e.date_sort || '');
     if (!m) return e.date_txt || '';
     return MON[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10) + ', ' + m[1];
@@ -88,7 +93,7 @@
     var grid = UNI.map(function (u) {
       var list = data.filter(function (e) { return e.universe === u[0]; })
         .sort(function (a, b) {
-          return (a.date_sort || '').localeCompare(b.date_sort || '');
+          return dateIso(a).localeCompare(dateIso(b));
         });
       total += list.length;
 
@@ -101,7 +106,7 @@
 
         var head =
           '<span class="uc-top"><span class="uc-d">' + esc(fmt(e)) + '</span>' +
-            '<span class="uc-c">' + countdown(e.date_sort) + '</span></span>' +
+            '<span class="uc-c">' + countdown(dateIso(e)) + '</span></span>' +
           '<span class="uc-t">' + esc(title) + '</span>' +
           '<span class="uc-tags">' +
             '<span class="rd-k" style="--k:' + (COL[key] || COL.other) + '">' +
