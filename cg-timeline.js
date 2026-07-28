@@ -203,8 +203,13 @@
               (qual ? '<span class="en-qual">' + qual + '</span>' : '') +
               (e.note ? '<span class="en-note">' + e.note + '</span>' : '') +
             '</span>' +
-            (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') +
-            ICO.chev +
+            // Durée et chevron forment le bout de ligne. Le conteneur ne sert
+            // à rien en desktop, mais il les tient ensemble en mobile, où ils
+            // passent sur une seconde ligne au lieu de disparaître.
+            '<span class="en-end">' +
+              (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') +
+              ICO.chev +
+            '</span>' +
           '</button>' +
           sub +
         '</span>' +

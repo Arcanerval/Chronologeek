@@ -152,23 +152,18 @@
             '</span>' +
             thumb +
             '<span class="en-body">' +
-              // En colonne, .en-date et .en-rt n'ont pas la place : la date,
-              // l'univers et la durée repassent en puces dans la ligne de
-              // badges (la puce de date vient de _preview/dc.js, dont le
-              // crochet .zcol .dchip était resté seul dans cg.css).
               '<span class="en-tags">' + fb +
-                '<span class="dchip">' + (ico ? ico + ' ' : '') +
-                  (e.date || '—') + '</span>' +
-                (e.dim ? '<span class="dt">' + e.dim + '</span>' : '') +
                 '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' +
                 // repris de dc.html:731
                 (e.softcanon ? '<span class="soft-badge">SOFT-CANON</span>' : '') +
-                (rtTxt ? '<span class="rtchip">' + rtTxt + '</span>' : '') +
               '</span>' +
               '<span class="en-title">' + e.title + '</span>' +
               (e.note ? '<span class="en-note">' + e.note + '</span>' : '') +
             '</span>' +
-            (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') + CHEV +
+            // même bout de ligne que les autres timelines : voir .en-end
+            '<span class="en-end">' +
+              (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') + CHEV +
+            '</span>' +
           '</button>' + bignote + sub +
         '</span>' +
         '<a class="en-link" href="#' + e.id + '" data-copy title="' + (T.copyLink || 'Copy link to this entry') + '">' +

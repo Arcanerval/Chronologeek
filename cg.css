@@ -428,15 +428,6 @@ header{position:sticky;top:0;z-index:300;height:var(--head-h);
   opacity:.2}
 .en-body{flex:1;min-width:0}
 .en-tags{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;margin-bottom:.22rem}
-/* La puce de date et la puce de durée ne servent que là où la colonne de date
-   et .en-rt disparaissent, c'est à dire dans les colonnes de DC. Elles sont
-   masquées par défaut et rallumées plus bas, dans le bloc .zcol. */
-.dchip{display:none;font-family:var(--font-mono);font-size:.68rem;font-weight:700;
-  padding:2px 7px;border-radius:6px;color:var(--text);background:var(--tl-soft);
-  border:1px solid var(--tl);white-space:nowrap}
-.rtchip{display:none;font-family:var(--font-mono);font-size:.62rem;padding:2px 7px;
-  border-radius:5px;white-space:nowrap;color:var(--muted2);background:var(--surface2);
-  border:1px solid var(--border2);font-variant-numeric:tabular-nums}
 .en-title{font-size:.95rem;font-weight:600;line-height:1.3;color:var(--text);
   display:block}
 /* qualificatif descendu de la ligne de titre : saison, épisodes, « pendant tel
@@ -454,6 +445,9 @@ header{position:sticky;top:0;z-index:300;height:var(--head-h);
 /* avertissement en ligne, repris de l'ancienne dc.html:736 (Ultimate Edition) */
 .en-bignote{font-size:.78rem;font-weight:700;color:var(--orange);letter-spacing:.01em;
   padding:.1rem .9rem .55rem 3.4rem}
+/* Bout de ligne : la durée puis le chevron, tenus ensemble pour pouvoir
+   descendre d'une ligne en mobile plutôt que d'être masqués. */
+.en-end{flex:0 0 auto;display:flex;align-items:center;gap:.55rem}
 .en-rt{flex:0 0 auto;font-family:var(--font-mono);font-size:.75rem;color:var(--muted);
   font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:.3rem}
 .en-chev{flex:0 0 auto;width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2.2;
@@ -716,14 +710,28 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
   .en-tags{gap:.25rem}
   .b,.ft,.nt{font-size:.58rem;padding:2px 5px;max-width:100%;
     white-space:normal;word-break:break-word;line-height:1.3}
-  .en-thumb{width:112px}
-  [data-universe="dc"] .en-thumb{width:92px}
-  .en-main{gap:.5rem;padding:.55rem .5rem}
+  /* Sous 375 px l'affiche fixe poussait la ligne hors de son cadre : elle suit
+     désormais la largeur d'écran, sans jamais dépasser sa taille d'origine. */
+  .en-thumb{width:min(112px,30vw)}
+  [data-universe="dc"] .en-thumb{width:min(92px,26vw)}
+  /* La ligne passe en grille. Côte à côte, la durée et le chevron ne laissent
+     que 42 px au titre à 375 px — c'est pour ça qu'ils étaient masqués. Ils
+     descendent donc d'une ligne, toujours calés à droite, pendant que la date
+     et l'affiche enjambent les deux lignes : le titre garde toute sa largeur,
+     exactement celle qu'il avait quand ils étaient cachés. */
+  .en-main{display:grid;align-items:center;gap:.3rem .5rem;padding:.55rem .5rem;
+    grid-template-columns:auto auto minmax(0,1fr);
+    grid-template-areas:"date thumb body"
+                        "date thumb end"}
+  .en-date{grid-area:date}
+  .en-thumb{grid-area:thumb}
+  .en-body{grid-area:body}
+  .en-end{grid-area:end;justify-self:end}
   .en-check{width:34px;padding-top:1.05rem}
-  .en-chev{display:none}
+  .en-chev{width:14px;height:14px}
   /* les sous-items s'alignent sous la vignette */
-  .en-sub{padding-left:calc(56px + 112px + 1.9rem);padding-right:.6rem}
-  [data-universe="dc"] .en-sub{padding-left:calc(56px + 92px + 1.9rem)}
+  .en-sub{padding-left:calc(56px + min(112px,30vw) + 1.9rem);padding-right:.6rem}
+  [data-universe="dc"] .en-sub{padding-left:calc(56px + min(92px,26vw) + 1.9rem)}
   .en-sub .si{font-size:.78rem}
   .prog-nums{width:100%}
   .stat-big{flex:1 1 0;padding:0 .5rem}
@@ -735,7 +743,7 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
     padding:.55rem .2rem;font-size:.66rem;line-height:1.2}
   .prog-acts .btn svg{display:block;width:17px;height:17px}
   .en-title{font-size:.9rem}
-  .en-rt{display:none}
+  .en-rt{font-size:.72rem;padding-left:0}
   .en-panel{padding-left:1rem}
   .hero{padding:2.5rem .9rem 1.5rem}
   .stats .s{padding:0 .4rem}
@@ -1025,16 +1033,27 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
 .zcol-av   .zcol-head{color:#22c55e;border-color:rgba(34,197,94,.45)}
 .zcol-dceu .zcol-head{color:#3b82f6;border-color:rgba(59,130,246,.45)}
 .zcol-dcu  .zcol-head{color:#f97316;border-color:rgba(249,115,22,.45)}
-/* en colonne, l'entrée se resserre : plus de date à part, tout dans le corps.
-   Date, univers et durée repassent en puces dans la ligne de badges — la
-   colonne de date et .en-rt les perdaient purement et simplement. */
-.zcol .en-date{display:none}
-.zcol .dchip{display:inline-block}
-.zcol .rtchip{display:inline-flex}
-.zcol .en-rt,.zcol .en-chev{display:none}
-.zcol .en-main{padding:.5rem .6rem;gap:.5rem}
-.zcol .en-check{width:38px;padding-top:.95rem}
+/* En colonne, l'entrée se resserre, mais elle garde l'anatomie des autres
+   timelines : la date et l'univers à gauche de la vignette, la durée nue puis
+   le chevron tout à droite. Une colonne fait un tiers de la page, donc seules
+   les tailles changent — exactement ce que fait déjà le bloc 640 px. */
+/* La vignette est la seule pièce élastique de la ligne : date, durée et
+   chevron ont une taille plancher. Elle se réduit donc dans les zones à trois
+   colonnes et garde sa taille dans celles à deux. */
+.zcol .en-thumb{width:clamp(60px,26%,104px)}
+.zcol .en-date{width:52px}
+.zcol .en-date .d{font-size:.68rem}
+.zcol .en-date .lv{font-size:.75rem;margin-bottom:.15rem;height:.8rem}
+.zcol .en-date .dim-badge{font-size:.48rem;padding:1px 3px;margin-top:.2rem}
+.zcol .en-rt{font-size:.68rem;padding-left:.1rem}
+.zcol .en-chev{width:13px;height:13px}
+.zcol .en-main{padding:.5rem .45rem;gap:.45rem}
+.zcol .en-check{width:34px;padding-top:.95rem}
 .zcol .en-title{font-size:.87rem}
+/* la colonne de badges tombe sous 110 px : « ANIMATED SHOW » déborderait */
+.zcol .en-tags{gap:.25rem}
+.zcol .b,.zcol .ft{font-size:.58rem;padding:2px 5px;max-width:100%;
+  white-space:normal;word-break:break-word;line-height:1.3}
 .zcol .en-sub{padding-left:2.4rem;padding-right:.5rem}
 .zcol .ensep{margin:.7rem 0}
 
