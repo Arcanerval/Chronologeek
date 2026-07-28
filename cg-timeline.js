@@ -131,6 +131,15 @@
         qual = qual.slice(e.date.length).replace(/^[\s—-]+/, '')
                    .replace(/^\((.*)\)$/, '$1').trim();
       }
+      // « The Bad Batch — Season 1 » a subitems:["Season 1"] : le qualificatif
+      // redisait mot pour mot la liste juste en dessous. Quand il ne fait
+      // qu'annoncer des saisons ou des épisodes déjà énumérés, il saute.
+      // « during Revenge of the Sith » ou « Epilogue » ne sont pas dans cette
+      // liste, eux restent.
+      if ((e.subitems || []).length &&
+          /^(seasons?|episodes?|saisons?|épisodes?)\b/i.test(qual)) {
+        qual = '';
+      }
     }
 
     // Les sous-items restent EN LIGNE, comme en prod : une ligne vide dans
