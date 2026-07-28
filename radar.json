@@ -136,23 +136,6 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "avatar",
-  "title": "Meet Team Avatar (Avatar Aang: The Last Airbender)",
-  "date_sort": "2026-09-01",
-  "date_txt": "01/09/2026",
-  "kind": "Young Readers Novel Release Date: September 1, 2026",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "novel",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "starwars",
   "title": "Hiding from the Dark",
   "date_sort": "2026-09-01",
@@ -491,23 +474,6 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026"
- },
- {
-  "universe": "avatar",
-  "title": "Build the Flame!",
-  "date_sort": "2027-01-05",
-  "date_txt": "05/01/2027",
-  "kind": "Junior Novel Chronology: XXX BG Release Date: January 5, 202",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "novel",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
  },
  {
   "universe": "starwars",

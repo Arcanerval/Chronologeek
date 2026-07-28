@@ -1039,8 +1039,14 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
    les tailles changent — exactement ce que fait déjà le bloc 640 px. */
 /* La vignette est la seule pièce élastique de la ligne : date, durée et
    chevron ont une taille plancher. Elle se réduit donc dans les zones à trois
-   colonnes et garde sa taille dans celles à deux. */
-.zcol .en-thumb{width:clamp(60px,26%,104px)}
+   colonnes et garde sa taille dans celles à deux.
+   Surtout pas de pourcentage ici : en mobile la ligne devient une grille, et
+   un pourcentage dans une piste `auto` est une dépendance circulaire — la
+   piste tombait à 0, la vignette débordait et passait sous le titre.
+   La largeur est donc nommée, ce qui sert aussi à aligner les sous-items. */
+.zcol{--th:104px}
+.zg-3 .zcol{--th:74px}
+.zcol .en-thumb{width:var(--th)}
 .zcol .en-date{width:52px}
 .zcol .en-date .d{font-size:.68rem}
 .zcol .en-date .lv{font-size:.75rem;margin-bottom:.15rem;height:.8rem}
@@ -1054,7 +1060,10 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
 .zcol .en-tags{gap:.25rem}
 .zcol .b,.zcol .ft{font-size:.58rem;padding:2px 5px;max-width:100%;
   white-space:normal;word-break:break-word;line-height:1.3}
-.zcol .en-sub{padding-left:2.4rem;padding-right:.5rem}
+/* Les saisons et épisodes se rangent sous le TITRE, pas sous l'affiche :
+   même décalage que la colonne du corps — padding de .en-main, date, deux
+   gouttières et la vignette. */
+.zcol .en-sub{padding-left:calc(52px + var(--th) + 1.35rem);padding-right:.5rem}
 .zcol .ensep{margin:.7rem 0}
 
 @media(max-width:900px){
@@ -1068,12 +1077,26 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
     scroll-padding:0 .7rem;padding-bottom:.5rem;
     scrollbar-width:none;-ms-overflow-style:none}
   .zone-grid::-webkit-scrollbar{display:none}
-  .zone-grid>.zcol{flex:0 0 86%;scroll-snap-align:center;min-width:0}
+  /* 90 % et non 86 % : une colonne DC doit loger la date, l'affiche ET un
+     titre lisible, là où les autres timelines disposent de toute la page.
+     Il reste de quoi laisser dépasser la colonne suivante. */
+  .zone-grid>.zcol{flex:0 0 90%;scroll-snap-align:center;min-width:0}
   .zone-grid>.zcol[hidden]{display:none}
+  /* le carrousel ramène toutes les colonnes à la même largeur, quel que soit
+     le nombre de colonnes de la zone : une seule taille d'affiche */
+  .zone-grid .zcol{--th:min(68px,18vw)}
   .zone-body{padding:.7rem}
   .zone-head{padding:.85rem .9rem;gap:.6rem}
   .zone-desc{font-size:.79rem}
   .zone-count{display:none}
+}
+/* Sous 360 px, une colonne DC ne loge plus la date, l'affiche ET un titre :
+   il restait 48 px au titre, qui sortait de son cadre. L'affiche cède, c'est
+   la seule des trois qui soit décorative. --th à 0 garde l'alignement des
+   sous-items sous le titre, la piste de la grille se refermant d'elle-même. */
+@media(max-width:360px){
+  .zone-grid .zcol{--th:0px}
+  .zcol .en-thumb{display:none}
 }
 
 /* ═══════════ À VENIR — COLONNES ═══════════

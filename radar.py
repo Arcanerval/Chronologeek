@@ -47,8 +47,15 @@ TMDB_COMPANY_NAMES = {
 # Exclusions : jamais canon ou hors périmètre. Motifs testés sur "titre + type".
 EXCLUDE = {
     # « A Novel Based on the Animated Film » est une novélisation qui ne dit pas
-    # son nom : le motif noveli[sz]ation ne l'attrape pas.
-    "avatar":   [r"noveli[sz]ation", r"a novel based on"],
+    # son nom : le motif noveli[sz]ation ne l'attrape pas. Même chose pour les
+    # livres dérivés qui mettent le film entre parenthèses après leur titre
+    # (« Meet Team Avatar (Avatar Aang: The Last Airbender) ») : le film cité
+    # ainsi n'est jamais l'œuvre elle-même, c'est toujours un produit dérivé.
+    # Les romans pour enfants sont hors périmètre eux aussi : « Junior Novel »,
+    # « Young Readers Novel ». Sans mordre sur les « Graphic Novel », qui restent.
+    "avatar":   [r"noveli[sz]ation", r"a novel based on",
+                 r"\(avatar aang: the last airbender\)",
+                 r"junior novel", r"young readers? novel"],
     # Visions Presents – The Ninth Jedi n'est pas canon.
     "starwars": [r"\blego\b", r"noveli[sz]ation", r"the ninth jedi"],
     "marvel":   [r"\blego\b"],

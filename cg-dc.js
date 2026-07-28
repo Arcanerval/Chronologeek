@@ -49,12 +49,12 @@
   // Aucun libellé en dur : ils viennent des colonnes et des branches de la
   // page, donc déjà traduits.
   var RAILS = [
-    { key: 'superman',   icon: '🦸', cols: ['superman'] },
-    { key: 'batman',     icon: '🦇', cols: ['batman'] },
-    { key: 'arrowverse', icon: '🏹', cols: ['av_pre', 'av_post'], branch: 'arrowverse' },
-    { key: 'dceu',       icon: '🎬', cols: ['dceu'], branch: 'dceu' },
-    { key: 'dcu',        icon: '🌟', cols: ['dcu'],  branch: 'dcu' },
-    { key: 'else_post',  icon: '🌐', cols: ['else_post'] }
+    { key: 'superman',   cols: ['superman'] },
+    { key: 'batman',     cols: ['batman'] },
+    { key: 'arrowverse', cols: ['av_pre', 'av_post'], branch: 'arrowverse' },
+    { key: 'dceu',       cols: ['dceu'], branch: 'dceu' },
+    { key: 'dcu',        cols: ['dcu'],  branch: 'dcu' },
+    { key: 'else_post',  cols: ['else_post'] }
   ];
 
   var BADGES_DC = CG.badges || [];
@@ -115,7 +115,10 @@
     var LV = e.level === 'important' ? 'imp' : (e.level || 'bonus');
     var ico = LV === 'must' ? '⭐' : LV === 'imp' ? '🚨' : '';
     var rt = RT[e.id];
-    var rtTxt = rt ? (rt >= 60 ? Math.floor(rt / 60) + 'h' : rt + 'min') : '';
+    // même format que cg-timeline.js : les minutes comptent, 2h04 n'est pas 2h
+    var rtTxt = rt ? (rt >= 60
+      ? Math.floor(rt / 60) + 'h' + (rt % 60 ? String(rt % 60).padStart(2, '0') : '')
+      : rt + 'min') : '';
     var sub = (e.subitems || []).length
       ? '<div class="en-sub">' + e.subitems.map(function (x) {
           return x.trim() ? '<div class="si">' + x + '</div>' : '<div class="si sep"></div>';
@@ -399,7 +402,7 @@
       var b = BRANCH[COLBRANCH[r.cols[0]]];
       return '<a href="#col-' + r.cols[0] + '" data-rail="' + r.key + '"' +
           (b ? ' style="--tl:' + b.c + ';--tl-soft:' + soft(b.c) + '"' : '') + '>' +
-        '<span class="n">' + r.icon + ' ' + railLabel(r) + '</span>' +
+        '<span class="n">' + railLabel(r) + '</span>' +
         '<span class="m" data-rail-m="' + r.key + '">0/' + n + '</span>' +
         '<span class="t"><i data-rail-f="' + r.key + '"></i></span></a>';
     }).join('');
