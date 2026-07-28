@@ -20,6 +20,7 @@
   var BADGES = CG.badgeLabels || {
     film: ['bf', 'MOVIE'], serie: ['bs', 'TV SHOW'], anime: ['ba', 'ANIMATED SHOW'],
     filmanim: ['bfa', 'ANIMATED MOVIE'], comic: ['bc', 'COMIC'] };
+  var PH = { jeu: '🎮', film: '🎬', filmanim: '🎬', serie: '📺', anime: '📺', comic: '📚' };
   var COLKEY = { optional: ['superman', 'batman'], pre: ['av_pre', 'dceu'],
                  event: [], post: ['av_post', 'else_post', 'dcu'] };
   var FAQ = CG.faqCats || [
@@ -105,6 +106,15 @@
       ? '<div class="en-sub">' + e.subitems.map(function (x) {
           return x.trim() ? '<div class="si">' + x + '</div>' : '<div class="si sep"></div>';
         }).join('') + '</div>' : '';
+    // Repris de l'ancienne dc.html:750 — le badge FLASHBACK et le bignote
+    // existaient en prod, la refonte les avait laissés de côté alors que les
+    // données les portent toujours (tags:['flashback'], bignote:'⚠️ …').
+    var fb = (e.tags || []).indexOf('flashback') !== -1
+      ? '<span class="ft">FLASHBACK</span>' : '';
+    var bignote = e.bignote ? '<div class="en-bignote">' + e.bignote + '</div>' : '';
+    // DC n'a pas d'images locales : la vignette arrive de TMDB (voir thumbs()).
+    // On pose le pictogramme de repli, l'<img> est injectée à la réponse.
+    var thumb = '<span class="en-thumb"><span class="ph">' + (PH[e.type] || '🎬') + '</span></span>';
     var faq = '';
     if (e.faq) FAQ.forEach(function (c) {
       if (!e.faq[c.key]) return;
@@ -126,9 +136,9 @@
               '<span class="d">' + (e.date || '—') + '</span>' +
               (e.dim ? '<span class="dim-badge">' + e.dim + '</span>' : '') +
             '</span>' +
+            thumb +
             '<span class="en-body">' +
-              '<span class="en-tags"><span class="dchip">' + (ico ? ico + ' ' : '') +
-                (e.date || '—') + '</span>' +
+              '<span class="en-tags">' + fb +
                 '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' +
                 // repris de dc.html:731
                 (e.softcanon ? '<span class="soft-badge">SOFT-CANON</span>' : '') +
@@ -137,7 +147,7 @@
               (e.note ? '<span class="en-note">' + e.note + '</span>' : '') +
             '</span>' +
             (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') + CHEV +
-          '</button>' + sub +
+          '</button>' + bignote + sub +
         '</span>' +
         '<a class="en-link" href="#' + e.id + '" data-copy title="' + (T.copyLink || 'Copy link to this entry') + '">' +
           LINK + '</a>' +
@@ -740,6 +750,56 @@
     });
   }
 
+  // ── vignettes TMDB ───────────────────────────────────────
+  // Star Wars et Marvel ont des images locales (champ img), DC n'en a jamais eu :
+  // l'ancienne page allait les chercher sur TMDB par paquets de 10 (dc.html:895).
+  // La refonte avait perdu ce bout, d'où les lignes sans affiche. Repris tel quel,
+  // y compris le cache par couple type+id qui évite de redemander une série
+  // découpée en dix entrées (Arrow, Flash…).
+  var thumbCache = {};
+  // On insère l'<img> directement plutôt que de précharger via new Image() :
+  // une image détachée du document avec loading="lazy" ne déclenche jamais son
+  // onload, donc la vignette n'arrivait jamais. Le pictogramme reste dessous et
+  // réapparaît tout seul si l'image casse (onerror).
+  function applyThumb(el, src) {
+    var box = $('.en-thumb', el);
+    if (!box || $('img', box)) return;
+    var img = document.createElement('img');
+    img.loading = 'lazy'; img.alt = ''; img.width = 184; img.height = 104;
+    img.onerror = function () { img.remove(); };
+    img.src = src;
+    box.appendChild(img);
+  }
+  function thumbs() {
+    if (!CG.tmdbKey) return;
+    var IMG = CG.img || 'https://image.tmdb.org/t/p/';
+    var rows = $$('.en-panel[data-tmdb]').map(function (p) {
+      return { wrap: p.closest('.en-wrap'), id: p.dataset.tmdb,
+               media: p.dataset.media === 'movie' ? 'movie' : 'tv' };
+    }).filter(function (r) { return r.wrap && r.id && r.id !== '0'; });
+
+    function paint(r, path) {
+      if (path) applyThumb($('.en', r.wrap) || r.wrap, IMG + 'w300' + path);
+    }
+    function batch(i) {
+      if (i >= rows.length) return;
+      Promise.all(rows.slice(i, i + 10).map(function (r) {
+        var k = r.media + r.id;
+        if (k in thumbCache) { paint(r, thumbCache[k]); return null; }
+        thumbCache[k] = null;
+        return fetch('https://api.themoviedb.org/3/' + r.media + '/' + r.id +
+                     '?api_key=' + CG.tmdbKey + '&language=' + (CG.tmdbLang || 'en-US'))
+          .then(function (x) { return x.json(); })
+          .then(function (d) {
+            thumbCache[k] = d.backdrop_path || d.poster_path || null;
+            rows.forEach(function (o) { if (o.media + o.id === k) paint(o, thumbCache[k]); });
+          })
+          .catch(function () {});
+      })).then(function () { setTimeout(function () { batch(i + 10); }, 60); });
+    }
+    batch(0);
+  }
+
   Promise.all([
     // les URL viennent de la page : elles changent selon la langue
     grab('CG_DATA',  CG.data),
@@ -748,7 +808,7 @@
   ]).then(function (res) {
     DATA = res[0]; ZONES = res[1]; RT = res[2] || {};
     $('#intro').innerHTML = DATA.notes || '';
-    build(); wire(); apply();
+    build(); wire(); apply(); thumbs();
     if (location.hash) {
       var el = document.getElementById(location.hash.slice(1));
       if (el) {

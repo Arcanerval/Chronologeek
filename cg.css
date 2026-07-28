@@ -432,6 +432,9 @@ header{position:sticky;top:0;z-index:300;height:var(--head-h);
   display:block}
 .en-note{font-size:.82rem;color:var(--muted2);font-style:italic;line-height:1.5;
   margin-top:.15rem}
+/* avertissement en ligne, repris de l'ancienne dc.html:736 (Ultimate Edition) */
+.en-bignote{font-size:.78rem;font-weight:700;color:var(--orange);letter-spacing:.01em;
+  padding:.1rem .9rem .55rem 3.4rem}
 .en-rt{flex:0 0 auto;font-family:var(--font-mono);font-size:.75rem;color:var(--muted);
   font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:.3rem}
 .en-chev{flex:0 0 auto;width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2.2;
@@ -713,6 +716,13 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
   html .ck,html .en-check,html .en-main,html .ucard,html .pill,html .rail a,
   html [role="checkbox"],html [onclick]{
     cursor:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDMwIDMwIj48ZmlsdGVyIGlkPSJzIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMSIgc3RkRGV2aWF0aW9uPSIxLjEiIGZsb29kLWNvbG9yPSJyZ2JhKDI0MCw5OCwxNDYsLjkpIiBmbG9vZC1vcGFjaXR5PSIuOCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0xMS40IDMuMWMwLTEgLjgtMS44IDEuOC0xLjhzMS44LjggMS44IDEuOHY3LjRoLjZWOC42YzAtLjkuOC0xLjcgMS43LTEuN3MxLjcuOCAxLjcgMS43djIuM2guNlY5LjdjMC0uOS44LTEuNyAxLjctMS43czEuNy44IDEuNyAxLjd2MS41aC42YzEgMCAxLjguOCAxLjggMS44djMuNmMwIDQuMi0yLjkgNy42LTcgNy42aC0xLjljLTIuMSAwLTMuNi0uOS00LjgtMi41bC0zLjYtNC45Yy0uNi0uOC0uNC0xLjkuNC0yLjUuOC0uNiAxLjktLjQgMi41LjRsMS40IDEuOVYzLjF6IiBmaWxsPSIjZjA2MjkyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbHRlcj0idXJsKCNzKSIvPjwvc3ZnPg==") 12 2,pointer}
+  /* `html *` ci-dessus touche AUSSI les enfants des boutons : le <span class="mark">
+     et le <svg> d'une case à cocher reprenaient la flèche, et comme c'est eux qui sont
+     sous le pointeur, la main rose ne sortait jamais. On les fait hériter du parent.
+     `html button *` = 3 sélecteurs de type, donc plus spécifique que `html *`. */
+  html a *,html button *,html summary *,html label[for] *,
+  html .ck *,html .en-check *,html .en-main *,html .ucard *,html .pill *,html .rail a *,
+  html [role="checkbox"] *,html [onclick] *{cursor:inherit}
   html input[type=text],html input[type=search],html textarea{cursor:text}
 }
 
