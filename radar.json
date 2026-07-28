@@ -1,9 +1,26 @@
 [
  {
-  "universe": "marvel",
-  "title": "Spider-Man: Brand New Day",
+  "universe": "starwars",
+  "title": "Legacy",
   "date_sort": "2026-07-28",
   "date_txt": "28/07/2026",
+  "kind": "Roman",
+  "source": "Wookieepedia",
+  "precision": "day",
+  "era": "34 ABY",
+  "syn": "Legacy is a Star Wars novel that was published in hardcover by Random House Worlds on July 28, 2026 alongside its audiobook. It was officially announced at New York Comic Con on October 11, 2025, where it was revealed to be a story written by Madeleine Roux focusing on Rey's Jedi training between the events of Star Wars: Episode VIII The Last Jedi and Star Wars: Episode IX The Rise of Skywalker.",
+  "wiki": "Legacy (novel)",
+  "syn_fr": "Legacy est un roman écrit par Madeleine Roux. Il sera publié le 28 juillet 2026 par Random House Worlds aux États-Unis. Il sera adapté en livre audio aux États-Unis. En France, il sera publié par Pocket en 2027.",
+  "kindKey": "novel",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "marvel",
+  "title": "Spider-Man: Brand New Day",
+  "date_sort": "2026-07-31",
+  "date_txt": "31/07/2026",
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
@@ -12,22 +29,9 @@
   "wiki": "",
   "syn_fr": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
   "kindKey": "film",
-  "title_fr": ""
- },
- {
-  "universe": "starwars",
-  "title": "Star Wars: Visions Presents - The Ninth Jedi",
-  "date_sort": "2026-08-05",
-  "date_txt": "05/08/2026",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Kara and her ragtag Jedi crew seek out to find worthy Jedi to fight against an increasingly powerful warlord.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "2026-07-29",
+  "date_txt_fr": "29/07/2026"
  },
  {
   "universe": "starwars",
@@ -42,7 +46,9 @@
   "wiki": "The Fall of Kylo Ren 1",
   "syn_fr": "The Fall of Kylo Ren 1 est le premier numéro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Charles Soule.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "dc",
@@ -57,7 +63,9 @@
   "wiki": "",
   "syn_fr": "Deux flics intergalactiques, la nouvelle recrue John Stewart et le légendaire Hal Jordan, sont confrontés à un sombre mystère sur Terre alors qu’ils enquêtent sur un meurtre au fin fond de l’Amérique.",
   "kindKey": "tv",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -72,7 +80,9 @@
   "wiki": "The High Republic Adventures – Pathfinders 4",
   "syn_fr": "The High Republic Adventures – Pathfinders 4 est le quatrième numéro de la mini-série de bandes dessinées Star Wars: The High Republic Adventures – Pathfinders écrit par George Mann dans le cadre du projet multimédia Star Wars : La Haute République.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -87,7 +97,9 @@
   "wiki": "Galaxy's Edge – Echoes of the Empire 5",
   "syn_fr": "Galaxy's Edge – Echoes of the Empire 5 est le cinquième et dernier numéro de la série de bandes dessinées Star Wars: Galaxy's Edge – Echoes of the Empire écrit par Ethan Sacks.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "avatar",
@@ -102,7 +114,9 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -117,7 +131,9 @@
   "wiki": "Star Wars Zero Company",
   "syn_fr": "",
   "kindKey": "game",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "avatar",
@@ -132,7 +148,9 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "novel",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -147,7 +165,9 @@
   "wiki": "Hiding from the Dark",
   "syn_fr": "Hiding from the Dark est un roman jeunes adultes d'horreur écrit par Kiersten White. Il sera publié le premier septembre 2026 par Disney–Lucasfilm Press aux États-Unis. Il sera adapté en livre audio aux États-Unis.",
   "kindKey": "novel",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "avatar",
@@ -162,7 +182,9 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -177,7 +199,9 @@
   "wiki": "The High Republic Adventures – Pathfinders 5",
   "syn_fr": "The High Republic Adventures – Pathfinders 5 est le cinquième numéro de la mini-série de bandes dessinées Star Wars: The High Republic Adventures – Pathfinders écrit par George Mann dans le cadre du projet multimédia Star Wars : La Haute République.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -192,7 +216,9 @@
   "wiki": "The Book of Boba Fett 1",
   "syn_fr": "",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -207,7 +233,9 @@
   "wiki": "Reign of the Empire: Edge of the Abyss",
   "syn_fr": "Reign of the Empire: Edge of the Abyss est un roman écrit par Rebecca Roanhorse. Il est le deuxième roman de la trilogie Star Wars : Le Règne de l'Empire. Il sera publié le 15 septembre 2026 par Random House Worlds aux États-Unis. Il fut adapté en livre audio aux États-Unis. En France, il sera publié par Pocket en 2027.",
   "kindKey": "novel",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -222,7 +250,9 @@
   "wiki": "The Fall of Kylo Ren 2",
   "syn_fr": "The Fall of Kylo Ren 2 est le deuxième numéro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Charles Soule.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -237,7 +267,9 @@
   "wiki": "The Book of Boba Fett 2",
   "syn_fr": "",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -252,7 +284,9 @@
   "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
   "syn_fr": "Smugglers and Scoundrels: The Race for Jabba's Bounty est une bande dessinée one-shot écrite par Cavan Scott.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -267,7 +301,9 @@
   "wiki": "Star Wars: Galactic Racer",
   "syn_fr": "",
   "kindKey": "game",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "avatar",
@@ -282,22 +318,9 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": ""
- },
- {
-  "universe": "avatar",
-  "title": "Avatar: Seven Havens – Book 1",
-  "date_sort": "2026-10-09",
-  "date_txt": "09/10/2026",
-  "kind": "TV Series Release Date: October 9, 2026",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "marvel",
@@ -312,7 +335,9 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -327,7 +352,9 @@
   "wiki": "Rogue One – Chirrut & Baze 1",
   "syn_fr": "Rogue One – Chirrut & Baze 1 est le quatrième numéro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il est écrit par Marc Bernardin.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -342,7 +369,9 @@
   "wiki": "The Book of Boba Fett 3",
   "syn_fr": "",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -357,22 +386,9 @@
   "wiki": "Hyperspace Stories: Mace",
   "syn_fr": "Hyperspace Stories: Mace est un numéro one-shot de la série de bandes dessinées Star Wars : Histoires de l'hyperespace écrit par Justina Ireland.",
   "kindKey": "comic",
-  "title_fr": ""
- },
- {
-  "universe": "dc",
-  "title": "Clayface",
-  "date_sort": "2026-10-21",
-  "date_txt": "21/10/2026",
-  "kind": "Film",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Follow the terrifying descent into hell of a promising Hollywood actor who has become a monster driven by revenge, exploring the loss of identity and humanity, the ravages of toxic love and the dark side of scientific ambition.",
-  "wiki": "",
-  "syn_fr": "L'ascension fulgurante de Matt Hagen, de gamin des rues de Gotham à star hollywoodienne, est brutalement interrompue lorsqu'un baron du crime le laisse atrocement défiguré. Abandonné de tous et n'ayant plus rien à perdre, Matt se tourne vers un traitement expérimental qui lui rend miraculeusement son apparence... mais altère profondément sa perception de la réalité. Il sombre alors dans une spirale destructrice, consumé par un irrépressible désir de vengeance.",
-  "kindKey": "film",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -387,7 +403,9 @@
   "wiki": "The High Republic Adventures – Pathfinders 6",
   "syn_fr": "The High Republic Adventures – Pathfinders 6 est le sixième et dernier numéro de la mini-série de bandes dessinées Star Wars: The High Republic Adventures – Pathfinders écrit par George Mann dans le cadre du projet multimédia Star Wars : La Haute République.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -402,7 +420,26 @@
   "wiki": "The Fall of Kylo Ren 3",
   "syn_fr": "The Fall of Kylo Ren 3 est le troisième numéro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Charles Soule.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "dc",
+  "title": "Clayface",
+  "date_sort": "2026-10-23",
+  "date_txt": "23/10/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Follow the terrifying descent into hell of a promising Hollywood actor who has become a monster driven by revenge, exploring the loss of identity and humanity, the ravages of toxic love and the dark side of scientific ambition.",
+  "wiki": "",
+  "syn_fr": "L'ascension fulgurante de Matt Hagen, de gamin des rues de Gotham à star hollywoodienne, est brutalement interrompue lorsqu'un baron du crime le laisse atrocement défiguré. Abandonné de tous et n'ayant plus rien à perdre, Matt se tourne vers un traitement expérimental qui lui rend miraculeusement son apparence... mais altère profondément sa perception de la réalité. Il sombre alors dans une spirale destructrice, consumé par un irrépressible désir de vengeance.",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "2026-10-21",
+  "date_txt_fr": "21/10/2026"
  },
  {
   "universe": "starwars",
@@ -417,7 +454,9 @@
   "wiki": "Rogue One – Darth Vader 1",
   "syn_fr": "Rogue One – Darth Vader 1 est le cinquième et dernier numéro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il est écrit par Chris Condon.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -432,28 +471,15 @@
   "wiki": "The Book of Boba Fett 4",
   "syn_fr": "",
   "kindKey": "comic",
-  "title_fr": ""
- },
- {
-  "universe": "avatar",
-  "title": "Avatar Aang: The Last Airbender: A Novel Based on the Animated Film on Paramount+",
-  "date_sort": "2026-11-10",
-  "date_txt": "10/11/2026",
-  "kind": "Adult Novel Release Date: November 10, 2026",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "novel",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "marvel",
   "title": "Avengers: Doomsday",
-  "date_sort": "2026-12-16",
-  "date_txt": "16/12/2026",
+  "date_sort": "2026-12-18",
+  "date_txt": "18/12/2026",
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
@@ -462,7 +488,9 @@
   "wiki": "",
   "syn_fr": "Les Avengers, les Wakandais, les Quatre Fantastiques, les New Avengers et les X-Men, tous héros issus de trois univers distincts se retrouvent sur une trajectoire de collision mortelle et font face à une menace existentielle sans précédent, comme ils n'en ont jamais rencontré auparavant, le Docteur Doom.",
   "kindKey": "film",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "2026-12-16",
+  "date_txt_fr": "16/12/2026"
  },
  {
   "universe": "avatar",
@@ -477,7 +505,9 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "novel",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -492,28 +522,32 @@
   "wiki": "Tales from the Outer Rim: The Legend of Beggar's Canyon",
   "syn_fr": "Tales from the Outer Rim: The Legend of Beggar's Canyon est une bande dessinée one-shot écrite par Greg Pak.",
   "kindKey": "comic",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
   "title": "Star Wars: Starfighter",
-  "date_sort": "2027-05-26",
-  "date_txt": "26/05/2027",
+  "date_sort": "2027-05-27",
+  "date_txt": "27/05/2027",
   "kind": "Film",
-  "source": "TMDB",
+  "source": "Wookieepedia",
   "precision": "day",
-  "era": "",
-  "syn": "An original story set approximately five years after the events of Star Wars: The Rise of Skywalker.",
-  "wiki": "",
-  "syn_fr": "",
+  "era": "40 ABY",
+  "syn": "Star Wars: Starfighter is a stand-alone live-action film currently in post-production at Lucasfilm with filmmaker Shawn Levy serving as the director and former Lucasfilm president Kathleen Kennedy producing the project. The film is set to take place around five years after the events of Star Wars: Episode IX The Rise of Skywalker, and may include some characters from the sequel trilogy. Ryan Gosli…",
+  "wiki": "Star Wars: Starfighter",
+  "syn_fr": "Star Wars: Starfighter est un film Star Wars dont la production a commencé en 2025, après plusieurs années de développement. Réalisé par Shawn Levy et produit par Shawn Levy et Kathleen Kennedy, l'histoire se déroulera environ cinq ans après les événements de Star Wars épisode IX : L'Ascension de Skywalker.",
   "kindKey": "film",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "marvel",
   "title": "Spider-Man: Beyond the Spider-Verse",
-  "date_sort": "2027-06-17",
-  "date_txt": "17/06/2027",
+  "date_sort": "2027-06-18",
+  "date_txt": "18/06/2027",
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
@@ -522,13 +556,15 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "film",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "2027-06-23",
+  "date_txt_fr": "23/06/2027"
  },
  {
   "universe": "dc",
   "title": "Man of Tomorrow",
-  "date_sort": "2027-07-07",
-  "date_txt": "07/07/2027",
+  "date_sort": "2027-07-09",
+  "date_txt": "09/07/2027",
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
@@ -537,13 +573,15 @@
   "wiki": "",
   "syn_fr": "",
   "kindKey": "film",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "2027-07-07",
+  "date_txt_fr": "07/07/2027"
  },
  {
   "universe": "marvel",
   "title": "Avengers: Secret Wars",
-  "date_sort": "2027-12-16",
-  "date_txt": "16/12/2027",
+  "date_sort": "2027-12-17",
+  "date_txt": "17/12/2027",
   "kind": "Film",
   "source": "TMDB",
   "precision": "day",
@@ -552,6 +590,8 @@
   "wiki": "",
   "syn_fr": "Adaptation de Secret Wars de Jim Shooter et un prochain film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du multivers.",
   "kindKey": "film",
-  "title_fr": ""
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  }
 ]
