@@ -9,7 +9,7 @@ const PRECACHE = [
   '/progress.css', '/progress.js', '/intro.css', '/filters.css', '/filters.js',
   // composants de la refonte — coexistent avec les anciens pendant la migration
   '/cg.css', '/cg-timeline.js', '/cg-dc.js', '/cg-dossier.js', '/cg-badges-fx.js',
-  '/cg-upcoming.js'
+  '/cg-upcoming.js', '/cg-nav.js'
 ];
 
 self.addEventListener('install', e => {

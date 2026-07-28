@@ -424,10 +424,6 @@ header{position:sticky;top:0;z-index:300;height:var(--head-h);
   opacity:.2}
 .en-body{flex:1;min-width:0}
 .en-tags{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;margin-bottom:.22rem}
-/* la puce de date ne sert qu'en mobile, quand la colonne de date disparaît */
-.dchip{display:none;font-family:var(--font-mono);font-size:.68rem;font-weight:700;
-  padding:2px 7px;border-radius:6px;color:var(--text);background:var(--tl-soft);
-  border:1px solid var(--tl);white-space:nowrap}
 .en-title{font-size:.95rem;font-weight:600;line-height:1.3;color:var(--text);
   display:block}
 .en-note{font-size:.82rem;color:var(--muted2);font-style:italic;line-height:1.5;
@@ -649,6 +645,16 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
 @media(max-width:820px){
   .nav-links{display:none}
   .burger{display:grid}
+  /* Le bouton .burger existait déjà dans le HTML mais rien ne l'écoutait :
+     cg-nav.js pose .nav-open sur le <header> et la nav devient un panneau. */
+  header.nav-open .nav-links{display:flex;flex-direction:column;gap:.15rem;
+    position:absolute;top:var(--head-h);left:0;right:0;z-index:300;
+    padding:.5rem .75rem .8rem;background:rgba(15,15,26,.98);
+    backdrop-filter:blur(18px);border-bottom:1px solid var(--border);
+    box-shadow:0 14px 30px rgba(0,0,0,.45)}
+  header.nav-open .nav-links a{padding:.7rem .8rem;border-radius:8px;
+    font-size:.95rem;min-height:44px;display:flex;align-items:center}
+  header.nav-open .nav-links a[aria-current="page"]::after{display:none}
   .intro .keys{grid-template-columns:1fr}
   .prog-top{gap:1.4rem}
   .prog-acts{margin-left:0;width:100%}
@@ -668,15 +674,19 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
   .mini-track{width:56px}
   .mini-num{font-size:.74rem}
   .stat-big .v{font-size:2.2rem}
-  /* la colonne de date cède la place : la date passe en puce dans les badges */
-  .en-date{display:none}
-  .dchip{display:inline-block}
-  .en-thumb{width:148px}
-  .en-main{gap:.65rem;padding:.55rem .65rem}
-  .en-check{width:40px;padding-top:1.05rem}
+  /* La colonne de date RESTE, à gauche de l'affiche et sous la case à cocher.
+     Elle était masquée au profit d'une puce dans les badges, mais c'est elle
+     qui porte la réalité (OTHER REALITIES, OUTSIDE OF TIME) et la canonicité :
+     les masquer revenait à perdre l'information, pas seulement la date. */
+  .en-date{width:56px}
+  .en-date .d{font-size:.7rem}
+  .en-date .dim-badge,.en-date .nt{font-size:.5rem;padding:1px 3px}
+  .en-thumb{width:112px}
+  .en-main{gap:.5rem;padding:.55rem .5rem}
+  .en-check{width:34px;padding-top:1.05rem}
   .en-chev{display:none}
   /* les sous-items s'alignent sous la vignette */
-  .en-sub{padding-left:calc(148px + 1.9rem);padding-right:.6rem}
+  .en-sub{padding-left:calc(56px + 112px + 1.9rem);padding-right:.6rem}
   .en-sub .si{font-size:.78rem}
   .prog-nums{width:100%}
   .stat-big{flex:1 1 0;padding:0 .5rem}
@@ -883,6 +893,11 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
 .nt{display:inline-flex;font-size:.62rem;padding:2px 7px;border-radius:5px;font-weight:700;
   white-space:nowrap;background:rgba(224,85,85,.12);color:#e87373;
   border:1px solid rgba(224,85,85,.3)}
+/* dans la colonne de date, le libellé complet ne tient pas sur 74 px et
+   débordait à droite : il se comporte comme la désignation d'univers. */
+.en-date .nt{display:block;margin-top:.25rem;font-size:.55rem;line-height:1.25;
+  padding:1px 4px;border-radius:4px;max-width:100%;
+  white-space:normal;word-break:break-word;text-align:center}
 .dt{display:inline-flex;font-size:.62rem;padding:2px 7px;border-radius:5px;white-space:nowrap;
   background:rgba(124,106,247,.12);color:#a99fff;border:1px solid rgba(124,106,247,.25)}
 
