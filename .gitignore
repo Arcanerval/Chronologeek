@@ -15,3 +15,6 @@ ruvector.db
 *.db-journal
 *.db-wal
 *.db-shm
+
+# Cache de compilation Python (py -m py_compile)
+__pycache__/
