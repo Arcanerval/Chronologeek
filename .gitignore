@@ -7,6 +7,9 @@
 .swarm/
 .mcp.json
 
+# Scripts d'extraction et de migration utilisés pendant la refonte — locaux, jamais servis.
+_preview/
+
 # Bases de données runtime générées par ruflo
 ruvector.db
 *.db-journal
