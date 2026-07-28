@@ -22,474 +22,154 @@
 <link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dc"/>
-<style>
-:root{
-  --bg:#08080f;--surface:#0f0f1a;--surface2:#161625;--border:#1e1e35;--border2:#2a2a48;
-  --accent:#7c6af7;--accent2:#f06292;--text:#e2e2f0;--muted:#686880;--muted2:#9090b0;
-  --radius:10px;
-  --c-else:#c084fc;--c-av:#22c55e;--c-dceu:#3b82f6;--c-dcu:#f97316;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.1),transparent 60%);pointer-events:none}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
-nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:30px;display:block;object-fit:contain;background:transparent}
-.nav-links{display:flex;gap:1.25rem;align-items:center}
-.nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
-.nav-sp{flex:1}
-.nav-maj{font-size:.7rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
-.lang-btn{display:flex;align-items:center;flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);line-height:0;transition:transform .2s,box-shadow .2s,border-color .2s;text-decoration:none}
-.lang-btn .flag{height:20px;width:30px;display:block}
-.lang-btn:hover{transform:scale(1.08);border-color:var(--accent);box-shadow:0 0 14px rgba(124,106,247,.45)}
-@media(max-width:700px){.lang-btn{margin-left:auto}.burger{margin-left:.3rem}}
-.pbn{display:none;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted2)}
-.pbn.show{display:flex}
-.pbn-track{width:100px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.pbn-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .3s}
-.page-wrap{max-width:1400px;margin:0 auto;padding:1.5rem 2rem 4rem}
-.bc{font-size:.8rem;color:var(--muted);cursor:pointer;margin-bottom:.8rem;display:inline-flex;align-items:center;gap:.4rem}
-.bc:hover{color:var(--text)}
-.page-title{font-size:1.8rem;font-weight:900;letter-spacing:-.5px;color:#1e90ff;text-shadow:0 0 40px rgba(30,144,255,.3);margin-bottom:.2rem;color:#f5c842;text-shadow:0 0 40px rgba(245,200,66,.35)}
-.page-sub{font-size:.85rem;color:var(--muted2);margin-bottom:1rem}
-.progress-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
-.pb-info{flex:1}
-.pb-label{font-size:.68rem;color:var(--muted);margin-bottom:.2rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
-.pb-track{height:4px;background:var(--border2);border-radius:3px;overflow:hidden;margin:.25rem 0}
-.pb-fill{height:100%;border-radius:3px;transition:width .4s;background:linear-gradient(90deg,#1e90ff,var(--accent2))}
-.pb-counts{font-size:.78rem;color:var(--muted2)}
-.pb-hint{font-size:.68rem;color:var(--muted);margin-top:.2rem}
-.pb-reset{background:none;border:1px solid var(--border2);color:var(--muted2);border-radius:8px;padding:.35rem .8rem;font-size:.75rem;cursor:pointer;transition:all .2s;white-space:nowrap}
-.pb-reset:hover{border-color:var(--accent);color:var(--text)}
-.nb{font-size:.82rem;color:var(--muted2);line-height:1.7;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1.25rem}
-.nb strong{color:var(--text)}
-.filter-row{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:1rem}
-.fbt{background:var(--surface);border:1px solid var(--border2);color:var(--muted2);border-radius:20px;padding:.22rem .65rem;font-size:.7rem;cursor:pointer;transition:all .15s;white-space:nowrap}
-.fbt.active{background:rgba(124,106,247,.15);border-color:var(--accent);color:var(--text)}
-.fbt:not(.active){opacity:.4;text-decoration:line-through}
-/* ZONES */
-.zone{margin-bottom:1.5rem;border-radius:14px;overflow:hidden;border:1px solid}
-.zone-optional{border-color:rgba(192,132,252,.45);background:rgba(192,132,252,.05);box-shadow:0 0 0 1px rgba(192,132,252,.2),0 4px 24px rgba(192,132,252,.08)}
-.zone-pre{border-color:rgba(34,197,94,.15);background:rgba(34,197,94,.02)}
-.zone-event{border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.05)}
-.zone-post{border-color:rgba(59,130,246,.15);background:rgba(59,130,246,.02)}
-.zone-head{display:flex;align-items:center;gap:.8rem;padding:.85rem 1.2rem;cursor:pointer;user-select:none;transition:background .15s}
-.zone-head:hover{background:rgba(255,255,255,.03)}
-.zone-icon{font-size:1.3rem;flex-shrink:0}
-.zone-label-wrap{flex:1}
-.zone-name{font-size:1rem;font-weight:800;letter-spacing:-.2px;margin-bottom:.1rem}
-.zone-desc{font-size:.75rem;color:var(--muted2);line-height:1.4}
-.zone-optional .zone-name{color:var(--c-else)}.zone-optional .zone-head{background:rgba(192,132,252,.07);border-radius:14px 14px 0 0}
-.zone-pre .zone-name{color:var(--c-av)}
-.zone-event .zone-name{color:#ffd700}
-.zone-post .zone-name{color:var(--c-dceu)}
-.zone-toggle{font-size:.8rem;color:var(--muted);transition:transform .3s;flex-shrink:0}
-.zone-toggle.open{transform:rotate(180deg)}
-.zone-badges{display:flex;gap:.4rem;flex-wrap:wrap;padding:0 1.2rem .6rem}
-.zbadge{font-size:.65rem;font-weight:700;padding:.15rem .55rem;border-radius:20px;letter-spacing:.04em}
-.zbadge-else{background:rgba(192,132,252,.15);color:var(--c-else);border:1px solid rgba(192,132,252,.3)}
-.zbadge-av{background:rgba(34,197,94,.12);color:var(--c-av);border:1px solid rgba(34,197,94,.25)}
-.zbadge-dceu{background:rgba(59,130,246,.12);color:var(--c-dceu);border:1px solid rgba(59,130,246,.25)}
-.zbadge-dcu{background:rgba(249,115,22,.12);color:var(--c-dcu);border:1px solid rgba(249,115,22,.25)}
-.zone-body{display:none;padding:.5rem 1rem 1rem}
-.zone-body.open{display:block}
-.zone-grid{display:grid;gap:8px}
-.zg-1{grid-template-columns:1fr}
-.zg-2{grid-template-columns:1fr 1fr}.zg-3{grid-template-columns:2fr 1fr 1fr}
-.zg-2e{grid-template-columns:2fr 1fr}
-.zg-4{grid-template-columns:2fr 1.5fr 1fr 1fr}
-.zg-elseworlds{grid-template-columns:1fr 1fr}
-.zcol{display:flex;flex-direction:column;gap:4px}
-.zcol-head{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.3rem .4rem;border-radius:6px 6px 0 0;margin-bottom:2px;border-bottom:2px solid}
-.zcol-hint{font-size:.67rem;color:var(--muted2);font-style:italic;padding:.3rem .4rem;margin-bottom:.3rem;border-left:2px solid var(--border2);line-height:1.4}
-.zcol-else .zcol-head{color:var(--c-else);border-color:var(--c-else);background:rgba(192,132,252,.06)}
-.zcol-av .zcol-head{color:var(--c-av);border-color:var(--c-av);background:rgba(34,197,94,.05)}
-.zcol-dceu .zcol-head{color:var(--c-dceu);border-color:var(--c-dceu);background:rgba(59,130,246,.05)}
-.zcol-dcu .zcol-head{color:var(--c-dcu);border-color:var(--c-dcu);background:rgba(249,115,22,.05)}
-/* ENTRÉES */
-.en{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.35rem;overflow:hidden;transition:border-color .15s,box-shadow .15s}
-.en:hover{border-color:var(--border2);box-shadow:0 2px 10px rgba(0,0,0,.3)}
-.en.open{border-color:var(--accent);box-shadow:0 3px 16px rgba(124,106,247,.2)}
-.en.done{opacity:.5}
-.en.imp{border-left:3px solid rgba(255,165,0,.6)}
-.en-top{display:flex;align-items:flex-start;gap:.45rem;padding:.55rem .6rem;cursor:pointer}
-.en-check{width:18px;height:18px;flex-shrink:0;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:2px;transition:background .15s}
-.en-check:hover{border-color:var(--accent)}
-.en.done .en-check{background:var(--accent);border-color:var(--accent)}
-.checkmark{font-size:.6rem;color:#fff;font-weight:700}
-.en-datebadge{display:flex;flex-direction:column;gap:1px;flex-shrink:0;min-width:56px}
-.en-level-icon{font-size:.7rem;min-height:12px}
-.date-main{font-size:.7rem;font-weight:700;color:var(--text);white-space:nowrap}
-.dim-badge{font-size:.58rem;color:var(--muted);background:rgba(255,255,255,.05);padding:0 3px;border-radius:2px;border:1px solid var(--border);white-space:nowrap}
-.ep{width:46px;height:31px;flex-shrink:0;border-radius:4px;overflow:hidden;background:var(--surface2);position:relative;display:flex;align-items:center;justify-content:center}
-.ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
-.ep img.ldd{opacity:1}
-.pp{font-size:.85rem}
-.em{flex:1;min-width:0}
-.tr{display:flex;align-items:center;flex-wrap:wrap;gap:.25rem;margin-bottom:2px}
-.en-name{font-size:.8rem;font-weight:600;color:var(--text);line-height:1.3}
-.ft{font-size:.55rem;background:rgba(255,165,0,.2);color:#ffa500;padding:1px 4px;border-radius:3px;font-weight:700}
-.b{display:inline-block;font-size:.57rem;font-weight:700;letter-spacing:.04em;padding:.1rem .38rem;border-radius:20px}
-.bf{background:rgba(100,181,246,.14);color:#64b5f6;border:1px solid rgba(100,181,246,.28)}
-.bs{background:rgba(129,199,132,.14);color:#81c784;border:1px solid rgba(129,199,132,.28)}
-.esub{padding:0 .6rem .4rem;border-top:1px solid var(--border)}
-.si{font-size:.67rem;color:var(--muted2);padding:.04rem 0 .04rem .4rem;line-height:1.4}
-.enote{font-size:.66rem;color:var(--muted2);font-style:italic;padding:0 .6rem .35rem}
-.soft-badge{font-size:.56rem;background:rgba(148,163,184,.15);color:#94a3b8;padding:1px 4px;border-radius:3px;font-weight:700;border:1px solid rgba(148,163,184,.25)}
-.en-expand{display:none;border-top:1px solid var(--border);padding:.65rem}
-.en.open .en-expand{display:block}
-.expand-inner{display:flex;gap:.7rem}
-.expand-poster{width:70px;flex-shrink:0;cursor:pointer;position:relative;border-radius:5px;overflow:hidden}
-.expand-poster img{width:100%;display:block;border-radius:5px}
-.expand-poster-ov{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:1rem}
-.expand-poster:hover .expand-poster-ov{opacity:1}
-.expand-info{flex:1;min-width:0}
-.expand-synopsis{font-size:.78rem;line-height:1.6;color:var(--muted2);margin-bottom:.4rem}
-.expand-meta{display:flex;flex-wrap:wrap;gap:.25rem .65rem;font-size:.7rem;color:var(--muted2);margin-bottom:.35rem}
-.expand-meta strong{color:var(--text)}
-.expand-trailer{display:inline-block;font-size:.7rem;color:var(--accent);text-decoration:none}
-.expand-trailer:hover{text-decoration:underline}
-.expand-loading{font-size:.76rem;color:var(--muted)}
-.zone-event .zone-head{cursor:default}
-.crisis-content{padding:.5rem 1.2rem 1rem}
-.crisis-block{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);border-radius:10px;padding:.85rem 1.1rem}
-.crisis-title{font-size:.9rem;font-weight:800;color:#ffd700;margin-bottom:.35rem}
-.crisis-eps{font-size:.75rem;color:rgba(255,215,0,.75);line-height:1.8}
-.crisis-note{font-size:.72rem;color:var(--muted2);margin-top:.5rem;font-style:italic}
-.pm{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.92);align-items:center;justify-content:center;cursor:pointer}
-.pm.o{display:flex}
-.pm img{max-width:90vw;max-height:90vh;border-radius:10px}
-.pm-x{position:fixed;top:1rem;right:1.5rem;font-size:1.5rem;color:#fff;cursor:pointer;z-index:601}
-@media(max-width:700px){
-  .zg-2,.zg-2e,.zg-3,.zg-4,.zg-elseworlds{grid-template-columns:1fr}
-  nav{flex-wrap:wrap;height:auto;padding:.5rem 0;gap:.3rem}
-  .logo{width:100%;justify-content:center}
-  .nav-links{width:100%;justify-content:center;flex-wrap:wrap;gap:.35rem .7rem}
-  .nav-links a{font-size:.78rem;white-space:nowrap}
-  .nav-maj{display:none}
-    .page-wrap{padding:1rem 1rem 3rem}
-}
-
-.crisis-spoil{margin-top:.6rem;border-radius:6px;overflow:hidden}
-.crisis-spoil summary{font-size:.72rem;font-weight:700;color:#f97316;cursor:pointer;padding:.3rem .5rem;list-style:none;user-select:none}
-.crisis-spoil summary::-webkit-details-marker{display:none}
-.crisis-spoil summary::before{content:'▶ ';font-size:.6rem}
-.crisis-spoil[open] summary::before{content:'▼ '}
-.crisis-spoil-content{font-size:.75rem;color:var(--muted2);line-height:1.6;padding:.5rem .5rem .2rem;border-top:1px solid rgba(255,215,0,.2);margin-top:.3rem}
-.crisis-spoil-content strong{color:var(--text)}
-
-.en-sep-start{background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,165,0,.1));border:1px solid rgba(255,215,0,.6)!important;border-left:4px solid #ffd700!important;text-align:left;cursor:default}
-.en-sep-start:hover{box-shadow:0 0 16px rgba(255,215,0,.2)!important;border-color:rgba(255,215,0,.8)!important}
-.en-sep-start .en-name{color:#ffd700;font-weight:700;font-size:.8rem}
-.en-sep-end{border-top:2px solid rgba(255,215,0,.5)!important;border-bottom:none!important;border-left:none!important;border-right:none!important;background:none!important;padding:.1rem 0;margin:.4rem 0}
-.en-sep-end .en-name{color:rgba(255,215,0,.6);font-size:.72rem;font-weight:600}
-.en-sep-end:hover{box-shadow:none!important}
-
-.expand-faq{border-top:1px solid var(--border);margin-top:.5rem;padding-top:.5rem}
-.faq-item{border-radius:6px;overflow:hidden;margin-bottom:.25rem}
-.faq-q{font-size:.74rem;font-weight:600;color:var(--muted2);cursor:pointer;padding:.3rem .5rem;list-style:none;user-select:none;background:rgba(255,255,255,.03);border-radius:6px}
-.faq-q::-webkit-details-marker{display:none}
-.faq-spoil .faq-q{color:#f97316}
-.faq-q::before{content:'▶ ';font-size:.58rem;color:var(--accent)}
-.faq-item[open] .faq-q::before{content:'▼ '}
-.faq-a{font-size:.76rem;color:var(--muted2);line-height:1.6;padding:.4rem .5rem .2rem}
-
-#batsignal{
-  position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;
-  width:100px;height:114px;cursor:pointer;
-  display:none;opacity:0;
-  overflow:visible;
-  transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);
-  filter:drop-shadow(0 4px 16px rgba(0,0,0,.8));
-}
-#batsignal.visible{display:block;opacity:1}
-#batsignal:hover{transform:scale(1.1)}
-.bat-normal{
-  position:absolute;
-  width:100px;height:114px;
-  top:0;left:0;
-  object-fit:contain;
-  transition:opacity .25s;
-  opacity:1;
-}
-.bat-hover{
-  position:absolute;
-  width:217px;height:122px;
-  left:-127px;top:-18px;
-  object-fit:contain;
-  transition:opacity .25s;
-  opacity:0;
-}
-#batsignal:hover .bat-normal{opacity:0}
-#batsignal:hover .bat-hover{opacity:1}
-
-
-.leg{display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.78rem;color:var(--muted2)}
-.leg-title{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.3rem}
-.bfa{background:rgba(206,147,216,.14);color:#ce93d8;border:1px solid rgba(206,147,216,.28)}
-
-/* ═══ Mobile App Polish ═══ */
-html,body{overflow-x:clip}
-*{-webkit-tap-highlight-color:transparent}
-.logo img{width:auto;object-fit:contain}
-@media(max-width:700px){
-  .logo img{height:22px;max-width:44vw}
-  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
-  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  .nav-sp,.nav-maj,  #batsignal{width:68px;height:78px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
-}
-
-
-
-/* ═══ Menu mobile v2 ═══ */
-.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
-#mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
-#mmenu.open{display:flex}
-#mmenu a{color:var(--muted2);font-size:1.25rem;text-decoration:none;cursor:pointer;font-weight:600}
-#mmenu a.cur{color:var(--text);font-weight:800}
-#mmenu a.doss{color:var(--accent2)}
-.nav-links a.doss{color:var(--accent2);font-weight:700}
-@media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
-
-/* ═══ Checkbox v4 : case visible ═══ */
-.en-top{align-items:center}
-.en-check{width:20px;height:20px;flex:0 0 20px;margin-top:0;border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);border-radius:5px;background:rgba(255,255,255,.04);box-sizing:border-box}
-.en-check:hover{border-color:var(--accent)}
-@media(max-width:700px){.en-check{width:24px;height:24px;flex:0 0 24px}.checkmark{font-size:.78rem}}
-
-/* ═══ Harmonisation typographique ═══ */
-.page-title{font-size:2.1rem !important}
-.en-name{font-size:.92rem !important}
-.b{font-size:.66rem !important}
-.leg,#tl-legend{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;font-size:.8rem;color:var(--muted2)}
-
-/* ═══ Progress block uniforme ═══ */
-.progress-block{width:100%;box-sizing:border-box;flex-wrap:wrap;gap:.6rem}
-@media(max-width:700px){
-  .progress-block{flex-direction:row}
-  .pb-info{flex:1 1 100%}
-  .progress-block button{flex:1;white-space:nowrap}
-  .pbn{gap:.4rem;font-size:.68rem}
-  .pbn-track{width:54px}
-  .pbn.show{margin-left:auto}
-  .pbn.show~.lang-btn{margin-left:.15rem}
-}
-.nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
-.nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
-
-.stats{display:flex;flex-wrap:wrap;gap:0;margin:1.6rem 0 1.4rem;border-top:1px solid var(--border);
-       border-bottom:1px solid var(--border);padding:1.2rem 0}
-.stat{flex:1 1 0;min-width:104px;padding:0 1rem;position:relative;text-align:left}
-.stat+.stat{border-left:1px solid var(--border)}
-.stat b{display:block;font-size:2.1rem;font-weight:900;line-height:1;letter-spacing:-1px;
-        color:var(--text);font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:.45rem;font-size:.62rem;letter-spacing:.16em;
-           text-transform:uppercase;color:var(--muted)}
-@media(max-width:640px){
-  .stats{padding:.9rem 0;gap:.9rem 0}
-  .stat{flex:1 1 44%;min-width:0;padding:0 .7rem}
-  .stat:nth-child(odd){border-left:none}
-  .stat b{font-size:1.6rem}
-}
-</style>
-  <link rel="stylesheet" href="/progress.css"/>
-  <link rel="stylesheet" href="/intro.css"/>
-  <link rel="stylesheet" href="/filters.css"/>
+<link rel="stylesheet" href="/cg.css"/>
+<link rel="canonical" href="https://chronologeek.app/dc"/>
+<script>window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","resetSW":"Reset your Star Wars progress?","resetMCU":"Reset your Marvel progress?","resetDC":"Reset your DC progress?","resetDos":"Reset your Deep Dive progress?","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's new","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project."},"universe":"dc","badgeLabels":{"film":["bf","MOVIE"],"serie":["bs","TV SHOW"],"anime":["ba","ANIMATED SHOW"],"filmanim":["bfa","ANIMATED MOVIE"],"comic":["bc","COMIC"]},"badges":[{"id":"dc_survivant","universe":"dc","icon":"⚡","color":"#ffd700","trigger":"all","ids":["av-arrow-s8e8","av-flash-s6e9","av-sg-s5e9","av-bw-s1e9","av-lot-s5e1"],"label":"Event Survivor","desc":"The major event reached"},{"id":"dc_superman","universe":"dc","icon":"🦸","color":"#3b82f6","trigger":"all","ids":["dc-smallville","dc-krypton-s1","dc-supermanreturns","dc-supermanlois"],"label":"Superman Prime","desc":"All Superman origins watched"},{"id":"dc_batman","universe":"dc","icon":"🦇","color":"#c084fc","trigger":"all","ids":["dc-batman89","dc-batmanreturns","dc-batmanbegins","dc-tdk","dc-tdkr","dc-gotham","dc-thebatman","dc-thepenguin"],"label":"Dark Knight Returns","desc":"All Batman origins watched"},{"id":"dc_spectre","universe":"dc","icon":"👻","color":"#22c55e","trigger":"last","ids":["av-flash-s9"],"label":"Spectre","desc":"The entire Arrowverse completed"},{"id":"dc_voyageur","universe":"dc","icon":"⏱️","color":"#60a5fa","trigger":"last","ids":["dceu-theflash"],"label":"Time Traveler","desc":"The entire DCEU completed"},{"id":"dc_maitre","universe":"dc","icon":"🌐","color":"#1e90ff","trigger":"100pct","ids":[],"label":"Master of the Multiverse","desc":"DC 100% completed"}],"faqCats":[{"key":"quand","q":"When does {name} take place?"},{"key":"pourquoi","q":"Why watch {name} at this point?"},{"key":"spoil","q":"How does {name} connect to the major event?"}],"resetMsg":"Reset your DC progress?","tmdbLang":"en-US","branches":{"elseworlds":{"label":"Elseworlds","c":"#c084fc","cols":["superman","batman","else_post"]},"arrowverse":{"label":"Arrowverse","c":"#22c55e","cols":["av_pre","av_post"],"crisis":true},"dceu":{"label":"DCEU","c":"#3b82f6","cols":["dceu"]},"dcu":{"label":"DCU","c":"#f97316","cols":["dcu"]}},"tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};</script>
 </head>
 <body data-universe="dc">
+
+<a class="skip" href="#main">Skip to content</a>
 <header>
-  <nav>
-    <div class="logo" onclick="window.location.href='/'">
-      <img src="/images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
-    </div>
+  <nav class="nav" aria-label="Navigation">
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
     <div class="nav-links">
-      <a onclick="window.location.href='/'">Home</a>
+      <a href="/">Home</a>
       <a href="/deep-dives/" class="doss">Deep Dives</a>
-      <a onclick="window.location.href='/starwars'">Star Wars</a>
-      <a onclick="window.location.href='/marvel'">Marvel</a>
-      <a onclick="window.location.href='/dc'" style="color:var(--text);font-weight:700">DC</a>
-      <a onclick="window.location.href='/avatar'">Avatar</a>
-      <a onclick="window.location.href='/upcoming'" class="upc">Upcoming</a>
-      <a onclick="window.location.href='/whats-new'" class="news">What's New</a>
+      <a href="/starwars">Star Wars</a>
+      <a href="/marvel">Marvel</a>
+      <a href="/dc" aria-current="page">DC</a>
+      <a href="/avatar">Avatar</a>
+      <a href="/upcoming" class="upc">Upcoming</a>
+      <a href="/whats-new" class="news">What's New</a>
     </div>
     <div class="nav-sp"></div>
-    <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill"></div></div></div>
-    <a class="lang-btn" href="/fr/dc" title="Version française"><svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg></a>
-    <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="/fr/dc" aria-label="Passer en français" title="Passer en français">
+        <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+      </a>
+      <button class="icon-btn burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </nav>
 </header>
-<div id="mmenu">
-  <a href="/">Home</a>
-  <a href="/deep-dives/" class="doss">Deep Dives</a>
-  <a href="/starwars">Star Wars</a>
-  <a href="/marvel">Marvel</a>
-  <a href="/dc" class="cur">DC</a>
-  <a href="/avatar">Avatar</a>
-  <a href="/upcoming" class="upc">Upcoming</a>
-      <a href="/whats-new" class="news">What's New</a>
-</div>
 
-<div id="batsignal" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
-  <img class="bat-normal" src="/images/batsignal.png" alt="Bat-Signal"/>
-  <img class="bat-hover" src="/images/batsignalmouseover.png" alt="Bat-Signal lit"/>
-</div>
-<div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
-
-<div class="page-wrap">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><div class="bc" onclick="window.location.href='/'" style="margin-bottom:0">← Home</div><span class="nav-maj">Updated · July 2026</span></div>
-  <div class="page-title">DC Multiverse — Watch Guide</div>
-  <div class="page-sub">Elseworlds · Arrowverse · DCEU · DCU</div>
-  <div class="stats"><div class="stat"><b>24</b><span>Feature films</span></div><div class="stat"><b>16</b><span>Series</span></div></div>
-  <div class="progress-block">
-    <div class="pb-info">
-      <div class="pb-label">My progress</div>
-      <div class="pb-track"><div class="pb-fill" id="pb-fill"></div></div>
-      <div class="pb-counts" id="pb-counts">0 / 0 · 0%</div>
-      <div class="pb-hint">Check off what you've watched — your progress is saved in this browser</div>
-    </div>
-    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Resume</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
+<div class="subbar"><div class="subbar-in">
+  <div class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <label class="skip" for="q">Search the timeline</label>
+    <input id="q" type="search" placeholder="Search…  ( / )" autocomplete="off"/>
+    <button class="search-clear" id="q-clear" aria-label="Clear search">✕</button>
   </div>
-  <div class="nb" id="tl-notes"></div>
-  <div class="leg" id="tl-legend" style="margin-bottom:1rem"></div>
-
-  <div class="filter-row">
-    <span style="font-size:.7rem;color:var(--muted)">Universes:</span>
-    <button class="fbt active" data-univ="elseworlds" onclick="toggleUniversFilter(this)" style="border-color:var(--c-else);color:var(--c-else)">Elseworlds</button>
-    <button class="fbt active" data-univ="arrowverse" onclick="toggleUniversFilter(this)" style="border-color:var(--c-av);color:var(--c-av)">Arrowverse</button>
-    <button class="fbt active" data-univ="dceu" onclick="toggleUniversFilter(this)" style="border-color:var(--c-dceu);color:var(--c-dceu)">DCEU</button>
-    <button class="fbt active" data-univ="dcu" onclick="toggleUniversFilter(this)" style="border-color:var(--c-dcu);color:var(--c-dcu)">DCU</button>
-    <span style="width:1px;height:16px;background:var(--border2);margin:0 .3rem;flex-shrink:0"></span>
-    <span style="font-size:.7rem;color:var(--muted)">Levels:</span>
-    <button class="fbt active" id="fbt-imp" onclick="this.classList.toggle('active');applyLevelFilter()">🚨 Important</button>
-    <button class="fbt active" id="fbt-bonus" onclick="this.classList.toggle('active');applyLevelFilter()">Optional</button>
+  <div class="sub-sp"></div>
+  <button class="toggle" id="hide-done" aria-pressed="false">
+    <span class="sw" aria-hidden="true"></span><span class="lbl">Hide watched</span>
+  </button>
+  <div class="mini">
+    <span class="live" aria-hidden="true"></span>
+    <span class="mini-num" id="mini-num">0/146</span>
+    <div class="mini-track"><div class="mini-fill" id="mini-fill"></div></div>
   </div>
+</div></div>
 
-  <!-- ZONE 1 : Elseworlds -->
-  <div class="zone zone-optional">
-    <div class="zone-head" onclick="toggleZone('z-optional')">
-      <div class="zone-icon">🌐</div>
-      <div class="zone-label-wrap">
-        <div class="zone-name">Elseworlds</div>
-        <div class="zone-desc">These stories — although some are connected to each other and to the other universes — mostly serve to flesh out the lore and origins of DC's two greatest heroes. Watch them whenever you like, before or alongside the other zones.</div>
-      </div>
-      <div class="zone-toggle" id="toggle-z-optional">▼</div>
-    </div>
-    <div class="zone-badges">
-      <span class="zbadge zbadge-else">Elseworlds</span>
-    </div>
-    <div class="zone-body" id="z-optional">
-      <div class="zone-grid zg-elseworlds">
-        <div class="zcol zcol-else">
-          <div class="zcol-head">Superman origins</div>
-          <div class="zcol-hint">Parallel universes — some connect to the other columns</div>
-          <div id="col-superman"></div>
-        </div>
-        <div class="zcol zcol-else">
-          <div class="zcol-head">Batman origins</div>
-          <div class="zcol-hint">Parallel universes — some connect to the other columns</div>
-          <div id="col-batman"></div>
-        </div>
-      </div>
-    </div>
+<main class="shell" id="main">
+  <a class="crumb" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All universes</a>
+  <div class="page-head">
+    <h1><span class="u">DC</span> — Multiverse Guide</h1>
+    <p class="sub">Elseworlds · Arrowverse · DCEU · DCU — the complete multiverse guide, major event kept spoiler-free.</p>
+    <p class="upd"><span class="dot"></span> Updated · July 2026</p>
   </div>
+  <div class="stats"><div class="s"><b>24</b><span>Feature films</span></div><div class="s"><b>16</b><span>Series</span></div></div>
 
-  <!-- ZONE 2 : Pré-événement -->
-  <div class="zone zone-pre">
-    <div class="zone-head" onclick="toggleZone('z-pre')">
-      <div class="zone-icon">📺</div>
-      <div class="zone-label-wrap">
-        <div class="zone-name">The 2 main universes</div>
-        <div class="zone-desc">The Arrowverse and the DCEU side by side. Watch each column separately or alternate between them as you like.</div>
+  <section class="prog" aria-labelledby="prog-h">
+    <h2 id="prog-h" class="skip">My progress</h2>
+    <p class="prog-head">My progress · <em>DC — Multiverse Guide</em></p>
+    <div class="prog-top">
+      <div class="prog-nums">
+        <div class="stat-big"><div class="v"><span id="n-done">0</span><span class="u" id="n-total">/ 146</span></div><div class="l">Watched</div></div>
+        <div class="stat-big accent"><div class="v"><span id="n-h">0</span><span class="u" id="n-hu">h</span><span class="u" id="star" title="No runtime data for some entries">*</span></div><div class="l">Left to watch</div></div>
+        <div class="stat-big"><div class="v"><span id="n-pct">0</span><span class="u">%</span></div><div class="l">Done</div></div>
       </div>
-      <div class="zone-toggle open" id="toggle-z-pre">▼</div>
-    </div>
-    <div class="zone-badges">
-      <span class="zbadge zbadge-av">Arrowverse</span>
-      <span class="zbadge zbadge-dceu">DCEU</span>
-    </div>
-    <div class="zone-body open" id="z-pre">
-      <div class="zone-grid zg-2">
-        <div class="zcol zcol-av">
-          <div class="zcol-head">Arrowverse</div>
-          <div class="zcol-hint">Watch in order — these shows interweave episode by episode</div>
-          <div id="col-av-pre"></div>
-        </div>
-        <div class="zcol zcol-dceu">
-          <div class="zcol-head">DCEU</div>
-          <div class="zcol-hint">Independent from the Arrowverse — watch alongside whenever you like</div>
-          <div id="col-dceu"></div>
-        </div>
+      <div class="prog-acts">
+        <button class="btn primary" data-resume><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Resume</button>
+        <button class="btn" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export</button>
+        <button class="btn" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Import</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
+        <button class="btn danger" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Reset</button>
       </div>
     </div>
+    <div class="bar"><i id="bar"></i></div>
+    <p class="prog-hint">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Your progression is saved in this browser — use <b>Export</b> to keep a backup or import on another device or browser
+    </p>
+  </section>
+
+  <div class="intro" id="intro"></div>
+
+  <details class="fp">
+    <summary><span class="fp-title">Filters</span>
+      <span class="fp-count" id="fp-count">146 / 146 shown</span>
+      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="fp-body">
+      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Branches</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-branches"></div></div>
+      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Media types</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-types"></div></div>
+      <div class="fp-sec" hidden><div class="fp-sec-head"><span class="fp-sec-lab">Options</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-opts"></div></div>
+      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Level</span>
+        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
+        <div class="fp-row" id="f-levels"></div></div>
+    </div>
+    <div class="fp-marks"><span class="fp-marks-lab">Markers</span>
+      <span class="ft">FLASHBACK</span><span class="soft-badge">SOFT-CANON</span><span class="dt">EARTH-XXXX</span><span style="font-size:.78rem;color:var(--muted2)">🚨 Important</span></div>
+  </details>
+
+  <nav class="rail" id="rail" aria-label="Jump to a zone"></nav>
+  <div id="zones"></div>
+  <div class="empty" id="empty">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <h3>Nothing matches <span id="empty-q"></span></h3>
+    <p>Try another spelling, or bring back the filters you turned off.</p>
+    <button class="btn" id="clear-filters">Clear everything</button>
   </div>
+</main>
 
-  <!-- ÉVÉNEMENT MAJEUR -->
-  <div class="zone zone-event">
-    <div class="zone-head" style="cursor:default">
-      <div class="zone-icon">⚡</div>
-      <div class="zone-label-wrap">
-        <div class="zone-name">Major Event</div>
-        <div class="zone-desc">An unprecedented event that changes everything.</div>
-      </div>
-    </div>
-    <div class="crisis-content">
-      <div class="crisis-block">
-<details class="crisis-spoil">
-          <summary>⚠️ Reveal the details — SPOILERS</summary>
-          <div class="crisis-spoil-content">
-            This is <strong>Crisis on Infinite Earths</strong>, the biggest crossover in all of DC history. The entire Multiverse is rebooted from scratch — some realities disappear, others are merged. Dozens of characters from dozens of DC movies and shows across the franchise's entire history make cameos. It's an unprecedented event.<br><br>
-            <strong>Episodes:</strong><br>
-            Arrow — Season 8 Episode 8<br>
-            The Flash — Season 6 Episode 9<br>
-            Supergirl — Season 5 Episode 9<br>
-            Batwoman — Season 1 Episode 9<br>
-            Legends of Tomorrow — Season 5 Episode 1<br><br>
-            <em>Titans, Stargirl, Smallville, Superman Returns and Batman (1989) also take part.</em>
-          </div>
-        </details>
-      </div>
+<footer>
+  <div class="foot">
+    <div class="about"><h4>Chronologeek</h4><p>Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.</p></div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="/starwars">Star Wars</a></li>
+      <li><a href="/marvel">Marvel — MCU</a></li>
+      <li><a href="/dc">DC Multiverse</a></li>
+      <li><a href="/avatar">Avatar</a></li>
+      <li><a href="/deep-dives/">Deep Dives</a></li>
+    </ul></div>
+    <div><h4>More</h4><ul>
+      <li><a href="/upcoming">Upcoming releases</a></li>
+      <li><a href="/whats-new">What's new</a></li>
+      <li><a href="#">Support the site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      API but is not endorsed or certified by TMDB. Book data from <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.
+      <br/>© 2026 Chronologeek — <a href="/">chronologeek.app</a>
     </div>
   </div>
+</footer>
 
-  <!-- ZONE 3 : Post-événement -->
-  <div class="zone zone-post">
-    <div class="zone-head" onclick="toggleZone('z-post')">
-      <div class="zone-icon">🎬</div>
-      <div class="zone-label-wrap">
-        <div class="zone-name">After the event</div>
-        <div class="zone-desc">The post-event Arrowverse, the Elseworlds born from the event, and the brand-new DCU.</div>
-      </div>
-      <div class="zone-toggle open" id="toggle-z-post">▼</div>
-    </div>
-    <div class="zone-badges">
-      <span class="zbadge zbadge-av">Arrowverse</span>
-      <span class="zbadge zbadge-else">Post-event Elseworlds</span>
-      <span class="zbadge zbadge-dcu">DCU</span>
-    </div>
-    <div class="zone-body open" id="z-post">
-      <div class="zone-grid zg-3">
-        <div class="zcol zcol-av">
-          <div class="zcol-head">Arrowverse — After the event</div>
-          <div id="col-av-post"></div>
-        </div>
-        <div class="zcol zcol-else">
-          <div class="zcol-head">Post-event Elseworlds</div>
-          <div class="zcol-hint">Universes revealed or born after the event</div>
-          <div id="col-else-post"></div>
-        </div>
-        <div class="zcol zcol-dcu">
-          <div class="zcol-head">DCU — New Universe</div>
-          <div class="zcol-hint">New universe connected to the DCEU through The Flash (2023)</div>
-          <div id="col-dcu"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
+<button id="totop" class="batsignal" aria-label="Back to top" title="Back to top">
+  <img class="nl" src="/images/batsignal.png" alt=""/>
+  <img class="hv" src="/images/batsignalmouseover.png" alt=""/>
+</button>
 
 <script>
 const NOTES=`<p class="intro-lead">If you're here, it's because you want to discover the DC Multiverse, or watch one of its branches, in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works for first-time watches as well as rewatches.</span></div><p class="intro-note">Fair warning: this section is a <strong>huge mess</strong>. Even though a lot of media has been cut, watching everything that's left still takes a lot — a LOT — of time. If you're only here for the Arrowverse, the DCEU or the DCU, you can pick below by unchecking what you don't want to see.</p><div class="intro-qa"><p class="q">Fair question: how is this whole mess connected?</p><p class="a">This order favors a progressive discovery of the DC Multiverse. Several shows and movies take place in different realities but end up sharing connections. Watching everything in this order helps you understand the characters, references and events that tie these universes together, while preserving the major surprises.</p></div><div class="keys-title">How to read this</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>The main chronologies</div><p>The universe's two main chronologies take place on <strong>Earth-Prime</strong> and <strong>Earth-1</strong>.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>Soft-canon</div><p>The term <strong>soft-canon</strong> refers to media whose events partly happened the same way in another universe — more info in the descriptions.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Flashbacks</div><p>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.</p></div><div class="key wide"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="4"/><path d="M2 21a7 7 0 0 1 14 0M17 6a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></svg>Duplicate faces</div><p>The DC Multiverse works in a peculiar way: two different characters can have the exact same face (examples: Flash's father (2014) and Flash (1990), Supergirl (1984) and Superman's mother (Smallville) but also Supergirl's adoptive mother (2015)).</p></div></div><details class="cuts"><summary>What's left out, and why<span class="n">4 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Some media is intentionally left out because it's not at all important for understanding the Multiverse's chronology and its key events.</p><dl class="cuts-list"><div class="cut"><dt>Everything released before 1989</dt><dd>Every media released before 1989.</dd></div><div class="cut"><dt>The shows</dt><dd>Flash (1990), Lois &amp; Clark, Lucifer, Pennyworth, Swamp-Thing, Doom Patrol, Powerless, Birds of Prey (2002).</dd></div><div class="cut"><dt>The movies</dt><dd>Constantine (2005), the Watchmen movie and show, both Joker movies, the Green Lantern movie, the Catwoman movie.</dd></div><div class="cut"><dt>The rest</dt><dd>Plenty of other lesser-known movies and shows, almost every animated movie and show, every comic, every video game.</dd></div></dl></div></details>`;
@@ -652,8 +332,9 @@ const DATA={
     {id:'dc-thepenguin',type:'serie',level:'bonus',tmdb:'194764',media:'tv',title:'The Penguin',date:'2022',dim:'EARTH-TB',subitems:['Season 1']},
   ],
   dcu:[
-    {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2020–2021',dim:'EARTH-1',softcanon:true,faq:{quand:'The movie takes place in 2020-2021.',pourquoi:'Most of the events happen just like in the DCEU. We don\'t know yet whether every character will have the same face in the DCU.'}},
-    {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2021',dim:'EARTH-1',softcanon:true,subitems:['Season 1'],faq:{quand:'The show takes place in 2021, after The Suicide Squad.',pourquoi:'Most of the events happen just like in the DCEU, with the notable exception of the scene with the other heroes.'}},
+    {id:'dcu-ss-sc',type:'film',level:'imp',tmdb:'297761',media:'movie',title:'Suicide Squad',date:'2016',dim:'EARTH-1',softcanon:true,faq:{quand:'The movie takes place in 2016.',pourquoi:'Some events happen just like in the DCEU minus the cameos, some characters faces that might change and the end is different.'}},
+    {id:'dceu-tss-sc',type:'film',level:'imp',tmdb:'436969',media:'movie',title:'The Suicide Squad',date:'2022',dim:'EARTH-1',softcanon:true,faq:{quand:'The movie takes place in 2022.',pourquoi:'Most of the events happen just like in the DCEU. We don\'t know yet whether every character will have the same face in the DCU.'}},
+    {id:'dceu-peacemaker-sc',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2023',dim:'EARTH-1',softcanon:true,subitems:['Season 1'],faq:{quand:'The show takes place in 2023, after The Suicide Squad.',pourquoi:'Most of the events happen just like in the DCEU, with the notable exception of the scene with the other heroes.'}},
     {id:'dcu-cc',type:'anime',level:'bonus',tmdb:'219543',media:'tv',title:'Creature Commandos',date:'2024',dim:'EARTH-1',subitems:['Season 1']},
     {id:'dcu-superman',type:'film',level:'imp',tmdb:'1061474',media:'movie',title:'Superman',date:'2025',dim:'EARTH-1',faq:{quand:'The movie takes place in 2025 in the brand-new DCU.',pourquoi:'The first big movie of James Gunn\'s DCU. A complete fresh start for Superman and the DC universe on the big screen.'}},
     {id:'dcu-peacemaker2',type:'serie',level:'imp',tmdb:'110492',media:'tv',title:'Peacemaker',date:'2025',dim:'EARTH-1',subitems:['Season 2']},
@@ -667,312 +348,18 @@ const RT={"av-arrow-s12": 1937, "av-arrow-s3e1-3": 129, "av-arrow-s3e4": 42, "av
 window.RT=RT;
 /* == CG-RUNTIME END == */
 function getP(){try{return JSON.parse(localStorage.getItem('cg_dc')||'{}')}catch{return{}}}
-function saveP(o){localStorage.setItem('cg_dc',JSON.stringify(o))}
-
-function toggleEntry(id,ev){
-  ev.stopPropagation();
-  const p=getP();p[id]?delete p[id]:(p[id]=1);saveP(p);
-  if(typeof checkBadges==='function'&&p[id]){
-    const allIds=[...document.querySelectorAll('.en[data-id]')].map(e=>e.dataset.id).filter(i=>!i.startsWith('crisis'));
-    checkBadges('dc',p,allIds);
-  }
-  document.querySelectorAll(`.en[data-id="${id}"]`).forEach(el=>{
-    el.classList.toggle('done',!!p[id]);
-    const cm=el.querySelector('.checkmark');if(cm)cm.textContent=p[id]?'✓':'';
-    const ck=el.querySelector('.en-check');if(ck)ck.style.background=p[id]?'var(--accent)':'';
-  });
-  renderProgress();
-}
-
-function resetProgress(){
-  if(!confirm('Reset?'))return;
-  localStorage.removeItem('cg_dc');
-  document.querySelectorAll('.en.done').forEach(el=>{
-    el.classList.remove('done');
-    const cm=el.querySelector('.checkmark');if(cm)cm.textContent='';
-    const ck=el.querySelector('.en-check');if(ck)ck.style.background='';
-  });
-  renderProgress();
-}
-
-function renderProgress(){
-  const p=getP();
-  const ids=new Set([...document.querySelectorAll('.en[data-id]')].map(e=>e.dataset.id));
-  const total=ids.size,done=Object.keys(p).filter(k=>ids.has(k)).length;
-  const pct=total?Math.round(done/total*100):0;
-  const grad='linear-gradient(90deg,#1e90ff,var(--accent2))';
-  const pb=document.getElementById('pb-fill');if(pb)pb.style.cssText='width:'+pct+'%;background:'+grad;
-  const pc=document.getElementById('pb-counts');if(pc)pc.innerHTML='<strong>'+done+'</strong> / '+total+' watched · <strong>'+pct+'%</strong>';
-  const pbn=document.getElementById('pbn');
-  if(pbn){pbn.classList.toggle('show',total>0);document.getElementById('pbn-label').textContent=done+'/'+total;document.getElementById('pbn-fill').style.cssText='width:'+pct+'%;background:'+grad}
-}
-
-function buildEntry(e,borderColor){
-  // Séparateur spécial
-  if(e.type==='separator'){
-    const cls=e.id==='crisis-start'?'en-sep-start':'en-sep-end';
-    return `<div class="en ${cls}" data-id="${e.id}" data-type="separator" data-level="${e.level||'imp'}">
-      <div class="en-top" style="cursor:default">
-        <div class="en-datebadge"><div class="date-main">${e.date||''}</div></div>
-        <div class="em">
-          <div class="tr"><span class="en-name">${e.title}</span></div>
-          ${e.note?`<div style="font-size:.72rem;color:rgba(255,215,0,.75);margin-top:.25rem;line-height:1.5">${e.note}</div>`:''}
-        </div>
-      </div>
-    </div>`;
-  }
-  const p=getP();const isDone=!!p[e.id];
-  const tags=e.tags||[];const isFB=tags.includes('flashback');
-  const typeLabel=e.type==='film'?'MOVIE':e.type==='anime'?'ANIMATED SHOW':'TV SHOW';
-  const typeCss=e.type==='film'?'bf':e.type==='anime'?'bfa':'bs';
-  const sub=e.subitems?.length?'<div class="esub">'+e.subitems.map(s=>'<div class="si">'+s+'</div>').join('')+'</div>':'';
-  const note=e.note?'<div class="enote">'+e.note+'</div>':'';
-  const bignote=e.bignote?'<div style="font-size:.78rem;font-weight:700;color:#f97316;padding:.2rem .6rem .5rem;letter-spacing:.01em">'+e.bignote+'</div>':'';
-  const soft=e.softcanon?'<span class="soft-badge">SOFT-CANON</span>':'';
-  const bc=borderColor?'border-left:3px solid '+borderColor+';':'';
-  return `<div class="en${isDone?' done':''}${e.level==='imp'?' imp':''}" data-id="${e.id}" data-type="${e.type}" data-level="${e.level||'bonus'}" data-tmdb="${e.tmdb||'0'}" data-media="${e.media||'tv'}" style="${bc}">
-  <div class="en-top" onclick="toggleExpand(this.closest('.en'),event)">
-    <div class="en-check" onclick="toggleEntry('${e.id}',event)"><span class="checkmark">${isDone?'✓':''}</span></div>
-    <div class="en-datebadge">
-      <div class="en-level-icon">${e.level==='imp'?'🚨':''}</div>
-      <div class="date-main">${e.date||'—'}</div>
-      ${e.dim?'<div class="dim-badge">'+e.dim+'</div>':''}
-    </div>
-    <div class="ep"><div class="pp">${e.type==='film'?'🎬':'📺'}</div><img alt="" loading="lazy"/></div>
-    <div class="em">
-      <div class="tr">
-        ${isFB?'<span class="ft">FLASHBACK</span>':''}
-        ${soft}
-        <span class="b ${typeCss}">${typeLabel}</span>
-        <span class="en-name">${e.title}</span>
-      </div>
-    </div>
-  </div>
-  ${sub}${note}${bignote}
-  <div class="en-expand" onclick="event.stopPropagation()"></div>
-</div>`;
-}
-
-function findEntry(id){
-  const allData=[...DATA.superman,...DATA.batman,...DATA.av_pre,...DATA.dceu,...DATA.av_post,...DATA.else_post,...DATA.dcu];
-  return allData.find(e=>e.id===id)||null;
-}
-function buildFaq(e){
-  if(!e||!e.faq)return '';
-  const cats=[
-    {key:'quand',q:'When does '+e.title+' take place?',spoil:false},
-    {key:'pourquoi',q:'Why watch '+e.title+'?',spoil:false},
-    {key:'spoil',q:'Connections with the other universes',spoil:true},
-  ];
-  const items=cats.filter(c=>e.faq[c.key]).map(c=>c.spoil
-    ?`<details class="faq-item faq-spoil">
-      <summary class="faq-q">⚠️ ${c.q} — SPOILERS</summary>
-      <div class="faq-a">${e.faq[c.key]}</div>
-    </details>`
-    :`<details class="faq-item">
-      <summary class="faq-q">${c.q}</summary>
-      <div class="faq-a">${e.faq[c.key]}</div>
-    </details>`
-  ).join('');
-  return items?`<div class="expand-faq">${items}</div>`:'';
-}
-async function toggleExpand(el,ev){
-  if(ev.target.closest('.en-check'))return;
-  const wasOpen=el.classList.contains('open');
-  document.querySelectorAll('.en.open').forEach(x=>x.classList.remove('open'));
-  if(wasOpen)return;
-  el.classList.add('open');
-  const panel=el.querySelector('.en-expand');
-  if(panel.dataset.loaded)return;
-  panel.dataset.loaded='1';
-  // Trouver l'entrée pour la FAQ
-  const e=findEntry(el.dataset.id);
-  const tmdb=el.dataset.tmdb,media=el.dataset.media;
-  if(!tmdb||tmdb==='0'){panel.innerHTML='<div class="expand-loading" style="padding:.5rem">No TMDB information.</div>';return}
-  panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Loading…</div>';
-  const type=media==='movie'?'movie':'tv';const k=type+tmdb;
-  let d=detailCache[k];
-  if(!d){
-    try{
-      const rFr=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}?api_key=${TMDB_KEY}&language=en-US&append_to_response=videos`);
-      d=await rFr.json();
-      if(!d.videos?.results?.find(v=>v.type==='Trailer'&&v.site==='YouTube')){
-        const rEn=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}/videos?api_key=${TMDB_KEY}&language=en-US`);
-        const ev2=await rEn.json();if(ev2.results)d.videos={results:[...((d.videos?.results)||[]),...ev2.results]};
-      }
-      detailCache[k]=d;
-    }catch{panel.innerHTML='<div class="expand-loading" style="padding:.5rem">Error.</div>';return}
-  }
-  const poster=d.poster_path?IMG+'w300'+d.poster_path:null;
-  const synopsis=d.overview||'No synopsis.';
-  const trailer=(d.videos?.results||[]).find(v=>v.type==='Trailer'&&v.site==='YouTube');
-  const year=(d.release_date||d.first_air_date||'').substring(0,4);
-  const rating=d.vote_average?d.vote_average.toFixed(1):'';
-  const runtime=d.runtime?(d.runtime+' min'):null;
-  let meta='';
-  if(year)meta+=`<span><strong>Year</strong> ${year}</span>`;
-  if(runtime)meta+=`<span><strong>Runtime</strong> ${runtime}</span>`;
-  if(rating)meta+=`<span><strong>Rating</strong> ⭐ ${rating}/10</span>`;
-  panel.innerHTML=`<div class="expand-inner">
-    ${poster?`<div class="expand-poster" onclick="openPMurl('${IMG}w500${d.poster_path}')"><img src="${poster}" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>`:''}
-    <div class="expand-info">
-      <div class="expand-synopsis">${synopsis}</div>
-      ${meta?`<div class="expand-meta">${meta}</div>`:''}
-      ${trailer?`<a class="expand-trailer" href="https://www.youtube.com/watch?v=${trailer.key}" target="_blank" rel="noopener">▶ YouTube trailer</a>`:''}
-    </div>
-  </div>
-  ${buildFaq(e)}`;
-}
-
-function openPMurl(url){document.getElementById('pmi').src=url;document.getElementById('pm').classList.add('o')}
-function closePM(){document.getElementById('pm').classList.remove('o')}
-
-function toggleZone(id){
-  const body=document.getElementById(id);
-  const toggle=document.getElementById('toggle-'+id);
-  const isOpen=body.classList.contains('open');
-  body.classList.toggle('open',!isOpen);
-  if(toggle)toggle.classList.toggle('open',!isOpen);
-}
-
-function toggleUniversFilter(btn){
-  btn.classList.toggle('active');
-  const u=btn.dataset.univ;
-  const visible=btn.classList.contains('active');
-  // Elseworlds = zone-optional + col-else-post
-  if(u==='elseworlds'){
-    const zo=document.querySelector('.zone-optional');if(zo)zo.style.display=visible?'':'none';
-    const cp=document.getElementById('col-else-post');if(cp)cp.closest('.zcol').style.display=visible?'':'none';
-  }
-  // Arrowverse = col-av-pre + col-av-post
-  if(u==='arrowverse'){
-    ['col-av-pre','col-av-post'].forEach(id=>{
-      const el=document.getElementById(id);if(el)el.closest('.zcol').style.display=visible?'':'none';
-    });
-    // Masquer les barres crisis dans les colonnes
-    document.querySelectorAll('.en-sep-start,.en-sep-end').forEach(el=>{
-      el.style.display=visible?'':'none';
-    });
-    // Masquer la zone-event (grande barre crisis) et le séparateur
-    const ze=document.querySelector('.zone-event');
-    if(ze)ze.style.display=visible?'':'none';
-    // Masquer aussi la zone-post si on masque l'Arrowverse ? Non — juste la barre
-  }
-  // DCEU = col-dceu + col-dceu dans post
-  if(u==='dceu'){
-    ['col-dceu','col-dceu-post'].forEach(id=>{
-      const el=document.getElementById(id);if(el)el.closest('.zcol').style.display=visible?'':'none';
-    });
-  }
-  // DCU
-  if(u==='dcu'){
-    const el=document.getElementById('col-dcu');if(el)el.closest('.zcol').style.display=visible?'':'none';
-  }
-}
-
-function applyLevelFilter(){
-  const showImp=document.getElementById('fbt-imp').classList.contains('active');
-  const showBonus=document.getElementById('fbt-bonus').classList.contains('active');
-  document.querySelectorAll('.en').forEach(el=>{
-    const lvl=el.dataset.level;
-    el.style.display=((lvl==='imp'&&showImp)||(lvl==='bonus'&&showBonus))?'':'none';
-  });
-}
-
-function render(colId,entries,borderColor){
-  const el=document.getElementById(colId);if(!el)return;
-  el.innerHTML=entries.map(e=>buildEntry(e,borderColor)).join('');
-}
-
-async function loadPosters(){
-  const seen=new Set();
-  const entries=[...document.querySelectorAll('.en[data-tmdb]')];
-  for(let i=0;i<entries.length;i+=10){
-    await Promise.all(entries.slice(i,i+10).map(async el=>{
-      // Trouver l'entrée pour la FAQ
-  const e=findEntry(el.dataset.id);
-  const tmdb=el.dataset.tmdb,media=el.dataset.media;
-      if(!tmdb||tmdb==='0')return;
-      const type=media==='movie'?'movie':'tv';const k=type+tmdb;
-      if(seen.has(k)){const d=detailCache[k];if(d){const p=d.backdrop_path||d.poster_path;if(p)applyThumb(el,IMG+'w92'+p);}return;}
-      seen.add(k);
-      try{
-        const r=await fetch(`https://api.themoviedb.org/3/${type}/${tmdb}?api_key=${TMDB_KEY}&language=en-US`);
-        const d=await r.json();detailCache[k]=d;
-        const p=d.backdrop_path||d.poster_path;
-        if(p)document.querySelectorAll(`.en[data-tmdb="${tmdb}"][data-media="${media}"]`).forEach(e2=>applyThumb(e2,IMG+'w92'+p));
-      }catch{}
-    }));
-    await new Promise(r=>setTimeout(r,60));
-  }
-}
-function applyThumb(el,src){
-  const img=el.querySelector('.ep img');const pp=el.querySelector('.pp');
-  if(img&&!img.classList.contains('ldd')){img.src=src;img.onload=()=>{img.classList.add('ldd');if(pp)pp.style.display='none'}}
-}
-
-// INIT
-document.getElementById('tl-notes').innerHTML=NOTES;
-render('col-superman',DATA.superman,'var(--c-else)');
-render('col-batman',DATA.batman,'var(--c-else)');
-render('col-av-pre',DATA.av_pre,null);
-render('col-dceu',DATA.dceu,'var(--c-dceu)');
-render('col-av-post',DATA.av_post,null);
-render('col-else-post',DATA.else_post,'var(--c-else)');
-render('col-dcu',DATA.dcu,'var(--c-dcu)');
-
-// Couleurs Arrowverse par série
-document.querySelectorAll('#col-av-pre .en, #col-av-post .en').forEach(el=>{
-  const nameEl=el.querySelector('.en-name');if(!nameEl)return;
-  const t=nameEl.textContent.trim();
-  const c=AV_C[t]||Object.entries(AV_C).find(([k])=>t.startsWith(k))?.[1];
-  if(c)el.style.borderLeft='3px solid '+c;
-});
-
-// Légende
-const legEl=document.getElementById('tl-legend');
-if(legEl){
-  legEl.innerHTML='<span class="leg-title">Legend</span>'
-    +'<span class="b bf">MOVIE</span>'
-    +'<span class="b bs">TV SHOW</span>'
-    +'<span class="b bfa">ANIMATED SHOW</span>'
-    +' &nbsp;·&nbsp; '
-    +'<span style="font-size:.78rem">🚨 Important</span>'
-    +'<span class="ft">FLASHBACK</span>'
-    +'<span class="soft-badge">SOFT-CANON</span>'
-    +'<span class="dim-badge" style="font-size:.68rem">EARTH-XXXX = Universe</span>';
-}
-
-loadPosters();
-renderProgress();
-
-function cgResume(){
-  var els=document.querySelectorAll('.en');
-  for(var i=0;i<els.length;i++){
-    var e=els[i];
-    if(e.dataset&&e.dataset.type==='separator')continue;
-    if(!e.classList.contains('done')&&e.offsetParent!==null){
-      e.scrollIntoView({behavior:'smooth',block:'center'});
-      e.style.boxShadow='0 0 0 2px var(--accent),0 0 24px rgba(124,106,247,.35)';
-      (function(x){setTimeout(function(){x.style.boxShadow=''},1800)})(e);
-      return;
-    }
-  }
-}
-function cgScrollTop(){return window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0}
-function cgTopBtn(){var b=document.getElementById('batsignal');if(b)b.classList.toggle('visible',cgScrollTop()>400)}
-window.addEventListener('scroll',cgTopBtn,{passive:true});
-document.addEventListener('scroll',cgTopBtn,{passive:true,capture:true});
-setInterval(cgTopBtn,800);
-
+window.CG_ZONES = [{"id":"optional","icon":"🌐","name":"Elseworlds","desc":"These stories — although some are connected to each other and to the other universes — mostly serve to flesh out the lore and origins of DC's two greatest heroes. Watch them whenever you like, before or alongside the other zones.","open":false,"cols":[{"kind":"else","title":"Superman origins","hint":"Parallel universes — some connect to the other columns"},{"kind":"else","title":"Batman origins","hint":"Parallel universes — some connect to the other columns"}]},{"id":"pre","icon":"📺","name":"The 2 main universes","desc":"The Arrowverse and the DCEU side by side. Watch each column separately or alternate between them as you like.","open":true,"cols":[{"kind":"av","title":"Arrowverse","hint":"Watch in order — these shows interweave episode by episode"},{"kind":"dceu","title":"DCEU","hint":"Independent from the Arrowverse — watch alongside whenever you like"}]},{"id":"event","icon":"⚡","name":"Major Event","desc":"An unprecedented event that changes everything.","open":false,"cols":[]},{"id":"post","icon":"🎬","name":"After the event","desc":"The post-event Arrowverse, the Elseworlds born from the event, and the brand-new DCU.","open":true,"cols":[{"kind":"av","title":"Arrowverse — After the event","hint":""},{"kind":"else","title":"Post-event Elseworlds","hint":"Universes revealed or born after the event"},{"kind":"dcu","title":"DCU — New Universe","hint":"New universe connected to the DCEU through The Flash (2023)"}]}];
+window.CG_DATA = { branches: DATA, notes: NOTES, cols: [{"kind":"else","title":"Superman origins","hint":"Parallel universes — some connect to the other columns"},{"kind":"else","title":"Batman origins","hint":"Parallel universes — some connect to the other columns"},{"kind":"av","title":"Arrowverse","hint":"Watch in order — these shows interweave episode by episode"},{"kind":"dceu","title":"DCEU","hint":"Independent from the Arrowverse — watch alongside whenever you like"},{"kind":"av","title":"Arrowverse — After the event","hint":""},{"kind":"else","title":"Post-event Elseworlds","hint":"Universes revealed or born after the event"},{"kind":"dcu","title":"DCU — New Universe","hint":"New universe connected to the DCEU through The Flash (2023)"}], crisis: "<div class=\"crisis-content\">\n      <div class=\"crisis-block\">\n<details class=\"crisis-spoil\">\n          <summary>⚠️ Reveal the details — SPOILERS</summary>\n          <div class=\"crisis-spoil-content\">\n            This is <strong>Crisis on Infinite Earths</strong>, the biggest crossover in all of DC history. The entire Multiverse is rebooted from scratch — some realities disappear, others are merged. Dozens of characters from dozens of DC movies and shows across the franchise's entire history make cameos. It's an unprecedented event.<br><br>\n            <strong>Episodes:</strong><br>\n            Arrow — Season 8 Episode 8<br>\n            The Flash — Season 6 Episode 9<br>\n            Supergirl — Season 5 Episode 9<br>\n            Batwoman — Season 1 Episode 9<br>\n            Legends of Tomorrow — Season 5 Episode 1<br><br>\n            <em>Titans, Stargirl, Smallville, Superman Returns and Batman (1989) also take part.</em>\n          </div>\n        </details>\n      </div>\n    </div>" };
 </script>
-
-<script src="/badges.js"></script>
-<script src="/progress.js"></script>
-<script src="/filters.js"></script>
+<script src="/cg-badges-fx.js"></script>
+<script src="/cg-dc.js"></script>
+<script>
+(function(){var b=document.getElementById('totop');
+ b.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+ addEventListener('scroll',function(){b.classList.toggle('on',scrollY>400)},{passive:true});})();
+</script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<script src="/anim.js"></script>
 </body>
 </html>
