@@ -112,6 +112,27 @@
       ? '<img src="' + (CFG.imgBase || '..') + e.img + '" alt="" loading="lazy" width="184" height="104"/>'
       : '<span class="ph">' + (PH[e.type] || '🎬') + '</span>';
 
+    // Star Wars empile trop d'informations sur la ligne de titre : « The Clone
+    // Wars — 22 BBY » répète mot pour mot la date de la colonne de gauche, et
+    // « — Season 1 » répète les épisodes déjà listés dessous. Le qualificatif
+    // descend donc sous le titre, collé, et s'il ne fait que redire la date il
+    // disparaît. Les textes ne sont pas réécrits, seulement déplacés.
+    // Exception demandée : les séries Tales gardent leur épisode à côté du
+    // titre — c'est ce qui distingue les entrées les unes des autres.
+    // Marvel n'est pas concerné : « Thor: Ragnarok — First Post-Credits Scene »
+    // a besoin de son suffixe pour être identifiable.
+    var titre = e.title, qual = '';
+    if (CFG.universe === 'sw' && e.title.indexOf(' — ') !== -1 &&
+        e.title.indexOf('Tales of the ') !== 0) {
+      var bouts = e.title.split(' — ');
+      titre = bouts.shift();
+      qual  = bouts.join(' — ');
+      if (e.date && qual.indexOf(e.date) === 0) {
+        qual = qual.slice(e.date.length).replace(/^[\s—-]+/, '')
+                   .replace(/^\((.*)\)$/, '$1').trim();
+      }
+    }
+
     // Les sous-items restent EN LIGNE, comme en prod : une ligne vide dans
     // la source est un séparateur d'arc (Clone Wars), pas un item à jeter.
     var sub = (e.subitems || []).length
@@ -171,7 +192,8 @@
               '<span class="en-tags">' + fb +
                 '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' +
               '</span>' +
-              '<span class="en-title">' + e.title + '</span>' +
+              '<span class="en-title">' + titre + '</span>' +
+              (qual ? '<span class="en-qual">' + qual + '</span>' : '') +
               (e.note ? '<span class="en-note">' + e.note + '</span>' : '') +
             '</span>' +
             (rtTxt ? '<span class="en-rt">' + rtTxt + '</span>' : '') +

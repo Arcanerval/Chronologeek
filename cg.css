@@ -426,6 +426,11 @@ header{position:sticky;top:0;z-index:300;height:var(--head-h);
 .en-tags{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;margin-bottom:.22rem}
 .en-title{font-size:.95rem;font-weight:600;line-height:1.3;color:var(--text);
   display:block}
+/* qualificatif descendu de la ligne de titre : saison, épisodes, « pendant tel
+   film ». Collé sous le titre, pas en italique — ce n'est pas un commentaire
+   mais la suite du titre. */
+.en-qual{display:block;font-size:.8rem;font-weight:600;color:var(--muted2);
+  line-height:1.3;margin-top:.1rem}
 .en-note{font-size:.82rem;color:var(--muted2);font-style:italic;line-height:1.5;
   margin-top:.15rem}
 /* avertissement en ligne, repris de l'ancienne dc.html:736 (Ultimate Edition) */
