@@ -685,7 +685,13 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
      les masquer revenait à perdre l'information, pas seulement la date. */
   .en-date{width:56px}
   .en-date .d{font-size:.7rem}
-  .en-date .dim-badge,.en-date .nt{font-size:.5rem;padding:1px 3px}
+  .en-date .dim-badge{font-size:.5rem;padding:1px 3px}
+  /* À 375 px la colonne de badges tombe sous 120 px : « ANIMATED SHOW » et
+     « CANONICITY NOT CONFIRMED » sortaient du cadre à droite. Ils passent à
+     la ligne au lieu de déborder. */
+  .en-tags{gap:.25rem}
+  .b,.ft,.nt{font-size:.58rem;padding:2px 5px;max-width:100%;
+    white-space:normal;word-break:break-word;line-height:1.3}
   .en-thumb{width:112px}
   .en-main{gap:.5rem;padding:.55rem .5rem}
   .en-check{width:34px;padding-top:1.05rem}
@@ -895,14 +901,13 @@ footer{border-top:1px solid var(--border);background:rgba(15,15,26,.5);margin-to
   background:rgba(124,106,247,.15);color:#a99fff;border:1px solid rgba(124,106,247,.25)}
 
 /* canonicité non confirmée */
+/* Le libellé est long (« CANONICITY NOT CONFIRMED ») et le nowrap le faisait
+   sortir du cadre à droite sur les écrans étroits. Il reste avec le type de
+   média et le flashback, mais il a le droit de passer à la ligne. */
 .nt{display:inline-flex;font-size:.62rem;padding:2px 7px;border-radius:5px;font-weight:700;
-  white-space:nowrap;background:rgba(224,85,85,.12);color:#e87373;
+  max-width:100%;white-space:normal;word-break:break-word;line-height:1.3;
+  background:rgba(224,85,85,.12);color:#e87373;
   border:1px solid rgba(224,85,85,.3)}
-/* dans la colonne de date, le libellé complet ne tient pas sur 74 px et
-   débordait à droite : il se comporte comme la désignation d'univers. */
-.en-date .nt{display:block;margin-top:.25rem;font-size:.55rem;line-height:1.25;
-  padding:1px 4px;border-radius:4px;max-width:100%;
-  white-space:normal;word-break:break-word;text-align:center}
 .dt{display:inline-flex;font-size:.62rem;padding:2px 7px;border-radius:5px;white-space:nowrap;
   background:rgba(124,106,247,.12);color:#a99fff;border:1px solid rgba(124,106,247,.25)}
 

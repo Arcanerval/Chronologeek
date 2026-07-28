@@ -175,22 +175,20 @@
           '<button type="button" class="en-main" data-toggle aria-expanded="false">' +
             // La désignation d'univers vit SOUS la date, comme en prod :
             // c'est une coordonnée temporelle, pas une étiquette de média.
-            // La colonne de date porte TOUT ce qui situe l'entrée dans le temps :
-            // la date, la réalité (OTHER REALITIES, OUTSIDE OF TIME) et la
-            // canonicité. Ces trois-là vivaient à trois endroits différents, et
-            // « canonicity not confirmed » débordait du cadre à droite.
+            // La colonne de date porte ce qui situe l'entrée dans le temps : la
+            // date et la réalité (OTHER REALITIES, OUTSIDE OF TIME).
             '<span class="en-date">' +
               '<span class="lv">' + ico + '</span>' +
               '<span class="d">' + (e.date || '—') + '</span>' +
               (e.dim ? '<span class="dim-badge">' + e.dim + '</span>' : '') +
-              nc +
             '</span>' +
             '<span class="en-thumb">' + thumb + '</span>' +
             '<span class="en-body">' +
+              // La canonicité reste ici, avec le type de média et le flashback.
               // La puce de date en double a sauté : la colonne reste visible en
               // mobile, à gauche de l'affiche, sous la case à cocher.
               '<span class="en-tags">' + fb +
-                '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' +
+                '<span class="b ' + bd[0] + '">' + bd[1] + '</span>' + nc +
               '</span>' +
               '<span class="en-title">' + titre + '</span>' +
               (qual ? '<span class="en-qual">' + qual + '</span>' : '') +
