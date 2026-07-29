@@ -85,6 +85,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "dc",
+  "title": "Batman: Knightfall Part 1: Knightfall",
+  "date_sort": "2026-08-25",
+  "date_txt": "25/08/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Arkham Asylum has been destroyed, and all its inmates have been unleashed upon Gotham City. As Batman races to round up some of his greatest enemies, he is pushed to his physical and mental limits and into a final confrontation with a new threat: the man called Bane!",
+  "wiki": "",
+  "syn_fr": "Lorsqu'un mystérieux colosse connu sous le nom de Bane relâche tous les ennemis de Batman de l'asyle d'Arkham, le justicier masqué est poussé dans ses derniers retranchements, tant mentaux que physiques.",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "2026-06-23",
+  "date_txt_fr": "23/06/2026"
+ },
+ {
   "universe": "avatar",
   "title": "Masters of the Elements Volume 1",
   "date_sort": "2026-08-25",
