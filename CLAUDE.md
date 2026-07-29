@@ -79,6 +79,26 @@ avant de réinjecter.
   (`cron: "0 6 * * *"`, soit 8 h à Paris en été, 7 h en hiver). Il n'y a pas
   assez de sorties pour tourner plus souvent.
 
+### Les dates du radar
+
+Un film ne sort pas le même jour partout. `radar.py` écrit la sortie **US** dans
+`date_sort` / `date_txt` et la **française** dans `date_sort_fr` / `date_txt_fr`,
+laissées vides quand les deux coïncident.
+
+TMDB ne filtre `/discover` que sur `primary_release_date`, la **première sortie
+au monde**, qui n'est ni l'une ni l'autre. Interroger à partir d'aujourd'hui
+faisait donc disparaître un film avant sa propre date. La fenêtre remonte
+maintenant de `FILM_LOOKBACK` (45 jours) dans le passé pour les films, et c'est
+`tmdb_country_dates()` qui tranche : l'entrée reste au radar tant que **l'un des
+deux pays** ne l'a pas vue sortir, le jour J compris.
+
+`radar.json` porte donc l'union des deux pays, et chaque langue coupe à sa propre
+date dans `cg-upcoming.js` (`stillUpcoming`). Brand New Day reste sur « À venir »
+jusqu'au 29/07 et sur « Upcoming » jusqu'au 31/07.
+
+Ne pas remettre de filtre `d < TODAY` avant la lecture des dates par pays : c'est
+précisément ce qui annulait la fenêtre élargie.
+
 Après avoir poussé une page à la main, **relancer l'action concernée** : les pages
 livrées n'ont pas la table `RT`, c'est l'action qui l'injecte. Pousser d'abord,
 lancer ensuite, sinon le push écrase la table.

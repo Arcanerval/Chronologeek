@@ -19,6 +19,10 @@ from bs4 import BeautifulSoup
 
 TODAY = datetime.date.today()
 HORIZON = TODAY + datetime.timedelta(days=540)   # on regarde 18 mois devant
+# De combien la première sortie mondiale peut précéder la sortie US ou FR.
+# Six semaines couvrent les avant-premières et les marchés qui ouvrent en
+# avance ; au-delà, la sortie américaine n'est plus « à venir » pour personne.
+FILM_LOOKBACK = datetime.timedelta(days=45)
 TMDB_KEY = os.environ.get("TMDB_KEY", "")
 UA = {"User-Agent": "Chronologeek-Radar/1.0 (+https://chronologeek.app)"}
 # Fandom bloque les user-agents non navigateurs (403) : on se présente autrement
@@ -217,12 +221,21 @@ def source_tmdb():
             ("Film",  "/discover/movie", "primary_release_date"),
             ("Série", "/discover/tv",    "first_air_date"),
         ):
-            for page in (1, 2):
+            # `primary_release_date` est la PREMIÈRE sortie au monde, pas la
+            # sortie américaine ni la française. Filtrer dessus à partir
+            # d'aujourd'hui fait disparaître un film avant sa propre date :
+            # Spider-Man: Brand New Day, sorti le 28/07 sur un premier marché,
+            # quittait le radar le 29 alors qu'il sortait le 29 en France et le
+            # 31 aux États-Unis. On remonte donc la fenêtre dans le passé pour
+            # les films, et c'est la date du pays, lue plus bas, qui tranche.
+            # Les séries n'ont pas ce décalage : `first_air_date` fait foi.
+            debut = TODAY - FILM_LOOKBACK if kind == "Film" else TODAY
+            for page in (1, 2, 3):
                 def query(lang):
                     r = requests.get(base + path, timeout=25, headers=UA, params={
                         "api_key": TMDB_KEY,
                         "with_companies": joined,
-                        f"{datefield}.gte": TODAY.isoformat(),
+                        f"{datefield}.gte": debut.isoformat(),
                         f"{datefield}.lte": HORIZON.isoformat(),
                         "sort_by": f"{datefield}.asc",
                         "language": lang,
@@ -242,7 +255,7 @@ def source_tmdb():
                     for it in j.get("results", []):
                         raw = it.get("release_date") or it.get("first_air_date")
                         d = parse_iso(raw or "")
-                        if not d or d < TODAY:
+                        if not d:
                             continue
                         # Un film n'a pas la même date des deux côtés de
                         # l'Atlantique : la version anglaise annonce la sortie
@@ -252,6 +265,11 @@ def source_tmdb():
                             pays = tmdb_country_dates(base, it.get("id"))
                             d = pays.get("US") or d
                             d_fr = pays.get("FR")
+                        # Le jour de la sortie compte encore : l'entrée reste
+                        # au radar le jour J et ne s'en va que le lendemain,
+                        # et seulement quand les DEUX pays l'ont vue sortir.
+                        # Chaque langue masque ensuite ce qui est déjà sorti
+                        # chez elle, voir cg-upcoming.js.
                         if d < TODAY and (not d_fr or d_fr < TODAY):
                             continue
                         add(uni, it.get("title") or it.get("name"), d.isoformat(),

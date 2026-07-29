@@ -1,5 +1,22 @@
 [
  {
+  "universe": "marvel",
+  "title": "Spider-Man: Brand New Day",
+  "date_sort": "2026-07-31",
+  "date_txt": "31/07/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
+  "wiki": "",
+  "syn_fr": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "2026-07-29",
+  "date_txt_fr": "29/07/2026"
+ },
+ {
   "universe": "starwars",
   "title": "The Fall of Kylo Ren 1",
   "date_sort": "2026-08-12",

@@ -67,6 +67,18 @@
   }
 
   var TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
+  var TODAY_ISO = new Date(TODAY.getTime() - TODAY.getTimezoneOffset() * 60000)
+                    .toISOString().slice(0, 10);
+
+  // radar.json garde une sortie tant que l'un des deux pays ne l'a pas vue
+  // sortir ; chaque langue s'arrête, elle, à SA date. Spider-Man: Brand New Day
+  // sort le 29/07 en France et le 31 aux États-Unis : il reste affiché jusqu'au
+  // 29 sur « À venir » et jusqu'au 31 sur « Upcoming ». Le jour J compte.
+  function stillUpcoming(e) {
+    var d = dateIso(e);
+    return !d || d >= TODAY_ISO;
+  }
+
   function countdown(d) {
     var t = new Date(d);
     if (isNaN(t)) return '';
@@ -91,7 +103,7 @@
   function render(data) {
     var total = 0;
     var grid = UNI.map(function (u) {
-      var list = data.filter(function (e) { return e.universe === u[0]; })
+      var list = data.filter(function (e) { return e.universe === u[0] && stillUpcoming(e); })
         .sort(function (a, b) {
           return dateIso(a).localeCompare(dateIso(b));
         });
