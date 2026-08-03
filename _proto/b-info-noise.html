@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Chronologeek — Info-noise (proto B)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — B · INFO-NOISE ═══════════════════════════
+  THÈSE : le catalogue se présente comme un programme d'archivage sous
+  contrainte. La page refuse la carte molle sur fond sombre et prend la
+  grammaire des pochettes Designers Republic : la densité est la matière,
+  chaque entrée porte un code, chaque état porte une marque.
+  MONDE PROPRE : noir absolu, magenta, orange de sécurité, blanc. Aucun
+  dégradé, aucun halo, aucune ombre — surfaces d'imprimerie à plat.
+  Grotesque condensé de signalisation, verrous typographiques empilés,
+  croix de repérage, pastilles pseudo-officielles, codes produit.
+  L'importance devient classe de danger : CL·I, CL·II, CL·III.
+  RÉCIT : le visiteur lit une base tenue par quelqu'un de sérieux, croit
+  à son exhaustivité parce qu'elle est immatriculée, et fait tamponner
+  ce qu'il a vu.
+  PREMIER ÉCRAN : un mot qui hurle sur toute la largeur, les quatre
+  catalogues en codes, puis la grille dense qui commence aussitôt.
+  FORME : pochette TDR, challenger retenu du tirage 6a85f1b9, fusionnée.
+-->
+<style>
+:root{
+  --k:#000; --w:#fff; --mg:#ff0069; --or:#ff6a00; --gr:#8c8c8c; --line:#2a2a2a;
+  --u:var(--mg);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--k);color:var(--w);font-family:'Saira',system-ui,sans-serif;
+  font-size:14px;line-height:1.4;font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 20px}
+::selection{background:var(--mg);color:var(--k)}
+:focus-visible{outline:2px solid var(--or);outline-offset:1px}
+.cond{font-family:'Saira Condensed',sans-serif}
+
+/* ── verrous typographiques : la marque est un empilement de codes ── */
+.bar{border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.lock{border-right:1px solid var(--line);padding:9px 14px 8px;display:flex;
+  flex-direction:column;justify-content:center;gap:1px}
+.lock:first-child{padding-left:0}
+.lock b{font-family:'Saira Condensed';font-weight:800;font-size:15px;letter-spacing:.06em;
+  text-transform:uppercase;line-height:1}
+.lock small{font-family:'Saira Condensed';font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gr);line-height:1}
+.lock.mg b{color:var(--mg)} .lock.or b{color:var(--or)}
+.lock.push{margin-left:auto;border-right:0;border-left:1px solid var(--line)}
+
+nav.rt{border-bottom:1px solid var(--line)}
+nav.rt .wrap{display:flex;gap:0;flex-wrap:wrap}
+nav.rt a{font-family:'Saira Condensed';font-weight:600;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gr);text-decoration:none;padding:8px 15px;
+  border-right:1px solid var(--line)}
+nav.rt a:first-child{padding-left:0}
+nav.rt a:hover{color:var(--w);background:var(--line)}
+nav.rt a[aria-current]{color:var(--k);background:var(--mg)}
+
+/* ── le mot qui hurle : il ne rétrécit jamais sous 13vw ─────────── */
+.shout{padding:26px 0 0;overflow:hidden}
+.shout h1{font-family:'Saira Condensed';font-weight:800;font-size:clamp(58px,13.4vw,178px);
+  line-height:.82;letter-spacing:-.02em;text-transform:uppercase;color:var(--w)}
+.shout h1 span{color:var(--mg)}
+.shout .sub{display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:16px}
+.shout .sub p{font-size:13px;color:var(--gr);max-width:52ch;padding:12px 20px 12px 0;
+  border-right:1px solid var(--line)}
+.shout .sub .reg{padding:12px 0 12px 20px;font-family:'Saira Condensed';font-size:10px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gr);align-self:center}
+
+/* ── croix de repérage : ornement du monde, pas décoration libre ── */
+.regmark{width:15px;height:15px;position:relative;flex:0 0 auto;display:inline-block}
+.regmark::before,.regmark::after{content:'';position:absolute;background:currentColor}
+.regmark::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-.5px)}
+.regmark::after{top:50%;left:0;right:0;height:1px;transform:translateY(-.5px)}
+
+/* ── les quatre catalogues, en codes ────────────────────────────── */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin-top:26px}
+.cats a{padding:14px 16px 15px;border-right:1px solid var(--line);text-decoration:none;
+  color:var(--w);display:block;transition:background .1s}
+.cats a:last-child{border-right:0}
+.cats a:hover{background:var(--c)}
+.cats a:hover .code,.cats a:hover .n{color:var(--k)}
+.cats .code{font-family:'Saira Condensed';font-weight:800;font-size:12px;letter-spacing:.2em;
+  color:var(--c);display:block}
+.cats .nm{font-family:'Saira Condensed';font-weight:700;font-size:23px;letter-spacing:.02em;
+  text-transform:uppercase;line-height:1.05;margin:5px 0 3px;display:block}
+.cats .n{font-family:'Saira Condensed';font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gr);display:block}
+
+/* ── bandeau d'immatriculation : la progression ─────────────────── */
+.reg-strip{display:grid;grid-template-columns:auto 1fr auto;gap:0;align-items:stretch;
+  border-bottom:1px solid var(--line)}
+.reg-strip .cell{padding:11px 18px;border-right:1px solid var(--line);display:flex;
+  flex-direction:column;justify-content:center}
+.reg-strip .cell:last-child{border-right:0;border-left:1px solid var(--line)}
+.reg-strip dt{font-family:'Saira Condensed';font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gr)}
+.reg-strip dd{font-family:'Saira Condensed';font-weight:800;font-size:26px;line-height:1.05}
+.reg-strip .row{display:flex;gap:26px}
+/* la jauge est une bande de créneaux, pas un ruban */
+.slots{display:flex;gap:2px;align-items:center;height:100%;padding:14px 18px;flex-wrap:wrap}
+.slots i{width:9px;height:16px;background:var(--line);flex:0 0 auto}
+.slots i.on{background:var(--mg)}
+
+/* ── filtres : classes de danger ────────────────────────────────── */
+.sieve{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.sieve button{font-family:'Saira Condensed';font-weight:600;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;background:none;border:0;border-right:1px solid var(--line);
+  color:var(--gr);padding:10px 16px;cursor:pointer}
+.sieve button:hover{color:var(--w)}
+.sieve button[aria-pressed=true]{background:var(--w);color:var(--k)}
+.sieve button[data-lv=must][aria-pressed=true]{background:var(--mg);color:var(--k)}
+.sieve button[data-lv=important][aria-pressed=true]{background:var(--or);color:var(--k)}
+.sieve .push{margin-left:auto;border-right:0;border-left:1px solid var(--line)}
+
+/* ── la grille dense ────────────────────────────────────────────── */
+.blk{margin-top:34px}
+.blk-h{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--w);
+  padding-bottom:7px;position:sticky;top:0;background:var(--k);z-index:5}
+.blk-h h2{font-family:'Saira Condensed';font-weight:800;font-size:19px;letter-spacing:.14em;
+  text-transform:uppercase}
+.blk-h .seq{font-family:'Saira Condensed';font-size:11px;letter-spacing:.2em;color:var(--mg)}
+.blk-h .fill{flex:1;height:1px;background:var(--line)}
+.blk-h .ct{font-family:'Saira Condensed';font-size:11px;letter-spacing:.18em;color:var(--gr)}
+
+ul.grid{list-style:none}
+ul.grid li{display:grid;grid-template-columns:96px 34px 1fr 108px 74px 46px;gap:0;
+  align-items:center;border-bottom:1px solid var(--line);min-height:44px}
+ul.grid li>*{padding:8px 10px}
+ul.grid li:hover{background:#0d0d0d}
+.c-code{font-family:'Saira Condensed';font-size:11.5px;letter-spacing:.12em;color:var(--gr);
+  border-right:1px solid var(--line)}
+.c-cl{font-family:'Saira Condensed';font-weight:800;font-size:10px;letter-spacing:.06em;
+  text-align:center;border-right:1px solid var(--line);color:var(--gr)}
+li.must .c-cl{color:var(--mg)} li.important .c-cl{color:var(--or)}
+.c-nm{font-family:'Saira Condensed';font-weight:600;font-size:16.5px;letter-spacing:.01em;
+  text-transform:uppercase;line-height:1.15}
+li.must .c-nm{font-weight:800}
+.c-kd{font-family:'Saira Condensed';font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gr);border-left:1px solid var(--line)}
+.c-rt{font-family:'Saira Condensed';font-size:12.5px;text-align:right;color:var(--gr);
+  border-left:1px solid var(--line)}
+.c-st{border-left:1px solid var(--line);text-align:center}
+.stamp{width:24px;height:24px;border:1px solid var(--gr);background:none;cursor:pointer;
+  display:inline-grid;place-items:center;padding:0;color:var(--gr)}
+.stamp:hover{border-color:var(--w);color:var(--w)}
+.stamp .regmark{width:11px;height:11px;visibility:hidden}
+li[data-on="1"] .stamp{background:var(--mg);border-color:var(--mg);color:var(--k)}
+li[data-on="1"] .stamp .regmark{visibility:visible}
+li[data-on="1"] .c-nm{color:var(--gr)}
+li[data-on="1"]{background:#0a0a0a}
+
+footer{border-top:1px solid var(--line);margin-top:46px;padding:14px 0 44px;
+  font-family:'Saira Condensed';font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gr);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ── mobile : on retire des couches de densité, par paliers ────── */
+@media(max-width:900px){
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .cats a:nth-child(2){border-right:0}
+  ul.grid li{grid-template-columns:34px 1fr 46px;grid-template-areas:'cl nm st' 'cl meta st'}
+  .c-cl{grid-area:cl;border-right:1px solid var(--line);align-self:stretch;display:flex;
+    align-items:center;justify-content:center}
+  .c-nm{grid-area:nm;padding-bottom:2px}
+  .c-kd{grid-area:meta;border-left:0;padding-top:0;font-size:10px}
+  .c-kd::after{content:' / ' attr(data-rt)}
+  .c-code,.c-rt{display:none}
+  .c-st{grid-area:st;border-left:1px solid var(--line);align-self:stretch;
+    display:flex;align-items:center;justify-content:center}
+  /* cible tactile : le tampon garde son dessin, sa zone atteignable fait 44 px */
+  .stamp{width:30px;height:30px;position:relative;flex:0 0 auto}
+  .stamp::after{content:'';position:absolute;top:50%;left:50%;
+    width:44px;height:44px;transform:translate(-50%,-50%)}
+  .reg-strip{grid-template-columns:1fr}
+  .reg-strip .cell{border-right:0;border-bottom:1px solid var(--line)}
+  .reg-strip .cell:last-child{border-left:0}
+}
+@media(max-width:560px){ .cats{grid-template-columns:1fr}.cats a{border-right:0;border-bottom:1px solid var(--line)} }
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <div class="lock"><b>Chronologeek</b><small>Index chronologique</small></div>
+  <div class="lock mg"><b>CG·04</b><small>Catalogues</small></div>
+  <div class="lock or"><b>533+</b><small>Notices</small></div>
+  <div class="lock push"><b>FR</b><small>Langue</small></div>
+</div></div>
+
+<nav class="rt"><div class="wrap">
+  <a href="#" aria-current="page">Index</a><a href="#">Catalogues</a><a href="#">Dossiers</a>
+  <a href="#">Sorties</a><a href="#">Nouveautés</a>
+</div></nav>
+
+<!-- ── PREMIER ÉCRAN ────────────────────────────────────────────── -->
+<section class="shout"><div class="wrap">
+  <h1>Dans<br/>le bon<br/><span>ordre.</span></h1>
+  <div class="sub">
+    <p>Chaque film, série, roman, comic et jeu d'un univers, immatriculé, daté,
+       rangé à sa place — et coché quand vous l'avez vu.</p>
+    <div class="reg">Réf. CG·IDX·2026·07 <span class="regmark" style="vertical-align:-3px"></span> Relevé quotidien</div>
+  </div>
+
+  <div class="cats">
+    <a href="#idx" style="--c:var(--mg)"><span class="code">CG·SW</span><span class="nm">Star Wars</span><span class="n">61 écran · 533 dossier</span></a>
+    <a href="#" style="--c:var(--or)"><span class="code">CG·MV</span><span class="nm">Marvel</span><span class="n">118 écran</span></a>
+    <a href="#" style="--c:#ffd400"><span class="code">CG·DC</span><span class="nm">DC</span><span class="n">96 écran</span></a>
+    <a href="#" style="--c:#00e5ff"><span class="code">CG·AV</span><span class="nm">Avatar</span><span class="n">132 écran</span></a>
+  </div>
+</div></section>
+
+<main id="idx"><div class="wrap">
+  <dl class="reg-strip">
+    <div class="cell"><div class="row">
+      <div><dt>Immatriculées</dt><dd id="k-on">0</dd></div>
+      <div><dt>En attente</dt><dd id="k-off">61</dd></div>
+    </div></div>
+    <div class="slots" id="slots" aria-hidden="true"></div>
+    <div class="cell"><dt>Durée restante</dt><dd id="k-time">294 h</dd></div>
+  </dl>
+
+  <div class="sieve" id="sieve">
+    <button data-lv="must" aria-pressed="true">CL·I indispensable</button>
+    <button data-lv="important" aria-pressed="true">CL·II important</button>
+    <button data-lv="bonus" aria-pressed="true">CL·III bonus</button>
+    <button class="push" data-hide="1" aria-pressed="false">Masquer les immatriculées</button>
+  </div>
+
+  <div id="body"></div>
+</div></main>
+
+<footer><div class="wrap" style="display:contents">
+  <span>Chronologeek · proto B — info-noise</span>
+  <span>Données réelles extraites de starwars.html</span>
+</div></footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  'use strict';
+  var CL={must:'CL·I',important:'CL·II',bonus:'CL·III'};
+  var on=Object.create(null), hide=false, off=Object.create(null);
+  var body=document.getElementById('body'), slots=document.getElementById('slots');
+  var ALL=[]; window.SW.eras.forEach(function(e){ ALL=ALL.concat(e.entries); });
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
+    return h? h+'h'+String(r).padStart(2,'0') : r+'min'; }
+  function code(e){ return 'CG·SW·'+String(e.n).padStart(3,'0'); }
+
+  slots.innerHTML=ALL.map(function(){ return '<i></i>'; }).join('');
+  var pips=slots.querySelectorAll('i');
+
+  function draw(){
+    var out='', seq=0;
+    window.SW.eras.forEach(function(era){
+      seq++;
+      var rows=era.entries.filter(function(e){ return !off[e.lv] && !(hide&&on[e.id]); });
+      if(!rows.length) return;
+      out+='<section class="blk"><div class="blk-h">'+
+        '<span class="seq">'+String(seq).padStart(2,'0')+'</span>'+
+        '<h2>'+esc(era.era)+'</h2><span class="fill"></span>'+
+        '<span class="ct">'+rows.length+' notices</span></div><ul class="grid">';
+      rows.forEach(function(e){
+        out+='<li class="'+e.lv+'" data-id="'+e.id+'" data-on="'+(on[e.id]?1:0)+'">'+
+          '<span class="c-code">'+code(e)+'</span>'+
+          '<span class="c-cl">'+CL[e.lv]+'</span>'+
+          '<span class="c-nm">'+esc(e.t)+'</span>'+
+          '<span class="c-kd" data-rt="'+hm(e.rt)+'">'+esc(e.kl)+'</span>'+
+          '<span class="c-rt">'+hm(e.rt)+'</span>'+
+          '<span class="c-st"><button class="stamp" type="button" aria-pressed="'+(on[e.id]?'true':'false')+
+            '" aria-label="Immatriculer '+esc(e.t)+'"><span class="regmark"></span></button></span>'+
+        '</li>';
+      });
+      out+='</ul></section>';
+    });
+    body.innerHTML=out||'<p style="padding:44px 0;color:var(--gr);font-family:\'Saira Condensed\';letter-spacing:.2em;text-transform:uppercase">Aucune notice — rouvrez une classe.</p>';
+    tally();
+  }
+
+  function tally(){
+    var n=0,left=0;
+    ALL.forEach(function(e,i){ if(on[e.id]){n++;} else {left+=e.rt;} });
+    ALL.forEach(function(e,i){ pips[i].className=on[e.id]?'on':''; });
+    document.getElementById('k-on').textContent=n;
+    document.getElementById('k-off').textContent=ALL.length-n;
+    document.getElementById('k-time').textContent=Math.round(left/60)+' h';
+  }
+
+  body.addEventListener('click',function(ev){
+    var b=ev.target.closest('.stamp'); if(!b) return;
+    var li=b.closest('li'), id=li.dataset.id;
+    on[id]=!on[id]; li.dataset.on=on[id]?1:0;
+    b.setAttribute('aria-pressed',on[id]?'true':'false');
+    if(hide&&on[id]) draw(); else tally();
+  });
+  document.getElementById('sieve').addEventListener('click',function(ev){
+    var b=ev.target.closest('button'); if(!b) return;
+    var p=b.getAttribute('aria-pressed')==='true';
+    b.setAttribute('aria-pressed',p?'false':'true');
+    if(b.dataset.hide) hide=!p; else off[b.dataset.lv]=p;
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Chronologeek — Accueil (proto E)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="/images/starwars-banner.webp"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · ACCUEIL ══════════════════════════════
+  THÈSE : l'accueil n'est pas une vitrine, c'est l'écran de sélection.
+  Le visiteur ne lit pas une liste d'univers, il en pointe un — et le site
+  entier bascule dans sa couleur avant même le clic. La borne d'arcade
+  répond au curseur ; ici la page répond au survol, au focus clavier et,
+  faute de pointeur, à la carte qui occupe le centre de l'écran.
+  MONDE PROPRE : couleur noyée, une par univers, qui inonde toute la page.
+  Champs à bords francs, chevrons en diagonale, trame de demi-teinte,
+  titrage condensé à ombre portée dure et décalée. Aucun halo, aucun verre,
+  aucun arrondi. Les bascules claquent — steps, pas de fondu.
+  RÉCIT : je vois où j'en suis, je choisis où je vais, je pars.
+  FORME : cinq slots de sélection, dont un verrouillé. La reprise est
+  traitée en « continue » d'arcade, pleine largeur, dans la couleur du
+  monde qu'on quitte. La barre de bas d'écran tient le score global.
+-->
+<style>
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières :
+     échantillonné sur logo-chronologeek.png, médiane #d5a05f, crête #f0c97c */
+  --hot:#f0c97c; --gold-deep:#d5a05f; --steel:#779fc3;
+  --cleared:#3ddc84;
+  /* les quatre encres de la charte, plus le gris des univers à venir */
+  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --soon:#8a8ab0;
+  /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
+     pour répondre au violet profond de leur bande, et le rose à « À venir » */
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  --doss-deep:#5c2060;
+  --uc:var(--sw);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:58px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
+
+/* le champ de couleur : il inonde la page derrière tout le reste et
+   bascule d'un univers à l'autre sans fondu mou */
+.field{position:fixed;inset:0;z-index:-1;background:var(--ink)}
+.field i{position:absolute;inset:0;background:var(--uc);opacity:.13;
+  transition:background-color .18s steps(3,end)}
+
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+/* les trois entrées que le site colore déjà gardent leur couleur ici */
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+/* le drapeau se passe de cadre : c'est déjà une forme fermée */
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:34px;height:auto;display:block;
+  box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+/* menu replié : panneau franc, pas un tiroir qui glisse */
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(64vh,560px);display:flex;align-items:flex-end}
+/* deux plans tirés du même fichier : la profondeur ne coûte pas un octet
+   de plus, et le fichier est déjà chargé par la carte de l'univers.
+   Les débords restent courts : au-delà, `cover` sur-zoome la bannière et
+   le visuel part en bouillie — le grain est plus lisible que le gros plan. */
+.plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 42%;
+  background-image:var(--hero)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 5%,
+             color-mix(in srgb,var(--uc) 62%,var(--ink)) 56%,
+             color-mix(in srgb,var(--uc) 22%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:30px}
+.attract h1{font-size:clamp(48px,10.5vw,132px);max-width:12ch}
+.attract h1 span{display:block;color:var(--hot)}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;max-width:52ch;color:rgba(255,253,247,.92)}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ CONTINUE : la reprise, traitée comme un crédit qui reste ══════ */
+.resume{border-bottom:2px solid var(--paper);background:color-mix(in srgb,var(--rc,var(--sw)) 30%,var(--ink))}
+.resume[hidden]{display:none}
+.resume a{display:flex;align-items:center;gap:14px;text-decoration:none;
+  max-width:1280px;margin:0 auto;padding:13px 20px;flex-wrap:wrap}
+.resume .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);animation:blink 1.5s steps(1,end) infinite}
+.resume .txt{font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(21px,3.4vw,29px);
+  text-transform:uppercase;letter-spacing:.02em}
+.resume .txt b{color:var(--hot)}
+.resume .go{margin-left:auto;font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.12em;text-transform:uppercase;border-bottom:3px solid var(--hot);padding-bottom:1px}
+
+/* ══ SÉLECTION D'UNIVERS ══════════════════════════════════════════ */
+.pick{padding:38px 0 46px}
+.pick h2{font-family:'Big Shoulders Display';font-weight:800;text-transform:uppercase;
+  letter-spacing:.04em;font-size:clamp(25px,4vw,42px);margin-bottom:3px}
+.pick .sub{color:rgba(255,253,247,.72);font-size:14.5px;margin-bottom:22px}
+.slots{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+
+.slot{position:relative;display:block;text-decoration:none;color:var(--paper);
+  border:2px solid var(--line);background:color-mix(in srgb,var(--c) 12%,var(--ink));
+  transition:border-color .08s steps(1,end),transform .1s cubic-bezier(.2,.9,.3,1)}
+.slot:hover,.slot:focus-visible{border-color:var(--c);transform:translate(-4px,-4px);z-index:3}
+/* le curseur qui claque : quatre équerres, jamais un contour flou */
+.slot .cur{position:absolute;inset:-8px;opacity:0;z-index:5}
+.slot:hover .cur,.slot:focus-visible .cur{opacity:1}
+.slot .cur i{position:absolute;width:17px;height:17px;border:3px solid var(--c)}
+.slot .cur i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
+.slot .cur i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+.slot .cur i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
+.slot .cur i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+
+/* 20/9 ≈ le ratio natif des bannières (320×142) : le recadrage est nul,
+   donc l'image est vue telle qu'elle a été composée */
+.slot figure{position:relative;aspect-ratio:20/9;overflow:hidden;background:var(--ink)}
+.slot figure img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(.5) contrast(1.08) brightness(.78);transition:filter .18s,transform .35s ease-out}
+.slot:hover figure img,.slot:focus-visible figure img{filter:saturate(1) contrast(1.1) brightness(.92);transform:scale(1.035)}
+.slot .shade{position:absolute;inset:0;
+  background:linear-gradient(to top,color-mix(in srgb,var(--c) 26%,var(--ink)) 4%,transparent 62%)}
+.slot .no{position:absolute;top:0;left:0;z-index:3;background:var(--ink);color:var(--paper);
+  font-family:'Big Shoulders Display';font-weight:900;font-size:20px;padding:2px 10px 1px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.slot .state{position:absolute;top:0;right:0;z-index:3;background:var(--c);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:12.5px;letter-spacing:.11em;
+  text-transform:uppercase;padding:3px 9px}
+.slot .nm{position:absolute;left:18px;right:18px;bottom:14px;z-index:3;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(30px,4.6vw,52px);
+  text-transform:uppercase;line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+/* span dans un lien : sans display:block, le padding fuit hors de la carte */
+.slot .body{display:block;padding:15px 18px 0}
+.slot .d{font-size:12.5px;font-weight:600;letter-spacing:.03em;color:rgba(255,253,247,.78);
+  display:block;min-height:2.6em}
+/* la date de mise à jour ferme la carte, centrée, séparée par un filet */
+.slot .upd{display:block;margin:14px -18px 0;padding:9px 18px;
+  border-top:2px solid var(--line);text-align:center;
+  font-size:11px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.62)}
+/* jauge en créneaux : la barre d'énergie de ce monde, pas un filet arrondi */
+.pips{display:flex;gap:2px;margin-top:9px}
+.pips i{height:8px;flex:1;background:rgba(255,253,247,.2)}
+.pips i.on{background:var(--c)}
+.score{display:flex;justify-content:space-between;gap:10px;margin-top:6px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;letter-spacing:.06em;
+  text-transform:uppercase}
+.score b{color:var(--hot)}
+.score .none{color:rgba(255,253,247,.5)}
+
+/* slot verrouillé : hachures en diagonale, tampon, et rien à cliquer */
+.slot.lock{cursor:default}
+.slot.lock:hover{transform:none;border-color:var(--line)}
+.slot.lock figure img{filter:saturate(.12) contrast(1.05) brightness(.5)}
+.slot.lock figure::after{content:'';position:absolute;inset:0;z-index:2;
+  background:repeating-linear-gradient(45deg,rgba(13,11,18,.55) 0 12px,transparent 12px 24px)}
+.slot.lock .stamp{position:absolute;inset:0;z-index:4;display:grid;place-items:center}
+.slot.lock .stamp span{font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(22px,3.4vw,34px);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--soon);
+  padding:5px 16px;transform:rotate(-4deg);border:2px solid var(--ink)}
+
+/* ══ le Dossier, en bande basse ════════════════════════════════════
+   Violet profond noyé, comme les champs d'ère : la bande ne se confond
+   avec aucun univers, et la nav porte le même violet en clair. */
+.deep{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);
+  background:color-mix(in srgb,var(--doss-deep) 42%,var(--ink))}
+.deep .wrap{display:flex;align-items:center;gap:20px;padding-top:24px;padding-bottom:24px;flex-wrap:wrap}
+.deep h2{font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(24px,3.6vw,38px);
+  text-transform:uppercase;line-height:.92;color:var(--c-doss);text-shadow:3px 3px 0 var(--ink)}
+.deep p{font-size:14.5px;color:rgba(255,253,247,.88);max-width:52ch;margin-top:6px}
+.deep .go{margin-left:auto;background:var(--c-doss);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:19px;letter-spacing:.07em;
+  text-transform:uppercase;padding:11px 20px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.deep .go:hover{transform:translate(-3px,-3px)}
+
+/* ══ révélation au défilement ══════════════════════════════════════ */
+/* la classe est posée par le script lui-même : sans JS, rien ne se cache */
+.js .rv{opacity:0;transform:translateY(20px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .45s ease-out,transform .5s cubic-bezier(.16,1,.3,1)}
+.slots .rv.in{transition-delay:calc(var(--i,0) * 46ms)}
+
+@supports (animation-timeline: view()){
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72);max-width:44ch}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ barre de bas d'écran : le score global, toujours là ═══════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);
+  border-top:2px solid var(--paper);padding:8px 20px;
+  padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+.hud .in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hud b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud b em{font-style:normal;color:var(--hot)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:120px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--cleared);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+
+/* échafaudage de proto, hors design : voir la page avec de la progression */
+.demo{border:0;background:none;color:rgba(255,253,247,.42);font:inherit;font-size:11px;
+  text-transform:uppercase;letter-spacing:.1em;cursor:pointer;text-decoration:underline;padding:4px}
+.demo:hover{color:var(--paper)}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .slots{grid-template-columns:1fr}
+  .slot figure{aspect-ratio:16/9}
+  .foot{grid-template-columns:1fr}
+  .hud .lbl{display:none}
+  .deep .go{margin-left:0}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .resume .chev,.start em{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="field" aria-hidden="true"><i></i></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="#" aria-current="page">Accueil</a>
+      <a href="#" class="doss">Dossiers</a>
+      <a href="#">Star Wars</a>
+      <a href="#">Marvel</a>
+      <a href="#">DC</a>
+      <a href="#">Avatar</a>
+      <a href="#" class="upc">À venir</a>
+      <a href="#" class="news">Nouveautés</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="#" aria-label="Switch to English" title="Switch to English">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
+    <a href="#" aria-current="page">Accueil</a><a href="#" class="doss">Dossiers</a>
+    <a href="#">Star Wars</a><a href="#">Marvel</a><a href="#">DC</a><a href="#">Avatar</a>
+    <a href="#" class="upc">À venir</a><a href="#" class="news">Nouveautés</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract" id="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="tag">Chaque univers, dans l'ordre</span>
+    <h1 class="disp off">Choisis ton<span>univers</span></h1>
+    <p class="dek">Les timelines complètes de tes univers préférés — tous supports,
+      ordre chronologique, 100% canon.</p>
+    <a class="start" href="#uni">Sélectionner <em>▸</em></a>
+  </div>
+</section>
+
+<!-- ══ CONTINUE ══════════════════════════════════════════════════ -->
+<div class="resume" id="resume" hidden>
+  <a id="resume-link" href="#">
+    <span class="chev">Continuer</span>
+    <span class="txt" id="resume-txt"></span>
+    <span class="go">Reprendre ▸</span>
+  </a>
+</div>
+
+<!-- ══ SÉLECTION ═════════════════════════════════════════════════ -->
+<section class="pick" id="uni"><div class="wrap">
+  <h2 class="disp">Sélection de l'univers</h2>
+  <p class="sub">Quatre chronologies tenues à jour, en français et en anglais.</p>
+
+  <div class="slots">
+
+    <a class="slot rv" href="#" style="--c:var(--sw);--i:0"
+       data-u="sw" data-total="61" data-hero="/images/starwars-banner.webp">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/starwars-banner.webp" alt="" width="640" height="274" fetchpriority="high" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">01</span><span class="state">Disponible</span>
+        <span class="nm">Star Wars</span>
+      </figure>
+      <span class="body">
+        <span class="d">Films · Séries · Animés · Jeux vidéo · Timeline chronologique complète</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 61 vus</span><span class="d-p">0 %</span></span>
+        <span class="upd">À jour · juin 2026</span>
+      </span>
+    </a>
+
+    <a class="slot rv" href="#" style="--c:var(--mcu);--i:1"
+       data-u="mcu" data-total="121" data-hero="/images/mcu.webp">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/mcu.webp" alt="" width="640" height="274" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">02</span><span class="state">Disponible</span>
+        <span class="nm">Marvel</span>
+      </figure>
+      <span class="body">
+        <span class="d">Films · Séries · Animés · Autres réalités · Timeline chronologique complète</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 121 vus</span><span class="d-p">0 %</span></span>
+        <span class="upd">À jour · juillet 2026</span>
+      </span>
+    </a>
+
+    <a class="slot rv" href="#" style="--c:var(--dc);--i:2"
+       data-u="dc" data-total="146" data-hero="/images/dcmultivers.jpg">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/dcmultivers.jpg" alt="" width="640" height="274" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">03</span><span class="state">Disponible</span>
+        <span class="nm">DC Multivers</span>
+      </figure>
+      <span class="body">
+        <span class="d">Elseworlds · Arrowverse · DCEU · DCU · Guide du multivers</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 146 vus</span><span class="d-p">0 %</span></span>
+        <span class="upd">À jour · juillet 2026</span>
+      </span>
+    </a>
+
+    <a class="slot rv" href="#" style="--c:var(--av);--i:3"
+       data-u="avatar" data-hero="/images/avatar.png">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/avatar.png" alt="" width="640" height="274" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">04</span><span class="state">Disponible</span>
+        <span class="nm">Avatar</span>
+      </figure>
+      <span class="body">
+        <span class="d">Le Dernier Maître de l'Air · Korra · Comics · Romans · Timeline chronologique</span>
+        <span class="score" style="margin-top:15px"><span class="none">Suivi de progression à venir</span></span>
+        <span class="upd">À jour · juillet 2026</span>
+      </span>
+    </a>
+
+    <div class="slot lock rv" style="--c:var(--soon);--i:4;grid-column:1/-1">
+      <figure style="aspect-ratio:26/9">
+        <img src="/images/autresunivers.webp" alt="" width="1280" height="360" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">05</span>
+        <span class="stamp"><span>Bientôt</span></span>
+      </figure>
+      <span class="body">
+        <span class="d">Star Trek · Dragon Age · The Walking Dead… et d'autres univers en préparation.</span>
+        <span class="upd">En cours</span>
+      </span>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ══ LE DOSSIER ════════════════════════════════════════════════ -->
+<section class="deep"><div class="wrap">
+  <div>
+    <h2 class="disp">Les Dossiers</h2>
+    <p>Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu
+      et autres choses méritant votre attention</p>
+  </div>
+  <a class="go" href="#">Ouvrir ▸</a>
+</div></section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <h4>Chronologeek</h4>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
+        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
+        qui regarde tout deux fois.</p>
+    </div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="#">Star Wars</a></li>
+      <li><a href="#">Marvel — MCU</a></li>
+      <li><a href="#">DC Multiverse</a></li>
+      <li><a href="#">Avatar</a></li>
+      <li><a href="#">Dossiers</a></li>
+    </ul></div>
+    <div><h4>Plus</h4><ul>
+      <li><a href="#">Sorties à venir</a></li>
+      <li><a href="#">Nouveautés</a></li>
+      <li><a href="#">Soutenir le site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n'est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ;
+      Chronologeek est un projet de fan indépendant.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
+      · <button class="demo" id="demo" type="button">proto : simuler une progression</button>
+    </div>
+  </div>
+</footer>
+
+<div class="hud"><div class="in">
+  <b><em id="k-on">0</em> / 327</b>
+  <span class="lbl">entrées cochées</span>
+  <div class="bar"><i id="k-fill"></i></div>
+  <span class="lbl">4 univers · 533 au dossier</span>
+</div></div>
+
+<script>
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multivers',avatar:'Avatar'};
+  var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
+  var body=document.body, attract=document.getElementById('attract');
+  var fake=null;   /* progression simulée, échafaudage de proto uniquement */
+
+  function read(u){
+    if(fake) return fake[u]||0;
+    try{ return Object.keys(JSON.parse(localStorage.getItem('cg_'+u)||'{}')).length; }
+    catch(e){ return 0; }
+  }
+
+  /* ── le champ de couleur et le visuel du premier écran suivent la
+       case pointée : c'est la borne qui répond au curseur ───────── */
+  var active=null;
+  function focusOn(el){
+    if(!el||el===active) return;
+    active=el;
+    body.style.setProperty('--uc',getComputedStyle(el).getPropertyValue('--c').trim());
+    attract.style.setProperty('--hero','url('+el.dataset.hero+')');
+  }
+
+  /* ── attract mode : tant que personne ne pointe une case, le fond
+       fait défiler les univers. C'est le seul régime possible sans
+       souris, et c'est aussi ce qui donne envie de choisir. Le survol
+       ou le focus clavier reprend la main et suspend la rotation. ── */
+  var REDUCE=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var turn=null, held=false, at=0;
+
+  function rotate(){
+    if(held) return;
+    at=(at+1)%slots.length;
+    focusOn(slots[at]);
+  }
+  function play(){ if(!turn&&!REDUCE&&!held&&!document.hidden) turn=setInterval(rotate,4500); }
+  function pause(){ clearInterval(turn); turn=null; }
+
+  slots.forEach(function(el,i){
+    function take(){ held=true; pause(); at=i; focusOn(el); }
+    function give(){ held=false; play(); }
+    el.addEventListener('mouseenter',take);
+    el.addEventListener('mouseleave',give);
+    el.addEventListener('focus',take);
+    el.addEventListener('blur',give);
+  });
+  /* onglet en arrière-plan : rien ne tourne dans le vide */
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden) pause(); else play();
+  });
+
+  /* ── scores, jauges, reprise, barre de bas d'écran ─────────────── */
+  function paint(){
+    var doneAll=0, totalAll=0, running=[];
+    slots.forEach(function(el){
+      var u=el.dataset.u, total=+el.dataset.total||0;
+      if(!total) return;                       /* Avatar : pas encore de suivi */
+      var done=read(u), pct=Math.round(done/total*100);
+      totalAll+=total; doneAll+=done;
+      el.querySelector('.d-n').textContent=done;
+      el.querySelector('.d-p').textContent=pct+' %';
+      var seg=24,fill=Math.round(done/total*seg),h='';
+      for(var i=0;i<seg;i++) h+='<i class="'+(i<fill?'on':'')+'"></i>';
+      el.querySelector('.pips').innerHTML=h;
+      if(done>0&&pct<100) running.push({u:u,done:done,pct:pct,el:el});
+    });
+
+    document.getElementById('k-on').textContent=doneAll;
+    document.getElementById('k-fill').style.transform='scaleX('+(totalAll?doneAll/totalAll:0)+')';
+
+    var r=document.getElementById('resume');
+    if(!running.length){ r.hidden=true; return; }
+    var last=null;
+    try{ last=JSON.parse(localStorage.getItem('cg_last')||'null'); }catch(e){}
+    var head=(last&&running.filter(function(x){return x.u===last.u;})[0])||
+             running.slice().sort(function(a,b){return b.done-a.done;})[0];
+    r.hidden=false;
+    r.style.setProperty('--rc',getComputedStyle(head.el).getPropertyValue('--c').trim());
+    document.getElementById('resume-link').href=head.el.getAttribute('href');
+    document.getElementById('resume-txt').innerHTML=
+      NAMES[head.u]+' — <b>'+head.pct+' %</b>';
+    /* la reprise donne le ton : le premier écran s'ouvre sur ce monde-là,
+       et c'est de là que la rotation repart */
+    at=slots.indexOf(head.el);
+    focusOn(head.el);
+  }
+
+  /* ── révélation au défilement, sans dépendance ─────────────────── */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(list){
+      list.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+    [].forEach.call(document.querySelectorAll('.rv'),function(el){ io.observe(el); });
+  }else{
+    [].forEach.call(document.querySelectorAll('.rv'),function(el){ el.classList.add('in'); });
+  }
+
+  /* ── menu replié ───────────────────────────────────────────────── */
+  var bg=document.getElementById('burger'), dr=document.getElementById('drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+
+  /* ── échafaudage : voir la page avec de la progression ─────────── */
+  document.getElementById('demo').addEventListener('click',function(){
+    fake=fake?null:{sw:23,mcu:71,dc:9};
+    this.textContent=fake?'proto : revenir à zéro':'proto : simuler une progression';
+    paint();
+  });
+
+  focusOn(slots[0]);
+  paint();
+
+  /* La rotation ne démarre qu'une fois la page chargée : elle tire les
+     visuels des autres univers, autant ne pas les mettre en concurrence
+     avec le premier écran. */
+  function launch(){ setTimeout(play,2000); }
+  if(document.readyState==='complete') launch();
+  else window.addEventListener('load',launch);
+})();
+</script>
+</body>
+</html>

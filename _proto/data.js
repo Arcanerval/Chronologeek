@@ -1,174 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8"/>
-<link rel="icon" type="image/png" href="/images/icon-192.png"/>
-<link rel="manifest" href="/manifest.json"/>
-<meta name="theme-color" content="#08080f"/>
-<link rel="apple-touch-icon" href="/images/icon-192.png"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="Chronologeek"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
-<title>Star Wars — Chronologeek</title>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="Chronologeek"/>
-<meta property="og:title" content="Timeline Star Wars — Chronologeek"/>
-<meta property="og:description" content="La timeline Star Wars canon complète — films, séries et jeux dans l'ordre chronologique, sans spoil."/>
-<meta property="og:image" content="https://chronologeek.app/images/starwars-banner.webp"/>
-<meta property="og:url" content="https://chronologeek.app/fr/starwars"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="description" content="La timeline Star Wars canon complète — films, séries et jeux dans l'ordre chronologique, sans spoil."/>
-<link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
-<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
-<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/starwars"/>
-<link rel="stylesheet" href="/cg.css"/>
-<link rel="canonical" href="https://chronologeek.app/fr/starwars"/>
-<script>window.CG={"t":{"lang":"fr","locale":"fr-FR","skip":"Aller au contenu","nav":{"home":"Accueil","deep":"Dossiers","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"À venir","news":"Nouveautés"},"otherLang":"Switch to English","otherFlag":"en","menu":"Ouvrir le menu","searchLabel":"Rechercher dans la timeline","searchPh":"Rechercher…  ( / )","searchClear":"Effacer la recherche","hideDone":"Masquer les vus","hideRead":"Masquer les lus","crumbUniverses":"Tous les univers","crumbDeep":"Tous les Dossiers","updated":"Mis à jour ·","progH":"Ma progression","watched":"Vus","read":"Lus","left":"Restant à voir","leftRead":"Restant à lire","done":"Terminé","resume":"Reprendre","exp":"Exporter","imp":"Importer","badges":"Badges","reset":"Réinitialiser","noRuntime":"Durée inconnue pour certaines entrées","progHint1":"Ta progression est sauvegardée sur ce navigateur — utilise","progHint2":"pour en garder une copie ou l’importer sur un autre appareil ou navigateur","filters":"Filtres","shown":"affichées","secBranches":"Branches","secTypes":"Types de média","secLevel":"Niveau","secOptions":"Options","marks":"Repères","all":"tout","none":"aucun","essential":"⭐ Essentiel","important":"🚨 Important","optional":"Optionnel","ncLabel":"Canonicité non confirmée","defLabel":"Séries Defenders","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITÉ NON CONFIRMÉE","loading":"Chargement…","loadFail":"Chargement impossible.","noSynopsis":"Pas de synopsis disponible.","trailer":"Bande-annonce YouTube","watchGame":"Voir le film complet sur YouTube","zoom":"Agrandir l’affiche","mYear":"Année","mGenre":"Genre","mRating":"Note","mReleased":"Sortie","mPeriod":"Période","emptyH":"Aucun résultat pour","emptyThese":"ces filtres","emptyThat":"cette recherche","emptyP":"Essaie une autre orthographe, ou remets les filtres que tu as décochés.","emptyPShort":"Essaie une autre orthographe.","clearAll":"Tout réinitialiser","railEras":"Aller à une ère","railZones":"Aller à une zone","swipe":"Fais glisser pour voir les autres branches →","toTop":"Remonter en haut","copyLink":"Copier le lien vers cette entrée","copied":"Copié !","myBadges":"Mes Badges","unlockedN":"débloqués","badgeUnlocked":"Badge débloqué !","close":"Fermer","markWatched":"Marquer « {t} » comme vu","markRead":"Marquer « {t} » comme lu","resetSW":"Réinitialiser ta progression Star Wars ?","resetMCU":"Réinitialiser ta progression Marvel ?","resetDC":"Réinitialiser ta progression DC ?","resetDos":"Réinitialiser ta progression du Dossier ?","badFile":"Fichier illisible.","outNow":"disponible","tomorrow":"demain","inDays":"dans {n} j","inMonths":"dans {n} mois","inYears":"dans {n} ans","releases":"sorties","release":"sortie","tracked":"sorties suivies","voTitle":"Pas de version française connue","rdNote":"Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ À l’écran — où se placent les films et séries. Non comptés dans ta progression.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"Plus","footBlurb":"Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.","footUpcoming":"Sorties à venir","footNews":"Nouveautés","footSupport":"Soutenir le site","footContact":"Contact","legal1":"Ce produit utilise l’API","legal2":"mais n’est ni approuvé ni certifié par TMDB. Données livres :","legal3":"Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant."},"universe":"sw","badgeLabels":{"film":["bf","FILM"],"filmanim":["bfa","FILM ANIMÉ"],"serie":["bs","SÉRIE"],"anime":["ba","SÉRIE ANIMÉE"],"jeu":["bj","JEU VIDÉO"]},"badges":[{"id":"sw_padawan","universe":"sw","icon":"🌱","color":"#4ade80","trigger":"last","ids":["sw-toj4"],"label":"Padawan","desc":"L'ère de la République terminée"},{"id":"sw_chevalier","universe":"sw","icon":"⚔️","color":"#60a5fa","trigger":"last","ids":["sw-toe5"],"label":"Chevalier Jedi","desc":"La Guerre des Clones terminée"},{"id":"sw_fuite","universe":"sw","icon":"🌑","color":"#f87171","trigger":"last","ids":["sw-survivor"],"label":"Jedi en Fuite","desc":"L'ère de l'Empire terminée"},{"id":"sw_rebelle","universe":"sw","icon":"✊","color":"#fb923c","trigger":"last","ids":["sw-bf2-c2"],"label":"Jedi Rebelle","desc":"L'ère de la Rébellion terminée"},{"id":"sw_survivant","universe":"sw","icon":"🌿","color":"#34d399","trigger":"last","ids":["sw-skelcrew"],"label":"Jedi Survivant","desc":"L'ère de la Nouvelle République terminée"},{"id":"sw_dernier","universe":"sw","icon":"⚡","color":"#a78bfa","trigger":"last","ids":["sw-ep9"],"label":"Dernier Jedi","desc":"L'ère du Premier Ordre terminée"},{"id":"sw_force","universe":"sw","icon":"🌟","color":"#ffd700","trigger":"100pct","ids":[],"label":"Que la Force soit avec toi","desc":"100% Star Wars complété"}],"faqCats":[{"key":"quand","q":"Quand se déroule {name} dans l’univers Star Wars ?"},{"key":"pourquoi","q":"Pourquoi regarder {name} maintenant dans la timeline ?"}],"resetMsg":"Réinitialiser ta progression Star Wars ?","tmdbLang":"fr-FR","tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};</script>
-</head>
-<body data-universe="sw">
-
-<a class="skip" href="#main">Aller au contenu</a>
-<header>
-  <nav class="nav" aria-label="Navigation">
-    <a class="brand" href="/fr/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
-    <div class="nav-links">
-      <a href="/fr/">Accueil</a>
-      <a href="/fr/dossiers/" class="doss">Dossiers</a>
-      <a href="/fr/starwars" aria-current="page">Star Wars</a>
-      <a href="/fr/marvel">Marvel</a>
-      <a href="/fr/dc">DC</a>
-      <a href="/fr/avatar">Avatar</a>
-      <a href="/fr/a-venir" class="upc">À venir</a>
-      <a href="/fr/nouveautes" class="news">Nouveautés</a>
-    </div>
-    <div class="nav-sp"></div>
-    <div class="nav-tools">
-      <a class="icon-btn lang-btn" href="/starwars" aria-label="Switch to English" title="Switch to English">
-        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
-      </a>
-      <button class="icon-btn burger" aria-label="Ouvrir le menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-    </div>
-  </nav>
-</header>
-
-<div class="subbar"><div class="subbar-in">
-  <div class="search">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <label class="skip" for="q">Rechercher dans la timeline</label>
-    <input id="q" type="search" placeholder="Rechercher…  ( / )" autocomplete="off"/>
-    <button class="search-clear" id="q-clear" aria-label="Effacer la recherche">✕</button>
-  </div>
-  <div class="sub-sp"></div>
-  <button class="toggle" id="hide-done" aria-pressed="false">
-    <span class="sw" aria-hidden="true"></span><span class="lbl">Masquer les vus</span>
-  </button>
-  <div class="mini">
-    <span class="live" aria-hidden="true"></span>
-    <span class="mini-num" id="mini-num">0/61</span>
-    <div class="mini-track"><div class="mini-fill" id="mini-fill"></div></div>
-  </div>
-</div></div>
-
-<main class="shell" id="main">
-  <a class="crumb" href="/fr/">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Tous les univers</a>
-  <div class="page-head">
-    <h1><span class="u">Star Wars</span> — Timeline Canonique</h1>
-    <p class="sub">Films · Séries · Animés · Jeux vidéo — toute la saga dans l’ordre où ça s’est passé.</p>
-    <p class="upd"><span class="dot"></span> Mis à jour · Juin 2026</p>
-  </div>
-  <div class="stats"><div class="s"><b>13</b><span>Longs métrages</span></div><div class="s"><b>13</b><span>Séries</span></div><div class="s"><b>5</b><span>Jeux vidéo</span></div></div>
-
-  <section class="prog" aria-labelledby="prog-h">
-    <h2 id="prog-h" class="skip">Ma progression</h2>
-    <p class="prog-head">Ma progression · <em>Star Wars — Timeline Canonique</em></p>
-    <div class="prog-top">
-      <div class="prog-nums">
-        <div class="stat-big"><div class="v"><span id="n-done">0</span><span class="u" id="n-total">/ 61</span></div><div class="l">Vus</div></div>
-        <div class="stat-big accent"><div class="v"><span id="n-h">0</span><span class="u" id="n-hu">h</span><span class="u" id="star" title="Durée inconnue pour certaines entrées">*</span></div><div class="l">Restant à voir</div></div>
-        <div class="stat-big"><div class="v"><span id="n-pct">0</span><span class="u">%</span></div><div class="l">Terminé</div></div>
-      </div>
-      <div class="prog-acts">
-        <button class="btn primary" data-resume><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Reprendre</button>
-        <button class="btn" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Exporter</button>
-        <button class="btn" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Importer</button>
-        <input type="file" id="import-file" accept="application/json" hidden/>
-        <button class="btn" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
-        <button class="btn danger" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Réinitialiser</button>
-      </div>
-    </div>
-    <div class="bar"><i id="bar"></i></div>
-    <p class="prog-hint">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Ta progression est sauvegardée sur ce navigateur — utilise <b>Exporter</b> pour en garder une copie ou l’importer sur un autre appareil ou navigateur
-    </p>
-  </section>
-
-  <div class="intro" id="intro"></div>
-
-  <details class="fp">
-    <summary><span class="fp-title">Filtres</span>
-      <span class="fp-count" id="fp-count">61 / 61 affichées</span>
-      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-    <div class="fp-body">
-      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Types de média</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">tout</button><button type="button" data-bulk="none">aucun</button></span></div>
-        <div class="fp-row" id="f-types"></div></div>
-      <div class="fp-sec" hidden><div class="fp-sec-head"><span class="fp-sec-lab">Options</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">tout</button><button type="button" data-bulk="none">aucun</button></span></div>
-        <div class="fp-row" id="f-opts"></div></div>
-      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Niveau</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">tout</button><button type="button" data-bulk="none">aucun</button></span></div>
-        <div class="fp-row" id="f-levels"></div></div>
-    </div>
-    <div class="fp-marks"><span class="fp-marks-lab">Repères</span>
-      <span class="ft">FLASHBACK</span><span style="font-size:.78rem;color:var(--muted2)">⭐ Essentiel · 🚨 Important</span></div>
-  </details>
-
-  <nav class="rail" id="rail" aria-label="Aller à une ère"></nav>
-  <div id="timeline"></div>
-  <div class="empty" id="empty">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <h3>Aucun résultat pour <span id="empty-q"></span></h3>
-    <p>Essaie une autre orthographe, ou remets les filtres que tu as décochés.</p>
-    <button class="btn" id="clear-filters">Tout réinitialiser</button>
-  </div>
-</main>
-
-<footer>
-  <div class="foot">
-    <div class="about"><h4>Chronologeek</h4><p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.</p></div>
-    <div><h4>Timelines</h4><ul>
-      <li><a href="/fr/starwars">Star Wars</a></li>
-      <li><a href="/fr/marvel">Marvel — MCU</a></li>
-      <li><a href="/fr/dc">DC Multiverse</a></li>
-      <li><a href="/fr/avatar">Avatar</a></li>
-      <li><a href="/fr/dossiers/">Dossiers</a></li>
-    </ul></div>
-    <div><h4>Plus</h4><ul>
-      <li><a href="/fr/a-venir">Sorties à venir</a></li>
-      <li><a href="/fr/nouveautes">Nouveautés</a></li>
-      <li><a href="#">Soutenir le site</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul></div>
-    <div class="legal">
-      Ce produit utilise l’API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
-      mais n’est ni approuvé ni certifié par TMDB. Données livres : <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
-      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.
-      <br/>© 2026 Chronologeek — <a href="/fr/">chronologeek.app</a>
-    </div>
-  </div>
-</footer>
-
-<button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
-  <img class="nl" src="/images/grogu.png" alt=""/>
-  <img class="hv" src="/images/grogumouseover.png" alt=""/>
-</button>
-
-<script>
+/* Donnees reprises telles quelles de fr/starwars.html - ne pas editer a la main.
+   Titres, dates, notes, sous-items, tags flashback, FAQ et descriptions sont
+   exactement ceux de la page de prod. Les libelles d'interface aussi. */
+window.CG={"t":{"lang":"fr","locale":"fr-FR","skip":"Aller au contenu","nav":{"home":"Accueil","deep":"Dossiers","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"À venir","news":"Nouveautés"},"otherLang":"Switch to English","otherFlag":"en","menu":"Ouvrir le menu","searchLabel":"Rechercher dans la timeline","searchPh":"Rechercher…  ( / )","searchClear":"Effacer la recherche","hideDone":"Masquer les vus","hideRead":"Masquer les lus","crumbUniverses":"Tous les univers","crumbDeep":"Tous les Dossiers","updated":"Mis à jour ·","progH":"Ma progression","watched":"Vus","read":"Lus","left":"Restant à voir","leftRead":"Restant à lire","done":"Terminé","resume":"Reprendre","exp":"Exporter","imp":"Importer","badges":"Badges","reset":"Réinitialiser","noRuntime":"Durée inconnue pour certaines entrées","progHint1":"Ta progression est sauvegardée sur ce navigateur — utilise","progHint2":"pour en garder une copie ou l’importer sur un autre appareil ou navigateur","filters":"Filtres","shown":"affichées","secBranches":"Branches","secTypes":"Types de média","secLevel":"Niveau","secOptions":"Options","marks":"Repères","all":"tout","none":"aucun","essential":"⭐ Essentiel","important":"🚨 Important","optional":"Optionnel","ncLabel":"Canonicité non confirmée","defLabel":"Séries Defenders","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITÉ NON CONFIRMÉE","loading":"Chargement…","loadFail":"Chargement impossible.","noSynopsis":"Pas de synopsis disponible.","trailer":"Bande-annonce YouTube","watchGame":"Voir le film complet sur YouTube","zoom":"Agrandir l’affiche","mYear":"Année","mGenre":"Genre","mRating":"Note","mReleased":"Sortie","mPeriod":"Période","emptyH":"Aucun résultat pour","emptyThese":"ces filtres","emptyThat":"cette recherche","emptyP":"Essaie une autre orthographe, ou remets les filtres que tu as décochés.","emptyPShort":"Essaie une autre orthographe.","clearAll":"Tout réinitialiser","railEras":"Aller à une ère","railZones":"Aller à une zone","swipe":"Fais glisser pour voir les autres branches →","toTop":"Remonter en haut","copyLink":"Copier le lien vers cette entrée","copied":"Copié !","myBadges":"Mes Badges","unlockedN":"débloqués","badgeUnlocked":"Badge débloqué !","close":"Fermer","markWatched":"Marquer « {t} » comme vu","markRead":"Marquer « {t} » comme lu","resetSW":"Réinitialiser ta progression Star Wars ?","resetMCU":"Réinitialiser ta progression Marvel ?","resetDC":"Réinitialiser ta progression DC ?","resetDos":"Réinitialiser ta progression du Dossier ?","badFile":"Fichier illisible.","outNow":"disponible","tomorrow":"demain","inDays":"dans {n} j","inMonths":"dans {n} mois","inYears":"dans {n} ans","releases":"sorties","release":"sortie","tracked":"sorties suivies","voTitle":"Pas de version française connue","rdNote":"Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ À l’écran — où se placent les films et séries. Non comptés dans ta progression.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"Plus","footBlurb":"Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.","footUpcoming":"Sorties à venir","footNews":"Nouveautés","footSupport":"Soutenir le site","footContact":"Contact","legal1":"Ce produit utilise l’API","legal2":"mais n’est ni approuvé ni certifié par TMDB. Données livres :","legal3":"Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant."},"universe":"sw","badgeLabels":{"film":["bf","FILM"],"filmanim":["bfa","FILM ANIMÉ"],"serie":["bs","SÉRIE"],"anime":["ba","SÉRIE ANIMÉE"],"jeu":["bj","JEU VIDÉO"]},"badges":[{"id":"sw_padawan","universe":"sw","icon":"🌱","color":"#4ade80","trigger":"last","ids":["sw-toj4"],"label":"Padawan","desc":"L'ère de la République terminée"},{"id":"sw_chevalier","universe":"sw","icon":"⚔️","color":"#60a5fa","trigger":"last","ids":["sw-toe5"],"label":"Chevalier Jedi","desc":"La Guerre des Clones terminée"},{"id":"sw_fuite","universe":"sw","icon":"🌑","color":"#f87171","trigger":"last","ids":["sw-survivor"],"label":"Jedi en Fuite","desc":"L'ère de l'Empire terminée"},{"id":"sw_rebelle","universe":"sw","icon":"✊","color":"#fb923c","trigger":"last","ids":["sw-bf2-c2"],"label":"Jedi Rebelle","desc":"L'ère de la Rébellion terminée"},{"id":"sw_survivant","universe":"sw","icon":"🌿","color":"#34d399","trigger":"last","ids":["sw-skelcrew"],"label":"Jedi Survivant","desc":"L'ère de la Nouvelle République terminée"},{"id":"sw_dernier","universe":"sw","icon":"⚡","color":"#a78bfa","trigger":"last","ids":["sw-ep9"],"label":"Dernier Jedi","desc":"L'ère du Premier Ordre terminée"},{"id":"sw_force","universe":"sw","icon":"🌟","color":"#ffd700","trigger":"100pct","ids":[],"label":"Que la Force soit avec toi","desc":"100% Star Wars complété"}],"faqCats":[{"key":"quand","q":"Quand se déroule {name} dans l’univers Star Wars ?"},{"key":"pourquoi","q":"Pourquoi regarder {name} maintenant dans la timeline ?"}],"resetMsg":"Réinitialiser ta progression Star Wars ?","tmdbLang":"fr-FR","tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};
 const DATA_SW={
   id:"sw",title:"Star Wars",subtitle:"Timeline Canonique",
   description:"Films · Séries · Animés · Jeux vidéo",
@@ -184,26 +17,26 @@ const DATA_SW={
       {id:"sw-toj4",type:"anime",level:"important",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 4",date:"32 BBY",note:"Pendant La Menace Fantôme",tags:["flashback"],faq:{quand:"L'épisode se déroule au même moment que La Menace Fantôme",pourquoi:"Parce qu'il vaut mieux déjà connaître les personnages et voir cette histoire sous forme de flashback pour mieux comprendre"}}
     ]},
     {title:"LA GUERRE DES CLONES",entries:[
-      {id:"sw-tcw-pre",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY (avant le film)",date:"22 BBY",
+      {id:"sw-tcw-pre",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars",date:"22 BBY",
         note:"Les épisodes regroupés ci-dessous sont des arcs narratifs, séparés par des lignes vides",
         subitems:["Saison 2 épisode 16"," ","Saison 1 épisode 16"],
         faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce qu'ils se situent ici chronologiquement"}},
       {id:"sw-toj1",type:"anime",level:"important",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 1",date:"36–35 BBY",tags:["flashback"],faq:{quand:"L'épisode se situe quelques années avant La Menace Fantôme",pourquoi:"Un personnage extrêmement important est introduit dans le film animé The Clone Wars et cet épisode lui sert d'origin story que vous pouvez voir avant ou après le film à votre convenance"}},
       {id:"sw-tcwfilm",type:"filmanim",level:"important",tmdb:"12180",media:"movie",img:"/images/clonewarsfilm.webp",title:"Star Wars : The Clone Wars",date:"22 BBY",faq:{quand:"Le film se déroule au début de la Guerre des Clones en 22 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
-      {id:"sw-tcw-22",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 22 BBY",date:"22 BBY",
+      {id:"sw-tcw-22",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars",date:"22 BBY",
         subitems:["Saison 3 épisode 1"," ","Saison 3 épisode 3"," ","Saison 1 épisode 1"," ","Saison 1 épisode 2","Saison 1 épisode 3","Saison 1 épisode 4","Saison 1 épisode 5"," ","Saison 1 épisode 9","Saison 1 épisode 10"],
         faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
-      {id:"sw-tcw-21",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 21 BBY",date:"21 BBY",
+      {id:"sw-tcw-21",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars",date:"21 BBY",
         subitems:["Saison 1 épisode 11","Saison 1 épisode 12"," ","Saison 1 épisode 15"," ","Saison 1 épisode 19","Saison 1 épisode 20","Saison 1 épisode 21"," ","Saison 2 épisode 1","Saison 2 épisode 2","Saison 2 épisode 3"," ","Saison 2 épisode 17"," ","Saison 2 épisode 18","Saison 2 épisode 19"," ","Saison 2 épisode 4","Saison 2 épisode 5","Saison 2 épisode 6","Saison 2 épisode 7","Saison 2 épisode 8"," ","Saison 2 épisode 9","Saison 2 épisode 10"," ","Saison 2 épisode 12","Saison 2 épisode 13","Saison 2 épisode 14"," ","Saison 2 épisode 20","Saison 2 épisode 21","Saison 2 épisode 22"," ","Saison 3 épisode 5","Saison 3 épisode 6"," ","Saison 3 épisode 7"," ","Saison 3 épisode 2"," ","Saison 3 épisode 8","Saison 1 épisode 22","Saison 3 épisode 9"," ","Saison 3 épisode 10"," ","Saison 3 épisode 12","Saison 3 épisode 13","Saison 3 épisode 14"],
         faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
-      {id:"sw-tcw-20",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 20 BBY",date:"20 BBY",
+      {id:"sw-tcw-20",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars",date:"20 BBY",
         subitems:["Saison 3 épisode 15","Saison 3 épisode 16","Saison 3 épisode 17","Saison 3 épisode 18","Saison 3 épisode 19","Saison 3 épisode 20"," ","Saison 3 épisode 21","Saison 3 épisode 22"," ","Saison 4 épisode 7","Saison 4 épisode 8","Saison 4 épisode 9","Saison 4 épisode 10"," ","Saison 4 épisode 14"," ","Saison 4 épisode 15","Saison 4 épisode 16","Saison 4 épisode 17","Saison 4 épisode 18"," ","Saison 4 épisode 19","Saison 4 épisode 20","Saison 4 épisode 21","Saison 4 épisode 22"," ","Saison 5 épisode 2","Saison 5 épisode 3","Saison 5 épisode 4","Saison 5 épisode 5"," ","Saison 5 épisode 6","Saison 5 épisode 7","Saison 5 épisode 8","Saison 5 épisode 9"," ","Saison 5 épisode 12"],
         faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
-      {id:"sw-tcw-19",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — 19 BBY",date:"19 BBY",
+      {id:"sw-tcw-19",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars",date:"19 BBY",
         subitems:["Saison 5 épisode 1","Saison 5 épisode 14","Saison 5 épisode 15","Saison 5 épisode 16"," ","Saison 5 épisode 17","Saison 5 épisode 18","Saison 5 épisode 19","Saison 5 épisode 20"," ","Saison 6 épisode 1","Saison 6 épisode 2","Saison 6 épisode 3","Saison 6 épisode 4"," ","Saison 6 épisode 5","Saison 6 épisode 6","Saison 6 épisode 7"," ","Saison 6 épisode 10","Saison 6 épisode 11","Saison 6 épisode 12","Saison 6 épisode 13"," ","Saison 7 épisode 5","Saison 7 épisode 6","Saison 7 épisode 7","Saison 7 épisode 8"," ","Saison 7 épisode 1","Saison 7 épisode 2","Saison 7 épisode 3","Saison 7 épisode 4"],
         faq:{quand:"D'abord pensée comme une série anthologique avec des histoires indépendantes, la série a finalement entamé sa transition en format plus classique à partir de la saison 4 et est bien mieux à voir dans l'ordre chronologique",pourquoi:"Parce que c'est l'ordre chronologique de la série, arcs par arcs, sans les épisodes fillers"}},
       {id:"sw-ep3",type:"film",level:"must",tmdb:"1895",media:"movie",img:"/images/starwars3.webp",title:"Épisode III : La Revanche des Sith",date:"19 BBY",faq:{quand:"Le film se déroule à la fin de la Guerre des Clones en 19 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
-      {id:"sw-tcw-rsith",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars — pendant La Revanche des Sith",date:"19 BBY",
+      {id:"sw-tcw-rsith",type:"anime",level:"important",tmdb:"4194",media:"tv",img:"/images/clonewarsserie.webp",title:"The Clone Wars",date:"19 BBY",note:"Pendant La Revanche des Sith",
         subitems:["Saison 7 épisode 9","Saison 7 épisode 10","Saison 7 épisode 11","Saison 7 épisode 12 (épilogue ~17 BBY)"],
         faq:{quand:"Les épisodes se déroulent en parallèle des évènements de La Revanche des Sith",pourquoi:"Parce qu'il vaut mieux avoir vu le film avant pour des questions évidentes de spoil"}},
       {id:"sw-toj5",type:"anime",level:"important",tmdb:"203085",media:"tv",img:"/images/talesofthejedi.webp",title:"Tales of the Jedi — Épisode 5",date:"~22–19 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule sur plusieurs périodes pendant la Guerre des Clones",pourquoi:"La fin de l'épisode spoile un épisode de The Clone Wars donc il vaut mieux le regarder après"}},
@@ -211,8 +44,8 @@ const DATA_SW={
       {id:"sw-toe5",type:"anime",level:"important",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 5",date:"19 BBY",faq:{quand:"L'épisode se déroule peu de temps après La Revanche des Sith",pourquoi:"Parce qu'il se situe ici chronologiquement"}}
     ]},
     {title:"L'ÈRE DE L'EMPIRE",entries:[
-      {id:"sw-bb1",type:"anime",level:"bonus",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch — Saison 1",date:"19 BBY",note:"Épisode 1 pendant La Revanche des Sith",subitems:["Saison 1"],faq:{quand:"La saison 1 commence pendant La Revanche des Sith et se poursuit après les évènements du film",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
-      {id:"sw-bb2",type:"anime",level:"bonus",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch — Saisons 2 & 3",date:"18 BBY",subitems:["Saison 2","Saison 3"],faq:{quand:"La série se déroule en 18 BBY après les évènements de La Revanche des Sith",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-bb1",type:"anime",level:"bonus",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch",date:"19 BBY",note:"Épisode 1 pendant La Revanche des Sith",subitems:["Saison 1"],faq:{quand:"La saison 1 commence pendant La Revanche des Sith et se poursuit après les évènements du film",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-bb2",type:"anime",level:"bonus",tmdb:"105971",media:"tv",img:"/images/badbatch.webp",title:"The Bad Batch",date:"18 BBY",subitems:["Saison 2","Saison 3"],faq:{quand:"La série se déroule en 18 BBY après les évènements de La Revanche des Sith",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {id:"sw-totu1",type:"anime",level:"bonus",tmdb:"288055",media:"tv",img:"/images/talesoftheunderground.webp",title:"Tales of the Underworld — Épisode 1",date:"~17–16 BBY",note:"Prologue avant La Revanche des Sith, la mort du personnage de l'épisode se passe dans le livre Dark Disciple (lisez un résumé si ça vous intéresse)",faq:{quand:"L'épisode commence un peu avant La Revanche des Sith et la suite se déroule probablement entre 18 et 16 BBY",pourquoi:"Parce que l'épisode poursuit les aventures d'un personnage apparaissant dans The Bad Batch"}},
       {id:"sw-totu23",type:"anime",level:"bonus",tmdb:"288055",media:"tv",img:"/images/talesoftheunderground.webp",title:"Tales of the Underworld — Épisodes 2-3",date:"~17–16 BBY",faq:{quand:"Les épisodes se déroulent probablement entre 18 et 16 BBY",pourquoi:"Parce que les épisodes poursuivent les aventures d'un personnage apparaissant dans The Bad Batch"}},
       {id:"sw-maul",type:"anime",level:"bonus",tmdb:"289219",media:"tv",img:"/images/maul.webp",title:"Maul : Seigneur de l'Ombre",date:"~17–16 BBY",faq:{quand:"La saison 1 se déroule probablement peu de temps après La Revanche des Sith, entre 18 et 16 BBY",pourquoi:"Parce qu'elle se situe ici chronologiquement"},desc:"Maul : Seigneur de l\'Ombre est une série animée suivant les aventures de Maul après les événements de The Clone Wars."},
@@ -224,14 +57,14 @@ const DATA_SW={
       {id:"sw-survivor",type:"jeu",level:"bonus",tmdb:"0",media:"game",img:"/images/survivor.jpg",title:"Star Wars Jedi : Survivor",date:"9 BBY",faq:{quand:"Le jeu se déroule 5 ans après Fallen Order",pourquoi:"Parce que le jeu fonctionne mieux après les évènements de Obi-Wan Kenobi"},desc:"Star Wars Jedi : Survivor se passe cinq années après Fallen Order et plonge le joueur une nouvelle fois dans l\'histoire de Cal Kestis. Notre héros est désormais un Jedi accompli et tente de survivre aux confins de la Galaxie. Toujours accompagné de BD-1, le Jedi affrontera à nouveau le terrible Empire galactique."}
     ]},
     {title:"L'ÈRE DE LA RÉBELLION",entries:[
-      {id:"sw-andors1",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors1.webp",title:"Andor — Saison 1",date:"5 BBY",note:"On va alterner entre une série animée et une série live action pas mal de fois, si le changement de ton très important entre Andor et Rebels vous dérange vraiment regardez Rebels d'abord (sauf épilogue du dernier épisode comme indiqué plus bas), puis Andor. Mais en vrai faites moi confiance ça vaut le coup en terme de narration",subitems:["Saison 1"],faq:{quand:"La première saison se déroule en 5 BBY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-andors1",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors1.webp",title:"Andor",date:"5 BBY",note:"On va alterner entre une série animée et une série live action pas mal de fois, si le changement de ton très important entre Andor et Rebels vous dérange vraiment regardez Rebels d'abord (sauf épilogue du dernier épisode comme indiqué plus bas), puis Andor. Mais en vrai faites moi confiance ça vaut le coup en terme de narration",subitems:["Saison 1"],faq:{quand:"La première saison se déroule en 5 BBY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {id:"sw-rebels-s1",type:"anime",level:"important",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"5–4 BBY",note:"Je rajoute le nom des épisodes car selon où vous regardez les épisodes certains season premiere ou season finale sont regroupés en téléfilms et cela change donc le nombre d'épisodes de la saison et peut tout décaler",subitems:["Courts-métrages 1-4 (La Machine dans le Ghost, Attaque Artistique, Confusion, Propriété d'Ezra Bridger)","Saison 1","Saison 2 épisodes 1-9 (Le Commando)"],faq:{quand:"Les courts-métrages, la première saison et le début de la saison 2 se déroulent entre 5 et 4 BBY",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
-      {id:"sw-andors2-1",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Saison 2 épisodes 1-6",date:"4–3 BBY",subitems:["Saison 2 épisodes 1-6"],faq:{quand:"Les premiers épisodes de la saison se déroulent en 4 BBY, un an après la première saison puis on saute encore d'un an pour la suite",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
+      {id:"sw-andors2-1",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor",date:"4–3 BBY",subitems:["Saison 2 épisodes 1-6"],faq:{quand:"Les premiers épisodes de la saison se déroulent en 4 BBY, un an après la première saison puis on saute encore d'un an pour la suite",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
       {id:"sw-rebels-s2",type:"anime",level:"important",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"3–2 BBY",subitems:["Saison 2 épisodes 10-22","Saison 3 épisodes 1-17 (Un Espion en Danger)"],faq:{quand:"La suite de la saison 2 se déroule en 3 BBY et la saison 3 se déroule en 2 BBY",pourquoi:"Parce que les épisodes se situent ici chronologiquement"}},
-      {id:"sw-andors2-2",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Saison 2 épisodes 7-9",date:"2 BBY",subitems:["Saison 2 épisodes 7-8-9"],faq:{quand:"Les épisodes se déroulent un an après les précédents en 2 BBY",pourquoi:"Parce que les épisodes racontent un événement qui sera mis en lumière dans la suite de Rebels"}},
+      {id:"sw-andors2-2",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor",date:"2 BBY",subitems:["Saison 2 épisodes 7-8-9"],faq:{quand:"Les épisodes se déroulent un an après les précédents en 2 BBY",pourquoi:"Parce que les épisodes racontent un événement qui sera mis en lumière dans la suite de Rebels"}},
       {id:"sw-rebels-s3",type:"anime",level:"important",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"2 BBY",subitems:["Saison 3 épisodes 18-22"],faq:{quand:"Les épisodes se déroulent en 2 BBY à la suite d'Andor",pourquoi:"Parce que l'épisode 18 se passe en parallèle de l'épisode 9 de Andor"}},
-      {id:"sw-rebels-s4",type:"anime",level:"important",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels — Saison 4",date:"1 BBY",note:"Arrêtez l'épisode final à 42min si vous n'avez jamais vu Star Wars IV-V-VI. L'épilogue se passe plus tard.",subitems:["Saison 4"],faq:{quand:"La saison se déroule en 1 BBY",pourquoi:"Parce que bien que se passant en parallèle de la fin d'Andor, cette dernière est beaucoup mieux à voir juste avant Rogue One"}},
-      {id:"sw-andors2-3",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor — Saison 2 épisodes 10-12",date:"1 BBY",subitems:["Saison 2 épisodes 10-11-12"],faq:{quand:"La saison se termine un an après les évènements des épisodes précédents et juste avant Rogue One en 1 BBY",pourquoi:"Parce que la fin d'Andor et Rogue One se suivent parfaitement"}},
+      {id:"sw-rebels-s4",type:"anime",level:"important",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Rebels",date:"1 BBY",note:"Arrêtez l'épisode final à 42min si vous n'avez jamais vu Star Wars IV-V-VI. L'épilogue se passe plus tard.",subitems:["Saison 4"],faq:{quand:"La saison se déroule en 1 BBY",pourquoi:"Parce que bien que se passant en parallèle de la fin d'Andor, cette dernière est beaucoup mieux à voir juste avant Rogue One"}},
+      {id:"sw-andors2-3",type:"serie",level:"important",tmdb:"83867",media:"tv",img:"/images/andors2.webp",title:"Andor",date:"1 BBY",subitems:["Saison 2 épisodes 10-11-12"],faq:{quand:"La saison se termine un an après les évènements des épisodes précédents et juste avant Rogue One en 1 BBY",pourquoi:"Parce que la fin d'Andor et Rogue One se suivent parfaitement"}},
       {id:"sw-rogue",type:"film",level:"important",tmdb:"330459",media:"movie",img:"/images/rogueone.webp",title:"Rogue One : A Star Wars Story",date:"1 BBY",faq:{quand:"Le film se déroule juste à la suite de la fin d'Andor et se conclue au début de l'Épisode IV en 1 BBY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
       {id:"sw-ep4",type:"film",level:"must",tmdb:"11",media:"movie",img:"/images/starwars4.webp",title:"Épisode IV : Un Nouvel Espoir",date:"1 BBY – 0 ABY",faq:{quand:"Le film se déroule entre 1 BBY et 0 ABY et est donc le point de départ du calendrier",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
       {id:"sw-ep5",type:"film",level:"must",tmdb:"1891",media:"movie",img:"/images/starwars5.webp",title:"Épisode V : L'Empire Contre-Attaque",date:"3 ABY",faq:{quand:"Le film se déroule 3 ans après Un Nouvel Espoir en 3 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
@@ -247,9 +80,9 @@ const DATA_SW={
       {id:"sw-toe1",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 1",date:"20 BBY",note:"Pendant The Clone Wars",tags:["flashback"],faq:{quand:"L'épisode se déroule pendant The Clone Wars en 20 BBY",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
       {id:"sw-toe2",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 2",date:"~9–5 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule avant le début de Rebels, entre 9 et 5 BBY",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
       {id:"sw-toe3",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 3",date:"~8–9 ABY",tags:["flashback"],faq:{quand:"L'épisode se déroule probablement quelques mois maximum avant l'épisode de The Mandalorian",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus son passé après sa rencontre est mieux pour la comprendre"}},
-      {id:"sw-mando-s2b",type:"serie",level:"important",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian — Saison 2 épisodes 6-8",date:"9 ABY",subitems:["Saison 2 épisodes 6-8"],faq:{quand:"La série se déroule en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-mando-s2b",type:"serie",level:"important",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian",date:"9 ABY",subitems:["Saison 2 épisodes 6-8"],faq:{quand:"La série se déroule en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {id:"sw-boba",type:"serie",level:"important",tmdb:"115036",media:"tv",img:"/images/bobafett.webp",title:"Le Livre de Boba Fett",date:"9 ABY",faq:{quand:"La série se déroule en 9 ABY après la saison 2 de The Mandalorian",pourquoi:"Parce qu'elle se situe ici chronologiquement et que 2 épisodes sont dédiés au Mandalorien, si vous ne regardez pas cette série vous ne comprendrez pas la suite"}},
-      {id:"sw-mando-s3",type:"serie",level:"important",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian — Saison 3",date:"9 ABY",subitems:["Saison 3"],faq:{quand:"La série se déroule en 9 ABY et reprend directement la suite du Livre de Boba Fett",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"sw-mando-s3",type:"serie",level:"important",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian",date:"9 ABY",subitems:["Saison 3"],faq:{quand:"La série se déroule en 9 ABY et reprend directement la suite du Livre de Boba Fett",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {id:"sw-mag",type:"film",level:"bonus",tmdb:"1228710",media:"movie",img:"/images/mandalorianandgrogu.webp",title:"The Mandalorian and Grogu",date:"~9–11 ABY",faq:{quand:"Le film se passe quelques temps après la fin de la saison 3, entre plusieurs mois et deux ans",pourquoi:"Parce que ça fait suite à la série et se regarde mieux ici"}},
       {id:"sw-rebels-ep",type:"anime",level:"important",tmdb:"60554",media:"tv",img:"/images/rebels.webp",title:"Épilogue de l'épisode final de Rebels",date:"9 ABY",faq:{quand:"L'épilogue de Rebels se déroule en 9 ABY pendant la série Ahsoka",pourquoi:"Parce qu'en plus de spoiler la trilogie originale si regardé à la fin de Rebels, le regarder maintenant permet de se remettre dans le bain et de se rappeler des évènements de la série"}},
       {id:"sw-ahsoka",type:"serie",level:"important",tmdb:"114461",media:"tv",img:"/images/ahsoka.webp",title:"Ahsoka",date:"9 ABY",faq:{quand:"La série se déroule juste après la saison 2 de The Mandalorian en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
@@ -264,35 +97,6 @@ const DATA_SW={
     ]}
   ]
 };
-
-const UNIVERSES=[{data:DATA_SW,icon:'⚔️'}];
-const TMDB_KEY='6257b37bf29ab31357853fce00232314';
-const RAWG_KEY='ddc66eb38db74a77b5f41323db00d434';
-const IMG='https://image.tmdb.org/t/p/';
-const BADGES={
-  film:['bf','FILM'],filmanim:['bfa','FILM ANIMÉ'],
-  serie:['bs','SÉRIE'],anime:['ba','SÉRIE ANIMÉE'],
-  jeu:['bj','JEU VIDÉO']
-};
-const BADGE_LABELS={film:'Films',filmanim:'Films animés',serie:'Séries',anime:'Séries animées',jeu:'Jeux'};
-
-/* == CG-RUNTIME START (genere par runtime.py) == */
 const RT={"sw-ahsoka": 375, "sw-andors1": 582, "sw-andors2-1": 329, "sw-andors2-2": 156, "sw-andors2-3": 145, "sw-bb1": 512, "sw-bb2": 885, "sw-bf2-c1": 180, "sw-bf2-c2": 150, "sw-bf2-m12": 30, "sw-bf2-prologue": 30, "sw-bf2res": 90, "sw-boba": 347, "sw-ep1": 136, "sw-ep2": 142, "sw-ep3": 140, "sw-ep4": 121, "sw-ep5": 124, "sw-ep6": 132, "sw-ep7": 136, "sw-ep8": 152, "sw-ep9": 142, "sw-fo": 1200, "sw-kenobi": 280, "sw-mag": 132, "sw-mando-s1": 556, "sw-mando-s2b": 123, "sw-mando-s3": 362, "sw-maul": 260, "sw-outlaws": 2280, "sw-rebels-ep": 0, "sw-rebels-s1": 540, "sw-rebels-s2": 688, "sw-rebels-s3": 96, "sw-rebels-s4": 384, "sw-rogue": 133, "sw-skelcrew": 316, "sw-solo": 135, "sw-squadrons": 540, "sw-survivor": 1800, "sw-tcw-19": 628, "sw-tcw-20": 664, "sw-tcw-21": 801, "sw-tcw-22": 205, "sw-tcw-pre": 44, "sw-tcw-rsith": 114, "sw-tcwfilm": 98, "sw-toe1": 17, "sw-toe2": 15, "sw-toe3": 14, "sw-toe4": 17, "sw-toe5": 13, "sw-toe6": 17, "sw-toj1": 19, "sw-toj2": 16, "sw-toj3": 16, "sw-toj4": 18, "sw-toj5": 13, "sw-toj6": 17, "sw-totu1": 17, "sw-totu23": 34};
+window.SW=DATA_SW;
 window.RT=RT;
-/* == CG-RUNTIME END == */
-let currentData=null;
-window.CG_DATA = DATA_SW;
-</script>
-<script src="/cg-badges-fx.js"></script>
-<script src="/cg-timeline.js"></script>
-<script>
-(function(){var b=document.getElementById('totop');
- b.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
- addEventListener('scroll',function(){b.classList.toggle('on',scrollY>400)},{passive:true});})();
-</script>
-<script src="/cg-nav.js"></script>
-<script src="/pwa.js"></script>
-<script data-goatcounter="https://arcanerval.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>

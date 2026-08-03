@@ -26,10 +26,20 @@ jobs:
           TMDB_KEY: ${{ secrets.TMDB_KEY }}
         run: python radar.py
 
+      # Confronte le radar frais aux timelines. Purement local : pas de reseau,
+      # pas de cle. Produit lore-gap.json, ce qui reste a placer dans la fenetre
+      # des jours proches. Le placement se decide a la main, voir PLACEMENT.md.
+      #
+      # Doit tourner APRES radar.py et avant le commit : c'est le seul moment ou
+      # les entrees qui vont disparaitre du radar sont encore visibles, et c'est
+      # ce passage quotidien qui alimente le registre lore-ledger.json.
+      - name: Reperer les sorties a placer
+        run: python lore_gap.py
+
       - name: Commit si changement
         run: |
           git config user.name  "Radar bot"
           git config user.email "actions@github.com"
-          git add radar.html radar.json
+          git add radar.html radar.json lore-gap.json lore-index/ lore-ledger.json
           git diff --staged --quiet || git commit -m "Radar : mise a jour des sorties"
           git push

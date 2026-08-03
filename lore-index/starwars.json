@@ -1,0 +1,490 @@
+[
+ {
+  "id": "sw-ep1",
+  "title": "Episode I: The Phantom Menace",
+  "date": "32 BBY",
+  "type": "film",
+  "level": "must",
+  "block": "THE REPUBLIC ERA"
+ },
+ {
+  "id": "sw-ep2",
+  "title": "Episode II: Attack of the Clones",
+  "date": "22 BBY",
+  "type": "film",
+  "level": "must",
+  "block": "THE REPUBLIC ERA"
+ },
+ {
+  "id": "sw-toj2",
+  "title": "Tales of the Jedi — Episode 2",
+  "date": "~60 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REPUBLIC ERA"
+ },
+ {
+  "id": "sw-toj3",
+  "title": "Tales of the Jedi — Episode 3",
+  "date": "~50 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REPUBLIC ERA"
+ },
+ {
+  "id": "sw-toj4",
+  "title": "Tales of the Jedi — Episode 4",
+  "date": "32 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REPUBLIC ERA"
+ },
+ {
+  "id": "sw-tcw-pre",
+  "title": "The Clone Wars — 22 BBY (before the movie)",
+  "date": "22 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-toj1",
+  "title": "Tales of the Jedi — Episode 1",
+  "date": "36–35 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-tcwfilm",
+  "title": "Star Wars: The Clone Wars",
+  "date": "22 BBY",
+  "type": "filmanim",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-tcw-22",
+  "title": "The Clone Wars — 22 BBY",
+  "date": "22 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-tcw-21",
+  "title": "The Clone Wars — 21 BBY",
+  "date": "21 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-tcw-20",
+  "title": "The Clone Wars — 20 BBY",
+  "date": "20 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-tcw-19",
+  "title": "The Clone Wars — 19 BBY",
+  "date": "19 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-ep3",
+  "title": "Episode III: Revenge of the Sith",
+  "date": "19 BBY",
+  "type": "film",
+  "level": "must",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-tcw-rsith",
+  "title": "The Clone Wars — during Revenge of the Sith",
+  "date": "19 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-toj5",
+  "title": "Tales of the Jedi — Episode 5",
+  "date": "~22–19 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-toe4",
+  "title": "Tales of the Empire — Episode 4",
+  "date": "19 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-toe5",
+  "title": "Tales of the Empire — Episode 5",
+  "date": "19 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE CLONE WARS"
+ },
+ {
+  "id": "sw-bb1",
+  "title": "The Bad Batch — Season 1",
+  "date": "19 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-bb2",
+  "title": "The Bad Batch — Seasons 2 & 3",
+  "date": "18 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-totu1",
+  "title": "Tales of the Underworld — Episode 1",
+  "date": "~17–16 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-totu23",
+  "title": "Tales of the Underworld — Episodes 2-3",
+  "date": "~17–16 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-maul",
+  "title": "Maul: Shadow Lord",
+  "date": "~17–16 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-toj6",
+  "title": "Tales of the Jedi — Episode 6",
+  "date": "~16–15 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-fo",
+  "title": "Star Wars Jedi: Fallen Order",
+  "date": "14 BBY",
+  "type": "jeu",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-solo",
+  "title": "Solo: A Star Wars Story",
+  "date": "10 BBY",
+  "type": "film",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-kenobi",
+  "title": "Obi-Wan Kenobi",
+  "date": "9 BBY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-toe6",
+  "title": "Tales of the Empire — Episode 6",
+  "date": "~9–6 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-survivor",
+  "title": "Star Wars Jedi: Survivor",
+  "date": "9 BBY",
+  "type": "jeu",
+  "level": "bonus",
+  "block": "THE IMPERIAL ERA"
+ },
+ {
+  "id": "sw-andors1",
+  "title": "Andor — Season 1",
+  "date": "5 BBY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-rebels-s1",
+  "title": "Rebels",
+  "date": "5–4 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-andors2-1",
+  "title": "Andor — Season 2 Episodes 1-6",
+  "date": "4–3 BBY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-rebels-s2",
+  "title": "Rebels",
+  "date": "3–2 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-andors2-2",
+  "title": "Andor — Season 2 Episodes 7-9",
+  "date": "2 BBY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-rebels-s3",
+  "title": "Rebels",
+  "date": "2 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-rebels-s4",
+  "title": "Rebels — Season 4",
+  "date": "1 BBY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-andors2-3",
+  "title": "Andor — Season 2 Episodes 10-12",
+  "date": "1 BBY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-rogue",
+  "title": "Rogue One: A Star Wars Story",
+  "date": "1 BBY",
+  "type": "film",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-ep4",
+  "title": "Episode IV: A New Hope",
+  "date": "1 BBY – 0 ABY",
+  "type": "film",
+  "level": "must",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-ep5",
+  "title": "Episode V: The Empire Strikes Back",
+  "date": "3 ABY",
+  "type": "film",
+  "level": "must",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-outlaws",
+  "title": "Star Wars Outlaws + DLC Wild Card + DLC A Pirate's Fortune",
+  "date": "3 ABY",
+  "type": "jeu",
+  "level": "bonus",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-ep6",
+  "title": "Episode VI: Return of the Jedi",
+  "date": "4 ABY",
+  "type": "film",
+  "level": "must",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-bf2-prologue",
+  "title": "Star Wars Battlefront II Prologue: The Cleaner",
+  "date": "4 ABY",
+  "type": "jeu",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-bf2-c1",
+  "title": "Star Wars Battlefront II Campaign: Missions 1-6",
+  "date": "4 ABY",
+  "type": "jeu",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-squadrons",
+  "title": "Star Wars Squadrons",
+  "date": "4 ABY",
+  "type": "jeu",
+  "level": "bonus",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-bf2-c2",
+  "title": "Star Wars Battlefront II Campaign: Missions 7-11",
+  "date": "5 ABY",
+  "type": "jeu",
+  "level": "important",
+  "block": "THE REBELLION ERA"
+ },
+ {
+  "id": "sw-mando-s1",
+  "title": "The Mandalorian",
+  "date": "9 ABY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-toe1",
+  "title": "Tales of the Empire — Episode 1",
+  "date": "20 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-toe2",
+  "title": "Tales of the Empire — Episode 2",
+  "date": "~9–5 BBY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-toe3",
+  "title": "Tales of the Empire — Episode 3",
+  "date": "~8–9 ABY",
+  "type": "anime",
+  "level": "bonus",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-mando-s2b",
+  "title": "The Mandalorian — Season 2 Episodes 6-8",
+  "date": "9 ABY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-boba",
+  "title": "The Book of Boba Fett",
+  "date": "9 ABY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-mando-s3",
+  "title": "The Mandalorian — Season 3",
+  "date": "9 ABY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-mag",
+  "title": "The Mandalorian and Grogu",
+  "date": "~9–11 ABY",
+  "type": "film",
+  "level": "bonus",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-rebels-ep",
+  "title": "Rebels Series Finale — Epilogue",
+  "date": "9 ABY",
+  "type": "anime",
+  "level": "important",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-ahsoka",
+  "title": "Ahsoka",
+  "date": "9 ABY",
+  "type": "serie",
+  "level": "important",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-skelcrew",
+  "title": "Skeleton Crew",
+  "date": "~9 ABY",
+  "type": "serie",
+  "level": "bonus",
+  "block": "THE NEW REPUBLIC ERA"
+ },
+ {
+  "id": "sw-ep7",
+  "title": "Episode VII: The Force Awakens",
+  "date": "34 ABY",
+  "type": "film",
+  "level": "must",
+  "block": "THE FIRST ORDER ERA"
+ },
+ {
+  "id": "sw-bf2-m12",
+  "title": "Star Wars Battlefront II Campaign: Mission 12",
+  "date": "~34 ABY",
+  "type": "jeu",
+  "level": "important",
+  "block": "THE FIRST ORDER ERA"
+ },
+ {
+  "id": "sw-bf2res",
+  "title": "Star Wars Battlefront II Campaign: Resurrection",
+  "date": "34 ABY",
+  "type": "jeu",
+  "level": "important",
+  "block": "THE FIRST ORDER ERA"
+ },
+ {
+  "id": "sw-ep8",
+  "title": "Episode VIII: The Last Jedi",
+  "date": "34 ABY",
+  "type": "film",
+  "level": "must",
+  "block": "THE FIRST ORDER ERA"
+ },
+ {
+  "id": "sw-ep9",
+  "title": "Episode IX: The Rise of Skywalker",
+  "date": "35 ABY",
+  "type": "film",
+  "level": "must",
+  "block": "THE FIRST ORDER ERA"
+ }
+]

@@ -1,0 +1,1058 @@
+[
+ {
+  "id": "avt-the-dawn-of-yangchen",
+  "title": "The Dawn of Yangchen",
+  "date": "~483 BG",
+  "type": "roman",
+  "level": "bonus",
+  "block": "ÈRE DE YANGCHEN"
+ },
+ {
+  "id": "avt-the-legacy-of-yangchen",
+  "title": "The Legacy of Yangchen",
+  "date": "~482 BG",
+  "type": "roman",
+  "level": "bonus",
+  "block": "ÈRE DE YANGCHEN"
+ },
+ {
+  "id": "avt-the-rise-of-kyoshi",
+  "title": "The Rise of Kyoshi",
+  "date": "296 BG",
+  "type": "roman",
+  "level": "bonus",
+  "block": "ÈRE DE KYOSHI"
+ },
+ {
+  "id": "avt-the-shadow-of-kyoshi",
+  "title": "The Shadow of Kyoshi",
+  "date": "295 BG",
+  "type": "roman",
+  "level": "bonus",
+  "block": "ÈRE DE KYOSHI"
+ },
+ {
+  "id": "avt-the-reckoning-of-roku",
+  "title": "The Reckoning of Roku",
+  "date": "~65 BG",
+  "type": "roman",
+  "level": "bonus",
+  "block": "ÈRE DE ROKU"
+ },
+ {
+  "id": "avt-the-awakening-of-roku",
+  "title": "The Awakening of Roku",
+  "date": "~63 BG",
+  "type": "roman",
+  "level": "bonus",
+  "block": "ÈRE DE ROKU"
+ },
+ {
+  "id": "avt-1x01",
+  "title": "1×01 · The Boy in the Iceberg",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x02",
+  "title": "1×02 · The Avatar Returns",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x03",
+  "title": "1×03 · The Southern Air Temple",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-don-t-blow-it",
+  "title": "Don't Blow It!",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x04",
+  "title": "1×04 · The Warriors of Kyoshi",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-the-kyoshi-warriors-13",
+  "title": "The Kyoshi Warriors #1–3",
+  "date": "99 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x05",
+  "title": "1×05 · The King of Omashu",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x06",
+  "title": "1×06 · Imprisoned",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-bee-calm",
+  "title": "Bee Calm",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x07",
+  "title": "1×07 · Winter Solstice, Part 1: The Spirit World",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x08",
+  "title": "1×08 · Winter Solstice, Part 2: Avatar Roku",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x09",
+  "title": "1×09 · The Waterbending Scroll",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x10",
+  "title": "1×10 · Jet",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x11",
+  "title": "1×11 · The Great Divide",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x12",
+  "title": "1×12 · The Storm",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x13",
+  "title": "1×13 · The Blue Spirit",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x14",
+  "title": "1×14 · The Fortuneteller",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x15",
+  "title": "1×15 · Bato of the Water Tribe",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x16",
+  "title": "1×16 · The Deserter",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-water-war",
+  "title": "Water War",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-relics",
+  "title": "Relics",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-fruit-stand-freestyle",
+  "title": "Fruit-Stand Freestyle",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x17",
+  "title": "1×17 · The Northern Air Temple",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x18",
+  "title": "1×18 · The Waterbending Master",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x19",
+  "title": "1×19 · The Siege of the North, Part 1",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-1x20",
+  "title": "1×20 · The Siege of the North, Part 2",
+  "date": "99 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 1 : L'EAU"
+ },
+ {
+  "id": "avt-2x01",
+  "title": "2×01 · The Avatar State",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x02",
+  "title": "2×02 · The Cave of Two Lovers",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x03",
+  "title": "2×03 · Return to Omashu",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x04",
+  "title": "2×04 · The Swamp",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-origami",
+  "title": "Origami",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x05",
+  "title": "2×05 · Avatar Day",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x06",
+  "title": "2×06 · The Blind Bandit",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x07",
+  "title": "2×07 · Zuko Alone",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-lost-and-found",
+  "title": "Lost and Found",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x08",
+  "title": "2×08 · The Chase",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x09",
+  "title": "2×09 · Bitter Work",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-katara-and-the-pirate-s-silver",
+  "title": "Katara et l'Argent des Pirates (Katara and the Pirate's Silver)",
+  "date": "100 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-sleepbending",
+  "title": "Sleepbending",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-lessons",
+  "title": "Lessons",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-sokka-the-avatar",
+  "title": "Sokka the Avatar",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-divided-we-fall",
+  "title": "Divided We Fall",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x10",
+  "title": "2×10 · The Library",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x11",
+  "title": "2×11 · The Desert",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-dirty-is-only-skin-deep",
+  "title": "Dirty Is Only Skin Deep",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-reach-for-the-toph",
+  "title": "Reach for the Toph",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x12",
+  "title": "2×12 · The Serpent's Pass",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x13",
+  "title": "2×13 · The Drill",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x14",
+  "title": "2×14 · City of Walls and Secrets",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x15",
+  "title": "2×15 · The Tales of Ba Sing Se",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x16",
+  "title": "2×16 · Appa's Lost Days",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x17",
+  "title": "2×17 · Lake Laogai",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x18",
+  "title": "2×18 · The Earth King",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x19",
+  "title": "2×19 · The Guru",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-2x20",
+  "title": "2×20 · The Crossroads of Destiny",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-it-s-only-natural",
+  "title": "It's Only Natural",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-escape-from-the-spirit-world",
+  "title": "Escape from the Spirit World",
+  "date": "100 AG",
+  "type": "video",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-going-home-again",
+  "title": "Going Home Again",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-the-bridge",
+  "title": "The Bridge",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 2 : LA TERRE"
+ },
+ {
+  "id": "avt-3x01",
+  "title": "3×01 · The Awakening",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x02",
+  "title": "3×02 · The Headband",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-private-fire",
+  "title": "Private Fire",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x03",
+  "title": "3×03 · The Painted Lady",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-night-animals",
+  "title": "Night Animals",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-the-substitute",
+  "title": "The Substitute",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x04",
+  "title": "3×04 · Sokka's Master",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-boys-day-out",
+  "title": "Boys' Day Out",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x05",
+  "title": "3×05 · The Beach",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-ember-island-arcade",
+  "title": "Ember Island Arcade",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x06",
+  "title": "3×06 · The Avatar and the Fire Lord",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x07",
+  "title": "3×07 · The Runaway",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-monster-slayer",
+  "title": "Monster Slayer",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-combustion-man-on-a-train",
+  "title": "Combustion Man on a Train",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x08",
+  "title": "3×08 · The Puppetmaster",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x09",
+  "title": "3×09 · Nightmares and Daydreams",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x10",
+  "title": "3×10 · The Day of Black Sun, Part 1: The Invasion",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x11",
+  "title": "3×11 · The Day of Black Sun, Part 2: The Eclipse",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x12",
+  "title": "3×12 · The Western Air Temple",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x13",
+  "title": "3×13 · The Firebending Masters",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-swordbending",
+  "title": "Swordbending",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-no-benders-allowed",
+  "title": "No Benders Allowed",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-suki-alone",
+  "title": "Suki, Seule (Suki, Alone)",
+  "date": "100 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x14",
+  "title": "3×14 · The Boiling Rock, Part 1",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-love-is-a-battlefield",
+  "title": "Love Is a Battlefield",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x15",
+  "title": "3×15 · The Boiling Rock, Part 2",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-dragon-days",
+  "title": "Dragon Days",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x16",
+  "title": "3×16 · The Southern Raiders",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x17",
+  "title": "3×17 · The Ember Island Players",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-game-time",
+  "title": "Game Time",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x18",
+  "title": "3×18 · Sozin's Comet, Part 1: The Phoenix King",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x19",
+  "title": "3×19 · Sozin's Comet, Part 2: The Old Masters",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-bumi-vs-toph-round-one",
+  "title": "Bumi vs. Toph, Round One",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x20",
+  "title": "3×20 · Sozin's Comet, Part 3: Into the Inferno",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-3x21",
+  "title": "3×21 · Sozin's Comet, Part 4: Avatar Aang",
+  "date": "100 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "LIVRE 3 : LE FEU"
+ },
+ {
+  "id": "avt-avatar-legends-city-of-echoes",
+  "title": "Avatar Legends: City of Echoes",
+  "date": "—",
+  "type": "roman",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-la-promesse-the-promise",
+  "title": "La Promesse (The Promise) · 3 parties",
+  "date": "101 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-rebound",
+  "title": "Rebond (Rebound)",
+  "date": "101 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-shells",
+  "title": "Coquillages (Shells)",
+  "date": "101 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-sisters",
+  "title": "Sœurs (Sisters)",
+  "date": "101 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-la-recherche-the-search",
+  "title": "La Recherche (The Search) · 3 parties",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-smoke-and-shadow-partie-1",
+  "title": "Fumée et Ombre (Smoke and Shadow) — Partie 1",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-the-rift",
+  "title": "Le Désaccord (The Rift) · 3 parties",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-smoke-and-shadow-parties-2-3",
+  "title": "Fumée et Ombre (Smoke and Shadow) — Parties 2 & 3",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-north-and-south",
+  "title": "Nord et Sud (North and South) · 3 parties",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-sokka-s-poem",
+  "title": "Sokka's Poem",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-matcha-makers",
+  "title": "Matcha Makers",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-azula-in-the-spirit-temple",
+  "title": "Azula Face au Temple des Esprits (Azula in the Spirit Temple)",
+  "date": "~102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-toph-beifong-s-metalbending-academy",
+  "title": "L'Académie de Toph de la Maîtrise du Métal de Beiphong (Toph Beifong's Metalbending Academy)",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-the-bounty-hunter-and-the-tea-brewer",
+  "title": "La Chasseuse de Primes et le Maître du Thé (The Bounty Hunter and the Tea Brewer)",
+  "date": "~102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-ashes-of-the-academy",
+  "title": "Les Cendres de l'Académie (Ashes of the Academy)",
+  "date": "~102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-the-scarecrow",
+  "title": "The Scarecrow",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-imbalance",
+  "title": "Déséquilibre (Imbalance) · 3 parties",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-toph-and-the-boulder",
+  "title": "Toph and the Boulder",
+  "date": "102 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-aang-the-last-airbender",
+  "title": "Aang : The Last Airbender",
+  "date": "—",
+  "type": "film",
+  "level": "imp",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-legacy",
+  "title": "Legacy",
+  "date": "—",
+  "type": "livre",
+  "level": "bonus",
+  "block": "APRÈS LA GUERRE — LES COMICS"
+ },
+ {
+  "id": "avt-la-legende-de-korra-livre-1-l-air",
+  "title": "La Légende de Korra — Livre 1 : L'Air",
+  "date": "170 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-la-legende-de-korra-livre-2-les-esprits",
+  "title": "La Légende de Korra — Livre 2 : Les Esprits",
+  "date": "171 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-la-legende-de-korra-livre-3-le-changemen",
+  "title": "La Légende de Korra — Livre 3 : Le Changement",
+  "date": "171 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-legacy-of-the-fire-nation",
+  "title": "Legacy of the Fire Nation",
+  "date": "—",
+  "type": "livre",
+  "level": "bonus",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-la-legende-de-korra-livre-4-l-equilibre",
+  "title": "La Légende de Korra — Livre 4 : L'Équilibre",
+  "date": "174 AG",
+  "type": "anime",
+  "level": "imp",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-turf-wars",
+  "title": "Guerres de Territoires (Turf Wars) · 3 parties",
+  "date": "174 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-an-avatar-s-chronicle",
+  "title": "An Avatar's Chronicle",
+  "date": "—",
+  "type": "livre",
+  "level": "bonus",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-ruins-of-the-empire",
+  "title": "Les Ruines de l'Empire (Ruins of the Empire) · 3 parties",
+  "date": "174 AG",
+  "type": "comic",
+  "level": "imp",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-beach-wars",
+  "title": "Beach Wars",
+  "date": "~174 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-mystery-of-penquan-island",
+  "title": "Mystery of Penquan Island",
+  "date": "~174 AG",
+  "type": "comic",
+  "level": "bonus",
+  "block": "ÈRE DE KORRA"
+ },
+ {
+  "id": "avt-patterns-in-time",
+  "title": "Patterns in Time",
+  "date": "—",
+  "type": "comic",
+  "level": "bonus",
+  "block": "ÈRE DE KORRA"
+ }
+]

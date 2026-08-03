@@ -10,6 +10,9 @@
 # Scripts d'extraction et de migration utilisés pendant la refonte — locaux, jamais servis.
 _preview/
 
+# Sortie du graphe de connaissances — se régénère, jamais servie.
+graphify-out/
+
 # Bases de données runtime générées par ruflo
 ruvector.db
 *.db-journal

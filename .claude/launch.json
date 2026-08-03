@@ -4,8 +4,32 @@
     {
       "name": "chronologeek",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8931"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8931"
+      ],
       "port": 8931
+    },
+    {
+      "name": "proto",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8933"
+      ],
+      "port": 8933
+    },
+    {
+      "name": "proto-e",
+      "runtimeExecutable": "py",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8947"
+      ],
+      "port": 8947
     }
   ]
 }
