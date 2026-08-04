@@ -477,6 +477,23 @@
  },
  {
   "universe": "starwars",
+  "title": "Twin Crossroads",
+  "date_sort": "2027-04-06",
+  "date_txt": "06/04/2027",
+  "kind": "Roman",
+  "source": "Wookieepedia",
+  "precision": "day",
+  "era": "4 ABY",
+  "syn": "Twin Crossroads is an upcoming canon adult novel that will be written by Beth Revis and published in hardcover by Random House Worlds on April 6, 2027. It was first listed on the Penguin Random House website on July 18, 2026 and was officially announced at the Random House Worlds panel at San Diego Comic-Con on July 24, 2026. It will follow Luke Skywalker and Leia Organa as they find out more abou…",
+  "wiki": "Twin Crossroads",
+  "syn_fr": "Twin Crossroads est un roman écrit par Beth Revis. Il sera publié le 6 avril 2027 par Random House Worlds aux États-Unis.",
+  "kindKey": "novel",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "starwars",
   "title": "Star Wars: Starfighter",
   "date_sort": "2027-05-27",
   "date_txt": "27/05/2027",
@@ -540,7 +557,7 @@
   "syn_fr": "Adaptation de Secret Wars de Jim Shooter et un prochain film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du multivers.",
   "kindKey": "film",
   "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_sort_fr": "2027-12-15",
+  "date_txt_fr": "15/12/2027"
  }
 ]
