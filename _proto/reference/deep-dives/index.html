@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Deep Dives — Chronologeek</title><meta name="description" content="Chronologeek deep dives: reading orders, guides and breakdowns, universe by universe."/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
+<meta property="og:title" content="Deep Dives — Chronologeek"/><meta property="og:description" content="Chronologeek deep dives: reading orders, guides and breakdowns, universe by universe."/>
+<meta property="og:image" content="https://chronologeek.app/images/og-banner.png"/>
+<link rel="stylesheet" href="/cg.css"/>
+<link rel="canonical" href="https://chronologeek.app/deep-dives/"/>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <nav class="nav" aria-label="Navigation">
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/deep-dives/" class="doss" aria-current="page">Deep Dives</a>
+      <a href="/starwars">Star Wars</a>
+      <a href="/marvel">Marvel</a>
+      <a href="/dc">DC</a>
+      <a href="/avatar">Avatar</a>
+      <a href="/upcoming" class="upc">Upcoming</a>
+      <a href="/whats-new" class="news">What's New</a>
+    </div>
+    <div class="nav-sp"></div>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="/fr/dossiers/" aria-label="Passer en français" title="Passer en français">
+        <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+      </a>
+      <button class="icon-btn burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="shell" id="main">
+  <a class="crumb" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All universes</a>
+  <div class="page-head">
+    <h1>Deep Dives</h1>
+    <p class="sub">The guides that go further than the timeline: reading orders, breakdowns and themed paths, universe by universe.</p>
+  </div>
+  <div class="ugrid">
+    <a class="ucard" href="/deep-dives/star-wars" style="--uc:#4d9fff">
+      <span class="banner"><img src="/images/starwarscomics.jpg" alt="" width="320" height="142" loading="lazy"/></span>
+      <span class="body">
+        <h2>Star Wars</h2>
+        <span class="d">Novels · Young readers · Comics — the complete canon reading order, placed between the movies and shows.</span>
+        <span class="meta"><span class="tag">Available</span><span class="upd">533 entries</span></span>
+        <span class="pr" data-univ="dossier" data-total="533">
+          <span class="pr-l"><span><b class="d-n">0</b> / 533 read</span><span class="d-p">0 %</span></span>
+          <span class="pr-t"><i></i></span>
+        </span>
+      </span>
+    </a>
+    <div class="ucard" style="--uc:#8a8ab0;cursor:default">
+      <span class="banner"><img src="/images/autresunivers.webp" alt="" width="320" height="142" loading="lazy"/></span>
+      <span class="body">
+        <h2 style="color:var(--muted2)">More Deep Dives</h2>
+        <span class="d">What would you like to see here ? New things will come.</span>
+        <span class="soon">In progress</span>
+      </span>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="foot">
+    <div class="about"><h4>Chronologeek</h4><p>Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.</p></div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="/starwars">Star Wars</a></li>
+      <li><a href="/marvel">Marvel — MCU</a></li>
+      <li><a href="/dc">DC Multiverse</a></li>
+      <li><a href="/avatar">Avatar</a></li>
+      <li><a href="/deep-dives/">Deep Dives</a></li>
+    </ul></div>
+    <div><h4>More</h4><ul>
+      <li><a href="/upcoming">Upcoming releases</a></li>
+      <li><a href="/whats-new">What's new</a></li>
+      <li><a href="#">Support the site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      API but is not endorsed or certified by TMDB. Book data from <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.
+      <br/>© 2026 Chronologeek — <a href="/">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.pr[data-univ]').forEach(function (pr) {
+  var t = +pr.dataset.total, d = 0;
+  try { d = Object.keys(JSON.parse(localStorage.getItem('cg_' + pr.dataset.univ) || '{}')).length; } catch (e) {}
+  var p = t ? Math.round(d / t * 100) : 0;
+  pr.querySelector('.d-n').textContent = d;
+  pr.querySelector('.d-p').textContent = p + ' %';
+  pr.querySelector('i').style.width = p + '%';
+});
+</script>
+<script src="/anim.js"></script>
+<script src="/cg-nav.js"></script>
+<script src="/pwa.js"></script>
+<script data-goatcounter="https://arcanerval.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="utf-8"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#08080f"/>
@@ -9,8 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>Marvel — Chronologeek</title>
+<meta name="description" content="Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Chronologeek"/>
 <meta property="og:title" content="Timeline Marvel MCU — Chronologeek"/>
@@ -18,132 +19,688 @@
 <meta property="og:image" content="https://chronologeek.app/images/mcu.webp"/>
 <meta property="og:url" content="https://chronologeek.app/fr/marvel"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="description" content="Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil."/>
 <link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/marvel"/>
-<link rel="stylesheet" href="/cg.css"/>
 <link rel="canonical" href="https://chronologeek.app/fr/marvel"/>
-<script>window.CG={"t":{"lang":"fr","locale":"fr-FR","skip":"Aller au contenu","nav":{"home":"Accueil","deep":"Dossiers","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"À venir","news":"Nouveautés"},"otherLang":"Switch to English","otherFlag":"en","menu":"Ouvrir le menu","searchLabel":"Rechercher dans la timeline","searchPh":"Rechercher…  ( / )","searchClear":"Effacer la recherche","hideDone":"Masquer les vus","hideRead":"Masquer les lus","crumbUniverses":"Tous les univers","crumbDeep":"Tous les Dossiers","updated":"Mis à jour ·","progH":"Ma progression","watched":"Vus","read":"Lus","left":"Restant à voir","leftRead":"Restant à lire","done":"Terminé","resume":"Reprendre","exp":"Exporter","imp":"Importer","badges":"Badges","reset":"Réinitialiser","noRuntime":"Durée inconnue pour certaines entrées","progHint1":"Ta progression est sauvegardée sur ce navigateur — utilise","progHint2":"pour en garder une copie ou l’importer sur un autre appareil ou navigateur","filters":"Filtres","shown":"affichées","secBranches":"Branches","secTypes":"Types de média","secLevel":"Niveau","secOptions":"Options","marks":"Repères","all":"tout","none":"aucun","essential":"⭐ Essentiel","important":"🚨 Important","optional":"Optionnel","ncLabel":"Canonicité non confirmée","defLabel":"Séries Defenders","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITÉ NON CONFIRMÉE","loading":"Chargement…","loadFail":"Chargement impossible.","noSynopsis":"Pas de synopsis disponible.","trailer":"Bande-annonce YouTube","watchGame":"Voir le film complet sur YouTube","zoom":"Agrandir l’affiche","mYear":"Année","mGenre":"Genre","mRating":"Note","mReleased":"Sortie","mPeriod":"Période","emptyH":"Aucun résultat pour","emptyThese":"ces filtres","emptyThat":"cette recherche","emptyP":"Essaie une autre orthographe, ou remets les filtres que tu as décochés.","emptyPShort":"Essaie une autre orthographe.","clearAll":"Tout réinitialiser","railEras":"Aller à une ère","railZones":"Aller à une zone","swipe":"Fais glisser pour voir les autres branches →","toTop":"Remonter en haut","copyLink":"Copier le lien vers cette entrée","copied":"Copié !","myBadges":"Mes Badges","unlockedN":"débloqués","badgeUnlocked":"Badge débloqué !","close":"Fermer","markWatched":"Marquer « {t} » comme vu","markRead":"Marquer « {t} » comme lu","resetSW":"Réinitialiser ta progression Star Wars ?","resetMCU":"Réinitialiser ta progression Marvel ?","resetDC":"Réinitialiser ta progression DC ?","resetDos":"Réinitialiser ta progression du Dossier ?","badFile":"Fichier illisible.","outNow":"disponible","tomorrow":"demain","inDays":"dans {n} j","inMonths":"dans {n} mois","inYears":"dans {n} ans","releases":"sorties","release":"sortie","tracked":"sorties suivies","voTitle":"Pas de version française connue","rdNote":"Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ À l’écran — où se placent les films et séries. Non comptés dans ta progression.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"Plus","footBlurb":"Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.","footUpcoming":"Sorties à venir","footNews":"Nouveautés","footSupport":"Soutenir le site","footContact":"Contact","legal1":"Ce produit utilise l’API","legal2":"mais n’est ni approuvé ni certifié par TMDB. Données livres :","legal3":"Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant."},"universe":"mcu","badgeLabels":{"film":["bf","FILM"],"filmanim":["bfa","FILM ANIMÉ"],"serie":["bs","SÉRIE"],"anime":["ba","SÉRIE ANIMÉE"],"jeu":["bj","JEU VIDÉO"],"special":["bsp","SPÉCIAL"],"video":["bv","VIDÉO"]},"badges":[{"id":"mcu_avenger","universe":"mcu","icon":"🛡️","color":"#f43f5e","trigger":"100pct","ids":[],"label":"Avenger","desc":"100% Marvel complété"},{"id":"mcu_spidey","universe":"mcu","icon":"🕷️","color":"#e11d48","trigger":"all","ids":["mcu-sm1","mcu-smffh","mcu-smr1","mcu-smr2","mcu-smr3","mcu-tasm1","mcu-tasm2","mcu-itsv","mcu-nwh","mcu-atsv","mcu-vfsm"],"label":"Araignée du Quartier","desc":"Tous les Spider-Man vus"},{"id":"mcu_mutant","universe":"mcu","icon":"🧬","color":"#facc15","trigger":"all","ids":["mcu-xfc","mcu-xow","mcu-xm1","mcu-xm2","mcu-xm3","mcu-twolv","mcu-dofp","mcu-xma","mcu-xdp","mcu-logan","mcu-dp1","mcu-dp2","mcu-dpw"],"label":"Mutant Oméga","desc":"Tous les X-Men et Deadpool vus"},{"id":"mcu_thanos","universe":"mcu","icon":"🪨","color":"#a855f7","trigger":"last","ids":["mcu-smffh"],"label":"Thanos","desc":"La Saga de l'Infini terminée"},{"id":"mcu_defender","universe":"mcu","icon":"🥊","color":"#ef4444","trigger":"all","ids":["mcu-dd1","mcu-jj1","mcu-dd2","mcu-lc1","mcu-if1","mcu-defenders","mcu-pun1","mcu-jj2","mcu-lc2","mcu-if2","mcu-dd3","mcu-pun2","mcu-jj3","mcu-dba1","mcu-dba2","mcu-pun-olk"],"label":"Defender","desc":"Toutes les séries Defenders vues"},{"id":"mcu_shield","universe":"mcu","icon":"🦅","color":"#3b82f6","trigger":"all","ids":["mcu-ac-os","mcu-ac-serie","mcu-aos-s1a","mcu-aos-s1b","mcu-aos-s1c","mcu-aos-s2a","mcu-aos-s2b","mcu-aos-s3a","mcu-aos-s3b","mcu-aos-s4","mcu-aos-s5a","mcu-aos-s5b","mcu-aos-s5c","mcu-aos-s6","mcu-aos-s7"],"label":"Agent du S.H.I.E.L.D.","desc":"Agent Carter et Agents of SHIELD terminés"}],"faqCats":[{"key":"quand","q":"Quand se déroule {name} dans le MCU ?"},{"key":"comment","q":"Comment {name} est-il relié au MCU ?"},{"key":"pourquoi","q":"Pourquoi regarder {name} maintenant dans la timeline ?"},{"key":"postcredits","q":"Et la ou les scènes post-générique ?"}],"resetMsg":"Réinitialiser ta progression Marvel ?","tmdbLang":"fr-FR","deviate":true,"defenders":["mcu-dd1","mcu-dd2","mcu-dd3","mcu-dba1","mcu-dba2","mcu-pun1","mcu-pun2","mcu-pun-olk","mcu-jj1","mcu-jj2","mcu-jj3","mcu-lc1","mcu-lc2","mcu-if1","mcu-if2","mcu-defenders"],"groups":{"sv":{"label":"Spider-Verse","color":"#90caf9","ids":["mcu-smr1","mcu-smr2","mcu-smr3","mcu-tasm1","mcu-tasm2","mcu-itsv","mcu-venom1","mcu-venom2","mcu-venom3","mcu-atsv"]},"fox":{"label":"Fox / X-Men","color":"#ffb74d","ids":["mcu-xfc","mcu-xow","mcu-xm1","mcu-xm2","mcu-xm3","mcu-twolv","mcu-dofp","mcu-xma","mcu-xdp","mcu-logan","mcu-dp1","mcu-dp2"]}},"tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};</script>
-</head>
-<body data-universe="mcu">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="/images/mcu.webp"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
+  THÈSE : cette page ne liste pas, elle donne à choisir sa prochaine étape.
+  Elle refuse la liste sur fond sombre à accent unique et prend la grammaire
+  de l'écran de sélection : grande image par ère, curseur qui claque, états
+  à faire / terminé. La complétion n'est pas plaquée, c'est la mécanique.
+  MONDE PROPRE : couleur noyée, une par ère, qui inonde toute la région et
+  change au défilement. Champs de couleur à bords francs, chevrons en
+  diagonale, trame de demi-teinte sur les visuels, titrage condensé à ombre
+  portée dure et décalée. Aucun halo, aucun verre, aucun arrondi.
+  ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
+  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#e23636).
+  RÉCIT : le visiteur voit d'abord des images, comprend qu'il choisit, et
+  voit sa carte se remplir entrée par entrée.
+  TEXTES : tout ce qui est prose vient de fr/marvel.html, mot pour mot,
+  au vouvoiement. Rien n'est réécrit ici.
+-->
+<style>
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  /* la marque « terminé » prend la couleur de l'univers, pas un vert générique */
+  --uni:#e23636;
+  /* dix encres : huit phases et les deux segments de branche que Marvel
+     intercale. Saga de l'Infini dans les rouges et les bleus profonds, Saga
+     du Multivers dans les violets et les verts — la bascule se voit au
+     défilement. Les deux segments prennent la teinte sombre de leur propre
+     branche, bleu Spider-Verse et ocre Fox, pour qu'on les repère de loin. */
+  --era1:#7a2231; --era2:#123f70; --era3:#8a3312; --era4:#3c2a6e;
+  --era5:#1d4f7a; --era6:#0f5a52; --era7:#6b1f52; --era8:#7d5610;
+  --era9:#155066; --era10:#5c2060;
+  /* les trois entrées colorées de la nav */
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  /* badges de type, charte du site */
+  --t-film:#64b5f6; --t-filmanim:#90caf9; --t-serie:#81c784;
+  --t-anime:#ce93d8; --t-jeu:#ffb74d; --t-special:#ffa726; --t-video:#f472b6;
+  --era:var(--era1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:64px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+/* l'ombre décalée dure : réservée aux grands titres, jamais aux entrées —
+   sur une bulle elle débordait de la case et passait sur le titre voisin */
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
 
-<a class="skip" href="#main">Aller au contenu</a>
+/* ══ trame de demi-teinte : matière du monde, posée sur les visuels ══ */
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+/* le drapeau se passe de cadre : c'est déjà une forme fermée */
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:38px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(60vh,520px);display:flex;align-items:flex-end}
+/* Deux plans tirés du même fichier : la profondeur ne coûte donc pas un
+   octet de plus. Les débords restent courts — au-delà, `cover` sur-zoome
+   la bannière et le visuel part en bouillie. */
+.plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 42%;
+  background-image:url(/images/mcu.webp)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 5%,
+             color-mix(in srgb,#e23636 46%,var(--ink)) 56%,
+             color-mix(in srgb,var(--era3) 40%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
+.attract h1{font-size:clamp(50px,11vw,140px);max-width:12ch}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;color:rgba(255,253,247,.92)}
+.dek b{display:block;color:var(--paper);font-weight:700;margin-top:4px}
+.upd{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66);display:flex;align-items:center;gap:7px}
+.upd i{width:8px;height:8px;background:var(--uni);display:block}
+
+/* La barre de stats : le compte des médias, en haut, avant tout le reste.
+   Une seule ligne, toujours — cinq tuiles empilées en deux rangs, ce n'est
+   plus une barre. Les tuiles se resserrent au lieu de passer à la ligne. */
+.stats{display:flex;flex-wrap:nowrap;gap:0;margin-top:20px;border:2px solid var(--paper);
+  background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
+.stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
+.stats .s:last-child{border-right:0}
+.stats b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:30px;
+  line-height:.9;color:var(--hot);white-space:nowrap}
+.stats span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.78);margin-top:3px}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ INTRO : la prose de la page, ses repères, ses omissions ════════ */
+.intro{padding:34px 0 8px}
+.intro-lead{font-size:16.5px;color:rgba(255,253,247,.9);margin-bottom:12px}
+.intro-tags{margin:16px 0 6px}
+.itag{display:inline-flex;align-items:flex-start;gap:9px;background:rgba(77,159,255,.13);
+  border-left:4px solid var(--uni);padding:9px 14px;font-size:14px;font-weight:600}
+.itag svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2.6;
+  stroke-linecap:square;margin-top:1px}
+.keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
+  text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
+/* Trois colonnes. La quatrième carte, la canonicité non confirmée, prend la
+   rangée entière au lieu de creuser un trou dans la grille. */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
+.key.wide{grid-column:1/-1;border-left:4px solid var(--gold-deep)}
+.key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
+  font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.key-h svg{width:19px;height:19px;flex:0 0 auto;fill:none;stroke:var(--hot);stroke-width:2;
+  stroke-linecap:square}
+.key p{font-size:13.5px;color:rgba(255,253,247,.82)}
+.key strong{color:var(--paper)}
+@media(max-width:900px){.keys{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.keys{grid-template-columns:1fr}}
+.cuts{margin-top:20px;border:2px solid var(--line)}
+.cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.05em}
+.cuts>summary::-webkit-details-marker{display:none}
+.cuts>summary:hover{background:rgba(255,253,247,.05)}
+.cuts .n{font-family:'Chivo';font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:3px 9px}
+.cuts .chev{width:20px;height:20px;margin-left:auto;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
+.cuts[open] .chev{transform:rotate(180deg)}
+.cuts-body{padding:4px 16px 18px;border-top:2px solid var(--line)}
+.cuts-intro{font-size:14px;color:rgba(255,253,247,.8);margin:12px 0 14px}
+.cuts-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:12px}
+.cut{border-left:3px solid var(--hot);padding-left:12px}
+.cut dt{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  text-transform:uppercase;letter-spacing:.03em}
+.cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
+
+/* ══ filtres, recherche, repères ════════════════════════════════════ */
+.sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
+  position:sticky;top:53px;z-index:50}
+.sieve .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  padding-top:10px;padding-bottom:10px}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,253,247,.5);margin-right:2px}
+.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
+.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
+.sieve .last{margin-left:auto}
+/* Les branches sont un groupe de filtres comme les autres : elles coulent
+   dans la même ligne que le niveau et les types. Les deux conteneurs ne
+   servent qu'à séparer les branches de la canonicité non confirmée côté
+   script — `display:contents` les efface de la mise en page. */
+.obr,.onc{display:contents}
+/* la recherche : un champ franc, pas une pilule */
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
+  padding:4px 9px;min-width:224px;flex:0 1 296px}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
+  stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
+  font-family:'Chivo';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
+  display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+.fcount{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,253,247,.6)}
+.marks{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+/* Les repères ne filtrent rien : ils légendent. Marvel en a trois, ils ne
+   tiennent plus dans la ligne des filtres. Ils passent donc dessous, sur
+   leur propre rangée, avec le masquage des vus et le compte poussés à droite. */
+.srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:1px}
+.srow .marks{flex-wrap:wrap}
+
+/* ══ BANDE D'ÈRE : parallaxe multiplane liée au défilement ══════════ */
+.era-sec[hidden]{display:none}
+.map{position:relative;overflow:hidden;background:var(--era);
+  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
+.map .layers{position:absolute;inset:0}
+.map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
+.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
+  clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
+.map .tint{position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--era) 30%,transparent),
+             color-mix(in srgb,var(--era) 88%,transparent))}
+.map .wrap{position:relative;z-index:2;padding:46px 20px 28px}
+.map .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;
+  letter-spacing:.2em;text-transform:uppercase;display:inline-block;
+  background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.map h2{font-size:clamp(32px,6vw,72px);margin:12px 0 6px}
+.map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+.map .meta b{color:var(--hot)}
+
+/* ══ LES BULLES : une par ligne, image à gauche, titre à droite ═════ */
+.list{background:color-mix(in srgb,var(--era) 16%,var(--ink));padding:20px 0 34px}
+.rows{display:flex;flex-direction:column;gap:10px}
+.bu{position:relative;display:flex;align-items:flex-start;gap:10px}
+.bu[hidden]{display:none}
+/* la colonne de gauche : la case, et sous elle le niveau d'importance */
+.bu-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-top:12px;width:34px}
+.bu-side .lv{display:block;line-height:0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:miter;stroke-linecap:square}
+.bu-side .ic{width:25px;height:25px}
+.lv.must{color:var(--hot)}
+.lv.imp{color:#ff9d5c}
+.sieve .ic{width:15px;height:15px}
+.sieve button.must{color:var(--hot)}
+.sieve button.imp{color:#ff9d5c}
+.sieve button.must[aria-pressed=true],.sieve button.imp[aria-pressed=true]{color:var(--ink)}
+/* la case à cocher : c'est elle, et elle seule, qui fait tomber le tampon */
+.bu-chk{width:30px;height:30px;background:none;cursor:pointer;
+  border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
+  display:grid;place-items:center;padding:0;color:transparent;
+  transition:border-color .1s steps(1,end),background-color .1s steps(1,end)}
+.bu-chk svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:3.4;
+  stroke-linecap:square}
+.bu-chk:hover{border-color:var(--uni)}
+.bu-chk[aria-checked=true]{background:var(--uni);border-color:var(--uni);color:var(--ink)}
+.bu-card{flex:1;min-width:0;position:relative;border:2px solid var(--line);
+  background:rgba(13,11,18,.5);
+  transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
+.bu-card:hover{border-color:var(--hot);transform:translate(-3px,-3px)}
+.bu.done .bu-card{border-color:var(--uni)}
+.bu-head{display:flex;gap:14px;width:100%;background:none;border:0;color:inherit;font:inherit;
+  text-align:left;cursor:pointer;padding:10px 12px}
+/* 16/9 : le ratio natif des visuels d'entrée, donc aucun recadrage */
+.bu-fig{position:relative;flex:0 0 auto;width:190px;aspect-ratio:16/9;overflow:hidden;
+  background:var(--ink);align-self:flex-start}
+.bu-fig img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(.72) contrast(1.05);transition:filter .2s,transform .3s ease-out}
+.bu-card:hover .bu-fig img{transform:scale(1.035);filter:saturate(1) contrast(1.08)}
+.bu-n{position:absolute;top:0;left:0;z-index:2;background:var(--ink);color:var(--paper);
+  font-family:'Big Shoulders Display';font-weight:900;font-size:17px;padding:1px 9px 0;
+  clip-path:polygon(0 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+.bu-txt{flex:1;min-width:0;display:block}
+.bu-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+.b{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.ft{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:var(--hot);border:1px solid var(--hot)}
+/* la canonicité non confirmée se signale comme le flashback, en rouge pâle */
+.nt{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:#ff8f8f;border:1px solid #ff8f8f}
+/* L'univers d'origine. Une entrée qui ne se passe pas dans la timeline
+   principale le dit en toutes lettres et se décale franchement vers la
+   droite : le décrochage se lit avant même qu'on lise le badge. Le liseré
+   passe en pointillé, la carte n'est plus tout à fait du même monde.
+   Dans un segment de branche, tout le bloc est déjà ailleurs — décaler
+   chaque entrée n'y ajouterait qu'un cran d'escalier. */
+.dim{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:#a99fff;border:1px solid #a99fff}
+.bu.dev{margin-left:56px}
+.bu.dev .bu-card{border-style:dashed}
+.era-sec.seg .bu.dev{margin-left:0}
+.bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
+  line-height:1.02;text-transform:uppercase}
+.bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
+  font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,253,247,.74)}
+/* la date in-universe situe l'entrée : c'est la deuxième information de la
+   ligne, elle se lit d'un coup d'œil */
+.bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
+  letter-spacing:.03em;color:var(--hot);line-height:1}
+.bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
+  font-style:italic}
+.bu-end{flex:0 0 auto;display:flex;align-self:center}
+.bu-end svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;color:rgba(255,253,247,.66)}
+.bu-head[aria-expanded=true] .bu-end svg{transform:rotate(180deg)}
+/* Saisons et épisodes, toujours visibles. Deux dispositions, parce que les
+   données sont de deux natures : quand ce sont des épisodes unitaires, ils
+   forment des arcs narratifs et se lisent en ligne, un arc par bande ; quand
+   ce sont des blocs entiers (« Saison 1 », « Saison 2 épisodes 10-22 »), ils
+   s'empilent, chacun sur sa ligne. Un arc de 6 épisodes qui déborde reste
+   groupé : c'est la bande qui le tient, pas l'alignement. */
+.bu-sub{display:flex;flex-direction:column;padding:0 12px 11px 216px}
+.arc{display:flex;flex-wrap:wrap;gap:5px;padding:5px 0;
+  border-top:1px solid rgba(255,253,247,.38)}
+.arc:first-child{border-top:0;padding-top:0}
+.bu-sub.stack .arc{padding:3px 0}
+.si{font-size:11.5px;font-weight:600;padding:2px 8px;background:rgba(255,253,247,.08);
+  border-left:2px solid var(--line)}
+/* le lien de partage de l'entrée */
+.bu-link{position:absolute;top:9px;right:9px;z-index:4;width:26px;height:26px;display:grid;
+  place-items:center;color:rgba(255,253,247,.5);text-decoration:none;opacity:0;
+  transition:opacity .15s}
+.bu-card:hover .bu-link,.bu-link:focus-visible{opacity:1}
+.bu-link:hover{color:var(--hot)}
+.bu-link svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:square}
+.bu-link.ok::after{content:attr(data-ok);position:absolute;right:0;top:100%;white-space:nowrap;
+  background:var(--hot);color:var(--ink);font-size:10px;font-weight:700;padding:2px 7px;
+  letter-spacing:.06em;text-transform:uppercase}
+
+/* état terminé : tampon dur, image dessaturée, couleur de l'univers.
+   Le tampon vit DANS la figure — posé sur la bulle, il était décalé du
+   rembourrage de la carte et ne tombait pas au centre du visuel. */
+.bu-done{position:absolute;inset:0;z-index:3;display:none;place-items:center;
+  pointer-events:none}
+.bu-done span{font-family:'Big Shoulders Display';font-weight:900;font-size:19px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--uni);
+  padding:3px 11px;transform:rotate(-4deg);border:2px solid var(--ink)}
+.bu.done .bu-done{display:grid}
+.bu.done .bu-fig img{filter:saturate(.08) contrast(1.12) brightness(.6)}
+.bu.done .bu-title{color:rgba(255,253,247,.72)}
+
+/* ══ le dépliant : fiche TMDB / RAWG puis FAQ ═══════════════════════ */
+.bu-panel{border-top:2px solid var(--line);padding:14px 12px 14px}
+.bu-panel[hidden]{display:none}
+.expand-loading{font-size:13px;color:rgba(255,253,247,.6)}
+.expand-inner{display:flex;gap:15px;align-items:flex-start;flex-wrap:wrap}
+.expand-poster{flex:0 0 auto;width:118px;border:2px solid var(--line);background:none;
+  padding:0;cursor:zoom-in;position:relative;display:block}
+.expand-poster img{width:100%;display:block}
+.expand-poster-ov{position:absolute;right:4px;bottom:4px;font-size:13px;
+  background:rgba(13,11,18,.8);padding:1px 5px}
+.expand-info{flex:1;min-width:240px}
+.expand-synopsis{font-size:13.5px;color:rgba(255,253,247,.86)}
+.expand-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;
+  color:rgba(255,253,247,.72)}
+.expand-meta strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  margin-right:5px}
+.expand-trailer-link{display:inline-block;margin-top:12px;background:var(--hot);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.06em;
+  text-transform:uppercase;padding:6px 13px;text-decoration:none;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.expand-trailer-link:hover{filter:brightness(1.1)}
+.en-faq{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.faq{border-left:3px solid var(--uni);background:rgba(226,54,54,.07)}
+.faq>summary{cursor:pointer;list-style:none;padding:8px 12px;font-size:13.5px;font-weight:700}
+.faq>summary::-webkit-details-marker{display:none}
+.faq>summary::before{content:'+ ';color:var(--uni);font-weight:900}
+.faq[open]>summary::before{content:'– '}
+.faq .a{padding:0 12px 10px;font-size:13px;color:rgba(255,253,247,.82)}
+
+/* la visionneuse d'affiche */
+.pm{position:fixed;inset:0;z-index:120;background:rgba(13,11,18,.92);display:none;
+  place-items:center;padding:24px}
+.pm.o{display:grid}
+.pm img{max-width:min(92vw,520px);max-height:88vh;border:2px solid var(--paper)}
+.pm-x{position:absolute;top:14px;right:16px;background:var(--paper);color:var(--ink);border:0;
+  font-size:19px;width:38px;height:38px;cursor:pointer}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
+.empty[hidden]{display:none}
+
+/* ══ révélation au défilement ══════════════════════════════════════ */
+/* Aucun masquage par défaut, et surtout aucun masquage piloté par JS : une
+   bulle cachée en attendant un événement qui ne vient pas, c'est une page
+   vide. L'entrée est une animation liée au défilement, donc purement CSS —
+   là où animation-timeline manque, les bulles sont simplement là. */
+
+/* La parallaxe multiplane est liée au défilement, en CSS natif. Là où
+   animation-timeline manque, les plans restent simplement fixes — la page
+   ne perd rien d'essentiel. */
+@supports (animation-timeline: view()){
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .rv{animation:rise linear both;animation-timeline:view();
+      animation-range:entry 4% cover 14%}
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  @keyframes riseTitle{from{transform:translateY(18px)}to{transform:translateY(-10px)}}
+  .map .lay1{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .map .lay2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+  .map .wrap{animation:riseTitle linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72)}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ Miss Minutes : le retour en haut ══════════════════════════════ */
+/* Sans trame ni désaturation : l'effet des visuels la salissait. */
+#totop{position:fixed;right:16px;bottom:78px;z-index:75;width:96px;height:96px;padding:0;
+  background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
+  transform:translateY(10px);transition:opacity .2s,transform .2s}
+#totop.on{opacity:1;pointer-events:auto;transform:none}
+#totop span{position:relative;display:block;width:96px;height:96px}
+#totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#totop .hv{opacity:0}
+#totop:hover .nl{opacity:0}
+#totop:hover .hv{opacity:1}
+
+/* ══ barre de bas d'écran, dépliable : où j'en suis ═════════════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--ink);
+  border-top:2px solid var(--paper)}
+.hud-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;width:100%;
+  max-width:1280px;margin:0 auto;background:none;border:0;color:inherit;font:inherit;
+  cursor:pointer;text-align:left;padding:9px 20px;
+  padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+.hud.open .hud-bar{padding-bottom:9px}
+.hud-bar b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud-bar b em{font-style:normal;color:var(--uni)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:110px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--uni);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.hud-bar .ch{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;margin-left:auto}
+.hud.open .hud-bar .ch{transform:rotate(180deg)}
+.hud-panel{border-top:2px solid var(--line);
+  padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.hud-panel[hidden]{display:none}
+/* Le dépliant ne répète pas les compteurs : ils sont déjà sur la barre,
+   juste au-dessus. Il ne porte que les actions et la phrase, centrées. */
+.hud-in{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;
+  align-items:center;gap:4px}
+.pacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:7px;background:none;border:2px solid var(--line);
+  color:var(--paper);font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--paper)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square}
+.btn.danger{color:#ff8f8f;border-color:rgba(255,143,143,.5)}
+.btn.danger:hover{border-color:#ff8f8f}
+.phint{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:14px;
+  text-align:center;font-size:12.5px;color:rgba(255,253,247,.72)}
+.phint svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2;
+  stroke-linecap:square;margin-top:1px}
+.phint b{color:var(--paper)}
+
+/* ══ badges ════════════════════════════════════════════════════════ */
+.bx{position:fixed;inset:0;z-index:130;background:rgba(13,11,18,.92);display:none;
+  place-items:center;padding:22px}
+.bx.o{display:grid}
+.bx-in{background:var(--ink);border:2px solid var(--paper);max-width:660px;width:100%;
+  max-height:86vh;overflow:auto;padding:20px}
+.bx-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.bx-h h3{font-family:'Big Shoulders Display';font-weight:900;font-size:26px;text-transform:uppercase}
+.bx-h .n{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--hot);color:var(--ink);padding:3px 9px}
+.bx-h button{margin-left:auto;background:var(--paper);color:var(--ink);border:0;width:34px;
+  height:34px;font-size:17px;cursor:pointer}
+.bx-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:11px}
+.bg1{border:2px solid var(--line);padding:13px;display:flex;gap:11px;align-items:flex-start;
+  opacity:.42;filter:grayscale(1)}
+.bg1.on{opacity:1;filter:none;border-color:var(--c)}
+.bg1 .i{font-size:26px;line-height:1}
+.bg1 .t{display:block;font-family:'Big Shoulders Display';font-weight:800;font-size:17px;
+  text-transform:uppercase;line-height:1.05}
+.bg1 .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:3px}
+
+/* ══ badge débloqué : le carton et les confettis ═══════════════════ */
+.bpop{position:fixed;left:50%;bottom:98px;z-index:141;transform:translate(-50%,18px);
+  display:flex;gap:13px;align-items:center;padding:13px 18px;max-width:min(420px,calc(100vw - 24px));
+  background:var(--ink);border:2px solid var(--c,var(--hot));
+  box-shadow:6px 6px 0 rgba(13,11,18,.6);opacity:0;pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease}
+.bpop.o{opacity:1;transform:translate(-50%,0)}
+.bpop .i{font-size:32px;line-height:1;flex:0 0 auto}
+.bpop .k{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--c,var(--hot))}
+.bpop .t{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:22px;
+  text-transform:uppercase;line-height:1.05;margin-top:2px}
+.bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
+.conf{position:fixed;inset:0;z-index:140;pointer-events:none}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+  .sieve{position:static}
+}
+@media(max-width:720px){
+  .bu-head{flex-wrap:wrap;gap:10px}
+  .bu-fig{width:128px}
+  .bu-title{font-size:19px}
+  .bu-meta .d{font-size:19px}
+  .bu-sub{padding-left:12px}
+  .bu.dev{margin-left:18px}
+  .bu-side{width:30px;margin-top:10px}
+  .bu-chk{width:26px;height:26px}
+  .bu-side .ic{width:21px;height:21px}
+  .stats .s{padding:8px 10px}
+  .stats b{font-size:21px}
+  .stats span{font-size:8.5px;letter-spacing:.04em}
+  .foot{grid-template-columns:1fr}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+  .sieve .last{margin-left:0}
+  .pacts{margin-left:0}
+  #totop{width:74px;height:74px;bottom:74px}
+  #totop span{width:74px;height:74px}
+  /* pleine largeur, et posé au-dessus de Miss Minutes, qui monte à 148 px du bas */
+  .bpop{left:12px;right:12px;max-width:none;bottom:160px;transform:translateY(18px)}
+  .bpop.o{transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .start em{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#body">Aller au contenu</a>
+
 <header>
-  <nav class="nav" aria-label="Navigation">
-    <a class="brand" href="/fr/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
-    <div class="nav-links">
+  <div class="wrap">
+    <a class="brand" href="/fr/"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
+    <nav class="nav-links" aria-label="Navigation">
       <a href="/fr/">Accueil</a>
       <a href="/fr/dossiers/" class="doss">Dossiers</a>
       <a href="/fr/starwars">Star Wars</a>
-      <a href="/fr/marvel" aria-current="page">Marvel</a>
+      <a href="#" aria-current="page">Marvel</a>
       <a href="/fr/dc">DC</a>
       <a href="/fr/avatar">Avatar</a>
       <a href="/fr/a-venir" class="upc">À venir</a>
       <a href="/fr/nouveautes" class="news">Nouveautés</a>
-    </div>
-    <div class="nav-sp"></div>
+    </nav>
     <div class="nav-tools">
       <a class="icon-btn lang-btn" href="/marvel" aria-label="Switch to English" title="Switch to English">
-        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+        <!-- Drapeau posé à 38 px de large : les liserés blancs des proportions
+             officielles y tombent sous le pixel et ne se voient qu'au repaint
+             du survol. On les épaissit donc, la lecture prime sur l'exactitude. -->
+        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)" fill="none"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="8"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="13"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="7"/></g></svg>
       </a>
-      <button class="icon-btn burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
+    <a href="/fr/">Accueil</a><a href="/fr/dossiers/" class="doss">Dossiers</a>
+    <a href="/fr/starwars">Star Wars</a><a href="#" aria-current="page">Marvel</a><a href="/fr/dc">DC</a><a href="/fr/avatar">Avatar</a>
+    <a href="/fr/a-venir" class="upc">À venir</a><a href="/fr/nouveautes" class="news">Nouveautés</a>
   </nav>
 </header>
 
-<div class="subbar"><div class="subbar-in">
-  <div class="search">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <label class="skip" for="q">Rechercher dans la timeline</label>
-    <input id="q" type="search" placeholder="Rechercher…  ( / )" autocomplete="off"/>
-    <button class="search-clear" id="q-clear" aria-label="Effacer la recherche">✕</button>
-  </div>
-  <div class="sub-sp"></div>
-  <button class="toggle" id="hide-done" aria-pressed="false">
-    <span class="sw" aria-hidden="true"></span><span class="lbl">Masquer les vus</span>
-  </button>
-  <div class="mini">
-    <span class="live" aria-hidden="true"></span>
-    <span class="mini-num" id="mini-num">0/120</span>
-    <div class="mini-track"><div class="mini-fill" id="mini-fill"></div></div>
-  </div>
-</div></div>
-
-<main class="shell" id="main">
-  <a class="crumb" href="/fr/">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Tous les univers</a>
-  <div class="page-head">
-    <h1><span class="u">Marvel</span> — Timeline Optimisée du Multivers</h1>
-    <p class="sub">Films · Séries · Spider-Verse · Fox — l’ordre chronologique complet.</p>
-    <p class="upd"><span class="dot"></span> Mis à jour · Juin 2026</p>
-  </div>
-  <div class="stats"><div class="s"><b>59</b><span>Longs métrages</span></div><div class="s"><b>25</b><span>Séries</span></div><div class="s"><b>3</b><span>Spéciaux</span></div></div>
-
-  <section class="prog" aria-labelledby="prog-h">
-    <h2 id="prog-h" class="skip">Ma progression</h2>
-    <p class="prog-head">Ma progression · <em>Marvel — Timeline Optimisée du Multivers</em></p>
-    <div class="prog-top">
-      <div class="prog-nums">
-        <div class="stat-big"><div class="v"><span id="n-done">0</span><span class="u" id="n-total">/ 120</span></div><div class="l">Vus</div></div>
-        <div class="stat-big accent"><div class="v"><span id="n-h">0</span><span class="u" id="n-hu">h</span><span class="u" id="star" title="Durée inconnue pour certaines entrées">*</span></div><div class="l">Restant à voir</div></div>
-        <div class="stat-big"><div class="v"><span id="n-pct">0</span><span class="u">%</span></div><div class="l">Terminé</div></div>
-      </div>
-      <div class="prog-acts">
-        <button class="btn primary" data-resume><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Reprendre</button>
-        <button class="btn" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Exporter</button>
-        <button class="btn" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Importer</button>
-        <input type="file" id="import-file" accept="application/json" hidden/>
-        <button class="btn" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
-        <button class="btn danger" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Réinitialiser</button>
-      </div>
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="tag">Timeline Optimisée du Multivers</span>
+    <h1 class="disp off">Marvel</h1>
+    <p class="dek">Films · Séries · Spider-Verse · Fox — tout le multivers dans son ordre le plus optimisé.
+      <b>Cochez ce que vous avez vu, votre progression est sauvegardée.</b></p>
+    <p class="upd"><i aria-hidden="true"></i> Mis à jour · juillet 2026</p>
+    <div class="stats">
+      <div class="s"><b>60</b><span>Longs métrages</span></div>
+      <div class="s"><b>25</b><span>Séries</span></div>
+      <div class="s"><b>3</b><span>Spéciaux</span></div>
+      <div class="s"><b id="s-tot">121</b><span>Entrées</span></div>
+      <div class="s"><b id="s-h">489 h</b><span>À voir</span></div>
     </div>
-    <div class="bar"><i id="bar"></i></div>
-    <p class="prog-hint">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Ta progression est sauvegardée sur ce navigateur — utilise <b>Exporter</b> pour en garder une copie ou l’importer sur un autre appareil ou navigateur
-    </p>
-  </section>
+    <button class="start" id="start" type="button">Commencer <em>▸</em></button>
+  </div>
+</section>
 
-  <div class="intro" id="intro"></div>
+<main id="body">
 
-  <details class="fp">
-    <summary><span class="fp-title">Filtres</span>
-      <span class="fp-count" id="fp-count">120 / 120 affichées</span>
-      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-    <div class="fp-body">
-      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Types de média</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">tout</button><button type="button" data-bulk="none">aucun</button></span></div>
-        <div class="fp-row" id="f-types"></div></div>
-      <div class="fp-sec" hidden><div class="fp-sec-head"><span class="fp-sec-lab">Options</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">tout</button><button type="button" data-bulk="none">aucun</button></span></div>
-        <div class="fp-row" id="f-opts"></div></div>
-      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Niveau</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">tout</button><button type="button" data-bulk="none">aucun</button></span></div>
-        <div class="fp-row" id="f-levels"></div></div>
+  <div class="wrap"><div class="intro" id="intro"></div></div>
+
+  <div class="sieve"><div class="wrap" id="sieve">
+    <div class="search" id="searchbox">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="skip" for="q">Rechercher dans la timeline</label>
+      <input id="q" type="search" placeholder="Rechercher…  ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
     </div>
-    <div class="fp-marks"><span class="fp-marks-lab">Repères</span>
-      <span class="ft">FLASHBACK</span><span style="font-size:.78rem;color:var(--muted2)">⭐ Essentiel · 🚨 Important</span><span class="nt">CANONICITÉ NON CONFIRMÉE</span><span class="dt">EARTH-XXXX</span></div>
-  </details>
+    <div class="sgroup" id="f-levels"><span class="lab">Niveau</span></div>
+    <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
+    <div class="sgroup opts" id="f-opts" hidden><span class="lab">Branches</span>
+      <div class="obr" id="f-branch"></div>
+      <div class="onc" id="f-nc"></div>
+    </div>
+    <div class="srow">
+      <div class="marks"><span>Repères</span><span class="ft">FLASHBACK</span>
+        <span class="nt">CANONICITÉ NON CONFIRMÉE</span>
+        <span class="dim">AUTRES RÉALITÉS</span></div>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les vus</button>
+      <span class="fcount" id="fcount">121 / 121 affichées</span>
+    </div>
+  </div></div>
 
-  <nav class="rail" id="rail" aria-label="Aller à une ère"></nav>
   <div id="timeline"></div>
-  <div class="empty" id="empty">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <h3>Aucun résultat pour <span id="empty-q"></span></h3>
-    <p>Essaie une autre orthographe, ou remets les filtres que tu as décochés.</p>
-    <button class="btn" id="clear-filters">Tout réinitialiser</button>
-  </div>
+  <div class="wrap"><p class="empty" id="empty" hidden></p></div>
 </main>
 
 <footer>
   <div class="foot">
-    <div class="about"><h4>Chronologeek</h4><p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.</p></div>
+    <div>
+      <h4>Chronologeek</h4>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
+        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
+        qui regarde tout deux fois.</p>
+    </div>
     <div><h4>Timelines</h4><ul>
       <li><a href="/fr/starwars">Star Wars</a></li>
-      <li><a href="/fr/marvel">Marvel — MCU</a></li>
+      <li><a href="#">Marvel — MCU</a></li>
       <li><a href="/fr/dc">DC Multiverse</a></li>
       <li><a href="/fr/avatar">Avatar</a></li>
       <li><a href="/fr/dossiers/">Dossiers</a></li>
@@ -155,200 +712,717 @@
       <li><a href="#">Contact</a></li>
     </ul></div>
     <div class="legal">
-      Ce produit utilise l’API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
-      mais n’est ni approuvé ni certifié par TMDB. Données livres : <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
-      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.
-      <br/>© 2026 Chronologeek — <a href="/fr/">chronologeek.app</a>
+      Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n'est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ;
+      Chronologeek est un projet de fan indépendant.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
     </div>
   </div>
 </footer>
 
 <button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
-  <img class="nl" src="/images/miss-minutes.png" alt=""/>
-  <img class="hv" src="/images/miss-minutes-overclick.png" alt=""/>
+  <span><img class="nl" src="/images/miss-minutes.png" alt=""/><img class="hv" src="/images/miss-minutes-overclick.png" alt=""/></span>
 </button>
 
-<script>
-const DATA_MCU={
-  id:"mcu",title:"Marvel Cinematic Universe",subtitle:"Timeline Optimisée du Multivers",
-  description:"Films · Séries · Spider-Verse · Fox",
-  color:"#e23636",glow:"rgba(226,54,54,.3)",
-  tmdb_banner:{type:"movie",id:"299534"},
-  notes:`<p class="intro-lead">Si vous êtes ici c'est que vous souhaitez regarder le Marvel Cinematic Universe dans son ordre le plus optimisé, un mélange d'ordre chronologique et d'ordre de sortie, vous trouverez des détails supplémentaires en cliquant sur chaque média et tout ce site est garanti sans spoil majeur.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ce guide marche pour les premiers visionnages ainsi que les revisionnages.</span></div><div class="keys-title">Repères de lecture</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>La Terre principale</div><p>La chronologie principale de l'univers se passe sur la Terre-616 (parfois aussi nommée Terre-199999). Si rien n'est précisé c'est que ça se passe bien sur la Terre principale.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Les flashbacks</div><p>Certains événements sont mieux à voir en tant que FLASHBACK pour comprendre et sont donc indiqués comme tel.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 20V4M17 20V4M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>Les scènes post-crédits</div><p>En regardant dans l'ordre chronologique certaines scènes post-crédits spoilent des éléments plus tard donc j'indique s'il ne faut pas les regarder à ce moment et aussi à quel moment le faire.</p></div><div class="key wide"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>Canonicité non confirmée</div><p>Deux séries sont dans la catégorie "Canonicité non confirmée" et n'ont donc pas été officiellement déclarées comme faisant partie de la timeline principale de la Terre-616 par Marvel Studios (les séries Defenders de Netflix n'étaient plus canon avant de le redevenir). Ce guide inclus tout de même Agent Carter et Les Agents du S.H.I.E.L.D. (Cloak &amp; Dagger, Inhumans, The Runaways sont dans le même cas mais il ne se passe rien de bien important). Toute production audiovisuelle Marvel existante fait bien partie du multivers global donc vous pouvez ne pas les regarder si vous voulez (mais c'est bien, ça ajoute beaucoup de lore et ne contredit rien du canon officiel).</p></div></div><details class="cuts"><summary>Ce qui est écarté, et pourquoi<span class="n">10 entrées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Certains médias sont omis intentionnellement et les explications se trouvent ci-dessous :</p><dl class="cuts-list"><div class="cut"><dt>Les anciens films Punisher</dt><dd>Aucun liens avec le reste du MCU et la série est bien meilleure.</dd></div><div class="cut"><dt>La trilogie Blade et Daredevil/Elektra</dt><dd>Retenez juste qui incarne les personnages principaux, sinon ils n'apportent rien.</dd></div><div class="cut"><dt>The New Mutants</dt><dd>Bien que faisant partie de l'univers X-Men, le film ne référence rien des autres et suit sa propre histoire.</dd></div><div class="cut"><dt>Les séries X-Men</dt><dd>Elles n'ont jamais été confirmées comme canon de l'univers X-Men.</dd></div><div class="cut"><dt>Les anciens films 4 Fantastiques</dt><dd>Retenez juste qui incarne les personnages principaux, sinon ils n'apportent rien.</dd></div><div class="cut"><dt>Spider-Noir</dt><dd>La série se déroule dans sa propre réalité, sans aucun lien avec le multivers. Mais elle est vraiment bien regardez la après les films Spider-Verse si vous voulez pour avoir une connaissance des personnages.</dd></div><div class="cut"><dt>I Am Groot</dt><dd>Un enchaînement de courts-métrages comiques sans histoire développée, vous pouvez regarder seulement le 1er épisode qui fait la transition entre Les Gardiens de la Galaxie 1 et 2.</dd></div><div class="cut"><dt>Le SSU (hors Venom)</dt><dd>Un univers de films moyens aux connexions plus que douteuses (même Venom à des chances de partir du guide un jour).</dd></div><div class="cut"><dt>Dessins animés sans liens (X-Men 92', X-Men 97', Spider-Man 94', Marvel Rising, M.O.D.O.K, Hit-Monkey, Moon Girl et le Dinosaure...)</dt><dd>Pas de liens mais font parti du Multivers.</dd></div><div class="cut"><dt>Comics préludes</dt><dd>Canon jusqu'à ce qu'un film contredise.</dd></div></dl></div></details>`,
-  eras:[
-    {title:"PHASE I — Saga de l'Infini",entries:[
-      {id:"mcu-cap1",img:"/images/captain-america-first-avenger-2011.webp",type:"film",level:"must",tmdb:"1771",media:"movie",title:"Captain America : First Avenger",date:"1942–1945",tags:["flashback"],note:"Ne pas regarder la scène post-crédits.",faq:{quand:"A part le prologue et l'épilogue qui se passent en 2011 et servent à introduire Avengers, tout le film est un flashback se déroulant de 1942 à 1945",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que c'est le premier film dans l'ordre chronologique, qu'il introduit des personnages et éléments très importants",postcredits:"Le film possède une seule scène post-crédits qui sert de teaser a Avengers, ça ne sert à rien de la regarder"}},
-      {id:"mcu-ac-os",type:"video",level:"bonus",tmdb:"0",img:"/images/one-shot-agent-carter.webp",media:"video",title:"One Shot : Agent Carter",date:"1946",faq:{quand:"Le one shot se déroule 1 an après la fin de Captain America : First Avenger en mars 1946",comment:"Le one shot se passe dans la timeline principale",pourquoi:"Parce que chronologiquement ça fait sens de le regarder à la suite",postcredits:"Aucune"}},
-      {id:"mcu-ac-serie",img:"/images/agent-carter-season-1.webp",type:"serie",level:"bonus",tmdb:"61550",media:"tv",season:1,title:"Agent Carter",date:"1946–1947",tags:["nc"],subitems:["Saison 1","Saison 2"],faq:{quand:"La série se déroule juste après les évènements du one shot et s'étale sur les années 1946 et 1947",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-cm",img:"/images/captain-marvel-2019.webp",type:"film",level:"must",tmdb:"299537",media:"movie",title:"Captain Marvel",date:"1995",note:"Ne pas regarder les scènes post-crédits.",faq:{quand:"Le film se déroule en majorité durant l'année 1995 et est donc le 2e film dans l'ordre chronologique bien qu'étant sorti en 2019",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que chronologiquement c'est le deuxième film, qu'il poursuit l'histoire du Tesseract et introduit des éléments importants dans le futur",postcredits:"Ne SURTOUT PAS regarder la première scène post-crédits qui est un gros spoil de Avengers : Infinity War, la deuxième est juste une blague inutile"}},
-      {id:"mcu-im1",img:"/images/iron-man-2008.webp",type:"film",level:"must",tmdb:"1726",media:"movie",title:"Iron Man",date:"2008",faq:{quand:"Le film se déroule en 2008 bien qu'à l'origine Marvel le plaçait en 2010, quelques contradictions apparaissent à cause de ça mais rien de grave",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène post-crédits est importante"}},
-      {id:"mcu-im2",img:"/images/iron-man-2-2010.webp",type:"film",level:"must",tmdb:"10138",media:"movie",title:"Iron Man 2",date:"2010",faq:{quand:"Le film se déroule pendant ce qui est appelé la Fury's Big Week et se passe donc en 2010 pendant la même semaine que L'Incroyable Hulk et Thor",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il est mieux à regarder à la suite du premier film pour la compréhension de la Fury's Big Week",postcredits:"La scène post-crédits est un teaser pour Thor, vous pouvez la regarder sans soucis"}},
-      {id:"mcu-hulk",img:"/images/l-incroyable-hulk-2008.webp",type:"film",level:"must",tmdb:"1724",media:"movie",title:"L'Incroyable Hulk",date:"2010",faq:{quand:"Le film se déroule en majorité pendant ce qui est appelé la Fury's Big Week et se passe donc en 2010 pendant la même semaine que Iron Man 2 et Thor",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que sa scène pré-crédits et le one shot juste après marchent bien mieux après Iron Man 2",postcredits:"C'est une scène pré-crédits que vous devez regarder, le One Shot : Le Consultant la recontextualisera"}},
-      {id:"mcu-consultant",type:"video",level:"important",tmdb:"0",img:"/images/one-shot-the-consultant.webp",media:"video",title:"One Shot : Le Consultant",date:"2010",faq:{quand:"Le one shot se déroule quelques temps après les évènements de la Fury's Big Week",comment:"Le one shot se passe dans la timeline principale",pourquoi:"Parce que le one shot recontextualise la scène post-crédits de L'Incroyable Hulk",postcredits:"Aucune"}},
-      {id:"mcu-thor1",img:"/images/thor-2011.webp",type:"film",level:"must",tmdb:"10195",media:"movie",title:"Thor",date:"2010",faq:{quand:"Le film se déroule pendant ce qui est appelé la Fury's Big Week et se passe donc en 2010 pendant la même semaine que L'Incroyable Hulk et Iron Man 2",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que c'est le film qui introduit la menace de Avengers",postcredits:"La scène post-crédits est importante"}},
-      {id:"mcu-av1",img:"/images/the-avengers-2012.webp",type:"film",level:"must",tmdb:"24428",media:"movie",title:"Avengers",date:"2012",faq:{quand:"Le film se déroule en 2012 quelques temps après les évènements du \"présent\" de Captain America : First Avenger",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que le film conclut la Phase I",postcredits:"La première scène post-crédits est importante, la deuxième est une blague sympathique que vous pouvez regarder"}},
-      {id:"mcu-item47",type:"video",level:"bonus",tmdb:"0",img:"/images/one-shot-item-47.webp",media:"video",title:"One Shot : Article 47",date:"2012",faq:{quand:"Le one shot se déroule juste après les évènements d'Avengers",comment:"Le one shot se passe dans la timeline principale",pourquoi:"Parce que ça se passe juste après Avengers",postcredits:"Aucune"}}
-    ]},
-    {title:"PHASE II — Saga de l'Infini",entries:[
-      {id:"mcu-aos-s1a",img:"/images/marvels-agents-of-shield-season-1.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:1,title:"Les Agents du S.H.I.E.L.D.",date:"2013",tags:["nc"],subitems:["Saison 1 Épisodes 1-7"],faq:{quand:"Les 7 premiers épisodes se déroulent un peu plus d'un an après Avengers avant les évènements de Thor : Le Mondes des Ténèbres",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que ça se passe entre Avengers et Thor : Le Monde des Ténèbres",postcredits:"Aucune"}},
-      {id:"mcu-thor2",img:"/images/thor-the-dark-world-2013.webp",type:"film",level:"must",tmdb:"76338",media:"movie",title:"Thor : Le Monde des Ténèbres",date:"2013",faq:{quand:"Le début du film est la continuité directe d'Avengers et le reste du film se déroule fin 2013",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante, la deuxième n'est pas très importante mais vous pouvez la regarder"}},
-      {id:"mcu-aos-s1b",img:"/images/marvels-agents-of-shield-season-1.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:1,title:"Les Agents du S.H.I.E.L.D.",date:"2013–2014",tags:["nc"],subitems:["Saison 1 Épisodes 8-15"],faq:{quand:"Les épisodes se déroulent en parallèle et après les évènements de Thor : Le Monde des Ténèbres",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes décrivent les évènements de Thor : Le Monde des Ténèbres et que regarder avant serait un spoil",postcredits:"Aucune"}},
-      {id:"mcu-im3",img:"/images/iron-man-3-2013.webp",type:"film",level:"must",tmdb:"68721",media:"movie",title:"Iron Man 3",date:"2013",faq:{quand:"D'abord placé à Noël 2012, Marvel l'a finalement déplacé a Noël 2013 pour une question de cohérence, mais il reste quelques soucis de continuité dans le film, mais rien de grave",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène post-crédits n'est pas très importante mais ajoute une nouvelle couche intéressante au film"}},
-      {id:"mcu-roi",type:"video",level:"must",tmdb:"0",img:"/images/one-shot-all-hail-the-king.webp",media:"video",title:"One Shot : Longue Vie au Roi",date:"2014",faq:{quand:"Le one shot se déroule quelques mois après Iron Man 3",comment:"Le one shot se passe dans la timeline principale",pourquoi:"Parce que le one shot nous apprend quelque chose d'important pour le futur et conclut l'histoire d'Iron Man 3",postcredits:"Aucune"}},
-      {id:"mcu-cap2",img:"/images/captain-america-le-soldat-de-l-hiver-2014.webp",type:"film",level:"must",tmdb:"100402",media:"movie",title:"Captain America : Le Soldat de l'Hiver",date:"2014",faq:{quand:"Le film se déroule au printemps 2014",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante et tease Avengers : l'Ère d'Ultron, la deuxième aussi est importante"}},
-      {id:"mcu-aos-s1c",img:"/images/marvels-agents-of-shield-season-1.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:1,title:"Les Agents du S.H.I.E.L.D.",date:"2014",tags:["nc"],subitems:["Saison 1 Épisodes 16-22"],faq:{quand:"Les épisodes se déroulent en parallèle de Captain America : Le Soldat de l'Hiver",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes décrivent les évènements de Captain America : Le Soldat de l’Hiver et que regarder avant serait un spoil",postcredits:"Aucune"}},
-      {id:"mcu-gotg1",img:"/images/les-gardiens-de-la-galaxie-2014.webp",type:"film",level:"must",tmdb:"118340",media:"movie",title:"Les Gardiens de la Galaxie",date:"2014",faq:{quand:"Le film se déroule en 2014 (mais dans l'espace c'est pas très important)",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène pré-crédits est une blague sympathique, la scène post-crédits introduit un personnage mineur que vous verrez par la suite"}},
-      {id:"mcu-gotg2",img:"/images/les-gardiens-de-la-galaxie-2-2017.webp",type:"film",level:"must",tmdb:"283995",media:"movie",title:"Les Gardiens de la Galaxie Vol. 2",date:"2014",note:"La 4e scène post-crédits se passe plusieurs années dans le futur mais ne spoile rien d'important.",faq:{quand:"Le film se déroule quelques mois après les évènements du premier film",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est une blague sympathique, la deuxième est une référence aux comics pas importante, la troisième est importante, la quatrième est une blague se déroulant dans le futur mais ne spoile rien, la dernière est une blague sympathique qui peut être liée à la série What If...?"}},
-      {id:"mcu-dd1",img:"/images/daredevil-season-1.webp",type:"serie",level:"important",tmdb:"61889",media:"tv",season:1,title:"Daredevil",date:"2014",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule fin 2014, 2 ans après la bataille de New York d'Avengers",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-jj1",img:"/images/jessica-jones-season-1.webp",type:"serie",level:"bonus",tmdb:"38472",media:"tv",season:1,title:"Jessica Jones",date:"2015",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule début 2015 après Daredevil saison 1",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-aos-s2a",img:"/images/marvels-agents-of-shield-season-2.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:2,title:"Les Agents du S.H.I.E.L.D.",date:"2014–2015",tags:["nc"],subitems:["Saison 2 Épisodes 1-19"],faq:{quand:"Les épisodes se déroulent sur environ un an entre début 2014 et début 2015",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes se situent ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-aou",img:"/images/avengers-age-of-ultron-2015.webp",type:"film",level:"must",tmdb:"99861",media:"movie",title:"Avengers : l'Ère d'Ultron",date:"2015",faq:{quand:"Le film se déroule début 2015",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène post-crédits est importante mais on ne sait pas vraiment quand elle se place dans la chronologie, sûrement peu de temps avant Avengers : Infinity War mais vous pouvez la regarder"}},
-      {id:"mcu-aos-s2b",img:"/images/marvels-agents-of-shield-season-2.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:2,title:"Les Agents du S.H.I.E.L.D.",date:"2015",tags:["nc"],subitems:["Saison 2 Épisodes 20-22"],faq:{quand:"Les épisodes se déroulent pendant les évènements de Avengers : l'Ère d'Ultron",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes décrivent les évènements de Avengers : l'Ère d'Ultron et que regarder avant serait un spoil",postcredits:"Aucune"}},
-      {id:"mcu-antman1",img:"/images/ant-man-2015.webp",type:"film",level:"must",tmdb:"102899",media:"movie",title:"Ant-Man",date:"2015",faq:{quand:"Le film se déroule quelques mois après Avengers : l'Ère d’Ultron durant l'été 2015",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante, la deuxième est un extrait de Captain America : Civil War vous pouvez choisir de la regarder ou non"}},
-      {id:"mcu-dd2",img:"/images/daredevil-season-2.webp",type:"serie",level:"important",tmdb:"61889",media:"tv",season:2,title:"Daredevil",date:"2015",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule fin 2015",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-lc1",img:"/images/luke-cage-season-1.webp",type:"serie",level:"bonus",tmdb:"62126",media:"tv",season:1,title:"Luke Cage",date:"2015",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule fin 2015 pendant Daredevil saison 2",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-if1",img:"/images/iron-fist-season-1.webp",type:"serie",level:"bonus",tmdb:"62127",media:"tv",season:1,title:"Iron Fist",date:"2016",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule début 2016",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-aos-s3a",img:"/images/marvels-agents-of-shield-season-3.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:3,title:"Les Agents du S.H.I.E.L.D.",date:"2016",tags:["nc"],subitems:["Saison 3 Épisodes 1-18"],faq:{quand:"Les épisodes se déroulent au début de l'année 2016 avant les évènements de Captain America : Civil War",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes se situent ici chronologiquement",postcredits:""}},
-      {id:"mcu-defenders",img:"/images/the-defenders-season-1.webp",type:"serie",level:"important",tmdb:"62285",media:"tv",season:1,title:"The Defenders",date:"2016",subitems:["Saison 1"],faq:{quand:"La série se déroule quelques mois après les évènements de Iron Fist saison 1",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement et que je pense que laisser un peu de temps passer entre Iron Fist et The Defenders suit la logique des séries qui ont quelques mois d'écarts in-universe",postcredits:""}}
-    ]},
-    {title:"PHASE III — Saga de l'Infini",entries:[
-      {id:"mcu-cw",img:"/images/captain-america-civil-war-2016.webp",type:"film",level:"must",tmdb:"271110",media:"movie",title:"Captain America : Civil War",date:"2016",faq:{quand:"Le film se déroule au printemps 2016",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:""}},
-      {id:"mcu-aos-s3b",img:"/images/marvels-agents-of-shield-season-3.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:3,title:"Les Agents du S.H.I.E.L.D.",date:"2016",tags:["nc"],subitems:["Saison 3 Épisodes 19-22"],faq:{quand:"Les épisodes se déroulent en parallèle des évènements d'Avengers : Infinity War",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes mentionnent les évènements d'Avengers : Infinity War et que regarder avant serait un spoil",postcredits:"Aucune"}},
-      {id:"mcu-bw",img:"/images/black-widow-2021.webp",type:"film",level:"must",tmdb:"497698",media:"movie",title:"Black Widow",date:"2016",note:"Ne pas regarder la scène post-crédits.",faq:{quand:"Le film se déroule juste après les évènements de Captain America : Civil War",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que bien que sorti en 2021, le film décrit des évènements se passant juste après Captain America : Civil War",postcredits:"Ne regardez surtout pas la scène post-crédits qui spoile fortement la suite des évènements"}},
-      {id:"mcu-bp1",img:"/images/black-panther-2018.webp",type:"film",level:"must",tmdb:"284054",media:"movie",title:"Black Panther",date:"2016",faq:{quand:"Le film se déroule juste après les évènements de Captain America : Civil War",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante, la deuxième l'est encore plus"}},
-      {id:"mcu-eow",img:"/images/eyes-of-wakanda-season-1.webp",type:"anime",level:"bonus",tmdb:"241388",media:"tv",title:"Eyes of Wakanda",date:"1260 BC – 1896",tags:["flashback"],faq:{quand:"Chaque épisode se déroule à une période distincte de l'histoire entre -1260 et 1896",comment:"La série se passe dans la timeline principale",pourquoi:"Parce que regarder ça en tout premier dans la chronologie n'aurait aucun sens et qu'il vaut mieux avoir du background sur le Wakanda",postcredits:"Aucune"}},
-      {id:"mcu-sm1",img:"/images/spider-man-homecoming-2017.webp",type:"film",level:"must",tmdb:"315635",media:"movie",title:"Spider-Man : Homecoming",date:"2016",faq:{quand:"Le film commence juste après les évènements de Captain America : Civil War et s'étend sur quelques mois",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante, la deuxième est une mauvaise blague que vous pouvez vraiment éviter"}},
-      {id:"mcu-pun1",img:"/images/the-punisher-season-1.webp",type:"serie",level:"bonus",tmdb:"67178",media:"tv",season:1,title:"The Punisher",date:"2016",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule fin 2016",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-ds1",img:"/images/doctor-strange-2016.webp",type:"film",level:"must",tmdb:"284052",media:"movie",title:"Doctor Strange",date:"2016–2017",note:"Ne pas regarder les scènes post-crédits.",faq:{quand:"Le film se déroule juste après les évènements de Spider-Man : No Way Home en novembre 2024",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante mais n'a pas de résolution à ce jour, la deuxième est une blague meta que vous pouvez regarder si vous êtes vraiment très très fan de Sam Raimi"}},
-      {id:"mcu-aos-s4",img:"/images/marvels-agents-of-shield-season-4.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:4,title:"Les Agents du S.H.I.E.L.D.",date:"2017",tags:["nc"],subitems:["Saison 4"],faq:{quand:"La saison 4 se déroule pendant le printemps 2017",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-jj2",img:"/images/jessica-jones-season-2.webp",type:"serie",level:"bonus",tmdb:"38472",media:"tv",season:2,title:"Jessica Jones",date:"2017",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule dans la première moitié de 2017",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-lc2",img:"/images/luke-cage-season-2.webp",type:"serie",level:"bonus",tmdb:"62126",media:"tv",season:2,title:"Luke Cage",date:"2017",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule à la fin de l'été 2017",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-if2",img:"/images/iron-fist-season-2.webp",type:"serie",level:"bonus",tmdb:"62127",media:"tv",season:2,title:"Iron Fist",date:"2017",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule après Luke Cage saison 2",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-dd3",img:"/images/daredevil-season-3.webp",type:"serie",level:"important",tmdb:"61889",media:"tv",season:3,title:"Daredevil",date:"2017",subitems:["Saison 3"],faq:{quand:"La saison 3 se déroule 2 ans après les évènements de la saison 2, probablement en parallèle de Iron Fist saison 2",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-aos-s5a",img:"/images/marvels-agents-of-shield-season-5.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:5,title:"Les Agents du S.H.I.E.L.D.",date:"2017",tags:["nc"],subitems:["Saison 5 Épisodes 1-13"],faq:{quand:"Les épisodes se déroulent en partie durant l'année 2017",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes se situent ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-thor3",img:"/images/thor-ragnarok-2017.webp",type:"film",level:"must",tmdb:"284053",media:"movie",title:"Thor : Ragnarok",date:"2017",note:"Ne pas regarder les scènes post-crédits.",faq:{quand:"Le film se déroule fin 2017 (mais dans l'espace c'est pas très important)",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est un prélude direct à Avengers : Infinity War que je ne conseille pas de regarder maintenant, la deuxième est une blague légère insignifiante que vous pouvez sauter"}},
-      {id:"mcu-pun2",img:"/images/the-punisher-season-2.webp",type:"serie",level:"bonus",tmdb:"67178",media:"tv",season:2,title:"The Punisher",date:"2018",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule au printemps 2018",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-jj3",img:"/images/jessica-jones-season-3.webp",type:"serie",level:"bonus",tmdb:"38472",media:"tv",season:3,title:"Jessica Jones",date:"2018",subitems:["Saison 3"],faq:{quand:"La saison 3 se déroule 1 an après la saison 2, sûrement en parallèle de la saison 2 de The Punisher",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-antman2",img:"/images/ant-man-and-the-wasp-2018.webp",type:"film",level:"must",tmdb:"363088",media:"movie",title:"Ant-Man et la Guêpe",date:"2018",note:"Ne pas regarder les scènes post-crédits.",faq:{quand:"Le film se déroule quelque part durant le printemps ou l'été 2026 même si ça cause quelques tout petits problèmes de continuité",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est peut-être importante mais n'a pas de résolution pour l'instant, la deuxième scène est un teaser pour Loki saison 2 que vous pouvez regarder"}},
-      {id:"mcu-aos-s5b",img:"/images/marvels-agents-of-shield-season-5.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:5,title:"Les Agents du S.H.I.E.L.D.",date:"2018",tags:["nc"],subitems:["Saison 5 Épisodes 14-18"],faq:{quand:"Les épisodes se déroulent durant le mois de mai 2018 avant les évènements d'Avengers : Infinity War",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes se situent ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-thor3pc",img:"/images/thor-ragnarok-2017.webp",type:"video",level:"must",tmdb:"284053",media:"video",title:"Première scène post-crédits Thor : Ragnarok",date:"2018",faq:{quand:"La scène se déroule quelques mois après la fin du film, juste au début d'Avengers : Infinity War",comment:"La scène se passe dans la timeline principale",pourquoi:"Parce que la scène fait une parfaite transition avec le début d'Avengers : Infinity War",postcredits:"Aucune"}},
-      {id:"mcu-iw",img:"/images/avengers-infinity-war-2018.webp",type:"film",level:"must",tmdb:"299536",media:"movie",title:"Avengers : Infinity War",date:"2018",faq:{quand:"Le film se déroule durant le mois de mai 2018",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène post-crédits est très importante"}},
-      {id:"mcu-antman2pc",img:"/images/ant-man-and-the-wasp-2018.webp",type:"video",level:"must",tmdb:"363088",media:"video",title:"Première scène post-crédits Ant-Man et la Guêpe",date:"2018",faq:{quand:"La scène se déroule pendant les événements d'Avengers : Infinity War",comment:"La scène se passe dans la timeline principale",pourquoi:"Parce que la scène se situe pendant les événements d'Avengers : Infinity War et que la regarder avant serait un spoil",postcredits:"Aucune"}},
-      {id:"mcu-aos-s5c",img:"/images/marvels-agents-of-shield-season-5.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:5,title:"Les Agents du S.H.I.E.L.D.",date:"2018",tags:["nc"],subitems:["Saison 5 Épisodes 19-22"],faq:{quand:"Les épisodes se déroulent en parallèle des évènements d'Avengers : Infinity War",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce que les épisodes mentionnent les événements d'Avengers : Infinity War et que regarder avant serait un spoil",postcredits:"Aucune"}},
-      {id:"mcu-aos-s6",img:"/images/marvels-agents-of-shield-season-6.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:6,title:"Les Agents du S.H.I.E.L.D.",date:"2019",tags:["nc"],subitems:["Saison 6"],faq:{quand:"La saison 6 se déroule durant l'été 2019",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:""}},
-      {id:"mcu-aos-s7",img:"/images/marvels-agents-of-shield-season-7.webp",type:"serie",level:"bonus",tmdb:"1403",media:"tv",season:7,title:"Les Agents du S.H.I.E.L.D.",date:"2020",tags:["nc"],subitems:["Saison 7"],faq:{quand:"Les épisodes se déroulent en partie durant les années 2019 et 2020",comment:"La série n'a jamais été confirmée comme canon mais elle fonctionne très bien dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-cmpc",img:"/images/captain-marvel-2019.webp",type:"video",level:"must",tmdb:"299537",media:"video",title:"Première scène post-crédits Captain Marvel",date:"2018",tags:["flashback"],faq:{quand:"La scène se déroule quelques mois après la fin d'Avengers : Infinity War",comment:"La scène se passe dans la timeline principale",pourquoi:"Parce que la scène se déroule ici chronologiquement et que la regarder après Captain Marvel serait très étrange",postcredits:"Aucune"}},
-      {id:"mcu-eg",img:"/images/avengers-endgame-2019.webp",type:"film",level:"must",tmdb:"299534",media:"movie",title:"Avengers : Endgame",date:"2023",faq:{quand:"Le film se déroule 5 ans après les évènements d'Avengers : Infinity War, en octobre 2023",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"Aucune, le film conclut la Saga de l'Infini, on entend juste un bruit de marteau pour rappeler qu'Iron Man a lancé tout cet univers en 2008"}}
-    ]},
-    {title:"PHASE IV — Saga du Multivers",entries:[
-      {id:"mcu-loki1",img:"/images/loki-season-1.webp",type:"serie",level:"must",tmdb:"84958",media:"tv",season:1,title:"Loki",dim:"HORS DU TEMPS",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule hors du temps comme on l'entend mais juste après ce qui se passe avec Loki dans Avengers : Endgame",comment:"La série suit les aventures du Loki d'Avengers : Endgame",pourquoi:"Parce qu'elle suit littéralement les évènements d'Avengers : Endgame",postcredits:"L'épisode 4 à une scène post-crédits très importante"}},
-      {id:"mcu-wi1",img:"/images/what-if-season-1.webp",type:"anime",level:"important",tmdb:"91363",media:"tv",season:1,title:"What If…?",dim:"AUTRES RÉALITÉS",subitems:["Saison 1"],faq:{quand:"Les épisodes de la saison 1 se passent à différentes époques",comment:"La série se passe dans de nombreux univers différents et suit des variants de personnages que l'on connaît",pourquoi:"Parce que les évènements de Loki mènent aux évènements de What If...?",postcredits:"L'épisode 9 à une scène post-crédits importante"}},
-      {id:"mcu-wv",img:"/images/wanda-vision-season-1.webp",type:"serie",level:"must",tmdb:"85271",media:"tv",season:1,title:"WandaVision",date:"2023",subitems:["Saison 1"],faq:{quand:"La série se déroule environ 1 mois après la fin d'Avengers : Endgame",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"La scène post-crédits de l'épisode 7 est importante, celle de l'épisode 8 aussi et les 2 scènes de l'épisode 9 sont très importantes"}},
-      {id:"mcu-sc",img:"/images/shang-chi-2021.webp",type:"film",level:"must",tmdb:"566525",media:"movie",title:"Shang-Chi et la Légende des Dix Anneaux",date:"2024",faq:{quand:"Le film se déroule au printemps 2024",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante, la deuxième aussi mais n'a pas encore de résolution à ce jour"}},
-      {id:"mcu-fatws",img:"/images/the-falcon-and-the-winter-soldier-season-1.webp",type:"serie",level:"must",tmdb:"88396",media:"tv",season:1,title:"Falcon et le Soldat de l'Hiver",date:"2024",subitems:["Saison 1"],faq:{quand:"La série se déroule entre le printemps et l'été 2024",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"L'épisode 5 possède une scène post-crédits importante, l'épisode 6 en a aussi une qui semble importante mais n'a pas de résolution à ce jour"}},
-      {id:"mcu-smffh",img:"/images/spider-man-far-from-home-2019.webp",type:"film",level:"must",tmdb:"429617",media:"movie",title:"Spider-Man : Far From Home",date:"2024",faq:{quand:"Le film se déroule durant l'été 2024",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est très importante, la deuxième est assez importante pour des évènements futurs"}},
-      {id:"mcu-eternals",img:"/images/eternals-2021.webp",type:"film",level:"must",tmdb:"524434",media:"movie",title:"Les Éternels",date:"2024",faq:{quand:"Le film se déroule en octobre 2024, bien qu'il puisse laisser penser qu'il se déroule juste après Avengers : Endgame",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement et que laisser une pause Spider-Man n'est pas plus mal",postcredits:"La première scène post-crédits est importante mais n'a pas de résolution à ce jour, la deuxième est dans le même cas"}}
-    ]},
-    {title:"SEGMENT SPIDER-VERSE — avant Spider-Man : No Way Home",special:"sv",entries:[
-      {id:"mcu-smr1",img:"/images/spider-man-2002.webp",type:"film",level:"important",tmdb:"557",media:"movie",title:"Spider-Man",date:"2002",dim:"TERRE-96283",faq:{quand:"Le film se déroule sur toute l'année 2002",comment:"Le film se passe dans un univers parallèle et suit un variant du Spider-Man de la timeline principale qui apparaitra dans Spider-Man : No Way Home",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre Captain Marvel et Iron Man) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Spider-Man : No Way Home",postcredits:"Aucune"}},
-      {id:"mcu-smr2",img:"/images/spider-man-2-2004.webp",type:"film",level:"important",tmdb:"558",media:"movie",title:"Spider-Man 2",date:"2004",dim:"TERRE-96283",faq:{quand:"Le film se déroule au printemps 2004",comment:"Le film se passe dans un univers parallèle et suit un variant du Spider-Man de la timeline principale qui apparaitra dans Spider-Man : No Way Home",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre Captain Marvel et Iron Man) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Spider-Man : No Way Home",postcredits:"Aucune"}},
-      {id:"mcu-smr3",img:"/images/spider-man-3-2007.webp",type:"film",level:"important",tmdb:"559",media:"movie",title:"Spider-Man 3",date:"2005",dim:"TERRE-96283",faq:{quand:"Le film se déroule durant l'été 2005",comment:"Le film se passe dans un univers parallèle et suit un variant du Spider-Man de la timeline principale qui apparaitra dans Spider-Man : No Way Home",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre Captain Marvel et Iron Man) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Spider-Man : No Way Home",postcredits:"Aucune"}},
-      {id:"mcu-tasm1",img:"/images/the-amazing-spider-man-2012.webp",type:"film",level:"important",tmdb:"1930",media:"movie",title:"The Amazing Spider-Man",date:"2013",dim:"TERRE-120703",faq:{quand:"Le film se déroule au printemps 2013",comment:"Le film se passe dans un univers parallèle et suit un variant du Spider-Man de la timeline principale qui apparaitra dans Spider-Man : No Way Home",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre Avengers et Captain America : Le Soldat de l'Hiver) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Spider-Man : No Way Home",postcredits:"La scène post-crédits tease la suite"}},
-      {id:"mcu-tasm2",img:"/images/the-amazing-spider-man-2-2014.webp",type:"film",level:"important",tmdb:"102382",media:"movie",title:"The Amazing Spider-Man 2 : Le Destin d'un Héros",date:"2014",dim:"TERRE-120703",faq:{quand:"Le film se déroule entre l'été 2013 et la fin 2014",comment:"Le film se passe dans un univers parallèle et suit un variant du Spider-Man de la timeline principale qui apparaitra dans Spider-Man : No Way Home",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre Avengers et Captain America : Le Soldat de l'Hiver) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Spider-Man : No Way Home",postcredits:"Aucune"}},
-      {id:"mcu-itsv",img:"/images/spider-man-into-the-spider-verse-2018.webp",type:"filmanim",level:"bonus",tmdb:"324857",media:"movie",title:"Spider-Man : Into the Spider-Verse",date:"2018",dim:"TERRE-1610",faq:{quand:"Le film se déroule en décembre 2018",comment:"Le film se passe dans un univers parallèle et suit différents Spider-Man du multivers, sa suite référencera des évènements de la timeline principale",pourquoi:"Parce que bien qu'indépendant et se passant en 2018, le film introduit des notions du multivers et des personnages (du moins leurs variants) qui sont plus intéressants à voir avec le background des autres films Spider-Man en tête",postcredits:"La scène post-crédits est importante et tease la suite"}},
-      {id:"mcu-venom1",img:"/images/venom-2018.webp",type:"film",level:"bonus",tmdb:"335983",media:"movie",title:"Venom",date:"2019",dim:"TERRE-688",faq:{quand:"Le début du film se déroule en 2018 puis tout le reste en 2019",comment:"Le film se passe dans un univers parallèle, ses suites référencent clairement la timeline principale",pourquoi:"Parce que sa suite référence clairement la timeline principale",postcredits:"La scène post-crédits tease la suite"}},
-      {id:"mcu-venom2",img:"/images/venom-let-there-be-carnage-2021.webp",type:"film",level:"bonus",tmdb:"580489",media:"movie",title:"Venom : Let There Be Carnage",date:"2020",dim:"TERRE-688",faq:{quand:"Le film se déroule 1 an après les évènements du premier film",comment:"Le film se passe dans un univers parallèle et référence clairement la timeline principale",pourquoi:"Parce que la scène post-crédits du film référence clairement la timeline principale et sera PEUT-ÊTRE importante dans le futur (on se sait pas encore à ce jour)",postcredits:"La scène post-crédits référence la timeline principale et est la seule raison pour laquelle la trilogie Venom se trouve dans ce guide"}}
-    ]},
-    {title:"SUITE PHASE IV — Saga du Multivers",entries:[
-      {id:"mcu-nwh",img:"/images/spider-man-no-way-home-2021.webp",type:"film",level:"must",tmdb:"634649",media:"movie",title:"Spider-Man : No Way Home",date:"2024",faq:{quand:"Le film démarre après les évènements de Spider-Man : Far From Home mais se déroule en majorité en novembre 2024",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante, si vous en avez une deuxième c'est juste la bande annonce de Doctor Strange in the Multiverse of Madness"}},
-      {id:"mcu-venom3",img:"/images/venom-the-last-dance-2024.webp",type:"film",level:"bonus",tmdb:"912649",media:"movie",title:"Venom : The Last Dance",date:"2020",dim:"TERRE-688",faq:{quand:"Le film se déroule très peu de temps après les évènements du deuxième film",comment:"Le film se passe dans un univers parallèle et référence clairement la timeline principale",pourquoi:"Parce qu'il suit directement la scène post-crédits de Venom : Let There Be Carnage et donc les évènements de Spider-Man : No Way Home",postcredits:"La première scène post-crédits est peut-être importante mais n'a pas de résolution à ce jour, la deuxième est dans le même cas"}},
-      {id:"mcu-atsv",img:"/images/spider-man-across-the-spider-verse-2023.webp",type:"filmanim",level:"bonus",tmdb:"569094",media:"movie",title:"Spider-Man : Across the Spider-Verse",date:"2020",dim:"TERRE-1610",faq:{quand:"Le film se déroule au printemps 2020, 1 an et 4 mois après le premier film, même si tout indique dans le film qu'il se passe en 2023",comment:"Le film se passe dans un univers parallèle et suit différents Spider-Man du multivers, il référence clairement des évènements de la timeline principale",pourquoi:"Parce que le film référence clairement les évènements de Spider-Man : No Way Home et introduit des notions importantes du multivers",postcredits:"Aucune"}},
-      {id:"mcu-mom",img:"/images/doctor-strange-in-the-multiverse-of-madness-2022.webp",type:"film",level:"must",tmdb:"453395",media:"movie",title:"Doctor Strange in the Multiverse of Madness",date:"2024",faq:{quand:"Le film se déroule juste après les évènements de Spider-Man : No Way Home en novembre 2024",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante mais n'a pas de résolution à ce jour, la deuxième est une blague méta que vous pouvez regarder si vous êtes vraiment très très fan de Sam Raimi"}},
-      {id:"mcu-bwpc",img:"/images/black-widow-2021.webp",type:"video",level:"important",tmdb:"497698",media:"video",title:"Scène post-crédits Black Widow",date:"2024",faq:{quand:"La scène se déroule quelques temps avant la série Hawkeye",comment:"La scène se passe dans la timeline principale",pourquoi:"Parce que la scène se situe quelques temps avant la série Hawkeye et la regarder après son film serait un ÉNORME spoil",postcredits:"Aucune"}},
-      {id:"mcu-hawkeye",img:"/images/hawkeye-season-1.webp",type:"serie",level:"important",tmdb:"88329",media:"tv",season:1,title:"Hawkeye",date:"2024",subitems:["Saison 1"],faq:{quand:"La série se déroule autour de Noël 2024",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"La scène post-crédits de l'épisode 6 est très sympathique"}},
-      {id:"mcu-mk",img:"/images/moon-knight-season-1.webp",type:"serie",level:"bonus",tmdb:"92749",media:"tv",season:1,title:"Moon Knight",date:"2025",subitems:["Saison 1"],faq:{quand:"La série se déroule au printemps 2025",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"La scène post-crédits de l'épisode 6 est importante"}},
-      {id:"mcu-bp2",img:"/images/black-panther-wakanda-forever-2022.webp",type:"film",level:"must",tmdb:"505642",media:"movie",title:"Black Panther : Wakanda Forever",date:"2025",faq:{quand:"Le film se déroule au printemps 2025",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène post-crédits est très importante"}}
-    ]},
-    {title:"PHASE V — Saga du Multivers",entries:[
-      {id:"mcu-echo",img:"/images/echo-season-1.webp",type:"serie",level:"important",tmdb:"122226",media:"tv",season:1,title:"Echo",date:"2025",subitems:["Saison 1"],faq:{quand:"La série se déroule au printemps 2025, 5 mois après Hawkeye",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"La scène post-crédits de l'épisode 5 est très importante"}},
-      {id:"mcu-shehulk",img:"/images/she-hulk-avocate-season-1.webp",type:"serie",level:"bonus",tmdb:"92783",media:"tv",season:1,title:"She-Hulk : Avocate",date:"2025",subitems:["Saison 1"],faq:{quand:"La série se déroule durant le printemps et l'été 2025",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"L'épisode 1 à une scène post-crédit qui est une blague vaseuse peu importante, celle de l'épisode 2 est inutile, celle de l'épisode 3 est... particulière mais peut vous faire sourire, celle de l'épisode 4 est une blague peu importante et celle de l'épisode 9 est importante"}},
-      {id:"mcu-mm",img:"/images/miss-marvel-season-1.webp",type:"serie",level:"must",tmdb:"92782",media:"tv",season:1,title:"Miss Marvel",date:"2025",subitems:["Saison 1"],faq:{quand:"La série se déroule probablement en septembre ou octobre 2025",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"La scène mi-crédits du premier épisode est importante, la scène post-crédits de l'épisode 6 est très importante et se passe pendant The Marvels, vous pouvez la skip si vous avez peur d'un spoil sur le synopsis du film"}},
-      {id:"mcu-thor4",img:"/images/thor-love-and-thunder-2022.webp",type:"film",level:"must",tmdb:"616037",media:"movie",title:"Thor : Love and Thunder",date:"2025",faq:{quand:"Une partie du film se déroule au printemps 2025, la suite est 6 mois après, vers octobre 2025",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est importante mais n'a pas de résolution à ce jour, la deuxième est importante"}},
-      
-      {id:"mcu-ironheart",img:"/images/ironheart-season-1.webp",type:"serie",level:"bonus",tmdb:"114471",media:"tv",season:1,title:"Ironheart",date:"2025",subitems:["Saison 1"],faq:{quand:"La série se déroule durant l'automne 2025, 6 mois après Black Panther : Wakanda Forever",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"L'épisode 6 possède une scène post-crédits est sympathique mais n'a aucune résolution pour le moment"}},
-      {id:"mcu-wwbn",img:"/images/werewolf-by-night-2022.webp",type:"special",level:"bonus",tmdb:"894205",media:"movie",title:"Werewolf by Night",date:"2025",faq:{quand:"Le téléfilm se déroule le jour d'Halloween, le 31 octobre 2025",comment:"Le téléfilm se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-gotgxmas",img:"/images/the-guardians-of-the-galaxy-holiday-special-2022.webp",type:"special",level:"must",tmdb:"774752",media:"movie",title:"Les Gardiens de la Galaxie : Joyeuses Fêtes",date:"2025",faq:{quand:"Le téléfilm se déroule durant Noël 2025",comment:"Le téléfilm se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La scène post-crédits est une blague meta insignifiante"}},
-      {id:"mcu-gotg3",img:"/images/les-gardiens-de-la-galaxie-3-2023.webp",type:"film",level:"must",tmdb:"447365",media:"movie",title:"Les Gardiens de la Galaxie Vol. 3",date:"2026",faq:{quand:"Le film se déroule au durant l'année 2026 (mais dans l'espace c'est pas très important)",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement et qu'enchaîner le téléfilm puis le film est satisfaisant",postcredits:"La première scène post-crédits est importante, la deuxième est importante aussi"}},
-      {id:"mcu-antman3",img:"/images/ant-man-and-the-wasp-quantumania-2023.webp",type:"film",level:"must",tmdb:"640146",media:"movie",title:"Ant-Man et la Guêpe : Quantumania",date:"2026",faq:{quand:"Le film se déroule quelque part durant le printemps ou l'été 2026 même si ça cause quelques tout petits problèmes de continuité",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"La première scène post-crédits est peut-être importante mais n'a pas de résolution pour l'instant, la deuxième scène est un teaser pour Loki saison 2 que vous pouvez regarder"}},
-      {id:"mcu-si",img:"/images/secret-invasion-season-1.webp",type:"serie",level:"bonus",tmdb:"114472",media:"tv",season:1,title:"Secret Invasion",date:"2026",subitems:["Saison 1"],faq:{quand:"La série se déroule durant l'été et/ou l'automne 2026",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se situe ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-marvels",img:"/images/the-marvels-2023.webp",type:"film",level:"must",tmdb:"609681",media:"movie",title:"The Marvels",date:"2026",note:"Ne pas regarder la scène post-crédits.",faq:{quand:"Le film se déroule peu de temps après la série Secret Invasion, en fin d'année 2026",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se situe ici chronologiquement",postcredits:"Vous pouvez regarder la scène post-crédits maintenant mais je ne vous conseille pas si c'est votre premier visionnage du MCU"}},
-      {id:"mcu-loki2",img:"/images/loki-season-2.webp",type:"serie",level:"must",tmdb:"84958",media:"tv",season:2,title:"Loki",dim:"HORS DU TEMPS",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule toujours hors du temps et continue de suivre l'histoire de Loki et de la TVA",comment:"La série suit les aventures du Loki de Avengers : Endgame",pourquoi:"Parce qu'elle se situe ici chronologiquement (si on peut dire ça) mais est surtout importante à voir après Ant-Man et la Guêpe : Quantumania et pourrait fonctionner après la fin de The Marvels",postcredits:"L'épisode 1 possède une scène post-crédits importante, l'épisode 5 en a aussi une qui est peu importante mais peut vous plaire"}},
-      {id:"mcu-wi2",img:"/images/what-if-season-2.webp",type:"anime",level:"important",tmdb:"91363",media:"tv",season:2,title:"What If…?",dim:"AUTRES RÉALITÉS",subitems:["Saison 2"],faq:{quand:"Les épisodes de la saison 2 se passent à différentes époques",comment:"La série se passe dans de nombreux univers différents et suit des variants de personnages que l'on connaît",pourquoi:"Parce que la saison 2 se passe (si on peut dire ça) juste après les évènements de la fin de Loki saison 2",postcredits:"L'épisode 4 possède une scène post-crédits peu intéréssante"}}
-    ]},
-    {title:"SEGMENT FOX — avant Deadpool & Wolverine et Avengers : Doomsday",special:"fox",entries:[
-      {id:"mcu-xfc",img:"/images/x-men-first-class-2011.webp",type:"film",level:"bonus",tmdb:"49538",media:"movie",title:"X-Men : Le Commencement",date:"1962",dim:"TERRE-10005A",faq:{quand:"Le film se déroule en 1962",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"Aucune"}},
-      {id:"mcu-xow",img:"/images/x-men-origins-wolverine-2009.webp",type:"film",level:"bonus",tmdb:"2080",media:"movie",title:"X-Men Origins : Wolverine",date:"1979",dim:"TERRE-10005A",faq:{quand:"Le début du film traverse plein d'époques mais la majorité du film se déroule en 1979",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"La première scène post-crédits est sympathique, la deuxième est inutile"}},
-      {id:"mcu-xm1",img:"/images/x-men-2000.webp",type:"film",level:"important",tmdb:"36657",media:"movie",title:"X-Men",date:"1994",dim:"TERRE-10005A",faq:{quand:"Bien qu'étant sorti dans les années 2000 et normalement se déroulant en même temps, la timeline de l'univers des X-Men est un joyeux bordel plein d'incohérences et le film fonctionne de façon plus logique 15 ans après X-Men Origins : Wolverine, en 1994",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaîtront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"Aucune"}},
-      {id:"mcu-xm2",img:"/images/x-men-2-2003.webp",type:"film",level:"important",tmdb:"36658",media:"movie",title:"X-Men 2",date:"1994",dim:"TERRE-10005A",faq:{quand:"Bien qu'étant sorti dans les années 2000 et normalement se déroulant en même temps, la timeline de l'univers des X-Men est un joyeux bordel plein d'incohérences et le film fonctionne de façon plus logique en 1994, un mois après le précédent film",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"Aucune"}},
-      {id:"mcu-xm3",img:"/images/x-men-l-affrontement-final-2006.webp",type:"film",level:"important",tmdb:"36668",media:"movie",title:"X-Men 3 : L'Affrontement Final",date:"1999",dim:"TERRE-10005A",faq:{quand:"Bien qu'étant sorti dans les années 2000 et normalement se déroulant en même temps, la timeline de l'univers des X-Men est un joyeux bordel plein d'incohérences et le film fonctionne de façon plus logique en 1999, 5 ans après le précédent film",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaîtront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"La scène post-crédits est très importante mais compliquée à comprendre vu qu'ils ne fournissent aucuns détails donc attention SPOIL : Charles Xavier avait un frère jumeau en état de mort cérébrale et à sa mort il a transféré son esprit dans le corps de son frère"}},
-      {id:"mcu-twolv",img:"/images/wolverine-le-combat-de-l-immortel-2013.webp",type:"film",level:"important",tmdb:"76170",media:"movie",title:"Wolverine : Le Combat de l'Immortel",date:"2013",dim:"TERRE-10005A",faq:{quand:"Le film se déroule en 2013, le fait d'avoir avancé les films précédents d'une décennie laisse un gros trou entre X-Men 3 : L'Affrontement Final et ce film, mais ne dérange pas plus que toutes les incohérences de la saga",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaîtront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"La scène post-crédits est importante et nécessite d'avoir vu celle de X-Men 3 : L'Affrontement Final pour comprendre"}},
-      {id:"mcu-dofp",img:"/images/x-men-days-of-future-past-2014.webp",type:"film",level:"important",tmdb:"127585",media:"movie",title:"X-Men : Days of Future Past",date:"2023–1973",dim:"TERRE-10005A/B",faq:{quand:"La partie dans le présent se déroule en 2023 et la partie dans le passé se déroule en 1973, modifiant le passé et donc toute la timeline",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"La scène post-crédits tease X-Men : Apocalypse"}},
-      {id:"mcu-xma",img:"/images/x-men-apocalypse-2016.webp",type:"film",level:"bonus",tmdb:"246655",media:"movie",title:"X-Men : Apocalypse",date:"1983",dim:"TERRE-10005B",faq:{quand:"Le film se déroule dans la nouvelle timeline post-Days of Future Past et se déroule en 1983",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"La scène post-crédits est importante et tease Logan"}},
-      {id:"mcu-xdp",img:"/images/x-men-dark-phoenix-2019.webp",type:"film",level:"bonus",tmdb:"320288",media:"movie",title:"X-Men : Dark Phoenix",date:"1992",dim:"TERRE-10005B",faq:{quand:"Le film se déroule dans la nouvelle timeline post-Days of Future Past et se déroule en 1992",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"Aucune"}},
-      {id:"mcu-logan",img:"/images/logan-2017.webp",type:"film",level:"important",tmdb:"263115",media:"movie",title:"Logan",date:"2029",dim:"TERRE-10005B",faq:{quand:"Le film se déroule dans la nouvelle timeline post-Days of Future Past et se déroule en 2029",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que regarder ces films au moment de leur déroulement in-universe n'aurait aucun sens (entre plein de films sans aucun rapport avec des écarts de plusieurs dizaines d'années) et que je pense que les évènements de Loki sont importants ainsi que le fait d'avoir tous les éléments bien à jour dans sa tête avant Deadpool & Wolverine et Avengers : Doomsday",postcredits:"Aucune"}},
-      {id:"mcu-dp1",img:"/images/deadpool-2016.webp",type:"film",level:"important",tmdb:"293660",media:"movie",title:"Deadpool",date:"2016",dim:"TERRE-10005B",tags:["flashback"],faq:{quand:"Le film se déroule dans la nouvelle timeline post-Days of Future Past et se déroule en 2016",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaîtront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que Deadpool est un spoiler ambulant qui s'amuse à spoiler Logan et d'autres films et il vaut donc mieux les avoir vu avant",postcredits:"La scène post-crédits est un teasing meta pour la suite, plutôt amusant"}},
-      {id:"mcu-dp2",img:"/images/deadpool-2-2018.webp",type:"film",level:"important",tmdb:"383498",media:"movie",title:"Deadpool 2",date:"2018",dim:"TERRE-10005B",tags:["flashback"],faq:{quand:"Le film se déroule dans la nouvelle timeline post-Days of Future Past et se déroule en 2018",comment:"Le film se passe dans un univers parallèle et certains de ses personnages apparaitront dans Deadpool & Wolverine ainsi que Avengers : Doomsday",pourquoi:"Parce que Deadpool est un spoiler ambulant qui s'amuse à spoiler Logan et d'autres films et il vaut donc mieux les avoir vu avant",postcredits:"La scène post-crédits est une énorme blague meta très amusante"}}
-    ]},
-    {title:"SUITE PHASE V — Saga du Multivers",entries:[
-      {id:"mcu-dpw",img:"/images/deadpool-and-wolverine-2024.webp",type:"film",level:"must",tmdb:"533535",media:"movie",title:"Deadpool & Wolverine",date:"2024",dim:"TERRE-10005",faq:{quand:"Le film se déroule dans la nouvelle timeline post-Days of Future Past et se déroule en 2024",comment:"Le film se passe dans un univers parallèle mais fait aussi apparaître la TVA de Loki",pourquoi:"Parce que le film se déroule après Loki saison 2 et après tout le bordel du X-Men Verse",postcredits:"La scène post-crédits est une blague sympathique"}},
-      {id:"mcu-marvelspc",img:"/images/the-marvels-2023.webp",type:"video",level:"important",tmdb:"609681",media:"video",title:"Scène post-crédits The Marvels",date:"2026",faq:{quand:"La scène se déroule après le film mais aucune indication du temps passé entre les 2",comment:"La scène se passe juste après que Monica ait traversé la faille à la fin du film",pourquoi:"Parce que je pense sincèrement que voir cette scène à ce moment là est plus satisfaisant",postcredits:"Aucune"}},
-      {id:"mcu-agatha",img:"/images/agatha-all-along-season-1.webp",type:"serie",level:"bonus",tmdb:"138501",media:"tv",season:1,title:"Agatha All Along",date:"2026",subitems:["Saison 1"],faq:{quand:"La série se déroule en fin d'année 2026, 3 ans après Wandavision",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se déroule ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-wi3",img:"/images/what-if-season-3.webp",type:"anime",level:"important",tmdb:"91363",media:"tv",season:3,title:"What If…?",dim:"AUTRES RÉALITÉS",subitems:["Saison 3"],faq:{quand:"Les épisodes de la saison 3 se passent à différentes époques",comment:"La série se passe dans de nombreux univers différents et suit des variants de personnages que l'on connaît",pourquoi:"Parce que bien qu'on pourrait la regarder juste après la saison 2, cette saison introduit des personnages vus dans d'autres médias entre les 2 saisons et on comprend mieux les tenants et aboutissants",postcredits:"Aucune"}},
-      {id:"mcu-vfsm",img:"/images/your-friendly-neighbourhood-spider-man-season-1.webp",type:"anime",level:"bonus",tmdb:"138503",media:"tv",title:"Votre fidèle serviteur Spider-Man",date:"2016",dim:"TERRE-86445",subitems:["Saison 1"],faq:{quand:"La série se déroule en 2016 dans son propre univers, en parallèle de Civil War mais avec un déroulé des évènements différent",comment:"La série se passe dans un univers parallèle et suit un variant du Spider-Man de la timeline principale",pourquoi:"Parce que la série s'inscrit un peu dans le contexte de What If...? avec un seul élément modifiant toute la destinée de Spider-Man",postcredits:"Aucune"}},
-      {id:"mcu-dba1",img:"/images/daredevil-born-again-season-1.webp",type:"serie",level:"important",tmdb:"202555",media:"tv",season:1,title:"Daredevil : Born Again",date:"2027",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule entre fin 2026 et le printemps 2027",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se déroule ici chronologiquement",postcredits:"La scène post-crédits de l'épisode 9 est importante"}},
-      {id:"mcu-cabf",img:"/images/captain-america-brave-new-world-2025.webp",type:"film",level:"must",tmdb:"822119",media:"movie",title:"Captain America : Brave New World",date:"2027",faq:{quand:"Le film se déroule en avril 2027",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce qu'il se déroule ici chronologiquement",postcredits:"La scène post-crédits est importante"}},
-      {id:"mcu-tb",img:"/images/thunderbolts-2025.webp",type:"film",level:"must",tmdb:"986056",media:"movie",title:"Thunderbolts*",date:"2027",note:"Ne pas regarder la deuxième scène post-crédits.",faq:{quand:"La scène se déroule 14 mois après les évènements du film, soit en décembre 2028",comment:"La scène se passe dans la timeline principale",pourquoi:"La scène servira sûrement d'introduction à Avengers : Doomsday, on ne sait pas pour l'instant",postcredits:"Aucune"}}
-    ]},
-    {title:"PHASE VI — Saga du Multivers (en cours)",entries:[
-      {id:"mcu-mz",img:"/images/marvel-zombies-season-1.webp",type:"anime",level:"bonus",tmdb:"138505",media:"tv",season:1,title:"Marvel Zombies",date:"2022",dim:"TERRE-89521",note:"Suite de l'épisode 5 de la saison 1 de What If…?",subitems:["Saison 1"],faq:{quand:"La série se déroule en 2022, 5 ans après les événements de l'épisode de What If...?",comment:"La série est la suite d'un épisode de What If...?",pourquoi:"Parce que bien que prenant la suite des évènements d'un épisode de la saison 1 de What If...?, les personnages présentés dans la série seront beaucoup plus appréciés en ayant vu plus de films où ils sont présents comme Thunderbolts*",postcredits:"Aucune"}},
-      
-      {id:"mcu-wm",img:"/images/wonder-man-season-1.webp",type:"serie",level:"bonus",tmdb:"198178",media:"tv",season:1,title:"Wonder Man",date:"2027",subitems:["Saison 1"],faq:{quand:"La saison 1 se déroule entre le printemps 2027 et l'automne 2028",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se déroule ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-dba2",img:"/images/daredevil-born-again-season-2.webp",type:"serie",level:"important",tmdb:"202555",media:"tv",season:2,title:"Daredevil : Born Again",date:"2027",subitems:["Saison 2"],faq:{quand:"La saison 2 se déroule durant l'automne 2027, après les évènements de Thunderbolts*",comment:"La série se passe dans la timeline principale",pourquoi:"Parce qu'elle se déroule ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-pun-olk",img:"/images/the-punisher-one-last-kill-2026.webp",type:"special",level:"important",tmdb:"1439930",media:"movie",title:"The Punisher : One Last Kill",date:"~2028",faq:{quand:"Le téléfilm se déroule probablement au début de l'automne 2028",comment:"Le téléfilm se passe dans la timeline principale",pourquoi:"Parce qu'il se déroule ici chronologiquement",postcredits:"Aucune"}},
-      {id:"mcu-ff",img:"/images/the-fantastic-four-first-steps-2025.webp",type:"film",level:"must",tmdb:"617126",media:"movie",title:"Les 4 Fantastiques : Premiers Pas",date:"~1964",dim:"TERRE-828",faq:{quand:"Le film se déroule dans son propre univers dans les années 60, probablement autour de 1964-1965",comment:"Le film se déroule dans un univers parallèle et la scène post générique de Thunderbolts* explique sa connexion à la timeline principale",pourquoi:"Parce que le film se déroule dans un univers parallèle et n'a d'importance à ce jour seulement pour les évènements de Avengers : Doomsday",postcredits:"La scène post-crédits se passe 4 ans après les évènements du film et tease Avengers : Doomsday, la deuxième est inutile"}},
-      {id:"mcu-tb-pc2",type:"video",level:"must",img:"/images/thunderbolts-2025.webp",tmdb:"986056",media:"video",title:"Deuxième scène post-crédits Thunderbolts*",date:"2028",faq:{quand:"La scène se déroule 14 mois après les évènements du film, soit en décembre 2028",comment:"La scène se passe dans la timeline principale",pourquoi:"La scène servira sûrement d'introduction à Avengers : Doomsday, on ne sait pas pour l'instant",postcredits:"Aucune"}}
-    ]}
-  ]
-};
-const UNIVERSES=[{data:DATA_MCU,icon:'x'}];
-const TMDB_KEY='6257b37bf29ab31357853fce00232314';
-const IMG='https://image.tmdb.org/t/p/';
-const BADGES={
-  film:['bf','FILM'],filmanim:['bfa','FILM ANIMÉ'],
-  serie:['bs','SÉRIE'],anime:['ba','SÉRIE ANIMÉE'],
-  jeu:['bj','JEU VIDÉO'],special:['bsp','SPÉCIAL'],
-  video:['bv','VIDÉO']
-};
-const BADGE_LABELS={
-  film:'Films',filmanim:'Films animés',serie:'Séries',
-  anime:'Séries animées',jeu:'Jeux',special:'Spéciaux',video:'Vidéos'
-};
+<div class="hud" id="hud">
+  <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
+    <b><em id="k-on">0</em> / <span id="k-tot">120</span></b>
+    <span class="lbl">vus</span>
+    <span class="bar"><i id="k-fill"></i></span>
+    <span class="lbl">Restant à voir <b style="font-size:14px" id="k-time">294 h</b></span>
+    <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <div class="hud-in">
+      <div class="pacts">
+        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Exporter</button>
+        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Importer</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn" type="button" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
+        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Réinitialiser</button>
+      </div>
+      <p class="phint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Votre progression est sauvegardée sur ce navigateur — utilisez <b>Exporter</b> pour en garder une copie ou l’importer sur un autre appareil ou navigateur</span>
+      </p>
+    </div>
+  </div>
+</div>
 
-/* == CG-RUNTIME START (genere par runtime.py) == */
-const RT={"mcu-ac-os": 15, "mcu-ac-serie": 777, "mcu-agatha": 379, "mcu-antman1": 117, "mcu-antman2": 119, "mcu-antman2pc": 0, "mcu-antman3": 125, "mcu-aos-s1a": 303, "mcu-aos-s1b": 346, "mcu-aos-s1c": 303, "mcu-aos-s2a": 822, "mcu-aos-s2b": 132, "mcu-aos-s3a": 782, "mcu-aos-s3b": 172, "mcu-aos-s4": 960, "mcu-aos-s5a": 570, "mcu-aos-s5b": 218, "mcu-aos-s5c": 175, "mcu-aos-s6": 576, "mcu-aos-s7": 573, "mcu-aou": 141, "mcu-atsv": 140, "mcu-av1": 143, "mcu-bp1": 135, "mcu-bp2": 162, "mcu-bw": 134, "mcu-bwpc": 0, "mcu-cabf": 119, "mcu-cap1": 124, "mcu-cap2": 136, "mcu-cm": 124, "mcu-cmpc": 0, "mcu-consultant": 4, "mcu-cw": 147, "mcu-dba1": 455, "mcu-dba2": 413, "mcu-dd1": 712, "mcu-dd2": 712, "mcu-dd3": 676, "mcu-defenders": 394, "mcu-dofp": 132, "mcu-dp1": 108, "mcu-dp2": 120, "mcu-dpw": 128, "mcu-ds1": 115, "mcu-echo": 213, "mcu-eg": 181, "mcu-eow": 125, "mcu-eternals": 156, "mcu-fatws": 330, "mcu-ff": 115, "mcu-gotg1": 121, "mcu-gotg2": 137, "mcu-gotg3": 150, "mcu-gotgxmas": 45, "mcu-hawkeye": 297, "mcu-hulk": 114, "mcu-if1": 726, "mcu-if2": 526, "mcu-im1": 126, "mcu-im2": 124, "mcu-im3": 130, "mcu-ironheart": 305, "mcu-item47": 12, "mcu-itsv": 117, "mcu-iw": 149, "mcu-jj1": 698, "mcu-jj2": 673, "mcu-jj3": 659, "mcu-lc1": 704, "mcu-lc2": 763, "mcu-logan": 137, "mcu-loki1": 302, "mcu-loki2": 313, "mcu-marvels": 105, "mcu-marvelspc": 0, "mcu-mk": 302, "mcu-mm": 289, "mcu-mom": 126, "mcu-mz": 137, "mcu-nwh": 148, "mcu-pun-olk": 51, "mcu-pun1": 699, "mcu-pun2": 685, "mcu-roi": 14, "mcu-sc": 132, "mcu-shehulk": 309, "mcu-si": 262, "mcu-sm1": 133, "mcu-smffh": 129, "mcu-smr1": 121, "mcu-smr2": 127, "mcu-smr3": 139, "mcu-tasm1": 136, "mcu-tasm2": 141, "mcu-tb": 127, "mcu-tb-pc2": 0, "mcu-thor1": 115, "mcu-thor2": 112, "mcu-thor3": 131, "mcu-thor3pc": 0, "mcu-thor4": 119, "mcu-twolv": 126, "mcu-venom1": 112, "mcu-venom2": 97, "mcu-venom3": 109, "mcu-vfsm": 317, "mcu-wi1": 323, "mcu-wi2": 289, "mcu-wi3": 253, "mcu-wm": 267, "mcu-wv": 363, "mcu-wwbn": 55, "mcu-xdp": 114, "mcu-xfc": 132, "mcu-xm1": 104, "mcu-xm2": 133, "mcu-xm3": 104, "mcu-xma": 144, "mcu-xow": 107};
-window.RT=RT;
-/* == CG-RUNTIME END == */
-let currentData=null;
-window.CG_DATA = DATA_MCU;
-</script>
-<script src="/cg-badges-fx.js"></script>
-<script src="/cg-timeline.js"></script>
+<div class="bx" id="bx" hidden><div class="bx-in">
+  <div class="bx-h"><h3>Mes Badges</h3><span class="n" id="bx-n">0 débloqués</span>
+    <button type="button" id="bx-x" aria-label="Fermer">✕</button></div>
+  <div class="bx-g" id="bx-g"></div>
+</div></div>
+
+<script src="/data/marvel-fr.js"></script>
 <script>
-(function(){var b=document.getElementById('totop');
- b.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
- addEventListener('scroll',function(){b.classList.toggle('on',scrollY>400)},{passive:true});})();
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var CFG=window.CG, D=window.MCU, RT=window.RT||{};
+  /* Les libellés viennent de fr/marvel.html tels quels. Seuls ceux qui
+     tutoyaient sont repassés au vouvoiement — Niko ne veut pas qu'on tutoie
+     le visiteur. Aucune autre reformulation. */
+  var T=Object.assign({},CFG.t,{
+    resetMCU:'Réinitialiser votre progression Marvel ?',
+    emptyP:'Essayez une autre orthographe, ou remettez les filtres que vous avez décochés.'
+  });
+  /* Bannière d'ère : le premier ⭐ de l'ère — c'est le repère que tout le
+     monde reconnaît. Une ère sans ⭐ prend son premier média, celui par
+     lequel on y entre. Plus de table écrite à la main, la règle décide. */
+  function eraArt(era){
+    var must=era.entries.filter(function(e){ return e.level==='must' && e.img; })[0];
+    return (must||era.entries.filter(function(e){ return e.img; })[0]||{}).img;
+  }
+  /* Les niveaux passent au trait, comme les icônes des repères de lecture :
+     l'étoile et le gyrophare en emoji juraient avec le reste de la page.
+     Le libellé, lui, reste celui de la prod, emoji de tête retiré. */
+  var LVICO={
+    must:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>',
+    important:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>',
+    bonus:''};
+  var LVCLS={must:'must',important:'imp',bonus:''};
+  /* « ⭐ Essentiel » → « Essentiel » : on ne garde que le mot de Niko. */
+  function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
+  var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
+  var KEY='cg-proto-mcu';
+
+  var ALL=[];
+  D.eras.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
+
+  var prog={};
+  try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  var offLv={}, offK={}, offOpt={}, hideDone=false;
+
+  function $(s,r){ return (r||document).querySelector(s); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
+    return h? h+' h'+(r?' '+String(r).padStart(2,'0'):'') : r+' min'; }
+  function rt(e){ return RT[e.id]||0; }
+
+  var ICO={
+    check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+    link:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>'
+  };
+
+  /* ── l'intro : la prose de la page de prod, injectée telle quelle ── */
+  $('#intro').innerHTML=D.notes;
+
+
+  /* Les branches se déduisent des données : `tags:["nc"]`, la liste
+     `defenders`, puis chaque groupe de `groups`. Rien n'est écrit en dur,
+     un univers sans branche produit simplement une liste vide. */
+  var OPTS=[];
+  (function(){
+    var nc=ALL.filter(function(e){ return (e.tags||[]).indexOf('nc')>-1; });
+    if(nc.length) OPTS.push({v:'nc',label:T.ncLabel,color:'#ff8f8f',n:nc.length,
+      test:function(e){ return (e.tags||[]).indexOf('nc')>-1; }});
+    var def=CFG.defenders||[];
+    var nd=ALL.filter(function(e){ return def.indexOf(e.id)>-1; });
+    if(nd.length) OPTS.push({v:'def',label:T.defLabel,color:'#a99fff',n:nd.length,
+      test:function(e){ return def.indexOf(e.id)>-1; }});
+    Object.keys(CFG.groups||{}).forEach(function(g){
+      var d=CFG.groups[g];
+      var n=ALL.filter(function(e){ return d.ids.indexOf(e.id)>-1; }).length;
+      if(n) OPTS.push({v:g,label:d.label,color:d.color,n:n,
+        test:function(e){ return d.ids.indexOf(e.id)>-1; }});
+    });
+  })();
+
+  /* ── les filtres : mêmes noms, mêmes couleurs que sur le site ────── */
+  (function(){
+    var lv=$('#f-levels'), tp=$('#f-types');
+    ['must','important','bonus'].forEach(function(k){
+      lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
+        (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
+    });
+    /* un bouton par type réellement présent : Marvel n'a pas de jeu vidéo,
+       et un filtre qui ne filtre rien n'a pas sa place dans la barre. */
+    Object.keys(CFG.badgeLabels).forEach(function(k){
+      if(!ALL.some(function(e){ return e.type===k; })) return;
+      tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
+        ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
+    });
+    /* Les branches : canonicité non confirmée, Defenders, Spider-Verse, Fox.
+       Cochées par défaut, décocher masque la branche — même sens que la
+       page de prod. Un univers sans branche n'affiche pas la rangée. */
+    OPTS.forEach(function(o){
+      $(o.v==='nc'?'#f-nc':'#f-branch').insertAdjacentHTML('beforeend',
+        '<button type="button" data-o="'+o.v+'" style="--k:'+o.color+'"'+
+        ' aria-pressed="true"><i></i>'+esc(o.label)+'</button>');
+    });
+    $('#f-opts').hidden=!OPTS.length;
+  })();
+
+  /* ── construction : une bande d'ère, puis ses bulles ─────────────── */
+  /* Les sous-items décrivent soit des arcs d'épisodes unitaires, soit des
+     blocs entiers de saison. Le mode se déduit des données : un séparateur
+     posé à la main, ou des libellés tous en « Saison N épisode M », signent
+     un découpage en arcs. Tout le reste s'empile, une ligne par bloc. */
+  function subs(e){
+    var it=e.subitems||[]; if(!it.length) return '';
+    /* Le même test dans les deux langues : la page anglaise écrit
+       « Season 1 episode 2 ». Sans l'alternative, un arc groupé en
+       français ressortait empilé en anglais. */
+    var unit=/^(Saison|Season) \d+ (épisode|episode) \d+/i;
+    var arcMode=it.some(function(s){ return !String(s).trim(); }) ||
+                it.every(function(s){ return unit.test(String(s)); });
+    var arcs=[[]];
+    it.forEach(function(s){
+      if(!String(s).trim()){ arcs.push([]); return; }
+      if(arcMode) arcs[arcs.length-1].push(s); else arcs.push([s]);
+    });
+    var html=arcs.filter(function(a){ return a.length; }).map(function(a){
+      return '<div class="arc">'+a.map(function(s){
+        return '<span class="si">'+esc(s)+'</span>'; }).join('')+'</div>';
+    }).join('');
+    return '<div class="bu-sub'+(arcMode?'':' stack')+'">'+html+'</div>';
+  }
+
+  function row(e){
+    var bd=CFG.badgeLabels[e.type]||['b',e.type];
+    var fb=(e.tags||[]).indexOf('flashback')>-1 ? '<span class="ft">FLASHBACK</span>' : '';
+    var nc=(e.tags||[]).indexOf('nc')>-1 ? '<span class="nt">'+esc(T.ncTag)+'</span>' : '';
+    var dim=e.dim ? '<span class="dim">'+esc(e.dim)+'</span>' : '';
+    var d=rt(e);
+    return '<article class="bu rv'+(prog[e.id]?' done':'')+(e.dim?' dev':'')+
+      '" id="'+e.id+'" data-id="'+e.id+'">'+
+      '<span class="bu-side">'+
+        '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
+          (prog[e.id]?'true':'false')+'" data-check aria-label="'+
+          esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
+        (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+          LVICO[e.level]+'</span>':'')+
+      '</span>'+
+      '<div class="bu-card">'+
+        '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
+          '<span class="bu-fig">'+
+            (e.img?'<img src="'+e.img+'" alt="" loading="lazy" decoding="async"/>':'')+
+            '<span class="halftone"></span>'+
+            '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
+            '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
+          '</span>'+
+          '<span class="bu-txt">'+
+            '<span class="bu-tags">'+dim+fb+nc+'<span class="b" style="--k:var(--t-'+e.type+')">'+
+              esc(bd[1])+'</span></span>'+
+            '<span class="bu-title">'+esc(e.title)+'</span>'+
+            '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
+              (d?'<span>'+hm(d)+'</span>':'')+
+            '</span>'+
+            (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
+          '</span>'+
+          '<span class="bu-end">'+ICO.chev+'</span>'+
+        '</button>'+
+        subs(e)+
+        '<a class="bu-link" href="#'+e.id+'" data-copy data-ok="'+esc(T.copied)+
+          '" title="'+esc(T.copyLink)+'" aria-label="'+esc(T.copyLink)+'">'+ICO.link+'</a>'+
+        '<div class="bu-panel" hidden data-tmdb="'+(e.tmdb||'0')+'" data-media="'+(e.media||'tv')+'">'+
+          '<div class="en-rich"></div><div class="en-faq"></div></div>'+
+      '</div>'+
+    '</article>';
+  }
+
+  (function build(){
+    var html='';
+    D.eras.forEach(function(era,i){
+      var art=eraArt(era);
+      html+='<section class="era-sec'+(era.special?' seg':'')+'" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+        '<div class="map">'+
+          '<div class="layers" aria-hidden="true">'+
+            '<div class="lay lay1" style="background-image:url('+art+')"></div>'+
+            '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
+            '<div class="tint"></div><div class="halftone"></div></div>'+
+          '<div class="wrap">'+
+            '<span class="chev">'+(i+1)+' / '+D.eras.length+'</span>'+
+            '<h2 class="disp off">'+esc(era.title)+'</h2>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' vus</span>'+
+            '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'+
+          '</div></div>'+
+        '<div class="list"><div class="wrap"><div class="rows">'+
+          era.entries.map(row).join('')+
+        '</div></div></div></section>';
+    });
+    $('#timeline').innerHTML=html;
+  })();
+
+  /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
+  function applyFilters(){
+    var q=($('#q').value||'').trim().toLowerCase(), shown=0;
+    D.eras.forEach(function(era,i){
+      var vis=0;
+      era.entries.forEach(function(e){
+        var el=document.getElementById(e.id);
+        var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
+               !OPTS.some(function(o){ return offOpt[o.v] && o.test(e); }) &&
+               (!q || e.title.toLowerCase().indexOf(q)>-1);
+        el.hidden=!ok; if(ok){ vis++; shown++; }
+      });
+      document.querySelector('.era-sec[data-era="'+i+'"]').hidden=(vis===0);
+    });
+    $('#fcount').textContent=shown+' / '+ALL.length+' '+T.shown;
+    var em=$('#empty');
+    em.hidden=shown>0;
+    if(!shown) em.textContent=(q? T.emptyH+' « '+q+' »' : T.emptyH+' '+T.emptyThese)+' — '+T.emptyP;
+  }
+
+  function tally(){
+    var n=0,left=0;
+    ALL.forEach(function(e){ if(prog[e.id]) n++; else left+=rt(e); });
+    var h=Math.round(left/60);
+    $('#k-on').textContent=n; $('#k-tot').textContent=ALL.length;
+    $('#k-time').textContent=h+' h';
+    $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
+    $('#s-tot').textContent=ALL.length; $('#s-h').textContent=h+' h';
+    D.eras.forEach(function(era,i){
+      var b=document.querySelector('[data-done="'+i+'"]');
+      if(b) b.textContent=era.entries.filter(function(e){return prog[e.id];}).length;
+    });
+    startBtn();
+  }
+
+  /* ── Commencer / Reprendre : le bouton emmène à la prochaine entrée ── */
+  var next=null;
+  function startBtn(){
+    var started=ALL.some(function(e){ return prog[e.id]; });
+    next=ALL.filter(function(e){ return !prog[e.id]; })[0]||ALL[0];
+    $('#start').innerHTML=(started?T.resume:'Commencer')+' <em>▸</em>';
+  }
+  $('#start').addEventListener('click',function(){
+    if(!next) return;
+    var el=document.getElementById(next.id);
+    if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
+      $('#q').value=''; $('#searchbox').classList.remove('on');
+      offLv={}; offK={}; offOpt={}; hideDone=false;
+      [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
+        b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
+      applyFilters();
+    }
+    var y=el.getBoundingClientRect().top+scrollY-118;
+    scrollTo({top:y,behavior:'smooth'});
+    el.querySelector('.bu-card').style.borderColor='var(--hot)';
+    setTimeout(function(){ el.querySelector('.bu-card').style.borderColor=''; },1400);
+  });
+
+  /* ── fiche TMDB / RAWG, reprise de cg-timeline.js ────────────────── */
+  var cache={};
+  function meta(pairs){
+    var s=pairs.filter(function(p){return p[1];}).map(function(p){
+      return '<span><strong>'+p[0]+'</strong> '+p[1]+'</span>'; }).join('');
+    return s?'<div class="expand-meta">'+s+'</div>':'';
+  }
+  function loadRich(art){
+    var panel=$('.bu-panel',art), box=$('.en-rich',panel);
+    if(panel.dataset.loaded) return;
+    panel.dataset.loaded='1';
+    var e=ALL.filter(function(x){return x.id===art.dataset.id;})[0]||{};
+    /* `media:"video"` couvre les one-shots et les scènes post-générique :
+       quand ils portent un identifiant TMDB, c'est celui d'un film. */
+    var md=panel.dataset.media;
+    var id=panel.dataset.tmdb, type=(md==='movie'||md==='video')?'movie':'tv';
+    var IMG=CFG.img;
+
+    /* la FAQ : questions et réponses de la page de prod, mot pour mot */
+    if(e.faq&&CFG.faqCats){
+      $('.en-faq',panel).innerHTML=CFG.faqCats.map(function(c){
+        return '<details class="faq"><summary>'+esc(c.q.replace('{name}',e.title))+
+               '</summary><div class="a">'+esc(e.faq[c.key]||'')+'</div></details>'; }).join('');
+    }
+
+    box.innerHTML='<div class="expand-loading">'+T.loading+'</div>';
+
+    if(panel.dataset.media==='game'){
+      var yt='https://www.youtube.com/results?search_query='+
+             encodeURIComponent(e.title+' film complet');
+      var link='<a class="expand-trailer-link" href="'+yt+'" target="_blank" rel="noopener">'+
+               T.watchGame+'</a>';
+      var fallback=function(g){
+        box.innerHTML='<div class="expand-inner">'+
+          (g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+
+            '" loading="lazy" alt=""/></div>':'')+
+          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||e.note||'')+'</div>'+
+          meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
+                [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
+                [T.mPeriod,e.date]])+link+'</div></div>';
+      };
+      if(!CFG.rawgKey){ fallback(null); return; }
+      /* RAWG ne trouve rien si on lui envoie le titre entier : « Outlaws
+         + DLC Wild Card + DLC A Pirate's Fortune » ou « Campagne : Missions
+         1-6 » ne sont pas des noms de jeux. On coupe aux DLC et au
+         sous-titre pour ne chercher que le jeu lui-même. */
+      var q=String(e.title).split(/\s\+\s|\s—\s/)[0].replace(/\s*:\s*(Campagne|Prologue).*$/i,'')
+                           .replace(/[:.+]/g,' ').trim();
+      fetch('https://api.rawg.io/api/games?search='+encodeURIComponent(q)+
+            '&page_size=1&key='+CFG.rawgKey)
+        .then(function(r){return r.json();})
+        .then(function(d){ fallback(d.results&&d.results[0]); })
+        .catch(function(){ fallback(null); });
+      return;
+    }
+
+    if(!id||id==='0'||!CFG.tmdbKey){
+      /* sans identifiant TMDB ni description, le dépliant restait vide :
+         on le dit, la FAQ juste en dessous porte le reste. */
+      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>';
+      return;
+    }
+
+    var k=type+id;
+    var got=cache[k]?Promise.resolve(cache[k]):
+      fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+CFG.tmdbKey+
+            '&language='+CFG.tmdbLang+'&append_to_response=videos')
+        .then(function(r){return r.json();})
+        .then(function(d){
+          var v=(d.videos&&d.videos.results)||[];
+          if(v.some(function(x){return x.type==='Trailer'&&x.site==='YouTube';})){ cache[k]=d; return d; }
+          /* Pas de bande-annonce dans la langue de la page : on complète
+             en anglais, et en anglais seulement. Le repli ne joue donc
+             que depuis le français — c'est voulu : une bande-annonce
+             française n'a rien à faire sur la page anglaise. Quand TMDB
+             n'a pas de trailer anglais, la fiche anglaise n'en affiche
+             pas, et c'est la bonne réponse. */
+          return fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+
+                       CFG.tmdbKey+'&language=en-US')
+            .then(function(r){return r.json();})
+            .then(function(en){ d.videos={results:v.concat(en.results||[])}; cache[k]=d; return d; });
+        });
+
+    got.then(function(d){
+      /* À défaut de bande-annonce, le générique. TMDB ne connaît de la
+         série Avatar : Le Dernier Maître de l'Air aucun trailer anglais
+         — seulement son générique d'épisode — et ce générique fait le
+         même travail : il montre la série. Le type reste écrit en clair
+         parce que c'est une valeur de l'API TMDB, jamais un libellé
+         d'écran : il ne se traduit pas. */
+      var yts=((d.videos&&d.videos.results)||[]).filter(function(v){
+        return v.site==='YouTube'; });
+      var tr=yts.filter(function(v){ return v.type==='Trailer'; })[0]
+          || yts.filter(function(v){ return v.type==='Opening Credits'; })[0];
+      var p=d.poster_path?IMG+'w300'+d.poster_path:null;
+      box.innerHTML='<div class="expand-inner">'+
+        (p?'<button type="button" class="expand-poster" data-big="'+IMG+'w780'+d.poster_path+
+            '" aria-label="'+esc(T.zoom||'Agrandir')+'"><img src="'+p+'" loading="lazy" alt=""/>'+
+            '<span class="expand-poster-ov">🔍</span></button>':'')+
+        '<div class="expand-info"><div class="expand-synopsis">'+
+          esc(d.overview||T.noSynopsis)+'</div>'+
+        meta([[T.mYear,(d.release_date||d.first_air_date||'').substring(0,4)],
+              [T.mGenre,(d.genres||[]).map(function(g){return g.name;}).join(', ')],
+              [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],
+              [T.mPeriod,e.date]])+
+        (tr?'<a class="expand-trailer-link" href="https://www.youtube.com/watch?v='+tr.key+
+          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+
+        '</div></div>';
+    }).catch(function(){
+      box.innerHTML='<div class="expand-loading">'+T.loadFail+'</div>';
+    });
+  }
+
+  /* ── interactions ───────────────────────────────────────────────── */
+  document.addEventListener('click',function(ev){
+    var t=ev.target;
+
+    var chk=t.closest('[data-check]');
+    if(chk){
+      var art=chk.closest('.bu'), id=art.dataset.id;
+      prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      save();
+      chk.setAttribute('aria-checked',prog[id]?'true':'false');
+      art.classList.toggle('done',!!prog[id]);
+      tally();
+      syncBadges(true);
+      if(hideDone&&prog[id]) applyFilters();
+      return;
+    }
+
+    var tg=t.closest('[data-toggle]');
+    if(tg){
+      var a=tg.closest('.bu'), pan=$('.bu-panel',a);
+      var open=tg.getAttribute('aria-expanded')==='true';
+      tg.setAttribute('aria-expanded',open?'false':'true');
+      pan.hidden=open;
+      if(!open) loadRich(a);
+      return;
+    }
+
+    var cp=t.closest('[data-copy]');
+    if(cp){
+      ev.preventDefault();
+      var url=location.href.split('#')[0]+cp.getAttribute('href');
+      var done=function(){ cp.classList.add('ok');
+        setTimeout(function(){ cp.classList.remove('ok'); },1200); };
+      if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,done); else done();
+      history.replaceState(null,'',cp.getAttribute('href'));
+      return;
+    }
+
+    var po=t.closest('.expand-poster[data-big]');
+    if(po){ lightbox(po.dataset.big); return; }
+
+    var f=t.closest('#sieve button[aria-pressed]');
+    if(f){
+      var on=f.getAttribute('aria-pressed')==='true';
+      f.setAttribute('aria-pressed',on?'false':'true');
+      if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.lv) offLv[f.dataset.lv]=on;
+      else if(f.dataset.k) offK[f.dataset.k]=on;
+      else if(f.dataset.o) offOpt[f.dataset.o]=on;
+      applyFilters();
+      return;
+    }
+  });
+
+  function lightbox(url){
+    var pm=$('#pm');
+    if(!pm){
+      pm=document.createElement('div'); pm.id='pm'; pm.className='pm';
+      pm.innerHTML='<button class="pm-x" aria-label="'+esc(T.close)+'">✕</button><img id="pmi" alt=""/>';
+      pm.addEventListener('click',function(){ pm.classList.remove('o'); });
+      document.body.appendChild(pm);
+    }
+    $('#pmi').src=url; pm.classList.add('o');
+  }
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'){
+      var pm=$('#pm'); if(pm) pm.classList.remove('o');
+      $('#bx').classList.remove('o'); $('#bx').hidden=true;
+    }
+    if(ev.key==='/'&&document.activeElement!==$('#q')){ ev.preventDefault(); $('#q').focus(); }
+  });
+
+  /* recherche */
+  var qi=$('#q');
+  qi.addEventListener('input',function(){
+    $('#searchbox').classList.toggle('on',!!qi.value);
+    applyFilters();
+  });
+  $('#q-clear').addEventListener('click',function(){
+    qi.value=''; $('#searchbox').classList.remove('on'); applyFilters(); qi.focus();
+  });
+
+  /* barre du bas, dépliable */
+  var hud=$('#hud');
+  $('#hud-btn').addEventListener('click',function(){
+    var open=hud.classList.toggle('open');
+    this.setAttribute('aria-expanded',open?'true':'false');
+    $('#hud-panel').hidden=!open;
+    document.body.style.paddingBottom=(open?hud.offsetHeight:64)+'px';
+  });
+
+  /* export / import / réinitialisation */
+  $('#export').addEventListener('click',function(){
+    var blob=new Blob([JSON.stringify({universe:'mcu',progress:prog},null,1)],
+                      {type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-marvel.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('#import').addEventListener('click',function(){ $('#import-file').click(); });
+  $('#import-file').addEventListener('change',function(){
+    var f=this.files&&this.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var d=JSON.parse(r.result);
+        prog=d.progress||d||{}; save();
+        [].forEach.call(document.querySelectorAll('.bu'),function(a){
+          var on=!!prog[a.dataset.id];
+          a.classList.toggle('done',on);
+          $('[data-check]',a).setAttribute('aria-checked',on?'true':'false');
+        });
+        /* un import peut débloquer sept badges d'un coup : on les acquiert
+           sans les annoncer, le panneau Badges les montrera. */
+        tally(); syncBadges(false); applyFilters();
+      }catch(_){ alert(T.badFile); }
+    };
+    r.readAsText(f); this.value='';
+  });
+  $('#reset').addEventListener('click',function(){
+    if(!confirm(T.resetMCU)) return;
+    prog={}; save();
+    [].forEach.call(document.querySelectorAll('.bu'),function(a){
+      a.classList.remove('done');
+      $('[data-check]',a).setAttribute('aria-checked','false');
+    });
+    tally(); applyFilters();
+  });
+
+  /* ── badges ──────────────────────────────────────────────────────
+     Deux règles, toutes les deux tenues ici et nulle part ailleurs.
+
+     1. Un badge de progression demande tout son bloc. Les `ids` des
+        données ne portent que la dernière entrée : s'en contenter faisait
+        tomber « L'ère de la République terminée » sur une seule case
+        cochée. Le découpage des blocs est expliqué sur `needOf`.
+     2. Un badge obtenu ne se reprend pas. Il vit dans son propre
+        stockage, à part de la progression : décocher, réinitialiser ou
+        importer une autre sauvegarde n'en retire jamais aucun. */
+  var BKEY=KEY+'-badges';
+  var BADGES=(CFG.badges||[]).filter(function(b){
+    return !b.universe || b.universe===CFG.universe; });
+  var won={};
+  try{ won=JSON.parse(localStorage.getItem(BKEY)||'{}')||{}; }catch(_){ won={}; }
+  function saveWon(){ try{ localStorage.setItem(BKEY,JSON.stringify(won)); }catch(_){} }
+
+  function ixOf(id){
+    for(var i=0;i<ALL.length;i++) if(ALL[i].id===id) return i;
+    return -1;
+  }
+  /* Les repères de progression, remis dans l'ordre de la timeline. */
+  var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
+    .map(function(b){ return {b:b,i:ixOf((b.ids||[])[0])}; })
+    .filter(function(x){ return x.i>-1; })
+    .sort(function(a,c){ return a.i-c.i; });
+  /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher : le
+     bloc court du repère précédent jusqu'à elle. Chez Star Wars chaque bloc
+     tombe pile sur une ère ; chez Marvel, Thanos couvre d'un coup les trois
+     phases de la Saga de l'Infini. Une règle, deux découpages, rien d'écrit
+     en dur. `all` liste ses entrées lui-même — tous les Spider-Man, tous
+     les X-Men — et se lit tel quel. */
+  function needOf(b){
+    if(b.trigger!=='last') return b.ids||[];
+    var k=-1;
+    for(var i=0;i<MARKS.length;i++) if(MARKS[i].b===b) k=i;
+    if(k<0) return b.ids||[];
+    return ALL.slice(k?MARKS[k-1].i+1:0,MARKS[k].i+1).map(function(e){ return e.id; });
+  }
+  function earned(b){
+    if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });
+    var need=needOf(b);
+    return need.length>0 && need.every(function(i){ return prog[i]; });
+  }
+  /* Rend les badges tout juste obtenus ; `pop` décide s'ils s'annoncent. */
+  function syncBadges(pop){
+    var fresh=BADGES.filter(function(b){ return !won[b.id] && earned(b); });
+    if(!fresh.length) return fresh;
+    fresh.forEach(function(b){ won[b.id]=1; });
+    saveWon();
+    if(pop) fresh.forEach(function(b,i){ setTimeout(function(){ popBadge(b); },i*1100); });
+    return fresh;
+  }
+
+  function badges(){
+    syncBadges(false);
+    var n=0;
+    var html=BADGES.map(function(b){
+      var got=!!won[b.id];
+      if(got) n++;
+      return '<div class="bg1'+(got?' on':'')+'" style="--c:'+b.color+'">'+
+        '<span class="i">'+b.icon+'</span><span><span class="t">'+esc(b.label)+'</span>'+
+        '<span class="d">'+esc(b.desc)+'</span></span></div>';
+    }).join('');
+    $('#bx-g').innerHTML=html;
+    $('#bx-n').textContent=n+' '+T.unlockedN;
+    $('#bx').hidden=false; $('#bx').classList.add('o');
+  }
+  $('#badges-btn').addEventListener('click',badges);
+
+  /* le carton d'annonce, un seul nœud recyclé */
+  var bpop=null, bpopT=null;
+  function popBadge(b){
+    if(!bpop){
+      bpop=document.createElement('div');
+      bpop.className='bpop'; bpop.hidden=true;
+      bpop.setAttribute('role','status');
+      document.body.appendChild(bpop);
+    }
+    bpop.style.setProperty('--c',b.color);
+    bpop.innerHTML='<span class="i" aria-hidden="true">'+b.icon+'</span><span>'+
+      '<span class="k">'+esc(T.badgeUnlocked)+'</span>'+
+      '<span class="t">'+esc(b.label)+'</span>'+
+      '<span class="d">'+esc(b.desc)+'</span></span>';
+    bpop.hidden=false;
+    /* un reflow forcé plutôt qu'un requestAnimationFrame : la transition
+       part quand même si la page ne compose pas de frame à cet instant. */
+    void bpop.offsetHeight;
+    bpop.classList.add('o');
+    confetti(b.color);
+    clearTimeout(bpopT);
+    bpopT=setTimeout(function(){
+      bpop.classList.remove('o');
+      setTimeout(function(){ if(bpop) bpop.hidden=true; },300);
+    },4600);
+  }
+
+  /* Confettis : des rectangles pleins et non des ronds — la page est
+     découpée au massicot, les confettis le sont aussi. Le canvas se
+     crée à la volée et se retire dès la dernière retombée. */
+  var REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var cv=null, cx=null, bits=[], raf=0;
+  function confetti(color){
+    if(REDUCE) return;
+    if(!cv){
+      cv=document.createElement('canvas');
+      cv.className='conf'; cv.setAttribute('aria-hidden','true');
+      document.body.appendChild(cv); cx=cv.getContext('2d');
+    }
+    var dpr=Math.min(devicePixelRatio||1,2), W=innerWidth, H=innerHeight;
+    cv.width=W*dpr; cv.height=H*dpr;
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    cx.setTransform(dpr,0,0,dpr,0,0);
+    var pal=[color,'#fffdf7','#fbbf24','#60a5fa','#a78bfa'];
+    for(var i=0;i<120;i++){
+      bits.push({x:W/2+(Math.random()-.5)*200, y:H*.66,
+                 vx:(Math.random()-.5)*10, vy:-8-Math.random()*10,
+                 w:4+Math.random()*8, h:3+Math.random()*6,
+                 a:Math.random()*6.28, va:(Math.random()-.5)*.36,
+                 c:pal[i%pal.length], life:80+Math.random()*60});
+    }
+    if(!raf) raf=requestAnimationFrame(fall);
+  }
+  function fall(){
+    var W=innerWidth, H=innerHeight;
+    cx.clearRect(0,0,W,H);
+    bits=bits.filter(function(p){ return p.life>0 && p.y<H+50; });
+    bits.forEach(function(p){
+      p.vy+=.36; p.vx*=.99; p.x+=p.vx; p.y+=p.vy; p.a+=p.va; p.life--;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.a);
+      cx.globalAlpha=Math.min(1,p.life/30); cx.fillStyle=p.c;
+      cx.fillRect(-p.w/2,-p.h/2,p.w,p.h); cx.restore();
+    });
+    if(bits.length){ raf=requestAnimationFrame(fall); }
+    else { raf=0; cv.remove(); cv=null; cx=null; }
+  }
+  $('#bx-x').addEventListener('click',function(){ $('#bx').classList.remove('o'); $('#bx').hidden=true; });
+  $('#bx').addEventListener('click',function(ev){
+    if(ev.target===this){ this.classList.remove('o'); this.hidden=true; }
+  });
+
+  /* Miss Minutes */
+  var tt=$('#totop');
+  tt.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+  addEventListener('scroll',function(){ tt.classList.toggle('on',scrollY>400); },{passive:true});
+
+  /* menu replié */
+  var bg=$('#burger'), dr=$('#drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+
+  tally(); syncBadges(false); applyFilters();
+
+  /* une ancre dans l'URL ouvre directement la bonne entrée */
+  if(location.hash){
+    var target=document.getElementById(location.hash.slice(1));
+    if(target&&target.classList.contains('bu')){
+      setTimeout(function(){
+        scrollTo({top:target.getBoundingClientRect().top+scrollY-118});
+      },60);
+    }
+  }
+})();
 </script>
-<script src="/cg-nav.js"></script>
+<script src="/app.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

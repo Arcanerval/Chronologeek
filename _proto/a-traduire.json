@@ -1,0 +1,1282 @@
+[
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-ds1.faq.quand",
+    "champ": "quand",
+    "fr": "Le film se déroule sur 2016 et 2017, l'entraînement de Stephen Strange à Kamar-Taj s'étalant sur plusieurs mois",
+    "en": "The movie takes place across 2016 and 2017, Stephen Strange's training at Kamar-Taj spanning several months",
+    "statut": "traduit, à relire",
+    "cause": "corrigé depuis la prod"
+  },
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-ds1.faq.postcredits",
+    "champ": "postcredits",
+    "fr": "La première scène est un extrait de Thor Ragnarok que vous pouvez passer, la deuxième n'a toujours pas de résolu à ce jour mais vous pouvez la regarder",
+    "en": "The first scene is a clip from Thor: Ragnarok that you can skip; the second still has no resolution to this day, but you can watch it",
+    "statut": "traduit, à relire",
+    "cause": "corrigé depuis la prod"
+  },
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-tb.faq.quand",
+    "champ": "quand",
+    "fr": "Le film se déroule en 2027",
+    "en": "The movie takes place in 2027",
+    "statut": "traduit, à relire",
+    "cause": "corrigé depuis la prod"
+  },
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-tb.faq.postcredits",
+    "champ": "postcredits",
+    "fr": "La première scène est importante, la deuxième est très importante et placée plus loin dans la timeline",
+    "en": "The first scene is important; the second is very important, and placed later in the timeline",
+    "statut": "traduit, à relire",
+    "cause": "corrigé depuis la prod"
+  },
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-smbnd.faq.quand",
+    "champ": "quand",
+    "fr": "Le film se déroule pendant l'automne 2028 après les évènements de The Punisher : One Last Kill",
+    "en": "The movie takes place in the fall of 2028, after the events of The Punisher: One Last Kill",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-smbnd.faq.pourquoi",
+    "champ": "pourquoi",
+    "fr": "Parce que le film se situe ici chronologiquement",
+    "en": "Because this is where the movie falls chronologically",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "MCU",
+    "chemin": "#mcu-smbnd.faq.postcredits",
+    "champ": "postcredits",
+    "fr": "La scène post-crédits est importante.",
+    "en": "The post-credits scene matters.",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "DC",
+    "chemin": "eras.hint",
+    "champ": "hint",
+    "fr": "L'Arrowverse post-événement, les Elseworlds issus de l'événement.",
+    "en": "The post-event Arrowverse, the Elseworlds born from the event.",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "ÈRE DE YANGCHEN",
+    "en": "THE YANGCHEN ERA",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-dawn-of-yangchen.desc",
+    "champ": "desc",
+    "fr": "Jeune Avatar hantée par les souvenirs de ses vies antérieures, Yangchen navigue entre diplomatie et complots dans la ville corrompue de Bin-Er.",
+    "en": "A young Avatar haunted by the memories of her past lives, Yangchen navigates diplomacy and conspiracy in the corrupt city of Bin-Er.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-legacy-of-yangchen.desc",
+    "champ": "desc",
+    "fr": "Yangchen affronte les conséquences de ses choix et un complot qui menace l'équilibre entre les nations.",
+    "en": "Yangchen faces the consequences of her choices, and a plot that threatens the balance between the nations.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "ÈRE DE KYOSHI",
+    "en": "THE KYOSHI ERA",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-rise-of-kyoshi.desc",
+    "champ": "desc",
+    "fr": "Servante ignorant qu'elle est l'Avatar, Kyoshi fuit après une tragédie et apprend à survivre auprès de hors-la-loi. L'origine brutale de la plus légendaire des Avatars.",
+    "en": "A servant who has no idea she is the Avatar, Kyoshi flees after a tragedy and learns to survive among outlaws. The brutal origin of the most legendary Avatar of them all.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-shadow-of-kyoshi.desc",
+    "champ": "desc",
+    "fr": "Deux ans plus tard, Kyoshi est convoquée à la Nation du Feu, où une menace venue du Monde des Esprits couve derrière la politique.",
+    "en": "Two years later, Kyoshi is summoned to the Fire Nation, where a threat from the Spirit World is brewing behind the politics.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "ÈRE DE ROKU",
+    "en": "THE ROKU ERA",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-reckoning-of-roku.desc",
+    "champ": "desc",
+    "fr": "Le jeune Roku accepte une mission secrète du prince Sozin et découvre des agendas cachés sur une île isolée, aux côtés de son nouvel ami Gyatso.",
+    "en": "Young Roku takes on a secret mission from Prince Sozin and uncovers hidden agendas on a remote island, alongside his new friend Gyatso.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-awakening-of-roku.desc",
+    "champ": "desc",
+    "fr": "Impatient de maîtriser l'État d'Avatar, Roku canalise l'énergie du solstice d'hiver — et déclenche le chaos sur l'Île du Croissant.",
+    "en": "Impatient to master the Avatar State, Roku channels the energy of the winter solstice — and unleashes chaos on Crescent Island.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "LIVRE 1 : L'EAU",
+    "en": "BOOK ONE : WATER",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.group",
+    "champ": "group",
+    "fr": "GUERRE DE CENT ANS",
+    "en": "HUNDRED YEAR WAR",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s1e01-10.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s1e01-10.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 1 Épisodes 1-10",
+    "en": "Season 1 Episodes 1-10",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s1e11-16.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s1e11-16.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 1 Épisodes 11-16",
+    "en": "Season 1 Episodes 11-16",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-relics.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Reliques",
+    "en": "The Lost Adventures : Relics",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-relics.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s1e17-20.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s1e17-20.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 1 Épisodes 17-20",
+    "en": "Season 1 Episodes 17-20",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "LIVRE 2 : LA TERRE",
+    "en": "BOOK TWO : EARTH",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.group",
+    "champ": "group",
+    "fr": "GUERRE DE CENT ANS",
+    "en": "HUNDRED YEAR WAR",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-kyoshi-warriors-13.desc",
+    "champ": "desc",
+    "fr": "Suki et les guerrières Kyoshi rejoignent l'armée du Royaume de la Terre.",
+    "en": "Suki and the Kyoshi Warriors join the Earth Kingdom army.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s2e01-09.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s2e01-09.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 2 Épisodes 1-9",
+    "en": "Season 2 Episodes 1-9",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-katara-and-the-pirate-s-silver.title",
+    "champ": "title",
+    "fr": "Les Héroïnes de la Team Avatar : Katara et l'Argent des Pirates",
+    "en": "Katara and the Pirate's Silver",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-katara-and-the-pirate-s-silver.desc",
+    "champ": "desc",
+    "fr": "Séparée du groupe après une embuscade, Katara doit s'allier à des pirates pour retrouver ses amis. VF dans le recueil Les Héroïnes de la Team Avatar.",
+    "en": "Separated from the group after an ambush, Katara has to side with pirates to find her friends again.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-sokka-the-avatar.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Sokka l'Avatar",
+    "en": "The Lost Adventures : Sokka the Avatar",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-sokka-the-avatar.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-divided-we-fall.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Séparés, Nous Chutons",
+    "en": "The Lost Adventures : Divided We Fall",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-divided-we-fall.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s2e10-20.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s2e10-20.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 2 Épisodes 10-20",
+    "en": "Season 2 Episodes 10-20",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-escape-from-the-spirit-world.desc",
+    "champ": "desc",
+    "fr": "Histoires animées interactives à regarder gratuitement sur YouTube, pendant le coma d'Aang entre les Livres 2 et 3.",
+    "en": "Interactive animated stories to watch for free on YouTube, set during Aang's coma between Books Two and Three.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-escape-from-the-spirit-world.link.label",
+    "champ": "label",
+    "fr": "Regarder sur YouTube",
+    "en": "Watch on YouTube",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-it-s-only-natural.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : C'est Bien Naturel",
+    "en": "The Lost Adventures : It's Only Natural",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-it-s-only-natural.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-going-home-again.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Retour à la Maison",
+    "en": "The Lost Adventures : Going Home Again",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-going-home-again.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-bridge.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Le Pont",
+    "en": "The Lost Adventures : The Bridge",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-bridge.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "LIVRE 3 : LE FEU",
+    "en": "BOOK THREE : FIRE",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.group",
+    "champ": "group",
+    "fr": "GUERRE DE CENT ANS",
+    "en": "HUNDRED YEAR WAR",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e01-02.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e01-02.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 3 Épisodes 1-2",
+    "en": "Season 3 Episodes 1-2",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-private-fire.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Soldat Feu",
+    "en": "The Lost Adventures : Private Fire",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-private-fire.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e03-06.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e03-06.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 3 Épisodes 3-6",
+    "en": "Season 3 Episodes 3-6",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e07-07.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-combustion-man-on-a-train.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : L'Homme Explosif Dans un Train",
+    "en": "The Lost Adventures : Combustion Man on a Train",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-combustion-man-on-a-train.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e08-13.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e08-13.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 3 Épisodes 8-13",
+    "en": "Season 3 Episodes 8-13",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-dragon-days.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : L'Epoque des Dragons",
+    "en": "The Lost Adventures : Dragon Days",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-dragon-days.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-suki-alone.title",
+    "champ": "title",
+    "fr": "Les Héroïnes de la Team Avatar : Suki, Seule",
+    "en": "Suki, Alone",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-suki-alone.desc",
+    "champ": "desc",
+    "fr": "Prisonnière à la Roche Bouillante, Suki organise en secret un jardin — et une rébellion — parmi les détenus. VF dans le recueil Les Héroïnes de la Team Avatar.",
+    "en": "Imprisoned at the Boiling Rock, Suki secretly grows a garden — and a rebellion — among the inmates.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e14-14.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-love-is-a-battlefield.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : L'Amour est un Champ de Bataille",
+    "en": "The Lost Adventures : Love Is a Battlefield",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-love-is-a-battlefield.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e15-19.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e15-19.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 3 Épisodes 15-19",
+    "en": "Season 3 Episodes 15-19",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-bumi-vs-toph-round-one.title",
+    "champ": "title",
+    "fr": "Les Aventures Perdues : Bumi contre Toph, Premier Round",
+    "en": "The Lost Adventures : Bumi vs. Toph, Round One",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-bumi-vs-toph-round-one.desc",
+    "champ": "desc",
+    "fr": "Histoire courte du recueil Les Aventures Perdues (The Lost Adventures).",
+    "en": "Short story from The Lost Adventures collection.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e20-21.title",
+    "champ": "title",
+    "fr": "Avatar : Le Dernier Maître de l'Air",
+    "en": "Avatar : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-s3e20-21.subitems[0]",
+    "champ": "subitems",
+    "fr": "Saison 3 Épisodes 20-21",
+    "en": "Season 3 Episodes 20-21",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "ÈRE DE AANG",
+    "en": "THE AANG ERA",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-avatar-legends-city-of-echoes.desc",
+    "champ": "desc",
+    "fr": "Roman jeunesse de l'univers Avatar Legends, entre esprits et mystères.",
+    "en": "A young readers novel set in the Avatar Legends universe, between spirits and mysteries.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-promesse-the-promise.title",
+    "champ": "title",
+    "fr": "La Promesse 1-3",
+    "en": "The Promise 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-promesse-the-promise.desc",
+    "champ": "desc",
+    "fr": "Aang et Zuko s'opposent sur le sort des colonies de la Nation du Feu — la naissance douloureuse d'un nouveau monde après la guerre.",
+    "en": "Aang and Zuko clash over the fate of the Fire Nation colonies — the painful birth of a new world after the war.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-rebound.title",
+    "champ": "title",
+    "fr": "Rebond (Free Comic Book Day 2012)",
+    "en": "Rebound (Free Comic Book Day 2012)",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-rebound.desc",
+    "champ": "desc",
+    "fr": "Aussi disponible dans le recueil Team Avatar Tales",
+    "en": "Also available in the Team Avatar Tales collection",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-recherche-the-search.title",
+    "champ": "title",
+    "fr": "La Recherche 1-3",
+    "en": "The Search 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-recherche-the-search.desc",
+    "champ": "desc",
+    "fr": "Zuko part enfin à la recherche de sa mère Ursa, accompagné d'une Azula imprévisible. La vérité l'attend dans une vallée peuplée d'esprits.",
+    "en": "Zuko finally sets out to find his mother Ursa, with an unpredictable Azula in tow. The truth is waiting for him in a valley full of spirits.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-smoke-and-shadow-partie-1.title",
+    "champ": "title",
+    "fr": "Fumée et Ombre 1",
+    "en": "Smoke and Shadow 1",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-smoke-and-shadow-partie-1.desc",
+    "champ": "desc",
+    "fr": "Zuko rentre dans une Nation du Feu rongée par la peur : la Société de la Nouvelle Ozai complote et des enfants disparaissent, enlevés par les mystérieux Kemurikage.",
+    "en": "Zuko comes home to a Fire Nation eaten away by fear: the New Ozai Society is plotting and children are disappearing, taken by the mysterious Kemurikage.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-rift.title",
+    "champ": "title",
+    "fr": "Le Désaccord 1-3",
+    "en": "The Rift 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-rift.desc",
+    "champ": "desc",
+    "fr": "Aang veut honorer un festival oublié des Nomades de l'Air, mais découvre une raffinerie sur une terre sacrée — dirigée par le père de Toph.",
+    "en": "Aang sets out to honor a forgotten Air Nomad festival, but finds a refinery on sacred ground — run by Toph's father.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-smoke-and-shadow-parties-2-3.title",
+    "champ": "title",
+    "fr": "Fumée et Ombre 2-3",
+    "en": "Smoke and Shadow 2-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-smoke-and-shadow-parties-2-3.desc",
+    "champ": "desc",
+    "fr": "La traque des Kemurikage s'intensifie — Zuko doit choisir entre la peur et la confiance, tandis qu'Azula tire les ficelles dans l'ombre.",
+    "en": "The hunt for the Kemurikage intensifies — Zuko has to choose between fear and trust, while Azula pulls the strings from the shadows.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-north-and-south.title",
+    "champ": "title",
+    "fr": "Nord et Sud 1-3",
+    "en": "North and South 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-north-and-south.desc",
+    "champ": "desc",
+    "fr": "Katara et Sokka rentrent au Pôle Sud et découvrent leur tribu transformée par la modernité — et convoitée par des intérêts étrangers.",
+    "en": "Katara and Sokka return to the South Pole and find their tribe transformed by modernity — and coveted by foreign interests.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-shells.title",
+    "champ": "title",
+    "fr": "Coquillages (Free Comic Book Day 2014)",
+    "en": "Shells (Free Comic Book Day 2014)",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-shells.desc",
+    "champ": "desc",
+    "fr": "Aussi disponible dans le recueil Team Avatar Tales",
+    "en": "Also available in the Team Avatar Tales collection",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-sisters.title",
+    "champ": "title",
+    "fr": "Sœurs (Free Comic Book Day 2013)",
+    "en": "Sisters (Free Comic Book Day 2013)",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-sisters.desc",
+    "champ": "desc",
+    "fr": "Aussi disponible dans le recueil Team Avatar Tales",
+    "en": "Also available in the Team Avatar Tales collection",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-azula-in-the-spirit-temple.title",
+    "champ": "title",
+    "fr": "Feu et Trésor Familial : Azula Face au Temple des Esprits",
+    "en": "Azula in the Spirit Temple",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-azula-in-the-spirit-temple.desc",
+    "champ": "desc",
+    "fr": "Seule et en fuite, Azula arrive dans un temple mystérieux où des esprits la confrontent à ses souvenirs et à ses choix. VF dans le recueil Feu et Trésor Familial.",
+    "en": "Alone and on the run, Azula reaches a mysterious temple where spirits confront her with her memories and her choices.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-ashes-of-the-academy.title",
+    "champ": "title",
+    "fr": "Feu et Trésor Familial : Les Cendres de l'Académie",
+    "en": "Ashes of the Academy",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-ashes-of-the-academy.desc",
+    "champ": "desc",
+    "fr": "Mai est nommée à la tête de la réforme de l'éducation de la Nation du Feu — entre souvenirs d'Azula et menaces des loyalistes. VF dans le recueil Feu et Trésor Familial.",
+    "en": "Mai is put in charge of reforming Fire Nation education — between memories of Azula and threats from the loyalists.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-imbalance.title",
+    "champ": "title",
+    "fr": "Déséquilibre 1-3",
+    "en": "Imbalance 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-imbalance.desc",
+    "champ": "desc",
+    "fr": "À Cranefish Town, Team Avatar affronte une montée des tensions entre maîtres et non-maîtres qui annonce les conflits de l'ère de Korra.",
+    "en": "In Cranefish Town, Team Avatar faces rising tensions between benders and non-benders that foreshadow the conflicts of the Korra era.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-toph-beifong-s-metalbending-academy.title",
+    "champ": "title",
+    "fr": "Les Héroïnes de la Team Avatar : L'Académie de la Maîtrise du Métal de Toph Beifong",
+    "en": "Toph Beifong's Metalbending Academy",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-toph-beifong-s-metalbending-academy.desc",
+    "champ": "desc",
+    "fr": "Toph a ouvert la première académie de maîtrise du métal, mais ses élèves peinent — et l'inspiration lui manque. VF dans le recueil Les Héroïnes de la Team Avatar.",
+    "en": "Toph has opened the first metalbending academy, but her students are struggling — and she is short on inspiration.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-bounty-hunter-and-the-tea-brewer.title",
+    "champ": "title",
+    "fr": "Feu et Trésor Familial : La Chasseuse de Primes et le Maître du Thé",
+    "en": "The Bounty Hunter and the Tea Brewer",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-the-bounty-hunter-and-the-tea-brewer.desc",
+    "champ": "desc",
+    "fr": "June la chasseuse de primes accepte un contrat qui la mène droit au salon de thé d'Iroh. VF dans le recueil Feu et Trésor Familial.",
+    "en": "June the bounty hunter takes a contract that leads her straight to Iroh's tea shop.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-aang-the-last-airbender.title",
+    "champ": "title",
+    "fr": "Avatar Aang : Le Dernier Maître de l'Air",
+    "en": "Aang : The Last Airbender",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-legacy.desc",
+    "champ": "desc",
+    "fr": "Livre-objet : Aang transmet souvenirs et reliques à son fils Tenzin.",
+    "en": "An in-universe book: Aang passes his memories and relics on to his son Tenzin.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "eras.title",
+    "champ": "title",
+    "fr": "ÈRE DE KORRA",
+    "en": "THE KORRA ERA",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-amies-pour-la-vie-free-comic-book-day-2016.title",
+    "champ": "title",
+    "fr": "Amies pour la Vie (Free Comic Book Day 2016)",
+    "en": "Friends for Life (Free Comic Book Day 2016)",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-amies-pour-la-vie-free-comic-book-day-2016.desc",
+    "champ": "desc",
+    "fr": "Aussi disponible dans le recueil Patterns in Time",
+    "en": "Also available in the Patterns in Time collection",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-legende-de-korra-livre-1-l-air.title",
+    "champ": "title",
+    "fr": "La Légende de Korra - Livre 1 : L'Air",
+    "en": "The Legend of Korra - Book One : Air",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-legende-de-korra-livre-2-les-esprits.title",
+    "champ": "title",
+    "fr": "La Légende de Korra - Livre 2 : Les Esprits",
+    "en": "The Legend of Korra - Book Two : Spirits",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-legende-de-korra-livre-3-le-changemen.title",
+    "champ": "title",
+    "fr": "La Légende de Korra - Livre 3 : Le Changement",
+    "en": "The Legend of Korra - Book Three : Change",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-la-legende-de-korra-livre-4-l-equilibre.title",
+    "champ": "title",
+    "fr": "La Légende de Korra - Livre 4 : L'Équilibre",
+    "en": "The Legend of Korra - Book Four : Balance",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-turf-wars.title",
+    "champ": "title",
+    "fr": "Guerres de Territoires 1-3",
+    "en": "Turf Wars 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-turf-wars.desc",
+    "champ": "desc",
+    "fr": "Suite directe de la série : Korra et Asami reviennent du Monde des Esprits et affrontent un caïd qui exploite le nouveau portail spirituel.",
+    "en": "A direct sequel to the series: Korra and Asami come back from the Spirit World and take on a crime boss cashing in on the new spirit portal.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-lost-pets-free-comic-book-day-2018.desc",
+    "champ": "desc",
+    "fr": "Aussi disponible dans le recueil Patterns in Time",
+    "en": "Also available in the Patterns in Time collection",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-an-avatar-s-chronicle.desc",
+    "champ": "desc",
+    "fr": "Livre-objet retraçant le voyage de Korra, annoté de sa main.",
+    "en": "An in-universe book retracing Korra's journey, annotated in her own hand.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-ruins-of-the-empire.title",
+    "champ": "title",
+    "fr": "Les Ruines de l'Empire 1-3",
+    "en": "Ruins of the Empire 1-3",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-ruins-of-the-empire.desc",
+    "champ": "desc",
+    "fr": "À la veille d'élections historiques dans le Royaume de la Terre, Kuvira peut-elle être rachetée ?",
+    "en": "On the eve of historic elections in the Earth Kingdom, can Kuvira be redeemed?",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-legacy-of-the-fire-nation.desc",
+    "champ": "desc",
+    "fr": "Livre-objet : Iroh partage souvenirs et sagesse avec Zuko.",
+    "en": "An in-universe book: Iroh shares his memories and his wisdom with Zuko.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "#avt-mystery-of-penquan-island.desc",
+    "champ": "desc",
+    "fr": "Histoire courte de l'ère Korra.",
+    "en": "A short story from the Korra era.",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "Avatar.subtitle",
+    "champ": "subtitle",
+    "fr": "Timeline Chronologique",
+    "en": "Chronological Timeline",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "Avatar.description",
+    "champ": "description",
+    "fr": "Séries animées · Comics · Livres",
+    "en": "Animation · Comics · Books",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "Avatar.notes",
+    "champ": "notes",
+    "fr": "<p class=\"intro-lead\">Si vous êtes ici c'est que vous souhaitez lire et regarder l'univers Avatar Legends dans son ordre le plus optimisé, un mélange d'ordre chronologique et d'ordre de sortie, vous trouverez des détails supplémentaires en cliquant sur chaque média et tout ce site est garanti sans spoil majeur.</p><div class=\"intro-tags\"><span class=\"itag\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>Ce guide est plutôt à destination des revisionnages, pour un premier visionnage regardez les séries et films mais si vous êtes persuadés d'aimer l'univers vous pouvez tout à fait suivre ce guide.</span></div><div class=\"keys-title\">Repères de lecture</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>Le calendrier</div><p>L'an 0 du calendrier est l'année du Génocide des Nomades de l'Air donc BG = Before Genocide / AG = After Genocide.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Les flashback</div><p>Certains événements sont mieux à voir en tant que FLASHBACK pour comprendre et sont donc indiqués comme tel.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z\"/><path d=\"M8 7h6M8 11h6\"/></svg>Les romans et comics</div><p>Les romans font majoritairement partie de la collection \"Les Chroniques de l'Avatar\" et racontent les histoires des Avatars du passé, ils sont loin d'être obligatoires mais ajoute du contexte, lisez des résumés si vous préférez.</p><p>Les comics font parti intégrante de l'oeuvre et continuent certaines intrigues des séries, certains sont très importants et d'autres anecdotiques, tout est indiqué.</p></div></div><details class=\"cuts\"><summary>Ce qui est écarté et pourquoi<span class=\"n\">5 entrées</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><dl class=\"cuts-list\"><div class=\"cut\"><dt>Les Aventures Perdues</dt><dd>La plupart des histoires ne sont que des sketchs sans développement de personnage ni avancée de l'intrigue, les quelques exceptions sont dans la timeline.</dd></div><div class=\"cut\"><dt>Team Avatar Tales</dt><dd>La plupart des histoires ne sont que des sketchs sans développement de personnage ni avancée de l'intrigue, les quelques exceptions sont dans la timeline.</dd></div><div class=\"cut\"><dt>Les romans pour enfants</dt><dd>Seulement si vous êtes un enfant.</dd></div><div class=\"cut\"><dt>Les histoires du JDR papier</dt><dd>Les manuels du jeu de rôle papier sont une mine d'or en terme de lore mais impossible à caser dans une timeline chronologique.</dd></div><div class=\"cut\"><dt>Le jeu mobile Avatar Générations et les jeux sur Korra</dt><dd>Les serveurs sont hors ligne et/ou les jeux ne sont plus en vente.</dd></div></dl></div></details>",
+    "en": "<p class=\"intro-lead\">If you're here, it's because you want to read and watch the Avatar Legends universe in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class=\"intro-tags\"><span class=\"itag\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide is meant mostly for rewatches: for a first watch, go through the shows and movies, but if you're sure you'll love the universe, you can absolutely follow this guide.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the year of the Air Nomad Genocide, so BG = Before Genocide / AG = After Genocide.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z\"/><path d=\"M8 7h6M8 11h6\"/></svg>The novels and comics</div><p>Most of the novels belong to the \"Chronicles of the Avatar\" collection and tell the stories of the Avatars of the past. They are far from required, but they add context — read summaries instead if you prefer.</p><p>The comics are an integral part of the work and continue some of the storylines from the shows. Some are very important and others are minor, and it is all marked.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">5 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Lost Adventures</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Team Avatar Tales</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Kids' novels</dt><dd>Only if you are a child.</dd></div><div class=\"cut\"><dt>The tabletop RPG stories</dt><dd>The tabletop role-playing books are a goldmine of lore, but impossible to fit into a chronological timeline.</dd></div><div class=\"cut\"><dt>The mobile game Avatar Generations and the Korra games</dt><dd>The servers are offline and/or the games are no longer on sale.</dd></div></dl></div></details>",
+    "statut": "traduit, à relire",
+    "cause": "aucune source anglaise"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.t.resetAvatar",
+    "champ": "resetAvatar",
+    "fr": "Effacer toute ta progression Avatar ? Cette action est définitive.",
+    "en": "Erase all your Avatar progress? This cannot be undone.",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badgeLabels.roman.1",
+    "champ": "1",
+    "fr": "LIVRE",
+    "en": "BOOK",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.0.label",
+    "champ": "label",
+    "fr": "Maître de l'Eau",
+    "en": "Waterbending Master",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.0.desc",
+    "champ": "desc",
+    "fr": "Livre 1 : L'Eau terminé",
+    "en": "Book One : Water completed",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.1.label",
+    "champ": "label",
+    "fr": "Maître de la Terre",
+    "en": "Earthbending Master",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.1.desc",
+    "champ": "desc",
+    "fr": "Livre 2 : La Terre terminé",
+    "en": "Book Two : Earth completed",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.2.label",
+    "champ": "label",
+    "fr": "Maître du Feu",
+    "en": "Firebending Master",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.2.desc",
+    "champ": "desc",
+    "fr": "Livre 3 : Le Feu terminé",
+    "en": "Book Three : Fire completed",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.3.label",
+    "champ": "label",
+    "fr": "Gardien de l'Équilibre",
+    "en": "Keeper of Balance",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.3.desc",
+    "champ": "desc",
+    "fr": "L'ère de Korra terminée",
+    "en": "The Korra Era completed",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.4.label",
+    "champ": "label",
+    "fr": "Avatar Accompli",
+    "en": "Fully Realized Avatar",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.badges.4.desc",
+    "champ": "desc",
+    "fr": "100% Avatar complété",
+    "en": "Avatar 100% completed",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Avatar",
+    "chemin": "CG.resetMsg",
+    "champ": "resetMsg",
+    "fr": "Réinitialiser la progression Avatar ?",
+    "en": "Reset your Avatar progress?",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Spider-Man : Brand New Day · cta",
+    "champ": "cta",
+    "fr": "Voir dans la timeline",
+    "en": "See in the timeline",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Legacy · cta",
+    "champ": "cta",
+    "fr": "Voir dans le Dossier",
+    "en": "See in the Deep Dive",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Supergirl (2026) · cta",
+    "champ": "cta",
+    "fr": "Voir dans la timeline",
+    "en": "See in the timeline",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Nouveau Dossier : romans & comics Star Wars · cta",
+    "champ": "cta",
+    "fr": "Ouvrir le Dossier",
+    "en": "Open the Deep Dive",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Nouvelle timeline : Avatar · cta",
+    "champ": "cta",
+    "fr": "Ouvrir la timeline",
+    "en": "Open the timeline",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Nouvelle timeline : DC Multivers · cta",
+    "champ": "cta",
+    "fr": "Ouvrir la timeline",
+    "en": "Open the timeline",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Timeline Star Wars · cta",
+    "champ": "cta",
+    "fr": "Ouvrir la timeline",
+    "en": "Open the timeline",
+    "statut": "traduit, à relire"
+  },
+  {
+    "contexte": "Journal",
+    "chemin": "Timeline Marvel — MCU · cta",
+    "champ": "cta",
+    "fr": "Ouvrir la timeline",
+    "en": "Open the timeline",
+    "statut": "traduit, à relire"
+  }
+]

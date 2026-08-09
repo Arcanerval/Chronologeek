@@ -1,0 +1,15 @@
+{
+  "data/starwars-fr.js": "_proto/data.js",
+  "data/starwars-en.js": "_proto/data-en.js",
+  "data/marvel-fr.js": "_proto/data-mcu.js",
+  "data/marvel-en.js": "_proto/data-mcu-en.js",
+  "data/dc-fr.js": "_proto/data-dc.js",
+  "data/dc-en.js": "_proto/data-dc-en.js",
+  "data/avatar-fr.js": "_proto/data-avatar.js",
+  "data/avatar-en.js": "_proto/data-avatar-en.js",
+  "data/dossier-star-wars-fr.js": "_proto/data-dossier-sw.js",
+  "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
+  "data/news-fr.js": "_proto/data-news.js",
+  "data/news-en.js": "_proto/data-news-en.js",
+  "app.js": "_proto/e-app.js"
+}

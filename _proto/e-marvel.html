@@ -592,16 +592,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <a class="brand" href="e-accueil.html"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
     <nav class="nav-links" aria-label="Navigation">
       <a href="e-accueil.html">Accueil</a>
-      <a href="#" class="doss">Dossiers</a>
-      <a href="#">Star Wars</a>
+      <a href="e-dossiers.html" class="doss">Dossiers</a>
+      <a href="e-starwars.html">Star Wars</a>
       <a href="#" aria-current="page">Marvel</a>
       <a href="e-dc.html">DC</a>
-      <a href="#">Avatar</a>
-      <a href="#" class="upc">À venir</a>
-      <a href="#" class="news">Nouveautés</a>
+      <a href="e-avatar.html">Avatar</a>
+      <a href="e-a-venir.html" class="upc">À venir</a>
+      <a href="e-nouveautes.html" class="news">Nouveautés</a>
     </nav>
     <div class="nav-tools">
-      <a class="icon-btn lang-btn" href="#" aria-label="Switch to English" title="Switch to English">
+      <a class="icon-btn lang-btn" href="en-marvel.html" aria-label="Switch to English" title="Switch to English">
         <!-- Drapeau posé à 38 px de large : les liserés blancs des proportions
              officielles y tombent sous le pixel et ne se voient qu'au repaint
              du survol. On les épaissit donc, la lecture prime sur l'exactitude. -->
@@ -613,9 +613,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
-    <a href="e-accueil.html">Accueil</a><a href="#" class="doss">Dossiers</a>
-    <a href="#">Star Wars</a><a href="#" aria-current="page">Marvel</a><a href="e-dc.html">DC</a><a href="#">Avatar</a>
-    <a href="#" class="upc">À venir</a><a href="#" class="news">Nouveautés</a>
+    <a href="e-accueil.html">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a>
+    <a href="e-starwars.html">Star Wars</a><a href="#" aria-current="page">Marvel</a><a href="e-dc.html">DC</a><a href="e-avatar.html">Avatar</a>
+    <a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a>
   </nav>
 </header>
 
@@ -681,15 +681,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         qui regarde tout deux fois.</p>
     </div>
     <div><h4>Timelines</h4><ul>
-      <li><a href="#">Star Wars</a></li>
+      <li><a href="e-starwars.html">Star Wars</a></li>
       <li><a href="#">Marvel — MCU</a></li>
       <li><a href="e-dc.html">DC Multiverse</a></li>
-      <li><a href="#">Avatar</a></li>
-      <li><a href="#">Dossiers</a></li>
+      <li><a href="e-avatar.html">Avatar</a></li>
+      <li><a href="e-dossiers.html">Dossiers</a></li>
     </ul></div>
     <div><h4>Plus</h4><ul>
-      <li><a href="#">Sorties à venir</a></li>
-      <li><a href="#">Nouveautés</a></li>
+      <li><a href="e-a-venir.html">Sorties à venir</a></li>
+      <li><a href="e-nouveautes.html">Nouveautés</a></li>
       <li><a href="#">Soutenir le site</a></li>
       <li><a href="#">Contact</a></li>
     </ul></div>
@@ -853,7 +853,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      un découpage en arcs. Tout le reste s'empile, une ligne par bloc. */
   function subs(e){
     var it=e.subitems||[]; if(!it.length) return '';
-    var unit=/^Saison \d+ épisode \d+/;
+    /* Le même test dans les deux langues : la page anglaise écrit
+       « Season 1 episode 2 ». Sans l'alternative, un arc groupé en
+       français ressortait empilé en anglais. */
+    var unit=/^(Saison|Season) \d+ (épisode|episode) \d+/i;
     var arcMode=it.some(function(s){ return !String(s).trim(); }) ||
                 it.every(function(s){ return unit.test(String(s)); });
     var arcs=[[]];
@@ -1063,7 +1066,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         .then(function(d){
           var v=(d.videos&&d.videos.results)||[];
           if(v.some(function(x){return x.type==='Trailer'&&x.site==='YouTube';})){ cache[k]=d; return d; }
-          /* pas de bande annonce dans la langue : on complète en anglais */
+          /* Pas de bande-annonce dans la langue de la page : on complète
+             en anglais, et en anglais seulement. Le repli ne joue donc
+             que depuis le français — c'est voulu : une bande-annonce
+             française n'a rien à faire sur la page anglaise. Quand TMDB
+             n'a pas de trailer anglais, la fiche anglaise n'en affiche
+             pas, et c'est la bonne réponse. */
           return fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+
                        CFG.tmdbKey+'&language=en-US')
             .then(function(r){return r.json();})
@@ -1071,8 +1079,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         });
 
     got.then(function(d){
-      var tr=((d.videos&&d.videos.results)||[]).filter(function(v){
-        return v.type==='Trailer'&&v.site==='YouTube'; })[0];
+      /* À défaut de bande-annonce, le générique. TMDB ne connaît de la
+         série Avatar : Le Dernier Maître de l'Air aucun trailer anglais
+         — seulement son générique d'épisode — et ce générique fait le
+         même travail : il montre la série. Le type reste écrit en clair
+         parce que c'est une valeur de l'API TMDB, jamais un libellé
+         d'écran : il ne se traduit pas. */
+      var yts=((d.videos&&d.videos.results)||[]).filter(function(v){
+        return v.site==='YouTube'; });
+      var tr=yts.filter(function(v){ return v.type==='Trailer'; })[0]
+          || yts.filter(function(v){ return v.type==='Opening Credits'; })[0];
       var p=d.poster_path?IMG+'w300'+d.poster_path:null;
       box.innerHTML='<div class="expand-inner">'+
         (p?'<button type="button" class="expand-poster" data-big="'+IMG+'w780'+d.poster_path+
@@ -1388,5 +1404,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
 })();
 </script>
+<script src="e-app.js"></script>
 </body>
 </html>

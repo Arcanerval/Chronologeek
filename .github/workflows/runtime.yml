@@ -19,6 +19,10 @@ jobs:
           python-version: "3.12"
 
       # runtime.py n'utilise que la bibliotheque standard : rien a installer.
+      # Node sert a la chaine de publication, qui n'a pas de dependances non plus.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - name: Restaurer le cache TMDB
         uses: actions/cache@v4
@@ -32,11 +36,22 @@ jobs:
           TMDB_KEY: ${{ secrets.TMDB_KEY }}
         run: python runtime.py
 
+      # runtime.py ecrit dans les protos francais. L'anglais s'en deduit, et les
+      # pages du site en sont produites : sans ces deux etapes, la nouvelle table
+      # resterait dans _proto/ et le site garderait l'ancienne, sans rien dire.
+      - name: Deduire l'anglais et publier
+        run: |
+          node _proto/traduire.mjs
+          node _proto/publier.mjs
+
       - name: Commit si changement
         run: |
           git config user.name  "Runtime bot"
           git config user.email "actions@github.com"
-          git add starwars.html marvel.html dc.html \
-                  fr/starwars.html fr/marvel.html fr/dc.html
+          git add _proto/data.js _proto/data-mcu.js _proto/data-dc.js \
+                  _proto/data-en.js _proto/data-mcu-en.js _proto/data-dc-en.js \
+                  data/ app.js \
+                  index.html starwars.html marvel.html dc.html avatar.html \
+                  whats-new.html upcoming.html deep-dives/ fr/
           git diff --staged --quiet || git commit -m "Runtime : mise a jour des temps de visionnage"
           git push

@@ -22,6 +22,15 @@
       "port": 8933
     },
     {
+      "name": "site",
+      "runtimeExecutable": "py",
+      "runtimeArgs": [
+        "_proto/serveur.py",
+        "8951"
+      ],
+      "port": 8951
+    },
+    {
       "name": "proto-e",
       "runtimeExecutable": "py",
       "runtimeArgs": [

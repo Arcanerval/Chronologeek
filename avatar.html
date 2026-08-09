@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="utf-8"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#08080f"/>
@@ -9,861 +9,1419 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
-<title>Avatar — Chronologeek</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Avatar Timeline — Chronologeek</title>
+<meta name="description" content="Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Chronologeek"/>
+<meta property="og:title" content="Avatar Legends Timeline — Chronologeek"/>
+<meta property="og:description" content="Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order."/>
+<meta property="og:image" content="https://chronologeek.app/images/avatar.png"/>
+<meta property="og:url" content="https://chronologeek.app/avatar"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/avatar"/>
+<link rel="canonical" href="https://chronologeek.app/avatar"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="/images/avatar.png"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
+  THÈSE : cette page ne liste pas, elle donne à choisir sa prochaine étape.
+  Elle refuse la liste sur fond sombre à accent unique et prend la grammaire
+  de l'écran de sélection : grande image par ère, curseur qui claque, états
+  à faire / terminé. La complétion n'est pas plaquée, c'est la mécanique.
+  MONDE PROPRE : couleur noyée, une par ère, qui inonde toute la région et
+  change au défilement. Champs de couleur à bords francs, chevrons en
+  diagonale, trame de demi-teinte sur les visuels, titrage condensé à ombre
+  portée dure et décalée. Aucun halo, aucun verre, aucun arrondi.
+  ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
+  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#4d9fff).
+  RÉCIT : le visiteur voit d'abord des images, comprend qu'il choisit, et
+  voit sa carte se remplir entrée par entrée.
+  TEXTES : tout ce qui est prose vient du document de Niko, mot pour mot,
+  au vouvoiement. Rien n'est réécrit ici.
+-->
 <style>
 :root{
-  --bg:#08080f;--surface:#0f0f1a;--surface2:#161625;--border:#1e1e35;--border2:#2a2a48;
-  --accent:#7c6af7;--accent2:#f06292;--gold:#f5c842;--text:#e2e2f0;--muted:#686880;
-  --muted2:#9090b0;--green:#56c27a;--orange:#f09642;--red:#e05555;--radius:12px;
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  /* la marque « terminé » prend la couleur de l'univers, pas un vert générique */
+  --uni:#7dd3fc;
+  /* huit encres d'ère : la page se noie dedans, une région à la fois.
+     Elles suivent les nations — l'air d'abord, puis la terre, le feu, et
+     les trois Livres qui reprennent chacun l'élément de son titre. */
+  --era1:#8a6a12; --era2:#2d6a3f; --era3:#a8331b; --era4:#134a72;
+  --era5:#4a6b1f; --era6:#8f3b1e; --era7:#0f6d63; --era8:#5c2060;
+  /* les trois entrées colorées de la nav */
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  /* badges de type, charte du site */
+  --t-filmanim:#90caf9; --t-anime:#ce93d8; --t-video:#f472b6;
+  --t-roman:#a99cf9; --t-comic:#ffb74d;
+  --era:var(--era1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(124,106,247,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(240,98,146,.08),transparent 60%);pointer-events:none}
-.nav-maj{font-size:.7rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-header{background:rgba(8,8,15,.88);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
-nav{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:62px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
-.logo img{height:30px;display:block;object-fit:contain;background:transparent}
-.logo-text{font-size:1.35rem;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:1.25rem;align-items:center}
-.nav-links a{color:var(--muted2);font-size:.88rem;text-decoration:none;cursor:pointer;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
-.nav-sp{flex:1}
-.pbn{display:none;align-items:center;gap:.6rem;font-size:.78rem;color:var(--muted2)}.pbn.show{display:flex}
-.pbn-track{width:100px;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.pbn-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .4s}
-/* HOME */
-#home-page{display:none}#home-page.v{display:block}
-.hero{padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(124,106,247,.15),transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:1}
-.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,var(--accent) 45%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.25rem;line-height:1}
-.hero-rune{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-.hero-tagline{color:var(--muted2);font-size:1.05rem;max-width:540px;margin:0 auto 3.5rem;line-height:1.65}
-.ugrid{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;max-width:960px;margin:0 auto}
-.ucard{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--border2);border-radius:18px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);width:240px;overflow:hidden}
-.ucard:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 60px rgba(124,106,247,.25),0 0 0 1px rgba(124,106,247,.3)}
-.cbanner{height:130px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
-.cbanner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
-.cbanner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,var(--surface) 100%);pointer-events:none}
-.cicon{position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.9))}
-.cbody{padding:1.1rem 1.25rem 1.25rem}
-.cname{font-weight:800;font-size:1.05rem;margin-bottom:.3rem}
-.csub{font-size:.78rem;color:var(--muted2);line-height:1.4}
-.cprogress{margin-top:.75rem;display:flex;align-items:center;gap:.6rem;font-size:.72rem;color:var(--muted2)}
-.cp-track{flex:1;height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.cp-fill{height:100%;border-radius:2px;transition:width .5s}
-.cnew{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:.6rem}
-/* TIMELINE PAGE */
-.tl-page{display:block;max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
-.bc{font-size:.78rem;color:var(--muted2);margin-bottom:1.25rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
-.bc:hover{color:var(--accent)}
-.page-title{font-size:2.1rem;font-weight:900;letter-spacing:-.5px;margin-bottom:.4rem}
-.page-sub{color:var(--muted2);font-size:.9rem;line-height:1.55;margin-bottom:1.5rem}
-.progress-block{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem}
-.pb-info{flex:1}.pb-label{font-size:.72rem;color:var(--muted2);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em}
-.pb-track{height:6px;background:var(--border2);border-radius:3px;overflow:hidden;margin-bottom:.35rem}
-.pb-fill{height:100%;border-radius:3px;transition:width .5s}
-.pb-counts{font-size:.78rem;color:var(--muted2)}.pb-counts strong{color:var(--text)}
-.pb-reset{background:transparent;border:1px solid var(--border2);color:var(--muted2);padding:.35rem .8rem;border-radius:8px;font-size:.75rem;cursor:pointer;transition:all .2s;white-space:nowrap}
-.pb-reset:hover{border-color:var(--red);color:var(--red)}
-.nb{background:linear-gradient(135deg,rgba(124,106,247,.08),rgba(240,98,146,.05));border:1px solid rgba(124,106,247,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.1rem 1.3rem;margin-bottom:1.5rem;font-size:.86rem;line-height:1.75;color:var(--muted2)}
-.nb strong{color:var(--text)}
-.leg{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;font-size:.82rem}
-.leg-title{width:100%;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.1rem}
-/* BADGES */
-.b{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;font-size:.69rem;font-weight:700;white-space:nowrap}
-.bf{background:rgba(100,181,246,.14);color:#64b5f6;border:1px solid rgba(100,181,246,.28)}
-.bfa{background:rgba(144,202,249,.14);color:#90caf9;border:1px solid rgba(144,202,249,.28)}
-.bs{background:rgba(129,199,132,.14);color:#81c784;border:1px solid rgba(129,199,132,.28)}
-.ba{background:rgba(206,147,216,.14);color:#ce93d8;border:1px solid rgba(206,147,216,.28)}
-.bj{background:rgba(255,183,77,.14);color:#ffb74d;border:1px solid rgba(255,183,77,.28)}
-.bsp{background:rgba(255,167,38,.14);color:#ffa726;border:1px solid rgba(255,167,38,.28)}
-.bv{background:rgba(244,114,182,.14);color:#f472b6;border:1px solid rgba(244,114,182,.28)}
-.nt{display:inline-flex;font-size:.65rem;padding:2px 7px;border-radius:5px;font-weight:700;white-space:nowrap;background:rgba(224,85,85,.12);color:var(--red);border:1px solid rgba(224,85,85,.25)}
-.ft{display:inline-flex;font-size:.65rem;padding:2px 7px;border-radius:5px;white-space:nowrap;background:rgba(240,150,66,.12);color:var(--orange);border:1px solid rgba(240,150,66,.25)}
-.dt{display:inline-flex;font-size:.65rem;padding:2px 7px;border-radius:5px;white-space:nowrap;background:rgba(124,106,247,.12);color:#a99fff;border:1px solid rgba(124,106,247,.25)}
-/* FILTRES */
-.filter-bar{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
-.filter-group{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
-.filter-label{font-size:.72rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;white-space:nowrap;min-width:56px}
-.fbt{background:var(--surface2);border:1px solid var(--border2);color:var(--muted2);padding:.35rem .85rem;border-radius:20px;cursor:pointer;font-size:.79rem;transition:all .2s;user-select:none}
-.fbt:hover{border-color:var(--accent);color:var(--text)}
-.fbt.active{background:rgba(124,106,247,.2);border-color:var(--accent);color:#c4baff;font-weight:600}
-/* ERA */
-.era-node{display:flex;align-items:flex-start;margin:2.5rem 0 .6rem;position:relative}
-.era-node-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px;z-index:2;margin-right:10px}
-.era-node-dot.sv{background:#90caf9}.era-node-dot.fox{background:#ffb74d}
-.era-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);line-height:1.3}
-.era-label.sv{color:#90caf9}.era-label.fox{color:#ffb74d}
-/* SEGMENTS */
-.segment-box{margin:.4rem 0 1rem;border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:linear-gradient(160deg,var(--surface),var(--surface2));margin-left:40px}
-.segment-header{padding:.7rem 1rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--border2)}
-.segment-header.sv{background:linear-gradient(135deg,rgba(144,202,249,.08),rgba(206,147,216,.05))}
-.segment-header.fox{background:linear-gradient(135deg,rgba(255,183,77,.08),rgba(224,85,85,.05))}
-.segment-icon{font-size:1.2rem}.segment-title{font-weight:800;font-size:.88rem}
-.segment-header.sv .segment-title{color:#90caf9}.segment-header.fox .segment-title{color:#ffb74d}
-.segment-sub{font-size:.72rem;color:var(--muted2);margin-left:auto}.segment-body{padding:.5rem .65rem}
-/* ENTRY */
-.en{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.75rem;display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s,background .2s,box-shadow .2s;cursor:pointer}
-.en:hover{border-color:var(--border2);background:var(--surface2);box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.en.must{border-left:3px solid var(--gold)}.en.imp{border-left:3px solid var(--orange)}
-.en.done{opacity:.5}.en.done .en-name{text-decoration:line-through;text-decoration-color:var(--muted)}
-.en.open{border-color:var(--accent);box-shadow:0 0 0 1px rgba(124,106,247,.2),0 8px 30px rgba(0,0,0,.4)}
-/* Décalage droite pour les non-616 — amplifié */
-.en.deviate{margin-left:40px;border-left-style:dashed}
-.en-top{display:flex;overflow:hidden;min-height:86px}
-.en-check{width:40px;min-width:40px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);flex-shrink:0;transition:background .2s;cursor:pointer}
-.en-check:hover{background:rgba(124,106,247,.08)}
-.checkmark{width:20px;height:20px;border-radius:6px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:.75rem;color:#fff;font-weight:700}
-.en-check:hover .checkmark{border-color:var(--accent)}
-.en.done .checkmark{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent}
-/* Date badge — grande */
-.en-datebadge{width:100px;min-width:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border);flex-shrink:0;padding:.4rem .35rem;background:rgba(124,106,247,.04);gap:.12rem}
-.en-level-icon{font-size:1rem;line-height:1;min-height:1rem}
-.date-main{font-size:.82rem;font-weight:900;color:var(--text);text-align:center;line-height:1.2}
-.dim-badge{font-size:.52rem;font-weight:700;color:#a99fff;background:rgba(124,106,247,.15);border:1px solid rgba(124,106,247,.25);border-radius:4px;padding:1px 4px;text-align:center;line-height:1.4;margin-top:.1rem;max-width:92px;word-break:break-word}
-.ep{width:200px;min-width:200px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border-right:1px solid var(--border);cursor:pointer}
-.ep img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .3s}
-.ep:hover img{transform:scale(1.06)}.pp{font-size:1.5rem;opacity:.15}
-.em{flex:1;padding:.7rem .9rem;min-width:0;display:flex;flex-direction:column;gap:.18rem}
-.tr{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
-.en-name{font-weight:600;font-size:.92rem;line-height:1.3;color:var(--text)}
-.enote{font-size:.78rem;color:var(--muted2);font-style:italic;line-height:1.5}
-.edetails{font-size:.78rem;color:var(--muted2);line-height:1.5;padding:.25rem .5rem;border-left:2px solid var(--border2);background:rgba(124,106,247,.03);border-radius:0 4px 4px 0;margin-top:.1rem}
-.esub{padding-left:.5rem;border-left:2px solid var(--border2);margin-top:.25rem}
-.si{font-size:.76rem;color:var(--muted2);padding:.07rem 0 .07rem .45rem;line-height:1.4}.si.sep{height:.1rem;margin:.7rem 0 .7rem .45rem;background:rgba(124,106,247,.3);border-radius:2px;padding:0;border:none;display:block}
-.si strong{color:var(--muted2)}
-/* EXPAND */
-.en-expand{display:none;border-top:1px solid var(--border);background:rgba(0,0,0,.25)}
-.en.open .en-expand{display:block}
-.expand-inner{display:flex;min-height:150px}
-.expand-poster{width:100px;min-width:100px;flex-shrink:0;cursor:pointer;overflow:hidden;position:relative}
-.expand-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-.expand-poster:hover img{transform:scale(1.04)}
-.expand-poster-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s;font-size:1.6rem;opacity:0}
-.expand-poster:hover .expand-poster-ov{background:rgba(0,0,0,.45);opacity:1}
-.expand-info{flex:1;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.45rem;overflow:hidden}
-.expand-synopsis{font-size:.8rem;color:var(--muted2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-.expand-meta{display:flex;flex-wrap:wrap;gap:.25rem .6rem;font-size:.74rem;color:var(--muted2)}
-.expand-meta span strong{color:var(--text)}
-.expand-trailer-link{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,0,0,.1);border:1px solid rgba(255,0,0,.25);color:#ff6b6b;padding:.28rem .7rem;border-radius:8px;font-size:.77rem;font-weight:600;text-decoration:none;transition:all .2s;width:fit-content}
-.expand-trailer-link:hover{background:rgba(255,0,0,.2)}
-.expand-loading{padding:1.5rem;color:var(--muted);font-size:.8rem;text-align:center}
-.expand-no-data{padding:1rem;color:var(--muted);font-size:.8rem}
-/* MODAL */
-.pm{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;backdrop-filter:blur(8px);cursor:pointer}
-.pm.o{display:flex}.pm img{max-height:88vh;max-width:88vw;border-radius:14px;box-shadow:0 30px 100px rgba(0,0,0,.9)}
-.pm-x{position:absolute;top:1.25rem;right:1.75rem;color:#fff;font-size:1.8rem;cursor:pointer;opacity:.6}
-/* CS */
-.cs{display:none;text-align:center;padding:6rem 2rem;color:var(--muted2)}.cs.v{display:block}
-.cs h2{font-size:2rem;margin-bottom:1rem;color:var(--text)}
-@media(max-width:700px){
-  .tl-page{padding:1rem .6rem;max-width:100%}
-  .en-top{flex-direction:column;min-height:unset}
-  .ep{width:100%!important;min-width:unset!important;height:120px;border-right:none;border-bottom:1px solid var(--border)}
-  .ep img{object-position:center 25%}
-  .en-check{width:100%;height:34px;border-right:none;border-bottom:1px solid var(--border);justify-content:flex-start;padding-left:1rem}
-  .en-datebadge{width:100%!important;min-width:unset!important;flex-direction:row;gap:.6rem;justify-content:flex-start;border-right:none;border-bottom:1px solid var(--border);padding:.3rem .75rem;background:rgba(124,106,247,.05)}
-  .en-level-icon{min-height:unset}
-  .dim-badge{max-width:none;font-size:.6rem}
-  .em{padding:.6rem .75rem}
-  .en-name{font-size:.88rem}
-  .enote{font-size:.75rem}
-  .b{font-size:.64rem;padding:2px 6px}
-  .nt,.ft,.dt{font-size:.62rem;padding:2px 5px}
-  .expand-poster{width:80px;min-width:80px}
-  nav{gap:.5rem;height:auto;padding:.5rem 0;flex-wrap:wrap}
-  .nav-links{gap:.7rem}
-  .nav-links a{font-size:.78rem}
-    .en.deviate{margin-left:10px}
-  .segment-box{margin-left:10px}
-  #miss-minute{width:64px;height:64px;bottom:1.25rem;right:1.25rem}
-  .filter-group{gap:.35rem}
-  .fbt{font-size:.73rem;padding:.28rem .65rem}
-  .progress-block{flex-direction:column;align-items:flex-start;gap:.75rem}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:64px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+/* l'ombre décalée dure : réservée aux grands titres, jamais aux entrées —
+   sur une bulle elle débordait de la case et passait sur le titre voisin */
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
+
+/* ══ trame de demi-teinte : matière du monde, posée sur les visuels ══ */
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+/* le drapeau se passe de cadre : c'est déjà une forme fermée */
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:38px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(60vh,520px);display:flex;align-items:flex-end}
+/* Deux plans tirés du même fichier : la profondeur ne coûte donc pas un
+   octet de plus. Les débords restent courts — au-delà, `cover` sur-zoome
+   la bannière et le visuel part en bouillie. */
+.plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 42%;
+  background-image:url(/images/avatar.png)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 5%,
+             color-mix(in srgb,#4d9fff 46%,var(--ink)) 56%,
+             color-mix(in srgb,var(--era3) 40%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
+.attract h1{font-size:clamp(50px,11vw,140px);max-width:12ch}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;color:rgba(255,253,247,.92)}
+.dek b{display:block;color:var(--paper);font-weight:700;margin-top:4px}
+.upd{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66);display:flex;align-items:center;gap:7px}
+.upd i{width:8px;height:8px;background:var(--uni);display:block}
+
+/* La barre de stats : le compte des médias, en haut, avant tout le reste.
+   Une seule ligne, toujours — cinq tuiles empilées en deux rangs, ce n'est
+   plus une barre. Les tuiles se resserrent au lieu de passer à la ligne. */
+.stats{display:flex;flex-wrap:nowrap;gap:0;margin-top:20px;border:2px solid var(--paper);
+  background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
+.stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
+.stats .s:last-child{border-right:0}
+.stats b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:30px;
+  line-height:.9;color:var(--hot);white-space:nowrap}
+.stats span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.78);margin-top:3px}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ INTRO : la prose de la page, ses repères, ses omissions ════════ */
+.intro{padding:34px 0 8px}
+.intro-lead{font-size:16.5px;color:rgba(255,253,247,.9);margin-bottom:12px}
+.intro-tags{margin:16px 0 6px}
+.itag{display:inline-flex;align-items:flex-start;gap:9px;background:rgba(77,159,255,.13);
+  border-left:4px solid var(--uni);padding:9px 14px;font-size:14px;font-weight:600}
+.itag svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2.6;
+  stroke-linecap:square;margin-top:1px}
+.keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
+  text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:13px}
+.key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
+.key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
+  font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.key-h svg{width:19px;height:19px;flex:0 0 auto;fill:none;stroke:var(--hot);stroke-width:2;
+  stroke-linecap:square}
+.key p{font-size:13.5px;color:rgba(255,253,247,.82)}
+.key strong{color:var(--paper)}
+.cuts{margin-top:20px;border:2px solid var(--line)}
+.cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.05em}
+.cuts>summary::-webkit-details-marker{display:none}
+.cuts>summary:hover{background:rgba(255,253,247,.05)}
+.cuts .n{font-family:'Chivo';font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:3px 9px}
+.cuts .chev{width:20px;height:20px;margin-left:auto;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
+.cuts[open] .chev{transform:rotate(180deg)}
+.cuts-body{padding:4px 16px 18px;border-top:2px solid var(--line)}
+.cuts-intro{font-size:14px;color:rgba(255,253,247,.8);margin:12px 0 14px}
+.cuts-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:12px}
+.cut{border-left:3px solid var(--hot);padding-left:12px}
+.cut dt{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  text-transform:uppercase;letter-spacing:.03em}
+.cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
+
+/* ══ filtres, recherche, repères ════════════════════════════════════ */
+.sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
+  position:sticky;top:53px;z-index:50}
+.sieve .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  padding-top:10px;padding-bottom:10px}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,253,247,.5);margin-right:2px}
+.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
+.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
+.sieve .last{margin-left:auto}
+/* la recherche : un champ franc, pas une pilule */
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
+  padding:4px 9px;min-width:224px;flex:0 1 296px}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
+  stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
+  font-family:'Chivo';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
+  display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+.fcount{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,253,247,.6)}
+.marks{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+/* Les repères ne filtrent rien : ils légendent. Ils passent donc sous la
+   ligne des filtres, sur leur propre rangée, avec le masquage des vus et le
+   compte poussés à droite — même disposition que Marvel et DC. */
+.srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:1px}
+.srow .marks{flex-wrap:wrap}
+
+/* ══ CHAPEAU D'ÉPOQUE : « Guerre de Cent Ans » au-dessus des trois Livres ══
+   Propre à Avatar. Un simple bandeau réglé, pas une bande d'ère : il ne porte
+   ni image ni compte, sinon il se ferait passer pour une neuvième ère. Le trait
+   de part et d'autre du texte le rattache visuellement aux bandes qui suivent. */
+.epoch{background:var(--ink);padding:26px 0 14px}
+.epoch .wrap{display:flex;align-items:center;gap:16px}
+.epoch span{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;font-size:clamp(19px,3.4vw,30px);line-height:1;
+  letter-spacing:.02em;color:var(--hot);white-space:nowrap}
+.epoch .wrap::after{content:'';flex:1;height:2px;background:var(--line)}
+
+/* ══ BANDE D'ÈRE : parallaxe multiplane liée au défilement ══════════ */
+.era-sec[hidden]{display:none}
+.map{position:relative;overflow:hidden;background:var(--era);
+  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
+.map .layers{position:absolute;inset:0}
+.map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
+.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
+  clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
+.map .tint{position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--era) 30%,transparent),
+             color-mix(in srgb,var(--era) 88%,transparent))}
+.map .wrap{position:relative;z-index:2;padding:46px 20px 28px}
+.map .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;
+  letter-spacing:.2em;text-transform:uppercase;display:inline-block;
+  background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.map h2{font-size:clamp(32px,6vw,72px);margin:12px 0 6px}
+.map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+.map .meta b{color:var(--hot)}
+
+/* ══ LES BULLES : une par ligne, image à gauche, titre à droite ═════ */
+.list{background:color-mix(in srgb,var(--era) 16%,var(--ink));padding:20px 0 34px}
+.rows{display:flex;flex-direction:column;gap:10px}
+.bu{position:relative;display:flex;align-items:flex-start;gap:10px}
+.bu[hidden]{display:none}
+/* la colonne de gauche : la case, et sous elle le niveau d'importance */
+.bu-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-top:12px;width:34px}
+.bu-side .lv{display:block;line-height:0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:miter;stroke-linecap:square}
+.bu-side .ic{width:25px;height:25px}
+.lv.must{color:var(--hot)}
+.lv.imp{color:#ff9d5c}
+.sieve .ic{width:15px;height:15px}
+.sieve button.must{color:var(--hot)}
+.sieve button.imp{color:#ff9d5c}
+.sieve button.must[aria-pressed=true],.sieve button.imp[aria-pressed=true]{color:var(--ink)}
+/* la case à cocher : c'est elle, et elle seule, qui fait tomber le tampon */
+.bu-chk{width:30px;height:30px;background:none;cursor:pointer;
+  border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
+  display:grid;place-items:center;padding:0;color:transparent;
+  transition:border-color .1s steps(1,end),background-color .1s steps(1,end)}
+.bu-chk svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:3.4;
+  stroke-linecap:square}
+.bu-chk:hover{border-color:var(--uni)}
+.bu-chk[aria-checked=true]{background:var(--uni);border-color:var(--uni);color:var(--ink)}
+.bu-card{flex:1;min-width:0;position:relative;border:2px solid var(--line);
+  background:rgba(13,11,18,.5);
+  transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
+.bu-card:hover{border-color:var(--hot);transform:translate(-3px,-3px)}
+.bu.done .bu-card{border-color:var(--uni)}
+.bu-head{display:flex;gap:14px;width:100%;background:none;border:0;color:inherit;font:inherit;
+  text-align:left;cursor:pointer;padding:10px 12px}
+/* 16/9 : le ratio natif des visuels d'entrée, donc aucun recadrage */
+.bu-fig{position:relative;flex:0 0 auto;width:190px;aspect-ratio:16/9;overflow:hidden;
+  background:var(--ink);align-self:flex-start}
+.bu-fig img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(.72) contrast(1.05);transition:filter .2s,transform .3s ease-out}
+.bu-card:hover .bu-fig img{transform:scale(1.035);filter:saturate(1) contrast(1.08)}
+.bu-n{position:absolute;top:0;left:0;z-index:2;background:var(--ink);color:var(--paper);
+  font-family:'Big Shoulders Display';font-weight:900;font-size:17px;padding:1px 9px 0;
+  clip-path:polygon(0 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+.bu-txt{flex:1;min-width:0;display:block}
+.bu-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+.b{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.ft{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:var(--hot);border:1px solid var(--hot)}
+/* « VO » signale l'absence de version française. Il se distingue du badge de
+   type par le trait plutôt que par l'aplat : c'est une réserve sur l'entrée,
+   pas une catégorie de plus. Le dessin est celui du Dossier Star Wars, qui a
+   trouvé le bon poids : plus menu que le badge de type, trait plein plutôt que
+   pointillé. Seule la couleur change — le Dossier prend son accent, ici pris
+   par FLASHBACK, alors la mention passe au bleu de l'univers. */
+.vo{font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:1px 5px;
+  color:var(--uni);border:1px solid var(--uni)}
+.bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
+  line-height:1.02;text-transform:uppercase}
+.bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
+  font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,253,247,.74)}
+/* la date in-universe situe l'entrée : c'est la deuxième information de la
+   ligne, elle se lit d'un coup d'œil */
+.bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
+  letter-spacing:.03em;color:var(--hot);line-height:1}
+.bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
+  font-style:italic}
+.bu-end{flex:0 0 auto;display:flex;align-self:center}
+.bu-end svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;color:rgba(255,253,247,.66)}
+.bu-head[aria-expanded=true] .bu-end svg{transform:rotate(180deg)}
+/* Saisons et épisodes, toujours visibles. Deux dispositions, parce que les
+   données sont de deux natures : quand ce sont des épisodes unitaires, ils
+   forment des arcs narratifs et se lisent en ligne, un arc par bande ; quand
+   ce sont des blocs entiers (« Saison 1 », « Saison 2 épisodes 10-22 »), ils
+   s'empilent, chacun sur sa ligne. Un arc de 6 épisodes qui déborde reste
+   groupé : c'est la bande qui le tient, pas l'alignement. */
+.bu-sub{display:flex;flex-direction:column;padding:0 12px 11px 216px}
+.arc{display:flex;flex-wrap:wrap;gap:5px;padding:5px 0;
+  border-top:1px solid rgba(255,253,247,.38)}
+.arc:first-child{border-top:0;padding-top:0}
+.bu-sub.stack .arc{padding:3px 0}
+.si{font-size:11.5px;font-weight:600;padding:2px 8px;background:rgba(255,253,247,.08);
+  border-left:2px solid var(--line)}
+/* le lien de partage de l'entrée */
+.bu-link{position:absolute;top:9px;right:9px;z-index:4;width:26px;height:26px;display:grid;
+  place-items:center;color:rgba(255,253,247,.5);text-decoration:none;opacity:0;
+  transition:opacity .15s}
+.bu-card:hover .bu-link,.bu-link:focus-visible{opacity:1}
+.bu-link:hover{color:var(--hot)}
+.bu-link svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:square}
+.bu-link.ok::after{content:attr(data-ok);position:absolute;right:0;top:100%;white-space:nowrap;
+  background:var(--hot);color:var(--ink);font-size:10px;font-weight:700;padding:2px 7px;
+  letter-spacing:.06em;text-transform:uppercase}
+
+/* état terminé : tampon dur, image dessaturée, couleur de l'univers.
+   Le tampon vit DANS la figure — posé sur la bulle, il était décalé du
+   rembourrage de la carte et ne tombait pas au centre du visuel. */
+.bu-done{position:absolute;inset:0;z-index:3;display:none;place-items:center;
+  pointer-events:none}
+.bu-done span{font-family:'Big Shoulders Display';font-weight:900;font-size:19px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--uni);
+  padding:3px 11px;transform:rotate(-4deg);border:2px solid var(--ink)}
+.bu.done .bu-done{display:grid}
+.bu.done .bu-fig img{filter:saturate(.08) contrast(1.12) brightness(.6)}
+.bu.done .bu-title{color:rgba(255,253,247,.72)}
+
+/* ══ le dépliant : fiche TMDB / RAWG puis FAQ ═══════════════════════ */
+.bu-panel{border-top:2px solid var(--line);padding:14px 12px 14px}
+.bu-panel[hidden]{display:none}
+.expand-loading{font-size:13px;color:rgba(255,253,247,.6)}
+.expand-inner{display:flex;gap:15px;align-items:flex-start;flex-wrap:wrap}
+.expand-poster{flex:0 0 auto;width:118px;border:2px solid var(--line);background:none;
+  padding:0;cursor:zoom-in;position:relative;display:block}
+.expand-poster img{width:100%;display:block}
+.expand-poster-ov{position:absolute;right:4px;bottom:4px;font-size:13px;
+  background:rgba(13,11,18,.8);padding:1px 5px}
+.expand-info{flex:1;min-width:240px}
+.expand-synopsis{font-size:13.5px;color:rgba(255,253,247,.86)}
+.expand-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;
+  color:rgba(255,253,247,.72)}
+.expand-meta strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  margin-right:5px}
+.expand-trailer-link{display:inline-block;margin-top:12px;background:var(--hot);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.06em;
+  text-transform:uppercase;padding:6px 13px;text-decoration:none;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.expand-trailer-link:hover{filter:brightness(1.1)}
+.en-faq{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.faq{border-left:3px solid var(--uni);background:rgba(77,159,255,.07)}
+.faq>summary{cursor:pointer;list-style:none;padding:8px 12px;font-size:13.5px;font-weight:700}
+.faq>summary::-webkit-details-marker{display:none}
+.faq>summary::before{content:'+ ';color:var(--uni);font-weight:900}
+.faq[open]>summary::before{content:'– '}
+.faq .a{padding:0 12px 10px;font-size:13px;color:rgba(255,253,247,.82)}
+
+/* la visionneuse d'affiche */
+.pm{position:fixed;inset:0;z-index:120;background:rgba(13,11,18,.92);display:none;
+  place-items:center;padding:24px}
+.pm.o{display:grid}
+.pm img{max-width:min(92vw,520px);max-height:88vh;border:2px solid var(--paper)}
+.pm-x{position:absolute;top:14px;right:16px;background:var(--paper);color:var(--ink);border:0;
+  font-size:19px;width:38px;height:38px;cursor:pointer}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
+.empty[hidden]{display:none}
+
+/* ══ révélation au défilement ══════════════════════════════════════ */
+/* Aucun masquage par défaut, et surtout aucun masquage piloté par JS : une
+   bulle cachée en attendant un événement qui ne vient pas, c'est une page
+   vide. L'entrée est une animation liée au défilement, donc purement CSS —
+   là où animation-timeline manque, les bulles sont simplement là. */
+
+/* La parallaxe multiplane est liée au défilement, en CSS natif. Là où
+   animation-timeline manque, les plans restent simplement fixes — la page
+   ne perd rien d'essentiel. */
+@supports (animation-timeline: view()){
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .rv{animation:rise linear both;animation-timeline:view();
+      animation-range:entry 4% cover 14%}
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  @keyframes riseTitle{from{transform:translateY(18px)}to{transform:translateY(-10px)}}
+  .map .lay1{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .map .lay2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+  .map .wrap{animation:riseTitle linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
 }
-@media(max-width:420px){
-  .ep{height:90px}
-  .en-name{font-size:.82rem}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72)}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ Grogu : le retour en haut ═════════════════════════════════════ */
+/* Sans trame ni désaturation : l'effet des visuels le salissait. */
+#totop{position:fixed;right:16px;bottom:78px;z-index:75;width:96px;height:96px;padding:0;
+  background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
+  transform:translateY(10px);transition:opacity .2s,transform .2s}
+#totop.on{opacity:1;pointer-events:auto;transform:none}
+#totop span{position:relative;display:block;width:96px;height:96px}
+#totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#totop .hv{opacity:0}
+#totop:hover .nl{opacity:0}
+#totop:hover .hv{opacity:1}
+
+/* ══ barre de bas d'écran, dépliable : où j'en suis ═════════════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--ink);
+  border-top:2px solid var(--paper)}
+.hud-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;width:100%;
+  max-width:1280px;margin:0 auto;background:none;border:0;color:inherit;font:inherit;
+  cursor:pointer;text-align:left;padding:9px 20px;
+  padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+.hud.open .hud-bar{padding-bottom:9px}
+.hud-bar b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud-bar b em{font-style:normal;color:var(--uni)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:110px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--uni);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.hud-bar .ch{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;margin-left:auto}
+.hud.open .hud-bar .ch{transform:rotate(180deg)}
+.hud-panel{border-top:2px solid var(--line);
+  padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.hud-panel[hidden]{display:none}
+/* Le dépliant ne répète pas les compteurs : ils sont déjà sur la barre,
+   juste au-dessus. Il ne porte que les actions et la phrase, centrées. */
+.hud-in{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;
+  align-items:center;gap:4px}
+.pacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:7px;background:none;border:2px solid var(--line);
+  color:var(--paper);font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--paper)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square}
+.btn.danger{color:#ff8f8f;border-color:rgba(255,143,143,.5)}
+.btn.danger:hover{border-color:#ff8f8f}
+.phint{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:14px;
+  text-align:center;font-size:12.5px;color:rgba(255,253,247,.72)}
+.phint svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2;
+  stroke-linecap:square;margin-top:1px}
+.phint b{color:var(--paper)}
+
+/* ══ badges ════════════════════════════════════════════════════════ */
+.bx{position:fixed;inset:0;z-index:130;background:rgba(13,11,18,.92);display:none;
+  place-items:center;padding:22px}
+.bx.o{display:grid}
+.bx-in{background:var(--ink);border:2px solid var(--paper);max-width:660px;width:100%;
+  max-height:86vh;overflow:auto;padding:20px}
+.bx-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.bx-h h3{font-family:'Big Shoulders Display';font-weight:900;font-size:26px;text-transform:uppercase}
+.bx-h .n{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--hot);color:var(--ink);padding:3px 9px}
+.bx-h button{margin-left:auto;background:var(--paper);color:var(--ink);border:0;width:34px;
+  height:34px;font-size:17px;cursor:pointer}
+.bx-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:11px}
+.bg1{border:2px solid var(--line);padding:13px;display:flex;gap:11px;align-items:flex-start;
+  opacity:.42;filter:grayscale(1)}
+.bg1.on{opacity:1;filter:none;border-color:var(--c)}
+.bg1 .i{font-size:26px;line-height:1}
+.bg1 .t{display:block;font-family:'Big Shoulders Display';font-weight:800;font-size:17px;
+  text-transform:uppercase;line-height:1.05}
+.bg1 .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:3px}
+
+/* ══ badge débloqué : le carton et les confettis ═══════════════════ */
+.bpop{position:fixed;left:50%;bottom:98px;z-index:141;transform:translate(-50%,18px);
+  display:flex;gap:13px;align-items:center;padding:13px 18px;max-width:min(420px,calc(100vw - 24px));
+  background:var(--ink);border:2px solid var(--c,var(--hot));
+  box-shadow:6px 6px 0 rgba(13,11,18,.6);opacity:0;pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease}
+.bpop.o{opacity:1;transform:translate(-50%,0)}
+.bpop .i{font-size:32px;line-height:1;flex:0 0 auto}
+.bpop .k{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--c,var(--hot))}
+.bpop .t{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:22px;
+  text-transform:uppercase;line-height:1.05;margin-top:2px}
+.bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
+.conf{position:fixed;inset:0;z-index:140;pointer-events:none}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+  .sieve{position:static}
 }
-@media(max-width:420px){
-  .ep{width:60px;min-width:60px}
-  .en-check{width:28px;min-width:28px}
-  .en-name{font-size:.79rem}
-  .date-main{font-size:.63rem}
+@media(max-width:720px){
+  .bu-head{flex-wrap:wrap;gap:10px}
+  .bu-fig{width:128px}
+  .bu-title{font-size:19px}
+  .bu-meta .d{font-size:19px}
+  .bu-sub{padding-left:12px}
+  .bu-side{width:30px;margin-top:10px}
+  .bu-chk{width:26px;height:26px}
+  .bu-side .ic{width:21px;height:21px}
+  .stats .s{padding:8px 10px}
+  .stats b{font-size:21px}
+  .stats span{font-size:8.5px;letter-spacing:.04em}
+  .foot{grid-template-columns:1fr}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+  .sieve .last{margin-left:0}
+  .pacts{margin-left:0}
+  #totop{width:74px;height:74px;bottom:74px}
+  #totop span{width:74px;height:74px}
+  /* pleine largeur, et posé au-dessus de Grogu qui monte à 148 px du bas */
+  .bpop{left:12px;right:12px;max-width:none;bottom:160px;transform:translateY(18px)}
+  .bpop.o{transform:translateY(0)}
 }
-
-.expand-faq{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.35rem}
-.faq-item{border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--surface)}
-.faq-q{padding:.5rem .85rem;font-size:.82rem;font-weight:600;color:var(--accent);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;user-select:none}
-.faq-q::-webkit-details-marker{display:none}
-.faq-q::after{content:'›';font-size:1.2rem;transition:transform .2s;color:var(--muted2)}
-details[open] .faq-q::after{transform:rotate(90deg)}
-.faq-a{padding:.5rem .85rem .65rem;font-size:.81rem;color:var(--muted2);line-height:1.65;border-top:1px solid var(--border)}
-
-#appa{position:fixed;bottom:2rem;right:2rem;z-index:300;width:88px;height:88px;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 4px 16px rgba(0,0,0,.6));display:none}
-#appa.visible{display:block}
-#appa img{width:100%;height:100%;object-fit:contain}
-#appa:hover{transform:scale(1.15) rotate(8deg)}
-.grogu-normal{display:block}.grogu-hover{display:none}
-#appa:hover .grogu-normal{display:none}
-#appa:hover .grogu-hover{display:block}
-.bco{background:rgba(251,146,60,.14);color:#fb923c;border:1px solid rgba(251,146,60,.28)}
-.br{background:rgba(167,139,250,.14);color:#a78bfa;border:1px solid rgba(167,139,250,.28)}
-.bl{background:rgba(148,163,184,.14);color:#94a3b8;border:1px solid rgba(148,163,184,.28)}
-.bv{background:rgba(244,114,182,.14);color:#f472b6;border:1px solid rgba(244,114,182,.28)}
-.lvl-imp{font-size:.7rem;margin-right:.1rem}
-.lang-note{font-size:.6rem;font-weight:600;margin-top:1px;letter-spacing:.02em}
-.lang-note.lf{color:#4ade80}
-.lang-note.lv{color:#94a3b8}
-
-#appa img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .25s}
-.appa-normal{opacity:1}
-.appa-hover{opacity:0}
-#appa:hover .appa-normal{opacity:0}
-#appa:hover .appa-hover{opacity:1}
-
-/* ═══ Mobile App Polish ═══ */
-html,body{overflow-x:clip}
-*{-webkit-tap-highlight-color:transparent}
-.logo img{width:auto;object-fit:contain}
-@media(max-width:700px){
-  .logo img{height:22px;max-width:44vw}
-  nav{flex-wrap:nowrap;height:auto;padding:.5rem 0;gap:.7rem;align-items:center}
-  .logo{width:auto;justify-content:flex-start;flex-shrink:0}
-  .nav-sp,.nav-maj,  #appa{width:62px;height:62px;bottom:calc(.9rem + env(safe-area-inset-bottom));right:.9rem}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .start em{opacity:1}
 }
-
-
-
-
-/* ═══ Menu mobile v2 ═══ */
-.burger{display:none;background:none;border:none;color:var(--text);font-size:1.45rem;cursor:pointer;padding:.1rem .45rem;margin-left:auto;line-height:1}
-#mmenu{display:none;position:fixed;inset:0;z-index:150;background:rgba(8,8,15,.97);flex-direction:column;justify-content:center;align-items:center;gap:1.35rem;padding-top:50px}
-#mmenu.open{display:flex}
-#mmenu a{color:var(--muted2);font-size:1.25rem;text-decoration:none;cursor:pointer;font-weight:600}
-#mmenu a.cur{color:var(--text);font-weight:800}
-#mmenu a.doss{color:var(--accent2)}
-.nav-links a.doss{color:var(--accent2);font-weight:700}
-@media(max-width:700px){.burger{display:block}.nav-links{display:none !important}}
-
-
-/* ═══ Checkbox v4 : case visible, grande zone de clic ═══ */
-.checkmark{width:20px;height:20px;min-width:20px;border:2px solid var(--border2);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;line-height:1;color:transparent;background:rgba(255,255,255,.04);transition:all .15s;box-sizing:border-box}
-.en.done .checkmark{background:var(--accent);border-color:var(--accent);color:#fff}
-.en-check:hover .checkmark{border-color:var(--accent)}
-@media(max-width:700px){.checkmark{width:24px;height:24px;min-width:24px;font-size:.8rem}}
-
-/* ═══ Harmonisation typographique ═══ */
-.page-title{font-size:2.1rem !important}
-.en-name{font-size:.92rem !important}
-.b{font-size:.66rem !important}
-.leg,#tl-legend{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;font-size:.8rem;color:var(--muted2)}
-
-/* ═══ Progress block uniforme ═══ */
-.progress-block{width:100%;box-sizing:border-box;flex-wrap:wrap;gap:.6rem}
-@media(max-width:700px){
-  .progress-block{flex-direction:row}
-  .pb-info{flex:1 1 100%}
-  .progress-block button{flex:1;white-space:nowrap}
-  .pbn{display:none !important}
-}
-.nav-links a.news,#mmenu a.news{color:#4fc3f7;font-weight:700}
-.nav-links a.upc,#mmenu a.upc{color:#a99cf9;font-weight:700}
 </style>
 </head>
-<body data-universe="avatar">
+<body>
+
+<a class="skip" href="#body">Skip to content</a>
+
 <header>
-  <nav>
-    <div class="logo" onclick="window.location.href='index.html'">
-      <img src="images/icon-192.png" alt="Chronologeek" style="height:32px;width:32px;border-radius:8px"/>
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek — Geek Timelines"/></a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="/">Home</a>
+      <a href="/deep-dives/" class="doss">Deep Dives</a>
+      <a href="/starwars">Star Wars</a>
+      <a href="/marvel">Marvel</a>
+      <a href="/dc">DC</a>
+      <a href="#" aria-current="page">Avatar</a>
+      <a href="/upcoming" class="upc">Upcoming</a>
+      <a href="/whats-new" class="news">What's New</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="/fr/avatar" aria-label="Passer en français" title="Passer en français">
+        <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+
+
+
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
-    <div class="nav-links">
-      <a onclick="window.location.href='index.html'">Accueil</a>
-      <a href="/deep-dives/" class="doss">Dossiers</a>
-      <a onclick="window.location.href='starwars.html'">Star Wars</a>
-      <a onclick="window.location.href='marvel.html'">Marvel</a>
-      <a onclick="window.location.href='dc.html'">DC</a>
-      <a onclick="window.location.href='avatar.html'" style="color:var(--text);font-weight:700">Avatar</a>
-      <a onclick="window.location.href='/upcoming'" class="upc">À venir</a>
-      <a onclick="window.location.href='/whats-new'" class="news">Nouveautés</a>
-    </div>
-    <div class="nav-sp"></div>
-    <span class="nav-maj">À jour · juillet 2026</span>
-    <div class="pbn" id="pbn"><span id="pbn-label">0/0</span><div class="pbn-track"><div class="pbn-fill" id="pbn-fill" style="width:0%"></div></div></div>
-    <button class="burger" onclick="var m=document.getElementById('mmenu');m.classList.toggle('open');this.textContent=m.classList.contains('open')?'✕':'☰'">☰</button>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
+    <a href="/">Home</a><a href="/deep-dives/" class="doss">Deep Dives</a>
+    <a href="/starwars">Star Wars</a><a href="/marvel">Marvel</a><a href="/dc">DC</a><a href="#" aria-current="page">Avatar</a>
+    <a href="/upcoming" class="upc">Upcoming</a><a href="/whats-new" class="news">What's New</a>
   </nav>
 </header>
-<div id="mmenu">
-  <a href="index.html">Accueil</a>
-  <a href="/deep-dives/" class="doss">Dossiers</a>
-  <a href="starwars.html">Star Wars</a>
-  <a href="marvel.html">Marvel</a>
-  <a href="dc.html">DC</a>
-  <a href="avatar.html" class="cur">Avatar</a>
-  <a href="/upcoming" class="upc">À venir</a>
-      <a href="/whats-new" class="news">Nouveautés</a>
-</div>
-<div id="appa" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Yip yip !">
-  <img class="appa-normal" src="images/appa1.png" alt="Appa" onerror="this.parentElement.style.display='none'"/>
-  <img class="appa-hover" src="images/appa2.png" alt="Appa vole"/>
-</div>
-<div class="pm" id="pm" onclick="closePM()"><span class="pm-x">✕</span><img id="pmi" src="" alt=""/></div>
-<div class="tl-page" id="tl-page">
-  <div class="bc" onclick="window.location.href='index.html'">← Accueil</div>
-  <div class="page-title" id="tl-title"></div>
-  <div class="page-sub" id="tl-sub"></div>
-  <div class="progress-block">
-    <div class="pb-info">
-      <div class="pb-label">Ma progression</div>
-      <div class="pb-track"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div>
-      <div class="pb-counts" id="pb-counts">0 / 0 · 0%</div>
-      <div class="pb-hint">Vous pouvez cocher votre progression qui sera sauvegardée sur ce navigateur</div>
+
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="tag">Chronological Timeline</span>
+    <h1 class="disp off">Avatar</h1>
+    <p class="dek">Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order.
+      <b>Check off what you've watched — your progress is saved.</b></p>
+    <p class="upd"><i aria-hidden="true"></i> Updated · july 2026</p>
+    <!-- Pas de case « À voir » : runtime.py n'a pas encore de table RT pour
+         Avatar, et une case qui annonce « 0 h » ment plus qu'elle n'informe. -->
+    <div class="stats">
+      <div class="s"><b>2</b><span>Animated series</span></div>
+      <div class="s"><b>1</b><span>Animated movie</span></div>
+      <div class="s"><b>41</b><span>Comics</span></div>
+      <div class="s"><b>10</b><span>Books</span></div>
+      <div class="s"><b id="s-tot">69</b><span>Entries</span></div>
     </div>
-    <button class="pb-reset" onclick="cgResume()" style="margin-right:.4rem;border-color:var(--accent);color:var(--text)">▼ Reprendre</button><button class="pb-reset" onclick="resetProgress()">Reset</button>
+    <button class="start" id="start" type="button">Start <em>▸</em></button>
   </div>
-  <div class="nb" id="tl-notes"></div>
-  <div class="leg" id="tl-legend"></div>
-  <div class="filter-bar" id="filter-bar"></div>
-  <div id="tl-content"></div>
+</section>
+
+<main id="body">
+
+  <div class="wrap"><div class="intro" id="intro"></div></div>
+
+  <div class="sieve"><div class="wrap" id="sieve">
+    <div class="search" id="searchbox">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="skip" for="q">Search the timeline</label>
+      <input id="q" type="search" placeholder="Search… ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Clear search">✕</button>
+    </div>
+    <div class="sgroup" id="f-levels"><span class="lab">Level</span></div>
+    <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
+    <div class="srow">
+      <div class="marks"><span>Markers</span><span class="ft">FLASHBACK</span></div>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>
+      <span class="fcount" id="fcount">69 / 69 shown</span>
+    </div>
+  </div></div>
+
+  <div id="timeline"></div>
+  <div class="wrap"><p class="empty" id="empty" hidden></p></div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <h4>Chronologeek — Geek Timelines</h4>
+      <p>Timelines for the universes worth getting lost in.
+        Every medium, chronological order, spoiler-free. Built and maintained
+        by one person who watches everything twice.</p>
+    </div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="/starwars">Star Wars</a></li>
+      <li><a href="/marvel">Marvel — MCU</a></li>
+      <li><a href="/dc">DC Multiverse</a></li>
+      <li><a href="#" aria-current="page">Avatar</a></li>
+      <li><a href="/deep-dives/">Deep Dives</a></li>
+    </ul></div>
+    <div><h4>More</h4><ul>
+      <li><a href="/upcoming">Upcoming releases</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="#">Support the site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      API but is not endorsed or certified by TMDB. Book data from
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC and Avatar
+      are trademarks of their respective owners; Chronologeek
+      is an independent fan project.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+
+<button id="totop" aria-label="Back to top" title="Back to top">
+  <span><img class="nl" src="/images/appa1.png" alt=""/><img class="hv" src="/images/appa2.png" alt=""/></span>
+</button>
+
+<div class="hud" id="hud">
+  <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
+    <b><em id="k-on">0</em> / <span id="k-tot">61</span></b>
+    <span class="lbl">watched</span>
+    <span class="bar"><i id="k-fill"></i></span>
+    <!-- Le HUD des autres timelines compte des heures ; runtime.py n'a pas
+         encore de table RT pour Avatar, alors on compte ce qu'on sait compter
+         exactement : les entrées qui restent. -->
+    <span class="lbl">Left to watch <b style="font-size:14px" id="k-left">69</b></span>
+    <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <div class="hud-in">
+      <div class="pacts">
+        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export</button>
+        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Import</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn" type="button" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
+        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Reset</button>
+      </div>
+      <p class="phint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Your progression is saved in this browser — use <b>Export</b> to keep a backup or import on another device or browser</span>
+      </p>
+    </div>
+  </div>
 </div>
-<script>const DATA_AVATAR={
-  id:"avatar",title:"Avatar",subtitle:"Timeline Chronologique",
-  description:"Séries animées · Comics · Romans",
-  color:"#4fc3f7",glow:"rgba(79,195,247,.3)",
-  tmdb_banner:{type:"tv",id:"246"},
-  notes:`L'univers Avatar se déguste dans l'<strong>ordre chronologique in-universe</strong> : les romans des Avatars passés (Yangchen, Kyoshi, Roku) d'abord, puis la série Avatar : Le Dernier Maître de l'Air avec les <strong>comics intercalés</strong> aux bons moments, les comics d'après-guerre, et enfin l'ère de Korra.<br><br>L'an 0 du calendrier est le Génocide des Nomades de l'Air donc <strong>BG</strong> = Before Genocide / <strong>AG</strong> = After Genocide.<br><br>Les médias marqués 🚨 sont le cœur du voyage — les médias marqués <strong>Optionnel</strong> peuvent être sautés sans rien perdre. La disponibilité en français est indiquée sous chaque roman et comic.<br><br><em>Escape from the Spirit World</em> se trouve gratuitement sur YouTube.<br><br>Le placement de <strong>The Kyoshi Warriors</strong> est provisoire jusqu'à la sortie du #3 (15 juillet 2026).`,
-  eras:[
-    {title:"ÈRE DE YANGCHEN",entries:[
-      {id:"avt-the-dawn-of-yangchen",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Dawn of Yangchen",date:"~483 BG",lang:"vo",isbn:"9781419756771",desc:"Jeune Avatar hantée par les souvenirs de ses vies antérieures, Yangchen navigue entre diplomatie et complots dans la ville corrompue de Bin-Er."},
-      {id:"avt-the-legacy-of-yangchen",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Legacy of Yangchen",date:"~482 BG",lang:"vo",isbn:"9781419756795",desc:"Yangchen affronte les conséquences de ses choix et un complot qui menace l'équilibre entre les nations."},
-    ]},
-    {title:"ÈRE DE KYOSHI",entries:[
-      {id:"avt-the-rise-of-kyoshi",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Rise of Kyoshi",date:"296 BG",lang:"vo",isbn:"9781419735042",desc:"Servante ignorant qu'elle est l'Avatar, Kyoshi fuit après une tragédie et apprend à survivre auprès de hors-la-loi. L'origine brutale de la plus légendaire des Avatars.<br><a href='https://www.youtube.com/playlist?list=PLOE7qBj7RtTLX4Dg8FI3o9gkrVmniYaqt' target='_blank' rel='noopener' class='expand-trailer'>▶ Écouter en lecture audio sur YouTube</a>"},
-      {id:"avt-the-shadow-of-kyoshi",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Shadow of Kyoshi",date:"295 BG",lang:"vo",isbn:"9781419735059",desc:"Deux ans plus tard, Kyoshi est convoquée à la Nation du Feu, où une menace venue du Monde des Esprits couve derrière la politique."},
-    ]},
-    {title:"ÈRE DE ROKU",entries:[
-      {id:"avt-the-reckoning-of-roku",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Reckoning of Roku",date:"~65 BG",lang:"vo",ol:{q:"reckoning of roku",inc:["reckoning of roku"]},desc:"Le jeune Roku accepte une mission secrète du prince Sozin et découvre des agendas cachés sur une île isolée, aux côtés de son nouvel ami Gyatso."},
-      {id:"avt-the-awakening-of-roku",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"The Awakening of Roku",date:"~63 BG",lang:"vo",img:"images/roku.jpg",desc:"Impatient de maîtriser l'État d'Avatar, Roku canalise l'énergie du solstice d'hiver — et déclenche le chaos sur l'Île du Croissant."},
-    ]},
-    {title:"LIVRE 1 : L'EAU",entries:[
-      {id:"avt-1x01",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×01 · The Boy in the Iceberg",date:"99 AG"},
-      {id:"avt-1x02",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×02 · The Avatar Returns",date:"99 AG"},
-      {id:"avt-1x03",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×03 · The Southern Air Temple",date:"99 AG"},
-      {id:"avt-don-t-blow-it",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Don't Blow It!",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-1x04",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×04 · The Warriors of Kyoshi",date:"99 AG"},
-      {id:"avt-the-kyoshi-warriors-13",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Kyoshi Warriors #1–3",date:"99 AG",lang:"vo",img:"images/kyoshi.jpg",desc:"Suki et les guerrières Kyoshi rejoignent l'armée du Royaume de la Terre. Placement provisoire jusqu'au #3 (15/07/2026)."},
-      {id:"avt-1x05",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×05 · The King of Omashu",date:"99 AG"},
-      {id:"avt-1x06",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×06 · Imprisoned",date:"99 AG"},
-      {id:"avt-bee-calm",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Bee Calm",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-1x07",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×07 · Winter Solstice, Part 1: The Spirit World",date:"99 AG"},
-      {id:"avt-1x08",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×08 · Winter Solstice, Part 2: Avatar Roku",date:"99 AG"},
-      {id:"avt-1x09",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×09 · The Waterbending Scroll",date:"99 AG"},
-      {id:"avt-1x10",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×10 · Jet",date:"99 AG"},
-      {id:"avt-1x11",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×11 · The Great Divide",date:"99 AG"},
-      {id:"avt-1x12",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×12 · The Storm",date:"99 AG"},
-      {id:"avt-1x13",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×13 · The Blue Spirit",date:"99 AG"},
-      {id:"avt-1x14",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×14 · The Fortuneteller",date:"99 AG"},
-      {id:"avt-1x15",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×15 · Bato of the Water Tribe",date:"99 AG"},
-      {id:"avt-1x16",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×16 · The Deserter",date:"99 AG"},
-      {id:"avt-water-war",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Water War",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-relics",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Relics",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-fruit-stand-freestyle",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Fruit-Stand Freestyle",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-1x17",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×17 · The Northern Air Temple",date:"99 AG"},
-      {id:"avt-1x18",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×18 · The Waterbending Master",date:"99 AG"},
-      {id:"avt-1x19",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×19 · The Siege of the North, Part 1",date:"99 AG"},
-      {id:"avt-1x20",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"1×20 · The Siege of the North, Part 2",date:"99 AG"},
-    ]},
-    {title:"LIVRE 2 : LA TERRE",entries:[
-      {id:"avt-2x01",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×01 · The Avatar State",date:"100 AG"},
-      {id:"avt-2x02",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×02 · The Cave of Two Lovers",date:"100 AG"},
-      {id:"avt-2x03",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×03 · Return to Omashu",date:"100 AG"},
-      {id:"avt-2x04",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×04 · The Swamp",date:"100 AG"},
-      {id:"avt-origami",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Origami",date:"—",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte du recueil Team Avatar Tales — VF incluse dans Les Aventures Perdues."},
-      {id:"avt-2x05",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×05 · Avatar Day",date:"100 AG"},
-      {id:"avt-2x06",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×06 · The Blind Bandit",date:"100 AG"},
-      {id:"avt-2x07",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×07 · Zuko Alone",date:"100 AG"},
-      {id:"avt-lost-and-found",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Lost and Found",date:"—",lang:"vo",img:"images/tales.jpg",desc:"Histoire courte du recueil Team Avatar Tales — VF incluse dans Les Aventures Perdues."},
-      {id:"avt-2x08",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×08 · The Chase",date:"100 AG"},
-      {id:"avt-2x09",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×09 · Bitter Work",date:"100 AG"},
-      {id:"avt-katara-and-the-pirate-s-silver",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Katara et l'Argent des Pirates (Katara and the Pirate's Silver)",date:"100 AG",lang:"vf",img:"images/pirates.jpg",desc:"Séparée du groupe après une embuscade, Katara doit s'allier à des pirates pour retrouver ses amis. VF dans le recueil Les Héroïnes de la Team Avatar."},
-      {id:"avt-sleepbending",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sleepbending",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-lessons",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Lessons",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-sokka-the-avatar",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sokka the Avatar",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-divided-we-fall",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Divided We Fall",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-2x10",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×10 · The Library",date:"100 AG"},
-      {id:"avt-2x11",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×11 · The Desert",date:"100 AG"},
-      {id:"avt-dirty-is-only-skin-deep",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Dirty Is Only Skin Deep",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-reach-for-the-toph",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Reach for the Toph",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-2x12",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×12 · The Serpent's Pass",date:"100 AG"},
-      {id:"avt-2x13",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×13 · The Drill",date:"100 AG"},
-      {id:"avt-2x14",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×14 · City of Walls and Secrets",date:"100 AG"},
-      {id:"avt-2x15",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×15 · The Tales of Ba Sing Se",date:"100 AG"},
-      {id:"avt-2x16",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×16 · Appa's Lost Days",date:"100 AG"},
-      {id:"avt-2x17",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×17 · Lake Laogai",date:"100 AG"},
-      {id:"avt-2x18",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×18 · The Earth King",date:"100 AG"},
-      {id:"avt-2x19",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×19 · The Guru",date:"100 AG"},
-      {id:"avt-2x20",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"2×20 · The Crossroads of Destiny",date:"100 AG"},
-      {id:"avt-it-s-only-natural",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"It's Only Natural",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-escape-from-the-spirit-world",type:"video",tmdb:"0",media:"tv",level:"bonus",title:"Escape from the Spirit World",date:"100 AG",img:"images/escape.jpg",desc:"Histoires animées interactives à regarder gratuitement sur YouTube, pendant le coma d'Aang entre les Livres 2 et 3.<br><a href='https://www.youtube.com/watch?v=3_p0c66RbvM' target='_blank' rel='noopener' class='expand-trailer'>▶ Regarder sur YouTube</a>"},
-      {id:"avt-going-home-again",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Going Home Again",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-the-bridge",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Bridge",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-    ]},
-    {title:"LIVRE 3 : LE FEU",entries:[
-      {id:"avt-3x01",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×01 · The Awakening",date:"100 AG"},
-      {id:"avt-3x02",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×02 · The Headband",date:"100 AG"},
-      {id:"avt-private-fire",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Private Fire",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x03",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×03 · The Painted Lady",date:"100 AG"},
-      {id:"avt-night-animals",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Night Animals",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-the-substitute",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Substitute",date:"—",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte du recueil Team Avatar Tales — VF incluse dans Les Aventures Perdues."},
-      {id:"avt-3x04",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×04 · Sokka's Master",date:"100 AG"},
-      {id:"avt-boys-day-out",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Boys' Day Out",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x05",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×05 · The Beach",date:"100 AG"},
-      {id:"avt-ember-island-arcade",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Ember Island Arcade",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x06",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×06 · The Avatar and the Fire Lord",date:"100 AG"},
-      {id:"avt-3x07",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×07 · The Runaway",date:"100 AG"},
-      {id:"avt-monster-slayer",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Monster Slayer",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-combustion-man-on-a-train",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Combustion Man on a Train",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x08",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×08 · The Puppetmaster",date:"100 AG"},
-      {id:"avt-3x09",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×09 · Nightmares and Daydreams",date:"100 AG"},
-      {id:"avt-3x10",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×10 · The Day of Black Sun, Part 1: The Invasion",date:"100 AG"},
-      {id:"avt-3x11",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×11 · The Day of Black Sun, Part 2: The Eclipse",date:"100 AG"},
-      {id:"avt-3x12",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×12 · The Western Air Temple",date:"100 AG"},
-      {id:"avt-3x13",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×13 · The Firebending Masters",date:"100 AG"},
-      {id:"avt-swordbending",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Swordbending",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-no-benders-allowed",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"No Benders Allowed",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-suki-alone",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Suki, Seule (Suki, Alone)",date:"100 AG",tags:["flashback"],lang:"vf",img:"images/suki.jpg",desc:"Prisonnière à la Roche Bouillante, Suki organise en secret un jardin — et une rébellion — parmi les détenus. VF dans le recueil Les Héroïnes de la Team Avatar."},
-      {id:"avt-3x14",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×14 · The Boiling Rock, Part 1",date:"100 AG"},
-      {id:"avt-love-is-a-battlefield",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Love Is a Battlefield",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x15",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×15 · The Boiling Rock, Part 2",date:"100 AG"},
-      {id:"avt-dragon-days",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Dragon Days",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x16",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×16 · The Southern Raiders",date:"100 AG"},
-      {id:"avt-3x17",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×17 · The Ember Island Players",date:"100 AG"},
-      {id:"avt-game-time",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Game Time",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x18",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×18 · Sozin's Comet, Part 1: The Phoenix King",date:"100 AG"},
-      {id:"avt-3x19",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×19 · Sozin's Comet, Part 2: The Old Masters",date:"100 AG"},
-      {id:"avt-bumi-vs-toph-round-one",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Bumi vs. Toph, Round One",date:"—",lang:"vf",isbn:"9781595827487",desc:"Histoire courte du recueil Les Aventures Perdues (The Lost Adventures)."},
-      {id:"avt-3x20",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×20 · Sozin's Comet, Part 3: Into the Inferno",date:"100 AG"},
-      {id:"avt-3x21",type:"anime",tmdb:"246",media:"tv",level:"imp",title:"3×21 · Sozin's Comet, Part 4: Avatar Aang",date:"100 AG"},
-    ]},
-    {title:"APRÈS LA GUERRE — LES COMICS",entries:[
-      {id:"avt-avatar-legends-city-of-echoes",type:"roman",tmdb:"0",media:"tv",level:"bonus",title:"Avatar Legends: City of Echoes",date:"—",tags:["flashback"],lang:"vo",img:"images/echoes.jpg",desc:"Roman jeunesse de l'univers Avatar Legends, entre esprits et mystères."},
-      {id:"avt-la-promesse-the-promise",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"La Promesse (The Promise) · 3 parties",date:"101 AG",lang:"vf",isbn:"9781595828118",desc:"Aang et Zuko s'opposent sur le sort des colonies de la Nation du Feu — la naissance douloureuse d'un nouveau monde après la guerre."},
-      {id:"avt-rebound",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Rebond (Rebound)",date:"101 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day 2012."},
-      {id:"avt-shells",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Coquillages (Shells)",date:"101 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day 2014."},
-      {id:"avt-sisters",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sœurs (Sisters)",date:"101 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day 2013."},
-      {id:"avt-la-recherche-the-search",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"La Recherche (The Search) · 3 parties",date:"102 AG",lang:"vf",isbn:"9781616550547",desc:"Zuko part enfin à la recherche de sa mère Ursa, accompagné d'une Azula imprévisible. La vérité l'attend dans une vallée peuplée d'esprits."},
-      {id:"avt-smoke-and-shadow-partie-1",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Fumée et Ombre (Smoke and Shadow) — Partie 1",date:"102 AG",lang:"vf",isbn:"9781616557614",desc:"Zuko rentre dans une Nation du Feu rongée par la peur : la Société de la Nouvelle Ozai complote et des enfants disparaissent, enlevés par les mystérieux Kemurikage."},
-      {id:"avt-the-rift",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Le Désaccord (The Rift) · 3 parties",date:"102 AG",lang:"vf",isbn:"9781616552954",desc:"Aang veut honorer un festival oublié des Nomades de l'Air, mais découvre une raffinerie sur une terre sacrée — dirigée par le père de Toph."},
-      {id:"avt-smoke-and-shadow-parties-2-3",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Fumée et Ombre (Smoke and Shadow) — Parties 2 & 3",date:"102 AG",lang:"vf",isbn:"9781616557904",desc:"La traque des Kemurikage s'intensifie — Zuko doit choisir entre la peur et la confiance, tandis qu'Azula tire les ficelles dans l'ombre."},
-      {id:"avt-north-and-south",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Nord et Sud (North and South) · 3 parties",date:"102 AG",lang:"vf",isbn:"9781506700229",desc:"Katara et Sokka rentrent au Pôle Sud et découvrent leur tribu transformée par la modernité — et convoitée par des intérêts étrangers."},
-      {id:"avt-sokka-s-poem",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Sokka's Poem",date:"102 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte de l'après-guerre."},
-      {id:"avt-matcha-makers",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Matcha Makers",date:"102 AG",lang:"vo",img:"images/matcha.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day 2021."},
-      {id:"avt-azula-in-the-spirit-temple",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Azula Face au Temple des Esprits (Azula in the Spirit Temple)",date:"~102 AG",lang:"vf",isbn:"9781506737713",desc:"Seule et en fuite, Azula arrive dans un temple mystérieux où des esprits la confrontent à ses souvenirs et à ses choix. VF dans le recueil Feu et Trésor Familial."},
-      {id:"avt-toph-beifong-s-metalbending-academy",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"L'Académie de Toph de la Maîtrise du Métal de Beiphong (Toph Beifong's Metalbending Academy)",date:"102 AG",lang:"vf",isbn:"9781506717128",desc:"Toph a ouvert la première académie de maîtrise du métal, mais ses élèves peinent — et l'inspiration lui manque. VF dans le recueil Les Héroïnes de la Team Avatar."},
-      {id:"avt-the-bounty-hunter-and-the-tea-brewer",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"La Chasseuse de Primes et le Maître du Thé (The Bounty Hunter and the Tea Brewer)",date:"~102 AG",lang:"vf",img:"images/bounty.jpg",desc:"June la chasseuse de primes accepte un contrat qui la mène droit au salon de thé d'Iroh. VF dans le recueil Feu et Trésor Familial."},
-      {id:"avt-ashes-of-the-academy",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Les Cendres de l'Académie (Ashes of the Academy)",date:"~102 AG",lang:"vf",img:"images/academy.jpg",desc:"Mai est nommée à la tête de la réforme de l'éducation de la Nation du Feu — entre souvenirs d'Azula et menaces des loyalistes. VF dans le recueil Feu et Trésor Familial."},
-      {id:"avt-the-scarecrow",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"The Scarecrow",date:"102 AG",lang:"vf",img:"images/tales.jpg",desc:"Histoire courte publiée pour le Free Comic Book Day."},
-      {id:"avt-imbalance",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Déséquilibre (Imbalance) · 3 parties",date:"102 AG",lang:"vf",isbn:"9781506708133",desc:"À Cranefish Town, Team Avatar affronte une montée des tensions entre maîtres et non-maîtres qui annonce les conflits de l'ère de Korra."},
-      {id:"avt-toph-and-the-boulder",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Toph and the Boulder",date:"102 AG",lang:"vf",img:"images/tales.jpg",desc:"Toph croise la route du Boulder pour un affrontement haut en couleur."},
-      {id:"avt-aang-the-last-airbender",type:"film",tmdb:"980431",media:"movie",level:"imp",title:"Aang : The Last Airbender",date:"—"},
-      {id:"avt-legacy",type:"livre",tmdb:"0",media:"tv",level:"bonus",title:"Legacy",date:"—",lang:"vo",ol:{q:"avatar the last airbender legacy",inc:["legacy"],exc:["fire nation","yangchen","dungeons","d&d"]},desc:"Livre-objet : Aang transmet souvenirs et reliques à son fils Tenzin."},
-    ]},
-    {title:"ÈRE DE KORRA",entries:[
-      {id:"avt-la-legende-de-korra-livre-1-l-air",type:"anime",tmdb:"33880",media:"tv",level:"imp",title:"La Légende de Korra — Livre 1 : L'Air",date:"170 AG"},
-      {id:"avt-la-legende-de-korra-livre-2-les-esprits",type:"anime",tmdb:"33880",media:"tv",level:"imp",title:"La Légende de Korra — Livre 2 : Les Esprits",date:"171 AG"},
-      {id:"avt-la-legende-de-korra-livre-3-le-changemen",type:"anime",tmdb:"33880",media:"tv",level:"imp",title:"La Légende de Korra — Livre 3 : Le Changement",date:"171 AG"},
-      {id:"avt-legacy-of-the-fire-nation",type:"livre",tmdb:"0",media:"tv",level:"bonus",title:"Legacy of the Fire Nation",date:"—",lang:"vo",img:"images/legacyfire.jpg",desc:"Livre-objet : Iroh partage souvenirs et sagesse avec Zuko."},
-      {id:"avt-la-legende-de-korra-livre-4-l-equilibre",type:"anime",tmdb:"33880",media:"tv",level:"imp",title:"La Légende de Korra — Livre 4 : L'Équilibre",date:"174 AG"},
-      {id:"avt-turf-wars",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Guerres de Territoires (Turf Wars) · 3 parties",date:"174 AG",lang:"vf",isbn:"9781506700151",desc:"Suite directe de la série : Korra et Asami reviennent du Monde des Esprits et affrontent un caïd qui exploite le nouveau portail spirituel."},
-      {id:"avt-an-avatar-s-chronicle",type:"livre",tmdb:"0",media:"tv",level:"bonus",title:"An Avatar's Chronicle",date:"—",lang:"vo",ol:{q:"avatar an avatar's chronicle",inc:["chronicle"]},desc:"Livre-objet retraçant le voyage d'Aang, annoté de sa main."},
-      {id:"avt-ruins-of-the-empire",type:"comic",tmdb:"0",media:"tv",level:"imp",title:"Les Ruines de l'Empire (Ruins of the Empire) · 3 parties",date:"174 AG",lang:"vf",isbn:"9781506708942",desc:"À la veille d'élections historiques dans le Royaume de la Terre, Kuvira peut-elle être rachetée ?"},
-      {id:"avt-beach-wars",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Beach Wars",date:"~174 AG",lang:"vo",desc:"Histoire courte estivale avec Korra et ses amis (Free Comic Book Day 2022).",img:"images/beach.jpg"},
-      {id:"avt-mystery-of-penquan-island",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Mystery of Penquan Island",date:"~174 AG",lang:"vo",img:"images/penquan.jpg",desc:"Histoire courte de l'ère Korra."},
-      {id:"avt-patterns-in-time",type:"comic",tmdb:"0",media:"tv",level:"bonus",title:"Patterns in Time",date:"—",lang:"vo",img:"images/patterns.jpg",desc:"Anthologie d'histoires courtes traversant les époques d'Aang et de Korra."},
-    ]}
-  ]
-};
 
-const UNIVERSES=[{data:DATA_AVATAR}];
-const TMDB_KEY='6257b37bf29ab31357853fce00232314';
-const RAWG_KEY='ddc66eb38db74a77b5f41323db00d434';
-const IMG='https://image.tmdb.org/t/p/';
-const BADGES={
-  film:['bf','FILM'],filmanim:['bfa','FILM ANIMÉ'],
-  serie:['bs','SÉRIE'],anime:['ba','SÉRIE ANIMÉE'],
-  jeu:['bj','JEU VIDÉO'],
-  comic:['bco','COMIC'],roman:['br','ROMAN'],
-  livre:['bl','LIVRE'],video:['bv','VIDÉO']
-};
-const BADGE_LABELS={film:'Films',filmanim:'Films animés',serie:'Séries',anime:'Séries animées',jeu:'Jeux'};
-let currentData=null;
-const posterCache={},detailCache={};
+<div class="bx" id="bx" hidden><div class="bx-in">
+  <div class="bx-h"><h3>My Badges</h3><span class="n" id="bx-n">0 unlocked</span>
+    <button type="button" id="bx-x" aria-label="Close">✕</button></div>
+  <div class="bx-g" id="bx-g"></div>
+</div></div>
 
-function getProgress(uid){try{return JSON.parse(localStorage.getItem('cg_'+uid)||'{}')}catch{return{}}}
-function saveProgress(uid,obj){localStorage.setItem('cg_'+uid,JSON.stringify(obj))}
-function toggleEntry(id,ev){
-  ev.stopPropagation();
-  if(!currentData)return;
-  const prog=getProgress(currentData.id);
-  prog[id]?delete prog[id]:(prog[id]=1);
-  saveProgress(currentData.id,prog);
-  renderProgress();
-  if(typeof checkBadges==='function'&&prog[id]){
-    const allIds=currentData.eras.flatMap(era=>era.entries.map(e=>e.id));
-    checkBadges('avatar',prog,allIds);
+<script src="/data/avatar-en.js"></script>
+<script>
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var CFG=window.CG, D=window.AVATAR, RT=window.RT||{};
+  /* Les libellés d'interface sont ceux des autres timelines, lus dans
+     data-avatar.js — le script de construction les reprend de data.js plutôt
+     que d'en garder une copie, qui aurait divergé au premier ajustement.
+     Seuls ceux qui tutoyaient sont repassés au vouvoiement : Niko ne veut pas
+     qu'on tutoie le visiteur. Aucune autre reformulation. */
+  var T=Object.assign({},CFG.t,{
+    resetAvatar:'Reset your Avatar progress?',
+    emptyP:'Try another spelling, or bring back the filters you turned off.'
+  });
+  /* Bannière d'ère : le premier ⭐ de l'ère — c'est le repère que tout le
+     monde reconnaît. Une ère sans ⭐ prend son premier média, celui par
+     lequel on y entre. Plus de table écrite à la main, la règle décide. */
+  function eraArt(era){
+    var must=era.entries.filter(function(e){ return e.level==='must' && e.img; })[0];
+    /* Trois ères d'Avatar n'ont aucune vignette : les romans de Yangchen n'en
+       portent pas, et les blocs d'épisodes tiennent leur image de TMDB, pas de
+       la page. Sans repli, `url(undefined)` partait en requête et revenait en
+       404 — la bande s'affichait quand même, en aplat, et rien ne le disait. */
+    return (must||era.entries.filter(function(e){ return e.img; })[0]||{}).img
+      || '/images/avatar.png';
   }
-}
-function resetProgress(){
-  if(!currentData||!confirm('Réinitialiser ta progression ?'))return;
-  localStorage.removeItem('cg_'+currentData.id);
-  renderProgress();
-}
-function renderProgress(){
-  if(!currentData)return;
-  const prog=getProgress(currentData.id);
-  let total=0,done=0;
-  currentData.eras.forEach(era=>era.entries.forEach(e=>{
-    total++;
-    const el=document.querySelector('.en[data-id="'+e.id+'"]');
-    if(!el)return;
-    const checked=!!prog[e.id];
-    el.classList.toggle('done',checked);
-    el.querySelector('.checkmark').textContent=checked?'✓':'';
-    if(checked)done++;
-  }));
-  const pct=total?Math.round(done/total*100):0;
-  const grad='linear-gradient(90deg,var(--accent),var(--accent2))';
-  document.getElementById('pb-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  document.getElementById('pb-counts').innerHTML='<strong>'+done+'</strong> / '+total+' vus · <strong>'+pct+'%</strong>';
-  const pbn=document.getElementById('pbn');
-  if(pbn){
-    pbn.classList.toggle('show',total>0);
-    document.getElementById('pbn-label').textContent=done+'/'+total;
-    document.getElementById('pbn-fill').style.cssText='width:'+pct+'%;background:'+grad;
-  }
-}
+  /* Les niveaux passent au trait, comme les icônes des repères de lecture :
+     l'étoile et le gyrophare en emoji juraient avec le reste de la page.
+     Le libellé, lui, reste celui de la prod, emoji de tête retiré. */
+  var LVICO={
+    must:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>',
+    important:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>',
+    bonus:''};
+  var LVCLS={must:'must',important:'imp',bonus:''};
+  /* « ⭐ Essentiel » → « Essentiel » : on ne garde que le mot de Niko. */
+  function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
+  var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
+  /* Une clé par univers, comme e-marvel (cg-proto-mcu) et e-dc (cg-proto-dc).
+     Héritée telle quelle de e-starwars, elle valait « cg-proto-sw » : cocher
+     une entrée d'Avatar écrasait la progression Star Wars, sans un mot dans la
+     console — les deux pages se seraient écrasées l'une l'autre en silence. */
+  var KEY='cg-proto-avatar';
 
-async function fetchBackdrop(id,type){
-  if(!id||id==='0')return null;
-  const k=type+'-'+id;
-  if(posterCache[k]!==undefined)return posterCache[k];
-  try{
-    const r=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+TMDB_KEY);
-    if(!r.ok){posterCache[k]=null;return null}
-    const d=await r.json();
-    posterCache[k]=d.backdrop_path||null;
-    return posterCache[k];
-  }catch{posterCache[k]=null;return null}
-}
-function applyImg(div,path){
-  if(div.querySelector('img'))return;
-  const img=document.createElement('img');
-  img.src=path;img.loading='lazy';
-  img.onerror=()=>img.remove();
-  div.querySelector('.pp').style.display='none';
-  div.appendChild(img);
-}
-const bookCache={};
-function olMatch(docs,inc,exc){
-  inc=(inc||[]).map(s=>s.toLowerCase());exc=(exc||[]).map(s=>s.toLowerCase());
-  return docs.find(x=>{
-    if(!x.cover_i)return false;
-    const t=(x.title||'').toLowerCase();
-    return inc.every(k=>t.includes(k))&&!exc.some(k=>t.includes(k));
+  var ALL=[];
+  D.eras.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
+
+  var prog={};
+  try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  var offLv={}, offK={}, hideDone=false;
+
+  function $(s,r){ return (r||document).querySelector(s); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
+    return h? h+' h'+(r?' '+String(r).padStart(2,'0'):'') : r+' min'; }
+  function rt(e){ return RT[e.id]||0; }
+
+  var ICO={
+    check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+    link:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>'
+  };
+
+  /* ── l'intro : la prose de la page de prod, injectée telle quelle ── */
+  $('#intro').innerHTML=D.notes;
+
+  /* ── les filtres : mêmes noms, mêmes couleurs que sur le site ────── */
+  (function(){
+    var lv=$('#f-levels'), tp=$('#f-types');
+    ['must','important','bonus'].forEach(function(k){
+      lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
+        (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
+    });
+    Object.keys(CFG.badgeLabels).forEach(function(k){
+      tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
+        ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
+    });
+  })();
+
+  /* ── construction : une bande d'ère, puis ses bulles ─────────────── */
+  /* Les sous-items décrivent soit des arcs d'épisodes unitaires, soit des
+     blocs entiers de saison. Le mode se déduit des données : un séparateur
+     posé à la main, ou des libellés tous en « Saison N épisode M », signent
+     un découpage en arcs. Tout le reste s'empile, une ligne par bloc. */
+  function subs(e){
+    var it=e.subitems||[]; if(!it.length) return '';
+    /* Le même test dans les deux langues : la page anglaise écrit
+       « Season 1 episode 2 ». Sans l'alternative, un arc groupé en
+       français ressortait empilé en anglais. */
+    /* Avatar numérote autrement : ses blocs listent « 1×01 · The Boy in the
+       Iceberg ». Le motif est chiffré, donc identique dans les deux langues —
+       contrairement au « Saison / Season » ci-dessus, il ne peut pas décrocher
+       à la traduction. Sans lui, les dix épisodes d'un bloc s'empilaient sur
+       dix lignes là où ce sont des épisodes consécutifs d'une même série. */
+    var unit=/^(Saison|Season) \d+ (épisode|episode) \d+|^\d+×\d+\s·\s/i;
+    var arcMode=it.some(function(s){ return !String(s).trim(); }) ||
+                it.every(function(s){ return unit.test(String(s)); });
+    var arcs=[[]];
+    it.forEach(function(s){
+      if(!String(s).trim()){ arcs.push([]); return; }
+      if(arcMode) arcs[arcs.length-1].push(s); else arcs.push([s]);
+    });
+    var html=arcs.filter(function(a){ return a.length; }).map(function(a){
+      return '<div class="arc">'+a.map(function(s){
+        return '<span class="si">'+esc(s)+'</span>'; }).join('')+'</div>';
+    }).join('');
+    return '<div class="bu-sub'+(arcMode?'':' stack')+'">'+html+'</div>';
+  }
+
+  function row(e){
+    var bd=CFG.badgeLabels[e.type]||['b',e.type];
+    var fb=(e.tags||[]).indexOf('flashback')>-1 ? '<span class="ft">FLASHBACK</span>' : '';
+    /* Star Wars n'a pas de romans, donc sa page ignore `lang` — Avatar en a
+       soixante-neuf pour moitié, et le document de Niko marque « VO » vingt
+       fois. Sans ce badge l'information disparaissait sans bruit : les données
+       la portaient, l'écran non. Le badge ne se pose qu'en français ; pour qui
+       lit l'anglais, « pas de version française » n'a pas d'objet. */
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
+    var d=rt(e);
+    return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
+      '<span class="bu-side">'+
+        '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
+          (prog[e.id]?'true':'false')+'" data-check aria-label="'+
+          esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
+        (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+          LVICO[e.level]+'</span>':'')+
+      '</span>'+
+      '<div class="bu-card">'+
+        '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
+          '<span class="bu-fig">'+
+            (e.img?'<img src="'+e.img+'" alt="" loading="lazy" decoding="async"/>':'')+
+            '<span class="halftone"></span>'+
+            '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
+            '<span class="bu-done" aria-hidden="true"><span>done</span></span>'+
+          '</span>'+
+          '<span class="bu-txt">'+
+            '<span class="bu-tags">'+fb+'<span class="b" style="--k:var(--t-'+e.type+')">'+
+              esc(bd[1])+'</span>'+vo+'</span>'+
+            '<span class="bu-title">'+esc(e.title)+'</span>'+
+            '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
+              (d?'<span>'+hm(d)+'</span>':'')+
+            '</span>'+
+            (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
+          '</span>'+
+          '<span class="bu-end">'+ICO.chev+'</span>'+
+        '</button>'+
+        subs(e)+
+        '<a class="bu-link" href="#'+e.id+'" data-copy data-ok="'+esc(T.copied)+
+          '" title="'+esc(T.copyLink)+'" aria-label="'+esc(T.copyLink)+'">'+ICO.link+'</a>'+
+        '<div class="bu-panel" hidden data-tmdb="'+(e.tmdb||'0')+'" data-media="'+(e.media||'tv')+'">'+
+          '<div class="en-rich"></div><div class="en-faq"></div></div>'+
+      '</div>'+
+    '</article>';
+  }
+
+  (function build(){
+    var html='', groupe='';
+    D.eras.forEach(function(era,i){
+      var art=eraArt(era);
+      /* Avatar est la seule timeline à deux niveaux de titre : ses trois Livres
+         appartiennent à la Guerre de Cent Ans. Le chapeau est posé une fois, à
+         l'entrée du groupe, et n'est pas une ère — le rail continue d'en compter
+         huit, et `data-era` reste l'index réel. Une page sans `group` sur ses
+         ères ne voit pas la différence. */
+      if(era.group && era.group!==groupe){
+        groupe=era.group;
+        html+='<div class="epoch"><div class="wrap"><span>'+esc(groupe)+'</span></div></div>';
+      } else if(!era.group){ groupe=''; }
+      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+        '<div class="map">'+
+          '<div class="layers" aria-hidden="true">'+
+            '<div class="lay lay1" style="background-image:url('+art+')"></div>'+
+            '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
+            '<div class="tint"></div><div class="halftone"></div></div>'+
+          '<div class="wrap">'+
+            '<span class="chev">Era '+(i+1)+' / '+D.eras.length+'</span>'+
+            '<h2 class="disp off">'+esc(era.title)+'</h2>'+
+            /* Les autres timelines annoncent la durée de l'ère à côté du compte.
+               Sans table RT, `hm(0)` rendait « — au total », qui occupe la place
+               d'une information sans en être une : on ne pose le segment que
+               quand la durée est connue. */
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' watched</span>'+
+            (function(m){ return m ? '<span>'+hm(m)+' in total</span>' : ''; })(
+              era.entries.reduce(function(s,x){return s+rt(x);},0))+'</p>'+
+          '</div></div>'+
+        '<div class="list"><div class="wrap"><div class="rows">'+
+          era.entries.map(row).join('')+
+        '</div></div></div></section>';
+    });
+    $('#timeline').innerHTML=html;
+  })();
+
+  /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
+  function applyFilters(){
+    var q=($('#q').value||'').trim().toLowerCase(), shown=0;
+    D.eras.forEach(function(era,i){
+      var vis=0;
+      era.entries.forEach(function(e){
+        var el=document.getElementById(e.id);
+        var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
+               (!q || e.title.toLowerCase().indexOf(q)>-1);
+        el.hidden=!ok; if(ok){ vis++; shown++; }
+      });
+      document.querySelector('.era-sec[data-era="'+i+'"]').hidden=(vis===0);
+    });
+    $('#fcount').textContent=shown+' / '+ALL.length+' '+T.shown;
+    var em=$('#empty');
+    em.hidden=shown>0;
+    if(!shown) em.textContent=(q? T.emptyH+' « '+q+' »' : T.emptyH+' '+T.emptyThese)+' — '+T.emptyP;
+  }
+
+  function tally(){
+    var n=0,left=0;
+    ALL.forEach(function(e){ if(prog[e.id]) n++; else left+=rt(e); });
+    var h=Math.round(left/60);
+    $('#k-on').textContent=n; $('#k-tot').textContent=ALL.length;
+    $('#k-left').textContent=ALL.length-n;
+    $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
+    /* Le hero d'Avatar n'a pas de case « À voir » : sans table RT le compte
+       vaudrait 0 h. On ne l'écrit donc que si la case existe. */
+    $('#s-tot').textContent=ALL.length;
+    if($('#s-h')) $('#s-h').textContent=h+' h';
+    D.eras.forEach(function(era,i){
+      var b=document.querySelector('[data-done="'+i+'"]');
+      if(b) b.textContent=era.entries.filter(function(e){return prog[e.id];}).length;
+    });
+    startBtn();
+  }
+
+  /* ── Commencer / Reprendre : le bouton emmène à la prochaine entrée ── */
+  var next=null;
+  function startBtn(){
+    var started=ALL.some(function(e){ return prog[e.id]; });
+    next=ALL.filter(function(e){ return !prog[e.id]; })[0]||ALL[0];
+    $('#start').innerHTML=(started?T.resume:'Start')+' <em>▸</em>';
+  }
+  $('#start').addEventListener('click',function(){
+    if(!next) return;
+    var el=document.getElementById(next.id);
+    if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
+      $('#q').value=''; $('#searchbox').classList.remove('on');
+      offLv={}; offK={}; hideDone=false;
+      [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
+        b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
+      applyFilters();
+    }
+    var y=el.getBoundingClientRect().top+scrollY-118;
+    scrollTo({top:y,behavior:'smooth'});
+    el.querySelector('.bu-card').style.borderColor='var(--hot)';
+    setTimeout(function(){ el.querySelector('.bu-card').style.borderColor=''; },1400);
   });
-}
-async function fetchBook(e){
-  if(!e.ol)return null;
-  const key=e.ol.q+'|'+(e.ol.inc||[]).join(',');
-  if(bookCache[key]!==undefined)return bookCache[key];
-  try{
-    const r=await fetch('https://openlibrary.org/search.json?q='+encodeURIComponent(e.ol.q)+'&limit=20&fields=cover_i,title');
-    const d=await r.json();
-    let doc=olMatch(d.docs||[],e.ol.inc,e.ol.exc);
-    if(!doc&&e.ol.inc2)doc=olMatch(d.docs||[],e.ol.inc2,e.ol.exc);
-    bookCache[key]=doc?{cover:'https://covers.openlibrary.org/b/id/'+doc.cover_i+'-M.jpg'}:null;
-  }catch{bookCache[key]=null}
-  return bookCache[key];
-}
-async function loadPosters(){
-  // Images locales en priorité
-  document.querySelectorAll('#tl-content .ep[data-img]').forEach(ep=>{
-    if(ep.querySelector('img'))return;
-    applyImg(ep,ep.dataset.img);
-  });
-  // TMDB backdrop — un fetch par série, appliqué à TOUTES les entrées
-  const keys=new Set();
-  document.querySelectorAll('#tl-content .en[data-tmdb]:not([data-tmdb="0"])').forEach(e=>{
-    keys.add((e.dataset.media==='movie'?'movie':'tv')+'-'+e.dataset.tmdb);
-  });
-  for(const k of keys){
-    const [media,id]=k.split('-');
-    const path=await fetchBackdrop(id,media);
-    if(path)document.querySelectorAll('#tl-content .en[data-tmdb="'+id+'"]').forEach(e=>{
-      if(!e.querySelector('.ep[data-img]'))applyImg(e.querySelector('.ep'),IMG+'w500'+path);
+
+  /* ── fiche TMDB / RAWG, reprise de cg-timeline.js ────────────────── */
+  var cache={};
+  function meta(pairs){
+    var s=pairs.filter(function(p){return p[1];}).map(function(p){
+      return '<span><strong>'+p[0]+'</strong> '+p[1]+'</span>'; }).join('');
+    return s?'<div class="expand-meta">'+s+'</div>':'';
+  }
+  /* Deux fiches portent un lien : les Chroniques de Kyoshi en lecture audio,
+     et les shorts d'Escape from the Spirit World, gratuits sur YouTube. Il
+     arrive des données en adresse et libellé, jamais en HTML — la page échappe
+     tout ce qu'elle affiche, et une balise glissée dans un synopsis s'écrivait
+     en clair à l'écran au lieu de devenir un lien. */
+  function lien(e){
+    return e.link ? '<a class="expand-trailer-link" href="'+esc(e.link.href)+
+      '" target="_blank" rel="noopener">▶ '+esc(e.link.label)+'</a>' : '';
+  }
+  function loadRich(art){
+    var panel=$('.bu-panel',art), box=$('.en-rich',panel);
+    if(panel.dataset.loaded) return;
+    panel.dataset.loaded='1';
+    var e=ALL.filter(function(x){return x.id===art.dataset.id;})[0]||{};
+    var id=panel.dataset.tmdb, type=panel.dataset.media==='movie'?'movie':'tv';
+    var IMG=CFG.img;
+
+    /* la FAQ : questions et réponses de la page de prod, mot pour mot */
+    if(e.faq&&CFG.faqCats){
+      $('.en-faq',panel).innerHTML=CFG.faqCats.map(function(c){
+        return '<details class="faq"><summary>'+esc(c.q.replace('{name}',e.title))+
+               '</summary><div class="a">'+esc(e.faq[c.key]||'')+'</div></details>'; }).join('');
+    }
+
+    box.innerHTML='<div class="expand-loading">'+T.loading+'</div>';
+
+    if(panel.dataset.media==='game'){
+      var yt='https://www.youtube.com/results?search_query='+
+             encodeURIComponent(e.title+' full movie');
+      var link='<a class="expand-trailer-link" href="'+yt+'" target="_blank" rel="noopener">'+
+               T.watchGame+'</a>';
+      var fallback=function(g){
+        box.innerHTML='<div class="expand-inner">'+
+          (g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+
+            '" loading="lazy" alt=""/></div>':'')+
+          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||e.note||'')+'</div>'+
+          meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
+                [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
+                [T.mPeriod,e.date]])+link+'</div></div>';
+      };
+      if(!CFG.rawgKey){ fallback(null); return; }
+      /* RAWG ne trouve rien si on lui envoie le titre entier : « Outlaws
+         + DLC Wild Card + DLC A Pirate's Fortune » ou « Campagne : Missions
+         1-6 » ne sont pas des noms de jeux. On coupe aux DLC et au
+         sous-titre pour ne chercher que le jeu lui-même. */
+      var q=String(e.title).split(/\s\+\s|\s—\s/)[0].replace(/\s*:\s*(Campagne|Prologue).*$/i,'')
+                           .replace(/[:.+]/g,' ').trim();
+      fetch('https://api.rawg.io/api/games?search='+encodeURIComponent(q)+
+            '&page_size=1&key='+CFG.rawgKey)
+        .then(function(r){return r.json();})
+        .then(function(d){ fallback(d.results&&d.results[0]); })
+        .catch(function(){ fallback(null); });
+      return;
+    }
+
+    if(!id||id==='0'||!CFG.tmdbKey){
+      /* sans identifiant TMDB ni description, le dépliant restait vide :
+         on le dit, la FAQ juste en dessous porte le reste. */
+      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>'+lien(e);
+      return;
+    }
+
+    var k=type+id;
+    var got=cache[k]?Promise.resolve(cache[k]):
+      fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+CFG.tmdbKey+
+            '&language='+CFG.tmdbLang+'&append_to_response=videos')
+        .then(function(r){return r.json();})
+        .then(function(d){
+          var v=(d.videos&&d.videos.results)||[];
+          if(v.some(function(x){return x.type==='Trailer'&&x.site==='YouTube';})){ cache[k]=d; return d; }
+          /* Pas de bande-annonce dans la langue de la page : on complète
+             en anglais, et en anglais seulement. Le repli ne joue donc
+             que depuis le français — c'est voulu : une bande-annonce
+             française n'a rien à faire sur la page anglaise. Quand TMDB
+             n'a pas de trailer anglais, la fiche anglaise n'en affiche
+             pas, et c'est la bonne réponse. */
+          return fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+
+                       CFG.tmdbKey+'&language=en-US')
+            .then(function(r){return r.json();})
+            .then(function(en){ d.videos={results:v.concat(en.results||[])}; cache[k]=d; return d; });
+        });
+
+    got.then(function(d){
+      /* À défaut de bande-annonce, le générique. TMDB ne connaît de la
+         série Avatar : Le Dernier Maître de l'Air aucun trailer anglais
+         — seulement son générique d'épisode — et ce générique fait le
+         même travail : il montre la série. Le type reste écrit en clair
+         parce que c'est une valeur de l'API TMDB, jamais un libellé
+         d'écran : il ne se traduit pas. */
+      var yts=((d.videos&&d.videos.results)||[]).filter(function(v){
+        return v.site==='YouTube'; });
+      var tr=yts.filter(function(v){ return v.type==='Trailer'; })[0]
+          || yts.filter(function(v){ return v.type==='Opening Credits'; })[0];
+      var p=d.poster_path?IMG+'w300'+d.poster_path:null;
+      box.innerHTML='<div class="expand-inner">'+
+        (p?'<button type="button" class="expand-poster" data-big="'+IMG+'w780'+d.poster_path+
+            '" aria-label="'+esc(T.zoom||'Agrandir')+'"><img src="'+p+'" loading="lazy" alt=""/>'+
+            '<span class="expand-poster-ov">🔍</span></button>':'')+
+        '<div class="expand-info"><div class="expand-synopsis">'+
+          esc(d.overview||T.noSynopsis)+'</div>'+
+        meta([[T.mYear,(d.release_date||d.first_air_date||'').substring(0,4)],
+              [T.mGenre,(d.genres||[]).map(function(g){return g.name;}).join(', ')],
+              [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],
+              [T.mPeriod,e.date]])+
+        (tr?'<a class="expand-trailer-link" href="https://www.youtube.com/watch?v='+tr.key+
+          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+lien(e)+
+        '</div></div>';
+    }).catch(function(){
+      box.innerHTML='<div class="expand-loading">'+T.loadFail+'</div>';
     });
   }
-  // Google Books pour comics/romans/livres
-  // Covers par ISBN (directes, sans requête search)
-  currentData.eras.flatMap(er=>er.entries).filter(e=>e.isbn).forEach(e=>{
-    const el=document.querySelector('#tl-content .en[data-id="'+e.id+'"] .ep');
-    if(el)applyImg(el,'https://covers.openlibrary.org/b/isbn/'+e.isbn+'-M.jpg?default=false');
-  });
-  const bookEntries=currentData.eras.flatMap(er=>er.entries).filter(e=>e.ol);
-  for(const e of bookEntries){
-    const key=e.ol.q+'|'+(e.ol.inc||[]).join(',');
-    const cached=bookCache[key]!==undefined;
-    const v=await fetchBook(e);
-    if(v&&v.cover){
-      const el=document.querySelector('#tl-content .en[data-id="'+e.id+'"] .ep');
-      if(el)applyImg(el,v.cover);
+
+  /* ── interactions ───────────────────────────────────────────────── */
+  document.addEventListener('click',function(ev){
+    var t=ev.target;
+
+    var chk=t.closest('[data-check]');
+    if(chk){
+      var art=chk.closest('.bu'), id=art.dataset.id;
+      prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      save();
+      chk.setAttribute('aria-checked',prog[id]?'true':'false');
+      art.classList.toggle('done',!!prog[id]);
+      tally();
+      syncBadges(true);
+      if(hideDone&&prog[id]) applyFilters();
+      return;
     }
-    if(!cached)await new Promise(r=>setTimeout(r,350));
+
+    var tg=t.closest('[data-toggle]');
+    if(tg){
+      var a=tg.closest('.bu'), pan=$('.bu-panel',a);
+      var open=tg.getAttribute('aria-expanded')==='true';
+      tg.setAttribute('aria-expanded',open?'false':'true');
+      pan.hidden=open;
+      if(!open) loadRich(a);
+      return;
+    }
+
+    var cp=t.closest('[data-copy]');
+    if(cp){
+      ev.preventDefault();
+      var url=location.href.split('#')[0]+cp.getAttribute('href');
+      var done=function(){ cp.classList.add('ok');
+        setTimeout(function(){ cp.classList.remove('ok'); },1200); };
+      if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,done); else done();
+      history.replaceState(null,'',cp.getAttribute('href'));
+      return;
+    }
+
+    var po=t.closest('.expand-poster[data-big]');
+    if(po){ lightbox(po.dataset.big); return; }
+
+    var f=t.closest('#sieve button[aria-pressed]');
+    if(f){
+      var on=f.getAttribute('aria-pressed')==='true';
+      f.setAttribute('aria-pressed',on?'false':'true');
+      if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.lv) offLv[f.dataset.lv]=on;
+      else if(f.dataset.k) offK[f.dataset.k]=on;
+      applyFilters();
+      return;
+    }
+  });
+
+  function lightbox(url){
+    var pm=$('#pm');
+    if(!pm){
+      pm=document.createElement('div'); pm.id='pm'; pm.className='pm';
+      pm.innerHTML='<button class="pm-x" aria-label="'+esc(T.close)+'">✕</button><img id="pmi" alt=""/>';
+      pm.addEventListener('click',function(){ pm.classList.remove('o'); });
+      document.body.appendChild(pm);
+    }
+    $('#pmi').src=url; pm.classList.add('o');
   }
-}
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'){
+      var pm=$('#pm'); if(pm) pm.classList.remove('o');
+      $('#bx').classList.remove('o'); $('#bx').hidden=true;
+    }
+    if(ev.key==='/'&&document.activeElement!==$('#q')){ ev.preventDefault(); $('#q').focus(); }
+  });
 
-async function toggleExpand(el,ev){
-  if(ev.target.closest('.en-check'))return;
-  const wasOpen=el.classList.contains('open');
-  document.querySelectorAll('.en.open').forEach(x=>x.classList.remove('open'));
-  if(wasOpen)return;
-  el.classList.add('open');
-  const panel=el.querySelector('.en-expand');
-  if(panel.dataset.loaded)return;
-  panel.dataset.loaded='1';
+  /* recherche */
+  var qi=$('#q');
+  qi.addEventListener('input',function(){
+    $('#searchbox').classList.toggle('on',!!qi.value);
+    applyFilters();
+  });
+  $('#q-clear').addEventListener('click',function(){
+    qi.value=''; $('#searchbox').classList.remove('on'); applyFilters(); qi.focus();
+  });
 
-  // FAQ depuis les données
-  const entryObj=currentData&&currentData.eras.flatMap(e=>e.entries).find(e=>e.id===el.dataset.id);
-  const faqDef=entryObj&&entryObj.faq||{};
-  const mediaName=entryObj?entryObj.title:'ce média';
-  const faqCats=[
-    {key:'quand',q:'Quand se déroule '+mediaName+' dans l\'univers Avatar ?'},
-    {key:'pourquoi',q:'Pourquoi regarder '+mediaName+' maintenant dans la timeline ?'}
-  ];
-  const faqHtml=faqCats.filter(cat=>faqDef[cat.key]).map(cat=>'<details class="faq-item"><summary class="faq-q">'+cat.q+'</summary><div class="faq-a">'+faqDef[cat.key]+'</div></details>').join('');
+  /* barre du bas, dépliable */
+  var hud=$('#hud');
+  $('#hud-btn').addEventListener('click',function(){
+    var open=hud.classList.toggle('open');
+    this.setAttribute('aria-expanded',open?'true':'false');
+    $('#hud-panel').hidden=!open;
+    document.body.style.paddingBottom=(open?hud.offsetHeight:64)+'px';
+  });
 
-  const id=el.dataset.tmdb,media=el.dataset.media;
-  if(!id||id==='0'){
-    if(el.dataset.media==='game'){
-      // Charger depuis RAWG.io
-      panel.innerHTML='<div class="expand-loading">Chargement…</div>';
-      const gameTitle=entryObj?entryObj.title:'';
-      const ytUrl='https://www.youtube.com/results?search_query='+encodeURIComponent(gameTitle+' film complet');
+  /* export / import / réinitialisation */
+  $('#export').addEventListener('click',function(){
+    var blob=new Blob([JSON.stringify({universe:'sw',progress:prog},null,1)],
+                      {type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-avatar.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('#import').addEventListener('click',function(){ $('#import-file').click(); });
+  $('#import-file').addEventListener('change',function(){
+    var f=this.files&&this.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){
       try{
-        const rawgUrl='https://api.rawg.io/api/games?search='+encodeURIComponent(gameTitle.replace(/[:.+]/g,' '))+'&page_size=1&key='+RAWG_KEY;
-        const rg=await fetch(rawgUrl);
-        const rgd=await rg.json();
-        const g=rgd.results&&rgd.results[0];
-        const bg=g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+'" loading="lazy"/></div>':'';
-        const desc=(entryObj&&entryObj.desc)||(g&&g.description_raw?g.description_raw.substring(0,300)+'…':'Jeu vidéo Star Wars. '+((entryObj&&entryObj.note)||''));
-        const rating=g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':'';
-        const released=g&&g.released?g.released.substring(0,4):'';
-        let meta='';
-        if(released)meta+='<span><strong>Sortie</strong> '+released+'</span>';
-        if(rating)meta+='<span><strong>Note</strong> '+rating+'</span>';
-        if(entryObj&&entryObj.date)meta+='<span><strong>Période SW</strong> '+entryObj.date+'</span>';
-        panel.innerHTML='<div class="expand-inner">'+bg
-          +'<div class="expand-info"><div class="expand-synopsis">'+desc+'</div>'
-          +(meta?'<div class="expand-meta">'+meta+'</div>':'')
-          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Voir le film complet sur YouTube</a>'
-          +'</div></div>'
-          +(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-      }catch{
-        panel.innerHTML='<div class="expand-inner"><div class="expand-info">'
-          +'<div class="expand-synopsis">'+((entryObj&&entryObj.note)||'Jeu vidéo Star Wars.')+'</div>'
-          +(entryObj&&entryObj.date?'<div class="expand-meta"><span><strong>Période SW</strong> '+entryObj.date+'</span></div>':'')
-          +'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">🎮 Voir le film complet sur YouTube</a>'
-          +'</div></div>'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-      }
-      return;
-    }
-    // Livres & comics
-    if(entryObj&&(entryObj.ol||entryObj.desc||entryObj.img||entryObj.isbn)){
-      panel.innerHTML='<div class="expand-loading">Chargement…</div>';
-      const v=entryObj.ol?await fetchBook(entryObj):null;
-      const coverSrc=entryObj.img||(entryObj.isbn?'https://covers.openlibrary.org/b/isbn/'+entryObj.isbn+'-M.jpg?default=false':null)||(v&&v.cover);
-      const cover=coverSrc?'<div class="expand-poster"><img src="'+coverSrc+'" loading="lazy"/></div>':'';
-      const desc=entryObj.desc||'Pas de résumé disponible.';
-      let meta='';
-      if(entryObj.date&&entryObj.date!=='—')meta+='<span><strong>Période</strong> '+entryObj.date+'</span>';
-      panel.innerHTML='<div class="expand-inner">'+cover
-        +'<div class="expand-info"><div class="expand-synopsis">'+desc+'</div>'
-        +(meta?'<div class="expand-meta">'+meta+'</div>':'')
-        +'</div></div>'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-      return;
-    }
-    panel.innerHTML='<div class="expand-inner"><div class="expand-info"><div class="expand-synopsis">Pas d\'informations disponibles.</div></div></div>'+(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-    return;
+        var d=JSON.parse(r.result);
+        prog=d.progress||d||{}; save();
+        [].forEach.call(document.querySelectorAll('.bu'),function(a){
+          var on=!!prog[a.dataset.id];
+          a.classList.toggle('done',on);
+          $('[data-check]',a).setAttribute('aria-checked',on?'true':'false');
+        });
+        /* un import peut débloquer sept badges d'un coup : on les acquiert
+           sans les annoncer, le panneau Badges les montrera. */
+        tally(); syncBadges(false); applyFilters();
+      }catch(_){ alert(T.badFile); }
+    };
+    r.readAsText(f); this.value='';
+  });
+  $('#reset').addEventListener('click',function(){
+    if(!confirm(T.resetAvatar)) return;
+    prog={}; save();
+    [].forEach.call(document.querySelectorAll('.bu'),function(a){
+      a.classList.remove('done');
+      $('[data-check]',a).setAttribute('aria-checked','false');
+    });
+    tally(); applyFilters();
+  });
+
+  /* ── badges ──────────────────────────────────────────────────────
+     Deux règles, toutes les deux tenues ici et nulle part ailleurs.
+
+     1. Un badge de progression demande tout son bloc. Les `ids` des
+        données ne portent que la dernière entrée : s'en contenter faisait
+        tomber « L'ère de la République terminée » sur une seule case
+        cochée. Le découpage des blocs est expliqué sur `needOf`.
+     2. Un badge obtenu ne se reprend pas. Il vit dans son propre
+        stockage, à part de la progression : décocher, réinitialiser ou
+        importer une autre sauvegarde n'en retire jamais aucun. */
+  var BKEY=KEY+'-badges';
+  var BADGES=(CFG.badges||[]).filter(function(b){
+    return !b.universe || b.universe===CFG.universe; });
+  var won={};
+  try{ won=JSON.parse(localStorage.getItem(BKEY)||'{}')||{}; }catch(_){ won={}; }
+  function saveWon(){ try{ localStorage.setItem(BKEY,JSON.stringify(won)); }catch(_){} }
+
+  function ixOf(id){
+    for(var i=0;i<ALL.length;i++) if(ALL[i].id===id) return i;
+    return -1;
   }
-  panel.innerHTML='<div class="expand-loading">Chargement…</div>';
-  const type=(media==='movie')?'movie':'tv';
-  const k=type+id;
-  let d=detailCache[k];
-  if(!d){
-    try{
-      const rFr=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+TMDB_KEY+'&language=fr-FR&append_to_response=videos');
-      d=await rFr.json();
-      if(!d.videos||!d.videos.results||!d.videos.results.find(v=>v.type==='Trailer'&&v.site==='YouTube')){
-        const rEn=await fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+TMDB_KEY+'&language=en-US');
-        const enV=await rEn.json();
-        if(enV.results)d.videos={results:[...((d.videos&&d.videos.results)||[]),...enV.results]};
-      }
-      detailCache[k]=d;
-    }catch{panel.innerHTML='<div class="expand-loading">Erreur de chargement.</div>';return}
+  /* Les repères de progression, remis dans l'ordre de la timeline. */
+  var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
+    .map(function(b){ return {b:b,i:ixOf((b.ids||[])[0])}; })
+    .filter(function(x){ return x.i>-1; })
+    .sort(function(a,c){ return a.i-c.i; });
+  /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher : le
+     bloc court du repère précédent jusqu'à elle. Chez Star Wars chaque bloc
+     tombe pile sur une ère ; chez Marvel, Thanos couvre d'un coup les trois
+     phases de la Saga de l'Infini. Une règle, deux découpages, rien d'écrit
+     en dur. `all` liste ses entrées lui-même — tous les Spider-Man, tous
+     les X-Men — et se lit tel quel. */
+  function needOf(b){
+    if(b.trigger!=='last') return b.ids||[];
+    var k=-1;
+    for(var i=0;i<MARKS.length;i++) if(MARKS[i].b===b) k=i;
+    if(k<0) return b.ids||[];
+    return ALL.slice(k?MARKS[k-1].i+1:0,MARKS[k].i+1).map(function(e){ return e.id; });
   }
-  const synopsis=d.overview||'Pas de synopsis disponible.';
-  const runtime=d.runtime?(d.runtime+' min'):(d.episode_run_time&&d.episode_run_time[0]?(d.episode_run_time[0]+' min/ép'):null);
-  const genres=(d.genres||[]).map(g=>g.name).join(', ')||null;
-  const year=(d.release_date||d.first_air_date||'').substring(0,4)||null;
-  const rating=d.vote_average?d.vote_average.toFixed(1):null;
-  const poster=d.poster_path?IMG+'w300'+d.poster_path:null;
-  const trailer=(d.videos&&d.videos.results||[]).find(v=>v.type==='Trailer'&&v.site==='YouTube');
-  const ytUrl=trailer?'https://www.youtube.com/watch?v='+trailer.key:null;
-  let meta='';
-  if(year)meta+='<span><strong>Année</strong> '+year+'</span>';
-  if(runtime)meta+='<span><strong>Durée</strong> '+runtime+'</span>';
-  if(genres)meta+='<span><strong>Genre</strong> '+genres+'</span>';
-  if(rating)meta+='<span><strong>Note</strong> ⭐ '+rating+'/10</span>';
-  panel.innerHTML='<div class="expand-inner">'
-    +(poster?'<div class="expand-poster" onclick="openPMurl(\''+IMG+'w500'+d.poster_path+'\')"><img src="'+poster+'" loading="lazy"/><div class="expand-poster-ov">🔍</div></div>':'')
-    +'<div class="expand-info"><div class="expand-synopsis">'+synopsis+'</div>'
-    +(meta?'<div class="expand-meta">'+meta+'</div>':'')
-    +(ytUrl?'<a class="expand-trailer-link" href="'+ytUrl+'" target="_blank" rel="noopener">▶ Bande-annonce YouTube</a>':'')
-    +'</div></div>'
-    +(faqHtml?'<div class="expand-faq">'+faqHtml+'</div>':'');
-}
-function openPMurl(url){document.getElementById('pmi').src=url;document.getElementById('pm').classList.add('o')}
-function closePM(){document.getElementById('pm').classList.remove('o')}
+  function earned(b){
+    if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });
+    var need=needOf(b);
+    return need.length>0 && need.every(function(i){ return prog[i]; });
+  }
+  /* Rend les badges tout juste obtenus ; `pop` décide s'ils s'annoncent. */
+  function syncBadges(pop){
+    var fresh=BADGES.filter(function(b){ return !won[b.id] && earned(b); });
+    if(!fresh.length) return fresh;
+    fresh.forEach(function(b){ won[b.id]=1; });
+    saveWon();
+    if(pop) fresh.forEach(function(b,i){ setTimeout(function(){ popBadge(b); },i*1100); });
+    return fresh;
+  }
 
-function buildEntry(e){
-  const [cls,label]=BADGES[e.type]||['bsp','?'];
-  const prog=getProgress(currentData.id);
-  const isDone=!!prog[e.id];
-  const isGame=e.media==='game';
-  const mediaAttr=isGame?'game':(e.media==='movie'?'movie':'tv');
-  const imgAttr=e.img?' data-img="'+e.img+'"':'';
-  const isNC=e.tags&&e.tags.includes('nc');
-  const devClass=e.dim?' deviate':'';
-  const ncClass=isNC?' nc-entry':'';
-  let pre='';
-  if(e.level==='imp')pre+='<span class="lvl-imp">🚨</span>';
-  if(e.tags&&e.tags.includes('flashback'))pre+='<span class="ft">FLASHBACK</span>';
-  const dimBadge=e.dim?'<div class="dim-badge">'+e.dim+'</div>':'';
-  const ppIcon=isGame?'🎮':e.type==='film'||e.type==='filmanim'?'🎬':'📺';
-  let sub='';
-  if(e.subitems&&e.subitems.length)sub='<div class="esub">'+e.subitems.map(s=>s.trim()===''?'<div class="si sep"></div>':'<div class="si">'+s+'</div>').join('')+'</div>';
-  const note=e.note?'<div class="enote">'+e.note+'</div>':'';
-  return '<div class="en'+devClass+ncClass+(isDone?' done':'')+'" data-id="'+e.id+'" data-type="'+e.type+'" data-level="'+(e.level||'core')+'" data-tmdb="'+(e.tmdb||'0')+'" data-media="'+mediaAttr+'">'
-    +'<div class="en-top" onclick="toggleExpand(this.closest(\'.en\'),event)">'
-    +'<div class="en-check" onclick="toggleEntry(\''+e.id+'\',event)"><div class="checkmark">'+(isDone?'✓':'')+'</div></div>'
-    +'<div class="en-datebadge"><div class="date-main">'+(e.date||'—')+'</div>'+dimBadge+'</div>'
-    +'<div class="ep"'+imgAttr+'><div class="pp">'+ppIcon+'</div></div>'
-    +'<div class="em"><div class="tr">'+pre+'<span class="b '+cls+'">'+label+'</span><span class="en-name">'+e.title+'</span></div>'+note+sub+'</div>'
-    +(e.lang?'<div class="lang-note '+(e.lang==='vf'?'lf':'lv')+'">'+(e.lang==='vf'?'Disponible en français':'Non traduit — VO uniquement')+'</div>':'')
-    +'</div>'
-    +'<div class="en-expand" onclick="event.stopPropagation()"></div></div>';
-}
+  function badges(){
+    syncBadges(false);
+    var n=0;
+    var html=BADGES.map(function(b){
+      var got=!!won[b.id];
+      if(got) n++;
+      return '<div class="bg1'+(got?' on':'')+'" style="--c:'+b.color+'">'+
+        '<span class="i">'+b.icon+'</span><span><span class="t">'+esc(b.label)+'</span>'+
+        '<span class="d">'+esc(b.desc)+'</span></span></div>';
+    }).join('');
+    $('#bx-g').innerHTML=html;
+    $('#bx-n').textContent=n+' '+T.unlockedN;
+    $('#bx').hidden=false; $('#bx').classList.add('o');
+  }
+  $('#badges-btn').addEventListener('click',badges);
 
-function buildTimeline(data){
-  document.documentElement.style.setProperty('--tl-color',data.color||'var(--accent)');
-  const types=[...new Set(data.eras.flatMap(era=>era.entries.map(e=>e.type)))];
-  const hasFB=data.eras.some(era=>era.entries.some(e=>e.tags&&e.tags.includes('flashback')));
-
-  let leg='<div class="leg-title">Légende</div>';
-  types.forEach(t=>{const[c,l]=BADGES[t]||[];if(c)leg+='<span class="b '+c+'">'+l+'</span>';});
-  if(hasFB)leg+='<span class="ft">FLASHBACK</span>';
-  document.getElementById('tl-legend').innerHTML=leg;
-
-  // Filtres par type seulement (pas de niveaux pour SW)
-  let f='<div class="filter-group"><span class="filter-label">Types :</span>';
-  types.forEach(t=>{
-    const[,l]=BADGES[t]||['','?'];
-    f+='<button class="fbt type-filter-btn active" data-type="'+t+'" onclick="toggleTypeFilter(this)">'+l+'</button>';
-  });
-  f+='</div>';
-  f+='<div class="filter-group"><span class="filter-label">Niveaux :</span>';
-  f+='<button class="fbt lvl-filter-btn active" data-level="imp" onclick="toggleLevelFilter(this)">🚨 Important</button>';
-  f+='<button class="fbt lvl-filter-btn active" data-level="bonus" onclick="toggleLevelFilter(this)">Optionnel</button>';
-  f+='</div>';
-  document.getElementById('filter-bar').innerHTML=f;
-
-  let html='';
-  data.eras.forEach(era=>{
-    html+='<div class="era-node" data-era><div class="era-node-dot"></div><div class="era-label">'+era.title+'</div></div>';
-    era.entries.forEach(e=>{html+=buildEntry(e);});
-  });
-  document.getElementById('tl-content').innerHTML=html;
-}
-
-function toggleLevelFilter(btn){btn.classList.toggle('active');applyFilters();}
-function applyFilters(){
-  const showTypes=new Set();
-  document.querySelectorAll('.type-filter-btn.active').forEach(b=>showTypes.add(b.dataset.type));
-  const showLvls=new Set();
-  document.querySelectorAll('.lvl-filter-btn.active').forEach(b=>showLvls.add(b.dataset.level));
-  document.querySelectorAll('#tl-content .en').forEach(e=>{
-    const okType=showTypes.size===0||showTypes.has(e.dataset.type);
-    const lvl=e.dataset.level||'core';
-    const okLvl=lvl==='core'||showLvls.has(lvl);
-    e.style.display=(okType&&okLvl)?'':'none';
-  });
-  document.querySelectorAll('#tl-content .era-node').forEach(h=>{
-    let n=h.nextElementSibling,vis=false;
-    while(n&&!n.dataset.era){
-      if(n.classList.contains('en')&&n.style.display!=='none')vis=true;
-      n=n.nextElementSibling;
+  /* le carton d'annonce, un seul nœud recyclé */
+  var bpop=null, bpopT=null;
+  function popBadge(b){
+    if(!bpop){
+      bpop=document.createElement('div');
+      bpop.className='bpop'; bpop.hidden=true;
+      bpop.setAttribute('role','status');
+      document.body.appendChild(bpop);
     }
-    h.style.display=vis?'':'none';
+    bpop.style.setProperty('--c',b.color);
+    bpop.innerHTML='<span class="i" aria-hidden="true">'+b.icon+'</span><span>'+
+      '<span class="k">'+esc(T.badgeUnlocked)+'</span>'+
+      '<span class="t">'+esc(b.label)+'</span>'+
+      '<span class="d">'+esc(b.desc)+'</span></span>';
+    bpop.hidden=false;
+    /* un reflow forcé plutôt qu'un requestAnimationFrame : la transition
+       part quand même si la page ne compose pas de frame à cet instant. */
+    void bpop.offsetHeight;
+    bpop.classList.add('o');
+    confetti(b.color);
+    clearTimeout(bpopT);
+    bpopT=setTimeout(function(){
+      bpop.classList.remove('o');
+      setTimeout(function(){ if(bpop) bpop.hidden=true; },300);
+    },4600);
+  }
+
+  /* Confettis : des rectangles pleins et non des ronds — la page est
+     découpée au massicot, les confettis le sont aussi. Le canvas se
+     crée à la volée et se retire dès la dernière retombée. */
+  var REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var cv=null, cx=null, bits=[], raf=0;
+  function confetti(color){
+    if(REDUCE) return;
+    if(!cv){
+      cv=document.createElement('canvas');
+      cv.className='conf'; cv.setAttribute('aria-hidden','true');
+      document.body.appendChild(cv); cx=cv.getContext('2d');
+    }
+    var dpr=Math.min(devicePixelRatio||1,2), W=innerWidth, H=innerHeight;
+    cv.width=W*dpr; cv.height=H*dpr;
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    cx.setTransform(dpr,0,0,dpr,0,0);
+    var pal=[color,'#fffdf7','#f0c97c','#4d9fff'];
+    for(var i=0;i<120;i++){
+      bits.push({x:W/2+(Math.random()-.5)*200, y:H*.66,
+                 vx:(Math.random()-.5)*10, vy:-8-Math.random()*10,
+                 w:4+Math.random()*8, h:3+Math.random()*6,
+                 a:Math.random()*6.28, va:(Math.random()-.5)*.36,
+                 c:pal[i%pal.length], life:80+Math.random()*60});
+    }
+    if(!raf) raf=requestAnimationFrame(fall);
+  }
+  function fall(){
+    var W=innerWidth, H=innerHeight;
+    cx.clearRect(0,0,W,H);
+    bits=bits.filter(function(p){ return p.life>0 && p.y<H+50; });
+    bits.forEach(function(p){
+      p.vy+=.36; p.vx*=.99; p.x+=p.vx; p.y+=p.vy; p.a+=p.va; p.life--;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.a);
+      cx.globalAlpha=Math.min(1,p.life/30); cx.fillStyle=p.c;
+      cx.fillRect(-p.w/2,-p.h/2,p.w,p.h); cx.restore();
+    });
+    if(bits.length){ raf=requestAnimationFrame(fall); }
+    else { raf=0; cv.remove(); cv=null; cx=null; }
+  }
+  $('#bx-x').addEventListener('click',function(){ $('#bx').classList.remove('o'); $('#bx').hidden=true; });
+  $('#bx').addEventListener('click',function(ev){
+    if(ev.target===this){ this.classList.remove('o'); this.hidden=true; }
   });
-}
-function toggleTypeFilter(btn){
-  btn.classList.toggle('active');
-  applyFilters();
-}
-function showHome(){window.location.href='index.html';}
-function showUniverse(uid){
-  const u=UNIVERSES.find(x=>x.data&&x.data.id===uid);
-  if(!u)return;
-  currentData=u.data;
-  document.getElementById('tl-title').textContent=currentData.title+' — '+currentData.subtitle;
-  document.getElementById('tl-title').style.color=currentData.color||'var(--text)';
-  document.getElementById('tl-title').style.textShadow='0 0 40px '+(currentData.glow||'transparent');
-  document.getElementById('tl-sub').textContent=currentData.description||'';
-  document.getElementById('tl-notes').innerHTML=currentData.notes||'';
-  document.getElementById('pb-fill').style.background='linear-gradient(90deg,'+(currentData.color||'var(--accent)')+',var(--accent2))';
-  buildTimeline(currentData);renderProgress();
-  window.scrollTo(0,0);loadPosters();
-}
-showUniverse('avatar');
 
+  /* Grogu */
+  var tt=$('#totop');
+  tt.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+  addEventListener('scroll',function(){ tt.classList.toggle('on',scrollY>400); },{passive:true});
 
+  /* menu replié */
+  var bg=$('#burger'), dr=$('#drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
 
-function cgResume(){
-  var els=document.querySelectorAll('.en');
-  for(var i=0;i<els.length;i++){
-    var e=els[i];
-    if(e.dataset&&e.dataset.type==='separator')continue;
-    if(!e.classList.contains('done')&&e.offsetParent!==null){
-      e.scrollIntoView({behavior:'smooth',block:'center'});
-      e.style.boxShadow='0 0 0 2px var(--accent),0 0 24px rgba(124,106,247,.35)';
-      (function(x){setTimeout(function(){x.style.boxShadow=''},1800)})(e);
-      return;
+  tally(); syncBadges(false); applyFilters();
+
+  /* une ancre dans l'URL ouvre directement la bonne entrée */
+  if(location.hash){
+    var target=document.getElementById(location.hash.slice(1));
+    if(target&&target.classList.contains('bu')){
+      setTimeout(function(){
+        scrollTo({top:target.getBoundingClientRect().top+scrollY-118});
+      },60);
     }
   }
-}
-function cgScrollTop(){return window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0}
-function cgTopBtn(){const g=document.getElementById('appa');if(g)g.classList.toggle('visible',cgScrollTop()>400)}
-window.addEventListener('scroll',cgTopBtn,{passive:true});
-document.addEventListener('scroll',cgTopBtn,{passive:true,capture:true});
-setInterval(cgTopBtn,800);
+})();
 </script>
-<script src="badges.js"></script>
+<script src="/app.js"></script>
 <script src="/pwa.js"></script>
-<script src="/anim.js"></script>
+<script data-goatcounter="https://arcanerval.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

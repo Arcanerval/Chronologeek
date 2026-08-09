@@ -65,7 +65,12 @@ EXCLUDE = {
     # Visions Presents – The Ninth Jedi n'est pas canon.
     "starwars": [r"\blego\b", r"noveli[sz]ation", r"the ninth jedi"],
     "marvel":   [r"\blego\b"],
-    "dc":       [r"\blego\b"],
+    # Batman: Knightfall est un film d'animation du Tomorrowverse, hors du
+    # périmètre du guide : la timeline DC suit les Elseworlds, l'Arrowverse,
+    # le DCEU et le DCU, pas les longs métrages animés. Le motif attrape les
+    # deux parties annoncées, et la saga comics du même nom, qui n'y est pas
+    # davantage.
+    "dc":       [r"\blego\b", r"\bknightfall\b"],
     "*":        [],
 }
 

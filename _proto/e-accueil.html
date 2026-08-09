@@ -313,16 +313,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <a class="brand" href="#"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
     <nav class="nav-links" aria-label="Navigation">
       <a href="#" aria-current="page">Accueil</a>
-      <a href="#" class="doss">Dossiers</a>
-      <a href="#">Star Wars</a>
-      <a href="#">Marvel</a>
-      <a href="#">DC</a>
-      <a href="#">Avatar</a>
-      <a href="#" class="upc">À venir</a>
-      <a href="#" class="news">Nouveautés</a>
+      <a href="e-dossiers.html" class="doss">Dossiers</a>
+      <a href="e-starwars.html">Star Wars</a>
+      <a href="e-marvel.html">Marvel</a>
+      <a href="e-dc.html">DC</a>
+      <a href="e-avatar.html">Avatar</a>
+      <a href="e-a-venir.html" class="upc">À venir</a>
+      <a href="e-nouveautes.html" class="news">Nouveautés</a>
     </nav>
     <div class="nav-tools">
-      <a class="icon-btn lang-btn" href="#" aria-label="Switch to English" title="Switch to English">
+      <a class="icon-btn lang-btn" href="en-accueil.html" aria-label="Switch to English" title="Switch to English">
         <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
       </a>
       <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
@@ -331,9 +331,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
-    <a href="#" aria-current="page">Accueil</a><a href="#" class="doss">Dossiers</a>
-    <a href="#">Star Wars</a><a href="#">Marvel</a><a href="#">DC</a><a href="#">Avatar</a>
-    <a href="#" class="upc">À venir</a><a href="#" class="news">Nouveautés</a>
+    <a href="#" aria-current="page">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a>
+    <a href="e-starwars.html">Star Wars</a><a href="e-marvel.html">Marvel</a><a href="e-dc.html">DC</a><a href="e-avatar.html">Avatar</a>
+    <a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a>
   </nav>
 </header>
 
@@ -370,7 +370,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   <div class="slots">
 
-    <a class="slot rv" href="#" style="--c:var(--sw);--i:0"
+    <a class="slot rv" href="e-starwars.html" style="--c:var(--sw);--i:0"
        data-u="sw" data-total="61" data-hero="/images/starwars-banner.webp">
       <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <figure>
@@ -387,7 +387,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </span>
     </a>
 
-    <a class="slot rv" href="#" style="--c:var(--mcu);--i:1"
+    <a class="slot rv" href="e-marvel.html" style="--c:var(--mcu);--i:1"
        data-u="mcu" data-total="121" data-hero="/images/mcu.webp">
       <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <figure>
@@ -404,7 +404,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </span>
     </a>
 
-    <a class="slot rv" href="#" style="--c:var(--dc);--i:2"
+    <a class="slot rv" href="e-dc.html" style="--c:var(--dc);--i:2"
        data-u="dc" data-total="146" data-hero="/images/dcmultivers.jpg">
       <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <figure>
@@ -421,8 +421,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </span>
     </a>
 
-    <a class="slot rv" href="#" style="--c:var(--av);--i:3"
-       data-u="avatar" data-hero="/images/avatar.png">
+    <a class="slot rv" href="e-avatar.html" style="--c:var(--av);--i:3"
+       data-u="avatar" data-total="69" data-hero="/images/avatar.png">
       <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <figure>
         <img src="/images/avatar.png" alt="" width="640" height="274" loading="lazy" decoding="async"/>
@@ -432,7 +432,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </figure>
       <span class="body">
         <span class="d">Le Dernier Maître de l'Air · Korra · Comics · Romans · Timeline chronologique</span>
-        <span class="score" style="margin-top:15px"><span class="none">Suivi de progression à venir</span></span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 69 vus</span><span class="d-p">0 %</span></span>
         <span class="upd">À jour · juillet 2026</span>
       </span>
     </a>
@@ -460,7 +461,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <p>Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu
       et autres choses méritant votre attention</p>
   </div>
-  <a class="go" href="#">Ouvrir ▸</a>
+  <a class="go" href="e-dossiers.html">Ouvrir ▸</a>
 </div></section>
 
 </main>
@@ -474,15 +475,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         qui regarde tout deux fois.</p>
     </div>
     <div><h4>Timelines</h4><ul>
-      <li><a href="#">Star Wars</a></li>
-      <li><a href="#">Marvel — MCU</a></li>
-      <li><a href="#">DC Multiverse</a></li>
-      <li><a href="#">Avatar</a></li>
-      <li><a href="#">Dossiers</a></li>
+      <li><a href="e-starwars.html">Star Wars</a></li>
+      <li><a href="e-marvel.html">Marvel — MCU</a></li>
+      <li><a href="e-dc.html">DC Multiverse</a></li>
+      <li><a href="e-avatar.html">Avatar</a></li>
+      <li><a href="e-dossiers.html">Dossiers</a></li>
     </ul></div>
     <div><h4>Plus</h4><ul>
-      <li><a href="#">Sorties à venir</a></li>
-      <li><a href="#">Nouveautés</a></li>
+      <li><a href="e-a-venir.html">Sorties à venir</a></li>
+      <li><a href="e-nouveautes.html">Nouveautés</a></li>
       <li><a href="#">Soutenir le site</a></li>
       <li><a href="#">Contact</a></li>
     </ul></div>
@@ -499,7 +500,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </footer>
 
 <div class="hud"><div class="in">
-  <b><em id="k-on">0</em> / 327</b>
+  <!-- 61 Star Wars + 121 Marvel + 146 DC + 69 Avatar. Le total était écrit
+       327 alors que les trois cartes en annonçaient 328 : l'écart est corrigé
+       en même temps qu'Avatar entre dans le compte. -->
+  <b><em id="k-on">0</em> / 397</b>
   <span class="lbl">entrées cochées</span>
   <div class="bar"><i id="k-fill"></i></div>
   <span class="lbl">4 univers · 533 au dossier</span>
@@ -564,7 +568,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var doneAll=0, totalAll=0, running=[];
     slots.forEach(function(el){
       var u=el.dataset.u, total=+el.dataset.total||0;
-      if(!total) return;                       /* Avatar : pas encore de suivi */
+      if(!total) return;                       /* une carte sans suivi encore */
       var done=read(u), pct=Math.round(done/total*100);
       totalAll+=total; doneAll+=done;
       el.querySelector('.d-n').textContent=done;
@@ -631,5 +635,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   else window.addEventListener('load',launch);
 })();
 </script>
+<script src="e-app.js"></script>
 </body>
 </html>

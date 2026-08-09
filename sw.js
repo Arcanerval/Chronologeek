@@ -3,13 +3,25 @@
 // cache = filet de sécurité hors-ligne uniquement. Rien à bumper.
 const CACHE = 'cg-app';
 const IMG_CACHE = 'cg-img';
+// `addAll` est tout ou rien : un seul 404 fait echouer l'installation entiere
+// et le hors-ligne disparait sans rien dire. Cette liste ne doit donc contenir
+// que des fichiers qui existent — la refonte a supprime les anciens composants
+// partages, ne pas les remettre ici.
 const PRECACHE = [
-  '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html', '/whats-new.html', '/upcoming.html',
-  '/badges.js', '/pwa.js', '/anim.js', '/manifest.json',
-  '/progress.css', '/progress.js', '/intro.css', '/filters.css', '/filters.js',
-  // composants de la refonte — coexistent avec les anciens pendant la migration
-  '/cg.css', '/cg-timeline.js', '/cg-dc.js', '/cg-dossier.js', '/cg-badges-fx.js',
-  '/cg-upcoming.js', '/cg-nav.js'
+  '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html',
+  '/whats-new.html', '/upcoming.html',
+  '/fr/', '/fr/starwars.html', '/fr/marvel.html', '/fr/dc.html', '/fr/avatar.html',
+  '/fr/nouveautes.html', '/fr/a-venir.html',
+  '/deep-dives/', '/deep-dives/star-wars.html',
+  '/fr/dossiers/', '/fr/dossiers/star-wars.html',
+  '/pwa.js', '/manifest.json',
+  // le moteur de la refonte, bilingue, et les donnees de chaque page
+  '/app.js',
+  '/data/starwars-en.js', '/data/marvel-en.js', '/data/dc-en.js', '/data/avatar-en.js',
+  '/data/news-en.js',
+  '/data/starwars-fr.js', '/data/marvel-fr.js', '/data/dc-fr.js', '/data/avatar-fr.js',
+  '/data/news-fr.js',
+  '/data/dossier-star-wars-en.js', '/data/dossier-star-wars-fr.js'
 ];
 
 self.addEventListener('install', e => {

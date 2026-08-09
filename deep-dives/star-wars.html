@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" type="image/png" href="/images/icon-192.png"/>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#08080f"/>
+<link rel="apple-touch-icon" href="/images/icon-192.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Chronologeek"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>Star Wars Deep Dive: novels &amp; comics reading order | Chronologeek</title>
 <meta name="description" content="The complete reading order for canon Star Wars novels, young-reader books and comics, placed within the movie and show chronology."/>
-<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
-<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
-<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/deep-dives/star-wars"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Chronologeek"/>
 <meta property="og:title" content="Star Wars Deep Dive: novels &amp; comics reading order | Chronologeek"/>
@@ -15,115 +19,609 @@
 <meta property="og:image" content="https://chronologeek.app/images/starwars-banner.webp"/>
 <meta property="og:url" content="https://chronologeek.app/deep-dives/star-wars"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="stylesheet" href="/cg.css"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/deep-dives/star-wars"/>
 <link rel="canonical" href="https://chronologeek.app/deep-dives/star-wars"/>
-<script>window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","resetSW":"Reset your Star Wars progress?","resetMCU":"Reset your Marvel progress?","resetDC":"Reset your DC progress?","resetDos":"Reset your Deep Dive progress?","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's new","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project."},"resetMsg":"Reset your Deep Dive progress?","kindLabels":{"comic":"Comic","roman":"Novel","jeunesse":"Young adult novel","audio":"Audiobook"}};</script>
-</head>
-<body data-universe="sw">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="/images/starwarscomics.jpg"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · LE DOSSIER ═══════════════════════════
+  THÈSE : le Dossier n'est pas une timeline plus longue, c'est un registre.
+  533 entrées sans une seule image : la grammaire des bulles de la page
+  d'univers ne tient pas ici — une vignette vide répétée 533 fois, c'est une
+  page qui bégaie. Chaque entrée redevient une ligne de registre : la case,
+  le numéro d'ordre, la date in-universe, le titre, la nature de l'œuvre.
+  Ce qui portait l'image porte maintenant la couleur : le liseré de gauche
+  dit comic, roman, roman jeune adulte ou fiction audio d'un coup d'œil.
+  MONDE PROPRE : hérité de la page d'univers. Couleur noyée, une par ère,
+  qui inonde la région et change au défilement. Bords francs, chevrons en
+  diagonale, trame de demi-teinte, titrage condensé à ombre portée dure.
+  Aucun halo, aucun arrondi, bascules en steps.
+  ACCENT : l'or du logo — crête #f0c97c. LU : le bleu Star Wars (#4d9fff),
+  jamais l'or, jamais un vert générique. La rubrique, elle, garde le violet
+  des Dossiers (#a99cf9) : fil d'Ariane et étiquette, comme dans la nav.
+  IMPOSÉ PAR LA LONGUEUR : une barre d'ères collante. Sur 533 entrées, savoir
+  où l'on est et sauter ailleurs n'est pas un confort, c'est la condition
+  pour que la page soit utilisable. C'est le relevé « Le poids des ères » de
+  l'accueil des Dossiers, devenu l'organe de navigation de la page : sept
+  segments à l'échelle du nombre d'entrées, chacun portant sa jauge de
+  lecture et l'ère courante marquée à l'or. Une rangée de boutons tous de la
+  même taille mentait sur le volume — la Rébellion, c'est 294 entrées sur
+  533. Le relevé quitte donc l'accueil : il n'y était qu'une vitrine, il est
+  ici un instrument.
+  LES REPÈRES ÉCRAN : 63 jalons qui ne sont pas des entrées. Bande
+  transversale, pas de case, hors progression — ils situent, ils ne se lisent
+  pas. Ils ne se filtrent que par la recherche, comme en prod.
+  RÉCIT : voilà ce que contient le Dossier, voilà où j'en suis, voilà ma
+  prochaine lecture.
+  TEXTES : repris mot pour mot de fr/dossiers/star-wars.html — la prose
+  d'introduction vient du champ `intro` des données, les libellés de
+  window.CG.t. Seuls changements, les mêmes que sur la page d'univers :
+  le tutoiement passe au vouvoiement, Niko ne veut pas qu'on tutoie le
+  visiteur. Aucune autre reformulation.
+-->
+<style>
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  /* la marque « lu » prend la couleur de l'univers, pas un vert générique */
+  --uni:#4d9fff;
+  /* sept encres d'ère. Les six dernières sont celles de la page d'univers,
+     ère pour ère : une même ère garde son encre d'une page à l'autre. La
+     Haute République, absente de la timeline cinéma, en reçoit une propre. */
+  --era1:#3c6b1f; --era2:#0f6d63; --era3:#a8331b; --era4:#2b2f6b;
+  --era5:#8a6a12; --era6:#134a72; --era7:#5c2060;
+  /* les trois entrées colorées de la nav */
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  /* les quatre natures d'œuvre, couleurs des données elles-mêmes */
+  --k-comic:#fb923c; --k-roman:#a78bfa; --k-jeunesse:#4ade80; --k-audio:#f472b6;
+  --k-screen:#64b5f6;
+  --era:var(--era1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:64px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
 
-<a class="skip" href="#main">Skip to content</a>
+/* ══ trame de demi-teinte : matière du monde, posée sur les visuels ══ */
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+.nav-links a.doss[aria-current],.drawer a.doss[aria-current]{color:var(--hot)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:34px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(58vh,500px);display:flex;align-items:flex-end}
+.plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 40%;
+  background-image:url(/images/starwarscomics.jpg)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+/* le voile part du violet des Dossiers et tombe dans le bleu Star Wars :
+   la bascule de rubrique à univers, jouée en un seul dégradé */
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 5%,
+             color-mix(in srgb,var(--uni) 44%,var(--ink)) 56%,
+             color-mix(in srgb,var(--c-doss) 34%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:20px;padding-bottom:28px}
+.attract h1{font-size:clamp(38px,7vw,86px);max-width:14ch}
+.attract h1 span{display:block}
+.attract h1 .sub{color:var(--hot);font-size:.46em;margin-top:.08em}
+/* le fil d'Ariane prend sa ligne : posé en inline, l'étiquette venait se
+   coller à côté de lui */
+.crumb{display:flex;width:fit-content;align-items:center;gap:8px;text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--c-doss);margin-bottom:16px;
+  border-bottom:2px solid transparent}
+.crumb:hover{border-bottom-color:var(--c-doss)}
+.crumb svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:square}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;max-width:62ch;color:rgba(255,253,247,.92)}
+.upd{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66);display:flex;align-items:center;gap:7px}
+.upd i{width:8px;height:8px;background:var(--uni);display:block}
+.stats{display:flex;flex-wrap:nowrap;gap:0;margin-top:20px;border:2px solid var(--paper);
+  background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
+.stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
+.stats .s:last-child{border-right:0}
+.stats b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:30px;
+  line-height:.9;color:var(--hot);white-space:nowrap}
+.stats span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.78);margin-top:3px}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ INTRO : la prose de la page, et ses omissions ══════════════════ */
+.intro{padding:34px 0 8px}
+.intro-lead{font-size:16.5px;color:rgba(255,253,247,.9);margin-bottom:12px}
+.intro-tags{margin:16px 0 6px}
+.itag{display:inline-flex;align-items:flex-start;gap:9px;background:rgba(77,159,255,.13);
+  border-left:4px solid var(--uni);padding:9px 14px;font-size:14px;font-weight:600}
+.itag svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2.6;
+  stroke-linecap:square;margin-top:1px}
+.cuts{margin-top:20px;border:2px solid var(--line)}
+.cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.05em}
+.cuts>summary::-webkit-details-marker{display:none}
+.cuts>summary:hover{background:rgba(255,253,247,.05)}
+.cuts .n{font-family:'Chivo';font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:3px 9px}
+.cuts .chev{width:20px;height:20px;margin-left:auto;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
+.cuts[open] .chev{transform:rotate(180deg)}
+.cuts-body{padding:14px 16px 18px;border-top:2px solid var(--line)}
+.cuts-prose{font-size:14px;color:rgba(255,253,247,.84)}
+.cuts-prose strong{color:var(--paper)}
+
+/* ══ filtres, recherche, rail des ères ══════════════════════════════ */
+/* Pas de trait bas ici : la légende des repères vient juste dessous et le
+   filet blanc entre les deux coupait un bloc qui n'en fait qu'un. La coupure
+   franche est reportée sous la légende, avant la première ère. */
+.sieve{border-top:2px solid var(--paper);background:var(--ink);
+  position:sticky;top:53px;z-index:50}
+/* Une barre collante de deux rangées, pas trois : réglages sur la première,
+   rail sur la seconde. Les espacements sont serrés pour que le compte reste
+   sur la ligne des filtres — passé à la ligne, il coûtait 34 px de haut
+   d'écran à chaque écran de lecture. */
+.sieve .wrap{display:flex;gap:11px;align-items:center;flex-wrap:wrap;
+  padding-top:9px;padding-bottom:9px}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,253,247,.5);margin-right:2px}
+.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
+.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
+.sieve button .n{font-family:'Chivo';font-size:11px;font-weight:700;opacity:.62}
+.sieve .last{margin-left:auto}
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
+  padding:4px 9px;min-width:190px;flex:0 1 244px}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
+  stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
+  font-family:'Chivo';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
+  display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+.fcount{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,253,247,.6)}
+/* la légende des repères, hors barre collante */
+.marksbar{border-bottom:2px solid var(--paper);background:rgba(13,11,18,.6)}
+.marksbar .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding-top:7px;padding-bottom:7px;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+.marksbar .sc{display:inline-flex;align-items:center;gap:6px;color:var(--k-screen)}
+.marksbar .sc svg{width:11px;height:11px;fill:currentColor}
+
+/* Le rail des ères : sept destinations, leur jauge, l'ère courante marquée.
+   Il défile à l'horizontale plutôt que de passer à la ligne — la barre
+   collante doit garder une hauteur constante, sinon la page saute. */
+/* Le poids des ères, repris de l'accueil des Dossiers et rendu cliquable :
+   sept segments à l'échelle du nombre d'entrées. Une ère ne se choisit plus
+   dans une rangée de boutons tous de la même taille — la Rébellion pèse plus
+   de la moitié du Dossier et ça se voit avant de lire un seul chiffre.
+   L'encre s'éclaircit d'un segment à l'autre : la barre se lit comme une
+   coupe, pas comme une barre découpée. */
+.rail{flex:1 0 100%;display:flex;gap:2px;height:32px;border:2px solid var(--paper)}
+.rail>span{position:relative;cursor:pointer;display:block;min-width:0;overflow:hidden;text-decoration:none;
+  transition:filter .1s steps(1,end)}
+.rail>span[hidden]{display:none}
+.rail>span:hover{filter:brightness(1.5)}
+.rail>span.on{outline:3px solid var(--hot);outline-offset:-3px;z-index:2}
+/* Le segment porte son nombre d'entrées, pas son nom : « Guerre des Clones »
+   ne rentre dans aucun segment sous les 25 % du Dossier, alors que le compte
+   tient partout ou presque. Le nom est sur le bouton, juste dessous, et dans
+   l'infobulle. Largeur au contenu, pas au conteneur — étalé sur la bande, il
+   mesurait la bande et se croyait toujours trop long. */
+.rail .nm{position:absolute;left:50%;top:0;transform:translateX(-50%);
+  height:100%;width:max-content;display:flex;align-items:center;padding:0 3px;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:14px;letter-spacing:.02em;
+  color:var(--paper);text-shadow:1px 1px 0 rgba(13,11,18,.75)}
+.rail .nm[hidden]{display:none}
+/* la jauge de lecture de l'ère, posée au pied de son segment */
+.rail .f{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--uni);
+  transition:width .35s cubic-bezier(.16,1,.3,1)}
+
+/* Les destinations nommées, sous la barre. La barre dit le volume, les
+   boutons disent les noms : à l'échelle, six ères sur sept sont trop
+   étroites pour porter le leur. */
+.eranav{flex:1 0 100%;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;margin-top:1px}
+.eranav::-webkit-scrollbar{display:none}
+.eranav a{flex:0 0 auto;text-decoration:none;border:2px solid var(--line);
+  padding:2px 10px 3px;background:rgba(255,253,247,.03);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:13px;letter-spacing:.05em;
+  text-transform:uppercase;white-space:nowrap;color:rgba(255,253,247,.8);
+  transition:border-color .08s steps(1,end),color .08s steps(1,end)}
+.eranav a[hidden]{display:none}
+.eranav a:hover{border-color:var(--paper);color:var(--paper)}
+.eranav a.on{border-color:var(--hot);color:var(--hot)}
+
+/* ══ BANDE D'ÈRE : parallaxe multiplane liée au défilement ══════════ */
+.era-sec[hidden]{display:none}
+.map{position:relative;overflow:hidden;background:var(--era);
+  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);
+  scroll-margin-top:168px}
+.map .layers{position:absolute;inset:0}
+.map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
+.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
+  clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
+.map .tint{position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--era) 30%,transparent),
+             color-mix(in srgb,var(--era) 88%,transparent))}
+.map .wrap{position:relative;z-index:2;padding:42px 20px 26px}
+.map .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;
+  letter-spacing:.2em;text-transform:uppercase;display:inline-block;
+  background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.map h2{font-size:clamp(28px,5.4vw,64px);margin:12px 0 6px}
+.map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+.map .meta b{color:var(--hot)}
+
+/* ══ LES LIGNES DU REGISTRE ═════════════════════════════════════════
+   Pas de vignette : le Dossier n'a pas d'images, et 533 cadres vides
+   feraient une page qui bégaie. La couleur du liseré porte la nature de
+   l'œuvre, le numéro d'ordre porte l'avancement, la date porte la
+   chronologie. Rien d'autre n'a besoin de place. */
+.list{background:color-mix(in srgb,var(--era) 16%,var(--ink));padding:18px 0 30px}
+.rows{display:flex;flex-direction:column;gap:5px}
+.dr{position:relative;display:grid;
+    grid-template-columns:34px 44px 104px minmax(0,1fr) auto;
+    align-items:center;gap:12px;
+    border:2px solid var(--line);border-left:5px solid var(--c,var(--paper));
+    background:rgba(13,11,18,.5);padding:7px 40px 7px 10px;
+    scroll-margin-top:168px;
+    transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
+.dr[hidden]{display:none}
+.dr:hover{border-top-color:var(--hot);border-right-color:var(--hot);
+  border-bottom-color:var(--hot);transform:translate(-3px,-3px)}
+.dr-ck{width:28px;height:28px;background:none;cursor:pointer;
+  border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
+  display:grid;place-items:center;padding:0;color:transparent;
+  transition:border-color .1s steps(1,end),background-color .1s steps(1,end)}
+.dr-ck svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:3.4;
+  stroke-linecap:square}
+.dr-ck:hover{border-color:var(--uni)}
+.dr-ck[aria-checked=true]{background:var(--uni);border-color:var(--uni);color:var(--ink)}
+.dr-n{font-family:'Big Shoulders Display';font-weight:900;font-size:16px;
+  color:rgba(255,253,247,.42);letter-spacing:.02em;text-align:right}
+/* la date in-universe : deuxième information de la ligne, lue d'un coup d'œil */
+.dr-dt{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;line-height:1;
+  letter-spacing:.02em;color:var(--hot);white-space:nowrap}
+.dr-main{min-width:0}
+.dr-tt{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:21px;
+  line-height:1.04;text-transform:uppercase}
+.vo{display:inline-block;margin-left:7px;vertical-align:2px;font-family:'Chivo';font-size:9.5px;
+  font-weight:700;letter-spacing:.1em;padding:1px 5px;color:var(--hot);border:1px solid var(--hot)}
+.dr-note{display:block;font-size:12px;color:rgba(255,253,247,.68);margin-top:3px;font-style:italic}
+.dr-kd{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:2px 8px;color:var(--ink);background:var(--c,var(--paper));white-space:nowrap;
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.dr-link{position:absolute;top:50%;right:8px;transform:translateY(-50%);width:26px;height:26px;
+  display:grid;place-items:center;color:rgba(255,253,247,.5);text-decoration:none;opacity:0;
+  transition:opacity .15s}
+.dr:hover .dr-link,.dr-link:focus-visible{opacity:1}
+.dr-link:hover{color:var(--hot)}
+.dr-link svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:square}
+.dr-link.ok::after{content:attr(data-ok);position:absolute;right:0;top:100%;white-space:nowrap;
+  background:var(--hot);color:var(--ink);font-size:10px;font-weight:700;padding:2px 7px;
+  letter-spacing:.06em;text-transform:uppercase;z-index:5}
+
+/* lu : la ligne s'éteint et prend la couleur de l'univers, sans tampon —
+   un tampon par ligne, 533 fois, serait un mur de bruit */
+.dr.done{background:color-mix(in srgb,var(--uni) 11%,rgba(13,11,18,.5));
+  border-left-color:var(--uni)}
+.dr.done .dr-tt{color:rgba(255,253,247,.64)}
+.dr.done .dr-kd{opacity:.5}
+.dr.done .dr-dt{color:rgba(255,253,247,.52)}
+
+/* le repère écran : un jalon, pas une lecture. Bande transversale, pas de
+   case, hors progression — il dit où le film ou la série se place. */
+.dscreen{display:grid;grid-template-columns:34px 104px minmax(0,1fr) auto;align-items:center;
+  gap:12px;margin:9px 0;padding:7px 10px;background:color-mix(in srgb,var(--k-screen) 15%,var(--ink));
+  border-top:2px solid var(--k-screen);border-bottom:2px solid var(--k-screen)}
+.dscreen[hidden]{display:none}
+.dscreen .ic{display:grid;place-items:center;color:var(--k-screen)}
+.dscreen .ic svg{width:15px;height:15px;fill:currentColor}
+.dscreen .dr-dt{color:var(--k-screen)}
+.dscreen .dr-tt{font-size:18px;color:rgba(255,253,247,.92)}
+.dscreen .dr-kd{background:var(--k-screen)}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
+.empty[hidden]{display:none}
+
+/* ══ révélation au défilement ══════════════════════════════════════
+   Seules les bandes d'ère sont animées. Attacher une animation liée au
+   défilement à 596 lignes, c'est 596 timelines à composer : la page rame
+   là où elle doit justement défiler vite. */
+@supports (animation-timeline: view()){
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  @keyframes riseTitle{from{transform:translateY(18px)}to{transform:translateY(-10px)}}
+  .map .lay1{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .map .lay2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+  .map .wrap{animation:riseTitle linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72)}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ Grogu : le retour en haut ═════════════════════════════════════ */
+#totop{position:fixed;right:16px;bottom:78px;z-index:75;width:96px;height:96px;padding:0;
+  background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
+  transform:translateY(10px);transition:opacity .2s,transform .2s}
+#totop.on{opacity:1;pointer-events:auto;transform:none}
+#totop span{position:relative;display:block;width:96px;height:96px}
+#totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#totop .hv{opacity:0}
+#totop:hover .nl{opacity:0}
+#totop:hover .hv{opacity:1}
+
+/* ══ barre de bas d'écran, dépliable : où j'en suis ═════════════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--ink);
+  border-top:2px solid var(--paper)}
+.hud-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;width:100%;
+  max-width:1280px;margin:0 auto;background:none;border:0;color:inherit;font:inherit;
+  cursor:pointer;text-align:left;padding:9px 20px;
+  padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+.hud.open .hud-bar{padding-bottom:9px}
+.hud-bar b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud-bar b em{font-style:normal;color:var(--uni)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:110px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--uni);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.hud-bar .ch{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;margin-left:auto}
+.hud.open .hud-bar .ch{transform:rotate(180deg)}
+.hud-panel{border-top:2px solid var(--line);
+  padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.hud-panel[hidden]{display:none}
+.hud-in{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;
+  align-items:center;gap:4px}
+.pacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:7px;background:none;border:2px solid var(--line);
+  color:var(--paper);font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--paper)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square}
+.btn.danger{color:#ff8f8f;border-color:rgba(255,143,143,.5)}
+.btn.danger:hover{border-color:#ff8f8f}
+.phint{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:14px;
+  text-align:center;font-size:12.5px;color:rgba(255,253,247,.72)}
+.phint svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2;
+  stroke-linecap:square;margin-top:1px}
+.phint b{color:var(--paper)}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+  .sieve{position:static}
+  .map{scroll-margin-top:60px}
+  .dr{scroll-margin-top:66px}
+}
+@media(max-width:820px){
+  /* la ligne se replie en trois étages : la case et le numéro tiennent la
+     colonne de gauche, puis la date, le titre, et le type sous lui — c'est
+     l'ordre de lecture, du repère chronologique à la nature de l'œuvre */
+  .dr{grid-template-columns:30px minmax(0,1fr);gap:6px 10px;padding-right:36px}
+  .dr-n{grid-row:2;text-align:center;font-size:13px}
+  .dr-dt{grid-column:2;font-size:16px}
+  .dr-main{grid-column:2}
+  .dr-kd{grid-column:2;justify-self:start;margin-bottom:1px}
+  .dr-tt{font-size:18px}
+  .dscreen{grid-template-columns:26px minmax(0,1fr);gap:4px 10px}
+  .dscreen .dr-dt{grid-column:2}
+  .dscreen .dr-kd{grid-column:2;justify-self:start}
+  .dscreen .ic{grid-row:1/3}
+}
+@media(max-width:720px){
+  .stats .s{padding:8px 10px}
+  .stats b{font-size:21px}
+  .stats span{font-size:8.5px;letter-spacing:.04em}
+  .foot{grid-template-columns:1fr}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+  .sieve .last{margin-left:0}
+  #totop{width:74px;height:74px;bottom:74px}
+  #totop span{width:74px;height:74px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .start em{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#body">Skip to content</a>
+
 <header>
-  <nav class="nav" aria-label="Navigation">
-    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
-    <div class="nav-links">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.png" alt="Chronologeek — Geek Timelines"/></a>
+    <nav class="nav-links" aria-label="Navigation">
       <a href="/">Home</a>
-      <a href="/deep-dives/" class="doss">Deep Dives</a>
+      <a href="/deep-dives/" class="doss" aria-current="page">Deep Dives</a>
       <a href="/starwars">Star Wars</a>
       <a href="/marvel">Marvel</a>
       <a href="/dc">DC</a>
       <a href="/avatar">Avatar</a>
       <a href="/upcoming" class="upc">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
-    </div>
-    <div class="nav-sp"></div>
+    </nav>
     <div class="nav-tools">
       <a class="icon-btn lang-btn" href="/fr/dossiers/star-wars" aria-label="Passer en français" title="Passer en français">
         <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
       </a>
-      <button class="icon-btn burger" aria-label="Open menu" aria-expanded="false">
+      <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
+    <a href="/">Home</a><a href="/deep-dives/" class="doss" aria-current="page">Deep Dives</a>
+    <a href="/starwars">Star Wars</a><a href="/marvel">Marvel</a><a href="/dc">DC</a><a href="/avatar">Avatar</a>
+    <a href="/upcoming" class="upc">Upcoming</a><a href="/whats-new" class="news">What's New</a>
   </nav>
 </header>
-<div class="subbar"><div class="subbar-in">
-  <div class="search">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <label class="skip" for="q">Search the timeline</label>
-    <input id="q" type="search" placeholder="Search…  ( / )" autocomplete="off"/>
-    <button class="search-clear" id="q-clear" aria-label="Clear search">✕</button>
-  </div>
-  <div class="sub-sp"></div>
-  <button class="toggle" id="hide-done" aria-pressed="false">
-    <span class="sw" aria-hidden="true"></span><span class="lbl">Hide read</span>
-  </button>
-  <div class="mini">
-    <span class="live" aria-hidden="true"></span>
-    <span class="mini-num" id="mini-num">0/533</span>
-    <div class="mini-track"><div class="mini-fill" id="mini-fill"></div></div>
-  </div>
-</div></div>
-<main class="shell" id="main">
-  <a class="crumb" href="/deep-dives/">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Deep Dives</a>
-  <div class="page-head">
-    <h1><span class="u">Star Wars Deep Dive</span> — Novels &amp; Comics</h1>
-    <p class="sub">The complete reading order for canon Star Wars novels, young-reader books and comics, placed within the movie and show chronology.</p>
-    <p class="upd"><span class="dot"></span> 533 entries · 63 on-screen markers</p>
-  </div>
-  <div class="stats"><div class="s"><b>58</b><span>Novels</span></div><div class="s"><b>30</b><span>Young adult novels</span></div><div class="s"><b>436</b><span>Comics</span></div><div class="s"><b>9</b><span>Audiobooks</span></div></div>
 
-  <section class="prog" aria-labelledby="prog-h">
-    <h2 id="prog-h" class="skip">My progress</h2>
-    <p class="prog-head">My progress · <em>Star Wars Deep Dive</em></p>
-    <div class="prog-top">
-      <div class="prog-nums">
-        <div class="stat-big"><div class="v"><span id="n-done">0</span><span class="u" id="n-total">/ 533</span></div><div class="l">Read</div></div>
-        <div class="stat-big accent"><div class="v"><span id="n-left">533</span></div><div class="l">Left to read</div></div>
-        <div class="stat-big"><div class="v"><span id="n-pct">0</span><span class="u">%</span></div><div class="l">Done</div></div>
-      </div>
-      <div class="prog-acts">
-        <button class="btn primary" data-resume><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Resume</button>
-        <button class="btn" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export</button>
-        <button class="btn" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Import</button>
-        <input type="file" id="import-file" accept="application/json" hidden/>
-        <button class="btn danger" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Reset</button>
-      </div>
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <a class="crumb" href="/deep-dives/">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All Deep Dives</a>
+    <span class="tag">Beyond the timeline</span>
+    <!-- Trois lignes, jamais deux mots coupés : « Dossier Star / Wars » se
+         produisait dès que la ligne manquait de place. Le titre décide de
+         ses ruptures au lieu de les subir. -->
+    <h1 class="disp off">Deep Dive<span>Star Wars</span><span class="sub">Novels &amp; Comics</span></h1>
+    <p class="dek">The complete reading order for canon Star Wars novels, young-reader
+      books and comics, placed within the movie and show chronology.</p>
+    <p class="upd"><i aria-hidden="true"></i> 533 entries · 63 on-screen markers</p>
+    <div class="stats">
+      <div class="s"><b>58</b><span>Novels</span></div>
+      <div class="s"><b>30</b><span>Young adult novels</span></div>
+      <div class="s"><b>436</b><span>Comics</span></div>
+      <div class="s"><b>9</b><span>Audiobooks</span></div>
+      <div class="s"><b id="s-tot">533</b><span>Entries</span></div>
     </div>
-    <div class="bar"><i id="bar"></i></div>
-    <p class="prog-hint">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Your progression is saved in this browser — use <b>Export</b> to keep a backup or import on another device or browser
-    </p>
-  </section>
+    <button class="start" id="start" type="button">Start <em>▸</em></button>
+  </div>
+</section>
 
-  <div class="intro" id="intro"></div>
+<main id="body">
 
-  <details class="fp">
-    <summary><span class="fp-title">Filters</span>
-      <span class="fp-count" id="fp-count">533 / 533 shown</span>
-      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-    <div class="fp-body">
-      <div class="fp-sec"><div class="fp-sec-head"><span class="fp-sec-lab">Media types</span>
-        <span class="fp-bulk"><button type="button" data-bulk="all">all</button><button type="button" data-bulk="none">none</button></span></div>
-        <div class="fp-row" id="f-types"></div></div>
+  <div class="wrap"><div class="intro" id="intro"></div></div>
+
+  <div class="sieve"><div class="wrap" id="sieve">
+    <div class="search" id="searchbox">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="skip" for="q">Search the timeline</label>
+      <input id="q" type="search" placeholder="Search… ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Clear search">✕</button>
     </div>
-    <div class="fp-marks"><span class="fp-marks-lab">Markers</span>
-      <span style="font-size:.78rem;color:var(--muted2)">▶ On screen — where the movies and shows fall. Not counted in your progress.</span></div>
-  </details>
+    <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
+    <button class="last" type="button" id="hide-done" aria-pressed="false">Hide read</button>
+    <span class="fcount" id="fcount">533 / 533 shown</span>
+    <!-- la barre dit le volume de chaque ère, les boutons dessous les nomment -->
+    <div class="rail" id="rail" aria-hidden="true"></div>
+    <nav class="eranav" id="eranav" aria-label="Jump to an era"></nav>
+  </div></div>
 
-  <nav class="rail" id="rail" aria-label="Jump to an era"></nav>
+  <!-- La légende des repères ne colle pas : elle se lit une fois, en entrant.
+       Ce qui reste sous la main pendant qu'on parcourt 533 lignes, c'est la
+       recherche, les filtres et le rail — rien d'autre ne mérite de manger
+       le haut de l'écran. -->
+  <div class="marksbar"><div class="wrap">
+    <span class="lab">Markers</span>
+    <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+      On screen — where the movies and shows fall. Not counted in your progress.</span>
+  </div></div>
+
   <div id="timeline"></div>
-  <div class="empty" id="empty">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <h3>Nothing matches <span id="empty-q"></span></h3>
-    <p>Try another spelling, or bring back the filters you turned off.</p>
-    <button class="btn" id="clear-filters">Clear everything</button>
-  </div>
+  <div class="wrap"><p class="empty" id="empty" hidden></p></div>
 </main>
+
 <footer>
   <div class="foot">
-    <div class="about"><h4>Chronologeek</h4><p>Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.</p></div>
+    <div>
+      <h4>Chronologeek — Geek Timelines</h4>
+      <p>Timelines for the universes worth getting lost in.
+        Every medium, chronological order, spoiler-free. Built and maintained
+        by one person who watches everything twice.</p>
+    </div>
     <div><h4>Timelines</h4><ul>
       <li><a href="/starwars">Star Wars</a></li>
       <li><a href="/marvel">Marvel — MCU</a></li>
@@ -133,33 +631,459 @@
     </ul></div>
     <div><h4>More</h4><ul>
       <li><a href="/upcoming">Upcoming releases</a></li>
-      <li><a href="/whats-new">What's new</a></li>
+      <li><a href="/whats-new">What's New</a></li>
       <li><a href="#">Support the site</a></li>
       <li><a href="#">Contact</a></li>
     </ul></div>
     <div class="legal">
       This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
-      API but is not endorsed or certified by TMDB. Book data from <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
-      Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.
-      <br/>© 2026 Chronologeek — <a href="/">chronologeek.app</a>
+      API but is not endorsed or certified by TMDB. Book data from
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC and Avatar
+      are trademarks of their respective owners; Chronologeek
+      is an independent fan project.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
     </div>
   </div>
 </footer>
+
 <button id="totop" aria-label="Back to top" title="Back to top">
-  <img class="nl" src="/images/grogu.png" alt=""/>
-  <img class="hv" src="/images/grogumouseover.png" alt=""/>
+  <span><img class="nl" src="/images/grogu.png" alt=""/><img class="hv" src="/images/grogumouseover.png" alt=""/></span>
 </button>
 
+<div class="hud" id="hud">
+  <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
+    <b><em id="k-on">0</em> / <span id="k-tot">533</span></b>
+    <span class="lbl">read</span>
+    <span class="bar"><i id="k-fill"></i></span>
+    <span class="lbl">Left to read <b style="font-size:14px" id="k-left">533</b></span>
+    <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <div class="hud-in">
+      <div class="pacts">
+        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export</button>
+        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Import</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Reset</button>
+      </div>
+      <p class="phint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Your progression is saved in this browser — use <b>Export</b> to keep a backup or import on another device or browser</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="/data/dossier-star-wars-en.js"></script>
 <script>
-window.CG_DATA = {"eras":[{"title":"THE HIGH REPUBLIC ERA","items":[{"kind":"it","k":"roman","c":"#a78bfa","id":"382-bby-the-high-republic-convergence","date":"382 BBY","title":"The High Republic : Convergence","type":"Novel","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"382-bby-the-high-republic-quest-for-the-hidden-city","date":"382 BBY","title":"The High Republic : Quest for the Hidden City","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"382-bby-the-high-republic-path-of-deceit","date":"382 BBY","title":"The High Republic : Path of Deceit","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-adventures-quest-of-the-jedi","date":"382 BBY","title":"The High Republic Adventures : Quest of the Jedi","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-the-blade-1-4","date":"382 BBY","title":"The High Republic : The Blade 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-adventures-2022-1-4","date":"382 BBY","title":"The High Republic Adventures (2022) 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"382-bby-the-high-republic-the-battle-of-jedha","date":"382 BBY","title":"The High Republic : The Battle of Jedha","type":"Audio","vo":false,"note":"audio drama, script published as a book"},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-2022-peace-and-unity","date":"382 BBY","title":"The High Republic (2022) : Peace and Unity","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-2022-1-5","date":"382 BBY","title":"The High Republic (2022) 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-adventures-2022-5-8","date":"382 BBY","title":"The High Republic Adventures (2022) 5-8","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-2022-6-9","date":"382 BBY","title":"The High Republic (2022) 6-9","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"382-bby-the-high-republic-path-of-vengeance","date":"382 BBY","title":"The High Republic : Path of Vengeance","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"382-bby-the-high-republic-2022-10","date":"382 BBY","title":"The High Republic (2022) 10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"382-bby-the-high-republic-cataclysm","date":"382 BBY","title":"The High Republic : Cataclysm","type":"Novel","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"382-bby-the-high-republic-quest-for-planet-x","date":"382 BBY","title":"The High Republic : Quest for Planet X","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"362-bby-the-high-republic-adventures-pathfinders-1-6","date":"362 BBY","title":"The High Republic Adventures : Pathfinders 1-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"247-232-bby-the-high-republic-adventures-annual-2021-set-f-63ab95","date":"~247-232 BBY","title":"The High Republic Adventures Annual 2021 : Set for Life","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"233-bby-the-high-republic-adventures-annual-2021-first-mis-2050d6","date":"~233 BBY","title":"The High Republic Adventures Annual 2021 : First Mission","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"232-bby-the-high-republic-into-the-dark","date":"232 BBY","title":"The High Republic : Into the Dark","type":"Young adult novel","vo":false,"note":"before and during The High Republic: Light of the Jedi"},{"kind":"it","k":"roman","c":"#a78bfa","id":"232-bby-the-high-republic-light-of-the-jedi","date":"232 BBY","title":"The High Republic : Light of the Jedi","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"232-bby-star-wars-adventures-2020-6-tales-of-villainy-the--c54358","date":"232 BBY","title":"Star Wars Adventures (2020) 6 : Tales of Villainy - The Gaze Electric","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"232-bby-the-high-republic-adventures-2021-1-2","date":"232 BBY","title":"The High Republic Adventures (2021) 1-2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"232-bby-the-high-republic-a-test-of-courage","date":"232 BBY","title":"The High Republic : A Test of Courage","type":"Young adult novel","vo":false,"note":"during The High Republic: Light of the Jedi"},{"kind":"it","k":"comic","c":"#fb923c","id":"232-bby-the-high-republic-2021-1","date":"232 BBY","title":"The High Republic (2021) 1","type":"Comic","vo":false,"note":"during The High Republic: Light of the Jedi"},{"kind":"it","k":"comic","c":"#fb923c","id":"232-bby-the-high-republic-adventures-2021-3-5","date":"232 BBY","title":"The High Republic Adventures (2021) 3-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"232-bby-the-high-republic-2021-2-5","date":"232 BBY","title":"The High Republic (2021) 2-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-adventures-2021-6-7","date":"231 BBY","title":"The High Republic Adventures (2021) 6-7","type":"Comic","vo":false,"note":"during The High Republic: The Rising Storm"},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-2021-6","date":"231 BBY","title":"The High Republic (2021) 6","type":"Comic","vo":false,"note":"during The High Republic: The Rising Storm"},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-adventures-the-monster-of-temple-4f5d84","date":"231 BBY","title":"The High Republic Adventures : The Monster of Temple Peak 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"231-bby-the-high-republic-the-rising-storm","date":"231 BBY","title":"The High Republic : The Rising Storm","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-2021-7","date":"231 BBY","title":"The High Republic (2021) 7","type":"Comic","vo":false,"note":"during The High Republic: The Rising Storm"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"231-bby-the-high-republic-race-to-crashpoint-tower","date":"231 BBY","title":"The High Republic : Race to Crashpoint Tower","type":"Young adult novel","vo":false,"note":"during The High Republic: The Rising Storm"},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-adventures-free-comic-book-day-2-8f3ee0","date":"231 BBY","title":"The High Republic Adventures Free Comic Book Day 2021","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-2021-8","date":"231 BBY","title":"The High Republic (2021) 8","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-trail-of-shadows-1","date":"231 BBY","title":"The High Republic : Trail of Shadows 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-adventures-2021-8-10","date":"231 BBY","title":"The High Republic Adventures (2021) 8-10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"231-bby-the-high-republic-out-of-the-shadows","date":"231 BBY","title":"The High Republic : Out of the Shadows","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"231-bby-the-high-republic-tempest-runner","date":"231 BBY","title":"The High Republic : Tempest Runner","type":"Audio","vo":false,"note":"audio drama, script published as a book"},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-trail-of-shadows-2","date":"231 BBY","title":"The High Republic : Trail of Shadows 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-2021-9-11","date":"231 BBY","title":"The High Republic (2021) 9-11","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"231-bby-the-high-republic-adventures-annual-2021-the-haul","date":"231 BBY","title":"The High Republic Adventures Annual 2021 : The Haul","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-galactic-bake-off-spe-d78c56","date":"230 BBY","title":"The High Republic Adventures: Galactic Bake-Off Spectacular","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-trail-of-shadows-3","date":"230 BBY","title":"The High Republic : Trail of Shadows 3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-2021-11","date":"230 BBY","title":"The High Republic Adventures (2021) 11","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-annual-2021-crash-and-97ee67","date":"230 BBY","title":"The High Republic Adventures Annual 2021 : Crash and the Crew Do What They Do","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-annual-2021-no-stone--d37b05","date":"230 BBY","title":"The High Republic Adventures Annual 2021 : No Stone Unturned","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"230-bby-the-high-republic-midnight-horizon","date":"230 BBY","title":"The High Republic : Midnight Horizon","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-2021-12","date":"230 BBY","title":"The High Republic Adventures (2021) 12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"230-bby-the-high-republic-the-fallen-star","date":"230 BBY","title":"The High Republic : The Fallen Star","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-2021-12-14","date":"230 BBY","title":"The High Republic (2021) 12-14","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-2021-13","date":"230 BBY","title":"The High Republic Adventures (2021) 13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-trail-of-shadows-4","date":"230 BBY","title":"The High Republic : Trail of Shadows 4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-2021-15","date":"230 BBY","title":"The High Republic (2021) 15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-free-comic-book-day-2023-all-ages-starlight-coda","date":"230 BBY","title":"Free Comic Book Day 2023 : All Ages - Starlight Coda","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-trail-of-shadows-5","date":"230 BBY","title":"The High Republic : Trail of Shadows 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-shadows-of-starlight-1-4","date":"230 BBY","title":"The High Republic : Shadows of Starlight 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-eye-of-the-storm-1-2","date":"230 BBY","title":"The High Republic: Eye of the Storm 1-2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"230-bby-the-high-republic-adventures-the-nameless-terror-1-74a225","date":"230 BBY","title":"The High Republic Adventures – The Nameless Terror 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"229-bby-revelations-2023-all-the-republic","date":"229 BBY","title":"Revelations (2023) : All the Republic","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"229-bby-the-high-republic-escape-from-valo","date":"229 BBY","title":"The High Republic : Escape from Valo","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"229-bby-the-high-republic-the-eye-of-darkness","date":"229 BBY","title":"The High Republic : The Eye of Darkness","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"229-bby-the-high-republic-adventures-2023-1-2","date":"229 BBY","title":"The High Republic Adventures (2023) 1-2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"229-bby-the-high-republic-adventures-crash-landing","date":"229 BBY","title":"The High Republic Adventures: Crash Landing","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-3-6","date":"228 BBY","title":"The High Republic Adventures (2023) 3-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"228-bby-the-high-republic-defy-the-storm","date":"228 BBY","title":"The High Republic : Defy the Storm","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-7-8","date":"228 BBY","title":"The High Republic Adventures (2023) 7-8","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-crash-and-burn","date":"228 BBY","title":"The High Republic Adventures: Crash and Burn","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-9-10","date":"228 BBY","title":"The High Republic Adventures (2023) 9-10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"228-bby-the-high-republic-temptation-of-the-force","date":"228 BBY","title":"The High Republic : Temptation of the Force","type":"Novel","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"228-bby-the-high-republic-tears-of-the-nameless","date":"228 BBY","title":"The High Republic : Tears of the Nameless","type":"Young adult novel","vo":false,"note":"prologue during The High Republic: Temptation of the Force"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"228-bby-the-high-republic-beware-the-nameless","date":"228 BBY","title":"The High Republic : Beware the Nameless","type":"Young adult novel","vo":false,"note":"during The High Republic: Tears of the Nameless"},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-echoes-of-fear-1-4","date":"228 BBY","title":"The High Republic Adventures – Echoes of Fear 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-saber-for-hire-1-4","date":"228 BBY","title":"The High Republic Adventures – Saber for Hire 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-2023-1-10","date":"228 BBY","title":"The High Republic (2023) 1-10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"228-bby-the-high-republic-tempest-breaker","date":"228 BBY","title":"The High Republic : Tempest Breaker","type":"Audio","vo":false,"note":"audio drama, script published as a book"},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-phase-iii-annual","date":"228 BBY","title":"The High Republic Adventures Phase III Annual","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-11","date":"228 BBY","title":"The High Republic Adventures (2023) 11","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-dispatches-from-the-o-4a863b","date":"228 BBY","title":"The High Republic Adventures: Dispatches from the Occlusion Zone 1-2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-12-13","date":"228 BBY","title":"The High Republic Adventures (2023) 12-13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-dispatches-from-the-o-82878a","date":"228 BBY","title":"The High Republic Adventures: Dispatches from the Occlusion Zone 3-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"228-bby-the-high-republic-into-the-light","date":"228 BBY","title":"The High Republic : Into the Light","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"228-bby-the-high-republic-trials-of-the-jedi","date":"228 BBY","title":"The High Republic : Trials of the Jedi","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-phase-iii-the-wedding-3657a0","date":"228 BBY","title":"The High Republic Adventures Phase III : The Wedding Spectacular","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-14-15","date":"228 BBY","title":"The High Republic Adventures (2023) 14-15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-phase-iii-the-battle--d606e0","date":"228 BBY","title":"The High Republic Adventures Phase III : The Battle of Eriadu","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-fear-of-the-jedi-1-2","date":"228 BBY","title":"The High Republic : Fear of the Jedi 1-2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-16","date":"228 BBY","title":"The High Republic Adventures (2023) 16","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-fear-of-the-jedi-3-5","date":"228 BBY","title":"The High Republic : Fear of the Jedi 3-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-17","date":"228 BBY","title":"The High Republic Adventures (2023) 17","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"228-bby-the-high-republic-a-valiant-vow","date":"228 BBY","title":"The High Republic : A Valiant Vow","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-18-20","date":"228 BBY","title":"The High Republic Adventures (2023) 18-20","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-the-finale","date":"228 BBY","title":"The High Republic : The Finale","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"149-bby-the-acolyte-kelnacca","date":"149 BBY","title":"The Acolyte : Kelnacca","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"148 BBY","title":"THE ACOLYTE — EPISODES 1-2","type":"On screen"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"134-bby-the-acolyte-the-crystal-crown","date":"134 BBY","title":"The Acolyte : The Crystal Crown","type":"Young adult novel","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"132 BBY","title":"THE ACOLYTE — EPISODES 3-8","type":"On screen"}]},{"title":"THE REPUBLIC ERA","items":[{"kind":"it","k":"comic","c":"#fb923c","id":"48-bby-revelations-2023-showdown-at-ocean-s-deep","date":"48 BBY","title":"Revelations (2023) : Showdown at Ocean&#x27;s Deep","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"48-bby-mace-windu","date":"48 BBY","title":"Mace Windu","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"41-bby-padawan","date":"41 BBY","title":"Padawan","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"40-bby-master-apprentice","date":"40 BBY","title":"Master &amp; Apprentice","type":"Novel","vo":false,"note":"epilogue during Episode I"},{"kind":"it","k":"comic","c":"#fb923c","id":"37-bby-age-of-republic-qui-gon-jinn","date":"37 BBY","title":"Age of Republic : Qui-Gon Jinn","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-bby-age-of-republic-special-the-weapon","date":"34 BBY","title":"Age of Republic Special : The Weapon","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"33-bby-the-living-force","date":"33 BBY","title":"The Living Force","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-bby-darth-maul-2017-1-5","date":"33 BBY","title":"Darth Maul (2017) 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-bby-jango-fett-1","date":"33 BBY","title":"Jango Fett 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-bby-revelations-2023-stolen-hope","date":"33 BBY","title":"Revelations (2023) : Stolen Hope","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-bby-jango-fett-2-4","date":"33 BBY","title":"Jango Fett 2-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-bby-age-of-republic-darth-maul","date":"32 BBY","title":"Age of Republic : Darth Maul","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-bby-hyperspace-stories-qui-gon","date":"32 BBY","title":"Hyperspace Stories : Qui-Gon","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-bby-the-phantom-menace-25th-anniversary-special","date":"32 BBY","title":"The Phantom Menace 25th Anniversary Special","type":"Comic","vo":false,"note":"during Episode I"},{"kind":"screen","c":"#64b5f6","date":"32 BBY","title":"EPISODE I: THE PHANTOM MENACE","type":"On screen"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"32-bby-queen-s-peril","date":"32 BBY","title":"Queen&#x27;s Peril","type":"Young adult novel","vo":false,"note":"before and during Episode I, epilogue during Episode IV"},{"kind":"it","k":"comic","c":"#fb923c","id":"32-bby-darth-maul-2017-probe-droid-problem","date":"32 BBY","title":"Darth Maul (2017) : Probe Droid Problem","type":"Comic","vo":false,"note":"during Episode I"},{"kind":"it","k":"roman","c":"#a78bfa","id":"32-bby-mace-windu-the-glass-abyss","date":"32 BBY","title":"Mace Windu : The Glass Abyss","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-29-bby-age-of-republic-obi-wan-kenobi","date":"~32-29 BBY","title":"Age of Republic : Obi-Wan Kenobi","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"29-bby-obi-wan-and-anakin-1-5","date":"29 BBY","title":"Obi-Wan and Anakin 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"28-bby-queen-s-shadow","date":"28 BBY","title":"Queen&#x27;s Shadow","type":"Young adult novel","vo":false,"note":"prologue during Episode I, epilogue during Episode III"},{"kind":"it","k":"comic","c":"#fb923c","id":"26-bby-age-of-republic-count-dooku","date":"26 BBY","title":"Age of Republic : Count Dooku","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"23-bby-age-of-republic-jango-fett","date":"23 BBY","title":"Age of Republic : Jango Fett","type":"Comic","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"23-bby-dooku-jedi-lost","date":"23 BBY","title":"Dooku : Jedi Lost","type":"Audio","vo":false,"note":"audio drama, script published as a book"},{"kind":"screen","c":"#64b5f6","date":"22 BBY","title":"EPISODE II: ATTACK OF THE CLONES","type":"On screen"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"22-bby-queen-s-hope","date":"22 BBY","title":"Queen&#x27;s Hope","type":"Young adult novel","vo":false,"note":"during and after Episode II"}]},{"title":"THE CLONE WARS","items":[{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-jar-jar","date":"22 BBY","title":"Jar Jar","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-jedi-of-the-republic-mace-windu-1-5","date":"22 BBY","title":"Jedi of the Republic : Mace Windu 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"22-bby-brotherhood","date":"22 BBY","title":"Brotherhood","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-20-bby-hyperspace-stories-grievous","date":"22-20 BBY","title":"Hyperspace Stories : Grievous","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-hyperspace-stories-11","date":"22 BBY","title":"Hyperspace Stories 11","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-hyperspace-stories-1","date":"22 BBY","title":"Hyperspace Stories 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-hyperspace-stories-5","date":"22 BBY","title":"Hyperspace Stories 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-age-of-republic-special-501-plus-one","date":"22 BBY","title":"Age of Republic Special : 501 Plus One","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-star-wars-adventures-the-clone-wars-battle-tales-1--ddb091","date":"22 BBY","title":"Star Wars Adventures : The Clone Wars - Battle Tales 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-age-of-republic-anakin-skywalker","date":"22 BBY","title":"Age of Republic : Anakin Skywalker","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"22 BBY","title":"THE CLONE WARS — THE MOVIE","type":"On screen"},{"kind":"screen","c":"#64b5f6","date":"21 BBY","title":"THE CLONE WARS — S3E2 · ARC TROOPERS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"21-bby-hyperspace-stories-10","date":"21 BBY","title":"Hyperspace Stories 10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"21-bby-hyperspace-stories-the-bad-batch-ghost-agents-1-5","date":"21 BBY","title":"Hyperspace Stories : The Bad Batch - Ghost Agents 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"21-bby-hyperspace-stories-the-bad-batch-rogue-agents-1-4","date":"21 BBY","title":"Hyperspace Stories : The Bad Batch - Rogue Agents 1-4","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"21 BBY","title":"THE CLONE WARS — S1E22 · HOSTAGE CRISIS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"21-bby-star-wars-adventures-2020-12-tales-of-villainy-give-ba86cf","date":"21 BBY","title":"Star Wars Adventures (2020) 12 : Tales of Villainy - Give &amp; Take","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"20 BBY","title":"THE CLONE WARS — S4E10 · CARNAGE OF KRELL","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"20-bby-age-of-republic-general-grievous","date":"20 BBY","title":"Age of Republic : General Grievous","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"19 BBY","title":"THE CLONE WARS — S5E14 · EMINENCE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-star-wars-adventures-2020-3-tales-of-villainy-the-h-95cd34","date":"19 BBY","title":"Star Wars Adventures (2020) 3 : Tales of Villainy - The Hostage","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"19 BBY","title":"THE CLONE WARS — S5E18 · THE JEDI WHO KNEW TOO MUCH","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-age-of-republic-special-sisters","date":"19 BBY","title":"Age of Republic Special : Sisters","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"19 BBY","title":"THE CLONE WARS — S6E13 · SACRIFICE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"21-19-bby-hyperspace-stories-9","date":"~21-19 BBY","title":"Hyperspace Stories 9","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-darth-maul-son-of-dathomir-1-4","date":"19 BBY","title":"Darth Maul : Son of Dathomir 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"19-bby-dark-disciple","date":"19 BBY","title":"Dark Disciple","type":"Novel","vo":false,"note":"before and after Darth Maul: Son of Dathomir"},{"kind":"it","k":"comic","c":"#fb923c","id":"22-19-bby-age-of-republic-padm-amidala","date":"~22-19 BBY","title":"Age of Republic : Padmé Amidala","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"19-bby-thrawn-ascendancy-chaos-rising","date":"19 BBY","title":"Thrawn Ascendancy : Chaos Rising","type":"Novel","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"19 BBY","title":"EPISODE III: REVENGE OF THE SITH","type":"On screen"}]},{"title":"THE IMPERIAL ERA","items":[{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-darth-vader-2017-1-5","date":"19 BBY","title":"Darth Vader (2017) 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"19-bby-master-of-evil","date":"19 BBY","title":"Master of Evil","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-darth-vader-2017-6","date":"19 BBY","title":"Darth Vader (2017) 6","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"19 BBY","title":"THE BAD BATCH — S1E6","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-darth-vader-2017-7-12","date":"19 BBY","title":"Darth Vader (2017) 7-12","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"19 BBY","title":"THE BAD BATCH — SEASON 1 FINALE","type":"On screen"},{"kind":"it","k":"roman","c":"#a78bfa","id":"19-bby-reign-of-the-empire-the-mask-of-fear","date":"19 BBY","title":"Reign of the Empire: The Mask of Fear","type":"Novel","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"18 BBY","title":"THE BAD BATCH — S2E13","type":"On screen"},{"kind":"it","k":"roman","c":"#a78bfa","id":"18-bby-sanctuary","date":"18 BBY","title":"Sanctuary","type":"Novel","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"18 BBY","title":"THE BAD BATCH — SERIES FINALE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"18-bby-darth-vader-2017-13-17","date":"18 BBY","title":"Darth Vader (2017) 13-17","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"18-bby-darth-vader-annual-2","date":"18 BBY","title":"Darth Vader Annual 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"18-bby-darth-vader-2017-no-good-deed","date":"18 BBY","title":"Darth Vader (2017) : No Good Deed","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"18-bby-ahsoka","date":"18 BBY","title":"Ahsoka","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"18-bby-thrawn-ascendancy-greater-good","date":"~18 BBY","title":"Thrawn Ascendancy : Greater Good","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"18-bby-thrawn-ascendancy-lesser-evil","date":"18 BBY","title":"Thrawn Ascendancy : Lesser Evil","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"21-17-bby-catalyst-a-rogue-one-novel","date":"21-17 BBY","title":"Catalyst : A Rogue One Novel","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"17-bby-rogue-one-saw-guerrera","date":"17 BBY","title":"Rogue One - Saw Guerrera","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"17-bby-shadow-of-maul-1-5","date":"17 BBY","title":"Shadow of Maul 1-5","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"17 BBY","title":"MAUL: SHADOW LORD","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"15-2-bby-thrawn","date":"15-2 BBY","title":"Thrawn","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"14-bby-lords-of-the-sith","date":"14 BBY","title":"Lords of the Sith","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"14-bby-tarkin","date":"14 BBY","title":"Tarkin","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"14-bby-darth-vader-2017-18-22","date":"14 BBY","title":"Darth Vader (2017) 18-22","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"22-14-bby-inquisitor-rise-of-the-red-blade","date":"22-14 BBY","title":"Inquisitor : Rise of the Red Blade","type":"Novel","vo":false,"note":"during and after Episode II"},{"kind":"screen","c":"#64b5f6","date":"14 BBY","title":"JEDI: FALLEN ORDER","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"14-bby-jedi-fallen-order-dark-temple-1-5","date":"14 BBY","title":"Jedi Fallen Order : Dark Temple 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"13-bby-most-wanted","date":"13 BBY","title":"Most Wanted","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"13-bby-han-solo-imperial-cadet-1-5","date":"13 BBY","title":"Han Solo : Imperial Cadet 1-5","type":"Comic","vo":false,"note":"before and during Solo"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"13-12-bby-crimson-climb","date":"13-12 BBY","title":"Crimson Climb","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"12-11-bby-star-wars-jedi-battle-scars","date":"~12-11 BBY","title":"Star Wars Jedi : Battle Scars","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"12-bby-darth-vader-2017-23-25","date":"12 BBY","title":"Darth Vader (2017) 23-25","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"12-9-bby-inquisitors-1-4","date":"~12-9 BBY","title":"Inquisitors 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"11-bby-lando-s-luck","date":"11 BBY","title":"Lando&#x27;s Luck","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"10-bby-star-wars-adventures-2020-4-tales-of-villainy-credi-fba3b9","date":"10 BBY","title":"Star Wars Adventures (2020) 4 : Tales of Villainy - Credits","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"10-bby-beckett","date":"10 BBY","title":"Beckett","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"10 BBY","title":"SOLO","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"10-bby-lando-double-or-nothing-1-5","date":"10 BBY","title":"Lando : Double or Nothing 1-5","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"9 BBY","title":"OBI-WAN KENOBI","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"8-bby-star-wars-2015-15","date":"8 BBY","title":"Star Wars (2015) 15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"8-bby-star-wars-2015-20","date":"8 BBY","title":"Star Wars (2015) 20","type":"Comic","vo":false,"note":""}]},{"title":"THE REBELLION ERA","items":[{"kind":"screen","c":"#64b5f6","date":"5 BBY","title":"ANDOR — SEASON 1","type":"On screen"},{"kind":"it","k":"audio","c":"#f472b6","id":"5-bby-ezra-s-gamble","date":"5 BBY","title":"Ezra&#x27;s Gamble","type":"Audio","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"5 BBY","title":"STAR WARS REBELS — S1E2 · FIGHTER FLIGHT","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"5-bby-star-wars-rebels-magazine-ring-race","date":"5 BBY","title":"Star Wars Rebels Magazine : Ring Race","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"5 BBY","title":"STAR WARS REBELS — S1E3 · RISE OF THE OLD MASTERS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"5-bby-star-wars-rebels-magazine-learning-patience","date":"5 BBY","title":"Star Wars Rebels Magazine : Learning Patience","type":"Comic","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"5-bby-servants-of-the-empire-rebel-in-the-ranks","date":"5 BBY","title":"Servants of the Empire : Rebel in the Ranks","type":"Audio","vo":false,"note":"before and during the Rebels episode Breaking Ranks"},{"kind":"screen","c":"#64b5f6","date":"5 BBY","title":"STAR WARS REBELS — S1E4 · BREAKING RANKS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"5-bby-star-wars-rebels-magazine-the-fake-jedi","date":"5 BBY","title":"Star Wars Rebels Magazine : The Fake Jedi","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-bby-star-wars-rebels-magazine-kallu-s-hunt","date":"5 BBY","title":"Star Wars Rebels Magazine : Kallu&#x27;s Hunt","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"5 BBY","title":"STAR WARS REBELS — S1E7 · GATHERING FORCES","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-return-of-the-slavers","date":"4 BBY","title":"Star Wars Rebels Magazine : Return of the Slavers","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-eyes-on-the-prize","date":"4 BBY","title":"Star Wars Rebels Magazine : Eyes on the Prize","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-kanan-1-6","date":"4 BBY","title":"Kanan 1-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"11-bby-a-new-dawn","date":"11 BBY","title":"A New Dawn","type":"Novel","vo":false,"note":"prologue during Kanan 7"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-kanan-7-12","date":"4 BBY","title":"Kanan 7-12","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S1E8 · PATH OF THE JEDI","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-sabotaged-supplies","date":"4 BBY","title":"Star Wars Rebels Magazine : Sabotaged Supplies","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S1E9 · IDIOT&#x27;S ARRAY","type":"On screen"},{"kind":"it","k":"audio","c":"#f472b6","id":"4-bby-servants-of-the-empire-imperial-justice","date":"4 BBY","title":"Servants of the Empire : Imperial Justice","type":"Audio","vo":false,"note":"before and during the Rebels episode Vision of Hope"},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S1E10 · VISION OF HOPE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-ezra-s-vision","date":"4 BBY","title":"Star Wars Rebels Magazine : Ezra&#x27;s Vision","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-becoming-hunted","date":"4 BBY","title":"Star Wars Rebels Magazine : Becoming Hunted","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-assessment","date":"4 BBY","title":"Star Wars Rebels Magazine : Assessment","type":"Comic","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"4-bby-servants-of-the-empire-the-secret-academy","date":"4 BBY","title":"Servants of the Empire : The Secret Academy","type":"Audio","vo":false,"note":"before, during and after the Rebels episode Fire Across the Galaxy"},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S1E13 · FIRE ACROSS THE GALAXY","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-senate-perspective","date":"4 BBY","title":"Star Wars Rebels Magazine : Senate Perspective","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-ocean-rescue","date":"4 BBY","title":"Star Wars Rebels Magazine : Ocean Rescue","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-puffer-problems","date":"4 BBY","title":"Star Wars Rebels Magazine : Puffer Problems","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S2E2 · RELICS OF THE OLD REPUBLIC","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-secrets-of-sienar","date":"4 BBY","title":"Star Wars Rebels Magazine : Secrets of Sienar","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S2E5 · WINGS OF THE MASTER","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-no-sympathy","date":"4 BBY","title":"Star Wars Rebels Magazine : No Sympathy","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S2E6 · BLOOD SISTERS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-too-late-to-change","date":"4 BBY","title":"Star Wars Rebels Magazine : Too Late to Change","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-always-bet-on-chop","date":"4 BBY","title":"Star Wars Rebels Magazine : Always Bet on Chop","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 BBY","title":"STAR WARS REBELS — S2E7 · STEALTH STRIKE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-bby-star-wars-rebels-magazine-a-day-s-duty","date":"4 BBY","title":"Star Wars Rebels Magazine : A Day&#x27;s Duty","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 BBY","title":"STAR WARS REBELS — S2E8 · THE FUTURE OF THE FORCE","type":"On screen"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"3-bby-leia-princess-of-alderaan","date":"3 BBY","title":"Leia, Princess of Alderaan","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-ice-breaking","date":"3 BBY","title":"Star Wars Rebels Magazine : Ice Breaking","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-vulnerable-areas","date":"3 BBY","title":"Star Wars Rebels Magazine : Vulnerable Areas","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-size-of-the-fight","date":"3 BBY","title":"Star Wars Rebels Magazine : The Size of the Fight","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 BBY","title":"STAR WARS REBELS — S2E12 · LEGENDS OF THE LASAT","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-academy-cadets","date":"3 BBY","title":"Star Wars Rebels Magazine : Academy Cadets","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 BBY","title":"STAR WARS REBELS — S2E13 · THE CALL","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-escaping-the-scrap-pile","date":"3 BBY","title":"Star Wars Rebels Magazine : Escaping the Scrap Pile","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-ballad-of-264","date":"3 BBY","title":"Star Wars Rebels Magazine : The Ballad of 264","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-off-the-rails","date":"3 BBY","title":"Star Wars Rebels Magazine : Off the Rails","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 BBY","title":"STAR WARS REBELS — S2E14 · HOMECOMING","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-a-time-to-survive","date":"3 BBY","title":"Star Wars Rebels Magazine : A Time to Survive","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-wrong-crowd","date":"3 BBY","title":"Star Wars Rebels Magazine : The Wrong Crowd","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 BBY","title":"STAR WARS REBELS — S2E16 · SHROUD OF DARKNESS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-gangsters-of-galzez","date":"3 BBY","title":"Star Wars Rebels Magazine : The Gangsters of Galzez","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-second-chance","date":"3 BBY","title":"Star Wars Rebels Magazine : The Second Chance","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 BBY","title":"STAR WARS REBELS — S2E18 · THE MYSTERY OF CHOPPER BASE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-thune-cargo","date":"3 BBY","title":"Star Wars Rebels Magazine : The Thune Cargo","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-bby-star-wars-rebels-magazine-the-line-of-duty","date":"3 BBY","title":"Star Wars Rebels Magazine : The Line of Duty","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-rogue-one-cassian-k-2so-special","date":"2 BBY","title":"Rogue One : Cassian &amp; K-2SO Special","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-age-of-rebellion-darth-vader","date":"2 BBY","title":"Age of Rebellion : Darth Vader","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-age-of-rebellion-special-the-long-game","date":"2 BBY","title":"Age of Rebellion Special : The Long Game","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-a-new-legacy-the-grand-imperial-jubilee","date":"2 BBY","title":"A New Legacy : The Grand Imperial Jubilee","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"2 BBY","title":"STAR WARS REBELS — S3E4 · HERA&#x27;S HEROES","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-sons-of-the-sky","date":"2 BBY","title":"Star Wars Rebels Magazine : Sons of the Sky","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"2 BBY","title":"STAR WARS REBELS — S3E6 · IMPERIAL SUPERCOMMANDOS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-a-trooper-s-worth","date":"2 BBY","title":"Star Wars Rebels Magazine : A Trooper&#x27;s Worth","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-divide-and-conquer","date":"2 BBY","title":"Star Wars Rebels Magazine : Divide and Conquer","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"2 BBY","title":"STAR WARS REBELS — S3E9 · AN INSIDE MAN","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-to-thy-metal-heart-be-true","date":"2 BBY","title":"Star Wars Rebels Magazine : To Thy Metal Heart Be True","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-a-youth-unpromising","date":"2 BBY","title":"Star Wars Rebels Magazine : A Youth Unpromising","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"2 BBY","title":"STAR WARS REBELS — S3E10 · VISIONS AND VOICES","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-final-round","date":"2 BBY","title":"Star Wars Rebels Magazine : Final Round","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-fifth-and-final","date":"2 BBY","title":"Star Wars Rebels Magazine : Fifth and Final","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"2 BBY","title":"STAR WARS REBELS — S3E17 · SECRET CARGO","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"2-bby-star-wars-rebels-magazine-the-beast-within","date":"2 BBY","title":"Star Wars Rebels Magazine : The Beast Within","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"2-bby-thrawn-alliances","date":"2 BBY","title":"Thrawn : Alliances","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-1-bby-vader-dark-visions-1","date":"2-1 BBY","title":"Vader : Dark Visions 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-1-bby-vader-dark-visions-3","date":"2-1 BBY","title":"Vader : Dark Visions 3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-target-vader-1-6","date":"1 BBY","title":"Target Vader 1-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"1-bby-the-mighty-chewbacca-in-the-forest-of-fear","date":"1 BBY","title":"The Mighty Chewbacca in the Forest of Fear !","type":"Novel","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"1 BBY","title":"STAR WARS REBELS — S4E4 · IN THE NAME OF THE REBELLION (2)","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-rebels-magazine-never-far-behind","date":"1 BBY","title":"Star Wars Rebels Magazine : Never Far Behind","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"1 BBY","title":"STAR WARS REBELS — S4E8 · CRAWLER COMMANDEERS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-rebels-magazine-crossing-the-line","date":"1 BBY","title":"Star Wars Rebels Magazine : Crossing the Line","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"1-bby-thrawn-treason","date":"1 BBY","title":"Thrawn : Treason","type":"Novel","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"1 BBY","title":"STAR WARS REBELS — SERIES FINALE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-2015-37-the-sand-will-provide","date":"1 BBY","title":"Star Wars (2015) 37 : The Sand Will Provide","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-adventures-2017-25","date":"1 BBY","title":"Star Wars Adventures (2017) 25","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-adventures-tales-from-vader-s-castle-1-3","date":"~1 BBY","title":"Star Wars Adventures : Tales from Vader&#x27;s Castle 1-3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-adventures-free-comic-book-day-2019","date":"~1 BBY","title":"Star Wars Adventures Free Comic Book Day 2019","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-adventures-tales-from-vader-s-castle-4-5","date":"~1 BBY","title":"Star Wars Adventures : Tales from Vader&#x27;s Castle 4-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-adventures-return-to-vader-s-castle-1-5","date":"~1 BBY","title":"Star Wars Adventures : Return to Vader&#x27;s Castle 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-vader-dark-visions-2","date":"~1 BBY","title":"Vader : Dark Visions 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-vader-dark-visions-4-5","date":"~1 BBY","title":"Vader : Dark Visions 4-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-1-hard-shutdown","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 1 - Hard Shutdown","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-1-inescapable","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 1 - Inescapable","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-1-dissolution-of-hope","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 1 - Dissolution of Hope","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-2-the-endless-mercy","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 2 - The Endless Mercy","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-2-power","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 2 - Power","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-3-annihilated","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 3 - Annihilated","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-darth-vader-black-white-red-4-the-inhabitant","date":"~1 BBY","title":"Darth Vader : Black, White &amp; Red 4 - The Inhabitant","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-age-of-rebellion-special-stolen-valor","date":"~1 BBY","title":"Age of Rebellion Special : Stolen Valor","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-star-wars-adventures-2020-5-tales-of-villainy-the-sh-5c30db","date":"~1 BBY","title":"Star Wars Adventures (2020) 5 : Tales of Villainy - The Short Goodbye","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-obi-wan-1-5","date":"1 BBY","title":"Obi-Wan 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"audio","c":"#f472b6","id":"1-bby-guardians-of-the-whills","date":"1 BBY","title":"Guardians of the Whills","type":"Audio","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"13-1-bby-rebel-rising","date":"13-1 BBY","title":"Rebel Rising","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-rogue-one-jyn-erso","date":"1 BBY","title":"Rogue One : Jyn Erso","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-rogue-one-cassian-andor","date":"1 BBY","title":"Rogue One : Cassian Andor","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"1 BBY","title":"ROGUE ONE","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-age-of-rebellion-grand-moff-tarkin","date":"1 BBY","title":"Age of Rebellion : Grand Moff Tarkin","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"1 BBY-0 ABY","title":"EPISODE IV: A NEW HOPE","type":"On screen"},{"kind":"it","k":"roman","c":"#a78bfa","id":"0-aby-battlefront-ii-inferno-squad","date":"0 ABY","title":"Battlefront II : Inferno Squad","type":"Novel","vo":false,"note":"during and after Episode IV"},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-princess-leia-1","date":"0 ABY","title":"Princess Leia 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-age-of-rebellion-han-solo","date":"0 ABY","title":"Age of Rebellion : Han Solo","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-princess-leia-2-5","date":"0 ABY","title":"Princess Leia 2-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-lando-1-5","date":"0 ABY","title":"Lando 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-chewbacca-2015-1-5","date":"0 ABY","title":"Chewbacca (2015) 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-age-of-resistance-special-the-bridge","date":"0 ABY","title":"Age of Resistance Special : The Bridge","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-annual-2015-4","date":"0 ABY","title":"Star Wars Annual (2015) 4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-han-solo-1-5","date":"0 ABY","title":"Han Solo 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"0-aby-heir-to-the-jedi","date":"0 ABY","title":"Heir to the Jedi","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-1-3","date":"0 ABY","title":"Star Wars (2015) 1-3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-1","date":"0 ABY","title":"Darth Vader (2015) 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-25-coda","date":"0 ABY","title":"Darth Vader (2015) 25 : Coda","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-4","date":"0 ABY","title":"Star Wars (2015) 4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-annual-2015-1","date":"0 ABY","title":"Star Wars Annual (2015) 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-2-4","date":"0 ABY","title":"Darth Vader (2015) 2-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-5","date":"0 ABY","title":"Star Wars (2015) 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-5","date":"0 ABY","title":"Darth Vader (2015) 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-6","date":"0 ABY","title":"Star Wars (2015) 6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-6","date":"0 ABY","title":"Darth Vader (2015) 6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-7-12","date":"0 ABY","title":"Star Wars (2015) 7-12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-7-12","date":"0 ABY","title":"Darth Vader (2015) 7-12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-annual-1","date":"0 ABY","title":"Darth Vader Annual 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-a-new-legacy-rogue-s-gambit","date":"0 ABY","title":"A New Legacy : Rogue&#x27;s Gambit","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-vader-down","date":"0 ABY","title":"Vader Down","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-13","date":"0 ABY","title":"Darth Vader (2015) 13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-13","date":"0 ABY","title":"Star Wars (2015) 13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-14","date":"0 ABY","title":"Darth Vader (2015) 14","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-14","date":"0 ABY","title":"Star Wars (2015) 14","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-15","date":"0 ABY","title":"Darth Vader (2015) 15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-16-19","date":"0 ABY","title":"Star Wars (2015) 16-19","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-16-20","date":"0 ABY","title":"Darth Vader (2015) 16-20","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-20-the-misadventure-of-triple-zero--005f4f","date":"0 ABY","title":"Darth Vader (2015) 20 : The Misadventure of Triple-Zero and Beetee","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-2015-21-25","date":"0 ABY","title":"Darth Vader (2015) 21-25","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-darth-vader-black-white-red-3-diplomatic-impunity","date":"0 ABY","title":"Darth Vader : Black, White &amp; Red 3 - Diplomatic Impunity","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-21-30","date":"0 ABY","title":"Star Wars (2015) 21-30","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-annual-2015-2","date":"0 ABY","title":"Star Wars Annual (2015) 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-doctor-aphra-2016-1-6","date":"0 ABY","title":"Doctor Aphra (2016) 1-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-the-screaming-citadel","date":"0 ABY","title":"The Screaming Citadel","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-31","date":"0 ABY","title":"Star Wars (2015) 31","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-doctor-aphra-2016-7","date":"0 ABY","title":"Doctor Aphra (2016) 7","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-star-wars-2015-32","date":"0 ABY","title":"Star Wars (2015) 32","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-doctor-aphra-2016-8","date":"0 ABY","title":"Doctor Aphra (2016) 8","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"0-1-aby-star-wars-2015-33-36","date":"0-1 ABY","title":"Star Wars (2015) 33-36","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-star-wars-annual-2015-3","date":"1 ABY","title":"Star Wars Annual (2015) 3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-star-wars-2015-50-sho-torun-lives","date":"1 ABY","title":"Star Wars (2015) 50 : Sho-Torun Lives","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-star-wars-2015-37","date":"1 ABY","title":"Star Wars (2015) 37","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-doctor-aphra-annual-1","date":"1 ABY","title":"Doctor Aphra Annual 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-doctor-aphra-2016-9-13","date":"1 ABY","title":"Doctor Aphra (2016) 9-13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-doctor-aphra-annual-2","date":"1 ABY","title":"Doctor Aphra Annual 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-doctor-aphra-2016-14-31","date":"1 ABY","title":"Doctor Aphra (2016) 14-31","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-star-wars-2015-38-43","date":"1 ABY","title":"Star Wars (2015) 38-43","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-aby-the-last-jedi-the-storms-of-crait","date":"1 ABY","title":"The Last Jedi : The Storms of Crait","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"1-2-aby-star-wars-2015-44-67","date":"1-2 ABY","title":"Star Wars (2015) 44-67","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-aby-a-new-legacy-for-the-love-of-the-empire","date":"2 ABY","title":"A New Legacy : For the Love of the Empire","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-aby-age-of-rebellion-lando-calrissian","date":"2 ABY","title":"Age of Rebellion : Lando Calrissian","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-aby-age-of-rebellion-jabba-the-hutt","date":"2 ABY","title":"Age of Rebellion : Jabba the Hutt","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-aby-hyperspace-stories-2","date":"2 ABY","title":"Hyperspace Stories 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-aby-star-wars-2015-68-75","date":"2 ABY","title":"Star Wars (2015) 68-75","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"2-aby-doctor-aphra-2016-32-36","date":"2 ABY","title":"Doctor Aphra (2016) 32-36","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-annual-3","date":"3 ABY","title":"Doctor Aphra Annual 3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2016-37-40","date":"3 ABY","title":"Doctor Aphra (2016) 37-40","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-empire-ascendant-epilogue","date":"3 ABY","title":"Empire Ascendant : Epilogue","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-empire-ascendant-an-echo-of-victory","date":"3 ABY","title":"Empire Ascendant : An Echo of Victory","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-age-of-rebellion-boba-fett","date":"~3 ABY","title":"Age of Rebellion : Boba Fett","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-hyperspace-stories-7","date":"~3-4 ABY","title":"Hyperspace Stories 7","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-star-wars-adventures-2020-13-tales-of-villainy-a-l-e67dca","date":"~3-4 ABY","title":"Star Wars Adventures (2020) 13 : Tales of Villainy - A Last Chapter","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-empire-ascendant-in-service-of-the-empire","date":"~3 ABY","title":"Empire Ascendant : In Service of the Empire","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-empire-ascendant-two-sides-to-every-sortie","date":"~3 ABY","title":"Empire Ascendant : Two Sides to Every Sortie","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-yoda-1-10","date":"3 ABY","title":"Yoda 1-10","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"3 ABY","title":"EPISODE V: THE EMPIRE STRIKES BACK","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-adventures-2020-1-tales-of-villainy-invasi-312447","date":"3 ABY","title":"Star Wars Adventures (2020) 1 : Tales of Villainy - Invasion of Echo Base","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-age-of-rebellion-special-the-trial-of-dagobah","date":"3 ABY","title":"Age of Rebellion Special : The Trial of Dagobah","type":"Comic","vo":false,"note":"during Episode V"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-1","date":"3 ABY","title":"Darth Vader (2020) 1","type":"Comic","vo":false,"note":"during Episode V"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-1-2","date":"3 ABY","title":"Star Wars (2020) 1-2","type":"Comic","vo":false,"note":"during Episode V"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-3-6","date":"3 ABY","title":"Star Wars (2020) 3-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-2-11","date":"3 ABY","title":"Darth Vader (2020) 2-11","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-1-6","date":"3 ABY","title":"Bounty Hunters 1-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-7-8","date":"3 ABY","title":"Star Wars (2020) 7-8","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-7","date":"3 ABY","title":"Bounty Hunters 7","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-9-12","date":"3 ABY","title":"Star Wars (2020) 9-12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-1-10","date":"3 ABY","title":"Doctor Aphra (2020) 1-10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-8-10","date":"3 ABY","title":"Bounty Hunters 8-10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-1-aphra","date":"3 ABY","title":"War of the Bounty Hunters 1 : Aphra","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-13","date":"3 ABY","title":"Star Wars (2020) 13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-1-jabba-the-hutt","date":"3 ABY","title":"War of the Bounty Hunters 1 : Jabba the Hutt","type":"Comic","vo":false,"note":"before and during War of the Bounty Hunters: Aphra"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-11-12","date":"3 ABY","title":"Bounty Hunters 11-12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-1","date":"3 ABY","title":"War of the Bounty Hunters 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-1-4-lom-zuckuss","date":"3 ABY","title":"War of the Bounty Hunters 1 : 4-LOM &amp; Zuckuss","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-13","date":"3 ABY","title":"Bounty Hunters 13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-14","date":"3 ABY","title":"Star Wars (2020) 14","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-12","date":"3 ABY","title":"Darth Vader (2020) 12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-15","date":"3 ABY","title":"Star Wars (2020) 15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-13-14","date":"3 ABY","title":"Darth Vader (2020) 13-14","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-11","date":"3 ABY","title":"Doctor Aphra (2020) 11","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-14-15","date":"3 ABY","title":"Bounty Hunters 14-15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-15","date":"3 ABY","title":"Darth Vader (2020) 15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-2","date":"3 ABY","title":"War of the Bounty Hunters 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-12","date":"3 ABY","title":"Doctor Aphra (2020) 12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-16","date":"3 ABY","title":"Bounty Hunters 16","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-13","date":"3 ABY","title":"Doctor Aphra (2020) 13","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-3","date":"3 ABY","title":"War of the Bounty Hunters 3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-16","date":"3 ABY","title":"Star Wars (2020) 16","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-14","date":"3 ABY","title":"Doctor Aphra (2020) 14","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-16","date":"3 ABY","title":"Darth Vader (2020) 16","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-4","date":"3 ABY","title":"War of the Bounty Hunters 4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-17","date":"3 ABY","title":"Star Wars (2020) 17","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-5","date":"3 ABY","title":"War of the Bounty Hunters 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-17","date":"3 ABY","title":"Darth Vader (2020) 17","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-17","date":"3 ABY","title":"Bounty Hunters 17","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-15","date":"3 ABY","title":"Doctor Aphra (2020) 15","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-ig-88","date":"3 ABY","title":"War of the Bounty Hunters : IG-88","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-18","date":"3 ABY","title":"Star Wars (2020) 18","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-war-of-the-bounty-hunters-boushh","date":"3 ABY","title":"War of the Bounty Hunters : Boushh","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-crimson-reign-1","date":"3 ABY","title":"Crimson Reign 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-19-20","date":"3 ABY","title":"Star Wars (2020) 19-20","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-16-18","date":"3 ABY","title":"Doctor Aphra (2020) 16-18","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-18-20","date":"3 ABY","title":"Bounty Hunters 18-20","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-21","date":"3 ABY","title":"Star Wars (2020) 21","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-crimson-reign-2","date":"3 ABY","title":"Crimson Reign 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-22-24","date":"3 ABY","title":"Star Wars (2020) 22-24","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-crimson-reign-3-4","date":"3 ABY","title":"Crimson Reign 3-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-18-28","date":"3 ABY","title":"Darth Vader (2020) 18-28","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-21-26","date":"3 ABY","title":"Bounty Hunters 21-26","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"19-10-bby-star-wars-outlaws-low-red-moon","date":"19-10 BBY","title":"Star Wars Outlaws: Low Red Moon","type":"Novel","vo":false,"note":"epilogue during Star Wars Outlaws"},{"kind":"screen","c":"#64b5f6","date":"3 ABY","title":"STAR WARS OUTLAWS","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-crimson-reign-5","date":"3 ABY","title":"Crimson Reign 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-26-28","date":"3 ABY","title":"Star Wars (2020) 26-28","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-19-21","date":"3 ABY","title":"Doctor Aphra (2020) 19-21","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-27-28","date":"3 ABY","title":"Bounty Hunters 27-28","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-22-27","date":"3 ABY","title":"Doctor Aphra (2020) 22-27","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-hidden-empire-1","date":"3 ABY","title":"Hidden Empire 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-revelations-2022","date":"3 ABY","title":"Revelations (2022)","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-hidden-empire-2-3","date":"3 ABY","title":"Hidden Empire 2-3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-28-29","date":"3 ABY","title":"Doctor Aphra (2020) 28-29","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-hidden-empire-4-5","date":"3 ABY","title":"Hidden Empire 4-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-30-31","date":"3 ABY","title":"Doctor Aphra (2020) 30-31","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-sana-starros-1-5","date":"3 ABY","title":"Sana Starros 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-29-34","date":"3 ABY","title":"Bounty Hunters 29-34","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-29-33","date":"3 ABY","title":"Star Wars (2020) 29-33","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-29-36","date":"3 ABY","title":"Darth Vader (2020) 29-36","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-32-34","date":"3 ABY","title":"Doctor Aphra (2020) 32-34","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-34-35","date":"3 ABY","title":"Star Wars (2020) 34-35","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-35-36","date":"3 ABY","title":"Bounty Hunters 35-36","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-36","date":"3 ABY","title":"Star Wars (2020) 36","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-free-comic-book-day-2024-return-to-echo-base","date":"3 ABY","title":"Free Comic Book Day 2024 : Return to Echo Base","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-d-squad-1-the-book-of-ajax","date":"3 ABY","title":"Dark Droids : D-Squad 1 : The Book of Ajax","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-1","date":"3 ABY","title":"Dark Droids 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-37","date":"3 ABY","title":"Star Wars (2020) 37","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-2","date":"3 ABY","title":"Dark Droids 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-37-39","date":"3 ABY","title":"Bounty Hunters 37-39","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-3","date":"3 ABY","title":"Dark Droids 3","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-35-37","date":"3 ABY","title":"Doctor Aphra (2020) 35-37","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-37-39","date":"3 ABY","title":"Darth Vader (2020) 37-39","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-d-squad-1-4","date":"3 ABY","title":"Dark Droids : D-Squad 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-38-39","date":"3 ABY","title":"Star Wars (2020) 38-39","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-4","date":"3 ABY","title":"Dark Droids 4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-40","date":"3 ABY","title":"Darth Vader (2020) 40","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-38-39","date":"3 ABY","title":"Doctor Aphra (2020) 38-39","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-40","date":"3 ABY","title":"Bounty Hunters 40","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-40","date":"3 ABY","title":"Star Wars (2020) 40","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-darth-vader-2020-41","date":"3 ABY","title":"Darth Vader (2020) 41","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-dark-droids-5","date":"3 ABY","title":"Dark Droids 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-41","date":"3 ABY","title":"Star Wars (2020) 41","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-bounty-hunters-41","date":"3 ABY","title":"Bounty Hunters 41","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-doctor-aphra-2020-40","date":"3 ABY","title":"Doctor Aphra (2020) 40","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-aby-star-wars-2020-42-44","date":"3 ABY","title":"Star Wars (2020) 42-44","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-revelations-2023-a-trick-of-the-mind","date":"~3-4 ABY","title":"Revelations (2023) : A Trick of the Mind","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-star-wars-2020-45-49","date":"~3-4 ABY","title":"Star Wars (2020) 45-49","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-revelations-2023-tool-of-the-empire","date":"~3-4 ABY","title":"Revelations (2023) : Tool of the Empire","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-darth-vader-2020-42-45","date":"~3-4 ABY","title":"Darth Vader (2020) 42-45","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-free-comic-book-day-2024-the-curse","date":"~3-4 ABY","title":"Free Comic Book Day 2024 : The Curse","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-darth-vader-2020-46-50","date":"~3-4 ABY","title":"Darth Vader (2020) 46-50","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-revelations-2023-tall-tales","date":"~3-4 ABY","title":"Revelations (2023) : Tall Tales","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-revelations-2023-duel-of-the-reprobates","date":"~3-4 ABY","title":"Revelations (2023) : Duel of the Reprobates","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-bounty-hunters-42","date":"~3-4 ABY","title":"Bounty Hunters 42","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"3-4-aby-darth-vader-black-white-red-4-return-of-hoth","date":"~3-4 ABY","title":"Darth Vader : Black, White &amp; Red 4 - Return of Hoth","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-return-of-the-jedi-the-empire","date":"4 ABY","title":"Return of the Jedi : The Empire","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-return-of-the-jedi-lando","date":"4 ABY","title":"Return of the Jedi : Lando","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-hyperspace-stories-12","date":"4 ABY","title":"Hyperspace Stories 12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-age-of-rebellion-luke-skywalker","date":"4 ABY","title":"Age of Rebellion : Luke Skywalker","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-age-of-rebellion-princess-leia","date":"4 ABY","title":"Age of Rebellion : Princess Leia","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-return-of-the-jedi-the-rebellion","date":"4 ABY","title":"Return of the Jedi : The Rebellion","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 ABY","title":"EPISODE VI: RETURN OF THE JEDI","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-return-of-the-jedi-jabba-s-palace","date":"4 ABY","title":"Return of the Jedi : Jabba&#x27;s Palace","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-tie-fighter-1-4","date":"4 ABY","title":"TIE Fighter 1-4","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 ABY","title":"BATTLEFRONT II — MISSION 1","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-shattered-empire-1","date":"4 ABY","title":"Shattered Empire 1","type":"Comic","vo":false,"note":"during and after Episode VI"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-battle-of-jakku-insurgency-rising-1","date":"4 ABY","title":"Battle of Jakku : Insurgency Rising 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-battle-of-jakku-insurgency-rising-1-the-rising","date":"4 ABY","title":"Battle of Jakku : Insurgency Rising 1 - The Rising","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-tie-fighter-5","date":"4 ABY","title":"TIE Fighter 5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"4-aby-the-princess-and-the-scoundrel","date":"4 ABY","title":"The Princess and the Scoundrel","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-return-of-the-jedi-max-rebo","date":"4 ABY","title":"Return of the Jedi : Max Rebo","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-star-wars-adventures-shadow-of-vader-s-castle","date":"4 ABY","title":"Star Wars Adventures : Shadow of Vader&#x27;s Castle","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-battle-of-jakku-insurgency-rising-2","date":"4 ABY","title":"Battle of Jakku : Insurgency Rising 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-ewoks-1-4","date":"4 ABY","title":"Ewoks 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-return-of-the-jedi-ewoks","date":"4 ABY","title":"Return of the Jedi : Ewoks","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-shattered-empire-2","date":"4 ABY","title":"Shattered Empire 2","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 ABY","title":"BATTLEFRONT II — MISSIONS 2-3","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-battle-of-jakku-insurgency-rising-3-4","date":"4 ABY","title":"Battle of Jakku : Insurgency Rising 3-4","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 ABY","title":"BATTLEFRONT II — MISSION 4","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-shattered-empire-3","date":"4 ABY","title":"Shattered Empire 3","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 ABY","title":"BATTLEFRONT II — MISSIONS 5-6","type":"On screen"},{"kind":"it","k":"roman","c":"#a78bfa","id":"4-aby-alphabet-squadron","date":"4 ABY","title":"Alphabet Squadron","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"4-aby-aftermath","date":"4 ABY","title":"Aftermath","type":"Novel","vo":false,"note":"prologue during Episode VI"},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-star-wars-adventures-ghosts-of-vader-s-castle-1-5","date":"4 ABY","title":"Star Wars Adventures : Ghosts of Vader&#x27;s Castle 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"4-aby-shattered-empire-4","date":"4 ABY","title":"Shattered Empire 4","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"4 ABY","title":"SQUADRONS","type":"On screen"},{"kind":"screen","c":"#64b5f6","date":"5 ABY","title":"BATTLEFRONT II — MISSIONS 7-9","type":"On screen"},{"kind":"it","k":"roman","c":"#a78bfa","id":"5-aby-shadow-fall-an-alphabet-squadron-novel","date":"5 ABY","title":"Shadow Fall : An Alphabet Squadron Novel","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"5-aby-aftermath-life-debth","date":"5 ABY","title":"Aftermath : Life Debth","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-republic-under-siege-1","date":"5 ABY","title":"Battle of Jakku : Republic Under Siege 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-republic-under-siege-1-consolidation","date":"5 ABY","title":"Battle of Jakku : Republic Under Siege 1 - Consolidation","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-republic-under-siege-2-4","date":"5 ABY","title":"Battle of Jakku : Republic Under Siege 2-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-last-stand-1","date":"5 ABY","title":"Battle of Jakku : Last Stand 1","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-last-stand-1-false-histories","date":"5 ABY","title":"Battle of Jakku : Last Stand 1 - False Histories","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-last-stand-2","date":"5 ABY","title":"Battle of Jakku : Last Stand 2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"5-aby-victory-s-price-an-alphabet-squadron-novel","date":"5 ABY","title":"Victory&#x27;s Price : An Alphabet Squadron Novel","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"5-aby-aftermath-empire-s-end","date":"5 ABY","title":"Aftermath : Empire&#x27;s End","type":"Novel","vo":false,"note":"prologue during Episode VI"},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-battle-of-jakku-last-stand-3-4","date":"5 ABY","title":"Battle of Jakku : Last Stand 3-4","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"5 ABY","title":"BATTLEFRONT II — MISSIONS 10-11","type":"On screen"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"6-bby-5-aby-lost-stars","date":"6 BBY-5 ABY","title":"Lost Stars","type":"Young adult novel","vo":false,"note":"before, during and after Episodes IV, V and VI · prologue in 11 BBY"}]},{"title":"THE NEW REPUBLIC ERA","items":[{"kind":"it","k":"comic","c":"#fb923c","id":"6-aby-doctor-aphra-chaos-agent-1-5","date":"6 ABY","title":"Doctor Aphra : Chaos Agent 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"6-aby-free-comic-book-day-2025-past-is-prologue","date":"6 ABY","title":"Free Comic Book Day 2025 : Past is Prologue","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"6-aby-star-wars-2025-1-10","date":"6 ABY","title":"Star Wars (2025) 1-10","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"7-aby-last-shot","date":"7 ABY","title":"Last Shot","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"9-aby-the-mandalorian-and-grogu-danger-in-the-dark","date":"9 ABY","title":"The Mandalorian and Grogu : Danger in the Dark","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"9-11 ABY","title":"THE MANDALORIAN AND GROGU","type":"On screen"},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"18-19-aby-poe-dameron-free-fall","date":"18-19 ABY","title":"Poe Dameron : Free Fall","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"21-aby-shadow-of-the-sith","date":"21 ABY","title":"Shadow of the Sith","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"15-28-aby-star-wars-2020-50","date":"15-28 ABY","title":"Star Wars (2020) 50","type":"Comic","vo":false,"note":""}]},{"title":"THE FIRST ORDER ERA","items":[{"kind":"it","k":"comic","c":"#fb923c","id":"26-34-aby-age-of-resistance-rose-tico","date":"26-34 ABY","title":"Age of Resistance : Rose Tico","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"28-aby-bloodline","date":"28 ABY","title":"Bloodline","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"28-aby-the-rise-of-kylo-ren-1-4","date":"28 ABY","title":"The Rise of Kylo Ren 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"28-aby-age-of-resistance-supreme-leader-snoke","date":"28 ABY","title":"Age of Resistance : Supreme Leader Snoke","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"29-31-aby-age-of-resistance-special-maz-s-scoundrels","date":"~29-31 ABY","title":"Age of Resistance Special : Maz&#x27;s Scoundrels","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"28-34-aby-the-legends-of-luke-skywalker","date":"~28-34 ABY","title":"The Legends of Luke Skywalker","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"31-34-aby-han-solo-hunt-for-the-falcon-1-5","date":"~31-34 ABY","title":"Han Solo : Hunt for the Falcon 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"31-aby-star-wars-adventures-2020-7-tales-of-villainy-the-c-d37ef2","date":"~31 ABY","title":"Star Wars Adventures (2020) 7 : Tales of Villainy - The Crimson Corsair and the Crime Lords of the Barren Rim","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"31-aby-age-of-resistance-poe-dameron","date":"~31 ABY","title":"Age of Resistance : Poe Dameron","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"31-34-aby-before-the-awakening","date":"~31-34 ABY","title":"Before the Awakening","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-aby-poe-dameron-1-sabbotage","date":"32 ABY","title":"Poe Dameron 1 : SaBBotage","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-aby-poe-dameron-1-6","date":"32 ABY","title":"Poe Dameron 1-6","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"32-aby-star-wars-special-c-3po","date":"32 ABY","title":"Star Wars Special : C-3PO","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"32-aby-force-collector","date":"32 ABY","title":"Force Collector","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"33-aby-eyes-like-stars","date":"33 ABY","title":"Eyes Like Stars","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-aby-age-of-resistance-finn","date":"33 ABY","title":"Age of Resistance : Finn","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-aby-age-of-resistance-special-robot-resistance","date":"33 ABY","title":"Age of Resistance Special : Robot Resistance","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-aby-age-of-resistance-general-hux","date":"33 ABY","title":"Age of Resistance : General Hux","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"33-aby-age-of-resistance-kylo-ren","date":"33 ABY","title":"Age of Resistance : Kylo Ren","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-join-the-resistance","date":"34 ABY","title":"Join the Resistance","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-poe-dameron-7-19","date":"34 ABY","title":"Poe Dameron 7-19","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-poe-dameron-annual-1-2","date":"34 ABY","title":"Poe Dameron Annual 1-2","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-poe-dameron-20-25","date":"34 ABY","title":"Poe Dameron 20-25","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-hyperspace-stories-codebreaker-1-4","date":"34 ABY","title":"Hyperspace Stories : Codebreaker 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-phasma","date":"34 ABY","title":"Phasma","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-join-the-resistance-escape-from-vodran","date":"34 ABY","title":"Join the Resistance : Escape from Vodran","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"5-aby-star-wars-adventures-destroyer-down-the-ghost-ship","date":"5 ABY","title":"Star Wars Adventures : Destroyer Down - The Ghost Ship","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-star-wars-adventures-destroyer-down","date":"34 ABY","title":"Star Wars Adventures : Destroyer Down","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-age-of-resistance-captain-phasma","date":"34 ABY","title":"Age of Resistance : Captain Phasma","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-hyperspace-stories-8","date":"34 ABY","title":"Hyperspace Stories 8","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"0-aby-smuggler-s-run-a-han-solo-chewbacca-adventure","date":"0 ABY","title":"Smuggler&#x27;s Run : A Han Solo &amp; Chewbacca Adventure","type":"Novel","vo":false,"note":"prologue and epilogue just before Episode VII"},{"kind":"it","k":"roman","c":"#a78bfa","id":"0-aby-the-weapon-of-a-jedi-a-luke-skywalker-adventure","date":"0 ABY","title":"The Weapon of a Jedi : A Luke Skywalker Adventure","type":"Novel","vo":false,"note":"prologue and epilogue just before Episode VII"},{"kind":"it","k":"roman","c":"#a78bfa","id":"4-aby-moving-target-a-princess-leia-adventure","date":"4 ABY","title":"Moving Target : A Princess Leia Adventure","type":"Novel","vo":false,"note":"prologue and epilogue just before Episode VII"},{"kind":"screen","c":"#64b5f6","date":"34 ABY","title":"EPISODE VII: THE FORCE AWAKENS","type":"On screen"},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-the-last-jedi-cobalt-squadron","date":"34 ABY","title":"The Last Jedi : Cobalt Squadron","type":"Novel","vo":false,"note":"during and after Episode VII"},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-galaxy-s-edge-black-spire","date":"34 ABY","title":"Galaxy&#x27;s Edge : Black Spire","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-join-the-resistance-attack-on-starkiller-base","date":"34 ABY","title":"Join the Resistance : Attack on Starkiller Base","type":"Novel","vo":false,"note":"during Episode VII"},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-captain-phasma-1","date":"34 ABY","title":"Captain Phasma 1","type":"Comic","vo":false,"note":"during Episode VII"},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-age-of-resistance-rey","date":"34 ABY","title":"Age of Resistance : Rey","type":"Comic","vo":false,"note":"during Episode VII"},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-captain-phasma-2-4","date":"34 ABY","title":"Captain Phasma 2-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-the-last-jedi-dj-most-wanted","date":"34 ABY","title":"The Last Jedi : DJ - Most Wanted","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"34 ABY","title":"EPISODE VIII: THE LAST JEDI","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-free-comic-book-day-2026-legacy-of-vane","date":"34 ABY","title":"Free Comic Book Day 2026 : Legacy of Vaneé","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-legacy-of-vader-1-12","date":"34 ABY","title":"Legacy of Vader 1-12","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-poe-dameron-26-31","date":"34 ABY","title":"Poe Dameron 26-31","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-resistance-reborn","date":"34 ABY","title":"Resistance Reborn","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-allegiance-1-4","date":"34 ABY","title":"Allegiance 1-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-spark-of-the-resistance","date":"34 ABY","title":"Spark of the Resistance","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-legacy","date":"34 ABY","title":"Legacy","type":"Novel","vo":false,"note":""},{"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-pirate-s-price","date":"34 ABY","title":"Pirate&#x27;s Price","type":"Novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-star-wars-adventures-flight-of-the-falcon","date":"34 ABY","title":"Star Wars Adventures : Flight of the Falcon","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-galaxy-s-edge-1-5","date":"34 ABY","title":"Galaxy&#x27;s Edge 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"34-aby-a-crash-of-fate","date":"34 ABY","title":"A Crash of Fate","type":"Young adult novel","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-halcyon-legacy-1-5","date":"34 ABY","title":"Halcyon Legacy 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-galaxy-s-edge-echoes-of-the-empire-1-5","date":"34 ABY","title":"Galaxy&#x27;s Edge : Echoes of the Empire 1-5","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-star-wars-2020-25-see-you-around-kid","date":"34 ABY","title":"Star Wars (2020) 25 : See You Around, Kid","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-hyperspace-stories-4-4","date":"34 ABY","title":"Hyperspace Stories 4-4","type":"Comic","vo":false,"note":""},{"kind":"it","k":"comic","c":"#fb923c","id":"19-bby-35-aby-tales-from-the-nightlands-1-3","date":"19 BBY-35 ABY","title":"Tales from the Nightlands 1-3","type":"Comic","vo":false,"note":""},{"kind":"screen","c":"#64b5f6","date":"35 ABY","title":"EPISODE IX: THE RISE OF SKYWALKER","type":"On screen"},{"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-star-wars-2020-25-a-eulogy-for-snap","date":"35 ABY","title":"Star Wars (2020) 25 : A Eulogy for Snap","type":"Comic","vo":false,"note":""},{"kind":"it","k":"jeunesse","c":"#4ade80","id":"34-aby-the-last-order","date":"35 ABY","title":"The Last Order","type":"Young adult novel","vo":false,"note":""}]}],"intro":"<p class=\"intro-lead\">If you want to get into the Star Wars novels and comics, you're in the right place.</p><div class=\"intro-tags\"><span class=\"itag\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>I'm assuming that if you're here, you've already watched the animated and live-action media.</span></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">2 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><p class=\"cuts-prose\" style=\"margin:0 0 .6rem\">The omitted media are the same as on the main timeline, except <strong>The Acolyte</strong>, which may be worth watching if you read the comics: it's the only screen production (besides <strong>Star Wars: Young Jedi Adventures</strong>) set during the High Republic.</p><p class=\"cuts-prose\" style=\"margin:0 0 .6rem\">The omitted comics are throwaway one-shots, comics aimed at young children, or adaptations of screen productions.</p></div></details>"};
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var D=window.CGD, CFG=window.CGDT;
+  /* Les libellés viennent de fr/dossiers/star-wars.html tels quels. Seuls
+     ceux qui tutoyaient sont repassés au vouvoiement — Niko ne veut pas
+     qu'on tutoie le visiteur. Aucune autre reformulation. */
+  var T=Object.assign({},CFG.t,{
+    resetDos:'Reset your Deep Dive progress?',
+    emptyP:'Try another spelling, or bring back the filters you turned off.'
+  });
+  var KL=CFG.kindLabels;
+  var KEY='cg-proto-dossier-sw';
+
+  /* Chaque ère reçoit l'image de la timeline Star Wars qui la donne à voir.
+     Elles sont déjà dans /images et servent les mêmes ères sur e-starwars :
+     une ère, une image, d'une page à l'autre. La Haute République n'a pas de
+     film ni de série dans la timeline — elle prend la bannière du Dossier,
+     celle qui l'annonce déjà sur l'accueil des Dossiers. */
+  var ERA_ART=['/images/starwarscomics.jpg','/images/starwars1.webp',
+               '/images/clonewarsserie.webp','/images/kenobi.webp',
+               '/images/starwars4.webp','/images/mandalorian.webp',
+               '/images/starwars7.webp'];
+  /* Les noms courts de la barre des ères, repris tels quels de l'accueil des
+     Dossiers. Le titre entier — « L'ÈRE DE LA HAUTE RÉPUBLIQUE » — reste sur
+     la bande de l'ère ; dans un segment de barre il ne rentrerait jamais. */
+  var ERA_NOM=['High Republic','Republic','Clone Wars','Empire',
+               'Rebellion','New Republic','First Order'];
+
+  function $(s,r){ return (r||document).querySelector(s); }
+  function $$(s,r){ return [].slice.call((r||document).querySelectorAll(s)); }
+  /* Les titres des données arrivent déjà échappés (`L&#x27;Orage Gronde`) :
+     ils s'injectent tels quels, mais l'index de recherche et les libellés
+     d'accessibilité, eux, doivent lire l'apostrophe. */
+  var dec=(function(){
+    var t=document.createElement('textarea');
+    return function(s){ t.innerHTML=String(s==null?'':s); return t.value; };
+  })();
+  function att(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  var ICO={
+    check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
+    play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>',
+    link:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>'
+  };
+
+  /* ── mise à plat : seules les entrées `it` comptent ────────────────
+     Les 63 `screen` sont des repères. Les compter dans la progression
+     ferait passer un titre de film pour une lecture. */
+  var ALL=[];
+  D.eras.forEach(function(era){
+    era.items.forEach(function(x){ if(x.kind==='it'){ ALL.push(x); x.n=ALL.length; } });
+  });
+
+  var prog={};
+  try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  var offK={}, hideDone=false;
+
+  /* ── l'intro : la prose de la page de prod, injectée telle quelle ── */
+  $('#intro').innerHTML=D.intro;
+
+  /* ── les filtres : les quatre natures d'œuvre, comptées sur les données ── */
+  (function(){
+    var tp=$('#f-types'), seen={};
+    ALL.forEach(function(x){
+      if(!seen[x.k]) seen[x.k]={n:0,c:x.c};
+      seen[x.k].n++;
+    });
+    Object.keys(seen).forEach(function(k){
+      tp.insertAdjacentHTML('beforeend',
+        '<button type="button" data-k="'+k+'" style="--k:'+seen[k].c+'" aria-pressed="true">'+
+        '<i></i>'+att(KL[k]||k)+'<span class="n">'+seen[k].n+'</span></button>');
+    });
+  })();
+
+  /* ── construction : une bande d'ère, puis ses lignes ─────────────── */
+  function itemRow(x){
+    return '<div class="dr" id="'+x.id+'" data-id="'+x.id+'" data-k="'+x.k+'"'+
+      ' data-t="'+att(dec(x.title+' '+x.type).toLowerCase())+'" style="--c:'+x.c+'">'+
+      '<button type="button" class="dr-ck" role="checkbox" data-check'+
+        ' aria-checked="'+(prog[x.id]?'true':'false')+'"'+
+        ' aria-label="'+att(T.markRead.replace('{t}',dec(x.title)))+'">'+ICO.check+'</button>'+
+      '<span class="dr-n">'+x.n+'</span>'+
+      '<span class="dr-dt">'+att(x.date)+'</span>'+
+      '<span class="dr-main"><span class="dr-tt">'+x.title+
+        '' /* pas de badge VO en anglais : voir traduire-pages.mjs */+'</span>'+
+        (x.note?'<span class="dr-note">'+x.note+'</span>':'')+
+      '</span>'+
+      '<span class="dr-kd">'+att(x.type)+'</span>'+
+      '<a class="dr-link" href="#'+x.id+'" data-copy data-ok="'+att(T.copied)+
+        '" title="'+att(T.copyLink)+'" aria-label="'+att(T.copyLink)+'">'+ICO.link+'</a>'+
+    '</div>';
+  }
+  function screenRow(x){
+    return '<div class="dscreen" data-t="'+att(dec(x.title).toLowerCase())+'">'+
+      '<span class="ic" aria-hidden="true">'+ICO.play+'</span>'+
+      '<span class="dr-dt">'+att(x.date)+'</span>'+
+      '<span class="dr-tt">'+x.title+'</span>'+
+      '<span class="dr-kd">'+att(x.type)+'</span>'+
+    '</div>';
+  }
+
+  (function build(){
+    var html='', rail='', nav='';
+    D.eras.forEach(function(era,i){
+      var n=era.items.filter(function(x){ return x.kind==='it'; }).length;
+      var art=ERA_ART[i]||ERA_ART[0];
+      /* segment proportionnel au nombre d'entrées, encre éclaircie d'un cran
+         à chaque ère — le calcul est celui de l'accueil des Dossiers */
+      var mix=34+Math.round(i/(D.eras.length-1)*52);
+      var pct=Math.round(n/533*1000)/10;
+      /* la barre est doublée par les boutons nommés juste dessous : elle est
+         donc retirée de l'arbre d'accessibilité, et ses segments ne sont pas
+         des liens — un lien focusable sous aria-hidden est un piège au
+         clavier, et la même destination deux fois est du bruit au lecteur */
+      rail+='<span data-rail="'+i+'" data-go="#era'+(i+1)+'"'+
+        ' style="flex:'+n+' 0 0;background:color-mix(in srgb,var(--uni) '+mix+'%,var(--ink))"'+
+        ' title="'+att(ERA_NOM[i])+' — '+n+' entries ('+pct+' %)">'+
+        '<span class="nm">'+n+'</span>'+
+        '<i class="f" data-rail-f="'+i+'"></i></span>';
+      nav+='<a href="#era'+(i+1)+'" data-nav="'+i+'">'+att(ERA_NOM[i])+'</a>';
+
+      html+='<section class="era-sec" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+        '<div class="map" id="era'+(i+1)+'">'+
+          '<div class="layers" aria-hidden="true">'+
+            '<div class="lay lay1" style="background-image:url('+art+')"></div>'+
+            '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
+            '<div class="tint"></div><div class="halftone"></div></div>'+
+          '<div class="wrap">'+
+            '<span class="chev">Era '+(i+1)+' / '+D.eras.length+'</span>'+
+            '<h2 class="disp off">'+era.title+'</h2>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+n+' read</span>'+
+            '<span>'+era.items.filter(function(x){ return x.kind==='screen'; }).length+
+              ' on-screen markers</span></p>'+
+          '</div></div>'+
+        '<div class="list"><div class="wrap"><div class="rows">'+
+          era.items.map(function(x){
+            return x.kind==='screen'?screenRow(x):itemRow(x); }).join('')+
+        '</div></div></div></section>';
+    });
+    $('#timeline').innerHTML=html;
+    $('#rail').innerHTML=rail;
+    $('#eranav').innerHTML=nav;
+  })();
+
+  /* ── filtrage : on masque, on ne redessine pas ────────────────────
+     Un repère écran ne se filtre que par la recherche, comme en prod :
+     il n'a ni type ni case, le masquer sur un filtre de média le ferait
+     disparaître sans qu'on l'ait demandé. */
+  function applyFilters(){
+    var q=dec($('#q').value||'').trim().toLowerCase(), shown=0;
+    D.eras.forEach(function(era,i){
+      var sec=document.querySelector('.era-sec[data-era="'+i+'"]');
+      var vis=0;
+      $$('.dscreen',sec).forEach(function(el){
+        el.hidden=!!q && el.dataset.t.indexOf(q)===-1;
+        if(!el.hidden) vis++;
+      });
+      era.items.forEach(function(x){
+        if(x.kind!=='it') return;
+        var el=document.getElementById(x.id);
+        var ok=!offK[x.k] && !(hideDone&&prog[x.id]) &&
+               (!q || el.dataset.t.indexOf(q)>-1);
+        el.hidden=!ok;
+        if(ok){ vis++; shown++; }
+      });
+      sec.hidden=(vis===0);
+      var r=document.querySelector('[data-rail="'+i+'"]');
+      if(r) r.hidden=(vis===0);
+      var nv=document.querySelector('[data-nav="'+i+'"]');
+      if(nv) nv.hidden=(vis===0);
+    });
+    $('#fcount').textContent=shown+' / '+ALL.length+' '+T.shown;
+    var em=$('#empty');
+    em.hidden=shown>0;
+    if(!shown) em.textContent=(q? T.emptyH+' « '+q+' »' : T.emptyH+' '+T.emptyThese)+
+      ' — '+T.emptyP;
+    /* masquer une ère redistribue la largeur des autres segments : les noms
+       qui ne tenaient pas peuvent tenir, et l'inverse */
+    if(typeof fitNames==='function') fitNames();
+  }
+
+  function tally(){
+    var n=0;
+    ALL.forEach(function(x){ if(prog[x.id]) n++; });
+    $('#k-on').textContent=n; $('#k-tot').textContent=ALL.length;
+    $('#k-left').textContent=ALL.length-n;
+    $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
+    $('#s-tot').textContent=ALL.length;
+    D.eras.forEach(function(era,i){
+      var its=era.items.filter(function(x){ return x.kind==='it'; });
+      var d=its.filter(function(x){ return prog[x.id]; }).length;
+      var b=document.querySelector('[data-done="'+i+'"]'); if(b) b.textContent=d;
+      var f=document.querySelector('[data-rail-f="'+i+'"]');
+      if(f) f.style.width=(its.length? d/its.length*100 : 0)+'%';
+    });
+    startBtn();
+  }
+
+  /* ── Commencer / Reprendre : le bouton emmène à la prochaine lecture ── */
+  var next=null;
+  function startBtn(){
+    var started=ALL.some(function(x){ return prog[x.id]; });
+    next=ALL.filter(function(x){ return !prog[x.id]; })[0]||ALL[0];
+    $('#start').innerHTML=(started?T.resume:'Start')+' <em>▸</em>';
+  }
+  function goTo(el){
+    var top=el.getBoundingClientRect().top+scrollY-
+            (matchMedia('(max-width:1080px)').matches?70:168);
+    scrollTo({top:top,behavior:'smooth'});
+  }
+  $('#start').addEventListener('click',function(){
+    if(!next) return;
+    var el=document.getElementById(next.id);
+    if(el.hidden){ /* une entrée masquée par un filtre ne se rejoint pas */
+      $('#q').value=''; $('#searchbox').classList.remove('on');
+      offK={}; hideDone=false;
+      $$('#sieve button[aria-pressed]').forEach(function(b){
+        b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
+      applyFilters();
+    }
+    goTo(el);
+    el.style.borderColor='var(--hot)';
+    el.style.borderLeftColor='var(--hot)';
+    setTimeout(function(){ el.style.borderColor=''; el.style.borderLeftColor=''; },1400);
+  });
+
+  /* ── interactions ───────────────────────────────────────────────── */
+  document.addEventListener('click',function(ev){
+    var t=ev.target;
+
+    var chk=t.closest('[data-check]');
+    if(chk){
+      var row=chk.closest('.dr'), id=row.dataset.id;
+      prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      save();
+      chk.setAttribute('aria-checked',prog[id]?'true':'false');
+      row.classList.toggle('done',!!prog[id]);
+      tally();
+      if(hideDone&&prog[id]) applyFilters();
+      return;
+    }
+
+    var cp=t.closest('[data-copy]');
+    if(cp){
+      ev.preventDefault();
+      var url=location.href.split('#')[0]+cp.getAttribute('href');
+      var done=function(){ cp.classList.add('ok');
+        setTimeout(function(){ cp.classList.remove('ok'); },1200); };
+      if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,done); else done();
+      history.replaceState(null,'',cp.getAttribute('href'));
+      return;
+    }
+
+    var f=t.closest('#sieve button[aria-pressed]');
+    if(f){
+      var on=f.getAttribute('aria-pressed')==='true';
+      f.setAttribute('aria-pressed',on?'false':'true');
+      if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.k) offK[f.dataset.k]=on;
+      applyFilters();
+      return;
+    }
+
+    /* La barre et les boutons mènent au même endroit : le défilement doux
+       natif tomberait sous la barre collante, on le règle nous-mêmes sur la
+       hauteur du bandeau. */
+    var rl=t.closest('#rail [data-go]')||t.closest('#eranav a');
+    if(rl){
+      ev.preventDefault();
+      var sec=document.querySelector(rl.dataset.go||rl.getAttribute('href'));
+      if(sec) goTo(sec);
+      return;
+    }
+  });
+
+  /* La case est un vrai <button> : Espace et Entrée y déclenchent déjà un
+     clic. Lui en ajouter un au clavier basculait deux fois, donc pas du
+     tout — la ligne restait dans l'état où elle était. */
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='/'&&document.activeElement!==$('#q')){ ev.preventDefault(); $('#q').focus(); }
+  });
+
+  /* recherche */
+  var qi=$('#q');
+  qi.addEventListener('input',function(){
+    $('#searchbox').classList.toggle('on',!!qi.value);
+    applyFilters();
+  });
+  $('#q-clear').addEventListener('click',function(){
+    qi.value=''; $('#searchbox').classList.remove('on'); applyFilters(); qi.focus();
+  });
+
+  /* ── l'ère courante, marquée dans le rail ─────────────────────────
+     Une seule observation sur les sept bandes : on ne surveille pas 596
+     lignes pour savoir où l'on est. */
+  /* Un compte ne s'affiche que si son segment lui laisse la place : la
+     Nouvelle République pèse 8 entrées sur 533, son segment fait quelques
+     pixels. Le test se refait au redimensionnement, la barre étant à
+     l'échelle. */
+  var rails=$$('#rail [data-rail]'), navs=$$('#eranav a');
+  function fitNames(){
+    rails.forEach(function(a){
+      var nm=$('.nm',a);
+      if(!nm) return;
+      nm.hidden=false;
+      nm.hidden=(nm.offsetWidth>a.clientWidth-2);
+    });
+  }
+  addEventListener('resize',fitNames);
+
+  (function(){
+    if(!('IntersectionObserver' in window)) return;
+    var cur=-1;
+    function mark(i){
+      if(i===cur) return;
+      cur=i;
+      rails.forEach(function(a,k){ a.classList.toggle('on',k===i); });
+      navs.forEach(function(a,k){ a.classList.toggle('on',k===i); });
+      var nv=navs[i];
+      if(nv && !nv.hidden){
+        var r=$('#eranav');
+        r.scrollTo({left:Math.max(0,nv.offsetLeft-r.clientWidth/2+nv.offsetWidth/2),
+                    behavior:'smooth'});
+      }
+    }
+    var io=new IntersectionObserver(function(list){
+      list.forEach(function(en){
+        if(en.isIntersecting) mark(+en.target.parentNode.dataset.era);
+      });
+    },{rootMargin:'-140px 0px -55% 0px',threshold:0});
+    $$('.era-sec .list').forEach(function(el){ io.observe(el); });
+  })();
+
+  /* barre du bas, dépliable */
+  var hud=$('#hud');
+  $('#hud-btn').addEventListener('click',function(){
+    var open=hud.classList.toggle('open');
+    this.setAttribute('aria-expanded',open?'true':'false');
+    $('#hud-panel').hidden=!open;
+    document.body.style.paddingBottom=(open?hud.offsetHeight:64)+'px';
+  });
+
+  /* export / import / réinitialisation */
+  $('#export').addEventListener('click',function(){
+    var blob=new Blob([JSON.stringify({universe:'dossier-sw',progress:prog},null,1)],
+                      {type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-dossier-starwars.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('#import').addEventListener('click',function(){ $('#import-file').click(); });
+  $('#import-file').addEventListener('change',function(){
+    var f=this.files&&this.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var d=JSON.parse(r.result);
+        prog=d.progress||d||{}; save();
+        $$('.dr').forEach(function(el){
+          var on=!!prog[el.dataset.id];
+          el.classList.toggle('done',on);
+          $('[data-check]',el).setAttribute('aria-checked',on?'true':'false');
+        });
+        tally(); applyFilters();
+      }catch(_){ alert(T.badFile); }
+    };
+    r.readAsText(f); this.value='';
+  });
+  $('#reset').addEventListener('click',function(){
+    if(!confirm(T.resetDos)) return;
+    prog={}; save();
+    $$('.dr').forEach(function(el){
+      el.classList.remove('done');
+      $('[data-check]',el).setAttribute('aria-checked','false');
+    });
+    tally(); applyFilters();
+  });
+
+  /* Grogu */
+  var tt=$('#totop');
+  tt.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+  addEventListener('scroll',function(){ tt.classList.toggle('on',scrollY>400); },{passive:true});
+
+  /* menu replié */
+  var bg=$('#burger'), dr=$('#drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+
+  tally(); applyFilters(); fitNames();
+
+  /* une ancre dans l'URL ouvre directement la bonne entrée */
+  if(location.hash){
+    var target=document.getElementById(location.hash.slice(1));
+    if(target&&target.classList.contains('dr')){
+      setTimeout(function(){ goTo(target); },60);
+    }
+  }
+})();
 </script>
-<script src="/cg-dossier.js"></script>
-<script>
-(function(){var b=document.getElementById('totop');
- b.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
- addEventListener('scroll',function(){b.classList.toggle('on',scrollY>400)},{passive:true});})();
-</script>
-<script src="/cg-nav.js"></script>
+<script src="/app.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

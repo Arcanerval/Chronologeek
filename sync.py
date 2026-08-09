@@ -9,16 +9,26 @@ repliquee dans /fr/. Ce script evite d'avoir a ouvrir les deux fichiers pour ca.
 Les deux versions sont paralleles ligne a ligne : meme nombre de lignes, memes
 entrees, dans le meme ordre. Les lignes strictement identiques sont du code
 (CSS, JS, structure) ; les lignes qui different portent les textes traduits.
-Le script s'appuie sur cette propriete et refuse de toucher aux textes.
+
+Depuis la refonte, une page ne porte plus ses entrees : elle charge
+data/<nom>-<langue>.js. L'alignement se verifie donc sur deux couples a la fois,
+le HTML pour la structure et les donnees pour les entrees. Chercher les entrees
+dans le HTML ne renvoyait pas d'erreur : il renvoyait zero de chaque cote, et
+« 0 (aligne) » passait pour un feu vert.
+
+Le sens de l'ecriture a change lui aussi. Les pages du site et data/*.js sont
+produits : l'anglais est deduit du francais par traduire.mjs, puis publier.mjs
+pose les dix-huit pages. La source a corriger est donc le proto francais, et
+c'est la que mirror ecrit.
 
 Usage :
     python sync.py check                     verifie l'alignement des paires
-    python sync.py show <univers> <id>       affiche une entree en EN et en FR
-    python sync.py mirror <univers> <ancien> <nouveau>
-                                             remplace dans les deux versions,
-                                             uniquement sur les lignes identiques
+    python sync.py show <page> <id>          affiche une entree en EN et en FR
+    python sync.py mirror <page> <ancien> <nouveau>
+                                             remplace dans le proto francais,
+                                             puis rappelle quoi relancer
 
-Univers : sw, mcu, dc, avatar
+Pages : sw, mcu, dc, avatar, dossier, news, accueil, avenir, dossiers
 """
 
 import re
@@ -26,26 +36,59 @@ import sys
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent
+PROTO = RACINE / "_proto"
+DATA = RACINE / "data"
 
-UNIVERS = {
-    "sw": "starwars.html",
-    "mcu": "marvel.html",
-    "dc": "dc.html",
-    "avatar": "avatar.html",
+
+class Paire:
+    """Une page du site, dans ses deux langues et ses trois etats : ce qui est
+    publie (en / fr), les entrees qui l'alimentent (donnees), et la source d'ou
+    tout descend (le proto francais)."""
+
+    def __init__(self, en, fr, donnees, proto):
+        self.en, self.fr, self.donnees, self.proto = en, fr, donnees, proto
+
+
+PAGES = {
+    "sw":       Paire("starwars.html", "fr/starwars.html", "starwars", "e-starwars.html"),
+    "mcu":      Paire("marvel.html", "fr/marvel.html", "marvel", "e-marvel.html"),
+    "dc":       Paire("dc.html", "fr/dc.html", "dc", "e-dc.html"),
+    "avatar":   Paire("avatar.html", "fr/avatar.html", "avatar", "e-avatar.html"),
+    "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
+                      "dossier-star-wars", "e-dossier-star-wars.html"),
+    "news":     Paire("whats-new.html", "fr/nouveautes.html", "news", "e-nouveautes.html"),
+    "accueil":  Paire("index.html", "fr/index.html", None, "e-accueil.html"),
+    "avenir":   Paire("upcoming.html", "fr/a-venir.html", None, "e-a-venir.html"),
+    "dossiers": Paire("deep-dives/index.html", "fr/dossiers/index.html", None, "e-dossiers.html"),
 }
 
 # SW et Marvel ecrivent leurs objets JS avec des guillemets doubles, DC avec des
 # apostrophes simples. On apparie la meme quote pour ne pas casser sur les
-# apostrophes internes (« Propriete d'Ezra Bridger »).
-RE_ID = re.compile(r"""\bid\s*:\s*(["'])([^"']+)\1""")
+# apostrophes internes (« Propriete d'Ezra Bridger »). Les donnees de la refonte
+# sortent d'une serialisation JSON et ecrivent la cle entre guillemets : sans
+# « "id" », le compte tombe a zero sans que rien ne le signale.
+RE_ID = re.compile(r"""(?:\bid|"id")\s*:\s*(["'])([^"']+)\1""")
+
+
+def paire(cle):
+    if cle not in PAGES:
+        sortir(f"page inconnue : {cle} (attendues : {', '.join(PAGES)})")
+    return PAGES[cle]
 
 
 def chemins(cle):
-    """Renvoie (chemin_en, chemin_fr) pour un univers."""
-    if cle not in UNIVERS:
-        sortir(f"univers inconnu : {cle} (attendus : {', '.join(UNIVERS)})")
-    nom = UNIVERS[cle]
-    return RACINE / nom, RACINE / "fr" / nom
+    """Renvoie (chemin_en, chemin_fr) pour une page."""
+    p = paire(cle)
+    return RACINE / p.en, RACINE / p.fr
+
+
+def donnees(cle):
+    """Renvoie (donnees_en, donnees_fr), ou (None, None) pour une page qui n'en
+    charge pas — l'accueil, les index, la page des sorties a venir."""
+    p = paire(cle)
+    if not p.donnees:
+        return None, None
+    return DATA / f"{p.donnees}-en.js", DATA / f"{p.donnees}-fr.js"
 
 
 def sortir(msg, code=1):
@@ -66,15 +109,34 @@ def ecrire(p, lignes):
         f.write("\n".join(lignes))
 
 
+# Le journal des Nouveautes n'a pas d'identifiants : ses cartes se comptent au
+# titre. Sans ce repli, la paire ressortait « 0 des deux cotes ».
+RE_TITRE = re.compile(r'"?title"?\s*:\s*(["\'])')
+
+# On compte tous les identifiants du fichier, pas seulement ceux de la
+# chronologie. Restreindre au bloc `eras` semblait plus parlant — 61 entrees
+# Star Wars plutot que 70 — mais le decoupage dependait du formatage : le
+# francais tient sur une ligne, l'anglais est indente, et la meme donnee sortait
+# a 71 d'un cote et 69 de l'autre. Un controle de parite ne doit pas dependre de
+# la mise en forme. Le compte total inclut donc les badges, le descripteur
+# d'univers et la banniere TMDB ; il ne se rapproche pas des chiffres de
+# CLAUDE.md, et ce n'est pas son role — toute entree ajoutee ou retiree change
+# malgre tout l'ensemble des identifiants, ce qui est ce qu'on verifie ici.
+
+
 def ids_de(lignes):
     return [m.group(2) for l in lignes for m in RE_ID.finditer(l)]
+
+
+def titres_de(lignes):
+    return sum(len(RE_TITRE.findall(l)) for l in lignes)
 
 
 # ---------------------------------------------------------------- check
 
 def cmd_check(args):
     """Verifie que chaque paire EN/FR est alignee."""
-    cles = args if args else list(UNIVERS)
+    cles = args if args else list(PAGES)
     souci = False
 
     for cle in cles:
@@ -91,28 +153,51 @@ def cmd_check(args):
             continue
 
         le, lf = lire(en), lire(fr)
-        ie, if_ = ids_de(le), ids_de(lf)
-        se, sf = set(ie), set(if_)
-
         ok = True
+
         if len(le) != len(lf):
             print(f"  lignes   : {len(le)} EN / {len(lf)} FR   *** DESALIGNE ***")
             ok = False
         else:
             print(f"  lignes   : {len(le)} (aligne)")
 
-        if len(ie) != len(if_):
-            print(f"  entrees  : {len(ie)} EN / {len(if_)} FR   *** ECART ***")
+        de, df = donnees(cle)
+        if de is None:
+            print("  identifiants : cette page n'en porte pas")
+        elif not de.exists() or not df.exists():
+            manquant = de if not de.exists() else df
+            print(f"  identifiants : {manquant.name} absent   *** DONNEES MANQUANTES ***")
             ok = False
         else:
-            print(f"  entrees  : {len(ie)} (aligne)")
-
-        for nom, manque in (("FR", se - sf), ("EN", sf - se)):
-            if manque:
-                apercu = ", ".join(sorted(manque)[:8])
-                reste = f" … (+{len(manque) - 8})" if len(manque) > 8 else ""
-                print(f"  absents du {nom} : {apercu}{reste}")
+            ge, gf = lire(de), lire(df)
+            ie, if_ = ids_de(ge), ids_de(gf)
+            se, sf = set(ie), set(if_)
+            # Zero de chaque cote n'est pas un alignement : c'est un parseur qui
+            # a decroche. C'est exactement ce qu'a fait la refonte en sortant les
+            # entrees du HTML, sans une ligne d'avertissement.
+            if not ie and not if_:
+                te, tf = titres_de(ge), titres_de(gf)
+                if not te and not tf:
+                    print("  identifiants : 0 des deux cotes   *** LECTURE VIDE ***")
+                    ok = False
+                elif te != tf:
+                    print(f"  identifiants : {te} EN / {tf} FR   *** ECART ***  (comptees au titre)")
+                    ok = False
+                else:
+                    print(f"  identifiants : {te} (aligne)   comptees au titre, "
+                          f"{de.name} / {df.name}")
+            elif len(ie) != len(if_):
+                print(f"  identifiants : {len(ie)} EN / {len(if_)} FR   *** ECART ***")
                 ok = False
+            else:
+                print(f"  identifiants : {len(ie)} (aligne)   {de.name} / {df.name}")
+
+            for nom, manque in (("FR", se - sf), ("EN", sf - se)):
+                if manque:
+                    apercu = ", ".join(sorted(manque)[:8])
+                    reste = f" … (+{len(manque) - 8})" if len(manque) > 8 else ""
+                    print(f"  absents du {nom} : {apercu}{reste}")
+                    ok = False
 
         if ok:
             idem = sum(1 for a, b in zip(le, lf) if a == b)
@@ -129,9 +214,13 @@ def cmd_check(args):
 def cmd_show(args):
     """Affiche une entree dans les deux langues, sans charger la page entiere."""
     if len(args) < 2:
-        sortir("usage : python sync.py show <univers> <id>")
+        sortir("usage : python sync.py show <page> <id>")
     cle, cible = args[0], args[1]
-    en, fr = chemins(cle)
+    # Les entrees ne sont plus dans la page : c'est le fichier de donnees qu'on
+    # ouvre, en repli sur la page pour celles qui n'en chargent pas.
+    en, fr = donnees(cle)
+    if en is None:
+        en, fr = chemins(cle)
 
     for etiquette, p in (("EN", en), ("FR", fr)):
         if not p.exists():
@@ -159,50 +248,70 @@ def cmd_show(args):
 
 # ---------------------------------------------------------------- mirror
 
+def source_fr(cle):
+    """Les fichiers francais d'ou descend la page publiee : le proto, et le
+    fichier de donnees du proto quand la page en charge un. data/*.js et les
+    pages du site sont produits — y ecrire ne survivrait pas a la publication
+    suivante. La table des sources est celle qu'ecrit publier.mjs, pour ne pas
+    en tenir une copie qui divergerait."""
+    p = paire(cle)
+    fichiers = [PROTO / p.proto]
+    if p.donnees:
+        table = {}
+        manifeste = DATA / "sources.json"
+        if manifeste.exists():
+            import json
+            try:
+                table = json.loads(manifeste.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                table = {}
+        source = table.get(f"data/{p.donnees}-fr.js")
+        if source:
+            fichiers.append(RACINE / source)
+    return [f for f in fichiers if f.exists()]
+
+
 def cmd_mirror(args):
-    """Remplace un fragment dans les deux versions, sur les lignes identiques."""
+    """Remplace un fragment dans la source francaise des deux versions.
+
+    Avant la refonte, EN et FR etaient deux fichiers ecrits a la main et un
+    miroir ecrivait dans les deux. Ce n'est plus le cas : l'anglais est deduit du
+    francais par traduire.mjs, et les pages du site sont produites par
+    publier.mjs. Ecrire dans les fichiers publies serait perdu a la publication
+    suivante — sans erreur, et sans que rien ne le dise. On ecrit donc dans le
+    proto francais, et on rappelle les deux commandes qui font le reste.
+
+    Les lignes de prose sont touchees comme les autres : le proto francais est la
+    source, pas une traduction a preserver."""
     if len(args) < 3:
-        sortir('usage : python sync.py mirror <univers> "<ancien>" "<nouveau>"')
+        sortir('usage : python sync.py mirror <page> "<ancien>" "<nouveau>"')
     cle, ancien, nouveau = args[0], args[1], args[2]
-    en, fr = chemins(cle)
 
-    if not en.exists() or not fr.exists():
-        sortir("les deux versions doivent exister pour un miroir")
+    cibles = source_fr(cle)
+    if not cibles:
+        sortir(f"aucune source francaise trouvee pour « {cle} »")
 
-    le, lf = lire(en), lire(fr)
-    if len(le) != len(lf):
-        sortir(f"versions desalignees ({len(le)} vs {len(lf)} lignes) — "
-               "lancer « python sync.py check » d'abord")
-
-    touchees, refusees = [], []
-    for i, (a, b) in enumerate(zip(le, lf)):
-        if ancien not in a and ancien not in b:
+    total = 0
+    for f in cibles:
+        lignes = lire(f)
+        touchees = [i + 1 for i, l in enumerate(lignes) if ancien in l]
+        if not touchees:
+            print(f"{f.relative_to(RACINE).as_posix()} : aucune occurrence")
             continue
-        if a == b:
-            le[i] = a.replace(ancien, nouveau)
-            lf[i] = b.replace(ancien, nouveau)
-            touchees.append(i + 1)
-        else:
-            # ligne porteuse de texte traduit : on ne touche pas
-            refusees.append(i + 1)
-
-    if not touchees and not refusees:
-        print(f"aucune occurrence de « {ancien} »")
-        return 0
-
-    if touchees:
-        ecrire(en, le)
-        ecrire(fr, lf)
-        print(f"remplace dans les deux versions, lignes : "
+        ecrire(f, [l.replace(ancien, nouveau) for l in lignes])
+        total += len(touchees)
+        print(f"{f.relative_to(RACINE).as_posix()} : {len(touchees)} ligne(s) — "
               f"{', '.join(map(str, touchees[:20]))}"
               f"{' …' if len(touchees) > 20 else ''}")
-        print(f"total : {len(touchees)} ligne(s) x 2 fichiers")
 
-    if refusees:
-        print(f"\nignore sur {len(refusees)} ligne(s) ou EN et FR different "
-              f"(texte traduit) : {', '.join(map(str, refusees[:20]))}"
-              f"{' …' if len(refusees) > 20 else ''}")
-        print("ces lignes sont a traiter a la main, dans chaque langue.")
+    if not total:
+        print(f"\naucune occurrence de « {ancien} »")
+        return 0
+
+    print(f"\ntotal : {total} ligne(s). Pour propager :")
+    print("  node _proto/traduire.mjs && node _proto/traduire-pages.mjs")
+    print("  node _proto/publier.mjs")
+    print("  py sync.py check")
     return 0
 
 

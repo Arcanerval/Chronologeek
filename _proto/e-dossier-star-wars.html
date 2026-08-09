@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Chronologeek — Dossier Star Wars (proto E)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="/images/starwarscomics.jpg"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · LE DOSSIER ═══════════════════════════
+  THÈSE : le Dossier n'est pas une timeline plus longue, c'est un registre.
+  533 entrées sans une seule image : la grammaire des bulles de la page
+  d'univers ne tient pas ici — une vignette vide répétée 533 fois, c'est une
+  page qui bégaie. Chaque entrée redevient une ligne de registre : la case,
+  le numéro d'ordre, la date in-universe, le titre, la nature de l'œuvre.
+  Ce qui portait l'image porte maintenant la couleur : le liseré de gauche
+  dit comic, roman, roman jeune adulte ou fiction audio d'un coup d'œil.
+  MONDE PROPRE : hérité de la page d'univers. Couleur noyée, une par ère,
+  qui inonde la région et change au défilement. Bords francs, chevrons en
+  diagonale, trame de demi-teinte, titrage condensé à ombre portée dure.
+  Aucun halo, aucun arrondi, bascules en steps.
+  ACCENT : l'or du logo — crête #f0c97c. LU : le bleu Star Wars (#4d9fff),
+  jamais l'or, jamais un vert générique. La rubrique, elle, garde le violet
+  des Dossiers (#a99cf9) : fil d'Ariane et étiquette, comme dans la nav.
+  IMPOSÉ PAR LA LONGUEUR : une barre d'ères collante. Sur 533 entrées, savoir
+  où l'on est et sauter ailleurs n'est pas un confort, c'est la condition
+  pour que la page soit utilisable. C'est le relevé « Le poids des ères » de
+  l'accueil des Dossiers, devenu l'organe de navigation de la page : sept
+  segments à l'échelle du nombre d'entrées, chacun portant sa jauge de
+  lecture et l'ère courante marquée à l'or. Une rangée de boutons tous de la
+  même taille mentait sur le volume — la Rébellion, c'est 294 entrées sur
+  533. Le relevé quitte donc l'accueil : il n'y était qu'une vitrine, il est
+  ici un instrument.
+  LES REPÈRES ÉCRAN : 63 jalons qui ne sont pas des entrées. Bande
+  transversale, pas de case, hors progression — ils situent, ils ne se lisent
+  pas. Ils ne se filtrent que par la recherche, comme en prod.
+  RÉCIT : voilà ce que contient le Dossier, voilà où j'en suis, voilà ma
+  prochaine lecture.
+  TEXTES : repris mot pour mot de fr/dossiers/star-wars.html — la prose
+  d'introduction vient du champ `intro` des données, les libellés de
+  window.CG.t. Seuls changements, les mêmes que sur la page d'univers :
+  le tutoiement passe au vouvoiement, Niko ne veut pas qu'on tutoie le
+  visiteur. Aucune autre reformulation.
+-->
+<style>
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  /* la marque « lu » prend la couleur de l'univers, pas un vert générique */
+  --uni:#4d9fff;
+  /* sept encres d'ère. Les six dernières sont celles de la page d'univers,
+     ère pour ère : une même ère garde son encre d'une page à l'autre. La
+     Haute République, absente de la timeline cinéma, en reçoit une propre. */
+  --era1:#3c6b1f; --era2:#0f6d63; --era3:#a8331b; --era4:#2b2f6b;
+  --era5:#8a6a12; --era6:#134a72; --era7:#5c2060;
+  /* les trois entrées colorées de la nav */
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  /* les quatre natures d'œuvre, couleurs des données elles-mêmes */
+  --k-comic:#fb923c; --k-roman:#a78bfa; --k-jeunesse:#4ade80; --k-audio:#f472b6;
+  --k-screen:#64b5f6;
+  --era:var(--era1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:64px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
+
+/* ══ trame de demi-teinte : matière du monde, posée sur les visuels ══ */
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+.nav-links a.doss[aria-current],.drawer a.doss[aria-current]{color:var(--hot)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:34px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(58vh,500px);display:flex;align-items:flex-end}
+.plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 40%;
+  background-image:url(/images/starwarscomics.jpg)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+/* le voile part du violet des Dossiers et tombe dans le bleu Star Wars :
+   la bascule de rubrique à univers, jouée en un seul dégradé */
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 5%,
+             color-mix(in srgb,var(--uni) 44%,var(--ink)) 56%,
+             color-mix(in srgb,var(--c-doss) 34%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:20px;padding-bottom:28px}
+.attract h1{font-size:clamp(38px,7vw,86px);max-width:14ch}
+.attract h1 span{display:block}
+.attract h1 .sub{color:var(--hot);font-size:.46em;margin-top:.08em}
+/* le fil d'Ariane prend sa ligne : posé en inline, l'étiquette venait se
+   coller à côté de lui */
+.crumb{display:flex;width:fit-content;align-items:center;gap:8px;text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--c-doss);margin-bottom:16px;
+  border-bottom:2px solid transparent}
+.crumb:hover{border-bottom-color:var(--c-doss)}
+.crumb svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:square}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;max-width:62ch;color:rgba(255,253,247,.92)}
+.upd{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66);display:flex;align-items:center;gap:7px}
+.upd i{width:8px;height:8px;background:var(--uni);display:block}
+.stats{display:flex;flex-wrap:nowrap;gap:0;margin-top:20px;border:2px solid var(--paper);
+  background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
+.stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
+.stats .s:last-child{border-right:0}
+.stats b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:30px;
+  line-height:.9;color:var(--hot);white-space:nowrap}
+.stats span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.78);margin-top:3px}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ INTRO : la prose de la page, et ses omissions ══════════════════ */
+.intro{padding:34px 0 8px}
+.intro-lead{font-size:16.5px;color:rgba(255,253,247,.9);margin-bottom:12px}
+.intro-tags{margin:16px 0 6px}
+.itag{display:inline-flex;align-items:flex-start;gap:9px;background:rgba(77,159,255,.13);
+  border-left:4px solid var(--uni);padding:9px 14px;font-size:14px;font-weight:600}
+.itag svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2.6;
+  stroke-linecap:square;margin-top:1px}
+.cuts{margin-top:20px;border:2px solid var(--line)}
+.cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.05em}
+.cuts>summary::-webkit-details-marker{display:none}
+.cuts>summary:hover{background:rgba(255,253,247,.05)}
+.cuts .n{font-family:'Chivo';font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:3px 9px}
+.cuts .chev{width:20px;height:20px;margin-left:auto;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
+.cuts[open] .chev{transform:rotate(180deg)}
+.cuts-body{padding:14px 16px 18px;border-top:2px solid var(--line)}
+.cuts-prose{font-size:14px;color:rgba(255,253,247,.84)}
+.cuts-prose strong{color:var(--paper)}
+
+/* ══ filtres, recherche, rail des ères ══════════════════════════════ */
+/* Pas de trait bas ici : la légende des repères vient juste dessous et le
+   filet blanc entre les deux coupait un bloc qui n'en fait qu'un. La coupure
+   franche est reportée sous la légende, avant la première ère. */
+.sieve{border-top:2px solid var(--paper);background:var(--ink);
+  position:sticky;top:53px;z-index:50}
+/* Une barre collante de deux rangées, pas trois : réglages sur la première,
+   rail sur la seconde. Les espacements sont serrés pour que le compte reste
+   sur la ligne des filtres — passé à la ligne, il coûtait 34 px de haut
+   d'écran à chaque écran de lecture. */
+.sieve .wrap{display:flex;gap:11px;align-items:center;flex-wrap:wrap;
+  padding-top:9px;padding-bottom:9px}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,253,247,.5);margin-right:2px}
+.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
+.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
+.sieve button .n{font-family:'Chivo';font-size:11px;font-weight:700;opacity:.62}
+.sieve .last{margin-left:auto}
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
+  padding:4px 9px;min-width:190px;flex:0 1 244px}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
+  stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
+  font-family:'Chivo';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
+  display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+.fcount{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,253,247,.6)}
+/* la légende des repères, hors barre collante */
+.marksbar{border-bottom:2px solid var(--paper);background:rgba(13,11,18,.6)}
+.marksbar .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding-top:7px;padding-bottom:7px;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+.marksbar .sc{display:inline-flex;align-items:center;gap:6px;color:var(--k-screen)}
+.marksbar .sc svg{width:11px;height:11px;fill:currentColor}
+
+/* Le rail des ères : sept destinations, leur jauge, l'ère courante marquée.
+   Il défile à l'horizontale plutôt que de passer à la ligne — la barre
+   collante doit garder une hauteur constante, sinon la page saute. */
+/* Le poids des ères, repris de l'accueil des Dossiers et rendu cliquable :
+   sept segments à l'échelle du nombre d'entrées. Une ère ne se choisit plus
+   dans une rangée de boutons tous de la même taille — la Rébellion pèse plus
+   de la moitié du Dossier et ça se voit avant de lire un seul chiffre.
+   L'encre s'éclaircit d'un segment à l'autre : la barre se lit comme une
+   coupe, pas comme une barre découpée. */
+.rail{flex:1 0 100%;display:flex;gap:2px;height:32px;border:2px solid var(--paper)}
+.rail>span{position:relative;cursor:pointer;display:block;min-width:0;overflow:hidden;text-decoration:none;
+  transition:filter .1s steps(1,end)}
+.rail>span[hidden]{display:none}
+.rail>span:hover{filter:brightness(1.5)}
+.rail>span.on{outline:3px solid var(--hot);outline-offset:-3px;z-index:2}
+/* Le segment porte son nombre d'entrées, pas son nom : « Guerre des Clones »
+   ne rentre dans aucun segment sous les 25 % du Dossier, alors que le compte
+   tient partout ou presque. Le nom est sur le bouton, juste dessous, et dans
+   l'infobulle. Largeur au contenu, pas au conteneur — étalé sur la bande, il
+   mesurait la bande et se croyait toujours trop long. */
+.rail .nm{position:absolute;left:50%;top:0;transform:translateX(-50%);
+  height:100%;width:max-content;display:flex;align-items:center;padding:0 3px;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:14px;letter-spacing:.02em;
+  color:var(--paper);text-shadow:1px 1px 0 rgba(13,11,18,.75)}
+.rail .nm[hidden]{display:none}
+/* la jauge de lecture de l'ère, posée au pied de son segment */
+.rail .f{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--uni);
+  transition:width .35s cubic-bezier(.16,1,.3,1)}
+
+/* Les destinations nommées, sous la barre. La barre dit le volume, les
+   boutons disent les noms : à l'échelle, six ères sur sept sont trop
+   étroites pour porter le leur. */
+.eranav{flex:1 0 100%;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;margin-top:1px}
+.eranav::-webkit-scrollbar{display:none}
+.eranav a{flex:0 0 auto;text-decoration:none;border:2px solid var(--line);
+  padding:2px 10px 3px;background:rgba(255,253,247,.03);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:13px;letter-spacing:.05em;
+  text-transform:uppercase;white-space:nowrap;color:rgba(255,253,247,.8);
+  transition:border-color .08s steps(1,end),color .08s steps(1,end)}
+.eranav a[hidden]{display:none}
+.eranav a:hover{border-color:var(--paper);color:var(--paper)}
+.eranav a.on{border-color:var(--hot);color:var(--hot)}
+
+/* ══ BANDE D'ÈRE : parallaxe multiplane liée au défilement ══════════ */
+.era-sec[hidden]{display:none}
+.map{position:relative;overflow:hidden;background:var(--era);
+  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);
+  scroll-margin-top:168px}
+.map .layers{position:absolute;inset:0}
+.map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
+.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
+  clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
+.map .tint{position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--era) 30%,transparent),
+             color-mix(in srgb,var(--era) 88%,transparent))}
+.map .wrap{position:relative;z-index:2;padding:42px 20px 26px}
+.map .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;
+  letter-spacing:.2em;text-transform:uppercase;display:inline-block;
+  background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.map h2{font-size:clamp(28px,5.4vw,64px);margin:12px 0 6px}
+.map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+.map .meta b{color:var(--hot)}
+
+/* ══ LES LIGNES DU REGISTRE ═════════════════════════════════════════
+   Pas de vignette : le Dossier n'a pas d'images, et 533 cadres vides
+   feraient une page qui bégaie. La couleur du liseré porte la nature de
+   l'œuvre, le numéro d'ordre porte l'avancement, la date porte la
+   chronologie. Rien d'autre n'a besoin de place. */
+.list{background:color-mix(in srgb,var(--era) 16%,var(--ink));padding:18px 0 30px}
+.rows{display:flex;flex-direction:column;gap:5px}
+.dr{position:relative;display:grid;
+    grid-template-columns:34px 44px 104px minmax(0,1fr) auto;
+    align-items:center;gap:12px;
+    border:2px solid var(--line);border-left:5px solid var(--c,var(--paper));
+    background:rgba(13,11,18,.5);padding:7px 40px 7px 10px;
+    scroll-margin-top:168px;
+    transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
+.dr[hidden]{display:none}
+.dr:hover{border-top-color:var(--hot);border-right-color:var(--hot);
+  border-bottom-color:var(--hot);transform:translate(-3px,-3px)}
+.dr-ck{width:28px;height:28px;background:none;cursor:pointer;
+  border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
+  display:grid;place-items:center;padding:0;color:transparent;
+  transition:border-color .1s steps(1,end),background-color .1s steps(1,end)}
+.dr-ck svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:3.4;
+  stroke-linecap:square}
+.dr-ck:hover{border-color:var(--uni)}
+.dr-ck[aria-checked=true]{background:var(--uni);border-color:var(--uni);color:var(--ink)}
+.dr-n{font-family:'Big Shoulders Display';font-weight:900;font-size:16px;
+  color:rgba(255,253,247,.42);letter-spacing:.02em;text-align:right}
+/* la date in-universe : deuxième information de la ligne, lue d'un coup d'œil */
+.dr-dt{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;line-height:1;
+  letter-spacing:.02em;color:var(--hot);white-space:nowrap}
+.dr-main{min-width:0}
+.dr-tt{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:21px;
+  line-height:1.04;text-transform:uppercase}
+.vo{display:inline-block;margin-left:7px;vertical-align:2px;font-family:'Chivo';font-size:9.5px;
+  font-weight:700;letter-spacing:.1em;padding:1px 5px;color:var(--hot);border:1px solid var(--hot)}
+.dr-note{display:block;font-size:12px;color:rgba(255,253,247,.68);margin-top:3px;font-style:italic}
+.dr-kd{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:2px 8px;color:var(--ink);background:var(--c,var(--paper));white-space:nowrap;
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.dr-link{position:absolute;top:50%;right:8px;transform:translateY(-50%);width:26px;height:26px;
+  display:grid;place-items:center;color:rgba(255,253,247,.5);text-decoration:none;opacity:0;
+  transition:opacity .15s}
+.dr:hover .dr-link,.dr-link:focus-visible{opacity:1}
+.dr-link:hover{color:var(--hot)}
+.dr-link svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:square}
+.dr-link.ok::after{content:attr(data-ok);position:absolute;right:0;top:100%;white-space:nowrap;
+  background:var(--hot);color:var(--ink);font-size:10px;font-weight:700;padding:2px 7px;
+  letter-spacing:.06em;text-transform:uppercase;z-index:5}
+
+/* lu : la ligne s'éteint et prend la couleur de l'univers, sans tampon —
+   un tampon par ligne, 533 fois, serait un mur de bruit */
+.dr.done{background:color-mix(in srgb,var(--uni) 11%,rgba(13,11,18,.5));
+  border-left-color:var(--uni)}
+.dr.done .dr-tt{color:rgba(255,253,247,.64)}
+.dr.done .dr-kd{opacity:.5}
+.dr.done .dr-dt{color:rgba(255,253,247,.52)}
+
+/* le repère écran : un jalon, pas une lecture. Bande transversale, pas de
+   case, hors progression — il dit où le film ou la série se place. */
+.dscreen{display:grid;grid-template-columns:34px 104px minmax(0,1fr) auto;align-items:center;
+  gap:12px;margin:9px 0;padding:7px 10px;background:color-mix(in srgb,var(--k-screen) 15%,var(--ink));
+  border-top:2px solid var(--k-screen);border-bottom:2px solid var(--k-screen)}
+.dscreen[hidden]{display:none}
+.dscreen .ic{display:grid;place-items:center;color:var(--k-screen)}
+.dscreen .ic svg{width:15px;height:15px;fill:currentColor}
+.dscreen .dr-dt{color:var(--k-screen)}
+.dscreen .dr-tt{font-size:18px;color:rgba(255,253,247,.92)}
+.dscreen .dr-kd{background:var(--k-screen)}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
+.empty[hidden]{display:none}
+
+/* ══ révélation au défilement ══════════════════════════════════════
+   Seules les bandes d'ère sont animées. Attacher une animation liée au
+   défilement à 596 lignes, c'est 596 timelines à composer : la page rame
+   là où elle doit justement défiler vite. */
+@supports (animation-timeline: view()){
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  @keyframes riseTitle{from{transform:translateY(18px)}to{transform:translateY(-10px)}}
+  .map .lay1{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .map .lay2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+  .map .wrap{animation:riseTitle linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72)}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ Grogu : le retour en haut ═════════════════════════════════════ */
+#totop{position:fixed;right:16px;bottom:78px;z-index:75;width:96px;height:96px;padding:0;
+  background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
+  transform:translateY(10px);transition:opacity .2s,transform .2s}
+#totop.on{opacity:1;pointer-events:auto;transform:none}
+#totop span{position:relative;display:block;width:96px;height:96px}
+#totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#totop .hv{opacity:0}
+#totop:hover .nl{opacity:0}
+#totop:hover .hv{opacity:1}
+
+/* ══ barre de bas d'écran, dépliable : où j'en suis ═════════════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--ink);
+  border-top:2px solid var(--paper)}
+.hud-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;width:100%;
+  max-width:1280px;margin:0 auto;background:none;border:0;color:inherit;font:inherit;
+  cursor:pointer;text-align:left;padding:9px 20px;
+  padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+.hud.open .hud-bar{padding-bottom:9px}
+.hud-bar b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud-bar b em{font-style:normal;color:var(--uni)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:110px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--uni);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.hud-bar .ch{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;margin-left:auto}
+.hud.open .hud-bar .ch{transform:rotate(180deg)}
+.hud-panel{border-top:2px solid var(--line);
+  padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.hud-panel[hidden]{display:none}
+.hud-in{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;
+  align-items:center;gap:4px}
+.pacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:7px;background:none;border:2px solid var(--line);
+  color:var(--paper);font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--paper)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square}
+.btn.danger{color:#ff8f8f;border-color:rgba(255,143,143,.5)}
+.btn.danger:hover{border-color:#ff8f8f}
+.phint{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:14px;
+  text-align:center;font-size:12.5px;color:rgba(255,253,247,.72)}
+.phint svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2;
+  stroke-linecap:square;margin-top:1px}
+.phint b{color:var(--paper)}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+  .sieve{position:static}
+  .map{scroll-margin-top:60px}
+  .dr{scroll-margin-top:66px}
+}
+@media(max-width:820px){
+  /* la ligne se replie en trois étages : la case et le numéro tiennent la
+     colonne de gauche, puis la date, le titre, et le type sous lui — c'est
+     l'ordre de lecture, du repère chronologique à la nature de l'œuvre */
+  .dr{grid-template-columns:30px minmax(0,1fr);gap:6px 10px;padding-right:36px}
+  .dr-n{grid-row:2;text-align:center;font-size:13px}
+  .dr-dt{grid-column:2;font-size:16px}
+  .dr-main{grid-column:2}
+  .dr-kd{grid-column:2;justify-self:start;margin-bottom:1px}
+  .dr-tt{font-size:18px}
+  .dscreen{grid-template-columns:26px minmax(0,1fr);gap:4px 10px}
+  .dscreen .dr-dt{grid-column:2}
+  .dscreen .dr-kd{grid-column:2;justify-self:start}
+  .dscreen .ic{grid-row:1/3}
+}
+@media(max-width:720px){
+  .stats .s{padding:8px 10px}
+  .stats b{font-size:21px}
+  .stats span{font-size:8.5px;letter-spacing:.04em}
+  .foot{grid-template-columns:1fr}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+  .sieve .last{margin-left:0}
+  #totop{width:74px;height:74px;bottom:74px}
+  #totop span{width:74px;height:74px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .start em{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#body">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="e-accueil.html"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="e-accueil.html">Accueil</a>
+      <a href="e-dossiers.html" class="doss" aria-current="page">Dossiers</a>
+      <a href="e-starwars.html">Star Wars</a>
+      <a href="e-marvel.html">Marvel</a>
+      <a href="e-dc.html">DC</a>
+      <a href="e-avatar.html">Avatar</a>
+      <a href="e-a-venir.html" class="upc">À venir</a>
+      <a href="e-nouveautes.html" class="news">Nouveautés</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="en-dossier-star-wars.html" aria-label="Switch to English" title="Switch to English">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)" fill="none"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="8"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="13"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="7"/></g></svg>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
+    <a href="e-accueil.html">Accueil</a><a href="e-dossiers.html" class="doss" aria-current="page">Dossiers</a>
+    <a href="e-starwars.html">Star Wars</a><a href="e-marvel.html">Marvel</a><a href="e-dc.html">DC</a><a href="e-avatar.html">Avatar</a>
+    <a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a>
+  </nav>
+</header>
+
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <a class="crumb" href="e-dossiers.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Tous les Dossiers</a>
+    <span class="tag">Plus loin que la timeline</span>
+    <!-- Trois lignes, jamais deux mots coupés : « Dossier Star / Wars » se
+         produisait dès que la ligne manquait de place. Le titre décide de
+         ses ruptures au lieu de les subir. -->
+    <h1 class="disp off">Dossier<span>Star Wars</span><span class="sub">Romans &amp; Comics</span></h1>
+    <p class="dek">L’ordre de lecture complet des romans, romans jeunesse et comics Star Wars
+      canon, replacé dans la chronologie des films et séries.</p>
+    <p class="upd"><i aria-hidden="true"></i> 533 entrées · 63 repères à l’écran</p>
+    <div class="stats">
+      <div class="s"><b>58</b><span>Romans</span></div>
+      <div class="s"><b>30</b><span>Romans jeunes adultes</span></div>
+      <div class="s"><b>436</b><span>Comics</span></div>
+      <div class="s"><b>9</b><span>Livres audio</span></div>
+      <div class="s"><b id="s-tot">533</b><span>Entrées</span></div>
+    </div>
+    <button class="start" id="start" type="button">Commencer <em>▸</em></button>
+  </div>
+</section>
+
+<main id="body">
+
+  <div class="wrap"><div class="intro" id="intro"></div></div>
+
+  <div class="sieve"><div class="wrap" id="sieve">
+    <div class="search" id="searchbox">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="skip" for="q">Rechercher dans la timeline</label>
+      <input id="q" type="search" placeholder="Rechercher…  ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
+    </div>
+    <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
+    <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les lus</button>
+    <span class="fcount" id="fcount">533 / 533 affichées</span>
+    <!-- la barre dit le volume de chaque ère, les boutons dessous les nomment -->
+    <div class="rail" id="rail" aria-hidden="true"></div>
+    <nav class="eranav" id="eranav" aria-label="Aller à une ère"></nav>
+  </div></div>
+
+  <!-- La légende des repères ne colle pas : elle se lit une fois, en entrant.
+       Ce qui reste sous la main pendant qu'on parcourt 533 lignes, c'est la
+       recherche, les filtres et le rail — rien d'autre ne mérite de manger
+       le haut de l'écran. -->
+  <div class="marksbar"><div class="wrap">
+    <span class="lab">Repères</span>
+    <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+      À l’écran — où se placent les films et séries. Non comptés dans votre progression.</span>
+  </div></div>
+
+  <div id="timeline"></div>
+  <div class="wrap"><p class="empty" id="empty" hidden></p></div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <h4>Chronologeek</h4>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
+        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
+        qui regarde tout deux fois.</p>
+    </div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="e-starwars.html">Star Wars</a></li>
+      <li><a href="e-marvel.html">Marvel — MCU</a></li>
+      <li><a href="e-dc.html">DC Multiverse</a></li>
+      <li><a href="e-avatar.html">Avatar</a></li>
+      <li><a href="e-dossiers.html">Dossiers</a></li>
+    </ul></div>
+    <div><h4>Plus</h4><ul>
+      <li><a href="e-a-venir.html">Sorties à venir</a></li>
+      <li><a href="e-nouveautes.html">Nouveautés</a></li>
+      <li><a href="#">Soutenir le site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n'est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ;
+      Chronologeek est un projet de fan indépendant.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+
+<button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
+  <span><img class="nl" src="/images/grogu.png" alt=""/><img class="hv" src="/images/grogumouseover.png" alt=""/></span>
+</button>
+
+<div class="hud" id="hud">
+  <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
+    <b><em id="k-on">0</em> / <span id="k-tot">533</span></b>
+    <span class="lbl">lus</span>
+    <span class="bar"><i id="k-fill"></i></span>
+    <span class="lbl">Restant à lire <b style="font-size:14px" id="k-left">533</b></span>
+    <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <div class="hud-in">
+      <div class="pacts">
+        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Exporter</button>
+        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Importer</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Réinitialiser</button>
+      </div>
+      <p class="phint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Votre progression est sauvegardée sur ce navigateur — utilisez <b>Exporter</b> pour en garder une copie ou l’importer sur un autre appareil ou navigateur</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="data-dossier-sw.js"></script>
+<script>
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var D=window.CGD, CFG=window.CGDT;
+  /* Les libellés viennent de fr/dossiers/star-wars.html tels quels. Seuls
+     ceux qui tutoyaient sont repassés au vouvoiement — Niko ne veut pas
+     qu'on tutoie le visiteur. Aucune autre reformulation. */
+  var T=Object.assign({},CFG.t,{
+    resetDos:'Réinitialiser votre progression du Dossier ?',
+    emptyP:'Essayez une autre orthographe, ou remettez les filtres que vous avez décochés.'
+  });
+  var KL=CFG.kindLabels;
+  var KEY='cg-proto-dossier-sw';
+
+  /* Chaque ère reçoit l'image de la timeline Star Wars qui la donne à voir.
+     Elles sont déjà dans /images et servent les mêmes ères sur e-starwars :
+     une ère, une image, d'une page à l'autre. La Haute République n'a pas de
+     film ni de série dans la timeline — elle prend la bannière du Dossier,
+     celle qui l'annonce déjà sur l'accueil des Dossiers. */
+  var ERA_ART=['/images/starwarscomics.jpg','/images/starwars1.webp',
+               '/images/clonewarsserie.webp','/images/kenobi.webp',
+               '/images/starwars4.webp','/images/mandalorian.webp',
+               '/images/starwars7.webp'];
+  /* Les noms courts de la barre des ères, repris tels quels de l'accueil des
+     Dossiers. Le titre entier — « L'ÈRE DE LA HAUTE RÉPUBLIQUE » — reste sur
+     la bande de l'ère ; dans un segment de barre il ne rentrerait jamais. */
+  var ERA_NOM=['Haute République','République','Guerre des Clones','Empire',
+               'Rébellion','Nouvelle République','Premier Ordre'];
+
+  function $(s,r){ return (r||document).querySelector(s); }
+  function $$(s,r){ return [].slice.call((r||document).querySelectorAll(s)); }
+  /* Les titres des données arrivent déjà échappés (`L&#x27;Orage Gronde`) :
+     ils s'injectent tels quels, mais l'index de recherche et les libellés
+     d'accessibilité, eux, doivent lire l'apostrophe. */
+  var dec=(function(){
+    var t=document.createElement('textarea');
+    return function(s){ t.innerHTML=String(s==null?'':s); return t.value; };
+  })();
+  function att(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  var ICO={
+    check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
+    play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>',
+    link:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>'
+  };
+
+  /* ── mise à plat : seules les entrées `it` comptent ────────────────
+     Les 63 `screen` sont des repères. Les compter dans la progression
+     ferait passer un titre de film pour une lecture. */
+  var ALL=[];
+  D.eras.forEach(function(era){
+    era.items.forEach(function(x){ if(x.kind==='it'){ ALL.push(x); x.n=ALL.length; } });
+  });
+
+  var prog={};
+  try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  var offK={}, hideDone=false;
+
+  /* ── l'intro : la prose de la page de prod, injectée telle quelle ── */
+  $('#intro').innerHTML=D.intro;
+
+  /* ── les filtres : les quatre natures d'œuvre, comptées sur les données ── */
+  (function(){
+    var tp=$('#f-types'), seen={};
+    ALL.forEach(function(x){
+      if(!seen[x.k]) seen[x.k]={n:0,c:x.c};
+      seen[x.k].n++;
+    });
+    Object.keys(seen).forEach(function(k){
+      tp.insertAdjacentHTML('beforeend',
+        '<button type="button" data-k="'+k+'" style="--k:'+seen[k].c+'" aria-pressed="true">'+
+        '<i></i>'+att(KL[k]||k)+'<span class="n">'+seen[k].n+'</span></button>');
+    });
+  })();
+
+  /* ── construction : une bande d'ère, puis ses lignes ─────────────── */
+  function itemRow(x){
+    return '<div class="dr" id="'+x.id+'" data-id="'+x.id+'" data-k="'+x.k+'"'+
+      ' data-t="'+att(dec(x.title+' '+x.type).toLowerCase())+'" style="--c:'+x.c+'">'+
+      '<button type="button" class="dr-ck" role="checkbox" data-check'+
+        ' aria-checked="'+(prog[x.id]?'true':'false')+'"'+
+        ' aria-label="'+att(T.markRead.replace('{t}',dec(x.title)))+'">'+ICO.check+'</button>'+
+      '<span class="dr-n">'+x.n+'</span>'+
+      '<span class="dr-dt">'+att(x.date)+'</span>'+
+      '<span class="dr-main"><span class="dr-tt">'+x.title+
+        (x.vo?'<span class="vo" title="'+att(T.voTitle)+'">VO</span>':'')+'</span>'+
+        (x.note?'<span class="dr-note">'+x.note+'</span>':'')+
+      '</span>'+
+      '<span class="dr-kd">'+att(x.type)+'</span>'+
+      '<a class="dr-link" href="#'+x.id+'" data-copy data-ok="'+att(T.copied)+
+        '" title="'+att(T.copyLink)+'" aria-label="'+att(T.copyLink)+'">'+ICO.link+'</a>'+
+    '</div>';
+  }
+  function screenRow(x){
+    return '<div class="dscreen" data-t="'+att(dec(x.title).toLowerCase())+'">'+
+      '<span class="ic" aria-hidden="true">'+ICO.play+'</span>'+
+      '<span class="dr-dt">'+att(x.date)+'</span>'+
+      '<span class="dr-tt">'+x.title+'</span>'+
+      '<span class="dr-kd">'+att(x.type)+'</span>'+
+    '</div>';
+  }
+
+  (function build(){
+    var html='', rail='', nav='';
+    D.eras.forEach(function(era,i){
+      var n=era.items.filter(function(x){ return x.kind==='it'; }).length;
+      var art=ERA_ART[i]||ERA_ART[0];
+      /* segment proportionnel au nombre d'entrées, encre éclaircie d'un cran
+         à chaque ère — le calcul est celui de l'accueil des Dossiers */
+      var mix=34+Math.round(i/(D.eras.length-1)*52);
+      var pct=Math.round(n/533*1000)/10;
+      /* la barre est doublée par les boutons nommés juste dessous : elle est
+         donc retirée de l'arbre d'accessibilité, et ses segments ne sont pas
+         des liens — un lien focusable sous aria-hidden est un piège au
+         clavier, et la même destination deux fois est du bruit au lecteur */
+      rail+='<span data-rail="'+i+'" data-go="#era'+(i+1)+'"'+
+        ' style="flex:'+n+' 0 0;background:color-mix(in srgb,var(--uni) '+mix+'%,var(--ink))"'+
+        ' title="'+att(ERA_NOM[i])+' — '+n+' entrées ('+pct+' %)">'+
+        '<span class="nm">'+n+'</span>'+
+        '<i class="f" data-rail-f="'+i+'"></i></span>';
+      nav+='<a href="#era'+(i+1)+'" data-nav="'+i+'">'+att(ERA_NOM[i])+'</a>';
+
+      html+='<section class="era-sec" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+        '<div class="map" id="era'+(i+1)+'">'+
+          '<div class="layers" aria-hidden="true">'+
+            '<div class="lay lay1" style="background-image:url('+art+')"></div>'+
+            '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
+            '<div class="tint"></div><div class="halftone"></div></div>'+
+          '<div class="wrap">'+
+            '<span class="chev">Ère '+(i+1)+' / '+D.eras.length+'</span>'+
+            '<h2 class="disp off">'+era.title+'</h2>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+n+' lus</span>'+
+            '<span>'+era.items.filter(function(x){ return x.kind==='screen'; }).length+
+              ' repères à l’écran</span></p>'+
+          '</div></div>'+
+        '<div class="list"><div class="wrap"><div class="rows">'+
+          era.items.map(function(x){
+            return x.kind==='screen'?screenRow(x):itemRow(x); }).join('')+
+        '</div></div></div></section>';
+    });
+    $('#timeline').innerHTML=html;
+    $('#rail').innerHTML=rail;
+    $('#eranav').innerHTML=nav;
+  })();
+
+  /* ── filtrage : on masque, on ne redessine pas ────────────────────
+     Un repère écran ne se filtre que par la recherche, comme en prod :
+     il n'a ni type ni case, le masquer sur un filtre de média le ferait
+     disparaître sans qu'on l'ait demandé. */
+  function applyFilters(){
+    var q=dec($('#q').value||'').trim().toLowerCase(), shown=0;
+    D.eras.forEach(function(era,i){
+      var sec=document.querySelector('.era-sec[data-era="'+i+'"]');
+      var vis=0;
+      $$('.dscreen',sec).forEach(function(el){
+        el.hidden=!!q && el.dataset.t.indexOf(q)===-1;
+        if(!el.hidden) vis++;
+      });
+      era.items.forEach(function(x){
+        if(x.kind!=='it') return;
+        var el=document.getElementById(x.id);
+        var ok=!offK[x.k] && !(hideDone&&prog[x.id]) &&
+               (!q || el.dataset.t.indexOf(q)>-1);
+        el.hidden=!ok;
+        if(ok){ vis++; shown++; }
+      });
+      sec.hidden=(vis===0);
+      var r=document.querySelector('[data-rail="'+i+'"]');
+      if(r) r.hidden=(vis===0);
+      var nv=document.querySelector('[data-nav="'+i+'"]');
+      if(nv) nv.hidden=(vis===0);
+    });
+    $('#fcount').textContent=shown+' / '+ALL.length+' '+T.shown;
+    var em=$('#empty');
+    em.hidden=shown>0;
+    if(!shown) em.textContent=(q? T.emptyH+' « '+q+' »' : T.emptyH+' '+T.emptyThese)+
+      ' — '+T.emptyP;
+    /* masquer une ère redistribue la largeur des autres segments : les noms
+       qui ne tenaient pas peuvent tenir, et l'inverse */
+    if(typeof fitNames==='function') fitNames();
+  }
+
+  function tally(){
+    var n=0;
+    ALL.forEach(function(x){ if(prog[x.id]) n++; });
+    $('#k-on').textContent=n; $('#k-tot').textContent=ALL.length;
+    $('#k-left').textContent=ALL.length-n;
+    $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
+    $('#s-tot').textContent=ALL.length;
+    D.eras.forEach(function(era,i){
+      var its=era.items.filter(function(x){ return x.kind==='it'; });
+      var d=its.filter(function(x){ return prog[x.id]; }).length;
+      var b=document.querySelector('[data-done="'+i+'"]'); if(b) b.textContent=d;
+      var f=document.querySelector('[data-rail-f="'+i+'"]');
+      if(f) f.style.width=(its.length? d/its.length*100 : 0)+'%';
+    });
+    startBtn();
+  }
+
+  /* ── Commencer / Reprendre : le bouton emmène à la prochaine lecture ── */
+  var next=null;
+  function startBtn(){
+    var started=ALL.some(function(x){ return prog[x.id]; });
+    next=ALL.filter(function(x){ return !prog[x.id]; })[0]||ALL[0];
+    $('#start').innerHTML=(started?T.resume:'Commencer')+' <em>▸</em>';
+  }
+  function goTo(el){
+    var top=el.getBoundingClientRect().top+scrollY-
+            (matchMedia('(max-width:1080px)').matches?70:168);
+    scrollTo({top:top,behavior:'smooth'});
+  }
+  $('#start').addEventListener('click',function(){
+    if(!next) return;
+    var el=document.getElementById(next.id);
+    if(el.hidden){ /* une entrée masquée par un filtre ne se rejoint pas */
+      $('#q').value=''; $('#searchbox').classList.remove('on');
+      offK={}; hideDone=false;
+      $$('#sieve button[aria-pressed]').forEach(function(b){
+        b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
+      applyFilters();
+    }
+    goTo(el);
+    el.style.borderColor='var(--hot)';
+    el.style.borderLeftColor='var(--hot)';
+    setTimeout(function(){ el.style.borderColor=''; el.style.borderLeftColor=''; },1400);
+  });
+
+  /* ── interactions ───────────────────────────────────────────────── */
+  document.addEventListener('click',function(ev){
+    var t=ev.target;
+
+    var chk=t.closest('[data-check]');
+    if(chk){
+      var row=chk.closest('.dr'), id=row.dataset.id;
+      prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      save();
+      chk.setAttribute('aria-checked',prog[id]?'true':'false');
+      row.classList.toggle('done',!!prog[id]);
+      tally();
+      if(hideDone&&prog[id]) applyFilters();
+      return;
+    }
+
+    var cp=t.closest('[data-copy]');
+    if(cp){
+      ev.preventDefault();
+      var url=location.href.split('#')[0]+cp.getAttribute('href');
+      var done=function(){ cp.classList.add('ok');
+        setTimeout(function(){ cp.classList.remove('ok'); },1200); };
+      if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,done); else done();
+      history.replaceState(null,'',cp.getAttribute('href'));
+      return;
+    }
+
+    var f=t.closest('#sieve button[aria-pressed]');
+    if(f){
+      var on=f.getAttribute('aria-pressed')==='true';
+      f.setAttribute('aria-pressed',on?'false':'true');
+      if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.k) offK[f.dataset.k]=on;
+      applyFilters();
+      return;
+    }
+
+    /* La barre et les boutons mènent au même endroit : le défilement doux
+       natif tomberait sous la barre collante, on le règle nous-mêmes sur la
+       hauteur du bandeau. */
+    var rl=t.closest('#rail [data-go]')||t.closest('#eranav a');
+    if(rl){
+      ev.preventDefault();
+      var sec=document.querySelector(rl.dataset.go||rl.getAttribute('href'));
+      if(sec) goTo(sec);
+      return;
+    }
+  });
+
+  /* La case est un vrai <button> : Espace et Entrée y déclenchent déjà un
+     clic. Lui en ajouter un au clavier basculait deux fois, donc pas du
+     tout — la ligne restait dans l'état où elle était. */
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='/'&&document.activeElement!==$('#q')){ ev.preventDefault(); $('#q').focus(); }
+  });
+
+  /* recherche */
+  var qi=$('#q');
+  qi.addEventListener('input',function(){
+    $('#searchbox').classList.toggle('on',!!qi.value);
+    applyFilters();
+  });
+  $('#q-clear').addEventListener('click',function(){
+    qi.value=''; $('#searchbox').classList.remove('on'); applyFilters(); qi.focus();
+  });
+
+  /* ── l'ère courante, marquée dans le rail ─────────────────────────
+     Une seule observation sur les sept bandes : on ne surveille pas 596
+     lignes pour savoir où l'on est. */
+  /* Un compte ne s'affiche que si son segment lui laisse la place : la
+     Nouvelle République pèse 8 entrées sur 533, son segment fait quelques
+     pixels. Le test se refait au redimensionnement, la barre étant à
+     l'échelle. */
+  var rails=$$('#rail [data-rail]'), navs=$$('#eranav a');
+  function fitNames(){
+    rails.forEach(function(a){
+      var nm=$('.nm',a);
+      if(!nm) return;
+      nm.hidden=false;
+      nm.hidden=(nm.offsetWidth>a.clientWidth-2);
+    });
+  }
+  addEventListener('resize',fitNames);
+
+  (function(){
+    if(!('IntersectionObserver' in window)) return;
+    var cur=-1;
+    function mark(i){
+      if(i===cur) return;
+      cur=i;
+      rails.forEach(function(a,k){ a.classList.toggle('on',k===i); });
+      navs.forEach(function(a,k){ a.classList.toggle('on',k===i); });
+      var nv=navs[i];
+      if(nv && !nv.hidden){
+        var r=$('#eranav');
+        r.scrollTo({left:Math.max(0,nv.offsetLeft-r.clientWidth/2+nv.offsetWidth/2),
+                    behavior:'smooth'});
+      }
+    }
+    var io=new IntersectionObserver(function(list){
+      list.forEach(function(en){
+        if(en.isIntersecting) mark(+en.target.parentNode.dataset.era);
+      });
+    },{rootMargin:'-140px 0px -55% 0px',threshold:0});
+    $$('.era-sec .list').forEach(function(el){ io.observe(el); });
+  })();
+
+  /* barre du bas, dépliable */
+  var hud=$('#hud');
+  $('#hud-btn').addEventListener('click',function(){
+    var open=hud.classList.toggle('open');
+    this.setAttribute('aria-expanded',open?'true':'false');
+    $('#hud-panel').hidden=!open;
+    document.body.style.paddingBottom=(open?hud.offsetHeight:64)+'px';
+  });
+
+  /* export / import / réinitialisation */
+  $('#export').addEventListener('click',function(){
+    var blob=new Blob([JSON.stringify({universe:'dossier-sw',progress:prog},null,1)],
+                      {type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-dossier-starwars.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('#import').addEventListener('click',function(){ $('#import-file').click(); });
+  $('#import-file').addEventListener('change',function(){
+    var f=this.files&&this.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var d=JSON.parse(r.result);
+        prog=d.progress||d||{}; save();
+        $$('.dr').forEach(function(el){
+          var on=!!prog[el.dataset.id];
+          el.classList.toggle('done',on);
+          $('[data-check]',el).setAttribute('aria-checked',on?'true':'false');
+        });
+        tally(); applyFilters();
+      }catch(_){ alert(T.badFile); }
+    };
+    r.readAsText(f); this.value='';
+  });
+  $('#reset').addEventListener('click',function(){
+    if(!confirm(T.resetDos)) return;
+    prog={}; save();
+    $$('.dr').forEach(function(el){
+      el.classList.remove('done');
+      $('[data-check]',el).setAttribute('aria-checked','false');
+    });
+    tally(); applyFilters();
+  });
+
+  /* Grogu */
+  var tt=$('#totop');
+  tt.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+  addEventListener('scroll',function(){ tt.classList.toggle('on',scrollY>400); },{passive:true});
+
+  /* menu replié */
+  var bg=$('#burger'), dr=$('#drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+
+  tally(); applyFilters(); fitNames();
+
+  /* une ancre dans l'URL ouvre directement la bonne entrée */
+  if(location.hash){
+    var target=document.getElementById(location.hash.slice(1));
+    if(target&&target.classList.contains('dr')){
+      setTimeout(function(){ goTo(target); },60);
+    }
+  }
+})();
+</script>
+<script src="e-app.js"></script>
+</body>
+</html>

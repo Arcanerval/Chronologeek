@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Chronologeek — À venir (proto E)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · À VENIR ══════════════════════════════
+  THÈSE : « À venir » n'est pas quatre listes côte à côte, c'est un
+  calendrier. La question posée par la page est « c'est quand », pas
+  « c'est chez qui » — le temps tient l'axe, l'univers tient la couleur.
+  Les quatre colonnes de la page actuelle répondaient à l'inverse : elles
+  obligeaient à lire quatre fois pour savoir ce qui sort la semaine
+  prochaine.
+  MONDE PROPRE : celui de la direction E. Couleur noyée, champs à bords
+  francs, chevrons en diagonale, trame de demi-teinte, titrage condensé à
+  ombre portée dure. Aucun halo, aucun arrondi, les bascules claquent.
+  RÉCIT : ce qui tombe en premier, puis le calendrier, mois par mois.
+  FORME : la prochaine sortie est traitée comme le « continue » de
+  l'accueil — pleine largeur, dans la couleur de son monde, compte à
+  rebours en grand. Une bande par mois, une ligne par sortie, la pastille
+  de jour à gauche comme sur un calendrier mural. Filtrer sur un seul
+  univers fait basculer la page entière dans son encre : le filtre se voit
+  avant d'être lu.
+  DONNÉES : radar.json est lu à chaud, exactement comme cg-upcoming.js.
+  Rien n'est figé dans la page, radar.py continue de travailler seul.
+-->
+<style>
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --soon:#8a8ab0;
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  --doss-deep:#5c2060;
+  /* la page s'ouvre dans le rose de « À venir » — sa couleur dans la nav */
+  --uc:var(--c-upc);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:58px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
+
+.field{position:fixed;inset:0;z-index:-1;background:var(--ink)}
+.field i{position:absolute;inset:0;background:var(--uc);opacity:.13;
+  transition:background-color .18s steps(3,end)}
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+/* la page courante prime sur la couleur d'entrée : c'est l'or qui marque où on est */
+.nav-links a.upc[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:34px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════
+   Court : la page n'a pas de bannière à montrer, et ce qu'on vient
+   chercher est trois centimètres plus bas. */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper)}
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 8%,
+             color-mix(in srgb,var(--uc) 46%,var(--ink)) 88%)}
+.attract .wrap{position:relative;z-index:2;padding-top:34px;padding-bottom:26px}
+.attract h1{font-size:clamp(46px,9vw,104px)}
+/* l'étiquette ne se colle plus au-dessus du titre : elle lui fait face,
+   posée sur la même ligne de base, poussée au bout de la ligne */
+.attract .head{display:flex;align-items:baseline;justify-content:space-between;
+  gap:16px;flex-wrap:wrap}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;flex:0 0 auto;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.tag em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+.dek{margin-top:13px;font-size:17px;color:rgba(255,253,247,.92)}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ LA PROCHAINE SORTIE : le « continue » de la page ══════════════ */
+.next{border-bottom:2px solid var(--paper);
+  background:color-mix(in srgb,var(--c,var(--hot)) 30%,var(--ink))}
+.next[hidden]{display:none}
+.next .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  padding-top:15px;padding-bottom:15px}
+.next .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  animation:blink 1.5s steps(1,end) infinite;flex:0 0 auto}
+.next .txt{min-width:0;flex:1}
+.next .t{font-family:'Big Shoulders Display';font-weight:900;
+  font-size:clamp(23px,3.6vw,38px);text-transform:uppercase;line-height:.95}
+.next .m{display:flex;gap:14px;flex-wrap:wrap;margin-top:5px;
+  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,253,247,.86)}
+.next .big{flex:0 0 auto;font-family:'Big Shoulders Display';font-weight:900;
+  font-size:clamp(40px,7vw,72px);line-height:.82;color:var(--hot);
+  text-shadow:4px 4px 0 var(--ink);text-align:right}
+.next .big small{display:block;font-family:'Chivo';font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.72);
+  text-shadow:none;margin-top:5px}
+
+/* ══ filtres et recherche ══════════════════════════════════════════ */
+/* le collant se cale sur la hauteur réelle du bandeau, mesurée par le
+   script : en dur, il laissait un filet de contenu défiler dans l'écart */
+.sieve{border-bottom:2px solid var(--paper);background:var(--ink);
+  position:sticky;top:var(--hh,53px);z-index:50}
+.sieve .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  padding-top:10px;padding-bottom:10px}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,253,247,.5);margin-right:2px}
+.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
+.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
+  padding:4px 9px;min-width:210px;flex:0 1 280px}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
+  stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
+  font-family:'Chivo';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
+  display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+/* la recherche garde sa ligne à elle : sans ça, les univers remontaient
+   à côté d'elle dès qu'il restait de la place sur la ligne */
+#f-uni{flex:1 0 100%}
+.srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1px}
+.fcount{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,253,247,.6)}
+
+/* ══ LE CALENDRIER ═════════════════════════════════════════════════
+   Une bande par mois, et rien pour les mois vides : un calendrier de
+   sorties n'a pas à dérouler les semaines où rien ne sort. */
+.mon-sec[hidden]{display:none}
+.mon{position:relative;overflow:hidden;background:var(--ink);
+  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
+.mon .wrap{position:relative;z-index:2;display:flex;align-items:baseline;gap:16px;
+  flex-wrap:wrap;padding-top:20px;padding-bottom:14px}
+.mon h2{font-size:clamp(30px,5.4vw,60px)}
+.mon .n{font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,253,247,.66)}
+.mon .now{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;background:var(--hot);color:var(--ink);padding:3px 10px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.mon-sec .list{background:rgba(13,11,18,.42);padding:16px 0 26px}
+.rows{list-style:none;display:flex;flex-direction:column;gap:9px}
+.rel[hidden]{display:none}
+
+/* la ligne de sortie : pastille de jour, puis la carte */
+.rel{position:relative;display:flex;align-items:stretch;gap:12px}
+.day{flex:0 0 auto;width:66px;border:2px solid var(--line);background:rgba(13,11,18,.6);
+  text-align:center;padding:6px 2px 7px;align-self:flex-start}
+.day b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:32px;
+  line-height:.86;color:var(--paper)}
+.day span{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,253,247,.6);margin-top:3px}
+/* le jour même se signale : c'est la seule ligne qui compte aujourd'hui */
+.rel.today .day{border-color:var(--hot);background:var(--hot)}
+.rel.today .day b,.rel.today .day span{color:var(--ink)}
+
+.card{flex:1;min-width:0;position:relative;border:2px solid var(--line);
+  border-left:6px solid var(--c);background:rgba(13,11,18,.5);
+  transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
+.card:hover{border-color:var(--hot);border-left-color:var(--c);transform:translate(-3px,-3px)}
+/* les équerres du curseur, comme sur les slots de l'accueil */
+.cur{position:absolute;inset:-7px;opacity:0;z-index:5;pointer-events:none}
+.card:hover .cur,.hd:focus-visible+.cur,details[open] .cur{opacity:1}
+.cur i{position:absolute;width:14px;height:14px;border:3px solid var(--c)}
+.cur i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
+.cur i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+.cur i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
+.cur i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+
+.hd{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;
+  color:inherit;font:inherit;text-align:left;padding:10px 12px}
+details>summary.hd{cursor:pointer;list-style:none}
+details>summary.hd::-webkit-details-marker{display:none}
+.hd .txt{flex:1;min-width:0}
+.tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.b{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.u{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:var(--c);border:1px solid var(--c)}
+.era{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
+.ti{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:22px;
+  line-height:1.02;text-transform:uppercase}
+/* le compte à rebours : le cadran de la borne, à droite de chaque ligne */
+.cd{flex:0 0 auto;font-family:'Big Shoulders Display';font-weight:900;font-size:23px;
+  letter-spacing:.02em;color:var(--c);text-align:right;line-height:1;white-space:nowrap}
+.cd.soonest{color:var(--hot)}
+.chevd{flex:0 0 auto;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;color:rgba(255,253,247,.6);transition:transform .18s}
+details[open] .chevd{transform:rotate(180deg)}
+.syn{border-top:2px solid var(--line);padding:11px 12px 13px;font-size:13.5px;
+  color:rgba(255,253,247,.86)}
+.syn .en{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--hot);border:1px solid var(--hot);padding:1px 6px;margin-right:6px}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
+.empty[hidden]{display:none}
+.note{padding:22px 0 6px;font-size:12px;color:rgba(255,253,247,.5)}
+
+/* ══ révélation au défilement, purement CSS ════════════════════════ */
+@supports (animation-timeline: view()){
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 4% cover 12%}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72);max-width:44ch}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ barre de bas d'écran ══════════════════════════════════════════
+   Pas de progression à tenir ici : la barre porte la densité du
+   calendrier. Un cran par sortie, dans l'encre de son univers, dans
+   l'ordre des dates — la frise dit d'un coup d'œil qui sort quoi. */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);
+  border-top:2px solid var(--paper);padding:8px 20px;
+  padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+.hud .in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hud b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud b em{font-style:normal;color:var(--hot)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:120px;height:12px;border:2px solid var(--paper);
+  display:flex;gap:1px;padding:1px}
+.hud .bar i{flex:1;background:var(--c,var(--soon))}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .foot{grid-template-columns:1fr}
+  .hud .lbl{display:none}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+  .sieve{position:static}
+  .next .big{text-align:left}
+  .day{width:56px}
+  .day b{font-size:26px}
+  /* en étroit, le compte à rebours passe sous le titre plutôt que de
+     comprimer la ligne à deux mots par ligne */
+  .hd{flex-wrap:wrap;gap:8px 12px}
+  .cd{order:3;text-align:left;font-size:19px}
+  .chevd{order:4;margin-left:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .next .chev,.tag em{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="field" aria-hidden="true"><i></i></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="e-accueil.html"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="e-accueil.html">Accueil</a>
+      <a href="e-dossiers.html" class="doss">Dossiers</a>
+      <a href="e-starwars.html">Star Wars</a>
+      <a href="e-marvel.html">Marvel</a>
+      <a href="e-dc.html">DC</a>
+      <a href="e-avatar.html">Avatar</a>
+      <a href="#" class="upc" aria-current="page">À venir</a>
+      <a href="e-nouveautes.html" class="news">Nouveautés</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="en-a-venir.html" aria-label="Switch to English" title="Switch to English">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
+    <a href="e-accueil.html">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a>
+    <a href="e-starwars.html">Star Wars</a><a href="e-marvel.html">Marvel</a>
+    <a href="e-dc.html">DC</a><a href="e-avatar.html">Avatar</a>
+    <a href="#" class="upc" aria-current="page">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="attract">
+  <div class="veil" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="head">
+      <h1 class="disp off">À venir</h1>
+      <span class="tag"><em>▸</em> Mis à jour chaque jour</span>
+    </div>
+    <p class="dek">Toutes les prochaines sorties Star Wars, Marvel, DC et Avatar
+      — mises à jour chaque jour.</p>
+  </div>
+</section>
+
+<!-- ══ LA PROCHAINE SORTIE ═══════════════════════════════════════ -->
+<div class="next" id="next" hidden>
+  <div class="wrap">
+    <span class="chev">Prochaine</span>
+    <span class="txt">
+      <span class="t" id="next-t"></span>
+      <span class="m" id="next-m"></span>
+    </span>
+    <span class="big" id="next-cd"></span>
+  </div>
+</div>
+
+<!-- ══ FILTRES ═══════════════════════════════════════════════════ -->
+<div class="sieve">
+  <div class="wrap">
+    <div class="search" id="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="skip" for="q">Rechercher une sortie</label>
+      <input id="q" type="search" placeholder="Rechercher…  ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
+    </div>
+    <div class="sgroup" id="f-uni"><span class="lab">Univers</span></div>
+    <div class="srow">
+      <div class="sgroup" id="f-kind"><span class="lab">Support</span></div>
+      <span class="fcount" id="fcount"></span>
+    </div>
+  </div>
+</div>
+
+<div id="cal"></div>
+
+<div class="wrap">
+  <p class="empty" id="empty" hidden>Rien ne correspond. Essayez une autre orthographe,
+    ou rallumez les filtres que vous avez éteints.</p>
+  <p class="note" id="note"></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <h4>Chronologeek</h4>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
+        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
+        qui regarde tout deux fois.</p>
+    </div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="e-starwars.html">Star Wars</a></li>
+      <li><a href="e-marvel.html">Marvel — MCU</a></li>
+      <li><a href="e-dc.html">DC Multiverse</a></li>
+      <li><a href="e-avatar.html">Avatar</a></li>
+      <li><a href="e-dossiers.html">Dossiers</a></li>
+    </ul></div>
+    <div><h4>Plus</h4><ul>
+      <li><a href="#">Sorties à venir</a></li>
+      <li><a href="e-nouveautes.html">Nouveautés</a></li>
+      <li><a href="#">Soutenir le site</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n'est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ;
+      Chronologeek est un projet de fan indépendant.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+
+<div class="hud"><div class="in">
+  <b><em id="h-n">…</em></b>
+  <span class="lbl" id="h-lbl">sorties suivies</span>
+  <div class="bar" id="h-bar"></div>
+  <span class="lbl" id="h-next"></span>
+</div></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── la table des univers et des supports, reprise de cg-upcoming.js ── */
+  var UNI={starwars:['Star Wars','var(--sw)'],marvel:['Marvel','var(--mcu)'],
+           dc:['DC','var(--dc)'],avatar:['Avatar','var(--av)']};
+  var KIND={film:['Film','#64b5f6'],tv:['Série','#81c784'],comic:['Comic','#fb923c'],
+            novel:['Roman','#a78bfa'],game:['Jeu vidéo','#ffb74d'],book:['Livre','#94a3b8'],
+            video:['Vidéo','#f472b6'],special:['Spécial','#ffa726'],other:['Autre','#6b7280']};
+  /* i18n-off — les deux jeux de noms, choisis à l'exécution.
+
+     Cette page lit `radar.json`, un fichier unique et commun aux deux
+     langues : c'est donc elle qui décide de ce qu'elle en montre, comme
+     le fait déjà `cg-upcoming.js` en production. La traduction
+     automatique n'a rien à faire ici, elle ne saurait pas garder les
+     deux versions côte à côte. */
+  var FR = document.documentElement.lang !== 'en';
+  var MOIS = FR
+    ? ['janvier','février','mars','avril','mai','juin',
+       'juillet','août','septembre','octobre','novembre','décembre']
+    : ['January','February','March','April','May','June',
+       'July','August','September','October','November','December'];
+  var JOURS = FR
+    ? ['dim','lun','mar','mer','jeu','ven','sam']
+    : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  /* i18n-on */
+  /* quelques entrées Avatar ont un `kind` corrompu ; `kindKey` est propre.
+
+     i18n-off — NE PAS TRADUIRE CE TABLEAU. Ce ne sont pas des libellés
+     mais des motifs cherchés dans `radar.json`, qui est écrit en
+     français quelle que soit la langue de la page : c'est le même
+     fichier qui alimente les deux versions. Traduire « livre » en
+     « book » ici ferait échouer la reconnaissance du support, et la
+     page anglaise n'afficherait plus aucune sortie. */
+  var MATCH=[['graphic','comic'],['comic','comic'],['jeu','game'],['game','game'],
+             ['roman','novel'],['novel','novel'],['young','novel'],['junior','novel'],
+             ['nouvelle','book'],['short','book'],['livre','book'],['book','book'],
+             ['audio','video'],['vid','video'],['spécial','special'],['special','special'],
+             ['promo','special'],['épisode','tv'],['episode','tv'],['série','tv'],
+             ['serie','tv'],['tv','tv'],['film','film'],['movie','film']];
+  /* i18n-on */
+  var NONLATIN=/[぀-ヿ㐀-鿿가-힯Ѐ-ӿ֐-ۿ]/;
+
+  function keyOf(e){
+    if(e.kindKey) return e.kindKey;
+    var k=(e.kind||'').toLowerCase();
+    for(var i=0;i<MATCH.length;i++){ if(k.indexOf(MATCH[i][0])>-1) return MATCH[i][1]; }
+    return 'other';
+  }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':s; return d.innerHTML; }
+
+  var TODAY=new Date(); TODAY.setHours(0,0,0,0);
+  var TODAY_ISO=new Date(TODAY.getTime()-TODAY.getTimezoneOffset()*60000).toISOString().slice(0,10);
+
+  /* i18n-off — Un film ne sort pas le même jour des deux côtés de
+     l'Atlantique. `radar.py` écrit la sortie **US** dans `date_sort` et
+     la **française** dans `date_sort_fr`, laissée vide quand les deux
+     coïncident ; `radar.json` porte donc l'union des deux pays, et
+     chaque langue coupe à SA date, le jour J compris.
+
+     Batman: Knightfall sort le 23/06 en France et le 25/08 aux
+     États-Unis : il quitte « À venir » le 24/06 et « Upcoming » le
+     26/08. Prendre la date française sur la page anglaise ferait
+     disparaître le film deux mois trop tôt. */
+  function iso(e){ return (FR && e.date_sort_fr) || e.date_sort || ''; }
+  /* i18n-on */
+  function stillUpcoming(e){ var d=iso(e); return !d||d>=TODAY_ISO; }
+  function days(d){ return Math.round((new Date(d+'T00:00:00')-TODAY)/86400000); }
+  function cd(n){
+    if(n<=0) return 'AUJOURD’HUI';
+    if(n===1) return 'DEMAIN';
+    return 'J‑'+n;
+  }
+
+  var host=document.getElementById('cal');
+
+  fetch('/radar.json',{cache:'no-cache'})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(build)
+    .catch(function(){
+      host.innerHTML='<div class="wrap"><p class="empty">Le radar n’a pas pu être chargé. '+
+        'Cette page lit <code>/radar.json</code> à la racine : servez le dépôt (port 8947), '+
+        'pas le dossier <code>_proto</code>.</p></div>';
+    });
+
+  var ROWS=[];   /* {el, uni, kind, hay} */
+
+  function build(data){
+    var list=data.filter(stillUpcoming).sort(function(a,b){ return iso(a).localeCompare(iso(b)); });
+
+    /* ── la prochaine sortie ───────────────────────────────────────── */
+    if(list.length){
+      var n0=list[0], u0=UNI[n0.universe]||['—','var(--soon)'];
+      var nx=document.getElementById('next');
+      nx.hidden=false;
+      nx.style.setProperty('--c',u0[1]);
+      document.getElementById('next-t').textContent=titleOf(n0);
+      document.getElementById('next-m').innerHTML=
+        '<span>'+u0[0]+'</span><span>'+esc(KIND[keyOf(n0)][0])+'</span><span>'+esc(dateTxt(n0))+'</span>';
+      document.getElementById('next-cd').innerHTML=
+        cd(days(iso(n0)))+'<small>avant la sortie</small>';
+      /* la page s’ouvre dans l’encre du monde qui sort en premier */
+      document.body.style.setProperty('--uc',u0[1]);
+    }
+
+    /* ── le calendrier : une bande par mois habité ─────────────────── */
+    var months=[], seen={};
+    list.forEach(function(e){
+      var m=iso(e).slice(0,7);
+      if(!seen[m]){ seen[m]=[]; months.push(m); }
+      seen[m].push(e);
+    });
+
+    var nowM=TODAY_ISO.slice(0,7), html='';
+    months.forEach(function(m){
+      var y=m.slice(0,4), mi=parseInt(m.slice(5),10)-1;
+      var rows=seen[m].map(row).join('');
+      html+='<section class="mon-sec" data-m="'+m+'">'+
+        '<div class="mon"><div class="halftone" aria-hidden="true"></div><div class="wrap">'+
+          '<h2 class="disp off">'+MOIS[mi]+' '+y+'</h2>'+
+          (m===nowM?'<span class="now">Ce mois-ci</span>':'')+
+          '<span class="n" data-n>'+seen[m].length+' sortie'+(seen[m].length>1?'s':'')+'</span>'+
+        '</div></div>'+
+        '<div class="list"><div class="wrap"><ol class="rows">'+rows+'</ol></div></div>'+
+      '</section>';
+    });
+    host.innerHTML=html;
+
+    document.getElementById('note').textContent=
+      'Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac';
+
+    /* ── les boutons de filtre, tirés des données ──────────────────── */
+    var fu=document.getElementById('f-uni'), fk=document.getElementById('f-kind');
+    Object.keys(UNI).forEach(function(u){
+      if(!list.some(function(e){ return e.universe===u; })) return;
+      fu.insertAdjacentHTML('beforeend','<button type="button" data-u="'+u+'" aria-pressed="true"'+
+        ' style="--k:'+UNI[u][1]+'"><i></i>'+UNI[u][0]+'</button>');
+    });
+    var kinds=[];
+    list.forEach(function(e){ var k=keyOf(e); if(kinds.indexOf(k)<0) kinds.push(k); });
+    kinds.forEach(function(k){
+      fk.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" aria-pressed="true"'+
+        ' style="--k:'+KIND[k][1]+'"><i></i>'+KIND[k][0]+'</button>');
+    });
+
+    ROWS=[].slice.call(document.querySelectorAll('.rel')).map(function(el){
+      return {el:el,uni:el.dataset.u,kind:el.dataset.k,hay:el.dataset.q};
+    });
+    wire();
+    apply();
+  }
+
+  /* i18n-off — le titre et la date, dans la langue de la page.
+
+     `title_fr` porte le titre français quand il existe : la page
+     anglaise, elle, veut toujours le titre d'origine.
+
+     Pour la date, `date_txt` et `date_txt_fr` sont tous deux écrits en
+     JJ/MM/AAAA par `radar.py`, y compris la sortie américaine. La page
+     anglaise reformate donc depuis `date_sort`, en toutes lettres,
+     comme `cg-upcoming.js` : « August 12, 2026 ». */
+  function titleOf(e){
+    if(!FR) return e.title;
+    return (e.title_fr&&!NONLATIN.test(e.title_fr))?e.title_fr:e.title;
+  }
+  function dateTxt(e){
+    if(FR) return e.date_txt_fr||e.date_txt||'';
+    var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(e.date_sort||'');
+    if(!m) return e.date_txt||'';
+    return MOIS[parseInt(m[2],10)-1]+' '+parseInt(m[3],10)+', '+m[1];
+  }
+  /* i18n-on */
+
+  function row(e){
+    var u=UNI[e.universe]||['—','var(--soon)'], k=keyOf(e), kk=KIND[k]||KIND.other;
+    var d=iso(e), dt=new Date(d+'T00:00:00'), n=days(d);
+    var t=titleOf(e);
+    /* i18n-off — radar.json porte les deux synopsis et sert les deux langues :
+       c'est la page qui choisit. Le français prend `syn_fr` et retombe sur
+       l'anglais en le signalant ; l'anglais prend `syn` et ne retombe pas. Un
+       synopsis français n'a rien à faire sur la page anglaise, pour la même
+       raison que la bande-annonce. Sans ce test, la page anglaise affichait le
+       résumé français de chaque sortie. */
+    var syn='', marque='';
+    if(FR){ if(e.syn_fr){ syn=e.syn_fr; } else if(e.syn){ syn=e.syn; marque='<span class="en">EN</span>'; } }
+    else { syn=e.syn||''; }
+    /* i18n-on */
+
+    var head=
+      '<span class="txt">'+
+        '<span class="tags">'+
+          '<span class="u">'+u[0]+'</span>'+
+          '<span class="b" style="--k:'+kk[1]+'">'+kk[0]+'</span>'+
+          (e.era?'<span class="era">'+esc(e.era)+'</span>':'')+
+        '</span>'+
+        '<span class="ti">'+esc(t)+'</span>'+
+      '</span>'+
+      '<span class="cd'+(n<=7?' soonest':'')+'">'+cd(n)+'</span>';
+
+    var chev='<svg class="chevd" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg>';
+
+    var card=syn
+      ? '<details class="card"><summary class="hd">'+head+chev+'</summary>'+
+          '<p class="syn">'+marque+esc(syn)+'</p>'+
+          '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></details>'
+      : '<div class="card"><div class="hd">'+head+'</div>'+
+          '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>';
+
+    return '<li class="rel rv'+(n<=0?' today':'')+'" style="--c:'+u[1]+'"'+
+      ' data-u="'+e.universe+'" data-k="'+k+'" data-d="'+d+'"'+
+      ' data-q="'+esc((t+' '+e.title+' '+u[0]+' '+kk[0]).toLowerCase()).replace(/"/g,'')+'">'+
+      '<span class="day"><b>'+parseInt(d.slice(8),10)+'</b><span>'+JOURS[dt.getDay()]+'</span></span>'+
+      card+'</li>';
+  }
+
+  /* ── filtrage ──────────────────────────────────────────────────── */
+  var offU={}, offK={}, q=document.getElementById('q');
+
+  function apply(){
+    var v=q.value.trim().toLowerCase(), n=0, segs='', first=null;
+    ROWS.forEach(function(r){
+      var ok=!offU[r.uni]&&!offK[r.kind]&&(!v||r.hay.indexOf(v)>-1);
+      r.el.hidden=!ok;
+      if(ok){
+        n++;
+        segs+='<i style="--c:'+(UNI[r.uni]?UNI[r.uni][1]:'var(--soon)')+'"></i>';
+        if(!first) first=r;
+      }
+    });
+    /* un mois sans sortie visible n’a plus de raison d’être affiché */
+    [].forEach.call(document.querySelectorAll('.mon-sec'),function(sec){
+      var vis=[].slice.call(sec.querySelectorAll('.rel')).filter(function(el){ return !el.hidden; }).length;
+      sec.hidden=(vis===0);
+      var lab=sec.querySelector('[data-n]');
+      if(lab) lab.textContent=vis+' sortie'+(vis>1?'s':'');
+    });
+
+    document.getElementById('fcount').textContent=n+' sortie'+(n>1?'s':'')+' affichée'+(n>1?'s':'');
+    document.getElementById('empty').hidden=(n>0);
+    document.getElementById('h-n').textContent=n;
+    document.getElementById('h-lbl').textContent='sortie'+(n>1?'s':'')+' suivie'+(n>1?'s':'');
+    document.getElementById('h-bar').innerHTML=segs;
+    document.getElementById('h-next').textContent=
+      first?('prochaine · '+cd(days(first.el.dataset.d||''))):'';
+    q.parentNode.classList.toggle('on',!!q.value);
+
+    /* un seul univers allumé : la page entière bascule dans son encre */
+    var on=Object.keys(UNI).filter(function(u){ return !offU[u]; });
+    if(on.length===1) document.body.style.setProperty('--uc',UNI[on[0]][1]);
+    else if(first) document.body.style.setProperty('--uc',UNI[first.uni]?UNI[first.uni][1]:'var(--c-upc)');
+  }
+
+  function wire(){
+    document.getElementById('f-uni').addEventListener('click',function(ev){
+      var b=ev.target.closest('button[data-u]'); if(!b) return;
+      var on=b.getAttribute('aria-pressed')==='true';
+      b.setAttribute('aria-pressed',on?'false':'true');
+      offU[b.dataset.u]=on; apply();
+    });
+    document.getElementById('f-kind').addEventListener('click',function(ev){
+      var b=ev.target.closest('button[data-k]'); if(!b) return;
+      var on=b.getAttribute('aria-pressed')==='true';
+      b.setAttribute('aria-pressed',on?'false':'true');
+      offK[b.dataset.k]=on; apply();
+    });
+    var t;
+    q.addEventListener('input',function(){ clearTimeout(t); t=setTimeout(apply,90); });
+    document.getElementById('q-clear').addEventListener('click',function(){
+      q.value=''; apply(); q.focus();
+    });
+    addEventListener('keydown',function(e){
+      if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){ e.preventDefault(); q.focus(); }
+    });
+  }
+
+  /* ── la hauteur du bandeau, donnée au collant ──────────────────── */
+  var hdr=document.querySelector('header');
+  function head(){
+    document.documentElement.style.setProperty('--hh',
+      hdr.getBoundingClientRect().height+'px');
+  }
+  head();
+  addEventListener('resize',head);
+  /* les polices arrivent après : la hauteur du bandeau bouge avec elles */
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(head);
+
+  /* ── menu replié ───────────────────────────────────────────────── */
+  var bg=document.getElementById('burger'), dr=document.getElementById('drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+})();
+</script>
+<script src="e-app.js"></script>
+</body>
+</html>

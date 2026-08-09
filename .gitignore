@@ -21,3 +21,6 @@ ruvector.db
 
 # Cache de compilation Python (py -m py_compile)
 __pycache__/
+
+# Coffre Obsidian cree par accident dans le depot. Rien du site n'y est.
+Chronologeek/

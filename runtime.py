@@ -36,10 +36,17 @@ CACHE_VERSION = 1
 PAUSE = 0.06          # secondes entre deux appels TMDB
 DEFAULT_EP = 22       # minutes, filet de secours si TMDB donne 0/null
 
+# Depuis la refonte, les entrees ne sont plus dans les pages : elles vivent dans
+# les protos francais, d'ou traduire.mjs deduit l'anglais et publier.mjs pose les
+# dix-huit pages. Ecrire dans starwars.html serait donc perdu a la publication
+# suivante. Une seule cible par univers, en francais : l'anglais suit.
+#
+# Avatar n'y figure pas — sa timeline n'a pas de table RT, et lui en donner une
+# serait une fonctionnalite, pas une reparation.
 PAGES = [
-    "starwars.html", "fr/starwars.html",
-    "marvel.html",   "fr/marvel.html",
-    "dc.html",       "fr/dc.html",
+    "_proto/data.js",       # Star Wars
+    "_proto/data-mcu.js",   # Marvel
+    "_proto/data-dc.js",    # DC
 ]
 
 # ───────────────────────────────────────────── overrides manuels (minutes)
@@ -346,6 +353,24 @@ const RT=%(table)s;
 window.RT=RT;
 %(close)s"""
 
+# Les protos exportent deja `window.RT=RT;` plus bas, apres `window.SW=DATA_SW;`.
+# Le republier ici en laisserait deux — inoffensif a l'execution, mais c'est
+# exactement le genre de doublon qui fait douter du fichier six mois plus tard.
+JS_TPL_DATA = """%(open)s
+const RT=%(table)s;
+%(close)s"""
+
+# La table telle qu'elle vit dans un proto : une ligne `const RT={...};`, sans
+# marqueur — c'est ainsi que la refonte l'a recopiee en sortant les entrees du
+# HTML. Une fois patchee, elle porte les marqueurs. Les deux formes se
+# reconnaissent, sinon un second passage ne retrouve plus ou reposer le bloc :
+# il l'avait retire, et il rendait « point d'ancrage introuvable ».
+RT_MARQUE = re.compile(
+    re.escape(RT_MARK_OPEN) + r".*?" + re.escape(RT_MARK_CLOSE) + r"[ \t]*\r?\n?",
+    re.S,
+)
+RT_INLINE = re.compile(r"^const RT=\{[^\n]*\};[ \t]*\r?\n", re.M)
+
 
 
 
@@ -353,26 +378,34 @@ def patch_page(path, table, dry=False):
     src = open(path, encoding="utf-8").read()
     orig = src
 
-    # 1) on retire toute trace d'un passage precedent (le script est rejouable)
-    src = re.sub(re.escape(RT_MARK_OPEN) + r".*?" + re.escape(RT_MARK_CLOSE),
-                 "", src, flags=re.S).replace("\n\n\n", "\n\n")
     src = src.replace("+cgTimeLeft()", "")
+    table_js = json.dumps(table, ensure_ascii=False, sort_keys=True)
+    marques = {"open": RT_MARK_OPEN, "close": RT_MARK_CLOSE, "table": table_js}
 
-    block = JS_TPL % {
-        "open": RT_MARK_OPEN, "close": RT_MARK_CLOSE,
-        "table": json.dumps(table, ensure_ascii=False, sort_keys=True),
-    }
-
-    # 2) on pose le bloc juste avant la declaration de currentData / getP
-    anchor = None
-    for cand in ("let currentData=null;", "function getP(", "function getProgress("):
-        i = src.find(cand)
-        if i != -1:
-            anchor = i
-            break
-    if anchor is None:
-        return f"!! {path} : point d'ancrage JS introuvable, page non modifiee"
-    src = src[:anchor] + block + "\n" + src[anchor:]
+    # Le script est rejouable : on remplace la table en place plutot que de la
+    # retirer puis de chercher ou la remettre. Trois formes possibles, dans cet
+    # ordre — un bloc deja marque, la table inline des protos, et pour une page
+    # de l'ancien modele, l'ancrage sur `currentData`.
+    trouve = RT_MARQUE.search(src) or RT_INLINE.search(src)
+    if trouve:
+        # L'export vaut-il d'etre republie ? Les protos le posent deja plus bas,
+        # apres `window.SW=DATA_SW;` ; une page de l'ancien modele ne l'a que
+        # dans le bloc, et l'omettre la casserait le compteur.
+        dehors = src[:trouve.start()] + src[trouve.end():]
+        tpl = JS_TPL_DATA if "window.RT" in dehors else JS_TPL
+        block = tpl % marques
+        src = src[:trouve.start()] + block + "\n" + src[trouve.end():]
+    else:
+        block = JS_TPL % marques
+        anchor = None
+        for cand in ("let currentData=null;", "function getP(", "function getProgress("):
+            i = src.find(cand)
+            if i != -1:
+                anchor = i
+                break
+        if anchor is None:
+            return f"!! {path} : point d'ancrage JS introuvable, fichier non modifie"
+        src = src[:anchor] + block + "\n" + src[anchor:]
 
     if not dry:
         open(path, "w", encoding="utf-8").write(src)

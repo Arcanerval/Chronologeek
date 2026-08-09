@@ -1,81 +1,463 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Dossiers — Chronologeek</title><meta name="description" content="Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers."/>
-<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
-<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
-<meta property="og:title" content="Dossiers — Chronologeek"/><meta property="og:description" content="Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers."/>
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" type="image/png" href="/images/icon-192.png"/>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#08080f"/>
+<link rel="apple-touch-icon" href="/images/icon-192.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Chronologeek"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Dossiers — Chronologeek</title>
+<meta name="description" content="Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Chronologeek"/>
+<meta property="og:title" content="Dossiers — Chronologeek"/>
+<meta property="og:description" content="Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers."/>
 <meta property="og:image" content="https://chronologeek.app/images/og-banner.png"/>
-<link rel="stylesheet" href="/cg.css"/>
+<meta property="og:url" content="https://chronologeek.app/fr/dossiers/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/deep-dives/"/>
 <link rel="canonical" href="https://chronologeek.app/fr/dossiers/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="/images/starwarscomics.jpg"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · ACCUEIL DES DOSSIERS ═════════════════
+  THÈSE : l'accueil des Dossiers est un écran de sélection lui aussi,
+  mais il n'a qu'un slot ouvert. Une page qui alignerait une carte et un
+  bloc « bientôt » serait une page vide déguisée. Alors le seul dossier
+  disponible est joué en grand, et la page prouve ce qu'il contient :
+  la composition réelle par nature d'œuvre. Le poids des ères, lui, est
+  parti dans le Dossier : il y sert de barre de navigation, à l'échelle et
+  cliquable, au lieu de n'etre ici qu'une vitrine.
+  MONDE PROPRE : hérité de l'accueil E. Le champ de couleur part du
+  violet des Dossiers — l'encre que la nav leur donne déjà — et bascule
+  au bleu Star Wars dès qu'on pointe la carte, puis revient. Bords
+  francs, chevrons en diagonale, trame de demi-teinte, titrage condensé
+  à ombre portée dure. Aucun halo, aucun arrondi, bascules en steps.
+  RÉCIT : ce n'est pas la timeline, voilà ce que c'est, voilà son volume,
+  je reprends là où j'en étais.
+  FORME : premier écran, reprise de lecture en « continue », un slot
+  pleine largeur, un slot verrouillé, puis le relevé du Dossier.
+  TEXTES : repris mot pour mot de fr/dossiers/index.html et de la bande
+  Dossiers de e-accueil.html. Seuls les intitulés de structure sont
+  nouveaux — les titres de section et les libellés de catégories.
+-->
+<style>
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  --cleared:#3ddc84;
+  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --soon:#8a8ab0;
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  --doss-deep:#5c2060;
+  /* les quatre natures d'œuvre du Dossier gardent les couleurs que la
+     page du Dossier leur donne déjà, pour qu'on les reconnaisse en y entrant */
+  --k-comic:#fb923c; --k-roman:#a78bfa; --k-jeunesse:#4ade80; --k-audio:#f472b6;
+  --uc:var(--c-doss);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:58px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
+
+.field{position:fixed;inset:0;z-index:-1;background:var(--ink)}
+.field i{position:absolute;inset:0;background:var(--uc);opacity:.13;
+  transition:background-color .18s steps(3,end)}
+
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:23px;width:auto}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+/* la page courante l'emporte sur la couleur de rubrique */
+.nav-links a.doss[aria-current],.drawer a.doss[aria-current]{color:var(--hot)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:34px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.drawer a:first-child{border-top:0}
+.drawer a[aria-current]{color:var(--hot)}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(54vh,470px);display:flex;align-items:flex-end}
+.plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 42%;
+  background-image:var(--hero)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+.veil{position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink) 5%,
+             color-mix(in srgb,var(--uc) 62%,var(--ink)) 56%,
+             color-mix(in srgb,var(--uc) 22%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:50px;padding-bottom:28px}
+.attract h1{font-size:clamp(46px,9.5vw,116px);max-width:12ch}
+.attract h1 span{display:block;color:var(--hot)}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;max-width:56ch;color:rgba(255,253,247,.92)}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ CONTINUE : la reprise de lecture ══════════════════════════════ */
+.resume{border-bottom:2px solid var(--paper);background:color-mix(in srgb,var(--rc,var(--sw)) 30%,var(--ink))}
+.resume[hidden]{display:none}
+.resume a{display:flex;align-items:center;gap:14px;text-decoration:none;
+  max-width:1280px;margin:0 auto;padding:13px 20px;flex-wrap:wrap}
+.resume .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);animation:blink 1.5s steps(1,end) infinite}
+.resume .txt{font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(21px,3.4vw,29px);
+  text-transform:uppercase;letter-spacing:.02em}
+.resume .txt b{color:var(--hot)}
+.resume .go{margin-left:auto;font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.12em;text-transform:uppercase;border-bottom:3px solid var(--hot);padding-bottom:1px}
+
+/* ══ SÉLECTION DE DOSSIER ══════════════════════════════════════════ */
+.pick{padding:38px 0 44px}
+.pick h2{font-family:'Big Shoulders Display';font-weight:800;text-transform:uppercase;
+  letter-spacing:.04em;font-size:clamp(25px,4vw,42px);margin-bottom:3px}
+.pick .sub{color:rgba(255,253,247,.72);font-size:14.5px;margin-bottom:22px;max-width:70ch}
+.slots{display:grid;gap:14px}
+
+.slot{position:relative;display:block;text-decoration:none;color:var(--paper);
+  border:2px solid var(--line);background:color-mix(in srgb,var(--c) 12%,var(--ink));
+  transition:border-color .08s steps(1,end),transform .1s cubic-bezier(.2,.9,.3,1)}
+.slot:hover,.slot:focus-visible{border-color:var(--c);transform:translate(-4px,-4px);z-index:3}
+.slot .cur{position:absolute;inset:-8px;opacity:0;z-index:5}
+.slot:hover .cur,.slot:focus-visible .cur{opacity:1}
+.slot .cur i{position:absolute;width:17px;height:17px;border:3px solid var(--c)}
+.slot .cur i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
+.slot .cur i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+.slot .cur i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
+.slot .cur i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+
+/* le slot ouvert est joué en grand : image à gauche, relevé à droite.
+   Un seul dossier disponible ne se traite pas en vignette. */
+.slot.big{display:grid;grid-template-columns:minmax(0,44%) 1fr;align-items:stretch}
+.slot figure{position:relative;overflow:hidden;background:var(--ink)}
+/* l'image ne dicte pas la hauteur de la carte : sans position absolue,
+   height:100% ne résout pas et le fichier impose ses 715×450 au bloc */
+.slot.big figure{min-height:280px}
+.slot.big figure img{position:absolute;inset:0}
+.slot figure img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(.5) contrast(1.08) brightness(.78);transition:filter .18s,transform .35s ease-out}
+.slot:hover figure img,.slot:focus-visible figure img{filter:saturate(1) contrast(1.1) brightness(.92);transform:scale(1.035)}
+.slot .shade{position:absolute;inset:0;
+  background:linear-gradient(to top,color-mix(in srgb,var(--c) 26%,var(--ink)) 4%,transparent 62%)}
+.slot .no{position:absolute;top:0;left:0;z-index:3;background:var(--ink);color:var(--paper);
+  font-family:'Big Shoulders Display';font-weight:900;font-size:20px;padding:2px 10px 1px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.slot .state{position:absolute;top:0;right:0;z-index:3;background:var(--c);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:12.5px;letter-spacing:.11em;
+  text-transform:uppercase;padding:3px 9px}
+.slot .nm{position:absolute;left:18px;right:18px;bottom:14px;z-index:3;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(30px,4.4vw,50px);
+  text-transform:uppercase;line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+.slot .body{display:block;padding:16px 20px 0}
+.slot.big .body{display:flex;flex-direction:column;padding-bottom:0}
+.slot .d{font-size:13.5px;font-weight:600;letter-spacing:.02em;color:rgba(255,253,247,.82);display:block}
+.slot .lead{display:block;font-size:13px;color:rgba(255,253,247,.66);margin-top:8px;max-width:52ch}
+.slot .ttl{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:25px;
+  text-transform:uppercase;letter-spacing:.03em;line-height:1;color:var(--soon);margin-bottom:6px}
+.slot .upd{display:block;margin:14px -20px 0;padding:9px 20px;
+  border-top:2px solid var(--line);text-align:center;
+  font-size:11px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.62)}
+.slot.big .upd{margin-top:auto}
+.pips{display:flex;gap:2px;margin-top:14px}
+.pips i{height:8px;flex:1;background:rgba(255,253,247,.2)}
+.pips i.on{background:var(--c)}
+.score{display:flex;justify-content:space-between;gap:10px;margin-top:6px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;letter-spacing:.06em;
+  text-transform:uppercase}
+.score b{color:var(--hot)}
+
+.slot.lock{cursor:default}
+.slot.lock:hover{transform:none;border-color:var(--line)}
+.slot.lock figure{aspect-ratio:26/9}
+.slot.lock figure img{filter:saturate(.12) contrast(1.05) brightness(.5)}
+.slot.lock figure::after{content:'';position:absolute;inset:0;z-index:2;
+  background:repeating-linear-gradient(45deg,rgba(13,11,18,.55) 0 12px,transparent 12px 24px)}
+.slot.lock .stamp{position:absolute;inset:0;z-index:4;display:grid;place-items:center}
+.slot.lock .stamp span{font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(22px,3.4vw,34px);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--soon);
+  padding:5px 16px;transform:rotate(-4deg);border:2px solid var(--ink)}
+
+/* ══ LE RELEVÉ : ce que le Dossier contient vraiment ═══════════════
+   Une page qui n'a qu'un dossier doit le prouver. Les nombres sont
+   comptés sur les 533 entrées de la page, pas arrondis à la main. */
+.relev{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);
+  background:color-mix(in srgb,var(--doss-deep) 42%,var(--ink));padding:30px 0 34px}
+.relev h2{font-family:'Big Shoulders Display';font-weight:900;font-size:clamp(23px,3.4vw,34px);
+  text-transform:uppercase;line-height:.92;color:var(--c-doss);text-shadow:3px 3px 0 var(--ink)}
+.relev .sub{font-size:14px;color:rgba(255,253,247,.78);margin:6px 0 20px;max-width:64ch}
+.kinds{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.kind{border:2px solid var(--line);border-left:6px solid var(--kc,var(--paper));
+  background:rgba(13,11,18,.42);padding:13px 14px}
+.kind b{display:block;font-family:'Big Shoulders Display';font-weight:900;
+  font-size:clamp(28px,4vw,40px);line-height:1;color:var(--kc,var(--paper))}
+.kind span{display:block;margin-top:5px;font-size:11.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.74)}
+.kind.mark{border-left-color:var(--line)}
+.kind.mark b{color:rgba(255,253,247,.7)}
+
+/* ══ révélation au défilement ══════════════════════════════════════ */
+.js .rv{opacity:0;transform:translateY(20px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .45s ease-out,transform .5s cubic-bezier(.16,1,.3,1)}
+.slots .rv.in{transition-delay:calc(var(--i,0) * 46ms)}
+
+@supports (animation-timeline: view()){
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72);max-width:44ch}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ barre de bas d'écran ══════════════════════════════════════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);
+  border-top:2px solid var(--paper);padding:8px 20px;
+  padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+.hud .in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hud b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud b em{font-style:normal;color:var(--hot)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:120px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--cleared);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+
+.demo{border:0;background:none;color:rgba(255,253,247,.42);font:inherit;font-size:11px;
+  text-transform:uppercase;letter-spacing:.1em;cursor:pointer;text-decoration:underline;padding:4px}
+.demo:hover{color:var(--paper)}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+  .kinds{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:720px){
+  .slot.big{grid-template-columns:1fr}
+  .slot.big figure{min-height:0;aspect-ratio:16/9}
+  .kinds{grid-template-columns:repeat(2,1fr)}
+  .foot{grid-template-columns:1fr}
+  .hud .lbl{display:none}
+  .icon-btn{width:44px;height:44px}
+  .drawer a{padding:13px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .resume .chev,.start em{opacity:1}
+}
+</style>
 </head>
 <body>
 
+<div class="field" aria-hidden="true"><i></i></div>
 <a class="skip" href="#main">Aller au contenu</a>
+
 <header>
-  <nav class="nav" aria-label="Navigation">
-    <a class="brand" href="/fr/"><img src="/images/logo-chronologeek.png" alt="Chronologeek" height="24"/></a>
-    <div class="nav-links">
+  <div class="wrap">
+    <a class="brand" href="/fr/"><img src="/images/logo-chronologeek.png" alt="Chronologeek"/></a>
+    <nav class="nav-links" aria-label="Navigation">
       <a href="/fr/">Accueil</a>
-      <a href="/fr/dossiers/" class="doss" aria-current="page">Dossiers</a>
+      <a href="#" class="doss" aria-current="page">Dossiers</a>
       <a href="/fr/starwars">Star Wars</a>
       <a href="/fr/marvel">Marvel</a>
       <a href="/fr/dc">DC</a>
       <a href="/fr/avatar">Avatar</a>
       <a href="/fr/a-venir" class="upc">À venir</a>
       <a href="/fr/nouveautes" class="news">Nouveautés</a>
-    </div>
-    <div class="nav-sp"></div>
+    </nav>
     <div class="nav-tools">
       <a class="icon-btn lang-btn" href="/deep-dives/" aria-label="Switch to English" title="Switch to English">
         <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
       </a>
-      <button class="icon-btn burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
+    <a href="/fr/">Accueil</a><a href="#" class="doss" aria-current="page">Dossiers</a>
+    <a href="/fr/starwars">Star Wars</a><a href="/fr/marvel">Marvel</a><a href="/fr/dc">DC</a><a href="/fr/avatar">Avatar</a>
+    <a href="/fr/a-venir" class="upc">À venir</a><a href="/fr/nouveautes" class="news">Nouveautés</a>
   </nav>
 </header>
 
-<main class="shell" id="main">
-  <a class="crumb" href="/fr/">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Tous les univers</a>
-  <div class="page-head">
-    <h1>Dossiers</h1>
-    <p class="sub">Les guides qui vont plus loin que la timeline : ordres de lecture, analyses et parcours thématiques, univers par univers.</p>
+<main id="main">
+
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract" id="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="tag">Plus loin que la timeline</span>
+    <h1 class="disp off">Les<span>Dossiers</span></h1>
+    <p class="dek">Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu
+      et autres choses méritant votre attention</p>
+    <a class="start" href="#choix">Sélectionner <em>▸</em></a>
   </div>
-  <div class="ugrid">
-    <a class="ucard" href="/fr/dossiers/star-wars" style="--uc:#4d9fff">
-      <span class="banner"><img src="/images/starwarscomics.jpg" alt="" width="320" height="142" loading="lazy"/></span>
+</section>
+
+<!-- ══ CONTINUE ══════════════════════════════════════════════════ -->
+<div class="resume" id="resume" hidden>
+  <a id="resume-link" href="#">
+    <span class="chev">Continuer</span>
+    <span class="txt" id="resume-txt"></span>
+    <span class="go">Reprendre ▸</span>
+  </a>
+</div>
+
+<!-- ══ SÉLECTION ═════════════════════════════════════════════════ -->
+<section class="pick" id="choix"><div class="wrap">
+  <h2 class="disp">Sélection du dossier</h2>
+  <p class="sub">Les guides qui vont plus loin que la timeline : ordres de lecture, analyses
+    et parcours thématiques, univers par univers.</p>
+
+  <div class="slots">
+
+    <a class="slot big rv" href="/fr/dossiers/star-wars" style="--c:var(--sw);--i:0"
+       data-u="dossier-sw" data-total="533" data-hero="/images/starwarscomics.jpg">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/starwarscomics.jpg" alt="" width="715" height="450" fetchpriority="high" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">01</span><span class="state">Disponible</span>
+        <span class="nm">Star Wars</span>
+      </figure>
       <span class="body">
-        <h2>Star Wars</h2>
-        <span class="d">Romans · Romans jeunesse · Comics — l’ordre de lecture complet du canon, replacé entre les films et les séries.</span>
-        <span class="meta"><span class="tag">Disponible</span><span class="upd">533 entrées</span></span>
-        <span class="pr" data-univ="dossier" data-total="533">
-          <span class="pr-l"><span><b class="d-n">0</b> / 533 lus</span><span class="d-p">0 %</span></span>
-          <span class="pr-t"><i></i></span>
-        </span>
+        <span class="d">Romans · Romans jeunesse · Comics — l'ordre de lecture complet du canon,
+          replacé entre les films et les séries.</span>
+        <span class="lead">Si vous souhaitez découvrir les romans et comics Star Wars,
+          vous êtes au bon endroit.</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 533 lus</span><span class="d-p">0 %</span></span>
+        <span class="upd">533 entrées · 7 ères · à jour · juillet 2026</span>
       </span>
     </a>
-    <div class="ucard" style="--uc:#8a8ab0;cursor:default">
-      <span class="banner"><img src="/images/autresunivers.webp" alt="" width="320" height="142" loading="lazy"/></span>
+
+    <div class="slot lock rv" style="--c:var(--soon);--i:1">
+      <figure>
+        <img src="/images/autresunivers.webp" alt="" width="1280" height="360" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">02</span>
+        <span class="stamp"><span>Bientôt</span></span>
+      </figure>
       <span class="body">
-        <h2 style="color:var(--muted2)">D’autres Dossiers</h2>
-        <span class="d">Qu’aimeriez vous voir ici ? Des nouveautés arriveront.</span>
-        <span class="soon">En cours</span>
+        <span class="ttl">D'autres Dossiers</span>
+        <span class="d">Qu'aimeriez vous voir ici ? Des nouveautés arriveront.</span>
+        <span class="upd">En cours</span>
       </span>
     </div>
+
   </div>
+</div></section>
+
+<!-- ══ LE RELEVÉ ═════════════════════════════════════════════════ -->
+<section class="relev"><div class="wrap">
+  <h2 class="disp">Dans le Dossier Star Wars</h2>
+  <p class="sub">Je considère que si vous êtes ici, vous avez déjà regardé les médias animés
+    et live action.</p>
+
+  <div class="kinds">
+    <div class="kind rv" style="--kc:var(--k-comic);--i:0"><b>436</b><span>Comics</span></div>
+    <div class="kind rv" style="--kc:var(--k-roman);--i:1"><b>58</b><span>Romans</span></div>
+    <div class="kind rv" style="--kc:var(--k-jeunesse);--i:2"><b>30</b><span>Romans jeune adulte</span></div>
+    <div class="kind rv" style="--kc:var(--k-audio);--i:3"><b>9</b><span>Fictions audio</span></div>
+    <div class="kind mark rv" style="--i:4"><b>63</b><span>Repères écran</span></div>
+  </div>
+</div></section>
+
 </main>
+
 <footer>
   <div class="foot">
-    <div class="about"><h4>Chronologeek</h4><p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.</p></div>
+    <div>
+      <h4>Chronologeek</h4>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
+        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
+        qui regarde tout deux fois.</p>
+    </div>
     <div><h4>Timelines</h4><ul>
       <li><a href="/fr/starwars">Star Wars</a></li>
       <li><a href="/fr/marvel">Marvel — MCU</a></li>
       <li><a href="/fr/dc">DC Multiverse</a></li>
       <li><a href="/fr/avatar">Avatar</a></li>
-      <li><a href="/fr/dossiers/">Dossiers</a></li>
+      <li><a href="#">Dossiers</a></li>
     </ul></div>
     <div><h4>Plus</h4><ul>
       <li><a href="/fr/a-venir">Sorties à venir</a></li>
@@ -84,25 +466,114 @@
       <li><a href="#">Contact</a></li>
     </ul></div>
     <div class="legal">
-      Ce produit utilise l’API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
-      mais n’est ni approuvé ni certifié par TMDB. Données livres : <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
-      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.
-      <br/>© 2026 Chronologeek — <a href="/fr/">chronologeek.app</a>
+      Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n'est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ;
+      Chronologeek est un projet de fan indépendant.
+      <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
+      · <button class="demo" id="demo" type="button">proto : simuler une progression</button>
     </div>
   </div>
 </footer>
+
+<div class="hud"><div class="in">
+  <b><em id="k-on">0</em> / 533</b>
+  <span class="lbl">entrées lues</span>
+  <div class="bar"><i id="k-fill"></i></div>
+  <span class="lbl">1 dossier ouvert · 63 repères écran</span>
+</div></div>
+
 <script>
-document.querySelectorAll('.pr[data-univ]').forEach(function (pr) {
-  var t = +pr.dataset.total, d = 0;
-  try { d = Object.keys(JSON.parse(localStorage.getItem('cg_' + pr.dataset.univ) || '{}')).length; } catch (e) {}
-  var p = t ? Math.round(d / t * 100) : 0;
-  pr.querySelector('.d-n').textContent = d;
-  pr.querySelector('.d-p').textContent = p + ' %';
-  pr.querySelector('i').style.width = p + '%';
-});
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
+  var body=document.body, attract=document.getElementById('attract');
+  var fake=null;   /* progression simulée, échafaudage de proto uniquement */
+
+  /* La clé est celle qu'écrit la page du Dossier, e-dossier-star-wars.html :
+     le score et la reprise de lecture montrent donc la vraie progression,
+     pas une valeur de démonstration. */
+  function read(u){
+    if(fake!==null) return fake;
+    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+u)||'{}')).length; }
+    catch(e){ return 0; }
+  }
+
+  /* ── le champ de couleur : la page part dans le violet des Dossiers,
+       bascule au bleu du dossier pointé, et y revient quand on lâche.
+       Pas de rotation : un seul slot ouvert, il n'y a rien à faire
+       défiler — l'attract mode de l'accueil n'aurait ici aucun sens. ─ */
+  var DEFAULT_UC=getComputedStyle(body).getPropertyValue('--c-doss').trim();
+  function tint(c){ body.style.setProperty('--uc',c); }
+  slots.forEach(function(el){
+    var c=getComputedStyle(el).getPropertyValue('--c').trim();
+    function take(){ tint(c); attract.style.setProperty('--hero','url('+el.dataset.hero+')'); }
+    function give(){ tint(DEFAULT_UC); }
+    el.addEventListener('mouseenter',take);
+    el.addEventListener('mouseleave',give);
+    el.addEventListener('focus',take);
+    el.addEventListener('blur',give);
+  });
+  attract.style.setProperty('--hero','url(/images/starwarscomics.jpg)');
+
+  /* Le relevé des ères a quitté cette page : il est devenu la barre de
+     navigation du Dossier lui-même, où chaque segment se clique et porte sa
+     jauge de lecture. Ici, il ne faisait que montrer. */
+
+  /* ── score, jauge, reprise, barre de bas d'écran ───────────────── */
+  function paint(){
+    var el=slots[0], total=+el.dataset.total, done=read(el.dataset.u);
+    var pct=Math.round(done/total*100);
+    el.querySelector('.d-n').textContent=done;
+    el.querySelector('.d-p').textContent=pct+' %';
+    var seg=24,fill=Math.round(done/total*seg),h='';
+    for(var i=0;i<seg;i++) h+='<i class="'+(i<fill?'on':'')+'"></i>';
+    el.querySelector('.pips').innerHTML=h;
+
+    document.getElementById('k-on').textContent=done;
+    document.getElementById('k-fill').style.transform='scaleX('+(done/total)+')';
+
+    var r=document.getElementById('resume');
+    if(!done||pct>=100){ r.hidden=true; return; }
+    r.hidden=false;
+    r.style.setProperty('--rc',getComputedStyle(el).getPropertyValue('--c').trim());
+    document.getElementById('resume-link').href=el.getAttribute('href');
+    document.getElementById('resume-txt').innerHTML=
+      'Star Wars — <b>'+pct+' %</b> · '+done+' / '+total+' lus';
+  }
+
+  /* ── révélation au défilement, sans dépendance ─────────────────── */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(list){
+      list.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+    [].forEach.call(document.querySelectorAll('.rv'),function(el){ io.observe(el); });
+  }else{
+    [].forEach.call(document.querySelectorAll('.rv'),function(el){ el.classList.add('in'); });
+  }
+
+  /* ── menu replié ───────────────────────────────────────────────── */
+  var bg=document.getElementById('burger'), dr=document.getElementById('drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+
+  /* ── échafaudage : voir la page avec de la progression ─────────── */
+  document.getElementById('demo').addEventListener('click',function(){
+    fake=(fake===null)?148:null;
+    this.textContent=(fake!==null)?'proto : revenir à zéro':'proto : simuler une progression';
+    paint();
+  });
+
+  paint();
+})();
 </script>
-<script src="/anim.js"></script>
-<script src="/cg-nav.js"></script>
+<script src="/app.js"></script>
 <script src="/pwa.js"></script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

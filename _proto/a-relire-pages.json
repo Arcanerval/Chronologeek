@@ -1,0 +1,918 @@
+[
+  {
+    "fr": "Chronologeek — Accueil (proto E)",
+    "en": "Chronologeek — Home (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "Navigation repliée",
+    "en": "Collapsed navigation",
+    "ou": "attribut",
+    "pages": [
+      "e-a-venir.html",
+      "e-accueil.html",
+      "e-avatar.html",
+      "e-dc.html",
+      "e-dossier-star-wars.html",
+      "e-dossiers.html",
+      "e-marvel.html",
+      "e-nouveautes.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Chaque univers, dans l'ordre",
+    "en": "Every universe, in order",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "Choisis ton",
+    "en": "Choose your",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "univers",
+    "en": "universe",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "Sélectionner",
+    "en": "Select",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Continuer",
+    "en": "Continue",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Reprendre ▸",
+    "en": "Resume ▸",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Sélection de l'univers",
+    "en": "Universe selection",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "Quatre chronologies tenues à jour, en français et en anglais.",
+    "en": "Four timelines kept up to date, in French and English.",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "/ 121 vus",
+    "en": "/ 121 watched",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "/ 69 vus",
+    "en": "/ 69 watched",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "Bientôt",
+    "en": "Soon",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Les Dossiers",
+    "en": "The Deep Dives",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu et autres choses méritant votre attention",
+    "en": "To go further into your favorite universes: novels, comics, expanded canon and other things worth your attention",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Ouvrir ▸",
+    "en": "Open ▸",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": ". Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.",
+    "en": ". Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html",
+      "e-accueil.html",
+      "e-avatar.html",
+      "e-dc.html",
+      "e-dossier-star-wars.html",
+      "e-dossiers.html",
+      "e-marvel.html",
+      "e-nouveautes.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "proto : simuler une progression",
+    "en": "proto: simulate progress",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "entrées cochées",
+    "en": "entries checked",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "4 univers · 533 au dossier",
+    "en": "4 universes · 533 in the Deep Dive",
+    "ou": "texte",
+    "pages": [
+      "e-accueil.html"
+    ]
+  },
+  {
+    "fr": "proto : revenir à zéro",
+    "en": "proto: back to zero",
+    "ou": "js",
+    "pages": [
+      "e-accueil.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Fermer le menu",
+    "en": "Close menu",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html",
+      "e-accueil.html",
+      "e-avatar.html",
+      "e-dc.html",
+      "e-dossier-star-wars.html",
+      "e-dossiers.html",
+      "e-marvel.html",
+      "e-nouveautes.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — Star Wars (proto E)",
+    "en": "Chronologeek — Star Wars (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Cochez ce que vous avez vu, votre progression est sauvegardée.",
+    "en": "Check off what you've watched — your progress is saved.",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html",
+      "e-dc.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Entrées",
+    "en": "Entries",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html",
+      "e-dc.html",
+      "e-dossier-star-wars.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "294 h",
+    "en": "294 h",
+    "ou": "texte",
+    "pages": [
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "À voir",
+    "en": "To watch",
+    "ou": "texte",
+    "pages": [
+      "e-dc.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Commencer",
+    "en": "Start",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html",
+      "e-dc.html",
+      "e-dossier-star-wars.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "0 débloqués",
+    "en": "0 unlocked",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html",
+      "e-dc.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "film complet",
+    "en": "full movie",
+    "ou": "js",
+    "pages": [
+      "e-avatar.html",
+      "e-dc.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "au total",
+    "en": "in total",
+    "ou": "js",
+    "pages": [
+      "e-avatar.html",
+      "e-dc.html",
+      "e-marvel.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Ère",
+    "en": "Era",
+    "ou": "js",
+    "pages": [
+      "e-avatar.html",
+      "e-dossier-star-wars.html",
+      "e-starwars.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — Marvel (proto E)",
+    "en": "Chronologeek — Marvel (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-marvel.html"
+    ]
+  },
+  {
+    "fr": "Films · Séries · Spider-Verse · Fox — tout le multivers dans son ordre le plus optimisé.",
+    "en": "Movies · Shows · Spider-Verse · Fox — the whole multiverse in its most optimized order.",
+    "ou": "texte",
+    "pages": [
+      "e-marvel.html"
+    ]
+  },
+  {
+    "fr": "489 h",
+    "en": "489 h",
+    "ou": "texte",
+    "pages": [
+      "e-marvel.html"
+    ]
+  },
+  {
+    "fr": "121 / 121 affichées",
+    "en": "121 / 121 shown",
+    "ou": "texte",
+    "pages": [
+      "e-marvel.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — DC (proto E)",
+    "en": "Chronologeek — DC (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "Guide du Multivers",
+    "en": "Multiverse Guide",
+    "ou": "texte",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "932 h",
+    "en": "932 h",
+    "ou": "texte",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "Choisir une branche",
+    "en": "Choose a branch",
+    "ou": "js",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "L'Arrowverse post-événement, les Elseworlds issus de l'événement.",
+    "en": "The post-event Arrowverse, the Elseworlds born from the event.",
+    "ou": "js",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "Timeline Chronologique",
+    "en": "Chronological Timeline",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html"
+    ]
+  },
+  {
+    "fr": "Séries animées · Comics · Livres — tout l'univers Avatar Legends dans son ordre le plus optimisé.",
+    "en": "Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order.",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html"
+    ]
+  },
+  {
+    "fr": "Séries animées",
+    "en": "Animated series",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html"
+    ]
+  },
+  {
+    "fr": "Livres",
+    "en": "Books",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html"
+    ]
+  },
+  {
+    "fr": "69 / 69 affichées",
+    "en": "69 / 69 shown",
+    "ou": "texte",
+    "pages": [
+      "e-avatar.html"
+    ]
+  },
+  {
+    "fr": "Réinitialiser votre progression Avatar ?",
+    "en": "Reset your Avatar progress?",
+    "ou": "js",
+    "pages": [
+      "e-avatar.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — Dossiers (proto E)",
+    "en": "Chronologeek — Deep Dives (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Plus loin que la timeline",
+    "en": "Beyond the timeline",
+    "ou": "texte",
+    "pages": [
+      "e-dossier-star-wars.html",
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Les",
+    "en": "The",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Sélection du dossier",
+    "en": "Deep Dive selection",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Les guides qui vont plus loin que la timeline : ordres de lecture, analyses et parcours thématiques, univers par univers.",
+    "en": "The guides that go beyond the timeline: reading orders, analyses and thematic paths, universe by universe.",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Romans · Romans jeunesse · Comics — l'ordre de lecture complet du canon, replacé entre les films et les séries.",
+    "en": "Novels · Young-reader books · Comics — the complete canon reading order, placed among the movies and shows.",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "/ 533 lus",
+    "en": "/ 533 read",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "533 entrées · 7 ères · à jour · juillet 2026",
+    "en": "533 entries · 7 eras · up to date · July 2026",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "D'autres Dossiers",
+    "en": "More Deep Dives",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Qu'aimeriez vous voir ici ? Des nouveautés arriveront.",
+    "en": "What would you like to see here? More is on the way.",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Dans le Dossier Star Wars",
+    "en": "In the Star Wars Deep Dive",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Romans jeune adulte",
+    "en": "Young adult novels",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Fictions audio",
+    "en": "Audio dramas",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Repères écran",
+    "en": "On-screen markers",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "entrées lues",
+    "en": "entries read",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "1 dossier ouvert · 63 repères écran",
+    "en": "1 Deep Dive open · 63 on-screen markers",
+    "ou": "texte",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Star Wars —",
+    "en": "Star Wars —",
+    "ou": "js",
+    "pages": [
+      "e-dossiers.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — Dossier Star Wars (proto E)",
+    "en": "Chronologeek — Star Wars Deep Dive (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Dossier",
+    "en": "Deep Dive",
+    "ou": "texte",
+    "pages": [
+      "e-dossier-star-wars.html",
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Romans &amp; Comics",
+    "en": "Novels &amp; Comics",
+    "ou": "texte",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "À l'écran — où se placent les films et séries. Non comptés dans votre progression.",
+    "en": "On screen — where the movies and shows fall. Not counted in your progress.",
+    "ou": "texte",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "repères à l'écran",
+    "en": "on-screen markers",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "entrées (",
+    "en": "entries (",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Premier Ordre",
+    "en": "First Order",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Nouvelle République",
+    "en": "New Republic",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Rébellion",
+    "en": "Rebellion",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Guerre des Clones",
+    "en": "Clone Wars",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "République",
+    "en": "Republic",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Haute République",
+    "en": "High Republic",
+    "ou": "js",
+    "pages": [
+      "e-dossier-star-wars.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — Nouveautés (proto E)",
+    "en": "Chronologeek — What's New (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Dernier ajout",
+    "en": "Latest addition",
+    "ou": "texte",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Univers",
+    "en": "Universe",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html",
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Nature",
+    "en": "Kind",
+    "ou": "texte",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Rien ne correspond. Rallumez les filtres que vous avez éteints.",
+    "en": "Nothing matches. Turn the filters you switched off back on.",
+    "ou": "texte",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "changements",
+    "en": "changes",
+    "ou": "texte",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Le journal est tenu à la main : une ligne par changement, la plus récente en haut.",
+    "en": "The log is kept by hand: one line per change, the most recent on top.",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "dernier ·",
+    "en": "latest ·",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Nouvelle timeline",
+    "en": "New timeline",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Nouveau Dossier",
+    "en": "New Deep Dive",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Journal du site",
+    "en": "Site log",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Dernière mise à jour ·",
+    "en": "Last updated ·",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Les mois précédents",
+    "en": "Earlier months",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Le plus récent",
+    "en": "Most recent",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Cette page lit",
+    "en": "This page reads",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html",
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": ", servi à côté d'elle.",
+    "en": ", served next to it.",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Le journal n'a pas pu être chargé.",
+    "en": "The log could not be loaded.",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Site",
+    "en": "Site",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Ajouts",
+    "en": "Additions",
+    "ou": "js",
+    "pages": [
+      "e-nouveautes.html"
+    ]
+  },
+  {
+    "fr": "Chronologeek — À venir (proto E)",
+    "en": "Chronologeek — Upcoming (proto E)",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Mis à jour chaque jour",
+    "en": "Updated every day",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Prochaine",
+    "en": "Next",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Rechercher une sortie",
+    "en": "Search a release",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Support",
+    "en": "Format",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Rien ne correspond. Essayez une autre orthographe, ou rallumez les filtres que vous avez éteints.",
+    "en": "Nothing matches. Try another spelling, or turn the filters you switched off back on.",
+    "ou": "texte",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "prochaine ·",
+    "en": "next ·",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Ce mois-ci",
+    "en": "This month",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "avant la sortie",
+    "en": "until release",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "pas le dossier",
+    "en": "not the",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "à la racine : servez le dépôt (port 8947),",
+    "en": "at the root: serve the repository (port 8947),",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  },
+  {
+    "fr": "Le radar n'a pas pu être chargé.",
+    "en": "The radar could not be loaded.",
+    "ou": "js",
+    "pages": [
+      "e-a-venir.html"
+    ]
+  }
+]

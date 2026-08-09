@@ -37,6 +37,15 @@ LEDGER = ROOT / "lore-ledger.json"
 
 DOSSIERS_DIR = ROOT / "deep-dives"
 
+# Depuis la refonte, les entrees ne sont plus dans le HTML : chaque page charge
+# data/<univers>-en.js. Lire la page ne rendrait plus une erreur mais zero
+# entree — et un index vide fait passer toute la timeline pour absente. La page
+# racine reste le temoin qu'un univers existe sur le site ; c'est son fichier de
+# donnees qu'on lit. SOURCES dit d'ou vient chaque fichier publie, pour pouvoir
+# nommer a Niko le fichier a editer et non celui qui en sort.
+DATA_DIR = ROOT / "data"
+SOURCES = DATA_DIR / "sources.json"
+
 # Regle de routage : les medias ecrits ne vont pas dans la timeline cinema mais
 # dans le Dossier de leur univers. Un roman Star Wars se place dans
 # deep-dives/star-wars.html, jamais dans starwars.html. Films, series et jeux
@@ -62,8 +71,20 @@ OUBLI_JOURS = 365
 # en tolerant les echappements internes : title:'Propriete d\'Ezra Bridger'.
 Q = r'"((?:[^"\\]|\\.)*)"|\'((?:[^\'\\]|\\.)*)\''
 
-ENTRY_RE = re.compile(r"\{\s*id:\s*(?:" + Q + r")")
-BLOCK_RE = re.compile(r"\{\s*title:\s*(?:" + Q + r")(?=[^\[\]{}]{0,400}?entries:\s*\[)")
+
+def cles(nom):
+    """Une clé, avec ou sans guillemets. Les pages ecrivaient `id:"sw-ep1"` ;
+    les donnees de la refonte sortent d'une serialisation JSON et ecrivent
+    `"id":"sw-ep1"`. Chercher la seule forme nue rendait zero entree — sans
+    erreur, sans message : l'index sortait vide et toute la timeline passait
+    pour absente."""
+    return rf'(?:"{nom}"|{nom})\s*:\s*'
+
+
+ENTRY_RE = re.compile(r"\{\s*" + cles("id") + r"(?:" + Q + r")")
+BLOCK_RE = re.compile(
+    r"\{\s*" + cles("title") + r"(?:" + Q + r")(?=[^\[\]{}]{0,400}?" + cles("entries") + r"\[)"
+)
 
 
 def pick(match, first_group):
@@ -73,7 +94,7 @@ def pick(match, first_group):
 
 
 def field(name, window):
-    m = re.search(rf"\b{name}:\s*(?:{Q})", window)
+    m = re.search(rf"(?<![\w-]){cles(name)}(?:{Q})", window)
     return pick(m, 1) if m else None
 
 
@@ -136,13 +157,17 @@ def parse_timeline(path):
 
 def parse_dossier(path):
     """Extrait les entrees d'un Dossier. Contrairement aux timelines, elles sont
-    du JSON propre dans window.CG_DATA — pas d'objets JS a apparier."""
+    du JSON propre dans window.CGD — pas d'objets JS a apparier.
+
+    On decode a partir de l'accolade ouvrante plutot que de chercher la
+    fermante : un JSON de 110 ko contient des centaines de `}` et n'importe
+    quelle expression paresseuse s'arrete a la premiere."""
     text = path.read_text(encoding="utf-8")
-    m = re.search(r"CG_DATA\s*=\s*(\{.*?\})\s*;\s*\n", text, re.S)
+    m = re.search(r"window\.CGD\s*=\s*(?=\{)", text)
     if not m:
         return []
     try:
-        data = json.loads(m.group(1))
+        data, _ = json.JSONDecoder().raw_decode(text[m.end():])
     except json.JSONDecodeError:
         return []
 
@@ -179,11 +204,13 @@ def discover_dossiers(universes):
     toucher au script."""
     if not DOSSIERS_DIR.is_dir():
         return {}
-    fichiers = {
-        re.sub(r"[^a-z0-9]+", "", p.stem.lower()): p
-        for p in DOSSIERS_DIR.glob("*.html")
-        if p.stem != "index"
-    }
+    fichiers = {}
+    for page in DOSSIERS_DIR.glob("*.html"):
+        if page.stem == "index":
+            continue
+        data = DATA_DIR / f"dossier-{page.stem}-en.js"
+        if data.exists():
+            fichiers[re.sub(r"[^a-z0-9]+", "", page.stem.lower())] = data
     return {u: fichiers[re.sub(r"[^a-z0-9]+", "", u.lower())]
             for u in universes
             if re.sub(r"[^a-z0-9]+", "", u.lower()) in fichiers}
@@ -261,16 +288,37 @@ def maj_registre(registre, entrees, jour):
 
 
 def discover_pages(universes):
-    """Associe chaque univers a sa page racine. Rien n'est code en dur : un
-    nouvel univers est absorbe sans toucher au script."""
+    """Associe chaque univers aux donnees de sa page racine. Rien n'est code en
+    dur : un nouvel univers est absorbe sans toucher au script, a condition que
+    son fichier de donnees porte le meme nom que sa page."""
     pages, orphans = {}, []
     for universe in sorted(universes):
         page = ROOT / f"{universe}.html"
-        if page.exists():
-            pages[universe] = page
+        data = DATA_DIR / f"{universe}-en.js"
+        if page.exists() and data.exists():
+            pages[universe] = data
         else:
             orphans.append(universe)
     return pages, orphans
+
+
+def a_editer(publie):
+    """Le fichier ou une entree doit reellement etre ecrite.
+
+    data/*.js est produit : l'ecrire ne survivrait pas a la prochaine
+    publication. La source est le proto francais, dont l'anglais est ensuite
+    deduit par traduire.mjs. sources.json tient cette correspondance, ecrite
+    par publier.mjs — pas de table en double ici."""
+    relatif = publie.relative_to(ROOT).as_posix()
+    if SOURCES.exists():
+        try:
+            table = json.loads(SOURCES.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            table = {}
+        source = table.get(relatif.replace("-en.js", "-fr.js"))
+        if source:
+            return source
+    return relatif
 
 
 def arg_int(name, defaut):
@@ -374,10 +422,8 @@ def main():
 
         fiche = dict(fiche)
         fiche["cible"] = cible
-        fiche["fichier_cible"] = (
-            dossiers[universe].relative_to(ROOT).as_posix()
-            if cible == "dossier"
-            else pages[universe].name
+        fiche["fichier_cible"] = a_editer(
+            dossiers[universe] if cible == "dossier" else pages[universe]
         )
         if near:
             fiche["peut_etre_deja_la"] = near[:3]

@@ -1,0 +1,128 @@
+{
+  "accueil": {
+    "fr": {
+      "title": "Chronologeek",
+      "ogTitle": "Chronologeek — Timelines Geek",
+      "desc": "Les timelines complètes de tes univers préférés — tous supports, ordre chronologique, 100% canon.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    },
+    "en": {
+      "title": "Chronologeek — Geek Timelines",
+      "ogTitle": "Chronologeek — Geek Timelines",
+      "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    }
+  },
+  "sw": {
+    "fr": {
+      "title": "Star Wars — Chronologeek",
+      "ogTitle": "Timeline Star Wars — Chronologeek",
+      "desc": "La timeline Star Wars canon complète — films, séries et jeux dans l'ordre chronologique, sans spoil.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
+    },
+    "en": {
+      "title": "Star Wars Timeline — Chronologeek",
+      "ogTitle": "Star Wars Timeline — Chronologeek",
+      "desc": "The complete Star Wars canon timeline — movies, shows and games in chronological order, spoiler-free.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
+    }
+  },
+  "mcu": {
+    "fr": {
+      "title": "Marvel — Chronologeek",
+      "ogTitle": "Timeline Marvel MCU — Chronologeek",
+      "desc": "Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil.",
+      "image": "https://chronologeek.app/images/mcu.webp"
+    },
+    "en": {
+      "title": "Marvel — Chronologeek",
+      "ogTitle": "Marvel MCU Timeline — Chronologeek",
+      "desc": "The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free.",
+      "image": "https://chronologeek.app/images/mcu.webp"
+    }
+  },
+  "dc": {
+    "fr": {
+      "title": "DC Multivers — Chronologeek",
+      "ogTitle": "Guide DC Multivers — Chronologeek",
+      "desc": "Le guide de visionnage complet du Multivers DC — Elseworlds, Arrowverse, DCEU et DCU, tous connectés.",
+      "image": "https://chronologeek.app/images/dcmultivers.jpg"
+    },
+    "en": {
+      "title": "DC Multiverse — Chronologeek",
+      "ogTitle": "DC Multiverse Watch Guide — Chronologeek",
+      "desc": "The complete DC Multiverse watch guide — Elseworlds, Arrowverse, DCEU and DCU, all connected.",
+      "image": "https://chronologeek.app/images/dcmultivers.jpg"
+    }
+  },
+  "avatar": {
+    "fr": {
+      "title": "Avatar — Chronologeek",
+      "ogTitle": "Timeline Avatar Legends — Chronologeek",
+      "desc": "Séries animées · Comics · Livres — tout l’univers Avatar Legends dans son ordre le plus optimisé.",
+      "image": "https://chronologeek.app/images/avatar.png"
+    },
+    "en": {
+      "title": "Avatar Timeline — Chronologeek",
+      "ogTitle": "Avatar Legends Timeline — Chronologeek",
+      "desc": "Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order.",
+      "image": "https://chronologeek.app/images/avatar.png"
+    }
+  },
+  "dossiers": {
+    "fr": {
+      "title": "Dossiers — Chronologeek",
+      "ogTitle": "Dossiers — Chronologeek",
+      "desc": "Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    },
+    "en": {
+      "title": "Deep Dives — Chronologeek",
+      "ogTitle": "Deep Dives — Chronologeek",
+      "desc": "Chronologeek deep dives: reading orders, guides and breakdowns, universe by universe.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    }
+  },
+  "dossier-sw": {
+    "fr": {
+      "title": "Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek",
+      "ogTitle": "Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek",
+      "desc": "L'ordre de lecture complet des romans, romans jeunesse et comics Star Wars canon, replacé dans la chronologie des films et séries.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
+    },
+    "en": {
+      "title": "Star Wars Deep Dive: novels &amp; comics reading order | Chronologeek",
+      "ogTitle": "Star Wars Deep Dive: novels &amp; comics reading order | Chronologeek",
+      "desc": "The complete reading order for canon Star Wars novels, young-reader books and comics, placed within the movie and show chronology.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
+    }
+  },
+  "nouveautes": {
+    "fr": {
+      "title": "Nouveautés — Chronologeek",
+      "ogTitle": "Nouveautés — Chronologeek",
+      "desc": "Tout ce qui bouge sur Chronologeek — timelines ajoutées, entrées mises à jour, nouveautés du site.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    },
+    "en": {
+      "title": "What's New — Chronologeek",
+      "ogTitle": "What's New — Chronologeek",
+      "desc": "Everything new on Chronologeek — timelines added, entries updated, features shipped.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    }
+  },
+  "a-venir": {
+    "fr": {
+      "title": "Prochaines sorties — Star Wars, Marvel, DC &amp; Avatar | Chronologeek",
+      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC &amp; Avatar | Chronologeek",
+      "desc": "Toutes les prochaines sorties Star Wars, Marvel, DC et Avatar — films, séries, comics et jeux, avec les dates. Mis à jour chaque jour.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    },
+    "en": {
+      "title": "Upcoming Releases — Star Wars, Marvel, DC &amp; Avatar | Chronologeek",
+      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC &amp; Avatar | Chronologeek",
+      "desc": "Every upcoming Star Wars, Marvel, DC and Avatar release — movies, shows, comics and games, with dates. Updated daily.",
+      "image": "https://chronologeek.app/images/og-banner.png"
+    }
+  }
+}
