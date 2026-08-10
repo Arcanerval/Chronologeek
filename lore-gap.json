@@ -1,52 +1,60 @@
 {
- "genere_le": "2026-07-30",
+ "genere_le": "2026-08-10",
  "fenetre": {
   "jours": 2,
-  "du": "2026-07-28",
-  "au": "2026-08-01"
+  "du": "2026-08-08",
+  "au": "2026-08-12"
  },
  "a_placer": [
   {
    "vu_le": "2026-07-29",
-   "universe": "avatar",
-   "title": "Kya and the Secret of the Sand",
+   "universe": "starwars",
+   "title": "The Fall of Kylo Ren 1",
    "title_fr": null,
-   "kind": "Graphic Novel Chronology: XXX AG Release Date: July 28, 2026",
+   "kind": "Comic",
    "kindKey": "comic",
-   "date_sort": "2026-07-28",
-   "released": "28/07/2026",
+   "date_sort": "2026-08-12",
+   "released": "12/08/2026",
+   "era": null,
+   "source": "Wookieepedia",
+   "wiki": "The Fall of Kylo Ren 1",
+   "synopsis": "The Fall of Kylo Ren 1 is the first issue of the upcoming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney, and published by Marvel Comics on August 12, 2026.",
+   "vu_dernier": "2026-08-10",
+   "cible": "dossier",
+   "fichier_cible": "_proto/data-dossier-sw.js"
+  }
+ ],
+ "a_verifier": [
+  {
+   "vu_le": "2026-07-29",
+   "universe": "avatar",
+   "title": "Avatar The Last Airbender Color-By-Number",
+   "title_fr": null,
+   "kind": "Miscellaneous (Coloring Book) Release Date: August 11, 2026",
+   "kindKey": null,
+   "date_sort": "2026-08-11",
+   "released": "11/08/2026",
    "era": null,
    "source": "Avatar Almanac",
    "wiki": null,
-   "synopsis": "",
+   "synopsis": null,
    "vu_dernier": "2026-07-29",
    "cible": "timeline",
-   "fichier_cible": "avatar.html"
-  },
-  {
-   "vu_le": "2026-07-29",
-   "universe": "marvel",
-   "title": "Spider-Man: Brand New Day",
-   "title_fr": null,
-   "kind": "Film",
-   "kindKey": "film",
-   "date_sort": "2026-07-31",
-   "released": "31/07/2026",
-   "era": null,
-   "source": "TMDB",
-   "wiki": null,
-   "synopsis": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
-   "vu_dernier": "2026-07-30",
-   "cible": "timeline",
-   "fichier_cible": "marvel.html"
+   "fichier_cible": "_proto/data-avatar.js",
+   "peut_etre_deja_la": [
+    {
+     "id": "avt-s3e20-21",
+     "title": "avatar the last airbender",
+     "proximite": 0.61
+    }
+   ]
   }
  ],
- "a_verifier": [],
- "hors_fenetre": 78,
- "placees_ce_coup": 0,
+ "hors_fenetre": 77,
+ "placees_ce_coup": 2,
  "univers_sans_page": [],
  "index": {
   "avatar (timeline)": "lore-index/avatar.json",
-  "marvel (timeline)": "lore-index/marvel.json"
+  "starwars (dossier)": "lore-index/starwars-dossier.json"
  }
 }

@@ -41,7 +41,7 @@
  },
  {
   "id": "sw-tcw-pre",
-  "title": "The Clone Wars — 22 BBY (before the movie)",
+  "title": "The Clone Wars",
   "date": "22 BBY",
   "type": "anime",
   "level": "important",
@@ -65,7 +65,7 @@
  },
  {
   "id": "sw-tcw-22",
-  "title": "The Clone Wars — 22 BBY",
+  "title": "The Clone Wars",
   "date": "22 BBY",
   "type": "anime",
   "level": "important",
@@ -73,7 +73,7 @@
  },
  {
   "id": "sw-tcw-21",
-  "title": "The Clone Wars — 21 BBY",
+  "title": "The Clone Wars",
   "date": "21 BBY",
   "type": "anime",
   "level": "important",
@@ -81,7 +81,7 @@
  },
  {
   "id": "sw-tcw-20",
-  "title": "The Clone Wars — 20 BBY",
+  "title": "The Clone Wars",
   "date": "20 BBY",
   "type": "anime",
   "level": "important",
@@ -89,7 +89,7 @@
  },
  {
   "id": "sw-tcw-19",
-  "title": "The Clone Wars — 19 BBY",
+  "title": "The Clone Wars",
   "date": "19 BBY",
   "type": "anime",
   "level": "important",
@@ -105,7 +105,7 @@
  },
  {
   "id": "sw-tcw-rsith",
-  "title": "The Clone Wars — during Revenge of the Sith",
+  "title": "The Clone Wars",
   "date": "19 BBY",
   "type": "anime",
   "level": "important",
@@ -137,7 +137,7 @@
  },
  {
   "id": "sw-bb1",
-  "title": "The Bad Batch — Season 1",
+  "title": "The Bad Batch",
   "date": "19 BBY",
   "type": "anime",
   "level": "bonus",
@@ -145,7 +145,7 @@
  },
  {
   "id": "sw-bb2",
-  "title": "The Bad Batch — Seasons 2 & 3",
+  "title": "The Bad Batch",
   "date": "18 BBY",
   "type": "anime",
   "level": "bonus",
@@ -225,7 +225,7 @@
  },
  {
   "id": "sw-andors1",
-  "title": "Andor — Season 1",
+  "title": "Andor",
   "date": "5 BBY",
   "type": "serie",
   "level": "important",
@@ -241,7 +241,7 @@
  },
  {
   "id": "sw-andors2-1",
-  "title": "Andor — Season 2 Episodes 1-6",
+  "title": "Andor",
   "date": "4–3 BBY",
   "type": "serie",
   "level": "important",
@@ -257,7 +257,7 @@
  },
  {
   "id": "sw-andors2-2",
-  "title": "Andor — Season 2 Episodes 7-9",
+  "title": "Andor",
   "date": "2 BBY",
   "type": "serie",
   "level": "important",
@@ -273,7 +273,7 @@
  },
  {
   "id": "sw-rebels-s4",
-  "title": "Rebels — Season 4",
+  "title": "Rebels",
   "date": "1 BBY",
   "type": "anime",
   "level": "important",
@@ -281,7 +281,7 @@
  },
  {
   "id": "sw-andors2-3",
-  "title": "Andor — Season 2 Episodes 10-12",
+  "title": "Andor",
   "date": "1 BBY",
   "type": "serie",
   "level": "important",
@@ -393,7 +393,7 @@
  },
  {
   "id": "sw-mando-s2b",
-  "title": "The Mandalorian — Season 2 Episodes 6-8",
+  "title": "The Mandalorian",
   "date": "9 ABY",
   "type": "serie",
   "level": "important",
@@ -409,7 +409,7 @@
  },
  {
   "id": "sw-mando-s3",
-  "title": "The Mandalorian — Season 3",
+  "title": "The Mandalorian",
   "date": "9 ABY",
   "type": "serie",
   "level": "important",

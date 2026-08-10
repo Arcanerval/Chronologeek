@@ -5,7 +5,7 @@
   "date": "2001–2011",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Superman origins"
  },
  {
   "id": "dc-krypton-s1",
@@ -13,7 +13,7 @@
   "date": "???",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Superman origins"
  },
  {
   "id": "dc-supermanreturns",
@@ -21,7 +21,7 @@
   "date": "2006",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "Superman origins"
  },
  {
   "id": "dc-batman89",
@@ -29,7 +29,7 @@
   "date": "1989",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-batmanreturns",
@@ -37,7 +37,7 @@
   "date": "1992",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-batmanbegins",
@@ -45,7 +45,7 @@
   "date": "2005",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-tdk",
@@ -53,7 +53,7 @@
   "date": "2008",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-tdkr",
@@ -61,7 +61,7 @@
   "date": "2016",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-gotham",
@@ -69,7 +69,7 @@
   "date": "???",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-titans-s1",
@@ -77,7 +77,7 @@
   "date": "2018",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "dc-titans-s2",
@@ -85,7 +85,7 @@
   "date": "2019",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Batman origins"
  },
  {
   "id": "av-arrow-s12",
@@ -93,7 +93,7 @@
   "date": "2012–2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s3e1-3",
@@ -101,7 +101,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s1e1-4",
@@ -109,7 +109,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s3e4",
@@ -117,7 +117,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s1e5",
@@ -125,7 +125,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s3e5",
@@ -133,7 +133,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s1e6-7",
@@ -141,7 +141,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s3e6-7",
@@ -149,7 +149,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s1e8",
@@ -157,7 +157,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s3e8",
@@ -165,7 +165,7 @@
   "date": "2014",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s1e9-23",
@@ -173,7 +173,7 @@
   "date": "2014–2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s3e9-23",
@@ -181,7 +181,7 @@
   "date": "2014–2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-constantine",
@@ -189,7 +189,7 @@
   "date": "2014",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e1",
@@ -197,7 +197,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e1-4",
@@ -205,7 +205,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e2-4",
@@ -213,7 +213,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e1-4",
@@ -221,7 +221,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e5",
@@ -229,7 +229,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e5-6",
@@ -237,7 +237,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e5-7",
@@ -245,7 +245,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e6",
@@ -253,7 +253,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e7",
@@ -261,7 +261,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e8-9",
@@ -269,7 +269,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e7",
@@ -277,7 +277,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e8",
@@ -285,7 +285,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e8",
@@ -293,7 +293,7 @@
   "date": "2015",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e10-11",
@@ -301,7 +301,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e9-10",
@@ -309,7 +309,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e9-10",
@@ -317,7 +317,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e12-17",
@@ -325,7 +325,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e11-17",
@@ -333,7 +333,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e11-18",
@@ -341,7 +341,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e18",
@@ -349,7 +349,7 @@
   "date": "2015–2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s4e18-23",
@@ -357,7 +357,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s2e19-23",
@@ -365,7 +365,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s1e19-20",
@@ -373,7 +373,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s1",
@@ -381,7 +381,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s2e1-7",
@@ -389,7 +389,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s3e1-7",
@@ -397,7 +397,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s5e1-7",
@@ -405,7 +405,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s2e1-6",
@@ -413,7 +413,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s1e1-6",
@@ -421,7 +421,7 @@
   "date": "2016",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s2e8",
@@ -429,7 +429,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s3e8",
@@ -437,7 +437,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s5e8",
@@ -445,7 +445,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s2e7",
@@ -453,7 +453,7 @@
   "date": "2016",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s2e9-22",
@@ -461,7 +461,7 @@
   "date": "2016–2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s3e9-23",
@@ -469,7 +469,7 @@
   "date": "2016–2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s5e9-23",
@@ -477,7 +477,7 @@
   "date": "2016–2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s2e8-17",
@@ -485,7 +485,7 @@
   "date": "2016–2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s1e7-13",
@@ -493,7 +493,7 @@
   "date": "2016–2017",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s3e1-7",
@@ -501,7 +501,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s4e1-7",
@@ -509,7 +509,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s6e1-7",
@@ -517,7 +517,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s3e1-7",
@@ -525,7 +525,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s2e1-7",
@@ -533,7 +533,7 @@
   "date": "2017",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s3e8",
@@ -541,7 +541,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s4e8",
@@ -549,7 +549,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s6e8",
@@ -557,7 +557,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s3e8",
@@ -565,7 +565,7 @@
   "date": "2017",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s3e9-23",
@@ -573,7 +573,7 @@
   "date": "2017–2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s4e9-23",
@@ -581,7 +581,7 @@
   "date": "2017–2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s6e9-23",
@@ -589,7 +589,7 @@
   "date": "2017–2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s3e9-18",
@@ -597,7 +597,7 @@
   "date": "2017–2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s2e8-16",
@@ -605,7 +605,7 @@
   "date": "2017–2018",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s4e1-8",
@@ -613,7 +613,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s5e1-7",
@@ -621,7 +621,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s7e1-8",
@@ -629,7 +629,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s4e1-7",
@@ -637,7 +637,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s3e1-7",
@@ -645,7 +645,7 @@
   "date": "2018",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bw-s1e1-4",
@@ -653,7 +653,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s5e8-9",
@@ -661,7 +661,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s7e9",
@@ -669,7 +669,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s4e9-22",
@@ -677,7 +677,7 @@
   "date": "2018",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s5e10-22",
@@ -685,7 +685,7 @@
   "date": "2018–2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s7e10-22",
@@ -693,7 +693,7 @@
   "date": "2018–2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s4e8-16",
@@ -701,7 +701,7 @@
   "date": "2018–2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s3e8",
@@ -709,7 +709,7 @@
   "date": "2018–2019",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s5e1-8",
@@ -717,7 +717,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bw-s1e5-8",
@@ -725,7 +725,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s6e1-8",
@@ -733,7 +733,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s8e1-7",
@@ -741,7 +741,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "crisis-start",
@@ -749,7 +749,7 @@
   "date": "2019–2020",
   "type": "separator",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bl-s3e9",
@@ -757,7 +757,7 @@
   "date": "2019",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-sg-s5e9",
@@ -765,7 +765,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-bw-s1e9",
@@ -773,7 +773,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-flash-s6e9",
@@ -781,7 +781,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-arrow-s8e8",
@@ -789,7 +789,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "av-lot-s5e1",
@@ -797,7 +797,7 @@
   "date": "2019",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse"
  },
  {
   "id": "dceu-mos",
@@ -805,7 +805,7 @@
   "date": "2013",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-bvs",
@@ -813,7 +813,7 @@
   "date": "2015",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-ww",
@@ -821,7 +821,7 @@
   "date": "1918",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-ww84",
@@ -829,7 +829,7 @@
   "date": "1984",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-ss",
@@ -837,15 +837,15 @@
   "date": "2016",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-jl",
-  "title": "Zack Snyder\\'s Justice League",
+  "title": "Zack Snyder's Justice League",
   "date": "2017",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-aquaman",
@@ -853,7 +853,7 @@
   "date": "2017–2018",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-shazam",
@@ -861,7 +861,7 @@
   "date": "2018",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-bop",
@@ -869,7 +869,7 @@
   "date": "2020",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-tss",
@@ -877,7 +877,7 @@
   "date": "2020–2021",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-peacemaker",
@@ -885,7 +885,7 @@
   "date": "2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-blackadam",
@@ -893,7 +893,7 @@
   "date": "2021",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-shazam2",
@@ -901,7 +901,7 @@
   "date": "2022",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-aquaman2",
@@ -909,7 +909,7 @@
   "date": "2022",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-bluebeetle",
@@ -917,7 +917,7 @@
   "date": "2023",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "dceu-theflash",
@@ -925,7 +925,7 @@
   "date": "2023",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCEU"
  },
  {
   "id": "av-bl-s3e10-16",
@@ -933,7 +933,7 @@
   "date": "2019–2020",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-sg-s5e10-19",
@@ -941,7 +941,7 @@
   "date": "2019–2020",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-bw-s1e10-20",
@@ -949,7 +949,7 @@
   "date": "2019–2020",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-flash-s6e10-19",
@@ -957,7 +957,7 @@
   "date": "2019–2020",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-arrow-s8e9-10",
@@ -965,7 +965,7 @@
   "date": "2019–2020",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-lot-s5e2-15",
@@ -973,7 +973,7 @@
   "date": "2019–2020",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-sg-s6",
@@ -981,7 +981,7 @@
   "date": "2020–2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-bw-s2",
@@ -989,7 +989,7 @@
   "date": "2020–2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-flash-s7",
@@ -997,7 +997,7 @@
   "date": "2020–2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-lot-s6",
@@ -1005,7 +1005,7 @@
   "date": "2020–2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-bl-s4",
@@ -1013,7 +1013,7 @@
   "date": "2020–2021",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-bw-s3",
@@ -1021,7 +1021,7 @@
   "date": "2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-flash-s8e1-5",
@@ -1029,7 +1029,7 @@
   "date": "2021",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-lot-s7",
@@ -1037,7 +1037,7 @@
   "date": "2021–2022",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-flash-s8e6-20",
@@ -1045,7 +1045,7 @@
   "date": "2021–2022",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "av-flash-s9",
@@ -1053,7 +1053,7 @@
   "date": "2023",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "Arrowverse — After the event"
  },
  {
   "id": "dc-stargirl-s1",
@@ -1061,7 +1061,7 @@
   "date": "2020",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-stargirl-s2",
@@ -1069,7 +1069,7 @@
   "date": "2021",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-stargirl-s3",
@@ -1077,7 +1077,7 @@
   "date": "2021",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-titans-s3",
@@ -1085,7 +1085,7 @@
   "date": "2021",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-titans-s4",
@@ -1093,15 +1093,15 @@
   "date": "2021",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-supermanlois",
-  "title": "Superman &amp; Lois",
+  "title": "Superman & Lois",
   "date": "2021–2024",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-thebatman",
@@ -1109,7 +1109,7 @@
   "date": "2022",
   "type": "film",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dc-thepenguin",
@@ -1117,7 +1117,7 @@
   "date": "2022",
   "type": "serie",
   "level": "bonus",
-  "block": null
+  "block": "Post-event Elseworlds"
  },
  {
   "id": "dcu-ss-sc",
@@ -1125,7 +1125,7 @@
   "date": "2016",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCU — New Universe"
  },
  {
   "id": "dceu-tss-sc",
@@ -1133,7 +1133,7 @@
   "date": "2022",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCU — New Universe"
  },
  {
   "id": "dceu-peacemaker-sc",
@@ -1141,7 +1141,7 @@
   "date": "2023",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "DCU — New Universe"
  },
  {
   "id": "dcu-cc",
@@ -1149,7 +1149,7 @@
   "date": "2024",
   "type": "anime",
   "level": "bonus",
-  "block": null
+  "block": "DCU — New Universe"
  },
  {
   "id": "dcu-superman",
@@ -1157,7 +1157,7 @@
   "date": "2025",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCU — New Universe"
  },
  {
   "id": "dcu-peacemaker2",
@@ -1165,7 +1165,7 @@
   "date": "2025",
   "type": "serie",
   "level": "imp",
-  "block": null
+  "block": "DCU — New Universe"
  },
  {
   "id": "dcu-supergirl",
@@ -1173,6 +1173,6 @@
   "date": "2026",
   "type": "film",
   "level": "imp",
-  "block": null
+  "block": "DCU — New Universe"
  }
 ]
