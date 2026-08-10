@@ -24,3 +24,12 @@ __pycache__/
 
 # Coffre Obsidian cree par accident dans le depot. Rien du site n'y est.
 Chronologeek/
+
+# Sortie de la traduction : ce qu'il a fallu ecrire en anglais faute de prod a
+# reprendre. Entierement reecrit par traduire.mjs, traduire-pages.mjs et
+# relecture.mjs a chaque passe, donc rien a versionner — et la relecture se fait
+# au navigateur sur le proto anglais, pas dans un document.
+_proto/A-RELIRE-EN.md
+_proto/a-traduire.json
+_proto/a-traduire-pages.json
+_proto/a-relire-pages.json

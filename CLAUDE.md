@@ -69,16 +69,8 @@ et rendra zéro plutôt qu'une erreur.
 
 Tous lisent leur clé TMDB dans la variable d'environnement `TMDB_KEY`
 (secret GitHub du même nom). Tous sont rejouables : ils nettoient leur propre bloc
-avant de réinjecter.
+avant de réinjecter. Ils sont deux.
 
-- `dossier.py`, `dossier_i18n.py` — génèrent le Dossier dans les deux langues.
-  Table `FR_OVERRIDE_RAW` pour les titres français corrigés à la main.
-  **Ne jamais les lancer.** Ils produisent l'ancien HTML du Dossier et
-  écraseraient `deep-dives/star-wars.html` et `fr/dossiers/star-wars.html`, qui
-  sont désormais publiées depuis `_proto/`. Leurs 533 entrées vivent dans
-  `_proto/data-dossier-sw.js`, et c'est là qu'on ajoute. Leur workflow est en
-  `workflow_dispatch` seul, donc rien ne part tout seul : le risque, c'est un
-  clic sur « Run workflow ».
 - `runtime.py` — calcule le temps de visionnage par entrée et injecte
   `const RT={id:minutes}`. Workflow `runtime.yml`, déclenchement manuel.
   Il écrit dans **`_proto/data.js`, `_proto/data-mcu.js`, `_proto/data-dc.js`**,
@@ -88,6 +80,14 @@ avant de réinjecter.
 - `radar.py` — radar des sorties, workflow `radar.yml`, une fois par jour
   (`cron: "0 6 * * *"`, soit 8 h à Paris en été, 7 h en hiver). Il n'y a pas
   assez de sorties pour tourner plus souvent.
+
+`dossier.py` et `dossier_i18n.py` ont été **supprimés le 10 août 2026**,
+avec leur workflow et leurs deux caches : ils produisaient l'ancien HTML du Dossier et
+auraient écrasé `deep-dives/star-wars.html` et `fr/dossiers/star-wars.html`, publiées
+depuis `_proto/` depuis la refonte. Rien ne les lançait tout seuls — leur workflow était
+en `workflow_dispatch` — mais un clic sur « Run workflow » suffisait, et c'était le seul
+vrai risque du dépôt. Les 533 entrées du Dossier vivent dans `_proto/data-dossier-sw.js`,
+et c'est là qu'on ajoute. Ne pas les rétablir depuis l'historique git.
 
 ### Ce que le radar écarte
 
@@ -190,7 +190,10 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   restent volontaires — la page courante (`aria-current="page"`), « Soutenir le
   site » et « Contact ».
 - `node _proto/relecture.mjs` — regroupe dans `A-RELIRE-EN.md` les seules phrases
-  qu'il a fallu écrire, contre plusieurs milliers reprises telles quelles.
+  qu'il a fallu écrire, contre plusieurs milliers reprises telles quelles. **Ce
+  fichier et les trois JSON dont il sort ne sont plus versionnés** (voir
+  `.gitignore`) : Niko ne relit pas un document, il ouvre le proto anglais au
+  navigateur et valide ou non. Le script reste, sa sortie est locale.
 - `node _proto/publier.mjs` — pose les dix-huit pages, `/data/` et `app.js`. Voir
   « La publication » plus bas.
 
@@ -585,7 +588,13 @@ et la majuscule initiale quand on découpe une phrase.
 
 - Monétisation : Patreon ou Ko-fi, pas encore activée. Les deux `href="#"` de
   « Soutenir le site » et « Contact » attendent ça.
-- `A-RELIRE-EN.md` — 145 phrases de données et 107 de pages à relire en anglais.
-  Ce sont les seules que la prod n'avait pas ; tout le reste est repris mot pour mot.
+- Relecture de l'anglais écrit — 147 phrases de données et 110 de pages. Ce sont
+  les seules que la prod n'avait pas ; tout le reste est repris mot pour mot. Elle
+  se fait **au navigateur, sur le proto anglais**, pas dans `A-RELIRE-EN.md`. Le
+  bon geste serait de marquer ces phrases-là dans le proto pour qu'elles se voient
+  à l'écran ; ce n'est pas fait.
 - Avatar n'a pas de table `RT` : pas de temps de visionnage, donc pas de compteur
   « temps restant » sur sa page. Les trois autres univers en ont une.
+- Images trop lourdes — 21 fichiers de `images/` dépassent 900 Ko, dont
+  `battlefront.png` à 20,8 Mo en 5333×3000 pour une vignette. Redimensionnement
+  décidé le 10 août 2026.
