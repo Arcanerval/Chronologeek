@@ -154,6 +154,16 @@ const TRADUCTIONS = [
   // on coupe la phrase anglaise au même endroit.
   ['L\'Arrowverse post-événement, les Elseworlds issus de l\'événement.',
    'The post-event Arrowverse, the Elseworlds born from the event.'],
+
+  /* ── le séparateur DC, réécrit le 10 août 2026 ──
+     La prod annonçait « ⚡ The major event begins » et renvoyait aux
+     Elseworlds « marked 🚨 » ; le proto a rebaptisé la bannière et changé
+     ce qu'elle demande — le DCEU et les deux origines, plus les
+     Elseworlds. On traduit donc le texte neuf, mais la clause du DCEU
+     reprend mot pour mot celle de la prod, déjà relue. */
+  ['Plus de retour en arrière', 'No turning back'],
+  ['Si vous comptiez regarder le DCEU (au moins jusqu\'à Justice League inclus) et les deux origines de Batman et Superman (les éléments Important) faites le avant de continuer l\'Arrowverse.',
+   'If you were planning to watch the DCEU (at least up to and including Justice League) and the two Batman and Superman origins (the Important entries), do it before going on with the Arrowverse.'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════

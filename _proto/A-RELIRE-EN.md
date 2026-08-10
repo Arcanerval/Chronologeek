@@ -17,7 +17,7 @@ qui n’existait donc dans aucune des deux versions.
 | Textes des huit pages | 1 565 appariés, 1 749 identiques dans les deux langues |
 | Entrées du journal | 8, appariées par rang dans `whats-new.html` |
 
-**252 phrases ont dû être écrites** : 145 dans les données, 107 dans les pages. Ce sont elles, et
+**257 phrases ont dû être écrites** : 147 dans les données, 110 dans les pages. Ce sont elles, et
 elles seules, qui suivent.
 
 Corrige directement dans les tables `TRADUCTIONS` de `_proto/traduire.mjs`
@@ -66,6 +66,16 @@ titre, lui, vient de `whats-new.html`, où il figure déjà en anglais.
 
 > FR — La scène post-crédits est importante.
 > EN — The post-credits scene matters.
+
+**#crisis-start.title**
+
+> FR — Plus de retour en arrière
+> EN — No turning back
+
+**#crisis-start.note**
+
+> FR — Si vous comptiez regarder le DCEU (au moins jusqu'à Justice League inclus) et les deux origines de Batman et Superman (les éléments Important) faites le avant de continuer l'Arrowverse.
+> EN — If you were planning to watch the DCEU (at least up to and including Justice League) and the two Batman and Superman origins (the Important entries), do it before going on with the Arrowverse.
 
 **eras.hint**
 
@@ -675,10 +685,13 @@ Navigation, pied de page, boutons partagés.
 | Français | Anglais |
 |---|---|
 | 932 h | 932 h |
+| Ces histoires servent à introduire les origines des plus grands héros DC ainsi que les enjeux des différents univers, connectés ou non. Il n'est pas conseillé de regarder les colonnes les unes à la suite des autres mais plutôt en parallèle. Assurez-vous d'avoir regardé les éléments notés Important que vous voulez voir avant la bannière « Plus de retour en arrière » plus bas. | These stories introduce the origins of DC’s greatest heroes, and what is at stake in each universe, connected or not. Watching the columns one after another is not advised — read them in parallel. Make sure you have watched the entries marked Important that you want to see before the “No turning back” banner further down. |
 | Choisir une branche | Choose a branch |
 | Chronologeek — DC (proto E) | Chronologeek — DC (proto E) |
+| Faites glisser pour voir les autres branches | Swipe to see the other branches |
 | Guide du Multivers | Multiverse Guide |
 | L'Arrowverse post-événement, les Elseworlds issus de l'événement. | The post-event Arrowverse, the Elseworlds born from the event. |
+| Les origines | The origins |
 
 ### Dossiers
 

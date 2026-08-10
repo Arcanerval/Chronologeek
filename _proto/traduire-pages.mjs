@@ -411,6 +411,24 @@ const TRADUCTIONS = [
   // la page emploie « votre » là où les données disent « ta » : c'est
   // le français qui hésite, l'anglais ne fait pas la différence
   ['Réinitialiser votre progression Avatar ?', 'Reset your Avatar progress?'],
+
+  /* ── DC, les quatre colonnes ─────────────────────────────────────
+     La refonte à quatre colonnes fusionne Elseworlds et « Les 2 univers
+     principaux » en une seule zone, qui porte donc un nom et une
+     description que la prod n'avait pas — les siennes, mises bout à
+     bout, se répétaient et ne disaient pas qu'on lit les colonnes en
+     parallèle.
+
+     La bannière citée entre guillemets est le séparateur `crisis-start`,
+     rendu « No turning back » par `traduire.mjs` : les deux tables
+     doivent dire la même chose, sinon la description renverrait à un
+     titre qui n'existe pas dans la page. */
+  ['Les origines', 'The origins'],
+  ['Ces histoires servent à introduire les origines des plus grands héros DC ainsi que les enjeux des différents univers, connectés ou non. Il n\'est pas conseillé de regarder les colonnes les unes à la suite des autres mais plutôt en parallèle. Assurez-vous d\'avoir regardé les éléments notés Important que vous voulez voir avant la bannière « Plus de retour en arrière » plus bas.',
+   'These stories introduce the origins of DC’s greatest heroes, and what is at stake in each universe, connected or not. Watching the columns one after another is not advised — read them in parallel. Make sure you have watched the entries marked Important that you want to see before the “No turning back” banner further down.'],
+  // la prod écrit « Swipe to see the other branches → » ; la flèche est
+  // désormais une icône, elle ne fait plus partie de la phrase
+  ['Faites glisser pour voir les autres branches', 'Swipe to see the other branches'],
 ];
 
 const ECRITES = new Map(TRADUCTIONS.map(([f, e]) => [net(f), e]));

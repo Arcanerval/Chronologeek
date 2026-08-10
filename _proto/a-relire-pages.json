@@ -384,6 +384,30 @@
     ]
   },
   {
+    "fr": "Ces histoires servent à introduire les origines des plus grands héros DC ainsi que les enjeux des différents univers, connectés ou non. Il n'est pas conseillé de regarder les colonnes les unes à la suite des autres mais plutôt en parallèle. Assurez-vous d'avoir regardé les éléments notés Important que vous voulez voir avant la bannière « Plus de retour en arrière » plus bas.",
+    "en": "These stories introduce the origins of DC’s greatest heroes, and what is at stake in each universe, connected or not. Watching the columns one after another is not advised — read them in parallel. Make sure you have watched the entries marked Important that you want to see before the “No turning back” banner further down.",
+    "ou": "js",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "Les origines",
+    "en": "The origins",
+    "ou": "js",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
+    "fr": "Faites glisser pour voir les autres branches",
+    "en": "Swipe to see the other branches",
+    "ou": "js",
+    "pages": [
+      "e-dc.html"
+    ]
+  },
+  {
     "fr": "Timeline Chronologique",
     "en": "Chronological Timeline",
     "ou": "texte",

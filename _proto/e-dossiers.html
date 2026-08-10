@@ -45,10 +45,12 @@
   --uc:var(--c-doss);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-x:none}
 body{background:var(--ink);color:var(--paper);
   font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
-  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:58px}
+  -webkit-font-smoothing:antialiased;overflow-x:clip;overscroll-behavior-x:none;
+  /* la barre du bas se mesure : elle passe sur deux lignes en etroit */
+  padding-bottom:calc(var(--hud-h,48px) + 10px)}
 img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
@@ -72,8 +74,12 @@ a{color:inherit}
 /* ══ bandeau ═══════════════════════════════════════════════════════ */
 header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
 header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
-.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
-.brand img{height:23px;width:auto}
+/* Le logo se retracte : a 375 px, ses 260 px plus le drapeau, le burger
+   et les gouttieres reclamaient 410 px, et l'en-tete sortait de l'ecran
+   par la droite. `flex:0 1 auto` avec `min-width:0` le laisse rendre les
+   pixels de trop, et `height:auto` lui garde ses proportions. */
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 1 auto;min-width:0}
+.brand img{height:auto;width:auto;max-height:23px;max-width:100%}
 .nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
 .nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
   text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;

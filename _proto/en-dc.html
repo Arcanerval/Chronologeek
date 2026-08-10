@@ -29,6 +29,13 @@
   STRUCTURE : DC n'a pas d'ères mais des colonnes parallèles. Les quatre
   zones de la page de prod sont déroulées en huit bandes, chacune portant
   sa zone en sus-titre — l'ordre de lecture reste celui du site.
+  ÉCART AVEC e-dc.html : les quatre bandes d'avant l'événement — Origines de
+  Superman, Origines de Batman, Arrowverse, DCEU — tiennent ici sur une
+  seule zone, donc sur quatre colonnes côte à côte au lieu de deux zones de
+  deux. Trois endroits changent, et rien d'autre : la fusion des zones au
+  chargement, l'encre de l'événement attribuée par nature plutôt que par
+  rang, et le CSS de `.cols.zg-4`. Le reste de la page est mot pour mot
+  celui de e-dc.html.
   TEXTES : tout ce qui est prose vient de fr/dc.html, mot pour mot,
   au vouvoiement. Rien n'est réécrit ici.
 -->
@@ -57,10 +64,12 @@
   --era:var(--era1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-x:none}
 body{background:var(--ink);color:var(--paper);
   font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
-  -webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:64px}
+  -webkit-font-smoothing:antialiased;overflow-x:clip;overscroll-behavior-x:none;
+  /* la barre du bas se mesure : elle passe sur deux lignes en etroit */
+  padding-bottom:calc(var(--hud-h,50px) + 14px)}
 img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
@@ -87,8 +96,12 @@ a{color:inherit}
    poser par-dessus le menu et le panneau de filtres au défilement. */
 body>header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
 body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
-.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
-.brand img{height:23px;width:auto}
+/* Le logo se retracte : a 375 px, ses 260 px plus le drapeau, le burger
+   et les gouttieres reclamaient 410 px, et l'en-tete sortait de l'ecran
+   par la droite. `flex:0 1 auto` avec `min-width:0` le laisse rendre les
+   pixels de trop, et `height:auto` lui garde ses proportions. */
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 1 auto;min-width:0}
+.brand img{height:auto;width:auto;max-height:23px;max-width:100%}
 .nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
 .nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
   text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
@@ -345,6 +358,43 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 .cols{display:grid;gap:22px;align-items:start}
 .cols.zg-1{grid-template-columns:minmax(0,1fr)}
 .cols.zg-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols.zg-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* ── quatre colonnes : la bande d'avant l'événement ─────────────────
+   À 1280 px de gouttière, quatre colonnes laissent 86 px au titre une fois
+   la case, l'affiche et les marges retirées : illisible. La bande déborde
+   donc du gabarit et prend la fenêtre, jusqu'à 1680 px. C'est la seule de
+   la page à le faire, et c'est justifié — c'est la carte du multivers, le
+   reste est de la prose.
+   `--vw` est posé en JS depuis `clientWidth` et non `100vw` : sous Windows
+   la barre de défilement est comptée dans `100vw` et pas dans la largeur
+   disponible, la bande dépassait de sa quinzaine de pixels et la page
+   défilait latéralement. */
+.cols.zg-4{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+/* Le resserrement ne vaut QUE pour la grille à quatre colonnes réelle, d'où
+   le seuil : `.cols.zg-4>.col` l'emporte sur le `.cols>.col` des règles
+   mobiles, et sans borne il imposait encore ses tailles sur un téléphone,
+   où la colonne est seule et large.
+   L'affiche est la seule pièce élastique de la ligne : c'est donc elle qui
+   absorbe le passage de deux colonnes à quatre. Fixée à sa taille de deux
+   colonnes, elle ne laissait que 106 px au titre sur un écran de 1440 —
+   deux mots par ligne. Elle suit la fenêtre, et le titre garde ses 145 px. */
+@media(min-width:1440px){
+  /* la bande déborde du gabarit et prend la fenêtre, jusqu'à 1680 px. C'est
+     la seule de la page à le faire, et c'est justifié — c'est la carte du
+     multivers, le reste est de la prose. */
+  .cols.zg-4{--w4:min(1680px,calc(var(--vw,100vw) - 40px));
+    width:var(--w4);margin-left:calc((100% - var(--w4))/2)}
+  .cols.zg-4>.col{--fig:clamp(88px,6.4vw,124px);--figgap:19px}
+  .cols.zg-4 .col-t{font-size:24px}
+  .cols.zg-4 .bu-title{font-size:18px}
+  .cols.zg-4 .bu-meta{gap:9px}
+  .cols.zg-4 .bu-meta .d{font-size:17px}
+  .cols.zg-4 .bu-head{gap:10px;padding:9px 9px}
+  /* le chevron de dépliage se réduit lui aussi : à quatre colonnes il prenait
+     35 px de la largeur du titre, pour dire une seule chose — que la fiche
+     s'ouvre. Il le dit aussi bien en 15. */
+  .cols.zg-4 .bu-end svg{width:15px;height:15px}
+}
 .col{min-width:0;--fig:132px;--figgap:21px}
 .col[hidden]{display:none}
 /* La tête de colonne prend la couleur de sa branche, celle des pastilles du
@@ -370,7 +420,7 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 .col .sep h3{font-size:21px}
 .col .sep .d{font-size:16px}
 /* onglets de branche et invitation au glissement : mobile seulement */
-.ztabs{display:none;gap:7px;flex-wrap:wrap;margin-bottom:13px}
+.ztabs{display:none;gap:7px;flex-wrap:wrap;margin-bottom:9px}
 .ztabs[hidden]{display:none}
 .ztabs button{font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
   letter-spacing:.06em;text-transform:uppercase;background:none;border:2px solid var(--line);
@@ -379,9 +429,40 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 .ztabs button i{width:9px;height:9px;flex:0 0 auto;background:var(--k,var(--paper));display:block}
 .ztabs button[aria-selected=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
 .ztabs button[aria-selected=true] i{background:var(--k,var(--ink))}
-.zswipe{display:none;margin-top:12px;text-align:center;font-size:11.5px;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.6)}
+/* L'invitation au glissement : une ligne posée entre les onglets et le
+   carrousel. Flèche dessinée à gauche, qui pousse par à-coups — l'animation
+   est en `steps`, comme tout le reste de la page, pas un glissé continu.
+   Compteur à droite : « 1 / 4 » dit qu'il reste trois colonnes, ce que la
+   phrase seule ne montrait pas. */
+.zswipe{display:none;align-items:center;gap:10px;margin:0 0 12px;
+  font-size:11.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.72)}
 .zswipe[hidden]{display:none}
+.zsw-a{width:20px;height:20px;flex:0 0 auto;color:var(--hot);
+  fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square;stroke-linejoin:miter;
+  animation:zsw 2.4s steps(2,end) infinite}
+@keyframes zsw{0%,58%{transform:translateX(0)}
+  64%{transform:translateX(6px)}72%{transform:translateX(0)}
+  78%{transform:translateX(6px)}86%,100%{transform:translateX(0)}}
+.zsw-t{min-width:0}
+.zsw-n{margin-left:auto;white-space:nowrap;font-family:'Big Shoulders Display';
+  font-weight:800;font-size:18px;line-height:1;letter-spacing:.04em;
+  color:rgba(255,253,247,.55)}
+.zsw-n b{color:var(--hot)}
+.zsw-n i{font-style:normal}
+/* Le bord qui s'efface : il dit que le carrousel continue là où la colonne
+   suivante est coupée. La classe est posée en JS au défilement, et le voile
+   tombe dès qu'on est arrivé au bout — un bord flou immobile ne voudrait
+   plus rien dire. Aucune règle n'est nécessaire hors carrousel : une grille
+   qui ne défile pas ne reçoit jamais la classe.
+   À DROITE SEULEMENT. Un voile symétrique paraissait plus propre, il ne
+   l'était pas : les colonnes commencent au bord du conteneur, et les
+   trente-quatre pixels de gauche mangeaient la première lettre de chaque
+   ligne — le « P » de « Plus de retour en arrière ». Le retour en arrière
+   est déjà dit par les onglets et par le compteur ; c'est la suite qu'on ne
+   soupçonne pas. */
+.cols.more-r{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 60px),transparent);
+  mask-image:linear-gradient(to right,#000 calc(100% - 60px),transparent)}
 
 /* ══ LES BULLES : une par ligne, image à gauche, titre à droite ═════ */
 .list{background:color-mix(in srgb,var(--era) 16%,var(--ink));padding:20px 0 34px}
@@ -588,7 +669,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
    et le décalait du premier. Chacun garde donc sa taille propre, et
    l'image de survol déborde du bouton — d'où `max-width:none`, que la
    règle globale `img{max-width:100%}` annulerait sinon. */
-#totop{position:fixed;right:18px;bottom:88px;z-index:75;width:100px;height:114px;padding:0;
+#totop{position:fixed;right:18px;bottom:calc(var(--hud-h,50px) + 38px);z-index:75;width:100px;height:114px;padding:0;
   background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
   transform:translateY(10px);transition:opacity .2s,transform .2s}
 #totop.on{opacity:1;pointer-events:auto;transform:none}
@@ -661,7 +742,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .bg1 .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:3px}
 
 /* ══ badge débloqué : le carton et les confettis ═══════════════════ */
-.bpop{position:fixed;left:50%;bottom:98px;z-index:141;transform:translate(-50%,18px);
+.bpop{position:fixed;left:50%;bottom:calc(var(--hud-h,50px) + 48px);z-index:141;transform:translate(-50%,18px);
   display:flex;gap:13px;align-items:center;padding:13px 18px;max-width:min(420px,calc(100vw - 24px));
   background:var(--ink);border:2px solid var(--c,var(--hot));
   box-shadow:6px 6px 0 rgba(13,11,18,.6);opacity:0;pointer-events:none;
@@ -675,6 +756,37 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
 .conf{position:fixed;inset:0;z-index:140;pointer-events:none}
 
+/* ── entre 821 et 1439 px, quatre colonnes ne tiennent plus ─────────
+   Les empiler ferait perdre le parallélisme, qui est tout le propos de la
+   bande. Elles glissent donc, deux visibles à la fois, avec les onglets de
+   branche remontés du mobile.
+   La borne basse compte : sans elle, `--fig` valait encore 124 px sur un
+   téléphone — `.cols.zg-4>.col` l'emporte sur le `.cols>.col` de la règle
+   mobile, qui descend à 110 puis à 74. La colonne dépassait de quinze
+   pixels et la page défilait latéralement. Sous 821 px, c'est donc la règle
+   générale qui tient tout, colonnes comme onglets. */
+/* Bornes décimales, et ce n'est pas une coquetterie : la largeur de fenêtre
+   n'est pas entière (facteur d'échelle de l'écran), et à 1439,5 px ni
+   `max-width:1439px` ni `min-width:1440px` ne s'appliquaient. La bande
+   retombait alors sur le CSS de base — quatre colonnes dans le gabarit de
+   1280, sans resserrement, 297 px par colonne. */
+@media(min-width:820.02px) and (max-width:1439.98px){
+  .cols.zg-4{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none}
+  .cols.zg-4::-webkit-scrollbar{display:none}
+  /* 47 % : deux colonnes tiennent, la troisième dépasse d'un doigt. À 50 %
+     la bande se coupait pile au bord et rien ne disait qu'il y en avait
+     quatre. */
+  .cols.zg-4>.col{flex:0 0 calc(47% - 7px);scroll-snap-align:start;--fig:124px}
+  /* même raison que sur mobile : le carrousel devient le conteneur de
+     défilement, `animation-timeline:view()` s'y résout et ne se déclenche
+     jamais — les bulles resteraient à opacité 0. */
+  .cols.zg-4 .rv{animation:none;opacity:1;transform:none}
+  .zone-sec[data-cols="4"] .ztabs{display:flex}
+  .zone-sec[data-cols="4"] .zswipe{display:flex}
+  .zone-sec[data-cols="4"] .ztabs[hidden],
+  .zone-sec[data-cols="4"] .zswipe[hidden]{display:none}
+}
 @media(max-width:1080px){
   .nav-links{display:none}
   .burger{display:grid}
@@ -690,11 +802,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .cols:not(.zg-1){display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
     scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none}
   .cols:not(.zg-1)::-webkit-scrollbar{display:none}
-  .cols:not(.zg-1)>.col{flex:0 0 92%;scroll-snap-align:start}
+  /* 87 % et non 92 : la colonne suivante doit DÉPASSER, pas affleurer. À
+     92 % il ne restait que la gouttière, et l'écran ressemblait à une page
+     qui ne bouge pas. Le morceau coupé est le signal, la phrase le nomme. */
+  .cols:not(.zg-1)>.col{flex:0 0 87%;scroll-snap-align:start}
   .cols>.col{--fig:110px;--figgap:19px}
   .col-t{font-size:23px}
   .ztabs{display:flex}
-  .zswipe{display:block}
+  .zswipe{display:flex}
   .ztabs[hidden],.zswipe[hidden]{display:none}
   /* `overflow-x:auto` fait du carrousel le conteneur de défilement du bloc.
      `animation-timeline:view()` s'y résout alors, et il ne défile jamais
@@ -731,12 +846,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .drawer a{padding:13px 20px}
   .sieve .last{margin-left:0}
   .pacts{margin-left:0}
-  #totop{width:70px;height:80px;bottom:82px;right:12px}
+  #totop{width:70px;height:80px;bottom:calc(var(--hud-h,84px) + 20px);right:12px}
   #totop span{width:70px;height:80px}
   #totop .nl{width:70px;height:80px}
   #totop .hv{width:152px;height:85px;left:-89px;top:-13px}
-  /* pleine largeur, et posé au-dessus du bat-signal, qui monte à 162 px du bas */
-  .bpop{left:12px;right:12px;max-width:none;bottom:174px;transform:translateY(18px)}
+  /* pleine largeur, et posé au-dessus du bat-signal, qui suit la barre */
+  .bpop{left:12px;right:12px;max-width:none;bottom:calc(var(--hud-h,84px) + 112px);transform:translateY(18px)}
   .bpop.o{transform:translateY(0)}
 }
 @media(prefers-reduced-motion:reduce){
@@ -919,7 +1034,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      le visiteur. Aucune autre reformulation. */
   var T=Object.assign({},CFG.t,{
     resetDC:'Reset your DC progress?',
-    emptyP:'Try another spelling, or bring back the filters you turned off.'
+    emptyP:'Try another spelling, or bring back the filters you turned off.',
+    /* La flèche de fin de phrase (« … les autres branches → ») est devenue
+       une flèche dessinée, animée, posée en tête de ligne : elle bouge, un
+       caractère non. Le mot reste celui de la prod, au vouvoiement. */
+    swipe:'Swipe to see the other branches'
   });
   /* Bannière de bande : la première entrée du niveau le plus haut présent.
      Marvel prenait son premier ⭐ ; DC n'a pas d'essentiels, ses deux
@@ -1140,6 +1259,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      Superman / Batman, Arrowverse / DCEU, Arrowverse post / Elseworlds
      post. L'événement majeur est seul, et le DCU aussi : il ferme la page
      sur une colonne unique. */
+  /* PROTO 4 COLONNES — le seul écart avec e-dc.html.
+     Les quatre bandes d'avant l'événement — Origines de Superman, Origines
+     de Batman, Arrowverse, DCEU — portaient deux zones différentes et se
+     lisaient donc en deux temps : d'abord les deux origines, puis les deux
+     univers principaux. Elles disent pourtant la même chose, qu'on peut
+     alterner entre elles à sa convenance. Une seule zone les met côte à
+     côte, et le parallélisme se voit au lieu de se lire.
+     Ici la zone est réécrite au chargement pour que le proto partage
+     `data-dc.js` avec la page actuelle ; une fois retenu, c'est le champ
+     `zone` des données qui portera la valeur. */
+  var Z4="The origins";
+  D.eras.forEach(function(era){
+    if(era.zone==='Elseworlds'||era.zone==='The 2 main universes') era.zone=Z4;
+  });
   var ZONES=(function(){
     var out=[];
     D.eras.forEach(function(era,i){
@@ -1160,6 +1293,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var ZDESC={
     "Elseworlds":"These stories — although some are connected to each other and to the other universes — mostly serve to flesh out the lore and origins of DC's two greatest heroes. Watch them whenever you like, before or alongside the other zones.",
     "The 2 main universes":"The Arrowverse and the DCEU side by side. Watch each column separately or alternate between them as you like.",
+    /* La zone fusionnée a son texte propre, écrit par Niko : les deux
+       descriptions de la page de prod mises bout à bout se répétaient, et
+       elles ne disaient pas la seule chose que quatre colonnes demandent —
+       qu'on les lit en parallèle, pas l'une après l'autre. */
+    "The origins":"These stories introduce the origins of DC’s greatest heroes, and what is at stake in each universe, connected or not. Watching the columns one after another is not advised — read them in parallel. Make sure you have watched the entries marked Important that you want to see before the “No turning back” banner further down.",
     "After the event":"The post-event Arrowverse, the Elseworlds born from the event."
   };
   function zdesc(z){
@@ -1170,9 +1308,32 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var b=(CFG.branches||{})[era.branch];
     return (b&&b.c)||'var(--paper)';
   }
-  /* Cinq zones, cinq encres. La seule rouge reste l'événement majeur : on le
-     voit venir au défilement bien avant d'en lire le titre. */
-  var ZINK=['--era1','--era4','--era5','--era7','--era8'];
+  /* Les encres ne sont pas décoratives : chacune est la teinte sombre d'une
+     branche. Violet Elseworlds pour ce qui précède l'événement, magenta pour
+     ce qui en sort, ocre pour le DCU — et le rouge, la seule de la page,
+     réservé à l'événement majeur : on le voit venir au défilement bien avant
+     d'en lire le titre.
+     Elles se distribuent donc hors de l'événement, et non au rang de la zone.
+     Prises au rang, la fusion des deux premières zones décalait tout d'un
+     cran : l'événement virait au bleu, le DCU au vert, et rien ne le disait.
+     La suite `--era3` / `--era6` n'est là que pour une zone ajoutée un jour. */
+  var ZINK=['--era1','--era7','--era8','--era3','--era6'];
+  (function(){ var n=0;
+    ZONES.forEach(function(z){ z.ink=z.event?'--era5':ZINK[(n++)%ZINK.length]; });
+  })();
+  function zink(z){ return z.ink; }
+
+  /* La largeur utile de la fenêtre, barre de défilement déduite : c'est elle
+     que la bande à quatre colonnes prend pour déborder du gabarit sans faire
+     défiler la page latéralement. `100vw` ne convient pas, il compte la barre.
+     Reposé au redimensionnement, sinon un passage en plein écran laisse la
+     bande à son ancienne largeur. */
+  (function vw(){
+    function set(){ document.documentElement.style.setProperty('--vw',
+      document.documentElement.clientWidth+'px'); }
+    set();
+    var t; addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(set,120); });
+  })();
 
   (function build(){
     var html='';
@@ -1217,11 +1378,25 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               return isSep(e)? sepRow(e) : row(e); }).join('')+'</div>'+
           '</section>';
         }).join('');
-        body=tabs+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>'+
-             (multi?'<p class="zswipe">'+esc(T.swipe)+'</p>':'');
+        /* L'invitation au glissement se lit AVANT le carrousel. Posée
+           dessous, elle arrivait après plusieurs écrans de colonne : celui
+           qui ne savait pas qu'il pouvait glisser ne l'apprenait jamais.
+           Elle porte le rang de la colonne en vue — c'est ce chiffre qui
+           dit qu'il y en a d'autres, la phrase seule ne le montrait pas. */
+        var swipe=multi
+          ? '<p class="zswipe">'+
+              '<svg class="zsw-a" viewBox="0 0 24 24" aria-hidden="true">'+
+                '<path d="M3 12h15M12 5.5 18.5 12 12 18.5"/></svg>'+
+              '<span class="zsw-t">'+esc(T.swipe)+'</span>'+
+              '<span class="zsw-n" aria-hidden="true">'+
+                '<b data-zn>1</b> / <i data-zt>'+z.cols.length+'</i></span>'+
+            '</p>'
+          : '';
+        body=tabs+swipe+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>';
       }
       html+='<section class="zone-sec" id="zone'+(zi+1)+'" data-zone="'+zi+'"'+
-        ' style="--era:var('+ZINK[zi%ZINK.length]+')">'+
+        ' data-cols="'+(z.event?0:z.cols.length)+'"'+
+        ' style="--era:var('+zink(z)+')">'+
         '<div class="map">'+
           '<div class="layers" aria-hidden="true">'+
             (a1?'<div class="lay lay1" style="background-image:url('+a1+')"></div>'+
@@ -1242,6 +1417,19 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      Les onglets sautent à une colonne, le défilement remet en face celui de
      la colonne la plus centrée. Sur grand écran le conteneur ne défile pas
      et rien de tout ça ne se déclenche. */
+  /* Les voiles de bord. Posés en classe plutôt qu'en CSS pur : rien dans une
+     feuille de style ne sait si un conteneur est arrivé au bout de son
+     défilement, et un bord effacé qui ne s'efface jamais ment.
+     `applyFilters` réécrit `grid.className` pour changer le nombre de
+     colonnes — il rappelle donc cette fonction, sinon les classes tombent
+     au premier filtre décoché et ne reviennent qu'au défilement suivant. */
+  function zedges(){
+    [].forEach.call(document.querySelectorAll('.cols'),function(g){
+      g.classList.toggle('more-r',
+        g.scrollWidth-g.clientWidth>4 && g.scrollLeft+g.clientWidth<g.scrollWidth-4);
+    });
+  }
+
   [].forEach.call(document.querySelectorAll('.zone-sec'),function(sec){
     var grid=$('.cols',sec), tabs=$('.ztabs',sec);
     if(!grid||!tabs) return;
@@ -1263,9 +1451,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     function mark(i){
       [].forEach.call(tabs.children,function(b){
         b.setAttribute('aria-selected',(+b.dataset.tab===i)?'true':'false'); });
+      /* Le compteur se lit sur les colonnes VIVANTES, pas sur les données :
+         décocher une branche en retire une, et « 3 / 4 » désignerait alors
+         une colonne qui n'est plus là. */
+      var n=0, at=1;
+      [].forEach.call(grid.children,function(c,ci){
+        if(c.hidden) return; n++; if(ci===i) at=n; });
+      var nb=$('[data-zn]',sec), nt=$('[data-zt]',sec);
+      if(nb) nb.textContent=at;
+      if(nt) nt.textContent=n;
     }
     var tick;
     grid.addEventListener('scroll',function(){
+      /* le voile suit le doigt, l'onglet attend qu'on s'arrête */
+      zedges();
       clearTimeout(tick);
       tick=setTimeout(function(){
         var g=grid.getBoundingClientRect(), mid=g.left+g.width/2, best=0, bd=Infinity;
@@ -1278,6 +1477,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       },70);
     },{passive:true});
   });
+  /* Au chargement rien n'a défilé : sans ce premier passage aucune bande ne
+     porterait de voile, et la page s'ouvrirait sur son affordance éteinte.
+     Au redimensionnement, une bande peut cesser d'être un carrousel — le
+     voile doit tomber avec. */
+  zedges();
+  addEventListener('resize',function(){ clearTimeout(zedges._t);
+    zedges._t=setTimeout(zedges,150); });
 
   /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
   function applyFilters(){
@@ -1318,6 +1524,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       sec.hidden=(live.length===0);
       var grid=$('.cols',sec);
       if(grid) grid.className='cols zg-'+(live.length||1);
+      /* Le nombre de colonnes VIVANTES, pas celui des données : décocher une
+         branche fait tomber sa colonne, et la bande à quatre repasse à trois
+         ou à deux. C'est lui que le CSS lit pour décider du carrousel et des
+         onglets — la classe `zg-*` ne porte que sur la grille, or les onglets
+         en sont le frère et non l'enfant. */
+      sec.dataset.cols=(live.length||1);
       var tabs=$('.ztabs',sec), sw=$('.zswipe',sec);
       if(tabs){
         tabs.hidden=live.length<2;
@@ -1329,6 +1541,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       }
       if(sw) sw.hidden=live.length<2;
     });
+    /* Le nombre de colonnes vient de changer, et `grid.className` a été
+       réécrit juste au-dessus : voiles de bord et compteur se relisent
+       dessus. Un défilement simulé suffit — c'est le chemin du doigt. */
+    zedges();
+    [].forEach.call(document.querySelectorAll('.cols'),function(g){
+      g.dispatchEvent(new Event('scroll')); });
     $('#fcount').textContent=shown+' / '+ALL.length+' '+T.shown;
     var em=$('#empty');
     em.hidden=shown>0;

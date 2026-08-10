@@ -168,3 +168,46 @@
     });
   }
 })();
+
+/* ═══ LA HAUTEUR DE LA BARRE DU BAS ══════════════════════════════════
+   La barre de progression passe sur deux lignes dès que l'écran se
+   resserre : 50 px sur un écran large, 84 sur un téléphone. Le bas des
+   pages et le bat-signal étaient calés sur des valeurs fixes, si bien
+   que la barre recouvrait la fin de la page et que le bat-signal lui
+   rentrait dedans.
+
+   On mesure donc la barre — sa bande seulement, jamais son dépliant, qui
+   n'a pas à repousser la page quand il s'ouvre — et on pose `--hud-h`,
+   dont le CSS de chaque page se sert pour son `padding-bottom` et pour
+   le `bottom` du bat-signal et de la bulle de badge.
+
+   La mesure est refaite au redimensionnement, à la rotation et à l'arrivée
+   des polices : Big Shoulders arrive après le premier rendu et change le
+   retour à la ligne de la barre.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var hud = document.querySelector('.hud');
+  if (!hud) return;
+  /* les pages d'univers ont une bande dépliable, les autres une simple
+     barre : on mesure ce qui existe */
+  var bande = hud.querySelector('.hud-bar');
+
+  function pose(){
+    var h;
+    if (bande) {
+      var bt = parseFloat(getComputedStyle(hud).borderTopWidth) || 0;
+      h = bande.getBoundingClientRect().height + bt;
+    } else {
+      h = hud.getBoundingClientRect().height;
+    }
+    if (h > 0) document.documentElement.style.setProperty('--hud-h', Math.round(h) + 'px');
+  }
+
+  pose();
+  addEventListener('resize', pose);
+  addEventListener('orientationchange', pose);
+  if (window.ResizeObserver) new ResizeObserver(pose).observe(bande || hud);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(pose);
+})();

@@ -61,6 +61,24 @@
   },
   {
     "contexte": "DC",
+    "chemin": "#crisis-start.title",
+    "champ": "title",
+    "fr": "Plus de retour en arrière",
+    "en": "No turning back",
+    "statut": "traduit, à relire",
+    "cause": "corrigé depuis la prod"
+  },
+  {
+    "contexte": "DC",
+    "chemin": "#crisis-start.note",
+    "champ": "note",
+    "fr": "Si vous comptiez regarder le DCEU (au moins jusqu'à Justice League inclus) et les deux origines de Batman et Superman (les éléments Important) faites le avant de continuer l'Arrowverse.",
+    "en": "If you were planning to watch the DCEU (at least up to and including Justice League) and the two Batman and Superman origins (the Important entries), do it before going on with the Arrowverse.",
+    "statut": "traduit, à relire",
+    "cause": "corrigé depuis la prod"
+  },
+  {
+    "contexte": "DC",
     "chemin": "eras.hint",
     "champ": "hint",
     "fr": "L'Arrowverse post-événement, les Elseworlds issus de l'événement.",
