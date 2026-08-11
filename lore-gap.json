@@ -1,9 +1,9 @@
 {
- "genere_le": "2026-08-10",
+ "genere_le": "2026-08-11",
  "fenetre": {
   "jours": 2,
-  "du": "2026-08-08",
-  "au": "2026-08-12"
+  "du": "2026-08-09",
+  "au": "2026-08-13"
  },
  "a_placer": [
   {
@@ -19,7 +19,7 @@
    "source": "Wookieepedia",
    "wiki": "The Fall of Kylo Ren 1",
    "synopsis": "The Fall of Kylo Ren 1 is the first issue of the upcoming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney, and published by Marvel Comics on August 12, 2026.",
-   "vu_dernier": "2026-08-10",
+   "vu_dernier": "2026-08-11",
    "cible": "dossier",
    "fichier_cible": "_proto/data-dossier-sw.js"
   }
@@ -50,8 +50,8 @@
    ]
   }
  ],
- "hors_fenetre": 77,
- "placees_ce_coup": 2,
+ "hors_fenetre": 78,
+ "placees_ce_coup": 0,
  "univers_sans_page": [],
  "index": {
   "avatar (timeline)": "lore-index/avatar.json",

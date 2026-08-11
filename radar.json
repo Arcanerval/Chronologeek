@@ -221,6 +221,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "marvel",
+  "title": "Avengers Endgame Encore",
+  "date_sort": "2026-09-25",
+  "date_txt": "25/09/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store. Added with 7 minutes of extra unseen content",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "starwars",
   "title": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
   "date_sort": "2026-10-06",
