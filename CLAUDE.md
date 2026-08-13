@@ -159,6 +159,18 @@ Trois fonctions, partagées par `source_tmdb` et `source_startrek` :
   moins de trois ans (`ST_FRAICHEUR`). *The Original Series* n'a pas de prochain
   épisode.
 
+**`UNIVERS_TITRE` est né de là.** Le filtre par société ne suffit plus dès qu'on
+interroge `air_date` : **Nickelodeon Animation Studio produit tout le catalogue de
+la chaîne**, et il est dans la liste d'Avatar parce qu'« Avatar Studios » seul ne
+porte pas *Seven Havens*. Tant que le radar ne demandait que les séries dont la
+première est à venir, ça ne se voyait pas — il y en a peu. Le premier passage a
+ramené douze épisodes de *SpongeBob SquarePants*, *The Patrick Star Show* et
+*Rock, Paper, Scissors* au radar Avatar. Le titre doit maintenant répondre à
+`\b(avatar|korra|aang|airbender)\b`, et il est jugé **avant** que la fiche soit
+demandée — une fiche coûte trois requêtes. Lucasfilm, Marvel Studios et DC Studios
+ne désignent qu'un univers : eux n'ont pas de garde-fou. C'est la même idée que
+`ST_TITRE`, que Star Trek applique à sa recherche par titre.
+
 Chaque épisode porte `ep:{s,e,mark}`, et cette clé n'existe que là — la poser à
 `null` sur les huit cents autres entrées n'apprendrait rien à la page. `mark` vaut
 `premiere` au premier épisode, `finale` au dernier, et `""` entre les deux. La page

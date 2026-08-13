@@ -50,6 +50,28 @@ TMDB_COMPANY_NAMES = {
     "avatar":   ["Avatar Studios", "Nickelodeon Animation Studio"],
 }
 
+# Quand la société couvre plus large que l'univers, le titre doit encore
+# répondre à ce motif. **Nickelodeon Animation Studio produit tout le catalogue
+# de la chaîne**, et « Avatar Studios » seul ne suffit pas : c'est Nickelodeon
+# qui porte Seven Havens. Tant que le radar ne demandait que les séries dont la
+# première est à venir, ça ne se voyait pas — il y en a peu. La lecture des
+# épisodes interroge `air_date`, donc toutes celles qui diffusent, et
+# SpongeBob SquarePants, The Patrick Star Show et Rock, Paper, Scissors sont
+# arrivés au radar Avatar : douze épisodes le 13 août 2026.
+#
+# Lucasfilm, Marvel Studios et DC Studios ne désignent qu'un univers : eux
+# n'ont pas besoin de garde-fou. C'est la même idée que `ST_TITRE`, que Star
+# Trek applique à sa recherche par titre pour la même raison.
+UNIVERS_TITRE = {
+    "avatar": re.compile(r"\b(avatar|korra|aang|airbender)\b", re.I),
+}
+
+
+def hors_univers(uni, titre):
+    """Un titre que la société a rapporté mais que l'univers ne reconnaît pas."""
+    motif = UNIVERS_TITRE.get(uni)
+    return bool(motif) and not motif.search(titre or "")
+
 # Exclusions : jamais canon ou hors périmètre. Motifs testés sur "titre + type".
 EXCLUDE = {
     # « A Novel Based on the Animated Film » est une novélisation qui ne dit pas
@@ -390,6 +412,8 @@ def source_tmdb():
                     except Exception:
                         fr = {}
                     for it in j.get("results", []):
+                        if hors_univers(uni, it.get("title") or it.get("name")):
+                            continue
                         raw = it.get("release_date") or it.get("first_air_date")
                         d = parse_iso(raw or "")
                         if not d:
@@ -426,9 +450,18 @@ def source_tmdb():
                     break
         # Puis les épisodes, série par série. `debuts` évite de doubler la
         # première d'une série neuve, déjà annoncée juste au-dessus.
-        eps = 0
+        eps = ecartees = 0
         for sid, snom in tmdb_series_qui_diffusent(base, joined).items():
+            # Une fiche coûte trois requêtes : le titre se juge AVANT de la
+            # demander, sans quoi le catalogue Nickelodeon entier est lu pour
+            # être jeté ensuite.
+            if hors_univers(uni, snom):
+                ecartees += 1
+                continue
             eps += tmdb_episodes(base, uni, sid, snom, sauf_le=debuts.get(sid))
+        if ecartees:
+            log(f"TMDB      : {uni} — {ecartees} série(s) de la société écartée(s), "
+                f"hors de l'univers")
         found += eps
         log(f"TMDB      : {uni} — sociétés {joined} → {found} entrée(s), "
             f"dont {eps} épisode(s)")
