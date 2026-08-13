@@ -1,20 +1,25 @@
 [
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"A Case of Chiaroscuro\"",
-  "date_sort": "2026-08-13",
-  "date_txt": "13/08/2026",
+  "universe": "dc",
+  "title": "Teen Titans Go! — \"Teen Titans Go to the Repair Shop (1)\"",
+  "date_sort": "2026-08-15",
+  "date_txt": "15/08/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Teen Titans Go! — « Épisode 45 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 9,
+   "e": 45,
+   "mark": ""
+  }
  },
  {
   "universe": "dc",
@@ -32,6 +37,28 @@
   "title_fr": "",
   "date_sort_fr": "",
   "date_txt_fr": ""
+ },
+ {
+  "universe": "dc",
+  "title": "My Adventures with Superman — \"The Return\"",
+  "date_sort": "2026-08-16",
+  "date_txt": "16/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Our heroes try to save the world. Clark tries to reach them. Lex faces the music. It's time to be brave.",
+  "wiki": "",
+  "syn_fr": "Nos héros tentent de sauver le monde. Clark essaie de les contacter. Lex doit assumer ses responsabilités. Il est temps d'avoir du courage.",
+  "kindKey": "tv",
+  "title_fr": "My Adventures with Superman — « Le Retour »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 10,
+   "mark": "finale"
+  }
  },
  {
   "universe": "starwars",
@@ -68,21 +95,180 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"Level-Five Transporter Accident\"",
-  "date_sort": "2026-08-20",
-  "date_txt": "20/08/2026",
+  "universe": "avatar",
+  "title": "Rock, Paper, Scissors — \"Paper: Renowned Researcher\"",
+  "date_sort": "2026-08-21",
+  "date_txt": "21/08/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Paper travels back to the Paleolithic Era to save his reputation as a researcher, only to make things much, much worse.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "Rock, Paper, Scissors — « Épisode 15 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 15,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "Rock, Paper, Scissors — \"Meatball\"",
+  "date_sort": "2026-08-21",
+  "date_txt": "21/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Lou turns his cat, Meatball, into a vampire to try and keep him alive forever.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "Rock, Paper, Scissors — « Épisode 16 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 16,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "The Patrick Star Show — \"Neighborhood Wash\"",
+  "date_sort": "2026-08-21",
+  "date_txt": "21/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "The Star's neighbor Gladys works as a neighborhood vigilante.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "The Patrick Star Show — « Épisode 9 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 5,
+   "e": 9,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "The Patrick Star Show — \"A Fridge Too Far\"",
+  "date_sort": "2026-08-21",
+  "date_txt": "21/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Patrick, GrandPat, and Cecil want Bunny to honor their accomplishments on the fridge.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "The Patrick Star Show — « Épisode 10 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 5,
+   "e": 10,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "SpongeBob SquarePants — \"Duct Tape Dystopia\"",
+  "date_sort": "2026-08-21",
+  "date_txt": "21/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Mr. Krabs repairs issues around the Krusty Krab with duct tape. Soon, however, the quick fixes lead to one big headache.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "SpongeBob SquarePants — « Épisode 17 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 17,
+   "e": 17,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "SpongeBob SquarePants — \"Farmer's Market Feud\"",
+  "date_sort": "2026-08-21",
+  "date_txt": "21/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "When Mr. Krabs rents out his parking lot for a farmer's market, the Planktons and Narwhals set up competing booths and reignite their family feud.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "SpongeBob SquarePants — « Épisode 18 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 17,
+   "e": 18,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "dc",
+  "title": "Teen Titans Go! — \"Teen Titans Go to the Repair Shop (2)\"",
+  "date_sort": "2026-08-22",
+  "date_txt": "22/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Teen Titans Go! — « Épisode 46 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 9,
+   "e": 46,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 2\"",
+  "date_sort": "2026-08-23",
+  "date_txt": "23/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "Lanterns — « Épisode 2 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 2,
+   "mark": ""
+  }
  },
  {
   "universe": "avatar",
@@ -119,21 +305,158 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"Off-Hour\"",
-  "date_sort": "2026-08-27",
-  "date_txt": "27/08/2026",
+  "universe": "avatar",
+  "title": "Rock, Paper, Scissors — \"The Apology Soirée\"",
+  "date_sort": "2026-08-28",
+  "date_txt": "28/08/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "While Paper and Scissors throw an apology party for everyone they've wronged, Rock accidentally shrinks himself and Franz Roll, and the two struggle to survive the chaos.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "Rock, Paper, Scissors — « Épisode 18 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 18,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "Rock, Paper, Scissors — \"Scissors' Perfect Match\"",
+  "date_sort": "2026-08-28",
+  "date_txt": "28/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Scissors falls for a beautiful mermaid he met on a dating app, but his desperate need to prove she's real threatens to destroy their relationship.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "Rock, Paper, Scissors — « Épisode 17 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 17,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "The Patrick Star Show — \"The Barbarian Next Door\"",
+  "date_sort": "2026-08-28",
+  "date_txt": "28/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Pat the Hapless is banished to another dimension.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "The Patrick Star Show — « Épisode 11 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 5,
+   "e": 11,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "The Patrick Star Show — \"Runaway Patrick\"",
+  "date_sort": "2026-08-28",
+  "date_txt": "28/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Patrick leaves his old life behind and ends up accidentally adopting a new family.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "The Patrick Star Show — « Épisode 12 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 5,
+   "e": 12,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "SpongeBob SquarePants — \"Clicking with a Clique\"",
+  "date_sort": "2026-08-28",
+  "date_txt": "28/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "SpongeBob and Patrick compete for a spot in Bubble Bass' nerd clique.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "SpongeBob SquarePants — « Épisode 19 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 17,
+   "e": 19,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "avatar",
+  "title": "SpongeBob SquarePants — \"Rock Bottom Games\"",
+  "date_sort": "2026-08-28",
+  "date_txt": "28/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Bikini Bottomites and Rock Bottomites battle it out in a series of silly sports.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "SpongeBob SquarePants — « Épisode 20 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 17,
+   "e": 20,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 3\"",
+  "date_sort": "2026-08-30",
+  "date_txt": "30/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Lanterns — « Épisode 3 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 3,
+   "mark": ""
+  }
  },
  {
   "universe": "starwars",
@@ -153,21 +476,26 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"Like Chronitons Through the Hourglass\"",
-  "date_sort": "2026-09-03",
-  "date_txt": "03/09/2026",
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 4\"",
+  "date_sort": "2026-09-06",
+  "date_txt": "06/09/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Lanterns — « Épisode 4 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 4,
+   "mark": ""
+  }
  },
  {
   "universe": "avatar",
@@ -204,21 +532,26 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"Orders of Magnitude\"",
-  "date_sort": "2026-09-10",
-  "date_txt": "10/09/2026",
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 5\"",
+  "date_sort": "2026-09-13",
+  "date_txt": "13/09/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Lanterns — « Épisode 5 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 5,
+   "mark": ""
+  }
  },
  {
   "universe": "starwars",
@@ -255,38 +588,70 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"Once La'An a Time\"",
-  "date_sort": "2026-09-17",
-  "date_txt": "17/09/2026",
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 6\"",
+  "date_sort": "2026-09-20",
+  "date_txt": "20/09/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Lanterns — « Épisode 6 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 6,
+   "mark": ""
+  }
  },
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds — \"Tomorrow's Enterprise\"",
-  "date_sort": "2026-09-24",
-  "date_txt": "24/09/2026",
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 7\"",
+  "date_sort": "2026-09-27",
+  "date_txt": "27/09/2026",
   "kind": "Épisode",
-  "source": "Memory Alpha",
+  "source": "TMDB",
   "precision": "day",
   "era": "",
   "syn": "",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Lanterns — « Épisode 7 »",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 7,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "dc",
+  "title": "Lanterns — \"Episode 8\"",
+  "date_sort": "2026-10-04",
+  "date_txt": "04/10/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "Lanterns — « Épisode 8 »",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 8,
+   "mark": "finale"
+  }
  },
  {
   "universe": "starwars",
