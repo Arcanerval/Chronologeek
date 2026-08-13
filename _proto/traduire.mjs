@@ -183,6 +183,18 @@ const TRADUCTIONS = [
    '248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.'],
   // whats-new.html · « July 2026 », « June 2026 »
   ['Août 2026', 'August 2026'],
+
+  /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
+     Même moule que la carte « Legacy » de juillet, qui dit en anglais
+     « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just
+     before Pirate's Price ». Le titre, lui, ne se traduit pas : le comic
+     sort en VO, il est déclaré identique plus bas.
+
+     Le voisin cité change de nom d'une langue à l'autre — la prod
+     anglaise écrit « Legacy of Vader », que le Dossier français rend
+     par « L'Héritage de Vador ». */
+  ['Ajouté au Dossier Star Wars — le comic, en 34 ABY, juste après L\'Héritage de Vador.',
+   'Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════
@@ -522,6 +534,26 @@ const collisions = [];
    savoir — une date in-universe, un titre d'œuvre non traduit. */
 const GLOBAL = new Lexique();
 
+/* ── les titres qui s'écrivent pareil des deux côtés ────────────────
+   Une entrée ajoutée après la refonte n'a pas d'homologue dans la
+   référence : le lexique ne peut rien retrouver, et le script la
+   signale « sans traduction ». C'est juste pour de la prose, faux pour
+   un titre jamais traduit en français — le comic sort en VO, il porte
+   le même nom dans les deux langues.
+
+   Rien n'est écrit ici, on constate. La sortie serait la même sans
+   cette liste, puisqu'une chaîne sans traduction est rendue telle
+   quelle ; ce qui change, c'est que l'avertissement reste vrai — il ne
+   doit désigner que des phrases réellement restées en français.
+
+   Ce n'est PAS l'endroit d'un titre traduit : celui-là va dans
+   TRADUCTIONS, où son emploi est consigné et part en relecture. */
+const TITRES_IDENTIQUES = [
+  // Dossier Star Wars · 34 ABY, comic VO ajouté le 13 août 2026
+  'The Fall of Kylo Ren 1-5',
+];
+for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
+
 for (const T of TIMELINES) {
   const P = depuisProto(T.proto);
   const FR = depuisPage(T.pageFR);
@@ -606,34 +638,70 @@ for (const T of TIMELINES) {
   lex.parallele(FR.CG, EN.CG);
   lex.parallele(FR.CG_DATA, EN.CG_DATA);
 
-  /* ── apparier par rang, pas par identifiant ───────────────────────
+  /* ── apparier par identifiant, et par rang seulement à défaut ─────
      Les 63 repères écran n'ont pas d'`id` : indexés par id, ils se
      retrouvaient tous sous la clé `undefined`, et le dernier écrasait
      les 62 autres. Chacun héritait donc du titre du dernier — les 63
      repères annonçaient « Episode IX: The Rise of Skywalker ».
 
-     Les trois versions listent les mêmes 596 items dans le même ordre,
-     ère par ère : le rang est un appariement exact, et il vaut aussi
-     pour ce qui n'a pas d'identifiant. L'`id`, quand il existe, sert à
-     vérifier que les deux listes n'ont pas glissé. */
+     Le rang, qui a corrigé ça, avait son propre défaut : il suppose que
+     les trois versions listent exactement les mêmes items. Une entrée
+     AJOUTÉE au proto décalait alors tout ce qui la suit dans son ère, et
+     chaque item recevait le texte anglais de son voisin de gauche — 533
+     entrées justes le jour d'avant, fausses le lendemain, sans une ligne
+     dans la console.
+
+     Les 533 identifiants sont uniques dans les trois versions : ils
+     apparient exactement, et un ajout n'a pas d'homologue, ce qui est la
+     bonne réponse — la nouvelle entrée part en relecture. Les repères
+     écran, eux, s'apparient par leur rang PARMI LES ÉCRANS, que l'ajout
+     d'une entrée ne déplace pas. */
   const tr = creerTraducteur(lex, manques, 'Dossier');
   const eresEN = EN.CG_DATA.eras;
   const eresFR = FR.CG_DATA.eras;
-  const glissements = [];
 
+  /* index par id + file des écrans dans l'ordre du document */
+  function indexDossier(eras) {
+    const parId = new Map();
+    const ecrans = [];
+    for (const era of eras) {
+      for (const it of era.items) {
+        if (it.id) parId.set(it.id, it);
+        else ecrans.push(it);
+      }
+    }
+    return { parId, ecrans };
+  }
+  const refEN = indexDossier(eresEN);
+  const refFR = indexDossier(eresFR);
+
+  let nEcran = 0;
+  const inedits = [];
   const sortie = { ...P.CGD, eras: P.CGD.eras.map((era, i) => ({
     ...era,
     title: eresEN[i] ? eresEN[i].title : era.title,
     items: era.items.map((it, j) => {
-      const en = eresEN[i] ? eresEN[i].items[j] : undefined;
-      const fr = eresFR[i] ? eresFR[i].items[j] : undefined;
-      if (en && it.id && en.id && it.id !== en.id) glissements.push(`${it.id} ↔ ${en.id}`);
+      let en, fr;
+      if (it.id) {
+        en = refEN.parId.get(it.id);
+        fr = refFR.parId.get(it.id);
+        if (!en) inedits.push(it.id);
+      } else {
+        en = refEN.ecrans[nEcran];
+        fr = refFR.ecrans[nEcran];
+        nEcran++;
+      }
       return tr.objet(it, en, `#${it.id || `${i}.${j}`}`, fr);
     }),
   })) };
 
-  if (glissements.length) {
-    console.log(`\n  ⚠ Dossier : ${glissements.length} item(s) mal appariés — ${glissements.slice(0, 3).join(', ')}`);
+  if (nEcran !== refEN.ecrans.length) {
+    console.log(`\n  ⚠ Dossier : ${nEcran} repère(s) écran dans le proto, `
+      + `${refEN.ecrans.length} dans la référence — l'appariement par rang a glissé`);
+  }
+  if (inedits.length) {
+    console.log(`\n  · Dossier : ${inedits.length} entrée(s) sans homologue anglais `
+      + `(ajoutées depuis la référence) — ${inedits.slice(0, 3).join(', ')}`);
   }
 
   /* `intro` est de la prose, pas une liste d'entrées : elle passe par le
@@ -645,11 +713,9 @@ for (const T of TIMELINES) {
   }
 
   const nItems = sortie.eras.reduce((n, e) => n + e.items.length, 0);
-  /* appariés par rang : il manque une source quand l'ère anglaise est
-     plus courte que la française au même endroit */
-  const sansSource = P.CGD.eras.flatMap((era, i) =>
-    era.items.filter((_, j) => !(eresEN[i] && eresEN[i].items[j]))
-      .map((it, j) => it.id || `${i}.${j}`));
+  /* appariés par identifiant : il manque une source quand l'entrée est
+     nouvelle depuis la référence, donc jamais écrite en anglais */
+  const sansSource = inedits.slice();
   bilan.push({ nom: 'Dossier', entrees: nItems, sansSource, collisions: lex.collisions.length,
                lexique: lex.table.size });
   for (const c of lex.collisions) collisions.push({ contexte: 'Dossier', fr: c[0], en1: c[1], en2: c[2] });

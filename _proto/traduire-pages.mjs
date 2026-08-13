@@ -261,7 +261,7 @@ const TRADUCTIONS = [
   ['Les', 'The'],                          // « Les <span>Dossiers</span> »
   ['Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu et autres choses méritant votre attention',
    'To go further into your favorite universes: novels, comics, expanded canon and other things worth your attention'],
-  ['5 univers · 533 au dossier', '5 universes · 533 in the Deep Dive'],
+  ['5 univers · 534 au dossier', '5 universes · 534 in the Deep Dive'],
   ['entrées cochées', 'entries checked'],
   // les deux boutons d'essai du proto, qui ne partiront pas en ligne
   ['proto : simuler une progression', 'proto: simulate progress'],
@@ -319,7 +319,7 @@ const TRADUCTIONS = [
    'The guides that go beyond the timeline: reading orders, analyses and thematic paths, universe by universe.'],
   ['Romans · Romans jeunesse · Comics — l\'ordre de lecture complet du canon, replacé entre les films et les séries.',
    'Novels · Young-reader books · Comics — the complete canon reading order, placed among the movies and shows.'],
-  ['533 entrées · 7 ères · à jour · juillet 2026', '533 entries · 7 eras · up to date · July 2026'],
+  ['534 entrées · 7 ères · à jour · août 2026', '534 entries · 7 eras · up to date · August 2026'],
   ['D\'autres Dossiers', 'More Deep Dives'],
   ['Qu\'aimeriez vous voir ici ? Des nouveautés arriveront.',
    'What would you like to see here? More is on the way.'],
@@ -384,7 +384,7 @@ const TRADUCTIONS = [
   // Ce que la page affiche avant que le script ne recalcule. Les
   // chiffres sont figés dans le HTML, seul le mot change.
   ['/ 121 vus', '/ 121 watched'],
-  ['/ 533 lus', '/ 533 read'],
+  ['/ 534 lus', '/ 534 read'],
   ['121 / 121 affichées', '121 / 121 shown'],
   ['294 h', '294 h'],
   ['489 h', '489 h'],
@@ -542,6 +542,56 @@ function memeCasse(modele, texte) {
   return texte;
 }
 
+/* ── un décompte qui change ne doit pas faire tomber sa phrase ──────
+   « 533 entrées · 63 repères à l'écran » est au lexique parce que la
+   prod l'écrivait ainsi des deux côtés. Ajoutez une entrée au Dossier,
+   le proto écrit 534, et la clé ne correspond plus à rien : la phrase
+   ressort SANS TRADUCTION, c'est-à-dire en français, sur la page
+   anglaise. Rien dans la console, rien à l'écran qui alerte — seul le
+   compteur du rapport bouge, et il faut le lire.
+
+   On indexe donc aussi les phrases avec leurs nombres remplacés par un
+   jeton. Deux garde-fous : le gabarit doit désigner UNE seule phrase
+   anglaise — sinon on ne sait pas laquelle, et on renonce —, et les
+   deux côtés doivent porter autant de nombres, dans le même ordre. On
+   ne traduit rien de neuf ici : on réapplique une traduction déjà
+   relue à une phrase dont seul un chiffre a bougé. */
+const gabarit = s => s.replace(/[0-9]+/g, '{n}');
+const gabarits = new WeakMap();     // une table source -> son index par gabarit
+
+/* On indexe gabarit FRANÇAIS -> gabarits ANGLAIS, et pas les phrases
+   anglaises entières. « 121 / 121 affichées » et « 69 / 69 affichées »
+   sont deux phrases écrites, mais un seul et même gabarit des deux
+   côtés : les distinguer ferait renoncer là où il n'y a aucun doute. */
+function indexeGabarits(source) {
+  const idx = new Map();
+  for (const [fr, en] of source) {
+    const g = gabarit(fr);
+    if (g === fr) continue;                       // aucun nombre : rien a faire
+    if (!/\p{L}/u.test(g)) continue;              // que des chiffres : trop court
+    if (!idx.has(g)) idx.set(g, new Set());
+    idx.get(g).add(gabarit(en));
+  }
+  gabarits.set(source, idx);
+  return idx;
+}
+
+function parNombresDe(source, cle) {
+  const idx = gabarits.get(source) || indexeGabarits(source);
+  const candidats = idx.get(gabarit(cle));
+  if (!candidats || candidats.size !== 1) return undefined;
+  const modele = [...candidats][0];
+  const chiffres = cle.match(/[0-9]+/g) || [];
+  const trous = modele.match(/\{n\}/g) || [];
+  /* Autant de nombres d'un côté que de trous de l'autre, sinon on ne
+     sait pas lequel va où : « 2 films sur 3 » n'est pas « 2 movies ». */
+  if (chiffres.length !== trous.length) return undefined;
+  let i = 0;
+  return modele.replace(/\{n\}/g, () => chiffres[i++]);
+}
+
+const parNombres = cle => parNombresDe(table, cle);
+
 function traduit(fr) {
   const cle = net(fr);
   if (!cle) return undefined;
@@ -551,14 +601,17 @@ function traduit(fr) {
   if (!/\p{L}/u.test(cle)) return cle;
   const bas = minuscules.get(cle.toLowerCase());
   if (bas !== undefined) return memeCasse(cle, bas);
-  return undefined;
+  return parNombres(cle);
 }
 
 /* Une phrase écrite à la main est appliquée, mais toujours consignée :
    elle doit passer la relecture avant d'être tenue pour acquise. */
 function traduitOuEcrit(fr, signale) {
   const cle = net(fr);
-  const e = ECRITES.get(cle);
+  /* Aux nombres près, comme le lexique : « / 533 lus » a été écrit une
+     fois, et rien n'oblige à le réécrire quand le Dossier gagne une
+     entrée. La phrase reste consignée — elle est écrite, pas retrouvée. */
+  const e = ECRITES.get(cle) ?? parNombresDe(ECRITES, cle);
   const t = traduit(fr);
   /* Une traduction écrite l'emporte quand le lexique se contente de
      renvoyer le mot inchangé : « jeu » est attesté identique des deux
@@ -835,7 +888,8 @@ function redirigeSources(html) {
   }).replace(/(href|src)="e-([a-z0-9-]+\.html)/g, '$1="en-$2');
 }
 
-/* le lexique est complet : on peut en tirer l'index insensible à la casse */
+/* le lexique est complet : on peut en tirer ses deux index dérivés —
+   à la casse près, et aux nombres près */
 indexeCasse();
 
 const manques = [];

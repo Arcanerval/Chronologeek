@@ -557,13 +557,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <h1 class="disp off">Dossier<span>Star Wars</span><span class="sub">Romans &amp; Comics</span></h1>
     <p class="dek">L’ordre de lecture complet des romans, romans jeunesse et comics Star Wars
       canon, replacé dans la chronologie des films et séries.</p>
-    <p class="upd"><i aria-hidden="true"></i> 533 entrées · 63 repères à l’écran</p>
+    <p class="upd"><i aria-hidden="true"></i> 534 entrées · 63 repères à l’écran</p>
     <div class="stats">
       <div class="s"><b>58</b><span>Romans</span></div>
       <div class="s"><b>30</b><span>Romans jeunes adultes</span></div>
       <div class="s"><b>436</b><span>Comics</span></div>
       <div class="s"><b>9</b><span>Livres audio</span></div>
-      <div class="s"><b id="s-tot">533</b><span>Entrées</span></div>
+      <div class="s"><b id="s-tot">534</b><span>Entrées</span></div>
     </div>
     <button class="start" id="start" type="button">Commencer <em>▸</em></button>
   </div>
@@ -582,7 +582,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
     <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
     <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les lus</button>
-    <span class="fcount" id="fcount">533 / 533 affichées</span>
+    <span class="fcount" id="fcount">534 / 534 affichées</span>
     <!-- la barre dit le volume de chaque ère, les boutons dessous les nomment -->
     <div class="rail" id="rail" aria-hidden="true"></div>
     <nav class="eranav" id="eranav" aria-label="Aller à une ère"></nav>
@@ -640,10 +640,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
-    <b><em id="k-on">0</em> / <span id="k-tot">533</span></b>
+    <b><em id="k-on">0</em> / <span id="k-tot">534</span></b>
     <span class="lbl">lus</span>
     <span class="bar"><i id="k-fill"></i></span>
-    <span class="lbl">Restant à lire <b style="font-size:14px" id="k-left">533</b></span>
+    <span class="lbl">Restant à lire <b style="font-size:14px" id="k-left">534</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
   </button>
   <div class="hud-panel" id="hud-panel" hidden>
@@ -778,7 +778,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       /* segment proportionnel au nombre d'entrées, encre éclaircie d'un cran
          à chaque ère — le calcul est celui de l'accueil des Dossiers */
       var mix=34+Math.round(i/(D.eras.length-1)*52);
-      var pct=Math.round(n/533*1000)/10;
+      var pct=Math.round(n/ALL.length*1000)/10;
       /* la barre est doublée par les boutons nommés juste dessous : elle est
          donc retirée de l'arbre d'accessibilité, et ses segments ne sont pas
          des liens — un lien focusable sous aria-hidden est un piège au

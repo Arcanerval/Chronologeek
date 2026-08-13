@@ -594,6 +594,7 @@ window.CGD={"eras":[
   {"kind":"screen","c":"#64b5f6","date":"34 ABY","title":"EPISODE VIII: THE LAST JEDI","type":"On screen"},
   {"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-free-comic-book-day-2026-legacy-of-vane","date":"34 ABY","title":"Free Comic Book Day 2026 : Legacy of Vaneé","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-legacy-of-vader-1-12","date":"34 ABY","title":"Legacy of Vader 1-12","type":"Comic","vo":false,"note":""},
+  {"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-the-fall-of-kylo-ren-1-5","date":"34 ABY","title":"The Fall of Kylo Ren 1-5","type":"Comic","vo":true,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-poe-dameron-26-31","date":"34 ABY","title":"Poe Dameron 26-31","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"roman","c":"#a78bfa","id":"34-aby-resistance-reborn","date":"34 ABY","title":"Resistance Reborn","type":"Novel","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"34-aby-allegiance-1-4","date":"34 ABY","title":"Allegiance 1-4","type":"Comic","vo":false,"note":""},

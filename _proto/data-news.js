@@ -37,6 +37,13 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
 
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"The Fall of Kylo Ren 1-5", meta:"34 ABY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le comic, en 34 ABY, juste après "+
+            "L'Héritage de Vador.",
+        href:"e-dossier-star-wars.html#34-aby-the-fall-of-kylo-ren-1-5",
+        cta:"Voir dans le Dossier" },
+
       { nat:"site", uni:"startrek", kind:"timeline",
         title:"Nouvelle timeline : Star Trek",
         txt:"248 entrées, du 21e au 43e siècle — séries, films, animés et "+

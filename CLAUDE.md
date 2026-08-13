@@ -10,7 +10,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
   `avatar.html`, `startrek.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
-  (533 romans, comics et fictions audio, plus 63 repères écran)
+  (534 romans, comics et fictions audio, plus 63 repères écran)
 - `index.html`, `whats-new.html` / `nouveautes.html`, `upcoming.html` / `a-venir.html`
 - `/data/` — les entrées de chaque page, `<nom de page>-fr.js` et `-en.js`
 - `app.js` — le moteur, bilingue, un seul fichier
@@ -91,7 +91,7 @@ avec leur workflow et leurs deux caches : ils produisaient l'ancien HTML du Doss
 auraient écrasé `deep-dives/star-wars.html` et `fr/dossiers/star-wars.html`, publiées
 depuis `_proto/` depuis la refonte. Rien ne les lançait tout seuls — leur workflow était
 en `workflow_dispatch` — mais un clic sur « Run workflow » suffisait, et c'était le seul
-vrai risque du dépôt. Les 533 entrées du Dossier vivent dans `_proto/data-dossier-sw.js`,
+vrai risque du dépôt. Les 534 entrées du Dossier vivent dans `_proto/data-dossier-sw.js`,
 et c'est là qu'on ajoute. Ne pas les rétablir depuis l'historique git.
 
 ### Ce que le radar écarte
@@ -105,6 +105,36 @@ deux parties annoncées.
 Retirer une entrée de `radar.json` à la main ne suffit pas : le fichier est régénéré
 chaque jour. C'est dans `EXCLUDE` que l'exclusion doit vivre — le JSON n'est nettoyé
 en plus que pour ne pas attendre le lendemain.
+
+### Les quatre sources du radar
+
+`source_tmdb` sert les quatre premiers univers, par **société de production** —
+Lucasfilm, Marvel Studios, DC Studios, Avatar Studios. `source_avatar_almanac` y
+ajoute l'écrit, que TMDB ne couvre pas, et `source_wookieepedia` la timeline des
+médias canon Star Wars.
+
+`source_startrek` est la quatrième, et elle passe elle aussi par **TMDB** depuis le
+13 août 2026. Elle interrogeait Memory Alpha, faute de savoir isoler la franchise :
+Paramount produit tout le reste du catalogue, et chercher par société aurait ramené
+le cinéma entier. Mais un guide qui ne suit que des films et des séries n'a rien à
+aller chercher dans un wiki — TMDB les connaît mieux, avec les dates par pays, les
+synopsis dans les deux langues et le découpage en épisodes que le portail annonçait
+à la main, une semaine à la fois. Ce que Memory Alpha donnait en plus — coffrets
+Blu-ray, comics IDW, romans — est justement ce que le guide écarte.
+
+La franchise se retrouve de deux façons, réunies puis dédoublonnées par `main()` :
+le **mot-clé TMDB** « star trek », résolu dynamiquement comme les sociétés le sont,
+et la **recherche par titre**, parce qu'une annonce fraîche arrive souvent avant que
+quiconque ait posé le mot-clé sur sa fiche. La recherche par titre exige que le
+titre commence par « Star Trek » — sans quoi elle ramène les documentaires et les
+hommages, et « The Center Seat: 55 Years of Star Trek » n'est pas un épisode.
+
+Les épisodes ne s'obtiennent pas par `/discover` : il faut la fiche de la série,
+puis la saison de son `next_episode_to_air`, ce qui rend la grille sur plusieurs
+semaines au lieu du seul épisode suivant. Une fiche coûte deux requêtes — une par
+langue — donc on ne la demande que pour les séries dont la première diffusion a
+moins de trois ans (`ST_FRAICHEUR`). *The Original Series* n'a pas de prochain
+épisode.
 
 ### Les dates du radar
 
@@ -154,8 +184,8 @@ Le compte affiché est celui de **tous** les identifiants du fichier, badges et
 descripteur d'univers compris : 70 pour Star Wars, pas 61. Ne restreindre au bloc
 `eras` que si on trouve mieux qu'un découpage par ligne — le français tient sur une
 ligne, l'anglais est indenté, et la même donnée ressortait à 71 d'un côté et 69 de
-l'autre. Un contrôle de parité ne doit pas dépendre de la mise en forme. Pour les
-chiffres d'entrées réels, c'est `lore_gap.py --check` qui fait foi.
+l'autre. Un contrôle de parité ne doit pas dépendre de la mise en forme. Les
+chiffres d'entrées réels se comptent dans les données, pas ici.
 
 `mirror` écrit dans le proto source, plus dans les deux fichiers publiés. Écrire
 dans ce qui est produit se perdrait à la publication suivante, sans erreur et sans
@@ -187,7 +217,7 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   les items du Dossier portent le même `id` des deux côtés : on lit le champ
   homologue de l'entrée anglaise. Ce qui n'a pas d'identifiant — libellés, titres
   d'ères, colonnes DC — passe par un lexique bâti en lisant les deux pages de prod
-  en parallèle. 994 entrées, 596 items, 109 libellés.
+  en parallèle. 994 entrées, 597 items, 109 libellés.
 - `node _proto/traduire-pages.mjs` — les neuf `en-*.html`. Même principe appliqué au
   HTML, le lexique venant cette fois du parallélisme **ligne à ligne** des pages de
   prod, celui-là même sur lequel `sync.py` s'appuie.
@@ -268,10 +298,10 @@ recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'�
 retenus : les protos sont en **CRLF**, donc un motif qui cherche `/>` suivi de `\n`
 ne trouve rien ; la sortie est normalisée en LF, sans quoi deux versions au contenu
 identique diffèrent à l'octet près ; et le nom des fichiers de `/data/` suit celui
-des pages, parce que `lore_gap.py` découvre les univers en listant la racine.
+des pages — un outil qui découvre les univers en listant la racine y compte.
 
-`data/sources.json` dit d'où vient chaque fichier publié. `lore_gap.py` et
-`sync.py` le lisent pour nommer le fichier à éditer plutôt que celui qui en sort.
+`data/sources.json` dit d'où vient chaque fichier publié. `sync.py` le lit pour
+nommer le fichier à éditer plutôt que celui qui en sort.
 
 ### Vérifier avant de pousser
 
@@ -400,17 +430,54 @@ Deux suites possibles, dans cet ordre :
   Thunderbolts* avaient été réécrites : la version anglaise en ligne racontait autre
   chose. Elles sont traduites et signalées avec la mention « corrigé depuis la prod ».
 
-### Apparier par rang quand il n'y a pas d'identifiant
+### Apparier par identifiant, et par rang seulement à défaut
 
 Les 63 repères écran du Dossier n'ont pas d'`id`. Indexés par identifiant, ils
 tombaient tous sur la clé `undefined` et le dernier écrasait les 62 autres : les
-63 repères annonçaient « Episode IX: The Rise of Skywalker ». Les trois versions
-listant les mêmes 596 items dans le même ordre, c'est le **rang** qui apparie, et
-l'`id` ne sert plus qu'à vérifier que les listes n'ont pas glissé.
+63 repères annonçaient « Episode IX: The Rise of Skywalker ».
+
+Le rang, qui a corrigé ça, avait son propre défaut : il suppose que les trois
+versions listent exactement les mêmes items. **Une entrée ajoutée au proto
+décalait alors tout ce qui la suit dans son ère**, et chaque item recevait le texte
+anglais de son voisin de gauche — 533 entrées justes la veille, fausses le
+lendemain, sans une ligne dans la console. Corrigé le 13 août 2026, en ajoutant
+*The Fall of Kylo Ren 1-5*.
+
+Les 533 identifiants sont uniques dans les trois versions : ils **apparient
+exactement**, et une entrée neuve n'a pas d'homologue, ce qui est la bonne réponse
+— elle part en relecture, et le script la nomme. Les repères écran, eux,
+s'apparient par leur rang **parmi les écrans**, que l'ajout d'une entrée ne déplace
+pas.
 
 Un garde-fou en découle : si le français a 63 titres distincts et l'anglais un seul,
 ce n'est pas une traduction, c'est un appariement qui a raté. Le script compare la
 variété des valeurs des deux côtés — aucun contrôle de clés ne voit ça.
+
+### Un décompte qui bouge ne doit pas faire tomber sa phrase
+
+« 533 entrées · 63 repères à l'écran » est au lexique parce que la prod l'écrivait
+ainsi des deux côtés. Ajoutez une entrée, le proto écrit 534, et la clé ne
+correspond plus à rien : la phrase ressort **en français sur la page anglaise**.
+Rien dans la console, rien qui alerte à l'écran — seul le compteur « sans
+traduction » du rapport bouge, et il faut le lire.
+
+`traduire-pages.mjs` indexe donc aussi les phrases **avec leurs nombres remplacés
+par un jeton**, le lexique comme les traductions écrites. Deux garde-fous : le
+gabarit doit désigner un seul gabarit anglais — sinon on ne sait pas lequel, et on
+renonce —, et les deux côtés doivent porter autant de nombres. Ce sont bien des
+gabarits qui sont comparés, pas les phrases : « 121 / 121 affichées » et « 69 / 69
+affichées » sont deux traductions écrites pour un seul et même moule.
+
+Rien de neuf n'est traduit là : on réapplique une traduction déjà relue à une
+phrase dont seul un chiffre a bougé. Ce qui change vraiment de mots — « à jour ·
+juillet 2026 » devenu « août 2026 » — reste à écrire à la main.
+
+Quatre décomptes sont écrits en dur dans les protos et doivent suivre un ajout :
+`e-dossier-star-wars.html` (le bandeau `.upd`, `s-tot`, `fcount`, `k-tot`,
+`k-left`), `e-dossiers.html` (`data-total`, le score, le bandeau, le HUD) et
+`e-accueil.html` (« 5 univers · 534 au dossier »). Le reste est calculé au
+chargement. Le rail des ères du Dossier divisait par 533 en dur : il divise
+maintenant par `ALL.length`, sinon la progression n'atteint jamais 100 %.
 
 ### Les quatre garde-fous, et pourquoi ils existent
 
@@ -567,104 +634,21 @@ le « T‑minus » des lancements se compte en secondes, pas en jours.
 `documentElement.lang`. Deux jumeaux se seraient désynchronisés à la première
 retouche du CSS, qui est commun.
 
-## Le gardien du lore
-
-Repère les sorties du radar qui ne figurent pas encore dans les timelines, et
-propose où les placer. Le travail est coupé en deux, volontairement.
-
-`lore_gap.py` fait la moitié mécanique : il tient un registre, le confronte aux
-données, et écrit `lore-gap.json` (ce qu'il reste à placer dans les jours proches),
-`lore-index/<univers>.json` (l'index compact de chaque timeline) et
-`lore-ledger.json` (le registre). Aucun réseau, aucune clé, aucun jugement. Il
-tourne chaque jour dans le workflow `radar.yml`, juste après `radar.py`.
-
-**Il lit `data/<univers>-en.js`, plus les pages.** La page racine reste le témoin
-qu'un univers existe sur le site ; ce sont ses données qu'on lit, depuis que la
-refonte les a sorties du HTML. Deux détails ont coûté un index vide, chacun sans
-la moindre erreur : les entrées de la refonte écrivent leur clé entre guillemets
-(`{"id":…` et non `{id:…`), et le Dossier pose son JSON dans `window.CGD` et non
-plus `window.CG_DATA`. Les motifs acceptent maintenant les deux formes de clé.
-
-**Pourquoi un registre plutôt qu'une lecture directe de `radar.json`.** Une
-sortie quitte le radar le lendemain de sa date, et personne ne l'a encore placée
-dans une timeline à ce moment-là : elle n'est visible qu'un jour, puis plus
-jamais. Filtrer `radar.json` par date raterait donc exactement ce qu'on cherche.
-Le registre garde trace de toute entrée vue au moins une fois et ne l'oublie que
-lorsqu'elle apparaît dans une timeline (ou au bout d'un an).
-
-Le radar a d'ailleurs longtemps lâché ses entrées *avant* leur date : il
-interrogeait TMDB sur `primary_release_date.gte`, la première sortie mondiale,
-qui précède souvent la sortie US comme la sortie FR. Spider-Man: Brand New Day,
-sorti le 28/07 sur un premier marché, a ainsi disparu le 29 alors qu'il sortait
-le 29 en France et le 31 aux États-Unis. Corrigé le 29/07/2026, voir « Les dates
-du radar » plus haut ; le registre reste utile pour la raison ci-dessus.
-
-**Le passage quotidien dans l'action est ce qui fait vivre le registre.** C'est
-le seul moment où une entrée sur le point de disparaître est encore visible. Si
-l'étape saute plusieurs jours, des sorties passent à la trappe —
-`py lore_gap.py --seed` reconstruit le registre depuis l'historique git de
-`radar.json` et rattrape le manque.
-
-**Règle de destination : comics, romans et fictions audio vont au Dossier de
-leur univers, jamais à la timeline cinéma.** Un roman Star Wars se place dans
-`_proto/data-dossier-sw.js`, pas dans `_proto/data.js` ; films, séries et jeux
-vidéo suivent le chemin inverse. Le script route tout seul et écrit la
-destination dans `cible`, en nommant le fichier **source** — celui qu'on édite —
-et non le fichier publié qui en sort. Sans ce routage, tout le catalogue écrit
-ressortait en faux positif : c'est ce qui faisait signaler Legacy comme absent
-alors qu'il est au Dossier depuis toujours. Un univers sans Dossier envoie tout à
-sa timeline.
-
-Le Dossier ne se parse pas comme une timeline : ses entrées sont du JSON dans
-`window.CGD`, groupées par ère, avec `k` / `c` / slug d'`id` et une `date`
-in-universe. Il n'a pas de `level`. Son index compact vit dans
-`lore-index/<univers>-dossier.json`.
-
-`CGD` mélange deux natures d'items. `kind:"it"` sont les 533 vraies entrées,
-les seules qui comptent dans la progression. `kind:"screen"` sont 63 repères
-posant les films et séries au milieu de la chronologie — ils situent une entrée
-mais n'en sont pas une. L'index les garde, marqués `ecran:true`, parce qu'ils
-servent de points d'ancrage pour un placement ; en revanche ils sont exclus du
-test de présence, sans quoi un titre de film ferait passer une vraie absence
-pour une entrée déjà placée.
-
-Le placement, lui, demande du jugement et se fait en session. Quand Niko dit
-« fais tourner le gardien du lore », suivre `PLACEMENT.md`.
-
-La fenêtre par défaut est de 2 jours de part et d'autre du jour courant, réglable
-avec `--jours N`. Hors fenêtre, les entrées restent au registre et sont comptées,
-pas listées : une passe quotidienne ne doit pas rouvrir tout le retard accumulé.
-
-Il découvre les univers tout seul : la correspondance `universe` → page est
-dérivée de `radar.json` et du listing de la racine, jamais codée en dur. C'est la
-raison pour laquelle les fichiers de `/data/` portent le nom de leur page —
-`data/starwars-en.js` en face de `starwars.html`. Ajouter un univers ne demande de
-toucher à rien. Un univers au radar sans page racine, ou sans données, est signalé
-dans `univers_sans_page`.
-
-`py lore_gap.py --check` affiche le bilan sans rien écrire. Le contrôle de bonne
-santé : la répartition Star Wars doit sortir à 61 entrées, 9 must / 37 important
-/ 15 bonus. Si ces chiffres bougent sans que la timeline ait changé, le parseur
-a décroché.
-
 ## Niveaux d'importance
 
 `level:"must"` (⭐), `level:"important"` (🚨), `level:"bonus"` (rien).
 DC et Avatar écrivent `imp` là où Star Wars et Marvel écrivent `important` : un
 parseur doit accepter les deux.
-Répartitions actuelles, telles que les sort `py lore_gap.py --check` :
+Répartitions actuelles :
 Star Wars 61 (9 must / 37 important / 15 bonus), Marvel 121 (49 / 30 / 42),
 DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34).
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
-repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Le
-niveau servait seul à reconnaître une vraie entrée dans `lore_gap.py`, ce qui
-faisait tomber les 248 du côté ignoré : l'index sortait vide, et chaque sortie du
-radar serait ressortie « à placer » alors qu'elle est déjà là. Une entrée se
-reconnaît maintenant à son niveau **ou** à son couple titre+date. Les deux
-ensemble, parce que cinq entrées Marvel n'ont pas de date et que le titre+date
-seul les perdait. Ce qui reste écarté est exactement ce qu'on veut écarter : les
-badges de progression et le descripteur d'univers.
+repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un
+parseur qui reconnaît une entrée à son seul niveau les fait toutes tomber du côté
+ignoré, sans erreur et sans message : une entrée se reconnaît à son niveau **ou**
+à son couple titre+date. Les deux ensemble, parce que cinq entrées Marvel n'ont
+pas de date et que le titre+date seul les perdait.
 
 ## Pièges déjà rencontrés
 
@@ -721,3 +705,11 @@ et la majuscule initiale quand on découpe une phrase.
 - Images trop lourdes — 21 fichiers de `images/` dépassent 900 Ko, dont
   `battlefront.png` à 20,8 Mo en 5333×3000 pour une vignette. Redimensionnement
   décidé le 10 août 2026.
+- Un bouton de maquette est publié en ligne : « proto : simuler une progression »
+  (`.demo`), sur l'accueil et sur la page des Dossiers, dans les deux langues.
+  `publier.mjs` le recopie tel quel — il devrait le retirer et refuser de laisser
+  passer, comme il le fait déjà pour `noindex`.
+- La source Star Trek du radar n'a **jamais tourné en vrai** : `TMDB_KEY` vit dans
+  un secret GitHub, et la mise au point s'est faite contre un faux TMDB. Le premier
+  passage de `radar.yml` est le vrai contrôle — lire son journal, section
+  « Star Trek ».

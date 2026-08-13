@@ -75,9 +75,9 @@ EXCLUDE = {
     "dc":       [r"\blego\b", r"\bknightfall\b"],
     # Le guide Star Trek ne couvre que l'Alpha Canon — films et séries. Niko
     # l'écrit noir sur blanc dans « What's left out, and why ? » : romans,
-    # comics et jeux vidéo sont du Beta Canon et restent dehors. Le portail
-    # Memory Alpha, lui, annonce tout, y compris les rééditions de coffrets.
-    # Le tri se fait déjà à la lecture ; ces motifs sont le garde-fou.
+    # comics et jeux vidéo sont du Beta Canon et restent dehors. TMDB ne
+    # connaît ni romans ni comics, mais il range les captations de convention
+    # et les making-of parmi les films ; ces motifs restent le garde-fou.
     "startrek": [r"\blego\b", r"\bidw\b", r"blu-ray", r"\bdvd\b",
                  r"\bissue \d", r"noveli[sz]ation"],
     "*":        [],
@@ -541,134 +541,227 @@ def source_wookieepedia():
         log(f"Wookiee   : parsing — {e}")
 
 
-# ────────────────────────────────────────── SOURCE 4 : Memory Alpha
-# Star Trek ne passe pas par TMDB. Les autres univers s'y trouvent par leur
-# société de production ; Star Trek, lui, sort de chez Paramount, qui produit
-# tout le reste du catalogue — la recherche par société ramènerait le cinéma
-# entier. Niko a donc désigné sa source : le portail « TV and films » de
-# Memory Alpha, dont la section « Recent and upcoming premieres » est tenue à
-# jour épisode par épisode.
+# ────────────────────────────────────────── SOURCE 4 : TMDB, Star Trek
+# Star Trek est passé un temps par le portail « TV and films » de Memory Alpha,
+# faute de savoir l'isoler dans TMDB : les autres univers s'y trouvent par leur
+# société de production, et Paramount produit tout le reste du catalogue — la
+# recherche par société aurait ramené le cinéma entier.
 #
-# Fandom renvoie 403 aux requêtes qui ne se présentent pas comme un
-# navigateur, et son API /api/v1 est fermée : on passe par l'API MediaWiki
-# standard, exactement comme pour Wookieepedia.
-MA_PORTAL = ("https://memory-alpha.fandom.com/api.php?action=parse"
-             "&page=Portal%3ATV_and_films&prop=text&format=json")
+# Mais un guide qui ne suit que des films et des séries n'a rien à aller
+# chercher dans un wiki. TMDB les connaît mieux : dates de sortie par pays,
+# synopsis dans les deux langues, et le découpage en épisodes que le portail
+# annonçait à la main, une semaine à la fois. Ce que Memory Alpha donnait en
+# plus — coffrets Blu-ray, comics IDW, romans — est justement ce que le guide
+# écarte, puisqu'il ne couvre que l'Alpha Canon.
+#
+# La franchise se retrouve de deux façons, réunies puis dédoublonnées par
+# main() sur (univers, titre) :
+#   · le MOT-CLÉ TMDB « star trek », résolu dynamiquement comme les sociétés
+#     le sont — un ID en dur périme ;
+#   · la RECHERCHE PAR TITRE, parce qu'une annonce fraîche arrive souvent avant
+#     que quiconque ait posé le mot-clé sur sa fiche.
+#
+# Les deux ensemble : le mot-clé attrape « Section 31 » si TMDB le range un
+# jour sans « Star Trek » devant, le titre attrape ce qui vient d'être créé.
+ST_MOTCLE = "star trek"
+ST_TITRE = re.compile(r"^\s*star\s*trek\b", re.I)
+# Au-delà, une série ne diffuse plus : inutile de demander sa fiche détaillée.
+ST_FRAICHEUR = datetime.timedelta(days=1095)
 
-# Ce que la section annonce et que le guide ne couvre pas : coffrets, comics
-# et romans. Testé sur la phrase entière, avant même EXCLUDE.
-MA_DROP = re.compile(r"idw publishing|blu-ray|\bdvd\b|, issue \d|"
-                     r"\bcomic\b|\bnovel\b|\bomnibus\b|is released", re.I)
 
-
-def ma_date(jour_mois):
-    """« 13 August » → une date ISO. Le portail n'écrit jamais l'année.
-
-    C'est une fenêtre glissante de quelques semaines autour d'aujourd'hui :
-    l'année est donc celle en cours, sauf quand la date tombe loin derrière —
-    en janvier, un « 20 December » parle de l'année précédente, et en
-    décembre un « 5 January » parle de la suivante.
-    """
+def tmdb_keyword_ids(name):
+    """Résout un mot-clé en IDs TMDB. Même règle que pour les sociétés :
+    jamais d'ID écrit en dur, ils périment sans prévenir."""
     try:
-        d = datetime.datetime.strptime(f"{jour_mois} {TODAY.year}", "%d %B %Y").date()
-    except ValueError:
-        return None
-    if (TODAY - d).days > 120:
-        d = d.replace(year=d.year + 1)
-    elif (d - TODAY).days > 300:
-        d = d.replace(year=d.year - 1)
-    return d
-
-
-def source_memory_alpha():
-    try:
-        r = requests.get(MA_PORTAL, timeout=45, headers=UA_BROWSER)
+        r = requests.get("https://api.themoviedb.org/3/search/keyword", timeout=25,
+                         headers=UA, params={"api_key": TMDB_KEY, "query": name})
         r.raise_for_status()
-        raw = r.json().get("parse", {}).get("text", {})
-        raw = raw.get("*", "") if isinstance(raw, dict) else raw
+        return [k["id"] for k in r.json().get("results", [])[:8]
+                if _norm_title(k.get("name") or "") == _norm_title(name)]
     except Exception as e:
-        log(f"MemAlpha  : portail indisponible — {e}")
+        log(f"Star Trek : recherche mot-clé '{name}' — {e}")
+        return []
+
+
+def _st_get(base, chemin, **params):
+    """Une requête TMDB dans les deux langues. Renvoie (anglais, {id: français}).
+
+    Les deux appels sont la même requête à `language` près : c'est ce que fait
+    déjà `source_tmdb`, et ça garantit que les deux listes portent les mêmes
+    fiches — un synopsis français apparié par id, jamais par rang."""
+    def une(lang):
+        r = requests.get(base + chemin, timeout=25, headers=UA,
+                         params={"api_key": TMDB_KEY, "language": lang, **params})
+        r.raise_for_status()
+        return r.json()
+    en = une("en-US")
+    try:
+        fr = {it.get("id"): it for it in une("fr-FR").get("results", [])}
+    except Exception:
+        fr = {}
+    return en, fr
+
+
+def st_catalogue(base, kw_ids):
+    """Les films et les séries de la franchise, indexés par id TMDB.
+
+    Chaque fiche est gardée avec son homologue français sous la clé `_fr` :
+    l'appel qui la rapporte est le seul endroit où l'on tient les deux."""
+    films, series = {}, {}
+
+    def moisson(chemin, dest, pages, verifier_titre, **params):
+        for page in pages:
+            try:
+                en, fr = _st_get(base, chemin, page=page, **params)
+            except Exception as e:
+                log(f"Star Trek : {chemin} p{page} — {e}")
+                return
+            for it in en.get("results", []):
+                # Le mot-clé fait foi : ce qu'il rapporte est de la franchise.
+                # La recherche par titre, elle, ramène aussi les documentaires
+                # et les hommages — « The Center Seat: 55 Years of Star Trek »
+                # n'est pas un épisode de Star Trek.
+                if verifier_titre and not any(
+                        ST_TITRE.match((it.get(c) or ""))
+                        for c in ("name", "original_name", "title", "original_title")):
+                    continue
+                it["_fr"] = fr.get(it.get("id")) or {}
+                dest.setdefault(it.get("id"), it)
+            if page >= en.get("total_pages", 1):
+                return
+
+    if kw_ids:
+        joined = "|".join(str(i) for i in kw_ids)      # | = OU chez TMDB
+        # Même fenêtre que les autres univers : les films remontent de
+        # FILM_LOOKBACK, parce que `primary_release_date` est la première
+        # sortie AU MONDE et non la sortie américaine ou française. Voir le
+        # commentaire de `source_tmdb`, c'est exactement le même piège.
+        moisson("/discover/movie", films, (1, 2, 3), False,
+                with_keywords=joined, include_adult="false",
+                sort_by="primary_release_date.asc",
+                **{"primary_release_date.gte": (TODAY - FILM_LOOKBACK).isoformat(),
+                   "primary_release_date.lte": HORIZON.isoformat()})
+        moisson("/discover/tv", series, (1, 2, 3), False,
+                with_keywords=joined, include_adult="false",
+                sort_by="first_air_date.asc",
+                **{"first_air_date.gte": TODAY.isoformat(),
+                   "first_air_date.lte": HORIZON.isoformat()})
+
+    # La recherche par titre ignore les dates : c'est elle qui doit rapporter
+    # les séries DÉJÀ diffusées, dont on veut le prochain épisode. Le tri par
+    # date, lui, se fait plus bas, fiche par fiche.
+    moisson("/search/movie", films, (1, 2), True, query="Star Trek", include_adult="false")
+    moisson("/search/tv", series, (1, 2), True, query="Star Trek", include_adult="false")
+    return films, series
+
+
+def st_episodes(base, serie_id, nom, saison):
+    """Les épisodes datés d'une saison, à venir seulement.
+
+    `next_episode_to_air` ne donne que le suivant ; le portail Memory Alpha
+    annonçait la grille sur plusieurs semaines. La saison entière la rend."""
+    out = []
+    try:
+        en, _ = _st_get(base, f"/tv/{serie_id}/season/{saison}")
+        try:
+            r = requests.get(f"{base}/tv/{serie_id}/season/{saison}", timeout=25,
+                             headers=UA, params={"api_key": TMDB_KEY, "language": "fr-FR"})
+            r.raise_for_status()
+            fr = {e.get("episode_number"): e for e in r.json().get("episodes", [])}
+        except Exception:
+            fr = {}
+    except Exception as e:
+        log(f"Star Trek : saison {saison} de {nom} — {e}")
+        return out
+    for ep in en.get("episodes", []):
+        d = parse_iso(ep.get("air_date") or "")
+        if not d or d < TODAY or d > HORIZON:
+            continue
+        f = fr.get(ep.get("episode_number")) or {}
+        # Le titre dit d'un coup la série et l'épisode : une carte de radar
+        # n'a que sa ligne de titre pour se faire comprendre. C'est la forme
+        # qu'avait déjà Memory Alpha, gardée telle quelle.
+        titre = ep.get("name") or f'S{ep.get("season_number")}E{ep.get("episode_number")}'
+        out.append((f'{nom} — "{titre}"', d,
+                    (ep.get("overview") or "").strip(),
+                    (f.get("overview") or "").strip()))
+    return out
+
+
+def source_startrek():
+    if not TMDB_KEY:
+        log("Star Trek : ⚠ pas de clé (secret TMDB_KEY absent)")
         return
-    if not raw:
-        log("MemAlpha  : portail vide  ⚠")
-        return
+    base = "https://api.themoviedb.org/3"
+    kw = tmdb_keyword_ids(ST_MOTCLE)
+    if not kw:
+        log("Star Trek : aucun mot-clé « star trek » trouvé — la recherche par "
+            "titre prend seule le relais")
+    films, series = st_catalogue(base, kw)
 
-    soup = BeautifulSoup(raw, "html.parser")
-    tete = soup.find(id="Recent_and_upcoming_premieres")
-    if not tete:
-        log("MemAlpha  : section « Recent and upcoming premieres » introuvable  ⚠"
-            " — le portail a été remanié, le sélecteur est à revoir")
-        return
-    bloc = tete.find_parent(["h2", "h3"]).find_next_sibling("div")
-    if bloc is None:
-        log("MemAlpha  : section trouvée mais vide  ⚠")
-        return
-
-    n = dated = tba = 0
-    for li in bloc.find_all("li"):
-        # Les <li> imbriqués portent des sorties qui partagent la date du
-        # parent : coffrets et comics du même jour. Ils sont hors périmètre,
-        # et sans date propre — on ne descend pas dedans.
-        if li.find_parent("li"):
+    n_film = n_serie = n_ep = 0
+    for it in films.values():
+        d = parse_iso(it.get("release_date") or "")
+        if not d:
             continue
-        for sous in li.find_all("ul"):
-            sous.decompose()
-        txt = re.sub(r"\s+", " ", li.get_text(" ", strip=True))
-        if not txt or MA_DROP.search(txt):
+        # Un film n'a pas la même date des deux côtés de l'Atlantique.
+        pays = tmdb_country_dates(base, it.get("id"))
+        d = pays.get("US") or d
+        d_fr = pays.get("FR")
+        if d > HORIZON:
             continue
-
-        # Le type se lit dans la phrase, que Memory Alpha écrit toujours pareil.
-        if re.search(r"\bepisode of\b|\bepisode,|\bepisode\b.*premieres", txt, re.I):
-            kind = "Épisode"
-        elif re.search(r"\bseason of\b|\bseries\b.*premieres", txt, re.I):
-            kind = "Série"
-        elif re.search(r"\bfilm\b|in theaters|theatrical", txt, re.I):
-            kind = "Film"
-        else:
+        # Le jour de la sortie compte encore : l'entrée s'en va le lendemain,
+        # et seulement quand les DEUX pays l'ont vue sortir.
+        if d < TODAY and (not d_fr or d_fr < TODAY):
             continue
+        f = it.get("_fr") or {}
+        add("startrek", it.get("title"), d.isoformat(), d.strftime("%d/%m/%Y"),
+            "Film", "TMDB",
+            syn=(it.get("overview") or "").strip(),
+            syn_fr=(f.get("overview") or "").strip(),
+            title_fr=(f.get("title") or "").strip(),
+            date_sort_fr=(d_fr.isoformat() if d_fr and d_fr != d else ""),
+            date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""))
+        n_film += 1
 
-        # L'œuvre est en italique dans la phrase, le titre d'épisode entre
-        # guillemets. « Star Trek: Strange New Worlds — "Off-Hour" » dit d'un
-        # coup de quelle série il s'agit et de quel épisode : la carte du
-        # radar n'a que son titre pour se faire comprendre.
-        oeuvre = li.find("i")
-        oeuvre = re.sub(r"\s+", " ", oeuvre.get_text(strip=True)) if oeuvre else ""
-        # Le titre est extrait du texte aplati, où `get_text(" ")` a posé une
-        # espace de chaque côté du lien : sans le `.strip()`, la carte
-        # affichait « " Off-Hour " », guillemets décollés.
-        ep = re.search(r'"([^"]+)"', txt)
-        ep = ep.group(1).strip() if ep else ""
-        titre = f'{oeuvre} — "{ep}"' if (oeuvre and ep) else (oeuvre or txt[:90])
-
-        lien = li.find("a", href=re.compile(r"^/wiki/\d{1,2}_[A-Z][a-z]+$"))
-        if not lien:
-            # « To be announced » : la section les liste sans date. Elles sont
-            # comptées puis écartées par main(), comme les tba des autres
-            # sources — un radar ne peut pas placer ce qui n'a pas de jour.
-            add("startrek", titre, "", "", kind, "Memory Alpha", "tba")
-            n += 1
-            tba += 1
+    for it in series.values():
+        nom = it.get("name") or it.get("original_name") or ""
+        f = it.get("_fr") or {}
+        debut = parse_iso(it.get("first_air_date") or "")
+        # Une série qui n'a pas commencé est elle-même une sortie.
+        if debut and TODAY <= debut <= HORIZON:
+            add("startrek", nom, debut.isoformat(), debut.strftime("%d/%m/%Y"),
+                "Série", "TMDB",
+                syn=(it.get("overview") or "").strip(),
+                syn_fr=(f.get("overview") or "").strip(),
+                title_fr=(f.get("name") or "").strip())
+            n_serie += 1
+        # Les épisodes ne s'obtiennent que fiche par fiche, et une fiche
+        # coûte deux requêtes : on ne les demande que pour ce qui diffuse
+        # encore. Une série sans date de début est une annonce sans grille.
+        if not debut or (TODAY - debut) > ST_FRAICHEUR:
             continue
-
-        d = ma_date(lien.get_text(strip=True))
-        if not d or d > HORIZON:
+        try:
+            r = requests.get(f"{base}/tv/{it.get('id')}", timeout=25, headers=UA,
+                             params={"api_key": TMDB_KEY, "language": "en-US"})
+            r.raise_for_status()
+            fiche = r.json()
+        except Exception as e:
+            log(f"Star Trek : fiche série {nom} — {e}")
             continue
-        # Pas de champ `wiki`, et ce n'est pas un oubli. Malgré son nom, il ne
-        # porte pas un lien : c'est un TITRE DE PAGE WOOKIEEPEDIA, envoyé tel
-        # quel au paramètre `titles` de son API par `fill_wiki_synopses`. Y
-        # poser une page de Memory Alpha enverrait chercher « Off-Hour » chez
-        # Star Wars, qui répondrait « pas de page » sans erreur. Les cartes
-        # Star Trek n'ont donc pas de synopsis — le titre de l'épisode dit
-        # déjà ce qu'une carte de radar a besoin de dire.
-        add("startrek", titre, d.isoformat(), d.strftime("%d/%m/%Y"),
-            kind, "Memory Alpha", "day")
-        n += 1
-        dated += 1
+        suivant = fiche.get("next_episode_to_air") or {}
+        saison = suivant.get("season_number")
+        if saison is None:
+            continue
+        for titre, d, syn, syn_fr in st_episodes(base, it.get("id"), nom, saison):
+            add("startrek", titre, d.isoformat(), d.strftime("%d/%m/%Y"),
+                "Épisode", "TMDB", syn=syn, syn_fr=syn_fr)
+            n_ep += 1
 
-    msg = f"MemAlpha  : {n} entrée(s), dont {dated} datée(s) et {tba} sans date"
-    if dated == 0:
-        msg += "  ⚠ aucune date lue — la mise en forme du portail a changé"
-    log(msg)
+    log(f"Star Trek : {n_film} film(s), {n_serie} série(s), {n_ep} épisode(s) "
+        f"— {len(films)} fiche(s) film et {len(series)} fiche(s) série lues")
+    if n_film + n_serie + n_ep == 0:
+        log("Star Trek : ⚠ rien retenu — mot-clé, titres ou fenêtre à revoir")
 
 
 def normalize(s):
@@ -1061,7 +1154,7 @@ def render(entries):
 
 def main():
     for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
-               source_memory_alpha):
+               source_startrek):
         try:
             fn()
         except Exception:
