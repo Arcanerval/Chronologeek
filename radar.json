@@ -1,5 +1,22 @@
 [
  {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"A Case of Chiaroscuro\"",
+  "date_sort": "2026-08-13",
+  "date_txt": "13/08/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "dc",
   "title": "Lanterns: The Official Podcast",
   "date_sort": "2026-08-16",
@@ -68,6 +85,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"Level-Five Transporter Accident\"",
+  "date_sort": "2026-08-20",
+  "date_txt": "20/08/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "avatar",
   "title": "Masters of the Elements Volume 1",
   "date_sort": "2026-08-25",
@@ -102,6 +136,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"Off-Hour\"",
+  "date_sort": "2026-08-27",
+  "date_txt": "27/08/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "starwars",
   "title": "Hiding from the Dark",
   "date_sort": "2026-09-01",
@@ -114,6 +165,23 @@
   "wiki": "Hiding from the Dark",
   "syn_fr": "Hiding from the Dark est un roman jeunes adultes d'horreur écrit par Kiersten White. Il sera publié le premier septembre 2026 par Disney–Lucasfilm Press aux États-Unis. Il sera adapté en livre audio aux États-Unis.",
   "kindKey": "novel",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"Like Chronitons Through the Hourglass\"",
+  "date_sort": "2026-09-03",
+  "date_txt": "03/09/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
   "title_fr": "",
   "date_sort_fr": "",
   "date_txt_fr": ""
@@ -170,6 +238,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"Orders of Magnitude\"",
+  "date_sort": "2026-09-10",
+  "date_txt": "10/09/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "starwars",
   "title": "Reign of the Empire: Edge of the Abyss",
   "date_sort": "2026-09-15",
@@ -204,6 +289,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"Once La'An a Time\"",
+  "date_sort": "2026-09-17",
+  "date_txt": "17/09/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "starwars",
   "title": "The Book of Boba Fett 2",
   "date_sort": "2026-09-23",
@@ -216,6 +318,23 @@
   "wiki": "The Book of Boba Fett 2",
   "syn_fr": "",
   "kindKey": "comic",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "startrek",
+  "title": "Star Trek: Strange New Worlds — \"Tomorrow's Enterprise\"",
+  "date_sort": "2026-09-24",
+  "date_txt": "24/09/2026",
+  "kind": "Épisode",
+  "source": "Memory Alpha",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
   "title_fr": "",
   "date_sort_fr": "",
   "date_txt_fr": ""

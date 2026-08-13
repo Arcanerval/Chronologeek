@@ -22,6 +22,23 @@
    "vu_dernier": "2026-08-12",
    "cible": "dossier",
    "fichier_cible": "_proto/data-dossier-sw.js"
+  },
+  {
+   "vu_le": "2026-08-13",
+   "universe": "startrek",
+   "title": "Star Trek: Strange New Worlds — \"A Case of Chiaroscuro\"",
+   "title_fr": null,
+   "kind": "Épisode",
+   "kindKey": "tv",
+   "date_sort": "2026-08-13",
+   "released": "13/08/2026",
+   "era": null,
+   "source": "Memory Alpha",
+   "wiki": null,
+   "synopsis": "",
+   "vu_dernier": "2026-08-13",
+   "cible": "timeline",
+   "fichier_cible": "_proto/data-startrek.js"
   }
  ],
  "a_verifier": [
@@ -50,11 +67,12 @@
    ]
   }
  ],
- "hors_fenetre": 79,
+ "hors_fenetre": 85,
  "placees_ce_coup": 0,
  "univers_sans_page": [],
  "index": {
   "avatar (timeline)": "lore-index/avatar.json",
+  "startrek (timeline)": "lore-index/startrek.json",
   "starwars (dossier)": "lore-index/starwars-dossier.json"
  }
 }
