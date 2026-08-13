@@ -69,6 +69,20 @@
       "image": "https://chronologeek.app/images/avatar.png"
     }
   },
+  "startrek": {
+    "fr": {
+      "title": "Star Trek — Chronologeek",
+      "ogTitle": "Timeline Star Trek — Chronologeek",
+      "desc": "La timeline Star Trek dans l'ordre chronologique interne — films, séries et séries animées, du 21e au 43e siècle, sans spoil.",
+      "image": "https://chronologeek.app/images/startrek.jpg"
+    },
+    "en": {
+      "title": "Star Trek Timeline — Chronologeek",
+      "ogTitle": "Star Trek Timeline — Chronologeek",
+      "desc": "The Star Trek timeline in in-universe order — movies, TV shows and animated shows, from the 21st to the 43rd century, spoiler-free.",
+      "image": "https://chronologeek.app/images/startrek.jpg"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers — Chronologeek",

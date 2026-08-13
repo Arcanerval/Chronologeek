@@ -9,18 +9,18 @@ const IMG_CACHE = 'cg-img';
 // partages, ne pas les remettre ici.
 const PRECACHE = [
   '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html',
-  '/whats-new.html', '/upcoming.html',
+  '/startrek.html', '/whats-new.html', '/upcoming.html',
   '/fr/', '/fr/starwars.html', '/fr/marvel.html', '/fr/dc.html', '/fr/avatar.html',
-  '/fr/nouveautes.html', '/fr/a-venir.html',
+  '/fr/startrek.html', '/fr/nouveautes.html', '/fr/a-venir.html',
   '/deep-dives/', '/deep-dives/star-wars.html',
   '/fr/dossiers/', '/fr/dossiers/star-wars.html',
   '/pwa.js', '/manifest.json',
   // le moteur de la refonte, bilingue, et les donnees de chaque page
   '/app.js',
   '/data/starwars-en.js', '/data/marvel-en.js', '/data/dc-en.js', '/data/avatar-en.js',
-  '/data/news-en.js',
+  '/data/startrek-en.js', '/data/news-en.js',
   '/data/starwars-fr.js', '/data/marvel-fr.js', '/data/dc-fr.js', '/data/avatar-fr.js',
-  '/data/news-fr.js',
+  '/data/startrek-fr.js', '/data/news-fr.js',
   '/data/dossier-star-wars-en.js', '/data/dossier-star-wars-fr.js'
 ];
 

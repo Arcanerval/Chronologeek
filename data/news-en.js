@@ -6,6 +6,9 @@
    Ne pas editer a la main : relancer le script. */
 window.CG_NEWS = {
   months: [
+    { key:"2026-08", label:"August 2026", items:[
+      {"nat":"site","uni":"startrek","kind":"timeline","title":"New timeline: Star Trek","txt":"248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.","href":"/startrek","cta":"Open the timeline"}
+    ]},
     { key:"2026-07", label:"July 2026", items:[
       {"nat":"media","uni":"mcu","kind":"film","title":"Spider-Man: Brand New Day","meta":"2028","txt":"Added to the Marvel timeline, in 2028, right after The Punisher: One Last Kill.","img":"/images/brandnewday.webp","href":"/marvel#mcu-smbnd","cta":"See in the timeline"},
       {"nat":"media","uni":"sw","kind":"roman","title":"Legacy","meta":"34 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just before Pirate's Price.","href":"/deep-dives/star-wars#34-aby-legacy","cta":"See in the Deep Dive"},

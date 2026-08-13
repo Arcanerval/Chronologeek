@@ -96,8 +96,13 @@ const collisions = new Map();
      pages y échappent parce que la prod le leur apprend.
    - `Opening Credits` : un type de vidéo TMDB, comparé au champ `type`
      de la réponse. C'est une valeur d'API, comme les arguments du DOM —
-     traduite, la comparaison ne trouverait plus rien. */
-for (const s of ['Chronologeek — Avatar (proto E)', 'Opening Credits']) identiques.add(s);
+     traduite, la comparaison ne trouverait plus rien.
+   - `Star Trek` : le libellé de l'univers dans la table `UNI` de la page
+     « À venir ». Il s'écrit pareil dans les deux langues, mais aucune
+     paire de pages ne peut le dire — la prod est antérieure à ce
+     cinquième univers, et le proto français est le seul à le porter. */
+for (const s of ['Chronologeek — Avatar (proto E)', 'Opening Credits',
+                 'Star Trek']) identiques.add(s);
 
 function ajoute(fr, en) {
   fr = net(fr); en = net(en);
@@ -248,22 +253,36 @@ const TRADUCTIONS = [
   ['Continuer', 'Continue'],
   ['Reprendre ▸', 'Resume ▸'],             // CG.t.resume : Reprendre → Resume
   ['Ouvrir ▸', 'Open ▸'],
-  ['Quatre chronologies tenues à jour, en français et en anglais.',
-   'Four timelines kept up to date, in French and English.'],
+  ['Cinq chronologies tenues à jour, en français et en anglais.',
+   'Five timelines kept up to date, in French and English.'],
   ['Suivi de progression à venir', 'Progress tracking coming soon'],
   ['Bientôt', 'Soon'],
   ['Les Dossiers', 'The Deep Dives'],
   ['Les', 'The'],                          // « Les <span>Dossiers</span> »
   ['Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu et autres choses méritant votre attention',
    'To go further into your favorite universes: novels, comics, expanded canon and other things worth your attention'],
-  ['4 univers · 533 au dossier', '4 universes · 533 in the Deep Dive'],
+  ['5 univers · 533 au dossier', '5 universes · 533 in the Deep Dive'],
   ['entrées cochées', 'entries checked'],
   // les deux boutons d'essai du proto, qui ne partiront pas en ligne
   ['proto : simuler une progression', 'proto: simulate progress'],
   ['proto : revenir à zéro', 'proto: back to zero'],
   // CG.t.legal3, précédé du point que le HTML pose après le lien
-  ['. Star Wars, Marvel, DC et Avatar sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC and Avatar are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar and Star Trek are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   'Star Wars, Marvel, DC, Avatar and Star Trek are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+
+  /* ── la case Star Trek ──────────────────────────────────────────
+     Le cinquième univers est postérieur à la prod : sa case n'a pas de
+     version anglaise à retrouver, et son énumération de types reprend
+     celle de sa propre page. Le slot verrouillé, lui, n'annonce plus
+     Star Trek : il est sorti des univers à venir. */
+  ['Films · Séries · Séries animées · Courts métrages · Timeline chronologique complète',
+   'Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline'],
+  ['/ 248 vus', '/ 248 watched'],
+  ['À jour · août 2026', 'Updated · August 2026'],
+  ['Dragon Age · The Walking Dead… et d\'autres univers en préparation.',
+   'Dragon Age · The Walking Dead… and more universes in the works.'],
 
   // ── timelines ──────────────────────────────────────────────────
   ['Chronologeek — Star Wars (proto E)', 'Chronologeek — Star Wars (proto E)'],

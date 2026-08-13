@@ -25,10 +25,10 @@ Usage :
     python sync.py check                     verifie l'alignement des paires
     python sync.py show <page> <id>          affiche une entree en EN et en FR
     python sync.py mirror <page> <ancien> <nouveau>
-                                             remplace dans le proto francais,
+                                             remplace dans le proto source,
                                              puis rappelle quoi relancer
 
-Pages : sw, mcu, dc, avatar, dossier, news, accueil, avenir, dossiers
+Pages : sw, mcu, dc, avatar, startrek, dossier, news, accueil, avenir, dossiers
 """
 
 import re
@@ -43,10 +43,21 @@ DATA = RACINE / "data"
 class Paire:
     """Une page du site, dans ses deux langues et ses trois etats : ce qui est
     publie (en / fr), les entrees qui l'alimentent (donnees), et la source d'ou
-    tout descend (le proto francais)."""
+    tout descend (le proto francais).
 
-    def __init__(self, en, fr, donnees, proto):
+    Une exception : Star Trek s'ecrit en anglais et le francais en descend. Sa
+    source est donc `en-startrek.html`, et `langue_source` le dit — sans quoi
+    mirror ecrirait dans une sortie de traduire-startrek.mjs, perdue au
+    prochain passage, sans erreur et sans message."""
+
+    def __init__(self, en, fr, donnees, proto, langue_source="fr"):
         self.en, self.fr, self.donnees, self.proto = en, fr, donnees, proto
+        self.langue_source = langue_source
+
+    @property
+    def source(self):
+        """Le proto d'ou descend la paire."""
+        return self.proto if self.langue_source == "fr" else "en-" + self.proto[2:]
 
 
 PAGES = {
@@ -54,6 +65,8 @@ PAGES = {
     "mcu":      Paire("marvel.html", "fr/marvel.html", "marvel", "e-marvel.html"),
     "dc":       Paire("dc.html", "fr/dc.html", "dc", "e-dc.html"),
     "avatar":   Paire("avatar.html", "fr/avatar.html", "avatar", "e-avatar.html"),
+    "startrek": Paire("startrek.html", "fr/startrek.html", "startrek", "e-startrek.html",
+                      langue_source="en"),
     "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
                       "dossier-star-wars", "e-dossier-star-wars.html"),
     "news":     Paire("whats-new.html", "fr/nouveautes.html", "news", "e-nouveautes.html"),
@@ -249,13 +262,16 @@ def cmd_show(args):
 # ---------------------------------------------------------------- mirror
 
 def source_fr(cle):
-    """Les fichiers francais d'ou descend la page publiee : le proto, et le
-    fichier de donnees du proto quand la page en charge un. data/*.js et les
+    """Les fichiers d'ou descend la page publiee : le proto source, et le
+    fichier de donnees de ce proto quand la page en charge un. data/*.js et les
     pages du site sont produits — y ecrire ne survivrait pas a la publication
     suivante. La table des sources est celle qu'ecrit publier.mjs, pour ne pas
-    en tenir une copie qui divergerait."""
+    en tenir une copie qui divergerait.
+
+    La langue lue suit `langue_source` : francaise partout, anglaise pour Star
+    Trek, dont le francais est une sortie de traduire-startrek.mjs."""
     p = paire(cle)
-    fichiers = [PROTO / p.proto]
+    fichiers = [PROTO / p.source]
     if p.donnees:
         table = {}
         manifeste = DATA / "sources.json"
@@ -265,7 +281,7 @@ def source_fr(cle):
                 table = json.loads(manifeste.read_text(encoding="utf-8"))
             except json.JSONDecodeError:
                 table = {}
-        source = table.get(f"data/{p.donnees}-fr.js")
+        source = table.get(f"data/{p.donnees}-{p.langue_source}.js")
         if source:
             fichiers.append(RACINE / source)
     return [f for f in fichiers if f.exists()]
@@ -309,7 +325,10 @@ def cmd_mirror(args):
         return 0
 
     print(f"\ntotal : {total} ligne(s). Pour propager :")
-    print("  node _proto/traduire.mjs && node _proto/traduire-pages.mjs")
+    if paire(cle).langue_source == "en":
+        print("  node _proto/traduire-startrek.mjs")
+    else:
+        print("  node _proto/traduire.mjs && node _proto/traduire-pages.mjs")
     print("  node _proto/publier.mjs")
     print("  py sync.py check")
     return 0

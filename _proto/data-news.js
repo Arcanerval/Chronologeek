@@ -17,7 +17,8 @@
 
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
-   uni   sw | mcu | dc | avatar, ou "" si le changement ne vise pas un univers
+   uni   sw | mcu | dc | avatar | startrek, ou "" si le changement ne vise
+         pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -34,6 +35,16 @@ window.CG_NEWS = {
 
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
+    { key:"2026-08", label:"Août 2026", items:[
+
+      { nat:"site", uni:"startrek", kind:"timeline",
+        title:"Nouvelle timeline : Star Trek",
+        txt:"248 entrées, du 21e au 43e siècle — séries, films, animés et "+
+            "Short Treks dans un seul fil.",
+        href:"e-startrek.html", cta:"Ouvrir la timeline" }
+
+    ]},
+
     { key:"2026-07", label:"Juillet 2026", items:[
 
       { nat:"media", uni:"mcu", kind:"film",

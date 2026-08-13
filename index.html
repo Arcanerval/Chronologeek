@@ -39,7 +39,7 @@
   titrage condensé à ombre portée dure et décalée. Aucun halo, aucun verre,
   aucun arrondi. Les bascules claquent — steps, pas de fondu.
   RÉCIT : je vois où j'en suis, je choisis où je vais, je pars.
-  FORME : cinq slots de sélection, dont un verrouillé. La reprise est
+  FORME : six slots de sélection, dont un verrouillé. La reprise est
   traitée en « continue » d'arcade, pleine largeur, dans la couleur du
   monde qu'on quitte. La barre de bas d'écran tient le score global.
 -->
@@ -50,8 +50,9 @@
      échantillonné sur logo-chronologeek.png, médiane #d5a05f, crête #f0c97c */
   --hot:#f0c97c; --gold-deep:#d5a05f; --steel:#779fc3;
   --cleared:#3ddc84;
-  /* les quatre encres de la charte, plus le gris des univers à venir */
-  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --soon:#8a8ab0;
+  /* les cinq encres de la charte, plus le gris des univers à venir.
+     Le lilas de Star Trek est celui des consoles LCARS. */
+  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --soon:#8a8ab0;
   /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
      pour répondre au violet profond de leur bande, et le rose à « À venir » */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
@@ -341,7 +342,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <a href="/starwars">Star Wars</a>
       <a href="/marvel">Marvel</a>
       <a href="/dc">DC</a>
-      <a href="/avatar">Avatar</a>
+      <a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a>
       <a href="/upcoming" class="upc">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
     </nav>
@@ -356,7 +357,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   </div>
   <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
     <a href="#" aria-current="page">Home</a><a href="/deep-dives/" class="doss">Deep Dives</a>
-    <a href="/starwars">Star Wars</a><a href="/marvel">Marvel</a><a href="/dc">DC</a><a href="/avatar">Avatar</a>
+    <a href="/starwars">Star Wars</a><a href="/marvel">Marvel</a><a href="/dc">DC</a><a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a>
     <a href="/upcoming" class="upc">Upcoming</a><a href="/whats-new" class="news">What's New</a>
   </nav>
 </header>
@@ -390,7 +391,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <!-- ══ SÉLECTION ═════════════════════════════════════════════════ -->
 <section class="pick" id="uni"><div class="wrap">
   <h2 class="disp">Universe selection</h2>
-  <p class="sub">Four timelines kept up to date, in French and English.</p>
+  <p class="sub">Five timelines kept up to date, in French and English.</p>
 
   <div class="slots">
 
@@ -462,15 +463,35 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </span>
     </a>
 
-    <div class="slot lock rv" style="--c:var(--soon);--i:4;grid-column:1/-1">
-      <figure style="aspect-ratio:26/9">
-        <img src="/images/autresunivers.webp" alt="" width="1280" height="360" loading="lazy" decoding="async"/>
+    <a class="slot rv" href="/startrek" style="--c:var(--st);--i:4"
+       data-u="startrek" data-total="248" data-hero="/images/startrek.jpg">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/startrek.jpg" alt="" width="640" height="274" loading="lazy" decoding="async"/>
         <span class="halftone"></span><span class="shade"></span>
-        <span class="no">05</span>
+        <span class="no">05</span><span class="state">Available</span>
+        <span class="nm">Star Trek</span>
+      </figure>
+      <span class="body">
+        <span class="d">Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 248 watched</span><span class="d-p">0 %</span></span>
+        <span class="upd">Updated · August 2026</span>
+      </span>
+    </a>
+
+    <!-- Cinq univers et le verrouillé font six cases dans une grille à deux
+         colonnes : trois rangées pleines. Lui rendre grid-column:1/-1 et sa
+         figure 26/9 le jour où un sixième univers rendra le compte impair. -->
+    <div class="slot lock rv" style="--c:var(--soon);--i:5">
+      <figure>
+        <img src="/images/autresunivers.webp" alt="" width="640" height="274" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">06</span>
         <span class="stamp"><span>Soon</span></span>
       </figure>
       <span class="body">
-        <span class="d">Star Trek · Dragon Age · The Walking Dead… and more universes in the works.</span>
+        <span class="d">Dragon Age · The Walking Dead… and more universes in the works.</span>
         <span class="upd">In progress</span>
       </span>
     </div>
@@ -502,7 +523,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <li><a href="/starwars">Star Wars</a></li>
       <li><a href="/marvel">Marvel — MCU</a></li>
       <li><a href="/dc">DC Multiverse</a></li>
-      <li><a href="/avatar">Avatar</a></li>
+      <li><a href="/avatar">Avatar</a></li><li><a href="/startrek">Star Trek</a></li>
       <li><a href="/deep-dives/">Deep Dives</a></li>
     </ul></div>
     <div><h4>More</h4><ul>
@@ -514,9 +535,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <div class="legal">
       This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       API but is not endorsed or certified by TMDB. Book data from
-      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC and Avatar
-      are trademarks of their respective owners; Chronologeek
-      is an independent fan project.
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar and
+      Star Trek are trademarks of their respective
+      owners; Chronologeek is an independent fan project.
       <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
       · <button class="demo" id="demo" type="button">proto: simulate progress</button>
     </div>
@@ -527,10 +548,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <!-- 61 Star Wars + 121 Marvel + 146 DC + 69 Avatar. Le total était écrit
        327 alors que les trois cartes en annonçaient 328 : l'écart est corrigé
        en même temps qu'Avatar entre dans le compte. -->
-  <b><em id="k-on">0</em> / 397</b>
+  <b><em id="k-on">0</em> / 645</b>
   <span class="lbl">entries checked</span>
   <div class="bar"><i id="k-fill"></i></div>
-  <span class="lbl">4 universes · 533 in the Deep Dive</span>
+  <span class="lbl">5 universes · 533 in the Deep Dive</span>
 </div></div>
 
 <script>
@@ -538,7 +559,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   'use strict';
   document.documentElement.className+=' js';
 
-  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multiverse',avatar:'Avatar'};
+  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multiverse',avatar:'Avatar',startrek:'Star Trek'};
   var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
   var body=document.body, attract=document.getElementById('attract');
   var fake=null;   /* progression simulée, échafaudage de proto uniquement */

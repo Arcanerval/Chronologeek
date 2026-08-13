@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" aria-hidden="true">
+  <!-- Le même delta au survol : le champ s'allume à la crête de l'or
+       (#f0c97c), l'étoile passe en négatif et deux marques de poussée
+       s'allument sous la pointe. Rien ne bouge, rien ne brille — c'est un
+       changement d'état, comme le reste de la page. -->
+  <path d="M48 10 C55 30 66 59 86 91 C70 80 60 76 48 76 C36 76 26 80 10 91 C30 59 41 30 48 10 Z"
+        fill="#0d0b12" transform="translate(3.5,3.5)"/>
+  <path d="M48 10 C55 30 66 59 86 91 C70 80 60 76 48 76 C36 76 26 80 10 91 C30 59 41 30 48 10 Z"
+        fill="#f0c97c"/>
+  <path d="M48 40 L52.4 50.6 L63 55 L52.4 59.4 L48 70 L43.6 59.4 L33 55 L43.6 50.6 Z"
+        fill="#0d0b12"/>
+  <path d="M31 84 h7 v9 h-7 Z M58 84 h7 v9 h-7 Z" fill="#f0c97c"/>
+</svg>

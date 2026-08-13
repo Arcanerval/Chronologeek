@@ -137,10 +137,20 @@ def parse_timeline(path):
         window = text[pos : min(following[0] if following else len(text), pos + 2500)]
 
         # Le vocabulaire des niveaux differe selon les pages : Star Wars et
-        # Marvel ecrivent "important", DC et Avatar "imp". En revanche toute
-        # vraie entree en porte un, ce qui permet d'ecarter les descripteurs
-        # d'univers du type {id:"sw",title:"Star Wars",type:"tv"} — qui sinon
-        # se font passer pour des entrees et polluent les rapprochements.
+        # Marvel ecrivent "important", DC et Avatar "imp". Le niveau servait
+        # seul a reconnaitre une vraie entree, ce qui ecartait bien les badges
+        # et le descripteur d'univers ({id:"sw",title:"Star Wars",type:"tv"}).
+        #
+        # Star Trek n'a pas de niveaux du tout : sa page trie par type de media
+        # et par repere, pas par importance. Ses 248 entrees tombaient donc
+        # toutes du cote ignore, l'index sortait vide, et chaque sortie du
+        # radar serait ressortie « a placer » alors qu'elle est deja la — sans
+        # erreur et sans message, le mode de defaillance habituel du depot.
+        #
+        # Une entree est donc reconnue a son niveau OU a son couple titre+date.
+        # Les deux ensemble : cinq entrees Marvel n'ont pas de date, et le
+        # titre+date seul les aurait perdues. Ce qui reste ecarte est exactement
+        # ce qu'on veut ecarter — les badges de progression et le descripteur.
         level = field("level", window)
         record = {
             "id": value,
@@ -150,7 +160,8 @@ def parse_timeline(path):
             "level": level,
             "block": block,
         }
-        (entries if level else ignored).append(record)
+        vraie = bool(level) or bool(record["title"] and record["date"])
+        (entries if vraie else ignored).append(record)
 
     return entries, ignored
 
@@ -475,7 +486,8 @@ def main():
                 entries = timelines[universe]
                 levels = {}
                 for e in entries:
-                    levels[e["level"]] = levels.get(e["level"], 0) + 1
+                    # Star Trek ne pose pas de niveau : on ne l'invente pas.
+                    levels[e["level"] or "sans niveau"] = levels.get(e["level"] or "sans niveau", 0) + 1
                 detail = ", ".join(f"{n} {lvl}" for lvl, n in sorted(levels.items()))
                 skipped = len(ignored.get(universe, []))
                 suffix = f"  [+{skipped} descripteur ignore]" if skipped else ""

@@ -7,6 +7,8 @@
   "data/dc-en.js": "_proto/data-dc-en.js",
   "data/avatar-fr.js": "_proto/data-avatar.js",
   "data/avatar-en.js": "_proto/data-avatar-en.js",
+  "data/startrek-fr.js": "_proto/data-startrek.js",
+  "data/startrek-en.js": "_proto/data-startrek-en.js",
   "data/dossier-star-wars-fr.js": "_proto/data-dossier-sw.js",
   "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
   "data/news-fr.js": "_proto/data-news.js",

@@ -106,9 +106,11 @@ const APPOINT = [
 ];
 
 /* ═══ CE QUI N'A PAS DE SOURCE ══════════════════════════════════════
-   Dix chaînes, et dix seulement, n'existent nulle part en anglais : une
-   entrée Marvel ajoutée après la dernière mise à jour de la prod, et les
-   libellés de bouton du journal, qui sont nés avec la refonte.
+   Dix-sept chaînes, et dix-sept seulement, n'existent nulle part en
+   anglais : une entrée Marvel ajoutée après la dernière mise à jour de
+   la prod, les libellés de bouton du journal, qui sont nés avec la
+   refonte, le séparateur DC réécrit le 10 août 2026, et la carte Star
+   Trek du journal, écrite le 11.
 
    ⚠ CE SONT LES SEULES PHRASES ÉCRITES, PAS EXTRAITES. Elles attendent
    la relecture de Niko — voir `_proto/A-RELIRE-EN.md`, qui les présente
@@ -164,6 +166,23 @@ const TRADUCTIONS = [
   ['Plus de retour en arrière', 'No turning back'],
   ['Si vous comptiez regarder le DCEU (au moins jusqu\'à Justice League inclus) et les deux origines de Batman et Superman (les éléments Important) faites le avant de continuer l\'Arrowverse.',
    'If you were planning to watch the DCEU (at least up to and including Justice League) and the two Batman and Superman origins (the Important entries), do it before going on with the Arrowverse.'],
+
+  /* ── la carte Star Trek du journal, écrite le 11 août 2026 ──
+     Le cinquième univers est postérieur à la prod : il n'y a rien à
+     retrouver, ces trois lignes sont écrites. La carte n'est montrée
+     que sur la page anglaise — c'est `e-nouveautes.html` qui l'écarte
+     du français, le temps que Star Trek ait sa page dans cette langue.
+
+     La carte a d'abord dit « En anglais pour le moment », le temps que
+     le proto français de Star Trek soit écrit. Il l'est. */
+  // whats-new.html · « New timeline: Avatar », la même formule
+  ['Nouvelle timeline : Star Trek', 'New timeline: Star Trek'],
+  // whats-new.html · « 69 entries, from the Yangchen, Kyoshi and Roku
+  // novels all the way to the Korra era. »
+  ['248 entrées, du 21e au 43e siècle — séries, films, animés et Short Treks dans un seul fil.',
+   '248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.'],
+  // whats-new.html · « July 2026 », « June 2026 »
+  ['Août 2026', 'August 2026'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════
@@ -823,8 +842,19 @@ for (const T of TIMELINES) {
 
   let ecarts = 0;
   const nSortie = { ...N, months: N.months.map(mois => {
-    const label = trouve(mois.label);
-    if (label === undefined) manques.push({ contexte: 'Journal', chemin: `${mois.key || 'avant'}.label`, champ: 'label', fr: mois.label });
+    /* Le libellé du mois vient du lexique — « Juillet 2026 » est en face
+       de « July 2026 » dans les deux pages de prod. Un mois né depuis,
+       lui, n'y est pas : il se traduit à la main comme les phrases des
+       cartes, et part en relecture avec elles. « Août 2026 » est le
+       premier — c'est le mois où Star Trek est arrivé. */
+    let label = trouve(mois.label);
+    if (label === undefined) {
+      const ecrite = TRAD.get(mois.label.trim());
+      manques.push({ contexte: 'Journal', chemin: `${mois.key || 'avant'}.label`, champ: 'label', fr: mois.label,
+                     ...(ecrite !== undefined ? { en: ecrite, statut: 'traduit, à relire' }
+                                              : { statut: 'sans traduction' }) });
+      if (ecrite !== undefined) label = ecrite;
+    }
     return {
       ...mois,
       label: label !== undefined ? label : mois.label,

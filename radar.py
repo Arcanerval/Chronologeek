@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 Chronologeek — Radar des sorties
-Agrège les sorties à venir (Star Wars, Marvel, DC, Avatar) depuis plusieurs
-sources, croise avec les timelines déjà en ligne, et génère radar.html.
+Agrège les sorties à venir (Star Wars, Marvel, DC, Avatar, Star Trek) depuis
+plusieurs sources, croise avec les timelines déjà en ligne, et génère
+radar.html.
 
 Chaque source est isolée : si l'une casse, les autres continuent.
 """
@@ -38,6 +39,7 @@ UNIVERSES = {
     "marvel":   {"label": "Marvel",        "color": "#e23636", "file": "marvel.html"},
     "dc":       {"label": "DC",            "color": "#f5c842", "file": "dc.html"},
     "avatar":   {"label": "Avatar",        "color": "#7dd3fc", "file": "avatar.html"},
+    "startrek": {"label": "Star Trek",     "color": "#b48cf2", "file": "startrek.html"},
 }
 
 # Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
@@ -71,6 +73,13 @@ EXCLUDE = {
     # deux parties annoncées, et la saga comics du même nom, qui n'y est pas
     # davantage.
     "dc":       [r"\blego\b", r"\bknightfall\b"],
+    # Le guide Star Trek ne couvre que l'Alpha Canon — films et séries. Niko
+    # l'écrit noir sur blanc dans « What's left out, and why ? » : romans,
+    # comics et jeux vidéo sont du Beta Canon et restent dehors. Le portail
+    # Memory Alpha, lui, annonce tout, y compris les rééditions de coffrets.
+    # Le tri se fait déjà à la lecture ; ces motifs sont le garde-fou.
+    "startrek": [r"\blego\b", r"\bidw\b", r"blu-ray", r"\bdvd\b",
+                 r"\bissue \d", r"noveli[sz]ation"],
     "*":        [],
 }
 
@@ -532,6 +541,136 @@ def source_wookieepedia():
         log(f"Wookiee   : parsing — {e}")
 
 
+# ────────────────────────────────────────── SOURCE 4 : Memory Alpha
+# Star Trek ne passe pas par TMDB. Les autres univers s'y trouvent par leur
+# société de production ; Star Trek, lui, sort de chez Paramount, qui produit
+# tout le reste du catalogue — la recherche par société ramènerait le cinéma
+# entier. Niko a donc désigné sa source : le portail « TV and films » de
+# Memory Alpha, dont la section « Recent and upcoming premieres » est tenue à
+# jour épisode par épisode.
+#
+# Fandom renvoie 403 aux requêtes qui ne se présentent pas comme un
+# navigateur, et son API /api/v1 est fermée : on passe par l'API MediaWiki
+# standard, exactement comme pour Wookieepedia.
+MA_PORTAL = ("https://memory-alpha.fandom.com/api.php?action=parse"
+             "&page=Portal%3ATV_and_films&prop=text&format=json")
+
+# Ce que la section annonce et que le guide ne couvre pas : coffrets, comics
+# et romans. Testé sur la phrase entière, avant même EXCLUDE.
+MA_DROP = re.compile(r"idw publishing|blu-ray|\bdvd\b|, issue \d|"
+                     r"\bcomic\b|\bnovel\b|\bomnibus\b|is released", re.I)
+
+
+def ma_date(jour_mois):
+    """« 13 August » → une date ISO. Le portail n'écrit jamais l'année.
+
+    C'est une fenêtre glissante de quelques semaines autour d'aujourd'hui :
+    l'année est donc celle en cours, sauf quand la date tombe loin derrière —
+    en janvier, un « 20 December » parle de l'année précédente, et en
+    décembre un « 5 January » parle de la suivante.
+    """
+    try:
+        d = datetime.datetime.strptime(f"{jour_mois} {TODAY.year}", "%d %B %Y").date()
+    except ValueError:
+        return None
+    if (TODAY - d).days > 120:
+        d = d.replace(year=d.year + 1)
+    elif (d - TODAY).days > 300:
+        d = d.replace(year=d.year - 1)
+    return d
+
+
+def source_memory_alpha():
+    try:
+        r = requests.get(MA_PORTAL, timeout=45, headers=UA_BROWSER)
+        r.raise_for_status()
+        raw = r.json().get("parse", {}).get("text", {})
+        raw = raw.get("*", "") if isinstance(raw, dict) else raw
+    except Exception as e:
+        log(f"MemAlpha  : portail indisponible — {e}")
+        return
+    if not raw:
+        log("MemAlpha  : portail vide  ⚠")
+        return
+
+    soup = BeautifulSoup(raw, "html.parser")
+    tete = soup.find(id="Recent_and_upcoming_premieres")
+    if not tete:
+        log("MemAlpha  : section « Recent and upcoming premieres » introuvable  ⚠"
+            " — le portail a été remanié, le sélecteur est à revoir")
+        return
+    bloc = tete.find_parent(["h2", "h3"]).find_next_sibling("div")
+    if bloc is None:
+        log("MemAlpha  : section trouvée mais vide  ⚠")
+        return
+
+    n = dated = tba = 0
+    for li in bloc.find_all("li"):
+        # Les <li> imbriqués portent des sorties qui partagent la date du
+        # parent : coffrets et comics du même jour. Ils sont hors périmètre,
+        # et sans date propre — on ne descend pas dedans.
+        if li.find_parent("li"):
+            continue
+        for sous in li.find_all("ul"):
+            sous.decompose()
+        txt = re.sub(r"\s+", " ", li.get_text(" ", strip=True))
+        if not txt or MA_DROP.search(txt):
+            continue
+
+        # Le type se lit dans la phrase, que Memory Alpha écrit toujours pareil.
+        if re.search(r"\bepisode of\b|\bepisode,|\bepisode\b.*premieres", txt, re.I):
+            kind = "Épisode"
+        elif re.search(r"\bseason of\b|\bseries\b.*premieres", txt, re.I):
+            kind = "Série"
+        elif re.search(r"\bfilm\b|in theaters|theatrical", txt, re.I):
+            kind = "Film"
+        else:
+            continue
+
+        # L'œuvre est en italique dans la phrase, le titre d'épisode entre
+        # guillemets. « Star Trek: Strange New Worlds — "Off-Hour" » dit d'un
+        # coup de quelle série il s'agit et de quel épisode : la carte du
+        # radar n'a que son titre pour se faire comprendre.
+        oeuvre = li.find("i")
+        oeuvre = re.sub(r"\s+", " ", oeuvre.get_text(strip=True)) if oeuvre else ""
+        # Le titre est extrait du texte aplati, où `get_text(" ")` a posé une
+        # espace de chaque côté du lien : sans le `.strip()`, la carte
+        # affichait « " Off-Hour " », guillemets décollés.
+        ep = re.search(r'"([^"]+)"', txt)
+        ep = ep.group(1).strip() if ep else ""
+        titre = f'{oeuvre} — "{ep}"' if (oeuvre and ep) else (oeuvre or txt[:90])
+
+        lien = li.find("a", href=re.compile(r"^/wiki/\d{1,2}_[A-Z][a-z]+$"))
+        if not lien:
+            # « To be announced » : la section les liste sans date. Elles sont
+            # comptées puis écartées par main(), comme les tba des autres
+            # sources — un radar ne peut pas placer ce qui n'a pas de jour.
+            add("startrek", titre, "", "", kind, "Memory Alpha", "tba")
+            n += 1
+            tba += 1
+            continue
+
+        d = ma_date(lien.get_text(strip=True))
+        if not d or d > HORIZON:
+            continue
+        # Pas de champ `wiki`, et ce n'est pas un oubli. Malgré son nom, il ne
+        # porte pas un lien : c'est un TITRE DE PAGE WOOKIEEPEDIA, envoyé tel
+        # quel au paramètre `titles` de son API par `fill_wiki_synopses`. Y
+        # poser une page de Memory Alpha enverrait chercher « Off-Hour » chez
+        # Star Wars, qui répondrait « pas de page » sans erreur. Les cartes
+        # Star Trek n'ont donc pas de synopsis — le titre de l'épisode dit
+        # déjà ce qu'une carte de radar a besoin de dire.
+        add("startrek", titre, d.isoformat(), d.strftime("%d/%m/%Y"),
+            kind, "Memory Alpha", "day")
+        n += 1
+        dated += 1
+
+    msg = f"MemAlpha  : {n} entrée(s), dont {dated} datée(s) et {tba} sans date"
+    if dated == 0:
+        msg += "  ⚠ aucune date lue — la mise en forme du portail a changé"
+    log(msg)
+
+
 def normalize(s):
     s = html.unescape(s or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s)
@@ -921,7 +1060,8 @@ def render(entries):
 
 
 def main():
-    for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia):
+    for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
+               source_memory_alpha):
         try:
             fn()
         except Exception:

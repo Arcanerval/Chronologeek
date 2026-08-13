@@ -6,7 +6,8 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 ## Structure
 
-- Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`, `avatar.html`
+- Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`,
+  `avatar.html`, `startrek.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
   (533 romans, comics et fictions audio, plus 63 repères écran)
@@ -17,7 +18,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 ### Ce qui s'édite, et ce qui se produit
 
-**Les dix-huit pages du site ne s'éditent pas.** Elles sont produites depuis
+**Les vingt pages du site ne s'éditent pas.** Elles sont produites depuis
 `_proto/` par `node _proto/publier.mjs`, et toute retouche faite directement dans
 `starwars.html` est perdue à la publication suivante — sans erreur, sans message.
 
@@ -31,8 +32,12 @@ _proto/e-*.html + _proto/data*.js        ← le français, écrit à la main
 _proto/en-*.html + _proto/data-*-en.js
         │  node _proto/publier.mjs
         ▼
-18 pages + /data/ + app.js               ← le site, jamais édité à la main
+20 pages + /data/ + app.js               ← le site, jamais édité à la main
 ```
+
+Star Trek prend cette chaîne à l'envers : sa source est anglaise, et
+`node _proto/traduire-startrek.mjs` en tire le français. Voir « Star Trek, la
+chaîne inversée » plus bas.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -131,9 +136,9 @@ lancer ensuite, sinon le push écrase la table.
 il n'utilise pas `TMDB_KEY` et aucune action ne le lance : il s'appelle à la main.
 L'interpréteur est `py` sur la machine de Niko, pas `python`.
 
-- `py sync.py check` — vérifie les neuf paires : même nombre de lignes dans le
-  HTML, mêmes identifiants dans les données. Les neuf clés sont `sw`, `mcu`, `dc`,
-  `avatar`, `dossier`, `news`, `accueil`, `avenir`, `dossiers`.
+- `py sync.py check` — vérifie les dix paires : même nombre de lignes dans le
+  HTML, mêmes identifiants dans les données. Les dix clés sont `sw`, `mcu`, `dc`,
+  `avatar`, `startrek`, `dossier`, `news`, `accueil`, `avenir`, `dossiers`.
 - `py sync.py show <page> <id>` — affiche une entrée dans les deux langues sans
   ouvrir les fichiers entiers.
 - `py sync.py mirror <page> "<ancien>" "<nouveau>"` — remplace dans le proto
@@ -152,10 +157,12 @@ ligne, l'anglais est indenté, et la même donnée ressortait à 71 d'un côté 
 l'autre. Un contrôle de parité ne doit pas dépendre de la mise en forme. Pour les
 chiffres d'entrées réels, c'est `lore_gap.py --check` qui fait foi.
 
-`mirror` écrit dans le proto français, plus dans les deux fichiers publiés. Écrire
+`mirror` écrit dans le proto source, plus dans les deux fichiers publiés. Écrire
 dans ce qui est produit se perdrait à la publication suivante, sans erreur et sans
-message. Le journal des Nouveautés n'a pas d'identifiants : ses cartes se comptent
-au titre.
+message. Le proto source est le français partout, **sauf Star Trek** dont
+`langue_source` vaut `en` : écrire dans `e-startrek.html` serait écrasé au
+prochain `traduire-startrek.mjs`. Le journal des Nouveautés n'a pas
+d'identifiants : ses cartes se comptent au titre.
 
 Lecture / écriture avec `newline=""` : sans ça Python retraduit CRLF en LF et
 réécrit les fichiers entiers alors que le dépôt les stocke en LF.
@@ -194,7 +201,10 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   fichier et les trois JSON dont il sort ne sont plus versionnés** (voir
   `.gitignore`) : Niko ne relit pas un document, il ouvre le proto anglais au
   navigateur et valide ou non. Le script reste, sa sortie est locale.
-- `node _proto/publier.mjs` — pose les dix-huit pages, `/data/` et `app.js`. Voir
+- `node _proto/traduire-startrek.mjs` — le seul qui traduit dans l'autre sens :
+  `e-startrek.html` et `data-startrek.js` depuis les fichiers anglais, qui sont la
+  source. Voir « Star Trek, la chaîne inversée ».
+- `node _proto/publier.mjs` — pose les vingt pages, `/data/` et `app.js`. Voir
   « La publication » plus bas.
 
 Les quatre premiers acceptent `--check`, qui n'écrit rien et affiche le bilan.
@@ -208,7 +218,7 @@ du script concerné, puis relancer.
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
 posent `noindex`. Les recopier tels quels aurait effacé le référencement de
-dix-huit pages : rien n'aurait cassé, la console serait restée vide, et le site
+vingt pages : rien n'aurait cassé, la console serait restée vide, et le site
 aurait disparu des résultats. Ces textes vivent dans **`_proto/seo.json`**, extrait
 une fois des pages d'avant la refonte, avec Avatar écrit à la main faute de page à
 reprendre. Le script ne les relit pas dans les pages publiées : celles-ci sont sa
@@ -239,6 +249,70 @@ des pages, parce que `lore_gap.py` découvre les univers en listant la racine.
 ne suffit pas : il ne connaît pas les URL sans extension, et toute la navigation de
 la refonte passe par `/starwars`, pas `/starwars.html`. Une vérification locale qui
 tombe en 404 sur chaque lien ne prouve rien.
+
+### Star Trek, la chaîne inversée
+
+Le cinquième univers est parti de l'anglais — Niko a écrit ce guide-là dans cette
+langue. `en-startrek.html` et `data-startrek-en.js` sont donc la **source**, et le
+français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul endroit
+du dépôt où l'on traduit dans ce sens.
+
+**Ne jamais inscrire Star Trek dans `PAGES` de `traduire-pages.mjs`.** Ce script
+produit l'anglais depuis le français : il écraserait la source avec une
+retraduction de sa propre sortie, sans erreur et sans message.
+
+En revanche il est inscrit partout ailleurs, et sans exception : `ROUTES` et
+`ASSETS` de `publier.mjs`, `seo.json`, `PAGES` de `sync.py` (avec
+`langue_source="en"`), `PRECACHE` de `sw.js` et `sitemap.xml`. La publication ne
+voit que deux protos et deux sorties — le sens de la traduction ne la regarde
+pas.
+
+Ce qui rend le script tenable, c'est qu'il ne traduit presque rien. Le gabarit du
+site — navigation, pied de page, filtres, progression, boutons — existe déjà en
+français dans les neuf autres protos, relu et en ligne : il est **retrouvé**, par
+deux appariements, exactement comme `traduire-pages.mjs` retrouve l'anglais.
+
+- les paires `e-*.html` / `en-*.html`, parallèles ligne à ligne — textes,
+  attributs **et chaînes littérales du JS**, d'où viennent « Fermer le menu » ou
+  « Bande-annonce » ;
+- les paires `data-*.js` / `data-*-en.js`, appariées par chemin de clé, qui
+  rendent les 112 libellés de `CG.t`.
+
+1 686 textes retrouvés, 254 sous-items sortis d'un gabarit (« Season 6 Episodes
+1-4 » → « Saison 6 Épisodes 1-4 »), et **120 phrases écrites** : les titres repris
+de l'exploitation française, les huit ères, les trente réponses de FAQ, les neuf
+bandeaux, les badges. Elles vivent dans `_proto/traductions-startrek.mjs`.
+
+Six points qui ont coûté quelque chose :
+
+- **Le `\n` des réponses de FAQ.** La clé du lexique est resserrée sur une ligne,
+  donc le saut de paragraphe ne peut venir que de la traduction. Sans lui, la
+  réponse sort en un seul pavé. Le script compte les sauts des deux côtés.
+- **Le nombre de lignes.** Une phrase tient sur trois lignes en anglais et sur une
+  en français ; `reflow()` la répartit sur le même nombre de lignes, sans quoi
+  `py sync.py check` verrait les deux versions désalignées.
+- **Le scanner de chaînes doit connaître les expressions régulières.** `esc()`
+  teste `/["&<>]/g` : un scanner qui prend ce `"` pour une ouverture de chaîne
+  repart en plein code et rend des fragments qui n'en sont pas.
+- **L'accroche de la page est un bloc de HTML de quatre mille signes.** Elle se
+  traduit nœud de texte par nœud de texte — ses intitulés sont ceux des quatre
+  autres univers, déjà écrits.
+- **L'espace du bord appartient au gabarit, pas au libellé.** La clé du lexique
+  est resserrée par `net()`, donc la traduction revient rognée : `' watched'` et
+  `' in total'` ressortaient collés au nombre qui les précède, et les huit bandes
+  d'ère annonçaient « ÈRE2 / 8 », « 0 / 8VUES », « 68 H 31AU TOTAL ». La branche
+  JS retrouve maintenant les bords de la chaîne d'origine, comme le faisait déjà
+  la branche HTML avec `tete` et `queue`. Rien dans la console, rien au rapport :
+  seule la page le disait.
+- **La ponctuation française du deux-points.** Les titres restés anglais —
+  Discovery, Picard, Voyager, Deep Space Nine… — étaient déclarés identiques, et
+  la page écrivait donc « Star Trek : La Nouvelle Génération » deux lignes
+  au-dessus de « Star Trek: Voyager ». Le nom ne se traduit pas, la ponctuation
+  si : les quatre autres univers n'ont pas un seul deux-points collé. Ces titres
+  sont passés aux traductions, avec l'espace. `Star trek: Lower Decks` est une
+  coquille de la source anglaise, corrigée côté français seulement.
+
+`en-startrek.html` est en **LF**, contrairement aux autres protos qui sont en CRLF.
 
 ### Avatar, la seule exception
 
@@ -552,6 +626,16 @@ Répartitions actuelles, telles que les sort `py lore_gap.py --check` :
 Star Wars 61 (9 must / 37 important / 15 bonus), Marvel 121 (49 / 30 / 42),
 DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34).
 
+**Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
+repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Le
+niveau servait seul à reconnaître une vraie entrée dans `lore_gap.py`, ce qui
+faisait tomber les 248 du côté ignoré : l'index sortait vide, et chaque sortie du
+radar serait ressortie « à placer » alors qu'elle est déjà là. Une entrée se
+reconnaît maintenant à son niveau **ou** à son couple titre+date. Les deux
+ensemble, parce que cinq entrées Marvel n'ont pas de date et que le titre+date
+seul les perdait. Ce qui reste écarté est exactement ce qu'on veut écarter : les
+badges de progression et le descripteur d'univers.
+
 ## Pièges déjà rencontrés
 
 - `const RT` au premier niveau d'un script **n'est pas** sur `window` : lire l'identifiant
@@ -588,6 +672,15 @@ et la majuscule initiale quand on découpe une phrase.
 
 - Monétisation : Patreon ou Ko-fi, pas encore activée. Les deux `href="#"` de
   « Soutenir le site » et « Contact » attendent ça.
+- Les titres de référencement de « À venir » annoncent encore « Star Wars,
+  Marvel, DC & Avatar » : ils sont d'avant Star Trek. Ce sont des textes de
+  Niko, ils ne se réécrivent pas sans lui.
+- Les 120 phrases françaises de Star Trek sont **écrites, pas retrouvées** : les
+  titres de films, les huit ères, les trente réponses de FAQ, les neuf bandeaux
+  et les badges. Elles se relisent au navigateur sur `e-startrek.html`.
+- Sa bannière `images/startrek.jpg` fait 576×324 : elle est étirée sur la case
+  pleine largeur de l'accueil et sur son propre bandeau. Les autres univers ont
+  1280 px ou plus.
 - Relecture de l'anglais écrit — 147 phrases de données et 110 de pages. Ce sont
   les seules que la prod n'avait pas ; tout le reste est repris mot pour mot. Elle
   se fait **au navigateur, sur le proto anglais**, pas dans `A-RELIRE-EN.md`. Le

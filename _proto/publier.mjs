@@ -58,6 +58,13 @@ const ROUTES = [
   { cle: 'avatar',
     fr: { proto: 'e-avatar.html',             sortie: 'fr/avatar.html',                       url: '/fr/avatar' },
     en: { proto: 'en-avatar.html',            sortie: 'avatar.html',                       url: '/avatar' } },
+  // Star Trek se publie comme les autres, alors que sa chaîne de traduction va
+  // en sens inverse : c'est `en-startrek.html` qui est écrit à la main et
+  // `e-startrek.html` qui en descend. La publication, elle, ne voit que deux
+  // protos et deux sorties — le sens de la traduction ne la regarde pas.
+  { cle: 'startrek',
+    fr: { proto: 'e-startrek.html',           sortie: 'fr/startrek.html',         url: '/fr/startrek' },
+    en: { proto: 'en-startrek.html',          sortie: 'startrek.html',            url: '/startrek' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -101,6 +108,8 @@ const ASSETS = {
   'data-dc-en.js':         '/data/dc-en.js',
   'data-avatar.js':        '/data/avatar-fr.js',
   'data-avatar-en.js':     '/data/avatar-en.js',
+  'data-startrek.js':      '/data/startrek-fr.js',
+  'data-startrek-en.js':   '/data/startrek-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',
