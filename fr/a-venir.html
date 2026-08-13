@@ -263,8 +263,14 @@ details>summary.hd::-webkit-details-marker{display:none}
 .era{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
 /* le repère d'épisode : S2E05, et la pastille des deux épisodes qui comptent.
-   Contour plutôt qu'aplat — le pavé plein est déjà pris par le support. */
-.ep{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;
+   Contour plutôt qu'aplat — le pavé plein est déjà pris par le support.
+
+   Il vit SOUS le nom de la série, et non dans la rangée de pastilles du
+   dessus : la carte d'un épisode porte le nom de sa série et rien d'autre,
+   c'est ce repère-là qui dit lequel. En étroit, le titre passe sur deux ou
+   trois lignes et la rangée du haut s'en trouvait repoussée loin de lui. */
+.ep{display:inline-flex;align-items:center;gap:5px;margin-top:5px;
+  font-size:10px;font-weight:700;
   letter-spacing:.11em;text-transform:uppercase;font-variant-numeric:tabular-nums;
   padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
 .ep svg{width:9px;height:9px;fill:currentColor;flex:0 0 auto}
@@ -700,10 +706,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<span class="tags">'+
           '<span class="u">'+u[0]+'</span>'+
           '<span class="b" style="--k:'+kk[1]+'">'+kk[0]+'</span>'+
-          epTag(e)+
           (e.era?'<span class="era">'+esc(e.era)+'</span>':'')+
         '</span>'+
         '<span class="ti">'+esc(t)+'</span>'+
+        epTag(e)+
       '</span>'+
       '<span class="cd'+(n<=7?' soonest':'')+'">'+cd(n)+'</span>';
 

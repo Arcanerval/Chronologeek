@@ -110,6 +110,12 @@ l'émission qui en parle, et TMDB la range parmi les séries — elle arrivait a
 chapitre : quatre numéros au radar pour une série déjà au guide. Le chiffre suffit à
 les distinguer, la série n'en portant pas.
 
+Deux exclusions DC du 13 août 2026, même règle que Knightfall : **Teen Titans
+Go!** et **My Adventures with Superman** sont de l'animation télé, hors du
+périmètre du guide. Elles sont arrivées avec la lecture des épisodes — DC Studios
+produit l'animation aussi, et interroger `air_date` la fait remonter là où la
+seule date de première ne la montrait pas.
+
 Retirer une entrée de `radar.json` à la main ne suffit pas : le fichier est régénéré
 chaque jour. C'est dans `EXCLUDE` que l'exclusion doit vivre — le JSON n'est nettoyé
 en plus que pour ne pas attendre le lendemain.
@@ -149,15 +155,35 @@ Trois fonctions, partagées par `source_tmdb` et `source_startrek` :
 
 - `tmdb_series_qui_diffusent()` — le seul filtre de `/discover/tv` qui retrouve
   une série au milieu de sa saison est **`air_date`**, qui porte sur les épisodes
-  là où `first_air_date` porte sur la série.
+  là où `first_air_date` porte sur la série. Le paramètre `cle` vaut
+  `with_companies` pour les quatre univers qui se désignent par leur studio, et
+  `with_keywords` pour Star Trek, que Paramount ne suffit pas à isoler.
 - `tmdb_saison()` — la saison dans les deux langues, appariée par **numéro
   d'épisode**, jamais par rang dans la liste.
 - `tmdb_episodes()` — la fiche de la série donne la saison en cours
   (`next_episode_to_air`), puis la saison entière rend la grille sur plusieurs
-  semaines au lieu du seul épisode suivant. Une fiche coûte deux requêtes, une par
-  langue ; Star Trek ne la demande donc que pour les séries dont la première a
-  moins de trois ans (`ST_FRAICHEUR`). *The Original Series* n'a pas de prochain
-  épisode.
+  semaines au lieu du seul épisode suivant. *The Original Series* n'a pas de
+  prochain épisode, et la fiche est le seul endroit qui le dise.
+
+**L'âge d'une série ne dit rien de ce qu'elle a encore à sortir.** Star Trek
+n'appelait `tmdb_episodes()` que pour les séries dont la première avait moins de
+trois ans, `ST_FRAICHEUR`, pour s'épargner des fiches. Ce filtre a fait tomber
+l'univers entier au premier vrai passage, le 13 août 2026 : « 0 film(s),
+0 série(s), 0 épisode(s) — 27 fiche(s) série lues », et une colonne « Rien à
+venir » au radar. *Strange New Worlds* a débuté en 2022 et diffuse aujourd'hui ;
+la fenêtre la jetait, ainsi que tout ce qui dure. `ST_FRAICHEUR` a été retiré —
+le catalogue tient en une trentaine de fiches, on les demande toutes, et
+`tmdb_series_qui_diffusent()` par mot-clé complète pour les séries qui ne
+commencent pas par « Star Trek ». Ne pas remettre de fenêtre comptée depuis la
+première : c'est `next_episode_to_air` qui répond, rien d'autre.
+
+**Le titre d'une carte d'épisode est celui de la série, et rien d'autre.** La
+saison et le numéro sont dans `ep`, et la page les écrit sous le nom. Accrocher
+le titre de l'épisode donnait deux cartes qui ne se ressemblaient pas : l'anglais
+rendait `Teen Titans Go! — "Teen Titans Go to the Repair Shop (1)"`, le français
+`Teen Titans Go! — « Épisode 45 »`, TMDB n'ayant pas traduit le titre. `S9E45`
+s'écrit pareil des deux côtés. Le dédoublonnage de `main()` porte donc aussi sur
+`ep.s` / `ep.e` : sur le seul titre, une saison entière se réduirait à une carte.
 
 **`UNIVERS_TITRE` est né de là.** Le filtre par société ne suffit plus dès qu'on
 interroge `air_date` : **Nickelodeon Animation Studio produit tout le catalogue de
@@ -761,8 +787,10 @@ et la majuscule initiale quand on découpe une phrase.
   (`.demo`), sur l'accueil et sur la page des Dossiers, dans les deux langues.
   `publier.mjs` le recopie tel quel — il devrait le retirer et refuser de laisser
   passer, comme il le fait déjà pour `noindex`.
-- La source Star Trek du radar et la lecture des épisodes n'ont **jamais tourné en
-  vrai** : `TMDB_KEY` vit dans un secret GitHub, et la mise au point s'est faite
-  contre un faux TMDB. Le premier passage de `radar.yml` est le vrai contrôle —
-  lire son journal, section « Star Trek », et le compte d'épisodes que chaque
-  univers affiche désormais dans sa ligne « TMDB ».
+- La correction de `ST_FRAICHEUR` n'a **pas encore tourné en vrai** : `TMDB_KEY`
+  vit dans un secret GitHub et rien ne se teste en local. Le premier passage
+  suivant de `radar.yml` est le contrôle — lire son journal, section « Star Trek »,
+  et vérifier que la ligne annonce des épisodes plutôt que « rien retenu ». Le
+  journal du passage est dans `radar.html`, qui est commité avec `radar.json` :
+  `git show <commit>:radar.html`, le bloc `.rep` en fin de fichier. C'est lui qui
+  a nommé le coupable la première fois.

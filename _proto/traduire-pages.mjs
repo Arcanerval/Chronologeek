@@ -476,6 +476,12 @@ const EXPRESSIONS = [
   // site en ligne, mais c'est une phrase, et elle casserait le bloc de
   // Big Shoulders 900 qui fait tout l'effet de la carte.
   ["return 'J‑'+n;", "return 'D‑'+n;"],
+  // Les deux jours qui s'écrivent en toutes lettres. « DEMAIN » se retrouvait
+  // seul au lexique, « AUJOURD’HUI » non — et la page anglaise l'annonçait
+  // donc en français sous le compte à rebours, sans que rien ne le signale.
+  // Un compteur de mots, forcément, ne voit pas un mot qui n'existe qu'ici.
+  ["return 'AUJOURD’HUI';", "return 'TODAY';"],
+  ["return 'DEMAIN';", "return 'TOMORROW';"],
 
   // ── le journal ─────────────────────────────────────────────────
   // Même accord double qu'au radar : « 8 changements affichés » ne

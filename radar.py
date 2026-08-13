@@ -99,7 +99,14 @@ EXCLUDE = {
     # le DCEU et le DCU, pas les longs métrages animés. Le motif attrape les
     # deux parties annoncées, et la saga comics du même nom, qui n'y est pas
     # davantage.
-    "dc":       [r"\blego\b", r"\bknightfall\b"],
+    #
+    # Teen Titans Go! et My Adventures with Superman relèvent de la même règle,
+    # et sont arrivés le 13 août 2026 par la lecture des épisodes : DC Studios
+    # produit l'animation télé aussi, et interroger `air_date` la fait remonter
+    # là où la seule date de première ne la montrait pas. Ni l'une ni l'autre
+    # n'est au guide.
+    "dc":       [r"\blego\b", r"\bknightfall\b",
+                 r"\bteen titans go\b", r"\bmy adventures with superman\b"],
     # Le guide Star Trek ne couvre que l'Alpha Canon — films et séries. Niko
     # l'écrit noir sur blanc dans « What's left out, and why ? » : romans,
     # comics et jeux vidéo sont du Beta Canon et restent dehors. TMDB ne
@@ -258,17 +265,21 @@ def tmdb_company_ids(name):
 # saison coûte deux requêtes, une par langue.
 
 
-def tmdb_series_qui_diffusent(base, joined):
-    """Les séries d'une société dont un épisode reste à venir : {id: nom}.
+def tmdb_series_qui_diffusent(base, joined, cle="with_companies"):
+    """Les séries dont un épisode reste à venir : {id: nom}.
 
     `air_date` porte sur les épisodes là où `first_air_date` porte sur la
     série : c'est le seul filtre de /discover qui retrouve une série au
-    milieu de sa saison."""
+    milieu de sa saison.
+
+    `cle` vaut `with_companies` pour les quatre univers qui se désignent par
+    leur studio, et `with_keywords` pour Star Trek, que Paramount ne suffit
+    pas à isoler."""
     out = {}
     for page in (1, 2, 3):
         try:
             r = requests.get(base + "/discover/tv", timeout=25, headers=UA, params={
-                "api_key": TMDB_KEY, "with_companies": joined,
+                "api_key": TMDB_KEY, cle: joined,
                 "air_date.gte": TODAY.isoformat(),
                 "air_date.lte": HORIZON.isoformat(),
                 "sort_by": "first_air_date.desc",
@@ -344,13 +355,17 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
             continue
         num = e.get("episode_number") or 0
         f = fr.get(num) or {}
-        titre, titre_fr = (e.get("name") or "").strip(), (f.get("name") or "").strip()
-        add(uni,
-            f'{nom} — "{titre}"' if titre else f"{nom} — S{saison}E{num}",
+        # Le titre de la carte est celui de la SÉRIE, et rien d'autre : la
+        # saison et le numéro sont dans `ep`, que la page écrit sous le nom.
+        # Accrocher le titre de l'épisode au nom donnait deux cartes qui ne se
+        # ressemblaient pas — l'anglais rendait « Teen Titans Go! — "Teen
+        # Titans Go to the Repair Shop (1)" » là où le français, faute de titre
+        # traduit chez TMDB, rendait « Teen Titans Go! — « Épisode 45 » ».
+        # Le repère S9E45 s'écrit pareil des deux côtés, lui.
+        add(uni, nom,
             d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB",
             syn=(e.get("overview") or "").strip(),
             syn_fr=(f.get("overview") or "").strip(),
-            title_fr=(f"{nom} — « {titre_fr} »" if titre_fr else ""),
             ep={"s": saison, "e": num,
                 "mark": "premiere" if num == 1
                         else "finale" if dernier > 1 and num == dernier
@@ -716,8 +731,6 @@ def source_wookieepedia():
 # jour sans « Star Trek » devant, le titre attrape ce qui vient d'être créé.
 ST_MOTCLE = "star trek"
 ST_TITRE = re.compile(r"^\s*star\s*trek\b", re.I)
-# Au-delà, une série ne diffuse plus : inutile de demander sa fiche détaillée.
-ST_FRAICHEUR = datetime.timedelta(days=1095)
 
 
 def tmdb_keyword_ids(name):
@@ -842,6 +855,15 @@ def source_startrek():
             date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""))
         n_film += 1
 
+    # Les séries qui diffusent en ce moment, demandées à /discover comme pour
+    # les quatre autres univers : c'est `air_date` qui les retrouve, jamais
+    # `first_air_date`. Le mot-clé remplace la société — Paramount produit tout
+    # le reste du catalogue, et chercher par studio ramènerait le cinéma entier.
+    diffusent = {}
+    if kw:
+        diffusent = tmdb_series_qui_diffusent(
+            base, "|".join(str(i) for i in kw), cle="with_keywords")
+
     for it in series.values():
         nom = it.get("name") or it.get("original_name") or ""
         f = it.get("_fr") or {}
@@ -854,16 +876,31 @@ def source_startrek():
                 syn_fr=(f.get("overview") or "").strip(),
                 title_fr=(f.get("name") or "").strip())
             n_serie += 1
-        # Les épisodes ne s'obtiennent que fiche par fiche, et une fiche
-        # coûte deux requêtes : on ne les demande que pour ce qui diffuse
-        # encore. Une série sans date de début est une annonce sans grille.
-        if not debut or (TODAY - debut) > ST_FRAICHEUR:
+        # Une série sans date de début est une annonce sans grille : rien à
+        # lire. Pour les autres, seule la fiche dit s'il reste un épisode à
+        # venir, et c'est `next_episode_to_air` qui le dit.
+        #
+        # Il y avait ici une fenêtre de fraîcheur de trois ans, comptée depuis
+        # la PREMIÈRE de la série : elle a fait tomber les six univers Star Trek
+        # d'un coup au premier vrai passage, le 13 août 2026 — « 0 film(s),
+        # 0 série(s), 0 épisode(s) — 27 fiche(s) série lues ». Strange New
+        # Worlds a débuté en 2022 et diffuse aujourd'hui : l'âge d'une série ne
+        # dit rien de ce qu'elle a encore à sortir. Le catalogue tient en une
+        # trentaine de fiches, on les demande toutes.
+        if not debut:
             continue
+        diffusent.pop(it.get("id"), None)
         n_ep += tmdb_episodes(base, "startrek", it.get("id"), nom,
                               sauf_le=(debut if debut >= TODAY else None))
 
+    # Ce que /discover a rapporté et que le catalogue n'avait pas : une série
+    # qui porte le mot-clé sans que son titre commence par « Star Trek ».
+    for sid, nom in diffusent.items():
+        n_ep += tmdb_episodes(base, "startrek", sid, nom)
+
     log(f"Star Trek : {n_film} film(s), {n_serie} série(s), {n_ep} épisode(s) "
-        f"— {len(films)} fiche(s) film et {len(series)} fiche(s) série lues")
+        f"— {len(films)} fiche(s) film et {len(series)} fiche(s) série lues, "
+        f"{len(diffusent)} série(s) en diffusion hors catalogue")
     if n_film + n_serie + n_ep == 0:
         log("Star Trek : ⚠ rien retenu — mot-clé, titres ou fenêtre à revoir")
 
@@ -1268,12 +1305,15 @@ def main():
         except Exception:
             log(f"{fn.__name__} : crash inattendu\n{traceback.format_exc(limit=2)}")
 
-    # dédoublonnage (même titre + même univers)
+    # Dédoublonnage : même titre, même univers. Les épisodes portent tous le
+    # nom de leur série et rien d'autre — c'est leur repère de saison qui les
+    # distingue, sans quoi une saison entière se réduirait à une seule carte.
     seen, uniq = set(), []
     dropped = sum(1 for e in results if e["precision"] == "tba")
     for e in sorted([r for r in results if r["precision"] != "tba"],
                     key=lambda x: x["date_sort"]):
-        k = (e["universe"], normalize(e["title"]))
+        ep = e.get("ep") or {}
+        k = (e["universe"], normalize(e["title"]), ep.get("s"), ep.get("e"))
         if k in seen:
             continue
         seen.add(k)
