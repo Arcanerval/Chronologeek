@@ -360,6 +360,11 @@ const TRADUCTIONS = [
   ['Chronologeek — À venir (proto E)', 'Chronologeek — Upcoming (proto E)'],
   ['Mis à jour chaque jour', 'Updated every day'],
   ['Prochaine', 'Next'],
+  // L'accroche énumère les univers : elle est à reprendre à chaque fois qu'on
+  // en ajoute un. Star Trek y est entré le 13 août 2026, comme dans les deux
+  // titres de référencement de `seo.json` et dans le pied de page.
+  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar et Star Trek — mises à jour chaque jour.',
+   'Every upcoming Star Wars, Marvel, DC, Avatar and Star Trek release — updated every single day.'],
   ['Rechercher une sortie', 'Search a release'],
   ['Support', 'Format'],                   // filtre par type de média
   ['Rien ne correspond. Essayez une autre orthographe, ou rallumez les filtres que vous avez éteints.',

@@ -143,6 +143,15 @@ quiconque ait posé le mot-clé sur sa fiche. La recherche par titre exige que l
 titre commence par « Star Trek » — sans quoi elle ramène les documentaires et les
 hommages, et « The Center Seat: 55 Years of Star Trek » n'est pas un épisode.
 
+**`ST_TITRE` vaut aussi pour les séries en diffusion.** Le mot-clé TMDB est posé
+par les contributeurs sur tout ce qui *parle* de la franchise, pas seulement sur
+ce qui *en est* : le 13 août 2026, il a rapporté vingt et un épisodes de
+« A Captain's Log », une émission d'entretiens, sous la bannière Star Trek. Le
+motif `\bpodcast\b` de la clé `*` ne l'attrapait pas — son titre ne le dit pas.
+C'est donc le titre qui tranche, à l'entrée du chemin « hors catalogue », comme
+`UNIVERS_TITRE` le fait pour Avatar. Une série de la franchise s'est toujours
+appelée « Star Trek: quelque chose ».
+
 ### Les épisodes, semaine par semaine
 
 Une série qui diffuse n'est plus une sortie : sa date de première est passée, et
@@ -212,7 +221,14 @@ Deux pièges qui ont chacun leur garde-fou dans `tmdb_episodes()` :
 - **Une série neuve s'annonce deux fois.** Elle arrive par `first_air_date` comme
   « Série », et son S1E1 arrive par `air_date` le même jour et sous le même nom :
   deux cartes pour une seule sortie. `sauf_le` écarte l'épisode qui tombe le jour
-  de la première.
+  de la première. Mais **son repère n'existait que sur la carte écartée** : la
+  carte qui reste était la seule du radar à ne rien dire de son rang, et
+  « Lanterns » s'annonçait sans sa mention « Première ». La carte d'une série
+  porte donc `PREMIERE` d'emblée — les deux `/discover/tv` filtrent sur
+  `first_air_date`, qui est par définition le jour du premier épisode, et le
+  repère est connu sans rien demander de plus. `tmdb_episodes` l'affine ensuite
+  en rendant `(compte, repère du premier)`, ce qui ne sert que si TMDB a la
+  grille : *Avatar: Seven Havens* et *VisionQuest* n'ont pas encore la leur.
 
 ### Les dates du radar
 
@@ -764,9 +780,15 @@ et la majuscule initiale quand on découpe une phrase.
 
 - Monétisation : Patreon ou Ko-fi, pas encore activée. Les deux `href="#"` de
   « Soutenir le site » et « Contact » attendent ça.
-- Les titres de référencement de « À venir » annoncent encore « Star Wars,
-  Marvel, DC & Avatar » : ils sont d'avant Star Trek. Ce sont des textes de
-  Niko, ils ne se réécrivent pas sans lui.
+- **Un univers ajouté se met dans les textes, pas seulement dans le code.** Trois
+  endroits énumèrent les cinq : l'accroche de « À venir » (`.dek`), les deux
+  titres et les deux descriptions de `seo.json`, et le pied de page de toutes les
+  pages. Les trois portent Star Trek depuis le 13 août 2026 ; les deux premiers y
+  sont entrés avec deux mois de retard sur la page elle-même, parce que rien ne
+  les relie à la liste des univers. La formule est la sienne, celle du pied de
+  page : « Star Wars, Marvel, DC, Avatar et Star Trek ». L'accroche anglaise se
+  tient dans `TRADUCTIONS` de `traduire-pages.mjs`, la prod n'ayant jamais porté
+  cette phrase-là.
 - Les 120 phrases françaises de Star Trek sont **écrites, pas retrouvées** : les
   titres de films, les huit ères, les trente réponses de FAQ, les neuf bandeaux
   et les badges. Elles se relisent au navigateur sur `e-startrek.html`.

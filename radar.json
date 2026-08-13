@@ -36,28 +36,11 @@
   "kindKey": "tv",
   "title_fr": "",
   "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-08-16",
-  "date_txt": "16/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
   "date_txt_fr": "",
   "ep": {
-   "s": 6,
-   "e": 16,
-   "mark": ""
+   "s": 1,
+   "e": 1,
+   "mark": "premiere"
   }
  },
  {
@@ -135,28 +118,6 @@
   "ep": {
    "s": 1,
    "e": 2,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-08-23",
-  "date_txt": "23/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 17,
    "mark": ""
   }
  },
@@ -239,28 +200,6 @@
   }
  },
  {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-08-30",
-  "date_txt": "30/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 18,
-   "mark": ""
-  }
- },
- {
   "universe": "starwars",
   "title": "Hiding from the Dark",
   "date_sort": "2026-09-01",
@@ -318,28 +257,6 @@
   "ep": {
    "s": 1,
    "e": 4,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-09-06",
-  "date_txt": "06/09/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 19,
    "mark": ""
   }
  },
@@ -418,28 +335,6 @@
   "ep": {
    "s": 1,
    "e": 5,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-09-13",
-  "date_txt": "13/09/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 20,
    "mark": ""
   }
  },
@@ -523,28 +418,6 @@
  },
  {
   "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-09-20",
-  "date_txt": "20/09/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 21,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
   "title": "Star Trek: Strange New Worlds",
   "date_sort": "2026-09-24",
   "date_txt": "24/09/2026",
@@ -588,28 +461,6 @@
   }
  },
  {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-09-27",
-  "date_txt": "27/09/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 22,
-   "mark": ""
-  }
- },
- {
   "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-10-04",
@@ -629,28 +480,6 @@
    "s": 1,
    "e": 8,
    "mark": "finale"
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-10-04",
-  "date_txt": "04/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 23,
-   "mark": ""
   }
  },
  {
@@ -702,28 +531,11 @@
   "kindKey": "tv",
   "title_fr": "",
   "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-10-11",
-  "date_txt": "11/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
   "date_txt_fr": "",
   "ep": {
-   "s": 6,
-   "e": 24,
-   "mark": ""
+   "s": 1,
+   "e": 1,
+   "mark": "premiere"
   }
  },
  {
@@ -741,7 +553,12 @@
   "kindKey": "tv",
   "title_fr": "",
   "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 1,
+   "mark": "premiere"
+  }
  },
  {
   "universe": "starwars",
@@ -759,28 +576,6 @@
   "title_fr": "",
   "date_sort_fr": "",
   "date_txt_fr": ""
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-10-18",
-  "date_txt": "18/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 25,
-   "mark": ""
-  }
  },
  {
   "universe": "starwars",
@@ -851,28 +646,6 @@
   "date_txt_fr": "21/10/2026"
  },
  {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-10-25",
-  "date_txt": "25/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 26,
-   "mark": ""
-  }
- },
- {
   "universe": "starwars",
   "title": "Rogue One - Darth Vader 1",
   "date_sort": "2026-10-28",
@@ -890,160 +663,6 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-11-01",
-  "date_txt": "01/11/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 27,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-11-08",
-  "date_txt": "08/11/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 28,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-11-15",
-  "date_txt": "15/11/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 29,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-11-22",
-  "date_txt": "22/11/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 30,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-11-29",
-  "date_txt": "29/11/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 31,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-12-06",
-  "date_txt": "06/12/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 32,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-12-13",
-  "date_txt": "13/12/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 33,
-   "mark": ""
-  }
- },
- {
   "universe": "marvel",
   "title": "Avengers: Doomsday",
   "date_sort": "2026-12-18",
@@ -1059,72 +678,6 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026"
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-12-20",
-  "date_txt": "20/12/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 34,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-12-27",
-  "date_txt": "27/12/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 35,
-   "mark": ""
-  }
- },
- {
-  "universe": "startrek",
-  "title": "A Captain's Log",
-  "date_sort": "2026-12-27",
-  "date_txt": "27/12/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 6,
-   "e": 36,
-   "mark": "finale"
-  }
  },
  {
   "universe": "starwars",
