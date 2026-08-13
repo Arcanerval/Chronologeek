@@ -6,13 +6,15 @@
 // silencieusement le référencement de dix-huit pages — rien ne casserait, et
 // le site disparaîtrait des résultats.
 //
-// Ce script fait donc trois choses, et rien d'autre :
+// Ce script fait donc quatre choses, et rien d'autre :
 //   1. il pose sur chaque proto son référencement — titre, description, Open
 //      Graph, hreflang, canonique — repris de `_proto/seo.json` ;
 //   2. il réécrit les liens de maquette vers les vraies URL du site, dans le
 //      HTML comme dans les données ;
 //   3. il rebranche la PWA (manifeste, icônes, service worker) et la mesure
-//      d'audience, que les protos n'avaient pas.
+//      d'audience, que les protos n'avaient pas ;
+//   4. il retire l'échafaudage de maquette — le bouton « proto : simuler une
+//      progression » et son gréement — et sort en erreur s'il en reste.
 //
 // Ce qu'il ne fait pas : lire les pages du site. Elles sont sa sortie, et un
 // script qui se relit lui-même ne retrouve plus rien.
@@ -183,6 +185,42 @@ function recabler(texte, ou, problemes) {
   return out;
 }
 
+/* ── L'échafaudage de maquette ──────────────────────────────────────────── */
+
+// Les protos de l'accueil et de la liste des Dossiers portent un bouton
+// « proto : simuler une progression » : il remplit le HUD de valeurs inventées
+// pour qu'on puisse voir la page autrement qu'à zéro. Il n'avait rien à faire
+// en production, et il y est passé quatre fois — publier.mjs recopiait le proto
+// tel quel.
+//
+// Il ne fait pas un bloc mais quatre zones disjointes : la règle CSS, le bouton
+// du pied de page, la variable `fake` avec sa dérivation au milieu du vrai
+// calcul, et le gestionnaire de clic. Les deux dernières sont solidaires :
+// retirer le bouton sans son gestionnaire ferait lever `addEventListener of
+// null`, `paint()` ne tournerait jamais, et le HUD resterait à zéro sans une
+// ligne dans la console.
+//
+// D'où des marqueurs posés dans le proto plutôt que des motifs devinés ici —
+// même geste que les `i18n-off` / `i18n-on` de traduire-pages.mjs, qui ne
+// touche ni au CSS ni aux commentaires : les marqueurs traversent donc la
+// génération de l'anglais sans qu'on ait à les reposer.
+const ECHAFAUDAGE = [
+  /[ \t]*<!--\s*echafaudage-debut\s*-->[\s\S]*?<!--\s*echafaudage-fin\s*-->[ \t]*\r?\n?/g,
+  /[ \t]*\/\*[^*]*echafaudage-debut[\s\S]*?echafaudage-fin\s*\*\/[ \t]*\r?\n?/g,
+];
+
+// Ce qui doit avoir disparu. Le marqueur resté en place compte autant que le
+// bouton : il dit qu'une paire s'est décrochée, et un retrait qui échoue en
+// silence est exactement ce qu'on cherche à empêcher.
+const TRACES = [
+  [/class="demo"/, 'bouton de maquette'],
+  [/\bid="demo"/, 'bouton de maquette'],
+  [/getElementById\((['"])demo\1\)/, 'gestionnaire du bouton de maquette'],
+  [/(^|[\s,}])\.demo\s*[{:,]/m, 'règle CSS .demo'],
+  [/\bvar fake\b/, 'variable d\'échafaudage `fake`'],
+  [/echafaudage-(debut|fin)/, 'marqueur d\'échafaudage non apparié'],
+];
+
 /* ── Transformation d'un proto ──────────────────────────────────────────── */
 
 const problemes = [];
@@ -203,7 +241,16 @@ function publier(route, langue) {
   h = h.replace(/[ \t]*<meta name="robots"[^>]*noindex[^>]*>\r?\n?/gi, '');
   if (/noindex/.test(h)) problemes.push(`${c.sortie} : noindex encore présent`);
 
-  // 2. PWA et icônes, juste après le charset
+  // 2. l'échafaudage de maquette ne va pas en production
+  let retires = 0;
+  for (const re of ECHAFAUDAGE) {
+    h = h.replace(re, () => { retires++; return ''; });
+  }
+  for (const [re, quoi] of TRACES) {
+    if (re.test(h)) problemes.push(`${c.sortie} : échafaudage encore présent — ${quoi}`);
+  }
+
+  // 3. PWA et icônes, juste après le charset
   // Le proto est en CRLF : chercher « /> » suivi de « \n » ne trouve rien,
   // le \r s'intercale. Même piège que le noindex ci-dessus.
   const avantPwa = h;
@@ -213,23 +260,23 @@ function publier(route, langue) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
   }
 
-  // 3. titre et référencement à la place du titre de maquette
+  // 4. titre et référencement à la place du titre de maquette
   const bloc = blocSeo(seo, route.en.url, route.fr.url, c.url);
   const avantTitre = h;
   h = h.replace(/<title>[\s\S]*?<\/title>/, () => bloc);
   if (h === avantTitre) problemes.push(`${c.sortie} : <title> introuvable`);
 
-  // 4. les liens de maquette deviennent les URL du site, les données et le
+  // 5. les liens de maquette deviennent les URL du site, les données et le
   //    moteur prennent leur nom de production
   h = recabler(h, c.sortie, problemes);
 
-  // 5. service worker et mesure d'audience
+  // 6. service worker et mesure d'audience
   h = h.replace(/(\r?\n)<\/body>/, `$1${PIED}$1</body>`);
   if (!h.includes('/pwa.js')) problemes.push(`${c.sortie} : pied de page non injecté`);
 
   if (h === avant) problemes.push(`${c.sortie} : aucune transformation appliquée`);
 
-  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length });
+  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires });
   if (!CHECK) ecrire(c.sortie, h);
 }
 
@@ -259,7 +306,8 @@ if (!CHECK) writeFileSync(join(RACINE, MANIFESTE), JSON.stringify(table, null, 2
 /* ── Bilan ──────────────────────────────────────────────────────────────── */
 
 console.log(CHECK ? '— contrôle, rien n’est écrit —\n' : '— publication —\n');
-for (const b of bilan) console.log(`  ${b.sortie.padEnd(34)} ${String(b.octets).padStart(7)} o   ${b.titre}`);
+for (const b of bilan) console.log(`  ${b.sortie.padEnd(34)} ${String(b.octets).padStart(7)} o   ` +
+  `${b.retires ? `[${b.retires} bloc(s) d'échafaudage retiré(s)] ` : ''}${b.titre}`);
 console.log('');
 for (const c of copies) console.log(`  ${c.dest.padEnd(34)} ${String(c.octets).padStart(7)} o`);
 console.log(`\n  ${bilan.length} pages, ${copies.length} fichiers de données.`);

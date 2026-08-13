@@ -213,7 +213,7 @@ du script concerné, puis relancer.
 
 ## La publication
 
-`node _proto/publier.mjs` fait trois choses, et rien d'autre.
+`node _proto/publier.mjs` fait quatre choses, et rien d'autre.
 
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
@@ -232,6 +232,36 @@ morts qu'aucune lecture de page ne montre.
 
 **3. La PWA et l'audience.** Manifeste, icônes, `theme-color`, `pwa.js`,
 GoatCounter : les protos n'en avaient rien.
+
+**4. L'échafaudage de maquette.** L'accueil et la liste des Dossiers portent un
+bouton « proto : simuler une progression » qui remplit le HUD de valeurs
+inventées, pour qu'on puisse voir la page autrement qu'à zéro. Il était en
+production sur les quatre pages produites depuis `e-accueil.html` et
+`e-dossiers.html` — la publication recopiait le proto tel quel.
+
+Ce n'est pas un bloc mais **cinq zones disjointes** par page : la règle CSS
+`.demo`, le bouton du pied de page, `var fake=null;`, la dérivation
+`if(fake) return …` posée au milieu du vrai calcul, et le gestionnaire de clic.
+Les deux dernières sont solidaires du bouton : le retirer sans son gestionnaire
+ferait lever `addEventListener of null`, `paint()` ne tournerait jamais, et le
+HUD resterait à zéro sans une ligne dans la console.
+
+D'où des **marqueurs posés dans le proto** plutôt que des motifs devinés dans le
+script — `echafaudage-debut` / `echafaudage-fin`, dans un commentaire HTML, CSS
+ou JS selon l'endroit, même geste que les `i18n-off` / `i18n-on` de
+`traduire-pages.mjs`. Celui-ci ne touche ni au CSS ni aux commentaires : les
+marqueurs traversent la génération de l'anglais sans qu'on ait à les reposer
+dans les `en-*`. Ils tiennent tous sur des lignes existantes, pour que
+`py sync.py check` continue de voir le même nombre de lignes des deux côtés.
+
+Le garde-fou est dans `TRACES` : la publication sort en erreur si `class="demo"`,
+`id="demo"`, `getElementById('demo')`, une règle `.demo`, `var fake` ou un
+marqueur non apparié survit dans une page produite. Le bilan annonce le nombre
+de blocs retirés par page — cinq sur chacune des quatre — parce qu'un retrait
+qui échoue en silence est exactement ce qu'on cherche à empêcher.
+
+Tout nouvel échafaudage se pose donc entre marqueurs, et rien n'est à changer
+dans `publier.mjs`.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être

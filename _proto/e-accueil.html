@@ -284,10 +284,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .hud .bar i{position:absolute;inset:0;background:var(--cleared);transform:scaleX(0);
   transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
 
-/* échafaudage de proto, hors design : voir la page avec de la progression */
+/* echafaudage-debut — hors design : voir la page avec de la progression */
 .demo{border:0;background:none;color:rgba(255,253,247,.42);font:inherit;font-size:11px;
   text-transform:uppercase;letter-spacing:.1em;cursor:pointer;text-decoration:underline;padding:4px}
-.demo:hover{color:var(--paper)}
+.demo:hover{color:var(--paper)}/* echafaudage-fin */
 
 @media(max-width:1080px){
   .nav-links{display:none}
@@ -521,7 +521,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ;
       Chronologeek est un projet de fan indépendant.
       <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
-      · <button class="demo" id="demo" type="button">proto : simuler une progression</button>
+      <!--echafaudage-debut--> · <button class="demo" id="demo" type="button">proto : simuler une progression</button><!--echafaudage-fin-->
     </div>
   </div>
 </footer>
@@ -544,10 +544,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multivers',avatar:'Avatar',startrek:'Star Trek'};
   var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
   var body=document.body, attract=document.getElementById('attract');
-  var fake=null;   /* progression simulée, échafaudage de proto uniquement */
+  /* echafaudage-debut */ var fake=null; /* echafaudage-fin */
 
   function read(u){
-    if(fake) return fake[u]||0;
+    /* echafaudage-debut */ if(fake) return fake[u]||0; /* echafaudage-fin */
     try{ return Object.keys(JSON.parse(localStorage.getItem('cg_'+u)||'{}')).length; }
     catch(e){ return 0; }
   }
@@ -644,12 +644,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
   });
 
-  /* ── échafaudage : voir la page avec de la progression ─────────── */
+  /* ── echafaudage-debut : voir la page avec de la progression ──── */
   document.getElementById('demo').addEventListener('click',function(){
     fake=fake?null:{sw:23,mcu:71,dc:9};
     this.textContent=fake?'proto : revenir à zéro':'proto : simuler une progression';
     paint();
-  });
+  });/* echafaudage-fin */
 
   focusOn(slots[0]);
   paint();
