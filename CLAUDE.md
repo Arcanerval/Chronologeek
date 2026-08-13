@@ -102,6 +102,14 @@ film d'animation du Tomorrowverse, hors du périmètre du guide DC, qui suit les
 Elseworlds, l'Arrowverse, le DCEU et le DCU. Le motif `\bknightfall\b` attrape les
 deux parties annoncées.
 
+Deux exclusions du 13 août 2026. `\bpodcast\b` est dans la clé `*`, donc pour tous
+les univers : **Lanterns: The Official Podcast** n'est pas la série Lanterns, c'est
+l'émission qui en parle, et TMDB la range parmi les séries — elle arrivait au radar
+à côté de la vraie. Aucun des cinq guides ne suit de podcast. Et côté Star Wars,
+`\bthe book of boba fett \d` écarte le **comic** qui adapte la série chapitre par
+chapitre : quatre numéros au radar pour une série déjà au guide. Le chiffre suffit à
+les distinguer, la série n'en portant pas.
+
 Retirer une entrée de `radar.json` à la main ne suffit pas : le fichier est régénéré
 chaque jour. C'est dans `EXCLUDE` que l'exclusion doit vivre — le JSON n'est nettoyé
 en plus que pour ne pas attendre le lendemain.
@@ -129,12 +137,44 @@ quiconque ait posé le mot-clé sur sa fiche. La recherche par titre exige que l
 titre commence par « Star Trek » — sans quoi elle ramène les documentaires et les
 hommages, et « The Center Seat: 55 Years of Star Trek » n'est pas un épisode.
 
-Les épisodes ne s'obtiennent pas par `/discover` : il faut la fiche de la série,
-puis la saison de son `next_episode_to_air`, ce qui rend la grille sur plusieurs
-semaines au lieu du seul épisode suivant. Une fiche coûte deux requêtes — une par
-langue — donc on ne la demande que pour les séries dont la première diffusion a
-moins de trois ans (`ST_FRAICHEUR`). *The Original Series* n'a pas de prochain
-épisode.
+### Les épisodes, semaine par semaine
+
+Une série qui diffuse n'est plus une sortie : sa date de première est passée, et
+`/discover`, qui filtre sur `first_air_date`, ne la voit donc plus. Ses épisodes,
+eux, sortent chaque semaine — et c'est ce qu'un radar doit annoncer. Les cinq
+univers les ont depuis le **13 août 2026** ; seul Star Trek en avait, et
+`TRACKED_SHOWS`, la liste d'ids à tenir à la main, a disparu avec.
+
+Trois fonctions, partagées par `source_tmdb` et `source_startrek` :
+
+- `tmdb_series_qui_diffusent()` — le seul filtre de `/discover/tv` qui retrouve
+  une série au milieu de sa saison est **`air_date`**, qui porte sur les épisodes
+  là où `first_air_date` porte sur la série.
+- `tmdb_saison()` — la saison dans les deux langues, appariée par **numéro
+  d'épisode**, jamais par rang dans la liste.
+- `tmdb_episodes()` — la fiche de la série donne la saison en cours
+  (`next_episode_to_air`), puis la saison entière rend la grille sur plusieurs
+  semaines au lieu du seul épisode suivant. Une fiche coûte deux requêtes, une par
+  langue ; Star Trek ne la demande donc que pour les séries dont la première a
+  moins de trois ans (`ST_FRAICHEUR`). *The Original Series* n'a pas de prochain
+  épisode.
+
+Chaque épisode porte `ep:{s,e,mark}`, et cette clé n'existe que là — la poser à
+`null` sur les huit cents autres entrées n'apprendrait rien à la page. `mark` vaut
+`premiere` au premier épisode, `finale` au dernier, et `""` entre les deux. La page
+en tire une pastille à contour : verte avec un triangle, orange avec un drapeau,
+et le numéro écrit `S2E05` dans les deux langues.
+
+Deux pièges qui ont chacun leur garde-fou dans `tmdb_episodes()` :
+
+- **Une saison n'est pas toujours listée en entier.** Si TMDB annonce dix épisodes
+  et n'en donne que quatre, le dernier connu est un épisode du milieu, et il
+  sortirait marqué « finale ». Le repère n'est posé que si `episode_count` de la
+  fiche vaut le nombre d'épisodes rendus.
+- **Une série neuve s'annonce deux fois.** Elle arrive par `first_air_date` comme
+  « Série », et son S1E1 arrive par `air_date` le même jour et sous le même nom :
+  deux cartes pour une seule sortie. `sauf_le` écarte l'épisode qui tombe le jour
+  de la première.
 
 ### Les dates du radar
 
@@ -709,7 +749,8 @@ et la majuscule initiale quand on découpe une phrase.
   (`.demo`), sur l'accueil et sur la page des Dossiers, dans les deux langues.
   `publier.mjs` le recopie tel quel — il devrait le retirer et refuser de laisser
   passer, comme il le fait déjà pour `noindex`.
-- La source Star Trek du radar n'a **jamais tourné en vrai** : `TMDB_KEY` vit dans
-  un secret GitHub, et la mise au point s'est faite contre un faux TMDB. Le premier
-  passage de `radar.yml` est le vrai contrôle — lire son journal, section
-  « Star Trek ».
+- La source Star Trek du radar et la lecture des épisodes n'ont **jamais tourné en
+  vrai** : `TMDB_KEY` vit dans un secret GitHub, et la mise au point s'est faite
+  contre un faux TMDB. Le premier passage de `radar.yml` est le vrai contrôle —
+  lire son journal, section « Star Trek », et le compte d'épisodes que chaque
+  univers affiche désormais dans sa ligne « TMDB ».

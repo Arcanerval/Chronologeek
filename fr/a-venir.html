@@ -262,6 +262,15 @@ details>summary.hd::-webkit-details-marker{display:none}
   padding:2px 8px;color:var(--c);border:1px solid var(--c)}
 .era{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
+/* le repère d'épisode : S2E05, et la pastille des deux épisodes qui comptent.
+   Contour plutôt qu'aplat — le pavé plein est déjà pris par le support. */
+.ep{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;
+  letter-spacing:.11em;text-transform:uppercase;font-variant-numeric:tabular-nums;
+  padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
+.ep svg{width:9px;height:9px;fill:currentColor;flex:0 0 auto}
+.ep b{font-weight:700;letter-spacing:.09em}
+.ep.premiere{color:#7ed6a5;border-color:#7ed6a5}
+.ep.finale{color:#f0956a;border-color:#f0956a}
 .ti{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:22px;
   line-height:1.02;text-transform:uppercase}
 /* le compte à rebours : le cadran de la borne, à droite de chaque ligne */
@@ -647,6 +656,30 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   /* i18n-on */
 
+  /* i18n-off — le repère d'épisode, dans la langue de la page.
+
+     `radar.py` pose `ep:{s,e,mark}` sur les seules entrées d'épisode :
+     la saison, le numéro, et « premiere » ou « finale » quand l'épisode
+     ouvre ou ferme sa saison. Comme le titre et la date, ces mots-là
+     sont choisis ici : radar.json sert les deux langues.
+
+     Le numéro s'écrit S2E05 des deux côtés — c'est la notation d'usage,
+     elle ne se traduit pas. */
+  var EP_MOT = FR ? {premiere:'Première',finale:'Finale'}
+                  : {premiere:'Premiere',finale:'Finale'};
+  var EP_PICTO = {
+    premiere:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.4 2.1 13.2 8l-8.8 5.9Z"/></svg>',
+    finale:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 1.4h1.6v13.2H2.6zM5.3 2.2h8.1l-2.2 3.4 2.2 3.4H5.3z"/></svg>'
+  };
+  function epNum(p){ return 'S'+p.s+'E'+(p.e<10?'0':'')+p.e; }
+  function epTag(e){
+    var p=e.ep; if(!p) return '';
+    var m=EP_MOT[p.mark]||'';
+    return '<span class="ep'+(m?' '+p.mark:'')+'">'+
+      (m?EP_PICTO[p.mark]+'<b>'+m+'</b>':'')+epNum(p)+'</span>';
+  }
+  /* i18n-on */
+
   function row(e){
     var u=UNI[e.universe]||['—','var(--soon)'], k=keyOf(e), kk=KIND[k]||KIND.other;
     var d=iso(e), dt=new Date(d+'T00:00:00'), n=days(d);
@@ -667,6 +700,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<span class="tags">'+
           '<span class="u">'+u[0]+'</span>'+
           '<span class="b" style="--k:'+kk[1]+'">'+kk[0]+'</span>'+
+          epTag(e)+
           (e.era?'<span class="era">'+esc(e.era)+'</span>':'')+
         '</span>'+
         '<span class="ti">'+esc(t)+'</span>'+
@@ -684,7 +718,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
     return '<li class="rel rv'+(n<=0?' today':'')+'" style="--c:'+u[1]+'"'+
       ' data-u="'+e.universe+'" data-k="'+k+'" data-d="'+d+'"'+
-      ' data-q="'+esc((t+' '+e.title+' '+u[0]+' '+kk[0]).toLowerCase()).replace(/"/g,'')+'">'+
+      ' data-q="'+esc((t+' '+e.title+' '+u[0]+' '+kk[0]+
+        (e.ep?' '+epNum(e.ep)+' '+(EP_MOT[e.ep.mark]||''):'')).toLowerCase())
+        .replace(/"/g,'')+'">'+
       '<span class="day"><b>'+parseInt(d.slice(8),10)+'</b><span>'+JOURS[dt.getDay()]+'</span></span>'+
       card+'</li>';
   }

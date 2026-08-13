@@ -64,8 +64,13 @@ EXCLUDE = {
     "avatar":   [r"noveli[sz]ation", r"a novel based on",
                  r"\(avatar aang: the last airbender\)",
                  r"junior novel"],
-    # Visions Presents – The Ninth Jedi n'est pas canon.
-    "starwars": [r"\blego\b", r"noveli[sz]ation", r"the ninth jedi"],
+    # Visions Presents – The Ninth Jedi n'est pas canon. « The Book of Boba
+    # Fett 1 » et les suivants ne sont pas non plus des sorties : c'est le
+    # comic qui adapte la série, chapitre par chapitre, et la série est déjà
+    # au guide. Le chiffre du numéro suffit à les distinguer — la série,
+    # elle, n'en porte pas.
+    "starwars": [r"\blego\b", r"noveli[sz]ation", r"the ninth jedi",
+                 r"\bthe book of boba fett \d"],
     "marvel":   [r"\blego\b"],
     # Batman: Knightfall est un film d'animation du Tomorrowverse, hors du
     # périmètre du guide : la timeline DC suit les Elseworlds, l'Arrowverse,
@@ -80,7 +85,11 @@ EXCLUDE = {
     # et les making-of parmi les films ; ces motifs restent le garde-fou.
     "startrek": [r"\blego\b", r"\bidw\b", r"blu-ray", r"\bdvd\b",
                  r"\bissue \d", r"noveli[sz]ation"],
-    "*":        [],
+    # « Lanterns: The Official Podcast » n'est pas la série Lanterns : c'est
+    # l'émission qui en parle, interviews de l'équipe à l'appui. TMDB la range
+    # parmi les séries, et elle arrivait donc au radar à côté de la vraie.
+    # Aucun des cinq guides ne suit de podcast — le motif vaut pour tous.
+    "*":        [r"\bpodcast\b"],
 }
 
 # Avatar : seuls ces types de médias nous intéressent (le reste = goodies).
@@ -93,11 +102,6 @@ AVATAR_DROP = ("video game", "ttrpg", "coloring", "colouring", "color-by",
                "activity", "artbook", "scrapbook", "amigurumi", "pop-up",
                "audio drama", "website", "encyclopedia", "dictionary",
                "handbook", "miscellaneous", "tonie")
-
-# Séries en cours à surveiller : prochain épisode (id TMDB -> univers)
-TRACKED_SHOWS = {
-    # exemple : 202555: "marvel",
-}
 
 results = []      # {universe, title, date_txt, date_sort, kind, source}
 report  = []      # lignes de diagnostic
@@ -169,7 +173,7 @@ def tmdb_country_dates(base, movie_id):
     return out
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr="", date_sort_fr="", date_txt_fr=""):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr="", date_sort_fr="", date_txt_fr="", ep=None):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
@@ -180,7 +184,7 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
         if re.search(pat, blob, re.I):
             excluded.append(f"{universe}: {title}")
             return
-    results.append({
+    entry = {
         "universe": universe, "title": title, "date_sort": date_sort,
         "date_txt": date_txt, "kind": kind or "", "source": source,
         "precision": precision, "era": era, "syn": syn, "wiki": wiki,
@@ -188,7 +192,13 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
         # Date de sortie française quand elle diffère. Vide = mêmes dates,
         # l'affichage retombe alors sur date_sort / date_txt.
         "date_sort_fr": date_sort_fr, "date_txt_fr": date_txt_fr,
-    })
+    }
+    # Saison, numéro et repère d'un épisode. Absent partout ailleurs : une
+    # clé posée à `null` sur les huit cents autres entrées n'apprendrait rien
+    # à la page et pèserait dans radar.json.
+    if ep:
+        entry["ep"] = ep
+    results.append(entry)
 
 
 # ────────────────────────────────────────── SOURCE 1 : TMDB
@@ -215,6 +225,118 @@ def tmdb_company_ids(name):
         return []
 
 
+# ─────────────────────────── Les épisodes des séries qui diffusent déjà
+# Une série en cours n'est plus une « sortie » : sa première est passée, et
+# /discover, qui filtre sur `first_air_date`, ne la voit donc plus. Ses
+# épisodes, eux, sortent chaque semaine — et c'est ce qu'un radar doit dire.
+#
+# TMDB ne les donne pas dans /discover : il faut la fiche de la série pour
+# savoir quelle saison diffuse (`next_episode_to_air`), puis la saison entière
+# pour en avoir la grille sur plusieurs semaines au lieu du seul suivant. Une
+# saison coûte deux requêtes, une par langue.
+
+
+def tmdb_series_qui_diffusent(base, joined):
+    """Les séries d'une société dont un épisode reste à venir : {id: nom}.
+
+    `air_date` porte sur les épisodes là où `first_air_date` porte sur la
+    série : c'est le seul filtre de /discover qui retrouve une série au
+    milieu de sa saison."""
+    out = {}
+    for page in (1, 2, 3):
+        try:
+            r = requests.get(base + "/discover/tv", timeout=25, headers=UA, params={
+                "api_key": TMDB_KEY, "with_companies": joined,
+                "air_date.gte": TODAY.isoformat(),
+                "air_date.lte": HORIZON.isoformat(),
+                "sort_by": "first_air_date.desc",
+                "language": "en-US", "include_adult": "false", "page": page,
+            })
+            r.raise_for_status()
+            j = r.json()
+        except Exception as e:
+            log(f"Épisodes  : séries en diffusion — {e}")
+            return out
+        for it in j.get("results", []):
+            out[it.get("id")] = it.get("name") or it.get("original_name") or ""
+        if page >= j.get("total_pages", 1):
+            break
+    return out
+
+
+def tmdb_saison(base, serie_id, saison):
+    """Les épisodes d'une saison : (liste anglaise, {numéro: fiche française}).
+
+    Les deux appels sont la même requête à `language` près, et l'appariement
+    se fait par numéro d'épisode — jamais par rang dans la liste."""
+    def une(lang):
+        r = requests.get(f"{base}/tv/{serie_id}/season/{saison}", timeout=25,
+                         headers=UA, params={"api_key": TMDB_KEY, "language": lang})
+        r.raise_for_status()
+        return r.json()
+    en = une("en-US")
+    try:
+        fr = {e.get("episode_number"): e for e in une("fr-FR").get("episodes", [])}
+    except Exception:
+        fr = {}
+    return en.get("episodes") or [], fr
+
+
+def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
+    """Ajoute au radar les prochains épisodes d'une série. Renvoie le compte."""
+    try:
+        r = requests.get(f"{base}/tv/{serie_id}", timeout=25, headers=UA,
+                         params={"api_key": TMDB_KEY, "language": "en-US"})
+        r.raise_for_status()
+        fiche = r.json()
+    except Exception as e:
+        log(f"Épisodes  : fiche de {nom} — {e}")
+        return 0
+    saison = (fiche.get("next_episode_to_air") or {}).get("season_number")
+    if saison is None:                      # plus rien à diffuser
+        return 0
+    try:
+        eps, fr = tmdb_saison(base, serie_id, saison)
+    except Exception as e:
+        log(f"Épisodes  : saison {saison} de {nom} — {e}")
+        return 0
+    if not eps:
+        return 0
+    # Le dernier numéro connu ne fait une finale que si la saison est
+    # complète : TMDB n'en liste parfois qu'une partie, et un épisode du
+    # milieu se retrouverait alors annoncé comme la fin de la saison.
+    attendus = next((s.get("episode_count") for s in (fiche.get("seasons") or [])
+                     if s.get("season_number") == saison), None)
+    dernier = max(e.get("episode_number") or 0 for e in eps) \
+        if (attendus is None or attendus == len(eps)) else 0
+
+    n = 0
+    for e in eps:
+        d = parse_iso(e.get("air_date") or "")
+        if not d or d < TODAY or d > HORIZON:
+            continue
+        # La première d'une série neuve est déjà annoncée par la série
+        # elle-même, le même jour et sous le même nom : deux cartes pour une
+        # seule sortie.
+        if sauf_le and d == sauf_le:
+            continue
+        num = e.get("episode_number") or 0
+        f = fr.get(num) or {}
+        titre, titre_fr = (e.get("name") or "").strip(), (f.get("name") or "").strip()
+        add(uni,
+            f'{nom} — "{titre}"' if titre else f"{nom} — S{saison}E{num}",
+            d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB",
+            syn=(e.get("overview") or "").strip(),
+            syn_fr=(f.get("overview") or "").strip(),
+            title_fr=(f"{nom} — « {titre_fr} »" if titre_fr else ""),
+            ep={"s": saison, "e": num,
+                "mark": "premiere" if num == 1
+                        else "finale" if dernier > 1 and num == dernier
+                        else ""})
+        n += 1
+    return n
+
+
 def source_tmdb():
     if not TMDB_KEY:
         log("TMDB      : ⚠ pas de clé (secret TMDB_KEY absent)")
@@ -231,6 +353,7 @@ def source_tmdb():
             continue
         joined = "|".join(str(i) for i in ids)      # | = OU chez TMDB
         found = 0
+        debuts = {}          # id TMDB -> date de première, pour les séries neuves
         for kind, path, datefield in (
             ("Film",  "/discover/movie", "primary_release_date"),
             ("Série", "/discover/tv",    "first_air_date"),
@@ -293,28 +416,23 @@ def source_tmdb():
                             title_fr=fr.get(it.get("id"), ("", ""))[1],
                             date_sort_fr=(d_fr.isoformat() if d_fr and d_fr != d else ""),
                             date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""))
+                        if kind == "Série":
+                            debuts[it.get("id")] = d
                         found += 1
                     if page >= j.get("total_pages", 1):
                         break
                 except Exception as e:
                     log(f"TMDB      : erreur {uni} ({kind}) — {e}")
                     break
-        log(f"TMDB      : {uni} — sociétés {joined} → {found} entrée(s)")
+        # Puis les épisodes, série par série. `debuts` évite de doubler la
+        # première d'une série neuve, déjà annoncée juste au-dessus.
+        eps = 0
+        for sid, snom in tmdb_series_qui_diffusent(base, joined).items():
+            eps += tmdb_episodes(base, uni, sid, snom, sauf_le=debuts.get(sid))
+        found += eps
+        log(f"TMDB      : {uni} — sociétés {joined} → {found} entrée(s), "
+            f"dont {eps} épisode(s)")
         total += found
-    for show_id, uni in TRACKED_SHOWS.items():
-        try:
-            r = requests.get(f"{base}/tv/{show_id}", timeout=25, headers=UA,
-                             params={"api_key": TMDB_KEY, "language": "en-US"})
-            r.raise_for_status()
-            j = r.json()
-            nxt = j.get("next_episode_to_air") or {}
-            d = parse_iso(nxt.get("air_date") or "")
-            if d and d >= TODAY:
-                add(uni, f"{j.get('name')} — S{nxt.get('season_number')}E{nxt.get('episode_number')}",
-                    d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB")
-                total += 1
-        except Exception as e:
-            log(f"TMDB      : erreur série {show_id} — {e}")
     log(f"TMDB      : {total} entrée(s) au total")
 
 
@@ -655,39 +773,6 @@ def st_catalogue(base, kw_ids):
     return films, series
 
 
-def st_episodes(base, serie_id, nom, saison):
-    """Les épisodes datés d'une saison, à venir seulement.
-
-    `next_episode_to_air` ne donne que le suivant ; le portail Memory Alpha
-    annonçait la grille sur plusieurs semaines. La saison entière la rend."""
-    out = []
-    try:
-        en, _ = _st_get(base, f"/tv/{serie_id}/season/{saison}")
-        try:
-            r = requests.get(f"{base}/tv/{serie_id}/season/{saison}", timeout=25,
-                             headers=UA, params={"api_key": TMDB_KEY, "language": "fr-FR"})
-            r.raise_for_status()
-            fr = {e.get("episode_number"): e for e in r.json().get("episodes", [])}
-        except Exception:
-            fr = {}
-    except Exception as e:
-        log(f"Star Trek : saison {saison} de {nom} — {e}")
-        return out
-    for ep in en.get("episodes", []):
-        d = parse_iso(ep.get("air_date") or "")
-        if not d or d < TODAY or d > HORIZON:
-            continue
-        f = fr.get(ep.get("episode_number")) or {}
-        # Le titre dit d'un coup la série et l'épisode : une carte de radar
-        # n'a que sa ligne de titre pour se faire comprendre. C'est la forme
-        # qu'avait déjà Memory Alpha, gardée telle quelle.
-        titre = ep.get("name") or f'S{ep.get("season_number")}E{ep.get("episode_number")}'
-        out.append((f'{nom} — "{titre}"', d,
-                    (ep.get("overview") or "").strip(),
-                    (f.get("overview") or "").strip()))
-    return out
-
-
 def source_startrek():
     if not TMDB_KEY:
         log("Star Trek : ⚠ pas de clé (secret TMDB_KEY absent)")
@@ -741,22 +826,8 @@ def source_startrek():
         # encore. Une série sans date de début est une annonce sans grille.
         if not debut or (TODAY - debut) > ST_FRAICHEUR:
             continue
-        try:
-            r = requests.get(f"{base}/tv/{it.get('id')}", timeout=25, headers=UA,
-                             params={"api_key": TMDB_KEY, "language": "en-US"})
-            r.raise_for_status()
-            fiche = r.json()
-        except Exception as e:
-            log(f"Star Trek : fiche série {nom} — {e}")
-            continue
-        suivant = fiche.get("next_episode_to_air") or {}
-        saison = suivant.get("season_number")
-        if saison is None:
-            continue
-        for titre, d, syn, syn_fr in st_episodes(base, it.get("id"), nom, saison):
-            add("startrek", titre, d.isoformat(), d.strftime("%d/%m/%Y"),
-                "Épisode", "TMDB", syn=syn, syn_fr=syn_fr)
-            n_ep += 1
+        n_ep += tmdb_episodes(base, "startrek", it.get("id"), nom,
+                              sauf_le=(debut if debut >= TODAY else None))
 
     log(f"Star Trek : {n_film} film(s), {n_serie} série(s), {n_ep} épisode(s) "
         f"— {len(films)} fiche(s) film et {len(series)} fiche(s) série lues")
@@ -1132,9 +1203,13 @@ def render(entries):
         rows = []
         for e in sub:
             col = kind_color(e["kind"])
+            ep = e.get("ep") or {}
+            repere = ({"premiere": "Première", "finale": "Finale"}.get(ep.get("mark"), "")
+                      + (f' S{ep["s"]}E{ep["e"]:02d}' if ep else "")).strip()
             head = (f'<div class="date">{html.escape(e.get("date_txt_fr") or e["date_txt"])}</div>'
                     f'<div class="t">{html.escape(e["title"])}</div>'
-                    f'<div class="meta"><span>{html.escape(e["kind"] or "—")}</span>'
+                    f'<div class="meta"><span>{html.escape(e["kind"] or "—")}'
+                    f'{(" · " + html.escape(repere)) if repere else ""}</span>'
                     f'<span>{html.escape(e["era"] or "")}</span></div>')
             if e.get("syn"):
                 rows.append(
