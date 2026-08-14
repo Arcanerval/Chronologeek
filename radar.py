@@ -379,7 +379,12 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
         # carte qui reste est la seule du radar à ne rien dire de son rang, et
         # « Lanterns » s'annonçait sans sa mention « Première ».
         if sauf_le and d == sauf_le:
-            premier = repere(num)
+            # Le plus PETIT numéro du jour, pas le dernier vu. Une saison
+            # entière peut tomber d'un bloc — *Avatar: Seven Havens* lâche ses
+            # treize épisodes le 09/10 — et la carte de la série annonçait
+            # alors « Finale S1E13 » le jour de sa propre première.
+            if premier is None or num < premier["e"]:
+                premier = repere(num)
             continue
         f = fr.get(num) or {}
         # Le titre de la carte est celui de la SÉRIE, et rien d'autre : la
