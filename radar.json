@@ -1,27 +1,5 @@
 [
  {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds",
-  "date_sort": "2026-08-13",
-  "date_txt": "13/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Una is mistaken for a virtuous kingpin against a Klingon occupation.",
-  "wiki": "",
-  "syn_fr": "On prend Una pour un chef vertueux luttant contre une occupation klingonne.",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 4,
-   "e": 4,
-   "mark": ""
-  }
- },
- {
   "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-08-16",
@@ -534,8 +512,8 @@
   "date_txt_fr": "",
   "ep": {
    "s": 1,
-   "e": 1,
-   "mark": "premiere"
+   "e": 13,
+   "mark": "finale"
   }
  },
  {
