@@ -343,7 +343,24 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .foot{grid-template-columns:1fr 1fr}
 }
 @media(max-width:720px){
-  .foot{grid-template-columns:1fr}
+  /* Le pied tenait 722 px de haut sur un telephone, presque un ecran
+     entier : les deux listes passent cote a cote, le bloc de tete garde
+     la largeur, et tout le reste se resserre. Rien n'est retire. */
+  footer{padding:22px 0 24px}
+  .foot{grid-template-columns:1fr 1fr;gap:15px 18px}
+  .foot>div:first-child{grid-column:1/-1}
+  .foot h4{font-size:16px;margin-bottom:5px}
+  .foot p{font-size:12.5px;line-height:1.45;max-width:none}
+  /* 12,5 px laissaient des cibles de 19 px de haut : un doigt vise
+     24 px. Le rembourrage est vertical, d'ou l'`inline-block` — un
+     lien reste `inline`, et un padding vertical n'y agrandit rien.
+     Il ne vaut que pour les listes : TMDB et Open Library sont au
+     milieu d'une phrase, et l'y appliquer ecartait ses lignes. */
+  .foot li{margin-bottom:0}
+  .foot a{font-size:12.5px}
+  .foot li a{display:inline-block;padding:4px 0}
+  .legal{padding-top:11px;font-size:10.5px;line-height:1.5}
+  .legal a{font-size:10.5px}
   .hud .lbl{display:none}
   .icon-btn{width:44px;height:44px}
   .drawer a{padding:13px 20px}
@@ -483,8 +500,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <div><h4>Plus</h4><ul>
       <li><a href="#">Sorties à venir</a></li>
       <li><a href="/fr/nouveautes">Nouveautés</a></li>
-      <li><a href="#">Soutenir le site</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#contact" data-contact>Contact</a></li>
     </ul></div>
     <div class="legal">
       Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>

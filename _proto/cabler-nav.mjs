@@ -6,9 +6,13 @@
    n'était cliquable ; depuis Star Wars, ni Marvel ni DC. Le menu avait
    l'air complet et ne menait nulle part.
 
-   Deux `#` sont légitimes et le script n'y touche pas :
-   — la page courante, reconnaissable à son `aria-current="page"` ;
-   — « Soutenir le site » et « Contact », qui n'ont pas de page.
+   Un seul `#` est légitime et le script n'y touche pas : la page
+   courante, reconnaissable à son `aria-current="page"`.
+
+   « Soutenir le site » a été retiré du pied le 14 août 2026 — rien
+   n'était branché pour recevoir, et le proposer avant qu'on le demande
+   ne se lit pas bien. « Contact » n'est plus un `#` non plus : il porte
+   `href="#contact"` et son `data-contact` ouvre le formulaire d'e-app.js.
 
    Avatar en faisait partie jusqu'au 8 août 2026 ; `e-avatar.html` existe
    désormais et la carte de l'accueil se déverrouille avec.

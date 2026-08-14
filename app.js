@@ -211,3 +211,194 @@
   if (window.ResizeObserver) new ResizeObserver(pose).observe(bande || hud);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(pose);
 })();
+
+/* ═══ LE FORMULAIRE DE CONTACT ════════════════════════════════════════
+   Le pied de page annonçait « Contact » depuis la refonte et menait à un
+   `#` mort. Le site est statique, publié sur GitHub Pages : il n'a aucun
+   serveur pour recevoir un envoi, et rien de tiers n'est branché. Le
+   formulaire compose donc un `mailto:` — on écrit ici, la messagerie du
+   visiteur envoie. C'est dit sous le bouton, parce qu'un formulaire qui
+   a l'air de partir tout seul et qui ouvre une fenêtre de messagerie
+   passe pour cassé.
+
+   Il reste ouvert après l'envoi : si aucune messagerie n'est installée,
+   il ne se passe rien du tout, et l'adresse écrite juste en dessous est
+   alors le seul recours. Se refermer sur un clic sans effet serait la
+   pire des réponses.
+
+   L'adresse n'est écrite nulle part dans le HTML — elle est recomposée
+   ici. Les moissonneuses ramassent les pages, pas les concaténations.
+
+   Le jour où un vrai envoi sera voulu, il faudra un compte chez un
+   passeur de formulaire (Formspree, Web3Forms) et sa clé ; seul le corps
+   de `envoyer()` change, le reste tient.
+
+   Un seul fichier pour les deux langues, comme la barre d'installation
+   plus haut : on lit `documentElement.lang`.
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var liens = document.querySelectorAll('a[data-contact]');
+  if (!liens.length) return;
+
+  var FR = document.documentElement.lang !== 'en';
+
+  var ADRESSE = ['arcanerval', 'gmail.com'].join('@');
+
+  /* Au-delà, les messageries tronquent le corps sans prévenir : mieux vaut
+     un compteur visible qu'un message coupé en chemin. */
+  var MAX = 1500, SEUIL = 1200;
+
+  var T = FR ? {
+    titre:   'Écrire à Chronologeek',
+    dek:     'Une erreur dans une timeline, une sortie oubliée, une idée : c’est ici.',
+    sujet:   'Sujet',
+    sujets:  ['Une erreur dans une timeline', 'Une sortie manquante',
+              'Une suggestion', 'Autre chose'],
+    message: 'Message',
+    place:   'Votre message…',
+    envoyer: 'Envoyer',
+    note:    'Le bouton ouvre votre messagerie avec le message déjà écrit : rien ne part avant que vous l’envoyiez.',
+    ou:      'Ou écrire directement à',
+    copie:   'Adresse copiée',
+    fermer:  'Fermer'
+  } : {
+    titre:   'Write to Chronologeek',
+    dek:     'An error in a timeline, a release gone missing, an idea: this is the place.',
+    sujet:   'Subject',
+    sujets:  ['An error in a timeline', 'A missing release',
+              'A suggestion', 'Something else'],
+    message: 'Message',
+    place:   'Your message…',
+    envoyer: 'Send',
+    note:    'The button opens your mail app with the message already written: nothing goes out until you send it.',
+    ou:      'Or write straight to',
+    copie:   'Address copied',
+    fermer:  'Close'
+  };
+
+  var CSS = [
+    /* `margin:auto` est ce qui centre un `dialog`, et les vingt pages
+       posent `*{margin:0}` : sans le rappel, la boîte se colle en haut
+       à gauche de l'écran. */
+    '.cx{width:min(560px,calc(100vw - 22px));margin:auto;padding:0;',
+    '  color:var(--paper);background:var(--ink);border:2px solid var(--paper)}',
+    '.cx::backdrop{background:rgba(8,8,15,.74)}',
+    '.cx-in{position:relative;padding:22px 22px 20px}',
+    '.cx h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;',
+    '  font-size:27px;letter-spacing:.03em;text-transform:uppercase;line-height:1;',
+    '  margin:0 38px 7px 0}',
+    '.cx-dek{font-size:13px;line-height:1.45;color:rgba(255,253,247,.72);margin-bottom:17px}',
+    '.cx-f{margin-bottom:13px}',
+    '.cx-f label{display:block;font-family:\'Big Shoulders Display\',sans-serif;',
+    '  font-weight:800;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;',
+    '  color:var(--hot);margin-bottom:5px}',
+    '.cx-f select,.cx-f textarea{display:block;width:100%;font-family:inherit;',
+    '  font-size:14px;color:var(--paper);background:var(--ink);',
+    '  border:2px solid var(--line);padding:9px 10px}',
+    '.cx-f textarea{min-height:132px;resize:vertical;line-height:1.45}',
+    '.cx-f select:focus,.cx-f textarea:focus{outline:none;border-color:var(--hot)}',
+    /* sans ça, Windows peint la liste déroulante en clair sur clair */
+    '.cx-f option{background:var(--ink);color:var(--paper)}',
+    '.cx-cpt{display:block;text-align:right;font-size:11.5px;',
+    '  color:rgba(255,253,247,.5);margin-top:4px}',
+    '.cx-go{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;',
+    '  background:var(--hot);border:2px solid var(--hot);color:var(--ink);padding:8px 22px}',
+    '.cx-go:hover{background:var(--paper);border-color:var(--paper)}',
+    '.cx-note{font-size:11.5px;line-height:1.5;color:rgba(255,253,247,.5);margin-top:9px}',
+    '.cx-alt{border-top:2px solid var(--line);margin-top:16px;padding-top:13px;',
+    '  font-size:12.5px;color:rgba(255,253,247,.6)}',
+    '.cx-mail{font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;',
+    '  background:none;border:none;padding:0;color:var(--paper);text-decoration:underline}',
+    '.cx-mail:hover{color:var(--hot)}',
+    '.cx-ok{color:var(--hot);font-weight:700}',
+    '.cx-x{position:absolute;top:15px;right:15px;background:none;cursor:pointer;',
+    '  border:2px solid var(--line);color:rgba(255,253,247,.6);padding:4px 9px;',
+    '  font-size:13px;line-height:1}',
+    '.cx-x:hover{border-color:var(--paper);color:var(--paper)}',
+    '@media(max-width:520px){',
+    '  .cx-in{padding:18px 16px 16px}',
+    '  .cx h2{font-size:23px}',
+    '  .cx-go{width:100%}',
+    '}'
+  ].join('');
+
+  var boite = null, appelant = null;
+
+  function bati(){
+    if (boite) return boite;
+
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    boite = document.createElement('dialog');
+    boite.className = 'cx';
+    boite.id = 'contact';
+    boite.innerHTML =
+      '<form class="cx-in" novalidate>' +
+        '<button type="button" class="cx-x" aria-label="' + T.fermer + '">✕</button>' +
+        '<h2>' + T.titre + '</h2>' +
+        '<p class="cx-dek">' + T.dek + '</p>' +
+        '<p class="cx-f"><label for="cx-s">' + T.sujet + '</label>' +
+          '<select id="cx-s">' +
+            T.sujets.map(function(s){ return '<option>' + s + '</option>'; }).join('') +
+          '</select></p>' +
+        '<p class="cx-f"><label for="cx-m">' + T.message + '</label>' +
+          '<textarea id="cx-m" maxlength="' + MAX + '" placeholder="' + T.place + '"></textarea>' +
+          '<span class="cx-cpt" hidden></span></p>' +
+        '<button type="submit" class="cx-go">' + T.envoyer + '</button>' +
+        '<p class="cx-note">' + T.note + '</p>' +
+        '<p class="cx-alt">' + T.ou + ' ' +
+          '<button type="button" class="cx-mail">' + ADRESSE + '</button> ' +
+          '<span class="cx-ok" hidden>' + T.copie + '</span></p>' +
+      '</form>';
+    document.body.appendChild(boite);
+
+    var form = boite.querySelector('form');
+    var sel = boite.querySelector('#cx-s');
+    var zone = boite.querySelector('#cx-m');
+    var cpt = boite.querySelector('.cx-cpt');
+
+    zone.addEventListener('input', function(){
+      var n = zone.value.length;
+      cpt.hidden = n < SEUIL;
+      cpt.textContent = n + ' / ' + MAX;
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var corps = zone.value.trim();
+      if (!corps) { zone.focus(); return; }
+      location.href = 'mailto:' + ADRESSE +
+        '?subject=' + encodeURIComponent('Chronologeek — ' + sel.value) +
+        '&body=' + encodeURIComponent(corps);
+    });
+
+    var ok = boite.querySelector('.cx-ok');
+    boite.querySelector('.cx-mail').addEventListener('click', function(){
+      var dit = function(){ ok.hidden = false; setTimeout(function(){ ok.hidden = true; }, 2400); };
+      if (navigator.clipboard) navigator.clipboard.writeText(ADRESSE).then(dit, function(){});
+    });
+
+    boite.querySelector('.cx-x').addEventListener('click', function(){ boite.close(); });
+    /* le fond : la boîte occupe tout le `dialog`, un clic qui l'atteint
+       est donc un clic à côté */
+    boite.addEventListener('click', function(e){ if (e.target === boite) boite.close(); });
+    boite.addEventListener('close', function(){ if (appelant) appelant.focus(); });
+
+    return boite;
+  }
+
+  for (var i = 0; i < liens.length; i++) {
+    liens[i].addEventListener('click', function(e){
+      e.preventDefault();
+      appelant = e.currentTarget;
+      var d = bati();
+      d.showModal();            /* la touche Échap et le piège au clavier viennent avec */
+      d.querySelector('#cx-s').focus();
+    });
+  }
+})();

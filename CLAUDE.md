@@ -328,9 +328,8 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   prod, celui-là même sur lequel `sync.py` s'appuie.
 - `node _proto/cabler-nav.mjs` — remplace les `href="#"` morts des protos par leur
   cible. Les maquettes avaient gardé des liens de démonstration : depuis l'accueil,
-  aucun univers n'était cliquable ; depuis Star Wars, ni Marvel ni DC. Trois `#`
-  restent volontaires — la page courante (`aria-current="page"`), « Soutenir le
-  site » et « Contact ».
+  aucun univers n'était cliquable ; depuis Star Wars, ni Marvel ni DC. Un seul `#`
+  reste volontaire — la page courante (`aria-current="page"`).
 - `node _proto/relecture.mjs` — regroupe dans `A-RELIRE-EN.md` les seules phrases
   qu'il a fallu écrire, contre plusieurs milliers reprises telles quelles. **Ce
   fichier et les trois JSON dont il sort ne sont plus versionnés** (voir
@@ -757,6 +756,49 @@ est encore là, comme pour tout sélecteur.
 `documentElement.lang`. Deux jumeaux se seraient désynchronisés à la première
 retouche du CSS, qui est commun.
 
+### Le pied de page et son formulaire de contact
+
+Le pied faisait **722 px de haut sur un téléphone**, presque un écran entier : une
+seule colonne empilait l'accroche, six liens de timelines, quatre liens « Plus »
+et la mention légale. Sous 720 px, les deux listes passent maintenant côte à côte,
+le bloc de tête garde la largeur entière, et le reste se resserre — **455 px**,
+rien de retiré. La règle qui tenait ça en une ligne
+(`.foot{grid-template-columns:1fr}`) est devenue un bloc de treize, dans chacun
+des dix protos source.
+
+**Une police plus petite rétrécit la cible tactile.** À 12,5 px les liens
+tombaient à 19 px de haut, là où un doigt vise 24. Ils reçoivent un rembourrage
+vertical, et un `display:inline-block` sans lequel il n'agrandirait rien — un
+lien est `inline` par défaut. Le sélecteur est `.foot li a` et non `.foot a` :
+TMDB et Open Library sont au milieu d'une phrase, et l'`inline-block` y gonflait
+les lignes de la mention légale.
+
+**« Soutenir le site » n'est plus là** (14 août 2026) : rien ne recevait derrière,
+et le proposer avant qu'on ait demandé comment payer ne se lit pas bien.
+
+« Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
+les vingt pages partagent. L'écrire dans les protos aurait voulu dire vingt copies
+du même dialogue et de son CSS. Quatre choses à savoir :
+
+- **L'envoi passe par `mailto:`**, faute de serveur : GitHub Pages ne reçoit pas de
+  POST. Le formulaire remplit sujet et corps, la messagerie du visiteur envoie.
+  C'est dit sous le bouton — un formulaire qui a l'air de partir tout seul et qui
+  ouvre une fenêtre de messagerie passe pour cassé. Et le dialogue **reste ouvert**
+  après l'envoi : sans messagerie installée il ne se passe rien du tout, et
+  l'adresse écrite en dessous est alors le seul recours.
+- **L'adresse n'est nulle part dans le HTML** : elle est recomposée en JS. Les
+  moissonneuses ramassent les pages, pas les concaténations.
+- **`margin:auto` est rappelé sur le `<dialog>`.** C'est lui qui centre un dialogue
+  modal, et les vingt pages posent `*{margin:0}` : sans le rappel, la boîte se colle
+  en haut à gauche de l'écran. Rien dans la console, la page marche — elle est juste
+  de travers.
+- **Le lien porte `data-contact` et `href="#contact"`.** L'attribut est ce que le
+  script cherche ; l'ancre évite un `href="#"` de plus. `cabler-nav.mjs` ne voit
+  donc plus qu'un seul `#` légitime, celui de la page courante.
+
+Au-delà de 1 500 signes les messageries tronquent le corps sans prévenir : le champ
+est borné, et un compteur apparaît à partir de 1 200.
+
 ## Niveaux d'importance
 
 `level:"must"` (⭐), `level:"important"` (🚨), `level:"bonus"` (rien).
@@ -807,8 +849,13 @@ et la majuscule initiale quand on découpe une phrase.
 
 ## Ce qui reste à faire
 
-- Monétisation : Patreon ou Ko-fi, pas encore activée. Les deux `href="#"` de
-  « Soutenir le site » et « Contact » attendent ça.
+- Monétisation : rien n'est branché, et « Soutenir le site » a quitté le pied de
+  page le 14 août 2026. Demander avant qu'on ait demandé comment payer ne se lit
+  pas bien. Le lien reviendra le jour où il y aura une page derrière.
+- **Le formulaire de contact envoie par `mailto:`, faute de serveur.** Le site est
+  statique : personne ne peut recevoir un POST. Le vrai envoi demande un compte
+  chez un passeur de formulaire (Formspree, Web3Forms — gratuits à ce volume) et
+  sa clé ; seul le corps de `envoyer()`, dans `_proto/e-app.js`, change alors.
 - **Un univers ajouté se met dans les textes, pas seulement dans le code.** Trois
   endroits énumèrent les cinq : l'accroche de « À venir » (`.dek`), les deux
   titres et les deux descriptions de `seo.json`, et le pied de page de toutes les
