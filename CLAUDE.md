@@ -799,6 +799,44 @@ du même dialogue et de son CSS. Quatre choses à savoir :
 Au-delà de 1 500 signes les messageries tronquent le corps sans prévenir : le champ
 est borné, et un compteur apparaît à partir de 1 200.
 
+## Les images
+
+**Tout est en WebP, à quatre fois la taille où l'image s'affiche.** Le 14 août 2026,
+`images/` pesait 25 Mo pour 207 fichiers, dont **20,8 Mo de vignettes d'entrée** :
+`.bu-fig` les rend dans une case de **190 px de large**, et `thelegendofkorra.png`
+arrivait en 3840×2160. Les données, elles, tiennent en 17 Ko compressés — le poids
+du site n'a jamais été là.
+
+Les largeurs, toutes plafonnées à la taille native (on n'agrandit jamais) :
+
+| ce que c'est | affiché à | fichier |
+|---|---|---|
+| vignette d'entrée (`img` des `data-*.js`) | 190 px | **760 px** |
+| bannière, carte d'accueil, image de partage | 1 240 px | **1 920 px** |
+| bouton « remonter en haut » | 96 à 217 px | 400 à 900 px |
+| `icon-192`, `icon-512`, `icon-maskable-512` | — | **restent en PNG** |
+
+Les trois icônes sont celles du manifeste PWA : il les déclare en `image/png`, et
+elles ne se convertissent pas.
+
+Trois choses apprises en le faisant :
+
+- **Un WebP déjà à la bonne taille ne se retouche pas.** Le ré-encoder dégrade
+  l'image pour rien, et le premier passage a fait *grossir* `autresunivers.webp` de
+  322 à 392 Ko. Le script ne touche un WebP que s'il doit le réduire.
+- **Le renommage traverse toute la chaîne.** 59 fichiers ont changé d'extension,
+  soit 318 références dans les protos source, `seo.json` et `spec-avatar.json` —
+  `img` étant un champ technique, `traduire.mjs` le recopie tel quel et l'anglais
+  suit. Une référence oubliée ne lève rien : l'image manque, c'est tout.
+- **Le contrôle se fait au navigateur, pas au disque.** La moitié des visuels sont
+  posés par le JS au chargement et n'apparaissent nulle part dans le HTML :
+  `document.images` avec `naturalWidth === 0` est ce qui dit qu'une image est morte.
+
+Le script de conversion n'est pas versionné — il ne resservira pas tel quel. Ce qui
+compte est la règle : **une image neuve se pose déjà à sa taille d'affichage ×4, en
+WebP.** Une capture de 4 000 px déposée dans `images/` annule le travail sans que
+rien ne le signale.
+
 ## Niveaux d'importance
 
 `level:"must"` (⭐), `level:"important"` (🚨), `level:"bonus"` (rien).
@@ -878,9 +916,6 @@ et la majuscule initiale quand on découpe une phrase.
   à l'écran ; ce n'est pas fait.
 - Avatar n'a pas de table `RT` : pas de temps de visionnage, donc pas de compteur
   « temps restant » sur sa page. Les trois autres univers en ont une.
-- Images trop lourdes — 21 fichiers de `images/` dépassent 900 Ko, dont
-  `battlefront.png` à 20,8 Mo en 5333×3000 pour une vignette. Redimensionnement
-  décidé le 10 août 2026.
 - Un bouton de maquette est publié en ligne : « proto : simuler une progression »
   (`.demo`), sur l'accueil et sur la page des Dossiers, dans les deux langues.
   `publier.mjs` le recopie tel quel — il devrait le retirer et refuser de laisser
