@@ -724,6 +724,24 @@ site en ligne, mais c'est une phrase là où la pastille est un signe — elle c
 le bloc de Big Shoulders 900 qui fait l'effet de la carte. Ne pas y remettre « T‑8 » :
 le « T‑minus » des lancements se compte en secondes, pas en jours.
 
+**Les deux derniers jours, le compteur n'est plus un signe mais un mot**, et un
+mot ne tient pas dans la place d'un signe : « AUJOURD’HUI » fait onze caractères
+contre trois. La classe `mot`, posée par le JS quand il reste un jour ou moins,
+répare trois choses d'un coup — le cadran du bloc « Prochaine » descend de 72 à
+44 px, « avant la sortie » disparaît (la phrase ne dit rien de plus, et « demain
+avant la sortie » se lit mal), et sur mobile `.hd:has(.cd.mot) .txt` rend au
+titre sa ligne entière. Ce dernier repli existait déjà en intention — `.cd` porte
+`order:3` depuis toujours — mais il ne se déclenchait jamais : `.txt` a
+`min-width:0` et se comprimait au lieu de passer à la ligne, réduisant « Star
+Trek: Strange New Worlds » à 97 px. Il n'est forcé que pour la classe `mot` :
+sous les quarante cartes, une ligne de plus chacune coûterait un écran entier.
+
+`classList.\w+` figure dans les arguments techniques de `traduire-pages.mjs` :
+`classList.toggle('mot', …)` traverse donc la traduction sans que « mot » soit
+pris pour un libellé. La même chaîne écrite en dur dans une concaténation de
+`class="…"`, elle, n'est protégée par rien — vérifier après génération qu'elle
+est encore là, comme pour tout sélecteur.
+
 `e-app.js` est **bilingue dans un seul fichier**, sur le modèle de `pwa.js` : il lit
 `documentElement.lang`. Deux jumeaux se seraient désynchronisés à la première
 retouche du CSS, qui est commun.

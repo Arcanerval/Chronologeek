@@ -167,6 +167,10 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .next .big small{display:block;font-family:'Chivo';font-size:11px;font-weight:700;
   letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.72);
   text-shadow:none;margin-top:5px}
+/* « AUJOURD’HUI » n'est pas « J‑2 » : onze signes contre trois, et le cadran
+   venait manger le titre. Il se lit aussi bien plus petit — c'est un mot,
+   pas un décompte. */
+.next .big.mot{font-size:clamp(26px,4.4vw,44px)}
 
 /* ══ filtres et recherche ══════════════════════════════════════════ */
 /* le collant se cale sur la hauteur réelle du bandeau, mesurée par le
@@ -342,6 +346,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .icon-btn{width:44px;height:44px}
   .drawer a{padding:13px 20px}
   .sieve{position:static}
+  /* En étroit, la pastille « Prochaine » passe AU-DESSUS du titre au lieu de
+     lui prendre sa gauche : le nom de l'œuvre récupère la largeur entière,
+     et le cadran vient dessous plutôt que de le serrer contre le bord. */
+  .next .wrap{flex-direction:column;align-items:flex-start;gap:9px}
+  .next .txt{flex:none;width:100%}
   .next .big{text-align:left}
   .day{width:56px}
   .day b{font-size:26px}
@@ -350,6 +359,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .hd{flex-wrap:wrap;gap:8px 12px}
   .cd{order:3;text-align:left;font-size:19px}
   .chevd{order:4;margin-left:auto}
+  /* Ce repli-là ne se déclenchait jamais : `.txt` porte `min-width:0`, donc
+     il se comprimait au lieu de forcer le retour à la ligne. « J‑2 » y
+     survit, « AUJOURD’HUI » non — il prend la largeur de trois compteurs et
+     réduisait « Star Trek: Strange New Worlds » à 97 px, soit trois lignes de
+     dix signes. Les deux derniers jours, la carte rend donc sa ligne entière
+     au nom de l'œuvre. Les autres gardent leur compteur à droite : le passer
+     dessous partout ajouterait une ligne à chacune des quarante cartes. */
+  .hd:has(.cd.mot) .txt{flex:1 0 100%}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -588,8 +605,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       document.getElementById('next-t').textContent=titleOf(n0);
       document.getElementById('next-m').innerHTML=
         '<span>'+u0[0]+'</span><span>'+esc(KIND[keyOf(n0)][0])+'</span><span>'+esc(dateTxt(n0))+'</span>';
-      document.getElementById('next-cd').innerHTML=
-        cd(days(iso(n0)))+'<small>until release</small>';
+      /* Le compte à rebours s'écrit en toutes lettres les deux derniers
+         jours : « AUJOURD’HUI » est cinq fois plus large que « J‑2 » à la
+         même taille, et il passait par-dessus le titre. La classe le
+         rétrécit, et « avant la sortie » saute — la phrase ne dit plus rien
+         qu'« aujourd'hui » n'ait déjà dit, et « demain avant la sortie » se
+         lit mal. */
+      var n0d=days(iso(n0)), cible=document.getElementById('next-cd');
+      cible.classList.toggle('mot',n0d<=1);
+      cible.innerHTML=cd(n0d)+(n0d<=1?'':'<small>until release</small>');
       /* la page s’ouvre dans l’encre du monde qui sort en premier */
       document.body.style.setProperty('--uc',u0[1]);
     }
@@ -711,7 +735,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<span class="ti">'+esc(t)+'</span>'+
         epTag(e)+
       '</span>'+
-      '<span class="cd'+(n<=7?' soonest':'')+'">'+cd(n)+'</span>';
+      '<span class="cd'+(n<=7?' soonest':'')+(n<=1?' mot':'')+'">'+cd(n)+'</span>';
 
     var chev='<svg class="chevd" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg>';
 
