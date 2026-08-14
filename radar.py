@@ -367,6 +367,36 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
                         else "finale" if dernier > 1 and num == dernier
                         else ""}
 
+    # Une saison qui tombe d'un bloc n'est pas treize sorties : c'en est une.
+    # *Avatar: Seven Havens* lâche ses treize épisodes le 09/10 — sans ce
+    # regroupement, la journée du 09/10 comptait treize cartes au même nom,
+    # que seul leur numéro distinguait. Le repère se met alors à `e:0`, que la
+    # page lit comme « Saison entière » et écrit « S1 », sans numéro.
+    #
+    # La saison doit être COMPLÈTE pour qu'on l'annonce ainsi : TMDB n'en
+    # liste parfois qu'une partie, et quatre épisodes du même jour sur treize
+    # sont un lot, pas une saison. `attendus` fait foi quand la fiche le donne.
+    fenetre = [(parse_iso(e.get("air_date") or ""), e) for e in eps]
+    fenetre = [(d, e) for d, e in fenetre if d and TODAY <= d <= HORIZON]
+    total = attendus if attendus is not None else len(eps)
+    jours = {d for d, _ in fenetre}
+    bloc = len(fenetre) > 1 and len(jours) == 1 and len(fenetre) == total
+    if bloc:
+        jour = next(iter(jours))
+        entiere = {"s": saison, "e": 0, "mark": "saison"}
+        # Le jour de la première, la carte de la série porte déjà la sortie :
+        # on lui rend le repère et on n'ajoute rien.
+        if sauf_le and jour == sauf_le:
+            return 0, entiere
+        f = fr.get(1) or {}
+        e1 = fenetre[0][1]
+        add(uni, nom, jour.isoformat(), jour.strftime("%d/%m/%Y"),
+            "Épisode", "TMDB",
+            syn=(e1.get("overview") or "").strip(),
+            syn_fr=(f.get("overview") or "").strip(),
+            ep=entiere)
+        return 1, None
+
     n, premier = 0, None
     for e in eps:
         d = parse_iso(e.get("air_date") or "")
@@ -1324,8 +1354,12 @@ def render(entries):
         for e in sub:
             col = kind_color(e["kind"])
             ep = e.get("ep") or {}
-            repere = ({"premiere": "Première", "finale": "Finale"}.get(ep.get("mark"), "")
-                      + (f' S{ep["s"]}E{ep["e"]:02d}' if ep else "")).strip()
+            # `e:0` marque la saison entière : elle n'a pas de numéro
+            # d'épisode, et « S1E00 » ne voudrait rien dire.
+            repere = ({"premiere": "Première", "finale": "Finale",
+                       "saison": "Saison entière"}.get(ep.get("mark"), "")
+                      + (f' S{ep["s"]}E{ep["e"]:02d}' if ep and ep["e"]
+                         else f' S{ep["s"]}' if ep else "")).strip()
             head = (f'<div class="date">{html.escape(e.get("date_txt_fr") or e["date_txt"])}</div>'
                     f'<div class="t">{html.escape(e["title"])}</div>'
                     f'<div class="meta"><span>{html.escape(e["kind"] or "—")}'

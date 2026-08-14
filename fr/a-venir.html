@@ -281,6 +281,8 @@ details>summary.hd::-webkit-details-marker{display:none}
 .ep b{font-weight:700;letter-spacing:.09em}
 .ep.premiere{color:#7ed6a5;border-color:#7ed6a5}
 .ep.finale{color:#f0956a;border-color:#f0956a}
+/* la saison d'un bloc : ni une ouverture ni une fin, les deux à la fois */
+.ep.saison{color:#8fb8f0;border-color:#8fb8f0}
 .ti{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:22px;
   line-height:1.02;text-transform:uppercase}
 /* le compte à rebours : le cadran de la borne, à droite de chaque ligne */
@@ -689,19 +691,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* i18n-off — le repère d'épisode, dans la langue de la page.
 
      `radar.py` pose `ep:{s,e,mark}` sur les seules entrées d'épisode :
-     la saison, le numéro, et « premiere » ou « finale » quand l'épisode
-     ouvre ou ferme sa saison. Comme le titre et la date, ces mots-là
-     sont choisis ici : radar.json sert les deux langues.
+     la saison, le numéro, et « premiere », « finale » ou « saison » selon
+     que l'épisode ouvre sa saison, la ferme, ou qu'elle sorte d'un bloc.
+     Comme le titre et la date, ces mots-là sont choisis ici : radar.json
+     sert les deux langues.
 
      Le numéro s'écrit S2E05 des deux côtés — c'est la notation d'usage,
-     elle ne se traduit pas. */
-  var EP_MOT = FR ? {premiere:'Première',finale:'Finale'}
-                  : {premiere:'Premiere',finale:'Finale'};
+     elle ne se traduit pas. Une saison entière n'a pas de numéro
+     d'épisode : `e` vaut 0, et le repère s'arrête à « S1 ». */
+  var EP_MOT = FR ? {premiere:'Première',finale:'Finale',saison:'Saison entière'}
+                  : {premiere:'Premiere',finale:'Finale',saison:'All season'};
   var EP_PICTO = {
     premiere:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.4 2.1 13.2 8l-8.8 5.9Z"/></svg>',
-    finale:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 1.4h1.6v13.2H2.6zM5.3 2.2h8.1l-2.2 3.4 2.2 3.4H5.3z"/></svg>'
+    finale:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 1.4h1.6v13.2H2.6zM5.3 2.2h8.1l-2.2 3.4 2.2 3.4H5.3z"/></svg>',
+    saison:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.6 2.2h12.8v2.4H1.6zM1.6 6.8h12.8v2.4H1.6zM1.6 11.4h12.8v2.4H1.6z"/></svg>'
   };
-  function epNum(p){ return 'S'+p.s+'E'+(p.e<10?'0':'')+p.e; }
+  function epNum(p){ return p.e?'S'+p.s+'E'+(p.e<10?'0':'')+p.e:'S'+p.s; }
   function epTag(e){
     var p=e.ep; if(!p) return '';
     var m=EP_MOT[p.mark]||'';

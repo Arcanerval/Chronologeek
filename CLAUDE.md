@@ -208,9 +208,20 @@ ne désignent qu'un univers : eux n'ont pas de garde-fou. C'est la même idée q
 
 Chaque épisode porte `ep:{s,e,mark}`, et cette clé n'existe que là — la poser à
 `null` sur les huit cents autres entrées n'apprendrait rien à la page. `mark` vaut
-`premiere` au premier épisode, `finale` au dernier, et `""` entre les deux. La page
-en tire une pastille à contour : verte avec un triangle, orange avec un drapeau,
-et le numéro écrit `S2E05` dans les deux langues.
+`premiere` au premier épisode, `finale` au dernier, `saison` quand la saison sort
+d'un bloc, et `""` entre les deux. La page en tire une pastille à contour : verte
+avec un triangle, orange avec un drapeau, bleue avec trois barres, et le numéro
+écrit `S2E05` dans les deux langues.
+
+**Une saison qui tombe d'un bloc n'est pas treize sorties, c'en est une.**
+*Avatar: Seven Havens* lâche ses treize épisodes le 09/10 ; sans regroupement, la
+journée comptait treize cartes au même nom que seul leur numéro distinguait.
+`tmdb_episodes()` n'en rend alors qu'une, avec `e:0` — la saison entière n'a pas
+de numéro d'épisode, et la page s'arrête à « S1 ». Deux garde-fous : il faut au
+moins deux épisodes, et la saison doit être **complète** au sens d'`episode_count`
+— quatre épisodes du même jour sur treize sont un lot, pas une saison. Si le bloc
+tombe le jour de la première, rien n'est ajouté : c'est la carte de la série qui
+reçoit le repère.
 
 Deux pièges qui ont chacun leur garde-fou dans `tmdb_episodes()` :
 
