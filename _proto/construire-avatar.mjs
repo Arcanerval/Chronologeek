@@ -67,8 +67,8 @@ const TYPES = { roman: 'roman', livre: 'roman', comic: 'comic', anime: 'anime', 
 const AUTORISES = new Set(['roman', 'comic', 'anime', 'filmanim', 'video']);
 const AVEC_LANG = new Set(['roman', 'comic', 'video']);   // convention de la prod
 
-/* avatar.html vit a la racine et ecrit « images/suki.jpg » ; le proto vit dans
- * _proto/ et resoudrait ce chemin en _proto/images/suki.jpg. On absolutise. */
+/* avatar.html vit a la racine et ecrit « images/suki.webp » ; le proto vit dans
+ * _proto/ et resoudrait ce chemin en _proto/images/suki.webp. On absolutise. */
 const abs = p => /^(?:https?:|\/)/.test(p) ? p : '/' + p.replace(/^\.?\//, '');
 
 const slug = s => s.toLowerCase()

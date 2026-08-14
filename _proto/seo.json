@@ -4,13 +4,13 @@
       "title": "Chronologeek",
       "ogTitle": "Chronologeek — Timelines Geek",
       "desc": "Les timelines complètes de tes univers préférés — tous supports, ordre chronologique, 100% canon.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Chronologeek — Geek Timelines",
       "ogTitle": "Chronologeek — Geek Timelines",
       "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "sw": {
@@ -46,13 +46,13 @@
       "title": "DC Multivers — Chronologeek",
       "ogTitle": "Guide DC Multivers — Chronologeek",
       "desc": "Le guide de visionnage complet du Multivers DC — Elseworlds, Arrowverse, DCEU et DCU, tous connectés.",
-      "image": "https://chronologeek.app/images/dcmultivers.jpg"
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
     },
     "en": {
       "title": "DC Multiverse — Chronologeek",
       "ogTitle": "DC Multiverse Watch Guide — Chronologeek",
       "desc": "The complete DC Multiverse watch guide — Elseworlds, Arrowverse, DCEU and DCU, all connected.",
-      "image": "https://chronologeek.app/images/dcmultivers.jpg"
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
     }
   },
   "avatar": {
@@ -60,13 +60,13 @@
       "title": "Avatar — Chronologeek",
       "ogTitle": "Timeline Avatar Legends — Chronologeek",
       "desc": "Séries animées · Comics · Livres — tout l’univers Avatar Legends dans son ordre le plus optimisé.",
-      "image": "https://chronologeek.app/images/avatar.png"
+      "image": "https://chronologeek.app/images/avatar.webp"
     },
     "en": {
       "title": "Avatar Timeline — Chronologeek",
       "ogTitle": "Avatar Legends Timeline — Chronologeek",
       "desc": "Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order.",
-      "image": "https://chronologeek.app/images/avatar.png"
+      "image": "https://chronologeek.app/images/avatar.webp"
     }
   },
   "startrek": {
@@ -74,13 +74,13 @@
       "title": "Star Trek — Chronologeek",
       "ogTitle": "Timeline Star Trek — Chronologeek",
       "desc": "La timeline Star Trek dans l'ordre chronologique interne — films, séries et séries animées, du 21e au 43e siècle, sans spoil.",
-      "image": "https://chronologeek.app/images/startrek.jpg"
+      "image": "https://chronologeek.app/images/startrek.webp"
     },
     "en": {
       "title": "Star Trek Timeline — Chronologeek",
       "ogTitle": "Star Trek Timeline — Chronologeek",
       "desc": "The Star Trek timeline in in-universe order — movies, TV shows and animated shows, from the 21st to the 43rd century, spoiler-free.",
-      "image": "https://chronologeek.app/images/startrek.jpg"
+      "image": "https://chronologeek.app/images/startrek.webp"
     }
   },
   "dossiers": {
@@ -88,13 +88,13 @@
       "title": "Dossiers — Chronologeek",
       "ogTitle": "Dossiers — Chronologeek",
       "desc": "Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Deep Dives — Chronologeek",
       "ogTitle": "Deep Dives — Chronologeek",
       "desc": "Chronologeek deep dives: reading orders, guides and breakdowns, universe by universe.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "dossier-sw": {
@@ -116,13 +116,13 @@
       "title": "Nouveautés — Chronologeek",
       "ogTitle": "Nouveautés — Chronologeek",
       "desc": "Tout ce qui bouge sur Chronologeek — timelines ajoutées, entrées mises à jour, nouveautés du site.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "What's New — Chronologeek",
       "ogTitle": "What's New — Chronologeek",
       "desc": "Everything new on Chronologeek — timelines added, entries updated, features shipped.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "a-venir": {
@@ -130,13 +130,13 @@
       "title": "Prochaines sorties — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
       "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
       "desc": "Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar et Star Trek — films, séries, comics et jeux, avec les dates. Mis à jour chaque jour.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Upcoming Releases — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
       "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
       "desc": "Every upcoming Star Wars, Marvel, DC, Avatar and Star Trek release — movies, shows, comics and games, with dates. Updated daily.",
-      "image": "https://chronologeek.app/images/og-banner.png"
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   }
 }

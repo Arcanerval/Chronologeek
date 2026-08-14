@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
-<link rel="preload" as="image" href="/images/starwarscomics.jpg"/>
+<link rel="preload" as="image" href="/images/starwarscomics.webp"/>
 <!--
   ═══ CONTRAT DE DIRECTION — E · ACCUEIL DES DOSSIERS ═════════════════
   THÈSE : l'accueil des Dossiers est un écran de sélection lui aussi,
@@ -334,7 +334,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 <header>
   <div class="wrap">
-    <a class="brand" href="en-accueil.html"><img src="/images/logo-chronologeek.png" alt="Chronologeek — Geek Timelines"/></a>
+    <a class="brand" href="en-accueil.html"><img src="/images/logo-chronologeek.webp" alt="Chronologeek — Geek Timelines"/></a>
     <nav class="nav-links" aria-label="Navigation">
       <a href="en-accueil.html">Home</a>
       <a href="#" class="doss" aria-current="page">Deep Dives</a>
@@ -396,10 +396,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="slots">
 
     <a class="slot big rv" href="en-dossier-star-wars.html" style="--c:var(--sw);--i:0"
-       data-u="dossier-sw" data-total="534" data-hero="/images/starwarscomics.jpg">
+       data-u="dossier-sw" data-total="534" data-hero="/images/starwarscomics.webp">
       <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <figure>
-        <img src="/images/starwarscomics.jpg" alt="" width="715" height="450" fetchpriority="high" decoding="async"/>
+        <img src="/images/starwarscomics.webp" alt="" width="715" height="450" fetchpriority="high" decoding="async"/>
         <span class="halftone"></span><span class="shade"></span>
         <span class="no">01</span><span class="state">Available</span>
         <span class="nm">Star Wars</span>
@@ -521,7 +521,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     el.addEventListener('focus',take);
     el.addEventListener('blur',give);
   });
-  attract.style.setProperty('--hero','url(/images/starwarscomics.jpg)');
+  attract.style.setProperty('--hero','url(/images/starwarscomics.webp)');
 
   /* Le relevé des ères a quitté cette page : il est devenu la barre de
      navigation du Dossier lui-même, où chaque segment se clique et porte sa
