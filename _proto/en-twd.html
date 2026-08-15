@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <link rel="preconnect" href="https://image.tmdb.org"/>
-<link rel="preload" as="image" href="https://image.tmdb.org/t/p/w1280/rAOjnEFTuNysY7bot8zonhImGMh.jpg"/>
+<link rel="preload" as="image" href="/images/twd.webp"/>
 <!--
   ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
   Même contrat que Star Wars, Marvel, DC et Avatar : la page ne liste pas,
@@ -146,10 +146,11 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 /* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
 .attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
   min-height:min(60vh,520px);display:flex;align-items:flex-end}
-/* Proto : la bannière est un backdrop TMDB, faute d'image locale. Les cinq
-   autres univers ont la leur dans `images/` — celle-ci reste à poser. */
+/* La bannière est locale — `images/twd.webp`, posée par Niko, comme les
+   cinq autres univers. Seules les vignettes des entrées viennent de TMDB,
+   sauf Flight 462 qui n'a pas de fiche propre et a la sienne. */
 .plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 42%;
-  background-image:url(https://image.tmdb.org/t/p/w1280/rAOjnEFTuNysY7bot8zonhImGMh.jpg)}
+  background-image:url(/images/twd.webp)}
 .plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
 .plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
   clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
@@ -302,11 +303,23 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 .rows{display:flex;flex-direction:column;gap:10px}
 .bu{position:relative;display:flex;align-items:flex-start;gap:10px}
 .bu[hidden]{display:none}
-/* Colonne de gauche : la case, et rien d'autre. Le document annonce
-   « Essential - Important - Optional » mais n'en pose aucun sur ses 45
-   entrées : pas de niveau tant que Niko ne les a pas assignés. */
+/* Colonne de gauche : la case, puis la pastille de niveau. Niko a donné
+   les trois niveaux le 14 août : essentiel pour Fear, The Walking Dead,
+   The Ones Who Live, Daryl Dixon et Dead City ; important pour World
+   Beyond et l'épisode 3 de Tales ; optionnel pour le reste. Les icônes
+   passent au trait comme sur les quatre autres pages — l'étoile et le
+   gyrophare en emoji jurent avec le titrage. */
 .bu-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;
   margin-top:12px;width:34px}
+.bu-side .lv{display:block;line-height:0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:miter;stroke-linecap:square}
+.bu-side .ic{width:25px;height:25px}
+.lv.must{color:var(--hot)}
+.lv.imp{color:#ff9d5c}
+.sieve .ic{width:15px;height:15px}
+.sieve button.must{color:var(--hot)}
+.sieve button.imp{color:#ff9d5c}
+.sieve button.must[aria-pressed=true],.sieve button.imp[aria-pressed=true]{color:var(--ink)}
 .bu-chk{width:30px;height:30px;background:none;cursor:pointer;
   border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
   display:grid;place-items:center;padding:0;color:transparent;
@@ -703,10 +716,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="halftone" aria-hidden="true"></div>
   <div class="veil" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="tag">In-Universe Order</span>
+    <span class="tag">Chronological Order</span>
     <h1 class="disp off">The Walking Dead</h1>
     <p class="dek">TV Shows · Web Series
-      <b>Tick what you have watched, your progress is saved.</b></p>
+      <b>Check off what you've watched — your progress is saved.</b></p>
     <p class="upd"><i aria-hidden="true"></i> Updated · August 2026</p>
     <div class="stats">
       <div class="s"><b>7</b><span>TV Shows</span></div>
@@ -732,7 +745,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
     <button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>
     <span class="fcount" id="fcount">45 / 45 shown</span>
-    <div class="srow"><div class="sgroup" id="f-types"><span class="lab">Media types</span></div></div>
+    <div class="srow">
+      <div class="sgroup" id="f-levels"><span class="lab">Level</span></div>
+      <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
+    </div>
     <div class="srow">
       <div class="marks"><span>Markers</span>
         <span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span>
@@ -819,6 +835,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   var CFG=window.CG, D=window.TWD, RT=window.RT||{};
   var T=CFG.t;
+  /* Les niveaux passent au trait, comme sur Star Wars et Marvel. Le
+     libellé garde le mot de Niko, emoji de tête retiré. */
+  var LVICO={
+    must:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>',
+    important:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>',
+    bonus:''};
+  var LVCLS={must:'must',important:'imp',bonus:''};
+  function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
+  var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
   var KEY='cg-proto-twd';
 
   /* ── deux natures d'items dans une ère ────────────────────────────
@@ -839,7 +866,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
 
   /* Plus de `offM` : les repères sont une légende, ils ne masquent rien. */
-  var offK={}, hideDone=false;
+  var offLv={}, offK={}, hideDone=false;
 
   function $(s,r){ return (r||document).querySelector(s); }
   function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
@@ -871,7 +898,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      sont rendus en légende, en dur dans le HTML — voir le contrat de
      direction en tête de fichier. Pas de niveaux non plus. */
   (function(){
-    var tp=$('#f-types');
+    var lv=$('#f-levels'), tp=$('#f-types');
+    ['must','important','bonus'].forEach(function(k){
+      lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
+        (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
+    });
     Object.keys(CFG.badgeLabels).forEach(function(k){
       tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
         ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
@@ -924,6 +955,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
           (prog[e.id]?'true':'false')+'" data-check aria-label="'+
           esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
+        (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+          LVICO[e.level]+'</span>':'')+
       '</span>'+
       '<div class="bu-card">'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
@@ -1000,7 +1033,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       era.entries.forEach(function(e){
         if(e.type==='note') return;
         var el=document.getElementById(e.id);
-        var ok=!offK[e.type] && !(hideDone&&prog[e.id]) &&
+        var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
                (!q || hay(e).indexOf(q)>-1);
         el.hidden=!ok; if(ok){ vis++; shown++; }
       });
@@ -1045,7 +1078,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var el=document.getElementById(next.id);
     if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
       $('#q').value=''; $('#searchbox').classList.remove('on');
-      offK={}; hideDone=false;
+      offLv={}; offK={}; hideDone=false;
       [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
         b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
       applyFilters();
@@ -1167,6 +1200,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       var on=f.getAttribute('aria-pressed')==='true';
       f.setAttribute('aria-pressed',on?'false':'true');
       if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.lv) offLv[f.dataset.lv]=on;
       else if(f.dataset.k) offK[f.dataset.k]=on;
       applyFilters();
       return;

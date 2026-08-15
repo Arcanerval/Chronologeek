@@ -45,6 +45,17 @@ OEUVRES = {
 # les huit series web sont exactement celles que la source marque « VO »
 FLIGHT_SAISON_ZERO = 'flight'
 
+# Flight 462 vit sur la fiche TMDB de Fear : pas de backdrop propre, et
+# c'est Niko qui a fourni le visuel.
+VISUELS = {'flight': '/images/Flight462.webp'}
+
+# Les niveaux viennent de Niko, le 14 aout 2026. Le document les annonce en
+# tete mais n'en posait aucun ; ils sont donnes par oeuvre, pas par entree.
+# « Tales of the Walking Dead » fait exception : seul l'episode 3 compte.
+NIVEAUX = {'ftwd': 'must', 'twd': 'must', 'towl': 'must', 'dd': 'must', 'dc': 'must',
+           'wb': 'important'}
+TALES_IMPORTANT = 'Season 1 Episodes 3'   # la coquille est celle du document
+
 # ── lecture du document ──────────────────────────────────────────────────
 def lire():
     eres, ere = [], None
@@ -119,14 +130,20 @@ ENCRES = {'Los Angeles & Mexico Outbreak': 1, 'Atlanta Outbreak': 2, 'Georgia': 
 
 eres = lire()
 compteur, RT, eras = {}, {}, []
+PAR_OEUVRE = {}          # les identifiants de chaque oeuvre, pour les badges
 for e in eres:
     ents = []
     for x in e['entrees']:
         cle, tid, bd = OEUVRES[x['title']]
         compteur[cle] = compteur.get(cle, 0) + 1
         eid = f'twd-{cle}-{compteur[cle]}'
+        PAR_OEUVRE.setdefault(cle, []).append(eid)
+        niv = NIVEAUX.get(cle, 'bonus')
+        if cle == 'tales':
+            niv = 'important' if TALES_IMPORTANT in x['subitems'] else 'bonus'
         o = {'id': eid, 'type': 'web' if x['vo'] else 'serie', 'tmdb': str(tid),
-             'media': 'tv', 'img': IMG + bd, 'title': x['title'], 'date': x['date']}
+             'media': 'tv', 'img': VISUELS.get(cle, IMG + bd),
+             'title': x['title'], 'date': x['date'], 'level': niv}
         if x['tags']:
             o['tags'] = x['tags']
         if x['vo']:
@@ -183,29 +200,65 @@ def apres(rep, n=1):
                 return out[-1]
     return ''
 
-cle = lambda titre, ico, *ps: (
+carte = lambda titre, ico, *ps: (
     '<div class="key"><div class="key-h">' + ICONES[ico] + esc(titre) + '</div>' +
     ''.join('<p>' + esc(p) + '</p>' for p in ps) + '</div>')
+
+# « Ce qui est ecarte » est un depliant sur les quatre autres univers, et il
+# l'est ici aussi : les trois reperes de lecture tiennent alors cote a cote.
+ECARTE = apres("What's left out and why?")
+_dt, _dd = ECARTE.split(': ', 1)
+CHEVRON = ('<svg class="chev" viewBox="0 0 24 24" aria-hidden="true">'
+           '<path d="m6 9 6 6 6-6"/></svg>')
 
 DATA['notes'] = (
     '<p class="intro-lead">' + esc(L[0]) + '</p>' +
     '<div class="intro-tags"><span class="itag">' + ICONES['ok'] +
-    esc(apres('', 0) or L[2]) + '</span></div>' +
+    esc(L[2]) + '</span></div>' +
     '<div class="keys-title">' + esc('How to read this') + '</div>' +
     '<div class="keys">' +
-    cle('The Calendar', 'cal', apres('The Calendar')) +
-    cle('Flashbacks', 'fb', apres('Flashbacks')) +
-    cle("What's left out and why?", 'out', apres("What's left out and why?")) +
-    '</div><div class="keys"><div class="key wide"><div class="key-h">' +
-    ICONES['cons'] + esc('Consistancy') + '</div><p>' +
-    esc(apres('Consistancy')) + '</p></div></div>')
+    carte('The Calendar', 'cal', apres('The Calendar')) +
+    carte('Flashbacks', 'fb', apres('Flashbacks')) +
+    carte('Consistancy', 'cons', apres('Consistancy')) +
+    '</div>' +
+    '<details class="cuts"><summary>' + esc("What's left out and why?") +
+    '<span class="n">1 entry</span>' + CHEVRON + '</summary>' +
+    '<div class="cuts-body"><dl class="cuts-list"><div class="cut">' +
+    # la majuscule initiale est la seule retouche : la phrase est coupee en
+    # deux par le gabarit, l'intitule d'un cote et la raison de l'autre.
+    '<dt>' + esc(_dt) + '</dt><dd>' + esc(_dd[0].upper() + _dd[1:]) + '</dd>' +
+    '</div></dl></div></details>')
+
+# ── les badges, nommes par Niko le 14 aout 2026 ──────────────────────────
+# `trigger:"last"` ne convient pas : il decoupe des tranches continues de la
+# timeline, or une oeuvre est ici dispersee sur plusieurs phases — Fear
+# revient en 1, 5, 7 et 10. Tout autre `trigger` fait lire `ids` tel quel,
+# et c'est la liste complete des entrees de l'oeuvre.
+def survivant(bid, icone, couleur, label, oeuvre, quoi):
+    return {'id': bid, 'universe': 'twd', 'icon': icone, 'color': couleur,
+            'trigger': 'oeuvre', 'ids': PAR_OEUVRE[oeuvre],
+            'label': label, 'desc': quoi + ' completed'}
+
+BADGES = [
+    survivant('twd_la',  '🌴', '#e0a458', 'Los Angeles Survivor', 'ftwd',
+              'Fear the Walking Dead'),
+    survivant('twd_atl', '🍑', '#a8bf4f', 'Atlanta Survivor', 'twd',
+              'The Walking Dead'),
+    survivant('twd_ny',  '🗽', '#7dd3fc', 'New-York Survivor', 'dc',
+              'Dead City'),
+    survivant('twd_eu',  '⚜️', '#b48cf2', 'European Survivor', 'dd',
+              'Daryl Dixon'),
+    {'id': 'twd_ult', 'universe': 'twd', 'icon': '🧟', 'color': '#ffd700',
+     'trigger': '100pct', 'ids': [], 'label': 'Ultimate Survivor',
+     'desc': 'The Walking Dead 100% completed'},
+]
 
 CG = {
     't': CG_ST['t'],           # le gabarit anglais du site, deja relu et en ligne
     'universe': 'twd',
     'badgeLabels': {'serie': ['bs', 'TV SHOW'], 'web': ['bw', 'WEB SERIES']},
     'markLabels': {'flashback': 'FLASHBACK'},
-    'badges': [],
+    'badges': BADGES,
     'faqCats': [],
     'tmdbLang': 'en-US',
     'tmdbKey': CLE,
@@ -263,14 +316,33 @@ def verifie():
             dur.append(t)
     if CG['faqCats']:
         dur.append(CG['faqCats'][0]['q'].replace('{name}', 'XXX'))
+    # Les deux seules retouches admises par la charte du depot : un intitule
+    # de structure que la prose n'a pas, et la majuscule qui suit un
+    # decoupage de phrase. Toute autre absence est une reecriture.
+    admis = {'1 entry': 'compteur du depliant, comme sur les quatre autres pages',
+             _dd[0].upper() + _dd[1:]: 'majuscule initiale apres le decoupage '
+                                       'de « ' + ECARTE[:24] + '… »'}
     absents = [t for t in dur if t not in brut]
-    print(f'  {len(dur)} fragments affiches, {len(absents)} absents du document')
+    ecarts = [a for a in absents if a not in admis]
+    print(f'  {len(dur)} fragments affiches, {len(absents) - len(ecarts)} '
+          f'retouche(s) admise(s), {len(ecarts)} ecart(s)')
     for a in absents:
-        print('    ABSENT :', repr(a))
-    return not absents
+        if a in admis:
+            print('    admis  :', repr(a[:48]), '—', admis[a])
+    for a in ecarts:
+        print('    ECART  :', repr(a))
+    return not ecarts
 
 n = sum(len(e['entries']) for e in DATA['eras'])
+niv = {}
+for er in DATA['eras']:
+    for x in er['entries']:
+        niv[x['level']] = niv.get(x['level'], 0) + 1
 print(f'{len(DATA["eras"])} phases, {n} entrees, {len(RT)} durees')
+print(f'  niveaux : {niv.get("must",0)} essentielles, {niv.get("important",0)} '
+      f'importantes, {niv.get("bonus",0)} optionnelles')
+print(f'  badges  : ' + ', '.join(f'{b["label"]} ({len(b["ids"]) or "100 %"})'
+                                  for b in BADGES))
 print(f'  duree totale : {sum(RT.values())//60} h')
 print('  verification mot pour mot :')
 ok = verifie()
