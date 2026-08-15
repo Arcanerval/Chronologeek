@@ -62,6 +62,10 @@ export const TWD_IDENTIQUES = [
   'New-York',
   // valeurs de données et repères techniques croisés en chemin
   'bw',
+  // le badge des webséries jamais doublées. Il ne s'écrit qu'en français —
+  // la page anglaise ne le pose pas — mais la chaîne est dans la source,
+  // et « VO » y reste « VO ».
+  'VO',
   'cg-proto-twd',
   'chronologeek-twd.json',
   '288 h',
@@ -156,9 +160,12 @@ export const TWD_TRADUCTIONS = [
      « TV SHOW » et « TV Shows » sont retrouvés dans les données des
      autres univers ; leurs équivalents web n'existent que sur cette
      page-ci. */
-  ['WEB SERIES', 'SÉRIE WEB'],
-  ['Web Series', 'Séries web'],
-  ['TV Shows · Web Series', 'Séries · Séries web'],
+  // « websérie », en un mot : c'est le terme de Niko, et « série web » ne
+  // se dit pas. Le badge est au singulier, il porte une entrée ; la case
+  // des statistiques et la description en comptent huit.
+  ['WEB SERIES', 'WEBSÉRIE'],
+  ['Web Series', 'Webséries'],
+  ['TV Shows · Web Series', 'Séries · Webséries'],
   ['Chronological Order', 'Ordre chronologique'],
   // le rail des phases, quand une phase n'a pas de numéro : « Era 3 / 14 »
   ['Era', 'Ère'],

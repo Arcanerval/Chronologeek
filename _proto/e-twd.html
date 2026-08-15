@@ -358,6 +358,13 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
 .ft{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   padding:2px 8px;color:var(--k,var(--hot));border:1px solid var(--k,var(--hot))}
+/* « VO » signale l'absence de version française — les huit webséries. Il se
+   distingue du badge de type par le trait plutôt que par l'aplat : c'est une
+   réserve sur l'entrée, pas une catégorie de plus. Le dessin est celui
+   d'Avatar et du Dossier Star Wars, plus menu que le badge de type, et il
+   prend la couleur de l'univers, l'or étant déjà celui de FLASHBACK. */
+.vo{font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:1px 5px;
+  color:var(--uni);border:1px solid var(--uni)}
 .bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
   line-height:1.02;text-transform:uppercase}
 .bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
@@ -721,12 +728,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="wrap">
     <span class="tag">Ordre chronologique</span>
     <h1 class="disp off">The Walking Dead</h1>
-    <p class="dek">Séries · Séries web
+    <p class="dek">Séries · Webséries
       <b>Cochez ce que vous avez vu, votre progression est sauvegardée.</b></p>
     <p class="upd"><i aria-hidden="true"></i> À jour · août 2026</p>
     <div class="stats">
       <div class="s"><b>7</b><span>Séries</span></div>
-      <div class="s"><b>8</b><span>Séries web</span></div>
+      <div class="s"><b>8</b><span>Webséries</span></div>
       <div class="s"><b>14</b><span>Phases</span></div>
       <div class="s"><b id="s-tot">45</b><span>Entrées</span></div>
       <div class="s"><b id="s-h">288 h</b><span>Restant à voir</span></div>
@@ -945,6 +952,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   function row(e){
     var bd=CFG.badgeLabels[e.type]||['b',e.type];
+    /* « VO » : les huit webséries n'ont jamais été doublées, et le document
+       de Niko les marque toutes. Sans ce badge l'information disparaissait
+       sans bruit — les données la portent, l'écran non. Il ne se pose qu'en
+       français : pour qui lit l'anglais, « pas de version française » n'a
+       pas d'objet. Même règle et même dessin que sur la page Avatar. */
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
     return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
       '<span class="bu-side">'+
@@ -964,7 +977,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           '</span>'+
           '<span class="bu-txt">'+
             '<span class="bu-tags">'+marks(e)+'<span class="b" style="--k:var(--t-'+e.type+')">'+
-              esc(bd[1])+'</span></span>'+
+              esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
               (d?'<span>'+hm(d)+'</span>':'')+
