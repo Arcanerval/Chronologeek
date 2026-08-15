@@ -208,7 +208,7 @@ export const ST_TRADUCTIONS = [
   ['THE CALENDAR', 'Le calendrier'],
   ['The timeline of Star Trek is based on our universe so we use the gregorian calendar since the saga follows mostly USA born human main characters.',
    'La chronologie de Star Trek s\'appuie sur notre univers : nous employons donc le calendrier grégorien, puisque la saga suit surtout des personnages humains nés aux États-Unis.'],
-  ['They also use a system of "Stardates" but it\'s not consistant threw old and modern tv shows and is really hard to understand, but in-universe it eventually makes sense because aliens all use their own calendar system.',
+  ['They also use a system of "Stardates" but it\'s not consistent through old and modern tv shows and is really hard to understand, but in-universe it eventually makes sense because aliens all use their own calendar system.',
    'Il existe aussi un système de « dates stellaires », mais il n\'est pas cohérent entre les séries anciennes et modernes et il est vraiment difficile à suivre — dans l\'univers, cela finit par se tenir, puisque chaque peuple extraterrestre a son propre calendrier.'],
   ['TIMELINES', 'Les chronologies'],
   ['Star Trek is not one single universe following the timestream, there is time travel and multiple dimensions / universes / timelines.',
