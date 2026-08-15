@@ -37,7 +37,11 @@ _proto/en-*.html + _proto/data-*-en.js
 
 Star Trek prend cette chaîne à l'envers : sa source est anglaise, et
 `node _proto/traduire-startrek.mjs` en tire le français. Voir « Star Trek, la
-chaîne inversée » plus bas.
+chaîne inversée » plus bas. **The Walking Dead fait pareil** —
+`en-twd.html` + `data-twd-en.js` sont la source, `node _proto/traduire-twd.mjs`
+écrit `e-twd.html` et `data-twd.js`. Ce proto n'est pas encore publié : il
+n'est ni dans `publier.mjs`, ni dans `seo.json`, ni dans `sync.py`, et le site
+compte toujours vingt pages et cinq univers.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -335,9 +339,16 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   fichier et les trois JSON dont il sort ne sont plus versionnés** (voir
   `.gitignore`) : Niko ne relit pas un document, il ouvre le proto anglais au
   navigateur et valide ou non. Le script reste, sa sortie est locale.
-- `node _proto/traduire-startrek.mjs` — le seul qui traduit dans l'autre sens :
-  `e-startrek.html` et `data-startrek.js` depuis les fichiers anglais, qui sont la
-  source. Voir « Star Trek, la chaîne inversée ».
+- `node _proto/traduire-startrek.mjs` — l'un des deux qui traduisent dans l'autre
+  sens : `e-startrek.html` et `data-startrek.js` depuis les fichiers anglais, qui
+  sont la source. Voir « Star Trek, la chaîne inversée ».
+- `node _proto/traduire-twd.mjs` — l'autre, pour The Walking Dead. Même script à
+  quelques lignes près, et une différence qui compte : **Star Trek fait partie de
+  ses paires de pages**. La page TWD est bâtie sur la sienne, et c'est de loin ce
+  qui rend le plus — 1 808 textes retrouvés, 42 emplois de 39 phrases écrites,
+  zéro manque. Ce qui reste à écrire vit dans `traductions-twd.mjs` : l'accroche,
+  les trois repères de lecture, les quatorze phases et les cinq badges. Les quinze
+  œuvres, elles, gardent leur titre — aucune n'a de titre français.
 - `node _proto/publier.mjs` — pose les vingt pages, `/data/` et `app.js`. Voir
   « La publication » plus bas.
 
