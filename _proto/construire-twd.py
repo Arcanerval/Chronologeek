@@ -1,9 +1,9 @@
 # Genere _proto/data-twd-en.js depuis TWD.txt, le document de Niko.
 #
 # Rien n'est reformule : chaque chaine affichee est decoupee dans le fichier
-# source, et verifie() le prouve a la fin — 176 fragments, zero ecart. La
-# coquille « Consistancy », le « ??? » d'une date et « overthink to much »
-# sont les siens et le restent.
+# source, et verifie() le prouve a la fin — 176 fragments, zero ecart. Le
+# « ??? » d'une date est le sien et le reste. Deux coquilles font exception,
+# corrigees a sa demande le 15 aout 2026 : voir CORRECTIONS.
 #
 #   py _proto/construire-twd.py [chemin/vers/TWD.txt]
 #
@@ -76,7 +76,9 @@ def lire():
             entree['subitems'].append(s)
             continue
         if s.startswith('When does'):
-            entree['faqq'] = s
+            # La question de FAQ du document : TWD n'a pas de FAQ, Niko l'a
+            # tranche le 15 aout 2026. La ligne est lue pour ne pas etre
+            # prise pour une entree, et jetee.
             continue
         # ligne d'entree : date, puis eventuellement FLASHBACK, puis titre
         m = re.match(r'^(\S+)\s+(.*)$', s)
@@ -189,6 +191,23 @@ def esc(s):
     return (s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
              .replace('"', '&quot;'))
 
+# ── les deux coquilles corrigees, a la demande de Niko le 15 aout 2026 ───
+# Le contrat du script ne change pas — rien n'est reformule — mais ces deux
+# mots-la sont nommes un par un, et verifie() les compte en retouches
+# admises, comme la majuscule initiale du depliant. Toute autre difference
+# avec le document reste un ecart. Les cles servent aussi a retrouver la
+# ligne dans le document : apres('Consistancy') cherche l'intitule tel qu'il
+# y est ecrit, la correction ne vient qu'ensuite.
+CORRECTIONS = {'Consistancy': 'Consistency', 'overthink to much': 'overthink too much'}
+RETOUCHES = []
+def corrige(s):
+    t = s
+    for avant, apres_ in CORRECTIONS.items():
+        t = t.replace(avant, apres_)
+    if t != s:
+        RETOUCHES.append((s, t))
+    return t
+
 L = [x.strip() for x in lignes]
 def apres(rep, n=1):
     """La n-ieme ligne non vide qui suit un intitule du document."""
@@ -201,8 +220,8 @@ def apres(rep, n=1):
     return ''
 
 carte = lambda titre, ico, *ps: (
-    '<div class="key"><div class="key-h">' + ICONES[ico] + esc(titre) + '</div>' +
-    ''.join('<p>' + esc(p) + '</p>' for p in ps) + '</div>')
+    '<div class="key"><div class="key-h">' + ICONES[ico] + esc(corrige(titre)) + '</div>' +
+    ''.join('<p>' + esc(corrige(p)) + '</p>' for p in ps) + '</div>')
 
 # « Ce qui est ecarte » est un depliant sur les quatre autres univers, et il
 # l'est ici aussi : les trois reperes de lecture tiennent alors cote a cote.
@@ -259,7 +278,10 @@ CG = {
     'badgeLabels': {'serie': ['bs', 'TV SHOW'], 'web': ['bw', 'WEB SERIES']},
     'markLabels': {'flashback': 'FLASHBACK'},
     'badges': BADGES,
-    'faqCats': [],
+    # Pas de `faqCats` : TWD n'a pas de FAQ. La page ne pose donc aucun
+    # volet de questions sous les fiches — c'est une cle en moins, pas une
+    # liste vide, sinon le jour ou elle en aurait une on ne saurait pas si
+    # elle est absente ou en attente.
     'tmdbLang': 'en-US',
     'tmdbKey': CLE,
     'img': 'https://image.tmdb.org/t/p/',
@@ -267,16 +289,12 @@ CG = {
 CG['t'] = dict(CG['t'])
 CG['t']['nav'] = dict(CG['t']['nav']); CG['t']['nav']['twd'] = 'The Walking Dead'
 
-# la question de FAQ est celle du document, « XXX » devenant le jeton du site
-q = next((x['faqq'] for e in eres for x in e['entrees'] if 'faqq' in x), None)
-if q:
-    CG['faqCats'] = [{'key': 'quand', 'q': q.replace('XXX', '{name}')}]
-
 ENTETE = '''/* Donnees de la timeline The Walking Dead, ecrites depuis le document de
    Niko « TWD.txt ». Les textes affiches en sont decoupes mot pour mot :
    accroche, intitules de phases, titres, dates et sous-items. Rien n'y est
-   reformule — la coquille « Consistancy » et « ??? » comme date sont les
-   siennes, et restent telles quelles.
+   reformule — « ??? » comme date est le sien et reste tel quel. Seules
+   deux coquilles sont corrigees, a sa demande : « Consistancy » et
+   « overthink to much ». Elles sont nommees dans CORRECTIONS.
 
    Deuxieme page du site dont la source est anglaise, comme Star Trek : le
    francais reste a ecrire.
@@ -286,11 +304,11 @@ ENTETE = '''/* Donnees de la timeline The Walking Dead, ecrites depuis le docume
    sur TMDB — c'est la saison 0 de Fear the Walking Dead, et c'est de la
    qu'il tire sa duree et son visuel.
 
-   Ce qui manque encore, et qui vient de Niko :
-   - les niveaux. Le document annonce « Essential - Important - Optional »
-     mais n'en pose aucun sur les 45 entrees ; la page n'affiche donc pas
-     de filtre de niveau, comme Star Trek.
-   - les reponses de FAQ. La question est la sienne, les reponses non. */
+   Les niveaux ne viennent pas du document — il annonce « Essential -
+   Important - Optional » sans en poser aucun sur les 45 entrees. Niko les
+   a donnes par oeuvre le 14 aout 2026 : voir NIVEAUX.
+
+   Pas de FAQ : la page n'en a pas, et `faqCats` est donc absent de CG. */
 '''
 
 os.makedirs('_proto', exist_ok=True)
@@ -314,14 +332,15 @@ def verifie():
         t = _h.unescape(m).strip()
         if t:
             dur.append(t)
-    if CG['faqCats']:
-        dur.append(CG['faqCats'][0]['q'].replace('{name}', 'XXX'))
-    # Les deux seules retouches admises par la charte du depot : un intitule
-    # de structure que la prose n'a pas, et la majuscule qui suit un
-    # decoupage de phrase. Toute autre absence est une reecriture.
+    # Les retouches admises par la charte du depot : un intitule de structure
+    # que la prose n'a pas, la majuscule qui suit un decoupage de phrase, et
+    # les coquilles que Niko a demande de corriger. Toute autre absence est
+    # une reecriture.
     admis = {'1 entry': 'compteur du depliant, comme sur les quatre autres pages',
              _dd[0].upper() + _dd[1:]: 'majuscule initiale apres le decoupage '
                                        'de « ' + ECARTE[:24] + '… »'}
+    for avant, apres_ in RETOUCHES:
+        admis[apres_] = 'coquille corrigee : « ' + avant[:44] + ' »'
     absents = [t for t in dur if t not in brut]
     ecarts = [a for a in absents if a not in admis]
     print(f'  {len(dur)} fragments affiches, {len(absents) - len(ecarts)} '

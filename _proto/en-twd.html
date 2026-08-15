@@ -28,11 +28,15 @@
      anglais, et le français reste à écrire. Le sélecteur de langue est
      donc absent de l'en-tête — `e-startrek.html` n'existe pas encore, et
      un drapeau qui tombe en 404 ment plus qu'il n'informe.
-  2. PAS DE NIVEAUX. La section FILTERS du document ne liste que deux
-     groupes, « Types de médias » et « Markers ». Il n'y a donc ni ⭐ ni 🚨
-     sur cette page, et pas de groupe Niveau dans le tamis. Ne pas en
-     rajouter sans que Niko ait écrit les niveaux : les inventer ferait
-     passer un jugement éditorial pour une donnée.
+  2. LES NIVEAUX NE VIENNENT PAS DU DOCUMENT. La section FILTERS n'en pose
+     aucun sur les 45 entrées ; Niko les a donnés à part, œuvre par œuvre,
+     le 14 août 2026, et ils vivent dans `NIVEAUX` de `construire-twd.py`.
+     Ne jamais en inventer un : ce serait faire passer un jugement
+     éditorial pour une donnée.
+  2 bis. PAS DE FAQ. Le document écrit une question type, jamais de
+     réponses, et Niko a tranché le 15 août 2026 : cette page n'aura pas
+     de FAQ. `faqCats` est donc absent de CG, la fiche s'arrête au
+     synopsis TMDB, et le CSS des volets de questions est parti avec.
   3. LES REPÈRES LÉGENDENT. Le document les range sous « FILTERS », mais
      c'est une légende partout ailleurs sur le site — Star Wars, Marvel et
      DC posent FLASHBACK sous la ligne des filtres, sans bouton. The
@@ -201,12 +205,11 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   stroke-linecap:square;margin-top:1px}
 .keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
   text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
-/* Trois colonnes, et CONSISTANCY en dessous sur toute la largeur : c'est le
-   seul des quatre repères dont le texte fait un paragraphe entier, et en
-   quatrième colonne il tenait sur quinze lignes pendant que les trois autres
-   en faisaient trois. Posé à l'horizontale, il se lit. */
+/* Trois repères, trois colonnes, côte à côte. La règle héritée de Star Trek
+   posait le dernier sur toute la largeur — elle valait là-bas, où ils sont
+   quatre et où le quatrième aurait tenu seul sur sa rangée. Ici elle mettait
+   CONSISTENCY en dessous des deux autres, sans raison. */
 .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.keys .key:last-child{grid-column:1/-1}
 .key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
 .key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
   font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
@@ -270,9 +273,12 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
    et DC. Ils passent donc sous la ligne des filtres, sur leur propre rangée. */
 .marks{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px;font-weight:700;
   letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
-/* Trois rangées, dans l'ordre où on s'en sert : on cherche, on filtre, on
-   lit la légende. Les types de médias passent sous la barre de recherche —
-   côte à côte, la recherche les poussait hors de la ligne dès 1100 px. */
+/* Trois rangées, dans l'ordre où on s'en sert : on cherche et on choisit son
+   niveau, puis on filtre les types de médias, puis on lit la légende. Les
+   niveaux tiennent à côté de la recherche, comme sur Star Wars et Marvel.
+   Les types de médias gardent leur propre rangée : à cinq boutons sur la
+   ligne, la recherche les poussait dehors dès 1100 px. « Masquer les vus »
+   et le compteur descendent avec la légende, faute de place. */
 .srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1px}
 .sieve .wrap{row-gap:8px}
 
@@ -461,16 +467,8 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   text-transform:uppercase;padding:6px 13px;text-decoration:none;
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
 .expand-trailer-link:hover{filter:brightness(1.1)}
-.en-faq{margin-top:14px;display:flex;flex-direction:column;gap:6px}
-.faq{border-left:3px solid var(--uni);background:rgba(180,140,242,.07)}
-.faq>summary{cursor:pointer;list-style:none;padding:8px 12px;font-size:13.5px;font-weight:700}
-.faq>summary::-webkit-details-marker{display:none}
-.faq>summary::before{content:'+ ';color:var(--uni);font-weight:900}
-.faq[open]>summary::before{content:'– '}
-/* Les réponses de Niko tiennent souvent en plusieurs paragraphes — trois
-   pour The Original Series. Rendues d'un bloc, elles formaient un pavé. */
-.faq .a{padding:0 12px 10px;font-size:13px;color:rgba(255,253,247,.82)}
-.faq .a p+p{margin-top:8px}
+/* Pas de FAQ ici : la page n'en a pas, et le CSS des volets de questions
+   est parti avec — il reste sur les cinq autres univers. */
 
 /* la visionneuse d'affiche */
 .pm{position:fixed;inset:0;z-index:120;background:rgba(13,11,18,.92);display:none;
@@ -743,16 +741,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <input id="q" type="search" placeholder="Search…  ( / )" autocomplete="off"/>
       <button type="button" id="q-clear" aria-label="Clear search">✕</button>
     </div>
-    <button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>
-    <span class="fcount" id="fcount">45 / 45 shown</span>
+    <div class="sgroup" id="f-levels"><span class="lab">Level</span></div>
     <div class="srow">
-      <div class="sgroup" id="f-levels"><span class="lab">Level</span></div>
       <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
     </div>
     <div class="srow">
       <div class="marks"><span>Markers</span>
         <span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span>
       </div>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>
+      <span class="fcount" id="fcount">45 / 45 shown</span>
     </div>
   </div></div>
 
@@ -874,14 +872,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function rt(e){ return RT[e.id]||0; }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  /* Les réponses de Niko tiennent parfois en trois paragraphes. Elles sont
-     stockées avec des sauts de ligne et rendues en <p>, sinon elles sortent
-     en un seul pavé où la respiration de son texte disparaît. */
-  function paras(s){
-    return String(s||'').split('\n').filter(function(p){ return p.trim(); })
-      .map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
-  }
-
   var ICO={
     check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
     chev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
@@ -894,9 +884,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   $('#intro').innerHTML=D.notes;
 
   /* ── les filtres ─────────────────────────────────────────────────
-     Un seul groupe de boutons : les types de médias. Les repères du document
-     sont rendus en légende, en dur dans le HTML — voir le contrat de
-     direction en tête de fichier. Pas de niveaux non plus. */
+     Deux groupes de boutons : les niveaux, à côté de la recherche, et les
+     types de médias sur la rangée du dessous. Les repères du document sont
+     rendus en légende, en dur dans le HTML — voir le contrat de direction
+     en tête de fichier. */
   (function(){
     var lv=$('#f-levels'), tp=$('#f-types');
     ['must','important','bonus'].forEach(function(k){
@@ -981,7 +972,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<a class="bu-link" href="#'+e.id+'" data-copy data-ok="'+esc(T.copied)+
           '" title="'+esc(T.copyLink)+'" aria-label="'+esc(T.copyLink)+'">'+ICO.link+'</a>'+
         '<div class="bu-panel" hidden data-tmdb="'+(e.tmdb||'0')+'" data-media="'+(e.media||'tv')+'">'+
-          '<div class="en-rich"></div><div class="en-faq"></div></div>'+
+          '<div class="en-rich"></div></div>'+
       '</div>'+
     '</article>';
   }
@@ -1104,15 +1095,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var id=panel.dataset.tmdb, type=panel.dataset.media==='movie'?'movie':'tv';
     var IMG=CFG.img;
 
-    /* la FAQ : question et réponse du document, mot pour mot. Une entrée
-       peut porter sa propre question — le document écrit « Why now ? » une
-       fois au lieu du gabarit. */
-    if(e.faq&&CFG.faqCats){
-      $('.en-faq',panel).innerHTML=CFG.faqCats.map(function(c){
-        var q=e.faqq||c.q.replace('{name}',e.title);
-        return '<details class="faq"><summary>'+esc(q)+
-               '</summary><div class="a">'+paras(e.faq[c.key]||'')+'</div></details>'; }).join('');
-    }
+    /* Pas de FAQ sur cette page — la fiche s'arrête au synopsis TMDB. */
 
     box.innerHTML='<div class="expand-loading">'+T.loading+'</div>';
 
