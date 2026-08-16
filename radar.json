@@ -395,6 +395,23 @@
   }
  },
  {
+  "universe": "marvel",
+  "title": "Spidey and the Avengers: Halloween Team-Up!",
+  "date_sort": "2026-09-24",
+  "date_txt": "24/09/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Upcoming TV special.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "startrek",
   "title": "Star Trek: Strange New Worlds",
   "date_sort": "2026-09-24",
@@ -525,7 +542,7 @@
   "source": "TMDB",
   "precision": "day",
   "era": "",
-  "syn": "Vision, rebooted and having escaped from those who sought to weaponize him, has been in hiding. Searching for new meaning, he consults the AI personas embedded in his programming, including F.R.I.D.A.Y., E.D.I.T.H., J.A.R.V.I.S., and the infamous Ultron. His discreet existence ends when a bounty placed on his head thrusts him on the run with Thomas Shepard, a mysterious boy who may be Vision's son, reincarnate. As Vision evades capture, he must confront his nature, resist Ultron's influence, and unravel the enigma that is his young companion if he's to survive.",
+  "syn": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
