@@ -527,23 +527,6 @@
   }
  },
  {
-  "universe": "marvel",
-  "title": "Spidey and the Avengers: Halloween Team-Up!",
-  "date_sort": "2026-09-25",
-  "date_txt": "25/09/2026",
-  "kind": "Film",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Upcoming TV special.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "film",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-09-27",
