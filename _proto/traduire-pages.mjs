@@ -291,8 +291,8 @@ const TRADUCTIONS = [
      Le slot verrouillé n'annonce plus The Walking Dead : il est sorti
      des univers à venir, comme Star Trek avant lui. */
   ['The Walking Dead', 'The Walking Dead'],
-  ['Séries · Webséries · Ordre chronologique interne',
-   'TV Shows · Web Series · In-Universe Order'],
+  ['Séries · Webséries · Ordre chronologique complet',
+   'TV Shows · Web Series · Full chronological order'],
   ['/ 45 vus', '/ 45 watched'],
   ['Dragon Age… et d\'autres univers en préparation.',
    'Dragon Age… and more universes in the works.'],
