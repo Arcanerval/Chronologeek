@@ -22,6 +22,28 @@
   }
  },
  {
+  "universe": "twd",
+  "title": "The Walking Dead: Dead City",
+  "date_sort": "2026-08-16",
+  "date_txt": "16/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Maggie and Luis look for valuable resources, while Negan and Renata protect the city.",
+  "wiki": "",
+  "syn_fr": "Maggie et Luis recherchent des ressources précieuses, tandis que Negan et Renata protègent la ville.",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 4,
+   "mark": ""
+  }
+ },
+ {
   "universe": "starwars",
   "title": "The High Republic Adventures – Pathfinders 4",
   "date_sort": "2026-08-19",
@@ -96,6 +118,28 @@
   "ep": {
    "s": 1,
    "e": 2,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "twd",
+  "title": "The Walking Dead: Dead City",
+  "date_sort": "2026-08-23",
+  "date_txt": "23/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 5,
    "mark": ""
   }
  },
@@ -178,6 +222,28 @@
   }
  },
  {
+  "universe": "twd",
+  "title": "The Walking Dead: Dead City",
+  "date_sort": "2026-08-30",
+  "date_txt": "30/08/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 6,
+   "mark": ""
+  }
+ },
+ {
   "universe": "starwars",
   "title": "Hiding from the Dark",
   "date_sort": "2026-09-01",
@@ -235,6 +301,28 @@
   "ep": {
    "s": 1,
    "e": 4,
+   "mark": ""
+  }
+ },
+ {
+  "universe": "twd",
+  "title": "The Walking Dead: Dead City",
+  "date_sort": "2026-09-06",
+  "date_txt": "06/09/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 7,
    "mark": ""
   }
  },
@@ -317,6 +405,28 @@
   }
  },
  {
+  "universe": "twd",
+  "title": "The Walking Dead: Dead City",
+  "date_sort": "2026-09-13",
+  "date_txt": "13/09/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 3,
+   "e": 8,
+   "mark": "finale"
+  }
+ },
+ {
   "universe": "starwars",
   "title": "Reign of the Empire: Edge of the Abyss",
   "date_sort": "2026-09-15",
@@ -395,23 +505,6 @@
   }
  },
  {
-  "universe": "marvel",
-  "title": "Spidey and the Avengers: Halloween Team-Up!",
-  "date_sort": "2026-09-24",
-  "date_txt": "24/09/2026",
-  "kind": "Film",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Upcoming TV special.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "film",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "startrek",
   "title": "Star Trek: Strange New Worlds",
   "date_sort": "2026-09-24",
@@ -432,6 +525,23 @@
    "e": 10,
    "mark": "finale"
   }
+ },
+ {
+  "universe": "marvel",
+  "title": "Spidey and the Avengers: Halloween Team-Up!",
+  "date_sort": "2026-09-25",
+  "date_txt": "25/09/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Upcoming TV special.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "dc",
