@@ -105,6 +105,14 @@ export const TWD_TRADUCTIONS = [
   ['This guide works for first-time watches as well as rewatches.',
    'Ce guide vaut aussi bien pour un premier visionnage que pour un revisionnage.'],
 
+  /* ── CG.t.resetTWD ────────────────────────────────────────────────
+     La page reprenait `resetST` : le bouton « Réinitialiser » de The
+     Walking Dead demandait confirmation pour la progression Star Trek.
+     La clé est neuve, donc sans homologue à retrouver — et le tutoiement
+     est celui de Star Trek, dont elle est le voisin de table. */
+  ['Reset your Walking Dead progress?',
+   'Réinitialiser ta progression The Walking Dead ?'],
+
   /* ── les trois repères de lecture ─────────────────────────────────
      L'intitulé et deux des trois titres sont ceux de Star Trek. */
   ['How to read this', 'Repères de lecture'],

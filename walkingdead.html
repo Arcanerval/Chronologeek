@@ -1276,7 +1276,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var blob=new Blob([JSON.stringify({universe:'st',progress:prog},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob); a.download='chronologeek-startrek.json';
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-twd.json';
     document.body.appendChild(a); a.click(); a.remove();
   });
   $('#import').addEventListener('click',function(){ $('#import-file').click(); });
@@ -1298,7 +1298,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     r.readAsText(f); this.value='';
   });
   $('#reset').addEventListener('click',function(){
-    if(!confirm(T.resetST)) return;
+    if(!confirm(T.resetTWD)) return;
     prog={}; save();
     [].forEach.call(document.querySelectorAll('.bu'),function(a){
       a.classList.remove('done');
