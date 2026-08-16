@@ -253,24 +253,24 @@ const TRADUCTIONS = [
   ['Continuer', 'Continue'],
   ['Reprendre ▸', 'Resume ▸'],             // CG.t.resume : Reprendre → Resume
   ['Ouvrir ▸', 'Open ▸'],
-  ['Cinq chronologies tenues à jour, en français et en anglais.',
-   'Five timelines kept up to date, in French and English.'],
+  ['Six chronologies tenues à jour, en français et en anglais.',
+   'Six timelines kept up to date, in French and English.'],
   ['Suivi de progression à venir', 'Progress tracking coming soon'],
   ['Bientôt', 'Soon'],
   ['Les Dossiers', 'The Deep Dives'],
   ['Les', 'The'],                          // « Les <span>Dossiers</span> »
   ['Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu et autres choses méritant votre attention',
    'To go further into your favorite universes: novels, comics, expanded canon and other things worth your attention'],
-  ['5 univers · 534 au dossier', '5 universes · 534 in the Deep Dive'],
+  ['6 univers · 534 au dossier', '6 universes · 534 in the Deep Dive'],
   ['entrées cochées', 'entries checked'],
   // les deux boutons d'essai du proto, qui ne partiront pas en ligne
   ['proto : simuler une progression', 'proto: simulate progress'],
   ['proto : revenir à zéro', 'proto: back to zero'],
   // CG.t.legal3, précédé du point que le HTML pose après le lien
-  ['. Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC, Avatar and Star Trek are trademarks of their respective owners; Chronologeek is an independent fan project.'],
-  ['Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   'Star Wars, Marvel, DC, Avatar and Star Trek are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   'Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
 
   /* ── la case Star Trek ──────────────────────────────────────────
      Le cinquième univers est postérieur à la prod : sa case n'a pas de
@@ -281,8 +281,21 @@ const TRADUCTIONS = [
    'Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline'],
   ['/ 248 vus', '/ 248 watched'],
   ['À jour · août 2026', 'Updated · August 2026'],
-  ['Dragon Age · The Walking Dead… et d\'autres univers en préparation.',
-   'Dragon Age · The Walking Dead… and more universes in the works.'],
+
+  /* ── la case The Walking Dead ───────────────────────────────────
+     Sixième univers, même situation que Star Trek : rien à retrouver
+     dans une prod qui ne l'a jamais porté. Son nom ne se traduit pas —
+     aucune des six séries n'a de titre français — mais il doit figurer
+     ici, sinon la nav, le tiroir et le pied de page ressortent sans
+     traduction et le rapport les compte comme manquants.
+     Le slot verrouillé n'annonce plus The Walking Dead : il est sorti
+     des univers à venir, comme Star Trek avant lui. */
+  ['The Walking Dead', 'The Walking Dead'],
+  ['Séries · Webséries · Ordre chronologique interne',
+   'TV Shows · Web Series · In-Universe Order'],
+  ['/ 45 vus', '/ 45 watched'],
+  ['Dragon Age… et d\'autres univers en préparation.',
+   'Dragon Age… and more universes in the works.'],
 
   // ── timelines ──────────────────────────────────────────────────
   ['Chronologeek — Star Wars (proto E)', 'Chronologeek — Star Wars (proto E)'],
@@ -363,8 +376,8 @@ const TRADUCTIONS = [
   // L'accroche énumère les univers : elle est à reprendre à chaque fois qu'on
   // en ajoute un. Star Trek y est entré le 13 août 2026, comme dans les deux
   // titres de référencement de `seo.json` et dans le pied de page.
-  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar et Star Trek — mises à jour chaque jour.',
-   'Every upcoming Star Wars, Marvel, DC, Avatar and Star Trek release — updated every single day.'],
+  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead — mises à jour chaque jour.',
+   'Every upcoming Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead release — updated every single day.'],
   ['Rechercher une sortie', 'Search a release'],
   ['Support', 'Format'],                   // filtre par type de média
   ['Rien ne correspond. Essayez une autre orthographe, ou rallumez les filtres que vous avez éteints.',

@@ -10,12 +10,12 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Upcoming Releases — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek</title>
-<meta name="description" content="Every upcoming Star Wars, Marvel, DC, Avatar and Star Trek release — movies, shows, comics and games, with dates. Updated daily."/>
+<title>Upcoming Releases — Star Wars, Marvel, DC, Avatar, Star Trek &amp; The Walking Dead | Chronologeek</title>
+<meta name="description" content="Every upcoming Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead release — movies, shows, comics and games, with dates. Updated daily."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Chronologeek"/>
-<meta property="og:title" content="Upcoming Releases — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek"/>
-<meta property="og:description" content="Every upcoming Star Wars, Marvel, DC, Avatar and Star Trek release — movies, shows, comics and games, with dates. Updated daily."/>
+<meta property="og:title" content="Upcoming Releases — Star Wars, Marvel, DC, Avatar, Star Trek &amp; The Walking Dead | Chronologeek"/>
+<meta property="og:description" content="Every upcoming Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead release — movies, shows, comics and games, with dates. Updated daily."/>
 <meta property="og:image" content="https://chronologeek.app/images/og-banner.webp"/>
 <meta property="og:url" content="https://chronologeek.app/upcoming"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -51,7 +51,7 @@
 :root{
   --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
   --hot:#f0c97c; --gold-deep:#d5a05f;
-  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --soon:#8a8ab0;
+  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f; --soon:#8a8ab0;
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
   --doss-deep:#5c2060;
   /* la page s'ouvre dans le rose de « À venir » — sa couleur dans la nav */
@@ -407,7 +407,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <a href="/starwars">Star Wars</a>
       <a href="/marvel">Marvel</a>
       <a href="/dc">DC</a>
-      <a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a>
+      <a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a><a href="/walkingdead">The Walking Dead</a>
       <a href="#" class="upc" aria-current="page">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
     </nav>
@@ -423,7 +423,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
     <a href="/">Home</a><a href="/deep-dives/" class="doss">Deep Dives</a>
     <a href="/starwars">Star Wars</a><a href="/marvel">Marvel</a>
-    <a href="/dc">DC</a><a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a>
+    <a href="/dc">DC</a><a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a><a href="/walkingdead">The Walking Dead</a>
     <a href="#" class="upc" aria-current="page">Upcoming</a><a href="/whats-new" class="news">What's New</a>
   </nav>
 </header>
@@ -438,8 +438,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <h1 class="disp off">Upcoming</h1>
       <span class="tag"><em>▸</em> Updated every day</span>
     </div>
-    <p class="dek">Every upcoming Star Wars, Marvel, DC, Avatar and
-      Star Trek release — updated every single day.</p>
+    <p class="dek">Every upcoming Star Wars, Marvel, DC, Avatar, Star Trek and
+      The Walking Dead release — updated every single day.</p>
   </div>
 </section>
 
@@ -494,7 +494,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <li><a href="/starwars">Star Wars</a></li>
       <li><a href="/marvel">Marvel — MCU</a></li>
       <li><a href="/dc">DC Multiverse</a></li>
-      <li><a href="/avatar">Avatar</a></li><li><a href="/startrek">Star Trek</a></li>
+      <li><a href="/avatar">Avatar</a></li><li><a href="/startrek">Star Trek</a></li><li><a href="/walkingdead">The Walking Dead</a></li>
       <li><a href="/deep-dives/">Deep Dives</a></li>
     </ul></div>
     <div><h4>More</h4><ul>
@@ -505,9 +505,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <div class="legal">
       This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       API but is not endorsed or certified by TMDB. Book data from
-      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar and
-      Star Trek are trademarks of their respective
-      owners; Chronologeek is an independent fan project.
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar, Star Trek
+      and The Walking Dead are trademarks of their
+      respective owners; Chronologeek is an independent fan project.
       <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
     </div>
   </div>
@@ -527,7 +527,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* ── la table des univers et des supports, reprise de cg-upcoming.js ── */
   var UNI={starwars:['Star Wars','var(--sw)'],marvel:['Marvel','var(--mcu)'],
            dc:['DC','var(--dc)'],avatar:['Avatar','var(--av)'],
-           startrek:['Star Trek','var(--st)']};
+           startrek:['Star Trek','var(--st)'],twd:['The Walking Dead','var(--twd)']};
   var KIND={film:['Movie','#64b5f6'],tv:['TV show','#81c784'],comic:['Comic','#fb923c'],
             novel:['Novel','#a78bfa'],game:['Video game','#ffb74d'],book:['Book','#94a3b8'],
             video:['Video','#f472b6'],special:['Special','#ffa726'],other:['Other','#6b7280']};

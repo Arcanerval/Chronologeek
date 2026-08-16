@@ -42,7 +42,7 @@ const ecrire = (rel, contenu) => {
   writeFileSync(join(RACINE, rel), contenu.replace(/\r\n/g, '\n'));
 };
 
-/* ── Les neuf pages, dans leurs deux langues ────────────────────────────── */
+/* ── Les onze pages, dans leurs deux langues ────────────────────────────── */
 
 const ROUTES = [
   { cle: 'accueil',
@@ -67,6 +67,11 @@ const ROUTES = [
   { cle: 'startrek',
     fr: { proto: 'e-startrek.html',           sortie: 'fr/startrek.html',         url: '/fr/startrek' },
     en: { proto: 'en-startrek.html',          sortie: 'startrek.html',            url: '/startrek' } },
+  // The Walking Dead prend la chaîne à l'envers comme Star Trek : `en-twd.html`
+  // est écrit à la main, `e-twd.html` en descend par traduire-twd.mjs.
+  { cle: 'twd',
+    fr: { proto: 'e-twd.html',                sortie: 'fr/walkingdead.html',      url: '/fr/walkingdead' },
+    en: { proto: 'en-twd.html',               sortie: 'walkingdead.html',         url: '/walkingdead' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -112,6 +117,8 @@ const ASSETS = {
   'data-avatar-en.js':     '/data/avatar-en.js',
   'data-startrek.js':      '/data/startrek-fr.js',
   'data-startrek-en.js':   '/data/startrek-en.js',
+  'data-twd.js':           '/data/walkingdead-fr.js',
+  'data-twd-en.js':        '/data/walkingdead-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',

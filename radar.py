@@ -40,6 +40,7 @@ UNIVERSES = {
     "dc":       {"label": "DC",            "color": "#f5c842", "file": "dc.html"},
     "avatar":   {"label": "Avatar",        "color": "#7dd3fc", "file": "avatar.html"},
     "startrek": {"label": "Star Trek",     "color": "#b48cf2", "file": "startrek.html"},
+    "twd":      {"label": "The Walking Dead", "color": "#a8bf4f", "file": "walkingdead.html"},
 }
 
 # Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
@@ -48,6 +49,10 @@ TMDB_COMPANY_NAMES = {
     "marvel":   ["Marvel Studios", "Marvel Television", "Marvel Entertainment"],
     "dc":       ["DC Studios", "DC Films", "DC Entertainment", "DC Comics"],
     "avatar":   ["Avatar Studios", "Nickelodeon Animation Studio"],
+    # AMC Studios produit toute la franchise, Skybound est la maison de Robert
+    # Kirkman : ni l'une ni l'autre ne designe l'univers a elle seule, d'ou le
+    # garde-fou de titre ci-dessous.
+    "twd":      ["AMC Studios", "AMC Networks", "Skybound Entertainment"],
 }
 
 # Quand la société couvre plus large que l'univers, le titre doit encore
@@ -64,6 +69,12 @@ TMDB_COMPANY_NAMES = {
 # Trek applique à sa recherche par titre pour la même raison.
 UNIVERS_TITRE = {
     "avatar": re.compile(r"\b(avatar|korra|aang|airbender)\b", re.I),
+    # AMC Studios et AMC Networks portent Mad Men, Breaking Bad, Interview with
+    # the Vampire et le reste du catalogue de la chaine : sans ce motif, la
+    # lecture des episodes ramene toute la grille AMC au radar The Walking Dead.
+    # Les quinze oeuvres de la timeline disent toutes « Walking Dead » —
+    # « Fear the… », « Tales of the… », « The Walking Dead: Dead City ».
+    "twd": re.compile(r"\bwalking dead\b", re.I),
 }
 
 

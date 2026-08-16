@@ -37,6 +37,12 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
 
+      { nat:"site", uni:"twd", kind:"timeline",
+        title:"Nouvelle timeline : The Walking Dead",
+        txt:"45 entrées, de l'épidémie de Los Angeles à New York — les sept "+
+            "séries et les huit webséries dans un seul fil.",
+        href:"e-twd.html", cta:"Ouvrir la timeline" },
+
       { nat:"media", uni:"sw", kind:"comic",
         title:"The Fall of Kylo Ren 1-5", meta:"34 ABY", vo:true,
         txt:"Ajouté au Dossier Star Wars — le comic, en 34 ABY, juste après "+

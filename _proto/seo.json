@@ -83,6 +83,20 @@
       "image": "https://chronologeek.app/images/startrek.webp"
     }
   },
+  "twd": {
+    "fr": {
+      "title": "The Walking Dead — Chronologeek",
+      "ogTitle": "Timeline The Walking Dead — Chronologeek",
+      "desc": "La timeline The Walking Dead dans l'ordre chronologique interne — les sept séries et les huit webséries, de l'épidémie de Los Angeles à New York, sans spoil.",
+      "image": "https://chronologeek.app/images/twd.webp"
+    },
+    "en": {
+      "title": "The Walking Dead Timeline — Chronologeek",
+      "ogTitle": "The Walking Dead Timeline — Chronologeek",
+      "desc": "The Walking Dead timeline in in-universe order — all seven shows and the eight web series, from the Los Angeles outbreak to New York, spoiler-free.",
+      "image": "https://chronologeek.app/images/twd.webp"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers — Chronologeek",
@@ -127,15 +141,15 @@
   },
   "a-venir": {
     "fr": {
-      "title": "Prochaines sorties — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
-      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
-      "desc": "Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar et Star Trek — films, séries, comics et jeux, avec les dates. Mis à jour chaque jour.",
+      "title": "Prochaines sorties — Star Wars, Marvel, DC, Avatar, Star Trek &amp; The Walking Dead | Chronologeek",
+      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar, Star Trek &amp; The Walking Dead | Chronologeek",
+      "desc": "Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead — films, séries, comics et jeux, avec les dates. Mis à jour chaque jour.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
-      "title": "Upcoming Releases — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
-      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar &amp; Star Trek | Chronologeek",
-      "desc": "Every upcoming Star Wars, Marvel, DC, Avatar and Star Trek release — movies, shows, comics and games, with dates. Updated daily.",
+      "title": "Upcoming Releases — Star Wars, Marvel, DC, Avatar, Star Trek &amp; The Walking Dead | Chronologeek",
+      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar, Star Trek &amp; The Walking Dead | Chronologeek",
+      "desc": "Every upcoming Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead release — movies, shows, comics and games, with dates. Updated daily.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   }

@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-08", label:"August 2026", items:[
+      {"nat":"site","uni":"twd","kind":"timeline","title":"New timeline: The Walking Dead","txt":"45 entries, from the Los Angeles outbreak to New York — all seven shows and the eight web series in a single thread.","href":"en-twd.html","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"comic","title":"The Fall of Kylo Ren 1-5","meta":"34 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.","href":"en-dossier-star-wars.html#34-aby-the-fall-of-kylo-ren-1-5","cta":"See in the Deep Dive"},
       {"nat":"site","uni":"startrek","kind":"timeline","title":"New timeline: Star Trek","txt":"248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.","href":"en-startrek.html","cta":"Open the timeline"}
     ]},

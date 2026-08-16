@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
+<link rel="icon" type="image/png" href="/images/icon-192.png"/>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#08080f"/>
+<link rel="apple-touch-icon" href="/images/icon-192.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Chronologeek"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="robots" content="noindex,nofollow"/>
-<title>Chronologeek — Star Trek (proto E)</title>
+<title>The Walking Dead Timeline — Chronologeek</title>
+<meta name="description" content="The Walking Dead timeline in in-universe order — all seven shows and the eight web series, from the Los Angeles outbreak to New York, spoiler-free."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Chronologeek"/>
+<meta property="og:title" content="The Walking Dead Timeline — Chronologeek"/>
+<meta property="og:description" content="The Walking Dead timeline in in-universe order — all seven shows and the eight web series, from the Los Angeles outbreak to New York, spoiler-free."/>
+<meta property="og:image" content="https://chronologeek.app/images/twd.webp"/>
+<meta property="og:url" content="https://chronologeek.app/walkingdead"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/walkingdead"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/walkingdead"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/walkingdead"/>
+<link rel="canonical" href="https://chronologeek.app/walkingdead"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <link rel="preconnect" href="https://image.tmdb.org"/>
-<link rel="preload" as="image" href="/images/startrek.webp"/>
+<link rel="preload" as="image" href="/images/twd.webp"/>
 <!--
   ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
   Même contrat que Star Wars, Marvel, DC et Avatar : la page ne liste pas,
@@ -17,63 +35,73 @@
   chevrons en diagonale, trame de demi-teinte, titrage condensé à ombre dure.
   Aucun halo, aucun verre, aucun arrondi.
   ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
-  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#b48cf2).
-  TEXTES : toute la prose vient de « Timeline Star Trek.md », mot pour mot.
-  Rien n'est réécrit ici. 915 fragments vérifiés à la génération.
+  TERMINÉ : jamais l'or — la couleur de l'univers (#a8bf4f).
+  TEXTES : toute la prose vient de « TWD.txt », mot pour mot.
+  Rien n'est réécrit ici. 176 fragments vérifiés à la génération.
 
   ═══ CE QUE CETTE PAGE A DE PARTICULIER ══════════════════════════════
-  1. C'est la seule page du site dont la SOURCE EST ANGLAISE. Les quatre
-     autres univers s'écrivent en français et l'anglais s'en déduit par
-     `traduire.mjs`. Ici c'est l'inverse : Niko a écrit son guide en
-     anglais, et le français reste à écrire. Le sélecteur de langue est
-     donc absent de l'en-tête — `e-startrek.html` n'existe pas encore, et
-     un drapeau qui tombe en 404 ment plus qu'il n'informe.
-  2. PAS DE NIVEAUX. La section FILTERS du document ne liste que deux
-     groupes, « Types de médias » et « Markers ». Il n'y a donc ni ⭐ ni 🚨
-     sur cette page, et pas de groupe Niveau dans le tamis. Ne pas en
-     rajouter sans que Niko ait écrit les niveaux : les inventer ferait
-     passer un jugement éditorial pour une donnée.
+  1. C'EST UNE PAGE DONT LA SOURCE EST ANGLAISE, la seconde après Star
+     Trek. Les quatre premiers univers s'écrivent en français et
+     l'anglais s'en déduit par `traduire.mjs` ; ici c'est l'inverse —
+     Niko a écrit son guide en anglais, et `e-twd.html` en descend par
+     `node _proto/traduire-twd.mjs`. NE JAMAIS ÉDITER `e-twd.html` À LA
+     MAIN, ni inscrire cette page dans `traduire-pages.mjs` : ce
+     script-là produit l'anglais depuis le français et écraserait la
+     source par une retraduction de sa propre sortie, sans un mot.
+  2. LES NIVEAUX NE VIENNENT PAS DU DOCUMENT. La section FILTERS n'en pose
+     aucun sur les 45 entrées ; Niko les a donnés à part, œuvre par œuvre,
+     le 14 août 2026, et ils vivent dans `NIVEAUX` de `construire-twd.py`.
+     Ne jamais en inventer un : ce serait faire passer un jugement
+     éditorial pour une donnée.
+  2 bis. PAS DE FAQ. Le document écrit une question type, jamais de
+     réponses, et Niko a tranché le 15 août 2026 : cette page n'aura pas
+     de FAQ. `faqCats` est donc absent de CG, la fiche s'arrête au
+     synopsis TMDB, et le CSS des volets de questions est parti avec.
   3. LES REPÈRES LÉGENDENT. Le document les range sous « FILTERS », mais
      c'est une légende partout ailleurs sur le site — Star Wars, Marvel et
-     DC posent FLASHBACK sous la ligne des filtres, sans bouton. Star Trek
-     fait pareil : FLASHBACK et KELVIN TIMELINE disent ce que porte une
-     entrée, ils ne masquent rien.
-  4. LES BANDEAUX. Cinq avertissements de spoil et une note libre vivent
-     dans la timeline sans être des médias. Ils portent `type:"note"`, ne
-     comptent pas dans la progression, n'ont pas de case à cocher et ne
-     prennent pas de numéro. Un bandeau de spoil est REPLIÉ par défaut —
-     un avertissement qui montre ce contre quoi il prévient ne sert à rien.
+     DC posent FLASHBACK sous la ligne des filtres, sans bouton. The
+     Walking Dead fait pareil : FLASHBACK dit ce que porte une entrée,
+     il ne masque rien. C'est le seul repère du guide.
+  4. LES BANDEAUX. Le moteur sait poser des notes dans la timeline —
+     `type:"note"`, hors progression, sans case ni numéro. Le document
+     de Niko n'en écrit aucune pour cet univers : il n'y en a donc pas
+     sur cette page. Le mécanisme reste disponible.
   5. UNE TABLE RT CALCULÉE ÉPISODE PAR ÉPISODE. `runtime.py` ne connaît pas
-     Star Trek, et une entrée n'y est presque jamais une œuvre entière : elle
-     nomme des épisodes précis (« Season 6 Episodes 1-4 »). La table de
-     `data-startrek-en.js` somme donc les durées TMDB épisode par épisode, en
-     lisant /tv/{id}/season/{n} — 746 h au total. Les films prennent leur
-     durée directe. Ne pas la faire produire par `runtime.py` : il compte des
-     saisons entières, ce qui donnerait quatre fois trop ici.
-  6. LES VIGNETTES SONT DISTANTES. 248 entrées, aucune image Star Trek en
-     local : chaque entrée pointe le backdrop TMDB de son œuvre, 27 visuels
-     réutilisés. À localiser si le proto est validé.
+     cet univers, et une entrée n'y est jamais une œuvre entière : elle
+     nomme des épisodes précis (« Season 5 Episodes 1-8 »). La table de
+     `data-twd-en.js` somme donc les durées TMDB épisode par épisode, en
+     lisant /tv/{id}/season/{n} — 287 h au total. Ne pas la faire produire
+     par `runtime.py` : il compte des saisons entières, et le guide découpe
+     la saison 5 de Fear en deux tranches qui se chevauchent.
+  6. LES VIGNETTES SONT DISTANTES. 45 entrées, aucune image en local :
+     chaque entrée pointe le backdrop TMDB de son œuvre, 15 visuels
+     réutilisés. Flight 462 n'a pas de fiche propre — c'est la saison 0
+     de Fear the Walking Dead, et il en reprend le visuel. À localiser
+     et à passer en WebP si le proto est validé.
 -->
 <style>
 :root{
   --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
   /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
   --hot:#f0c97c; --gold-deep:#d5a05f;
-  /* la marque « terminé » prend la couleur de l'univers, pas un vert générique.
-     Le lilas LCARS : ni le bleu de Star Wars, ni le jaune de DC, ni le cyan
-     d'Avatar — la seule des cinq qui ne se confond avec aucune autre. */
-  --uni:#b48cf2;
-  /* huit encres d'ère, une par siècle : la page se noie dedans, une région
-     à la fois. Elles suivent l'ordre du guide, pas une gamme décorative. */
-  --era1:#1d3a6b; --era2:#14515c; --era3:#8a3a12; --era4:#2b2f6b;
-  --era5:#5c2060; --era6:#0f5b4a; --era7:#6b1230; --era8:#3b3358;
+  /* la marque « terminé » prend la couleur de l'univers. L'olive de la
+     décomposition : le rouge appartient déjà à Marvel, et c'est la couleur
+     que l'affiche de la série porte depuis la première saison. */
+  --uni:#a8bf4f;
+  /* quatorze encres de phase, une par lieu — et un lieu revisité reprend
+     la sienne : « Back to Virginia » est la teinte de Virginia, pas une
+     quinzième couleur. Neuf teintes pour quatorze phases. */
+  --era1:#7a5a16; --era2:#2b3f6b; --era3:#2f5330; --era4:#14515c;
+  --era5:#7a3418; --era6:#14515c; --era7:#7a3418; --era8:#4a3566;
+  --era9:#14515c; --era10:#2f5330; --era11:#14515c; --era12:#2a3d4a;
+  --era13:#33265e; --era14:#5c2233;
   /* les trois entrées colorées de la nav */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
-  /* badges de type, charte du site. « short » prend l'orange des spéciaux :
-     les Short Treks n'entrent dans aucune des quatre cases existantes. */
-  --t-film:#64b5f6; --t-serie:#81c784; --t-anime:#ce93d8; --t-short:#ffa726;
-  /* les deux repères */
-  --m-flashback:#f0c97c; --m-kelvin:#7dd3fc;
+  /* badges de type, charte du site. Le guide ne suit que deux formes :
+     la série télé, et la série web qui prend l'orange des spéciaux. */
+  --t-serie:#81c784; --t-web:#ffa726;
+  /* le seul repère du guide */
+  --m-flashback:#f0c97c;
   --era:var(--era1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -142,16 +170,17 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 /* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
 .attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
   min-height:min(60vh,520px);display:flex;align-items:flex-end}
-/* La bannière est locale — `images/startrek.webp`, posée par Niko. Les autres
-   univers font pareil ; seules les vignettes des entrées viennent de TMDB. */
+/* La bannière est locale — `images/twd.webp`, posée par Niko, comme les
+   cinq autres univers. Seules les vignettes des entrées viennent de TMDB,
+   sauf Flight 462 qui n'a pas de fiche propre et a la sienne. */
 .plane{position:absolute;inset:-5% -2%;background-size:cover;background-position:center 42%;
-  background-image:url(/images/startrek.webp)}
+  background-image:url(/images/twd.webp)}
 .plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
 .plane.p2{inset:-9% -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
   clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
 .veil{position:absolute;inset:0;
   background:linear-gradient(to top,var(--ink) 5%,
-             color-mix(in srgb,#b48cf2 46%,var(--ink)) 56%,
+             color-mix(in srgb,#a8bf4f 34%,var(--ink)) 56%,
              color-mix(in srgb,var(--era4) 40%,transparent))}
 .attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
 .attract h1{font-size:clamp(50px,11vw,140px);max-width:12ch}
@@ -165,9 +194,9 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   color:rgba(255,253,247,.66);display:flex;align-items:center;gap:7px}
 .upd i{width:8px;height:8px;background:var(--uni);display:block}
 
-/* Pas de case « Shorts » : Short Treks est une série d'anthologie, elle est
-   comptée avec les autres — dix séries. Le type SHORT reste au tamis et sur
-   les entrées, c'est un des quatre types de médias du document. */
+/* Cinq cases : sept séries télé, huit séries web, quatorze phases, le total
+   des entrées et le temps restant. Le document ne connaît que deux types
+   de médias, « TV Show » et « Web series ». */
 .stats{display:flex;flex-wrap:nowrap;gap:0;margin-top:20px;border:2px solid var(--paper);
   background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
 .stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
@@ -196,12 +225,11 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   stroke-linecap:square;margin-top:1px}
 .keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
   text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
-/* Trois colonnes, et CONSISTENCY en dessous sur toute la largeur : c'est le
-   seul des quatre repères dont le texte fait un paragraphe entier, et en
-   quatrième colonne il tenait sur quinze lignes pendant que les trois autres
-   en faisaient trois. Posé à l'horizontale, il se lit. */
+/* Trois repères, trois colonnes, côte à côte. La règle héritée de Star Trek
+   posait le dernier sur toute la largeur — elle valait là-bas, où ils sont
+   quatre et où le quatrième aurait tenu seul sur sa rangée. Ici elle mettait
+   CONSISTENCY en dessous des deux autres, sans raison. */
 .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.keys .key:last-child{grid-column:1/-1}
 .key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
 .key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
   font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
@@ -265,9 +293,12 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
    et DC. Ils passent donc sous la ligne des filtres, sur leur propre rangée. */
 .marks{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px;font-weight:700;
   letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
-/* Trois rangées, dans l'ordre où on s'en sert : on cherche, on filtre, on
-   lit la légende. Les types de médias passent sous la barre de recherche —
-   côte à côte, la recherche les poussait hors de la ligne dès 1100 px. */
+/* Trois rangées, dans l'ordre où on s'en sert : on cherche et on choisit son
+   niveau, puis on filtre les types de médias, puis on lit la légende. Les
+   niveaux tiennent à côté de la recherche, comme sur Star Wars et Marvel.
+   Les types de médias gardent leur propre rangée : à cinq boutons sur la
+   ligne, la recherche les poussait dehors dès 1100 px. « Masquer les vus »
+   et le compteur descendent avec la légende, faute de place. */
 .srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1px}
 .sieve .wrap{row-gap:8px}
 
@@ -298,10 +329,23 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
 .rows{display:flex;flex-direction:column;gap:10px}
 .bu{position:relative;display:flex;align-items:flex-start;gap:10px}
 .bu[hidden]{display:none}
-/* Colonne de gauche : la case, et rien d'autre. Star Trek n'a pas de
-   niveaux d'importance — voir le contrat de direction, point 2. */
+/* Colonne de gauche : la case, puis la pastille de niveau. Niko a donné
+   les trois niveaux le 14 août : essentiel pour Fear, The Walking Dead,
+   The Ones Who Live, Daryl Dixon et Dead City ; important pour World
+   Beyond et l'épisode 3 de Tales ; optionnel pour le reste. Les icônes
+   passent au trait comme sur les quatre autres pages — l'étoile et le
+   gyrophare en emoji jurent avec le titrage. */
 .bu-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;
   margin-top:12px;width:34px}
+.bu-side .lv{display:block;line-height:0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:miter;stroke-linecap:square}
+.bu-side .ic{width:25px;height:25px}
+.lv.must{color:var(--hot)}
+.lv.imp{color:#ff9d5c}
+.sieve .ic{width:15px;height:15px}
+.sieve button.must{color:var(--hot)}
+.sieve button.imp{color:#ff9d5c}
+.sieve button.must[aria-pressed=true],.sieve button.imp[aria-pressed=true]{color:var(--ink)}
 .bu-chk{width:30px;height:30px;background:none;cursor:pointer;
   border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
   display:grid;place-items:center;padding:0;color:transparent;
@@ -332,6 +376,13 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
 .ft{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   padding:2px 8px;color:var(--k,var(--hot));border:1px solid var(--k,var(--hot))}
+/* « VO » signale l'absence de version française — les huit webséries. Il se
+   distingue du badge de type par le trait plutôt que par l'aplat : c'est une
+   réserve sur l'entrée, pas une catégorie de plus. Le dessin est celui
+   d'Avatar et du Dossier Star Wars, plus menu que le badge de type, et il
+   prend la couleur de l'univers, l'or étant déjà celui de FLASHBACK. */
+.vo{font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:1px 5px;
+  color:var(--uni);border:1px solid var(--uni)}
 .bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
   line-height:1.02;text-transform:uppercase}
 .bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
@@ -443,16 +494,8 @@ body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;paddi
   text-transform:uppercase;padding:6px 13px;text-decoration:none;
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
 .expand-trailer-link:hover{filter:brightness(1.1)}
-.en-faq{margin-top:14px;display:flex;flex-direction:column;gap:6px}
-.faq{border-left:3px solid var(--uni);background:rgba(180,140,242,.07)}
-.faq>summary{cursor:pointer;list-style:none;padding:8px 12px;font-size:13.5px;font-weight:700}
-.faq>summary::-webkit-details-marker{display:none}
-.faq>summary::before{content:'+ ';color:var(--uni);font-weight:900}
-.faq[open]>summary::before{content:'– '}
-/* Les réponses de Niko tiennent souvent en plusieurs paragraphes — trois
-   pour The Original Series. Rendues d'un bloc, elles formaient un pavé. */
-.faq .a{padding:0 12px 10px;font-size:13px;color:rgba(255,253,247,.82)}
-.faq .a p+p{margin-top:8px}
+/* Pas de FAQ ici : la page n'en a pas, et le CSS des volets de questions
+   est parti avec — il reste sur les cinq autres univers. */
 
 /* la visionneuse d'affiche */
 .pm{position:fixed;inset:0;z-index:120;background:rgba(13,11,18,.92);display:none;
@@ -496,9 +539,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 /* ══ le delta de Starfleet : le retour en haut ═════════════════════
    Star Wars a Grogu, Marvel son logo, Avatar a Appa — chacun a deux images
-   et bascule au survol. Star Trek a les siennes depuis que Niko les a
-   posées : `startrekmouseover.webp` au repos, `startrekmouseover2.webp`
-   au survol. (Les deux `starfleet*.svg` qui tenaient la place avant elles
+   et bascule au survol. The Walking Dead attend les siennes : le proto met
+   un chevron dessiné, pour que le bouton existe et que le JS le trouve.
+   (Les deux `starfleet*.svg` qui tenaient la place avant celles de Trek
    ne servent plus.)
 
    Les deux fichiers arrivaient avec des toiles différentes — 250×315 et
@@ -514,6 +557,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 #totop.on{opacity:1;pointer-events:auto;transform:none}
 #totop span{position:relative;display:block;width:96px;height:96px}
 #totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+/* proto : la mascotte n'existe pas encore, un chevron tient la place */
+#totop .totop-chev{display:grid;place-items:center;width:100%;height:100%;
+  border:2px solid var(--paper);background:var(--ink)}
+#totop .totop-chev svg{width:44px;height:44px;fill:none;stroke:var(--paper);stroke-width:2.4}
+#totop:hover .totop-chev{background:var(--uni);border-color:var(--uni)}
+#totop:hover .totop-chev svg{stroke:var(--ink)}
 #totop .hv{opacity:0}
 #totop:hover .nl{opacity:0}
 #totop:hover .hv{opacity:1}
@@ -653,36 +702,38 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </head>
 <body>
 
-<a class="skip" href="#body">Aller au contenu</a>
+<a class="skip" href="#body">Skip to content</a>
 
 <header>
   <div class="wrap">
-    <a class="brand" href="e-accueil.html"><img src="/images/logo-chronologeek.webp" alt="Chronologeek"/></a>
+    <a class="brand" href="/"><img src="/images/logo-chronologeek.webp" alt="Chronologeek"/></a>
     <nav class="nav-links" aria-label="Navigation">
-      <a href="e-accueil.html">Accueil</a>
-      <a href="e-dossiers.html" class="doss">Dossiers</a>
-      <a href="e-starwars.html">Star Wars</a>
-      <a href="e-marvel.html">Marvel</a>
-      <a href="e-dc.html">DC</a>
-      <a href="e-avatar.html">Avatar</a>
-      <a href="#" aria-current="page">Star Trek</a><a href="e-twd.html">The Walking Dead</a>
-      <a href="e-a-venir.html" class="upc">À venir</a>
-      <a href="e-nouveautes.html" class="news">Nouveautés</a>
+      <a href="/">Home</a>
+      <a href="/deep-dives/" class="doss">Deep Dives</a>
+      <a href="/starwars">Star Wars</a>
+      <a href="/marvel">Marvel</a>
+      <a href="/dc">DC</a>
+      <a href="/avatar">Avatar</a>
+      <a href="/startrek">Star Trek</a>
+      <a href="#" aria-current="page">The Walking Dead</a>
+      <a href="/upcoming" class="upc">Upcoming</a>
+      <a href="/whats-new" class="news">What's New</a>
     </nav>
     <div class="nav-tools">
-      <a class="icon-btn lang-btn" href="en-startrek.html" aria-label="Switch to English" title="Switch to English">
-        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)" fill="none"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="8"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="13"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="7"/></g></svg>
+      <a class="icon-btn lang-btn" href="/fr/walkingdead" aria-label="Passer en français" title="Passer en français">
+        <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
       </a>
-      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
+      <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
-  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
-    <a href="e-accueil.html">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a>
-    <a href="e-starwars.html">Star Wars</a><a href="e-marvel.html">Marvel</a><a href="e-dc.html">DC</a>
-    <a href="e-avatar.html">Avatar</a><a href="#" aria-current="page">Star Trek</a><a href="e-twd.html">The Walking Dead</a>
-    <a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a>
+  <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
+    <a href="/">Home</a><a href="/deep-dives/" class="doss">Deep Dives</a>
+    <a href="/starwars">Star Wars</a><a href="/marvel">Marvel</a><a href="/dc">DC</a>
+    <a href="/avatar">Avatar</a><a href="/startrek">Star Trek</a>
+    <a href="#" aria-current="page">The Walking Dead</a>
+    <a href="/upcoming" class="upc">Upcoming</a><a href="/whats-new" class="news">What's New</a>
   </nav>
 </header>
 
@@ -693,19 +744,19 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="halftone" aria-hidden="true"></div>
   <div class="veil" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="tag">Ordre chronologique interne</span>
-    <h1 class="disp off">Star Trek</h1>
-    <p class="dek">Films · Séries · Séries animées · Courts métrages — toute la saga, du 21e au 43e siècle.
-      <b>Cochez ce que vous avez vu, votre progression est sauvegardée.</b></p>
-    <p class="upd"><i aria-hidden="true"></i> À jour · août 2026</p>
+    <span class="tag">Chronological Order</span>
+    <h1 class="disp off">The Walking Dead</h1>
+    <p class="dek">TV Shows · Web Series
+      <b>Check off what you've watched — your progress is saved.</b></p>
+    <p class="upd"><i aria-hidden="true"></i> Updated · August 2026</p>
     <div class="stats">
-      <div class="s"><b>14</b><span>Films</span></div>
-      <div class="s"><b>10</b><span>Séries</span></div>
-      <div class="s"><b>3</b><span>Séries animées</span></div>
-      <div class="s"><b id="s-tot">248</b><span>Entrées</span></div>
-      <div class="s"><b id="s-h">746 h</b><span>Restant à voir</span></div>
+      <div class="s"><b>7</b><span>TV Shows</span></div>
+      <div class="s"><b>8</b><span>Web Series</span></div>
+      <div class="s"><b>14</b><span>Phases</span></div>
+      <div class="s"><b id="s-tot">45</b><span>Entries</span></div>
+      <div class="s"><b id="s-h">288 h</b><span>Left to watch</span></div>
     </div>
-    <button class="start" id="start" type="button">Commencer <em>▸</em></button>
+    <button class="start" id="start" type="button">Start <em>▸</em></button>
   </div>
 </section>
 
@@ -716,18 +767,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="sieve"><div class="wrap" id="sieve">
     <div class="search" id="searchbox">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <label class="skip" for="q">Rechercher dans la timeline</label>
-      <input id="q" type="search" placeholder="Rechercher… ( / )" autocomplete="off"/>
-      <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
+      <label class="skip" for="q">Search the timeline</label>
+      <input id="q" type="search" placeholder="Search…  ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Clear search">✕</button>
     </div>
-    <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les vus</button>
-    <span class="fcount" id="fcount">248 / 248 affichées</span>
-    <div class="srow"><div class="sgroup" id="f-types"><span class="lab">Types de média</span></div></div>
+    <div class="sgroup" id="f-levels"><span class="lab">Level</span></div>
     <div class="srow">
-      <div class="marks"><span>Repères</span>
+      <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
+    </div>
+    <div class="srow">
+      <div class="marks"><span>Markers</span>
         <span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span>
-        <span class="ft" style="--k:var(--m-kelvin)">CHRONOLOGIE KELVIN</span>
       </div>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>
+      <span class="fcount" id="fcount">45 / 45 shown</span>
     </div>
   </div></div>
 
@@ -739,78 +792,89 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="foot">
     <div>
       <h4>Chronologeek</h4>
-      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias, dans
-        l’ordre chronologique, sans spoil. Construit et maintenu par une seule personne qui regarde tout deux fois.</p>
+      <p>Timelines for the universes worth getting lost in. Every medium, chronological order,
+        spoiler-free. Built and maintained by one person who watches everything twice.</p>
     </div>
     <div><h4>Timelines</h4><ul>
-      <li><a href="e-starwars.html">Star Wars</a></li>
-      <li><a href="e-marvel.html">Marvel — MCU</a></li>
-      <li><a href="e-dc.html">DC Multivers</a></li>
-      <li><a href="e-avatar.html">Avatar</a></li>
-      <li><a href="#">Star Trek</a></li>
-      <li><a href="e-twd.html">The Walking Dead</a></li>
-      <li><a href="e-dossiers.html">Dossiers</a></li>
+      <li><a href="/starwars">Star Wars</a></li>
+      <li><a href="/marvel">Marvel — MCU</a></li>
+      <li><a href="/dc">DC Multiverse</a></li>
+      <li><a href="/avatar">Avatar</a></li>
+      <li><a href="/startrek">Star Trek</a></li>
+      <li><a href="#">The Walking Dead</a></li>
+      <li><a href="/deep-dives/">Deep Dives</a></li>
     </ul></div>
-    <div><h4>Plus</h4><ul>
-      <li><a href="e-a-venir.html">Sorties à venir</a></li>
-      <li><a href="e-nouveautes.html">Nouveautés</a></li>
+    <div><h4>More</h4><ul>
+      <li><a href="/upcoming">Upcoming releases</a></li>
+      <li><a href="/whats-new">What's new</a></li>
       <li><a href="#contact" data-contact>Contact</a></li>
     </ul></div>
     <div class="legal">
-      Ce produit utilise l’API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
-      mais n’est ni approuvé ni certifié par TMDB. Données livres :
-      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar, Star Trek et The
-      Walking Dead sont des marques de leurs ayants droit respectifs
-      ; Chronologeek est un projet de fan indépendant.
+      This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      API but is not endorsed or certified by TMDB. Book data from
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
+      Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners;
+      Chronologeek is an independent fan project.
       <br/>© 2026 Chronologeek — <a href="#">chronologeek.app</a>
     </div>
   </div>
 </footer>
 
-<button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
-  <span><img class="nl" src="/images/startrekmouseover.webp" alt=""/><img class="hv" src="/images/startrekmouseover2.webp" alt=""/></span>
+<button id="totop" aria-label="Back to top" title="Back to top">
+  <span class="totop-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
 </button>
 
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">248</span></b>
-    <span class="lbl">vus</span>
+    <span class="lbl">watched</span>
     <span class="bar"><i id="k-fill"></i></span>
-    <span class="lbl">Restant à voir <b style="font-size:14px" id="k-time">746 h</b></span>
+    <span class="lbl">Left to watch <b style="font-size:14px" id="k-time">746 h</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
   </button>
   <div class="hud-panel" id="hud-panel" hidden>
     <div class="hud-in">
       <div class="pacts">
-        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Exporter</button>
-        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Importer</button>
+        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export</button>
+        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Import</button>
         <input type="file" id="import-file" accept="application/json" hidden/>
         <button class="btn" type="button" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
-        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Réinitialiser</button>
+        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Reset</button>
       </div>
       <p class="phint">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>Votre progression est sauvegardée sur ce navigateur — utilisez <b>Exporter</b> pour en garder une copie ou l’importer sur un autre appareil ou navigateur</span>
+        <span>Your progression is saved in this browser — use <b>Export</b> to keep a backup or import on another device or browser</span>
       </p>
     </div>
   </div>
 </div>
 
 <div class="bx" id="bx" hidden><div class="bx-in">
-  <div class="bx-h"><h3>Mes Badges</h3><span class="n" id="bx-n">0 débloqués</span>
-    <button type="button" id="bx-x" aria-label="Fermer">✕</button></div>
+  <div class="bx-h"><h3>My Badges</h3><span class="n" id="bx-n">0 unlocked</span>
+    <button type="button" id="bx-x" aria-label="Close">✕</button></div>
   <div class="bx-g" id="bx-g"></div>
 </div></div>
 
-<script src="data-startrek.js"></script>
+<script src="/data/walkingdead-en.js"></script>
 <script>
 (function(){
   'use strict';
   document.documentElement.className+=' js';
 
-  var CFG=window.CG, D=window.ST, RT=window.RT||{};
+  var CFG=window.CG, D=window.TWD, RT=window.RT||{};
   var T=CFG.t;
-  var KEY='cg-proto-st';
+  /* Les niveaux passent au trait, comme sur Star Wars et Marvel. Le
+     libellé garde le mot de Niko, emoji de tête retiré. */
+  var LVICO={
+    must:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>',
+    important:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>',
+    bonus:''};
+  var LVCLS={must:'must',important:'imp',bonus:''};
+  function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
+  var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
+  var KEY='cg-proto-twd';
 
   /* ── deux natures d'items dans une ère ────────────────────────────
      Les entrées comptent dans la progression, les bandeaux non. On les
@@ -830,7 +894,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
 
   /* Plus de `offM` : les repères sont une légende, ils ne masquent rien. */
-  var offK={}, hideDone=false;
+  var offLv={}, offK={}, hideDone=false;
 
   function $(s,r){ return (r||document).querySelector(s); }
   function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
@@ -838,14 +902,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function rt(e){ return RT[e.id]||0; }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  /* Les réponses de Niko tiennent parfois en trois paragraphes. Elles sont
-     stockées avec des sauts de ligne et rendues en <p>, sinon elles sortent
-     en un seul pavé où la respiration de son texte disparaît. */
-  function paras(s){
-    return String(s||'').split('\n').filter(function(p){ return p.trim(); })
-      .map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
-  }
-
   var ICO={
     check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
     chev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
@@ -858,11 +914,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   $('#intro').innerHTML=D.notes;
 
   /* ── les filtres ─────────────────────────────────────────────────
-     Un seul groupe de boutons : les types de médias. Les repères du document
-     sont rendus en légende, en dur dans le HTML — voir le contrat de
-     direction en tête de fichier. Pas de niveaux non plus. */
+     Deux groupes de boutons : les niveaux, à côté de la recherche, et les
+     types de médias sur la rangée du dessous. Les repères du document sont
+     rendus en légende, en dur dans le HTML — voir le contrat de direction
+     en tête de fichier. */
   (function(){
-    var tp=$('#f-types');
+    var lv=$('#f-levels'), tp=$('#f-types');
+    ['must','important','bonus'].forEach(function(k){
+      lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
+        (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
+    });
     Object.keys(CFG.badgeLabels).forEach(function(k){
       tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
         ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
@@ -871,7 +932,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   /* ── les sous-items : empilés, un par ligne ───────────────────────
      Comme le document de Niko les écrit et comme les autres pages les
-     rendent. Pas de test sur le libellé : chez Star Trek il n'y a pas d'arc
+     rendent. Pas de test sur le libellé : ici non plus il n'y a pas d'arc
      à regrouper, chaque ligne est une étape de l'ordre de visionnage. */
   function subs(e){
     var it=e.subitems||[]; if(!it.length) return '';
@@ -893,13 +954,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var plain=!b.level;
     var kind=plain?'plain':b.level;
     var head=plain?(b.date||'')
-      :(b.level==='major'?'Spoilers majeurs':'Spoilers mineurs');
+      :(b.level==='major'?'Major spoilers':'Minor spoilers');
     return '<details class="bn '+kind+' rv" id="bn'+i+'"'+(plain?' open':'')+'>'+
       '<summary class="bn-h">'+
         (plain?ICO.info:ICO.warn)+
         '<span class="bn-k">'+esc(head)+'</span>'+
         (b.date&&!plain?'<span class="bn-d">'+esc(b.date)+'</span>':'')+
-        (plain?'':'<span class="bn-cta"><span class="lbl">Révéler</span>'+
+        (plain?'':'<span class="bn-cta"><span class="lbl">Reveal</span>'+
           '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>')+
       '</summary>'+
       '<div class="bn-body">'+b.text.map(function(p){
@@ -909,12 +970,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   function row(e){
     var bd=CFG.badgeLabels[e.type]||['b',e.type];
+    /* « VO » : les huit webséries n'ont jamais été doublées, et le document
+       de Niko les marque toutes. Sans ce badge l'information disparaissait
+       sans bruit — les données la portent, l'écran non. Il ne se pose qu'en
+       français : pour qui lit l'anglais, « pas de version française » n'a
+       pas d'objet. Même règle et même dessin que sur la page Avatar. */
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
     return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
       '<span class="bu-side">'+
         '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
           (prog[e.id]?'true':'false')+'" data-check aria-label="'+
           esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
+        (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+          LVICO[e.level]+'</span>':'')+
       '</span>'+
       '<div class="bu-card">'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
@@ -922,11 +991,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             (e.img?'<img src="'+e.img+'" alt="" loading="lazy" decoding="async"/>':'')+
             '<span class="halftone"></span>'+
             '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
-            '<span class="bu-done" aria-hidden="true"><span>vues</span></span>'+
+            '<span class="bu-done" aria-hidden="true"><span>watched</span></span>'+
           '</span>'+
           '<span class="bu-txt">'+
             '<span class="bu-tags">'+marks(e)+'<span class="b" style="--k:var(--t-'+e.type+')">'+
-              esc(bd[1])+'</span></span>'+
+              esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
               (d?'<span>'+hm(d)+'</span>':'')+
@@ -939,7 +1008,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<a class="bu-link" href="#'+e.id+'" data-copy data-ok="'+esc(T.copied)+
           '" title="'+esc(T.copyLink)+'" aria-label="'+esc(T.copyLink)+'">'+ICO.link+'</a>'+
         '<div class="bu-panel" hidden data-tmdb="'+(e.tmdb||'0')+'" data-media="'+(e.media||'tv')+'">'+
-          '<div class="en-rich"></div><div class="en-faq"></div></div>'+
+          '<div class="en-rich"></div></div>'+
       '</div>'+
     '</article>';
   }
@@ -955,14 +1024,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '<div class="lay lay2" style="background-image:url('+era.art+')"></div>'+
             '<div class="tint"></div><div class="halftone"></div></div>'+
           '<div class="wrap">'+
-            '<span class="chev">Ère '+(i+1)+' / '+D.eras.length+'</span>'+
+            /* Le document de Niko numérote des PHASES, pas des ères : c'est
+               son intitulé qui s'affiche, repris tel quel de la source. */
+            '<span class="chev">'+esc(era.phase||('Era '+(i+1)))+' / '+D.eras.length+'</span>'+
             '<h2 class="disp off">'+esc(era.title)+'</h2>'+
             /* Le 21e siècle n'a qu'un bandeau, pas une seule entrée : un
                « 0 / 0 watched » y occuperait la place d'une information
                sans en être une. On ne pose la ligne que s'il y a à compter. */
             (real.length?'<p class="meta"><span><b data-done="'+i+'">0</b> / '+
-              real.length+' vues</span><span>'+
-              hm(real.reduce(function(s,x){ return s+rt(x); },0))+' au total</span></p>':'')+
+              real.length+' watched</span><span>'+
+              hm(real.reduce(function(s,x){ return s+rt(x); },0))+' in total</span></p>':'')+
           '</div></div>'+
         '<div class="list"><div class="wrap"><div class="rows">'+
           era.entries.map(function(e){
@@ -975,8 +1046,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   /* ── filtrage : on masque, on ne redessine pas ────────────────────
      La recherche porte aussi sur les sous-items et la date. Sans ça elle
-     ne servait quasiment à rien : la page répète « Star Trek: Deep Space
-     Nine » 86 fois, et c'est « Season 5 Episode 9 » qu'on cherche. */
+     ne servait quasiment à rien : la page répète « The Walking Dead »
+     seize fois, et c'est « Season 5 Episodes 1-8 » qu'on cherche. */
   function hay(e){
     if(e._h) return e._h;
     e._h=(e.title+' '+(e.date||'')+' '+(e.subitems||[]).join(' ')).toLowerCase();
@@ -989,7 +1060,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       era.entries.forEach(function(e){
         if(e.type==='note') return;
         var el=document.getElementById(e.id);
-        var ok=!offK[e.type] && !(hideDone&&prog[e.id]) &&
+        var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
                (!q || hay(e).indexOf(q)>-1);
         el.hidden=!ok; if(ok){ vis++; shown++; }
       });
@@ -1027,14 +1098,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function startBtn(){
     var started=ALL.some(function(e){ return prog[e.id]; });
     next=ALL.filter(function(e){ return !prog[e.id]; })[0]||ALL[0];
-    $('#start').innerHTML=(started?T.resume:'Commencer')+' <em>▸</em>';
+    $('#start').innerHTML=(started?T.resume:'Start')+' <em>▸</em>';
   }
   $('#start').addEventListener('click',function(){
     if(!next) return;
     var el=document.getElementById(next.id);
     if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
       $('#q').value=''; $('#searchbox').classList.remove('on');
-      offK={}; hideDone=false;
+      offLv={}; offK={}; hideDone=false;
       [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
         b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
       applyFilters();
@@ -1060,15 +1131,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var id=panel.dataset.tmdb, type=panel.dataset.media==='movie'?'movie':'tv';
     var IMG=CFG.img;
 
-    /* la FAQ : question et réponse du document, mot pour mot. Une entrée
-       peut porter sa propre question — le document écrit « Why now ? » une
-       fois au lieu du gabarit. */
-    if(e.faq&&CFG.faqCats){
-      $('.en-faq',panel).innerHTML=CFG.faqCats.map(function(c){
-        var q=e.faqq||c.q.replace('{name}',e.title);
-        return '<details class="faq"><summary>'+esc(q)+
-               '</summary><div class="a">'+paras(e.faq[c.key]||'')+'</div></details>'; }).join('');
-    }
+    /* Pas de FAQ sur cette page — la fiche s'arrête au synopsis TMDB. */
 
     box.innerHTML='<div class="expand-loading">'+T.loading+'</div>';
 
@@ -1156,6 +1219,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       var on=f.getAttribute('aria-pressed')==='true';
       f.setAttribute('aria-pressed',on?'false':'true');
       if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.lv) offLv[f.dataset.lv]=on;
       else if(f.dataset.k) offK[f.dataset.k]=on;
       applyFilters();
       return;
@@ -1377,7 +1441,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   bg.addEventListener('click',function(){
     var open=dr.classList.toggle('open');
     bg.setAttribute('aria-expanded',open?'true':'false');
-    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+    bg.setAttribute('aria-label',open?'Close menu':'Open menu');
   });
 
   tally(); syncBadges(false); applyFilters();
@@ -1393,6 +1457,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
 })();
 </script>
-<script src="e-app.js"></script>
+<script src="/app.js"></script>
+<script src="/pwa.js"></script>
+<script data-goatcounter="https://arcanerval.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 ## Structure
 
 - Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`,
-  `avatar.html`, `startrek.html`
+  `avatar.html`, `startrek.html`, `walkingdead.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
   (534 romans, comics et fictions audio, plus 63 repères écran)
@@ -18,7 +18,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 ### Ce qui s'édite, et ce qui se produit
 
-**Les vingt pages du site ne s'éditent pas.** Elles sont produites depuis
+**Les vingt-deux pages du site ne s'éditent pas.** Elles sont produites depuis
 `_proto/` par `node _proto/publier.mjs`, et toute retouche faite directement dans
 `starwars.html` est perdue à la publication suivante — sans erreur, sans message.
 
@@ -32,16 +32,16 @@ _proto/e-*.html + _proto/data*.js        ← le français, écrit à la main
 _proto/en-*.html + _proto/data-*-en.js
         │  node _proto/publier.mjs
         ▼
-20 pages + /data/ + app.js               ← le site, jamais édité à la main
+22 pages + /data/ + app.js               ← le site, jamais édité à la main
 ```
 
 Star Trek prend cette chaîne à l'envers : sa source est anglaise, et
 `node _proto/traduire-startrek.mjs` en tire le français. Voir « Star Trek, la
 chaîne inversée » plus bas. **The Walking Dead fait pareil** —
 `en-twd.html` + `data-twd-en.js` sont la source, `node _proto/traduire-twd.mjs`
-écrit `e-twd.html` et `data-twd.js`. Ce proto n'est pas encore publié : il
-n'est ni dans `publier.mjs`, ni dans `seo.json`, ni dans `sync.py`, et le site
-compte toujours vingt pages et cinq univers.
+écrit `e-twd.html` et `data-twd.js`. Publié le 16 août 2026 sous
+`/walkingdead` et `/fr/walkingdead` : le site compte vingt-deux pages et six
+univers.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -51,7 +51,8 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 
 ## Charte couleurs
 
-Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar `#7dd3fc`.
+Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar `#7dd3fc`,
+Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 Badges de type : film `#64b5f6`, film animé `#90caf9`, série `#81c784`, série animée `#ce93d8`,
 jeu `#ffb74d`, spécial `#ffa726`, vidéo `#f472b6`.
@@ -109,7 +110,7 @@ deux parties annoncées.
 Deux exclusions du 13 août 2026. `\bpodcast\b` est dans la clé `*`, donc pour tous
 les univers : **Lanterns: The Official Podcast** n'est pas la série Lanterns, c'est
 l'émission qui en parle, et TMDB la range parmi les séries — elle arrivait au radar
-à côté de la vraie. Aucun des cinq guides ne suit de podcast. Et côté Star Wars,
+à côté de la vraie. Aucun des six guides ne suit de podcast. Et côté Star Wars,
 `\bthe book of boba fett \d` écarte le **comic** qui adapte la série chapitre par
 chapitre : quatre numéros au radar pour une série déjà au guide. Le chiffre suffit à
 les distinguer, la série n'en portant pas.
@@ -126,10 +127,17 @@ en plus que pour ne pas attendre le lendemain.
 
 ### Les quatre sources du radar
 
-`source_tmdb` sert les quatre premiers univers, par **société de production** —
-Lucasfilm, Marvel Studios, DC Studios, Avatar Studios. `source_avatar_almanac` y
-ajoute l'écrit, que TMDB ne couvre pas, et `source_wookieepedia` la timeline des
-médias canon Star Wars.
+`source_tmdb` sert cinq univers sur six, par **société de production** —
+Lucasfilm, Marvel Studios, DC Studios, Avatar Studios, AMC Studios.
+`source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas, et
+`source_wookieepedia` la timeline des médias canon Star Wars.
+
+**The Walking Dead a le garde-fou d'Avatar, pour la même raison.** AMC Studios,
+AMC Networks et Skybound portent aussi Mad Men, Breaking Bad et Interview with
+the Vampire : sans motif de titre, la lecture des épisodes ramènerait la grille
+AMC entière. `UNIVERS_TITRE["twd"]` exige `\bwalking dead\b`, et les quinze
+œuvres de la timeline le disent toutes — « Fear the… », « Tales of the… »,
+« The Walking Dead: Dead City ».
 
 `source_startrek` est la quatrième, et elle passe elle aussi par **TMDB** depuis le
 13 août 2026. Elle interrogeait Memory Alpha, faute de savoir isoler la franchise :
@@ -275,9 +283,10 @@ lancer ensuite, sinon le push écrase la table.
 il n'utilise pas `TMDB_KEY` et aucune action ne le lance : il s'appelle à la main.
 L'interpréteur est `py` sur la machine de Niko, pas `python`.
 
-- `py sync.py check` — vérifie les dix paires : même nombre de lignes dans le
-  HTML, mêmes identifiants dans les données. Les dix clés sont `sw`, `mcu`, `dc`,
-  `avatar`, `startrek`, `dossier`, `news`, `accueil`, `avenir`, `dossiers`.
+- `py sync.py check` — vérifie les onze paires : même nombre de lignes dans le
+  HTML, mêmes identifiants dans les données. Les onze clés sont `sw`, `mcu`,
+  `dc`, `avatar`, `startrek`, `twd`, `dossier`, `news`, `accueil`, `avenir`,
+  `dossiers`.
 - `py sync.py show <page> <id>` — affiche une entrée dans les deux langues sans
   ouvrir les fichiers entiers.
 - `py sync.py mirror <page> "<ancien>" "<nouveau>"` — remplace dans le proto
@@ -349,7 +358,7 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   zéro manque. Ce qui reste à écrire vit dans `traductions-twd.mjs` : l'accroche,
   les trois repères de lecture, les quatorze phases et les cinq badges. Les quinze
   œuvres, elles, gardent leur titre — aucune n'a de titre français.
-- `node _proto/publier.mjs` — pose les vingt pages, `/data/` et `app.js`. Voir
+- `node _proto/publier.mjs` — pose les vingt-deux pages, `/data/` et `app.js`. Voir
   « La publication » plus bas.
 
 Les quatre premiers acceptent `--check`, qui n'écrit rien et affiche le bilan.
@@ -363,7 +372,7 @@ du script concerné, puis relancer.
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
 posent `noindex`. Les recopier tels quels aurait effacé le référencement de
-vingt pages : rien n'aurait cassé, la console serait restée vide, et le site
+vingt-deux pages : rien n'aurait cassé, la console serait restée vide, et le site
 aurait disparu des résultats. Ces textes vivent dans **`_proto/seo.json`**, extrait
 une fois des pages d'avant la refonte, avec Avatar écrit à la main faute de page à
 reprendre. Le script ne les relit pas dans les pages publiées : celles-ci sont sa
@@ -432,9 +441,10 @@ langue. `en-startrek.html` et `data-startrek-en.js` sont donc la **source**, et 
 français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul endroit
 du dépôt où l'on traduit dans ce sens.
 
-**Ne jamais inscrire Star Trek dans `PAGES` de `traduire-pages.mjs`.** Ce script
-produit l'anglais depuis le français : il écraserait la source avec une
-retraduction de sa propre sortie, sans erreur et sans message.
+**Ne jamais inscrire Star Trek ni The Walking Dead dans `PAGES` de
+`traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
+écraserait la source avec une retraduction de sa propre sortie, sans erreur et
+sans message.
 
 En revanche il est inscrit partout ailleurs, et sans exception : `ROUTES` et
 `ASSETS` de `publier.mjs`, `seo.json`, `PAGES` de `sync.py` (avec
@@ -788,7 +798,7 @@ les lignes de la mention légale.
 et le proposer avant qu'on ait demandé comment payer ne se lit pas bien.
 
 « Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
-les vingt pages partagent. L'écrire dans les protos aurait voulu dire vingt copies
+les vingt-deux pages partagent. L'écrire dans les protos aurait voulu dire vingt-deux copies
 du même dialogue et de son CSS. Quatre choses à savoir :
 
 - **L'envoi passe par `mailto:`**, faute de serveur : GitHub Pages ne reçoit pas de
@@ -800,7 +810,7 @@ du même dialogue et de son CSS. Quatre choses à savoir :
 - **L'adresse n'est nulle part dans le HTML** : elle est recomposée en JS. Les
   moissonneuses ramassent les pages, pas les concaténations.
 - **`margin:auto` est rappelé sur le `<dialog>`.** C'est lui qui centre un dialogue
-  modal, et les vingt pages posent `*{margin:0}` : sans le rappel, la boîte se colle
+  modal, et les vingt-deux pages posent `*{margin:0}` : sans le rappel, la boîte se colle
   en haut à gauche de l'écran. Rien dans la console, la page marche — elle est juste
   de travers.
 - **Le lien porte `data-contact` et `href="#contact"`.** L'attribut est ce que le
@@ -855,7 +865,8 @@ DC et Avatar écrivent `imp` là où Star Wars et Marvel écrivent `important` :
 parseur doit accepter les deux.
 Répartitions actuelles :
 Star Wars 61 (9 must / 37 important / 15 bonus), Marvel 121 (49 / 30 / 42),
-DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34).
+DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34),
+The Walking Dead 45 (29 must / 3 important / 13 bonus).
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
 repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un
@@ -906,14 +917,22 @@ et la majuscule initiale quand on découpe une phrase.
   chez un passeur de formulaire (Formspree, Web3Forms — gratuits à ce volume) et
   sa clé ; seul le corps de `envoyer()`, dans `_proto/e-app.js`, change alors.
 - **Un univers ajouté se met dans les textes, pas seulement dans le code.** Trois
-  endroits énumèrent les cinq : l'accroche de « À venir » (`.dek`), les deux
+  endroits énumèrent les six : l'accroche de « À venir » (`.dek`), les deux
   titres et les deux descriptions de `seo.json`, et le pied de page de toutes les
-  pages. Les trois portent Star Trek depuis le 13 août 2026 ; les deux premiers y
-  sont entrés avec deux mois de retard sur la page elle-même, parce que rien ne
-  les relie à la liste des univers. La formule est la sienne, celle du pied de
-  page : « Star Wars, Marvel, DC, Avatar et Star Trek ». L'accroche anglaise se
+  pages. Les trois portent Star Trek depuis le 13 août 2026 et The Walking Dead
+  depuis le 16 ; pour Star Trek, les deux premiers y sont entrés avec deux mois
+  de retard sur la page elle-même, parce que rien ne les relie à la liste des
+  univers. La formule est la sienne, celle du pied de page : « Star Wars,
+  Marvel, DC, Avatar, Star Trek et The Walking Dead ». L'accroche anglaise se
   tient dans `TRADUCTIONS` de `traduire-pages.mjs`, la prod n'ayant jamais porté
   cette phrase-là.
+
+  Trois autres décomptes suivent sur l'accueil, et aucun n'est calculé : le
+  sous-titre (« Six chronologies… »), le HUD (`0 / 690`, « 6 univers · 534 au
+  dossier ») et le numéro de la case verrouillée. Six univers plus elle font
+  sept cases dans une grille à deux colonnes : `.slot.lock` prend
+  `grid-column:1/-1` et sa figure passe en 26/9, sinon la dernière rangée est
+  une case seule à côté d'un trou.
 - Les 120 phrases françaises de Star Trek sont **écrites, pas retrouvées** : les
   titres de films, les huit ères, les trente réponses de FAQ, les neuf bandeaux
   et les badges. Elles se relisent au navigateur sur `e-startrek.html`.

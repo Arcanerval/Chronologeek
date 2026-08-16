@@ -28,7 +28,7 @@ Usage :
                                              remplace dans le proto source,
                                              puis rappelle quoi relancer
 
-Pages : sw, mcu, dc, avatar, startrek, dossier, news, accueil, avenir, dossiers
+Pages : sw, mcu, dc, avatar, startrek, twd, dossier, news, accueil, avenir, dossiers
 """
 
 import re
@@ -45,10 +45,11 @@ class Paire:
     publie (en / fr), les entrees qui l'alimentent (donnees), et la source d'ou
     tout descend (le proto francais).
 
-    Une exception : Star Trek s'ecrit en anglais et le francais en descend. Sa
-    source est donc `en-startrek.html`, et `langue_source` le dit — sans quoi
-    mirror ecrirait dans une sortie de traduire-startrek.mjs, perdue au
-    prochain passage, sans erreur et sans message."""
+    Deux exceptions : Star Trek et The Walking Dead s'ecrivent en anglais et le
+    francais en descend. Leur source est donc `en-startrek.html` et
+    `en-twd.html`, et `langue_source` le dit — sans quoi mirror ecrirait dans une
+    sortie de traduire-startrek.mjs ou de traduire-twd.mjs, perdue au prochain
+    passage, sans erreur et sans message."""
 
     def __init__(self, en, fr, donnees, proto, langue_source="fr"):
         self.en, self.fr, self.donnees, self.proto = en, fr, donnees, proto
@@ -66,6 +67,8 @@ PAGES = {
     "dc":       Paire("dc.html", "fr/dc.html", "dc", "e-dc.html"),
     "avatar":   Paire("avatar.html", "fr/avatar.html", "avatar", "e-avatar.html"),
     "startrek": Paire("startrek.html", "fr/startrek.html", "startrek", "e-startrek.html",
+                      langue_source="en"),
+    "twd":      Paire("walkingdead.html", "fr/walkingdead.html", "walkingdead", "e-twd.html",
                       langue_source="en"),
     "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
                       "dossier-star-wars", "e-dossier-star-wars.html"),
@@ -269,7 +272,8 @@ def source_fr(cle):
     en tenir une copie qui divergerait.
 
     La langue lue suit `langue_source` : francaise partout, anglaise pour Star
-    Trek, dont le francais est une sortie de traduire-startrek.mjs."""
+    Trek et The Walking Dead, dont le francais est une sortie de leur propre
+    script de traduction."""
     p = paire(cle)
     fichiers = [PROTO / p.source]
     if p.donnees:
@@ -326,7 +330,9 @@ def cmd_mirror(args):
 
     print(f"\ntotal : {total} ligne(s). Pour propager :")
     if paire(cle).langue_source == "en":
-        print("  node _proto/traduire-startrek.mjs")
+        # Les deux chaines inversees ont chacune leur script : ecrire dans
+        # en-twd.html et relancer traduire-startrek.mjs ne propagerait rien.
+        print(f"  node _proto/traduire-{'twd' if cle == 'twd' else 'startrek'}.mjs")
     else:
         print("  node _proto/traduire.mjs && node _proto/traduire-pages.mjs")
     print("  node _proto/publier.mjs")

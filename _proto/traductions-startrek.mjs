@@ -162,10 +162,10 @@ export const ST_TRADUCTIONS = [
   // la formule des quatre autres univers, au mot près
   ['Reset your Star Trek progress?', 'Réinitialiser ta progression Star Trek ?'],
   // le pied de page compte un univers de plus que celui des autres pages
-  ['Star Wars, Marvel, DC, Avatar and Star Trek are trademarks of their respective owners; Chronologeek is an independent fan project.',
-   'Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
-  ['. Star Wars, Marvel, DC, Avatar and Star Trek are trademarks of their respective owners; Chronologeek is an independent fan project.',
-   '. Star Wars, Marvel, DC, Avatar et Star Trek sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.',
+   'Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['. Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.',
+   '. Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
 
   /* ── les huit badges : les grades de Starfleet ──────────────────────
      La version française des séries garde « Commander » et « Commodore »

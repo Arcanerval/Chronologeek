@@ -184,6 +184,14 @@ const TRADUCTIONS = [
   // whats-new.html · « July 2026 », « June 2026 »
   ['Août 2026', 'August 2026'],
 
+  /* ── la carte The Walking Dead du journal, écrite le 16 août 2026 ──
+     Même situation que Star Trek : le sixième univers est postérieur à
+     la prod, il n'y a rien à retrouver. Le titre de la timeline ne se
+     traduit pas — aucune des sept séries n'a de titre français. */
+  ['Nouvelle timeline : The Walking Dead', 'New timeline: The Walking Dead'],
+  ['45 entrées, de l\'épidémie de Los Angeles à New York — les sept séries et les huit webséries dans un seul fil.',
+   '45 entries, from the Los Angeles outbreak to New York — all seven shows and the eight web series in a single thread.'],
+
   /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
      Même moule que la carte « Legacy » de juillet, qui dit en anglais
      « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just
