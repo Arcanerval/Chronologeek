@@ -840,6 +840,18 @@ Les largeurs, toutes plafonnées à la taille native (on n'agrandit jamais) :
 Les trois icônes sont celles du manifeste PWA : il les déclare en `image/png`, et
 elles ne se convertissent pas.
 
+**The Walking Dead n'a pas de fichier pour son bouton « remonter en haut » : son
+chapeau de shérif est un SVG en ligne, dans `en-twd.html`.** Les cinq autres
+univers ont deux WebP dans `images/` — Grogu, Miss Minutes, Appa, le bat-signal,
+le delta de Starfleet. Un tracé pèse 1,2 Ko contre 26 à 87 Ko pour deux images, il
+ne demande pas de source à trouver, et une forme de chapeau de shérif n'appartient
+à personne là où ces cinq-là sont des personnages. Le sélecteur du CSS admet donc
+`#totop span>svg` en plus de `#totop img` — sans quoi le tracé ne serait ni
+positionné ni dimensionné, et sortirait à sa taille naturelle par-dessus la page.
+Les deux états partagent un seul `viewBox` et un seul tracé, le survol n'ajoutant
+que le trou de balle : c'est la règle du calage dans l'image, celle que les deux
+fichiers de Star Trek avaient enfreinte.
+
 Trois choses apprises en le faisant :
 
 - **Un WebP déjà à la bonne taille ne se retouche pas.** Le ré-encoder dégrade
