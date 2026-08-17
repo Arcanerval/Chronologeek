@@ -242,6 +242,10 @@ for (const [proto, prod] of REGISTRE) {
    « shown » pour les entrées filtrées, « movies » et « shows » pour les
    films et les séries. On ne réinvente pas un lexique en parallèle. */
 const TRADUCTIONS = [
+  // ── le dépliant des filtres, posé le 17 août 2026 ───────────────
+  // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
+  // repères y étaient dépliés en permanence, sans intitulé commun.
+  ['Filtres, recherche et repères', 'Filters, search and legend'],
   // ── accueil ────────────────────────────────────────────────────
   ['Chronologeek — Accueil (proto E)', 'Chronologeek — Home (proto E)'],
   ['Navigation repliée', 'Collapsed navigation'],
