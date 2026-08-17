@@ -840,17 +840,25 @@ Les largeurs, toutes plafonnées à la taille native (on n'agrandit jamais) :
 Les trois icônes sont celles du manifeste PWA : il les déclare en `image/png`, et
 elles ne se convertissent pas.
 
-**The Walking Dead n'a pas de fichier pour son bouton « remonter en haut » : son
-chapeau de shérif est un SVG en ligne, dans `en-twd.html`.** Les cinq autres
-univers ont deux WebP dans `images/` — Grogu, Miss Minutes, Appa, le bat-signal,
-le delta de Starfleet. Un tracé pèse 1,2 Ko contre 26 à 87 Ko pour deux images, il
-ne demande pas de source à trouver, et une forme de chapeau de shérif n'appartient
-à personne là où ces cinq-là sont des personnages. Le sélecteur du CSS admet donc
-`#totop span>svg` en plus de `#totop img` — sans quoi le tracé ne serait ni
-positionné ni dimensionné, et sortirait à sa taille naturelle par-dessus la page.
-Les deux états partagent un seul `viewBox` et un seul tracé, le survol n'ajoutant
-que le trou de balle : c'est la règle du calage dans l'image, celle que les deux
-fichiers de Star Trek avaient enfreinte.
+**Les six univers ont deux WebP dans `images/` pour leur bouton « remonter en
+haut »** — Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, et
+Rick Grimes depuis le 17 août 2026 : assis le revolver contre l'épaule
+(`twd1.webp`), en joue au survol (`twd2.webp`). Un chapeau de shérif dessiné en
+SVG en ligne a tenu la place une journée — plus léger, sans source à trouver,
+sans personnage — mais deux photos disent la série mieux qu'une silhouette. Le
+sélecteur du CSS est redevenu `#totop img` seul, comme sur les cinq autres pages.
+
+**Ces deux-là partagent une seule toile, 360×480.** C'est la règle du calage dans
+l'image, celle que les deux fichiers de Star Trek avaient enfreinte : la source du
+survol faisait exactement la moitié de l'autre, l'autre a été réduite de moitié,
+et rien n'a été agrandi. Une image portrait rendue dans le carré de 96 px par
+`object-fit:contain` occupe 72×96 : 360×480 est bien la règle du ×4.
+
+**Un cutout PNG se réduit en alpha prémultiplié, jamais autrement.** Les pixels
+transparents de `twd1` portaient du blanc en RGB ; un rééchantillonnage naïf mêle
+ce blanc aux bords et cerne le personnage d'un halo clair, très visible sur le
+fond sombre de la page. Multiplier RGB par alpha avant le redimensionnement, puis
+diviser après, l'enlève entièrement.
 
 Trois choses apprises en le faisant :
 

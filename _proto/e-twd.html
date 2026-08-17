@@ -519,37 +519,26 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
 .legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
 
-/* ══ le chapeau de shérif : le retour en haut ══════════════════════
+/* ══ Rick Grimes : le retour en haut ═══════════════════════════════
    Star Wars a Grogu, Marvel Miss Minutes, Avatar a Appa, Star Trek son
    delta — chacun a deux images et bascule au survol. The Walking Dead a
-   le chapeau de Rick, et il est **dessiné ici**, pas posé dans
-   `images/` : c'est le seul objet-totem de la franchise qui tienne en
-   silhouette à 96 px, et une forme de chapeau de shérif n'appartient à
-   personne, là où Grogu et Miss Minutes sont des personnages.
-
-   Au survol, le trou de balle apparaît — l'arc de la série en deux
-   images, et un noir franc sur un feutre clair se lit à cette taille là
-   où un changement de teinte ne se verrait pas.
-
-   Les deux `starfleet*.svg` qui tenaient la place avant celles de Trek
-   ne servent plus.
+   Rick : assis, le revolver contre l'épaule, et il met en joue au
+   survol. Un chapeau de shérif dessiné en SVG a tenu la place une
+   journée ; deux photos disent la série mieux qu'une silhouette.
 
    LE CALAGE EST DANS L'IMAGE, PAS DANS LE CSS. Les deux fichiers de
    Star Trek arrivaient sur des toiles différentes — 250×315 et 250×263,
    disques de 240 et 220 pixels — et `object-fit:contain` les rendait
    donc à deux tailles dans le même carré de 96 px : l'emblème sautait au
-   survol. Les deux états du chapeau partagent donc un seul `viewBox`
-   320×320 et un seul tracé ; le survol n'ajoute que le trou. La règle
-   ci-dessous reste celle des autres pages, au pixel près — le sélecteur
-   admet en plus le SVG en ligne, faute d'un `<img>` à viser. */
+   survol. `twd1` et `twd2` partagent donc une seule toile, 360×480 :
+   la source du survol faisait exactement la moitié de l'autre, l'autre
+   a été réduite de moitié, et rien n'a été agrandi. */
 #totop{position:fixed;right:16px;bottom:calc(var(--hud-h,50px) + 28px);z-index:75;
   width:96px;height:96px;padding:0;background:none;border:0;cursor:pointer;
   opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s}
 #totop.on{opacity:1;pointer-events:auto;transform:none}
 #totop span{position:relative;display:block;width:96px;height:96px}
-#totop img,#totop span>svg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-/* Le trait porte la lisibilité à 96 px : 7 unités sur 320 en rendent 2,1. */
-#totop span>svg{overflow:visible}
+#totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 #totop .hv{opacity:0}
 #totop:hover .nl{opacity:0}
 #totop:hover .hv{opacity:1}
@@ -808,10 +797,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </footer>
 
 <button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
-  <span aria-hidden="true">
-    <svg class="nl" viewBox="0 0 320 320"><g stroke="#221e18" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"><path fill="#b3a06a" d="M110 210C104 172 106 128 117 108c6-11 15-10 21 1 7 11 14 15 22 15s15-4 22-15c6-11 15-12 21-1 11 20 13 64 7 102z"/><path fill="#3d3629" d="M106 172c24 12 84 12 108 0l-1 34H107z"/><path fill="#e8dcae" d="M160 154l3.5 9.2 9.8.5-7.6 6.2 2.5 9.4-8.2-5.3-8.2 5.3 2.5-9.4-7.6-6.2 9.8-.5z"/><path fill="#c2ae74" d="M44 186c16 10 64 16 116 16s100-6 116-16c0 24-52 52-116 52S44 210 44 186z"/></g></svg>
-    <svg class="hv" viewBox="0 0 320 320"><g stroke="#221e18" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"><path fill="#a08d5b" d="M110 210C104 172 106 128 117 108c6-11 15-10 21 1 7 11 14 15 22 15s15-4 22-15c6-11 15-12 21-1 11 20 13 64 7 102z"/><path fill="#3d3629" d="M106 172c24 12 84 12 108 0l-1 34H107z"/><path fill="#e8dcae" d="M160 154l3.5 9.2 9.8.5-7.6 6.2 2.5 9.4-8.2-5.3-8.2 5.3 2.5-9.4-7.6-6.2 9.8-.5z"/><path fill="#c2ae74" d="M44 186c16 10 64 16 116 16s100-6 116-16c0 24-52 52-116 52S44 210 44 186z"/><g fill="none" stroke-width="5"><path d="M190 130l3-9M201 143l8-1M197 156l6 5M173 158l-5 6M168 139l-8-3"/></g><circle cx="184" cy="145" r="14" fill="#14110d" stroke-width="5"/></g></svg>
-  </span>
+  <span><img class="nl" src="/images/twd1.webp" alt=""/><img class="hv" src="/images/twd2.webp" alt=""/></span>
 </button>
 
 <div class="hud" id="hud">
