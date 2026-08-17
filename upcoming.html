@@ -388,7 +388,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .hud .lbl{display:none}
   .icon-btn{width:44px;height:44px}
   .drawer a{padding:13px 20px}
-  .sieve{position:static}
   /* En étroit, la pastille « Prochaine » passe AU-DESSUS du titre au lieu de
      lui prendre sa gauche : le nom de l'œuvre récupère la largeur entière,
      et le cadran vient dessous plutôt que de le serrer contre le bord. */
@@ -447,6 +446,37 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
    son décompte en dessous. */
 .attract .head{flex-direction:column;align-items:center}
 .mon .wrap{flex-direction:column;align-items:center;text-align:center;gap:8px}
+/* ── les filtres, repliés ──────────────────────────────────────────
+   Ouverts en permanence en haut de l’écran, ils mangeaient deux rangées
+   avant la première sortie. Repliés, ils tiennent une ligne, et le
+   décompte reste lisible sans rien ouvrir. */
+.sieve .wrap{display:block;padding-top:0;padding-bottom:0}
+.filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;
+  cursor:pointer;list-style:none;padding:11px 4px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.86)}
+.filt>summary::-webkit-details-marker{display:none}
+.filt>summary:hover{color:var(--paper)}
+.filt>summary .chev{width:19px;height:19px;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .16s steps(3,end)}
+.filt[open]>summary .chev{transform:rotate(180deg)}
+@media(max-width:560px){
+  .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
+  .filt>summary .fcount{font-size:10px;letter-spacing:.04em}
+}
+.filt>summary .fcount{margin-left:0;font-family:'Chivo';font-size:11px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
+.filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;
+  padding:13px 0 16px;border-top:2px solid var(--line)}
+.filt-body>*{width:auto;max-width:100%}
+.filt-body .search{flex:0 0 auto;width:min(430px,100%)}
+.filt-body .sgroup,.filt-body .srow{justify-content:center}
+/* dans une colonne, flex-basis:100% porte sur la hauteur : les deux
+   rangées héritées de la barre étalée s’y étiraient sur tout le dépliant */
+.filt-body #f-uni{flex:0 1 auto}
+.filt-body .srow{flex:0 1 auto;flex-direction:column;gap:11px}
+.filt-body .lab{width:100%;text-align:center;margin:0 0 2px;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.5)}
 </style>
 </head>
 <body>
@@ -514,6 +544,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <!-- ══ FILTRES ═══════════════════════════════════════════════════ -->
 <div class="sieve">
   <div class="wrap">
+    <details class="filt">
+      <summary>Filters and search<span class="fcount" id="fcount"></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="filt-body">
     <div class="search" id="search">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <label class="skip" for="q">Search a release</label>
@@ -523,8 +556,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <div class="sgroup" id="f-uni"><span class="lab">Universe</span></div>
     <div class="srow">
       <div class="sgroup" id="f-kind"><span class="lab">Format</span></div>
-      <span class="fcount" id="fcount"></span>
     </div>
+      </div>
+    </details>
   </div>
 </div>
 
@@ -896,7 +930,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var hdr=document.querySelector('header');
   function head(){
     document.documentElement.style.setProperty('--hh',
-      hdr.getBoundingClientRect().height+'px');
+      (Math.round(hdr.getBoundingClientRect().height)-1)+'px');
   }
   head();
   addEventListener('resize',head);
