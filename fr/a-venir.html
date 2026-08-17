@@ -23,9 +23,8 @@
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
 <link rel="canonical" href="https://chronologeek.app/fr/a-venir"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Chivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
 <!--
   ═══ CONTRAT DE DIRECTION — E · À VENIR ══════════════════════════════
   THÈSE : « À venir » n'est pas quatre listes côte à côte, c'est un
@@ -48,6 +47,31 @@
   Rien n'est figé dans la page, radar.py continue de travailler seul.
 -->
 <style>
+/* ══ POLICES : servies par le site, plus par Google ═════════════════
+   Le `display=swap` de Google montrait la police de secours le temps que
+   le fichier arrive de fonts.gstatic.com : d'où le clignotement à chaque
+   changement de page. Servies ici, préchargées et mises au cache du
+   service worker, elles sont là avant le premier rendu.
+   Deux fichiers variables par famille : latin, et latin-ext pour ce que
+   le premier ne couvre pas. */
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/bigshoulders-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/bigshoulders-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Chivo';font-style:italic;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-italic-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Chivo';font-style:italic;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-italic-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
   --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
   --hot:#f0c97c; --gold-deep:#d5a05f;
@@ -391,6 +415,38 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   *{animation:none!important;transition:none!important}
   .next .chev,.tag em{opacity:1}
 }
+
+/* ══ CENTRAGE ══════════════════════════════════════════════════════
+   Bandeaux, accroche, stats, intro et bandes d'ère au centre. Les
+   fiches de médias, les filtres et le pied gardent leur alignement :
+   une liste qu'on parcourt du regard se lit sur un bord franc. */
+.attract .wrap{text-align:center}
+.attract h1,.dek,.intro-lead{margin-left:auto;margin-right:auto}
+.attract .head{justify-content:center}
+/* dans un flex, une marge auto mange l espace : le titre pousserait le tag au bord */
+.attract .head h1{margin-left:0;margin-right:0}
+.upd{justify-content:center}
+.crumb{margin-left:auto;margin-right:auto}
+.stats{margin-left:auto;margin-right:auto}
+.intro-lead{text-align:center}
+.intro-tags{text-align:center}
+.keys-title{text-align:center}
+.key-h{justify-content:center}
+.key p{text-align:center}
+.map .wrap{text-align:center}
+.map .meta{justify-content:center}
+.pick h2,.pick .sub{text-align:center}
+.pick .sub{margin-left:auto;margin-right:auto}
+.slot .nm,.slot .body,.slot .d{text-align:center}
+.score{justify-content:center;gap:16px}
+.deep .wrap{justify-content:center;text-align:center}
+.deep p{margin-left:auto;margin-right:auto}
+.deep .go{margin-left:0}
+/* ── retouches du 17/08 ────────────────────────────────────────────
+   La pastille passe sous le titre, et la bande de mois se centre avec
+   son décompte en dessous. */
+.attract .head{flex-direction:column;align-items:center}
+.mon .wrap{flex-direction:column;align-items:center;text-align:center;gap:8px}
 </style>
 </head>
 <body>

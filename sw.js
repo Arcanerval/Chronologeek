@@ -15,6 +15,12 @@ const PRECACHE = [
   '/deep-dives/', '/deep-dives/star-wars.html',
   '/fr/dossiers/', '/fr/dossiers/star-wars.html',
   '/pwa.js', '/manifest.json',
+  // les polices, servies par le site depuis le 17 aout 2026 : sans elles au
+  // cache, chaque navigation repassait par la police de secours le temps que
+  // Google reponde, et le hors-ligne n'avait pas de typographie du tout.
+  '/fonts/bigshoulders-latin.woff2', '/fonts/bigshoulders-latin-ext.woff2',
+  '/fonts/chivo-latin.woff2', '/fonts/chivo-latin-ext.woff2',
+  '/fonts/chivo-italic-latin.woff2', '/fonts/chivo-italic-latin-ext.woff2',
   // le moteur de la refonte, bilingue, et les donnees de chaque page
   '/app.js',
   '/data/starwars-en.js', '/data/marvel-en.js', '/data/dc-en.js', '/data/avatar-en.js',
