@@ -1,49 +1,5 @@
 [
  {
-  "universe": "dc",
-  "title": "Lanterns",
-  "date_sort": "2026-08-16",
-  "date_txt": "16/08/2026",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, earth-based mystery as they investigate a murder in the American heartland.",
-  "wiki": "",
-  "syn_fr": "Deux flics intergalactiques, la nouvelle recrue John Stewart et le légendaire Hal Jordan, sont confrontés à un sombre mystère sur Terre alors qu’ils enquêtent sur un meurtre au fin fond de l’Amérique.",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 1,
-   "mark": "premiere"
-  }
- },
- {
-  "universe": "twd",
-  "title": "The Walking Dead: Dead City",
-  "date_sort": "2026-08-16",
-  "date_txt": "16/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Maggie and Luis look for valuable resources, while Negan and Renata protect the city.",
-  "wiki": "",
-  "syn_fr": "Maggie et Luis recherchent des ressources précieuses, tandis que Negan et Renata protègent la ville.",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 3,
-   "e": 4,
-   "mark": ""
-  }
- },
- {
   "universe": "starwars",
   "title": "The High Republic Adventures – Pathfinders 4",
   "date_sort": "2026-08-19",
@@ -69,7 +25,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "Galaxy's Edge – Echoes of the Empire 5 is the upcoming fifth and final issue of the canon 2026 comic book miniseries Star Wars: Galaxy's Edge – Echoes of the Empire. The issue will be written by Ethan Sacks, illustrated by Roi Mercado and Jethro Morales, and published by Marvel Comics on August 19, 2026.",
+  "syn": "Galaxy's Edge – Echoes of the Empire 5 is the upcoming fifth and final issue of the canon 2026 comic book miniseries Star Wars: Galaxy's Edge – Echoes of the Empire. The issue will be written by Ethan Sacks, illustrated by Roi Mercado, Jethro Morales, and Rachelle Rosenberg, and published by Marvel Comics on August 19, 2026.",
   "wiki": "Galaxy's Edge – Echoes of the Empire 5",
   "syn_fr": "Galaxy's Edge – Echoes of the Empire 5 est le cinquième et dernier numéro de la série de bandes dessinées Star Wars: Galaxy's Edge – Echoes of the Empire écrit par Ethan Sacks.",
   "kindKey": "comic",
