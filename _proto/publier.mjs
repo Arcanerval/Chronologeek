@@ -6,7 +6,7 @@
 // silencieusement le référencement de dix-huit pages — rien ne casserait, et
 // le site disparaîtrait des résultats.
 //
-// Ce script fait donc quatre choses, et rien d'autre :
+// Ce script fait donc cinq choses, et rien d'autre :
 //   1. il pose sur chaque proto son référencement — titre, description, Open
 //      Graph, hreflang, canonique — repris de `_proto/seo.json` ;
 //   2. il réécrit les liens de maquette vers les vraies URL du site, dans le
@@ -14,7 +14,9 @@
 //   3. il rebranche la PWA (manifeste, icônes, service worker) et la mesure
 //      d'audience, que les protos n'avaient pas ;
 //   4. il retire l'échafaudage de maquette — le bouton « proto : simuler une
-//      progression » et son gréement — et sort en erreur s'il en reste.
+//      progression » et son gréement — et sort en erreur s'il en reste ;
+//   5. il pose les données structurées — fil d'Ariane et `ItemList` — tirées
+//      des mêmes `data*.js` qu'il copie dans `/data/` (voir jsonld.mjs).
 //
 // Ce qu'il ne fait pas : lire les pages du site. Elles sont sa sortie, et un
 // script qui se relit lui-même ne retrouve plus rien.
@@ -24,6 +26,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { jsonLd } from './jsonld.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 const RACINE = join(ICI, '..');
@@ -130,6 +133,15 @@ const ASSETS = {
 
 const LIENS = {};
 for (const r of ROUTES) { LIENS[r.fr.proto] = r.fr.url; LIENS[r.en.proto] = r.en.url; }
+
+/* L'URL de chaque page par clé de route, dans les deux langues, et l'image de
+   chaque univers reprise de son référencement. `jsonld.mjs` en tire les fils
+   d'Ariane et les deux listes qui renvoient d'une page à l'autre. */
+const URLS = { fr: {}, en: {} };
+for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; }
+
+const IMAGES = Object.fromEntries(['fr', 'en'].map(langue => [langue,
+  Object.fromEntries(Object.entries(SEO).map(([k, v]) => [k, v[langue] && v[langue].image]))]));
 
 /* ── Le bloc PWA, identique sur toutes les pages en ligne ───────────────── */
 
@@ -273,17 +285,33 @@ function publier(route, langue) {
   h = h.replace(/<title>[\s\S]*?<\/title>/, () => bloc);
   if (h === avantTitre) problemes.push(`${c.sortie} : <title> introuvable`);
 
-  // 5. les liens de maquette deviennent les URL du site, les données et le
+  // 5. les données structurées, en tête de page, juste avant </head>
+  let ld = '';
+  try {
+    ld = jsonLd({ racine: RACINE, site: SITE, cle: route.cle, langue,
+                  moi: c.url, urls: URLS[langue], imagesUnivers: IMAGES[langue] });
+  } catch (e) {
+    problemes.push(`${c.sortie} : JSON-LD — ${e.message}`);
+  }
+  if (ld) {
+    const avantLd = h;
+    h = h.replace(/<\/head>/i, `${ld}\n</head>`);
+    if (h === avantLd) problemes.push(`${c.sortie} : </head> introuvable, JSON-LD non posé`);
+  } else if (!problemes.some(p => p.startsWith(`${c.sortie} : JSON-LD`))) {
+    problemes.push(`${c.sortie} : aucune donnée structurée`);
+  }
+
+  // 6. les liens de maquette deviennent les URL du site, les données et le
   //    moteur prennent leur nom de production
   h = recabler(h, c.sortie, problemes);
 
-  // 6. service worker et mesure d'audience
+  // 7. service worker et mesure d'audience
   h = h.replace(/(\r?\n)<\/body>/, `$1${PIED}$1</body>`);
   if (!h.includes('/pwa.js')) problemes.push(`${c.sortie} : pied de page non injecté`);
 
   if (h === avant) problemes.push(`${c.sortie} : aucune transformation appliquée`);
 
-  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires });
+  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires, ld: ld.length });
   if (!CHECK) ecrire(c.sortie, h);
 }
 
@@ -314,6 +342,7 @@ if (!CHECK) writeFileSync(join(RACINE, MANIFESTE), JSON.stringify(table, null, 2
 
 console.log(CHECK ? '— contrôle, rien n’est écrit —\n' : '— publication —\n');
 for (const b of bilan) console.log(`  ${b.sortie.padEnd(34)} ${String(b.octets).padStart(7)} o   ` +
+  `${String('ld ' + (b.ld < 1024 ? b.ld + ' o' : Math.round(b.ld / 1024) + ' Ko')).padEnd(10)} ` +
   `${b.retires ? `[${b.retires} bloc(s) d'échafaudage retiré(s)] ` : ''}${b.titre}`);
 console.log('');
 for (const c of copies) console.log(`  ${c.dest.padEnd(34)} ${String(c.octets).padStart(7)} o`);

@@ -384,7 +384,7 @@ du script concerné, puis relancer.
 
 ## La publication
 
-`node _proto/publier.mjs` fait quatre choses, et rien d'autre.
+`node _proto/publier.mjs` fait cinq choses, et rien d'autre.
 
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
@@ -433,6 +433,41 @@ qui échoue en silence est exactement ce qu'on cherche à empêcher.
 
 Tout nouvel échafaudage se pose donc entre marqueurs, et rien n'est à changer
 dans `publier.mjs`.
+
+**5. Les données structurées**, depuis le 18 août 2026, dans `_proto/jsonld.mjs`.
+Trois blocs, jamais plus : `WebSite` sur les deux accueils, `BreadcrumbList` sur
+les vingt autres pages, `ItemList` sur les six univers, la liste des Dossiers et
+l'accueil. Chaque entrée de timeline y est un `Movie`, une `TVSeries`, un `Book`,
+un `ComicStory` ou un `VideoGame`, avec son ancre (`/dc#dcu-lanterns`), son nom
+et son visuel — plus son `isbn` quand c'est un livre. 1 232 éléments par langue.
+
+Le script lit les mêmes `_proto/data*.js` que la publication copie dans
+`/data/` : la donnée structurée et la donnée affichée ne peuvent pas diverger.
+
+Quatre choses à savoir :
+
+- **`type` passe avant `media`, et c'est tout le piège.** `media` ne dit pas ce
+  qu'est l'œuvre, il dit quelle fiche TMDB la page ouvrira : les trente-quatre
+  romans et comics d'Avatar portent `media:"tv"` parce qu'ils empruntent le
+  visuel de la série. Lu dans l'autre sens, *Le Cycle de Kyoshi* ressortait en
+  `TVSeries`. L'écrit se reconnaît à son `type` ; `media` reprend la main pour
+  tout le reste, où il est plus sûr que des vocabulaires qui ne s'alignent pas
+  d'une page à l'autre.
+- **Le Dossier n'a pas d'`ItemList`, et c'est délibéré.** Ses 534 œuvres
+  pesaient 10 Ko brotli et faisaient passer la page de 65 à 168 Ko de HTML brut
+  — la plus lourde du site — pour un gain nul : Google ne fait pas de carrousel
+  de livres. Il garde son fil d'Ariane. Ne pas la rétablir sans une raison qui
+  vaille ce poids. Le reste coûte +1 à +2,7 Ko brotli par page, +12 Ko sur onze.
+- **`CG.t.nav` ne porte que quatre univers.** Star Trek et The Walking Dead sont
+  sous « Plus d'univers » et n'y ont pas de clé : sans repli sur le `title` de
+  leurs données, leur fil d'Ariane annoncerait « startrek » et « twd ».
+- **`decode()` passe sur tous les titres.** L'échappement n'est pas le même
+  d'une page à l'autre — DC stocke en texte brut et rend avec `esc()`, d'autres
+  stockent échappé parce qu'ils injectent directement. JSON-LD veut le texte.
+
+Le contrôle ne se fait pas dans le fichier : les ancres sont posées par le JS au
+chargement, et `document.getElementById()` sur les 1 232 identifiants est ce qui
+dit qu'une ancre est morte. Une lecture statique les déclare toutes fausses.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être
@@ -1061,12 +1096,6 @@ et la majuscule initiale quand on découpe une phrase.
   à l'écran ; ce n'est pas fait.
 - Avatar n'a pas de table `RT` : pas de temps de visionnage, donc pas de compteur
   « temps restant » sur sa page. Les trois autres univers en ont une.
-- **Aucune donnée structurée.** Les vingt-deux pages n'ont pas une ligne de
-  JSON-LD, alors qu'une timeline chronologique est exactement ce qu'`ItemList`
-  décrit, et chaque entrée un `Movie` ou une `TVSeries`. C'est le seul gain de
-  référencement qui reste et il ne se voit pas à l'écran : rien à redessiner,
-  un `<script type="application/ld+json">` posé par `publier.mjs` à partir des
-  `data-*.js` qu'il écrit déjà.
 - Les partages sociaux ne disent pas leur langue : `og:locale` et
   `og:locale:alternate` manquent, là où les `hreflang` sont posés depuis
   toujours. Deux lignes par page, dans `seo.json`.
