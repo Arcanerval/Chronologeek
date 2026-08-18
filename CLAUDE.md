@@ -348,8 +348,18 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   prod, celui-là même sur lequel `sync.py` s'appuie.
 - `node _proto/cabler-nav.mjs` — remplace les `href="#"` morts des protos par leur
   cible. Les maquettes avaient gardé des liens de démonstration : depuis l'accueil,
-  aucun univers n'était cliquable ; depuis Star Wars, ni Marvel ni DC. Un seul `#`
-  reste volontaire — la page courante (`aria-current="page"`).
+  aucun univers n'était cliquable ; depuis Star Wars, ni Marvel ni DC. Un `#` ne
+  reste volontaire que sur la page courante, et il porte alors `aria-current="page"`
+  — c'est la marque à laquelle on reconnaît celui qui n'est pas un oubli.
+
+  **Le script n'avait regardé que le menu, pas le pied de page.** Corrigé le
+  18 août 2026 : quarante liens morts y dormaient depuis la refonte, deux par
+  page. Le lien de la mention légale (`© 2026 Chronologeek — chronologeek.app`)
+  ne conduisait nulle part sur les vingt-deux ; il pointe maintenant l'accueil de
+  sa langue. Et la liste « Timelines » désignait la page courante par un `#` nu,
+  sans `aria-current` — seul le pied de page d'Avatar Legends était conforme, et
+  c'est son écriture qui a servi de modèle aux huit autres. Rien ne cassait : un
+  `#` fait remonter en haut, ce qui ressemble assez à une page qui répond.
 - `node _proto/relecture.mjs` — regroupe dans `A-RELIRE-EN.md` les seules phrases
   qu'il a fallu écrire, contre plusieurs milliers reprises telles quelles. **Ce
   fichier et les trois JSON dont il sort ne sont plus versionnés** (voir
@@ -1017,8 +1027,14 @@ et la majuscule initiale quand on découpe une phrase.
   sa clé ; seul le corps de `envoyer()`, dans `_proto/e-app.js`, change alors.
 - **Un univers ajouté se met dans les textes, pas seulement dans le code.** Trois
   endroits énumèrent les six : l'accroche de « À venir » (`.dek`), les deux
-  titres et les deux descriptions de `seo.json`, et le pied de page de toutes les
-  pages. Les trois portent Star Trek depuis le 13 août 2026 et The Walking Dead
+  `ogTitle` et les deux `desc` de `seo.json`, et le pied de page de toutes les
+  pages. **Plus les deux `title` de `a-venir`** : ils portaient la même
+  énumération et faisaient 103 signes rendus, quand Google en montre soixante —
+  le nom du site, en fin de titre, était coupé sur les deux pages les plus
+  souvent partagées. Ils s'arrêtent depuis le 18 août 2026 à « Star Wars,
+  Marvel, DC », les six restant dans l'`ogTitle` et la description, où la
+  longueur ne coûte rien. Un septième univers n'a donc plus à y entrer.
+  Les trois portent Star Trek depuis le 13 août 2026 et The Walking Dead
   depuis le 16 ; pour Star Trek, les deux premiers y sont entrés avec deux mois
   de retard sur la page elle-même, parce que rien ne les relie à la liste des
   univers. La formule est la sienne, celle du pied de page : « Star Wars,
@@ -1045,14 +1061,18 @@ et la majuscule initiale quand on découpe une phrase.
   à l'écran ; ce n'est pas fait.
 - Avatar n'a pas de table `RT` : pas de temps de visionnage, donc pas de compteur
   « temps restant » sur sa page. Les trois autres univers en ont une.
-- Un bouton de maquette est publié en ligne : « proto : simuler une progression »
-  (`.demo`), sur l'accueil et sur la page des Dossiers, dans les deux langues.
-  `publier.mjs` le recopie tel quel — il devrait le retirer et refuser de laisser
-  passer, comme il le fait déjà pour `noindex`.
-- La correction de `ST_FRAICHEUR` n'a **pas encore tourné en vrai** : `TMDB_KEY`
-  vit dans un secret GitHub et rien ne se teste en local. Le premier passage
-  suivant de `radar.yml` est le contrôle — lire son journal, section « Star Trek »,
-  et vérifier que la ligne annonce des épisodes plutôt que « rien retenu ». Le
-  journal du passage est dans `radar.html`, qui est commité avec `radar.json` :
-  `git show <commit>:radar.html`, le bloc `.rep` en fin de fichier. C'est lui qui
-  a nommé le coupable la première fois.
+- **Aucune donnée structurée.** Les vingt-deux pages n'ont pas une ligne de
+  JSON-LD, alors qu'une timeline chronologique est exactement ce qu'`ItemList`
+  décrit, et chaque entrée un `Movie` ou une `TVSeries`. C'est le seul gain de
+  référencement qui reste et il ne se voit pas à l'écran : rien à redessiner,
+  un `<script type="application/ld+json">` posé par `publier.mjs` à partir des
+  `data-*.js` qu'il écrit déjà.
+- Les partages sociaux ne disent pas leur langue : `og:locale` et
+  `og:locale:alternate` manquent, là où les `hreflang` sont posés depuis
+  toujours. Deux lignes par page, dans `seo.json`.
+- Le mois « À jour · <mois> » des six cases de l'accueil est écrit à la main,
+  six fois, dans `e-accueil.html` — et une septième dans `traduire-pages.mjs`
+  quand le mois n'a pas d'homologue en prod. Rien ne le relie à la dernière
+  entrée ajoutée : c'est ce qui a produit trois cases « Updated » et trois
+  « Up to date » le 18 août 2026. Il se déduirait de la date la plus récente de
+  chaque `data-*.js`.

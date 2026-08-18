@@ -296,7 +296,14 @@ const TRADUCTIONS = [
   ['Films · Séries · Séries animées · Courts métrages · Timeline chronologique complète',
    'Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline'],
   ['/ 248 vus', '/ 248 watched'],
-  ['À jour · août 2026', 'Up to date · August 2026'],
+
+  /* Le mois des six cases de l'accueil. La prod anglaise écrit « Updated ·
+     <mois> » sur celles qu'elle portait ; août n'a pas d'homologue à
+     retrouver, et il avait d'abord été écrit « Up to date », pour la seule
+     case Star Trek. DC et The Walking Dead sont passés à août depuis :
+     l'accueil annonçait donc « Updated · June » sur trois cases et « Up to
+     date · August » sur les trois autres, pour la même phrase française. */
+  ['À jour · août 2026', 'Updated · August 2026'],
 
   /* ── le bandeau de la page DC, passé à août le 18 août 2026 ──────
      La prod écrit « Updated · July 2026 » sur les quatre bandeaux ; seul
