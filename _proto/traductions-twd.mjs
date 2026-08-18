@@ -183,6 +183,6 @@ export const TWD_TRADUCTIONS = [
      à ligne la manque. Elle est donc recopiée telle quelle. Le jour où
      The Walking Dead sera publié, les deux langues devront nommer six
      univers au lieu de cinq, ici comme dans `seo.json`. */
-  ['. Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.',
-   '. Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
 ];

@@ -177,6 +177,10 @@ const TRADUCTIONS = [
      le proto français de Star Trek soit écrit. Il l'est. */
   // whats-new.html · « New timeline: Avatar », la même formule
   ['Nouvelle timeline : Star Trek', 'New timeline: Star Trek'],
+  /* La carte Avatar du journal était au lexique tant que l'univers
+     s'appelait « Avatar » des deux côtés. Le renommage l'en sort : la
+     formule est celle de la prod, seul le nom a changé. */
+  ['Nouvelle timeline : Avatar Legends', 'New timeline: Avatar Legends'],
   // whats-new.html · « 69 entries, from the Yangchen, Kyoshi and Roku
   // novels all the way to the Korra era. »
   ['248 entrées, du 21e au 43e siècle — séries, films, animés et Short Treks dans un seul fil.',
@@ -216,6 +220,37 @@ const TRADUCTIONS = [
    Une table français → anglais construite uniquement par appariement
    structurel. On n'y met jamais deux anglais pour un même français sans
    le signaler : une collision veut dire que l'appariement a décroché. */
+/* ── ce qu'un renommage rend caduc ────────────────────────────────
+   L'appariement est structurel : la clé `nav.avatar` du proto français
+   est mise en face de la clé `nav.avatar` de la prod anglaise. Renommer
+   le libellé dans le proto fait donc apprendre au lexique « Avatar
+   Legends » → « Avatar », et la page anglaise garde l'ancien nom sans
+   qu'aucun contrôle ne s'en aperçoive : la clé est bien traduite, elle
+   l'est juste vers ce qu'on venait de retirer. Renommage du 18 août
+   2026, « Avatar » devenu « Avatar Legends » pour ne plus se confondre
+   avec les films de James Cameron.
+
+   Ces textes ne s'apprennent donc pas : ils sont tenus pour identiques,
+   ce qu'ils sont — un nom d'univers ne se traduit pas. `RENOMMES` porte
+   l'ancien nom en clé, pour les rares endroits où la valeur anglaise est
+   reprise en bloc plutôt que traduite champ par champ. */
+const RENOMMES = new Map([['Avatar', 'Avatar Legends']]);
+const RENOMMES_NOUVEAUX = new Set(RENOMMES.values());
+
+/* Reprend un objet de libellés anglais copié de la prod et y rejoue les
+   renommages. Sans ça, `nav.avatar` y resterait « Avatar » : ce bloc-là
+   n'est pas traduit, il est recopié. */
+function rejoueRenommages(o) {
+  if (typeof o === 'string') return RENOMMES.get(o) ?? o;
+  if (Array.isArray(o)) return o.map(rejoueRenommages);
+  if (o && typeof o === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(o)) out[k] = rejoueRenommages(v);
+    return out;
+  }
+  return o;
+}
+
 class Lexique {
   /* `parent` est un lexique de recours, alimenté par toutes les pages.
      Chaque univers cherche d'abord chez lui — un même mot peut se
@@ -234,6 +269,10 @@ class Lexique {
     if (typeof fr !== 'string' || typeof en !== 'string') return;
     fr = fr.trim(); en = en.trim();
     if (!fr || !en) return;
+    if (RENOMMES_NOUVEAUX.has(fr)) {
+      this.identiques.add(fr); if (this.parent) this.parent.identiques.add(fr);
+      return;
+    }
     /* Un texte que les deux langues écrivent pareil — « Arrowverse »,
        « DCEU », « 22 BBY » — n'est pas une traduction manquante : c'est
        une traduction qui se trouve être l'identité. On le note, sinon il
@@ -397,6 +436,11 @@ export function creerTraducteur(lex, manques, contexte) {
   function valeur(champ, fr, refEn, chemin, refFr) {
     if (typeof fr === 'string') {
       if (!fr.trim()) return fr;
+      /* Un libellé renommé ne se cherche pas : la prod ne connaît que
+         l'ancien nom, et le nouveau s'écrit pareil dans les deux
+         langues. Le laisser passer par le témoin de fraîcheur le
+         rendrait « sans traduction » à chaque passage. */
+      if (RENOMMES_NOUVEAUX.has(fr.trim())) return fr;
 
       const perime = typeof refFr === 'string' && net(refFr) !== net(fr);
       if (perime) {
@@ -757,7 +801,7 @@ for (const T of TIMELINES) {
     l.push('};');
     /* CGDT reprend les libellés anglais de la page, plus ce que le proto
        ajoute et que la prod ne connaît pas (kindLabels de la refonte). */
-    const cgdt = { ...P.CGDT, ...EN.CG, t: { ...P.CGDT.t, ...EN.CG.t } };
+    const cgdt = rejoueRenommages({ ...P.CGDT, ...EN.CG, t: { ...P.CGDT.t, ...EN.CG.t } });
     l.push(`window.CGDT=${js(cgdt)};`);
     fs.writeFileSync(path.join(RACINE, '_proto/data-dossier-sw-en.js'), l.join('\n') + '\n', 'utf8');
   }

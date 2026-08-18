@@ -17,7 +17,7 @@ window.CG_NEWS = {
       {"nat":"media","uni":"sw","kind":"roman","title":"Legacy","meta":"34 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just before Pirate's Price.","href":"/deep-dives/star-wars#34-aby-legacy","cta":"See in the Deep Dive"},
       {"nat":"media","uni":"dc","kind":"film","title":"Supergirl (2026)","meta":"2026","txt":"Added to the DC timeline, following the DCU.","img":"https://image.tmdb.org/t/p/w500/4X2YSe8PaYbsBqX3TDmmIU4vOju.jpg","href":"/dc#dcu-supergirl","cta":"See in the timeline"},
       {"nat":"site","uni":"sw","kind":"dossier","title":"New Deep Dive: Star Wars novels & comics","txt":"533 entries in reading order, with 63 on-screen markers to place the movies and shows.","href":"/deep-dives/star-wars","cta":"Open the Deep Dive"},
-      {"nat":"site","uni":"avatar","kind":"timeline","title":"New timeline: Avatar","txt":"69 entries, from the Yangchen, Kyoshi and Roku novels all the way to the Korra era. Episodes, comics and novels in chronological order, every medium included.","href":"/avatar","cta":"Open the timeline"}
+      {"nat":"site","uni":"avatar","kind":"timeline","title":"New timeline: Avatar Legends","txt":"69 entries, from the Yangchen, Kyoshi and Roku novels all the way to the Korra era. Episodes, comics and novels in chronological order, every medium included.","href":"/avatar","cta":"Open the timeline"}
     ]},
     { key:"2026-06", label:"June 2026", items:[
       {"nat":"site","uni":"dc","kind":"timeline","title":"New timeline: DC Multiverse","txt":"The complete Elseworlds · Arrowverse · DCEU · DCU guide, with the major event kept spoiler-free.","href":"/dc","cta":"Open the timeline"}

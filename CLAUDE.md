@@ -51,9 +51,16 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 
 ## Charte couleurs
 
-Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar `#7dd3fc`,
+Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar Legends `#7dd3fc`,
 Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
+
+**Le quatrième univers s'appelle « Avatar Legends » depuis le 18 août 2026**, pour ne
+plus se confondre avec les films de James Cameron. Seul le libellé change : le fichier
+reste `avatar.html`, la clé reste `avatar`, l'URL reste `/avatar`. Et rien de ce qui
+porte le mot dans une œuvre ne bouge — *Avatar : Le Dernier Maître de l'Air*, les
+*Chronicles of the Avatar*, *Team Avatar Tales*, l'Avatar lui-même, l'Avatar Almanac
+du radar. Le badge « Avatar Accompli » garde son nom : il joue sur le personnage.
 Badges de type : film `#64b5f6`, film animé `#90caf9`, série `#81c784`, série animée `#ce93d8`,
 jeu `#ffb74d`, spécial `#ffa726`, vidéo `#f472b6`.
 Cases à cocher : `border:2px solid #7e7ea8` + `box-shadow:0 0 0 1px rgba(126,126,168,.25)`.
@@ -578,6 +585,38 @@ Un garde-fou en découle : si le français a 63 titres distincts et l'anglais un
 ce n'est pas une traduction, c'est un appariement qui a raté. Le script compare la
 variété des valeurs des deux côtés — aucun contrôle de clés ne voit ça.
 
+### Renommer un libellé : le lexique rend l'ancien nom
+
+**C'est le piège du renommage, et il ne se voit qu'à l'écran.** Les deux scripts
+retrouvent l'anglais par appariement — `traduire-pages.mjs` ligne à ligne avec la
+prod, `traduire.mjs` clé par clé. Renommer un libellé dans le proto français leur
+apprend donc « nouveau nom français » → **ancien nom anglais**, et la page anglaise
+garde l'ancien nom. Aucun compteur ne bouge : la clé *est* traduite, elle l'est
+juste vers ce qu'on venait de retirer.
+
+Au renommage d'« Avatar » en « Avatar Legends », le 18 août 2026, la mention légale
+a suivi — sa ligne avait changé, l'appariement a décroché — mais le menu, le tiroir,
+le pied de page, la tuile d'accueil et `NAMES` sont restés en « Avatar » côté
+anglais. Le rapport annonçait « complet, 0 sans traduction ».
+
+Deux garde-fous, un par script, et il faut nourrir les deux :
+
+- `traduire-pages.mjs` — la clé est retirée du lexique (`table.delete`) juste avant
+  `indexeCasse()`, puis déclarée dans `identiques`.
+- `traduire.mjs` — `RENOMMES` porte `ancien → nouveau`. Le nouveau nom ne s'apprend
+  plus (`Lexique.ajoute`) et ne se cherche plus (`valeur`, avant le témoin de
+  fraîcheur, sinon il ressort « sans traduction » à chaque passage) ;
+  `rejoueRenommages()` rattrape le seul bloc qui est **recopié** de la prod anglaise
+  au lieu d'être traduit, le `CGDT` du Dossier.
+
+Les deux scripts inverses ont leur propre liste : `ST_IDENTIQUES` pour Star Trek,
+et pour The Walking Dead la valeur doit être corrigée dans sa source anglaise
+(`data-twd-en.js`), sans quoi le français hérite de l'ancien nom.
+
+**Le contrôle est le même des deux côtés** : compter le nouveau nom dans la page
+française et dans l'anglaise, et exiger le même chiffre. Un écart, c'est
+l'appariement qui a rendu l'ancien.
+
 ### Un décompte qui bouge ne doit pas faire tomber sa phrase
 
 « 533 entrées · 63 repères à l'écran » est au lexique parce que la prod l'écrivait
@@ -780,8 +819,8 @@ retouche du CSS, qui est commun.
 ### Le menu : trois univers en clair, trois sous un déroulant
 
 Six univers alignés débordaient la barre. Depuis le **18 août 2026**, Star Wars,
-Marvel et DC restent en clair ; Avatar, Star Trek et The Walking Dead passent
-sous « Plus d'univers » / « More universes ». C'est un `<details class="nav-more">`
+Marvel et DC restent en clair ; Avatar Legends, Star Trek et The Walking Dead
+passent sous « Plus d'univers » / « More universes ». C'est un `<details class="nav-more">`
 natif : **pas une ligne de JS pour l'ouvrir**, et le clavier le pilote seul.
 `.nav-more:has(a[aria-current])>summary` le passe à l'or quand la page courante
 est dedans — sans ça, trois pages sur vingt-deux n'auraient rien d'allumé au menu.
@@ -971,7 +1010,7 @@ et la majuscule initiale quand on découpe une phrase.
   depuis le 16 ; pour Star Trek, les deux premiers y sont entrés avec deux mois
   de retard sur la page elle-même, parce que rien ne les relie à la liste des
   univers. La formule est la sienne, celle du pied de page : « Star Wars,
-  Marvel, DC, Avatar, Star Trek et The Walking Dead ». L'accroche anglaise se
+  Marvel, DC, Avatar Legends, Star Trek et The Walking Dead ». L'accroche anglaise se
   tient dans `TRADUCTIONS` de `traduire-pages.mjs`, la prod n'ayant jamais porté
   cette phrase-là.
 

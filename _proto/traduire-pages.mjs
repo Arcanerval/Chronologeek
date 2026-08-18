@@ -100,9 +100,13 @@ const collisions = new Map();
    - `Star Trek` : le libellé de l'univers dans la table `UNI` de la page
      « À venir ». Il s'écrit pareil dans les deux langues, mais aucune
      paire de pages ne peut le dire — la prod est antérieure à ce
-     cinquième univers, et le proto français est le seul à le porter. */
-for (const s of ['Chronologeek — Avatar (proto E)', 'Opening Credits',
-                 'Star Trek']) identiques.add(s);
+     cinquième univers, et le proto français est le seul à le porter.
+   - `Avatar Legends` : le libellé du quatrième univers, renommé pour ne
+     plus se confondre avec les films de James Cameron. La prod écrivait
+     « Avatar » des deux côtés ; le nom complet ne s'y trouve nulle part,
+     et il ne se traduit pas davantage. */
+for (const s of ['Chronologeek — Avatar Legends (proto E)', 'Opening Credits',
+                 'Star Trek', 'Avatar Legends']) identiques.add(s);
 
 function ajoute(fr, en) {
   fr = net(fr); en = net(en);
@@ -279,10 +283,10 @@ const TRADUCTIONS = [
   ['proto : simuler une progression', 'proto: simulate progress'],
   ['proto : revenir à zéro', 'proto: back to zero'],
   // CG.t.legal3, précédé du point que le HTML pose après le lien
-  ['. Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
-  ['Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   'Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
 
   /* ── la case Star Trek ──────────────────────────────────────────
      Le cinquième univers est postérieur à la prod : sa case n'a pas de
@@ -397,8 +401,8 @@ const TRADUCTIONS = [
   // L'accroche énumère les univers : elle est à reprendre à chaque fois qu'on
   // en ajoute un. Star Trek y est entré le 13 août 2026, comme dans les deux
   // titres de référencement de `seo.json` et dans le pied de page.
-  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar, Star Trek et The Walking Dead — mises à jour chaque jour.',
-   'Every upcoming Star Wars, Marvel, DC, Avatar, Star Trek and The Walking Dead release — updated every single day.'],
+  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead — mises à jour chaque jour.',
+   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead release — updated every single day.'],
   ['Rechercher une sortie', 'Search a release'],
   ['Support', 'Format'],                   // filtre par type de média
   ['Rien ne correspond. Essayez une autre orthographe, ou rallumez les filtres que vous avez éteints.',
@@ -468,7 +472,7 @@ const TRADUCTIONS = [
   ['/ 69 vus', '/ 69 watched'],
   // la page emploie « votre » là où les données disent « ta » : c'est
   // le français qui hésite, l'anglais ne fait pas la différence
-  ['Réinitialiser votre progression Avatar ?', 'Reset your Avatar progress?'],
+  ['Réinitialiser votre progression Avatar Legends ?', 'Reset your Avatar Legends progress?'],
 
   /* ── DC, les quatre colonnes ─────────────────────────────────────
      La refonte à quatre colonnes fusionne Elseworlds et « Les 2 univers
@@ -932,6 +936,20 @@ function redirigeSources(html) {
     return t;
   }).replace(/(href|src)="e-([a-z0-9-]+\.html)/g, '$1="en-$2');
 }
+
+/* ── ce qu'un renommage rend caduc ────────────────────────────────
+   Le lexique apparie le proto français à la prod anglaise ligne à
+   ligne : renommer un libellé dans le proto lui fait donc apprendre
+   « nouveau nom français » → « ancien nom anglais », et la page
+   anglaise garde l'ancien nom sans que rien ne le signale. C'est
+   arrivé au renommage d'« Avatar » en « Avatar Legends » le 18 août
+   2026 : le pied de page suivait, le menu et le tiroir non — leur
+   ligne était parallèle à celle de la prod, la mention légale ne
+   l'était plus.
+
+   Ces clés sont donc retirées du lexique avant qu'il ne serve. Elles
+   retombent alors sur `identiques`, où le nouveau nom est déclaré. */
+for (const cle of ['Avatar Legends']) table.delete(cle);
 
 /* le lexique est complet : on peut en tirer ses deux index dérivés —
    à la casse près, et aux nombres près */

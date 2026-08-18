@@ -257,9 +257,9 @@ CG.badges = Object.values(BADGE_DEFS).filter(b => b.universe === 'avatar').map(b
   return b.ids ? { ...b, ids } : { ...b };
 });
 if (!CG.badges.length) erreurs.push('badges.js ne definit aucun badge Avatar');
-CG.resetMsg = CG.t.resetAvatar || 'Réinitialiser la progression Avatar ?';
+CG.resetMsg = CG.t.resetAvatar || 'Réinitialiser la progression Avatar Legends ?';
 delete CG.t.resetSW; delete CG.t.resetMCU; delete CG.t.resetDC; delete CG.t.resetDos;
-CG.t.resetAvatar = 'Effacer toute ta progression Avatar ? Cette action est définitive.';
+CG.t.resetAvatar = 'Effacer toute ta progression Avatar Legends ? Cette action est définitive.';
 
 /* ------------------------------------------------------------- l'intro -----
  * La prose de la page est celle de Niko, prise dans son document et verifiee

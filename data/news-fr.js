@@ -92,7 +92,7 @@ window.CG_NEWS = {
         href:"/fr/dossiers/star-wars", cta:"Ouvrir le Dossier" },
 
       { nat:"site", uni:"avatar", kind:"timeline",
-        title:"Nouvelle timeline : Avatar",
+        title:"Nouvelle timeline : Avatar Legends",
         txt:"69 entrées, des romans de Yangchen, Kyoshi et Roku jusqu'à l'ère "+
             "de Korra. Épisodes, comics et romans dans l'ordre chronologique, "+
             "avec la disponibilité VF/VO de chaque média.",
