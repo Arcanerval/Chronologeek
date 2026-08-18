@@ -25,6 +25,7 @@
 <link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
 <link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
 <link rel="canonical" href="https://chronologeek.app/fr/a-venir"/>
+<link rel="preconnect" href="https://image.tmdb.org"/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
 <!--
@@ -380,8 +381,12 @@ details>summary.hd::-webkit-details-marker{display:none}
 .chevd{flex:0 0 auto;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;
   stroke-linecap:square;color:rgba(255,253,247,.6);transition:transform .18s}
 details[open] .chevd{transform:rotate(180deg)}
-.syn{border-top:2px solid var(--line);padding:11px 12px 13px;font-size:13.5px;
+.bd{border-top:2px solid var(--line);padding:11px 12px 13px;
+  display:flex;gap:12px;align-items:flex-start}
+.syn{flex:1;min-width:0;font-size:13.5px;
   color:rgba(255,253,247,.86)}
+.po{flex:0 0 82px;aspect-ratio:2/3;border:2px solid var(--line);background:#000}
+.po img{width:100%;height:100%;object-fit:cover}
 .syn .en{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--hot);border:1px solid var(--hot);padding:1px 6px;margin-right:6px}
 
@@ -460,6 +465,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .next .big{text-align:left}
   .day{width:56px}
   .day b{font-size:26px}
+  /* La colonne de date prend déjà 56 px : une affiche de 82 px laissait
+     142 px au synopsis, soit une vingtaine de signes par ligne. Elle descend
+     à 56 px, ce qui rend 26 px au texte sans la rendre méconnaissable. */
+  .bd{gap:10px}
+  .po{flex-basis:56px}
   /* en étroit, le compte à rebours passe sous le titre plutôt que de
      comprimer la ligne à deux mots par ligne */
   .hd{flex-wrap:wrap;gap:8px 12px}
@@ -850,6 +860,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     ROWS=[].slice.call(document.querySelectorAll('.rel')).map(function(el){
       return {el:el,uni:el.dataset.u,kind:el.dataset.k,hay:el.dataset.q};
     });
+    /* i18n-off — l'affiche n'est demandée qu'à l'ouverture de sa carte.
+       `loading="lazy"` ne suffit pas : un <img> dans un <details> fermé est
+       chargé quand même dès que la ligne est à l'écran, et vingt-cinq
+       affiches font près d'un mégaoctet sur une page où la plupart des cartes
+       restent repliées. On garde donc l'URL dans `data-po` et on pose le
+       <img> au premier `toggle`. L'événement ne remonte pas : il se capte. */
+    host.addEventListener('toggle',function(ev){
+      var d=ev.target;
+      if(!d.open||!d.tagName||d.tagName!=='DETAILS') return;
+      var p=d.querySelector('.po[data-po]');
+      if(!p) return;
+      p.innerHTML='<img src="'+p.dataset.po+'" alt="" decoding="async"'+
+        ' width="342" height="513"/>';
+      p.removeAttribute('data-po');
+    },true);
+    /* i18n-on */
     wire();
     apply();
   }
@@ -931,9 +957,23 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
     var chev='<svg class="chevd" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg>';
 
-    var card=syn
-      ? '<details class="card"><summary class="hd">'+head+chev+'</summary>'+
-          '<p class="syn">'+marque+esc(syn)+'</p>'+
+    /* L'affiche ne se montre qu'une fois la carte ouverte : repliée, la ligne
+       reste exactement ce qu'elle était. L'URL attend dans `data-po`, et c'est
+       le `toggle` capté plus bas qui pose le <img> — voir là-bas pourquoi
+       `loading="lazy"` n'y suffisait pas. Le chemin nu vient de radar.json, la
+       taille est choisie ici : 82 px de rendu, donc w342 par la règle du ×4.
+       Rien du tout quand TMDB n'a pas d'affiche — les comics de Wookieepedia
+       et les romans de l'Almanach n'en ont aucune. */
+    var po=e.poster
+      ? '<span class="po" data-po="https://image.tmdb.org/t/p/w342'+e.poster+'"></span>'
+      : '';
+    var corps=(po||syn)
+      ? '<div class="bd">'+po+
+          (syn?'<p class="syn">'+marque+esc(syn)+'</p>':'')+'</div>'
+      : '';
+
+    var card=corps
+      ? '<details class="card"><summary class="hd">'+head+chev+'</summary>'+corps+
           '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></details>'
       : '<div class="card"><div class="hd">'+head+'</div>'+
           '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>';

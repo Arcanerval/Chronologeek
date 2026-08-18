@@ -284,6 +284,43 @@ Après avoir poussé une page à la main, **relancer l'action concernée** : les
 livrées n'ont pas la table `RT`, c'est l'action qui l'injecte. Pousser d'abord,
 lancer ensuite, sinon le push écrase la table.
 
+### Les affiches, posées le 19 août 2026
+
+`add()` prend un `poster`, et les quatre appels TMDB — les deux de
+`source_tmdb`, celui des films de `source_startrek`, les deux de
+`tmdb_episodes` — y passent `poster_path`. Les épisodes reprennent l'affiche de
+leur série : TMDB donne bien une vignette par épisode (`still_path`), mais une
+image de plateau ne se reconnaît pas au vol là où une affiche se reconnaît.
+
+Trois choses à savoir :
+
+- **On stocke le chemin nu** (`/8Vt6.jpg`), jamais l'URL. La page compose
+  `https://image.tmdb.org/t/p/w342` + le chemin, et choisit donc sa taille sans
+  qu'on regénère le radar. `radar.json` tient en 28 Ko ; vingt-cinq URL
+  entières le gonfleraient pour rien.
+- **La clé est absente quand il n'y a pas d'affiche**, comme `ep`. Wookieepedia
+  et l'Avatar Almanac n'en ont aucune — 19 des 44 sorties, les comics Star Wars
+  et les romans Avatar. La carte n'affiche alors rien du tout.
+- **La règle « WebP local ×4 » ne s'applique pas ici.** Ces images restent chez
+  TMDB : le radar est régénéré chaque jour, et rapatrier vingt-cinq fichiers
+  quotidiens ferait grossir le dépôt sans fin. Le ×4 vaut quand même pour la
+  taille demandée — 82 px de rendu, donc `w342`, le palier TMDB juste au-dessus
+  de 328.
+
+**Côté page, l'affiche n'existe qu'une fois la carte ouverte.** Elle est dans le
+corps du `<details>`, à gauche du synopsis, et `row()` ne pose qu'un
+`<span class="po" data-po="…">` vide : c'est un `toggle` capté sur `#cal` qui
+écrit le `<img>`, une seule fois.
+
+`loading="lazy"` ne suffisait pas, et c'est le piège : **un `<img>` dans un
+`<details>` fermé est chargé quand même** dès que sa ligne est à l'écran. Vérifié
+au navigateur — vingt-cinq affiches, près d'un mégaoctet, sur une page où la
+plupart des cartes restent repliées. L'événement `toggle` ne remonte pas : il se
+capte (`addEventListener('toggle', …, true)`).
+
+Le radar n'aura ses affiches qu'au prochain passage de `radar.yml` (cron 6 h UTC,
+ou « Run workflow »). D'ici là les cartes s'ouvrent comme avant, sans image.
+
 ## Synchronisation FR/EN
 
 `sync.py` sert la règle absolue ci-dessus. Contrairement aux scripts de génération,

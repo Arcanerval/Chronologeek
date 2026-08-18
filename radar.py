@@ -219,7 +219,7 @@ def tmdb_country_dates(base, movie_id):
     return out
 
 
-def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr="", date_sort_fr="", date_txt_fr="", ep=None):
+def add(universe, title, date_sort, date_txt, kind, source, precision="day", era="", syn="", wiki="", syn_fr="", title_fr="", date_sort_fr="", date_txt_fr="", ep=None, poster=""):
     title = re.sub(r"\s+", " ", (title or "")).strip(" –-—:")
     if not title:
         return
@@ -246,6 +246,13 @@ def add(universe, title, date_sort, date_txt, kind, source, precision="day", era
     # tenir le repère d'une autre.
     if ep:
         entry["ep"] = dict(ep)
+    # L'affiche TMDB, en chemin nu (`/8Vt6.jpg`) : la page compose l'URL avec
+    # la taille qu'elle veut. Écrire l'URL entière ici la répéterait quarante
+    # fois dans un fichier qui tient en 28 Ko. Absente comme `ep` quand il n'y
+    # en a pas — Wookieepedia et l'Avatar Almanac n'en ont aucune, et une clé
+    # vide sur la moitié des entrées ne dit rien de plus qu'une clé absente.
+    if poster:
+        entry["poster"] = poster
     results.append(entry)
     # Rendue à l'appelant : la carte d'une série neuve reçoit après coup le
     # repère de son propre premier épisode. Voir `tmdb_episodes`.
@@ -411,7 +418,7 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
             "Épisode", "TMDB",
             syn=(e1.get("overview") or "").strip(),
             syn_fr=(f.get("overview") or "").strip(),
-            ep=entiere)
+            ep=entiere, poster=fiche.get("poster_path") or "")
         return 1, None
 
     n, premier = 0, None
@@ -445,7 +452,7 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
             d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB",
             syn=(e.get("overview") or "").strip(),
             syn_fr=(f.get("overview") or "").strip(),
-            ep=repere(num))
+            ep=repere(num), poster=fiche.get("poster_path") or "")
         n += 1
     return n, premier
 
@@ -531,7 +538,8 @@ def source_tmdb():
                             title_fr=fr.get(it.get("id"), ("", ""))[1],
                             date_sort_fr=(d_fr.isoformat() if d_fr and d_fr != d else ""),
                             date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""),
-                            ep=(PREMIERE if kind == "Série" else None))
+                            ep=(PREMIERE if kind == "Série" else None),
+                            poster=it.get("poster_path") or "")
                         if kind == "Série":
                             debuts[it.get("id")] = (d, carte)
                         found += 1
@@ -934,7 +942,8 @@ def source_startrek():
             syn_fr=(f.get("overview") or "").strip(),
             title_fr=(f.get("title") or "").strip(),
             date_sort_fr=(d_fr.isoformat() if d_fr and d_fr != d else ""),
-            date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""))
+            date_txt_fr=(d_fr.strftime("%d/%m/%Y") if d_fr and d_fr != d else ""),
+            poster=it.get("poster_path") or "")
         n_film += 1
 
     # Les séries qui diffusent en ce moment, demandées à /discover comme pour
@@ -958,7 +967,7 @@ def source_startrek():
                         syn=(it.get("overview") or "").strip(),
                         syn_fr=(f.get("overview") or "").strip(),
                         title_fr=(f.get("name") or "").strip(),
-                        ep=PREMIERE)
+                        ep=PREMIERE, poster=it.get("poster_path") or "")
             n_serie += 1
         # Une série sans date de début est une annonce sans grille : rien à
         # lire. Pour les autres, seule la fiche dit s'il reste un épisode à
