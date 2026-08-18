@@ -237,11 +237,33 @@ const TRADUCTIONS = [
 const RENOMMES = new Map([['Avatar', 'Avatar Legends']]);
 const RENOMMES_NOUVEAUX = new Set(RENOMMES.values());
 
-/* Reprend un objet de libellés anglais copié de la prod et y rejoue les
-   renommages. Sans ça, `nav.avatar` y resterait « Avatar » : ce bloc-là
-   n'est pas traduit, il est recopié. */
+/* ── ce que la prod anglaise dit encore et qui n'est plus vrai ──────
+   `CG.t` n'est pas traduit clé par clé : quand la prod anglaise porte la
+   clé, sa valeur est reprise telle quelle — c'est le principe même du
+   « retrouver plutôt que traduire ». Corriger la phrase française ne
+   suffit donc pas : l'anglais garde l'ancienne, et rien ne le signale,
+   la clé étant bien renseignée.
+
+   `legal3` en est le seul cas connu. Il énumérait quatre univers, la
+   prod datant d'avant Star Trek et The Walking Dead ; il n'est affiché
+   nulle part — le pied de page porte son propre texte — mais une donnée
+   fausse qui traîne finit par ressortir. Mis à six le 18 août 2026, avec
+   la formule du pied de page.
+
+   Avatar n'entre pas ici : n'ayant aucune prod anglaise, il n'a rien à
+   reprendre — sa phrase est écrite, dans `traductions-avatar.mjs`. */
+const PERIMES = new Map([
+  ['Star Wars, Marvel, DC and Avatar are trademarks of their respective owners;'
+   + ' Chronologeek is an independent fan project.',
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks'
+   + ' of their respective owners; Chronologeek is an independent fan project.'],
+]);
+
+/* Reprend un objet de libellés anglais copié de la prod et y rejoue ce
+   que le proto a changé depuis. Sans ça, `nav.avatar` y resterait
+   « Avatar » : ce bloc-là n'est pas traduit, il est recopié. */
 function rejoueRenommages(o) {
-  if (typeof o === 'string') return RENOMMES.get(o) ?? o;
+  if (typeof o === 'string') return PERIMES.get(o) ?? RENOMMES.get(o) ?? o;
   if (Array.isArray(o)) return o.map(rejoueRenommages);
   if (o && typeof o === 'object') {
     const out = {};
@@ -677,7 +699,7 @@ for (const T of TIMELINES) {
        entrées de chacune. En prenant le CG de la prod tel quel, la
        clé disparaissait et le groupe « Branches » du panneau de
        filtres s'affichait vide : un intitulé, aucun bouton. */
-    const cgTraduit = tr.objet(P.CG, EN.CG, 'CG');
+    const cgTraduit = rejoueRenommages(tr.objet(P.CG, EN.CG, 'CG'));
     const cg = `window.CG=${js(cgTraduit)};\n`;
     const rt = EN.RT ? `const RT=${js(EN.RT)};\n` : '';
     const queue = `window.${T.varWin}=${T.varData};\n${EN.RT ? 'window.RT=RT;\n' : ''}`;
@@ -890,7 +912,7 @@ for (const T of TIMELINES) {
    Avatar est le seul univers sans page anglaise en ligne : ses textes sont
    écrits, pas repris, et vivent dans traductions-avatar.mjs. La structure
    vient du proto français. Ne pas editer a la main : relancer le script. */\n`;
-    const cgTraduit = tr.objet(P.CG, undefined, 'CG');
+    const cgTraduit = rejoueRenommages(tr.objet(P.CG, undefined, 'CG'));
     fs.writeFileSync(path.join(RACINE, '_proto/data-avatar-en.js'),
       entete + `window.CG=${js(cgTraduit)};\n`
       + serialiseTimeline('AVATAR', sortie) + '\nwindow.AVATAR=AVATAR;\n', 'utf8');
