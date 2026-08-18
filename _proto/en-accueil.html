@@ -128,14 +128,60 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   box-shadow:0 0 0 2px rgba(13,11,18,.6)}
 .burger{display:none}
 .burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
-/* menu replié : panneau franc, pas un tiroir qui glisse */
-.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink)}
+/* Un bouton, deux dessins : les trois barres tant que le tiroir est ferme,
+   la croix des qu'il s'ouvre. C'est `aria-expanded`, deja pose par le
+   script de chaque page, qui commande — rien a ajouter cote JS. */
+.burger .x{display:none}
+.burger[aria-expanded=true] .m{display:none}
+.burger[aria-expanded=true] .x{display:block}
+/* ── PLUS D'UNIVERS : le deroulant du menu ─────────────────────────
+   Six univers en clair debordaient la barre. Trois restent — ce sont les
+   trois plus consultes —, les trois autres passent sous un bouton.
+   <details> le fait sans une ligne de JS et se pilote au clavier. */
+.nav-more{position:relative}
+.nav-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:16px;text-transform:uppercase;
+  letter-spacing:.07em;color:rgba(255,253,247,.7);padding:2px 0;
+  border-bottom:2px solid transparent}
+.nav-more>summary::-webkit-details-marker{display:none}
+.nav-more>summary::after{content:'';width:6px;height:6px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.nav-more>summary:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-more[open]>summary{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-more[open]>summary::after{transform:translateY(1px) rotate(225deg)}
+.nav-more:has(a[aria-current])>summary{color:var(--hot);border-bottom-color:var(--hot)}
+.more-pop{position:absolute;top:calc(100% + 10px);left:-13px;z-index:70;min-width:192px;
+  background:var(--ink);border:2px solid var(--paper);padding:4px 0;
+  box-shadow:0 9px 0 rgba(13,11,18,.5)}
+.more-pop a{display:block;padding:9px 15px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,253,247,.78);
+  text-decoration:none;white-space:nowrap;border-bottom:0}
+.more-pop a:hover{background:var(--paper);color:var(--ink)}
+.more-pop a[aria-current]{color:var(--hot)}
+/* ── LE TIROIR : les six univers d'abord, en deux colonnes ─────────
+   Dix liens pleine largeur faisaient defiler le menu lui-meme. Les univers
+   passent en grille — leur pastille les distingue plus vite que leur nom —
+   et les quatre pages du site suivent dessous, a l'ancienne taille. */
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink);
+  max-height:calc(100vh - var(--hh,53px));overflow-y:auto}
 .drawer.open{display:block}
-.drawer a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+.drawer a[aria-current]{color:var(--hot)}
+.dw-lab{display:block;padding:11px 20px 5px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,253,247,.44)}
+.dw-uni{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 16px 12px}
+.dw-uni a{display:flex;align-items:center;gap:8px;padding:10px 9px;text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:16.5px;text-transform:uppercase;
+  letter-spacing:.04em;line-height:1.05;color:rgba(255,253,247,.86);border:2px solid var(--line)}
+.dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
+.dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
+.u-sw{--k:#4d9fff}.u-mcu{--k:#e23636}.u-dc{--k:#f5c842}
+.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}
+.dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
+.dw-site{border-top:2px solid rgba(255,253,247,.14)}
+.dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
   font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
   border-top:2px solid rgba(255,253,247,.14)}
-.drawer a:first-child{border-top:0}
-.drawer a[aria-current]{color:var(--hot)}
+.dw-site a:first-child{border-top:0}
 
 /* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
 .attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
@@ -346,7 +392,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .hud .lbl{display:none}
   .deep .go{margin-left:0}
   .icon-btn{width:44px;height:44px}
-  .drawer a{padding:13px 20px}
+  .dw-site a{padding:13px 20px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -405,7 +451,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <a href="en-starwars.html">Star Wars</a>
       <a href="en-marvel.html">Marvel</a>
       <a href="en-dc.html">DC</a>
-      <a href="en-avatar.html">Avatar</a><a href="en-startrek.html">Star Trek</a><a href="en-twd.html">The Walking Dead</a>
+      <details class="nav-more"><summary>More universes</summary><div class="more-pop"><a href="en-avatar.html">Avatar</a><a href="en-startrek.html">Star Trek</a><a href="en-twd.html">The Walking Dead</a></div></details>
       <a href="en-a-venir.html" class="upc">Upcoming</a>
       <a href="en-nouveautes.html" class="news">What's New</a>
     </nav>
@@ -414,14 +460,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
       </a>
       <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><g class="m"><path d="M3 6h18M3 12h18M3 18h18"/></g><g class="x"><path d="M5 5l14 14M19 5 5 19"/></g></svg>
       </button>
     </div>
   </div>
   <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
-    <a href="#" aria-current="page">Home</a><a href="en-dossiers.html" class="doss">Deep Dives</a>
-    <a href="en-starwars.html">Star Wars</a><a href="en-marvel.html">Marvel</a><a href="en-dc.html">DC</a><a href="en-avatar.html">Avatar</a><a href="en-startrek.html">Star Trek</a><a href="en-twd.html">The Walking Dead</a>
-    <a href="en-a-venir.html" class="upc">Upcoming</a><a href="en-nouveautes.html" class="news">What's New</a>
+    <span class="dw-lab">Universes</span>
+    <div class="dw-uni"><a href="en-starwars.html" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="en-marvel.html" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="en-dc.html" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="en-avatar.html" class="u-av"><i aria-hidden="true"></i>Avatar</a><a href="en-startrek.html" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="en-twd.html" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a></div>
+    <span class="dw-lab">The site</span>
+    <div class="dw-site"><a href="#" aria-current="page">Home</a><a href="en-dossiers.html" class="doss">Deep Dives</a><a href="en-a-venir.html" class="upc">Upcoming</a><a href="en-nouveautes.html" class="news">What's New</a></div>
   </nav>
 </header>
 
@@ -538,7 +585,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         <span class="d">Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline</span>
         <span class="pips" aria-hidden="true"></span>
         <span class="score"><span><b class="d-n">0</b> / 248 watched</span><span class="d-p">0 %</span></span>
-        <span class="upd">Updated · August 2026</span>
+        <span class="upd">Up to date · August 2026</span>
       </span>
     </a>
 
@@ -555,7 +602,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         <span class="d">TV Shows · Web Series · Full chronological order</span>
         <span class="pips" aria-hidden="true"></span>
         <span class="score"><span><b class="d-n">0</b> / 45 watched</span><span class="d-p">0 %</span></span>
-        <span class="upd">Updated · August 2026</span>
+        <span class="upd">Up to date · August 2026</span>
       </span>
     </a>
 
@@ -570,7 +617,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         <span class="stamp"><span>Soon</span></span>
       </figure>
       <span class="body">
-        <span class="d">Dragon Age… and more universes in the works.</span>
+        <span class="d">Dragon Age · Stargate · Assassin's Creed… and more universes in the works.</span>
         <span class="upd">In progress</span>
       </span>
     </div>

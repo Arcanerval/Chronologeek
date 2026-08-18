@@ -246,6 +246,14 @@ const TRADUCTIONS = [
   // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
   // repères y étaient dépliés en permanence, sans intitulé commun.
   ['Filtres, recherche et repères', 'Filters, search and legend'],
+  ['Filtres et recherche', 'Filters and search'],   // « À venir » et « Nouveautés » : pas de légende à replier
+  // ── le menu remanié, posé le 18 août 2026 ───────────────────────
+  // Six univers en clair débordaient la barre : trois restent, les trois
+  // autres passent sous un déroulant, et le tiroir mobile les regroupe
+  // sous deux intitulés. Rien de tout ça n'existait en prod.
+  ['Plus d’univers', 'More universes'],
+  ['Les univers', 'Universes'],
+  ['Le site', 'The site'],
   // ── accueil ────────────────────────────────────────────────────
   ['Chronologeek — Accueil (proto E)', 'Chronologeek — Home (proto E)'],
   ['Navigation repliée', 'Collapsed navigation'],
@@ -284,7 +292,7 @@ const TRADUCTIONS = [
   ['Films · Séries · Séries animées · Courts métrages · Timeline chronologique complète',
    'Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline'],
   ['/ 248 vus', '/ 248 watched'],
-  ['À jour · août 2026', 'Updated · August 2026'],
+  ['À jour · août 2026', 'Up to date · August 2026'],
 
   /* ── la case The Walking Dead ───────────────────────────────────
      Sixième univers, même situation que Star Trek : rien à retrouver
@@ -298,8 +306,8 @@ const TRADUCTIONS = [
   ['Séries · Webséries · Ordre chronologique complet',
    'TV Shows · Web Series · Full chronological order'],
   ['/ 45 vus', '/ 45 watched'],
-  ['Dragon Age… et d\'autres univers en préparation.',
-   'Dragon Age… and more universes in the works.'],
+  ['Dragon Age · Stargate · Assassin\'s Creed… et d\'autres univers en préparation.',
+   'Dragon Age · Stargate · Assassin\'s Creed… and more universes in the works.'],
 
   // ── timelines ──────────────────────────────────────────────────
   ['Chronologeek — Star Wars (proto E)', 'Chronologeek — Star Wars (proto E)'],
@@ -336,7 +344,10 @@ const TRADUCTIONS = [
    'The guides that go beyond the timeline: reading orders, analyses and thematic paths, universe by universe.'],
   ['Romans · Romans jeunesse · Comics — l\'ordre de lecture complet du canon, replacé entre les films et les séries.',
    'Novels · Young-reader books · Comics — the complete canon reading order, placed among the movies and shows.'],
-  ['534 entrées · 7 ères · à jour · août 2026', '534 entries · 7 eras · up to date · August 2026'],
+  // Le décompte a quitté le bandeau de la case le 18 août 2026 : la carte
+  // le donne déjà deux lignes plus haut, en score. Reste la date de mise
+  // à jour, et sa traduction est celle de la ligne « À jour · août 2026 »
+  // plus haut — une seule clé, un seul anglais.
   ['D\'autres Dossiers', 'More Deep Dives'],
   ['Qu\'aimeriez vous voir ici ? Des nouveautés arriveront.',
    'What would you like to see here? More is on the way.'],

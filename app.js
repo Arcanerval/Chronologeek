@@ -402,3 +402,43 @@
     });
   }
 })();
+
+/* ═══ LE MENU — fermetures que le HTML ne fait pas tout seul ═══════════
+   Le tiroir mobile et le déroulant « Plus d'univers » s'ouvrent chacun
+   par leur propre moyen — un bouton dans la page, un <details> natif —
+   mais ni l'un ni l'autre ne se referme quand on clique ailleurs. Un
+   menu resté ouvert derrière la page qu'on vient de quitter passe pour
+   une page cassée. Le code est ici plutôt que dans les vingt-deux pages
+   pour la raison qui vaut au reste de ce fichier : une seule copie.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var FR = document.documentElement.lang !== 'en';
+  var bg = document.getElementById('burger'), dr = document.getElementById('drawer');
+
+  function fermeTiroir(){
+    if (!dr || !dr.classList.contains('open')) return;
+    dr.classList.remove('open');
+    bg.setAttribute('aria-expanded', 'false');
+    bg.setAttribute('aria-label', FR ? 'Ouvrir le menu' : 'Open menu');
+  }
+  function fermePop(sauf){
+    var d = document.querySelectorAll('details.nav-more[open]');
+    for (var i = 0; i < d.length; i++) if (d[i] !== sauf) d[i].removeAttribute('open');
+  }
+
+  document.addEventListener('click', function(e){
+    /* un lien suivi depuis le tiroir : l'ancre interne ne recharge pas la
+       page, et le menu resterait donc étalé par-dessus la destination */
+    if (dr && dr.contains(e.target)) { if (e.target.closest('a')) fermeTiroir(); }
+    else if (!bg || !bg.contains(e.target)) fermeTiroir();
+
+    var d = e.target.closest ? e.target.closest('details.nav-more') : null;
+    fermePop(d);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape') return;
+    fermeTiroir(); fermePop(null);
+  });
+})();

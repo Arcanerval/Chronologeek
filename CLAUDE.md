@@ -777,6 +777,34 @@ est encore là, comme pour tout sélecteur.
 `documentElement.lang`. Deux jumeaux se seraient désynchronisés à la première
 retouche du CSS, qui est commun.
 
+### Le menu : trois univers en clair, trois sous un déroulant
+
+Six univers alignés débordaient la barre. Depuis le **18 août 2026**, Star Wars,
+Marvel et DC restent en clair ; Avatar, Star Trek et The Walking Dead passent
+sous « Plus d'univers » / « More universes ». C'est un `<details class="nav-more">`
+natif : **pas une ligne de JS pour l'ouvrir**, et le clavier le pilote seul.
+`.nav-more:has(a[aria-current])>summary` le passe à l'or quand la page courante
+est dedans — sans ça, trois pages sur vingt-deux n'auraient rien d'allumé au menu.
+
+Le tiroir mobile a suivi : les six univers en **grille à deux colonnes** avec
+leur pastille de couleur (`.u-sw` … `.u-twd`, les six encres de la charte), puis
+les quatre pages du site. La règle générique `.drawer a` est devenue `.dw-site a`
+— laissée telle quelle, elle repassait les tuiles d'univers en blocs de 21 px et
+la grille tombait. Même chose pour le `@media(max-width:720px)`.
+
+Le burger porte deux dessins dans un seul SVG, `<g class="m">` et `<g class="x">`,
+commutés par `aria-expanded` — que le script de chaque page pose déjà.
+
+**Ce qui referme ces deux menus vit dans `e-app.js`**, pas dans les pages : clic
+à côté, clic sur un lien du tiroir, touche Échap. Le HTML ne le fait pour aucun
+des deux, et un menu resté ouvert par-dessus la page qu'on vient d'ouvrir passe
+pour une page cassée. Une seule copie pour vingt-deux pages, comme le formulaire
+de contact ci-dessous.
+
+Un septième univers se pose donc dans le déroulant et dans la grille du tiroir,
+pas dans la rangée du haut — et dans les onze protos source, jamais dans les
+`en-*` produits.
+
 ### Le pied de page et son formulaire de contact
 
 Le pied faisait **722 px de haut sur un téléphone**, presque un écran entier : une
