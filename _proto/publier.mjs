@@ -161,8 +161,14 @@ const PIED = [
   '        async src="//gc.zgo.at/count.js"></script>',
 ].join('\n');
 
-function blocSeo(seo, urlEn, urlFr, moi) {
+// Les partages sociaux ne disaient pas leur langue : les hreflang etaient poses
+// depuis toujours, og:locale non. Facebook et LinkedIn en tirent la langue de
+// l'apercu et le lien vers l'autre version ; sans lui, ils devinent.
+const LOCALES = { fr: 'fr_FR', en: 'en_US' };
+
+function blocSeo(seo, urlEn, urlFr, moi, langue) {
   const e = s => s.replace(/&(?!(amp|lt|gt|quot|#\d+|#x[0-9a-f]+);)/gi, '&amp;');
+  const autre = langue === 'fr' ? 'en' : 'fr';
   return [
     `<title>${seo.title}</title>`,
     `<meta name="description" content="${e(seo.desc)}"/>`,
@@ -172,6 +178,8 @@ function blocSeo(seo, urlEn, urlFr, moi) {
     `<meta property="og:description" content="${e(seo.desc)}"/>`,
     `<meta property="og:image" content="${seo.image}"/>`,
     `<meta property="og:url" content="${SITE}${moi}"/>`,
+    `<meta property="og:locale" content="${LOCALES[langue]}"/>`,
+    `<meta property="og:locale:alternate" content="${LOCALES[autre]}"/>`,
     '<meta name="twitter:card" content="summary_large_image"/>',
     `<link rel="alternate" hreflang="en" href="${SITE}${urlEn}"/>`,
     `<link rel="alternate" hreflang="fr" href="${SITE}${urlFr}"/>`,
@@ -280,10 +288,13 @@ function publier(route, langue) {
   }
 
   // 4. titre et référencement à la place du titre de maquette
-  const bloc = blocSeo(seo, route.en.url, route.fr.url, c.url);
+  const bloc = blocSeo(seo, route.en.url, route.fr.url, c.url, langue);
   const avantTitre = h;
   h = h.replace(/<title>[\s\S]*?<\/title>/, () => bloc);
   if (h === avantTitre) problemes.push(`${c.sortie} : <title> introuvable`);
+  for (const attendu of [`content="${LOCALES[langue]}"`, 'og:locale:alternate']) {
+    if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
+  }
 
   // 5. les données structurées, en tête de page, juste avant </head>
   let ld = '';

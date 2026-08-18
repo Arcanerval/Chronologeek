@@ -395,6 +395,15 @@ une fois des pages d'avant la refonte, avec Avatar écrit à la main faute de pa
 reprendre. Le script ne les relit pas dans les pages publiées : celles-ci sont sa
 sortie, et la boucle aurait marché sans que rien ne dise d'où venait la valeur.
 
+**`og:locale` ne vient pas de `seo.json`, il se déduit de la langue.** Posé le
+18 août 2026, avec `og:locale:alternate` qui désigne l'autre version — les
+`hreflang` le disaient aux moteurs depuis toujours, les partages sociaux ne le
+disaient à personne. La table `LOCALES` tient les deux valeurs (`fr_FR`,
+`en_US`) et `blocSeo()` reçoit désormais `langue` : rien à écrire par page, rien
+à tenir à jour. Un septième univers n'y entre pas, une septième **langue** si.
+Le garde-fou vérifie les deux balises dans chaque page produite, à côté de celui
+du `<title>`.
+
 **2. Les liens.** `e-marvel.html` devient `/marvel`, et les scripts prennent leur
 nom de production. Ça vaut aussi **dans les données** : `data-news.js` pose
 `href:"e-marvel.html#mcu-smbnd"` sur chaque carte du journal, et ce lien-là n'est
@@ -1096,9 +1105,6 @@ et la majuscule initiale quand on découpe une phrase.
   à l'écran ; ce n'est pas fait.
 - Avatar n'a pas de table `RT` : pas de temps de visionnage, donc pas de compteur
   « temps restant » sur sa page. Les trois autres univers en ont une.
-- Les partages sociaux ne disent pas leur langue : `og:locale` et
-  `og:locale:alternate` manquent, là où les `hreflang` sont posés depuis
-  toujours. Deux lignes par page, dans `seo.json`.
 - Le mois « À jour · <mois> » des six cases de l'accueil est écrit à la main,
   six fois, dans `e-accueil.html` — et une septième dans `traduire-pages.mjs`
   quand le mois n'a pas d'homologue en prod. Rien ne le relie à la dernière
