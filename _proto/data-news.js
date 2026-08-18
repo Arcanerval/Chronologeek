@@ -37,6 +37,12 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
 
+      { nat:"media", uni:"dc", kind:"serie",
+        title:"Lanterns", meta:"2026",
+        txt:"Ajoutée à la timeline DC, à la suite de Supergirl.",
+        img:"https://image.tmdb.org/t/p/w500/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg",
+        href:"e-dc.html#dcu-lanterns", cta:"Voir dans la timeline" },
+
       { nat:"site", uni:"twd", kind:"timeline",
         title:"Nouvelle timeline : The Walking Dead",
         txt:"45 entrées, de l'épidémie de Los Angeles à New York — les sept "+

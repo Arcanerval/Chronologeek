@@ -203,6 +203,13 @@ const TRADUCTIONS = [
      par « L'Héritage de Vador ». */
   ['Ajouté au Dossier Star Wars — le comic, en 34 ABY, juste après L\'Héritage de Vador.',
    'Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.'],
+
+  /* ── la carte Lanterns du journal, écrite le 18 août 2026 ──
+     whats-new.html · « Supergirl (2026) added to the DC timeline,
+     following the DCU. » — même moule, seul le voisin cité change. Le
+     titre, lui, ne se traduit pas : il est déclaré identique plus bas. */
+  ['Ajoutée à la timeline DC, à la suite de Supergirl.',
+   'Added to the DC timeline, following Supergirl.'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════
@@ -559,6 +566,8 @@ const GLOBAL = new Lexique();
 const TITRES_IDENTIQUES = [
   // Dossier Star Wars · 34 ABY, comic VO ajouté le 13 août 2026
   'The Fall of Kylo Ren 1-5',
+  // DC · la série du DCU ajoutée le 18 août 2026, sans titre français
+  'Lanterns',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 

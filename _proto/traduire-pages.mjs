@@ -294,6 +294,12 @@ const TRADUCTIONS = [
   ['/ 248 vus', '/ 248 watched'],
   ['À jour · août 2026', 'Up to date · August 2026'],
 
+  /* ── le bandeau de la page DC, passé à août le 18 août 2026 ──────
+     La prod écrit « Updated · July 2026 » sur les quatre bandeaux ; seul
+     le mois change, et il n'a pas d'homologue à retrouver tant que la
+     prod anglaise est restée en juillet. */
+  ['Mis à jour · Août 2026', 'Updated · August 2026'],
+
   /* ── la case The Walking Dead ───────────────────────────────────
      Sixième univers, même situation que Star Trek : rien à retrouver
      dans une prod qui ne l'a jamais porté. Son nom ne se traduit pas —
