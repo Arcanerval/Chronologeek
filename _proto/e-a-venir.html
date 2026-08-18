@@ -209,11 +209,26 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);
   animation:blink 1.5s steps(1,end) infinite;flex:0 0 auto}
 .next .txt{min-width:0;flex:1}
-.next .t{font-family:'Big Shoulders Display';font-weight:900;
+/* La date une seule fois, sous la pastille : les sorties du bloc tombent
+   toutes le même jour, la répéter sur chacune n'apprend rien. */
+.next .lead{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.next .nd{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.86);font-variant-numeric:tabular-nums}
+.next .t{display:block;font-family:'Big Shoulders Display';font-weight:900;
   font-size:clamp(23px,3.6vw,38px);text-transform:uppercase;line-height:.95}
-.next .m{display:flex;gap:14px;flex-wrap:wrap;margin-top:5px;
+/* Plusieurs sorties le même jour : elles montent TOUTES ici, séparées d'un
+   filet. Le titre se resserre alors — trois noms à 38 px poussaient le
+   calendrier hors de l'écran. */
+.next .one{display:block}
+.next .one+.one{margin-top:10px;padding-top:10px;
+  border-top:1px solid rgba(255,253,247,.22)}
+.next.multi .t{font-size:clamp(20px,2.7vw,28px)}
+/* L'univers et le support en pastilles, comme sur les cartes du calendrier :
+   la même donnée écrite deux fois de deux façons se lit deux fois. */
+.next .m{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;
   font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   color:rgba(255,253,247,.86)}
+.next .m .ep{margin-top:0}
 .next .big{flex:0 0 auto;font-family:'Big Shoulders Display';font-weight:900;
   font-size:clamp(40px,7vw,72px);line-height:.82;color:var(--hot);
   text-shadow:4px 4px 0 var(--ink);text-align:right}
@@ -561,11 +576,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <!-- ══ LA PROCHAINE SORTIE ═══════════════════════════════════════ -->
 <div class="next" id="next" hidden>
   <div class="wrap">
-    <span class="chev">Prochaine</span>
-    <span class="txt">
-      <span class="t" id="next-t"></span>
-      <span class="m" id="next-m"></span>
+    <span class="lead">
+      <span class="chev">Prochaine</span>
+      <span class="nd" id="next-d"></span>
     </span>
+    <span class="txt" id="next-list"></span>
     <span class="big" id="next-cd"></span>
   </div>
 </div>
@@ -733,15 +748,31 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var list=data.filter(function(e){ return stillUpcoming(e); })
                  .sort(function(a,b){ return iso(a).localeCompare(iso(b)); });
 
-    /* ── la prochaine sortie ───────────────────────────────────────── */
+    /* ── la ou les prochaines sorties ──────────────────────────────────
+       Une journée sort rarement seule : le 20/08 porte un épisode de
+       Strange New Worlds, un de Lanterns et un de Dead City. N'en montrer
+       qu'un faisait passer les autres pour plus lointains qu'ils ne sont,
+       et le premier ne devait sa place qu'à l'ordre du fichier. Tout ce qui
+       tombe le jour le plus proche monte donc ici, et la date, commune, ne
+       s'écrit qu'une fois. */
     if(list.length){
       var n0=list[0], u0=UNI[n0.universe]||['—','var(--soon)'];
+      var jour=list.filter(function(e){ return iso(e)===iso(n0); });
       var nx=document.getElementById('next');
       nx.hidden=false;
+      nx.classList.toggle('multi',jour.length>1);
       nx.style.setProperty('--c',u0[1]);
-      document.getElementById('next-t').textContent=titleOf(n0);
-      document.getElementById('next-m').innerHTML=
-        '<span>'+u0[0]+'</span><span>'+esc(KIND[keyOf(n0)][0])+'</span><span>'+esc(dateTxt(n0))+'</span>';
+      document.getElementById('next-d').textContent=dateTxt(n0);
+      document.getElementById('next-list').innerHTML=jour.map(function(e){
+        var u=UNI[e.universe]||['—','var(--soon)'], kk=KIND[keyOf(e)]||KIND.other;
+        return '<span class="one" style="--c:'+u[1]+'">'+
+          '<span class="t">'+esc(titleOf(e))+'</span>'+
+          '<span class="m">'+
+            '<span class="u">'+u[0]+'</span>'+
+            '<span class="b" style="--k:'+kk[1]+'">'+kk[0]+'</span>'+
+            epTag(e)+
+          '</span></span>';
+      }).join('');
       /* Le compte à rebours s'écrit en toutes lettres les deux derniers
          jours : « AUJOURD’HUI » est cinq fois plus large que « J‑2 » à la
          même taille, et il passait par-dessus le titre. La classe le
