@@ -8,7 +8,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "c. 362 BBY",
-  "syn": "The High Republic Adventures – Pathfinders 4 is the upcoming fourth issue of the 2026 comic book series Star Wars: The High Republic Adventures – Pathfinders. The issue will be written by George Mann, illustrated by Partha Pratim, Jagdish Kumar, and Michael Atiyeh, and published by Dark Horse Comics on August 19, 2026.",
+  "syn": "The High Republic Adventures – Pathfinders 4 is the fourth issue of the 2026 comic book series Star Wars: The High Republic Adventures – Pathfinders. The issue was written by George Mann, illustrated by Partha Pratim, Jagdish Kumar, and Michael Atiyeh, and published by Dark Horse Comics on August 19, 2026.",
   "wiki": "The High Republic Adventures – Pathfinders 4",
   "syn_fr": "The High Republic Adventures – Pathfinders 4 est le quatrième numéro de la mini-série de bandes dessinées Star Wars: The High Republic Adventures – Pathfinders écrit par George Mann dans le cadre du projet multimédia Star Wars : La Haute République.",
   "kindKey": "comic",
@@ -25,7 +25,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "Galaxy's Edge – Echoes of the Empire 5 is the upcoming fifth and final issue of the canon 2026 comic book miniseries Star Wars: Galaxy's Edge – Echoes of the Empire. The issue will be written by Ethan Sacks, illustrated by Roi Mercado, Jethro Morales, and Rachelle Rosenberg, and published by Marvel Comics on August 19, 2026.",
+  "syn": "Galaxy's Edge – Echoes of the Empire 5 is the fifth and final issue of the canon 2026 comic book miniseries Star Wars: Galaxy's Edge – Echoes of the Empire. The issue was written by Ethan Sacks, illustrated by Roi Mercado, Jethro Morales, and Rachelle Rosenberg, and published by Marvel Comics on August 19, 2026.",
   "wiki": "Galaxy's Edge – Echoes of the Empire 5",
   "syn_fr": "Galaxy's Edge – Echoes of the Empire 5 est le cinquième et dernier numéro de la série de bandes dessinées Star Wars: Galaxy's Edge – Echoes of the Empire écrit par Ethan Sacks.",
   "kindKey": "comic",
@@ -53,7 +53,8 @@
    "s": 4,
    "e": 5,
    "mark": ""
-  }
+  },
+  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg"
  },
  {
   "universe": "dc",
@@ -75,7 +76,8 @@
    "s": 1,
    "e": 2,
    "mark": ""
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "twd",
@@ -97,7 +99,8 @@
    "s": 3,
    "e": 5,
    "mark": ""
-  }
+  },
+  "poster": "/wq3vuQzQgbS83zX3malAFWMsSwX.jpg"
  },
  {
   "universe": "avatar",
@@ -153,7 +156,8 @@
    "s": 4,
    "e": 6,
    "mark": ""
-  }
+  },
+  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg"
  },
  {
   "universe": "dc",
@@ -175,7 +179,8 @@
    "s": 1,
    "e": 3,
    "mark": ""
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "twd",
@@ -197,7 +202,8 @@
    "s": 3,
    "e": 6,
    "mark": ""
-  }
+  },
+  "poster": "/wq3vuQzQgbS83zX3malAFWMsSwX.jpg"
  },
  {
   "universe": "starwars",
@@ -236,7 +242,8 @@
    "s": 4,
    "e": 7,
    "mark": ""
-  }
+  },
+  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg"
  },
  {
   "universe": "dc",
@@ -258,7 +265,8 @@
    "s": 1,
    "e": 4,
    "mark": ""
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "twd",
@@ -280,7 +288,8 @@
    "s": 3,
    "e": 7,
    "mark": ""
-  }
+  },
+  "poster": "/wq3vuQzQgbS83zX3malAFWMsSwX.jpg"
  },
  {
   "universe": "avatar",
@@ -336,7 +345,8 @@
    "s": 4,
    "e": 8,
    "mark": ""
-  }
+  },
+  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg"
  },
  {
   "universe": "dc",
@@ -358,7 +368,8 @@
    "s": 1,
    "e": 5,
    "mark": ""
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "twd",
@@ -380,7 +391,8 @@
    "s": 3,
    "e": 8,
    "mark": "finale"
-  }
+  },
+  "poster": "/wq3vuQzQgbS83zX3malAFWMsSwX.jpg"
  },
  {
   "universe": "starwars",
@@ -436,7 +448,8 @@
    "s": 4,
    "e": 9,
    "mark": ""
-  }
+  },
+  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg"
  },
  {
   "universe": "dc",
@@ -458,7 +471,8 @@
    "s": 1,
    "e": 6,
    "mark": ""
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "startrek",
@@ -480,7 +494,8 @@
    "s": 4,
    "e": 10,
    "mark": "finale"
-  }
+  },
+  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg"
  },
  {
   "universe": "dc",
@@ -502,7 +517,8 @@
    "s": 1,
    "e": 7,
    "mark": ""
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "dc",
@@ -524,7 +540,8 @@
    "s": 1,
    "e": 8,
    "mark": "finale"
-  }
+  },
+  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
  },
  {
   "universe": "starwars",
@@ -580,7 +597,8 @@
    "s": 1,
    "e": 0,
    "mark": "saison"
-  }
+  },
+  "poster": "/gX9qHUPY9idFro8tbaQNoSEONS8.jpg"
  },
  {
   "universe": "marvel",
@@ -602,7 +620,8 @@
    "s": 1,
    "e": 1,
    "mark": "premiere"
-  }
+  },
+  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg"
  },
  {
   "universe": "starwars",
@@ -687,7 +706,8 @@
   "kindKey": "film",
   "title_fr": "",
   "date_sort_fr": "2026-10-21",
-  "date_txt_fr": "21/10/2026"
+  "date_txt_fr": "21/10/2026",
+  "poster": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg"
  },
  {
   "universe": "starwars",
@@ -721,7 +741,8 @@
   "kindKey": "film",
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
-  "date_txt_fr": "16/12/2026"
+  "date_txt_fr": "16/12/2026",
+  "poster": "/jzPwsojjFStf5lR5Nm07w2hH56G.jpg"
  },
  {
   "universe": "starwars",
@@ -743,7 +764,8 @@
    "s": 2,
    "e": 1,
    "mark": "premiere"
-  }
+  },
+  "poster": "/eiJeWeCAEZAmRppnXHiTWDcCd3Q.jpg"
  },
  {
   "universe": "starwars",
@@ -811,7 +833,8 @@
   "kindKey": "film",
   "title_fr": "",
   "date_sort_fr": "2027-06-23",
-  "date_txt_fr": "23/06/2027"
+  "date_txt_fr": "23/06/2027",
+  "poster": "/9KAe39xqyZnv9J4W3DRGdQqX82h.jpg"
  },
  {
   "universe": "dc",
@@ -828,7 +851,8 @@
   "kindKey": "film",
   "title_fr": "",
   "date_sort_fr": "2027-07-07",
-  "date_txt_fr": "07/07/2027"
+  "date_txt_fr": "07/07/2027",
+  "poster": "/tYLgfKk3cEk7LskgxWyW37Nty01.jpg"
  },
  {
   "universe": "marvel",
@@ -845,6 +869,7 @@
   "kindKey": "film",
   "title_fr": "",
   "date_sort_fr": "2027-12-15",
-  "date_txt_fr": "15/12/2027"
+  "date_txt_fr": "15/12/2027",
+  "poster": "/f0YBuh4hyiAheXhh4JnJWoKi9g5.jpg"
  }
 ]
