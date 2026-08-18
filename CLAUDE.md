@@ -605,9 +605,21 @@ Deux garde-fous, un par script, et il faut nourrir les deux :
   `indexeCasse()`, puis déclarée dans `identiques`.
 - `traduire.mjs` — `RENOMMES` porte `ancien → nouveau`. Le nouveau nom ne s'apprend
   plus (`Lexique.ajoute`) et ne se cherche plus (`valeur`, avant le témoin de
-  fraîcheur, sinon il ressort « sans traduction » à chaque passage) ;
-  `rejoueRenommages()` rattrape le seul bloc qui est **recopié** de la prod anglaise
-  au lieu d'être traduit, le `CGDT` du Dossier.
+  fraîcheur, sinon il ressort « sans traduction » à chaque passage).
+
+**`CG.t` n'est pas traduit clé par clé.** Quand la prod anglaise porte la clé, sa
+valeur est reprise telle quelle — c'est le principe même du « retrouver plutôt que
+traduire ». Corriger la phrase française ne change donc rien à l'anglaise, et le
+rapport reste propre : la clé *est* renseignée. C'est ce qui est arrivé à `legal3`,
+la mention légale des données, qui énumérait quatre univers ; le 18 août 2026 elle
+passe à six, et quatre univers sur cinq gardaient l'ancienne. `rejoueRenommages()`
+applique donc `PERIMES` — la phrase anglaise périmée en clé — aux trois sorties
+`CG`. Avatar n'y entre pas : sans prod anglaise il n'a rien à reprendre, sa phrase
+est écrite dans `traductions-avatar.mjs`.
+
+`legal3` n'est affiché nulle part, le pied de page portant son propre texte. Ce
+n'est pas une raison de le laisser faux : une donnée périmée qui traîne finit par
+ressortir, et c'est le seul endroit du dépôt qui comptait encore quatre univers.
 
 Les deux scripts inverses ont leur propre liste : `ST_IDENTIQUES` pour Star Trek,
 et pour The Walking Dead la valeur doit être corrigée dans sa source anglaise
