@@ -383,12 +383,37 @@ details>summary.hd::-webkit-details-marker{display:none}
 details[open] .chevd{transform:rotate(180deg)}
 .bd{border-top:2px solid var(--line);padding:11px 12px 13px;
   display:flex;gap:12px;align-items:flex-start}
-.syn{flex:1;min-width:0;font-size:13.5px;
+.inf{flex:1;min-width:0}
+.syn{font-size:13.5px;
   color:rgba(255,253,247,.86)}
 .po{flex:0 0 82px;aspect-ratio:2/3;border:2px solid var(--line);background:#000}
 .po img{width:100%;height:100%;object-fit:cover}
 .syn .en{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--hot);border:1px solid var(--hot);padding:1px 6px;margin-right:6px}
+/* ══ la fiche TMDB, sous le synopsis ═══════════════════════════════
+   Le radar porte le synopsis et l'affiche, rien de plus : la note bouge
+   avec les votes et la bande-annonce paraît quand elle paraît. Les
+   figer dans un fichier régénéré chaque nuit ne les tiendrait pas plus
+   à jour que l'appel direct, et alourdirait `radar.json` de quarante
+   fiches dont on n'ouvre qu'une poignée. La carte va donc les chercher
+   à l'ouverture, du même appel que les six pages d'univers font déjà.
+
+   Les pastilles reprennent le dessin de `.era` et `.ep` — contour fin,
+   petites capitales — pour que la carte ouverte reste la même carte. La
+   note prend l'encre chaude, le seul chiffre qui juge. */
+.tm{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:9px}
+.tm i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;padding:2px 8px;color:rgba(255,253,247,.66);
+  border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.tm i.n{color:var(--hot);border-color:var(--hot)}
+/* la bande-annonce prend l'encre de l'univers : c'est le seul geste de
+   la carte, il se voit d'un coup d'œil au milieu des pastilles grises */
+.tm a{display:inline-flex;align-items:center;gap:5px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  padding:3px 11px;color:var(--ink);background:var(--c);
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.tm a:hover{filter:brightness(1.12)}
 
 .empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
 .empty[hidden]{display:none}
@@ -468,8 +493,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* La colonne de date prend déjà 56 px : une affiche de 82 px laissait
      142 px au synopsis, soit une vingtaine de signes par ligne. Elle descend
      à 56 px, ce qui rend 26 px au texte sans la rendre méconnaissable. */
-  .bd{gap:10px}
-  .po{flex-basis:56px}
+  .bd{gap:10px;display:grid;grid-template-columns:56px 1fr;align-items:start}
+  /* La colonne de texte fait 170 px : les quatre pastilles de la fiche s'y
+     empilaient l'une sous l'autre, et la carte ouverte gagnait cent pixels.
+     En grille, `.inf` s'efface et la bande passe sous l'affiche, sur la
+     largeur entière — deux lignes au lieu de quatre, rien de retiré. */
+  .inf{display:contents}
+  .tm{grid-column:1/-1;margin-top:0}
   /* en étroit, le compte à rebours passe sous le titre plutôt que de
      comprimer la ligne à deux mots par ligne */
   .hd{flex-wrap:wrap;gap:8px 12px}
@@ -870,10 +900,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       var d=ev.target;
       if(!d.open||!d.tagName||d.tagName!=='DETAILS') return;
       var p=d.querySelector('.po[data-po]');
-      if(!p) return;
-      p.innerHTML='<img src="'+p.dataset.po+'" alt="" decoding="async"'+
-        ' width="342" height="513"/>';
-      p.removeAttribute('data-po');
+      if(p){
+        p.innerHTML='<img src="'+p.dataset.po+'" alt="" decoding="async"'+
+          ' width="342" height="513"/>';
+        p.removeAttribute('data-po');
+      }
+      ficheTmdb(d);
     },true);
     /* i18n-on */
     wire();
@@ -928,6 +960,112 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   /* i18n-on */
 
+  /* i18n-off — la fiche TMDB d'une carte ouverte.
+
+     Le radar sait la date, le support et l'affiche ; TMDB sait le reste, et
+     le sait mieux à l'instant où on le demande qu'un fichier écrit cette
+     nuit. La carte fait donc l'appel elle-même à l'ouverture, exactement
+     comme les six pages d'univers depuis toujours — même clé, même repli de
+     bande-annonce, même écriture de la note.
+
+     La clé est publique : elle est déjà dans les douze `data-*.js` du site,
+     que le navigateur télécharge à chaque page. Une clé TMDB de lecture n'a
+     rien à cacher, et il n'y a pas de serveur pour la tenir ailleurs.
+
+     Les libellés restent ici : cette page choisit ses mots à l'exécution,
+     comme les noms de mois et les repères d'épisode. */
+  var TMDB={base:'https://api.themoviedb.org/3',
+            key:'6257b37bf29ab31357853fce00232314',
+            lang:FR?'fr-FR':'en-US'};
+  var T_TR=FR?'Bande-annonce':'Trailer';
+
+  function ficheTmdb(d){
+    var ref=d.dataset.tm;
+    if(!ref||d.dataset.tmLoaded) return;
+    d.dataset.tmLoaded='1';
+    var inf=d.querySelector('.inf');
+    if(!inf) return;
+    function url(p,q){ return TMDB.base+p+'?api_key='+TMDB.key+(q||''); }
+
+    fetch(url('/'+ref,'&language='+TMDB.lang+'&append_to_response=videos'))
+      .then(function(r){ return r.json(); })
+      .then(function(o){
+        var yts=((o.videos&&o.videos.results)||[]).filter(function(v){
+          return v.site==='YouTube'; });
+        if(yts.some(function(v){ return v.type==='Trailer'; })) return o;
+        /* Pas de bande-annonce dans la langue de la page : on complète en
+           anglais. Sur la page anglaise la requête est la même et ne rend
+           rien de neuf — le repli ne joue donc que depuis le français, comme
+           sur les pages d'univers. */
+        return fetch(url('/'+ref+'/videos','&language=en-US'))
+          .then(function(r){ return r.json(); })
+          .then(function(en){ o.videos={results:yts.concat(en.results||[])}; return o; })
+          .catch(function(){ return o; });
+      })
+      .then(function(o){
+        /* Une carte d'épisode porte sa saison et son numéro : TMDB a alors un
+           synopsis à lui, que le radar n'avait pas — douze des vingt épisodes
+           du jour sortaient sans une ligne de texte. Une saison entière
+           (`e:0`) n'en a pas et n'est donc pas demandée. */
+        var ep=d.dataset.ep;
+        if(!ep) return [o,null];
+        var s=ep.split('/');
+        return fetch(url('/'+ref+'/season/'+s[0]+'/episode/'+s[1],'&language='+TMDB.lang))
+          .then(function(r){ return r.json(); })
+          .then(function(x){ return [o,x]; })
+          .catch(function(){ return [o,null]; });
+      })
+      .then(function(p){ peintFiche(inf,p[0],p[1]); })
+      .catch(function(){});   /* l'appel a échoué : la carte reste ce qu'elle était */
+  }
+
+  function peintFiche(inf,o,ep){
+    /* Le synopsis de l'épisode passe avant celui de la série : « Lanterns
+       S1E2 » ne raconte pas la même chose que Lanterns.
+
+       Et quand TMDB n'a pas l'épisode dans la langue de la page, ce que
+       `radar.json` portait déjà l'emporte sur le pitch de la série : Strange
+       New Worlds S4E5 a son résumé en anglais et aucun en français, et « une
+       panne de téléporteur change tout l'équipage en marionnettes » apprend
+       plus que « suivez Christopher Pike dans la décennie qui précède Kirk ».
+       Il garde son badge EN, posé au rendu de la carte. La série ne reprend
+       la main que si la carte n'avait rien du tout — ou s'il ne s'agit pas
+       d'un épisode, auquel cas c'est la même fiche, mieux traduite. */
+    var deEp=ep?(ep.overview||'').trim():'';
+    var deFiche=(o&&o.overview||'').trim();
+    var p=inf.querySelector('.syn');
+    var avait=!!(p&&p.textContent.trim());
+    var txt=deEp||((!ep||!avait)?deFiche:'');
+    if(txt&&p) p.innerHTML=esc(txt);
+
+    var bits=[];
+    var an=((o&&(o.release_date||o.first_air_date))||'').slice(0,4);
+    if(an) bits.push('<i>'+esc(an)+'</i>');
+    /* Deux genres au plus : TMDB en donne jusqu'à cinq, et la pastille
+       mangeait alors la ligne entière sur un téléphone. */
+    var g=((o&&o.genres)||[]).map(function(x){ return x.name; }).slice(0,2).join(' · ');
+    if(g) bits.push('<i>'+esc(g)+'</i>');
+    /* Une œuvre qui n'est pas sortie n'a pas de votes : TMDB rend 0, et
+       « ★ 0.0/10 » se lit comme un jugement alors que c'est un silence. */
+    var n=o&&o.vote_average;
+    if(n) bits.push('<i class="n">★ '+n.toFixed(1)+'/10</i>');
+    var yts=((o&&o.videos&&o.videos.results)||[]).filter(function(v){
+      return v.site==='YouTube'; });
+    /* À défaut de bande-annonce, le générique : il montre l'œuvre, il fait le
+       même travail. `Opening Credits` est une valeur de l'API, pas un
+       libellé. */
+    var tr=yts.filter(function(v){ return v.type==='Trailer'; })[0]
+        || yts.filter(function(v){ return v.type==='Opening Credits'; })[0];
+    if(tr) bits.push('<a href="https://www.youtube.com/watch?v='+esc(tr.key)+
+      '" target="_blank" rel="noopener">▶ '+T_TR+'</a>');
+    if(!bits.length) return;
+    var box=document.createElement('div');
+    box.className='tm';
+    box.innerHTML=bits.join('');
+    inf.appendChild(box);
+  }
+  /* i18n-on */
+
   function row(e){
     var u=UNI[e.universe]||['—','var(--soon)'], k=keyOf(e), kk=KIND[k]||KIND.other;
     var d=iso(e), dt=new Date(d+'T00:00:00'), n=days(d);
@@ -967,13 +1105,23 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var po=e.poster
       ? '<span class="po" data-po="https://image.tmdb.org/t/p/w342'+e.poster+'"></span>'
       : '';
-    var corps=(po||syn)
-      ? '<div class="bd">'+po+
-          (syn?'<p class="syn">'+marque+esc(syn)+'</p>':'')+'</div>'
+    /* La fiche TMDB s'ajoute dans `.inf` à l'ouverture — synopsis affiné,
+       note, genre, bande-annonce. Une carte sans identifiant garde ce qu'elle
+       a toujours eu : les comics de Wookieepedia et les romans de l'Almanach
+       n'ont pas de fiche, et leur synopsis vient déjà de leur source. Un
+       épisode a en plus sa saison et son numéro, qui donnent le synopsis de
+       l'épisode plutôt que celui de la série. */
+    var fiche=e.tmdb
+      ? ' data-tm="'+e.media+'/'+e.tmdb+'"'+
+        (e.ep&&e.ep.e?' data-ep="'+e.ep.s+'/'+e.ep.e+'"':'')
+      : '';
+    var corps=(po||syn||e.tmdb)
+      ? '<div class="bd">'+po+'<div class="inf">'+
+          (syn?'<p class="syn">'+marque+esc(syn)+'</p>':'<p class="syn"></p>')+'</div></div>'
       : '';
 
     var card=corps
-      ? '<details class="card"><summary class="hd">'+head+chev+'</summary>'+corps+
+      ? '<details class="card"'+fiche+'><summary class="hd">'+head+chev+'</summary>'+corps+
           '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></details>'
       : '<div class="card"><div class="hd">'+head+'</div>'+
           '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>';

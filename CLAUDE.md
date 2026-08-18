@@ -321,6 +321,44 @@ capte (`addEventListener('toggle', …, true)`).
 Le radar n'aura ses affiches qu'au prochain passage de `radar.yml` (cron 6 h UTC,
 ou « Run workflow »). D'ici là les cartes s'ouvrent comme avant, sans image.
 
+### La fiche TMDB, posée le 19 août 2026
+
+L'affiche seule ne disait rien de plus que le titre. La carte ouverte porte
+maintenant la bande des six pages d'univers : synopsis, année, deux genres,
+note et bande-annonce. `add()` prend un `tmdb` (l'identifiant) et un `media`
+(`movie` ou `tv`, le segment d'URL de l'API), posés par les cinq mêmes appels
+que `poster` ; 25 des 44 sorties en ont, les 19 autres venant de Wookieepedia
+et de l'Avatar Almanac.
+
+**Rien d'autre n'est stocké, et c'est délibéré.** La note bouge avec les votes,
+la bande-annonce paraît quand elle paraît : les figer dans un fichier régénéré
+chaque nuit ne les tiendrait pas plus à jour que l'appel direct, et
+`radar.json` porterait quarante fiches dont on n'ouvre qu'une poignée. La page
+appelle donc TMDB elle-même à l'ouverture (`ficheTmdb`), avec la clé publique
+déjà présente dans les douze `data-*.js` du site. Deux requêtes, une troisième
+pour un épisode.
+
+Trois points qui ont demandé un arbitrage :
+
+- **Le synopsis d'épisode passe avant celui de la série, mais pas avant
+  l'anglais déjà là.** Douze des vingt épisodes du radar n'ont aucun synopsis
+  chez TMDB, et aucun n'en a en français. Strange New Worlds S4E5 a le sien en
+  anglais dans `radar.json` : « une panne de téléporteur change tout l'équipage
+  en marionnettes » apprend plus que le pitch de la série, et il est conservé
+  avec son badge EN. La série ne reprend la main que si la carte n'avait rien —
+  Lanterns S1E2, par exemple — ou s'il ne s'agit pas d'un épisode, où c'est la
+  même fiche, mieux traduite.
+- **Une œuvre pas encore sortie n'a pas de votes.** TMDB rend `0`, et
+  « ★ 0.0/10 » se lit comme un jugement là où c'est un silence : la pastille
+  n'est posée que si la note existe. Clayface n'en a pas, Lanterns si.
+- **Sous 560 px, la bande passe sous l'affiche.** La colonne de texte fait
+  170 px : les quatre pastilles s'y empilaient, et la carte ouverte gagnait
+  cent pixels. `.bd` devient une grille, `.inf` s'efface en `display:contents`
+  et `.tm` prend `grid-column:1/-1` — deux lignes au lieu de quatre.
+
+Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » /
+« Trailer ») sont choisis à l'exécution, comme les noms de mois.
+
 ## Synchronisation FR/EN
 
 `sync.py` sert la règle absolue ci-dessus. Contrairement aux scripts de génération,
