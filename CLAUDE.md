@@ -338,7 +338,19 @@ appelle donc TMDB elle-même à l'ouverture (`ficheTmdb`), avec la clé publique
 déjà présente dans les douze `data-*.js` du site. Deux requêtes, une troisième
 pour un épisode.
 
-Trois points qui ont demandé un arbitrage :
+**La disposition est celle des six pages d'univers, au pixel près** : les
+quatre mesures sur une ligne — `<strong>Année</strong> 2026`, Genre, Note,
+Période — et la bande-annonce en dessous, seule. Une même donnée doit se lire
+au même endroit d'une page à l'autre. Seule l'encre du bouton change : les
+pages d'univers n'en ont qu'une, le radar en aligne six, et `var(--c)` porte
+celle de la ligne.
+
+La **Période** est la seule mesure que TMDB ne donne pas : elle vient de la
+pastille `.era` de l'en-tête, lue dans le DOM plutôt que portée deux fois. Ne
+pas s'étonner de ne la voir nulle part — seul Wookieepedia pose une ère, et ses
+entrées n'ont pas de fiche TMDB. La mesure attend celle qui en aura une.
+
+Quatre points qui ont demandé un arbitrage :
 
 - **Le synopsis d'épisode passe avant celui de la série, mais pas avant
   l'anglais déjà là.** Douze des vingt épisodes du radar n'ont aucun synopsis
@@ -348,13 +360,20 @@ Trois points qui ont demandé un arbitrage :
   avec son badge EN. La série ne reprend la main que si la carte n'avait rien —
   Lanterns S1E2, par exemple — ou s'il ne s'agit pas d'un épisode, où c'est la
   même fiche, mieux traduite.
+- **Les deux tiennent, l'épisode d'abord.** Le résumé de la série revient sous
+  celui de l'épisode, sous l'intitulé « La série », plus petit et plus pâle :
+  qui arrive au radar sans connaître Strange New Worlds n'avait rien pour la
+  situer. Rien n'est ajouté quand la carte affiche déjà le résumé de la série.
 - **Une œuvre pas encore sortie n'a pas de votes.** TMDB rend `0`, et
   « ★ 0.0/10 » se lit comme un jugement là où c'est un silence : la pastille
   n'est posée que si la note existe. Clayface n'en a pas, Lanterns si.
 - **Sous 560 px, la bande passe sous l'affiche.** La colonne de texte fait
-  170 px : les quatre pastilles s'y empilaient, et la carte ouverte gagnait
-  cent pixels. `.bd` devient une grille, `.inf` s'efface en `display:contents`
-  et `.tm` prend `grid-column:1/-1` — deux lignes au lieu de quatre.
+  170 px : les mesures s'y empilaient une par ligne, et la carte ouverte
+  gagnait cent pixels. `.bd` devient une grille, `.inf` s'efface en
+  `display:contents`, `.syn` reste en colonne 2 et `.ser`, `.tm`, `.tr`
+  prennent `grid-column:1/-1`. Le bouton a besoin en plus de
+  `justify-self:start` : un `inline-block` devenu item de grille s'étire sur
+  toute la colonne, et son biseau partait à deux cents pixels de son texte.
 
 Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » /
 « Trailer ») sont choisis à l'exécution, comme les noms de mois.

@@ -398,22 +398,30 @@ details[open] .chevd{transform:rotate(180deg)}
    fiches dont on n'ouvre qu'une poignée. La carte va donc les chercher
    à l'ouverture, du même appel que les six pages d'univers font déjà.
 
-   Les pastilles reprennent le dessin de `.era` et `.ep` — contour fin,
-   petites capitales — pour que la carte ouverte reste la même carte. La
-   note prend l'encre chaude, le seul chiffre qui juge. */
-.tm{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:9px}
-.tm i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.11em;
-  text-transform:uppercase;padding:2px 8px;color:rgba(255,253,247,.66);
-  border:1px solid var(--line);font-variant-numeric:tabular-nums}
-.tm i.n{color:var(--hot);border-color:var(--hot)}
-/* la bande-annonce prend l'encre de l'univers : c'est le seul geste de
-   la carte, il se voit d'un coup d'œil au milieu des pastilles grises */
-.tm a{display:inline-flex;align-items:center;gap:5px;
-  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;
-  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
-  padding:3px 11px;color:var(--ink);background:var(--c);
-  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-.tm a:hover{filter:brightness(1.12)}
+   La disposition est celle des six pages d'univers, au pixel près : les
+   quatre mesures sur une ligne, chacune sous son intitulé en petites
+   capitales chaudes, et la bande-annonce en dessous, seule. Une même
+   donnée doit se lire au même endroit d'une page à l'autre.
+
+   Seule l'encre du bouton change : les pages d'univers n'en ont qu'une,
+   le radar en aligne six, et `var(--c)` porte celle de la ligne. */
+.tm{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;
+  color:rgba(255,253,247,.72)}
+.tm strong{color:var(--hot);font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;margin-right:5px}
+.tr{display:inline-block;margin-top:12px;background:var(--c);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;
+  text-decoration:none;clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.tr:hover{filter:brightness(1.12)}
+/* Le résumé de la série, sous celui de l'épisode. Les deux ne disent pas
+   la même chose : « une panne de téléporteur change l'équipage en
+   marionnettes » ne remplace pas ce qu'est Strange New Worlds, et qui
+   arrive au radar sans connaître la série n'a que ça pour situer. Plus
+   petit et plus pâle : c'est le décor, l'épisode est le sujet. */
+.ser{margin-top:9px;font-size:12.5px;color:rgba(255,253,247,.6)}
+.ser b{display:block;font-size:10px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:rgba(255,253,247,.42);margin-bottom:2px}
 
 .empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
 .empty[hidden]{display:none}
@@ -499,7 +507,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      En grille, `.inf` s'efface et la bande passe sous l'affiche, sur la
      largeur entière — deux lignes au lieu de quatre, rien de retiré. */
   .inf{display:contents}
-  .tm{grid-column:1/-1;margin-top:0}
+  .syn{grid-column:2}
+  .ser,.tm,.tr{grid-column:1/-1}
+  .tm{margin-top:0}
+  /* un `inline-block` devenu item de grille s'étire sur toute la colonne, et
+     le biseau du bouton partait à deux cents pixels de son texte */
+  .tr{justify-self:start}
   /* en étroit, le compte à rebours passe sous le titre plutôt que de
      comprimer la ligne à deux mots par ligne */
   .hd{flex-wrap:wrap;gap:8px 12px}
@@ -977,7 +990,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var TMDB={base:'https://api.themoviedb.org/3',
             key:'6257b37bf29ab31357853fce00232314',
             lang:FR?'fr-FR':'en-US'};
-  var T_TR=FR?'Bande-annonce':'Trailer';
+  var T_M=FR
+    ? {annee:'Année',genre:'Genre',note:'Note',periode:'Période',
+       serie:'La série',trailer:'Bande-annonce YouTube'}
+    : {annee:'Year',genre:'Genre',note:'Rating',periode:'Period',
+       serie:'The series',trailer:'YouTube trailer'};
 
   function ficheTmdb(d){
     var ref=d.dataset.tm;
@@ -1015,11 +1032,18 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           .then(function(x){ return [o,x]; })
           .catch(function(){ return [o,null]; });
       })
-      .then(function(p){ peintFiche(inf,p[0],p[1]); })
+      .then(function(p){
+        /* La période in-universe se lit dans la pastille de l'en-tête plutôt
+           que d'être portée deux fois : c'est la même donnée, et la carte
+           l'affiche déjà. Seul Wookieepedia en pose, et ses entrées n'ont pas
+           de fiche TMDB — la mesure attend celle qui en aura une. */
+        var era=d.querySelector('.era');
+        peintFiche(inf,p[0],p[1],era?era.textContent.trim():'');
+      })
       .catch(function(){});   /* l'appel a échoué : la carte reste ce qu'elle était */
   }
 
-  function peintFiche(inf,o,ep){
+  function peintFiche(inf,o,ep,era){
     /* Le synopsis de l'épisode passe avant celui de la série : « Lanterns
        S1E2 » ne raconte pas la même chose que Lanterns.
 
@@ -1038,17 +1062,42 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var txt=deEp||((!ep||!avait)?deFiche:'');
     if(txt&&p) p.innerHTML=esc(txt);
 
+    /* Un épisode a son résumé, sa série en a un autre : Star Trek n'affichait
+       que le premier, et la carte ne disait plus ce qu'est Strange New Worlds.
+       Les deux tiennent maintenant, l'épisode d'abord. Rien à ajouter quand la
+       carte affiche déjà le résumé de la série — Lanterns S1E2, faute d'en
+       avoir un à lui. */
+    var affiche=p?p.textContent.trim():'';
+    if(ep&&deFiche&&affiche.indexOf(deFiche)<0){
+      var s=document.createElement('p');
+      s.className='ser';
+      s.innerHTML='<b>'+T_M.serie+'</b>'+esc(deFiche);
+      inf.appendChild(s);
+    }
+
+    /* Les quatre mesures, dans l'ordre et sous les intitulés des six pages
+       d'univers : `<strong>Année</strong> 2026`. */
     var bits=[];
-    var an=((o&&(o.release_date||o.first_air_date))||'').slice(0,4);
-    if(an) bits.push('<i>'+esc(an)+'</i>');
-    /* Deux genres au plus : TMDB en donne jusqu'à cinq, et la pastille
-       mangeait alors la ligne entière sur un téléphone. */
-    var g=((o&&o.genres)||[]).map(function(x){ return x.name; }).slice(0,2).join(' · ');
-    if(g) bits.push('<i>'+esc(g)+'</i>');
+    function m(lab,val){
+      if(val) bits.push('<span><strong>'+lab+'</strong> '+esc(val)+'</span>');
+    }
+    m(T_M.annee,((o&&(o.release_date||o.first_air_date))||'').slice(0,4));
+    /* Deux genres au plus : TMDB en donne jusqu'à cinq, et la ligne partait
+       alors sur trois rangs au téléphone. */
+    m(T_M.genre,((o&&o.genres)||[]).map(function(x){ return x.name; })
+      .slice(0,2).join(' · '));
     /* Une œuvre qui n'est pas sortie n'a pas de votes : TMDB rend 0, et
-       « ★ 0.0/10 » se lit comme un jugement alors que c'est un silence. */
+       « 0.0/10 » se lit comme un jugement alors que c'est un silence. */
     var n=o&&o.vote_average;
-    if(n) bits.push('<i class="n">★ '+n.toFixed(1)+'/10</i>');
+    m(T_M.note,n?'⭐ '+n.toFixed(1)+'/10':'');
+    m(T_M.periode,era);
+    if(bits.length){
+      var box=document.createElement('div');
+      box.className='tm';
+      box.innerHTML=bits.join('');
+      inf.appendChild(box);
+    }
+
     var yts=((o&&o.videos&&o.videos.results)||[]).filter(function(v){
       return v.site==='YouTube'; });
     /* À défaut de bande-annonce, le générique : il montre l'œuvre, il fait le
@@ -1056,13 +1105,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
        libellé. */
     var tr=yts.filter(function(v){ return v.type==='Trailer'; })[0]
         || yts.filter(function(v){ return v.type==='Opening Credits'; })[0];
-    if(tr) bits.push('<a href="https://www.youtube.com/watch?v='+esc(tr.key)+
-      '" target="_blank" rel="noopener">▶ '+T_TR+'</a>');
-    if(!bits.length) return;
-    var box=document.createElement('div');
-    box.className='tm';
-    box.innerHTML=bits.join('');
-    inf.appendChild(box);
+    if(!tr) return;
+    var a=document.createElement('a');
+    a.className='tr';
+    a.href='https://www.youtube.com/watch?v='+tr.key;
+    a.target='_blank';
+    a.rel='noopener';
+    a.textContent='▶ '+T_M.trailer;
+    inf.appendChild(a);
   }
   /* i18n-on */
 
