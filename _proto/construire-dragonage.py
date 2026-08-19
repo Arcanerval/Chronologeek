@@ -17,7 +17,7 @@
 # en dur dans OEUVRES, releves une fois, et les visuels sont des WebP locaux
 # poses par Niko. Un guide de jeux video n'a pas de durees a sommer : pas de
 # table RT ici, pour la meme raison qu'Avatar Legends n'en a pas (CLAUDE.md).
-import json, re, os, sys
+import io, json, re, os, sys
 
 SRC = sys.argv[1] if len(sys.argv) > 1 else r'C:\Users\nprad\Desktop\Dragon Age.txt'
 SORTIE = '_proto/data-dragonage-en.js'
@@ -170,6 +170,23 @@ CORRECTIONS = {
 CORRECTIONS = {k: v for k, v in CORRECTIONS.items() if k != v}
 RETOUCHES = []
 
+# ── les resumes, recoltes ailleurs ───────────────────────────────────────
+# Le document de Niko ne decrit que trois oeuvres — la video sur Kristoff,
+# Redemption et Dawn of the Seeker. Pour le reste, la fiche ouverte va
+# chercher son synopsis chez RAWG (les jeux) ou chez TMDB (les videos), et
+# vingt-cinq entrees ne sont ni dans l'un ni dans l'autre : les dix DLC, les
+# six romans, les neuf comics. Leur fiche affichait « No synopsis available ».
+#
+# `descriptions-dragonage.py` les recolte au wiki Dragon Age et les ecrit
+# dans `desc-dragonage.json`. Ce ne sont pas des textes de Niko : ils sont
+# comptes a part par verifie(), sous « resume(s) exterieur(s) », et le
+# journal de la construction les nomme un par un pour qu'ils se relisent.
+RESUMES = {}
+_j = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'desc-dragonage.json')
+if os.path.exists(_j):
+    RESUMES = json.load(io.open(_j, encoding='utf-8'))
+EXTERIEURS = []
+
 # ── les ajouts de Niko, nommes un par un ─────────────────────────────────
 # Meme regle que CORRECTIONS : rien n'est reformule, mais la phrase qu'il
 # dicte remplace la sienne, et verifie() la compte en retouche admise. Le
@@ -298,6 +315,12 @@ for x in ENTREES:
         o['note'] = corrige(x['note'])
     if x['desc']:
         o['desc'] = corrige(x['desc'])
+    elif eid in RESUMES:
+        # Le resume recolte au wiki, faute d'API qui couvre l'entree. Il
+        # n'est pose que la ou il ne recouvre rien : le document de Niko
+        # passe avant, et RAWG apres — la page lit `desc` en premier.
+        o['desc'] = RESUMES[eid]['desc']
+        EXTERIEURS.append((eid, RESUMES[eid]['page'], RESUMES[eid]['section']))
     if x['link']:
         # le document donne deux adresses YouTube nues : la video sur la
         # fin de Kristoff, et la liste de lecture de Redemption. Le libelle
@@ -518,14 +541,20 @@ def verifie():
     for avant, apres_ in RETOUCHES:
         admis[apres_] = ('phrase dictee par Niko : « ' if avant in AJOUTS
                          else 'coquille corrigee : « ') + avant[:60] + ' »'
+    # Les resumes recoltes ne sont pas dans le document, et ne peuvent pas y
+    # etre : ils sont comptes a part, jamais confondus avec une retouche.
+    exts = {RESUMES[eid]['desc']: (eid, page, sec) for eid, page, sec in EXTERIEURS}
     absents = [t for t in dur if t not in brut]
-    ecarts = [a for a in absents if a not in admis]
-    print('  %d fragments affiches, %d retouche(s) admise(s), %d ecart(s)'
-          % (len(dur), len(absents) - len(ecarts), len(ecarts)))
+    ecarts = [a for a in absents if a not in admis and a not in exts]
+    print('  %d fragments affiches, %d retouche(s) admise(s), '
+          '%d resume(s) exterieur(s), %d ecart(s)'
+          % (len(dur), len(absents) - len(ecarts) - len(exts), len(EXTERIEURS), len(ecarts)))
     vus = set()
     for a in absents:
         if a in admis and a not in vus:
             vus.add(a); print('    admis  :', repr(a[:52]), '—', admis[a])
+    for eid, page, sec in EXTERIEURS:
+        print('    resume : %-16s wiki « %s », section %s' % (eid, page, sec))
     for a in ecarts:
         print('    ECART  :', repr(a))
     return not ecarts

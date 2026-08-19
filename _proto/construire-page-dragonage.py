@@ -253,10 +253,37 @@ rem('''      if(!CFG.rawgKey){ fallback(null); return; }
 # RAWG rend un resume en `description_raw` ; la page d'Avatar ne le lisait
 # pas, faute de jeux. Le document de Niko ne decrit aucun des dix-sept
 # jeux, et la fiche n'affichait donc que trois mesures.
+#
+# Deux pieges, corriges le 19 aout 2026 :
+#
+# `e.note` ne doit PAS servir de synopsis. C'est la ligne de placement
+# (« Early Act 1 », « Endgame »), et la page l'ecrit deja sous le titre :
+# la fiche ouverte repetait donc la meme phrase deux fois au lieu du
+# resume. Seul Awakening, qui n'a pas de note, montrait le vrai texte.
+#
+# La premiere ligne de `description_raw` n'est pas toujours une phrase :
+# celle de The Veilguard est « The Dread Wolf Rises », l'accroche du jeu.
+# On prend le premier paragraphe qui fasse une phrase (plus de 80 signes),
+# et la premiere ligne a defaut.
 rem("'<div class=\"expand-info\"><div class=\"expand-synopsis\">'+esc(e.desc||e.note||'')+'</div>'+",
     "'<div class=\"expand-info\"><div class=\"expand-synopsis\">'+"
-    "esc(e.desc||e.note||(g&&g.description_raw?String(g.description_raw).split('\\n')[0]:'')||T.noSynopsis)+'</div>'+",
+    "esc(e.desc||rawgSyn(g)||T.noSynopsis)+'</div>'+",
     'synopsis RAWG')
+# La fonction est posee juste avant `loadRich`, qui l'appelle.
+rem('''  function loadRich(art){''',
+    '''  /* Le resume RAWG d'un jeu : son premier paragraphe qui fasse une
+     phrase. Le texte est decoupe en sections (« Gameplay », « Plot »)
+     dont on ne garde que la premiere, et sa toute premiere ligne est
+     parfois l'accroche du jeu — « The Dread Wolf Rises » pour The
+     Veilguard — plutot qu'une description. */
+  function rawgSyn(g){
+    var t=g&&g.description_raw?String(g.description_raw):'';
+    if(!t) return '';
+    var l=t.split('\\n').map(function(s){return s.trim();}).filter(Boolean);
+    return l.filter(function(s){return s.length>80;})[0]||l[0]||'';
+  }
+  function loadRich(art){''',
+    "resume RAWG : sauter l'accroche")
 
 # ── la FAQ ───────────────────────────────────────────────────────────────
 # Les trois questions du document changent de verbe selon le média —

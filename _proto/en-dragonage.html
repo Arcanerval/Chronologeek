@@ -1184,6 +1184,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     return e.link ? '<a class="expand-trailer-link" href="'+esc(e.link.href)+
       '" target="_blank" rel="noopener">▶ '+esc(e.link.label)+'</a>' : '';
   }
+  /* Le resume RAWG d'un jeu : son premier paragraphe qui fasse une
+     phrase. Le texte est decoupe en sections (« Gameplay », « Plot »)
+     dont on ne garde que la premiere, et sa toute premiere ligne est
+     parfois l'accroche du jeu — « The Dread Wolf Rises » pour The
+     Veilguard — plutot qu'une description. */
+  function rawgSyn(g){
+    var t=g&&g.description_raw?String(g.description_raw):'';
+    if(!t) return '';
+    var l=t.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+    return l.filter(function(s){return s.length>80;})[0]||l[0]||'';
+  }
   function loadRich(art){
     var panel=$('.bu-panel',art), box=$('.en-rich',panel);
     if(panel.dataset.loaded) return;
@@ -1211,7 +1222,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         box.innerHTML='<div class="expand-inner">'+
           (g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+
             '" loading="lazy" alt=""/></div>':'')+
-          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||e.note||(g&&g.description_raw?String(g.description_raw).split('\n')[0]:'')||T.noSynopsis)+'</div>'+
+          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||rawgSyn(g)||T.noSynopsis)+'</div>'+
           meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
                 [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
                 [T.mPeriod,e.date]])+link+'</div></div>';
