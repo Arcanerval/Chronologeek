@@ -51,14 +51,14 @@ rem('''  /* huit encres d'ère : la page se noie dedans, une région à la fois.
      les trois Livres qui reprennent chacun l'élément de son titre. */
   --era1:#8a6a12; --era2:#2d6a3f; --era3:#a8331b; --era4:#134a72;
   --era5:#4a6b1f; --era6:#8f3b1e; --era7:#0f6d63; --era8:#5c2060;''',
-    '''  /* six encres d'ère, une par phase. Le document de Niko n'a pas de
-     phases — c'est une liste continue de 43 entrées — et les six titres
+    '''  /* cinq encres d'ère, une par phase. Le document de Niko n'a pas de
+     phases — c'est une liste continue de 43 entrées — et les cinq titres
      viennent de `construire-dragonage.py`, pas de sa prose. Les teintes
-     suivent le récit : le sang du Cinquième Fléau, l'acier des Gardes des
-     Ombres, l'ocre de Kirkwall, le vin de la guerre mages-templiers, le
-     bleu-vert de l'Inquisition et le violet du Loup Terrible. */
-  --era1:#7a2222; --era2:#2b3f5b; --era3:#7a5a16;
-  --era4:#5c2233; --era5:#14515c; --era6:#4a3566;''',
+     suivent le récit : le sang du Cinquième Fléau, l'ocre de Kirkwall, le
+     vin de la guerre mages-templiers, le bleu-vert de l'Inquisition et le
+     violet du Loup Terrible. */
+  --era1:#7a2222; --era2:#7a5a16; --era3:#5c2233;
+  --era4:#14515c; --era5:#4a3566;''',
     'palette des ères')
 rem('''  /* badges de type, charte du site */
   --t-filmanim:#90caf9; --t-anime:#ce93d8; --t-video:#f472b6;
@@ -192,8 +192,8 @@ rem("a.download='chronologeek-avatar.json';", "a.download='chronologeek-dragonag
 
 # ── la bande d'ère ───────────────────────────────────────────────────────
 # Les données de Dragon Age posent `art` sur chaque ère : c'est le visuel
-# du jeu qui ouvre la phase, et il vaut mieux que la première vignette —
-# seize des 43 entrées n'en ont aucune (les livres et les comics).
+# du jeu qui ouvre la phase, et il vaut mieux que la première vignette,
+# qui serait celle d'un DLC ou d'un comic selon l'ordre du document.
 rem('''    return (must||era.entries.filter(function(e){ return e.img; })[0]||{}).img
       || '/images/avatar.webp';''',
     '''    return era.art

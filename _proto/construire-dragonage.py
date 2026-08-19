@@ -13,10 +13,10 @@
 # Troisieme page du site dont la source est anglaise, apres Star Trek et
 # The Walking Dead : le francais reste a ecrire.
 #
-# Le script n'appelle aucune API — les visuels et les identifiants sont
-# poses en dur dans OEUVRES, releves une fois sur RAWG et TMDB. Un guide
-# de jeux video n'a pas de durees a sommer : pas de table RT ici, pour la
-# meme raison qu'Avatar Legends n'en a pas (voir CLAUDE.md).
+# Le script n'appelle aucune API — les identifiants RAWG et TMDB sont poses
+# en dur dans OEUVRES, releves une fois, et les visuels sont des WebP locaux
+# poses par Niko. Un guide de jeux video n'a pas de durees a sommer : pas de
+# table RT ici, pour la meme raison qu'Avatar Legends n'en a pas (CLAUDE.md).
 import json, re, os, sys
 
 SRC = sys.argv[1] if len(sys.argv) > 1 else r'C:\Users\nprad\Desktop\Dragon Age.txt'
@@ -30,8 +30,7 @@ CG_ST, _ = json.JSONDecoder().raw_decode(_st[_st.index('window.CG=') + 10:])
 _sw = open('_proto/data-en.js', encoding='utf-8').read()
 CG_SW, _ = json.JSONDecoder().raw_decode(_sw[_sw.index('window.CG=') + 10:])
 
-RAWG = 'https://media.rawg.io/media/'
-TMDB = 'https://image.tmdb.org/t/p/w780'
+IMG = '/images/'
 
 # ── les trente-six oeuvres ───────────────────────────────────────────────
 # (cle, visuel, identifiant de fiche, type de fiche)
@@ -41,58 +40,62 @@ TMDB = 'https://image.tmdb.org/t/p/w780'
 # API ne couvre. Le depliant se rabat alors sur `desc`, comme sur Avatar.
 #
 # Les six DLC d'Origins et « The Exiled Prince » ne sont pas dans RAWG :
-# ils reprennent le visuel de leur jeu et n'ont pas de fiche. Ce n'est pas
-# un oubli, c'est le catalogue.
+# ils n'ont donc pas de fiche. Ce n'est pas un oubli, c'est le catalogue.
 #
-# Les livres et les neuf comics n'ont pas de visuel : Niko les fournira.
-# La page pose alors son repli de vignette plutot qu'une image morte.
-G_ORIGINS = RAWG + 'games/dc0/dc0926d3f84ffbcc00968fe8a6f0aed3.jpg'
-G_AWAK    = RAWG + 'games/736/736e1e2e7670169114a48b5f65f66bdb.jpg'
-G_DA2     = RAWG + 'games/974/974d08635981db7677630327ce1fe4bb.jpg'
-G_INQ     = RAWG + 'games/260/26023c855f1769a93411d6a7ea084632.jpeg'
-G_VEIL    = RAWG + 'games/4c5/4c5a391237b78ea96aeff8206f63d3f5.jpg'
+# **Les trente-six visuels sont locaux**, poses par Niko le 19 aout 2026.
+# Les fiches RAWG et TMDB en portent bien, mais lui prefere les siennes —
+# et la regle du depot vaut ici comme ailleurs : WebP, quatre fois les
+# 190 px de la case de vignette, jamais agrandi (voir CLAUDE.md, « Les
+# images »). Ne pas revenir aux URL d'API : elles etaient un depannage en
+# attendant ces fichiers.
+V_ORIGINS = IMG + 'dragonageorigins.webp'
+V_AWAK    = IMG + 'awakening.webp'
+V_DA2     = IMG + 'dragonageii.webp'
+V_INQ     = IMG + 'inquisition.webp'
+V_VEIL    = IMG + 'veilguard.webp'
+V_SEEKER  = IMG + 'dawnoftheseeker.webp'
 
 OEUVRES = {
   # ── jeux ──────────────────────────────────────────────────────────────
-  'Dragon Age: Origins':            ('origins',    G_ORIGINS, '4639',   'game'),
-  'Dragon Age: Origins - Awakening':('awakening',  G_AWAK,    '19430',  'game'),
-  'Dragon Age II':                  ('da2',        G_DA2,     '28580',  'game'),
-  'Dragon Age: Inquisition':        ('inquisition',G_INQ,     '28559',  'game'),
-  'Dragon Age: The Veilguard':      ('veilguard',  G_VEIL,    '274764', 'game'),
+  'Dragon Age: Origins':            ('origins',    V_ORIGINS, '4639',   'game'),
+  'Dragon Age: Origins - Awakening':('awakening',  V_AWAK,    '19430',  'game'),
+  'Dragon Age II':                  ('da2',        V_DA2,     '28580',  'game'),
+  'Dragon Age: Inquisition':        ('inquisition',V_INQ,     '28559',  'game'),
+  'Dragon Age: The Veilguard':      ('veilguard',  V_VEIL,    '274764', 'game'),
   # ── DLC ───────────────────────────────────────────────────────────────
-  'The Stone Prisoner':             ('stone',      G_ORIGINS, '',       ''),
-  "Warden's Keep":                  ('keep',       G_ORIGINS, '',       ''),
-  "Leliana's Song":                 ('leliana',    G_ORIGINS, '',       ''),
-  'Return to Ostagar':              ('ostagar',    G_ORIGINS, '',       ''),
-  'The Golems of Amgarrak':         ('amgarrak',   G_AWAK,    '',       ''),
-  'Witch Hunt':                     ('witch',      G_AWAK,    '',       ''),
-  'The Exiled Prince':              ('exiled',     G_DA2,     '',       ''),
-  'Mark of the Assassin':           ('assassin',   RAWG + 'screenshots/bd7/bd74223c216bbcb5fcfeb4f2ddc6b2af.jpg', '41133',  'game'),
-  'Legacy':                         ('legacy',     RAWG + 'screenshots/2e8/2e838f271008f72a87f719d703c20329.jpg', '40986',  'game'),
-  'Jaws of Hakkon':                 ('hakkon',     RAWG + 'games/554/554855083014e6af5f89eeb5889d75ed.jpg',      '43222',  'game'),
-  'The Descent':                    ('descent',    RAWG + 'games/9a9/9a95201b9b5f3e463d7f9beab4d7f4fa.jpg',      '409583', 'game'),
-  'Trespasser':                     ('trespasser', RAWG + 'games/a09/a09c80331539e7d594c2e6cd56786c5e.jpg',      '395969', 'game'),
+  'The Stone Prisoner':             ('stone',      IMG + 'stoneprisoner.webp',     '',       ''),
+  "Warden's Keep":                  ('keep',       IMG + 'wardenskeep.webp',       '',       ''),
+  "Leliana's Song":                 ('leliana',    IMG + 'leliana.webp',           '',       ''),
+  'Return to Ostagar':              ('ostagar',    IMG + 'ostagar.webp',           '',       ''),
+  'The Golems of Amgarrak':         ('amgarrak',   IMG + 'golems.webp',            '',       ''),
+  'Witch Hunt':                     ('witch',      IMG + 'witchhunt.webp',         '',       ''),
+  'The Exiled Prince':              ('exiled',     IMG + 'exiledprince.webp',      '',       ''),
+  'Mark of the Assassin':           ('assassin',   IMG + 'markoftheassassin.webp', '41133',  'game'),
+  'Legacy':                         ('legacy',     IMG + 'da2legacy.webp',         '40986',  'game'),
+  'Jaws of Hakkon':                 ('hakkon',     IMG + 'jawsofhakkon.webp',      '43222',  'game'),
+  'The Descent':                    ('descent',    IMG + 'descent.webp',           '409583', 'game'),
+  'Trespasser':                     ('trespasser', IMG + 'trespasser.webp',        '395969', 'game'),
   # ── ecran ─────────────────────────────────────────────────────────────
-  "Dragon Age: Warden's Fall":      ('wfall',      '',        '',       ''),
-  'Dragon Age: Redemption':         ('redemption', TMDB + '/g6WNyvrMi6i5PexNxVOIvApHrZX.jpg', '38973',  'tv'),
-  'Dragon Age: Dawn of the Seeker': ('seeker',     TMDB + '/iiEAEgrNS11aaYJwIi5GZc9ETBB.jpg', '103173', 'movie'),
-  'Dragon Age: Absolution':         ('absolution', TMDB + '/3dYjbAgynVeh0aHQAoxcw2UswqA.jpg', '203805', 'tv'),
-  # ── ecrit : aucun visuel, Niko les fournira ───────────────────────────
-  'Dragon Age: The Stolen Throne':  ('throne',     '', '', ''),
-  'Dragon Age: The Calling':        ('calling',    '', '', ''),
-  'Dragon Age: Asunder':            ('asunder',    '', '', ''),
-  'Dragon Age: Last Flight':        ('lastflight', '', '', ''),
-  'Dragon Age: The Masked Empire':  ('masked',     '', '', ''),
-  'Tevinter Nights':                ('tevinter',   '', '', ''),
-  'Dragon Age: The Silent Grove':   ('grove',      '', '', ''),
-  'Dragon Age: Those Who Speak':    ('speak',      '', '', ''),
-  'Dragon Age: Until We Sleep':     ('sleep',      '', '', ''),
-  'Dragon Age: Magekiller':         ('magekiller', '', '', ''),
-  'Dragon Age: Knight Errant':      ('errant',     '', '', ''),
-  'Dragon Age: Deception':          ('deception',  '', '', ''),
-  'Dragon Age: Blue Wraith':        ('wraith',     '', '', ''),
-  'Dragon Age: Dark Fortress':      ('fortress',   '', '', ''),
-  'Dragon Age: The Missing':        ('missing',    '', '', ''),
+  "Dragon Age: Warden's Fall":      ('wfall',      IMG + 'wardensfall.webp',       '',       ''),
+  'Dragon Age: Redemption':         ('redemption', IMG + 'redemption.webp',        '38973',  'tv'),
+  'Dragon Age: Dawn of the Seeker': ('seeker',     V_SEEKER,                       '103173', 'movie'),
+  'Dragon Age: Absolution':         ('absolution', IMG + 'absolution.webp',        '203805', 'tv'),
+  # ── ecrit ─────────────────────────────────────────────────────────────
+  'Dragon Age: The Stolen Throne':  ('throne',     IMG + 'stolenthrone.webp',      '', ''),
+  'Dragon Age: The Calling':        ('calling',    IMG + 'calling.webp',           '', ''),
+  'Dragon Age: Asunder':            ('asunder',    IMG + 'asunder.webp',           '', ''),
+  'Dragon Age: Last Flight':        ('lastflight', IMG + 'lastflight.webp',        '', ''),
+  'Dragon Age: The Masked Empire':  ('masked',     IMG + 'maskedempire.webp',      '', ''),
+  'Tevinter Nights':                ('tevinter',   IMG + 'tevinternights.webp',    '', ''),
+  'Dragon Age: The Silent Grove':   ('grove',      IMG + 'silentgrove.webp',       '', ''),
+  'Dragon Age: Those Who Speak':    ('speak',      IMG + 'thosewhospeak.webp',     '', ''),
+  'Dragon Age: Until We Sleep':     ('sleep',      IMG + 'untilwesleep.webp',      '', ''),
+  'Dragon Age: Magekiller':         ('magekiller', IMG + 'magekiller.webp',        '', ''),
+  'Dragon Age: Knight Errant':      ('errant',     IMG + 'knighterrant.webp',      '', ''),
+  'Dragon Age: Deception':          ('deception',  IMG + 'deception.webp',         '', ''),
+  'Dragon Age: Blue Wraith':        ('wraith',     IMG + 'bluewraith.webp',        '', ''),
+  'Dragon Age: Dark Fortress':      ('fortress',   IMG + 'darkfortress.webp',      '', ''),
+  'Dragon Age: The Missing':        ('missing',    IMG + 'themissing.webp',        '', ''),
 }
 
 # ── les types du document, vers ceux de la page ──────────────────────────
@@ -113,21 +116,27 @@ NIVEAU_JEU = 'must'
 NIVEAU_AUTRE = 'bonus'
 
 # ── les phases ───────────────────────────────────────────────────────────
-# Le document n'en a pas : c'est une liste continue de 43 entrees. Les six
+# Le document n'en a pas : c'est une liste continue de 43 entrees. Les cinq
 # titres ci-dessous sont des intitules de structure, pas de la prose de
 # Niko — la seule chose ecrite ici qui ne vienne pas du document, avec les
 # etiquettes du depliant. Chaque phase demarre a l'entree nommee.
+#
+# Elles etaient six. « The Grey Wardens » a ete supprimee le 19 aout 2026 :
+# ses six entrees — les deux premiers romans, la video sur Kristoff,
+# Awakening et ses deux DLC — rejoignent « The Fifth Blight », dont elles
+# sont la suite immediate. Et « Dawn of the Seeker » n'ouvre plus la guerre
+# mages-templiers : le film ferme « The Champion of Kirkwall », et la phase
+# suivante demarre au premier comic. Rien n'a bouge dans l'ordre du
+# document — seules les frontieres de phase se sont deplacees.
 PHASES = [
   ('The Fifth Blight',        1, ('Dragon Age: Origins', '9:30')),
-  ('The Grey Wardens',        2, ('Dragon Age: The Stolen Throne', '8:96-8:99')),
-  ('The Champion of Kirkwall',3, ('Dragon Age II', '9:30-9:31')),
-  ('The Mage-Templar War',    4, ('Dragon Age: Dawn of the Seeker', '9:22')),
-  ('The Inquisition',         5, ('Dragon Age: Inquisition', '9:41')),
-  ('The Dread Wolf Rises',    6, ('Dragon Age: Magekiller', '~9:41')),
+  ('The Champion of Kirkwall',2, ('Dragon Age II', '9:30-9:31')),
+  ('The Mage-Templar War',    3, ('Dragon Age: The Silent Grove', '9:38')),
+  ('The Inquisition',         4, ('Dragon Age: Inquisition', '9:41')),
+  ('The Dread Wolf Rises',    5, ('Dragon Age: Magekiller', '~9:41')),
 ]
 # le visuel de bande, un par phase
-ARTS = [G_ORIGINS, G_AWAK, G_DA2, TMDB + '/iiEAEgrNS11aaYJwIi5GZc9ETBB.jpg',
-        G_INQ, G_VEIL]
+ARTS = [V_ORIGINS, V_DA2, IMG + 'silentgrove.webp', V_INQ, V_VEIL]
 
 # ── les coquilles, corrigees et nommees ──────────────────────────────────
 # Meme regle que pour The Walking Dead : le contrat du script ne change
@@ -151,6 +160,11 @@ def corrige(s):
 # ── lecture du document ──────────────────────────────────────────────────
 DEBUT = 'VIDEO GAME 9:30 Dragon Age: Origins'
 CLE_TYPE = re.compile(r'^(' + '|'.join(sorted(TYPES, key=len, reverse=True)) + r')\s+(.*)$')
+# Deux entrees seulement decoupent une serie — Redemption et Absolution,
+# « Season 1 Episodes 1-6 » toutes les deux. Le reste des lignes sans point
+# final sont des reperes de lecture, et n'a rien a faire dans une bande de
+# sous-items : voir le commentaire de `lire()`.
+SERIE = re.compile(r'^Season \d', re.I)
 
 def lire():
     corps = brut[brut.index(DEBUT):].split('\n')
@@ -169,7 +183,7 @@ def lire():
             if titre.startswith('DLC '):
                 typ, titre = 'dlc', titre[4:]
             e = {'type': typ, 'date': date, 'title': titre.strip(), 'tags': tags,
-                 'subitems': [], 'desc': '', 'faq': None, 'link': ''}
+                 'subitems': [], 'note': '', 'desc': '', 'faq': None, 'link': ''}
             out.append(e)
             continue
         if e is None:
@@ -184,8 +198,17 @@ def lire():
             # une phrase ponctuee decrit l'oeuvre ; une ligne sans point
             # place la lecture dans le jeu (« Early Act 1 », « Endgame »).
             e['desc'] = (e['desc'] + ' ' + s).strip()
-        else:
+        elif SERIE.match(s):
             e['subitems'].append(s)
+        else:
+            # « Early Act 1 », « Endgame », « Between level 5-8 after
+            # finishing Lothering » : ce sont des reperes de lecture, pas
+            # des tranches de serie. La bande de sous-items est faite pour
+            # decouper des saisons — elle rend ces phrases-la comme des
+            # pastilles d'episodes, ce qu'elles ne sont pas. Elles passent
+            # donc en `note`, la ligne de texte sous le titre, exactement
+            # comme la timeline Marvel ecrit ses siennes.
+            e['note'] = (e['note'] + ' ' + s).strip()
     return out
 
 ENTREES = lire()
@@ -228,6 +251,8 @@ for x in ENTREES:
         o['tags'] = x['tags']
     if x['subitems']:
         o['subitems'] = x['subitems']
+    if x['note']:
+        o['note'] = corrige(x['note'])
     if x['desc']:
         o['desc'] = corrige(x['desc'])
     if x['link']:
@@ -369,16 +394,21 @@ ENTETE = '''/* Donnees de la timeline Dragon Age, ecrites depuis le document de 
    reponses de FAQ. Rien n'y est reformule.
 
    Trois choses seulement sont ecrites ici, et elles sont nommees dans
-   `construire-dragonage.py` : les six titres de phases (PHASES), les huit
+   `construire-dragonage.py` : les cinq titres de phases (PHASES), les huit
    etiquettes du depliant (ETIQUETTES) et le libelle des deux boutons
    YouTube. Le document n'a ni l'un ni l'autre.
 
    Troisieme page dont la source est anglaise, apres Star Trek et The
    Walking Dead : le francais reste a ecrire.
 
-   Les visuels des jeux viennent de RAWG, ceux de l'ecran de TMDB. Les six
-   livres et les neuf comics n'en ont aucun — aucune des deux API ne les
-   couvre, et Niko les fournira.
+   Les trente-six visuels sont des WebP locaux, poses par Niko. Les fiches
+   RAWG et TMDB en portent, mais ce sont les siens qui s'affichent : les
+   URL d'API n'etaient qu'un depannage en attendant ces fichiers.
+
+   Une ligne de placement (« Early Act 1 », « Endgame ») est une `note`,
+   pas un sous-item : la bande de sous-items decoupe des saisons, et seules
+   Redemption et Absolution en ont une. Le texte se lit sous le titre,
+   comme sur la timeline Marvel.
 
    Les niveaux ne viennent pas du document : il annonce « Essential /
    important / optional » sans en poser aucun. Sa deuxieme ligne donne
@@ -405,6 +435,8 @@ def verifie():
         for x in e['entries']:
             dur.append(x['title']); dur.append(x['date'])
             dur += x.get('subitems', [])
+            if x.get('note'):
+                dur.append(x['note'])
             if x.get('desc'):
                 dur.append(x['desc'])
             for r in (x.get('faq') or {}).values():
