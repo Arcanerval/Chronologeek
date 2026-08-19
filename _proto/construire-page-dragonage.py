@@ -120,15 +120,16 @@ rem('Star Wars, Marvel, DC, Avatar Legends, Star Trek',
     'mention légale', n=None)
 
 # ── le bouton « remonter en haut » ───────────────────────────────────────
-# Placeholder assumé : les six autres univers ont deux WebP locaux, posés
-# par Niko (Grogu, Miss Minutes, Appa, le bat-signal, le delta Starfleet,
-# Rick Grimes). Dragon Age attend les siens ; d'ici là l'affiche TMDB
-# d'Absolution tient la place, et le survol ne change rien.
+# Le soleil de l'Inquisition, posé par Niko le 19 août 2026 : le symbole nu
+# au repos, le médaillon au survol. Comme les six autres univers, deux WebP
+# locaux sur une même toile — carrée ici, 384 × 384, soit les 96 px de
+# rendu multipliés par quatre. Les cutouts sont réduits en alpha
+# prémultiplié : sans ça le blanc des pixels transparents cerne le soleil
+# d'un halo clair sur le fond sombre de la page (CLAUDE.md, « Les images »).
 rem('<span><img class="nl" src="/images/appa1.webp" alt=""/>'
     '<img class="hv" src="/images/appa2.webp" alt=""/></span>',
-    '<!-- PLACEHOLDER : en attente des deux WebP de Niko, comme twd1/twd2. -->\n'
-    '  <span><img class="nl" src="https://image.tmdb.org/t/p/w300/uw5N97cCH78ZQyx4OSV4qNVzZJ.jpg" alt=""/>'
-    '<img class="hv" src="https://image.tmdb.org/t/p/w300/uw5N97cCH78ZQyx4OSV4qNVzZJ.jpg" alt=""/></span>',
+    '<span><img class="nl" src="/images/da1.webp" alt=""/>'
+    '<img class="hv" src="/images/da2.webp" alt=""/></span>',
     'bouton « remonter en haut »')
 
 # ── le hero ──────────────────────────────────────────────────────────────
@@ -155,8 +156,8 @@ rem('''    <span class="tag">Chronological Timeline</span>
          sommer, et une case qui annonce « 0 h » ment plus qu'elle n'informe.
          Même raison qu'Avatar Legends. -->
     <div class="stats">
-      <div class="s"><b>5</b><span>Games</span></div>
-      <div class="s"><b>12</b><span>DLC</span></div>
+      <div class="s"><b>4</b><span>Games</span></div>
+      <div class="s"><b>13</b><span>DLC</span></div>
       <div class="s"><b>6</b><span>Books</span></div>
       <div class="s"><b>9</b><span>Comics</span></div>
       <div class="s"><b id="s-tot">43</b><span>Entries</span></div>

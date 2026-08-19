@@ -58,11 +58,16 @@ V_SEEKER  = IMG + 'dawnoftheseeker.webp'
 OEUVRES = {
   # ── jeux ──────────────────────────────────────────────────────────────
   'Dragon Age: Origins':            ('origins',    V_ORIGINS, '4639',   'game'),
-  'Dragon Age: Origins - Awakening':('awakening',  V_AWAK,    '19430',  'game'),
   'Dragon Age II':                  ('da2',        V_DA2,     '28580',  'game'),
   'Dragon Age: Inquisition':        ('inquisition',V_INQ,     '28559',  'game'),
   'Dragon Age: The Veilguard':      ('veilguard',  V_VEIL,    '274764', 'game'),
   # ── DLC ───────────────────────────────────────────────────────────────
+  # Awakening est une extension, pas le cinquieme jeu — Niko l'a tranche le
+  # 19 aout 2026. Le document ne le dit pas : il ecrit « VIDEO GAME 9:31
+  # Dragon Age: Origins - Awakening », sans le mot DLC qu'il pose devant
+  # les douze autres. Le titre est donc dans DLC_FORCES, et la serie
+  # compte quatre jeux.
+  'Dragon Age: Origins - Awakening':('awakening',  V_AWAK,    '19430',  'game'),
   'The Stone Prisoner':             ('stone',      IMG + 'stoneprisoner.webp',     '',       ''),
   "Warden's Keep":                  ('keep',       IMG + 'wardenskeep.webp',       '',       ''),
   "Leliana's Song":                 ('leliana',    IMG + 'leliana.webp',           '',       ''),
@@ -115,6 +120,21 @@ TYPES = {'VIDEO GAME': 'jeu', 'BOOK': 'roman', 'COMIC': 'comic', 'VIDEO': 'video
 NIVEAU_JEU = 'must'
 NIVEAU_AUTRE = 'bonus'
 
+# Les « some very important », nommes par Niko le 19 aout 2026. Neuf DLC
+# descendent d'essentiel a important, et « The Missing » monte d'optionnel
+# a important : c'est le seul comic de la liste, et il est bien du « bonus
+# content (some very important) » que la deuxieme ligne annonce.
+IMPORTANTES = {
+  'The Stone Prisoner', "Warden's Keep", "Leliana's Song", 'Return to Ostagar',
+  'The Golems of Amgarrak', 'The Exiled Prince', 'Mark of the Assassin',
+  'Jaws of Hakkon', 'The Descent', 'Dragon Age: The Missing',
+}
+
+# Le mot « DLC » du document se pose devant le titre, et Awakening ne l'a
+# pas — le document l'annonce en VIDEO GAME. C'est pourtant une extension,
+# et il n'y a que quatre jeux Dragon Age.
+DLC_FORCES = {'Dragon Age: Origins - Awakening'}
+
 # ── les phases ───────────────────────────────────────────────────────────
 # Le document n'en a pas : c'est une liste continue de 43 entrees. Les cinq
 # titres ci-dessous sont des intitules de structure, pas de la prose de
@@ -149,6 +169,26 @@ CORRECTIONS = {
 }
 CORRECTIONS = {k: v for k, v in CORRECTIONS.items() if k != v}
 RETOUCHES = []
+
+# ── les ajouts de Niko, nommes un par un ─────────────────────────────────
+# Meme regle que CORRECTIONS : rien n'est reformule, mais la phrase qu'il
+# dicte remplace la sienne, et verifie() la compte en retouche admise. Le
+# document reste tel qu'il est — il vit hors du depot, et une phrase du
+# site ne peut pas dependre d'un fichier que git ne tient pas.
+#
+# 19 aout 2026 : l'accroche du guide ne s'adresse plus aux seules
+# premieres parties.
+AJOUTS = {
+  'This guide works best for first-time plays.':
+  'This guide works best for first-time plays and people who want to '
+  'discover the other medias.',
+}
+def ajout(s):
+    t = AJOUTS.get(s.strip())
+    if t:
+        RETOUCHES.append((s.strip(), t))
+        return t
+    return s
 def corrige(s):
     t = s
     for avant, apres_ in CORRECTIONS.items():
@@ -182,6 +222,8 @@ def lire():
             date, titre = reste.split(' ', 1)
             if titre.startswith('DLC '):
                 typ, titre = 'dlc', titre[4:]
+            if titre.strip() in DLC_FORCES:
+                typ = 'dlc'
             e = {'type': typ, 'date': date, 'title': titre.strip(), 'tags': tags,
                  'subitems': [], 'note': '', 'desc': '', 'faq': None, 'link': ''}
             out.append(e)
@@ -242,7 +284,8 @@ for x in ENTREES:
     eid = 'da-%s-%d' % (cle, compteur[cle])
     PAR_OEUVRE.setdefault(cle, []).append(eid)
     o = {'id': eid, 'type': x['type'],
-         'level': NIVEAU_JEU if x['type'] in ('jeu', 'dlc') else NIVEAU_AUTRE,
+         'level': 'important' if x['title'] in IMPORTANTES else
+                  (NIVEAU_JEU if x['type'] in ('jeu', 'dlc') else NIVEAU_AUTRE),
          'tmdb': fid or '0', 'media': fiche or 'tv',
          'title': x['title'], 'date': x['date']}
     if img:
@@ -311,10 +354,15 @@ CHEVRON = ('<svg class="chev" viewBox="0 0 24 24" aria-hidden="true">'
 NOTES = (
     '<p class="intro-lead">' + esc(corrige(L[0])) + ' ' + esc(corrige(L[1])) + '</p>' +
     '<div class="intro-tags"><span class="itag">' + ICONES['ok'] +
-    esc(L[3]) + '</span></div>' +
+    esc(ajout(L[3])) + '</span></div>' +
     '<div class="keys-title">How to read this</div>' +
     '<div class="keys">' +
-    carte('The Calendar', 'cal', apres('THE CALENDAR')) +
+    # La carte du calendrier s'arrete a la premiere ligne, celle des Ages
+    # de la Chantrie : Niko a coupe les deux phrases suivantes le 19 aout
+    # 2026 — l'Ere ancienne et le choix du nom d'un Age ne servent aucune
+    # date de la timeline. Le document les garde, la carte ne les montre
+    # plus.
+    carte('The Calendar', 'cal', apres('THE CALENDAR', 1)) +
     carte('Flashbacks and DLC placement', 'fb', apres('FLASHBACKS AND DLC PLACEMENT')) +
     carte('Canonicity', 'can', apres('CANONICITY')) +
     '</div>' +
@@ -468,7 +516,8 @@ def verifie():
     admis["What's left out and why?"] = ('intitule du depliant : le document ecrit '
                                          '« WHAT LEFT OUT ? » en tete de section')
     for avant, apres_ in RETOUCHES:
-        admis[apres_] = 'coquille corrigee : « ' + avant[:60] + ' »'
+        admis[apres_] = ('phrase dictee par Niko : « ' if avant in AJOUTS
+                         else 'coquille corrigee : « ') + avant[:60] + ' »'
     absents = [t for t in dur if t not in brut]
     ecarts = [a for a in absents if a not in admis]
     print('  %d fragments affiches, %d retouche(s) admise(s), %d ecart(s)'
