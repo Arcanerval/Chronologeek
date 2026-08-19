@@ -1186,22 +1186,32 @@ et la majuscule initiale quand on découpe une phrase.
   sept cases dans une grille à deux colonnes : `.slot.lock` prend
   `grid-column:1/-1` et sa figure passe en 26/9, sinon la dernière rangée est
   une case seule à côté d'un trou.
-- Les 120 phrases françaises de Star Trek sont **écrites, pas retrouvées** : les
-  titres de films, les huit ères, les trente réponses de FAQ, les neuf bandeaux
-  et les badges. Elles se relisent au navigateur sur `e-startrek.html`.
-- Sa bannière `images/startrek.jpg` fait 576×324 : elle est étirée sur la case
-  pleine largeur de l'accueil et sur son propre bandeau. Les autres univers ont
-  1280 px ou plus.
-- Relecture de l'anglais écrit — 147 phrases de données et 110 de pages. Ce sont
-  les seules que la prod n'avait pas ; tout le reste est repris mot pour mot. Elle
-  se fait **au navigateur, sur le proto anglais**, pas dans `A-RELIRE-EN.md`. Le
-  bon geste serait de marquer ces phrases-là dans le proto pour qu'elles se voient
-  à l'écran ; ce n'est pas fait.
-- Avatar n'a pas de table `RT` : pas de temps de visionnage, donc pas de compteur
-  « temps restant » sur sa page. Les trois autres univers en ont une.
 - Le mois « À jour · <mois> » des six cases de l'accueil est écrit à la main,
   six fois, dans `e-accueil.html` — et une septième dans `traduire-pages.mjs`
-  quand le mois n'a pas d'homologue en prod. Rien ne le relie à la dernière
-  entrée ajoutée : c'est ce qui a produit trois cases « Updated » et trois
-  « Up to date » le 18 août 2026. Il se déduirait de la date la plus récente de
-  chaque `data-*.js`.
+  quand le mois n'a pas d'homologue en prod. **Ce n'est pas une donnée calculée,
+  et il ne faut pas l'automatiser** : il annonce la dernière mise à jour
+  *éditoriale* de l'univers, ce que Niko sait et qu'aucun fichier ne dit — la
+  date git d'un `data-*.js` bouge à la moindre correction globale (`legal3` a
+  touché les six le 18 août 2026 sans qu'une seule œuvre soit ajoutée). Il se
+  met à jour à la main, à l'ajout d'un média, et il est dans la checklist.
+  Ce qui a été corrigé le 18 août, c'est l'anglais : trois cases disaient
+  « Updated » et trois « Up to date ». Les sept portent maintenant « Updated · »,
+  ou « In progress » pour la case verrouillée.
+
+## Ce qui est tranché, et ne revient pas
+
+- **La bannière Star Trek reste en 576×324.** Elle est étirée sur la case pleine
+  largeur de l'accueil et sur son propre bandeau, là où les autres univers ont
+  1280 px ou plus. Il n'existe pas de source meilleure, et agrandir est pire que
+  le défaut. Ne pas le reproposer.
+- **Avatar Legends n'aura pas de table `RT`.** Ce n'est pas un oubli de
+  `runtime.py` : sa timeline mêle comics et romans, qui n'ont pas de durée. Un
+  compteur « temps restant » qui n'additionnerait qu'une partie des entrées
+  mentirait sur le reste. Star Wars, Marvel et DC en ont une parce qu'elles sont
+  presque entièrement à l'écran.
+- **Les relectures sont faites, validées par Niko le 19 août 2026.** Les 120
+  phrases françaises de Star Trek — titres de films, huit ères, trente réponses
+  de FAQ, neuf bandeaux, badges — et les 257 phrases anglaises écrites, dont
+  tout Avatar Legends, qui n'avait aucune page anglaise en prod à retrouver. Le
+  reste du site n'a jamais été traduit, il a été retrouvé mot pour mot : il n'y
+  a rien à relire là. `A-RELIRE-EN.md` n'est plus un document ouvert.
