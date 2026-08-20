@@ -110,6 +110,30 @@ OEUVRES = {
 TYPES = {'VIDEO GAME': 'jeu', 'BOOK': 'roman', 'COMIC': 'comic', 'VIDEO': 'video',
          'WEB SERIES': 'web', 'ANIMATED MOVIE': 'filmanim', 'ANIMATED SHOW': 'anime'}
 
+# ── la version originale ─────────────────────────────────────────────────
+# Presque rien de cet univers n'a ete traduit en France : les comics de Dark
+# Horse, les romans et les deux videos n'existent qu'en anglais. Cinq oeuvres
+# font exception, et Niko les a nommees le 20 aout 2026 — les trois comics de
+# l'« Integrale Volume 1 » et les deux romans parus chez Milady.
+#
+# Le champ `lang` ne vaut donc que pour l'ecrit et la video. Les quatre jeux,
+# leurs treize DLC, le film d'animation et la serie Netflix sont doubles ou
+# sous-titres : ils n'ont rien a signaler, et une pastille VO posee sur eux
+# serait fausse.
+#
+# La page ne montre la pastille que lorsque `T.lang !== 'en'` — c'est le choix
+# d'Avatar Legends, et la raison est la meme : dire « pas de version
+# francaise » a qui lit l'anglais n'apprend rien. Le champ vit donc ici, dans
+# la source anglaise, et traverse `traduire-dragonage.mjs` sans etre regarde.
+SANS_VF = ('roman', 'comic', 'video', 'web')
+AVEC_VF = {
+  'Dragon Age: The Silent Grove',      # VF dans l'Integrale Volume 1
+  'Dragon Age: Those Who Speak',       # idem
+  'Dragon Age: Until We Sleep',        # idem
+  'Dragon Age: The Stolen Throne',     # « Le Trone Vole », Milady
+  'Dragon Age: The Masked Empire',     # « L'Empire Masque », Milady
+}
+
 # ── les niveaux ──────────────────────────────────────────────────────────
 # Le document annonce « Essential / important / optional » sans en poser
 # aucun sur les 43 entrees. Sa deuxieme ligne tranche pourtant la moitie du
@@ -305,6 +329,8 @@ for x in ENTREES:
                   (NIVEAU_JEU if x['type'] in ('jeu', 'dlc') else NIVEAU_AUTRE),
          'tmdb': fid or '0', 'media': fiche or 'tv',
          'title': x['title'], 'date': x['date']}
+    if x['type'] in SANS_VF:
+        o['lang'] = 'vf' if x['title'] in AVEC_VF else 'vo'
     if img:
         o['img'] = img
     if x['tags']:
