@@ -11,15 +11,19 @@
    CINQ RÈGLES, DANS CET ORDRE.
 
    1. Un titre d'œuvre n'est pas traduit, il est repris de son
-      exploitation française — et **cinq œuvres seulement en ont une**.
-      Les trois comics de Dark Horse parus dans l'« Intégrale Volume 1 »
-      et les deux romans parus chez Milady. Les trente et une autres
-      gardent leur titre d'origine et portent le badge VO ; elles sont
-      donc déclarées identiques, et ne repartent pas à la relecture.
+      exploitation française — et **dix-sept œuvres sur trente-six en
+      ont une**. Les douze DLC de la timeline, dont le menu français
+      porte le nom traduit ; les trois comics de Dark Horse parus dans
+      l'« Intégrale Volume 1 » ; les deux romans parus chez Milady. Les
+      dix-neuf autres — les cinq jeux, les quatre romans, les six comics,
+      les deux vidéos, le film et la série — gardent leur titre
+      d'origine ; elles sont déclarées identiques, et ne repartent pas à
+      la relecture.
    2. **Le vocabulaire est celui de la localisation française des jeux**,
       pas une traduction littérale : Blight → Enclin, Grey Warden → Garde
-      des Ombres, Thedas → Thédas, Chantry → Chantrie, Divine → Divine.
-      C'est ce que lit quelqu'un qui joue en français.
+      des Ombres, Dread Wolf → Loup Implacable, Thedas → Thédas,
+      Chantry → Chantrie. C'est ce que lit quelqu'un qui joue en
+      français.
    3. La prose est de Niko, et se traduit au plus près. Pas de raccourci,
       pas d'ajout, pas d'« amélioration ». Les résumés récoltés au wiki
       suivent la même règle.
@@ -36,33 +40,21 @@
 
    ══════════════════════════════════════════════════════════════════ */
 
-/* Ce qui s'écrit pareil des deux côtés : les trente et une œuvres sans
-   édition française, et les valeurs de données que le traducteur croise
+/* Ce qui s'écrit pareil des deux côtés : les dix-neuf œuvres sans titre
+   français, et les valeurs de données que le traducteur croise
    en chemin. Déclarés, ils ne repartent pas au rapport de relecture — il
    n'y a rien à y relire. */
 export const DA_IDENTIQUES = [
-  // ── les quatre jeux et leurs treize DLC ──────────────────────────
-  // EA n'a jamais traduit un titre de jeu Dragon Age, ni celui d'un
-  // DLC : la boîte française annonce « Dragon Age: Origins » et le
-  // menu « Witch Hunt ».
+  // ── les cinq jeux ────────────────────────────────────────────────
+  // EA n'a jamais traduit un titre de jeu Dragon Age : la boîte
+  // française annonce « Dragon Age: Origins ». Les treize DLC, eux, le
+  // sont — ils sont plus bas, dans les traductions.
   'Dragon Age',
   'Dragon Age: Origins',
   'Dragon Age: Origins - Awakening',
   'Dragon Age II',
   'Dragon Age: Inquisition',
   'Dragon Age: The Veilguard',
-  'The Stone Prisoner',
-  'Warden\'s Keep',
-  'Leliana\'s Song',
-  'Return to Ostagar',
-  'The Golems of Amgarrak',
-  'Witch Hunt',
-  'The Exiled Prince',
-  'Mark of the Assassin',
-  'Legacy',
-  'Jaws of Hakkon',
-  'The Descent',
-  'Trespasser',
   // ── l'écrit sans édition française ───────────────────────────────
   'Dragon Age: The Calling',
   'Dragon Age: Asunder',
@@ -80,8 +72,9 @@ export const DA_IDENTIQUES = [
   'Dragon Age: Dawn of the Seeker',
   'Dragon Age: Absolution',
   // ── ce qui est écarté, et qui garde son nom ──────────────────────
+  // « The Darkspawn Chronicles » n'est pas ici : c'est un DLC, il a été
+  // traduit comme les douze autres.
   'Dragon Age (IDW, 2010)',
-  'The Darkspawn Chronicles',
   'Hard in Hightown',
   'The Final Conversation',
   'Vows and Vengeance',
@@ -131,6 +124,29 @@ export const DA_TRADUCTIONS = [
   ['Dragon Age: The Stolen Throne', 'Dragon Age : Le Trône Volé'],
   ['Dragon Age: The Masked Empire', 'Dragon Age : L\'Empire Masqué'],
 
+  /* ── les treize DLC ───────────────────────────────────────────────
+     Contrairement aux jeux, ils sont traduits : c'est le nom que porte
+     le menu français, relevé par Niko le 20 août 2026. « The Darkspawn
+     Chronicles » est du lot, bien qu'il ne soit pas dans la timeline —
+     il est nommé dans le dépliant de ce qui est écarté.
+
+     Ces noms reviennent dans les résumés, et y sont traduits aussi :
+     une entrée qui s'intitule « Le Prisonnier de la Pierre » et dont le
+     résumé commence par « The Stone Prisoner est… » se lit mal. */
+  ['The Stone Prisoner', 'Le Prisonnier de la Pierre'],
+  ['Warden\'s Keep', 'Forteresse des Gardes des Ombres'],
+  ['Leliana\'s Song', 'Le Chant de Leliana'],
+  ['Return to Ostagar', 'Retour à Ostagar'],
+  ['The Darkspawn Chronicles', 'Les Chroniques des Engeances'],
+  ['The Golems of Amgarrak', 'Les Golems d\'Amgarrak'],
+  ['Witch Hunt', 'Chasse aux Sorcières'],
+  ['The Exiled Prince', 'Le Prince Exilé'],
+  ['Mark of the Assassin', 'La Marque de l\'Assassin'],
+  ['Legacy', 'L\'Héritage'],
+  ['Jaws of Hakkon', 'Les Crocs d\'Hakkon'],
+  ['The Descent', 'La Descente'],
+  ['Trespasser', 'Intrus'],
+
   /* ── l'accroche ───────────────────────────────────────────────────
      Les deux paragraphes sont propres à ce guide : aucun autre univers
      ne prévient qu'on peut décocher le reste pour ne garder que les
@@ -172,7 +188,7 @@ export const DA_TRADUCTIONS = [
   ['Dragon Age IDW comic from 2010 has too many inconsistencies and the events are never referenced again so it\'s considered non-canon.',
    'Le comic Dragon Age d\'IDW, paru en 2010, a trop d\'incohérences et ses événements ne sont jamais repris ensuite : il est considéré comme non canonique.'],
   ['The Darkspawn Chronicles DLC from Origins is a &quot;what-if&quot; scenario, you can do it after the main game but it\'s not canon.',
-   'Le DLC The Darkspawn Chronicles d\'Origins est un scénario « et si ? » : vous pouvez le faire après le jeu principal, mais il n\'est pas canonique.'],
+   'Le DLC Les Chroniques des Engeances d\'Origins est un scénario « et si ? » : vous pouvez le faire après le jeu principal, mais il n\'est pas canonique.'],
   ['Hard in Hightown is a in-universe story written by one of the characters, it\'s pretty cool to read if you want to but it\'s not in the timeline.',
    'Hard in Hightown est un récit interne à l\'univers, écrit par l\'un des personnages : plutôt sympa à lire si vous en avez envie, mais il n\'est pas dans la timeline.'],
   ['The Final Conversation is a fanfiction written by an ex-Bioware employee, even if he created the character the story is about it can\'t be considered canon but you can read it.',
@@ -192,13 +208,13 @@ export const DA_TRADUCTIONS = [
   /* ── les cinq phases ──────────────────────────────────────────────
      Des événements, pas des lieux : elles gardent donc leur article,
      contrairement aux quatorze phases de The Walking Dead. « Blight »
-     est rendu par « Enclin » et « Dread Wolf » par « Loup Terrible »,
+     est rendu par « Enclin » et « Dread Wolf » par « Loup Implacable »,
      comme dans les jeux en français. */
   ['The Fifth Blight', 'Le Cinquième Enclin'],
   ['The Champion of Kirkwall', 'Le Champion de Kirkwall'],
   ['The Mage-Templar War', 'La Guerre des Mages et des Templiers'],
   ['The Inquisition', 'L\'Inquisition'],
-  ['The Dread Wolf Rises', 'L\'Ascension du Loup Terrible'],
+  ['The Dread Wolf Rises', 'L\'Ascension du Loup Implacable'],
 
   /* ── les cinq badges ──────────────────────────────────────────────
      Le gabarit de leur description est celui de Star Trek et de The
@@ -212,7 +228,7 @@ export const DA_TRADUCTIONS = [
   ['Dragon Age: Inquisition completed', 'Dragon Age: Inquisition terminé'],
   ['Loremaster of Thedas', 'Maître du Savoir de Thédas'],
   ['Every book and comic completed', 'Tous les livres et comics terminés'],
-  ['The Dread Wolf', 'Le Loup Terrible'],
+  ['The Dread Wolf', 'Le Loup Implacable'],
   ['Dragon Age 100% completed', 'Dragon Age terminé à 100 %'],
 
   /* ── les deux questions de FAQ ────────────────────────────────────
@@ -227,6 +243,12 @@ export const DA_TRADUCTIONS = [
      `DLC` n'est pas dans cette liste : il s'écrit pareil, et il est
      déclaré identique plus haut. */
   ['Reset your Dragon Age progress?', 'Réinitialiser la progression Dragon Age ?'],
+  /* Le gabarit vient de Star Trek et annonçait « Left to watch » — donc
+     « Restant à voir », qui est au lexique. On ne regarde pas un jeu, on
+     y joue : `construire-dragonage.py` réécrit la clé, et il faut donc
+     écrire la française, qu'aucune page du site ne porte encore. Elle
+     sert deux fois, dans `CG.t.left` et dans le HUD de la page. */
+  ['Left to play', 'Restant à jouer'],
   ['Games · Books · Comics', 'Jeux · Livres · Comics'],
   ['Games', 'Jeux'],
   ['Games · DLC · Books · Comics — the whole Dragon Age universe in its most optimized order.',
@@ -276,15 +298,15 @@ export const DA_TRADUCTIONS = [
      ajout de tout le fichier, et il est propre à la version française
      puisque le recueil l'est aussi. */
   ['The Stone Prisoner is downloadable content for Dragon Age: Origins. The Stone Prisoner refers to the titular character of this downloadable content, Shale.',
-   'The Stone Prisoner est un contenu téléchargeable pour Dragon Age: Origins. Le titre désigne le personnage central du DLC, Shale.'],
+   'Le Prisonnier de la Pierre est un contenu téléchargeable pour Dragon Age: Origins. Le titre désigne le personnage central du DLC, Shale.'],
   ['Warden\'s Keep is downloadable content available on the Xbox Live Marketplace, the PlayStation Store, and BioWare\'s official site for the PC. Warden\'s Keep grants players access to the fortress of Soldier\'s Peak, a quest to unlock the mysteries of the fortress, two new talents / spells for each class from the Power of Blood school, two achievements, and various items.',
-   'Warden\'s Keep est un contenu téléchargeable disponible sur le Xbox Live Marketplace, le PlayStation Store et le site officiel de BioWare pour le PC. Il donne accès à la forteresse du Pic du Soldat, à une quête qui en perce les mystères, à deux nouveaux talents ou sorts par classe issus de l\'école du Pouvoir du Sang, à deux succès et à divers objets.'],
+   'Forteresse des Gardes des Ombres est un contenu téléchargeable disponible sur le Xbox Live Marketplace, le PlayStation Store et le site officiel de BioWare pour le PC. Il donne accès à la forteresse du Pic du Soldat, à une quête qui en perce les mystères, à deux nouveaux talents ou sorts par classe issus de l\'école du Pouvoir du Sang, à deux succès et à divers objets.'],
   ['Leliana\'s Song is a prequel DLC for Dragon Age: Origins that explores Leliana\'s back-story in greater detail. It includes fully voiced cutscenes and includes a reward item, the Battledress of the Provocateur, that once attained transfers to both existing saved games and new games of Dragon Age: Origins and Dragon Age: Awakening.',
-   'Leliana\'s Song est un DLC préquelle de Dragon Age: Origins qui explore en détail le passé de Leliana. Il contient des cinématiques entièrement doublées et un objet de récompense, la Tenue de combat de la Provocatrice, qui une fois obtenu se transmet aux sauvegardes existantes comme aux nouvelles parties de Dragon Age: Origins et de Dragon Age: Awakening.'],
+   'Le Chant de Leliana est un DLC préquelle de Dragon Age: Origins qui explore en détail le passé de Leliana. Il contient des cinématiques entièrement doublées et un objet de récompense, la Tenue de combat de la Provocatrice, qui une fois obtenu se transmet aux sauvegardes existantes comme aux nouvelles parties de Dragon Age: Origins et de Dragon Age: Awakening.'],
   ['Playing it after her personal quest preserves the mystery of her past, avoids heavy spoilers, and makes the DLC feel like an interactive flashback of the exact events you just witnessed.',
    'Y jouer après sa quête personnelle préserve le mystère de son passé, évite de gros spoilers et fait du DLC une sorte de flashback interactif des événements que vous venez justement d\'apprendre.'],
   ['Return to Ostagar is downloadable content for Dragon Age: Origins. It allows the Warden to return to the first battlefield of Ostagar where the Grey Wardens were nearly wiped out by the darkspawn.',
-   'Return to Ostagar est un contenu téléchargeable pour Dragon Age: Origins. Il permet au Garde de revenir sur le premier champ de bataille d\'Ostagar, où les Gardes des Ombres ont été presque entièrement anéantis par les engeances.'],
+   'Retour à Ostagar est un contenu téléchargeable pour Dragon Age: Origins. Il permet au Garde de revenir sur le premier champ de bataille d\'Ostagar, où les Gardes des Ombres ont été presque entièrement anéantis par les engeances.'],
   ['When the beloved rebel queen is murdered, her son Maric sets out on a mission of vengeance against the faithless lords who were responsible for his mother\'s untimely death. The nation of Ferelden that once prospered under his family\'s reign now suffers under the cruel hands of the invading Orlesians. His countrymen now live in fear and no one is to be trusted. Maric soon becomes the leader of a rebel army hell-bent on retaking Ferelden from the control of a foreign tyrant.',
    'Lorsque la reine rebelle tant aimée est assassinée, son fils Maric part en quête de vengeance contre les seigneurs félons responsables de sa mort prématurée. La nation de Férelden, jadis prospère sous le règne de sa famille, subit désormais la cruauté des envahisseurs orlésiens. Ses compatriotes vivent dans la peur et personne n\'est digne de confiance. Maric devient bientôt le chef d\'une armée rebelle décidée à reprendre le Férelden au tyran étranger.'],
   ['Knowing the book\'s secrets gives your Warden an unnatural omniscience, which can slightly break roleplay immersion if your character shouldn\'t know those details.',
@@ -294,19 +316,19 @@ export const DA_TRADUCTIONS = [
   ['About the fate of Grey Warden Kristoff after the end of Origins.',
    'Sur le sort du Garde des Ombres Kristoff après la fin d\'Origins.'],
   ['The Golems of Amgarrak is DLC for Dragon Age: Origins. It\'s also possible to unlock three reward items that show up in Origins and Awakening.',
-   'The Golems of Amgarrak est un DLC pour Dragon Age: Origins. Il permet aussi de débloquer trois objets de récompense qui apparaissent dans Origins et dans Awakening.'],
+   'Les Golems d\'Amgarrak est un DLC pour Dragon Age: Origins. Il permet aussi de débloquer trois objets de récompense qui apparaissent dans Origins et dans Awakening.'],
   ['Witch Hunt is downloadable content for Dragon Age: Origins that explores the whereabouts of Morrigan, the Witch of the Wilds, who aided the Warden during the Fifth Blight.',
-   'Witch Hunt est un contenu téléchargeable pour Dragon Age: Origins qui part sur les traces de Morrigan, la Sorcière des Terres Sauvages, qui a aidé le Garde pendant le Cinquième Enclin.'],
+   'Chasse aux Sorcières est un contenu téléchargeable pour Dragon Age: Origins qui part sur les traces de Morrigan, la Sorcière des Terres Sauvages, qui a aidé le Garde pendant le Cinquième Enclin.'],
   ['The Exiled Prince is downloadable content for Dragon Age II, included in the signature edition or available separately from the Xbox Live Marketplace, PlayStation Network, and BioWare\'s site for the PC. It can be played at any time after reaching Kirkwall in the main campaign.',
-   'The Exiled Prince est un contenu téléchargeable pour Dragon Age II, inclus dans l\'édition signature ou disponible séparément sur le Xbox Live Marketplace, le PlayStation Network et le site de BioWare pour le PC. Il peut se jouer à tout moment une fois Kirkwall atteinte dans la campagne principale.'],
+   'Le Prince Exilé est un contenu téléchargeable pour Dragon Age II, inclus dans l\'édition signature ou disponible séparément sur le Xbox Live Marketplace, le PlayStation Network et le site de BioWare pour le PC. Il peut se jouer à tout moment une fois Kirkwall atteinte dans la campagne principale.'],
   ['Mark of the Assassin is the final piece of story-driven downloadable content for Dragon Age II. It can be played at any time after reaching Kirkwall in the main campaign, though it takes place before the events of the game ending.',
-   'Mark of the Assassin est le dernier contenu téléchargeable scénarisé de Dragon Age II. Il peut se jouer à tout moment une fois Kirkwall atteinte dans la campagne principale, même s\'il se déroule avant les événements de la fin du jeu.'],
+   'La Marque de l\'Assassin est le dernier contenu téléchargeable scénarisé de Dragon Age II. Il peut se jouer à tout moment une fois Kirkwall atteinte dans la campagne principale, même s\'il se déroule avant les événements de la fin du jeu.'],
   ['The story of Tallis, an elven assassin who adopts the Qun.',
    'L\'histoire de Tallis, une assassine elfe qui embrasse le Qun.'],
   ['Knowing Tallis\'s backstory before meeting her could influence your decisions and gives Hawke an unnatural omniscience, which can slightly break roleplay immersion if your character shouldn\'t know those details.',
    'Connaître le passé de Tallis avant de la rencontrer pourrait influencer vos décisions et donne à Hawke une omniscience contre nature, qui peut légèrement casser l\'immersion si votre personnage n\'est pas censé connaître ces détails.'],
   ['Legacy is story-driven downloadable content for Dragon Age II. It can be played at any time after reaching Kirkwall and takes place before the events of the end game.',
-   'Legacy est un contenu téléchargeable scénarisé pour Dragon Age II. Il peut se jouer à tout moment une fois Kirkwall atteinte, et se déroule avant les événements de la fin du jeu.'],
+   'L\'Héritage est un contenu téléchargeable scénarisé pour Dragon Age II. Il peut se jouer à tout moment une fois Kirkwall atteinte, et se déroule avant les événements de la fin du jeu.'],
   ['The backstory of Cassandra Pentaghast, a Seeker of Truth.',
    'Le passé de Cassandra Pentaghast, une Chercheuse de Vérité.'],
   ['The movie was released after the game as a backstory and knowing Cassandra\'s backstory before meeting her would unveil the mysteries.',

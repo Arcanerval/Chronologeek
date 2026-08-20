@@ -484,6 +484,12 @@ CG = {
     'img': 'https://image.tmdb.org/t/p/',
 }
 CG['t']['nav'] = dict(CG['t']['nav']); CG['t']['nav']['dragonage'] = 'Dragon Age'
+# Le gabarit vient de Star Trek, qui ne compte que des films et des series :
+# son HUD annonce « Left to watch ». Ici on ne regarde pas, on joue — le
+# bandeau de l'accueil le dit deja (« Check off what you've played »), et le
+# compteur juste en dessous disait le contraire. C'est la seule cle du
+# gabarit que cet univers reecrit.
+CG['t']['left'] = 'Left to play'
 
 ENTETE = '''/* Donnees de la timeline Dragon Age, ecrites depuis le document de Niko
    « Dragon Age.txt ». Les textes affiches en sont decoupes mot pour mot :

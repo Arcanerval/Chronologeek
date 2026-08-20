@@ -169,8 +169,9 @@ rem('<span class="fcount" id="fcount">69 / 69 shown</span>',
     '<span class="fcount" id="fcount">43 / 43 shown</span>', 'compteur des filtres')
 rem('<b><em id="k-on">0</em> / <span id="k-tot">61</span></b>',
     '<b><em id="k-on">0</em> / <span id="k-tot">43</span></b>', 'HUD : total')
-rem('<b style="font-size:14px" id="k-left">69</b>',
-    '<b style="font-size:14px" id="k-left">43</b>', 'HUD : restant')
+rem('<span class="lbl">Left to watch <b style="font-size:14px" id="k-left">69</b></span>',
+    '<span class="lbl">Left to play <b style="font-size:14px" id="k-left">43</b></span>',
+    'HUD : restant — on ne regarde pas un jeu, on y joue')
 rem('<div class="marks"><span>Markers</span><span class="ft">FLASHBACK</span></div>',
     '<div class="marks"><span>Markers</span>'
     '<span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span></div>',

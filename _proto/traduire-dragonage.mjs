@@ -217,6 +217,20 @@ for (const [fr, en] of PAIRES_DONNEES) {
 /* ── 3. ce qui est écrit ──────────────────────────────────────────── */
 const ECRIT = new Map(DA_TRADUCTIONS.map(([en, fr]) => [net(en), fr]));
 
+/* UNE TRADUCTION ÉCRITE L'EMPORTE SUR UNE TRADUCTION RETROUVÉE, et c'est
+   la seule entorse au principe du dossier — « retrouver plutôt que
+   traduire ». Ce principe suppose que les deux disent la même chose, et
+   les titres de DLC sont précisément le cas où ils ne le disent pas :
+   « Legacy » figure ailleurs sur le site et entre donc au lexique avec le
+   sens qu'il y a, tandis que le DLC de Dragon Age II s'appelle
+   « L'Héritage » dans le menu français. `traduit()` consulte le lexique
+   avant la table écrite : sans ce retrait, la table n'aurait jamais servi
+   pour ces titres-là, et rien ne l'aurait dit — la clé *est* traduite,
+   elle l'est juste vers autre chose. Même geste que le `table.delete()`
+   des renommages dans `traduire-pages.mjs`. */
+let ecrases = 0;
+for (const cle of ECRIT.keys()) if (table.delete(cle)) ecrases++;
+
 /* La clé du lexique est resserrée sur une seule ligne — c'est ce qui
    permet de retrouver un texte quelle que soit sa mise en forme — donc
    un `\n` ne peut venir que de la traduction. S'il manque, le texte sort
@@ -639,7 +653,8 @@ let pageFR = pageTraduite
 console.log(CHECK ? 'CONTRÔLE — rien n\'est écrit\n' : 'ÉCRITURE\n');
 console.log(`  lexique : ${table.size} textes retrouvés (${pagesLues} paires de pages, `
   + `${cgParChemin.size} clés de données), ${identiques.size} identiques`
-  + (collisions.size ? `, ${collisions.size} ambigus` : ''));
+  + (collisions.size ? `, ${collisions.size} ambigus` : '')
+  + (ecrases ? `, ${ecrases} écartés au profit d'une traduction écrite` : ''));
 console.log(`  gabarits : ${gabaritsVus.size}/${DA_GABARITS.length} employés`);
 
 const uniques = new Map();
