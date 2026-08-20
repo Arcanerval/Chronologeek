@@ -269,24 +269,24 @@ const TRADUCTIONS = [
   ['Continuer', 'Continue'],
   ['Reprendre ▸', 'Resume ▸'],             // CG.t.resume : Reprendre → Resume
   ['Ouvrir ▸', 'Open ▸'],
-  ['Six chronologies tenues à jour, en français et en anglais.',
-   'Six timelines kept up to date, in French and English.'],
+  ['Sept chronologies tenues à jour, en français et en anglais.',
+   'Seven timelines kept up to date, in French and English.'],
   ['Suivi de progression à venir', 'Progress tracking coming soon'],
   ['Bientôt', 'Soon'],
   ['Les Dossiers', 'The Deep Dives'],
   ['Les', 'The'],                          // « Les <span>Dossiers</span> »
   ['Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu et autres choses méritant votre attention',
    'To go further into your favorite universes: novels, comics, expanded canon and other things worth your attention'],
-  ['6 univers · 534 au dossier', '6 universes · 534 in the Deep Dive'],
+  ['7 univers · 534 au dossier', '7 universes · 534 in the Deep Dive'],
   ['entrées cochées', 'entries checked'],
   // les deux boutons d'essai du proto, qui ne partiront pas en ligne
   ['proto : simuler une progression', 'proto: simulate progress'],
   ['proto : revenir à zéro', 'proto: back to zero'],
   // CG.t.legal3, précédé du point que le HTML pose après le lien
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
-  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age are trademarks of their respective owners; Chronologeek is an independent fan project.'],
 
   /* ── la case Star Trek ──────────────────────────────────────────
      Le cinquième univers est postérieur à la prod : sa case n'a pas de
@@ -323,8 +323,22 @@ const TRADUCTIONS = [
   ['Séries · Webséries · Ordre chronologique complet',
    'TV Shows · Web Series · Full chronological order'],
   ['/ 45 vus', '/ 45 watched'],
-  ['Dragon Age · Stargate · Assassin\'s Creed… et d\'autres univers en préparation.',
-   'Dragon Age · Stargate · Assassin\'s Creed… and more universes in the works.'],
+  /* ── la case Dragon Age ─────────────────────────────────────────
+     Septième univers, même situation que Star Trek et The Walking Dead :
+     rien à retrouver dans une prod qui ne l'a jamais porté. Son nom ne se
+     traduit pas — aucun jeu, aucun roman, aucun comic n'a de titre français
+     — mais il doit figurer ici, sinon la nav, le tiroir et le pied de page
+     ressortent sans traduction et le rapport les compte comme manquants.
+     La case compte en « joués » et non en « vus » : c'est un guide de jeux,
+     et sa page le dit déjà partout — filtre, HUD, badges.
+     Le slot verrouillé n'annonce plus Dragon Age : il est sorti des univers
+     à venir, comme Star Trek et The Walking Dead avant lui. */
+  ['Dragon Age', 'Dragon Age'],
+  ['Jeux · DLC · Romans · Comics · Séries · Ordre chronologique complet',
+   'Games · DLC · Books · Comics · TV Shows · Full chronological order'],
+  ['/ 43 joués', '/ 43 played'],
+  ['Stargate · Assassin\'s Creed · Le Trône de Fer… et d\'autres univers en préparation.',
+   'Stargate · Assassin\'s Creed · Game of Thrones… and more universes in the works.'],
 
   // ── timelines ──────────────────────────────────────────────────
   ['Chronologeek — Star Wars (proto E)', 'Chronologeek — Star Wars (proto E)'],

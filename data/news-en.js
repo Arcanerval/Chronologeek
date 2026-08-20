@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-08", label:"August 2026", items:[
+      {"nat":"site","uni":"dragonage","kind":"timeline","title":"New timeline: Dragon Age","txt":"43 entries, from The Stolen Throne to The Veilguard — the games and their DLC, the books, the comics and the shows in a single thread.","href":"/dragonage","cta":"Open the timeline"},
       {"nat":"media","uni":"dc","kind":"serie","title":"Lanterns","meta":"2026","txt":"Added to the DC timeline, following Supergirl.","img":"https://image.tmdb.org/t/p/w500/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg","href":"/dc#dcu-lanterns","cta":"See in the timeline"},
       {"nat":"site","uni":"twd","kind":"timeline","title":"New timeline: The Walking Dead","txt":"45 entries, from the Los Angeles outbreak to New York — all seven shows and the eight web series in a single thread.","href":"/walkingdead","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"comic","title":"The Fall of Kylo Ren 1-5","meta":"34 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.","href":"/deep-dives/star-wars#34-aby-the-fall-of-kylo-ren-1-5","cta":"See in the Deep Dive"},

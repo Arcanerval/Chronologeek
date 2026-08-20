@@ -45,7 +45,7 @@ const ecrire = (rel, contenu) => {
   writeFileSync(join(RACINE, rel), contenu.replace(/\r\n/g, '\n'));
 };
 
-/* ── Les onze pages, dans leurs deux langues ────────────────────────────── */
+/* ── Les douze pages, dans leurs deux langues ────────────────────────────── */
 
 const ROUTES = [
   { cle: 'accueil',
@@ -75,6 +75,12 @@ const ROUTES = [
   { cle: 'twd',
     fr: { proto: 'e-twd.html',                sortie: 'fr/walkingdead.html',      url: '/fr/walkingdead' },
     en: { proto: 'en-twd.html',               sortie: 'walkingdead.html',         url: '/walkingdead' } },
+  // Dragon Age est le troisième à prendre la chaîne à l'envers :
+  // `en-dragonage.html` est écrit à la main, `e-dragonage.html` en descend
+  // par traduire-dragonage.mjs.
+  { cle: 'dragonage',
+    fr: { proto: 'e-dragonage.html',          sortie: 'fr/dragonage.html',        url: '/fr/dragonage' },
+    en: { proto: 'en-dragonage.html',         sortie: 'dragonage.html',           url: '/dragonage' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -122,6 +128,8 @@ const ASSETS = {
   'data-startrek-en.js':   '/data/startrek-en.js',
   'data-twd.js':           '/data/walkingdead-fr.js',
   'data-twd-en.js':        '/data/walkingdead-en.js',
+  'data-dragonage.js':     '/data/dragonage-fr.js',
+  'data-dragonage-en.js':  '/data/dragonage-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',

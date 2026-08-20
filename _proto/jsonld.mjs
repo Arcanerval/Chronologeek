@@ -10,7 +10,7 @@
 //   · `WebSite`        — l'accueil seul, dans sa langue ;
 //   · `BreadcrumbList` — toutes les pages sauf l'accueil ; c'est le seul des
 //     trois qui donne un résultat enrichi chez Google, et il ne coûte rien ;
-//   · `ItemList`       — les six univers, la liste des Dossiers et l'accueil.
+//   · `ItemList`       — les sept univers, la liste des Dossiers et l'accueil.
 //     Chaque élément porte son ancre, son nom et son visuel.
 //
 // **Le Dossier n'a pas d'`ItemList`, et c'est délibéré.** Ses 534 œuvres
@@ -39,9 +39,17 @@ import { join } from 'node:path';
 // Les `data*.js` posent `window.X = {...}` : on les exécute avec un faux
 // `window` plutôt que de les analyser. `require` ne convient pas — il met en
 // cache, et le second appel sur le même fichier ne rejouerait pas l'affectation.
-function charge(racine, fichier) {
+// Onze fichiers sur douze posent leurs données sur `window` ; `data-dragonage.js`
+// déclare `var DATA_DA` au premier niveau. Dans un navigateur c'est la même
+// chose — un `var` de premier niveau est une propriété de `window` — mais dans
+// un `new Function` il reste local, et l'objet est introuvable. On rapatrie donc
+// le global nommé quand on le connaît. Sans ce pont, la page Dragon Age et les
+// deux accueils sortaient en « Cannot read properties of undefined ».
+function charge(racine, fichier, global) {
   const w = {};
-  new Function('window', 'document', readFileSync(join(racine, '_proto', fichier), 'utf8'))(w, {});
+  const src = readFileSync(join(racine, '_proto', fichier), 'utf8');
+  const pont = global ? `;if(typeof ${global}!=='undefined')window[${JSON.stringify(global)}]=${global};` : '';
+  new Function('window', 'document', src + pont)(w, {});
   return w;
 }
 
@@ -55,6 +63,7 @@ const SOURCES = {
   avatar:   { fr: ['data-avatar.js', 'AVATAR'], en: ['data-avatar-en.js', 'AVATAR'] },
   startrek: { fr: ['data-startrek.js', 'ST'],   en: ['data-startrek-en.js', 'ST'] },
   twd:      { fr: ['data-twd.js', 'TWD'],       en: ['data-twd-en.js', 'TWD'] },
+  dragonage:{ fr: ['data-dragonage.js', 'DATA_DA'], en: ['data-dragonage-en.js', 'DATA_DA'] },
 };
 
 // Le fil d'Ariane des pages qui n'ont pas de timeline. La clé du libellé est
@@ -81,7 +90,13 @@ function typeSchema(it) {
     case 'roman': case 'jeunesse': return 'Book';
     case 'comic':                  return 'ComicStory';
     case 'audio':                  return 'Audiobook';
-    case 'jeu':                    return 'VideoGame';
+    // `jeu` et `dlc` pour la même raison que l'écrit : les quinze DLC de Dragon
+    // Age portent `media:"tv"` parce qu'ils empruntent une fiche de série faute
+    // d'en avoir une à eux. Lus dans l'autre sens, ils ressortaient en
+    // `TVSeries`. Et une vidéo YouTube est un `VideoObject`, quelle que soit la
+    // fiche dont elle emprunte le visuel.
+    case 'jeu': case 'dlc':        return 'VideoGame';
+    case 'video':                  return 'VideoObject';
   }
   if (it.media === 'movie') return 'Movie';
   if (it.media === 'tv')    return 'TVSeries';
@@ -89,7 +104,6 @@ function typeSchema(it) {
   switch (it.type) {
     case 'film': case 'filmanim': case 'short': case 'special': return 'Movie';
     case 'serie': case 'anime': case 'web':                     return 'TVSeries';
-    case 'video':                                               return 'VideoObject';
     default:                                                    return 'CreativeWork';
   }
 }
@@ -131,9 +145,10 @@ function blocSite(site, t, url) {
 function blocFil(site, t, cle, urls, moi, nomUnivers) {
   const etapes = [{ name: decode(t.nav.home), url: site + urls.accueil }];
   for (const [libelle, page] of (FIL[cle] || [[cle, cle]])) {
-    // `CG.t.nav` ne porte que les quatre premiers univers — Star Trek et The
-    // Walking Dead sont sous « Plus d'univers » et n'y ont pas de clé. Sans ce
-    // repli, leur fil d'Ariane annoncerait « startrek » et « twd ».
+    // `CG.t.nav` ne porte que les quatre premiers univers — Star Trek, The
+    // Walking Dead et Dragon Age sont sous « Plus d'univers » et n'y ont pas de
+    // clé. Sans ce repli, leur fil d'Ariane annoncerait « startrek », « twd »
+    // et « dragonage ».
     etapes.push({
       name: decode(t.nav[libelle] || nomUnivers(libelle) || libelle),
       url: site + (page ? urls[page] : moi),
@@ -213,26 +228,26 @@ export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) 
   const nomUnivers = k => {
     if (!SOURCES[k]) return null;
     const [fichier, global] = SOURCES[k][langue];
-    return decode(charge(racine, fichier)[global].title);
+    return decode(charge(racine, fichier, global)[global].title);
   };
 
   if (cle === 'accueil') {
     blocs.push(blocSite(site, t, moi));
-    // Les six univers : la liste que l'accueil montre, et la seule de la page.
-    const six = ['sw', 'mcu', 'dc', 'avatar', 'startrek', 'twd'].map(k => ({
+    // Les sept univers : la liste que l'accueil montre, et la seule de la page.
+    const sept = ['sw', 'mcu', 'dc', 'avatar', 'startrek', 'twd', 'dragonage'].map(k => ({
       t: 'CollectionPage',
       nom: nomUnivers(k),
       url: site + urls[k],
       img: abs(site, imagesUnivers[k]),
     }));
-    blocs.push(blocListe('Chronologeek', t.locale, six));
+    blocs.push(blocListe('Chronologeek', t.locale, sept));
   } else {
     blocs.push(blocFil(site, t, cle, urls, moi, nomUnivers));
   }
 
   if (SOURCES[cle]) {
     const [fichier, global] = SOURCES[cle][langue];
-    const u = charge(racine, fichier)[global];
+    const u = charge(racine, fichier, global)[global];
     blocs.push(blocListe(decode(u.title), t.locale, elementsTimeline(u, site, moi)));
   } else if (cle === 'dossiers') {
     blocs.push(blocListe(decode(t.nav.deep), t.locale, [{

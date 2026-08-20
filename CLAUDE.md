@@ -7,7 +7,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 ## Structure
 
 - Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`,
-  `avatar.html`, `startrek.html`, `walkingdead.html`
+  `avatar.html`, `startrek.html`, `walkingdead.html`, `dragonage.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
   (534 romans, comics et fictions audio, plus 63 repères écran)
@@ -18,7 +18,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 ### Ce qui s'édite, et ce qui se produit
 
-**Les vingt-deux pages du site ne s'éditent pas.** Elles sont produites depuis
+**Les vingt-quatre pages du site ne s'éditent pas.** Elles sont produites depuis
 `_proto/` par `node _proto/publier.mjs`, et toute retouche faite directement dans
 `starwars.html` est perdue à la publication suivante — sans erreur, sans message.
 
@@ -32,7 +32,7 @@ _proto/e-*.html + _proto/data*.js        ← le français, écrit à la main
 _proto/en-*.html + _proto/data-*-en.js
         │  node _proto/publier.mjs
         ▼
-22 pages + /data/ + app.js               ← le site, jamais édité à la main
+24 pages + /data/ + app.js               ← le site, jamais édité à la main
 ```
 
 Star Trek prend cette chaîne à l'envers : sa source est anglaise, et
@@ -40,8 +40,11 @@ Star Trek prend cette chaîne à l'envers : sa source est anglaise, et
 chaîne inversée » plus bas. **The Walking Dead fait pareil** —
 `en-twd.html` + `data-twd-en.js` sont la source, `node _proto/traduire-twd.mjs`
 écrit `e-twd.html` et `data-twd.js`. Publié le 16 août 2026 sous
-`/walkingdead` et `/fr/walkingdead` : le site compte vingt-deux pages et six
-univers.
+`/walkingdead` et `/fr/walkingdead`. **Dragon Age est le troisième** —
+`en-dragonage.html` + `data-dragonage-en.js` sont la source,
+`node _proto/traduire-dragonage.mjs` écrit `e-dragonage.html` et
+`data-dragonage.js`. Publié le 20 août 2026 sous `/dragonage` et
+`/fr/dragonage` : le site compte vingt-quatre pages et sept univers.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -52,7 +55,7 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 ## Charte couleurs
 
 Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar Legends `#7dd3fc`,
-Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`.
+Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Le quatrième univers s'appelle « Avatar Legends » depuis le 18 août 2026**, pour ne
@@ -134,8 +137,17 @@ en plus que pour ne pas attendre le lendemain.
 
 ### Les quatre sources du radar
 
-`source_tmdb` sert cinq univers sur six, par **société de production** —
+`source_tmdb` sert cinq univers sur sept, par **société de production** —
 Lucasfilm, Marvel Studios, DC Studios, Avatar Studios, AMC Studios.
+
+**Dragon Age n'est pas au radar, et c'est délibéré.** Le septième univers est
+fait de jeux, de DLC, de romans et de comics : TMDB ne connaît aucun des quatre
+comme sortie datée, et interroger Electronic Arts ou BioWare par société
+ramènerait le catalogue EA entier. Il faudrait une cinquième source — RAWG, dont
+la page porte déjà la clé — et il n'y a rien à annoncer : *The Veilguard* est
+sorti, rien n'est daté après lui. La page publie donc sa timeline sans entrer au
+radar, et l'accroche de « À venir » continue de n'énumérer que les six univers
+que le radar suit.
 `source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas, et
 `source_wookieepedia` la timeline des médias canon Star Wars.
 
@@ -384,10 +396,10 @@ Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » 
 il n'utilise pas `TMDB_KEY` et aucune action ne le lance : il s'appelle à la main.
 L'interpréteur est `py` sur la machine de Niko, pas `python`.
 
-- `py sync.py check` — vérifie les onze paires : même nombre de lignes dans le
-  HTML, mêmes identifiants dans les données. Les onze clés sont `sw`, `mcu`,
-  `dc`, `avatar`, `startrek`, `twd`, `dossier`, `news`, `accueil`, `avenir`,
-  `dossiers`.
+- `py sync.py check` — vérifie les douze paires : même nombre de lignes dans le
+  HTML, mêmes identifiants dans les données. Les douze clés sont `sw`, `mcu`,
+  `dc`, `avatar`, `startrek`, `twd`, `dragonage`, `dossier`, `news`, `accueil`,
+  `avenir`, `dossiers`.
 - `py sync.py show <page> <id>` — affiche une entrée dans les deux langues sans
   ouvrir les fichiers entiers.
 - `py sync.py mirror <page> "<ancien>" "<nouveau>"` — remplace dans le proto
@@ -449,7 +461,7 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   **Le script n'avait regardé que le menu, pas le pied de page.** Corrigé le
   18 août 2026 : quarante liens morts y dormaient depuis la refonte, deux par
   page. Le lien de la mention légale (`© 2026 Chronologeek — chronologeek.app`)
-  ne conduisait nulle part sur les vingt-deux ; il pointe maintenant l'accueil de
+  ne conduisait nulle part sur les vingt-quatre ; il pointe maintenant l'accueil de
   sa langue. Et la liste « Timelines » désignait la page courante par un `#` nu,
   sans `aria-current` — seul le pied de page d'Avatar Legends était conforme, et
   c'est son écriture qui a servi de modèle aux huit autres. Rien ne cassait : un
@@ -469,7 +481,7 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   zéro manque. Ce qui reste à écrire vit dans `traductions-twd.mjs` : l'accroche,
   les trois repères de lecture, les quatorze phases et les cinq badges. Les quinze
   œuvres, elles, gardent leur titre — aucune n'a de titre français.
-- `node _proto/publier.mjs` — pose les vingt-deux pages, `/data/` et `app.js`. Voir
+- `node _proto/publier.mjs` — pose les vingt-quatre pages, `/data/` et `app.js`. Voir
   « La publication » plus bas.
 
 Les quatre premiers acceptent `--check`, qui n'écrit rien et affiche le bilan.
@@ -483,7 +495,7 @@ du script concerné, puis relancer.
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
 posent `noindex`. Les recopier tels quels aurait effacé le référencement de
-vingt-deux pages : rien n'aurait cassé, la console serait restée vide, et le site
+vingt-quatre pages : rien n'aurait cassé, la console serait restée vide, et le site
 aurait disparu des résultats. Ces textes vivent dans **`_proto/seo.json`**, extrait
 une fois des pages d'avant la refonte, avec Avatar écrit à la main faute de page à
 reprendre. Le script ne les relit pas dans les pages publiées : celles-ci sont sa
@@ -539,15 +551,16 @@ dans `publier.mjs`.
 
 **5. Les données structurées**, depuis le 18 août 2026, dans `_proto/jsonld.mjs`.
 Trois blocs, jamais plus : `WebSite` sur les deux accueils, `BreadcrumbList` sur
-les vingt autres pages, `ItemList` sur les six univers, la liste des Dossiers et
-l'accueil. Chaque entrée de timeline y est un `Movie`, une `TVSeries`, un `Book`,
-un `ComicStory` ou un `VideoGame`, avec son ancre (`/dc#dcu-lanterns`), son nom
-et son visuel — plus son `isbn` quand c'est un livre. 1 232 éléments par langue.
+les vingt-deux autres pages, `ItemList` sur les sept univers, la liste des
+Dossiers et l'accueil. Chaque entrée de timeline y est un `Movie`, une
+`TVSeries`, un `Book`, un `ComicStory`, un `VideoGame` ou un `VideoObject`, avec
+son ancre (`/dc#dcu-lanterns`), son nom et son visuel — plus son `isbn` quand
+c'est un livre. 742 éléments par langue, 765 en comptant les fils d'Ariane.
 
 Le script lit les mêmes `_proto/data*.js` que la publication copie dans
 `/data/` : la donnée structurée et la donnée affichée ne peuvent pas diverger.
 
-Quatre choses à savoir :
+Six choses à savoir :
 
 - **`type` passe avant `media`, et c'est tout le piège.** `media` ne dit pas ce
   qu'est l'œuvre, il dit quelle fiche TMDB la page ouvrira : les trente-quatre
@@ -560,16 +573,28 @@ Quatre choses à savoir :
   pesaient 10 Ko brotli et faisaient passer la page de 65 à 168 Ko de HTML brut
   — la plus lourde du site — pour un gain nul : Google ne fait pas de carrousel
   de livres. Il garde son fil d'Ariane. Ne pas la rétablir sans une raison qui
-  vaille ce poids. Le reste coûte +1 à +2,7 Ko brotli par page, +12 Ko sur onze.
-- **`CG.t.nav` ne porte que quatre univers.** Star Trek et The Walking Dead sont
-  sous « Plus d'univers » et n'y ont pas de clé : sans repli sur le `title` de
-  leurs données, leur fil d'Ariane annoncerait « startrek » et « twd ».
+  vaille ce poids. Le reste coûte +1 à +2,7 Ko brotli par page, +14 Ko sur douze.
+- **`CG.t.nav` ne porte que quatre univers.** Star Trek, The Walking Dead et
+  Dragon Age sont sous « Plus d'univers » et n'y ont pas de clé : sans repli sur
+  le `title` de leurs données, leur fil d'Ariane annoncerait « startrek »,
+  « twd » et « dragonage ».
+- **`dlc` et `video` se rangent avant `media`, comme l'écrit.** Les quinze DLC de
+  Dragon Age et sa vidéo YouTube portent `media:"tv"` faute de fiche à eux : lus
+  dans l'autre sens, ils ressortaient en `TVSeries`. C'est exactement le piège du
+  premier point, sur deux clés de plus.
+- **`charge()` doit connaître le nom du global.** Onze fichiers sur douze posent
+  `window.X = {…}` ; `data-dragonage.js` déclare `var DATA_DA` au premier niveau.
+  Dans un navigateur c'est la même chose — un `var` de premier niveau est une
+  propriété de `window` —, mais dans le `new Function` du script il reste local
+  et l'objet est introuvable. La page Dragon Age et les deux accueils sortaient
+  en « Cannot read properties of undefined ». Le nom vient de `SOURCES`, et un
+  pont l'y rapatrie.
 - **`decode()` passe sur tous les titres.** L'échappement n'est pas le même
   d'une page à l'autre — DC stocke en texte brut et rend avec `esc()`, d'autres
   stockent échappé parce qu'ils injectent directement. JSON-LD veut le texte.
 
 Le contrôle ne se fait pas dans le fichier : les ancres sont posées par le JS au
-chargement, et `document.getElementById()` sur les 1 232 identifiants est ce qui
+chargement, et `document.getElementById()` sur les 742 identifiants est ce qui
 dit qu'une ancre est morte. Une lecture statique les déclare toutes fausses.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
@@ -596,7 +621,7 @@ langue. `en-startrek.html` et `data-startrek-en.js` sont donc la **source**, et 
 français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul endroit
 du dépôt où l'on traduit dans ce sens.
 
-**Ne jamais inscrire Star Trek ni The Walking Dead dans `PAGES` de
+**Ne jamais inscrire Star Trek, The Walking Dead ni Dragon Age dans `PAGES` de
 `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
 écraserait la source avec une retraduction de sa propre sortie, sans erreur et
 sans message.
@@ -979,14 +1004,15 @@ retouche du CSS, qui est commun.
 ### Le menu : trois univers en clair, trois sous un déroulant
 
 Six univers alignés débordaient la barre. Depuis le **18 août 2026**, Star Wars,
-Marvel et DC restent en clair ; Avatar Legends, Star Trek et The Walking Dead
-passent sous « Plus d'univers » / « More universes ». C'est un `<details class="nav-more">`
+Marvel et DC restent en clair ; Avatar Legends, Star Trek, The Walking Dead et,
+depuis le 20 août, Dragon Age passent sous « Plus d'univers » / « More
+universes ». C'est un `<details class="nav-more">`
 natif : **pas une ligne de JS pour l'ouvrir**, et le clavier le pilote seul.
 `.nav-more:has(a[aria-current])>summary` le passe à l'or quand la page courante
-est dedans — sans ça, trois pages sur vingt-deux n'auraient rien d'allumé au menu.
+est dedans — sans ça, trois pages sur vingt-quatre n'auraient rien d'allumé au menu.
 
-Le tiroir mobile a suivi : les six univers en **grille à deux colonnes** avec
-leur pastille de couleur (`.u-sw` … `.u-twd`, les six encres de la charte), puis
+Le tiroir mobile a suivi : les sept univers en **grille à deux colonnes** avec
+leur pastille de couleur (`.u-sw` … `.u-da`, les sept encres de la charte), puis
 les quatre pages du site. La règle générique `.drawer a` est devenue `.dw-site a`
 — laissée telle quelle, elle repassait les tuiles d'univers en blocs de 21 px et
 la grille tombait. Même chose pour le `@media(max-width:720px)`.
@@ -997,11 +1023,11 @@ commutés par `aria-expanded` — que le script de chaque page pose déjà.
 **Ce qui referme ces deux menus vit dans `e-app.js`**, pas dans les pages : clic
 à côté, clic sur un lien du tiroir, touche Échap. Le HTML ne le fait pour aucun
 des deux, et un menu resté ouvert par-dessus la page qu'on vient d'ouvrir passe
-pour une page cassée. Une seule copie pour vingt-deux pages, comme le formulaire
+pour une page cassée. Une seule copie pour vingt-quatre pages, comme le formulaire
 de contact ci-dessous.
 
 Un septième univers se pose donc dans le déroulant et dans la grille du tiroir,
-pas dans la rangée du haut — et dans les onze protos source, jamais dans les
+pas dans la rangée du haut — et dans les douze protos source, jamais dans les
 `en-*` produits.
 
 ### Le pied de page et son formulaire de contact
@@ -1025,7 +1051,7 @@ les lignes de la mention légale.
 et le proposer avant qu'on ait demandé comment payer ne se lit pas bien.
 
 « Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
-les vingt-deux pages partagent. L'écrire dans les protos aurait voulu dire vingt-deux copies
+les vingt-quatre pages partagent. L'écrire dans les protos aurait voulu dire vingt-quatre copies
 du même dialogue et de son CSS. Quatre choses à savoir :
 
 - **L'envoi passe par `mailto:`**, faute de serveur : GitHub Pages ne reçoit pas de
@@ -1037,7 +1063,7 @@ du même dialogue et de son CSS. Quatre choses à savoir :
 - **L'adresse n'est nulle part dans le HTML** : elle est recomposée en JS. Les
   moissonneuses ramassent les pages, pas les concaténations.
 - **`margin:auto` est rappelé sur le `<dialog>`.** C'est lui qui centre un dialogue
-  modal, et les vingt-deux pages posent `*{margin:0}` : sans le rappel, la boîte se colle
+  modal, et les vingt-quatre pages posent `*{margin:0}` : sans le rappel, la boîte se colle
   en haut à gauche de l'écran. Rien dans la console, la page marche — elle est juste
   de travers.
 - **Le lien porte `data-contact` et `href="#contact"`.** L'attribut est ce que le
@@ -1067,9 +1093,10 @@ Les largeurs, toutes plafonnées à la taille native (on n'agrandit jamais) :
 Les trois icônes sont celles du manifeste PWA : il les déclare en `image/png`, et
 elles ne se convertissent pas.
 
-**Les six univers ont deux WebP dans `images/` pour leur bouton « remonter en
-haut »** — Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, et
-Rick Grimes depuis le 17 août 2026 : assis le revolver contre l'épaule
+**Les sept univers ont deux WebP dans `images/` pour leur bouton « remonter en
+haut »** — Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, le
+soleil de la Chantrie (`da1.webp` / `da2.webp`, 384×384), et Rick Grimes
+depuis le 17 août 2026 : assis le revolver contre l'épaule
 (`twd1.webp`), en joue au survol (`twd2.webp`). Un chapeau de shérif dessiné en
 SVG en ligne a tenu la place une journée — plus léger, sans source à trouver,
 sans personnage — mais deux photos disent la série mieux qu'une silhouette. Le
@@ -1113,7 +1140,8 @@ parseur doit accepter les deux.
 Répartitions actuelles :
 Star Wars 61 (9 must / 37 important / 15 bonus), Marvel 121 (49 / 30 / 42),
 DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34),
-The Walking Dead 45 (29 must / 3 important / 13 bonus).
+The Walking Dead 45 (29 must / 3 important / 13 bonus),
+Dragon Age 43 (15 must / 10 important / 18 bonus).
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
 repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un
@@ -1164,9 +1192,13 @@ et la majuscule initiale quand on découpe une phrase.
   chez un passeur de formulaire (Formspree, Web3Forms — gratuits à ce volume) et
   sa clé ; seul le corps de `envoyer()`, dans `_proto/e-app.js`, change alors.
 - **Un univers ajouté se met dans les textes, pas seulement dans le code.** Trois
-  endroits énumèrent les six : l'accroche de « À venir » (`.dek`), les deux
+  endroits énumèrent les univers : l'accroche de « À venir » (`.dek`), les deux
   `ogTitle` et les deux `desc` de `seo.json`, et le pied de page de toutes les
-  pages. **Plus les deux `title` de `a-venir`** : ils portaient la même
+  pages. **Les deux premiers ne comptent que ce que le radar suit, pas ce que le
+  site publie.** Dragon Age n'y est donc pas entré le 20 août 2026 : `radar.py`
+  n'a pas de source pour les jeux, la colonne serait vide et l'accroche
+  promettrait des sorties qui n'arriveront jamais. Le pied de page, lui, énumère
+  bien les sept — c'est la liste des univers du site, pas celle du radar. **Plus les deux `title` de `a-venir`** : ils portaient la même
   énumération et faisaient 103 signes rendus, quand Google en montre soixante —
   le nom du site, en fin de titre, était coupé sur les deux pages les plus
   souvent partagées. Ils s'arrêtent depuis le 18 août 2026 à « Star Wars,
@@ -1176,26 +1208,28 @@ et la majuscule initiale quand on découpe une phrase.
   depuis le 16 ; pour Star Trek, les deux premiers y sont entrés avec deux mois
   de retard sur la page elle-même, parce que rien ne les relie à la liste des
   univers. La formule est la sienne, celle du pied de page : « Star Wars,
-  Marvel, DC, Avatar Legends, Star Trek et The Walking Dead ». L'accroche anglaise se
-  tient dans `TRADUCTIONS` de `traduire-pages.mjs`, la prod n'ayant jamais porté
-  cette phrase-là.
+  Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age ».
+  L'accroche anglaise se tient dans `TRADUCTIONS` de `traduire-pages.mjs`, la
+  prod n'ayant jamais porté cette phrase-là.
 
   Trois autres décomptes suivent sur l'accueil, et aucun n'est calculé : le
-  sous-titre (« Six chronologies… »), le HUD (`0 / 690`, « 6 univers · 534 au
-  dossier ») et le numéro de la case verrouillée. Six univers plus elle font
-  sept cases dans une grille à deux colonnes : `.slot.lock` prend
-  `grid-column:1/-1` et sa figure passe en 26/9, sinon la dernière rangée est
-  une case seule à côté d'un trou.
-- Le mois « À jour · <mois> » des six cases de l'accueil est écrit à la main,
-  six fois, dans `e-accueil.html` — et une septième dans `traduire-pages.mjs`
+  sous-titre (« Sept chronologies… »), le HUD (`0 / 734`, « 7 univers · 534 au
+  dossier ») et le numéro de la case verrouillée. Sept univers plus elle font
+  **huit** cases dans une grille à deux colonnes : la dernière rangée est
+  pleine, et `.slot.lock` ne prend la largeur entière que s'il tombe sur un rang
+  impair (`:nth-child(odd)`) — ce qui était le cas à six univers et le
+  redeviendra au huitième. Ne pas remettre `grid-column:1/-1` en dur : à huit
+  cases il laisse un trou à droite de la septième.
+- Le mois « À jour · <mois> » des sept cases de l'accueil est écrit à la main,
+  sept fois, dans `e-accueil.html` — et une huitième dans `traduire-pages.mjs`
   quand le mois n'a pas d'homologue en prod. **Ce n'est pas une donnée calculée,
   et il ne faut pas l'automatiser** : il annonce la dernière mise à jour
   *éditoriale* de l'univers, ce que Niko sait et qu'aucun fichier ne dit — la
   date git d'un `data-*.js` bouge à la moindre correction globale (`legal3` a
-  touché les six le 18 août 2026 sans qu'une seule œuvre soit ajoutée). Il se
+  touché les sept le 18 août 2026 sans qu'une seule œuvre soit ajoutée). Il se
   met à jour à la main, à l'ajout d'un média, et il est dans la checklist.
   Ce qui a été corrigé le 18 août, c'est l'anglais : trois cases disaient
-  « Updated » et trois « Up to date ». Les sept portent maintenant « Updated · »,
+  « Updated » et trois « Up to date ». Les huit portent maintenant « Updated · »,
   ou « In progress » pour la case verrouillée.
 
 ## Ce qui est tranché, et ne revient pas

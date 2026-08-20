@@ -104,8 +104,8 @@ export const AVATAR_TRADUCTIONS = [
      prod datant d'avant Star Trek et The Walking Dead ; mise à six le
      18 août 2026, avec la formule du pied de page. Les quatre autres
      univers la reprennent de leur prod anglaise — Avatar n'en a pas. */
-  ["Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.",
-   "Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks of their respective owners; Chronologeek is an independent fan project."],
+  ["Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.",
+   "Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age are trademarks of their respective owners; Chronologeek is an independent fan project."],
   ["ÈRE DE YANGCHEN",
    "THE YANGCHEN ERA"],
   ["Jeune Avatar hantée par les souvenirs de ses vies antérieures, Yangchen navigue entre diplomatie et complots dans la ville corrompue de Bin-Er.",

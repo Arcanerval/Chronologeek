@@ -28,7 +28,8 @@ Usage :
                                              remplace dans le proto source,
                                              puis rappelle quoi relancer
 
-Pages : sw, mcu, dc, avatar, startrek, twd, dossier, news, accueil, avenir, dossiers
+Pages : sw, mcu, dc, avatar, startrek, twd, dragonage, dossier, news, accueil,
+        avenir, dossiers
 """
 
 import re
@@ -45,11 +46,12 @@ class Paire:
     publie (en / fr), les entrees qui l'alimentent (donnees), et la source d'ou
     tout descend (le proto francais).
 
-    Deux exceptions : Star Trek et The Walking Dead s'ecrivent en anglais et le
-    francais en descend. Leur source est donc `en-startrek.html` et
-    `en-twd.html`, et `langue_source` le dit — sans quoi mirror ecrirait dans une
-    sortie de traduire-startrek.mjs ou de traduire-twd.mjs, perdue au prochain
-    passage, sans erreur et sans message."""
+    Trois exceptions : Star Trek, The Walking Dead et Dragon Age s'ecrivent en
+    anglais et le francais en descend. Leur source est donc `en-startrek.html`,
+    `en-twd.html` et `en-dragonage.html`, et `langue_source` le dit — sans quoi
+    mirror ecrirait dans une sortie de traduire-startrek.mjs, de traduire-twd.mjs
+    ou de traduire-dragonage.mjs, perdue au prochain passage, sans erreur et sans
+    message."""
 
     def __init__(self, en, fr, donnees, proto, langue_source="fr"):
         self.en, self.fr, self.donnees, self.proto = en, fr, donnees, proto
@@ -70,6 +72,8 @@ PAGES = {
                       langue_source="en"),
     "twd":      Paire("walkingdead.html", "fr/walkingdead.html", "walkingdead", "e-twd.html",
                       langue_source="en"),
+    "dragonage": Paire("dragonage.html", "fr/dragonage.html", "dragonage", "e-dragonage.html",
+                       langue_source="en"),
     "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
                       "dossier-star-wars", "e-dossier-star-wars.html"),
     "news":     Paire("whats-new.html", "fr/nouveautes.html", "news", "e-nouveautes.html"),
@@ -330,9 +334,9 @@ def cmd_mirror(args):
 
     print(f"\ntotal : {total} ligne(s). Pour propager :")
     if paire(cle).langue_source == "en":
-        # Les deux chaines inversees ont chacune leur script : ecrire dans
+        # Les trois chaines inversees ont chacune leur script : ecrire dans
         # en-twd.html et relancer traduire-startrek.mjs ne propagerait rien.
-        print(f"  node _proto/traduire-{'twd' if cle == 'twd' else 'startrek'}.mjs")
+        print(f"  node _proto/traduire-{cle}.mjs")
     else:
         print("  node _proto/traduire.mjs && node _proto/traduire-pages.mjs")
     print("  node _proto/publier.mjs")

@@ -97,6 +97,20 @@
       "image": "https://chronologeek.app/images/twd.webp"
     }
   },
+  "dragonage": {
+    "fr": {
+      "title": "Dragon Age — Chronologeek",
+      "ogTitle": "Timeline Dragon Age — Chronologeek",
+      "desc": "La timeline Dragon Age dans l'ordre chronologique interne — les jeux et leurs DLC, les romans, les comics et les séries, du Trône Volé au Veilguard, sans spoil.",
+      "image": "https://chronologeek.app/images/dragonage.webp"
+    },
+    "en": {
+      "title": "Dragon Age Timeline — Chronologeek",
+      "ogTitle": "Dragon Age Timeline — Chronologeek",
+      "desc": "The Dragon Age timeline in in-universe order — the games and their DLC, the books, the comics and the shows, from The Stolen Throne to The Veilguard, spoiler-free.",
+      "image": "https://chronologeek.app/images/dragonage.webp"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers — Chronologeek",

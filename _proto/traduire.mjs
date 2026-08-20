@@ -196,6 +196,15 @@ const TRADUCTIONS = [
   ['45 entrées, de l\'épidémie de Los Angeles à New York — les sept séries et les huit webséries dans un seul fil.',
    '45 entries, from the Los Angeles outbreak to New York — all seven shows and the eight web series in a single thread.'],
 
+  /* ── la carte Dragon Age, écrite le 20 août 2026 ────────────────────
+     Septième univers, même situation que les deux précédents. Ni les
+     jeux, ni les DLC, ni les comics n'ont de titre français : seuls
+     quatre romans en ont un, et « Le Trône Volé » est le premier de la
+     timeline. */
+  ['Nouvelle timeline : Dragon Age', 'New timeline: Dragon Age'],
+  ['43 entrées, du Trône Volé au Veilguard — les jeux et leurs DLC, les romans, les comics et les séries dans un seul fil.',
+   '43 entries, from The Stolen Throne to The Veilguard — the games and their DLC, the books, the comics and the shows in a single thread.'],
+
   /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
      Même moule que la carte « Legacy » de juillet, qui dit en anglais
      « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just
@@ -255,8 +264,14 @@ const RENOMMES_NOUVEAUX = new Set(RENOMMES.values());
 const PERIMES = new Map([
   ['Star Wars, Marvel, DC and Avatar are trademarks of their respective owners;'
    + ' Chronologeek is an independent fan project.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks'
-   + ' of their respective owners; Chronologeek is an independent fan project.'],
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age'
+   + ' are trademarks of their respective owners; Chronologeek is an independent fan'
+   + ' project.'],
+  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks'
+   + ' of their respective owners; Chronologeek is an independent fan project.',
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age'
+   + ' are trademarks of their respective owners; Chronologeek is an independent fan'
+   + ' project.'],
 ]);
 
 /* Reprend un objet de libellés anglais copié de la prod et y rejoue ce

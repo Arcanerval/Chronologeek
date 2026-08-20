@@ -11,6 +11,8 @@
   "data/startrek-en.js": "_proto/data-startrek-en.js",
   "data/walkingdead-fr.js": "_proto/data-twd.js",
   "data/walkingdead-en.js": "_proto/data-twd-en.js",
+  "data/dragonage-fr.js": "_proto/data-dragonage.js",
+  "data/dragonage-en.js": "_proto/data-dragonage-en.js",
   "data/dossier-star-wars-fr.js": "_proto/data-dossier-sw.js",
   "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
   "data/news-fr.js": "_proto/data-news.js",

@@ -10,24 +10,24 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Chronologeek"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Marvel — Chronologeek</title>
-<meta name="description" content="Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil."/>
+<title>Dragon Age — Chronologeek</title>
+<meta name="description" content="La timeline Dragon Age dans l'ordre chronologique interne — les jeux et leurs DLC, les romans, les comics et les séries, du Trône Volé au Veilguard, sans spoil."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Chronologeek"/>
-<meta property="og:title" content="Timeline Marvel MCU — Chronologeek"/>
-<meta property="og:description" content="Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil."/>
-<meta property="og:image" content="https://chronologeek.app/images/mcu.webp"/>
-<meta property="og:url" content="https://chronologeek.app/fr/marvel"/>
+<meta property="og:title" content="Timeline Dragon Age — Chronologeek"/>
+<meta property="og:description" content="La timeline Dragon Age dans l'ordre chronologique interne — les jeux et leurs DLC, les romans, les comics et les séries, du Trône Volé au Veilguard, sans spoil."/>
+<meta property="og:image" content="https://chronologeek.app/images/dragonage.webp"/>
+<meta property="og:url" content="https://chronologeek.app/fr/dragonage"/>
 <meta property="og:locale" content="fr_FR"/>
 <meta property="og:locale:alternate" content="en_US"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
-<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
-<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/marvel"/>
-<link rel="canonical" href="https://chronologeek.app/fr/marvel"/>
+<link rel="alternate" hreflang="en" href="https://chronologeek.app/dragonage"/>
+<link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dragonage"/>
+<link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dragonage"/>
+<link rel="canonical" href="https://chronologeek.app/fr/dragonage"/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
-<link rel="preload" as="image" href="/images/mcu.webp"/>
+<link rel="preload" as="image" href="/images/dragonage.webp"/>
 <!--
   ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
   THÈSE : cette page ne liste pas, elle donne à choisir sa prochaine étape.
@@ -39,10 +39,10 @@
   diagonale, trame de demi-teinte sur les visuels, titrage condensé à ombre
   portée dure et décalée. Aucun halo, aucun verre, aucun arrondi.
   ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
-  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#e23636).
+  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#4d9fff).
   RÉCIT : le visiteur voit d'abord des images, comprend qu'il choisit, et
   voit sa carte se remplir entrée par entrée.
-  TEXTES : tout ce qui est prose vient de fr/marvel.html, mot pour mot,
+  TEXTES : tout ce qui est prose vient du document de Niko, mot pour mot,
   au vouvoiement. Rien n'est réécrit ici.
 -->
 <style>
@@ -76,20 +76,25 @@
   /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
   --hot:#f0c97c; --gold-deep:#d5a05f;
   /* la marque « terminé » prend la couleur de l'univers, pas un vert générique */
-  --uni:#e23636;
-  /* dix encres : huit phases et les deux segments de branche que Marvel
-     intercale. Saga de l'Infini dans les rouges et les bleus profonds, Saga
-     du Multivers dans les violets et les verts — la bascule se voit au
-     défilement. Les deux segments prennent la teinte sombre de leur propre
-     branche, bleu Spider-Verse et ocre Fox, pour qu'on les repère de loin. */
-  --era1:#7a2231; --era2:#123f70; --era3:#8a3312; --era4:#3c2a6e;
-  --era5:#1d4f7a; --era6:#0f5a52; --era7:#6b1f52; --era8:#7d5610;
-  --era9:#155066; --era10:#5c2060;
+  --uni:#e07b39;
+  /* cinq encres d'ère, une par phase. Le document de Niko n'a pas de
+     phases — c'est une liste continue de 43 entrées — et les cinq titres
+     viennent de `construire-dragonage.py`, pas de sa prose. Les teintes
+     suivent le récit : le sang du Cinquième Fléau, l'ocre de Kirkwall, le
+     vin de la guerre mages-templiers, le bleu-vert de l'Inquisition et le
+     violet du Loup Terrible. */
+  --era1:#7a2222; --era2:#7a5a16; --era3:#5c2233;
+  --era4:#14515c; --era5:#4a3566;
   /* les trois entrées colorées de la nav */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
-  /* badges de type, charte du site */
-  --t-film:#64b5f6; --t-filmanim:#90caf9; --t-serie:#81c784;
-  --t-anime:#ce93d8; --t-jeu:#ffb74d; --t-special:#ffa726; --t-video:#f472b6;
+  /* badges de type, charte du site. Dragon Age est le premier guide à
+     porter les huit formes à la fois — le DLC prend la teinte claire du
+     jeu, comme le film d'animation prend celle du film ; le comic quitte
+     l'orange qu'il a sur Avatar, où il n'avait pas de jeu à côté de lui. */
+  --t-jeu:#ffb74d; --t-dlc:#ffcc80; --t-roman:#a99cf9; --t-comic:#4dd0e1;
+  --t-video:#f472b6; --t-web:#ffa726; --t-filmanim:#90caf9; --t-anime:#ce93d8;
+  /* le seul repère du guide */
+  --m-flashback:#f0c97c;
   --era:var(--era1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -212,13 +217,13 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    octet de plus. Les débords restent courts — au-delà, `cover` sur-zoome
    la bannière et le visuel part en bouillie. */
 .plane{position:absolute;inset:0 -2%;background-size:cover;background-position:center;
-  background-image:url(/images/mcu.webp)}
+  background-image:url(/images/dragonage.webp)}
 .plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
 .plane.p2{inset:0 -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
   clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
 .veil{position:absolute;inset:0;
   background:linear-gradient(to top,var(--ink) 2%,
-             color-mix(in srgb,#e23636 46%,var(--ink)) 38%,
+             color-mix(in srgb,#4d9fff 46%,var(--ink)) 38%,
              color-mix(in srgb,var(--era3) 40%,transparent))}
 .attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
 .attract h1{font-size:clamp(50px,11vw,140px);max-width:12ch}
@@ -263,19 +268,14 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   stroke-linecap:square;margin-top:1px}
 .keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
   text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
-/* Trois colonnes. La quatrième carte, la canonicité non confirmée, prend la
-   rangée entière au lieu de creuser un trou dans la grille. */
-.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:13px}
 .key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
-.key.wide{grid-column:1/-1;border-left:4px solid var(--gold-deep)}
 .key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
   font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
 .key-h svg{width:19px;height:19px;flex:0 0 auto;fill:none;stroke:var(--hot);stroke-width:2;
   stroke-linecap:square}
 .key p{font-size:13.5px;color:rgba(255,253,247,.82)}
 .key strong{color:var(--paper)}
-@media(max-width:900px){.keys{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.keys{grid-template-columns:1fr}}
 .cuts{margin-top:20px;border:2px solid var(--line)}
 .cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
   padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
@@ -312,11 +312,6 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
 .sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
 .sieve .last{margin-left:auto}
-/* Les branches sont un groupe de filtres comme les autres : elles coulent
-   dans la même ligne que le niveau et les types. Les deux conteneurs ne
-   servent qu'à séparer les branches de la canonicité non confirmée côté
-   script — `display:contents` les efface de la mise en page. */
-.obr,.onc{display:contents}
 /* la recherche : un champ franc, pas une pilule */
 .search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
   padding:4px 9px;min-width:224px;flex:0 1 296px}
@@ -335,12 +330,23 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   color:rgba(255,253,247,.6)}
 .marks{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;
   letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
-/* Les repères ne filtrent rien : ils légendent. Marvel en a trois, ils ne
-   tiennent plus dans la ligne des filtres. Ils passent donc dessous, sur
-   leur propre rangée, avec le masquage des vus et le compte poussés à droite. */
+/* Les repères ne filtrent rien : ils légendent. Ils passent donc sous la
+   ligne des filtres, sur leur propre rangée, avec le masquage des vus et le
+   compte poussés à droite — même disposition que Marvel et DC. */
 .srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
   margin-top:1px}
 .srow .marks{flex-wrap:wrap}
+
+/* ══ CHAPEAU D'ÉPOQUE : « Guerre de Cent Ans » au-dessus des trois Livres ══
+   Propre à Avatar. Un simple bandeau réglé, pas une bande d'ère : il ne porte
+   ni image ni compte, sinon il se ferait passer pour une neuvième ère. Le trait
+   de part et d'autre du texte le rattache visuellement aux bandes qui suivent. */
+.epoch{background:var(--ink);padding:26px 0 14px}
+.epoch .wrap{display:flex;align-items:center;gap:16px}
+.epoch span{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;font-size:clamp(19px,3.4vw,30px);line-height:1;
+  letter-spacing:.02em;color:var(--hot);white-space:nowrap}
+.epoch .wrap::after{content:'';flex:1;height:2px;background:var(--line)}
 
 /* ══ BANDE D'ÈRE : parallaxe multiplane liée au défilement ══════════ */
 .era-sec[hidden]{display:none}
@@ -412,21 +418,15 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
   clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
 .ft{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:var(--hot);border:1px solid var(--hot)}
-/* la canonicité non confirmée se signale comme le flashback, en rouge pâle */
-.nt{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:#ff8f8f;border:1px solid #ff8f8f}
-/* L'univers d'origine. Une entrée qui ne se passe pas dans la timeline
-   principale le dit en toutes lettres et se décale franchement vers la
-   droite : le décrochage se lit avant même qu'on lise le badge. Le liseré
-   passe en pointillé, la carte n'est plus tout à fait du même monde.
-   Dans un segment de branche, tout le bloc est déjà ailleurs — décaler
-   chaque entrée n'y ajouterait qu'un cran d'escalier. */
-.dim{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:#a99fff;border:1px solid #a99fff}
-.bu.dev{margin-left:56px}
-.bu.dev .bu-card{border-style:dashed}
-.era-sec.seg .bu.dev{margin-left:0}
+  padding:2px 8px;color:var(--k,var(--hot));border:1px solid var(--k,var(--hot))}
+/* « VO » signale l'absence de version française. Il se distingue du badge de
+   type par le trait plutôt que par l'aplat : c'est une réserve sur l'entrée,
+   pas une catégorie de plus. Le dessin est celui du Dossier Star Wars, qui a
+   trouvé le bon poids : plus menu que le badge de type, trait plein plutôt que
+   pointillé. Seule la couleur change — le Dossier prend son accent, ici pris
+   par FLASHBACK, alors la mention passe au bleu de l'univers. */
+.vo{font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:1px 5px;
+  color:var(--uni);border:1px solid var(--uni)}
 .bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
   line-height:1.02;text-transform:uppercase}
 .bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
@@ -501,7 +501,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
 .expand-trailer-link:hover{filter:brightness(1.1)}
 .en-faq{margin-top:14px;display:flex;flex-direction:column;gap:6px}
-.faq{border-left:3px solid var(--uni);background:rgba(226,54,54,.07)}
+.faq{border-left:3px solid var(--uni);background:color-mix(in srgb,var(--uni) 7%,transparent)}
 .faq>summary{cursor:pointer;list-style:none;padding:8px 12px;font-size:13.5px;font-weight:700}
 .faq>summary::-webkit-details-marker{display:none}
 .faq>summary::before{content:'+ ';color:var(--uni);font-weight:900}
@@ -556,8 +556,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
 .legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
 
-/* ══ Miss Minutes : le retour en haut ══════════════════════════════ */
-/* Sans trame ni désaturation : l'effet des visuels la salissait. */
+/* ══ Grogu : le retour en haut ═════════════════════════════════════ */
+/* Sans trame ni désaturation : l'effet des visuels le salissait. */
 #totop{position:fixed;right:16px;bottom:calc(var(--hud-h,50px) + 28px);z-index:75;width:96px;height:96px;padding:0;
   background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
   transform:translateY(10px);transition:opacity .2s,transform .2s}
@@ -654,7 +654,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .bu-title{font-size:19px}
   .bu-meta .d{font-size:19px}
   .bu-sub{padding-left:12px}
-  .bu.dev{margin-left:18px}
   .bu-side{width:30px;margin-top:10px}
   .bu-chk{width:26px;height:26px}
   .bu-side .ic{width:21px;height:21px}
@@ -685,7 +684,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .pacts{margin-left:0}
   #totop{width:74px;height:74px;bottom:calc(var(--hud-h,84px) + 20px)}
   #totop span{width:74px;height:74px}
-  /* pleine largeur, et posé au-dessus de Miss Minutes, qui monte à 148 px du bas */
+  /* pleine largeur, et posé au-dessus de Grogu qui monte à 148 px du bas */
   .bpop{left:12px;right:12px;max-width:none;bottom:calc(var(--hud-h,84px) + 106px);transform:translateY(18px)}
   .bpop.o{transform:translateY(0)}
 }
@@ -764,8 +763,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
    en tête de rangée, il se lisait comme un repère de plus. */
 .filt-body .marks>span:first-child{width:100%;text-align:center;margin-bottom:2px}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://chronologeek.app/fr/"},{"@type":"ListItem","position":2,"name":"Marvel","item":"https://chronologeek.app/fr/marvel"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Marvel Cinematic Universe","inLanguage":"fr-FR","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":121,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Movie","name":"Captain America : First Avenger","url":"https://chronologeek.app/fr/marvel#mcu-cap1","image":"https://chronologeek.app/images/captain-america-first-avenger-2011.webp"}},{"@type":"ListItem","position":2,"item":{"@type":"VideoObject","name":"One Shot : Agent Carter","url":"https://chronologeek.app/fr/marvel#mcu-ac-os","image":"https://chronologeek.app/images/one-shot-agent-carter.webp"}},{"@type":"ListItem","position":3,"item":{"@type":"TVSeries","name":"Agent Carter","url":"https://chronologeek.app/fr/marvel#mcu-ac-serie","image":"https://chronologeek.app/images/agent-carter-season-1.webp"}},{"@type":"ListItem","position":4,"item":{"@type":"Movie","name":"Captain Marvel","url":"https://chronologeek.app/fr/marvel#mcu-cm","image":"https://chronologeek.app/images/captain-marvel-2019.webp"}},{"@type":"ListItem","position":5,"item":{"@type":"Movie","name":"Iron Man","url":"https://chronologeek.app/fr/marvel#mcu-im1","image":"https://chronologeek.app/images/iron-man-2008.webp"}},{"@type":"ListItem","position":6,"item":{"@type":"Movie","name":"Iron Man 2","url":"https://chronologeek.app/fr/marvel#mcu-im2","image":"https://chronologeek.app/images/iron-man-2-2010.webp"}},{"@type":"ListItem","position":7,"item":{"@type":"Movie","name":"L'Incroyable Hulk","url":"https://chronologeek.app/fr/marvel#mcu-hulk","image":"https://chronologeek.app/images/l-incroyable-hulk-2008.webp"}},{"@type":"ListItem","position":8,"item":{"@type":"VideoObject","name":"One Shot : Le Consultant","url":"https://chronologeek.app/fr/marvel#mcu-consultant","image":"https://chronologeek.app/images/one-shot-the-consultant.webp"}},{"@type":"ListItem","position":9,"item":{"@type":"Movie","name":"Thor","url":"https://chronologeek.app/fr/marvel#mcu-thor1","image":"https://chronologeek.app/images/thor-2011.webp"}},{"@type":"ListItem","position":10,"item":{"@type":"Movie","name":"Avengers","url":"https://chronologeek.app/fr/marvel#mcu-av1","image":"https://chronologeek.app/images/the-avengers-2012.webp"}},{"@type":"ListItem","position":11,"item":{"@type":"VideoObject","name":"One Shot : Article 47","url":"https://chronologeek.app/fr/marvel#mcu-item47","image":"https://chronologeek.app/images/one-shot-item-47.webp"}},{"@type":"ListItem","position":12,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s1a","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-1.webp"}},{"@type":"ListItem","position":13,"item":{"@type":"Movie","name":"Thor : Le Monde des Ténèbres","url":"https://chronologeek.app/fr/marvel#mcu-thor2","image":"https://chronologeek.app/images/thor-the-dark-world-2013.webp"}},{"@type":"ListItem","position":14,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s1b","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-1.webp"}},{"@type":"ListItem","position":15,"item":{"@type":"Movie","name":"Iron Man 3","url":"https://chronologeek.app/fr/marvel#mcu-im3","image":"https://chronologeek.app/images/iron-man-3-2013.webp"}},{"@type":"ListItem","position":16,"item":{"@type":"VideoObject","name":"One Shot : Longue Vie au Roi","url":"https://chronologeek.app/fr/marvel#mcu-roi","image":"https://chronologeek.app/images/one-shot-all-hail-the-king.webp"}},{"@type":"ListItem","position":17,"item":{"@type":"Movie","name":"Captain America : Le Soldat de l'Hiver","url":"https://chronologeek.app/fr/marvel#mcu-cap2","image":"https://chronologeek.app/images/captain-america-le-soldat-de-l-hiver-2014.webp"}},{"@type":"ListItem","position":18,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s1c","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-1.webp"}},{"@type":"ListItem","position":19,"item":{"@type":"Movie","name":"Les Gardiens de la Galaxie","url":"https://chronologeek.app/fr/marvel#mcu-gotg1","image":"https://chronologeek.app/images/les-gardiens-de-la-galaxie-2014.webp"}},{"@type":"ListItem","position":20,"item":{"@type":"Movie","name":"Les Gardiens de la Galaxie Vol. 2","url":"https://chronologeek.app/fr/marvel#mcu-gotg2","image":"https://chronologeek.app/images/les-gardiens-de-la-galaxie-2-2017.webp"}},{"@type":"ListItem","position":21,"item":{"@type":"TVSeries","name":"Daredevil","url":"https://chronologeek.app/fr/marvel#mcu-dd1","image":"https://chronologeek.app/images/daredevil-season-1.webp"}},{"@type":"ListItem","position":22,"item":{"@type":"TVSeries","name":"Jessica Jones","url":"https://chronologeek.app/fr/marvel#mcu-jj1","image":"https://chronologeek.app/images/jessica-jones-season-1.webp"}},{"@type":"ListItem","position":23,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s2a","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-2.webp"}},{"@type":"ListItem","position":24,"item":{"@type":"Movie","name":"Avengers : l'Ère d'Ultron","url":"https://chronologeek.app/fr/marvel#mcu-aou","image":"https://chronologeek.app/images/avengers-age-of-ultron-2015.webp"}},{"@type":"ListItem","position":25,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s2b","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-2.webp"}},{"@type":"ListItem","position":26,"item":{"@type":"Movie","name":"Ant-Man","url":"https://chronologeek.app/fr/marvel#mcu-antman1","image":"https://chronologeek.app/images/ant-man-2015.webp"}},{"@type":"ListItem","position":27,"item":{"@type":"TVSeries","name":"Daredevil","url":"https://chronologeek.app/fr/marvel#mcu-dd2","image":"https://chronologeek.app/images/daredevil-season-2.webp"}},{"@type":"ListItem","position":28,"item":{"@type":"TVSeries","name":"Luke Cage","url":"https://chronologeek.app/fr/marvel#mcu-lc1","image":"https://chronologeek.app/images/luke-cage-season-1.webp"}},{"@type":"ListItem","position":29,"item":{"@type":"TVSeries","name":"Iron Fist","url":"https://chronologeek.app/fr/marvel#mcu-if1","image":"https://chronologeek.app/images/iron-fist-season-1.webp"}},{"@type":"ListItem","position":30,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s3a","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-3.webp"}},{"@type":"ListItem","position":31,"item":{"@type":"TVSeries","name":"The Defenders","url":"https://chronologeek.app/fr/marvel#mcu-defenders","image":"https://chronologeek.app/images/the-defenders-season-1.webp"}},{"@type":"ListItem","position":32,"item":{"@type":"Movie","name":"Captain America : Civil War","url":"https://chronologeek.app/fr/marvel#mcu-cw","image":"https://chronologeek.app/images/captain-america-civil-war-2016.webp"}},{"@type":"ListItem","position":33,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s3b","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-3.webp"}},{"@type":"ListItem","position":34,"item":{"@type":"Movie","name":"Black Widow","url":"https://chronologeek.app/fr/marvel#mcu-bw","image":"https://chronologeek.app/images/black-widow-2021.webp"}},{"@type":"ListItem","position":35,"item":{"@type":"Movie","name":"Black Panther","url":"https://chronologeek.app/fr/marvel#mcu-bp1","image":"https://chronologeek.app/images/black-panther-2018.webp"}},{"@type":"ListItem","position":36,"item":{"@type":"TVSeries","name":"Eyes of Wakanda","url":"https://chronologeek.app/fr/marvel#mcu-eow","image":"https://chronologeek.app/images/eyes-of-wakanda-season-1.webp"}},{"@type":"ListItem","position":37,"item":{"@type":"Movie","name":"Spider-Man : Homecoming","url":"https://chronologeek.app/fr/marvel#mcu-sm1","image":"https://chronologeek.app/images/spider-man-homecoming-2017.webp"}},{"@type":"ListItem","position":38,"item":{"@type":"TVSeries","name":"The Punisher","url":"https://chronologeek.app/fr/marvel#mcu-pun1","image":"https://chronologeek.app/images/the-punisher-season-1.webp"}},{"@type":"ListItem","position":39,"item":{"@type":"Movie","name":"Doctor Strange","url":"https://chronologeek.app/fr/marvel#mcu-ds1","image":"https://chronologeek.app/images/doctor-strange-2016.webp"}},{"@type":"ListItem","position":40,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s4","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-4.webp"}},{"@type":"ListItem","position":41,"item":{"@type":"TVSeries","name":"Jessica Jones","url":"https://chronologeek.app/fr/marvel#mcu-jj2","image":"https://chronologeek.app/images/jessica-jones-season-2.webp"}},{"@type":"ListItem","position":42,"item":{"@type":"TVSeries","name":"Luke Cage","url":"https://chronologeek.app/fr/marvel#mcu-lc2","image":"https://chronologeek.app/images/luke-cage-season-2.webp"}},{"@type":"ListItem","position":43,"item":{"@type":"TVSeries","name":"Iron Fist","url":"https://chronologeek.app/fr/marvel#mcu-if2","image":"https://chronologeek.app/images/iron-fist-season-2.webp"}},{"@type":"ListItem","position":44,"item":{"@type":"TVSeries","name":"Daredevil","url":"https://chronologeek.app/fr/marvel#mcu-dd3","image":"https://chronologeek.app/images/daredevil-season-3.webp"}},{"@type":"ListItem","position":45,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s5a","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-5.webp"}},{"@type":"ListItem","position":46,"item":{"@type":"Movie","name":"Thor : Ragnarok","url":"https://chronologeek.app/fr/marvel#mcu-thor3","image":"https://chronologeek.app/images/thor-ragnarok-2017.webp"}},{"@type":"ListItem","position":47,"item":{"@type":"TVSeries","name":"The Punisher","url":"https://chronologeek.app/fr/marvel#mcu-pun2","image":"https://chronologeek.app/images/the-punisher-season-2.webp"}},{"@type":"ListItem","position":48,"item":{"@type":"TVSeries","name":"Jessica Jones","url":"https://chronologeek.app/fr/marvel#mcu-jj3","image":"https://chronologeek.app/images/jessica-jones-season-3.webp"}},{"@type":"ListItem","position":49,"item":{"@type":"Movie","name":"Ant-Man et la Guêpe","url":"https://chronologeek.app/fr/marvel#mcu-antman2","image":"https://chronologeek.app/images/ant-man-and-the-wasp-2018.webp"}},{"@type":"ListItem","position":50,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s5b","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-5.webp"}},{"@type":"ListItem","position":51,"item":{"@type":"VideoObject","name":"Première scène post-crédits Thor : Ragnarok","url":"https://chronologeek.app/fr/marvel#mcu-thor3pc","image":"https://chronologeek.app/images/thor-ragnarok-2017.webp"}},{"@type":"ListItem","position":52,"item":{"@type":"Movie","name":"Avengers : Infinity War","url":"https://chronologeek.app/fr/marvel#mcu-iw","image":"https://chronologeek.app/images/avengers-infinity-war-2018.webp"}},{"@type":"ListItem","position":53,"item":{"@type":"VideoObject","name":"Première scène post-crédits Ant-Man et la Guêpe","url":"https://chronologeek.app/fr/marvel#mcu-antman2pc","image":"https://chronologeek.app/images/ant-man-and-the-wasp-2018.webp"}},{"@type":"ListItem","position":54,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s5c","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-5.webp"}},{"@type":"ListItem","position":55,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s6","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-6.webp"}},{"@type":"ListItem","position":56,"item":{"@type":"TVSeries","name":"Les Agents du S.H.I.E.L.D.","url":"https://chronologeek.app/fr/marvel#mcu-aos-s7","image":"https://chronologeek.app/images/marvels-agents-of-shield-season-7.webp"}},{"@type":"ListItem","position":57,"item":{"@type":"VideoObject","name":"Première scène post-crédits Captain Marvel","url":"https://chronologeek.app/fr/marvel#mcu-cmpc","image":"https://chronologeek.app/images/captain-marvel-2019.webp"}},{"@type":"ListItem","position":58,"item":{"@type":"Movie","name":"Avengers : Endgame","url":"https://chronologeek.app/fr/marvel#mcu-eg","image":"https://chronologeek.app/images/avengers-endgame-2019.webp"}},{"@type":"ListItem","position":59,"item":{"@type":"TVSeries","name":"Loki","url":"https://chronologeek.app/fr/marvel#mcu-loki1","image":"https://chronologeek.app/images/loki-season-1.webp"}},{"@type":"ListItem","position":60,"item":{"@type":"TVSeries","name":"What If…?","url":"https://chronologeek.app/fr/marvel#mcu-wi1","image":"https://chronologeek.app/images/what-if-season-1.webp"}},{"@type":"ListItem","position":61,"item":{"@type":"TVSeries","name":"WandaVision","url":"https://chronologeek.app/fr/marvel#mcu-wv","image":"https://chronologeek.app/images/wanda-vision-season-1.webp"}},{"@type":"ListItem","position":62,"item":{"@type":"Movie","name":"Shang-Chi et la Légende des Dix Anneaux","url":"https://chronologeek.app/fr/marvel#mcu-sc","image":"https://chronologeek.app/images/shang-chi-2021.webp"}},{"@type":"ListItem","position":63,"item":{"@type":"TVSeries","name":"Falcon et le Soldat de l'Hiver","url":"https://chronologeek.app/fr/marvel#mcu-fatws","image":"https://chronologeek.app/images/the-falcon-and-the-winter-soldier-season-1.webp"}},{"@type":"ListItem","position":64,"item":{"@type":"Movie","name":"Spider-Man : Far From Home","url":"https://chronologeek.app/fr/marvel#mcu-smffh","image":"https://chronologeek.app/images/spider-man-far-from-home-2019.webp"}},{"@type":"ListItem","position":65,"item":{"@type":"Movie","name":"Les Éternels","url":"https://chronologeek.app/fr/marvel#mcu-eternals","image":"https://chronologeek.app/images/eternals-2021.webp"}},{"@type":"ListItem","position":66,"item":{"@type":"Movie","name":"Spider-Man","url":"https://chronologeek.app/fr/marvel#mcu-smr1","image":"https://chronologeek.app/images/spider-man-2002.webp"}},{"@type":"ListItem","position":67,"item":{"@type":"Movie","name":"Spider-Man 2","url":"https://chronologeek.app/fr/marvel#mcu-smr2","image":"https://chronologeek.app/images/spider-man-2-2004.webp"}},{"@type":"ListItem","position":68,"item":{"@type":"Movie","name":"Spider-Man 3","url":"https://chronologeek.app/fr/marvel#mcu-smr3","image":"https://chronologeek.app/images/spider-man-3-2007.webp"}},{"@type":"ListItem","position":69,"item":{"@type":"Movie","name":"The Amazing Spider-Man","url":"https://chronologeek.app/fr/marvel#mcu-tasm1","image":"https://chronologeek.app/images/the-amazing-spider-man-2012.webp"}},{"@type":"ListItem","position":70,"item":{"@type":"Movie","name":"The Amazing Spider-Man 2 : Le Destin d'un Héros","url":"https://chronologeek.app/fr/marvel#mcu-tasm2","image":"https://chronologeek.app/images/the-amazing-spider-man-2-2014.webp"}},{"@type":"ListItem","position":71,"item":{"@type":"Movie","name":"Spider-Man : Into the Spider-Verse","url":"https://chronologeek.app/fr/marvel#mcu-itsv","image":"https://chronologeek.app/images/spider-man-into-the-spider-verse-2018.webp"}},{"@type":"ListItem","position":72,"item":{"@type":"Movie","name":"Venom","url":"https://chronologeek.app/fr/marvel#mcu-venom1","image":"https://chronologeek.app/images/venom-2018.webp"}},{"@type":"ListItem","position":73,"item":{"@type":"Movie","name":"Venom : Let There Be Carnage","url":"https://chronologeek.app/fr/marvel#mcu-venom2","image":"https://chronologeek.app/images/venom-let-there-be-carnage-2021.webp"}},{"@type":"ListItem","position":74,"item":{"@type":"Movie","name":"Spider-Man : No Way Home","url":"https://chronologeek.app/fr/marvel#mcu-nwh","image":"https://chronologeek.app/images/spider-man-no-way-home-2021.webp"}},{"@type":"ListItem","position":75,"item":{"@type":"Movie","name":"Venom : The Last Dance","url":"https://chronologeek.app/fr/marvel#mcu-venom3","image":"https://chronologeek.app/images/venom-the-last-dance-2024.webp"}},{"@type":"ListItem","position":76,"item":{"@type":"Movie","name":"Spider-Man : Across the Spider-Verse","url":"https://chronologeek.app/fr/marvel#mcu-atsv","image":"https://chronologeek.app/images/spider-man-across-the-spider-verse-2023.webp"}},{"@type":"ListItem","position":77,"item":{"@type":"Movie","name":"Doctor Strange in the Multiverse of Madness","url":"https://chronologeek.app/fr/marvel#mcu-mom","image":"https://chronologeek.app/images/doctor-strange-in-the-multiverse-of-madness-2022.webp"}},{"@type":"ListItem","position":78,"item":{"@type":"VideoObject","name":"Scène post-crédits Black Widow","url":"https://chronologeek.app/fr/marvel#mcu-bwpc","image":"https://chronologeek.app/images/black-widow-2021.webp"}},{"@type":"ListItem","position":79,"item":{"@type":"TVSeries","name":"Hawkeye","url":"https://chronologeek.app/fr/marvel#mcu-hawkeye","image":"https://chronologeek.app/images/hawkeye-season-1.webp"}},{"@type":"ListItem","position":80,"item":{"@type":"TVSeries","name":"Moon Knight","url":"https://chronologeek.app/fr/marvel#mcu-mk","image":"https://chronologeek.app/images/moon-knight-season-1.webp"}},{"@type":"ListItem","position":81,"item":{"@type":"Movie","name":"Black Panther : Wakanda Forever","url":"https://chronologeek.app/fr/marvel#mcu-bp2","image":"https://chronologeek.app/images/black-panther-wakanda-forever-2022.webp"}},{"@type":"ListItem","position":82,"item":{"@type":"TVSeries","name":"Echo","url":"https://chronologeek.app/fr/marvel#mcu-echo","image":"https://chronologeek.app/images/echo-season-1.webp"}},{"@type":"ListItem","position":83,"item":{"@type":"TVSeries","name":"She-Hulk : Avocate","url":"https://chronologeek.app/fr/marvel#mcu-shehulk","image":"https://chronologeek.app/images/she-hulk-avocate-season-1.webp"}},{"@type":"ListItem","position":84,"item":{"@type":"TVSeries","name":"Miss Marvel","url":"https://chronologeek.app/fr/marvel#mcu-mm","image":"https://chronologeek.app/images/miss-marvel-season-1.webp"}},{"@type":"ListItem","position":85,"item":{"@type":"Movie","name":"Thor : Love and Thunder","url":"https://chronologeek.app/fr/marvel#mcu-thor4","image":"https://chronologeek.app/images/thor-love-and-thunder-2022.webp"}},{"@type":"ListItem","position":86,"item":{"@type":"TVSeries","name":"Ironheart","url":"https://chronologeek.app/fr/marvel#mcu-ironheart","image":"https://chronologeek.app/images/ironheart-season-1.webp"}},{"@type":"ListItem","position":87,"item":{"@type":"Movie","name":"Werewolf by Night","url":"https://chronologeek.app/fr/marvel#mcu-wwbn","image":"https://chronologeek.app/images/werewolf-by-night-2022.webp"}},{"@type":"ListItem","position":88,"item":{"@type":"Movie","name":"Les Gardiens de la Galaxie : Joyeuses Fêtes","url":"https://chronologeek.app/fr/marvel#mcu-gotgxmas","image":"https://chronologeek.app/images/the-guardians-of-the-galaxy-holiday-special-2022.webp"}},{"@type":"ListItem","position":89,"item":{"@type":"Movie","name":"Les Gardiens de la Galaxie Vol. 3","url":"https://chronologeek.app/fr/marvel#mcu-gotg3","image":"https://chronologeek.app/images/les-gardiens-de-la-galaxie-3-2023.webp"}},{"@type":"ListItem","position":90,"item":{"@type":"Movie","name":"Ant-Man et la Guêpe : Quantumania","url":"https://chronologeek.app/fr/marvel#mcu-antman3","image":"https://chronologeek.app/images/ant-man-and-the-wasp-quantumania-2023.webp"}},{"@type":"ListItem","position":91,"item":{"@type":"TVSeries","name":"Secret Invasion","url":"https://chronologeek.app/fr/marvel#mcu-si","image":"https://chronologeek.app/images/secret-invasion-season-1.webp"}},{"@type":"ListItem","position":92,"item":{"@type":"Movie","name":"The Marvels","url":"https://chronologeek.app/fr/marvel#mcu-marvels","image":"https://chronologeek.app/images/the-marvels-2023.webp"}},{"@type":"ListItem","position":93,"item":{"@type":"TVSeries","name":"Loki","url":"https://chronologeek.app/fr/marvel#mcu-loki2","image":"https://chronologeek.app/images/loki-season-2.webp"}},{"@type":"ListItem","position":94,"item":{"@type":"TVSeries","name":"What If…?","url":"https://chronologeek.app/fr/marvel#mcu-wi2","image":"https://chronologeek.app/images/what-if-season-2.webp"}},{"@type":"ListItem","position":95,"item":{"@type":"Movie","name":"X-Men : Le Commencement","url":"https://chronologeek.app/fr/marvel#mcu-xfc","image":"https://chronologeek.app/images/x-men-first-class-2011.webp"}},{"@type":"ListItem","position":96,"item":{"@type":"Movie","name":"X-Men Origins : Wolverine","url":"https://chronologeek.app/fr/marvel#mcu-xow","image":"https://chronologeek.app/images/x-men-origins-wolverine-2009.webp"}},{"@type":"ListItem","position":97,"item":{"@type":"Movie","name":"X-Men","url":"https://chronologeek.app/fr/marvel#mcu-xm1","image":"https://chronologeek.app/images/x-men-2000.webp"}},{"@type":"ListItem","position":98,"item":{"@type":"Movie","name":"X-Men 2","url":"https://chronologeek.app/fr/marvel#mcu-xm2","image":"https://chronologeek.app/images/x-men-2-2003.webp"}},{"@type":"ListItem","position":99,"item":{"@type":"Movie","name":"X-Men 3 : L'Affrontement Final","url":"https://chronologeek.app/fr/marvel#mcu-xm3","image":"https://chronologeek.app/images/x-men-l-affrontement-final-2006.webp"}},{"@type":"ListItem","position":100,"item":{"@type":"Movie","name":"Wolverine : Le Combat de l'Immortel","url":"https://chronologeek.app/fr/marvel#mcu-twolv","image":"https://chronologeek.app/images/wolverine-le-combat-de-l-immortel-2013.webp"}},{"@type":"ListItem","position":101,"item":{"@type":"Movie","name":"X-Men : Days of Future Past","url":"https://chronologeek.app/fr/marvel#mcu-dofp","image":"https://chronologeek.app/images/x-men-days-of-future-past-2014.webp"}},{"@type":"ListItem","position":102,"item":{"@type":"Movie","name":"X-Men : Apocalypse","url":"https://chronologeek.app/fr/marvel#mcu-xma","image":"https://chronologeek.app/images/x-men-apocalypse-2016.webp"}},{"@type":"ListItem","position":103,"item":{"@type":"Movie","name":"X-Men : Dark Phoenix","url":"https://chronologeek.app/fr/marvel#mcu-xdp","image":"https://chronologeek.app/images/x-men-dark-phoenix-2019.webp"}},{"@type":"ListItem","position":104,"item":{"@type":"Movie","name":"Logan","url":"https://chronologeek.app/fr/marvel#mcu-logan","image":"https://chronologeek.app/images/logan-2017.webp"}},{"@type":"ListItem","position":105,"item":{"@type":"Movie","name":"Deadpool","url":"https://chronologeek.app/fr/marvel#mcu-dp1","image":"https://chronologeek.app/images/deadpool-2016.webp"}},{"@type":"ListItem","position":106,"item":{"@type":"Movie","name":"Deadpool 2","url":"https://chronologeek.app/fr/marvel#mcu-dp2","image":"https://chronologeek.app/images/deadpool-2-2018.webp"}},{"@type":"ListItem","position":107,"item":{"@type":"Movie","name":"Deadpool & Wolverine","url":"https://chronologeek.app/fr/marvel#mcu-dpw","image":"https://chronologeek.app/images/deadpool-and-wolverine-2024.webp"}},{"@type":"ListItem","position":108,"item":{"@type":"VideoObject","name":"Scène post-crédits The Marvels","url":"https://chronologeek.app/fr/marvel#mcu-marvelspc","image":"https://chronologeek.app/images/the-marvels-2023.webp"}},{"@type":"ListItem","position":109,"item":{"@type":"TVSeries","name":"Agatha All Along","url":"https://chronologeek.app/fr/marvel#mcu-agatha","image":"https://chronologeek.app/images/agatha-all-along-season-1.webp"}},{"@type":"ListItem","position":110,"item":{"@type":"TVSeries","name":"What If…?","url":"https://chronologeek.app/fr/marvel#mcu-wi3","image":"https://chronologeek.app/images/what-if-season-3.webp"}},{"@type":"ListItem","position":111,"item":{"@type":"TVSeries","name":"Votre fidèle serviteur Spider-Man","url":"https://chronologeek.app/fr/marvel#mcu-vfsm","image":"https://chronologeek.app/images/your-friendly-neighbourhood-spider-man-season-1.webp"}},{"@type":"ListItem","position":112,"item":{"@type":"TVSeries","name":"Daredevil : Born Again","url":"https://chronologeek.app/fr/marvel#mcu-dba1","image":"https://chronologeek.app/images/daredevil-born-again-season-1.webp"}},{"@type":"ListItem","position":113,"item":{"@type":"Movie","name":"Captain America : Brave New World","url":"https://chronologeek.app/fr/marvel#mcu-cabf","image":"https://chronologeek.app/images/captain-america-brave-new-world-2025.webp"}},{"@type":"ListItem","position":114,"item":{"@type":"Movie","name":"Thunderbolts*","url":"https://chronologeek.app/fr/marvel#mcu-tb","image":"https://chronologeek.app/images/thunderbolts-2025.webp"}},{"@type":"ListItem","position":115,"item":{"@type":"TVSeries","name":"Marvel Zombies","url":"https://chronologeek.app/fr/marvel#mcu-mz","image":"https://chronologeek.app/images/marvel-zombies-season-1.webp"}},{"@type":"ListItem","position":116,"item":{"@type":"TVSeries","name":"Wonder Man","url":"https://chronologeek.app/fr/marvel#mcu-wm","image":"https://chronologeek.app/images/wonder-man-season-1.webp"}},{"@type":"ListItem","position":117,"item":{"@type":"TVSeries","name":"Daredevil : Born Again","url":"https://chronologeek.app/fr/marvel#mcu-dba2","image":"https://chronologeek.app/images/daredevil-born-again-season-2.webp"}},{"@type":"ListItem","position":118,"item":{"@type":"Movie","name":"The Punisher : One Last Kill","url":"https://chronologeek.app/fr/marvel#mcu-pun-olk","image":"https://chronologeek.app/images/the-punisher-one-last-kill-2026.webp"}},{"@type":"ListItem","position":119,"item":{"@type":"Movie","name":"Spider-Man : Brand New Day","url":"https://chronologeek.app/fr/marvel#mcu-smbnd","image":"https://chronologeek.app/images/brandnewday.webp"}},{"@type":"ListItem","position":120,"item":{"@type":"Movie","name":"Les 4 Fantastiques : Premiers Pas","url":"https://chronologeek.app/fr/marvel#mcu-ff","image":"https://chronologeek.app/images/the-fantastic-four-first-steps-2025.webp"}},{"@type":"ListItem","position":121,"item":{"@type":"VideoObject","name":"Deuxième scène post-crédits Thunderbolts*","url":"https://chronologeek.app/fr/marvel#mcu-tb-pc2","image":"https://chronologeek.app/images/thunderbolts-2025.webp"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://chronologeek.app/fr/"},{"@type":"ListItem","position":2,"name":"Dragon Age","item":"https://chronologeek.app/fr/dragonage"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Dragon Age","inLanguage":"fr-FR","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":43,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"VideoGame","name":"Dragon Age: Origins","url":"https://chronologeek.app/fr/dragonage#da-origins-1","image":"https://chronologeek.app/images/dragonageorigins.webp"}},{"@type":"ListItem","position":2,"item":{"@type":"VideoGame","name":"Le Prisonnier de la Pierre","url":"https://chronologeek.app/fr/dragonage#da-stone-1","image":"https://chronologeek.app/images/stoneprisoner.webp"}},{"@type":"ListItem","position":3,"item":{"@type":"VideoGame","name":"Forteresse des Gardes des Ombres","url":"https://chronologeek.app/fr/dragonage#da-keep-1","image":"https://chronologeek.app/images/wardenskeep.webp"}},{"@type":"ListItem","position":4,"item":{"@type":"VideoGame","name":"Dragon Age: Origins","url":"https://chronologeek.app/fr/dragonage#da-origins-2","image":"https://chronologeek.app/images/dragonageorigins.webp"}},{"@type":"ListItem","position":5,"item":{"@type":"VideoGame","name":"Le Chant de Leliana","url":"https://chronologeek.app/fr/dragonage#da-leliana-1","image":"https://chronologeek.app/images/leliana.webp"}},{"@type":"ListItem","position":6,"item":{"@type":"VideoGame","name":"Dragon Age: Origins","url":"https://chronologeek.app/fr/dragonage#da-origins-3","image":"https://chronologeek.app/images/dragonageorigins.webp"}},{"@type":"ListItem","position":7,"item":{"@type":"VideoGame","name":"Retour à Ostagar","url":"https://chronologeek.app/fr/dragonage#da-ostagar-1","image":"https://chronologeek.app/images/ostagar.webp"}},{"@type":"ListItem","position":8,"item":{"@type":"VideoGame","name":"Dragon Age: Origins","url":"https://chronologeek.app/fr/dragonage#da-origins-4","image":"https://chronologeek.app/images/dragonageorigins.webp"}},{"@type":"ListItem","position":9,"item":{"@type":"Book","name":"Dragon Age : Le Trône Volé","url":"https://chronologeek.app/fr/dragonage#da-throne-1","image":"https://chronologeek.app/images/stolenthrone.webp"}},{"@type":"ListItem","position":10,"item":{"@type":"Book","name":"Dragon Age: The Calling","url":"https://chronologeek.app/fr/dragonage#da-calling-1","image":"https://chronologeek.app/images/calling.webp"}},{"@type":"ListItem","position":11,"item":{"@type":"VideoObject","name":"Dragon Age: Warden's Fall","url":"https://chronologeek.app/fr/dragonage#da-wfall-1","image":"https://chronologeek.app/images/wardensfall.webp"}},{"@type":"ListItem","position":12,"item":{"@type":"VideoGame","name":"Dragon Age: Origins - Awakening","url":"https://chronologeek.app/fr/dragonage#da-awakening-1","image":"https://chronologeek.app/images/awakening.webp"}},{"@type":"ListItem","position":13,"item":{"@type":"VideoGame","name":"Les Golems d'Amgarrak","url":"https://chronologeek.app/fr/dragonage#da-amgarrak-1","image":"https://chronologeek.app/images/golems.webp"}},{"@type":"ListItem","position":14,"item":{"@type":"VideoGame","name":"Chasse aux Sorcières","url":"https://chronologeek.app/fr/dragonage#da-witch-1","image":"https://chronologeek.app/images/witchhunt.webp"}},{"@type":"ListItem","position":15,"item":{"@type":"VideoGame","name":"Dragon Age II","url":"https://chronologeek.app/fr/dragonage#da-da2-1","image":"https://chronologeek.app/images/dragonageii.webp"}},{"@type":"ListItem","position":16,"item":{"@type":"VideoGame","name":"Le Prince Exilé","url":"https://chronologeek.app/fr/dragonage#da-exiled-1","image":"https://chronologeek.app/images/exiledprince.webp"}},{"@type":"ListItem","position":17,"item":{"@type":"VideoGame","name":"Dragon Age II","url":"https://chronologeek.app/fr/dragonage#da-da2-2","image":"https://chronologeek.app/images/dragonageii.webp"}},{"@type":"ListItem","position":18,"item":{"@type":"VideoGame","name":"La Marque de l'Assassin","url":"https://chronologeek.app/fr/dragonage#da-assassin-1","image":"https://chronologeek.app/images/markoftheassassin.webp"}},{"@type":"ListItem","position":19,"item":{"@type":"TVSeries","name":"Dragon Age: Redemption","url":"https://chronologeek.app/fr/dragonage#da-redemption-1","image":"https://chronologeek.app/images/redemption.webp"}},{"@type":"ListItem","position":20,"item":{"@type":"VideoGame","name":"Dragon Age II","url":"https://chronologeek.app/fr/dragonage#da-da2-3","image":"https://chronologeek.app/images/dragonageii.webp"}},{"@type":"ListItem","position":21,"item":{"@type":"VideoGame","name":"L'Héritage","url":"https://chronologeek.app/fr/dragonage#da-legacy-1","image":"https://chronologeek.app/images/da2legacy.webp"}},{"@type":"ListItem","position":22,"item":{"@type":"VideoGame","name":"Dragon Age II","url":"https://chronologeek.app/fr/dragonage#da-da2-4","image":"https://chronologeek.app/images/dragonageii.webp"}},{"@type":"ListItem","position":23,"item":{"@type":"Movie","name":"Dragon Age: Dawn of the Seeker","url":"https://chronologeek.app/fr/dragonage#da-seeker-1","image":"https://chronologeek.app/images/dawnoftheseeker.webp"}},{"@type":"ListItem","position":24,"item":{"@type":"ComicStory","name":"Dragon Age : Le Bosquet Secret","url":"https://chronologeek.app/fr/dragonage#da-grove-1","image":"https://chronologeek.app/images/silentgrove.webp"}},{"@type":"ListItem","position":25,"item":{"@type":"ComicStory","name":"Dragon Age : Ceux Qui Parlent","url":"https://chronologeek.app/fr/dragonage#da-speak-1","image":"https://chronologeek.app/images/thosewhospeak.webp"}},{"@type":"ListItem","position":26,"item":{"@type":"ComicStory","name":"Dragon Age : Jusqu'à Ce Que Nous Dormions","url":"https://chronologeek.app/fr/dragonage#da-sleep-1","image":"https://chronologeek.app/images/untilwesleep.webp"}},{"@type":"ListItem","position":27,"item":{"@type":"Book","name":"Dragon Age: Asunder","url":"https://chronologeek.app/fr/dragonage#da-asunder-1","image":"https://chronologeek.app/images/asunder.webp"}},{"@type":"ListItem","position":28,"item":{"@type":"Book","name":"Dragon Age: Last Flight","url":"https://chronologeek.app/fr/dragonage#da-lastflight-1","image":"https://chronologeek.app/images/lastflight.webp"}},{"@type":"ListItem","position":29,"item":{"@type":"VideoGame","name":"Dragon Age: Inquisition","url":"https://chronologeek.app/fr/dragonage#da-inquisition-1","image":"https://chronologeek.app/images/inquisition.webp"}},{"@type":"ListItem","position":30,"item":{"@type":"VideoGame","name":"Les Crocs d'Hakkon","url":"https://chronologeek.app/fr/dragonage#da-hakkon-1","image":"https://chronologeek.app/images/jawsofhakkon.webp"}},{"@type":"ListItem","position":31,"item":{"@type":"VideoGame","name":"La Descente","url":"https://chronologeek.app/fr/dragonage#da-descent-1","image":"https://chronologeek.app/images/descent.webp"}},{"@type":"ListItem","position":32,"item":{"@type":"VideoGame","name":"Dragon Age: Inquisition","url":"https://chronologeek.app/fr/dragonage#da-inquisition-2","image":"https://chronologeek.app/images/inquisition.webp"}},{"@type":"ListItem","position":33,"item":{"@type":"Book","name":"Dragon Age : L'Empire Masqué","url":"https://chronologeek.app/fr/dragonage#da-masked-1","image":"https://chronologeek.app/images/maskedempire.webp"}},{"@type":"ListItem","position":34,"item":{"@type":"VideoGame","name":"Intrus","url":"https://chronologeek.app/fr/dragonage#da-trespasser-1","image":"https://chronologeek.app/images/trespasser.webp"}},{"@type":"ListItem","position":35,"item":{"@type":"ComicStory","name":"Dragon Age: Magekiller","url":"https://chronologeek.app/fr/dragonage#da-magekiller-1","image":"https://chronologeek.app/images/magekiller.webp"}},{"@type":"ListItem","position":36,"item":{"@type":"ComicStory","name":"Dragon Age: Knight Errant","url":"https://chronologeek.app/fr/dragonage#da-errant-1","image":"https://chronologeek.app/images/knighterrant.webp"}},{"@type":"ListItem","position":37,"item":{"@type":"ComicStory","name":"Dragon Age: Deception","url":"https://chronologeek.app/fr/dragonage#da-deception-1","image":"https://chronologeek.app/images/deception.webp"}},{"@type":"ListItem","position":38,"item":{"@type":"ComicStory","name":"Dragon Age: Blue Wraith","url":"https://chronologeek.app/fr/dragonage#da-wraith-1","image":"https://chronologeek.app/images/bluewraith.webp"}},{"@type":"ListItem","position":39,"item":{"@type":"ComicStory","name":"Dragon Age: Dark Fortress","url":"https://chronologeek.app/fr/dragonage#da-fortress-1","image":"https://chronologeek.app/images/darkfortress.webp"}},{"@type":"ListItem","position":40,"item":{"@type":"Book","name":"Tevinter Nights","url":"https://chronologeek.app/fr/dragonage#da-tevinter-1","image":"https://chronologeek.app/images/tevinternights.webp"}},{"@type":"ListItem","position":41,"item":{"@type":"TVSeries","name":"Dragon Age: Absolution","url":"https://chronologeek.app/fr/dragonage#da-absolution-1","image":"https://chronologeek.app/images/absolution.webp"}},{"@type":"ListItem","position":42,"item":{"@type":"ComicStory","name":"Dragon Age: The Missing","url":"https://chronologeek.app/fr/dragonage#da-missing-1","image":"https://chronologeek.app/images/themissing.webp"}},{"@type":"ListItem","position":43,"item":{"@type":"VideoGame","name":"Dragon Age: The Veilguard","url":"https://chronologeek.app/fr/dragonage#da-veilguard-1","image":"https://chronologeek.app/images/veilguard.webp"}}]}</script>
 </head>
 <body>
 
@@ -778,18 +777,18 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <a href="/fr/">Accueil</a>
       <a href="/fr/dossiers/" class="doss">Dossiers</a>
       <a href="/fr/starwars">Star Wars</a>
-      <a href="#" aria-current="page">Marvel</a>
+      <a href="/fr/marvel">Marvel</a>
       <a href="/fr/dc">DC</a>
-      <details class="nav-more"><summary>Plus d’univers</summary><div class="more-pop"><a href="/fr/avatar">Avatar Legends</a><a href="/fr/startrek">Star Trek</a><a href="/fr/walkingdead">The Walking Dead</a><a href="/fr/dragonage">Dragon Age</a></div></details>
+      <details class="nav-more"><summary>Plus d’univers</summary><div class="more-pop"><a href="/fr/avatar">Avatar Legends</a><a href="/fr/startrek">Star Trek</a><a href="/fr/walkingdead">The Walking Dead</a><a href="#" aria-current="page">Dragon Age</a></div></details>
       <a href="/fr/a-venir" class="upc">À venir</a>
       <a href="/fr/nouveautes" class="news">Nouveautés</a>
     </nav>
     <div class="nav-tools">
-      <a class="icon-btn lang-btn" href="/marvel" aria-label="Switch to English" title="Switch to English">
-        <!-- Drapeau posé à 38 px de large : les liserés blancs des proportions
-             officielles y tombent sous le pixel et ne se voient qu'au repaint
-             du survol. On les épaissit donc, la lecture prime sur l'exactitude. -->
+      <a class="icon-btn lang-btn" href="/dragonage" aria-label="Switch to English" title="Switch to English">
         <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)" fill="none"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="8"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="13"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="7"/></g></svg>
+
+
+
       </a>
       <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><g class="m"><path d="M3 6h18M3 12h18M3 18h18"/></g><g class="x"><path d="M5 5l14 14M19 5 5 19"/></g></svg>
@@ -798,7 +797,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
     <span class="dw-lab">Les univers</span>
-    <div class="dw-uni"><a href="/fr/starwars" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="#" class="u-mcu" aria-current="page"><i aria-hidden="true"></i>Marvel</a><a href="/fr/dc" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="/fr/avatar" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="/fr/startrek" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="/fr/walkingdead" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="/fr/dragonage" class="u-da"><i aria-hidden="true"></i>Dragon Age</a></div>
+    <div class="dw-uni"><a href="/fr/starwars" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="/fr/marvel" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="/fr/dc" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="/fr/avatar" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="/fr/startrek" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="/fr/walkingdead" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="#" class="u-da" aria-current="page"><i aria-hidden="true"></i>Dragon Age</a></div>
     <span class="dw-lab">Le site</span>
     <div class="dw-site"><a href="/fr/">Accueil</a><a href="/fr/dossiers/" class="doss">Dossiers</a><a href="/fr/a-venir" class="upc">À venir</a><a href="/fr/nouveautes" class="news">Nouveautés</a></div>
   </nav>
@@ -811,17 +810,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="halftone" aria-hidden="true"></div>
   <div class="veil" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="tag">Timeline Optimisée du Multivers</span>
-    <h1 class="disp off">Marvel</h1>
-    <p class="dek">Films · Séries · Spider-Verse · Fox — tout le multivers dans son ordre le plus optimisé.
-      <b>Cochez ce que vous avez vu, votre progression est sauvegardée.</b></p>
-    <p class="upd"><i aria-hidden="true"></i> Mis à jour · juillet 2026</p>
+    <span class="tag">Timeline Chronologique</span>
+    <h1 class="disp off">Dragon Age</h1>
+    <p class="dek">Jeux · DLC · Livres · Comics — tout l'univers Dragon Age dans son ordre le plus optimisé.
+      <b>Cochez ce que vous avez joué, votre progression est sauvegardée.</b></p>
+    <p class="upd"><i aria-hidden="true"></i> À jour · août 2026</p>
+    <!-- Pas de case « À voir » : un guide de jeux vidéo n'a pas de durée à
+         sommer, et une case qui annonce « 0 h » ment plus qu'elle n'informe.
+         Même raison qu'Avatar Legends. -->
     <div class="stats">
-      <div class="s"><b>60</b><span>Longs métrages</span></div>
-      <div class="s"><b>25</b><span>Séries</span></div>
-      <div class="s"><b>3</b><span>Spéciaux</span></div>
-      <div class="s"><b id="s-tot">121</b><span>Entrées</span></div>
-      <div class="s"><b id="s-h">489 h</b><span>À voir</span></div>
+      <div class="s"><b>4</b><span>Jeux</span></div>
+      <div class="s"><b>13</b><span>DLC</span></div>
+      <div class="s"><b>6</b><span>Livres</span></div>
+      <div class="s"><b>9</b><span>Comics</span></div>
+      <div class="s"><b id="s-tot">43</b><span>Entrées</span></div>
     </div>
     <button class="start" id="start" type="button">Commencer <em>▸</em></button>
   </div>
@@ -833,25 +835,19 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
-      <summary>Filtres, recherche et repères<span class="fcount" id="fcount">121 / 121 affichées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <summary>Filtres, recherche et repères<span class="fcount" id="fcount">43 / 43 affichées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
       <div class="filt-body">
     <div class="search" id="searchbox">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <label class="skip" for="q">Rechercher dans la timeline</label>
-      <input id="q" type="search" placeholder="Rechercher…  ( / )" autocomplete="off"/>
+      <input id="q" type="search" placeholder="Rechercher… ( / )" autocomplete="off"/>
       <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
     </div>
     <div class="sgroup" id="f-levels"><span class="lab">Niveau</span></div>
     <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
-    <div class="sgroup opts" id="f-opts" hidden><span class="lab">Branches</span>
-      <div class="obr" id="f-branch"></div>
-      <div class="onc" id="f-nc"></div>
-    </div>
     <div class="srow">
-      <div class="marks"><span>Repères</span><span class="ft">FLASHBACK</span>
-        <span class="nt">CANONICITÉ NON CONFIRMÉE</span>
-        <span class="dim">AUTRES RÉALITÉS</span></div>
-      <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les vus</button>
+      <div class="marks"><span>Repères</span><span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span></div>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les joués</button>
     </div>
       </div>
     </details>
@@ -865,15 +861,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="foot">
     <div>
       <h4>Chronologeek</h4>
-      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
-        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
-        qui regarde tout deux fois.</p>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de
+        se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit
+        et maintenu par une seule personne qui regarde tout deux fois.</p>
     </div>
     <div><h4>Timelines</h4><ul>
       <li><a href="/fr/starwars">Star Wars</a></li>
-      <li><a href="#" aria-current="page">Marvel — MCU</a></li>
+      <li><a href="/fr/marvel">Marvel — MCU</a></li>
       <li><a href="/fr/dc">DC Multiverse</a></li>
-      <li><a href="/fr/avatar">Avatar Legends</a></li><li><a href="/fr/startrek">Star Trek</a></li><li><a href="/fr/walkingdead">The Walking Dead</a></li><li><a href="/fr/dragonage">Dragon Age</a></li>
+      <li><a href="/fr/avatar">Avatar Legends</a></li><li><a href="/fr/startrek">Star Trek</a></li><li><a href="/fr/walkingdead">The Walking Dead</a></li><li><a href="#" aria-current="page">Dragon Age</a></li>
       <li><a href="/fr/dossiers/">Dossiers</a></li>
     </ul></div>
     <div><h4>Plus</h4><ul>
@@ -882,26 +878,29 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <li><a href="#contact" data-contact>Contact</a></li>
     </ul></div>
     <div class="legal">
-      Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
-      mais n'est ni approuvé ni certifié par TMDB. Données livres :
-      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
-      Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ;
-      Chronologeek est un projet de fan indépendant.
+      Ce produit utilise l’API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n’est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking
+      Dead et Dragon Age sont des marques de leurs ayants droit
+      respectifs ; Chronologeek est un projet de fan indépendant.
       <br/>© 2026 Chronologeek — <a href="/fr/">chronologeek.app</a>
     </div>
   </div>
 </footer>
 
 <button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
-  <span><img class="nl" src="/images/miss-minutes.webp" alt=""/><img class="hv" src="/images/miss-minutes-overclick.webp" alt=""/></span>
+  <span><img class="nl" src="/images/da1.webp" alt=""/><img class="hv" src="/images/da2.webp" alt=""/></span>
 </button>
 
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
-    <b><em id="k-on">0</em> / <span id="k-tot">120</span></b>
-    <span class="lbl">vus</span>
+    <b><em id="k-on">0</em> / <span id="k-tot">43</span></b>
+    <span class="lbl">joués</span>
     <span class="bar"><i id="k-fill"></i></span>
-    <span class="lbl">Restant à voir <b style="font-size:14px" id="k-time">294 h</b></span>
+    <!-- Le HUD des autres timelines compte des heures ; runtime.py n'a pas
+         encore de table RT pour Avatar, alors on compte ce qu'on sait compter
+         exactement : les entrées qui restent. -->
+    <span class="lbl">Restant à jouer <b style="font-size:14px" id="k-left">43</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
   </button>
   <div class="hud-panel" id="hud-panel" hidden>
@@ -927,18 +926,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="bx-g" id="bx-g"></div>
 </div></div>
 
-<script src="/data/marvel-fr.js"></script>
+<script src="/data/dragonage-fr.js"></script>
 <script>
 (function(){
   'use strict';
   document.documentElement.className+=' js';
 
-  var CFG=window.CG, D=window.MCU, RT=window.RT||{};
-  /* Les libellés viennent de fr/marvel.html tels quels. Seuls ceux qui
-     tutoyaient sont repassés au vouvoiement — Niko ne veut pas qu'on tutoie
-     le visiteur. Aucune autre reformulation. */
+  var CFG=window.CG, D=window.DRAGONAGE, RT=window.RT||{};
+  /* Les libellés d'interface sont ceux des autres timelines, lus dans
+     data-avatar.js — le script de construction les reprend de data.js plutôt
+     que d'en garder une copie, qui aurait divergé au premier ajustement.
+     Seuls ceux qui tutoyaient sont repassés au vouvoiement : Niko ne veut pas
+     qu'on tutoie le visiteur. Aucune autre reformulation. */
   var T=Object.assign({},CFG.t,{
-    resetMCU:'Réinitialiser votre progression Marvel ?',
+    resetDA:CFG.resetMsg,
     emptyP:'Essayez une autre orthographe, ou remettez les filtres que vous avez décochés.'
   });
   /* Bannière d'ère : le premier ⭐ de l'ère — c'est le repère que tout le
@@ -946,7 +947,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      lequel on y entre. Plus de table écrite à la main, la règle décide. */
   function eraArt(era){
     var must=era.entries.filter(function(e){ return e.level==='must' && e.img; })[0];
-    return (must||era.entries.filter(function(e){ return e.img; })[0]||{}).img;
+    /* Trois ères d'Avatar n'ont aucune vignette : les romans de Yangchen n'en
+       portent pas, et les blocs d'épisodes tiennent leur image de TMDB, pas de
+       la page. Sans repli, `url(undefined)` partait en requête et revenait en
+       404 — la bande s'affichait quand même, en aplat, et rien ne le disait. */
+    return era.art
+      || (must||era.entries.filter(function(e){ return e.img; })[0]||{}).img
+      || '/images/dragonage.webp';
   }
   /* Les niveaux passent au trait, comme les icônes des repères de lecture :
      l'étoile et le gyrophare en emoji juraient avec le reste de la page.
@@ -961,9 +968,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* « ⭐ Essentiel » → « Essentiel » : on ne garde que le mot de Niko. */
   function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
   var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
-  var KEY='cg-proto-mcu';
+  /* Une clé par univers, comme e-marvel (cg-proto-mcu) et e-dc (cg-proto-dc).
+     Héritée telle quelle de e-starwars, elle valait « cg-proto-sw » : cocher
+     une entrée d'Avatar écrasait la progression Star Wars, sans un mot dans la
+     console — les deux pages se seraient écrasées l'une l'autre en silence. */
+  var KEY='cg-proto-dragonage';
   /* l'accueil rouvre sa reprise sur le dernier univers visité */
-  try{ localStorage.setItem('cg_last',JSON.stringify({u:'mcu'})); }catch(_){}
+  try{ localStorage.setItem('cg_last',JSON.stringify({u:'dragonage'})); }catch(_){}
 
   var ALL=[];
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
@@ -972,7 +983,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
 
-  var offLv={}, offK={}, offOpt={}, hideDone=false;
+  var offLv={}, offK={}, hideDone=false;
 
   function $(s,r){ return (r||document).querySelector(s); }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
@@ -990,27 +1001,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* ── l'intro : la prose de la page de prod, injectée telle quelle ── */
   $('#intro').innerHTML=D.notes;
 
-
-  /* Les branches se déduisent des données : `tags:["nc"]`, la liste
-     `defenders`, puis chaque groupe de `groups`. Rien n'est écrit en dur,
-     un univers sans branche produit simplement une liste vide. */
-  var OPTS=[];
-  (function(){
-    var nc=ALL.filter(function(e){ return (e.tags||[]).indexOf('nc')>-1; });
-    if(nc.length) OPTS.push({v:'nc',label:T.ncLabel,color:'#ff8f8f',n:nc.length,
-      test:function(e){ return (e.tags||[]).indexOf('nc')>-1; }});
-    var def=CFG.defenders||[];
-    var nd=ALL.filter(function(e){ return def.indexOf(e.id)>-1; });
-    if(nd.length) OPTS.push({v:'def',label:T.defLabel,color:'#a99fff',n:nd.length,
-      test:function(e){ return def.indexOf(e.id)>-1; }});
-    Object.keys(CFG.groups||{}).forEach(function(g){
-      var d=CFG.groups[g];
-      var n=ALL.filter(function(e){ return d.ids.indexOf(e.id)>-1; }).length;
-      if(n) OPTS.push({v:g,label:d.label,color:d.color,n:n,
-        test:function(e){ return d.ids.indexOf(e.id)>-1; }});
-    });
-  })();
-
   /* ── les filtres : mêmes noms, mêmes couleurs que sur le site ────── */
   (function(){
     var lv=$('#f-levels'), tp=$('#f-types');
@@ -1018,22 +1008,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
         (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
     });
-    /* un bouton par type réellement présent : Marvel n'a pas de jeu vidéo,
-       et un filtre qui ne filtre rien n'a pas sa place dans la barre. */
     Object.keys(CFG.badgeLabels).forEach(function(k){
-      if(!ALL.some(function(e){ return e.type===k; })) return;
       tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
         ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
     });
-    /* Les branches : canonicité non confirmée, Defenders, Spider-Verse, Fox.
-       Cochées par défaut, décocher masque la branche — même sens que la
-       page de prod. Un univers sans branche n'affiche pas la rangée. */
-    OPTS.forEach(function(o){
-      $(o.v==='nc'?'#f-nc':'#f-branch').insertAdjacentHTML('beforeend',
-        '<button type="button" data-o="'+o.v+'" style="--k:'+o.color+'"'+
-        ' aria-pressed="true"><i></i>'+esc(o.label)+'</button>');
-    });
-    $('#f-opts').hidden=!OPTS.length;
   })();
 
   /* ── construction : une bande d'ère, puis ses bulles ─────────────── */
@@ -1046,7 +1024,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     /* Le même test dans les deux langues : la page anglaise écrit
        « Season 1 episode 2 ». Sans l'alternative, un arc groupé en
        français ressortait empilé en anglais. */
-    var unit=/^(Saison|Season) \d+ (épisode|episode) \d+/i;
+    /* Avatar numérote autrement : ses blocs listent « 1×01 · The Boy in the
+       Iceberg ». Le motif est chiffré, donc identique dans les deux langues —
+       contrairement au « Saison / Season » ci-dessus, il ne peut pas décrocher
+       à la traduction. Sans lui, les dix épisodes d'un bloc s'empilaient sur
+       dix lignes là où ce sont des épisodes consécutifs d'une même série. */
+    var unit=/^(Saison|Season) \d+ (épisode|episode) \d+|^\d+×\d+\s·\s/i;
     var arcMode=it.some(function(s){ return !String(s).trim(); }) ||
                 it.every(function(s){ return unit.test(String(s)); });
     var arcs=[[]];
@@ -1064,11 +1047,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function row(e){
     var bd=CFG.badgeLabels[e.type]||['b',e.type];
     var fb=(e.tags||[]).indexOf('flashback')>-1 ? '<span class="ft">FLASHBACK</span>' : '';
-    var nc=(e.tags||[]).indexOf('nc')>-1 ? '<span class="nt">'+esc(T.ncTag)+'</span>' : '';
-    var dim=e.dim ? '<span class="dim">'+esc(e.dim)+'</span>' : '';
+    /* Star Wars n'a pas de romans, donc sa page ignore `lang` — Avatar en a
+       soixante-neuf pour moitié, et le document de Niko marque « VO » vingt
+       fois. Sans ce badge l'information disparaissait sans bruit : les données
+       la portaient, l'écran non. Le badge ne se pose qu'en français ; pour qui
+       lit l'anglais, « pas de version française » n'a pas d'objet. */
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
-    return '<article class="bu rv'+(prog[e.id]?' done':'')+(e.dim?' dev':'')+
-      '" id="'+e.id+'" data-id="'+e.id+'">'+
+    return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
       '<span class="bu-side">'+
         '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
           (prog[e.id]?'true':'false')+'" data-check aria-label="'+
@@ -1085,8 +1071,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
           '</span>'+
           '<span class="bu-txt">'+
-            '<span class="bu-tags">'+dim+fb+nc+'<span class="b" style="--k:var(--t-'+e.type+')">'+
-              esc(bd[1])+'</span></span>'+
+            '<span class="bu-tags">'+fb+'<span class="b" style="--k:var(--t-'+e.type+')">'+
+              esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
               (d?'<span>'+hm(d)+'</span>':'')+
@@ -1105,20 +1091,34 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
 
   (function build(){
-    var html='';
+    var html='', groupe='';
     D.eras.forEach(function(era,i){
       var art=eraArt(era);
-      html+='<section class="era-sec'+(era.special?' seg':'')+'" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+      /* Avatar est la seule timeline à deux niveaux de titre : ses trois Livres
+         appartiennent à la Guerre de Cent Ans. Le chapeau est posé une fois, à
+         l'entrée du groupe, et n'est pas une ère — le rail continue d'en compter
+         huit, et `data-era` reste l'index réel. Une page sans `group` sur ses
+         ères ne voit pas la différence. */
+      if(era.group && era.group!==groupe){
+        groupe=era.group;
+        html+='<div class="epoch"><div class="wrap"><span>'+esc(groupe)+'</span></div></div>';
+      } else if(!era.group){ groupe=''; }
+      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
         '<div class="map">'+
           '<div class="layers" aria-hidden="true">'+
             '<div class="lay lay1" style="background-image:url('+art+')"></div>'+
             '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
             '<div class="tint"></div><div class="halftone"></div></div>'+
           '<div class="wrap">'+
-            '<span class="chev">'+(i+1)+' / '+D.eras.length+'</span>'+
+            '<span class="chev">'+esc(era.phase||('Ère '+(i+1)))+' / '+D.eras.length+'</span>'+
             '<h2 class="disp off">'+esc(era.title)+'</h2>'+
-            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' vus</span>'+
-            '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'+
+            /* Les autres timelines annoncent la durée de l'ère à côté du compte.
+               Sans table RT, `hm(0)` rendait « — au total », qui occupe la place
+               d'une information sans en être une : on ne pose le segment que
+               quand la durée est connue. */
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' joués</span>'+
+            (function(m){ return m ? '<span>'+hm(m)+' au total</span>' : ''; })(
+              era.entries.reduce(function(s,x){return s+rt(x);},0))+'</p>'+
           '</div></div>'+
         '<div class="list"><div class="wrap"><div class="rows">'+
           era.entries.map(row).join('')+
@@ -1135,7 +1135,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       era.entries.forEach(function(e){
         var el=document.getElementById(e.id);
         var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
-               !OPTS.some(function(o){ return offOpt[o.v] && o.test(e); }) &&
                (!q || e.title.toLowerCase().indexOf(q)>-1);
         el.hidden=!ok; if(ok){ vis++; shown++; }
       });
@@ -1152,9 +1151,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     ALL.forEach(function(e){ if(prog[e.id]) n++; else left+=rt(e); });
     var h=Math.round(left/60);
     $('#k-on').textContent=n; $('#k-tot').textContent=ALL.length;
-    $('#k-time').textContent=h+' h';
+    $('#k-left').textContent=ALL.length-n;
     $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
-    $('#s-tot').textContent=ALL.length; $('#s-h').textContent=h+' h';
+    /* Le hero d'Avatar n'a pas de case « À voir » : sans table RT le compte
+       vaudrait 0 h. On ne l'écrit donc que si la case existe. */
+    $('#s-tot').textContent=ALL.length;
+    if($('#s-h')) $('#s-h').textContent=h+' h';
     D.eras.forEach(function(era,i){
       var b=document.querySelector('[data-done="'+i+'"]');
       if(b) b.textContent=era.entries.filter(function(e){return prog[e.id];}).length;
@@ -1177,7 +1179,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var el=document.getElementById(next.id);
     if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
       $('#q').value=''; $('#searchbox').classList.remove('on');
-      offLv={}; offK={}; offOpt={}; hideDone=false;
+      offLv={}; offK={}; hideDone=false;
       [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
         b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
       applyFilters();
@@ -1195,20 +1197,38 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       return '<span><strong>'+p[0]+'</strong> '+p[1]+'</span>'; }).join('');
     return s?'<div class="expand-meta">'+s+'</div>':'';
   }
+  /* Deux fiches portent un lien : les Chroniques de Kyoshi en lecture audio,
+     et les shorts d'Escape from the Spirit World, gratuits sur YouTube. Il
+     arrive des données en adresse et libellé, jamais en HTML — la page échappe
+     tout ce qu'elle affiche, et une balise glissée dans un synopsis s'écrivait
+     en clair à l'écran au lieu de devenir un lien. */
+  function lien(e){
+    return e.link ? '<a class="expand-trailer-link" href="'+esc(e.link.href)+
+      '" target="_blank" rel="noopener">▶ '+esc(e.link.label)+'</a>' : '';
+  }
+  /* Le resume RAWG d'un jeu : son premier paragraphe qui fasse une
+     phrase. Le texte est decoupe en sections (« Gameplay », « Plot »)
+     dont on ne garde que la premiere, et sa toute premiere ligne est
+     parfois l'accroche du jeu — « The Dread Wolf Rises » pour The
+     Veilguard — plutot qu'une description. */
+  function rawgSyn(g){
+    var t=g&&g.description_raw?String(g.description_raw):'';
+    if(!t) return '';
+    var l=t.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+    return l.filter(function(s){return s.length>80;})[0]||l[0]||'';
+  }
   function loadRich(art){
     var panel=$('.bu-panel',art), box=$('.en-rich',panel);
     if(panel.dataset.loaded) return;
     panel.dataset.loaded='1';
     var e=ALL.filter(function(x){return x.id===art.dataset.id;})[0]||{};
-    /* `media:"video"` couvre les one-shots et les scènes post-générique :
-       quand ils portent un identifiant TMDB, c'est celui d'un film. */
-    var md=panel.dataset.media;
-    var id=panel.dataset.tmdb, type=(md==='movie'||md==='video')?'movie':'tv';
+    var id=panel.dataset.tmdb, type=panel.dataset.media==='movie'?'movie':'tv';
     var IMG=CFG.img;
 
     /* la FAQ : questions et réponses de la page de prod, mot pour mot */
     if(e.faq&&CFG.faqCats){
-      $('.en-faq',panel).innerHTML=CFG.faqCats.map(function(c){
+      $('.en-faq',panel).innerHTML=CFG.faqCats.filter(function(c){
+        return e.faq[c.key]; }).map(function(c){
         return '<details class="faq"><summary>'+esc(c.q.replace('{name}',e.title))+
                '</summary><div class="a">'+esc(e.faq[c.key]||'')+'</div></details>'; }).join('');
     }
@@ -1224,18 +1244,26 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         box.innerHTML='<div class="expand-inner">'+
           (g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+
             '" loading="lazy" alt=""/></div>':'')+
-          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||e.note||'')+'</div>'+
+          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||rawgSyn(g)||T.noSynopsis)+'</div>'+
           meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
                 [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
                 [T.mPeriod,e.date]])+link+'</div></div>';
       };
       if(!CFG.rawgKey){ fallback(null); return; }
-      /* RAWG ne trouve rien si on lui envoie le titre entier : « Outlaws
-         + DLC Wild Card + DLC A Pirate's Fortune » ou « Campagne : Missions
-         1-6 » ne sont pas des noms de jeux. On coupe aux DLC et au
-         sous-titre pour ne chercher que le jeu lui-même. */
-      var q=String(e.title).split(/\s\+\s|\s—\s/)[0].replace(/\s*:\s*(Campagne|Prologue).*$/i,'')
-                           .replace(/[:.+]/g,' ').trim();
+      /* L'identifiant RAWG est stocké dans le même champ que celui de TMDB :
+         c'est `media` qui dit laquelle des deux API le lit. Une fiche
+         demandée par son numéro ne peut pas se tromper de jeu — la
+         recherche par titre, elle, rendait Jurassic Park pour
+         « Trespasser ». Les DLC qui ne sont pas dans le catalogue RAWG
+         n'ont pas d'identifiant : eux repassent par le titre. */
+      if(id&&id!=='0'){
+        fetch('https://api.rawg.io/api/games/'+encodeURIComponent(id)+'?key='+CFG.rawgKey)
+          .then(function(r){return r.json();})
+          .then(function(g){ fallback(g&&g.id?g:null); })
+          .catch(function(){ fallback(null); });
+        return;
+      }
+      var q=String(e.title).replace(/[:.+]/g,' ').trim();
       fetch('https://api.rawg.io/api/games?search='+encodeURIComponent(q)+
             '&page_size=1&key='+CFG.rawgKey)
         .then(function(r){return r.json();})
@@ -1247,7 +1275,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     if(!id||id==='0'||!CFG.tmdbKey){
       /* sans identifiant TMDB ni description, le dépliant restait vide :
          on le dit, la FAQ juste en dessous porte le reste. */
-      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>';
+      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>'+lien(e);
       return;
     }
 
@@ -1294,7 +1322,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],
               [T.mPeriod,e.date]])+
         (tr?'<a class="expand-trailer-link" href="https://www.youtube.com/watch?v='+tr.key+
-          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+
+          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+lien(e)+
         '</div></div>';
     }).catch(function(){
       box.innerHTML='<div class="expand-loading">'+T.loadFail+'</div>';
@@ -1349,7 +1377,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       if(f.id==='hide-done') hideDone=!on;
       else if(f.dataset.lv) offLv[f.dataset.lv]=on;
       else if(f.dataset.k) offK[f.dataset.k]=on;
-      else if(f.dataset.o) offOpt[f.dataset.o]=on;
       applyFilters();
       return;
     }
@@ -1394,10 +1421,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({universe:'mcu',progress:prog},null,1)],
+    var blob=new Blob([JSON.stringify({universe:'sw',progress:prog},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob); a.download='chronologeek-marvel.json';
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-dragonage.json';
     document.body.appendChild(a); a.click(); a.remove();
   });
   $('#import').addEventListener('click',function(){ $('#import-file').click(); });
@@ -1421,7 +1448,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     r.readAsText(f); this.value='';
   });
   $('#reset').addEventListener('click',function(){
-    if(!confirm(T.resetMCU)) return;
+    if(!confirm(T.resetDA)) return;
     prog={}; save();
     [].forEach.call(document.querySelectorAll('.bu'),function(a){
       a.classList.remove('done');
@@ -1543,7 +1570,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     cv.width=W*dpr; cv.height=H*dpr;
     cv.style.width=W+'px'; cv.style.height=H+'px';
     cx.setTransform(dpr,0,0,dpr,0,0);
-    var pal=[color,'#fffdf7','#fbbf24','#60a5fa','#a78bfa'];
+    var pal=[color,'#fffdf7','#f0c97c','#4d9fff'];
     for(var i=0;i<120;i++){
       bits.push({x:W/2+(Math.random()-.5)*200, y:H*.66,
                  vx:(Math.random()-.5)*10, vy:-8-Math.random()*10,
@@ -1571,7 +1598,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     if(ev.target===this){ this.classList.remove('o'); this.hidden=true; }
   });
 
-  /* Miss Minutes */
+  /* Grogu */
   var tt=$('#totop');
   tt.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
   addEventListener('scroll',function(){ tt.classList.toggle('on',scrollY>400); },{passive:true});

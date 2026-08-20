@@ -29,6 +29,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/walkingdead"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/walkingdead"/>
   </url>
+  <url><loc>https://chronologeek.app/dragonage</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dragonage"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dragonage"/>
+  </url>
   <url><loc>https://chronologeek.app/deep-dives/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
@@ -52,6 +56,7 @@
   <url><loc>https://chronologeek.app/fr/avatar</loc></url>
   <url><loc>https://chronologeek.app/fr/startrek</loc></url>
   <url><loc>https://chronologeek.app/fr/walkingdead</loc></url>
+  <url><loc>https://chronologeek.app/fr/dragonage</loc></url>
   <url><loc>https://chronologeek.app/fr/dossiers/</loc></url>
   <url><loc>https://chronologeek.app/fr/dossiers/star-wars</loc></url>
   <url><loc>https://chronologeek.app/fr/a-venir</loc></url>

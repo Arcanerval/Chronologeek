@@ -17,8 +17,8 @@
 
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
-   uni   sw | mcu | dc | avatar | startrek, ou "" si le changement ne vise
-         pas un univers
+   uni   sw | mcu | dc | avatar | startrek | twd | dragonage, ou "" si le
+         changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -36,6 +36,12 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
+
+      { nat:"site", uni:"dragonage", kind:"timeline",
+        title:"Nouvelle timeline : Dragon Age",
+        txt:"43 entrées, du Trône Volé au Veilguard — les jeux et leurs DLC, "+
+            "les romans, les comics et les séries dans un seul fil.",
+        href:"/fr/dragonage", cta:"Ouvrir la timeline" },
 
       { nat:"media", uni:"dc", kind:"serie",
         title:"Lanterns", meta:"2026",
