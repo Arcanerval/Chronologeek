@@ -231,26 +231,45 @@ le parcours de découverte à une URL qui promet l'autre, sans une erreur.
 lu et compris en français dans ce milieu, et les alternatives françaises
 (« revisionnage ») font une URL que personne ne tape. À confirmer par Niko.
 
-## 4. Ce qui reste à trancher — éditorial
+## 4. L'éditorial, tranché par Niko le 20 août 2026
 
-**Un seul point, et il n'est pas technique : de quoi est fait le parcours
-rewatch de Star Wars ?**
+**Le rewatch reste une timeline écran.** Le Dossier garde le terrain des 534
+romans, comics et fictions audio ; le second parcours ne s'en approche pas.
+63 entrées contre 61, pour 297 heures des deux côtés — ce sont les mêmes
+œuvres, autrement découpées.
 
-Le parcours de découverte est déjà chronologique. Ce qu'un rewatch ajoute
-n'est donc pas « l'ordre chronologique » — c'est déjà là. C'est :
+Le parcours de découverte est déjà chronologique : ce que le rewatch change
+n'est donc pas l'ordre des années, c'est **le traitement des flashbacks**.
 
-- les entrées `bonus` remontées au même rang que le reste, la hiérarchie
-  d'importance n'ayant plus de sens quand on connaît ;
-- les flashbacks remis à leur vraie place plutôt qu'à leur place prudente ;
-- les blocs recollés (*Clone Wars* par saisons) ou au contraire découpés plus
-  fin ;
-- pas d'avertissement spoiler.
+**Cinq flashbacks retrouvent leur place chronologique** et perdent avec elle
+leur pastille FLASHBACK et leur FAQ « pourquoi le regarder ici », qui ne
+justifiait qu'une place prudente : *Tales of the Jedi* 1, 2, 3 et 4 remontent
+avant et autour de l'Épisode I, et la mission 12 de *Battlefront II* passe
+avant l'Épisode VII.
 
-**Et une question ouverte** : le Dossier Star Wars, avec ses 534 romans,
-comics et fictions audio, occupe déjà le terrain du « tout, pour qui connaît ».
-Si le rewatch doit s'en rapprocher, le chantier change d'échelle. Ce spec
-suppose que **non** : le rewatch reste une timeline écran d'une cinquantaine
-d'entrées, et le Dossier garde son rôle. À confirmer.
+**Cinq restent des flashbacks.** Deux ne bougent pas — *Tales of the Jedi* 5,
+juste après l'Épisode III, et le prologue de *Battlefront II*. Les trois
+*Tales of the Empire* changent de place sans cesser d'en être, et chacun
+**coupe en deux** le panneau où il atterrit :
+
+| épisode | sa place au rewatch | panneau coupé |
+|---|---|---|
+| Tales of the Empire 1 | après les épisodes 19-22 de la saison 4 | `sw-tcw-20` |
+| Tales of the Empire 2 | entre les saisons 2 et 3 de *Rebels* | `sw-rebels-s2` |
+| Tales of the Empire 3 | entre les saisons 1 et 2 de *The Mandalorian* | `sw-mando-s1` |
+
+Leur FAQ « pourquoi ici » part elle aussi : elle renvoyait à leur rencontre
+dans *The Mandalorian*, qu'ils ne suivent plus.
+
+**L'épilogue de *Rebels* disparaît en tant qu'entrée.** On ne coupe plus
+l'épisode final à 42 minutes — on connaît l'histoire. `sw-r-rebels-s4` couvre
+donc la saison 4 *et* l'épilogue, et la note d'avertissement tombe. La note
+d'`sw-andors1` perd la parenthèse qui y renvoyait ; c'est la seule phrase de
+Niko retouchée, et seulement par retrait.
+
+Ce qui **ne** change **pas** : les niveaux d'importance restent tels quels,
+les six ères gardent leurs titres et leurs bornes, et les sept badges tombent
+sur la dernière entrée de leur ère dans les deux parcours.
 
 ## 5. Hors périmètre
 

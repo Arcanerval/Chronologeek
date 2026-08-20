@@ -95,6 +95,101 @@ const DATA_SW={
       {id:"sw-ep8",type:"film",level:"must",tmdb:"181808",media:"movie",img:"/images/starwars8.webp",title:"Épisode VIII : Les Derniers Jedi",date:"34 ABY",faq:{quand:"Le film se passe juste après les évènements de l'Épisode VII en 34 ABY",pourquoi:"Parce qu'il se situe ici chronologiquement"}},
       {id:"sw-ep9",type:"film",level:"must",tmdb:"181812",media:"movie",img:"/images/starwars9.webp",title:"Épisode IX : L'Ascension de Skywalker",date:"35 ABY",faq:{quand:"Le film se passe un an après Les Derniers Jedi",pourquoi:"Parce qu'il se situe ici chronologiquement"}}
     ]}
+  ],
+  /* ── le parcours REWATCH ─────────────────────────────────────────────
+     Même timeline écran que la découverte : ni romans ni comics, le Dossier
+     garde ce terrain. Ce qui change tient en trois gestes.
+     1. Les flashbacks retournent à leur place chronologique, et la FAQ
+        « pourquoi le regarder ici » qui justifiait leur place prudente part
+        avec eux — `drop` la retire sans qu'on recopie une ligne de prose.
+        Cinq restent des flashbacks : Tales of the Jedi 5 après l'Épisode III,
+        le prologue de Battlefront II, et les trois Tales of the Empire, qui
+        changent de place sans cesser d'en être.
+     2. Trois panneaux sont coupés en deux pour recevoir un de ces trois
+        épisodes. Une entrée coupée n'a que son `id`, ses `subitems` et son
+        `covers` : tout le reste — titre, visuel, FAQ, niveau — est hérité de
+        l'entrée couverte. `rt` est écrit à la main, au prorata des épisodes,
+        parce que `runtime.py` ne connaît que les identifiants de découverte.
+     3. L'épilogue de Rebels disparaît en tant qu'entrée : on ne coupe plus
+        l'épisode final, la saison 4 le couvre en entier.
+     Une entrée `{ref:…}` est l'entrée de découverte, telle quelle ; les clés
+     posées à côté l'amendent champ par champ. */
+  erasRewatch:[
+    {title:"L'ÈRE DE LA RÉPUBLIQUE",entries:[
+      {ref:"sw-toj2",drop:["tags","faq.pourquoi"]},
+      {ref:"sw-toj3",drop:["tags","faq.pourquoi"]},
+      {ref:"sw-toj1",drop:["tags","faq.pourquoi"]},
+      {ref:"sw-ep1"},
+      {ref:"sw-toj4",drop:["tags","faq.pourquoi"]},
+      {ref:"sw-ep2"}
+    ]},
+    {title:"LA GUERRE DES CLONES",entries:[
+      {ref:"sw-tcw-pre"},
+      {ref:"sw-tcwfilm"},
+      {ref:"sw-tcw-22"},
+      {ref:"sw-tcw-21"},
+      {id:"sw-r-tcw-20a",covers:["sw-tcw-20"],rt:465,subitems:["Saison 3 Épisode 15","Saison 3 Épisode 16","Saison 3 Épisode 17","Saison 3 Épisode 18","Saison 3 Épisode 19","Saison 3 Épisode 20"," ","Saison 3 Épisode 21","Saison 3 Épisode 22"," ","Saison 4 Épisode 7","Saison 4 Épisode 8","Saison 4 Épisode 9","Saison 4 Épisode 10"," ","Saison 4 Épisode 14"," ","Saison 4 Épisode 15","Saison 4 Épisode 16","Saison 4 Épisode 17","Saison 4 Épisode 18"," ","Saison 4 Épisode 19","Saison 4 Épisode 20","Saison 4 Épisode 21","Saison 4 Épisode 22"]},
+      {ref:"sw-toe1",drop:["faq.pourquoi"]},
+      {id:"sw-r-tcw-20b",covers:["sw-tcw-20"],rt:199,subitems:["Saison 5 Épisode 2","Saison 5 Épisode 3","Saison 5 Épisode 4","Saison 5 Épisode 5"," ","Saison 5 Épisode 6","Saison 5 Épisode 7","Saison 5 Épisode 8","Saison 5 Épisode 9"," ","Saison 5 Épisode 12"]},
+      {ref:"sw-tcw-19"},
+      {ref:"sw-ep3"},
+      {ref:"sw-toj5"},
+      {ref:"sw-tcw-rsith"},
+      {ref:"sw-toe4"},
+      {ref:"sw-toe5"}
+    ]},
+    {title:"L'ÈRE DE L'EMPIRE",entries:[
+      {ref:"sw-bb1"},
+      {ref:"sw-bb2"},
+      {ref:"sw-totu1"},
+      {ref:"sw-totu23"},
+      {ref:"sw-maul"},
+      {ref:"sw-toj6"},
+      {ref:"sw-fo"},
+      {ref:"sw-solo"},
+      {ref:"sw-kenobi"},
+      {ref:"sw-toe6"},
+      {ref:"sw-survivor"}
+    ]},
+    {title:"L'ÈRE DE LA RÉBELLION",entries:[
+      {ref:"sw-andors1",note:"On va alterner entre une série animée et une série live action pas mal de fois, si le changement de ton très important entre Andor et Rebels vous dérange vraiment regardez Rebels d'abord, puis Andor. Mais en vrai faites moi confiance ça vaut le coup en terme de narration"},
+      {ref:"sw-rebels-s1"},
+      {ref:"sw-andors2-1"},
+      {id:"sw-r-rebels-s2a",covers:["sw-rebels-s2"],rt:298,date:"3 BBY",subitems:["Saison 2 Épisodes 10-22"]},
+      {ref:"sw-toe2",drop:["faq.pourquoi"]},
+      {id:"sw-r-rebels-s2b",covers:["sw-rebels-s2"],rt:390,date:"2 BBY",subitems:["Saison 3 Épisodes 1-17 (Un Espion en Danger)"]},
+      {ref:"sw-andors2-2"},
+      {ref:"sw-rebels-s3"},
+      {id:"sw-r-rebels-s4",covers:["sw-rebels-s4","sw-rebels-ep"],drop:["note"],subitems:["Saison 4"]},
+      {ref:"sw-andors2-3"},
+      {ref:"sw-rogue"},
+      {ref:"sw-ep4"},
+      {ref:"sw-ep5"},
+      {ref:"sw-outlaws"},
+      {ref:"sw-ep6"},
+      {ref:"sw-bf2-prologue"},
+      {ref:"sw-bf2-c1"},
+      {ref:"sw-squadrons"},
+      {ref:"sw-bf2-c2"}
+    ]},
+    {title:"L'ÈRE DE LA NOUVELLE RÉPUBLIQUE",entries:[
+      {id:"sw-r-mando-s1",covers:["sw-mando-s1"],rt:342,subitems:["Saison 1"]},
+      {ref:"sw-toe3",drop:["faq.pourquoi"]},
+      {id:"sw-r-mando-s2a",covers:["sw-mando-s1"],rt:214,subitems:["Saison 2 Épisodes 1-5"]},
+      {ref:"sw-mando-s2b"},
+      {ref:"sw-boba"},
+      {ref:"sw-mando-s3"},
+      {ref:"sw-mag"},
+      {ref:"sw-ahsoka"},
+      {ref:"sw-skelcrew"}
+    ]},
+    {title:"L'ÈRE DU PREMIER ORDRE",entries:[
+      {ref:"sw-bf2-m12",drop:["tags","faq.pourquoi"]},
+      {ref:"sw-ep7"},
+      {ref:"sw-bf2res"},
+      {ref:"sw-ep8"},
+      {ref:"sw-ep9"}
+    ]}
   ]
 };
 /* == CG-RUNTIME START (genere par runtime.py) == */

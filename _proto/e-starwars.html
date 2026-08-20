@@ -265,6 +265,25 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   text-transform:uppercase;letter-spacing:.03em}
 .cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
 
+/* ══ les deux parcours ══════════════════════════════════════════════ */
+.modes{display:grid;grid-template-columns:1fr 1fr;margin:24px 0 2px;
+  border:2px solid var(--paper)}
+.modes a{display:block;padding:11px 15px;text-decoration:none;color:var(--paper);
+  border-right:2px solid var(--paper)}
+.modes a:last-child{border-right:0}
+.modes a b{display:block;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.03em;line-height:1}
+.modes a span{display:block;font-size:12px;line-height:1.3;
+  color:rgba(255,253,247,.7);margin-top:4px}
+.modes a:hover{background:rgba(255,253,247,.09)}
+.modes a[aria-current]{background:var(--paper);color:var(--ink)}
+.modes a[aria-current] span{color:rgba(13,11,18,.72)}
+@media(max-width:560px){
+  .modes{grid-template-columns:1fr}
+  .modes a{border-right:0;border-bottom:2px solid var(--paper)}
+  .modes a:last-child{border-bottom:0}
+}
+
 /* ══ filtres, recherche, repères ════════════════════════════════════ */
 .sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
   position:sticky;top:var(--hh,53px);z-index:50}
@@ -779,6 +798,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   <div class="wrap"><div class="intro" id="intro"></div></div>
 
+  <!-- ══ LES DEUX PARCOURS ═══════════════════════════════════════════
+       Des liens, pas des boutons : la bascule recharge la page. -->
+  <div class="wrap"><nav class="modes" aria-label="Choix du parcours">
+    <a href="#decouverte" data-mode-tab="first"><b>Première fois</b><span>L’ordre pensé pour découvrir, sans rien gâcher.</span></a>
+    <a href="#rewatch" data-mode-tab="rewatch"><b>Revisionnage</b><span>L’ordre chronologique strict, quand on connaît déjà.</span></a>
+  </nav></div>
+
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
       <summary>Filtres, recherche et repères<span class="fcount" id="fcount">61 / 61 affichées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -907,12 +933,87 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* l'accueil rouvre sa reprise sur le dernier univers visité */
   try{ localStorage.setItem('cg_last',JSON.stringify({u:'sw'})); }catch(_){}
 
+  /* ── les deux parcours ────────────────────────────────────────────────
+     La page en sert deux : celui qu'on suit la première fois (`eras`) et
+     celui qu'on suit quand on connaît déjà (`erasRewatch`). La bascule
+     recharge la page plutôt que de redessiner — `ALL` numérote les entrées
+     en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
+  var MODE=(document.body.dataset.mode==='rewatch'||location.hash==='#rewatch')?'rewatch':'first';
+  var BYID={};
+  D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
+  /* Une entrée de rewatch est soit une référence à l'entrée de découverte,
+     soit une entrée à elle qui hérite de la première entrée qu'elle couvre.
+     `drop` retire un champ : la FAQ « pourquoi le regarder ici » d'un
+     flashback remis à sa place n'a plus rien à justifier. Une référence
+     morte rendrait une carte vide sans une erreur — elle sort en console. */
+  function resolve(eras){
+    return eras.map(function(era){
+      return {title:era.title,entries:era.entries.map(function(x){
+        var src=BYID[x.ref||(x.covers||[])[0]];
+        if(!src){ console.error('[rewatch] référence morte :',x.ref||x.covers); return x; }
+        var e=Object.assign({},src,x);
+        e.id=x.ref||x.id;
+        if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
+        (x.drop||[]).forEach(function(k){
+          var p=k.split('.');
+          if(p.length===1){ delete e[p[0]]; }
+          else if(e[p[0]]){ e[p[0]]=Object.assign({},e[p[0]]); delete e[p[0]][p[1]]; }
+        });
+        delete e.ref; delete e.drop;
+        return e;
+      })};
+    });
+  }
+  var RW=D.erasRewatch?resolve(D.erasRewatch):null;
+  var ERAS=(MODE==='rewatch'&&RW)?RW:D.eras;
+
   var ALL=[];
-  D.eras.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
+  ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
   var prog={};
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  /* ── le pont entre les deux parcours ──────────────────────────────────
+     Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
+     ne l'a pas vue. Quand le rewatch coupe un panneau en deux ou en recolle
+     plusieurs, l'entrée porte `covers` et dit de quelles entrées de
+     découverte elle tient lieu. Une entrée de découverte est cochée quand
+     toutes les entrées de rewatch qui la couvrent le sont ; une entrée de
+     rewatch, quand tout ce qu'elle couvre l'est. Les deux tables se
+     construisent dans les deux modes, sinon cocher dans l'un ne se verrait
+     pas dans l'autre. */
+  var COVERS={}, COVERED={};
+  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
+    if(!e.covers) return;
+    COVERS[e.id]=e.covers;
+    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
+  }); });
+  function bridge(id){
+    if(COVERS[id]) COVERS[id].forEach(function(d){
+      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    });
+    else if(COVERED[id]) COVERED[id].forEach(function(r){
+      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    });
+  }
+  /* Au chargement, la découverte fait foi : une progression écrite avant que
+     le rewatch existe n'a que ses identifiants. */
+  function bootBridge(){
+    Object.keys(COVERS).forEach(function(r){
+      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+    });
+  }
+  bootBridge();
+
+  /* L'onglet actif se marque comme le menu le fait déjà. Le clic ne change
+     que le hash : c'est le rechargement qui rebâtit la page. */
+  [].forEach.call(document.querySelectorAll('[data-mode-tab]'),function(a){
+    if(a.dataset.modeTab===MODE) a.setAttribute('aria-current','page');
+  });
+  addEventListener('hashchange',function(){
+    if(location.hash==='#rewatch'||location.hash==='#decouverte') location.reload();
+  });
 
   var offLv={}, offK={}, hideDone=false;
 
@@ -921,7 +1022,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
     return h? h+' h'+(r?' '+String(r).padStart(2,'0'):'') : r+' min'; }
-  function rt(e){ return RT[e.id]||0; }
+  /* `runtime.py` ne connaît que les identifiants de découverte : une entrée
+     du rewatch porte sa durée (`rt`, panneau coupé) ou l'additionne sur ce
+     qu'elle couvre (panneaux recollés). */
+  function rt(e){ return e.rt || RT[e.id] ||
+    (e.covers||[]).reduce(function(s,i){ return s+(RT[i]||0); },0); }
 
   var ICO={
     check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
@@ -1012,7 +1117,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   (function build(){
     var html='';
-    D.eras.forEach(function(era,i){
+    ERAS.forEach(function(era,i){
       var art=eraArt(era);
       html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
         '<div class="map">'+
@@ -1021,7 +1126,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
             '<div class="tint"></div><div class="halftone"></div></div>'+
           '<div class="wrap">'+
-            '<span class="chev">Ère '+(i+1)+' / '+D.eras.length+'</span>'+
+            '<span class="chev">Ère '+(i+1)+' / '+ERAS.length+'</span>'+
             '<h2 class="disp off">'+esc(era.title)+'</h2>'+
             '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' vus</span>'+
             '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'+
@@ -1036,7 +1141,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
   function applyFilters(){
     var q=($('#q').value||'').trim().toLowerCase(), shown=0;
-    D.eras.forEach(function(era,i){
+    ERAS.forEach(function(era,i){
       var vis=0;
       era.entries.forEach(function(e){
         var el=document.getElementById(e.id);
@@ -1060,7 +1165,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     $('#k-time').textContent=h+' h';
     $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
     $('#s-tot').textContent=ALL.length; $('#s-h').textContent=h+' h';
-    D.eras.forEach(function(era,i){
+    ERAS.forEach(function(era,i){
       var b=document.querySelector('[data-done="'+i+'"]');
       if(b) b.textContent=era.entries.filter(function(e){return prog[e.id];}).length;
     });
@@ -1110,9 +1215,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
     /* la FAQ : questions et réponses de la page de prod, mot pour mot */
     if(e.faq&&CFG.faqCats){
-      $('.en-faq',panel).innerHTML=CFG.faqCats.map(function(c){
+      /* Une question sans réponse ne se pose pas : le rewatch retire le
+         « pourquoi ici » des flashbacks remis à leur place, et le dépliant
+         vide se lisait comme une réponse manquante. */
+      $('.en-faq',panel).innerHTML=CFG.faqCats.filter(function(c){ return e.faq[c.key]; })
+        .map(function(c){
         return '<details class="faq"><summary>'+esc(c.q.replace('{name}',e.title))+
-               '</summary><div class="a">'+esc(e.faq[c.key]||'')+'</div></details>'; }).join('');
+               '</summary><div class="a">'+esc(e.faq[c.key])+'</div></details>'; }).join('');
     }
 
     box.innerHTML='<div class="expand-loading">'+T.loading+'</div>';
@@ -1211,6 +1320,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     if(chk){
       var art=chk.closest('.bu'), id=art.dataset.id;
       prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      bridge(id);
       save();
       chk.setAttribute('aria-checked',prog[id]?'true':'false');
       art.classList.toggle('done',!!prog[id]);
@@ -1308,7 +1418,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     r.onload=function(){
       try{
         var d=JSON.parse(r.result);
-        prog=d.progress||d||{}; save();
+        prog=d.progress||d||{}; bootBridge(); save();
         [].forEach.call(document.querySelectorAll('.bu'),function(a){
           var on=!!prog[a.dataset.id];
           a.classList.toggle('done',on);
@@ -1352,9 +1462,24 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     for(var i=0;i<ALL.length;i++) if(ALL[i].id===id) return i;
     return -1;
   }
+  /* Un badge d'ère nomme la dernière entrée de son ère dans le parcours de
+     découverte. Le rewatch ne finit pas ses ères sur la même œuvre — « L'ère
+     de la République terminée » tomberait sur Tales of the Jedi 4 et se
+     débloquerait avant l'Épisode II. Le repère se retrouve donc par son rang
+     d'ère, pas par son identifiant. */
+  function markId(id){
+    if(ERAS===D.eras) return id;
+    for(var i=0;i<D.eras.length;i++){
+      var d=D.eras[i].entries;
+      if(d[d.length-1].id===id && ERAS[i]){
+        var r=ERAS[i].entries; return r[r.length-1].id;
+      }
+    }
+    return id;
+  }
   /* Les repères de progression, remis dans l'ordre de la timeline. */
   var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
-    .map(function(b){ return {b:b,i:ixOf((b.ids||[])[0])}; })
+    .map(function(b){ return {b:b,i:ixOf(markId((b.ids||[])[0]))}; })
     .filter(function(x){ return x.i>-1; })
     .sort(function(a,c){ return a.i-c.i; });
   /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher : le
