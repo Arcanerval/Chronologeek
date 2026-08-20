@@ -1234,6 +1234,25 @@ et la majuscule initiale quand on découpe une phrase.
 
 ## Ce qui est tranché, et ne revient pas
 
+- **Dragon Age n'entre pas au radar.** Tranché par Niko le 20 août 2026 : la
+  saga est au point mort, rien n'est annoncé après *The Veilguard*. La raison
+  technique tenait déjà — `radar.py` n'a aucune source pour les jeux, les DLC,
+  les romans et les comics, et interroger EA ou BioWare par société ramènerait
+  le catalogue EA entier — mais celle-ci suffit seule : un radar sans rien à
+  annoncer est une colonne vide. L'accroche de « À venir », les deux `ogTitle`
+  et les deux `desc` de `seo.json` continuent donc de n'énumérer que les six
+  univers que le radar suit. Le pied de page, lui, en compte bien sept : c'est
+  la liste des univers du site, pas celle du radar. Ne pas le reproposer tant
+  qu'un jeu n'est pas daté.
+- **Le visuel d'univers de Dragon Age est recadré, pas encadré.**
+  `images/dragonage.webp` arrivait avec un encadrement doré à coins à encoches ;
+  la case de l'accueil, en 20/9 et `object-fit:cover`, le rognait en haut et en
+  bas mais le laissait voir à gauche et à droite. Le cadre est retiré du fichier
+  (1733×907 → 1575×813), pas masqué par un `transform:scale()` posé sur un seul
+  univers : le même fichier sert la case, la bannière de la page et l'`og:image`,
+  et une règle de zoom aurait eu à coexister avec celui du survol. **La leçon
+  vaut pour tout visuel neuf** — un cadre, un filigrane ou une marge dans la
+  source se voit dans la case, et ça se corrige dans l'image.
 - **La bannière Star Trek reste en 576×324.** Elle est étirée sur la case pleine
   largeur de l'accueil et sur son propre bandeau, là où les autres univers ont
   1280 px ou plus. Il n'existe pas de source meilleure, et agrandir est pire que
