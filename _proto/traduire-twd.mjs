@@ -118,10 +118,33 @@ const PAIRES_PAGES = [
   ['e-a-venir.html', 'en-a-venir.html'],
 ];
 
+/* UNE ZONE `i18n-off` N'ENTRE PAS AU LEXIQUE. C'est le pendant, à la
+   lecture, de ce que `traduire-pages.mjs` fait à l'écriture — et il a
+   manqué. Le radar porte les deux langues côte à côte dans un seul
+   fichier, la page choisissant ses mots à l'exécution : les deux protos
+   sont donc identiques sur ces lignes, et l'appariement y apprenait
+   « Year » → « Year », « YouTube trailer » → « YouTube trailer »,
+   « en-US » → « en-US ». Les paires de pages passant avant les paires de
+   données et la première vue gagnant, ces auto-traductions écrasaient les
+   bonnes, qui seraient venues de `data-startrek.js`. La page française de
+   The Walking Dead sortait alors avec Year, Rating, Period et un
+   `tmdbLang` en `en-US` — donc des synopsis TMDB en anglais. Rien dans la
+   console, rien au rapport : « manque : 0 ». */
+function sansI18nOff(lignes) {
+  let off = false;
+  return lignes.map(l => {
+    const debut = l.includes('i18n-off'), fin = l.includes('i18n-on');
+    const dedans = off || debut;
+    if (debut) off = true;
+    if (fin) off = false;
+    return dedans ? '' : l;          // la ligne reste, vidée : le rang tient
+  });
+}
+
 let pagesLues = 0;
 for (const [fr, en] of PAIRES_PAGES) {
-  const lf = lire(`_proto/${fr}`).split(/\r?\n/);
-  const le = lire(`_proto/${en}`).split(/\r?\n/);
+  const lf = sansI18nOff(lire(`_proto/${fr}`).split(/\r?\n/));
+  const le = sansI18nOff(lire(`_proto/${en}`).split(/\r?\n/));
   if (lf.length !== le.length) {
     throw new Error(`${fr} et ${en} n'ont pas le même nombre de lignes `
       + `(${lf.length} / ${le.length}) — l'appariement ligne à ligne ne tient plus. `

@@ -964,8 +964,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      que le navigateur télécharge à chaque page. Une clé TMDB de lecture n'a
      rien à cacher, et il n'y a pas de serveur pour la tenir ailleurs.
 
-     Les libellés restent ici : cette page choisit ses mots à l'exécution,
-     comme les noms de mois et les repères d'épisode. */
+     i18n-off — les libellés restent ici : la page choisit ses mots à
+     l'exécution, comme les noms de mois et les repères d'épisode. */
   var TMDB={base:'https://api.themoviedb.org/3',
             key:'6257b37bf29ab31357853fce00232314',
             lang:FR?'fr-FR':'en-US'};
@@ -974,6 +974,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
        serie:'La série',trailer:'Bande-annonce YouTube'}
     : {annee:'Year',genre:'Genre',note:'Rating',periode:'Period',
        serie:'The series',trailer:'YouTube trailer'};
+  /* i18n-on */
 
   function ficheTmdb(d){
     var ref=d.dataset.tm;

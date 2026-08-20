@@ -108,10 +108,27 @@ const PAIRES_PAGES = [
   ['e-a-venir.html', 'en-a-venir.html'],
 ];
 
+/* UNE ZONE `i18n-off` N'ENTRE PAS AU LEXIQUE — même correctif que dans
+   `traduire-twd.mjs`, et pour la même raison. Ces zones portent les deux
+   langues côte à côte dans un seul fichier : les deux protos y sont donc
+   identiques, et l'appariement ligne à ligne en tirait « Year » → « Year »
+   ou « en-US » → « en-US ». Ces auto-traductions gagnaient sur les bonnes,
+   les paires de pages passant avant les paires de données. */
+function sansI18nOff(lignes) {
+  let off = false;
+  return lignes.map(l => {
+    const debut = l.includes('i18n-off'), fin = l.includes('i18n-on');
+    const dedans = off || debut;
+    if (debut) off = true;
+    if (fin) off = false;
+    return dedans ? '' : l;          // la ligne reste, vidée : le rang tient
+  });
+}
+
 let pagesLues = 0;
 for (const [fr, en] of PAIRES_PAGES) {
-  const lf = lire(`_proto/${fr}`).split(/\r?\n/);
-  const le = lire(`_proto/${en}`).split(/\r?\n/);
+  const lf = sansI18nOff(lire(`_proto/${fr}`).split(/\r?\n/));
+  const le = sansI18nOff(lire(`_proto/${en}`).split(/\r?\n/));
   if (lf.length !== le.length) {
     throw new Error(`${fr} et ${en} n'ont pas le même nombre de lignes `
       + `(${lf.length} / ${le.length}) — l'appariement ligne à ligne ne tient plus. `
