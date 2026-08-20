@@ -172,6 +172,20 @@ rem('<b><em id="k-on">0</em> / <span id="k-tot">61</span></b>',
 rem('<span class="lbl">Left to watch <b style="font-size:14px" id="k-left">69</b></span>',
     '<span class="lbl">Left to play <b style="font-size:14px" id="k-left">43</b></span>',
     'HUD : restant — on ne regarde pas un jeu, on y joue')
+
+# ── on joue, on ne regarde pas ───────────────────────────────────────────
+# Trois libelles de plus, ecrits dans le HTML et non dans `CG.t` : le bouton
+# du tamis, le mot sous la jauge du HUD, et le compteur de chaque bandeau de
+# phase. Les cles equivalentes de `CG.t` sont reecrites dans
+# `construire-dragonage.py`, ou le pourquoi est explique.
+rem('<button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>',
+    '<button class="last" type="button" id="hide-done" aria-pressed="false">Hide played</button>',
+    'tamis : masquer les joues')
+rem('<span class="lbl">watched</span>',
+    '<span class="lbl">played</span>', 'HUD : le mot sous la jauge')
+rem("'<p class=\"meta\"><span><b data-done=\"'+i+'\">0</b> / '+era.entries.length+' watched</span>'+",
+    "'<p class=\"meta\"><span><b data-done=\"'+i+'\">0</b> / '+era.entries.length+' played</span>'+",
+    'compteur du bandeau de phase')
 rem('<div class="marks"><span>Markers</span><span class="ft">FLASHBACK</span></div>',
     '<div class="marks"><span>Markers</span>'
     '<span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span></div>',

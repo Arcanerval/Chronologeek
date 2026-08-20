@@ -27,12 +27,11 @@
    3. La prose est de Niko, et se traduit au plus près. Pas de raccourci,
       pas d'ajout, pas d'« amélioration ». Les résumés récoltés au wiki
       suivent la même règle.
-   4. **Un nom de quête reste en anglais.** « Leliana's Past » et
-      « Wicked Eyes and Wicked Hearts » sont des repères que le lecteur
-      va chercher dans son propre jeu : traduire de mémoire un intitulé
-      de quête, c'est l'envoyer chercher une chaîne qui n'existe pas.
-      Le jour où les intitulés français sont relevés dans le jeu, ils
-      remplacent ceux-ci.
+   4. **Un nom de quête est celui du journal de quêtes français**, relevé
+      dans le jeu par Niko, jamais traduit de mémoire : « Le Passé de
+      Leliana » et « Yeux Sombres et Cœur Cruel ». Ce sont des repères que
+      le lecteur va chercher dans sa propre partie — une chaîne
+      approchante l'y enverrait pour rien.
    5. Ce qui vaut pour les deux langues est déclaré identique.
 
    LE REGISTRE. La refonte vouvoie — « Cochez ce que vous avez vu » — et
@@ -221,11 +220,11 @@ export const DA_TRADUCTIONS = [
      Walking Dead : « Star Trek terminé à 100 % ». Un jeu est masculin,
      l'univers aussi — tout est au masculin ici. */
   ['Grey Warden', 'Garde des Ombres'],
-  ['Dragon Age: Origins completed', 'Dragon Age: Origins terminé'],
+  ['Dragon Age: Origins and its DLC completed', 'Dragon Age: Origins et ses DLC terminés'],
   ['Champion of Kirkwall', 'Champion de Kirkwall'],
-  ['Dragon Age II completed', 'Dragon Age II terminé'],
+  ['Dragon Age II and its DLC completed', 'Dragon Age II et ses DLC terminés'],
   ['Inquisitor', 'Inquisiteur'],
-  ['Dragon Age: Inquisition completed', 'Dragon Age: Inquisition terminé'],
+  ['Dragon Age: Inquisition and its DLC completed', 'Dragon Age: Inquisition et ses DLC terminés'],
   ['Loremaster of Thedas', 'Maître du Savoir de Thédas'],
   ['Every book and comic completed', 'Tous les livres et comics terminés'],
   ['The Dread Wolf', 'Le Loup Implacable'],
@@ -249,6 +248,16 @@ export const DA_TRADUCTIONS = [
      écrire la française, qu'aucune page du site ne porte encore. Elle
      sert deux fois, dans `CG.t.left` et dans le HUD de la page. */
   ['Left to play', 'Restant à jouer'],
+  ['Played', 'Joués'],
+  ['played', 'joués'],
+  /* Le compteur du bandeau de phase est concaténé en JS, et sa balise
+     fermante fait partie de la chaîne littérale : le scanner rend
+     « played</span> », pas « played ». Deux entrées pour un même mot,
+     donc — c'est ainsi qu'Avatar Legends porte déjà « vus » et
+     « vus</span> ». */
+  ['played</span>', 'joués</span>'],
+  ['Hide played', 'Masquer les joués'],
+  ['Mark “{t}” as played', 'Marquer « {t} » comme joué'],
   ['Games · Books · Comics', 'Jeux · Livres · Comics'],
   ['Games', 'Jeux'],
   ['Games · DLC · Books · Comics — the whole Dragon Age universe in its most optimized order.',
@@ -277,7 +286,7 @@ export const DA_TRADUCTIONS = [
    'Entre les niveaux 7 et 12, après avoir terminé Lothering'],
   ['Early to midgame', 'Du début au milieu du jeu'],
   ['Best done after the end of her personal quest "Leliana\'s Past"',
-   'À faire de préférence après la fin de sa quête personnelle « Leliana\'s Past »'],
+   'À faire de préférence après la fin de sa quête personnelle « Le Passé de Leliana »'],
   ['Midgame to endgame', 'Du milieu à la fin du jeu'],
   ['Between level 15-18 or after you get Wynne',
    'Entre les niveaux 15 et 18, ou après avoir recruté Wynne'],
@@ -288,7 +297,7 @@ export const DA_TRADUCTIONS = [
   ['Early Act 3', 'Début de l\'acte 3'],
   ['Act 3', 'Acte 3'],
   ['Until the end of Act 2 (quest Wicked Eyes and Wicked Hearts)',
-   'Jusqu\'à la fin de l\'acte 2 (quête « Wicked Eyes and Wicked Hearts »)'],
+   'Jusqu\'à la fin de l\'acte 2 (quête « Yeux Sombres et Cœur Cruel »)'],
   ['Act 3 and endgame', 'Acte 3 et fin du jeu'],
 
   /* ── les vingt-huit résumés ───────────────────────────────────────

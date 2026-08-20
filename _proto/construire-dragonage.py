@@ -448,13 +448,29 @@ COMICS = [i for c in ('grove', 'speak', 'sleep', 'magekiller', 'errant',
                       'deception', 'wraith', 'fortress', 'missing')
           for i in PAR_OEUVRE.get(c, [])]
 
+# Un badge de jeu exige aussi ses DLC, decide par Niko le 20 aout 2026. Ils
+# sont dans la timeline au meme titre que les tranches du jeu, et neuf
+# d'entre eux sont marques « important » : un badge qui s'allumerait sans eux
+# annoncerait « Dragon Age: Origins termine » a quelqu'un qui n'a pas fait la
+# moitie du contenu. La description le dit maintenant — « et ses DLC ».
+#
+# Awakening est du lot d'Origins : c'est une extension, et le document de
+# Niko la range dans la meme phase. « The Darkspawn Chronicles » n'y est pas,
+# n'etant pas dans la timeline.
+DLC_ORIGINS = ('stone', 'keep', 'leliana', 'ostagar', 'awakening',
+               'amgarrak', 'witch')
+DLC_DA2 = ('exiled', 'assassin', 'legacy')
+DLC_INQ = ('hakkon', 'descent', 'trespasser')
+def avec_dlc(oeuvre, dlc):
+    return PAR_OEUVRE[oeuvre] + [i for c in dlc for i in PAR_OEUVRE.get(c, [])]
+
 BADGES = [
   badge('da_warden',   '🛡️', '#8fb8de', 'Grey Warden',
-        PAR_OEUVRE['origins'] + PAR_OEUVRE['awakening'], 'Dragon Age: Origins'),
+        avec_dlc('origins', DLC_ORIGINS), 'Dragon Age: Origins and its DLC'),
   badge('da_champion', '⚔️', '#e07b39', 'Champion of Kirkwall',
-        PAR_OEUVRE['da2'], 'Dragon Age II'),
+        avec_dlc('da2', DLC_DA2), 'Dragon Age II and its DLC'),
   badge('da_inquis',   '☀️', '#f5c842', 'Inquisitor',
-        PAR_OEUVRE['inquisition'], 'Dragon Age: Inquisition'),
+        avec_dlc('inquisition', DLC_INQ), 'Dragon Age: Inquisition and its DLC'),
   badge('da_loremaster','📖', '#a99cf9', 'Loremaster of Thedas',
         LIVRES + COMICS, 'Every book and comic'),
   {'id': 'da_dread', 'universe': 'dragonage', 'icon': '🐺', 'color': '#ffd700',
@@ -485,11 +501,21 @@ CG = {
 }
 CG['t']['nav'] = dict(CG['t']['nav']); CG['t']['nav']['dragonage'] = 'Dragon Age'
 # Le gabarit vient de Star Trek, qui ne compte que des films et des series :
-# son HUD annonce « Left to watch ». Ici on ne regarde pas, on joue — le
-# bandeau de l'accueil le dit deja (« Check off what you've played »), et le
-# compteur juste en dessous disait le contraire. C'est la seule cle du
-# gabarit que cet univers reecrit.
+# tout son vocabulaire de progression est celui du visionnage. Ici on ne
+# regarde pas, on joue — le bandeau de l'accueil le dit deja (« Check off
+# what you've played »), et les compteurs juste en dessous disaient le
+# contraire. Ce sont les seules cles du gabarit que cet univers reecrit.
+#
+# Les six livres et les neuf comics se lisent plutot qu'ils ne se jouent,
+# mais un guide ne peut pas tenir deux vocabulaires dans un meme compteur :
+# il en faut un, et c'est celui des quatre jeux et des treize DLC, qui font
+# les deux tiers de la timeline. Avatar Legends tranche pareil dans l'autre
+# sens — tout y est « watched », romans compris.
 CG['t']['left'] = 'Left to play'
+CG['t']['watched'] = 'Played'
+CG['t']['hideDone'] = 'Hide played'
+CG['t']['markWatched'] = 'Mark “{t}” as played'
+CG['t']['leftEntries'] = 'Left to play'
 
 ENTETE = '''/* Donnees de la timeline Dragon Age, ecrites depuis le document de Niko
    « Dragon Age.txt ». Les textes affiches en sont decoupes mot pour mot :

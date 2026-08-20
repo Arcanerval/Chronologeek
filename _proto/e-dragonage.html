@@ -825,7 +825,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
     <div class="srow">
       <div class="marks"><span>Repères</span><span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span></div>
-      <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les vus</button>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les joués</button>
     </div>
       </div>
     </details>
@@ -873,7 +873,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">43</span></b>
-    <span class="lbl">vus</span>
+    <span class="lbl">joués</span>
     <span class="bar"><i id="k-fill"></i></span>
     <!-- Le HUD des autres timelines compte des heures ; runtime.py n'a pas
          encore de table RT pour Avatar, alors on compte ce qu'on sait compter
@@ -1094,7 +1094,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
                Sans table RT, `hm(0)` rendait « — au total », qui occupe la place
                d'une information sans en être une : on ne pose le segment que
                quand la durée est connue. */
-            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' vus</span>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' joués</span>'+
             (function(m){ return m ? '<span>'+hm(m)+' au total</span>' : ''; })(
               era.entries.reduce(function(s,x){return s+rt(x);},0))+'</p>'+
           '</div></div>'+
