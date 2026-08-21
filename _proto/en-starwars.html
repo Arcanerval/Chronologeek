@@ -976,11 +976,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
   /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
      fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
-     choix retenu de la dernière visite. À défaut, on découvre. */
+     choix retenu de la dernière visite. À défaut, on découvre.
+     Un seul hash, `#rewatch` : la découverte est le parcours de base et
+     s'écrit donc `/starwars` tout court. C'est le lien qu'on partage, et
+     un visiteur qui n'a rien choisi y trouve la question. */
   var MKEY=KEY+'-mode', CHOIX=null;
   try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
-  var HASHMODE=(location.hash==='#rewatch'||location.hash==='#decouverte')
-    ? (location.hash==='#rewatch'?'rewatch':'first') : null;
+  var HASHMODE=location.hash==='#rewatch'?'rewatch':null;
   var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
   if(MODE!=='rewatch') MODE='first';
   /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des deux
@@ -1057,9 +1059,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      La question n'est posée qu'à qui n'a rien répondu : ni page publiée,
      ni hash, ni choix retenu. Ensuite elle ne revient plus — la bascule
      du bandeau tient le rôle. Le clic ne fait que retenir le choix et
-     changer le hash : c'est le rechargement qui rebâtit la page, `ALL`
-     numérotant les entrées en les mutant. */
-  var PHASH={first:'#decouverte',rewatch:'#rewatch'};
+     changer l'adresse : c'est le rechargement qui rebâtit la page, `ALL`
+     numérotant les entrées en les mutant. Revenir à la découverte retire
+     le hash au lieu d'en poser un — `location.hash=''` laisserait un `#`
+     nu dans la barre d'adresse et ne déclencherait rien. */
+  function vaVers(m){
+    if(m==='rewatch'){ location.hash='#rewatch'; return; }
+    if(history.replaceState){
+      history.replaceState(null,'',location.pathname+location.search);
+      location.reload();
+    } else location.hash='';
+  }
   function posePar(){
     [].forEach.call(document.querySelectorAll('#par [data-parcours]'),function(b){
       b.setAttribute('aria-pressed',b.dataset.parcours===MODE?'true':'false'); });
@@ -1092,11 +1102,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     try{ localStorage.setItem(MKEY,m); }catch(_){}
     /* Répondre ce qu'on affiche déjà ne recharge rien. */
     if(m===MODE){ if(ask&&ask.open) ask.close(); return; }
-    location.hash=PHASH[m];
+    vaVers(m);
   });
+  /* On ne recharge que si le parcours change vraiment : la page porte
+     d'autres ancres — `#contact`, le `#` du menu — et un rechargement à
+     chacune ferait passer le formulaire de contact pour cassé. */
   addEventListener('hashchange',function(){
-    if(location.hash==='#rewatch'||location.hash==='#decouverte') location.reload();
-    else if(location.hash==='#choix') poseAsk();
+    if(location.hash==='#choix'){ poseAsk(); return; }
+    var m=location.hash==='#rewatch'?'rewatch':(location.hash?null:'first');
+    if(m&&m!==MODE) location.reload();
   });
 
   var offLv={}, offK={}, hideDone=false;
