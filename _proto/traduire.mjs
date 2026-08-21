@@ -305,9 +305,21 @@ const PERIMES = new Map([
    Le garde-fou est le compte : un motif qui ne se trouve plus fait
    sortir le script en erreur. Sans lui, une retouche devenue caduque
    passerait inaperçue — et c'est exactement ce qu'elle est censée
-   empêcher. */
+   empêcher.
+
+   `ou` désigne l'univers, et il est **obligatoire**. La phrase de
+   l'accroche est la même mot pour mot dans les six guides — « This guide
+   works for first-time watches as well as rewatches. » — donc une
+   retouche sans univers s'applique aux six. C'est ce qui est arrivé le
+   21 août 2026 : Star Wars a reçu ses deux parcours, et Marvel et DC ont
+   reçu les deux phrases qui les annoncent. Le CSS qui n'en montre qu'une
+   (`.pc-first` / `.pc-rewatch`) ne vit que dans la page Star Wars : les
+   deux pages anglaises affichaient donc les deux, l'une sous l'autre,
+   dont une qui parle d'une bascule qui n'existe pas chez elles. Rien
+   dans la console, rien au rapport — la clé *est* traduite. */
 const RETOUCHES = [
   { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
+    ou: 'SW',
     de: '<span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true">'
       + '<path d="M20 6 9 17l-5-5"/></svg>'
       + 'This guide works for first-time watches as well as rewatches.</span>',
@@ -321,9 +333,10 @@ const RETOUCHES = [
       + ' first-watch version higher up.</span>' },
 ];
 const retouchesFaites = new Map();
-function retouche(s) {
+function retouche(s, ou) {
   let out = s;
   for (const r of RETOUCHES) {
+    if (r.ou !== ou) continue;
     if (!out.includes(r.de)) continue;
     out = out.split(r.de).join(r.a);
     retouchesFaites.set(r.quoi, (retouchesFaites.get(r.quoi) || 0) + 1);
@@ -563,10 +576,10 @@ export function creerTraducteur(lex, manques, contexte) {
       }
 
       if (refEn !== undefined && typeof refEn === 'string' && refEn.trim()) {
-        return retouche(memeEchappement(fr, refEn));
+        return retouche(memeEchappement(fr, refEn), contexte);
       }
       const trouve = lex.cherche(fr);
-      if (trouve !== undefined) return retouche(memeEchappement(fr, trouve));
+      if (trouve !== undefined) return retouche(memeEchappement(fr, trouve), contexte);
       /* dernier recours : une des dix phrases écrites à la main. On
          l'applique, mais on la consigne quand même — elle doit passer
          par la relecture avant d'être considérée comme acquise. */
