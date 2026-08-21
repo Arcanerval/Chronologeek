@@ -240,6 +240,16 @@ const TRADUCTIONS = [
      des 60 autres : « The episode takes place… ». */
   ['L\'épisode se déroule probablement entre la saison 2 et la saison 3 de Rebels',
    'The episode probably takes place between season 2 and season 3 of Rebels'],
+
+  /* ── le parcours rewatch de Marvel, écrit le 21 août 2026 ───────────
+     La saison 1 de What If…? est coupée en deux pour recevoir Marvel
+     Zombies. Même moule que les coupes de Star Wars ci-dessus. Le reste
+     du parcours n'est que déplacements : ses entrées se retrouvent
+     toutes par leur identifiant, et la réponse qu'elles partagent —
+     « Parce qu'elle se situe ici chronologiquement » — est celle de
+     cinquante-deux autres entrées Marvel, donc déjà en prod anglaise. */
+  ['Saison 1 Épisodes 1-5', 'Season 1 Episodes 1-5'],
+  ['Saison 1 Épisodes 6-9', 'Season 1 Episodes 6-9'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════
@@ -317,20 +327,24 @@ const PERIMES = new Map([
    deux pages anglaises affichaient donc les deux, l'une sous l'autre,
    dont une qui parle d'une bascule qui n'existe pas chez elles. Rien
    dans la console, rien au rapport — la clé *est* traduite. */
+const COCHE = '<svg viewBox="0 0 24 24" aria-hidden="true">'
+  + '<path d="M20 6 9 17l-5-5"/></svg>';
+/* L'accroche d'un guide à deux parcours, mot pour mot. Les six guides
+   partagent la phrase d'origine : c'est l'univers qui dit lesquels y
+   passent, pas le motif. */
+const PARCOURS_DE = '<span class="itag">' + COCHE
+  + 'This guide works for first-time watches as well as rewatches.</span>';
+const PARCOURS_A = '<span class="itag pc-first">' + COCHE
+  + 'This guide works best for first-time watches but you can switch to the'
+  + ' rewatch version higher up.</span>'
+  + '<span class="itag pc-rewatch">' + COCHE
+  + 'This guide works best for rewatches but you can switch to the'
+  + ' first-watch version higher up.</span>';
 const RETOUCHES = [
   { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
-    ou: 'SW',
-    de: '<span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true">'
-      + '<path d="M20 6 9 17l-5-5"/></svg>'
-      + 'This guide works for first-time watches as well as rewatches.</span>',
-    a: '<span class="itag pc-first"><svg viewBox="0 0 24 24" aria-hidden="true">'
-      + '<path d="M20 6 9 17l-5-5"/></svg>'
-      + 'This guide works best for first-time watches but you can switch to the'
-      + ' rewatch version higher up.</span>'
-      + '<span class="itag pc-rewatch"><svg viewBox="0 0 24 24" aria-hidden="true">'
-      + '<path d="M20 6 9 17l-5-5"/></svg>'
-      + 'This guide works best for rewatches but you can switch to the'
-      + ' first-watch version higher up.</span>' },
+    ou: 'SW', de: PARCOURS_DE, a: PARCOURS_A },
+  { quoi: 'Marvel · l’accroche dit maintenant quel parcours on suit',
+    ou: 'MCU', de: PARCOURS_DE, a: PARCOURS_A },
 ];
 const retouchesFaites = new Map();
 function retouche(s, ou) {

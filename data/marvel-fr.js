@@ -7,7 +7,7 @@ const DATA_MCU={
   description:"Films · Séries · Spider-Verse · Fox",
   color:"#e23636",glow:"rgba(226,54,54,.3)",
   tmdb_banner:{type:"movie",id:"299534"},
-  notes:`<p class="intro-lead">Si vous êtes ici c'est que vous souhaitez regarder le Marvel Cinematic Universe dans son ordre le plus optimisé, un mélange d'ordre chronologique et d'ordre de sortie, vous trouverez des détails supplémentaires en cliquant sur chaque média et tout ce site est garanti sans spoil majeur.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ce guide marche pour les premiers visionnages ainsi que les revisionnages.</span></div><div class="keys-title">Repères de lecture</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>La Terre principale</div><p>La chronologie principale de l'univers se passe sur la Terre-616 (parfois aussi nommée Terre-199999). Si rien n'est précisé c'est que ça se passe bien sur la Terre principale.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Les flashbacks</div><p>Certains événements sont mieux à voir en tant que FLASHBACK pour comprendre et sont donc indiqués comme tel.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 20V4M17 20V4M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>Les scènes post-crédits</div><p>En regardant dans l'ordre chronologique certaines scènes post-crédits spoilent des éléments plus tard donc j'indique s'il ne faut pas les regarder à ce moment et aussi à quel moment le faire.</p></div><div class="key wide"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>Canonicité non confirmée</div><p>Deux séries sont dans la catégorie "Canonicité non confirmée" et n'ont donc pas été officiellement déclarées comme faisant partie de la timeline principale de la Terre-616 par Marvel Studios (les séries Defenders de Netflix n'étaient plus canon avant de le redevenir). Ce guide inclus tout de même Agent Carter et Les Agents du S.H.I.E.L.D. (Cloak &amp; Dagger, Inhumans, The Runaways sont dans le même cas mais il ne se passe rien de bien important). Toute production audiovisuelle Marvel existante fait bien partie du multivers global donc vous pouvez ne pas les regarder si vous voulez (mais c'est bien, ça ajoute beaucoup de lore et ne contredit rien du canon officiel).</p></div></div><details class="cuts"><summary>Ce qui est écarté, et pourquoi<span class="n">10 entrées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Certains médias sont omis intentionnellement et les explications se trouvent ci-dessous :</p><dl class="cuts-list"><div class="cut"><dt>Les anciens films Punisher</dt><dd>Aucun liens avec le reste du MCU et la série est bien meilleure.</dd></div><div class="cut"><dt>La trilogie Blade et Daredevil/Elektra</dt><dd>Retenez juste qui incarne les personnages principaux, sinon ils n'apportent rien.</dd></div><div class="cut"><dt>The New Mutants</dt><dd>Bien que faisant partie de l'univers X-Men, le film ne référence rien des autres et suit sa propre histoire.</dd></div><div class="cut"><dt>Les séries X-Men</dt><dd>Elles n'ont jamais été confirmées comme canon de l'univers X-Men.</dd></div><div class="cut"><dt>Les anciens films 4 Fantastiques</dt><dd>Retenez juste qui incarne les personnages principaux, sinon ils n'apportent rien.</dd></div><div class="cut"><dt>Spider-Noir</dt><dd>La série se déroule dans sa propre réalité, sans aucun lien avec le multivers. Mais elle est vraiment bien regardez la après les films Spider-Verse si vous voulez pour avoir une connaissance des personnages.</dd></div><div class="cut"><dt>I Am Groot</dt><dd>Un enchaînement de courts-métrages comiques sans histoire développée, vous pouvez regarder seulement le 1er épisode qui fait la transition entre Les Gardiens de la Galaxie 1 et 2.</dd></div><div class="cut"><dt>Le SSU (hors Venom)</dt><dd>Un univers de films moyens aux connexions plus que douteuses (même Venom à des chances de partir du guide un jour).</dd></div><div class="cut"><dt>Dessins animés sans liens (X-Men 92', X-Men 97', Spider-Man 94', Marvel Rising, M.O.D.O.K, Hit-Monkey, Moon Girl et le Dinosaure...)</dt><dd>Pas de liens mais font parti du Multivers.</dd></div><div class="cut"><dt>Comics préludes</dt><dd>Canon jusqu'à ce qu'un film contredise.</dd></div></dl></div></details>`,
+  notes:`<p class="intro-lead">Si vous êtes ici c'est que vous souhaitez regarder le Marvel Cinematic Universe dans son ordre le plus optimisé, un mélange d'ordre chronologique et d'ordre de sortie, vous trouverez des détails supplémentaires en cliquant sur chaque média et tout ce site est garanti sans spoil majeur.</p><div class="intro-tags"><span class="itag pc-first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ce guide marche mieux pour les premiers visionnages mais vous pouvez passer à la version revisionnage plus haut.</span><span class="itag pc-rewatch"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ce guide marche mieux pour les revisionnages mais vous pouvez passer à la version premier visionnage plus haut.</span></div><div class="keys-title">Repères de lecture</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>La Terre principale</div><p>La chronologie principale de l'univers se passe sur la Terre-616 (parfois aussi nommée Terre-199999). Si rien n'est précisé c'est que ça se passe bien sur la Terre principale.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>Les flashbacks</div><p>Certains événements sont mieux à voir en tant que FLASHBACK pour comprendre et sont donc indiqués comme tel.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 20V4M17 20V4M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>Les scènes post-crédits</div><p>En regardant dans l'ordre chronologique certaines scènes post-crédits spoilent des éléments plus tard donc j'indique s'il ne faut pas les regarder à ce moment et aussi à quel moment le faire.</p></div><div class="key wide"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>Canonicité non confirmée</div><p>Deux séries sont dans la catégorie "Canonicité non confirmée" et n'ont donc pas été officiellement déclarées comme faisant partie de la timeline principale de la Terre-616 par Marvel Studios (les séries Defenders de Netflix n'étaient plus canon avant de le redevenir). Ce guide inclus tout de même Agent Carter et Les Agents du S.H.I.E.L.D. (Cloak &amp; Dagger, Inhumans, The Runaways sont dans le même cas mais il ne se passe rien de bien important). Toute production audiovisuelle Marvel existante fait bien partie du multivers global donc vous pouvez ne pas les regarder si vous voulez (mais c'est bien, ça ajoute beaucoup de lore et ne contredit rien du canon officiel).</p></div></div><details class="cuts"><summary>Ce qui est écarté, et pourquoi<span class="n">10 entrées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><p class="cuts-intro">Certains médias sont omis intentionnellement et les explications se trouvent ci-dessous :</p><dl class="cuts-list"><div class="cut"><dt>Les anciens films Punisher</dt><dd>Aucun liens avec le reste du MCU et la série est bien meilleure.</dd></div><div class="cut"><dt>La trilogie Blade et Daredevil/Elektra</dt><dd>Retenez juste qui incarne les personnages principaux, sinon ils n'apportent rien.</dd></div><div class="cut"><dt>The New Mutants</dt><dd>Bien que faisant partie de l'univers X-Men, le film ne référence rien des autres et suit sa propre histoire.</dd></div><div class="cut"><dt>Les séries X-Men</dt><dd>Elles n'ont jamais été confirmées comme canon de l'univers X-Men.</dd></div><div class="cut"><dt>Les anciens films 4 Fantastiques</dt><dd>Retenez juste qui incarne les personnages principaux, sinon ils n'apportent rien.</dd></div><div class="cut"><dt>Spider-Noir</dt><dd>La série se déroule dans sa propre réalité, sans aucun lien avec le multivers. Mais elle est vraiment bien regardez la après les films Spider-Verse si vous voulez pour avoir une connaissance des personnages.</dd></div><div class="cut"><dt>I Am Groot</dt><dd>Un enchaînement de courts-métrages comiques sans histoire développée, vous pouvez regarder seulement le 1er épisode qui fait la transition entre Les Gardiens de la Galaxie 1 et 2.</dd></div><div class="cut"><dt>Le SSU (hors Venom)</dt><dd>Un univers de films moyens aux connexions plus que douteuses (même Venom à des chances de partir du guide un jour).</dd></div><div class="cut"><dt>Dessins animés sans liens (X-Men 92', X-Men 97', Spider-Man 94', Marvel Rising, M.O.D.O.K, Hit-Monkey, Moon Girl et le Dinosaure...)</dt><dd>Pas de liens mais font parti du Multivers.</dd></div><div class="cut"><dt>Comics préludes</dt><dd>Canon jusqu'à ce qu'un film contredise.</dd></div></dl></div></details>`,
   eras:[
     {title:"PHASE I — Saga de l'Infini",entries:[
       {id:"mcu-cap1",img:"/images/captain-america-first-avenger-2011.webp",type:"film",level:"must",tmdb:"1771",media:"movie",title:"Captain America : First Avenger",date:"1942–1945",tags:["flashback"],note:"Ne pas regarder la scène post-crédits.",faq:{quand:"A part le prologue et l'épilogue qui se passent en 2011 et servent à introduire Avengers, tout le film est un flashback se déroulant de 1942 à 1945",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que c'est le premier film dans l'ordre chronologique, qu'il introduit des personnages et éléments très importants",postcredits:"Le film possède une seule scène post-crédits qui sert de teaser a Avengers, ça ne sert à rien de la regarder"}},
@@ -151,6 +151,170 @@ const DATA_MCU={
       {id:"mcu-smbnd",img:"/images/brandnewday.webp",type:"film",level:"must",tmdb:"969681",media:"movie",title:"Spider-Man : Brand New Day",date:"2028",faq:{quand:"Le film se déroule pendant l'automne 2028 après les évènements de The Punisher : One Last Kill",comment:"Le film se passe dans la timeline principale",pourquoi:"Parce que le film se situe ici chronologiquement",postcredits:"La scène post-crédits est importante."}},
       {id:"mcu-ff",img:"/images/the-fantastic-four-first-steps-2025.webp",type:"film",level:"must",tmdb:"617126",media:"movie",title:"Les 4 Fantastiques : Premiers Pas",date:"~1964",dim:"TERRE-828",faq:{quand:"Le film se déroule dans son propre univers dans les années 60, probablement autour de 1964-1965",comment:"Le film se déroule dans un univers parallèle et la scène post générique de Thunderbolts* explique sa connexion à la timeline principale",pourquoi:"Parce que le film se déroule dans un univers parallèle et n'a d'importance à ce jour seulement pour les évènements de Avengers : Doomsday",postcredits:"La scène post-crédits se passe 4 ans après les évènements du film et tease Avengers : Doomsday, la deuxième est inutile"}},
       {id:"mcu-tb-pc2",type:"video",level:"must",img:"/images/thunderbolts-2025.webp",tmdb:"986056",media:"video",title:"Deuxième scène post-crédits Thunderbolts*",date:"2028",faq:{quand:"La scène se déroule 14 mois après les évènements du film, soit en décembre 2028",comment:"La scène se passe dans la timeline principale",pourquoi:"La scène servira sûrement d'introduction à Avengers : Doomsday, on ne sait pas pour l'instant",postcredits:"Aucune"}}
+    ]}
+  ],
+  /* ── le parcours de revisionnage ──────────────────────────────────
+     Le second ordre de la page, celui qu'on suit quand on connaît déjà.
+     Six deplacements, et rien d'autre :
+     1. Eyes of Wakanda passe avant Black Panther.
+     2. La saison 1 de What If...? est coupee en deux pour recevoir
+        Marvel Zombies, qui prend la suite de son episode 5. Les deux
+        moities n'ont que leur `id`, leurs `subitems` et leur `covers` :
+        le reste est herite de l'entree couverte. `rt` est ecrit a la
+        main, au prorata des episodes (5/9 et 4/9 de 323 min), parce que
+        `runtime.py` ne connait que les identifiants de decouverte. La
+        scene post-generique de l'episode 9 suit la seconde moitie.
+     3. La saison 3 de What If...? suit la saison 2.
+     4. Votre fidele serviteur Spider-Man suit Civil War.
+     5. Deadpool et Deadpool 2 passent avant Logan, sans leur tag
+        `flashback` : remis a leur place, ils n'en sont plus un.
+     6. Les six deplacees repondent la meme chose a « pourquoi le
+        regarder ici » — la formule que 52 autres entrees emploient
+        deja, donc deja traduite en prod anglaise.
+     Une entree `{ref:...}` est l'entree de decouverte, telle quelle ; les
+     cles posees a cote l'amendent champ par champ. */
+  erasRewatch:[
+    {title:"PHASE I — Saga de l'Infini",entries:[
+      {ref:"mcu-cap1"},
+      {ref:"mcu-ac-os"},
+      {ref:"mcu-ac-serie"},
+      {ref:"mcu-cm"},
+      {ref:"mcu-im1"},
+      {ref:"mcu-im2"},
+      {ref:"mcu-hulk"},
+      {ref:"mcu-consultant"},
+      {ref:"mcu-thor1"},
+      {ref:"mcu-av1"},
+      {ref:"mcu-item47"}
+    ]},
+    {title:"PHASE II — Saga de l'Infini",entries:[
+      {ref:"mcu-aos-s1a"},
+      {ref:"mcu-thor2"},
+      {ref:"mcu-aos-s1b"},
+      {ref:"mcu-im3"},
+      {ref:"mcu-roi"},
+      {ref:"mcu-cap2"},
+      {ref:"mcu-aos-s1c"},
+      {ref:"mcu-gotg1"},
+      {ref:"mcu-gotg2"},
+      {ref:"mcu-dd1"},
+      {ref:"mcu-jj1"},
+      {ref:"mcu-aos-s2a"},
+      {ref:"mcu-aou"},
+      {ref:"mcu-aos-s2b"},
+      {ref:"mcu-antman1"},
+      {ref:"mcu-dd2"},
+      {ref:"mcu-lc1"},
+      {ref:"mcu-if1"},
+      {ref:"mcu-aos-s3a"},
+      {ref:"mcu-defenders"}
+    ]},
+    {title:"PHASE III — Saga de l'Infini",entries:[
+      {ref:"mcu-cw"},
+      {ref:"mcu-vfsm",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {ref:"mcu-aos-s3b"},
+      {ref:"mcu-bw"},
+      {ref:"mcu-eow",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {ref:"mcu-bp1"},
+      {ref:"mcu-sm1"},
+      {ref:"mcu-pun1"},
+      {ref:"mcu-ds1"},
+      {ref:"mcu-aos-s4"},
+      {ref:"mcu-jj2"},
+      {ref:"mcu-lc2"},
+      {ref:"mcu-if2"},
+      {ref:"mcu-dd3"},
+      {ref:"mcu-aos-s5a"},
+      {ref:"mcu-thor3"},
+      {ref:"mcu-pun2"},
+      {ref:"mcu-jj3"},
+      {ref:"mcu-antman2"},
+      {ref:"mcu-aos-s5b"},
+      {ref:"mcu-thor3pc"},
+      {ref:"mcu-iw"},
+      {ref:"mcu-antman2pc"},
+      {ref:"mcu-aos-s5c"},
+      {ref:"mcu-aos-s6"},
+      {ref:"mcu-aos-s7"},
+      {ref:"mcu-cmpc"},
+      {ref:"mcu-eg"}
+    ]},
+    {title:"PHASE IV — Saga du Multivers",entries:[
+      {ref:"mcu-loki1"},
+      {id:"mcu-r-wi1a",covers:["mcu-wi1"],rt:179,subitems:["Saison 1 Épisodes 1-5"],faq:{postcredits:"Aucune"}},
+      {ref:"mcu-mz",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {id:"mcu-r-wi1b",covers:["mcu-wi1"],rt:144,subitems:["Saison 1 Épisodes 6-9"]},
+      {ref:"mcu-wv"},
+      {ref:"mcu-sc"},
+      {ref:"mcu-fatws"},
+      {ref:"mcu-smffh"},
+      {ref:"mcu-eternals"}
+    ]},
+    {title:"SEGMENT SPIDER-VERSE — avant Spider-Man : No Way Home",entries:[
+      {ref:"mcu-smr1"},
+      {ref:"mcu-smr2"},
+      {ref:"mcu-smr3"},
+      {ref:"mcu-tasm1"},
+      {ref:"mcu-tasm2"},
+      {ref:"mcu-itsv"},
+      {ref:"mcu-venom1"},
+      {ref:"mcu-venom2"}
+    ]},
+    {title:"SUITE PHASE IV — Saga du Multivers",entries:[
+      {ref:"mcu-nwh"},
+      {ref:"mcu-venom3"},
+      {ref:"mcu-atsv"},
+      {ref:"mcu-mom"},
+      {ref:"mcu-bwpc"},
+      {ref:"mcu-hawkeye"},
+      {ref:"mcu-mk"},
+      {ref:"mcu-bp2"}
+    ]},
+    {title:"PHASE V — Saga du Multivers",entries:[
+      {ref:"mcu-echo"},
+      {ref:"mcu-shehulk"},
+      {ref:"mcu-mm"},
+      {ref:"mcu-thor4"},
+      {ref:"mcu-ironheart"},
+      {ref:"mcu-wwbn"},
+      {ref:"mcu-gotgxmas"},
+      {ref:"mcu-gotg3"},
+      {ref:"mcu-antman3"},
+      {ref:"mcu-si"},
+      {ref:"mcu-marvels"},
+      {ref:"mcu-loki2"},
+      {ref:"mcu-wi2"},
+      {ref:"mcu-wi3",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}}
+    ]},
+    {title:"SEGMENT FOX — avant Deadpool & Wolverine et Avengers : Doomsday",entries:[
+      {ref:"mcu-xfc"},
+      {ref:"mcu-xow"},
+      {ref:"mcu-xm1"},
+      {ref:"mcu-xm2"},
+      {ref:"mcu-xm3"},
+      {ref:"mcu-twolv"},
+      {ref:"mcu-dofp"},
+      {ref:"mcu-xma"},
+      {ref:"mcu-xdp"},
+      {ref:"mcu-dp1",drop:["tags"],faq:{pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {ref:"mcu-dp2",drop:["tags"],faq:{pourquoi:"Parce qu'il se situe ici chronologiquement"}},
+      {ref:"mcu-logan"}
+    ]},
+    {title:"SUITE PHASE V — Saga du Multivers",entries:[
+      {ref:"mcu-dpw"},
+      {ref:"mcu-marvelspc"},
+      {ref:"mcu-agatha"},
+      {ref:"mcu-dba1"},
+      {ref:"mcu-cabf"},
+      {ref:"mcu-tb"}
+    ]},
+    {title:"PHASE VI — Saga du Multivers (en cours)",entries:[
+      {ref:"mcu-wm"},
+      {ref:"mcu-dba2"},
+      {ref:"mcu-pun-olk"},
+      {ref:"mcu-smbnd"},
+      {ref:"mcu-ff"},
+      {ref:"mcu-tb-pc2"}
     ]}
   ]
 };

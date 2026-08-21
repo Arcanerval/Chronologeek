@@ -233,6 +233,39 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
 @keyframes blink{50%{opacity:.25}}
 
+/* ══ les deux parcours ══════════════════════════════════════════════
+   La question se pose une fois, à l'arrivée, au centre de l'écran et le
+   reste flouté : `dialog.ask`. Elle ne se repose plus ensuite — le choix
+   vit sous le bouton d'entrée, en bascule, `.par`, et se reprend à tout
+   moment. `margin:auto` est rappelé : `*{margin:0}` décolle sinon le
+   dialogue en haut à gauche. */
+.ask{margin:auto;border:2px solid var(--hot);background:var(--ink);color:var(--paper);
+  padding:26px 26px 22px;max-width:432px;width:calc(100% - 32px)}
+.ask:focus-visible{outline:none}
+.ask::backdrop{background:rgba(8,8,12,.6);
+  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.ask b{display:block;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:29px;text-transform:uppercase;letter-spacing:.03em;line-height:1.05;
+  color:var(--hot);text-align:center}
+.ask-b{display:flex;gap:10px;margin-top:22px}
+.ask-b button{flex:1 1 0;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:17px;letter-spacing:.06em;text-transform:uppercase;background:none;
+  border:2px solid var(--paper);color:var(--paper);padding:10px 8px;cursor:pointer}
+.ask-b button:hover{background:var(--paper);color:var(--ink)}
+.par{display:flex;justify-content:center;margin-top:15px}
+.par-b{display:inline-flex;border:2px solid var(--paper)}
+.par-b button{font-family:'Chivo';font-size:11.5px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;background:none;color:rgba(255,253,247,.8);
+  border:0;padding:7px 13px;cursor:pointer}
+.par-b button+button{border-left:2px solid var(--paper)}
+.par-b button:hover{color:var(--paper)}
+.par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink)}
+/* L'accroche dit lequel des deux parcours on suit. Les deux phrases sont
+   dans les données — écrites, donc traduisibles — et c'est le parcours en
+   cours qui en montre une. Rien à réécrire en JS. */
+body[data-parcours="rewatch"] .pc-first,
+body:not([data-parcours="rewatch"]) .pc-rewatch{display:none}
+
 /* ══ INTRO : la prose de la page, ses repères, ses omissions ════════ */
 .intro{padding:34px 0 8px}
 .intro-lead{font-size:16.5px;color:rgba(255,253,247,.9);margin-bottom:12px}
@@ -802,8 +835,37 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <div class="s"><b id="s-h">489 h</b><span>À voir</span></div>
     </div>
     <button class="start" id="start" type="button">Commencer <em>▸</em></button>
+    <!-- La bascule vit sous le bouton d'entrée : le choix fait à l'arrivée
+         reste sous les yeux et se reprend à tout moment. `first` est marqué
+         d'emblée — le JS corrige au chargement, et sans ça la bascule
+         paraîtrait un instant sans rien de choisi. -->
+    <div class="par" id="par">
+      <div class="par-b" role="group" aria-label="Choisir le parcours">
+        <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
+        <button type="button" data-parcours="rewatch" aria-pressed="false">Je revois</button>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- ══ LE CHOIX DU PARCOURS ════════════════════════════════════════
+     Posé une fois, au centre, le reste flouté. Fermer sans répondre
+     garde ce qui est déjà à l'écran — l'ordre découverte — et la
+     bascule du bandeau reste là pour changer d'avis. -->
+<!-- `tabindex="-1"` pour que le JS puisse poser le focus sur le dialogue
+     lui-même : sans ça `showModal()` le donne au premier bouton, et l'anneau
+     de `:focus-visible` le désigne comme s'il était recommandé. Les deux
+     réponses se valent. L'attribut `autofocus` sur le dialogue ne suffit
+     pas — Chrome ne le lit que sur un descendant. -->
+<dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
+  <b id="ask-t">Vous découvrez, ou vous revoyez ?</b>
+  <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
+       fond blanc plein — les deux boutons y disparaissaient. -->
+  <div class="ask-b">
+    <button type="button" data-parcours="first">Je découvre</button>
+    <button type="button" data-parcours="rewatch">Je revois</button>
+  </div>
+</dialog>
 
 <main id="body">
 
@@ -943,12 +1005,147 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* l'accueil rouvre sa reprise sur le dernier univers visité */
   try{ localStorage.setItem('cg_last',JSON.stringify({u:'mcu'})); }catch(_){}
 
+  /* ── les deux parcours ────────────────────────────────────────────────
+     La page en sert deux : celui qu'on suit la première fois (`eras`) et
+     celui qu'on suit quand on connaît déjà (`erasRewatch`). La bascule
+     recharge la page plutôt que de redessiner — `ALL` numérote les entrées
+     en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
+  /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
+     fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
+     choix retenu de la dernière visite. À défaut, on découvre.
+     Un seul hash, `#rewatch` : la découverte est le parcours de base et
+     s'écrit donc `/marvel` tout court. C'est le lien qu'on partage, et
+     un visiteur qui n'a rien choisi y trouve la question. */
+  var MKEY=KEY+'-mode', CHOIX=null;
+  try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
+  var HASHMODE=location.hash==='#rewatch'?'rewatch':null;
+  var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
+  if(MODE!=='rewatch') MODE='first';
+  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des deux
+     accroches de l'intro s'affiche. */
+  document.body.dataset.parcours=MODE;
+  var BYID={};
+  D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
+  /* Une entrée de rewatch est soit une référence à l'entrée de découverte,
+     soit une entrée à elle qui hérite de la première entrée qu'elle couvre.
+     `drop` retire un champ : le tag « flashback » d'un Deadpool remis à sa
+     place n'a plus rien à signaler. Une référence morte rendrait une carte
+     vide sans une erreur — elle sort en console. */
+  function resolve(eras){
+    return eras.map(function(era){
+      return {title:era.title,entries:era.entries.map(function(x){
+        var src=BYID[x.ref||(x.covers||[])[0]];
+        if(!src){ console.error('[rewatch] référence morte :',x.ref||x.covers); return x; }
+        var e=Object.assign({},src,x);
+        e.id=x.ref||x.id;
+        if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
+        (x.drop||[]).forEach(function(k){
+          var p=k.split('.');
+          if(p.length===1){ delete e[p[0]]; }
+          else if(e[p[0]]){ e[p[0]]=Object.assign({},e[p[0]]); delete e[p[0]][p[1]]; }
+        });
+        delete e.ref; delete e.drop;
+        return e;
+      })};
+    });
+  }
+  var RW=D.erasRewatch?resolve(D.erasRewatch):null;
+  var ERAS=(MODE==='rewatch'&&RW)?RW:D.eras;
+
   var ALL=[];
-  D.eras.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
+  ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
   var prog={};
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  /* ── le pont entre les deux parcours ──────────────────────────────────
+     Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
+     ne l'a pas vue. Quand le rewatch coupe un panneau en deux — la saison 1
+     de What If…? — l'entrée porte `covers` et dit de quelles entrées de
+     découverte elle tient lieu. Une entrée de découverte est cochée quand
+     toutes les entrées de rewatch qui la couvrent le sont ; une entrée de
+     rewatch, quand tout ce qu'elle couvre l'est. Les deux tables se
+     construisent dans les deux modes, sinon cocher dans l'un ne se verrait
+     pas dans l'autre. */
+  var COVERS={}, COVERED={};
+  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
+    if(!e.covers) return;
+    COVERS[e.id]=e.covers;
+    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
+  }); });
+  function bridge(id){
+    if(COVERS[id]) COVERS[id].forEach(function(d){
+      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    });
+    else if(COVERED[id]) COVERED[id].forEach(function(r){
+      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    });
+  }
+  /* Au chargement, la découverte fait foi : une progression écrite avant que
+     le rewatch existe n'a que ses identifiants. */
+  (function bootBridge(){
+    Object.keys(COVERS).forEach(function(r){
+      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+    });
+  })();
+
+  /* ── poser la question, puis la bascule ───────────────────────────────
+     La question n'est posée qu'à qui n'a rien répondu : ni page publiée,
+     ni hash, ni choix retenu. Ensuite elle ne revient plus — la bascule
+     du bandeau tient le rôle. Le clic ne fait que retenir le choix et
+     changer l'adresse : c'est le rechargement qui rebâtit la page, `ALL`
+     numérotant les entrées en les mutant. Revenir à la découverte retire
+     le hash au lieu d'en poser un — `location.hash=''` laisserait un `#`
+     nu dans la barre d'adresse et ne déclencherait rien. */
+  function vaVers(m){
+    if(m==='rewatch'){ location.hash='#rewatch'; return; }
+    if(history.replaceState){
+      history.replaceState(null,'',location.pathname+location.search);
+      location.reload();
+    } else location.hash='';
+  }
+  (function posePar(){
+    [].forEach.call(document.querySelectorAll('#par [data-parcours]'),function(b){
+      b.setAttribute('aria-pressed',b.dataset.parcours===MODE?'true':'false'); });
+  })();
+  var ask=document.getElementById('ask');
+  /* `#choix` repose la question à qui a déjà répondu — c'est la porte de
+     service pour la revoir sans vider le stockage. */
+  function poseAsk(){
+    if(ask && ask.showModal && !ask.open){ ask.showModal(); ask.focus(); }
+  }
+  if(location.hash==='#choix') poseAsk();
+  else if(!document.body.dataset.mode && !HASHMODE && !CHOIX) poseAsk();
+  /* Fermer sans répondre — Échap, ou le clic à côté — c'est garder ce qui
+     est déjà à l'écran. On retient donc ce mode-là plutôt que de reposer
+     la question à chaque visite : la bascule est sous le bouton. */
+  if(ask){
+    ask.addEventListener('click',function(ev){ if(ev.target===ask) ask.close(); });
+    ask.addEventListener('close',function(){
+      try{ localStorage.setItem(MKEY,MODE); }catch(_){}
+      /* Sinon un rechargement reposerait la question. */
+      if(location.hash==='#choix' && history.replaceState)
+        history.replaceState(null,'',location.pathname+location.search);
+    });
+  }
+
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest&&ev.target.closest('[data-parcours]'); if(!b) return;
+    var m=b.dataset.parcours;
+    try{ localStorage.setItem(MKEY,m); }catch(_){}
+    /* Répondre ce qu'on affiche déjà ne recharge rien. */
+    if(m===MODE){ if(ask&&ask.open) ask.close(); return; }
+    vaVers(m);
+  });
+  /* On ne recharge que si le parcours change vraiment : la page porte
+     d'autres ancres — `#contact`, le `#` du menu — et un rechargement à
+     chacune ferait passer le formulaire de contact pour cassé. */
+  addEventListener('hashchange',function(){
+    if(location.hash==='#choix'){ poseAsk(); return; }
+    var m=location.hash==='#rewatch'?'rewatch':(location.hash?null:'first');
+    if(m&&m!==MODE) location.reload();
+  });
 
   var offLv={}, offK={}, offOpt={}, hideDone=false;
 
@@ -957,7 +1154,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
     return h? h+' h'+(r?' '+String(r).padStart(2,'0'):'') : r+' min'; }
-  function rt(e){ return RT[e.id]||0; }
+  /* `runtime.py` ne connaît que les identifiants de découverte : une entrée
+     du rewatch porte sa durée (`rt`, panneau coupé) ou l'additionne sur ce
+     qu'elle couvre (panneaux recollés). */
+  function rt(e){ return e.rt || RT[e.id] ||
+    (e.covers||[]).reduce(function(s,i){ return s+(RT[i]||0); },0); }
 
   var ICO={
     check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
@@ -1084,7 +1285,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   (function build(){
     var html='';
-    D.eras.forEach(function(era,i){
+    ERAS.forEach(function(era,i){
       var art=eraArt(era);
       html+='<section class="era-sec'+(era.special?' seg':'')+'" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
         '<div class="map">'+
@@ -1093,7 +1294,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
             '<div class="tint"></div><div class="halftone"></div></div>'+
           '<div class="wrap">'+
-            '<span class="chev">'+(i+1)+' / '+D.eras.length+'</span>'+
+            '<span class="chev">'+(i+1)+' / '+ERAS.length+'</span>'+
             '<h2 class="disp off">'+esc(era.title)+'</h2>'+
             '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' vus</span>'+
             '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'+
@@ -1108,7 +1309,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
   function applyFilters(){
     var q=($('#q').value||'').trim().toLowerCase(), shown=0;
-    D.eras.forEach(function(era,i){
+    ERAS.forEach(function(era,i){
       var vis=0;
       era.entries.forEach(function(e){
         var el=document.getElementById(e.id);
@@ -1133,7 +1334,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     $('#k-time').textContent=h+' h';
     $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
     $('#s-tot').textContent=ALL.length; $('#s-h').textContent=h+' h';
-    D.eras.forEach(function(era,i){
+    ERAS.forEach(function(era,i){
       var b=document.querySelector('[data-done="'+i+'"]');
       if(b) b.textContent=era.entries.filter(function(e){return prog[e.id];}).length;
     });
@@ -1287,6 +1488,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     if(chk){
       var art=chk.closest('.bu'), id=art.dataset.id;
       prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      bridge(id);
       save();
       chk.setAttribute('aria-checked',prog[id]?'true':'false');
       art.classList.toggle('done',!!prog[id]);
