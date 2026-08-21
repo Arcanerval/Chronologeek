@@ -1060,15 +1060,24 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   posePar();
   var ask=$('#ask');
-  if(ask && ask.showModal && !document.body.dataset.mode && !HASHMODE && !CHOIX)
-    ask.showModal();
+  /* `#choix` repose la question à qui a déjà répondu — c'est la porte de
+     service pour la revoir sans vider le stockage. */
+  function poseAsk(){
+    if(ask && ask.showModal && !ask.open) ask.showModal();
+  }
+  if(location.hash==='#choix') poseAsk();
+  else if(!document.body.dataset.mode && !HASHMODE && !CHOIX) poseAsk();
   /* Fermer sans répondre — Échap, ou le clic à côté — c'est garder ce qui
      est déjà à l'écran. On retient donc ce mode-là plutôt que de reposer
      la question à chaque visite : la bascule est sous le bouton. */
   if(ask){
     ask.addEventListener('click',function(ev){ if(ev.target===ask) ask.close(); });
     ask.addEventListener('close',function(){
-      try{ localStorage.setItem(MKEY,MODE); }catch(_){} });
+      try{ localStorage.setItem(MKEY,MODE); }catch(_){}
+      /* Sinon un rechargement reposerait la question. */
+      if(location.hash==='#choix' && history.replaceState)
+        history.replaceState(null,'',location.pathname+location.search);
+    });
   }
 
   document.addEventListener('click',function(ev){
@@ -1081,6 +1090,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   });
   addEventListener('hashchange',function(){
     if(location.hash==='#rewatch'||location.hash==='#decouverte') location.reload();
+    else if(location.hash==='#choix') poseAsk();
   });
 
   var offLv={}, offK={}, hideDone=false;

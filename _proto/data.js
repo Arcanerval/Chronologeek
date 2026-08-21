@@ -78,7 +78,7 @@ const DATA_SW={
     {title:"L'ÈRE DE LA NOUVELLE RÉPUBLIQUE",entries:[
       {id:"sw-mando-s1",type:"serie",level:"important",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian",date:"9 ABY",subitems:["Saison 1","Saison 2 Épisodes 1-5"],faq:{quand:"La série se déroule en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {id:"sw-toe1",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 1",date:"20 BBY",note:"Pendant The Clone Wars",tags:["flashback"],faq:{quand:"L'épisode se déroule pendant The Clone Wars en 20 BBY",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
-      {id:"sw-toe2",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 2",date:"~3–2 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule avant le début de Rebels, entre 9 et 5 BBY",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
+      {id:"sw-toe2",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 2",date:"~3–2 BBY",tags:["flashback"],faq:{quand:"L'épisode se déroule probablement entre la saison 2 et la saison 3 de Rebels",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus sur son passé après sa rencontre est mieux pour la comprendre"}},
       {id:"sw-toe3",type:"anime",level:"bonus",tmdb:"251091",media:"tv",img:"/images/talesofthempire.webp",title:"Tales of the Empire — Épisode 3",date:"~8–9 ABY",tags:["flashback"],faq:{quand:"L'épisode se déroule probablement quelques mois maximum avant l'épisode de The Mandalorian",pourquoi:"Le personnage central de cet épisode étant présenté dans l'épisode 5 de la saison 2 de The Mandalorian, en savoir plus son passé après sa rencontre est mieux pour la comprendre"}},
       {id:"sw-mando-s2b",type:"serie",level:"important",tmdb:"82856",media:"tv",img:"/images/mandalorian.webp",title:"The Mandalorian",date:"9 ABY",subitems:["Saison 2 Épisodes 6-8"],faq:{quand:"La série se déroule en 9 ABY",pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {id:"sw-boba",type:"serie",level:"important",tmdb:"115036",media:"tv",img:"/images/bobafett.webp",title:"Le Livre de Boba Fett",date:"9 ABY",faq:{quand:"La série se déroule en 9 ABY après la saison 2 de The Mandalorian",pourquoi:"Parce qu'elle se situe ici chronologiquement et que 2 épisodes sont dédiés au Mandalorien, si vous ne regardez pas cette série vous ne comprendrez pas la suite"}},
@@ -176,8 +176,7 @@ const DATA_SW={
       {id:"sw-r-mando-s1",covers:["sw-mando-s1"],rt:342,subitems:["Saison 1"]},
       {id:"sw-r-mando-s2a",covers:["sw-mando-s1"],rt:172,subitems:["Saison 2 Épisodes 1-4"]},
       {ref:"sw-toe3",drop:["faq.pourquoi"]},
-      {id:"sw-r-mando-s2b5",covers:["sw-mando-s1"],rt:42,subitems:["Saison 2 Épisode 5"]},
-      {ref:"sw-mando-s2b"},
+      {id:"sw-r-mando-s2b5",covers:["sw-mando-s1","sw-mando-s2b"],rt:165,subitems:["Saison 2 Épisodes 5-8"]},
       {ref:"sw-boba"},
       {ref:"sw-mando-s3"},
       {ref:"sw-mag"},
