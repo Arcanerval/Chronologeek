@@ -266,32 +266,34 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
 
 /* ══ les deux parcours ══════════════════════════════════════════════
-   La question se pose une fois, à l'arrivée : `.ask`. Une fois répondue
-   elle se range en une ligne, `.swap`, qui rappelle où l'on est et
-   propose l'autre ordre. Jamais les deux ensemble. */
-.parcours{margin:26px 0 2px}
-.ask{border:2px solid var(--hot);padding:15px 17px;
-  display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.ask .q{flex:1 1 240px}
-.ask .q b{display:block;font-family:'Big Shoulders Display';font-weight:800;
-  font-size:23px;text-transform:uppercase;letter-spacing:.03em;line-height:1;
+   La question se pose une fois, à l'arrivée, au centre de l'écran et le
+   reste flouté : `dialog.ask`. Elle ne se repose plus ensuite — le choix
+   vit sous le bouton d'entrée, en bascule, `.par`, et se reprend à tout
+   moment. `margin:auto` est rappelé : `*{margin:0}` décolle sinon le
+   dialogue en haut à gauche. */
+.ask{margin:auto;border:2px solid var(--hot);background:var(--ink);color:var(--paper);
+  padding:26px 26px 22px;max-width:432px;width:calc(100% - 32px)}
+.ask::backdrop{background:rgba(8,8,12,.6);
+  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.ask b{display:block;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:29px;text-transform:uppercase;letter-spacing:.03em;line-height:1;
   color:var(--hot)}
-.ask .q span{display:block;font-size:13px;line-height:1.35;
-  color:rgba(255,253,247,.72);margin-top:5px}
-.ask .b{display:flex;gap:9px;flex-wrap:wrap}
-.ask button{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
-  letter-spacing:.06em;text-transform:uppercase;background:none;
-  border:2px solid var(--paper);color:var(--paper);padding:8px 15px;cursor:pointer}
-.ask button:hover{background:var(--paper);color:var(--ink)}
-.swap{border-left:3px solid var(--hot);padding-left:12px;
-  font-size:13.5px;line-height:1.45;color:rgba(255,253,247,.66)}
-.swap b{font-weight:700;color:var(--paper)}
-.swap a{color:var(--hot);text-decoration:underline;text-underline-offset:3px}
-.swap a:hover{color:var(--paper)}
-@media(max-width:560px){
-  .ask .b{width:100%}
-  .ask button{flex:1 1 0;padding:9px 6px}
-}
+.ask p{font-size:13.5px;line-height:1.45;color:rgba(255,253,247,.74);margin-top:10px}
+.ask-b{display:flex;gap:10px;margin-top:20px}
+.ask-b button{flex:1 1 0;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:17px;letter-spacing:.06em;text-transform:uppercase;background:none;
+  border:2px solid var(--paper);color:var(--paper);padding:10px 8px;cursor:pointer}
+.ask-b button:hover{background:var(--paper);color:var(--ink)}
+.par{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-top:15px}
+.par>span{font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.7)}
+.par-b{display:inline-flex;border:2px solid var(--paper)}
+.par-b button{font-family:'Chivo';font-size:11.5px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;background:none;color:rgba(255,253,247,.8);
+  border:0;padding:7px 13px;cursor:pointer}
+.par-b button+button{border-left:2px solid var(--paper)}
+.par-b button:hover{color:var(--paper)}
+.par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink)}
 
 /* ══ filtres, recherche, repères ════════════════════════════════════ */
 .sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
@@ -800,29 +802,40 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <div class="s"><b id="s-h">294 h</b><span>À voir</span></div>
     </div>
     <button class="start" id="start" type="button">Commencer <em>▸</em></button>
+    <!-- La bascule vit sous le bouton d'entrée : le choix fait à l'arrivée
+         reste sous les yeux et se reprend à tout moment. `first` est marqué
+         d'emblée — le JS corrige au chargement, et sans ça la bascule
+         paraîtrait un instant sans rien de choisi. -->
+    <div class="par" id="par">
+      <span>Parcours</span>
+      <div class="par-b" role="group" aria-label="Choisir le parcours">
+        <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
+        <button type="button" data-parcours="rewatch" aria-pressed="false">Je revois</button>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- ══ LE CHOIX DU PARCOURS ════════════════════════════════════════
+     Posé une fois, au centre, le reste flouté. Fermer sans répondre
+     garde ce qui est déjà à l'écran — l'ordre découverte — et la
+     bascule du bandeau reste là pour changer d'avis. -->
+<dialog class="ask" id="ask" aria-labelledby="ask-t">
+  <b id="ask-t">Vous découvrez, ou vous revoyez ?</b>
+  <p>Deux ordres pour la même saga : celui qui ménage les révélations,
+    et celui qui remet tout dans l’ordre strict. On peut changer d’avis
+    quand on veut, sous le bouton.</p>
+  <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
+       fond blanc plein — les deux boutons y disparaissaient. -->
+  <div class="ask-b">
+    <button type="button" data-parcours="first">Je découvre</button>
+    <button type="button" data-parcours="rewatch">Je revois</button>
+  </div>
+</dialog>
 
 <main id="body">
 
   <div class="wrap"><div class="intro" id="intro"></div></div>
-
-  <!-- ══ LES DEUX PARCOURS ═══════════════════════════════════════════
-       Le choix se pose une fois et se retient ; ensuite il ne reste
-       qu'une ligne. Les deux blocs sortent `hidden` du HTML : c'est le JS
-       qui en montre un, sinon la question paraîtrait une fraction de
-       seconde à qui a déjà répondu. -->
-  <div class="wrap"><div class="parcours" id="parcours">
-    <div class="ask" id="ask" hidden>
-      <p class="q"><b>Vous découvrez, ou vous revoyez ?</b>
-        <span>Deux ordres pour la même saga. On peut changer d’avis quand on veut.</span></p>
-      <div class="b">
-        <button type="button" data-parcours="first">Je découvre</button>
-        <button type="button" data-parcours="rewatch">Je revois</button>
-      </div>
-    </div>
-    <p class="swap" id="swap" hidden></p>
-  </div></div>
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
@@ -1033,34 +1046,37 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   bootBridge();
 
-  /* ── poser la question, ou la ranger ──────────────────────────────────
-     Elle n'est posée qu'à qui n'a rien répondu : ni page publiée, ni hash,
-     ni choix retenu. Sinon la ligne suffit. Le clic ne fait que retenir le
-     choix et changer le hash — c'est le rechargement qui rebâtit la page,
-     `ALL` numérotant les entrées en les mutant. */
-  var PTXT={
-    first:  ['l’ordre découverte','Vous connaissez déjà la saga ?',
-             'Passer à l’ordre chronologique strict','rewatch','#rewatch'],
-    rewatch:['l’ordre chronologique strict','Première fois dans la saga ?',
-             'Revenir à l’ordre découverte','first','#decouverte']
-  };
-  function poseSwap(){
-    var s=$('#swap'), t=PTXT[MODE]; if(!s) return;
-    s.innerHTML='Vous suivez <b>'+t[0]+'</b>. '+t[1]+
-      ' <a href="'+t[4]+'" data-parcours="'+t[3]+'">'+t[2]+'</a>';
-    s.hidden=false;
+  /* ── poser la question, puis la bascule ───────────────────────────────
+     La question n'est posée qu'à qui n'a rien répondu : ni page publiée,
+     ni hash, ni choix retenu. Ensuite elle ne revient plus — la bascule
+     du bandeau tient le rôle. Le clic ne fait que retenir le choix et
+     changer le hash : c'est le rechargement qui rebâtit la page, `ALL`
+     numérotant les entrées en les mutant. */
+  var PHASH={first:'#decouverte',rewatch:'#rewatch'};
+  function posePar(){
+    [].forEach.call(document.querySelectorAll('#par [data-parcours]'),function(b){
+      b.setAttribute('aria-pressed',b.dataset.parcours===MODE?'true':'false'); });
   }
-  if(!document.body.dataset.mode && !HASHMODE && !CHOIX){ $('#ask').hidden=false; }
-  else poseSwap();
+  posePar();
+  var ask=$('#ask');
+  if(ask && ask.showModal && !document.body.dataset.mode && !HASHMODE && !CHOIX)
+    ask.showModal();
+  /* Fermer sans répondre — Échap, ou le clic à côté — c'est garder ce qui
+     est déjà à l'écran. On retient donc ce mode-là plutôt que de reposer
+     la question à chaque visite : la bascule est sous le bouton. */
+  if(ask){
+    ask.addEventListener('click',function(ev){ if(ev.target===ask) ask.close(); });
+    ask.addEventListener('close',function(){
+      try{ localStorage.setItem(MKEY,MODE); }catch(_){} });
+  }
 
   document.addEventListener('click',function(ev){
     var b=ev.target.closest&&ev.target.closest('[data-parcours]'); if(!b) return;
     var m=b.dataset.parcours;
     try{ localStorage.setItem(MKEY,m); }catch(_){}
-    /* Répondre ce qu'on affiche déjà ne recharge rien : la question se
-       range, la ligne prend sa place. */
-    if(m===MODE){ ev.preventDefault(); $('#ask').hidden=true; poseSwap(); return; }
-    if(b.tagName!=='A') location.hash=PTXT[MODE][4];
+    /* Répondre ce qu'on affiche déjà ne recharge rien. */
+    if(m===MODE){ if(ask&&ask.open) ask.close(); return; }
+    location.hash=PHASH[m];
   });
   addEventListener('hashchange',function(){
     if(location.hash==='#rewatch'||location.hash==='#decouverte') location.reload();
