@@ -195,7 +195,7 @@ const DATA_MCU={
       {"ref":"mcu-vfsm","faq":{"pourquoi":"Because this is where it falls chronologically"}},
       {"ref":"mcu-aos-s3b"},
       {"ref":"mcu-bw"},
-      {"ref":"mcu-eow","faq":{"pourquoi":"Because this is where it falls chronologically"}},
+      {"ref":"mcu-eow"},
       {"ref":"mcu-bp1"},
       {"ref":"mcu-sm1"},
       {"ref":"mcu-pun1"},

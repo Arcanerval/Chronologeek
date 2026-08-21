@@ -156,7 +156,10 @@ const DATA_MCU={
   /* ── le parcours de revisionnage ──────────────────────────────────
      Le second ordre de la page, celui qu'on suit quand on connaît déjà.
      Six deplacements, et rien d'autre :
-     1. Eyes of Wakanda passe avant Black Panther.
+     1. Eyes of Wakanda passe avant Black Panther. Elle ne change rien
+        d'autre : a sa nouvelle place, 1260 av. J.-C. entre Black Widow
+        et Black Panther, elle reste un flashback et sa reponse a
+        « pourquoi le regarder ici » reste vraie.
      2. La saison 1 de What If...? est coupee en deux pour recevoir
         Marvel Zombies, qui prend la suite de son episode 5. Les deux
         moities n'ont que leur `id`, leurs `subitems` et leur `covers` :
@@ -168,8 +171,8 @@ const DATA_MCU={
      4. Votre fidele serviteur Spider-Man suit Civil War.
      5. Deadpool et Deadpool 2 passent avant Logan, sans leur tag
         `flashback` : remis a leur place, ils n'en sont plus un.
-     6. Les six deplacees repondent la meme chose a « pourquoi le
-        regarder ici » — la formule que 52 autres entrees emploient
+     6. Les cinq autres deplacees repondent la meme chose a « pourquoi
+        le regarder ici » — la formule que 52 autres entrees emploient
         deja, donc deja traduite en prod anglaise.
      Une entree `{ref:...}` est l'entree de decouverte, telle quelle ; les
      cles posees a cote l'amendent champ par champ. */
@@ -214,7 +217,7 @@ const DATA_MCU={
       {ref:"mcu-vfsm",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {ref:"mcu-aos-s3b"},
       {ref:"mcu-bw"},
-      {ref:"mcu-eow",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {ref:"mcu-eow"},
       {ref:"mcu-bp1"},
       {ref:"mcu-sm1"},
       {ref:"mcu-pun1"},
