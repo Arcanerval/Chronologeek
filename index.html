@@ -721,8 +721,19 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
   var body=document.body, attract=document.getElementById('attract');
 
+  /* ── un parcours de revisionnage n'ajoute pas d'œuvres ─────────────
+     Quand un univers propose deux parcours, celui de revisionnage
+     recoupe des panneaux et se donne ses propres identifiants
+     (`sw-r-mando-s2a`). La page les pose dans la même progression que
+     ceux de découverte, qu'ils couvrent : c'est la même œuvre, vue une
+     fois. Les compter ici ferait déborder le total — Star Wars tout
+     coché en revisionnage rendait 69 clés pour 61 entrées, soit 113 %,
+     et le HUD annonçait 742 / 734. Le décompte de l'accueil est celui
+     de la découverte, quel que soit le parcours suivi. */
+  var PARCOURS=/^[a-z]+-r-/;
   function read(u){
-    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+(u==='startrek'?'st':u))||'{}')).length; }
+    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+(u==='startrek'?'st':u))||'{}'))
+      .filter(function(k){ return !PARCOURS.test(k); }).length; }
     catch(e){ return 0; }
   }
 
