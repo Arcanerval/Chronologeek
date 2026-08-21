@@ -340,6 +340,16 @@ const TRADUCTIONS = [
   ['Stargate · Assassin\'s Creed · Le Trône de Fer… et d\'autres univers en préparation.',
    'Stargate · Assassin\'s Creed · Game of Thrones… and more universes in the works.'],
 
+  // ── le choix du parcours, posé le 21 août 2026 ──────────────────
+  // La question qui s'ouvre à l'arrivée et la bascule qui la remplace
+  // ensuite. Rien de tout ça n'existe en prod : Star Wars est le premier
+  // univers à servir deux ordres. Les deux réponses reprennent la voix
+  // de l'accroche, à la première personne.
+  ['Vous découvrez, ou vous revoyez ?', 'First time, or watching again?'],
+  ['Je découvre', 'First time'],
+  ['Je revois', 'Watching again'],
+  ['Choisir le parcours', 'Choose your path'],
+
   // ── timelines ──────────────────────────────────────────────────
   ['Chronologeek — Star Wars (proto E)', 'Chronologeek — Star Wars (proto E)'],
   ['Chronologeek — Marvel (proto E)', 'Chronologeek — Marvel (proto E)'],

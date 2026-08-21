@@ -273,6 +273,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    dialogue en haut à gauche. */
 .ask{margin:auto;border:2px solid var(--hot);background:var(--ink);color:var(--paper);
   padding:26px 26px 22px;max-width:432px;width:calc(100% - 32px)}
+.ask:focus-visible{outline:none}
 .ask::backdrop{background:rgba(8,8,12,.6);
   -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
 .ask b{display:block;font-family:'Big Shoulders Display';font-weight:800;
@@ -821,7 +822,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      Posé une fois, au centre, le reste flouté. Fermer sans répondre
      garde ce qui est déjà à l'écran — l'ordre découverte — et la
      bascule du bandeau reste là pour changer d'avis. -->
-<dialog class="ask" id="ask" aria-labelledby="ask-t">
+<!-- `tabindex="-1"` pour que le JS puisse poser le focus sur le dialogue
+     lui-même : sans ça `showModal()` le donne au premier bouton, et l'anneau
+     or de `:focus-visible` le désigne comme s'il était recommandé. Les deux
+     réponses se valent. L'attribut `autofocus` sur le dialogue ne suffit
+     pas — Chrome ne le lit que sur un descendant. -->
+<dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
   <b id="ask-t">Vous découvrez, ou vous revoyez ?</b>
   <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
        fond blanc plein — les deux boutons y disparaissaient. -->
@@ -1063,7 +1069,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* `#choix` repose la question à qui a déjà répondu — c'est la porte de
      service pour la revoir sans vider le stockage. */
   function poseAsk(){
-    if(ask && ask.showModal && !ask.open) ask.showModal();
+    if(ask && ask.showModal && !ask.open){ ask.showModal(); ask.focus(); }
   }
   if(location.hash==='#choix') poseAsk();
   else if(!document.body.dataset.mode && !HASHMODE && !CHOIX) poseAsk();

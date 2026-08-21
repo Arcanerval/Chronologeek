@@ -10,7 +10,7 @@ const DATA_SW={
   color:"#4d9fff",
   glow:"rgba(77,159,255,.35)",
   tmdb_banner:{"type":"tv","id":"82856"},
-  notes:"<p class=\"intro-lead\">If you're here, it's because you want to explore the entire Star Wars cinematic universe in its most optimized order, thought through and studied over years. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><p class=\"intro-lead\">If you're still not satisfied after all that, I recommend the Star Wars comics and novels Deep Dive on this same site.</p><div class=\"intro-tags\"><span class=\"itag\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works for first-time watches as well as rewatches.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the Battle of Yavin (Star Wars Episode IV), so <strong>BBY</strong> = Before the Battle of Yavin / <strong>ABY</strong> = After the Battle of Yavin.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"4\"/><path d=\"M6 12h4M8 10v4M15 13h.01M18 11h.01\"/></svg>The video games</div><p>If the video games' stories interest you (all of them are very interesting except Squadrons and Outlaws, which are more forgettable) but you don't want to play them, there's a link in each game's description to watch a summary of the story on YouTube.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">7 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><p class=\"cuts-intro\">Some media is intentionally left out, and the explanations are below:</p><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Acolyte</dt><dd>The show was canceled, so until another media picks up its story, there's no point in watching it.</dd></div><div class=\"cut\"><dt>The skipped Clone Wars episodes</dt><dd>They're filler episodes centered on Jar Jar or C-3PO/R2-D2 that add nothing to the story; you'll sometimes get a recap at the start of the next episode.</dd></div><div class=\"cut\"><dt>Tales of the Underworld (the Cad Bane episodes)</dt><dd>Only watch them if you're a true fan of the character, and watch them whenever you want: his youth takes place before Episode I but doesn't add much.</dd></div><div class=\"cut\"><dt>Resistance</dt><dd>A fairly childish animated show, packed with fillers, that adds very little to the saga as a whole.</dd></div><div class=\"cut\"><dt>Kids' shows</dt><dd>Only watch them if you're under 10.</dd></div><div class=\"cut\"><dt>Mobile games</dt><dd>No longer available, no solo campaign, nothing added to the story, not interesting…</dd></div><div class=\"cut\"><dt>Comics and novels</dt><dd>Find them in the dedicated Deep Dive — the timeline here is already long enough.</dd></div></dl></div></details>",
+  notes:"<p class=\"intro-lead\">If you're here, it's because you want to explore the entire Star Wars cinematic universe in its most optimized order, thought through and studied over years. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><p class=\"intro-lead\">If you're still not satisfied after all that, I recommend the Star Wars comics and novels Deep Dive on this same site.</p><div class=\"intro-tags\"><span class=\"itag pc-first\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for first-time watches but you can switch to the rewatch version higher up.</span><span class=\"itag pc-rewatch\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for rewatches but you can switch to the first-watch version higher up.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the Battle of Yavin (Star Wars Episode IV), so <strong>BBY</strong> = Before the Battle of Yavin / <strong>ABY</strong> = After the Battle of Yavin.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a <strong>FLASHBACK</strong> for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"4\"/><path d=\"M6 12h4M8 10v4M15 13h.01M18 11h.01\"/></svg>The video games</div><p>If the video games' stories interest you (all of them are very interesting except Squadrons and Outlaws, which are more forgettable) but you don't want to play them, there's a link in each game's description to watch a summary of the story on YouTube.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">7 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><p class=\"cuts-intro\">Some media is intentionally left out, and the explanations are below:</p><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Acolyte</dt><dd>The show was canceled, so until another media picks up its story, there's no point in watching it.</dd></div><div class=\"cut\"><dt>The skipped Clone Wars episodes</dt><dd>They're filler episodes centered on Jar Jar or C-3PO/R2-D2 that add nothing to the story; you'll sometimes get a recap at the start of the next episode.</dd></div><div class=\"cut\"><dt>Tales of the Underworld (the Cad Bane episodes)</dt><dd>Only watch them if you're a true fan of the character, and watch them whenever you want: his youth takes place before Episode I but doesn't add much.</dd></div><div class=\"cut\"><dt>Resistance</dt><dd>A fairly childish animated show, packed with fillers, that adds very little to the saga as a whole.</dd></div><div class=\"cut\"><dt>Kids' shows</dt><dd>Only watch them if you're under 10.</dd></div><div class=\"cut\"><dt>Mobile games</dt><dd>No longer available, no solo campaign, nothing added to the story, not interesting…</dd></div><div class=\"cut\"><dt>Comics and novels</dt><dd>Find them in the dedicated Deep Dive — the timeline here is already long enough.</dd></div></dl></div></details>",
   eras:[
     {title:"THE REPUBLIC ERA",entries:[
       {"id":"sw-ep1","type":"film","level":"must","tmdb":"1893","media":"movie","img":"/images/starwars1.webp","title":"Episode I: The Phantom Menace","date":"32 BBY","faq":{"quand":"The movie takes place in 32 BBY during the age of the Republic","pourquoi":"Because the movie lays the foundations of the saga, and you need to see it first for context on the characters"}},
@@ -68,7 +68,7 @@ const DATA_SW={
     {title:"THE NEW REPUBLIC ERA",entries:[
       {"id":"sw-mando-s1","type":"serie","level":"important","tmdb":"82856","media":"tv","img":"/images/mandalorian.webp","title":"The Mandalorian","date":"9 ABY","subitems":["Season 1","Season 2 Episodes 1-5"],"faq":{"quand":"The show takes place in 9 ABY","pourquoi":"Because this is where it falls chronologically"}},
       {"id":"sw-toe1","type":"anime","level":"bonus","tmdb":"251091","media":"tv","img":"/images/talesofthempire.webp","title":"Tales of the Empire — Episode 1","date":"20 BBY","note":"During The Clone Wars","tags":["flashback"],"faq":{"quand":"The episode takes place during The Clone Wars, in 20 BBY","pourquoi":"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
-      {"id":"sw-toe2","type":"anime","level":"bonus","tmdb":"251091","media":"tv","img":"/images/talesofthempire.webp","title":"Tales of the Empire — Episode 2","date":"~9–5 BBY","tags":["flashback"],"faq":{"quand":"The episode takes place before the start of Rebels, between 9 and 5 BBY","pourquoi":"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
+      {"id":"sw-toe2","type":"anime","level":"bonus","tmdb":"251091","media":"tv","img":"/images/talesofthempire.webp","title":"Tales of the Empire — Episode 2","date":"~3–2 BBY","tags":["flashback"],"faq":{"quand":"The episode probably takes place between season 2 and season 3 of Rebels","pourquoi":"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
       {"id":"sw-toe3","type":"anime","level":"bonus","tmdb":"251091","media":"tv","img":"/images/talesofthempire.webp","title":"Tales of the Empire — Episode 3","date":"~8–9 ABY","tags":["flashback"],"faq":{"quand":"The episode probably takes place at most a few months before the The Mandalorian episode","pourquoi":"Since this episode's central character is introduced in season 2 episode 5 of The Mandalorian, learning about her past after meeting her helps you understand her better"}},
       {"id":"sw-mando-s2b","type":"serie","level":"important","tmdb":"82856","media":"tv","img":"/images/mandalorian.webp","title":"The Mandalorian","date":"9 ABY","subitems":["Season 2 Episodes 6-8"],"faq":{"quand":"The show takes place in 9 ABY","pourquoi":"Because this is where it falls chronologically"}},
       {"id":"sw-boba","type":"serie","level":"important","tmdb":"115036","media":"tv","img":"/images/bobafett.webp","title":"The Book of Boba Fett","date":"9 ABY","faq":{"quand":"The show takes place in 9 ABY, after season 2 of The Mandalorian","pourquoi":"Because this is where it falls chronologically, and 2 episodes are dedicated to the Mandalorian — skip this show and you won't understand what comes next"}},
@@ -84,6 +84,83 @@ const DATA_SW={
       {"id":"sw-bf2res","type":"jeu","level":"important","tmdb":"0","media":"game","img":"/images/battlefront.webp","title":"Star Wars Battlefront II Campaign: Resurrection","date":"34 ABY","faq":{"quand":"The 3 missions take place before, during and after The Force Awakens","pourquoi":"Because it's a good companion to the previous movie and a good introduction to the next one"},"desc":"Star Wars Battlefront II is an FPS set in the universe of the hit saga. Take part in ground and aerial battles across the movies' most iconic locations. Join the ranks of the Empire or the Rebellion in frantic multiplayer matches, or dive into a brand-new solo campaign as an Imperial soldier."},
       {"id":"sw-ep8","type":"film","level":"must","tmdb":"181808","media":"movie","img":"/images/starwars8.webp","title":"Episode VIII: The Last Jedi","date":"34 ABY","faq":{"quand":"The movie takes place right after the events of Episode VII, in 34 ABY","pourquoi":"Because this is where it falls chronologically"}},
       {"id":"sw-ep9","type":"film","level":"must","tmdb":"181812","media":"movie","img":"/images/starwars9.webp","title":"Episode IX: The Rise of Skywalker","date":"35 ABY","faq":{"quand":"The movie takes place one year after The Last Jedi","pourquoi":"Because this is where it falls chronologically"}}
+    ]}
+  ],
+  erasRewatch:[
+    {title:"THE REPUBLIC ERA",entries:[
+      {"ref":"sw-toj2","drop":["tags","faq.pourquoi"]},
+      {"ref":"sw-toj3","drop":["tags","faq.pourquoi"]},
+      {"ref":"sw-toj1","drop":["tags","faq.pourquoi"]},
+      {"ref":"sw-ep1"},
+      {"ref":"sw-toj4","drop":["faq.pourquoi"]},
+      {"ref":"sw-ep2"}
+    ]},
+    {title:"THE CLONE WARS",entries:[
+      {"ref":"sw-tcw-pre"},
+      {"ref":"sw-tcwfilm"},
+      {"ref":"sw-tcw-22"},
+      {"ref":"sw-tcw-21"},
+      {"id":"sw-r-tcw-20a","covers":["sw-tcw-20"],"rt":465,"subitems":["Season 3 Episode 15","Season 3 Episode 16","Season 3 Episode 17","Season 3 Episode 18","Season 3 Episode 19","Season 3 Episode 20"," ","Season 3 Episode 21","Season 3 Episode 22"," ","Season 4 Episode 7","Season 4 Episode 8","Season 4 Episode 9","Season 4 Episode 10"," ","Season 4 Episode 14"," ","Season 4 Episode 15","Season 4 Episode 16","Season 4 Episode 17","Season 4 Episode 18"," ","Season 4 Episode 19","Season 4 Episode 20","Season 4 Episode 21","Season 4 Episode 22"]},
+      {"ref":"sw-toe1","drop":["faq.pourquoi"]},
+      {"id":"sw-r-tcw-20b","covers":["sw-tcw-20"],"rt":199,"subitems":["Season 5 Episode 2","Season 5 Episode 3","Season 5 Episode 4","Season 5 Episode 5"," ","Season 5 Episode 6","Season 5 Episode 7","Season 5 Episode 8","Season 5 Episode 9"," ","Season 5 Episode 12"]},
+      {"ref":"sw-tcw-19"},
+      {"ref":"sw-ep3"},
+      {"ref":"sw-toj5"},
+      {"ref":"sw-tcw-rsith"},
+      {"ref":"sw-toe4"},
+      {"ref":"sw-toe5"}
+    ]},
+    {title:"THE IMPERIAL ERA",entries:[
+      {"ref":"sw-bb1"},
+      {"ref":"sw-bb2"},
+      {"ref":"sw-totu1"},
+      {"ref":"sw-totu23"},
+      {"ref":"sw-maul"},
+      {"ref":"sw-toj6"},
+      {"ref":"sw-fo"},
+      {"ref":"sw-solo"},
+      {"ref":"sw-kenobi"},
+      {"ref":"sw-toe6"},
+      {"ref":"sw-survivor"}
+    ]},
+    {title:"THE REBELLION ERA",entries:[
+      {"ref":"sw-andors1","note":"We're going to alternate between an animated series and a live action one quite a few times; if the very sharp change of tone between Andor and Rebels really bothers you, watch Rebels first, then Andor. But honestly, trust me, it's worth it for the storytelling"},
+      {"ref":"sw-rebels-s1"},
+      {"ref":"sw-andors2-1"},
+      {"id":"sw-r-rebels-s2a","covers":["sw-rebels-s2"],"rt":298,"date":"3 BBY","subitems":["Season 2 Episodes 10-22"]},
+      {"ref":"sw-toe2","drop":["faq.pourquoi"]},
+      {"id":"sw-r-rebels-s2b","covers":["sw-rebels-s2"],"rt":390,"date":"2 BBY","subitems":["Season 3 Episodes 1-17 (Through Imperial Eyes)"]},
+      {"ref":"sw-andors2-2"},
+      {"ref":"sw-rebels-s3"},
+      {"id":"sw-r-rebels-s4","covers":["sw-rebels-s4","sw-rebels-ep"],"drop":["note"],"subitems":["Season 4"]},
+      {"ref":"sw-andors2-3"},
+      {"ref":"sw-rogue"},
+      {"ref":"sw-ep4"},
+      {"ref":"sw-ep5"},
+      {"ref":"sw-outlaws"},
+      {"ref":"sw-ep6"},
+      {"ref":"sw-bf2-prologue"},
+      {"ref":"sw-bf2-c1"},
+      {"ref":"sw-squadrons"},
+      {"ref":"sw-bf2-c2"}
+    ]},
+    {title:"THE NEW REPUBLIC ERA",entries:[
+      {"id":"sw-r-mando-s1","covers":["sw-mando-s1"],"rt":342,"subitems":["Season 1"]},
+      {"id":"sw-r-mando-s2a","covers":["sw-mando-s1"],"rt":172,"subitems":["Season 2 Episodes 1-4"]},
+      {"ref":"sw-toe3","drop":["faq.pourquoi"]},
+      {"id":"sw-r-mando-s2b5","covers":["sw-mando-s1","sw-mando-s2b"],"rt":165,"subitems":["Season 2 Episodes 5-8"]},
+      {"ref":"sw-boba"},
+      {"ref":"sw-mando-s3"},
+      {"ref":"sw-mag"},
+      {"ref":"sw-ahsoka"},
+      {"ref":"sw-skelcrew"}
+    ]},
+    {title:"THE FIRST ORDER ERA",entries:[
+      {"ref":"sw-bf2-m12","drop":["tags","faq.pourquoi"]},
+      {"ref":"sw-ep7"},
+      {"ref":"sw-bf2res"},
+      {"ref":"sw-ep8"},
+      {"ref":"sw-ep9"}
     ]}
   ]
 };

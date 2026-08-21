@@ -223,6 +223,23 @@ const TRADUCTIONS = [
      titre, lui, ne se traduit pas : il est déclaré identique plus bas. */
   ['Ajoutée à la timeline DC, à la suite de Supergirl.',
    'Added to the DC timeline, following Supergirl.'],
+
+  /* ── le parcours rewatch de Star Wars, écrit le 21 août 2026 ────────
+     Le second parcours est né après la prod : ses coupes et sa note
+     n'ont pas d'homologue anglais à retrouver. Les sous-items suivent
+     le moule des cent autres, « Season N Episodes A-B ». */
+  ['Saison 2 Épisodes 1-4', 'Season 2 Episodes 1-4'],
+  ['Saison 2 Épisodes 5-8', 'Season 2 Episodes 5-8'],
+  /* La note qui prévient de l'alternance Andor / Rebels. Registre parlé,
+     comme l'accroche de la page : « if you're here, it's because you
+     want to explore… ». */
+  ['On va alterner entre une série animée et une série live action pas mal de fois, si le changement de ton très important entre Andor et Rebels vous dérange vraiment regardez Rebels d\'abord, puis Andor. Mais en vrai faites moi confiance ça vaut le coup en terme de narration',
+   'We\'re going to alternate between an animated series and a live action one quite a few times; if the very sharp change of tone between Andor and Rebels really bothers you, watch Rebels first, then Andor. But honestly, trust me, it\'s worth it for the storytelling'],
+  /* Tales of the Empire 2 : la date est passée à ~3–2 BBY le 21 août
+     2026, et la réponse « quand » a suivi. Le moule anglais est celui
+     des 60 autres : « The episode takes place… ». */
+  ['L\'épisode se déroule probablement entre la saison 2 et la saison 3 de Rebels',
+   'The episode probably takes place between season 2 and season 3 of Rebels'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════
@@ -273,6 +290,46 @@ const PERIMES = new Map([
    + ' are trademarks of their respective owners; Chronologeek is an independent fan'
    + ' project.'],
 ]);
+
+/* ═══ LES RETOUCHES DE FRAGMENT ═════════════════════════════════════
+   `notes` est un bloc de quatre mille signes repris **en entier** de la
+   prod anglaise : accroche, repères de lecture, liste des écartés. Quand
+   une seule de ses phrases change dans le proto français, il n'y a rien
+   à retrouver pour elle — et rien à signaler non plus, puisque le champ
+   est bien traduit. La phrase anglaise d'avant reste alors en ligne.
+
+   D'où cette table : le fragment anglais périmé en clé, sa version à
+   jour en valeur. C'est la même idée que `PERIMES`, appliquée à un
+   morceau de chaîne plutôt qu'à la chaîne entière.
+
+   Le garde-fou est le compte : un motif qui ne se trouve plus fait
+   sortir le script en erreur. Sans lui, une retouche devenue caduque
+   passerait inaperçue — et c'est exactement ce qu'elle est censée
+   empêcher. */
+const RETOUCHES = [
+  { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
+    de: '<span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true">'
+      + '<path d="M20 6 9 17l-5-5"/></svg>'
+      + 'This guide works for first-time watches as well as rewatches.</span>',
+    a: '<span class="itag pc-first"><svg viewBox="0 0 24 24" aria-hidden="true">'
+      + '<path d="M20 6 9 17l-5-5"/></svg>'
+      + 'This guide works best for first-time watches but you can switch to the'
+      + ' rewatch version higher up.</span>'
+      + '<span class="itag pc-rewatch"><svg viewBox="0 0 24 24" aria-hidden="true">'
+      + '<path d="M20 6 9 17l-5-5"/></svg>'
+      + 'This guide works best for rewatches but you can switch to the'
+      + ' first-watch version higher up.</span>' },
+];
+const retouchesFaites = new Map();
+function retouche(s) {
+  let out = s;
+  for (const r of RETOUCHES) {
+    if (!out.includes(r.de)) continue;
+    out = out.split(r.de).join(r.a);
+    retouchesFaites.set(r.quoi, (retouchesFaites.get(r.quoi) || 0) + 1);
+  }
+  return out;
+}
 
 /* Reprend un objet de libellés anglais copié de la prod et y rejoue ce
    que le proto a changé depuis. Sans ça, `nav.avatar` y resterait
@@ -442,6 +499,11 @@ const TECHNIQUES = new Set([
   'id', 'tmdb', 'img', 'media', 'level', 'k', 'c', 'kind', 'color', 'glow',
   'banner', 'tmdb_banner', 'href', 'uni', 'nat', 'key', 'vo', 'tags',
   'softcanon', 'open', 'cols', 'groups',
+  /* Le parcours rewatch : `ref` désigne l'entrée de découverte dont
+     l'entrée hérite, `covers` celles dont elle tient lieu pour la
+     progression, `drop` les champs à retirer, `rt` la durée en minutes.
+     Quatre clés de structure — les traduire casserait l'appariement. */
+  'ref', 'covers', 'drop', 'rt',
   /* `branch` désigne la colonne où l'ère se range — arrowverse, dceu,
      elseworlds, dcu. C'est une clé de disposition, pas un libellé. */
   'branch',
@@ -501,10 +563,10 @@ export function creerTraducteur(lex, manques, contexte) {
       }
 
       if (refEn !== undefined && typeof refEn === 'string' && refEn.trim()) {
-        return memeEchappement(fr, refEn);
+        return retouche(memeEchappement(fr, refEn));
       }
       const trouve = lex.cherche(fr);
-      if (trouve !== undefined) return memeEchappement(fr, trouve);
+      if (trouve !== undefined) return retouche(memeEchappement(fr, trouve));
       /* dernier recours : une des dix phrases écrites à la main. On
          l'applique, mais on la consigne quand même — elle doit passer
          par la relecture avant d'être considérée comme acquise. */
@@ -567,11 +629,21 @@ function serialiseTimeline(nom, D) {
   const l = [];
   l.push(`const ${nom}={`);
   for (const [k, v] of Object.entries(D)) {
-    if (k === 'eras') continue;
+    if (k === 'eras' || k === 'erasRewatch') continue;
     l.push(`  ${k}:${js(v)},`);
   }
-  l.push('  eras:[');
-  D.eras.forEach((era, i) => {
+  /* Les deux parcours sortent au même format, une entrée par ligne. Le
+     rewatch en dernier : c'est l'ordre du proto français, et deux
+     fichiers qui ne rangent pas leurs clés pareil ne se comparent plus. */
+  blocEres(l, 'eras', D.eras, !D.erasRewatch);
+  if (D.erasRewatch) blocEres(l, 'erasRewatch', D.erasRewatch, true);
+  l.push('};');
+  return l.join('\n');
+}
+
+function blocEres(l, nom, eras, dernier) {
+  l.push(`  ${nom}:[`);
+  eras.forEach((era, i) => {
     /* Toutes les clés de l'ère, pas seulement `title` et `entries` : DC
        range dans `zone`, `branch` et `hint` de quoi bâtir ses colonnes.
        Les perdre ne casse rien au chargement — la page s'affiche, mais à
@@ -584,11 +656,9 @@ function serialiseTimeline(nom, D) {
     (era.entries || []).forEach((e, j, arr) => {
       l.push(`      ${js(e)}${j < arr.length - 1 ? ',' : ''}`);
     });
-    l.push(`    ]}${i < D.eras.length - 1 ? ',' : ''}`);
+    l.push(`    ]}${i < eras.length - 1 ? ',' : ''}`);
   });
-  l.push('  ]');
-  l.push('};');
-  return l.join('\n');
+  l.push(dernier ? '  ]' : '  ],');
 }
 
 /* ═══ LES TROIS TIMELINES ═══════════════════════════════════════════ */
@@ -649,6 +719,11 @@ const TITRES_IDENTIQUES = [
   'The Fall of Kylo Ren 1-5',
   // DC · la série du DCU ajoutée le 18 août 2026, sans titre français
   'Lanterns',
+  /* Star Wars · deux dates du parcours rewatch, écrites le 21 août 2026.
+     Une date ne se traduit pas, mais « BBY » est une lettre : sans
+     cette ligne le contrôle les compte comme restées en français. */
+  '~3–2 BBY',
+  '3 BBY',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 
@@ -688,6 +763,25 @@ for (const T of TIMELINES) {
       entries: (entries || []).map(e => tr.objet(e, idxEN.get(e.id), `#${e.id}`, idxFR.get(e.id))),
     };
   }) };
+  /* ── le second parcours ────────────────────────────────────────────
+     `erasRewatch` a la forme d'`eras`, mais ses entrées sont pour la
+     plupart des renvois (`ref`) sans un mot à elles : seules les coupes
+     portent des sous-items, une date ou une note. Sans ce passage, le
+     bloc sortait recopié tel quel — sous-items français sur la page
+     anglaise, et pas une ligne au rapport, la traduction ne regardant
+     que `eras`. Une entrée qui renvoie à une entrée de découverte
+     hérite de son homologue anglais, comme elle hérite de son titre. */
+  if (dP.erasRewatch) sortie.erasRewatch = dP.erasRewatch.map(era => {
+    const { entries, ...enTete } = era;
+    return {
+      ...tr.objet(enTete, undefined, 'erasRewatch'),
+      entries: (entries || []).map(e => {
+        const src = e.ref || (e.covers || [])[0];
+        return tr.objet(e, idxEN.get(src), `#${e.id || e.ref}`, idxFR.get(src));
+      }),
+    };
+  });
+
   /* l'en-tête de la timeline : titre, sous-titre, intro, encarts. La
      racine passe par la même liste blanche que les entrées, sinon on
      signalerait une couleur ou un chemin d'image comme non traduits. */
@@ -1272,6 +1366,17 @@ if (CHECK || process.argv.includes('--detail')) {
     }
   }
 }
+
+/* Une retouche qui ne trouve plus son motif est une retouche caduque —
+   ou un bloc anglais qui a changé de forme. Dans les deux cas la phrase
+   à jour n'est pas passée, et rien d'autre ne le dirait. */
+const orphelines = RETOUCHES.filter(r => !retouchesFaites.has(r.quoi));
+if (orphelines.length) {
+  console.error('\n  ✖ retouche(s) sans motif trouvé :');
+  for (const r of orphelines) console.error(`     ${r.quoi}`);
+  process.exit(1);
+}
+console.log(`  ${RETOUCHES.length} retouche(s) de fragment, toutes appliquées`);
 
 if (!CHECK) {
   fs.writeFileSync(path.join(RACINE, '_proto/a-traduire.json'),
