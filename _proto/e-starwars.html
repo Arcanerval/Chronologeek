@@ -265,23 +265,32 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   text-transform:uppercase;letter-spacing:.03em}
 .cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
 
-/* ══ les deux parcours ══════════════════════════════════════════════ */
-.modes{display:grid;grid-template-columns:1fr 1fr;margin:24px 0 2px;
-  border:2px solid var(--paper)}
-.modes a{display:block;padding:11px 15px;text-decoration:none;color:var(--paper);
-  border-right:2px solid var(--paper)}
-.modes a:last-child{border-right:0}
-.modes a b{display:block;font-family:'Big Shoulders Display';font-weight:800;
-  font-size:21px;text-transform:uppercase;letter-spacing:.03em;line-height:1}
-.modes a span{display:block;font-size:12px;line-height:1.3;
-  color:rgba(255,253,247,.7);margin-top:4px}
-.modes a:hover{background:rgba(255,253,247,.09)}
-.modes a[aria-current]{background:var(--paper);color:var(--ink)}
-.modes a[aria-current] span{color:rgba(13,11,18,.72)}
+/* ══ les deux parcours ══════════════════════════════════════════════
+   La question se pose une fois, à l'arrivée : `.ask`. Une fois répondue
+   elle se range en une ligne, `.swap`, qui rappelle où l'on est et
+   propose l'autre ordre. Jamais les deux ensemble. */
+.parcours{margin:26px 0 2px}
+.ask{border:2px solid var(--hot);padding:15px 17px;
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.ask .q{flex:1 1 240px}
+.ask .q b{display:block;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:23px;text-transform:uppercase;letter-spacing:.03em;line-height:1;
+  color:var(--hot)}
+.ask .q span{display:block;font-size:13px;line-height:1.35;
+  color:rgba(255,253,247,.72);margin-top:5px}
+.ask .b{display:flex;gap:9px;flex-wrap:wrap}
+.ask button{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  letter-spacing:.06em;text-transform:uppercase;background:none;
+  border:2px solid var(--paper);color:var(--paper);padding:8px 15px;cursor:pointer}
+.ask button:hover{background:var(--paper);color:var(--ink)}
+.swap{border-left:3px solid var(--hot);padding-left:12px;
+  font-size:13.5px;line-height:1.45;color:rgba(255,253,247,.66)}
+.swap b{font-weight:700;color:var(--paper)}
+.swap a{color:var(--hot);text-decoration:underline;text-underline-offset:3px}
+.swap a:hover{color:var(--paper)}
 @media(max-width:560px){
-  .modes{grid-template-columns:1fr}
-  .modes a{border-right:0;border-bottom:2px solid var(--paper)}
-  .modes a:last-child{border-bottom:0}
+  .ask .b{width:100%}
+  .ask button{flex:1 1 0;padding:9px 6px}
 }
 
 /* ══ filtres, recherche, repères ════════════════════════════════════ */
@@ -799,11 +808,21 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   <div class="wrap"><div class="intro" id="intro"></div></div>
 
   <!-- ══ LES DEUX PARCOURS ═══════════════════════════════════════════
-       Des liens, pas des boutons : la bascule recharge la page. -->
-  <div class="wrap"><nav class="modes" aria-label="Choix du parcours">
-    <a href="#decouverte" data-mode-tab="first"><b>Première fois</b><span>L’ordre pensé pour découvrir, sans rien gâcher.</span></a>
-    <a href="#rewatch" data-mode-tab="rewatch"><b>Revisionnage</b><span>L’ordre chronologique strict, quand on connaît déjà.</span></a>
-  </nav></div>
+       Le choix se pose une fois et se retient ; ensuite il ne reste
+       qu'une ligne. Les deux blocs sortent `hidden` du HTML : c'est le JS
+       qui en montre un, sinon la question paraîtrait une fraction de
+       seconde à qui a déjà répondu. -->
+  <div class="wrap"><div class="parcours" id="parcours">
+    <div class="ask" id="ask" hidden>
+      <p class="q"><b>Vous découvrez, ou vous revoyez ?</b>
+        <span>Deux ordres pour la même saga. On peut changer d’avis quand on veut.</span></p>
+      <div class="b">
+        <button type="button" data-parcours="first">Je découvre</button>
+        <button type="button" data-parcours="rewatch">Je revois</button>
+      </div>
+    </div>
+    <p class="swap" id="swap" hidden></p>
+  </div></div>
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
@@ -938,7 +957,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      celui qu'on suit quand on connaît déjà (`erasRewatch`). La bascule
      recharge la page plutôt que de redessiner — `ALL` numérote les entrées
      en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
-  var MODE=(document.body.dataset.mode==='rewatch'||location.hash==='#rewatch')?'rewatch':'first';
+  /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
+     fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
+     choix retenu de la dernière visite. À défaut, on découvre. */
+  var MKEY=KEY+'-mode', CHOIX=null;
+  try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
+  var HASHMODE=(location.hash==='#rewatch'||location.hash==='#decouverte')
+    ? (location.hash==='#rewatch'?'rewatch':'first') : null;
+  var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
+  if(MODE!=='rewatch') MODE='first';
   var BYID={};
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
   /* Une entrée de rewatch est soit une référence à l'entrée de découverte,
@@ -1006,10 +1033,34 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   bootBridge();
 
-  /* L'onglet actif se marque comme le menu le fait déjà. Le clic ne change
-     que le hash : c'est le rechargement qui rebâtit la page. */
-  [].forEach.call(document.querySelectorAll('[data-mode-tab]'),function(a){
-    if(a.dataset.modeTab===MODE) a.setAttribute('aria-current','page');
+  /* ── poser la question, ou la ranger ──────────────────────────────────
+     Elle n'est posée qu'à qui n'a rien répondu : ni page publiée, ni hash,
+     ni choix retenu. Sinon la ligne suffit. Le clic ne fait que retenir le
+     choix et changer le hash — c'est le rechargement qui rebâtit la page,
+     `ALL` numérotant les entrées en les mutant. */
+  var PTXT={
+    first:  ['l’ordre découverte','Vous connaissez déjà la saga ?',
+             'Passer à l’ordre chronologique strict','rewatch','#rewatch'],
+    rewatch:['l’ordre chronologique strict','Première fois dans la saga ?',
+             'Revenir à l’ordre découverte','first','#decouverte']
+  };
+  function poseSwap(){
+    var s=$('#swap'), t=PTXT[MODE]; if(!s) return;
+    s.innerHTML='Vous suivez <b>'+t[0]+'</b>. '+t[1]+
+      ' <a href="'+t[4]+'" data-parcours="'+t[3]+'">'+t[2]+'</a>';
+    s.hidden=false;
+  }
+  if(!document.body.dataset.mode && !HASHMODE && !CHOIX){ $('#ask').hidden=false; }
+  else poseSwap();
+
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest&&ev.target.closest('[data-parcours]'); if(!b) return;
+    var m=b.dataset.parcours;
+    try{ localStorage.setItem(MKEY,m); }catch(_){}
+    /* Répondre ce qu'on affiche déjà ne recharge rien : la question se
+       range, la ligne prend sa place. */
+    if(m===MODE){ ev.preventDefault(); $('#ask').hidden=true; poseSwap(); return; }
+    if(b.tagName!=='A') location.hash=PTXT[MODE][4];
   });
   addEventListener('hashchange',function(){
     if(location.hash==='#rewatch'||location.hash==='#decouverte') location.reload();
