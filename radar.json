@@ -33,7 +33,7 @@
   "source": "TMDB",
   "precision": "day",
   "era": "",
-  "syn": "",
+  "syn": "Maggie, Negan, Dillard, and Renata go on a hunt to resupply their dwindling resources.",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
@@ -598,7 +598,7 @@
    "e": 1,
    "mark": "premiere"
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -789,8 +789,8 @@
  {
   "universe": "starwars",
   "title": "Tales from the Outer Rim: The Legend of Beggar's Canyon",
-  "date_sort": "2027-01-26",
-  "date_txt": "26/01/2027",
+  "date_sort": "2027-03-09",
+  "date_txt": "09/03/2027",
   "kind": "Comic",
   "source": "Wookieepedia",
   "precision": "day",
