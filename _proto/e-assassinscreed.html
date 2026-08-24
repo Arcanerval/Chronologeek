@@ -1368,7 +1368,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '" aria-label="'+esc(T.zoom||'Agrandir')+'"><img src="'+p+'" loading="lazy" alt=""/>'+
             '<span class="expand-poster-ov">🔍</span></button>':'')+
         '<div class="expand-info"><div class="expand-synopsis">'+
-          esc(d.overview||T.noSynopsis)+'</div>'+
+          esc(e.desc||d.overview||T.noSynopsis)+'</div>'+
         meta([[T.mYear,(d.release_date||d.first_air_date||'').substring(0,4)],
               [T.mGenre,(d.genres||[]).map(function(g){return g.name;}).join(', ')],
               [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],

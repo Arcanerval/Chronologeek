@@ -1234,6 +1234,18 @@ et la majuscule initiale quand on découpe une phrase.
 
 ## Ce qui est tranché, et ne revient pas
 
+- **Une date de timeline ne se traduit jamais, et « BC » reste « BC ».**
+  Tranché par Niko le 25 août 2026, et la règle vaut pour **toutes** les
+  timelines, pas seulement Assassin's Creed. Une date est un repère qu'on lit
+  d'un coup d'œil et qu'on compare d'une page à l'autre, pas une phrase :
+  « 49-43 BC » se lit pareil dans les deux langues, « 49-43 av. J.-C. » allonge
+  la pastille sans rien apprendre à personne. C'est déjà ce que font « BBY »
+  chez Star Wars et « BG » chez Avatar Legends — à cette différence près que
+  ceux-là sont des unités inventées, alors que « BC » a un équivalent français
+  et que la tentation de le poser revient. Le champ `date` est donc dans
+  `IDENTIQUES_PAR_CHAMP` de chaque script de traduction, avec `present` là où
+  il existe. Cela ne concerne que les dates : dans la prose d'un synopsis,
+  « le Vᵉ siècle av. J.-C. » reste du français.
 - **Dragon Age n'entre pas au radar.** Tranché par Niko le 20 août 2026 : la
   saga est au point mort, rien n'est annoncé après *The Veilguard*. La raison
   technique tenait déjà — `radar.py` n'a aucune source pour les jeux, les DLC,

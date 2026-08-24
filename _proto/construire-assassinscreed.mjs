@@ -301,6 +301,85 @@ for (const e of ALL) {
   e.desc = d.desc;
 }
 
+/* ── ce que Niko a ajoute apres coup ──────────────────────────────────
+   Le document decrit un ordre de lecture, pas un catalogue : il ne porte ni
+   lien de visionnage pour les courts metrages, ni marque de version
+   originale, et sa fiche TMDB d'Embers designait une autre oeuvre. Ces
+   corrections viennent de Niko, le 25 aout 2026, et vivent ici pour la meme
+   raison que `REFORMULATIONS` : `ac.txt` se reexporte, et une retouche faite
+   dedans se perdrait au prochain rescan sans rien signaler.
+
+   Quatre clefs, toutes facultatives :
+
+   - `lang: 'vo'` pose le badge VO, qui dit « pas de version francaise
+     connue ». La page ne l'affiche qu'en francais (`T.lang !== 'en'`) : sur
+     la version anglaise il n'apprendrait rien a personne. Neuf entrees en
+     portent — les deux FCBD, The Resurrection Plot, la finale d'Uprising,
+     Gold, A Soar of Eagles, Abstergo Hacked et Ascendance, dont la seule
+     video francaise est sous-titree.
+   - `desc` remplace le resume. Celui de Lineage et celui d'Ascendance sont
+     la description de leur video ; celui d'Embers est le resume du wiki, sa
+     fiche TMDB ayant ete retiree.
+   - `tmdb: '0'` retire la fiche. La page n'ouvre alors ni note, ni annee, ni
+     bande-annonce, et s'en tient au resume.
+   - `links` s'ajoute a ceux que le document posait deja. Les adresses
+     francaises, elles, vivent dans `traductions-assassinscreed.mjs` : c'est
+     la traduction qui les substitue, comme elle le fait des titres.
+
+   Un identifiant inconnu fait sortir le script en erreur — le piege
+   d'appariement du depot, encore : les identifiants portent un rang, et une
+   entree ajoutee au document decale ce qui la suit. */
+const AJOUTS = {
+  'ac-lineage-1': {
+    /* La description de la video, moins son dernier paragraphe : il ne
+       raconte que l'episode 1, et l'entree couvre les trois. */
+    desc: 'When the Duke of Milan is brutally murdered, the Assassin Giovanni '
+      + 'Auditore is dispatched to investigate. The answers he uncovers implicate '
+      + 'Italy’s most powerful families reaching all the way back to the Vatican '
+      + 'itself. As Giovanni draws closer to the truth, he becomes hunted himself. '
+      + 'He must expose the conspirators before he joins their ever growing list of '
+      + 'victims. Lineage is the prequel to the Assassin’s Creed II story, '
+      + 'revealing the machinations of 15th century Italy through the actions of '
+      + 'Ezio’s father, Giovanni.',
+    links: [{ href: 'https://www.youtube.com/watch?v=vcE8xJkK6t4', label: 'Watch the video' }],
+  },
+  'ac-ascendance-1': {
+    lang: 'vo',
+    desc: 'Ubisoft’s short film, Assassin’s Creed: Ascendance details '
+      + 'Cesare Borgia’s rise to power.',
+    links: [{ href: 'https://www.youtube.com/watch?v=BCcLbHaJ2Po', label: 'Watch the video' }],
+  },
+  'ac-embers-1': {
+    tmdb: '0',
+    desc: 'The short film follows an elderly Ezio, living a peaceful life in the '
+      + 'Tuscan countryside with his wife Sofia and his children Flavia and Marcello '
+      + 'and writing his memoirs. One day a stranger appears, a Chinese female '
+      + 'Assassin called Shao Jun, who came to Ezio in order to seek knowledge of his '
+      + 'life as an Assassin. Although Ezio prefers that Jun not stay, due to his '
+      + 'desire to leave his days as an Assassin behind, Sofia allows her to stay for '
+      + 'the night. The next day, Ezio catches Jun reading his memoirs and bids her to '
+      + 'leave, but relents after she asks him about what it means to be an Assassin.',
+  },
+  'ac-iii-abstergo-hacked-1':   { lang: 'vo' },
+  'ac-fcbd-2016-great-1':       { lang: 'vo' },
+  'ac-fcbd-2016-the-1':         { lang: 'vo' },
+  'ac-the-engine-of-2':         { lang: 'vo' },
+  'ac-uprising-finale-1':       { lang: 'vo' },
+  'ac-gold-1':                  { lang: 'vo' },
+  'ac-mirage-a-soar-1':         { lang: 'vo' },
+};
+{
+  const parId = new Map(ALL.map((e) => [e.id, e]));
+  for (const [id, a] of Object.entries(AJOUTS)) {
+    const e = parId.get(id);
+    if (!e) { desaccords.push(`ajout : « ${id} » n'existe pas dans le document`); continue; }
+    if (a.lang) e.lang = a.lang;
+    if (a.desc) e.desc = a.desc;
+    if (a.tmdb !== undefined) e.tmdb = a.tmdb;
+    if (a.links) (e.links = e.links || []).push(...a.links);
+  }
+}
+
 for (const e of ALL) {
   if (!e.tmdb) e.tmdb = '0';
   e.media = e.type === 'film' ? 'movie' : (e.type === 'jeu' || e.type === 'dlc') ? 'game' : 'tv';
@@ -456,6 +535,10 @@ const DATA = {
       const o = { id: x.id, type: x.type, level: x.level, tmdb: x.tmdb, media: x.media,
                   title: x.title, date: x.date };
       if (x.img)      o.img = x.img;
+      /* `lang: 'vo'` dit « pas de version francaise connue ». La liste des
+         champs est blanche : un champ qu'on ajoute plus haut et qu'on oublie
+         ici ne sort pas, et rien ne le signale. */
+      if (x.lang)     o.lang = x.lang;
       if (x.tags)     o.tags = x.tags;
       if (x.notes)    o.notes = x.notes;
       if (x.bignote)  o.bignote = x.bignote;

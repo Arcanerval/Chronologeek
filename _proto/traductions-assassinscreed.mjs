@@ -60,9 +60,12 @@ export const AC_IDENTIQUES = [
   'Assassin\'s Creed III - Abstergo Hacked',
   'Assassin\'s Creed FCBD 2016 - Great Wall',
   'Assassin\'s Creed FCBD 2016 - The Chair',
-  'Assassin\'s Creed Unity: Abstergo Entertainment: Employee Handbook',
   'Dead Kings',
   'The Hidden Ones',
+  /* Le DLC de Shadows garde son nom anglais — décision de Niko,
+     25 août 2026 —, alors que la presse française écrit « Les Griffes
+     d'Awaji ». */
+  'Claws of Awaji',
 
   /* Les noms de ceux qui revivent les souvenirs : réponses de la FAQ,
      un nom propre chacune. Ce qui les entoure — « Probably », « Random
@@ -138,6 +141,8 @@ export const AC_TRADUCTIONS = [
 
   /* — saga Helix & Abstergo — */
   ['Assassin\'s Creed: Unity', 'Assassin\'s Creed : Unity'],
+  ['Assassin\'s Creed Unity: Abstergo Entertainment: Employee Handbook',
+    'Assassin\'s Creed Unity : Abstergo Entertainment, manuel de l\'employé'],
   ['Assassin\'s Creed: Syndicate', 'Assassin\'s Creed : Syndicate'],
   ['The Last Maharaja', 'Le Dernier Maharaja'],
   ['Jack the Ripper', 'Jack l\'Éventreur'],
@@ -198,19 +203,21 @@ export const AC_TRADUCTIONS = [
   ['Assassin\'s Creed: Valhalla', 'Assassin\'s Creed : Valhalla'],
   ['Assassin\'s Creed: Valhalla – Blood Brothers', 'Assassin\'s Creed Valhalla : Blood Brothers'],
   ['Assassin\'s Creed: Valhalla – Geirmund\'s Saga', 'Assassin\'s Creed Valhalla : La Saga de Geirmund'],
-  ['Assassin\'s Creed: Valhalla – The Hidden Codex', 'Assassin\'s Creed Valhalla : The Hidden Codex'],
+  /* La bande dessinée paraît en France sous le seul nom de la série,
+     avec le sous-titre de l'album — « Les Convertis ». */
+  ['Assassin\'s Creed: Valhalla – The Hidden Codex', 'Assassin\'s Creed : Valhalla (Les Convertis)'],
   ['Assassin\'s Creed: Valhalla – Sword of the White Horse',
     'Assassin\'s Creed Valhalla : L\'Épée du cheval blanc'],
   ['Wrath of the Druids', 'La Colère des Druides'],
   ['The Siege of Paris', 'Le Siège de Paris'],
   ['Assassin\'s Creed: Valhalla - Forgotten Myths', 'Assassin\'s Creed Valhalla : Les Mythes oubliés'],
   ['Dawn of Ragnarök', 'L\'Aube du Ragnarök'],
-  ['Assassin\'s Creed: Escape Room Puzzle Book', 'Assassin\'s Creed : Escape Room Puzzle Book'],
+  ['Assassin\'s Creed: Escape Room Puzzle Book', 'Assassin\'s Creed : Escape Game'],
   ['Assassin\'s Creed: Mirage', 'Assassin\'s Creed : Mirage'],
   ['Valley of Memories', 'Vallée de la mémoire'],
-  ['Assassin\'s Creed: Mirage – Daughter of No One', 'Assassin\'s Creed Mirage : Daughter of No One'],
+  ['Assassin\'s Creed: Mirage – Daughter of No One', 'Assassin\'s Creed Mirage : La Fille de Personne'],
   ['Assassin\'s Creed: Mirage - A Soar of Eagles', 'Assassin\'s Creed Mirage : A Soar of Eagles'],
-  ['Assassin\'s Creed: The Golden City', 'Assassin\'s Creed : The Golden City'],
+  ['Assassin\'s Creed: The Golden City', 'Assassin\'s Creed : La Cité Dorée'],
   /* Ce n'est pas un roman mais un livre-jeu, et il paraît en France
      dans la collection « Le livre dont vous êtes l'Assassin ». */
   ['Assassin\'s Creed: The Silk Road',
@@ -220,7 +227,6 @@ export const AC_TRADUCTIONS = [
   ['Assassin\'s Creed: Forgotten Temple', 'Assassin\'s Creed : Forgotten Temple'],
   ['Assassin\'s Creed: Nexus VR', 'Assassin\'s Creed : Nexus VR'],
   ['Assassin\'s Creed: Shadows', 'Assassin\'s Creed : Shadows'],
-  ['Claws of Awaji', 'Les Griffes d\'Awaji'],
   ['Assassin\'s Creed: Shadows – Tales of Iga', 'Assassin\'s Creed Shadows : Les Légendes d\'Iga'],
   ['Assassin\'s Creed: Black Flag Resynced', 'Assassin\'s Creed : Black Flag Resynced'],
 
@@ -282,7 +288,10 @@ export const AC_TRADUCTIONS = [
   ['Black Tides epilogue', 'L\'épilogue Marées noires'],
   ['So... think like this : after the events of present time in Black Flag, Abstergo rewrote Edward Kenway\'s story to release their version on the Animus Hub',
     'Alors... voyez ça comme ça : après les événements du présent dans Black Flag, Abstergo a réécrit l\'histoire d\'Edward Kenway pour en sortir sa version sur l\'Animus Hub'],
-  ['Not Resynced !!! (yet...)', 'Pas resynchronisé !!! (pour l\'instant...)'],
+  /* « Resynced » ne se traduit pas : c'est le nom que porte la version
+     refaite de Black Flag, et l'avertissement dit qu'elle n'existe pas
+     encore. Décision de Niko, 25 août 2026. */
+  ['Not Resynced !!! (yet...)', 'Pas Resynced !!! (pour l\'instant...)'],
 
   /* ════ L'ACCROCHE ET LES REPÈRES DE LECTURE ═══════════════════
      Le texte de Niko, traduit phrase par phrase. Les entités HTML de
@@ -376,10 +385,16 @@ export const AC_TRADUCTIONS = [
      Ils viennent des fiches TMDB et des quatrièmes de couverture,
      collectés par `descriptions-assassinscreed.py`. Traduits, pas
      réécrits. */
-  ['Assassin\'s Creed: Lineage is a series of three short films based on the universe of the video game Assassin\'s Creed, created by Ubisoft. The first episode was released on 26 October 2009 via YouTube, and the final two episodes were released on 12 November 2009 on Spike TV, before being later uploaded to YouTube for international viewing purposes.',
-    'Assassin\'s Creed : Lineage est une série de trois courts métrages tirés de l\'univers du jeu vidéo Assassin\'s Creed, créé par Ubisoft. Le premier épisode est sorti le 26 octobre 2009 sur YouTube, les deux derniers le 12 novembre 2009 sur Spike TV, avant d\'être mis en ligne sur YouTube pour le public international.'],
-  ['Assassins Creed: Ascendance is a short, animated film project created to expand the Assassin\'s Creed series. Created as a bridge between Assassin\'s Creed II and Assassin\'s Creed: Brotherhood, the short film details more of Cesare Borgia\'s rise to power.',
-    'Assassin\'s Creed : Ascendance est un court métrage d\'animation créé pour prolonger la série Assassin\'s Creed. Conçu comme un pont entre Assassin\'s Creed II et Assassin\'s Creed : Brotherhood, il détaille la montée en puissance de Cesare Borgia.'],
+  /* Lineage, Ascendance et Embers : les trois résumés posés par Niko le
+     25 août 2026, les deux premiers repris de la description de leur
+     vidéo, le troisième du wiki — la fiche TMDB d'Embers désignait une
+     autre œuvre et a été retirée. */
+  ['When the Duke of Milan is brutally murdered, the Assassin Giovanni Auditore is dispatched to investigate. The answers he uncovers implicate Italy’s most powerful families reaching all the way back to the Vatican itself. As Giovanni draws closer to the truth, he becomes hunted himself. He must expose the conspirators before he joins their ever growing list of victims. Lineage is the prequel to the Assassin’s Creed II story, revealing the machinations of 15th century Italy through the actions of Ezio’s father, Giovanni.',
+    'Quand le duc de Milan est sauvagement assassiné, l\'Assassin Giovanni Auditore est envoyé enquêter. Ce qu\'il découvre met en cause les familles les plus puissantes d\'Italie, jusqu\'au Vatican lui-même. À mesure qu\'il approche de la vérité, Giovanni devient à son tour une proie : il lui faut démasquer les conspirateurs avant de rejoindre leur liste de victimes, qui ne cesse de s\'allonger. Lineage est la préquelle d\'Assassin\'s Creed II, et dévoile les manœuvres de l\'Italie du XVᵉ siècle à travers les actes du père d\'Ezio, Giovanni.'],
+  ['Ubisoft’s short film, Assassin’s Creed: Ascendance details Cesare Borgia’s rise to power.',
+    'Le court métrage d\'Ubisoft, Assassin\'s Creed : Ascendance, détaille la montée en puissance de Cesare Borgia.'],
+  ['The short film follows an elderly Ezio, living a peaceful life in the Tuscan countryside with his wife Sofia and his children Flavia and Marcello and writing his memoirs. One day a stranger appears, a Chinese female Assassin called Shao Jun, who came to Ezio in order to seek knowledge of his life as an Assassin. Although Ezio prefers that Jun not stay, due to his desire to leave his days as an Assassin behind, Sofia allows her to stay for the night. The next day, Ezio catches Jun reading his memoirs and bids her to leave, but relents after she asks him about what it means to be an Assassin.',
+    'Le court métrage suit Ezio vieillissant, qui coule des jours paisibles dans la campagne toscane avec sa femme Sofia et ses enfants Flavia et Marcello, et qui écrit ses mémoires. Un jour, une inconnue se présente : Shao Jun, une Assassine chinoise venue chercher auprès d\'Ezio ce qu\'il sait de sa vie d\'Assassin. Ezio préférerait qu\'elle ne reste pas — il veut laisser derrière lui ses années d\'Assassin —, mais Sofia lui offre l\'hospitalité pour la nuit. Le lendemain, Ezio surprend Jun en train de lire ses mémoires et lui demande de partir, avant de céder quand elle lui demande ce que signifie être un Assassin.'],
   ['Niccolò Polo, father of Marco, will finally reveal the story he has kept secret all his life – the story of Altaïr, one of the Brotherhood\'s most extraordinary assassins. Altaïr embarks on a formidable mission – one that takes him throughout the Holy Land and shows him the true meaning of the Assassin\'s Creed. To demonstrate his commitment, Altaïr must defeat nine deadly enemies, including the Templar leader, Robert de Sablé.',
     'Niccolò Polo, le père de Marco, va enfin révéler l\'histoire qu\'il a gardée secrète toute sa vie : celle d\'Altaïr, l\'un des assassins les plus extraordinaires de la Confrérie. Altaïr se lance dans une mission redoutable, qui le mène à travers toute la Terre sainte et lui montre le vrai sens du Credo des Assassins. Pour prouver son engagement, Altaïr doit vaincre neuf ennemis mortels, dont le chef des Templiers, Robert de Sablé.'],
   ['The Animi Training Program was a secret Templar initiative to train Abstergo Industries employees in the skills they needed to fight against the remnants of the Assassins, such as combat and freerunning, through the use of the Animus, a device created by Abstergo that allowed a person to relive genetic memories.',
@@ -463,7 +478,7 @@ export const AC_TRADUCTIONS = [
   ['Thor, Baldr, and Heimdall have discovered trouble lurking at Asgard\'s borders once again. A mighty fire giant from Muspelheim is threatening the land of the Æsir. In the aftermath of the raging battle, Baldr discovers that the Muspels are now massing at the gates of Svartalfheim and begins a journey to bring peace to the realms.',
     'Thor, Baldr et Heimdall découvrent qu\'un danger rôde une fois de plus aux frontières d\'Asgard : un puissant géant de feu venu de Muspelheim menace la terre des Ases. Au lendemain de la bataille, Baldr comprend que les Muspels se massent maintenant aux portes de Svartalfheim, et part en voyage pour ramener la paix dans les royaumes.'],
   ['The Assassin\'s Creed Escape Room Puzzle Book is an exciting journey through history in which you must solve a series of puzzles and mysteries to save humanity. You are Joey, a museum worker who comes across a mysterious blade that sets in motion a chain of events that completely upends your life. Drawn into the world of the Assassins, you must tour through time and space — from 5th century BCE Greece to the catacombs of medieval Venice — in order to foil a malevolent Isu plot.',
-    'L\'Assassin\'s Creed Escape Room Puzzle Book est un voyage palpitant à travers l\'Histoire, où il vous faut résoudre une série d\'énigmes et de mystères pour sauver l\'humanité. Vous êtes Joey, employé de musée, qui tombe sur une lame mystérieuse et déclenche une suite d\'événements qui bouleverse sa vie. Entraîné dans le monde des Assassins, vous devez parcourir le temps et l\'espace — de la Grèce du Vᵉ siècle av. J.-C. aux catacombes de la Venise médiévale — pour déjouer un complot isu.'],
+    'L\'Assassin\'s Creed Escape Game est un voyage palpitant à travers l\'Histoire, où il vous faut résoudre une série d\'énigmes et de mystères pour sauver l\'humanité. Vous êtes Joey, employé de musée, qui tombe sur une lame mystérieuse et déclenche une suite d\'événements qui bouleverse sa vie. Entraîné dans le monde des Assassins, vous devez parcourir le temps et l\'espace — de la Grèce du Vᵉ siècle av. J.-C. aux catacombes de la Venise médiévale — pour déjouer un complot isu.'],
   ['Master Assassin Roshan\'s past is revealed in the hunt along the Silk Road for a powerful mysterious artifact in this essential Assassin\'s Creed adventure Cairo, 824 – In the bowels of prison, escape is out of the question. The best Roshan can hope for is a quick death. She certainly doesn\'t expect a second chance offered by a cloaked stranger who says Roshan is exactly what they need: Someone who can disappear, who will do what needs to be done, someone expendable...',
     'Le passé de la Maître Assassine Roshan se dévoile au fil d\'une traque le long de la route de la Soie, à la recherche d\'un artefact aussi puissant que mystérieux, dans cette aventure essentielle d\'Assassin\'s Creed. Le Caire, 824 — au fond d\'une geôle, s\'évader est hors de question. Le mieux que Roshan puisse espérer, c\'est une mort rapide. Elle ne s\'attend certainement pas à la seconde chance que lui offre un inconnu encapuchonné, pour qui Roshan est exactement ce qu\'il leur faut : quelqu\'un qui sait disparaître, qui fera ce qu\'il y a à faire, quelqu\'un de sacrifiable...'],
   ['Years before the events of Assassin\'s Creed Mirage, a young Fuladh must return to his homeland to investigate political unrest that could point to a secret Order of the Ancients\' stronghold. But in order to discover what\'s behind the chaos and violence in Adulis, Fuladh and Roshan will have to confront a more immediate danger.',
@@ -486,22 +501,32 @@ export const AC_TRADUCTIONS = [
     'Japon, 1868. L\'opposition entre le shogunat Tokugawa et les partisans de l\'Empereur s\'aggrave sous l\'influence de forces extérieures. Les Templiers ont infiltré la cour impériale et poussent l\'Empereur à faire la guerre aux Tokugawa, alliés de la Confrérie des Assassins. La glorieuse ère des samouraïs serait-elle sur le point de s\'effondrer ? Atsuko, une Japonaise de 16 ans, a grandi dans les quartiers riches de la ville d\'Aizu.'],
 ];
 
+/* ── les vidéos, une adresse par langue ──────────────────────────────
+   Un lien de visionnage n'est pas un libellé : c'est la même œuvre dans
+   une autre langue, et la page française doit ouvrir la version
+   française. `href` étant un champ technique, il est recopié tel quel
+   par le script ; cette table est la seule chose qui le remplace.
+
+   Les quatre paires viennent de Niko, le 25 août 2026. Une adresse
+   anglaise qui ne se retrouve plus dans les données fait sortir le
+   script en erreur — c'est ce qui dira que le lien a bougé.
+
+   Ascendance n'a pas de version doublée : sa vidéo française est
+   sous-titrée, et l'entrée porte donc aussi le badge VO. */
+export const AC_LIENS = [
+  /* Lineage — le film complet, VF remasterisée */
+  ['https://www.youtube.com/watch?v=vcE8xJkK6t4', 'https://www.youtube.com/watch?v=xHAFe-7chDI'],
+  /* Ascendance — VOSTFR */
+  ['https://www.youtube.com/watch?v=BCcLbHaJ2Po', 'https://www.youtube.com/watch?v=KGbcp7Zkv7w'],
+  /* Animi Training Program — les cinématiques du multi de Revelations */
+  ['https://www.youtube.com/watch?v=Ah2XSXZqrcA', 'https://www.youtube.com/watch?v=iqjt-SQ5AnM'],
+  /* Chronicles: Russia — la fin secrète */
+  ['https://www.youtube.com/watch?v=0JKrEU7o1Nk', 'https://www.youtube.com/watch?v=bIL4dWRicbg'],
+];
+
 /* ── les formes ──────────────────────────────────────────────────── */
 export const AC_GABARITS = [
   /* Les sept bandeaux de saga. « SAGA » se dit pareil des deux côtés,
      et le chiffre ne bouge pas — c'est une forme, pas un libellé. */
   [/^SAGA (\d+)$/, m => `SAGA ${m[1]}`],
-
-  /* LES DATES AVANT NOTRE ÈRE. Vingt entrées sur cent onze, de
-     « 70-56 BC » à « ~421 BC ». Une seule enjambe les deux ères,
-     « ~431 BC-1480 », et le tiret y colle deux nombres : il devient un
-     tiret aéré, sans quoi on lirait « av. J.-C.-1480 ».
-
-     Les autres dates — quatre chiffres, un intervalle, un « ~ », les
-     deux « ~2306 IE » de l'ère isu — s'écrivent pareil dans les deux
-     langues et ressortent telles quelles. Le dernier gabarit est là
-     pour ça : sans lui elles partiraient au compteur des manques. */
-  [/^([~\d][\d\s-]*) BC-(\d+)$/, m => `${m[1]} av. J.-C. - ${m[2]}`],
-  [/^([~\d][\d\s-]*) BC$/, m => `${m[1]} av. J.-C.`],
-  [/^[~\d][\d\s-]*(?: IE)?$/, m => m[0]],
 ];

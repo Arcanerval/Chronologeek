@@ -40,7 +40,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { AC_IDENTIQUES, AC_TRADUCTIONS, AC_GABARITS } from './traductions-assassinscreed.mjs';
+import { AC_IDENTIQUES, AC_TRADUCTIONS, AC_GABARITS, AC_LIENS } from './traductions-assassinscreed.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const RACINE = path.resolve(ICI, '..');
@@ -221,6 +221,9 @@ function traduit(v, ou) {
 
 /* ═══ LES DONNÉES ═══════════════════════════════════════════════════ */
 
+const liensFR = new Map(AC_LIENS);
+const liensVus = new Set();
+
 const SRC = lire('_proto/data-assassinscreed-en.js');
 const boite = evalue(SRC);
 const CG_EN = boite.CG, AC_EN = boite.ASSASSINSCREED;
@@ -235,19 +238,19 @@ const TECHNIQUES = new Set([
   'otherFlag', 'otherHref', 'flag', 'art', 'ink',
 ]);
 
-/* `present` est une date et rien d'autre : l'année du cadre Animus,
-   « 2012 », « 2007-2012 », « ~2081 ». Le champ est déclaré ici plutôt
-   que dans la liste des identiques, qui compterait 84 lignes sans rien
-   apprendre.
+/* Une date s'écrit pareil des deux côtés — « 1191-1193 », « 70-56 BC »,
+   « ~2306 IE » — et `present` est une date elle aussi : c'est l'année
+   du cadre Animus, pas une prose. Les deux champs sont déclarés ici
+   plutôt que dans la liste des identiques, qui compterait 195 lignes
+   sans rien apprendre.
 
-   `date`, lui, N'EST PAS identique, et c'est le seul champ de date du
-   site à ne pas l'être : vingt des cent onze entrées se placent avant
-   notre ère, et « 49-43 BC » est de l'anglais. Il passe donc par les
-   gabarits, qui rendent « 49-43 av. J.-C. » et laissent les autres
-   formes telles quelles. Star Wars et Avatar Legends n'ont pas ce
-   problème — « BBY » et « BG » sont des unités inventées, les mêmes
-   dans les deux langues. */
-const IDENTIQUES_PAR_CHAMP = new Set(['present']);
+   « BC » RESTE « BC », ET C'EST LA RÈGLE DE TOUTES LES TIMELINES —
+   tranché par Niko le 25 août 2026. Une date de timeline est un repère,
+   pas une phrase : elle doit se lire d'un coup d'œil et se comparer
+   d'une page à l'autre. « av. J.-C. » avait été essayé, et il allongeait
+   la pastille sans rien apprendre à personne. C'est déjà ce que font
+   « BBY » chez Star Wars et « BG » chez Avatar Legends. */
+const IDENTIQUES_PAR_CHAMP = new Set(['date', 'present']);
 
 function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v) => traduitObjet(v, `${chemin}[]`, cle));
@@ -257,6 +260,11 @@ function traduitObjet(o, chemin = '', cle = '') {
     return out;
   }
   if (typeof o !== 'string') return o;
+  /* Les liens de visionnage, avant la liste noire : `href` est bien un
+     champ technique — on ne le traduit pas mot à mot —, mais quatre
+     adresses ont leur équivalent français, et c'est la seule chose du
+     fichier qui les remplace. */
+  if (cle === 'href' && liensFR.has(o)) { liensVus.add(o); return liensFR.get(o); }
   if (TECHNIQUES.has(cle)) return o;
   if (IDENTIQUES_PAR_CHAMP.has(cle)) return o;
   /* L'accroche de la page est un bloc de HTML : l'intro, les trois
@@ -325,7 +333,14 @@ function parChamp(o, acc = {}, cle = '') {
   }
 }
 
-/* 3. la variété : sept titres de saga distincts d'un côté et un seul de
+/* 3. les liens : une adresse anglaise de la table qui ne se retrouve
+   plus dans les données, c'est la vidéo qui a bougé — et le lien
+   français est alors posé nulle part, sans que rien ne le dise. */
+for (const [en] of AC_LIENS) {
+  if (!liensVus.has(en)) alertes.push(`le lien « ${en} » n'existe plus dans les données anglaises`);
+}
+
+/* 4. la variété : sept titres de saga distincts d'un côté et un seul de
    l'autre, ce n'est pas une traduction, c'est un appariement raté. */
 {
   const ce = parChamp(AC_EN), cf = parChamp(AC_FR);
