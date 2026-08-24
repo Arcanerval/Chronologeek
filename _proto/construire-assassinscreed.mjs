@@ -215,6 +215,33 @@ function casse(s) {
 
 const ALL = eras.flatMap((e) => e.entries);
 
+/* ── la seule phrase du document reformulee ───────────────────────────
+   Elle designait un endroit qui n'existe plus. La note de Liberation disait
+   « look at the video just beneath » quand l'adresse YouTube etait posee en
+   clair a la ligne suivante ; les URL partent maintenant au depliant, et la
+   phrase renvoyait a du vide. Reformulation validee par Niko le 24 aout
+   2026 — trois mots changes, le reste mot pour mot.
+
+   Elle vit ici et non dans `ac.txt` : le document est sa source, il se
+   reexporte, et une retouche faite dedans se perdrait au prochain rescan
+   sans rien signaler. La table sort en erreur si sa phrase ne se retrouve
+   plus — c'est ce qui dira que le document a bouge. */
+const REFORMULATIONS = [{
+  de: 'look at the video just beneath',
+  a:  'look at the video in the panel below',
+}];
+for (const r of REFORMULATIONS) {
+  r.vu = 0;
+  for (const e of ALL) {
+    if (!e.notes) continue;
+    e.notes = e.notes.map((n) => {
+      if (!n.includes(r.de)) return n;
+      r.vu++;
+      return n.replace(r.de, r.a);
+    });
+  }
+}
+
 /* ── l'avertissement ──────────────────────────────────────────────────
    Une note qui porte ses trois points d'exclamation n'est pas une remarque
    de placement, c'est une consigne : « Not Resynced !!! (yet...) » dit que
@@ -457,6 +484,12 @@ for (const e of ALL) {
   if (!e.title) erreurs.push('titre vide : ' + e.id);
   if (!TYPES[Object.keys(TYPES).find((k) => TYPES[k] === e.type)])
     erreurs.push('type inconnu : ' + e.type);
+}
+/* Une reformulation qui ne trouve plus sa phrase n'est pas un detail : soit
+   le document l'a reecrite, soit il l'a retiree, et dans les deux cas la
+   table ment sur ce qu'elle fait. */
+for (const r of REFORMULATIONS) {
+  if (!r.vu) erreurs.push('reformulation sans emploi : « ' + r.de + ' »');
 }
 /* Une URL restee dans une note ressort en clair sous le titre, non
    cliquable, et rien ne le signale : c'est exactement ce que la sortie des
