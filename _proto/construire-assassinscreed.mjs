@@ -308,6 +308,15 @@ const badges = [
     ids: idsSaga(2), label: 'Kenway\u2019s Fleet', desc: 'The Kenway saga completed' },
   { id: 'ac_helix',    icon: '🧬', color: '#8fb8de', trigger: 'oeuvre',
     ids: idsSaga(3), label: 'Helix Initiate', desc: 'The Helix & Abstergo saga completed' },
+  /* La cinquieme saga est la plus longue du guide — 39 entrees, d'Origins
+     a Mirage — et elle n'avait pas de badge : les quatre premiers
+     couvraient les quatre premieres sagas, et le cinquieme comptait les
+     livres. Layla Hassan porte le Baton d'Hermes Trismegiste, qui est ce
+     que ses trois jeux ont en commun ; l'encre est le sable de l'Antiquite,
+     la seule libre a cote des quatre autres. */
+  { id: 'ac_layla',    icon: '🏛️', color: '#e0a45c', trigger: 'oeuvre',
+    ids: idsSaga(4), label: 'Bearer of the Staff',
+    desc: 'The Layla Hassan saga completed' },
   { id: 'ac_isu',      icon: '📜', color: '#a99cf9', trigger: 'oeuvre',
     ids: idsDe((e) => e.type === 'roman' || e.type === 'comic'),
     label: 'Keeper of the Codex', desc: 'Every book and comic completed' },

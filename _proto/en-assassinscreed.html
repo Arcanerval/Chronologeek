@@ -7,7 +7,7 @@
 <title>Chronologeek — Assassin’s Creed (proto E)</title>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
-<link rel="preload" as="image" href="https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg"/>
+<link rel="preload" as="image" href="/images/acuniverse.webp"/>
 <!--
   ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
   THÈSE : cette page ne liste pas, elle donne à choisir sa prochaine étape.
@@ -19,7 +19,7 @@
   diagonale, trame de demi-teinte sur les visuels, titrage condensé à ombre
   portée dure et décalée. Aucun halo, aucun verre, aucun arrondi.
   ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
-  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#4d9fff).
+  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#c0202f).
   RÉCIT : le visiteur voit d'abord des images, comprend qu'il choisit, et
   voit sa carte se remplir entrée par entrée.
   TEXTES : tout ce qui est prose vient du document de Niko, mot pour mot,
@@ -72,6 +72,11 @@
      vert d'eau, la seule encre encore libre à côté du comic. */
   --t-jeu:#ffb74d; --t-dlc:#ffcc80; --t-roman:#a99cf9; --t-comic:#4dd0e1;
   --t-film:#64b5f6; --t-video:#f472b6; --t-audio:#80cbc4;
+  /* l'encre du présent. Le cyan de l'Animus, celui des interfaces de la
+     franchise : la date du présent n'est pas une date de plus, c'est
+     l'autre couche du récit, et elle doit se lire comme telle à côté de
+     l'or de la date dans l'univers. */
+  --present:#6fd0e8;
   /* les deux repères du guide. Le flashforward est sa signature : les
      trois Chronicles se jouent bien avant leur place dans l'Histoire. */
   --m-flashback:#f0c97c; --m-flashforward:#8fd6c4;
@@ -197,13 +202,18 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    octet de plus. Les débords restent courts — au-delà, `cover` sur-zoome
    la bannière et le visuel part en bouillie. */
 .plane{position:absolute;inset:0 -2%;background-size:cover;background-position:center;
-  background-image:url(https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg)}
+  background-image:url(/images/acuniverse.webp)}
 .plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
-.plane.p2{inset:0 -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+.plane.p2{inset:0 -4%;filter:saturate(1.05) contrast(1.12);opacity:.72;
   clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+/* Le voile portait encore le bleu #4d9fff du gabarit, qui est l'encre de
+   Star Wars : le héros d'un guide rouge sortait bleu, et la bannière de
+   l'univers — les quinze assassins sous l'insigne — n'y était plus qu'une
+   ombre. Il prend l'encre de l'univers, comme The Walking Dead le fait
+   avec la sienne. */
 .veil{position:absolute;inset:0;
   background:linear-gradient(to top,var(--ink) 2%,
-             color-mix(in srgb,#4d9fff 46%,var(--ink)) 38%,
+             color-mix(in srgb,var(--uni) 34%,var(--ink)) 38%,
              color-mix(in srgb,var(--era3) 40%,transparent))}
 .attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
 .attract h1{font-size:clamp(50px,11vw,140px);max-width:12ch}
@@ -418,13 +428,22 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   letter-spacing:.03em;color:var(--hot);line-height:1}
 /* la date du présent : l'année depuis laquelle le souvenir est revécu. Tout
    le guide est bâti sur cette ligne-là — « this guide is based on the
-   present timeline » — et elle manquait à l'écran. Elle se lit à côté de la
-   date dans l'univers sans lui disputer l'œil : une étiquette à filet, pas
-   un second grand nombre. */
-.bu-meta .pd{display:inline-flex;align-items:baseline;gap:6px;padding:2px 8px;
-  border:1px solid rgba(255,253,247,.24);font-size:10.5px;letter-spacing:.09em;
-  color:rgba(255,253,247,.72);white-space:nowrap}
-.bu-meta .pd i{font-style:normal;font-weight:800;color:rgba(255,253,247,.44)}
+   present timeline » — et elle manquait à l'écran.
+
+   Premier essai : une étiquette grise à filet, 10,5 px. Elle était là, on
+   ne la voyait pas — elle se lisait comme une mention légale à côté du
+   grand nombre doré. Elle prend donc l'encre de l'Animus, un fond, et son
+   année en Big Shoulders comme l'autre date. Les deux couches du récit se
+   lisent maintenant d'un coup d'œil, et rien ne les confond : l'or est le
+   passé qu'on revit, le cyan est l'année d'où on le revit. */
+.bu-meta .pd{display:inline-flex;align-items:baseline;gap:7px;padding:3px 9px;
+  border:1px solid color-mix(in srgb,var(--present) 46%,transparent);
+  background:color-mix(in srgb,var(--present) 13%,transparent);
+  font-size:10px;letter-spacing:.1em;color:var(--present);white-space:nowrap}
+.bu-meta .pd i{font-style:normal;font-weight:800;
+  color:color-mix(in srgb,var(--present) 74%,transparent)}
+.bu-meta .pd b{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  letter-spacing:.03em;line-height:1;color:var(--present)}
 .bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
   font-style:italic}
 .bu-end{flex:0 0 auto;display:flex;align-self:center}
@@ -879,7 +898,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </footer>
 
 <button id="totop" aria-label="Back to top" title="Back to top">
-  <span><img class="nl" src="/images/ac1.webp" alt=""/><img class="hv" src="/images/ac2.webp" alt=""/></span>
+  <span><img class="nl" src="/images/actop1.webp" alt=""/><img class="hv" src="/images/actop2.webp" alt=""/></span>
 </button>
 
 <div class="hud" id="hud">
@@ -943,7 +962,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
        404 — la bande s'affichait quand même, en aplat, et rien ne le disait. */
     return era.art
       || (must||era.entries.filter(function(e){ return e.img; })[0]||{}).img
-      || 'https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg';
+      || '/images/acuniverse.webp';
   }
   /* Les niveaux passent au trait, comme les icônes des repères de lecture :
      l'étoile et le gyrophare en emoji juraient avec le reste de la page.
@@ -1070,8 +1089,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
-              (e.present?'<span class="pd"><i>'+esc(T.mPresent)+'</i>'+
-                esc(e.present)+'</span>':'')+
+              (e.present?'<span class="pd"><i>'+esc(T.mPresent)+'</i><b>'+
+                esc(e.present)+'</b></span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
             '</span>'+
             (e.notes?e.notes.map(function(t){
@@ -1584,7 +1603,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     cv.width=W*dpr; cv.height=H*dpr;
     cv.style.width=W+'px'; cv.style.height=H+'px';
     cx.setTransform(dpr,0,0,dpr,0,0);
-    var pal=[color,'#fffdf7','#f0c97c','#4d9fff'];
+    var pal=[color,'#fffdf7','#f0c97c','#6fd0e8'];
     for(var i=0;i<120;i++){
       bits.push({x:W/2+(Math.random()-.5)*200, y:H*.66,
                  vx:(Math.random()-.5)*10, vy:-8-Math.random()*10,

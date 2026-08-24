@@ -1,358 +1,500 @@
 {
- "ac-game-1": {
-  "title": "Assassin's Creed",
-  "img": "https://media.rawg.io/media/games/0bc/0bcc108295a244b488d5c25f7d867220.jpg",
-  "tmdb": "4729"
- },
  "ac-altairs-chronicles-1": {
   "title": "Assassin's Creed: Altaïr's Chronicles",
-  "img": "https://media.rawg.io/media/games/bca/bca12cc8adb162b46a0b5a1296f3846a.jpg",
+  "img": "/images/altairschronicles.webp",
   "tmdb": "24789"
+ },
+ "ac-ascendance-1": {
+  "title": "Assassin's Creed: Ascendance",
+  "img": "/images/ascendance.webp",
+  "tmdb": "57051"
+ },
+ "ac-assassins-homecoming-1": {
+  "title": "Assassin's Creed: Assassins - Homecoming",
+  "img": "/images/homecoming.webp"
+ },
+ "ac-assassins-setting-sun-1": {
+  "title": "Assassin's Creed: Assassins - Setting Sun",
+  "img": "/images/settingsun.webp"
+ },
+ "ac-assassins-trial-by-1": {
+  "title": "Assassin's Creed: Assassins - Trial by Fire",
+  "img": "/images/trialbyfire.webp"
+ },
+ "ac-benedict-arnold-1": {
+  "title": "Benedict Arnold",
+  "img": "/images/arnold.webp",
+  "tmdb": "13305"
+ },
+ "ac-black-flag-resynced-1": {
+  "title": "Assassin's Creed: Black Flag Resynced",
+  "img": "/images/blackflagresynced.webp",
+  "tmdb": "1017360"
  },
  "ac-bloodlines-1": {
   "title": "Assassin's Creed: Bloodlines",
-  "img": "https://media.rawg.io/media/games/071/0711f22aeaf7927ccd071b186743ca5e.jpg",
+  "img": "/images/bloodlines.webp",
   "tmdb": "5160"
+ },
+ "ac-bloodstone-1": {
+  "title": "Assassin's Creed: Bloodstone",
+  "img": "/images/bloodstone.webp"
+ },
+ "ac-brahman-1": {
+  "title": "Assassin's Creed: Brahman",
+  "img": "/images/brahman.webp"
+ },
+ "ac-brotherhood-1": {
+  "title": "Assassin's Creed: Brotherhood",
+  "img": "/images/brotherhood.webp",
+  "tmdb": "10064"
+ },
+ "ac-brotherhood-2": {
+  "title": "Assassin's Creed: Brotherhood",
+  "img": "/images/brotherhood.webp",
+  "tmdb": "10064"
+ },
+ "ac-brotherhood-revelations-animi-1": {
+  "title": "Assassin's Creed: Brotherhood & Revelations - Animi Training Program",
+  "img": "/images/animiprogram.webp"
+ },
+ "ac-chronicles-china-1": {
+  "title": "Assassin's Creed Chronicles: China",
+  "img": "/images/china.webp",
+  "tmdb": "20180"
+ },
+ "ac-chronicles-india-1": {
+  "title": "Assassin's Creed Chronicles: India",
+  "img": "/images/india.webp",
+  "tmdb": "19274"
+ },
+ "ac-chronicles-russia-1": {
+  "title": "Assassin's Creed Chronicles: Russia",
+  "img": "/images/russia.webp",
+  "tmdb": "19338"
+ },
+ "ac-chronicles-russia-secret-1": {
+  "title": "Assassin's Creed Chronicles: Russia - Secret Ending",
+  "img": "/images/russiasecretending.webp"
+ },
+ "ac-claws-of-awaji-1": {
+  "title": "Claws of Awaji",
+  "img": "/images/clawsofawaji.webp",
+  "tmdb": "1007217"
+ },
+ "ac-conspiracies-die-glocke-1": {
+  "title": "Assassin's Creed: Conspiracies - Die Glocke",
+  "img": "/images/dieglocke.webp"
+ },
+ "ac-conspiracies-project-rainbow-1": {
+  "title": "Assassin's Creed: Conspiracies - Project Rainbow",
+  "img": "/images/projectrainbow.webp"
+ },
+ "ac-dawn-of-ragnarok-1": {
+  "title": "Dawn of Ragnarök",
+  "img": "/images/ragnarok.webp",
+  "tmdb": "799247"
+ },
+ "ac-dead-kings-1": {
+  "title": "Dead Kings",
+  "img": "/images/deadkings.webp",
+  "tmdb": "42950"
+ },
+ "ac-dynasty-1": {
+  "title": "Assassin's Creed: Dynasty",
+  "img": "/images/dynasty.webp"
+ },
+ "ac-embers-1": {
+  "title": "Assassin's Creed: Embers",
+  "img": "/images/embers.webp",
+  "tmdb": "79089"
+ },
+ "ac-escape-room-puzzle-1": {
+  "title": "Assassin's Creed: Escape Room Puzzle Book",
+  "img": "/images/escaperoom.webp"
+ },
+ "ac-fcbd-2016-great-1": {
+  "title": "Assassin's Creed FCBD 2016 - Great Wall",
+  "img": "/images/fcbd.webp"
+ },
+ "ac-fcbd-2016-the-1": {
+  "title": "Assassin's Creed FCBD 2016 - The Chair",
+  "img": "/images/fcbd.webp"
+ },
+ "ac-forgotten-temple-1": {
+  "title": "Assassin's Creed: Forgotten Temple",
+  "img": "/images/forgottentemple.webp"
+ },
+ "ac-forsaken-1": {
+  "title": "Assassin’s Creed: Forsaken",
+  "img": "/images/forsaken.webp"
+ },
+ "ac-fragments-the-blade-1": {
+  "title": "Assassin's Creed: Fragments – The Blade of Aizu",
+  "img": "/images/fragments.webp"
+ },
+ "ac-fragments-the-highlands-1": {
+  "title": "Assassin's Creed: Fragments – The Highlands Children",
+  "img": "/images/fragments.webp"
+ },
+ "ac-fragments-the-witches-1": {
+  "title": "Assassin's Creed: Fragments – The Witches of the Moors",
+  "img": "/images/fragments.webp"
+ },
+ "ac-freedom-cry-1": {
+  "title": "Freedom Cry",
+  "img": "/images/freedomcry.webp",
+  "tmdb": "42466"
+ },
+ "ac-game-1": {
+  "title": "Assassin's Creed",
+  "img": "/images/ac.webp",
+  "tmdb": "4729"
+ },
+ "ac-gold-1": {
+  "title": "Assassin's Creed: Gold",
+  "img": "/images/gold.webp"
+ },
+ "ac-heresy-1": {
+  "title": "Assassin's Creed: Heresy",
+  "img": "/images/heresy.webp"
  },
  "ac-ii-1": {
   "title": "Assassin's Creed II",
-  "img": "https://media.rawg.io/media/games/1be/1bed7fae69d1004c09dfe1101d5a3a94.jpg",
+  "img": "/images/ac2.webp",
+  "tmdb": "28568"
+ },
+ "ac-ii-2": {
+  "title": "Assassin's Creed II",
+  "img": "/images/ac2.webp",
   "tmdb": "28568"
  },
  "ac-ii-discovery-1": {
   "title": "Assassin's Creed II: Discovery",
-  "img": "https://media.rawg.io/media/screenshots/88f/88f9c892952f8e12df54090e79ad8b51.jpg",
+  "img": "/images/discovery.webp",
   "tmdb": "26200"
- },
- "ac-ii-2": {
-  "title": "Assassin's Creed II",
-  "img": "https://media.rawg.io/media/games/1be/1bed7fae69d1004c09dfe1101d5a3a94.jpg",
-  "tmdb": "28568"
- },
- "ac-brotherhood-1": {
-  "title": "Assassin's Creed: Brotherhood",
-  "img": "https://media.rawg.io/media/games/116/116b93c6876a361a96b2eee3ee58ab13.jpg",
-  "tmdb": "10064"
- },
- "ac-the-da-vinci-1": {
-  "title": "The Da Vinci Disappearance",
-  "img": "https://media.rawg.io/media/screenshots/bbe/bbeea9a20ece3dbbdb81045243d50569.jpg",
-  "tmdb": "40751"
- },
- "ac-brotherhood-2": {
-  "title": "Assassin's Creed: Brotherhood",
-  "img": "https://media.rawg.io/media/games/116/116b93c6876a361a96b2eee3ee58ab13.jpg",
-  "tmdb": "10064"
- },
- "ac-the-secret-crusade-1": {
-  "title": "Assassin’s Creed: The Secret Crusade",
-  "img": "https://covers.openlibrary.org/b/id/10240406-L.jpg"
- },
- "ac-revelations-1": {
-  "title": "Assassin's Creed: Revelations",
-  "img": "https://media.rawg.io/media/games/193/19390fa5e75e9048b22c9a736cf9992f.jpg",
-  "tmdb": "4358"
- },
- "ac-the-lost-archive-1": {
-  "title": "The Lost Archive",
-  "img": "https://media.rawg.io/media/screenshots/703/703b74e926dd91cfeab6439c12e2a868.jpg",
-  "tmdb": "42008"
- },
- "ac-chronicles-china-1": {
-  "title": "Assassin's Creed Chronicles: China",
-  "img": "https://media.rawg.io/media/games/c5a/c5a362394197a5aa0cb8371a62154c8b.jpg",
-  "tmdb": "20180"
- },
- "ac-chronicles-russia-1": {
-  "title": "Assassin's Creed Chronicles: Russia",
-  "img": "https://media.rawg.io/media/games/cd9/cd9a44c7a80b8319a84ea737e71cb592.jpg",
-  "tmdb": "19338"
  },
  "ac-iii-1": {
   "title": "Assassin's Creed III",
-  "img": "https://media.rawg.io/media/games/275/2759da6fcaa8f81f21800926168c85f6.jpg",
-  "tmdb": "13305"
- },
- "ac-benedict-arnold-1": {
-  "title": "Benedict Arnold",
-  "img": "https://media.rawg.io/media/games/275/2759da6fcaa8f81f21800926168c85f6.jpg",
+  "img": "/images/ac3.webp",
   "tmdb": "13305"
  },
  "ac-iii-2": {
   "title": "Assassin's Creed III",
-  "img": "https://media.rawg.io/media/games/275/2759da6fcaa8f81f21800926168c85f6.jpg",
+  "img": "/images/ac3.webp",
   "tmdb": "13305"
  },
- "ac-the-tyranny-of-1": {
-  "title": "The Tyranny of King Washington",
-  "img": "https://media.rawg.io/media/screenshots/747/747534745faecec4625c755731351328_4vWj1p1.jpg",
-  "tmdb": "41990"
- },
- "ac-forsaken-1": {
-  "title": "Assassin’s Creed: Forsaken",
-  "img": "https://covers.openlibrary.org/b/id/10030535-L.jpg"
+ "ac-iii-abstergo-hacked-1": {
+  "title": "Assassin's Creed III - Abstergo Hacked",
+  "img": "/images/abstergohacked.webp"
  },
  "ac-iii-liberation-1": {
   "title": "Assassin's Creed III: Liberation",
-  "img": "https://media.rawg.io/media/games/e20/e20a9d3e14560dfd90e1713211af2dc5.jpg",
+  "img": "/images/liberation.webp",
   "tmdb": "4209"
  },
  "ac-iv-black-flag-1": {
   "title": "Assassin's Creed IV: Black Flag - Aveline",
-  "img": "https://media.rawg.io/media/screenshots/990/99088f6f170459244defd7afd9fce096.jpg",
+  "img": "/images/aveline.webp",
   "tmdb": "1017360"
  },
- "ac-iv-black-flag-2": {
-  "title": "Assassin's Creed IV: Black Flag",
-  "img": "https://media.rawg.io/media/games/849/849414b978db37d4563ff9e4b0d3a787.jpg",
-  "tmdb": "3841"
- },
- "ac-freedom-cry-1": {
-  "title": "Freedom Cry",
-  "img": "https://media.rawg.io/media/screenshots/d03/d0398a47e8d88cc160050217172bc8f2.jpg",
-  "tmdb": "42466"
- },
- "ac-chronicles-india-1": {
-  "title": "Assassin's Creed Chronicles: India",
-  "img": "https://media.rawg.io/media/games/e99/e9969ab76756fe041aaa72cdeb768649.jpg",
-  "tmdb": "19274"
- },
- "ac-rogue-1": {
-  "title": "Assassin's Creed: Rogue",
-  "img": "https://media.rawg.io/media/games/3c4/3c4a44ed99c87c56e0cdcfaaaf5c3628.jpg",
-  "tmdb": "17545"
- },
- "ac-unity-1": {
-  "title": "Assassin's Creed: Unity",
-  "img": "https://media.rawg.io/media/games/59f/59fc1c5de1d29cb9234741c97d250150.jpg",
-  "tmdb": "8146"
- },
- "ac-dead-kings-1": {
-  "title": "Dead Kings",
-  "img": "https://media.rawg.io/media/screenshots/a75/a75a893fc77d4b7c9b581eeea052d024.jpg",
-  "tmdb": "42950"
- },
- "ac-syndicate-1": {
-  "title": "Assassin's Creed: Syndicate",
-  "img": "https://media.rawg.io/media/games/9f1/9f189c639f70f91166df415811a8b525.jpg",
-  "tmdb": "42895"
- },
- "ac-the-last-maharaja-1": {
-  "title": "The Last Maharaja",
-  "img": "https://media.rawg.io/media/screenshots/8cd/8cdeb19c3004ea5a4ba141cb8f61fa30.jpg",
-  "tmdb": "43652"
- },
- "ac-syndicate-2": {
-  "title": "Assassin's Creed: Syndicate",
-  "img": "https://media.rawg.io/media/games/9f1/9f189c639f70f91166df415811a8b525.jpg",
-  "tmdb": "42895"
+ "ac-iv-black-flag-3": {
+  "title": "Assassin's Creed IV Black Flag: Blackbeard – The Lost Journal",
+  "img": "/images/blackbeard.webp"
  },
  "ac-jack-the-ripper-1": {
   "title": "Jack the Ripper",
-  "img": "https://media.rawg.io/media/screenshots/d4e/d4e38c7a04e378903dd4ece1f4b3087b.jpg",
+  "img": "/images/jacktheripper.webp",
   "tmdb": "43541"
- },
- "ac-underworld-1": {
-  "title": "Assassin’s Creed: Underworld",
-  "img": "https://covers.openlibrary.org/b/id/7794980-L.jpg"
- },
- "ac-chronicles-russia-2": {
-  "title": "Assassin's Creed Chronicles: Russia",
-  "img": "https://media.rawg.io/media/games/cd9/cd9a44c7a80b8319a84ea737e71cb592.jpg",
-  "tmdb": "19338"
  },
  "ac-last-descendants-1": {
   "title": "Assassin's Creed: Last Descendants",
-  "img": "https://covers.openlibrary.org/b/id/10307010-L.jpg"
- },
- "ac-heresy-1": {
-  "title": "Assassin's Creed: Heresy",
-  "img": "https://covers.openlibrary.org/b/id/8908572-L.jpg"
- },
- "ac-movie-1": {
-  "title": "Assassin's Creed",
-  "img": "https://image.tmdb.org/t/p/w342/kDXewoEcvbn0pUvJ8W3vfkuWgHw.jpg",
-  "tmdb": "121856"
- },
- "ac-last-descendants-tomb-1": {
-  "title": "Assassin's Creed: Last Descendants – Tomb of the Khan",
-  "img": "https://covers.openlibrary.org/b/id/14526312-L.jpg"
+  "img": "/images/lastdescendants.webp"
  },
  "ac-last-descendants-fate-1": {
   "title": "Assassin's Creed: Last Descendants – Fate of the Gods",
-  "img": "https://covers.openlibrary.org/b/id/10307010-L.jpg"
+  "img": "/images/fateofthegods.webp"
  },
- "ac-origins-desert-oath-1": {
-  "title": "Assassin's Creed Origins: Desert Oath",
-  "img": "https://covers.openlibrary.org/b/id/8874067-L.jpg"
+ "ac-last-descendants-locus-1": {
+  "title": "Assassin's Creed: Last Descendants - Locus",
+  "img": "/images/locus.webp"
  },
- "ac-origins-1": {
-  "title": "Assassin's Creed: Origins",
-  "img": "https://media.rawg.io/media/games/336/336c6bd63d83cf8e59937ab8895d1240.jpg",
-  "tmdb": "28153"
- },
- "ac-the-hidden-ones-1": {
-  "title": "The Hidden Ones",
-  "img": "https://media.rawg.io/media/games/10f/10ff47ddc11eab13260c65144447ea60.jpg",
-  "tmdb": "320365"
- },
- "ac-the-curse-of-1": {
-  "title": "The Curse of the Pharaohs",
-  "img": "https://media.rawg.io/media/games/27b/27b82ac09d93c3a85147e2ee7365c1a3.jpg",
-  "tmdb": "320364"
- },
- "ac-odyssey-1": {
-  "title": "Assassin's Creed: Odyssey",
-  "img": "https://media.rawg.io/media/games/c6b/c6bd26767c1053fef2b10bb852943559.jpg",
-  "tmdb": "58616"
+ "ac-last-descendants-tomb-1": {
+  "title": "Assassin's Creed: Last Descendants – Tomb of the Khan",
+  "img": "/images/tombofthekhan.webp"
  },
  "ac-legacy-of-the-1": {
   "title": "Legacy of the First Blade - Hunted",
-  "img": "https://media.rawg.io/media/screenshots/a7a/a7a6e06615c119685e4e0f0412653505.jpg",
+  "img": "/images/legacyhunted.webp",
   "tmdb": "799250"
- },
- "ac-odyssey-2": {
-  "title": "Assassin's Creed: Odyssey",
-  "img": "https://media.rawg.io/media/games/c6b/c6bd26767c1053fef2b10bb852943559.jpg",
-  "tmdb": "58616"
  },
  "ac-legacy-of-the-2": {
   "title": "Legacy of the First Blade - Shadow Heritage",
-  "img": "https://media.rawg.io/media/screenshots/a7a/a7a6e06615c119685e4e0f0412653505.jpg",
+  "img": "/images/legacyshadowheritage.webp",
   "tmdb": "799250"
  },
  "ac-legacy-of-the-3": {
   "title": "Legacy of the First Blade - Bloodline",
-  "img": "https://media.rawg.io/media/screenshots/a7a/a7a6e06615c119685e4e0f0412653505.jpg",
+  "img": "/images/legacybloodline.webp",
   "tmdb": "799250"
  },
- "ac-odyssey-3": {
-  "title": "Assassin's Creed: Odyssey",
-  "img": "https://media.rawg.io/media/games/c6b/c6bd26767c1053fef2b10bb852943559.jpg",
-  "tmdb": "58616"
- },
- "ac-odyssey-the-lost-1": {
-  "title": "Assassin's Creed: Odyssey - The Lost Tales of Greece: The Heir of Memories",
-  "img": "https://media.rawg.io/media/games/c6b/c6bd26767c1053fef2b10bb852943559.jpg",
-  "tmdb": "58616"
- },
- "ac-odyssey-4": {
-  "title": "Assassin's Creed: Odyssey",
-  "img": "https://media.rawg.io/media/games/c6b/c6bd26767c1053fef2b10bb852943559.jpg",
-  "tmdb": "58616"
- },
- "ac-the-fate-of-1": {
-  "title": "The Fate of Atlantis",
-  "img": "https://media.rawg.io/media/games/c95/c9565c19c24cd13875572cc26e62bef3.jpg",
-  "tmdb": "406952"
- },
- "ac-those-who-are-1": {
-  "title": "Those Who Are Treasured",
-  "img": "https://media.rawg.io/media/games/c6b/c6bd26767c1053fef2b10bb852943559.jpg",
-  "tmdb": "58616"
- },
- "ac-valhalla-1": {
-  "title": "Assassin's Creed: Valhalla",
-  "img": "https://media.rawg.io/media/games/934/9346092ae11bf7582c883869468171cc.jpg",
-  "tmdb": "437059"
- },
- "ac-valhalla-blood-brothers-1": {
-  "title": "Assassin's Creed: Valhalla – Blood Brothers",
-  "img": "https://covers.openlibrary.org/b/id/14685900-L.jpg"
- },
- "ac-valhalla-geirmunds-saga-1": {
-  "title": "Assassin's Creed: Valhalla – Geirmund's Saga",
-  "img": "https://covers.openlibrary.org/b/id/12786127-L.jpg"
- },
- "ac-wrath-of-the-1": {
-  "title": "Wrath of the Druids",
-  "img": "https://media.rawg.io/media/games/5c4/5c485e1593cadce3236886181ea5658a.jpg",
-  "tmdb": "595182"
- },
- "ac-the-siege-of-1": {
-  "title": "The Siege of Paris",
-  "img": "https://media.rawg.io/media/screenshots/ec1/ec17b473d4ac3954a0ba55c0c6254694.jpg",
-  "tmdb": "799246"
- },
- "ac-dawn-of-ragnarok-1": {
-  "title": "Dawn of Ragnarök",
-  "img": "https://media.rawg.io/media/screenshots/9e0/9e0faef5dbebecf5bc3aa101d73125c8.jpg",
-  "tmdb": "799247"
- },
- "ac-valhalla-2": {
-  "title": "Assassin's Creed: Valhalla",
-  "img": "https://media.rawg.io/media/games/934/9346092ae11bf7582c883869468171cc.jpg",
-  "tmdb": "437059"
- },
- "ac-escape-room-puzzle-1": {
-  "title": "Assassin's Creed: Escape Room Puzzle Book",
-  "img": "https://covers.openlibrary.org/b/id/14562927-L.jpg"
+ "ac-lineage-1": {
+  "title": "Assassin's Creed: Lineage",
+  "img": "/images/lineage.webp",
+  "tmdb": "1008421"
  },
  "ac-mirage-1": {
   "title": "Assassin's Creed: Mirage",
-  "img": "https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg",
-  "tmdb": "845261"
- },
- "ac-valley-of-memories-1": {
-  "title": "Valley of Memories",
-  "img": "https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg",
+  "img": "/images/mirage.webp",
   "tmdb": "845261"
  },
  "ac-mirage-2": {
   "title": "Assassin's Creed: Mirage",
-  "img": "https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg",
+  "img": "/images/mirage.webp",
   "tmdb": "845261"
+ },
+ "ac-mirage-a-soar-1": {
+  "title": "Assassin's Creed: Mirage - A Soar of Eagles",
+  "img": "/images/soarofeagles.webp"
  },
  "ac-mirage-daughter-of-1": {
   "title": "Assassin's Creed: Mirage – Daughter of No One",
-  "img": "https://covers.openlibrary.org/b/id/14713990-L.jpg"
+  "img": "/images/daughterofnoone.webp"
  },
- "ac-the-golden-city-1": {
-  "title": "Assassin's Creed: The Golden City",
-  "img": "https://covers.openlibrary.org/b/id/14135985-L.jpg"
+ "ac-movie-1": {
+  "title": "Assassin's Creed",
+  "img": "/images/movie.webp",
+  "tmdb": "121856"
  },
  "ac-nexus-vr-1": {
   "title": "Assassin's Creed: Nexus VR",
-  "img": "https://media.rawg.io/media/screenshots/166/166e0f484feabe29b016c05e82441284.jpg",
+  "img": "/images/nexus.webp",
   "tmdb": "974464"
+ },
+ "ac-odyssey-1": {
+  "title": "Assassin's Creed: Odyssey",
+  "img": "/images/odyssey.webp",
+  "tmdb": "58616"
+ },
+ "ac-odyssey-2": {
+  "title": "Assassin's Creed: Odyssey",
+  "img": "/images/odyssey.webp",
+  "tmdb": "58616"
+ },
+ "ac-odyssey-3": {
+  "title": "Assassin's Creed: Odyssey",
+  "img": "/images/odyssey.webp",
+  "tmdb": "58616"
+ },
+ "ac-odyssey-4": {
+  "title": "Assassin's Creed: Odyssey",
+  "img": "/images/odyssey.webp",
+  "tmdb": "58616"
+ },
+ "ac-odyssey-the-lost-1": {
+  "title": "Assassin's Creed: Odyssey - The Lost Tales of Greece: The Heir of Memories",
+  "img": "/images/losttaleofgreece.webp",
+  "tmdb": "58616"
+ },
+ "ac-origins-1": {
+  "title": "Assassin's Creed: Origins",
+  "img": "/images/origins.webp",
+  "tmdb": "28153"
+ },
+ "ac-origins-2": {
+  "title": "Assassin's Creed: Origins",
+  "img": "/images/originscomic.webp"
+ },
+ "ac-origins-desert-oath-1": {
+  "title": "Assassin's Creed Origins: Desert Oath",
+  "img": "/images/desertoath.webp"
+ },
+ "ac-reflections-1": {
+  "title": "Assassin's Creed: Reflections",
+  "img": "/images/reflections.webp"
+ },
+ "ac-revelations-1": {
+  "title": "Assassin's Creed: Revelations",
+  "img": "/images/revelations.webp",
+  "tmdb": "4358"
+ },
+ "ac-rogue-1": {
+  "title": "Assassin's Creed: Rogue",
+  "img": "/images/rogue.webp",
+  "tmdb": "17545"
  },
  "ac-shadows-1": {
   "title": "Assassin's Creed: Shadows",
-  "img": "https://media.rawg.io/media/games/526/526881e0f5f8c1550e51df3801f96ea3.jpg",
+  "img": "/images/shadows.webp",
   "tmdb": "981791"
- },
- "ac-claws-of-awaji-1": {
-  "title": "Claws of Awaji",
-  "img": "https://media.rawg.io/media/screenshots/902/902effe8e506327cd42c883f2ce4c6ef.jpg",
-  "tmdb": "1007217"
  },
  "ac-shadows-2": {
   "title": "Assassin's Creed: Shadows",
-  "img": "https://media.rawg.io/media/games/526/526881e0f5f8c1550e51df3801f96ea3.jpg",
+  "img": "/images/shadows.webp",
   "tmdb": "981791"
  },
- "ac-black-flag-resynced-1": {
-  "title": "Assassin's Creed: Black Flag Resynced",
-  "img": "https://media.rawg.io/media/screenshots/990/99088f6f170459244defd7afd9fce096.jpg",
-  "tmdb": "1017360"
+ "ac-shadows-tales-of-1": {
+  "title": "Assassin's Creed: Shadows – Tales of Iga",
+  "img": "/images/talesofiga.webp"
  },
- "ac-dynasty-1": {
-  "title": "Assassin's Creed: Dynasty",
-  "img": "https://covers.openlibrary.org/b/id/14663065-L.jpg"
+ "ac-syndicate-1": {
+  "title": "Assassin's Creed: Syndicate",
+  "img": "/images/syndicate.webp",
+  "tmdb": "42895"
  },
- "ac-lineage-1": {
-  "title": "Assassin's Creed: Lineage",
-  "img": "https://image.tmdb.org/t/p/w342/pZFyU0aGyi3uinGEhfXbX9vbik4.jpg",
-  "tmdb": "1008421"
+ "ac-syndicate-2": {
+  "title": "Assassin's Creed: Syndicate",
+  "img": "/images/syndicate.webp",
+  "tmdb": "42895"
  },
- "ac-ascendance-1": {
-  "title": "Assassin's Creed: Ascendance",
-  "img": "https://image.tmdb.org/t/p/w342/fxSoGWqHTGPlEilOVhQaAJcSAZS.jpg",
-  "tmdb": "57051"
+ "ac-templars-black-cross-1": {
+  "title": "Assassin’s Creed: Templars - Black Cross",
+  "img": "/images/blackcross.webp"
  },
- "ac-embers-1": {
-  "title": "Assassin's Creed: Embers",
-  "img": "https://image.tmdb.org/t/p/w342/6aeKG4ko7hAd80sakNw49ktrcPE.jpg",
-  "tmdb": "79089"
+ "ac-templars-cross-of-1": {
+  "title": "Assassin's Creed: Templars - Cross of War",
+  "img": "/images/crossofwar.webp"
+ },
+ "ac-the-chain-1": {
+  "title": "Assassin's Creed: The Chain",
+  "img": "/images/thechain.webp"
+ },
+ "ac-the-curse-of-1": {
+  "title": "The Curse of the Pharaohs",
+  "img": "/images/pharaohs.webp",
+  "tmdb": "320364"
+ },
+ "ac-the-da-vinci-1": {
+  "title": "The Da Vinci Disappearance",
+  "img": "/images/davinci.webp",
+  "tmdb": "40751"
+ },
+ "ac-the-engine-of-1": {
+  "title": "Assassin's Creed: The Engine of History – The Magus Conspiracy",
+  "img": "/images/magusconspiracy.webp"
+ },
+ "ac-the-engine-of-2": {
+  "title": "Assassin's Creed: The Engine of History – The Resurrection Plot",
+  "img": "/images/resurectionplot.webp"
+ },
+ "ac-the-fall-1": {
+  "title": "Assassin's Creed: The Fall",
+  "img": "/images/thefall.webp"
+ },
+ "ac-the-fate-of-1": {
+  "title": "The Fate of Atlantis",
+  "img": "/images/atlantis.webp",
+  "tmdb": "406952"
+ },
+ "ac-the-golden-city-1": {
+  "title": "Assassin's Creed: The Golden City",
+  "img": "/images/goldencity.webp"
+ },
+ "ac-the-hidden-ones-1": {
+  "title": "The Hidden Ones",
+  "img": "/images/hiddenones.webp",
+  "tmdb": "320365"
+ },
+ "ac-the-last-maharaja-1": {
+  "title": "The Last Maharaja",
+  "img": "/images/maharaja.webp",
+  "tmdb": "43652"
+ },
+ "ac-the-lost-archive-1": {
+  "title": "The Lost Archive",
+  "img": "/images/lostarchive.webp",
+  "tmdb": "42008"
+ },
+ "ac-the-secret-crusade-1": {
+  "title": "Assassin’s Creed: The Secret Crusade",
+  "img": "/images/secretcrusade.webp"
+ },
+ "ac-the-siege-of-1": {
+  "title": "The Siege of Paris",
+  "img": "/images/siegeofparis.webp",
+  "tmdb": "799246"
+ },
+ "ac-the-silk-road-1": {
+  "title": "Assassin's Creed: The Silk Road",
+  "img": "/images/silkroad.webp"
+ },
+ "ac-the-tyranny-of-1": {
+  "title": "The Tyranny of King Washington",
+  "img": "/images/washington.webp",
+  "tmdb": "41990"
+ },
+ "ac-those-who-are-1": {
+  "title": "Those Who Are Treasured",
+  "img": "/images/thosewhoaretreasured.webp",
+  "tmdb": "58616"
+ },
+ "ac-underworld-1": {
+  "title": "Assassin’s Creed: Underworld",
+  "img": "/images/underworld.webp"
+ },
+ "ac-unity-1": {
+  "title": "Assassin's Creed: Unity",
+  "img": "/images/unity.webp",
+  "tmdb": "8146"
+ },
+ "ac-unity-abstergo-entertainment-1": {
+  "title": "Assassin's Creed Unity: Abstergo Entertainment: Employee Handbook",
+  "img": "/images/employeehandbook.webp"
+ },
+ "ac-uprising-common-ground-1": {
+  "title": "Assassin's Creed: Uprising - Common Ground",
+  "img": "/images/commonground.webp"
+ },
+ "ac-uprising-finale-1": {
+  "title": "Assassin's Creed: Uprising - Finale",
+  "img": "/images/finale.webp"
+ },
+ "ac-uprising-inflection-point-1": {
+  "title": "Assassin's Creed: Uprising - Inflection Point",
+  "img": "/images/inflectionpoint.webp"
+ },
+ "ac-valhalla-1": {
+  "title": "Assassin's Creed: Valhalla",
+  "img": "/images/valhalla.webp",
+  "tmdb": "437059"
+ },
+ "ac-valhalla-2": {
+  "title": "Assassin's Creed: Valhalla",
+  "img": "/images/valhalla.webp",
+  "tmdb": "437059"
+ },
+ "ac-valhalla-blood-brothers-1": {
+  "title": "Assassin's Creed: Valhalla – Blood Brothers",
+  "img": "/images/bloodbrothers.webp"
+ },
+ "ac-valhalla-forgotten-myths-1": {
+  "title": "Assassin's Creed: Valhalla - Forgotten Myths",
+  "img": "/images/forgottenmyths.webp"
+ },
+ "ac-valhalla-geirmunds-saga-1": {
+  "title": "Assassin's Creed: Valhalla – Geirmund's Saga",
+  "img": "/images/geirmund.webp"
+ },
+ "ac-valhalla-song-of-1": {
+  "title": "Assassin's Creed: Valhalla – Song of Glory",
+  "img": "/images/songofglory.webp"
+ },
+ "ac-valhalla-sword-of-1": {
+  "title": "Assassin's Creed: Valhalla – Sword of the White Horse",
+  "img": "/images/swordofthewhitehorse.webp"
+ },
+ "ac-valhalla-the-hidden-1": {
+  "title": "Assassin's Creed: Valhalla – The Hidden Codex",
+  "img": "/images/hiddencodex.webp"
+ },
+ "ac-valley-of-memories-1": {
+  "title": "Valley of Memories",
+  "img": "/images/valleyofmemories.webp",
+  "tmdb": "845261"
+ },
+ "ac-wrath-of-the-1": {
+  "title": "Wrath of the Druids",
+  "img": "/images/wrathofthedruids.webp",
+  "tmdb": "595182"
  }
 }
