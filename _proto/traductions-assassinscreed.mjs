@@ -129,9 +129,11 @@ export const AC_TRADUCTIONS = [
   ['Freedom Cry', 'Le Prix de la Liberté'],
   ['Assassin\'s Creed: Brahman', 'Assassin\'s Creed : Brahman'],
   ['Assassin\'s Creed Chronicles: India', 'Assassin\'s Creed Chronicles : India'],
-  /* Panini a publié les deux tomes de Templars sous « Croix Noire » et
-     « Croix de guerre ». */
-  ['Assassin’s Creed: Templars - Black Cross', 'Assassin\'s Creed Templars, tome 1 : Croix Noire'],
+  /* Panini a publié le tome 2 sous « Croix de guerre ». Le tome 1
+     n'apparaît nulle part en français : « Black Cross » reste tel
+     quel — décision de Niko, 25 août 2026 — et seule la numérotation
+     s'aligne sur celle du tome 2. */
+  ['Assassin’s Creed: Templars - Black Cross', 'Assassin\'s Creed Templars, tome 1 : Black Cross'],
   ['Assassin\'s Creed: Rogue', 'Assassin\'s Creed : Rogue'],
 
   /* — saga Helix & Abstergo — */
@@ -161,11 +163,13 @@ export const AC_TRADUCTIONS = [
   ['Assassin\'s Creed: Last Descendants – Fate of the Gods',
     'Assassin\'s Creed Last Descendants : La Chute des dieux'],
   ['Assassin\'s Creed: Reflections', 'Assassin\'s Creed : Reflections'],
-  /* Uprising paraît en France en trois tomes numérotés, sans reprendre
-     les sous-titres anglais : on les garde pour distinguer les trois
-     entrées, la VF ne proposant rien à leur place. */
-  ['Assassin\'s Creed: Uprising - Common Ground', 'Assassin\'s Creed : Uprising - Common Ground'],
-  ['Assassin\'s Creed: Uprising - Inflection Point', 'Assassin\'s Creed : Uprising - Inflection Point'],
+  /* Uprising paraît en France en tomes numérotés. Le tome 1 n'a pas de
+     sous-titre français, le tome 2 s'appelle « La Croisée des
+     Chemins », et le tome 3 n'est pas encore traduit : il garde donc
+     son sous-titre anglais. Les trois formes viennent de Niko,
+     25 août 2026. */
+  ['Assassin\'s Creed: Uprising - Common Ground', 'Assassin\'s Creed Uprising : Tome 1'],
+  ['Assassin\'s Creed: Uprising - Inflection Point', 'Assassin\'s Creed Uprising : Tome 2 - La Croisée des Chemins'],
   ['Assassin\'s Creed: Uprising - Finale', 'Assassin\'s Creed : Uprising - Finale'],
 
   /* — saga de Layla Hassan — */
@@ -186,7 +190,9 @@ export const AC_TRADUCTIONS = [
   ['Assassin\'s Creed: Odyssey - The Lost Tales of Greece: The Heir of Memories',
     'Assassin\'s Creed : Odyssey - Les contes perdus de Grèce : L\'Héritière des souvenirs'],
   ['The Fate of Atlantis', 'Le Sort de l\'Atlantide'],
-  ['Those Who Are Treasured', 'Ceux qui nous sont chers'],
+  /* Aucune VF trouvée sur les deux wikis ni chez Ubisoft : le titre
+     français est celui de Niko, 25 août 2026. */
+  ['Those Who Are Treasured', 'Ceux qui sont précieux'],
   ['Assassin\'s Creed: Gold', 'Assassin\'s Creed : Gold'],
   ['Assassin\'s Creed: Valhalla – Song of Glory', 'Assassin\'s Creed Valhalla : Le Chant de gloire'],
   ['Assassin\'s Creed: Valhalla', 'Assassin\'s Creed : Valhalla'],
