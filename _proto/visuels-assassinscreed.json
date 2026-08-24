@@ -196,7 +196,12 @@
  "ac-iv-black-flag-1": {
   "title": "Assassin's Creed IV: Black Flag - Aveline",
   "img": "/images/aveline.webp",
-  "tmdb": "1017360"
+  "desc": "Aveline is a single-player downloadable content addition for Assassin's Creed IV: Black Flag. The content features the French-African Assassin Aveline de Grandpré, and is exclusive to the PlayStation 3, PlayStation 4 and PC. It is also included in The Rebel Collection along with all other single player DLC for the Nintendo Switch."
+ },
+ "ac-iv-black-flag-2": {
+  "title": "Assassin's Creed IV: Black Flag",
+  "img": "/images/blackflag.webp",
+  "tmdb": "3841"
  },
  "ac-iv-black-flag-3": {
   "title": "Assassin's Creed IV Black Flag: Blackbeard – The Lost Journal",

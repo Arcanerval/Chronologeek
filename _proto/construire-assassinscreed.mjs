@@ -186,11 +186,50 @@ for (let i = iDebut; i < lignes.length; i++) {
     dansFaq = null;
     continue;
   }
+  /* Une note qui n'est qu'une URL est un lien, pas une remarque. Le document
+     pose l'adresse en clair — « PART 1 https://… » pour les deux moities
+     d'Abstergo Hacked, l'adresse nue pour Liberation, Russia et le programme
+     d'entrainement des Animi. Ecrite telle quelle sous le titre, elle donnait
+     une ligne d'URL brute qu'on ne peut pas cliquer ; elle part au depliant,
+     avec les bandes-annonces, ou un lien est un lien. Le libelle est le
+     prefixe du document quand il y en a un (« PART 1 »), le libelle commun
+     sinon. */
+  const url = t.match(/^(.*?)(https?:\/\/\S+)$/);
+  if (url) {
+    (courante.links = courante.links || []).push({
+      href:  url[2],
+      label: url[1].trim() ? casse(url[1].trim()) : 'Watch the video',
+    });
+    continue;
+  }
   /* tout le reste est une note de placement ou un conseil de jeu */
   (courante.notes = courante.notes || []).push(t);
 }
 
+/* « PART 1 » -> « Part 1 » : le document ecrit ses prefixes en capitales,
+   comme ses intertitres, et le bouton du depliant se lit en casse de phrase
+   comme « YouTube trailer » juste a cote. */
+function casse(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
 const ALL = eras.flatMap((e) => e.entries);
+
+/* ── l'avertissement ──────────────────────────────────────────────────
+   Une note qui porte ses trois points d'exclamation n'est pas une remarque
+   de placement, c'est une consigne : « Not Resynced !!! (yet...) » dit que
+   Black Flag n'a pas encore sa version refaite, et il faut le voir avant
+   d'ouvrir la fiche. Meme traitement que « Ultimate Edition version!!! »
+   sur Batman v Superman, dont la page DC tire son `bignote` : plein,
+   accentue, precede du drapeau. Une seule entree du guide en porte. */
+for (const e of ALL) {
+  if (!e.notes) continue;
+  const i = e.notes.findIndex((n) => n.includes('!!!'));
+  if (i < 0) continue;
+  e.bignote = e.notes[i];
+  e.notes.splice(i, 1);
+  if (!e.notes.length) delete e.notes;
+}
 
 /* ── les visuels, quand le depannage RAWG/TMDB en a trouve ────────────
    Meme situation que Dragon Age a sa naissance : les WebP locaux n'existent
@@ -293,10 +332,11 @@ const notes =
       '<div class="cut"><dt>' + esc(c.dt) + '</dt><dd>' + esc(c.dd) + '</dd></div>').join('') +
     '</dl></div></details>';
 
-/* ── les cinq badges ──────────────────────────────────────────────────
-   Aucun document n'en porte. Ils suivent les quatre porteurs de l'Animus
-   que le guide nomme lui-meme dans ses reponses de FAQ — Desmond, les
-   employes d'Abstergo, Layla — et le cinquieme couronne le tout.       */
+/* ── les sept badges ──────────────────────────────────────────────────
+   Aucun document n'en porte. Ils suivent les porteurs de l'Animus que le
+   guide nomme lui-meme dans ses reponses de FAQ — Desmond, les employes
+   d'Abstergo, Layla, l'utilisateur de l'Animus EGO — et le dernier couronne
+   le tout.                                                              */
 const idsDe = (f) => ALL.filter(f).map((e) => e.id);
 const idsSaga = (i) => eras[i].entries.map((e) => e.id);
 
@@ -317,6 +357,17 @@ const badges = [
   { id: 'ac_layla',    icon: '🏛️', color: '#e0a45c', trigger: 'oeuvre',
     ids: idsSaga(4), label: 'Bearer of the Staff',
     desc: 'The Layla Hassan saga completed' },
+  /* La sixieme saga en a un, la septieme non, et c'est un arbitrage de Niko
+     du 24 aout 2026 : l'Animus Hub est une epoque du recit — sept entrees,
+     un porteur, une place dans la ligne du present — la ou « Assassins
+     Through History » est un fourre-tout de quatre entrees qui n'ont
+     justement pas d'epoque. On ne decerne pas un badge pour avoir lu ce qui
+     ne se range nulle part. L'encre est le violet numerique de l'ere 6,
+     remonte pour se lire sur le noir, et le libelle vient de la reponse de
+     FAQ du guide : « Animus EGO user ». */
+  { id: 'ac_hub',      icon: '🌐', color: '#c07bf0', trigger: 'oeuvre',
+    ids: idsSaga(5), label: 'Animus EGO User',
+    desc: 'The Animus Hub saga completed' },
   { id: 'ac_isu',      icon: '📜', color: '#a99cf9', trigger: 'oeuvre',
     ids: idsDe((e) => e.type === 'roman' || e.type === 'comic'),
     label: 'Keeper of the Codex', desc: 'Every book and comic completed' },
@@ -339,6 +390,11 @@ CG.t.resetDA = undefined; delete CG.t.resetDA;
    laquelle le souvenir est revecu. Elle vient a cote de `mPeriod`, qui reste
    la date dans l'univers. */
 CG.t.mPresent = 'Present day';
+/* La date qui se lit en grand sur la carte est celle du present, et celle de
+   l'univers vient a cote dans son encadre : ce sont les souvenirs qu'on
+   revit depuis cette annee-la. D'ou l'intitule, qui n'est pas « Period ».
+   `mPeriod` reste, lui, dans les mesures du depliant. */
+CG.t.mMemories = 'Memories';
 CG.resetMsg = 'Reset your Assassin\u2019s Creed progress?';
 CG.badgeLabels = {
   jeu:   ['bj',  'VIDEO GAME'],
@@ -375,6 +431,8 @@ const DATA = {
       if (x.img)      o.img = x.img;
       if (x.tags)     o.tags = x.tags;
       if (x.notes)    o.notes = x.notes;
+      if (x.bignote)  o.bignote = x.bignote;
+      if (x.links)    o.links = x.links;
       if (x.desc)     o.desc = x.desc;
       if (x.faq)      o.faq = x.faq;
       if (x.present)  o.present  = x.present;
@@ -400,6 +458,12 @@ for (const e of ALL) {
   if (!TYPES[Object.keys(TYPES).find((k) => TYPES[k] === e.type)])
     erreurs.push('type inconnu : ' + e.type);
 }
+/* Une URL restee dans une note ressort en clair sous le titre, non
+   cliquable, et rien ne le signale : c'est exactement ce que la sortie des
+   liens vient corriger. */
+for (const e of ALL) {
+  for (const n of (e.notes || [])) if (/https?:\/\//.test(n)) erreurs.push('URL restee en note : ' + e.id);
+}
 /* Le titre ne doit jamais avoir avale la date ni l'annee de sortie : c'est
    la faute que la decoupe peut commettre sans rien casser. */
 for (const e of ALL) {
@@ -420,6 +484,9 @@ console.log('  niveaux : ' + Object.entries(parNiveau).map(([k, v]) => k + ' ' +
 console.log('  FAQ     : ' + ALL.filter((e) => e.faq).length +
             ' (dont ' + ALL.filter((e) => e.faq && e.faq.animusSpoiler).length + ' avec SPOILERS)');
 console.log('  notes   : ' + ALL.filter((e) => e.notes).length);
+console.log('  liens   : ' + ALL.reduce((s, e) => s + (e.links ? e.links.length : 0), 0) +
+            ' sur ' + ALL.filter((e) => e.links).length + ' entree(s)');
+console.log('  alertes : ' + ALL.filter((e) => e.bignote).length);
 console.log('  reperes : ' + ALL.filter((e) => e.tags).length);
 console.log('  present : ' + ALL.filter((e) => e.present).length + ' / ' + ALL.length);
 console.log('  visuels : ' + ALL.filter((e) => e.img).length + ' / ' + ALL.length);

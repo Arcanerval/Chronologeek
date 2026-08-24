@@ -72,11 +72,11 @@
      vert d'eau, la seule encre encore libre à côté du comic. */
   --t-jeu:#ffb74d; --t-dlc:#ffcc80; --t-roman:#a99cf9; --t-comic:#4dd0e1;
   --t-film:#64b5f6; --t-video:#f472b6; --t-audio:#80cbc4;
-  /* l'encre du présent. Le cyan de l'Animus, celui des interfaces de la
-     franchise : la date du présent n'est pas une date de plus, c'est
-     l'autre couche du récit, et elle doit se lire comme telle à côté de
-     l'or de la date dans l'univers. */
-  --present:#6fd0e8;
+  /* l'encre des souvenirs, celle de l'encadré qui porte la date dans
+     l'univers. C'est le rouge de la timeline — l'encre de l'univers,
+     remontée pour se lire sur le noir : à #c0202f le texte se perd dans le
+     fond, et l'encadré n'est plus qu'un trait sombre. */
+  --memory:#e2515f;
   /* les deux repères du guide. Le flashforward est sa signature : les
      trois Chronicles se jouent bien avant leur place dans l'Histoire. */
   --m-flashback:#f0c97c; --m-flashforward:#8fd6c4;
@@ -422,30 +422,36 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
   font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:rgba(255,253,247,.74)}
-/* la date in-universe situe l'entrée : c'est la deuxième information de la
-   ligne, elle se lit d'un coup d'œil */
+/* LA DATE QUI SE LIT EN GRAND EST CELLE DU PRÉSENT, pas celle de l'univers.
+   C'est l'ordre du guide lui-même — « this guide is based on the present
+   timeline » : l'année où le souvenir est revécu situe l'entrée dans la
+   lecture, la date dans l'univers dit ce qu'on y voit. Le premier essai
+   posait l'inverse, avec le présent dans une étiquette cyan à droite ; la
+   couche de récit qui commande était la plus discrète des deux.
+
+   L'or reste sur le grand nombre, qui a changé de sens sans changer
+   d'encre : c'est l'accent de la page, il va à ce qui se lit d'abord. */
 .bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
   letter-spacing:.03em;color:var(--hot);line-height:1}
-/* la date du présent : l'année depuis laquelle le souvenir est revécu. Tout
-   le guide est bâti sur cette ligne-là — « this guide is based on the
-   present timeline » — et elle manquait à l'écran.
-
-   Premier essai : une étiquette grise à filet, 10,5 px. Elle était là, on
-   ne la voyait pas — elle se lisait comme une mention légale à côté du
-   grand nombre doré. Elle prend donc l'encre de l'Animus, un fond, et son
-   année en Big Shoulders comme l'autre date. Les deux couches du récit se
-   lisent maintenant d'un coup d'œil, et rien ne les confond : l'or est le
-   passé qu'on revit, le cyan est l'année d'où on le revit. */
-.bu-meta .pd{display:inline-flex;align-items:baseline;gap:7px;padding:3px 9px;
-  border:1px solid color-mix(in srgb,var(--present) 46%,transparent);
-  background:color-mix(in srgb,var(--present) 13%,transparent);
-  font-size:10px;letter-spacing:.1em;color:var(--present);white-space:nowrap}
-.bu-meta .pd i{font-style:normal;font-weight:800;
-  color:color-mix(in srgb,var(--present) 74%,transparent)}
-.bu-meta .pd b{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
-  letter-spacing:.03em;line-height:1;color:var(--present)}
+/* les souvenirs : la date dans l'univers, dans son encadré, à côté. Le rouge
+   est celui de la timeline. L'encadré ne se pose QUE si la date existe —
+   huit entrées du guide n'en ont pas, et un cadre vide se lit comme une
+   donnée manquante là où il n'y a rien à manquer. */
+.bu-meta .mem{display:inline-flex;align-items:baseline;gap:7px;padding:3px 9px;
+  border:1px solid color-mix(in srgb,var(--memory) 46%,transparent);
+  background:color-mix(in srgb,var(--memory) 13%,transparent);
+  font-size:10px;letter-spacing:.1em;color:var(--memory);white-space:nowrap}
+.bu-meta .mem i{font-style:normal;font-weight:800;
+  color:color-mix(in srgb,var(--memory) 74%,transparent)}
+.bu-meta .mem b{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  letter-spacing:.03em;line-height:1;color:var(--memory)}
 .bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
   font-style:italic}
+/* l'avertissement : c'en est un, pas une remarque — il se lit en plein, sans
+   italique, et prend le rouge de l'univers. Même dessin que le `bignote` de
+   Batman v Superman sur la page DC, qui a trouvé le bon poids ; seule
+   l'encre change, DC prenant son or là où celui-ci doit alerter. */
+.bu-note.big{font-style:normal;font-weight:700;color:var(--memory);letter-spacing:.02em}
 .bu-end{flex:0 0 auto;display:flex;align-self:center}
 .bu-end svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
   stroke-linecap:square;transition:transform .18s;color:rgba(255,253,247,.66)}
@@ -503,7 +509,12 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   color:rgba(255,253,247,.72)}
 .expand-meta strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;
   margin-right:5px}
-.expand-trailer-link{display:inline-block;margin-top:12px;background:var(--hot);color:var(--ink);
+/* la marge à droite tient les boutons voisins : Abstergo Hacked en pose deux
+   (« Part 1 », « Part 2 ») et Liberation deux aussi, et le biseau du
+   clip-path les faisait se toucher — deux boutons collés se lisent comme un
+   seul. Les fiches qui n'en ont qu'un ne la voient pas. */
+.expand-trailer-link{display:inline-block;margin-top:12px;margin-right:9px;
+  background:var(--hot);color:var(--ink);
   font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.06em;
   text-transform:uppercase;padding:6px 13px;text-decoration:none;
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
@@ -1088,11 +1099,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '<span class="bu-tags">'+fb+'<span class="b" style="--k:var(--t-'+e.type+')">'+
               esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
-            '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
-              (e.present?'<span class="pd"><i>'+esc(T.mPresent)+'</i><b>'+
-                esc(e.present)+'</b></span>':'')+
+            '<span class="bu-meta"><span class="d">'+esc(e.present||'—')+'</span>'+
+              (e.date?'<span class="mem"><i>'+esc(T.mMemories)+'</i><b>'+
+                esc(e.date)+'</b></span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
             '</span>'+
+            (e.bignote?'<span class="bu-note big">🚨 '+esc(e.bignote)+'</span>':'')+
             (e.notes?e.notes.map(function(t){
               return '<span class="bu-note">'+esc(t)+'</span>'; }).join('')
               :(e.note?'<span class="bu-note">'+esc(e.note)+'</span>':''))+
@@ -1228,9 +1240,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      arrive des données en adresse et libellé, jamais en HTML — la page échappe
      tout ce qu'elle affiche, et une balise glissée dans un synopsis s'écrivait
      en clair à l'écran au lieu de devenir un lien. */
+  /* Ce guide-ci en porte plusieurs sur la même entrée — Abstergo Hacked est
+     en deux parties sur YouTube — d'où `links`, un tableau, à côté du `link`
+     unique des autres pages. Les adresses viennent des notes du document,
+     sorties par le script de construction : posées sous le titre elles
+     s'écrivaient en clair, non cliquables, à côté d'un dépliant qui est
+     justement l'endroit des liens. */
   function lien(e){
-    return e.link ? '<a class="expand-trailer-link" href="'+esc(e.link.href)+
-      '" target="_blank" rel="noopener">▶ '+esc(e.link.label)+'</a>' : '';
+    var l=e.links||(e.link?[e.link]:[]);
+    return l.map(function(x){
+      return '<a class="expand-trailer-link" href="'+esc(x.href)+
+        '" target="_blank" rel="noopener">▶ '+esc(x.label)+'</a>'; }).join('');
   }
   /* Le resume RAWG d'un jeu : son premier paragraphe qui fasse une
      phrase. Le texte est decoupe en sections (« Gameplay », « Plot »)
@@ -1274,7 +1294,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
                 [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
                 [T.mPeriod,e.date],
-                [T.mPresent,e.present]])+link+'</div></div>';
+                [T.mPresent,e.present]])+link+lien(e)+'</div></div>';
       };
       if(!CFG.rawgKey){ fallback(null); return; }
       /* L'identifiant RAWG est stocké dans le même champ que celui de TMDB :
