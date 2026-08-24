@@ -17,11 +17,18 @@
    de structure : « FLASHFOWARDS » -> flashforwards, « TROUGHT » -> through.
    Aucune phrase de prose n'est touchee.
 
-   Les niveaux ne viennent pas du document : il annonce « Essential /
-   important / optional » sans en poser aucun. Sa deuxieme ligne donne les
-   jeux pour essentiels et le reste pour bonus (« all other medias are bonus
-   content »), et c'est ce qui est applique ; les DLC prennent
-   « important », comme sur Dragon Age.
+   Les niveaux viennent du document depuis le 24 aout 2026 : chaque ligne
+   d'entree s'ouvre sur E, I ou O — Essential, Important, Optional. Ils
+   etaient auparavant deduits du type de media, ce qui donnait « tous les
+   jeux essentiels » ; le document dit autre chose, et c'est lui qui tranche.
+
+   L'annee entre parentheses n'est PAS l'annee de sortie de l'oeuvre :
+   c'est la date du PRESENT, celle du cadre Animus. « Assassin's Creed:
+   Bloodlines » est sorti en 2009 et porte (2012), parce que Desmond revit
+   ce souvenir en 2012. Tout le guide est bati sur cette ligne du present
+   (« This guide in based on the present timeline »), et la page l'affiche
+   donc a cote de la date dans l'univers. Elle etait lue mais jetee : le
+   champ s'appelait `released` et rien ne l'affichait.
 
    Pas de table RT : un guide de jeux video n'a pas de duree a sommer, meme
    raison qu'Avatar Legends et Dragon Age.
@@ -36,6 +43,7 @@ const ICI = path.dirname(fileURLToPath(import.meta.url));
 const SOURCE = process.env.AC_SOURCE || 'C:/Users/nprad/Desktop/ac.txt';
 const SORTIE = path.join(ICI, 'data-assassinscreed-en.js');
 const VISUELS = path.join(ICI, 'visuels-assassinscreed.json');
+const DESCS = path.join(ICI, 'desc-assassinscreed.json');
 const CHECK = process.argv.includes('--check');
 
 /* ── le document ──────────────────────────────────────────────────── */
@@ -63,29 +71,36 @@ const TYPES = {
   'VIDEO':      'video',
   'AUDIO':      'audio',
 };
-const NIVEAUX = { jeu: 'must', dlc: 'important' };
+/* Les trois niveaux du document, tels que sa legende les nomme :
+   « Levels : Essential / important / optional ». */
+const NIVEAUX = { E: 'must', I: 'important', O: 'bonus' };
 
 const RE_ENTREE = new RegExp(
-  '^(' + Object.keys(TYPES).join('|') + ')\\s+(FLASHBACK|FLASHFORWARD)?\\s*(.+)$');
+  '^([EIO])\\s+(' + Object.keys(TYPES).join('|') + ')\\s+' +
+  '(FLASHBACK|FLASHFORWARD)?\\s*(.+)$');
 
 /* ── decoupe d'une ligne d'entree ─────────────────────────────────────
-   « VIDEO GAME 1191 (2007) Assassin's Creed » se lit en trois morceaux :
-   la date dans l'univers, l'annee de sortie entre parentheses, le titre.
-   Trois entrees n'ont pas de date d'univers, quatre n'ont pas d'annee de
-   sortie ; c'est la parenthese qui tranche, et a defaut le mot
-   « Assassin », par lequel tous les titres sans parenthese commencent.  */
+   « VIDEO GAME 1191 (2012) Assassin's Creed » se lit en trois morceaux :
+   la date dans l'univers, la date du present entre parentheses, le titre.
+   Trois entrees n'ont pas de date d'univers, une trentaine n'ont pas de
+   date de present ; c'est la parenthese qui tranche, et a defaut le mot
+   « Assassin », par lequel tous les titres sans parenthese commencent.
+
+   La parenthese porte parfois une plage (« 2007-2012 », « 1998-2000 ») ou
+   une approximation (« ~2081 ») : elle est reprise telle quelle, jamais
+   ramenee a une annee.                                                  */
 function decoupe(reste) {
   const paren = reste.match(/\(([^)]*\d[^)]*)\)/);
   if (paren) {
     return {
       date:    reste.slice(0, paren.index).trim(),
-      sortie:  paren[1].trim(),
+      present: paren[1].trim(),
       title:   reste.slice(paren.index + paren[0].length).trim(),
     };
   }
   const i = reste.search(/Assassin[’']s Creed/);
   if (i < 0) throw new Error('titre introuvable : ' + reste);
-  return { date: reste.slice(0, i).trim(), sortie: '', title: reste.slice(i).trim() };
+  return { date: reste.slice(0, i).trim(), present: '', title: reste.slice(i).trim() };
 }
 
 /* ── identifiants : le titre, ampute de la marque, resserre a trois mots
@@ -139,17 +154,17 @@ for (let i = iDebut; i < lignes.length; i++) {
 
   const m = t.match(RE_ENTREE);
   if (m && era) {
-    const { date, sortie, title } = decoupe(m[3]);
-    const type = TYPES[m[1]];
+    const { date, present, title } = decoupe(m[4]);
+    const type = TYPES[m[2]];
     courante = {
       id: identifiant(title, type),
       type,
-      level: NIVEAUX[type] || 'bonus',
+      level: NIVEAUX[m[1]],
       title,
       date: date || '',
-      released: sortie || '',
+      present: present || '',
     };
-    if (m[2]) courante.tags = [m[2].toLowerCase()];
+    if (m[3]) courante.tags = [m[3].toLowerCase()];
     era.entries.push(courante);
     dansFaq = null;
     continue;
@@ -159,7 +174,7 @@ for (let i = iDebut; i < lignes.length; i++) {
 
   /* La FAQ du guide est unique en son genre : une seule question, la meme
      partout — qui revit ces souvenirs au present ? — et une reponse d'une
-     ligne. Neuf entrees la posent avec la mention SPOILERS, qui est une
+     ligne. Quatre entrees la posent avec la mention SPOILERS, qui est une
      seconde question et non une note dans la reponse. */
   if (/^FAQ\s*:/i.test(t)) {
     dansFaq = /SPOILERS\s*$/i.test(t) ? 'animusSpoiler' : 'animus';
@@ -180,16 +195,46 @@ const ALL = eras.flatMap((e) => e.entries);
 /* ── les visuels, quand le depannage RAWG/TMDB en a trouve ────────────
    Meme situation que Dragon Age a sa naissance : les WebP locaux n'existent
    pas encore, et les URL d'API tiennent la place en attendant. La regle
-   « WebP local x4 » vaut des que Niko pose ses fichiers.               */
+   « WebP local x4 » vaut des que Niko pose ses fichiers.
+
+   Le JSON est indexe par identifiant, et l'identifiant porte un rang
+   (`ac-ii-2`) : une entree ajoutee au document decale tout ce qui la suit
+   et colle l'affiche du voisin. C'est le piege d'appariement du depot, en
+   plus discret encore — une image fausse ne leve rien. Chaque visuel porte
+   donc le titre qu'il decrivait, et un titre qui ne correspond plus fait
+   sortir le script en erreur plutot que d'ecrire l'image d'a cote.      */
 let visuels = {};
 try { visuels = JSON.parse(fs.readFileSync(VISUELS, 'utf8')); } catch (_) {}
+const desaccords = [];
 for (const e of ALL) {
   const v = visuels[e.id];
   if (!v) continue;
+  if (v.title && v.title !== e.title) {
+    desaccords.push(e.id + ' : visuel « ' + v.title +' », entree « ' + e.title + ' »');
+    continue;
+  }
   if (v.img)  e.img = v.img;
   if (v.tmdb) e.tmdb = String(v.tmdb);
   if (v.desc) e.desc = v.desc;
 }
+/* ── les resumes des romans, comics, videos et de la fiction audio ────
+   Ni RAWG ni TMDB ne les couvrent, et la page n'a donc rien a ouvrir sur
+   leur fiche : elle affichait « No synopsis available » sur cinquante-cinq
+   entrees. `descriptions-assassinscreed.py` les recolte une fois sur le
+   wiki AC, comme Dragon Age le fait sur le sien, et le JSON garde le titre
+   qu'il decrivait — meme garde-fou que les visuels, meme raison. */
+let descs = {};
+try { descs = JSON.parse(fs.readFileSync(DESCS, 'utf8')); } catch (_) {}
+for (const e of ALL) {
+  const d = descs[e.id];
+  if (!d || !d.desc) continue;
+  if (d.title && d.title !== e.title) {
+    desaccords.push(e.id + ' : resume « ' + d.title + ' », entree « ' + e.title + ' »');
+    continue;
+  }
+  e.desc = d.desc;
+}
+
 for (const e of ALL) {
   if (!e.tmdb) e.tmdb = '0';
   e.media = e.type === 'film' ? 'movie' : (e.type === 'jeu' || e.type === 'dlc') ? 'game' : 'tv';
@@ -198,11 +243,17 @@ for (const e of ALL) {
 /* ── l'accroche, les reperes de lecture, les exclusions ───────────────
    Tout ce bloc sort du document, phrase par phrase. Les trois intitules du
    depliant sont ses propres intertitres, repasses en casse de phrase.   */
+/* Les intertitres du document sont retrouves a la ligne exacte. Une lecture
+   qui ne trouve pas son intertitre ne doit pas rendre le document entier ni
+   la liste vide : c'est le mode de defaillance du depot — un bloc muet qui
+   passe pour un feu vert. « WHAT LEFT OUT ? » est devenu « WHAT'S LEFT
+   OUT ? » le 24 aout 2026, et la lecture rendait alors tout le fichier. */
 function texte(depuis, jusqua) {
   const a = lignes.findIndex((l) => l.trim() === depuis);
+  if (a < 0) throw new Error('intertitre introuvable : ' + depuis);
   const b = lignes.findIndex((l, i) => i > a && l.trim() === jusqua);
-  return lignes.slice(a + 1, b < 0 ? lignes.length : b)
-    .map((l) => l.trim()).filter(Boolean);
+  if (b < 0) throw new Error('intertitre introuvable : ' + jusqua);
+  return lignes.slice(a + 1, b).map((l) => l.trim()).filter(Boolean);
 }
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
@@ -223,7 +274,7 @@ function cle(titre, svg, paras) {
 
 /* « WHAT LEFT OUT ? » : sept lignes « sujet : raison », coupees au premier
    deux-points, exactement comme la liste de Dragon Age.                */
-const coupes = texte('WHAT LEFT OUT ?', 'FILTERS, SEARCH AND LEGEND').map((l) => {
+const coupes = texte("WHAT'S LEFT OUT ?", 'FILTERS, SEARCH AND LEGEND').map((l) => {
   const i = l.indexOf(' : ');
   return i < 0 ? { dt: l, dd: '' } : { dt: l.slice(0, i).trim(), dd: l.slice(i + 3).trim() };
 });
@@ -234,7 +285,7 @@ const notes =
   '<div class="keys-title">How to read this</div><div class="keys">' +
     cle('The calendar', SVG_CAL, texte('THE CALENDAR', 'FLASHBACKS AND FLASHFOWARDS')) +
     cle('Flashbacks and flashforwards', SVG_HOR, texte('FLASHBACKS AND FLASHFOWARDS', 'GAMES ORDER')) +
-    cle('Games order', SVG_MAN, texte('GAMES ORDER', 'WHAT LEFT OUT ?')) +
+    cle('Games order', SVG_MAN, texte('GAMES ORDER', "WHAT'S LEFT OUT ?")) +
   '</div>' +
   '<details class="cuts"><summary>What&#x27;s left out and why?<span class="n">' +
     coupes.length + ' entries</span>' + SVG_CHV + '</summary><div class="cuts-body">' +
@@ -275,6 +326,10 @@ CG.universe = 'assassinscreed';
 CG.t.nav.assassinscreed = 'Assassin\u2019s Creed';
 CG.t.hideDone = 'Hide played';
 CG.t.resetDA = undefined; delete CG.t.resetDA;
+/* La mesure que ce guide-ci a en propre : l'annee du present, celle depuis
+   laquelle le souvenir est revecu. Elle vient a cote de `mPeriod`, qui reste
+   la date dans l'univers. */
+CG.t.mPresent = 'Present day';
 CG.resetMsg = 'Reset your Assassin\u2019s Creed progress?';
 CG.badgeLabels = {
   jeu:   ['bj',  'VIDEO GAME'],
@@ -313,7 +368,7 @@ const DATA = {
       if (x.notes)    o.notes = x.notes;
       if (x.desc)     o.desc = x.desc;
       if (x.faq)      o.faq = x.faq;
-      if (x.released) o.released = x.released;
+      if (x.present)  o.present  = x.present;
       return o;
     }),
   })),
@@ -323,7 +378,10 @@ const DATA = {
    Chacun est ne d'un mode de defaillance silencieux du depot : une lecture
    qui rend zero passe pour un feu vert, et une entree perdue ne leve rien. */
 const erreurs = [];
+for (const d of desaccords) erreurs.push('visuel decale — ' + d);
 if (eras.length !== 7) erreurs.push('sagas lues : ' + eras.length + ', attendu 7');
+/* Le document pose un niveau par entree : aucune ne doit sortir sans. */
+for (const e of ALL) if (!e.level) erreurs.push('sans niveau : ' + e.id);
 if (ALL.length < 100) erreurs.push('entrees lues : ' + ALL.length + ', trop peu');
 const vus = new Set();
 for (const e of ALL) {
@@ -354,7 +412,9 @@ console.log('  FAQ     : ' + ALL.filter((e) => e.faq).length +
             ' (dont ' + ALL.filter((e) => e.faq && e.faq.animusSpoiler).length + ' avec SPOILERS)');
 console.log('  notes   : ' + ALL.filter((e) => e.notes).length);
 console.log('  reperes : ' + ALL.filter((e) => e.tags).length);
+console.log('  present : ' + ALL.filter((e) => e.present).length + ' / ' + ALL.length);
 console.log('  visuels : ' + ALL.filter((e) => e.img).length + ' / ' + ALL.length);
+console.log('  resumes : ' + ALL.filter((e) => e.desc).length + ' / ' + ALL.length);
 console.log('  exclus  : ' + coupes.length);
 
 if (CHECK) { console.log('\n--check : rien ecrit.'); process.exit(0); }
@@ -371,7 +431,7 @@ const entete = `/* Donnees de la timeline Assassin's Creed, ecrites depuis le do
    Dead et Dragon Age : le francais reste a ecrire.
 
    La FAQ de ce guide n'a qu'une question, la meme partout : qui revit ces
-   souvenirs au present ? Neuf entrees la posent avec la mention SPOILERS,
+   souvenirs au present ? Quatre entrees la posent avec la mention SPOILERS,
    qui est une seconde question et non une note dans la reponse — d'ou les
    deux cles de \`faqCats\`.
 

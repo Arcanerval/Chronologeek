@@ -416,6 +416,15 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    ligne, elle se lit d'un coup d'œil */
 .bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
   letter-spacing:.03em;color:var(--hot);line-height:1}
+/* la date du présent : l'année depuis laquelle le souvenir est revécu. Tout
+   le guide est bâti sur cette ligne-là — « this guide is based on the
+   present timeline » — et elle manquait à l'écran. Elle se lit à côté de la
+   date dans l'univers sans lui disputer l'œil : une étiquette à filet, pas
+   un second grand nombre. */
+.bu-meta .pd{display:inline-flex;align-items:baseline;gap:6px;padding:2px 8px;
+  border:1px solid rgba(255,253,247,.24);font-size:10.5px;letter-spacing:.09em;
+  color:rgba(255,253,247,.72);white-space:nowrap}
+.bu-meta .pd i{font-style:normal;font-weight:800;color:rgba(255,253,247,.44)}
 .bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
   font-style:italic}
 .bu-end{flex:0 0 auto;display:flex;align-self:center}
@@ -537,16 +546,18 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
 
 /* ══ Grogu : le retour en haut ═════════════════════════════════════ */
-/* Sans trame ni désaturation : l'effet des visuels le salissait. */
+/* Sans trame ni désaturation : l'effet des visuels le salissait.
+   Argent au repos, or brisé au survol. Les deux fichiers partagent une
+   seule toile de 384×384, soit les 96 px de rendu ×4. */
 #totop{position:fixed;right:16px;bottom:calc(var(--hud-h,50px) + 28px);z-index:75;width:96px;height:96px;padding:0;
   background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
   transform:translateY(10px);transition:opacity .2s,transform .2s}
 #totop.on{opacity:1;pointer-events:auto;transform:none}
 #totop span{position:relative;display:block;width:96px;height:96px}
-#totop svg{width:100%;height:100%;color:var(--uni);
-  filter:drop-shadow(0 0 10px color-mix(in srgb,var(--uni) 55%,transparent));
-  transition:color .18s,transform .18s}
-#totop:hover svg{color:var(--hot);transform:translateY(-3px)}
+#totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#totop .hv{opacity:0}
+#totop:hover .nl{opacity:0}
+#totop:hover .hv{opacity:1}
 
 
 /* ══ barre de bas d'écran, dépliable : où j'en suis ═════════════════ */
@@ -798,11 +809,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
          sommer, et une case qui annonce « 0 h » ment plus qu'elle n'informe.
          Même raison qu'Avatar Legends. -->
     <div class="stats">
-      <div class="s"><b>34</b><span>Games</span></div>
-      <div class="s"><b>22</b><span>DLC</span></div>
-      <div class="s"><b>24</b><span>Books</span></div>
-      <div class="s"><b>24</b><span>Comics</span></div>
-      <div class="s"><b id="s-tot">109</b><span>Entries</span></div>
+      <div class="s"><b id="s-jeu">33</b><span>Games</span></div>
+      <div class="s"><b id="s-dlc">22</b><span>DLC</span></div>
+      <div class="s"><b id="s-roman">24</b><span>Books</span></div>
+      <div class="s"><b id="s-comic">24</b><span>Comics</span></div>
+      <div class="s"><b id="s-tot">111</b><span>Entries</span></div>
     </div>
     <button class="start" id="start" type="button">Start <em>▸</em></button>
   </div>
@@ -868,16 +879,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </footer>
 
 <button id="totop" aria-label="Back to top" title="Back to top">
-  <span><svg viewBox="0 0 96 96" aria-hidden="true" fill="none"
-    stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M22 74 48 48l26 26" opacity=".3"/>
-    <path d="M22 56 48 30l26 26" opacity=".62"/>
-    <path d="M22 38 48 12l26 26"/></svg></span>
+  <span><img class="nl" src="/images/ac1.webp" alt=""/><img class="hv" src="/images/ac2.webp" alt=""/></span>
 </button>
 
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
-    <b><em id="k-on">0</em> / <span id="k-tot">109</span></b>
+    <b><em id="k-on">0</em> / <span id="k-tot">111</span></b>
     <span class="lbl">played</span>
     <span class="bar"><i id="k-fill"></i></span>
     <!-- Le HUD des autres timelines compte des heures ; runtime.py n'a pas
@@ -1063,6 +1070,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
+              (e.present?'<span class="pd"><i>'+esc(T.mPresent)+'</i>'+
+                esc(e.present)+'</span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
             '</span>'+
             (e.notes?e.notes.map(function(t){
@@ -1146,6 +1155,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     /* Le hero d'Avatar n'a pas de case « À voir » : sans table RT le compte
        vaudrait 0 h. On ne l'écrit donc que si la case existe. */
     $('#s-tot').textContent=ALL.length;
+    /* Les quatre compteurs du hero étaient écrits en dur, et un rescan du
+       document les laissait faux sans rien signaler : « 34 games » pour
+       33 jeux. Ils se comptent maintenant dans les données, comme le
+       total juste au-dessus. */
+    ['jeu','dlc','roman','comic'].forEach(function(t){
+      var b=$('#s-'+t);
+      if(b) b.textContent=ALL.filter(function(e){return e.type===t;}).length;
+    });
     if($('#s-h')) $('#s-h').textContent=h+' h';
     D.eras.forEach(function(era,i){
       var b=document.querySelector('[data-done="'+i+'"]');
@@ -1237,7 +1254,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||rawgSyn(g)||T.noSynopsis)+'</div>'+
           meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
                 [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
-                [T.mPeriod,e.date]])+link+'</div></div>';
+                [T.mPeriod,e.date],
+                [T.mPresent,e.present]])+link+'</div></div>';
       };
       if(!CFG.rawgKey){ fallback(null); return; }
       /* L'identifiant RAWG est stocké dans le même champ que celui de TMDB :
@@ -1264,8 +1282,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
     if(!id||id==='0'||!CFG.tmdbKey){
       /* sans identifiant TMDB ni description, le dépliant restait vide :
-         on le dit, la FAQ juste en dessous porte le reste. */
-      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>'+lien(e);
+         on le dit, la FAQ juste en dessous porte le reste.
+         Les mesures viennent quand même : la période et l'année du présent
+         sont dans les données, elles ne dépendent d'aucune API, et les
+         cinquante-cinq fiches de romans et de comics étaient les seules du
+         guide à ne pas les porter. */
+      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>'+
+        meta([[T.mPeriod,e.date],[T.mPresent,e.present]])+lien(e);
       return;
     }
 
@@ -1310,7 +1333,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         meta([[T.mYear,(d.release_date||d.first_air_date||'').substring(0,4)],
               [T.mGenre,(d.genres||[]).map(function(g){return g.name;}).join(', ')],
               [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],
-              [T.mPeriod,e.date]])+
+              [T.mPeriod,e.date],
+              [T.mPresent,e.present]])+
         (tr?'<a class="expand-trailer-link" href="https://www.youtube.com/watch?v='+tr.key+
           '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+lien(e)+
         '</div></div>';
