@@ -7,9 +7,10 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-08", label:"August 2026", items:[
+      {"nat":"media","uni":"avatar","kind":"comic","title":"Masters of the Elements Vol.1 : Off Duty","meta":"290 BG","vo":true,"txt":"Added to the Avatar Legends timeline, in 290 BG, just after The Shadow of Kyoshi.","img":"/images/mastersoftheelements.webp","href":"/avatar#avt-masters-of-the-elements-off-duty","cta":"See in the timeline"},
       {"nat":"site","uni":"assassinscreed","kind":"timeline","title":"New timeline: Assassin’s Creed","txt":"111 entries, from Altaïr to the Animus Hub — the games and their DLC, the novels, the comics and the short films in a single thread.","href":"/assassinscreed","cta":"Open the timeline"},
       {"nat":"site","uni":"dragonage","kind":"timeline","title":"New timeline: Dragon Age","txt":"43 entries, from The Stolen Throne to The Veilguard — the games and their DLC, the books, the comics and the shows in a single thread.","href":"/dragonage","cta":"Open the timeline"},
-      {"nat":"media","uni":"dc","kind":"serie","title":"Lanterns","meta":"2026","txt":"Added to the DC timeline, following Supergirl.","img":"https://image.tmdb.org/t/p/w500/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg","href":"/dc#dcu-lanterns","cta":"See in the timeline"},
+      {"nat":"media","uni":"dc","kind":"serie","title":"Lanterns","meta":"2016-2026","txt":"Added to the DC timeline, following Supergirl.","img":"https://image.tmdb.org/t/p/w500/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg","href":"/dc#dcu-lanterns","cta":"See in the timeline"},
       {"nat":"site","uni":"twd","kind":"timeline","title":"New timeline: The Walking Dead","txt":"45 entries, from the Los Angeles outbreak to New York — all seven shows and the eight web series in a single thread.","href":"/walkingdead","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"comic","title":"The Fall of Kylo Ren 1-5","meta":"34 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.","href":"/deep-dives/star-wars#34-aby-the-fall-of-kylo-ren-1-5","cta":"See in the Deep Dive"},
       {"nat":"site","uni":"startrek","kind":"timeline","title":"New timeline: Star Trek","txt":"248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.","href":"/startrek","cta":"Open the timeline"}

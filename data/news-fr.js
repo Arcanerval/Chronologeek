@@ -38,6 +38,14 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
 
+      { nat:"media", uni:"avatar", kind:"comic",
+        title:"Masters of the Elements Vol.1 : Off Duty", meta:"290 BG", vo:true,
+        txt:"Ajouté à la timeline Avatar Legends, en 290 BG, juste après "+
+            "The Shadow of Kyoshi.",
+        img:"/images/mastersoftheelements.webp",
+        href:"/fr/avatar#avt-masters-of-the-elements-off-duty",
+        cta:"Voir dans la timeline" },
+
       { nat:"site", uni:"assassinscreed", kind:"timeline",
         title:"Nouvelle timeline : Assassin’s Creed",
         txt:"111 entrées, d'Altaïr à l'Animus Hub — les jeux et leurs DLC, "+
@@ -51,7 +59,7 @@ window.CG_NEWS = {
         href:"/fr/dragonage", cta:"Ouvrir la timeline" },
 
       { nat:"media", uni:"dc", kind:"serie",
-        title:"Lanterns", meta:"2026",
+        title:"Lanterns", meta:"2016-2026",
         txt:"Ajoutée à la timeline DC, à la suite de Supergirl.",
         img:"https://image.tmdb.org/t/p/w500/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg",
         href:"/fr/dc#dcu-lanterns", cta:"Voir dans la timeline" },

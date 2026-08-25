@@ -189,7 +189,7 @@ eras:[
 {id:"dcu-superman",img:"https://image.tmdb.org/t/p/w780/eGX66zonvc4bXg3rM08RUxdYSDx.jpg",type:"film",level:"imp",tmdb:"1061474",media:"movie",title:"Superman",date:"2025",dim:"TERRE-1",faq:{"quand":"Le film se déroule en 2025 dans le tout nouveau DCU.","pourquoi":"Premier grand film du DCU de James Gunn. Un nouveau départ complet pour Superman et l'univers DC au cinéma."}},
 {id:"dcu-peacemaker2",img:"https://image.tmdb.org/t/p/w780/aJcUU3LMlqMKBi8L3eaxGfAbd4G.jpg",type:"serie",level:"imp",tmdb:"110492",media:"tv",title:"Peacemaker",date:"2025",dim:"TERRE-1",subitems:["Saison 2"]},
 {id:"dcu-supergirl",img:"https://image.tmdb.org/t/p/w780/4X2YSe8PaYbsBqX3TDmmIU4vOju.jpg",type:"film",level:"imp",tmdb:"1081003",media:"movie",title:"Supergirl",date:"2026",dim:"TERRE-1"},
-{id:"dcu-lanterns",img:"https://image.tmdb.org/t/p/w780/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg",type:"serie",level:"imp",tmdb:"95350",media:"tv",title:"Lanterns",date:"2026",dim:"TERRE-1",subitems:["Saison 1"]}
+{id:"dcu-lanterns",img:"https://image.tmdb.org/t/p/w780/mdbWfpbWhvxgG3k5MHpo90UgAUe.jpg",type:"serie",level:"imp",tmdb:"95350",media:"tv",title:"Lanterns",date:"2016-2026",dim:"TERRE-1",subitems:["Saison 1"]}
 ]}
 ]
 };

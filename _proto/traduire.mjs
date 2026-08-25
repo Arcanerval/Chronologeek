@@ -232,6 +232,12 @@ const TRADUCTIONS = [
   ['Ajoutée à la timeline DC, à la suite de Supergirl.',
    'Added to the DC timeline, following Supergirl.'],
 
+  /* ── la carte Masters of the Elements du journal, écrite le 25 août
+     2026 ── même moule que les précédentes, le voisin cité étant un
+     titre qui ne se traduit pas. */
+  ['Ajouté à la timeline Avatar Legends, en 290 BG, juste après The Shadow of Kyoshi.',
+   'Added to the Avatar Legends timeline, in 290 BG, just after The Shadow of Kyoshi.'],
+
   /* ── le parcours rewatch de Star Wars, écrit le 21 août 2026 ────────
      Le second parcours est né après la prod : ses coupes et sa note
      n'ont pas d'homologue anglais à retrouver. Les sous-items suivent
@@ -754,6 +760,10 @@ const TITRES_IDENTIQUES = [
   'The Fall of Kylo Ren 1-5',
   // DC · la série du DCU ajoutée le 18 août 2026, sans titre français
   'Lanterns',
+  /* Avatar Legends · le comic VO ajouté le 25 août 2026, et sa date.
+     « BG » est une unité inventée : elle ne se traduit pas. */
+  'Masters of the Elements Vol.1 : Off Duty',
+  '290 BG',
   /* Star Wars · deux dates du parcours rewatch, écrites le 21 août 2026.
      Une date ne se traduit pas, mais « BBY » est une lettre : sans
      cette ligne le contrôle les compte comme restées en français. */
