@@ -385,6 +385,23 @@ export const AC_TRADUCTIONS = [
      Ils viennent des fiches TMDB et des quatrièmes de couverture,
      collectés par `descriptions-assassinscreed.py`. Traduits, pas
      réécrits. */
+  /* Les six jeux et DLC dont RAWG ne rend rien d'utilisable : Brotherhood
+     n'y a que du packaging d'édition, les quatre extensions n'ont aucune
+     description, et le texte d'Altaïr's Chronicles y est coupé au retour à
+     la ligne. Le wiki AC les a — voir `descriptions-assassinscreed.py`. */
+  ['As the direct prequel of the critically acclaimed console title Assassin’s Creed, discover more of the story of Altaïr as he must find “the chalice,” an object of such power that whoever is in possession of it can end the Crusades.',
+    'Préquelle directe d\'Assassin\'s Creed, le jeu console salué par la critique, il prolonge l\'histoire d\'Altaïr, parti en quête du « calice » — un objet d\'un tel pouvoir que celui qui le détient peut mettre fin aux Croisades.'],
+  ['Using the Animus 2.0, Desmond Miles attempts to relive one of the later memories of his ancestor, Ezio Auditore, hoping that it will reveal the location of his Apple of Eden, which could allow the Assassins to prevent the disaster foretold by Minerva. However, instead of entering the memory set in 1506, he is forced into a different one, occurring during a battle in Viana.',
+    'À l\'aide de l\'Animus 2.0, Desmond Miles tente de revivre l\'un des derniers souvenirs de son ancêtre Ezio Auditore, dans l\'espoir d\'y trouver l\'emplacement de sa Pomme d\'Éden — de quoi permettre aux Assassins d\'empêcher la catastrophe annoncée par Minerve. Mais au lieu du souvenir de 1506, c\'en est un autre qui s\'impose à lui : une bataille, à Viana.'],
+  ['Welcome to Assassin\'s Creed III\'s Tyranny of King Washington — a 3-part DLC series exploring an alternate reality in which George Washington goes mad with unlimited power, foregoing Presidency to rule as tyrannical King. In this alternate world, Connor is and remains Ratonhnhaké:ton. Having never become an Assassin, he must endure new trials, acquiring the skills he\'ll need to take down a possessed Washington and win freedom for his land once and for all. – Ubisoft.',
+    'Bienvenue dans La Tyrannie du Roi Washington, l\'extension d\'Assassin\'s Creed III en trois parties : une réalité parallèle où George Washington, rendu fou par un pouvoir sans limite, renonce à la présidence pour régner en tyran. Dans ce monde-là, Connor est et reste Ratonhnhaké:ton. N\'étant jamais devenu Assassin, il doit affronter de nouvelles épreuves et acquérir ce qu\'il lui faut pour abattre un Washington possédé et rendre enfin sa liberté à sa terre. – Ubisoft.'],
+  ['The Last Maharaja is a single-player downloadable content addition for Assassin\'s Creed: Syndicate and was released on 1 March 2016. The Last Maharajah memories can be accessed after Sequence 3, but take place after Sequence 9.',
+    'Le Dernier Maharaja est un contenu téléchargeable solo pour Assassin\'s Creed : Syndicate, sorti le 1er mars 2016. Ses mémoires sont accessibles dès la fin de la Séquence 3, mais se déroulent après la Séquence 9.'],
+  ['20 years after the events of Assassin\'s Creed Syndicate,\' Jack the Ripper\' has embarked on a brutal reign of terror that shocks London to its core and threatens the very existence of the Brotherhood of Assassins.',
+    'Vingt ans après les événements d\'Assassin\'s Creed Syndicate, « Jack l\'Éventreur » a entamé un règne de terreur d\'une brutalité qui ébranle Londres jusqu\'aux fondations et menace l\'existence même de la Confrérie des Assassins.'],
+  ['Explore the haunted wilds and beautiful landscapes of Ireland as you battle a druidic cult known as the Children of Danu. Conquer ring forts, master the art of smuggling, and gain the favor of Gaelic kings in a new open-world adventure.',
+    'Explorez les étendues sauvages et hantées de l\'Irlande et ses paysages superbes, en affrontant un culte druidique connu sous le nom des Enfants de Danu. Prenez les forts circulaires, maîtrisez l\'art de la contrebande et gagnez la faveur des rois gaéliques dans une nouvelle aventure en monde ouvert.'],
+
   /* Lineage, Ascendance et Embers : les trois résumés posés par Niko le
      25 août 2026, les deux premiers repris de la description de leur
      vidéo, le troisième du wiki — la fiche TMDB d'Embers désignait une
@@ -520,6 +537,8 @@ export const AC_LIENS = [
   ['https://www.youtube.com/watch?v=BCcLbHaJ2Po', 'https://www.youtube.com/watch?v=KGbcp7Zkv7w'],
   /* Animi Training Program — les cinématiques du multi de Revelations */
   ['https://www.youtube.com/watch?v=Ah2XSXZqrcA', 'https://www.youtube.com/watch?v=iqjt-SQ5AnM'],
+  /* Embers — les deux adresses démarrent après l'introduction */
+  ['https://www.youtube.com/watch?v=VZ6lIW9Ls30&t=21s', 'https://www.youtube.com/watch?v=2pGXCKhE2xM&t=250s'],
   /* Chronicles: Russia — la fin secrète */
   ['https://www.youtube.com/watch?v=0JKrEU7o1Nk', 'https://www.youtube.com/watch?v=bIL4dWRicbg'],
 ];

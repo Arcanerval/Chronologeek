@@ -35,6 +35,18 @@
   "section": "synopsis",
   "title": "Assassin's Creed: Brahman"
  },
+ "ac-brotherhood-1": {
+  "desc": "Using the Animus 2.0, Desmond Miles attempts to relive one of the later memories of his ancestor, Ezio Auditore, hoping that it will reveal the location of his Apple of Eden, which could allow the Assassins to prevent the disaster foretold by Minerva. However, instead of entering the memory set in 1506, he is forced into a different one, occurring during a battle in Viana.",
+  "page": "Assassin's Creed: Brotherhood",
+  "section": "synopsis",
+  "title": "Assassin's Creed: Brotherhood"
+ },
+ "ac-brotherhood-2": {
+  "desc": "Using the Animus 2.0, Desmond Miles attempts to relive one of the later memories of his ancestor, Ezio Auditore, hoping that it will reveal the location of his Apple of Eden, which could allow the Assassins to prevent the disaster foretold by Minerva. However, instead of entering the memory set in 1506, he is forced into a different one, occurring during a battle in Viana.",
+  "page": "Assassin's Creed: Brotherhood",
+  "section": "synopsis",
+  "title": "Assassin's Creed: Brotherhood"
+ },
  "ac-brotherhood-revelations-animi-1": {
   "desc": "The Animi Training Program was a secret Templar initiative to train Abstergo Industries employees in the skills they needed to fight against the remnants of the Assassins, such as combat and freerunning, through the use of the Animus, a device created by Abstergo that allowed a person to relive genetic memories.",
   "page": "Animi Training Program",
@@ -136,6 +148,12 @@
   "page": "Assassin's Creed IV Black Flag: Blackbeard – The Lost Journal",
   "section": "synopsis",
   "title": "Assassin's Creed IV Black Flag: Blackbeard – The Lost Journal"
+ },
+ "ac-jack-the-ripper-1": {
+  "desc": "20 years after the events of Assassin's Creed Syndicate,' Jack the Ripper' has embarked on a brutal reign of terror that shocks London to its core and threatens the very existence of the Brotherhood of Assassins.",
+  "page": "Jack the Ripper (DLC)",
+  "section": "synopsis",
+  "title": "Jack the Ripper"
  },
  "ac-last-descendants-1": {
   "desc": "Nothing in Owen's life has been right since his father died in prison, accused of a crime Owen is certain he didn't commit. Monroe, the IT guy at school, might finally bring Owen the means to clear his father's name by letting him use an Animus — a device that lets users explore the genetic memories buried within their own DNA. The experience brings Owen more than he bargained for.",
@@ -245,6 +263,12 @@
   "section": "synopsis",
   "title": "Assassin's Creed: The Golden City"
  },
+ "ac-the-last-maharaja-1": {
+  "desc": "The Last Maharaja is a single-player downloadable content addition for Assassin's Creed: Syndicate and was released on 1 March 2016. The Last Maharajah memories can be accessed after Sequence 3, but take place after Sequence 9.",
+  "page": "The Last Maharaja",
+  "section": "intro",
+  "title": "The Last Maharaja"
+ },
  "ac-the-secret-crusade-1": {
   "desc": "Niccolò Polo, father of Marco, will finally reveal the story he has kept secret all his life – the story of Altaïr, one of the Brotherhood's most extraordinary assassins. Altaïr embarks on a formidable mission – one that takes him throughout the Holy Land and shows him the true meaning of the Assassin's Creed. To demonstrate his commitment, Altaïr must defeat nine deadly enemies, including the Templar leader, Robert de Sablé.",
   "page": "Assassin's Creed: The Secret Crusade",
@@ -256,6 +280,12 @@
   "page": "Assassin's Creed: The Silk Road",
   "section": "synopsis",
   "title": "Assassin's Creed: The Silk Road"
+ },
+ "ac-the-tyranny-of-1": {
+  "desc": "Welcome to Assassin's Creed III's Tyranny of King Washington — a 3-part DLC series exploring an alternate reality in which George Washington goes mad with unlimited power, foregoing Presidency to rule as tyrannical King. In this alternate world, Connor is and remains Ratonhnhaké:ton. Having never become an Assassin, he must endure new trials, acquiring the skills he'll need to take down a possessed Washington and win freedom for his land once and for all. – Ubisoft.",
+  "page": "The Tyranny of King Washington",
+  "section": "synopsis",
+  "title": "The Tyranny of King Washington"
  },
  "ac-underworld-1": {
   "desc": "A disgraced Assassin. A deep-cover agent. A quest for redemption. 1862, and with London in the grip of the Industrial Revolution, the world's first underground railway is under construction. When a body is discovered at the dig, it sparks the beginning of the latest deadly chapter in the centuries-old battle between the Assassins and Templars.",
@@ -322,5 +352,11 @@
   "page": "Assassin's Creed: Valhalla – The Hidden Codex",
   "section": "intro",
   "title": "Assassin's Creed: Valhalla – The Hidden Codex"
+ },
+ "ac-wrath-of-the-1": {
+  "desc": "Explore the haunted wilds and beautiful landscapes of Ireland as you battle a druidic cult known as the Children of Danu. Conquer ring forts, master the art of smuggling, and gain the favor of Gaelic kings in a new open-world adventure.",
+  "page": "Wrath of the Druids",
+  "section": "synopsis",
+  "title": "Wrath of the Druids"
  }
 }

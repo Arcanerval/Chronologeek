@@ -359,6 +359,26 @@ const AJOUTS = {
       + 'desire to leave his days as an Assassin behind, Sofia allows her to stay for '
       + 'the night. The next day, Ezio catches Jun reading his memoirs and bids her to '
       + 'leave, but relents after she asks him about what it means to be an Assassin.',
+    /* Les deux adresses portent un point de depart : le court metrage commence
+       apres une introduction, et l'horodatage fait partie du lien. */
+    links: [{ href: 'https://www.youtube.com/watch?v=VZ6lIW9Ls30&t=21s', label: 'Watch the video' }],
+  },
+  /* RAWG a le bon texte, mais `rawgSyn()` prend une ligne, pas un
+     paragraphe : la fiche ouvrait sur « As the direct prequel of the
+     critically acclaimed console title », coupe net au retour a la ligne. Le
+     wiki, lui, n'a que deux phrases d'ebauche. On fige donc le paragraphe
+     RAWG recolle.
+
+     Ne pas « reparer » `rawgSyn()` en decoupant par paragraphe plutot que par
+     ligne : verifie sur les cinquante fiches, ca rallonge une douzaine de
+     synopsis avec les puces marketing qui suivent — « • Survive the aftermath
+     of October Revolution », « • Travel across an amazing 19th-century
+     India ». Une seule fiche y gagne, celle-ci. */
+  'ac-altairs-chronicles-1': {
+    desc: 'As the direct prequel of the critically acclaimed console title '
+      + 'Assassin’s Creed, discover more of the story of Altaïr as he must find '
+      + '“the chalice,” an object of such power that whoever is in possession of it '
+      + 'can end the Crusades.',
   },
   'ac-iii-abstergo-hacked-1':   { lang: 'vo' },
   'ac-fcbd-2016-great-1':       { lang: 'vo' },

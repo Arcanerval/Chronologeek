@@ -46,6 +46,31 @@ CHECK = '--check' in sys.argv
 # Les formes de media que ni RAWG ni TMDB ne couvrent.
 FORMES = ('roman', 'comic', 'video', 'audio')
 
+# ET SIX JEUX ET DLC, PARCE QUE RAWG NE LES COUVRE PAS NON PLUS. Le
+# depliant appelle RAWG pour les jeux, et `rawgSyn()` y prend la premiere
+# ligne de plus de quatre-vingts signes. Six fiches ne rendent rien
+# d'utilisable :
+#
+#   Brotherhood     4 200 signes de bonus d'edition, pas une ligne
+#                   d'intrigue — la fiche ouvrait sur « Digital Deluxe
+#                   Edition2 Exclusive Single-Player Maps: The Trajan
+#                   Market & The Aqueduct » ;
+#   Altair's Chronicles  un vrai texte, mais coupe aux retours a la ligne :
+#                   la premiere ligne s'arrete sur « As the direct prequel
+#                   of the critically acclaimed console title » ;
+#   Tyranny of King Washington, The Last Maharaja, Jack the Ripper et
+#   Wrath of the Druids  aucune description du tout, et la fiche affichait
+#                   « No synopsis available ».
+#
+# Le wiki les a tous. Ce sont les seuls jeux de la liste : les quarante-huit
+# autres fiches RAWG rendent une description correcte, et un resume fige
+# vaudrait moins que la leur, qui se met a jour toute seule.
+JEUX_SANS_RAWG = (
+    'ac-brotherhood-1', 'ac-brotherhood-2', 'ac-altairs-chronicles-1',
+    'ac-the-tyranny-of-1', 'ac-the-last-maharaja-1', 'ac-jack-the-ripper-1',
+    'ac-wrath-of-the-1',
+)
+
 # Les pages que la recherche ne trouve pas, ou trouve mal. Chacune a sa
 # raison, et une valeur vide veut dire « pas de page, pas de resume ».
 EXCEPTIONS = {
@@ -66,13 +91,24 @@ EXCEPTIONS = {
     # « (novel) » est une ebauche de deux lignes ; Dynasty est un manhua, et
     # c'est la page sans parenthese qui porte son resume d'editeur.
     'ac-dynasty-1': "Assassin's Creed: Dynasty",
+    # « Jack the Ripper » sans parenthese est le PERSONNAGE : la recherche
+    # rendait sa biographie, qui raconte sa trahison de Jacob Frye. Le DLC a
+    # sa page, et elle porte le synopsis officiel.
+    'ac-jack-the-ripper-1': 'Jack the Ripper (DLC)',
 }
 
 # La quatrieme de couverture, sous les noms que le wiki lui donne. Le
 # wiki AC ecrit « Blurb » ou « Publisher's summary » la ou le wiki Dragon
 # Age ecrit « Synopsis » — Underworld, The Silk Road et Dynasty sortaient
 # « sans texte » alors que leur dos de livre est la, en entier.
-QUATRIEME = ('blurb', "publisher's summary", 'synopsis', 'description')
+# « Official synopsis » est le texte d'Ubisoft, et il passe avant « Synopsis »
+# quand les deux sont la : sur les DLC, la seconde section raconte l'histoire
+# jusqu'a la fin. The Tyranny of King Washington ressortait sur « By
+# collecting Lucid Memory Fragments, it is shown that... » — un spoiler, dans
+# un guide qui n'en pose pas. `recolte()` prend la premiere section trouvee
+# dans l'ordre de l'article, et « Official synopsis » y est toujours au-dessus.
+QUATRIEME = ('official synopsis', 'blurb', "publisher's summary", 'synopsis',
+             'description')
 
 # Un recueil relie a souvent deux pages : celle du recueil et celle de
 # l'edition. On veut la premiere.
@@ -230,7 +266,8 @@ def entrees():
     if not m:
         sys.exit('donnees illisibles : lancer construire-assassinscreed.mjs')
     D = json.loads(m.group(1))
-    return [e for era in D['eras'] for e in era['entries'] if e['type'] in FORMES]
+    return [e for era in D['eras'] for e in era['entries']
+            if e['type'] in FORMES or e['id'] in JEUX_SANS_RAWG]
 
 
 def main():
