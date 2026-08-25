@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Chronologeek — Radar des sorties
-Agrège les sorties à venir (Star Wars, Marvel, DC, Avatar, Star Trek) depuis
+Agrège les sorties à venir (Star Wars, Marvel, DC, Avatar, Star Trek,
+The Walking Dead, Assassin's Creed) depuis
 plusieurs sources, croise avec les timelines déjà en ligne, et génère
 radar.html.
 
@@ -41,6 +42,8 @@ UNIVERSES = {
     "avatar":   {"label": "Avatar",        "color": "#7dd3fc", "file": "avatar.html"},
     "startrek": {"label": "Star Trek",     "color": "#b48cf2", "file": "startrek.html"},
     "twd":      {"label": "The Walking Dead", "color": "#a8bf4f", "file": "walkingdead.html"},
+    "assassinscreed": {"label": "Assassin's Creed", "color": "#c0202f",
+                       "file": "assassinscreed.html"},
 }
 
 # Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
@@ -53,6 +56,11 @@ TMDB_COMPANY_NAMES = {
     # Kirkman : ni l'une ni l'autre ne designe l'univers a elle seule, d'ou le
     # garde-fou de titre ci-dessous.
     "twd":      ["AMC Studios", "AMC Networks", "Skybound Entertainment"],
+    # Ubisoft Film & Television porte les trois series Netflix ; « Ubisoft »
+    # tout court ramene en plus les studios de jeux, qui produisent Rayman,
+    # Splinter Cell, Far Cry et Mythic Quest. D'ou le garde-fou de titre
+    # ci-dessous, comme pour Avatar et The Walking Dead.
+    "assassinscreed": ["Ubisoft Film & Television", "Ubisoft"],
 }
 
 # Quand la société couvre plus large que l'univers, le titre doit encore
@@ -75,6 +83,10 @@ UNIVERS_TITRE = {
     # Les quinze oeuvres de la timeline disent toutes « Walking Dead » —
     # « Fear the… », « Tales of the… », « The Walking Dead: Dead City ».
     "twd": re.compile(r"\bwalking dead\b", re.I),
+    # Ubisoft produit tout son catalogue : sans ce motif, Rayman Minis,
+    # Splinter Cell: Deathwatch, Side Quest et Mythic Quest arrivent au radar
+    # Assassin's Creed. L'apostrophe est facultative — TMDB ecrit les deux.
+    "assassinscreed": re.compile(r"\bassassin.?s creed\b", re.I),
 }
 
 
@@ -1028,6 +1040,145 @@ def source_startrek():
         log("Star Trek : ⚠ rien retenu — mot-clé, titres ou fenêtre à revoir")
 
 
+# ────────────────────────────── SOURCE 5 : Assassin's Creed, la liste Kulurak
+# Le huitieme univers ne se retrouve nulle part ailleurs. TMDB connait la serie
+# Netflix (tv/209962) mais sans date de premiere, et ne sait rien des jeux :
+# `source_tmdb` la verra le jour ou Netflix en annoncera une, pas avant. IMDb,
+# que la fiche de la serie designe pourtant (tt13363220), sert un mur
+# anti-robot AWS a toute requete — 202 et une page vide, meme depuis un
+# navigateur : ce n'est pas une source qu'un script peut lire.
+#
+# Reste la liste que Niko a trouvee : la section « Upcoming Assassin's Creed
+# releases » du blog de Kulurak sur le wiki Assassin's Creed, tenue a la main
+# et a jour. C'est la meme mecanique que Wookieepedia pour Star Wars — un
+# tableau de wiki, lu par l'API MediaWiki standard, l'API `/api/v1` de Fandom
+# repondant 403.
+#
+# **Aujourd'hui elle ne rend rien, et c'est normal.** Sur ses huit lignes, une
+# seule porte une date — Black Flag Resynced, sorti le 09/07/2026 — et les
+# sept autres sont « TBA » : Hexe, Invictus, Jade, le jeu mobile Netflix et
+# les trois series. `main()` ecarte les entrees sans date, et la page « A
+# venir » n'affiche une colonne que pour les univers qui en ont au moins une.
+# La colonne apparaitra donc toute seule le jour ou une date tombera, sans
+# qu'on ait a y revenir.
+AC_WIKI = "https://assassinscreed.fandom.com/api.php"
+AC_BLOG = "User blog:Kulurak/Chronological order of Assassin's Creed franchise"
+AC_SECTION = "==Upcoming Assassin's Creed releases=="
+
+# Une ligne du tableau : la date sur sept colonnes fusionnees, le code de type
+# dans une cellule coloree, puis le titre en italique.
+AC_LIGNE = re.compile(
+    r"\|\s*colspan=\"7\"[^|\n]*\|\s*(?P<date>[^|\n]+?)\s*\|\|"
+    r"[^|\n]*\|\s*(?P<code>[A-Z]{1,3})\s*\|\|"
+    r"\s*''(?P<titre>.+?)''")
+
+# Les codes du tableau. MG (mobile game) compte comme un jeu : `kind_key`
+# range « Jeu video » et « Jeu mobile » sous la meme cle.
+AC_TYPES = {"VG": "Jeu vidéo", "MG": "Jeu mobile", "B": "Livre",
+            "C": "Comic", "N": "Roman", "F": "Film"}
+
+
+def ac_titre(brut):
+    """[[Page|Affichage]] ou [[Page]] -> (affichage, page du wiki)."""
+    m = re.match(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]", brut.strip())
+    if not m:
+        return re.sub(r"[\[\]']", "", brut).strip(), ""
+    page = m.group(1).strip()
+    return (m.group(2) or page).strip(), page
+
+
+def ac_intros(pages):
+    """Le premier paragraphe de chaque page du wiki Assassin's Creed.
+
+    `fill_wiki_synopses` ne sert que Star Wars — elle interroge
+    starwars.fandom.com en dur. On lit donc ici, en un seul appel groupe."""
+    if not pages:
+        return {}
+    try:
+        r = requests.get(AC_WIKI, timeout=45, headers=UA_BROWSER, params={
+            "action": "query", "prop": "revisions", "rvprop": "content",
+            "rvslots": "main", "redirects": 1, "format": "json",
+            "formatversion": 2, "titles": "|".join(pages)})
+        r.raise_for_status()
+        q = r.json().get("query", {})
+        out = {}
+        for pg in q.get("pages", []):
+            revs = pg.get("revisions") or []
+            if not revs:
+                continue
+            contenu = (revs[0].get("slots", {}).get("main", {}) or {}).get("content", "")
+            out[(pg.get("title") or "").lower()] = clean_wikitext(contenu)
+        # Le tableau du blog désigne trois pages par une redirection — « Hexe »
+        # pour « Codename Hexe », « Live-action … television series » pour la
+        # fiche Netflix. L'API les suit, mais rend le contenu sous le titre
+        # d'arrivée : sans ce report, ces trois-là ressortaient sans synopsis.
+        for pont in ("normalized", "redirects"):
+            for r_ in q.get(pont, []):
+                cible = (r_.get("to") or "").lower()
+                if cible in out:
+                    out.setdefault((r_.get("from") or "").lower(), out[cible])
+        return out
+    except Exception as e:
+        log(f"AC        : synopsis — {str(e)[:120]}")
+        return {}
+
+
+def source_assassinscreed():
+    try:
+        r = requests.get(AC_WIKI, timeout=30, headers=UA_BROWSER, params={
+            "action": "parse", "page": AC_BLOG, "prop": "wikitext",
+            "format": "json", "formatversion": 2})
+        r.raise_for_status()
+        texte = r.json()["parse"]["wikitext"]
+    except Exception as e:
+        log(f"AC        : ÉCHEC lecture du blog — {str(e)[:140]}")
+        return
+
+    i = texte.find(AC_SECTION)
+    if i < 0:
+        log("AC        : section « Upcoming » introuvable — titre à revoir")
+        return
+    bloc = texte[i:]
+
+    lignes = list(AC_LIGNE.finditer(bloc))
+    if not lignes:
+        log(f"AC        : aucune ligne lue dans {len(bloc)} signes — motif à revoir")
+        return
+
+    # Les pages du wiki, pour le synopsis. Une seule requête pour tout le lot.
+    vues = []
+    for m in lignes:
+        _, page = ac_titre(m.group("titre"))
+        if page:
+            vues.append(page)
+    intros = ac_intros(vues)
+
+    n = sans_date = passees = 0
+    for m in lignes:
+        titre, page = ac_titre(m.group("titre"))
+        if not titre:
+            continue
+        code = m.group("code")
+        kind = AC_TYPES.get(code, "")
+        # Le wiki range les trois productions Netflix sous « F », comme les
+        # films : ce sont des séries, et leur titre le dit.
+        if code == "F" and re.search(r"\b(television series|anime|series)\b", titre, re.I):
+            kind = "Série"
+        ds, dt, prec = loose_date(m.group("date"))
+        if prec == "tba":
+            sans_date += 1
+            continue
+        if ds < TODAY.isoformat():
+            passees += 1
+            continue
+        add("assassinscreed", titre, ds, dt, kind, "Assassin's Creed Wiki", prec,
+            syn=intros.get(page.lower(), ""))
+        n += 1
+
+    log(f"AC        : {n} sortie(s) datée(s) · {sans_date} sans date · "
+        f"{passees} déjà sortie(s) — {len(lignes)} ligne(s) au tableau")
+
+
 def normalize(s):
     s = html.unescape(s or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s)
@@ -1426,7 +1577,7 @@ def render(entries):
 
 def main():
     for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
-               source_startrek):
+               source_startrek, source_assassinscreed):
         try:
             fn()
         except Exception:

@@ -350,6 +350,10 @@ const TRADUCTIONS = [
   ['Jeux · DLC · Romans · Comics · Courts métrages · Ordre chronologique complet',
    'Games · DLC · Books · Comics · Short Films · Full chronological order'],
   ['/ 111 joués', '/ 111 played'],
+  /* La ligne des sources du radar. La prod anglaise en portait trois ;
+     le wiki Assassin's Creed est la quatrième depuis le 25 août 2026. */
+  ['Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac, Assassin’s Creed Wiki',
+   'Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac, Assassin’s Creed Wiki'],
   ['Stargate · Le Trône de Fer… et d\'autres univers en préparation.',
    'Stargate · Game of Thrones… and more universes in the works.'],
 

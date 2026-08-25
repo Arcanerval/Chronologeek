@@ -141,10 +141,11 @@ Retirer une entrée de `radar.json` à la main ne suffit pas : le fichier est r�
 chaque jour. C'est dans `EXCLUDE` que l'exclusion doit vivre — le JSON n'est nettoyé
 en plus que pour ne pas attendre le lendemain.
 
-### Les quatre sources du radar
+### Les cinq sources du radar
 
-`source_tmdb` sert cinq univers sur sept, par **société de production** —
-Lucasfilm, Marvel Studios, DC Studios, Avatar Studios, AMC Studios.
+`source_tmdb` sert six univers sur huit, par **société de production** —
+Lucasfilm, Marvel Studios, DC Studios, Avatar Studios, AMC Studios, Ubisoft
+Film & Television.
 
 **Dragon Age n'est pas au radar, et c'est délibéré.** Le septième univers est
 fait de jeux, de DLC, de romans et de comics : TMDB ne connaît aucun des quatre
@@ -157,7 +158,40 @@ que le radar suit.
 `source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas, et
 `source_wookieepedia` la timeline des médias canon Star Wars.
 
-**The Walking Dead a le garde-fou d'Avatar, pour la même raison.** AMC Studios,
+**Assassin's Creed est au radar depuis le 25 août 2026, et sa colonne est vide.**
+C'est voulu, et ce n'est pas le cas de Dragon Age : la saga a bien sept œuvres
+annoncées — Hexe, Invictus, Jade, le jeu mobile Netflix et les trois séries —
+mais **aucune n'a de date**. `main()` écarte les entrées sans date, et
+`e-a-venir.html` n'affiche de colonne et de bouton de filtre que pour un univers
+qui a au moins une carte : la colonne paraîtra donc toute seule le jour où une
+date tombera. Rien à rebrancher à ce moment-là — sauf l'accroche, voir plus bas.
+
+Deux sources pour lui, et une troisième qui n'en est pas une :
+
+- **`source_assassinscreed`** lit la section « Upcoming Assassin's Creed
+  releases » du blog de Kulurak sur le wiki Assassin's Creed, par l'API
+  MediaWiki standard — celle de Fandom, `/api/v1`, répond 403, comme pour
+  Wookieepedia. Le tableau donne la date, un code de type (VG, MG, F, B, C) et
+  le titre entre `''`. Trois lignes désignent leur page par une **redirection**
+  (« Hexe » pour « Codename Hexe ») : `ac_intros` reporte le contenu du titre
+  d'arrivée sur celui de départ, sans quoi ces trois-là sortaient sans synopsis.
+  Et `fill_wiki_synopses` ne sert pas ici : elle interroge starwars.fandom.com
+  en dur.
+- **`source_tmdb`**, qui connaît la série Netflix (`tv/209962`) mais **sans date
+  de première** : `/discover` filtre sur `first_air_date` et ne la voit donc pas.
+  Elle arrivera d'elle-même le jour où Netflix en annoncera une.
+  `UNIVERS_TITRE["assassinscreed"]` exige `\bassassin.?s creed\b` — l'apostrophe
+  est facultative, TMDB écrit les deux — parce qu'« Ubisoft » tout court ramène
+  Rayman Minis, Splinter Cell: Deathwatch, Side Quest et Mythic Quest. Même
+  garde-fou qu'Avatar et The Walking Dead.
+- **IMDb n'est pas lisible par un script.** La fiche de la série existe
+  (`tt13363220`, TMDB la désigne), mais imdb.com répond **202 et une page vide**
+  — un mur anti-robot AWS WAF — à toute requête, même avec un user-agent de
+  navigateur, et une IP de GitHub Actions n'arrangerait rien. Ne pas le
+  reproposer : TMDB porte la même fiche, avec les dates par pays, les synopsis
+  dans les deux langues et l'affiche.
+
+**The Walking Dead a le même garde-fou, pour la même raison.** AMC Studios,
 AMC Networks et Skybound portent aussi Mad Men, Breaking Bad et Interview with
 the Vampire : sans motif de titre, la lecture des épisodes ramènerait la grille
 AMC entière. `UNIVERS_TITRE["twd"]` exige `\bwalking dead\b`, et les quinze
@@ -1208,7 +1242,11 @@ et la majuscule initiale quand on découpe une phrase.
   site publie.** Dragon Age n'y est donc pas entré le 20 août 2026 : `radar.py`
   n'a pas de source pour les jeux, la colonne serait vide et l'accroche
   promettrait des sorties qui n'arriveront jamais. Le pied de page, lui, énumère
-  bien les huit — c'est la liste des univers du site, pas celle du radar. **Plus les deux `title` de `a-venir`** : ils portaient la même
+  bien les huit — c'est la liste des univers du site, pas celle du radar.
+  **Assassin's Creed est le cas limite** : le radar le suit depuis le 25 août
+  2026, mais ses sept œuvres annoncées sont toutes sans date. L'annoncer à
+  l'accroche promettrait des sorties que la colonne ne montre pas. Il y entre —
+  accroche, deux `ogTitle`, deux `desc` — le jour où une date tombe, pas avant. **Plus les deux `title` de `a-venir`** : ils portaient la même
   énumération et faisaient 103 signes rendus, quand Google en montre soixante —
   le nom du site, en fin de titre, était coupé sur les deux pages les plus
   souvent partagées. Ils s'arrêtent depuis le 18 août 2026 à « Star Wars,
