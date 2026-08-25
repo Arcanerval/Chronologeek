@@ -196,7 +196,7 @@ export const DA_TRADUCTIONS = [
   ['The webcomics are very short stories not really important.',
    'Les webcomics sont de très courtes histoires, sans réelle importance.'],
   ['The short stories', 'Les nouvelles'],
-  ['The short stories of DA2, DAI and DAV can be read found on internet but it\'s hard to place them so i prefer not to risk myself, read them after each game if you want.',
+  ['The short stories of DA2, DAI and DAV can be found on internet but it\'s hard to place them so i prefer not to risk myself, read them after each game if you want.',
    'Les nouvelles de DA2, DAI et DAV se trouvent sur Internet, mais elles sont difficiles à placer : je préfère ne pas m\'y risquer. Lisez-les après chaque jeu si vous voulez.'],
   ['Browser and mobile games', 'Les jeux navigateur et mobiles'],
   ['The browser and mobile games are not available anymore.',
