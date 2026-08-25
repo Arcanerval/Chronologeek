@@ -269,24 +269,24 @@ const TRADUCTIONS = [
   ['Continuer', 'Continue'],
   ['Reprendre ▸', 'Resume ▸'],             // CG.t.resume : Reprendre → Resume
   ['Ouvrir ▸', 'Open ▸'],
-  ['Sept chronologies tenues à jour, en français et en anglais.',
-   'Seven timelines kept up to date, in French and English.'],
+  ['Huit chronologies tenues à jour, en français et en anglais.',
+   'Eight timelines kept up to date, in French and English.'],
   ['Suivi de progression à venir', 'Progress tracking coming soon'],
   ['Bientôt', 'Soon'],
   ['Les Dossiers', 'The Deep Dives'],
   ['Les', 'The'],                          // « Les <span>Dossiers</span> »
   ['Pour aller plus loin dans vos univers préférés : romans, comics, canon étendu et autres choses méritant votre attention',
    'To go further into your favorite universes: novels, comics, expanded canon and other things worth your attention'],
-  ['7 univers · 534 au dossier', '7 universes · 534 in the Deep Dive'],
+  ['8 univers · 534 au dossier', '8 universes · 534 in the Deep Dive'],
   ['entrées cochées', 'entries checked'],
   // les deux boutons d'essai du proto, qui ne partiront pas en ligne
   ['proto : simuler une progression', 'proto: simulate progress'],
   ['proto : revenir à zéro', 'proto: back to zero'],
   // CG.t.legal3, précédé du point que le HTML pose après le lien
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age are trademarks of their respective owners; Chronologeek is an independent fan project.'],
-  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age et Assassin’s Creed sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age et Assassin’s Creed sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.'],
 
   /* ── la case Star Trek ──────────────────────────────────────────
      Le cinquième univers est postérieur à la prod : sa case n'a pas de
@@ -337,8 +337,21 @@ const TRADUCTIONS = [
   ['Jeux · DLC · Romans · Comics · Séries · Ordre chronologique complet',
    'Games · DLC · Books · Comics · TV Shows · Full chronological order'],
   ['/ 43 joués', '/ 43 played'],
-  ['Stargate · Assassin\'s Creed · Le Trône de Fer… et d\'autres univers en préparation.',
-   'Stargate · Assassin\'s Creed · Game of Thrones… and more universes in the works.'],
+  /* ── la case Assassin's Creed ─────────────────────────────────
+     Huitième univers, même situation que les trois précédents : rien à
+     retrouver dans une prod qui ne l'a jamais porté. Son nom ne se traduit
+     pas — aucun jeu, aucun roman, aucun comic n'a de titre français — mais il
+     doit figurer ici, sinon la nav, le tiroir et le pied de page ressortent
+     sans traduction et le rapport les compte comme manquants.
+     Elle compte en « joués », comme Dragon Age : c'est un guide de jeux.
+     Le slot verrouillé n'annonce plus Assassin's Creed : il est sorti des
+     univers à venir, comme les trois autres avant lui. */
+  ['Assassin’s Creed', 'Assassin’s Creed'],
+  ['Jeux · DLC · Romans · Comics · Courts métrages · Ordre chronologique complet',
+   'Games · DLC · Books · Comics · Short Films · Full chronological order'],
+  ['/ 111 joués', '/ 111 played'],
+  ['Stargate · Le Trône de Fer… et d\'autres univers en préparation.',
+   'Stargate · Game of Thrones… and more universes in the works.'],
 
   // ── le choix du parcours, posé le 21 août 2026 ──────────────────
   // La question qui s'ouvre à l'arrivée et la bascule qui la remplace

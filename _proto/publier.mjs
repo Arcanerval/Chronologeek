@@ -81,6 +81,12 @@ const ROUTES = [
   { cle: 'dragonage',
     fr: { proto: 'e-dragonage.html',          sortie: 'fr/dragonage.html',        url: '/fr/dragonage' },
     en: { proto: 'en-dragonage.html',         sortie: 'dragonage.html',           url: '/dragonage' } },
+  // Assassin's Creed est le quatrième à prendre la chaîne à l'envers :
+  // `en-assassinscreed.html` est écrit à la main, `e-assassinscreed.html` en
+  // descend par traduire-assassinscreed.mjs.
+  { cle: 'assassinscreed',
+    fr: { proto: 'e-assassinscreed.html',     sortie: 'fr/assassinscreed.html',   url: '/fr/assassinscreed' },
+    en: { proto: 'en-assassinscreed.html',    sortie: 'assassinscreed.html',      url: '/assassinscreed' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -130,6 +136,8 @@ const ASSETS = {
   'data-twd-en.js':        '/data/walkingdead-en.js',
   'data-dragonage.js':     '/data/dragonage-fr.js',
   'data-dragonage-en.js':  '/data/dragonage-en.js',
+  'data-assassinscreed.js':    '/data/assassinscreed-fr.js',
+  'data-assassinscreed-en.js': '/data/assassinscreed-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',

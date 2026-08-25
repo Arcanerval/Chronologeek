@@ -56,10 +56,10 @@
      échantillonné sur logo-chronologeek.png, médiane #d5a05f, crête #f0c97c */
   --hot:#f0c97c; --gold-deep:#d5a05f; --steel:#779fc3;
   --cleared:#3ddc84;
-  /* les six encres de la charte, plus le gris des univers à venir.
+  /* les huit encres de la charte, plus le gris des univers à venir.
      Le lilas de Star Trek est celui des consoles LCARS. */
   --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f;
-  --da:#e07b39; --soon:#8a8ab0;
+  --da:#e07b39; --ac:#c0202f; --soon:#8a8ab0;
   /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
      pour répondre au violet profond de leur bande, et le rose à « À venir » */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
@@ -176,7 +176,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
 .dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
 .u-sw{--k:#4d9fff}.u-mcu{--k:#e23636}.u-dc{--k:#f5c842}
-.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}
+.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#c0202f}
 .dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
 .dw-site{border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
@@ -450,7 +450,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <a href="e-starwars.html">Star Wars</a>
       <a href="e-marvel.html">Marvel</a>
       <a href="e-dc.html">DC</a>
-      <details class="nav-more"><summary>Plus d’univers</summary><div class="more-pop"><a href="e-avatar.html">Avatar Legends</a><a href="e-startrek.html">Star Trek</a><a href="e-twd.html">The Walking Dead</a><a href="e-dragonage.html">Dragon Age</a></div></details>
+      <details class="nav-more"><summary>Plus d’univers</summary><div class="more-pop"><a href="e-avatar.html">Avatar Legends</a><a href="e-startrek.html">Star Trek</a><a href="e-twd.html">The Walking Dead</a><a href="e-dragonage.html">Dragon Age</a><a href="e-assassinscreed.html">Assassin’s Creed</a></div></details>
       <a href="e-a-venir.html" class="upc">À venir</a>
       <a href="e-nouveautes.html" class="news">Nouveautés</a>
     </nav>
@@ -465,7 +465,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
     <span class="dw-lab">Les univers</span>
-    <div class="dw-uni"><a href="e-starwars.html" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="e-marvel.html" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="e-dc.html" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="e-avatar.html" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="e-startrek.html" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="e-twd.html" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="e-dragonage.html" class="u-da"><i aria-hidden="true"></i>Dragon Age</a></div>
+    <div class="dw-uni"><a href="e-starwars.html" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="e-marvel.html" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="e-dc.html" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="e-avatar.html" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="e-startrek.html" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="e-twd.html" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="e-dragonage.html" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="e-assassinscreed.html" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a></div>
     <span class="dw-lab">Le site</span>
     <div class="dw-site"><a href="#" aria-current="page">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a><a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a></div>
   </nav>
@@ -499,7 +499,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <!-- ══ SÉLECTION ═════════════════════════════════════════════════ -->
 <section class="pick" id="uni"><div class="wrap">
   <h2 class="disp">Sélection de l'univers</h2>
-  <p class="sub">Sept chronologies tenues à jour, en français et en anglais.</p>
+  <p class="sub">Huit chronologies tenues à jour, en français et en anglais.</p>
 
   <div class="slots">
 
@@ -622,18 +622,35 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </span>
     </a>
 
-    <!-- Sept univers et le verrouillé font huit cases : la dernière rangée
-         est pleine, et la case « Bientôt » garde la taille des autres (voir
-         la règle .slot.lock). -->
-    <div class="slot lock rv" style="--c:var(--soon);--i:7">
+    <a class="slot rv" href="e-assassinscreed.html" style="--c:var(--ac);--i:7"
+       data-u="assassinscreed" data-total="111" data-hero="/images/acuniverse.webp">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/acuniverse.webp" alt="" width="640" height="274" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">08</span><span class="state">Disponible</span>
+        <span class="nm">Assassin’s Creed</span>
+      </figure>
+      <span class="body">
+        <span class="d">Jeux · DLC · Romans · Comics · Courts métrages · Ordre chronologique complet</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 111 joués</span><span class="d-p">0 %</span></span>
+        <span class="upd">À jour · août 2026</span>
+      </span>
+    </a>
+
+    <!-- Huit univers et le verrouillé font neuf cases : la case « Bientôt »
+         tombe seule sur la dernière rangée, et `.slot.lock:nth-child(odd)`
+         lui donne alors la largeur entière (voir la règle .slot.lock). -->
+    <div class="slot lock rv" style="--c:var(--soon);--i:8">
       <figure>
         <img src="/images/autresunivers.webp" alt="" width="640" height="274" loading="lazy" decoding="async"/>
         <span class="halftone"></span><span class="shade"></span>
-        <span class="no">08</span>
+        <span class="no">09</span>
         <span class="stamp"><span>Bientôt</span></span>
       </figure>
       <span class="body">
-        <span class="d">Stargate · Assassin's Creed · Le Trône de Fer… et d'autres univers en préparation.</span>
+        <span class="d">Stargate · Le Trône de Fer… et d'autres univers en préparation.</span>
         <span class="upd">En cours</span>
       </span>
     </div>
@@ -665,7 +682,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <li><a href="e-starwars.html">Star Wars</a></li>
       <li><a href="e-marvel.html">Marvel — MCU</a></li>
       <li><a href="e-dc.html">DC Multiverse</a></li>
-      <li><a href="e-avatar.html">Avatar Legends</a></li><li><a href="e-startrek.html">Star Trek</a></li><li><a href="e-twd.html">The Walking Dead</a></li><li><a href="e-dragonage.html">Dragon Age</a></li>
+      <li><a href="e-avatar.html">Avatar Legends</a></li><li><a href="e-startrek.html">Star Trek</a></li><li><a href="e-twd.html">The Walking Dead</a></li><li><a href="e-dragonage.html">Dragon Age</a></li><li><a href="e-assassinscreed.html">Assassin’s Creed</a></li>
       <li><a href="e-dossiers.html">Dossiers</a></li>
     </ul></div>
     <div><h4>Plus</h4><ul>
@@ -677,7 +694,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       mais n'est ni approuvé ni certifié par TMDB. Données livres :
       <a href="https://openlibrary.org/" rel="noopener">Open Library</a>.
-      Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et Dragon Age sont des marques de leurs ayants droit respectifs ;
+      Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age et Assassin’s Creed sont des marques de leurs ayants droit respectifs ;
       Chronologeek est un projet de fan indépendant.
       <br/>© 2026 Chronologeek — <a href="e-accueil.html">chronologeek.app</a>
       <!--echafaudage-debut--> · <button class="demo" id="demo" type="button">proto : simuler une progression</button><!--echafaudage-fin-->
@@ -686,13 +703,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </footer>
 
 <div class="hud"><div class="in">
-  <!-- 61 SW + 121 Marvel + 146 DC + 69 Avatar + 248 Star Trek + 45 TWD + 43 Dragon Age.
-       Le total était écrit 327 alors que les trois cartes en annonçaient 328 :
-       l'écart est corrigé en même temps qu'Avatar entre dans le compte. -->
-  <b><em id="k-on">0</em> / 734</b>
+  <!-- 61 SW + 121 Marvel + 146 DC + 69 Avatar + 248 Star Trek + 45 TWD
+       + 43 Dragon Age + 111 Assassin's Creed. Le total était écrit 327 alors
+       que les trois cartes en annonçaient 328 : l'écart est corrigé en même
+       temps qu'Avatar entre dans le compte. -->
+  <b><em id="k-on">0</em> / 845</b>
   <span class="lbl">entrées cochées</span>
   <div class="bar"><i id="k-fill"></i></div>
-  <span class="lbl">7 univers · 534 au dossier</span>
+  <span class="lbl">8 univers · 534 au dossier</span>
 </div></div>
 
 <script>
@@ -700,7 +718,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   'use strict';
   document.documentElement.className+=' js';
 
-  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multivers',avatar:'Avatar Legends',startrek:'Star Trek',twd:'The Walking Dead',dragonage:'Dragon Age'};
+  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multivers',avatar:'Avatar Legends',startrek:'Star Trek',twd:'The Walking Dead',dragonage:'Dragon Age',assassinscreed:'Assassin’s Creed'};
   var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
   var body=document.body, attract=document.getElementById('attract');
   /* echafaudage-debut */ var fake=null; /* echafaudage-fin */

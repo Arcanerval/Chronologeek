@@ -17,7 +17,8 @@
 
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
-   uni   sw | mcu | dc | avatar | startrek | twd | dragonage, ou "" si le
+   uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
+         assassinscreed, ou "" si le
          changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
@@ -36,6 +37,12 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
+
+      { nat:"site", uni:"assassinscreed", kind:"timeline",
+        title:"Nouvelle timeline : Assassin’s Creed",
+        txt:"111 entrées, d'Altaïr à l'Animus Hub — les jeux et leurs DLC, "+
+            "les romans, les comics et les courts métrages dans un seul fil.",
+        href:"/fr/assassinscreed", cta:"Ouvrir la timeline" },
 
       { nat:"site", uni:"dragonage", kind:"timeline",
         title:"Nouvelle timeline : Dragon Age",

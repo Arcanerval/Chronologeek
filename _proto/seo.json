@@ -111,6 +111,20 @@
       "image": "https://chronologeek.app/images/dragonage.webp"
     }
   },
+  "assassinscreed": {
+    "fr": {
+      "title": "Assassin’s Creed — Chronologeek",
+      "ogTitle": "Timeline Assassin’s Creed — Chronologeek",
+      "desc": "La timeline Assassin’s Creed dans l’ordre chronologique — les jeux et leurs DLC, les romans, les comics et les courts métrages, d’Altaïr à l’Animus Hub, sans spoil.",
+      "image": "https://chronologeek.app/images/acuniverse.webp"
+    },
+    "en": {
+      "title": "Assassin’s Creed Timeline — Chronologeek",
+      "ogTitle": "Assassin’s Creed Timeline — Chronologeek",
+      "desc": "The Assassin’s Creed timeline in chronological order — the games and their DLC, the novels, the comics and the short films, from Altaïr to the Animus Hub, spoiler-free.",
+      "image": "https://chronologeek.app/images/acuniverse.webp"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers — Chronologeek",

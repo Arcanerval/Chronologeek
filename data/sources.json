@@ -13,6 +13,8 @@
   "data/walkingdead-en.js": "_proto/data-twd-en.js",
   "data/dragonage-fr.js": "_proto/data-dragonage.js",
   "data/dragonage-en.js": "_proto/data-dragonage-en.js",
+  "data/assassinscreed-fr.js": "_proto/data-assassinscreed.js",
+  "data/assassinscreed-en.js": "_proto/data-assassinscreed-en.js",
   "data/dossier-star-wars-fr.js": "_proto/data-dossier-sw.js",
   "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
   "data/news-fr.js": "_proto/data-news.js",

@@ -205,6 +205,14 @@ const TRADUCTIONS = [
   ['43 entrées, du Trône Volé au Veilguard — les jeux et leurs DLC, les romans, les comics et les séries dans un seul fil.',
    '43 entries, from The Stolen Throne to The Veilguard — the games and their DLC, the books, the comics and the shows in a single thread.'],
 
+  /* ── la carte Assassin's Creed, écrite le 25 août 2026 ─────────
+     Huitième univers, même situation que les trois précédents. Les deux
+     bornes de l'accroche sont des noms propres : Altaïr ouvre la timeline,
+     l'Animus Hub la ferme, et ni l'un ni l'autre ne se traduit. */
+  ['Nouvelle timeline : Assassin’s Creed', 'New timeline: Assassin’s Creed'],
+  ['111 entrées, d\'Altaïr à l\'Animus Hub — les jeux et leurs DLC, les romans, les comics et les courts métrages dans un seul fil.',
+   '111 entries, from Altaïr to the Animus Hub — the games and their DLC, the novels, the comics and the short films in a single thread.'],
+
   /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
      Même moule que la carte « Legacy » de juillet, qui dit en anglais
      « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just
@@ -291,12 +299,12 @@ const RENOMMES_NOUVEAUX = new Set(RENOMMES.values());
 const PERIMES = new Map([
   ['Star Wars, Marvel, DC and Avatar are trademarks of their respective owners;'
    + ' Chronologeek is an independent fan project.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age'
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed'
    + ' are trademarks of their respective owners; Chronologeek is an independent fan'
    + ' project.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks'
    + ' of their respective owners; Chronologeek is an independent fan project.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and Dragon Age'
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed'
    + ' are trademarks of their respective owners; Chronologeek is an independent fan'
    + ' project.'],
 ]);
