@@ -94,6 +94,13 @@ export const DA_IDENTIQUES = [
   'https://api.rawg.io/api/games/',
   '?key=',
   'Chronologeek — Dragon Age (proto E)',
+  // Le parcours du rejeu : la valeur posée sur `<body>`, le hash qui la
+  // porte dans l'URL, et le message de console d'une référence morte —
+  // déjà en français, comme tous les commentaires du fichier. Traduire
+  // l'un des deux premiers casserait la bascule sans une ligne d'erreur.
+  'replay',
+  '#replay',
+  '[replay] référence morte :',
 ];
 
 /* Les formes, plutôt que des tables. L'ordre compte — le plus précis
@@ -156,10 +163,22 @@ export const DA_TRADUCTIONS = [
      Les deux paragraphes sont propres à ce guide : aucun autre univers
      ne prévient qu'on peut décocher le reste pour ne garder que les
      jeux. */
-  ['If you\'re here it\'s either because you did some of the games and want to discover the lore of Thedas (Dragon Age\'s world name) or you\'re absolutely sure to love this universe before even trying it. If you just want to discover the games in chronological order uncheck the rest, all other medias are bonus content (some very important). This guide is spoiler free like the others.',
-   'Si vous êtes ici, c\'est soit que vous avez fait certains des jeux et que vous voulez découvrir le lore de Thédas (le nom du monde de Dragon Age), soit que vous êtes absolument sûr d\'aimer cet univers avant même de l\'avoir essayé. Si vous voulez seulement découvrir les jeux dans l\'ordre chronologique, décochez le reste : tous les autres médias sont du contenu bonus (certains très importants). Ce guide est sans spoil, comme les autres.'],
-  ['This guide works best for first-time plays and people who want to discover the other medias.',
-   'Ce guide vaut avant tout pour une première partie et pour ceux qui veulent découvrir les autres médias.'],
+  ['If you\'re here it\'s either because you did all the games and want to discover the lore of Thedas or want to do all the games again and add the books, comics and shows. If you just want to discover the games in chronological order uncheck the rest, all other medias are bonus content (some very important). This guide is spoiler free like the others.',
+   'Si vous êtes ici, c\'est soit que vous avez fait tous les jeux et que vous voulez découvrir le lore de Thédas, soit que vous voulez refaire tous les jeux en y ajoutant les romans, les comics et les séries. Si vous voulez seulement découvrir les jeux dans l\'ordre chronologique, décochez le reste : tous les autres médias sont du contenu bonus (certains très importants). Ce guide est sans spoil, comme les autres.'],
+  /* Une accroche par parcours, comme Star Wars et Marvel : la page en
+     montre une, le CSS choisit. La formule est celle des deux autres —
+     « Ce guide marche mieux pour… mais vous pouvez passer à… plus haut »
+     — avec le verbe de cet univers : on rejoue au lieu de revoir. */
+  ['This guide works best for first plays but you can switch to the replay version higher up.',
+   'Ce guide marche mieux pour une première partie mais vous pouvez passer à la version rejeu plus haut.'],
+  ['This guide works best for replays but you can switch to the first play version higher up.',
+   'Ce guide marche mieux quand vous rejouez mais vous pouvez passer à la version première partie plus haut.'],
+  /* La bascule et la question. « First time » et « Choose your path » se
+     retrouvent tout seuls dans la paire Star Wars, qui porte les mêmes
+     lignes ; ne restent à écrire que les deux formes du rejeu, calquées
+     sur « Je revois » et « Vous découvrez, ou vous revoyez ? ». */
+  ['Playing again', 'Je rejoue'],
+  ['First time, or playing again?', 'Vous découvrez, ou vous rejouez ?'],
 
   /* ── les trois repères de lecture ────────────────────────────────
      L'intitulé et « Le calendrier » sont ceux de Star Trek et de The

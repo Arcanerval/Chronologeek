@@ -297,6 +297,11 @@ const TECHNIQUES = new Set([
   'id', 'ids', 'universe', 'color', 'glow', 'img', 'type', 'level', 'kind',
   'tmdb', 'media', 'href', 'key', 'lang', 'locale', 'tags', 'trigger',
   'otherFlag', 'otherHref', 'flag', 'art',
+  /* L'ordre du rejeu (`erasReplay`) ne porte que des identifiants
+     d'entrées (`ref`) et des noms de champs à retirer (`drop`) : rien n'y
+     est affiché, et « tags » ou « faq.read » traduits ne retireraient
+     plus rien. */
+  'ref', 'drop', 'covers',
 ]);
 
 /* Une date in-universe s'écrit pareil des deux côtés. Ici ce sont les
