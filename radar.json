@@ -1,22 +1,5 @@
 [
  {
-  "universe": "avatar",
-  "title": "Masters of the Elements Volume 1",
-  "date_sort": "2026-08-25",
-  "date_txt": "25/08/2026",
-  "kind": "Graphic Novel Release Date: August 25, 2026",
-  "source": "Avatar Almanac",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "comic",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "starwars",
   "title": "Star Wars Zero Company",
   "date_sort": "2026-08-27",
@@ -92,7 +75,7 @@
   "source": "TMDB",
   "precision": "day",
   "era": "",
-  "syn": "",
+  "syn": "Maggie and Negan find themselves in different circumstances, wrestling with their purposes.",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
@@ -845,6 +828,26 @@
   "date_txt_fr": "15/12/2027",
   "poster": "/f0YBuh4hyiAheXhh4JnJWoKi9g5.jpg",
   "tmdb": 1003598,
+  "media": "movie"
+ },
+ {
+  "universe": "dc",
+  "title": "The Batman: Part II",
+  "date_sort": "2028-02-18",
+  "date_txt": "18/02/2028",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Sequel to the 2022 film The Batman.",
+  "wiki": "",
+  "syn_fr": "La suite du film The Batman de 2022.",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "poster": "/caeBJHLNld1h14uvcLvzyHf3Rlk.jpg",
+  "tmdb": 806704,
   "media": "movie"
  }
 ]
