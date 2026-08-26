@@ -1344,23 +1344,37 @@ et la majuscule initiale quand on découpe une phrase.
   (`en-startrek`, `en-twd`, `en-dragonage`, `en-assassinscreed`). L'accueil
   et la liste des Dossiers n'ont rien à changer : leur bandeau de reprise ne
   fait que renvoyer vers la page avec `#reprendre`, qui rejoue le clic.
-- **Les deux dates d'Assassin's Creed se lisent côte à côte, à toute
-  largeur, et l'absence de présent ne s'écrit pas.** Tranché par Niko le
-  26 août 2026. La grande date en or est celle du présent, le cadre rouge
-  « Souvenirs » celle du passé : séparées sur deux lignes elles n'ont plus
-  l'air d'un couple. Sur un téléphone la vignette prend 128 px et la
-  colonne de texte tombe à 100 px — le cadre passait donc dessous quand il
-  ne débordait pas de la carte. Sous 560 px, `.bu-head` devient une grille
-  et `.bu-txt` un `display:contents` : la vignette et le titre gardent leur
-  ligne, la bande des dates passe dessous sur toute la largeur de la carte
-  (268 px à 375 px d'écran), et les corps se resserrent encore un cran sous
-  380 px. Le pire couple du guide — « 1998-2000 » et « 1888-1918 », les
-  deux dates de *Rogue* — tient alors à 17 px du bord sur un écran de
-  320 px. Et le `—` qui tenait la place du présent a disparu : 27 des 111
-  entrées n'en ont pas, et un tiret se lit comme une donnée manquante là
-  où il n'y a rien à manquer — c'est déjà la règle du cadre « Souvenirs »,
-  qui ne se pose que si la date existe. Ne pas remettre `flex-wrap:wrap`
-  sur `.bu-meta` en mobile : c'est ce qui faisait tomber le cadre.
+- **Les deux dates d'Assassin's Creed se lisent côte à côte, sous le
+  titre, à toute largeur, et l'absence de présent ne s'écrit pas.**
+  Tranché par Niko le 26 août 2026. La grande date en or est celle du
+  présent, le cadre rouge « Souvenirs » celle du passé : séparées sur deux
+  lignes, elles n'ont plus l'air d'un couple. La colonne de texte tombait à
+  100 px sur un téléphone — la vignette en prenait 128 — et le cadre, qui
+  ne se coupe pas, passait donc sous le grand nombre quand il ne débordait
+  pas de la carte.
+
+  Trois gestes sous 560 px, et **la bande reste où elle a toujours été** :
+  la vignette devient fluide (`clamp(64px,23vw,96px)`), les corps se
+  resserrent d'un cran de plus sous 400 px, et **le mot « Souvenirs »
+  quitte le cadre** — une quarantaine de pixels pour redire ce que le rouge
+  dit déjà, là où la date entière en fait soixante. Le cadre garde l'encre
+  des souvenirs et l'or reste au présent : les deux se distinguent à la
+  couleur, comme partout ailleurs sur la page. Le libellé revient au-dessus
+  de 560 px. Le pire couple du guide — « 1998-2000 » et « 1888-1918 », les
+  deux dates de *The Fall* — s'arrête alors à 34 px du chevron sur un écran
+  de 375 px, à 61 px sur 430.
+
+  Deux choses à ne pas défaire. **`white-space:nowrap` sur `.bu-meta .d`
+  n'est pas une précaution** : « 1998-2000 » se coupe au tiret, et *The
+  Fall* écrivait « 1998- » puis « 2000 » sous lui-même, le cadre à côté du
+  premier morceau. Deux dates d'intervalle dans le guide, une seule tombait
+  dessus. Et **ne pas remettre `flex-wrap:wrap` sur `.bu-meta` en mobile**,
+  c'est ce qui faisait tomber le cadre à la ligne.
+
+  Le `—` qui tenait la place du présent a disparu de partout, mobile
+  comme bureau : 27 des 111 entrées n'en ont pas, et un tiret se lit comme
+  une donnée manquante là où il n'y a rien à manquer — c'est déjà la règle
+  du cadre « Souvenirs », qui ne se pose que si la date existe.
 - **Une date de timeline ne se traduit jamais, et « BC » reste « BC ».**
   Tranché par Niko le 25 août 2026, et la règle vaut pour **toutes** les
   timelines, pas seulement Assassin's Creed. Une date est un repère qu'on lit

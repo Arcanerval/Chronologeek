@@ -733,35 +733,44 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 /* LES DEUX DATES SE LISENT ENSEMBLE, JAMAIS L'UNE SOUS L'AUTRE. Celle du
    présent et celle des souvenirs disent la même œuvre à des siècles
    d'écart : séparées sur deux lignes, elles n'ont plus l'air d'un couple.
-   Sur un téléphone, la vignette prend 128 px et la colonne de texte tombe
-   à 100 px — le cadre rouge des souvenirs, qui ne se coupe pas, passait
-   donc sous le grand nombre quand il ne débordait pas de la carte.
-   La tête devient une grille : la vignette et le titre gardent leur ligne,
-   la bande des dates passe dessous sur toute la largeur de la carte
-   (268 px), et le pire cas — « 2007-2012 » et « ~431 BC-1480 » — y tient
-   avec de la marge une fois les corps resserrés. */
+   Elles restent sous le titre, où elles ont toujours été.
+
+   La colonne de texte tombait à 100 px sur un téléphone — la vignette en
+   prenait 128 — et le cadre rouge, qui ne se coupe pas, passait donc sous
+   le grand nombre quand il ne débordait pas de la carte. Trois gestes la
+   ramènent sur une ligne : la vignette se met à suivre la largeur de
+   l'écran, les corps se resserrent, et le mot « Souvenirs » quitte le
+   cadre.
+
+   Ce mot-là est ce qui coûtait le plus — une quarantaine de pixels pour
+   redire ce que le rouge dit déjà, là où la date entière en fait
+   soixante. Le cadre garde l'encre des souvenirs, celle de la timeline,
+   et l'or reste au présent : les deux dates se distinguent à la couleur,
+   comme partout ailleurs sur la page. Le libellé revient au-dessus de
+   560 px, où la place ne manque pas.
+
+   `white-space` sur la grande date n'est pas une précaution : « 1998-2000 »
+   se coupait au tiret et *The Fall* écrivait « 1998- » puis « 2000 » sous
+   lui-même, le cadre à côté du premier morceau. Deux dates d'intervalle
+   dans le guide, et c'est la seule qui tombait dessus.
+
+   La vignette est fluide plutôt que palière : de 64 px à 96 px selon
+   l'écran, elle est ce qui rend la place, et le pire couple du guide —
+   « 1998-2000 » et « 1888-1918 » — s'arrête à 6 px du chevron sur un
+   écran de 320 px, à 34 px sur 375, à 61 px sur 430. */
 @media(max-width:560px){
-  .bu-head{display:grid;grid-template-columns:128px minmax(0,1fr) auto;
-    align-items:start;gap:6px 10px}
-  .bu-txt{display:contents}
-  .bu-fig{grid-column:1;grid-row:1/span 2}
-  .bu-tags{grid-column:2;grid-row:1;margin-bottom:0}
-  .bu-title{grid-column:2;grid-row:2}
-  .bu-end{grid-column:3;grid-row:1/span 2;align-self:center}
-  .bu-meta,.bu-note{grid-column:1/-1}
-  .bu-meta{gap:8px;margin-top:2px;flex-wrap:nowrap}
-  .bu-meta .d{font-size:17px}
-  .bu-meta .mem{padding:2px 6px;gap:5px}
-  .bu-meta .mem b{font-size:15px}
-}
-/* Le pire couple du guide — « 1998-2000 » et « 1888-1918 », les deux
-   dates de Rogue — tenait à un pixel et demi du bord sur un écran de
-   320 px. Les corps se resserrent donc encore un cran sous 380 px : la
-   bande reste sur une ligne, ce qui est tout l'objet de la règle. */
-@media(max-width:380px){
-  .bu-meta .d{font-size:15px}
+  .bu-fig{width:clamp(64px,23vw,96px)}
+  .bu-meta{gap:6px;flex-wrap:nowrap}
+  .bu-meta .d{font-size:16px;white-space:nowrap}
+  .bu-meta .mem{padding:1px 6px;gap:4px}
+  .bu-meta .mem i{display:none}
   .bu-meta .mem b{font-size:13px}
-  .bu-meta .mem i{font-size:9px;letter-spacing:.08em}
+}
+@media(max-width:400px){
+  .bu-meta{gap:5px}
+  .bu-meta .d{font-size:14px}
+  .bu-meta .mem{padding:1px 5px;gap:3px}
+  .bu-meta .mem b{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
