@@ -238,6 +238,12 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline Avatar Legends, en 290 BG, juste après The Shadow of Kyoshi.',
    'Added to the Avatar Legends timeline, in 290 BG, just after The Shadow of Kyoshi.'],
 
+  /* ── la carte The Last Court du journal, écrite le 26 août 2026 ──
+     Même moule encore. La date de Thédas s'écrit pareil des deux côtés,
+     comme « 290 BG » : une date de timeline ne se traduit jamais. */
+  ['Ajouté à la timeline Dragon Age, en 9:41, juste après Last Flight.',
+   'Added to the Dragon Age timeline, in 9:41, just after Last Flight.'],
+
   /* ── le parcours rewatch de Star Wars, écrit le 21 août 2026 ────────
      Le second parcours est né après la prod : ses coupes et sa note
      n'ont pas d'homologue anglais à retrouver. Les sous-items suivent
@@ -764,6 +770,10 @@ const TITRES_IDENTIQUES = [
      « BG » est une unité inventée : elle ne se traduit pas. */
   'Masters of the Elements Vol.1 : Off Duty',
   '290 BG',
+  /* Dragon Age · le jeu de navigateur ajouté le 26 août 2026. Il n'a
+     jamais eu de version française, et « 9:41 » est une date. */
+  'Dragon Age: The Last Court',
+  '9:41',
   /* Star Wars · deux dates du parcours rewatch, écrites le 21 août 2026.
      Une date ne se traduit pas, mais « BBY » est une lettre : sans
      cette ligne le contrôle les compte comme restées en français. */

@@ -38,6 +38,14 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
 
+      { nat:"media", uni:"dragonage", kind:"jeu",
+        title:"Dragon Age: The Last Court", meta:"9:41", vo:true,
+        txt:"Ajouté à la timeline Dragon Age, en 9:41, juste après "+
+            "Last Flight.",
+        img:"/images/thelastcourt.webp",
+        href:"/fr/dragonage#da-lastcourt-1",
+        cta:"Voir dans la timeline" },
+
       { nat:"media", uni:"avatar", kind:"comic",
         title:"Masters of the Elements Vol.1 : Off Duty", meta:"290 BG", vo:true,
         txt:"Ajouté à la timeline Avatar Legends, en 290 BG, juste après "+

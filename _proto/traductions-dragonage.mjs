@@ -54,6 +54,12 @@ export const DA_IDENTIQUES = [
   'Dragon Age II',
   'Dragon Age: Inquisition',
   'Dragon Age: The Veilguard',
+  // Le jeu de navigateur n'a jamais eu de version française : ni son
+  // titre, ni son texte. Il garde donc le sien.
+  'Dragon Age: The Last Court',
+  // L'application compagnon de BioWare porte son nom anglais dans sa
+  // propre interface française.
+  'Dragon Age Keep',
   // ── l'écrit sans édition française ───────────────────────────────
   'Dragon Age: The Calling',
   'Dragon Age: Asunder',
@@ -178,6 +184,11 @@ export const DA_TRADUCTIONS = [
   ['DLC placement was studied to be the best possible with the flow of the games.',
    'Le placement des DLC a été étudié pour coller au mieux au déroulé des jeux.'],
   ['Canonicity', 'La canonicité'],
+  /* Le quatrième repère, posé le 26 août 2026. « State of the world » est
+     rendu par « état du monde » : c'est le libellé de l'interface
+     française du Keep, pas une traduction littérale. */
+  ['Dragon Age Keep is an official companion-app made by Bioware to keep track of all decisions made and import your state of the world in Inquisition. For the first 2 games it uses your saves and for Veilguard the game will ask you questions.',
+   'Dragon Age Keep est une application compagnon officielle de BioWare qui garde la trace de toutes les décisions prises et importe votre état du monde dans Inquisition. Pour les deux premiers jeux, elle se sert de vos sauvegardes ; pour Veilguard, le jeu vous pose des questions.'],
   ['The games offer different choices and endings that other medias can\'t follow. So there is a &quot;Bioware Canon&quot; and your own canon. For exemple if you do Dragon Age 2 without doing Origins they will explain events with the &quot;Bioware Canon&quot; but you can also import your save if you did it. The other medias follow this canon so you can find things weird depending on your choices in the games.',
    'Les jeux offrent des choix et des fins que les autres médias ne peuvent pas suivre. Il existe donc un « canon BioWare » et votre propre canon. Par exemple, si vous faites Dragon Age 2 sans avoir fait Origins, les événements vous seront expliqués selon le « canon BioWare » — mais vous pouvez aussi importer votre sauvegarde si vous l\'avez faite. Les autres médias suivent ce canon : certaines choses pourront donc vous sembler étranges selon vos choix dans les jeux.'],
 
@@ -268,6 +279,7 @@ export const DA_TRADUCTIONS = [
   // — la page française pointe une recherche VOSTFR, pas la vidéo — mais
   // la chaîne doit avoir une traduction, sinon le bilan n'est pas propre.
   ['Watch on YouTube', 'Regarder sur YouTube'],
+  ['Play or download here', 'Jouer ou télécharger ici'],
   /* La mention légale nomme les sept univers. Elle est celle des onze
      autres protos, mais son nœud de texte ne se découpe pas au même
      endroit — la version française tient la première ligne avec le lien
@@ -354,12 +366,14 @@ export const DA_TRADUCTIONS = [
    'Il donne le contexte de la guerre des mages et des templiers, ajoute une charge émotionnelle aux factions et ne spoile rien du jeu, hormis le passé d\'un compagnon — rien de vraiment gênant.'],
   ['The Grey Wardens are heroes across Thedas once again: the Archdemon has been defeated with relative ease and the scattered darkspawn are being driven back underground. The Blight is over. Or so it seems. Valya, a young elven mage recently recruited into the Wardens, has been tasked with studying the historical record of previous Blights in order to gain insight into newly reported, and disturbing, darkspawn phenomena.',
    'Les Gardes des Ombres sont de nouveau des héros dans tout Thédas : l\'Archidémon a été vaincu assez facilement et les engeances dispersées sont repoussées sous terre. L\'Enclin est terminé. Du moins en apparence. Valya, une jeune mage elfe récemment recrutée par les Gardes, est chargée d\'étudier les archives des Enclins précédents afin d\'éclairer de nouveaux phénomènes, aussi inédits qu\'inquiétants, liés aux engeances.'],
+  ['Dragon Age: The Last Court is a text-based, free-to-play browser game that serves as an interquel between Dragon Age II and Dragon Age: Inquisition',
+   'Dragon Age: The Last Court est un jeu de navigateur textuel et gratuit, qui sert d\'interquelle entre Dragon Age II et Dragon Age: Inquisition'],
   ['Enter an overgrown wilderness filled with Avvar, fiercely independent hunters who settled in the southern mountains of Thedas.',
    'Entrez dans une nature envahie par la végétation, peuplée d\'Avvars, des chasseurs farouchement indépendants installés dans les montagnes du sud de Thédas.'],
   ['Empress Celene of Orlais rose to the throne of the most powerful nation in Thedas through wisdom, wit, and ruthless manipulation. Now, the empire she has guided into an age of enlightenment is threatened from within by imminent war between the templars and the mages, even as rebellion stirs among the downtrodden elves. To save Orlais, Celene must keep her hold on the throne by any means necessary.',
    'L\'impératrice Célène d\'Orlaïs est montée sur le trône de la nation la plus puissante de Thédas à force de sagesse, d\'esprit et de manipulation impitoyable. Aujourd\'hui, l\'empire qu\'elle a conduit vers un âge de lumières est menacé de l\'intérieur par la guerre imminente entre templiers et mages, tandis que la révolte gronde chez les elfes opprimés. Pour sauver l\'Orlaïs, Célène doit se maintenir sur le trône par tous les moyens.'],
-  ['Knowing the book\'s secrets gives your Warden an unnatural omniscience and influence your Inquisitor decisions, which can slightly break roleplay immersion if your character shouldn\'t know those details.',
-   'Connaître les secrets du livre donne à votre Garde une omniscience contre nature et influence les décisions de votre Inquisiteur, ce qui peut légèrement casser l\'immersion si votre personnage n\'est pas censé connaître ces détails.'],
+  ['Knowing the book\'s secrets gives your Inquisitor an unnatural omniscience and influence your Inquisitor decisions, which can slightly break roleplay immersion if your character shouldn\'t know those details.',
+   'Connaître les secrets du livre donne à votre Inquisiteur une omniscience contre nature et influence les décisions de votre Inquisiteur, ce qui peut légèrement casser l\'immersion si votre personnage n\'est pas censé connaître ces détails.'],
   ['Dragon Age: Magekiller is a comic from publisher Dark Horse by writer Greg Rucka. It tells the story, in several arcs, of the \'mage-killer\' Marius and his handler, Tessa Forsythia.',
    'Dragon Age: Magekiller est un comic paru chez Dark Horse, écrit par Greg Rucka. Il raconte, en plusieurs arcs, l\'histoire du « tueur de mages » Marius et de son intermédiaire, Tessa Forsythia.'],
   ['Dragon Age: Knight Errant is a five-part comic by BioWare and Dark Horse Comics. It tells the story of the elven thief Vaea, who arrives in Kirkwall just in time for the appointment of the city\'s latest Viscount, Varric Tethras.',

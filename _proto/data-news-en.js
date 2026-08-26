@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-08", label:"August 2026", items:[
+      {"nat":"media","uni":"dragonage","kind":"jeu","title":"Dragon Age: The Last Court","meta":"9:41","vo":true,"txt":"Added to the Dragon Age timeline, in 9:41, just after Last Flight.","img":"/images/thelastcourt.webp","href":"en-dragonage.html#da-lastcourt-1","cta":"See in the timeline"},
       {"nat":"media","uni":"avatar","kind":"comic","title":"Masters of the Elements Vol.1 : Off Duty","meta":"290 BG","vo":true,"txt":"Added to the Avatar Legends timeline, in 290 BG, just after The Shadow of Kyoshi.","img":"/images/mastersoftheelements.webp","href":"en-avatar.html#avt-masters-of-the-elements-off-duty","cta":"See in the timeline"},
       {"nat":"site","uni":"assassinscreed","kind":"timeline","title":"New timeline: Assassin’s Creed","txt":"111 entries, from Altaïr to the Animus Hub — the games and their DLC, the novels, the comics and the short films in a single thread.","href":"en-assassinscreed.html","cta":"Open the timeline"},
       {"nat":"site","uni":"dragonage","kind":"timeline","title":"New timeline: Dragon Age","txt":"43 entries, from The Stolen Throne to The Veilguard — the games and their DLC, the books, the comics and the shows in a single thread.","href":"en-dragonage.html","cta":"Open the timeline"},
