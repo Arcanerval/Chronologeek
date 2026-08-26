@@ -710,6 +710,39 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .bpop{left:12px;right:12px;max-width:none;bottom:calc(var(--hud-h,84px) + 106px);transform:translateY(18px)}
   .bpop.o{transform:translateY(0)}
 }
+/* LES DEUX DATES SE LISENT ENSEMBLE, JAMAIS L'UNE SOUS L'AUTRE. Celle du
+   présent et celle des souvenirs disent la même œuvre à des siècles
+   d'écart : séparées sur deux lignes, elles n'ont plus l'air d'un couple.
+   Sur un téléphone, la vignette prend 128 px et la colonne de texte tombe
+   à 100 px — le cadre rouge des souvenirs, qui ne se coupe pas, passait
+   donc sous le grand nombre quand il ne débordait pas de la carte.
+   La tête devient une grille : la vignette et le titre gardent leur ligne,
+   la bande des dates passe dessous sur toute la largeur de la carte
+   (268 px), et le pire cas — « 2007-2012 » et « ~431 BC-1480 » — y tient
+   avec de la marge une fois les corps resserrés. */
+@media(max-width:560px){
+  .bu-head{display:grid;grid-template-columns:128px minmax(0,1fr) auto;
+    align-items:start;gap:6px 10px}
+  .bu-txt{display:contents}
+  .bu-fig{grid-column:1;grid-row:1/span 2}
+  .bu-tags{grid-column:2;grid-row:1;margin-bottom:0}
+  .bu-title{grid-column:2;grid-row:2}
+  .bu-end{grid-column:3;grid-row:1/span 2;align-self:center}
+  .bu-meta,.bu-note{grid-column:1/-1}
+  .bu-meta{gap:8px;margin-top:2px;flex-wrap:nowrap}
+  .bu-meta .d{font-size:17px}
+  .bu-meta .mem{padding:2px 6px;gap:5px}
+  .bu-meta .mem b{font-size:15px}
+}
+/* Le pire couple du guide — « 1998-2000 » et « 1888-1918 », les deux
+   dates de Rogue — tenait à un pixel et demi du bord sur un écran de
+   320 px. Les corps se resserrent donc encore un cran sous 380 px : la
+   bande reste sur une ligne, ce qui est tout l'objet de la règle. */
+@media(max-width:380px){
+  .bu-meta .d{font-size:15px}
+  .bu-meta .mem b{font-size:13px}
+  .bu-meta .mem i{font-size:9px;letter-spacing:.08em}
+}
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .rv{opacity:1!important;transform:none!important}
@@ -1099,7 +1132,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             '<span class="bu-tags">'+fb+'<span class="b" style="--k:var(--t-'+e.type+')">'+
               esc(bd[1])+'</span>'+vo+'</span>'+
             '<span class="bu-title">'+esc(e.title)+'</span>'+
-            '<span class="bu-meta"><span class="d">'+esc(e.present||'—')+'</span>'+
+            '<span class="bu-meta">'+(e.present?'<span class="d">'+esc(e.present)+'</span>':'')+
               (e.date?'<span class="mem"><i>'+esc(T.mMemories)+'</i><b>'+
                 esc(e.date)+'</b></span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
