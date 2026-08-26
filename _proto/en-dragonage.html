@@ -1043,14 +1043,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   document.body.dataset.parcours=MODE;
   var BYID={};
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
-  /* Une entrée du rejeu n'est qu'une référence à l'entrée de découverte :
-     la même œuvre, à une autre place. `drop` retire un champ — le repère
-     « flashback » et la FAQ « pourquoi ici » n'ont plus rien à justifier
-     une fois l'œuvre remise dans l'ordre du monde. Aucune entrée n'est
-     coupée ni recollée, donc les deux parcours portent exactement les
-     mêmes identifiants : la progression et les badges valent tels quels
-     de l'un à l'autre, sans pont à tenir. Une référence morte rendrait
-     une carte vide sans une erreur — elle sort en console. */
+  /* Une entrée du rejeu est soit une référence à l'entrée de découverte —
+     la même œuvre, à une autre place —, soit une entrée à elle qui hérite
+     de la première entrée qu'elle couvre. `drop` retire un champ : le
+     repère « flashback » et la FAQ « pourquoi ici » n'ont plus rien à
+     justifier une fois l'œuvre remise dans l'ordre du monde. Une
+     référence morte rendrait une carte vide sans une erreur — elle sort
+     en console. */
   /* Les cinq ères sont les mêmes, dans le même ordre : le rejeu ne
      redonne ni leur titre, ni leur phase, ni leur visuel — il les reprend
      par le rang. `erasReplay` ne porte donc que des identifiants, et rien
@@ -1058,14 +1057,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function resolve(eras){
     return eras.map(function(era,i){
       return Object.assign({},D.eras[i],era,{entries:era.entries.map(function(x){
-        var src=BYID[x.ref];
-        if(!src){ console.error('[replay] référence morte :',x.ref); return x; }
-        var e=Object.assign({},src);
+        var src=BYID[x.ref||(x.covers||[])[0]];
+        if(!src){ console.error('[replay] référence morte :',x.ref||x.covers); return x; }
+        var e=Object.assign({},src,x);
+        e.id=x.ref||x.id;
+        if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
         (x.drop||[]).forEach(function(k){
           var p=k.split('.');
           if(p.length===1){ delete e[p[0]]; }
           else if(e[p[0]]){ e[p[0]]=Object.assign({},e[p[0]]); delete e[p[0]][p[1]]; }
         });
+        delete e.ref; delete e.drop;
         return e;
       })});
     });
@@ -1079,6 +1081,38 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var prog={};
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  /* ── le pont entre les deux parcours ──────────────────────────────────
+     Une seule progression, partagée : c'est la même œuvre, on l'a jouée ou
+     on ne l'a pas jouée. Une seule entrée du rejeu en recolle deux — les
+     deux segments d'Origins que Leliana's Song séparait —, et elle porte
+     `covers` pour dire de quelles entrées de découverte elle tient lieu.
+     Une entrée de découverte est cochée quand toutes celles du rejeu qui
+     la couvrent le sont ; une entrée du rejeu, quand tout ce qu'elle
+     couvre l'est. Les deux tables se construisent dans les deux modes,
+     sinon cocher dans l'un ne se verrait pas dans l'autre. */
+  var COVERS={}, COVERED={};
+  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
+    if(!e.covers) return;
+    COVERS[e.id]=e.covers;
+    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
+  }); });
+  function bridge(id){
+    if(COVERS[id]) COVERS[id].forEach(function(d){
+      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    });
+    else if(COVERED[id]) COVERED[id].forEach(function(r){
+      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    });
+  }
+  /* Au chargement, la découverte fait foi : une progression écrite avant
+     que le rejeu existe n'a que ses identifiants. */
+  function bootBridge(){
+    Object.keys(COVERS).forEach(function(r){
+      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+    });
+  }
+  bootBridge();
 
   /* ── poser la question, puis la bascule ───────────────────────────────
      La question n'est posée qu'à qui n'a rien répondu : ni page publiée,
@@ -1492,6 +1526,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     if(chk){
       var art=chk.closest('.bu'), id=art.dataset.id;
       prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      bridge(id);
       save();
       chk.setAttribute('aria-checked',prog[id]?'true':'false');
       art.classList.toggle('done',!!prog[id]);
@@ -1589,7 +1624,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     r.onload=function(){
       try{
         var d=JSON.parse(r.result);
-        prog=d.progress||d||{}; save();
+        prog=d.progress||d||{}; bootBridge(); save();
         [].forEach.call(document.querySelectorAll('.bu'),function(a){
           var on=!!prog[a.dataset.id];
           a.classList.toggle('done',on);

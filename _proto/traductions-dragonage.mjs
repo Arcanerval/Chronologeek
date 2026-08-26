@@ -319,6 +319,9 @@ export const DA_TRADUCTIONS = [
   ['Best done after the end of her personal quest "Leliana\'s Past"',
    'À faire de préférence après la fin de sa quête personnelle « Le Passé de Leliana »'],
   ['Midgame to endgame', 'Du milieu à la fin du jeu'],
+  /* La note de la carte du rejeu, qui recolle les deux segments que
+     Leliana's Song séparait. Elle n'existe que là. */
+  ['Early to endgame', 'Du début à la fin du jeu'],
   ['Between level 15-18 or after you get Wynne',
    'Entre les niveaux 15 et 18, ou après avoir recruté Wynne'],
   ['Endgame', 'Fin du jeu'],

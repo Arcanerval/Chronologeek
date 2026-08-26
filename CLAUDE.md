@@ -442,37 +442,39 @@ Dragon Age** : on y rejoue, on n'y revoit pas. La découverte reste le
 parcours de base, sans hash : c'est le lien qu'on partage.
 
 Le second ordre vit dans les données, à côté de `eras` : `erasRewatch` pour
-Star Wars et Marvel, `erasReplay` pour Dragon Age. **Il ne recopie aucune
-entrée** — chaque ligne est un `{ref:"<id>"}`, et `drop` retire ce qui n'a
-plus lieu d'être une fois l'œuvre remise dans l'ordre du monde : le repère
-`tags` du flashback, la FAQ « pourquoi ici », la note de placement de
+Star Wars et Marvel, `erasReplay` pour Dragon Age. **Il ne recopie presque
+aucune entrée** — chaque ligne est un `{ref:"<id>"}`, et `drop` retire ce
+qui n'a plus lieu d'être une fois l'œuvre remise dans l'ordre du monde : le
+repère `tags` du flashback, la FAQ « pourquoi ici », la note de placement de
 Leliana's Song. Chez Dragon Age les cinq ères ne sont pas répétées non plus
-— `resolve()` les reprend par leur rang —, si bien qu'`erasReplay` ne porte
-que des identifiants et **n'a rien à traduire**. `ref`, `drop` et `covers`
-sont dans `TECHNIQUES` de `traduire-dragonage.mjs` pour cette raison ;
-« tags » ou « faq.read » traduits ne retireraient plus rien.
+— `resolve()` les reprend par leur rang. `ref`, `drop` et `covers` sont dans
+`TECHNIQUES` de `traduire-dragonage.mjs` : « tags » ou « faq.read » traduits
+ne retireraient plus rien.
 
-Trois choses à savoir :
+Quatre choses à savoir :
 
 - **Une entrée ajoutée à `eras` ne paraît pas dans le second parcours.**
   Elle n'y a pas de `ref`, et rien ne le signale : la page se charge, la
   console reste vide, et l'œuvre manque à qui rejoue. C'est le contrôle à
-  faire à chaque ajout — les deux listes doivent compter le même nombre
-  d'entrées.
-- **Dragon Age n'a pas de `covers`, et c'est ce qui rend le reste simple.**
-  Star Wars coupe des saisons en deux et recolle des panneaux ; il lui faut
-  donc un pont entre les deux progressions. Ici aucune entrée n'est coupée :
-  les deux parcours portent exactement les mêmes 44 identifiants, la
-  progression et les cinq badges valent tels quels de l'un à l'autre, et il
-  n'y a ni `COVERS`, ni `bridge()`, ni `markId()` à tenir. Les badges de
-  Dragon Age listent d'ailleurs leurs entrées eux-mêmes (`trigger:"oeuvre"`),
-  là où Star Wars nomme la dernière d'une ère.
-- **En rejeu, deux cartes « Dragon Age: Origins » se suivent.** Leliana's
-  Song passait entre `da-origins-2` et `da-origins-3` ; une fois le
-  flashback remonté au début, les deux segments deviennent voisins. Ils
-  gardent leurs notes — « Early to midgame », puis « Midgame to endgame ».
-  Les recoller demanderait un `covers`, donc le pont de progression que
-  cette page n'a pas.
+  faire à chaque ajout.
+- **Dragon Age n'a qu'un seul `covers`, et il recolle Origins.** Leliana's
+  Song passait entre `da-origins-2` et `da-origins-3` ; le flashback remonté
+  au début, les deux segments devenaient deux cartes identiques côte à côte.
+  Le rejeu les remplace par `da-r-origins-mid`, qui les couvre tous les deux
+  et porte sa propre note, « Early to endgame ». D'où **43 entrées en rejeu
+  contre 44 en découverte** — `s-tot`, `fcount` et le HUD sont recalculés
+  depuis `ALL`, il n'y a rien à corriger à la main.
+- **Le pont de progression tient les deux sens.** `COVERS` / `COVERED`,
+  `bridge()` au clic et `bootBridge()` au chargement et à l'import : cocher
+  la carte recollée coche les deux segments, décocher l'un des deux la
+  décoche. C'est ce qui garde les cinq badges vrais dans les deux parcours —
+  `da_warden` nomme `da-origins-2` et `da-origins-3`, qui n'existent pas
+  en rejeu. Pas de `markId()` en revanche : les badges de Dragon Age listent
+  leurs entrées eux-mêmes (`trigger:"oeuvre"`), là où Star Wars nomme la
+  dernière d'une ère.
+- **Le seul texte d'`erasReplay` est cette note-là.** Tout le reste n'est
+  qu'identifiants : une entrée du rejeu hérite de celle qu'elle référence,
+  titre et résumé compris.
 
 ## Synchronisation FR/EN
 
