@@ -210,8 +210,8 @@ export const DA_TRADUCTIONS = [
   ['The short stories of DA2, DAI and DAV can be found on internet but it\'s hard to place them so i prefer not to risk myself, read them after each game if you want.',
    'Les nouvelles de DA2, DAI et DAV se trouvent sur Internet, mais elles sont difficiles à placer : je préfère ne pas m\'y risquer. Lisez-les après chaque jeu si vous voulez.'],
   ['Browser and mobile games', 'Les jeux navigateur et mobiles'],
-  ['The browser and mobile games are not available anymore.',
-   'Les jeux navigateur et mobiles ne sont plus disponibles.'],
+  ['The browser and mobile games are not available anymore, except The Last Court which is in the timeline.',
+   'Les jeux navigateur et mobiles ne sont plus disponibles, sauf The Last Court qui est dans la timeline.'],
   ['Dragon Age: Vows and Vengeance is a narrative podcast available on YouTube, it\'s canon but lacking any images I\'m struggling placing it here but if you want listen to it before playing DAV.',
    'Dragon Age: Vows and Vengeance est un podcast narratif disponible sur YouTube. Il est canonique, mais faute d\'images j\'ai du mal à le placer ici : si vous voulez, écoutez-le avant de jouer à DAV.'],
 
