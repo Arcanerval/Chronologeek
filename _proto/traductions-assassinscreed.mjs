@@ -550,4 +550,7 @@ export const AC_GABARITS = [
   /* Les sept bandeaux de saga. « SAGA » se dit pareil des deux côtés,
      et le chiffre ne bouge pas — c'est une forme, pas un libellé. */
   [/^SAGA (\d+)$/, m => `SAGA ${m[1]}`],
+  /* Le compteur de filtres, écrit en dur dans le proto : son chiffre bouge
+     à chaque ajout d'œuvre, et sans forme la phrase sortirait en anglais. */
+  [/^(\d+) \/ (\d+) shown$/, m => `${m[1]} / ${m[2]} affichées`],
 ];

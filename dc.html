@@ -1760,12 +1760,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     startBtn();
   }
 
-  /* ── Commencer / Reprendre : le bouton emmène à la prochaine entrée ── */
+  /* ── Commencer / Reprendre : le bouton ramène à la dernière entrée vue ── */
   var next=null;
   function startBtn(){
-    var started=ALL.some(function(e){ return prog[e.id]; });
-    next=ALL.filter(function(e){ return !prog[e.id]; })[0]||ALL[0];
-    $('#start').innerHTML=(started?T.resume:'Start')+' <em>▸</em>';
+    var vues=ALL.filter(function(e){ return prog[e.id]; });
+    next=vues[vues.length-1]||ALL[0];
+    $('#start').innerHTML=(vues.length?T.resume:'Start')+' <em>▸</em>';
   }
   /* venu de la reprise de l'accueil : le clic de « Reprendre » est joué
      pour le visiteur, sinon il lui faut le refaire une fois arrivé. */

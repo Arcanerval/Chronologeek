@@ -1331,6 +1331,19 @@ et la majuscule initiale quand on découpe une phrase.
 
 ## Ce qui est tranché, et ne revient pas
 
+- **« Reprendre » ramène à la dernière entrée vue, pas à la première non
+  vue.** Tranché par Niko le 26 août 2026. Le bouton visait jusque-là le
+  premier trou de la progression, ce qui renvoyait au début dès qu'une œuvre
+  avait été sautée : sauter est un choix, pas un oubli, et le bouton n'a pas
+  à y ramener. `startBtn()` prend donc la **dernière** entrée cochée dans
+  l'ordre de `ALL` — `vues[vues.length-1]` —, avec `ALL[0]` et le libellé
+  « Commencer » quand rien n'est coché. Les neuf pages qui ont ce bouton
+  portent le même bloc, et il faut l'écrire dans les **sources** : les cinq
+  protos français (`e-starwars`, `e-marvel`, `e-dc`, `e-avatar`,
+  `e-dossier-star-wars`) et les quatre protos anglais des chaînes inversées
+  (`en-startrek`, `en-twd`, `en-dragonage`, `en-assassinscreed`). L'accueil
+  et la liste des Dossiers n'ont rien à changer : leur bandeau de reprise ne
+  fait que renvoyer vers la page avec `#reprendre`, qui rejoue le clic.
 - **Une date de timeline ne se traduit jamais, et « BC » reste « BC ».**
   Tranché par Niko le 25 août 2026, et la règle vaut pour **toutes** les
   timelines, pas seulement Assassin's Creed. Une date est un repère qu'on lit
