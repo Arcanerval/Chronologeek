@@ -1,47 +1,5 @@
 [
  {
-  "universe": "starwars",
-  "title": "Star Wars Zero Company",
-  "date_sort": "2026-08-27",
-  "date_txt": "27/08/2026",
-  "kind": "Jeu vidéo",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "20 BBY",
-  "syn": "Star Wars Zero Company is a canon single-player turn-based tactics video game that takes place during the Clone Wars. The game is developed by Bit Reactor in collaboration with Electronic Arts's Respawn Entertainment and published by EA and Lucasfilm Games, and was released on August 27, 2026.",
-  "wiki": "Star Wars Zero Company",
-  "syn_fr": "",
-  "kindKey": "game",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
-  "universe": "startrek",
-  "title": "Star Trek: Strange New Worlds",
-  "date_sort": "2026-08-27",
-  "date_txt": "27/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "The Enterprise falls into a slipstream that pushes them to a catastrophic warp threshold.",
-  "wiki": "",
-  "syn_fr": "L'Enterprise est prise dans un courant de distorsion qui la pousse jusqu'à un seuil de distorsion catastrophique.",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 4,
-   "e": 6,
-   "mark": ""
-  },
-  "poster": "/97TTJuqiSMfU0DuXx1B4NG5QNP7.jpg",
-  "tmdb": 103516,
-  "media": "tv"
- },
- {
   "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-08-30",
@@ -424,6 +382,31 @@
   },
   "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
   "tmdb": 95350,
+  "media": "tv"
+ },
+ {
+  "universe": "dc",
+  "title": "Get Jiro",
+  "date_sort": "2026-10-04",
+  "date_txt": "04/10/2026",
+  "kind": "Série",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "In a post-apocalyptic, near-future Los Angeles where culinary culture reigns supreme, the world's most powerful figures are chefs, and food is both currency and a demarcation of class, the mysterious sushi chef Jiro sets out on a quest for vengeance.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 1,
+   "mark": "premiere"
+  },
+  "poster": "/mCdnYVwES1QQ783bJMmZdYmULji.jpg",
+  "tmdb": 231801,
   "media": "tv"
  },
  {
