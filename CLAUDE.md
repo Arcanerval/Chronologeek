@@ -1227,7 +1227,7 @@ rien ne le signale.
 DC et Avatar écrivent `imp` là où Star Wars et Marvel écrivent `important` : un
 parseur doit accepter les deux.
 Répartitions actuelles :
-Star Wars 61 (9 must / 37 important / 15 bonus), Marvel 121 (49 / 30 / 42),
+Star Wars 62 (9 must / 37 important / 16 bonus), Marvel 121 (49 / 30 / 42),
 DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34),
 The Walking Dead 45 (29 must / 3 important / 13 bonus),
 Dragon Age 44 (15 must / 10 important / 19 bonus),

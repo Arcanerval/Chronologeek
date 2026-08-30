@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-08", label:"August 2026", items:[
+      {"nat":"media","uni":"sw","kind":"jeu","title":"Star Wars Zero Company","meta":"19 BBY","txt":"Added to the Star Wars timeline, in 19 BBY, just before Episode III: Revenge of the Sith.","img":"/images/zerocompany.webp","href":"en-starwars.html#sw-zerocompany","cta":"See in the timeline"},
       {"nat":"media","uni":"dragonage","kind":"jeu","title":"Dragon Age: The Last Court","meta":"9:41","vo":true,"txt":"Added to the Dragon Age timeline, in 9:41, just after Last Flight.","img":"/images/thelastcourt.webp","href":"en-dragonage.html#da-lastcourt-1","cta":"See in the timeline"},
       {"nat":"media","uni":"avatar","kind":"comic","title":"Masters of the Elements Vol.1 : Off Duty","meta":"290 BG","vo":true,"txt":"Added to the Avatar Legends timeline, in 290 BG, just after The Shadow of Kyoshi.","img":"/images/mastersoftheelements.webp","href":"en-avatar.html#avt-masters-of-the-elements-off-duty","cta":"See in the timeline"},
       {"nat":"site","uni":"assassinscreed","kind":"timeline","title":"New timeline: Assassin’s Creed","txt":"111 entries, from Altaïr to the Animus Hub — the games and their DLC, the novels, the comics and the short films in a single thread.","href":"en-assassinscreed.html","cta":"Open the timeline"},

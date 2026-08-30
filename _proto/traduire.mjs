@@ -270,6 +270,27 @@ const TRADUCTIONS = [
      cinquante-deux autres entrées Marvel, donc déjà en prod anglaise. */
   ['Saison 1 Épisodes 1-5', 'Season 1 Episodes 1-5'],
   ['Saison 1 Épisodes 6-9', 'Season 1 Episodes 6-9'],
+
+  /* ── Star Wars Zero Company, ajouté le 30 août 2026 ─────────────────
+     Le jeu entre juste avant l'Épisode III. Les deux réponses de FAQ
+     sont de Niko, écrites en anglais : c'est le français qui en est la
+     traduction, et l'anglais est repris mot pour mot. Le moule des
+     soixante autres — « The game takes place… » / « Because… » — est
+     d'ailleurs celui qu'il emploie. */
+  ['Le jeu se déroule en 19 BBY dans les derniers mois de la Guerre des Clones mais on ne sait pas exactement quand',
+   'The game takes place in 19 BBY in the last months of the Clone Wars but we don\'t know exactly when'],
+  ['Comme on ne sait pas exactement où il se place, le mieux est de le faire avant La Revanche des Sith',
+   'Because since we don\'t know exactly when it falls it best to do before Revenge of the Sith'],
+  // Le synopsis, sur le moule des quatre autres jeux : « Jeu développé
+  // par Respawn Entertainment… » / « Star Wars Outlaws est un jeu vidéo
+  // développé par… ».
+  ['Star Wars Zero Company est un jeu de tactique au tour par tour développé par Bit Reactor avec Respawn Entertainment et Lucasfilm Games. Il se déroule dans les derniers temps de la Guerre des Clones, où un ancien officier de la République rassemble une escouade de combattants venus de tous les horizons.',
+   'Star Wars Zero Company is a turn-based tactics game developed by Bit Reactor with Respawn Entertainment and Lucasfilm Games. It takes place in the final days of the Clone Wars, where a former Republic officer gathers a squad of fighters from all walks of life.'],
+  /* La carte du journal, même moule que les quatre précédentes. La date
+     ne se traduit pas, le titre du film si — la prod anglaise écrit
+     « Episode III: Revenge of the Sith ». */
+  ['Ajouté à la timeline Star Wars, en 19 BBY, juste avant l\'Épisode III : La Revanche des Sith.',
+   'Added to the Star Wars timeline, in 19 BBY, just before Episode III: Revenge of the Sith.'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════
@@ -779,6 +800,9 @@ const TITRES_IDENTIQUES = [
      cette ligne le contrôle les compte comme restées en français. */
   '~3–2 BBY',
   '3 BBY',
+  // Star Wars · le jeu ajouté le 30 août 2026, qui porte le même titre
+  // dans les deux langues.
+  'Star Wars Zero Company',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 

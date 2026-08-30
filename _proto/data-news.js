@@ -38,6 +38,14 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-08", label:"Août 2026", items:[
 
+      { nat:"media", uni:"sw", kind:"jeu",
+        title:"Star Wars Zero Company", meta:"19 BBY",
+        txt:"Ajouté à la timeline Star Wars, en 19 BBY, juste avant "+
+            "l'Épisode III : La Revanche des Sith.",
+        img:"/images/zerocompany.webp",
+        href:"e-starwars.html#sw-zerocompany",
+        cta:"Voir dans la timeline" },
+
       { nat:"media", uni:"dragonage", kind:"jeu",
         title:"Dragon Age: The Last Court", meta:"9:41", vo:true,
         txt:"Ajouté à la timeline Dragon Age, en 9:41, juste après "+
