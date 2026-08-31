@@ -1,55 +1,5 @@
 [
  {
-  "universe": "dc",
-  "title": "Lanterns",
-  "date_sort": "2026-08-30",
-  "date_txt": "30/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 3,
-   "mark": ""
-  },
-  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
-  "tmdb": 95350,
-  "media": "tv"
- },
- {
-  "universe": "twd",
-  "title": "The Walking Dead: Dead City",
-  "date_sort": "2026-08-30",
-  "date_txt": "30/08/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Maggie and Negan find themselves in different circumstances, wrestling with their purposes.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 3,
-   "e": 6,
-   "mark": ""
-  },
-  "poster": "/wq3vuQzQgbS83zX3malAFWMsSwX.jpg",
-  "tmdb": 194583,
-  "media": "tv"
- },
- {
   "universe": "starwars",
   "title": "Hiding from the Dark",
   "date_sort": "2026-09-01",
