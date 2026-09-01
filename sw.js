@@ -25,6 +25,10 @@ const PRECACHE = [
   '/fonts/chivo-italic-latin.woff2', '/fonts/chivo-italic-latin-ext.woff2',
   // le moteur de la refonte, bilingue, et les donnees de chaque page
   '/app.js',
+  // les entrees que le visiteur ajoute lui-meme : charge par les huit pages
+  // d'univers entre leurs donnees et leur script. Absent du cache, la page
+  // hors ligne se chargerait sans les ajouts, et sans un mot pour le dire.
+  '/perso.js',
   '/data/starwars-en.js', '/data/marvel-en.js', '/data/dc-en.js', '/data/avatar-en.js',
   '/data/startrek-en.js', '/data/walkingdead-en.js', '/data/dragonage-en.js',
   '/data/assassinscreed-en.js',

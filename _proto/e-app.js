@@ -604,3 +604,374 @@
     fermeTiroir(); fermePop(null);
   });
 })();
+
+/* ═══ MES AJOUTS — l'interface ════════════════════════════════════════
+   `e-perso.js` pose les entrées du visiteur dans les données avant que
+   la page ne les lise ; ici on lui donne de quoi les écrire, les
+   corriger et les retirer. Les deux moitiés ne se parlent que par
+   `window.CGP`, et le stockage est le seul état partagé.
+
+   Le fichier est chargé en dernier : la timeline est déjà dessinée
+   quand ce bloc s'exécute. C'est pourquoi un ajout recharge la page —
+   réinjecter à chaud demanderait de connaître le rendu de chacune des
+   huit pages, qui n'ont en commun que quelques classes.
+
+   Le Dossier Star Wars n'en est pas : sa liste de romans n'a ni
+   `.bu-tags` ni carte bâtie comme celles des timelines. Il ne charge pas
+   `e-perso.js`, et le garde-fou ci-dessous le laisserait sortir de
+   toute façon.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var P = window.CGP;
+  if (!P) return;                                    /* page sans timeline */
+  if (!document.querySelector('.bu-tags')) return;   /* structure inattendue */
+
+  var FR = document.documentElement.lang !== 'en';
+  var CFG = window.CG || {};
+
+  var T = FR ? {
+    add:    'Ajouter une œuvre',
+    tag:    'Votre ajout',
+    titreN: 'Ajouter une œuvre',
+    titreE: 'Modifier votre ajout',
+    dek:    'Elle n’apparaîtra que sur cet appareil, dans votre navigateur. Rien n’est envoyé, et la timeline publique ne bouge pas.',
+    fTitre: 'Titre',
+    fType:  'Type',
+    fDate:  'Date',
+    fNote:  'Note',
+    fOu:    'Juste après',
+    debut:  '— au tout début —',
+    phT:    'Le titre de l’œuvre',
+    phD:    'Une année, une date, une époque…',
+    phN:    'Ce que vous voulez vous rappeler (facultatif)',
+    ok:     'Ajouter',
+    save:   'Enregistrer',
+    del:    'Retirer',
+    conf:   'Retirer « {t} » de votre timeline ?',
+    ko:     'Votre navigateur refuse d’enregistrer — navigation privée, peut-être. L’ajout n’a pas été conservé.',
+    fermer: 'Fermer',
+    modif:  'Modifier votre ajout'
+  } : {
+    add:    'Add a work',
+    tag:    'Your addition',
+    titreN: 'Add a work',
+    titreE: 'Edit your addition',
+    dek:    'It only shows on this device, in your browser. Nothing is sent, and the public timeline stays as it is.',
+    fTitre: 'Title',
+    fType:  'Type',
+    fDate:  'Date',
+    fNote:  'Note',
+    fOu:    'Right after',
+    debut:  '— at the very beginning —',
+    phT:    'The title of the work',
+    phD:    'A year, a date, an era…',
+    phN:    'Whatever you want to remember (optional)',
+    ok:     'Add',
+    save:   'Save',
+    del:    'Remove',
+    conf:   'Remove “{t}” from your timeline?',
+    ko:     'Your browser refused to save — private browsing, perhaps. The addition was not kept.',
+    fermer: 'Close',
+    modif:  'Edit your addition'
+  };
+
+  var CSS = [
+    /* La carte : le trait passe au pointillé, dans la couleur de
+       l'univers. C'est à ça qu'on distingue d'un coup d'œil ce qu'on a
+       posé soi-même de ce que la page apporte — sans rien ajouter à la
+       carte, qui est déjà dense. */
+    '.bu.mine>.bu-card{border-style:dashed}',
+    '.bu.mine>.bu-card:hover{border-style:solid}',
+    '.mine-t{font-family:\'Chivo\',sans-serif;font-size:10px;font-weight:700;',
+    '  letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;',
+    '  border:1px dashed var(--uni,var(--hot));color:var(--uni,var(--hot))}',
+    /* Le crayon se range à gauche du lien de copie, qui occupe déjà le
+       coin. Il reste visible en permanence, lui : un bouton qui
+       n'apparaît qu'au survol ne se découvre pas sur un téléphone. */
+    '.mine-e{position:absolute;top:9px;right:41px;z-index:5;width:26px;height:26px;',
+    '  display:grid;place-items:center;cursor:pointer;background:none;border:none;',
+    '  padding:0;color:rgba(255,253,247,.55)}',
+    '.mine-e:hover,.mine-e:focus-visible{color:var(--hot)}',
+    '.mine-e svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;',
+    '  stroke-linecap:square}',
+    /* Le dialogue reprend la charte du formulaire de contact ; il ne
+       reprend pas ses règles, qui ne sont posées qu'à sa première
+       ouverture. Deux blocs indépendants valent mieux qu'un ordre à
+       tenir entre eux. */
+    '.mx{width:min(520px,calc(100vw - 22px));margin:auto;padding:0;',
+    '  color:var(--paper);background:var(--ink);border:2px solid var(--paper)}',
+    '.mx::backdrop{background:rgba(8,8,15,.74)}',
+    '.mx-in{position:relative;padding:22px 22px 20px}',
+    '.mx h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;',
+    '  font-size:25px;letter-spacing:.03em;text-transform:uppercase;line-height:1;',
+    '  margin:0 38px 7px 0}',
+    '.mx-dek{font-size:12.5px;line-height:1.45;color:rgba(255,253,247,.7);margin-bottom:16px}',
+    '.mx-f{margin-bottom:12px}',
+    '.mx-f label{display:block;font-family:\'Big Shoulders Display\',sans-serif;',
+    '  font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;',
+    '  color:var(--hot);margin-bottom:5px}',
+    '.mx-f input,.mx-f select{display:block;width:100%;font-family:inherit;',
+    '  font-size:14px;color:var(--paper);background:var(--ink);',
+    '  border:2px solid var(--line);padding:9px 10px}',
+    '.mx-f input:focus,.mx-f select:focus{outline:none;border-color:var(--hot)}',
+    /* sans ça, Windows peint les listes déroulantes en clair sur clair */
+    '.mx-f option,.mx-f optgroup{background:var(--ink);color:var(--paper)}',
+    '.mx-2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}',
+    '.mx-go{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;',
+    '  background:var(--hot);border:2px solid var(--hot);color:var(--ink);padding:8px 22px}',
+    '.mx-go:hover{background:var(--paper);border-color:var(--paper)}',
+    '.mx-del{font-family:inherit;font-size:12.5px;cursor:pointer;background:none;',
+    '  border:none;padding:0;color:rgba(255,253,247,.6);text-decoration:underline}',
+    '.mx-del:hover{color:var(--paper)}',
+    '.mx-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;',
+    '  margin-top:4px}',
+    '.mx-ko{font-size:12px;line-height:1.45;color:var(--hot);margin-top:10px}',
+    '.mx-x{position:absolute;top:15px;right:15px;background:none;cursor:pointer;',
+    '  border:2px solid var(--line);color:rgba(255,253,247,.6);padding:4px 9px;',
+    '  font-size:13px;line-height:1}',
+    '.mx-x:hover{border-color:var(--paper);color:var(--paper)}',
+    '@media(max-width:520px){.mx-in{padding:18px 16px 16px}.mx-2{grid-template-columns:1fr}',
+    '  .mx-go{flex:1}}'
+  ].join('');
+
+  var st = document.createElement('style');
+  st.textContent = CSS;
+  document.head.appendChild(st);
+
+  /* Les titres ne sont pas échappés de la même façon d'une page à
+     l'autre — DC les stocke en texte brut et les rend avec `esc()`, le
+     Dossier les stocke échappés. Un `<option>` veut du texte. */
+  var tampon = document.createElement('div');
+  function dec(s){ tampon.innerHTML = s == null ? '' : String(s); return tampon.textContent; }
+
+  var CRAYON = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+               '<path d="M4 20h4L20 8l-4-4L4 16z"/></svg>';
+
+  /* ── le dialogue ──────────────────────────────────────────────────── */
+  var boite = null, edite = null, appelant = null;
+
+  function bati(){
+    if (boite) return boite;
+
+    boite = document.createElement('dialog');
+    boite.className = 'mx';
+    boite.innerHTML =
+      '<form class="mx-in" novalidate>' +
+        '<button type="button" class="mx-x">✕</button>' +
+        '<h2></h2><p class="mx-dek"></p>' +
+        '<p class="mx-f"><label for="mx-t"></label>' +
+          '<input id="mx-t" type="text" maxlength="120" autocomplete="off"/></p>' +
+        '<div class="mx-2">' +
+          '<p class="mx-f"><label for="mx-k"></label><select id="mx-k"></select></p>' +
+          '<p class="mx-f"><label for="mx-d"></label>' +
+            '<input id="mx-d" type="text" maxlength="40" autocomplete="off"/></p>' +
+        '</div>' +
+        '<p class="mx-f"><label for="mx-n"></label>' +
+          '<input id="mx-n" type="text" maxlength="160" autocomplete="off"/></p>' +
+        '<p class="mx-f"><label for="mx-a"></label><select id="mx-a"></select></p>' +
+        '<div class="mx-bar"><button type="submit" class="mx-go"></button>' +
+          '<button type="button" class="mx-del" hidden></button></div>' +
+        '<p class="mx-ko" hidden></p>' +
+      '</form>';
+    document.body.appendChild(boite);
+
+    boite.querySelector('.mx-x').setAttribute('aria-label', T.fermer);
+    boite.querySelector('.mx-dek').textContent = T.dek;
+    var lb = boite.querySelectorAll('label');
+    lb[0].textContent = T.fTitre; lb[1].textContent = T.fType;
+    lb[2].textContent = T.fDate;  lb[3].textContent = T.fNote;
+    lb[4].textContent = T.fOu;
+    boite.querySelector('#mx-t').placeholder = T.phT;
+    boite.querySelector('#mx-d').placeholder = T.phD;
+    boite.querySelector('#mx-n').placeholder = T.phN;
+    boite.querySelector('.mx-del').textContent = T.del;
+
+    /* Les types sont ceux de la page, pas une liste à nous : c'est
+       `CG.badgeLabels` qui décide de la couleur du badge et des cases du
+       panneau de filtres. Un type inventé s'afficherait tel quel et ne
+       répondrait à aucun filtre. */
+    var k = boite.querySelector('#mx-k');
+    Object.keys(CFG.badgeLabels || {}).forEach(function(c){
+      var o = document.createElement('option');
+      o.value = c; o.textContent = dec(CFG.badgeLabels[c][1]);
+      k.appendChild(o);
+    });
+
+    /* « Juste après » : toutes les entrées, groupées par ère. Un select
+       natif encaisse cent-vingt options mieux qu'une liste faite à la
+       main, et il vient avec la recherche au clavier. */
+    var a = boite.querySelector('#mx-a');
+    var o0 = document.createElement('option');
+    o0.value = ''; o0.textContent = T.debut;
+    a.appendChild(o0);
+    (P.data.eras || []).forEach(function(era){
+      var g = document.createElement('optgroup');
+      g.label = dec(era.title);
+      (era.entries || []).forEach(function(e){
+        if (!e.id) return;
+        var o = document.createElement('option');
+        o.value = e.id;
+        o.textContent = dec(e.title) + (e.date ? '  ·  ' + dec(e.date) : '');
+        g.appendChild(o);
+      });
+      if (g.children.length) a.appendChild(g);
+    });
+
+    boite.querySelector('form').addEventListener('submit', function(ev){
+      ev.preventDefault();
+      valide();
+    });
+    boite.querySelector('.mx-del').addEventListener('click', function(){
+      if (!edite) return;
+      if (!confirm(T.conf.replace('{t}', dec(edite.title)))) return;
+      var l = P.lis().filter(function(x){ return x.id !== edite.id; });
+      if (!P.ecris(l)) { rate(); return; }
+      oublie(edite.id);
+      location.reload();
+    });
+    boite.querySelector('.mx-x').addEventListener('click', function(){ boite.close(); });
+    boite.addEventListener('click', function(ev){ if (ev.target === boite) boite.close(); });
+    boite.addEventListener('close', function(){ if (appelant) appelant.focus(); });
+
+    return boite;
+  }
+
+  /* Retirer l'entrée ne suffit pas : sa coche reste dans la progression,
+     et c'est un identifiant mort de plus à chaque suppression. La clé de
+     progression n'est pas la nôtre — elle est déclarée dans le script de
+     chaque page, sous un nom qui change à la publication —, alors plutôt
+     que de la deviner on cherche l'identifiant lui-même. Il est unique et
+     préfixé `p-` : rien d'autre ne peut porter ce nom. */
+  function oublie(id){
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k === P.key) continue;
+        var v = localStorage.getItem(k);
+        if (!v || v.indexOf(id) < 0 || v.charAt(0) !== '{') continue;
+        var o = JSON.parse(v);
+        if (o && typeof o === 'object' && (id in o)) {
+          delete o[id];
+          localStorage.setItem(k, JSON.stringify(o));
+        }
+      }
+    } catch (_) {}    /* du JSON qui n'en est pas, un stockage fermé : sans effet */
+  }
+
+  /* Le stockage peut refuser — navigation privée, quota plein. Le dire
+     dans la boîte plutôt que de recharger sur un ajout qui n'existe
+     pas : la page reviendrait sans l'entrée, et sans un mot. */
+  function rate(){
+    var p = boite.querySelector('.mx-ko');
+    p.textContent = T.ko; p.hidden = false;
+  }
+
+  function valide(){
+    var t = boite.querySelector('#mx-t').value.trim();
+    if (!t) { boite.querySelector('#mx-t').focus(); return; }
+
+    var a = {
+      id:    edite ? edite.id : P.neuf(),
+      title: t,
+      type:  boite.querySelector('#mx-k').value,
+      date:  boite.querySelector('#mx-d').value.trim(),
+      note:  boite.querySelector('#mx-n').value.trim(),
+      apres: boite.querySelector('#mx-a').value
+    };
+
+    var l = P.lis();
+    if (edite) {
+      for (var i = 0; i < l.length; i++) if (l[i].id === edite.id) { l[i] = a; break; }
+    } else l.push(a);
+
+    if (P.ecris(l)) location.reload(); else rate();
+  }
+
+  function ouvre(a, depuis){
+    edite = a || null;
+    appelant = depuis || null;
+    var d = bati();
+    d.querySelector('.mx-ko').hidden = true;
+    d.querySelector('h2').textContent = edite ? T.titreE : T.titreN;
+    d.querySelector('.mx-go').textContent = edite ? T.save : T.ok;
+    d.querySelector('.mx-del').hidden = !edite;
+    d.querySelector('#mx-t').value = edite ? edite.title : '';
+    d.querySelector('#mx-d').value = edite ? (edite.date || '') : '';
+    d.querySelector('#mx-n').value = edite ? (edite.note || '') : '';
+    if (edite) {
+      d.querySelector('#mx-k').value = edite.type || '';
+      /* L'ancre a pu disparaître depuis — une entrée retirée du guide,
+         un autre ajout supprimé. Le select retombe alors sur « au tout
+         début », ce que `place()` fait déjà de son côté. */
+      d.querySelector('#mx-a').value = edite.apres || '';
+    }
+    d.showModal();
+    d.querySelector('#mx-t').focus();
+  }
+
+  /* ── marquer ce qui est à nous ───────────────────────────────────── */
+  function marque(){
+    var l = P.lis();
+    if (!l.length) return;
+    var par = {};
+    l.forEach(function(a){ par[a.id] = a; });
+
+    var arts = document.querySelectorAll('[data-id^="p-"]');
+    for (var i = 0; i < arts.length; i++) {
+      var art = arts[i], a = par[art.getAttribute('data-id')];
+      if (!a) continue;
+      art.classList.add('mine');
+
+      var tags = art.querySelector('.bu-tags');
+      if (tags) {
+        var s = document.createElement('span');
+        s.className = 'mine-t';
+        s.textContent = T.tag;
+        tags.insertBefore(s, tags.firstChild);
+      }
+      var card = art.querySelector('.bu-card');
+      if (card) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'mine-e';
+        b.title = T.modif; b.setAttribute('aria-label', T.modif);
+        b.innerHTML = CRAYON;
+        /* `stopPropagation` : le crayon est posé dans la carte, et la
+           carte entière écoute le clic pour déplier son panneau. */
+        b.addEventListener('click', (function(ent, bt){
+          return function(ev){ ev.preventDefault(); ev.stopPropagation(); ouvre(ent, bt); };
+        })(a, b));
+        card.appendChild(b);
+      }
+    }
+  }
+
+  /* ── le bouton d'ajout, au bas de « Ce qui est écarté » ──────────── */
+  function bouton(){
+    var p = document.querySelector('.sg-p');
+    if (!p) {
+      var corps = document.querySelector('.cuts-body');
+      if (!corps) return;
+      p = document.createElement('p');
+      p.className = 'sg-p';
+      corps.appendChild(p);
+    }
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'sg';
+    b.textContent = T.add;
+    b.addEventListener('click', function(){ ouvre(null, b); });
+    p.appendChild(b);
+  }
+
+  /* Le même report que le bloc des suggestions, et pour la même raison :
+     `e-app.js` est chargé en fin de corps, donc pendant l'analyse du
+     document. Sans lui, `bouton()` ne trouverait pas le `.sg-p` que
+     l'autre bloc pose au chargement — il en créerait un second, et les
+     deux boutons se retrouveraient sur deux lignes, dans le désordre. */
+  function demarre(){ marque(); bouton(); }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', demarre);
+  else demarre();
+})();

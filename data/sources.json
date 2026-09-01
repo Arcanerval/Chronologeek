@@ -19,5 +19,6 @@
   "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
   "data/news-fr.js": "_proto/data-news.js",
   "data/news-en.js": "_proto/data-news-en.js",
-  "app.js": "_proto/e-app.js"
+  "app.js": "_proto/e-app.js",
+  "perso.js": "_proto/e-perso.js"
 }

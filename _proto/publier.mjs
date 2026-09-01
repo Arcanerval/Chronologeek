@@ -143,6 +143,9 @@ const ASSETS = {
   'data-news.js':          '/data/news-fr.js',
   'data-news-en.js':       '/data/news-en.js',
   'e-app.js':              '/app.js',
+  // Chargé entre les données et le script de page, sur les huit univers :
+  // il pose les entrées du visiteur dans `D.eras` avant que la page les lise.
+  'e-perso.js':            '/perso.js',
 };
 
 /* ── Table des liens : nom de maquette → URL réelle ─────────────────────── */
@@ -212,7 +215,7 @@ function blocSeo(seo, urlEn, urlFr, moi, langue) {
 // donc seize liens morts qu'aucune lecture de page ne montre. On traite toute
 // chaine entre guillemets, ancre comprise.
 const LIEN_RE = /(["'])((?:e|en)-[a-z0-9-]+\.html)(#[^"']*)?\1/g;
-const ASSET_RE = /(["'])((?:data[a-z0-9-]*|e-app)\.js)\1/g;
+const ASSET_RE = /(["'])((?:data[a-z0-9-]*|e-app|e-perso)\.js)\1/g;
 
 function recabler(texte, ou, problemes) {
   let out = texte.replace(LIEN_RE, (tout, q, nom, ancre) =>
