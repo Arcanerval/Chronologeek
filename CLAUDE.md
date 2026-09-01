@@ -1385,6 +1385,20 @@ et la majuscule initiale quand on découpe une phrase.
 
 ## Ce qui reste à faire
 
+- **Un constructeur de timeline**, idée de Niko le 1er septembre 2026, en
+  réponse aux demandes de réordonnancement. Plutôt que de laisser bouger
+  l'ordre des huit guides — ce que « Ce qui est tranché » écarte, les badges
+  et les ères y tenant —, une page où le visiteur fait *sa* timeline : ses
+  entrées, son ordre, ses repères, sans rien qui présuppose un travail
+  éditorial derrière.
+
+  Deux briques existent déjà. `e-perso.js` sait poser des entrées dans une
+  structure d'ères avant le rendu, et le dialogue de `e-app.js` sait les
+  saisir, image comprise, réduite dans le navigateur. Ce qui manque est la
+  page elle-même, la création d'ères, et un moyen de sortir le résultat —
+  un fichier JSON, faute de serveur pour le partager.
+
+  Rien n'est commencé, et rien ne presse : la demande est venue une fois.
 - Monétisation : rien n'est branché, et « Soutenir le site » a quitté le pied de
   page le 14 août 2026. Demander avant qu'on ait demandé comment payer ne se lit
   pas bien. Le lien reviendra le jour où il y aura une page derrière.
@@ -1441,6 +1455,31 @@ et la majuscule initiale quand on découpe une phrase.
   ou « In progress » pour la case verrouillée.
 
 ## Ce qui est tranché, et ne revient pas
+
+- **Le visiteur ne réordonne pas la timeline.** Tranché par Niko le 1er
+  septembre 2026, à la première demande venue des courriers. Il peut ajouter
+  ce qui manque et choisir où son ajout se place — c'est le champ « Juste
+  après » —, mais les entrées du guide restent où elles sont.
+
+  La raison n'est pas le coût : réutiliser le select « Juste après » pour un
+  bouton « Déplacer » aurait tenu en quatre heures, `e-perso.js` manipulant
+  déjà `D.eras` avant le rendu. C'est que **les ères et les badges tiennent
+  à l'ordre**. Six badges Star Wars et un badge Marvel portent
+  `trigger:"last"` et se débloquent sur la **dernière entrée d'une ère** :
+  sortir celle qui y était, ou en pousser une autre à sa place, change quel
+  badge tombe et quand — sans erreur, sans message. Les bannières d'ère et
+  les notes de placement (« ne pas regarder avant… ») supposent le même
+  ordre.
+
+  Le glisser-déposer, lui, n'a jamais été sur la table : trois à quatre
+  jours pour 248 entrées réparties en sections, des cartes qui se déplient,
+  et un conflit avec le défilement sur mobile.
+
+  La suite est ailleurs — **un outil pour se construire sa propre timeline**,
+  où l'ordre, les ères et les repères seraient à celui qui la fait. Voir
+  « Ce qui reste à faire ». Ne pas reproposer le déplacement dans les huit
+  guides en attendant : ce serait cet outil-là, en moins bien, et au prix de
+  la cohérence de ceux-ci.
 
 - **« Reprendre » ramène à la dernière entrée vue, pas à la première non
   vue.** Tranché par Niko le 26 août 2026. Le bouton visait jusque-là le
