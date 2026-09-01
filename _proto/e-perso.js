@@ -107,6 +107,22 @@
          `data:` y passe comme un chemin de fichier. */
       if (a.img) e.img = a.img;
 
+      /* La durée, en minutes, posée aux deux endroits où les pages la
+         cherchent. Star Wars et Marvel lisent `e.rt` en premier ; les
+         six autres ne connaissent que `RT[e.id]`, la table que
+         `runtime.py` injecte dans les données. Écrire les deux est la
+         seule forme qui vaille partout, et rien ne se marche dessus —
+         un identifiant `p-` n'existe dans aucune table publiée.
+
+         Le `if (window.RT)` n'est pas une précaution : créer la table sur
+         une page qui n'en a pas ferait apparaître le champ « Durée » dans
+         son formulaire, `e-app.js` s'y fiant pour savoir si la page
+         compte le temps. Avatar Legends n'en aura jamais. */
+      if (a.rt > 0) {
+        e.rt = a.rt;
+        if (window.RT) window.RT[a.id] = a.rt;
+      }
+
       var p = place(D.eras, a.apres);
       D.eras[p.era].entries.splice(p.at, 0, e);
 

@@ -643,8 +643,10 @@
     fNote:  'Note',
     fOu:    'Juste après',
     fImg:   'Image',
+    fDur:   'Durée',
     debut:  '— au tout début —',
     phT:    'Le titre de l’œuvre',
+    phDur:  '2 h 15, ou 135',
     phD:    'Une année, une date, une époque…',
     phN:    'Ce que vous voulez vous rappeler (facultatif)',
     ok:     'Ajouter',
@@ -673,8 +675,10 @@
     fNote:  'Note',
     fOu:    'Right after',
     fImg:   'Image',
+    fDur:   'Runtime',
     debut:  '— at the very beginning —',
     phT:    'The title of the work',
+    phDur:  '2 h 15, or 135',
     phD:    'A year, a date, an era…',
     phN:    'Whatever you want to remember (optional)',
     ok:     'Add',
@@ -750,6 +754,12 @@
     /* sans ça, Windows peint les listes déroulantes en clair sur clair */
     '.mx-f option,.mx-f optgroup{background:var(--ink);color:var(--paper)}',
     '.mx-2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}',
+    /* La durée n'est proposée que sur les cinq pages qui comptent le
+       temps ; la ligne passe alors à trois colonnes. `:has()` évite de
+       poser une classe depuis le JS pour un état qui ne change jamais
+       après le premier rendu. */
+    '.mx-2:has(.mx-rt:not([hidden])){grid-template-columns:1fr 1fr 1fr}',
+    '.mx-f[hidden]{display:none}',
     /* L'image : un aperçu à la taille où elle paraîtra dans la timeline,
        190 px de large en 16/9. Voir sa vignette avant de valider vaut
        mieux que la découvrir recadrée une fois la page rechargée. */
@@ -821,6 +831,8 @@
           '<p class="mx-f"><label for="mx-k"></label><select id="mx-k"></select></p>' +
           '<p class="mx-f"><label for="mx-d"></label>' +
             '<input id="mx-d" type="text" maxlength="40" autocomplete="off"/></p>' +
+          '<p class="mx-f mx-rt"><label for="mx-r"></label>' +
+            '<input id="mx-r" type="text" maxlength="12" autocomplete="off"/></p>' +
         '</div>' +
         '<p class="mx-f"><label for="mx-n"></label>' +
           '<input id="mx-n" type="text" maxlength="160" autocomplete="off"/></p>' +
@@ -837,14 +849,26 @@
 
     boite.querySelector('.mx-x').setAttribute('aria-label', T.fermer);
     boite.querySelector('.mx-dek').textContent = T.dek;
-    var lb = boite.querySelectorAll('label');
-    lb[0].textContent = T.fTitre; lb[1].textContent = T.fType;
-    lb[2].textContent = T.fDate;  lb[3].textContent = T.fNote;
-    lb[4].textContent = T.fOu;    lb[5].textContent = T.fImg;
+    /* Nommés par leur champ, pas par leur rang : un champ inséré au
+       milieu décalerait toute la suite, et les intitulés partiraient sur
+       les mauvaises lignes sans que rien ne le signale. */
+    var LIB = { 't':T.fTitre, 'k':T.fType, 'd':T.fDate, 'r':T.fDur,
+                'n':T.fNote, 'a':T.fOu, 'i':T.fImg };
+    Object.keys(LIB).forEach(function(c){
+      boite.querySelector('label[for="mx-' + c + '"]').textContent = LIB[c];
+    });
     boite.querySelector('#mx-t').placeholder = T.phT;
     boite.querySelector('#mx-d').placeholder = T.phD;
+    boite.querySelector('#mx-r').placeholder = T.phDur;
     boite.querySelector('#mx-n').placeholder = T.phN;
     boite.querySelector('.mx-rm').textContent = T.imgRm;
+
+    /* Cinq pages sur huit comptent le temps — Star Wars, Marvel, DC,
+       Star Trek et The Walking Dead. Les trois autres n'ont pas de table
+       `RT` du tout, et Avatar Legends n'en aura pas : sa timeline mêle
+       comics et romans, qui n'ont pas de durée. Un champ qui n'irait
+       nulle part n'a rien à faire dans le formulaire. */
+    boite.querySelector('.mx-rt').hidden = !TEMPS;
 
     /* Les types sont ceux de la page, pas une liste à nous : c'est
        `CG.badgeLabels` qui décide de la couleur du badge et des cases du
@@ -952,6 +976,30 @@
   var LARGE = 760, POIDS = 300 * 1024;
   var img = '';
 
+  /* ── la durée ─────────────────────────────────────────────────────
+     Elle se stocke en minutes, comme la table `RT` que `runtime.py`
+     injecte, mais elle ne se saisit pas comme ça : on connaît un film
+     en heures et une série en heures aussi — « 12 h 57 » plutôt que
+     777. Les deux écritures sont acceptées, et l'édition rend celle qui
+     se lit le mieux. */
+  var TEMPS = !!window.RT && typeof window.RT === 'object';
+
+  function enMinutes(s){
+    s = String(s == null ? '' : s).trim().toLowerCase().replace(',', '.');
+    if (!s) return 0;
+    var m = s.match(/^(\d+)\s*(?:h|:)\s*(\d*)\s*(?:min|mn|m)?$/);
+    if (m) return (+m[1]) * 60 + (+(m[2] || 0));
+    m = s.match(/^(\d+)\s*(?:min|mn|m)?$/);
+    return m ? +m[1] : 0;
+  }
+
+  function enTexte(n){
+    n = +n || 0;
+    if (!n) return '';
+    if (n < 60) return n + ' min';
+    return Math.floor(n / 60) + ' h ' + ('0' + (n % 60)).slice(-2);
+  }
+
   function reduit(fichier, fait, echoue){
     var fr = new FileReader();
     fr.onerror = echoue;
@@ -1005,6 +1053,8 @@
       apres: boite.querySelector('#mx-a').value
     };
     if (img) a.img = img;
+    var mn = TEMPS ? enMinutes(boite.querySelector('#mx-r').value) : 0;
+    if (mn > 0) a.rt = mn;
 
     var l = P.lis();
     if (edite) {
@@ -1025,6 +1075,7 @@
     montreImg();
     d.querySelector('#mx-t').value = edite ? edite.title : '';
     d.querySelector('#mx-d').value = edite ? (edite.date || '') : '';
+    d.querySelector('#mx-r').value = edite ? enTexte(edite.rt) : '';
     d.querySelector('#mx-n').value = edite ? (edite.note || '') : '';
     if (edite) {
       d.querySelector('#mx-k').value = edite.type || '';
