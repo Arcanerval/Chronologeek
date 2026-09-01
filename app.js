@@ -255,6 +255,7 @@
     dek:     'Une erreur dans une timeline, une sortie oubliée, une idée : c’est ici.',
     sujet:   'Sujet',
     sujets:  ['Une erreur dans une timeline', 'Une sortie manquante',
+              'Une œuvre à ajouter', 'Une timeline à suggérer',
               'Une suggestion', 'Autre chose'],
     message: 'Message',
     place:   'Votre message…',
@@ -262,12 +263,27 @@
     note:    'Le bouton ouvre votre messagerie avec le message déjà écrit : rien ne part avant que vous l’envoyiez.',
     ou:      'Ou écrire directement à',
     copie:   'Adresse copiée',
-    fermer:  'Fermer'
+    fermer:  'Fermer',
+    /* Les deux gabarits. Une suggestion sans titre ni raison ne se traite
+       pas : les trois lignes sont là pour que la réponse arrive complète
+       du premier coup, pas pour faire remplir un formulaire. */
+    sgOeuvreT: 'Une œuvre manque à cette liste ?',
+    sgOeuvreB: 'Suggérer une œuvre',
+    sgOeuvreC: function(uni){ return 'Univers : ' + uni + '\n\n' +
+                 'L’œuvre : \n' +
+                 'Où elle se place : \n' +
+                 'Pourquoi elle mérite d’y être : \n'; },
+    sgTlT:     'Un univers manque à l’appel ?',
+    sgTlB:     'Suggérer une timeline',
+    sgTlC:     function(){ return 'L’univers ou le média : \n' +
+                 'Ce qu’il faudrait y mettre (films, séries, romans, jeux…) : \n' +
+                 'Pourquoi il mérite sa timeline : \n'; }
   } : {
     titre:   'Write to Chronologeek',
     dek:     'An error in a timeline, a release gone missing, an idea: this is the place.',
     sujet:   'Subject',
     sujets:  ['An error in a timeline', 'A missing release',
+              'A work to add', 'A timeline to suggest',
               'A suggestion', 'Something else'],
     message: 'Message',
     place:   'Your message…',
@@ -275,7 +291,18 @@
     note:    'The button opens your mail app with the message already written: nothing goes out until you send it.',
     ou:      'Or write straight to',
     copie:   'Address copied',
-    fermer:  'Close'
+    fermer:  'Close',
+    sgOeuvreT: 'Something missing from this list?',
+    sgOeuvreB: 'Suggest a work',
+    sgOeuvreC: function(uni){ return 'Universe: ' + uni + '\n\n' +
+                 'The work: \n' +
+                 'Where it belongs: \n' +
+                 'Why it deserves a place: \n'; },
+    sgTlT:     'A universe missing from the site?',
+    sgTlB:     'Suggest a timeline',
+    sgTlC:     function(){ return 'The universe or medium: \n' +
+                 'What it would cover (films, shows, novels, games…): \n' +
+                 'Why it deserves its own timeline: \n'; }
   };
 
   var CSS = [
@@ -303,6 +330,11 @@
     '.cx-f option{background:var(--ink);color:var(--paper)}',
     '.cx-cpt{display:block;text-align:right;font-size:11.5px;',
     '  color:rgba(255,253,247,.5);margin-top:4px}',
+    /* `display:block` bat le `display:none` que porte l'attribut `hidden` :
+       sans ce rappel, le compteur reste à l'écran sous le seuil. Ça ne se
+       voyait pas tant que la boîte s'ouvrait vide — le compteur n'avait
+       alors pas de texte à montrer. Un gabarit pré-écrit lui en donne un. */
+    '.cx-cpt[hidden]{display:none}',
     '.cx-go{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
     '  font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;',
     '  background:var(--hot);border:2px solid var(--hot);color:var(--ink);padding:8px 22px}',
@@ -392,15 +424,145 @@
     return boite;
   }
 
-  for (var i = 0; i < liens.length; i++) {
-    liens[i].addEventListener('click', function(e){
-      e.preventDefault();
-      appelant = e.currentTarget;
-      var d = bati();
-      d.showModal();            /* la touche Échap et le piège au clavier viennent avec */
-      d.querySelector('#cx-s').focus();
-    });
+  /* ── Ouvrir, éventuellement pré-rempli ────────────────────────────
+     `data-contact` nu ouvre la boîte vide, comme avant. `data-contact`
+     valant « oeuvre » ou « timeline » choisit le motif et pose un
+     gabarit de trois lignes.
+
+     Le gabarit est écrit ici, pas dans un attribut du HTML : un
+     `data-corps` en français devrait être traduit dans chacun des
+     scripts de traduction, et le nom de l'univers y serait figé page
+     par page. Ici, une seule copie sert les vingt-six pages et les
+     deux langues.
+
+     Ce que le visiteur a tapé ne s'écrase jamais : on ne pose le
+     gabarit que sur un champ vide, ou sur le gabarit précédent —
+     rouvrir la boîte depuis un autre bouton doit changer de gabarit,
+     pas effacer un message en cours. */
+  var gabarit = '';
+
+  function titrePage(){
+    var h = document.querySelector('h1');
+    if (!h) return '';
+    /* Le Dossier écrit son titre en trois morceaux — « Dossier », « Star
+       Wars », puis un sous-titre. `textContent` les colle bout à bout ;
+       on les rejoint par une espace et on laisse le sous-titre dehors. */
+    var out = [];
+    for (var n = h.firstChild; n; n = n.nextSibling) {
+      if (n.nodeType === 1 && n.className && /\bsub\b/.test(n.className)) continue;
+      var t = (n.textContent || '').trim();
+      if (t) out.push(t);
+    }
+    /* Le tiret plutôt qu'une espace : l'anglais met son qualificatif
+       devant (« Deep Dive », « Star Wars »), le français aussi mais dans
+       l'autre ordre. Joints par une espace, l'un des deux sort de
+       travers ; joints par un tiret, les deux se lisent comme un chemin
+       de page. Les huit univers n'ont qu'un morceau et n'en voient rien. */
+    return out.join(' — ');
   }
+
+  function ouvre(el){
+    appelant = el;
+    var d = bati();
+    var sel = d.querySelector('#cx-s'), zone = d.querySelector('#cx-m');
+    var quoi = el.getAttribute('data-contact') || '';
+    var suj = '', corps = '';
+
+    if (quoi === 'oeuvre')        { suj = T.sujets[2]; corps = T.sgOeuvreC(titrePage()); }
+    else if (quoi === 'timeline') { suj = T.sujets[3]; corps = T.sgTlC(); }
+
+    if (suj) for (var i = 0; i < sel.options.length; i++)
+      if (sel.options[i].value === suj) { sel.selectedIndex = i; break; }
+
+    if (corps && (!zone.value.trim() || zone.value === gabarit)) {
+      zone.value = corps;
+      gabarit = corps;
+      /* le compteur vit sur `input` : sans ça il ne saurait rien de ce
+         qu'on vient d'écrire à sa place */
+      zone.dispatchEvent(new Event('input'));
+    }
+
+    d.showModal();              /* la touche Échap et le piège au clavier viennent avec */
+    if (corps) {
+      zone.focus();
+      /* le curseur au bout de la première ligne à remplir, pas au début
+         du gabarit : la boîte s'ouvre là où il y a à écrire */
+      var p = zone.value.indexOf('\n', zone.value.indexOf(': '));
+      if (p < 0) p = zone.value.length;
+      zone.setSelectionRange(p, p);
+    } else sel.focus();
+  }
+
+  /* Délégation : les deux boutons de suggestion sont posés plus bas,
+     après ce bloc, et une boucle sur `querySelectorAll` ne les aurait
+     jamais vus. */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('[data-contact]') : null;
+    if (!a) return;
+    e.preventDefault();
+    ouvre(a);
+  });
+
+  /* ── Les deux points d'entrée ─────────────────────────────────────
+     « Suggérer une œuvre » se pose au bas de « Ce qui est écarté » des
+     huit univers et du Dossier : c'est là qu'on lit ce qui manque, donc
+     là qu'on se dit qu'il manque autre chose. Le bloc vit dans le champ
+     `intro` des `data-*.js`, en HTML, et le poser en JS évite d'écrire
+     le même bouton dans dix-huit fichiers de données.
+
+     « Suggérer une timeline » est dans le HTML de l'accueil, sur la case
+     « Bientôt » : elle annonce déjà les univers en préparation. Le JS
+     n'a qu'à l'habiller. */
+  var CSS_SG = [
+    '.sg-p{margin-top:18px;padding-top:15px;border-top:2px solid var(--line);',
+    '  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 14px}',
+    '.sg-t{font-size:13.5px;color:rgba(255,253,247,.7)}',
+    '.sg{display:inline-block;font-family:\'Big Shoulders Display\',sans-serif;',
+    '  font-weight:800;font-size:14px;letter-spacing:.07em;text-transform:uppercase;',
+    '  cursor:pointer;color:var(--hot);background:none;border:2px solid var(--hot);',
+    '  padding:6px 16px;text-decoration:none;white-space:nowrap}',
+    '.sg:hover,.sg:focus-visible{color:var(--ink);background:var(--hot)}',
+    /* Dans la case « Bientôt » de l'accueil, le bouton est seul et le reste
+       de la case est centré. Le filet de séparation tombe, lui : la mention
+       « En cours » en pose déjà un juste au-dessus, et deux traits à onze
+       pixels l'un de l'autre se lisent comme une erreur de mise en page. */
+    '.slot.lock .sg-p{margin-top:11px;padding-top:0;border-top:none}'
+  ].join('');
+
+  function pose(){
+    var cible = document.querySelector('.cuts-body');
+    var deja = document.querySelectorAll('.sg');
+    if (!cible && !deja.length) return;
+
+    var st = document.createElement('style');
+    st.textContent = CSS_SG;
+    document.head.appendChild(st);
+
+    /* Les boutons déjà dans le HTML — celui de l'accueil — sont écrits
+       vides : leur libellé est posé ici, comme celui du bouton injecté.
+       Un texte dans le HTML devrait être traduit dans les scripts, et
+       l'accueil est l'une des pages qui se traduisent ligne à ligne. */
+    for (var i = 0; i < deja.length; i++)
+      if (!deja[i].textContent.trim())
+        deja[i].textContent = deja[i].getAttribute('data-contact') === 'timeline'
+          ? T.sgTlB : T.sgOeuvreB;
+
+    if (!cible) return;
+    var p = document.createElement('p');
+    p.className = 'sg-p';
+    p.innerHTML = '<span class="sg-t"></span>' +
+                  '<a class="sg" href="#contact" data-contact="oeuvre"></a>';
+    /* `textContent` plutôt qu'une concaténation : les deux libellés
+       portent des apostrophes typographiques, et l'un d'eux un titre de
+       page qu'on n'a pas écrit. */
+    p.firstChild.textContent = T.sgOeuvreT;
+    p.lastChild.textContent = T.sgOeuvreB;
+    cible.appendChild(p);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
 })();
 
 /* ═══ LE MENU — fermetures que le HTML ne fait pas tout seul ═══════════
