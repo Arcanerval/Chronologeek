@@ -1235,6 +1235,37 @@ Six points, tous rencontrés :
   garde-fou de `e-app.js` le laisserait sortir de toute façon. Il garde le
   bouton « Suggérer une œuvre », lui.
 
+**La durée entre dans les compteurs, et n'est proposée que là où ils
+existent.** Un champ de plus dans le formulaire, et l'ajout compte dans le
+« restant à voir » du HUD, le total du bandeau et le « au total » de son ère —
+tout cela est déjà calculé depuis `rt()`, il n'y a rien à additionner nulle
+part.
+
+Trois choses à savoir :
+
+- **Elle se pose aux deux endroits où les pages la cherchent.** Star Wars et
+  Marvel écrivent `rt(e){ return e.rt || RT[e.id] || … }` ; les six autres ne
+  connaissent que `RT[e.id]`, la table que `runtime.py` injecte. Écrire `e.rt`
+  **et** `window.RT[id]` est la seule forme qui vaille partout, et rien ne se
+  marche dessus — un identifiant `p-` n'existe dans aucune table publiée.
+- **Cinq pages sur huit comptent le temps** : Star Wars, Marvel, DC, Star Trek
+  et The Walking Dead. À ne pas confondre avec les trois que `runtime.py`
+  alimente — Star Trek et TWD ont bien une table `RT`, mais elle est écrite à
+  la main dans leur source anglaise, et le script ne les connaît pas. Avatar
+  Legends, Dragon Age et Assassin's Creed n'en ont aucune, et le champ n'y
+  paraît pas. D'où le
+  `if (window.RT)` de `e-perso.js` : **créer la table là où elle n'existe pas
+  ferait apparaître le champ dans un formulaire où il ne mènerait nulle part**,
+  `e-app.js` s'y fiant pour savoir si la page compte le temps.
+- **La saisie n'est pas le stockage.** On stocke des minutes, comme `RT`, mais
+  personne ne connaît une série en minutes : « 12 h 57 » plutôt que 777. Le
+  champ accepte `2 h 15`, `2h15`, `2:15`, `90 min` et `135`, et l'édition rend
+  l'écriture qui se lit le mieux.
+
+Au passage : les intitulés du dialogue sont posés par leur champ
+(`label[for="mx-r"]`) et non par leur rang — un champ inséré au milieu
+décalait toute la suite, et les intitulés partaient sur les mauvaises lignes.
+
 **La croix ne supprime pas, elle demande.** « Retirer ? Oui / Non » prend la
 place des deux boutons dans la carte, et Échap, un clic ailleurs ou le « Non »
 les ramènent. Le bloc `.mine-act` est calé par la droite, donc la question
