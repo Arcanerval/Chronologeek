@@ -6,6 +6,9 @@
    Ne pas editer a la main : relancer le script. */
 window.CG_NEWS = {
   months: [
+    { key:"2026-09", label:"September 2026", items:[
+      {"nat":"media","uni":"sw","kind":"jeunesse","title":"Hiding from the Dark","meta":"~0-4 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the young adult novel, in ~0-4 ABY, just after Battlefront II: Inferno Squad.","href":"en-dossier-star-wars.html#0-4-aby-hiding-from-the-dark","cta":"See in the Deep Dive"}
+    ]},
     { key:"2026-08", label:"August 2026", items:[
       {"nat":"media","uni":"sw","kind":"jeu","title":"Star Wars Zero Company","meta":"19 BBY","txt":"Added to the Star Wars timeline, in 19 BBY, just before Episode III: Revenge of the Sith.","img":"/images/zerocompany.webp","href":"en-starwars.html#sw-zerocompany","cta":"See in the timeline"},
       {"nat":"media","uni":"dragonage","kind":"jeu","title":"Dragon Age: The Last Court","meta":"9:41","vo":true,"txt":"Added to the Dragon Age timeline, in 9:41, just after Last Flight.","img":"/images/thelastcourt.webp","href":"en-dragonage.html#da-lastcourt-1","cta":"See in the timeline"},

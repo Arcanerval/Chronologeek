@@ -316,6 +316,7 @@ window.CGD={"eras":[
   {"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-age-of-rebellion-grand-moff-tarkin","date":"1 BBY","title":"Age of Rebellion : Grand Moff Tarkin","type":"Comic","vo":false,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"1 BBY-0 ABY","title":"EPISODE IV: A NEW HOPE","type":"On screen"},
   {"kind":"it","k":"roman","c":"#a78bfa","id":"0-aby-battlefront-ii-inferno-squad","date":"0 ABY","title":"Battlefront II : Inferno Squad","type":"Novel","vo":false,"note":"during and after Episode IV"},
+  {"kind":"it","k":"jeunesse","c":"#4ade80","id":"0-4-aby-hiding-from-the-dark","date":"~0-4 ABY","title":"Hiding from the Dark","type":"Young adult novel","vo":true,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-princess-leia-1","date":"0 ABY","title":"Princess Leia 1","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-age-of-rebellion-han-solo","date":"0 ABY","title":"Age of Rebellion : Han Solo","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"0-aby-princess-leia-2-5","date":"0 ABY","title":"Princess Leia 2-5","type":"Comic","vo":false,"note":""},

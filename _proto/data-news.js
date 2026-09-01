@@ -36,6 +36,17 @@ window.CG_NEWS = {
 
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
+    { key:"2026-09", label:"Septembre 2026", items:[
+
+      { nat:"media", uni:"sw", kind:"jeunesse",
+        title:"Hiding from the Dark", meta:"~0-4 ABY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le roman jeune adulte, en "+
+            "~0-4 ABY, juste après Battlefront II : L'Escouade Inferno.",
+        href:"e-dossier-star-wars.html#0-4-aby-hiding-from-the-dark",
+        cta:"Voir dans le Dossier" }
+
+    ]},
+
     { key:"2026-08", label:"Août 2026", items:[
 
       { nat:"media", uni:"sw", kind:"jeu",

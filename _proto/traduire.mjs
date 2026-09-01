@@ -187,6 +187,7 @@ const TRADUCTIONS = [
    '248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.'],
   // whats-new.html · « July 2026 », « June 2026 »
   ['Août 2026', 'August 2026'],
+  ['Septembre 2026', 'September 2026'],
 
   /* ── la carte The Walking Dead du journal, écrite le 16 août 2026 ──
      Même situation que Star Trek : le sixième univers est postérieur à
@@ -224,6 +225,14 @@ const TRADUCTIONS = [
      par « L'Héritage de Vador ». */
   ['Ajouté au Dossier Star Wars — le comic, en 34 ABY, juste après L\'Héritage de Vador.',
    'Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.'],
+
+  /* ── la carte Hiding from the Dark, écrite le 1er septembre 2026 ──
+     Même moule que les deux cartes du Dossier ci-dessus. Le voisin cité
+     change de nom d'une langue à l'autre — le Dossier anglais écrit
+     « Battlefront II: Inferno Squad », le français « Battlefront II :
+     L'Escouade Inferno ». */
+  ['Ajouté au Dossier Star Wars — le roman jeune adulte, en ~0-4 ABY, juste après Battlefront II : L\'Escouade Inferno.',
+   'Added to the Star Wars Deep Dive — the young adult novel, in ~0-4 ABY, just after Battlefront II: Inferno Squad.'],
 
   /* ── la carte Lanterns du journal, écrite le 18 août 2026 ──
      whats-new.html · « Supergirl (2026) added to the DC timeline,
@@ -803,6 +812,11 @@ const TITRES_IDENTIQUES = [
   // Star Wars · le jeu ajouté le 30 août 2026, qui porte le même titre
   // dans les deux langues.
   'Star Wars Zero Company',
+  /* Dossier Star Wars · le roman jeune adulte VO ajouté le 1er septembre
+     2026, et sa date. « ABY » est une unité inventée : elle ne se
+     traduit pas. */
+  'Hiding from the Dark',
+  '~0-4 ABY',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 
