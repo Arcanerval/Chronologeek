@@ -1235,6 +1235,36 @@ Six points, tous rencontrés :
   garde-fou de `e-app.js` le laisserait sortir de toute façon. Il garde le
   bouton « Suggérer une œuvre », lui.
 
+**L'export emporte les ajouts, et l'import fusionne.** Le fichier ne portait
+que les coches ; réimporté sur un navigateur neuf, il y ramenait des coches
+`p-` **sans les entrées qui vont avec** — des identifiants morts que rien
+n'affiche. Il porte maintenant une clé `mine`, la liste complète : titre,
+type, date, durée, note, image et placement.
+
+L'import ne remplace pas cette liste, il la fusionne. La progression, elle,
+reste remplacée par le fichier — c'est le choix des pages, et il tient, on
+restaure une sauvegarde. Les ajouts sont d'une autre nature : des œuvres
+écrites à la main, parfois avec une image, et perdre celles qu'on a faites
+depuis la sauvegarde serait une perte sèche. Le fichier gagne à identifiant
+égal, le reste est conservé.
+
+`fusionne()` ne rend `true` que si quelque chose a changé **et** que
+l'écriture a réussi : c'est ce qui décide du rechargement — et recharger sur
+une écriture refusée ramènerait la page sans les entrées, sans un mot. Le
+rechargement est nécessaire parce qu'un ajout change la timeline elle-même,
+là où une coche ne change qu'un état.
+
+Ce sont les deux seules lignes de ce chantier qui vivent dans les huit pages
+plutôt que dans `e-app.js` : l'export est à elles, `prog` et la clé d'univers
+leur appartenant.
+
+Au passage, **quatre pages annonçaient le mauvais univers dans leur export** —
+Avatar « sw », The Walking Dead « st », Dragon Age et Assassin's Creed « sw »,
+chacune ayant gardé la clé de celle sur laquelle elle a été bâtie. Rien ne
+cassait, le champ n'étant pas relu à l'import, mais il était faux dans un
+fichier que le visiteur garde. À vérifier au prochain univers : c'est le genre
+de valeur qu'un copier-coller emporte sans qu'on la relise.
+
 **La durée entre dans les compteurs, et n'est proposée que là où ils
 existent.** Un champ de plus dans le formulaire, et l'ajout compte dans le
 « restant à voir » du HUD, le total du bandeau et le « au total » de son ère —
