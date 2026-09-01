@@ -642,17 +642,25 @@
     fDate:  'Date',
     fNote:  'Note',
     fOu:    'Juste après',
+    fImg:   'Image',
     debut:  '— au tout début —',
     phT:    'Le titre de l’œuvre',
     phD:    'Une année, une date, une époque…',
     phN:    'Ce que vous voulez vous rappeler (facultatif)',
     ok:     'Ajouter',
     save:   'Enregistrer',
-    del:    'Retirer',
-    conf:   'Retirer « {t} » de votre timeline ?',
-    ko:     'Votre navigateur refuse d’enregistrer — navigation privée, peut-être. L’ajout n’a pas été conservé.',
+    ko:     'Votre navigateur refuse d’enregistrer — navigation privée, ou mémoire pleine. L’ajout n’a pas été conservé.',
+    koImg:  'Votre navigateur refuse d’enregistrer : l’image est sans doute de trop. Retirez-la, ou choisissez-en une plus légère.',
     fermer: 'Fermer',
-    modif:  'Modifier votre ajout'
+    modif:  'Modifier votre ajout',
+    sup:    'Retirer cet ajout',
+    supQ:   'Retirer ?',
+    supOui: 'Oui',
+    supNon: 'Non',
+    imgAdd: 'Choisir une image…',
+    imgChg: 'Changer',
+    imgRm:  'Retirer l’image',
+    imgKo:  'Ce fichier n’a pas pu être lu comme une image.'
   } : {
     add:    'Add a work',
     tag:    'Your addition',
@@ -664,17 +672,25 @@
     fDate:  'Date',
     fNote:  'Note',
     fOu:    'Right after',
+    fImg:   'Image',
     debut:  '— at the very beginning —',
     phT:    'The title of the work',
     phD:    'A year, a date, an era…',
     phN:    'Whatever you want to remember (optional)',
     ok:     'Add',
     save:   'Save',
-    del:    'Remove',
-    conf:   'Remove “{t}” from your timeline?',
-    ko:     'Your browser refused to save — private browsing, perhaps. The addition was not kept.',
+    ko:     'Your browser refused to save — private browsing, or storage full. The addition was not kept.',
+    koImg:  'Your browser refused to save: the image is most likely what tipped it over. Remove it, or pick a lighter one.',
     fermer: 'Close',
-    modif:  'Edit your addition'
+    modif:  'Edit your addition',
+    sup:    'Remove this addition',
+    supQ:   'Remove?',
+    supOui: 'Yes',
+    supNon: 'No',
+    imgAdd: 'Choose an image…',
+    imgChg: 'Change',
+    imgRm:  'Remove the image',
+    imgKo:  'That file could not be read as an image.'
   };
 
   var CSS = [
@@ -687,15 +703,30 @@
     '.mine-t{font-family:\'Chivo\',sans-serif;font-size:10px;font-weight:700;',
     '  letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;',
     '  border:1px dashed var(--uni,var(--hot));color:var(--uni,var(--hot))}',
-    /* Le crayon se range à gauche du lien de copie, qui occupe déjà le
-       coin. Il reste visible en permanence, lui : un bouton qui
-       n'apparaît qu'au survol ne se découvre pas sur un téléphone. */
-    '.mine-e{position:absolute;top:9px;right:41px;z-index:5;width:26px;height:26px;',
-    '  display:grid;place-items:center;cursor:pointer;background:none;border:none;',
-    '  padding:0;color:rgba(255,253,247,.55)}',
-    '.mine-e:hover,.mine-e:focus-visible{color:var(--hot)}',
-    '.mine-e svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;',
+    /* Le crayon et la croix se rangent à gauche du lien de copie, qui
+       occupe déjà le coin. Ils restent visibles en permanence, eux : un
+       bouton qui n'apparaît qu'au survol ne se découvre pas sur un
+       téléphone. Le bloc est calé par la droite, donc la demande de
+       confirmation s'étend vers la gauche sans rien déplacer. */
+    '.mine-act{position:absolute;top:9px;right:41px;z-index:5;',
+    '  display:flex;align-items:center;gap:2px}',
+    '.mine-b{width:26px;height:26px;display:grid;place-items:center;cursor:pointer;',
+    '  background:none;border:none;padding:0;color:rgba(255,253,247,.55)}',
+    '.mine-b:hover,.mine-b:focus-visible{color:var(--hot)}',
+    '.mine-b svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;',
     '  stroke-linecap:square}',
+    /* La confirmation se pose là où était la croix, plutôt que dans une
+       boîte système : `confirm()` sort du site, se place au milieu de
+       l'écran et ne dit pas de quelle carte il parle. Ici la question
+       est à côté de la ligne qu'elle vise. */
+    '.mine-q{display:flex;align-items:center;gap:6px;background:var(--ink);',
+    '  border:2px solid var(--line);padding:1px 4px 1px 8px}',
+    '.mine-q>span{font-size:11.5px;color:var(--paper);white-space:nowrap}',
+    '.mine-q button{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;',
+    '  background:none;border:2px solid var(--line);color:var(--paper);padding:1px 8px}',
+    '.mine-q button:hover{border-color:var(--paper)}',
+    '.mine-q .oui:hover{background:var(--paper);color:var(--ink)}',
     /* Le dialogue reprend la charte du formulaire de contact ; il ne
        reprend pas ses règles, qui ne sont posées qu'à sa première
        ouverture. Deux blocs indépendants valent mieux qu'un ordre à
@@ -719,15 +750,35 @@
     /* sans ça, Windows peint les listes déroulantes en clair sur clair */
     '.mx-f option,.mx-f optgroup{background:var(--ink);color:var(--paper)}',
     '.mx-2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}',
+    /* L'image : un aperçu à la taille où elle paraîtra dans la timeline,
+       190 px de large en 16/9. Voir sa vignette avant de valider vaut
+       mieux que la découvrir recadrée une fois la page rechargée. */
+    '.mx-img{display:flex;align-items:center;gap:12px;flex-wrap:wrap}',
+    /* Le champ de fichier hérite de `.mx-f input` — bordure, rembourrage,
+       pleine largeur — et ressortait donc en petit bloc à côté du bouton
+       qui le pilote. Il faut le défaire, pas seulement le rétrécir. */
+    '.mx-img input[type=file]{position:absolute;width:1px;height:1px;padding:0;',
+    '  border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}',
+    '.mx-prev{flex:0 0 auto;width:118px;aspect-ratio:16/9;object-fit:cover;',
+    '  background:var(--ink);border:2px solid var(--line)}',
+    /* Les pages posent `img{display:block}`, qui bat le `display:none` de
+       l'attribut `hidden` — le même piège que le compteur du formulaire
+       de contact, à deux blocs d'ici. Sans ce rappel, l'aperçu vide
+       occupe sa place avant qu'on ait choisi quoi que ce soit. */
+    '.mx-prev[hidden]{display:none}',
+    '.mx-rm[hidden]{display:none}',
+    '.mx-pick{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;',
+    '  background:none;border:2px solid var(--line);color:var(--paper);padding:6px 13px}',
+    '.mx-pick:hover{border-color:var(--hot);color:var(--hot)}',
+    '.mx-rm{font-family:inherit;font-size:12px;cursor:pointer;background:none;',
+    '  border:none;padding:0;color:rgba(255,253,247,.6);text-decoration:underline}',
+    '.mx-rm:hover{color:var(--paper)}',
     '.mx-go{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
     '  font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;',
     '  background:var(--hot);border:2px solid var(--hot);color:var(--ink);padding:8px 22px}',
     '.mx-go:hover{background:var(--paper);border-color:var(--paper)}',
-    '.mx-del{font-family:inherit;font-size:12.5px;cursor:pointer;background:none;',
-    '  border:none;padding:0;color:rgba(255,253,247,.6);text-decoration:underline}',
-    '.mx-del:hover{color:var(--paper)}',
-    '.mx-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;',
-    '  margin-top:4px}',
+    '.mx-bar{display:flex;align-items:center;gap:14px;margin-top:4px}',
     '.mx-ko{font-size:12px;line-height:1.45;color:var(--hot);margin-top:10px}',
     '.mx-x{position:absolute;top:15px;right:15px;background:none;cursor:pointer;',
     '  border:2px solid var(--line);color:rgba(255,253,247,.6);padding:4px 9px;',
@@ -749,6 +800,8 @@
 
   var CRAYON = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
                '<path d="M4 20h4L20 8l-4-4L4 16z"/></svg>';
+  var CROIX  = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+               '<path d="M5 5l14 14M19 5 5 19"/></svg>';
 
   /* ── le dialogue ──────────────────────────────────────────────────── */
   var boite = null, edite = null, appelant = null;
@@ -772,8 +825,12 @@
         '<p class="mx-f"><label for="mx-n"></label>' +
           '<input id="mx-n" type="text" maxlength="160" autocomplete="off"/></p>' +
         '<p class="mx-f"><label for="mx-a"></label><select id="mx-a"></select></p>' +
-        '<div class="mx-bar"><button type="submit" class="mx-go"></button>' +
-          '<button type="button" class="mx-del" hidden></button></div>' +
+        '<p class="mx-f"><label for="mx-i"></label><span class="mx-img">' +
+          '<img class="mx-prev" alt="" hidden/>' +
+          '<input id="mx-i" type="file" accept="image/*"/>' +
+          '<button type="button" class="mx-pick"></button>' +
+          '<button type="button" class="mx-rm" hidden></button></span></p>' +
+        '<div class="mx-bar"><button type="submit" class="mx-go"></button></div>' +
         '<p class="mx-ko" hidden></p>' +
       '</form>';
     document.body.appendChild(boite);
@@ -783,11 +840,11 @@
     var lb = boite.querySelectorAll('label');
     lb[0].textContent = T.fTitre; lb[1].textContent = T.fType;
     lb[2].textContent = T.fDate;  lb[3].textContent = T.fNote;
-    lb[4].textContent = T.fOu;
+    lb[4].textContent = T.fOu;    lb[5].textContent = T.fImg;
     boite.querySelector('#mx-t').placeholder = T.phT;
     boite.querySelector('#mx-d').placeholder = T.phD;
     boite.querySelector('#mx-n').placeholder = T.phN;
-    boite.querySelector('.mx-del').textContent = T.del;
+    boite.querySelector('.mx-rm').textContent = T.imgRm;
 
     /* Les types sont ceux de la page, pas une liste à nous : c'est
        `CG.badgeLabels` qui décide de la couleur du badge et des cases du
@@ -824,14 +881,25 @@
       ev.preventDefault();
       valide();
     });
-    boite.querySelector('.mx-del').addEventListener('click', function(){
-      if (!edite) return;
-      if (!confirm(T.conf.replace('{t}', dec(edite.title)))) return;
-      var l = P.lis().filter(function(x){ return x.id !== edite.id; });
-      if (!P.ecris(l)) { rate(); return; }
-      oublie(edite.id);
-      location.reload();
+
+    /* Le champ de fichier natif est masqué et piloté par un bouton : son
+       rendu n'est ni le même d'un navigateur à l'autre ni celui du site,
+       et il ne se met pas à la charte. Le bouton, lui, est un bouton. */
+    var file = boite.querySelector('#mx-i');
+    boite.querySelector('.mx-pick').addEventListener('click', function(){ file.click(); });
+    file.addEventListener('change', function(){
+      var f = file.files && file.files[0];
+      /* remis à zéro tout de suite : sans ça, rechoisir le même fichier
+         après l'avoir retiré ne déclenche plus rien */
+      file.value = '';
+      if (!f) return;
+      reduit(f, function(d){ img = d; montreImg(); },
+                function(){ dit(T.imgKo); });
     });
+    boite.querySelector('.mx-rm').addEventListener('click', function(){
+      img = ''; montreImg();
+    });
+
     boite.querySelector('.mx-x').addEventListener('click', function(){ boite.close(); });
     boite.addEventListener('click', function(ev){ if (ev.target === boite) boite.close(); });
     boite.addEventListener('close', function(){ if (appelant) appelant.focus(); });
@@ -863,10 +931,65 @@
 
   /* Le stockage peut refuser — navigation privée, quota plein. Le dire
      dans la boîte plutôt que de recharger sur un ajout qui n'existe
-     pas : la page reviendrait sans l'entrée, et sans un mot. */
-  function rate(){
+     pas : la page reviendrait sans l'entrée, et sans un mot. Quand une
+     image est jointe, c'est presque toujours elle : le message le dit,
+     et propose de la retirer plutôt que de renvoyer à un réglage de
+     navigateur qui n'y est pour rien. */
+  function dit(txt){
     var p = boite.querySelector('.mx-ko');
-    p.textContent = T.ko; p.hidden = false;
+    p.textContent = txt; p.hidden = false;
+  }
+  function rate(){ dit(img ? T.koImg : T.ko); }
+
+  /* ── l'image ──────────────────────────────────────────────────────
+     La règle du site vaut ici aussi : quatre fois la taille de rendu, et
+     on n'agrandit jamais. La vignette fait 190 px de large, d'où 760.
+
+     Redimensionner n'est pas un raffinement : une photo de téléphone
+     pèse cinq mégaoctets, et le stockage local en compte cinq pour tout
+     le site. Une seule image y entrerait, et elle ferait tomber
+     l'écriture de tout le reste. */
+  var LARGE = 760, POIDS = 300 * 1024;
+  var img = '';
+
+  function reduit(fichier, fait, echoue){
+    var fr = new FileReader();
+    fr.onerror = echoue;
+    fr.onload = function(){
+      var im = new Image();
+      im.onerror = echoue;
+      im.onload = function(){
+        var w = im.naturalWidth, h = im.naturalHeight;
+        if (!w || !h) return echoue();
+        var k = Math.min(1, LARGE / w, LARGE / h);
+        var c = document.createElement('canvas');
+        c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+        /* WebP quand le navigateur sait l'écrire — c'est le format du
+           reste du site, et la moitié du poids du JPEG à qualité égale.
+           `toDataURL` d'un format inconnu rend du PNG sans le dire :
+           c'est l'en-tête du résultat qui répond, pas une déclaration.
+           La qualité descend tant que le résultat ne tient pas. */
+        var q = [0.82, 0.6, 0.45], out = '';
+        for (var i = 0; i < q.length; i++) {
+          out = c.toDataURL('image/webp', q[i]);
+          if (out.indexOf('data:image/webp') !== 0) out = c.toDataURL('image/jpeg', q[i]);
+          if (out.length <= POIDS) break;
+        }
+        fait(out);
+      };
+      im.src = fr.result;
+    };
+    fr.readAsDataURL(fichier);
+  }
+
+  function montreImg(){
+    if (!boite) return;
+    var prev = boite.querySelector('.mx-prev');
+    prev.hidden = !img;
+    if (img) prev.src = img;
+    boite.querySelector('.mx-rm').hidden = !img;
+    boite.querySelector('.mx-pick').textContent = img ? T.imgChg : T.imgAdd;
   }
 
   function valide(){
@@ -881,6 +1004,7 @@
       note:  boite.querySelector('#mx-n').value.trim(),
       apres: boite.querySelector('#mx-a').value
     };
+    if (img) a.img = img;
 
     var l = P.lis();
     if (edite) {
@@ -897,7 +1021,8 @@
     d.querySelector('.mx-ko').hidden = true;
     d.querySelector('h2').textContent = edite ? T.titreE : T.titreN;
     d.querySelector('.mx-go').textContent = edite ? T.save : T.ok;
-    d.querySelector('.mx-del').hidden = !edite;
+    img = edite ? (edite.img || '') : '';
+    montreImg();
     d.querySelector('#mx-t').value = edite ? edite.title : '';
     d.querySelector('#mx-d').value = edite ? (edite.date || '') : '';
     d.querySelector('#mx-n').value = edite ? (edite.note || '') : '';
@@ -911,6 +1036,79 @@
     d.showModal();
     d.querySelector('#mx-t').focus();
   }
+
+  /* ── le crayon et la croix, sur la carte ─────────────────────────── */
+  function retire(id){
+    var l = P.lis().filter(function(x){ return x.id !== id; });
+    if (!P.ecris(l)) return;   /* rien à écrire ne peut rien casser */
+    oublie(id);
+    location.reload();
+  }
+
+  /* La croix ne supprime pas : elle demande. Le second clic supprime, et
+     tout le reste — la touche Échap, un clic ailleurs, le « Non » —
+     ramène les deux boutons. Un `confirm()` aurait sorti du site, se
+     serait posé au milieu de l'écran et n'aurait pas dit de quelle carte
+     il parlait. */
+  function actions(a){
+    var box = document.createElement('span');
+    box.className = 'mine-act';
+
+    function repose(){
+      box.innerHTML = '';
+      var e = document.createElement('button');
+      e.type = 'button'; e.className = 'mine-b';
+      e.title = T.modif; e.setAttribute('aria-label', T.modif);
+      e.innerHTML = CRAYON;
+      e.addEventListener('click', function(ev){ stop(ev); ouvre(a, e); });
+
+      var x = document.createElement('button');
+      x.type = 'button'; x.className = 'mine-b';
+      x.title = T.sup; x.setAttribute('aria-label', T.sup);
+      x.innerHTML = CROIX;
+      x.addEventListener('click', function(ev){ stop(ev); demande(); });
+
+      box.appendChild(e); box.appendChild(x);
+    }
+
+    function demande(){
+      box.innerHTML = '';
+      var q = document.createElement('span');
+      q.className = 'mine-q';
+      var t = document.createElement('span');
+      t.textContent = T.supQ;
+      var oui = document.createElement('button');
+      oui.type = 'button'; oui.className = 'oui'; oui.textContent = T.supOui;
+      oui.addEventListener('click', function(ev){ stop(ev); retire(a.id); });
+      var non = document.createElement('button');
+      non.type = 'button'; non.textContent = T.supNon;
+      non.addEventListener('click', function(ev){ stop(ev); repose(); });
+      q.appendChild(t); q.appendChild(oui); q.appendChild(non);
+      box.appendChild(q);
+      oui.focus();
+      /* Une question laissée ouverte finit par se faire répondre par
+         mégarde : le clic suivant, où qu'il tombe, la referme. */
+      setTimeout(function(){
+        document.addEventListener('click', function ailleurs(ev){
+          if (box.contains(ev.target)) return;
+          document.removeEventListener('click', ailleurs);
+          if (box.querySelector('.mine-q')) repose();
+        });
+      }, 0);
+      document.addEventListener('keydown', function ech(ev){
+        if (ev.key !== 'Escape') return;
+        document.removeEventListener('keydown', ech);
+        if (box.querySelector('.mine-q')) repose();
+      });
+    }
+
+    repose();
+    return box;
+  }
+
+  /* Le bloc est posé dans la carte, et la carte entière écoute le clic
+     pour déplier son panneau. */
+  function stop(ev){ ev.preventDefault(); ev.stopPropagation(); }
 
   /* ── marquer ce qui est à nous ───────────────────────────────────── */
   function marque(){
@@ -933,18 +1131,7 @@
         tags.insertBefore(s, tags.firstChild);
       }
       var card = art.querySelector('.bu-card');
-      if (card) {
-        var b = document.createElement('button');
-        b.type = 'button'; b.className = 'mine-e';
-        b.title = T.modif; b.setAttribute('aria-label', T.modif);
-        b.innerHTML = CRAYON;
-        /* `stopPropagation` : le crayon est posé dans la carte, et la
-           carte entière écoute le clic pour déplier son panneau. */
-        b.addEventListener('click', (function(ent, bt){
-          return function(ev){ ev.preventDefault(); ev.stopPropagation(); ouvre(ent, bt); };
-        })(a, b));
-        card.appendChild(b);
-      }
+      if (card) card.appendChild(actions(a));
     }
   }
 

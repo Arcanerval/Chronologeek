@@ -101,6 +101,11 @@
         date: a.date || '', perso: true
       };
       if (a.note) e.note = a.note;
+      /* L'image est une donnée en clair — un `data:` produit par le
+         navigateur du visiteur, réduit à la taille de la vignette. Les
+         neuf pages écrivent toutes `e.img?'<img src="'+e.img`, et un
+         `data:` y passe comme un chemin de fichier. */
+      if (a.img) e.img = a.img;
 
       var p = place(D.eras, a.apres);
       D.eras[p.era].entries.splice(p.at, 0, e);
