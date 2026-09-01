@@ -137,12 +137,41 @@
     });
   }
 
+  /* Ce que l'export des huit pages emporte, et ce que leur import
+     rapporte. Le fichier n'avait jusqu'ici que les coches : réimporté
+     sur un navigateur neuf, il y ramenait des coches `p-` sans les
+     entrées qui vont avec — des identifiants morts que rien n'affiche.
+
+     Un import ne doit rien faire disparaître. La progression, elle, est
+     remplacée par le fichier : c'est le choix des pages, et il tient,
+     on restaure une sauvegarde. Les ajouts sont d'une autre nature —
+     des œuvres écrites à la main, parfois avec une image —, et perdre
+     celles qu'on a faites depuis la sauvegarde serait une perte sèche.
+     Le fichier gagne à identifiant égal, le reste est conservé.
+
+     Rend `true` quand quelque chose a changé **et** que l'écriture a
+     réussi : c'est ce qui décide du rechargement, et recharger sur une
+     écriture refusée ramènerait la page sans les entrées, sans un mot. */
+  function fusionne(entrants){
+    if (!Array.isArray(entrants) || !entrants.length) return false;
+    var par = {}, ordre = [], change = false;
+    lis().forEach(function(x){ par[x.id] = x; ordre.push(x.id); });
+    entrants.forEach(function(x){
+      if (!x || typeof x !== 'object' || !x.id || !x.title) return;
+      if (!par[x.id]) ordre.push(x.id);
+      else if (JSON.stringify(par[x.id]) === JSON.stringify(x)) return;
+      par[x.id] = x; change = true;
+    });
+    if (!change) return false;
+    return ecris(ordre.map(function(i){ return par[i]; }));
+  }
+
   /* Ce que `e-app.js` reprend pour son interface. `eras` sert à peupler
      le choix « juste après… » : il le lit ici plutôt que de refaire la
      recherche du global. */
   window.CGP = {
     key: KEY, nom: nom, data: D,
-    lis: lis, ecris: ecris,
+    lis: lis, ecris: ecris, fusionne: fusionne,
     /* l'identifiant est daté : deux ajouts faits dans la même seconde
        sur la même page sont l'exception, le suffixe aléatoire la couvre */
     neuf: function(){ return 'p-' + Date.now().toString(36) +
