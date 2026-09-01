@@ -390,11 +390,31 @@ const PARCOURS_A = '<span class="itag pc-first">' + COCHE
   + '<span class="itag pc-rewatch">' + COCHE
   + 'This guide works best for rewatches but you can switch to the'
   + ' first-watch version higher up.</span>';
+/* Marvel · trois écartés de plus, le 1er septembre 2026. Les textes sont
+   ceux de Niko, mot pour mot ; seules la majuscule de « I » et le point
+   final ont été posés, pour s'aligner sur les dix autres. */
+const CUTS_MCU_DE = '<div class="cut"><dt>Prelude comics</dt>'
+  + '<dd>Canon until a movie contradicts them.</dd></div></dl>';
+const CUTS_MCU_A = '<div class="cut"><dt>Prelude comics</dt>'
+  + '<dd>Canon until a movie contradicts them.</dd></div>'
+  + '<div class="cut"><dt>Agents of S.H.I.E.L.D.: Slingshot</dt>'
+  + '<dd>Not important at all, just a side quest.</dd></div>'
+  + '<div class="cut"><dt>WHIH Newsfront</dt>'
+  + '<dd>In-universe news about events from Ant-Man and Civil War, you can'
+  + ' watch them if you want but I will not include them.</dd></div>'
+  + '<div class="cut"><dt>One Shot: A Funny Thing Happened on the Way to'
+  + ' Thor\'s Hammer</dt><dd>Completely optional and very short.</dd></div>'
+  + '</dl>';
 const RETOUCHES = [
   { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
     ou: 'SW', de: PARCOURS_DE, a: PARCOURS_A },
   { quoi: 'Marvel · l’accroche dit maintenant quel parcours on suit',
     ou: 'MCU', de: PARCOURS_DE, a: PARCOURS_A },
+  { quoi: 'Marvel · trois écartés de plus dans « Ce qui est écarté »',
+    ou: 'MCU', de: CUTS_MCU_DE, a: CUTS_MCU_A },
+  { quoi: 'Marvel · le compte des écartés passe de 10 à 13',
+    ou: 'MCU', de: '<span class="n">10 entries</span>',
+    a: '<span class="n">13 entries</span>' },
 ];
 const retouchesFaites = new Map();
 function retouche(s, ou) {
