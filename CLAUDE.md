@@ -1160,6 +1160,87 @@ du même dialogue et de son CSS. Quatre choses à savoir :
 Au-delà de 1 500 signes les messageries tronquent le corps sans prévenir : le champ
 est borné, et un compteur apparaît à partir de 1 200.
 
+### Suggérer, et ajouter — les deux réponses au « il manque quelque chose »
+
+Posées le 1er septembre 2026, après les premiers courriers de remerciement
+venus de Reddit. La demande revenait sous deux formes qui n'appellent pas la
+même réponse, et le site fait les deux.
+
+**Suggérer** est une lettre : l'arbitrage reste éditorial. Deux boutons, tous
+deux dans `e-app.js`, qui ouvrent le formulaire de contact déjà en place avec
+le motif choisi et un gabarit de trois lignes — une suggestion sans titre ni
+raison ne se traite pas.
+
+- « Suggérer une œuvre » est injecté au bas de `.cuts-body`, la section « Ce
+  qui est écarté », sur les huit univers **et le Dossier**. C'est là qu'on lit
+  ce qui manque, donc là qu'on se dit qu'il manque autre chose.
+- « Suggérer une timeline » est dans le HTML de `e-accueil.html`, sur la case
+  « Bientôt », qui annonce déjà les univers en préparation.
+
+Trois choses à savoir. Le bloc `.cuts` **vit dans le champ `intro` des
+`data-*.js`**, en HTML : le poser en JS évite d'écrire le même bouton dans
+dix-huit fichiers de données. Le bouton de l'accueil est écrit **vide** et
+reçoit son libellé au chargement — un texte dans le HTML devrait être traduit
+dans `traduire-pages.mjs`, et le gabarit du message avec lui. Et
+`data-contact` prend désormais une **valeur** (`oeuvre`, `timeline`) là où les
+vingt-six liens du pied de page le portent nu ; la capture est passée en
+délégation sur `document`, sans quoi les boutons injectés plus tard ne
+seraient jamais écoutés.
+
+Au passage : `.cx-cpt[hidden]` ne se cachait pas, `display:block` battant
+l'attribut. Invisible tant que la boîte s'ouvrait vide — un gabarit pré-écrit
+donne au compteur un texte à montrer.
+
+**Ajouter** est l'autre réponse : l'œuvre entre dans *sa* copie de la page et
+n'en sort jamais. Le principe tient en une phrase — **une entrée perso est une
+entrée comme les autres**. `_proto/e-perso.js` se glisse entre le fichier de
+données et le script de la page, et pose ses entrées dans `D.eras` avant que
+quiconque l'ait lu :
+
+```
+<script src="data-mcu.js"></script>
+<script src="e-perso.js"></script>     ← ici
+<script> … la page … </script>
+```
+
+Tout suit alors sans une ligne de plus : `ALL` les numérote, `row()` les
+dessine, `applyFilters()` les filtre, `tally()` les compte, la case à cocher
+les retient. Le fichier est publié en `/perso.js` (`ASSETS` et `ASSET_RE` de
+`publier.mjs`, `PRECACHE` de `sw.js`), et l'interface — dialogue, crayon,
+marquage — vit dans `e-app.js`, une copie pour vingt-six pages.
+
+Six points, tous rencontrés :
+
+- **Le second parcours reçoit un `{ref}`, pas une copie.** Sans lui, l'ajout
+  manquerait à qui rejoue, sans un mot — c'est exactement le piège que « Les
+  deux parcours » nomme déjà pour les ajouts éditoriaux.
+- **Un ajout recharge la page.** Le rendu est déjà fait quand `e-app.js`
+  s'exécute ; réinjecter à chaud demanderait de connaître le rendu de chacune
+  des huit pages. C'est le geste qu'emploie déjà la bascule des deux parcours.
+- **La suppression retire aussi la coche.** La clé de progression est déclarée
+  dans le script de chaque page (`var KEY='cg-proto-mcu'`), inaccessible d'ici :
+  `oublie()` cherche donc l'identifiant lui-même dans toutes les clés du
+  stockage. Il est unique et préfixé `p-`, rien d'autre ne peut porter ce nom.
+- **`PARCOURS`, sur l'accueil, écarte les ids `p-`** comme il écarte déjà ceux
+  du rejeu. Les huit `data-total` sont éditoriaux et écrits à la main : trois
+  ajouts cochés, et le HUD annonçait 850 / 847.
+- **Le type vient de `CG.badgeLabels`, jamais d'une liste à nous.** C'est lui
+  qui décide de la couleur du badge et des cases du panneau de filtres ; un
+  type inventé s'afficherait tel quel et ne répondrait à aucun filtre. Il n'y a
+  **pas de niveau** : `offLv[undefined]` est faux, donc une entrée sans niveau
+  reste visible quels que soient les filtres — c'est ce qui rend Star Trek,
+  qui n'a pas de niveaux du tout, faisable sans cas particulier.
+- **Le Dossier n'en est pas.** Sa liste de romans n'a ni `.bu-tags` ni carte
+  bâtie comme celles des timelines ; il ne charge pas `e-perso.js`, et le
+  garde-fou de `e-app.js` le laisserait sortir de toute façon. Il garde le
+  bouton « Suggérer une œuvre », lui.
+
+Les deux boutons partagent la classe `.sg` et le `<p class="sg-p">` qui les
+porte. Les deux blocs de `e-app.js` s'inscrivent sur `DOMContentLoaded` —
+`e-app.js` est chargé en fin de corps, donc pendant l'analyse du document, et
+le bloc des ajouts ne trouverait pas le `.sg-p` que l'autre pose. Il en
+créerait un second, et les deux boutons tomberaient sur deux lignes.
+
 ## Les images
 
 **Tout est en WebP, à quatre fois la taille où l'image s'affiche.** Le 14 août 2026,
