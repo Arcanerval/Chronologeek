@@ -1235,6 +1235,36 @@ Six points, tous rencontrés :
   garde-fou de `e-app.js` le laisserait sortir de toute façon. Il garde le
   bouton « Suggérer une œuvre », lui.
 
+**La croix ne supprime pas, elle demande.** « Retirer ? Oui / Non » prend la
+place des deux boutons dans la carte, et Échap, un clic ailleurs ou le « Non »
+les ramènent. Le bloc `.mine-act` est calé par la droite, donc la question
+s'étend vers la gauche sans rien déplacer : 151 px, dans une carte qui en fait
+295 sur un téléphone. Il n'y a **pas de `confirm()`** — il serait sorti du
+site, se serait posé au milieu de l'écran et n'aurait pas dit de quelle carte
+il parlait. Le dialogue n'a donc plus de bouton « Retirer » : un seul chemin,
+une seule confirmation.
+
+**L'image est réduite dans le navigateur, jamais stockée telle quelle.** La
+règle du site vaut ici aussi — quatre fois les 190 px de la vignette, donc
+760, et on n'agrandit jamais. Un canvas redimensionne, `toDataURL` encode en
+WebP (JPEG à défaut), et la qualité descend par paliers tant que le résultat
+dépasse 300 Ko. Une photo de téléphone de 2,9 Mo ressort à 6 Ko.
+
+Ce n'est pas un raffinement : le stockage local compte cinq mégaoctets pour
+tout le site. Une seule image brute y entrerait, et elle ferait tomber
+l'écriture de tout le reste — d'où le message d'échec qui nomme l'image quand
+il y en a une, plutôt que de renvoyer à un réglage de navigateur qui n'y est
+pour rien. `toDataURL` d'un format inconnu rend du PNG **sans le dire** : c'est
+l'en-tête du résultat qui répond, pas une déclaration.
+
+Deux pièges rencontrés, tous deux de la même famille que `.cx-cpt[hidden]` :
+les pages posent `img{display:block}`, qui bat le `display:none` de l'attribut
+`hidden` — l'aperçu vide occupait sa place avant tout choix ; et le champ de
+fichier héritait de `.mx-f input` (bordure, rembourrage, pleine largeur) et
+ressortait en petit bloc à côté du bouton qui le pilote. **Un attribut `hidden`
+ne suffit jamais sur ce site : il faut la règle `[hidden]{display:none}` en
+face.**
+
 Les deux boutons partagent la classe `.sg` et le `<p class="sg-p">` qui les
 porte. Les deux blocs de `e-app.js` s'inscrivent sur `DOMContentLoaded` —
 `e-app.js` est chargé en fin de corps, donc pendant l'analyse du document, et
