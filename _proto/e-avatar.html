@@ -1383,6 +1383,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     r.onload=function(){
       try{
         var d=JSON.parse(r.result);
+        /* Le fichier de l'accueil porte les neuf univers : on n'en prend
+           que le sien. Sans cette ligne, `d.progress` etant absent, tout
+           le fichier passait pour une progression. */
+        if(d&&d.universes) d=d.universes.avatar||{};
         prog=d.progress||d||{}; save();
         /* les ajouts perso avant tout : ils changent la timeline elle-meme, donc la page se rebatit */
         if(window.CGP&&window.CGP.fusionne(d.mine)){ location.reload(); return; }

@@ -1213,3 +1213,317 @@
     document.addEventListener('DOMContentLoaded', demarre);
   else demarre();
 })();
+
+/* ═══ TOUTES SES TIMELINES EN UN FICHIER — l'accueil ══════════════════
+   Les neuf pages qui ont une timeline exportent chacune la leur, et
+   c'est ce qu'il faut quand on n'en suit qu'une. Qui en suit quatre
+   devait faire quatre fois le geste, sur quatre pages, et tenir quatre
+   fichiers — un changement de navigateur devenait une corvée. Le bouton
+   est donc aussi ici, là où l'on voit déjà les huit progressions à la
+   fois.
+
+   Le fichier n'invente rien : c'est l'union des exports de page, rangés
+   par univers, plus le mode de parcours et l'univers en cours de
+   lecture. Deux conséquences, qui tiennent tout le reste :
+
+   - **Un fichier de page s'importe ici**, celui qu'on avait avant ce
+     bouton comme celui d'aujourd'hui : `universe` désigne alors le seul
+     bloc, et la suite ne change pas.
+   - **Le fichier global s'importe sur une page**, qui n'en prend que sa
+     part — une ligne dans chacune des neuf. Sans elle, `d.progress`
+     étant absent, la page prenait le fichier entier pour une
+     progression et rangeait `universes` et `chronologeek` parmi ses
+     coches. Rien n'aurait cassé, et la page aurait été fausse.
+
+   La progression est remplacée par le fichier, les ajouts sont
+   fusionnés : c'est déjà l'arbitrage des neuf pages, et il vaut ici
+   pour la même raison — on restaure une sauvegarde de coches, mais une
+   œuvre écrite à la main ne se perd pas.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  /* L'accueil est la seule page qui aligne des cases d'univers. */
+  if (!document.querySelector('.slot[data-u]')) return;
+
+  var FR = document.documentElement.lang !== 'en';
+
+  /* Les neuf clés du stockage, écrites en clair. Deux ne se déduisent
+     pas du nom d'univers : Star Trek stocke sous `st`, et les ajouts de
+     Dragon Age sous `data_da`, du nom de son global. Le Dossier n'a pas
+     d'ajouts — il ne charge pas `e-perso.js`.
+
+     La clé de bloc est celle que les pages écrivent déjà dans leur champ
+     `universe` : un fichier exporté avant ce bouton se relit sans
+     conversion. */
+  var UNIVERS = [
+    { u:'sw',             prog:'cg-proto-sw',             perso:'cg-perso-sw' },
+    { u:'mcu',            prog:'cg-proto-mcu',            perso:'cg-perso-mcu' },
+    { u:'dc',             prog:'cg-proto-dc',             perso:'cg-perso-dc' },
+    { u:'avatar',         prog:'cg-proto-avatar',         perso:'cg-perso-avatar' },
+    { u:'startrek',       prog:'cg-proto-st',             perso:'cg-perso-st' },
+    { u:'twd',            prog:'cg-proto-twd',            perso:'cg-perso-twd' },
+    { u:'dragonage',      prog:'cg-proto-dragonage',      perso:'cg-perso-data_da' },
+    { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed' },
+    { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
+  ];
+
+  /* Le même filtre que le HUD juste au-dessus : un identifiant de second
+     parcours (`sw-r-…`) recouvre une œuvre déjà comptée, et un ajout
+     perso (`p-`) n'est pas dans les totaux éditoriaux. Ils partent bien
+     dans le fichier — c'est le compte affiché qui les écarte, pour dire
+     le même nombre que la barre du bas. */
+  var PARCOURS = /^([a-z]+-r-|p-)/;
+
+  var T = FR ? {
+    titre: 'Toutes vos timelines, en un fichier',
+    dek:   'Vos coches sur les huit timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
+    exp:   'Tout exporter',
+    imp:   'Importer',
+    nom:   'chronologeek-tout.json',
+    rien:  'Rien de coché pour l’instant — ouvrez une timeline, le fichier suivra.',
+    mauvais: 'Ce fichier n’est pas un export Chronologeek.',
+    vide:  'Ce fichier ne porte aucune progression.',
+    plein: 'Le navigateur a refusé d’enregistrer : mémoire pleine, ou navigation privée.',
+    etat:  function(n, c, a){
+      return n + ' univers · ' +
+             c + (c > 1 ? ' entrées cochées' : ' entrée cochée') +
+             (a ? ' · ' + a + (a > 1 ? ' ajouts à vous' : ' ajout à vous') : '');
+    }
+  } : {
+    titre: 'All your timelines, in one file',
+    dek:   'Your check marks across the eight timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
+    exp:   'Export everything',
+    imp:   'Import',
+    nom:   'chronologeek-all.json',
+    rien:  'Nothing checked yet — open a timeline and the file will follow.',
+    mauvais: 'This file is not a Chronologeek export.',
+    vide:  'This file holds no progress.',
+    plein: 'The browser refused to save: storage full, or private browsing.',
+    etat:  function(n, c, a){
+      return n + (n > 1 ? ' universes · ' : ' universe · ') +
+             c + (c > 1 ? ' entries checked' : ' entry checked') +
+             (a ? ' · ' + a + (a > 1 ? ' works of yours' : ' work of yours') : '');
+    }
+  };
+
+  var CSS = [
+    '.sy{border-bottom:2px solid var(--paper)}',
+    '.sy .wrap{display:flex;align-items:center;gap:18px 22px;flex-wrap:wrap;',
+    '  padding-top:22px;padding-bottom:22px}',
+    '.sy-txt{flex:1;min-width:240px}',
+    '.sy h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;',
+    '  font-size:clamp(21px,2.6vw,28px);letter-spacing:.02em;text-transform:uppercase;',
+    '  line-height:.95}',
+    '.sy p{font-size:13.5px;line-height:1.5;color:rgba(255,253,247,.72);',
+    '  max-width:64ch;margin-top:6px}',
+    '.sy-et{display:block;font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:14px;letter-spacing:.07em;text-transform:uppercase;color:var(--hot);',
+    '  margin-top:9px}',
+    '.sy-et.no{color:rgba(255,253,247,.5)}',
+    '.sy-act{display:flex;gap:10px;flex-wrap:wrap}',
+    '.sy-b{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;font-size:14.5px;',
+    '  letter-spacing:.07em;text-transform:uppercase;cursor:pointer;padding:9px 20px;',
+    '  background:var(--hot);border:2px solid var(--hot);color:var(--ink);',
+    '  display:inline-flex;align-items:center;gap:8px}',
+    '.sy-b:hover{background:var(--paper);border-color:var(--paper)}',
+    '.sy-b[disabled]{cursor:not-allowed;background:none;border-color:var(--line);',
+    '  color:rgba(255,253,247,.4)}',
+    '.sy-b.alt{background:none;color:var(--hot)}',
+    '.sy-b.alt:hover{background:var(--hot);color:var(--ink)}',
+    '.sy-b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;',
+    '  stroke-linecap:square}',
+    /* `display:block` bat le `display:none` que porte l'attribut `hidden` :
+       sans ce rappel, le message occupe sa ligne avant d'exister. */
+    '.sy-err{display:block;flex:1 0 100%;font-size:13px;font-weight:700;color:var(--mcu)}',
+    '.sy-err[hidden]{display:none}',
+    '@media(max-width:720px){',
+    '  .sy .wrap{flex-direction:column;align-items:stretch;text-align:center}',
+    '  .sy p{margin-left:auto;margin-right:auto}',
+    '  .sy-act{justify-content:center}',
+    '}'
+  ].join('');
+
+  /* ── le stockage, sans jamais lever ──────────────────────────────── */
+  function lis(k, defaut){
+    try { var v = JSON.parse(localStorage.getItem(k) || 'null'); return v || defaut; }
+    catch (_) { return defaut; }
+  }
+  function pose(k, v){
+    try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (_) { return false; }
+  }
+
+  /* ── ce qu'il y a à emporter ─────────────────────────────────────── */
+  function recolte(){
+    var out = {}, n = 0, coches = 0, ajouts = 0;
+    UNIVERS.forEach(function(x){
+      var p = lis(x.prog, {}), m = x.perso ? lis(x.perso, []) : [];
+      if (!p || typeof p !== 'object' || Array.isArray(p)) p = {};
+      if (!Array.isArray(m)) m = [];
+      var cles = Object.keys(p);
+      if (!cles.length && !m.length) return;      /* un univers jamais ouvert */
+      var bloc = { progress: p };
+      if (m.length) bloc.mine = m;
+      var mode = null;
+      try { mode = localStorage.getItem(x.prog + '-mode'); } catch (_) {}
+      if (mode) bloc.mode = mode;
+      out[x.u] = bloc;
+      n++;
+      coches += cles.filter(function(k){ return !PARCOURS.test(k); }).length;
+      ajouts += m.length;
+    });
+    return { universes: out, n: n, coches: coches, ajouts: ajouts };
+  }
+
+  /* ── la fusion des ajouts, celle de `e-perso.js` ──────────────────
+     Reprise ici plutôt qu'appelée : `e-perso.js` n'est chargé que par
+     les pages qui ont une timeline, et il ne connaît que la sienne.
+     Rend `false` sur la seule écriture refusée — « rien à changer » est
+     un succès, pas un échec. */
+  function fusionne(cle, entrants){
+    if (!Array.isArray(entrants) || !entrants.length) return true;
+    var par = {}, ordre = [], change = false;
+    var actuels = lis(cle, []);
+    if (!Array.isArray(actuels)) actuels = [];
+    actuels.forEach(function(x){
+      if (x && x.id) { par[x.id] = x; ordre.push(x.id); }
+    });
+    entrants.forEach(function(x){
+      if (!x || typeof x !== 'object' || !x.id || !x.title) return;
+      if (!par[x.id]) ordre.push(x.id);
+      else if (JSON.stringify(par[x.id]) === JSON.stringify(x)) return;
+      par[x.id] = x; change = true;
+    });
+    if (!change) return true;
+    return pose(cle, ordre.map(function(i){ return par[i]; }));
+  }
+
+  /* ── le bloc, posé sous « Les Dossiers » ─────────────────────────── */
+  function bati(){
+    var apres = document.querySelector('.deep');
+    var pere = apres ? apres.parentNode : document.getElementById('main');
+    if (!pere) return null;
+
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    var sec = document.createElement('section');
+    sec.className = 'sy';
+    sec.id = 'sync';
+    sec.innerHTML =
+      '<div class="wrap">' +
+        '<div class="sy-txt"><h2></h2><p></p><span class="sy-et"></span></div>' +
+        '<div class="sy-act">' +
+          '<button type="button" class="sy-b" id="sy-out">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>' +
+            '<span></span></button>' +
+          '<button type="button" class="sy-b alt" id="sy-in">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>' +
+            '<span></span></button>' +
+          '<input type="file" accept="application/json,.json" id="sy-f" hidden/>' +
+        '</div>' +
+        '<span class="sy-err" hidden></span>' +
+      '</div>';
+
+    /* `textContent` plutôt qu'une concaténation : les libellés portent
+       des apostrophes typographiques. */
+    sec.querySelector('h2').textContent = T.titre;
+    sec.querySelector('p').textContent = T.dek;
+    sec.querySelector('#sy-out span').textContent = T.exp;
+    sec.querySelector('#sy-in span').textContent = T.imp;
+
+    if (apres) pere.insertBefore(sec, apres.nextSibling);
+    else pere.appendChild(sec);
+    return sec;
+  }
+
+  function demarre(){
+    var sec = bati();
+    if (!sec) return;
+
+    var etat = sec.querySelector('.sy-et');
+    var err = sec.querySelector('.sy-err');
+    var out = sec.querySelector('#sy-out');
+    var champ = sec.querySelector('#sy-f');
+
+    function dit(m){ err.textContent = m || ''; err.hidden = !m; }
+
+    /* Le compte dit ce que le fichier contiendra. Vide, il n'apprendrait
+       rien à personne : le bouton se ferme, et la ligne dit pourquoi. */
+    function bilan(){
+      var r = recolte();
+      etat.textContent = r.n ? T.etat(r.n, r.coches, r.ajouts) : T.rien;
+      etat.className = r.n ? 'sy-et' : 'sy-et no';
+      out.disabled = !r.n;
+    }
+    bilan();
+
+    out.addEventListener('click', function(){
+      var r = recolte();
+      var f = { chronologeek: 1, kind: 'all', date: new Date().toISOString(),
+                universes: r.universes };
+      var last = lis('cg_last', null);
+      if (last) f.last = last;
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(f, null, 1)],
+                                            { type:'application/json' }));
+      a.download = T.nom;
+      document.body.appendChild(a); a.click(); a.remove();
+      dit('');
+    });
+
+    sec.querySelector('#sy-in').addEventListener('click', function(){ champ.click(); });
+
+    champ.addEventListener('change', function(){
+      var f = this.files && this.files[0];
+      this.value = '';
+      if (!f) return;
+      var r = new FileReader();
+      r.onload = function(){
+        var d;
+        try { d = JSON.parse(r.result); } catch (_) { return dit(T.mauvais); }
+        if (!d || typeof d !== 'object') return dit(T.mauvais);
+
+        /* Un fichier de page — `{universe, progress, mine}` — se lit ici
+           aussi : il désigne un seul bloc, et la suite ne change pas. */
+        var blocs = d.universes;
+        if (!blocs && typeof d.universe === 'string') {
+          blocs = {}; blocs[d.universe] = d;
+        }
+        if (!blocs || typeof blocs !== 'object') return dit(T.mauvais);
+
+        var faits = 0, refus = 0;
+        UNIVERS.forEach(function(x){
+          var b = blocs[x.u];
+          if (!b || typeof b !== 'object') return;
+          var p = b.progress;
+          if (p && typeof p === 'object' && !Array.isArray(p)) {
+            if (pose(x.prog, p)) faits++; else refus++;
+          }
+          if (x.perso && Array.isArray(b.mine) && b.mine.length) {
+            if (fusionne(x.perso, b.mine)) faits++; else refus++;
+          }
+          if (typeof b.mode === 'string' && b.mode) {
+            try { localStorage.setItem(x.prog + '-mode', b.mode); } catch (_) {}
+          }
+        });
+        if (d.last && typeof d.last === 'object') pose('cg_last', d.last);
+
+        if (refus) return dit(T.plein);
+        if (!faits) return dit(T.vide);
+        /* Les cases, le score et le bandeau de reprise sont peints au
+           chargement : c'est le rechargement qui les rebâtit, comme sur
+           les neuf pages. */
+        location.reload();
+      };
+      r.readAsText(f);
+    });
+  }
+
+  /* Même report que les deux blocs précédents : `e-app.js` est chargé en
+     fin de corps, donc pendant l'analyse du document. */
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', demarre);
+  else demarre();
+})();

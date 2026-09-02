@@ -1261,9 +1261,50 @@ leur appartenant.
 Au passage, **quatre pages annonçaient le mauvais univers dans leur export** —
 Avatar « sw », The Walking Dead « st », Dragon Age et Assassin's Creed « sw »,
 chacune ayant gardé la clé de celle sur laquelle elle a été bâtie. Rien ne
-cassait, le champ n'étant pas relu à l'import, mais il était faux dans un
-fichier que le visiteur garde. À vérifier au prochain univers : c'est le genre
-de valeur qu'un copier-coller emporte sans qu'on la relise.
+cassait, le champ n'étant alors pas relu à l'import, mais il était faux dans un
+fichier que le visiteur garde. **Il est relu depuis le 2 septembre 2026** —
+c'est par lui que l'accueil reconnaît un fichier de page —, et à vérifier au
+prochain univers : c'est le genre de valeur qu'un copier-coller emporte sans
+qu'on la relise.
+
+**Tout exporter, depuis l'accueil.** Posé le 2 septembre 2026, après des
+courriers de gens qui suivent quatre univers à la fois : ils devaient faire
+le geste quatre fois, sur quatre pages, et tenir quatre fichiers. Le bloc
+« Toutes vos timelines, en un fichier » se pose sous « Les Dossiers », et
+il est **entièrement dans `e-app.js`** — pas une ligne dans `e-accueil.html`,
+donc rien à traduire dans `traduire-pages.mjs` et pas une ligne de plus à
+apparier pour `py sync.py check`. Il se reconnaît à `.slot[data-u]`, que
+seul l'accueil porte.
+
+Le fichier n'invente rien : c'est l'union des exports de page, rangés par
+univers sous `universes`, plus le mode de parcours (`<clé>-mode`) et
+`cg_last`. Quatre choses à savoir :
+
+- **Les deux sens se lisent.** Un fichier de page s'importe sur l'accueil
+  (`universe` désigne alors le seul bloc), et le fichier global s'importe
+  sur une page, qui n'en prend que sa part : `if(d&&d.universes)
+  d=d.universes.mcu||{};`, une ligne dans chacune des neuf. **Sans elle,
+  `d.progress` étant absent, la page prenait le fichier entier pour une
+  progression** et rangeait `universes` et `chronologeek` parmi ses coches.
+  Rien n'aurait cassé, et la page aurait été fausse. C'est la seule ligne
+  de ce chantier qui vit dans les pages ; elle s'écrit donc dans les
+  **sources** — les cinq protos français et les quatre protos anglais des
+  chaînes inversées.
+- **La clé de bloc est celle du champ `universe`, pas celle du stockage.**
+  Star Trek stocke sous `cg-proto-st` et s'annonce `startrek` ; le Dossier
+  fait `dossier-sw`. La table `UNIVERS` porte les trois colonnes en clair
+  plutôt qu'une dérivation, et les ajouts de Dragon Age s'y rangent sous
+  `cg-perso-data_da`, du nom de son global.
+- **La ligne d'état dit ce que le fichier contiendra**, avec le filtre du
+  HUD (`p-` et `-r-` écartés) pour annoncer le même nombre que la barre du
+  bas. À zéro, le bouton se ferme : un fichier vide n'apprend rien.
+- **`fusionne()` est recopié, pas appelé.** Celui de `e-perso.js` ne vit que
+  sur les pages qui ont une timeline, et ne connaît que la sienne. La
+  version de l'accueil rend `false` sur la seule écriture refusée — « rien à
+  changer » est un succès.
+
+Un neuvième univers se pose dans `UNIVERS`, et sa page reçoit la ligne
+d'extraction.
 
 **La durée entre dans les compteurs, et n'est proposée que là où ils
 existent.** Un champ de plus dans le formulaire, et l'ajout compte dans le
