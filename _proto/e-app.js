@@ -1309,19 +1309,23 @@
 
   var CSS = [
     '.sy{border-bottom:2px solid var(--paper)}',
-    '.sy .wrap{display:flex;align-items:center;gap:18px 22px;flex-wrap:wrap;',
-    '  padding-top:22px;padding-bottom:22px}',
-    '.sy-txt{flex:1;min-width:240px}',
+    /* Une colonne centrée à toute largeur : le texte, puis les deux
+       boutons dessous. C'est la seule bande du site où l'on agit sur ce
+       qu'on vient de lire, et la lecture doit mener au geste, pas le
+       longer. */
+    '.sy .wrap{display:flex;flex-direction:column;align-items:center;',
+    '  text-align:center;gap:15px;padding-top:26px;padding-bottom:26px}',
+    '.sy-txt{max-width:66ch}',
     '.sy h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;',
     '  font-size:clamp(21px,2.6vw,28px);letter-spacing:.02em;text-transform:uppercase;',
     '  line-height:.95}',
     '.sy p{font-size:13.5px;line-height:1.5;color:rgba(255,253,247,.72);',
-    '  max-width:64ch;margin-top:6px}',
+    '  margin-top:6px}',
     '.sy-et{display:block;font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
     '  font-size:14px;letter-spacing:.07em;text-transform:uppercase;color:var(--hot);',
     '  margin-top:9px}',
     '.sy-et.no{color:rgba(255,253,247,.5)}',
-    '.sy-act{display:flex;gap:10px;flex-wrap:wrap}',
+    '.sy-act{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}',
     '.sy-b{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;font-size:14.5px;',
     '  letter-spacing:.07em;text-transform:uppercase;cursor:pointer;padding:9px 20px;',
     '  background:var(--hot);border:2px solid var(--hot);color:var(--ink);',
@@ -1335,12 +1339,13 @@
     '  stroke-linecap:square}',
     /* `display:block` bat le `display:none` que porte l'attribut `hidden` :
        sans ce rappel, le message occupe sa ligne avant d'exister. */
-    '.sy-err{display:block;flex:1 0 100%;font-size:13px;font-weight:700;color:var(--mcu)}',
+    '.sy-err{display:block;font-size:13px;font-weight:700;color:var(--mcu)}',
     '.sy-err[hidden]{display:none}',
-    '@media(max-width:720px){',
-    '  .sy .wrap{flex-direction:column;align-items:stretch;text-align:center}',
-    '  .sy p{margin-left:auto;margin-right:auto}',
-    '  .sy-act{justify-content:center}',
+    /* Étroit, les deux boutons prennent la ligne chacun : côte à côte ils
+       tombaient à deux mots par ligne. */
+    '@media(max-width:420px){',
+    '  .sy-act{align-self:stretch;flex-direction:column}',
+    '  .sy-b{justify-content:center}',
     '}'
   ].join('');
 
