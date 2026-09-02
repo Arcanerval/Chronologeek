@@ -551,6 +551,14 @@ const TRADUCTIONS = [
   // la prod écrit « Swipe to see the other branches → » ; la flèche est
   // désormais une icône, elle ne fait plus partie de la phrase
   ['Faites glisser pour voir les autres branches', 'Swipe to see the other branches'],
+  /* Le carrousel n'avait qu'un geste, la commutation en a deux : le doigt
+     et le nom qu'on touche. « tap » et non « click » — la phrase ne
+     paraît que sous 1440 px, où l'écran est tactile neuf fois sur dix, et
+     « tap a name » couvre les deux gestes là où « click » en exclut un.
+     L'ancienne ligne reste au-dessus : elle sert encore aux autres pages
+     à colonnes, et la retirer les laisserait sans traduction. */
+  ['Faites glisser ou cliquez sur les noms pour changer de colonne',
+   'Swipe or tap a name to switch column'],
 ];
 
 const ECRITES = new Map(TRADUCTIONS.map(([f, e]) => [net(f), e]));

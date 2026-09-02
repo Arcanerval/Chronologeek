@@ -476,6 +476,64 @@ Quatre choses à savoir :
   qu'identifiants : une entrée du rejeu hérite de celle qu'elle référence,
   titre et résumé compris.
 
+## Les colonnes parallèles sous 1440 px
+
+DC est le seul univers à colonnes, et depuis le **2 septembre 2026** elles ne
+glissent plus : **une branche à la fois, choisie aux onglets.** La règle vaut
+telle quelle pour tout dossier multi-colonnes qu'on ajouterait.
+
+Ce qui l'a imposée est une mesure. Le carrousel mettait les quatre colonnes
+dans une seule ligne flex, donc **la plus haute donnait sa hauteur à la bande** :
+sur « Les origines », la grille faisait 15 486 px, l'Arrowverse en occupait
+15 478 et « Origines de Superman » 851. Choisir Superman sur un téléphone,
+c'était trois fiches puis quatorze mille pixels de rien — et l'onglet pour en
+sortir était resté tout en haut. La bande fait maintenant la hauteur de la
+branche qu'on lit.
+
+Le parallélisme n'est pas perdu : il est dit par les onglets, quatre noms côte
+à côte en permanence avec le décompte de chacun, là où le carrousel le disait
+par un morceau de colonne coupé au bord.
+
+Sept choses à savoir :
+
+- **La borne est 1440, pas 820.** Le carrousel de la tranche 821-1439 avait le
+  même défaut à la même hauteur — montrer deux colonnes au lieu d'une ne change
+  rien au vide des trois autres. Bornes décimales (`1439.98`), pour la raison
+  déjà dite ailleurs : la largeur de fenêtre n'est pas entière. **`MOB` en JS et
+  la requête média doivent porter la même valeur.**
+- **`.col.on:not([hidden])`, et le `:not` n'est pas une précaution.** `.on` a
+  plus de poids que le `.col[hidden]` du filtre : sans lui, une branche décochée
+  revenait à l'écran dès qu'elle était l'onglet actif. Même famille de piège que
+  `.ztabs button[hidden]{display:none}`, sans quoi l'onglet d'une branche
+  décochée restait cliquable — **un attribut `hidden` ne suffit jamais ici.**
+- **On arrive sur la branche la plus fournie, par décompte.** Pas sur la
+  première, qui n'a que trois fiches, et pas sur un rang écrit à la main. Les
+  deux zones tombent sur l'Arrowverse, et la règle tient pour une zone ajoutée.
+- **Les onglets sont collants dans leur bande**, pas dans la page :
+  `position:sticky` sur un élément du corps de la zone se décroche seul quand
+  la zone sort de l'écran. C'est ce qui permet de changer de branche depuis
+  n'importe quelle profondeur.
+- **`--stick` se mesure, il ne s'écrit pas.** C'est le bas de la barre de
+  filtres **une fois collée** (`getComputedStyle(sieve).top + hauteur`), pas la
+  somme des deux hauteurs : la barre se colle à 63 alors que le bandeau en fait
+  64, et la somme laissait un pixel de fente où les fiches défilaient. Elle vaut
+  59 px à 375, 47 à 1000, et **48 au premier rendu contre 59 une fois Big
+  Shoulders chargée** — d'où le `ResizeObserver`, qui couvre les polices, le
+  redimensionnement et le panneau déplié sans rien savoir de la cause. Une ombre
+  haute de 8 px bouche ce qu'un demi-pixel laisserait encore passer.
+- **Le glissement est rendu, sur la commutation.** Trois garde-fous, chacun né
+  d'un faux positif : plus horizontal que vertical (un défilement de lecture
+  oblique changeait de branche), plus de 55 px, moins de 700 ms. Tout en
+  `passive` — on ne prend jamais la main sur le défilement vertical. Il saute
+  les branches décochées et ne boucle pas au bout.
+- **Rejoindre une entrée demande d'ouvrir sa branche d'abord.** « Reprendre »,
+  l'ancre de l'URL et les badges visent un identifiant, pas une branche : sans
+  ce détour (`reveal`), on défilait jusqu'à une entrée qui n'est pas à l'écran.
+
+La phrase d'aide vit dans le `T` local de `e-dc.html` (vouvoiement) et sa
+traduction dans `TRADUCTIONS` de `traduire-pages.mjs`, pas dans `CG.t.swipe` :
+celui-ci sert les autres pages, et le renommer serait le piège du lexique.
+
 ## Synchronisation FR/EN
 
 `sync.py` sert la règle absolue ci-dessus. Contrairement aux scripts de génération,

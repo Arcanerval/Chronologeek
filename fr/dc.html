@@ -847,77 +847,174 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
 .conf{position:fixed;inset:0;z-index:140;pointer-events:none}
 
-/* ── entre 821 et 1439 px, quatre colonnes ne tiennent plus ─────────
-   Les empiler ferait perdre le parallélisme, qui est tout le propos de la
-   bande. Elles glissent donc, deux visibles à la fois, avec les onglets de
-   branche remontés du mobile.
-   La borne basse compte : sans elle, `--fig` valait encore 124 px sur un
-   téléphone — `.cols.zg-4>.col` l'emporte sur le `.cols>.col` de la règle
-   mobile, qui descend à 110 puis à 74. La colonne dépassait de quinze
-   pixels et la page défilait latéralement. Sous 821 px, c'est donc la règle
-   générale qui tient tout, colonnes comme onglets. */
-/* Bornes décimales, et ce n'est pas une coquetterie : la largeur de fenêtre
-   n'est pas entière (facteur d'échelle de l'écran), et à 1439,5 px ni
-   `max-width:1439px` ni `min-width:1440px` ne s'appliquaient. La bande
-   retombait alors sur le CSS de base — quatre colonnes dans le gabarit de
-   1280, sans resserrement, 297 px par colonne. */
-@media(min-width:820.02px) and (max-width:1439.98px){
-  .cols.zg-4{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none}
-  .cols.zg-4::-webkit-scrollbar{display:none}
-  /* 47 % : deux colonnes tiennent, la troisième dépasse d'un doigt. À 50 %
-     la bande se coupait pile au bord et rien ne disait qu'il y en avait
-     quatre. */
-  .cols.zg-4>.col{flex:0 0 calc(47% - 7px);scroll-snap-align:start;--fig:124px}
-  /* même raison que sur mobile : le carrousel devient le conteneur de
-     défilement, `animation-timeline:view()` s'y résout et ne se déclenche
-     jamais — les bulles resteraient à opacité 0. */
-  .cols.zg-4 .rv{animation:none;opacity:1;transform:none}
-  .zone-sec[data-cols="4"] .ztabs{display:flex}
-  .zone-sec[data-cols="4"] .zswipe{display:flex}
-  .zone-sec[data-cols="4"] .ztabs[hidden],
-  .zone-sec[data-cols="4"] .zswipe[hidden]{display:none}
-}
 @media(max-width:1080px){
   .nav-links{display:none}
   .burger{display:grid}
   .foot{grid-template-columns:1fr 1fr}
 }
-/* ── MOBILE : les colonnes glissent, elles ne s'empilent pas ──
-   Empiler ferait perdre l'information « ces branches sont parallèles ».
-   Défilement horizontal avec accroche, la colonne suivante dépasse, et des
-   onglets au-dessus pour sauter directement à une branche. Une zone à
-   colonne unique n'a rien à faire glisser : elle reste une grille. */
+/* ── SOUS 1440 px : une branche à la fois, choisie aux onglets ──────
+   Ce qui a remplacé le carrousel, le 2 septembre 2026. Il mettait les
+   quatre colonnes dans une seule ligne flex : la plus haute
+   donnait sa hauteur à la bande, et les trois autres finissaient dans le
+   vide. Mesuré sur « Les origines » : la grille fait 15 486 px de haut,
+   l'Arrowverse en occupe 15 478 et « Origines de Superman » 851. Choisir
+   Superman sur un téléphone, c'était trois fiches puis quatorze mille
+   pixels de rien — et l'onglet pour en sortir était resté tout en haut.
+
+   Les colonnes ne glissent donc plus, elles se commutent : une seule est
+   affichée, les onglets la choisissent, et la bande fait exactement la
+   hauteur de la branche qu'on lit. Le parallélisme est dit par les
+   onglets — quatre noms côte à côte en permanence, chacun avec son
+   décompte — et non plus par un morceau de colonne coupé au bord.
+
+   Trois gains qui ne se voient qu'à l'usage :
+   - la colonne prend la largeur entière (335 px au lieu de 292 à 375 px
+     de fenêtre), donc l'affiche tient jusqu'en bas et le titre respire ;
+   - les onglets sont collants dans leur bande, donc on change de branche
+     depuis n'importe quelle profondeur, pas seulement depuis le haut ;
+   - le compteur de chaque onglet dit où en est chaque branche sans
+     qu'on ait à y aller.
+   Une zone à colonne unique n'a rien à commuter : elle reste une grille.
+
+   La borne est à 1440 et non à 820 : le carrousel de la tranche
+   821-1439 avait exactement le même défaut, à la même hauteur de bande —
+   il montrait deux colonnes au lieu d'une, ce qui ne change rien au vide
+   des trois autres. La commutation vaut partout où les quatre colonnes
+   ne tiennent pas côte à côte, c'est-à-dire partout sauf au-dessus de
+   1440. Bornes décimales : la largeur de fenêtre n'est pas entière
+   (facteur d'échelle de l'écran), et à 1439,5 px ni `max-width:1439px`
+   ni `min-width:1440px` ne s'appliquaient — la bande retombait sur le
+   CSS de base, quatre colonnes dans le gabarit de 1280. */
+@media(max-width:1439.98px){
+  .cols:not(.zg-1){display:block}
+  /* `:not([hidden])` n'est pas une précaution : `.on` a plus de poids que
+     le `.col[hidden]` du filtre, et une branche décochée serait revenue à
+     l'écran dès qu'elle aurait été l'onglet actif. */
+  .cols:not(.zg-1)>.col{display:none}
+  .cols:not(.zg-1)>.col.on:not([hidden]){display:block}
+  /* La tête de colonne redit le nom de la branche que l'onglet actif
+     porte déjà, à trente pixels de lui. Seul le décompte reste, aligné à
+     droite comme une mesure. */
+  .cols:not(.zg-1) .col-h .col-t{display:none}
+  .cols:not(.zg-1) .col-h{justify-content:flex-end}
+
+  /* ── les onglets : la navigation de la bande, donc collants ───────
+     Collants dans la bande, pas dans la page : `position:sticky` sur un
+     élément du corps de la zone se décroche de lui-même quand la zone
+     sort de l'écran. Rien à calculer, rien à remettre à zéro.
+     `--stick` = bandeau + barre de filtres, les deux collants au-dessus.
+     Il est MESURÉ en JS, pas écrit : la barre de filtres fait 59 px à
+     375 px de fenêtre et 100 px à 1000, elle change encore quand on la
+     déplie, et une valeur en dur envoyait les onglets se coller derrière
+     elle. La valeur ci-dessous n'est que le repli du premier rendu.
+
+     La bande prend la largeur de la fenêtre, pas celle du `wrap` : celui-ci
+     porte 20 px de rembourrage, et une marge négative de 16 laissait
+     QUATRE PIXELS non peints de chaque côté. Les fiches défilaient dans
+     ces deux fentes, et le fond avait l'air de se déchirer au défilement.
+     Le rembourrage rend exactement ce que la marge a pris.
+
+     Fond opaque, pas le `color-mix` du `.list` : la bande passe par-dessus
+     des fiches, elle doit les couvrir et non les teinter. */
+  .ztabs{display:flex;justify-content:center;position:sticky;
+    top:var(--stick,122px);z-index:40;
+    gap:5px;margin:0 -20px 12px;padding:7px 20px 8px;
+    background:var(--ink);border-bottom:2px solid var(--line);
+    /* L'ombre haute n'est pas décorative : elle prolonge le fond de huit
+       pixels VERS LE HAUT, au cas où la mesure de `--stick` tomberait
+       encore sur un demi-pixel. La barre de filtres est au-dessus dans
+       l'ordre de peinture (z 50 contre 40), donc ce prolongement passe
+       dessous et ne se voit jamais. */
+    box-shadow:0 -8px 0 0 var(--ink)}
+  /* `[hidden]` ne suffit jamais sur ce site : `display:flex` le bat, et
+     l'onglet d'une branche décochée restait à l'écran — cliquable, menant
+     à une colonne que le filtre venait de retirer. */
+  .ztabs button[hidden]{display:none}
+  .ztabs button{font-size:12.5px;letter-spacing:.02em;padding:3px 8px;gap:5px}
+  .ztabs button i{width:8px;height:8px}
+  .ztabs .zt-n{font-family:'Chivo';font-weight:700;font-size:10px;
+    letter-spacing:.02em;opacity:.62}
+  /* La ligne de glissement reste, AU-DESSUS des noms de branche et plus
+     petite qu'eux : c'est un mode d'emploi, pas un intitulé, et elle doit
+     s'effacer devant ce qu'elle explique. Elle nomme maintenant les deux
+     chemins — le doigt et le nom qu'on touche —, parce que la commutation
+     en offre deux là où le carrousel n'en avait qu'un.
+     Elle n'est pas collante : on la lit une fois, ce sont les onglets
+     qu'on reprend, et elle passe donc sous eux au défilement. */
+  /* Une seule ligne, centrée, collée aux noms. La taille est fluide et
+     non fixe : la phrase fait trente-sept pixels de large par pixel de
+     corps, et à 375 px de fenêtre il en reste trois cent dix-sept — 8,5
+     est donc le corps MAXIMUM qui tienne, pas un choix. Le figer là
+     l'aurait laissé minuscule sur un 414 ou une tablette, où la place
+     existe. Le `clamp` le fait grandir moins vite que la fenêtre, donc
+     ce qui tient à 375 tient partout au-dessus. */
+  .zswipe{display:flex;justify-content:center;gap:6px;margin:0 0 3px;
+    font-size:clamp(8.5px,2.2vw,11px);letter-spacing:.02em;
+    white-space:nowrap;color:rgba(255,253,247,.58)}
+  .zsw-a{width:12px;height:12px;stroke-width:2.6}
+  /* Le « 3 / 4 » disait combien de branches il y a et où l'on est. Les
+     noms sont maintenant JUSTE EN DESSOUS, tous les quatre, avec celui
+     de la branche en cours en blanc : le compteur redisait deux fois la
+     même chose, à trois pixels d'écart. */
+  .zsw-n{display:none}
+  .ztabs[hidden],.zswipe[hidden]{display:none}
+  .cols .rv{animation:none;opacity:1;transform:none}
+  /* Le retour du geste : la colonne entre par le côté d'où elle vient.
+     En `steps`, comme tout le reste de la page — pas un glissé continu. */
+  .cols>.col.sl-l{animation:slL .22s steps(3,end)}
+  .cols>.col.sl-r{animation:slR .22s steps(3,end)}
+}
+@keyframes slL{from{transform:translateX(26px);opacity:.35}to{transform:none;opacity:1}}
+@keyframes slR{from{transform:translateX(-26px);opacity:.35}to{transform:none;opacity:1}}
+/* ── TABLETTE : la colonne est large, l'affiche reprend sa taille ──
+   Entre 821 et 1439 px la branche affichée occupe toute la gouttière —
+   jusqu'à 1240 px. Rien à resserrer : c'est la mise en page d'une zone à
+   colonne unique, que la page connaît déjà (« DCU — Nouvel Univers »). */
+@media(min-width:820.02px) and (max-width:1439.98px){
+  .ztabs{gap:7px;padding:9px 20px 10px}
+  .ztabs button{font-size:15px;letter-spacing:.06em;padding:5px 11px;gap:7px}
+  .ztabs button i{width:9px;height:9px}
+  .ztabs .zt-n{font-size:11px}
+}
 @media(max-width:820px){
-  .cols:not(.zg-1){display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none}
-  .cols:not(.zg-1)::-webkit-scrollbar{display:none}
-  /* 87 % et non 92 : la colonne suivante doit DÉPASSER, pas affleurer. À
-     92 % il ne restait que la gouttière, et l'écran ressemblait à une page
-     qui ne bouge pas. Le morceau coupé est le signal, la phrase le nomme. */
-  .cols:not(.zg-1)>.col{flex:0 0 87%;scroll-snap-align:start}
   .cols>.col{--fig:110px;--figgap:19px}
   .col-t{font-size:23px}
-  .ztabs{display:flex}
-  .zswipe{display:flex}
-  .ztabs[hidden],.zswipe[hidden]{display:none}
-  /* `overflow-x:auto` fait du carrousel le conteneur de défilement du bloc.
-     `animation-timeline:view()` s'y résout alors, et il ne défile jamais
-     verticalement : les bulles resteraient à opacité 0. On coupe. */
-  .cols .rv{animation:none;opacity:1;transform:none}
 }
+/* La colonne est seule et large : l'affiche n'a plus à céder sa place au
+   titre, et elle reste à sa taille de lecture. C'est la contrepartie
+   directe du carrousel retiré — à 87 % de largeur, elle tombait à 74 px
+   sous 420 et disparaissait sous 360. */
 @media(max-width:420px){
-  .cols>.col{--fig:74px;--figgap:17px}
   .col-t{font-size:20px}
+  .ztabs button{font-size:12px;padding:3px 7px;gap:5px}
 }
-/* Sous 360 px, une colonne DC ne loge plus la case, l'affiche ET un titre
-   lisible : il ne restait qu'une centaine de pixels au titre. L'affiche
-   cède, c'est la seule des trois qui soit décorative — même arbitrage que
-   la prod. `--fig` reste nommé pour que les sous-items gardent leur
-   alignement. */
+/* Sous 340 px les quatre onglets passaient sur TROIS rangées, soit 104 px
+   collants sous deux barres qui en prennent déjà 122 : la moitié de
+   l'écran servait à naviguer. Le décompte cède, c'est la seule des trois
+   pièces de l'onglet qui soit un supplément — la tête de colonne le redit
+   dès qu'on y est. Le nom et la pastille de branche restent.
+   Le seuil est à 340 et non à 400 : à 375 et à 390, les tailles des deux
+   téléphones les plus courants, les quatre onglets tiennent sur deux
+   rangées AVEC leur décompte. */
+@media(max-width:340px){
+  .ztabs .zt-n{display:none}
+  .cols:not(.zg-1) .col-h .col-t{display:block}
+  .cols:not(.zg-1) .col-h{justify-content:space-between}
+}
+/* Le seuil de repli de la phrase n'est pas celui de l'affiche, et il se
+   calcule : à 8,5 px de corps elle fait 312 px, la flèche et sa gouttière
+   en prennent 18, les gouttières de page 40 — il faut donc 370 px de
+   fenêtre pour la tenir sur une ligne. Posé à 360, tout l'intervalle
+   361-369 débordait de neuf pixels. */
+@media(max-width:369.98px){
+  /* Sous 370 px, une ligne demanderait 7 px de corps — plus petit que
+     tout ce que le site écrit. La phrase passe donc à deux lignes,
+     centrées : illisible sur une ligne vaut moins que lisible sur deux. */
+  .zswipe{white-space:normal;text-align:center}
+  .zsw-a{margin-top:1px}
+}
 @media(max-width:360px){
-  .cols>.col{--fig:0px;--figgap:0px}
-  .cols .bu-fig{display:none}
+  .cols>.col{--fig:88px;--figgap:17px}
 }
 @media(max-width:720px){
   .bu-head{flex-wrap:wrap;gap:10px}
@@ -1220,8 +1317,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     emptyP:'Essayez une autre orthographe, ou remettez les filtres que vous avez décochés.',
     /* La flèche de fin de phrase (« … les autres branches → ») est devenue
        une flèche dessinée, animée, posée en tête de ligne : elle bouge, un
-       caractère non. Le mot reste celui de la prod, au vouvoiement. */
-    swipe:'Faites glisser pour voir les autres branches'
+       caractère non.
+       La phrase, elle, ne dit plus la même chose que celle de la prod : le
+       carrousel n'avait qu'un geste, la commutation en a deux — le doigt
+       et le nom qu'on touche. Elle les nomme tous les deux. */
+    swipe:'Faites glisser ou cliquez sur les noms pour changer de colonne'
   });
   /* Bannière de bande : la première entrée du niveau le plus haut présent.
      Marvel prenait son premier ⭐ ; DC n'a pas d'essentiels, ses deux
@@ -1545,9 +1645,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         var tabs=multi
           ? '<div class="ztabs" role="tablist" aria-label="Choisir une branche">'+
             z.cols.map(function(c,ci){
+              /* Le décompte dans l'onglet : sans lui, savoir où en est une
+                 branche demandait d'y aller. Il porte le même `data-done`
+                 que la tête de colonne — `tally()` en remplit autant qu'il
+                 en trouve, il n'y a rien à brancher. */
               return '<button type="button" role="tab" data-tab="'+ci+'"'+
                 ' aria-selected="'+(ci===0?'true':'false')+'" style="--k:'+brC(c.era)+'">'+
-                '<i></i>'+esc(c.era.title)+'</button>'; }).join('')+'</div>'
+                '<i></i>'+esc(c.era.title)+
+                '<span class="zt-n"><b data-done="'+c.i+'">0</b>/'+real(c.era).length+'</span>'+
+                '</button>'; }).join('')+'</div>'
           : '';
         var cols=z.cols.map(function(c){
           var list=real(c.era);
@@ -1577,7 +1683,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
                 '<b data-zn>1</b> / <i data-zt>'+z.cols.length+'</i></span>'+
             '</p>'
           : '';
-        body=tabs+swipe+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>';
+        /* Le mode d'emploi AVANT les noms : on lit comment s'en servir,
+           puis on s'en sert. Posé dessous, il arrivait après la chose
+           qu'il explique. */
+        body=swipe+tabs+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>';
       }
       html+='<section class="zone-sec" id="zone'+(zi+1)+'" data-zone="'+zi+'"'+
         ' data-cols="'+(z.event?0:z.cols.length)+'"'+
@@ -1615,6 +1724,53 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     });
   }
 
+  /* Le seuil du CSS, relu en JS, et la même borne décimale : en dessous la
+     bande commute, au-dessus elle est une vraie grille à quatre colonnes
+     et rien de ce bloc ne doit s'appliquer. Deux valeurs qui doivent rester
+     d'accord — si le CSS bouge, celle-ci bouge avec. */
+  var MOB=matchMedia('(max-width:1439.98px)');
+  /* Le décalage collant, lu sur l'élément plutôt que recopié : c'est le
+     `top` que le CSS vient de résoudre, donc les deux ne peuvent pas
+     diverger d'un palier à l'autre. */
+  function stick(el){ return parseFloat(getComputedStyle(el).top)||0; }
+  /* Les deux barres collantes au-dessus des onglets, mesurées. Le bandeau
+     ne bouge guère, la barre de filtres si : 59 px à 375, 100 à 1000, et
+     bien plus une fois dépliée. Écrite en dur, la valeur envoyait les
+     onglets se coller DERRIÈRE elle — visibles, mais illisibles et à
+     moitié hors du champ. Rappelée au redimensionnement et à l'ouverture
+     du panneau, qui sont les deux seules choses qui la changent. */
+  function setStick(){
+    var s=$('.sieve');
+    if(!s) return;
+    /* Le bas de la barre de filtres UNE FOIS COLLÉE, et non la somme des
+       deux hauteurs. Les deux ne sont pas la même chose : la barre se
+       colle à `top:63px` alors que le bandeau en fait 64, et 64 + 58,9
+       donnait 123 là où elle s'arrête à 121,9. Un pixel de fente, dans
+       lequel les fiches défilaient — c'est le fond qui avait l'air de
+       passer entre les filtres et les onglets. */
+    var v=parseFloat(getComputedStyle(s).top)+s.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--stick',Math.floor(v)+'px');
+  }
+  setStick();
+  /* La barre de filtres change de hauteur pour trois raisons : la fenêtre
+     est redimensionnée, le panneau est déplié, et — celle qu'on n'attend
+     pas — les polices arrivent. Au premier rendu elle tenait sur une
+     ligne et faisait 48 px ; une fois Big Shoulders chargée, ses libellés
+     passent sur deux lignes et elle en fait 59. `--stick` restait à 111
+     et les onglets se collaient DIX PIXELS DERRIÈRE elle.
+     Un `ResizeObserver` couvre les trois d'un coup, et n'a rien à savoir
+     de la cause. Il se déclenche aussi à la pose, ce qui remplace l'appel
+     ci-dessus — gardé quand même pour un navigateur qui ne l'a pas. */
+  var sv=$('.sieve');
+  if(sv && window.ResizeObserver) new ResizeObserver(setStick).observe(sv);
+  else {
+    addEventListener('load',setStick);
+    addEventListener('resize',function(){ clearTimeout(setStick._t);
+      setStick._t=setTimeout(setStick,120); });
+    var filtBox=$('.filt');
+    if(filtBox) filtBox.addEventListener('toggle',setStick);
+  }
+
   [].forEach.call(document.querySelectorAll('.zone-sec'),function(sec){
     var grid=$('.cols',sec), tabs=$('.ztabs',sec);
     if(!grid||!tabs) return;
@@ -1622,14 +1778,114 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       var b=ev.target.closest('[data-tab]'); if(!b) return;
       var col=grid.children[+b.dataset.tab];
       if(!col||col.hidden) return;
-      /* Le glissement doux vient du CSS, pas d'un `behavior:'smooth'` :
-         l'accroche obligatoire du carrousel interrompt l'animation pilotée
-         par script, et la colonne ne bougeait plus. Une affectation nue
-         arrive à destination dans tous les cas. */
-      grid.scrollLeft=col.getBoundingClientRect().left-
-        grid.getBoundingClientRect().left+grid.scrollLeft;
-      mark(+b.dataset.tab);
+      if(MOB.matches){
+        /* On peut être dix mille pixels à l'intérieur d'une branche quand
+           on en choisit une autre : sans ce recalage, la branche neuve
+           s'ouvrirait sous le pied de page. On revient sur les onglets
+           eux-mêmes, décalés de la hauteur des deux barres collantes,
+           sinon ils se posent DERRIÈRE elles. */
+        var y=tabs.getBoundingClientRect().top+scrollY-stick(tabs);
+        show(+b.dataset.tab);
+        scrollTo({top:y,behavior:'auto'});
+      }else{
+        /* Le glissement doux vient du CSS, pas d'un `behavior:'smooth'` :
+           l'accroche obligatoire du carrousel interrompt l'animation pilotée
+           par script, et la colonne ne bougeait plus. Une affectation nue
+           arrive à destination dans tous les cas. */
+        grid.scrollLeft=col.getBoundingClientRect().left-
+          grid.getBoundingClientRect().left+grid.scrollLeft;
+        mark(+b.dataset.tab);
+      }
     });
+    /* La branche affichée. `mark` ne fait que peindre l'onglet ; `show`
+       est ce qui décide de ce qu'on voit, et les deux doivent rester
+       d'accord — d'où l'appel groupé. */
+    function show(i,dir){
+      [].forEach.call(grid.children,function(c,ci){
+        c.classList.remove('sl-l','sl-r');
+        c.classList.toggle('on',ci===i);
+      });
+      if(dir){
+        var c=grid.children[i];
+        /* Relancer une animation sur un élément qui vient d'être affiché
+           demande un reflow entre le retrait et la pose de la classe :
+           sans lui le navigateur ne voit qu'un état, et rien ne bouge. */
+        void c.offsetWidth;
+        c.classList.add(dir>0?'sl-l':'sl-r');
+      }
+      mark(i);
+    }
+    /* ── le glissement : la commutation garde le geste du carrousel ────
+       Le carrousel donnait le doigt gratuitement, c'est ce qu'on perdait
+       en retirant le défilement horizontal. Il est rendu ici, mais il
+       change de branche au lieu de faire glisser quinze mille pixels.
+
+       Trois garde-fous, et ils comptent tous les trois : le geste doit
+       être plus horizontal que vertical (sinon un défilement de lecture
+       un peu oblique changeait de branche en pleine fiche), il doit
+       dépasser 55 px (un appui qui ripe n'est pas un geste), et il doit
+       durer moins de 700 ms (au-delà, c'est un doigt posé, pas un
+       glissement). Tout est en `passive` : on ne prend jamais la main sur
+       le défilement vertical, on se contente de lire ce qui s'est passé. */
+    var t0=null;
+    grid.addEventListener('touchstart',function(ev){
+      if(!MOB.matches||ev.touches.length!==1){ t0=null; return; }
+      t0={x:ev.touches[0].clientX,y:ev.touches[0].clientY,at:Date.now()};
+    },{passive:true});
+    grid.addEventListener('touchend',function(ev){
+      if(!t0) return;
+      var t=ev.changedTouches[0];
+      var dx=t.clientX-t0.x, dy=t.clientY-t0.y, ms=Date.now()-t0.at;
+      t0=null;
+      if(ms>700||Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.4) return;
+      pas(dx<0?1:-1);
+    },{passive:true});
+    /* Une branche décochée n'est pas dans le chemin du doigt : on marche
+       sur les colonnes VIVANTES, celles que les onglets montrent encore.
+       Au bout, on ne boucle pas — revenir à la première après la dernière
+       ferait passer pour un retour en arrière ce qui est une avance. */
+    function pas(d){
+      var live=[]; [].forEach.call(grid.children,function(c,ci){
+        if(!c.hidden) live.push(ci); });
+      var cur=-1;
+      live.forEach(function(ci,k){
+        if(grid.children[ci].classList.contains('on')) cur=k; });
+      if(cur<0) return;
+      var nx=live[cur+d];
+      if(nx===undefined) return;
+      var y=tabs.getBoundingClientRect().top+scrollY-stick(tabs);
+      show(nx,d);
+      scrollTo({top:y,behavior:'auto'});
+    }
+    /* Si la branche affichée tombe sous un filtre, on passe à la première
+       qui reste. Sans ça la bande sortait vide alors que ses onglets
+       annonçaient des entrées. Rappelée par `applyFilters`. */
+    sec._reshow=function(){
+      if(!MOB.matches) return;
+      var cur=-1, first=-1;
+      [].forEach.call(grid.children,function(c,ci){
+        if(c.hidden) return;
+        if(first<0) first=ci;
+        if(c.classList.contains('on')) cur=ci;
+      });
+      if(cur<0 && first>=0) show(first);
+    };
+    /* ── la branche d'arrivée : la plus fournie, pas la première ───────
+       Arriver sur « Origines de Superman » ouvrait la page sur trois
+       fiches, alors que l'Arrowverse en a quatre-vingt-huit : le visiteur
+       tombait sur la plus courte des quatre et pouvait croire que la zone
+       entière tenait là. La branche la plus fournie est celle qu'on est
+       venu lire.
+       C'est un décompte, pas un rang écrit à la main : les deux zones à
+       colonnes tombent sur l'Arrowverse (88 contre 16 et 8 et 3, puis 16
+       contre 8), et la règle vaut telle quelle pour une zone qu'on
+       ajouterait. À égalité, la première l'emporte — `>` et non `>=`. */
+    var gros=0, plus=-1;
+    [].forEach.call(grid.children,function(c,ci){
+      var n=c.querySelectorAll('.bu').length;
+      if(n>plus){ plus=n; gros=ci; }
+    });
+    show(gros);
     /* L'onglet actif se pose tout de suite au clic, sans attendre l'événement
        de défilement : la dernière colonne d'un carrousel ne peut pas venir se
        coller à gauche, le défilement bute avant et ne dirait pas la vérité. */
@@ -1669,6 +1925,29 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   zedges();
   addEventListener('resize',function(){ clearTimeout(zedges._t);
     zedges._t=setTimeout(zedges,150); });
+
+  /* ── rejoindre une entrée qui n'est pas dans la branche affichée ────
+     Le bouton « Reprendre », l'ancre de l'URL et le clic d'un badge
+     visent un identifiant, pas une branche. Sur mobile la branche qui le
+     porte peut être commutée : sans ce détour, on défilait jusqu'à une
+     entrée qui n'est pas à l'écran, et la page avait l'air de n'avoir
+     rien fait. */
+  function reveal(el){
+    if(!MOB.matches||!el) return;
+    var col=el.closest('.col'), sec=el.closest('.zone-sec');
+    if(!col||!sec||col.classList.contains('on')) return;
+    var tabs=$('.ztabs',sec), grid=$('.cols',sec);
+    if(!tabs||!grid) return;
+    var i=[].indexOf.call(grid.children,col);
+    var b=$('[data-tab="'+i+'"]',tabs);
+    if(b) b.click();
+  }
+  /* Un passage du bureau au téléphone peut laisser à l'écran une branche
+     que le filtre avait fait tomber : la commutation se relit. */
+  MOB.addEventListener('change',function(){
+    [].forEach.call(document.querySelectorAll('.zone-sec'),function(s){
+      if(s._reshow) s._reshow(); });
+  });
 
   /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
   function applyFilters(){
@@ -1725,6 +2004,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         });
       }
       if(sw) sw.hidden=live.length<2;
+      if(sec._reshow) sec._reshow();
     });
     /* Le nombre de colonnes vient de changer, et `grid.className` a été
        réécrit juste au-dessus : voiles de bord et compteur se relisent
@@ -1747,8 +2027,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
     $('#s-tot').textContent=ALL.length; $('#s-h').textContent=h+' h';
     D.eras.forEach(function(era,i){
-      var b=document.querySelector('[data-done="'+i+'"]');
-      if(b) b.textContent=real(era).filter(function(e){return prog[e.id];}).length;
+      /* `querySelectorAll` et non `querySelector` : le décompte d'une
+         branche est écrit à deux endroits depuis que les onglets le
+         portent aussi, et l'onglet vient AVANT la colonne dans le
+         document. Au singulier, c'est lui seul qui bougeait et la tête
+         de colonne restait à zéro — sans une ligne dans la console. */
+      var n=real(era).filter(function(e){return prog[e.id];}).length;
+      [].forEach.call(document.querySelectorAll('[data-done="'+i+'"]'),
+        function(b){ b.textContent=n; });
     });
     ZONES.forEach(function(z,zi){
       var b=document.querySelector('[data-zdone="'+zi+'"]');
@@ -1781,6 +2067,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
       applyFilters();
     }
+    reveal(el);
     var y=el.getBoundingClientRect().top+scrollY-118;
     scrollTo({top:y,behavior:'smooth'});
     el.querySelector('.bu-card').style.borderColor='var(--hot)';
@@ -2213,6 +2500,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var target=document.getElementById(location.hash.slice(1));
     if(target&&target.classList.contains('bu')){
       setTimeout(function(){
+        reveal(target);
         scrollTo({top:target.getBoundingClientRect().top+scrollY-118});
       },60);
     }
