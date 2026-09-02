@@ -1,22 +1,5 @@
 [
  {
-  "universe": "starwars",
-  "title": "Hiding from the Dark",
-  "date_sort": "2026-09-01",
-  "date_txt": "01/09/2026",
-  "kind": "Roman jeunesse",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "",
-  "syn": "Hiding from the Dark is a canon horror-themed middle grade novel written by Kiersten White that was published by Random House on September 1, 2026.",
-  "wiki": "Hiding from the Dark",
-  "syn_fr": "Hiding from the Dark est un roman jeunes adultes d'horreur écrit par Kiersten White. Il sera publié le premier septembre 2026 par Disney–Lucasfilm Press aux États-Unis. Il sera adapté en livre audio aux États-Unis.",
-  "kindKey": "novel",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "startrek",
   "title": "Star Trek: Strange New Worlds",
   "date_sort": "2026-09-03",
