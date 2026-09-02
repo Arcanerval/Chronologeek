@@ -921,10 +921,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      en offre deux là où le carrousel n'en avait qu'un.
      Elle n'est pas collante : on la lit une fois, ce sont les onglets
      qu'on reprend, et elle passe donc sous eux au défilement. */
-  .zswipe{display:flex;gap:8px;margin:0 0 7px;font-size:10px;
-    letter-spacing:.05em;color:rgba(255,253,247,.58)}
-  .zsw-a{width:15px;height:15px;stroke-width:2.4}
-  .zsw-n{font-size:14px}
+  /* Une seule ligne, centrée, collée aux noms. La taille est fluide et
+     non fixe : la phrase fait trente-sept pixels de large par pixel de
+     corps, et à 375 px de fenêtre il en reste trois cent dix-sept — 8,5
+     est donc le corps MAXIMUM qui tienne, pas un choix. Le figer là
+     l'aurait laissé minuscule sur un 414 ou une tablette, où la place
+     existe. Le `clamp` le fait grandir moins vite que la fenêtre, donc
+     ce qui tient à 375 tient partout au-dessus. */
+  .zswipe{display:flex;justify-content:center;gap:6px;margin:0 0 3px;
+    font-size:clamp(8.5px,2.2vw,11px);letter-spacing:.02em;
+    white-space:nowrap;color:rgba(255,253,247,.58)}
+  .zsw-a{width:12px;height:12px;stroke-width:2.6}
+  /* Le « 3 / 4 » disait combien de branches il y a et où l'on est. Les
+     noms sont maintenant JUSTE EN DESSOUS, tous les quatre, avec celui
+     de la branche en cours en blanc : le compteur redisait deux fois la
+     même chose, à trois pixels d'écart. */
+  .zsw-n{display:none}
   .ztabs[hidden],.zswipe[hidden]{display:none}
   .cols .rv{animation:none;opacity:1;transform:none}
   /* Le retour du geste : la colonne entre par le côté d'où elle vient.
@@ -968,6 +980,18 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .ztabs .zt-n{display:none}
   .cols:not(.zg-1) .col-h .col-t{display:block}
   .cols:not(.zg-1) .col-h{justify-content:space-between}
+}
+/* Le seuil de repli de la phrase n'est pas celui de l'affiche, et il se
+   calcule : à 8,5 px de corps elle fait 312 px, la flèche et sa gouttière
+   en prennent 18, les gouttières de page 40 — il faut donc 370 px de
+   fenêtre pour la tenir sur une ligne. Posé à 360, tout l'intervalle
+   361-369 débordait de neuf pixels. */
+@media(max-width:369.98px){
+  /* Sous 370 px, une ligne demanderait 7 px de corps — plus petit que
+     tout ce que le site écrit. La phrase passe donc à deux lignes,
+     centrées : illisible sur une ligne vaut moins que lisible sur deux. */
+  .zswipe{white-space:normal;text-align:center}
+  .zsw-a{margin-top:1px}
 }
 @media(max-width:360px){
   .cols>.col{--fig:88px;--figgap:17px}
