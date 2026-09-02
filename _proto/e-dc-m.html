@@ -827,43 +827,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
 .conf{position:fixed;inset:0;z-index:140;pointer-events:none}
 
-/* ── entre 821 et 1439 px, quatre colonnes ne tiennent plus ─────────
-   Les empiler ferait perdre le parallélisme, qui est tout le propos de la
-   bande. Elles glissent donc, deux visibles à la fois, avec les onglets de
-   branche remontés du mobile.
-   La borne basse compte : sans elle, `--fig` valait encore 124 px sur un
-   téléphone — `.cols.zg-4>.col` l'emporte sur le `.cols>.col` de la règle
-   mobile, qui descend à 110 puis à 74. La colonne dépassait de quinze
-   pixels et la page défilait latéralement. Sous 821 px, c'est donc la règle
-   générale qui tient tout, colonnes comme onglets. */
-/* Bornes décimales, et ce n'est pas une coquetterie : la largeur de fenêtre
-   n'est pas entière (facteur d'échelle de l'écran), et à 1439,5 px ni
-   `max-width:1439px` ni `min-width:1440px` ne s'appliquaient. La bande
-   retombait alors sur le CSS de base — quatre colonnes dans le gabarit de
-   1280, sans resserrement, 297 px par colonne. */
-@media(min-width:820.02px) and (max-width:1439.98px){
-  .cols.zg-4{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none}
-  .cols.zg-4::-webkit-scrollbar{display:none}
-  /* 47 % : deux colonnes tiennent, la troisième dépasse d'un doigt. À 50 %
-     la bande se coupait pile au bord et rien ne disait qu'il y en avait
-     quatre. */
-  .cols.zg-4>.col{flex:0 0 calc(47% - 7px);scroll-snap-align:start;--fig:124px}
-  /* même raison que sur mobile : le carrousel devient le conteneur de
-     défilement, `animation-timeline:view()` s'y résout et ne se déclenche
-     jamais — les bulles resteraient à opacité 0. */
-  .cols.zg-4 .rv{animation:none;opacity:1;transform:none}
-  .zone-sec[data-cols="4"] .ztabs{display:flex}
-  .zone-sec[data-cols="4"] .zswipe{display:flex}
-  .zone-sec[data-cols="4"] .ztabs[hidden],
-  .zone-sec[data-cols="4"] .zswipe[hidden]{display:none}
-}
 @media(max-width:1080px){
   .nav-links{display:none}
   .burger{display:grid}
   .foot{grid-template-columns:1fr 1fr}
 }
-/* ── MOBILE : une branche à la fois, choisie aux onglets ────────────
+/* ── SOUS 1440 px : une branche à la fois, choisie aux onglets ──────
    ÉCART AVEC e-dc.html, et c'est tout le proto. Le carrousel horizontal
    mettait les quatre colonnes dans une seule ligne flex : la plus haute
    donnait sa hauteur à la bande, et les trois autres finissaient dans le
@@ -885,16 +854,24 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      depuis n'importe quelle profondeur, pas seulement depuis le haut ;
    - le compteur de chaque onglet dit où en est chaque branche sans
      qu'on ait à y aller.
-   Une zone à colonne unique n'a rien à commuter : elle reste une grille. */
-@media(max-width:820px){
+   Une zone à colonne unique n'a rien à commuter : elle reste une grille.
+
+   La borne est à 1440 et non à 820 : le carrousel de la tranche
+   821-1439 avait exactement le même défaut, à la même hauteur de bande —
+   il montrait deux colonnes au lieu d'une, ce qui ne change rien au vide
+   des trois autres. La commutation vaut partout où les quatre colonnes
+   ne tiennent pas côte à côte, c'est-à-dire partout sauf au-dessus de
+   1440. Bornes décimales : la largeur de fenêtre n'est pas entière
+   (facteur d'échelle de l'écran), et à 1439,5 px ni `max-width:1439px`
+   ni `min-width:1440px` ne s'appliquaient — la bande retombait sur le
+   CSS de base, quatre colonnes dans le gabarit de 1280. */
+@media(max-width:1439.98px){
   .cols:not(.zg-1){display:block}
   /* `:not([hidden])` n'est pas une précaution : `.on` a plus de poids que
      le `.col[hidden]` du filtre, et une branche décochée serait revenue à
      l'écran dès qu'elle aurait été l'onglet actif. */
   .cols:not(.zg-1)>.col{display:none}
   .cols:not(.zg-1)>.col.on:not([hidden]){display:block}
-  .cols>.col{--fig:110px;--figgap:19px}
-  .col-t{font-size:23px}
   /* La tête de colonne redit le nom de la branche que l'onglet actif
      porte déjà, à trente pixels de lui. Seul le décompte reste, aligné à
      droite comme une mesure. */
@@ -905,20 +882,59 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      Collants dans la bande, pas dans la page : `position:sticky` sur un
      élément du corps de la zone se décroche de lui-même quand la zone
      sort de l'écran. Rien à calculer, rien à remettre à zéro.
-     `top` = bandeau (63) + barre de filtres (59), les deux collants
-     au-dessus. Une valeur en dur les suivrait mal : la barre de filtres
-     change de hauteur quand on la déplie. */
-  .ztabs{display:flex;position:sticky;top:122px;z-index:40;
-    gap:5px;margin:0 -16px 12px;padding:7px 16px 8px;
-    background:color-mix(in srgb,var(--era) 16%,var(--ink));
-    border-bottom:2px solid var(--line)}
+     `--stick` = bandeau + barre de filtres, les deux collants au-dessus.
+     Il est MESURÉ en JS, pas écrit : la barre de filtres fait 59 px à
+     375 px de fenêtre et 100 px à 1000, elle change encore quand on la
+     déplie, et une valeur en dur envoyait les onglets se coller derrière
+     elle. La valeur ci-dessous n'est que le repli du premier rendu.
+
+     La bande prend la largeur de la fenêtre, pas celle du `wrap` : celui-ci
+     porte 20 px de rembourrage, et une marge négative de 16 laissait
+     QUATRE PIXELS non peints de chaque côté. Les fiches défilaient dans
+     ces deux fentes, et le fond avait l'air de se déchirer au défilement.
+     Le rembourrage rend exactement ce que la marge a pris.
+
+     Fond opaque, pas le `color-mix` du `.list` : la bande passe par-dessus
+     des fiches, elle doit les couvrir et non les teinter. */
+  .ztabs{display:flex;justify-content:center;position:sticky;
+    top:var(--stick,122px);z-index:40;
+    gap:5px;margin:0 -20px 12px;padding:7px 20px 8px;
+    background:var(--ink);border-bottom:2px solid var(--line)}
+  /* `[hidden]` ne suffit jamais sur ce site : `display:flex` le bat, et
+     l'onglet d'une branche décochée restait à l'écran — cliquable, menant
+     à une colonne que le filtre venait de retirer. */
+  .ztabs button[hidden]{display:none}
   .ztabs button{font-size:12.5px;letter-spacing:.02em;padding:3px 8px;gap:5px}
   .ztabs button i{width:8px;height:8px}
   .ztabs .zt-n{font-family:'Chivo';font-weight:700;font-size:10px;
     letter-spacing:.02em;opacity:.62}
-  .zswipe{display:none}
+  /* La ligne de glissement reste : le geste existe toujours, il ne fait
+     plus glisser un carrousel mais commuter la branche. La flèche et le
+     compteur « 1 / 4 » disent la même chose qu'avant. Elle n'est pas
+     collante — on la lit une fois, ce sont les onglets qu'on reprend. */
+  .zswipe{display:flex}
   .ztabs[hidden],.zswipe[hidden]{display:none}
   .cols .rv{animation:none;opacity:1;transform:none}
+  /* Le retour du geste : la colonne entre par le côté d'où elle vient.
+     En `steps`, comme tout le reste de la page — pas un glissé continu. */
+  .cols>.col.sl-l{animation:slL .22s steps(3,end)}
+  .cols>.col.sl-r{animation:slR .22s steps(3,end)}
+}
+@keyframes slL{from{transform:translateX(26px);opacity:.35}to{transform:none;opacity:1}}
+@keyframes slR{from{transform:translateX(-26px);opacity:.35}to{transform:none;opacity:1}}
+/* ── TABLETTE : la colonne est large, l'affiche reprend sa taille ──
+   Entre 821 et 1439 px la branche affichée occupe toute la gouttière —
+   jusqu'à 1240 px. Rien à resserrer : c'est la mise en page d'une zone à
+   colonne unique, que la page connaît déjà (« DCU — Nouvel Univers »). */
+@media(min-width:820.02px) and (max-width:1439.98px){
+  .ztabs{gap:7px;padding:9px 20px 10px}
+  .ztabs button{font-size:15px;letter-spacing:.06em;padding:5px 11px;gap:7px}
+  .ztabs button i{width:9px;height:9px}
+  .ztabs .zt-n{font-size:11px}
+}
+@media(max-width:820px){
+  .cols>.col{--fig:110px;--figgap:19px}
+  .col-t{font-size:23px}
 }
 /* La colonne est seule et large : l'affiche n'a plus à céder sa place au
    titre, et elle reste à sa taille de lecture. C'est la contrepartie
@@ -1644,9 +1660,31 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     });
   }
 
-  /* Le seuil du CSS, relu en JS. En dessous, la bande commute ; au-dessus
-     elle glisse, et rien de ce bloc ne doit s'appliquer. */
-  var MOB=matchMedia('(max-width:820px)');
+  /* Le seuil du CSS, relu en JS, et la même borne décimale : en dessous la
+     bande commute, au-dessus elle est une vraie grille à quatre colonnes
+     et rien de ce bloc ne doit s'appliquer. Deux valeurs qui doivent rester
+     d'accord — si le CSS bouge, celle-ci bouge avec. */
+  var MOB=matchMedia('(max-width:1439.98px)');
+  /* Le décalage collant, lu sur l'élément plutôt que recopié : c'est le
+     `top` que le CSS vient de résoudre, donc les deux ne peuvent pas
+     diverger d'un palier à l'autre. */
+  function stick(el){ return parseFloat(getComputedStyle(el).top)||0; }
+  /* Les deux barres collantes au-dessus des onglets, mesurées. Le bandeau
+     ne bouge guère, la barre de filtres si : 59 px à 375, 100 à 1000, et
+     bien plus une fois dépliée. Écrite en dur, la valeur envoyait les
+     onglets se coller DERRIÈRE elle — visibles, mais illisibles et à
+     moitié hors du champ. Rappelée au redimensionnement et à l'ouverture
+     du panneau, qui sont les deux seules choses qui la changent. */
+  function setStick(){
+    var h=document.querySelector('body>header'), s=$('.sieve');
+    var v=(h?h.getBoundingClientRect().height:0)+(s?s.getBoundingClientRect().height:0);
+    document.documentElement.style.setProperty('--stick',Math.round(v)+'px');
+  }
+  setStick();
+  addEventListener('resize',function(){ clearTimeout(setStick._t);
+    setStick._t=setTimeout(setStick,120); });
+  var filtBox=$('.filt');
+  if(filtBox) filtBox.addEventListener('toggle',setStick);
 
   [].forEach.call(document.querySelectorAll('.zone-sec'),function(sec){
     var grid=$('.cols',sec), tabs=$('.ztabs',sec);
@@ -1661,7 +1699,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
            s'ouvrirait sous le pied de page. On revient sur les onglets
            eux-mêmes, décalés de la hauteur des deux barres collantes,
            sinon ils se posent DERRIÈRE elles. */
-        var y=tabs.getBoundingClientRect().top+scrollY-122;
+        var y=tabs.getBoundingClientRect().top+scrollY-stick(tabs);
         show(+b.dataset.tab);
         scrollTo({top:y,behavior:'auto'});
       }else{
@@ -1677,10 +1715,62 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     /* La branche affichée. `mark` ne fait que peindre l'onglet ; `show`
        est ce qui décide de ce qu'on voit, et les deux doivent rester
        d'accord — d'où l'appel groupé. */
-    function show(i){
+    function show(i,dir){
       [].forEach.call(grid.children,function(c,ci){
-        c.classList.toggle('on',ci===i); });
+        c.classList.remove('sl-l','sl-r');
+        c.classList.toggle('on',ci===i);
+      });
+      if(dir){
+        var c=grid.children[i];
+        /* Relancer une animation sur un élément qui vient d'être affiché
+           demande un reflow entre le retrait et la pose de la classe :
+           sans lui le navigateur ne voit qu'un état, et rien ne bouge. */
+        void c.offsetWidth;
+        c.classList.add(dir>0?'sl-l':'sl-r');
+      }
       mark(i);
+    }
+    /* ── le glissement : la commutation garde le geste du carrousel ────
+       Le carrousel donnait le doigt gratuitement, c'est ce qu'on perdait
+       en retirant le défilement horizontal. Il est rendu ici, mais il
+       change de branche au lieu de faire glisser quinze mille pixels.
+
+       Trois garde-fous, et ils comptent tous les trois : le geste doit
+       être plus horizontal que vertical (sinon un défilement de lecture
+       un peu oblique changeait de branche en pleine fiche), il doit
+       dépasser 55 px (un appui qui ripe n'est pas un geste), et il doit
+       durer moins de 700 ms (au-delà, c'est un doigt posé, pas un
+       glissement). Tout est en `passive` : on ne prend jamais la main sur
+       le défilement vertical, on se contente de lire ce qui s'est passé. */
+    var t0=null;
+    grid.addEventListener('touchstart',function(ev){
+      if(!MOB.matches||ev.touches.length!==1){ t0=null; return; }
+      t0={x:ev.touches[0].clientX,y:ev.touches[0].clientY,at:Date.now()};
+    },{passive:true});
+    grid.addEventListener('touchend',function(ev){
+      if(!t0) return;
+      var t=ev.changedTouches[0];
+      var dx=t.clientX-t0.x, dy=t.clientY-t0.y, ms=Date.now()-t0.at;
+      t0=null;
+      if(ms>700||Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.4) return;
+      pas(dx<0?1:-1);
+    },{passive:true});
+    /* Une branche décochée n'est pas dans le chemin du doigt : on marche
+       sur les colonnes VIVANTES, celles que les onglets montrent encore.
+       Au bout, on ne boucle pas — revenir à la première après la dernière
+       ferait passer pour un retour en arrière ce qui est une avance. */
+    function pas(d){
+      var live=[]; [].forEach.call(grid.children,function(c,ci){
+        if(!c.hidden) live.push(ci); });
+      var cur=-1;
+      live.forEach(function(ci,k){
+        if(grid.children[ci].classList.contains('on')) cur=k; });
+      if(cur<0) return;
+      var nx=live[cur+d];
+      if(nx===undefined) return;
+      var y=tabs.getBoundingClientRect().top+scrollY-stick(tabs);
+      show(nx,d);
+      scrollTo({top:y,behavior:'auto'});
     }
     /* Si la branche affichée tombe sous un filtre, on passe à la première
        qui reste. Sans ça la bande sortait vide alors que ses onglets
