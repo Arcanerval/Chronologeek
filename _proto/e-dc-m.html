@@ -899,7 +899,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .ztabs{display:flex;justify-content:center;position:sticky;
     top:var(--stick,122px);z-index:40;
     gap:5px;margin:0 -20px 12px;padding:7px 20px 8px;
-    background:var(--ink);border-bottom:2px solid var(--line)}
+    background:var(--ink);border-bottom:2px solid var(--line);
+    /* L'ombre haute n'est pas décorative : elle prolonge le fond de huit
+       pixels VERS LE HAUT, au cas où la mesure de `--stick` tomberait
+       encore sur un demi-pixel. La barre de filtres est au-dessus dans
+       l'ordre de peinture (z 50 contre 40), donc ce prolongement passe
+       dessous et ne se voit jamais. */
+    box-shadow:0 -8px 0 0 var(--ink)}
   /* `[hidden]` ne suffit jamais sur ce site : `display:flex` le bat, et
      l'onglet d'une branche décochée restait à l'écran — cliquable, menant
      à une colonne que le filtre venait de retirer. */
@@ -908,11 +914,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .ztabs button i{width:8px;height:8px}
   .ztabs .zt-n{font-family:'Chivo';font-weight:700;font-size:10px;
     letter-spacing:.02em;opacity:.62}
-  /* La ligne de glissement reste : le geste existe toujours, il ne fait
-     plus glisser un carrousel mais commuter la branche. La flèche et le
-     compteur « 1 / 4 » disent la même chose qu'avant. Elle n'est pas
-     collante — on la lit une fois, ce sont les onglets qu'on reprend. */
-  .zswipe{display:flex}
+  /* La ligne de glissement reste, AU-DESSUS des noms de branche et plus
+     petite qu'eux : c'est un mode d'emploi, pas un intitulé, et elle doit
+     s'effacer devant ce qu'elle explique. Elle nomme maintenant les deux
+     chemins — le doigt et le nom qu'on touche —, parce que la commutation
+     en offre deux là où le carrousel n'en avait qu'un.
+     Elle n'est pas collante : on la lit une fois, ce sont les onglets
+     qu'on reprend, et elle passe donc sous eux au défilement. */
+  .zswipe{display:flex;gap:8px;margin:0 0 7px;font-size:10px;
+    letter-spacing:.05em;color:rgba(255,253,247,.58)}
+  .zsw-a{width:15px;height:15px;stroke-width:2.4}
+  .zsw-n{font-size:14px}
   .ztabs[hidden],.zswipe[hidden]{display:none}
   .cols .rv{animation:none;opacity:1;transform:none}
   /* Le retour du geste : la colonne entre par le côté d'où elle vient.
@@ -1559,6 +1571,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var t; addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(set,120); });
   })();
 
+  /* i18n-off — PROTO SEULEMENT.
+     `CG.t.swipe` dit « Fais glisser pour voir les autres branches → »,
+     écrit pour un carrousel qui n'avait qu'un geste. La commutation en a
+     deux, et la phrase doit les nommer tous les deux. Elle est ici et non
+     dans `data-dc.js` parce que celui-ci sert aussi la page en ligne, qui
+     a encore le carrousel. Le jour où ce proto est adopté, la phrase
+     descend dans les deux fichiers de données et cette ligne disparaît. */
+  var SWIPE='Faites glisser ou cliquez sur les noms pour changer de colonne';
+  /* i18n-on */
+
   (function build(){
     var html='';
     ZONES.forEach(function(z,zi){
@@ -1617,12 +1639,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           ? '<p class="zswipe">'+
               '<svg class="zsw-a" viewBox="0 0 24 24" aria-hidden="true">'+
                 '<path d="M3 12h15M12 5.5 18.5 12 12 18.5"/></svg>'+
-              '<span class="zsw-t">'+esc(T.swipe)+'</span>'+
+              '<span class="zsw-t">'+esc(SWIPE)+'</span>'+
               '<span class="zsw-n" aria-hidden="true">'+
                 '<b data-zn>1</b> / <i data-zt>'+z.cols.length+'</i></span>'+
             '</p>'
           : '';
-        body=tabs+swipe+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>';
+        /* Le mode d'emploi AVANT les noms : on lit comment s'en servir,
+           puis on s'en sert. Posé dessous, il arrivait après la chose
+           qu'il explique. */
+        body=swipe+tabs+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>';
       }
       html+='<section class="zone-sec" id="zone'+(zi+1)+'" data-zone="'+zi+'"'+
         ' data-cols="'+(z.event?0:z.cols.length)+'"'+
@@ -1676,15 +1701,36 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      moitié hors du champ. Rappelée au redimensionnement et à l'ouverture
      du panneau, qui sont les deux seules choses qui la changent. */
   function setStick(){
-    var h=document.querySelector('body>header'), s=$('.sieve');
-    var v=(h?h.getBoundingClientRect().height:0)+(s?s.getBoundingClientRect().height:0);
-    document.documentElement.style.setProperty('--stick',Math.round(v)+'px');
+    var s=$('.sieve');
+    if(!s) return;
+    /* Le bas de la barre de filtres UNE FOIS COLLÉE, et non la somme des
+       deux hauteurs. Les deux ne sont pas la même chose : la barre se
+       colle à `top:63px` alors que le bandeau en fait 64, et 64 + 58,9
+       donnait 123 là où elle s'arrête à 121,9. Un pixel de fente, dans
+       lequel les fiches défilaient — c'est le fond qui avait l'air de
+       passer entre les filtres et les onglets. */
+    var v=parseFloat(getComputedStyle(s).top)+s.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--stick',Math.floor(v)+'px');
   }
   setStick();
-  addEventListener('resize',function(){ clearTimeout(setStick._t);
-    setStick._t=setTimeout(setStick,120); });
-  var filtBox=$('.filt');
-  if(filtBox) filtBox.addEventListener('toggle',setStick);
+  /* La barre de filtres change de hauteur pour trois raisons : la fenêtre
+     est redimensionnée, le panneau est déplié, et — celle qu'on n'attend
+     pas — les polices arrivent. Au premier rendu elle tenait sur une
+     ligne et faisait 48 px ; une fois Big Shoulders chargée, ses libellés
+     passent sur deux lignes et elle en fait 59. `--stick` restait à 111
+     et les onglets se collaient DIX PIXELS DERRIÈRE elle.
+     Un `ResizeObserver` couvre les trois d'un coup, et n'a rien à savoir
+     de la cause. Il se déclenche aussi à la pose, ce qui remplace l'appel
+     ci-dessus — gardé quand même pour un navigateur qui ne l'a pas. */
+  var sv=$('.sieve');
+  if(sv && window.ResizeObserver) new ResizeObserver(setStick).observe(sv);
+  else {
+    addEventListener('load',setStick);
+    addEventListener('resize',function(){ clearTimeout(setStick._t);
+      setStick._t=setTimeout(setStick,120); });
+    var filtBox=$('.filt');
+    if(filtBox) filtBox.addEventListener('toggle',setStick);
+  }
 
   [].forEach.call(document.querySelectorAll('.zone-sec'),function(sec){
     var grid=$('.cols',sec), tabs=$('.ztabs',sec);
@@ -1785,7 +1831,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       });
       if(cur<0 && first>=0) show(first);
     };
-    show(0);
+    /* ── la branche d'arrivée : la plus fournie, pas la première ───────
+       Arriver sur « Origines de Superman » ouvrait la page sur trois
+       fiches, alors que l'Arrowverse en a quatre-vingt-huit : le visiteur
+       tombait sur la plus courte des quatre et pouvait croire que la zone
+       entière tenait là. La branche la plus fournie est celle qu'on est
+       venu lire.
+       C'est un décompte, pas un rang écrit à la main : les deux zones à
+       colonnes tombent sur l'Arrowverse (88 contre 16 et 8 et 3, puis 16
+       contre 8), et la règle vaut telle quelle pour une zone qu'on
+       ajouterait. À égalité, la première l'emporte — `>` et non `>=`. */
+    var gros=0, plus=-1;
+    [].forEach.call(grid.children,function(c,ci){
+      var n=c.querySelectorAll('.bu').length;
+      if(n>plus){ plus=n; gros=ci; }
+    });
+    show(gros);
     /* L'onglet actif se pose tout de suite au clic, sans attendre l'événement
        de défilement : la dernière colonne d'un carrousel ne peut pas venir se
        coller à gauche, le défilement bute avant et ne dirait pas la vérité. */
