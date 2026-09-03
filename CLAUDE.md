@@ -1431,6 +1431,80 @@ porte. Les deux blocs de `e-app.js` s'inscrivent sur `DOMContentLoaded` —
 le bloc des ajouts ne trouverait pas le `.sg-p` que l'autre pose. Il en
 créerait un second, et les deux boutons tomberaient sur deux lignes.
 
+### Ce qui efface la progression, et les trois réponses
+
+Posées le 3 septembre 2026, après un courrier : un visiteur avait ajouté
+plusieurs œuvres à sa timeline Marvel et les a retrouvées disparues en
+revenant. **Rien dans le code ne les perd** — écriture, relecture, second
+parcours, import, réinitialisation, filtres non persistés, aucun appel à
+`clear()` : tout a été vérifié au navigateur. C'est le navigateur du
+visiteur qui vide, et c'est normal — **Safari efface les données d'un site
+après sept jours sans visite**, ce qui est court pour une timeline qui se
+suit sur des années. Chrome et Firefox le font quand le disque se remplit,
+et certains réglages effacent à la fermeture.
+
+L'IP n'y est pour rien, et ça revient à chaque fois : `localStorage` est
+indexé par **origine + profil de navigateur**. Le site n'a qu'une origine,
+`www`, `http` et `arcanerval.github.io` redirigeant tous en 301 vers
+`https://chronologeek.app`.
+
+Trois réponses, toutes dans `e-app.js` :
+
+- **`navigator.storage.persist()`**, qui n'était appelé nulle part. Il
+  n'est demandé **que si le visiteur a déjà coché ou ajouté quelque
+  chose** : Firefox ouvre une demande d'autorisation, la poser devant une
+  page vierge ne veut rien dire, et un refus ne se redemande pas. Chrome
+  l'accorde en silence sur ses heuristiques.
+- **La barre d'installation Apple vend la persistance, plus le
+  hors-ligne.** Sur l'écran d'accueil, une web app échappe au cap de sept
+  jours — c'est la seule exemption que WebKit documente, et donc la seule
+  sur laquelle compter côté Safari. Elle donne l'ordre des gestes parce
+  que **le conteneur de l'application est distinct de celui de Safari et
+  démarre à vide** : exporter, installer, réimporter. Sans ça on remplace
+  une perte à une semaine par une perte immédiate.
+- **Le rappel de sauvegarde**, une barre à la place et à l'allure de la
+  précédente, qui déclenche le `#export` de la page. Deux seuils, parce
+  que ce n'est pas la même perte : **vingt coches**, qui se refont de
+  mémoire, ou **cinq ajouts**, tapés à la main et parfois avec une image.
+  Fermée pour une semaine, et **jamais en même temps que la barre
+  d'installation** — sur iPhone c'est elle qui porte la vraie réponse.
+  D'où le report à `load` + 1,4 s : la barre Apple se construit à 1,2 s,
+  et on regarde une fois qu'elle a eu sa chance.
+
+Trois choses à savoir :
+
+- **Le rappel ne dépend pas de « Mes ajouts ».** Son premier jet vivait
+  dans ce bloc-là et ne comptait que les entrées écrites à la main — le
+  cas rare : la plupart des visiteurs cochent sans jamais rien ajouter.
+  Il est son propre bloc, et ne regarde que deux choses que les dix pages
+  ont toutes : les lignes cochées dans le DOM et le bouton `#export`. Le
+  Dossier, qui porte 535 œuvres et la plus longue progression du site, ne
+  charge pas `perso.js` et n'aurait jamais rien vu.
+- **On compte `aria-checked`, jamais la classe `done`.** Les huit
+  timelines posent les deux au rendu ; **le Dossier ne pose `done` qu'au
+  clic**, et ses 535 lignes arrivent donc cochées à l'écran et sans la
+  classe. Un compteur qui cherche `.done` rend zéro là où la progression
+  est la plus longue — sans erreur, sans une ligne dans la console. Les
+  neuf pages écrivent `aria-checked` dans le gabarit de leur ligne : c'est
+  la seule marque qui vaille pour les neuf. Même famille de piège que le
+  `.en[data-id]` d'avant la refonte, qui rendait zéro plutôt qu'une erreur.
+- **Les coches se comptent au rendu, pas dans le stockage.** La clé de
+  progression est déclarée dans le script de chaque page, sous un nom qui
+  change à la publication, et un navigateur qui a vu quatre univers en
+  porte quatre. Le DOM, lui, ne dit qu'une chose : ce qui est coché sur
+  cette page-ci. C'est le même raisonnement qu'`oublie()`.
+
+Ce qui n'a pas été fait, et pourquoi. **Un cookie de secours** ne marche
+pas : Safari plafonne aussi à sept jours les cookies posés en JS, et
+GitHub Pages ne peut pas en poser côté serveur. **IndexedDB** non plus :
+mêmes règles d'effacement, seul le quota est plus grand. **La File System
+Access API** — un fichier choisi une fois, réécrit tout seul — n'existe
+que sur Chrome et Edge de bureau, donc rate exactement la plateforme
+touchée. Et **un compte avec stockage serveur** est la seule chose qui
+survive vraiment à des années : il fait passer « rien n'est envoyé » à
+faux, et ajoute un service à administrer. À rouvrir seulement si les
+courriers se répètent.
+
 ## Les images
 
 **Tout est en WebP, à quatre fois la taille où l'image s'affiche.** Le 14 août 2026,
