@@ -1,3 +1,44 @@
+/* ═══ STOCKAGE PERSISTANT ═════════════════════════════════════════════
+   Un navigateur peut effacer tout seul ce que le site a écrit, et le
+   visiteur n'y est pour rien : Safari le fait après sept jours sans
+   visite, Chrome et Firefox le font quand le disque se remplit. Une
+   timeline se suit sur des années — sept jours, c'est le délai entre
+   deux épisodes.
+
+   `navigator.storage.persist()` demande l'exemption. Chrome l'accorde
+   en silence dès que le site est en favori, installé ou assez visité ;
+   Firefox ouvre une demande d'autorisation. Safari porte l'API depuis
+   15.4, mais **l'exemption sur laquelle il faut compter chez lui est
+   l'écran d'accueil**, la seule que WebKit documente — d'où le discours
+   de la barre d'installation, plus bas.
+
+   **On ne demande que si le visiteur a quelque chose à perdre.** La
+   demande de Firefox posée à quelqu'un qui n'a pas encore coché une
+   case ne veut rien dire, et une autorisation refusée ne se redemande
+   pas. On attend donc la première coche ou le premier ajout.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if (!navigator.storage || !navigator.storage.persist) return;
+
+  var aPerdre = false;
+  try {
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k.indexOf('cg-proto-') !== 0 && k.indexOf('cg-perso-') !== 0) continue;
+      var v = localStorage.getItem(k);
+      /* `{}` et `[]` sont des clés vides : une page visitée, rien coché */
+      if (v && v.length > 2) { aPerdre = true; break; }
+    }
+  } catch (_) { return; }     /* stockage fermé : rien à protéger */
+  if (!aPerdre) return;
+
+  function rien(){}
+  navigator.storage.persisted().then(function(deja){
+    if (!deja) navigator.storage.persist().then(rien, rien);
+  }, rien);
+})();
+
 /* ═══ BARRE D'INSTALLATION — direction E ══════════════════════════════
    Reprend le système de pwa.js : on ne montre rien si l'appli tourne
    déjà en autonome, rien non plus pendant sept jours après une fermeture.
@@ -44,8 +85,8 @@
     apple: {
       ico:'<path d="M12 3v12M12 3 8 7M12 3l4 4"/><path d="M5 12v9h14v-9"/>',
       txt: FR
-        ? 'Sur iPhone, iPad et Mac, c’est Safari qui installe : touchez <b>Partager</b>, puis « Sur l’écran d’accueil ».'
-        : 'On iPhone, iPad and Mac, Safari does the installing: tap <b>Share</b>, then “Add to Home Screen”.',
+        ? 'Safari efface les données d’un site après sept jours sans visite, vos coches comprises. Sur l’écran d’accueil, l’application y échappe. Dans l’ordre : <b>exportez</b> depuis Safari, touchez <b>Partager</b> puis « Sur l’écran d’accueil », et réimportez — l’application a son propre stockage et démarre à vide.'
+        : 'Safari wipes a site’s data after seven days without a visit, your check marks included. On the Home Screen, the app escapes that. In order: <b>export</b> from Safari, tap <b>Share</b> then “Add to Home Screen”, then import again — the app has its own storage and starts empty.',
       btn:null
     }
   };
@@ -89,7 +130,11 @@
   ].join('');
 
   function build(v, onGo){
+    /* Jamais deux bandeaux empilés : le rappel de sauvegarde prend la
+       même place, et celui qui arrive le second attend la visite
+       suivante — tous deux se ferment pour une semaine. */
     if (document.getElementById('appbar')) return;
+    if (document.getElementById('svbar')) return;
 
     var st = document.createElement('style');
     st.textContent = CSS;
@@ -636,7 +681,7 @@
     tag:    'Votre ajout',
     titreN: 'Ajouter une œuvre',
     titreE: 'Modifier votre ajout',
-    dek:    'Elle n’apparaîtra que sur cet appareil, dans votre navigateur. Rien n’est envoyé, et la timeline publique ne bouge pas.',
+    dek:    'Elle n’apparaîtra que sur cet appareil, dans votre navigateur. Rien n’est envoyé, et la timeline publique ne bouge pas. Un navigateur qui efface ses données l’emporte avec lui : le bouton Exporter en garde une copie.',
     fTitre: 'Titre',
     fType:  'Type',
     fDate:  'Date',
@@ -662,13 +707,18 @@
     imgAdd: 'Choisir une image…',
     imgChg: 'Changer',
     imgRm:  'Retirer l’image',
-    imgKo:  'Ce fichier n’a pas pu être lu comme une image.'
+    imgKo:  'Ce fichier n’a pas pu être lu comme une image.',
+    svT:    'Mettez vos ajouts à l’abri',
+    svTxt:  function(n){ return 'Vous avez ajouté ' + n + ' œuvres. Elles ne vivent que dans ce navigateur, ' +
+                         'qui peut les effacer tout seul — Safari le fait après sept jours sans visite. ' +
+                         'Le fichier d’export les garde, et les rapporte sur un autre appareil.'; },
+    svGo:   'Exporter'
   } : {
     add:    'Add a work',
     tag:    'Your addition',
     titreN: 'Add a work',
     titreE: 'Edit your addition',
-    dek:    'It only shows on this device, in your browser. Nothing is sent, and the public timeline stays as it is.',
+    dek:    'It only shows on this device, in your browser. Nothing is sent, and the public timeline stays as it is. A browser that clears its data takes it along: the Export button keeps a copy.',
     fTitre: 'Title',
     fType:  'Type',
     fDate:  'Date',
@@ -694,7 +744,12 @@
     imgAdd: 'Choose an image…',
     imgChg: 'Change',
     imgRm:  'Remove the image',
-    imgKo:  'That file could not be read as an image.'
+    imgKo:  'That file could not be read as an image.',
+    svT:    'Keep your additions safe',
+    svTxt:  function(n){ return 'You have added ' + n + ' works. They live in this browser only, ' +
+                         'and it can wipe them on its own — Safari does after seven days without a visit. ' +
+                         'The export file keeps them, and carries them to another device.'; },
+    svGo:   'Export'
   };
 
   var CSS = [
@@ -795,7 +850,38 @@
     '  font-size:13px;line-height:1}',
     '.mx-x:hover{border-color:var(--paper);color:var(--paper)}',
     '@media(max-width:520px){.mx-in{padding:18px 16px 16px}.mx-2{grid-template-columns:1fr}',
-    '  .mx-go{flex:1}}'
+    '  .mx-go{flex:1}}',
+    /* Le rappel de sauvegarde. Il reprend trait pour trait la barre
+       d'installation — même place, même hauteur, même geste pour la
+       fermer — mais il ne peut pas reprendre ses règles : celles-ci ne
+       sont posées que si cette barre-là se construit, et les deux ne
+       paraissent jamais ensemble. */
+    '.svbar{background:var(--ink);border-bottom:2px solid var(--paper);',
+    '  position:relative;z-index:65}',
+    '.svbar .wrap{display:flex;align-items:center;gap:14px;',
+    '  padding-top:11px;padding-bottom:11px}',
+    '.sv-ico{flex:0 0 auto;width:34px;height:34px;background:var(--hot);',
+    '  display:grid;place-items:center}',
+    '.sv-ico svg{width:19px;height:19px;fill:none;stroke:var(--ink);',
+    '  stroke-width:2;stroke-linecap:square}',
+    '.sv-txt{flex:1;min-width:0;font-size:13.5px;line-height:1.35;',
+    '  color:rgba(255,253,247,.78)}',
+    '.sv-txt b{display:block;font-family:\'Big Shoulders Display\',sans-serif;',
+    '  font-weight:900;font-size:19px;letter-spacing:.03em;text-transform:uppercase;',
+    '  color:var(--paper);line-height:1}',
+    '.svbar button{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:14.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}',
+    '.sv-go{flex:0 0 auto;background:var(--hot);border:2px solid var(--hot);',
+    '  color:var(--ink);padding:6px 16px}',
+    '.sv-go:hover{background:var(--paper);border-color:var(--paper)}',
+    '.sv-x{flex:0 0 auto;background:none;border:2px solid var(--line);',
+    '  color:rgba(255,253,247,.6);padding:4px 9px;font-size:13px;line-height:1}',
+    '.sv-x:hover{border-color:var(--paper);color:var(--paper)}',
+    '@media(max-width:640px){',
+    '  .svbar .wrap{flex-wrap:wrap;gap:10px 12px;align-items:flex-start}',
+    '  .sv-txt{flex:1 0 calc(100% - 48px)}',
+    '  .sv-go{order:3}.sv-x{order:4;margin-left:auto}',
+    '}'
   ].join('');
 
   var st = document.createElement('style');
@@ -1208,7 +1294,72 @@
      document. Sans lui, `bouton()` ne trouverait pas le `.sg-p` que
      l'autre bloc pose au chargement — il en créerait un second, et les
      deux boutons se retrouveraient sur deux lignes, dans le désordre. */
-  function demarre(){ marque(); bouton(); }
+  /* ── le rappel de sauvegarde ─────────────────────────────────────────
+     Un navigateur peut effacer tout seul ce qu'on lui a confié, et le
+     bouton d'export existe depuis toujours pour ça — mais il est dans le
+     panneau du HUD, replié, et personne ne l'ouvre avant d'avoir perdu
+     quelque chose. Le rappel va donc le chercher.
+
+     Trois bornes. **Cinq ajouts** : en dessous, ce qui se perd se refait
+     en une minute, et un bandeau au premier ajout se lit comme une
+     menace. **Une semaine** après une fermeture, comme la barre
+     d'installation. Et **jamais en même temps qu'elle** : sur iPhone,
+     c'est elle qui porte la vraie réponse — elle dit déjà d'exporter,
+     et elle dit en plus comment ne plus avoir à le refaire. D'où le
+     report à `load` : la barre Apple se construit 1,2 s après, et on
+     regarde une fois qu'elle a eu sa chance. */
+  var SVKEY = 'cg_save_nudge', SEMAINE = 7*24*3600*1000;
+
+  function rappel(){
+    var n = P.lis().length;
+    if (n < 5) return;
+    if (document.getElementById('appbar')) return;
+    var sortie = document.getElementById('export');
+    if (!sortie) return;                       /* page sans export : rien à proposer */
+
+    var vu = 0;
+    try { vu = Number(localStorage.getItem(SVKEY)) || 0; } catch (_) {}
+    if (vu && Date.now() - vu < SEMAINE) return;
+
+    function range(){ try { localStorage.setItem(SVKEY, String(Date.now())); } catch (_) {} }
+
+    var bar = document.createElement('aside');
+    bar.className = 'svbar';
+    bar.id = 'svbar';
+    bar.innerHTML =
+      '<div class="wrap">' +
+        '<span class="sv-ico" aria-hidden="true"><svg viewBox="0 0 24 24">' +
+          '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>' +
+        '</svg></span>' +
+        '<p class="sv-txt"><b></b><span></span></p>' +
+        '<button type="button" class="sv-go"></button>' +
+        '<button type="button" class="sv-x"></button>' +
+      '</div>';
+    /* en texte, pas en HTML : le compte vient d'une donnée du visiteur */
+    bar.querySelector('.sv-txt b').textContent = T.svT;
+    bar.querySelector('.sv-txt span').textContent = T.svTxt(n);
+    bar.querySelector('.sv-go').textContent = T.svGo;
+    var x = bar.querySelector('.sv-x');
+    x.textContent = '✕';
+    x.setAttribute('aria-label', T.fermer);
+
+    var hdr = document.querySelector('header');
+    if (hdr && hdr.parentNode) hdr.parentNode.insertBefore(bar, hdr);
+    else document.body.insertBefore(bar, document.body.firstChild);
+
+    /* On ne refait pas l'export ici : le bouton de la page le tient déjà,
+       avec la clé d'univers et les ajouts. Le clic suffit. */
+    bar.querySelector('.sv-go').addEventListener('click', function(){
+      range(); bar.remove(); sortie.click();
+    });
+    x.addEventListener('click', function(){ range(); bar.remove(); });
+  }
+
+  function demarre(){
+    marque(); bouton();
+    if (document.readyState === 'complete') setTimeout(rappel, 1400);
+    else addEventListener('load', function(){ setTimeout(rappel, 1400); });
+  }
   if (document.readyState === 'loading')
     document.addEventListener('DOMContentLoaded', demarre);
   else demarre();
