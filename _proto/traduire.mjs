@@ -214,6 +214,14 @@ const TRADUCTIONS = [
   ['111 entrées, d\'Altaïr à l\'Animus Hub — les jeux et leurs DLC, les romans, les comics et les courts métrages dans un seul fil.',
    '111 entries, from Altaïr to the Animus Hub — the games and their DLC, the novels, the comics and the short films in a single thread.'],
 
+  /* ── la carte DC Animation, écrite le 4 septembre 2026 ─────────
+     Neuvième univers, même situation que les quatre précédents. Les trois
+     bornes de l'accroche sont des noms de continuités — DCAU, DCAMU et
+     Arkhamverse —, et aucune ne se traduit. */
+  ['Nouvelle timeline : DC Animation', 'New timeline: DC Animation'],
+  ['80 entrées, du DCAU au DCAMU et à l\'Arkhamverse — les séries animées, les films animés et les jeux dans un seul fil.',
+   '80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.'],
+
   /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
      Même moule que la carte « Legacy » de juillet, qui dit en anglais
      « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just

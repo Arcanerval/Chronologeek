@@ -76,10 +76,10 @@
      échantillonné sur logo-chronologeek.png, médiane #d5a05f, crête #f0c97c */
   --hot:#f0c97c; --gold-deep:#d5a05f; --steel:#779fc3;
   --cleared:#3ddc84;
-  /* les huit encres de la charte, plus le gris des univers à venir.
+  /* les neuf encres de la charte, plus le gris des univers à venir.
      Le lilas de Star Trek est celui des consoles LCARS. */
   --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f;
-  --da:#e07b39; --ac:#c0202f; --soon:#8a8ab0;
+  --da:#e07b39; --ac:#c0202f; --dca:#2dd4bf; --soon:#8a8ab0;
   /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
      pour répondre au violet profond de leur bande, et le rose à « À venir » */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
@@ -196,7 +196,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
 .dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
 .u-sw{--k:#4d9fff}.u-mcu{--k:#e23636}.u-dc{--k:#f5c842}
-.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#c0202f}
+.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#c0202f}.u-dca{--k:#2dd4bf}
 .dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
 .dw-site{border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
@@ -309,11 +309,11 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .score .none{color:rgba(255,253,247,.5)}
 
 /* slot verrouillé : hachures en diagonale, tampon, et rien à cliquer */
-/* Sept univers et le verrouillé font huit cases dans une grille à deux
+/* Neuf univers et le verrouillé font dix cases dans une grille à deux
    colonnes : la dernière rangée est pleine, et la case « Bientôt » reprend
    la taille des autres. Elle ne prend la largeur entière que si elle se
-   retrouve seule sur sa rangée — c'était le cas à six univers, ça le
-   redeviendra au huitième. */
+   retrouve seule sur sa rangée — c'était le cas à huit univers, ça le
+   redeviendra au dixième. */
 .slot.lock{cursor:default}
 .slot.lock:nth-child(odd){grid-column:1/-1}
 .slot.lock:nth-child(odd) figure{aspect-ratio:26/9}
@@ -452,7 +452,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .resume a{justify-content:center}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Chronologeek","url":"https://chronologeek.app/","inLanguage":"en-US"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Chronologeek","inLanguage":"en-US","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":8,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CollectionPage","name":"Star Wars","url":"https://chronologeek.app/starwars","image":"https://chronologeek.app/images/starwars-banner.webp"}},{"@type":"ListItem","position":2,"item":{"@type":"CollectionPage","name":"Marvel Cinematic Universe","url":"https://chronologeek.app/marvel","image":"https://chronologeek.app/images/mcu.webp"}},{"@type":"ListItem","position":3,"item":{"@type":"CollectionPage","name":"DC — Multiverse Guide","url":"https://chronologeek.app/dc","image":"https://chronologeek.app/images/dcmultivers.webp"}},{"@type":"ListItem","position":4,"item":{"@type":"CollectionPage","name":"Avatar Legends","url":"https://chronologeek.app/avatar","image":"https://chronologeek.app/images/avatar.webp"}},{"@type":"ListItem","position":5,"item":{"@type":"CollectionPage","name":"Star Trek","url":"https://chronologeek.app/startrek","image":"https://chronologeek.app/images/startrek.webp"}},{"@type":"ListItem","position":6,"item":{"@type":"CollectionPage","name":"The Walking Dead","url":"https://chronologeek.app/walkingdead","image":"https://chronologeek.app/images/twd.webp"}},{"@type":"ListItem","position":7,"item":{"@type":"CollectionPage","name":"Dragon Age","url":"https://chronologeek.app/dragonage","image":"https://chronologeek.app/images/dragonage.webp"}},{"@type":"ListItem","position":8,"item":{"@type":"CollectionPage","name":"Assassin’s Creed","url":"https://chronologeek.app/assassinscreed","image":"https://chronologeek.app/images/acuniverse.webp"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Chronologeek","inLanguage":"en-US","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":9,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CollectionPage","name":"Star Wars","url":"https://chronologeek.app/starwars","image":"https://chronologeek.app/images/starwars-banner.webp"}},{"@type":"ListItem","position":2,"item":{"@type":"CollectionPage","name":"Marvel Cinematic Universe","url":"https://chronologeek.app/marvel","image":"https://chronologeek.app/images/mcu.webp"}},{"@type":"ListItem","position":3,"item":{"@type":"CollectionPage","name":"DC — Multiverse Guide","url":"https://chronologeek.app/dc","image":"https://chronologeek.app/images/dcmultivers.webp"}},{"@type":"ListItem","position":4,"item":{"@type":"CollectionPage","name":"Avatar Legends","url":"https://chronologeek.app/avatar","image":"https://chronologeek.app/images/avatar.webp"}},{"@type":"ListItem","position":5,"item":{"@type":"CollectionPage","name":"Star Trek","url":"https://chronologeek.app/startrek","image":"https://chronologeek.app/images/startrek.webp"}},{"@type":"ListItem","position":6,"item":{"@type":"CollectionPage","name":"The Walking Dead","url":"https://chronologeek.app/walkingdead","image":"https://chronologeek.app/images/twd.webp"}},{"@type":"ListItem","position":7,"item":{"@type":"CollectionPage","name":"Dragon Age","url":"https://chronologeek.app/dragonage","image":"https://chronologeek.app/images/dragonage.webp"}},{"@type":"ListItem","position":8,"item":{"@type":"CollectionPage","name":"Assassin’s Creed","url":"https://chronologeek.app/assassinscreed","image":"https://chronologeek.app/images/acuniverse.webp"}},{"@type":"ListItem","position":9,"item":{"@type":"CollectionPage","name":"DC Animation","url":"https://chronologeek.app/dcanimation","image":"https://chronologeek.app/images/dcanimation.webp"}}]}</script>
 </head>
 <body>
 
@@ -468,7 +468,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <a href="/starwars">Star Wars</a>
       <a href="/marvel">Marvel</a>
       <a href="/dc">DC</a>
-      <details class="nav-more"><summary>More universes</summary><div class="more-pop"><a href="/avatar">Avatar Legends</a><a href="/startrek">Star Trek</a><a href="/walkingdead">The Walking Dead</a><a href="/dragonage">Dragon Age</a><a href="/assassinscreed">Assassin’s Creed</a></div></details>
+      <details class="nav-more"><summary>More universes</summary><div class="more-pop"><a href="/avatar">Avatar Legends</a><a href="/startrek">Star Trek</a><a href="/walkingdead">The Walking Dead</a><a href="/dragonage">Dragon Age</a><a href="/assassinscreed">Assassin’s Creed</a><a href="/dcanimation">DC Animation</a></div></details>
       <a href="/upcoming" class="upc">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
     </nav>
@@ -483,7 +483,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   </div>
   <nav class="drawer" id="drawer" aria-label="Collapsed navigation">
     <span class="dw-lab">Universes</span>
-    <div class="dw-uni"><a href="/starwars" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="/marvel" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="/dc" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="/avatar" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="/startrek" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="/walkingdead" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="/dragonage" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="/assassinscreed" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a></div>
+    <div class="dw-uni"><a href="/starwars" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="/marvel" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="/dc" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="/avatar" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="/startrek" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="/walkingdead" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="/dragonage" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="/assassinscreed" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a><a href="/dcanimation" class="u-dca"><i aria-hidden="true"></i>DC Animation</a></div>
     <span class="dw-lab">The site</span>
     <div class="dw-site"><a href="#" aria-current="page">Home</a><a href="/deep-dives/" class="doss">Deep Dives</a><a href="/upcoming" class="upc">Upcoming</a><a href="/whats-new" class="news">What's New</a></div>
   </nav>
@@ -517,7 +517,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <!-- ══ SÉLECTION ═════════════════════════════════════════════════ -->
 <section class="pick" id="uni"><div class="wrap">
   <h2 class="disp">Universe selection</h2>
-  <p class="sub">Eight timelines kept up to date, in French and English.</p>
+  <p class="sub">Nine timelines kept up to date, in French and English.</p>
 
   <div class="slots">
 
@@ -657,14 +657,31 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       </span>
     </a>
 
-    <!-- Huit univers et le verrouillé font neuf cases : la case « Bientôt »
-         tombe seule sur la dernière rangée, et `.slot.lock:nth-child(odd)`
-         lui donne alors la largeur entière (voir la règle .slot.lock). -->
-    <div class="slot lock rv" style="--c:var(--soon);--i:8">
+    <a class="slot rv" href="/dcanimation" style="--c:var(--dca);--i:8"
+       data-u="dcanimation" data-total="80" data-hero="/images/dcanimation.webp">
+      <span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="/images/dcanimation.webp" alt="" width="640" height="274" loading="lazy" decoding="async"/>
+        <span class="halftone"></span><span class="shade"></span>
+        <span class="no">09</span><span class="state">Available</span>
+        <span class="nm">DC Animation</span>
+      </figure>
+      <span class="body">
+        <span class="d">Animated Series · Animated Films · Games · DLC · Short Films · Full chronological order</span>
+        <span class="pips" aria-hidden="true"></span>
+        <span class="score"><span><b class="d-n">0</b> / 80 watched</span><span class="d-p">0 %</span></span>
+        <span class="upd">Updated · September 2026</span>
+      </span>
+    </a>
+
+    <!-- Neuf univers et le verrouillé font dix cases : la rangée du bas est
+         pleine, et `.slot.lock:nth-child(odd)` ne joue donc pas — la case
+         « Bientôt » garde la taille des autres (voir la règle .slot.lock). -->
+    <div class="slot lock rv" style="--c:var(--soon);--i:9">
       <figure>
         <img src="/images/autresunivers.webp" alt="" width="640" height="274" loading="lazy" decoding="async"/>
         <span class="halftone"></span><span class="shade"></span>
-        <span class="no">09</span>
+        <span class="no">10</span>
         <span class="stamp"><span>Soon</span></span>
       </figure>
       <span class="body">
@@ -704,7 +721,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <li><a href="/starwars">Star Wars</a></li>
       <li><a href="/marvel">Marvel — MCU</a></li>
       <li><a href="/dc">DC Multiverse</a></li>
-      <li><a href="/avatar">Avatar Legends</a></li><li><a href="/startrek">Star Trek</a></li><li><a href="/walkingdead">The Walking Dead</a></li><li><a href="/dragonage">Dragon Age</a></li><li><a href="/assassinscreed">Assassin’s Creed</a></li>
+      <li><a href="/avatar">Avatar Legends</a></li><li><a href="/startrek">Star Trek</a></li><li><a href="/walkingdead">The Walking Dead</a></li><li><a href="/dragonage">Dragon Age</a></li><li><a href="/assassinscreed">Assassin’s Creed</a></li><li><a href="/dcanimation">DC Animation</a></li>
       <li><a href="/deep-dives/">Deep Dives</a></li>
     </ul></div>
     <div><h4>More</h4><ul>
@@ -725,13 +742,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 <div class="hud"><div class="in">
   <!-- 62 SW + 121 Marvel + 146 DC + 69 Avatar + 248 Star Trek + 45 TWD
-       + 43 Dragon Age + 111 Assassin's Creed. Le total était écrit 327 alors
-       que les trois cartes en annonçaient 328 : l'écart est corrigé en même
-       temps qu'Avatar entre dans le compte. -->
-  <b><em id="k-on">0</em> / 847</b>
+       + 43 Dragon Age + 111 Assassin's Creed + 80 DC Animation. Le total était
+       écrit 327 alors que les trois cartes en annonçaient 328 : l'écart est
+       corrigé en même temps qu'Avatar entre dans le compte. -->
+  <b><em id="k-on">0</em> / 927</b>
   <span class="lbl">entries checked</span>
   <div class="bar"><i id="k-fill"></i></div>
-  <span class="lbl">8 universes · 535 in the Deep Dive</span>
+  <span class="lbl">9 universes · 535 in the Deep Dive</span>
 </div></div>
 
 <script>
@@ -739,7 +756,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   'use strict';
   document.documentElement.className+=' js';
 
-  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multiverse',avatar:'Avatar Legends',startrek:'Star Trek',twd:'The Walking Dead',dragonage:'Dragon Age',assassinscreed:'Assassin’s Creed'};
+  var NAMES={sw:'Star Wars',mcu:'Marvel',dc:'DC Multiverse',avatar:'Avatar Legends',startrek:'Star Trek',twd:'The Walking Dead',dragonage:'Dragon Age',assassinscreed:'Assassin’s Creed',dcanimation:'DC Animation'};
   var slots=[].slice.call(document.querySelectorAll('.slot[data-u]'));
   var body=document.body, attract=document.getElementById('attract');
 
@@ -753,12 +770,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      et le HUD annonçait 742 / 734. Le décompte de l'accueil est celui
      de la découverte, quel que soit le parcours suivi. */
   /* `p-` écarte les entrées que le visiteur a ajoutées lui-même, pour la
-     raison qui vaut au second parcours : les huit `data-total` sont
+     raison qui vaut au second parcours : les neuf `data-total` sont
      éditoriaux et écrits à la main. Trois ajouts cochés, et le HUD
-     annoncerait 850 / 847. */
+     annoncerait 930 / 927. */
   var PARCOURS=/^([a-z]+-r-|p-)/;
   function read(u){
-    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+(u==='startrek'?'st':u))||'{}'))
+    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+(u==='startrek'?'st':u==='dcanimation'?'dcanim':u))||'{}'))
       .filter(function(k){ return !PARCOURS.test(k); }).length; }
     catch(e){ return 0; }
   }

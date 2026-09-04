@@ -111,6 +111,20 @@
       "image": "https://chronologeek.app/images/dragonage.webp"
     }
   },
+  "dcanimation": {
+    "fr": {
+      "title": "DC Animation — Chronologeek",
+      "ogTitle": "Timeline DC Animation — Chronologeek",
+      "desc": "La timeline DC Animation dans l’ordre chronologique — le DCAU, le DCAMU (New 52 et Tomorrowverse) et l’Arkhamverse, séries, films et jeux, sans spoil.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "en": {
+      "title": "DC Animation Timeline — Chronologeek",
+      "ogTitle": "DC Animation Timeline — Chronologeek",
+      "desc": "The DC Animation timeline in chronological order — the DCAU, the DCAMU (New 52 and Tomorrowverse) and the Arkhamverse, series, films and games, spoiler-free.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    }
+  },
   "assassinscreed": {
     "fr": {
       "title": "Assassin’s Creed — Chronologeek",

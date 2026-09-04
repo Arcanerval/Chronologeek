@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-09", label:"September 2026", items:[
+      {"nat":"site","uni":"dcanimation","kind":"timeline","title":"New timeline: DC Animation","txt":"80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.","href":"/dcanimation","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"jeunesse","title":"Hiding from the Dark","meta":"~0-4 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the young adult novel, in ~0-4 ABY, just after Battlefront II: Inferno Squad.","href":"/deep-dives/star-wars#0-4-aby-hiding-from-the-dark","cta":"See in the Deep Dive"}
     ]},
     { key:"2026-08", label:"August 2026", items:[

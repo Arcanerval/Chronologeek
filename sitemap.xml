@@ -37,6 +37,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/assassinscreed"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/assassinscreed"/>
   </url>
+  <url><loc>https://chronologeek.app/dcanimation</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcanimation"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcanimation"/>
+  </url>
   <url><loc>https://chronologeek.app/deep-dives/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
@@ -62,6 +66,7 @@
   <url><loc>https://chronologeek.app/fr/walkingdead</loc></url>
   <url><loc>https://chronologeek.app/fr/dragonage</loc></url>
   <url><loc>https://chronologeek.app/fr/assassinscreed</loc></url>
+  <url><loc>https://chronologeek.app/fr/dcanimation</loc></url>
   <url><loc>https://chronologeek.app/fr/dossiers/</loc></url>
   <url><loc>https://chronologeek.app/fr/dossiers/star-wars</loc></url>
   <url><loc>https://chronologeek.app/fr/a-venir</loc></url>

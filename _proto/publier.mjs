@@ -87,6 +87,12 @@ const ROUTES = [
   { cle: 'assassinscreed',
     fr: { proto: 'e-assassinscreed.html',     sortie: 'fr/assassinscreed.html',   url: '/fr/assassinscreed' },
     en: { proto: 'en-assassinscreed.html',    sortie: 'assassinscreed.html',      url: '/assassinscreed' } },
+  // DC Animation est le cinquième à prendre la chaîne à l'envers :
+  // `en-dcanimation.html` est écrit à la main, `e-dcanimation.html` en descend
+  // par traduire-dcanimation.mjs.
+  { cle: 'dcanimation',
+    fr: { proto: 'e-dcanimation.html',        sortie: 'fr/dcanimation.html',      url: '/fr/dcanimation' },
+    en: { proto: 'en-dcanimation.html',       sortie: 'dcanimation.html',         url: '/dcanimation' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -138,6 +144,8 @@ const ASSETS = {
   'data-dragonage-en.js':  '/data/dragonage-en.js',
   'data-assassinscreed.js':    '/data/assassinscreed-fr.js',
   'data-assassinscreed-en.js': '/data/assassinscreed-en.js',
+  'data-dcanimation.js':       '/data/dcanimation-fr.js',
+  'data-dcanimation-en.js':    '/data/dcanimation-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',

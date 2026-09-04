@@ -10,9 +10,11 @@ const IMG_CACHE = 'cg-img';
 const PRECACHE = [
   '/', '/index.html', '/starwars.html', '/marvel.html', '/dc.html', '/avatar.html',
   '/startrek.html', '/walkingdead.html', '/dragonage.html', '/assassinscreed.html',
+  '/dcanimation.html',
   '/whats-new.html', '/upcoming.html',
   '/fr/', '/fr/starwars.html', '/fr/marvel.html', '/fr/dc.html', '/fr/avatar.html',
   '/fr/startrek.html', '/fr/walkingdead.html', '/fr/dragonage.html', '/fr/assassinscreed.html',
+  '/fr/dcanimation.html',
   '/fr/nouveautes.html', '/fr/a-venir.html',
   '/deep-dives/', '/deep-dives/star-wars.html',
   '/fr/dossiers/', '/fr/dossiers/star-wars.html',
@@ -31,11 +33,11 @@ const PRECACHE = [
   '/perso.js',
   '/data/starwars-en.js', '/data/marvel-en.js', '/data/dc-en.js', '/data/avatar-en.js',
   '/data/startrek-en.js', '/data/walkingdead-en.js', '/data/dragonage-en.js',
-  '/data/assassinscreed-en.js',
+  '/data/assassinscreed-en.js', '/data/dcanimation-en.js',
   '/data/news-en.js',
   '/data/starwars-fr.js', '/data/marvel-fr.js', '/data/dc-fr.js', '/data/avatar-fr.js',
   '/data/startrek-fr.js', '/data/walkingdead-fr.js', '/data/dragonage-fr.js',
-  '/data/assassinscreed-fr.js',
+  '/data/assassinscreed-fr.js', '/data/dcanimation-fr.js',
   '/data/news-fr.js',
   '/data/dossier-star-wars-en.js', '/data/dossier-star-wars-fr.js'
 ];

@@ -18,7 +18,7 @@
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
-         assassinscreed, ou "" si le
+         assassinscreed | dcanimation, ou "" si le
          changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
@@ -37,6 +37,12 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
+
+      { nat:"site", uni:"dcanimation", kind:"timeline",
+        title:"Nouvelle timeline : DC Animation",
+        txt:"80 entrées, du DCAU au DCAMU et à l'Arkhamverse — les séries "+
+            "animées, les films animés et les jeux dans un seul fil.",
+        href:"/fr/dcanimation", cta:"Ouvrir la timeline" },
 
       { nat:"media", uni:"sw", kind:"jeunesse",
         title:"Hiding from the Dark", meta:"~0-4 ABY", vo:true,

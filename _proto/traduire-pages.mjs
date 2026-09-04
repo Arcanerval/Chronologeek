@@ -269,8 +269,8 @@ const TRADUCTIONS = [
   ['Continuer', 'Continue'],
   ['Reprendre ▸', 'Resume ▸'],             // CG.t.resume : Reprendre → Resume
   ['Ouvrir ▸', 'Open ▸'],
-  ['Huit chronologies tenues à jour, en français et en anglais.',
-   'Eight timelines kept up to date, in French and English.'],
+  ['Neuf chronologies tenues à jour, en français et en anglais.',
+   'Nine timelines kept up to date, in French and English.'],
   ['Suivi de progression à venir', 'Progress tracking coming soon'],
   ['Bientôt', 'Soon'],
   ['Les Dossiers', 'The Deep Dives'],
@@ -358,6 +358,17 @@ const TRADUCTIONS = [
   ['Jeux · DLC · Romans · Comics · Courts métrages · Ordre chronologique complet',
    'Games · DLC · Books · Comics · Short Films · Full chronological order'],
   ['/ 111 joués', '/ 111 played'],
+  /* ── la case DC Animation ─────────────────────────────────────
+     Neuvième univers, même situation que les quatre précédents : rien à
+     retrouver dans une prod qui ne l'a jamais porté. Son nom ne se traduit
+     pas, et il doit figurer ici, sinon la nav, le tiroir et le pied de page
+     ressortent sans traduction et le rapport les compte comme manquants.
+     Elle compte en « vus » et non en « joués » : cinquante-huit de ses
+     quatre-vingts entrées sont des séries, des films et des courts. */
+  ['DC Animation', 'DC Animation'],
+  ['Séries animées · Films animés · Jeux · DLC · Courts métrages · Ordre chronologique complet',
+   'Animated Series · Animated Films · Games · DLC · Short Films · Full chronological order'],
+  ['/ 80 vus', '/ 80 watched'],
   /* La ligne des sources du radar. La prod anglaise en portait trois ;
      le wiki Assassin's Creed est la quatrième depuis le 25 août 2026. */
   ['Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac, Assassin’s Creed Wiki',

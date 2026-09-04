@@ -28,8 +28,8 @@ Usage :
                                              remplace dans le proto source,
                                              puis rappelle quoi relancer
 
-Pages : sw, mcu, dc, avatar, startrek, twd, dragonage, assassinscreed, dossier,
-        news, accueil, avenir, dossiers
+Pages : sw, mcu, dc, avatar, startrek, twd, dragonage, assassinscreed, dcanimation,
+        dossier, news, accueil, avenir, dossiers
 """
 
 import re
@@ -46,10 +46,10 @@ class Paire:
     publie (en / fr), les entrees qui l'alimentent (donnees), et la source d'ou
     tout descend (le proto francais).
 
-    Quatre exceptions : Star Trek, The Walking Dead, Dragon Age et Assassin's
-    Creed s'ecrivent en anglais et le francais en descend. Leur source est donc
-    `en-startrek.html`, `en-twd.html`, `en-dragonage.html` et
-    `en-assassinscreed.html`, et `langue_source` le dit — sans quoi mirror
+    Cinq exceptions : Star Trek, The Walking Dead, Dragon Age, Assassin's Creed
+    et DC Animation s'ecrivent en anglais et le francais en descend. Leur source
+    est donc `en-startrek.html`, `en-twd.html`, `en-dragonage.html`,
+    `en-assassinscreed.html` et `en-dcanimation.html`, et `langue_source` le dit — sans quoi mirror
     ecrirait dans une sortie du script de traduction concerne, perdue au prochain
     passage, sans erreur et sans message."""
 
@@ -76,6 +76,8 @@ PAGES = {
                        langue_source="en"),
     "assassinscreed": Paire("assassinscreed.html", "fr/assassinscreed.html", "assassinscreed",
                             "e-assassinscreed.html", langue_source="en"),
+    "dcanimation": Paire("dcanimation.html", "fr/dcanimation.html", "dcanimation",
+                         "e-dcanimation.html", langue_source="en"),
     "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
                       "dossier-star-wars", "e-dossier-star-wars.html"),
     "news":     Paire("whats-new.html", "fr/nouveautes.html", "news", "e-nouveautes.html"),

@@ -8,7 +8,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 - Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`,
   `avatar.html`, `startrek.html`, `walkingdead.html`, `dragonage.html`,
-  `assassinscreed.html`
+  `assassinscreed.html`, `dcanimation.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
   (535 romans, comics et fictions audio, plus 63 repères écran)
@@ -19,7 +19,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 ### Ce qui s'édite, et ce qui se produit
 
-**Les vingt-six pages du site ne s'éditent pas.** Elles sont produites depuis
+**Les vingt-huit pages du site ne s'éditent pas.** Elles sont produites depuis
 `_proto/` par `node _proto/publier.mjs`, et toute retouche faite directement dans
 `starwars.html` est perdue à la publication suivante — sans erreur, sans message.
 
@@ -49,7 +49,11 @@ chaîne inversée » plus bas. **The Walking Dead fait pareil** —
 `en-assassinscreed.html` + `data-assassinscreed-en.js` sont la source,
 `node _proto/traduire-assassinscreed.mjs` écrit `e-assassinscreed.html` et
 `data-assassinscreed.js`. Publié le 25 août 2026 sous `/assassinscreed` et
-`/fr/assassinscreed` : le site compte vingt-six pages et huit univers.
+`/fr/assassinscreed`. **DC Animation est le cinquième** —
+`en-dcanimation.html` + `data-dcanimation-en.js` sont la source,
+`node _proto/traduire-dcanimation.mjs` écrit `e-dcanimation.html` et
+`data-dcanimation.js`. Publié le 4 septembre 2026 sous `/dcanimation` et
+`/fr/dcanimation` : le site compte vingt-huit pages et neuf univers.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -61,7 +65,8 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 
 Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar Legends `#7dd3fc`,
 Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
-Assassin's Creed `#c0202f`.
+Assassin's Creed `#c0202f`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
+DCAMU `#c084fc`, Arkhamverse `#4ade80`).
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Le quatrième univers s'appelle « Avatar Legends » depuis le 18 août 2026**, pour ne
@@ -157,6 +162,14 @@ radar, et l'accroche de « À venir » continue de n'énumérer que les six univ
 que le radar suit.
 `source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas, et
 `source_wookieepedia` la timeline des médias canon Star Wars.
+
+**DC Animation n'est pas au radar non plus, publié le 4 septembre 2026.**
+Ses trois continuités sont closes — le DCAU s'est terminé en 2019, le DCAMU
+en 2020, et l'Arkhamverse n'a rien d'annoncé après *Arkham Shadow*. Le studio
+qui les porte est déjà interrogé par la colonne DC, et ce qu'il annonce
+aujourd'hui appartient au DCU, pas à ces trois-là. La page publie donc sa
+timeline sans entrer au radar, comme Dragon Age, et l'accroche de « À venir »
+continue de n'énumérer que les six univers que le radar suit.
 
 **Assassin's Creed est au radar depuis le 25 août 2026, et sa colonne est vide.**
 C'est voulu, et ce n'est pas le cas de Dragon Age : la saga a bien sept œuvres
@@ -540,10 +553,10 @@ celui-ci sert les autres pages, et le renommer serait le piège du lexique.
 il n'utilise pas `TMDB_KEY` et aucune action ne le lance : il s'appelle à la main.
 L'interpréteur est `py` sur la machine de Niko, pas `python`.
 
-- `py sync.py check` — vérifie les treize paires : même nombre de lignes dans le
-  HTML, mêmes identifiants dans les données. Les treize clés sont `sw`, `mcu`,
-  `dc`, `avatar`, `startrek`, `twd`, `dragonage`, `assassinscreed`, `dossier`,
-  `news`, `accueil`, `avenir`, `dossiers`.
+- `py sync.py check` — vérifie les quatorze paires : même nombre de lignes dans
+  le HTML, mêmes identifiants dans les données. Les quatorze clés sont `sw`,
+  `mcu`, `dc`, `avatar`, `startrek`, `twd`, `dragonage`, `assassinscreed`,
+  `dcanimation`, `dossier`, `news`, `accueil`, `avenir`, `dossiers`.
 - `py sync.py show <page> <id>` — affiche une entrée dans les deux langues sans
   ouvrir les fichiers entiers.
 - `py sync.py mirror <page> "<ancien>" "<nouveau>"` — remplace dans le proto
@@ -564,9 +577,9 @@ chiffres d'entrées réels se comptent dans les données, pas ici.
 
 `mirror` écrit dans le proto source, plus dans les deux fichiers publiés. Écrire
 dans ce qui est produit se perdrait à la publication suivante, sans erreur et sans
-message. Le proto source est le français partout, **sauf les quatre chaînes
-inversées** — Star Trek, The Walking Dead, Dragon Age et Assassin's Creed — dont
-`langue_source` vaut `en` : écrire dans `e-startrek.html` serait écrasé au
+message. Le proto source est le français partout, **sauf les cinq chaînes
+inversées** — Star Trek, The Walking Dead, Dragon Age, Assassin's Creed et
+DC Animation — dont `langue_source` vaut `en` : écrire dans `e-startrek.html` serait écrasé au
 prochain `traduire-startrek.mjs`. Le journal des Nouveautés n'a pas
 d'identifiants : ses cartes se comptent au titre.
 
@@ -626,7 +639,7 @@ pourquoi dans son `LISEZ-MOI.md`. **Ne jamais le régénérer depuis le site.**
   zéro manque. Ce qui reste à écrire vit dans `traductions-twd.mjs` : l'accroche,
   les trois repères de lecture, les quatorze phases et les cinq badges. Les quinze
   œuvres, elles, gardent leur titre — aucune n'a de titre français.
-- `node _proto/publier.mjs` — pose les vingt-six pages, `/data/` et `app.js`. Voir
+- `node _proto/publier.mjs` — pose les vingt-huit pages, `/data/` et `app.js`. Voir
   « La publication » plus bas.
 
 Les quatre premiers acceptent `--check`, qui n'écrit rien et affiche le bilan.
@@ -640,7 +653,7 @@ du script concerné, puis relancer.
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
 posent `noindex`. Les recopier tels quels aurait effacé le référencement de
-vingt-six pages : rien n'aurait cassé, la console serait restée vide, et le site
+vingt-huit pages : rien n'aurait cassé, la console serait restée vide, et le site
 aurait disparu des résultats. Ces textes vivent dans **`_proto/seo.json`**, extrait
 une fois des pages d'avant la refonte, avec Avatar écrit à la main faute de page à
 reprendre. Le script ne les relit pas dans les pages publiées : celles-ci sont sa
@@ -696,7 +709,7 @@ dans `publier.mjs`.
 
 **5. Les données structurées**, depuis le 18 août 2026, dans `_proto/jsonld.mjs`.
 Trois blocs, jamais plus : `WebSite` sur les deux accueils, `BreadcrumbList` sur
-les vingt-quatre autres pages, `ItemList` sur les huit univers, la liste des
+les vingt-six autres pages, `ItemList` sur les neuf univers, la liste des
 Dossiers et l'accueil. Chaque entrée de timeline y est un `Movie`, une
 `TVSeries`, un `Book`, un `ComicStory`, un `VideoGame` ou un `VideoObject`, avec
 son ancre (`/dc#dcu-lanterns`), son nom et son visuel — plus son `isbn` quand
@@ -766,8 +779,8 @@ langue. `en-startrek.html` et `data-startrek-en.js` sont donc la **source**, et 
 français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul endroit
 du dépôt où l'on traduit dans ce sens.
 
-**Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age ni Assassin's Creed
-dans `PAGES` de `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
+**Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age, Assassin's Creed
+ni DC Animation dans `PAGES` de `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
 écraserait la source avec une retraduction de sa propre sortie, sans erreur et
 sans message.
 
@@ -1150,14 +1163,15 @@ retouche du CSS, qui est commun.
 
 Six univers alignés débordaient la barre. Depuis le **18 août 2026**, Star Wars,
 Marvel et DC restent en clair ; Avatar Legends, Star Trek, The Walking Dead,
-Dragon Age depuis le 20 août et Assassin's Creed depuis le 25 passent sous
+Dragon Age depuis le 20 août, Assassin's Creed depuis le 25 et DC Animation
+depuis le 4 septembre passent sous
 « Plus d'univers » / « More universes ». C'est un `<details class="nav-more">`
 natif : **pas une ligne de JS pour l'ouvrir**, et le clavier le pilote seul.
 `.nav-more:has(a[aria-current])>summary` le passe à l'or quand la page courante
-est dedans — sans ça, quatre pages sur vingt-six n'auraient rien d'allumé au menu.
+est dedans — sans ça, cinq pages sur vingt-huit n'auraient rien d'allumé au menu.
 
-Le tiroir mobile a suivi : les huit univers en **grille à deux colonnes** avec
-leur pastille de couleur (`.u-sw` … `.u-ac`, les huit encres de la charte), puis
+Le tiroir mobile a suivi : les neuf univers en **grille à deux colonnes** avec
+leur pastille de couleur (`.u-sw` … `.u-dca`, les neuf encres de la charte), puis
 les quatre pages du site. La règle générique `.drawer a` est devenue `.dw-site a`
 — laissée telle quelle, elle repassait les tuiles d'univers en blocs de 21 px et
 la grille tombait. Même chose pour le `@media(max-width:720px)`.
@@ -1168,10 +1182,10 @@ commutés par `aria-expanded` — que le script de chaque page pose déjà.
 **Ce qui referme ces deux menus vit dans `e-app.js`**, pas dans les pages : clic
 à côté, clic sur un lien du tiroir, touche Échap. Le HTML ne le fait pour aucun
 des deux, et un menu resté ouvert par-dessus la page qu'on vient d'ouvrir passe
-pour une page cassée. Une seule copie pour vingt-six pages, comme le formulaire
+pour une page cassée. Une seule copie pour vingt-huit pages, comme le formulaire
 de contact ci-dessous.
 
-Un neuvième univers se pose donc dans le déroulant et dans la grille du tiroir,
+Un dixième univers se pose donc dans le déroulant et dans la grille du tiroir,
 pas dans la rangée du haut — et dans les douze protos source, jamais dans les
 `en-*` produits.
 
@@ -1196,7 +1210,7 @@ les lignes de la mention légale.
 et le proposer avant qu'on ait demandé comment payer ne se lit pas bien.
 
 « Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
-les vingt-six pages partagent. L'écrire dans les protos aurait voulu dire vingt-six copies
+les vingt-huit pages partagent. L'écrire dans les protos aurait voulu dire vingt-huit copies
 du même dialogue et de son CSS. Quatre choses à savoir :
 
 - **L'envoi passe par `mailto:`**, faute de serveur : GitHub Pages ne reçoit pas de
@@ -1208,7 +1222,7 @@ du même dialogue et de son CSS. Quatre choses à savoir :
 - **L'adresse n'est nulle part dans le HTML** : elle est recomposée en JS. Les
   moissonneuses ramassent les pages, pas les concaténations.
 - **`margin:auto` est rappelé sur le `<dialog>`.** C'est lui qui centre un dialogue
-  modal, et les vingt-six pages posent `*{margin:0}` : sans le rappel, la boîte se colle
+  modal, et les vingt-huit pages posent `*{margin:0}` : sans le rappel, la boîte se colle
   en haut à gauche de l'écran. Rien dans la console, la page marche — elle est juste
   de travers.
 - **Le lien porte `data-contact` et `href="#contact"`.** L'attribut est ce que le
@@ -1230,7 +1244,7 @@ le motif choisi et un gabarit de trois lignes — une suggestion sans titre ni
 raison ne se traite pas.
 
 - « Suggérer une œuvre » est injecté au bas de `.cuts-body`, la section « Ce
-  qui est écarté », sur les huit univers **et le Dossier**. C'est là qu'on lit
+  qui est écarté », sur les neuf univers **et le Dossier**. C'est là qu'on lit
   ce qui manque, donc là qu'on se dit qu'il manque autre chose.
 - « Suggérer une timeline » est dans le HTML de `e-accueil.html`, sur la case
   « Bientôt », qui annonce déjà les univers en préparation.
@@ -1241,7 +1255,7 @@ dix-huit fichiers de données. Le bouton de l'accueil est écrit **vide** et
 reçoit son libellé au chargement — un texte dans le HTML devrait être traduit
 dans `traduire-pages.mjs`, et le gabarit du message avec lui. Et
 `data-contact` prend désormais une **valeur** (`oeuvre`, `timeline`) là où les
-vingt-six liens du pied de page le portent nu ; la capture est passée en
+vingt-huit liens du pied de page le portent nu ; la capture est passée en
 délégation sur `document`, sans quoi les boutons injectés plus tard ne
 seraient jamais écoutés.
 
@@ -1265,7 +1279,7 @@ Tout suit alors sans une ligne de plus : `ALL` les numérote, `row()` les
 dessine, `applyFilters()` les filtre, `tally()` les compte, la case à cocher
 les retient. Le fichier est publié en `/perso.js` (`ASSETS` et `ASSET_RE` de
 `publier.mjs`, `PRECACHE` de `sw.js`), et l'interface — dialogue, crayon,
-marquage — vit dans `e-app.js`, une copie pour vingt-six pages.
+marquage — vit dans `e-app.js`, une copie pour vingt-huit pages.
 
 Six points, tous rencontrés :
 
@@ -1525,8 +1539,8 @@ Les largeurs, toutes plafonnées à la taille native (on n'agrandit jamais) :
 Les trois icônes sont celles du manifeste PWA : il les déclare en `image/png`, et
 elles ne se convertissent pas.
 
-**Les huit univers ont deux WebP dans `images/` pour leur bouton « remonter en
-haut »** — Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, le
+**Huit univers sur neuf ont deux WebP dans `images/` pour leur bouton
+« remonter en haut »** — DC Animation reprend le bat-signal de DC — Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, le
 soleil de la Chantrie (`da1.webp` / `da2.webp`, 384×384), l'insigne des Assassins
 (`actop1.webp` / `actop2.webp`, 384×384 — grisé au repos, doré et brisé au
 survol), et Rick Grimes
@@ -1576,7 +1590,8 @@ Star Wars 62 (9 must / 37 important / 16 bonus), Marvel 121 (49 / 30 / 42),
 DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34),
 The Walking Dead 45 (29 must / 3 important / 13 bonus),
 Dragon Age 44 (15 must / 10 important / 19 bonus),
-Assassin's Creed 111 (34 must / 36 important / 41 bonus).
+Assassin's Creed 111 (34 must / 36 important / 41 bonus),
+DC Animation 80 (61 must / 9 important / 10 bonus).
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
 repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un

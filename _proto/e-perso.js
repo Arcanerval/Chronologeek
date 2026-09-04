@@ -50,7 +50,7 @@
      s'arrête au premier qui porte des ères : une page n'en charge
      jamais deux. */
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
-              'ASSASSINSCREED', 'CGD'];
+              'ASSASSINSCREED', 'DCANIM', 'CGD'];
 
   var D = null, nom = '';
   for (var i = 0; i < NOMS.length; i++) {

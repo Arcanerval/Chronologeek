@@ -22,6 +22,9 @@
 
 export const DCA_IDENTIQUES = [
   "305 h",
+  /* le nom du fichier d'export : une seule copie sert les deux langues,
+     comme sur les huit autres pages */
+  "chronologeek-dcanimation.json",
   "Arkhamverse",
   "Batman vs. Robin",
   "Batman: Arkham Asylum",

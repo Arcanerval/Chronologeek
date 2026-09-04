@@ -235,7 +235,7 @@
    est coché **sur cette page-ci**.
 
    **On lit `aria-checked`, pas la classe `done`.** C'était le piège :
-   les huit timelines posent les deux au rendu, le Dossier ne pose
+   les neuf timelines posent les deux au rendu, le Dossier ne pose
    `done` qu'au clic — ses 535 lignes arrivent cochées à l'écran et
    sans la classe. Un rappel qui compte `.done` ne se déclenchait donc
    jamais là où la progression est la plus longue du site, et rien ne
@@ -1492,6 +1492,7 @@
     { u:'twd',            prog:'cg-proto-twd',            perso:'cg-perso-twd' },
     { u:'dragonage',      prog:'cg-proto-dragonage',      perso:'cg-perso-data_da' },
     { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed' },
+    { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -1504,7 +1505,7 @@
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',
-    dek:   'Vos coches sur les huit timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
+    dek:   'Vos coches sur les neuf timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
     exp:   'Tout exporter',
     imp:   'Importer',
     nom:   'chronologeek-tout.json',
@@ -1519,7 +1520,7 @@
     }
   } : {
     titre: 'All your timelines, in one file',
-    dek:   'Your check marks across the eight timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
+    dek:   'Your check marks across the nine timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
     exp:   'Export everything',
     imp:   'Import',
     nom:   'chronologeek-all.json',

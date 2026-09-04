@@ -2242,10 +2242,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({universe:'dc',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    var blob=new Blob([JSON.stringify({universe:'dcanimation',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob); a.download='chronologeek-dc.json';
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-dcanimation.json';
     document.body.appendChild(a); a.click(); a.remove();
   });
   $('#import').addEventListener('click',function(){ $('#import-file').click(); });
@@ -2258,7 +2258,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         /* Le fichier de l'accueil porte les neuf univers : on n'en prend
            que le sien. Sans cette ligne, `d.progress` etant absent, tout
            le fichier passait pour une progression. */
-        if(d&&d.universes) d=d.universes.dc||{};
+        if(d&&d.universes) d=d.universes.dcanimation||{};
         prog=d.progress||d||{}; save();
         /* les ajouts perso avant tout : ils changent la timeline elle-meme, donc la page se rebatit */
         if(window.CGP&&window.CGP.fusionne(d.mine)){ location.reload(); return; }
