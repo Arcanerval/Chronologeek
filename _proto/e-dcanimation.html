@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Chronologeek — DC Animation (proto E)</title>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
+<link rel="preload" as="image" href="/images/dcanimation.webp"/>
+<!--
+  ═══ CONTRAT DE DIRECTION — E · PAGE D'UNIVERS ═══════════════════════
+  THÈSE : cette page ne liste pas, elle donne à choisir sa prochaine étape.
+  Elle refuse la liste sur fond sombre à accent unique et prend la grammaire
+  de l'écran de sélection : grande image par ère, curseur qui claque, états
+  à faire / terminé. La complétion n'est pas plaquée, c'est la mécanique.
+  MONDE PROPRE : couleur noyée, une par ère, qui inonde toute la région et
+  change au défilement. Champs de couleur à bords francs, chevrons en
+  diagonale, trame de demi-teinte sur les visuels, titrage condensé à ombre
+  portée dure et décalée. Aucun halo, aucun verre, aucun arrondi.
+  ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
+  TERMINÉ : la couleur de l'univers, #f5c842, celle de la charte DC. C'est
+  le seul univers dont la couleur touche à l'or de l'accent : le tampon la
+  prend en aplat plein, l'accent ne sert qu'au trait et au texte, et les
+  deux ne se rencontrent jamais sur la même forme.
+  RÉCIT : le visiteur voit d'abord des images, comprend qu'il choisit, et
+  voit sa carte se remplir entrée par entrée.
+  STRUCTURE : DC n'a pas d'ères mais des colonnes parallèles. Les quatre
+  zones de la page de prod sont déroulées en huit bandes, chacune portant
+  sa zone en sus-titre — l'ordre de lecture reste celui du site.
+  ÉCART AVEC e-dc.html : les quatre bandes d'avant l'événement — Origines de
+  Superman, Origines de Batman, Arrowverse, DCEU — tiennent ici sur une
+  seule zone, donc sur quatre colonnes côte à côte au lieu de deux zones de
+  deux. Trois endroits changent, et rien d'autre : la fusion des zones au
+  chargement, l'encre de l'événement attribuée par nature plutôt que par
+  rang, et le CSS de `.cols.zg-4`. Le reste de la page est mot pour mot
+  celui de e-dc.html.
+  TEXTES : tout ce qui est prose vient de fr/dc.html, mot pour mot,
+  au vouvoiement. Rien n'est réécrit ici.
+-->
+<style>
+/* ══ POLICES : servies par le site, plus par Google ═════════════════
+   Le `display=swap` de Google montrait la police de secours le temps que
+   le fichier arrive de fonts.gstatic.com : d'où le clignotement à chaque
+   changement de page. Servies ici, préchargées et mises au cache du
+   service worker, elles sont là avant le premier rendu.
+   Deux fichiers variables par famille : latin, et latin-ext pour ce que
+   le premier ne couvre pas. */
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/bigshoulders-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/bigshoulders-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Chivo';font-style:italic;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-italic-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Chivo';font-style:italic;font-weight:100 900;
+  font-display:block;src:url(/fonts/chivo-italic-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{
+  --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
+  --hot:#f0c97c; --gold-deep:#d5a05f;
+  /* la marque « terminé » prend la couleur de l'univers, pas un vert générique */
+  --uni:#2dd4bf;
+  /* huit encres, une par bande, et elles ne sont pas décoratives : chacune
+     prend la teinte sombre de sa branche, celle des pastilles du panneau de
+     filtres. Violet Elseworlds, vert Arrowverse, bleu DCEU, ocre DCU. Deux
+     bandes de la même branche partagent donc la même famille, et la seule
+     rouge de la page est l'événement majeur — on le voit venir au
+     défilement bien avant de lire son titre. */
+  --era1:#3f2a6b; --era2:#2b2050; --era3:#16593a; --era4:#123f70;
+  --era5:#6d1b2c; --era6:#0f5a52; --era7:#5c2060; --era8:#8a3312;
+  /* les couleurs de branche, telles quelles depuis la page de prod */
+  --br-else:#c084fc; --br-av:#22c55e; --br-dceu:#3b82f6; --br-dcu:#f97316;
+  /* les trois entrées colorées de la nav */
+  --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
+  /* badges de type, charte du site */
+  --t-film:#64b5f6; --t-filmanim:#90caf9; --t-serie:#81c784;
+  --t-anime:#ce93d8; --t-jeu:#ffb74d; --t-special:#ffa726; --t-video:#f472b6;
+  --t-dlc:#ffcc80; --t-short:#ffa726;
+  --era:var(--era1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-x:none}
+body{background:var(--ink);color:var(--paper);
+  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;overscroll-behavior-x:none;
+  /* la barre du bas se mesure : elle passe sur deux lignes en etroit */
+  padding-bottom:calc(var(--hud-h,50px) + 14px)}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+::selection{background:var(--hot);color:var(--ink)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+/* l'ombre décalée dure : réservée aux grands titres, jamais aux entrées —
+   sur une bulle elle débordait de la case et passait sur le titre voisin */
+.off{text-shadow:4px 4px 0 var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
+  font-weight:700;padding:10px 16px}
+.skip:focus{left:0}
+
+/* ══ trame de demi-teinte : matière du monde, posée sur les visuels ══ */
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply}
+
+/* ══ bandeau ═══════════════════════════════════════════════════════ */
+/* `body>header` et non `header` : les têtes de colonnes sont elles aussi
+   des <header>, et la règle les rendait collantes à top:0 avec le même
+   z-index que la barre de navigation. « SUPERMAN ORIGINS » venait donc se
+   poser par-dessus le menu et le panneau de filtres au défilement. */
+body>header{position:sticky;top:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--paper)}
+body>header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px}
+/* Le logo se retracte : a 375 px, ses 260 px plus le drapeau, le burger
+   et les gouttieres reclamaient 410 px, et l'en-tete sortait de l'ecran
+   par la droite. `flex:0 1 auto` avec `min-width:0` le laisse rendre les
+   pixels de trop, et `height:auto` lui garde ses proportions. */
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 1 auto;min-width:0}
+.brand img{height:auto;width:auto;max-height:23px;max-width:100%}
+.nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
+.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+  text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
+  padding:2px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+.nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
+.nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
+.nav-links a.news,.drawer a.news{color:var(--c-news)}
+.nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
+.nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
+.nav-links a.news:hover{border-bottom-color:var(--c-news)}
+.nav-links a.doss:hover,.nav-links a.upc:hover,.nav-links a.news:hover{filter:brightness(1.2)}
+.nav-tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
+  background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
+.icon-btn:hover{border-color:var(--paper)}
+/* le drapeau se passe de cadre : c'est déjà une forme fermée */
+.lang-btn{border:0;width:auto;height:auto;padding:2px}
+.lang-btn:hover{border:0;transform:translateY(-1px)}
+.lang-btn svg{width:38px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.burger{display:none}
+.burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
+/* Un bouton, deux dessins : les trois barres tant que le tiroir est ferme,
+   la croix des qu'il s'ouvre. C'est `aria-expanded`, deja pose par le
+   script de chaque page, qui commande — rien a ajouter cote JS. */
+.burger .x{display:none}
+.burger[aria-expanded=true] .m{display:none}
+.burger[aria-expanded=true] .x{display:block}
+/* ── PLUS D'UNIVERS : le deroulant du menu ─────────────────────────
+   Six univers en clair debordaient la barre. Trois restent — ce sont les
+   trois plus consultes —, les trois autres passent sous un bouton.
+   <details> le fait sans une ligne de JS et se pilote au clavier. */
+.nav-more{position:relative}
+.nav-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:16px;text-transform:uppercase;
+  letter-spacing:.07em;color:rgba(255,253,247,.7);padding:2px 0;
+  border-bottom:2px solid transparent}
+.nav-more>summary::-webkit-details-marker{display:none}
+.nav-more>summary::after{content:'';width:6px;height:6px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.nav-more>summary:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-more[open]>summary{color:var(--paper);border-bottom-color:var(--paper)}
+.nav-more[open]>summary::after{transform:translateY(1px) rotate(225deg)}
+.nav-more:has(a[aria-current])>summary{color:var(--hot);border-bottom-color:var(--hot)}
+.more-pop{position:absolute;top:calc(100% + 10px);left:-13px;z-index:70;min-width:192px;
+  background:var(--ink);border:2px solid var(--paper);padding:4px 0;
+  box-shadow:0 9px 0 rgba(13,11,18,.5)}
+.more-pop a{display:block;padding:9px 15px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,253,247,.78);
+  text-decoration:none;white-space:nowrap;border-bottom:0}
+.more-pop a:hover{background:var(--paper);color:var(--ink)}
+.more-pop a[aria-current]{color:var(--hot)}
+/* ── LE TIROIR : les six univers d'abord, en deux colonnes ─────────
+   Dix liens pleine largeur faisaient defiler le menu lui-meme. Les univers
+   passent en grille — leur pastille les distingue plus vite que leur nom —
+   et les quatre pages du site suivent dessous, a l'ancienne taille. */
+.drawer{display:none;border-bottom:2px solid var(--paper);background:var(--ink);
+  max-height:calc(100vh - var(--hh,53px));overflow-y:auto}
+.drawer.open{display:block}
+.drawer a[aria-current]{color:var(--hot)}
+.dw-lab{display:block;padding:11px 20px 5px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,253,247,.44)}
+.dw-uni{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 16px 12px}
+.dw-uni a{display:flex;align-items:center;gap:8px;padding:10px 9px;text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:16.5px;text-transform:uppercase;
+  letter-spacing:.04em;line-height:1.05;color:rgba(255,253,247,.86);border:2px solid var(--line)}
+.dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
+.dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
+.u-sw{--k:#4d9fff}.u-mcu{--k:#e23636}.u-dc{--k:#f5c842}
+.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#c0202f}.u-dca{--k:#2dd4bf}
+.dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
+.dw-site{border-top:2px solid rgba(255,253,247,.14)}
+.dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
+  border-top:2px solid rgba(255,253,247,.14)}
+.dw-site a:first-child{border-top:0}
+
+/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
+.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper);
+  min-height:min(60vh,520px);display:flex;align-items:flex-end}
+/* Deux plans tirés du même fichier : la profondeur ne coûte donc pas un
+   octet de plus. Les débords restent courts — au-delà, `cover` sur-zoome
+   la bannière et le visuel part en bouillie. */
+.plane{position:absolute;inset:0 -2%;background-size:cover;background-position:center;
+  background-image:url(/images/dcanimation.webp)}
+.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p2{inset:0 -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
+  clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
+.veil{position:absolute;inset:0;
+  /* le voile prend le bleu DCEU et non l'or de l'univers : un dégradé doré
+     sur toute la hauteur de l'écran d'accroche noyait l'accent du bouton. */
+  background:linear-gradient(to top,var(--ink) 2%,
+             color-mix(in srgb,#1b3a63 62%,var(--ink)) 38%,
+             color-mix(in srgb,var(--era1) 40%,transparent))}
+.attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
+.attract h1{font-size:clamp(50px,11vw,140px);max-width:12ch}
+.tag{display:inline-block;background:var(--paper);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dek{margin-top:15px;font-size:17px;color:rgba(255,253,247,.92)}
+.dek b{display:block;color:var(--paper);font-weight:700;margin-top:4px}
+.upd{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66);display:flex;align-items:center;gap:7px}
+.upd i{width:8px;height:8px;background:var(--uni);display:block}
+
+/* La barre de stats : le compte des médias, en haut, avant tout le reste.
+   Une seule ligne, toujours — cinq tuiles empilées en deux rangs, ce n'est
+   plus une barre. Les tuiles se resserrent au lieu de passer à la ligne. */
+.stats{display:flex;flex-wrap:nowrap;gap:0;margin-top:20px;border:2px solid var(--paper);
+  background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
+.stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
+.stats .s:last-child{border-right:0}
+.stats b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:30px;
+  line-height:.9;color:var(--hot);white-space:nowrap}
+.stats span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,253,247,.78);margin-top:3px}
+.start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
+  background:var(--hot);color:var(--ink);text-decoration:none;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  text-transform:uppercase;padding:12px 22px;border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
+  transition:transform .09s cubic-bezier(.2,.9,.3,1)}
+.start:hover{transform:translate(-3px,-3px)}
+.start em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ══ INTRO : la prose de la page, ses repères, ses omissions ════════ */
+.intro{padding:34px 0 8px}
+.intro-lead{font-size:16.5px;color:rgba(255,253,247,.9);margin-bottom:12px}
+.intro-tags{margin:16px 0 6px}
+.itag{display:inline-flex;align-items:flex-start;gap:9px;
+  background:color-mix(in srgb,var(--uni) 13%,transparent);
+  border-left:4px solid var(--uni);padding:9px 14px;font-size:14px;font-weight:600}
+.itag svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2.6;
+  stroke-linecap:square;margin-top:1px}
+/* ── la prose sous le repère de lecture ──
+   Même ordre que l'ancien site — la mise en garde, puis la question
+   légitime, puis les repères, puis les omissions — mais dans la grammaire
+   de cette page : bords francs, liseré d'accent, titrage condensé. Les
+   deux premiers blocs se rangent côte à côte dès qu'il y a la place :
+   ils se lisent d'affilée, ils n'ont pas à s'empiler sur toute la largeur.
+   Aucune largeur en `ch` : le texte occupe la page. */
+.intro-duo{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px;
+  align-items:start}
+.intro-note{border-left:4px solid var(--gold-deep);padding:14px 18px;font-size:14.5px;
+  line-height:1.6;color:rgba(255,253,247,.88);
+  background:linear-gradient(90deg,color-mix(in srgb,var(--gold-deep) 15%,transparent),
+             transparent 78%)}
+.intro-qa{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 18px}
+.intro-qa .q{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
+  line-height:1.05;text-transform:uppercase;letter-spacing:.03em;color:var(--hot);
+  margin-bottom:7px}
+.intro-qa .a{font-size:13.5px;line-height:1.6;color:rgba(255,253,247,.82)}
+.keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
+  text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
+/* Trois colonnes comme sur l'ancien site. La quatrième carte, les visages
+   en double, porte un texte trois fois plus long que les autres : elle
+   prend la rangée entière au lieu de creuser un trou dans la grille. */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
+.key.wide{grid-column:1/-1;border-left:4px solid var(--gold-deep)}
+.key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
+  font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.key-h svg{width:19px;height:19px;flex:0 0 auto;fill:none;stroke:var(--hot);stroke-width:2;
+  stroke-linecap:square}
+.key p{font-size:13.5px;color:rgba(255,253,247,.82)}
+.key strong{color:var(--paper)}
+.cuts{margin-top:20px;border:2px solid var(--line)}
+.cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.05em}
+.cuts>summary::-webkit-details-marker{display:none}
+.cuts>summary:hover{background:rgba(255,253,247,.05)}
+.cuts .n{font-family:'Chivo';font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:3px 9px}
+.cuts .chev{width:20px;height:20px;margin-left:auto;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
+.cuts[open] .chev{transform:rotate(180deg)}
+.cuts-body{padding:4px 16px 18px;border-top:2px solid var(--line)}
+.cuts-intro{font-size:14px;color:rgba(255,253,247,.8);margin:12px 0 14px}
+.cuts-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:12px}
+.cut{border-left:3px solid var(--hot);padding-left:12px}
+.cut dt{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  text-transform:uppercase;letter-spacing:.03em}
+.cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
+@media(min-width:1000px){.intro-duo{grid-template-columns:1.05fr 1fr;gap:16px}}
+@media(max-width:900px){.keys{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.keys{grid-template-columns:1fr}}
+
+/* ══ filtres, recherche, repères ════════════════════════════════════ */
+.sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
+  position:sticky;top:var(--hh,53px);z-index:50}
+.sieve .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  padding-top:10px;padding-bottom:10px}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,253,247,.5);margin-right:2px}
+.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
+.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
+.sieve .last{margin-left:auto}
+/* Les branches sont un groupe de filtres comme les autres : elles coulent
+   dans la même ligne que le niveau et les types. Les deux conteneurs ne
+   servent qu'à séparer les branches de la canonicité non confirmée côté
+   script — `display:contents` les efface de la mise en page. */
+.obr,.onc{display:contents}
+/* la recherche : un champ franc, pas une pilule */
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
+  padding:4px 9px;min-width:224px;flex:0 1 296px}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
+  stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
+  font-family:'Chivo';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
+  display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+.fcount{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,253,247,.6)}
+.marks{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+/* Les repères ne filtrent rien : ils légendent. DC en a trois, ils ne
+   tiennent plus dans la ligne des filtres. Ils passent donc dessous, sur
+   leur propre rangée, avec le masquage des vus et le compte poussés à droite. */
+.srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:1px}
+.srow .marks{flex-wrap:wrap}
+/* La rangée des types de média, ouverte sous celle des niveaux. */
+.srow2{flex:1 0 100%;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+/* Les branches ouvrent leur propre rangée sous les types : quatre pastilles
+   de plus sur la même ligne rendaient les deux familles illisibles. Le groupe
+   EST la rangée — masqué, il ne laisse pas de blanc derrière lui. */
+.sgroup.opts{flex:1 0 100%}
+
+/* ══ BANDE D'ÈRE : parallaxe multiplane liée au défilement ══════════ */
+.zone-sec[hidden]{display:none}
+.map{position:relative;overflow:hidden;background:var(--era);
+  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
+.map .layers{position:absolute;inset:0}
+.map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
+.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
+  clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
+.map .tint{position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--era) 30%,transparent),
+             color-mix(in srgb,var(--era) 88%,transparent))}
+.map .wrap{position:relative;z-index:2;padding:46px 20px 28px}
+.map .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;
+  letter-spacing:.2em;text-transform:uppercase;display:inline-block;
+  background:var(--paper);color:var(--ink);padding:4px 11px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.map h2{font-size:clamp(32px,6vw,72px);margin:4px 0 6px}
+.map .hint{max-width:none;font-size:13.5px;color:rgba(255,253,247,.82);margin-bottom:9px}
+.map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+.map .meta b{color:var(--hot)}
+
+/* ══ le repère d'événement, posé au milieu d'une colonne ════════════ */
+/* Ce n'est pas une œuvre : ni case, ni visuel, ni dépliant. Une barre en
+   travers de la liste, qui coupe la lecture le temps d'un avertissement. */
+.sep{border:2px solid var(--hot);background:color-mix(in srgb,var(--hot) 9%,var(--ink));
+  padding:13px 16px;margin:6px 0}
+.sep[hidden]{display:none}
+.sep h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:'Big Shoulders Display';
+  font-weight:900;font-size:25px;text-transform:uppercase;letter-spacing:.03em;color:var(--hot)}
+.sep h3 svg{width:23px;height:23px;flex:0 0 auto;fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linejoin:miter;stroke-linecap:square}
+.sep h3 .t{flex:1 1 auto;min-width:0;line-height:1.05}
+.sep .d{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;
+  letter-spacing:.03em;color:rgba(255,253,247,.8);margin-left:auto;white-space:nowrap}
+.sep p{font-size:13.5px;color:rgba(255,253,247,.86);margin-top:6px}
+
+/* ══ l'événement majeur : une bande sans entrées ════════════════════ */
+.crisis-content{padding:22px 0 6px}
+.crisis-spoil{border:2px solid var(--line)}
+.crisis-spoil>summary{cursor:pointer;list-style:none;padding:12px 16px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.05em}
+.crisis-spoil>summary::-webkit-details-marker{display:none}
+.crisis-spoil>summary:hover{background:rgba(255,253,247,.05)}
+.crisis-spoil-content{padding:14px 16px 16px;border-top:2px solid var(--line);
+  font-size:14px;color:rgba(255,253,247,.86)}
+.crisis-spoil-content strong{color:var(--hot)}
+
+/* ══ LES COLONNES PARALLÈLES ═══════════════════════════════════════ */
+/* DC ne se lit pas en file : c'est un multivers, et ses branches courent
+   côte à côte. Deux colonnes DISENT qu'on peut alterner entre elles ; les
+   empiler dirait qu'il faut finir la première avant d'attaquer la seconde,
+   ce qui est faux. La structure de la page de prod est donc gardée telle
+   quelle, elle porte du sens. */
+.cols{display:grid;gap:22px;align-items:start}
+.cols.zg-1{grid-template-columns:minmax(0,1fr)}
+.cols.zg-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols.zg-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* ── quatre colonnes : la bande d'avant l'événement ─────────────────
+   À 1280 px de gouttière, quatre colonnes laissent 86 px au titre une fois
+   la case, l'affiche et les marges retirées : illisible. La bande déborde
+   donc du gabarit et prend la fenêtre, jusqu'à 1680 px. C'est la seule de
+   la page à le faire, et c'est justifié — c'est la carte du multivers, le
+   reste est de la prose.
+   `--vw` est posé en JS depuis `clientWidth` et non `100vw` : sous Windows
+   la barre de défilement est comptée dans `100vw` et pas dans la largeur
+   disponible, la bande dépassait de sa quinzaine de pixels et la page
+   défilait latéralement. */
+.cols.zg-4{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+/* Le resserrement ne vaut QUE pour la grille à quatre colonnes réelle, d'où
+   le seuil : `.cols.zg-4>.col` l'emporte sur le `.cols>.col` des règles
+   mobiles, et sans borne il imposait encore ses tailles sur un téléphone,
+   où la colonne est seule et large.
+   L'affiche est la seule pièce élastique de la ligne : c'est donc elle qui
+   absorbe le passage de deux colonnes à quatre. Fixée à sa taille de deux
+   colonnes, elle ne laissait que 106 px au titre sur un écran de 1440 —
+   deux mots par ligne. Elle suit la fenêtre, et le titre garde ses 145 px. */
+@media(min-width:1440px){
+  /* la bande déborde du gabarit et prend la fenêtre, jusqu'à 1680 px. C'est
+     la seule de la page à le faire, et c'est justifié — c'est la carte du
+     multivers, le reste est de la prose. */
+  .cols.zg-4{--w4:min(1680px,calc(var(--vw,100vw) - 40px));
+    width:var(--w4);margin-left:calc((100% - var(--w4))/2)}
+  .cols.zg-4>.col{--fig:clamp(88px,6.4vw,124px);--figgap:19px}
+  .cols.zg-4 .col-t{font-size:24px}
+  .cols.zg-4 .bu-title{font-size:18px}
+  .cols.zg-4 .bu-meta{gap:9px}
+  .cols.zg-4 .bu-meta .d{font-size:17px}
+  .cols.zg-4 .bu-head{gap:10px;padding:9px 9px}
+  /* le chevron de dépliage se réduit lui aussi : à quatre colonnes il prenait
+     35 px de la largeur du titre, pour dire une seule chose — que la fiche
+     s'ouvre. Il le dit aussi bien en 15. */
+  .cols.zg-4 .bu-end svg{width:15px;height:15px}
+}
+.col{min-width:0;--fig:132px;--figgap:21px}
+.col[hidden]{display:none}
+/* La tête de colonne prend la couleur de sa branche, celle des pastilles du
+   panneau de filtres — on retrouve la même famille d'un bout à l'autre. */
+.col-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  border-bottom:3px solid var(--br,var(--paper));padding-bottom:7px;margin-bottom:8px}
+.col-t{font-family:'Big Shoulders Display';font-weight:900;font-size:27px;line-height:1;
+  text-transform:uppercase;letter-spacing:.02em;color:var(--br,var(--paper))}
+.col-n{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,253,247,.66);white-space:nowrap}
+.col-n b{color:var(--hot)}
+.col-hint{font-size:12.5px;line-height:1.5;color:rgba(255,253,247,.74);margin-bottom:13px}
+/* En colonne, la bulle se resserre : seules les tailles changent, l'anatomie
+   reste celle du reste de la page. */
+.col .bu-title{font-size:19px}
+.col .bu-meta{gap:11px;margin-top:5px}
+.col .bu-meta .d{font-size:18px}
+.col .bu-head{gap:11px;padding:9px 10px}
+.col .bu-n{font-size:15px;padding:1px 7px 0}
+.col .bu-side{width:30px;margin-top:10px}
+.col .bu-chk{width:26px;height:26px}
+.col .bu-side .ic{width:21px;height:21px}
+.col .sep h3{font-size:21px}
+.col .sep .d{font-size:16px}
+/* onglets de branche et invitation au glissement : mobile seulement */
+.ztabs{display:none;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.ztabs[hidden]{display:none}
+.ztabs button{font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;background:none;border:2px solid var(--line);
+  color:rgba(255,253,247,.78);padding:5px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;max-width:100%}
+.ztabs button i{width:9px;height:9px;flex:0 0 auto;background:var(--k,var(--paper));display:block}
+.ztabs button[aria-selected=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.ztabs button[aria-selected=true] i{background:var(--k,var(--ink))}
+/* L'invitation au glissement : une ligne posée entre les onglets et le
+   carrousel. Flèche dessinée à gauche, qui pousse par à-coups — l'animation
+   est en `steps`, comme tout le reste de la page, pas un glissé continu.
+   Compteur à droite : « 1 / 4 » dit qu'il reste trois colonnes, ce que la
+   phrase seule ne montrait pas. */
+.zswipe{display:none;align-items:center;gap:10px;margin:0 0 12px;
+  font-size:11.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.72)}
+.zswipe[hidden]{display:none}
+.zsw-a{width:20px;height:20px;flex:0 0 auto;color:var(--hot);
+  fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square;stroke-linejoin:miter;
+  animation:zsw 2.4s steps(2,end) infinite}
+@keyframes zsw{0%,58%{transform:translateX(0)}
+  64%{transform:translateX(6px)}72%{transform:translateX(0)}
+  78%{transform:translateX(6px)}86%,100%{transform:translateX(0)}}
+.zsw-t{min-width:0}
+.zsw-n{margin-left:auto;white-space:nowrap;font-family:'Big Shoulders Display';
+  font-weight:800;font-size:18px;line-height:1;letter-spacing:.04em;
+  color:rgba(255,253,247,.55)}
+.zsw-n b{color:var(--hot)}
+.zsw-n i{font-style:normal}
+/* Le bord qui s'efface : il dit que le carrousel continue là où la colonne
+   suivante est coupée. La classe est posée en JS au défilement, et le voile
+   tombe dès qu'on est arrivé au bout — un bord flou immobile ne voudrait
+   plus rien dire. Aucune règle n'est nécessaire hors carrousel : une grille
+   qui ne défile pas ne reçoit jamais la classe.
+   À DROITE SEULEMENT. Un voile symétrique paraissait plus propre, il ne
+   l'était pas : les colonnes commencent au bord du conteneur, et les
+   trente-quatre pixels de gauche mangeaient la première lettre de chaque
+   ligne — le « P » de « Plus de retour en arrière ». Le retour en arrière
+   est déjà dit par les onglets et par le compteur ; c'est la suite qu'on ne
+   soupçonne pas. */
+.cols.more-r{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 60px),transparent);
+  mask-image:linear-gradient(to right,#000 calc(100% - 60px),transparent)}
+
+/* ══ LES BULLES : une par ligne, image à gauche, titre à droite ═════ */
+.list{background:color-mix(in srgb,var(--era) 16%,var(--ink));padding:20px 0 34px}
+.rows{display:flex;flex-direction:column;gap:10px}
+.bu{position:relative;display:flex;align-items:flex-start;gap:10px}
+.bu[hidden]{display:none}
+/* la colonne de gauche : la case, et sous elle le niveau d'importance */
+.bu-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-top:12px;width:34px}
+.bu-side .lv{display:block;line-height:0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:miter;stroke-linecap:square}
+.bu-side .ic{width:25px;height:25px}
+.lv.must{color:var(--hot)}
+.lv.imp{color:#ff9d5c}
+.sieve .ic{width:15px;height:15px}
+.sieve button.must{color:var(--hot)}
+.sieve button.imp{color:#ff9d5c}
+.sieve button.must[aria-pressed=true],.sieve button.imp[aria-pressed=true]{color:var(--ink)}
+/* la case à cocher : c'est elle, et elle seule, qui fait tomber le tampon */
+.bu-chk{width:30px;height:30px;background:none;cursor:pointer;
+  border:2px solid #7e7ea8;box-shadow:0 0 0 1px rgba(126,126,168,.25);
+  display:grid;place-items:center;padding:0;color:transparent;
+  transition:border-color .1s steps(1,end),background-color .1s steps(1,end)}
+.bu-chk svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:3.4;
+  stroke-linecap:square}
+.bu-chk:hover{border-color:var(--uni)}
+.bu-chk[aria-checked=true]{background:var(--uni);border-color:var(--uni);color:var(--ink)}
+.bu-card{flex:1;min-width:0;position:relative;border:2px solid var(--line);
+  background:rgba(13,11,18,.5);
+  transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
+.bu-card:hover{border-color:var(--hot);transform:translate(-3px,-3px)}
+.bu.done .bu-card{border-color:var(--uni)}
+.bu-head{display:flex;gap:14px;width:100%;background:none;border:0;color:inherit;font:inherit;
+  text-align:left;cursor:pointer;padding:10px 12px}
+/* 16/9 : le ratio natif des visuels d'entrée, donc aucun recadrage */
+/* La largeur est nommée : c'est la seule pièce élastique de la ligne, et
+   c'est elle qui règle aussi le décalage des sous-items. Elle se réduit en
+   colonne, puis encore dans le carrousel mobile. */
+.bu-fig{position:relative;flex:0 0 auto;width:var(--fig,190px);aspect-ratio:16/9;overflow:hidden;
+  background:var(--ink);align-self:flex-start}
+.bu-fig img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(.72) contrast(1.05);transition:filter .2s,transform .3s ease-out}
+.bu-card:hover .bu-fig img{transform:scale(1.035);filter:saturate(1) contrast(1.08)}
+.bu-n{position:absolute;top:0;left:0;z-index:2;background:var(--ink);color:var(--paper);
+  font-family:'Big Shoulders Display';font-weight:900;font-size:17px;padding:1px 9px 0;
+  clip-path:polygon(0 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+.bu-txt{flex:1;min-width:0;display:block}
+.bu-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+.b{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.ft{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:var(--hot);border:1px solid var(--hot)}
+/* le soft-canon se signale comme le flashback, en rouge pâle : DC n'a pas
+   de canonicité non confirmée, il a des films que le DCU reprend à moitié */
+.sc{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:#ff8f8f;border:1px solid #ff8f8f}
+/* L'univers d'origine. Chez Marvel il signale l'exception et l'entrée
+   décroche vers la droite ; ici il est sur presque toutes les entrées —
+   DC est un multivers, chaque œuvre porte sa Terre. Décaler tout le monde
+   ne décale personne : le badge reste, le décrochage saute. */
+.dim{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:2px 8px;color:#a99fff;border:1px solid #a99fff}
+.bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
+  line-height:1.02;text-transform:uppercase}
+.bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
+  font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,253,247,.74)}
+/* la date in-universe situe l'entrée : c'est la deuxième information de la
+   ligne, elle se lit d'un coup d'œil */
+.bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
+  letter-spacing:.03em;color:var(--hot);line-height:1}
+.bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
+  font-style:italic}
+/* la consigne de version : c'en est une, pas une remarque — elle se lit en
+   plein, sans italique, et prend l'accent */
+.bu-note.big{font-style:normal;font-weight:700;color:var(--hot);letter-spacing:.02em}
+.bu-end{flex:0 0 auto;display:flex;align-self:center}
+.bu-end svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;color:rgba(255,253,247,.66)}
+.bu-head[aria-expanded=true] .bu-end svg{transform:rotate(180deg)}
+/* Saisons et épisodes, toujours visibles. Deux dispositions, parce que les
+   données sont de deux natures : quand ce sont des épisodes unitaires, ils
+   forment des arcs narratifs et se lisent en ligne, un arc par bande ; quand
+   ce sont des blocs entiers (« Saison 1 », « Saison 2 épisodes 10-22 »), ils
+   s'empilent, chacun sur sa ligne. Un arc de 6 épisodes qui déborde reste
+   groupé : c'est la bande qui le tient, pas l'alignement. */
+.bu-sub{display:flex;flex-direction:column;
+  padding:0 12px 11px calc(var(--fig,190px) + var(--figgap,26px))}
+.arc{display:flex;flex-wrap:wrap;gap:5px;padding:5px 0;
+  border-top:1px solid rgba(255,253,247,.38)}
+.arc:first-child{border-top:0;padding-top:0}
+.bu-sub.stack .arc{padding:3px 0}
+.si{font-size:11.5px;font-weight:600;padding:2px 8px;background:rgba(255,253,247,.08);
+  border-left:2px solid var(--line)}
+/* le lien de partage de l'entrée */
+.bu-link{position:absolute;top:9px;right:9px;z-index:4;width:26px;height:26px;display:grid;
+  place-items:center;color:rgba(255,253,247,.5);text-decoration:none;opacity:0;
+  transition:opacity .15s}
+.bu-card:hover .bu-link,.bu-link:focus-visible{opacity:1}
+.bu-link:hover{color:var(--hot)}
+.bu-link svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:square}
+.bu-link.ok::after{content:attr(data-ok);position:absolute;right:0;top:100%;white-space:nowrap;
+  background:var(--hot);color:var(--ink);font-size:10px;font-weight:700;padding:2px 7px;
+  letter-spacing:.06em;text-transform:uppercase}
+
+/* état terminé : tampon dur, image dessaturée, couleur de l'univers.
+   Le tampon vit DANS la figure — posé sur la bulle, il était décalé du
+   rembourrage de la carte et ne tombait pas au centre du visuel. */
+.bu-done{position:absolute;inset:0;z-index:3;display:none;place-items:center;
+  pointer-events:none}
+.bu-done span{font-family:'Big Shoulders Display';font-weight:900;font-size:19px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--uni);
+  padding:3px 11px;transform:rotate(-4deg);border:2px solid var(--ink)}
+.bu.done .bu-done{display:grid}
+.bu.done .bu-fig img{filter:saturate(.08) contrast(1.12) brightness(.6)}
+.bu.done .bu-title{color:rgba(255,253,247,.72)}
+
+/* ══ le dépliant : fiche TMDB / RAWG puis FAQ ═══════════════════════ */
+.bu-panel{border-top:2px solid var(--line);padding:14px 12px 14px}
+.bu-panel[hidden]{display:none}
+.expand-loading{font-size:13px;color:rgba(255,253,247,.6)}
+.expand-inner{display:flex;gap:15px;align-items:flex-start;flex-wrap:wrap}
+.expand-poster{flex:0 0 auto;width:118px;border:2px solid var(--line);background:none;
+  padding:0;cursor:zoom-in;position:relative;display:block}
+.expand-poster img{width:100%;display:block}
+.expand-poster-ov{position:absolute;right:4px;bottom:4px;font-size:13px;
+  background:rgba(13,11,18,.8);padding:1px 5px}
+.expand-info{flex:1;min-width:240px}
+.expand-synopsis{font-size:13.5px;color:rgba(255,253,247,.86)}
+.expand-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;
+  color:rgba(255,253,247,.72)}
+.expand-meta strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  margin-right:5px}
+.expand-trailer-link{display:inline-block;margin-top:12px;background:var(--hot);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.06em;
+  text-transform:uppercase;padding:6px 13px;text-decoration:none;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.expand-trailer-link:hover{filter:brightness(1.1)}
+.en-faq{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.faq{border-left:3px solid var(--uni);background:rgba(226,54,54,.07)}
+.faq>summary{cursor:pointer;list-style:none;padding:8px 12px;font-size:13.5px;font-weight:700}
+.faq>summary::-webkit-details-marker{display:none}
+.faq>summary::before{content:'+ ';color:var(--uni);font-weight:900}
+.faq[open]>summary::before{content:'– '}
+.faq .a{padding:0 12px 10px;font-size:13px;color:rgba(255,253,247,.82)}
+
+/* la visionneuse d'affiche */
+.pm{position:fixed;inset:0;z-index:120;background:rgba(13,11,18,.92);display:none;
+  place-items:center;padding:24px}
+.pm.o{display:grid}
+.pm img{max-width:min(92vw,520px);max-height:88vh;border:2px solid var(--paper)}
+.pm-x{position:absolute;top:14px;right:16px;background:var(--paper);color:var(--ink);border:0;
+  font-size:19px;width:38px;height:38px;cursor:pointer}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
+.empty[hidden]{display:none}
+
+/* ══ révélation au défilement ══════════════════════════════════════ */
+/* Aucun masquage par défaut, et surtout aucun masquage piloté par JS : une
+   bulle cachée en attendant un événement qui ne vient pas, c'est une page
+   vide. L'entrée est une animation liée au défilement, donc purement CSS —
+   là où animation-timeline manque, les bulles sont simplement là. */
+
+/* La parallaxe multiplane est liée au défilement, en CSS natif. Là où
+   animation-timeline manque, les plans restent simplement fixes — la page
+   ne perd rien d'essentiel. */
+@supports (animation-timeline: view()){
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .rv{animation:rise linear both;animation-timeline:view();
+      animation-range:entry 4% cover 14%}
+  @keyframes glide1{from{transform:translateY(-3.5%)}to{transform:translateY(3.5%)}}
+  @keyframes glide2{from{transform:translateY(-8%) scale(1.03)}to{transform:translateY(6%) scale(1.03)}}
+  @keyframes riseTitle{from{transform:translateY(18px)}to{transform:translateY(-10px)}}
+  .map .lay1{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .map .lay2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+  .map .wrap{animation:riseTitle linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane{animation:glide1 linear both;animation-timeline:view();animation-range:cover}
+  .attract .plane.p2{animation:glide2 linear both;animation-timeline:view();animation-range:cover}
+}
+
+/* ══ pied ══════════════════════════════════════════════════════════ */
+footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
+.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
+.foot p{font-size:13px;color:rgba(255,253,247,.72)}
+.foot ul{list-style:none}
+.foot li{margin-bottom:5px}
+.foot a{font-size:13px;font-weight:600;color:rgba(255,253,247,.78);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.legal{grid-column:1/-1;border-top:2px solid var(--line);padding-top:14px;
+  font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
+.legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
+
+/* ══ le bat-signal : le retour en haut ═════════════════════════════ */
+/* Sans trame ni désaturation : l'effet des visuels le salissait.
+   La géométrie est celle de la prod (cg.css:951-967), et elle n'est pas
+   décorative : les deux images n'ont pas le même cadrage. Le signal au
+   repos est un portrait 467×534, le signal allumé un 16/9 de 1920×1080 où
+   le faisceau part vers la gauche. Les enfermer tous les deux dans un
+   carré en `object-fit:contain` écrasait le second au tiers de sa taille
+   et le décalait du premier. Chacun garde donc sa taille propre, et
+   l'image de survol déborde du bouton — d'où `max-width:none`, que la
+   règle globale `img{max-width:100%}` annulerait sinon. */
+#totop{position:fixed;right:18px;bottom:calc(var(--hud-h,50px) + 38px);z-index:75;width:100px;height:114px;padding:0;
+  background:none;border:0;cursor:pointer;opacity:0;pointer-events:none;
+  transform:translateY(10px);transition:opacity .2s,transform .2s}
+#totop.on{opacity:1;pointer-events:auto;transform:none}
+#totop span{position:relative;display:block;width:100px;height:114px}
+#totop img{position:absolute;object-fit:contain;max-width:none;transition:opacity .25s}
+#totop .nl{width:100px;height:114px;left:0;top:0;opacity:1}
+#totop .hv{width:217px;height:122px;left:-127px;top:-18px;opacity:0}
+#totop.on:hover{transform:scale(1.08)}
+#totop:hover .nl{opacity:0}
+#totop:hover .hv{opacity:1}
+
+/* ══ barre de bas d'écran, dépliable : où j'en suis ═════════════════ */
+.hud{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--ink);
+  border-top:2px solid var(--paper)}
+.hud-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;width:100%;
+  max-width:1280px;margin:0 auto;background:none;border:0;color:inherit;font:inherit;
+  cursor:pointer;text-align:left;padding:9px 20px;
+  padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+.hud.open .hud-bar{padding-bottom:9px}
+.hud-bar b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud-bar b em{font-style:normal;color:var(--uni)}
+.hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,253,247,.66)}
+.hud .bar{flex:1;min-width:110px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--uni);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.hud-bar .ch{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;transition:transform .18s;margin-left:auto}
+.hud.open .hud-bar .ch{transform:rotate(180deg)}
+.hud-panel{border-top:2px solid var(--line);
+  padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.hud-panel[hidden]{display:none}
+/* Le dépliant ne répète pas les compteurs : ils sont déjà sur la barre,
+   juste au-dessus. Il ne porte que les actions et la phrase, centrées. */
+.hud-in{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;
+  align-items:center;gap:4px}
+.pacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:7px;background:none;border:2px solid var(--line);
+  color:var(--paper);font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--paper)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square}
+.btn.danger{color:#ff8f8f;border-color:rgba(255,143,143,.5)}
+.btn.danger:hover{border-color:#ff8f8f}
+.phint{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:14px;
+  text-align:center;font-size:12.5px;color:rgba(255,253,247,.72)}
+.phint svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2;
+  stroke-linecap:square;margin-top:1px}
+.phint b{color:var(--paper)}
+
+/* ══ badges ════════════════════════════════════════════════════════ */
+.bx{position:fixed;inset:0;z-index:130;background:rgba(13,11,18,.92);display:none;
+  place-items:center;padding:22px}
+.bx.o{display:grid}
+.bx-in{background:var(--ink);border:2px solid var(--paper);max-width:660px;width:100%;
+  max-height:86vh;overflow:auto;padding:20px}
+.bx-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.bx-h h3{font-family:'Big Shoulders Display';font-weight:900;font-size:26px;text-transform:uppercase}
+.bx-h .n{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--hot);color:var(--ink);padding:3px 9px}
+.bx-h button{margin-left:auto;background:var(--paper);color:var(--ink);border:0;width:34px;
+  height:34px;font-size:17px;cursor:pointer}
+.bx-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:11px}
+.bg1{border:2px solid var(--line);padding:13px;display:flex;gap:11px;align-items:flex-start;
+  opacity:.42;filter:grayscale(1)}
+.bg1.on{opacity:1;filter:none;border-color:var(--c)}
+.bg1 .i{font-size:26px;line-height:1}
+.bg1 .t{display:block;font-family:'Big Shoulders Display';font-weight:800;font-size:17px;
+  text-transform:uppercase;line-height:1.05}
+.bg1 .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:3px}
+
+/* ══ badge débloqué : le carton et les confettis ═══════════════════ */
+.bpop{position:fixed;left:50%;bottom:calc(var(--hud-h,50px) + 48px);z-index:141;transform:translate(-50%,18px);
+  display:flex;gap:13px;align-items:center;padding:13px 18px;max-width:min(420px,calc(100vw - 24px));
+  background:var(--ink);border:2px solid var(--c,var(--hot));
+  box-shadow:6px 6px 0 rgba(13,11,18,.6);opacity:0;pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease}
+.bpop.o{opacity:1;transform:translate(-50%,0)}
+.bpop .i{font-size:32px;line-height:1;flex:0 0 auto}
+.bpop .k{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--c,var(--hot))}
+.bpop .t{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:22px;
+  text-transform:uppercase;line-height:1.05;margin-top:2px}
+.bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
+.conf{position:fixed;inset:0;z-index:140;pointer-events:none}
+
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:grid}
+  .foot{grid-template-columns:1fr 1fr}
+}
+/* ── SOUS 1440 px : une branche à la fois, choisie aux onglets ──────
+   Ce qui a remplacé le carrousel, le 2 septembre 2026. Il mettait les
+   quatre colonnes dans une seule ligne flex : la plus haute
+   donnait sa hauteur à la bande, et les trois autres finissaient dans le
+   vide. Mesuré sur « Les origines » : la grille fait 15 486 px de haut,
+   l'Arrowverse en occupe 15 478 et « Origines de Superman » 851. Choisir
+   Superman sur un téléphone, c'était trois fiches puis quatorze mille
+   pixels de rien — et l'onglet pour en sortir était resté tout en haut.
+
+   Les colonnes ne glissent donc plus, elles se commutent : une seule est
+   affichée, les onglets la choisissent, et la bande fait exactement la
+   hauteur de la branche qu'on lit. Le parallélisme est dit par les
+   onglets — quatre noms côte à côte en permanence, chacun avec son
+   décompte — et non plus par un morceau de colonne coupé au bord.
+
+   Trois gains qui ne se voient qu'à l'usage :
+   - la colonne prend la largeur entière (335 px au lieu de 292 à 375 px
+     de fenêtre), donc l'affiche tient jusqu'en bas et le titre respire ;
+   - les onglets sont collants dans leur bande, donc on change de branche
+     depuis n'importe quelle profondeur, pas seulement depuis le haut ;
+   - le compteur de chaque onglet dit où en est chaque branche sans
+     qu'on ait à y aller.
+   Une zone à colonne unique n'a rien à commuter : elle reste une grille.
+
+   La borne est à 1440 et non à 820 : le carrousel de la tranche
+   821-1439 avait exactement le même défaut, à la même hauteur de bande —
+   il montrait deux colonnes au lieu d'une, ce qui ne change rien au vide
+   des trois autres. La commutation vaut partout où les quatre colonnes
+   ne tiennent pas côte à côte, c'est-à-dire partout sauf au-dessus de
+   1440. Bornes décimales : la largeur de fenêtre n'est pas entière
+   (facteur d'échelle de l'écran), et à 1439,5 px ni `max-width:1439px`
+   ni `min-width:1440px` ne s'appliquaient — la bande retombait sur le
+   CSS de base, quatre colonnes dans le gabarit de 1280. */
+@media(max-width:1439.98px){
+  .cols:not(.zg-1){display:block}
+  /* `:not([hidden])` n'est pas une précaution : `.on` a plus de poids que
+     le `.col[hidden]` du filtre, et une branche décochée serait revenue à
+     l'écran dès qu'elle aurait été l'onglet actif. */
+  .cols:not(.zg-1)>.col{display:none}
+  .cols:not(.zg-1)>.col.on:not([hidden]){display:block}
+  /* La tête de colonne redit le nom de la branche que l'onglet actif
+     porte déjà, à trente pixels de lui. Seul le décompte reste, aligné à
+     droite comme une mesure. */
+  .cols:not(.zg-1) .col-h .col-t{display:none}
+  .cols:not(.zg-1) .col-h{justify-content:flex-end}
+
+  /* ── les onglets : la navigation de la bande, donc collants ───────
+     Collants dans la bande, pas dans la page : `position:sticky` sur un
+     élément du corps de la zone se décroche de lui-même quand la zone
+     sort de l'écran. Rien à calculer, rien à remettre à zéro.
+     `--stick` = bandeau + barre de filtres, les deux collants au-dessus.
+     Il est MESURÉ en JS, pas écrit : la barre de filtres fait 59 px à
+     375 px de fenêtre et 100 px à 1000, elle change encore quand on la
+     déplie, et une valeur en dur envoyait les onglets se coller derrière
+     elle. La valeur ci-dessous n'est que le repli du premier rendu.
+
+     La bande prend la largeur de la fenêtre, pas celle du `wrap` : celui-ci
+     porte 20 px de rembourrage, et une marge négative de 16 laissait
+     QUATRE PIXELS non peints de chaque côté. Les fiches défilaient dans
+     ces deux fentes, et le fond avait l'air de se déchirer au défilement.
+     Le rembourrage rend exactement ce que la marge a pris.
+
+     Fond opaque, pas le `color-mix` du `.list` : la bande passe par-dessus
+     des fiches, elle doit les couvrir et non les teinter. */
+  .ztabs{display:flex;justify-content:center;position:sticky;
+    top:var(--stick,122px);z-index:40;
+    gap:5px;margin:0 -20px 12px;padding:7px 20px 8px;
+    background:var(--ink);border-bottom:2px solid var(--line);
+    /* L'ombre haute n'est pas décorative : elle prolonge le fond de huit
+       pixels VERS LE HAUT, au cas où la mesure de `--stick` tomberait
+       encore sur un demi-pixel. La barre de filtres est au-dessus dans
+       l'ordre de peinture (z 50 contre 40), donc ce prolongement passe
+       dessous et ne se voit jamais. */
+    box-shadow:0 -8px 0 0 var(--ink)}
+  /* `[hidden]` ne suffit jamais sur ce site : `display:flex` le bat, et
+     l'onglet d'une branche décochée restait à l'écran — cliquable, menant
+     à une colonne que le filtre venait de retirer. */
+  .ztabs button[hidden]{display:none}
+  .ztabs button{font-size:12.5px;letter-spacing:.02em;padding:3px 8px;gap:5px}
+  .ztabs button i{width:8px;height:8px}
+  .ztabs .zt-n{font-family:'Chivo';font-weight:700;font-size:10px;
+    letter-spacing:.02em;opacity:.62}
+  /* La ligne de glissement reste, AU-DESSUS des noms de branche et plus
+     petite qu'eux : c'est un mode d'emploi, pas un intitulé, et elle doit
+     s'effacer devant ce qu'elle explique. Elle nomme maintenant les deux
+     chemins — le doigt et le nom qu'on touche —, parce que la commutation
+     en offre deux là où le carrousel n'en avait qu'un.
+     Elle n'est pas collante : on la lit une fois, ce sont les onglets
+     qu'on reprend, et elle passe donc sous eux au défilement. */
+  /* Une seule ligne, centrée, collée aux noms. La taille est fluide et
+     non fixe : la phrase fait trente-sept pixels de large par pixel de
+     corps, et à 375 px de fenêtre il en reste trois cent dix-sept — 8,5
+     est donc le corps MAXIMUM qui tienne, pas un choix. Le figer là
+     l'aurait laissé minuscule sur un 414 ou une tablette, où la place
+     existe. Le `clamp` le fait grandir moins vite que la fenêtre, donc
+     ce qui tient à 375 tient partout au-dessus. */
+  .zswipe{display:flex;justify-content:center;gap:6px;margin:0 0 3px;
+    font-size:clamp(8.5px,2.2vw,11px);letter-spacing:.02em;
+    white-space:nowrap;color:rgba(255,253,247,.58)}
+  .zsw-a{width:12px;height:12px;stroke-width:2.6}
+  /* Le « 3 / 4 » disait combien de branches il y a et où l'on est. Les
+     noms sont maintenant JUSTE EN DESSOUS, tous les quatre, avec celui
+     de la branche en cours en blanc : le compteur redisait deux fois la
+     même chose, à trois pixels d'écart. */
+  .zsw-n{display:none}
+  .ztabs[hidden],.zswipe[hidden]{display:none}
+  .cols .rv{animation:none;opacity:1;transform:none}
+  /* Le retour du geste : la colonne entre par le côté d'où elle vient.
+     En `steps`, comme tout le reste de la page — pas un glissé continu. */
+  .cols>.col.sl-l{animation:slL .22s steps(3,end)}
+  .cols>.col.sl-r{animation:slR .22s steps(3,end)}
+}
+@keyframes slL{from{transform:translateX(26px);opacity:.35}to{transform:none;opacity:1}}
+@keyframes slR{from{transform:translateX(-26px);opacity:.35}to{transform:none;opacity:1}}
+/* ── TABLETTE : la colonne est large, l'affiche reprend sa taille ──
+   Entre 821 et 1439 px la branche affichée occupe toute la gouttière —
+   jusqu'à 1240 px. Rien à resserrer : c'est la mise en page d'une zone à
+   colonne unique, que la page connaît déjà (« DCU — Nouvel Univers »). */
+@media(min-width:820.02px) and (max-width:1439.98px){
+  .ztabs{gap:7px;padding:9px 20px 10px}
+  .ztabs button{font-size:15px;letter-spacing:.06em;padding:5px 11px;gap:7px}
+  .ztabs button i{width:9px;height:9px}
+  .ztabs .zt-n{font-size:11px}
+}
+@media(max-width:820px){
+  .cols>.col{--fig:110px;--figgap:19px}
+  .col-t{font-size:23px}
+}
+/* La colonne est seule et large : l'affiche n'a plus à céder sa place au
+   titre, et elle reste à sa taille de lecture. C'est la contrepartie
+   directe du carrousel retiré — à 87 % de largeur, elle tombait à 74 px
+   sous 420 et disparaissait sous 360. */
+@media(max-width:420px){
+  .col-t{font-size:20px}
+  .ztabs button{font-size:12px;padding:3px 7px;gap:5px}
+}
+/* Sous 340 px les quatre onglets passaient sur TROIS rangées, soit 104 px
+   collants sous deux barres qui en prennent déjà 122 : la moitié de
+   l'écran servait à naviguer. Le décompte cède, c'est la seule des trois
+   pièces de l'onglet qui soit un supplément — la tête de colonne le redit
+   dès qu'on y est. Le nom et la pastille de branche restent.
+   Le seuil est à 340 et non à 400 : à 375 et à 390, les tailles des deux
+   téléphones les plus courants, les quatre onglets tiennent sur deux
+   rangées AVEC leur décompte. */
+@media(max-width:340px){
+  .ztabs .zt-n{display:none}
+  .cols:not(.zg-1) .col-h .col-t{display:block}
+  .cols:not(.zg-1) .col-h{justify-content:space-between}
+}
+/* Le seuil de repli de la phrase n'est pas celui de l'affiche, et il se
+   calcule : à 8,5 px de corps elle fait 312 px, la flèche et sa gouttière
+   en prennent 18, les gouttières de page 40 — il faut donc 370 px de
+   fenêtre pour la tenir sur une ligne. Posé à 360, tout l'intervalle
+   361-369 débordait de neuf pixels. */
+@media(max-width:369.98px){
+  /* Sous 370 px, une ligne demanderait 7 px de corps — plus petit que
+     tout ce que le site écrit. La phrase passe donc à deux lignes,
+     centrées : illisible sur une ligne vaut moins que lisible sur deux. */
+  .zswipe{white-space:normal;text-align:center}
+  .zsw-a{margin-top:1px}
+}
+@media(max-width:360px){
+  .cols>.col{--fig:88px;--figgap:17px}
+}
+@media(max-width:720px){
+  .bu-head{flex-wrap:wrap;gap:10px}
+  .bu-title{font-size:19px}
+  .bu-meta .d{font-size:19px}
+  .bu-sub{padding-left:12px}
+  .bu.dev{margin-left:18px}
+  .bu-side{width:30px;margin-top:10px}
+  .bu-chk{width:26px;height:26px}
+  .bu-side .ic{width:21px;height:21px}
+  .stats .s{padding:8px 10px}
+  .stats b{font-size:21px}
+  .stats span{font-size:8.5px;letter-spacing:.04em}
+  /* Le pied tenait 722 px de haut sur un telephone, presque un ecran
+     entier : les deux listes passent cote a cote, le bloc de tete garde
+     la largeur, et tout le reste se resserre. Rien n'est retire. */
+  footer{padding:22px 0 24px}
+  .foot{grid-template-columns:1fr 1fr;gap:15px 18px}
+  .foot>div:first-child{grid-column:1/-1}
+  .foot h4{font-size:16px;margin-bottom:5px}
+  .foot p{font-size:12.5px;line-height:1.45;max-width:none}
+  /* 12,5 px laissaient des cibles de 19 px de haut : un doigt vise
+     24 px. Le rembourrage est vertical, d'ou l'`inline-block` — un
+     lien reste `inline`, et un padding vertical n'y agrandit rien.
+     Il ne vaut que pour les listes : TMDB et Open Library sont au
+     milieu d'une phrase, et l'y appliquer ecartait ses lignes. */
+  .foot li{margin-bottom:0}
+  .foot a{font-size:12.5px}
+  .foot li a{display:inline-block;padding:4px 0}
+  .legal{padding-top:11px;font-size:10.5px;line-height:1.5}
+  .legal a{font-size:10.5px}
+  .icon-btn{width:44px;height:44px}
+  .dw-site a{padding:13px 20px}
+  .sieve .last{margin-left:0}
+  .pacts{margin-left:0}
+  #totop{width:70px;height:80px;bottom:calc(var(--hud-h,84px) + 20px);right:12px}
+  #totop span{width:70px;height:80px}
+  #totop .nl{width:70px;height:80px}
+  #totop .hv{width:152px;height:85px;left:-89px;top:-13px}
+  /* pleine largeur, et posé au-dessus du bat-signal, qui suit la barre */
+  .bpop{left:12px;right:12px;max-width:none;bottom:calc(var(--hud-h,84px) + 112px);transform:translateY(18px)}
+  .bpop.o{transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html,.cols{scroll-behavior:auto}
+  .rv{opacity:1!important;transform:none!important}
+  .start em{opacity:1}
+}
+
+/* ══ CENTRAGE ══════════════════════════════════════════════════════
+   Bandeaux, accroche, stats, intro et bandes d'ère au centre. Les
+   fiches de médias, les filtres et le pied gardent leur alignement :
+   une liste qu'on parcourt du regard se lit sur un bord franc. */
+.attract .wrap{text-align:center}
+.attract h1,.dek,.intro-lead{margin-left:auto;margin-right:auto}
+.attract .head{justify-content:center}
+/* dans un flex, une marge auto mange l espace : le titre pousserait le tag au bord */
+.attract .head h1{margin-left:0;margin-right:0}
+.upd{justify-content:center}
+.crumb{margin-left:auto;margin-right:auto}
+.stats{margin-left:auto;margin-right:auto}
+.intro-lead{text-align:center}
+.intro-tags{text-align:center}
+.keys-title{text-align:center}
+.key-h{justify-content:center}
+.key p{text-align:center}
+.map .wrap{text-align:center}
+.map .meta{justify-content:center}
+.pick h2,.pick .sub{text-align:center}
+.pick .sub{margin-left:auto;margin-right:auto}
+.slot .nm,.slot .body,.slot .d{text-align:center}
+.score{justify-content:center;gap:16px}
+.deep .wrap{justify-content:center;text-align:center}
+.deep p{margin-left:auto;margin-right:auto}
+.deep .go{margin-left:0}
+/* ── retouches du 17/08 ────────────────────────────────────────────
+   « Ce qui est écarté, et pourquoi » se centre, chevron compris : le
+   margin-left:auto qui le poussait à droite n'a plus lieu d'être. */
+.cuts>summary{justify-content:center}
+.cuts .chev{margin-left:0}
+.cuts-intro{text-align:center}
+.cuts-list{text-align:center}
+.cut{border-left:0;border-top:3px solid var(--hot);padding-left:0;padding-top:8px}
+/* ── les filtres, repliés ──────────────────────────────────────────
+   Trois rangées ouvertes en permanence en haut de l'écran, c'était le
+   plus gros bloc de la page avant la timeline elle-même. Repliées, elles
+   tiennent une ligne, et le décompte reste lisible sans rien ouvrir. */
+.sieve .wrap{display:block;padding-top:0;padding-bottom:0}
+.filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;
+  cursor:pointer;list-style:none;padding:11px 4px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.86)}
+.filt>summary::-webkit-details-marker{display:none}
+.filt>summary:hover{color:var(--paper)}
+.filt>summary .chev{width:19px;height:19px;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:square;transition:transform .16s steps(3,end)}
+.filt[open]>summary .chev{transform:rotate(180deg)}
+@media(max-width:560px){
+  .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
+  .filt>summary .fcount{font-size:10px;letter-spacing:.04em}
+}
+.filt>summary .fcount{font-family:'Chivo';font-size:11px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
+.filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;
+  padding:13px 0 16px;border-top:2px solid var(--line)}
+.filt-body>*{width:auto;max-width:100%}
+.filt-body .search{flex:0 0 auto;width:min(430px,100%)}
+.filt-body .sgroup,.filt-body .srow,.filt-body .srow2,
+.filt-body .marks,.filt-body .eranav{justify-content:center}
+.filt-body .srow,.filt-body .srow2{flex:0 1 auto;flex-direction:column;gap:11px}
+.filt-body .marks{flex-wrap:wrap;row-gap:6px}
+.filt-body .last{margin-left:0}
+.filt-body .lab{width:100%;text-align:center;margin:0 0 2px;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+/* « Repères » prend sa ligne, comme « Niveau » et « Types de média » : posé
+   en tête de rangée, il se lisait comme un repère de plus. */
+.filt-body .marks>span:first-child{width:100%;text-align:center;margin-bottom:2px}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#body">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="e-accueil.html"><img src="/images/logo-chronologeek.webp" alt="Chronologeek"/></a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="e-accueil.html">Accueil</a>
+      <a href="e-dossiers.html" class="doss">Dossiers</a>
+      <a href="e-starwars.html">Star Wars</a>
+      <a href="e-marvel.html">Marvel</a>
+      <a href="e-dc.html">DC</a>
+      <details class="nav-more"><summary>Plus d’univers</summary><div class="more-pop"><a href="e-avatar.html">Avatar Legends</a><a href="e-startrek.html">Star Trek</a><a href="e-twd.html">The Walking Dead</a><a href="e-dragonage.html">Dragon Age</a><a href="e-assassinscreed.html">Assassin’s Creed</a><a href="#" aria-current="page">DC Animation</a></div></details>
+      <a href="e-a-venir.html" class="upc">À venir</a>
+      <a href="e-nouveautes.html" class="news">Nouveautés</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn lang-btn" href="en-dcanimation.html" aria-label="Switch to English" title="Switch to English">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#ukc)" fill="none"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="8"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="3.2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="13"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="7"/></g></svg>
+
+
+
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><g class="m"><path d="M3 6h18M3 12h18M3 18h18"/></g><g class="x"><path d="M5 5l14 14M19 5 5 19"/></g></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Navigation repliée">
+    <span class="dw-lab">Les univers</span>
+    <div class="dw-uni"><a href="e-starwars.html" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="e-marvel.html" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="e-dc.html" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="e-avatar.html" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="e-startrek.html" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="e-twd.html" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="e-dragonage.html" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="e-assassinscreed.html" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a><a href="#" class="u-dca" aria-current="page"><i aria-hidden="true"></i>DC Animation</a></div>
+    <span class="dw-lab">Le site</span>
+    <div class="dw-site"><a href="e-accueil.html">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a><a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a></div>
+  </nav>
+</header>
+
+<!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
+<section class="attract">
+  <div class="plane p1" aria-hidden="true"></div>
+  <div class="plane p2" aria-hidden="true"></div>
+  <div class="halftone" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="tag">Guide de l'animation</span>
+    <h1 class="disp off">DC Animation</h1>
+    <p class="dek">DCAU · DCAMU · Arkhamverse — trois chronologies parallèles, côte à côte, sans spoil.
+      <b>Cochez ce que vous avez vu, votre progression est sauvegardée.</b></p>
+    <p class="upd"><i aria-hidden="true"></i> À jour · septembre 2026</p>
+    <div class="stats">
+      <div class="s"><b>32</b><span>Films animés</span></div>
+      <div class="s"><b>22</b><span>Jeux et DLC</span></div>
+      <div class="s"><b id="s-tot">80</b><span>Entrées</span></div>
+      <div class="s"><b id="s-h">305 h</b><span>À voir</span></div>
+    </div>
+    <button class="start" id="start" type="button">Commencer <em>▸</em></button>
+  </div>
+</section>
+
+<main id="body">
+
+  <div class="wrap"><div class="intro" id="intro"></div></div>
+
+  <div class="sieve"><div class="wrap" id="sieve">
+    <details class="filt">
+      <summary>Filtres, recherche et repères<span class="fcount" id="fcount">80 / 80 affichées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="filt-body">
+    <div class="search" id="searchbox">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="skip" for="q">Rechercher dans la timeline</label>
+      <input id="q" type="search" placeholder="Rechercher… ( / )" autocomplete="off"/>
+      <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
+    </div>
+    <div class="sgroup" id="f-levels"><span class="lab">Niveau</span></div>
+    <!-- Les types de média passent SOUS les niveaux, et les branches SOUS les
+         types : chaque groupe occupe toute la largeur, donc sa rangée s'ouvre
+         après le précédent, quoi qu'il arrive. -->
+    <div class="srow2">
+      <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
+    </div>
+    <div class="sgroup opts" id="f-opts" hidden><span class="lab">Branches</span>
+      <div class="obr" id="f-branch"></div>
+      <div class="onc" id="f-nc"></div>
+    </div>
+    <div class="srow">
+      <div class="marks"><span>Repères</span><span class="ft">FLASHBACK</span></div>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les vus</button>
+    </div>
+      </div>
+    </details>
+  </div></div>
+
+  <div id="timeline"></div>
+  <div class="wrap"><p class="empty" id="empty" hidden></p></div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <h4>Chronologeek</h4>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de
+        se perdre. Tous les médias, dans l’ordre chronologique, sans spoil. Construit
+        et maintenu par une seule personne qui regarde tout deux fois.</p>
+    </div>
+    <div><h4>Timelines</h4><ul>
+      <li><a href="e-starwars.html">Star Wars</a></li>
+      <li><a href="e-marvel.html">Marvel — MCU</a></li>
+      <li><a href="e-dc.html">DC Multiverse</a></li>
+      <li><a href="e-avatar.html">Avatar Legends</a></li><li><a href="e-startrek.html">Star Trek</a></li><li><a href="e-twd.html">The Walking Dead</a></li><li><a href="e-dragonage.html">Dragon Age</a></li><li><a href="e-assassinscreed.html">Assassin’s Creed</a></li><li><a href="#" aria-current="page">DC Animation</a></li>
+      <li><a href="e-dossiers.html">Dossiers</a></li>
+    </ul></div>
+    <div><h4>Plus</h4><ul>
+      <li><a href="e-a-venir.html">Sorties à venir</a></li>
+      <li><a href="e-nouveautes.html">Nouveautés</a></li>
+      <li><a href="#contact" data-contact>Contact</a></li>
+    </ul></div>
+    <div class="legal">
+      Ce produit utilise l’API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
+      mais n’est ni approuvé ni certifié par TMDB. Données livres :
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking
+      Dead, Dragon Age et Assassin’s Creed sont des marques de leurs
+      ayants droit respectifs ; Chronologeek est un projet de fan indépendant.
+      <br/>© 2026 Chronologeek — <a href="e-accueil.html">chronologeek.app</a>
+    </div>
+  </div>
+</footer>
+
+<button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
+  <span><img class="nl" src="/images/batsignal.webp" alt=""/><img class="hv" src="/images/batsignalmouseover.webp" alt=""/></span>
+</button>
+
+<div class="hud" id="hud">
+  <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
+    <b><em id="k-on">0</em> / <span id="k-tot">80</span></b>
+    <span class="lbl">vus</span>
+    <span class="bar"><i id="k-fill"></i></span>
+    <span class="lbl">Restant à voir <b style="font-size:14px" id="k-time">305 h</b></span>
+    <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <div class="hud-in">
+      <div class="pacts">
+        <button class="btn" type="button" id="export"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Exporter</button>
+        <button class="btn" type="button" id="import"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg> Importer</button>
+        <input type="file" id="import-file" accept="application/json" hidden/>
+        <button class="btn" type="button" id="badges-btn"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 4H7v6a5 5 0 0 0 10 0V4zM7 5H4v2a4 4 0 0 0 3 3.9M17 5h3v2a4 4 0 0 1-3 3.9"/></svg> Badges</button>
+        <button class="btn danger" type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M20 11A8 8 0 1 0 7 17.7M20 5v6h-6"/></svg> Réinitialiser</button>
+      </div>
+      <p class="phint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Votre progression est sauvegardée sur ce navigateur — utilisez <b>Exporter</b> pour en garder une copie ou l’importer sur un autre appareil ou navigateur</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="bx" id="bx" hidden><div class="bx-in">
+  <div class="bx-h"><h3>Mes Badges</h3><span class="n" id="bx-n">0 débloqués</span>
+    <button type="button" id="bx-x" aria-label="Fermer">✕</button></div>
+  <div class="bx-g" id="bx-g"></div>
+</div></div>
+
+<script src="data-dcanimation.js"></script>
+<script src="e-perso.js"></script>
+<script>
+(function(){
+  'use strict';
+  document.documentElement.className+=' js';
+
+  var CFG=window.CG, D=window.DCANIM, RT=window.RT||{};
+  /* Les libellés viennent de fr/dc.html tels quels. Seuls ceux qui
+     tutoyaient sont repassés au vouvoiement — Niko ne veut pas qu'on tutoie
+     le visiteur. Aucune autre reformulation. */
+  var T=Object.assign({},CFG.t,{
+    resetDC:'Réinitialiser ta progression DC Animation ?',
+    emptyP:'Essayez une autre orthographe, ou remettez les filtres que vous avez décochés.',
+    /* La flèche de fin de phrase (« … les autres branches → ») est devenue
+       une flèche dessinée, animée, posée en tête de ligne : elle bouge, un
+       caractère non.
+       La phrase, elle, ne dit plus la même chose que celle de la prod : le
+       carrousel n'avait qu'un geste, la commutation en a deux — le doigt
+       et le nom qu'on touche. Elle les nomme tous les deux. */
+    swipe:'Faites glisser ou cliquez sur les noms pour changer de colonne'
+  });
+  /* Bannière de bande : la première entrée du niveau le plus haut présent.
+     Marvel prenait son premier ⭐ ; DC n'a pas d'essentiels, ses deux
+     niveaux sont 🚨 et optionnel — la règle marche quand même, elle
+     descend d'un cran. Le visuel monte en w1280 : la bande est pleine
+     largeur, la vignette de la bulle ne l'est pas. */
+  var LVRANK=['must','important','imp','bonus'];
+  function eraArt(era){
+    var pick=null;
+    LVRANK.some(function(lv){
+      pick=era.entries.filter(function(e){ return e.level===lv && e.img; })[0];
+      return !!pick;
+    });
+    pick=pick||era.entries.filter(function(e){ return e.img; })[0];
+    return pick? String(pick.img).replace('/w780/','/w1280/') : '';
+  }
+  /* Les niveaux passent au trait, comme les icônes des repères de lecture :
+     l'étoile et le gyrophare en emoji juraient avec le reste de la page.
+     Le libellé, lui, reste celui de la prod, emoji de tête retiré. */
+  var LVICO={
+    must:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>',
+    important:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>',
+    bonus:''};
+  /* `imp` est le nom que DC donne à son niveau haut, `important` celui de
+     Star Wars et de Marvel. Les deux pointent sur la même icône et le même
+     mot : c'est la donnée qui décide, pas la page. */
+  LVICO.imp=LVICO.important;
+  var LVCLS={must:'must',important:'imp',imp:'imp',bonus:''};
+  /* « ⭐ Essentiel » → « Essentiel » : on ne garde que le mot de Niko. */
+  function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
+  var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),
+             imp:lvWord(T.important),bonus:lvWord(T.optional)};
+  var KEY='cg-proto-dcanim';
+  /* l'accueil rouvre sa reprise sur le dernier univers visité */
+  try{ localStorage.setItem('cg_last',JSON.stringify({u:'dcanim'})); }catch(_){}
+
+  /* Les séparateurs ne sont pas des œuvres : ils ne se cochent pas, ne se
+     comptent pas et ne prennent pas de numéro. `crisis-start` est le seul
+     de DC, il annonce l'événement au milieu de l'Arrowverse. */
+  function isSep(e){ return e.type==='separator'; }
+  function real(era){ return era.entries.filter(function(e){ return !isSep(e); }); }
+
+  var ALL=[];
+  D.eras.forEach(function(era){
+    era.entries.forEach(function(e){ if(isSep(e)) return; ALL.push(e); e.n=ALL.length; });
+  });
+
+  var prog={};
+  try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+
+  var offLv={}, offK={}, offOpt={}, hideDone=false;
+
+  function $(s,r){ return (r||document).querySelector(s); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
+    return h? h+' h'+(r?' '+String(r).padStart(2,'0'):'') : r+' min'; }
+  function rt(e){ return e.rt||RT[e.id]||0; }
+
+  var ICO={
+    check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+    link:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>'
+  };
+
+  /* ── l'intro : la prose de la page de prod, injectée telle quelle ── */
+  $('#intro').innerHTML=D.notes;
+  /* La mise en garde et la question légitime sont deux blocs frères dans la
+     prose. On ne touche pas au texte : on les emboîte simplement dans un
+     conteneur pour qu'ils se rangent côte à côte. Si l'un des deux manque,
+     rien ne bouge. */
+  (function(){
+    var note=$('.intro-note'), qa=$('.intro-qa');
+    if(!note||!qa||note.nextElementSibling!==qa) return;
+    var duo=document.createElement('div');
+    duo.className='intro-duo';
+    note.parentNode.insertBefore(duo,note);
+    duo.appendChild(note); duo.appendChild(qa);
+  })();
+
+
+  /* Les branches se déduisent des données : `tags:["nc"]`, la liste
+     `defenders`, puis chaque groupe de `groups`. Rien n'est écrit en dur,
+     un univers sans branche produit simplement une liste vide. */
+  var OPTS=[];
+  (function(){
+    var nc=ALL.filter(function(e){ return (e.tags||[]).indexOf('nc')>-1; });
+    if(nc.length) OPTS.push({v:'nc',label:T.ncLabel,color:'#ff8f8f',n:nc.length,
+      test:function(e){ return (e.tags||[]).indexOf('nc')>-1; }});
+    var def=CFG.defenders||[];
+    var nd=ALL.filter(function(e){ return def.indexOf(e.id)>-1; });
+    if(nd.length) OPTS.push({v:'def',label:T.defLabel,color:'#a99fff',n:nd.length,
+      test:function(e){ return def.indexOf(e.id)>-1; }});
+    Object.keys(CFG.groups||{}).forEach(function(g){
+      var d=CFG.groups[g];
+      var n=ALL.filter(function(e){ return d.ids.indexOf(e.id)>-1; }).length;
+      if(n) OPTS.push({v:g,label:d.label,color:d.color,n:n,
+        test:function(e){ return d.ids.indexOf(e.id)>-1; }});
+    });
+  })();
+
+  /* ── les filtres : mêmes noms, mêmes couleurs que sur le site ────── */
+  (function(){
+    var lv=$('#f-levels'), tp=$('#f-types');
+    /* un bouton par niveau réellement présent : DC n'a pas d'essentiels,
+       ses deux niveaux sont 🚨 et optionnel. Un filtre qui ne filtre rien
+       n'a pas sa place dans la barre. */
+    LVRANK.forEach(function(k){
+      if(!ALL.some(function(e){ return e.level===k; })) return;
+      lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
+        (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
+    });
+    /* un bouton par type réellement présent : DC n'a ni jeu vidéo ni
+       one-shot, et un filtre qui ne filtre rien n'a pas sa place ici. */
+    Object.keys(CFG.badgeLabels).forEach(function(k){
+      if(!ALL.some(function(e){ return e.type===k; })) return;
+      tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
+        ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
+    });
+    /* Les branches : Elseworlds, Arrowverse, DCEU, DCU — celles de la page
+       de prod, avec ses couleurs. Cochées par défaut, décocher masque la
+       branche. Un univers sans branche n'affiche pas la rangée. */
+    OPTS.forEach(function(o){
+      $(o.v==='nc'?'#f-nc':'#f-branch').insertAdjacentHTML('beforeend',
+        '<button type="button" data-o="'+o.v+'" style="--k:'+o.color+'"'+
+        ' aria-pressed="true"><i></i>'+esc(o.label)+'</button>');
+    });
+    $('#f-opts').hidden=!OPTS.length;
+  })();
+
+  /* ── construction : une bande, puis ses bulles ───────────────────── */
+  /* Les sous-items décrivent soit des arcs d'épisodes, soit des blocs
+     entiers de saison. Seul un séparateur posé à la main dans les données
+     signe un découpage en arcs ; sinon chaque libellé prend sa ligne.
+
+     Une règle en plus regroupait autrefois les libellés tous en
+     « Saison N… » : les dix saisons de Smallville tenaient sur une bande.
+     Elle testait le mot français, si bien que la page anglaise, où ils
+     s'écrivent « Season N », les empilait — deux mises en page pour les
+     mêmes données. On empile des deux côtés : c'est la disposition qui
+     tient quelle que soit la langue, et une saison par ligne se lit
+     mieux qu'une bande de dix pastilles. */
+  function subs(e){
+    var it=e.subitems||[]; if(!it.length) return '';
+    var arcMode=it.some(function(s){ return !String(s).trim(); });
+    var arcs=[[]];
+    it.forEach(function(s){
+      if(!String(s).trim()){ arcs.push([]); return; }
+      if(arcMode) arcs[arcs.length-1].push(s); else arcs.push([s]);
+    });
+    var html=arcs.filter(function(a){ return a.length; }).map(function(a){
+      return '<div class="arc">'+a.map(function(s){
+        return '<span class="si">'+esc(s)+'</span>'; }).join('')+'</div>';
+    }).join('');
+    return '<div class="bu-sub'+(arcMode?'':' stack')+'">'+html+'</div>';
+  }
+
+  /* Le repère d'événement : une barre, pas une bulle. Le ⚡ de tête de son
+     titre passe au trait, comme les icônes de niveau — l'emoji jurait avec
+     le reste de la page. Le mot de Niko, lui, ne bouge pas. */
+  function sepRow(e){
+    return '<div class="sep rv" id="'+e.id+'" data-sep>'+
+      '<h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>'+
+      '<span class="t">'+esc(String(e.title).replace(/^[^\p{L}]+/u,''))+'</span>'+
+      '<span class="d">'+esc(e.date||'')+'</span></h3>'+
+      (e.note?'<p>'+esc(e.note)+'</p>':'')+
+    '</div>';
+  }
+
+  function row(e){
+    var bd=CFG.badgeLabels[e.type]||['b',e.type];
+    var fb=(e.tags||[]).indexOf('flashback')>-1 ? '<span class="ft">FLASHBACK</span>' : '';
+    var sc=e.softcanon ? '<span class="sc">SOFT-CANON</span>' : '';
+    var dim=e.dim ? '<span class="dim">'+esc(e.dim)+'</span>' : '';
+    var d=rt(e);
+    return '<article class="bu rv'+(prog[e.id]?' done':'')+
+      '" id="'+e.id+'" data-id="'+e.id+'">'+
+      '<span class="bu-side">'+
+        '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
+          (prog[e.id]?'true':'false')+'" data-check aria-label="'+
+          esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
+        (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+          LVICO[e.level]+'</span>':'')+
+      '</span>'+
+      '<div class="bu-card">'+
+        '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
+          '<span class="bu-fig">'+
+            (e.img?'<img src="'+e.img+'" alt="" loading="lazy" decoding="async"/>':'')+
+            '<span class="halftone"></span>'+
+            '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
+            '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
+          '</span>'+
+          '<span class="bu-txt">'+
+            '<span class="bu-tags">'+dim+fb+sc+'<span class="b" style="--k:var(--t-'+e.type+')">'+
+              esc(bd[1])+'</span></span>'+
+            '<span class="bu-title">'+esc(e.title)+'</span>'+
+            '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
+              (d?'<span>'+hm(d)+'</span>':'')+
+            '</span>'+
+            (e.bignote?'<span class="bu-note big">'+esc(e.bignote)+'</span>':'')+
+            (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
+          '</span>'+
+          '<span class="bu-end">'+ICO.chev+'</span>'+
+        '</button>'+
+        subs(e)+
+        '<a class="bu-link" href="#'+e.id+'" data-copy data-ok="'+esc(T.copied)+
+          '" title="'+esc(T.copyLink)+'" aria-label="'+esc(T.copyLink)+'">'+ICO.link+'</a>'+
+        '<div class="bu-panel" hidden data-tmdb="'+(e.tmdb||'0')+'" data-media="'+(e.media||'tv')+'">'+
+          '<div class="en-rich"></div><div class="en-faq"></div></div>'+
+      '</div>'+
+    '</article>';
+  }
+
+  /* ── les zones : les colonnes parallèles de la page de prod ────────
+     Les huit bandes de `D.eras` sont les COLONNES, pas les sections. Deux
+     bandes consécutives portant la même zone se rangent côte à côte —
+     Superman / Batman, Arrowverse / DCEU, Arrowverse post / Elseworlds
+     post. L'événement majeur est seul, et le DCU aussi : il ferme la page
+     sur une colonne unique. */
+  /* Les trois univers portent la meme zone dans les donnees : ils sortent
+     donc cote a cote, en `zg-3`. Rien n'est « solo » ici — DC reservait ce
+     cas a son evenement majeur et au DCU, qui fermaient la page sur une
+     colonne unique. */
+  var ZONES=(function(){
+    var out=[];
+    D.eras.forEach(function(era,i){
+      var solo=!!era.event;
+      var last=out[out.length-1];
+      if(last && !solo && !last.solo && era.zone && last.zone===era.zone){
+        last.cols.push({era:era,i:i}); return;
+      }
+      out.push({zone:solo?era.title:(era.zone||era.title),solo:solo,
+                event:!!era.event,cols:[{era:era,i:i}]});
+    });
+    return out;
+  })();
+  /* La description de zone vit dans les donnees (`zoneDesc`), pas dans la
+     page : c'est de la prose de Niko, elle doit voyager avec le reste.
+     Une zone absente de la table retombe sur le `hint` de sa premiere
+     colonne, donc ajouter une zone ne casse rien. */
+  var ZDESC=D.zoneDesc||{};
+  function zdesc(z){
+    if(z.solo) return z.cols[0].era.hint||'';
+    return ZDESC[z.zone]||z.cols[0].era.hint||'';
+  }
+  function brC(era){
+    var b=(CFG.branches||{})[era.branch];
+    return (b&&b.c)||'var(--paper)';
+  }
+  /* Les encres ne sont pas décoratives : chacune est la teinte sombre d'une
+     branche. Violet Elseworlds pour ce qui précède l'événement, magenta pour
+     ce qui en sort, ocre pour le DCU — et le rouge, la seule de la page,
+     réservé à l'événement majeur : on le voit venir au défilement bien avant
+     d'en lire le titre.
+     Elles se distribuent donc hors de l'événement, et non au rang de la zone.
+     Prises au rang, la fusion des deux premières zones décalait tout d'un
+     cran : l'événement virait au bleu, le DCU au vert, et rien ne le disait.
+     La suite `--era3` / `--era6` n'est là que pour une zone ajoutée un jour. */
+  var ZINK=['--era1','--era7','--era8','--era3','--era6'];
+  (function(){ var n=0;
+    ZONES.forEach(function(z){ z.ink=z.event?'--era5':ZINK[(n++)%ZINK.length]; });
+  })();
+  function zink(z){ return z.ink; }
+
+  /* La largeur utile de la fenêtre, barre de défilement déduite : c'est elle
+     que la bande à quatre colonnes prend pour déborder du gabarit sans faire
+     défiler la page latéralement. `100vw` ne convient pas, il compte la barre.
+     Reposé au redimensionnement, sinon un passage en plein écran laisse la
+     bande à son ancienne largeur. */
+  (function vw(){
+    function set(){ document.documentElement.style.setProperty('--vw',
+      document.documentElement.clientWidth+'px'); }
+    set();
+    var t; addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(set,120); });
+  })();
+
+  (function build(){
+    var html='';
+    ZONES.forEach(function(z,zi){
+      var desc=zdesc(z);
+      var all=[]; z.cols.forEach(function(c){ all=all.concat(real(c.era)); });
+      /* La zone de l'événement n'a pas d'entrées : elle porte le bloc de la
+         page de prod, sa mise en garde et son dépliant à spoilers. Elle n'a
+         donc ni compteur ni durée — il n'y a rien à cocher dedans. */
+      var meta=all.length
+        ? '<p class="meta"><span><b data-zdone="'+zi+'">0</b> / '+all.length+' vus</span>'+
+          '<span>'+hm(all.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'
+        : '';
+      /* Deux colonnes, deux visuels : chaque plan de la parallaxe prend
+         l'affiche de sa branche. Une zone à colonne unique répète la sienne,
+         comme avant. */
+      var arts=z.cols.map(function(c){ return eraArt(c.era); }).filter(Boolean);
+      var a1=arts[0]||'', a2=arts[1]||arts[0]||'';
+      var body;
+      if(z.event){
+        body='<div class="crisis-wrap">'+D.crisis+'</div>';
+      }else{
+        var multi=z.cols.length>1;
+        var tabs=multi
+          ? '<div class="ztabs" role="tablist" aria-label="Choose a branch">'+
+            z.cols.map(function(c,ci){
+              /* Le décompte dans l'onglet : sans lui, savoir où en est une
+                 branche demandait d'y aller. Il porte le même `data-done`
+                 que la tête de colonne — `tally()` en remplit autant qu'il
+                 en trouve, il n'y a rien à brancher. */
+              return '<button type="button" role="tab" data-tab="'+ci+'"'+
+                ' aria-selected="'+(ci===0?'true':'false')+'" style="--k:'+brC(c.era)+'">'+
+                '<i></i>'+esc(c.era.title)+
+                '<span class="zt-n"><b data-done="'+c.i+'">0</b>/'+real(c.era).length+'</span>'+
+                '</button>'; }).join('')+'</div>'
+          : '';
+        var cols=z.cols.map(function(c){
+          var list=real(c.era);
+          /* Quand l'extraction n'a pas trouvé de consigne propre à la colonne,
+             elle a recopié la description de la zone : ne pas la redire. */
+          var hint=(c.era.hint&&c.era.hint!==desc)?c.era.hint:'';
+          return '<section class="col" data-era="'+c.i+'" style="--br:'+brC(c.era)+'">'+
+            '<header class="col-h"><span class="col-t">'+esc(c.era.title)+'</span>'+
+              '<span class="col-n"><b data-done="'+c.i+'">0</b> / '+list.length+' vus</span>'+
+            '</header>'+
+            (hint?'<p class="col-hint">'+esc(hint)+'</p>':'')+
+            '<div class="rows">'+c.era.entries.map(function(e){
+              return isSep(e)? sepRow(e) : row(e); }).join('')+'</div>'+
+          '</section>';
+        }).join('');
+        /* L'invitation au glissement se lit AVANT le carrousel. Posée
+           dessous, elle arrivait après plusieurs écrans de colonne : celui
+           qui ne savait pas qu'il pouvait glisser ne l'apprenait jamais.
+           Elle porte le rang de la colonne en vue — c'est ce chiffre qui
+           dit qu'il y en a d'autres, la phrase seule ne le montrait pas. */
+        var swipe=multi
+          ? '<p class="zswipe">'+
+              '<svg class="zsw-a" viewBox="0 0 24 24" aria-hidden="true">'+
+                '<path d="M3 12h15M12 5.5 18.5 12 12 18.5"/></svg>'+
+              '<span class="zsw-t">'+esc(T.swipe)+'</span>'+
+              '<span class="zsw-n" aria-hidden="true">'+
+                '<b data-zn>1</b> / <i data-zt>'+z.cols.length+'</i></span>'+
+            '</p>'
+          : '';
+        /* Le mode d'emploi AVANT les noms : on lit comment s'en servir,
+           puis on s'en sert. Posé dessous, il arrivait après la chose
+           qu'il explique. */
+        body=swipe+tabs+'<div class="cols zg-'+z.cols.length+'">'+cols+'</div>';
+      }
+      html+='<section class="zone-sec" id="zone'+(zi+1)+'" data-zone="'+zi+'"'+
+        ' data-cols="'+(z.event?0:z.cols.length)+'"'+
+        ' style="--era:var('+zink(z)+')">'+
+        '<div class="map">'+
+          '<div class="layers" aria-hidden="true">'+
+            (a1?'<div class="lay lay1" style="background-image:url('+a1+')"></div>'+
+                '<div class="lay lay2" style="background-image:url('+a2+')"></div>':'')+
+            '<div class="tint"></div><div class="halftone"></div></div>'+
+          '<div class="wrap">'+
+            '<span class="chev">'+(zi+1)+' / '+ZONES.length+'</span>'+
+            '<h2 class="disp off">'+esc(z.zone)+'</h2>'+
+            (desc?'<p class="hint">'+esc(desc)+'</p>':'')+
+            meta+
+          '</div></div>'+
+        '<div class="list"><div class="wrap">'+body+'</div></div></section>';
+    });
+    $('#timeline').innerHTML=html;
+  })();
+
+  /* ── mobile : le carrousel de colonnes et ses onglets ──────────────
+     Les onglets sautent à une colonne, le défilement remet en face celui de
+     la colonne la plus centrée. Sur grand écran le conteneur ne défile pas
+     et rien de tout ça ne se déclenche. */
+  /* Les voiles de bord. Posés en classe plutôt qu'en CSS pur : rien dans une
+     feuille de style ne sait si un conteneur est arrivé au bout de son
+     défilement, et un bord effacé qui ne s'efface jamais ment.
+     `applyFilters` réécrit `grid.className` pour changer le nombre de
+     colonnes — il rappelle donc cette fonction, sinon les classes tombent
+     au premier filtre décoché et ne reviennent qu'au défilement suivant. */
+  function zedges(){
+    [].forEach.call(document.querySelectorAll('.cols'),function(g){
+      g.classList.toggle('more-r',
+        g.scrollWidth-g.clientWidth>4 && g.scrollLeft+g.clientWidth<g.scrollWidth-4);
+    });
+  }
+
+  /* Le seuil du CSS, relu en JS, et la même borne décimale : en dessous la
+     bande commute, au-dessus elle est une vraie grille à quatre colonnes
+     et rien de ce bloc ne doit s'appliquer. Deux valeurs qui doivent rester
+     d'accord — si le CSS bouge, celle-ci bouge avec. */
+  var MOB=matchMedia('(max-width:1439.98px)');
+  /* Le décalage collant, lu sur l'élément plutôt que recopié : c'est le
+     `top` que le CSS vient de résoudre, donc les deux ne peuvent pas
+     diverger d'un palier à l'autre. */
+  function stick(el){ return parseFloat(getComputedStyle(el).top)||0; }
+  /* Les deux barres collantes au-dessus des onglets, mesurées. Le bandeau
+     ne bouge guère, la barre de filtres si : 59 px à 375, 100 à 1000, et
+     bien plus une fois dépliée. Écrite en dur, la valeur envoyait les
+     onglets se coller DERRIÈRE elle — visibles, mais illisibles et à
+     moitié hors du champ. Rappelée au redimensionnement et à l'ouverture
+     du panneau, qui sont les deux seules choses qui la changent. */
+  function setStick(){
+    var s=$('.sieve');
+    if(!s) return;
+    /* Le bas de la barre de filtres UNE FOIS COLLÉE, et non la somme des
+       deux hauteurs. Les deux ne sont pas la même chose : la barre se
+       colle à `top:63px` alors que le bandeau en fait 64, et 64 + 58,9
+       donnait 123 là où elle s'arrête à 121,9. Un pixel de fente, dans
+       lequel les fiches défilaient — c'est le fond qui avait l'air de
+       passer entre les filtres et les onglets. */
+    var v=parseFloat(getComputedStyle(s).top)+s.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--stick',Math.floor(v)+'px');
+  }
+  setStick();
+  /* La barre de filtres change de hauteur pour trois raisons : la fenêtre
+     est redimensionnée, le panneau est déplié, et — celle qu'on n'attend
+     pas — les polices arrivent. Au premier rendu elle tenait sur une
+     ligne et faisait 48 px ; une fois Big Shoulders chargée, ses libellés
+     passent sur deux lignes et elle en fait 59. `--stick` restait à 111
+     et les onglets se collaient DIX PIXELS DERRIÈRE elle.
+     Un `ResizeObserver` couvre les trois d'un coup, et n'a rien à savoir
+     de la cause. Il se déclenche aussi à la pose, ce qui remplace l'appel
+     ci-dessus — gardé quand même pour un navigateur qui ne l'a pas. */
+  var sv=$('.sieve');
+  if(sv && window.ResizeObserver) new ResizeObserver(setStick).observe(sv);
+  else {
+    addEventListener('load',setStick);
+    addEventListener('resize',function(){ clearTimeout(setStick._t);
+      setStick._t=setTimeout(setStick,120); });
+    var filtBox=$('.filt');
+    if(filtBox) filtBox.addEventListener('toggle',setStick);
+  }
+
+  [].forEach.call(document.querySelectorAll('.zone-sec'),function(sec){
+    var grid=$('.cols',sec), tabs=$('.ztabs',sec);
+    if(!grid||!tabs) return;
+    tabs.addEventListener('click',function(ev){
+      var b=ev.target.closest('[data-tab]'); if(!b) return;
+      var col=grid.children[+b.dataset.tab];
+      if(!col||col.hidden) return;
+      if(MOB.matches){
+        /* On peut être dix mille pixels à l'intérieur d'une branche quand
+           on en choisit une autre : sans ce recalage, la branche neuve
+           s'ouvrirait sous le pied de page. On revient sur les onglets
+           eux-mêmes, décalés de la hauteur des deux barres collantes,
+           sinon ils se posent DERRIÈRE elles. */
+        var y=tabs.getBoundingClientRect().top+scrollY-stick(tabs);
+        show(+b.dataset.tab);
+        scrollTo({top:y,behavior:'auto'});
+      }else{
+        /* Le glissement doux vient du CSS, pas d'un `behavior:'smooth'` :
+           l'accroche obligatoire du carrousel interrompt l'animation pilotée
+           par script, et la colonne ne bougeait plus. Une affectation nue
+           arrive à destination dans tous les cas. */
+        grid.scrollLeft=col.getBoundingClientRect().left-
+          grid.getBoundingClientRect().left+grid.scrollLeft;
+        mark(+b.dataset.tab);
+      }
+    });
+    /* La branche affichée. `mark` ne fait que peindre l'onglet ; `show`
+       est ce qui décide de ce qu'on voit, et les deux doivent rester
+       d'accord — d'où l'appel groupé. */
+    function show(i,dir){
+      [].forEach.call(grid.children,function(c,ci){
+        c.classList.remove('sl-l','sl-r');
+        c.classList.toggle('on',ci===i);
+      });
+      if(dir){
+        var c=grid.children[i];
+        /* Relancer une animation sur un élément qui vient d'être affiché
+           demande un reflow entre le retrait et la pose de la classe :
+           sans lui le navigateur ne voit qu'un état, et rien ne bouge. */
+        void c.offsetWidth;
+        c.classList.add(dir>0?'sl-l':'sl-r');
+      }
+      mark(i);
+    }
+    /* ── le glissement : la commutation garde le geste du carrousel ────
+       Le carrousel donnait le doigt gratuitement, c'est ce qu'on perdait
+       en retirant le défilement horizontal. Il est rendu ici, mais il
+       change de branche au lieu de faire glisser quinze mille pixels.
+
+       Trois garde-fous, et ils comptent tous les trois : le geste doit
+       être plus horizontal que vertical (sinon un défilement de lecture
+       un peu oblique changeait de branche en pleine fiche), il doit
+       dépasser 55 px (un appui qui ripe n'est pas un geste), et il doit
+       durer moins de 700 ms (au-delà, c'est un doigt posé, pas un
+       glissement). Tout est en `passive` : on ne prend jamais la main sur
+       le défilement vertical, on se contente de lire ce qui s'est passé. */
+    var t0=null;
+    grid.addEventListener('touchstart',function(ev){
+      if(!MOB.matches||ev.touches.length!==1){ t0=null; return; }
+      t0={x:ev.touches[0].clientX,y:ev.touches[0].clientY,at:Date.now()};
+    },{passive:true});
+    grid.addEventListener('touchend',function(ev){
+      if(!t0) return;
+      var t=ev.changedTouches[0];
+      var dx=t.clientX-t0.x, dy=t.clientY-t0.y, ms=Date.now()-t0.at;
+      t0=null;
+      if(ms>700||Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.4) return;
+      pas(dx<0?1:-1);
+    },{passive:true});
+    /* Une branche décochée n'est pas dans le chemin du doigt : on marche
+       sur les colonnes VIVANTES, celles que les onglets montrent encore.
+       Au bout, on ne boucle pas — revenir à la première après la dernière
+       ferait passer pour un retour en arrière ce qui est une avance. */
+    function pas(d){
+      var live=[]; [].forEach.call(grid.children,function(c,ci){
+        if(!c.hidden) live.push(ci); });
+      var cur=-1;
+      live.forEach(function(ci,k){
+        if(grid.children[ci].classList.contains('on')) cur=k; });
+      if(cur<0) return;
+      var nx=live[cur+d];
+      if(nx===undefined) return;
+      var y=tabs.getBoundingClientRect().top+scrollY-stick(tabs);
+      show(nx,d);
+      scrollTo({top:y,behavior:'auto'});
+    }
+    /* Si la branche affichée tombe sous un filtre, on passe à la première
+       qui reste. Sans ça la bande sortait vide alors que ses onglets
+       annonçaient des entrées. Rappelée par `applyFilters`. */
+    sec._reshow=function(){
+      if(!MOB.matches) return;
+      var cur=-1, first=-1;
+      [].forEach.call(grid.children,function(c,ci){
+        if(c.hidden) return;
+        if(first<0) first=ci;
+        if(c.classList.contains('on')) cur=ci;
+      });
+      if(cur<0 && first>=0) show(first);
+    };
+    /* ── la branche d'arrivée : la plus fournie, pas la première ───────
+       Arriver sur « Origines de Superman » ouvrait la page sur trois
+       fiches, alors que l'Arrowverse en a quatre-vingt-huit : le visiteur
+       tombait sur la plus courte des quatre et pouvait croire que la zone
+       entière tenait là. La branche la plus fournie est celle qu'on est
+       venu lire.
+       C'est un décompte, pas un rang écrit à la main : les deux zones à
+       colonnes tombent sur l'Arrowverse (88 contre 16 et 8 et 3, puis 16
+       contre 8), et la règle vaut telle quelle pour une zone qu'on
+       ajouterait. À égalité, la première l'emporte — `>` et non `>=`. */
+    var gros=0, plus=-1;
+    [].forEach.call(grid.children,function(c,ci){
+      var n=c.querySelectorAll('.bu').length;
+      if(n>plus){ plus=n; gros=ci; }
+    });
+    show(gros);
+    /* L'onglet actif se pose tout de suite au clic, sans attendre l'événement
+       de défilement : la dernière colonne d'un carrousel ne peut pas venir se
+       coller à gauche, le défilement bute avant et ne dirait pas la vérité. */
+    function mark(i){
+      [].forEach.call(tabs.children,function(b){
+        b.setAttribute('aria-selected',(+b.dataset.tab===i)?'true':'false'); });
+      /* Le compteur se lit sur les colonnes VIVANTES, pas sur les données :
+         décocher une branche en retire une, et « 3 / 4 » désignerait alors
+         une colonne qui n'est plus là. */
+      var n=0, at=1;
+      [].forEach.call(grid.children,function(c,ci){
+        if(c.hidden) return; n++; if(ci===i) at=n; });
+      var nb=$('[data-zn]',sec), nt=$('[data-zt]',sec);
+      if(nb) nb.textContent=at;
+      if(nt) nt.textContent=n;
+    }
+    var tick;
+    grid.addEventListener('scroll',function(){
+      /* le voile suit le doigt, l'onglet attend qu'on s'arrête */
+      zedges();
+      clearTimeout(tick);
+      tick=setTimeout(function(){
+        var g=grid.getBoundingClientRect(), mid=g.left+g.width/2, best=0, bd=Infinity;
+        [].forEach.call(grid.children,function(c,ci){
+          if(c.hidden) return;
+          var r=c.getBoundingClientRect(), d=Math.abs(r.left+r.width/2-mid);
+          if(d<bd){ bd=d; best=ci; }
+        });
+        mark(best);
+      },70);
+    },{passive:true});
+  });
+  /* Au chargement rien n'a défilé : sans ce premier passage aucune bande ne
+     porterait de voile, et la page s'ouvrirait sur son affordance éteinte.
+     Au redimensionnement, une bande peut cesser d'être un carrousel — le
+     voile doit tomber avec. */
+  zedges();
+  addEventListener('resize',function(){ clearTimeout(zedges._t);
+    zedges._t=setTimeout(zedges,150); });
+
+  /* ── rejoindre une entrée qui n'est pas dans la branche affichée ────
+     Le bouton « Reprendre », l'ancre de l'URL et le clic d'un badge
+     visent un identifiant, pas une branche. Sur mobile la branche qui le
+     porte peut être commutée : sans ce détour, on défilait jusqu'à une
+     entrée qui n'est pas à l'écran, et la page avait l'air de n'avoir
+     rien fait. */
+  function reveal(el){
+    if(!MOB.matches||!el) return;
+    var col=el.closest('.col'), sec=el.closest('.zone-sec');
+    if(!col||!sec||col.classList.contains('on')) return;
+    var tabs=$('.ztabs',sec), grid=$('.cols',sec);
+    if(!tabs||!grid) return;
+    var i=[].indexOf.call(grid.children,col);
+    var b=$('[data-tab="'+i+'"]',tabs);
+    if(b) b.click();
+  }
+  /* Un passage du bureau au téléphone peut laisser à l'écran une branche
+     que le filtre avait fait tomber : la commutation se relit. */
+  MOB.addEventListener('change',function(){
+    [].forEach.call(document.querySelectorAll('.zone-sec'),function(s){
+      if(s._reshow) s._reshow(); });
+  });
+
+  /* ── filtrage : on masque, on ne redessine pas (les dépliants tiennent) ── */
+  function applyFilters(){
+    var q=($('#q').value||'').trim().toLowerCase(), shown=0;
+    D.eras.forEach(function(era,i){
+      var vis=0;
+      era.entries.forEach(function(e){
+        var el=document.getElementById(e.id);
+        /* Un séparateur n'est pas un résultat : il suit sa bande, sauf en
+           recherche où il n'aurait plus rien à séparer. */
+        if(isSep(e)){ el.hidden=!!q; return; }
+        var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
+               !OPTS.some(function(o){ return offOpt[o.v] && o.test(e); }) &&
+               (!q || e.title.toLowerCase().indexOf(q)>-1);
+        el.hidden=!ok; if(ok){ vis++; shown++; }
+      });
+      /* Une colonne vide disparaît ; la zone qui la porte décide ensuite. */
+      var col=document.querySelector('.col[data-era="'+i+'"]');
+      if(col) col.hidden=(vis===0);
+    });
+    /* La zone tombe quand toutes ses colonnes sont tombées. Celle de
+       l'événement n'a pas d'entrées à compter : elle tombe sur la recherche,
+       et sur le filtre de sa propre branche — l'événement appartient à
+       l'Arrowverse, décocher l'Arrowverse doit l'emporter avec lui. Et quand
+       il ne reste qu'une colonne, la grille
+       repasse à une piste — une colonne seule ne tient pas la moitié de la
+       page en laissant l'autre moitié vide. */
+    ZONES.forEach(function(z,zi){
+      var sec=document.querySelector('.zone-sec[data-zone="'+zi+'"]');
+      if(!sec) return;
+      if(z.event){
+        var eb=z.cols[0].era.branch;
+        sec.hidden=!!q || !!(eb&&offOpt[eb]);
+        return;
+      }
+      var live=z.cols.filter(function(c){
+        var col=$('.col[data-era="'+c.i+'"]',sec); return col && !col.hidden; });
+      sec.hidden=(live.length===0);
+      var grid=$('.cols',sec);
+      if(grid) grid.className='cols zg-'+(live.length||1);
+      /* Le nombre de colonnes VIVANTES, pas celui des données : décocher une
+         branche fait tomber sa colonne, et la bande à quatre repasse à trois
+         ou à deux. C'est lui que le CSS lit pour décider du carrousel et des
+         onglets — la classe `zg-*` ne porte que sur la grille, or les onglets
+         en sont le frère et non l'enfant. */
+      sec.dataset.cols=(live.length||1);
+      var tabs=$('.ztabs',sec), sw=$('.zswipe',sec);
+      if(tabs){
+        tabs.hidden=live.length<2;
+        [].forEach.call(tabs.children,function(b){
+          var c=z.cols[+b.dataset.tab];
+          var col=c && $('.col[data-era="'+c.i+'"]',sec);
+          b.hidden=!col||col.hidden;
+        });
+      }
+      if(sw) sw.hidden=live.length<2;
+      if(sec._reshow) sec._reshow();
+    });
+    /* Le nombre de colonnes vient de changer, et `grid.className` a été
+       réécrit juste au-dessus : voiles de bord et compteur se relisent
+       dessus. Un défilement simulé suffit — c'est le chemin du doigt. */
+    zedges();
+    [].forEach.call(document.querySelectorAll('.cols'),function(g){
+      g.dispatchEvent(new Event('scroll')); });
+    $('#fcount').textContent=shown+' / '+ALL.length+' '+T.shown;
+    var em=$('#empty');
+    em.hidden=shown>0;
+    if(!shown) em.textContent=(q? T.emptyH+' « '+q+' »' : T.emptyH+' '+T.emptyThese)+' — '+T.emptyP;
+  }
+
+  function tally(){
+    var n=0,left=0;
+    ALL.forEach(function(e){ if(prog[e.id]) n++; else left+=rt(e); });
+    var h=Math.round(left/60);
+    $('#k-on').textContent=n; $('#k-tot').textContent=ALL.length;
+    $('#k-time').textContent=h+' h';
+    $('#k-fill').style.transform='scaleX('+(n/ALL.length)+')';
+    $('#s-tot').textContent=ALL.length; $('#s-h').textContent=h+' h';
+    D.eras.forEach(function(era,i){
+      /* `querySelectorAll` et non `querySelector` : le décompte d'une
+         branche est écrit à deux endroits depuis que les onglets le
+         portent aussi, et l'onglet vient AVANT la colonne dans le
+         document. Au singulier, c'est lui seul qui bougeait et la tête
+         de colonne restait à zéro — sans une ligne dans la console. */
+      var n=real(era).filter(function(e){return prog[e.id];}).length;
+      [].forEach.call(document.querySelectorAll('[data-done="'+i+'"]'),
+        function(b){ b.textContent=n; });
+    });
+    ZONES.forEach(function(z,zi){
+      var b=document.querySelector('[data-zdone="'+zi+'"]');
+      if(!b) return;
+      var c=0;
+      z.cols.forEach(function(x){
+        c+=real(x.era).filter(function(e){return prog[e.id];}).length; });
+      b.textContent=c;
+    });
+    startBtn();
+  }
+
+  /* ── Commencer / Reprendre : le bouton ramène à la dernière entrée vue ── */
+  var next=null;
+  function startBtn(){
+    var vues=ALL.filter(function(e){ return prog[e.id]; });
+    next=vues[vues.length-1]||ALL[0];
+    $('#start').innerHTML=(vues.length?T.resume:'Commencer')+' <em>▸</em>';
+  }
+  /* venu de la reprise de l'accueil : le clic de « Reprendre » est joué
+     pour le visiteur, sinon il lui faut le refaire une fois arrivé. */
+  if(location.hash==='#reprendre') addEventListener('load',function(){ $('#start').click(); });
+  $('#start').addEventListener('click',function(){
+    if(!next) return;
+    var el=document.getElementById(next.id);
+    if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
+      $('#q').value=''; $('#searchbox').classList.remove('on');
+      offLv={}; offK={}; offOpt={}; hideDone=false;
+      [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
+        b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
+      applyFilters();
+    }
+    reveal(el);
+    var y=el.getBoundingClientRect().top+scrollY-118;
+    scrollTo({top:y,behavior:'smooth'});
+    el.querySelector('.bu-card').style.borderColor='var(--hot)';
+    setTimeout(function(){ el.querySelector('.bu-card').style.borderColor=''; },1400);
+  });
+
+  /* ── fiche TMDB / RAWG, reprise de cg-timeline.js ────────────────── */
+  var cache={};
+  function meta(pairs){
+    var s=pairs.filter(function(p){return p[1];}).map(function(p){
+      return '<span><strong>'+p[0]+'</strong> '+p[1]+'</span>'; }).join('');
+    return s?'<div class="expand-meta">'+s+'</div>':'';
+  }
+  function loadRich(art){
+    var panel=$('.bu-panel',art), box=$('.en-rich',panel);
+    if(panel.dataset.loaded) return;
+    panel.dataset.loaded='1';
+    var e=ALL.filter(function(x){return x.id===art.dataset.id;})[0]||{};
+    /* `media:"video"` couvre les one-shots et les scènes post-générique :
+       quand ils portent un identifiant TMDB, c'est celui d'un film. */
+    var md=panel.dataset.media;
+    var id=panel.dataset.tmdb, type=(md==='movie'||md==='video')?'movie':'tv';
+    var IMG=CFG.img;
+
+    /* la FAQ : questions et réponses de la page de prod, mot pour mot. Une
+       catégorie sans réponse ne pose pas sa question : toutes les entrées
+       n'ont pas les deux, et un dépliant vide n'apprend rien. */
+    if(e.faq&&CFG.faqCats){
+      $('.en-faq',panel).innerHTML=CFG.faqCats.filter(function(c){
+        return e.faq[c.key];
+      }).map(function(c){
+        return '<details class="faq"><summary>'+esc(c.q.replace('{name}',e.title))+
+               '</summary><div class="a">'+esc(e.faq[c.key])+'</div></details>'; }).join('');
+    }
+
+    box.innerHTML='<div class="expand-loading">'+T.loading+'</div>';
+
+    if(panel.dataset.media==='game'){
+      var yt='https://www.youtube.com/results?search_query='+
+             encodeURIComponent(e.title+' film complet');
+      var link='<a class="expand-trailer-link" href="'+yt+'" target="_blank" rel="noopener">'+
+               T.watchGame+'</a>';
+      var fallback=function(g){
+        box.innerHTML='<div class="expand-inner">'+
+          (g&&g.background_image?'<div class="expand-poster"><img src="'+g.background_image+
+            '" loading="lazy" alt=""/></div>':'')+
+          '<div class="expand-info"><div class="expand-synopsis">'+esc(e.desc||e.note||'')+'</div>'+
+          meta([[T.mReleased,g&&g.released?g.released.substring(0,4):''],
+                [T.mRating,g&&g.rating?'⭐ '+g.rating.toFixed(1)+'/5':''],
+                [T.mPeriod,e.date]])+link+'</div></div>';
+      };
+      if(!CFG.rawgKey){ fallback(null); return; }
+      /* RAWG ne trouve rien si on lui envoie le titre entier : « Outlaws
+         + DLC Wild Card + DLC A Pirate's Fortune » ou « Campagne : Missions
+         1-6 » ne sont pas des noms de jeux. On coupe aux DLC et au
+         sous-titre pour ne chercher que le jeu lui-même. */
+      var q=String(e.title).split(/\s\+\s|\s—\s/)[0].replace(/\s*:\s*(Campagne|Prologue).*$/i,'')
+                           .replace(/[:.+]/g,' ').trim();
+      fetch('https://api.rawg.io/api/games?search='+encodeURIComponent(q)+
+            '&page_size=1&key='+CFG.rawgKey)
+        .then(function(r){return r.json();})
+        .then(function(d){ fallback(d.results&&d.results[0]); })
+        .catch(function(){ fallback(null); });
+      return;
+    }
+
+    if(!id||id==='0'||!CFG.tmdbKey){
+      /* sans identifiant TMDB ni description, le dépliant restait vide :
+         on le dit, la FAQ juste en dessous porte le reste. */
+      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>';
+      return;
+    }
+
+    var k=type+id;
+    var got=cache[k]?Promise.resolve(cache[k]):
+      fetch('https://api.themoviedb.org/3/'+type+'/'+id+'?api_key='+CFG.tmdbKey+
+            '&language='+CFG.tmdbLang+'&append_to_response=videos')
+        .then(function(r){return r.json();})
+        .then(function(d){
+          var v=(d.videos&&d.videos.results)||[];
+          if(v.some(function(x){return x.type==='Trailer'&&x.site==='YouTube';})){ cache[k]=d; return d; }
+          /* Pas de bande-annonce dans la langue de la page : on complète
+             en anglais, et en anglais seulement. Le repli ne joue donc
+             que depuis le français — c'est voulu : une bande-annonce
+             française n'a rien à faire sur la page anglaise. Quand TMDB
+             n'a pas de trailer anglais, la fiche anglaise n'en affiche
+             pas, et c'est la bonne réponse. */
+          return fetch('https://api.themoviedb.org/3/'+type+'/'+id+'/videos?api_key='+
+                       CFG.tmdbKey+'&language=en-US')
+            .then(function(r){return r.json();})
+            .then(function(en){ d.videos={results:v.concat(en.results||[])}; cache[k]=d; return d; });
+        });
+
+    got.then(function(d){
+      /* À défaut de bande-annonce, le générique. TMDB ne connaît de la
+         série Avatar : Le Dernier Maître de l'Air aucun trailer anglais
+         — seulement son générique d'épisode — et ce générique fait le
+         même travail : il montre la série. Le type reste écrit en clair
+         parce que c'est une valeur de l'API TMDB, jamais un libellé
+         d'écran : il ne se traduit pas. */
+      var yts=((d.videos&&d.videos.results)||[]).filter(function(v){
+        return v.site==='YouTube'; });
+      var tr=yts.filter(function(v){ return v.type==='Trailer'; })[0]
+          || yts.filter(function(v){ return v.type==='Opening Credits'; })[0];
+      var p=d.poster_path?IMG+'w300'+d.poster_path:null;
+      box.innerHTML='<div class="expand-inner">'+
+        (p?'<button type="button" class="expand-poster" data-big="'+IMG+'w780'+d.poster_path+
+            '" aria-label="'+esc(T.zoom||'Agrandir')+'"><img src="'+p+'" loading="lazy" alt=""/>'+
+            '<span class="expand-poster-ov">🔍</span></button>':'')+
+        '<div class="expand-info"><div class="expand-synopsis">'+
+          esc(d.overview||T.noSynopsis)+'</div>'+
+        meta([[T.mYear,(d.release_date||d.first_air_date||'').substring(0,4)],
+              [T.mGenre,(d.genres||[]).map(function(g){return g.name;}).join(', ')],
+              [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],
+              [T.mPeriod,e.date]])+
+        (tr?'<a class="expand-trailer-link" href="https://www.youtube.com/watch?v='+tr.key+
+          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+
+        '</div></div>';
+    }).catch(function(){
+      box.innerHTML='<div class="expand-loading">'+T.loadFail+'</div>';
+    });
+  }
+
+  /* ── interactions ───────────────────────────────────────────────── */
+  document.addEventListener('click',function(ev){
+    var t=ev.target;
+
+    var chk=t.closest('[data-check]');
+    if(chk){
+      var art=chk.closest('.bu'), id=art.dataset.id;
+      prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
+      save();
+      chk.setAttribute('aria-checked',prog[id]?'true':'false');
+      art.classList.toggle('done',!!prog[id]);
+      tally();
+      syncBadges(true);
+      if(hideDone&&prog[id]) applyFilters();
+      return;
+    }
+
+    var tg=t.closest('[data-toggle]');
+    if(tg){
+      var a=tg.closest('.bu'), pan=$('.bu-panel',a);
+      var open=tg.getAttribute('aria-expanded')==='true';
+      tg.setAttribute('aria-expanded',open?'false':'true');
+      pan.hidden=open;
+      if(!open) loadRich(a);
+      return;
+    }
+
+    var cp=t.closest('[data-copy]');
+    if(cp){
+      ev.preventDefault();
+      var url=location.href.split('#')[0]+cp.getAttribute('href');
+      var done=function(){ cp.classList.add('ok');
+        setTimeout(function(){ cp.classList.remove('ok'); },1200); };
+      if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,done); else done();
+      history.replaceState(null,'',cp.getAttribute('href'));
+      return;
+    }
+
+    var po=t.closest('.expand-poster[data-big]');
+    if(po){ lightbox(po.dataset.big); return; }
+
+    var f=t.closest('#sieve button[aria-pressed]');
+    if(f){
+      var on=f.getAttribute('aria-pressed')==='true';
+      f.setAttribute('aria-pressed',on?'false':'true');
+      if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.lv) offLv[f.dataset.lv]=on;
+      else if(f.dataset.k) offK[f.dataset.k]=on;
+      else if(f.dataset.o) offOpt[f.dataset.o]=on;
+      applyFilters();
+      return;
+    }
+  });
+
+  function lightbox(url){
+    var pm=$('#pm');
+    if(!pm){
+      pm=document.createElement('div'); pm.id='pm'; pm.className='pm';
+      pm.innerHTML='<button class="pm-x" aria-label="'+esc(T.close)+'">✕</button><img id="pmi" alt=""/>';
+      pm.addEventListener('click',function(){ pm.classList.remove('o'); });
+      document.body.appendChild(pm);
+    }
+    $('#pmi').src=url; pm.classList.add('o');
+  }
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'){
+      var pm=$('#pm'); if(pm) pm.classList.remove('o');
+      $('#bx').classList.remove('o'); $('#bx').hidden=true;
+    }
+    if(ev.key==='/'&&document.activeElement!==$('#q')){ ev.preventDefault(); $('#q').focus(); }
+  });
+
+  /* recherche */
+  var qi=$('#q');
+  qi.addEventListener('input',function(){
+    $('#searchbox').classList.toggle('on',!!qi.value);
+    applyFilters();
+  });
+  $('#q-clear').addEventListener('click',function(){
+    qi.value=''; $('#searchbox').classList.remove('on'); applyFilters(); qi.focus();
+  });
+
+  /* barre du bas, dépliable */
+  var hud=$('#hud');
+  $('#hud-btn').addEventListener('click',function(){
+    var open=hud.classList.toggle('open');
+    this.setAttribute('aria-expanded',open?'true':'false');
+    $('#hud-panel').hidden=!open;
+    document.body.style.paddingBottom=(open?hud.offsetHeight:64)+'px';
+  });
+
+  /* export / import / réinitialisation */
+  $('#export').addEventListener('click',function(){
+    var blob=new Blob([JSON.stringify({universe:'dc',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+                      {type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='chronologeek-dc.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('#import').addEventListener('click',function(){ $('#import-file').click(); });
+  $('#import-file').addEventListener('change',function(){
+    var f=this.files&&this.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var d=JSON.parse(r.result);
+        /* Le fichier de l'accueil porte les neuf univers : on n'en prend
+           que le sien. Sans cette ligne, `d.progress` etant absent, tout
+           le fichier passait pour une progression. */
+        if(d&&d.universes) d=d.universes.dc||{};
+        prog=d.progress||d||{}; save();
+        /* les ajouts perso avant tout : ils changent la timeline elle-meme, donc la page se rebatit */
+        if(window.CGP&&window.CGP.fusionne(d.mine)){ location.reload(); return; }
+        [].forEach.call(document.querySelectorAll('.bu'),function(a){
+          var on=!!prog[a.dataset.id];
+          a.classList.toggle('done',on);
+          $('[data-check]',a).setAttribute('aria-checked',on?'true':'false');
+        });
+        /* un import peut débloquer sept badges d'un coup : on les acquiert
+           sans les annoncer, le panneau Badges les montrera. */
+        tally(); syncBadges(false); applyFilters();
+      }catch(_){ alert(T.badFile); }
+    };
+    r.readAsText(f); this.value='';
+  });
+  $('#reset').addEventListener('click',function(){
+    if(!confirm(T.resetDC)) return;
+    prog={}; save();
+    [].forEach.call(document.querySelectorAll('.bu'),function(a){
+      a.classList.remove('done');
+      $('[data-check]',a).setAttribute('aria-checked','false');
+    });
+    tally(); applyFilters();
+  });
+
+  /* ── badges ──────────────────────────────────────────────────────
+     Deux règles, toutes les deux tenues ici et nulle part ailleurs.
+
+     1. Un badge de progression demande tout son bloc. Les `ids` des
+        données ne portent que la dernière entrée : s'en contenter faisait
+        tomber « L'ère de la République terminée » sur une seule case
+        cochée. Le découpage des blocs est expliqué sur `needOf`.
+     2. Un badge obtenu ne se reprend pas. Il vit dans son propre
+        stockage, à part de la progression : décocher, réinitialiser ou
+        importer une autre sauvegarde n'en retire jamais aucun. */
+  var BKEY=KEY+'-badges';
+  var BADGES=(CFG.badges||[]).filter(function(b){
+    return !b.universe || b.universe===CFG.universe; });
+  var won={};
+  try{ won=JSON.parse(localStorage.getItem(BKEY)||'{}')||{}; }catch(_){ won={}; }
+  function saveWon(){ try{ localStorage.setItem(BKEY,JSON.stringify(won)); }catch(_){} }
+
+  /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher.
+     Chez Star Wars et Marvel le bloc court du repère précédent jusqu'à
+     elle, dans l'ordre de la page — les blocs y sont des tranches de
+     timeline. DC ne se lit pas comme ça : ses blocs sont des branches, et
+     elles s'entrelacent. « Tout l'Arrowverse terminé » couvre les deux
+     bandes Arrowverse, celle d'avant l'événement et celle d'après, avec le
+     DCEU coincé entre les deux ; découper par position aurait donné le
+     DCEU. Le bloc est donc la branche de l'entrée nommée, telle que la
+     page de prod la définit. `all` liste ses entrées lui-même — toutes les
+     origines de Superman, toutes celles de Batman — et se lit tel quel. */
+  var GROUPS=CFG.groups||{};
+  function branchOf(id){
+    var hit=null;
+    Object.keys(GROUPS).forEach(function(g){
+      if(GROUPS[g].ids.indexOf(id)>-1) hit=g;
+    });
+    return hit;
+  }
+  function needOf(b){
+    if(b.trigger!=='last') return b.ids||[];
+    var g=branchOf((b.ids||[])[0]);
+    return g? GROUPS[g].ids : (b.ids||[]);
+  }
+  function earned(b){
+    if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });
+    var need=needOf(b);
+    return need.length>0 && need.every(function(i){ return prog[i]; });
+  }
+  /* Rend les badges tout juste obtenus ; `pop` décide s'ils s'annoncent. */
+  function syncBadges(pop){
+    var fresh=BADGES.filter(function(b){ return !won[b.id] && earned(b); });
+    if(!fresh.length) return fresh;
+    fresh.forEach(function(b){ won[b.id]=1; });
+    saveWon();
+    if(pop) fresh.forEach(function(b,i){ setTimeout(function(){ popBadge(b); },i*1100); });
+    return fresh;
+  }
+
+  function badges(){
+    syncBadges(false);
+    var n=0;
+    var html=BADGES.map(function(b){
+      var got=!!won[b.id];
+      if(got) n++;
+      return '<div class="bg1'+(got?' on':'')+'" style="--c:'+b.color+'">'+
+        '<span class="i">'+b.icon+'</span><span><span class="t">'+esc(b.label)+'</span>'+
+        '<span class="d">'+esc(b.desc)+'</span></span></div>';
+    }).join('');
+    $('#bx-g').innerHTML=html;
+    $('#bx-n').textContent=n+' '+T.unlockedN;
+    $('#bx').hidden=false; $('#bx').classList.add('o');
+  }
+  $('#badges-btn').addEventListener('click',badges);
+
+  /* le carton d'annonce, un seul nœud recyclé */
+  var bpop=null, bpopT=null;
+  function popBadge(b){
+    if(!bpop){
+      bpop=document.createElement('div');
+      bpop.className='bpop'; bpop.hidden=true;
+      bpop.setAttribute('role','status');
+      document.body.appendChild(bpop);
+    }
+    bpop.style.setProperty('--c',b.color);
+    bpop.innerHTML='<span class="i" aria-hidden="true">'+b.icon+'</span><span>'+
+      '<span class="k">'+esc(T.badgeUnlocked)+'</span>'+
+      '<span class="t">'+esc(b.label)+'</span>'+
+      '<span class="d">'+esc(b.desc)+'</span></span>';
+    bpop.hidden=false;
+    /* un reflow forcé plutôt qu'un requestAnimationFrame : la transition
+       part quand même si la page ne compose pas de frame à cet instant. */
+    void bpop.offsetHeight;
+    bpop.classList.add('o');
+    confetti(b.color);
+    clearTimeout(bpopT);
+    bpopT=setTimeout(function(){
+      bpop.classList.remove('o');
+      setTimeout(function(){ if(bpop) bpop.hidden=true; },300);
+    },4600);
+  }
+
+  /* Confettis : des rectangles pleins et non des ronds — la page est
+     découpée au massicot, les confettis le sont aussi. Le canvas se
+     crée à la volée et se retire dès la dernière retombée. */
+  var REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var cv=null, cx=null, bits=[], raf=0;
+  function confetti(color){
+    if(REDUCE) return;
+    if(!cv){
+      cv=document.createElement('canvas');
+      cv.className='conf'; cv.setAttribute('aria-hidden','true');
+      document.body.appendChild(cv); cx=cv.getContext('2d');
+    }
+    var dpr=Math.min(devicePixelRatio||1,2), W=innerWidth, H=innerHeight;
+    cv.width=W*dpr; cv.height=H*dpr;
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    cx.setTransform(dpr,0,0,dpr,0,0);
+    var pal=[color,'#fffdf7','#fbbf24','#60a5fa','#a78bfa'];
+    for(var i=0;i<120;i++){
+      bits.push({x:W/2+(Math.random()-.5)*200, y:H*.66,
+                 vx:(Math.random()-.5)*10, vy:-8-Math.random()*10,
+                 w:4+Math.random()*8, h:3+Math.random()*6,
+                 a:Math.random()*6.28, va:(Math.random()-.5)*.36,
+                 c:pal[i%pal.length], life:80+Math.random()*60});
+    }
+    if(!raf) raf=requestAnimationFrame(fall);
+  }
+  function fall(){
+    var W=innerWidth, H=innerHeight;
+    cx.clearRect(0,0,W,H);
+    bits=bits.filter(function(p){ return p.life>0 && p.y<H+50; });
+    bits.forEach(function(p){
+      p.vy+=.36; p.vx*=.99; p.x+=p.vx; p.y+=p.vy; p.a+=p.va; p.life--;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.a);
+      cx.globalAlpha=Math.min(1,p.life/30); cx.fillStyle=p.c;
+      cx.fillRect(-p.w/2,-p.h/2,p.w,p.h); cx.restore();
+    });
+    if(bits.length){ raf=requestAnimationFrame(fall); }
+    else { raf=0; cv.remove(); cv=null; cx=null; }
+  }
+  $('#bx-x').addEventListener('click',function(){ $('#bx').classList.remove('o'); $('#bx').hidden=true; });
+  $('#bx').addEventListener('click',function(ev){
+    if(ev.target===this){ this.classList.remove('o'); this.hidden=true; }
+  });
+
+  /* le bat-signal */
+  var tt=$('#totop');
+  tt.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+  addEventListener('scroll',function(){ tt.classList.toggle('on',scrollY>400); },{passive:true});
+
+  /* la hauteur du bandeau, donnée au collant : posée en dur, elle laissait
+     un filet de fond défiler entre les deux. Un pixel de moins glisse la
+     barre sous le bandeau plutôt que d’ouvrir une fente. */
+  var hdr=document.querySelector('header');
+  function head(){
+    document.documentElement.style.setProperty('--hh',
+      (Math.round(hdr.getBoundingClientRect().height)-1)+'px');
+  }
+  head();
+  addEventListener('resize',head);
+  /* les polices arrivent après : la hauteur du bandeau bouge avec elles */
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(head);
+  /* menu replié */
+  var bg=$('#burger'), dr=$('#drawer');
+  bg.addEventListener('click',function(){
+    var open=dr.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+    bg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+
+  tally(); syncBadges(false); applyFilters();
+
+  /* une ancre dans l'URL ouvre directement la bonne entrée */
+  if(location.hash){
+    var target=document.getElementById(location.hash.slice(1));
+    if(target&&target.classList.contains('bu')){
+      setTimeout(function(){
+        reveal(target);
+        scrollTo({top:target.getBoundingClientRect().top+scrollY-118});
+      },60);
+    }
+  }
+})();
+</script>
+<script src="e-app.js"></script>
+</body>
+</html>
