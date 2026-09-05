@@ -2164,7 +2164,18 @@
        'September','October','November','December'];
 
   var CSS = [
-    '.nx{margin:0 auto 22px}',
+    /* Les dix pages posent `.intro{padding:34px 0 8px}` : c'est cette
+       respiration-là qui détachait l'accroche de la barre de stats, et
+       l'encart la lui avait prise en se glissant devant. Il la reprend pour
+       lui en haut, et le padding de l'accroche fait l'espace du dessous —
+       34 px de chaque côté, sans rien ajouter à ce que la page mesure déjà.
+
+       **En `padding`, pas en `margin`.** L'encart est le premier enfant du
+       `<main>`, qui n'a ni padding ni bordure : une marge haute s'en échappe
+       par effondrement et ne sépare plus rien — mesurée à 0 px du haut du
+       corps. Le cadre est porté par `.nx-in`, donc le padding du conteneur ne
+       se voit pas. */
+    '.nx{padding-top:34px;margin:0 auto}',
     /* Centré et à la largeur de son contenu, comme la pastille du titre et la
        ligne « Mis à jour » : les encadrés de ces pages ne s'étirent pas d'un
        bord à l'autre, ils se posent au milieu. `max-width` le borne quand le
