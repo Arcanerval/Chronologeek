@@ -1763,3 +1763,309 @@
     document.addEventListener('DOMContentLoaded', demarre);
   else demarre();
 })();
+
+/* ═══ COCHER EN SÉRIE — Maj + clic ════════════════════════════════════
+   Le Dossier porte 535 lignes et Star Trek 248 : quelqu'un qui arrive en
+   ayant déjà vu quarante œuvres devait faire quarante clics, et rien dans
+   la page ne proposait mieux. Maj + clic sur une case aligne toute la
+   plage depuis la case cliquée juste avant, sur l'état que la page vient
+   de poser — on coche vers l'avant, on décoche vers l'arrière, c'est le
+   même geste que dans un explorateur de fichiers.
+
+   Quatre choses à savoir :
+
+   - **On rejoue de vrais clics.** La coche, le pont de progression, les
+     badges, le décompte et l'écriture dans le stockage vivent dans le
+     script de chaque page, sous des noms qui lui appartiennent ; d'ici on
+     ne les atteint pas. `click()` sur la case voisine fait passer la page
+     par son propre chemin, celui qui est déjà juste. D'où le drapeau
+     `enCours`, sans lequel chaque clic rejoué relancerait une plage.
+   - **L'ordre est celui du DOM, et seules les lignes visibles comptent.**
+     Un filtre posé, une branche DC repliée : ce qui n'est pas à l'écran
+     n'entre pas dans la plage, sinon on cocherait ce qu'on ne voit pas.
+   - **`checkVisibility()`, jamais `offsetParent`.** Le second répond sur
+     la mise en page : il coûte une disposition complète — 54 ms sur les
+     535 lignes du Dossier, à chaque clic — et il rend `null` pour toute
+     la page quand celle-ci n'est pas peinte, ce qui vidait la plage sans
+     un mot. Le premier répond sur le style, et c'est bien `display:none`
+     que l'on cherche.
+   - **`e-app.js` est chargé en fin de corps**, donc notre écouteur est
+     inscrit après celui de la page : quand il s'exécute, `aria-checked`
+     de la case cliquée porte déjà l'état neuf. C'est lui qu'on propage.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  if (!document.querySelector('[data-check]')) return;
+  var FR = document.documentElement.lang !== 'en';
+
+  var ancre = null;      // la dernière case cliquée à la main
+  var enCours = false;   // les clics rejoués ne redeviennent pas ancre
+
+  /* `peinte` se mesure une fois par appel, jamais par ligne : c'est une
+     lecture de disposition, et il y en a 535 au Dossier. */
+  function peinte(){ return !!document.body.offsetHeight; }
+  function vue(r, p){
+    if (!r) return false;
+    for (var n = r; n && n !== document.body; n = n.parentElement)
+      if (n.hidden) return false;
+    /* Le style ne répond que sur une page peinte : dans un onglet jamais
+       affiché, une prévisualisation ou une capture de vignette, la page
+       fait 0 × 0 et `checkVisibility()` rend faux pour tout — la plage se
+       viderait et le marqueur disparaîtrait sans un mot. L'attribut
+       `hidden` parcouru ci-dessus suffit alors ; il porte déjà les filtres,
+       les ères vides et les colonnes DC décochées. */
+    if (!p) return true;
+    return r.checkVisibility ? r.checkVisibility() : true;
+  }
+  function cases(){
+    var p = peinte();
+    return [].filter.call(document.querySelectorAll('[data-check]'), function(c){
+      return vue(c.closest('[data-id]'), p);
+    });
+  }
+
+  document.addEventListener('click', function(ev){
+    if (enCours || !ev.target.closest) return;
+    var c = ev.target.closest('[data-check]');
+    if (!c) return;
+
+    /* La liste ne se bâtit que pour une plage : un clic simple n'en a pas
+       besoin, et il y en a mille fois plus. */
+    if (ev.shiftKey && ancre && ancre !== c) {
+      var liste = cases(), i = liste.indexOf(c), j = liste.indexOf(ancre);
+      if (i > -1 && j > -1) {
+        var etat = c.getAttribute('aria-checked');
+        var a = Math.min(i, j), b = Math.max(i, j);
+        enCours = true;
+        for (var k = a; k <= b; k++)
+          if (liste[k] !== c && liste[k].getAttribute('aria-checked') !== etat)
+            liste[k].click();
+        enCours = false;
+        /* Maj + clic pose une sélection de texte par-dessus la timeline */
+        var s = getSelection && getSelection();
+        if (s && s.removeAllRanges) s.removeAllRanges();
+      }
+    }
+    ancre = c;
+  });
+
+  /* Le geste ne s'invente pas : il se dit une fois, dans le panneau de
+     filtres, là où le visiteur cherche déjà comment mener sa liste. */
+  function pose(){
+    var corps = document.querySelector('#sieve .filt-body') || document.getElementById('sieve');
+    if (!corps || corps.querySelector('.rng-h')) return;
+    var p = document.createElement('p');
+    p.className = 'rng-h';
+    p.style.cssText = 'margin:0;font-size:11.5px;line-height:1.4;text-align:center;' +
+      'opacity:.62;letter-spacing:.02em';
+    p.textContent = FR
+      ? 'Astuce : Maj + clic sur une case coche tout depuis la précédente.'
+      : 'Tip: Shift + click a box to tick everything since the previous one.';
+    corps.appendChild(p);
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
+/* ═══ LES FILTRES SE RETIENNENT ═══════════════════════════════════════
+   Rien n'était persisté : décocher « Jeu vidéo » et « Bonus » pour ne
+   garder que l'essentiel, puis revenir le lendemain, et la timeline
+   entière était de retour. Le travail se refaisait à chaque visite,
+   alors que la progression, elle, tient depuis toujours.
+
+   Trois choses à savoir :
+
+   - **On repose l'état par des clics, pas en écrivant `aria-pressed`.**
+     `offLv`, `offK`, `offOpt` et `hideDone` vivent dans le script de la
+     page ; poser l'attribut à la main laisserait le bouton allumé et le
+     filtre éteint. Même raison qu'au bloc précédent.
+   - **La recherche ne se retient pas**, et c'est délibéré : une requête
+     oubliée qui masque quatre-vingts entrées se lit comme une page
+     cassée, là où un type décoché se voit au décompte « 40 / 62 ».
+   - **La clé porte le chemin de la page.** Une page par univers, un
+     réglage par univers ; et le proto ne se mélange pas au site, leurs
+     chemins diffèrent.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var sieve = document.getElementById('sieve');
+  if (!sieve) return;
+  var CLE = 'cg-filtres-' + location.pathname;
+
+  function boutons(){
+    return [].slice.call(sieve.querySelectorAll('button[aria-pressed]'));
+  }
+  /* Le rang ne vaut rien — un type ajouté décale tout. L'identifiant ou
+     les `data-*` désignent le bouton et lui seul. */
+  function nom(b){
+    if (b.id) return b.id;
+    var s = '';
+    for (var k in b.dataset) s += k + '=' + b.dataset[k] + ';';
+    return s || (b.textContent || '').trim();
+  }
+  function garde(){
+    var o = {};
+    boutons().forEach(function(b){ o[nom(b)] = b.getAttribute('aria-pressed'); });
+    try { localStorage.setItem(CLE, JSON.stringify(o)); } catch (_) {}
+  }
+  function relit(){
+    var o = null;
+    try { o = JSON.parse(localStorage.getItem(CLE) || 'null'); } catch (_) {}
+    if (!o || typeof o !== 'object') return;
+    boutons().forEach(function(b){
+      var v = o[nom(b)];
+      if ((v === 'true' || v === 'false') && v !== b.getAttribute('aria-pressed')) b.click();
+    });
+  }
+
+  relit();
+  /* On garde après coup : le clic est d'abord traité par la page, qui
+     pose l'état. « Reprendre » remet tous les filtres à zéro sans passer
+     par les boutons — il est donc écouté lui aussi. */
+  document.addEventListener('click', function(ev){
+    if (!ev.target.closest) return;
+    if (ev.target.closest('#sieve button[aria-pressed]') || ev.target.closest('#start'))
+      setTimeout(garde, 0);
+  });
+})();
+
+/* ═══ LE TEMPS RESTANT, EN SOIRÉES ════════════════════════════════════
+   « Restant à voir 937 h » ne se convertit pas de tête : on lit un grand
+   nombre et on n'en fait rien. « ≈ 312 soirées » se pose tout de suite —
+   c'est la même donnée, dans l'unité où le visiteur la vivra.
+
+   Trois choses à savoir :
+
+   - **Trois heures par soirée**, ce qui est un film et demi ou quatre
+     épisodes. Le chiffre est rond et se dit dans l'infobulle plutôt que
+     dans la ligne, qui est déjà chargée.
+   - **On lit `#k-time`, on ne recalcule rien.** Le total restant est
+     déjà additionné par le `tally()` de chaque page, à partir de sa
+     table `RT` et des durées des ajouts perso ; le refaire ici demanderait
+     de connaître cinq pages, et les deux chiffres pourraient diverger.
+     Un `MutationObserver` suffit à suivre.
+   - **Six pages sur dix comptent le temps** — Star Wars, Marvel, DC,
+     Star Trek, The Walking Dead et DC Animation, dont la table `RT` de
+     80 entrées est écrite à la main dans sa source anglaise, comme celles
+     des deux précédentes. Avatar Legends, Dragon Age, Assassin's Creed et
+     le Dossier n'ont pas de `#k-time`, et le bloc s'arrête là de lui-même.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var k = document.getElementById('k-time');
+  if (!k) return;
+  var FR = document.documentElement.lang !== 'en', SOIR = 3;
+
+  var out = document.createElement('i');
+  out.id = 'k-soirs';
+  out.style.cssText = 'font-style:normal;font-size:11px;letter-spacing:.04em;' +
+    'opacity:.7;margin-left:7px;white-space:nowrap';
+  k.insertAdjacentElement('afterend', out);
+
+  function pose(){
+    var h = parseInt((k.textContent || '').replace(/[^0-9]/g, ''), 10);
+    if (!h || h < SOIR) { out.textContent = ''; out.removeAttribute('title'); return; }
+    var n = Math.round(h / SOIR);
+    out.textContent = '≈ ' + n + (FR ? ' soirées' : ' evenings');
+    out.title = FR ? 'à 3 h par soirée' : 'at 3 h an evening';
+  }
+  pose();
+  new MutationObserver(pose).observe(k, { childList: true, characterData: true, subtree: true });
+})();
+
+/* ═══ « VOUS EN ÊTES LÀ » ═════════════════════════════════════════════
+   Le bouton « Reprendre » ramène à la dernière entrée vue, mais il vit
+   tout en haut de la page : en défilant, plus rien ne dit où l'on s'était
+   arrêté. Un trait posé sous la dernière entrée cochée le dit sans qu'on
+   ait à remonter, et il se déplace à chaque case cochée.
+
+   Cinq choses à savoir :
+
+   - **`aria-checked`, jamais la classe `done`.** Les neuf timelines
+     posent les deux au rendu ; le Dossier ne pose `done` qu'au clic, et
+     ses 535 lignes arrivent cochées à l'écran sans la classe. C'est déjà
+     la raison du rappel de sauvegarde plus haut.
+   - **La dernière ligne cochée *visible*.** Un filtre posé, une branche
+     DC repliée : le trait irait se ranger dans un pan de page qui n'est
+     pas à l'écran, et le visiteur ne le verrait jamais. Même
+     `checkVisibility()` qu'au bloc de la coche en série, pour la même
+     raison.
+   - **Rien quand tout est coché**, où il ne dirait plus rien, ni quand
+     rien ne l'est — c'est alors « Commencer », et le haut de la page.
+   - **Il se repose après coup**, la page traitant le clic la première,
+     et seulement sur les clics qui peuvent l'avoir déplacé : une case,
+     un filtre. Ouvrir une fiche n'y change rien.
+   - **`--uni` porte l'encre de l'univers**, déclarée par les dix pages.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  if (!document.querySelector('[data-check]')) return;
+  var FR = document.documentElement.lang !== 'en';
+
+  var css = document.createElement('style');
+  css.textContent =
+    '.ici{display:flex;align-items:center;gap:9px;margin:3px 0;' +
+      'font-size:11px;font-weight:700;line-height:1;' +
+      'letter-spacing:.15em;text-transform:uppercase;color:var(--uni,#e8b53d)}' +
+    '.ici::before{content:"";flex:0 0 auto;width:8px;height:8px;' +
+      'background:currentColor;transform:rotate(45deg)}' +
+    '.ici::after{content:"";flex:1;height:2px;background:currentColor;opacity:.4}' +
+    '@media print{.ici{display:none}}';
+  document.head.appendChild(css);
+
+  var trait = document.createElement('p');
+  trait.className = 'ici';
+  trait.setAttribute('aria-hidden', 'true');
+  trait.appendChild(document.createTextNode(FR ? 'Vous en êtes là' : 'You are here'));
+
+  /* `peinte` se mesure une fois par appel, jamais par ligne : c'est une
+     lecture de disposition, et il y en a 535 au Dossier. */
+  function peinte(){ return !!document.body.offsetHeight; }
+  function vue(r, p){
+    if (!r) return false;
+    for (var n = r; n && n !== document.body; n = n.parentElement)
+      if (n.hidden) return false;
+    /* Le style ne répond que sur une page peinte : dans un onglet jamais
+       affiché, une prévisualisation ou une capture de vignette, la page
+       fait 0 × 0 et `checkVisibility()` rend faux pour tout — la plage se
+       viderait et le marqueur disparaîtrait sans un mot. L'attribut
+       `hidden` parcouru ci-dessus suffit alors ; il porte déjà les filtres,
+       les ères vides et les colonnes DC décochées. */
+    if (!p) return true;
+    return r.checkVisibility ? r.checkVisibility() : true;
+  }
+  function retire(){ if (trait.parentNode) trait.parentNode.removeChild(trait); }
+  function pose(){
+    var vues = document.querySelectorAll('[data-check][aria-checked="true"]');
+    if (!vues.length || vues.length >= document.querySelectorAll('[data-check]').length)
+      return retire();
+    /* On remonte depuis la fin et on s'arrête à la première ligne visible :
+       c'est presque toujours la première essayée, là où filtrer la liste
+       entière coûterait autant de résolutions de style que de lignes
+       cochées — 500 au Dossier, à chaque clic. */
+    var p = peinte();
+    for (var i = vues.length - 1; i >= 0; i--) {
+      var ligne = vues[i].closest('[data-id]');
+      if (!vue(ligne, p)) continue;
+      if (ligne.nextSibling !== trait) ligne.parentNode.insertBefore(trait, ligne.nextSibling);
+      return;
+    }
+    retire();
+  }
+
+  pose();
+  /* Tout clic le repose, plutôt que la liste de ceux qui le déplacent :
+     cocher, filtrer, « Reprendre », mais aussi changer d'onglet de branche
+     chez DC, où le trait ne devait paraître que dans la branche lue. La
+     liste aurait manqué le dernier, et personne ne l'aurait vu manquer.
+     La recherche et le glissement, eux, ne passent pas par un clic. */
+  document.addEventListener('click', function(){ setTimeout(pose, 0); });
+  addEventListener('touchend', function(){ setTimeout(pose, 0); }, { passive: true });
+  var q = document.getElementById('q');
+  if (q) q.addEventListener('input', function(){ setTimeout(pose, 0); });
+})();

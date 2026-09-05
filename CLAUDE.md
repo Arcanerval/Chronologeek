@@ -1517,9 +1517,12 @@ Trois choses à savoir :
   connaissent que `RT[e.id]`, la table que `runtime.py` injecte. Écrire `e.rt`
   **et** `window.RT[id]` est la seule forme qui vaille partout, et rien ne se
   marche dessus — un identifiant `p-` n'existe dans aucune table publiée.
-- **Cinq pages sur huit comptent le temps** : Star Wars, Marvel, DC, Star Trek
-  et The Walking Dead. À ne pas confondre avec les trois que `runtime.py`
-  alimente — Star Trek et TWD ont bien une table `RT`, mais elle est écrite à
+- **Six pages sur neuf comptent le temps** : Star Wars, Marvel, DC, Star Trek,
+  The Walking Dead et DC Animation, dont la table de 80 durées a été relevée le
+  5 septembre 2026 — la ligne annonçait encore cinq pages, écrite avant la
+  publication du neuvième univers. À ne pas confondre avec les trois que
+  `runtime.py` alimente — Star Trek, TWD et DC Animation ont bien une table
+  `RT`, mais elle est écrite à
   la main dans leur source anglaise, et le script ne les connaît pas. Avatar
   Legends, Dragon Age et Assassin's Creed n'en ont aucune, et le champ n'y
   paraît pas. D'où le
@@ -1644,6 +1647,71 @@ touchée. Et **un compte avec stockage serveur** est la seule chose qui
 survive vraiment à des années : il fait passer « rien n'est envoyé » à
 faux, et ajoute un service à administrer. À rouvrir seulement si les
 courriers se répètent.
+
+### Quatre conforts posés d'un coup, tous dans `e-app.js`
+
+Posés le 5 septembre 2026. Aucun n'a demandé une ligne dans les dix pages :
+ce sont quatre blocs de plus dans le seul fichier que les vingt-huit
+partagent, bilingues comme le reste par `documentElement.lang`. C'est ce qui
+les rend tenables — l'alternative était dix copies, dont cinq à faire passer
+par une table de traduction.
+
+Ils tiennent tous les quatre au même appui : **le geste passe par la page,
+jamais à côté d'elle.** `prog`, `bridge()`, `save()`, `tally()`, `syncBadges()`,
+`offLv`, `offK`, `hideDone` vivent dans le script de chaque page, sous des
+noms qui lui appartiennent ; d'ici on ne les atteint pas. On rejoue donc de
+vrais `click()`, et la page repasse par son propre chemin, celui qui est déjà
+juste. Vérifié : cocher 450 lignes du Dossier en série laisse bien les deux
+identifiants du pont de rejeu (`sw-r-tcw-20a`, `sw-r-tcw-20b`) dans le
+stockage, qu'une écriture directe dans `prog` aurait perdus.
+
+- **Maj + clic coche toute la plage** depuis la case cliquée juste avant, sur
+  l'état que la page vient de poser — on coche vers l'avant, on décoche vers
+  l'arrière. 450 lignes du Dossier en 141 ms, 8 lignes ailleurs en 5 ms. Le
+  geste ne s'invente pas : il est dit une fois, au bas du panneau de filtres.
+- **Les filtres se retiennent**, sous `cg-filtres-<chemin de la page>`. **Pas
+  la recherche** : une requête oubliée qui masque quatre-vingts entrées se lit
+  comme une page cassée, là où un type décoché se voit au décompte
+  « 39 / 62 affichées ». « Reprendre » remet tous les filtres à zéro sans
+  passer par les boutons — il est donc écouté lui aussi, sinon le stockage
+  gardait l'état d'avant.
+- **Le temps restant s'écrit aussi en soirées**, à trois heures l'une :
+  « 294 h » ne se convertit pas de tête, « ≈ 98 soirées » se pose tout de
+  suite. On lit `#k-time` par un `MutationObserver` plutôt que de refaire la
+  somme : elle est déjà faite par le `tally()` de chaque page, à partir de sa
+  table `RT` et des durées des ajouts perso, et deux calculs pourraient
+  diverger. Les quatre pages sans `#k-time` ne voient rien.
+- **« Vous en êtes là »**, un trait posé sous la dernière entrée cochée. Le
+  bouton « Reprendre » vit tout en haut ; en défilant, plus rien ne disait où
+  l'on s'était arrêté.
+
+Quatre pièges rencontrés, chacun du genre qui ne casse rien :
+
+- **`offsetParent` est un piège double.** Il répond sur la mise en page :
+  il force une disposition complète — 54 ms sur les 535 lignes du Dossier, à
+  chaque clic — et il rend `null` pour la page entière quand celle-ci n'est
+  pas peinte. Le marqueur disparaissait alors sans un mot. `checkVisibility()`
+  répond sur le style, et c'est bien `display:none` que l'on cherche.
+- **Mais `checkVisibility()` ne vaut que sur une page peinte.** Dans un onglet
+  jamais affiché, une prévisualisation ou une capture de vignette, la page
+  fait 0 × 0 et il rend faux pour tout. D'où le repli : on remonte les
+  ancêtres à la recherche d'un attribut `hidden` — qui porte déjà les filtres,
+  les ères vides et les colonnes DC décochées —, et le style ne tranche que si
+  `document.body.offsetHeight` n'est pas nul. Cette mesure-là se prend **une
+  fois par appel, jamais par ligne**.
+- **Le marqueur se repose à tout clic**, pas sur une liste de ceux qui le
+  déplacent. La liste avait manqué les onglets de branche de DC : le trait
+  restait dans une branche qu'on ne lisait plus. Ce n'est tenable que parce
+  que la recherche remonte depuis la fin et s'arrête à la première ligne
+  visible — presque toujours la première essayée. La recherche et le
+  glissement, eux, ne passent pas par un clic et ont leur propre écouteur.
+- **Une ligne masquée par la recherche gardait le trait contre elle**, donc au
+  milieu de nulle part. Rien dans la console : seule la page le disait.
+
+Les quatre s'appuient sur des repères que les dix pages portent toutes —
+`[data-check]` dans un `[data-id]`, `#sieve button[aria-pressed]`, `#k-time`,
+`--uni` — et sur rien d'autre. Une onzième page les reçoit d'elle-même si elle
+les porte.
 
 ## Les images
 
@@ -1848,6 +1916,25 @@ et la majuscule initiale quand on découpe une phrase.
 
 ## Ce qui est tranché, et ne revient pas
 
+- **Pas de `content-visibility:auto` sur les lignes de timeline.** Mesuré le
+  5 septembre 2026, puis écarté. Le gain est réel sur le papier — la
+  disposition complète du Dossier passe de 54 à 9,5 ms —, mais **il casse
+  tout saut vers un identifiant** : hors écran, une ligne prend la hauteur
+  de `contain-intrinsic-size` au lieu de la sienne, la page annonce 65 000 px
+  au lieu de 133 820, et un `scrollIntoView()` vers la 430ᵉ entrée du Dossier
+  atterrit à **51 892 px de sa cible**. Or « Reprendre », l'ancre de l'URL et
+  les badges visent tous un identifiant.
+
+  Et la lenteur qu'il corrigeait n'existe pas : une frappe dans la recherche
+  coûte 4 à 14 ms au Dossier (535 lignes) et 8 ms chez DC (147 lignes sur
+  quatre colonnes), pour un `DOMContentLoaded` à 170 ms. Les 54 ms étaient une
+  disposition forcée à la main, que rien ne déclenche à ce prix dans l'usage.
+
+  Le repli par élément ne sauve rien non plus : la containment de peinture
+  vaut **aussi quand l'élément est à l'écran**, et elle rognerait le
+  `transform:translate(-3px,-3px)` de `.bu-card:hover` et l'infobulle
+  « Lien copié » de `.dr-link.ok::after`, qui déborde sous sa ligne. Ne pas le
+  reproposer sans une lenteur mesurée, et sans une réponse au saut d'ancre.
 - **Le visiteur ne réordonne pas la timeline.** Tranché par Niko le 1er
   septembre 2026, à la première demande venue des courriers. Il peut ajouter
   ce qui manque et choisir où son ajout se place — c'est le champ « Juste
