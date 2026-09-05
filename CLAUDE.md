@@ -1298,6 +1298,23 @@ Un dixième univers reprend les deux d'emblée. La pastille s'écrit dans les pr
 source — les cinq français et les quatre anglais des chaînes inversées — et sa
 traduction dans la table du script concerné, jamais dans un `en-*` produit.
 
+**L'accueil et la liste des Dossiers ont suivi**, avec une règle de plus chacun :
+leur `.attract h1 span{color:var(--hot)}` colore *tout* span du h1, donc la
+pastille en serait ressortie en or sur son fond papier et « Choisis ton » aurait
+viré à l'or avec elle. `.attract h1 .nm{color:var(--paper)}` et
+`.attract h1 .tag{…;color:var(--ink)}` rendent les deux couleurs, et
+`max-width:12ch` passe du h1 à `>span:not(.tag)` — les deux classes battent
+`.attract h1 span`, qui n'a qu'une classe pour deux éléments.
+
+**« À venir » et « Nouveautés » n'ont pas de pastille de qualification, et on ne
+leur en pose pas.** Ce qu'elles portent sous ce nom — « ▸ Mis à jour chaque
+jour », le `#tag-t` que le JS remplit — est un indicateur de fraîcheur posé
+**après** le h1 : l'y faire entrer donnerait « Mis à jour chaque jour / À venir »,
+qui ne dit toujours pas la requête. Leur h1 est le nom de la page dans la
+navigation, le pied de page et le fil d'Ariane ; le changer se paierait partout
+pour un gain que le `<title>` et le `.dek` rendent déjà — « Prochaines sorties »
+et l'énumération des univers y sont.
+
 ### Le pied de page et son formulaire de contact
 
 Le pied faisait **722 px de haut sur un téléphone**, presque un écran entier : une
