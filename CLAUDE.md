@@ -648,7 +648,7 @@ du script concerné, puis relancer.
 
 ## La publication
 
-`node _proto/publier.mjs` fait six choses, et rien d'autre.
+`node _proto/publier.mjs` fait huit choses, et rien d'autre.
 
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
@@ -861,6 +861,59 @@ pré-rendu tombé à zéro sur une page qui en avait est le genre de silence que
 dépôt paie cher : `prerendu()` sort en erreur si une page a des ères et aucune
 entrée rendue, et `publier.mjs` signale un `<div id="timeline"></div>`
 introuvable.
+
+**7. Le plan du site**, depuis le 6 septembre 2026, dans `_proto/sitemap.mjs`.
+`sitemap.xml` **était écrit à la main** — les commits de Dragon Age,
+d'Assassin's Creed et de DC Animation le touchent tous les trois. C'était la
+même liste de routes que `ROUTES` porte déjà, tenue à part : un oubli qui
+attendait son tour. Un dixième univers y entre maintenant tout seul.
+
+**Et ses vingt-huit URL n'avaient aucun `lastmod`.** C'est ce que Google lit
+pour décider quoi recrawler : sans lui, une page corrigée hier et une page
+inchangée depuis six mois se valent.
+
+Trois choses à savoir :
+
+- **La date vient de git, pas du disque.** `publier.mjs` réécrit les vingt-huit
+  pages à chaque passage : leur `mtime` est celui de la dernière publication,
+  identique pour toutes. On demande donc à git le dernier commit qui a touché
+  les **sources** d'une page — son proto et son fichier de données.
+- **Une source modifiée et pas encore commitée vaut aujourd'hui.** Sinon la page
+  qu'on vient d'écrire s'annoncerait à la date d'avant, et le plan serait faux
+  précisément le jour où il compte.
+- **Les `hreflang` restent sur chaque URL** : les deux langues sont deux URL qui
+  se désignent l'une l'autre, et c'est ce qui empêche Google de les prendre pour
+  un doublon. Le fichier écrit à la main le faisait déjà ; on ne le perd pas en
+  le produisant. Le garde-fou vérifie qu'il sort autant d'URL que `ROUTES` a de
+  pages.
+
+**8. La page d'erreur**, même jour, dans `_proto/erreur404.mjs`. **Il n'y en
+avait aucune** : toute la navigation passe par des URL sans extension —
+`/starwars`, pas `/starwars.html` —, donc une faute de frappe ou un lien d'un
+vieux partage tombaient sur la page par défaut de GitHub Pages, fond blanc et
+aucun retour.
+
+Deux fichiers, `/404.html` et `/fr/404.html` : **GitHub Pages sert le `404.html`
+le plus proche du chemin demandé**, donc une URL cassée sous `/fr/` reçoit la
+française et le reste l'anglaise. C'est la seule raison pour laquelle il y en a
+deux.
+
+Trois choses à savoir :
+
+- **Elle est en `noindex`, et c'est la seule page du site à l'être.**
+  `publier.mjs` retire le `noindex` des protos et sort en erreur s'il en reste —
+  c'est son premier garde-fou. Celle-ci n'y passe pas : elle n'est pas dans
+  `ROUTES`, elle n'a pas de proto, et un garde-fou à part vérifie au contraire
+  qu'elle **garde** son `noindex`.
+- **Les neuf noms d'univers sont lus dans les données**, comme le fait
+  `jsonld.mjs` pour ses fils d'Ariane. Une liste écrite là serait la troisième
+  copie de la même chose, et celle qu'on oublierait au dixième univers. Seules
+  les neuf encres de la charte y sont écrites.
+- **Elle ne charge ni `app.js`, ni données, ni service worker.** Une page
+  d'erreur doit répondre tout de suite et ne rien supposer de ce qui a échoué :
+  son style est en ligne, elle pèse 3,7 Ko, et elle n'a qu'un travail — rendre
+  des chemins. Treize liens, zéro mort, vérifiés dans les deux langues ; elle
+  tient dans un écran de bureau et fait 816 px à 375.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être

@@ -28,6 +28,9 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { jsonLd } from './jsonld.mjs';
 import { prerendu, comptePrerendu } from './prerendu.mjs';
+import { SOURCES } from './jsonld.mjs';
+import { sitemap } from './sitemap.mjs';
+import { erreur404 } from './erreur404.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 const RACINE = join(ICI, '..');
@@ -427,6 +430,46 @@ const table = Object.fromEntries(
 );
 if (!CHECK) writeFileSync(join(RACINE, MANIFESTE), JSON.stringify(table, null, 2) + '\n');
 
+/* ── Le plan du site ────────────────────────────────────────────────────── */
+
+// Ce que chaque page doit à ses sources : son proto, et le fichier de données
+// qui porte ses entrées quand elle en a un. C'est de là que sort son `lastmod`.
+// Le Dossier n'est pas dans `SOURCES` — il range ses 535 lignes sous `CGD`.
+const DONNEES = { 'dossier-sw': { fr: ['data-dossier-sw.js'], en: ['data-dossier-sw-en.js'] },
+                  news:         { fr: ['data-news.js'],       en: ['data-news-en.js'] } };
+
+function sourcesDe(cle, langue) {
+  const route = ROUTES.find(r => r.cle === cle);
+  const f = [`_proto/${route[langue].proto}`];
+  const d = SOURCES[cle] ? [SOURCES[cle][langue][0]] : (DONNEES[cle] || {})[langue];
+  for (const n of d || []) f.push(`_proto/${n}`);
+  return f;
+}
+
+/* ── La page d'erreur ───────────────────────────────────────────────────── */
+
+// GitHub Pages sert le `404.html` le plus proche du chemin demandé : une URL
+// cassée sous `/fr/` reçoit la française, le reste l'anglaise. Elle n'est pas
+// dans `ROUTES` — elle n'a pas de proto, pas de version à apparier, et c'est la
+// seule page du site qui doit garder son `noindex`.
+const autres = [];
+const ERREURS = { 'fr/404.html': 'fr', '404.html': 'en' };
+for (const [sortie, langue] of Object.entries(ERREURS)) {
+  const page = erreur404({ racine: RACINE, langue, urls: URLS[langue] });
+  if (!/name="robots" content="noindex/.test(page)) {
+    problemes.push(`${sortie} : la page d'erreur doit rester en noindex`);
+  }
+  if (!CHECK) ecrire(sortie, page);
+  autres.push({ dest: '/' + sortie, octets: page.length });
+}
+
+const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe });
+if (!CHECK) writeFileSync(join(RACINE, 'sitemap.xml'), plan);
+const urls = (plan.match(/<loc>/g) || []).length;
+if (urls !== ROUTES.length * 2) {
+  problemes.push(`sitemap.xml : ${urls} URL pour ${ROUTES.length * 2} pages attendues`);
+}
+
 /* ── Bilan ──────────────────────────────────────────────────────────────── */
 
 console.log(CHECK ? '— contrôle, rien n’est écrit —\n' : '— publication —\n');
@@ -440,7 +483,11 @@ console.log('');
 console.log(`  Pré-rendu : ${bilan.reduce((s, b) => s + b.entrees, 0)} entrées sur ` +
             `${bilan.filter(b => b.entrees).length} pages.`);
 for (const c of copies) console.log(`  ${c.dest.padEnd(34)} ${String(c.octets).padStart(7)} o`);
-console.log(`\n  ${bilan.length} pages, ${copies.length} fichiers de données.`);
+console.log('');
+for (const a of autres) console.log(`  ${a.dest.padEnd(34)} ${String(a.octets).padStart(7)} o`);
+console.log(`  ${'/sitemap.xml'.padEnd(34)} ${String(plan.length).padStart(7)} o   ${urls} URL datées`);
+console.log(`\n  ${bilan.length} pages, ${copies.length} fichiers de données, ` +
+            `${autres.length} pages d'erreur, 1 plan de site.`);
 
 if (problemes.length) {
   console.error(`\n  ${problemes.length} PROBLÈME(S) :`);
