@@ -183,6 +183,22 @@ const PWA = [
   '<meta name="apple-mobile-web-app-title" content="Chronologeek"/>',
 ].join('\n');
 
+// Le pré-rendu ne doit jamais se voir, et il doit rester lisible sans JS.
+//
+// La mesure d'origine — premier rendu à 3 452 ms, script à 1 233 — était prise
+// à cache froid : à cache chaud le rendu passe avant le script, et le texte nu
+// paraissait une fraction de seconde, aligné à gauche et sans mise en page,
+// avant que `$('#timeline').innerHTML` ne l'écrase. C'est ce que Niko a vu.
+//
+// La classe `js` est posée par un script d'une ligne, **dans le `<head>` et
+// avant tout rendu** : le pré-rendu est donc caché dès que le JS est là, et
+// visible quand il ne l'est pas. Un `display:none` inconditionnel aurait rendu
+// la page vide sans JS, et le contenu affiché reste le même dans les deux cas —
+// ce n'est pas du cloaking, c'est le même texte, mieux rendu.
+const PRERENDU_CSS =
+  '<script>document.documentElement.className+=" js"</script>\n' +
+  '<style>.js .pr{display:none}</style>';
+
 const PIED = [
   '<script src="/pwa.js"></script>',
   '<script data-goatcounter="https://arcanerval.goatcounter.com/count"',
@@ -318,7 +334,7 @@ function publier(route, langue) {
   // Le proto est en CRLF : chercher « /> » suivi de « \n » ne trouve rien,
   // le \r s'intercale. Même piège que le noindex ci-dessus.
   const avantPwa = h;
-  h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n${PWA}`);
+  h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n${PWA}\n${PRERENDU_CSS}`);
   if (h === avantPwa) problemes.push(`${c.sortie} : bloc PWA non injecté`);
   for (const attendu of ['/manifest.json', 'apple-touch-icon', 'theme-color']) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);

@@ -151,7 +151,10 @@ export function prerendu({ racine, cle, langue }) {
   // Une page qui a des ères et rien à rendre est un appariement qui a raté, pas
   // une page vide : c'est le genre de silence que ce dépôt paie cher.
   if (!corps) throw new Error(`prerendu : ${cle}/${langue} a ${eras.length} ère(s) et aucune entrée rendue`);
-  return `<!--prerendu-->${corps}<!--/prerendu-->`;
+  // La classe est ce que la règle du `<head>` cible pour le cacher dès que le
+  // JS est là. Sans elle, le texte nu paraissait une fraction de seconde avant
+  // que le script écrase `#timeline` — voir `publier.mjs`.
+  return `<div class="pr"><!--prerendu-->${corps}<!--/prerendu--></div>`;
 }
 
 /** Le nombre d'entrées rendues, pour le bilan de publication. */

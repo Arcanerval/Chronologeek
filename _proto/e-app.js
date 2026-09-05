@@ -2143,11 +2143,16 @@
        'September','October','November','December'];
 
   var CSS = [
-    '.nx{margin:18px auto 0}',
-    '.nx-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap;',
-      'padding:11px 14px;border:1px solid rgba(255,255,255,.10);border-radius:10px;',
-      'background:linear-gradient(90deg,color-mix(in srgb,var(--uni) 13%,transparent),transparent 70%);',
-      'border-left:3px solid var(--uni)}',
+    '.nx{margin:0 auto 22px}',
+    /* Centré et à la largeur de son contenu, comme la pastille du titre et la
+       ligne « Mis à jour » : les encadrés de ces pages ne s'étirent pas d'un
+       bord à l'autre, ils se posent au milieu. `max-width` le borne quand le
+       titre est long, et le dégradé part alors des deux côtés. */
+    '.nx-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;',
+      'width:max-content;max-width:100%;margin-inline:auto;',
+      'padding:11px 16px;border:1px solid rgba(255,255,255,.10);border-radius:10px;',
+      'background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--uni) 13%,transparent) 50%,transparent);',
+      'border-left:3px solid var(--uni);border-right:3px solid var(--uni)}',
     '.nx-lab{font-weight:700;font-size:11px;line-height:1;letter-spacing:.09em;',
       'text-transform:uppercase;color:var(--uni);flex:0 0 auto}',
     '.nx-t{font-weight:700;font-size:14.5px;flex:1 1 auto;min-width:0}',
@@ -2167,9 +2172,11 @@
        reste passe dessous. Sans `order`, le compte à rebours se retrouvait
        entre le libellé et le titre. */
     '@media(max-width:560px){',
-      '.nx-in{gap:8px 10px}',
+      /* `width:max-content` et un titre qui prend la ligne entière ne vont pas
+         ensemble : la boîte reprend la largeur disponible pour se plier. */
+      '.nx-in{gap:8px 10px;width:auto;text-align:center}',
       '.nx-t{flex:1 1 100%;order:2}',
-      '.nx-lab{order:1}.nx-cd{order:1}.nx-d{order:3}.nx-a{order:3;margin-left:auto}',
+      '.nx-lab{order:1}.nx-cd{order:1}.nx-d{order:3}.nx-a{order:3}',
     '}'
   ].join('');
 
@@ -2183,9 +2190,9 @@
   }
 
   function pose(entree, jours){
-    /* L'encart se glisse entre l'accroche et la barre de filtres : après
-       ce qui explique la page, avant ce qui la manipule. `#intro` est dans
-       un `.wrap`, lui-même dans le `<main>`. */
+    /* L'encart se pose **juste au-dessus de l'accroche**, en tête du corps
+       de page : ce qui sort demain se lit avant ce qui explique la page, pas
+       après. `#intro` est dans un `.wrap`, lui-même dans le `<main>`. */
     var intro = document.getElementById('intro');
     var hote  = intro && intro.parentNode;
     if (!hote || !hote.parentNode || document.querySelector('.nx')) return;
@@ -2223,7 +2230,7 @@
     q('.nx-d').textContent = dateDe(entree);
     q('.nx-a').textContent = T.tout;
 
-    hote.parentNode.insertBefore(box, hote.nextSibling);
+    hote.parentNode.insertBefore(box, hote);
   }
 
   var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
