@@ -690,6 +690,35 @@ nom de production. Ça vaut aussi **dans les données** : `data-news.js` pose
 écrit dans le DOM qu'au chargement. Ne recâbler que le HTML laissait seize liens
 morts qu'aucune lecture de page ne montre.
 
+**Un lien d'une page à l'autre dans le corps du texte demande trois choses**,
+apprises le 5 septembre 2026 en posant les premiers — Star Wars renvoie au
+Dossier depuis son accroche et depuis « Ce qui est écarté », DC renvoie à DC
+Animation depuis le sien, puisque ce qu'il écarte a sa propre page depuis le
+4 septembre. Les dix guides n'en portaient aucun : ils ne se citaient qu'au menu
+et au pied de page, où tous se valent et aucun ne dit pourquoi il vient.
+
+**On enrobe, on ne réécrit pas.** Les trois phrases existaient déjà sous la plume
+de Niko et appelaient le lien qui manquait ; la balise se pose autour de mots qui
+étaient là, en français comme en anglais où le texte vient de la prod. Un lien qui
+oblige à écrire une phrase n'est pas encore mûr.
+
+Et trois points de tuyauterie, chacun trouvé par son garde-fou :
+
+- **Le lexique se cherche en repli sans l'enrobage** (`sansLiensInternes()` dans
+  `traduire.mjs`). L'accroche de DC est une seule chaîne de plusieurs milliers de
+  signes : un `<a>` de plus la rendait introuvable, et elle ressortait entière en
+  français sur la page anglaise. `RETOUCHES` repose ensuite le lien côté anglais,
+  et **les deux vont ensemble** — sans la seconde, la page anglaise perd le lien
+  sans que rien ne le dise.
+- **`localiseLiens()` passe `e-` en `en-`** sur toute valeur traduite. Le journal
+  traitait déjà `it.href`, mais à sa ligne, parce que c'est un champ ; ici le lien
+  est au milieu d'une phrase. Sans ça la page anglaise renvoie vers le français —
+  rien ne casse, le lien répond, dans l'autre langue.
+- **`LIEN_RE` accepte le guillemet échappé.** Côté français ce HTML vit dans un
+  gabarit et le guillemet est nu ; côté anglais il sort d'une sérialisation JSON
+  et s'écrit `\"`. Le motif ne voyait alors rien, et les liens anglais restaient
+  sur `en-dcanimation.html`.
+
 **3. La PWA et l'audience.** Manifeste, icônes, `theme-color`, `pwa.js`,
 GoatCounter : les protos n'en avaient rien.
 
