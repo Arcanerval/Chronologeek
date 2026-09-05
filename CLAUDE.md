@@ -668,6 +668,22 @@ disaient à personne. La table `LOCALES` tient les deux valeurs (`fr_FR`,
 Le garde-fou vérifie les deux balises dans chaque page produite, à côté de celui
 du `<title>`.
 
+**Ce qu'un titre et une description doivent porter**, révisés les 4 et 5 septembre
+2026. Un titre fait **soixante signes rendus**, marque comprise : il répartit son
+poids, il ne l'additionne pas. Il porte donc la requête, puis **deux marques au
+plus** — DC nomme l'Arrowverse et le DCEU, pas les quatre branches ; Avatar nomme
+le Dernier Maître de l'Air et Korra, « Avatar Legends » n'étant tapé par personne
+et « Avatar » seul ramenant les films de Cameron. Le nom d'une œuvre ne vaut d'y
+entrer que si les données le portent vraiment : ça se compte avant d'écrire.
+
+Une description tient sous **160 signes** et dit **combien** et **d'où à où** — les
+deux choses qu'un concurrent ne peut pas copier sans faire le travail. Le gabarit
+commun est voulu et ne change pas : même ouverture, même tiret, « sans spoil » et
+l'appel final à leur place. **Les chiffres se relèvent dans la page**, HUD et bande
+de statistiques, jamais dans ce fichier-ci : DC en annonce 147 là où les données
+comptent 146 entrées plus le séparateur de l'événement, et c'est le chiffre affiché
+qui fait foi.
+
 **2. Les liens.** `e-marvel.html` devient `/marvel`, et les scripts prennent leur
 nom de production. Ça vaut aussi **dans les données** : `data-news.js` pose
 `href:"e-marvel.html#mcu-smbnd"` sur chaque carte du journal, et ce lien-là n'est
@@ -952,6 +968,18 @@ est écrite dans `traductions-avatar.mjs`.
 n'est pas une raison de le laisser faux : une donnée périmée qui traîne finit par
 ressortir, et c'est le seul endroit du dépôt qui comptait encore quatre univers.
 
+**`PERIMES` s'applique aussi à `refEn` dans `valeur()` depuis le 5 septembre
+2026**, et plus seulement aux trois sorties `CG`. Le champ `subtitle` du
+descripteur d'univers a le même défaut sans passer par `rejoueRenommages()` : il
+se reprend de la prod anglaise en bloc, et corriger le français seul laissait Star
+Wars en « Canon Timeline » et Marvel en « Optimized Multiverse Timeline » quand la
+pastille du h1 a changé de libellé. **Le témoin de fraîcheur ne le rattrape pas** —
+il ne joue que si la prod française porte la clé (`typeof refFr === 'string'`), et
+le descripteur d'univers n'y est pas apparié : `refFr` vaut `undefined`, donc rien
+ne paraît périmé et la valeur anglaise passe telle quelle. Une entrée de
+`TRADUCTIONS` ne suffit pas non plus, `refEn` étant lu avant elle. DC et Avatar
+s'écrivent, eux, la prod n'ayant pas leur clé.
+
 Les deux scripts inverses ont leur propre liste : `ST_IDENTIQUES` pour Star Trek,
 et pour The Walking Dead la valeur doit être corrigée dans sa source anglaise
 (`data-twd-en.js`), sans quoi le français hérite de l'ancien nom.
@@ -1188,6 +1216,58 @@ de contact ci-dessous.
 Un dixième univers se pose donc dans le déroulant et dans la grille du tiroir,
 pas dans la rangée du haut — et dans les douze protos source, jamais dans les
 `en-*` produits.
+
+### Le h1 porte la requête, et chaque œuvre est un h3
+
+Posés le 5 septembre 2026, à la suite des titres. Le `<title>` dit ce que fait la
+page ; le h1 est le signal qui vient juste après, celui qui confirme que le titre
+ne mentait pas. Il ne disait que le nom nu de la franchise — « DC » tout court, qui
+ne désigne même pas DC Comics — et la pastille `.tag`, qui porte le bon mot, vivait
+**au-dessus** de lui, hors du h1. Elle y est entrée :
+
+```html
+<h1 class="disp off"><span class="tag">Ordre de visionnage canon</span>
+  <span class="nm">Star Wars</span></h1>
+```
+
+Les neuf libellés ont suivi — « Timeline Chronologique » servait trois univers sur
+neuf sans rien dire d'aucun. Le champ `subtitle` du descripteur d'univers reprend
+ce texte et doit suivre aussi : il n'est affiché nulle part, mais c'est la même
+raison que `legal3`.
+
+Cinq choses à savoir :
+
+- **Le rendu ne bouge pas d'un pixel, et trois règles y pourvoient.**
+  `max-width:12ch` passe du h1 au `.nm` seul — laissée sur le h1, elle cassait la
+  pastille dans la colonne étroite du titre ; `.tag` reprend `display:block` avec
+  `width:max-content`, sinon elle s'étire ou se met sur la ligne du nom ; et
+  `text-shadow:none`, **l'ombre décalée de `.off` s'héritant**. Le reste vient de
+  `.tag`, qui déclarait déjà sa taille et son gras.
+- **`titrePage()` de `e-app.js` doit sauter la pastille.** Elle compose le sujet du
+  courrier de contact depuis le h1 et ne sautait que le `.sub` du Dossier : le
+  formulaire s'annonçait « Ordre de visionnage canon — Star Wars ». Le test est
+  passé à `/\b(sub|tag)\b/`. **Tout élément ajouté au h1 repose la question.**
+- **Le titre d'une entrée est un `<h3 class="bu-title">`**, et non plus un `<span>`.
+  Chaque œuvre est un `<article class="bu">` — la bonne balise — mais un article
+  dont le nom n'est pas un titre est un article anonyme : les pages comptaient onze
+  titres pour soixante-deux œuvres. C'est ce qui manquait à la longue traîne, où un
+  guide peut gagner : « où placer Andor » vise une entrée, pas la page. **Pas une
+  ligne de CSS** — `*{margin:0;padding:0}` et `.bu-title` couvrent déjà tout ce
+  qu'un h3 apporte par défaut. Vérifié en injectant un span témoin à côté du h3 et
+  en comparant neuf propriétés calculées : zéro différence.
+- **Le Dossier n'a pas de h3**, et c'est délibéré : ses 535 lignes sont une liste
+  de lecture, pas 535 sections, et son titre porte le badge VO dans le même span.
+  C'est la raison qui lui vaut déjà de ne pas avoir d'`ItemList`.
+- **Le contrôle se fait au DOM, jamais à l'œil sur une capture.** Le panneau
+  navigateur ne peint pas la page quand il est masqué et rend des images noires ;
+  `getComputedStyle` et `getBoundingClientRect`, eux, répondent juste. La
+  hiérarchie attendue est un h1, un h2 par ère, un h3 par œuvre — Star Wars 1/6/63,
+  DC 1/4/149, Assassin's Creed 1/7/112, le compte des h3 dépassant d'une ou deux
+  unités celui des entrées (« Mes Badges » et le pied de page en portent déjà).
+
+Un dixième univers reprend les deux d'emblée. La pastille s'écrit dans les protos
+source — les cinq français et les quatre anglais des chaînes inversées — et sa
+traduction dans la table du script concerné, jamais dans un `en-*` produit.
 
 ### Le pied de page et son formulaire de contact
 
