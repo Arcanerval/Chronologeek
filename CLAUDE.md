@@ -648,7 +648,7 @@ du script concerné, puis relancer.
 
 ## La publication
 
-`node _proto/publier.mjs` fait cinq choses, et rien d'autre.
+`node _proto/publier.mjs` fait six choses, et rien d'autre.
 
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
@@ -799,6 +799,59 @@ Six choses à savoir :
 Le contrôle ne se fait pas dans le fichier : les ancres sont posées par le JS au
 chargement, et `document.getElementById()` sur les 742 identifiants est ce qui
 dit qu'une ancre est morte. Une lecture statique les déclare toutes fausses.
+
+**6. Le texte des entrées**, depuis le 6 septembre 2026, dans
+`_proto/prerendu.mjs`. **Le contenu du site n'existait dans aucune page** :
+`starwars.html` faisait 110 Ko et le mot « Andor » n'y paraissait que dans le
+JSON-LD — pas un titre, pas une date, pas un résumé, pas une réponse de FAQ.
+Tout est écrit par le JS au chargement depuis `/data/`, et les `<h3>` et les
+`alt` posés la veille n'existaient donc que pour un navigateur qui exécute le
+script. Google finit par exécuter le JS, avec retard et budget ; Bing,
+DuckDuckGo et les moteurs de réponse le font mal ou pas du tout, et un extrait
+de résultat ne peut pas citer un texte qui n'est pas servi. Or c'est exactement
+là qu'un guide gagne : « où placer Andor » vise une entrée, pas la page.
+
+Le module rend donc le texte de chaque entrée dans `<div id="timeline">`.
+2 926 entrées sur les vingt pages qui ont une timeline, +2 à +11 Ko brotli
+chacune, 98 Ko en tout — l'ordre de grandeur du JSON-LD déjà accepté, pour le
+contenu lui-même plutôt que pour sa description.
+
+Cinq choses à savoir :
+
+- **Rien à changer dans les dix pages, et c'est tout le principe.** Elles posent
+  toutes `<div id="timeline"></div>` vide et l'écrasent par
+  `$('#timeline').innerHTML = html` depuis un script inline de fin de corps,
+  donc synchrone. Mesuré au navigateur : `domInteractive` à 1 233 ms, premier
+  rendu à 3 452 ms — **le pré-rendu ne se voit jamais**, et sans JS la page
+  affiche le texte au lieu de rien. Un second moteur de rendu à tenir à jour
+  aurait été le vrai coût de ce chantier ; il n'y en a pas, ce qui est posé est
+  du HTML nu, sans une classe, et n'a pas à ressembler à la page.
+- **Liste noire, jamais liste blanche.** Les neuf univers n'ont pas le même
+  schéma : Star Wars et Marvel portent leur texte dans `faq`, DC et Star Trek
+  dans `subitems`, Assassin's Creed dans `notes` et `desc`, et **The Walking
+  Dead n'a ni `desc` ni `faq` du tout**. Une liste des champs à rendre en aurait
+  raté la moitié sans rien dire — c'est la leçon déjà payée par `traduire.mjs`
+  avec `faq.comment`. On ratisse donc toute chaîne qui n'est pas explicitement
+  technique, et une page ajoutée demain apporte ses propres champs sans qu'on
+  touche au script.
+- **Le Dossier sort en `<ul>`, pas en `<article>` + `<h3>`.** Il n'a
+  délibérément pas de h3 — ses 535 lignes sont une liste de lecture, pas 535
+  sections, la raison qui lui vaut déjà de ne pas avoir d'`ItemList`. Le
+  pré-rendu suit ce choix au lieu de le contredire dans le HTML servi.
+- **`decode()` puis `esc()`, comme dans `jsonld.mjs`**, et `esc()` **retire les
+  balises** avant d'échapper. Les textes d'entrées sont du texte nu aujourd'hui,
+  mais l'accroche des pages porte du HTML depuis le maillage du 5 septembre :
+  le jour où une FAQ en portera, la laisser passer poserait un `<a>` non
+  recâblé, et l'échapper afficherait la balise en toutes lettres.
+- **Il se pose après le recâblage des liens**, sur du texte qui n'a ni balise ni
+  lien : rien à y gagner, et l'exposer à des substitutions faites pour du HTML
+  de page serait un risque sans contrepartie.
+
+Le bilan de publication annonce le nombre d'entrées par page et le total. Un
+pré-rendu tombé à zéro sur une page qui en avait est le genre de silence que ce
+dépôt paie cher : `prerendu()` sort en erreur si une page a des ères et aucune
+entrée rendue, et `publier.mjs` signale un `<div id="timeline"></div>`
+introuvable.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être

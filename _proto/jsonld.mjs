@@ -45,7 +45,7 @@ import { join } from 'node:path';
 // un `new Function` il reste local, et l'objet est introuvable. On rapatrie donc
 // le global nommé quand on le connaît. Sans ce pont, la page Dragon Age et les
 // deux accueils sortaient en « Cannot read properties of undefined ».
-function charge(racine, fichier, global) {
+export function charge(racine, fichier, global) {
   const w = {};
   const src = readFileSync(join(racine, '_proto', fichier), 'utf8');
   const pont = global ? `;if(typeof ${global}!=='undefined')window[${JSON.stringify(global)}]=${global};` : '';
@@ -56,7 +56,7 @@ function charge(racine, fichier, global) {
 /* ── Correspondances ────────────────────────────────────────────────────── */
 
 // Quelle page tire ses éléments de quel fichier, et sous quel global.
-const SOURCES = {
+export const SOURCES = {
   sw:       { fr: ['data.js', 'SW'],            en: ['data-en.js', 'SW'] },
   mcu:      { fr: ['data-mcu.js', 'MCU'],       en: ['data-mcu-en.js', 'MCU'] },
   dc:       { fr: ['data-dc.js', 'DC'],         en: ['data-dc-en.js', 'DC'] },
@@ -119,7 +119,7 @@ const ENTITES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' }
 // Les titres n'ont pas le même échappement d'une page à l'autre : DC les stocke
 // en texte brut et les rend avec `esc()`, le Dossier les stocke échappés parce
 // qu'il les injecte directement. JSON-LD veut le texte dans les deux cas.
-const decode = s => String(s)
+export const decode = s => String(s)
   .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
   .replace(/&#(\d+);/g,        (_, d) => String.fromCodePoint(+d))
   .replace(/&([a-z]+);/gi,     (t, n) => ENTITES[n.toLowerCase()] ?? t)

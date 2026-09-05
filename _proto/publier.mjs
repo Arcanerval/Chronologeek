@@ -27,6 +27,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { jsonLd } from './jsonld.mjs';
+import { prerendu, comptePrerendu } from './prerendu.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 const RACINE = join(ICI, '..');
@@ -352,13 +353,38 @@ function publier(route, langue) {
   //    moteur prennent leur nom de production
   h = recabler(h, c.sortie, problemes);
 
-  // 7. service worker et mesure d'audience
+  // 7. le texte des entrées dans le HTML servi
+  //
+  // Il se pose **après** le recâblage : le pré-rendu est du texte sans balise
+  // ni lien, il n'a rien à y gagner, et le laisser passer dessus reviendrait à
+  // exposer son contenu à des substitutions faites pour du HTML de page.
+  //
+  // Les dix pages qui ont une timeline posent `<div id="timeline"></div>` vide
+  // et l'écrasent par `innerHTML` depuis un script inline de fin de corps, donc
+  // avant le premier rendu. Une page sans timeline rend '' et n'est pas touchée.
+  let entrees = 0;
+  try {
+    const pr = prerendu({ racine: RACINE, cle: route.cle, langue });
+    if (pr) {
+      const avantPr = h;
+      h = h.replace(/(<div id="timeline")(\s*)(><\/div>)/, `$1$2>${pr}</div>`);
+      if (h === avantPr) {
+        problemes.push(`${c.sortie} : <div id="timeline"></div> introuvable, pré-rendu non posé`);
+      } else {
+        entrees = comptePrerendu(pr);
+      }
+    }
+  } catch (e) {
+    problemes.push(`${c.sortie} : pré-rendu — ${e.message}`);
+  }
+
+  // 8. service worker et mesure d'audience
   h = h.replace(/(\r?\n)<\/body>/, `$1${PIED}$1</body>`);
   if (!h.includes('/pwa.js')) problemes.push(`${c.sortie} : pied de page non injecté`);
 
   if (h === avant) problemes.push(`${c.sortie} : aucune transformation appliquée`);
 
-  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires, ld: ld.length });
+  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires, ld: ld.length, entrees });
   if (!CHECK) ecrire(c.sortie, h);
 }
 
@@ -390,8 +416,13 @@ if (!CHECK) writeFileSync(join(RACINE, MANIFESTE), JSON.stringify(table, null, 2
 console.log(CHECK ? '— contrôle, rien n’est écrit —\n' : '— publication —\n');
 for (const b of bilan) console.log(`  ${b.sortie.padEnd(34)} ${String(b.octets).padStart(7)} o   ` +
   `${String('ld ' + (b.ld < 1024 ? b.ld + ' o' : Math.round(b.ld / 1024) + ' Ko')).padEnd(10)} ` +
+  `${String(b.entrees ? b.entrees + ' entrées' : '').padEnd(12)} ` +
   `${b.retires ? `[${b.retires} bloc(s) d'échafaudage retiré(s)] ` : ''}${b.titre}`);
 console.log('');
+// Un pré-rendu qui tombe à zéro sur une page qui en avait est le genre de
+// silence que ce dépôt paie cher : il se lit ici, pas dans la page.
+console.log(`  Pré-rendu : ${bilan.reduce((s, b) => s + b.entrees, 0)} entrées sur ` +
+            `${bilan.filter(b => b.entrees).length} pages.`);
 for (const c of copies) console.log(`  ${c.dest.padEnd(34)} ${String(c.octets).padStart(7)} o`);
 console.log(`\n  ${bilan.length} pages, ${copies.length} fichiers de données.`);
 
