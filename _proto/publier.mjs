@@ -31,6 +31,7 @@ import { prerendu, comptePrerendu } from './prerendu.mjs';
 import { SOURCES } from './jsonld.mjs';
 import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
+import { recherche } from './recherche.mjs';
 import { flux } from './flux.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
@@ -496,6 +497,22 @@ for (const [sortie, langue] of Object.entries(ERREURS)) {
   }
   if (!CHECK) ecrire(sortie, page);
   autres.push({ dest: '/' + sortie, octets: page.length });
+}
+
+// L'index de la recherche de l'accueil, un fichier par langue, à la racine
+// comme `radar.json` : les titres et les URL diffèrent d'une langue à l'autre.
+const INDEX = { 'search-fr.json': 'fr', 'search-en.json': 'en' };
+for (const [sortie, langue] of Object.entries(INDEX)) {
+  let index = '';
+  try {
+    index = recherche({ racine: RACINE, langue, urls: URLS[langue] });
+  } catch (e) {
+    problemes.push(`${sortie} : ${e.message}`);
+    continue;
+  }
+  const n = JSON.parse(index).e.length;
+  if (!CHECK) writeFileSync(join(RACINE, sortie), index);
+  autres.push({ dest: '/' + sortie, octets: index.length, note: `${n} œuvres` });
 }
 
 const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe });

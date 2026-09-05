@@ -1009,6 +1009,33 @@ deux boutons « Suggérer » : un texte dans le HTML devrait être traduit dans
 jamais réécrite : deux écritures divergeraient, et c'est `publier.mjs` qui la
 connaît.
 
+**10. L'index de la recherche**, posé le 6 septembre 2026, dans
+`_proto/recherche.mjs`. `/search-fr.json` et `/search-en.json`, à la racine
+comme `radar.json` : **1 463 œuvres par langue**, les neuf timelines et le
+Dossier. Il est produit depuis les mêmes `data*.js` que le reste — une œuvre
+ajoutée demain s'y trouve sans qu'on y touche, et une liste tenue à part ne peut
+pas diverger de la timeline puisqu'il n'y en a pas.
+
+125 Ko brut, **23 Ko brotli**, et il n'est demandé qu'au premier focus du champ.
+Quatre choses à savoir :
+
+- **Les entrées sont des tableaux, pas des objets** — `[univers, titre, id,
+  date, précision]`. Les cinq mêmes clés répétées 1 463 fois pesaient 30 Ko pour
+  rien. L'ordre est celui de la timeline, donc celui de lecture, et c'est le
+  seul classement que l'index porte.
+- **La précision ne vient que là où le titre se répète**, par les `subitems` et
+  pour la raison déjà connue du `FAQPage` : « Les Agents du S.H.I.E.L.D. »
+  revient treize fois chez Marvel, et treize résultats identiques ne désignent
+  rien.
+- **Le Dossier n'a pas de titre dans ses données** — `CGD` ne porte que `eras`
+  et `intro`. Son nom se compose des libellés de navigation, comme `jsonld.mjs`
+  compose son fil d'Ariane : « Dossiers — Star Wars », « Deep Dives — Star
+  Wars ». `decode(undefined)` rendait « undefined », et l'en-tête du groupe
+  l'annonçait tel quel sans une ligne dans la console. Un garde-fou refuse
+  maintenant un univers sans nom ou sans URL.
+- **Il n'entre pas dans `PRECACHE` de `sw.js`.** La recherche demande le réseau,
+  comme le radar, et `addAll` est tout ou rien.
+
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être
 retenus : les protos sont en **CRLF**, donc un motif qui cherche `/>` suivi de `\n`
@@ -1982,6 +2009,47 @@ Sous 560 px la ligne se plie en trois rangs — libellé et compte à rebours, p
 le titre sur sa ligne entière, puis la date et le lien. Les `order` ne sont pas
 une précaution : sans eux le compte à rebours se retrouvait entre le libellé et
 le titre. Mesuré à 375 px : 335 × 129 px, aucun débordement.
+
+### La recherche, depuis l'accueil
+
+Posée le 6 septembre 2026, dans `e-app.js` comme les quatre conforts et
+l'encart. **Chaque page cherchait dans la sienne, et rien ne cherchait dans les
+autres** : qui arrive en se demandant où se place *Andor*, *Le Cycle de Kyoshi*
+ou *Arkham Origins* devait deviner l'univers, ouvrir la page, puis y chercher —
+trois gestes pour une question qui en vaut un.
+
+Un champ entre « Continuer » et la sélection des univers, un panneau de
+résultats groupés par univers avec leur encre, et l'index de `recherche.mjs`
+derrière. **Pas une ligne dans `e-accueil.html`** — donc rien à traduire dans
+`traduire-pages.mjs` et rien de plus à apparier pour `py sync.py check`, la
+raison qui vaut déjà pour « Tout exporter ». L'accueil se reconnaît à
+`.slot[data-u]`.
+
+Cinq choses à savoir :
+
+- **Le bloc n'est pas dans le héros, et il ne peut pas y être.** `.attract`
+  porte `overflow:hidden` pour ses plans et son halftone : le panneau y serait
+  coupé net. L'ordre où il tombe dit d'ailleurs le bon parcours — on reprend,
+  sinon on cherche, sinon on parcourt.
+- **`padding-top`, jamais `padding:26px 0 0`.** Le bloc porte la classe `wrap`,
+  qui pose `padding:0 20px` ; la forme courte écrite dans `e-app.js` passe après
+  elle et remet les côtés à zéro. Le champ se collait aux deux bords sur un
+  téléphone, seul bloc de la page dans ce cas. Et le panneau, absolu, se cale
+  sur la boîte de **padding** du conteneur, pas sur son contenu : `left:0` le
+  rendait 20 px plus large que le champ de chaque côté.
+- **La ponctuation ne doit pas faire échouer la recherche.** « shield » ne
+  trouve pas « S.H.I.E.L.D. » par sous-chaîne : chaque titre porte aussi une
+  forme compacte, sans accent ni ponctuation, et c'est le dernier recours du
+  classement. Les deux formes sont calculées une fois au chargement de l'index —
+  les refaire à chaque frappe, c'est 1 463 `normalize()` par lettre. Mesuré à
+  **2,1 ms par frappe**.
+- **À score égal, l'ordre de l'index, jamais la longueur du titre.** Un tri par
+  longueur avait l'air plus fin et rendait les huit jeux Arkham dans le désordre
+  — VR, City, Shadow, Asylum — là où l'ordre de lecture est précisément ce que
+  le site a à dire. Le score suffit à faire passer « Andor » devant « Rogue
+  One : Cassian Andor ».
+- **Rien ne s'ouvre si l'index manque.** Un champ de recherche qui ne cherche
+  pas vaut moins que pas de champ.
 
 ## Les images
 

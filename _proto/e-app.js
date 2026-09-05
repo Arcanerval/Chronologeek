@@ -2356,3 +2356,313 @@
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
 })();
+
+/* ═══ LA RECHERCHE, DEPUIS L'ACCUEIL ═══════════════════════════════════
+   Chaque page cherchait dans la sienne, et rien ne cherchait dans les
+   autres. Qui arrive en se demandant où se place *Andor*, *Le Cycle de
+   Kyoshi* ou *Arkham Origins* devait deviner l'univers, ouvrir la page,
+   puis y chercher — trois gestes pour une question qui en vaut un. Neuf
+   timelines et un Dossier font 1 463 œuvres : la taille où un catalogue
+   cesse de se parcourir et commence à se chercher.
+
+   L'index est produit à la publication par `_proto/recherche.mjs`, un
+   fichier par langue, depuis les mêmes `data*.js` que le reste : une
+   œuvre ajoutée demain s'y trouve sans qu'on y touche.
+
+   Six choses à savoir :
+
+   · **Tout est ici, pas une ligne dans `e-accueil.html`.** Donc rien à
+     traduire dans `traduire-pages.mjs` et rien de plus à apparier pour
+     `py sync.py check` — la raison qui vaut déjà pour « Tout exporter »
+     et les quatre conforts. L'accueil se reconnaît à `.slot[data-u]`.
+
+   · **Le bloc se pose entre « Continuer » et la sélection.** Pas dans le
+     héros : `.attract` porte `overflow:hidden` pour ses plans et son
+     halftone, et le panneau de résultats y serait coupé net. L'ordre dit
+     d'ailleurs le bon parcours — on reprend, sinon on cherche, sinon on
+     parcourt.
+
+   · **L'index se charge au premier focus**, pas au chargement de la page
+     ni à la première frappe. 120 Ko qu'on ne demande jamais à qui vient
+     cliquer sur une tuile, et qui sont là avant la fin du premier mot.
+
+   · **La ponctuation ne doit pas faire échouer la recherche.** « shield »
+     ne trouve pas « S.H.I.E.L.D. » par sous-chaîne : chaque titre porte
+     donc aussi une forme compacte, sans accent ni ponctuation, et c'est
+     le dernier recours du classement.
+
+   · **La précision distingue les blocs d'une même série**, pour la raison
+     déjà connue du `FAQPage` : « Les Agents du S.H.I.E.L.D. » revient
+     treize fois chez Marvel, et treize résultats identiques ne désignent
+     rien. Elle vient de l'index, qui ne la porte que là où le titre se
+     répète.
+
+   · **Rien ne paraît si l'index manque.** Le panneau ne s'ouvre qu'une
+     fois le fichier lu ; un champ qui ne cherche pas vaut moins que pas
+     de champ.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+
+  var ancre = document.getElementById('uni');
+  if (!ancre || !document.querySelector('.slot[data-u]')) return;
+
+  var T = FR ? {
+    ph:   'Chercher une œuvre — film, série, jeu, roman, comic…',
+    lab:  'Chercher dans les timelines',
+    rien: 'Aucune œuvre de ce nom.',
+    plus: function(n, t){ return n + ' sur ' + t + ' résultats'; }
+  } : {
+    ph:   'Search a title — film, series, game, novel, comic…',
+    lab:  'Search the timelines',
+    rien: 'No work by that name.',
+    plus: function(n, t){ return n + ' of ' + t + ' results'; }
+  };
+
+  var MAX = 30;
+
+  var CSS = [
+    /* `padding-top` seul, jamais la forme courte : le bloc porte la classe
+       `wrap`, qui pose `padding:0 20px`, et un `padding:26px 0 0` écrit ici
+       passe après elle et remet les côtés à zéro. Le champ se collait alors
+       aux deux bords de l'écran sur un téléphone, seul bloc de la page dans
+       ce cas. */
+    '.sr{padding-top:26px;position:relative;z-index:4}',
+    '.sr-box{display:flex;align-items:center;gap:10px;max-width:640px;margin-inline:auto;',
+      'padding:0 14px;background:rgba(255,253,247,.05);border:1px solid rgba(255,253,247,.16);',
+      'border-radius:11px;transition:border-color .15s,background .15s}',
+    '.sr-box:focus-within{border-color:var(--hot);background:rgba(255,253,247,.08)}',
+    '.sr-box svg{flex:0 0 auto;opacity:.5}',
+    '.sr-box:focus-within svg{opacity:.9}',
+    /* Le champ hérite sinon du `font-family` du navigateur, qui n'est celui
+       d'aucune autre ligne de la page. */
+    '.sr-q{flex:1 1 auto;min-width:0;background:none;border:0;outline:0;',
+      'font:inherit;font-size:15.5px;color:var(--paper);padding:13px 0}',
+    '.sr-q::placeholder{color:rgba(255,253,247,.42)}',
+    /* La croix native de `type="search"` ne suit ni la couleur ni la taille du
+       reste : on la retire, le champ se vide à Échap et au clavier. */
+    '.sr-q::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}',
+    /* Le panneau flotte : les tuiles ne doivent pas descendre à chaque frappe.
+       Il est absolu dans `.sr`, qui est en flux — il suit donc la largeur du
+       champ sans rien mesurer. */
+    /* Les 20 px sont ceux du `.wrap` : un élément absolu se cale sur la boîte
+       de padding de son conteneur, pas sur son contenu, et `left:0` mettait
+       donc le panneau 20 px plus large que le champ de chaque côté. */
+    '.sr-out{position:absolute;left:20px;right:20px;top:100%;z-index:8;',
+      'max-width:640px;margin:6px auto 0;max-height:min(56vh,460px);overflow:auto;',
+      'background:#14141f;border:1px solid rgba(255,253,247,.16);border-radius:11px;',
+      'box-shadow:0 18px 44px rgba(0,0,0,.55)}',
+    /* Un attribut `hidden` ne suffit jamais ici : il faut la règle en face. */
+    '.sr-out[hidden]{display:none}',
+    '.sr-u{display:flex;align-items:center;gap:7px;padding:9px 14px 5px;',
+      'font-weight:700;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}',
+    '.sr-u i{width:8px;height:8px;border-radius:2px;flex:0 0 auto}',
+    '.sr-r{display:flex;align-items:baseline;gap:10px;padding:8px 14px;',
+      'text-decoration:none;color:var(--paper);border-left:3px solid transparent}',
+    '.sr-r:hover,.sr-r:focus{outline:0;background:rgba(255,253,247,.07)}',
+    '.sr-r .t{flex:1 1 auto;min-width:0;font-size:14.5px}',
+    '.sr-r .p{opacity:.55;font-weight:400;font-size:12.5px}',
+    '.sr-r .d{flex:0 0 auto;font-size:12px;opacity:.5}',
+    '.sr-n{padding:14px;font-size:14px;opacity:.6;text-align:center}',
+    '.sr-f{padding:8px 14px 11px;font-size:11.5px;opacity:.45;text-align:center}',
+    '@media(max-width:560px){',
+      '.sr{padding-top:20px}',
+      '.sr-q{font-size:15px;padding:11px 0}',
+      '.sr-r{flex-wrap:wrap;gap:2px 10px}.sr-r .d{flex:1 1 100%}',
+    '}'
+  ].join('');
+
+  /* Sans accent ni casse : « epee » doit trouver « L'Épée ». */
+  function norm(s){
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  }
+  function compact(s){ return norm(s).replace(/[^a-z0-9]/g, ''); }
+
+  var index = null, chargement = null;
+
+  function charge(){
+    if (chargement) return chargement;
+    chargement = fetch(FR ? '/search-fr.json' : '/search-en.json')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d || !d.e || !d.e.length) return null;
+        /* Les deux formes sont calculées une fois pour toutes : les refaire à
+           chaque frappe, c'est 1 463 `normalize()` par lettre tapée. */
+        for (var i = 0; i < d.e.length; i++) {
+          d.e[i][5] = norm(d.e[i][1]);
+          d.e[i][6] = compact(d.e[i][1]);
+        }
+        index = d;
+        return d;
+      })
+      .catch(function(){ return null; });
+    return chargement;
+  }
+
+  /* Le classement, du plus sûr au plus large : le titre commence par la
+     requête, un de ses mots commence par elle, elle est quelque part dedans,
+     et enfin la forme sans ponctuation. « Andor » passe ainsi devant « Rogue
+     One : Cassian Andor » sans qu'on mesure quoi que ce soit.
+
+     **À score égal, l'ordre de l'index, qui est celui de la timeline.** Un
+     tri par longueur de titre avait l'air plus fin et rendait les huit jeux
+     Arkham dans le désordre — VR, City, Shadow, Asylum — là où l'ordre de
+     lecture est précisément ce que le site a à dire. */
+  function score(e, q, qc){
+    var i = e[5].indexOf(q);
+    if (i === 0) return 0;
+    if (i > 0) return /[a-z0-9]/.test(e[5].charAt(i - 1)) ? 2 : 1;
+    if (qc.length > 2 && e[6].indexOf(qc) >= 0) return 3;
+    return -1;
+  }
+
+  function cherche(texte){
+    var q = norm(texte), qc = compact(texte);
+    if (!index || q.length < 2) return null;
+    var hits = [];
+    for (var i = 0; i < index.e.length; i++) {
+      var s = score(index.e[i], q, qc);
+      if (s >= 0) hits.push([s, i]);
+    }
+    hits.sort(function(a, b){ return a[0] - b[0] || a[1] - b[1]; });
+    return { total: hits.length, tete: hits.slice(0, MAX) };
+  }
+
+  function rend(out, res){
+    out.textContent = '';
+    if (!res.total) {
+      var v = document.createElement('p');
+      v.className = 'sr-n';
+      v.textContent = T.rien;
+      out.appendChild(v);
+      return;
+    }
+    /* Groupé par univers, dans l'ordre où chacun paraît : c'est le meilleur
+       résultat qui décide de la place de son univers, pas une table. */
+    var vus = {}, ordre = [];
+    for (var i = 0; i < res.tete.length; i++) {
+      var e = index.e[res.tete[i][1]];
+      if (!vus[e[0]]) { vus[e[0]] = []; ordre.push(e[0]); }
+      vus[e[0]].push(e);
+    }
+    for (var j = 0; j < ordre.length; j++) {
+      var uni = index.u[ordre[j]];
+      var tete = document.createElement('div');
+      tete.className = 'sr-u';
+      tete.style.color = uni.c;
+      var pastille = document.createElement('i');
+      pastille.style.background = uni.c;
+      tete.appendChild(pastille);
+      tete.appendChild(document.createTextNode(uni.n));
+      out.appendChild(tete);
+
+      var liste = vus[ordre[j]];
+      for (var k = 0; k < liste.length; k++) {
+        var it = liste[k];
+        var a = document.createElement('a');
+        a.className = 'sr-r';
+        a.href = uni.h + '#' + it[2];
+        a.style.borderLeftColor = uni.c;
+        a.setAttribute('role', 'option');
+        var t = document.createElement('span');
+        t.className = 't';
+        /* `textContent` : les titres portent des apostrophes typographiques et
+           des esperluettes qu'on n'a pas écrites. */
+        t.textContent = it[1];
+        if (it[4]) {
+          var p = document.createElement('span');
+          p.className = 'p';
+          p.textContent = '  ' + it[4];
+          t.appendChild(p);
+        }
+        a.appendChild(t);
+        if (it[3]) {
+          var d = document.createElement('span');
+          d.className = 'd';
+          d.textContent = it[3];
+          a.appendChild(d);
+        }
+        out.appendChild(a);
+      }
+    }
+    if (res.total > res.tete.length) {
+      var f = document.createElement('p');
+      f.className = 'sr-f';
+      f.textContent = T.plus(res.tete.length, res.total);
+      out.appendChild(f);
+    }
+  }
+
+  function pose(){
+    if (document.querySelector('.sr')) return;
+
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    var bloc = document.createElement('div');
+    bloc.className = 'sr wrap';
+    bloc.innerHTML =
+      '<div class="sr-box">' +
+        '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true" ' +
+          'stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
+          '<circle cx="10.5" cy="10.5" r="7"/><path d="M15.8 15.8 21 21"/></svg>' +
+        '<input class="sr-q" type="search" autocomplete="off" spellcheck="false" ' +
+          'role="combobox" aria-expanded="false" aria-controls="sr-out">' +
+      '</div>' +
+      '<div class="sr-out" id="sr-out" role="listbox" hidden></div>';
+
+    var champ = bloc.querySelector('.sr-q');
+    var out   = bloc.querySelector('.sr-out');
+    champ.placeholder = T.ph;
+    champ.setAttribute('aria-label', T.lab);
+    out.setAttribute('aria-label', T.lab);
+
+    function ferme(){
+      out.hidden = true;
+      champ.setAttribute('aria-expanded', 'false');
+    }
+    function montre(){
+      var res = cherche(champ.value);
+      if (!res) { ferme(); return; }
+      rend(out, res);
+      out.hidden = false;
+      out.scrollTop = 0;
+      champ.setAttribute('aria-expanded', 'true');
+    }
+
+    champ.addEventListener('focus', function(){ charge().then(montre); });
+    champ.addEventListener('input', function(){
+      if (index) montre(); else charge().then(montre);
+    });
+
+    /* Les flèches parcourent les résultats, Échap referme et rend la main au
+       champ. Entrée n'a rien à faire ici : le focus est sur un lien, le
+       navigateur le suit — et il sait aussi l'ouvrir dans un onglet. */
+    bloc.addEventListener('keydown', function(ev){
+      if (ev.key === 'Escape') { ferme(); champ.focus(); return; }
+      if (ev.key !== 'ArrowDown' && ev.key !== 'ArrowUp') return;
+      if (out.hidden) return;
+      var liens = [].slice.call(out.querySelectorAll('.sr-r'));
+      if (!liens.length) return;
+      ev.preventDefault();
+      var i = liens.indexOf(document.activeElement);
+      if (ev.key === 'ArrowDown') i = i < 0 ? 0 : Math.min(i + 1, liens.length - 1);
+      else if (i <= 0) { champ.focus(); return; }
+      else i--;
+      liens[i].focus();
+    });
+
+    /* Un clic ailleurs referme, comme les deux menus. Le `focusout` seul n'y
+       suffit pas : le focus part aussi vers les liens du panneau. */
+    document.addEventListener('click', function(ev){
+      if (!bloc.contains(ev.target)) ferme();
+    });
+
+    ancre.parentNode.insertBefore(bloc, ancre);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
