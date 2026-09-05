@@ -17,13 +17,13 @@
     "fr": {
       "title": "Chronologie Star Wars : l'ordre de visionnage | Chronologeek",
       "ogTitle": "Timeline Star Wars — Chronologeek",
-      "desc": "La timeline Star Wars canon complète — films, séries et jeux dans l'ordre chronologique, sans spoil. Coche ce que tu as vu.",
+      "desc": "La timeline Star Wars canon — 62 films, séries et jeux dans l'ordre chronologique, de la République au Premier Ordre, sans spoil. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     },
     "en": {
       "title": "Star Wars Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Star Wars Timeline — Chronologeek",
-      "desc": "The complete Star Wars canon timeline — movies, shows and games in chronological order, spoiler-free. Track what you've watched.",
+      "desc": "The Star Wars canon timeline — 62 movies, shows and games in chronological order, Republic to First Order, spoiler-free. Track what you've watched.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },
@@ -45,13 +45,13 @@
     "fr": {
       "title": "Chronologie DC : multivers, Arrowverse, DCEU | Chronologeek",
       "ogTitle": "Guide DC Multivers — Chronologeek",
-      "desc": "Le guide de visionnage complet du Multivers DC — Elseworlds, Arrowverse, DCEU et DCU, tous connectés. Coche ce que tu as vu.",
+      "desc": "Le guide de visionnage complet du Multivers DC — 24 films et 17 séries : Elseworlds, Arrowverse, DCEU et DCU, tous connectés. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     },
     "en": {
       "title": "DC Multiverse Watch Order: Arrowverse &amp; DCEU | Chronologeek",
       "ogTitle": "DC Multiverse Watch Guide — Chronologeek",
-      "desc": "The complete DC Multiverse watch guide — Elseworlds, Arrowverse, DCEU and DCU, all connected. Track what you've watched.",
+      "desc": "The complete DC Multiverse watch guide — 24 movies and 17 shows: Elseworlds, Arrowverse, DCEU and DCU, all connected. Track what you've watched.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     }
   },
@@ -59,13 +59,13 @@
     "fr": {
       "title": "Chronologie Avatar : Maître de l'Air et Korra | Chronologeek",
       "ogTitle": "Timeline Avatar Legends — Chronologeek",
-      "desc": "Séries animées · Comics · Livres — tout l’univers Avatar Legends dans son ordre le plus optimisé. Coche ce que tu as vu.",
+      "desc": "Le Dernier Maître de l’Air, La Légende de Korra, 42 comics et 10 romans dans un seul ordre chronologique, sans spoil. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/avatar.webp"
     },
     "en": {
       "title": "Avatar Watch Order: Last Airbender &amp; Korra | Chronologeek",
       "ogTitle": "Avatar Legends Timeline — Chronologeek",
-      "desc": "Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order. Track what you've watched.",
+      "desc": "The Last Airbender, The Legend of Korra, 42 comics and 10 novels in one chronological order, spoiler-free. Track what you've watched.",
       "image": "https://chronologeek.app/images/avatar.webp"
     }
   },
@@ -115,13 +115,13 @@
     "fr": {
       "title": "Chronologie DC Animation : DCAU, DCAMU, Arkham | Chronologeek",
       "ogTitle": "Timeline DC Animation — Chronologeek",
-      "desc": "La timeline DC Animation dans l’ordre chronologique — le DCAU, le DCAMU (New 52 et Tomorrowverse) et l’Arkhamverse, séries, films et jeux, sans spoil.",
+      "desc": "La timeline DC Animation dans l’ordre chronologique — le DCAU, le DCAMU (New 52 et Tomorrowverse) et l’Arkhamverse, 32 films animés et 22 jeux, sans spoil.",
       "image": "https://chronologeek.app/images/dcanimation.webp"
     },
     "en": {
       "title": "DC Animation Timeline — DCAU, DCAMU, Arkham | Chronologeek",
       "ogTitle": "DC Animation Timeline — Chronologeek",
-      "desc": "The DC Animation timeline in chronological order — the DCAU, the DCAMU (New 52 and Tomorrowverse) and the Arkhamverse, series, films and games, spoiler-free.",
+      "desc": "The DC Animation timeline in chronological order — DCAU, DCAMU (New 52 and Tomorrowverse) and Arkhamverse, 32 animated films and 22 games, spoiler-free.",
       "image": "https://chronologeek.app/images/dcanimation.webp"
     }
   },
