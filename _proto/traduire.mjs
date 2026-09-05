@@ -294,20 +294,21 @@ const TRADUCTIONS = [
      traduction, et l'anglais est repris mot pour mot. Le moule des
      soixante autres — « The game takes place… » / « Because… » — est
      d'ailleurs celui qu'il emploie. */
-  ['Le jeu se déroule en 19 BBY dans les derniers mois de la Guerre des Clones mais on ne sait pas exactement quand',
-   'The game takes place in 19 BBY in the last months of the Clone Wars but we don\'t know exactly when'],
-  ['Comme on ne sait pas exactement où il se place, le mieux est de le faire avant La Revanche des Sith',
-   'Because since we don\'t know exactly when it falls it best to do before Revenge of the Sith'],
+  ['Le jeu se déroule en 19 BBY, avant, pendant et après La Revanche des Sith',
+   'The game takes place in 19 BBY, before, during and after Revenge of the Sith'],
+  ['Parce qu\'il spoile des éléments de La Revanche des Sith',
+   'Because it spoils elements from Revenge of the Sith'],
   // Le synopsis, sur le moule des quatre autres jeux : « Jeu développé
   // par Respawn Entertainment… » / « Star Wars Outlaws est un jeu vidéo
   // développé par… ».
   ['Star Wars Zero Company est un jeu de tactique au tour par tour développé par Bit Reactor avec Respawn Entertainment et Lucasfilm Games. Il se déroule dans les derniers temps de la Guerre des Clones, où un ancien officier de la République rassemble une escouade de combattants venus de tous les horizons.',
    'Star Wars Zero Company is a turn-based tactics game developed by Bit Reactor with Respawn Entertainment and Lucasfilm Games. It takes place in the final days of the Clone Wars, where a former Republic officer gathers a squad of fighters from all walks of life.'],
   /* La carte du journal, même moule que les quatre précédentes. La date
-     ne se traduit pas, le titre du film si — la prod anglaise écrit
-     « Episode III: Revenge of the Sith ». */
-  ['Ajouté à la timeline Star Wars, en 19 BBY, juste avant l\'Épisode III : La Revanche des Sith.',
-   'Added to the Star Wars timeline, in 19 BBY, just before Episode III: Revenge of the Sith.'],
+     ne se traduit pas, le titre de la série non plus — seul « Saison …
+     Épisodes » a un homologue anglais. Le jeu est passé le 5 septembre
+     2026 après les épisodes 9-12 de la saison 7. */
+  ['Ajouté à la timeline Star Wars, en 19 BBY, juste après The Clone Wars Saison 7 Épisodes 9-12.',
+   'Added to the Star Wars timeline, in 19 BBY, just after The Clone Wars Season 7 Episodes 9-12.'],
 ];
 
 /* ═══ LE LEXIQUE ════════════════════════════════════════════════════

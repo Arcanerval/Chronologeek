@@ -57,8 +57,8 @@ window.CG_NEWS = {
 
       { nat:"media", uni:"sw", kind:"jeu",
         title:"Star Wars Zero Company", meta:"19 BBY",
-        txt:"Ajouté à la timeline Star Wars, en 19 BBY, juste avant "+
-            "l'Épisode III : La Revanche des Sith.",
+        txt:"Ajouté à la timeline Star Wars, en 19 BBY, juste après "+
+            "The Clone Wars Saison 7 Épisodes 9-12.",
         img:"/images/zerocompany.webp",
         href:"e-starwars.html#sw-zerocompany",
         cta:"Voir dans la timeline" },
