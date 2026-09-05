@@ -1766,6 +1766,52 @@ Les quatre s'appuient sur des repères que les dix pages portent toutes —
 `--uni` — et sur rien d'autre. Une onzième page les reçoit d'elle-même si elle
 les porte.
 
+### La prochaine sortie, en tête de sa timeline
+
+Posée le 6 septembre 2026, dans `e-app.js` comme les quatre conforts.
+**`radar.json` était lu par une seule page sur vingt-huit** : les neuf guides ne
+disaient rien de ce qui sort demain, alors que c'est la question de quiconque
+suit une saga en cours, et que le radar avait déjà la réponse à un lien de là.
+
+Un encart d'une ligne, entre l'accroche et la barre de filtres : ce qui tombe le
+plus tôt pour cet univers, son compte à rebours, sa date, et le lien vers « À
+venir ». Deux gains d'un coup — une page statique qui se rafraîchit toute seule
+chaque jour, et un maillage vers le radar depuis les pages les plus visitées.
+
+Cinq choses à savoir :
+
+- **La clé du radar n'est pas celle du site.** `radar.json` écrit `starwars` et
+  `marvel` là où le dépôt dit `sw` et `mcu`, et The Walking Dead s'y appelle
+  `twd` quand sa route est `walkingdead`. La table `RADAR` part donc du dernier
+  segment de l'URL, qui est le nom de la route. Un univers absent de la table
+  n'a pas d'encart : **Dragon Age et DC Animation ne sont pas au radar**, et
+  c'est délibéré. Un dixième univers s'y pose le jour où le radar le suit, pas
+  avant.
+- **Assassin's Creed est dans la table et n'affiche rien**, exactement comme sa
+  colonne au radar : ses sept œuvres annoncées sont toutes sans date. L'encart
+  paraîtra tout seul le jour où une date tombera, sans rien à rebrancher.
+- **`iso()`, `titreDe()` et `dateDe()` sont celles d'`e-a-venir.html`, à
+  l'identique.** Chaque langue coupe à sa propre date — `date_sort` est la
+  sortie américaine, `date_sort_fr` la française —, et deux lectures qui
+  divergeraient donneraient deux dates pour une même sortie. Le compte à rebours
+  suit la même règle : « J‑3 » en français, « D‑3 » en anglais, et le mot
+  (« AUJOURD’HUI », « DEMAIN ») prend la classe `mot` qui le resserre, comme au
+  radar.
+- **Le fetch part tout de suite, pas après `load`.** Sur ces pages le premier
+  rendu arrive bien après le script — 3 452 ms contre 1 233 —, donc l'encart est
+  en place avant que l'écran s'allume : `layout-shift` mesuré à 0. Différé, il
+  serait arrivé après coup et aurait poussé toute la page vers le bas. Il est
+  lu en `no-cache`, comme « À venir » : le radar est régénéré chaque nuit.
+- **Rien ne paraît si quoi que ce soit manque** — pas de radar, pas d'univers,
+  rien à venir. Un encart qui annonce son propre échec sur une page qui n'a rien
+  demandé vaut moins que pas d'encart. Vérifié : l'accueil, « À venir », les
+  Nouveautés, la liste des Dossiers et le Dossier n'en portent aucun.
+
+Sous 560 px la ligne se plie en trois rangs — libellé et compte à rebours, puis
+le titre sur sa ligne entière, puis la date et le lien. Les `order` ne sont pas
+une précaution : sans eux le compte à rebours se retrouvait entre le libellé et
+le titre. Mesuré à 375 px : 335 × 129 px, aucun débordement.
+
 ## Les images
 
 **Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le

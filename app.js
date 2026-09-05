@@ -2069,3 +2069,193 @@
   var q = document.getElementById('q');
   if (q) q.addEventListener('input', function(){ setTimeout(pose, 0); });
 })();
+/* ═══ LA PROCHAINE SORTIE, EN TÊTE DE SA TIMELINE ══════════════════════
+   `radar.json` était lu par une seule page sur vingt-huit. Les neuf
+   guides ne disaient rien de ce qui sort demain, alors que c'est la
+   question que se pose quiconque suit une saga en cours — et le radar
+   avait déjà la réponse, à un lien de là.
+
+   Un encart d'une ligne, sous l'accroche : ce qui tombe le plus tôt pour
+   cet univers-là, son compte à rebours, et le lien vers « À venir ».
+   Deux gains d'un coup — une page statique qui se rafraîchit toute seule
+   chaque jour, et un maillage vers le radar depuis les pages les plus
+   visitées du site.
+
+   Cinq choses à savoir :
+
+   · **La clé du radar n'est pas celle du site.** `radar.json` écrit
+     `starwars` et `marvel` là où le dépôt dit `sw` et `mcu`, et The
+     Walking Dead s'y appelle `twd` quand sa route est `walkingdead`. On
+     part donc du dernier segment de l'URL, qui est le nom de la route, et
+     la table dit le reste. Un univers absent de la table n'a pas
+     d'encart : Dragon Age et DC Animation ne sont pas au radar, et c'est
+     délibéré.
+
+   · **Assassin's Creed est dans la table et n'affichera rien**, comme sa
+     colonne au radar : ses sept œuvres annoncées sont toutes sans date.
+     L'encart paraîtra tout seul le jour où une date tombera, sans rien à
+     rebrancher — la même règle que la colonne.
+
+   · **Chaque langue coupe à sa propre date**, exactement comme
+     `e-a-venir.html` : `date_sort` porte la sortie américaine,
+     `date_sort_fr` la française. Prendre la française sur la page
+     anglaise ferait disparaître un film deux mois trop tôt. `iso()`,
+     `titreDe()` et `dateDe()` sont les siennes, à l'identique — deux
+     lectures qui divergeraient donneraient deux dates pour une sortie.
+
+   · **Le fetch part tout de suite, pas après `load`.** Sur ces pages le
+     premier rendu arrive bien après le script — 3 452 ms contre 1 233 —
+     donc l'encart est en place avant que l'écran s'allume et ne décale
+     rien. Différé, il serait arrivé après coup et aurait poussé toute la
+     page vers le bas.
+
+   · **Rien ne paraît si quoi que ce soit manque** — pas de radar, pas
+     d'univers, rien à venir. Un encart qui annonce son propre échec sur
+     une page qui n'a rien demandé vaut moins que pas d'encart.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+
+  /* Le nom de la route → la clé d'univers de `radar.json`. */
+  var RADAR = {
+    starwars: 'starwars', marvel: 'marvel', dc: 'dc', avatar: 'avatar',
+    startrek: 'startrek', walkingdead: 'twd', assassinscreed: 'assassinscreed'
+  };
+
+  var T = FR ? {
+    quoi: 'Prochaine sortie',
+    tout: 'Toutes les sorties',
+    auj:  'AUJOURD’HUI',
+    dem:  'DEMAIN',
+    cd:   function(n){ return 'J‑' + n; }
+  } : {
+    quoi: 'Next release',
+    tout: 'All upcoming',
+    auj:  'TODAY',
+    dem:  'TOMORROW',
+    cd:   function(n){ return 'D‑' + n; }
+  };
+
+  var MOIS = FR
+    ? ['janvier','février','mars','avril','mai','juin','juillet','août',
+       'septembre','octobre','novembre','décembre']
+    : ['January','February','March','April','May','June','July','August',
+       'September','October','November','December'];
+
+  var CSS = [
+    '.nx{margin:18px auto 0}',
+    '.nx-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap;',
+      'padding:11px 14px;border:1px solid rgba(255,255,255,.10);border-radius:10px;',
+      'background:linear-gradient(90deg,color-mix(in srgb,var(--uni) 13%,transparent),transparent 70%);',
+      'border-left:3px solid var(--uni)}',
+    '.nx-lab{font-weight:700;font-size:11px;line-height:1;letter-spacing:.09em;',
+      'text-transform:uppercase;color:var(--uni);flex:0 0 auto}',
+    '.nx-t{font-weight:700;font-size:14.5px;flex:1 1 auto;min-width:0}',
+    '.nx-ep{opacity:.72;font-weight:400}',
+    '.nx-d{font-size:12.5px;opacity:.66;flex:0 0 auto}',
+    /* Le compte à rebours est un signe, pas une phrase. Les deux derniers
+       jours il devient un mot, et un mot ne tient pas dans la place d'un
+       signe : il se resserre, comme au radar. */
+    '.nx-cd{font-weight:900;font-size:15px;line-height:1;color:var(--uni);flex:0 0 auto;',
+      'padding:5px 9px;border:1px solid color-mix(in srgb,var(--uni) 45%,transparent);',
+      'border-radius:7px}',
+    '.nx-cd.mot{font-size:11px;letter-spacing:.06em}',
+    '.nx-a{flex:0 0 auto;font-size:12.5px;color:var(--uni);text-decoration:none;',
+      'border-bottom:1px solid color-mix(in srgb,var(--uni) 40%,transparent);padding-bottom:1px}',
+    '.nx-a:hover{border-bottom-color:var(--uni)}',
+    /* Sous 560 px la ligne se plie : le titre garde sa ligne entière et le
+       reste passe dessous. Sans `order`, le compte à rebours se retrouvait
+       entre le libellé et le titre. */
+    '@media(max-width:560px){',
+      '.nx-in{gap:8px 10px}',
+      '.nx-t{flex:1 1 100%;order:2}',
+      '.nx-lab{order:1}.nx-cd{order:1}.nx-d{order:3}.nx-a{order:3;margin-left:auto}',
+    '}'
+  ].join('');
+
+  function iso(e){ return (FR && e.date_sort_fr) || e.date_sort || ''; }
+  function titreDe(e){ return (FR && e.title_fr) ? e.title_fr : e.title; }
+  function dateDe(e){
+    if (FR) return e.date_txt_fr || e.date_txt || '';
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(e.date_sort || '');
+    return m ? MOIS[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10) + ', ' + m[1]
+             : (e.date_txt || '');
+  }
+
+  function pose(entree, jours){
+    /* L'encart se glisse entre l'accroche et la barre de filtres : après
+       ce qui explique la page, avant ce qui la manipule. `#intro` est dans
+       un `.wrap`, lui-même dans le `<main>`. */
+    var intro = document.getElementById('intro');
+    var hote  = intro && intro.parentNode;
+    if (!hote || !hote.parentNode || document.querySelector('.nx')) return;
+
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    var mot = jours <= 1;
+    var cd  = jours <= 0 ? T.auj : jours === 1 ? T.dem : T.cd(jours);
+    var ep  = entree.ep ? 'S' + entree.ep.s + 'E' + String(entree.ep.e).replace(/^(\d)$/, '0$1') : '';
+
+    var box = document.createElement('div');
+    box.className = 'nx wrap';
+    box.innerHTML =
+      '<div class="nx-in">' +
+        '<span class="nx-lab"></span>' +
+        '<span class="nx-cd' + (mot ? ' mot' : '') + '"></span>' +
+        '<span class="nx-t"></span>' +
+        '<span class="nx-d"></span>' +
+        '<a class="nx-a" href="' + (FR ? '/fr/a-venir' : '/upcoming') + '"></a>' +
+      '</div>';
+    /* `textContent` plutôt qu'une concaténation : les titres portent des
+       apostrophes typographiques et des esperluettes qu'on n'a pas écrites. */
+    var q = function(s){ return box.querySelector(s); };
+    q('.nx-lab').textContent = T.quoi;
+    q('.nx-cd').textContent  = cd;
+    q('.nx-t').textContent   = titreDe(entree);
+    if (ep) {
+      var sp = document.createElement('span');
+      sp.className = 'nx-ep';
+      sp.textContent = '  ' + ep;
+      q('.nx-t').appendChild(sp);
+    }
+    q('.nx-d').textContent = dateDe(entree);
+    q('.nx-a').textContent = T.tout;
+
+    hote.parentNode.insertBefore(box, hote.nextSibling);
+  }
+
+  var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
+                .replace(/\.html$/, '');
+  var cle = RADAR[route];
+  if (!cle) return;
+
+  /* `no-cache` comme `e-a-venir.html` : le radar est régénéré chaque nuit,
+     et un encart qui annonce une sortie déjà passée vaut moins que rien. */
+  fetch('/radar.json', { cache: 'no-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(data){
+      if (!data || !data.length) return;
+      var t    = new Date();
+      var jour = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+      var iso0 = jour.getFullYear() + '-' +
+                 String(jour.getMonth() + 1).replace(/^(\d)$/, '0$1') + '-' +
+                 String(jour.getDate()).replace(/^(\d)$/, '0$1');
+
+      var suite = [];
+      for (var i = 0; i < data.length; i++) {
+        var e = data[i];
+        if (e.universe === cle && iso(e) && iso(e) >= iso0) suite.push(e);
+      }
+      if (!suite.length) return;
+      suite.sort(function(a, b){ return iso(a) < iso(b) ? -1 : iso(a) > iso(b) ? 1 : 0; });
+
+      var n = Math.round((new Date(iso(suite[0]) + 'T00:00:00') - jour) / 86400000);
+      var faire = function(){ pose(suite[0], n); };
+      if (document.readyState === 'loading')
+        document.addEventListener('DOMContentLoaded', faire);
+      else faire();
+    })
+    .catch(function(){});
+})();
