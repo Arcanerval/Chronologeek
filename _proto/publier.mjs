@@ -222,18 +222,27 @@ function blocSeo(seo, urlEn, urlFr, moi, langue) {
 // n'est ecrit dans le DOM qu'au chargement. Ne recabler que le HTML laissait
 // donc seize liens morts qu'aucune lecture de page ne montre. On traite toute
 // chaine entre guillemets, ancre comprise.
-const LIEN_RE = /(["'])((?:e|en)-[a-z0-9-]+\.html)(#[^"']*)?\1/g;
-const ASSET_RE = /(["'])((?:data[a-z0-9-]*|e-app|e-perso)\.js)\1/g;
+//
+// Le guillemet peut etre echappe, et il faut le prevoir : les intros portent
+// depuis le 5 septembre 2026 des liens d'une page a l'autre, ecrits dans le
+// HTML du champ `notes`. Cote francais ce HTML vit dans un gabarit et le
+// guillemet est nu ; cote anglais il sort d'une serialisation JSON et s'ecrit
+// \". Le motif ne voyait alors rien, et les trois liens anglais restaient sur
+// « en-dcanimation.html » — un lien mort qu'aucune lecture de page ne montre,
+// exactement le defaut que ce recablage existe pour empecher. L'echappement
+// est donc capture, et la fermeture doit porter le meme.
+const LIEN_RE = /(\\?)(["'])((?:e|en)-[a-z0-9-]+\.html)(#[^"'\\]*)?\1\2/g;
+const ASSET_RE = /(\\?)(["'])((?:data[a-z0-9-]*|e-app|e-perso)\.js)\1\2/g;
 
 function recabler(texte, ou, problemes) {
-  let out = texte.replace(LIEN_RE, (tout, q, nom, ancre) =>
-    LIENS[nom] ? `${q}${LIENS[nom]}${ancre || ''}${q}` : tout);
-  out = out.replace(ASSET_RE, (tout, q, nom) =>
-    ASSETS[nom] ? `${q}${ASSETS[nom]}${q}` : tout);
+  let out = texte.replace(LIEN_RE, (tout, ech, q, nom, ancre) =>
+    LIENS[nom] ? `${ech}${q}${LIENS[nom]}${ancre || ''}${ech}${q}` : tout);
+  out = out.replace(ASSET_RE, (tout, ech, q, nom) =>
+    ASSETS[nom] ? `${ech}${q}${ASSETS[nom]}${ech}${q}` : tout);
 
   for (const re of [LIEN_RE, ASSET_RE]) {
     re.lastIndex = 0;
-    const restes = [...out.matchAll(re)].map(m => m[2]);
+    const restes = [...out.matchAll(re)].map(m => m[3]);
     if (restes.length) problemes.push(`${ou} : non recable — ${[...new Set(restes)].join(', ')}`);
   }
   return out;

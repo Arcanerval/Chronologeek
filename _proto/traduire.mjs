@@ -445,8 +445,60 @@ const RETOUCHES = [
   { quoi: 'Marvel · le compte des écartés passe de 10 à 13',
     ou: 'MCU', de: '<span class="n">10 entries</span>',
     a: '<span class="n">13 entries</span>' },
+  /* ── les trois liens d'une page à l'autre, posés le 5 septembre 2026 ──
+     Ils enrobent une phrase que Niko avait déjà écrite : Star Wars
+     recommandait le Dossier et y renvoyait ses comics, DC écartait
+     l'animation qui a sa page depuis le 4 septembre. Rien n'est réécrit
+     d'aucun côté, en français comme en anglais — on pose une balise
+     autour de mots qui étaient là. Le nom de proto s'écrit `e-` ici :
+     `localiseLiens()` le passe en `en-` juste après. */
+  { quoi: 'Star Wars · l’accroche renvoie au Dossier par un lien',
+    ou: 'SW',
+    de: 'the Star Wars comics and novels Deep Dive',
+    a: '<a href="e-dossier-star-wars.html">the Star Wars comics and novels Deep Dive</a>' },
+  { quoi: 'Star Wars · « Ce qui est écarté » renvoie au Dossier par un lien',
+    ou: 'SW',
+    de: 'Find them in the dedicated Deep Dive',
+    a: 'Find them in <a href="e-dossier-star-wars.html">the dedicated Deep Dive</a>' },
+  { quoi: 'DC · « Ce qui est écarté » renvoie à DC Animation par un lien',
+    ou: 'DC',
+    de: 'almost every animated movie and show',
+    a: '<a href="e-dcanimation.html">almost every animated movie and show</a>' },
 ];
 const retouchesFaites = new Map();
+
+/* ── un lien interne pointe la page de sa langue ────────────────────
+   Les intros portent depuis le 5 septembre 2026 des liens d'une page à
+   l'autre, posés dans le HTML du champ `notes` — Star Wars renvoie au
+   Dossier, DC à DC Animation. Le nom de proto y est écrit tel quel, et
+   `publier.mjs` le recâble par sa table `LIENS` ; mais cette table
+   distingue `e-` de `en-`, et la sortie anglaise garderait donc un lien
+   vers la page française. Rien ne casserait : le lien répond, dans
+   l'autre langue.
+
+   `it.href` du journal était déjà traité, à sa ligne, parce que c'est un
+   champ. Ici le lien est au milieu d'une phrase : il se localise dans la
+   chaîne, sur toutes les valeurs traduites, et le remplacement est sans
+   effet sur celles qui ne portent pas de HTML. */
+const LIEN_PROTO_RE = /(href=")e-([a-z0-9-]+\.html)/g;
+function localiseLiens(s) {
+  return typeof s === 'string' ? s.replace(LIEN_PROTO_RE, '$1en-$2') : s;
+}
+
+/* Le témoin de fraîcheur compare le proto français à la prod française et
+   déclare périmé tout ce qui a bougé. Enrober une phrase dans un lien la
+   fait donc paraître réécrite alors qu'elle ne l'est pas : l'accroche de
+   DC, un bloc de plusieurs milliers de signes, ressortait entière en
+   français sur la page anglaise. Un enrobage n'est pas un changement de
+   texte — le texte affiché est le même —, il est donc retiré avant la
+   comparaison, et reposé sur l'anglais par une entrée de `RETOUCHES`.
+   Les deux vont ensemble : sans la seconde, la page anglaise perd le
+   lien sans que rien ne le dise. */
+const ENROBAGE_RE = /<a href="(?:e|en)-[a-z0-9-]+\.html">([\s\S]*?)<\/a>/g;
+function sansLiensInternes(s) {
+  return typeof s === 'string' ? s.replace(ENROBAGE_RE, '$1') : s;
+}
+
 function retouche(s, ou) {
   let out = s;
   for (const r of RETOUCHES) {
@@ -455,7 +507,7 @@ function retouche(s, ou) {
     out = out.split(r.de).join(r.a);
     retouchesFaites.set(r.quoi, (retouchesFaites.get(r.quoi) || 0) + 1);
   }
-  return out;
+  return localiseLiens(out);
 }
 
 /* Reprend un objet de libellés anglais copié de la prod et y rejoue ce
@@ -668,7 +720,8 @@ export function creerTraducteur(lex, manques, contexte) {
          rendrait « sans traduction » à chaque passage. */
       if (RENOMMES_NOUVEAUX.has(fr.trim())) return fr;
 
-      const perime = typeof refFr === 'string' && net(refFr) !== net(fr);
+      const perime = typeof refFr === 'string'
+        && net(refFr) !== net(sansLiensInternes(fr));
       if (perime) {
         /* Le cas courant : le proto a coupé la fin du titre — « The Clone
            Wars — 22 BBY » est devenu « The Clone Wars », la date étant
@@ -676,7 +729,7 @@ export function creerTraducteur(lex, manques, contexte) {
            sans rien inventer. */
         const coupe = memeCoupe(fr, refFr, refEn);
         if (coupe !== undefined) return memeEchappement(fr, coupe);
-        const auLexique = lex.cherche(fr);
+        const auLexique = lex.cherche(fr) ?? lex.cherche(sansLiensInternes(fr));
         if (auLexique !== undefined) return memeEchappement(fr, auLexique);
         const ecriteBis = TRAD.get(fr.trim());
         if (ecriteBis !== undefined) {
@@ -695,7 +748,12 @@ export function creerTraducteur(lex, manques, contexte) {
            fraîcheur puisse le voir — voir le champ `subtitle`. */
         return retouche(memeEchappement(fr, PERIMES.get(refEn.trim()) ?? refEn), contexte);
       }
-      const trouve = lex.cherche(fr);
+      /* Le repli sans enrobage : le lexique connaît la phrase telle
+         qu'elle était avant qu'on y pose un lien, et l'accroche de DC est
+         une seule chaîne de plusieurs milliers de signes — un `<a>` de
+         plus la rendait introuvable, donc française sur la page anglaise.
+         `RETOUCHES` repose ensuite le lien côté anglais. */
+      const trouve = lex.cherche(fr) ?? lex.cherche(sansLiensInternes(fr));
       if (trouve !== undefined) return retouche(memeEchappement(fr, trouve), contexte);
       /* dernier recours : une des dix phrases écrites à la main. On
          l'applique, mais on la consigne quand même — elle doit passer
