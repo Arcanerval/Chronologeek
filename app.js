@@ -2306,3 +2306,53 @@
     })
     .catch(function(){});
 })();
+
+/* ═══ LE FLUX DU JOURNAL, DIT À VOIX HAUTE ═════════════════════════════
+   Les vingt-huit pages portent le `<link rel="alternate">` qui désigne le
+   flux : un lecteur de flux le trouve tout seul, un navigateur aussi. Un
+   visiteur, non — et personne ne devine une URL de flux.
+
+   Un lien sous l'accroche des Nouveautés, la seule page où il veut dire
+   quelque chose. Il est ici plutôt que dans le proto pour la même raison
+   que les deux boutons « Suggérer » : un texte dans le HTML devrait être
+   traduit dans `traduire-pages.mjs`, et les Nouveautés sont l'une des
+   pages qui s'apparient ligne à ligne.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+
+  function pose(){
+    /* Le `<link>` du `<head>` est la seule source de l'URL : deux écritures
+       divergeraient, et c'est `publier.mjs` qui la connaît. */
+    var lien = document.querySelector('link[type="application/atom+xml"]');
+    var dek  = document.querySelector('.attract .dek');
+    if (!lien || !dek || document.querySelector('.fx')) return;
+
+    /* Seule la page du journal le montre : ailleurs, le flux n'est pas ce
+       qu'on est venu chercher. On la reconnaît à son `#tag-t`, l'indicateur
+       de fraîcheur que le JS remplit, et que personne d'autre ne porte. */
+    if (!document.getElementById('tag-t')) return;
+
+    var st = document.createElement('style');
+    st.textContent =
+      '.fx{margin-top:12px;font-size:13px}' +
+      '.fx a{color:var(--hot);text-decoration:none;' +
+        'border-bottom:1px solid color-mix(in srgb,var(--hot) 40%,transparent);padding-bottom:1px}' +
+      '.fx a:hover{border-bottom-color:var(--hot)}' +
+      '.fx span{color:rgba(255,253,247,.55);margin-left:7px}';
+    document.head.appendChild(st);
+
+    var p = document.createElement('p');
+    p.className = 'fx';
+    p.innerHTML = '<a></a><span></span>';
+    p.firstChild.href = lien.getAttribute('href');
+    p.firstChild.textContent = FR ? 'Suivre par flux RSS' : 'Follow by RSS';
+    p.lastChild.textContent  = FR ? 'sans compte, sans algorithme'
+                                  : 'no account, no algorithm';
+    dek.parentNode.insertBefore(p, dek.nextSibling);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();

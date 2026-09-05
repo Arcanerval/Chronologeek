@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+  <title>Chronologeek — Nouveautés</title>
+  <subtitle>Les ajouts et les mises à jour des timelines et des Dossiers.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://chronologeek.app/fr/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/nouveautes"/>
+  <id>https://chronologeek.app/fr/feed.xml</id>
+  <updated>2026-09-01T12:00:00Z</updated>
+  <author><name>Chronologeek</name></author>
+  <entry>
+    <title>Nouvelle timeline : DC Animation</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dcanimation"/>
+    <id>tag:chronologeek.app,2026-09:nouvelle-timeline-dc-animation</id>
+    <updated>2026-09-01T12:00:00Z</updated>
+    <summary>80 entrées, du DCAU au DCAMU et à l'Arkhamverse — les séries animées, les films animés et les jeux dans un seul fil.</summary>
+  </entry>
+  <entry>
+    <title>Hiding from the Dark</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#0-4-aby-hiding-from-the-dark"/>
+    <id>tag:chronologeek.app,2026-09:hiding-from-the-dark</id>
+    <updated>2026-09-01T11:59:00Z</updated>
+    <summary>Ajouté au Dossier Star Wars — le roman jeune adulte, en ~0-4 ABY, juste après Battlefront II : L'Escouade Inferno.</summary>
+  </entry>
+  <entry>
+    <title>Star Wars Zero Company</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/starwars#sw-zerocompany"/>
+    <id>tag:chronologeek.app,2026-08:star-wars-zero-company</id>
+    <updated>2026-08-01T12:00:00Z</updated>
+    <summary>Ajouté à la timeline Star Wars, en 19 BBY, juste après The Clone Wars Saison 7 Épisodes 9-12.</summary>
+  </entry>
+  <entry>
+    <title>Dragon Age: The Last Court</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dragonage#da-lastcourt-1"/>
+    <id>tag:chronologeek.app,2026-08:dragon-age-the-last-court</id>
+    <updated>2026-08-01T11:59:00Z</updated>
+    <summary>Ajouté à la timeline Dragon Age, en 9:41, juste après Last Flight.</summary>
+  </entry>
+  <entry>
+    <title>Masters of the Elements Vol.1 : Off Duty</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/avatar#avt-masters-of-the-elements-off-duty"/>
+    <id>tag:chronologeek.app,2026-08:masters-of-the-elements-vol-1-off-duty</id>
+    <updated>2026-08-01T11:58:00Z</updated>
+    <summary>Ajouté à la timeline Avatar Legends, en 290 BG, juste après The Shadow of Kyoshi.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : Assassin’s Creed</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/assassinscreed"/>
+    <id>tag:chronologeek.app,2026-08:nouvelle-timeline-assassin-s-creed</id>
+    <updated>2026-08-01T11:57:00Z</updated>
+    <summary>111 entrées, d'Altaïr à l'Animus Hub — les jeux et leurs DLC, les romans, les comics et les courts métrages dans un seul fil.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : Dragon Age</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dragonage"/>
+    <id>tag:chronologeek.app,2026-08:nouvelle-timeline-dragon-age</id>
+    <updated>2026-08-01T11:56:00Z</updated>
+    <summary>43 entrées, du Trône Volé au Veilguard — les jeux et leurs DLC, les romans, les comics et les séries dans un seul fil.</summary>
+  </entry>
+  <entry>
+    <title>Lanterns</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc#dcu-lanterns"/>
+    <id>tag:chronologeek.app,2026-08:lanterns</id>
+    <updated>2026-08-01T11:55:00Z</updated>
+    <summary>Ajoutée à la timeline DC, à la suite de Supergirl.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : The Walking Dead</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/walkingdead"/>
+    <id>tag:chronologeek.app,2026-08:nouvelle-timeline-the-walking-dead</id>
+    <updated>2026-08-01T11:54:00Z</updated>
+    <summary>45 entrées, de l'épidémie de Los Angeles à New York — les sept séries et les huit webséries dans un seul fil.</summary>
+  </entry>
+  <entry>
+    <title>The Fall of Kylo Ren 1-5</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#34-aby-the-fall-of-kylo-ren-1-5"/>
+    <id>tag:chronologeek.app,2026-08:the-fall-of-kylo-ren-1-5</id>
+    <updated>2026-08-01T11:53:00Z</updated>
+    <summary>Ajouté au Dossier Star Wars — le comic, en 34 ABY, juste après L'Héritage de Vador.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : Star Trek</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/startrek"/>
+    <id>tag:chronologeek.app,2026-08:nouvelle-timeline-star-trek</id>
+    <updated>2026-08-01T11:52:00Z</updated>
+    <summary>248 entrées, du 21e au 43e siècle — séries, films, animés et Short Treks dans un seul fil.</summary>
+  </entry>
+  <entry>
+    <title>Spider-Man : Brand New Day</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/marvel#mcu-smbnd"/>
+    <id>tag:chronologeek.app,2026-07:spider-man-brand-new-day</id>
+    <updated>2026-07-01T12:00:00Z</updated>
+    <summary>Ajouté à la timeline Marvel, en 2028, juste après The Punisher : One Last Kill.</summary>
+  </entry>
+  <entry>
+    <title>Legacy</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#34-aby-legacy"/>
+    <id>tag:chronologeek.app,2026-07:legacy</id>
+    <updated>2026-07-01T11:59:00Z</updated>
+    <summary>Ajouté au Dossier Star Wars — le nouveau roman, en 34 ABY, juste avant Le Prix de la Liberté.</summary>
+  </entry>
+  <entry>
+    <title>Supergirl (2026)</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc#dcu-supergirl"/>
+    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
+    <updated>2026-07-01T11:58:00Z</updated>
+    <summary>Ajoutée à la timeline DC, à la suite du DCU.</summary>
+  </entry>
+  <entry>
+    <title>Nouveau Dossier : romans &amp; comics Star Wars</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars"/>
+    <id>tag:chronologeek.app,2026-07:nouveau-dossier-romans-comics-star-wars</id>
+    <updated>2026-07-01T11:57:00Z</updated>
+    <summary>533 entrées dans l'ordre de lecture, avec 63 repères à l'écran pour situer les films et les séries.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : Avatar Legends</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/avatar"/>
+    <id>tag:chronologeek.app,2026-07:nouvelle-timeline-avatar-legends</id>
+    <updated>2026-07-01T11:56:00Z</updated>
+    <summary>69 entrées, des romans de Yangchen, Kyoshi et Roku jusqu'à l'ère de Korra. Épisodes, comics et romans dans l'ordre chronologique, avec la disponibilité VF/VO de chaque média.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : DC Multivers</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc"/>
+    <id>tag:chronologeek.app,2026-06:nouvelle-timeline-dc-multivers</id>
+    <updated>2026-06-01T12:00:00Z</updated>
+    <summary>Le guide complet Elseworlds · Arrowverse · DCEU · DCU, avec l'événement majeur sans spoil.</summary>
+  </entry>
+</feed>

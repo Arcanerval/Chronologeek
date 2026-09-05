@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Chronologeek — What’s new</title>
+  <subtitle>Additions and updates across the timelines and deep dives.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://chronologeek.app/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://chronologeek.app/whats-new"/>
+  <id>https://chronologeek.app/feed.xml</id>
+  <updated>2026-09-01T12:00:00Z</updated>
+  <author><name>Chronologeek</name></author>
+  <entry>
+    <title>New timeline: DC Animation</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dcanimation"/>
+    <id>tag:chronologeek.app,2026-09:new-timeline-dc-animation</id>
+    <updated>2026-09-01T12:00:00Z</updated>
+    <summary>80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.</summary>
+  </entry>
+  <entry>
+    <title>Hiding from the Dark</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#0-4-aby-hiding-from-the-dark"/>
+    <id>tag:chronologeek.app,2026-09:hiding-from-the-dark</id>
+    <updated>2026-09-01T11:59:00Z</updated>
+    <summary>Added to the Star Wars Deep Dive — the young adult novel, in ~0-4 ABY, just after Battlefront II: Inferno Squad.</summary>
+  </entry>
+  <entry>
+    <title>Star Wars Zero Company</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/starwars#sw-zerocompany"/>
+    <id>tag:chronologeek.app,2026-08:star-wars-zero-company</id>
+    <updated>2026-08-01T12:00:00Z</updated>
+    <summary>Added to the Star Wars timeline, in 19 BBY, just after The Clone Wars Season 7 Episodes 9-12.</summary>
+  </entry>
+  <entry>
+    <title>Dragon Age: The Last Court</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dragonage#da-lastcourt-1"/>
+    <id>tag:chronologeek.app,2026-08:dragon-age-the-last-court</id>
+    <updated>2026-08-01T11:59:00Z</updated>
+    <summary>Added to the Dragon Age timeline, in 9:41, just after Last Flight.</summary>
+  </entry>
+  <entry>
+    <title>Masters of the Elements Vol.1 : Off Duty</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/avatar#avt-masters-of-the-elements-off-duty"/>
+    <id>tag:chronologeek.app,2026-08:masters-of-the-elements-vol-1-off-duty</id>
+    <updated>2026-08-01T11:58:00Z</updated>
+    <summary>Added to the Avatar Legends timeline, in 290 BG, just after The Shadow of Kyoshi.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Assassin’s Creed</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/assassinscreed"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-assassin-s-creed</id>
+    <updated>2026-08-01T11:57:00Z</updated>
+    <summary>111 entries, from Altaïr to the Animus Hub — the games and their DLC, the novels, the comics and the short films in a single thread.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Dragon Age</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dragonage"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-dragon-age</id>
+    <updated>2026-08-01T11:56:00Z</updated>
+    <summary>43 entries, from The Stolen Throne to The Veilguard — the games and their DLC, the books, the comics and the shows in a single thread.</summary>
+  </entry>
+  <entry>
+    <title>Lanterns</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-lanterns"/>
+    <id>tag:chronologeek.app,2026-08:lanterns</id>
+    <updated>2026-08-01T11:55:00Z</updated>
+    <summary>Added to the DC timeline, following Supergirl.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: The Walking Dead</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/walkingdead"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-the-walking-dead</id>
+    <updated>2026-08-01T11:54:00Z</updated>
+    <summary>45 entries, from the Los Angeles outbreak to New York — all seven shows and the eight web series in a single thread.</summary>
+  </entry>
+  <entry>
+    <title>The Fall of Kylo Ren 1-5</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#34-aby-the-fall-of-kylo-ren-1-5"/>
+    <id>tag:chronologeek.app,2026-08:the-fall-of-kylo-ren-1-5</id>
+    <updated>2026-08-01T11:53:00Z</updated>
+    <summary>Added to the Star Wars Deep Dive — the comic, in 34 ABY, just after Legacy of Vader.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Star Trek</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/startrek"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-star-trek</id>
+    <updated>2026-08-01T11:52:00Z</updated>
+    <summary>248 entries, from the 21st to the 43rd century — series, movies, animation and Short Treks in a single thread.</summary>
+  </entry>
+  <entry>
+    <title>Spider-Man: Brand New Day</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-smbnd"/>
+    <id>tag:chronologeek.app,2026-07:spider-man-brand-new-day</id>
+    <updated>2026-07-01T12:00:00Z</updated>
+    <summary>Added to the Marvel timeline, in 2028, right after The Punisher: One Last Kill.</summary>
+  </entry>
+  <entry>
+    <title>Legacy</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#34-aby-legacy"/>
+    <id>tag:chronologeek.app,2026-07:legacy</id>
+    <updated>2026-07-01T11:59:00Z</updated>
+    <summary>Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just before Pirate's Price.</summary>
+  </entry>
+  <entry>
+    <title>Supergirl (2026)</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-supergirl"/>
+    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
+    <updated>2026-07-01T11:58:00Z</updated>
+    <summary>Added to the DC timeline, following the DCU.</summary>
+  </entry>
+  <entry>
+    <title>New Deep Dive: Star Wars novels &amp; comics</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars"/>
+    <id>tag:chronologeek.app,2026-07:new-deep-dive-star-wars-novels-comics</id>
+    <updated>2026-07-01T11:57:00Z</updated>
+    <summary>533 entries in reading order, with 63 on-screen markers to place the movies and shows.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Avatar Legends</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/avatar"/>
+    <id>tag:chronologeek.app,2026-07:new-timeline-avatar-legends</id>
+    <updated>2026-07-01T11:56:00Z</updated>
+    <summary>69 entries, from the Yangchen, Kyoshi and Roku novels all the way to the Korra era. Episodes, comics and novels in chronological order, every medium included.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: DC Multiverse</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc"/>
+    <id>tag:chronologeek.app,2026-06:new-timeline-dc-multiverse</id>
+    <updated>2026-06-01T12:00:00Z</updated>
+    <summary>The complete Elseworlds · Arrowverse · DCEU · DCU guide, with the major event kept spoiler-free.</summary>
+  </entry>
+</feed>

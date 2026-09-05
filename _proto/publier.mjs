@@ -31,6 +31,7 @@ import { prerendu, comptePrerendu } from './prerendu.mjs';
 import { SOURCES } from './jsonld.mjs';
 import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
+import { flux } from './flux.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 const RACINE = join(ICI, '..');
@@ -198,6 +199,14 @@ const PWA = [
 // visible quand il ne l'est pas. Un `display:none` inconditionnel aurait rendu
 // la page vide sans JS, et le contenu affiché reste le même dans les deux cas —
 // ce n'est pas du cloaking, c'est le même texte, mieux rendu.
+// Le flux du journal, dans les deux langues. Le `<link rel="alternate">` qui le
+// désigne est posé sur les vingt-huit pages : c'est ce qu'un navigateur et un
+// lecteur de flux vont chercher, et personne ne devine une URL de flux.
+const FLUX = { 'fr/feed.xml': 'fr', 'feed.xml': 'en' };
+const LIEN_FLUX = langue =>
+  `<link rel="alternate" type="application/atom+xml" href="/${langue === 'fr' ? 'fr/' : ''}feed.xml" ` +
+  `title="${langue === 'fr' ? 'Chronologeek — Nouveautés' : 'Chronologeek — What’s new'}"/>`;
+
 const PRERENDU_CSS =
   '<script>document.documentElement.className+=" js"</script>\n' +
   '<style>.js .pr{display:none}</style>';
@@ -337,7 +346,8 @@ function publier(route, langue) {
   // Le proto est en CRLF : chercher « /> » suivi de « \n » ne trouve rien,
   // le \r s'intercale. Même piège que le noindex ci-dessus.
   const avantPwa = h;
-  h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n${PWA}\n${PRERENDU_CSS}`);
+  h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i,
+                `$1\n${PWA}\n${LIEN_FLUX(langue)}\n${PRERENDU_CSS}`);
   if (h === avantPwa) problemes.push(`${c.sortie} : bloc PWA non injecté`);
   for (const attendu of ['/manifest.json', 'apple-touch-icon', 'theme-color']) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
@@ -453,6 +463,31 @@ function sourcesDe(cle, langue) {
 // dans `ROUTES` — elle n'a pas de proto, pas de version à apparier, et c'est la
 // seule page du site qui doit garder son `noindex`.
 const autres = [];
+
+/* ── Le flux du journal ─────────────────────────────────────────────────── */
+
+// Le seul canal du site qui ne dépende de personne : pas d'algorithme entre le
+// journal et qui le suit, et rien à administrer. Les liens des cartes passent
+// par le **même** recâblage que le HTML — `data-news.js` pose
+// `href:"e-marvel.html#mcu-smbnd"`, et deux recâblages qui divergeraient
+// donneraient des liens morts dans le flux seulement.
+const unLien = h => {
+  const m = /^([^#]+)(#.*)?$/.exec(h) || [];
+  return (LIENS[m[1]] || '') + (m[2] || '');
+};
+
+for (const [sortie, langue] of Object.entries(FLUX)) {
+  const f = flux({ racine: RACINE, site: SITE, langue, moi: '/' + sortie,
+                   urls: URLS[langue], lien: unLien });
+  const n = (f.match(/<entry>/g) || []).length;
+  if (!n) problemes.push(`${sortie} : flux vide`);
+  if (/href="(?:https:\/\/chronologeek\.app)?"/.test(f)) {
+    problemes.push(`${sortie} : lien de carte non recâblé`);
+  }
+  if (!CHECK) ecrire(sortie, f);
+  autres.push({ dest: '/' + sortie, octets: f.length, note: `${n} entrées` });
+}
+
 const ERREURS = { 'fr/404.html': 'fr', '404.html': 'en' };
 for (const [sortie, langue] of Object.entries(ERREURS)) {
   const page = erreur404({ racine: RACINE, langue, urls: URLS[langue] });
@@ -484,10 +519,11 @@ console.log(`  Pré-rendu : ${bilan.reduce((s, b) => s + b.entrees, 0)} entrées
             `${bilan.filter(b => b.entrees).length} pages.`);
 for (const c of copies) console.log(`  ${c.dest.padEnd(34)} ${String(c.octets).padStart(7)} o`);
 console.log('');
-for (const a of autres) console.log(`  ${a.dest.padEnd(34)} ${String(a.octets).padStart(7)} o`);
+for (const a of autres) console.log(`  ${a.dest.padEnd(34)} ${String(a.octets).padStart(7)} o` +
+  (a.note ? `   ${a.note}` : ''));
 console.log(`  ${'/sitemap.xml'.padEnd(34)} ${String(plan.length).padStart(7)} o   ${urls} URL datées`);
 console.log(`\n  ${bilan.length} pages, ${copies.length} fichiers de données, ` +
-            `${autres.length} pages d'erreur, 1 plan de site.`);
+            `2 flux, 2 pages d'erreur, 1 plan de site.`);
 
 if (problemes.length) {
   console.error(`\n  ${problemes.length} PROBLÈME(S) :`);

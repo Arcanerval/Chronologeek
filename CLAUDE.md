@@ -648,7 +648,7 @@ du script concerné, puis relancer.
 
 ## La publication
 
-`node _proto/publier.mjs` fait huit choses, et rien d'autre.
+`node _proto/publier.mjs` fait neuf choses, et rien d'autre.
 
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
@@ -914,6 +914,53 @@ Trois choses à savoir :
   son style est en ligne, elle pèse 3,7 Ko, et elle n'a qu'un travail — rendre
   des chemins. Treize liens, zéro mort, vérifiés dans les deux langues ; elle
   tient dans un écran de bureau et fait 816 px à 375.
+
+**9. Le flux du journal**, même jour, dans `_proto/flux.mjs`. Le site n'avait
+aucun canal de retour : qui découvre une timeline et veut savoir quand elle
+bouge n'avait que deux choix, revenir voir ou attendre que Google le lui
+rappelle. `nouveautes.html` tient déjà le journal, carte par carte, avec sa date
+et son lien — il ne manquait qu'un fichier que les lecteurs de flux sachent
+lire. **C'est le seul canal du site qui ne dépende de personne**, et il n'y a
+rien à administrer.
+
+`/feed.xml` et `/fr/feed.xml`, 17 entrées, 7 Ko chacun. Le
+`<link rel="alternate" type="application/atom+xml">` est posé sur les
+vingt-huit pages — c'est ce qu'un navigateur et un lecteur vont chercher.
+
+Cinq choses à savoir :
+
+- **Atom plutôt que RSS**, pour trois raisons qui comptent ici : les dates y
+  sont en ISO 8601 quand RSS 2.0 veut du RFC 822, un format à mois anglais
+  qu'il faudrait écrire à la main ; `xml:lang` y est natif alors que le site
+  publie deux flux ; et chaque entrée exige un `id` stable, ce que le journal
+  n'a pas et qu'il vaut mieux se voir imposer que d'oublier. Les lecteurs
+  modernes lisent les deux.
+- **Le journal n'a pas d'identifiants**, ses cartes se comptent au titre.
+  L'`id` est donc fabriqué — `tag:` + la clé du mois + le titre normalisé — et
+  il doit rester stable : un lecteur qui le voit changer croit à une nouvelle
+  entrée et la remontre. Il ne dépend ni du rang de la carte, ni de son texte,
+  ni de son lien.
+- **Le journal date au mois, pas au jour.** Toutes les cartes d'un mois
+  tomberaient à la même seconde et un lecteur qui trie par date perdrait
+  l'ordre éditorial — or la première carte du mois est la plus importante.
+  Chaque entrée recule d'une minute sur la précédente à l'intérieur de son
+  mois : l'heure n'est pas une donnée du site, elle ne prétend rien, et elle
+  préserve l'ordre.
+- **« Et avant ça » n'est pas dans le flux.** Ce bloc range les deux timelines
+  fondatrices et n'a pas de clé de mois, donc pas de date : une entrée sans
+  date honnête remonterait en tête ou en queue au hasard du lecteur. D'où 17
+  entrées pour 19 cartes.
+- **Les liens passent par le même recâblage que le HTML.** `data-news.js` pose
+  `href:"e-marvel.html#mcu-smbnd"` ; deux recâblages qui divergeraient
+  donneraient des liens morts dans le flux seulement, où personne ne les verrait.
+
+**Le lien visible vit dans `e-app.js`**, sur la seule page où il veut dire
+quelque chose — il se reconnaît à `#tag-t`, l'indicateur de fraîcheur que
+personne d'autre ne porte. Il est là plutôt que dans le proto pour la raison des
+deux boutons « Suggérer » : un texte dans le HTML devrait être traduit dans
+`traduire-pages.mjs`. **L'URL du flux est lue dans le `<link>` du `<head>`**,
+jamais réécrite : deux écritures divergeraient, et c'est `publier.mjs` qui la
+connaît.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être
