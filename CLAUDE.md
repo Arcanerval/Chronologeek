@@ -1502,12 +1502,23 @@ raison que `legal3`.
 
 Cinq choses à savoir :
 
-- **Le rendu ne bouge pas d'un pixel, et trois règles y pourvoient.**
+- **Le rendu ne bouge pas d'un pixel, et quatre règles y pourvoient.**
   `max-width:12ch` passe du h1 au `.nm` seul — laissée sur le h1, elle cassait la
   pastille dans la colonne étroite du titre ; `.tag` reprend `display:block` avec
-  `width:max-content`, sinon elle s'étire ou se met sur la ligne du nom ; et
-  `text-shadow:none`, **l'ombre décalée de `.off` s'héritant**. Le reste vient de
+  `width:max-content`, sinon elle s'étire ou se met sur la ligne du nom ;
+  `text-shadow:none`, **l'ombre décalée de `.off` s'héritant** ; et
+  `margin-inline:auto` sur le span qui reçoit la `max-width`. Le reste vient de
   `.tag`, qui déclarait déjà sa taille et son gras.
+- **Une `max-width` déplacée emporte le centrage avec elle**, et c'est le
+  quatrième point ci-dessus. Le h1 est centré par le `margin-left:auto;
+  margin-right:auto` de son média-query ; le span qui porte désormais la
+  `max-width` ne l'était pas, et se calait donc à gauche dès que 12ch tombe sous
+  la largeur disponible — **c'est-à-dire sur téléphone seulement**. Les onze
+  pages à `.attract h1` avaient leur titre 22 px trop à gauche à 375 px, la
+  pastille restant centrée juste au-dessus. Corrigé le 6 septembre 2026 ; rien
+  ne bouge au-dessus de 560 px, où le span fait déjà la largeur du h1.
+  `text-align:center` ne suffit jamais ici : il centre le texte **dans** la
+  boîte, pas la boîte dans son parent.
 - **`titrePage()` de `e-app.js` doit sauter la pastille.** Elle compose le sujet du
   courrier de contact depuis le h1 et ne sautait que le `.sub` du Dossier : le
   formulaire s'annonçait « Ordre de visionnage canon — Star Wars ». Le test est
@@ -2048,6 +2059,11 @@ Cinq choses à savoir :
   — VR, City, Shadow, Asylum — là où l'ordre de lecture est précisément ce que
   le site a à dire. Le score suffit à faire passer « Andor » devant « Rogue
   One : Cassian Andor ».
+- **`overscroll-behavior:contain` sur le panneau.** Sans lui, la molette arrivée
+  au bout de la liste continuait dans la page derrière, et on perdait le panneau
+  qu'on était en train de lire. Un panneau qui tient en entier dans sa hauteur
+  n'est pas scrollable et laisse passer la molette — c'est le comportement
+  attendu, pas le même défaut.
 - **Rien ne s'ouvre si l'index manque.** Un champ de recherche qui ne cherche
   pas vaut moins que pas de champ.
 

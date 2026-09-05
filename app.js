@@ -2449,7 +2449,11 @@
        de padding de son conteneur, pas sur son contenu, et `left:0` mettait
        donc le panneau 20 px plus large que le champ de chaque côté. */
     '.sr-out{position:absolute;left:20px;right:20px;top:100%;z-index:8;',
+      /* `overscroll-behavior:contain` coupe le report du défilement : arrivé au
+         bout de la liste, la molette continuait dans la page derrière, et on
+         perdait le panneau qu'on était en train de lire. */
       'max-width:640px;margin:6px auto 0;max-height:min(56vh,460px);overflow:auto;',
+      'overscroll-behavior:contain;',
       'background:#14141f;border:1px solid rgba(255,253,247,.16);border-radius:11px;',
       'box-shadow:0 18px 44px rgba(0,0,0,.55)}',
     /* Un attribut `hidden` ne suffit jamais ici : il faut la règle en face. */
