@@ -2116,10 +2116,31 @@
 (function(){
   var FR = document.documentElement.lang !== 'en';
 
-  /* Le nom de la route → la clé d'univers de `radar.json`. */
+  /* Le nom de la route → la clé d'univers de `radar.json`, et ce que la page
+     a le droit d'annoncer.
+
+     **Star Wars est coupé en deux, et c'est le partage éditorial du site.**
+     Quatorze de ses seize sorties au radar sont des comics et des romans, que
+     la timeline principale ne couvre pas : elle n'a que des films, des séries,
+     des animés et des jeux, et l'écrit vit dans le Dossier. L'encart annonçait
+     donc à peu près toujours une œuvre dont la page ne parle pas. La timeline
+     ne montre plus que l'écran et les jeux, le Dossier reçoit l'écrit — et un
+     encart qu'il n'avait pas.
+
+     Les autres univers n'ont pas de coupure parce qu'ils n'ont pas de Dossier :
+     les comics d'Avatar Legends sont dans sa timeline, ils ont donc leur place
+     dans son encart. Un dixième univers n'en a besoin que le jour où son écrit
+     sortira dans une page à lui. */
+  var ECRIT  = { comic: 1, novel: 1 };
   var RADAR = {
-    starwars: 'starwars', marvel: 'marvel', dc: 'dc', avatar: 'avatar',
-    startrek: 'startrek', walkingdead: 'twd', assassinscreed: 'assassinscreed'
+    starwars:       { u: 'starwars', tri: 'ecran' },
+    'star-wars':    { u: 'starwars', tri: 'ecrit' },
+    marvel:         { u: 'marvel' },
+    dc:             { u: 'dc' },
+    avatar:         { u: 'avatar' },
+    startrek:       { u: 'startrek' },
+    walkingdead:    { u: 'twd' },
+    assassinscreed: { u: 'assassinscreed' }
   };
 
   var T = FR ? {
@@ -2235,8 +2256,16 @@
 
   var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
                 .replace(/\.html$/, '');
-  var cle = RADAR[route];
-  if (!cle) return;
+  var page = RADAR[route];
+  if (!page) return;
+
+  function retenu(e){
+    if (e.universe !== page.u) return false;
+    var ecrit = !!ECRIT[e.kindKey];
+    if (page.tri === 'ecran') return !ecrit;
+    if (page.tri === 'ecrit') return ecrit;
+    return true;
+  }
 
   /* `no-cache` comme `e-a-venir.html` : le radar est régénéré chaque nuit,
      et un encart qui annonce une sortie déjà passée vaut moins que rien. */
@@ -2253,7 +2282,7 @@
       var suite = [];
       for (var i = 0; i < data.length; i++) {
         var e = data[i];
-        if (e.universe === cle && iso(e) && iso(e) >= iso0) suite.push(e);
+        if (retenu(e) && iso(e) && iso(e) >= iso0) suite.push(e);
       }
       if (!suite.length) return;
       suite.sort(function(a, b){ return iso(a) < iso(b) ? -1 : iso(a) > iso(b) ? 1 : 0; });

@@ -821,11 +821,20 @@ Cinq choses à savoir :
 - **Rien à changer dans les dix pages, et c'est tout le principe.** Elles posent
   toutes `<div id="timeline"></div>` vide et l'écrasent par
   `$('#timeline').innerHTML = html` depuis un script inline de fin de corps,
-  donc synchrone. Mesuré au navigateur : `domInteractive` à 1 233 ms, premier
-  rendu à 3 452 ms — **le pré-rendu ne se voit jamais**, et sans JS la page
-  affiche le texte au lieu de rien. Un second moteur de rendu à tenir à jour
-  aurait été le vrai coût de ce chantier ; il n'y en a pas, ce qui est posé est
-  du HTML nu, sans une classe, et n'a pas à ressembler à la page.
+  donc synchrone. Un second moteur de rendu à tenir à jour aurait été le vrai
+  coût de ce chantier ; il n'y en a pas, ce qui est posé est du HTML nu, sans
+  une classe, et n'a pas à ressembler à la page.
+- **Il faut quand même le cacher, et la première mesure a menti.**
+  `domInteractive` à 1 233 ms contre un premier rendu à 3 452 ms concluait que
+  le pré-rendu ne se voyait jamais — c'était **à cache froid**. À cache chaud le
+  rendu passe avant le script, et le texte nu paraît une fraction de seconde,
+  aligné à gauche et sans mise en page. C'est ce que Niko a vu, et aucune mesure
+  ne l'aurait montré : il fallait recharger une page déjà visitée.
+  `publier.mjs` pose donc dans le `<head>`, avant tout rendu, un script d'une
+  ligne qui ajoute la classe `js` à `<html>`, et la règle `.js .pr{display:none}`
+  — le pré-rendu est caché dès que le JS est là, et **reste visible quand il ne
+  l'est pas**. Un `display:none` inconditionnel aurait rendu la page vide sans
+  JS. Ce n'est pas du cloaking : c'est le même texte, mieux rendu.
 - **Liste noire, jamais liste blanche.** Les neuf univers n'ont pas le même
   schéma : Star Wars et Marvel portent leur texte dans `faq`, DC et Star Trek
   dans `subitems`, Assassin's Creed dans `notes` et `desc`, et **The Walking
@@ -1773,20 +1782,35 @@ Posée le 6 septembre 2026, dans `e-app.js` comme les quatre conforts.
 disaient rien de ce qui sort demain, alors que c'est la question de quiconque
 suit une saga en cours, et que le radar avait déjà la réponse à un lien de là.
 
-Un encart d'une ligne, entre l'accroche et la barre de filtres : ce qui tombe le
-plus tôt pour cet univers, son compte à rebours, sa date, et le lien vers « À
+Un encart d'une ligne, **juste au-dessus de l'accroche** : ce qui tombe le plus
+tôt pour cet univers, son compte à rebours, sa date, et le lien vers « À
 venir ». Deux gains d'un coup — une page statique qui se rafraîchit toute seule
 chaque jour, et un maillage vers le radar depuis les pages les plus visitées.
 
-Cinq choses à savoir :
+Il est **à la largeur de son contenu et centré**, comme la pastille du titre et
+la ligne « Mis à jour » : les encadrés de ces pages ne s'étirent pas d'un bord à
+l'autre. 752 × 51 px sur 1 280, 335 × 104 px sur 375.
 
+Six choses à savoir :
+
+- **Star Wars est coupé en deux, et c'est le partage éditorial du site.**
+  Quatorze de ses seize sorties au radar sont des comics et des romans, que la
+  timeline principale ne couvre pas — ses 62 entrées sont 12 films, 28 animés,
+  1 film animé, 11 séries et 10 jeux, et l'écrit vit dans le Dossier. L'encart
+  annonçait donc à peu près toujours une œuvre dont la page ne parle pas.
+  `/starwars` ne montre plus que l'écran et les jeux, **le Dossier reçoit
+  l'écrit** — et un encart qu'il n'avait pas. Les autres univers n'ont pas de
+  coupure parce qu'ils n'ont pas de Dossier : les comics d'Avatar Legends sont
+  dans sa timeline, ils ont donc leur place dans son encart. Un dixième univers
+  n'en a besoin que le jour où son écrit sortira dans une page à lui.
 - **La clé du radar n'est pas celle du site.** `radar.json` écrit `starwars` et
   `marvel` là où le dépôt dit `sw` et `mcu`, et The Walking Dead s'y appelle
   `twd` quand sa route est `walkingdead`. La table `RADAR` part donc du dernier
-  segment de l'URL, qui est le nom de la route. Un univers absent de la table
-  n'a pas d'encart : **Dragon Age et DC Animation ne sont pas au radar**, et
-  c'est délibéré. Un dixième univers s'y pose le jour où le radar le suit, pas
-  avant.
+  segment de l'URL, qui est le nom de la route — et c'est ce qui fait que le
+  Dossier s'y désigne par `star-wars`, ses deux routes finissant par là. Un
+  univers absent de la table n'a pas d'encart : **Dragon Age et DC Animation ne
+  sont pas au radar**, et c'est délibéré. Un dixième univers s'y pose le jour où
+  le radar le suit, pas avant.
 - **Assassin's Creed est dans la table et n'affiche rien**, exactement comme sa
   colonne au radar : ses sept œuvres annoncées sont toutes sans date. L'encart
   paraîtra tout seul le jour où une date tombera, sans rien à rebrancher.
