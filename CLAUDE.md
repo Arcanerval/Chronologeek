@@ -753,15 +753,62 @@ Tout nouvel échafaudage se pose donc entre marqueurs, et rien n'est à changer
 dans `publier.mjs`.
 
 **5. Les données structurées**, depuis le 18 août 2026, dans `_proto/jsonld.mjs`.
-Trois blocs, jamais plus : `WebSite` sur les deux accueils, `BreadcrumbList` sur
+Quatre blocs, jamais plus : `WebSite` sur les deux accueils, `BreadcrumbList` sur
 les vingt-six autres pages, `ItemList` sur les neuf univers, la liste des
-Dossiers et l'accueil. Chaque entrée de timeline y est un `Movie`, une
+Dossiers et l'accueil, et `FAQPage` depuis le 6 septembre 2026. Chaque entrée de
+timeline y est un `Movie`, une
 `TVSeries`, un `Book`, un `ComicStory`, un `VideoGame` ou un `VideoObject`, avec
 son ancre (`/dc#dcu-lanterns`), son nom et son visuel — plus son `isbn` quand
 c'est un livre. 742 éléments par langue, 765 en comptant les fils d'Ariane.
 
 Le script lit les mêmes `_proto/data*.js` que la publication copie dans
 `/data/` : la donnée structurée et la donnée affichée ne peuvent pas diverger.
+
+### Le `FAQPage`, posé le 6 septembre 2026
+
+Les réponses étaient écrites depuis toujours et n'étaient balisées nulle part :
+`CG.faqCats` porte la question avec son gabarit, le champ `faq` de chaque entrée
+porte la réponse, et la page les affiche l'une sous l'autre. **551 questions par
+langue**, sur les cinq univers qui en ont — Star Wars 124, Marvel 363, DC 27,
+Star Trek 30, Dragon Age 7. Avatar Legends, The Walking Dead, Assassin's Creed
+et DC Animation n'en portent aucune.
+
+**Ce bloc ne vise pas un résultat enrichi, et il ne faut pas l'attendre.** Google
+a réservé l'affichage des FAQ aux sites d'administration et de santé en août
+2023 : le balisage reste lu, il ne se voit plus dans la page de résultats. Ce
+qu'il sert est ce que le pré-rendu sert déjà — les moteurs de réponse, qui citent
+une réponse à une question posée. « Pourquoi regarder Andor maintenant » est
+exactement ça, et c'est la longue traîne du site : elle vise une entrée, pas une
+page.
+
+Quatre choses à savoir :
+
+- **Le contenu balisé doit être visible dans la page, et il ne l'était pas la
+  veille.** C'est la condition que Google pose, et le pré-rendu du même jour est
+  ce qui la remplit : jusque-là les réponses n'existaient que pour un navigateur
+  qui exécute le JS. Les deux chantiers vont ensemble ; retirer le pré-rendu
+  rendrait ce bloc irrégulier.
+- **Une seule règle décide de ce qui entre : la question doit porter `{name}`.**
+  Test mécanique, pas liste à tenir. `faqCats` mêle de vraies questions sur une
+  œuvre et des intitulés de champ qui n'en sont pas — « Et la ou les scènes
+  post-générique ? » chez Marvel, « Qui revit ces souvenirs à notre époque ? »
+  chez Assassin's Creed. Ceux-là ne nomment aucune œuvre : versés tels quels, la
+  même question paraîtrait 121 puis 80 fois sur une page, avec une réponse
+  différente à chaque fois. C'est un champ de données, pas une FAQ. Assassin's
+  Creed n'a donc aucun bloc, et Marvel garde ses trois autres catégories.
+- **Un titre ne suffit pas à désigner une entrée.** Une série découpée en blocs
+  le répète — « Les Agents du S.H.I.E.L.D. » treize fois chez Marvel, « The Clone
+  Wars » six fois chez Star Wars, « Enterprise » sept fois chez Star Trek — et la
+  question sortait treize fois à l'identique avec treize réponses : le défaut du
+  point précédent, arrivé par une autre porte. Le nom reçoit alors les `subitems`
+  de l'entrée, que la page affiche déjà sous le titre. La précision n'est ajoutée
+  **que là où le titre se répète**. Si deux entrées restaient indistinguables, la
+  publication sort en erreur plutôt que de poser un balisage qui se contredit.
+- **Le coût est celui de l'`ItemList`, pas celui du brut.** 123 Ko de JSON-LD sur
+  la page Marvel ne font que **+4,1 Ko brotli** : le texte est déjà dans la page
+  grâce au pré-rendu, et la compression ne le paie qu'une fois. Star Wars +2,0,
+  DC +0,5, Star Trek +0,6, Dragon Age +0,2 — 13 Ko sur les dix pages. Restreindre
+  aux entrées `must` avait été envisagé et n'a pas lieu d'être.
 
 Six choses à savoir :
 

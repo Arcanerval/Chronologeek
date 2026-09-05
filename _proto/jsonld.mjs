@@ -6,12 +6,26 @@
 // ne se voit pas à l'écran : rien à redessiner, un `<script type="application/
 // ld+json">` en tête de page.
 //
-// Trois blocs, jamais plus :
+// Quatre blocs, jamais plus :
 //   · `WebSite`        — l'accueil seul, dans sa langue ;
 //   · `BreadcrumbList` — toutes les pages sauf l'accueil ; c'est le seul des
-//     trois qui donne un résultat enrichi chez Google, et il ne coûte rien ;
+//     quatre qui donne un résultat enrichi chez Google, et il ne coûte rien ;
 //   · `ItemList`       — les huit univers, la liste des Dossiers et l'accueil.
-//     Chaque élément porte son ancre, son nom et son visuel.
+//     Chaque élément porte son ancre, son nom et son visuel ;
+//   · `FAQPage`        — les cinq univers dont les entrées portent une `faq`.
+//
+// **Le `FAQPage` ne vise pas un résultat enrichi, et il ne faut pas l'attendre.**
+// Google a réservé l'affichage des FAQ aux sites d'administration et de santé
+// en août 2023 : le balisage reste lu, il ne se voit plus dans la page de
+// résultats. Ce qu'il sert est ce que le pré-rendu sert déjà — les moteurs de
+// réponse, qui citent une réponse à une question posée, et « pourquoi regarder
+// Andor maintenant » est exactement ça. C'est la longue traîne du site, celle
+// qui vise une entrée et non une page.
+//
+// Le contenu balisé est **visible dans la page** : depuis le pré-rendu du
+// 6 septembre 2026, les réponses de FAQ sont dans le HTML servi, pas seulement
+// écrites par le JS au chargement. C'est la condition que Google pose au
+// balisage, et elle n'était pas remplie la veille.
 //
 // **Le Dossier n'a pas d'`ItemList`, et c'est délibéré.** Ses 534 œuvres
 // pesaient 10 Ko brotli et faisaient passer la page de 65 à 168 Ko de HTML brut
@@ -217,6 +231,99 @@ function elementsTimeline(univers, site, moi) {
   return out;
 }
 
+/* ── La FAQ des entrées ─────────────────────────────────────────────────── */
+
+// Les questions sont dans `CG.faqCats`, avec leur gabarit ; les réponses dans
+// le champ `faq` de chaque entrée. Rien n'est écrit ici : on assemble ce que la
+// page affiche déjà.
+//
+// **Une seule règle décide de ce qui entre : la question doit porter `{name}`.**
+// C'est un test mécanique plutôt qu'une liste à tenir, et il écarte exactement
+// ce qu'il faut. `faqCats` mêle deux choses — de vraies questions sur une œuvre
+// (« Quand se déroule {name} dans le MCU ? ») et des intitulés de champ, qui
+// n'en sont pas : « Et la ou les scènes post-générique ? » chez Marvel, « Qui
+// revit ces souvenirs à notre époque ? » chez Assassin's Creed. Ceux-là ne
+// nomment aucune œuvre. Versés tels quels, la même question paraîtrait 121 puis
+// 80 fois sur une même page, chaque fois avec une autre réponse : ce n'est plus
+// une FAQ, c'est un champ de données, et le balisage serait faux avant d'être
+// inutile.
+//
+// Assassin's Creed n'a donc aucun bloc — ses deux seules catégories tombent —
+// et Marvel garde ses trois autres. Avatar Legends, The Walking Dead et DC
+// Animation n'ont pas de `faq` du tout dans leurs données. Un dixième univers
+// entre de lui-même s'il en porte, et se tait sinon.
+//
+// **Un titre ne suffit pas à désigner une entrée, et c'est le second piège.**
+// Une série découpée en blocs porte le même titre à chaque bloc : « Les Agents
+// du S.H.I.E.L.D. » revient treize fois chez Marvel, « The Clone Wars » six
+// fois chez Star Wars, « Enterprise » sept fois chez Star Trek. La question
+// sortait donc treize fois à l'identique avec treize réponses différentes —
+// le défaut même qu'on écarte plus haut, arrivé par une autre porte. Le nom
+// reçoit alors ce que la page affiche déjà sous le titre, ses `subitems` :
+// « Les Agents du S.H.I.E.L.D. (Saison 1 Épisodes 1-7) ». Rien n'est écrit,
+// on rapproche deux textes que l'écran montre déjà l'un sous l'autre.
+//
+// La précision n'est ajoutée que là où le titre se répète : les cinquante
+// autres entrées de Marvel gardent leur question telle quelle.
+function elementsFaq(univers, cats, site, moi) {
+  const vraies = (cats || []).filter(c => c && c.key && /\{name\}/.test(c.q || ''));
+  if (!vraies.length) return [];
+
+  // Une passe pour relever les entrées, une seconde pour nommer : on ne sait
+  // qu'un titre se répète qu'après avoir tout lu.
+  const brut = [];
+  const vus = {};
+  for (const era of univers.eras || []) {
+    for (const it of era.entries || []) {
+      if (!it.faq || !it.id || !it.title) continue;
+      const titre = decode(it.title);
+      vus[titre] = (vus[titre] || 0) + 1;
+      brut.push({ it, titre, precision: (it.subitems || []).map(decode).filter(Boolean).join(' · ') });
+    }
+  }
+
+  const out = [];
+  const dejaVu = new Set();
+  const collisions = [];
+  for (const { it, titre, precision } of brut) {
+    const nom = vus[titre] > 1 && precision ? `${titre} (${precision})` : titre;
+    for (const c of vraies) {
+      const r = decode(it.faq[c.key] || '');
+      if (!r) continue;
+      const q = decode(c.q).replace(/\{name\}/g, nom);
+      // Deux entrées que ni leur titre ni leurs `subitems` ne distinguent
+      // poseraient encore la même question. Ça ne se produit pas aujourd'hui ;
+      // le jour où ça arrive, la publication le dit plutôt que de laisser
+      // passer un balisage qui se contredit.
+      if (dejaVu.has(q)) { collisions.push(q); continue; }
+      dejaVu.add(q);
+      out.push({ q, r, url: `${site}${moi}#${it.id}` });
+    }
+  }
+  if (collisions.length) {
+    throw new Error(`FAQPage — ${collisions.length} question(s) en double, ` +
+      `titre et sous-titres identiques : « ${collisions[0]} »`);
+  }
+  return out;
+}
+
+function blocFaq(langue, qr) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: langue,
+    mainEntity: qr.map(e => ({
+      '@type': 'Question',
+      name: e.q,
+      // L'ancre de l'entrée : c'est là que la réponse se lit dans la page, et
+      // c'est le seul endroit du bloc qui dise de quelle œuvre on parle quand
+      // deux titres posent la même question.
+      url: e.url,
+      acceptedAnswer: { '@type': 'Answer', text: e.r },
+    })),
+  };
+}
+
 /* ── Entrée publique ────────────────────────────────────────────────────── */
 
 /**
@@ -251,8 +358,14 @@ export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) 
 
   if (SOURCES[cle]) {
     const [fichier, global] = SOURCES[cle][langue];
-    const u = charge(racine, fichier, global)[global];
+    // Le fichier pose deux globaux : l'univers et le `CG` de sa page, qui porte
+    // les questions. C'est bien celui-ci qu'il faut, pas celui de Star Wars lu
+    // plus haut pour `t`.
+    const w = charge(racine, fichier, global);
+    const u = w[global];
     blocs.push(blocListe(decode(u.title), t.locale, elementsTimeline(u, site, moi)));
+    const qr = elementsFaq(u, (w.CG || {}).faqCats, site, moi);
+    if (qr.length) blocs.push(blocFaq(t.locale, qr));
   } else if (cle === 'dossiers') {
     blocs.push(blocListe(decode(t.nav.deep), t.locale, [{
       t: 'CollectionPage',
