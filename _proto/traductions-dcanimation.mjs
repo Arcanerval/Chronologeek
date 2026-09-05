@@ -514,6 +514,15 @@ export const DCA_RETROUVES = [
 
 /* Le seul vrai écrit. Rempli depuis le bilan du script. */
 export const DCA_TRADUCTIONS = [
+  /* ── la pastille du h1, posée le 5 septembre 2026 ──
+     Elle vivait au-dessus du titre, hors de lui : le h1 ne portait
+     donc que le nom nu de la franchise, là où c'est le deuxième
+     signal que lit un moteur. Elle est entrée dans le h1 et dit
+     maintenant la requête. Le champ subtitle du descripteur
+     d'univers en reprend le texte, d'où deux emplois. */
+  ["Chronological Watch Order",
+   "Ordre de visionnage chronologique"],
+
   ["The 3 universes",
    "Les 3 univers"],
   ["Reset your DC Animation progress?",

@@ -5,7 +5,7 @@ window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"ho
 const DATA_MCU={
   id:"mcu",
   title:"Marvel Cinematic Universe",
-  subtitle:"Optimized Multiverse Timeline",
+  subtitle:"MCU Watch Order",
   description:"Movies · TV Shows · Spider-Verse · Fox",
   color:"#e23636",
   glow:"rgba(226,54,54,.3)",

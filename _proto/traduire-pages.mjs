@@ -246,6 +246,16 @@ for (const [proto, prod] of REGISTRE) {
    « shown » pour les entrées filtrées, « movies » et « shows » pour les
    films et les séries. On ne réinvente pas un lexique en parallèle. */
 const TRADUCTIONS = [
+  // ── la pastille du h1, posée le 5 septembre 2026 ────────────────
+  // Elle vivait au-dessus du titre, hors de lui : le h1 des neuf univers
+  // ne portait donc que le nom nu de la franchise — « DC » tout court —
+  // là où c'est le deuxième signal que lit un moteur. Elle est entrée
+  // dans le h1 et dit maintenant la requête. Ces quatre libellés-là sont
+  // neufs, la prod portait « Timeline Canonique » et ses voisins.
+  ['Ordre de visionnage canon', 'Canon Watch Order'],
+  ['Ordre de visionnage MCU', 'MCU Watch Order'],
+  ['Ordre de visionnage du multivers', 'Multiverse Watch Order'],
+  ['Ordre de visionnage complet', 'Complete Watch Order'],
   // ── le dépliant des filtres, posé le 17 août 2026 ───────────────
   // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
   // repères y étaient dépliés en permanence, sans intitulé commun.

@@ -94,6 +94,15 @@ export const ST_GABARITS = [
 
 /* Chaque ligne part au rapport de relecture. */
 export const ST_TRADUCTIONS = [
+  /* ── la pastille du h1, posée le 5 septembre 2026 ──
+     Elle vivait au-dessus du titre, hors de lui : le h1 ne portait
+     donc que le nom nu de la franchise, là où c'est le deuxième
+     signal que lit un moteur. Elle est entrée dans le h1 et dit
+     maintenant la requête. Le champ subtitle du descripteur
+     d'univers en reprend le texte, d'où deux emplois. */
+  ["In-Universe Watch Order",
+   "Ordre de visionnage interne"],
+
 
   /* ── les titres restés anglais, à la ponctuation française ─────────
      Discovery, Picard, Strange New Worlds, Lower Decks, Prodigy et

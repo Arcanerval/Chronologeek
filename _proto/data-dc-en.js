@@ -5,7 +5,7 @@ window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"ho
 const DATA_DC={
   id:"dc",
   title:"DC — Multiverse Guide",
-  subtitle:"Multiverse Guide",
+  subtitle:"Multiverse Watch Order",
   description:"Elseworlds · Arrowverse · DCEU · DCU",
   color:"#f5c842",
   glow:"rgba(245,200,66,.3)",

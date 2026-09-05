@@ -120,6 +120,15 @@ const APPOINT = [
    anglaise, citée en commentaire, pour ne pas introduire un registre
    qui détonnerait au milieu des 900 autres entrées. */
 const TRADUCTIONS = [
+  /* ── la pastille du h1, posée le 5 septembre 2026 ──
+     Le champ `subtitle` du descripteur d'univers dit la même chose que
+     la pastille de la bannière ; il a suivi son changement de libellé,
+     et la prod ne porte donc plus ni l'un ni l'autre. Star Wars et
+     Marvel passent par `PERIMES`, la prod anglaise ayant leur clé ;
+     DC ne l'a pas et s'écrit ici. Avatar est dans
+     `traductions-avatar.mjs`, avec le reste de son univers. */
+  ['Ordre de visionnage du multivers', 'Multiverse Watch Order'],
+
   // marvel.html · « The movie takes place during what's known as Fury's
   // Big Week, so in 2010 » + « right after the events of… »
   ['Le film se déroule pendant l\'automne 2028 après les évènements de The Punisher : One Last Kill',
@@ -346,8 +355,20 @@ const RENOMMES_NOUVEAUX = new Set(RENOMMES.values());
    la formule du pied de page.
 
    Avatar n'entre pas ici : n'ayant aucune prod anglaise, il n'a rien à
-   reprendre — sa phrase est écrite, dans `traductions-avatar.mjs`. */
+   reprendre — sa phrase est écrite, dans `traductions-avatar.mjs`.
+
+   Le champ `subtitle` du descripteur d'univers est le second cas, venu
+   le 5 septembre 2026 avec la pastille du h1 dont il reprend le texte.
+   Corriger le français seul laissait Star Wars en « Canon Timeline » et
+   Marvel en « Optimized Multiverse Timeline ». Le témoin de fraîcheur
+   ne le rattrape pas : il ne joue que si la prod française porte la
+   clé, et le descripteur d'univers n'y est pas apparié — `refFr` est
+   `undefined`, donc rien ne paraît périmé et la valeur anglaise passe
+   telle quelle. D'où l'application de `PERIMES` à `refEn` dans
+   `valeur()`, et plus seulement aux trois sorties `CG`. */
 const PERIMES = new Map([
+  ['Canon Timeline', 'Canon Watch Order'],
+  ['Optimized Multiverse Timeline', 'MCU Watch Order'],
   ['Star Wars, Marvel, DC and Avatar are trademarks of their respective owners;'
    + ' Chronologeek is an independent fan project.',
    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed'
@@ -669,7 +690,10 @@ export function creerTraducteur(lex, manques, contexte) {
       }
 
       if (refEn !== undefined && typeof refEn === 'string' && refEn.trim()) {
-        return retouche(memeEchappement(fr, refEn), contexte);
+        /* `PERIMES` d'abord : la prod anglaise porte parfois une valeur
+           que le français a déjà corrigée, sans que le témoin de
+           fraîcheur puisse le voir — voir le champ `subtitle`. */
+        return retouche(memeEchappement(fr, PERIMES.get(refEn.trim()) ?? refEn), contexte);
       }
       const trouve = lex.cherche(fr);
       if (trouve !== undefined) return retouche(memeEchappement(fr, trouve), contexte);

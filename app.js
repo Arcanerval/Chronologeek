@@ -673,10 +673,13 @@
     if (!h) return '';
     /* Le Dossier écrit son titre en trois morceaux — « Dossier », « Star
        Wars », puis un sous-titre. `textContent` les colle bout à bout ;
-       on les rejoint par une espace et on laisse le sous-titre dehors. */
+       on les rejoint par une espace et on laisse le sous-titre dehors.
+       La pastille `.tag` est dans le h1 des neuf univers depuis qu'elle
+       y porte la requête ; elle en sort pareillement, sinon le sujet du
+       courrier s'annonce « Ordre de visionnage canon — Star Wars ». */
     var out = [];
     for (var n = h.firstChild; n; n = n.nextSibling) {
-      if (n.nodeType === 1 && n.className && /\bsub\b/.test(n.className)) continue;
+      if (n.nodeType === 1 && n.className && /\b(sub|tag)\b/.test(n.className)) continue;
       var t = (n.textContent || '').trim();
       if (t) out.push(t);
     }

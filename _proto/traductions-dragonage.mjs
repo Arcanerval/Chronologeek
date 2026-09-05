@@ -121,6 +121,15 @@ export const DA_GABARITS = [
 ];
 
 export const DA_TRADUCTIONS = [
+  /* ── la pastille du h1, posée le 5 septembre 2026 ──
+     Elle vivait au-dessus du titre, hors de lui : le h1 ne portait
+     donc que le nom nu de la franchise, là où c'est le deuxième
+     signal que lit un moteur. Elle est entrée dans le h1 et dit
+     maintenant la requête. Le champ subtitle du descripteur
+     d'univers en reprend le texte, d'où deux emplois. */
+  ["Chronological Play Order",
+   "Ordre de jeu chronologique"],
+
   /* ── les cinq œuvres qui ont une édition française ────────────────
      Trois comics et deux romans, les seuls de l'univers. Les comics
      n'ont jamais paru seuls en France : ils sont dans l'« Intégrale

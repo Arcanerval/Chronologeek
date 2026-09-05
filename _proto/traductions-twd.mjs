@@ -95,6 +95,15 @@ export const TWD_GABARITS = [
 ];
 
 export const TWD_TRADUCTIONS = [
+  /* ── la pastille du h1, posée le 5 septembre 2026 ──
+     Elle vivait au-dessus du titre, hors de lui : le h1 ne portait
+     donc que le nom nu de la franchise, là où c'est le deuxième
+     signal que lit un moteur. Elle est entrée dans le h1 et dit
+     maintenant la requête. Le champ subtitle du descripteur
+     d'univers en reprend le texte, d'où deux emplois. */
+  ["Chronological Watch Order",
+   "Ordre de visionnage chronologique"],
+
   /* ── l'accroche ───────────────────────────────────────────────────
      La première phrase est propre à ce guide ; la seconde est celle de
      Star Trek, et son français vient de `data-startrek.js`. Les deux
