@@ -1,83 +1,83 @@
 {
   "accueil": {
     "fr": {
-      "title": "Chronologeek",
+      "title": "Chronologeek — Chronologies et ordres de visionnage",
       "ogTitle": "Chronologeek — Timelines Geek",
-      "desc": "Les timelines complètes de tes univers préférés — tous supports, ordre chronologique, 100% canon.",
+      "desc": "Les timelines complètes de tes univers préférés — tous supports, ordre chronologique, 100% canon. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
-      "title": "Chronologeek — Geek Timelines",
+      "title": "Chronologeek — Geek Timelines &amp; Watch Orders",
       "ogTitle": "Chronologeek — Geek Timelines",
-      "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon.",
+      "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon. Track what you've watched.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "sw": {
     "fr": {
-      "title": "Star Wars — Chronologeek",
+      "title": "Chronologie Star Wars : l'ordre de visionnage | Chronologeek",
       "ogTitle": "Timeline Star Wars — Chronologeek",
-      "desc": "La timeline Star Wars canon complète — films, séries et jeux dans l'ordre chronologique, sans spoil.",
+      "desc": "La timeline Star Wars canon complète — films, séries et jeux dans l'ordre chronologique, sans spoil. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     },
     "en": {
-      "title": "Star Wars Timeline — Chronologeek",
+      "title": "Star Wars Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Star Wars Timeline — Chronologeek",
-      "desc": "The complete Star Wars canon timeline — movies, shows and games in chronological order, spoiler-free.",
+      "desc": "The complete Star Wars canon timeline — movies, shows and games in chronological order, spoiler-free. Track what you've watched.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },
   "mcu": {
     "fr": {
-      "title": "Marvel — Chronologeek",
+      "title": "Chronologie Marvel : l'ordre de visionnage MCU | Chronologeek",
       "ogTitle": "Timeline Marvel MCU — Chronologeek",
-      "desc": "Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil.",
+      "desc": "Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/mcu.webp"
     },
     "en": {
-      "title": "Marvel — Chronologeek",
+      "title": "Marvel MCU Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Marvel MCU Timeline — Chronologeek",
-      "desc": "The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free.",
+      "desc": "The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free. Track what you've watched.",
       "image": "https://chronologeek.app/images/mcu.webp"
     }
   },
   "dc": {
     "fr": {
-      "title": "DC Multivers — Chronologeek",
+      "title": "Chronologie DC : le multivers dans l'ordre | Chronologeek",
       "ogTitle": "Guide DC Multivers — Chronologeek",
-      "desc": "Le guide de visionnage complet du Multivers DC — Elseworlds, Arrowverse, DCEU et DCU, tous connectés.",
+      "desc": "Le guide de visionnage complet du Multivers DC — Elseworlds, Arrowverse, DCEU et DCU, tous connectés. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     },
     "en": {
-      "title": "DC Multiverse — Chronologeek",
+      "title": "DC Multiverse Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "DC Multiverse Watch Guide — Chronologeek",
-      "desc": "The complete DC Multiverse watch guide — Elseworlds, Arrowverse, DCEU and DCU, all connected.",
+      "desc": "The complete DC Multiverse watch guide — Elseworlds, Arrowverse, DCEU and DCU, all connected. Track what you've watched.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     }
   },
   "avatar": {
     "fr": {
-      "title": "Avatar Legends — Chronologeek",
+      "title": "Chronologie Avatar Legends : l'ordre complet | Chronologeek",
       "ogTitle": "Timeline Avatar Legends — Chronologeek",
-      "desc": "Séries animées · Comics · Livres — tout l’univers Avatar Legends dans son ordre le plus optimisé.",
+      "desc": "Séries animées · Comics · Livres — tout l’univers Avatar Legends dans son ordre le plus optimisé. Coche ce que tu as vu.",
       "image": "https://chronologeek.app/images/avatar.webp"
     },
     "en": {
-      "title": "Avatar Legends Timeline — Chronologeek",
+      "title": "Avatar Legends Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Avatar Legends Timeline — Chronologeek",
-      "desc": "Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order.",
+      "desc": "Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order. Track what you've watched.",
       "image": "https://chronologeek.app/images/avatar.webp"
     }
   },
   "startrek": {
     "fr": {
-      "title": "Star Trek — Chronologeek",
+      "title": "Chronologie Star Trek : l'ordre de visionnage | Chronologeek",
       "ogTitle": "Timeline Star Trek — Chronologeek",
       "desc": "La timeline Star Trek dans l'ordre chronologique interne — films, séries et séries animées, du 21e au 43e siècle, sans spoil.",
       "image": "https://chronologeek.app/images/startrek.webp"
     },
     "en": {
-      "title": "Star Trek Timeline — Chronologeek",
+      "title": "Star Trek Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Star Trek Timeline — Chronologeek",
       "desc": "The Star Trek timeline in in-universe order — movies, TV shows and animated shows, from the 21st to the 43rd century, spoiler-free.",
       "image": "https://chronologeek.app/images/startrek.webp"
@@ -85,13 +85,13 @@
   },
   "twd": {
     "fr": {
-      "title": "The Walking Dead — Chronologeek",
+      "title": "Chronologie The Walking Dead : l'ordre | Chronologeek",
       "ogTitle": "Timeline The Walking Dead — Chronologeek",
       "desc": "La timeline The Walking Dead dans l'ordre chronologique interne — les sept séries et les huit webséries, de l'épidémie de Los Angeles à New York, sans spoil.",
       "image": "https://chronologeek.app/images/twd.webp"
     },
     "en": {
-      "title": "The Walking Dead Timeline — Chronologeek",
+      "title": "The Walking Dead Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "The Walking Dead Timeline — Chronologeek",
       "desc": "The Walking Dead timeline in in-universe order — all seven shows and the eight web series, from the Los Angeles outbreak to New York, spoiler-free.",
       "image": "https://chronologeek.app/images/twd.webp"
@@ -99,27 +99,27 @@
   },
   "dragonage": {
     "fr": {
-      "title": "Dragon Age — Chronologeek",
+      "title": "Chronologie Dragon Age : l'ordre des jeux | Chronologeek",
       "ogTitle": "Timeline Dragon Age — Chronologeek",
       "desc": "La timeline Dragon Age dans l'ordre chronologique interne — les jeux et leurs DLC, les romans, les comics et les séries, du Trône Volé au Veilguard, sans spoil.",
       "image": "https://chronologeek.app/images/dragonage.webp"
     },
     "en": {
-      "title": "Dragon Age Timeline — Chronologeek",
+      "title": "Dragon Age Timeline &amp; Game Order | Chronologeek",
       "ogTitle": "Dragon Age Timeline — Chronologeek",
-      "desc": "The Dragon Age timeline in in-universe order — the games and their DLC, the books, the comics and the shows, from The Stolen Throne to The Veilguard, spoiler-free.",
+      "desc": "The Dragon Age timeline in in-universe order — the games, the books, the comics and the shows, from The Stolen Throne to The Veilguard, spoiler-free.",
       "image": "https://chronologeek.app/images/dragonage.webp"
     }
   },
   "dcanimation": {
     "fr": {
-      "title": "DC Animation — Chronologeek",
+      "title": "Chronologie DC Animation : DCAU, DCAMU, Arkham | Chronologeek",
       "ogTitle": "Timeline DC Animation — Chronologeek",
       "desc": "La timeline DC Animation dans l’ordre chronologique — le DCAU, le DCAMU (New 52 et Tomorrowverse) et l’Arkhamverse, séries, films et jeux, sans spoil.",
       "image": "https://chronologeek.app/images/dcanimation.webp"
     },
     "en": {
-      "title": "DC Animation Timeline — Chronologeek",
+      "title": "DC Animation Timeline — DCAU, DCAMU, Arkham | Chronologeek",
       "ogTitle": "DC Animation Timeline — Chronologeek",
       "desc": "The DC Animation timeline in chronological order — the DCAU, the DCAMU (New 52 and Tomorrowverse) and the Arkhamverse, series, films and games, spoiler-free.",
       "image": "https://chronologeek.app/images/dcanimation.webp"
@@ -127,27 +127,27 @@
   },
   "assassinscreed": {
     "fr": {
-      "title": "Assassin’s Creed — Chronologeek",
+      "title": "Chronologie Assassin’s Creed : l’ordre des jeux | Chronologeek",
       "ogTitle": "Timeline Assassin’s Creed — Chronologeek",
-      "desc": "La timeline Assassin’s Creed dans l’ordre chronologique — les jeux et leurs DLC, les romans, les comics et les courts métrages, d’Altaïr à l’Animus Hub, sans spoil.",
+      "desc": "La timeline Assassin’s Creed dans l’ordre chronologique — les jeux, les romans, les comics et les courts métrages, d’Altaïr à l’Animus Hub, sans spoil.",
       "image": "https://chronologeek.app/images/acuniverse.webp"
     },
     "en": {
-      "title": "Assassin’s Creed Timeline — Chronologeek",
+      "title": "Assassin’s Creed Timeline &amp; Game Order | Chronologeek",
       "ogTitle": "Assassin’s Creed Timeline — Chronologeek",
-      "desc": "The Assassin’s Creed timeline in chronological order — the games and their DLC, the novels, the comics and the short films, from Altaïr to the Animus Hub, spoiler-free.",
+      "desc": "The Assassin’s Creed timeline in chronological order — the games, the novels, the comics and the short films, from Altaïr to the Animus Hub, spoiler-free.",
       "image": "https://chronologeek.app/images/acuniverse.webp"
     }
   },
   "dossiers": {
     "fr": {
-      "title": "Dossiers — Chronologeek",
+      "title": "Dossiers : ordres de lecture et guides | Chronologeek",
       "ogTitle": "Dossiers — Chronologeek",
       "desc": "Les dossiers Chronologeek : ordres de lecture, guides et analyses par univers.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
-      "title": "Deep Dives — Chronologeek",
+      "title": "Deep Dives: Reading Orders &amp; Guides | Chronologeek",
       "ogTitle": "Deep Dives — Chronologeek",
       "desc": "Chronologeek deep dives: reading orders, guides and breakdowns, universe by universe.",
       "image": "https://chronologeek.app/images/og-banner.webp"
@@ -155,13 +155,13 @@
   },
   "dossier-sw": {
     "fr": {
-      "title": "Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek",
+      "title": "Ordre de lecture Star Wars : romans et comics | Chronologeek",
       "ogTitle": "Dossier Star Wars : romans &amp; comics — l'ordre de lecture | Chronologeek",
       "desc": "L'ordre de lecture complet des romans, romans jeunesse et comics Star Wars canon, replacé dans la chronologie des films et séries.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     },
     "en": {
-      "title": "Star Wars Deep Dive: novels &amp; comics reading order | Chronologeek",
+      "title": "Star Wars Reading Order: Novels &amp; Comics | Chronologeek",
       "ogTitle": "Star Wars Deep Dive: novels &amp; comics reading order | Chronologeek",
       "desc": "The complete reading order for canon Star Wars novels, young-reader books and comics, placed within the movie and show chronology.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
@@ -169,13 +169,13 @@
   },
   "nouveautes": {
     "fr": {
-      "title": "Nouveautés — Chronologeek",
+      "title": "Nouveautés du site | Chronologeek",
       "ogTitle": "Nouveautés — Chronologeek",
       "desc": "Tout ce qui bouge sur Chronologeek — timelines ajoutées, entrées mises à jour, nouveautés du site.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
-      "title": "What's New — Chronologeek",
+      "title": "What's New | Chronologeek",
       "ogTitle": "What's New — Chronologeek",
       "desc": "Everything new on Chronologeek — timelines added, entries updated, features shipped.",
       "image": "https://chronologeek.app/images/og-banner.webp"
