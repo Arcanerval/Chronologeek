@@ -1115,7 +1115,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       '<div class="bu-card">'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
           '<span class="bu-fig">'+
-            (e.img?'<img src="'+e.img+'" alt="" loading="lazy" decoding="async"/>':'')+
+            (e.img?'<img src="'+e.img+'" alt="'+esc(e.title)+'" loading="lazy" decoding="async"/>':'')+
             '<span class="halftone"></span>'+
             '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
             '<span class="bu-done" aria-hidden="true"><span>watched</span></span>'+

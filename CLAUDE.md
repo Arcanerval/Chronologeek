@@ -1630,6 +1630,23 @@ courriers se répètent.
 
 ## Les images
 
+**Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le
+5 septembre 2026 — `alt="'+esc(e.title)+'"` dans le gabarit de `row()`, la même
+fonction que le h3 juste à côté, et elle échappe bien `&`, `<`, `>` et `"`. Le
+gabarit posait un `alt=""` explicite : soixante-quatre images sur soixante-cinq
+n'avaient donc aucun nom sur la page Star Wars, ni pour Google Images ni pour un
+lecteur d'écran, qui annonçait soixante-deux fois « image ».
+
+**Deux images gardent leur `alt=""`, et c'est juste** : les deux WebP du bouton
+« remonter en haut » sont décoratives et vivent dans un bouton qui porte déjà son
+`aria-label`. Une image neuve suit l'une ou l'autre règle selon qu'elle nomme
+quelque chose ou qu'elle décore.
+
+**Il n'y a pas de `width`/`height` sur les vignettes, et il n'en faut pas** :
+`.bu-fig` fixe 128×72 en CSS avec `object-fit:cover`, donc la place est réservée
+avant le chargement et rien ne se décale. Ne pas les ajouter en croyant régler un
+CLS qui n'existe pas.
+
 **Tout est en WebP, à quatre fois la taille où l'image s'affiche.** Le 14 août 2026,
 `images/` pesait 25 Mo pour 207 fichiers, dont **20,8 Mo de vignettes d'entrée** :
 `.bu-fig` les rend dans une case de **190 px de large**, et `thelegendofkorra.png`
