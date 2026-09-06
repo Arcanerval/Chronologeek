@@ -366,7 +366,7 @@ const BOOT_PHRASES = {
   en: [
     'Restoring the multiverse',
     'Erasing the chronological anomalies',
-    'Reseting the time loop',
+    'Resetting the time loop',
     'Aligning the timelines',
     'Recalibrating the Animus',
     'Sorting nine universes',
