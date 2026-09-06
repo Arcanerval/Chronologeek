@@ -282,10 +282,10 @@ const BOOT =
      posé au parse du CSS, il aurait couru sur un fond vide et se serait
      terminé avant que la planche arrive. `boot-img` est ce qui le lance. */
   'var n=0,g=function(){if(++n<2)return;r.classList.add("boot-img");' +
-  's(Math.max(2050,2100-performance.now()))};' +
+  's(Math.max(2950,3000-performance.now()))};' +
   'var i=new Image();i.onload=i.onerror=g;i.src="/images/logo-chronologeek.webp";' +
   `var j=new Image();j.onload=j.onerror=g;j.src="${BOOT_PLANCHE}";` +
-  'setTimeout(function(){s(0)},4200)' +
+  'setTimeout(function(){s(0)},5200)' +
   '}}catch(e){}</script>\n' +
   '<style>' +
   /* Les propriétés sont écrites une par une, jamais dans le raccourci
@@ -417,7 +417,7 @@ const BOOT_PHRASES = {
 // plus le demi-temps du dernier fondu, font 2,1 s — et c'est exactement ce que
 // le voile tient une fois les images arrivées. Les trois valeurs se règlent
 // ensemble ; changer l'une seule fait finir l'écran avant ou après lui-même.
-const BOOT_PAS = 0.2;
+const BOOT_PAS = 0.28;
 const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +
