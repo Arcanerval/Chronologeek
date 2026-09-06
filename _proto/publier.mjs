@@ -277,7 +277,7 @@ const BOOT =
   'var r=document.documentElement,f=0;r.className+=" boot";sessionStorage.setItem("cg-boot","1");' +
   'var s=function(d){if(f)return;f=1;setTimeout(function(){r.classList.add("boot-out");' +
   'setTimeout(function(){r.classList.remove("boot","boot-out");' +
-  'var q=document.getElementById("cgb");if(q)q.remove();var w=document.getElementById("cgv");if(w)w.remove()},360)},d)};' +
+  'var q=document.getElementById("cgb");if(q)q.remove();var w=document.getElementById("cgv");if(w)w.remove();var t=document.getElementById("cgt");if(t)t.remove()},360)},d)};' +
   /* Les deux images sont attendues, et le défilé ne part qu'avec elles :
      posé au parse du CSS, il aurait couru sur un fond vide et se serait
      terminé avant que la planche arrive. `boot-img` est ce qui le lance. */
@@ -328,16 +328,86 @@ const BOOT =
   '#cgb i{display:block;width:min(22px,5vw);height:9px;' +
   'background:rgba(255,253,247,.13);animation:cgcase .5s ease forwards}' +
   '@keyframes cgcase{to{background:var(--c);box-shadow:0 0 13px var(--c)}}' +
+  /* la phrase, sous les cases : elle change à chaque arrivée, et c'est le
+     seul texte de l'écran. Elle paraît un demi-temps après le reste — d'un
+     coup avec le logo, elle aurait fait bloc avec lui. */
+  '#cgt{position:fixed;z-index:1001;left:50%;top:calc(50% + 74px);' +
+  'transform:translateX(-50%);width:max-content;max-width:min(84vw,460px);' +
+  'text-align:center;font-family:\'Big Shoulders Display\',sans-serif;' +
+  'font-weight:800;font-size:14px;line-height:1.3;letter-spacing:.13em;' +
+  'text-transform:uppercase;color:rgba(255,253,247,.6);' +
+  'opacity:0;animation:cgtxt .55s ease .3s forwards;transition:opacity .34s ease}' +
+  '@keyframes cgtxt{to{opacity:1}}' +
   'html.boot.boot-out::before,html.boot.boot-out::after,' +
   'html.boot.boot-out #cgb,html.boot.boot-out #cgv{opacity:0;pointer-events:none}' +
+  /* **`animation:none` en plus de l'opacité**, et ce n'est pas une
+     précaution : une animation `forwards` fige sa dernière image et bat la
+     règle qui suit. Sans ça la phrase restait à l'écran pendant que tout le
+     reste s'effaçait. Les cases n'ont pas ce défaut — c'est leur parent qui
+     s'efface, pas elles. */
+  'html.boot.boot-out #cgt{animation:none;opacity:0;pointer-events:none}' +
   /* qui a demandé moins d'animation reçoit le premier univers et le logo,
      sans fondus et sans remplissage — la durée, elle, ne bouge pas : il n'y
      a plus rien qui remue */
   '@media(prefers-reduced-motion:reduce){' +
   'html.boot-img #cgv b{animation:none}#cgv b:first-child{opacity:1}' +
-  '#cgb i{animation:none}' +
-  'html.boot::before,html.boot::after,#cgb,#cgv{transition:none}}' +
+  '#cgb i{animation:none}#cgt{animation:none;opacity:1}' +
+  'html.boot::before,html.boot::after,#cgb,#cgv,#cgt{transition:none}}' +
   '</style>';
+
+// Les vingt phrases de l'écran d'arrivée, une tirée au hasard à chaque
+// arrivée. Les trois premières sont de Niko, mot pour mot — sa graphie
+// comprise ; les dix-sept autres suivent son ton. Le français n'est pas la
+// traduction de l'anglais ligne à ligne, c'est la même idée dans sa langue.
+//
+// **Seules les vingt de la page sont injectées** : `publier.mjs` connaît la
+// langue de chaque route, il n'y a donc aucune raison d'envoyer les quarante.
+const BOOT_PHRASES = {
+  en: [
+    'Restoring the multiverse',
+    'Erasing the chronological anomalies',
+    'Reseting the time loop',
+    'Aligning the timelines',
+    'Recalibrating the Animus',
+    'Sorting nine universes',
+    'Untangling the flashbacks',
+    'Consulting the archives',
+    'Waking up the Force',
+    'Charging the warp core',
+    'Checking canon status',
+    'Counting the post-credit scenes',
+    'Rewinding to episode one',
+    'Filing the retcons',
+    'Cross-checking the release dates',
+    'Defragmenting the continuity',
+    'Polishing the spoiler shields',
+    'Summoning the watch order',
+    'Warming up the projector',
+    'Dusting off the comics',
+  ],
+  fr: [
+    'Restauration du multivers',
+    'Effacement des anomalies chronologiques',
+    'Réinitialisation de la boucle temporelle',
+    'Alignement des chronologies',
+    'Recalibrage de l’Animus',
+    'Tri de neuf univers',
+    'Démêlage des flashbacks',
+    'Consultation des archives',
+    'Réveil de la Force',
+    'Chargement du cœur de distorsion',
+    'Vérification du canon',
+    'Comptage des scènes post-générique',
+    'Retour à l’épisode un',
+    'Classement des retcons',
+    'Recoupement des dates de sortie',
+    'Défragmentation de la continuité',
+    'Astiquage des boucliers anti-spoil',
+    'Invocation de l’ordre de visionnage',
+    'Préchauffage du projecteur',
+    'Dépoussiérage des comics',
+  ],
+};
 
 // Les neuf couches d'images et les neuf cases demandent des éléments, donc un
 // `document.body` : ce bloc-ci est posé juste après l'ouverture du corps, là
@@ -348,7 +418,7 @@ const BOOT =
 // le voile tient une fois les images arrivées. Les trois valeurs se règlent
 // ensemble ; changer l'une seule fait finir l'écran avant ou après lui-même.
 const BOOT_PAS = 0.2;
-const BOOT_CORPS =
+const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +
   `var C=${JSON.stringify(BOOT_ENCRES)},P=${BOOT_PAS};` +
@@ -362,7 +432,14 @@ const BOOT_CORPS =
   'var d=document.createElement("div");d.id="cgb";' +
   'for(var i=0;i<C.length;i++){var s=document.createElement("i");' +
   's.style.cssText="--c:"+C[i]+";animation-delay:"+(i*P)+"s";d.appendChild(s)}' +
-  'document.body.appendChild(d)})()</script>';
+  'document.body.appendChild(d);' +
+  /* La phrase est posée en `textContent` : elle porte des apostrophes
+     typographiques, et une concaténation de HTML les aurait laissées
+     passer sans échappement. */
+  `var T=${JSON.stringify(BOOT_PHRASES[langue] || BOOT_PHRASES.en)};` +
+  'var p=document.createElement("p");p.id="cgt";' +
+  'p.textContent=T[Math.random()*T.length|0];' +
+  'document.body.appendChild(p)})()</script>';
 
 const PIED = [
   '<script src="/pwa.js"></script>',
@@ -504,7 +581,7 @@ function publier(route, langue) {
                 (route.cle === 'accueil' ? `\n${BOOT}` : ''));
   if (route.cle === 'accueil') {
     const avantCorps = h;
-    h = h.replace(/(<body[^>]*>)/i, `$1\n${BOOT_CORPS}`);
+    h = h.replace(/(<body[^>]*>)/i, `$1\n${BOOT_CORPS(langue)}`);
     if (h === avantCorps) problemes.push(`${c.sortie} : <body> introuvable pour l'écran d'arrivée`);
   }
   if (h === avantPwa) problemes.push(`${c.sortie} : bloc PWA non injecté`);

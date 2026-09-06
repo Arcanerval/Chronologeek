@@ -1123,6 +1123,29 @@ Sept choses à savoir :
   reconstruit alors entièrement ; le script qui la fabrique n'est pas
   versionné, c'est la recette qui compte, comme pour la conversion en WebP.
 
+**Une phrase au hasard sous les cases**, posée le 6 septembre 2026 : vingt par
+langue, tirées à chaque arrivée. Les trois premières sont de Niko, mot pour mot
+— « Restoring the multiverse », « Erasing the chronological anomalies »,
+« Reseting the time loop », **sa graphie comprise** ; les dix-sept autres
+suivent son ton. Le français n'est pas la traduction ligne à ligne de l'anglais,
+c'est la même idée dans sa langue.
+
+Trois choses à savoir :
+
+- **Seules les vingt de la page sont injectées.** `publier.mjs` connaît la
+  langue de chaque route : `BOOT_CORPS` est une fonction qui la reçoit, et il
+  n'y a aucune raison d'envoyer les quarante. Attention en l'appelant —
+  `${BOOT_CORPS}` sans parenthèses injecte le **code source de la fonction**
+  dans la page, ce qui se voit au `langue =>` qui traîne dans le HTML et rien
+  d'autre : la publication ne dit rien.
+- **`animation:none` en plus de l'opacité à la sortie.** Une animation
+  `forwards` fige sa dernière image et bat la règle qui suit : sans ça, la
+  phrase restait à l'écran pendant que tout le reste s'effaçait. Les cases
+  n'ont pas ce défaut, c'est leur parent qui s'efface.
+- **`textContent`, jamais une concaténation de HTML.** Les phrases françaises
+  portent des apostrophes typographiques et des ligatures (« cœur »).
+
+
 `prefers-reduced-motion` retire le défilé, le remplissage des cases et les
 fondus ; la durée, elle, ne bouge pas — il n'y a plus rien qui remue.
 
