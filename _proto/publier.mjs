@@ -278,11 +278,22 @@ const BOOT =
   'var s=function(d){if(f)return;f=1;setTimeout(function(){r.classList.add("boot-out");' +
   'setTimeout(function(){r.classList.remove("boot","boot-out");' +
   'var q=document.getElementById("cgb");if(q)q.remove();var w=document.getElementById("cgv");if(w)w.remove();var t=document.getElementById("cgt");if(t)t.remove()},360)},d)};' +
-  /* Les deux images sont attendues, et le défilé ne part qu'avec elles :
-     posé au parse du CSS, il aurait couru sur un fond vide et se serait
-     terminé avant que la planche arrive. `boot-img` est ce qui le lance. */
-  'var n=0,g=function(){if(++n<2)return;r.classList.add("boot-img");' +
-  's(Math.max(2950,3000-performance.now()))};' +
+  /* Deux conditions, et c'est la plus tardive qui décide.
+     · **Les deux images**, sans quoi le défilé courrait sur un fond vide
+       et se terminerait avant que la planche arrive. `boot-img` le lance.
+     · **Le document prêt**, sans quoi le voile se lève sur une page qui
+       n'est pas encore construite. Ça ne se voyait pas au navigateur, où
+       le document est prêt bien avant trois secondes, mais **dans
+       l'application installée** : Niko y voyait passer un fond noir avec
+       le pied de page et la barre de progression — une page vide, dont
+       les deux seuls éléments déjà en place remontent en haut de l'écran.
+     Le plafond de 5,2 s reste au-dessus des deux : une page qui ne se
+     construit pas ne doit pas retenir le voile pour autant. */
+  'var n=0,dom=document.readyState!=="loading"?1:0,ti=0;' +
+  'var e=function(){if(n<2||!dom)return;s(Math.max(0,ti+2950-performance.now()))};' +
+  'var g=function(){if(++n<2)return;r.classList.add("boot-img");' +
+  'ti=performance.now();e()};' +
+  'if(!dom)document.addEventListener("DOMContentLoaded",function(){dom=1;e()});' +
   'var i=new Image();i.onload=i.onerror=g;i.src="/images/logo-chronologeek.webp";' +
   `var j=new Image();j.onload=j.onerror=g;j.src="${BOOT_PLANCHE}";` +
   'setTimeout(function(){s(0)},5200)' +

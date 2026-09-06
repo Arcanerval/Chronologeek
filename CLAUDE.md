@@ -1070,6 +1070,17 @@ soit sa forme — c'est le `cover` qu'une planche ne sait pas demander seule —
 le décalage d'une couche à l'autre vaut exactement la hauteur d'une vignette,
 `max(56.25vw,100vh)`. Une planche au ratio différent oblige à changer les deux.
 
+**Le voile attend deux choses, et c'est la plus tardive qui décide** : les deux
+images, et le **document prêt**. La seconde a été ajoutée le 6 septembre 2026,
+après que Niko a vu passer, **dans l'application installée seulement**, un fond
+noir avec le pied de page et la barre de progression — une page vide, dont les
+deux seuls éléments déjà en place remontent en haut de l'écran. Au navigateur
+ça ne se voyait pas : le document y est prêt bien avant trois secondes. Le
+plafond de 5,2 s reste au-dessus des deux, et il joue : mesuré à 400 kbps avec
+un processeur ralenti huit fois, le document n'était toujours pas prêt et le
+voile s'est levé quand même. Une page qui ne se construit pas ne doit pas
+retenir l'écran d'arrivée pour autant.
+
 **Les trois durées se règlent ensemble** : le pas de 0,28 s (couches et cases),
 les neuf fois ce pas plus le dernier fondu, et les 2,95 s que le voile tient
 une fois les images arrivées — **trois secondes en tout**, réglées par Niko le
