@@ -1673,35 +1673,43 @@ les lignes de la mention légale.
 (`ko-fi.com/chronologeek`) — il avait quitté le pied de page le 14 août parce
 que rien ne recevait derrière, et c'était la seule condition posée.
 
-C'est un **bouton**, à l'allure du widget officiel et dans la couleur choisie
-sur Ko-fi (`#72a4f2`), posé sous l'accroche du pied de page. Il vit dans
-`e-app.js`, comme le formulaire de contact et les deux « Suggérer » : un texte
-écrit dans le HTML devrait être traduit dans `traduire-pages.mjs`, et il y en
-aurait vingt-huit copies à tenir.
+C'est **le bouton officiel de Ko-fi**, celui que leur aide donne à copier —
+mais **servi depuis `images/kofi-button.svg`**, pas depuis leurs serveurs. Le
+fichier est le leur à l'octet près ; ce qui change est qu'il ne coûte pas une
+requête vers un tiers sur chacune des vingt-huit pages, et que l'adresse IP du
+visiteur ne part nulle part. C'est déjà pourquoi les deux polices du site sont
+auto-hébergées.
 
-Quatre choses à savoir :
+Il est posé sous l'accroche du pied de page, et il vit dans `e-app.js` comme le
+formulaire de contact et les deux « Suggérer » : un texte écrit dans le HTML
+devrait être traduit dans `traduire-pages.mjs`, et il y en aurait vingt-huit
+copies à tenir.
 
-- **Le widget officiel de Ko-fi ne peut pas être intégré, et ce n'est pas une
-  question de goût.** `Widget_2.js` rend par `document.write`, qui **efface le
-  document entier** dès qu'il est appelé après le chargement — et `e-app.js`
-  est lu en fin de corps. Le contourner demandait une iframe, donc une requête,
-  un script tiers et un cadre à styler de l'extérieur, sur les vingt-huit
-  pages. Le bouton dessiné ici a la même allure, la même couleur et le même
-  lien, pour rien. Ne pas le reproposer.
+Cinq choses à savoir :
+
 - **Le pied de page, et lui seul.** Le panneau de la barre du bas l'a porté une
   heure : on l'ouvre pour sa progression, ses badges et son export, pas pour
   payer.
+- **Le libellé du bouton est en anglais dans les deux langues.** Ko-fi n'en
+  fournit pas d'autre, et c'est le prix du visuel officiel. Le `alt`, lui, suit
+  la page.
+- **Pas de `loading="lazy"`.** L'image fait 16 Ko et vit en bas de page, donc
+  exactement là où le report se voit : elle arrivait après le défilement, et le
+  pied montrait un trou à sa place. La règle du site vaut pour les vignettes de
+  timeline, pas pour une image qu'on ne voit qu'une fois arrivé au bas.
 - **`.foot a.kofi`, jamais `.kofi`.** Le pied pose sa propre taille et sa propre
-  encre sur ses liens, et une seule classe perd contre lui : le bouton sortait
-  en 12,5 px et en gris pâle. Même famille de piège que le `display:block` des
-  images qui bat l'attribut `hidden`.
+  encre sur ses liens, et une seule classe perd contre lui : la première
+  version, un bouton dessiné à la main, sortait en 12,5 px et en gris pâle.
+  Même famille de piège que le `display:block` des images qui bat l'attribut
+  `hidden`.
 - **`rel="noopener"` seul, pas `noreferrer`.** Ko-fi n'a rien à savoir de plus,
   mais le référent lui dit d'où viennent ses visiteurs, et c'est une
   information que Niko a intérêt à lui laisser.
 
-La tasse est dessinée dans le fichier, comme les autres icônes du site : aucun
-logo de marque, rien à demander à un serveur tiers, et deux traits de vapeur qui
-montent doucement — coupés par `prefers-reduced-motion`.
+C'est la seule image du site à porter `width` et `height` en attributs : les
+vignettes de timeline ont leur taille en CSS, celle-ci n'a pas de règle qui la
+dimensionne avant son chargement.
+
 
 **Le bouton flottant a été essayé le même jour, et retiré.** C'est l'autre
 widget de Ko-fi, `overlay-widget.js`, et celui-là est intégrable : il ne rend

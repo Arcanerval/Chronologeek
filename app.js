@@ -2727,72 +2727,51 @@
   else pose();
 })();
 
-
 /* ═══ SOUTENIR LE SITE ════════════════════════════════════════════════
    Un Ko-fi existe depuis le 6 septembre 2026 (`ko-fi.com/chronologeek`),
    et « Ce qui reste à faire » posait la condition depuis le 14 août : le
    lien revient le jour où il y a une page derrière. C'est ce jour-là.
 
-   **Le bouton est dessiné ici, pas chargé chez Ko-fi**, et ce n'est pas
-   une préférence de style : leur `Widget_2.js` rend par `document.write`,
-   qui **efface le document entier** dès qu'il est appelé après le
-   chargement. Ce fichier est lu en fin de corps — le widget officiel
-   aurait donc remplacé la page par un bouton. Le contourner demandait une
-   iframe, donc une requête, un script tiers et un cadre à styler de
-   l'extérieur, sur les vingt-huit pages. Le bouton ci-dessous a la même
-   allure, la même couleur (`#72a4f2`, celle choisie sur Ko-fi) et le même
-   lien, pour rien.
+   **C'est le bouton officiel de Ko-fi**, celui que leur aide donne à
+   copier — mais **servi depuis `images/`**, pas depuis leurs serveurs. Le
+   fichier est le leur, à l'octet près ; ce qui change est qu'il ne coûte
+   pas une requête vers un tiers sur chacune des vingt-huit pages, et que
+   l'adresse IP du visiteur ne part nulle part. C'est déjà pourquoi les
+   deux polices du site sont auto-hébergées.
 
-   **Un seul endroit : le pied de page**, sous l'accroche. Le panneau de la
-   barre du bas l'a porté une heure et n'était pas la bonne place — on y va
-   pour sa progression, ses badges et son export, pas pour payer.
+   **Un seul endroit : le pied de page**, sous l'accroche. Le panneau de
+   la barre du bas l'a porté une heure et n'était pas la bonne place — on
+   y va pour sa progression, ses badges et son export, pas pour payer. Un
+   bouton flottant a été essayé le même jour, puis retiré : Niko n'en veut
+   pas, et le coin bas de l'écran est déjà pris par quatre choses.
 
-   Comme le formulaire de contact et les deux « Suggérer », le texte vit
-   dans ce fichier et non dans les protos : une chaîne écrite dans le HTML
-   devrait être traduite dans `traduire-pages.mjs`, et il y en aurait
-   vingt-huit copies à tenir. La langue se lit sur la page.
+   Le libellé du bouton est en anglais dans les deux langues : Ko-fi n'en
+   fournit pas d'autre, et c'est le prix du visuel officiel. Le texte de
+   remplacement, lui, suit la page.
    ══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
   var FR = document.documentElement.lang !== 'en';
   var URL = 'https://ko-fi.com/chronologeek';
-  var T = FR ? 'Soutenez-moi sur Ko-fi' : 'Support me on Ko-fi';
+  var ALT = FR ? 'Soutenez-moi sur Ko-fi' : 'Support me on Ko-fi';
 
   var CSS = [
-    /* `.foot a.kofi` et non `.kofi` : le pied de page pose sa propre taille
-       et sa propre encre sur ses liens, et une seule classe perdait contre
-       lui — le bouton sortait en 12,5 px et en gris pâle. */
-    '.foot a.kofi{display:inline-flex;align-items:center;gap:10px;margin-top:16px;',
-    '  padding:11px 18px;background:#72a4f2;color:#0b0b12;text-decoration:none;',
-    '  font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;',
-    '  font-size:17px;line-height:1;letter-spacing:.06em;text-transform:uppercase;',
-    '  border:2px solid #72a4f2;transition:background .15s,border-color .15s}',
-    '.foot a.kofi:hover{background:var(--paper,#fffdf7);color:#0b0b12;',
-    '  border-color:var(--paper,#fffdf7)}',
-    /* La tasse est dessinée ici comme les autres icônes du site : aucun
-       logo de marque, et rien à demander à un serveur tiers. La vapeur
-       monte doucement — deux traits, une animation de six secondes. */
-    '.foot a.kofi svg{width:21px;height:21px;flex:0 0 auto;fill:none;stroke:#0b0b12;',
-    '  stroke-width:2;stroke-linecap:round}',
-    '.foot a.kofi .vp{animation:kofivp 6s ease-in-out infinite}',
-    '.foot a.kofi .vp2{animation-delay:1.6s}',
-    '@keyframes kofivp{0%,100%{opacity:.25;transform:translateY(0)}',
-    '  50%{opacity:.9;transform:translateY(-1.5px)}}',
-    '@media(prefers-reduced-motion:reduce){.foot a.kofi .vp{animation:none}}'
+    /* `.foot a.kofi` et non `.kofi` : le pied pose sa propre taille et sa
+       propre encre sur ses liens, et une seule classe perd contre lui. */
+    '.foot a.kofi{display:inline-block;margin-top:16px;line-height:0;',
+    '  text-decoration:none;transition:transform .15s ease,filter .15s ease}',
+    '.foot a.kofi:hover{transform:translateY(-2px);filter:brightness(1.08)}',
+    /* La taille est donnée ici et l'image porte les siennes en attributs :
+       la place est réservée avant le chargement, donc rien ne se décale. */
+    '.foot a.kofi img{display:block;width:auto;height:38px}',
+    '@media(prefers-reduced-motion:reduce){.foot a.kofi{transition:none}',
+    '  .foot a.kofi:hover{transform:none}}'
   ].join('');
 
-  var TASSE = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-    '<path d="M4 9h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/>' +
-    '<path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/>' +
-    '<path class="vp" d="M8 2v3"/><path class="vp vp2" d="M12.5 2v3"/></svg>';
-
   function pose(){
-    /* Le bloc de tête du pied de page — celui qui porte l'accroche. On le
-       vise par le pied lui-même, jamais par un rang : les colonnes n'ont
-       pas le même contenu d'une page à l'autre. */
     var pied = document.querySelector('.foot');
     if (!pied || document.querySelector('.kofi')) return;
-    var hote = pied.querySelector('.fbrand') || pied.firstElementChild;
+    var hote = pied.firstElementChild;
     if (!hote) return;
 
     var st = document.createElement('style');
@@ -2807,8 +2786,18 @@
        c'est une information que Niko a intérêt à lui laisser. */
     a.rel = 'noopener';
     a.className = 'kofi';
-    a.innerHTML = TASSE + '<span></span>';
-    a.querySelector('span').textContent = T;
+
+    var img = document.createElement('img');
+    img.src = '/images/kofi-button.svg';
+    /* Les proportions d'origine, 223 × 30 : posées en attributs, elles
+       réservent la place avant le chargement. C'est la seule image du
+       site qui les porte — les vignettes ont leur taille en CSS. */
+    img.width = 223; img.height = 30;
+    img.alt = ALT;
+    /* Pas de `loading="lazy"` : 16 Ko, et il est en bas de page, donc
+       exactement là où le report se voit — l'image arrivait après le
+       défilement, et le pied montrait un trou à sa place. */
+    a.appendChild(img);
     hote.appendChild(a);
   }
 
