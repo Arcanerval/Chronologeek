@@ -1037,8 +1037,9 @@ Quatre choses à savoir :
   comme le radar, et `addAll` est tout ou rien.
 
 **11. L'écran d'arrivée**, posé le 6 septembre 2026, idée de Niko. Les neuf
-univers qui défilent en fond, le logo par-dessus, et **neuf cases qui prennent
-chacune l'encre de son univers**, l'une après l'autre — c'est ce que le site a
+univers **en fondu enchaîné** sur deux secondes, le logo par-dessus, et **neuf
+cases qui prennent chacune l'encre de son univers**, l'une après l'autre — c'est
+ce que le site a
 à dire, et ça se voit avant la première ligne de texte. **Sur les deux accueils
 seulement**, **une fois par session** : revenir à l'accueil depuis une timeline
 ne le rejoue pas. `?boot` le force, comme `?app=` force la barre
@@ -1049,10 +1050,16 @@ lignes posées juste après `<body>` pour les cases, qui demandent un élément 
 donc un `document.body`. Le tout posé par `publier.mjs` pour la seule route
 `accueil` : rien dans les protos, rien dans `e-app.js`.
 
-**Le défilé tient dans un seul fichier**, `images/boot-univers.webp` : les neuf
-visuels empilés en bande verticale, 560 × 315 chacun, **fondus au noir sur
-22 % de leur hauteur en haut et en bas** — sans quoi le passage d'un univers au
-suivant coupait l'écran d'un trait net — floutés au rendu et encodés à 58.
+**Un fondu, pas un défilement.** Le premier jet faisait glisser la bande
+verticalement : ça glisse là où un fondu pose, et le passage d'un univers au
+suivant coupait l'écran d'un trait net. Ce sont maintenant **neuf couches
+empilées**, chacune calée sur sa vignette et amenée en fondu par-dessus la
+précédente, à 0,2 s d'intervalle. Le glissement est écarté ; ne pas le
+reproposer.
+
+**Les neuf visuels tiennent dans un seul fichier**, `images/boot-univers.webp` :
+empilés en bande verticale, 560 × 315 chacun, fondus au noir sur 22 % de leur
+hauteur en haut et en bas, floutés au rendu et encodés à 58.
 **85 Ko pour les neuf**, contre 2,3 Mo pour les originaux, qu'on ne pouvait pas
 demander sur le chemin d'arrivée. Le flou n'est pas qu'un effet : il divise le
 poids par trois, et l'image passe de toute façon sous un voile à 56 %. C'est le
@@ -1060,8 +1067,15 @@ seul endroit du site où une planche vaut mieux que des fichiers séparés.
 
 `max(100vw,177.8vh)` donne à chaque vignette de quoi couvrir l'écran quelle que
 soit sa forme — c'est le `cover` qu'une planche ne sait pas demander seule — et
-le pas du défilé vaut exactement la hauteur d'une vignette,
+le décalage d'une couche à l'autre vaut exactement la hauteur d'une vignette,
 `max(56.25vw,100vh)`. Une planche au ratio différent oblige à changer les deux.
+
+**Les trois durées se règlent ensemble** : le pas de 0,2 s (couches et cases),
+les neuf fois ce pas plus le dernier fondu, et les 2,05 s que le voile tient
+une fois les images arrivées. Changer l'une seule fait finir l'écran avant ou
+après lui-même. Le plafond de 4,2 s est le filet, pas la durée : sur un réseau
+très lent il coupe le fondu, et c'est le bon arbitrage — une arrivée qui dure
+quatre secondes n'est plus une arrivée.
 
 Sept choses à savoir :
 

@@ -277,39 +277,41 @@ const BOOT =
   'var r=document.documentElement,f=0;r.className+=" boot";sessionStorage.setItem("cg-boot","1");' +
   'var s=function(d){if(f)return;f=1;setTimeout(function(){r.classList.add("boot-out");' +
   'setTimeout(function(){r.classList.remove("boot","boot-out");' +
-  'var b=document.getElementById("cgb");if(b)b.remove()},360)},d)};' +
+  'var q=document.getElementById("cgb");if(q)q.remove();var w=document.getElementById("cgv");if(w)w.remove()},360)},d)};' +
   /* Les deux images sont attendues, et le défilé ne part qu'avec elles :
      posé au parse du CSS, il aurait couru sur un fond vide et se serait
      terminé avant que la planche arrive. `boot-img` est ce qui le lance. */
   'var n=0,g=function(){if(++n<2)return;r.classList.add("boot-img");' +
-  's(Math.max(1400,1500-performance.now()))};' +
+  's(Math.max(2050,2100-performance.now()))};' +
   'var i=new Image();i.onload=i.onerror=g;i.src="/images/logo-chronologeek.webp";' +
   `var j=new Image();j.onload=j.onerror=g;j.src="${BOOT_PLANCHE}";` +
-  'setTimeout(function(){s(0)},3000)' +
+  'setTimeout(function(){s(0)},4200)' +
   '}}catch(e){}</script>\n' +
   '<style>' +
   /* Les propriétés sont écrites une par une, jamais dans le raccourci
      `background` : un `min()` ou un `max()` posé dans sa partie `taille`
      invalide la déclaration entière, et le voile sortait alors sans logo —
      un aplat noir, sans une ligne dans la console. */
-  /* Le fond : deux couches dans le même élément, le voile sombre par-dessus
-     la planche. `max(100vw,177.8vh)` donne à chaque vignette de quoi couvrir
+  /* Le fond d'encre, posé dès le `<head>` : il couvre la page avant même que
+     le corps existe, donc avant les neuf couches d'images, qui en demandent
+     un. */
+  'html.boot::before{content:"";position:fixed;inset:0;z-index:998;' +
+  'background:#08080f;opacity:1;transition:opacity .34s ease}' +
+  /* Les neuf univers en **fondu enchaîné**, une couche par univers, toutes
+     empilées : chacune paraît en fondu par-dessus la précédente et y reste.
+     Un défilement continu avait été essayé et écarté — il glisse là où un
+     fondu pose. `max(100vw,177.8vh)` donne à chaque vignette de quoi couvrir
      l'écran quelle que soit sa forme — c'est le `cover` qu'une planche ne
-     peut pas demander toute seule —, et le pas du défilé est exactement la
-     hauteur d'une vignette, `max(56.25vw,100vh)`. */
-  'html.boot::before{content:"";position:fixed;inset:0;z-index:999;' +
-  'background-color:#08080f;' +
-  'background-image:linear-gradient(rgba(8,8,15,.56),rgba(8,8,15,.56)),' +
-  `url(${BOOT_PLANCHE});` +
-  'background-repeat:no-repeat,no-repeat;' +
-  'background-size:100% 100%,max(100vw,177.8vh) auto;' +
-  'background-position:0 0,center calc((100vh - max(56.25vw,100vh))/2);' +
-  'opacity:1;transition:opacity .34s ease}' +
-  'html.boot.boot-img::before{animation:cgdefile 1.42s linear forwards}' +
-  '@keyframes cgdefile{' +
-  'from{background-position:0 0,center calc((100vh - max(56.25vw,100vh))/2)}' +
-  'to{background-position:0 0,center calc((100vh - max(56.25vw,100vh))/2' +
-  ' - max(56.25vw,100vh)*8)}}' +
+     peut pas demander toute seule —, et le décalage d'une vignette à l'autre
+     vaut exactement sa hauteur, `max(56.25vw,100vh)`. Le voile sombre est le
+     `::after` du conteneur, donc au-dessus des neuf. */
+  '#cgv{position:fixed;inset:0;z-index:999;opacity:1;transition:opacity .34s ease}' +
+  '#cgv b{position:absolute;inset:0;opacity:0;' +
+  `background-image:url(${BOOT_PLANCHE});background-repeat:no-repeat;` +
+  'background-size:max(100vw,177.8vh) auto}' +
+  '#cgv::after{content:"";position:absolute;inset:0;background:rgba(8,8,15,.56)}' +
+  'html.boot-img #cgv b{animation:cgfondu .5s ease forwards}' +
+  '@keyframes cgfondu{to{opacity:1}}' +
   /* le logo, seul dans sa couche, au-dessus du défilé */
   'html.boot::after{content:"";position:fixed;inset:0;z-index:1000;' +
   'background-image:url(/images/logo-chronologeek.webp);' +
@@ -327,25 +329,39 @@ const BOOT =
   'background:rgba(255,253,247,.13);animation:cgcase .5s ease forwards}' +
   '@keyframes cgcase{to{background:var(--c);box-shadow:0 0 13px var(--c)}}' +
   'html.boot.boot-out::before,html.boot.boot-out::after,' +
-  'html.boot.boot-out #cgb{opacity:0;pointer-events:none}' +
-  /* qui a demandé moins d'animation reçoit le logo, sans défilé, sans
-     remplissage et sans fondu — la durée, elle, ne bouge pas : il n'y a
-     plus rien qui remue */
+  'html.boot.boot-out #cgb,html.boot.boot-out #cgv{opacity:0;pointer-events:none}' +
+  /* qui a demandé moins d'animation reçoit le premier univers et le logo,
+     sans fondus et sans remplissage — la durée, elle, ne bouge pas : il n'y
+     a plus rien qui remue */
   '@media(prefers-reduced-motion:reduce){' +
-  'html.boot.boot-img::before{animation:none}#cgb i{animation:none}' +
-  'html.boot::before,html.boot::after,#cgb{transition:none}}' +
+  'html.boot-img #cgv b{animation:none}#cgv b:first-child{opacity:1}' +
+  '#cgb i{animation:none}' +
+  'html.boot::before,html.boot::after,#cgb,#cgv{transition:none}}' +
   '</style>';
 
-// Les neuf cases demandent un élément, donc un `document.body` : ce bloc-ci
-// est posé juste après l'ouverture du corps, là où le voile du `<head>` ne
-// peut pas aller. Elles s'allument à 0,15 s d'intervalle, soit 1,35 s pour
-// les neuf — la durée du voile est réglée là-dessus.
+// Les neuf couches d'images et les neuf cases demandent des éléments, donc un
+// `document.body` : ce bloc-ci est posé juste après l'ouverture du corps, là
+// où le voile du `<head>` ne peut pas aller.
+//
+// **0,2 s d'intervalle**, pour les couches comme pour les cases : neuf fois,
+// plus le demi-temps du dernier fondu, font 2,1 s — et c'est exactement ce que
+// le voile tient une fois les images arrivées. Les trois valeurs se règlent
+// ensemble ; changer l'une seule fait finir l'écran avant ou après lui-même.
+const BOOT_PAS = 0.2;
 const BOOT_CORPS =
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +
-  `var C=${JSON.stringify(BOOT_ENCRES)},d=document.createElement("div");d.id="cgb";` +
+  `var C=${JSON.stringify(BOOT_ENCRES)},P=${BOOT_PAS};` +
+  /* le pas vertical d'une vignette à l'autre, écrit en CSS pour que la
+     couche se cale toute seule quelle que soit la forme de l'écran */
+  'var H="max(56.25vw,100vh)",v=document.createElement("div");v.id="cgv";' +
+  'for(var k=0;k<C.length;k++){var b=document.createElement("b");' +
+  'b.style.backgroundPosition="center calc((100vh - "+H+")/2 - "+H+"*"+k+")";' +
+  'b.style.animationDelay=(k*P)+"s";v.appendChild(b)}' +
+  'document.body.appendChild(v);' +
+  'var d=document.createElement("div");d.id="cgb";' +
   'for(var i=0;i<C.length;i++){var s=document.createElement("i");' +
-  's.style.cssText="--c:"+C[i]+";animation-delay:"+(i*0.15)+"s";d.appendChild(s)}' +
+  's.style.cssText="--c:"+C[i]+";animation-delay:"+(i*P)+"s";d.appendChild(s)}' +
   'document.body.appendChild(d)})()</script>';
 
 const PIED = [
