@@ -1673,34 +1673,35 @@ les lignes de la mention légale.
 (`ko-fi.com/chronologeek`) — il avait quitté le pied de page le 14 août parce
 que rien ne recevait derrière, et c'était la seule condition posée.
 
-Il est à deux endroits, pour deux publics : **le panneau de la barre du bas**,
-à côté d'Exporter et d'Importer, qu'on n'ouvre que si l'on tient sa progression
-— donc là où le site a rendu service —, et **le pied de page**, sous « Plus », à
-la place qu'il occupait avant. Les deux vivent dans `e-app.js`, comme le
-formulaire de contact et les deux « Suggérer » : un texte écrit dans le HTML
-devrait être traduit dans `traduire-pages.mjs`, et il y en aurait vingt-huit
-copies à tenir.
+C'est un **bouton**, à l'allure du widget officiel et dans la couleur choisie
+sur Ko-fi (`#72a4f2`), posé sous l'accroche du pied de page. Il vit dans
+`e-app.js`, comme le formulaire de contact et les deux « Suggérer » : un texte
+écrit dans le HTML devrait être traduit dans `traduire-pages.mjs`, et il y en
+aurait vingt-huit copies à tenir.
 
 Quatre choses à savoir :
 
-- **Pas le widget officiel de Ko-fi**, et ce n'est pas une préférence de
-  style : c'est un script tiers qui pose un bouton flottant dans le coin bas
-  droit — celui du bouton « remonter en haut », de la barre de progression et
-  des deux barres du bas. Il aurait fallu le déplacer sans pouvoir le styler,
-  en payant une requête et un script de plus sur les vingt-huit pages. Un lien
-  fait le même travail. Ne pas le reproposer.
-- **Le bouton se pose avant « Réinitialiser »**, qui reste en bout de rangée :
-  c'est la seule action destructive du panneau, et elle a sa place au bord.
-- **Un `<a>` au milieu de `<button>` ressort souligné.** Le panneau n'aligne
-  que des boutons ; celui-ci est un lien, il hérite donc du souligné, et une
-  règle d'une ligne le retire. Même famille que le `display:block` des images
-  qui bat l'attribut `hidden`.
+- **Le widget officiel de Ko-fi ne peut pas être intégré, et ce n'est pas une
+  question de goût.** `Widget_2.js` rend par `document.write`, qui **efface le
+  document entier** dès qu'il est appelé après le chargement — et `e-app.js`
+  est lu en fin de corps. Le contourner demandait une iframe, donc une requête,
+  un script tiers et un cadre à styler de l'extérieur, sur les vingt-huit
+  pages. Le bouton dessiné ici a la même allure, la même couleur et le même
+  lien, pour rien. Ne pas le reproposer.
+- **Le pied de page, et lui seul.** Le panneau de la barre du bas l'a porté une
+  heure : on l'ouvre pour sa progression, ses badges et son export, pas pour
+  payer.
+- **`.foot a.kofi`, jamais `.kofi`.** Le pied pose sa propre taille et sa propre
+  encre sur ses liens, et une seule classe perd contre lui : le bouton sortait
+  en 12,5 px et en gris pâle. Même famille de piège que le `display:block` des
+  images qui bat l'attribut `hidden`.
 - **`rel="noopener"` seul, pas `noreferrer`.** Ko-fi n'a rien à savoir de plus,
   mais le référent lui dit d'où viennent ses visiteurs, et c'est une
   information que Niko a intérêt à lui laisser.
 
-La tasse est dessinée dans le fichier, comme les autres icônes : aucun logo de
-marque, et rien à demander à un serveur tiers.
+La tasse est dessinée dans le fichier, comme les autres icônes du site : aucun
+logo de marque, rien à demander à un serveur tiers, et deux traits de vapeur qui
+montent doucement — coupés par `prefers-reduced-motion`.
 
 « Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
 les vingt-huit pages partagent. L'écrire dans les protos aurait voulu dire vingt-huit copies
