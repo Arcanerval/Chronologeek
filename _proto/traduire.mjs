@@ -464,6 +464,19 @@ const RETOUCHES = [
     ou: 'DC',
     de: 'almost every animated movie and show',
     a: '<a href="e-dcanimation.html">almost every animated movie and show</a>' },
+  /* ── le retour du Dossier vers la timeline, posé le 6 septembre 2026 ──
+     Star Wars renvoyait au Dossier depuis le 5 ; le Dossier ne renvoyait
+     nulle part, alors que ses deux seules phrases de prose désignent la
+     timeline principale — celle qu'il suppose déjà vue, et celle dont il
+     reprend les écartés. Mêmes mots des deux côtés, on enrobe. */
+  { quoi: 'Dossier · l’accroche renvoie à la timeline Star Wars par un lien',
+    ou: 'Dossier',
+    de: 'the animated and live-action media',
+    a: '<a href="e-starwars.html">the animated and live-action media</a>' },
+  { quoi: 'Dossier · « Ce qui est écarté » renvoie à la timeline par un lien',
+    ou: 'Dossier',
+    de: 'the same as on the main timeline',
+    a: 'the same as on <a href="e-starwars.html">the main timeline</a>' },
 ];
 const retouchesFaites = new Map();
 
