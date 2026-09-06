@@ -1036,6 +1036,48 @@ Quatre choses à savoir :
 - **Il n'entre pas dans `PRECACHE` de `sw.js`.** La recherche demande le réseau,
   comme le radar, et `addAll` est tout ou rien.
 
+**11. L'écran d'arrivée**, posé le 6 septembre 2026, idée de Niko. Le logo en
+grand sur fond d'encre et une jauge sous lui, **sur les deux accueils
+seulement**, **une fois par session** — revenir à l'accueil depuis une timeline
+ne le rejoue pas. `?boot` le force, comme `?app=` force la barre
+d'installation.
+
+Il tient en deux morceaux dans le `<head>`, un `<style>` et six lignes de
+script, posés par `publier.mjs` pour la seule route `accueil`. Rien dans les
+protos, rien dans `e-app.js`.
+
+Cinq choses à savoir :
+
+- **Il est dessiné par deux pseudo-éléments de `<html>`**, jamais par un
+  `<div>` : dans le `<head>`, `document.body` n'existe pas encore, et c'est
+  pourtant le seul endroit qui garantisse qu'il paraisse **avant le premier
+  rendu**. Écrit dans `e-app.js`, en fin de corps, on aurait vu l'accueil
+  puis un voile lui tomber dessus.
+- **Il ne fait qu'attendre le logo, jamais la page.** Première version : il se
+  levait au document prêt, et sur un réseau lent **le plus grand affichage
+  passait de 0,8 s à 5,8 s** — mesuré en Slow 4G, cache vide. Google
+  chronomètre ce que le visiteur voit, et ce qu'il voyait était le voile. Il
+  part maintenant 400 ms après l'arrivée du logo, 620 ms au moins depuis le
+  début, **1 500 ms au plus quoi qu'il arrive** ; le contenu se construit
+  dessous pendant ce temps. Coût mesuré : +300 ms de plus grand affichage sur
+  l'accueil, une fois par session, et **zéro décalage** — 0,0675 avec ou sans
+  lui, celui du h1 et de la grille d'univers, qui préexiste.
+- **Le compte part à l'arrivée du logo, pas au chargement de la page.** Ses
+  23 Ko arrivent après 300 ms en Slow 4G : le voile s'ouvrait et se fermait
+  sur un aplat noir vide, l'effet exactement à l'envers. `onerror` lève le
+  voile comme `onload`, et le plafond de 1 500 ms est le filet si le fichier
+  a disparu. Le `<link rel="preload">` du logo est là pour ça.
+- **Les propriétés de fond s'écrivent une par une**, jamais dans le raccourci
+  `background` : un `min()` dans sa partie `taille` invalide la déclaration
+  entière, et le voile sortait sans logo — sans une ligne dans la console.
+  Même famille de piège que le `.cx-cpt[hidden]` du dialogue.
+- **La jauge se centre par `translateX(-50%)`**, pas par une marge négative :
+  sa largeur est un `min()`, donc la moitié à retrancher n'est pas connue à
+  l'écriture, et elle partait 22 px trop à gauche sur un téléphone.
+
+`prefers-reduced-motion` retire la jauge animée et les deux fondus ; la durée,
+elle, ne bouge pas — il n'y a plus rien qui remue.
+
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être
 retenus : les protos sont en **CRLF**, donc un motif qui cherche `/>` suivi de `\n`

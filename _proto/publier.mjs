@@ -212,6 +212,84 @@ const PRERENDU_CSS =
   '<script>document.documentElement.className+=" js"</script>\n' +
   '<style>.js .pr{display:none}</style>';
 
+// L'écran d'arrivée, sur les deux accueils seulement.
+//
+// Il est **posé dans le `<head>` et dessiné par deux pseudo-éléments de
+// `<html>`**, pas par un `<div>` : à cet endroit `document.body` n'existe pas
+// encore, et c'est justement le seul endroit qui garantisse qu'il paraisse
+// avant le premier rendu. Écrit dans `e-app.js`, chargé en fin de corps, il
+// serait arrivé après la page — on aurait vu l'accueil, puis un voile.
+//
+// **Il ne retarde rien.** C'est une superposition : la page se construit
+// dessous pendant qu'il est là, et `e-app.js` le retire dès qu'elle est prête.
+// Le fond est écrit en dur (`#08080f`, la couleur du manifeste) parce que
+// `var(--ink)` vit dans la feuille de la page, qui n'est pas encore lue.
+//
+// **Une fois par session, et pas une de plus** : revenir à l'accueil depuis
+// une timeline ne le rejoue pas. `?boot` le force, comme `?app=` force la
+// barre d'installation — sans quoi il ne se voit qu'une fois par onglet et
+// devient impossible à juger.
+//
+// **Il dure 620 ms et n'attend rien.** Première version : il se levait quand
+// la page était prête, et c'était l'erreur — sur un réseau lent le voile
+// tenait jusqu'au document prêt, et **le plus grand affichage passait de
+// 0,8 s à 5,8 s**, mesuré en Slow 4G, cache vide. Un écran d'arrivée qui
+// attend le chargement transforme un effet en attente, et Google chronomètre
+// ce que le visiteur voit : le voile. Levé à l'heure dite, il ne coûte plus
+// que sa propre durée — le contenu paraît derrière quand il paraîtrait de
+// toute façon.
+//
+// Le lever vit donc **ici, dans le head**, et non dans `e-app.js` : celui-ci
+// est en fin de corps, et sur un réseau lent il n'est lu qu'après plusieurs
+// secondes — le compte à rebours n'aurait même pas commencé.
+//
+// **Le compte part à l'arrivée du logo, pas au début de la page.** C'est la
+// seule ressource que le voile attend, et il l'attend pour une raison : en
+// Slow 4G les 23 Ko du logo arrivent après 300 ms, et le voile s'ouvrait
+// puis se fermait sur un aplat noir vide — l'effet exactement à l'envers.
+// Il tient donc 400 ms de plus une fois le logo peint, 620 ms au moins
+// depuis le début, et **1 500 ms au plus quoi qu'il arrive** : un logo qui
+// n'arrive jamais ne doit pas retenir la page. Ce plafond est aussi le
+// filet si le fichier a disparu — `onerror` lève le voile comme `onload`.
+const BOOT =
+  /* Le logo est le premier contenu que le visiteur — et Google — voient :
+     il est demandé tout de suite, avant même le CSS de la page, sans quoi
+     le voile reste un aplat vide le temps qu'il arrive. */
+  '<link rel="preload" as="image" href="/images/logo-chronologeek.webp"/>\n' +
+  '<script>try{if(!sessionStorage.getItem("cg-boot")||/[?&]boot\\b/.test(location.search)){' +
+  'var r=document.documentElement,f=0;r.className+=" boot";sessionStorage.setItem("cg-boot","1");' +
+  'var s=function(d){if(f)return;f=1;setTimeout(function(){r.classList.add("boot-out");' +
+  'setTimeout(function(){r.classList.remove("boot","boot-out")},360)},d)};' +
+  'var i=new Image();i.onload=i.onerror=function(){s(Math.max(400,620-performance.now()))};' +
+  'i.src="/images/logo-chronologeek.webp";setTimeout(function(){s(0)},1500)' +
+  '}}catch(e){}</script>\n' +
+  '<style>' +
+  /* Les propriétés sont écrites une par une, jamais dans le raccourci
+     `background` : un `min()` posé dans la partie `taille` du raccourci
+     invalide la déclaration entière, et le voile sortait alors sans logo —
+     un aplat noir, sans une ligne dans la console. */
+  'html.boot::before{content:"";position:fixed;inset:0;z-index:999;' +
+  'background-color:#08080f;background-image:url(/images/logo-chronologeek.webp);' +
+  'background-position:center center;background-size:min(340px,68vw) auto;' +
+  'background-repeat:no-repeat;opacity:1;transition:opacity .34s ease}' +
+  /* la barre : une piste fine sous le logo, et une jauge qui la parcourt.
+     Elle ne mesure rien — rien n'est mesurable à cet instant — elle dit
+     que ça travaille, et elle s'arrête à 92 % pour que la sortie la finisse. */
+  /* `translateX(-50%)` et non une marge négative : la largeur est un
+     `min()`, donc la moitié à retrancher n'est pas connue à l'écriture —
+     la barre partait 22 px trop à gauche sur un téléphone. */
+  'html.boot::after{content:"";position:fixed;z-index:1000;left:50%;top:calc(50% + 46px);' +
+  'width:min(240px,52vw);height:3px;transform:translateX(-50%);' +
+  'background:rgba(255,253,247,.16);opacity:1;transition:opacity .34s ease}' +
+  'html.boot::after{background-image:linear-gradient(90deg,#f0b429,#f0b429);' +
+  'background-repeat:no-repeat;background-size:0% 100%;animation:cgboot .66s ease-out forwards}' +
+  '@keyframes cgboot{from{background-size:6% 100%}to{background-size:92% 100%}}' +
+  'html.boot.boot-out::before,html.boot.boot-out::after{opacity:0;pointer-events:none}' +
+  /* qui a demandé moins d'animation reçoit le logo, sans jauge et sans fondu */
+  '@media(prefers-reduced-motion:reduce){html.boot::after{animation:none}' +
+  'html.boot::before,html.boot::after{transition:none}}' +
+  '</style>';
+
 const PIED = [
   '<script src="/pwa.js"></script>',
   '<script data-goatcounter="https://arcanerval.goatcounter.com/count"',
@@ -348,7 +426,8 @@ function publier(route, langue) {
   // le \r s'intercale. Même piège que le noindex ci-dessus.
   const avantPwa = h;
   h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i,
-                `$1\n${PWA}\n${LIEN_FLUX(langue)}\n${PRERENDU_CSS}`);
+                `$1\n${PWA}\n${LIEN_FLUX(langue)}\n${PRERENDU_CSS}` +
+                (route.cle === 'accueil' ? `\n${BOOT}` : ''));
   if (h === avantPwa) problemes.push(`${c.sortie} : bloc PWA non injecté`);
   for (const attendu of ['/manifest.json', 'apple-touch-icon', 'theme-color']) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
