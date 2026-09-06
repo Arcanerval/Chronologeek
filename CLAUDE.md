@@ -1852,6 +1852,29 @@ Trois réponses, toutes dans `e-app.js` :
   que **le conteneur de l'application est distinct de celui de Safari et
   démarre à vide** : exporter, installer, réimporter. Sans ça on remplace
   une perte à une semaine par une perte immédiate.
+
+  **Les deux barres sont en bas et en fixe depuis le 6 septembre 2026, et
+  ne doivent pas remonter dans le flux.** Posées avant le `<header>`,
+  elles poussaient la page de 141 à 207 px une seconde après l'ouverture :
+  mesuré au navigateur, réseau lent et cache vide, c'est **0,158 de
+  décalage cumulé à elles seules** — le seuil que Google tient pour bon
+  est 0,1, et les pages retombaient à **zéro** dès qu'on les retirait.
+  Elles se posent donc en fin de corps, en `position:fixed`, à
+  `bottom:var(--hud-h,0px)`, soit au-dessus de la barre de progression
+  dont `paint()` mesure déjà la hauteur ; les pages sans HUD ne posent pas
+  la variable et la barre tombe au bas de l'écran. Réserver leur place en
+  haut était l'autre réponse, et elle est fausse : la barre ne paraît pas
+  à tout le monde — déjà installée, fermée depuis moins d'une semaine,
+  Firefox qui n'envoie pas `beforeinstallprompt` — et le trou aurait été
+  pour tous les autres. `--cg-bar-h` porte la hauteur relevée après coup
+  et la classe `cg-bar` sur `<html>` remonte le bouton « en haut », seul
+  élément qui partage ce coin. L'animation part maintenant du bas
+  (`translateY(100%)`).
+
+  **Le décalage restant vient de l'encart « prochaine sortie »** : 0,0525
+  sur les pages au radar, contre 0 ailleurs. Il s'insère avant l'accroche
+  quand `radar.json` revient, et le « layout-shift mesuré à 0 » plus haut
+  était vrai à cache chaud, faux à cache vide sur réseau lent.
 - **Le rappel de sauvegarde**, une barre à la place et à l'allure de la
   précédente, qui déclenche le `#export` de la page. Deux seuils, parce
   que ce n'est pas la même perte : **vingt coches**, qui se refont de

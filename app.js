@@ -95,9 +95,31 @@
   var TITRE = FR ? 'L’application Chronologeek' : 'The Chronologeek app';
   var FERMER = FR ? 'Fermer' : 'Close';
 
+  /* ── pourquoi elle est en bas, depuis le 6 septembre 2026 ──────────
+     Elle s'insérait dans le flux au-dessus du bandeau, et poussait donc
+     toute la page de 141 px à son arrivée, une seconde après l'ouverture.
+     Mesuré au navigateur, réseau lent et cache vide : c'est **0,158 de
+     décalage cumulé**, seul, sur les vingt-huit pages — le seuil que
+     Google tient pour bon est 0,1, et le reste du site tombait à zéro
+     quand on la retirait. Elle passe donc en fixe, hors du flux : rien
+     ne bouge plus, et elle reste lisible pendant qu'on défile au lieu de
+     partir au premier geste.
+
+     `bottom:var(--hud-h,0px)` la pose **au-dessus de la barre de
+     progression**, dont `paint()` mesure la hauteur à chaque changement ;
+     les pages qui n'en ont pas ne posent pas la variable, et elle tombe
+     alors au bas de l'écran. Réserver sa place en haut aurait été l'autre
+     réponse, mais elle ne paraît pas à tout le monde — déjà installée,
+     fermée depuis moins d'une semaine, Firefox — et le trou aurait été
+     pour tous les autres. */
   var CSS = [
-    '.appbar{background:var(--ink);border-bottom:2px solid var(--paper);',
-    '  position:relative;z-index:65;animation:abDrop .35s ease}',
+    '.appbar{background:var(--ink);border-top:2px solid var(--paper);',
+    '  position:fixed;left:0;right:0;bottom:var(--hud-h,0px);z-index:76;',
+    '  animation:abDrop .35s ease}',
+    /* le bouton « remonter en haut » se cale au-dessus d'elle tant
+       qu'elle est là : les deux vivent dans le même coin */
+    'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px)',
+    '  + 20px)}',
     '.appbar .wrap{display:flex;align-items:center;gap:14px;',
     '  padding-top:11px;padding-bottom:11px}',
     '.ab-ico{flex:0 0 auto;width:34px;height:34px;background:var(--hot);',
@@ -118,7 +140,7 @@
     '.ab-x{flex:0 0 auto;background:none;border:2px solid var(--line);',
     '  color:rgba(255,253,247,.6);padding:4px 9px;font-size:13px;line-height:1}',
     '.ab-x:hover{border-color:var(--paper);color:var(--paper)}',
-    '@keyframes abDrop{from{transform:translateY(-100%)}to{transform:none}}',
+    '@keyframes abDrop{from{transform:translateY(100%)}to{transform:none}}',
     /* en étroit, le texte prend la ligne et les boutons passent dessous :
        comprimé sur une seule ligne, il tombait à deux mots par ligne */
     '@media(max-width:640px){',
@@ -128,6 +150,23 @@
     '}',
     '@media(prefers-reduced-motion:reduce){.appbar{animation:none}}'
   ].join('');
+
+  /* Poser et retirer une barre du bas. La hauteur est relevée après
+     coup — elle dépend de la largeur, le texte passant sur deux ou trois
+     lignes en étroit — et sert au seul élément qui partage ce coin, le
+     bouton « remonter en haut ». */
+  function pose(bar){
+    var h = Math.round(bar.getBoundingClientRect().height);
+    var r = document.documentElement;
+    if (h > 0) r.style.setProperty('--cg-bar-h', h + 'px');
+    r.classList.add('cg-bar');
+  }
+  function retire(bar){
+    bar.remove();
+    var r = document.documentElement;
+    r.classList.remove('cg-bar');
+    r.style.removeProperty('--cg-bar-h');
+  }
 
   function build(v, onGo){
     /* Jamais deux bandeaux empilés : le rappel de sauvegarde prend la
@@ -152,15 +191,15 @@
         '<button type="button" class="ab-x" aria-label="' + FERMER + '">✕</button>' +
       '</div>';
 
-    /* avant le bandeau, dans le flux : elle se lit en arrivant puis part
-       au défilement, sans jamais recouvrir la navigation collante */
-    var hdr = document.querySelector('header');
-    if (hdr && hdr.parentNode) hdr.parentNode.insertBefore(bar, hdr);
-    else document.body.insertBefore(bar, document.body.firstChild);
+    /* en fin de corps et en fixe : posée n'importe où ailleurs, elle
+       déplacerait ce qui la suit. Sa hauteur est mesurée une fois posée,
+       et c'est elle qui remonte le bouton « en haut ». */
+    document.body.appendChild(bar);
+    pose(bar);
 
     bar.querySelector('.ab-x').addEventListener('click', function(){
       try { localStorage.setItem(KEY, String(Date.now())); } catch(e){}
-      bar.remove();
+      retire(bar);
     });
     var go = bar.querySelector('.ab-go');
     if (go && onGo) go.addEventListener('click', onGo);
@@ -201,7 +240,7 @@
       deferred.userChoice.then(function(){
         deferred = null;
         var b = document.getElementById('appbar');
-        if (b) b.remove();
+        if (b) retire(b);
       });
     });
   });
@@ -305,8 +344,17 @@
      pas reprendre ses règles : celles-ci ne sont posées que si cette
      barre-là se construit, et les deux ne paraissent jamais ensemble. */
   var CSS = [
-    '.svbar{background:var(--ink);border-bottom:2px solid var(--paper);',
-    '  position:relative;z-index:65}',
+    /* même place que la barre d'installation, donc même correction :
+       en bas, en fixe, au-dessus de la barre de progression. Dans le
+       flux, elle poussait la page à son arrivée — voir le pourquoi
+       au-dessus de `.appbar`. */
+    '.svbar{background:var(--ink);border-top:2px solid var(--paper);',
+    '  position:fixed;left:0;right:0;bottom:var(--hud-h,0px);z-index:76;',
+    '  animation:svUp .35s ease}',
+    '@keyframes svUp{from{transform:translateY(100%)}to{transform:none}}',
+    'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px)',
+    '  + 20px)}',
+    '@media(prefers-reduced-motion:reduce){.svbar{animation:none}}',
     '.svbar .wrap{display:flex;align-items:center;gap:14px;',
     '  padding-top:11px;padding-bottom:11px}',
     '.sv-ico{flex:0 0 auto;width:34px;height:34px;background:var(--hot);',
@@ -380,16 +428,24 @@
     x.textContent = '✕';
     x.setAttribute('aria-label', T.fermer);
 
-    var hdr = document.querySelector('header');
-    if (hdr && hdr.parentNode) hdr.parentNode.insertBefore(bar, hdr);
-    else document.body.insertBefore(bar, document.body.firstChild);
+    /* en fin de corps et en fixe, comme la barre d'installation */
+    document.body.appendChild(bar);
+    var h = Math.round(bar.getBoundingClientRect().height);
+    if (h > 0) document.documentElement.style.setProperty('--cg-bar-h', h + 'px');
+    document.documentElement.classList.add('cg-bar');
+
+    function ferme(){
+      bar.remove();
+      document.documentElement.classList.remove('cg-bar');
+      document.documentElement.style.removeProperty('--cg-bar-h');
+    }
 
     /* On ne refait pas l'export ici : le bouton de la page le tient déjà,
        avec la clé d'univers et les ajouts. Le clic suffit. */
     bar.querySelector('.sv-go').addEventListener('click', function(){
-      range(); bar.remove(); sortie.click();
+      range(); ferme(); sortie.click();
     });
-    x.addEventListener('click', function(){ range(); bar.remove(); });
+    x.addEventListener('click', function(){ range(); ferme(); });
   }
 
   if (document.readyState === 'complete') setTimeout(rappel, 1400);
