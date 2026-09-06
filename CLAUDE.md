@@ -1703,6 +1703,35 @@ La tasse est dessinée dans le fichier, comme les autres icônes du site : aucun
 logo de marque, rien à demander à un serveur tiers, et deux traits de vapeur qui
 montent doucement — coupés par `prefers-reduced-motion`.
 
+**Le bouton flottant est venu s'y ajouter le même jour.** C'est l'autre widget
+de Ko-fi, `overlay-widget.js`, et celui-là est intégrable : il ne rend pas par
+`document.write`, il pose un bouton en bas à gauche et ouvre son panneau dans
+une iframe.
+
+Trois choses à savoir :
+
+- **Il coûte 10 requêtes vers trois domaines tiers pour 5 Ko**, mesuré au
+  navigateur : le script, deux feuilles de style, le logo Ko-fi — et **DM Sans
+  chez Google Fonts**. Ce dernier point est le seul appel de ce genre sur le
+  site : les deux polices du site sont auto-hébergées, et ce bouton en fait
+  venir une troisième de chez Google, avec l'adresse IP du visiteur. C'est à
+  savoir si la question de la conformité se pose un jour.
+- **Le calage est à nous, et il n'est pas facultatif.** Le widget se pose à
+  `bottom:0` : il recouvrait la barre de progression, et sur téléphone la barre
+  d'installation par-dessus. Il reprend donc les deux mesures que le bouton
+  « remonter en haut » utilise déjà — `--hud-h` et, sous la classe `cg-bar`,
+  `--cg-bar-h`. **Quatre éléments partagent ce coin ; ils se rangent tous sur
+  les mêmes variables.** Un cinquième s'y range pareil.
+- **Il est chargé après `load` plus 1,6 s**, jamais avant : ce n'est pas le
+  contenu de la page, et le délai le laisse passer après la barre
+  d'installation, qui se construit à 1,2 s et dont il doit connaître la
+  hauteur.
+
+Le bouton du pied de page reste, et ce n'est pas un doublon : le flottant se
+ferme, se bloque par un filtre de publicité, et ne paraît pas si Ko-fi ne
+répond pas.
+
+
 « Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
 les vingt-huit pages partagent. L'écrire dans les protos aurait voulu dire vingt-huit copies
 du même dialogue et de son CSS. Quatre choses à savoir :
