@@ -1669,8 +1669,38 @@ lien est `inline` par défaut. Le sélecteur est `.foot li a` et non `.foot a` :
 TMDB et Open Library sont au milieu d'une phrase, et l'`inline-block` y gonflait
 les lignes de la mention légale.
 
-**« Soutenir le site » n'est plus là** (14 août 2026) : rien ne recevait derrière,
-et le proposer avant qu'on ait demandé comment payer ne se lit pas bien.
+**« Soutenir le site » est revenu le 6 septembre 2026**, avec le Ko-fi de Niko
+(`ko-fi.com/chronologeek`) — il avait quitté le pied de page le 14 août parce
+que rien ne recevait derrière, et c'était la seule condition posée.
+
+Il est à deux endroits, pour deux publics : **le panneau de la barre du bas**,
+à côté d'Exporter et d'Importer, qu'on n'ouvre que si l'on tient sa progression
+— donc là où le site a rendu service —, et **le pied de page**, sous « Plus », à
+la place qu'il occupait avant. Les deux vivent dans `e-app.js`, comme le
+formulaire de contact et les deux « Suggérer » : un texte écrit dans le HTML
+devrait être traduit dans `traduire-pages.mjs`, et il y en aurait vingt-huit
+copies à tenir.
+
+Quatre choses à savoir :
+
+- **Pas le widget officiel de Ko-fi**, et ce n'est pas une préférence de
+  style : c'est un script tiers qui pose un bouton flottant dans le coin bas
+  droit — celui du bouton « remonter en haut », de la barre de progression et
+  des deux barres du bas. Il aurait fallu le déplacer sans pouvoir le styler,
+  en payant une requête et un script de plus sur les vingt-huit pages. Un lien
+  fait le même travail. Ne pas le reproposer.
+- **Le bouton se pose avant « Réinitialiser »**, qui reste en bout de rangée :
+  c'est la seule action destructive du panneau, et elle a sa place au bord.
+- **Un `<a>` au milieu de `<button>` ressort souligné.** Le panneau n'aligne
+  que des boutons ; celui-ci est un lien, il hérite donc du souligné, et une
+  règle d'une ligne le retire. Même famille que le `display:block` des images
+  qui bat l'attribut `hidden`.
+- **`rel="noopener"` seul, pas `noreferrer`.** Ko-fi n'a rien à savoir de plus,
+  mais le référent lui dit d'où viennent ses visiteurs, et c'est une
+  information que Niko a intérêt à lui laisser.
+
+La tasse est dessinée dans le fichier, comme les autres icônes : aucun logo de
+marque, et rien à demander à un serveur tiers.
 
 « Contact » ouvre un formulaire, et il vit dans `e-app.js` — le seul fichier que
 les vingt-huit pages partagent. L'écrire dans les protos aurait voulu dire vingt-huit copies
@@ -2326,9 +2356,8 @@ et la majuscule initiale quand on découpe une phrase.
   un fichier JSON, faute de serveur pour le partager.
 
   Rien n'est commencé, et rien ne presse : la demande est venue une fois.
-- Monétisation : rien n'est branché, et « Soutenir le site » a quitté le pied de
-  page le 14 août 2026. Demander avant qu'on ait demandé comment payer ne se lit
-  pas bien. Le lien reviendra le jour où il y aura une page derrière.
+- ~~Monétisation~~ — **fait le 6 septembre 2026** : Niko a ouvert un Ko-fi, et
+  la condition posée le 14 août est remplie. Voir « Soutenir le site » plus haut.
 - **Le formulaire de contact envoie par `mailto:`, faute de serveur.** Le site est
   statique : personne ne peut recevoir un POST. Le vrai envoi demande un compte
   chez un passeur de formulaire (Formspree, Web3Forms — gratuits à ce volume) et

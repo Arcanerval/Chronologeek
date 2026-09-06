@@ -2726,3 +2726,94 @@
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
 })();
+
+/* ═══ SOUTENIR LE SITE ════════════════════════════════════════════════
+   Un Ko-fi existe depuis le 6 septembre 2026, et « Ce qui reste à faire »
+   posait la condition depuis le 14 août : le lien revient le jour où il y
+   a une page derrière. C'est ce jour-là.
+
+   **Pas le widget officiel de Ko-fi**, et ce n'est pas une préférence :
+   c'est un script tiers qui pose un bouton flottant dans le coin bas
+   droit — celui où vivent déjà le bouton « remonter en haut », la barre de
+   progression et les deux barres du bas. Il aurait fallu le déplacer sans
+   pouvoir le styler, en payant une requête et un script de plus sur les
+   vingt-huit pages. Un lien fait le même travail.
+
+   Deux endroits, et deux publics :
+
+   · **le panneau de la barre du bas**, à côté d'Exporter et d'Importer —
+     on ne l'ouvre que si l'on tient sa progression, et c'est exactement
+     là que le site a rendu service ;
+   · **le pied de page**, sous « Plus », à côté de Contact — la place
+     qu'occupait « Soutenir le site » avant le 14 août.
+
+   Ici comme pour le contact et les deux « Suggérer », le texte vit dans ce
+   fichier et non dans les protos : une chaîne écrite dans le HTML devrait
+   être traduite dans `traduire-pages.mjs`, et il y en aurait vingt-huit
+   copies à tenir. La langue se lit sur la page.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var FR = document.documentElement.lang !== 'en';
+  var URL = 'https://ko-fi.com/chronologeek';
+  var T = FR ? 'Soutenir le site' : 'Support the site';
+
+  /* Une tasse, dessinée ici comme les autres icônes du site : aucun logo de
+     marque, et rien à demander à un serveur tiers. */
+  var TASSE = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+    '<path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/>' +
+    '<path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/>' +
+    '<path d="M8 3v2M12 3v2"/></svg>';
+
+  function lien(classe, dedans){
+    var a = document.createElement('a');
+    a.href = URL;
+    a.target = '_blank';
+    /* `noopener` par principe, `noreferrer` non : Ko-fi n'a rien à savoir
+       de plus, mais le référent dit d'où viennent ses visiteurs, et c'est
+       une information que Niko a intérêt à lui laisser. */
+    a.rel = 'noopener';
+    a.className = classe;
+    a.innerHTML = dedans;
+    return a;
+  }
+
+  function pose(){
+    /* 1. le panneau de la barre du bas — il n'existe que sur les pages à
+          progression, et `#export` est ce qui le dit */
+    var sortie = document.getElementById('export');
+    if (sortie && sortie.parentNode && !document.getElementById('kofi-hud')) {
+      /* Le panneau aligne des `<button>` ; celui-ci est un `<a>`, qui hérite
+         donc du souligné des liens et ressortait seul de la rangée. Une règle
+         plutôt qu'un style en ligne : elle porte aussi le pied de page. */
+      var st = document.createElement('style');
+      st.textContent = '#kofi-hud{text-decoration:none}';
+      document.head.appendChild(st);
+
+      var b = lien('btn', TASSE + ' ' + T);
+      b.id = 'kofi-hud';
+      /* avant « Réinitialiser », qui reste en bout de rangée : c'est la seule
+         action destructive du panneau, et elle a sa place au bord. */
+      var reset = document.getElementById('reset');
+      if (reset && reset.parentNode === sortie.parentNode) sortie.parentNode.insertBefore(b, reset);
+      else sortie.parentNode.appendChild(b);
+    }
+
+    /* 2. le pied de page, à la suite de Contact. On vise la liste qui le
+          porte plutôt qu'un rang : « Plus » n'a pas le même nombre
+          d'entrées d'une page à l'autre. */
+    var contact = document.querySelector('.foot a[data-contact]');
+    var li = contact && contact.closest ? contact.closest('li') : null;
+    if (li && li.parentNode && !document.getElementById('kofi-pied')) {
+      var n = document.createElement('li');
+      var a = lien('', T);
+      a.id = 'kofi-pied';
+      n.appendChild(a);
+      li.parentNode.appendChild(n);
+    }
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
