@@ -1036,17 +1036,34 @@ Quatre choses à savoir :
 - **Il n'entre pas dans `PRECACHE` de `sw.js`.** La recherche demande le réseau,
   comme le radar, et `addAll` est tout ou rien.
 
-**11. L'écran d'arrivée**, posé le 6 septembre 2026, idée de Niko. Le logo en
-grand sur fond d'encre et une jauge sous lui, **sur les deux accueils
-seulement**, **une fois par session** — revenir à l'accueil depuis une timeline
+**11. L'écran d'arrivée**, posé le 6 septembre 2026, idée de Niko. Les neuf
+univers qui défilent en fond, le logo par-dessus, et **neuf cases qui prennent
+chacune l'encre de son univers**, l'une après l'autre — c'est ce que le site a
+à dire, et ça se voit avant la première ligne de texte. **Sur les deux accueils
+seulement**, **une fois par session** : revenir à l'accueil depuis une timeline
 ne le rejoue pas. `?boot` le force, comme `?app=` force la barre
 d'installation.
 
-Il tient en deux morceaux dans le `<head>`, un `<style>` et six lignes de
-script, posés par `publier.mjs` pour la seule route `accueil`. Rien dans les
-protos, rien dans `e-app.js`.
+Il tient dans le `<head>` — un `<style>` et huit lignes de script — plus trois
+lignes posées juste après `<body>` pour les cases, qui demandent un élément et
+donc un `document.body`. Le tout posé par `publier.mjs` pour la seule route
+`accueil` : rien dans les protos, rien dans `e-app.js`.
 
-Cinq choses à savoir :
+**Le défilé tient dans un seul fichier**, `images/boot-univers.webp` : les neuf
+visuels empilés en bande verticale, 560 × 315 chacun, **fondus au noir sur
+22 % de leur hauteur en haut et en bas** — sans quoi le passage d'un univers au
+suivant coupait l'écran d'un trait net — floutés au rendu et encodés à 58.
+**85 Ko pour les neuf**, contre 2,3 Mo pour les originaux, qu'on ne pouvait pas
+demander sur le chemin d'arrivée. Le flou n'est pas qu'un effet : il divise le
+poids par trois, et l'image passe de toute façon sous un voile à 56 %. C'est le
+seul endroit du site où une planche vaut mieux que des fichiers séparés.
+
+`max(100vw,177.8vh)` donne à chaque vignette de quoi couvrir l'écran quelle que
+soit sa forme — c'est le `cover` qu'une planche ne sait pas demander seule — et
+le pas du défilé vaut exactement la hauteur d'une vignette,
+`max(56.25vw,100vh)`. Une planche au ratio différent oblige à changer les deux.
+
+Sept choses à savoir :
 
 - **Il est dessiné par deux pseudo-éléments de `<html>`**, jamais par un
   `<div>` : dans le `<head>`, `document.body` n'existe pas encore, et c'est
@@ -1062,21 +1079,38 @@ Cinq choses à savoir :
   dessous pendant ce temps. Coût mesuré : +300 ms de plus grand affichage sur
   l'accueil, une fois par session, et **zéro décalage** — 0,0675 avec ou sans
   lui, celui du h1 et de la grille d'univers, qui préexiste.
-- **Le compte part à l'arrivée du logo, pas au chargement de la page.** Ses
-  23 Ko arrivent après 300 ms en Slow 4G : le voile s'ouvrait et se fermait
-  sur un aplat noir vide, l'effet exactement à l'envers. `onerror` lève le
-  voile comme `onload`, et le plafond de 1 500 ms est le filet si le fichier
-  a disparu. Le `<link rel="preload">` du logo est là pour ça.
+- **Le compte part à l'arrivée des deux images, pas au chargement de la
+  page.** Le logo arrive après 300 ms en Slow 4G, la planche après 900 : le
+  voile s'ouvrait et se fermait sur un aplat noir vide, l'effet exactement à
+  l'envers. `onerror` lève le voile comme `onload`, et le plafond de 3 000 ms
+  est le filet si un fichier a disparu.
+- **Le défilé ne part qu'avec la planche**, par la classe `boot-img` : posée
+  au parse du CSS, l'animation aurait couru sur un fond vide et se serait
+  terminée avant que l'image arrive. Sa durée (1,42 s) et le délai des cases
+  (neuf fois 0,15 s) sont réglés sur le temps qui reste après le chargement —
+  changer l'un demande de revoir les autres.
+- **Pas de `<link rel="preload">`, et c'est voulu.** Il est inconditionnel :
+  les 85 Ko de la planche seraient descendus à chaque visite de l'accueil, y
+  compris les neuf sur dix où le voile ne se joue pas. Les deux `new Image()`
+  du script font le même travail au même endroit du `<head>`, et seulement
+  quand il se joue. Le CSS ne charge rien non plus : un fond n'est demandé
+  que si un élément le porte.
 - **Les propriétés de fond s'écrivent une par une**, jamais dans le raccourci
   `background` : un `min()` dans sa partie `taille` invalide la déclaration
   entière, et le voile sortait sans logo — sans une ligne dans la console.
   Même famille de piège que le `.cx-cpt[hidden]` du dialogue.
-- **La jauge se centre par `translateX(-50%)`**, pas par une marge négative :
-  sa largeur est un `min()`, donc la moitié à retrancher n'est pas connue à
-  l'écriture, et elle partait 22 px trop à gauche sur un téléphone.
+- **La rangée de cases se centre par `translateX(-50%)`**, pas par une marge
+  négative : sa largeur dépend du nombre de cases et d'un `min()`, donc la
+  moitié à retrancher n'est pas connue à l'écriture. La première version, une
+  jauge dorée, partait 22 px trop à gauche sur un téléphone pour cette raison.
+- **Un dixième univers se pose à trois endroits** : `BOOT_ENCRES` dans
+  `publier.mjs`, la liste `srcs` du script qui fabrique la planche, et le
+  décompte des cases — qui se déduit de la table, lui. La planche se
+  reconstruit alors entièrement ; le script qui la fabrique n'est pas
+  versionné, c'est la recette qui compte, comme pour la conversion en WebP.
 
-`prefers-reduced-motion` retire la jauge animée et les deux fondus ; la durée,
-elle, ne bouge pas — il n'y a plus rien qui remue.
+`prefers-reduced-motion` retire le défilé, le remplissage des cases et les
+fondus ; la durée, elle, ne bouge pas — il n'y a plus rien qui remue.
 
 Le script sort en erreur au moindre doute — `noindex` resté, lien de maquette non
 recâblé, entrée manquante de `seo.json`. Trois pièges rencontrés valent d'être

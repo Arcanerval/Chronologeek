@@ -251,44 +251,102 @@ const PRERENDU_CSS =
 // depuis le début, et **1 500 ms au plus quoi qu'il arrive** : un logo qui
 // n'arrive jamais ne doit pas retenir la page. Ce plafond est aussi le
 // filet si le fichier a disparu — `onerror` lève le voile comme `onload`.
+// Le défilé des neuf univers tient dans **un seul fichier**,
+// `images/boot-univers.webp` : les neuf visuels empilés en bande verticale,
+// 560 × 315 chacun, floutés au rendu et encodés à 58 — 100 Ko pour les neuf.
+// Les originaux pèsent 2,3 Mo à eux tous, et les demander tous les neuf sur
+// le chemin d'arrivée aurait coûté plus cher que tout ce que ce dépôt a
+// économisé. Le flou n'est pas qu'un effet : il divise le poids par trois,
+// et l'image passe de toute façon sous un voile à 62 %.
+//
+// C'est le seul endroit du site où une planche vaut mieux que des fichiers
+// séparés — ailleurs, une vignette se demande seule et se met en cache seule.
+const BOOT_PLANCHE = '/images/boot-univers.webp';
+// L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
+const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
+                     '#a8bf4f', '#e07b39', '#c0202f', '#2dd4bf'];
+
 const BOOT =
-  /* Le logo est le premier contenu que le visiteur — et Google — voient :
-     il est demandé tout de suite, avant même le CSS de la page, sans quoi
-     le voile reste un aplat vide le temps qu'il arrive. */
-  '<link rel="preload" as="image" href="/images/logo-chronologeek.webp"/>\n' +
+  /* **Pas de `<link rel="preload">`**, et c'est voulu : il est inconditionnel,
+     et les 85 Ko de la planche seraient descendus à chaque visite de
+     l'accueil — y compris les neuf sur dix où le voile ne se joue pas. Les
+     deux `new Image()` ci-dessous font le même travail au même endroit du
+     `<head>`, et seulement quand il se joue. Le CSS ne charge rien non plus
+     de son côté : un fond n'est demandé que si un élément le porte. */
   '<script>try{if(!sessionStorage.getItem("cg-boot")||/[?&]boot\\b/.test(location.search)){' +
   'var r=document.documentElement,f=0;r.className+=" boot";sessionStorage.setItem("cg-boot","1");' +
   'var s=function(d){if(f)return;f=1;setTimeout(function(){r.classList.add("boot-out");' +
-  'setTimeout(function(){r.classList.remove("boot","boot-out")},360)},d)};' +
-  'var i=new Image();i.onload=i.onerror=function(){s(Math.max(400,620-performance.now()))};' +
-  'i.src="/images/logo-chronologeek.webp";setTimeout(function(){s(0)},1500)' +
+  'setTimeout(function(){r.classList.remove("boot","boot-out");' +
+  'var b=document.getElementById("cgb");if(b)b.remove()},360)},d)};' +
+  /* Les deux images sont attendues, et le défilé ne part qu'avec elles :
+     posé au parse du CSS, il aurait couru sur un fond vide et se serait
+     terminé avant que la planche arrive. `boot-img` est ce qui le lance. */
+  'var n=0,g=function(){if(++n<2)return;r.classList.add("boot-img");' +
+  's(Math.max(1400,1500-performance.now()))};' +
+  'var i=new Image();i.onload=i.onerror=g;i.src="/images/logo-chronologeek.webp";' +
+  `var j=new Image();j.onload=j.onerror=g;j.src="${BOOT_PLANCHE}";` +
+  'setTimeout(function(){s(0)},3000)' +
   '}}catch(e){}</script>\n' +
   '<style>' +
   /* Les propriétés sont écrites une par une, jamais dans le raccourci
-     `background` : un `min()` posé dans la partie `taille` du raccourci
+     `background` : un `min()` ou un `max()` posé dans sa partie `taille`
      invalide la déclaration entière, et le voile sortait alors sans logo —
      un aplat noir, sans une ligne dans la console. */
+  /* Le fond : deux couches dans le même élément, le voile sombre par-dessus
+     la planche. `max(100vw,177.8vh)` donne à chaque vignette de quoi couvrir
+     l'écran quelle que soit sa forme — c'est le `cover` qu'une planche ne
+     peut pas demander toute seule —, et le pas du défilé est exactement la
+     hauteur d'une vignette, `max(56.25vw,100vh)`. */
   'html.boot::before{content:"";position:fixed;inset:0;z-index:999;' +
-  'background-color:#08080f;background-image:url(/images/logo-chronologeek.webp);' +
+  'background-color:#08080f;' +
+  'background-image:linear-gradient(rgba(8,8,15,.56),rgba(8,8,15,.56)),' +
+  `url(${BOOT_PLANCHE});` +
+  'background-repeat:no-repeat,no-repeat;' +
+  'background-size:100% 100%,max(100vw,177.8vh) auto;' +
+  'background-position:0 0,center calc((100vh - max(56.25vw,100vh))/2);' +
+  'opacity:1;transition:opacity .34s ease}' +
+  'html.boot.boot-img::before{animation:cgdefile 1.42s linear forwards}' +
+  '@keyframes cgdefile{' +
+  'from{background-position:0 0,center calc((100vh - max(56.25vw,100vh))/2)}' +
+  'to{background-position:0 0,center calc((100vh - max(56.25vw,100vh))/2' +
+  ' - max(56.25vw,100vh)*8)}}' +
+  /* le logo, seul dans sa couche, au-dessus du défilé */
+  'html.boot::after{content:"";position:fixed;inset:0;z-index:1000;' +
+  'background-image:url(/images/logo-chronologeek.webp);' +
   'background-position:center center;background-size:min(340px,68vw) auto;' +
   'background-repeat:no-repeat;opacity:1;transition:opacity .34s ease}' +
-  /* la barre : une piste fine sous le logo, et une jauge qui la parcourt.
-     Elle ne mesure rien — rien n'est mesurable à cet instant — elle dit
-     que ça travaille, et elle s'arrête à 92 % pour que la sortie la finisse. */
-  /* `translateX(-50%)` et non une marge négative : la largeur est un
-     `min()`, donc la moitié à retrancher n'est pas connue à l'écriture —
-     la barre partait 22 px trop à gauche sur un téléphone. */
-  'html.boot::after{content:"";position:fixed;z-index:1000;left:50%;top:calc(50% + 46px);' +
-  'width:min(240px,52vw);height:3px;transform:translateX(-50%);' +
-  'background:rgba(255,253,247,.16);opacity:1;transition:opacity .34s ease}' +
-  'html.boot::after{background-image:linear-gradient(90deg,#f0b429,#f0b429);' +
-  'background-repeat:no-repeat;background-size:0% 100%;animation:cgboot .66s ease-out forwards}' +
-  '@keyframes cgboot{from{background-size:6% 100%}to{background-size:92% 100%}}' +
-  'html.boot.boot-out::before,html.boot.boot-out::after{opacity:0;pointer-events:none}' +
-  /* qui a demandé moins d'animation reçoit le logo, sans jauge et sans fondu */
-  '@media(prefers-reduced-motion:reduce){html.boot::after{animation:none}' +
-  'html.boot::before,html.boot::after{transition:none}}' +
+  /* les neuf cases, une par univers, qui prennent leur encre l'une après
+     l'autre. Elles ne mesurent rien — rien n'est mesurable à cet instant —
+     elles disent ce qu'est le site : neuf univers, et on les voit défiler
+     derrière. `translateX(-50%)` et non une marge négative, la largeur
+     dépendant du nombre de cases. */
+  '#cgb{position:fixed;z-index:1001;left:50%;top:calc(50% + 46px);' +
+  'transform:translateX(-50%);display:flex;gap:6px;' +
+  'opacity:1;transition:opacity .34s ease}' +
+  '#cgb i{display:block;width:min(22px,5vw);height:9px;' +
+  'background:rgba(255,253,247,.13);animation:cgcase .5s ease forwards}' +
+  '@keyframes cgcase{to{background:var(--c);box-shadow:0 0 13px var(--c)}}' +
+  'html.boot.boot-out::before,html.boot.boot-out::after,' +
+  'html.boot.boot-out #cgb{opacity:0;pointer-events:none}' +
+  /* qui a demandé moins d'animation reçoit le logo, sans défilé, sans
+     remplissage et sans fondu — la durée, elle, ne bouge pas : il n'y a
+     plus rien qui remue */
+  '@media(prefers-reduced-motion:reduce){' +
+  'html.boot.boot-img::before{animation:none}#cgb i{animation:none}' +
+  'html.boot::before,html.boot::after,#cgb{transition:none}}' +
   '</style>';
+
+// Les neuf cases demandent un élément, donc un `document.body` : ce bloc-ci
+// est posé juste après l'ouverture du corps, là où le voile du `<head>` ne
+// peut pas aller. Elles s'allument à 0,15 s d'intervalle, soit 1,35 s pour
+// les neuf — la durée du voile est réglée là-dessus.
+const BOOT_CORPS =
+  '<script>(function(){var r=document.documentElement;' +
+  'if(!r.classList.contains("boot"))return;' +
+  `var C=${JSON.stringify(BOOT_ENCRES)},d=document.createElement("div");d.id="cgb";` +
+  'for(var i=0;i<C.length;i++){var s=document.createElement("i");' +
+  's.style.cssText="--c:"+C[i]+";animation-delay:"+(i*0.15)+"s";d.appendChild(s)}' +
+  'document.body.appendChild(d)})()</script>';
 
 const PIED = [
   '<script src="/pwa.js"></script>',
@@ -428,6 +486,11 @@ function publier(route, langue) {
   h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i,
                 `$1\n${PWA}\n${LIEN_FLUX(langue)}\n${PRERENDU_CSS}` +
                 (route.cle === 'accueil' ? `\n${BOOT}` : ''));
+  if (route.cle === 'accueil') {
+    const avantCorps = h;
+    h = h.replace(/(<body[^>]*>)/i, `$1\n${BOOT_CORPS}`);
+    if (h === avantCorps) problemes.push(`${c.sortie} : <body> introuvable pour l'écran d'arrivée`);
+  }
   if (h === avantPwa) problemes.push(`${c.sortie} : bloc PWA non injecté`);
   for (const attendu of ['/manifest.json', 'apple-touch-icon', 'theme-color']) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
