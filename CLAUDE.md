@@ -1070,12 +1070,24 @@ soit sa forme — c'est le `cover` qu'une planche ne sait pas demander seule —
 le décalage d'une couche à l'autre vaut exactement la hauteur d'une vignette,
 `max(56.25vw,100vh)`. Une planche au ratio différent oblige à changer les deux.
 
-**Les trois durées se règlent ensemble** : le pas de 0,2 s (couches et cases),
-les neuf fois ce pas plus le dernier fondu, et les 2,05 s que le voile tient
-une fois les images arrivées. Changer l'une seule fait finir l'écran avant ou
-après lui-même. Le plafond de 4,2 s est le filet, pas la durée : sur un réseau
-très lent il coupe le fondu, et c'est le bon arbitrage — une arrivée qui dure
-quatre secondes n'est plus une arrivée.
+**Les trois durées se règlent ensemble** : le pas de 0,28 s (couches et cases),
+les neuf fois ce pas plus le dernier fondu, et les 2,95 s que le voile tient
+une fois les images arrivées — **trois secondes en tout**, réglées par Niko le
+6 septembre 2026. Changer l'une seule fait finir l'écran avant ou après
+lui-même. Le plafond de 5,2 s est le filet, pas la durée : sur un réseau très
+lent il coupe le fondu, et c'est le bon arbitrage.
+
+**Le splash de l'application installée n'est pas celui-ci, et ne peut pas
+l'être.** Android, Windows et iOS le dessinent eux-mêmes à partir du manifeste
+— l'icône sur `background_color` —, **avant que la moindre ligne de la page
+soit lue** : aucun HTML ne peut s'y substituer. Ce qui est fait, et c'est tout
+ce qui était faisable : `background_color` et `theme_color` valent `#08080f`,
+la couleur exacte du voile, donc le splash système enchaîne sur l'écran
+d'arrivée sans rupture de fond ; et celui-ci se joue bien à chaque lancement de
+l'app, une app qui démarre ouvrant une session neuve, donc un `sessionStorage`
+vide. La seule chose qui pourrait s'ajouter est `apple-touch-startup-image` sur
+iOS : une image figée par résolution d'écran, une quinzaine de fichiers pour
+remplacer un fond uni par un logo, sur la seule plateforme qui l'accepte.
 
 Sept choses à savoir :
 
