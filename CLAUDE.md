@@ -2394,6 +2394,13 @@ Seules exceptions admises, et à signaler explicitement : les intitulés de stru
 (titres de cartes, libellés de catégories) quand sa version en prose n'en a pas,
 et la majuscule initiale quand on découpe une phrase.
 
+**Les fautes d'orthographe se corrigent d'office**, tranché par Niko le
+6 septembre 2026 : on corrige sans demander, et on le dit dans la réponse. Ce
+n'est pas une réécriture — l'intention et les mots restent les siens, seule la
+graphie est remise droite. Premier cas : « Reseting the time loop », l'une des
+vingt phrases de l'écran d'arrivée, passée à « Resetting ». Cela ne s'étend ni
+aux tournures, ni aux abréviations, ni au vocabulaire, qui restent intouchables.
+
 ## Ce qui reste à faire
 
 - **Un constructeur de timeline**, idée de Niko le 1er septembre 2026, en
