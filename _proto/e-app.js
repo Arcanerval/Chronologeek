@@ -2805,3 +2805,102 @@
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
 })();
+
+/* ══════════════════════════════════════════════════════════════════
+   LES TROIS COMPTES, DANS LE PIED DE PAGE
+   ──────────────────────────────────────────────────────────────────
+   YouTube, Instagram et TikTok, ouverts le 6 septembre 2026. Ils vivent
+   ici et non dans les protos pour la raison qui vaut déjà au Ko-fi, au
+   formulaire de contact et aux deux « Suggérer » : écrits dans le HTML,
+   il y en aurait vingt-huit copies à tenir, et leur intitulé passerait
+   par `traduire-pages.mjs` alors qu'un nom de plateforme ne se traduit
+   pas.
+
+   **Une seule ligne, trois icônes, dans la liste qui porte Contact.**
+   C'est là que Niko les a demandés, et c'est la forme qui ne rallonge
+   pas le pied : trois `<li>` de texte auraient rendu les soixante-dix
+   pixels que la refonte du 6 septembre venait de lui retirer sur
+   téléphone.
+
+   Trois choses à savoir :
+
+   - **`.foot li.soc a`, jamais `.soc a`.** Le pied pose sa propre taille
+     et sa propre encre sur `.foot a`, et son `.foot li a{padding:4px 0}`
+     sur les listes : une seule classe perd contre eux, et les icônes
+     sortaient décalées vers le bas. Même famille de piège que
+     `.foot a.kofi`.
+   - **La cible fait 34 px, l'icône 19.** La règle des 24 px du pied de
+     page vaut ici aussi, et un carré de 19 px ne se vise pas au doigt.
+     Le rembourrage est dans le lien, pas autour de la rangée.
+   - **`aria-label`, pas de texte visible.** Un logo seul n'annonce rien
+     à un lecteur d'écran, et « YouTube » écrit à côté rendrait la ligne
+     trois fois plus longue pour ne rien apprendre à qui voit l'icône.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  /* Le compte YouTube est celui de Niko, pas un compte au nom du site :
+     l'adresse est donc @arcanerval et il ne faut pas la « corriger ». */
+  var COMPTES = [
+    ['YouTube',   'https://www.youtube.com/@arcanerval',
+     'M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z'],
+    ['Instagram', 'https://www.instagram.com/chronologeek.app/',
+     'M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.26 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.07.36-2.24.41-1.27.06-1.65.07-4.86.07s-3.59-.01-4.86-.07c-1.17-.06-1.82-.26-2.24-.42-.57-.22-.96-.48-1.38-.9-.42-.42-.69-.82-.9-1.38-.16-.42-.36-1.06-.42-2.23-.04-1.26-.06-1.65-.06-4.84s.02-3.59.06-4.86c.06-1.17.26-1.81.42-2.23.21-.57.48-.96.9-1.38.42-.42.81-.69 1.38-.9.42-.17 1.05-.36 2.22-.42 1.27-.05 1.65-.06 4.86-.06zM12 0C8.74 0 8.33.02 7.05.07c-1.28.06-2.15.26-2.91.56-.79.3-1.46.72-2.13 1.38C1.34 2.68.93 3.35.63 4.14c-.3.77-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.02 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.77.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.02 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.67-.67 1.08-1.34 1.38-2.13.3-.77.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.02-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.77-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z'],
+    ['TikTok',    'https://www.tiktok.com/@chronologeek',
+     'M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'],
+  ];
+
+  var CSS = [
+    '.foot li.soc{display:flex;gap:4px;margin-top:2px}',
+    /* `.foot li.soc a` bat `.foot a` et `.foot li a`, qui posent l'encre,
+       le corps et un rembourrage vertical fait pour du texte. */
+    '.foot li.soc a{display:inline-flex;align-items:center;justify-content:center;',
+    '  width:34px;height:34px;padding:0;color:rgba(255,253,247,.72);',
+    '  text-decoration:none;border-radius:4px;transition:color .15s ease,background .15s ease}',
+    '.foot li.soc a:hover{color:var(--paper);background:rgba(255,255,255,.08);text-decoration:none}',
+    '.foot li.soc a:focus-visible{outline:2px solid var(--hot);outline-offset:2px}',
+    '.foot li.soc svg{width:19px;height:19px;display:block;fill:currentColor}',
+    '@media(prefers-reduced-motion:reduce){.foot li.soc a{transition:none}}'
+  ].join('');
+
+  function pose(){
+    var contact = document.querySelector('.foot a[data-contact]');
+    if (!contact || document.querySelector('.foot li.soc')) return;
+    var li = contact.closest ? contact.closest('li') : null;
+    if (!li || !li.parentNode) return;
+
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    var rangee = document.createElement('li');
+    rangee.className = 'soc';
+
+    for (var i = 0; i < COMPTES.length; i++) {
+      var a = document.createElement('a');
+      a.href = COMPTES[i][1];
+      a.target = '_blank';
+      /* `noopener` seul, comme pour Ko-fi : le référent dit à la
+         plateforme d'où viennent ses visiteurs, et c'est utile. */
+      a.rel = 'noopener';
+      a.setAttribute('aria-label', COMPTES[i][0]);
+      a.title = COMPTES[i][0];
+
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.setAttribute('focusable', 'false');
+      var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      p.setAttribute('d', COMPTES[i][2]);
+      svg.appendChild(p);
+      a.appendChild(svg);
+      rangee.appendChild(a);
+    }
+
+    li.parentNode.insertBefore(rangee, li.nextSibling);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
