@@ -1,55 +1,5 @@
 [
  {
-  "universe": "dc",
-  "title": "Lanterns",
-  "date_sort": "2026-09-06",
-  "date_txt": "06/09/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 4,
-   "mark": ""
-  },
-  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
-  "tmdb": 95350,
-  "media": "tv"
- },
- {
-  "universe": "twd",
-  "title": "The Walking Dead: Dead City",
-  "date_sort": "2026-09-06",
-  "date_txt": "06/09/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "As Negan faces his fate, Maggie pleads with him to save the community.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 3,
-   "e": 7,
-   "mark": ""
-  },
-  "poster": "/wq3vuQzQgbS83zX3malAFWMsSwX.jpg",
-  "tmdb": 194583,
-  "media": "tv"
- },
- {
   "universe": "avatar",
   "title": "Jet: Rebels and Rhinos",
   "date_sort": "2026-09-08",
@@ -697,9 +647,26 @@
   "title_fr": "",
   "date_sort_fr": "2027-07-07",
   "date_txt_fr": "07/07/2027",
-  "poster": "/tYLgfKk3cEk7LskgxWyW37Nty01.jpg",
+  "poster": "/i3N9AKd9KbdrdvTVeXBjC8NIy7f.jpg",
   "tmdb": 1523140,
   "media": "movie"
+ },
+ {
+  "universe": "avatar",
+  "title": "Untitled Chronicles of the Avatar Book #7",
+  "date_sort": "2027-07-20",
+  "date_txt": "20/07/2027",
+  "kind": "Young Adult Novel Release Date: July 20, 2027",
+  "source": "Avatar Almanac",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "novel",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "marvel",
