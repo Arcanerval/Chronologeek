@@ -38,6 +38,20 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
 
+      { nat:"site", uni:"avatar", kind:"timeline",
+        title:"Avatar Legends : deux parcours",
+        txt:"La page se lit maintenant de deux façons — en découverte, les "+
+            "ères de Yangchen, Kyoshi et Roku passent en flashback après "+
+            "l'ère de Aang ; en revisionnage, tout revient à sa date.",
+        href:"/fr/avatar", cta:"Ouvrir la timeline" },
+
+      { nat:"media", uni:"avatar", kind:"comic",
+        title:"Jet : Rebels and Rhinos", meta:"~95 AG", vo:true,
+        txt:"Ajouté à la timeline Avatar Legends, en ~95 AG, juste après "+
+            "la Saison 2 Épisode 17 du Dernier Maître de l'Air.",
+        href:"/fr/avatar#avt-jet-rebels-and-rhinos",
+        cta:"Voir dans la timeline" },
+
       { nat:"site", uni:"dcanimation", kind:"timeline",
         title:"Nouvelle timeline : DC Animation",
         txt:"80 entrées, du DCAU au DCAMU et à l'Arkhamverse — les séries "+

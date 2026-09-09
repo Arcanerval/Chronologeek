@@ -231,6 +231,19 @@ const TRADUCTIONS = [
   ['80 entrées, du DCAU au DCAMU et à l\'Arkhamverse — les séries animées, les films animés et les jeux dans un seul fil.',
    '80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.'],
 
+  /* ── les deux cartes Avatar du 9 septembre 2026 ────────────────
+     La première annonce la scission de la page en deux parcours, la
+     seconde le comic qui l'a motivée. « Découverte » et « revisionnage »
+     sont les deux mots que Star Wars et Marvel emploient déjà à la
+     bascule ; l'anglais reprend les leurs, « first watch » et
+     « rewatch ». Le titre du comic ne se traduit pas — il sort en VO et
+     il est déclaré identique dans traductions-avatar.mjs. */
+  ['Avatar Legends : deux parcours', 'Avatar Legends: two orders'],
+  ['La page se lit maintenant de deux façons — en découverte, les ères de Yangchen, Kyoshi et Roku passent en flashback après l\'ère de Aang ; en revisionnage, tout revient à sa date.',
+   'The page now reads two ways — on a first watch, the Yangchen, Kyoshi and Roku eras become flashbacks placed after the Aang era; on a rewatch, everything goes back to its own date.'],
+  ['Ajouté à la timeline Avatar Legends, en ~95 AG, juste après la Saison 2 Épisode 17 du Dernier Maître de l\'Air.',
+   'Added to the Avatar Legends timeline, in ~95 AG, just after Season 2 Episode 17 of The Last Airbender.'],
+
   /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
      Même moule que la carte « Legacy » de juillet, qui dit en anglais
      « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just
@@ -1196,8 +1209,21 @@ for (const T of TIMELINES) {
       entries: (entries || []).map(e => tr.objet(e, undefined, `#${e.id}`)),
     };
   }) };
+  /* ── le second parcours ────────────────────────────────────────────
+     Même passage que pour les autres timelines : `erasRewatch` a la
+     forme d'`eras`, mais ses entrées sont pour la plupart des renvois
+     (`ref`) sans un mot à elles. Sans ce passage, le bloc sortait
+     recopié tel quel — sous-items français sur la page anglaise, et pas
+     une ligne au rapport, la traduction ne regardant que `eras`. */
+  if (D.erasRewatch) sortie.erasRewatch = D.erasRewatch.map(era => {
+    const { entries, ...enTete } = era;
+    return {
+      ...tr.objet(enTete, undefined, 'erasRewatch'),
+      entries: (entries || []).map(e => tr.objet(e, undefined, `#${e.id || e.ref}`)),
+    };
+  });
   for (const k of Object.keys(D)) {
-    if (k === 'eras' || TECHNIQUES.has(k)) continue;
+    if (k === 'eras' || k === 'erasRewatch' || TECHNIQUES.has(k)) continue;
     if (!TEXTUELS.has(k)) continue;
     sortie[k] = tr.valeur(k, D[k], undefined, `Avatar.${k}`);
   }

@@ -326,8 +326,12 @@ const TRADUCTIONS = [
 
   /* ── le bandeau de la page Avatar Legends, passé à août le 25 août
      2026 avec l'ajout de Masters of the Elements ── même situation que
-     DC, à la casse près : la page écrit le mois en minuscule. */
+     DC, à la casse près : la page écrit le mois en minuscule. Passé à
+     septembre le 9 septembre 2026, avec Jet : Rebels and Rhinos et la
+     scission en deux parcours. L'ancienne ligne reste : les autres
+     pages l'écrivent encore. */
   ['Mis à jour · août 2026', 'Updated · August 2026'],
+  ['Mis à jour · septembre 2026', 'Updated · September 2026'],
 
   /* ── la case The Walking Dead ───────────────────────────────────
      Sixième univers, même situation que Star Trek : rien à retrouver

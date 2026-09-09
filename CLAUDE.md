@@ -446,7 +446,8 @@ Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » 
 ## Les deux parcours
 
 Star Wars et Marvel ont deux ordres de lecture depuis la refonte, Dragon Age
-un troisième depuis le **26 août 2026** : la découverte, et la reprise. La
+un troisième depuis le **26 août 2026**, Avatar Legends un quatrième depuis le
+**9 septembre 2026** : la découverte, et la reprise. La
 question se pose une fois à l'arrivée (`dialog.ask`), la bascule vit ensuite
 sous le bouton d'entrée (`.par`), et le choix est retenu dans
 `localStorage` sous `<clé de la page>-mode`. Le second ordre s'écrit dans
@@ -455,7 +456,7 @@ Dragon Age** : on y rejoue, on n'y revoit pas. La découverte reste le
 parcours de base, sans hash : c'est le lien qu'on partage.
 
 Le second ordre vit dans les données, à côté de `eras` : `erasRewatch` pour
-Star Wars et Marvel, `erasReplay` pour Dragon Age. **Il ne recopie presque
+Star Wars, Marvel et Avatar Legends, `erasReplay` pour Dragon Age. **Il ne recopie presque
 aucune entrée** — chaque ligne est un `{ref:"<id>"}`, et `drop` retire ce
 qui n'a plus lieu d'être une fois l'œuvre remise dans l'ordre du monde : le
 repère `tags` du flashback, la FAQ « pourquoi ici », la note de placement de
@@ -488,6 +489,44 @@ Quatre choses à savoir :
 - **Le seul texte d'`erasReplay` est cette note-là.** Tout le reste n'est
   qu'identifiants : une entrée du rejeu hérite de celle qu'elle référence,
   titre et résumé compris.
+
+### Avatar Legends, le quatrième — l'ordre change d'ères, pas que d'entrées
+
+Posé le 9 septembre 2026, avec le comic *Jet : Rebels and Rhinos*. C'est le
+seul des quatre où **les ères elles-mêmes changent de place** : en découverte
+on regarde la série d'abord (Livre 1, 2, 3, puis l'ère de Aang), et les trois
+Avatars du passé — Yangchen, Kyoshi, Roku — viennent **après**, en flashback,
+avant l'ère de Korra. En rejeu tout revient à sa date, donc à l'ordre
+chronologique : Yangchen, Kyoshi, Roku, puis les trois Livres, Aang, Korra.
+Les sept entrées de ces trois ères portent donc `tags:["flashback"]` dans
+`eras`, et `drop:["tags"]` dans `erasRewatch`. **72 entrées en découverte,
+71 en rejeu.**
+
+Quatre choses à savoir :
+
+- **Les huit encres d'ère se numérotent par le rejeu, pas par le rang à
+  l'écran.** `--era1` à `--era8` suivent les nations — l'Eau en bleu, la
+  Terre en vert, le Feu en orange —, et c'est l'ordre du monde, donc celui
+  du rejeu. Numéroter par `i+1` donnait au Livre de l'Eau l'or de Yangchen
+  dès que la découverte a changé d'ordre, et les deux parcours n'auraient
+  pas donné la même couleur à la même ère. D'où la table `ENCRE`, bâtie sur
+  `D.erasRewatch`. Rien à changer dans le CSS, et `--era3` reste ce que le
+  voile du bandeau attend.
+- **Deux œuvres bougent en plus des trois ères.** *Jet : Rebels and Rhinos*
+  (~95 AG) est en découverte un flashback posé après la saison 2 épisode 17,
+  là où Jet meurt ; en rejeu il ouvre le Livre 1, cinq ans avant le réveil
+  d'Aang. *Earth & Water* (~55 BG) quitte le Livre 3 pour l'ère de Roku.
+- **Le seul `covers` recolle la saison 2.** Jet coupe le bloc
+  `avt-s2e10-20` en `avt-s2e10-17` et `avt-s2e18-20` ; en rejeu rien ne
+  s'intercale plus entre eux, et `avt-r-s2e10-20` les couvre tous les deux.
+  C'est le même geste que `da-r-origins-mid`, et il explique l'écart de une
+  entrée entre les deux parcours. Le badge « Maître de la Terre » vise
+  désormais `avt-s2e18-20` — en rejeu cet identifiant n'existe pas, et c'est
+  `bridge()` qui le coche.
+- **`resolve()` reporte `group`.** Avatar est la seule timeline à deux
+  niveaux de titre : ses trois Livres sont chapeautés par « GUERRE DE CENT
+  ANS ». La version de Marvel ne garde que `title`, et le chapeau
+  disparaissait du rejeu sans un mot.
 
 ## Les colonnes parallèles sous 1440 px
 
@@ -1255,6 +1294,18 @@ Six points qui ont coûté quelque chose :
 `en-startrek.html` est en **LF**, contrairement aux autres protos qui sont en CRLF.
 
 ### Avatar, la seule exception
+
+**`_proto/construire-avatar.mjs` ne tourne plus, et il ne faut pas le
+relancer.** Il bâtissait `data-avatar.js` depuis `spec-avatar.json` et deux
+sources qui ont disparu avec la refonte : `avatar.html` à la racine, qui est
+maintenant la page produite, et `badges.js`, supprimé avec les composants
+partagés. Il lève aujourd'hui une `SyntaxError` en essayant de lire du HTML
+comme un littéral JS — c'est un `--check` qui ment, pas un contrôle. **La
+source d'Avatar est `_proto/data-avatar.js` lui-même**, corrigé à la main
+depuis, et `spec-avatar.json` est un document périmé : il ne connaît ni
+*Masters of the Elements* (25 août 2026) ni *Jet : Rebels and Rhinos*
+(9 septembre 2026). L'en-tête « ne pas editer a la main » du fichier de
+données date d'avant tout ça.
 
 Avatar est le seul univers qu'il faut vraiment traduire. `avatar.html` à la racine
 est encore la page française non traduite et `fr/avatar.html` n'existe pas : il n'y
@@ -2372,7 +2423,7 @@ DC et Avatar écrivent `imp` là où Star Wars et Marvel écrivent `important` :
 parseur doit accepter les deux.
 Répartitions actuelles :
 Star Wars 62 (9 must / 37 important / 16 bonus), Marvel 121 (49 / 30 / 42),
-DC 147 (117 imp / 30 bonus), Avatar 69 (17 / 18 / 34),
+DC 147 (117 imp / 30 bonus), Avatar 72 (18 / 18 / 36),
 The Walking Dead 45 (29 must / 3 important / 13 bonus),
 Dragon Age 44 (15 must / 10 important / 19 bonus),
 Assassin's Creed 111 (34 must / 36 important / 41 bonus),

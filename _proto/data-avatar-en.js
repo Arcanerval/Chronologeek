@@ -2,7 +2,7 @@
    Avatar est le seul univers sans page anglaise en ligne : ses textes sont
    écrits, pas repris, et vivent dans traductions-avatar.mjs. La structure
    vient du proto français. Ne pas editer a la main : relancer le script. */
-window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar Legends","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's New","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.","resetAvatar":"Erase all your Avatar Legends progress? This cannot be undone."},"universe":"avatar","badgeLabels":{"roman":["br","BOOK"],"anime":["ba","ANIMATED SHOW"],"comic":["bc","COMIC"],"filmanim":["bfa","ANIMATED MOVIE"],"video":["bv","VIDEO"]},"badges":[{"id":"avt_eau","universe":"avatar","label":"Waterbending Master","desc":"Book One : Water completed","icon":"🌊","color":"#4fc3f7","trigger":"last","ids":["avt-s1e17-20"]},{"id":"avt_terre","universe":"avatar","label":"Earthbending Master","desc":"Book Two : Earth completed","icon":"🗿","color":"#8bc34a","trigger":"last","ids":["avt-s2e10-20"]},{"id":"avt_feu","universe":"avatar","label":"Firebending Master","desc":"Book Three : Fire completed","icon":"🔥","color":"#ff7043","trigger":"last","ids":["avt-s3e20-21"]},{"id":"avt_equilibre","universe":"avatar","label":"Keeper of Balance","desc":"The Korra Era completed","icon":"💨","color":"#b39ddb","trigger":"last","ids":["avt-la-legende-de-korra-livre-4-l-equilibre"]},{"id":"avt_100","universe":"avatar","label":"Fully Realized Avatar","desc":"Avatar Legends 100% completed","icon":"☯️","color":"#ffd700","trigger":"100pct","universe_key":"avatar"}],"faqCats":[],"resetMsg":"Reset your Avatar Legends progress?","tmdbLang":"en-US","tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};
+window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar Legends","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's New","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.","resetAvatar":"Erase all your Avatar Legends progress? This cannot be undone."},"universe":"avatar","badgeLabels":{"roman":["br","BOOK"],"anime":["ba","ANIMATED SHOW"],"comic":["bc","COMIC"],"filmanim":["bfa","ANIMATED MOVIE"],"video":["bv","VIDEO"]},"badges":[{"id":"avt_eau","universe":"avatar","label":"Waterbending Master","desc":"Book One : Water completed","icon":"🌊","color":"#4fc3f7","trigger":"last","ids":["avt-s1e17-20"]},{"id":"avt_terre","universe":"avatar","label":"Earthbending Master","desc":"Book Two : Earth completed","icon":"🗿","color":"#8bc34a","trigger":"last","ids":["avt-s2e18-20"]},{"id":"avt_feu","universe":"avatar","label":"Firebending Master","desc":"Book Three : Fire completed","icon":"🔥","color":"#ff7043","trigger":"last","ids":["avt-s3e20-21"]},{"id":"avt_equilibre","universe":"avatar","label":"Keeper of Balance","desc":"The Korra Era completed","icon":"💨","color":"#b39ddb","trigger":"last","ids":["avt-la-legende-de-korra-livre-4-l-equilibre"]},{"id":"avt_100","universe":"avatar","label":"Fully Realized Avatar","desc":"Avatar Legends 100% completed","icon":"☯️","color":"#ffd700","trigger":"100pct","universe_key":"avatar"}],"faqCats":[],"resetMsg":"Reset your Avatar Legends progress?","tmdbLang":"en-US","tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};
 const AVATAR={
   id:"avatar",
   title:"Avatar Legends",
@@ -11,21 +11,8 @@ const AVATAR={
   color:"#7dd3fc",
   glow:"rgba(125,211,252,.3)",
   tmdb_banner:{"type":"tv","id":"246"},
-  notes:"<p class=\"intro-lead\">If you're here, it's because you want to read and watch the Avatar Legends universe in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class=\"intro-tags\"><span class=\"itag\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide is meant mostly for rewatches: for a first watch, go through the shows and movies, but if you're sure you'll love the universe, you can absolutely follow this guide.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the year of the Air Nomad Genocide, so BG = Before Genocide / AG = After Genocide.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z\"/><path d=\"M8 7h6M8 11h6\"/></svg>The novels and comics</div><p>Most of the novels belong to the \"Chronicles of the Avatar\" collection and tell the stories of the Avatars of the past. They are far from required, but they add context — read summaries instead if you prefer.</p><p>The comics are an integral part of the work and continue some of the storylines from the shows. Some are very important and others are minor, and it is all marked.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">6 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Lost Adventures</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Team Avatar Tales</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Masters of the Elements Vol.1</dt><dd>The 4 first little stories already existed and some are in the timeline, the last two are about Yangchen but not important at all.</dd></div><div class=\"cut\"><dt>Kids' novels</dt><dd>Only if you are a child.</dd></div><div class=\"cut\"><dt>The tabletop RPG stories</dt><dd>The tabletop role-playing books are a goldmine of lore, but impossible to fit into a chronological timeline.</dd></div><div class=\"cut\"><dt>The mobile game Avatar Generations and the Korra games</dt><dd>The servers are offline and/or the games are no longer on sale.</dd></div></dl></div></details>",
+  notes:"<p class=\"intro-lead\">If you're here, it's because you want to read and watch the Avatar Legends universe in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class=\"intro-tags\"><span class=\"itag pc-first\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for first-time watches but you can switch to the rewatch version higher up.</span><span class=\"itag pc-rewatch\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for rewatches but you can switch to the first-watch version higher up.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the year of the Air Nomad Genocide, so BG = Before Genocide / AG = After Genocide.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z\"/><path d=\"M8 7h6M8 11h6\"/></svg>The novels and comics</div><p>Most of the novels belong to the \"Chronicles of the Avatar\" collection and tell the stories of the Avatars of the past. They are far from required, but they add context — read summaries instead if you prefer.</p><p>The comics are an integral part of the work and continue some of the storylines from the shows. Some are very important and others are minor, and it is all marked.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">6 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Lost Adventures</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Team Avatar Tales</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Masters of the Elements Vol.1</dt><dd>The 4 first little stories already existed and some are in the timeline, the last two are about Yangchen but not important at all.</dd></div><div class=\"cut\"><dt>Kids' novels</dt><dd>Only if you are a child.</dd></div><div class=\"cut\"><dt>The tabletop RPG stories</dt><dd>The tabletop role-playing books are a goldmine of lore, but impossible to fit into a chronological timeline.</dd></div><div class=\"cut\"><dt>The mobile game Avatar Generations and the Korra games</dt><dd>The servers are offline and/or the games are no longer on sale.</dd></div></dl></div></details>",
   eras:[
-    {title:"THE YANGCHEN ERA",entries:[
-      {"id":"avt-the-dawn-of-yangchen","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/thedawnofyangchen.webp","title":"Chronicles of the Avatar 3 : The Dawn of Yangchen","date":"483 BG","lang":"vo","isbn":"9781419756771","desc":"A young Avatar haunted by the memories of her past lives, Yangchen navigates diplomacy and conspiracy in the corrupt city of Bin-Er."},
-      {"id":"avt-the-legacy-of-yangchen","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/thelegacyofyangchen.webp","title":"Chronicles of the Avatar 4 : The Legacy of Yangchen","date":"482 BG","lang":"vo","isbn":"9781419756795","desc":"Yangchen faces the consequences of her choices, and a plot that threatens the balance between the nations."}
-    ]},
-    {title:"THE KYOSHI ERA",entries:[
-      {"id":"avt-the-rise-of-kyoshi","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/theriseofkyoshi.webp","title":"Chronicles of the Avatar 1 : The Rise of Kyoshi","date":"296 BG","lang":"vo","isbn":"9781419735042","desc":"A servant who has no idea she is the Avatar, Kyoshi flees after a tragedy and learns to survive among outlaws. The brutal origin of the most legendary Avatar of them all."},
-      {"id":"avt-the-shadow-of-kyoshi","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/theshadowofkyoshi.webp","title":"Chronicles of the Avatar 2 : The Shadow of Kyoshi","date":"295 BG","lang":"vo","isbn":"9781419735059","desc":"Two years later, Kyoshi is summoned to the Fire Nation, where a threat from the Spirit World is brewing behind the politics."},
-      {"id":"avt-masters-of-the-elements-off-duty","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/mastersoftheelements.webp","title":"Masters of the Elements Vol.1 : Off Duty","date":"290 BG","lang":"vo","desc":"Following a two week sit-in on wood price negotiations for flying bison saddles, Kyoshi and Rangi leave the Western Air Temple on the back of Pengpeng."}
-    ]},
-    {title:"THE ROKU ERA",entries:[
-      {"id":"avt-the-reckoning-of-roku","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/thereckoningofroku.webp","title":"Chronicles of the Avatar 5 : The Reckoning of Roku","date":"66 BG","lang":"vo","ol":{"q":"reckoning of roku","inc":["reckoning of roku"]},"desc":"Young Roku takes on a secret mission from Prince Sozin and uncovers hidden agendas on a remote island, alongside his new friend Gyatso."},
-      {"id":"avt-the-awakening-of-roku","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/theawakeningofroku.webp","title":"Chronicles of the Avatar 6 : The Awakening of Roku","date":"63 BG","lang":"vo","desc":"Impatient to master the Avatar State, Roku channels the energy of the winter solstice — and unleashes chaos on Crescent Island."}
-    ]},
     {title:"BOOK ONE : WATER",group:"HUNDRED YEAR WAR",entries:[
       {"id":"avt-s1e01-10","type":"anime","level":"must","tmdb":"246","media":"tv","img":"/images/thelastairbender.webp","title":"Avatar : The Last Airbender","date":"99 AG","subitems":["Season 1 Episodes 1-10"]},
       {"id":"avt-s1e11-16","type":"anime","level":"must","tmdb":"246","media":"tv","img":"/images/thelastairbender.webp","title":"Avatar : The Last Airbender","date":"100 AG","subitems":["Season 1 Episodes 11-16"]},
@@ -38,7 +25,9 @@ const AVATAR={
       {"id":"avt-katara-and-the-pirate-s-silver","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/pirates.webp","title":"Katara and the Pirate's Silver","date":"100 AG","lang":"vf","desc":"Separated from the group after an ambush, Katara has to side with pirates to find her friends again."},
       {"id":"avt-sokka-the-avatar","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/thelostadventures.webp","title":"The Lost Adventures : Sokka the Avatar","date":"100 AG","lang":"vf","isbn":"9781595827487","desc":"Short story from The Lost Adventures collection."},
       {"id":"avt-divided-we-fall","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/thelostadventures.webp","title":"The Lost Adventures : Divided We Fall","date":"100 AG","lang":"vf","isbn":"9781595827487","desc":"Short story from The Lost Adventures collection."},
-      {"id":"avt-s2e10-20","type":"anime","level":"must","tmdb":"246","media":"tv","img":"/images/thelastairbender.webp","title":"Avatar : The Last Airbender","date":"100 AG","subitems":["Season 2 Episodes 10-20"]},
+      {"id":"avt-s2e10-17","type":"anime","level":"must","tmdb":"246","media":"tv","img":"/images/thelastairbender.webp","title":"Avatar : The Last Airbender","date":"100 AG","subitems":["Season 2 Episodes 10-17"]},
+      {"id":"avt-jet-rebels-and-rhinos","type":"comic","level":"bonus","tmdb":"0","media":"tv","title":"Jet: Rebels and Rhinos","date":"~95 AG","lang":"vo","tags":["flashback"]},
+      {"id":"avt-s2e18-20","type":"anime","level":"must","tmdb":"246","media":"tv","img":"/images/thelastairbender.webp","title":"Avatar : The Last Airbender","date":"100 AG","subitems":["Season 2 Episodes 18-20"]},
       {"id":"avt-escape-from-the-spirit-world","type":"video","level":"important","tmdb":"0","media":"tv","img":"/images/escape.webp","title":"Escape from the Spirit World","date":"100 AG","lang":"vo","desc":"Interactive animated stories to watch for free on YouTube, set during Aang's coma between Books Two and Three.","link":{"href":"https://www.youtube.com/watch?v=3_p0c66RbvM","label":"Watch on YouTube"}},
       {"id":"avt-it-s-only-natural","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/thelostadventures.webp","title":"The Lost Adventures : It's Only Natural","date":"100 AG","lang":"vf","isbn":"9781595827487","desc":"Short story from The Lost Adventures collection."},
       {"id":"avt-going-home-again","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/thelostadventures.webp","title":"The Lost Adventures : Going Home Again","date":"100 AG","lang":"vf","isbn":"9781595827487","desc":"Short story from The Lost Adventures collection."},
@@ -80,6 +69,19 @@ const AVATAR={
       {"id":"avt-aang-the-last-airbender","type":"filmanim","level":"must","tmdb":"980431","media":"movie","img":"/images/avataraang.webp","title":"Aang : The Last Airbender","date":"112 AG"},
       {"id":"avt-legacy","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/legacy.webp","title":"Legacy","date":"124 AG","lang":"vo","ol":{"q":"avatar the last airbender legacy","inc":["legacy"],"exc":["fire nation","yangchen","dungeons","d&d"]},"desc":"An in-universe book: Aang passes his memories and relics on to his son Tenzin."}
     ]},
+    {title:"THE YANGCHEN ERA",entries:[
+      {"id":"avt-the-dawn-of-yangchen","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/thedawnofyangchen.webp","title":"Chronicles of the Avatar 3 : The Dawn of Yangchen","date":"483 BG","lang":"vo","isbn":"9781419756771","desc":"A young Avatar haunted by the memories of her past lives, Yangchen navigates diplomacy and conspiracy in the corrupt city of Bin-Er.","tags":["flashback"]},
+      {"id":"avt-the-legacy-of-yangchen","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/thelegacyofyangchen.webp","title":"Chronicles of the Avatar 4 : The Legacy of Yangchen","date":"482 BG","lang":"vo","isbn":"9781419756795","desc":"Yangchen faces the consequences of her choices, and a plot that threatens the balance between the nations.","tags":["flashback"]}
+    ]},
+    {title:"THE KYOSHI ERA",entries:[
+      {"id":"avt-the-rise-of-kyoshi","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/theriseofkyoshi.webp","title":"Chronicles of the Avatar 1 : The Rise of Kyoshi","date":"296 BG","lang":"vo","isbn":"9781419735042","desc":"A servant who has no idea she is the Avatar, Kyoshi flees after a tragedy and learns to survive among outlaws. The brutal origin of the most legendary Avatar of them all.","tags":["flashback"]},
+      {"id":"avt-the-shadow-of-kyoshi","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/theshadowofkyoshi.webp","title":"Chronicles of the Avatar 2 : The Shadow of Kyoshi","date":"295 BG","lang":"vo","isbn":"9781419735059","desc":"Two years later, Kyoshi is summoned to the Fire Nation, where a threat from the Spirit World is brewing behind the politics.","tags":["flashback"]},
+      {"id":"avt-masters-of-the-elements-off-duty","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/mastersoftheelements.webp","title":"Masters of the Elements Vol.1 : Off Duty","date":"290 BG","lang":"vo","desc":"Following a two week sit-in on wood price negotiations for flying bison saddles, Kyoshi and Rangi leave the Western Air Temple on the back of Pengpeng.","tags":["flashback"]}
+    ]},
+    {title:"THE ROKU ERA",entries:[
+      {"id":"avt-the-reckoning-of-roku","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/thereckoningofroku.webp","title":"Chronicles of the Avatar 5 : The Reckoning of Roku","date":"66 BG","lang":"vo","ol":{"q":"reckoning of roku","inc":["reckoning of roku"]},"desc":"Young Roku takes on a secret mission from Prince Sozin and uncovers hidden agendas on a remote island, alongside his new friend Gyatso.","tags":["flashback"]},
+      {"id":"avt-the-awakening-of-roku","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/theawakeningofroku.webp","title":"Chronicles of the Avatar 6 : The Awakening of Roku","date":"63 BG","lang":"vo","desc":"Impatient to master the Avatar State, Roku channels the energy of the winter solstice — and unleashes chaos on Crescent Island.","tags":["flashback"]}
+    ]},
     {title:"THE KORRA ERA",entries:[
       {"id":"avt-amies-pour-la-vie-free-comic-book-day-2016","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/friendsforlife.webp","title":"Friends for Life (Free Comic Book Day 2016)","date":"~158 AG","lang":"vf","desc":"Also available in the Patterns in Time collection"},
       {"id":"avt-patterns-in-time-skyscrapers","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/patternsintime.webp","title":"Patterns in Time : Skyscrapers","date":"~158 AG","lang":"vo"},
@@ -98,6 +100,95 @@ const AVATAR={
       {"id":"avt-mystery-of-penquan-island","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/penquan.webp","title":"Mystery of Penquan Island","date":"~174 AG","lang":"vo","desc":"A short story from the Korra era."},
       {"id":"avt-patterns-in-time-clearing-the-air","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/patternsintime.webp","title":"Patterns in Time : Clearing the Air","date":"~174 AG","lang":"vf"},
       {"id":"avt-patterns-in-time-a-change-in-the-wind","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/patternsintime.webp","title":"Patterns in Time : A Change in the Wind","date":"~174 AG","lang":"vf"}
+    ]}
+  ],
+  erasRewatch:[
+    {title:"THE YANGCHEN ERA",entries:[
+      {"ref":"avt-the-dawn-of-yangchen","drop":["tags"]},
+      {"ref":"avt-the-legacy-of-yangchen","drop":["tags"]}
+    ]},
+    {title:"THE KYOSHI ERA",entries:[
+      {"ref":"avt-the-rise-of-kyoshi","drop":["tags"]},
+      {"ref":"avt-the-shadow-of-kyoshi","drop":["tags"]},
+      {"ref":"avt-masters-of-the-elements-off-duty","drop":["tags"]}
+    ]},
+    {title:"THE ROKU ERA",entries:[
+      {"ref":"avt-the-reckoning-of-roku","drop":["tags"]},
+      {"ref":"avt-the-awakening-of-roku","drop":["tags"]},
+      {"ref":"avt-earth-and-water-comics-giveaway-day-2026","drop":["tags"]}
+    ]},
+    {title:"BOOK ONE : WATER",group:"HUNDRED YEAR WAR",entries:[
+      {"ref":"avt-jet-rebels-and-rhinos","drop":["tags"]},
+      {"ref":"avt-s1e01-10"},
+      {"ref":"avt-s1e11-16"},
+      {"ref":"avt-relics"},
+      {"ref":"avt-s1e17-20"}
+    ]},
+    {title:"BOOK TWO : EARTH",group:"HUNDRED YEAR WAR",entries:[
+      {"ref":"avt-the-kyoshi-warriors-13"},
+      {"ref":"avt-s2e01-09"},
+      {"ref":"avt-katara-and-the-pirate-s-silver"},
+      {"ref":"avt-sokka-the-avatar"},
+      {"ref":"avt-divided-we-fall"},
+      {"covers":["avt-s2e10-17","avt-s2e18-20"],"id":"avt-r-s2e10-20","subitems":["Season 2 Episodes 10-20"]},
+      {"ref":"avt-escape-from-the-spirit-world"},
+      {"ref":"avt-it-s-only-natural"},
+      {"ref":"avt-going-home-again"},
+      {"ref":"avt-the-bridge"}
+    ]},
+    {title:"BOOK THREE : FIRE",group:"HUNDRED YEAR WAR",entries:[
+      {"ref":"avt-s3e01-02"},
+      {"ref":"avt-private-fire"},
+      {"ref":"avt-s3e03-06"},
+      {"ref":"avt-s3e07-07"},
+      {"ref":"avt-combustion-man-on-a-train"},
+      {"ref":"avt-s3e08-13"},
+      {"ref":"avt-dragon-days"},
+      {"ref":"avt-suki-alone"},
+      {"ref":"avt-s3e14-14"},
+      {"ref":"avt-love-is-a-battlefield"},
+      {"ref":"avt-s3e15-19"},
+      {"ref":"avt-bumi-vs-toph-round-one"},
+      {"ref":"avt-s3e20-21"}
+    ]},
+    {title:"THE AANG ERA",entries:[
+      {"ref":"avt-avatar-legends-city-of-echoes"},
+      {"ref":"avt-la-promesse-the-promise"},
+      {"ref":"avt-matcha-makers"},
+      {"ref":"avt-rebound"},
+      {"ref":"avt-la-recherche-the-search"},
+      {"ref":"avt-smoke-and-shadow-partie-1"},
+      {"ref":"avt-the-rift"},
+      {"ref":"avt-shells"},
+      {"ref":"avt-sisters"},
+      {"ref":"avt-smoke-and-shadow-parties-2-3"},
+      {"ref":"avt-north-and-south"},
+      {"ref":"avt-azula-in-the-spirit-temple"},
+      {"ref":"avt-imbalance"},
+      {"ref":"avt-toph-beifong-s-metalbending-academy"},
+      {"ref":"avt-ashes-of-the-academy"},
+      {"ref":"avt-the-bounty-hunter-and-the-tea-brewer"},
+      {"ref":"avt-aang-the-last-airbender"},
+      {"ref":"avt-legacy"}
+    ]},
+    {title:"THE KORRA ERA",entries:[
+      {"ref":"avt-amies-pour-la-vie-free-comic-book-day-2016"},
+      {"ref":"avt-patterns-in-time-skyscrapers"},
+      {"ref":"avt-patterns-in-time-weavers-ball"},
+      {"ref":"avt-la-legende-de-korra-livre-1-l-air"},
+      {"ref":"avt-la-legende-de-korra-livre-2-les-esprits"},
+      {"ref":"avt-la-legende-de-korra-livre-3-le-changemen"},
+      {"ref":"avt-kya-and-the-secret-of-the-sand"},
+      {"ref":"avt-patterns-in-time-cat-owls-cradle"},
+      {"ref":"avt-la-legende-de-korra-livre-4-l-equilibre"},
+      {"ref":"avt-turf-wars"},
+      {"ref":"avt-lost-pets-free-comic-book-day-2018"},
+      {"ref":"avt-an-avatar-s-chronicle"},
+      {"ref":"avt-ruins-of-the-empire"},
+      {"ref":"avt-legacy-of-the-fire-nation"},
+      {"ref":"avt-mystery-of-penquan-island"},
+      {"ref":"avt-patterns-in-time-clearing-the-air"},
+      {"ref":"avt-patterns-in-time-a-change-in-the-wind"}
     ]}
   ]
 };
