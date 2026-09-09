@@ -7,7 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-09", label:"September 2026", items:[
-      {"nat":"media","uni":"avatar","kind":"comic","title":"Jet: Rebels and Rhinos","meta":"~95 AG","vo":true,"txt":"Added to the Avatar Legends timeline, in ~95 AG, just after Season 2 Episode 17 of The Last Airbender.","href":"en-avatar.html#avt-jet-rebels-and-rhinos","cta":"See in the timeline"},
+      {"nat":"media","uni":"avatar","kind":"comic","title":"Jet: Rebels and Rhinos","meta":"~95 AG","vo":true,"txt":"Added to the Avatar Legends timeline, in ~95 AG, just after Season 2 Episode 17 of The Last Airbender.","img":"/images/jet.webp","href":"en-avatar.html#avt-jet-rebels-and-rhinos","cta":"See in the timeline"},
       {"nat":"site","uni":"dcanimation","kind":"timeline","title":"New timeline: DC Animation","txt":"80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.","href":"en-dcanimation.html","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"jeunesse","title":"Hiding from the Dark","meta":"~0-4 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the young adult novel, in ~0-4 ABY, just after Battlefront II: Inferno Squad.","href":"en-dossier-star-wars.html#0-4-aby-hiding-from-the-dark","cta":"See in the Deep Dive"}
     ]},

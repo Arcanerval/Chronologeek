@@ -42,6 +42,7 @@ window.CG_NEWS = {
         title:"Jet : Rebels and Rhinos", meta:"~95 AG", vo:true,
         txt:"Ajouté à la timeline Avatar Legends, en ~95 AG, juste après "+
             "la Saison 2 Épisode 17 du Dernier Maître de l'Air.",
+        img:"/images/jet.webp",
         href:"e-avatar.html#avt-jet-rebels-and-rhinos",
         cta:"Voir dans la timeline" },
 
