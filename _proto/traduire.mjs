@@ -231,16 +231,13 @@ const TRADUCTIONS = [
   ['80 entrées, du DCAU au DCAMU et à l\'Arkhamverse — les séries animées, les films animés et les jeux dans un seul fil.',
    '80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.'],
 
-  /* ── les deux cartes Avatar du 9 septembre 2026 ────────────────
-     La première annonce la scission de la page en deux parcours, la
-     seconde le comic qui l'a motivée. « Découverte » et « revisionnage »
-     sont les deux mots que Star Wars et Marvel emploient déjà à la
-     bascule ; l'anglais reprend les leurs, « first watch » et
-     « rewatch ». Le titre du comic ne se traduit pas — il sort en VO et
-     il est déclaré identique dans traductions-avatar.mjs. */
-  ['Avatar Legends : deux parcours', 'Avatar Legends: two orders'],
-  ['La page se lit maintenant de deux façons — en découverte, les ères de Yangchen, Kyoshi et Roku passent en flashback après l\'ère de Aang ; en revisionnage, tout revient à sa date.',
-   'The page now reads two ways — on a first watch, the Yangchen, Kyoshi and Roku eras become flashbacks placed after the Aang era; on a rewatch, everything goes back to its own date.'],
+  /* ── la carte Jet du 9 septembre 2026 ───────────────────────────
+     Le journal n'annonce que le comic. La scission de la page en deux
+     parcours y avait sa carte pendant une heure, retirée par Niko : le
+     seul `kind` que porte une carte « site » est `timeline`, et une page
+     qui change d'ordre n'est pas une timeline neuve. Le titre du comic ne
+     se traduit pas — il sort en VO et il est déclaré identique dans
+     traductions-avatar.mjs. */
   ['Ajouté à la timeline Avatar Legends, en ~95 AG, juste après la Saison 2 Épisode 17 du Dernier Maître de l\'Air.',
    'Added to the Avatar Legends timeline, in ~95 AG, just after Season 2 Episode 17 of The Last Airbender.'],
 

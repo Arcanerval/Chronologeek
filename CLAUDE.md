@@ -1300,17 +1300,23 @@ Six points qui ont coûté quelque chose :
 
 ### Avatar, la seule exception
 
-**`_proto/construire-avatar.mjs` ne tourne plus, et il ne faut pas le
-relancer.** Il bâtissait `data-avatar.js` depuis `spec-avatar.json` et deux
-sources qui ont disparu avec la refonte : `avatar.html` à la racine, qui est
-maintenant la page produite, et `badges.js`, supprimé avec les composants
-partagés. Il lève aujourd'hui une `SyntaxError` en essayant de lire du HTML
-comme un littéral JS — c'est un `--check` qui ment, pas un contrôle. **La
-source d'Avatar est `_proto/data-avatar.js` lui-même**, corrigé à la main
-depuis, et `spec-avatar.json` est un document périmé : il ne connaît ni
-*Masters of the Elements* (25 août 2026) ni *Jet : Rebels and Rhinos*
-(9 septembre 2026). L'en-tête « ne pas editer a la main » du fichier de
-données date d'avant tout ça.
+**La source d'Avatar est `_proto/data-avatar.js` lui-même, et il s'édite à la
+main.** C'est le seul fichier de données du dépôt dans ce cas — les cinq autres
+timelines descendent d'un proto français, les cinq chaînes inversées d'un proto
+anglais.
+
+`construire-avatar.mjs` et `spec-avatar.json` le bâtissaient, et ils ont été
+**supprimés le 9 septembre 2026** : la refonte avait emporté les deux sources du
+script — `avatar.html` à la racine, devenue la page produite, et `badges.js`,
+supprimé avec les composants partagés. Il levait une `SyntaxError` en essayant de
+lire du HTML comme un littéral JS, y compris en `--check` : c'était un contrôle
+qui ment. La spec, elle, avait pris deux ajouts de retard — *Masters of the
+Elements* (25 août 2026) et *Jet : Rebels and Rhinos* (9 septembre 2026) n'y
+figurent pas. **Ne pas les rétablir depuis l'historique git**, comme
+`dossier.py` : ils ne rendraient pas le fichier qui est en ligne.
+
+`timeline-avatar-source.txt` reste — c'est le document de Niko, la prose dont
+l'accroche de la page est tirée, pas un intermédiaire de production.
 
 Avatar est le seul univers qu'il faut vraiment traduire. `avatar.html` à la racine
 est encore la page française non traduite et `fr/avatar.html` n'existe pas : il n'y
@@ -2409,7 +2415,7 @@ Trois choses apprises en le faisant :
   l'image pour rien, et le premier passage a fait *grossir* `autresunivers.webp` de
   322 à 392 Ko. Le script ne touche un WebP que s'il doit le réduire.
 - **Le renommage traverse toute la chaîne.** 59 fichiers ont changé d'extension,
-  soit 318 références dans les protos source, `seo.json` et `spec-avatar.json` —
+  soit 318 références dans les protos source, `seo.json` et la spec d'Avatar —
   `img` étant un champ technique, `traduire.mjs` le recopie tel quel et l'anglais
   suit. Une référence oubliée ne lève rien : l'image manque, c'est tout.
 - **Le contrôle se fait au navigateur, pas au disque.** La moitié des visuels sont

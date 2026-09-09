@@ -38,13 +38,6 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
 
-      { nat:"site", uni:"avatar", kind:"timeline",
-        title:"Avatar Legends : deux parcours",
-        txt:"La page se lit maintenant de deux façons — en découverte, les "+
-            "ères de Yangchen, Kyoshi et Roku passent en flashback après "+
-            "l'ère de Aang ; en revisionnage, tout revient à sa date.",
-        href:"e-avatar.html", cta:"Ouvrir la timeline" },
-
       { nat:"media", uni:"avatar", kind:"comic",
         title:"Jet : Rebels and Rhinos", meta:"~95 AG", vo:true,
         txt:"Ajouté à la timeline Avatar Legends, en ~95 AG, juste après "+
