@@ -1689,7 +1689,7 @@ ne désigne même pas DC Comics — et la pastille `.tag`, qui porte le bon mot,
 **au-dessus** de lui, hors du h1. Elle y est entrée :
 
 ```html
-<h1 class="disp off"><span class="tag">Ordre de visionnage canon</span>
+<h1 class="disp off"><span class="tag">Chronologie canon complète</span>
   <span class="nm">Star Wars</span></h1>
 ```
 
@@ -1697,6 +1697,25 @@ Les neuf libellés ont suivi — « Timeline Chronologique » servait trois univ
 neuf sans rien dire d'aucun. Le champ `subtitle` du descripteur d'univers reprend
 ce texte et doit suivre aussi : il n'est affiché nulle part, mais c'est la même
 raison que `legal3`.
+
+**Réécrits par Niko le 9 septembre 2026, et ils se répètent d'une page à
+l'autre — c'est voulu.** Neuf univers pour quatre formules : « Chronologie
+canon complète » chez Star Wars, Avatar Legends, Dragon Age et Assassin's
+Creed ; « Ordre de visionnage chronologique » chez Marvel, Star Trek et The
+Walking Dead ; « Guide du multivers » chez DC ; et « Chronologies DCAU, DCAMU
+et Arkhamverse » chez DC Animation, la seule qui ne partage pas la sienne,
+parce que ce sont ses trois continuités qu'on tape pour la trouver. Deux
+pages disaient « ordre de jeu » là où le guide couvre aussi des romans, et
+Star Trek « In-Universe », qui ne se tape pas.
+
+**Les neuf s'écrivent dans les sources, jamais dans un fichier produit** :
+les quatre protos français et les cinq protos anglais des chaînes inversées,
+plus le `subtitle` du fichier de données correspondant. Et c'est le piège du
+renommage : Star Wars et Marvel reprennent leur `subtitle` de la prod
+anglaise, donc corriger le français seul les laisse sur l'ancienne valeur
+sans une ligne au rapport. Ce sont les deux entrées de `PERIMES` dans
+`traduire.mjs` — leur clé est celle de la prod, qui ne bouge pas, seule la
+valeur suit.
 
 Cinq choses à savoir :
 

@@ -252,10 +252,15 @@ const TRADUCTIONS = [
   // là où c'est le deuxième signal que lit un moteur. Elle est entrée
   // dans le h1 et dit maintenant la requête. Ces quatre libellés-là sont
   // neufs, la prod portait « Timeline Canonique » et ses voisins.
-  ['Ordre de visionnage canon', 'Canon Watch Order'],
-  ['Ordre de visionnage MCU', 'MCU Watch Order'],
-  ['Ordre de visionnage du multivers', 'Multiverse Watch Order'],
-  ['Ordre de visionnage complet', 'Complete Watch Order'],
+  // Réécrite par Niko le 9 septembre 2026, dans les neuf pages d'un coup :
+  // deux d'entre elles disaient encore « ordre de jeu » là où le guide
+  // couvre aussi des romans, et Star Trek « In-Universe », qui ne se tape
+  // pas. Trois formules seulement pour neuf univers, plus celle de DC
+  // Animation qui nomme ses trois continuités — c'est voulu, elles se
+  // répètent d'une page à l'autre comme la description du pied de page.
+  ['Chronologie canon complète', 'Complete canon timeline'],
+  ['Ordre de visionnage chronologique', 'Chronological watch order'],
+  ['Guide du multivers', 'Multiverse guide'],
   // ── le dépliant des filtres, posé le 17 août 2026 ───────────────
   // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
   // repères y étaient dépliés en permanence, sans intitulé commun.

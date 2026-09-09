@@ -126,8 +126,10 @@ const TRADUCTIONS = [
      et la prod ne porte donc plus ni l'un ni l'autre. Star Wars et
      Marvel passent par `PERIMES`, la prod anglaise ayant leur clé ;
      DC ne l'a pas et s'écrit ici. Avatar est dans
-     `traductions-avatar.mjs`, avec le reste de son univers. */
-  ['Ordre de visionnage du multivers', 'Multiverse Watch Order'],
+     `traductions-avatar.mjs`, avec le reste de son univers.
+
+     Réécrite par Niko le 9 septembre 2026 : « Guide du multivers ». */
+  ['Guide du multivers', 'Multiverse guide'],
 
   // marvel.html · « The movie takes place during what's known as Fury's
   // Big Week, so in 2010 » + « right after the events of… »
@@ -377,8 +379,11 @@ const RENOMMES_NOUVEAUX = new Set(RENOMMES.values());
    telle quelle. D'où l'application de `PERIMES` à `refEn` dans
    `valeur()`, et plus seulement aux trois sorties `CG`. */
 const PERIMES = new Map([
-  ['Canon Timeline', 'Canon Watch Order'],
-  ['Optimized Multiverse Timeline', 'MCU Watch Order'],
+  /* Les deux pastilles ont changé deux fois : « Canon Watch Order » le
+     5 septembre 2026, « Complete canon timeline » le 9. La clé reste
+     celle de la prod, qui ne bouge pas ; seule la valeur suit. */
+  ['Canon Timeline', 'Complete canon timeline'],
+  ['Optimized Multiverse Timeline', 'Chronological watch order'],
   ['Star Wars, Marvel, DC and Avatar are trademarks of their respective owners;'
    + ' Chronologeek is an independent fan project.',
    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed'

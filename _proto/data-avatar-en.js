@@ -6,7 +6,7 @@ window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"ho
 const AVATAR={
   id:"avatar",
   title:"Avatar Legends",
-  subtitle:"Complete Watch Order",
+  subtitle:"Complete canon timeline",
   description:"Animation · Comics · Books",
   color:"#7dd3fc",
   glow:"rgba(125,211,252,.3)",

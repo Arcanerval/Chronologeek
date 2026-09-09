@@ -519,9 +519,15 @@ export const DCA_TRADUCTIONS = [
      donc que le nom nu de la franchise, là où c'est le deuxième
      signal que lit un moteur. Elle est entrée dans le h1 et dit
      maintenant la requête. Le champ subtitle du descripteur
-     d'univers en reprend le texte, d'où deux emplois. */
-  ["Chronological Watch Order",
-   "Ordre de visionnage chronologique"],
+     d'univers en reprend le texte, d'où deux emplois.
+
+     Réécrite par Niko le 9 septembre 2026. C'est la seule des neuf qui
+     ne partage pas sa formule : les huit autres se rangent en trois
+     libellés, celui-ci nomme ses trois continuités, parce que c'est ce
+     qu'on tape pour la trouver. Le mot « timelines » se rend par
+     « chronologies » — la page en tient trois, pas une. */
+  ["DCAU, DCAMU and Arkhamverse timelines",
+   "Chronologies DCAU, DCAMU et Arkhamverse"],
 
   ["The 3 universes",
    "Les 3 univers"],

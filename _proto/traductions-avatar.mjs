@@ -106,8 +106,10 @@ export const AVATAR_TRADUCTIONS = [
   /* La pastille du h1, posée le 5 septembre 2026, et le champ
      `subtitle` qui en reprend le texte. Elle disait « Timeline
      Chronologique », qui ne nommait ni l'univers ni ce qu'on vient
-     y chercher. */
-  ["Ordre de visionnage complet", "Complete Watch Order"],
+     y chercher. Réécrite par Niko le 9 septembre 2026 : la page dit
+     maintenant la même chose que Star Wars, Dragon Age et Assassin's
+     Creed, les quatre guides qui couvrent un canon entier. */
+  ["Chronologie canon complète", "Complete canon timeline"],
   /* La mention légale des données. Elle énumérait quatre univers, la
      prod datant d'avant Star Trek et The Walking Dead ; mise à six le
      18 août 2026, avec la formule du pied de page. Les quatre autres

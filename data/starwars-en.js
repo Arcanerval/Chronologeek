@@ -5,7 +5,7 @@ window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"ho
 const DATA_SW={
   id:"sw",
   title:"Star Wars",
-  subtitle:"Canon Watch Order",
+  subtitle:"Complete canon timeline",
   description:"Movies · TV Shows · Animation · Video Games",
   color:"#4d9fff",
   glow:"rgba(77,159,255,.35)",
