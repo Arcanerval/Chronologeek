@@ -700,10 +700,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     /* la vignette n'existe que sur les ajouts de média ; sans image
        propre, la bannière du Dossier de l'univers, et sans Dossier un
        aplat dans l'encre du type plutôt qu'un trou dans la rangée */
+    /* L'`alt` ne se pose que sur la vignette de l'œuvre, `e.img` : elle la
+       montre, elle porte donc son titre, comme les vignettes de timeline
+       depuis le 5 septembre 2026. La bannière de Dossier qui la remplace,
+       elle, ne montre pas l'œuvre mais d'où elle vient — lui prêter le
+       titre serait faux, et le titre est de toute façon la ligne d'à
+       côté : `alt=""` est là ce qu'il faut, comme sur les deux images du
+       bouton « remonter en haut ». */
     var vig='', src=e.img||DOSS[e.uni];
     if(!site){
       vig=src
-        ? '<span class="vig"><img src="'+esc(src)+'" alt="" loading="lazy"/></span>'
+        ? '<span class="vig"><img src="'+esc(src)+'" alt="'+(e.img?esc(e.title):'')+'" loading="lazy"/></span>'
         : '<span class="vig none" style="--k:'+(k?k[1]:'var(--soon)')+'" aria-hidden="true">'+
             '<b>'+esc(e.title.trim().charAt(0))+'</b></span>';
     }

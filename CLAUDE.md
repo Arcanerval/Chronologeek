@@ -2363,6 +2363,15 @@ lecteur d'écran, qui annonçait soixante-deux fois « image ».
 `aria-label`. Une image neuve suit l'une ou l'autre règle selon qu'elle nomme
 quelque chose ou qu'elle décore.
 
+**Les vignettes du journal ont suivi le 9 septembre 2026**, et elles montrent
+que la règle se tranche image par image, pas gabarit par gabarit. `.vig img`
+sortait avec un `alt=""` sur les dix cartes ; il porte maintenant le titre —
+mais **seulement quand la vignette est celle de l'œuvre** (`e.img`). Les trois
+cartes sans visuel propre retombent sur `DOSS[e.uni]`, la bannière du Dossier
+de l'univers : celle-là ne montre pas l'œuvre, elle dit d'où l'entrée vient.
+Lui prêter le titre serait faux, et le titre est de toute façon la ligne d'à
+côté — `alt=""` y est la bonne réponse. Sept vignettes nommées, trois muettes.
+
 **Il n'y a pas de `width`/`height` sur les vignettes, et il n'en faut pas** :
 `.bu-fig` fixe 128×72 en CSS avec `object-fit:cover`, donc la place est réservée
 avant le chargement et rien ne se décale. Ne pas les ajouter en croyant régler un
