@@ -171,6 +171,14 @@ export const AVATAR_TRADUCTIONS = [
    "Season 2 Episodes 10-17"],
   ["Jet : Rebels and Rhinos",
    "Jet: Rebels and Rhinos"],
+  /* Le seul synopsis de la timeline dont l'anglais est la source : Niko
+     l'a livré dans cette langue. Deux retouches, celles que CLAUDE.md
+     autorise — « an standalone » corrigé en « a standalone », et le sujet
+     « Jet: Rebels and Rhinos is » retiré, aucune des soixante-et-onze
+     autres fiches ne redisant son titre dans son résumé. Le français en
+     descend, contrairement au reste de la page. */
+  ["Roman graphique indépendant dans l'univers d'Avatar Legends, sur Jet et la formation des Combattants de la Liberté.",
+   "A standalone graphic novel set in the world of Avatar Legends, following Jet and the formation of the Freedom Fighters."],
   ["Saison 2 Épisodes 18-20",
    "Season 2 Episodes 18-20"],
   ["Saison 2 Épisodes 10-20",

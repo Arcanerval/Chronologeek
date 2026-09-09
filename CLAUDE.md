@@ -512,10 +512,15 @@ Quatre choses à savoir :
   pas donné la même couleur à la même ère. D'où la table `ENCRE`, bâtie sur
   `D.erasRewatch`. Rien à changer dans le CSS, et `--era3` reste ce que le
   voile du bandeau attend.
-- **Deux œuvres bougent en plus des trois ères.** *Jet : Rebels and Rhinos*
+- **Cinq œuvres bougent en plus des trois ères.** *Jet : Rebels and Rhinos*
   (~95 AG) est en découverte un flashback posé après la saison 2 épisode 17,
   là où Jet meurt ; en rejeu il ouvre le Livre 1, cinq ans avant le réveil
-  d'Aang. *Earth & Water* (~55 BG) quitte le Livre 3 pour l'ère de Roku.
+  d'Aang. *Earth & Water* (~55 BG) quitte le Livre 3 pour l'ère de Roku. Et
+  les trois comics qui ouvrent l'ère de Korra — *Amies pour la Vie*,
+  *Skyscrapers*, *Weaver's Ball*, de ~158 à ~167 AG — passent en découverte
+  **après le Livre 1 : L'Air**, la série les éclairant : ils y prennent
+  `tags:["flashback"]`, et `drop:["tags"]` en rejeu, où ils reprennent la
+  tête de l'ère. Dix-sept flashbacks en découverte.
 - **Le seul `covers` recolle la saison 2.** Jet coupe le bloc
   `avt-s2e10-20` en `avt-s2e10-17` et `avt-s2e18-20` ; en rejeu rien ne
   s'intercale plus entre eux, et `avt-r-s2e10-20` les couvre tous les deux.
