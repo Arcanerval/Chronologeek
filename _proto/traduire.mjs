@@ -156,6 +156,22 @@ const TRADUCTIONS = [
   ['Le film se déroule en 2027', 'The movie takes place in 2027'],
   ['La première scène est importante, la deuxième est très importante et placée plus loin dans la timeline',
    'The first scene is important; the second is very important, and placed later in the timeline'],
+  /* ── la question des jeux, posée le 10 septembre 2026 ──
+     `faqCats` ne connaissait qu'un verbe, et les dix jeux Star Wars
+     s'annonçaient donc « Why watch ». La troisième catégorie est calquée
+     sur celle de Dragon Age, qui porte ses trois verbes depuis toujours :
+     « Why play {name} at this point in the timeline? ». */
+  ['Pourquoi jouer à {name} maintenant dans la timeline ?',
+   'Why play {name} at this point in the timeline?'],
+
+  /* ── Zero Company, déplacé après Jedi Fallen Order le 10 septembre 2026 ──
+     Le jeu passe de 19 BBY à 19-18 BBY, et sa réponse ne nomme plus le
+     seul Épisode III : la formule anglaise est celle de Niko. */
+  ['Le jeu se déroule en 19-18 BBY, avant, pendant et après La Revanche des Sith',
+   'The game takes place in 19-18 BBY, before, during and after Revenge of the Sith'],
+  ['Parce qu\'il spoile des éléments de différents médias qui viennent avant',
+   'Because it spoils elements from different media before'],
+
   // whats-new.html emploie « Deep Dive » au singulier, et `nav.deep`
   // « Deep Dives » au pluriel : c'est le nom anglais du Dossier.
   ['Voir dans la timeline', 'See in the timeline'],
@@ -949,8 +965,10 @@ const TITRES_IDENTIQUES = [
   '~3–2 BBY',
   '3 BBY',
   // Star Wars · le jeu ajouté le 30 août 2026, qui porte le même titre
-  // dans les deux langues.
+  // dans les deux langues. Sa date est passée à 19-18 BBY le 10 septembre
+  // 2026, quand il a rejoint l'ère de l'Empire : une date ne se traduit pas.
   'Star Wars Zero Company',
+  '19-18 BBY',
   /* Dossier Star Wars · le roman jeune adulte VO ajouté le 1er septembre
      2026, et sa date. « ABY » est une unité inventée : elle ne se
      traduit pas. */

@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://chronologeek.app/</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
   <url><loc>https://chronologeek.app/starwars</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
@@ -72,12 +72,12 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
   </url>
   <url><loc>https://chronologeek.app/fr/</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
   <url><loc>https://chronologeek.app/fr/starwars</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
