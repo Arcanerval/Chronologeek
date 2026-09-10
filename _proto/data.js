@@ -142,7 +142,7 @@ const DATA_SW={
     {title:"L'ÈRE DE L'EMPIRE",entries:[
       {ref:"sw-bb1"},
       {ref:"sw-bb2"},
-      {ref:"sw-zerocompany",drop:["tags","faq.play"]},
+      {ref:"sw-zerocompany",drop:["tags"],faq:{play:"Parce qu'il couvre une période assez longue et qu'il se place bien ici, sans aucun spoil"}},
       {ref:"sw-totu1"},
       {ref:"sw-totu23"},
       {ref:"sw-maul"},

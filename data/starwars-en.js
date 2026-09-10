@@ -114,7 +114,7 @@ const DATA_SW={
     {title:"THE IMPERIAL ERA",entries:[
       {"ref":"sw-bb1"},
       {"ref":"sw-bb2"},
-      {"ref":"sw-zerocompany","drop":["tags","faq.play"]},
+      {"ref":"sw-zerocompany","drop":["tags"],"faq":{"play":"Because it covers a fairly long period and fits well here, without any spoils"}},
       {"ref":"sw-totu1"},
       {"ref":"sw-totu23"},
       {"ref":"sw-maul"},

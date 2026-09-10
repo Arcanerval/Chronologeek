@@ -171,6 +171,10 @@ const TRADUCTIONS = [
    'The game takes place in 19-18 BBY, before, during and after Revenge of the Sith'],
   ['Parce qu\'il spoile des éléments de différents médias qui viennent avant',
    'Because it spoils elements from different media before'],
+  /* En rejeu, la réponse n'est plus la même : le jeu n'y est plus un
+     flashback, il tombe à sa place. La formule est celle de Niko. */
+  ['Parce qu\'il couvre une période assez longue et qu\'il se place bien ici, sans aucun spoil',
+   'Because it covers a fairly long period and fits well here, without any spoils'],
   /* La carte du journal suit le déplacement : elle dit toujours la place
      dans le premier visionnage, jamais celle du rejeu. */
   ['Ajouté à la timeline Star Wars, en 19-18 BBY, juste après Star Wars Jedi : Fallen Order.',
