@@ -1,5 +1,8 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N] [--plus id,id]
+
+   --plus tire une entree hors du filtre et la met au rang des essentiels : Rogue One
+   est "important" dans les donnees, et le site n'a pas a changer pour une video.
 
    Une oeuvre par carte, coupe nette : pas de defilement. C'est le choix de Niko
    du 6 septembre 2026 — une timeline qui glisse est vite penible a regarder, la
@@ -92,9 +95,12 @@ function suite(D, opts) {
       rang++;
       if (opts.ere != null && i !== opts.ere) continue;
       const niveau = e.level || e.imp || '';
-      if (opts.only === 'must' && niveau !== 'must') continue;
-      if (opts.only === 'must+' && niveau !== 'must' && niveau !== 'important') continue;
-      out.push({ ...e, rang, ere: ere.title || '', must: niveau === 'must' });
+      const force = opts.plus && opts.plus.has(e.id);
+      if (!force && opts.only === 'must' && niveau !== 'must') continue;
+      if (!force && opts.only === 'must+' && niveau !== 'must' && niveau !== 'important') continue;
+      /* une entree tiree par --plus est mise au rang des essentiels : sans ca elle
+         sortirait sans etoile ni bordure au milieu de cartes qui les portent. */
+      out.push({ ...e, rang, ere: ere.title || '', must: niveau === 'must' || !!force });
     }
   });
   return out;
@@ -272,19 +278,24 @@ async function main() {
   const dur = Number(val('--dur', '0.62'));
   const only = val('--only', null);
   const ere = a.includes('--ere') ? Number(val('--ere')) : null;
+  const plus = new Set(String(val('--plus', '')).split(',').map(s => s.trim()).filter(Boolean));
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
-      '> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N]');
+      '> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N] [--plus id,id]');
     process.exit(1);
   }
 
   const D = charge(UNIVERS[cle].data + (lang === 'en' ? '-en' : ''));
-  const cartes = suite(D, { only, ere });
+  const cartes = suite(D, { only, ere, plus });
+  for (const id of plus) {
+    if (!cartes.some(c => c.id === id)) throw new Error(`--plus : aucune entree "${id}"`);
+  }
   const total = suite(D, {}).length;
   if (!cartes.length) throw new Error('la selection ne retient aucune entree');
 
-  const suffixe = [only, ere != null ? 'ere' + ere : null].filter(Boolean).join('-');
+  const suffixe = [only, ere != null ? 'ere' + ere : null, plus.size ? 'plus' : null]
+    .filter(Boolean).join('-');
   const nomFichier = `${cle}-${lang}${suffixe ? '-' + suffixe : ''}`;
   const dossier = path.join(RACINE, 'promo', 'video-' + nomFichier);
   fs.mkdirSync(dossier, { recursive: true });
