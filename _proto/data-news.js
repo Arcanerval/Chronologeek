@@ -64,9 +64,9 @@ window.CG_NEWS = {
     { key:"2026-08", label:"Août 2026", items:[
 
       { nat:"media", uni:"sw", kind:"jeu",
-        title:"Star Wars Zero Company", meta:"19 BBY",
-        txt:"Ajouté à la timeline Star Wars, en 19 BBY, juste après "+
-            "The Clone Wars Saison 7 Épisodes 9-12.",
+        title:"Star Wars Zero Company", meta:"19-18 BBY",
+        txt:"Ajouté à la timeline Star Wars, en 19-18 BBY, juste après "+
+            "Star Wars Jedi : Fallen Order.",
         img:"/images/zerocompany.webp",
         href:"e-starwars.html#sw-zerocompany",
         cta:"Voir dans la timeline" },

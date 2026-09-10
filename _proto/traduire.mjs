@@ -171,6 +171,10 @@ const TRADUCTIONS = [
    'The game takes place in 19-18 BBY, before, during and after Revenge of the Sith'],
   ['Parce qu\'il spoile des éléments de différents médias qui viennent avant',
    'Because it spoils elements from different media before'],
+  /* La carte du journal suit le déplacement : elle dit toujours la place
+     dans le premier visionnage, jamais celle du rejeu. */
+  ['Ajouté à la timeline Star Wars, en 19-18 BBY, juste après Star Wars Jedi : Fallen Order.',
+   'Added to the Star Wars timeline, in 19-18 BBY, just after Star Wars Jedi: Fallen Order.'],
 
   // whats-new.html emploie « Deep Dive » au singulier, et `nav.deep`
   // « Deep Dives » au pluriel : c'est le nom anglais du Dossier.
