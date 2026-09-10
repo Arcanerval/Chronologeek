@@ -210,31 +210,6 @@
  },
  {
   "universe": "dc",
-  "title": "Get Jiro",
-  "date_sort": "2026-10-04",
-  "date_txt": "04/10/2026",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "In a post-apocalyptic, near-future Los Angeles where culinary culture reigns supreme, the world's most powerful figures are chefs, and food is both currency and a demarcation of class, the mysterious sushi chef Jiro sets out on a quest for vengeance.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 1,
-   "mark": "premiere"
-  },
-  "poster": "/mCdnYVwES1QQ783bJMmZdYmULji.jpg",
-  "tmdb": 231801,
-  "media": "tv"
- },
- {
-  "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-10-04",
   "date_txt": "04/10/2026",

@@ -134,8 +134,17 @@ EXCLUDE = {
     # produit l'animation télé aussi, et interroger `air_date` la fait remonter
     # là où la seule date de première ne la montrait pas. Ni l'une ni l'autre
     # n'est au guide.
+    #
+    # Get Jiro est la même chose par une autre porte : l'adaptation animée du
+    # roman graphique d'Anthony Bourdain, paru chez Vertigo. L'empreinte est
+    # bien celle de DC, donc le studio la porte et TMDB la range sous lui —
+    # mais il n'y a là ni personnage ni continuité DC, et le guide suit des
+    # continuités, pas un catalogue d'éditeur. Un chef sushi dans un Los
+    # Angeles post-apocalyptique n'a pas de place dans une timeline du
+    # multivers.
     "dc":       [r"\blego\b", r"\bknightfall\b",
-                 r"\bteen titans go\b", r"\bmy adventures with superman\b"],
+                 r"\bteen titans go\b", r"\bmy adventures with superman\b",
+                 r"\bget jiro\b"],
     # Le guide Star Trek ne couvre que l'Alpha Canon — films et séries. Niko
     # l'écrit noir sur blanc dans « What's left out, and why ? » : romans,
     # comics et jeux vidéo sont du Beta Canon et restent dehors. TMDB ne
