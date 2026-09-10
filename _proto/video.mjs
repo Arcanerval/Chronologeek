@@ -45,9 +45,11 @@ const TYPES = {
 
 const T = {
   en: { ordre:'IN ORDER', hookSub:'no spoilers', entries:'entries', eras:'eras',
+        essentiels:'THE ESSENTIALS', essentielsN:'essentials', total:'in total',
         outro1:'The full order', outro2:'free, no account',
         outro3:'9 universes · 1,463 entries · EN + FR', cta:'chronologeek.app' },
   fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères',
+        essentiels:'LES ESSENTIELS', essentielsN:'essentiels', total:'au total',
         outro1:"L'ordre complet", outro2:'gratuit, sans compte',
         outro3:'9 univers · 1 463 œuvres · FR + EN', cta:'chronologeek.app' },
 };
@@ -108,10 +110,27 @@ function suite(D, opts) {
 
 /* ---------- rendu ---------- */
 
-function page(cle, D, cartes, lang, total) {
+/* La carte d'ouverture doit dire ce que la video montre, pas ce que la page
+   contient : "62 entries" au-dessus de dix cartes est un mensonge, et c'est la
+   premiere image que le spectateur voit. Une selection remplace donc "IN ORDER"
+   par son nom et met le total de la page en seconde mesure. */
+function ouverture(D, cartes, lang, total, sel) {
+  const t = T[lang];
+  if (!sel) return {
+    ord: t.ordre,
+    st: [[total, t.entries], [D.eras.length, t.eras], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
+  };
+  return {
+    ord: sel.nom,
+    st: [[cartes.length, sel.unite], [total, t.total], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
+  };
+}
+
+function page(cle, D, cartes, lang, total, sel) {
   const t = T[lang];
   const encre = UNIVERS[cle].encre;
   const nom = decode(D.title || cle);
+  const ouv = ouverture(D, cartes, lang, total, sel);
   const cover = couverture(cle);
 
   const carte = (e, i) => {
@@ -221,11 +240,9 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
   ${cover ? `<img class="bg" src="${esc(cover)}" alt="">` : ''}
   <div class="in">
     <h1>${esc(nom)}</h1>
-    <p class="ord">${esc(t.ordre)}</p>
+    <p class="ord" style="font-size:${ouv.ord.length > 24 ? 66 : ouv.ord.length > 15 ? 86 : 112}px">${esc(ouv.ord)}</p>
     <div class="st">
-      <div><b>${total}</b><span>${esc(t.entries)}</span></div>
-      <div><b>${D.eras.length}</b><span>${esc(t.eras)}</span></div>
-      <div><b>${esc(t.hookSub)}</b><span>${lang === 'en' ? 'guaranteed' : 'garanti'}</span></div>
+      ${ouv.st.map(([b, s]) => `<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('\n      ')}
     </div>
   </div>
 </section>
@@ -240,7 +257,7 @@ ${cartes.map(carte).join('')}
 
 /* ---------- assemblage ---------- */
 
-function monte(dossier, plans, sortie) {
+function monte(dossier, plans, sortie, audio) {
   /* le demuxer concat rejoue la derniere image sans duree : elle est repetee,
      sinon ffmpeg coupe la fin de la video au lieu de la tenir. */
   const liste = plans.map(p =>
@@ -254,15 +271,27 @@ function monte(dossier, plans, sortie) {
      a la duree voulue, sinon l'ecran de fin tient deux fois trop longtemps. */
   const total = plans.reduce((s, p) => s + p.dur, 0);
 
+  /* --audio boucle la piste plutot que de laisser du silence si elle est plus
+     courte que la video, et la ferme sur un fondu : une musique coupee net a la
+     derniere image s'entend comme un bug. Sans --audio, la piste reste muette —
+     TikTok et Instagram refusent une video sans aucune piste audio. */
+  const entree = audio
+    ? ['-stream_loop', '-1', '-i', audio]
+    : ['-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100'];
+  const fondu = Math.min(1.5, total / 4);
+  const filtre = audio
+    ? ['-af', `afade=t=in:st=0:d=0.5,afade=t=out:st=${(total - fondu).toFixed(3)}:d=${fondu.toFixed(3)}`]
+    : [];
+
   execFileSync('ffmpeg', [
     '-y', '-loglevel', 'error',
     '-f', 'concat', '-safe', '0', '-i', f,
-    /* une piste muette : TikTok et Instagram refusent une video sans audio */
-    '-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
+    ...entree,
     '-t', total.toFixed(3),
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '19',
     '-vf', 'fps=30,format=yuv420p', '-r', '30',
-    '-c:a', 'aac', '-b:a', '96k',
+    ...filtre,
+    '-c:a', 'aac', '-b:a', audio ? '192k' : '96k',
     '-movflags', '+faststart',
     sortie,
   ], { stdio: ['ignore', 'ignore', 'pipe'] });
@@ -279,12 +308,14 @@ async function main() {
   const only = val('--only', null);
   const ere = a.includes('--ere') ? Number(val('--ere')) : null;
   const plus = new Set(String(val('--plus', '')).split(',').map(s => s.trim()).filter(Boolean));
+  const audio = val('--audio', null);
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
-      '> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N] [--plus id,id]');
+      '> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N] [--plus id,id] [--audio piste.mp3]');
     process.exit(1);
   }
+  if (audio && !fs.existsSync(audio)) throw new Error(`--audio : fichier introuvable "${audio}"`);
 
   const D = charge(UNIVERS[cle].data + (lang === 'en' ? '-en' : ''));
   const cartes = suite(D, { only, ere, plus });
@@ -300,7 +331,12 @@ async function main() {
   const dossier = path.join(RACINE, 'promo', 'video-' + nomFichier);
   fs.mkdirSync(dossier, { recursive: true });
 
-  const html = page(cle, D, cartes, lang, total);
+  const sel = only === 'must' ? { nom: T[lang].essentiels, unite: T[lang].essentielsN }
+    : ere != null ? { nom: decode(D.eras[ere].title || ''), unite: T[lang].entries }
+    : only === 'must+' ? { nom: T[lang].essentiels, unite: T[lang].entries }
+    : null;
+
+  const html = page(cle, D, cartes, lang, total, sel);
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
 
@@ -321,7 +357,7 @@ async function main() {
   await nav.close();
 
   const mp4 = path.join(RACINE, 'promo', nomFichier + '.mp4');
-  monte(dossier, plans, mp4);
+  monte(dossier, plans, mp4, audio);
 
   const secondes = plans.reduce((s, p) => s + p.dur, 0);
   const poids = (fs.statSync(mp4).size / 1048576).toFixed(1);
