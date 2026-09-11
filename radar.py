@@ -150,8 +150,20 @@ EXCLUDE = {
     # comics et jeux vidéo sont du Beta Canon et restent dehors. TMDB ne
     # connaît ni romans ni comics, mais il range les captations de convention
     # et les making-of parmi les films ; ces motifs restent le garde-fou.
+    #
+    # « Star Trek: Legenden » est le cas que ST_TITRE ne peut pas attraper : son
+    # titre commence bien par « Star Trek », et c'est pourtant la case de
+    # programmation allemande sous laquelle Tele 5 rediffuse la franchise. Sa
+    # fiche TMDB le dit sans le dire — ni genre, ni société, ni synopsis, ni
+    # mot-clé, et cinquante « épisodes » en une saison, plusieurs par jour. Elle
+    # a pollué les quatre premiers jours du radar le 11 septembre 2026, quinze
+    # cartes contre deux pour Strange New Worlds.
+    #
+    # Ne pas essayer d'en tirer une règle sur les fiches pauvres : une annonce
+    # fraîche en a une aussi, et c'est précisément ce que le radar doit voir.
+    # C'est la même réponse que Get Jiro côté DC — on nomme l'intrus.
     "startrek": [r"\blego\b", r"\bidw\b", r"blu-ray", r"\bdvd\b",
-                 r"\bissue \d", r"noveli[sz]ation"],
+                 r"\bissue \d", r"noveli[sz]ation", r"\blegenden\b"],
     # « Lanterns: The Official Podcast » n'est pas la série Lanterns : c'est
     # l'émission qui en parle, interviews de l'équipe à l'appui. TMDB la range
     # parmi les séries, et elle arrivait donc au radar à côté de la vraie.
