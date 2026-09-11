@@ -47,13 +47,25 @@ const TYPES = {
 const T = {
   en: { ordre:'IN ORDER', hookSub:'no spoilers', entries:'entries', eras:'eras',
         essentiels:'THE ESSENTIALS', essentielsN:'essentials', total:'in total',
+        premiere:'FIRST WATCH ORDER',
         outro1:'The full order', outro2:'free, no account',
-        outro3:'9 universes · 1,463 entries · EN + FR', cta:'chronologeek.app' },
+        outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR`,
+        cta:'chronologeek.app' },
   fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères',
         essentiels:'LES ESSENTIELS', essentielsN:'essentiels', total:'au total',
+        premiere:'PREMIÈRE VISION',
         outro1:"L'ordre complet", outro2:'gratuit, sans compte',
-        outro3:'9 univers · 1 463 œuvres · FR + EN', cta:'chronologeek.app' },
+        outro3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN`,
+        cta:'chronologeek.app' },
 };
+
+/* Le decompte de fin se lit dans l'index de la recherche, que la publication
+   produit depuis les memes donnees : ecrit en dur, il annoncait encore
+   "9 universes · 1,463 entries" le jour ou Jurassic World en faisait dix. */
+function decompte() {
+  const idx = JSON.parse(fs.readFileSync(path.join(RACINE, 'search-en.json'), 'utf8'));
+  return [Object.keys(UNIVERS).length, idx.e.length];
+}
 
 const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;')
   .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -117,8 +129,11 @@ function suite(D, opts) {
    par son nom et met le total de la page en seconde mesure. */
 function ouverture(D, cartes, lang, total, sel) {
   const t = T[lang];
+  /* un univers a deux parcours ne peut montrer que l'un des deux : la video suit
+     `eras`, la decouverte, et le dit — "in order" seul laisserait croire a la
+     chronologie du monde, qui est l'autre parcours. */
   if (!sel) return {
-    ord: t.ordre,
+    ord: (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre,
     st: [[total, t.entries], [D.eras.length, t.eras], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
   };
   return {
@@ -133,6 +148,7 @@ function page(cle, D, cartes, lang, total, sel) {
   const nom = decode(D.title || cle);
   const ouv = ouverture(D, cartes, lang, total, sel);
   const cover = couverture(cle);
+  const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
 
   const carte = (e, i) => {
     const [bt, fr, en] = TYPES[e.type] || ['#8f8fa8', String(e.type||'').toUpperCase(), String(e.type||'').toUpperCase()];
@@ -142,7 +158,7 @@ function page(cle, D, cartes, lang, total, sel) {
        Menace" ne peuvent pas tenir le meme corps sans que l'un deborde. */
     const taille = titre.length > 40 ? ' t3' : titre.length > 24 ? ' t2' : '';
     return `<section class="f card${e.must ? ' must' : ''}">
-      <p class="eye"><span class="pill"></span>${esc(nom)} · ${esc(t.ordre)}</p>
+      <p class="eye"><span class="pill"></span>${esc(nom)} · ${esc(parcours)}</p>
       <div class="vis">
         ${e.img ? `<img src="${esc(visuel(e.img))}" alt="">` : '<div class="ph"></div>'}
         <span class="no">${String(e.rang).padStart(2,'0')}</span>
@@ -252,7 +268,7 @@ ${cartes.map(carte).join('')}
   <h2>${esc(t.outro1)}</h2>
   <p class="u">${esc(t.cta)}</p>
   <p class="s">${esc(t.outro2)}</p>
-  <p class="t">${esc(t.outro3)}</p>
+  <p class="t">${esc(t.outro3(...decompte()))}</p>
 </section>`;
 }
 
