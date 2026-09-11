@@ -42,6 +42,9 @@ const TYPES = {
   jeu:['#ffb74d','JEU','GAME'], dlc:['#ffb74d','DLC','DLC'],
   special:['#ffa726','SPÉCIAL','SPECIAL'], video:['#f472b6','VIDÉO','VIDEO'],
   livre:['#c5a880','ROMAN','NOVEL'], comic:['#c5a880','COMIC','COMIC'],
+  /* "roman" et "short" : les ecritures de Jurassic World et d'autres donnees ;
+     sans elles la video anglaise affichait "ROMAN" en francais */
+  roman:['#c5a880','ROMAN','NOVEL'], short:['#f472b6','COURT MÉTRAGE','SHORT FILM'],
 };
 
 const T = {
