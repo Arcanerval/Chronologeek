@@ -47,13 +47,13 @@ const TYPES = {
 const T = {
   en: { ordre:'IN ORDER', hookSub:'no spoilers', entries:'entries', eras:'eras',
         essentiels:'THE ESSENTIALS', essentielsN:'essentials', total:'in total',
-        premiere:'FIRST WATCH ORDER',
+        premiere:'FIRST WATCH ORDER', essentiel:'Essential', important:'Important',
         outro1:'The full order', outro2:'free, no account',
         outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR`,
         cta:'chronologeek.app' },
   fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères',
         essentiels:'LES ESSENTIELS', essentielsN:'essentiels', total:'au total',
-        premiere:'PREMIÈRE VISION',
+        premiere:'PREMIÈRE VISION', essentiel:'Essentiel', important:'Important',
         outro1:"L'ordre complet", outro2:'gratuit, sans compte',
         outro3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN`,
         cta:'chronologeek.app' },
@@ -126,13 +126,63 @@ function suite(D, opts) {
 /* ---------- rendu ---------- */
 
 /* l'accroche et la fin tiennent plus longtemps : on y lit une adresse */
-const ACCROCHE = 2.4, FIN = 3.4;
+const ACCROCHE = 3.0, FIN = 3.4;
 
 /* le triangle des importants est celui des pages (LVICO de e-starwars.html),
    trait et encre compris : le spectateur qui arrive sur le site doit y
    reconnaitre le signe qu'il a vu passer dans la video. */
 const IMP = '<svg class="imp" viewBox="0 0 24 24" aria-hidden="true">' +
   '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>';
+
+/* Les episodes d'une entree, en une ligne qui se lit en moins d'une seconde.
+   Sans eux, six cartes "The Clone Wars" se suivent sans qu'on comprenne
+   pourquoi la serie est coupee. `subitems` les liste un par un, dans l'ordre de
+   visionnage et pas dans l'ordre de diffusion : "Season 2 Episode 17" peut
+   preceder "Season 2 Episode 4". On resserre donc sans jamais trier — les
+   episodes qui se suivent deviennent une plage, et la saison ne se repete pas
+   tant qu'elle ne change pas : "S1 E11-12, 15, 19-21 · S2 E1-3, 17-19, 4-8".
+   Ce qui n'est pas un episode seul ("Season 1", "Season 2 Episodes 1-6") passe
+   tel quel, raccourci en S/E. Les " " de la donnee separent des arcs, pas des
+   episodes : ils ne comptent pas. */
+const EP_RE = /^(?:season|saison)\s+(\d+)\s+(?:episode|épisode)\s+(\d+)$/i;
+function episodes(subitems, lang) {
+  const items = (subitems || []).map(s => decode(s).trim()).filter(Boolean);
+  if (!items.length) return null;
+  const morceaux = [];   // [{s, plages:[[a,b]]}] ou {brut}
+  let seuls = 0;
+  for (const it of items) {
+    const m = it.match(EP_RE);
+    if (!m) {
+      /* une parenthese qui enumere des titres ("Shorts 1-4 (The Machine in the
+         Ghost, Art Attack, …)") ne se lit pas en une seconde : elle tombe. Celle
+         qui nomme un arc ou un repere ("(Stealth Strike)", "(epilogue ~17 BBY)")
+         reste. */
+      morceaux.push({ brut: it
+        .replace(/\s*\([^)]*,[^)]*\)/g, '')
+        .replace(/\b(?:season|saison)\s+(\d+)\s+(?:episodes?|épisodes?)\s+/gi, 'S$1 E')
+        .replace(/\b(?:season|saison)\s+(\d+)/gi, 'S$1')
+        .replace(/(\d)-(?=\d)/g, '$1–') });
+      continue;
+    }
+    seuls++;
+    const s = +m[1], e = +m[2];
+    const der = morceaux[morceaux.length - 1];
+    if (der && der.s === s) {
+      const p = der.plages[der.plages.length - 1];
+      if (e === p[1] + 1) p[1] = e; else der.plages.push([e, e]);
+    } else morceaux.push({ s, plages: [[e, e]] });
+  }
+  const txt = morceaux.map(m => m.brut ?? `S${m.s} E` +
+    m.plages.map(([a, b]) => a === b ? a : `${a}–${b}`).join(', ')).join('  ·  ')
+    /* la ligne ne se coupe qu'aux virgules et aux points : "S3 E5–" puis "7" a
+       la ligne suivante se lisait comme deux plages. Espace insecable dans
+       "S3 E5", gluon apres le tiret, que Chrome tient sinon pour une coupure. */
+    .replace(/\b(S\d+) (E)/g, '$1 $2').replace(/–/g, '–⁠');
+  /* le decompte n'a de sens que si chaque ligne est un episode : "Season 1"
+     n'en dit pas le nombre */
+  const n = seuls === items.length ? seuls : null;
+  return { txt, n, tete: n ? `${n} ${lang === 'en' ? (n > 1 ? 'episodes' : 'episode') : (n > 1 ? 'épisodes' : 'épisode')}` : null };
+}
 
 /* La carte d'ouverture doit dire ce que la video montre, pas ce que la page
    contient : "62 entries" au-dessus de dix cartes est un mensonge, et c'est la
@@ -160,6 +210,14 @@ function page(cle, D, cartes, lang, total, sel) {
   const ouv = ouverture(D, cartes, lang, total, sel);
   const cover = couverture(cle);
   const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
+  /* la legende des signes, et seulement de ceux que la video montre : Star Trek
+     n'a pas de niveaux, un univers sans flashback n'a pas de pastille. Les mots
+     sont ceux des filtres du site. */
+  const legende = [
+    cartes.some(c => c.must) && `<span><i class="lstar">★</i>${esc(t.essentiel)}</span>`,
+    cartes.some(c => c.imp) && `<span>${IMP.replace('class="imp"', 'class="limp"')}${esc(t.important)}</span>`,
+    cartes.some(c => c.flashback) && `<span><i class="lfb">FLASHBACK</i></span>`,
+  ].filter(Boolean);
 
   const carte = (e, i) => {
     const [bt, fr, en] = TYPES[e.type] || ['#8f8fa8', String(e.type||'').toUpperCase(), String(e.type||'').toUpperCase()];
@@ -168,6 +226,7 @@ function page(cle, D, cartes, lang, total, sel) {
     /* le corps du titre suit sa longueur : "Andor" et "Episode I: The Phantom
        Menace" ne peuvent pas tenir le meme corps sans que l'un deborde. */
     const taille = titre.length > 40 ? ' t3' : titre.length > 24 ? ' t2' : '';
+    const ep = episodes(e.subitems, lang);
     return `<section class="f card${e.must ? ' must' : ''}">
       <p class="eye"><span class="pill"></span>${esc(nom)} · ${esc(parcours)}</p>
       <div class="vis">
@@ -184,6 +243,8 @@ function page(cle, D, cartes, lang, total, sel) {
           <span class="bt" style="--bt:${bt}">${esc(lang === 'en' ? en : fr)}</span>
           ${e.date ? `<span class="dt">${esc(decode(e.date))}</span>` : ''}
         </p>
+        ${ep ? `<div class="eps${ep.txt.length > 150 ? ' e3' : ep.txt.length > 80 ? ' e2' : ''}">` +
+          `${ep.tete ? `<b>${esc(ep.tete)}</b>` : ''}<p>${esc(ep.txt)}</p></div>` : ''}
       </div>
       <div class="bar"><i style="width:${pct}%"></i></div>
       <p class="url">${esc(t.cta)}</p>
@@ -240,6 +301,15 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
   color:var(--bt);border:2px solid color-mix(in srgb,var(--bt) 50%,transparent);
   padding:5px 16px;border-radius:3px;line-height:1.2}
 .dt{font-family:"Big Shoulders Display";font-weight:900;font-size:52px;color:#cfcde0;line-height:1}
+/* les episodes : sous la ligne type + date, bornes a six lignes pour ne jamais
+   descendre dans la barre de progression */
+.eps{margin-top:30px;padding-top:24px;border-top:2px solid #262632;
+  font-family:"Big Shoulders Display";font-weight:800;font-size:46px;line-height:1.22;
+  letter-spacing:.03em;color:#cfcde0}
+.eps p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden}
+.eps.e2{font-size:41px} .eps.e3{font-size:37px}
+.eps b{display:block;font-weight:900;font-size:30px;letter-spacing:.14em;text-transform:uppercase;
+  color:${encre};margin-bottom:8px}
 .bar{position:relative;z-index:3;height:7px;background:#22222c;border-radius:4px;overflow:hidden}
 .bar i{display:block;height:100%;background:${encre}}
 .url{position:relative;z-index:3;margin-top:30px;text-align:center;
@@ -251,7 +321,7 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 .hook .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
 .hook::before{content:"";position:absolute;inset:0;z-index:2;
   background:linear-gradient(180deg,#08080fbb 0%,#08080f44 30%,#08080fe8 70%,#08080f 100%)}
-.hook .in{position:relative;z-index:3;padding:0 58px 190px}
+.hook .in{position:relative;z-index:3;padding:0 58px 280px}
 .hook h1{font-family:"Big Shoulders Display";font-weight:900;font-size:186px;line-height:.84;
   text-transform:uppercase}
 .hook .ord{font-family:"Big Shoulders Display";font-weight:900;font-size:112px;line-height:.9;
@@ -261,6 +331,16 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
   line-height:.9;font-variant-numeric:tabular-nums}
 .hook .st div span{display:block;margin-top:10px;font-family:"Big Shoulders Display";font-weight:800;
   font-size:30px;letter-spacing:.13em;text-transform:uppercase;color:#a8a6bc}
+.hook .lg{display:flex;align-items:center;gap:44px;margin-top:44px;flex-wrap:wrap;
+  font-family:"Big Shoulders Display";font-weight:800;font-size:38px;letter-spacing:.12em;
+  text-transform:uppercase;color:#cfcde0}
+.hook .lg span{display:flex;align-items:center;gap:14px}
+.lstar{font-style:normal;font-weight:900;font-size:50px;line-height:1;color:${encre}}
+.limp{width:50px;height:50px;fill:none;stroke:#ff9d5c;stroke-width:2.3;stroke-linejoin:miter;
+  stroke-linecap:square}
+.lfb{font-style:normal;background:#f0c97c;color:#08080f;font-weight:900;font-size:32px;
+  letter-spacing:.12em;line-height:1;padding:10px 24px 8px 18px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%)}
 
 /* ---- fin ---- */
 .out{justify-content:center;align-items:center;text-align:center;padding:0 58px;gap:0}
@@ -283,6 +363,7 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
     <div class="st">
       ${ouv.st.map(([b, s]) => `<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('\n      ')}
     </div>
+    ${legende.length ? `<div class="lg">${legende.join('')}</div>` : ''}
   </div>
 </section>
 ${cartes.map(carte).join('')}
@@ -366,7 +447,7 @@ async function main() {
   if (!cartes.length) throw new Error('la selection ne retient aucune entree');
   /* --total fixe la duree de la video et en deduit celle d'une carte : une minute
      est le format que Niko vise, et le nombre de cartes change d'un univers et
-     d'un ajout a l'autre. L'accroche et la fin gardent leurs 2,4 et 3,4 s. */
+     d'un ajout a l'autre. L'accroche et la fin gardent leurs 3 et 3,4 s. */
   if (cible) {
     dur = (cible - ACCROCHE - FIN) / cartes.length;
     if (dur < 0.3) throw new Error(`--total ${cible} : ${dur.toFixed(2)} s par carte, illisible`);
