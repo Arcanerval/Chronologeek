@@ -1,5 +1,5 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N] [--plus id,id]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--plus id,id]
 
    --plus tire une entree hors du filtre et la met au rang des essentiels : Rogue One
    est "important" dans les donnees, et le site n'a pas a changer pour une video.
@@ -115,13 +115,24 @@ function suite(D, opts) {
       if (!force && opts.only === 'must+' && niveau !== 'must' && niveau !== 'important') continue;
       /* une entree tiree par --plus est mise au rang des essentiels : sans ca elle
          sortirait sans etoile ni bordure au milieu de cartes qui les portent. */
-      out.push({ ...e, rang, ere: ere.title || '', must: niveau === 'must' || !!force });
+      out.push({ ...e, rang, ere: ere.title || '', must: niveau === 'must' || !!force,
+        imp: niveau === 'important' && !force,
+        flashback: (e.tags || []).includes('flashback') });
     }
   });
   return out;
 }
 
 /* ---------- rendu ---------- */
+
+/* l'accroche et la fin tiennent plus longtemps : on y lit une adresse */
+const ACCROCHE = 2.4, FIN = 3.4;
+
+/* le triangle des importants est celui des pages (LVICO de e-starwars.html),
+   trait et encre compris : le spectateur qui arrive sur le site doit y
+   reconnaitre le signe qu'il a vu passer dans la video. */
+const IMP = '<svg class="imp" viewBox="0 0 24 24" aria-hidden="true">' +
+  '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>';
 
 /* La carte d'ouverture doit dire ce que la video montre, pas ce que la page
    contient : "62 entries" au-dessus de dix cartes est un mensonge, et c'est la
@@ -163,6 +174,8 @@ function page(cle, D, cartes, lang, total, sel) {
         ${e.img ? `<img src="${esc(visuel(e.img))}" alt="">` : '<div class="ph"></div>'}
         <span class="no">${String(e.rang).padStart(2,'0')}</span>
         ${e.must ? '<span class="star">★</span>' : ''}
+        ${e.imp ? IMP : ''}
+        ${e.flashback ? '<span class="fb">FLASHBACK</span>' : ''}
       </div>
       <div class="txt">
         <p class="era">${esc(decode(e.ere))}</p>
@@ -206,6 +219,15 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 .card.must .no{color:${encre}}
 .star{position:absolute;right:26px;top:20px;z-index:4;font-family:"Big Shoulders Display";
   font-weight:900;font-size:76px;color:${encre};line-height:1;text-shadow:0 4px 22px #000c}
+.imp{position:absolute;right:24px;top:18px;z-index:4;width:84px;height:84px;fill:none;
+  stroke:#ff9d5c;stroke-width:2.3;stroke-linejoin:miter;stroke-linecap:square;
+  filter:drop-shadow(0 4px 14px #000c)}
+/* la pastille du site (.ft), en plein plutot qu'au trait : sur une image elle
+   doit se lire en moins d'une seconde, quel que soit le visuel dessous. */
+.fb{position:absolute;left:0;top:0;z-index:4;background:#f0c97c;color:#08080f;
+  font-family:"Big Shoulders Display";font-weight:900;font-size:44px;letter-spacing:.12em;
+  line-height:1;padding:14px 30px 12px 24px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%)}
 .txt{position:relative;z-index:3;margin-top:48px;flex:1;display:flex;flex-direction:column;
   justify-content:center}
 .era{font-family:"Big Shoulders Display";font-weight:800;font-size:34px;letter-spacing:.13em;
@@ -321,7 +343,8 @@ async function main() {
   const val = (n, d) => a.includes(n) ? a[a.indexOf(n) + 1] : d;
   const cle = a.find(x => !x.startsWith('--') && UNIVERS[x]);
   const lang = val('--lang', 'en') === 'fr' ? 'fr' : 'en';
-  const dur = Number(val('--dur', '0.62'));
+  let dur = Number(val('--dur', '0.62'));
+  const cible = a.includes('--total') ? Number(val('--total')) : null;
   const only = val('--only', null);
   const ere = a.includes('--ere') ? Number(val('--ere')) : null;
   const plus = new Set(String(val('--plus', '')).split(',').map(s => s.trim()).filter(Boolean));
@@ -329,7 +352,7 @@ async function main() {
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
-      '> [--lang en|fr] [--dur 0.62] [--only must|must+] [--ere N] [--plus id,id] [--audio piste.mp3]');
+      '> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--plus id,id] [--audio piste.mp3]');
     process.exit(1);
   }
   if (audio && !fs.existsSync(audio)) throw new Error(`--audio : fichier introuvable "${audio}"`);
@@ -341,6 +364,13 @@ async function main() {
   }
   const total = suite(D, {}).length;
   if (!cartes.length) throw new Error('la selection ne retient aucune entree');
+  /* --total fixe la duree de la video et en deduit celle d'une carte : une minute
+     est le format que Niko vise, et le nombre de cartes change d'un univers et
+     d'un ajout a l'autre. L'accroche et la fin gardent leurs 2,4 et 3,4 s. */
+  if (cible) {
+    dur = (cible - ACCROCHE - FIN) / cartes.length;
+    if (dur < 0.3) throw new Error(`--total ${cible} : ${dur.toFixed(2)} s par carte, illisible`);
+  }
 
   const suffixe = [only, ere != null ? 'ere' + ere : null, plus.size ? 'plus' : null]
     .filter(Boolean).join('-');
@@ -369,7 +399,7 @@ async function main() {
     const img = path.join(dossier, String(i).padStart(3, '0') + '.png');
     await cadres[i].screenshot({ path: img });
     /* l'accroche et la fin tiennent plus longtemps : on y lit une adresse */
-    plans.push({ img, dur: i === 0 ? 2.4 : i === cadres.length - 1 ? 3.4 : dur });
+    plans.push({ img, dur: i === 0 ? ACCROCHE : i === cadres.length - 1 ? FIN : dur });
   }
   await nav.close();
 
@@ -378,9 +408,9 @@ async function main() {
 
   const secondes = plans.reduce((s, p) => s + p.dur, 0);
   const poids = (fs.statSync(mp4).size / 1048576).toFixed(1);
-  console.log(`${nomFichier} — ${cartes.length} cartes, ${secondes.toFixed(1)} s, ${poids} Mo`);
+  console.log(`${nomFichier} — ${cartes.length} cartes a ${dur.toFixed(3)} s, ${secondes.toFixed(1)} s, ${poids} Mo`);
   console.log(`→ promo/${nomFichier}.mp4`);
-  if (secondes > 60) console.warn('  ⚠ au-dela de 60 s : hors format Shorts, et long pour TikTok');
+  if (secondes > 60.05) console.warn('  ⚠ au-dela de 60 s : hors format Shorts, et long pour TikTok');
 }
 
 main().catch(e => { console.error(e.message || e); process.exit(1); });
