@@ -125,6 +125,20 @@
       "image": "https://chronologeek.app/images/dcanimation.webp"
     }
   },
+  "jurassic": {
+    "fr": {
+      "title": "Chronologie Jurassic Park et Jurassic World | Chronologeek",
+      "ogTitle": "Timeline Jurassic World — Chronologeek",
+      "desc": "La timeline Jurassic World dans l’ordre chronologique — 7 films, 2 séries animées, 3 romans et un court métrage, de Jurassic Park à Renaissance, sans spoil.",
+      "image": "https://chronologeek.app/images/jurassicworld.webp"
+    },
+    "en": {
+      "title": "Jurassic Park &amp; Jurassic World Watch Order | Chronologeek",
+      "ogTitle": "Jurassic World Timeline — Chronologeek",
+      "desc": "The Jurassic World timeline in chronological order — 7 movies, 2 animated shows, 3 books and a short film, from Jurassic Park to Rebirth, spoiler-free.",
+      "image": "https://chronologeek.app/images/jurassicworld.webp"
+    }
+  },
   "assassinscreed": {
     "fr": {
       "title": "Chronologie Assassin’s Creed : l’ordre des jeux | Chronologeek",

@@ -33,6 +33,7 @@ const UNIVERS = {
   dragonage:      { data: 'data-dragonage',      encre: '#e07b39', cover: 'dragonage' },
   assassinscreed: { data: 'data-assassinscreed', encre: '#c0202f', cover: 'acuniverse' },
   dcanimation:    { data: 'data-dcanimation',    encre: '#2dd4bf', cover: 'dcanimation' },
+  jurassic:       { data: 'data-jurassic',       encre: '#45c46b', cover: 'jurassicworld' },
 };
 
 const TYPES = {

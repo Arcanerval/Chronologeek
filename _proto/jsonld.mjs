@@ -82,6 +82,7 @@ export const SOURCES = {
                     en: ['data-assassinscreed-en.js', 'ASSASSINSCREED'] },
   dcanimation: { fr: ['data-dcanimation.js', 'DCANIM'],
                  en: ['data-dcanimation-en.js', 'DCANIM'] },
+  jurassic: { fr: ['data-jurassic.js', 'JURASSIC'], en: ['data-jurassic-en.js', 'JURASSIC'] },
 };
 
 // Le fil d'Ariane des pages qui n'ont pas de timeline. La clé du libellé est
@@ -344,8 +345,8 @@ export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) 
 
   if (cle === 'accueil') {
     blocs.push(blocSite(site, t, moi));
-    // Les neuf univers : la liste que l'accueil montre, et la seule de la page.
-    const huit = ['sw', 'mcu', 'dc', 'avatar', 'startrek', 'twd', 'dragonage', 'assassinscreed', 'dcanimation'].map(k => ({
+    // Les dix univers : la liste que l'accueil montre, et la seule de la page.
+    const huit = ['sw', 'mcu', 'dc', 'avatar', 'startrek', 'twd', 'dragonage', 'assassinscreed', 'dcanimation', 'jurassic'].map(k => ({
       t: 'CollectionPage',
       nom: nomUnivers(k),
       url: site + urls[k],

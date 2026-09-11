@@ -17,6 +17,8 @@
   "data/assassinscreed-en.js": "_proto/data-assassinscreed-en.js",
   "data/dcanimation-fr.js": "_proto/data-dcanimation.js",
   "data/dcanimation-en.js": "_proto/data-dcanimation-en.js",
+  "data/jurassicworld-fr.js": "_proto/data-jurassic.js",
+  "data/jurassicworld-en.js": "_proto/data-jurassic-en.js",
   "data/dossier-star-wars-fr.js": "_proto/data-dossier-sw.js",
   "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
   "data/news-fr.js": "_proto/data-news.js",

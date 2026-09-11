@@ -18,7 +18,7 @@
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
-         assassinscreed | dcanimation, ou "" si le
+         assassinscreed | dcanimation | jurassic, ou "" si le
          changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
@@ -37,6 +37,13 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
+
+      { nat:"site", uni:"jurassic", kind:"timeline",
+        title:"Nouvelle timeline : Jurassic World",
+        txt:"De Jurassic Park à Renaissance — les sept films, les deux "+
+            "séries animées, trois romans et un court métrage, en première "+
+            "vision comme en revisionnage.",
+        href:"e-jurassic.html", cta:"Ouvrir la timeline" },
 
       { nat:"media", uni:"avatar", kind:"comic",
         title:"Jet : Rebels and Rhinos", meta:"~95 AG", vo:true,

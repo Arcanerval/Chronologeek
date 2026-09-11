@@ -47,11 +47,11 @@ const T = {
   },
 };
 
-// Les neuf univers, dans l'ordre de l'accueil, avec leur encre de la charte.
+// Les dix univers, dans l'ordre de l'accueil, avec leur encre de la charte.
 const UNIVERS = [
   ['sw', '#4d9fff'], ['mcu', '#e23636'], ['dc', '#f5c842'], ['avatar', '#7dd3fc'],
   ['startrek', '#b48cf2'], ['twd', '#a8bf4f'], ['dragonage', '#e07b39'],
-  ['assassinscreed', '#c0202f'], ['dcanimation', '#2dd4bf'],
+  ['assassinscreed', '#c0202f'], ['dcanimation', '#2dd4bf'], ['jurassic', '#45c46b'],
 ];
 
 const esc = s => String(s)

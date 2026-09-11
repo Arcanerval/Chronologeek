@@ -2,142 +2,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://chronologeek.app/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
   <url><loc>https://chronologeek.app/starwars</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
   <url><loc>https://chronologeek.app/marvel</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
   </url>
   <url><loc>https://chronologeek.app/dc</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
   </url>
   <url><loc>https://chronologeek.app/avatar</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
   </url>
   <url><loc>https://chronologeek.app/startrek</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/startrek"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/startrek"/>
   </url>
   <url><loc>https://chronologeek.app/walkingdead</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/walkingdead"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/walkingdead"/>
   </url>
   <url><loc>https://chronologeek.app/dragonage</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dragonage"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dragonage"/>
   </url>
   <url><loc>https://chronologeek.app/assassinscreed</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/assassinscreed"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/assassinscreed"/>
   </url>
   <url><loc>https://chronologeek.app/dcanimation</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcanimation"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcanimation"/>
   </url>
+  <url><loc>https://chronologeek.app/jurassicworld</loc>
+    <lastmod>2026-09-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/jurassicworld"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/jurassicworld"/>
+  </url>
   <url><loc>https://chronologeek.app/deep-dives/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
   </url>
   <url><loc>https://chronologeek.app/deep-dives/star-wars</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
   </url>
   <url><loc>https://chronologeek.app/whats-new</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
   <url><loc>https://chronologeek.app/upcoming</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
   </url>
   <url><loc>https://chronologeek.app/fr/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
   <url><loc>https://chronologeek.app/fr/starwars</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
   <url><loc>https://chronologeek.app/fr/marvel</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dc</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
   </url>
   <url><loc>https://chronologeek.app/fr/avatar</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
   </url>
   <url><loc>https://chronologeek.app/fr/startrek</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/startrek"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/startrek"/>
   </url>
   <url><loc>https://chronologeek.app/fr/walkingdead</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/walkingdead"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/walkingdead"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dragonage</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dragonage"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dragonage"/>
   </url>
   <url><loc>https://chronologeek.app/fr/assassinscreed</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/assassinscreed"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/assassinscreed"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dcanimation</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcanimation"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcanimation"/>
   </url>
+  <url><loc>https://chronologeek.app/fr/jurassicworld</loc>
+    <lastmod>2026-09-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/jurassicworld"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/jurassicworld"/>
+  </url>
   <url><loc>https://chronologeek.app/fr/dossiers/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dossiers/star-wars</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/star-wars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
   </url>
   <url><loc>https://chronologeek.app/fr/nouveautes</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
   <url><loc>https://chronologeek.app/fr/a-venir</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
   </url>

@@ -312,8 +312,8 @@ export const DA_TRADUCTIONS = [
      autres protos, mais son nœud de texte ne se découpe pas au même
      endroit — la version française tient la première ligne avec le lien
      Open Library — et l'appariement ligne à ligne la manque. */
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age et Assassin’s Creed sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective owners; Chronologeek is an independent fan project.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed et Jurassic World sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
 
   /* ── les seize lignes de placement ────────────────────────────────
      Elles sont dans `note`, sous le titre, comme sur la timeline

@@ -125,7 +125,7 @@ rmp(`<li><a href="en-twd.html">The Walking Dead</a></li><li><a href="#" aria-cur
     `<li><a href="en-twd.html">The Walking Dead</a></li><li><a href="en-dragonage.html">Dragon Age</a></li>` +
     `<li><a href="#" aria-current="page">Assassin’s Creed</a></li>`);
 rmp(`The Walking Dead and Dragon Age are trademarks of their respective`,
-    `The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective`);
+    `The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective`);
 
 /* ══ 4. la bannière ═══════════════════════════════════════════════ */
 rmp(`  background-image:url(/images/dragonage.webp)}`,

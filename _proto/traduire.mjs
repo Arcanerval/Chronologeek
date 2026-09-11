@@ -259,6 +259,14 @@ const TRADUCTIONS = [
   ['80 entrées, du DCAU au DCAMU et à l\'Arkhamverse — les séries animées, les films animés et les jeux dans un seul fil.',
    '80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.'],
 
+  /* ── la carte Jurassic World, écrite le 11 septembre 2026 ────────
+     Dixième univers, source anglaise : rien à retrouver en prod. Les deux
+     bornes sont des titres de films, et Renaissance est celui de la sortie
+     française de Rebirth. */
+  ['Nouvelle timeline : Jurassic World', 'New timeline: Jurassic World'],
+  ['De Jurassic Park à Renaissance — les sept films, les deux séries animées, trois romans et un court métrage, en première vision comme en revisionnage.',
+   'From Jurassic Park to Rebirth — the seven movies, the two animated series, three books and a short film, for a first watch or a rewatch.'],
+
   /* ── la carte Jet du 9 septembre 2026 ───────────────────────────
      Le journal n'annonce que le comic. La scission de la page en deux
      parcours y avait sa carte pendant une heure, retirée par Niko : le
@@ -412,12 +420,12 @@ const PERIMES = new Map([
   ['Optimized Multiverse Timeline', 'Chronological watch order'],
   ['Star Wars, Marvel, DC and Avatar are trademarks of their respective owners;'
    + ' Chronologeek is an independent fan project.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed'
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World'
    + ' are trademarks of their respective owners; Chronologeek is an independent fan'
    + ' project.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead are trademarks'
    + ' of their respective owners; Chronologeek is an independent fan project.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed'
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World'
    + ' are trademarks of their respective owners; Chronologeek is an independent fan'
    + ' project.'],
 ]);

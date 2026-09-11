@@ -284,8 +284,8 @@ const TRADUCTIONS = [
   ['Continuer', 'Continue'],
   ['Reprendre ▸', 'Resume ▸'],             // CG.t.resume : Reprendre → Resume
   ['Ouvrir ▸', 'Open ▸'],
-  ['Neuf chronologies tenues à jour, en français et en anglais.',
-   'Nine timelines kept up to date, in French and English.'],
+  ['Dix chronologies tenues à jour, en français et en anglais.',
+   'Ten timelines kept up to date, in French and English.'],
   ['Suivi de progression à venir', 'Progress tracking coming soon'],
   ['Bientôt', 'Soon'],
   ['Les Dossiers', 'The Deep Dives'],
@@ -298,10 +298,10 @@ const TRADUCTIONS = [
   ['proto : simuler une progression', 'proto: simulate progress'],
   ['proto : revenir à zéro', 'proto: back to zero'],
   // CG.t.legal3, précédé du point que le HTML pose après le lien
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age et Assassin’s Creed sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.'],
-  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age et Assassin’s Creed sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age and Assassin’s Creed are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed et Jurassic World sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed et Jurassic World sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective owners; Chronologeek is an independent fan project.'],
 
   /* ── la case Star Trek ──────────────────────────────────────────
      Le cinquième univers est postérieur à la prod : sa case n'a pas de
@@ -388,6 +388,15 @@ const TRADUCTIONS = [
   ['Séries animées · Films animés · Jeux · DLC · Courts métrages · Ordre chronologique complet',
    'Animated Series · Animated Films · Games · DLC · Short Films · Full chronological order'],
   ['/ 80 vus', '/ 80 watched'],
+  /* ── la case Jurassic World ───────────────────────────────────
+     Dixième univers, source anglaise comme les cinq précédents : rien à
+     retrouver dans une prod qui ne l'a jamais porté. Son nom ne se traduit
+     pas, et il doit figurer ici pour la nav, le tiroir et le pied de page.
+     La mention légale le compte désormais : elle suit juste en dessous. */
+  ['Jurassic World', 'Jurassic World'],
+  ['Films · Séries animées · Livres · Court métrage · Ordre chronologique complet',
+   'Movies · Animated Series · Books · Short Film · Full chronological order'],
+  ['/ 13 vus', '/ 13 watched'],
   /* La ligne des sources du radar. La prod anglaise en portait trois ;
      le wiki Assassin's Creed est la quatrième depuis le 25 août 2026. */
   ['Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac, Assassin’s Creed Wiki',

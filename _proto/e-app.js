@@ -1534,7 +1534,7 @@
 
   var FR = document.documentElement.lang !== 'en';
 
-  /* Les neuf clés du stockage, écrites en clair. Deux ne se déduisent
+  /* Les onze clés du stockage, écrites en clair. Deux ne se déduisent
      pas du nom d'univers : Star Trek stocke sous `st`, et les ajouts de
      Dragon Age sous `data_da`, du nom de son global. Le Dossier n'a pas
      d'ajouts — il ne charge pas `e-perso.js`.
@@ -1552,6 +1552,7 @@
     { u:'dragonage',      prog:'cg-proto-dragonage',      perso:'cg-perso-data_da' },
     { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed' },
     { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
+    { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -1564,7 +1565,7 @@
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',
-    dek:   'Vos coches sur les neuf timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
+    dek:   'Vos coches sur les dix timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
     exp:   'Tout exporter',
     imp:   'Importer',
     nom:   'chronologeek-tout.json',
@@ -1579,7 +1580,7 @@
     }
   } : {
     titre: 'All your timelines, in one file',
-    dek:   'Your check marks across the nine timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
+    dek:   'Your check marks across the ten timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
     exp:   'Export everything',
     imp:   'Import',
     nom:   'chronologeek-all.json',

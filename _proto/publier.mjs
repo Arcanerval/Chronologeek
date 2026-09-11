@@ -99,6 +99,12 @@ const ROUTES = [
   { cle: 'dcanimation',
     fr: { proto: 'e-dcanimation.html',        sortie: 'fr/dcanimation.html',      url: '/fr/dcanimation' },
     en: { proto: 'en-dcanimation.html',       sortie: 'dcanimation.html',         url: '/dcanimation' } },
+  // Jurassic World est le sixième à prendre la chaîne à l'envers :
+  // `en-jurassic.html` est écrit à la main, `e-jurassic.html` en descend
+  // par traduire-jurassic.mjs.
+  { cle: 'jurassic',
+    fr: { proto: 'e-jurassic.html',           sortie: 'fr/jurassicworld.html',    url: '/fr/jurassicworld' },
+    en: { proto: 'en-jurassic.html',          sortie: 'jurassicworld.html',       url: '/jurassicworld' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -152,6 +158,8 @@ const ASSETS = {
   'data-assassinscreed-en.js': '/data/assassinscreed-en.js',
   'data-dcanimation.js':       '/data/dcanimation-fr.js',
   'data-dcanimation-en.js':    '/data/dcanimation-en.js',
+  'data-jurassic.js':          '/data/jurassicworld-fr.js',
+  'data-jurassic-en.js':       '/data/jurassicworld-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',
@@ -251,10 +259,10 @@ const PRERENDU_CSS =
 // depuis le début, et **1 500 ms au plus quoi qu'il arrive** : un logo qui
 // n'arrive jamais ne doit pas retenir la page. Ce plafond est aussi le
 // filet si le fichier a disparu — `onerror` lève le voile comme `onload`.
-// Le défilé des neuf univers tient dans **un seul fichier**,
-// `images/boot-univers.webp` : les neuf visuels empilés en bande verticale,
-// 560 × 315 chacun, floutés au rendu et encodés à 58 — 100 Ko pour les neuf.
-// Les originaux pèsent 2,3 Mo à eux tous, et les demander tous les neuf sur
+// Le défilé des dix univers tient dans **un seul fichier**,
+// `images/boot-univers.webp` : les dix visuels empilés en bande verticale,
+// 560 × 315 chacun, floutés au rendu et encodés à 58 — 89 Ko pour les dix.
+// Les originaux pèsent 2,3 Mo à eux tous, et les demander tous les dix sur
 // le chemin d'arrivée aurait coûté plus cher que tout ce que ce dépôt a
 // économisé. Le flou n'est pas qu'un effet : il divise le poids par trois,
 // et l'image passe de toute façon sous un voile à 62 %.
@@ -264,7 +272,7 @@ const PRERENDU_CSS =
 const BOOT_PLANCHE = '/images/boot-univers.webp';
 // L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
 const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
-                     '#a8bf4f', '#e07b39', '#c0202f', '#2dd4bf'];
+                     '#a8bf4f', '#e07b39', '#c0202f', '#2dd4bf', '#45c46b'];
 
 const BOOT =
   /* **Pas de `<link rel="preload">`**, et c'est voulu : il est inconditionnel,
@@ -304,18 +312,18 @@ const BOOT =
      invalide la déclaration entière, et le voile sortait alors sans logo —
      un aplat noir, sans une ligne dans la console. */
   /* Le fond d'encre, posé dès le `<head>` : il couvre la page avant même que
-     le corps existe, donc avant les neuf couches d'images, qui en demandent
+     le corps existe, donc avant les dix couches d'images, qui en demandent
      un. */
   'html.boot::before{content:"";position:fixed;inset:0;z-index:998;' +
   'background:#08080f;opacity:1;transition:opacity .34s ease}' +
-  /* Les neuf univers en **fondu enchaîné**, une couche par univers, toutes
+  /* Les dix univers en **fondu enchaîné**, une couche par univers, toutes
      empilées : chacune paraît en fondu par-dessus la précédente et y reste.
      Un défilement continu avait été essayé et écarté — il glisse là où un
      fondu pose. `max(100vw,177.8vh)` donne à chaque vignette de quoi couvrir
      l'écran quelle que soit sa forme — c'est le `cover` qu'une planche ne
      peut pas demander toute seule —, et le décalage d'une vignette à l'autre
      vaut exactement sa hauteur, `max(56.25vw,100vh)`. Le voile sombre est le
-     `::after` du conteneur, donc au-dessus des neuf. */
+     `::after` du conteneur, donc au-dessus des dix. */
   '#cgv{position:fixed;inset:0;z-index:999;opacity:1;transition:opacity .34s ease}' +
   '#cgv b{position:absolute;inset:0;opacity:0;' +
   `background-image:url(${BOOT_PLANCHE});background-repeat:no-repeat;` +
@@ -328,9 +336,9 @@ const BOOT =
   'background-image:url(/images/logo-chronologeek.webp);' +
   'background-position:center center;background-size:min(340px,68vw) auto;' +
   'background-repeat:no-repeat;opacity:1;transition:opacity .34s ease}' +
-  /* les neuf cases, une par univers, qui prennent leur encre l'une après
+  /* les dix cases, une par univers, qui prennent leur encre l'une après
      l'autre. Elles ne mesurent rien — rien n'est mesurable à cet instant —
-     elles disent ce qu'est le site : neuf univers, et on les voit défiler
+     elles disent ce qu'est le site : dix univers, et on les voit défiler
      derrière. `translateX(-50%)` et non une marge négative, la largeur
      dépendant du nombre de cases. */
   '#cgb{position:fixed;z-index:1001;left:50%;top:calc(50% + 46px);' +
@@ -380,7 +388,7 @@ const BOOT_PHRASES = {
     'Resetting the time loop',
     'Aligning the timelines',
     'Recalibrating the Animus',
-    'Sorting nine universes',
+    'Sorting ten universes',
     'Untangling the flashbacks',
     'Consulting the archives',
     'Waking up the Force',
@@ -402,7 +410,7 @@ const BOOT_PHRASES = {
     'Réinitialisation de la boucle temporelle',
     'Alignement des chronologies',
     'Recalibrage de l’Animus',
-    'Tri de neuf univers',
+    'Tri de dix univers',
     'Démêlage des flashbacks',
     'Consultation des archives',
     'Réveil de la Force',
@@ -420,7 +428,7 @@ const BOOT_PHRASES = {
   ],
 };
 
-// Les neuf couches d'images et les neuf cases demandent des éléments, donc un
+// Les dix couches d'images et les dix cases demandent des éléments, donc un
 // `document.body` : ce bloc-ci est posé juste après l'ouverture du corps, là
 // où le voile du `<head>` ne peut pas aller.
 //
@@ -428,7 +436,10 @@ const BOOT_PHRASES = {
 // plus le demi-temps du dernier fondu, font 2,1 s — et c'est exactement ce que
 // le voile tient une fois les images arrivées. Les trois valeurs se règlent
 // ensemble ; changer l'une seule fait finir l'écran avant ou après lui-même.
-const BOOT_PAS = 0.28;
+// Le dixième univers a fait passer le pas de 0,28 à 0,25 s : la dernière
+// couche part ainsi à 2,25 s, là où la neuvième partait à 2,24 — la durée
+// totale réglée par Niko ne bouge pas. Un onzième demandera 0,225.
+const BOOT_PAS = 0.25;
 const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +

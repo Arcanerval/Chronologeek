@@ -8,7 +8,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
 
 - Racine = version **anglaise** : `starwars.html`, `marvel.html`, `dc.html`,
   `avatar.html`, `startrek.html`, `walkingdead.html`, `dragonage.html`,
-  `assassinscreed.html`, `dcanimation.html`
+  `assassinscreed.html`, `dcanimation.html`, `jurassicworld.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
   (535 romans, comics et fictions audio, plus 63 repères écran)
@@ -53,7 +53,11 @@ chaîne inversée » plus bas. **The Walking Dead fait pareil** —
 `en-dcanimation.html` + `data-dcanimation-en.js` sont la source,
 `node _proto/traduire-dcanimation.mjs` écrit `e-dcanimation.html` et
 `data-dcanimation.js`. Publié le 4 septembre 2026 sous `/dcanimation` et
-`/fr/dcanimation` : le site compte vingt-huit pages et neuf univers.
+`/fr/dcanimation`. **Jurassic World est le sixième** —
+`en-jurassic.html` + `data-jurassic-en.js` sont la source,
+`node _proto/traduire-jurassic.mjs` écrit `e-jurassic.html` et
+`data-jurassic.js`. Publié le 11 septembre 2026 sous `/jurassicworld` et
+`/fr/jurassicworld` : le site compte trente pages et dix univers.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -66,7 +70,7 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar Legends `#7dd3fc`,
 Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
 Assassin's Creed `#c0202f`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
-DCAMU `#c084fc`, Arkhamverse `#4ade80`).
+DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Le quatrième univers s'appelle « Avatar Legends » depuis le 18 août 2026**, pour ne
@@ -170,6 +174,15 @@ qui les porte est déjà interrogé par la colonne DC, et ce qu'il annonce
 aujourd'hui appartient au DCU, pas à ces trois-là. La page publie donc sa
 timeline sans entrer au radar, comme Dragon Age, et l'accroche de « À venir »
 continue de n'énumérer que les six univers que le radar suit.
+
+**Jurassic World n'est pas encore au radar, publié le 11 septembre 2026.**
+Ce n'est pas une décision, c'est un chantier qui reste : la franchise a bien
+une suite annoncée — « Untitled Jurassic World Rebirth Sequel », TMDB
+`1714034`, sans date. Universal et Amblin produisent tout leur catalogue :
+interroger par société demanderait un garde-fou de titre dans
+`UNIVERS_TITRE`, `\bjurassic\b`, exactement comme Avatar, The Walking Dead et
+Assassin's Creed. À poser le jour où une date tombe, avec l'accroche de
+« À venir », les deux `ogTitle` et les deux `desc`.
 
 **Assassin's Creed est au radar depuis le 25 août 2026, et sa colonne est vide.**
 C'est voulu, et ce n'est pas le cas de Dragon Age : la saga a bien sept œuvres
@@ -447,7 +460,8 @@ Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » 
 
 Star Wars et Marvel ont deux ordres de lecture depuis la refonte, Dragon Age
 un troisième depuis le **26 août 2026**, Avatar Legends un quatrième depuis le
-**9 septembre 2026** : la découverte, et la reprise. La
+**9 septembre 2026**, Jurassic World un cinquième dès sa publication le
+**11 septembre 2026** : la découverte, et la reprise. La
 question se pose une fois à l'arrivée (`dialog.ask`), la bascule vit ensuite
 sous le bouton d'entrée (`.par`), et le choix est retenu dans
 `localStorage` sous `<clé de la page>-mode`. Le second ordre s'écrit dans
@@ -533,6 +547,32 @@ Quatre choses à savoir :
   ANS ». La version de Marvel ne garde que `title`, et le chapeau
   disparaissait du rejeu sans un mot.
 
+### Jurassic World, le cinquième — les séries se coupent autour des films
+
+Posé le 11 septembre 2026, bâti sur la page Star Wars (`en-starwars.html`),
+dont il reprend la question, la bascule, le pont et le HUD en heures.
+**13 entrées en découverte, 16 en rewatch.** En découverte, Camp Cretaceous
+et Chaos Theory tombent chacune d'un bloc en flashback après leur film, et
+The Evolution of Claire aussi, après Jurassic World. En rewatch tout reprend
+sa date, et les deux séries **se coupent autour des films** : Camp
+Cretaceous en trois (S1 É1-3, puis le film, puis S1 É4-8 en flashback et
+S2-5), Chaos Theory en deux (S1-2, Dominion, S3-4 en flashback).
+
+Deux choses à savoir :
+
+- **C'est le geste inverse de `da-r-origins-mid`.** Là, le rejeu recolle
+  deux entrées de découverte ; ici il en découpe une. Chaque morceau porte
+  `covers:["jw-cc"]` et sa propre `rt`, exactement comme les
+  `sw-r-tcw-20a` / `20b` de Star Wars : `bridge()` coche la série entière
+  quand tous ses morceaux le sont, et cocher la série en découverte coche
+  les morceaux. Rien à ajouter au moteur.
+- **Le texte de Niko a d'abord oublié Claire en première vision**, corrigé
+  le même jour. Elle a vécu une heure en `jw-r-claire`, entrée propre au
+  rewatch, avec une exception dans `resolve()` pour l'accepter sans `ref`
+  ni `covers` — retirée depuis. Une entrée qui n'existerait que dans le
+  second parcours échappe à la recherche, au pré-rendu et au JSON-LD, qui
+  ne lisent que `eras` : c'est à savoir le jour où le cas reviendra.
+
 ## Les colonnes parallèles sous 1440 px
 
 DC est le seul univers à colonnes, et depuis le **2 septembre 2026** elles ne
@@ -597,10 +637,10 @@ celui-ci sert les autres pages, et le renommer serait le piège du lexique.
 il n'utilise pas `TMDB_KEY` et aucune action ne le lance : il s'appelle à la main.
 L'interpréteur est `py` sur la machine de Niko, pas `python`.
 
-- `py sync.py check` — vérifie les quatorze paires : même nombre de lignes dans
-  le HTML, mêmes identifiants dans les données. Les quatorze clés sont `sw`,
+- `py sync.py check` — vérifie les quinze paires : même nombre de lignes dans
+  le HTML, mêmes identifiants dans les données. Les quinze clés sont `sw`,
   `mcu`, `dc`, `avatar`, `startrek`, `twd`, `dragonage`, `assassinscreed`,
-  `dcanimation`, `dossier`, `news`, `accueil`, `avenir`, `dossiers`.
+  `dcanimation`, `jurassic`, `dossier`, `news`, `accueil`, `avenir`, `dossiers`.
 - `py sync.py show <page> <id>` — affiche une entrée dans les deux langues sans
   ouvrir les fichiers entiers.
 - `py sync.py mirror <page> "<ancien>" "<nouveau>"` — remplace dans le proto
@@ -621,8 +661,8 @@ chiffres d'entrées réels se comptent dans les données, pas ici.
 
 `mirror` écrit dans le proto source, plus dans les deux fichiers publiés. Écrire
 dans ce qui est produit se perdrait à la publication suivante, sans erreur et sans
-message. Le proto source est le français partout, **sauf les cinq chaînes
-inversées** — Star Trek, The Walking Dead, Dragon Age, Assassin's Creed et
+message. Le proto source est le français partout, **sauf les six chaînes
+inversées** — Star Trek, The Walking Dead, Dragon Age, Assassin's Creed, Jurassic World et
 DC Animation — dont `langue_source` vaut `en` : écrire dans `e-startrek.html` serait écrasé au
 prochain `traduire-startrek.mjs`. Le journal des Nouveautés n'a pas
 d'identifiants : ses cartes se comptent au titre.
@@ -1096,15 +1136,15 @@ donc un `document.body`. Le tout posé par `publier.mjs` pour la seule route
 
 **Un fondu, pas un défilement.** Le premier jet faisait glisser la bande
 verticalement : ça glisse là où un fondu pose, et le passage d'un univers au
-suivant coupait l'écran d'un trait net. Ce sont maintenant **neuf couches
+suivant coupait l'écran d'un trait net. Ce sont maintenant **dix couches
 empilées**, chacune calée sur sa vignette et amenée en fondu par-dessus la
 précédente, à 0,2 s d'intervalle. Le glissement est écarté ; ne pas le
 reproposer.
 
-**Les neuf visuels tiennent dans un seul fichier**, `images/boot-univers.webp` :
+**Les dix visuels tiennent dans un seul fichier**, `images/boot-univers.webp` :
 empilés en bande verticale, 560 × 315 chacun, fondus au noir sur 22 % de leur
 hauteur en haut et en bas, floutés au rendu et encodés à 58.
-**85 Ko pour les neuf**, contre 2,3 Mo pour les originaux, qu'on ne pouvait pas
+**89 Ko pour les dix**, contre 2,3 Mo pour les originaux, qu'on ne pouvait pas
 demander sur le chemin d'arrivée. Le flou n'est pas qu'un effet : il divise le
 poids par trois, et l'image passe de toute façon sous un voile à 56 %. C'est le
 seul endroit du site où une planche vaut mieux que des fichiers séparés.
@@ -1125,8 +1165,8 @@ un processeur ralenti huit fois, le document n'était toujours pas prêt et le
 voile s'est levé quand même. Une page qui ne se construit pas ne doit pas
 retenir l'écran d'arrivée pour autant.
 
-**Les trois durées se règlent ensemble** : le pas de 0,28 s (couches et cases),
-les neuf fois ce pas plus le dernier fondu, et les 2,95 s que le voile tient
+**Les trois durées se règlent ensemble** : le pas de 0,25 s (couches et cases),
+les dix fois ce pas plus le dernier fondu, et les 2,95 s que le voile tient
 une fois les images arrivées — **trois secondes en tout**, réglées par Niko le
 6 septembre 2026. Changer l'une seule fait finir l'écran avant ou après
 lui-même. Le plafond de 5,2 s est le filet, pas la durée : sur un réseau très
@@ -1184,11 +1224,16 @@ Sept choses à savoir :
   négative : sa largeur dépend du nombre de cases et d'un `min()`, donc la
   moitié à retrancher n'est pas connue à l'écriture. La première version, une
   jauge dorée, partait 22 px trop à gauche sur un téléphone pour cette raison.
-- **Un dixième univers se pose à trois endroits** : `BOOT_ENCRES` dans
-  `publier.mjs`, la liste `srcs` du script qui fabrique la planche, et le
-  décompte des cases — qui se déduit de la table, lui. La planche se
-  reconstruit alors entièrement ; le script qui la fabrique n'est pas
-  versionné, c'est la recette qui compte, comme pour la conversion en WebP.
+- **Un univers de plus se pose à trois endroits** : `BOOT_ENCRES` dans
+  `publier.mjs`, la planche, et `BOOT_PAS` — le décompte des cases se
+  déduit de la table. Au dixième, le 11 septembre 2026, le pas est passé de
+  0,28 à 0,25 s pour que la dernière couche parte au même instant (2,25 s
+  contre 2,24) : la durée réglée par Niko ne bouge pas. Un onzième demandera
+  0,225. La planche n'a pas été refaite depuis les originaux, dont la
+  recette n'est pas versionnée : la dixième vignette a été ajoutée au bas
+  de l'ancienne, au même traitement — recadrage `cover` à 560 × 315, flou
+  gaussien de rayon 2 (mesuré contre la vignette de DC Animation), fondu
+  linéaire vers `#08080f` sur 22 % en haut et en bas, WebP à 58.
 
 **Une phrase au hasard sous les cases**, posée le 6 septembre 2026 : vingt par
 langue, tirées à chaque arrivée. Les trois premières sont de Niko, mot pour mot
@@ -1240,8 +1285,8 @@ langue. `en-startrek.html` et `data-startrek-en.js` sont donc la **source**, et 
 français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul endroit
 du dépôt où l'on traduit dans ce sens.
 
-**Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age, Assassin's Creed
-ni DC Animation dans `PAGES` de `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
+**Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age, Assassin's Creed,
+DC Animation ni Jurassic World dans `PAGES` de `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
 écraserait la source avec une retraduction de sa propre sortie, sans erreur et
 sans message.
 
@@ -1654,8 +1699,8 @@ retouche du CSS, qui est commun.
 
 Six univers alignés débordaient la barre. Depuis le **18 août 2026**, Star Wars,
 Marvel et DC restent en clair ; Avatar Legends, Star Trek, The Walking Dead,
-Dragon Age depuis le 20 août, Assassin's Creed depuis le 25 et DC Animation
-depuis le 4 septembre passent sous
+Dragon Age depuis le 20 août, Assassin's Creed depuis le 25, DC Animation
+depuis le 4 septembre et Jurassic World depuis le 11 passent sous
 « Plus d'univers » / « More universes ». C'est un `<details class="nav-more">`
 natif : **pas une ligne de JS pour l'ouvrir**, et le clavier le pilote seul.
 `.nav-more:has(a[aria-current])>summary` le passe à l'or quand la page courante
@@ -2414,8 +2459,11 @@ Les largeurs, toutes plafonnées à la taille native (on n'agrandit jamais) :
 Les trois icônes sont celles du manifeste PWA : il les déclare en `image/png`, et
 elles ne se convertissent pas.
 
-**Huit univers sur neuf ont deux WebP dans `images/` pour leur bouton
-« remonter en haut »** — DC Animation reprend le bat-signal de DC — Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, le
+**Neuf univers sur dix ont deux WebP dans `images/` pour leur bouton
+« remonter en haut »** — DC Animation reprend le bat-signal de DC — les deux
+logos de Jurassic Park et Jurassic World (`jurassic1.webp` au repos,
+`jurassic2.webp` au survol, 384×286 sur une même toile ; le premier arrivait
+en SVG et a été rendu au navigateur, faute de convertisseur sur la machine), Grogu, Miss Minutes, Appa, le bat-signal, le delta de Starfleet, le
 soleil de la Chantrie (`da1.webp` / `da2.webp`, 384×384), l'insigne des Assassins
 (`actop1.webp` / `actop2.webp`, 384×384 — grisé au repos, doré et brisé au
 survol), et Rick Grimes
@@ -2466,7 +2514,11 @@ DC 147 (117 imp / 30 bonus), Avatar 72 (18 / 18 / 36),
 The Walking Dead 45 (29 must / 3 important / 13 bonus),
 Dragon Age 44 (15 must / 10 important / 19 bonus),
 Assassin's Creed 111 (34 must / 36 important / 41 bonus),
-DC Animation 80 (61 must / 9 important / 10 bonus).
+DC Animation 80 (61 must / 9 important / 10 bonus),
+Jurassic World 13 (7 must / 2 important / 4 bonus) — films essentiels, séries
+animées importantes, romans et court métrage optionnels : le texte de Niko
+n'en posait aucun, la répartition est déduite de son repère « important to
+the overall lore ».
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
 repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un
