@@ -550,11 +550,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 #totop.on{opacity:1;pointer-events:auto;transform:none}
 #totop span{position:relative;display:block;width:96px;height:96px}
 #totop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-/* Pas de visuel pour Jurassic World : une empreinte de théropode, grise au
-   repos, à l'encre de l'univers au survol. */
-#totop svg{position:absolute;inset:12%;width:76%;height:76%;transition:opacity .2s}
-#totop .nl{fill:#7e7ea8}
-#totop .hv{fill:#45c46b;filter:drop-shadow(0 0 6px rgba(69,196,107,.55))}
 #totop .hv{opacity:0}
 #totop:hover .nl{opacity:0}
 #totop:hover .hv{opacity:1}
@@ -808,7 +803,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <div class="s"><b>7</b><span>Films</span></div>
       <div class="s"><b>2</b><span>Séries animées</span></div>
       <div class="s"><b>3</b><span>Livres</span></div>
-      <div class="s"><b id="s-tot">12</b><span>Entrées</span></div>
+      <div class="s"><b id="s-tot">13</b><span>Entrées</span></div>
       <div class="s"><b id="s-h">50 h</b><span>À voir</span></div>
     </div>
     <button class="start" id="start" type="button">Commencer <em>▸</em></button>
@@ -850,7 +845,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
-      <summary>Filtres, recherche et repères<span class="fcount" id="fcount">12 / 12 affichées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <summary>Filtres, recherche et repères<span class="fcount" id="fcount">13 / 13 affichées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
       <div class="filt-body">
     <div class="search" id="searchbox">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -904,12 +899,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </footer>
 
 <button id="totop" aria-label="Remonter en haut" title="Remonter en haut">
-  <span><svg class="nl" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3C35 10 37 24 37 38H27C27 24 29 10 32 3ZM7 15C13 19 22 27 30 36L24 42C18 34 11 24 7 15ZM57 15C51 19 42 27 34 36L40 42C46 34 53 24 57 15Z"/><ellipse cx="32" cy="46" rx="11" ry="10"/></svg><svg class="hv" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3C35 10 37 24 37 38H27C27 24 29 10 32 3ZM7 15C13 19 22 27 30 36L24 42C18 34 11 24 7 15ZM57 15C51 19 42 27 34 36L40 42C46 34 53 24 57 15Z"/><ellipse cx="32" cy="46" rx="11" ry="10"/></svg></span>
+  <span><img class="nl" src="/images/jurassic1.webp" alt=""/><img class="hv" src="/images/jurassic2.webp" alt=""/></span>
 </button>
 
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
-    <b><em id="k-on">0</em> / <span id="k-tot">12</span></b>
+    <b><em id="k-on">0</em> / <span id="k-tot">13</span></b>
     <span class="lbl">vus</span>
     <span class="bar"><i id="k-fill"></i></span>
     <span class="lbl">Restant à voir <b style="font-size:14px" id="k-time">50 h</b></span>
@@ -982,7 +977,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      La page en sert deux : celui qu'on suit la première fois (`eras`), où
      les deux séries animées passent en flashback après leur film, et celui
      qu'on suit quand on connaît déjà (`erasRewatch`), qui les coupe autour
-     des films et ajoute The Evolution of Claire. La bascule
+     des films. La bascule
      recharge la page plutôt que de redessiner — `ALL` numérote les entrées
      en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
   /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
@@ -1006,13 +1001,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      `drop` retire un champ : la FAQ « pourquoi le regarder ici » d'un
      flashback remis à sa place n'a plus rien à justifier. Une référence
      morte rendrait une carte vide sans une erreur — elle sort en console. */
-  /* Une entrée qui n'est ni l'une ni l'autre n'existe qu'au rewatch : The
-     Evolution of Claire, que Niko ne met pas dans la première vision. Elle
-     se prend telle quelle, sans rien hériter. */
   function resolve(eras){
     return eras.map(function(era){
       return {title:era.title,entries:era.entries.map(function(x){
-        if(!x.ref && !x.covers) return x;
         var src=BYID[x.ref||(x.covers||[])[0]];
         if(!src){ console.error('[rewatch] référence morte :',x.ref||x.covers); return x; }
         var e=Object.assign({},src,x);
@@ -1321,6 +1312,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       return '<span><strong>'+p[0]+'</strong> '+p[1]+'</span>'; }).join('');
     return s?'<div class="expand-meta">'+s+'</div>':'';
   }
+  /* Battle at Big Rock se regarde en entier sur YouTube : le lien arrive des
+     données en adresse et libellé, jamais en HTML — la page échappe tout ce
+     qu'elle affiche. Repris d'Avatar Legends, à ceci près qu'il sert aussi
+     une fiche TMDB : le court en a une, et sa bande-annonce ne remplace pas
+     le film. */
+  function lien(e){
+    return e.link ? '<a class="expand-trailer-link" href="'+esc(e.link.href)+
+      '" target="_blank" rel="noopener">▶ '+esc(e.link.label)+'</a>' : '';
+  }
   function loadRich(art){
     var panel=$('.bu-panel',art), box=$('.en-rich',panel);
     if(panel.dataset.loaded) return;
@@ -1374,7 +1374,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     if(!id||id==='0'||!CFG.tmdbKey){
       /* sans identifiant TMDB ni description, le dépliant restait vide :
          on le dit, la FAQ juste en dessous porte le reste. */
-      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>';
+      box.innerHTML='<div class="expand-synopsis">'+esc(e.desc||T.noSynopsis)+'</div>'+lien(e);
       return;
     }
 
@@ -1421,7 +1421,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               [T.mRating,d.vote_average?'⭐ '+d.vote_average.toFixed(1)+'/10':''],
               [T.mPeriod,e.date]])+
         (tr?'<a class="expand-trailer-link" href="https://www.youtube.com/watch?v='+tr.key+
-          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+
+          '" target="_blank" rel="noopener">▶ '+T.trailer+'</a>':'')+lien(e)+
         '</div></div>';
     }).catch(function(){
       box.innerHTML='<div class="expand-loading">'+T.loadFail+'</div>';

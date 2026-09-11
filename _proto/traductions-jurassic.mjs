@@ -8,7 +8,8 @@
    écrits : ils viennent de TMDB en fr-FR, et celui du roman de Claire du
    catalogue de la BnF (« Le Destin de Claire », Glénat jeunesse, 2018).
    Les deux Maisie Lockwood n'ont pas d'édition française : ils gardent
-   leur titre et prennent le badge VO.
+   leur titre et prennent le badge VO. Battle at Big Rock aussi, à la
+   demande de Niko, bien que TMDB lui connaisse « La Bataille de Big Rock ».
 
    `JW_TRADUCTIONS` — ce qui est vraiment écrit, et qui part en relecture :
    l'accroche, le repère des séries animées, ce qui est écarté, les quatre
@@ -27,6 +28,9 @@ export const JW_IDENTIQUES = [
      Flashpoint ou Knightfall chez DC Animation */
   'Camp Fam',
   'Nublar Six',
+  /* le court garde son titre dans les deux langues, à la demande de Niko :
+     il n'existe qu'en anglais, sur YouTube, et porte le badge VO */
+  'Battle at Big Rock',
   /* le nom du fichier d'export, la clé de stockage, la clé d'univers et
      le visuel : une seule copie sert les deux langues */
   'chronologeek-jurassicworld.json',
@@ -39,11 +43,12 @@ export const JW_RETROUVES = [
   ['The Lost World: Jurassic Park', 'Le Monde perdu : Jurassic Park'],
   ['Jurassic World: Camp Cretaceous', 'Jurassic World : La Colo du Crétacé'],
   ['Jurassic World: Fallen Kingdom', 'Jurassic World : Fallen Kingdom'],
-  ['Battle at Big Rock', 'La Bataille de Big Rock'],
   ['Jurassic World: Dominion', 'Jurassic World : Le Monde d’après'],
   ['Jurassic World: Chaos Theory', 'Jurassic World : La théorie du chaos'],
   ['Jurassic World: Rebirth', 'Jurassic World : Renaissance'],
   ['The Evolution of Claire', 'Le Destin de Claire'],
+  /* le libellé du lien des shorts d'Avatar Legends */
+  ['Watch on YouTube', 'Regarder sur YouTube'],
 ];
 
 export const JW_TRADUCTIONS = [
