@@ -2513,7 +2513,7 @@ Star Wars 62 (9 must / 37 important / 16 bonus), Marvel 121 (49 / 30 / 42),
 DC 147 (117 imp / 30 bonus), Avatar 72 (18 / 18 / 36),
 The Walking Dead 45 (29 must / 3 important / 13 bonus),
 Dragon Age 44 (15 must / 10 important / 19 bonus),
-Assassin's Creed 111 (34 must / 36 important / 41 bonus),
+Assassin's Creed 112 (34 must / 37 important / 41 bonus),
 DC Animation 80 (61 must / 9 important / 10 bonus),
 Jurassic World 13 (7 must / 2 important / 4 bonus) — films essentiels, séries
 animées importantes, romans et court métrage optionnels : le texte de Niko

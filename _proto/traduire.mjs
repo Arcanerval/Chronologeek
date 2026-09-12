@@ -277,6 +277,15 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline Avatar Legends, en ~95 AG, juste après la Saison 2 Épisode 17 du Dernier Maître de l\'Air.',
    'Added to the Avatar Legends timeline, in ~95 AG, just after Season 2 Episode 17 of The Last Airbender.'],
 
+  /* ── la carte du roman Unity, écrite le 12 septembre 2026 ──
+     Le titre du roman est celui du jeu, à la ponctuation près : le
+     français colle un espace avant le deux-points, l'anglais non. Il
+     est écrit ici parce que le journal n'a pas d'identifiants et que
+     rien ne l'apparie à l'entrée de la timeline, qui le tient déjà. */
+  ['Assassin\'s Creed : Unity', 'Assassin\'s Creed: Unity'],
+  ['Ajouté à la timeline Assassin\'s Creed, en 1778-1794, juste après le jeu du même nom — le roman raconte les mêmes événements du point de vue d\'Élise de la Serre.',
+   'Added to the Assassin\'s Creed timeline, in 1778-1794, just after the game of the same name — the novel retells the same events from Élise de la Serre\'s perspective.'],
+
   /* ── la carte du comic Kylo Ren, écrite le 13 août 2026 ──
      Même moule que la carte « Legacy » de juillet, qui dit en anglais
      « Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just

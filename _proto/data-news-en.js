@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-09", label:"September 2026", items:[
+      {"nat":"media","uni":"assassinscreed","kind":"roman","title":"Assassin's Creed: Unity","meta":"1778-1794","txt":"Added to the Assassin's Creed timeline, in 1778-1794, just after the game of the same name — the novel retells the same events from Élise de la Serre's perspective.","img":"/images/unitynovel.webp","href":"en-assassinscreed.html#ac-unity-novel-1","cta":"See in the timeline"},
       {"nat":"site","uni":"jurassic","kind":"timeline","title":"New timeline: Jurassic World","txt":"From Jurassic Park to Rebirth — the seven movies, the two animated series, three books and a short film, for a first watch or a rewatch.","href":"en-jurassic.html","cta":"Open the timeline"},
       {"nat":"media","uni":"avatar","kind":"comic","title":"Jet: Rebels and Rhinos","meta":"~95 AG","vo":true,"txt":"Added to the Avatar Legends timeline, in ~95 AG, just after Season 2 Episode 17 of The Last Airbender.","img":"/images/jet.webp","href":"en-avatar.html#avt-jet-rebels-and-rhinos","cta":"See in the timeline"},
       {"nat":"site","uni":"dcanimation","kind":"timeline","title":"New timeline: DC Animation","txt":"80 entries, from the DCAU to the DCAMU and the Arkhamverse — the animated series, the animated films and the games in a single thread.","href":"en-dcanimation.html","cta":"Open the timeline"},
