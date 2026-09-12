@@ -38,15 +38,6 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
 
-      { nat:"media", uni:"assassinscreed", kind:"roman",
-        title:"Assassin's Creed : Unity", meta:"1778-1794",
-        txt:"Ajouté à la timeline Assassin's Creed, en 1778-1794, juste "+
-            "après le jeu du même nom — le roman raconte les mêmes "+
-            "événements du point de vue d'Élise de la Serre.",
-        img:"/images/unitynovel.webp",
-        href:"/fr/assassinscreed#ac-unity-novel-1",
-        cta:"Voir dans la timeline" },
-
       { nat:"site", uni:"jurassic", kind:"timeline",
         title:"Nouvelle timeline : Jurassic World",
         txt:"De Jurassic Park à Renaissance — les sept films, les deux "+
