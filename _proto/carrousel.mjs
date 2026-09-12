@@ -47,10 +47,12 @@ const TYPES = {
 
 const T = {
   fr: { ordre:"L'ORDRE COMPLET", suite:'(suite)', oeuvres:'œuvres', eres:'ères',
+        essentiel:'Essentiel', important:'Important',
         sansSpoil:'Sans spoil', cover2:'dans l’ordre', fin1:'La timeline complète, gratuite',
         fin2:'Coche ce que tu as vu. Le site retient ta progression.',
         fin3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN` },
   en: { ordre:'THE FULL ORDER', suite:'(cont.)', oeuvres:'entries', eres:'eras',
+        essentiel:'Essential', important:'Important',
         sansSpoil:'Spoiler-free', cover2:'in order', fin1:'The full timeline, free',
         fin2:'Check off what you have seen. The site remembers.',
         fin3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR` },
@@ -77,6 +79,13 @@ function charge(fichier) {
   return { D, CG: ctx.window.CG };
 }
 
+/* Le niveau intermediaire s'ecrit de deux facons : "important" chez huit
+   univers, "imp" chez DC — c'est la valeur qui change, pas le champ, et
+   CLAUDE.md le dit. N'accepter que la premiere laissait les 118 entrees de DC
+   sans triangle : rien ne cassait, la marque manquait, et c'est le seul univers
+   qui n'a pas d'essentiel pour le faire remarquer. */
+const IMPORTANT = new Set(['important', 'imp']);
+
 function decoupe(D, maxParSlide, t) {
   const slides = [];
   let n = 0;
@@ -90,7 +99,15 @@ function decoupe(D, maxParSlide, t) {
       slides.push({
         ere: ere.title || '',
         suite: i > 0 ? t.suite : '',
-        entrees: lot.map(e => ({ ...e, rang: ++n })),
+        entrees: lot.map(e => {
+          const niveau = e.level || e.imp || '';
+          /* les trois marques calculees ici ecrasent le champ de donnees du meme
+             nom, comme dans video.mjs. */
+          return { ...e, rang: ++n,
+            must: niveau === 'must',
+            imp: IMPORTANT.has(niveau),
+            flashback: (e.tags || []).includes('flashback') };
+        }),
       });
     }
   }
@@ -132,19 +149,30 @@ function trouveCouverture(cle) {
   return '';
 }
 
+/* le triangle des importants est celui des pages (LVICO de e-starwars.html) et
+   celui des videos, trait et encre compris : les trois surfaces doivent porter
+   le meme signe, sinon il n'apprend rien a qui passe de l'une a l'autre. */
+const IMP = '<svg class="imp" viewBox="0 0 24 24" aria-hidden="true">' +
+  '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>';
+
 function ligne(e, lang) {
   const [encre, fr, en] = TYPES[e.type] || ['#8f8fa8', String(e.type || '').toUpperCase(), String(e.type || '').toUpperCase()];
-  /* seul le must est marque : "important" porte 37 entrees sur 62 chez Star Wars,
-     une pastille repetee a ce point ne distingue plus rien. */
-  const must = (e.level || e.imp) === 'must';
+  /* L'etoile, le triangle et la pastille FLASHBACK, comme dans les videos. Le
+     carrousel ne montrait que l'etoile : "important" porte 37 entrees sur 62
+     chez Star Wars, et une seconde etoile repetee a ce point n'aurait rien
+     distingue. Le triangle, lui, est un signe different et discret — c'est la
+     reponse deja trouvee par les pages et par video.mjs. */
   /* les sous-items partent en entier, le CSS tronque : en montrer deux sur huit
      donnerait une liste d'arcs qui a l'air complete et ne l'est pas. */
   const sous = Array.isArray(e.subitems)
     ? e.subitems.filter(s => s && s.trim()).join(' · ')
     : '';
-  return `<li class="row${must ? ' must' : ''}">
+  return `<li class="row${e.must ? ' must' : ''}">
     <span class="rank">${String(e.rang).padStart(2, '0')}</span>
-    ${e.img ? `<img class="thumb" src="${esc(visuel(e.img))}" alt="">` : '<span class="thumb ph"></span>'}
+    <span class="vis">
+      ${e.img ? `<img class="thumb" src="${esc(visuel(e.img))}" alt="">` : '<span class="thumb ph"></span>'}
+      ${e.flashback ? '<span class="fb">FLASHBACK</span>' : ''}
+    </span>
     <span class="meta">
       <span class="title">${esc(decode(e.title))}</span>
       <span class="sub">
@@ -153,7 +181,7 @@ function ligne(e, lang) {
         ${sous ? `<span class="si">${esc(decode(sous))}</span>` : ''}
       </span>
     </span>
-    ${must ? '<span class="mark">★</span>' : '<span class="mark"></span>'}
+    <span class="mark">${e.must ? '★' : e.imp ? IMP : ''}</span>
   </li>`;
 }
 
@@ -163,6 +191,15 @@ function page(cle, D, slides, lang, total) {
   const nom = decode(D.title || cle);
   const cover = trouveCouverture(cle);
   const nSlides = slides.length + 2;
+  /* la legende des signes, et seulement de ceux que le carrousel montre : Star
+     Trek n'a pas de niveaux, un univers sans flashback n'a pas de pastille.
+     Meme regle et memes mots que video.mjs et que les filtres du site. */
+  const toutes = slides.flatMap(s => s.entrees);
+  const legende = [
+    toutes.some(e => e.must) && `<span><i class="lstar">★</i>${esc(t.essentiel)}</span>`,
+    toutes.some(e => e.imp) && `<span>${IMP.replace('class="imp"', 'class="limp"')}${esc(t.important)}</span>`,
+    toutes.some(e => e.flashback) && `<span><i class="lfb">FLASHBACK</i></span>`,
+  ].filter(Boolean);
 
   const corps = slides.map((s, i) => `
   <section class="slide">
@@ -204,9 +241,19 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 .rank{font-family:"Big Shoulders Display";font-weight:900;font-size:38px;color:#5d5b73;
   text-align:right;font-variant-numeric:tabular-nums;line-height:1}
 .row.must .rank{color:${encre}}
-.thumb{width:152px;height:100%;max-height:96px;object-fit:cover;border-radius:3px;
+/* la vignette est enveloppee pour porter la pastille FLASHBACK : align-self lui
+   donne la hauteur de la rangee, qui varie d'une slide de 5 entrees a une slide
+   de 11 — une hauteur fixe ecrasait les slides denses. */
+.vis{position:relative;align-self:stretch;max-height:96px;display:block}
+.thumb{width:100%;height:100%;object-fit:cover;border-radius:3px;
   display:block;background:#1c1c26}
-.thumb.ph{background:#1c1c26;height:86px}
+.thumb.ph{background:#1c1c26}
+/* la pastille du site (.ft) et des videos, en plein plutot qu'au trait : sur une
+   vignette de 152 px elle doit se lire sans qu'on s'arrete dessus. */
+.fb{position:absolute;left:0;top:0;z-index:3;background:#f0c97c;color:#08080f;
+  font-family:"Big Shoulders Display";font-weight:900;font-size:15px;letter-spacing:.07em;
+  line-height:1;padding:5px 12px 4px 7px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
 .meta{min-width:0;display:flex;flex-direction:column;gap:7px}
 .title{font-size:31px;font-weight:600;line-height:1.16;color:#fff;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -216,8 +263,10 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
   padding:2px 9px;border-radius:2px;white-space:nowrap;line-height:1.25;flex:none}
 .date{font-size:23px;color:#9d9bb2;font-weight:500;white-space:nowrap;flex:none}
 .si{font-size:20px;color:#6f6d85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.mark{font-family:"Big Shoulders Display";font-weight:900;font-size:34px;text-align:center;
-  line-height:1;color:${encre}}
+.mark{font-family:"Big Shoulders Display";font-weight:900;font-size:34px;
+  line-height:1;color:${encre};display:flex;align-items:center;justify-content:center}
+.mark .imp{width:33px;height:33px;fill:none;stroke:#ff9d5c;stroke-width:2.3;
+  stroke-linejoin:miter;stroke-linecap:square}
 /* les slides denses se resserrent d'un cran */
 .rows.n10 .title,.rows.n11 .title{font-size:29px;-webkit-line-clamp:1}
 .rows.n10,.rows.n11{gap:9px}
@@ -244,6 +293,16 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
   line-height:.9;color:#fff;font-variant-numeric:tabular-nums}
 .cover .st span{display:block;margin-top:8px;font-size:22px;letter-spacing:.09em;
   text-transform:uppercase;color:#9d9bb2;font-weight:600}
+.cover .lg{display:flex;align-items:center;gap:34px;margin-top:34px;flex-wrap:wrap;
+  font-family:"Big Shoulders Display";font-weight:800;font-size:27px;letter-spacing:.11em;
+  text-transform:uppercase;color:#cfcde0}
+.cover .lg>span{display:flex;align-items:center;gap:11px}
+.lstar{font-style:normal;font-weight:900;font-size:36px;line-height:1;color:${encre}}
+.limp{width:36px;height:36px;fill:none;stroke:#ff9d5c;stroke-width:2.3;stroke-linejoin:miter;
+  stroke-linecap:square}
+.lfb{font-style:normal;background:#f0c97c;color:#08080f;font-weight:900;font-size:23px;
+  letter-spacing:.11em;line-height:1;padding:8px 18px 6px 13px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
 .cover .site{position:absolute;top:56px;left:62px;z-index:3;font-family:"Big Shoulders Display";
   font-weight:800;font-size:29px;letter-spacing:.16em;text-transform:uppercase;color:#fff;
   background:#08080fcc;border:1px solid ${encre}88;padding:9px 18px;border-radius:3px}
@@ -271,6 +330,7 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
       <div class="st"><b>${D.eras.length}</b><span>${esc(t.eres)}</span></div>
       <div class="st"><b>${esc(t.sansSpoil)}</b><span>${lang === 'en' ? 'guaranteed' : 'garanti'}</span></div>
     </div>
+    ${legende.length ? `<div class="lg">${legende.join('')}</div>` : ''}
   </div>
 </section>
 ${corps}

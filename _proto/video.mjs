@@ -104,6 +104,13 @@ function couverture(cle) {
 
 /* ---------- selection ---------- */
 
+/* Le niveau intermediaire s'ecrit de deux facons : "important" chez huit
+   univers, "imp" chez DC — c'est la valeur qui change, pas le champ, et
+   CLAUDE.md le dit. N'accepter que la premiere laissait les 118 entrees de DC
+   sans triangle, et `--only must+` rendait zero carte chez lui : rien ne
+   cassait, DC n'ayant aucun essentiel pour le faire remarquer. */
+const IMPORTANT = new Set(['important', 'imp']);
+
 function suite(D, opts) {
   const out = [];
   let rang = 0;
@@ -115,11 +122,11 @@ function suite(D, opts) {
       const niveau = e.level || e.imp || '';
       const force = opts.plus && opts.plus.has(e.id);
       if (!force && opts.only === 'must' && niveau !== 'must') continue;
-      if (!force && opts.only === 'must+' && niveau !== 'must' && niveau !== 'important') continue;
+      if (!force && opts.only === 'must+' && niveau !== 'must' && !IMPORTANT.has(niveau)) continue;
       /* une entree tiree par --plus est mise au rang des essentiels : sans ca elle
          sortirait sans etoile ni bordure au milieu de cartes qui les portent. */
       out.push({ ...e, rang, ere: ere.title || '', must: niveau === 'must' || !!force,
-        imp: niveau === 'important' && !force,
+        imp: IMPORTANT.has(niveau) && !force,
         flashback: (e.tags || []).includes('flashback') });
     }
   });
