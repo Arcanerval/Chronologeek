@@ -49,12 +49,20 @@ const T = {
   fr: { ordre:"L'ORDRE COMPLET", suite:'(suite)', oeuvres:'œuvres', eres:'ères',
         sansSpoil:'Sans spoil', cover2:'dans l’ordre', fin1:'La timeline complète, gratuite',
         fin2:'Coche ce que tu as vu. Le site retient ta progression.',
-        fin3:'9 univers · 1 463 œuvres · FR + EN' },
+        fin3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN` },
   en: { ordre:'THE FULL ORDER', suite:'(cont.)', oeuvres:'entries', eres:'eras',
         sansSpoil:'Spoiler-free', cover2:'in order', fin1:'The full timeline, free',
         fin2:'Check off what you have seen. The site remembers.',
-        fin3:'9 universes · 1,463 entries · EN + FR' },
+        fin3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR` },
 };
+
+/* Le decompte de fin se lit dans l'index de la recherche, que la publication
+   produit depuis les memes donnees : ecrit en dur, il annoncait encore
+   "9 univers · 1 463 oeuvres" le jour ou Jurassic World en faisait dix. */
+function decompte() {
+  const idx = JSON.parse(fs.readFileSync(path.join(RACINE, 'search-en.json'), 'utf8'));
+  return [Object.keys(UNIVERS).length, idx.e.length];
+}
 
 /* ---------- lecture des donnees ---------- */
 
@@ -271,7 +279,7 @@ ${corps}
   <h2>${esc(t.fin1)}</h2>
   <p class="url">chronologeek.app</p>
   <p>${esc(t.fin2)}</p>
-  <p class="tail">${esc(t.fin3)}</p>
+  <p class="tail">${esc(t.fin3(...decompte()))}</p>
 </section>`;
 }
 
