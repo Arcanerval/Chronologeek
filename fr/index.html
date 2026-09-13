@@ -865,6 +865,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
     var r=document.getElementById('resume');
     if(!running.length){ r.hidden=true; return; }
+    /* `cg_last` est la timeline où l'on a coché en dernier — les dix pages ne
+       l'écrivent qu'au clic d'une case, jamais au chargement. La barre y reste
+       donc jusqu'à ce qu'on coche ailleurs. Le repli, « la plus avancée », ne
+       sert qu'au premier passage et à qui vient de terminer celle qu'il
+       suivait : un univers à 100 % quitte `running`, et il n'y a plus rien à
+       reprendre. La valeur est comparée au `data-u` des cases — écrire une
+       autre clé (`dcanim` pour `dcanimation`, jusqu'au 13 septembre 2026) ne
+       trouve rien et fait tomber la barre dans le repli, sans une ligne dans
+       la console. */
     var last=null;
     try{ last=JSON.parse(localStorage.getItem('cg_last')||'null'); }catch(e){}
     var head=(last&&running.filter(function(x){return x.u===last.u;})[0])||

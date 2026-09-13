@@ -986,8 +986,12 @@ Therefore, we now return to the Prime timeline, already in progress, fourteen ye
   var CFG=window.CG, D=window.ST, RT=window.RT||{};
   var T=CFG.t;
   var KEY='cg-proto-st';
-  /* l'accueil rouvre sa reprise sur le dernier univers visité */
-  try{ localStorage.setItem('cg_last',JSON.stringify({u:'startrek'})); }catch(_){}
+  /* L'accueil rouvre sa reprise sur la timeline où l'on a coché en dernier, et
+     non sur la dernière visitée : `marque()` ne s'appelle qu'au clic d'une
+     case. Écrite au chargement, la clé changeait de monde dès qu'on ouvrait une
+     page pour lire, et la barre avait l'air d'en tirer un au hasard. La valeur
+     est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
+  function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'startrek'})); }catch(_){} }
 
   /* ── deux natures d'items dans une ère ────────────────────────────
      Les entrées comptent dans la progression, les bandeaux non. On les
@@ -1298,7 +1302,7 @@ Therefore, we now return to the Prime timeline, already in progress, fourteen ye
     if(chk){
       var art=chk.closest('.bu'), id=art.dataset.id;
       prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
-      save();
+      save(); marque();
       chk.setAttribute('aria-checked',prog[id]?'true':'false');
       art.classList.toggle('done',!!prog[id]);
       tally();

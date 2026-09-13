@@ -995,8 +995,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
   var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
   var KEY='cg-proto-jurassic';
-  /* l'accueil rouvre sa reprise sur le dernier univers visité */
-  try{ localStorage.setItem('cg_last',JSON.stringify({u:'jurassic'})); }catch(_){}
+  /* L'accueil rouvre sa reprise sur la timeline où l'on a coché en dernier, et
+     non sur la dernière visitée : `marque()` ne s'appelle qu'au clic d'une
+     case. Écrite au chargement, la clé changeait de monde dès qu'on ouvrait une
+     page pour lire, et la barre avait l'air d'en tirer un au hasard. La valeur
+     est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
+  function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'jurassic'})); }catch(_){} }
 
   /* ── les deux parcours ────────────────────────────────────────────────
      La page en sert deux : celui qu'on suit la première fois (`eras`), où
@@ -1462,7 +1466,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       var art=chk.closest('.bu'), id=art.dataset.id;
       prog[id]=!prog[id]; if(!prog[id]) delete prog[id];
       bridge(id);
-      save();
+      save(); marque();
       chk.setAttribute('aria-checked',prog[id]?'true':'false');
       art.classList.toggle('done',!!prog[id]);
       tally();

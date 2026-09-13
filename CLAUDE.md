@@ -2695,6 +2695,26 @@ aux tournures, ni aux abréviations, ni au vocabulaire, qui restent intouchables
   (`en-startrek`, `en-twd`, `en-dragonage`, `en-assassinscreed`). L'accueil
   et la liste des Dossiers n'ont rien à changer : leur bandeau de reprise ne
   fait que renvoyer vers la page avec `#reprendre`, qui rejoue le clic.
+- **`cg_last` est la timeline où l'on a coché en dernier, pas la dernière
+  visitée.** Corrigé le 13 septembre 2026, sur un signalement de Niko : la
+  barre de reprise de l'accueil « avait l'air d'en sortir un au hasard tous
+  les x jours ». Les dix pages écrivaient la clé **au chargement** — ouvrir
+  une page pour lire suffisait donc à faire changer la barre de monde, et
+  rien ne le laissait voir. Elles ne l'écrivent plus qu'au clic d'une case,
+  par `marque()`, appelé sur la ligne `save(); marque();` du gestionnaire de
+  `[data-check]` — donc aussi sous le Maj + clic, qui rejoue de vrais clics.
+  Pas dans `save()` : l'import et `bootBridge()` y passent, et un pont rejoué
+  au chargement aurait reposé le même défaut par une autre porte.
+
+  **Et la valeur doit être celle du `data-u` de l'accueil**, qui n'est pas
+  toujours celle du stockage : DC Animation stocke sous `cg-proto-dcanim` et
+  écrivait `{u:'dcanim'}` là où la case s'annonce `dcanimation`. Le filtre ne
+  trouvait rien, la barre tombait dans son repli — « la plus avancée » — et
+  DC Animation n'a jamais pu être reprise depuis sa publication, sans une
+  ligne dans la console. Le repli, lui, reste juste : il sert au premier
+  passage et à qui vient de terminer la timeline qu'il suivait, un univers à
+  100 % quittant `running`. Le geste s'écrit dans les **dix sources** — les
+  quatre protos français et les six protos anglais des chaînes inversées.
 - **Les deux dates d'Assassin's Creed se lisent côte à côte, sous le
   titre, à toute largeur, et l'absence de présent ne s'écrit pas.**
   Tranché par Niko le 26 août 2026. La grande date en or est celle du
