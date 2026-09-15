@@ -201,7 +201,8 @@ window.CGD={"eras":[
   {"kind":"it","k":"comic","c":"#fb923c","id":"10-bby-lando-double-or-nothing-1-5","date":"10 BBY","title":"Lando : Double or Nothing 1-5","type":"Comic","vo":false,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"9 BBY","title":"OBI-WAN KENOBI","type":"On screen"},
   {"kind":"it","k":"comic","c":"#fb923c","id":"8-bby-star-wars-2015-15","date":"8 BBY","title":"Star Wars (2015) 15","type":"Comic","vo":false,"note":""},
-  {"kind":"it","k":"comic","c":"#fb923c","id":"8-bby-star-wars-2015-20","date":"8 BBY","title":"Star Wars (2015) 20","type":"Comic","vo":false,"note":""}
+  {"kind":"it","k":"comic","c":"#fb923c","id":"8-bby-star-wars-2015-20","date":"8 BBY","title":"Star Wars (2015) 20","type":"Comic","vo":false,"note":""},
+  {"kind":"it","k":"roman","c":"#a78bfa","id":"6-bby-reign-of-the-empire-edge-of-the-abyss","date":"6 BBY","title":"Reign of the Empire: Edge of the Abyss","type":"Novel","vo":true,"note":""}
 ]},
 {"title":"THE REBELLION ERA","items":[
   {"kind":"screen","c":"#64b5f6","date":"5 BBY","title":"ANDOR — SEASON 1","type":"On screen"},

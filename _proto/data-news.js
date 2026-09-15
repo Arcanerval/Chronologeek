@@ -38,6 +38,13 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
 
+      { nat:"media", uni:"sw", kind:"roman",
+        title:"Reign of the Empire : Edge of the Abyss", meta:"6 BBY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le roman, en 6 BBY, à la fin de "+
+            "l'ère de l'Empire, juste avant l'ère de la Rébellion.",
+        href:"e-dossier-star-wars.html#6-bby-reign-of-the-empire-edge-of-the-abyss",
+        cta:"Voir dans le Dossier" },
+
       { nat:"site", uni:"jurassic", kind:"timeline",
         title:"Nouvelle timeline : Jurassic World",
         txt:"De Jurassic Park à Renaissance — les sept films, les deux "+

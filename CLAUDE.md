@@ -11,7 +11,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
   `assassinscreed.html`, `dcanimation.html`, `jurassicworld.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
-  (535 romans, comics et fictions audio, plus 63 repères écran)
+  (536 romans, comics et fictions audio, plus 63 repères écran)
 - `index.html`, `whats-new.html` / `nouveautes.html`, `upcoming.html` / `a-venir.html`
 - `/data/` — les entrées de chaque page, `<nom de page>-fr.js` et `-en.js`
 - `app.js` — le moteur, bilingue, un seul fichier
@@ -121,7 +121,7 @@ avec leur workflow et leurs deux caches : ils produisaient l'ancien HTML du Doss
 auraient écrasé `deep-dives/star-wars.html` et `fr/dossiers/star-wars.html`, publiées
 depuis `_proto/` depuis la refonte. Rien ne les lançait tout seuls — leur workflow était
 en `workflow_dispatch` — mais un clic sur « Run workflow » suffisait, et c'était le seul
-vrai risque du dépôt. Les 535 entrées du Dossier vivent dans `_proto/data-dossier-sw.js`,
+vrai risque du dépôt. Les 536 entrées du Dossier vivent dans `_proto/data-dossier-sw.js`,
 et c'est là qu'on ajoute. Ne pas les rétablir depuis l'historique git.
 
 ### Ce que le radar écarte
@@ -903,7 +903,7 @@ Six choses à savoir :
   `TVSeries`. L'écrit se reconnaît à son `type` ; `media` reprend la main pour
   tout le reste, où il est plus sûr que des vocabulaires qui ne s'alignent pas
   d'une page à l'autre.
-- **Le Dossier n'a pas d'`ItemList`, et c'est délibéré.** Ses 535 œuvres
+- **Le Dossier n'a pas d'`ItemList`, et c'est délibéré.** Ses 536 œuvres
   pesaient 10 Ko brotli et faisaient passer la page de 65 à 168 Ko de HTML brut
   — la plus lourde du site — pour un gain nul : Google ne fait pas de carrousel
   de livres. Il garde son fil d'Ariane. Ne pas la rétablir sans une raison qui
@@ -1518,7 +1518,7 @@ juillet 2026 » devenu « août 2026 » — reste à écrire à la main.
 Quatre décomptes sont écrits en dur dans les protos et doivent suivre un ajout :
 `e-dossier-star-wars.html` (le bandeau `.upd`, `s-tot`, `fcount`, `k-tot`,
 `k-left`), `e-dossiers.html` (`data-total`, le score, le bandeau, le HUD) et
-`e-accueil.html` (« 8 univers · 535 au dossier »). Le reste est calculé au
+`e-accueil.html` (« 8 univers · 536 au dossier »). Le reste est calculé au
 chargement. Le rail des ères du Dossier divisait par 533 en dur : il divise
 maintenant par `ALL.length`, sinon la progression n'atteint jamais 100 %.
 
@@ -2615,7 +2615,7 @@ aux tournures, ni aux abréviations, ni au vocabulaire, qui restent intouchables
   prod n'ayant jamais porté cette phrase-là.
 
   Trois autres décomptes suivent sur l'accueil, et aucun n'est calculé : le
-  sous-titre (« Huit chronologies… »), le HUD (`0 / 845`, « 8 univers · 535 au
+  sous-titre (« Huit chronologies… »), le HUD (`0 / 845`, « 8 univers · 536 au
   dossier ») et le numéro de la case verrouillée. Huit univers plus elle font
   **neuf** cases dans une grille à deux colonnes : la case « Bientôt » tombe
   seule sur la dernière rangée, et `.slot.lock` prend alors la largeur entière

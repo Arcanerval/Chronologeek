@@ -296,6 +296,12 @@ const TRADUCTIONS = [
      L'Escouade Inferno ». */
   ['Ajouté au Dossier Star Wars — le roman jeune adulte, en ~0-4 ABY, juste après Battlefront II : L\'Escouade Inferno.',
    'Added to the Star Wars Deep Dive — the young adult novel, in ~0-4 ABY, just after Battlefront II: Inferno Squad.'],
+  /* ── la carte Edge of the Abyss, écrite le 15 septembre 2026 ──
+     Même moule. Le titre VO prend l'espace du deux-points côté
+     français, comme The Acolyte : Kelnacca ; l'anglais n'en a pas. */
+  ['Reign of the Empire : Edge of the Abyss', 'Reign of the Empire: Edge of the Abyss'],
+  ['Ajouté au Dossier Star Wars — le roman, en 6 BBY, à la fin de l\'ère de l\'Empire, juste avant l\'ère de la Rébellion.',
+   'Added to the Star Wars Deep Dive — the novel, in 6 BBY, at the end of the Empire era, just before the Rebellion era.'],
 
   /* ── la carte Lanterns du journal, écrite le 18 août 2026 ──
      whats-new.html · « Supergirl (2026) added to the DC timeline,
@@ -992,6 +998,8 @@ const TITRES_IDENTIQUES = [
      traduit pas. */
   'Hiding from the Dark',
   '~0-4 ABY',
+  // Dossier Star Wars · la date du roman VO ajouté le 15 septembre 2026.
+  '6 BBY',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 
