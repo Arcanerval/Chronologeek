@@ -328,6 +328,14 @@ const TRADUCTIONS = [
      le moule des cent autres, « Season N Episodes A-B ». */
   ['Saison 2 Épisodes 1-4', 'Season 2 Episodes 1-4'],
   ['Saison 2 Épisodes 5-8', 'Season 2 Episodes 5-8'],
+  /* Agents du S.H.I.E.L.D., saison 1 : l'épisode 16 passe avant Le Soldat
+     de l'Hiver le 16 septembre 2026, et le bloc d'après commence au 17. */
+  ['Saison 1 Épisodes 17-22', 'Season 1 Episodes 17-22'],
+  ['Saison 1 Épisode 16', 'Season 1 Episode 16'],
+  ['L’épisode se déroule juste avant Captain America : Le Soldat de l’Hiver',
+   'The episode takes place just before Captain America: The Winter Soldier'],
+  ['Parce que l’épisode prépare les évènements de Captain America : Le Soldat de l’Hiver et que la suite de la saison les raconte',
+   'Because the episode sets up the events of Captain America: The Winter Soldier, and the rest of the season tells them'],
   /* La note qui prévient de l'alternance Andor / Rebels. Registre parlé,
      comme l'accroche de la page : « if you're here, it's because you
      want to explore… ». */
