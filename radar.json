@@ -1,23 +1,6 @@
 [
  {
   "universe": "starwars",
-  "title": "Reign of the Empire: Edge of the Abyss",
-  "date_sort": "2026-09-15",
-  "date_txt": "15/09/2026",
-  "kind": "Roman",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "6 BBY",
-  "syn": "Reign of the Empire: Edge of the Abyss is a canon novel and the second volume of the Star Wars: Reign of the Empire trilogy. It was written by Rebecca Roanhorse and published by Random House Worlds on September 15, 2026. An audiobook version was released along side the novel. It is set in 6 BBY, one year before the first season of the television series Star Wars: Andor.",
-  "wiki": "Reign of the Empire: Edge of the Abyss",
-  "syn_fr": "Reign of the Empire: Edge of the Abyss est un roman écrit par Rebecca Roanhorse. Il est le deuxième roman de la trilogie Star Wars : Le Règne de l'Empire. Il sera publié le 15 septembre 2026 par Random House Worlds aux États-Unis. Il fut adapté en livre audio aux États-Unis. En France, il sera publié par Pocket en 2027.",
-  "kindKey": "novel",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
-  "universe": "starwars",
   "title": "The Fall of Kylo Ren 2",
   "date_sort": "2026-09-16",
   "date_txt": "16/09/2026",
@@ -25,7 +8,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "The Fall of Kylo Ren 2 is the upcoming second issue of the 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney and Guru-eFX, and published by Marvel Comics on September 16, 2026.",
+  "syn": "The Fall of Kylo Ren 2 is the second issue of the 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue was written by Charles Soule, illustrated by Will Sliney and Guru-eFX, and published by Marvel Comics on September 16, 2026.",
   "wiki": "The Fall of Kylo Ren 2",
   "syn_fr": "The Fall of Kylo Ren 2 est le deuxième numéro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Charles Soule.",
   "kindKey": "comic",
@@ -664,7 +647,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/cWXtJhrlruF8CeYuaBGE8vdj3Q9.jpg",
+  "poster": "/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },
