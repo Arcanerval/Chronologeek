@@ -328,14 +328,16 @@ const TRADUCTIONS = [
      le moule des cent autres, « Season N Episodes A-B ». */
   ['Saison 2 Épisodes 1-4', 'Season 2 Episodes 1-4'],
   ['Saison 2 Épisodes 5-8', 'Season 2 Episodes 5-8'],
-  /* Agents du S.H.I.E.L.D., saison 1 : l'épisode 16 passe avant Le Soldat
-     de l'Hiver le 16 septembre 2026, et le bloc d'après commence au 17. */
+  /* Agents du S.H.I.E.L.D., saison 1 : le bloc 8-15 est coupé le 16 septembre
+     2026 : 8-11 avant Iron Man 3, 12-16 après All Hail the King, juste
+     avant Le Soldat de l'Hiver, et le bloc d'après commence au 17. */
+  ['Saison 1 Épisodes 8-11', 'Season 1 Episodes 8-11'],
   ['Saison 1 Épisodes 17-22', 'Season 1 Episodes 17-22'],
-  ['Saison 1 Épisode 16', 'Season 1 Episode 16'],
-  ['L’épisode se déroule juste avant Captain America : Le Soldat de l’Hiver',
-   'The episode takes place just before Captain America: The Winter Soldier'],
-  ['Parce que l’épisode prépare les évènements de Captain America : Le Soldat de l’Hiver et que la suite de la saison les raconte',
-   'Because the episode sets up the events of Captain America: The Winter Soldier, and the rest of the season tells them'],
+  ['Saison 1 Épisodes 12-16', 'Season 1 Episodes 12-16'],
+  ['Les épisodes se déroulent après Longue Vie au Roi, juste avant Captain America : Le Soldat de l’Hiver',
+   'The episodes take place after All Hail the King, just before Captain America: The Winter Soldier'],
+  ['Parce que les épisodes préparent les évènements de Captain America : Le Soldat de l’Hiver et que la suite de la saison les raconte',
+   'Because the episodes set up the events of Captain America: The Winter Soldier, and the rest of the season tells them'],
   /* La note qui prévient de l'alternance Andor / Rebels. Registre parlé,
      comme l'accroche de la page : « if you're here, it's because you
      want to explore… ». */
@@ -1094,8 +1096,13 @@ for (const T of TIMELINES) {
        filtres s'affichait vide : un intitulé, aucun bouton. */
     const cgTraduit = rejoueRenommages(tr.objet(P.CG, EN.CG, 'CG'));
     const cg = `window.CG=${js(cgTraduit)};\n`;
-    const rt = EN.RT ? `const RT=${js(EN.RT)};\n` : '';
-    const queue = `window.${T.varWin}=${T.varData};\n${EN.RT ? 'window.RT=RT;\n' : ''}`;
+    /* La table des durées vient du proto, pas de la prod : une durée ne se
+       traduit pas, et `runtime.py` écrit dans le proto. Reprise de la prod,
+       une entrée neuve n'avait pas de durée côté anglais et un bloc coupé
+       gardait l'ancienne — corrigé le 16 septembre 2026. */
+    const RTsrc = P.RT || EN.RT;
+    const rt = RTsrc ? `const RT=${js(RTsrc)};\n` : '';
+    const queue = `window.${T.varWin}=${T.varData};\n${RTsrc ? 'window.RT=RT;\n' : ''}`;
     fs.writeFileSync(path.join(RACINE, T.sortie),
       entete + cg + serialiseTimeline(T.varData, sortie) + '\n' + rt + queue, 'utf8');
   }

@@ -7,7 +7,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
   <url><loc>https://chronologeek.app/starwars</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
@@ -17,7 +17,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
   </url>
   <url><loc>https://chronologeek.app/dc</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
   </url>
