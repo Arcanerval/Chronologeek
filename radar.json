@@ -1,22 +1,5 @@
 [
  {
-  "universe": "starwars",
-  "title": "The Fall of Kylo Ren 2",
-  "date_sort": "2026-09-16",
-  "date_txt": "16/09/2026",
-  "kind": "Comic",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "",
-  "syn": "The Fall of Kylo Ren 2 is the second issue of the 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue was written by Charles Soule, illustrated by Will Sliney and Guru-eFX, and published by Marvel Comics on September 16, 2026.",
-  "wiki": "The Fall of Kylo Ren 2",
-  "syn_fr": "The Fall of Kylo Ren 2 est le deuxième numéro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Charles Soule.",
-  "kindKey": "comic",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "startrek",
   "title": "Star Trek: Strange New Worlds",
   "date_sort": "2026-09-17",
@@ -335,6 +318,31 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "marvel",
+  "title": "VisionQuest",
+  "date_sort": "2026-10-21",
+  "date_txt": "21/10/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 2,
+   "mark": ""
+  },
+  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
+  "tmdb": 213375,
+  "media": "tv"
+ },
+ {
   "universe": "starwars",
   "title": "The High Republic Adventures – Pathfinders 6",
   "date_sort": "2026-10-21",
@@ -478,6 +486,31 @@
   },
   "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
   "tmdb": 284833,
+  "media": "tv"
+ },
+ {
+  "universe": "marvel",
+  "title": "VisionQuest",
+  "date_sort": "2026-10-28",
+  "date_txt": "28/10/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 3,
+   "mark": ""
+  },
+  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
+  "tmdb": 213375,
   "media": "tv"
  },
  {
