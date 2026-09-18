@@ -209,10 +209,10 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 /* les cartes se partagent la hauteur restante : quatre ou six sorties
    remplissent la meme story, sans bloc de vide en bas. */
 .cards{list-style:none;position:relative;z-index:2;flex:1;display:flex;flex-direction:column;
-  justify-content:center;gap:22px;margin-top:56px;min-height:0}
+  justify-content:center;gap:18px;margin-top:44px;min-height:0}
 .card{flex:1 1 0;max-height:230px;display:grid;grid-template-columns:150px 128px 1fr;
   align-items:center;gap:26px;background:#12121b;border:1px solid #23232e;border-left:6px solid var(--c);
-  border-radius:5px;padding:18px 26px;min-height:0}
+  border-radius:5px;padding:16px 26px;min-height:0;overflow:hidden}
 
 .cdw{display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0}
 .cd{font-family:"Big Shoulders Display";font-weight:900;font-size:76px;line-height:1;
@@ -229,17 +229,17 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
    de pousser le titre hors de la carte. */
 .cd.mot{font-size:34px;line-height:1.05;letter-spacing:.04em}
 
-.po{width:128px;height:100%;max-height:186px;object-fit:cover;border-radius:4px;display:block;
+.po{width:128px;height:100%;align-self:stretch;object-fit:cover;border-radius:4px;display:block;
   background:#1c1c26}
 /* un visuel d'univers n'est pas une affiche : il s'efface d'un cran pour ne pas
    se faire passer pour l'oeuvre. */
 .po.gen{object-fit:cover;opacity:.62;filter:saturate(.85)}
 .po.ph{background:#1c1c26}
 
-.meta{min-width:0;display:flex;flex-direction:column;gap:9px}
+.meta{min-width:0;display:flex;flex-direction:column;gap:6px}
 .uni{font-family:"Big Shoulders Display";font-weight:800;font-size:25px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--c)}
-.ti{font-size:42px;font-weight:600;line-height:1.1;color:#fff;
+.ti{font-size:38px;font-weight:600;line-height:1.08;color:#fff;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .sub{display:flex;align-items:center;gap:14px;min-width:0;flex-wrap:nowrap}
 .ty{font-family:"Big Shoulders Display";font-weight:800;font-size:22px;letter-spacing:.1em;
