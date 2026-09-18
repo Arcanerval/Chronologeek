@@ -312,7 +312,7 @@ export const AC_TRADUCTIONS = [
   ['Games · DLC · Books · Comics', 'Jeux · DLC · Livres · Comics'],
   ['If you&#x27;re here it&#x27;s either because you did some of the games and want to discover the lore of Assassin&#x27;s Creed or you&#x27;re absolutely sure to love this universe before even trying it. If you just want to discover the games in chronological order uncheck the rest, all other medias are bonus content (some very important). This guide is spoiler free like the others.',
     'Si vous êtes ici, c\'est soit parce que vous avez fait quelques-uns des jeux et que vous voulez découvrir le lore d\'Assassin\'s Creed, soit parce que vous êtes absolument sûr d\'aimer cet univers avant même de l\'essayer. Si vous voulez seulement découvrir les jeux dans l\'ordre chronologique, décochez le reste : tous les autres médias sont du contenu bonus (certains très importants). Ce guide est sans spoiler, comme les autres.'],
-  ['This guide works best for first-time plays.', 'Ce guide est fait avant tout pour une première partie.'],
+  ['This guide works for first-time plays as well as replays.', 'Ce guide convient aussi bien pour une première partie que pour y rejouer.'],
   ['How to read this', 'Comment lire ce guide'],
   ['The calendar', 'Le calendrier'],
   ['The saga happens in &quot;our&quot; world so we&#x27;ll count in years like we do.',

@@ -424,7 +424,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
 
 const accroche = lignes.slice(2, 5).map((l) => l.trim()).filter(Boolean);
-const premiere = lignes[5].trim();   // « This guide works best for first-time plays. »
+const premiere = lignes[5].trim();   // « This guide works for first-time plays as well as replays. »
 
 const SVG_CAL = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>';
 const SVG_HOR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 8v5l3 2"/></svg>';
