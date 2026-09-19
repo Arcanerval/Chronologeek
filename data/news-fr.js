@@ -38,19 +38,19 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
 
-      { nat:"media", uni:"sw", kind:"roman",
-        title:"Reign of the Empire : Edge of the Abyss", meta:"6 BBY", vo:true,
-        txt:"Ajouté au Dossier Star Wars — le roman, en 6 BBY, à la fin de "+
-            "l'ère de l'Empire, juste avant l'ère de la Rébellion.",
-        href:"/fr/dossiers/star-wars#6-bby-reign-of-the-empire-edge-of-the-abyss",
-        cta:"Voir dans le Dossier" },
-
       { nat:"site", uni:"witcher", kind:"timeline",
         title:"Nouvelle timeline : The Witcher",
         txt:"Les livres de Sapkowski et les jeux et comics de CD Projekt "+
             "RED, en deux colonnes côte à côte — 54 œuvres, du Chemin sans "+
             "retour à Blood Stone.",
         href:"/fr/witcher", cta:"Ouvrir la timeline" },
+
+      { nat:"media", uni:"sw", kind:"roman",
+        title:"Reign of the Empire : Edge of the Abyss", meta:"6 BBY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le roman, en 6 BBY, à la fin de "+
+            "l'ère de l'Empire, juste avant l'ère de la Rébellion.",
+        href:"/fr/dossiers/star-wars#6-bby-reign-of-the-empire-edge-of-the-abyss",
+        cta:"Voir dans le Dossier" },
 
       { nat:"site", uni:"jurassic", kind:"timeline",
         title:"Nouvelle timeline : Jurassic World",

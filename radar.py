@@ -169,7 +169,13 @@ EXCLUDE = {
     # l'émission qui en parle, interviews de l'équipe à l'appui. TMDB la range
     # parmi les séries, et elle arrivait donc au radar à côté de la vraie.
     # Aucun des cinq guides ne suit de podcast — le motif vaut pour tous.
-    "*":        [r"\bpodcast\b"],
+    # Un making-of n'est pas une sortie : c'est un supplément sur une œuvre
+    # déjà au guide, et aucun des onze univers n'en suit. « Production Diary:
+    # Making of 'The Kingdom of the Crystal Skull' » est arrivé au radar Star
+    # Wars le 20 septembre 2026 — Lucasfilm produit aussi Indiana Jones, et
+    # TMDB range ce documentaire de tournage parmi les films.
+    "*":        [r"\bpodcast\b", r"\bproduction diary\b", r"\bmaking of\b",
+                 r"\bbehind the scenes\b"],
 }
 
 # Avatar : seuls ces types de médias nous intéressent (le reste = goodies).
@@ -430,11 +436,18 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
     dernier = max(e.get("episode_number") or 0 for e in eps) \
         if (attendus is None or attendus == len(eps)) else 0
 
-    def repere(num):
-        return {"s": saison, "e": num,
-                "mark": "premiere" if num == 1
-                        else "finale" if dernier > 1 and num == dernier
-                        else ""}
+    def repere(num, fin=0):
+        """`fin` : le dernier episode du meme jour, quand il y en a plusieurs.
+
+        Le repere de lot se lit sur ses deux bouts — un lot qui ouvre la
+        saison est une premiere, un lot qui la ferme est une finale."""
+        r = {"s": saison, "e": num,
+             "mark": "premiere" if num == 1
+                     else "finale" if dernier > 1 and (fin or num) == dernier
+                     else ""}
+        if fin and fin != num:
+            r["eFin"] = fin
+        return r
 
     # Une saison qui tombe d'un bloc n'est pas treize sorties : c'en est une.
     # *Avatar: Seven Havens* lâche ses treize épisodes le 09/10 — sans ce
@@ -467,12 +480,25 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
             tmdb=serie_id, media="tv")
         return 1, None
 
-    n, premier = 0, None
+    # Plusieurs episodes le meme jour font UNE carte. *Avatar: Seven Havens*
+    # sort par trois — E1 a E3 le 09/10, E4 a E6 le 16/10 — et le radar
+    # alignait trois cartes au meme nom, au meme jour, que seul leur numero
+    # distinguait. Le repere porte alors `eFin`, et la page ecrit « S1E01-03 ».
+    # Ce n'est pas le cas de la saison entiere, traite plus haut : trois
+    # episodes sur treize sont un lot, pas une saison.
+    par_jour = {}
     for e in eps:
         d = parse_iso(e.get("air_date") or "")
         if not d or d < TODAY or d > HORIZON:
             continue
+        par_jour.setdefault(d, []).append(e)
+
+    n, premier = 0, None
+    for d in sorted(par_jour):
+        lot = sorted(par_jour[d], key=lambda x: x.get("episode_number") or 0)
+        e = lot[0]
         num = e.get("episode_number") or 0
+        fin = lot[-1].get("episode_number") or 0
         # La première d'une série neuve est déjà annoncée par la série
         # elle-même, le même jour et sous le même nom : deux cartes pour une
         # seule sortie. Mais son repère, lui, n'existe que là — sans quoi la
@@ -484,7 +510,7 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
             # treize épisodes le 09/10 — et la carte de la série annonçait
             # alors « Finale S1E13 » le jour de sa propre première.
             if premier is None or num < premier["e"]:
-                premier = repere(num)
+                premier = repere(num, fin)
             continue
         f = fr.get(num) or {}
         # Le titre de la carte est celui de la SÉRIE, et rien d'autre : la
@@ -498,7 +524,7 @@ def tmdb_episodes(base, uni, serie_id, nom, sauf_le=None):
             d.isoformat(), d.strftime("%d/%m/%Y"), "Épisode", "TMDB",
             syn=(e.get("overview") or "").strip(),
             syn_fr=(f.get("overview") or "").strip(),
-            ep=repere(num), poster=fiche.get("poster_path") or "",
+            ep=repere(num, fin), poster=fiche.get("poster_path") or "",
             tmdb=serie_id, media="tv")
         n += 1
     return n, premier
@@ -1317,7 +1343,13 @@ def source_witcher():
             if not brut:
                 continue
             ds, dt, prec = loose_date(brut)
-            if prec == "tba":
+            # Une annee seule n'est pas une date de sortie. Le wiki ecrit
+            # « 2027 {{small|anticipated}} » pour Songs of the Past : l'annonce
+            # existe, la date non, et une carte qui affiche « 2027 » promet un
+            # jour qui n'a pas ete donne. Elle paraitra le jour ou CD Projekt
+            # datera l'extension — c'est la regle d'Assassin's Creed, dont la
+            # colonne reste vide tant qu'aucune date n'est tombee.
+            if prec != "day":
                 sans_date += 1
                 continue
             if ds < TODAY.isoformat():
@@ -1751,6 +1783,21 @@ def main():
             continue
         seen.add(k)
         uniq.append(e)
+
+    # Un film et une série qui portent le même nom, le même jour, dans le même
+    # univers, ne sont pas deux sorties : c'est une fiche de trop chez TMDB.
+    # « VisionQuest » est arrivé le 20 septembre 2026 en Film et en Série pour
+    # le 14/10 — la fiche film, 0 minute, reprenait le synopsis de la série.
+    # C'est la série qu'on garde : elle a ses épisodes, donc sa suite.
+    series = {(e["universe"], normalize(e["title"]), e["date_sort"])
+              for e in uniq if e.get("ep") or e["kindKey"] == "tv"}
+    avant = len(uniq)
+    uniq = [e for e in uniq
+            if not (e["kindKey"] == "film" and not e.get("ep")
+                    and (e["universe"], normalize(e["title"]), e["date_sort"]) in series)]
+    if len(uniq) != avant:
+        log(f"Doublons  : {avant - len(uniq)} fiche(s) film écartée(s) — "
+            f"même titre et même jour qu'une série")
 
     fill_wiki_synopses(uniq)
     fill_wiki_synopses_fr(uniq)
