@@ -49,3 +49,5 @@ _proto/a-relire-jurassic.json
 # Carrousels et visuels de promo produits par _proto/carrousel.mjs
 promo/
 node_modules/
+_proto/a-traduire-witcher.json
+_proto/a-relire-witcher.json
