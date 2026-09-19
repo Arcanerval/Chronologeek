@@ -18,7 +18,7 @@
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
-         assassinscreed | dcanimation | jurassic, ou "" si le
+         assassinscreed | dcanimation | jurassic | witcher, ou "" si le
          changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
@@ -44,6 +44,13 @@ window.CG_NEWS = {
             "l'ère de l'Empire, juste avant l'ère de la Rébellion.",
         href:"/fr/dossiers/star-wars#6-bby-reign-of-the-empire-edge-of-the-abyss",
         cta:"Voir dans le Dossier" },
+
+      { nat:"site", uni:"witcher", kind:"timeline",
+        title:"Nouvelle timeline : The Witcher",
+        txt:"Les livres de Sapkowski et les jeux et comics de CD Projekt "+
+            "RED, en deux colonnes côte à côte — 54 œuvres, du Chemin sans "+
+            "retour à Blood Stone.",
+        href:"/fr/witcher", cta:"Ouvrir la timeline" },
 
       { nat:"site", uni:"jurassic", kind:"timeline",
         title:"Nouvelle timeline : Jurassic World",

@@ -263,6 +263,14 @@ const TRADUCTIONS = [
      Dixième univers, source anglaise : rien à retrouver en prod. Les deux
      bornes sont des titres de films, et Renaissance est celui de la sortie
      française de Rebirth. */
+  /* ── la carte The Witcher du 20 septembre 2026 ──────────────────
+     « Le Chemin sans retour » est le titre de la nouvelle en français ;
+     l'anglaise s'appelle « The Road of No Return », et Blood Stone n'a pas
+     d'édition française, son titre ne bouge donc pas. */
+  ['Nouvelle timeline : The Witcher', 'New timeline: The Witcher'],
+  ['Les livres de Sapkowski et les jeux et comics de CD Projekt RED, en deux colonnes côte à côte — 54 œuvres, du Chemin sans retour à Blood Stone.',
+   "Sapkowski's books and CD Projekt RED's games and comics, in two columns side by side — 54 works, from The Road of No Return to Blood Stone."],
+
   ['Nouvelle timeline : Jurassic World', 'New timeline: Jurassic World'],
   ['De Jurassic Park à Renaissance — les sept films, les deux séries animées, trois romans et un court métrage, en première vision comme en revisionnage.',
    'From Jurassic Park to Rebirth — the seven movies, the two animated series, three books and a short film, for a first watch or a rewatch.'],

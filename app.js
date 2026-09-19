@@ -1553,6 +1553,7 @@
     { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed' },
     { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
     { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic' },
+    { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 

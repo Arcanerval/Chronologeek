@@ -394,6 +394,17 @@ const TRADUCTIONS = [
      pas, et il doit figurer ici pour la nav, le tiroir et le pied de page.
      La mention légale le compte désormais : elle suit juste en dessous. */
   ['Jurassic World', 'Jurassic World'],
+  /* ── la case The Witcher de l'accueil, 20 septembre 2026 ────────
+     « faits » plutôt que « vus » : cette timeline se lit et se joue autant
+     qu'elle se regarde, et sa page compte déjà en « done ». */
+  ['The Witcher', 'The Witcher'],
+  ['Onze chronologies tenues à jour, en français et en anglais.',
+   'Eleven timelines kept up to date, in French and English.'],
+  ['Livres · Comics · Jeux · Les deux chronologies, côte à côte',
+   'Books · Comics · Games · Both timelines, side by side'],
+  ['/ 54 faits', '/ 54 done'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World et The Witcher sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World and The Witcher are trademarks of their respective owners; Chronologeek is an independent fan project.'],
   ['Films · Séries animées · Livres · Court métrage · Ordre chronologique complet',
    'Movies · Animated Series · Books · Short Film · Full chronological order'],
   ['/ 13 vus', '/ 13 watched'],

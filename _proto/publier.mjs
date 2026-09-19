@@ -105,6 +105,12 @@ const ROUTES = [
   { cle: 'jurassic',
     fr: { proto: 'e-jurassic.html',           sortie: 'fr/jurassicworld.html',    url: '/fr/jurassicworld' },
     en: { proto: 'en-jurassic.html',          sortie: 'jurassicworld.html',       url: '/jurassicworld' } },
+  // The Witcher est le septième à prendre la chaîne à l'envers :
+  // `en-witcher.html` est écrit à la main, `e-witcher.html` en descend
+  // par traduire-witcher.mjs.
+  { cle: 'witcher',
+    fr: { proto: 'e-witcher.html',            sortie: 'fr/witcher.html',          url: '/fr/witcher' },
+    en: { proto: 'en-witcher.html',           sortie: 'witcher.html',             url: '/witcher' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -160,6 +166,8 @@ const ASSETS = {
   'data-dcanimation-en.js':    '/data/dcanimation-en.js',
   'data-jurassic.js':          '/data/jurassicworld-fr.js',
   'data-jurassic-en.js':       '/data/jurassicworld-en.js',
+  'data-witcher.js':           '/data/witcher-fr.js',
+  'data-witcher-en.js':        '/data/witcher-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',
@@ -272,7 +280,8 @@ const PRERENDU_CSS =
 const BOOT_PLANCHE = '/images/boot-univers.webp';
 // L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
 const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
-                     '#a8bf4f', '#e07b39', '#c0202f', '#2dd4bf', '#45c46b'];
+                     '#a8bf4f', '#e07b39', '#c0202f', '#2dd4bf', '#45c46b',
+                     '#b0bec5'];
 
 const BOOT =
   /* **Pas de `<link rel="preload">`**, et c'est voulu : il est inconditionnel,
@@ -439,7 +448,7 @@ const BOOT_PHRASES = {
 // Le dixième univers a fait passer le pas de 0,28 à 0,25 s : la dernière
 // couche part ainsi à 2,25 s, là où la neuvième partait à 2,24 — la durée
 // totale réglée par Niko ne bouge pas. Un onzième demandera 0,225.
-const BOOT_PAS = 0.25;
+const BOOT_PAS = 0.225;
 const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +

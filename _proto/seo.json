@@ -139,6 +139,20 @@
       "image": "https://chronologeek.app/images/jurassicworld.webp"
     }
   },
+  "witcher": {
+    "fr": {
+      "title": "Chronologie The Witcher : livres et jeux | Chronologeek",
+      "ogTitle": "Timeline The Witcher — Chronologeek",
+      "desc": "La chronologie The Witcher en deux colonnes — 21 livres de Sapkowski et 33 jeux et comics de CD Projekt RED, du Chemin sans retour à Blood Stone, sans spoil.",
+      "image": "https://chronologeek.app/images/witcher.webp"
+    },
+    "en": {
+      "title": "The Witcher Timeline: Books &amp; Games | Chronologeek",
+      "ogTitle": "The Witcher Timeline — Chronologeek",
+      "desc": "The Witcher timeline in two columns — Sapkowski's 21 books and CD Projekt RED's 33 games and comics, from The Road of No Return to Blood Stone, spoiler-free.",
+      "image": "https://chronologeek.app/images/witcher.webp"
+    }
+  },
   "assassinscreed": {
     "fr": {
       "title": "Chronologie Assassin’s Creed : l’ordre des jeux | Chronologeek",
