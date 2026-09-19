@@ -509,10 +509,11 @@ const TRADUCTIONS = [
   ['Mis à jour chaque jour', 'Updated every day'],
   ['Prochaine', 'Next'],
   // L'accroche énumère les univers : elle est à reprendre à chaque fois qu'on
-  // en ajoute un. Star Trek y est entré le 13 août 2026, comme dans les deux
+  // en ajoute un. The Witcher y entre le 20 septembre 2026, son remaster étant
+// daté ; Star Trek y était entré le 13 août 2026, comme dans les deux
   // titres de référencement de `seo.json` et dans le pied de page.
-  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek et The Walking Dead — mises à jour chaque jour.',
-   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek and The Walking Dead release — updated every single day.'],
+  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et The Witcher — mises à jour chaque jour.',
+   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and The Witcher release — updated every single day.'],
   ['Rechercher une sortie', 'Search a release'],
   ['Support', 'Format'],                   // filtre par type de média
   ['Rien ne correspond. Essayez une autre orthographe, ou rallumez les filtres que vous avez éteints.',

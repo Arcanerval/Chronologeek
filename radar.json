@@ -75,6 +75,23 @@
   "media": "tv"
  },
  {
+  "universe": "witcher",
+  "title": "The Witcher 3: Wild Hunt — Remastered",
+  "date_sort": "2026-09-29",
+  "date_txt": "29/09/2026",
+  "kind": "Jeu vidéo",
+  "source": "Witcher Wiki",
+  "precision": "day",
+  "era": "",
+  "syn": "The Witcher 3: Wild Hunt is the third installment in the series of games developed by CD PROJEKT RED featuring the witcher Geralt of Rivia. The game was originally scheduled for release in late 2014, then pushed back to 24 February 2015, and finally released on 19 May 2015. During the first two weeks since release it had sold more than 4 million copies worldwide, more than doubling the total sales…",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "game",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-10-04",
@@ -174,6 +191,7 @@
   "title_fr": "",
   "date_sort_fr": "",
   "date_txt_fr": "",
+  "poster": "/938EzTQ8Qy6A0DvkjR7EV4AGT5P.jpg",
   "tmdb": 1774141,
   "media": "movie"
  },
@@ -810,6 +828,23 @@
   "poster": "/9KAe39xqyZnv9J4W3DRGdQqX82h.jpg",
   "tmdb": 911916,
   "media": "movie"
+ },
+ {
+  "universe": "witcher",
+  "title": "The Witcher 3: Wild Hunt — Songs of the Past",
+  "date_sort": "2027-06-30",
+  "date_txt": "2027",
+  "kind": "DLC",
+  "source": "Witcher Wiki",
+  "precision": "vague",
+  "era": "",
+  "syn": "Songs of the Past is the upcoming third expansion for The Witcher 3: Wild Hunt. Announced on May 27, 2026, CD PROJEKT RED is co-developing it with Fool's Theory.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "game",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "dc",

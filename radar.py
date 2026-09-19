@@ -44,6 +44,7 @@ UNIVERSES = {
     "twd":      {"label": "The Walking Dead", "color": "#a8bf4f", "file": "walkingdead.html"},
     "assassinscreed": {"label": "Assassin's Creed", "color": "#c0202f",
                        "file": "assassinscreed.html"},
+    "witcher":  {"label": "The Witcher", "color": "#b0bec5", "file": "witcher.html"},
 }
 
 # Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
@@ -651,6 +652,13 @@ def loose_date(txt):
     if m and m.group(1).lower() in MONTHS:
         d = datetime.date(int(m.group(3)), MONTHS[m.group(1).lower()], int(m.group(2)))
         return (d.isoformat(), d.strftime("%d/%m/%Y"), "day")
+    m = re.match(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", t)   # 29 September 2026
+    if m and m.group(2).lower() in MONTHS:
+        try:
+            d = datetime.date(int(m.group(3)), MONTHS[m.group(2).lower()], int(m.group(1)))
+            return (d.isoformat(), d.strftime("%d/%m/%Y"), "day")
+        except ValueError:
+            pass
     m = re.match(r"([A-Za-z]+)\s+(\d{4})", t)
     if m and m.group(1).lower() in MONTHS:
         y, mo = int(m.group(2)), MONTHS[m.group(1).lower()]
@@ -1200,6 +1208,132 @@ def source_assassinscreed():
         f"{passees} déjà sortie(s) — {len(lignes)} ligne(s) au tableau")
 
 
+# ═══ THE WITCHER ════════════════════════════════════════════════════
+# TMDB ne connaît rien de cet univers-là : sa timeline est faite de jeux, de
+# livres et de comics, et la série Netflix est hors périmètre. RAWG, qui sert
+# déjà les fiches de jeux des pages, ne suffit pas non plus — le 20 septembre
+# 2026 il ignorait The Witcher 3 Remastered, à neuf jours de sa sortie, et
+# datait Songs of the Past au 31 décembre 2027, une date de remplissage.
+#
+# La source est donc le **wiki Witcher**, lu par l'API MediaWiki standard —
+# celle de Fandom, `/api/v1`, répond 403, comme pour Wookieepedia et le wiki
+# Assassin's Creed. Ses infobox portent la date dans un champ, et une page de
+# jeu porte toutes ses sorties sur une ligne, séparées par des `<br/>` :
+#
+#     |release_date = 19 May 2015<br/>15 October 2019 {{Small|Nintendo Switch}}
+#                     <br/>29 September 2026 {{Small|Remastered, anticipated}}
+#
+# C'est ce qui fait qu'un remaster entre au radar sans qu'on ait à le nommer :
+# il n'a pas de page à lui, seulement une date de plus sur celle du jeu. La
+# mention entre accolades devient le sous-titre de la carte — « The Witcher 3:
+# Wild Hunt — Remastered » —, sans quoi la carte annoncerait un jeu de 2015.
+WI_WIKI = "https://witcher.fandom.com/api.php"
+# Trois catégories, 112 pages : tout ce que la timeline suit. Une quatrième
+# n'aurait pas à être devinée — le wiki range ce qu'il publie.
+WI_CATEGORIES = {"Games": "Jeu vidéo", "The Witcher 3 expansions": "DLC",
+                 "Books": "Livre", "Comics": "Comic"}
+# Les champs de date des trois infobox.
+WI_DATE = re.compile(r"^\s*\|\s*(?:release_date|publication_date|published)\s*=(.*)$",
+                     re.I | re.M)
+# La mention qui suit une date : « {{Small|Remastered, anticipated}} ». Elle
+# dit de quelle sortie il s'agit, et « anticipated » n'en fait pas partie.
+WI_MENTION = re.compile(r"\{\{\s*small\s*\|([^{}]*)\}\}", re.I)
+# Le wiki désigne les jeux par un modèle : « the upcoming third expansion for
+# {{Tw3}} ». `clean_wikitext` retire les modèles, et la phrase sortait sur
+# « for . » — on rend donc son nom au jeu avant de nettoyer.
+WI_MODELES = {"tw1": "The Witcher", "tw2": "The Witcher 2: Assassins of Kings",
+              "tw3": "The Witcher 3: Wild Hunt", "tw4": "The Witcher IV"}
+# Une extension n'a pas le jeu dans son titre — la page s'appelle « Songs of
+# the Past ». Sur une carte de radar, à côté de Star Wars et de Marvel, ce nom
+# seul ne dit pas de quoi il s'agit.
+WI_PREFIXE = {"DLC": "The Witcher 3: Wild Hunt — "}
+
+
+def _wi_pages():
+    """Les pages des trois catégories, avec leur type."""
+    out = {}
+    for cat, kind in WI_CATEGORIES.items():
+        try:
+            r = requests.get(WI_WIKI, timeout=30, headers=UA_BROWSER, params={
+                "action": "query", "list": "categorymembers", "cmlimit": 500,
+                "cmnamespace": 0, "cmtitle": f"Category:{cat}",
+                "format": "json", "formatversion": 2})
+            r.raise_for_status()
+            for m in r.json().get("query", {}).get("categorymembers", []):
+                out.setdefault(m["title"], kind)
+        except Exception as e:
+            log(f"Witcher   : catégorie {cat} illisible — {str(e)[:100]}")
+    return out
+
+
+def _wi_wikitexte(titres):
+    """Le wikitexte des pages, par lots de cinquante."""
+    out = {}
+    for i in range(0, len(titres), 50):
+        lot = titres[i:i + 50]
+        try:
+            r = requests.get(WI_WIKI, timeout=45, headers=UA_BROWSER, params={
+                "action": "query", "prop": "revisions", "rvprop": "content",
+                "rvslots": "main", "redirects": 1, "titles": "|".join(lot),
+                "format": "json", "formatversion": 2})
+            r.raise_for_status()
+            for p in r.json().get("query", {}).get("pages", []):
+                revs = p.get("revisions") or []
+                if revs:
+                    out[p["title"]] = (revs[0].get("slots", {})
+                                       .get("main", {}) or {}).get("content", "")
+        except Exception as e:
+            log(f"Witcher   : lot de pages illisible — {str(e)[:100]}")
+    return out
+
+
+def source_witcher():
+    pages = _wi_pages()
+    if not pages:
+        log("Witcher   : ÉCHEC — aucune page lue")
+        return
+    textes = _wi_wikitexte(list(pages))
+    n = sans_date = passees = 0
+    for titre, wikitexte in textes.items():
+        kind = pages.get(titre, "")
+        champ = WI_DATE.search(wikitexte)
+        if not champ:
+            continue
+        lisible = re.sub(r"\{\{\s*(tw[1-4])\s*\}\}",
+                         lambda m: WI_MODELES[m.group(1).lower()], wikitexte, flags=re.I)
+        syn = clean_wikitext(lisible)
+        # une page porte toutes ses sorties sur une ligne, séparées par <br/>
+        for morceau in re.split(r"<br\s*/?>", champ.group(1)):
+            morceau = re.sub(r"<ref[^>]*>.*?</ref>|<ref[^>]*/>", " ", morceau, flags=re.S)
+            mention = WI_MENTION.search(morceau)
+            precision_txt = ""
+            if mention:
+                # « anticipated » dit que la date n'est pas encore tombée, pas
+                # de quelle édition il s'agit : il ne va pas dans le titre.
+                precision_txt = re.sub(r"\banticipated\b|^[,\s]+|[,\s]+$", "",
+                                       mention.group(1), flags=re.I).strip(" ,")
+            brut = re.sub(r"\{\{[^{}]*\}\}|\[\[|\]\]|'{2,}", " ", morceau)
+            brut = re.sub(r"\s+", " ", brut).strip(" ,;")
+            if not brut:
+                continue
+            ds, dt, prec = loose_date(brut)
+            if prec == "tba":
+                sans_date += 1
+                continue
+            if ds < TODAY.isoformat():
+                passees += 1
+                continue
+            if ds > HORIZON.isoformat():
+                continue
+            nom = WI_PREFIXE.get(kind, "") + titre
+            if precision_txt:
+                nom = f"{nom} — {precision_txt}"
+            add("witcher", nom, ds, dt, kind, "Witcher Wiki", prec, syn=syn)
+            n += 1
+    log(f"Witcher   : {n} sortie(s) datée(s) · {sans_date} sans date · "
+        f"{passees} déjà sortie(s) — {len(textes)} page(s) lue(s)")
+
+
 def normalize(s):
     s = html.unescape(s or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s)
@@ -1483,7 +1617,7 @@ KIND_LABELS_EN = {
 }
 _KIND_MATCH = (
     ("graphic", "comic"), ("comic", "comic"),
-    ("jeu", "game"), ("game", "game"),
+    ("jeu", "game"), ("game", "game"), ("dlc", "game"),
     ("jeunesse", "novel"), ("middle grade", "novel"),
     ("roman", "novel"), ("novel", "novel"),
     ("young", "novel"), ("junior", "novel"),
@@ -1598,7 +1732,7 @@ def render(entries):
 
 def main():
     for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
-               source_startrek, source_assassinscreed):
+               source_startrek, source_assassinscreed, source_witcher):
         try:
             fn()
         except Exception:

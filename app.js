@@ -2198,7 +2198,8 @@
     avatar:         { u: 'avatar' },
     startrek:       { u: 'startrek' },
     walkingdead:    { u: 'twd' },
-    assassinscreed: { u: 'assassinscreed' }
+    assassinscreed: { u: 'assassinscreed' },
+    witcher:        { u: 'witcher' }
   };
 
   var T = FR ? {
