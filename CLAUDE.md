@@ -58,6 +58,10 @@ chaîne inversée » plus bas. **The Walking Dead fait pareil** —
 `node _proto/traduire-jurassic.mjs` écrit `e-jurassic.html` et
 `data-jurassic.js`. Publié le 11 septembre 2026 sous `/jurassicworld` et
 `/fr/jurassicworld` : le site compte trente pages et dix univers.
+**The Witcher est le septième** — `en-witcher.html` + `data-witcher-en.js`
+sont la source, `node _proto/traduire-witcher.mjs` écrit `e-witcher.html` et
+`data-witcher.js`. Publié le 20 septembre 2026 sous `/witcher` et
+`/fr/witcher` : le site compte trente-deux pages et onze univers.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -70,7 +74,8 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar Legends `#7dd3fc`,
 Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
 Assassin's Creed `#c0202f`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
-DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`.
+DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`,
+The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`).
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Le quatrième univers s'appelle « Avatar Legends » depuis le 18 août 2026**, pour ne
@@ -164,8 +169,9 @@ la page porte déjà la clé — et il n'y a rien à annoncer : *The Veilguard* 
 sorti, rien n'est daté après lui. La page publie donc sa timeline sans entrer au
 radar, et l'accroche de « À venir » continue de n'énumérer que les six univers
 que le radar suit.
-`source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas, et
-`source_wookieepedia` la timeline des médias canon Star Wars.
+`source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas,
+`source_wookieepedia` la timeline des médias canon Star Wars, et
+`source_witcher` les jeux, livres et comics de The Witcher — voir plus bas.
 
 **DC Animation n'est pas au radar non plus, publié le 4 septembre 2026.**
 Ses trois continuités sont closes — le DCAU s'est terminé en 2019, le DCAMU
@@ -183,6 +189,33 @@ interroger par société demanderait un garde-fou de titre dans
 `UNIVERS_TITRE`, `\bjurassic\b`, exactement comme Avatar, The Walking Dead et
 Assassin's Creed. À poser le jour où une date tombe, avec l'accroche de
 « À venir », les deux `ogTitle` et les deux `desc`.
+
+**The Witcher est au radar depuis le 20 septembre 2026, et sa source est un
+wiki.** C'est le seul univers dont les sorties sont des jeux, et ni TMDB ni
+RAWG ne les tient : RAWG, qui sert déjà les fiches de jeux des pages, ignorait
+*The Witcher 3 Remastered* à neuf jours de sa sortie et datait *Songs of the
+Past* au 31 décembre 2027, une date de remplissage. `source_witcher()` lit donc
+**witcher.fandom.com** par l'API MediaWiki standard — celle de Fandom répond
+403, comme partout ailleurs — et ratisse quatre catégories : Games, The
+Witcher 3 expansions, Books, Comics, une centaine de pages en quatre requêtes.
+
+Trois choses à savoir :
+
+- **Une page de jeu porte toutes ses sorties sur une seule ligne**, séparées
+  par des `<br/>`, et la mention entre accolades dit de laquelle il s'agit :
+  `29 September 2026 {{Small|Remastered, anticipated}}`. Elle devient le
+  sous-titre de la carte — « The Witcher 3: Wild Hunt — Remastered » —, sans
+  quoi le radar annoncerait un jeu de 2015. **C'est ce qui fait entrer un
+  remaster qui n'a pas de page à lui**, et « anticipated » n'entre pas dans
+  le titre : il dit que la date n'est pas tombée, pas quelle édition sort.
+- **Les extensions ont leur propre catégorie**, et leur page ne porte pas le
+  nom du jeu : « Songs of the Past » seul, à côté de Star Wars et de Marvel,
+  ne dit pas de quoi il s'agit. `WI_PREFIXE` le repose. Leur type `DLC` prend
+  la couleur et le libellé du jeu (`("dlc", "game")` dans `_KIND_MATCH`) : la
+  page n'a pas de case pour lui, et une extension est bien une sortie de jeu.
+- **`loose_date` lit « 29 September 2026 » depuis ce jour-là.** Elle ne
+  connaissait que « September 29, 2026 » ; le wiki Witcher écrit l'autre
+  forme, et toutes ses dates tombaient en « vague » sur l'année seule.
 
 **Assassin's Creed est au radar depuis le 25 août 2026, et sa colonne est vide.**
 C'est voulu, et ce n'est pas le cas de Dragon Age : la saga a bien sept œuvres
@@ -1286,7 +1319,8 @@ français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul end
 du dépôt où l'on traduit dans ce sens.
 
 **Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age, Assassin's Creed,
-DC Animation ni Jurassic World dans `PAGES` de `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
+DC Animation, Jurassic World ni The Witcher dans `PAGES` de
+`traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
 écraserait la source avec une retraduction de sa propre sortie, sans erreur et
 sans message.
 
