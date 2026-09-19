@@ -40,7 +40,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { W_IDENTIQUES, W_RETROUVES, W_TRADUCTIONS, W_GABARITS }
+import { W_IDENTIQUES, W_RETROUVES, W_TRADUCTIONS, W_GABARITS, W_TITRES }
   from './traductions-witcher.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
@@ -298,7 +298,21 @@ function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v) => traduitObjet(v, `${chemin}[]`, cle));
   if (o && typeof o === 'object') {
     const out = {};
-    for (const [k, v] of Object.entries(o)) out[k] = traduitObjet(v, `${chemin}.${k}`, k);
+    /* UNE OEUVRE SANS EDITION FRANCAISE GARDE SON TITRE. C'est la regle de
+       Niko, et elle ne peut pas passer par le lexique : quatre comics de Dark
+       Horse portent exactement le titre de la nouvelle qu'ils adaptent — « The
+       Edge of the World », « The Last Wish », « A Question of Price », « The
+       Witcher » —, et le titre du livre, lui, a bien une VF. Traduit par le
+       texte, le comic héritait donc du titre francais du livre alors qu'il n'a
+       jamais paru en francais. C'est l'entree qui tranche, par son `lang`,
+       celui-la meme qui pose le badge VO. Le titre s'apparie donc par
+       IDENTIFIANT (`W_TITRES`), jamais par son texte : « The Witcher » designe
+       la nouvelle (« Le Sorceleur »), un comic sans VF et un jeu dont le titre
+       ne bouge pas — trois oeuvres pour une seule chaine. */
+    for (const [k, v] of Object.entries(o)) {
+      out[k] = (k === 'title' && o.id && W_TITRES[o.id] !== undefined)
+        ? W_TITRES[o.id] : traduitObjet(v, `${chemin}.${k}`, k);
+    }
     return out;
   }
   if (typeof o !== 'string') return o;
