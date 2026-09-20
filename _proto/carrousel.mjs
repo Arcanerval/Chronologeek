@@ -304,7 +304,10 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 .lfb{font-style:normal;background:#f0c97c;color:#08080f;font-weight:900;font-size:23px;
   letter-spacing:.11em;line-height:1;padding:8px 18px 6px 13px;
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
-.cover .site{position:absolute;top:56px;left:62px;z-index:3;font-family:"Big Shoulders Display";
+/* La derniere slide porte le meme cartouche que la couverture. Laisse dans le
+   flux, il tombait au milieu de la page, juste au-dessus du titre : .end est un
+   flex centre verticalement. */
+.cover .site,.end .site{position:absolute;top:56px;left:62px;z-index:3;font-family:"Big Shoulders Display";
   font-weight:800;font-size:29px;letter-spacing:.16em;text-transform:uppercase;color:#fff;
   background:#08080fcc;border:1px solid ${encre}88;padding:9px 18px;border-radius:3px}
 
@@ -315,7 +318,9 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 .end .url{font-family:"Big Shoulders Display";font-weight:900;font-size:82px;color:${encre};
   margin-top:34px;letter-spacing:.01em}
 .end p{font-size:34px;color:#a7a5ba;margin-top:26px;max-width:24ch;line-height:1.4}
-.end .tail{margin-top:52px;padding-top:26px;border-top:1px solid #23232e;width:100%;
+/* max-width:none, sinon le .end p ci-dessus le rogne a 24ch : le trait s'arretait
+   au tiers de la page et le decompte se coupait en deux lignes. */
+.end .tail{margin-top:52px;padding-top:26px;border-top:1px solid #23232e;width:100%;max-width:none;
   font-family:"Big Shoulders Display";font-weight:800;font-size:27px;letter-spacing:.11em;
   text-transform:uppercase;color:#6f6d85}
 </style>
