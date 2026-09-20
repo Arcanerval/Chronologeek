@@ -2600,6 +2600,40 @@ graphie est remise droite. Premier cas : « Reseting the time loop », l'une des
 vingt phrases de l'écran d'arrivée, passée à « Resetting ». Cela ne s'étend ni
 aux tournures, ni aux abréviations, ni au vocabulaire, qui restent intouchables.
 
+## Un univers de plus : les points de câblage
+
+Relevé à la publication de The Witcher, le 20 septembre 2026, parce que
+**deux points ont été trouvés après la mise en ligne, et qu'aucun des deux ne
+lève d'erreur** — la barre de reprise de l'accueil affichait « undefined », et
+le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
+
+- **La chaîne** : `en-<u>.html` + `data-<u>-en.js` (ou les `e-*` si la source
+  est française), `traduire-<u>.mjs`, `traductions-<u>.mjs`.
+- **La publication** : `ROUTES` et `ASSETS` de `publier.mjs`, `seo.json`,
+  `SOURCES` et la liste d'univers de `jsonld.mjs`, `PAGES` de `sync.py` avec
+  `langue_source`, `PRECACHE` de `sw.js`, la couleur dans `recherche.mjs` et
+  dans `erreur404.mjs`.
+- **L'écran d'arrivée** : `BOOT_ENCRES`, `BOOT_PAS` et la vignette de plus dans
+  `images/boot-univers.webp`.
+- **`e-app.js`** : la table `UNIVERS` de l'export global, et `RADAR` pour
+  l'encart « prochaine sortie » si le radar suit l'univers.
+- **L'accueil** : la case, la variable CSS, le sous-titre, le HUD (total et
+  « N univers »), le numéro de la case verrouillée — et **`NAMES`**, la table
+  que lit la barre de reprise. C'est l'oubli du 20 septembre : la barre
+  trouvait bien `cg_last`, elle n'avait pas de nom à mettre en face.
+- **`e-perso.js`** : le nom du global dans `NOMS`. Sans lui, `D` reste `null`
+  et « Mes ajouts » ne s'ouvre pas — l'autre oubli du même jour.
+- **Les autres pages** : `UNI` et variable CSS dans `e-nouveautes.html` et
+  `e-a-venir.html`, la nav des seize protos source (déroulant, tiroir, pied de
+  page, mention légale), une carte dans `data-news.js` et sa traduction dans
+  `traduire.mjs`.
+- **Le radar**, s'il le suit : `UNIVERSES`, la source, `EXCLUDE` et
+  `UNIVERS_TITRE` au besoin, puis l'accroche de « À venir » et le `seo.json` de
+  la page — ces derniers seulement quand une sortie est datée.
+- **La promo** : `video.mjs`, `carrousel.mjs` (deux tables), `stories.mjs`.
+- **Les images** : bannière 1920, vignettes ×4, la paire du bouton « remonter
+  en haut » sur une seule toile, la vignette de la planche d'arrivée.
+
 ## Ce qui reste à faire
 
 - **Un constructeur de timeline**, idée de Niko le 1er septembre 2026, en
