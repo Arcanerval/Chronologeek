@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import { jsonLd } from './jsonld.mjs';
 import { prerendu, comptePrerendu } from './prerendu.mjs';
 import { SOURCES } from './jsonld.mjs';
@@ -682,6 +683,22 @@ function publier(route, langue) {
 
   bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires, ld: ld.length, entrees });
   if (!CHECK) ecrire(c.sortie, h);
+}
+
+/* ── Le câblage des univers, avant d'écrire quoi que ce soit ────────────
+   Un univers se pose à dix-neuf endroits et aucun oubli ne lève d'erreur :
+   la barre de reprise de l'accueil a annoncé « undefined » deux jours, et
+   « Mes ajouts » ne s'ouvrait pas sur la page Witcher. `cablage.mjs` lit
+   `ROUTES` comme source de vérité et vérifie chaque table ; il sort en
+   erreur, et la publication s'arrête avec lui. */
+{
+  const ctrl = spawnSync(process.execPath, [join(ICI, 'cablage.mjs'), '--court'],
+    { encoding: 'utf8' });
+  if (ctrl.status !== 0) {
+    console.log(ctrl.stdout || '');
+    console.log("  rien n'a été écrit : un univers n'est pas câblé partout.");
+    process.exit(1);
+  }
 }
 
 for (const r of ROUTES) { publier(r, 'fr'); publier(r, 'en'); }

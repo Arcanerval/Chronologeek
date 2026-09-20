@@ -2602,6 +2602,22 @@ aux tournures, ni aux abréviations, ni au vocabulaire, qui restent intouchables
 
 ## Un univers de plus : les points de câblage
 
+**`node _proto/cablage.mjs` vérifie la liste ci-dessous, et `publier.mjs`
+l'appelle avant d'écrire** : un univers à moitié câblé ne part pas en ligne.
+Le script lit `ROUTES` comme source de vérité et ne connaît aucun univers par
+son nom — un douzième est contrôlé le jour où il y entre, sans qu'on touche au
+fichier. 264 points sur onze univers, et il sort en erreur avec la liste de ce
+qui manque.
+
+Trois pièges d'écriture rencontrés en l'écrivant, qui valent pour tout outil
+qui relit le dépôt : le nom du fichier de données **ne se déduit pas** de celui
+du proto (Star Wars s'appelle `data.js`, c'est `ASSETS` qui apparie) ; un
+fichier de données expose **plusieurs noms** — `var DATA_DA` et
+`window.DRAGONAGE` —, et il suffit qu'une table en connaisse un ; et
+`stories.mjs` part des clés de `radar.json` (« starwars »), pas de celles du
+dépôt (« sw »).
+
+
 Relevé à la publication de The Witcher, le 20 septembre 2026, parce que
 **deux points ont été trouvés après la mise en ligne, et qu'aucun des deux ne
 lève d'erreur** — la barre de reprise de l'accueil affichait « undefined », et
