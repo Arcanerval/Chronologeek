@@ -704,7 +704,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <button type="button" id="q-clear" aria-label="Clear search">✕</button>
     </div>
     <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
-    <button class="last" type="button" id="hide-done" aria-pressed="false">Hide read</button>
+    <button class="last" type="button" id="hide-done" aria-pressed="false">Hide completed</button>
     <span class="lab">Markers</span>
     <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
       On screen — where the movies and shows fall. Not counted in your progress.</span>
@@ -759,7 +759,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">536</span></b>
-    <span class="lbl">read</span>
+    <span class="lbl">completed</span>
     <span class="bar"><i id="k-fill"></i></span>
     <span class="lbl">Left to read <b style="font-size:14px" id="k-left">536</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
@@ -897,7 +897,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           '<div class="wrap">'+
             '<span class="chev">Era '+(i+1)+' / '+D.eras.length+'</span>'+
             '<h2 class="disp off">'+era.title+'</h2>'+
-            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+n+' read</span>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+n+' completed</span>'+
             '<span>'+era.items.filter(function(x){ return x.kind==='screen'; }).length+
               ' on-screen markers</span></p>'+
           '</div></div>'+

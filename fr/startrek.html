@@ -887,7 +887,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <input id="q" type="search" placeholder="Rechercher… ( / )" autocomplete="off"/>
       <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
     </div>
-    <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les vus</button>
+    <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les terminés</button>
     <div class="srow"><div class="sgroup" id="f-types"><span class="lab">Types de média</span></div></div>
     <div class="srow">
       <div class="marks"><span>Repères</span>
@@ -948,7 +948,7 @@ Nous revenons donc à la chronologie Prime, déjà en cours, quatorze ans après
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">248</span></b>
-    <span class="lbl">vus</span>
+    <span class="lbl">terminés</span>
     <span class="bar"><i id="k-fill"></i></span>
     <span class="lbl">Restant à voir <b style="font-size:14px" id="k-time">746 h</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
@@ -1103,7 +1103,7 @@ Nous revenons donc à la chronologie Prime, déjà en cours, quatorze ans après
             (e.img?'<img src="'+e.img+'" alt="'+esc(e.title)+'" loading="lazy" decoding="async"/>':'')+
             '<span class="halftone"></span>'+
             '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
-            '<span class="bu-done" aria-hidden="true"><span>vues</span></span>'+
+            '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
           '</span>'+
           '<span class="bu-txt">'+
             '<span class="bu-tags">'+marks(e)+'<span class="b" style="--k:var(--t-'+e.type+')">'+
@@ -1142,7 +1142,7 @@ Nous revenons donc à la chronologie Prime, déjà en cours, quatorze ans après
                « 0 / 0 watched » y occuperait la place d'une information
                sans en être une. On ne pose la ligne que s'il y a à compter. */
             (real.length?'<p class="meta"><span><b data-done="'+i+'">0</b> / '+
-              real.length+' vues</span><span>'+
+              real.length+' terminés</span><span>'+
               hm(real.reduce(function(s,x){ return s+rt(x); },0))+' au total</span></p>':'')+
           '</div></div>'+
         '<div class="list"><div class="wrap"><div class="rows">'+

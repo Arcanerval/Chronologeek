@@ -882,7 +882,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
     <div class="srow">
       <div class="marks"><span>Markers</span><span class="ft">FLASHBACK</span></div>
-      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide watched</button>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide completed</button>
     </div>
       </div>
     </details>
@@ -930,7 +930,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">13</span></b>
-    <span class="lbl">watched</span>
+    <span class="lbl">completed</span>
     <span class="bar"><i id="k-fill"></i></span>
     <span class="lbl">Left to watch <b style="font-size:14px" id="k-time">50 h</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
@@ -1264,7 +1264,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           '<div class="wrap">'+
             '<span class="chev">Era '+(i+1)+' / '+ERAS.length+'</span>'+
             '<h2 class="disp off">'+esc(era.title)+'</h2>'+
-            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' watched</span>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' completed</span>'+
             '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' in total</span></p>'+
           '</div></div>'+
         '<div class="list"><div class="wrap"><div class="rows">'+

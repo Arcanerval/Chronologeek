@@ -121,6 +121,11 @@ export const DA_GABARITS = [
 ];
 
 export const DA_TRADUCTIONS = [
+  // « completed » partout depuis le 21 septembre 2026 : une timeline qui mêle
+  // livres, jeux et écrans ne dit plus un verbe en oubliant les autres
+  ['completed', 'terminés'],
+  ['completed</span>', 'terminés</span>'],
+  ['Hide completed', 'Masquer les terminés'],
   /* ── la pastille du h1, posée le 5 septembre 2026 ──
      Elle vivait au-dessus du titre, hors de lui : le h1 ne portait
      donc que le nom nu de la franchise, là où c'est le deuxième

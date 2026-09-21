@@ -264,6 +264,10 @@ const TRADUCTIONS = [
   // ── le dépliant des filtres, posé le 17 août 2026 ───────────────
   // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
   // repères y étaient dépliés en permanence, sans intitulé commun.
+  // « terminés » partout depuis le 21 septembre 2026, à la place de « vus » et « lus »
+  ['terminés', 'completed'],
+  ['terminés</span>', 'completed</span>'],
+  ['Masquer les terminés', 'Hide completed'],
   ['Filtres, recherche, repères et sources', 'Filters, search, legend and sources'],   // renommé le 21 septembre 2026, les sources rejoignent le dépliant
   ['Filtres, recherche et sources', 'Filters, search and sources'],   // « À venir », depuis le 21 septembre 2026
   ['Filtres et recherche', 'Filters and search'],   // « À venir » et « Nouveautés » : pas de légende à replier

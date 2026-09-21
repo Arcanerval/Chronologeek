@@ -221,6 +221,11 @@ export const W_RETROUVES = [
 ];
 
 export const W_TRADUCTIONS = [
+  // « completed » partout depuis le 21 septembre 2026 : une timeline qui mêle
+  // livres, jeux et écrans ne dit plus un verbe en oubliant les autres
+  ['completed', 'terminés'],
+  ['completed</span>', 'terminés</span>'],
+  ['Hide completed', 'Masquer les terminés'],
   ['It recounts the first adventure Dandelion and Geralt went on together.',
    'Elle raconte la première aventure que Jaskier et Geralt ont menée ensemble.'],
   ['This story describes the circumstances of Geralt and Yennefer\'s first meeting.',
@@ -347,8 +352,6 @@ export const W_TRADUCTIONS = [
   ['Board games, mobile games, web games, GWENT games and paper RPG',
    'Jeux de plateau, jeux mobiles, jeux web, jeux GWENT et jeu de rôle papier'],
   // les trois décomptes de la page (barre du bas, bande, colonnes), restés en anglais jusqu'au 21 septembre 2026
-  ['completed', 'terminés'],
-  ['done</span>', 'terminés</span>'],
   ['too hard to fit in the timeline.',
    'trop difficiles à placer dans la chronologie.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World and The Witcher are trademarks of their respective owners; Chronologeek is an independent fan project.',

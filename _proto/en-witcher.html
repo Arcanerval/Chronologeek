@@ -1204,7 +1204,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
     <div class="srow">
       <div class="marks"><span>Markers</span><span class="ft">FLASHBACK</span></div>
-      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide done</button>
+      <button class="last" type="button" id="hide-done" aria-pressed="false">Hide completed</button>
     </div>
       </div>
     </details>
@@ -1595,7 +1595,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
          page de prod, sa mise en garde et son dépliant à spoilers. Elle n'a
          donc ni compteur ni durée — il n'y a rien à cocher dedans. */
       var meta=all.length
-        ? '<p class="meta"><span><b data-zdone="'+zi+'">0</b> / '+all.length+' done</span>'+
+        ? '<p class="meta"><span><b data-zdone="'+zi+'">0</b> / '+all.length+' completed</span>'+
           '<span>'+hm(all.reduce(function(s,x){return s+rt(x);},0))+' in total</span></p>'
         : '';
       /* Deux colonnes, deux visuels : chaque plan de la parallaxe prend
@@ -1628,7 +1628,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           var hint=(c.era.hint&&c.era.hint!==desc)?c.era.hint:'';
           return '<section class="col" data-era="'+c.i+'" style="--br:'+brC(c.era)+'">'+
             '<header class="col-h"><span class="col-t">'+esc(c.era.title)+'</span>'+
-              '<span class="col-n"><b data-done="'+c.i+'">0</b> / '+list.length+' done</span>'+
+              '<span class="col-n"><b data-done="'+c.i+'">0</b> / '+list.length+' completed</span>'+
             '</header>'+
             (hint?'<p class="col-hint">'+esc(hint)+'</p>':'')+
             '<div class="rows">'+c.era.entries.map(function(e){

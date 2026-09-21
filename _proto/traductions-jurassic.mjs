@@ -52,6 +52,11 @@ export const JW_RETROUVES = [
 ];
 
 export const JW_TRADUCTIONS = [
+  // « completed » partout depuis le 21 septembre 2026 : une timeline qui mêle
+  // livres, jeux et écrans ne dit plus un verbe en oubliant les autres
+  ['completed', 'terminés'],
+  ['completed</span>', 'terminés</span>'],
+  ['Hide completed', 'Masquer les terminés'],
   /* les badges */
   ['Welcome to Jurassic Park', 'Bienvenue à Jurassic Park'],
   ['The three Jurassic Park movies completed', 'Les trois films Jurassic Park terminés'],

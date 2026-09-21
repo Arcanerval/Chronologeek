@@ -704,7 +704,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
     </div>
     <div class="sgroup" id="f-types"><span class="lab">Types de média</span></div>
-    <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les lus</button>
+    <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les terminés</button>
     <span class="lab">Repères</span>
     <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
       À l’écran — où se placent les films et séries. Non comptés dans votre progression.</span>
@@ -759,7 +759,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">536</span></b>
-    <span class="lbl">lus</span>
+    <span class="lbl">terminés</span>
     <span class="bar"><i id="k-fill"></i></span>
     <span class="lbl">Restant à lire <b style="font-size:14px" id="k-left">536</b></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
@@ -897,7 +897,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           '<div class="wrap">'+
             '<span class="chev">Ère '+(i+1)+' / '+D.eras.length+'</span>'+
             '<h2 class="disp off">'+era.title+'</h2>'+
-            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+n+' lus</span>'+
+            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+n+' terminés</span>'+
             '<span>'+era.items.filter(function(x){ return x.kind==='screen'; }).length+
               ' repères à l’écran</span></p>'+
           '</div></div>'+
