@@ -266,6 +266,8 @@ const TRADUCTIONS = [
   // repères y étaient dépliés en permanence, sans intitulé commun.
   // « terminés » partout depuis le 21 septembre 2026, à la place de « vus » et « lus »
   ['terminés', 'completed'],
+  ['Restant', 'Remaining'],
+  ['Cochez ce que vous avez complété, votre progression est sauvegardée.', 'Check off what you\'ve completed — your progress is saved.'],
   ['terminés</span>', 'completed</span>'],
   ['Masquer les terminés', 'Hide completed'],
   ['Filtres, recherche, repères et sources', 'Filters, search, legend and sources'],   // renommé le 21 septembre 2026, les sources rejoignent le dépliant

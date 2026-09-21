@@ -95,6 +95,9 @@ export const TWD_GABARITS = [
 ];
 
 export const TWD_TRADUCTIONS = [
+  // « Remaining » et « completed » à l'accroche depuis le 21 septembre 2026
+  ['Remaining', 'Restant'],
+  ['Check off what you\'ve completed — your progress is saved.', 'Cochez ce que vous avez complété, votre progression est sauvegardée.'],
   // « completed » partout depuis le 21 septembre 2026 : une timeline qui mêle
   // livres, jeux et écrans ne dit plus un verbe en oubliant les autres
   ['completed', 'terminés'],
