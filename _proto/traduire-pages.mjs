@@ -264,7 +264,7 @@ const TRADUCTIONS = [
   // ── le dépliant des filtres, posé le 17 août 2026 ───────────────
   // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
   // repères y étaient dépliés en permanence, sans intitulé commun.
-  ['Filtres, recherche et repères', 'Filters, search and legend'],
+  ['Filtres, recherche, repères et sources', 'Filters, search, legend and sources'],   // renommé le 21 septembre 2026, les sources rejoignent le dépliant
   ['Filtres et recherche', 'Filters and search'],   // « À venir » et « Nouveautés » : pas de légende à replier
   // ── le menu remanié, posé le 18 août 2026 ───────────────────────
   // Six univers en clair débordaient la barre : trois restent, les trois
