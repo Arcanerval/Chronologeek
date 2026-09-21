@@ -1,5 +1,9 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--cadre 0%]
+
+   --cadre cale la couverture de l'accroche (object-position horizontal) : la
+   bannière DC montre l'Arrowverse à gauche et le DCEU à droite, et une vidéo
+   Arrowverse se cadre à 0 %.
 
    --titre remplace le nom de l'univers a l'accroche, en tete de carte et a la fin :
    une video DC sans les origines ne montre plus le « Multiverse Guide » entier,
@@ -221,7 +225,7 @@ function ouverture(D, cartes, lang, total, sel) {
   };
 }
 
-function page(cle, D, cartes, lang, total, sel, titre) {
+function page(cle, D, cartes, lang, total, sel, titre, cadre) {
   const t = T[lang];
   const encre = UNIVERS[cle].encre;
   const nom = titre || decode(D.title || cle);
@@ -374,7 +378,7 @@ body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoo
 </style>
 
 <section class="f hook">
-  ${cover ? `<img class="bg" src="${esc(cover)}" alt="">` : ''}
+  ${cover ? `<img class="bg" src="${esc(cover)}"${cadre ? ` style="object-position:${esc(cadre)} 50%"` : ''} alt="">` : ''}
   <div class="in">
     <h1>${esc(nom)}</h1>
     <p class="ord" style="font-size:${ouv.ord.length > 24 ? 66 : ouv.ord.length > 15 ? 86 : 112}px">${esc(ouv.ord)}</p>
@@ -450,6 +454,7 @@ async function main() {
   const plus = new Set(String(val('--plus', '')).split(',').map(s => s.trim()).filter(Boolean));
   const audio = val('--audio', null);
   const titre = val('--titre', null);
+  const cadre = val('--cadre', null);
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
@@ -489,7 +494,7 @@ async function main() {
     : only === 'must+' ? { nom: T[lang].importants, unite: T[lang].entries }
     : null;
 
-  const html = page(cle, D, cartes, lang, total, sel, titre);
+  const html = page(cle, D, cartes, lang, total, sel, titre, cadre);
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
 
