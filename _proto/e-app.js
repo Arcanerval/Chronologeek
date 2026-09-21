@@ -1975,15 +1975,26 @@
     jurassicworld: [['Fandom', 'https://jurassicpark.fandom.com/wiki/Timeline'], [WIKI], ['Reddit']],
     witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
               ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
-              ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']]
+              ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']],
+    /* Le Dossier et le radar : `star-wars` finit les deux routes du Dossier,
+       `a-venir` et `upcoming` sont les deux du radar. Ce dernier cite ce que
+       `radar.py` lit vraiment, une source par univers suivi. */
+    'star-wars': [['Wookieepedia', 'https://starwars.fandom.com/wiki/Timeline_of_canon_media#js']],
+    'a-venir': [['TMDB', 'https://www.themoviedb.org/'],
+                ['Wookieepedia', 'https://starwars.fandom.com/wiki/Timeline_of_canon_media#js'],
+                ['Avatar Almanac', 'https://avataralmanac.com/'],
+                ['Assassin’s Creed Wiki', 'https://assassinscreed.fandom.com/'],
+                ['Witcher Wiki', 'https://witcher.fandom.com/']]
   };
-  var PROTO = { twd: 'walkingdead', jurassic: 'jurassicworld' };
+  SOURCES.upcoming = SOURCES['a-venir'];
+  var PROTO = { twd: 'walkingdead', jurassic: 'jurassicworld', 'dossier-star-wars': 'star-wars' };
 
   function pose(){
     var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
                   .replace(/\.html$/, '').replace(/^en?-/, '');
     var liste = SOURCES[PROTO[route] || route];
-    var corps = document.querySelector('#sieve .filt-body') || document.getElementById('sieve');
+    var corps = document.querySelector('#sieve .filt-body') || document.getElementById('sieve')
+             || document.querySelector('.sieve .filt-body');
     if (!liste || !corps || corps.querySelector('.src-h')) return;
     var p = document.createElement('p');
     p.className = 'src-h';

@@ -55,7 +55,6 @@ export const W_IDENTIQUES = [
   'cdpr',
   'witcher',
   'cg-proto-witcher',
-  'done</span>',
   'Chronologeek — The Witcher (proto E)',
   'Corvo Bianco',
 ];
@@ -347,6 +346,9 @@ export const W_TRADUCTIONS = [
    'Le film et la série Le Sorceleur'],
   ['Board games, mobile games, web games, GWENT games and paper RPG',
    'Jeux de plateau, jeux mobiles, jeux web, jeux GWENT et jeu de rôle papier'],
+  // les trois décomptes de la page (barre du bas, bande, colonnes), restés en anglais jusqu'au 21 septembre 2026
+  ['completed', 'terminés'],
+  ['done</span>', 'terminés</span>'],
   ['too hard to fit in the timeline.',
    'trop difficiles à placer dans la chronologie.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World and The Witcher are trademarks of their respective owners; Chronologeek is an independent fan project.',

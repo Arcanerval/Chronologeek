@@ -1277,7 +1277,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud" id="hud">
   <button class="hud-bar" type="button" id="hud-btn" aria-expanded="false" aria-controls="hud-panel">
     <b><em id="k-on">0</em> / <span id="k-tot">54</span></b>
-    <span class="lbl">done</span>
+    <span class="lbl">terminés</span>
     <span class="bar"><i id="k-fill"></i></span>
     <svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
   </button>
@@ -1620,7 +1620,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
          page de prod, sa mise en garde et son dépliant à spoilers. Elle n'a
          donc ni compteur ni durée — il n'y a rien à cocher dedans. */
       var meta=all.length
-        ? '<p class="meta"><span><b data-zdone="'+zi+'">0</b> / '+all.length+' done</span>'+
+        ? '<p class="meta"><span><b data-zdone="'+zi+'">0</b> / '+all.length+' terminés</span>'+
           '<span>'+hm(all.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'
         : '';
       /* Deux colonnes, deux visuels : chaque plan de la parallaxe prend
@@ -1653,7 +1653,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           var hint=(c.era.hint&&c.era.hint!==desc)?c.era.hint:'';
           return '<section class="col" data-era="'+c.i+'" style="--br:'+brC(c.era)+'">'+
             '<header class="col-h"><span class="col-t">'+esc(c.era.title)+'</span>'+
-              '<span class="col-n"><b data-done="'+c.i+'">0</b> / '+list.length+' done</span>'+
+              '<span class="col-n"><b data-done="'+c.i+'">0</b> / '+list.length+' terminés</span>'+
             '</header>'+
             (hint?'<p class="col-hint">'+esc(hint)+'</p>':'')+
             '<div class="rows">'+c.era.entries.map(function(e){

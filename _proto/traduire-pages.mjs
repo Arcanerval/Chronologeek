@@ -265,6 +265,7 @@ const TRADUCTIONS = [
   // La prod n'a jamais porté cette phrase : recherche, niveaux, types et
   // repères y étaient dépliés en permanence, sans intitulé commun.
   ['Filtres, recherche, repères et sources', 'Filters, search, legend and sources'],   // renommé le 21 septembre 2026, les sources rejoignent le dépliant
+  ['Filtres, recherche et sources', 'Filters, search and sources'],   // « À venir », depuis le 21 septembre 2026
   ['Filtres et recherche', 'Filters and search'],   // « À venir » et « Nouveautés » : pas de légende à replier
   // ── le menu remanié, posé le 18 août 2026 ───────────────────────
   // Six univers en clair débordaient la barre : trois restent, les trois
@@ -410,8 +411,8 @@ const TRADUCTIONS = [
   ['/ 13 vus', '/ 13 watched'],
   /* La ligne des sources du radar. La prod anglaise en portait trois ;
      le wiki Assassin's Creed est la quatrième depuis le 25 août 2026. */
-  ['Mis à jour automatiquement chaque jour · sources : TMDB, Wookieepedia, Avatar Almanac, Assassin’s Creed Wiki',
-   'Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac, Assassin’s Creed Wiki'],
+  ['Mis à jour automatiquement chaque jour',
+   'Updated automatically every day'],   // les sources ont rejoint le dépliant des filtres le 21 septembre 2026
   ['Stargate · Le Trône de Fer… et d\'autres univers en préparation.',
    'Stargate · Game of Thrones… and more universes in the works.'],
 
