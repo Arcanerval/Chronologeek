@@ -294,6 +294,18 @@ const TECHNIQUES = new Set([
    sans rien apprendre. */
 const IDENTIQUES_PAR_CHAMP = new Set(['date']);
 
+/* UN LIEN QUI NE VAUT QUE POUR L'ANGLAIS. « La Route d'où l'on ne revient
+   pas » a une édition française — dans le recueil « Le Dernier Vœu » chez
+   Bragelonne — et n'a, elle, jamais paru en anglais : la traduction amateur
+   est le seul recours du lecteur anglophone, et elle n'a rien à faire sur la
+   page française, qui renverrait vers un scan là où la librairie suffit. La
+   clé `link` est donc retirée de l'entrée côté français.
+
+   C'est l'entrée qui tranche, par son IDENTIFIANT, jamais par le texte du
+   libellé : les deux courts métrages portent un lien eux aussi, et leur
+   « Watch on YouTube » doit rester des deux côtés. Même raison que W_TITRES. */
+const SANS_LIEN = new Set(['w-road']);
+
 function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v) => traduitObjet(v, `${chemin}[]`, cle));
   if (o && typeof o === 'object') {
@@ -310,6 +322,7 @@ function traduitObjet(o, chemin = '', cle = '') {
        la nouvelle (« Le Sorceleur »), un comic sans VF et un jeu dont le titre
        ne bouge pas — trois oeuvres pour une seule chaine. */
     for (const [k, v] of Object.entries(o)) {
+      if (k === 'link' && SANS_LIEN.has(o.id)) continue;
       out[k] = (k === 'title' && o.id && W_TITRES[o.id] !== undefined)
         ? W_TITRES[o.id] : traduitObjet(v, `${chemin}.${k}`, k);
     }
@@ -390,9 +403,13 @@ function memesCles(a, b, chemin = '') {
     if (a.length !== b.length) alertes.push(`${chemin} : ${a.length} contre ${b.length}`);
     else a.forEach((v, i) => memesCles(v, b[i], `${chemin}[${i}]`));
   } else if (a && typeof a === 'object') {
-    const ka = Object.keys(a).join(','), kb = Object.keys(b).join(',');
+    /* `link` retiré par SANS_LIEN est une absence voulue, pas une clé perdue.
+       La descente suit la liste filtrée : sur la liste brute, `b.link` vaut
+       undefined et la récursion tombait dessus. */
+    const cles = Object.keys(a).filter(k => !(k === 'link' && SANS_LIEN.has(a.id)));
+    const ka = cles.join(','), kb = Object.keys(b).join(',');
     if (ka !== kb) alertes.push(`clés différentes en ${chemin} : ${ka} / ${kb}`);
-    else for (const k of Object.keys(a)) memesCles(a[k], b[k], `${chemin}.${k}`);
+    else for (const k of cles) memesCles(a[k], b[k], `${chemin}.${k}`);
   }
 }
 memesCles(W_EN, W_FR, 'WITCHER');

@@ -286,8 +286,9 @@ export const W_TRADUCTIONS = [
    'La chronologie de CD Projekt RED'],
   ['The 2 timelines',
    'Les 2 chronologies'],
-  ['Fan translation available here',
-   'Traduction amateur disponible ici'],
+  /* « Fan translation available here » n'a plus de traduction : le lien ne
+     paraît plus côté français, la nouvelle ayant une édition française.
+     Voir SANS_LIEN dans traduire-witcher.mjs. */
   ['Watch on YouTube',
    'Regarder sur YouTube'],
   ['Every story of The Last Wish read',
