@@ -266,6 +266,8 @@ const TRADUCTIONS = [
   // repères y étaient dépliés en permanence, sans intitulé commun.
   // « terminés » partout depuis le 21 septembre 2026, à la place de « vus » et « lus »
   ['terminés', 'completed'],
+  ['entrées terminées', 'entries completed'],
+  ['/ 62 terminés', '/ 62 completed'],   // gabarit : le nombre suit la case
   ['Restant', 'Remaining'],
   ['Cochez ce que vous avez complété, votre progression est sauvegardée.', 'Check off what you\'ve completed — your progress is saved.'],
   ['terminés</span>', 'completed</span>'],

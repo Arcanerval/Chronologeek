@@ -310,11 +310,11 @@
   var T = FR ? {
     titreP: 'Mettez votre progression à l’abri',
     titreA: 'Mettez vos ajouts à l’abri',
-    deux:   function(c, a){ return 'Vous avez coché ' + c + ' œuvres, et vous en avez ajouté ' + a +
+    deux:   function(c, a){ return 'Vous avez complété ' + c + ' œuvres, et vous en avez ajouté ' + a +
               '. Tout cela ne vit que dans ce navigateur, qui peut l’effacer tout seul — Safari le ' +
               'fait après sept jours sans visite. Le fichier d’export le garde, et le rapporte sur ' +
               'un autre appareil.'; },
-    coches: function(c){ return 'Vous avez coché ' + c + ' œuvres. Votre progression ne vit que dans ' +
+    coches: function(c){ return 'Vous avez complété ' + c + ' œuvres. Votre progression ne vit que dans ' +
               'ce navigateur, qui peut l’effacer tout seul — Safari le fait après sept jours sans ' +
               'visite. Le fichier d’export la garde, et la rapporte sur un autre appareil.'; },
     ajouts: function(a){ return 'Vous avez ajouté ' + a + ' œuvres. Elles ne vivent que dans ce ' +
@@ -325,11 +325,11 @@
   } : {
     titreP: 'Keep your progress safe',
     titreA: 'Keep your additions safe',
-    deux:   function(c, a){ return 'You have checked ' + c + ' works, and added ' + a +
+    deux:   function(c, a){ return 'You have completed ' + c + ' works, and added ' + a +
               ' of your own. None of it lives anywhere but this browser, which can wipe it on its ' +
               'own — Safari does after seven days without a visit. The export file keeps it, and ' +
               'carries it to another device.'; },
-    coches: function(c){ return 'You have checked ' + c + ' works. Your progress lives in this ' +
+    coches: function(c){ return 'You have completed ' + c + ' works. Your progress lives in this ' +
               'browser only, and it can be wiped without warning — Safari does it after seven days ' +
               'without a visit. The export file keeps it, and carries it to another device.'; },
     ajouts: function(a){ return 'You have added ' + a + ' works. They live in this browser only, ' +
@@ -1566,32 +1566,32 @@
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',
-    dek:   'Vos coches sur les dix timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
+    dek:   'Ce que vous avez complété sur les onze timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
     exp:   'Tout exporter',
     imp:   'Importer',
     nom:   'chronologeek-tout.json',
-    rien:  'Rien de coché pour l’instant — ouvrez une timeline, le fichier suivra.',
+    rien:  'Rien de terminé pour l’instant — ouvrez une timeline, le fichier suivra.',
     mauvais: 'Ce fichier n’est pas un export Chronologeek.',
     vide:  'Ce fichier ne porte aucune progression.',
     plein: 'Le navigateur a refusé d’enregistrer : mémoire pleine, ou navigation privée.',
     etat:  function(n, c, a){
       return n + ' univers · ' +
-             c + (c > 1 ? ' entrées cochées' : ' entrée cochée') +
+             c + (c > 1 ? ' entrées terminées' : ' entrée terminée') +
              (a ? ' · ' + a + (a > 1 ? ' ajouts à vous' : ' ajout à vous') : '');
     }
   } : {
     titre: 'All your timelines, in one file',
-    dek:   'Your check marks across the ten timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
+    dek:   'What you’ve completed across the eleven timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
     exp:   'Export everything',
     imp:   'Import',
     nom:   'chronologeek-all.json',
-    rien:  'Nothing checked yet — open a timeline and the file will follow.',
+    rien:  'Nothing completed yet — open a timeline and the file will follow.',
     mauvais: 'This file is not a Chronologeek export.',
     vide:  'This file holds no progress.',
     plein: 'The browser refused to save: storage full, or private browsing.',
     etat:  function(n, c, a){
       return n + (n > 1 ? ' universes · ' : ' universe · ') +
-             c + (c > 1 ? ' entries checked' : ' entry checked') +
+             c + (c > 1 ? ' entries completed' : ' entry completed') +
              (a ? ' · ' + a + (a > 1 ? ' works of yours' : ' work of yours') : '');
     }
   };

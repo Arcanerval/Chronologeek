@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://chronologeek.app/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
@@ -62,7 +62,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/witcher"/>
   </url>
   <url><loc>https://chronologeek.app/deep-dives/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
   </url>
@@ -82,7 +82,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
   </url>
   <url><loc>https://chronologeek.app/fr/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
@@ -142,7 +142,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/witcher"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dossiers/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/"/>
   </url>
