@@ -1,5 +1,9 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."]
+
+   --titre remplace le nom de l'univers a l'accroche, en tete de carte et a la fin :
+   une video DC sans les origines ne montre plus le « Multiverse Guide » entier,
+   elle montre « Arrowverse, DCEU & DCU ».
 
    --plus tire une entree hors du filtre et la met au rang des essentiels : Rogue One
    est "important" dans les donnees, et le site n'a pas a changer pour une video.
@@ -217,10 +221,10 @@ function ouverture(D, cartes, lang, total, sel) {
   };
 }
 
-function page(cle, D, cartes, lang, total, sel) {
+function page(cle, D, cartes, lang, total, sel, titre) {
   const t = T[lang];
   const encre = UNIVERS[cle].encre;
-  const nom = decode(D.title || cle);
+  const nom = titre || decode(D.title || cle);
   const ouv = ouverture(D, cartes, lang, total, sel);
   const cover = couverture(cle);
   const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
@@ -445,6 +449,7 @@ async function main() {
   const sans = new Set(String(val('--sans', '')).split(',').filter(Boolean).map(Number));
   const plus = new Set(String(val('--plus', '')).split(',').map(s => s.trim()).filter(Boolean));
   const audio = val('--audio', null);
+  const titre = val('--titre', null);
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
@@ -459,6 +464,11 @@ async function main() {
     if (!cartes.some(c => c.id === id)) throw new Error(`--plus : aucune entree "${id}"`);
   }
   const total = suite(D, {}).length;
+  /* --sans retire des eres de l'histoire : l'accroche compte ce qui passe a l'ecran,
+     les numeros doivent suivre. Garder ceux de la page faisait partir la video DC
+     a 12, les onze origines retirees laissant leur trou. --only, lui, garde le rang
+     de la page : c'est une selection dans la timeline, pas une autre histoire. */
+  if (sans.size && !only) cartes.forEach((c, i) => { c.rang = i + 1; });
   if (!cartes.length) throw new Error('la selection ne retient aucune entree');
   /* --total fixe la duree de la video et en deduit celle d'une carte : une minute
      est le format que Niko vise, et le nombre de cartes change d'un univers et
@@ -479,7 +489,7 @@ async function main() {
     : only === 'must+' ? { nom: T[lang].importants, unite: T[lang].entries }
     : null;
 
-  const html = page(cle, D, cartes, lang, total, sel);
+  const html = page(cle, D, cartes, lang, total, sel, titre);
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
 
