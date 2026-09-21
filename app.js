@@ -1927,6 +1927,86 @@
   else pose();
 })();
 
+/* ═══ LES SOURCES, AU BAS DU DÉPLIANT DES FILTRES ═════════════════════
+   Posées le 21 septembre 2026, liste de Niko. Pas de nouveau dépliant :
+   celui des filtres s'appelle désormais « Filtres, recherche, repères et
+   sources », et elles viennent sous l'astuce du Maj + clic.
+
+   Elles vivent ici plutôt que dans les données pour deux raisons : ce
+   sont des noms propres, rien à traduire — sauf Wikipédia, qui prend son
+   accent en français —, et une seule table sert les deux langues là où
+   les `intro` en demanderaient vingt-deux copies. La clé est le nom de
+   la route ; les protos (`e-starwars`, `en-twd`…) s'y ramènent. Une page
+   absente de la table n'affiche rien. Une source sans lien reste du texte. */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+  var WIKI = FR ? 'Wikipédia' : 'Wikipedia';
+  var ABOE = ['A Bit of Everything', 'https://www.youtube.com/@AbitofEverything4U'];
+  var BVG  = 'https://www.beyondvideogaming.com/en/timelines/';
+  var SOURCES = {
+    starwars: [['Wookieepedia', 'https://starwars.fandom.com/wiki/Timeline_of_canon_media#js'],
+               [WIKI], ABOE, ['Reddit']],
+    marvel: [['MCUTimeline.fr', 'https://mcutimeline.fr/'], [WIKI],
+             ['Fandom', 'https://marvelcinematicuniverse.fandom.com/wiki/Chronological_Order'],
+             ['Marvel.com', 'https://www.marvel.com/'], ['Reddit'], ABOE],
+    dc: [[WIKI], ['Reddit'],
+         ['Love thy Nerd', 'https://lovethynerd.com/arrowverse-the-definitive-watch-order/'],
+         ['Arrowverse.info', 'https://arrowverse.info/'],
+         ['Fandom', 'https://dcextendeduniverse.fandom.com/wiki/Timeline'], ABOE],
+    avatar: [['Avatar', 'https://www.avatarstudiosofficial.com/timeline/'], ['Reddit'],
+             ['Fandom', 'https://avatar.fandom.com/wiki/History_of_the_World_of_Avatar'],
+             ['Avatar Almanac', 'https://avataralmanac.com/timeline-order/'],
+             ['Avatar Timeline', 'https://avatartimeline.com/']],
+    startrek: [['Memory Alpha', 'https://memory-alpha.fandom.com/wiki/Timeline'],
+               ['ST Viewing Guide', 'https://startrekviewingguide.com/'], [WIKI], ['Reddit']],
+    walkingdead: [['Fandom', 'https://walkingdead.fandom.com/wiki/TV_Series_Timeline'], ['Reddit'],
+                  ['TimelineTWD', 'https://www.timelinetwd.com/']],
+    dragonage: [['Fandom', 'https://dragonage.fandom.com/wiki/Timeline'],
+                ['BVG', BVG + 'dragon-age-timeline-everything-in-chronological-order/'], ['Reddit']],
+    assassinscreed: [['Reddit'],
+                     ['BVG', BVG + 'assassins-creed-timeline-everything-in-chronological-order/'],
+                     ['Fandom', 'https://assassinscreed.fandom.com/fr/wiki/Chronologie_compl%C3%A8te'],
+                     [WIKI]],
+    dcanimation: [['Fandom DCAMU', 'https://dcanimatedmovieuniverse.fandom.com/wiki/Timeline'], ['Reddit'],
+                  ['Watchtower Database', 'https://www.youtube.com/@dcauwatchtower'], [WIKI],
+                  ['DCAUTimeline', 'https://dcautimeline.tumblr.com/eras'],
+                  ['Fandom Arkham', 'https://arkhamcity.fandom.com/wiki/Timeline'],
+                  ['Fandom DCAU', 'https://dcau.fandom.com/wiki/Timeline']],
+    jurassicworld: [['Fandom', 'https://jurassicpark.fandom.com/wiki/Timeline'], [WIKI], ['Reddit']],
+    witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
+              ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
+              ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']]
+  };
+  var PROTO = { twd: 'walkingdead', jurassic: 'jurassicworld' };
+
+  function pose(){
+    var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
+                  .replace(/\.html$/, '').replace(/^en?-/, '');
+    var liste = SOURCES[PROTO[route] || route];
+    var corps = document.querySelector('#sieve .filt-body') || document.getElementById('sieve');
+    if (!liste || !corps || corps.querySelector('.src-h')) return;
+    var p = document.createElement('p');
+    p.className = 'src-h';
+    p.style.cssText = 'margin:0;font-size:11.5px;line-height:1.6;text-align:center;' +
+      'opacity:.62;letter-spacing:.02em';
+    p.appendChild(document.createTextNode(FR ? 'Sources : ' : 'Sources: '));
+    liste.forEach(function(s, i){
+      if (i) p.appendChild(document.createTextNode(' · '));
+      if (!s[1]) { p.appendChild(document.createTextNode(s[0])); return; }
+      var a = document.createElement('a');
+      a.href = s[1]; a.textContent = s[0];
+      a.target = '_blank'; a.rel = 'noopener';
+      a.style.cssText = 'color:inherit;text-decoration:underline;text-underline-offset:2px';
+      p.appendChild(a);
+    });
+    var apres = corps.querySelector('.rng-h');
+    if (apres) apres.after(p); else corps.appendChild(p);
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
 /* ═══ LES FILTRES SE RETIENNENT ═══════════════════════════════════════
    Rien n'était persisté : décocher « Jeu vidéo » et « Bonus » pour ne
    garder que l'essentiel, puis revenir le lendemain, et la timeline

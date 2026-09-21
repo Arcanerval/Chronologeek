@@ -2632,7 +2632,9 @@ le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
 - **L'écran d'arrivée** : `BOOT_ENCRES`, `BOOT_PAS` et la vignette de plus dans
   `images/boot-univers.webp`.
 - **`e-app.js`** : la table `UNIVERS` de l'export global, et `RADAR` pour
-  l'encart « prochaine sortie » si le radar suit l'univers.
+  l'encart « prochaine sortie » si le radar suit l'univers, et `SOURCES`
+  pour la ligne « Sources » du dépliant des filtres (posée le 21 septembre
+  2026 : une table par route, les noms propres ne se traduisent pas).
 - **L'accueil** : la case, la variable CSS, le sous-titre, le HUD (total et
   « N univers »), le numéro de la case verrouillée — et **`NAMES`**, la table
   que lit la barre de reprise. C'est l'oubli du 20 septembre : la barre
