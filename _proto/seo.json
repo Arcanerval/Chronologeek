@@ -3,13 +3,13 @@
     "fr": {
       "title": "Chronologeek — Chronologies et ordres de visionnage",
       "ogTitle": "Chronologeek — Timelines Geek",
-      "desc": "Les timelines complètes de tes univers préférés — tous supports, ordre chronologique, 100% canon. Coche ce que tu as vu.",
+      "desc": "Les timelines complètes de tes univers préférés — tous supports, ordre chronologique, 100% canon. Coche ce que tu as complété.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Chronologeek — Geek Timelines &amp; Watch Orders",
       "ogTitle": "Chronologeek — Geek Timelines",
-      "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon. Track what you've watched.",
+      "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon. Track what you've completed.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
@@ -17,13 +17,13 @@
     "fr": {
       "title": "Chronologie Star Wars : l'ordre de visionnage | Chronologeek",
       "ogTitle": "Timeline Star Wars — Chronologeek",
-      "desc": "La timeline Star Wars canon — 62 films, séries et jeux dans l'ordre chronologique, de la République au Premier Ordre, sans spoil. Coche ce que tu as vu.",
+      "desc": "La timeline Star Wars canon — 62 films, séries et jeux dans l'ordre chronologique, de la République au Premier Ordre, sans spoil. Coche ce que tu as complété.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     },
     "en": {
       "title": "Star Wars Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Star Wars Timeline — Chronologeek",
-      "desc": "The Star Wars canon timeline — 62 movies, shows and games in chronological order, Republic to First Order, spoiler-free. Track what you've watched.",
+      "desc": "The Star Wars canon timeline — 62 movies, shows and games in chronological order, Republic to First Order, spoiler-free. Track what you've completed.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },
@@ -31,13 +31,13 @@
     "fr": {
       "title": "Chronologie Marvel : l'ordre de visionnage MCU | Chronologeek",
       "ogTitle": "Timeline Marvel MCU — Chronologeek",
-      "desc": "Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil. Coche ce que tu as vu.",
+      "desc": "Le MCU dans son ordre de visionnage optimisé — 120 films et séries, guide des scènes post-crédits, sans spoil. Coche ce que tu as complété.",
       "image": "https://chronologeek.app/images/mcu.webp"
     },
     "en": {
       "title": "Marvel MCU Timeline &amp; Watch Order | Chronologeek",
       "ogTitle": "Marvel MCU Timeline — Chronologeek",
-      "desc": "The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free. Track what you've watched.",
+      "desc": "The MCU in its optimized watch order — 120 movies and shows, full post-credits guide, spoiler-free. Track what you've completed.",
       "image": "https://chronologeek.app/images/mcu.webp"
     }
   },
@@ -45,13 +45,13 @@
     "fr": {
       "title": "Chronologie DC : multivers, Arrowverse, DCEU | Chronologeek",
       "ogTitle": "Guide DC Multivers — Chronologeek",
-      "desc": "Le guide de visionnage complet du Multivers DC — 24 films et 17 séries : Elseworlds, Arrowverse, DCEU et DCU, tous connectés. Coche ce que tu as vu.",
+      "desc": "Le guide de visionnage complet du Multivers DC — 24 films et 17 séries : Elseworlds, Arrowverse, DCEU et DCU, tous connectés. Coche ce que tu as complété.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     },
     "en": {
       "title": "DC Multiverse Watch Order: Arrowverse &amp; DCEU | Chronologeek",
       "ogTitle": "DC Multiverse Watch Guide — Chronologeek",
-      "desc": "The complete DC Multiverse watch guide — 24 movies and 17 shows: Elseworlds, Arrowverse, DCEU and DCU, all connected. Track what you've watched.",
+      "desc": "The complete DC Multiverse watch guide — 24 movies and 17 shows: Elseworlds, Arrowverse, DCEU and DCU, all connected. Track what you've completed.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     }
   },
@@ -59,13 +59,13 @@
     "fr": {
       "title": "Chronologie Avatar : Maître de l'Air et Korra | Chronologeek",
       "ogTitle": "Timeline Avatar Legends — Chronologeek",
-      "desc": "Le Dernier Maître de l’Air, La Légende de Korra, 42 comics et 10 romans dans un seul ordre chronologique, sans spoil. Coche ce que tu as vu.",
+      "desc": "Le Dernier Maître de l’Air, La Légende de Korra, 42 comics et 10 romans dans un seul ordre chronologique, sans spoil. Coche ce que tu as complété.",
       "image": "https://chronologeek.app/images/avatar.webp"
     },
     "en": {
       "title": "Avatar Watch Order: Last Airbender &amp; Korra | Chronologeek",
       "ogTitle": "Avatar Legends Timeline — Chronologeek",
-      "desc": "The Last Airbender, The Legend of Korra, 42 comics and 10 novels in one chronological order, spoiler-free. Track what you've watched.",
+      "desc": "The Last Airbender, The Legend of Korra, 42 comics and 10 novels in one chronological order, spoiler-free. Track what you've completed.",
       "image": "https://chronologeek.app/images/avatar.webp"
     }
   },
