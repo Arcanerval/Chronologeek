@@ -518,6 +518,10 @@ const RETOUCHES = [
   { quoi: 'Marvel · le compte des écartés passe de 10 à 13',
     ou: 'MCU', de: '<span class="n">10 entries</span>',
     a: '<span class="n">13 entries</span>' },
+  /* « completed » partout depuis le 21 septembre 2026 : le Dossier ne
+     suppose plus seulement qu'on a regardé, la timeline mêle aussi des jeux. */
+  { quoi: 'Dossier · l’accroche dit « completed » plutôt que « watched »',
+    ou: 'Dossier', de: "you've already watched the animated", a: "you've already completed the animated" },
   /* ── les trois liens d'une page à l'autre, posés le 5 septembre 2026 ──
      Ils enrobent une phrase que Niko avait déjà écrite : Star Wars
      recommandait le Dossier et y renvoyait ses comics, DC écartait
