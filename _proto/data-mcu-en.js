@@ -427,8 +427,8 @@ const DATA_MCU={
       {"ref":"mcu-mz","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-wm","rel":"2026","drop":["faq.pourquoi"]},
       {"ref":"mcu-dba2","rel":"2026","drop":["faq.pourquoi"]},
-      {"ref":"mcu-smbnd","rel":"2026","drop":["faq.pourquoi"]},
-      {"ref":"mcu-pun-olk","rel":"2026","drop":["faq.pourquoi"]}
+      {"ref":"mcu-pun-olk","rel":"2026","drop":["faq.pourquoi"]},
+      {"ref":"mcu-smbnd","rel":"2026","drop":["faq.pourquoi"]}
     ]}
   ]
 };
