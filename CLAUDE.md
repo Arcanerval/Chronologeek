@@ -489,12 +489,14 @@ Quatre points qui ont demandé un arbitrage :
 Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » /
 « Trailer ») sont choisis à l'exécution, comme les noms de mois.
 
-## Les deux parcours
+## Les parcours
 
 Star Wars et Marvel ont deux ordres de lecture depuis la refonte, Dragon Age
 un troisième depuis le **26 août 2026**, Avatar Legends un quatrième depuis le
 **9 septembre 2026**, Jurassic World un cinquième dès sa publication le
-**11 septembre 2026** : la découverte, et la reprise. La
+**11 septembre 2026** : la découverte, et la reprise. Star Wars et Marvel en
+ont un **troisième depuis le 23 septembre 2026**, l'ordre de sortie — voir
+plus bas. La
 question se pose une fois à l'arrivée (`dialog.ask`), la bascule vit ensuite
 sous le bouton d'entrée (`.par`), et le choix est retenu dans
 `localStorage` sous `<clé de la page>-mode`. Le second ordre s'écrit dans
@@ -605,6 +607,168 @@ Deux choses à savoir :
   ni `covers` — retirée depuis. Une entrée qui n'existerait que dans le
   second parcours échappe à la recherche, au pré-rendu et au JSON-LD, qui
   ne lisent que `eras` : c'est à savoir le jour où le cas reviendra.
+
+### L'ordre de sortie, le troisième parcours
+
+Posé le **23 septembre 2026**, sur Star Wars puis sur Marvel, et publié le
+même jour : les œuvres reprises **dans l'ordre où elles sont sorties**,
+et non dans celui du monde. Star Wars en tire 39 entrées en quatre époques
+— la trilogie originale, l'ère de la prélogie, le rachat par Disney, l'ère
+Disney+ ; Marvel 109 en dix ères, qui sont ses phases. Le hash est
+`#release`, les données `erasRelease`, à côté de `eras` et d'`erasRewatch`.
+
+C'est le seul des trois qui ne tranche rien : la découverte et la reprise
+sont des propositions éditoriales, l'ordre de sortie est un fait. Il répond
+à une question que les deux autres ne posent pas — dans quel état les gens
+ont-ils découvert la saga, et ce qu'ils savaient à chaque film.
+
+**`MODES` fait foi partout.** Le hash, le choix retenu, la bascule : un mode
+inconnu retombe sur la découverte plutôt que sur une page vide. Avant, trois
+lignes se répondaient à distance — `location.hash==='#rewatch'`,
+`if(MODE!=='rewatch') MODE='first'`, `m==='rewatch'` dans `vaVers` — et un
+troisième parcours demandait de les retrouver toutes. `var MODES={rewatch:1,
+release:1}` les remplace, et un quatrième n'y ajoute qu'une clé.
+
+**Les trois accroches se masquent toutes, puis on rallume celle du
+parcours.** Éteindre les deux autres par des `:not()` était l'endroit où
+l'on oublie un cas, et un oubli montre deux accroches contradictoires sans
+une ligne dans la console. **Chez Marvel le bloc doit venir APRÈS `.itag`**,
+qui déclare `display:inline-flex` : à une classe chacun, c'est le dernier
+écrit qui gagne, et posé plus haut le `display:none` ne masquait rien. Star
+Wars y échappe par l'ordre de son CSS, pas par une règle.
+
+Six choses à savoir :
+
+- **L'année de sortie a son encadré, à côté de la date du monde.** C'est la
+  disposition des deux dates d'Assassin's Creed, à l'encre de l'univers
+  plutôt qu'à la sienne ; l'or reste au grand nombre. Le champ est `rel`, et
+  **il n'existe que dans ce parcours** : les entrées des deux autres n'en
+  ont pas, et un cadre vide se lirait comme une donnée manquante. Le repli
+  est celui d'Assassin's Creed, payé une troisième fois — vignette fluide
+  sous 560 px, le mot « Sortie » qui quitte le cadre, les corps resserrés
+  sous 400, la vignette encore sous 360 pour Star Wars. Mesuré à 320 px sur
+  les deux pages : rien ne déborde.
+- **`drop` retire la FAQ « pourquoi le regarder ici », et rien d'autre par
+  défaut.** Elle ne parle que du placement chronologique. « Quand ça se
+  déroule » reste : c'est ce qui manque le plus quand on suit les sorties.
+  Le repère `tags` du flashback tombe aussi, mais **entrée par entrée** :
+  chez Marvel `tags` porte AUSSI la canonicité non confirmée des Agents du
+  S.H.I.E.L.D. et d'Agent Carter, et un `drop:["tags"]` posé partout la
+  ferait disparaître. Cinq entrées Marvel portent « flashback », seize
+  portent « nc ».
+- **Le pont de progression s'indexe par parcours.** `COVERS[id]` vaut
+  `{p:parcours, d:[ids]}` et `COVERED[id]` est un objet par parcours. Sur
+  une table commune, une entrée couverte des deux côtés — coupée par le
+  rewatch et prise dans un bloc de l'ordre de sortie — ne se cochait plus :
+  il aurait fallu en plus les moitiés d'un parcours qu'on ne lit pas. Rien
+  dans la console, une coche qui ne prend pas.
+- **La progression vit dans deux clés**, `KEY` pour les œuvres et `AKEY`
+  pour les entrées de second parcours. L'accueil et l'export global comptent
+  les clés du stockage sans avoir les données sous la main ; tant que tout
+  vivait dans la même clé, il leur fallait deviner à la forme de
+  l'identifiant si c'en était une œuvre, et l'ordre de sortie de Star Wars a
+  suffi à les faire compter 119 %.
+- **Les badges d'ère de Star Wars nomment eux-mêmes leur repère**,
+  `idsRelease`, et portent un `descRelease`. Le rewatch a les mêmes ères que
+  la découverte et s'y retrouve par leur rang ; l'ordre de sortie découpe
+  des années et non des époques du monde, le rang ne veut plus rien dire.
+  Marvel n'en a pas besoin : son seul badge `last` tombe sur Far From Home,
+  qui clôt la Saga de l'Infini dans les trois parcours.
+- **`resolve()` reporte l'en-tête entier de l'ère**, pas seulement son
+  titre. Chez Marvel, `special` fait le segment et `saga` nomme l'ensemble ;
+  ne recopier que `title` les perdait sans un mot. Même piège que le `group`
+  d'Avatar, qui chapeaute ses Livres.
+
+**Côté traduction**, `date` et `rel` passent par `identiques` dans
+`creerTraducteur` : l'homologue anglais d'une entrée porte « 1 BBY – 0 ABY »
+là où l'ordre de sortie porte « 1977 », et le reprendre annulerait la date
+sans un mot. Les titres d'ères s'écrivent dans `TRADUCTIONS` — rien en prod
+ne les porte —, sauf les six phases de Marvel, qui s'appellent « PHASE N ·
+années » des deux côtés et entrent donc dans `TITRES_IDENTIQUES`. Les deux
+segments, eux, gardent le titre qu'ils ont en découverte et se retrouvent
+tout seuls au lexique.
+
+**`node _proto/ordre-sortie.mjs [sw|mcu]` vérifie que l'ordre écrit est le
+bon**, et c'est à rejouer à chaque œuvre ajoutée. `erasRelease` ne porte que
+l'année, et l'année ne suffit pas à ranger une ère : The Punisher: One Last
+Kill et Spider-Man: Brand New Day annonçaient 2026 tous les deux, et deux
+mois et demi les séparent — ils étaient à l'envers. **Personne ne voit ça à
+l'écran**, les deux cartes disant « SORTIE 2026 ». Le script relève la date
+complète chez TMDB et sort en erreur sur un rang faux.
+
+Quatre choses qu'il a fallu pour qu'il dise vrai :
+
+- **Une série est datée par SA SAISON, jamais par sa première.** Une saison 2
+  datée par la série entière remonte de plusieurs années et casse tout
+  l'ordre autour d'elle. Le numéro vient du champ `season` quand il existe —
+  Marvel le pose — et sinon du premier sous-item, « Saison 3 », qui est la
+  seule marque que Star Wars en donne.
+- **La sortie américaine, pas la première au monde.** `release_date` d'un
+  film peut être une projection de festival ; on lit d'abord les dates par
+  pays et on ne retombe sur elle qu'à défaut.
+- **Ce que TMDB ne connaît pas est écrit dans le script** : les six jeux de
+  Star Wars et les quatre Marvel One-Shots portent `tmdb:0`. Un jeu est daté
+  de sa sortie PC/console, un One-Shot du Blu-ray qui le porte. Et The Clone
+  Wars est daté de sa première télé et non de sa saison 1 — le bloc tient
+  les sept saisons d'un coup, rangées dans l'ordre du guide : c'est le seul
+  endroit des deux parcours où l'ordre de sortie ne descend pas jusqu'à
+  l'intérieur d'une entrée.
+- **Une date peut être partielle** quand seul le mois est connu — Zero
+  Company. La comparaison est lexicographique, donc « 2026-08 » se range
+  bien entre juillet et septembre, et l'affichage le dit avec des points
+  d'interrogation plutôt que d'inventer un jour.
+
+### L'ordre de sortie chez Marvel — presque tout se regroupe
+
+**109 entrées contre 122 en découverte**, et l'écart n'est pas une perte :
+ce sont dix regroupements, parce qu'une sortie n'est pas un morceau
+d'œuvre.
+
+- **Les treize blocs des Agents du S.H.I.E.L.D. redeviennent sept saisons.**
+  La découverte les découpe pour les intercaler entre les films ; une série
+  ne sort pas en morceaux rangés autour d'eux. Quatre entrées `covers`
+  suffisent — S1, S2, S3 et S5 —, S4, S6 et S7 étant déjà entières. Leur
+  `rt` est la somme des blocs, et `drop` y retire `faq.quand`, la date
+  recomposée n'étant plus celle du premier bloc.
+- **Les six scènes post-génériques rentrent dans leur film.** Elles n'ont
+  jamais été des sorties : Ragnarok, Ant-Man et la Guêpe, Captain Marvel,
+  Black Widow, The Marvels et Thunderbolts\* les reprennent par `covers`, et
+  les notes « ne pas regarder la scène post-crédits » tombent avec elles —
+  elles ne parlaient que du placement chronologique. Celle des Gardiens
+  Vol. 2 aussi, sur sa quatrième scène. La réponse de FAQ « Et la ou les
+  scènes post-générique ? » reste : c'est désormais le seul endroit qui en
+  parle. Le générateur refuse d'écrire s'il reste une note qui mentionne les
+  post-crédits.
+
+**Les deux segments sont à leur place de la découverte, et avec son
+contenu** : le Spider-Verse de Sony juste avant No Way Home, les films Fox
+juste avant Deadpool & Wolverine. C'est aussi un moment juste dans l'ordre
+de sortie — ce sont les deux films qui les convoquent. Les phases se coupent
+donc autour d'eux, d'où « SUITE PHASE IV » et « SUITE PHASE V », comme en
+découverte.
+
+**Un segment « Autres univers » en tête a été essayé le même jour, et
+écarté** : rassembler dix-sept films de 2000 à 2019 « au début » n'est plus
+un ordre de sortie, c'est une liste à côté. Ne pas le reproposer. Venom,
+Into the Spider-Verse et Venom: Let There Be Carnage sont **dans** le
+segment Spider-Verse, comme en découverte ; à l'intérieur, l'ordre de sortie
+s'applique et Venom passe devant Into the Spider-Verse de deux mois. Across
+the Spider-Verse et Venom: The Last Dance restent dans la timeline : ils
+sont sortis après No Way Home, donc après le segment qui le précède.
+
+**Chaque ère nomme sa saga sous son titre**, `saga`, entre le nom et le
+décompte. « PHASE I » seule ne dit pas de quelle saga il s'agit ; la
+découverte le disait dans le même souffle, « PHASE I — Saga de l'Infini », et
+les années sont venues se mettre entre les deux moitiés. Les deux segments y
+nomment leur studio, Sony et 20th Century Fox. Le filet reprend l'encre
+d'accent, comme le décompte juste en dessous.
+
+**Une phase se ferme quand le film suivant l'ouvre, pas au 31 décembre.**
+C'est ce qui décide des bornes, et les trois cas qui s'en écartaient ont été
+corrigés le jour même : Daredevil saison 2 sort en mars 2016, deux mois
+avant Civil War, et termine donc la Phase II — qui déborde sur 2016 ; Les 4
+Fantastiques ouvre la Phase VI le 25 juillet 2025, et Eyes of Wakanda comme
+Marvel Zombies, qui sortent après lui, y sont aussi.
 
 ## Les colonnes parallèles sous 1440 px
 
@@ -2015,7 +2179,12 @@ Six points, tous rencontrés :
 
 - **Le second parcours reçoit un `{ref}`, pas une copie.** Sans lui, l'ajout
   manquerait à qui rejoue, sans un mot — c'est exactement le piège que « Les
-  deux parcours » nomme déjà pour les ajouts éditoriaux.
+  parcours » nomme déjà pour les ajouts éditoriaux. **Le troisième, lui, n'en
+  reçoit pas** : `e-perso.js` ne connaît que `erasRewatch`, et une entrée
+  ajoutée à la main ne paraît donc pas dans l'ordre de sortie. C'est
+  défendable — personne ne sait quand sort une œuvre qu'il vient d'inventer,
+  et le champ « Juste après » ne désigne qu'une entrée de la découverte —
+  mais c'est à savoir : la carte manque sans un mot, comme toujours ici.
 - **Un ajout recharge la page.** Le rendu est déjà fait quand `e-app.js`
   s'exécute ; réinjecter à chaud demanderait de connaître le rendu de chacune
   des huit pages. C'est le geste qu'emploie déjà la bascule des deux parcours.
