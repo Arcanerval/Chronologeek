@@ -383,6 +383,20 @@ body[data-parcours="release"] .pc-release{display:inline-flex}
   background:var(--paper);color:var(--ink);padding:4px 11px;
   clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
 .map h2{font-size:clamp(32px,6vw,72px);margin:12px 0 6px}
+/* LA SAGA, entre le nom de l'ère et son décompte. Elle n'existe que dans
+   l'ordre de sortie : là, le titre de l'ère est une phase, et une phase
+   seule ne dit pas de quelle saga elle fait partie — la découverte le
+   disait dans le même souffle, « PHASE I — Saga de l'Infini ». Ici les
+   deux moitiés se séparent parce que les années sont venues se mettre
+   entre elles.
+   Le filet reprend l'encre d'accent, comme `.meta b` juste en dessous :
+   c'est la même famille de signes, le nom d'un ensemble et le compte de
+   ce qu'il contient. */
+.map .saga{display:flex;align-items:center;gap:10px;margin:0 0 11px;
+  font-family:'Big Shoulders Display';font-weight:700;
+  font-size:clamp(15px,2.2vw,21px);letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,253,247,.84)}
+.map .saga::before{content:"";flex:0 0 auto;width:26px;height:2px;background:var(--hot)}
 .map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
   letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
 .map .meta b{color:var(--hot)}
@@ -807,6 +821,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .key p{text-align:center}
 .map .wrap{text-align:center}
 .map .meta{justify-content:center}
+.map .saga{justify-content:center}
 .pick h2,.pick .sub{text-align:center}
 .pick .sub{margin-left:auto;margin-right:auto}
 .slot .nm,.slot .body,.slot .d{text-align:center}
@@ -1125,9 +1140,14 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      sortie retire partout la FAQ « pourquoi le regarder ici ». Une
      référence morte rendrait une carte vide sans une erreur — elle sort en
      console. */
+  /* L'en-tête de l'ère passe entier, pas seulement son titre : `special`
+     fait le segment et `saga` nomme l'ensemble auquel la phase appartient.
+     Ne recopier que `title` les perdait sans un mot — c'est le même piège
+     que le `group` d'Avatar, qui chapeaute ses Livres. */
   function resolve(eras){
     return eras.map(function(era){
-      return {title:era.title,entries:era.entries.map(function(x){
+      return {title:era.title,special:era.special,saga:era.saga,
+        entries:era.entries.map(function(x){
         var src=BYID[x.ref||(x.covers||[])[0]];
         if(!src){ console.error('[parcours] référence morte :',x.ref||x.covers); return x; }
         var e=Object.assign({},src,x);
@@ -1454,6 +1474,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
           '<div class="wrap">'+
             '<span class="chev">'+(i+1)+' / '+ERAS.length+'</span>'+
             '<h2 class="disp off">'+esc(era.title)+'</h2>'+
+            (era.saga?'<p class="saga">'+esc(era.saga)+'</p>':'')+
             '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' terminés</span>'+
             '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'+
           '</div></div>'+

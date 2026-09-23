@@ -1,7 +1,7 @@
 /* Version anglaise de data-mcu.js — produite par traduire.mjs.
    Chaque texte vient mot pour mot de marvel.html ; la structure vient du
    proto français. Ne pas editer a la main : relancer le script. */
-window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar Legends","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","resetSW":"Reset your Star Wars progress?","resetMCU":"Reset your Marvel progress?","resetDC":"Reset your DC progress?","resetDos":"Reset your Deep Dive progress?","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's new","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective owners; Chronologeek is an independent fan project."},"universe":"mcu","badgeLabels":{"film":["bf","MOVIE"],"filmanim":["bfa","ANIMATED MOVIE"],"serie":["bs","TV SHOW"],"anime":["ba","ANIMATED SHOW"],"jeu":["bj","VIDEO GAME"],"special":["bsp","SPECIAL"],"video":["bv","VIDEO"]},"badges":[{"id":"mcu_avenger","universe":"mcu","icon":"🛡️","color":"#f43f5e","trigger":"100pct","ids":[],"label":"Avenger","desc":"Marvel 100% completed"},{"id":"mcu_spidey","universe":"mcu","icon":"🕷️","color":"#e11d48","trigger":"all","ids":["mcu-sm1","mcu-smffh","mcu-smr1","mcu-smr2","mcu-smr3","mcu-tasm1","mcu-tasm2","mcu-itsv","mcu-nwh","mcu-atsv","mcu-vfsm","mcu-smbnd"],"label":"Friendly Neighborhood Spider","desc":"Every Spider-Man watched"},{"id":"mcu_mutant","universe":"mcu","icon":"🧬","color":"#facc15","trigger":"all","ids":["mcu-xfc","mcu-xow","mcu-xm1","mcu-xm2","mcu-xm3","mcu-twolv","mcu-dofp","mcu-xma","mcu-xdp","mcu-logan","mcu-dp1","mcu-dp2","mcu-dpw"],"label":"Omega Mutant","desc":"All X-Men and Deadpool watched"},{"id":"mcu_thanos","universe":"mcu","icon":"🪨","color":"#a855f7","trigger":"last","ids":["mcu-smffh"],"label":"Thanos","desc":"The Infinity Saga completed"},{"id":"mcu_defender","universe":"mcu","icon":"🥊","color":"#ef4444","trigger":"all","ids":["mcu-dd1","mcu-jj1","mcu-dd2","mcu-lc1","mcu-if1","mcu-defenders","mcu-pun1","mcu-jj2","mcu-lc2","mcu-if2","mcu-dd3","mcu-pun2","mcu-jj3","mcu-dba1","mcu-dba2","mcu-pun-olk"],"label":"Defender","desc":"All Defenders shows watched"},{"id":"mcu_shield","universe":"mcu","icon":"🦅","color":"#3b82f6","trigger":"all","ids":["mcu-ac-os","mcu-ac-serie","mcu-aos-s1a","mcu-aos-s1b","mcu-aos-s1b2","mcu-aos-s1c","mcu-aos-s2a","mcu-aos-s2b","mcu-aos-s3a","mcu-aos-s3b","mcu-aos-s4","mcu-aos-s5a","mcu-aos-s5b","mcu-aos-s5c","mcu-aos-s6","mcu-aos-s7"],"label":"S.H.I.E.L.D. Agent","desc":"Agent Carter and Agents of SHIELD completed"}],"faqCats":[{"key":"quand","q":"When does {name} take place in the MCU?"},{"key":"comment","q":"How is {name} connected to the MCU?"},{"key":"pourquoi","q":"Why watch {name} at this point in the timeline?"},{"key":"postcredits","q":"What about the post-credits scene(s)?"}],"resetMsg":"Reset your Marvel progress?","tmdbLang":"en-US","deviate":true,"defenders":["mcu-dd1","mcu-dd2","mcu-dd3","mcu-dba1","mcu-dba2","mcu-pun1","mcu-pun2","mcu-pun-olk","mcu-jj1","mcu-jj2","mcu-jj3","mcu-lc1","mcu-lc2","mcu-if1","mcu-if2","mcu-defenders"],"groups":{"sv":{"label":"Spider-Verse","color":"#90caf9","ids":["mcu-smr1","mcu-smr2","mcu-smr3","mcu-tasm1","mcu-tasm2","mcu-itsv","mcu-venom1","mcu-venom2","mcu-venom3","mcu-atsv"]},"fox":{"label":"Fox / X-Men","color":"#ffb74d","ids":["mcu-xfc","mcu-xow","mcu-xm1","mcu-xm2","mcu-xm3","mcu-twolv","mcu-dofp","mcu-xma","mcu-xdp","mcu-logan","mcu-dp1","mcu-dp2"]}},"tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};
+window.CG={"t":{"lang":"en","locale":"en-US","skip":"Skip to content","nav":{"home":"Home","deep":"Deep Dives","sw":"Star Wars","mcu":"Marvel","dc":"DC","avatar":"Avatar Legends","upcoming":"Upcoming","news":"What's New"},"otherLang":"Passer en français","otherFlag":"fr","menu":"Open menu","searchLabel":"Search the timeline","searchPh":"Search…  ( / )","searchClear":"Clear search","hideDone":"Hide watched","hideRead":"Hide read","crumbUniverses":"All universes","crumbDeep":"All Deep Dives","updated":"Updated ·","progH":"My progress","watched":"Watched","read":"Read","left":"Left to watch","leftRead":"Left to read","done":"Done","resume":"Resume","exp":"Export","imp":"Import","badges":"Badges","reset":"Reset","noRuntime":"No runtime data for some entries","progHint1":"Your progression is saved in this browser — use","progHint2":"to keep a backup or import on another device or browser","filters":"Filters","shown":"shown","secBranches":"Branches","secTypes":"Media types","secLevel":"Level","secOptions":"Options","marks":"Markers","all":"all","none":"none","essential":"⭐ Essential","important":"🚨 Important","optional":"Optional","ncLabel":"Canonicity not confirmed","defLabel":"Defenders series","svLabel":"Spider-Verse","foxLabel":"Fox / X-Men","ncTag":"CANONICITY NOT CONFIRMED","loading":"Loading…","loadFail":"Failed to load.","noSynopsis":"No synopsis available.","trailer":"YouTube trailer","watchGame":"Watch the full movie on YouTube","zoom":"Enlarge poster","mYear":"Year","mGenre":"Genre","mRating":"Rating","mReleased":"Released","mPeriod":"Period","emptyH":"Nothing matches","emptyThese":"these filters","emptyThat":"that","emptyP":"Try another spelling, or bring back the filters you turned off.","emptyPShort":"Try another spelling.","clearAll":"Clear everything","railEras":"Jump to an era","railZones":"Jump to a zone","swipe":"Swipe to see the other branches →","toTop":"Back to top","copyLink":"Copy link to this entry","copied":"Copied!","myBadges":"My Badges","unlockedN":"unlocked","badgeUnlocked":"Badge unlocked!","close":"Close","markWatched":"Mark “{t}” as watched","markRead":"Mark “{t}” as read","resetSW":"Reset your Star Wars progress?","resetMCU":"Reset your Marvel progress?","resetDC":"Reset your DC progress?","resetDos":"Reset your Deep Dive progress?","badFile":"Unreadable file.","outNow":"out now","tomorrow":"tomorrow","inDays":"in {n} d","inMonths":"in {n} mo","inYears":"in {n} y","releases":"releases","release":"release","tracked":"releases tracked","voTitle":"No known French version","rdNote":"Updated automatically every day · sources: TMDB, Wookieepedia, Avatar Almanac","onScreen":"▶ On screen — where the movies and shows fall. Not counted in your progress.","footAbout":"Chronologeek","footTimelines":"Timelines","footMore":"More","footBlurb":"Timelines for the universes worth getting lost in. Every medium, chronological order, spoiler-free. Built and maintained by one person who watches everything twice.","footUpcoming":"Upcoming releases","footNews":"What's new","footSupport":"Support the site","footContact":"Contact","legal1":"This product uses the","legal2":"API but is not endorsed or certified by TMDB. Book data from","legal3":"Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective owners; Chronologeek is an independent fan project."},"universe":"mcu","badgeLabels":{"film":["bf","MOVIE"],"filmanim":["bfa","ANIMATED MOVIE"],"serie":["bs","TV SHOW"],"anime":["ba","ANIMATED SHOW"],"jeu":["bj","VIDEO GAME"],"special":["bsp","SPÉCIAL"],"video":["bv","VIDEO"]},"badges":[{"id":"mcu_avenger","universe":"mcu","icon":"🛡️","color":"#f43f5e","trigger":"100pct","ids":[],"label":"Avenger","desc":"Marvel 100% completed"},{"id":"mcu_spidey","universe":"mcu","icon":"🕷️","color":"#e11d48","trigger":"all","ids":["mcu-sm1","mcu-smffh","mcu-smr1","mcu-smr2","mcu-smr3","mcu-tasm1","mcu-tasm2","mcu-itsv","mcu-nwh","mcu-atsv","mcu-vfsm","mcu-smbnd"],"label":"Friendly Neighborhood Spider","desc":"Every Spider-Man watched"},{"id":"mcu_mutant","universe":"mcu","icon":"🧬","color":"#facc15","trigger":"all","ids":["mcu-xfc","mcu-xow","mcu-xm1","mcu-xm2","mcu-xm3","mcu-twolv","mcu-dofp","mcu-xma","mcu-xdp","mcu-logan","mcu-dp1","mcu-dp2","mcu-dpw"],"label":"Omega Mutant","desc":"All X-Men and Deadpool watched"},{"id":"mcu_thanos","universe":"mcu","icon":"🪨","color":"#a855f7","trigger":"last","ids":["mcu-smffh"],"label":"Thanos","desc":"The Infinity Saga completed"},{"id":"mcu_defender","universe":"mcu","icon":"🥊","color":"#ef4444","trigger":"all","ids":["mcu-dd1","mcu-jj1","mcu-dd2","mcu-lc1","mcu-if1","mcu-defenders","mcu-pun1","mcu-jj2","mcu-lc2","mcu-if2","mcu-dd3","mcu-pun2","mcu-jj3","mcu-dba1","mcu-dba2","mcu-pun-olk"],"label":"Defender","desc":"All Defenders shows watched"},{"id":"mcu_shield","universe":"mcu","icon":"🦅","color":"#3b82f6","trigger":"all","ids":["mcu-ac-os","mcu-ac-serie","mcu-aos-s1a","mcu-aos-s1b","mcu-aos-s1b2","mcu-aos-s1c","mcu-aos-s2a","mcu-aos-s2b","mcu-aos-s3a","mcu-aos-s3b","mcu-aos-s4","mcu-aos-s5a","mcu-aos-s5b","mcu-aos-s5c","mcu-aos-s6","mcu-aos-s7"],"label":"S.H.I.E.L.D. Agent","desc":"Agent Carter and Agents of SHIELD completed"}],"faqCats":[{"key":"quand","q":"When does {name} take place in the MCU?"},{"key":"comment","q":"How is {name} connected to the MCU?"},{"key":"pourquoi","q":"Why watch {name} at this point in the timeline?"},{"key":"postcredits","q":"What about the post-credits scene(s)?"}],"resetMsg":"Reset your Marvel progress?","tmdbLang":"en-US","deviate":true,"defenders":["mcu-dd1","mcu-dd2","mcu-dd3","mcu-dba1","mcu-dba2","mcu-pun1","mcu-pun2","mcu-pun-olk","mcu-jj1","mcu-jj2","mcu-jj3","mcu-lc1","mcu-lc2","mcu-if1","mcu-if2","mcu-defenders"],"groups":{"sv":{"label":"Spider-Verse","color":"#90caf9","ids":["mcu-smr1","mcu-smr2","mcu-smr3","mcu-tasm1","mcu-tasm2","mcu-itsv","mcu-venom1","mcu-venom2","mcu-venom3","mcu-atsv"]},"fox":{"label":"Fox / X-Men","color":"#ffb74d","ids":["mcu-xfc","mcu-xow","mcu-xm1","mcu-xm2","mcu-xm3","mcu-twolv","mcu-dofp","mcu-xma","mcu-xdp","mcu-logan","mcu-dp1","mcu-dp2"]}},"tmdbKey":"6257b37bf29ab31357853fce00232314","rawgKey":"ddc66eb38db74a77b5f41323db00d434","img":"https://image.tmdb.org/t/p/"};
 const DATA_MCU={
   id:"mcu",
   title:"Marvel Cinematic Universe",
@@ -301,37 +301,42 @@ const DATA_MCU={
     ]}
   ],
   erasRelease:[
-    {title:"BEFORE THE MCU · 2000-2007",entries:[
-      {"ref":"mcu-xm1","rel":"2000","drop":["faq.pourquoi"]},
+    {title:"OTHER UNIVERSES SEGMENT · 2000-2019",saga:"Sony · 20th Century Fox",special:"autres",entries:[
       {"ref":"mcu-smr1","rel":"2002","drop":["faq.pourquoi"]},
-      {"ref":"mcu-xm2","rel":"2003","drop":["faq.pourquoi"]},
       {"ref":"mcu-smr2","rel":"2004","drop":["faq.pourquoi"]},
+      {"ref":"mcu-smr3","rel":"2007","drop":["faq.pourquoi"]},
+      {"ref":"mcu-tasm1","rel":"2012","drop":["faq.pourquoi"]},
+      {"ref":"mcu-tasm2","rel":"2014","drop":["faq.pourquoi"]},
+      {"ref":"mcu-xm1","rel":"2000","drop":["faq.pourquoi"]},
+      {"ref":"mcu-xm2","rel":"2003","drop":["faq.pourquoi"]},
       {"ref":"mcu-xm3","rel":"2006","drop":["faq.pourquoi"]},
-      {"ref":"mcu-smr3","rel":"2007","drop":["faq.pourquoi"]}
+      {"ref":"mcu-xow","rel":"2009","drop":["faq.pourquoi"]},
+      {"ref":"mcu-xfc","rel":"2011","drop":["faq.pourquoi"]},
+      {"ref":"mcu-twolv","rel":"2013","drop":["faq.pourquoi"]},
+      {"ref":"mcu-dofp","rel":"2014","drop":["faq.pourquoi"]},
+      {"ref":"mcu-dp1","rel":"2016","drop":["faq.pourquoi","tags"]},
+      {"ref":"mcu-xma","rel":"2016","drop":["faq.pourquoi"]},
+      {"ref":"mcu-logan","rel":"2017","drop":["faq.pourquoi"]},
+      {"ref":"mcu-dp2","rel":"2018","drop":["faq.pourquoi","tags"]},
+      {"ref":"mcu-xdp","rel":"2019","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE I · 2008-2012",entries:[
+    {title:"PHASE I · 2008-2012",saga:"The Infinity Saga",entries:[
       {"ref":"mcu-im1","rel":"2008","drop":["faq.pourquoi"]},
       {"ref":"mcu-hulk","rel":"2008","drop":["faq.pourquoi"]},
-      {"ref":"mcu-xow","rel":"2009","drop":["faq.pourquoi"]},
       {"ref":"mcu-im2","rel":"2010","drop":["faq.pourquoi"]},
       {"ref":"mcu-thor1","rel":"2011","drop":["faq.pourquoi"]},
-      {"ref":"mcu-xfc","rel":"2011","drop":["faq.pourquoi"]},
       {"ref":"mcu-cap1","rel":"2011","drop":["faq.pourquoi","tags","note"]},
       {"ref":"mcu-consultant","rel":"2011","drop":["faq.pourquoi"]},
       {"ref":"mcu-av1","rel":"2012","drop":["faq.pourquoi"]},
-      {"ref":"mcu-tasm1","rel":"2012","drop":["faq.pourquoi"]},
       {"ref":"mcu-item47","rel":"2012","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE II · 2013-2015",entries:[
+    {title:"PHASE II · 2013-2015",saga:"The Infinity Saga",entries:[
       {"ref":"mcu-im3","rel":"2013","drop":["faq.pourquoi"]},
-      {"ref":"mcu-twolv","rel":"2013","drop":["faq.pourquoi"]},
       {"ref":"mcu-ac-os","rel":"2013","drop":["faq.pourquoi"]},
       {"id":"mcu-rl-aos-s1","covers":["mcu-aos-s1a","mcu-aos-s1b","mcu-aos-s1b2","mcu-aos-s1c"],"date":"2013–2014","rel":"2013-2014","rt":952,"subitems":["Season 1"],"drop":["faq.pourquoi","faq.quand"]},
       {"ref":"mcu-thor2","rel":"2013","drop":["faq.pourquoi"]},
       {"ref":"mcu-roi","rel":"2014","drop":["faq.pourquoi"]},
       {"ref":"mcu-cap2","rel":"2014","drop":["faq.pourquoi"]},
-      {"ref":"mcu-tasm2","rel":"2014","drop":["faq.pourquoi"]},
-      {"ref":"mcu-dofp","rel":"2014","drop":["faq.pourquoi"]},
       {"ref":"mcu-gotg1","rel":"2014","drop":["faq.pourquoi"]},
       {"id":"mcu-rl-aos-s2","covers":["mcu-aos-s2a","mcu-aos-s2b"],"date":"2014–2015","rel":"2014-2015","rt":954,"subitems":["Season 2"],"drop":["faq.pourquoi","faq.quand"]},
       {"ref":"mcu-ac-serie","rel":"2015-2016","drop":["faq.pourquoi"]},
@@ -341,50 +346,41 @@ const DATA_MCU={
       {"id":"mcu-rl-aos-s3","covers":["mcu-aos-s3a","mcu-aos-s3b"],"date":"2016","rel":"2015-2016","rt":954,"subitems":["Season 3"],"drop":["faq.pourquoi","faq.quand"]},
       {"ref":"mcu-jj1","rel":"2015","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE III · 2016-2020",entries:[
-      {"ref":"mcu-dp1","rel":"2016","drop":["faq.pourquoi","tags"]},
+    {title:"PHASE III · 2016-2020",saga:"The Infinity Saga",entries:[
       {"ref":"mcu-dd2","rel":"2016","drop":["faq.pourquoi"]},
       {"ref":"mcu-cw","rel":"2016","drop":["faq.pourquoi"]},
-      {"ref":"mcu-xma","rel":"2016","drop":["faq.pourquoi"]},
       {"ref":"mcu-aos-s4","rel":"2016-2017","drop":["faq.pourquoi"]},
       {"ref":"mcu-lc1","rel":"2016","drop":["faq.pourquoi"]},
       {"ref":"mcu-ds1","rel":"2016","drop":["faq.pourquoi"]},
-      {"ref":"mcu-logan","rel":"2017","drop":["faq.pourquoi"]},
       {"ref":"mcu-if1","rel":"2017","drop":["faq.pourquoi"]},
-      {"ref":"mcu-gotg2","rel":"2017","drop":["faq.pourquoi"]},
+      {"ref":"mcu-gotg2","rel":"2017","drop":["faq.pourquoi","note"]},
       {"ref":"mcu-sm1","rel":"2017","drop":["faq.pourquoi"]},
       {"ref":"mcu-defenders","rel":"2017","drop":["faq.pourquoi"]},
-      {"ref":"mcu-thor3","rel":"2017","drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-thor3pc","rel":"2017","drop":["faq.pourquoi"]},
+      {"id":"mcu-rl-thor3","covers":["mcu-thor3","mcu-thor3pc"],"rel":"2017","rt":131,"drop":["faq.pourquoi","note"]},
       {"ref":"mcu-pun1","rel":"2017","drop":["faq.pourquoi"]},
       {"id":"mcu-rl-aos-s5","covers":["mcu-aos-s5a","mcu-aos-s5b","mcu-aos-s5c"],"date":"2017–2018","rel":"2017-2018","rt":963,"subitems":["Season 5"],"drop":["faq.pourquoi","faq.quand"]},
       {"ref":"mcu-bp1","rel":"2018","drop":["faq.pourquoi"]},
       {"ref":"mcu-jj2","rel":"2018","drop":["faq.pourquoi"]},
       {"ref":"mcu-iw","rel":"2018","drop":["faq.pourquoi"]},
-      {"ref":"mcu-dp2","rel":"2018","drop":["faq.pourquoi","tags"]},
       {"ref":"mcu-lc2","rel":"2018","drop":["faq.pourquoi"]},
-      {"ref":"mcu-antman2","rel":"2018","drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-antman2pc","rel":"2018","drop":["faq.pourquoi"]},
+      {"id":"mcu-rl-antman2","covers":["mcu-antman2","mcu-antman2pc"],"rel":"2018","rt":119,"drop":["faq.pourquoi","note"]},
       {"ref":"mcu-if2","rel":"2018","drop":["faq.pourquoi"]},
       {"ref":"mcu-venom1","rel":"2018","drop":["faq.pourquoi"]},
       {"ref":"mcu-dd3","rel":"2018","drop":["faq.pourquoi"]},
       {"ref":"mcu-itsv","rel":"2018","drop":["faq.pourquoi"]},
       {"ref":"mcu-pun2","rel":"2019","drop":["faq.pourquoi"]},
-      {"ref":"mcu-cm","rel":"2019","drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-cmpc","rel":"2019","drop":["faq.pourquoi","tags"]},
+      {"id":"mcu-rl-cm","covers":["mcu-cm","mcu-cmpc"],"rel":"2019","rt":124,"drop":["faq.pourquoi","note"]},
       {"ref":"mcu-eg","rel":"2019","drop":["faq.pourquoi"]},
       {"ref":"mcu-aos-s6","rel":"2019","drop":["faq.pourquoi"]},
-      {"ref":"mcu-xdp","rel":"2019","drop":["faq.pourquoi"]},
       {"ref":"mcu-jj3","rel":"2019","drop":["faq.pourquoi"]},
       {"ref":"mcu-smffh","rel":"2019","drop":["faq.pourquoi"]},
       {"ref":"mcu-aos-s7","rel":"2020","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE IV · 2021-2022",entries:[
+    {title:"PHASE IV · 2021-2022",saga:"The Multiverse Saga",entries:[
       {"ref":"mcu-wv","rel":"2021","drop":["faq.pourquoi"]},
       {"ref":"mcu-fatws","rel":"2021","drop":["faq.pourquoi"]},
       {"ref":"mcu-loki1","rel":"2021","drop":["faq.pourquoi"]},
-      {"ref":"mcu-bw","rel":"2021","drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-bwpc","rel":"2021","drop":["faq.pourquoi"]},
+      {"id":"mcu-rl-bw","covers":["mcu-bw","mcu-bwpc"],"rel":"2021","rt":134,"drop":["faq.pourquoi","note"]},
       {"ref":"mcu-wi1","rel":"2021","drop":["faq.pourquoi"]},
       {"ref":"mcu-sc","rel":"2021","drop":["faq.pourquoi"]},
       {"ref":"mcu-venom2","rel":"2021","drop":["faq.pourquoi"]},
@@ -400,14 +396,13 @@ const DATA_MCU={
       {"ref":"mcu-bp2","rel":"2022","drop":["faq.pourquoi"]},
       {"ref":"mcu-gotgxmas","rel":"2022","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE V · 2023-2025",entries:[
+    {title:"PHASE V · 2023-2025",saga:"The Multiverse Saga",entries:[
       {"ref":"mcu-antman3","rel":"2023","drop":["faq.pourquoi"]},
       {"ref":"mcu-gotg3","rel":"2023","drop":["faq.pourquoi"]},
       {"ref":"mcu-atsv","rel":"2023","drop":["faq.pourquoi"]},
       {"ref":"mcu-si","rel":"2023","drop":["faq.pourquoi"]},
       {"ref":"mcu-loki2","rel":"2023","drop":["faq.pourquoi"]},
-      {"ref":"mcu-marvels","rel":"2023","drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-marvelspc","rel":"2023","drop":["faq.pourquoi"]},
+      {"id":"mcu-rl-marvels","covers":["mcu-marvels","mcu-marvelspc"],"rel":"2023","rt":105,"drop":["faq.pourquoi","note"]},
       {"ref":"mcu-wi2","rel":"2023","drop":["faq.pourquoi"]},
       {"ref":"mcu-echo","rel":"2024","drop":["faq.pourquoi"]},
       {"ref":"mcu-dpw","rel":"2024","drop":["faq.pourquoi"]},
@@ -417,14 +412,13 @@ const DATA_MCU={
       {"ref":"mcu-vfsm","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-cabf","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-dba1","rel":"2025","drop":["faq.pourquoi"]},
-      {"ref":"mcu-tb","rel":"2025","drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-tb-pc2","rel":"2025","drop":["faq.pourquoi"]},
+      {"id":"mcu-rl-tb","covers":["mcu-tb","mcu-tb-pc2"],"rel":"2025","rt":127,"drop":["faq.pourquoi","note"]},
       {"ref":"mcu-ironheart","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-ff","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-eow","rel":"2025","drop":["faq.pourquoi","tags"]},
       {"ref":"mcu-mz","rel":"2025","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE VI · 2026",entries:[
+    {title:"PHASE VI · 2026",saga:"The Multiverse Saga",entries:[
       {"ref":"mcu-wm","rel":"2026","drop":["faq.pourquoi"]},
       {"ref":"mcu-dba2","rel":"2026","drop":["faq.pourquoi"]},
       {"ref":"mcu-smbnd","rel":"2026","drop":["faq.pourquoi"]},

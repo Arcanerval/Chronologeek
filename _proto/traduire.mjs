@@ -126,13 +126,18 @@ const TRADUCTIONS = [
      elles s'écrivent donc ici. Les six descriptions de badge suivent,
      avec « completed », le mot que Niko a retenu le 22 septembre pour
      tout le site. */
-  /* Marvel a reçu le sien le 23 septembre 2026. Une seule de ses sept
-     ères s'écrit : les six autres s'appellent « PHASE N · années » des
-     deux côtés et sont donc constatées identiques, plus bas. C'est le
-     vocabulaire de Marvel lui-même — ses phases sont des époques de
-     sortie, pas des époques de l'univers, et c'est exactement ce que ce
-     parcours range. */
-  ['AVANT LE MCU · 2000-2007', 'BEFORE THE MCU · 2000-2007'],
+  /* Marvel a reçu le sien le 23 septembre 2026. Six de ses sept ères
+     s'appellent « PHASE N · années » des deux côtés et sont donc
+     constatées identiques, plus bas. C'est le vocabulaire de Marvel
+     lui-même — ses phases sont des époques de sortie, pas des époques
+     de l'univers, et c'est exactement ce que ce parcours range.
+     Reste le segment de tête, et le nom de la saga que chaque phase
+     porte désormais sous son titre : la découverte le disait dans le
+     même souffle, « PHASE I — Saga de l'Infini », et l'anglais de prod
+     porte donc la phrase entière, jamais ses deux moitiés. */
+  ['SEGMENT AUTRES UNIVERS · 2000-2019', 'OTHER UNIVERSES SEGMENT · 2000-2019'],
+  ['Saga de l’Infini', 'The Infinity Saga'],
+  ['Saga du Multivers', 'The Multiverse Saga'],
   ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
   ['L’ÈRE DE LA PRÉLOGIE · 1999-2020', 'THE PREQUEL ERA · 1999-2020'],
   ['LE RACHAT PAR DISNEY · 2014-2018', 'THE DISNEY TAKEOVER · 2014-2018'],
@@ -808,6 +813,9 @@ const TEXTUELS = new Set([
   'title', 'subtitle', 'description', 'notes', 'note', 'bignote', 'desc',
   'date', 'season', 'dim', 'subitems', 'faq', 'quand', 'pourquoi',
   'name', 'hint', 'label', 'crisis', 'txt', 'meta', 'cta', 'descRelease',
+  /* Marvel nomme la saga sous le titre de l'ère, dans l'ordre de sortie
+     où le titre n'est plus qu'une phase. Ça se lit à l'écran. */
+  'saga',
   /* DC groupe ses ères en zones affichées au-dessus des colonnes, et
      chaque colonne porte une phrase d'aide. Les deux se lisent à
      l'écran, et la prod anglaise les a dans `CG_ZONES`. */
@@ -831,6 +839,9 @@ const TECHNIQUES = new Set([
   'id', 'tmdb', 'img', 'media', 'level', 'k', 'c', 'kind', 'color', 'glow',
   'banner', 'tmdb_banner', 'href', 'uni', 'nat', 'key', 'vo', 'tags',
   'softcanon', 'open', 'cols', 'groups',
+  /* `special` marque une ère comme segment — sa valeur est une clé de
+     groupe (`sv`, `fox`), pas un libellé. */
+  'special',
   /* Le parcours rewatch : `ref` désigne l'entrée de découverte dont
      l'entrée hérite, `covers` celles dont elle tient lieu pour la
      progression, `drop` les champs à retirer, `rt` la durée en minutes.
@@ -1107,6 +1118,9 @@ const TITRES_IDENTIQUES = [
   'PHASE IV · 2021-2022',
   'PHASE V · 2023-2025',
   'PHASE VI · 2026',
+  /* Marvel · les deux studios nommés sous le titre du segment de tête.
+     Ce sont des noms propres. */
+  'Sony · 20th Century Fox',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 
