@@ -127,8 +127,7 @@ const TRADUCTIONS = [
      avec « completed », le mot que Niko a retenu le 22 septembre pour
      tout le site. */
   ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
-  ['LA PRÉLOGIE · 1999-2005', 'THE PREQUEL TRILOGY · 1999-2005'],
-  ['L’ÈRE THE CLONE WARS · 2008-2020', 'THE CLONE WARS YEARS · 2008-2020'],
+  ['L’ÈRE DE LA PRÉLOGIE · 1999-2020', 'THE PREQUEL ERA · 1999-2020'],
   ['LE RACHAT PAR DISNEY · 2014-2018', 'THE DISNEY TAKEOVER · 2014-2018'],
   ['L’ÈRE DISNEY+ · 2019-2026', 'THE DISNEY+ ERA · 2019-2026'],
   /* Les sous-items des entrées regroupées : la saison ou l'épisode sans
