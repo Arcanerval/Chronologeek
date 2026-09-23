@@ -120,6 +120,32 @@ const APPOINT = [
    anglaise, citée en commentaire, pour ne pas introduire un registre
    qui détonnerait au milieu des 900 autres entrées. */
 const TRADUCTIONS = [
+  /* ── l'ordre de sortie, posé le 23 septembre 2026 ──
+     Le troisième parcours de Star Wars. Ses six ères sont des époques de
+     sortie et non des ères de l'univers : rien en prod ne les porte, et
+     elles s'écrivent donc ici. Les six descriptions de badge suivent,
+     avec « completed », le mot que Niko a retenu le 22 septembre pour
+     tout le site. La note de The Clone Wars reprend mot pour mot sa
+     seconde moitié, qui est celle de la prod. */
+  ['LA TRILOGIE ORIGINALE', 'THE ORIGINAL TRILOGY'],
+  ['LA PRÉLOGIE', 'THE PREQUEL TRILOGY'],
+  ['L’ÈRE THE CLONE WARS', 'THE CLONE WARS YEARS'],
+  ['LE RACHAT PAR DISNEY', 'THE DISNEY TAKEOVER'],
+  ['L’ÈRE DU STREAMING', 'THE STREAMING YEARS'],
+  ['LA DERNIÈRE VAGUE', 'THE LATEST WAVE'],
+  ['La trilogie originale terminée', 'The original trilogy completed'],
+  ['La prélogie terminée', 'The prequel trilogy completed'],
+  ['L’ère The Clone Wars terminée', 'The Clone Wars years completed'],
+  ['Le rachat par Disney terminé', 'The Disney takeover completed'],
+  ['L’ère du streaming terminée', 'The streaming years completed'],
+  ['La dernière vague terminée', 'The latest wave completed'],
+  ['La série a diffusé de 2008 à 2020, et ses arcs ne sortent pas dans l’ordre '
+   + 'où on les regarde : le bloc garde donc l’ordre du guide. Les épisodes '
+   + 'regroupés ci-dessous sont des arcs narratifs, séparés par des lignes vides',
+   'The series aired from 2008 to 2020, and its arcs did not come out in the '
+   + 'order you watch them: the block keeps the guide’s order. The episodes '
+   + 'grouped below are story arcs, separated by blank lines'],
+
   /* ── la pastille du h1, posée le 5 septembre 2026 ──
      Le champ `subtitle` du descripteur d'univers dit la même chose que
      la pastille de la bannière ; il a suivi son changement de libellé,
@@ -487,12 +513,20 @@ const COCHE = '<svg viewBox="0 0 24 24" aria-hidden="true">'
    passent, pas le motif. */
 const PARCOURS_DE = '<span class="itag">' + COCHE
   + 'This guide works for first-time watches as well as rewatches.</span>';
-const PARCOURS_A = '<span class="itag pc-first">' + COCHE
-  + 'This guide works best for first-time watches but you can switch to the'
-  + ' rewatch version higher up.</span>'
-  + '<span class="itag pc-rewatch">' + COCHE
+const PC_REWATCH = '<span class="itag pc-rewatch">' + COCHE
   + 'This guide works best for rewatches but you can switch to the'
   + ' first-watch version higher up.</span>';
+const PARCOURS_A = '<span class="itag pc-first">' + COCHE
+  + 'This guide works best for first-time watches but you can switch to the'
+  + ' rewatch version higher up.</span>' + PC_REWATCH;
+/* La troisième accroche est à Star Wars seul, qui a reçu l'ordre de
+   sortie le 23 septembre 2026. Elle se pose **après** `PARCOURS_A`, sur
+   son propre motif : Marvel passe par la même retouche que lui et n'a
+   que deux parcours — c'est exactement le piège qui avait donné aux deux
+   pages anglaises une accroche parlant d'une bascule qu'elles n'ont pas. */
+const PC_RELEASE = '<span class="itag pc-release">' + COCHE
+  + 'This guide follows the order the works came out, from 1977 to today,'
+  + ' but you can switch back to a chronological version higher up.</span>';
 /* Marvel · trois écartés de plus, le 1er septembre 2026. Les textes sont
    ceux de Niko, mot pour mot ; seules la majuscule de « I » et le point
    final ont été posés, pour s'aligner sur les dix autres. */
@@ -511,6 +545,8 @@ const CUTS_MCU_A = '<div class="cut"><dt>Prelude comics</dt>'
 const RETOUCHES = [
   { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
     ou: 'SW', de: PARCOURS_DE, a: PARCOURS_A },
+  { quoi: 'Star Wars · l’accroche annonce aussi l’ordre de sortie',
+    ou: 'SW', de: PC_REWATCH, a: PC_REWATCH + PC_RELEASE },
   { quoi: 'Marvel · l’accroche dit maintenant quel parcours on suit',
     ou: 'MCU', de: PARCOURS_DE, a: PARCOURS_A },
   { quoi: 'Marvel · trois écartés de plus dans « Ce qui est écarté »',
@@ -744,7 +780,7 @@ function memeCoupe(protoFr, prodFr, prodEn) {
 const TEXTUELS = new Set([
   'title', 'subtitle', 'description', 'notes', 'note', 'bignote', 'desc',
   'date', 'season', 'dim', 'subitems', 'faq', 'quand', 'pourquoi',
-  'name', 'hint', 'label', 'crisis', 'txt', 'meta', 'cta',
+  'name', 'hint', 'label', 'crisis', 'txt', 'meta', 'cta', 'descRelease',
   /* DC groupe ses ères en zones affichées au-dessus des colonnes, et
      chaque colonne porte une phrase d'aide. Les deux se lisent à
      l'écran, et la prod anglaise les a dans `CG_ZONES`. */
@@ -787,9 +823,17 @@ const TECHNIQUES = new Set([
   'ol',
 ]);
 
-export function creerTraducteur(lex, manques, contexte) {
+/* `identiques` : des champs rendus tels quels le temps d'un bloc, sans
+   passer par le lexique ni par l'homologue anglais. C'est `date` dans le
+   parcours par ordre de sortie — l'entrée y porte « 1977 » là où son
+   homologue porte « 1 BBY – 0 ABY », et la reprendre annulerait la date
+   de sortie sans un mot. La règle du site est de toute façon qu'une date
+   ne se traduit jamais ; ici elle s'applique à un bloc, pas au fichier,
+   parce que Marvel écrit parfois de la prose dans ce champ. */
+export function creerTraducteur(lex, manques, contexte, identiques) {
   const estTextuel = k => TEXTUELS.has(k)
     || (contexte === 'Dossier' && TEXTUEL_SI_DOSSIER.has(k));
+  const estIdentique = k => !!(identiques && identiques.has(k));
 
   /* `refEn` est l'entrée anglaise homologue quand elle existe : on la
      préfère au lexique, parce qu'un même mot français peut se traduire
@@ -870,7 +914,7 @@ export function creerTraducteur(lex, manques, contexte) {
     for (const [k, v] of Object.entries(fr)) {
       const sous = refEn && typeof refEn === 'object' ? refEn[k] : undefined;
       const sousFr = refFr && typeof refFr === 'object' ? refFr[k] : undefined;
-      if (TECHNIQUES.has(k)) { out[k] = v; continue; }
+      if (TECHNIQUES.has(k) || estIdentique(k)) { out[k] = v; continue; }
       if (estTextuel(k)) { out[k] = valeur(k, v, sous, `${chemin}.${k}`, sousFr); continue; }
       if (v && typeof v === 'object') { out[k] = objet(v, sous, `${chemin}.${k}`, sousFr); continue; }
 
@@ -907,14 +951,18 @@ function serialiseTimeline(nom, D) {
   const l = [];
   l.push(`const ${nom}={`);
   for (const [k, v] of Object.entries(D)) {
-    if (k === 'eras' || k === 'erasRewatch') continue;
+    if (k === 'eras' || k === 'erasRewatch' || k === 'erasRelease') continue;
     l.push(`  ${k}:${js(v)},`);
   }
-  /* Les deux parcours sortent au même format, une entrée par ligne. Le
-     rewatch en dernier : c'est l'ordre du proto français, et deux
-     fichiers qui ne rangent pas leurs clés pareil ne se comparent plus. */
-  blocEres(l, 'eras', D.eras, !D.erasRewatch);
-  if (D.erasRewatch) blocEres(l, 'erasRewatch', D.erasRewatch, true);
+  /* Les trois parcours sortent au même format, une entrée par ligne, et
+     dans l'ordre du proto français : deux fichiers qui ne rangent pas
+     leurs clés pareil ne se comparent plus. */
+  const parcours = [
+    ['erasRewatch', D.erasRewatch],
+    ['erasRelease', D.erasRelease],
+  ].filter(([, v]) => v);
+  blocEres(l, 'eras', D.eras, !parcours.length);
+  parcours.forEach(([nom, v], i) => blocEres(l, nom, v, i === parcours.length - 1));
   l.push('};');
   return l.join('\n');
 }
@@ -1049,6 +1097,7 @@ for (const T of TIMELINES) {
      avant d'être corrigé, et donc si la valeur anglaise est encore bonne */
   const idxFR = indexParId(dF);
   const tr = creerTraducteur(lex, manques, T.nom);
+  const trRel = creerTraducteur(lex, manques, T.nom, new Set(['date']));
 
   /* la structure vient du proto ; seuls les textes changent */
   /* L'ère passe entière par le traducteur : son titre, mais aussi sa
@@ -1079,12 +1128,27 @@ for (const T of TIMELINES) {
       }),
     };
   });
+  /* ── le troisième parcours ─────────────────────────────────────────
+     `erasRelease` a la même forme, à une différence près : ses entrées
+     amendent la `date` pour dire l'année de sortie. Ce champ-là ne se
+     traduit pas — voir `creerTraducteur` — sans quoi l'homologue anglais
+     le ramènerait à sa date d'univers. */
+  if (dP.erasRelease) sortie.erasRelease = dP.erasRelease.map(era => {
+    const { entries, ...enTete } = era;
+    return {
+      ...trRel.objet(enTete, undefined, 'erasRelease'),
+      entries: (entries || []).map(e => {
+        const src = e.ref || (e.covers || [])[0];
+        return trRel.objet(e, idxEN.get(src), `#${e.id || e.ref}`, idxFR.get(src));
+      }),
+    };
+  });
 
   /* l'en-tête de la timeline : titre, sous-titre, intro, encarts. La
      racine passe par la même liste blanche que les entrées, sinon on
      signalerait une couleur ou un chemin d'image comme non traduits. */
   for (const k of Object.keys(dP)) {
-    if (k === 'eras' || TECHNIQUES.has(k)) continue;
+    if (k === 'eras' || k === 'erasRewatch' || k === 'erasRelease' || TECHNIQUES.has(k)) continue;
     if (!TEXTUELS.has(k)) continue;
     sortie[k] = tr.valeur(k, dP[k], dE ? dE[k] : undefined, `${T.nom}.${k}`);
   }
@@ -1274,6 +1338,7 @@ for (const T of TIMELINES) {
      dit au rapport plutôt que de laisser croire à une anomalie. */
   const manquesAvant = manques.length;
   const tr = creerTraducteur(lex, manques, 'Avatar');
+  const trRel = creerTraducteur(lex, manques, 'Avatar', new Set(['date']));
 
   const sortie = { ...D, eras: D.eras.map(era => {
     const { entries, ...enTete } = era;
@@ -1295,8 +1360,17 @@ for (const T of TIMELINES) {
       entries: (entries || []).map(e => tr.objet(e, undefined, `#${e.id || e.ref}`)),
     };
   });
+  /* Le troisième parcours, si Avatar en reçoit un : sans ce passage il
+     sortirait recopié tel quel, et rien au rapport. */
+  if (D.erasRelease) sortie.erasRelease = D.erasRelease.map(era => {
+    const { entries, ...enTete } = era;
+    return {
+      ...trRel.objet(enTete, undefined, 'erasRelease'),
+      entries: (entries || []).map(e => trRel.objet(e, undefined, `#${e.id || e.ref}`)),
+    };
+  });
   for (const k of Object.keys(D)) {
-    if (k === 'eras' || k === 'erasRewatch' || TECHNIQUES.has(k)) continue;
+    if (k === 'eras' || k === 'erasRewatch' || k === 'erasRelease' || TECHNIQUES.has(k)) continue;
     if (!TEXTUELS.has(k)) continue;
     sortie[k] = tr.valeur(k, D[k], undefined, `Avatar.${k}`);
   }

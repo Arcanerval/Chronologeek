@@ -292,11 +292,17 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .par-b button+button{border-left:2px solid var(--paper)}
 .par-b button:hover{color:var(--paper)}
 .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink)}
-/* L'accroche dit lequel des deux parcours on suit. Les deux phrases sont
+/* L'accroche dit lequel des trois parcours on suit. Les trois phrases sont
    dans les données — écrites, donc traduisibles — et c'est le parcours en
-   cours qui en montre une. Rien à réécrire en JS. */
-body[data-parcours="rewatch"] .pc-first,
-body:not([data-parcours="rewatch"]) .pc-rewatch{display:none}
+   cours qui en montre une. Rien à réécrire en JS.
+   Masquer par défaut et rallumer celle du parcours, plutôt que d'éteindre
+   les deux autres : au troisième parcours la liste des `:not()` devenait
+   l'endroit où l'on oublie un cas, et un oubli montre deux accroches
+   contradictoires sans une ligne dans la console. */
+.pc-first,.pc-rewatch,.pc-release{display:none}
+body[data-parcours="first"] .pc-first,
+body[data-parcours="rewatch"] .pc-rewatch,
+body[data-parcours="release"] .pc-release{display:inline-flex}
 
 /* ══ filtres, recherche, repères ════════════════════════════════════ */
 .sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
@@ -813,6 +819,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <div class="par-b" role="group" aria-label="Choose your path">
         <button type="button" data-parcours="first" aria-pressed="true">First time</button>
         <button type="button" data-parcours="rewatch" aria-pressed="false">Watching again</button>
+        <button type="button" data-parcours="release" aria-pressed="false">Release order</button>
       </div>
     </div>
   </div>
@@ -828,12 +835,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      réponses se valent. L'attribut `autofocus` sur le dialogue ne suffit
      pas — Chrome ne le lit que sur un descendant. -->
 <dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
-  <b id="ask-t">First time, or watching again?</b>
+  <b id="ask-t">First time, watching again, or following the releases?</b>
   <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
-       fond blanc plein — les deux boutons y disparaissaient. -->
+       fond blanc plein — les trois boutons y disparaissaient. -->
   <div class="ask-b">
     <button type="button" data-parcours="first">First time</button>
     <button type="button" data-parcours="rewatch">Watching again</button>
+    <button type="button" data-parcours="release">Release order</button>
   </div>
 </dialog>
 
@@ -974,37 +982,42 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
   function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'sw'})); }catch(_){} }
 
-  /* ── les deux parcours ────────────────────────────────────────────────
-     La page en sert deux : celui qu'on suit la première fois (`eras`) et
-     celui qu'on suit quand on connaît déjà (`erasRewatch`). La bascule
-     recharge la page plutôt que de redessiner — `ALL` numérote les entrées
-     en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
+  /* ── les trois parcours ───────────────────────────────────────────────
+     La page en sert trois : celui qu'on suit la première fois (`eras`),
+     celui qu'on suit quand on connaît déjà (`erasRewatch`), et l'ordre où
+     les œuvres sont sorties (`erasRelease`). La bascule recharge la page
+     plutôt que de redessiner — `ALL` numérote les entrées en les mutant,
+     et un rang périmé enverrait « Reprendre » ailleurs. */
   /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
      fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
      choix retenu de la dernière visite. À défaut, on découvre.
-     Un seul hash, `#rewatch` : la découverte est le parcours de base et
-     s'écrit donc `/starwars` tout court. C'est le lien qu'on partage, et
-     un visiteur qui n'a rien choisi y trouve la question. */
+     Deux hashs seulement, `#rewatch` et `#release` : la découverte est le
+     parcours de base et s'écrit donc `/starwars` tout court. C'est le lien
+     qu'on partage, et un visiteur qui n'a rien choisi y trouve la question.
+     `MODES` fait foi partout — le hash, le choix retenu, la bascule : un
+     mode inconnu retombe sur la découverte plutôt que sur une page vide. */
+  var MODES={rewatch:1,release:1};
   var MKEY=KEY+'-mode', CHOIX=null;
   try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
-  var HASHMODE=location.hash==='#rewatch'?'rewatch':null;
+  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
   var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
-  if(MODE!=='rewatch') MODE='first';
-  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des deux
+  if(!MODES[MODE]) MODE='first';
+  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des trois
      accroches de l'intro s'affiche. */
   document.body.dataset.parcours=MODE;
   var BYID={};
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
-  /* Une entrée de rewatch est soit une référence à l'entrée de découverte,
-     soit une entrée à elle qui hérite de la première entrée qu'elle couvre.
-     `drop` retire un champ : la FAQ « pourquoi le regarder ici » d'un
-     flashback remis à sa place n'a plus rien à justifier. Une référence
-     morte rendrait une carte vide sans une erreur — elle sort en console. */
+  /* Une entrée d'un second parcours est soit une référence à l'entrée de
+     découverte, soit une entrée à elle qui hérite de la première entrée
+     qu'elle couvre. `drop` retire un champ : la FAQ « pourquoi le regarder
+     ici » d'un flashback remis à sa place n'a plus rien à justifier, et
+     l'ordre de sortie la retire partout. Une référence morte rendrait une
+     carte vide sans une erreur — elle sort en console. */
   function resolve(eras){
     return eras.map(function(era){
       return {title:era.title,entries:era.entries.map(function(x){
         var src=BYID[x.ref||(x.covers||[])[0]];
-        if(!src){ console.error('[rewatch] référence morte :',x.ref||x.covers); return x; }
+        if(!src){ console.error('[parcours] référence morte :',x.ref||x.covers); return x; }
         var e=Object.assign({},src,x);
         e.id=x.ref||x.id;
         if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
@@ -1019,7 +1032,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     });
   }
   var RW=D.erasRewatch?resolve(D.erasRewatch):null;
-  var ERAS=(MODE==='rewatch'&&RW)?RW:D.eras;
+  var RL=D.erasRelease?resolve(D.erasRelease):null;
+  var AUTRES={rewatch:RW,release:RL};
+  var ERAS=AUTRES[MODE]||D.eras;
 
   var ALL=[];
   ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
@@ -1038,7 +1053,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      construisent dans les deux modes, sinon cocher dans l'un ne se verrait
      pas dans l'autre. */
   var COVERS={}, COVERED={};
-  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
+  [].concat(RW||[],RL||[]).forEach(function(era){ era.entries.forEach(function(e){
     if(!e.covers) return;
     COVERS[e.id]=e.covers;
     e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
@@ -1069,7 +1084,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      le hash au lieu d'en poser un — `location.hash=''` laisserait un `#`
      nu dans la barre d'adresse et ne déclencherait rien. */
   function vaVers(m){
-    if(m==='rewatch'){ location.hash='#rewatch'; return; }
+    if(MODES[m]){ location.hash='#'+m; return; }
     if(history.replaceState){
       history.replaceState(null,'',location.pathname+location.search);
       location.reload();
@@ -1114,7 +1129,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      chacune ferait passer le formulaire de contact pour cassé. */
   addEventListener('hashchange',function(){
     if(location.hash==='#choix'){ poseAsk(); return; }
-    var m=location.hash==='#rewatch'?'rewatch':(location.hash?null:'first');
+    var h=location.hash.slice(1);
+    var m=MODES[h]?h:(location.hash?null:'first');
     if(m&&m!==MODE) location.reload();
   });
 
@@ -1586,6 +1602,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     }
     return id;
   }
+  /* Un badge d'ère décrit l'ère qu'on vient de finir, et l'ordre de sortie
+     n'a pas les mêmes : « L'ère de la République terminée » tomberait sur
+     la trilogie originale. Le libellé ne bouge pas — ce sont des rangs
+     Jedi, ils valent dans les trois parcours —, seule la description suit.
+     Un badge sans `descRelease` garde la sienne : le cas des 100 %. */
+  function descDe(b){ return (MODE==='release'&&b.descRelease)||b.desc; }
   /* Les repères de progression, remis dans l'ordre de la timeline. */
   var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
     .map(function(b){ return {b:b,i:ixOf(markId((b.ids||[])[0]))}; })
@@ -1627,7 +1649,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       if(got) n++;
       return '<div class="bg1'+(got?' on':'')+'" style="--c:'+b.color+'">'+
         '<span class="i">'+b.icon+'</span><span><span class="t">'+esc(b.label)+'</span>'+
-        '<span class="d">'+esc(b.desc)+'</span></span></div>';
+        '<span class="d">'+esc(descDe(b))+'</span></span></div>';
     }).join('');
     $('#bx-g').innerHTML=html;
     $('#bx-n').textContent=n+' '+T.unlockedN;
@@ -1648,7 +1670,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     bpop.innerHTML='<span class="i" aria-hidden="true">'+b.icon+'</span><span>'+
       '<span class="k">'+esc(T.badgeUnlocked)+'</span>'+
       '<span class="t">'+esc(b.label)+'</span>'+
-      '<span class="d">'+esc(b.desc)+'</span></span>';
+      '<span class="d">'+esc(descDe(b))+'</span></span>';
     bpop.hidden=false;
     /* un reflow forcé plutôt qu'un requestAnimationFrame : la transition
        part quand même si la page ne compose pas de frame à cet instant. */

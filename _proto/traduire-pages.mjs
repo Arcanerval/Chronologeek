@@ -429,9 +429,16 @@ const TRADUCTIONS = [
   // ensuite. Rien de tout ça n'existe en prod : Star Wars est le premier
   // univers à servir deux ordres. Les deux réponses reprennent la voix
   // de l'accroche, à la première personne.
+  // Un troisième parcours depuis le 23 septembre 2026, l'ordre de sortie :
+  // la question s'allonge d'un terme, et le bouton porte le nom de l'ordre
+  // plutôt qu'une phrase à la première personne — c'est ce qu'il montre,
+  // pas ce que le visiteur est venu faire.
   ['Vous découvrez, ou vous revoyez ?', 'First time, or watching again?'],
+  ['Vous découvrez, vous revoyez, ou vous suivez les sorties ?',
+   'First time, watching again, or following the releases?'],
   ['Je découvre', 'First time'],
   ['Je revois', 'Watching again'],
+  ['Ordre de sortie', 'Release order'],
   ['Choisir le parcours', 'Choose your path'],
 
   // ── timelines ──────────────────────────────────────────────────
