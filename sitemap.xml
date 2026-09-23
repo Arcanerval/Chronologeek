@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://chronologeek.app/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
   </url>
   <url><loc>https://chronologeek.app/starwars</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
   </url>
   <url><loc>https://chronologeek.app/marvel</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/marvel"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/marvel"/>
   </url>
@@ -22,7 +22,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
   </url>
   <url><loc>https://chronologeek.app/avatar</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/avatar"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/avatar"/>
   </url>
@@ -37,7 +37,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/walkingdead"/>
   </url>
   <url><loc>https://chronologeek.app/dragonage</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dragonage"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dragonage"/>
   </url>
@@ -52,7 +52,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcanimation"/>
   </url>
   <url><loc>https://chronologeek.app/jurassicworld</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/jurassicworld"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/jurassicworld"/>
   </url>

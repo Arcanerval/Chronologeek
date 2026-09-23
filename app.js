@@ -1542,27 +1542,32 @@
      La clé de bloc est celle que les pages écrivent déjà dans leur champ
      `universe` : un fichier exporté avant ce bouton se relit sans
      conversion. */
+  /* `alt` n'est là que pour les univers qui servent plus d'un parcours :
+     leurs entrées recoupées vivent dans une clé à part, et elles doivent
+     voyager avec le reste, sinon un export-import fait perdre le détail
+     d'une série suivie saison par saison. Les sept autres n'en ont pas. */
   var UNIVERS = [
-    { u:'sw',             prog:'cg-proto-sw',             perso:'cg-perso-sw' },
-    { u:'mcu',            prog:'cg-proto-mcu',            perso:'cg-perso-mcu' },
+    { u:'sw',             prog:'cg-proto-sw',             perso:'cg-perso-sw',             alt:'cg-proto-sw-alt' },
+    { u:'mcu',            prog:'cg-proto-mcu',            perso:'cg-perso-mcu',            alt:'cg-proto-mcu-alt' },
     { u:'dc',             prog:'cg-proto-dc',             perso:'cg-perso-dc' },
-    { u:'avatar',         prog:'cg-proto-avatar',         perso:'cg-perso-avatar' },
+    { u:'avatar',         prog:'cg-proto-avatar',         perso:'cg-perso-avatar',         alt:'cg-proto-avatar-alt' },
     { u:'startrek',       prog:'cg-proto-st',             perso:'cg-perso-st' },
     { u:'twd',            prog:'cg-proto-twd',            perso:'cg-perso-twd' },
-    { u:'dragonage',      prog:'cg-proto-dragonage',      perso:'cg-perso-data_da' },
+    { u:'dragonage',      prog:'cg-proto-dragonage',      perso:'cg-perso-data_da',        alt:'cg-proto-dragonage-alt' },
     { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed' },
     { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
-    { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic' },
+    { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic',       alt:'cg-proto-jurassic-alt' },
     { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
-  /* Le même filtre que le HUD juste au-dessus : un identifiant de second
-     parcours (`sw-r-…`) recouvre une œuvre déjà comptée, et un ajout
-     perso (`p-`) n'est pas dans les totaux éditoriaux. Ils partent bien
-     dans le fichier — c'est le compte affiché qui les écarte, pour dire
-     le même nombre que la barre du bas. */
-  var PARCOURS = /^([a-z]+-r-|p-)/;
+  /* Les entrées de second parcours ne sont plus dans cette clé — elles
+     vivent sous `alt` —, donc il ne reste à écarter que les ajouts du
+     visiteur : ils sont bien des œuvres, mais les totaux de l'accueil
+     sont éditoriaux. Ils partent dans le fichier, c'est le compte affiché
+     qui les laisse de côté, pour dire le même nombre que la barre du bas.
+     Le pourquoi est en entier dans `e-accueil.html`. */
+  var PARCOURS = /^p-/;
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',
@@ -1657,6 +1662,8 @@
       var cles = Object.keys(p);
       if (!cles.length && !m.length) return;      /* un univers jamais ouvert */
       var bloc = { progress: p };
+      var a = x.alt ? lis(x.alt, {}) : null;
+      if (a && typeof a === 'object' && Object.keys(a).length) bloc.alt = a;
       if (m.length) bloc.mine = m;
       var mode = null;
       try { mode = localStorage.getItem(x.prog + '-mode'); } catch (_) {}
@@ -1794,6 +1801,12 @@
           var p = b.progress;
           if (p && typeof p === 'object' && !Array.isArray(p)) {
             if (pose(x.prog, p)) faits++; else refus++;
+          }
+          /* La seconde clé suit la première. Un fichier d'avant la
+             séparation n'a pas d'`alt` et porte tout dans `progress` :
+             la page le range à sa prochaine ouverture. */
+          if (x.alt && b.alt && typeof b.alt === 'object' && !Array.isArray(b.alt)) {
+            if (pose(x.alt, b.alt)) faits++; else refus++;
           }
           if (x.perso && Array.isArray(b.mine) && b.mine.length) {
             if (fusionne(x.perso, b.mine)) faits++; else refus++;

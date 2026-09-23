@@ -315,11 +315,17 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .par-b button+button{border-left:2px solid var(--paper)}
 .par-b button:hover{color:var(--paper)}
 .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink)}
-/* L'accroche dit lequel des deux parcours on suit. Les deux phrases sont
+/* L'accroche dit lequel des trois parcours on suit. Les trois phrases sont
    dans les données — écrites, donc traduisibles — et c'est le parcours en
-   cours qui en montre une. Rien à réécrire en JS. */
-body[data-parcours="rewatch"] .pc-first,
-body:not([data-parcours="rewatch"]) .pc-rewatch{display:none}
+   cours qui en montre une. Rien à réécrire en JS.
+   Masquer par défaut et rallumer celle du parcours, plutôt que d'éteindre
+   les deux autres : au troisième parcours la liste des `:not()` devenait
+   l'endroit où l'on oublie un cas, et un oubli montre deux accroches
+   contradictoires sans une ligne dans la console. */
+.pc-first,.pc-rewatch,.pc-release{display:none}
+body[data-parcours="first"] .pc-first,
+body[data-parcours="rewatch"] .pc-rewatch,
+body[data-parcours="release"] .pc-release{display:inline-flex}
 
 /* ══ filtres, recherche, repères ════════════════════════════════════ */
 .sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
@@ -443,6 +449,73 @@ body:not([data-parcours="rewatch"]) .pc-rewatch{display:none}
    ligne, elle se lit d'un coup d'œil */
 .bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
   letter-spacing:.03em;color:var(--hot);line-height:1}
+/* L'ANNÉE DE SORTIE, dans son encadré, à côté — la disposition des deux
+   dates d'Assassin's Creed, à l'encre de l'univers plutôt qu'à la sienne.
+   L'or reste au grand nombre : c'est l'accent de la page, il va à ce qui
+   se lit d'abord, et l'ordre de sortie ne change pas ça — il range la
+   liste, la date de l'univers continue de dire ce qu'on va voir.
+   L'encadré ne se pose QUE dans ce parcours-là : les entrées des deux
+   autres n'ont pas de champ `rel`, et un cadre vide se lirait comme une
+   donnée manquante. */
+.bu-meta .rel{display:inline-flex;align-items:baseline;gap:7px;padding:3px 9px;
+  border:1px solid color-mix(in srgb,var(--uni) 46%,transparent);
+  background:color-mix(in srgb,var(--uni) 13%,transparent);
+  font-size:10px;letter-spacing:.1em;color:var(--uni);white-space:nowrap}
+.bu-meta .rel i{font-style:normal;font-weight:800;
+  color:color-mix(in srgb,var(--uni) 74%,transparent)}
+.bu-meta .rel b{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  letter-spacing:.03em;line-height:1;color:var(--uni)}
+/* LES DEUX DATES SE LISENT CÔTE À CÔTE, À TOUTE LARGEUR, et c'est le repli
+   qu'Assassin's Creed a déjà payé : sous 560 px la colonne de texte tombe à
+   100 px — la vignette en prend 128 — et le cadre, qui ne se coupe pas,
+   passait sous le grand nombre. Séparées sur deux lignes, les deux dates
+   n'ont plus l'air d'un couple.
+
+   Trois gestes, les siens : la vignette devient fluide et rend la place, le
+   mot « Sortie » quitte le cadre — une quarantaine de pixels pour redire ce
+   que l'encre bleue dit déjà, là où l'année en fait soixante — et les corps
+   se resserrent d'un cran de plus sous 400 px. Le libellé revient au-dessus
+   de 560. `flex-wrap:nowrap` n'est pas une précaution : c'est lui qui
+   empêche le cadre de retomber à la ligne.
+
+   Ciblé sur le parcours par ordre de sortie : lui seul porte un cadre, et
+   rétrécir la vignette des deux autres pour une place qu'ils n'occupent
+   pas serait payer un repli sans contrepartie. */
+@media(max-width:560px){
+  body[data-parcours="release"] .bu-fig{width:clamp(64px,23vw,96px)}
+  body[data-parcours="release"] .bu-meta{gap:6px;flex-wrap:nowrap}
+  /* la durée aussi : sur une ligne qui ne s'enroule plus, c'est elle qui
+     encaisse la place qui manque, et « 40 h 56 » sortait sur trois lignes
+     dans dix-sept pixels de large */
+  body[data-parcours="release"] .bu-meta>span{white-space:nowrap}
+  body[data-parcours="release"] .bu-meta .d{font-size:16px}
+  body[data-parcours="release"] .bu-meta .rel{padding:1px 6px;gap:4px}
+  body[data-parcours="release"] .bu-meta .rel i{display:none}
+  body[data-parcours="release"] .bu-meta .rel b{font-size:13px}
+}
+/* Sous 400 px, LA DURÉE PASSE À LA LIGNE et les deux dates restent
+   ensemble. C'est le seul des trois qu'on puisse déplacer : le couple ne
+   se lit que côte à côte, et il ne se comprime plus — « 22–19 BBY »,
+   « 2008-2020 » et « 40 h 56 » réclamaient dix-neuf pixels de plus que la
+   carte n'en a, et c'est The Clone Wars, le pire cas du guide. Star Wars
+   a ici une mesure de plus qu'Assassin's Creed, qui ne compte pas le
+   temps et s'arrête donc à deux. */
+@media(max-width:400px){
+  body[data-parcours="release"] .bu-meta{gap:4px 5px;flex-wrap:wrap}
+  body[data-parcours="release"] .bu-meta>span:not(.d):not(.rel){flex:1 0 100%}
+  body[data-parcours="release"] .bu-meta .d{font-size:14px}
+  body[data-parcours="release"] .bu-meta .rel{padding:1px 5px;gap:3px}
+  body[data-parcours="release"] .bu-meta .rel b{font-size:11px}
+}
+/* Un cran de plus sous 360 px, et c'est la vignette qui rend la place —
+   il manquait dix-neuf pixels à « 20 BBY – 9 ABY » plus son encadré sur
+   un écran de 320. Le palier ne descend pas plus bas que 360 : à 375 le
+   couple a déjà trente pixels de marge, et rétrécir l'image là où rien ne
+   le demande se paierait sur toutes les cartes. */
+@media(max-width:360px){
+  body[data-parcours="release"] .bu-fig{width:clamp(52px,17vw,96px)}
+  body[data-parcours="release"] .bu-meta .d{font-size:13px}
+}
 .bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
   font-style:italic}
 .bu-end{flex:0 0 auto;display:flex;align-self:center}
@@ -839,6 +912,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       <div class="par-b" role="group" aria-label="Choisir le parcours">
         <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
         <button type="button" data-parcours="rewatch" aria-pressed="false">Je revois</button>
+        <button type="button" data-parcours="release" aria-pressed="false">Ordre de sortie</button>
       </div>
     </div>
   </div>
@@ -854,12 +928,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      réponses se valent. L'attribut `autofocus` sur le dialogue ne suffit
      pas — Chrome ne le lit que sur un descendant. -->
 <dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
-  <b id="ask-t">Vous découvrez, ou vous revoyez ?</b>
+  <b id="ask-t">Vous découvrez, vous revoyez, ou vous suivez les sorties ?</b>
   <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
-       fond blanc plein — les deux boutons y disparaissaient. -->
+       fond blanc plein — les trois boutons y disparaissaient. -->
   <div class="ask-b">
     <button type="button" data-parcours="first">Je découvre</button>
     <button type="button" data-parcours="rewatch">Je revois</button>
+    <button type="button" data-parcours="release">Ordre de sortie</button>
   </div>
 </dialog>
 
@@ -993,6 +1068,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
   var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
   var KEY='cg-proto-sw';
+  var AKEY=KEY+'-alt';
   /* L'accueil rouvre sa reprise sur la timeline où l'on a coché en dernier, et
      non sur la dernière visitée : `marque()` ne s'appelle qu'au clic d'une
      case. Écrite au chargement, la clé changeait de monde dès qu'on ouvrait une
@@ -1000,37 +1076,42 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
   function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'sw'})); }catch(_){} }
 
-  /* ── les deux parcours ────────────────────────────────────────────────
-     La page en sert deux : celui qu'on suit la première fois (`eras`) et
-     celui qu'on suit quand on connaît déjà (`erasRewatch`). La bascule
-     recharge la page plutôt que de redessiner — `ALL` numérote les entrées
-     en les mutant, et un rang périmé enverrait « Reprendre » ailleurs. */
+  /* ── les trois parcours ───────────────────────────────────────────────
+     La page en sert trois : celui qu'on suit la première fois (`eras`),
+     celui qu'on suit quand on connaît déjà (`erasRewatch`), et l'ordre où
+     les œuvres sont sorties (`erasRelease`). La bascule recharge la page
+     plutôt que de redessiner — `ALL` numérote les entrées en les mutant,
+     et un rang périmé enverrait « Reprendre » ailleurs. */
   /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
      fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
      choix retenu de la dernière visite. À défaut, on découvre.
-     Un seul hash, `#rewatch` : la découverte est le parcours de base et
-     s'écrit donc `/starwars` tout court. C'est le lien qu'on partage, et
-     un visiteur qui n'a rien choisi y trouve la question. */
+     Deux hashs seulement, `#rewatch` et `#release` : la découverte est le
+     parcours de base et s'écrit donc `/starwars` tout court. C'est le lien
+     qu'on partage, et un visiteur qui n'a rien choisi y trouve la question.
+     `MODES` fait foi partout — le hash, le choix retenu, la bascule : un
+     mode inconnu retombe sur la découverte plutôt que sur une page vide. */
+  var MODES={rewatch:1,release:1};
   var MKEY=KEY+'-mode', CHOIX=null;
   try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
-  var HASHMODE=location.hash==='#rewatch'?'rewatch':null;
+  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
   var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
-  if(MODE!=='rewatch') MODE='first';
-  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des deux
+  if(!MODES[MODE]) MODE='first';
+  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des trois
      accroches de l'intro s'affiche. */
   document.body.dataset.parcours=MODE;
   var BYID={};
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
-  /* Une entrée de rewatch est soit une référence à l'entrée de découverte,
-     soit une entrée à elle qui hérite de la première entrée qu'elle couvre.
-     `drop` retire un champ : la FAQ « pourquoi le regarder ici » d'un
-     flashback remis à sa place n'a plus rien à justifier. Une référence
-     morte rendrait une carte vide sans une erreur — elle sort en console. */
+  /* Une entrée d'un second parcours est soit une référence à l'entrée de
+     découverte, soit une entrée à elle qui hérite de la première entrée
+     qu'elle couvre. `drop` retire un champ : la FAQ « pourquoi le regarder
+     ici » d'un flashback remis à sa place n'a plus rien à justifier, et
+     l'ordre de sortie la retire partout. Une référence morte rendrait une
+     carte vide sans une erreur — elle sort en console. */
   function resolve(eras){
     return eras.map(function(era){
       return {title:era.title,entries:era.entries.map(function(x){
         var src=BYID[x.ref||(x.covers||[])[0]];
-        if(!src){ console.error('[rewatch] référence morte :',x.ref||x.covers); return x; }
+        if(!src){ console.error('[parcours] référence morte :',x.ref||x.covers); return x; }
         var e=Object.assign({},src,x);
         e.id=x.ref||x.id;
         if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
@@ -1045,46 +1126,106 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     });
   }
   var RW=D.erasRewatch?resolve(D.erasRewatch):null;
-  var ERAS=(MODE==='rewatch'&&RW)?RW:D.eras;
+  var RL=D.erasRelease?resolve(D.erasRelease):null;
+  var AUTRES={rewatch:RW,release:RL};
+  var ERAS=AUTRES[MODE]||D.eras;
 
   var ALL=[];
   ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
+  /* ── deux clés, et la séparation est structurelle ─────────────────
+     Les œuvres dans `KEY`, les entrées de second parcours dans `AKEY`.
+     L'accueil et l'export global comptent les clés du stockage sans avoir
+     les données sous la main : tant que tout vivait dans la même clé, il
+     leur fallait deviner à la forme de l'identifiant si c'en était une
+     œuvre, et l'ordre de sortie de Star Wars a suffi à les faire compter
+     119 %. Une clé à part ne se devine pas.
+
+     Ces entrées ne sont pas dérivables, et c'est pour ça qu'on les garde :
+     quand un parcours COUPE un panneau en deux — Rebels saison par saison,
+     les deux moitiés de The Clone Wars en 20 BBY —, son état est plus fin
+     que celui de l'œuvre couverte, qui ne connaît que vu ou pas vu. Seuls
+     les REGROUPEMENTS se déduiraient.
+
+     `prog` reste un seul objet en mémoire : rien d'autre dans la page ne
+     change, la séparation ne se fait qu'au contact du stockage. */
   var prog={};
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
-  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+  try{ var _alt=JSON.parse(localStorage.getItem(AKEY)||'{}')||{};
+       for(var _k in _alt) prog[_k]=_alt[_k]; }catch(_){}
+  function parts(){
+    var oeuvres={}, autres={};
+    for(var k in prog){ (COVERS[k]?autres:oeuvres)[k]=prog[k]; }
+    return {oeuvres:oeuvres,autres:autres};
+  }
+  function save(){
+    var p=parts();
+    try{
+      localStorage.setItem(KEY,JSON.stringify(p.oeuvres));
+      if(Object.keys(p.autres).length) localStorage.setItem(AKEY,JSON.stringify(p.autres));
+      else localStorage.removeItem(AKEY);
+    }catch(_){}
+  }
 
-  /* ── le pont entre les deux parcours ──────────────────────────────────
+  /* ── le pont entre les parcours ───────────────────────────────────────
      Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
-     ne l'a pas vue. Quand le rewatch coupe un panneau en deux ou en recolle
-     plusieurs, l'entrée porte `covers` et dit de quelles entrées de
+     ne l'a pas vue. Quand un second parcours coupe un panneau en deux ou en
+     recolle plusieurs, l'entrée porte `covers` et dit de quelles entrées de
      découverte elle tient lieu. Une entrée de découverte est cochée quand
-     toutes les entrées de rewatch qui la couvrent le sont ; une entrée de
-     rewatch, quand tout ce qu'elle couvre l'est. Les deux tables se
-     construisent dans les deux modes, sinon cocher dans l'un ne se verrait
-     pas dans l'autre. */
+     toutes les entrées qui la couvrent le sont ; une entrée d'un second
+     parcours, quand tout ce qu'elle couvre l'est. Les tables se
+     construisent dans tous les modes, sinon cocher dans l'un ne se verrait
+     pas dans l'autre.
+
+     Et « toutes les entrées qui la couvrent » se compte **par parcours**,
+     pas en bloc. C'est ce que le troisième a changé : `sw-tcw-20` est
+     coupée en deux par le rewatch et prise dans le bloc de l'ordre de
+     sortie, donc trois entrées la couvrent. Sur une table commune, cocher
+     le bloc de sortie ne la cochait plus — il aurait fallu en plus les deux
+     moitiés d'un parcours qu'on ne lit pas. Rien dans la console : une
+     coche qui ne prend pas. */
   var COVERS={}, COVERED={};
-  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
-    if(!e.covers) return;
-    COVERS[e.id]=e.covers;
-    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
-  }); });
+  function indexeCouvertures(eras,parcours){
+    (eras||[]).forEach(function(era){ era.entries.forEach(function(e){
+      if(!e.covers) return;
+      if(COVERS[e.id]) console.error('[parcours] identifiant en double :',e.id);
+      COVERS[e.id]={p:parcours,d:e.covers};
+      e.covers.forEach(function(d){
+        COVERED[d]=COVERED[d]||{};
+        (COVERED[d][parcours]=COVERED[d][parcours]||[]).push(e.id);
+      });
+    }); });
+  }
+  indexeCouvertures(RW,'rewatch');
+  indexeCouvertures(RL,'release');
   function bridge(id){
-    if(COVERS[id]) COVERS[id].forEach(function(d){
-      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
-    });
-    else if(COVERED[id]) COVERED[id].forEach(function(r){
-      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
-    });
+    var c=COVERS[id];
+    if(c){ c.d.forEach(function(d){
+      if(COVERED[d][c.p].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    }); return; }
+    var m=COVERED[id]; if(!m) return;
+    Object.keys(m).forEach(function(p){ m[p].forEach(function(r){
+      if(prog[id] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    }); });
   }
   /* Au chargement, la découverte fait foi : une progression écrite avant que
-     le rewatch existe n'a que ses identifiants. */
+     les autres parcours existent n'a que ses identifiants. */
   function bootBridge(){
     Object.keys(COVERS).forEach(function(r){
-      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+      if(!prog[r] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1;
     });
   }
   bootBridge();
+  /* Une progression écrite avant la séparation porte ses entrées de second
+     parcours dans la clé des œuvres. On la réécrit une fois — sans quoi
+     l'accueil continuerait de les compter jusqu'à la première coche, et
+     un visiteur qui ne coche rien resterait faux indéfiniment. */
+  (function(){
+    var vieille=false;
+    try{ var p=JSON.parse(localStorage.getItem(KEY)||'{}')||{};
+         for(var k in p) if(COVERS[k]){ vieille=true; break; } }catch(_){}
+    if(vieille) save();
+  })();
 
   /* ── poser la question, puis la bascule ───────────────────────────────
      La question n'est posée qu'à qui n'a rien répondu : ni page publiée,
@@ -1095,7 +1236,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      le hash au lieu d'en poser un — `location.hash=''` laisserait un `#`
      nu dans la barre d'adresse et ne déclencherait rien. */
   function vaVers(m){
-    if(m==='rewatch'){ location.hash='#rewatch'; return; }
+    if(MODES[m]){ location.hash='#'+m; return; }
     if(history.replaceState){
       history.replaceState(null,'',location.pathname+location.search);
       location.reload();
@@ -1140,7 +1281,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      chacune ferait passer le formulaire de contact pour cassé. */
   addEventListener('hashchange',function(){
     if(location.hash==='#choix'){ poseAsk(); return; }
-    var m=location.hash==='#rewatch'?'rewatch':(location.hash?null:'first');
+    var h=location.hash.slice(1);
+    var m=MODES[h]?h:(location.hash?null:'first');
     if(m&&m!==MODE) location.reload();
   });
 
@@ -1229,6 +1371,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               esc(bd[1])+'</span></span>'+
             '<h3 class="bu-title">'+esc(e.title)+'</h3>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
+              (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+
+                esc(e.rel)+'</b></span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
             '</span>'+
             (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
@@ -1534,7 +1678,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({universe:'sw',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    /* Le fichier porte les deux parts séparées, comme le stockage :
+       `progress` les œuvres, `alt` les entrées de second parcours. Un
+       fichier exporté avant cette séparation a tout dans `progress`, et
+       l'import ci-dessous le recolle sans rien perdre. */
+    var _p=parts();
+    var blob=new Blob([JSON.stringify({universe:'sw',progress:_p.oeuvres,alt:_p.autres,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-starwars.json';
@@ -1551,7 +1700,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
            que le sien. Sans cette ligne, `d.progress` etant absent, tout
            le fichier passait pour une progression. */
         if(d&&d.universes) d=d.universes.sw||{};
-        prog=d.progress||d||{}; bootBridge(); save();
+        prog=d.progress||d||{};
+        if(d.alt&&typeof d.alt==='object') for(var _k in d.alt) prog[_k]=d.alt[_k];
+        bootBridge(); save();
         /* les ajouts perso avant tout : ils changent la timeline elle-meme, donc la page se rebatit */
         if(window.CGP&&window.CGP.fusionne(d.mine)){ location.reload(); return; }
         [].forEach.call(document.querySelectorAll('.bu'),function(a){
@@ -1602,8 +1753,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      de la République terminée » tomberait sur Tales of the Jedi 4 et se
      débloquerait avant l'Épisode II. Le repère se retrouve donc par son rang
      d'ère, pas par son identifiant. */
-  function markId(id){
+  /* Le repère d'un badge d'ère dans le parcours affiché. Le rewatch a les
+     mêmes ères que la découverte et ne change que ce qu'elles contiennent :
+     le repère s'y retrouve par le rang de l'ère, jamais par l'identifiant,
+     sans quoi « L'ère de la République terminée » tomberait sur Tales of
+     the Jedi 4 et se débloquerait avant l'Épisode II.
+
+     L'ordre de sortie, lui, n'a pas du tout les mêmes ères — il en a cinq
+     contre six, et elles découpent des années de sortie et non des époques
+     de l'univers. Le rang ne veut donc plus rien dire, et les badges y
+     nomment eux-mêmes leur repère, `idsRelease`. Six repères pour cinq
+     ères : les années Disney+ en portent deux, ce qui est permis — un
+     repère marque la fin d'un bloc, pas d'une ère. */
+  function markId(b){
+    var id=(b.ids||[])[0];
     if(ERAS===D.eras) return id;
+    if(ERAS===RL) return (b.idsRelease||b.ids||[])[0];
     for(var i=0;i<D.eras.length;i++){
       var d=D.eras[i].entries;
       if(d[d.length-1].id===id && ERAS[i]){
@@ -1612,9 +1777,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     }
     return id;
   }
+  /* Un badge d'ère décrit l'ère qu'on vient de finir, et l'ordre de sortie
+     n'a pas les mêmes : « L'ère de la République terminée » tomberait sur
+     la trilogie originale. Le libellé ne bouge pas — ce sont des rangs
+     Jedi, ils valent dans les trois parcours —, seule la description suit.
+     Un badge sans `descRelease` garde la sienne : le cas des 100 %. */
+  function descDe(b){ return (MODE==='release'&&b.descRelease)||b.desc; }
   /* Les repères de progression, remis dans l'ordre de la timeline. */
   var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
-    .map(function(b){ return {b:b,i:ixOf(markId((b.ids||[])[0]))}; })
+    .map(function(b){ return {b:b,i:ixOf(markId(b))}; })
     .filter(function(x){ return x.i>-1; })
     .sort(function(a,c){ return a.i-c.i; });
   /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher : le
@@ -1653,7 +1824,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       if(got) n++;
       return '<div class="bg1'+(got?' on':'')+'" style="--c:'+b.color+'">'+
         '<span class="i">'+b.icon+'</span><span><span class="t">'+esc(b.label)+'</span>'+
-        '<span class="d">'+esc(b.desc)+'</span></span></div>';
+        '<span class="d">'+esc(descDe(b))+'</span></span></div>';
     }).join('');
     $('#bx-g').innerHTML=html;
     $('#bx-n').textContent=n+' '+T.unlockedN;
@@ -1674,7 +1845,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     bpop.innerHTML='<span class="i" aria-hidden="true">'+b.icon+'</span><span>'+
       '<span class="k">'+esc(T.badgeUnlocked)+'</span>'+
       '<span class="t">'+esc(b.label)+'</span>'+
-      '<span class="d">'+esc(b.desc)+'</span></span>';
+      '<span class="d">'+esc(descDe(b))+'</span></span>';
     bpop.hidden=false;
     /* un reflow forcé plutôt qu'un requestAnimationFrame : la transition
        part quand même si la page ne compose pas de frame à cet instant. */

@@ -995,6 +995,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
   var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
   var KEY='cg-proto-jurassic';
+  var AKEY=KEY+'-alt';
   /* L'accueil rouvre sa reprise sur la timeline où l'on a coché en dernier, et
      non sur la dernière visitée : `marque()` ne s'appelle qu'au clic d'une
      case. Écrite au chargement, la clé changeait de monde dès qu'on ouvrait une
@@ -1054,9 +1055,39 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var ALL=[];
   ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
+  /* ── deux clés, et la séparation est structurelle ─────────────────
+     Les œuvres dans `KEY`, les entrées de second parcours dans `AKEY`.
+     L'accueil et l'export global comptent les clés du stockage sans avoir
+     les données sous la main : tant que tout vivait dans la même clé, il
+     leur fallait deviner à la forme de l'identifiant si c'en était une
+     œuvre, et l'ordre de sortie de Star Wars a suffi à les faire compter
+     119 %. Une clé à part ne se devine pas.
+
+     Ces entrées ne sont pas dérivables, et c'est pour ça qu'on les garde :
+     quand un parcours COUPE un panneau en deux — Rebels saison par saison,
+     les deux moitiés de The Clone Wars en 20 BBY —, son état est plus fin
+     que celui de l'œuvre couverte, qui ne connaît que vu ou pas vu. Seuls
+     les REGROUPEMENTS se déduiraient.
+
+     `prog` reste un seul objet en mémoire : rien d'autre dans la page ne
+     change, la séparation ne se fait qu'au contact du stockage. */
   var prog={};
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
-  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
+  try{ var _alt=JSON.parse(localStorage.getItem(AKEY)||'{}')||{};
+       for(var _k in _alt) prog[_k]=_alt[_k]; }catch(_){}
+  function parts(){
+    var oeuvres={}, autres={};
+    for(var k in prog){ (COVERS[k]?autres:oeuvres)[k]=prog[k]; }
+    return {oeuvres:oeuvres,autres:autres};
+  }
+  function save(){
+    var p=parts();
+    try{
+      localStorage.setItem(KEY,JSON.stringify(p.oeuvres));
+      if(Object.keys(p.autres).length) localStorage.setItem(AKEY,JSON.stringify(p.autres));
+      else localStorage.removeItem(AKEY);
+    }catch(_){}
+  }
 
   /* ── le pont entre les deux parcours ──────────────────────────────────
      Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
@@ -1089,6 +1120,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     });
   }
   bootBridge();
+  /* Une progression écrite avant la séparation porte ses entrées de second
+     parcours dans la clé des œuvres. On la réécrit une fois — sans quoi
+     l'accueil continuerait de les compter jusqu'à la première coche, et
+     un visiteur qui ne coche rien resterait faux indéfiniment. */
+  (function(){
+    var vieille=false;
+    try{ var p=JSON.parse(localStorage.getItem(KEY)||'{}')||{};
+         for(var k in p) if(COVERS[k]){ vieille=true; break; } }catch(_){}
+    if(vieille) save();
+  })();
 
   /* ── poser la question, puis la bascule ───────────────────────────────
      La question n'est posée qu'à qui n'a rien répondu : ni page publiée,
@@ -1550,7 +1591,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({universe:'jurassic',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    /* Le fichier porte les deux parts séparées, comme le stockage :
+       `progress` les œuvres, `alt` les entrées de second parcours. Un
+       fichier exporté avant cette séparation a tout dans `progress`, et
+       l'import ci-dessous le recolle sans rien perdre. */
+    var _p=parts();
+    var blob=new Blob([JSON.stringify({universe:'jurassic',progress:_p.oeuvres,alt:_p.autres,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-jurassicworld.json';
@@ -1567,7 +1613,9 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
            que le sien. Sans cette ligne, `d.progress` etant absent, tout
            le fichier passait pour une progression. */
         if(d&&d.universes) d=d.universes.jurassic||{};
-        prog=d.progress||d||{}; bootBridge(); save();
+        prog=d.progress||d||{};
+        if(d.alt&&typeof d.alt==='object') for(var _k in d.alt) prog[_k]=d.alt[_k];
+        bootBridge(); save();
         /* les ajouts perso avant tout : ils changent la timeline elle-meme, donc la page se rebatit */
         if(window.CGP&&window.CGP.fusionne(d.mine)){ location.reload(); return; }
         [].forEach.call(document.querySelectorAll('.bu'),function(a){
