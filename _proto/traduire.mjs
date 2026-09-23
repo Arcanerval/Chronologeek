@@ -1119,11 +1119,11 @@ const TITRES_IDENTIQUES = [
      langues, et une plage d'années ne se traduit pas : sans ces lignes,
      le contrôle les compterait parmi les chaînes restées en français. */
   'PHASE I · 2008-2012',
-  'PHASE II · 2013-2015',
+  'PHASE II · 2013-2016',
   'PHASE III · 2016-2020',
   'PHASE IV · 2021-2022',
   'PHASE V · 2023-2025',
-  'PHASE VI · 2026',
+  'PHASE VI · 2025-2026',
   /* Marvel · le studio nommé sous le titre de chacun des deux segments.
      Ce sont des noms propres. */
   'Sony',

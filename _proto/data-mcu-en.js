@@ -311,7 +311,7 @@ const DATA_MCU={
       {"ref":"mcu-av1","rel":"2012","drop":["faq.pourquoi"]},
       {"ref":"mcu-item47","rel":"2012","drop":["faq.pourquoi"]}
     ]},
-    {title:"PHASE II · 2013-2015",saga:"The Infinity Saga",entries:[
+    {title:"PHASE II · 2013-2016",saga:"The Infinity Saga",entries:[
       {"ref":"mcu-im3","rel":"2013","drop":["faq.pourquoi"]},
       {"ref":"mcu-ac-os","rel":"2013","drop":["faq.pourquoi"]},
       {"id":"mcu-rl-aos-s1","covers":["mcu-aos-s1a","mcu-aos-s1b","mcu-aos-s1b2","mcu-aos-s1c"],"date":"2013–2014","rel":"2013-2014","rt":952,"subitems":["Season 1"],"drop":["faq.pourquoi","faq.quand"]},
@@ -325,10 +325,10 @@ const DATA_MCU={
       {"ref":"mcu-aou","rel":"2015","drop":["faq.pourquoi"]},
       {"ref":"mcu-antman1","rel":"2015","drop":["faq.pourquoi"]},
       {"id":"mcu-rl-aos-s3","covers":["mcu-aos-s3a","mcu-aos-s3b"],"date":"2016","rel":"2015-2016","rt":954,"subitems":["Season 3"],"drop":["faq.pourquoi","faq.quand"]},
-      {"ref":"mcu-jj1","rel":"2015","drop":["faq.pourquoi"]}
+      {"ref":"mcu-jj1","rel":"2015","drop":["faq.pourquoi"]},
+      {"ref":"mcu-dd2","rel":"2016","drop":["faq.pourquoi"]}
     ]},
     {title:"PHASE III · 2016-2020",saga:"The Infinity Saga",entries:[
-      {"ref":"mcu-dd2","rel":"2016","drop":["faq.pourquoi"]},
       {"ref":"mcu-cw","rel":"2016","drop":["faq.pourquoi"]},
       {"ref":"mcu-aos-s4","rel":"2016-2017","drop":["faq.pourquoi"]},
       {"ref":"mcu-lc1","rel":"2016","drop":["faq.pourquoi"]},
@@ -419,12 +419,12 @@ const DATA_MCU={
       {"ref":"mcu-cabf","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-dba1","rel":"2025","drop":["faq.pourquoi"]},
       {"id":"mcu-rl-tb","covers":["mcu-tb","mcu-tb-pc2"],"rel":"2025","rt":127,"drop":["faq.pourquoi","note"]},
-      {"ref":"mcu-ironheart","rel":"2025","drop":["faq.pourquoi"]},
+      {"ref":"mcu-ironheart","rel":"2025","drop":["faq.pourquoi"]}
+    ]},
+    {title:"PHASE VI · 2025-2026",saga:"The Multiverse Saga",entries:[
       {"ref":"mcu-ff","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-eow","rel":"2025","drop":["faq.pourquoi","tags"]},
-      {"ref":"mcu-mz","rel":"2025","drop":["faq.pourquoi"]}
-    ]},
-    {title:"PHASE VI · 2026",saga:"The Multiverse Saga",entries:[
+      {"ref":"mcu-mz","rel":"2025","drop":["faq.pourquoi"]},
       {"ref":"mcu-wm","rel":"2026","drop":["faq.pourquoi"]},
       {"ref":"mcu-dba2","rel":"2026","drop":["faq.pourquoi"]},
       {"ref":"mcu-smbnd","rel":"2026","drop":["faq.pourquoi"]},
