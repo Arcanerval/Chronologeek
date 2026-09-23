@@ -368,9 +368,7 @@ const DATA_MCU={
       {ref:"mcu-lc2",rel:"2018",drop:["faq.pourquoi"]},
       {id:"mcu-rl-antman2",covers:["mcu-antman2","mcu-antman2pc"],rel:"2018",rt:119,drop:["faq.pourquoi","note"]},
       {ref:"mcu-if2",rel:"2018",drop:["faq.pourquoi"]},
-      {ref:"mcu-venom1",rel:"2018",drop:["faq.pourquoi"]},
       {ref:"mcu-dd3",rel:"2018",drop:["faq.pourquoi"]},
-      {ref:"mcu-itsv",rel:"2018",drop:["faq.pourquoi"]},
       {ref:"mcu-pun2",rel:"2019",drop:["faq.pourquoi"]},
       {id:"mcu-rl-cm",covers:["mcu-cm","mcu-cmpc"],rel:"2019",rt:124,drop:["faq.pourquoi","note"]},
       {ref:"mcu-eg",rel:"2019",drop:["faq.pourquoi"]},
@@ -386,7 +384,6 @@ const DATA_MCU={
       {id:"mcu-rl-bw",covers:["mcu-bw","mcu-bwpc"],rel:"2021",rt:134,drop:["faq.pourquoi","note"]},
       {ref:"mcu-wi1",rel:"2021",drop:["faq.pourquoi"]},
       {ref:"mcu-sc",rel:"2021",drop:["faq.pourquoi"]},
-      {ref:"mcu-venom2",rel:"2021",drop:["faq.pourquoi"]},
       {ref:"mcu-eternals",rel:"2021",drop:["faq.pourquoi"]},
       {ref:"mcu-hawkeye",rel:"2021",drop:["faq.pourquoi"]}
     ]},
@@ -395,7 +392,10 @@ const DATA_MCU={
       {ref:"mcu-smr2",rel:"2004",drop:["faq.pourquoi"]},
       {ref:"mcu-smr3",rel:"2007",drop:["faq.pourquoi"]},
       {ref:"mcu-tasm1",rel:"2012",drop:["faq.pourquoi"]},
-      {ref:"mcu-tasm2",rel:"2014",drop:["faq.pourquoi"]}
+      {ref:"mcu-tasm2",rel:"2014",drop:["faq.pourquoi"]},
+      {ref:"mcu-venom1",rel:"2018",drop:["faq.pourquoi"]},
+      {ref:"mcu-itsv",rel:"2018",drop:["faq.pourquoi"]},
+      {ref:"mcu-venom2",rel:"2021",drop:["faq.pourquoi"]}
     ]},
     {title:"SUITE PHASE IV · 2021-2022",saga:"Saga du Multivers",entries:[
       {ref:"mcu-nwh",rel:"2021",drop:["faq.pourquoi"]},
