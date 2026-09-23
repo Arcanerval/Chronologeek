@@ -793,8 +793,18 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* `p-` écarte les entrées que le visiteur a ajoutées lui-même, pour la
      raison qui vaut au second parcours : les onze `data-total` sont
      éditoriaux et écrits à la main. Trois ajouts cochés, et le HUD
-     annoncerait 930 / 927. */
-  var PARCOURS=/^([a-z]+-r-|p-)/;
+     annoncerait 930 / 927.
+
+     LA LETTRE APRÈS LE `r` EST FACULTATIVE, ET C'EST TOUT LE MOTIF :
+     l'ordre de sortie de Star Wars se donne des `sw-rl-…`, que
+     `[a-z]+-r-` ne voyait pas — tout coché en ordre de sortie, l'accueil
+     comptait 74 œuvres pour 62 et annonçait 119 %. Une lettre au plus,
+     jamais `[a-z]*` : `sw-rebels-s1`, `ac-revelations-1` et huit autres
+     œuvres commencent par un `r` et disparaîtraient du compte.
+     `cablage.mjs` essaie le motif sur les mille identifiants du dépôt —
+     c'est le garde-fou qui manquait, et un parcours mal nommé ne
+     passera plus en silence. */
+  var PARCOURS=/^([a-z]+-r[a-z]?-|p-)/;
   function read(u){
     /* echafaudage-debut */ if(fake) return fake[u]||0; /* echafaudage-fin */
     try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+(u==='startrek'?'st':u==='dcanimation'?'dcanim':u))||'{}'))

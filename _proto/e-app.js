@@ -1557,12 +1557,14 @@
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
-  /* Le même filtre que le HUD juste au-dessus : un identifiant de second
-     parcours (`sw-r-…`) recouvre une œuvre déjà comptée, et un ajout
-     perso (`p-`) n'est pas dans les totaux éditoriaux. Ils partent bien
-     dans le fichier — c'est le compte affiché qui les écarte, pour dire
-     le même nombre que la barre du bas. */
-  var PARCOURS = /^([a-z]+-r-|p-)/;
+  /* Le même filtre que le HUD juste au-dessus, et que celui de l'accueil :
+     un identifiant de second parcours (`sw-r-…`, `sw-rl-…`) recouvre une
+     œuvre déjà comptée, et un ajout perso (`p-`) n'est pas dans les
+     totaux éditoriaux. Ils partent bien dans le fichier — c'est le compte
+     affiché qui les écarte, pour dire le même nombre que la barre du bas.
+     La lettre après le `r` est facultative et jamais plus d'une : le
+     pourquoi est en entier dans `e-accueil.html`. */
+  var PARCOURS = /^([a-z]+-r[a-z]?-|p-)/;
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',

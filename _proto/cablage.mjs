@@ -187,6 +187,56 @@ if (fs.existsSync(planche)) {
   }
 }
 
+/* ── le motif qui écarte les identifiants de second parcours ───────
+   L'accueil et l'export global comptent les œuvres complétées en lisant
+   les clés du stockage : ils n'ont pas les données des univers sous la
+   main, donc c'est la forme de l'identifiant qui dit si c'en est une.
+   Une œuvre compte, une entrée propre à un second parcours non — elle
+   recouvre une œuvre déjà comptée —, et un ajout perso non plus, les
+   totaux de l'accueil étant éditoriaux.
+
+   Ce contrôle-là est né d'un bug : l'ordre de sortie de Star Wars s'est
+   donné des `sw-rl-…` que le motif d'alors, `[a-z]+-r-`, ne voyait pas.
+   Tout coché en ordre de sortie, l'accueil comptait 74 œuvres pour 62 et
+   annonçait 119 %. Rien dans la console — un compte faux ne lève pas.
+
+   Le motif se vérifie donc dans les deux sens, sur les mille identifiants
+   du dépôt : aucune œuvre écartée à tort, aucune entrée de parcours
+   oubliée. C'est ce qui rattrape aussi le piège inverse — `[a-z]+-r[a-z]*-`
+   passe le premier sens et fait disparaître `sw-rebels-s1`,
+   `ac-revelations-1` et huit autres œuvres du compte. */
+{
+  const motif = (F.accueil.match(/var PARCOURS=(\/[^;]+\/)/) || [])[1];
+  const motifApp = (F.app.match(/var PARCOURS = (\/[^;]+\/)/) || [])[1];
+  if (!motif) manques.push('e-accueil.html : PARCOURS introuvable');
+  else if (motif !== motifApp) {
+    manques.push(`PARCOURS diverge : ${motif} sur l'accueil, ${motifApp} dans e-app.js`);
+  } else {
+    const re = new RegExp(motif.slice(1, -1));
+    const oeuvres = new Set(), parcours = new Set();
+    for (const f of fs.readdirSync(path.join(RACINE, '_proto'))) {
+      if (!/^data.*\.js$/.test(f) || /-en\.js$/.test(f)) continue;
+      let W;
+      try { W = new Function('var window={};' + lire('_proto/' + f) + ';return window;')(); }
+      catch (_) { continue; }
+      for (const g of Object.values(W)) {
+        if (!g || typeof g !== 'object') continue;
+        for (const cle of ['eras', 'erasRewatch', 'erasReplay', 'erasRelease']) {
+          if (!Array.isArray(g[cle])) continue;
+          for (const era of g[cle]) for (const e of (era.entries || [])) {
+            const id = e.id || e.ref;
+            if (id) (cle === 'eras' ? oeuvres : parcours).add(id);
+          }
+        }
+      }
+    }
+    const aTort = [...oeuvres].filter(id => re.test(id));
+    const ratees = [...parcours].filter(id => !oeuvres.has(id) && !re.test(id));
+    if (aTort.length) manques.push(`PARCOURS écarte ${aTort.length} œuvre(s) : ${aTort.slice(0, 4).join(', ')}`);
+    if (ratees.length) manques.push(`PARCOURS rate ${ratees.length} entrée(s) de parcours : ${ratees.slice(0, 4).join(', ')}`);
+  }
+}
+
 /* ── le bilan ─────────────────────────────────────────────────────── */
 const court = process.argv.includes('--court');
 if (!court) {
