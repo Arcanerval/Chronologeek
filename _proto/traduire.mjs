@@ -126,6 +126,13 @@ const TRADUCTIONS = [
      elles s'écrivent donc ici. Les six descriptions de badge suivent,
      avec « completed », le mot que Niko a retenu le 22 septembre pour
      tout le site. */
+  /* Marvel a reçu le sien le 23 septembre 2026. Une seule de ses sept
+     ères s'écrit : les six autres s'appellent « PHASE N · années » des
+     deux côtés et sont donc constatées identiques, plus bas. C'est le
+     vocabulaire de Marvel lui-même — ses phases sont des époques de
+     sortie, pas des époques de l'univers, et c'est exactement ce que ce
+     parcours range. */
+  ['AVANT LE MCU · 2000-2007', 'BEFORE THE MCU · 2000-2007'],
   ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
   ['L’ÈRE DE LA PRÉLOGIE · 1999-2020', 'THE PREQUEL ERA · 1999-2020'],
   ['LE RACHAT PAR DISNEY · 2014-2018', 'THE DISNEY TAKEOVER · 2014-2018'],
@@ -399,6 +406,11 @@ const TRADUCTIONS = [
      cinquante-deux autres entrées Marvel, donc déjà en prod anglaise. */
   ['Saison 1 Épisodes 1-5', 'Season 1 Episodes 1-5'],
   ['Saison 1 Épisodes 6-9', 'Season 1 Episodes 6-9'],
+  /* L'ordre de sortie recolle les treize blocs des Agents du S.H.I.E.L.D.
+     en sept saisons, et « Saison 5 » n'existe nulle part ailleurs : la
+     découverte les découpe, et n'écrit donc que « Saison 5 Épisodes
+     1-13 ». Les quatre autres se retrouvent au lexique, celle-ci non. */
+  ['Saison 5', 'Season 5'],
 
   /* ── Star Wars Zero Company, ajouté le 30 août 2026 ─────────────────
      Le jeu entre juste avant l'Épisode III. Les deux réponses de FAQ
@@ -526,14 +538,20 @@ const PC_REWATCH = '<span class="itag pc-rewatch">' + COCHE
 const PARCOURS_A = '<span class="itag pc-first">' + COCHE
   + 'This guide works best for first-time watches but you can switch to the'
   + ' rewatch version higher up.</span>' + PC_REWATCH;
-/* La troisième accroche est à Star Wars seul, qui a reçu l'ordre de
-   sortie le 23 septembre 2026. Elle se pose **après** `PARCOURS_A`, sur
-   son propre motif : Marvel passe par la même retouche que lui et n'a
-   que deux parcours — c'est exactement le piège qui avait donné aux deux
-   pages anglaises une accroche parlant d'une bascule qu'elles n'ont pas. */
-const PC_RELEASE = '<span class="itag pc-release">' + COCHE
-  + 'This guide follows the order the works came out, from 1977 to today,'
-  + ' but you can switch back to a chronological version higher up.</span>';
+/* La troisième accroche se pose **après** `PARCOURS_A`, sur son propre
+   motif, et une page à la fois : Star Wars et Marvel passent par la même
+   retouche pour les deux premières, et la poser là donnerait l'ordre de
+   sortie aux dix pages anglaises — dont huit ne l'ont pas. C'est le
+   piège qui avait déjà donné à deux d'entre elles une accroche parlant
+   d'une bascule qu'elles n'avaient pas.
+   Seule l'année de départ change d'un univers à l'autre : elle dit d'où
+   part le parcours, et 1977 n'est pas 2000. */
+const pcRelease = depuis => '<span class="itag pc-release">' + COCHE
+  + 'This guide follows the order the works came out, from ' + depuis
+  + ' to today, but you can switch back to a chronological version'
+  + ' higher up.</span>';
+const PC_RELEASE = pcRelease('1977');
+const PC_RELEASE_MCU = pcRelease('2000');
 /* Marvel · trois écartés de plus, le 1er septembre 2026. Les textes sont
    ceux de Niko, mot pour mot ; seules la majuscule de « I » et le point
    final ont été posés, pour s'aligner sur les dix autres. */
@@ -556,6 +574,8 @@ const RETOUCHES = [
     ou: 'SW', de: PC_REWATCH, a: PC_REWATCH + PC_RELEASE },
   { quoi: 'Marvel · l’accroche dit maintenant quel parcours on suit',
     ou: 'MCU', de: PARCOURS_DE, a: PARCOURS_A },
+  { quoi: 'Marvel · l’accroche annonce aussi l’ordre de sortie',
+    ou: 'MCU', de: PC_REWATCH, a: PC_REWATCH + PC_RELEASE_MCU },
   { quoi: 'Marvel · trois écartés de plus dans « Ce qui est écarté »',
     ou: 'MCU', de: CUTS_MCU_DE, a: CUTS_MCU_A },
   { quoi: 'Marvel · le compte des écartés passe de 10 à 13',
@@ -1077,6 +1097,16 @@ const TITRES_IDENTIQUES = [
   '~0-4 ABY',
   // Dossier Star Wars · la date du roman VO ajouté le 15 septembre 2026.
   '6 BBY',
+  /* Marvel · les six ères de l'ordre de sortie posé le 23 septembre 2026.
+     « Phase » et les chiffres romains s'écrivent pareil dans les deux
+     langues, et une plage d'années ne se traduit pas : sans ces lignes,
+     le contrôle les compterait parmi les chaînes restées en français. */
+  'PHASE I · 2008-2012',
+  'PHASE II · 2013-2015',
+  'PHASE III · 2016-2020',
+  'PHASE IV · 2021-2022',
+  'PHASE V · 2023-2025',
+  'PHASE VI · 2026',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 
