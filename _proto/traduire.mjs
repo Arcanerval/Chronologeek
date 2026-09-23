@@ -127,12 +127,29 @@ const TRADUCTIONS = [
      avec « completed », le mot que Niko a retenu le 22 septembre pour
      tout le site. La note de The Clone Wars reprend mot pour mot sa
      seconde moitié, qui est celle de la prod. */
-  ['LA TRILOGIE ORIGINALE', 'THE ORIGINAL TRILOGY'],
-  ['LA PRÉLOGIE', 'THE PREQUEL TRILOGY'],
-  ['L’ÈRE THE CLONE WARS', 'THE CLONE WARS YEARS'],
-  ['LE RACHAT PAR DISNEY', 'THE DISNEY TAKEOVER'],
-  ['L’ÈRE DU STREAMING', 'THE STREAMING YEARS'],
-  ['LA DERNIÈRE VAGUE', 'THE LATEST WAVE'],
+  ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
+  ['LA PRÉLOGIE · 1999-2005', 'THE PREQUEL TRILOGY · 1999-2005'],
+  ['L’ÈRE THE CLONE WARS · 2008-2020', 'THE CLONE WARS YEARS · 2008-2020'],
+  ['LE RACHAT PAR DISNEY · 2014-2019', 'THE DISNEY TAKEOVER · 2014-2019'],
+  ['L’ÈRE DU STREAMING · 2020-2024', 'THE STREAMING YEARS · 2020-2024'],
+  ['LA DERNIÈRE VAGUE · 2025-2026', 'THE LATEST WAVE · 2025-2026'],
+  /* Les sous-items des entrées regroupées : la saison ou l'épisode sans
+     le nom de l'œuvre, qui est passé au titre de la carte. Les cinq de
+     Battlefront reprennent mot pour mot la fin des cinq titres anglais
+     — « Campaign: Missions 1-6 » —, deux-points anglais compris. */
+  ['Star Wars Battlefront II', 'Star Wars Battlefront II'],
+  ['Prologue : The Cleaner', 'Prologue: The Cleaner'],
+  ['Campagne : Missions 1-6', 'Campaign: Missions 1-6'],
+  ['Campagne : Missions 7-11', 'Campaign: Missions 7-11'],
+  ['Campagne : Mission 12', 'Campaign: Mission 12'],
+  ['Campagne : Résurrection', 'Campaign: Resurrection'],
+  ['Épisode 1', 'Episode 1'],
+  ['Épisode 2', 'Episode 2'],
+  ['Épisode 3', 'Episode 3'],
+  ['Épisode 4', 'Episode 4'],
+  ['Épisode 5', 'Episode 5'],
+  ['Épisode 6', 'Episode 6'],
+  ['Épisodes 2-3', 'Episodes 2-3'],
   ['La trilogie originale terminée', 'The original trilogy completed'],
   ['La prélogie terminée', 'The prequel trilogy completed'],
   ['L’ère The Clone Wars terminée', 'The Clone Wars years completed'],

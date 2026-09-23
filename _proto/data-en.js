@@ -166,79 +166,56 @@ const DATA_SW={
     ]}
   ],
   erasRelease:[
-    {title:"THE ORIGINAL TRILOGY",entries:[
-      {"ref":"sw-ep4","date":"1977","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep5","date":"1980","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep6","date":"1983","drop":["tags","faq.pourquoi","faq.play"]}
+    {title:"THE ORIGINAL TRILOGY · 1977-1983",entries:[
+      {"ref":"sw-ep4","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-ep5","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-ep6","drop":["tags","faq.pourquoi","faq.play"]}
     ]},
-    {title:"THE PREQUEL TRILOGY",entries:[
-      {"ref":"sw-ep1","date":"1999","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep2","date":"2002","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep3","date":"2005","drop":["tags","faq.pourquoi","faq.play"]}
+    {title:"THE PREQUEL TRILOGY · 1999-2005",entries:[
+      {"ref":"sw-ep1","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-ep2","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-ep3","drop":["tags","faq.pourquoi","faq.play"]}
     ]},
-    {title:"THE CLONE WARS YEARS",entries:[
-      {"ref":"sw-tcwfilm","date":"2008","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-tcw-pre","date":"2008-2020","note":"The series aired from 2008 to 2020, and its arcs did not come out in the order you watch them: the block keeps the guide’s order. The episodes grouped below are story arcs, separated by blank lines","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-tcw-22","date":"2008-2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-tcw-21","date":"2008-2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-tcw-20","date":"2008-2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-tcw-19","date":"2008-2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-tcw-rsith","date":"2008-2020","drop":["tags","faq.pourquoi","faq.play"]}
+    {title:"THE CLONE WARS YEARS · 2008-2020",entries:[
+      {"ref":"sw-tcwfilm","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-tcw","covers":["sw-tcw-pre","sw-tcw-22","sw-tcw-21","sw-tcw-20","sw-tcw-19","sw-tcw-rsith"],"date":"22–19 BBY","subitems":["Season 2 Episode 16"," ","Season 1 Episode 16"," ","Season 3 Episode 1"," ","Season 3 Episode 3"," ","Season 1 Episode 1"," ","Season 1 Episode 2","Season 1 Episode 3","Season 1 Episode 4","Season 1 Episode 5"," ","Season 1 Episode 9","Season 1 Episode 10"," ","Season 1 Episode 11","Season 1 Episode 12"," ","Season 1 Episode 15"," ","Season 1 Episode 19","Season 1 Episode 20","Season 1 Episode 21"," ","Season 2 Episode 1","Season 2 Episode 2","Season 2 Episode 3"," ","Season 2 Episode 17"," ","Season 2 Episode 18","Season 2 Episode 19"," ","Season 2 Episode 4","Season 2 Episode 5","Season 2 Episode 6","Season 2 Episode 7","Season 2 Episode 8"," ","Season 2 Episode 9","Season 2 Episode 10"," ","Season 2 Episode 12","Season 2 Episode 13","Season 2 Episode 14"," ","Season 2 Episode 20","Season 2 Episode 21","Season 2 Episode 22"," ","Season 3 Episode 5","Season 3 Episode 6"," ","Season 3 Episode 7"," ","Season 3 Episode 2"," ","Season 3 Episode 8","Season 1 Episode 22","Season 3 Episode 9"," ","Season 3 Episode 10"," ","Season 3 Episode 12","Season 3 Episode 13","Season 3 Episode 14"," ","Season 3 Episode 15","Season 3 Episode 16","Season 3 Episode 17","Season 3 Episode 18","Season 3 Episode 19","Season 3 Episode 20"," ","Season 3 Episode 21","Season 3 Episode 22"," ","Season 4 Episode 7","Season 4 Episode 8","Season 4 Episode 9","Season 4 Episode 10"," ","Season 4 Episode 14"," ","Season 4 Episode 15","Season 4 Episode 16","Season 4 Episode 17","Season 4 Episode 18"," ","Season 4 Episode 19","Season 4 Episode 20","Season 4 Episode 21","Season 4 Episode 22"," ","Season 5 Episode 2","Season 5 Episode 3","Season 5 Episode 4","Season 5 Episode 5"," ","Season 5 Episode 6","Season 5 Episode 7","Season 5 Episode 8","Season 5 Episode 9"," ","Season 5 Episode 12"," ","Season 5 Episode 1","Season 5 Episode 14","Season 5 Episode 15","Season 5 Episode 16"," ","Season 5 Episode 17","Season 5 Episode 18","Season 5 Episode 19","Season 5 Episode 20"," ","Season 6 Episode 1","Season 6 Episode 2","Season 6 Episode 3","Season 6 Episode 4"," ","Season 6 Episode 5","Season 6 Episode 6","Season 6 Episode 7"," ","Season 6 Episode 10","Season 6 Episode 11","Season 6 Episode 12","Season 6 Episode 13"," ","Season 7 Episode 5","Season 7 Episode 6","Season 7 Episode 7","Season 7 Episode 8"," ","Season 7 Episode 1","Season 7 Episode 2","Season 7 Episode 3","Season 7 Episode 4"," ","Season 7 Episode 9","Season 7 Episode 10","Season 7 Episode 11","Season 7 Episode 12 (epilogue ~17 BBY)"],"drop":["tags","faq.pourquoi","faq.play"]}
     ]},
-    {title:"THE DISNEY TAKEOVER",entries:[
-      {"ref":"sw-rebels-s1","date":"2014-2015","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep7","date":"2015","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-rebels-s2","date":"2016-2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-rogue","date":"2016","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-rebels-s3","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-rebels-s4","date":"2017-2018","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bf2-prologue","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bf2-c1","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bf2-c2","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bf2-m12","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bf2res","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep8","date":"2017","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-rebels-ep","date":"2018","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-solo","date":"2018","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-mando-s1","date":"2019-2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-fo","date":"2019","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ep9","date":"2019","drop":["tags","faq.pourquoi","faq.play"]}
+    {title:"THE DISNEY TAKEOVER · 2014-2019",entries:[
+      {"id":"sw-rl-rebels-s1","covers":["sw-rebels-s1"],"rt":346,"subitems":["Shorts 1-4 (The Machine in the Ghost, Art Attack, Entanglement, Property of Ezra Bridger)","Season 1"],"drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-rebels-s2","covers":["sw-rebels-s1","sw-rebels-s2"],"date":"4–3 BBY","rt":492,"subitems":["Season 2"],"drop":["tags","faq.pourquoi","faq.play","note","faq.quand"]},
+      {"ref":"sw-ep7","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-rebels-s3","covers":["sw-rebels-s2","sw-rebels-s3"],"date":"2 BBY","rt":486,"subitems":["Season 3"],"drop":["tags","faq.pourquoi","faq.play","faq.quand"]},
+      {"ref":"sw-rogue","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-rebels-s4","covers":["sw-rebels-s4","sw-rebels-ep"],"subitems":["Season 4"],"drop":["tags","faq.pourquoi","faq.play","note"]},
+      {"id":"sw-rl-bf2","covers":["sw-bf2-prologue","sw-bf2-c1","sw-bf2-c2","sw-bf2-m12","sw-bf2res"],"title":"Star Wars Battlefront II","date":"4–34 ABY","subitems":["Prologue: The Cleaner","Campaign: Missions 1-6","Campaign: Missions 7-11","Campaign: Mission 12","Campaign: Resurrection"],"drop":["tags","faq.pourquoi","faq.play","faq.quand"]},
+      {"ref":"sw-ep8","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-solo","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-mando-s1","covers":["sw-mando-s1"],"rt":342,"subitems":["Season 1"],"drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-fo","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-ep9","drop":["tags","faq.pourquoi","faq.play"]}
     ]},
-    {title:"THE STREAMING YEARS",entries:[
-      {"ref":"sw-squadrons","date":"2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-mando-s2b","date":"2020","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bb1","date":"2021","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-boba","date":"2021-2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-kenobi","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-andors1","date":"2022","drop":["tags","faq.pourquoi","faq.play","note"]},
-      {"ref":"sw-toj1","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toj2","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toj3","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toj4","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toj5","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toj6","date":"2022","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-bb2","date":"2023-2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-mando-s3","date":"2023","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-survivor","date":"2023","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-ahsoka","date":"2023","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toe1","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toe2","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toe3","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toe4","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toe5","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-toe6","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-outlaws","date":"2024","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-skelcrew","date":"2024-2025","drop":["tags","faq.pourquoi","faq.play"]}
+    {title:"THE STREAMING YEARS · 2020-2024",entries:[
+      {"ref":"sw-squadrons","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-mando-s2","covers":["sw-mando-s1","sw-mando-s2b"],"rt":337,"subitems":["Season 2"],"drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-bb1","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-boba","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-kenobi","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-andors1","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-toj","covers":["sw-toj1","sw-toj2","sw-toj3","sw-toj4","sw-toj5","sw-toj6"],"title":"Tales of the Jedi","date":"~60–15 BBY","subitems":["Episode 1","Episode 2","Episode 3","Episode 4","Episode 5","Episode 6"],"drop":["tags","faq.pourquoi","faq.play","note","faq.quand"]},
+      {"ref":"sw-bb2","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-mando-s3","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-survivor","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-ahsoka","drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-toe","covers":["sw-toe1","sw-toe2","sw-toe3","sw-toe4","sw-toe5","sw-toe6"],"title":"Tales of the Empire","date":"20 BBY – 9 ABY","subitems":["Episode 1","Episode 2","Episode 3","Episode 4","Episode 5","Episode 6"],"drop":["tags","faq.pourquoi","faq.play","note","faq.quand"]},
+      {"ref":"sw-outlaws","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-skelcrew","drop":["tags","faq.pourquoi","faq.play"]}
     ]},
-    {title:"THE LATEST WAVE",entries:[
-      {"ref":"sw-andors2-1","date":"2025","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-totu1","date":"2025","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-totu23","date":"2025","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-andors2-2","date":"2025","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-andors2-3","date":"2025","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-maul","date":"2026","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-mag","date":"2026","drop":["tags","faq.pourquoi","faq.play"]},
-      {"ref":"sw-zerocompany","date":"2026","drop":["tags","faq.pourquoi","faq.play"]}
+    {title:"THE LATEST WAVE · 2025-2026",entries:[
+      {"id":"sw-rl-andor-s2","covers":["sw-andors2-1","sw-andors2-2","sw-andors2-3"],"date":"4–1 BBY","subitems":["Season 2"],"drop":["tags","faq.pourquoi","faq.play"]},
+      {"id":"sw-rl-totu","covers":["sw-totu1","sw-totu23"],"title":"Tales of the Underworld","subitems":["Episode 1","Episodes 2-3"],"drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-maul","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-mag","drop":["tags","faq.pourquoi","faq.play"]},
+      {"ref":"sw-zerocompany","drop":["tags","faq.pourquoi","faq.play"]}
     ]}
   ]
 };

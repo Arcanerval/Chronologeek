@@ -1043,34 +1043,52 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   try{ prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(_){ prog={}; }
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
 
-  /* ── le pont entre les deux parcours ──────────────────────────────────
+  /* ── le pont entre les parcours ───────────────────────────────────────
      Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
-     ne l'a pas vue. Quand le rewatch coupe un panneau en deux ou en recolle
-     plusieurs, l'entrée porte `covers` et dit de quelles entrées de
+     ne l'a pas vue. Quand un second parcours coupe un panneau en deux ou en
+     recolle plusieurs, l'entrée porte `covers` et dit de quelles entrées de
      découverte elle tient lieu. Une entrée de découverte est cochée quand
-     toutes les entrées de rewatch qui la couvrent le sont ; une entrée de
-     rewatch, quand tout ce qu'elle couvre l'est. Les deux tables se
-     construisent dans les deux modes, sinon cocher dans l'un ne se verrait
-     pas dans l'autre. */
+     toutes les entrées qui la couvrent le sont ; une entrée d'un second
+     parcours, quand tout ce qu'elle couvre l'est. Les tables se
+     construisent dans tous les modes, sinon cocher dans l'un ne se verrait
+     pas dans l'autre.
+
+     Et « toutes les entrées qui la couvrent » se compte **par parcours**,
+     pas en bloc. C'est ce que le troisième a changé : `sw-tcw-20` est
+     coupée en deux par le rewatch et prise dans le bloc de l'ordre de
+     sortie, donc trois entrées la couvrent. Sur une table commune, cocher
+     le bloc de sortie ne la cochait plus — il aurait fallu en plus les deux
+     moitiés d'un parcours qu'on ne lit pas. Rien dans la console : une
+     coche qui ne prend pas. */
   var COVERS={}, COVERED={};
-  [].concat(RW||[],RL||[]).forEach(function(era){ era.entries.forEach(function(e){
-    if(!e.covers) return;
-    COVERS[e.id]=e.covers;
-    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
-  }); });
+  function indexeCouvertures(eras,parcours){
+    (eras||[]).forEach(function(era){ era.entries.forEach(function(e){
+      if(!e.covers) return;
+      if(COVERS[e.id]) console.error('[parcours] identifiant en double :',e.id);
+      COVERS[e.id]={p:parcours,d:e.covers};
+      e.covers.forEach(function(d){
+        COVERED[d]=COVERED[d]||{};
+        (COVERED[d][parcours]=COVERED[d][parcours]||[]).push(e.id);
+      });
+    }); });
+  }
+  indexeCouvertures(RW,'rewatch');
+  indexeCouvertures(RL,'release');
   function bridge(id){
-    if(COVERS[id]) COVERS[id].forEach(function(d){
-      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
-    });
-    else if(COVERED[id]) COVERED[id].forEach(function(r){
-      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
-    });
+    var c=COVERS[id];
+    if(c){ c.d.forEach(function(d){
+      if(COVERED[d][c.p].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    }); return; }
+    var m=COVERED[id]; if(!m) return;
+    Object.keys(m).forEach(function(p){ m[p].forEach(function(r){
+      if(prog[id] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    }); });
   }
   /* Au chargement, la découverte fait foi : une progression écrite avant que
-     le rewatch existe n'a que ses identifiants. */
+     les autres parcours existent n'a que ses identifiants. */
   function bootBridge(){
     Object.keys(COVERS).forEach(function(r){
-      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+      if(!prog[r] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1;
     });
   }
   bootBridge();
