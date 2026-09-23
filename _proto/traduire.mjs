@@ -131,11 +131,14 @@ const TRADUCTIONS = [
      constatées identiques, plus bas. C'est le vocabulaire de Marvel
      lui-même — ses phases sont des époques de sortie, pas des époques
      de l'univers, et c'est exactement ce que ce parcours range.
-     Reste le segment de tête, et le nom de la saga que chaque phase
-     porte désormais sous son titre : la découverte le disait dans le
-     même souffle, « PHASE I — Saga de l'Infini », et l'anglais de prod
-     porte donc la phrase entière, jamais ses deux moitiés. */
-  ['SEGMENT AUTRES UNIVERS · 2000-2019', 'OTHER UNIVERSES SEGMENT · 2000-2019'],
+     Restent les deux suites de phase, et le nom de la saga que chaque
+     phase porte désormais sous son titre : la découverte le disait dans
+     le même souffle, « PHASE I — Saga de l'Infini », et l'anglais de
+     prod porte donc la phrase entière, jamais ses deux moitiés.
+     Les deux segments, eux, gardent le titre qu'ils ont en découverte et
+     se retrouvent donc tout seuls au lexique. */
+  ['SUITE PHASE IV · 2021-2022', 'PHASE IV CONTINUED · 2021-2022'],
+  ['SUITE PHASE V · 2023-2025', 'PHASE V CONTINUED · 2023-2025'],
   ['Saga de l’Infini', 'The Infinity Saga'],
   ['Saga du Multivers', 'The Multiverse Saga'],
   ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
@@ -556,7 +559,10 @@ const pcRelease = depuis => '<span class="itag pc-release">' + COCHE
   + ' to today, but you can switch back to a chronological version'
   + ' higher up.</span>';
 const PC_RELEASE = pcRelease('1977');
-const PC_RELEASE_MCU = pcRelease('2000');
+/* 2008 et non 2000 : les six films Fox et Sony d'avant Iron Man sont
+   dans le segment Spider-Verse et le segment Fox, à la place qu'ils ont
+   en découverte. La timeline, elle, part bien du premier film Marvel. */
+const PC_RELEASE_MCU = pcRelease('2008');
 /* Marvel · trois écartés de plus, le 1er septembre 2026. Les textes sont
    ceux de Niko, mot pour mot ; seules la majuscule de « I » et le point
    final ont été posés, pour s'aligner sur les dix autres. */
@@ -1118,9 +1124,10 @@ const TITRES_IDENTIQUES = [
   'PHASE IV · 2021-2022',
   'PHASE V · 2023-2025',
   'PHASE VI · 2026',
-  /* Marvel · les deux studios nommés sous le titre du segment de tête.
+  /* Marvel · le studio nommé sous le titre de chacun des deux segments.
      Ce sont des noms propres. */
-  'Sony · 20th Century Fox',
+  'Sony',
+  '20th Century Fox',
 ];
 for (const t of TITRES_IDENTIQUES) GLOBAL.ajoute(t, t);
 
