@@ -125,14 +125,12 @@ const TRADUCTIONS = [
      sortie et non des ères de l'univers : rien en prod ne les porte, et
      elles s'écrivent donc ici. Les six descriptions de badge suivent,
      avec « completed », le mot que Niko a retenu le 22 septembre pour
-     tout le site. La note de The Clone Wars reprend mot pour mot sa
-     seconde moitié, qui est celle de la prod. */
+     tout le site. */
   ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
   ['LA PRÉLOGIE · 1999-2005', 'THE PREQUEL TRILOGY · 1999-2005'],
   ['L’ÈRE THE CLONE WARS · 2008-2020', 'THE CLONE WARS YEARS · 2008-2020'],
-  ['LE RACHAT PAR DISNEY · 2014-2019', 'THE DISNEY TAKEOVER · 2014-2019'],
-  ['L’ÈRE DU STREAMING · 2020-2024', 'THE STREAMING YEARS · 2020-2024'],
-  ['LA DERNIÈRE VAGUE · 2025-2026', 'THE LATEST WAVE · 2025-2026'],
+  ['LE RACHAT PAR DISNEY · 2014-2018', 'THE DISNEY TAKEOVER · 2014-2018'],
+  ['L’ÈRE DISNEY+ · 2019-2026', 'THE DISNEY+ ERA · 2019-2026'],
   /* Les sous-items des entrées regroupées : la saison ou l'épisode sans
      le nom de l'œuvre, qui est passé au titre de la carte. Les cinq de
      Battlefront reprennent mot pour mot la fin des cinq titres anglais
@@ -149,19 +147,12 @@ const TRADUCTIONS = [
   ['Épisode 4', 'Episode 4'],
   ['Épisode 5', 'Episode 5'],
   ['Épisode 6', 'Episode 6'],
-  ['Épisodes 2-3', 'Episodes 2-3'],
   ['La trilogie originale terminée', 'The original trilogy completed'],
   ['La prélogie terminée', 'The prequel trilogy completed'],
   ['L’ère The Clone Wars terminée', 'The Clone Wars years completed'],
   ['Le rachat par Disney terminé', 'The Disney takeover completed'],
-  ['L’ère du streaming terminée', 'The streaming years completed'],
-  ['La dernière vague terminée', 'The latest wave completed'],
-  ['La série a diffusé de 2008 à 2020, et ses arcs ne sortent pas dans l’ordre '
-   + 'où on les regarde : le bloc garde donc l’ordre du guide. Les épisodes '
-   + 'regroupés ci-dessous sont des arcs narratifs, séparés par des lignes vides',
-   'The series aired from 2008 to 2020, and its arcs did not come out in the '
-   + 'order you watch them: the block keeps the guide’s order. The episodes '
-   + 'grouped below are story arcs, separated by blank lines'],
+  ['Les premières années Disney+ terminées', 'The early Disney+ years completed'],
+  ['L’ère Disney+ terminée', 'The Disney+ era completed'],
 
   /* ── la pastille du h1, posée le 5 septembre 2026 ──
      Le champ `subtitle` du descripteur d'univers dit la même chose que
@@ -831,7 +822,7 @@ const TECHNIQUES = new Set([
   'branch',
   /* `ids` liste les entrées que déclenche un badge : des identifiants,
      jamais du texte. */
-  'ids',
+  'ids', 'idsRelease',
   /* `ol` porte la requête OpenLibrary d'une entrée — `q` cherché,
      `inc` exigé, `exc` écarté. Ce sont des arguments d'API, exactement
      le piège de `getElementById('note')` : traduits, ils continuent de
@@ -1114,7 +1105,7 @@ for (const T of TIMELINES) {
      avant d'être corrigé, et donc si la valeur anglaise est encore bonne */
   const idxFR = indexParId(dF);
   const tr = creerTraducteur(lex, manques, T.nom);
-  const trRel = creerTraducteur(lex, manques, T.nom, new Set(['date']));
+  const trRel = creerTraducteur(lex, manques, T.nom, new Set(['date', 'rel']));
 
   /* la structure vient du proto ; seuls les textes changent */
   /* L'ère passe entière par le traducteur : son titre, mais aussi sa
@@ -1355,7 +1346,7 @@ for (const T of TIMELINES) {
      dit au rapport plutôt que de laisser croire à une anomalie. */
   const manquesAvant = manques.length;
   const tr = creerTraducteur(lex, manques, 'Avatar');
-  const trRel = creerTraducteur(lex, manques, 'Avatar', new Set(['date']));
+  const trRel = creerTraducteur(lex, manques, 'Avatar', new Set(['date', 'rel']));
 
   const sortie = { ...D, eras: D.eras.map(era => {
     const { entries, ...enTete } = era;

@@ -426,6 +426,73 @@ body[data-parcours="release"] .pc-release{display:inline-flex}
    ligne, elle se lit d'un coup d'œil */
 .bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
   letter-spacing:.03em;color:var(--hot);line-height:1}
+/* L'ANNÉE DE SORTIE, dans son encadré, à côté — la disposition des deux
+   dates d'Assassin's Creed, à l'encre de l'univers plutôt qu'à la sienne.
+   L'or reste au grand nombre : c'est l'accent de la page, il va à ce qui
+   se lit d'abord, et l'ordre de sortie ne change pas ça — il range la
+   liste, la date de l'univers continue de dire ce qu'on va voir.
+   L'encadré ne se pose QUE dans ce parcours-là : les entrées des deux
+   autres n'ont pas de champ `rel`, et un cadre vide se lirait comme une
+   donnée manquante. */
+.bu-meta .rel{display:inline-flex;align-items:baseline;gap:7px;padding:3px 9px;
+  border:1px solid color-mix(in srgb,var(--uni) 46%,transparent);
+  background:color-mix(in srgb,var(--uni) 13%,transparent);
+  font-size:10px;letter-spacing:.1em;color:var(--uni);white-space:nowrap}
+.bu-meta .rel i{font-style:normal;font-weight:800;
+  color:color-mix(in srgb,var(--uni) 74%,transparent)}
+.bu-meta .rel b{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  letter-spacing:.03em;line-height:1;color:var(--uni)}
+/* LES DEUX DATES SE LISENT CÔTE À CÔTE, À TOUTE LARGEUR, et c'est le repli
+   qu'Assassin's Creed a déjà payé : sous 560 px la colonne de texte tombe à
+   100 px — la vignette en prend 128 — et le cadre, qui ne se coupe pas,
+   passait sous le grand nombre. Séparées sur deux lignes, les deux dates
+   n'ont plus l'air d'un couple.
+
+   Trois gestes, les siens : la vignette devient fluide et rend la place, le
+   mot « Sortie » quitte le cadre — une quarantaine de pixels pour redire ce
+   que l'encre bleue dit déjà, là où l'année en fait soixante — et les corps
+   se resserrent d'un cran de plus sous 400 px. Le libellé revient au-dessus
+   de 560. `flex-wrap:nowrap` n'est pas une précaution : c'est lui qui
+   empêche le cadre de retomber à la ligne.
+
+   Ciblé sur le parcours par ordre de sortie : lui seul porte un cadre, et
+   rétrécir la vignette des deux autres pour une place qu'ils n'occupent
+   pas serait payer un repli sans contrepartie. */
+@media(max-width:560px){
+  body[data-parcours="release"] .bu-fig{width:clamp(64px,23vw,96px)}
+  body[data-parcours="release"] .bu-meta{gap:6px;flex-wrap:nowrap}
+  /* la durée aussi : sur une ligne qui ne s'enroule plus, c'est elle qui
+     encaisse la place qui manque, et « 40 h 56 » sortait sur trois lignes
+     dans dix-sept pixels de large */
+  body[data-parcours="release"] .bu-meta>span{white-space:nowrap}
+  body[data-parcours="release"] .bu-meta .d{font-size:16px}
+  body[data-parcours="release"] .bu-meta .rel{padding:1px 6px;gap:4px}
+  body[data-parcours="release"] .bu-meta .rel i{display:none}
+  body[data-parcours="release"] .bu-meta .rel b{font-size:13px}
+}
+/* Sous 400 px, LA DURÉE PASSE À LA LIGNE et les deux dates restent
+   ensemble. C'est le seul des trois qu'on puisse déplacer : le couple ne
+   se lit que côte à côte, et il ne se comprime plus — « 22–19 BBY »,
+   « 2008-2020 » et « 40 h 56 » réclamaient dix-neuf pixels de plus que la
+   carte n'en a, et c'est The Clone Wars, le pire cas du guide. Star Wars
+   a ici une mesure de plus qu'Assassin's Creed, qui ne compte pas le
+   temps et s'arrête donc à deux. */
+@media(max-width:400px){
+  body[data-parcours="release"] .bu-meta{gap:4px 5px;flex-wrap:wrap}
+  body[data-parcours="release"] .bu-meta>span:not(.d):not(.rel){flex:1 0 100%}
+  body[data-parcours="release"] .bu-meta .d{font-size:14px}
+  body[data-parcours="release"] .bu-meta .rel{padding:1px 5px;gap:3px}
+  body[data-parcours="release"] .bu-meta .rel b{font-size:11px}
+}
+/* Un cran de plus sous 360 px, et c'est la vignette qui rend la place —
+   il manquait dix-neuf pixels à « 20 BBY – 9 ABY » plus son encadré sur
+   un écran de 320. Le palier ne descend pas plus bas que 360 : à 375 le
+   couple a déjà trente pixels de marge, et rétrécir l'image là où rien ne
+   le demande se paierait sur toutes les cartes. */
+@media(max-width:360px){
+  body[data-parcours="release"] .bu-fig{width:clamp(52px,17vw,96px)}
+  body[data-parcours="release"] .bu-meta .d{font-size:13px}
+}
 .bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
   font-style:italic}
 .bu-end{flex:0 0 auto;display:flex;align-self:center}
@@ -1237,6 +1304,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
               esc(bd[1])+'</span></span>'+
             '<h3 class="bu-title">'+esc(e.title)+'</h3>'+
             '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
+              (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+
+                esc(e.rel)+'</b></span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
             '</span>'+
             (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
@@ -1610,8 +1679,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
      de la République terminée » tomberait sur Tales of the Jedi 4 et se
      débloquerait avant l'Épisode II. Le repère se retrouve donc par son rang
      d'ère, pas par son identifiant. */
-  function markId(id){
+  /* Le repère d'un badge d'ère dans le parcours affiché. Le rewatch a les
+     mêmes ères que la découverte et ne change que ce qu'elles contiennent :
+     le repère s'y retrouve par le rang de l'ère, jamais par l'identifiant,
+     sans quoi « L'ère de la République terminée » tomberait sur Tales of
+     the Jedi 4 et se débloquerait avant l'Épisode II.
+
+     L'ordre de sortie, lui, n'a pas du tout les mêmes ères — il en a cinq
+     contre six, et elles découpent des années de sortie et non des époques
+     de l'univers. Le rang ne veut donc plus rien dire, et les badges y
+     nomment eux-mêmes leur repère, `idsRelease`. Six repères pour cinq
+     ères : les années Disney+ en portent deux, ce qui est permis — un
+     repère marque la fin d'un bloc, pas d'une ère. */
+  function markId(b){
+    var id=(b.ids||[])[0];
     if(ERAS===D.eras) return id;
+    if(ERAS===RL) return (b.idsRelease||b.ids||[])[0];
     for(var i=0;i<D.eras.length;i++){
       var d=D.eras[i].entries;
       if(d[d.length-1].id===id && ERAS[i]){
@@ -1628,7 +1711,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   function descDe(b){ return (MODE==='release'&&b.descRelease)||b.desc; }
   /* Les repères de progression, remis dans l'ordre de la timeline. */
   var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
-    .map(function(b){ return {b:b,i:ixOf(markId((b.ids||[])[0]))}; })
+    .map(function(b){ return {b:b,i:ixOf(markId(b))}; })
     .filter(function(x){ return x.i>-1; })
     .sort(function(a,c){ return a.i-c.i; });
   /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher : le
