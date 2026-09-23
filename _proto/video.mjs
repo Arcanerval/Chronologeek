@@ -57,13 +57,13 @@ const TYPES = {
 };
 
 const T = {
-  en: { ordre:'IN ORDER', hookSub:'no spoilers', entries:'entries', eras:'eras',
+  en: { ordre:'IN ORDER', hookSub:'no spoilers', entries:'entries', eras:'eras', ere1:'era',
         essentiels:'THE ESSENTIALS', essentielsN:'essentials', importants:'THE IMPORTANTS', total:'in total',
         premiere:'FIRST WATCH ORDER', essentiel:'Essential', important:'Important',
         outro1:'The full order', outro2:'free, no account',
         outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR`,
         cta:'chronologeek.app' },
-  fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères',
+  fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères', ere1:'ère',
         essentiels:'LES ESSENTIELS', essentielsN:'essentiels', importants:'LES IMPORTANTS', total:'au total',
         premiere:'PREMIÈRE VISION', essentiel:'Essentiel', important:'Important',
         outro1:"L'ordre complet", outro2:'gratuit, sans compte',
@@ -213,11 +213,13 @@ function ouverture(D, cartes, lang, total, sel) {
   /* un univers a deux parcours ne peut montrer que l'un des deux : la video suit
      `eras`, la decouverte, et le dit — "in order" seul laisserait croire a la
      chronologie du monde, qui est l'autre parcours. */
+  const eres = new Set(cartes.map(c => c.ere)).size;
   if (!sel) return {
     ord: (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre,
     /* --sans retire des eres : la video complete ne montre alors plus toute la
-       page, et l'accroche compte ce qui passe a l'ecran, pas ce que la page porte */
-    st: [[cartes.length, t.entries], [new Set(cartes.map(c => c.ere)).size, t.eras], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
+       page, et l'accroche compte ce qui passe a l'ecran, pas ce que la page porte.
+       Une branche seule n'en laisse qu'une, et "1 eras" se lit a l'accroche. */
+    st: [[cartes.length, t.entries], [eres, eres === 1 ? t.ere1 : t.eras], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
   };
   return {
     ord: sel.nom,
