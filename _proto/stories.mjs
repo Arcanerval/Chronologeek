@@ -27,7 +27,7 @@ const UNIVERS = {
   startrek:       { encre:'#b48cf2', nom:'Star Trek',        img:'startrek' },
   twd:            { encre:'#a8bf4f', nom:'The Walking Dead', img:'twd' },
   dragonage:      { encre:'#e07b39', nom:'Dragon Age',       img:'dragonage' },
-  assassinscreed: { encre:'#c0202f', nom:"Assassin's Creed", img:'acuniverse' },
+  assassinscreed: { encre:'#d4a02c', nom:"Assassin's Creed", img:'acuniverse' },
   dcanimation:    { encre:'#2dd4bf', nom:'DC Animation',     img:'dcanimation' },
   jurassic:       { encre:'#45c46b', nom:'Jurassic World',   img:'jurassicworld' },
   witcher:        { encre:'#b0bec5', nom:'The Witcher',      img:'witcher' },

@@ -73,7 +73,7 @@ rmp('<link rel="preload" as="image" href="/images/dragonage.webp"/>',
    bleu-vert des Caraibes, l'acier du Paris industriel, l'or turquoise de
    l'Antiquite, le violet numerique de l'Animus Hub, et le pourpre neutre
    des Assassins de l'Histoire, qui n'ont pas d'epoque a eux.           */
-rmp(`  --uni:#e07b39;`, `  --uni:#c0202f;`);
+rmp(`  --uni:#e07b39;`, `  --uni:#d4a02c;`);
 rmp(`  --era1:#7a2222; --era2:#7a5a16; --era3:#5c2233;
   --era4:#14515c; --era5:#4a3566;`,
 `  --era1:#8a6a2f; --era2:#7a2230; --era3:#1c5b63;
@@ -114,7 +114,7 @@ rmp(`  /* le seul repère du guide */
 
 /* ══ 3. la navigation ═════════════════════════════════════════════ */
 rmp(`.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}`,
-    `.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#c0202f}`);
+    `.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#d4a02c}`);
 rmp(`<a href="en-twd.html">The Walking Dead</a><a href="#" aria-current="page">Dragon Age</a></div></details>`,
     `<a href="en-twd.html">The Walking Dead</a><a href="en-dragonage.html">Dragon Age</a><a href="#" aria-current="page">Assassin’s Creed</a></div></details>`);
 rmp(`href="e-dragonage.html"`, `href="e-assassinscreed.html"`);

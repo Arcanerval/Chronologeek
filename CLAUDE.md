@@ -73,10 +73,23 @@ français, l'anglais se déduit, et les deux sortent ensemble.
 
 Univers : Star Wars `#4d9fff`, Marvel `#e23636`, DC `#f5c842`, Avatar Legends `#7dd3fc`,
 Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
-Assassin's Creed `#c0202f`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
+Assassin's Creed `#d4a02c`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
 DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`,
-The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`).
+The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`),
+Resident Evil `#dc0000`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
+
+**Assassin's Creed est passé du rouge à l'or le 24 septembre 2026**, sur
+décision de Niko, pour laisser le rouge à Resident Evil — le rouge d'Umbrella,
+relevé dans son logo. Trois univers en rouge auraient été illisibles sur
+l'accueil. Son or est profond (`#d4a02c`), nettement plus sombre que la crête
+de l'accent (`#f0c97c`) : sans cet écart, la case cochée et la date en grand
+se confondraient sur la même carte. Son encadré « Souvenirs » garde en
+revanche son rouge `--memory` — trois ors côte à côte n'en feraient plus
+aucun. Le changement vit dans les **sources** : les trente-quatre protos, les
+deux fichiers de données, `carrousel.mjs`, `erreur404.mjs`, `publier.mjs`,
+`recherche.mjs`, `stories.mjs`, `video.mjs`, `radar.py` et `radar.html`. Les
+pages publiées le prennent à la publication suivante.
 
 **Le quatrième univers s'appelle « Avatar Legends » depuis le 18 août 2026**, pour ne
 plus se confondre avec les films de James Cameron. Seul le libellé change : le fichier

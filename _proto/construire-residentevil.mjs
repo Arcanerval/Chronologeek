@@ -10,11 +10,13 @@
 
    Ce que le document ne donne pas, et qui est donc pose ici :
 
-   - Les cinq eres. Le document est une liste plate de trente lignes, sans
+   - Les quatre eres. Le document est une liste plate de trente lignes, sans
      phases. Le decoupage suit ses propres dates — Raccoon City en 1998, puis
-     l'apres-Umbrella, la bioterreur mondiale, le retour a l'horreur, et
-     Requiem. Ce sont des intitules de structure, l'exception que le
-     CLAUDE.md admet quand la prose n'en a pas.
+     l'apres-Umbrella, la bioterreur mondiale, et le retour a l'horreur, qui
+     va de RE 7 a Shadows of Rose. Ce sont des intitules de structure,
+     l'exception que le CLAUDE.md admet quand la prose n'en a pas. Une
+     cinquieme ere pour Requiem a ete essayee et retiree par Niko : deux
+     entrees n'en font pas une.
    - Les niveaux. Le document les dit en une phrase, et c'est elle qui tranche :
      « If you just want to discover the games in chronological order uncheck
      the rest, all other medias are bonus content (some important) ». Les jeux
@@ -24,9 +26,12 @@
    - Les cinq badges.
 
    Les fiches : les jeux passent par RAWG (`media:"game"`), les films et la
-   serie par TMDB. Le comic « Infinite Darkness - The Beginning » n'a de
-   fiche nulle part et reprend le visuel de la serie qu'il precede, comme
-   Flight 462 reprend celui de Fear the Walking Dead.
+   serie par TMDB. Les vignettes sont celles que Niko a choisies, sous ses
+   noms a lui.
+
+   Deux coquilles sont corrigees, a sa demande : « remaked » deux fois, qui
+   devient « remade », et la majuscule de « Japanese ». Le reste de sa prose
+   est intact, tournures comprises.
 
    Pas de table RT : un guide de jeux video n'a pas de duree a sommer, meme
    raison qu'Avatar Legends, Dragon Age et Assassin's Creed. */
@@ -67,7 +72,7 @@ const ECARTES = [
   ['Original games', 'Original game if a remake exists'],
   ['Ports', 'Ports of some games on other consoles (like Nintendo DS)'],
   ['Novelizations', 'Novelizations of games/movies, DVD bonus, documents...'],
-  ['Japanese-only media', 'All japanese-only media: not canon for the most of them'],
+  ['Japanese-only media', 'All Japanese-only media: not canon for the most of them'],
   ['Survivor games', 'Survivor games: arcade spin-offs hard to find these days and don’t add much to the lore'],
   ['Biohazard 4D-Executer', 'Biohazard 4D-Executer: not canon'],
   ['Live action movies and shows', 'Live action movies and shows: their own canon'],
@@ -90,8 +95,8 @@ const NOTES =
   '<div class="key"><div class="key-h">' + ic.back + 'Flashback</div>' +
   '<p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div>' +
   '<div class="key"><div class="key-h">' + ic.canon + 'Canonicity</div>' +
-  '<p>The main games are all being remaked and are fixing the timeline issues so until ' +
-  'everything is remaked some little things can be a bit odd. In RE and RE: 2 you have to ' +
+  '<p>The main games are all being remade and are fixing the timeline issues so until ' +
+  'everything is remade some little things can be a bit odd. In RE and RE: 2 you have to ' +
   'choose between characters but the canon story is a mix of both paths</p></div></div>' +
   '<details class="cuts"><summary>What’s left out and why?<span class="n">' +
   ECARTES.length + ' entries</span>' +
@@ -101,7 +106,7 @@ const NOTES =
   '</dl></div></details>';
 
 /* ── Les trente entrees ──────────────────────────────────────────────────
-   type      : jeu, dlc, short, filmanim, anime, comic, roman, video
+   type      : jeu, dlc, filmanim, anime, comic, roman, video
    tmdb      : identifiant RAWG pour les jeux (media "game"), TMDB sinon
    date      : celle du document, jamais traduite
    notes     : les lignes que Niko pose sous un titre, mot pour mot */
@@ -109,14 +114,12 @@ const E = [
   { ere: 0, id: 're-re0', type: 'jeu', level: 'must', tmdb: '17179', media: 'game',
     title: 'Resident Evil 0', date: '1998', img: '/images/re0.webp' },
   { ere: 0, id: 're-re1', type: 'jeu', level: 'must', tmdb: '42920', media: 'game',
-    title: 'Resident Evil HD Remaster', date: '1998', img: '/images/re1.webp' },
-  { ere: 0, id: 're-evilname', type: 'short', level: 'bonus', tmdb: '1627865', media: 'movie',
-    title: 'Evil Has Always Had A Name', date: '1998', img: '/images/reevilname.webp' },
+    title: 'Resident Evil HD Remaster', date: '1998', img: '/images/re1hd.webp' },
   { ere: 0, id: 're-outbreak', type: 'jeu', level: 'must', tmdb: '59207', media: 'game',
-    title: 'Resident Evil Outbreak', date: '1998', img: '/images/reoutbreak.webp',
+    title: 'Resident Evil Outbreak', date: '1998', img: '/images/outbreak.webp',
     notes: ['Same week as RE 2 and 3'] },
   { ere: 0, id: 're-outbreak2', type: 'dlc', level: 'must', tmdb: '59208', media: 'game',
-    title: 'Resident Evil Outbreak File #2', date: '1998', img: '/images/reoutbreak2.webp',
+    title: 'Resident Evil Outbreak File #2', date: '1998', img: '/images/outbreak2.webp',
     notes: ['Same week as RE 2 and 3'] },
   { ere: 0, id: 're-re2', type: 'jeu', level: 'must', tmdb: '58813', media: 'game',
     title: 'Resident Evil 2 Remake', date: '1998', img: '/images/re2.webp',
@@ -125,71 +128,78 @@ const E = [
     title: 'Resident Evil 3 Remake', date: '1998', img: '/images/re3.webp',
     notes: ['Same week as RE Outbreak and 2'] },
   { ere: 0, id: 're-cvx', type: 'jeu', level: 'must', tmdb: '290879', media: 'game',
-    title: 'Resident Evil: Code Veronica X', date: '1998', img: '/images/recodeveronica.webp' },
+    title: 'Resident Evil: Code Veronica X', date: '1998', img: '/images/codeveronica.webp' },
   { ere: 0, id: 're-darkside', type: 'jeu', level: 'must', tmdb: '26188', media: 'game',
     title: 'Resident Evil: The Darkside Chronicles', date: '1998-2002',
-    img: '/images/redarkside.webp', tags: ['flashback'] },
+    img: '/images/darksidechronicles.webp', tags: ['flashback'] },
   { ere: 0, id: 're-umbrella', type: 'jeu', level: 'must', tmdb: '25310', media: 'game',
     title: 'Resident Evil: The Umbrella Chronicles', date: '1998-2003',
-    img: '/images/reumbrella.webp', tags: ['flashback'] },
+    img: '/images/umbrellachronicles.webp', tags: ['flashback'] },
 
   { ere: 1, id: 're-re4', type: 'jeu', level: 'must', tmdb: '795632', media: 'game',
     title: 'Resident Evil 4 Remake', date: '2004', img: '/images/re4.webp' },
   { ere: 1, id: 're-revelations', type: 'jeu', level: 'must', tmdb: '4012', media: 'game',
+    /* `revelations.webp` est déjà la vignette d'Assassin's Creed:
+       Revelations — d'où le préfixe, seul de la page. */
     title: 'Resident Evil: Revelations', date: '2005', img: '/images/rerevelations.webp' },
   { ere: 1, id: 're-degeneration', type: 'filmanim', level: 'important', tmdb: '13648', media: 'movie',
-    title: 'Resident Evil: Degeneration', date: '2005', img: '/images/redegeneration.webp' },
+    title: 'Resident Evil: Degeneration', date: '2005', img: '/images/degeneration.webp' },
   { ere: 1, id: 're-id-comic', type: 'comic', level: 'bonus',
     title: 'Resident Evil: Infinite Darkness - The Beginning', date: '2006',
-    img: '/images/reinfinitedarkness.webp' },
+    img: '/images/infinitedarknesscomic.webp' },
   { ere: 1, id: 're-id', type: 'anime', level: 'important', tmdb: '110642', media: 'tv',
     title: 'Resident Evil: Infinite Darkness', date: '2006',
-    img: '/images/reinfinitedarkness.webp', subitems: ['Season 1'] },
+    img: '/images/infinitedarkness.webp', subitems: ['Season 1'] },
 
   { ere: 2, id: 're-re5', type: 'jeu', level: 'must', tmdb: '13461', media: 'game',
     title: 'Resident Evil 5', date: '2009', img: '/images/re5.webp' },
   { ere: 2, id: 're-damnation', type: 'filmanim', level: 'important', tmdb: '133121', media: 'movie',
-    title: 'Resident Evil: Damnation', date: '2011', img: '/images/redamnation.webp' },
+    title: 'Resident Evil: Damnation', date: '2011', img: '/images/damnation.webp' },
   { ere: 2, id: 're-lasplagas', type: 'video', level: 'bonus',
-    title: 'Las Plagas: Organisms of War', date: '2012', img: '/images/relasplagas.webp',
+    title: 'Las Plagas: Organisms of War', date: '2012', img: '/images/lasplagas.webp',
     links: [{ href: 'https://www.youtube.com/watch?v=NS-wB3vS3LU', label: 'Watch the video' }] },
   { ere: 2, id: 're-revelations2', type: 'jeu', level: 'must', tmdb: '17174', media: 'game',
-    title: 'Resident Evil: Revelations 2', date: '2011-2012', img: '/images/rerevelations2.webp' },
+    title: 'Resident Evil: Revelations 2', date: '2011-2012', img: '/images/revelations2.webp' },
   { ere: 2, id: 're-marhawa', type: 'roman', level: 'bonus',
-    title: 'Resident Evil: The Marhawa Desire', date: '2012', img: '/images/remarhawa.webp' },
+    title: 'Resident Evil: The Marhawa Desire', date: '2012', img: '/images/marhawadesire.webp' },
   { ere: 2, id: 're-re6', type: 'jeu', level: 'must', tmdb: '2623', media: 'game',
     title: 'Resident Evil 6', date: '2012-2013', img: '/images/re6.webp' },
   { ere: 2, id: 're-heavenly', type: 'roman', level: 'bonus',
-    title: 'Resident Evil: Heavenly Island', date: '2014', img: '/images/reheavenly.webp' },
+    title: 'Resident Evil: Heavenly Island', date: '2014', img: '/images/heavenlyisland.webp' },
   { ere: 2, id: 're-vendetta', type: 'filmanim', level: 'important', tmdb: '400136', media: 'movie',
-    title: 'Resident Evil: Vendetta', date: '2014', img: '/images/revendetta.webp' },
+    title: 'Resident Evil: Vendetta', date: '2014', img: '/images/vendetta.webp' },
   { ere: 2, id: 're-deathisland', type: 'filmanim', level: 'important', tmdb: '1083862', media: 'movie',
-    title: 'Resident Evil: Death Island', date: '2015', img: '/images/redeathisland.webp' },
+    title: 'Resident Evil: Death Island', date: '2015', img: '/images/deathisland.webp' },
 
   { ere: 3, id: 're-beginninghour', type: 'jeu', level: 'important', tmdb: '12606', media: 'game',
     title: 'Resident Evil 7 Teaser: Beginning Hour', date: '2017',
-    img: '/images/rebeginninghour.webp', notes: ['Prequel demo for RE 7: Biohazard'] },
+    img: '/images/beginninghour.webp', notes: ['Prequel demo for RE 7: Biohazard'] },
   { ere: 3, id: 're-re7', type: 'jeu', level: 'must', tmdb: '480', media: 'game',
     title: 'Resident Evil 7: Biohazard', date: '2017', img: '/images/re7.webp' },
   { ere: 3, id: 're-maiden', type: 'jeu', level: 'important', tmdb: '546461', media: 'game',
-    title: 'Maiden', date: '2021', img: '/images/remaiden.webp',
+    title: 'Maiden', date: '2021', img: '/images/maiden.webp',
     notes: ['Prequel demo for RE: Village'] },
   { ere: 3, id: 're-village', type: 'jeu', level: 'must', tmdb: '452649', media: 'game',
-    title: 'Resident Evil Village', date: '2021', img: '/images/revillage.webp' },
-
-  { ere: 4, id: 're-requiem', type: 'jeu', level: 'must', tmdb: '1004511', media: 'game',
-    title: 'Resident Evil: Requiem', date: '2026', img: '/images/rerequiem.webp' },
-  { ere: 4, id: 're-shadowsofrose', type: 'dlc', level: 'must', tmdb: '802434', media: 'game',
+    title: 'Resident Evil Village', date: '2021', img: '/images/village.webp' },
+  /* Le court-metrage de Requiem : il se joue en 1998, mais il paraît en
+     2026 et il annonce le jeu — Niko l'a sorti de Raccoon City pour le
+     poser ici, en flashback, juste avant lui. */
+  { ere: 3, id: 're-evilname', type: 'video', level: 'bonus', tmdb: '1627865', media: 'movie',
+    title: 'Evil Has Always Had A Name', date: '1998', img: '/images/evilhasalwayhadaname.webp',
+    tags: ['flashback'],
+    links: [{ href: 'https://www.youtube.com/watch?v=M6gXJoN8RNk', label: 'Watch the video' }] },
+  { ere: 3, id: 're-requiem', type: 'jeu', level: 'must', tmdb: '1004511', media: 'game',
+    title: 'Resident Evil: Requiem', date: '2026', img: '/images/requiem.webp' },
+  { ere: 3, id: 're-shadowsofrose', type: 'dlc', level: 'must', tmdb: '802434', media: 'game',
     title: 'Resident Evil Village: Shadows of Rose', date: '2037',
-    img: '/images/reshadowsofrose.webp' }
+    img: '/images/shadowsofrose.webp' }
 ];
 
 const ERES = [
   { title: 'Raccoon City', phase: 'PHASE 1', ink: 1, art: '/images/re2.webp' },
   { title: 'After Umbrella', phase: 'PHASE 2', ink: 2, art: '/images/re4.webp' },
   { title: 'Global Bioterrorism', phase: 'PHASE 3', ink: 3, art: '/images/re6.webp' },
-  { title: 'Back to Horror', phase: 'PHASE 4', ink: 4, art: '/images/re7.webp' },
-  { title: 'Requiem', phase: 'PHASE 5', ink: 5, art: '/images/rerequiem.webp' }
+  { title: 'Back to Horror', phase: 'PHASE 4', ink: 4, art: '/images/re7.webp' }
 ];
 
 const BADGES = [
@@ -205,7 +215,7 @@ const BADGES = [
   { id: 're_winters', universe: 're', icon: '🏚️', color: '#8e6f9e', trigger: 'oeuvre',
     ids: ['re-beginninghour', 're-re7', 're-maiden', 're-village', 're-shadowsofrose'],
     label: 'The Winters Family', desc: 'Ethan and Rose’s story completed' },
-  { id: 're_100', universe: 're', icon: '☣️', color: '#7fe03c', trigger: '100pct', ids: [],
+  { id: 're_100', universe: 're', icon: '☣️', color: '#dc0000', trigger: '100pct', ids: [],
     label: 'Biohazard Master', desc: 'Resident Evil 100% completed' }
 ];
 
@@ -214,7 +224,7 @@ const CG = {
   t: T,
   universe: 're',
   badgeLabels: {
-    jeu: ['bj', 'VIDEO GAME'], dlc: ['bd', 'DLC'], short: ['bh', 'SHORT'],
+    jeu: ['bj', 'VIDEO GAME'], dlc: ['bd', 'DLC'],
     filmanim: ['bfa', 'ANIMATED MOVIE'], anime: ['ba', 'ANIMATED SHOW'],
     comic: ['bc', 'COMIC'], roman: ['br', 'BOOK'], video: ['bv', 'VIDEO']
   },
@@ -232,8 +242,9 @@ const DATA = {
   title: 'Resident Evil',
   subtitle: 'Complete canon timeline',
   description: 'Games · Movies · Show · Books · Comics',
-  color: '#7fe03c',
-  glow: 'rgba(127,224,60,.35)',
+  /* le rouge d'Umbrella, relevé dans le logo que Niko a fourni */
+  color: '#dc0000',
+  glow: 'rgba(220,0,0,.35)',
   notes: NOTES,
   eras: ERES.map((er, i) => ({
     title: er.title, phase: er.phase, ink: er.ink, art: er.art,

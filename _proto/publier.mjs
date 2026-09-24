@@ -281,7 +281,7 @@ const PRERENDU_CSS =
 const BOOT_PLANCHE = '/images/boot-univers.webp';
 // L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
 const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
-                     '#a8bf4f', '#e07b39', '#c0202f', '#2dd4bf', '#45c46b',
+                     '#a8bf4f', '#e07b39', '#d4a02c', '#2dd4bf', '#45c46b',
                      '#b0bec5'];
 
 const BOOT =

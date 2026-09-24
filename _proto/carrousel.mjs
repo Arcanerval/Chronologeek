@@ -24,7 +24,7 @@ const UNIVERS = {
   startrek:       { data: 'data-startrek',        encre: '#b48cf2' },
   twd:            { data: 'data-twd',             encre: '#a8bf4f' },
   dragonage:      { data: 'data-dragonage',       encre: '#e07b39' },
-  assassinscreed: { data: 'data-assassinscreed',  encre: '#c0202f' },
+  assassinscreed: { data: 'data-assassinscreed',  encre: '#d4a02c' },
   dcanimation:    { data: 'data-dcanimation',     encre: '#2dd4bf' },
   jurassic:       { data: 'data-jurassic',        encre: '#45c46b' },
   witcher:        { data: 'data-witcher',         encre: '#b0bec5' },

@@ -42,7 +42,7 @@ UNIVERSES = {
     "avatar":   {"label": "Avatar",        "color": "#7dd3fc", "file": "avatar.html"},
     "startrek": {"label": "Star Trek",     "color": "#b48cf2", "file": "startrek.html"},
     "twd":      {"label": "The Walking Dead", "color": "#a8bf4f", "file": "walkingdead.html"},
-    "assassinscreed": {"label": "Assassin's Creed", "color": "#c0202f",
+    "assassinscreed": {"label": "Assassin's Creed", "color": "#d4a02c",
                        "file": "assassinscreed.html"},
     "witcher":  {"label": "The Witcher", "color": "#b0bec5", "file": "witcher.html"},
 }

@@ -19,7 +19,8 @@
   diagonale, trame de demi-teinte sur les visuels, titrage condensé à ombre
   portée dure et décalée. Aucun halo, aucun verre, aucun arrondi.
   ACCENT : l'or du logo — médiane #d5a05f, crête #f0c97c, c'est la crête.
-  TERMINÉ : jamais l'or, jamais le vert — la couleur de l'univers (#c0202f).
+  TERMINÉ : jamais le vert — la couleur de l'univers, qui est ici un or
+  profond (#d4a02c), nettement plus sombre que la crête de l'accent.
   RÉCIT : le visiteur voit d'abord des images, comprend qu'il choisit, et
   voit sa carte se remplir entrée par entrée.
   TEXTES : tout ce qui est prose vient du document de Niko, mot pour mot,
@@ -56,7 +57,7 @@
   /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières */
   --hot:#f0c97c; --gold-deep:#d5a05f;
   /* la marque « terminé » prend la couleur de l'univers, pas un vert générique */
-  --uni:#c0202f;
+  --uni:#d4a02c;
   /* sept encres de saga, une par bloc du document de Niko. Elles suivent
      le récit : le sable de la Terre sainte, le vin de la Renaissance, le
      bleu-vert des Caraïbes, l'acier du Paris industriel, l'or turquoise
@@ -73,9 +74,10 @@
   --t-jeu:#ffb74d; --t-dlc:#ffcc80; --t-roman:#a99cf9; --t-comic:#4dd0e1;
   --t-film:#64b5f6; --t-video:#f472b6; --t-audio:#80cbc4;
   /* l'encre des souvenirs, celle de l'encadré qui porte la date dans
-     l'univers. C'est le rouge de la timeline — l'encre de l'univers,
-     remontée pour se lire sur le noir : à #c0202f le texte se perd dans le
-     fond, et l'encadré n'est plus qu'un trait sombre. */
+     l'univers. Elle garde le rouge qu'elle a toujours eu : l'univers étant
+     passé à l'or, lui donner l'encre de la timeline mettrait trois ors
+     côte à côte — l'accent, la date en grand et l'encadré — et aucun des
+     trois ne se distinguerait plus. */
   --memory:#e2515f;
   /* les deux repères du guide. Le flashforward est sa signature : les
      trois Chronicles se jouent bien avant leur place dans l'Histoire. */
@@ -187,7 +189,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
 .dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
 .u-sw{--k:#4d9fff}.u-mcu{--k:#e23636}.u-dc{--k:#f5c842}
-.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#c0202f}.u-dca{--k:#2dd4bf}.u-jw{--k:#45c46b}.u-wi{--k:#b0bec5}
+.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#d4a02c}.u-dca{--k:#2dd4bf}.u-jw{--k:#45c46b}.u-wi{--k:#b0bec5}
 .dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
 .dw-site{border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;

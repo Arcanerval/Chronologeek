@@ -467,7 +467,7 @@ const idsDe = (f) => ALL.filter(f).map((e) => e.id);
 const idsSaga = (i) => eras[i].entries.map((e) => e.id);
 
 const badges = [
-  { id: 'ac_desmond',  icon: '🗡️', color: '#c0202f', trigger: 'oeuvre',
+  { id: 'ac_desmond',  icon: '🗡️', color: '#d4a02c', trigger: 'oeuvre',
     ids: [...idsSaga(0), ...idsSaga(1)],
     label: 'The Assassin\u2019s Blood', desc: 'The Altaïr and Ezio sagas completed' },
   { id: 'ac_kenway',   icon: '🏴', color: '#4dd0e1', trigger: 'oeuvre',
@@ -544,8 +544,8 @@ const DATA = {
   title: 'Assassin\u2019s Creed',
   subtitle: 'Chronological Timeline',
   description: 'Games · DLC · Books · Comics',
-  color: '#c0202f',
-  glow: 'rgba(192,32,47,.35)',
+  color: '#d4a02c',
+  glow: 'rgba(212,160,44,.35)',
   notes,
   eras: eras.map((e, i) => ({
     title: e.title,
