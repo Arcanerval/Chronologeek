@@ -2742,6 +2742,13 @@ Jurassic World 13 (7 must / 2 important / 4 bonus) — films essentiels, séries
 animées importantes, romans et court métrage optionnels : le texte de Niko
 n'en posait aucun, la répartition est déduite de son repère « important to
 the overall lore ».
+Resident Evil 30 (14 must / 9 important / 7 bonus) — son document ne les pose
+pas non plus, il dit seulement « all other medias are bonus content (some
+important) ». Niko a tranché le détail le 24 septembre 2026 : les quatorze
+jeux de la ligne principale en `must` ; les quatre films d'animation, la
+série Infinite Darkness, les deux Outbreak et les deux Chronicles — qui
+récapitulent ce qui a déjà été joué — en `important` ; le reste en `bonus`,
+dont les deux démos, Beginning Hour et Maiden.
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
 repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un

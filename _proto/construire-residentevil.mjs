@@ -17,12 +17,13 @@
      l'exception que le CLAUDE.md admet quand la prose n'en a pas. Une
      cinquieme ere pour Requiem a ete essayee et retiree par Niko : deux
      entrees n'en font pas une.
-   - Les niveaux. Le document les dit en une phrase, et c'est elle qui tranche :
-     « If you just want to discover the games in chronological order uncheck
-     the rest, all other medias are bonus content (some important) ». Les jeux
-     sont donc `must`, le reste `bonus`, et `important` va aux quatre films
-     d'animation canon, a la serie Infinite Darkness et aux deux demos, qui
-     sont des jeux mais pas des jeux complets.
+   - Les niveaux. Le document les dit en une phrase — « all other medias are
+     bonus content (some important) » —, et Niko a tranche le detail le
+     24 septembre 2026 : `must` aux quatorze jeux de la ligne principale ;
+     `important` a ce qui compte sans etre indispensable, soit les quatre
+     films d'animation, la serie Infinite Darkness, les deux Outbreak et les
+     deux Chronicles, qui recapitulent ce qui a deja ete joue ; `bonus` au
+     reste, dont les deux demos, Beginning Hour et Maiden.
    - Les cinq badges.
 
    Les fiches : les jeux passent par RAWG (`media:"game"`), les films et la
@@ -115,10 +116,10 @@ const E = [
     title: 'Resident Evil 0', date: '1998', img: '/images/re0.webp' },
   { ere: 0, id: 're-re1', type: 'jeu', level: 'must', tmdb: '42920', media: 'game',
     title: 'Resident Evil HD Remaster', date: '1998', img: '/images/re1hd.webp' },
-  { ere: 0, id: 're-outbreak', type: 'jeu', level: 'must', tmdb: '59207', media: 'game',
+  { ere: 0, id: 're-outbreak', type: 'jeu', level: 'important', tmdb: '59207', media: 'game',
     title: 'Resident Evil Outbreak', date: '1998', img: '/images/outbreak.webp',
     notes: ['Same week as RE 2 and 3'] },
-  { ere: 0, id: 're-outbreak2', type: 'dlc', level: 'must', tmdb: '59208', media: 'game',
+  { ere: 0, id: 're-outbreak2', type: 'dlc', level: 'important', tmdb: '59208', media: 'game',
     title: 'Resident Evil Outbreak File #2', date: '1998', img: '/images/outbreak2.webp',
     notes: ['Same week as RE 2 and 3'] },
   { ere: 0, id: 're-re2', type: 'jeu', level: 'must', tmdb: '58813', media: 'game',
@@ -129,10 +130,10 @@ const E = [
     notes: ['Same week as RE Outbreak and 2'] },
   { ere: 0, id: 're-cvx', type: 'jeu', level: 'must', tmdb: '290879', media: 'game',
     title: 'Resident Evil: Code Veronica X', date: '1998', img: '/images/codeveronica.webp' },
-  { ere: 0, id: 're-darkside', type: 'jeu', level: 'must', tmdb: '26188', media: 'game',
+  { ere: 0, id: 're-darkside', type: 'jeu', level: 'important', tmdb: '26188', media: 'game',
     title: 'Resident Evil: The Darkside Chronicles', date: '1998-2002',
     img: '/images/darksidechronicles.webp', tags: ['flashback'] },
-  { ere: 0, id: 're-umbrella', type: 'jeu', level: 'must', tmdb: '25310', media: 'game',
+  { ere: 0, id: 're-umbrella', type: 'jeu', level: 'important', tmdb: '25310', media: 'game',
     title: 'Resident Evil: The Umbrella Chronicles', date: '1998-2003',
     img: '/images/umbrellachronicles.webp', tags: ['flashback'] },
 
@@ -171,12 +172,12 @@ const E = [
   { ere: 2, id: 're-deathisland', type: 'filmanim', level: 'important', tmdb: '1083862', media: 'movie',
     title: 'Resident Evil: Death Island', date: '2015', img: '/images/deathisland.webp' },
 
-  { ere: 3, id: 're-beginninghour', type: 'jeu', level: 'important', tmdb: '12606', media: 'game',
+  { ere: 3, id: 're-beginninghour', type: 'jeu', level: 'bonus', tmdb: '12606', media: 'game',
     title: 'Resident Evil 7 Teaser: Beginning Hour', date: '2017',
     img: '/images/beginninghour.webp', notes: ['Prequel demo for RE 7: Biohazard'] },
   { ere: 3, id: 're-re7', type: 'jeu', level: 'must', tmdb: '480', media: 'game',
     title: 'Resident Evil 7: Biohazard', date: '2017', img: '/images/re7.webp' },
-  { ere: 3, id: 're-maiden', type: 'jeu', level: 'important', tmdb: '546461', media: 'game',
+  { ere: 3, id: 're-maiden', type: 'jeu', level: 'bonus', tmdb: '546461', media: 'game',
     title: 'Maiden', date: '2021', img: '/images/maiden.webp',
     notes: ['Prequel demo for RE: Village'] },
   { ere: 3, id: 're-village', type: 'jeu', level: 'must', tmdb: '452649', media: 'game',
