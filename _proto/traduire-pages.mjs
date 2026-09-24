@@ -403,6 +403,20 @@ const TRADUCTIONS = [
      pas, et il doit figurer ici pour la nav, le tiroir et le pied de page.
      La mention légale le compte désormais : elle suit juste en dessous. */
   ['Jurassic World', 'Jurassic World'],
+  /* ── la case Resident Evil de l'accueil, 24 septembre 2026 ──────
+     Le décompte « / 30 terminés » n'y est pas : le lexique porte déjà le
+     gabarit « / {n} terminés » → « / {n} completed », et une seconde
+     entrée pour le même moule le rend ambigu — le script renonce alors
+     pour les douze cases d'un coup. Raccoon City et Requiem ne se
+     traduisent pas : aucun titre de la saga n'a de version française. */
+  ['Resident Evil', 'Resident Evil'],
+  ['Douze chronologies tenues à jour, en français et en anglais.',
+   'Twelve timelines kept up to date, in French and English.'],
+  ['Jeux · Films · Mangas · De Raccoon City à Requiem',
+   'Games · Movies · Mangas · From Raccoon City to Requiem'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+
   /* ── la case The Witcher de l'accueil, 20 septembre 2026 ────────
      « faits » plutôt que « vus » : cette timeline se lit et se joue autant
      qu'elle se regarde, et sa page compte déjà en « done ». */

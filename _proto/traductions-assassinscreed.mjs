@@ -367,10 +367,10 @@ export const AC_TRADUCTIONS = [
   ['Part 2', 'Partie 2'],
   ['Games · DLC · Books · Comics — the whole Assassin’s Creed universe in its most optimized order.',
     'Jeux · DLC · Livres · Comics — tout l\'univers Assassin\'s Creed dans son ordre le plus optimisé.'],
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World and The Witcher are trademarks of their respective owners; Chronologeek is an independent fan project.',
-    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World et The Witcher sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
-  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World and The Witcher are trademarks of their respective owners; Chronologeek is an independent fan project.',
-    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World et The Witcher sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
+    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
+    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
 
   /* ════ LES SEPT BADGES ════════════════════════════════════════ */
   ['The Assassin’s Blood', 'Le Sang de l\'Assassin'],

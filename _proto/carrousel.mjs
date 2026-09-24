@@ -28,6 +28,7 @@ const UNIVERS = {
   dcanimation:    { data: 'data-dcanimation',     encre: '#2dd4bf' },
   jurassic:       { data: 'data-jurassic',        encre: '#45c46b' },
   witcher:        { data: 'data-witcher',         encre: '#b0bec5' },
+  residentevil:   { data: 'data-re',              encre: '#dc0000' },
 };
 
 /* encres des badges de type, charte du site */
@@ -136,7 +137,7 @@ const visuel = src => {
 const COUVERTURES = {
   sw:'starwars-banner', mcu:'mcu', dc:'dcmultivers', avatar:'avatar', startrek:'startrek',
   twd:'twd', dragonage:'dragonage', assassinscreed:'acuniverse', dcanimation:'dcanimation',
-  jurassic:'jurassicworld', witcher:'witcher',
+  jurassic:'jurassicworld', witcher:'witcher', residentevil:'residentevil',
 };
 
 function trouveCouverture(cle) {

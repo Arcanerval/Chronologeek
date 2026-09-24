@@ -18,8 +18,8 @@
    nat   "media" un média ajouté à une timeline ou à un Dossier
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
-         assassinscreed | dcanimation | jurassic | witcher, ou "" si le
-         changement ne vise pas un univers
+         assassinscreed | dcanimation | jurassic | witcher |
+         residentevil, ou "" si le changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -37,6 +37,14 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-09", label:"Septembre 2026", items:[
+
+      { nat:"site", uni:"residentevil", kind:"timeline",
+        title:"Nouvelle timeline : Resident Evil",
+        txt:"Les jeux, les films d'animation et les mangas dans l'ordre "+
+            "chronologique — 30 œuvres, de l'épidémie de Raccoon City en "+
+            "1998 à Shadows of Rose en 2037.",
+        img:"/images/residentevil.webp",
+        href:"e-residentevil.html", cta:"Ouvrir la timeline" },
 
       { nat:"site", uni:"witcher", kind:"timeline",
         title:"Nouvelle timeline : The Witcher",

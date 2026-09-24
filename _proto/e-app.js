@@ -1558,6 +1558,7 @@
     { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
     { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic',       alt:'cg-proto-jurassic-alt' },
     { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher' },
+    { u:'residentevil',   prog:'cg-proto-re',             perso:'cg-perso-re' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 

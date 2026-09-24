@@ -29,7 +29,7 @@ Usage :
                                              puis rappelle quoi relancer
 
 Pages : sw, mcu, dc, avatar, startrek, twd, dragonage, assassinscreed, dcanimation,
-        jurassic, witcher, dossier, news, accueil, avenir, dossiers
+        jurassic, witcher, residentevil, dossier, news, accueil, avenir, dossiers
 """
 
 import re
@@ -49,7 +49,8 @@ class Paire:
     Six exceptions : Star Trek, The Walking Dead, Dragon Age, Assassin's Creed,
     DC Animation, Jurassic World et The Witcher s'ecrivent en anglais et le francais en descend.
     Leur source est donc `en-startrek.html`, `en-twd.html`, `en-dragonage.html`,
-    `en-assassinscreed.html`, `en-dcanimation.html`, `en-jurassic.html` et `en-witcher.html`, et `langue_source` le dit — sans quoi mirror
+    `en-assassinscreed.html`, `en-dcanimation.html`, `en-jurassic.html`, `en-witcher.html` et
+    `en-residentevil.html`, et `langue_source` le dit — sans quoi mirror
     ecrirait dans une sortie du script de traduction concerne, perdue au prochain
     passage, sans erreur et sans message."""
 
@@ -82,6 +83,8 @@ PAGES = {
                       "e-jurassic.html", langue_source="en"),
     "witcher":  Paire("witcher.html", "fr/witcher.html", "witcher",
                       "e-witcher.html", langue_source="en"),
+    "residentevil": Paire("residentevil.html", "fr/residentevil.html", "residentevil",
+                          "e-residentevil.html", langue_source="en"),
     "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
                       "dossier-star-wars", "e-dossier-star-wars.html"),
     "news":     Paire("whats-new.html", "fr/nouveautes.html", "news", "e-nouveautes.html"),

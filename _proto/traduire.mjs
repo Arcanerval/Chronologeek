@@ -311,6 +311,13 @@ const TRADUCTIONS = [
      Dixième univers, source anglaise : rien à retrouver en prod. Les deux
      bornes sont des titres de films, et Renaissance est celui de la sortie
      française de Rebirth. */
+  /* ── la carte Resident Evil du 24 septembre 2026 ────────────────
+     Aucune œuvre de la saga n'a de titre français : Raccoon City, Shadows
+     of Rose et les mangas gardent le leur des deux côtés. */
+  ['Nouvelle timeline : Resident Evil', 'New timeline: Resident Evil'],
+  ["Les jeux, les films d'animation et les mangas dans l'ordre chronologique — 30 œuvres, de l'épidémie de Raccoon City en 1998 à Shadows of Rose en 2037.",
+   'The games, the animated movies and the mangas in chronological order — 30 works, from the Raccoon City outbreak in 1998 to Shadows of Rose in 2037.'],
+
   /* ── la carte The Witcher du 20 septembre 2026 ──────────────────
      « Le Chemin sans retour » est le titre de la nouvelle en français ;
      l'anglaise s'appelle « The Road of No Return », et Blood Stone n'a pas

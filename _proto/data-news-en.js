@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-09", label:"September 2026", items:[
+      {"nat":"site","uni":"residentevil","kind":"timeline","title":"New timeline: Resident Evil","txt":"The games, the animated movies and the mangas in chronological order — 30 works, from the Raccoon City outbreak in 1998 to Shadows of Rose in 2037.","img":"/images/residentevil.webp","href":"en-residentevil.html","cta":"Open the timeline"},
       {"nat":"site","uni":"witcher","kind":"timeline","title":"New timeline: The Witcher","txt":"Sapkowski's books and CD Projekt RED's games and comics, in two columns side by side — 54 works, from The Road of No Return to Blood Stone.","href":"en-witcher.html","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"roman","title":"Reign of the Empire: Edge of the Abyss","meta":"6 BBY","vo":true,"txt":"Added to the Star Wars Deep Dive — the novel, in 6 BBY, at the end of the Empire era, just before the Rebellion era.","href":"en-dossier-star-wars.html#6-bby-reign-of-the-empire-edge-of-the-abyss","cta":"See in the Deep Dive"},
       {"nat":"site","uni":"jurassic","kind":"timeline","title":"New timeline: Jurassic World","txt":"From Jurassic Park to Rebirth — the seven movies, the two animated series, three books and a short film, for a first watch or a rewatch.","href":"en-jurassic.html","cta":"Open the timeline"},

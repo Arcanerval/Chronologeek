@@ -167,6 +167,20 @@
       "image": "https://chronologeek.app/images/acuniverse.webp"
     }
   },
+  "residentevil": {
+    "fr": {
+      "title": "Chronologie Resident Evil : l’ordre des jeux | Chronologeek",
+      "ogTitle": "Timeline Resident Evil — Chronologeek",
+      "desc": "La timeline Resident Evil dans l’ordre chronologique — 30 œuvres, les jeux, les films d’animation et les mangas, de Raccoon City à Requiem, sans spoil.",
+      "image": "https://chronologeek.app/images/residentevil.webp"
+    },
+    "en": {
+      "title": "Resident Evil Timeline &amp; Game Order | Chronologeek",
+      "ogTitle": "Resident Evil Timeline — Chronologeek",
+      "desc": "The Resident Evil timeline in chronological order — 30 entries, the games, the animated movies and the mangas, from Raccoon City to Requiem, spoiler-free.",
+      "image": "https://chronologeek.app/images/residentevil.webp"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers : ordres de lecture et guides | Chronologeek",

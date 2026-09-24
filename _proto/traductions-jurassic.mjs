@@ -115,8 +115,8 @@ export const JW_TRADUCTIONS = [
    'Dans ce préquel des films Jurassic World, Claire Dearing, étudiante de première année, fait un stage dans le parc à thème Jurassic World, qui s’apprête à ouvrir. Elle y tombe amoureuse de Justin, un autre étudiant, et met au jour un sinistre complot.'],
 
   /* la mention légale du pied de page, qui compte désormais Jurassic World */
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World and The Witcher are trademarks of their respective owners; Chronologeek is an independent fan project.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World et The Witcher sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
 ];
 
 export const JW_GABARITS = [

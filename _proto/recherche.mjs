@@ -47,7 +47,7 @@ const ENCRES = {
   sw: '#4d9fff', mcu: '#e23636', dc: '#f5c842', avatar: '#7dd3fc',
   startrek: '#b48cf2', twd: '#a8bf4f', dragonage: '#e07b39',
   assassinscreed: '#d4a02c', dcanimation: '#2dd4bf', jurassic: '#45c46b',
-  witcher: '#b0bec5',
+  witcher: '#b0bec5', residentevil: '#dc0000',
 };
 
 // Le Dossier reprend l'encre de Star Wars : c'est le sien.

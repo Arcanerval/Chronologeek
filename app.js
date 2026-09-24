@@ -1558,6 +1558,7 @@
     { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
     { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic',       alt:'cg-proto-jurassic-alt' },
     { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher' },
+    { u:'residentevil',   prog:'cg-proto-re',             perso:'cg-perso-re' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -1986,6 +1987,9 @@
                   ['Fandom Arkham', 'https://arkhamcity.fandom.com/wiki/Timeline'],
                   ['Fandom DCAU', 'https://dcau.fandom.com/wiki/Timeline']],
     jurassicworld: [['Fandom', 'https://jurassicpark.fandom.com/wiki/Timeline'], [WIKI], ['Reddit']],
+    residentevil: [['Eklecty-City', 'https://www.eklecty-city.fr/jeux-video/resident-evil-requiem-chronologie-complete-histoire/'],
+                   ['Fandom', 'https://residentevil.fandom.com/wiki/Prime_universe'],
+                   ['RETimelineApp', 'https://residenteviltimelineapp.com/']],
     witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
               ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
               ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']],

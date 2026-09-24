@@ -21,6 +21,8 @@
   "data/jurassicworld-en.js": "_proto/data-jurassic-en.js",
   "data/witcher-fr.js": "_proto/data-witcher.js",
   "data/witcher-en.js": "_proto/data-witcher-en.js",
+  "data/residentevil-fr.js": "_proto/data-re.js",
+  "data/residentevil-en.js": "_proto/data-re-en.js",
   "data/dossier-star-wars-fr.js": "_proto/data-dossier-sw.js",
   "data/dossier-star-wars-en.js": "_proto/data-dossier-sw-en.js",
   "data/news-fr.js": "_proto/data-news.js",

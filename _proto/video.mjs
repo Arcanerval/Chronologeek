@@ -43,6 +43,7 @@ const UNIVERS = {
   dcanimation:    { data: 'data-dcanimation',    encre: '#2dd4bf', cover: 'dcanimation' },
   jurassic:       { data: 'data-jurassic',       encre: '#45c46b', cover: 'jurassicworld' },
   witcher:        { data: 'data-witcher',        encre: '#b0bec5', cover: 'witcher' },
+  residentevil:   { data: 'data-re',             encre: '#dc0000', cover: 'residentevil' },
 };
 
 const TYPES = {

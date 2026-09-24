@@ -62,6 +62,13 @@ chaîne inversée » plus bas. **The Walking Dead fait pareil** —
 sont la source, `node _proto/traduire-witcher.mjs` écrit `e-witcher.html` et
 `data-witcher.js`. Publié le 20 septembre 2026 sous `/witcher` et
 `/fr/witcher` : le site compte trente-deux pages et onze univers.
+**Resident Evil est le huitième** — `en-residentevil.html` + `data-re-en.js`
+sont la source, `node _proto/traduire-residentevil.mjs` écrit
+`e-residentevil.html` et `data-re.js`. Publié le 24 septembre 2026 sous
+`/residentevil` et `/fr/residentevil` : le site compte trente-quatre pages
+et douze univers. Trente œuvres en quatre phases, aucune traduite — Capcom
+n'a jamais sorti un titre de la saga en français, et c'est la seule page du
+site dont `RETROUVES` est vide.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -1496,7 +1503,7 @@ français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul end
 du dépôt où l'on traduit dans ce sens.
 
 **Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age, Assassin's Creed,
-DC Animation, Jurassic World ni The Witcher dans `PAGES` de
+DC Animation, Jurassic World, The Witcher ni Resident Evil dans `PAGES` de
 `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
 écraserait la source avec une retraduction de sa propre sortie, sans erreur et
 sans message.
