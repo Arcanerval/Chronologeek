@@ -311,6 +311,12 @@ const TRADUCTIONS = [
      Dixième univers, source anglaise : rien à retrouver en prod. Les deux
      bornes sont des titres de films, et Renaissance est celui de la sortie
      française de Rebirth. */
+  /* ── la consigne de version d'Endgame, 25 septembre 2026 ────────
+     « Endgame Encore » est le nom de la réédition, il ne se traduit
+     pas ; le reste est la phrase de Niko, mot pour mot en anglais. */
+  ['⚠️ Pas la version Endgame Encore !!! Elle spoile de futurs projets !',
+   'Not Endgame Encore version !!! It spoils future projects !'],
+
   /* ── la carte Resident Evil du 24 septembre 2026 ────────────────
      Aucune œuvre de la saga n'a de titre français : Raccoon City, Shadows
      of Rose et les mangas gardent le leur des deux côtés. */

@@ -545,6 +545,10 @@ body[data-parcours="release"] .pc-release{display:inline-flex}
 }
 .bu-note{display:block;font-size:12.5px;color:rgba(255,253,247,.7);margin-top:6px;
   font-style:italic}
+/* la consigne de version : c'en est une, pas une remarque — elle se lit en
+   plein, sans italique, et prend l'accent. Même dessin que le `bignote` de
+   Batman v Superman sur la page DC. */
+.bu-note.big{font-style:normal;font-weight:700;color:var(--hot);letter-spacing:.02em}
 .bu-end{flex:0 0 auto;display:flex;align-self:center}
 .bu-end svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
   stroke-linecap:square;transition:transform .18s;color:rgba(255,253,247,.66)}
@@ -1448,6 +1452,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
                 esc(e.rel)+'</b></span>':'')+
               (d?'<span>'+hm(d)+'</span>':'')+
             '</span>'+
+            (e.bignote?'<span class="bu-note big">'+esc(e.bignote)+'</span>':'')+
             (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
           '</span>'+
           '<span class="bu-end">'+ICO.chev+'</span>'+
