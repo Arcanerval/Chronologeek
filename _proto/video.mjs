@@ -1,9 +1,12 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--cadre 0%]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--cadre 0%] [--couv img]
 
    --cadre cale la couverture de l'accroche (object-position horizontal) : la
    bannière DC montre l'Arrowverse à gauche et le DCEU à droite, et une vidéo
    Arrowverse se cadre à 0 %.
+
+   --couv remplace cette couverture, chemin depuis la racine ou URL : le DCU
+   n'est nulle part sur la bannière DC, et aucun cadrage ne le rattrape.
 
    --titre remplace le nom de l'univers a l'accroche, en tete de carte et a la fin :
    une video DC sans les origines ne montre plus le « Multiverse Guide » entier,
@@ -228,12 +231,18 @@ function ouverture(D, cartes, lang, total, sel) {
   };
 }
 
-function page(cle, D, cartes, lang, total, sel, titre, cadre) {
+function page(cle, D, cartes, lang, total, sel, titre, cadre, couv) {
   const t = T[lang];
   const encre = UNIVERS[cle].encre;
   const nom = titre || decode(D.title || cle);
   const ouv = ouverture(D, cartes, lang, total, sel);
-  const cover = couverture(cle);
+  /* --couv remplace la banniere de l'univers a l'accroche : une branche qui n'y
+     figure pas montrerait sinon une autre continuite. La banniere DC tient
+     l'Arrowverse a gauche et le DCEU a droite, et le DCU n'y est nulle part —
+     aucun cadrage ne le rattrape. */
+  const cover = couv ? (/^https?:/.test(couv)
+    ? couv
+    : 'file:///' + path.resolve(RACINE, couv).replace(/\\/g,'/')) : couverture(cle);
   const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
   /* la legende des signes, et seulement de ceux que la video montre : Star Trek
      n'a pas de niveaux, un univers sans flashback n'a pas de pastille. Les mots
@@ -458,10 +467,11 @@ async function main() {
   const audio = val('--audio', null);
   const titre = val('--titre', null);
   const cadre = val('--cadre', null);
+  const couv = val('--couv', null);
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
-      '> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--audio piste.mp3]');
+      '> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--couv img] [--audio piste.mp3]');
     process.exit(1);
   }
   if (audio && !fs.existsSync(audio)) throw new Error(`--audio : fichier introuvable "${audio}"`);
@@ -497,7 +507,7 @@ async function main() {
     : only === 'must+' ? { nom: T[lang].importants, unite: T[lang].entries }
     : null;
 
-  const html = page(cle, D, cartes, lang, total, sel, titre, cadre);
+  const html = page(cle, D, cartes, lang, total, sel, titre, cadre, couv);
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
 
