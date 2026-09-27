@@ -28,7 +28,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { jsonLd } from './jsonld.mjs';
-import { prerendu, comptePrerendu } from './prerendu.mjs';
+import { prerendu, comptePrerendu, accroche } from './prerendu.mjs';
 import { SOURCES } from './jsonld.mjs';
 import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
@@ -241,9 +241,64 @@ const LIEN_FLUX = langue =>
   `<link rel="alternate" type="application/atom+xml" href="/${langue === 'fr' ? 'fr/' : ''}feed.xml" ` +
   `title="${langue === 'fr' ? 'Chronologeek — Nouveautés' : 'Chronologeek — What’s new'}"/>`;
 
+// Les polices de repli, posées le 27 septembre 2026.
+//
+// Big Shoulders arrive après le premier affichage — 567 ms contre 524, mesuré
+// en local avec le préchargement. `font-display:block` cache le texte pendant
+// l'attente, mais **la page est mise en page avec la police de secours**, et
+// l'arrivée de la vraie la remet en page : 0,06 à 0,13 de décalage cumulé sur
+// chaque page, Chivo ajoutant le sien cent millisecondes plus tard.
+//
+// La réponse est la technique de `next/font` : une famille de repli sur Arial,
+// rétrécie par `size-adjust` à la largeur moyenne de la vraie, et dont les
+// métriques verticales sont forcées sur les siennes. Le texte, invisible,
+// occupe alors déjà la place qu'il aura.
+//
+// - **Big Shoulders est étroite** : 69,6 % de la largeur d'Arial gras au 900,
+//   65 % au 800, 60,4 % au 700, 54,2 % d'Arial au regular — mesuré au canvas
+//   sur les titres, la navigation et les pastilles du site. D'où une face par
+//   tranche de graisse.
+// - **Les métriques verticales viennent des fichiers** (fontTools) : 0,984 et
+//   0,213 d'em pour Big Shoulders, 0,94 et 0,25 pour Chivo, sans interligne.
+//   Elles se divisent par `size-adjust`, qui les réduit aussi.
+// - **Les noms s'ajoutent à la publication, pas dans les protos** : 898
+//   déclarations écrivent `font-family:'Big Shoulders Display';` sans rien
+//   derrière, sur trente fichiers source. `repli()` les complète toutes, et
+//   laisse les `@font-face` tranquilles.
+// - Sans Arial (Android, Linux), `local()` échoue et le navigateur retombe sur
+//   `sans-serif`, comme avant : rien n'est pire qu'aujourd'hui.
+const REPLI_FACE = (famille, poids, local, sa, asc, desc) =>
+  `@font-face{font-family:'${famille}';font-weight:${poids};src:${local};` +
+  `size-adjust:${sa}%;ascent-override:${(asc / sa * 100).toFixed(1)}%;` +
+  `descent-override:${(desc / sa * 100).toFixed(1)}%;line-gap-override:0%}`;
+const ARIAL = "local('Arial'),local('ArialMT'),local('Liberation Sans')";
+const ARIAL_GRAS = "local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold')";
+const FONTES_REPLI = '<style>' + [
+  REPLI_FACE('BSD repli', '100 599', ARIAL,      54.2, .984, .213),
+  REPLI_FACE('BSD repli', '600 749', ARIAL_GRAS, 60.4, .984, .213),
+  REPLI_FACE('BSD repli', '750 849', ARIAL_GRAS, 65.0, .984, .213),
+  REPLI_FACE('BSD repli', '850 900', ARIAL_GRAS, 69.6, .984, .213),
+  REPLI_FACE('Chivo repli', '100 549', ARIAL,      105.0, .94, .25),
+  REPLI_FACE('Chivo repli', '550 900', ARIAL_GRAS, 99.4,  .94, .25),
+].join('') + '</style>';
+
+// Ajoute la famille de repli derrière chaque déclaration, guillemet échappé
+// compris (le CSS écrit dans les chaînes de `e-app.js`). Les `@font-face` ne
+// sont pas touchés : ils nomment la famille, ils ne l'emploient pas.
+function repli(texte) {
+  let n = 0;
+  const out = texte.replace(/(@font-face\{)?(font-family:\s*)(\\?')(Big Shoulders Display|Chivo)\3/g,
+    (tout, face, decl, q, nom) => {
+      if (face) return tout;
+      n++;
+      return `${decl}${q}${nom}${q},${q}${nom === 'Chivo' ? 'Chivo' : 'BSD'} repli${q}`;
+    });
+  return { out, n };
+}
+
 const PRERENDU_CSS =
   '<script>document.documentElement.className+=" js"</script>\n' +
-  '<style>.js .pr{visibility:hidden}</style>';
+  '<style>.js .pr{visibility:hidden}</style>\n' + FONTES_REPLI;
 
 // L'écran d'arrivée, sur les deux accueils seulement.
 //
@@ -662,9 +717,27 @@ function publier(route, langue) {
     problemes.push(`${c.sortie} : aucune donnée structurée`);
   }
 
+  // 5 bis. l'accroche, **avant** le recâblage : elle porte des liens écrits
+  //    `e-*.html` dans les données. Voir `accroche()` dans prerendu.mjs.
+  try {
+    const acc = accroche({ racine: RACINE, cle: route.cle, langue });
+    if (acc) {
+      const avantAcc = h;
+      h = h.replace(/(<div class="intro" id="intro">)(<\/div>)/, (t, a, b) => a + acc + b);
+      if (h === avantAcc) problemes.push(`${c.sortie} : <div id="intro"></div> introuvable, accroche non posée`);
+    }
+  } catch (e) {
+    problemes.push(`${c.sortie} : accroche — ${e.message}`);
+  }
+
   // 6. les liens de maquette deviennent les URL du site, les données et le
   //    moteur prennent leur nom de production
   h = recabler(h, c.sortie, problemes);
+
+  // 6 bis. les polices de repli derrière chaque déclaration — voir FONTES_REPLI
+  const rp = repli(h);
+  h = rp.out;
+  if (!rp.n) problemes.push(`${c.sortie} : aucune police de repli posée`);
 
   // 7. le texte des entrées dans le HTML servi
   //
@@ -725,7 +798,9 @@ const copies = [];
 for (const [src, dest] of Object.entries(ASSETS)) {
   const de = `_proto/${src}`;
   if (!existe(de)) { problemes.push(`${de} manquant`); continue; }
-  const contenu = recabler(lire(de), dest, problemes);
+  let contenu = recabler(lire(de), dest, problemes);
+  // Le CSS écrit par `e-app.js` et `e-perso.js` suit la même règle que les pages.
+  if (/\.js$/.test(dest) && !/^\/data\//.test(dest)) contenu = repli(contenu).out;
   copies.push({ dest, octets: contenu.length });
   if (!CHECK) ecrire(dest.slice(1), contenu);
 }

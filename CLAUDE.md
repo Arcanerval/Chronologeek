@@ -1187,10 +1187,28 @@ Cinq choses à savoir :
   **`visibility`, pas `display`**, depuis le 27 septembre 2026. Replié à zéro,
   le pré-rendu laissait au premier affichage une page sans timeline : le pied de
   page tombait à mi-écran, puis la timeline du JS l'éjectait. Mesuré : 0,29 de
-  décalage cumulé pour ce seul mouvement, sur toutes les pages à timeline. Il
-  en reste deux autres sources, non corrigées : le changement de police du
-  héros vers 590 ms (0,06 à 0,13), et l'accroche (`intro` ou `notes`) écrite
-  par le JS, qui pousse la timeline vers 920 ms (0,03 à 0,15).
+  décalage cumulé pour ce seul mouvement, sur toutes les pages à timeline.
+
+  **Les deux autres sources ont été corrigées le même jour**, et les pages
+  passent de 0,14–0,42 à 0,01–0,09 :
+  - **L'accroche est posée dans le HTML** (`accroche()` de `prerendu.mjs`),
+    avant le recâblage puisqu'elle porte des liens. Vide, `#intro` se
+    remplissait vers 900 ms et poussait la timeline.
+  - **Les polices ont une famille de repli calée sur leurs métriques**
+    (`FONTES_REPLI` et `repli()` dans `publier.mjs`) : Arial rétréci par
+    `size-adjust`, métriques verticales forcées. Le nom est ajouté à la
+    publication derrière les 898 `font-family:'Big Shoulders Display'` qui
+    n'avaient rien derrière.
+  - **Et le `max-width:12ch` du nom dans le h1 est devenu `6.08em`.** Un `ch`
+    est la largeur du « 0 » *de la police en cours* : en repli il est plus
+    étroit, « RESIDENT EVIL » passait sur deux lignes, puis revenait sur une
+    à l'arrivée de Big Shoulders — 0,13 à lui seul. 6,08 em, c'est 12 ch en
+    Big Shoulders 900 (le « 0 » y fait 0,507 em). Même chose pour le
+    `14ch` du h1 du Dossier, devenu `7.1em`. **Pas de `ch` sur un élément
+    dont la police se fait attendre.**
+
+  Ce qui reste : l'encart « prochaine sortie » (0,02, déjà connu), et sur
+  l'accueil le bloc de recherche inséré par `e-app.js` (0,08).
 - **Liste noire, jamais liste blanche.** Les neuf univers n'ont pas le même
   schéma : Star Wars et Marvel portent leur texte dans `faq`, DC et Star Trek
   dans `subitems`, Assassin's Creed dans `notes` et `desc`, et **The Walking
@@ -1991,7 +2009,8 @@ valeur suit.
 Cinq choses à savoir :
 
 - **Le rendu ne bouge pas d'un pixel, et quatre règles y pourvoient.**
-  `max-width:12ch` passe du h1 au `.nm` seul — laissée sur le h1, elle cassait la
+  `max-width:12ch` (devenue `6.08em` le 27 septembre 2026, voir le pré-rendu)
+  passe du h1 au `.nm` seul — laissée sur le h1, elle cassait la
   pastille dans la colonne étroite du titre ; `.tag` reprend `display:block` avec
   `width:max-content`, sinon elle s'étire ou se met sur la ligne du nom ;
   `text-shadow:none`, **l'ombre décalée de `.off` s'héritant** ; et

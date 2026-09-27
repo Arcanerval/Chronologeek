@@ -157,6 +157,33 @@ export function prerendu({ racine, cle, langue }) {
   return `<div class="pr"><!--prerendu-->${corps}<!--/prerendu--></div>`;
 }
 
+/**
+ * L'accroche d'une page, telle que son script l'écrira : `D.notes` sur les
+ * douze timelines, `CGD.intro` sur le Dossier. '' si la page n'en a pas.
+ *
+ * **Posée le 27 septembre 2026, pour le décalage de mise en page.** Vide au
+ * premier affichage, `#intro` se remplissait vers 900 ms et poussait toute la
+ * timeline vers le bas : 0,03 à 0,15 de décalage selon la page, le seuil de
+ * Google étant 0,1. Posée dans le HTML, elle a sa hauteur dès le départ, et le
+ * script la remplace à l'identique.
+ *
+ * **Contrairement au pré-rendu de la timeline, elle n'est pas cachée** : c'est
+ * le HTML même que la page affiche, avec ses classes. Et **elle passe par le
+ * recâblage** — elle porte des liens d'une page à l'autre depuis le 5 septembre
+ * 2026, écrits `e-dcanimation.html` dans les données.
+ */
+export function accroche({ racine, cle, langue }) {
+  if (SOURCES[cle]) {
+    const [fichier, global] = SOURCES[cle][langue];
+    return charge(racine, fichier, global)[global].notes || '';
+  }
+  if (cle === 'dossier-sw') {
+    const [fichier, global] = DOSSIER[langue];
+    return charge(racine, fichier, global)[global].intro || '';
+  }
+  return '';
+}
+
 /** Le nombre d'entrées rendues, pour le bilan de publication. */
 export function comptePrerendu(html) {
   return (html.match(/<(?:article|li) id=/g) || []).length;

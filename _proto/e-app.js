@@ -2949,7 +2949,9 @@
        par effondrement et ne sépare plus rien — mesurée à 0 px du haut du
        corps. Le cadre est porté par `.nx-in`, donc le padding du conteneur ne
        se voit pas. */
-    '.nx{padding-top:34px;margin:0 auto}',
+    /* L'encre de l'univers, éclaircie d'un quart : le rouge de Marvel tombait à
+       4,48 de contraste sur le fond de l'encart, sous le 4,5 exigé. */
+    '.nx{padding-top:34px;margin:0 auto;--nx-c:color-mix(in srgb,var(--uni) 75%,#fff)}',
     /* Centré et à la largeur de son contenu, comme la pastille du titre et la
        ligne « Mis à jour » : les encadrés de ces pages ne s'étirent pas d'un
        bord à l'autre, ils se posent au milieu. `max-width` le borne quand le
@@ -2960,18 +2962,18 @@
       'background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--uni) 13%,transparent) 50%,transparent);',
       'border-left:3px solid var(--uni);border-right:3px solid var(--uni)}',
     '.nx-lab{font-weight:700;font-size:11px;line-height:1;letter-spacing:.09em;',
-      'text-transform:uppercase;color:var(--uni);flex:0 0 auto}',
+      'text-transform:uppercase;color:var(--nx-c);flex:0 0 auto}',
     '.nx-t{font-weight:700;font-size:14.5px;flex:1 1 auto;min-width:0}',
     '.nx-ep{opacity:.72;font-weight:400}',
     '.nx-d{font-size:12.5px;opacity:.66;flex:0 0 auto}',
     /* Le compte à rebours est un signe, pas une phrase. Les deux derniers
        jours il devient un mot, et un mot ne tient pas dans la place d'un
        signe : il se resserre, comme au radar. */
-    '.nx-cd{font-weight:900;font-size:15px;line-height:1;color:var(--uni);flex:0 0 auto;',
+    '.nx-cd{font-weight:900;font-size:15px;line-height:1;color:var(--nx-c);flex:0 0 auto;',
       'padding:5px 9px;border:1px solid color-mix(in srgb,var(--uni) 45%,transparent);',
       'border-radius:7px}',
     '.nx-cd.mot{font-size:11px;letter-spacing:.06em}',
-    '.nx-a{flex:0 0 auto;font-size:12.5px;color:var(--uni);text-decoration:none;',
+    '.nx-a{flex:0 0 auto;font-size:12.5px;color:var(--nx-c);text-decoration:none;',
       'border-bottom:1px solid color-mix(in srgb,var(--uni) 40%,transparent);padding-bottom:1px}',
     '.nx-a:hover{border-bottom-color:var(--uni)}',
     /* Sous 560 px la ligne se plie : le titre garde sa ligne entière et le

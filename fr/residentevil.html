@@ -12,6 +12,7 @@
 <link rel="alternate" type="application/atom+xml" href="/fr/feed.xml" title="Chronologeek — Nouveautés"/>
 <script>document.documentElement.className+=" js"</script>
 <style>.js .pr{visibility:hidden}</style>
+<style>@font-face{font-family:'BSD repli';font-weight:100 599;src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:54.2%;ascent-override:1.8%;descent-override:0.4%;line-gap-override:0%}@font-face{font-family:'BSD repli';font-weight:600 749;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');size-adjust:60.4%;ascent-override:1.6%;descent-override:0.4%;line-gap-override:0%}@font-face{font-family:'BSD repli';font-weight:750 849;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');size-adjust:65%;ascent-override:1.5%;descent-override:0.3%;line-gap-override:0%}@font-face{font-family:'BSD repli';font-weight:850 900;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');size-adjust:69.6%;ascent-override:1.4%;descent-override:0.3%;line-gap-override:0%}@font-face{font-family:'Chivo repli';font-weight:100 549;src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:105%;ascent-override:0.9%;descent-override:0.2%;line-gap-override:0%}@font-face{font-family:'Chivo repli';font-weight:550 900;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');size-adjust:99.4%;ascent-override:0.9%;descent-override:0.3%;line-gap-override:0%}</style>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>Chronologie Resident Evil : l’ordre des jeux | Chronologeek</title>
 <meta name="description" content="La timeline Resident Evil dans l’ordre chronologique — 30 œuvres, les jeux, les films d’animation et les mangas, de Raccoon City à Requiem, sans spoil."/>
@@ -100,7 +101,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-x:none}
 body{background:var(--ink);color:var(--paper);
-  font-family:'Chivo',system-ui,sans-serif;font-size:15px;line-height:1.45;
+  font-family:'Chivo','Chivo repli',system-ui,sans-serif;font-size:15px;line-height:1.45;
   -webkit-font-smoothing:antialiased;overflow-x:clip;overscroll-behavior-x:none;
   /* la barre du bas se mesure : elle passe sur deux lignes en etroit */
   padding-bottom:calc(var(--hud-h,50px) + 14px)}
@@ -109,7 +110,7 @@ a{color:inherit}
 .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
 ::selection{background:var(--hot);color:var(--ink)}
 :focus-visible{outline:3px solid var(--hot);outline-offset:3px}
-.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+.disp{font-family:'Big Shoulders Display','BSD repli',sans-serif;font-weight:900;
   text-transform:uppercase;line-height:.9;letter-spacing:.005em}
 /* l'ombre décalée dure : réservée aux grands titres, jamais aux entrées —
    sur une bulle elle débordait de la case et passait sur le titre voisin */
@@ -133,7 +134,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .brand{display:flex;align-items:center;text-decoration:none;flex:0 1 auto;min-width:0}
 .brand img{height:auto;width:auto;max-height:23px;max-width:100%}
 .nav-links{display:flex;gap:14px;margin-left:18px;flex-wrap:wrap}
-.nav-links a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+.nav-links a{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;
   text-transform:uppercase;letter-spacing:.07em;color:rgba(255,253,247,.7);text-decoration:none;
   padding:2px 0;border-bottom:2px solid transparent}
 .nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
@@ -167,7 +168,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    <details> le fait sans une ligne de JS et se pilote au clavier. */
 .nav-more{position:relative}
 .nav-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
-  font-family:'Big Shoulders Display';font-weight:800;font-size:16px;text-transform:uppercase;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;text-transform:uppercase;
   letter-spacing:.07em;color:rgba(255,253,247,.7);padding:2px 0;
   border-bottom:2px solid transparent}
 .nav-more>summary::-webkit-details-marker{display:none}
@@ -180,7 +181,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .more-pop{position:absolute;top:calc(100% + 10px);left:-13px;z-index:70;min-width:192px;
   background:var(--ink);border:2px solid var(--paper);padding:4px 0;
   box-shadow:0 9px 0 rgba(13,11,18,.5)}
-.more-pop a{display:block;padding:9px 15px;font-family:'Big Shoulders Display';font-weight:800;
+.more-pop a{display:block;padding:9px 15px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
   font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,253,247,.78);
   text-decoration:none;white-space:nowrap;border-bottom:0}
 .more-pop a:hover{background:var(--paper);color:var(--ink)}
@@ -193,11 +194,11 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   max-height:calc(100vh - var(--hh,53px));overflow-y:auto}
 .drawer.open{display:block}
 .drawer a[aria-current]{color:var(--hot)}
-.dw-lab{display:block;padding:11px 20px 5px;font-family:'Big Shoulders Display';font-weight:800;
+.dw-lab{display:block;padding:11px 20px 5px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
   font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,253,247,.44)}
 .dw-uni{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 16px 12px}
 .dw-uni a{display:flex;align-items:center;gap:8px;padding:10px 9px;text-decoration:none;
-  font-family:'Big Shoulders Display';font-weight:800;font-size:16.5px;text-transform:uppercase;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16.5px;text-transform:uppercase;
   letter-spacing:.04em;line-height:1.05;color:rgba(255,253,247,.86);border:2px solid var(--line)}
 .dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
 .dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
@@ -205,7 +206,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#d4a02c}.u-dca{--k:#2dd4bf}.u-jw{--k:#45c46b}.u-wi{--k:#b0bec5}.u-re{--k:#dc0000}
 .dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
 .dw-site{border-top:2px solid rgba(255,253,247,.14)}
-.dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display';font-weight:800;
+.dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
   font-size:21px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
   border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a:first-child{border-top:0}
@@ -229,9 +230,9 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
              color-mix(in srgb,var(--uni) 34%,var(--ink)) 38%,
              color-mix(in srgb,var(--era3) 40%,transparent))}
 .attract .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:28px}
-.attract h1{font-size:clamp(50px,11vw,140px)}.attract h1 .nm{display:block;max-width:12ch;margin-inline:auto}.attract h1 .tag{display:block;width:max-content;max-width:100%;margin-inline:auto;text-shadow:none;line-height:1}
+.attract h1{font-size:clamp(50px,11vw,140px)}.attract h1 .nm{display:block;max-width:6.08em;margin-inline:auto}.attract h1 .tag{display:block;width:max-content;max-width:100%;margin-inline:auto;text-shadow:none;line-height:1}
 .tag{display:inline-block;background:var(--paper);color:var(--ink);
-  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.14em;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.14em;
   text-transform:uppercase;padding:5px 12px;margin-bottom:15px;
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
 .dek{margin-top:15px;font-size:17px;color:rgba(255,253,247,.92)}
@@ -247,13 +248,13 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   background:rgba(13,11,18,.62);width:fit-content;max-width:100%}
 .stats .s{padding:9px 18px;border-right:2px solid var(--paper);min-width:0;flex:0 1 auto}
 .stats .s:last-child{border-right:0}
-.stats b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:30px;
+.stats b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:30px;
   line-height:.9;color:var(--hot);white-space:nowrap}
 .stats span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:rgba(255,253,247,.78);margin-top:3px}
 .start{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
   background:var(--hot);color:var(--ink);text-decoration:none;
-  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.06em;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:22px;letter-spacing:.06em;
   text-transform:uppercase;padding:12px 22px;border:0;cursor:pointer;
   clip-path:polygon(0 0,100% 0,calc(100% - 13px) 100%,0 100%);
   transition:transform .09s cubic-bezier(.2,.9,.3,1)}
@@ -269,11 +270,11 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   border-left:4px solid var(--uni);padding:9px 14px;font-size:14px;font-weight:600}
 .itag svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:var(--uni);stroke-width:2.6;
   stroke-linecap:square;margin-top:1px}
-.keys-title{font-family:'Big Shoulders Display';font-weight:800;font-size:22px;
+.keys-title{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:22px;
   text-transform:uppercase;letter-spacing:.05em;margin:26px 0 12px;color:var(--hot)}
 .keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:13px}
 .key{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 16px 15px}
-.key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display';
+.key-h{display:flex;align-items:center;gap:9px;font-family:'Big Shoulders Display','BSD repli';
   font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
 .key-h svg{width:19px;height:19px;flex:0 0 auto;fill:none;stroke:var(--hot);stroke-width:2;
   stroke-linecap:square}
@@ -281,11 +282,11 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .key strong{color:var(--paper)}
 .cuts{margin-top:20px;border:2px solid var(--line)}
 .cuts>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
-  padding:12px 16px;font-family:'Big Shoulders Display';font-weight:800;font-size:20px;
+  padding:12px 16px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:20px;
   text-transform:uppercase;letter-spacing:.05em}
 .cuts>summary::-webkit-details-marker{display:none}
 .cuts>summary:hover{background:rgba(255,253,247,.05)}
-.cuts .n{font-family:'Chivo';font-size:11px;font-weight:700;letter-spacing:.08em;
+.cuts .n{font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;background:var(--paper);color:var(--ink);padding:3px 9px}
 .cuts .chev{width:20px;height:20px;margin-left:auto;fill:none;stroke:currentColor;
   stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
@@ -294,7 +295,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .cuts-intro{font-size:14px;color:rgba(255,253,247,.8);margin:12px 0 14px}
 .cuts-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:12px}
 .cut{border-left:3px solid var(--hot);padding-left:12px}
-.cut dt{font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+.cut dt{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:18px;
   text-transform:uppercase;letter-spacing:.03em}
 .cut dd{font-size:13px;color:rgba(255,253,247,.78);margin-top:3px}
 
@@ -306,7 +307,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
 .sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:rgba(255,253,247,.5);margin-right:2px}
-.sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
+.sieve button{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14.5px;
   letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
   color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
   display:inline-flex;align-items:center;gap:6px}
@@ -322,7 +323,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
   stroke-width:2.2;stroke-linecap:square}
 .search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
-  font-family:'Chivo';font-size:14px;padding:3px 0}
+  font-family:'Chivo','Chivo repli';font-size:14px;padding:3px 0}
 .search input:focus{outline:none}
 .search input::placeholder{color:rgba(255,253,247,.44)}
 .search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
@@ -346,7 +347,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    de part et d'autre du texte le rattache visuellement aux bandes qui suivent. */
 .epoch{background:var(--ink);padding:26px 0 14px}
 .epoch .wrap{display:flex;align-items:center;gap:16px}
-.epoch span{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+.epoch span{font-family:'Big Shoulders Display','BSD repli',sans-serif;font-weight:900;
   text-transform:uppercase;font-size:clamp(19px,3.4vw,30px);line-height:1;
   letter-spacing:.02em;color:var(--hot);white-space:nowrap}
 .epoch .wrap::after{content:'';flex:1;height:2px;background:var(--line)}
@@ -364,13 +365,13 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   background:linear-gradient(180deg,color-mix(in srgb,var(--era) 30%,transparent),
              color-mix(in srgb,var(--era) 88%,transparent))}
 .map .wrap{position:relative;z-index:2;padding:46px 20px 28px}
-.map .chev{font-family:'Big Shoulders Display';font-weight:800;font-size:13px;
+.map .chev{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:13px;
   letter-spacing:.2em;text-transform:uppercase;display:inline-block;
   background:var(--paper);color:var(--ink);padding:4px 11px;
   clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
 .map h2{font-size:clamp(32px,6vw,72px);margin:12px 0 6px}
 .map .meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+  letter-spacing:.06em;text-transform:uppercase;color:var(--paper)}
 .map .meta b{color:var(--hot)}
 
 /* ══ LES BULLES : une par ligne, image à gauche, titre à droite ═════ */
@@ -413,7 +414,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   filter:saturate(.72) contrast(1.05);transition:filter .2s,transform .3s ease-out}
 .bu-card:hover .bu-fig img{transform:scale(1.035);filter:saturate(1) contrast(1.08)}
 .bu-n{position:absolute;top:0;left:0;z-index:2;background:var(--ink);color:var(--paper);
-  font-family:'Big Shoulders Display';font-weight:900;font-size:17px;padding:1px 9px 0;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:17px;padding:1px 9px 0;
   clip-path:polygon(0 0,100% 0,calc(100% - 7px) 100%,0 100%)}
 .bu-txt{flex:1;min-width:0;display:block}
 .bu-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
@@ -430,7 +431,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    par FLASHBACK, alors la mention passe au bleu de l'univers. */
 .vo{font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:1px 5px;
   color:var(--uni);border:1px solid var(--uni)}
-.bu-title{display:block;font-family:'Big Shoulders Display';font-weight:700;font-size:23px;
+.bu-title{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:700;font-size:23px;
   line-height:1.02;text-transform:uppercase}
 .bu-meta{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:6px;
   font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
@@ -438,7 +439,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 /* La date en grand est celle de l'univers, et c'est la seule du guide : la
    saga se déroule dans « notre » monde, l'année dit donc tout. L'or va au
    grand nombre, comme partout ailleurs sur le site. */
-.bu-meta .d{font-family:'Big Shoulders Display';font-weight:800;font-size:21px;
+.bu-meta .d{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:21px;
   letter-spacing:.03em;color:var(--hot);line-height:1}
 /* Pas de second encadré de date ici : Assassin's Creed en a deux, le présent
    et les souvenirs, ce guide n'en a qu'une — l'année dans le monde. */
@@ -483,7 +484,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    rembourrage de la carte et ne tombait pas au centre du visuel. */
 .bu-done{position:absolute;inset:0;z-index:3;display:none;place-items:center;
   pointer-events:none}
-.bu-done span{font-family:'Big Shoulders Display';font-weight:900;font-size:19px;
+.bu-done span{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:19px;
   letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--uni);
   padding:3px 11px;transform:rotate(-4deg);border:2px solid var(--ink)}
 .bu.done .bu-done{display:grid}
@@ -512,7 +513,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    seul. Les fiches qui n'en ont qu'un ne la voient pas. */
 .expand-trailer-link{display:inline-block;margin-top:12px;margin-right:9px;
   background:var(--hot);color:var(--ink);
-  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.06em;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.06em;
   text-transform:uppercase;padding:6px 13px;text-decoration:none;
   clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
 .expand-trailer-link:hover{filter:brightness(1.1)}
@@ -561,7 +562,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 /* ══ pied ══════════════════════════════════════════════════════════ */
 footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
 .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
-.foot h4{font-family:'Big Shoulders Display';font-weight:800;font-size:19px;text-transform:uppercase;
+.foot h4{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:19px;text-transform:uppercase;
   letter-spacing:.08em;margin-bottom:9px;color:var(--hot)}
 .foot p{font-size:13px;color:rgba(255,253,247,.72)}
 .foot ul{list-style:none}
@@ -595,7 +596,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   cursor:pointer;text-align:left;padding:9px 20px;
   padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
 .hud.open .hud-bar{padding-bottom:9px}
-.hud-bar b{font-family:'Big Shoulders Display';font-weight:900;font-size:21px;white-space:nowrap}
+.hud-bar b{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:21px;white-space:nowrap}
 .hud-bar b em{font-style:normal;color:var(--uni)}
 .hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
   color:rgba(255,253,247,.66)}
@@ -614,7 +615,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   align-items:center;gap:4px}
 .pacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .btn{display:inline-flex;align-items:center;gap:7px;background:none;border:2px solid var(--line);
-  color:var(--paper);font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  color:var(--paper);font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;
   letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
 .btn:hover{border-color:var(--paper)}
 .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square}
@@ -633,7 +634,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .bx-in{background:var(--ink);border:2px solid var(--paper);max-width:660px;width:100%;
   max-height:86vh;overflow:auto;padding:20px}
 .bx-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.bx-h h3{font-family:'Big Shoulders Display';font-weight:900;font-size:26px;text-transform:uppercase}
+.bx-h h3{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:26px;text-transform:uppercase}
 .bx-h .n{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   background:var(--hot);color:var(--ink);padding:3px 9px}
 .bx-h button{margin-left:auto;background:var(--paper);color:var(--ink);border:0;width:34px;
@@ -643,7 +644,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   opacity:.42;filter:grayscale(1)}
 .bg1.on{opacity:1;filter:none;border-color:var(--c)}
 .bg1 .i{font-size:26px;line-height:1}
-.bg1 .t{display:block;font-family:'Big Shoulders Display';font-weight:800;font-size:17px;
+.bg1 .t{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:17px;
   text-transform:uppercase;line-height:1.05}
 .bg1 .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:3px}
 
@@ -657,7 +658,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .bpop .i{font-size:32px;line-height:1;flex:0 0 auto}
 .bpop .k{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;
   text-transform:uppercase;color:var(--c,var(--hot))}
-.bpop .t{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:22px;
+.bpop .t{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:22px;
   text-transform:uppercase;line-height:1.05;margin-top:2px}
 .bpop .d{display:block;font-size:11.5px;color:rgba(255,253,247,.72);margin-top:2px}
 .conf{position:fixed;inset:0;z-index:140;pointer-events:none}
@@ -796,7 +797,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .sieve .wrap{display:block;padding-top:0;padding-bottom:0}
 .filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;
   cursor:pointer;list-style:none;padding:11px 4px;
-  font-family:'Big Shoulders Display';font-weight:800;font-size:15px;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;
   letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.86)}
 .filt>summary::-webkit-details-marker{display:none}
 .filt>summary:hover{color:var(--paper)}
@@ -807,7 +808,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
   .filt>summary .fcount{font-size:10px;letter-spacing:.04em}
 }
-.filt>summary .fcount{font-family:'Chivo';font-size:11px;font-weight:700;
+.filt>summary .fcount{font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
 .filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;
   padding:13px 0 16px;border-top:2px solid var(--line)}
@@ -892,7 +893,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 <main id="body">
 
-  <div class="wrap"><div class="intro" id="intro"></div></div>
+  <div class="wrap"><div class="intro" id="intro"><p class="intro-lead">Si vous êtes ici, c’est soit parce que vous avez fait quelques jeux et que vous voulez découvrir les autres médias, soit parce que vous voulez refaire tous les jeux en y ajoutant le reste. Si vous voulez seulement découvrir les jeux dans l’ordre chronologique, décochez le reste : tous les autres médias sont du contenu bonus (certains importants). Ce guide est sans spoiler, comme les autres.</p><div class="intro-tags"><span class="itag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ce guide convient aussi bien pour une première partie que pour y rejouer.</span></div><div class="keys-title">Comment lire ce guide</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>Le calendrier</div><p>La saga se déroule dans « notre » monde : on compte donc les années comme nous le faisons.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 8v5l3 2"/></svg>Flashback</div><p>Certains événements sont mieux à voir en tant que FLASHBACK pour comprendre et sont donc indiqués comme tel.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>La canonicité</div><p>Les jeux principaux sont tous en cours de remake et corrigent les problèmes de chronologie : tant que tout n’est pas refait, quelques petites choses peuvent paraître un peu étranges. Dans RE et RE : 2, il faut choisir entre deux personnages, mais l’histoire canon est un mélange des deux parcours</p></div></div><details class="cuts"><summary>Ce qui n’y est pas, et pourquoi ?<span class="n">8 entrées</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><dl class="cuts-list"><div class="cut"><dt>Les jeux d’origine</dt><dd>Le jeu d’origine quand un remake existe</dd></div><div class="cut"><dt>Les portages</dt><dd>Les portages de certains jeux sur d’autres consoles (comme la Nintendo DS)</dd></div><div class="cut"><dt>Les novélisations</dt><dd>Les novélisations de jeux et de films, les bonus DVD, les documents…</dd></div><div class="cut"><dt>Les médias japonais uniquement</dt><dd>Tous les médias sortis au Japon seulement : la plupart ne sont pas canon</dd></div><div class="cut"><dt>Les jeux Survivor</dt><dd>Les jeux Survivor : des spin-offs d’arcade difficiles à trouver aujourd’hui, et qui n’apportent pas grand-chose au lore</dd></div><div class="cut"><dt>Biohazard 4D-Executer</dt><dd>Biohazard 4D-Executer : pas canon</dd></div><div class="cut"><dt>Les films et séries en prises de vues réelles</dt><dd>Les films et séries en prises de vues réelles : ils ont leur propre canon</dd></div><div class="cut"><dt>Les jeux multijoueur et mobiles</dt><dd>Les jeux uniquement multijoueur et les jeux mobiles</dd></div></dl></div></details></div></div>
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
