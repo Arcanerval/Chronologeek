@@ -145,7 +145,8 @@
   "ep": {
    "s": 1,
    "e": 1,
-   "mark": "premiere"
+   "mark": "premiere",
+   "eFin": 2
   },
   "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
   "tmdb": 213375,
@@ -229,7 +230,7 @@
   "date_txt_fr": "",
   "ep": {
    "s": 1,
-   "e": 2,
+   "e": 3,
    "mark": ""
   },
   "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
@@ -351,7 +352,7 @@
   "date_txt_fr": "",
   "ep": {
    "s": 1,
-   "e": 3,
+   "e": 4,
    "mark": ""
   },
   "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
