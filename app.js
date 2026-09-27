@@ -1597,6 +1597,7 @@
     colle:  'Collez un lien de transfert',
     lire:   'Lire',
     lienKo: 'Ce lien de transfert est incomplet ou abîmé.',
+    lienVieux: 'Ce lien date d’avant une mise à jour du site : recréez-le sur l’autre appareil.',
     arrive: function(n, c){
       return 'Ce lien apporte ' + n + ' univers · ' + c +
              (c > 1 ? ' entrées terminées' : ' entrée terminée') +
@@ -1631,6 +1632,7 @@
     colle:  'Paste a transfer link',
     lire:   'Read',
     lienKo: 'This transfer link is incomplete or damaged.',
+    lienVieux: 'This link predates a site update: create it again on the other device.',
     arrive: function(n, c){
       return 'This link brings ' + n + (n > 1 ? ' universes · ' : ' universe · ') + c +
              (c > 1 ? ' entries completed' : ' entry completed') +
@@ -1687,6 +1689,8 @@
     '.sy-l[hidden],.sy-l [hidden]{display:none}',
     '.sy-qr{flex:0 0 200px;width:200px;background:#fff;padding:0}',
     '.sy-qr svg{display:block;width:100%;height:auto}',
+    '.sy-l.gros{flex-direction:column;align-items:stretch}',
+    '.sy-l.gros .sy-qr{flex:none;align-self:center}',
     '.sy-lc{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:10px}',
     '.sy-l p{margin:0}',
     '.sy-row{display:flex;gap:8px}',
@@ -1699,7 +1703,7 @@
     '.sy-b.fait{border-color:#81c784;color:#81c784;background:none}',
     '@media(max-width:640px){',
     '  .sy-l{flex-direction:column;align-items:stretch;padding:14px}',
-    '  .sy-qr{flex:none;width:min(220px,100%);align-self:center}',
+    '  .sy-qr{flex:none;align-self:center}',
     '  .sy-row{flex-wrap:wrap}.sy-row input{flex:1 1 100%}',
     '  .sy-row .sy-b{flex:1 1 auto;justify-content:center}',
     '}'
@@ -1780,11 +1784,66 @@
      encore quelques kilo-octets chacune — de quoi faire passer le lien de
      deux mille signes à cinquante mille. Le fichier les garde, et la
      fusion ne retire pas une image qu'on a déjà. */
-  function serre(r, last){
+  /* **Une coche vaut un bit**, depuis le 27 septembre 2026. En toutes
+     lettres, huit cents coches faisaient un lien de six mille signes :
+     trop pour un QR code, qui plafonne à 2 953 octets, et c'est justement
+     sur l'ordinateur — là où l'on suit le plus d'univers, et d'où l'on
+     scanne avec son téléphone — que le code disparaissait. L'index de la
+     recherche porte déjà tous les identifiants du site, univers par
+     univers : triés, ils donnent un rang à chacun, et une progression
+     devient une suite de bits. Les 1 565 œuvres tiennent en 196 octets.
+
+     Ce qui n'est pas dans l'index — ajouts `p-`, entrées propres à un
+     second parcours — reste écrit en toutes lettres. Le lien porte une
+     empreinte de la liste : ajouter une œuvre décale les rangs, et un lien
+     d'avant la publication serait relu de travers sans un mot. Il est
+     refusé, avec la raison. Les deux index ont les mêmes identifiants,
+     donc un lien français se relit sur la page anglaise. */
+  var catalogue = null;
+  function charge(){
+    if (catalogue) return catalogue;
+    catalogue = fetch(FR ? '/search-fr.json' : '/search-en.json')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(ix){
+        if (!ix || !ix.u || !ix.e) return null;
+        var ids = {}, tout = [];
+        ix.u.forEach(function(u){ ids[u.k] = []; });
+        ix.e.forEach(function(e){ var k = ix.u[e[0]] && ix.u[e[0]].k; if (k) ids[k].push(e[2]); });
+        Object.keys(ids).sort().forEach(function(k){
+          ids[k].sort();
+          tout.push(k + ':' + ids[k].join(','));
+        });
+        var h = 0x811c9dc5, s = tout.join('|');
+        for (var i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193);
+        return { ids: ids, h: (h >>> 0).toString(36) };
+      })
+      .catch(function(){ return null; });
+    return catalogue;
+  }
+  function bits(liste, coches){
+    var o = new Uint8Array(Math.ceil(liste.length / 8)), n = 0;
+    liste.forEach(function(id, i){ if (coches[id]) { o[i >> 3] |= 1 << (i & 7); n++; } });
+    return n ? b64(o) : '';
+  }
+  function debits(liste, s){
+    var o = deb64(s), r = [];
+    liste.forEach(function(id, i){ if (o[i >> 3] & (1 << (i & 7))) r.push(id); });
+    return r;
+  }
+
+  function serre(r, last, cat){
     var u = {};
     Object.keys(r.universes).forEach(function(k){
       var b = r.universes[k], s = {};
       var p = Object.keys(b.progress || {}).filter(function(i){ return b.progress[i]; });
+      var liste = cat && cat.ids[k];
+      if (liste) {
+        var connus = {};
+        liste.forEach(function(i){ connus[i] = 1; });
+        var bs = bits(liste, b.progress || {});
+        if (bs) s.b = bs;
+        p = p.filter(function(i){ return !connus[i]; });
+      }
       if (p.length) s.p = p;
       if (b.alt) {
         var a = Object.keys(b.alt).filter(function(i){ return b.alt[i]; });
@@ -1797,12 +1856,15 @@
       if (b.mode) s.o = b.mode;
       u[k] = s;
     });
-    var d = { v: 1, u: u };
+    var d = cat ? { v: 2, h: cat.h, u: u } : { v: 1, u: u };
     if (last) d.l = last;
     return d;
   }
-  function desserre(d){
-    if (!d || d.v !== 1 || !d.u || typeof d.u !== 'object') return null;
+  /* Rend le fichier d'import, `null` si le lien n'en est pas un, et
+     `'vieux'` si la liste des œuvres a changé depuis sa création. */
+  function desserre(d, cat){
+    if (!d || (d.v !== 1 && d.v !== 2) || !d.u || typeof d.u !== 'object') return null;
+    if (d.v === 2 && (!cat || cat.h !== d.h)) return 'vieux';
     var out = {};
     function ens(l){
       var o = {};
@@ -1811,6 +1873,8 @@
     }
     Object.keys(d.u).forEach(function(k){
       var s = d.u[k] || {}, b = { progress: ens(s.p) };
+      if (d.v === 2 && typeof s.b === 'string' && cat.ids[k])
+        debits(cat.ids[k], s.b).forEach(function(i){ b.progress[i] = 1; });
       if (s.a) b.alt = ens(s.a);
       if (Array.isArray(s.m)) b.mine = s.m;
       if (typeof s.o === 'string') b.mode = s.o;
@@ -1852,7 +1916,9 @@
       if (code[0] !== 'z' || typeof DecompressionStream === 'undefined') throw 0;
       return flot(o, DecompressionStream);
     }).then(function(o){
-      return desserre(JSON.parse(new TextDecoder().decode(o)));
+      var d = JSON.parse(new TextDecoder().decode(o));
+      return (d && d.v === 2 ? charge() : Promise.resolve(null))
+        .then(function(cat){ return desserre(d, cat); });
     });
   }
   /* On accepte le lien entier comme le code seul : un lien collé depuis
@@ -2281,14 +2347,25 @@
       var images = Object.keys(r.universes).some(function(k){
         return (r.universes[k].mine || []).some(function(x){ return /^data:/.test(x.img || ''); });
       });
-      encode(serre(r, lis('cg_last', null))).then(function(code){
+      charge().then(function(cat){
+        return encode(serre(r, lis('cg_last', null), cat));
+      }).then(function(code){
         var lien = location.origin + location.pathname + '#import=' + code;
         url.value = lien;
-        /* Au-delà de mille signes le code passe la version 26 : il se lit
-           encore sur papier, mal sur un écran qui scintille. */
-        var q = lien.length <= 1000 ? qrSvg(lien) : null;
+        /* Le code se scanne sur l'écran d'un ordinateur avec un téléphone :
+           il n'y a donc pas de plafond autre que la norme (version 40), mais
+           un code dense doit grandir. Trois pixels par module, 200 au moins,
+           520 au plus ; au-delà de 240 il prend la ligne entière au-dessus du
+           lien. Un premier plafond à mille signes cachait le code dès qu'on
+           suivait plusieurs univers — précisément sur l'ordinateur. */
+        var q = qrSvg(lien);
         qr.innerHTML = q ? q.svg : '';
         qr.hidden = !q;
+        if (q) {
+          var px = Math.min(520, Math.max(200, (q.version * 4 + 25) * 3));
+          qr.style.width = qr.style.flexBasis = 'min(' + px + 'px,100%)';
+          pan.classList.toggle('gros', px > 240);
+        }
         if (q) qr.firstChild.setAttribute('aria-label', T.lien);
         sec.querySelector('.sy-e1').textContent = q ? T.envoi : T.envoiSansQr;
         var notes = [];
@@ -2324,6 +2401,7 @@
       cf.hidden = true; recu = null;
       if (!code) { dit(T.lienKo); return; }
       decode(code).then(function(f){
+        if (f === 'vieux') { dit(T.lienVieux); return; }
         if (!f) throw 0;
         var n = 0, c = 0;
         Object.keys(f.universes).forEach(function(k){

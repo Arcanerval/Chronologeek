@@ -2654,9 +2654,21 @@ contenu que le fichier, serré (listes d'identifiants, clés d'une lettre),
 passé par `CompressionStream('deflate-raw')` puis en base64 d'URL, posé dans
 le fragment : `/#import=z…`. **Le fragment ne part jamais au serveur** — ni
 GitHub, ni GoatCounter : c'est ce qui permet de transporter une progression
-sans compte. Un QR code l'accompagne tant que le lien fait moins de mille
-signes (version 26 au plus) ; l'encodeur est écrit dans le bloc, mode octet,
-niveaux M puis L, vérifié contre zxing de la version 1 à la 40.
+sans compte. Un QR code l'accompagne toujours ; l'encodeur est écrit dans le
+bloc, mode octet, niveaux M puis L, vérifié contre zxing de la version 1 à la
+40. Il grandit avec sa version — trois pixels par module, 200 à 520 px — et
+passe au-dessus du lien quand il dépasse 240.
+
+**Une coche vaut un bit.** En toutes lettres, huit cents coches faisaient un
+lien de six mille signes, au-delà de ce qu'un QR code porte : le code
+disparaissait sur l'ordinateur, là où l'on suit le plus d'univers et d'où
+l'on scanne avec son téléphone — premier signalement de Niko, le jour même.
+Les identifiants de `/search-*.json`, triés par univers, donnent un rang à
+chaque œuvre ; 949 coches tiennent en 400 signes, un code en version 17. Ce
+que l'index ne connaît pas (`p-`, entrées de second parcours) reste en clair.
+Le lien porte une empreinte de la liste : **un lien créé avant une
+publication qui ajoute une œuvre est refusé**, avec la raison, plutôt que
+relu de travers.
 
 - **Arriver par le lien ne remplace rien sans le demander** : le panneau
   s'ouvre sur « Ce lien apporte N univers… » et attend « Remplacer ici ».
