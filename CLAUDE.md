@@ -1179,10 +1179,18 @@ Cinq choses à savoir :
   aligné à gauche et sans mise en page. C'est ce que Niko a vu, et aucune mesure
   ne l'aurait montré : il fallait recharger une page déjà visitée.
   `publier.mjs` pose donc dans le `<head>`, avant tout rendu, un script d'une
-  ligne qui ajoute la classe `js` à `<html>`, et la règle `.js .pr{display:none}`
+  ligne qui ajoute la classe `js` à `<html>`, et la règle `.js .pr{visibility:hidden}`
   — le pré-rendu est caché dès que le JS est là, et **reste visible quand il ne
   l'est pas**. Un `display:none` inconditionnel aurait rendu la page vide sans
   JS. Ce n'est pas du cloaking : c'est le même texte, mieux rendu.
+
+  **`visibility`, pas `display`**, depuis le 27 septembre 2026. Replié à zéro,
+  le pré-rendu laissait au premier affichage une page sans timeline : le pied de
+  page tombait à mi-écran, puis la timeline du JS l'éjectait. Mesuré : 0,29 de
+  décalage cumulé pour ce seul mouvement, sur toutes les pages à timeline. Il
+  en reste deux autres sources, non corrigées : le changement de police du
+  héros vers 590 ms (0,06 à 0,13), et l'accroche (`intro` ou `notes`) écrite
+  par le JS, qui pousse la timeline vers 920 ms (0,03 à 0,15).
 - **Liste noire, jamais liste blanche.** Les neuf univers n'ont pas le même
   schéma : Star Wars et Marvel portent leur texte dans `faq`, DC et Star Trek
   dans `subitems`, Assassin's Creed dans `notes` et `desc`, et **The Walking

@@ -225,6 +225,14 @@ const PWA = [
 // visible quand il ne l'est pas. Un `display:none` inconditionnel aurait rendu
 // la page vide sans JS, et le contenu affiché reste le même dans les deux cas —
 // ce n'est pas du cloaking, c'est le même texte, mieux rendu.
+//
+// **`visibility:hidden`, pas `display:none`** — corrigé le 27 septembre 2026.
+// Replié à zéro, le pré-rendu laissait au premier affichage une page sans
+// timeline : le pied de page tombait à mi-écran, puis la timeline du JS
+// l'éjectait vers le bas. Mesuré au navigateur, 0,29 de décalage cumulé pour
+// ce seul mouvement, sur toutes les pages à timeline — le seuil de Google est
+// 0,1. Invisible mais à sa hauteur, il tient le pied de page sous la ligne de
+// flottaison jusqu'à ce que le rendu le remplace.
 // Le flux du journal, dans les deux langues. Le `<link rel="alternate">` qui le
 // désigne est posé sur les vingt-huit pages : c'est ce qu'un navigateur et un
 // lecteur de flux vont chercher, et personne ne devine une URL de flux.
@@ -235,7 +243,7 @@ const LIEN_FLUX = langue =>
 
 const PRERENDU_CSS =
   '<script>document.documentElement.className+=" js"</script>\n' +
-  '<style>.js .pr{display:none}</style>';
+  '<style>.js .pr{visibility:hidden}</style>';
 
 // L'écran d'arrivée, sur les deux accueils seulement.
 //
