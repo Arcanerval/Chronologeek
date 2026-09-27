@@ -1207,8 +1207,32 @@ Cinq choses à savoir :
     `14ch` du h1 du Dossier, devenu `7.1em`. **Pas de `ch` sur un élément
     dont la police se fait attendre.**
 
-  Ce qui reste : l'encart « prochaine sortie » (0,02, déjà connu), et sur
-  l'accueil le bloc de recherche inséré par `e-app.js` (0,08).
+  **Le reste a été fermé le même soir**, et les pages mesurent 0,000 à 0,004
+  sur ordinateur comme sur téléphone, à froid comme au second passage :
+  - **Les places réservées.** Quatre blocs arrivent après le premier rendu —
+    l'encart « prochaine sortie », le champ de recherche de l'accueil, le
+    bloc agenda d'« À venir », la ligne RSS des Nouveautés. `reservations()`
+    de `publier.mjs` pose dans le `<head>` un script qui réserve leur hauteur
+    (celle mesurée à la visite précédente, clé `cg-res`, sinon un défaut
+    calculé à la publication — pour l'encart, d'après `radar.json`), et
+    `CG_RES()` en tête de `e-app.js` la libère dans la même tâche que
+    l'insertion. **La largeur se choisit en CSS** : le script est posé avant
+    `<meta name="viewport">`, où un téléphone se croit large de 980 px.
+    **L'encart se réserve par `main::before`**, jamais par une marge sur
+    l'accroche, qui s'échappait de `<main>` par fusion.
+  - **Le calendrier d'« À venir » et le journal des Nouveautés** tiennent un
+    écran de haut tant qu'ils sont vides (`#cal:empty`, `#log:empty`) : ils
+    faisaient 0,62 et 0,63 à eux seuls, le pied de page remontant à
+    mi-écran puis s'en faisant chasser.
+  - **Le logo a sa place avant d'arriver** : `.brand{flex:0 1 260px}` et
+    `aspect-ratio:1143/101` sur l'image. Sans dimensions, il faisait 0 px,
+    et la navigation sautait de 260 px à son arrivée.
+  - **Les métriques du repli étaient fausses d'un facteur cent** :
+    `size-adjust` est un pourcentage, la première formule divisait par 69,6
+    au lieu de 0,696. Vérifié au canvas : 98/21 et 94/25, comme les vraies.
+
+  Un bloc de plus arrivé après le premier rendu se réserve de la même façon :
+  une entrée dans `reservations()`, un `CG_RES()` à son insertion.
 - **Liste noire, jamais liste blanche.** Les neuf univers n'ont pas le même
   schéma : Star Wars et Marvel portent leur texte dans `faq`, DC et Star Trek
   dans `subitems`, Assassin's Creed dans `notes` et `desc`, et **The Walking

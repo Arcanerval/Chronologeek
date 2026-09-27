@@ -1,3 +1,25 @@
+/* ═══ LES PLACES RÉSERVÉES ═════════════════════════════════════════════
+   Deux blocs arrivent après le premier affichage : l'encart « prochaine
+   sortie », qui attend `radar.json`, et le champ de recherche de
+   l'accueil. Tout ce qui était dessous descendait d'un coup — 0,02 et 0,08
+   de décalage de mise en page. `publier.mjs` pose dans le `<head>` un
+   script qui réserve leur hauteur avant le premier rendu : celle mesurée
+   ici à la visite précédente, sinon une valeur par défaut calculée à la
+   publication. `CG_RES` libère la place au moment même où le bloc s'insère,
+   dans la même tâche, donc sans rien faire bouger — et retient la hauteur
+   réelle pour la fois suivante. `h` à `null` libère sans rien retenir. */
+window.CG_RES = function(cle, h){
+  document.documentElement.classList.remove('res-' + cle);
+  if (h == null) return;
+  try {
+    var m = matchMedia('(max-width:560px)').matches ? 'm' : 'd';
+    var c = JSON.parse(localStorage.getItem('cg-res') || '{}');
+    var p = c[location.pathname] || (c[location.pathname] = {});
+    (p[cle] || (p[cle] = {}))[m] = Math.round(h * 100) / 100;
+    localStorage.setItem('cg-res', JSON.stringify(c));
+  } catch (_) {}
+};
+
 /* ═══ STOCKAGE PERSISTANT ═════════════════════════════════════════════
    Un navigateur peut effacer tout seul ce que le site a écrit, et le
    visiteur n'y est pour rien : Safari le fait après sept jours sans
@@ -3003,7 +3025,7 @@
        après. `#intro` est dans un `.wrap`, lui-même dans le `<main>`. */
     var intro = document.getElementById('intro');
     var hote  = intro && intro.parentNode;
-    if (!hote || !hote.parentNode || document.querySelector('.nx')) return;
+    if (!hote || !hote.parentNode || document.querySelector('.nx')) { CG_RES('nx', null); return; }
 
     var st = document.createElement('style');
     st.textContent = CSS;
@@ -3039,12 +3061,13 @@
     q('.nx-a').textContent = T.tout;
 
     hote.parentNode.insertBefore(box, hote);
+    CG_RES('nx', box.getBoundingClientRect().height);
   }
 
   var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
                 .replace(/\.html$/, '');
   var page = RADAR[route];
-  if (!page) return;
+  if (!page) { CG_RES('nx', null); return; }
 
   function retenu(e){
     if (e.universe !== page.u) return false;
@@ -3059,7 +3082,7 @@
   fetch('/radar.json', { cache: 'no-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(data){
-      if (!data || !data.length) return;
+      if (!data || !data.length) { CG_RES('nx', null); return; }
       var t    = new Date();
       var jour = new Date(t.getFullYear(), t.getMonth(), t.getDate());
       var iso0 = jour.getFullYear() + '-' +
@@ -3071,7 +3094,9 @@
         var e = data[i];
         if (retenu(e) && iso(e) && iso(e) >= iso0) suite.push(e);
       }
-      if (!suite.length) return;
+      /* Rien à venir : la place se libère, et la fois suivante on n'en
+         réserve plus. */
+      if (!suite.length) { CG_RES('nx', 0); return; }
       suite.sort(function(a, b){ return iso(a) < iso(b) ? -1 : iso(a) > iso(b) ? 1 : 0; });
 
       var n = Math.round((new Date(iso(suite[0]) + 'T00:00:00') - jour) / 86400000);
@@ -3080,7 +3105,7 @@
         document.addEventListener('DOMContentLoaded', faire);
       else faire();
     })
-    .catch(function(){});
+    .catch(function(){ CG_RES('nx', null); });
 })();
 
 /* ═══ LE FLUX DU JOURNAL, DIT À VOIX HAUTE ═════════════════════════════
@@ -3102,12 +3127,12 @@
        divergeraient, et c'est `publier.mjs` qui la connaît. */
     var lien = document.querySelector('link[type="application/atom+xml"]');
     var dek  = document.querySelector('.attract .dek');
-    if (!lien || !dek || document.querySelector('.fx')) return;
+    if (!lien || !dek || document.querySelector('.fx')) { CG_RES('fx', null); return; }
 
     /* Seule la page du journal le montre : ailleurs, le flux n'est pas ce
        qu'on est venu chercher. On la reconnaît à son `#tag-t`, l'indicateur
        de fraîcheur que le JS remplit, et que personne d'autre ne porte. */
-    if (!document.getElementById('tag-t')) return;
+    if (!document.getElementById('tag-t')) { CG_RES('fx', null); return; }
 
     var st = document.createElement('style');
     st.textContent =
@@ -3125,7 +3150,13 @@
     p.firstChild.textContent = FR ? 'Suivre par flux RSS' : 'Follow by RSS';
     p.lastChild.textContent  = FR ? 'sans compte, sans algorithme'
                                   : 'no account, no algorithm';
-    dek.parentNode.insertBefore(p, dek.nextSibling);
+    /* Même geste que l'agenda : la place réservée dans le `<head>` se rend
+       au moment où la ligne s'insère, et sa hauteur réelle est retenue. */
+    var pere = dek.parentNode;
+    document.documentElement.classList.remove('res-fx');
+    var avant = pere.getBoundingClientRect().height;
+    pere.insertBefore(p, dek.nextSibling);
+    CG_RES('fx', pere.getBoundingClientRect().height - avant);
   }
 
   if (document.readyState === 'loading')
@@ -3202,7 +3233,7 @@
 
   function pose(){
     var dek = document.querySelector('.attract .dek');
-    if (!dek || !document.getElementById('cal') || document.querySelector('.ag')) return;
+    if (!dek || !document.getElementById('cal') || document.querySelector('.ag')) { CG_RES('ag', null); return; }
 
     var st = document.createElement('style');
     st.textContent = CSS;
@@ -3254,7 +3285,15 @@
 
     var fx = document.querySelector('.fx');
     var ref = fx || dek;
-    ref.parentNode.insertBefore(box, ref.nextSibling);
+    /* La place réservée se mesure par la différence de hauteur du héros :
+       elle tient compte de la marge du bloc et de celle du texte au-dessus,
+       que les deux se fusionnent ou non. Tout se fait dans la même tâche,
+       donc sans rendu intermédiaire. */
+    var pere = ref.parentNode;
+    document.documentElement.classList.remove('res-ag');
+    var avant = pere.getBoundingClientRect().height;
+    pere.insertBefore(box, ref.nextSibling);
+    CG_RES('ag', pere.getBoundingClientRect().height - avant);
   }
 
   if (document.readyState === 'loading')
@@ -3871,6 +3910,7 @@
     });
 
     ancre.parentNode.insertBefore(bloc, ancre);
+    CG_RES('sr', bloc.getBoundingClientRect().height);
   }
 
   if (document.readyState === 'loading')

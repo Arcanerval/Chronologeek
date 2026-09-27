@@ -269,8 +269,11 @@ const LIEN_FLUX = langue =>
 //   `sans-serif`, comme avant : rien n'est pire qu'aujourd'hui.
 const REPLI_FACE = (famille, poids, local, sa, asc, desc) =>
   `@font-face{font-family:'${famille}';font-weight:${poids};src:${local};` +
-  `size-adjust:${sa}%;ascent-override:${(asc / sa * 100).toFixed(1)}%;` +
-  `descent-override:${(desc / sa * 100).toFixed(1)}%;line-gap-override:0%}`;
+  `size-adjust:${sa}%;ascent-override:${(asc / sa * 1e4).toFixed(1)}%;` +
+  `descent-override:${(desc / sa * 1e4).toFixed(1)}%;line-gap-override:0%}`;
+// `sa` est un pourcentage : 0,984 / 69,6 % = 141,4 %, soit `asc / sa × 10⁴`.
+// La première version divisait par 69,6 au lieu de 0,696 et posait des
+// métriques de 1,4 % — des lignes d'un pixel, vues au canvas le jour même.
 const ARIAL = "local('Arial'),local('ArialMT'),local('Liberation Sans')";
 const ARIAL_GRAS = "local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold')";
 const FONTES_REPLI = '<style>' + [
@@ -294,6 +297,88 @@ function repli(texte) {
       return `${decl}${q}${nom}${q},${q}${nom === 'Chivo' ? 'Chivo' : 'BSD'} repli${q}`;
     });
   return { out, n };
+}
+
+// Les places réservées, posées le 27 septembre 2026 — voir « LES PLACES
+// RÉSERVÉES » en tête de `e-app.js`, qui les libère.
+//
+// Deux blocs arrivent après le premier affichage et poussaient tout ce qui
+// était dessous : l'encart « prochaine sortie » (il attend `radar.json`) et le
+// champ de recherche de l'accueil. Le script du `<head>` réserve leur hauteur
+// avant le premier rendu : celle que `CG_RES` a mesurée à la visite précédente
+// sur cette page et cette largeur, sinon la valeur par défaut d'ici.
+//
+// **Le défaut de l'encart se décide à la publication**, d'après `radar.json` :
+// réserver 84 px sur une page qui n'aura rien à annoncer laisserait un trou
+// puis le refermerait — le décalage même qu'on retire. Le tri reprend celui de
+// `RADAR` dans `e-app.js`, écran d'un côté et écrit de l'autre pour Star Wars.
+// Une page que le radar suit mais sans sortie datée ne réserve rien, et la
+// visite suivante corrige d'elle-même si une date est tombée entre-temps.
+//
+// Les hauteurs sont mesurées au navigateur : 84,2 px au-dessus de 560 px de
+// large, 141,15 px en dessous (un titre sur deux lignes en fait 162 — la
+// visite suivante l'apprend). Le champ de recherche : 76,08 et 65,35. Huit
+// secondes au plus : passé ce délai la place se rend, radar ou pas.
+const RES_RADAR = {
+  sw: ['starwars', 'ecran'], 'dossier-sw': ['starwars', 'ecrit'], mcu: ['marvel'],
+  dc: ['dc'], avatar: ['avatar'], startrek: ['startrek'], twd: ['twd'],
+  assassinscreed: ['assassinscreed'], witcher: ['witcher'],
+};
+const RES_NX = { d: 84.2, m: 141.15 };
+const RES_SR = { d: 76.08, m: 65.35 };
+const RES_AG = { d: 83.75, m: 210.65 };
+const RES_FX = { d: 30.85, m: 30.85 };
+
+function reservations(cle, langue) {
+  const R = {};
+  if (cle === 'accueil') R.sr = RES_SR;
+  if (cle === 'a-venir') R.ag = RES_AG;
+  if (cle === 'nouveautes') R.fx = RES_FX;
+  if (RES_RADAR[cle]) {
+    let radar = [];
+    try { radar = JSON.parse(lire('radar.json')); } catch (_) {}
+    const [u, tri] = RES_RADAR[cle];
+    const auj = new Date().toISOString().slice(0, 10);
+    const vient = radar.some(e => {
+      if (e.universe !== u) return false;
+      const ecrit = e.kindKey === 'comic' || e.kindKey === 'novel';
+      if (tri === 'ecran' && ecrit) return false;
+      if (tri === 'ecrit' && !ecrit) return false;
+      const iso = (langue === 'fr' && e.date_sort_fr) || e.date_sort || '';
+      return iso >= auj;
+    });
+    R.nx = vient ? RES_NX : { d: 0, m: 0 };
+  }
+  if (!Object.keys(R).length) return '';
+  // **La largeur se choisit en CSS, jamais dans le script.** Celui-ci est posé
+  // juste après le charset, donc avant `<meta name="viewport">` : à cet instant
+  // un téléphone se croit encore large de 980 px, et `matchMedia` y répondait
+  // « ordinateur ». Le script pose les deux hauteurs, la media query choisit.
+  return '<script>(function(R){try{var d=document.documentElement,' +
+    "c=JSON.parse(localStorage.getItem('cg-res')||'{}')[location.pathname]||{},k,m,h,n;" +
+    "for(k in R){n=0;for(m in R[k]){h=c[k]&&c[k][m]!=null?c[k][m]:R[k][m];" +
+    "d.style.setProperty('--res-'+k+'-'+m,h+'px');if(h>0)n=1}" +
+    "if(n)d.classList.add('res-'+k)}" +
+    "setTimeout(function(){for(k in R)d.classList.remove('res-'+k)},8000)}catch(e){}})(" +
+    JSON.stringify(R) + ')</script>\n' +
+    // L'encart se réserve par un pseudo-élément en tête de `<main>`, pas par
+    // une marge sur l'accroche : celle-ci est le premier enfant de `<main>`,
+    // qui n'a ni padding ni bordure, et sa marge s'en échappait par fusion —
+    // c'est `<main>` entier qui bougeait à la libération.
+    '<style>:root{--res-nx:var(--res-nx-d);--res-sr:var(--res-sr-d);--res-ag:var(--res-ag-d);--res-fx:var(--res-fx-d)}' +
+    '@media(max-width:560px){:root{--res-nx:var(--res-nx-m);--res-sr:var(--res-sr-m);--res-ag:var(--res-ag-m);--res-fx:var(--res-fx-m)}}' +
+    '.res-nx main::before{content:"";display:block;height:var(--res-nx)}' +
+    '.res-sr #uni{margin-top:var(--res-sr)}' +
+    '.res-ag .attract .wrap::after{content:"";display:block;height:var(--res-ag)}' +
+    '.res-fx .attract .wrap::after{content:"";display:block;height:var(--res-fx)}' +
+    // Le calendrier d'« À venir » est écrit quand `radar.json` revient, le
+    // journal des Nouveautés depuis ses données : vides au premier rendu, ils
+    // laissaient le pied de page à mi-écran, puis l'en chassaient — 0,62 et
+    // 0,63 de décalage, mesurés le 27 septembre 2026. Un écran de haut suffit
+    // à tenir le pied de page sous la ligne de flottaison.
+    (cle === 'a-venir' ? '.js #cal:empty{min-height:100vh}' : '') +
+    (cle === 'nouveautes' ? '.js #log:empty{min-height:100vh}' : '') +
+    '</style>';
 }
 
 const PRERENDU_CSS =
@@ -681,6 +766,7 @@ function publier(route, langue) {
   const avantPwa = h;
   h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i,
                 `$1\n${PWA}\n${LIEN_FLUX(langue)}\n${PRERENDU_CSS}` +
+                (reservations(route.cle, langue) ? `\n${reservations(route.cle, langue)}` : '') +
                 (route.cle === 'accueil' ? `\n${BOOT}` : ''));
   if (route.cle === 'accueil') {
     const avantCorps = h;
@@ -723,7 +809,8 @@ function publier(route, langue) {
     const acc = accroche({ racine: RACINE, cle: route.cle, langue });
     if (acc) {
       const avantAcc = h;
-      h = h.replace(/(<div class="intro" id="intro">)(<\/div>)/, (t, a, b) => a + acc + b);
+      h = h.replace(/<div class="wrap">(<div class="intro" id="intro">)(<\/div>)/,
+                    (t, a, b) => '<div class="wrap nx-hote">' + a + acc + b);
       if (h === avantAcc) problemes.push(`${c.sortie} : <div id="intro"></div> introuvable, accroche non posée`);
     }
   } catch (e) {
@@ -763,6 +850,11 @@ function publier(route, langue) {
   } catch (e) {
     problemes.push(`${c.sortie} : pré-rendu — ${e.message}`);
   }
+
+  // La place de l'encart est réservée en tête de `<main>` : elle ne vaut que
+  // si l'accroche en est bien le premier enfant, là où l'encart s'insère.
+  if (/"nx":\{"d":[1-9]/.test(h) && !/<main[^>]*>\s*<div class="wrap nx-hote">/.test(h))
+    problemes.push(`${c.sortie} : l'accroche n'est plus en tête de <main>, la place de l'encart tomberait à côté`);
 
   // 8. service worker et mesure d'audience
   h = h.replace(/(\r?\n)<\/body>/, `$1${PIED}$1</body>`);
