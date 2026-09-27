@@ -1,0 +1,410 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — sorties
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:4f37f6e1813d9e1f7ddc-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:DC · Lanterns · S1E07
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:6c182ac9ae8ff887541d-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260929
+DTEND;VALUE=DATE:20260930
+SUMMARY:The Witcher · The Witcher 3: Wild Hunt — Remastered
+DESCRIPTION:Jeu vidéo\n\nThe Witcher 3: Wild Hunt is the third installment
+  in the series of games developed by CD PROJEKT RED featuring the witcher 
+ Geralt of Rivia. The game was originally scheduled for release in late 201
+ 4\, then pushed back to 24 February 2015\, and finally released on 19 May 
+ 2015. During the first two weeks since release it had sold more than 4 mil
+ lion copies worldwide\, more than doubling the total sales…\n\nhttps://c
+ hronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8f2e17d8d23f41077099-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:DC · Lanterns · S1E08 · Finale
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Star Wars · Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Comic\n\nSmugglers and Scoundrels: The Race for Jabba's Bounty 
+ est une bande dessinée one-shot écrite par Cavan Scott.\n\nhttps://chron
+ ologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f240d160a6dabe9dcc9f-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Star Wars · Star Wars: Galactic Racer
+DESCRIPTION:Jeu vidéo\n\nStar Wars: Galactic Racer is an upcoming canon St
+ ar Wars racing video game developed by Fuse Games and published by Lucasfi
+ lm Games alongside Secret Mode. The game will be released for PC\, PlaySta
+ tion 5\, and Xbox Series X/S on October 6\, 2026.\n\nhttps://chronologeek.
+ app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:1eb91b86308f32d4d055-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E01 · Première
+DESCRIPTION:Série\n\nIn a world shattered by a devastating cataclysm\, a y
+ oung Earthbender discovers she's the new Avatar after Korra. But in this d
+ angerous era\, that title marks her as humanity's destroyer\, not its savi
+ or. Hunted by both human and spirit enemies\, she and her long-lost twin m
+ ust uncover their mysterious origins and save the Seven Havens before civi
+ lization's last strongholds collapse.\n\nhttps://chronologeek.app/fr/a-ven
+ ir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:875b7dd2d5b3c4a9871e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:Marvel · VisionQuest · S1E01 · Première
+DESCRIPTION:Série\n\nVision\, réinitialisé après avoir échappé à ceu
+ x qui cherchaient à l’utiliser comme une arme\, vit désormais caché. 
+ En quête de sens\, il se tourne vers les personnalités d’IA intégrée
+ s à sa programmation\, parmi lesquelles Friday\, Edith\, Jarvis et le red
+ outable Ultron. Mais sa vie discrète prend fin lorsqu’une prime est mis
+ e sur sa tête\, le contraignant à fuir aux côtés de Thomas Shepard\, u
+ n garçon mystérieux qui pourrait être la réincarnation de son fils. Po
+ ur échapper à ceux qui le traquent\, Vision doit affronter sa véritable
+  nature\, résister à l’influence d’Ultron et percer le mystère qui
+ …\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0f197fda5f1e3c4009bd-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:Star Wars · Rogue One - Chirrut & Baze 1
+DESCRIPTION:Comic\n\nRogue One – Chirrut & Baze 1 est le quatrième numé
+ ro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il es
+ t écrit par Marc Bernardin.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:575d161e3a6c6db7476b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E04
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:c62edc60f07314354488-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Star Wars · Hyperspace Stories: Mace
+DESCRIPTION:Comic\n\nHyperspace Stories: Mace est un numéro one-shot de la
+  série de bandes dessinées Star Wars : Histoires de l'hyperespace écrit
+  par Justina Ireland.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f8a89172681b8631ce3c-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Marvel · VisionQuest · S1E03
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:d5c451bfba70b5bee27e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Star Wars · The High Republic Adventures – Pathfinders 6
+DESCRIPTION:Comic\n\nThe High Republic Adventures – Pathfinders 6 est le 
+ sixième et dernier numéro de la mini-série de bandes dessinées Star Wa
+ rs: The High Republic Adventures – Pathfinders écrit par George Mann da
+ ns le cadre du projet multimédia Star Wars : La Haute République.\n\nhtt
+ ps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2c0ac82706ba871ea5bb-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Star Wars · The Mandalorian and Grogu: Nightmare on Nevarro
+DESCRIPTION:Comic\n\nThe Mandalorian and Grogu: Nightmare on Nevarro est un
+ e bande dessinée one-shot écrite par Delilah S. Dawson dans le cadre de 
+ la sortie du film The Mandalorian and Grogu.\n\nhttps://chronologeek.app/f
+ r/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:b09d24afd8af840b9c76-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Star Wars · The Fall of Kylo Ren 3
+DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 3 est le troisième numéro de la
+  série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Ch
+ arles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f74fcf871e6409968fe7-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:DC · Clayface
+DESCRIPTION:Film\n\nL'ascension fulgurante de Matt Hagen\, de gamin des rue
+ s de Gotham à star hollywoodienne\, est brutalement interrompue lorsqu'un
+  baron du crime le laisse atrocement défiguré. Abandonné de tous et n'a
+ yant plus rien à perdre\, Matt se tourne vers un traitement expérimental
+  qui lui rend miraculeusement son apparence... mais altère profondément 
+ sa perception de la réalité. Il sombre alors dans une spirale destructri
+ ce\, consumé par un irrépressible désir de vengeance.\n\nhttps://chrono
+ logeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:cf1842be03d1299abd65-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E07
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:6cb0621d9f210c1520d0-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Marvel · VisionQuest · S1E04
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5fa1a35dfe64181e9608-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Star Wars · Rogue One - Darth Vader 1
+DESCRIPTION:Comic\n\nRogue One – Darth Vader 1 est le cinquième et derni
+ er numéro de la série de bandes dessinées one-shots Star Wars: Rogue On
+ e. Il est écrit par Chris Condon.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:b803b86c39b015a0843e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a27e16940a5c88b7d998-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:Star Wars · The Fall of Kylo Ren 4
+DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 4 est le quatrième numéro de la
+  série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Ch
+ arles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:66add89a65343b227b35-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Star Wars · The Fall of Kylo Ren 5
+DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 5 est le cinquième et dernier nu
+ méro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren é
+ crit par Charles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e85118a3183e90922f94-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261216
+DTEND;VALUE=DATE:20261217
+SUMMARY:Marvel · Avengers: Doomsday
+DESCRIPTION:Film\n\nLes Avengers\, les Wakandais\, les Quatre Fantastiques\
+ , les New Avengers et les X-Men\, tous héros issus de trois univers disti
+ ncts se retrouvent sur une trajectoire de collision mortelle et font face 
+ à une menace existentielle sans précédent\, comme ils n'en ont jamais r
+ encontré auparavant\, le Docteur Doom.\n\nhttps://chronologeek.app/fr/a-v
+ enir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5083f2adeae7d9c5dc5a-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Star Wars · Ahsoka · S2E01 · Première
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f9317248518012ec3e67-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270224
+SUMMARY:Avatar Legends · Enter the Blue Spirit
+DESCRIPTION:Graphic Novel Chronology: XX AG Release Date: February 23\, 2\n
+ \nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0d876d4bf551dbe1ff2d-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270310
+SUMMARY:Star Wars · Tales from the Outer Rim: The Legend of Beggar's Canyo
+ n
+DESCRIPTION:Comic\n\nTales from the Outer Rim: The Legend of Beggar's Canyo
+ n est une bande dessinée one-shot écrite par Greg Pak.\n\nhttps://chrono
+ logeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:920da95001af982d6e6b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:Star Wars · Twin Crossroads
+DESCRIPTION:Roman\n\nTwin Crossroads est un roman écrit par Beth Revis. Il
+  sera publié le 6 avril 2027 par Random House Worlds aux États-Unis.\n\n
+ https://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:34e554f69f9fc12f0568-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270528
+SUMMARY:Star Wars · Star Wars: Starfighter
+DESCRIPTION:Film\n\nStar Wars: Starfighter est un film Star Wars dont la pr
+ oduction a commencé en 2025\, après plusieurs années de développement.
+  Réalisé par Shawn Levy et produit par Shawn Levy et Kathleen Kennedy\, 
+ l'histoire se déroulera environ cinq ans après les événements de Star 
+ Wars épisode IX : L'Ascension de Skywalker.\n\nhttps://chronologeek.app/f
+ r/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0be967bd293514953a4e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270623
+DTEND;VALUE=DATE:20270624
+SUMMARY:Marvel · Spider-Man: Beyond the Spider-Verse
+DESCRIPTION:Film\n\nHunted by Miguel O'Hara's Spider Society and betrayed b
+ y his friends\, Miles finds himself in the darkest corners of the Spider-V
+ erse in search of a way home. Knowing that his family has been not only fr
+ actured but endangered by his calling\, it's a race against the clock for 
+ Miles to travel across the wildest reaches of time and space to fight for 
+ and reunite everything he holds most dear.\n\nhttps://chronologeek.app/fr/
+ a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e29fb847313e7751439d-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270707
+DTEND;VALUE=DATE:20270708
+SUMMARY:DC · Man of Tomorrow
+DESCRIPTION:Film\n\nSuperman and Lex Luthor find themselves forced to work 
+ together—to a certain degree—against a much\, much bigger threat when 
+ Brainiac sets his sights on Earth.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:14beadae805e3856d8c0-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270720
+DTEND;VALUE=DATE:20270721
+SUMMARY:Avatar Legends · Untitled Chronicles of the Avatar Book #7
+DESCRIPTION:Young Adult Novel Release Date: July 20\, 2027\n\nhttps://chron
+ ologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e6c628950e63a9c3bbec-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20271215
+DTEND;VALUE=DATE:20271216
+SUMMARY:Marvel · Avengers: Secret Wars
+DESCRIPTION:Film\n\nAdaptation de Secret Wars de Jim Shooter et un prochain
+  film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du m
+ ultivers.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8e49e24018cb9934170b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20280218
+DTEND;VALUE=DATE:20280219
+SUMMARY:DC · The Batman: Part II
+DESCRIPTION:Film\n\nLa suite du film The Batman de 2022.\n\nhttps://chronol
+ ogeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

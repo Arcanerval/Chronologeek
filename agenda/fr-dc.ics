@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — sorties · DC
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:4f37f6e1813d9e1f7ddc-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Lanterns · S1E07
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8f2e17d8d23f41077099-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Lanterns · S1E08 · Finale
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f74fcf871e6409968fe7-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Clayface
+DESCRIPTION:Film\n\nL'ascension fulgurante de Matt Hagen\, de gamin des rue
+ s de Gotham à star hollywoodienne\, est brutalement interrompue lorsqu'un
+  baron du crime le laisse atrocement défiguré. Abandonné de tous et n'a
+ yant plus rien à perdre\, Matt se tourne vers un traitement expérimental
+  qui lui rend miraculeusement son apparence... mais altère profondément 
+ sa perception de la réalité. Il sombre alors dans une spirale destructri
+ ce\, consumé par un irrépressible désir de vengeance.\n\nhttps://chrono
+ logeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e29fb847313e7751439d-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270707
+DTEND;VALUE=DATE:20270708
+SUMMARY:Man of Tomorrow
+DESCRIPTION:Film\n\nSuperman and Lex Luthor find themselves forced to work 
+ together—to a certain degree—against a much\, much bigger threat when 
+ Brainiac sets his sights on Earth.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8e49e24018cb9934170b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20280218
+DTEND;VALUE=DATE:20280219
+SUMMARY:The Batman: Part II
+DESCRIPTION:Film\n\nLa suite du film The Batman de 2022.\n\nhttps://chronol
+ ogeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,91 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — sorties · Marvel
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:875b7dd2d5b3c4a9871e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:VisionQuest · S1E01 · Première
+DESCRIPTION:Série\n\nVision\, réinitialisé après avoir échappé à ceu
+ x qui cherchaient à l’utiliser comme une arme\, vit désormais caché. 
+ En quête de sens\, il se tourne vers les personnalités d’IA intégrée
+ s à sa programmation\, parmi lesquelles Friday\, Edith\, Jarvis et le red
+ outable Ultron. Mais sa vie discrète prend fin lorsqu’une prime est mis
+ e sur sa tête\, le contraignant à fuir aux côtés de Thomas Shepard\, u
+ n garçon mystérieux qui pourrait être la réincarnation de son fils. Po
+ ur échapper à ceux qui le traquent\, Vision doit affronter sa véritable
+  nature\, résister à l’influence d’Ultron et percer le mystère qui
+ …\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f8a89172681b8631ce3c-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:VisionQuest · S1E03
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:6cb0621d9f210c1520d0-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:VisionQuest · S1E04
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e85118a3183e90922f94-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261216
+DTEND;VALUE=DATE:20261217
+SUMMARY:Avengers: Doomsday
+DESCRIPTION:Film\n\nLes Avengers\, les Wakandais\, les Quatre Fantastiques\
+ , les New Avengers et les X-Men\, tous héros issus de trois univers disti
+ ncts se retrouvent sur une trajectoire de collision mortelle et font face 
+ à une menace existentielle sans précédent\, comme ils n'en ont jamais r
+ encontré auparavant\, le Docteur Doom.\n\nhttps://chronologeek.app/fr/a-v
+ enir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0be967bd293514953a4e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270623
+DTEND;VALUE=DATE:20270624
+SUMMARY:Spider-Man: Beyond the Spider-Verse
+DESCRIPTION:Film\n\nHunted by Miguel O'Hara's Spider Society and betrayed b
+ y his friends\, Miles finds himself in the darkest corners of the Spider-V
+ erse in search of a way home. Knowing that his family has been not only fr
+ actured but endangered by his calling\, it's a race against the clock for 
+ Miles to travel across the wildest reaches of time and space to fight for 
+ and reunite everything he holds most dear.\n\nhttps://chronologeek.app/fr/
+ a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e6c628950e63a9c3bbec-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20271215
+DTEND;VALUE=DATE:20271216
+SUMMARY:Avengers: Secret Wars
+DESCRIPTION:Film\n\nAdaptation de Secret Wars de Jim Shooter et un prochain
+  film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du m
+ ultivers.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

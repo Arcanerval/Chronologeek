@@ -2636,6 +2636,53 @@ Cinq choses à savoir :
 - **Rien ne s'ouvre si l'index manque.** Un champ de recherche qui ne cherche
   pas vaut moins que pas de champ.
 
+### Trois canaux de plus, posés le 27 septembre 2026
+
+Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne
+dans les protos — donc rien à traduire ni à apparier.
+
+**Le lien de transfert**, sur l'accueil, à côté de « Tout exporter ». Même
+contenu que le fichier, serré (listes d'identifiants, clés d'une lettre),
+passé par `CompressionStream('deflate-raw')` puis en base64 d'URL, posé dans
+le fragment : `/#import=z…`. **Le fragment ne part jamais au serveur** — ni
+GitHub, ni GoatCounter : c'est ce qui permet de transporter une progression
+sans compte. Un QR code l'accompagne tant que le lien fait moins de mille
+signes (version 26 au plus) ; l'encodeur est écrit dans le bloc, mode octet,
+niveaux M puis L, vérifié contre zxing de la version 1 à la 40.
+
+- **Arriver par le lien ne remplace rien sans le demander** : le panneau
+  s'ouvre sur « Ce lien apporte N univers… » et attend « Remplacer ici ».
+  Le fragment est retiré avant le rechargement, sans quoi la question
+  reviendrait.
+- **Le champ « Collez un lien » est la vraie réponse pour l'iPhone** : un
+  lien ouvert depuis l'application installée s'ouvre dans Safari, dont le
+  stockage est distinct. On copie le lien, on le colle dans l'app.
+- **Les images des ajouts ne voyagent pas** : elles feraient passer le lien
+  de deux mille signes à cinquante mille. La fusion (`fusionne(…, true)`)
+  garde alors l'image déjà présente plutôt que de l'effacer.
+
+**L'agenda du radar.** `radar.py` écrit chaque nuit dix-huit fichiers
+iCalendar dans `/agenda/` — `fr.ics`, `en.ics` et un par univers suivi —, et
+`radar.yml` les commite avec `radar.json`. `py radar.py --ics` les refait
+depuis le `radar.json` en place, sans réseau. La page « À venir » donne trois
+façons de s'abonner : `webcal://` (Apple, Outlook), `cid=` chez Google, et
+l'adresse à copier. **Un lien `https://` vers le `.ics` serait un import, pas
+un abonnement** : les sorties suivantes n'arriveraient jamais.
+
+Seules les dates au jour entrent ; la langue choisit la date (sortie
+française ou américaine) comme sur la page ; l'UID ne porte pas la date, donc
+une sortie repoussée déplace son événement au lieu d'en créer un second ; et
+`DTSTAMP` est une constante, sans quoi les dix-huit fichiers changeraient
+chaque nuit et le radar commiterait pour rien.
+
+**La carte de progression**, bouton « Partager » du panneau de la barre du
+bas, sur les douze timelines et le Dossier. Un canvas de 1200 × 630 : la
+bannière de `.attract` sous un voile, le nom du h1, le décompte et le temps
+restant **lus dans le HUD**, le mot « terminés » / « terminées » repris de
+son libellé, et la dernière entrée cochée. Rien n'est recalculé. Le nombre de
+badges n'y est pas : les pages ne le calculent qu'à l'ouverture de leur
+boîte. Feuille de partage native sur téléphone, téléchargement ailleurs.
+
 ## Les images
 
 **Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le
@@ -2843,7 +2890,9 @@ le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
   `traduire.mjs`.
 - **Le radar**, s'il le suit : `UNIVERSES`, la source, `EXCLUDE` et
   `UNIVERS_TITRE` au besoin, puis l'accroche de « À venir » et le `seo.json` de
-  la page — ces derniers seulement quand une sortie est datée.
+  la page — ces derniers seulement quand une sortie est datée. Et `UNIS` du
+  bloc « Les sorties dans votre agenda » de `e-app.js`, sans quoi son agenda
+  est écrit chaque nuit et personne ne peut s'y abonner.
 - **La promo** : `video.mjs`, `carrousel.mjs` (deux tables), `stories.mjs`.
 - **Les images** : bannière 1920, vignettes ×4, la paire du bouton « remonter
   en haut » sur une seule toile, la vignette de la planche d'arrivée.

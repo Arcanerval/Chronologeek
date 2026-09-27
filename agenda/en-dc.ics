@@ -1,0 +1,68 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — releases · DC
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:4f37f6e1813d9e1f7ddc-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Lanterns · S1E07
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8f2e17d8d23f41077099-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Lanterns · S1E08 · Finale
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f74fcf871e6409968fe7-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:Clayface
+DESCRIPTION:Matt Hagen's meteoric rise from Gotham street kid to Hollywood 
+ leading man is tragically cut short when a local crime boss's actions leav
+ e him horribly disfigured. Abandoned by his team and with nothing left\, M
+ att seeks out a cutting edge treatment that miraculously returns him to hi
+ s former self… but also unexpectedly affects his grip on reality\, spira
+ ling him down a destructive path of all-consuming revenge.\n\nhttps://chro
+ nologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e29fb847313e7751439d-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270710
+SUMMARY:Man of Tomorrow
+DESCRIPTION:Superman and Lex Luthor find themselves forced to work together
+ —to a certain degree—against a much\, much bigger threat when Brainiac
+  sets his sights on Earth.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8e49e24018cb9934170b-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20280218
+DTEND;VALUE=DATE:20280219
+SUMMARY:The Batman: Part II
+DESCRIPTION:Sequel to the 2022 film The Batman.\n\nhttps://chronologeek.app
+ /upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

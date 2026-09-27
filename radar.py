@@ -10,7 +10,7 @@ radar.html.
 Chaque source est isolée : si l'une casse, les autres continuent.
 """
 
-import os, re, json, html, datetime, traceback
+import os, re, sys, json, html, hashlib, datetime, traceback
 try:
     from zoneinfo import ZoneInfo
     TZ = ZoneInfo("Europe/Paris")
@@ -1762,7 +1762,135 @@ def render(entries):
     return "".join(cols)
 
 
+# ─── Les agendas ─────────────────────────────────────────────────────────
+# Le radar se consultait ; il s'abonne maintenant aussi. Un fichier iCalendar
+# par langue et par univers, dans `agenda/`, relu par Google Agenda, Apple
+# Calendrier et Outlook deux ou trois fois par jour : les sorties y arrivent
+# toutes seules, sans revenir sur le site. C'est le même raisonnement que le
+# flux Atom du journal — un canal de retour qui ne dépend de personne.
+#
+# Quatre choses à savoir :
+# - **La date suit la langue**, comme sur la page : l'agenda français prend
+#   la sortie française, l'anglais la sortie américaine.
+# - **Seules les dates au jour entrent.** Une sortie « en mars » posée le 15
+#   se lirait comme une date promise.
+# - **L'UID ne porte pas la date**, seulement l'univers, le titre et le
+#   repère d'épisode : une sortie repoussée déplace son événement au lieu
+#   d'en créer un second.
+# - **Tous les fichiers existent toujours**, vides compris : un abonnement
+#   pris sur un univers sans sortie datée doit rester valide jusqu'au jour
+#   où une date tombe.
+AGENDA_DIR = "agenda"
+AGENDA_LIENS = {"fr": "https://chronologeek.app/fr/a-venir",
+                "en": "https://chronologeek.app/upcoming"}
+# DTSTAMP est obligatoire, mais une heure de génération changerait les
+# dix-huit fichiers chaque nuit et ferait commiter le radar pour rien.
+AGENDA_STAMP = "20260927T000000Z"
+# Le libellé du radar est resté « Avatar » ; l'agenda porte le nom du site.
+AGENDA_NOMS = {"avatar": "Avatar Legends"}
+AGENDA_MARQUES = {
+    "fr": {"premiere": "Première", "finale": "Finale", "saison": "Saison complète"},
+    "en": {"premiere": "Premiere", "finale": "Finale", "saison": "Full season"},
+}
+
+
+def _ics_texte(s):
+    s = (s or "").replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,")
+    return s.replace("\r\n", "\\n").replace("\n", "\\n")
+
+
+def _ics_plie(ligne):
+    """Plie une ligne à 75 octets, sans couper un caractère UTF-8 en deux."""
+    out, cur, taille = [], "", 0
+    for ch in ligne:
+        n = len(ch.encode("utf-8"))
+        if taille + n > (75 if not out else 74):
+            out.append(cur)
+            cur, taille = "", 0
+        cur += ch
+        taille += n
+    out.append(cur)
+    return "\r\n ".join(out)
+
+
+def _agenda_evenement(e, langue, avec_univers):
+    fr = langue == "fr"
+    jour = (e.get("date_sort_fr") if fr else "") or e["date_sort"]
+    try:
+        d = datetime.date.fromisoformat(jour)
+    except ValueError:
+        return None
+    titre = (e.get("title_fr") if fr else "") or e["title"]
+    ep = e.get("ep") or {}
+    if ep:
+        rep = f"S{ep.get('s', 0)}" + (f"E{ep['e']:02d}" if ep.get("e") else "")
+        marque = AGENDA_MARQUES[langue].get(ep.get("mark") or "")
+        titre = f"{titre} · {rep}" + (f" · {marque}" if marque else "")
+    if avec_univers:
+        titre = f"{AGENDA_NOMS.get(e['universe']) or UNIVERSES.get(e['universe'], {}).get('label', e['universe'])} · {titre}"
+    syn = ((e.get("syn_fr") if fr else "") or e.get("syn") or "").strip()
+    if len(syn) > 600:
+        syn = syn[:600].rsplit(" ", 1)[0] + "…"
+    desc = "\n\n".join(x for x in (e.get("kind", "") if fr else "", syn,
+                                   AGENDA_LIENS[langue]) if x)
+    cle = "|".join(str(x) for x in (e["universe"], normalize(e["title"]),
+                                    ep.get("s", ""), ep.get("e", ""), e.get("kindKey", "")))
+    uid = hashlib.sha1(cle.encode("utf-8")).hexdigest()[:20]
+    lignes = [
+        "BEGIN:VEVENT",
+        f"UID:{uid}-{langue}@chronologeek.app",
+        f"DTSTAMP:{AGENDA_STAMP}",
+        f"DTSTART;VALUE=DATE:{d:%Y%m%d}",
+        f"DTEND;VALUE=DATE:{d + datetime.timedelta(days=1):%Y%m%d}",
+        f"SUMMARY:{_ics_texte(titre)}",
+        f"DESCRIPTION:{_ics_texte(desc)}",
+        f"URL:{AGENDA_LIENS[langue]}",
+        "TRANSP:TRANSPARENT",
+        "END:VEVENT",
+    ]
+    return (jour, lignes)
+
+
+def ecrire_agendas(entries):
+    os.makedirs(AGENDA_DIR, exist_ok=True)
+    noms = {"fr": "Chronologeek — sorties", "en": "Chronologeek — releases"}
+    ecrits = 0
+    for langue in ("fr", "en"):
+        for uni in [None] + list(UNIVERSES):
+            evs = []
+            for e in entries:
+                if e.get("precision") != "day" or (uni and e["universe"] != uni):
+                    continue
+                ev = _agenda_evenement(e, langue, uni is None)
+                if ev:
+                    evs.append(ev)
+            evs.sort(key=lambda x: x[0])
+            nom = noms[langue] + (f" · {AGENDA_NOMS.get(uni) or UNIVERSES[uni]['label']}" if uni else "")
+            lignes = [
+                "BEGIN:VCALENDAR", "VERSION:2.0",
+                "PRODID:-//Chronologeek//Radar//" + langue.upper(),
+                "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+                f"X-WR-CALNAME:{_ics_texte(nom)}",
+                "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+                "X-PUBLISHED-TTL:PT12H",
+            ]
+            for _, ev in evs:
+                lignes += ev
+            lignes.append("END:VCALENDAR")
+            chemin = os.path.join(AGENDA_DIR, f"{langue}{'-' + uni if uni else ''}.ics")
+            with open(chemin, "w", encoding="utf-8", newline="") as f:
+                f.write("\r\n".join(_ics_plie(l) for l in lignes) + "\r\n")
+            ecrits += 1
+    log(f"Agendas   : {ecrits} fichier(s) dans {AGENDA_DIR}/")
+
+
 def main():
+    # `py radar.py --ics` refait les agendas depuis le radar.json en place,
+    # sans rien demander au réseau.
+    if "--ics" in sys.argv:
+        with open("radar.json", encoding="utf-8") as f:
+            ecrire_agendas(json.load(f))
+        return
     for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
                source_startrek, source_assassinscreed, source_witcher):
         try:
@@ -1817,6 +1945,7 @@ def main():
         f.write(page)
     with open("radar.json", "w", encoding="utf-8") as f:
         json.dump(uniq, f, ensure_ascii=False, indent=1)
+    ecrire_agendas(uniq)
     print("radar.html généré")
 
 

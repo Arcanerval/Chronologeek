@@ -1572,7 +1572,7 @@
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',
-    dek:   'Ce que vous avez complété sur les onze timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
+    dek:   'Ce que vous avez complété sur les douze timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
     exp:   'Tout exporter',
     imp:   'Importer',
     nom:   'chronologeek-tout.json',
@@ -1584,10 +1584,29 @@
       return n + ' univers · ' +
              c + (c > 1 ? ' entrées terminées' : ' entrée terminée') +
              (a ? ' · ' + a + (a > 1 ? ' ajouts à vous' : ' ajout à vous') : '');
-    }
+    },
+    lien:   'Lien de transfert',
+    envoi:  'Ouvrez ce lien sur l’autre appareil, ou scannez le code avec son appareil photo. Votre progression voyage dans le lien lui-même : rien ne passe par un serveur.',
+    envoiSansQr: 'Ouvrez ce lien sur l’autre appareil : envoyez-le-vous par message ou par courriel. Votre progression voyage dans le lien lui-même : rien ne passe par un serveur.',
+    dense:  'Trop de progression pour un code lisible à l’écran : passez par le lien.',
+    images: 'Les images de vos ajouts ne voyagent pas par lien — le fichier, lui, les emporte.',
+    copier: 'Copier',
+    copie:  'Copié',
+    partager: 'Partager',
+    recoit: 'Sur l’application installée, ou si le lien s’est ouvert ailleurs : collez-le ici.',
+    colle:  'Collez un lien de transfert',
+    lire:   'Lire',
+    lienKo: 'Ce lien de transfert est incomplet ou abîmé.',
+    arrive: function(n, c){
+      return 'Ce lien apporte ' + n + ' univers · ' + c +
+             (c > 1 ? ' entrées terminées' : ' entrée terminée') +
+             '. Il remplace la progression de ces univers sur cet appareil ; vos ajouts sont conservés.';
+    },
+    appliquer: 'Remplacer ici',
+    ignorer: 'Ignorer'
   } : {
     titre: 'All your timelines, in one file',
-    dek:   'What you’ve completed across the eleven timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
+    dek:   'What you’ve completed across the twelve timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
     exp:   'Export everything',
     imp:   'Import',
     nom:   'chronologeek-all.json',
@@ -1599,7 +1618,26 @@
       return n + (n > 1 ? ' universes · ' : ' universe · ') +
              c + (c > 1 ? ' entries completed' : ' entry completed') +
              (a ? ' · ' + a + (a > 1 ? ' works of yours' : ' work of yours') : '');
-    }
+    },
+    lien:   'Transfer link',
+    envoi:  'Open this link on the other device, or scan the code with its camera. Your progress travels inside the link itself: nothing goes through a server.',
+    envoiSansQr: 'Open this link on the other device: send it to yourself by message or email. Your progress travels inside the link itself: nothing goes through a server.',
+    dense:  'Too much progress for a code readable on screen: use the link.',
+    images: 'The images of your own additions don’t travel by link — the file carries them.',
+    copier: 'Copy',
+    copie:  'Copied',
+    partager: 'Share',
+    recoit: 'On the installed app, or if the link opened somewhere else: paste it here.',
+    colle:  'Paste a transfer link',
+    lire:   'Read',
+    lienKo: 'This transfer link is incomplete or damaged.',
+    arrive: function(n, c){
+      return 'This link brings ' + n + (n > 1 ? ' universes · ' : ' universe · ') + c +
+             (c > 1 ? ' entries completed' : ' entry completed') +
+             '. It replaces the progress of these universes on this device; your own additions are kept.';
+    },
+    appliquer: 'Replace here',
+    ignorer: 'Dismiss'
   };
 
   var CSS = [
@@ -1641,6 +1679,29 @@
     '@media(max-width:420px){',
     '  .sy-act{align-self:stretch;flex-direction:column}',
     '  .sy-b{justify-content:center}',
+    '}',
+    /* Le panneau du lien : le code à gauche, le lien et la réception à
+       droite ; empilés sous 640 px. Même `[hidden]` rappelé que plus haut. */
+    '.sy-l{display:flex;gap:22px;align-items:flex-start;text-align:left;',
+    '  width:100%;max-width:760px;border:2px solid var(--line);padding:18px}',
+    '.sy-l[hidden],.sy-l [hidden]{display:none}',
+    '.sy-qr{flex:0 0 200px;width:200px;background:#fff;padding:0}',
+    '.sy-qr svg{display:block;width:100%;height:auto}',
+    '.sy-lc{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:10px}',
+    '.sy-l p{margin:0}',
+    '.sy-row{display:flex;gap:8px}',
+    '.sy-row input{flex:1 1 auto;min-width:0;font:inherit;font-size:13px;',
+    '  background:var(--ink);color:var(--paper);border:1px solid var(--line);padding:8px 10px}',
+    '.sy-row .sy-b{padding:7px 14px;font-size:13.5px;flex:0 0 auto}',
+    '.sy-n{font-size:12.5px!important;color:rgba(255,253,247,.55)!important}',
+    '.sy-sep{border-top:1px solid var(--line);padding-top:12px}',
+    '.sy-ok{font-size:13.5px!important;color:var(--paper)!important;font-weight:700}',
+    '.sy-b.fait{border-color:#81c784;color:#81c784;background:none}',
+    '@media(max-width:640px){',
+    '  .sy-l{flex-direction:column;align-items:stretch;padding:14px}',
+    '  .sy-qr{flex:none;width:min(220px,100%);align-self:center}',
+    '  .sy-row{flex-wrap:wrap}.sy-row input{flex:1 1 100%}',
+    '  .sy-row .sy-b{flex:1 1 auto;justify-content:center}',
     '}'
   ].join('');
 
@@ -1682,7 +1743,7 @@
      les pages qui ont une timeline, et il ne connaît que la sienne.
      Rend `false` sur la seule écriture refusée — « rien à changer » est
      un succès, pas un échec. */
-  function fusionne(cle, entrants){
+  function fusionne(cle, entrants, sansImages){
     if (!Array.isArray(entrants) || !entrants.length) return true;
     var par = {}, ordre = [], change = false;
     var actuels = lis(cle, []);
@@ -1692,12 +1753,336 @@
     });
     entrants.forEach(function(x){
       if (!x || typeof x !== 'object' || !x.id || !x.title) return;
+      /* Un lien ne porte pas les images : l'absence n'y veut pas dire qu'on
+         l'a retirée, et celle qu'on a déjà ici reste. */
+      if (sansImages && !x.img && par[x.id] && par[x.id].img) x.img = par[x.id].img;
       if (!par[x.id]) ordre.push(x.id);
       else if (JSON.stringify(par[x.id]) === JSON.stringify(x)) return;
       par[x.id] = x; change = true;
     });
     if (!change) return true;
     return pose(cle, ordre.map(function(i){ return par[i]; }));
+  }
+
+  /* ── le lien de transfert ────────────────────────────────────────────
+     Le fichier demande de le déposer quelque part et de le retrouver sur
+     l'autre appareil ; un lien s'envoie par message, un code se scanne. Il
+     porte le même contenu que « Tout exporter », sous une forme serrée :
+     les coches deviennent des listes d'identifiants, les clés une lettre,
+     et le tout passe par `deflate` avant la base64 d'URL.
+
+     **Le contenu est dans le fragment, après `#`.** Le navigateur ne
+     l'envoie jamais au serveur, ni à GoatCounter : la progression ne
+     quitte pas l'appareil qui l'ouvre. C'est la seule raison pour laquelle
+     un lien peut porter ça sans compte.
+
+     **Les images des ajouts n'y entrent pas.** Réduites, elles pèsent
+     encore quelques kilo-octets chacune — de quoi faire passer le lien de
+     deux mille signes à cinquante mille. Le fichier les garde, et la
+     fusion ne retire pas une image qu'on a déjà. */
+  function serre(r, last){
+    var u = {};
+    Object.keys(r.universes).forEach(function(k){
+      var b = r.universes[k], s = {};
+      var p = Object.keys(b.progress || {}).filter(function(i){ return b.progress[i]; });
+      if (p.length) s.p = p;
+      if (b.alt) {
+        var a = Object.keys(b.alt).filter(function(i){ return b.alt[i]; });
+        if (a.length) s.a = a;
+      }
+      if (b.mine) s.m = b.mine.map(function(x){
+        var y = {}; for (var c in x) if (c !== 'img' || !/^data:/.test(x[c] || '')) y[c] = x[c];
+        return y;
+      });
+      if (b.mode) s.o = b.mode;
+      u[k] = s;
+    });
+    var d = { v: 1, u: u };
+    if (last) d.l = last;
+    return d;
+  }
+  function desserre(d){
+    if (!d || d.v !== 1 || !d.u || typeof d.u !== 'object') return null;
+    var out = {};
+    function ens(l){
+      var o = {};
+      if (Array.isArray(l)) l.forEach(function(i){ if (typeof i === 'string') o[i] = 1; });
+      return o;
+    }
+    Object.keys(d.u).forEach(function(k){
+      var s = d.u[k] || {}, b = { progress: ens(s.p) };
+      if (s.a) b.alt = ens(s.a);
+      if (Array.isArray(s.m)) b.mine = s.m;
+      if (typeof s.o === 'string') b.mode = s.o;
+      out[k] = b;
+    });
+    var f = { chronologeek: 1, kind: 'all', universes: out };
+    if (d.l) f.last = d.l;
+    return f;
+  }
+
+  /* `CompressionStream` manque aux navigateurs d'avant 2023 : le lien part
+     alors en clair, préfixé `j` au lieu de `z`, et se relit pareil. */
+  function b64(octets){
+    var s = '';
+    for (var i = 0; i < octets.length; i += 8192)
+      s += String.fromCharCode.apply(null, octets.subarray(i, i + 8192));
+    return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function deb64(s){
+    s = s.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var b = atob(s), o = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) o[i] = b.charCodeAt(i);
+    return o;
+  }
+  function flot(octets, Classe){
+    var st = new Blob([octets]).stream().pipeThrough(new Classe('deflate-raw'));
+    return new Response(st).arrayBuffer().then(function(ab){ return new Uint8Array(ab); });
+  }
+  function encode(obj){
+    var brut = new TextEncoder().encode(JSON.stringify(obj));
+    if (typeof CompressionStream === 'undefined') return Promise.resolve('j' + b64(brut));
+    return flot(brut, CompressionStream).then(function(z){ return 'z' + b64(z); });
+  }
+  function decode(code){
+    return Promise.resolve().then(function(){
+      var o = deb64(code.slice(1));
+      if (code[0] === 'j') return o;
+      if (code[0] !== 'z' || typeof DecompressionStream === 'undefined') throw 0;
+      return flot(o, DecompressionStream);
+    }).then(function(o){
+      return desserre(JSON.parse(new TextDecoder().decode(o)));
+    });
+  }
+  /* On accepte le lien entier comme le code seul : un lien collé depuis
+     une messagerie arrive parfois avec du texte autour. */
+  function codeDe(s){
+    var m = /import=([jz][A-Za-z0-9_-]+)/.exec(s || '');
+    if (m) return m[1];
+    s = (s || '').trim();
+    return /^[jz][A-Za-z0-9_-]{8,}$/.test(s) ? s : null;
+  }
+
+  /* ── le QR code ──────────────────────────────────────────────────────
+     Écrit ici plutôt que tiré d'une bibliothèque : le site n'appelle aucun
+     serveur tiers, et une bibliothèque vendue pèserait trois fois ce bloc
+     pour des modes dont on n'a pas l'usage. Mode octet seul, niveaux de
+     correction L et M, versions 1 à 40 — l'algorithme de la norme
+     ISO 18004, dans l'ordre où Project Nayuki l'expose. */
+  function qrMatrice(texte){
+    var ECC = {
+      L: [-1,7,10,15,20,26,18,20,24,30,18,20,24,26,30,22,24,28,30,28,28,28,28,30,30,26,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+      M: [-1,10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28]
+    };
+    var BLOCS = {
+      L: [-1,1,1,1,1,1,2,2,2,2,4,4,4,4,4,6,6,6,6,7,8,8,9,9,10,12,12,12,13,14,15,16,17,18,19,19,20,21,22,24,25],
+      M: [-1,1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49]
+    };
+    var FORMAT = { L: 1, M: 0 };
+
+    var octets = unescape(encodeURIComponent(texte));
+    var data = [];
+    for (var i = 0; i < octets.length; i++) data.push(octets.charCodeAt(i));
+
+    function brut(v){
+      var r = (16 * v + 128) * v + 64;
+      if (v >= 2) { var n = Math.floor(v / 7) + 2; r -= (25 * n - 10) * n - 55; if (v >= 7) r -= 36; }
+      return r;
+    }
+    function utiles(v, e){ return Math.floor(brut(v) / 8) - ECC[e][v] * BLOCS[e][v]; }
+
+    /* La plus petite version qui tient, en M d'abord, en L sinon. */
+    var ver = 0, ecl = null;
+    ['M', 'L'].some(function(e){
+      for (var v = 1; v <= 40; v++) {
+        var bits = 4 + (v <= 9 ? 8 : 16) + data.length * 8;
+        if (bits <= utiles(v, e) * 8) { ver = v; ecl = e; return true; }
+      }
+      return false;
+    });
+    if (!ver) return null;
+
+    /* Les bits de données, puis le bourrage. */
+    var bb = [];
+    function pousse(val, n){ for (var k = n - 1; k >= 0; k--) bb.push((val >>> k) & 1); }
+    pousse(4, 4);
+    pousse(data.length, ver <= 9 ? 8 : 16);
+    data.forEach(function(b){ pousse(b, 8); });
+    var cap = utiles(ver, ecl) * 8;
+    pousse(0, Math.min(4, cap - bb.length));
+    pousse(0, (8 - bb.length % 8) % 8);
+    for (var pad = 0xEC; bb.length < cap; pad ^= 0xEC ^ 0x11) pousse(pad, 8);
+    var mots = [];
+    for (i = 0; i < bb.length; i += 8) {
+      var o = 0; for (var j = 0; j < 8; j++) o = (o << 1) | bb[i + j];
+      mots.push(o);
+    }
+
+    /* Reed-Solomon sur GF(256), polynôme 0x11D. */
+    function mul(x, y){
+      var z = 0;
+      for (var k = 7; k >= 0; k--) { z = (z << 1) ^ ((z >>> 7) * 0x11D); z ^= ((y >>> k) & 1) * x; }
+      return z;
+    }
+    function diviseur(deg){
+      var r = []; for (var k = 0; k < deg - 1; k++) r.push(0); r.push(1);
+      var root = 1;
+      for (k = 0; k < deg; k++) {
+        for (var m = 0; m < r.length; m++) { r[m] = mul(r[m], root); if (m + 1 < r.length) r[m] ^= r[m + 1]; }
+        root = mul(root, 2);
+      }
+      return r;
+    }
+    function reste(d, div){
+      var r = div.map(function(){ return 0; });
+      d.forEach(function(b){
+        var f = b ^ r.shift(); r.push(0);
+        div.forEach(function(c, k){ r[k] ^= mul(c, f); });
+      });
+      return r;
+    }
+
+    /* Les blocs, et leur entrelacement. */
+    var nb = BLOCS[ecl][ver], lecc = ECC[ecl][ver], total = Math.floor(brut(ver) / 8);
+    var courts = nb - total % nb, lcourt = Math.floor(total / nb);
+    var blocs = [], div = diviseur(lecc), pos = 0;
+    for (i = 0; i < nb; i++) {
+      var dat = mots.slice(pos, pos + lcourt - lecc + (i < courts ? 0 : 1));
+      pos += dat.length;
+      var e = reste(dat, div);
+      if (i < courts) dat.push(0);
+      blocs.push(dat.concat(e));
+    }
+    var flux = [];
+    for (i = 0; i < blocs[0].length; i++)
+      for (j = 0; j < blocs.length; j++)
+        if (i !== lcourt - lecc || j >= courts) flux.push(blocs[j][i]);
+
+    /* La grille : motifs fixes d'abord, marqués pour que ni les données ni
+       le masque ne les touchent. */
+    var n = ver * 4 + 17, mod = [], fixe = [];
+    for (i = 0; i < n; i++) { mod.push(new Array(n).fill(false)); fixe.push(new Array(n).fill(false)); }
+    function pose(x, y, v){ mod[y][x] = v; fixe[y][x] = true; }
+
+    for (i = 0; i < n; i++) { pose(6, i, i % 2 === 0); pose(i, 6, i % 2 === 0); }
+    [[3, 3], [n - 4, 3], [3, n - 4]].forEach(function(c){
+      for (var dy = -4; dy <= 4; dy++) for (var dx = -4; dx <= 4; dx++) {
+        var d = Math.max(Math.abs(dx), Math.abs(dy)), xx = c[0] + dx, yy = c[1] + dy;
+        if (xx >= 0 && xx < n && yy >= 0 && yy < n) pose(xx, yy, d !== 2 && d !== 4);
+      }
+    });
+    if (ver > 1) {
+      var na = Math.floor(ver / 7) + 2;
+      var pas = Math.floor((ver * 8 + na * 3 + 5) / (na * 4 - 4)) * 2;
+      var al = [6];
+      for (var p = n - 7; al.length < na; p -= pas) al.splice(1, 0, p);
+      al.forEach(function(ay, a){
+        al.forEach(function(ax, b){
+          if ((a === 0 && b === 0) || (a === 0 && b === na - 1) || (a === na - 1 && b === 0)) return;
+          for (var dy = -2; dy <= 2; dy++) for (var dx = -2; dx <= 2; dx++)
+            pose(ax + dx, ay + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+        });
+      });
+    }
+    function format(masque){
+      var d = FORMAT[ecl] << 3 | masque, r = d;
+      for (var k = 0; k < 10; k++) r = (r << 1) ^ ((r >>> 9) * 0x537);
+      var b = (d << 10 | r) ^ 0x5412;
+      var bit = function(k){ return ((b >>> k) & 1) !== 0; };
+      for (k = 0; k <= 5; k++) pose(8, k, bit(k));
+      pose(8, 7, bit(6)); pose(8, 8, bit(7)); pose(7, 8, bit(8));
+      for (k = 9; k < 15; k++) pose(14 - k, 8, bit(k));
+      for (k = 0; k < 8; k++) pose(n - 1 - k, 8, bit(k));
+      for (k = 8; k < 15; k++) pose(8, n - 15 + k, bit(k));
+      pose(8, n - 8, true);
+    }
+    format(0);                                  /* réserve la place */
+    if (ver >= 7) {
+      var r = ver;
+      for (i = 0; i < 12; i++) r = (r << 1) ^ ((r >>> 11) * 0x1F25);
+      var vb = ver << 12 | r;
+      for (i = 0; i < 18; i++) {
+        var bit = ((vb >>> i) & 1) !== 0, a = n - 11 + i % 3, b = Math.floor(i / 3);
+        pose(a, b, bit); pose(b, a, bit);
+      }
+    }
+
+    /* Les données, en zigzag de deux colonnes, du bas à droite. */
+    var k = 0;
+    for (var droite = n - 1; droite >= 1; droite -= 2) {
+      if (droite === 6) droite = 5;
+      for (var vert = 0; vert < n; vert++) for (j = 0; j < 2; j++) {
+        var x = droite - j, monte = ((droite + 1) & 2) === 0, y = monte ? n - 1 - vert : vert;
+        if (!fixe[y][x] && k < flux.length * 8) {
+          mod[y][x] = ((flux[k >>> 3] >>> (7 - (k & 7))) & 1) !== 0;
+          k++;
+        }
+      }
+    }
+
+    /* Les huit masques, et le moins pénalisé. La pénalité ne compte que
+       les suites, les carrés et l'équilibre : c'est ce qui gêne un lecteur
+       d'écran à l'autre, et tout masque reste valide. */
+    var MASQUES = [
+      function(x, y){ return (x + y) % 2 === 0; },
+      function(x, y){ return y % 2 === 0; },
+      function(x){ return x % 3 === 0; },
+      function(x, y){ return (x + y) % 3 === 0; },
+      function(x, y){ return (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0; },
+      function(x, y){ return x * y % 2 + x * y % 3 === 0; },
+      function(x, y){ return (x * y % 2 + x * y % 3) % 2 === 0; },
+      function(x, y){ return ((x + y) % 2 + x * y % 3) % 2 === 0; }
+    ];
+    function masque(m){
+      for (var y = 0; y < n; y++) for (var x = 0; x < n; x++)
+        if (!fixe[y][x] && MASQUES[m](x, y)) mod[y][x] = !mod[y][x];
+    }
+    function penalite(){
+      var s = 0, noirs = 0, x, y, run;
+      for (y = 0; y < n; y++) {
+        run = 1;
+        for (x = 1; x <= n; x++) {
+          if (x < n && mod[y][x] === mod[y][x - 1]) run++;
+          else { if (run >= 5) s += run - 2; run = 1; }
+        }
+      }
+      for (x = 0; x < n; x++) {
+        run = 1;
+        for (y = 1; y <= n; y++) {
+          if (y < n && mod[y][x] === mod[y - 1][x]) run++;
+          else { if (run >= 5) s += run - 2; run = 1; }
+        }
+      }
+      for (y = 0; y < n - 1; y++) for (x = 0; x < n - 1; x++) {
+        var c = mod[y][x];
+        if (c === mod[y][x + 1] && c === mod[y + 1][x] && c === mod[y + 1][x + 1]) s += 3;
+      }
+      for (y = 0; y < n; y++) for (x = 0; x < n; x++) if (mod[y][x]) noirs++;
+      s += Math.floor(Math.abs(noirs * 20 - n * n * 10) / (n * n)) * 10;
+      return s;
+    }
+    var meilleur = 0, min = Infinity;
+    for (var m = 0; m < 8; m++) {
+      masque(m); format(m);
+      var pen = penalite();
+      if (pen < min) { min = pen; meilleur = m; }
+      masque(m);                                /* XOR : se défait lui-même */
+    }
+    masque(meilleur); format(meilleur);
+    return { n: n, m: mod, version: ver };
+  }
+
+  /* Le code en SVG : net à toute taille, et un seul chemin. */
+  function qrSvg(texte){
+    var q = qrMatrice(texte);
+    if (!q) return null;
+    var d = '', marge = 4, cote = q.n + marge * 2;
+    for (var y = 0; y < q.n; y++) for (var x = 0; x < q.n; x++)
+      if (q.m[y][x]) d += 'M' + (x + marge) + ' ' + (y + marge) + 'h1v1h-1z';
+    return { version: q.version,
+             svg: '<svg viewBox="0 0 ' + cote + ' ' + cote + '" shape-rendering="crispEdges" role="img">' +
+                  '<rect width="100%" height="100%" fill="#fff"/><path fill="#000" d="' + d + '"/></svg>' };
   }
 
   /* ── le bloc, posé sous « Les Dossiers » ─────────────────────────── */
@@ -1723,9 +2108,42 @@
           '<button type="button" class="sy-b alt" id="sy-in">' +
             '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>' +
             '<span></span></button>' +
+          '<button type="button" class="sy-b alt" id="sy-lk" aria-expanded="false" aria-controls="sy-l">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>' +
+            '<span></span></button>' +
           '<input type="file" accept="application/json,.json" id="sy-f" hidden/>' +
         '</div>' +
         '<span class="sy-err" hidden></span>' +
+        '<div class="sy-l" id="sy-l" hidden>' +
+          '<div class="sy-qr" hidden></div>' +
+          '<div class="sy-lc">' +
+            '<div class="sy-env" hidden>' +
+              '<p class="sy-e1"></p>' +
+              '<div class="sy-row" style="margin-top:10px">' +
+                '<label class="skip" for="sy-url"></label>' +
+                '<input id="sy-url" readonly/>' +
+                '<button type="button" class="sy-b" id="sy-cp"><span></span></button>' +
+                '<button type="button" class="sy-b alt" id="sy-sh" hidden><span></span></button>' +
+              '</div>' +
+              '<p class="sy-n sy-e2" hidden style="margin-top:8px"></p>' +
+            '</div>' +
+            '<div class="sy-rec">' +
+              '<p class="sy-n sy-r1"></p>' +
+              '<div class="sy-row" style="margin-top:8px">' +
+                '<label class="skip" for="sy-col"></label>' +
+                '<input id="sy-col" autocomplete="off" spellcheck="false"/>' +
+                '<button type="button" class="sy-b alt" id="sy-rd"><span></span></button>' +
+              '</div>' +
+              '<div class="sy-cf" hidden style="margin-top:10px">' +
+                '<p class="sy-ok"></p>' +
+                '<div class="sy-row" style="margin-top:8px">' +
+                  '<button type="button" class="sy-b" id="sy-go"><span></span></button>' +
+                  '<button type="button" class="sy-b alt" id="sy-no"><span></span></button>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
       '</div>';
 
     /* `textContent` plutôt qu'une concaténation : les libellés portent
@@ -1734,6 +2152,16 @@
     sec.querySelector('p').textContent = T.dek;
     sec.querySelector('#sy-out span').textContent = T.exp;
     sec.querySelector('#sy-in span').textContent = T.imp;
+    sec.querySelector('#sy-lk span').textContent = T.lien;
+    sec.querySelector('label[for="sy-url"]').textContent = T.lien;
+    sec.querySelector('#sy-cp span').textContent = T.copier;
+    sec.querySelector('#sy-sh span').textContent = T.partager;
+    sec.querySelector('.sy-r1').textContent = T.recoit;
+    sec.querySelector('label[for="sy-col"]').textContent = T.colle;
+    sec.querySelector('#sy-col').placeholder = T.colle;
+    sec.querySelector('#sy-rd span').textContent = T.lire;
+    sec.querySelector('#sy-go span').textContent = T.appliquer;
+    sec.querySelector('#sy-no span').textContent = T.ignorer;
 
     if (apres) pere.insertBefore(sec, apres.nextSibling);
     else pere.appendChild(sec);
@@ -1777,6 +2205,53 @@
 
     sec.querySelector('#sy-in').addEventListener('click', function(){ champ.click(); });
 
+    /* L'import, que le fichier et le lien partagent. `sansImages` dit que
+       les ajouts arrivent sans leur image, et qu'il faut garder la nôtre. */
+    function applique(d, sansImages){
+      if (!d || typeof d !== 'object') return dit(T.mauvais);
+
+      /* Un fichier de page — `{universe, progress, mine}` — se lit ici
+         aussi : il désigne un seul bloc, et la suite ne change pas. */
+      var blocs = d.universes;
+      if (!blocs && typeof d.universe === 'string') {
+        blocs = {}; blocs[d.universe] = d;
+      }
+      if (!blocs || typeof blocs !== 'object') return dit(T.mauvais);
+
+      var faits = 0, refus = 0;
+      UNIVERS.forEach(function(x){
+        var b = blocs[x.u];
+        if (!b || typeof b !== 'object') return;
+        var p = b.progress;
+        if (p && typeof p === 'object' && !Array.isArray(p)) {
+          if (pose(x.prog, p)) faits++; else refus++;
+        }
+        /* La seconde clé suit la première. Un fichier d'avant la
+           séparation n'a pas d'`alt` et porte tout dans `progress` :
+           la page le range à sa prochaine ouverture. */
+        if (x.alt && b.alt && typeof b.alt === 'object' && !Array.isArray(b.alt)) {
+          if (pose(x.alt, b.alt)) faits++; else refus++;
+        }
+        if (x.perso && Array.isArray(b.mine) && b.mine.length) {
+          if (fusionne(x.perso, b.mine, sansImages)) faits++; else refus++;
+        }
+        if (typeof b.mode === 'string' && b.mode) {
+          try { localStorage.setItem(x.prog + '-mode', b.mode); } catch (_) {}
+        }
+      });
+      if (d.last && typeof d.last === 'object') pose('cg_last', d.last);
+
+      if (refus) return dit(T.plein);
+      if (!faits) return dit(T.vide);
+      /* Les cases, le score et le bandeau de reprise sont peints au
+         chargement : c'est le rechargement qui les rebâtit, comme sur
+         les neuf pages. Le fragment part avant : recharger sur un
+         `#import=` rejouerait la question. */
+      if (/import=/.test(location.hash))
+        history.replaceState(null, '', location.pathname + location.search);
+      location.reload();
+    }
+
     champ.addEventListener('change', function(){
       var f = this.files && this.files[0];
       this.value = '';
@@ -1785,48 +2260,102 @@
       r.onload = function(){
         var d;
         try { d = JSON.parse(r.result); } catch (_) { return dit(T.mauvais); }
-        if (!d || typeof d !== 'object') return dit(T.mauvais);
-
-        /* Un fichier de page — `{universe, progress, mine}` — se lit ici
-           aussi : il désigne un seul bloc, et la suite ne change pas. */
-        var blocs = d.universes;
-        if (!blocs && typeof d.universe === 'string') {
-          blocs = {}; blocs[d.universe] = d;
-        }
-        if (!blocs || typeof blocs !== 'object') return dit(T.mauvais);
-
-        var faits = 0, refus = 0;
-        UNIVERS.forEach(function(x){
-          var b = blocs[x.u];
-          if (!b || typeof b !== 'object') return;
-          var p = b.progress;
-          if (p && typeof p === 'object' && !Array.isArray(p)) {
-            if (pose(x.prog, p)) faits++; else refus++;
-          }
-          /* La seconde clé suit la première. Un fichier d'avant la
-             séparation n'a pas d'`alt` et porte tout dans `progress` :
-             la page le range à sa prochaine ouverture. */
-          if (x.alt && b.alt && typeof b.alt === 'object' && !Array.isArray(b.alt)) {
-            if (pose(x.alt, b.alt)) faits++; else refus++;
-          }
-          if (x.perso && Array.isArray(b.mine) && b.mine.length) {
-            if (fusionne(x.perso, b.mine)) faits++; else refus++;
-          }
-          if (typeof b.mode === 'string' && b.mode) {
-            try { localStorage.setItem(x.prog + '-mode', b.mode); } catch (_) {}
-          }
-        });
-        if (d.last && typeof d.last === 'object') pose('cg_last', d.last);
-
-        if (refus) return dit(T.plein);
-        if (!faits) return dit(T.vide);
-        /* Les cases, le score et le bandeau de reprise sont peints au
-           chargement : c'est le rechargement qui les rebâtit, comme sur
-           les neuf pages. */
-        location.reload();
+        applique(d, false);
       };
       r.readAsText(f);
     });
+
+    /* ── le lien ── */
+    var lk = sec.querySelector('#sy-lk'), pan = sec.querySelector('#sy-l');
+    var qr = sec.querySelector('.sy-qr'), env = sec.querySelector('.sy-env');
+    var url = sec.querySelector('#sy-url'), cp = sec.querySelector('#sy-cp');
+    var sh = sec.querySelector('#sy-sh'), e2 = sec.querySelector('.sy-e2');
+    var col = sec.querySelector('#sy-col'), cf = sec.querySelector('.sy-cf');
+    var recu = null;
+
+    function ouvre(){
+      pan.hidden = false;
+      lk.setAttribute('aria-expanded', 'true');
+      var r = recolte();
+      if (!r.n) { env.hidden = true; qr.hidden = true; return; }
+      var images = Object.keys(r.universes).some(function(k){
+        return (r.universes[k].mine || []).some(function(x){ return /^data:/.test(x.img || ''); });
+      });
+      encode(serre(r, lis('cg_last', null))).then(function(code){
+        var lien = location.origin + location.pathname + '#import=' + code;
+        url.value = lien;
+        /* Au-delà de mille signes le code passe la version 26 : il se lit
+           encore sur papier, mal sur un écran qui scintille. */
+        var q = lien.length <= 1000 ? qrSvg(lien) : null;
+        qr.innerHTML = q ? q.svg : '';
+        qr.hidden = !q;
+        if (q) qr.firstChild.setAttribute('aria-label', T.lien);
+        sec.querySelector('.sy-e1').textContent = q ? T.envoi : T.envoiSansQr;
+        var notes = [];
+        if (!q) notes.push(T.dense);
+        if (images) notes.push(T.images);
+        e2.textContent = notes.join(' ');
+        e2.hidden = !notes.length;
+        sh.hidden = !navigator.share;
+        cp.classList.remove('fait');
+        cp.firstChild.textContent = T.copier;
+        env.hidden = false;
+      }, function(){ env.hidden = true; });
+    }
+    lk.addEventListener('click', function(){
+      if (pan.hidden) ouvre();
+      else { pan.hidden = true; lk.setAttribute('aria-expanded', 'false'); }
+    });
+    url.addEventListener('focus', function(){ this.select(); });
+    cp.addEventListener('click', function(){
+      var fait = function(){ cp.classList.add('fait'); cp.firstChild.textContent = T.copie; };
+      if (navigator.clipboard) navigator.clipboard.writeText(url.value).then(fait, function(){ url.select(); });
+      else { url.select(); }
+    });
+    sh.addEventListener('click', function(){
+      navigator.share({ title: 'Chronologeek', url: url.value }).catch(function(){});
+    });
+
+    /* Recevoir : on lit, on dit ce que le lien apporte, et l'on attend le
+       geste. Remplacer une progression sans le dire serait la seule façon
+       de perdre quelque chose ici. */
+    function lit(texte){
+      var code = codeDe(texte);
+      cf.hidden = true; recu = null;
+      if (!code) { dit(T.lienKo); return; }
+      decode(code).then(function(f){
+        if (!f) throw 0;
+        var n = 0, c = 0;
+        Object.keys(f.universes).forEach(function(k){
+          n++;
+          c += Object.keys(f.universes[k].progress).filter(function(i){ return !PARCOURS.test(i); }).length;
+        });
+        recu = f;
+        dit('');
+        cf.querySelector('.sy-ok').textContent = T.arrive(n, c);
+        cf.hidden = false;
+      }).catch(function(){ dit(T.lienKo); });
+    }
+    sec.querySelector('#sy-rd').addEventListener('click', function(){ lit(col.value); });
+    col.addEventListener('keydown', function(e){ if (e.key === 'Enter') lit(col.value); });
+    sec.querySelector('#sy-go').addEventListener('click', function(){ if (recu) applique(recu, true); });
+    sec.querySelector('#sy-no').addEventListener('click', function(){
+      cf.hidden = true; recu = null; col.value = '';
+      if (/import=/.test(location.hash))
+        history.replaceState(null, '', location.pathname + location.search);
+    });
+
+    /* Arriver par un lien : le panneau s'ouvre sur la question, et la page
+       descend jusqu'à lui — l'écran d'arrivée passé. */
+    /* L'envoi reste fermé : qui arrive avec un lien vient recevoir, et un
+       second code à l'écran brouillerait la question. */
+    if (/import=/.test(location.hash)) {
+      pan.hidden = false;
+      lk.setAttribute('aria-expanded', 'true');
+      col.value = location.href;
+      lit(location.href);
+      setTimeout(function(){ pan.scrollIntoView({ block: 'center' }); }, 400);
+    }
   }
 
   /* Même report que les deux blocs précédents : `e-app.js` est chargé en
@@ -2517,6 +3046,437 @@
     p.lastChild.textContent  = FR ? 'sans compte, sans algorithme'
                                   : 'no account, no algorithm';
     dek.parentNode.insertBefore(p, dek.nextSibling);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
+/* ═══ LES SORTIES DANS SON AGENDA ══════════════════════════════════════
+   Le radar se consultait, il s'abonne maintenant aussi. `radar.py` écrit
+   chaque nuit un fichier iCalendar par langue et par univers dans
+   `/agenda/` ; ce bloc ne fait que donner les trois façons de s'y abonner.
+
+   Trois choses à savoir :
+   - **`webcal://` pour Apple et Outlook, `cid=` pour Google.** Un lien
+     `https://` vers un `.ics` le télécharge une fois — c'est un import, pas
+     un abonnement, et les sorties suivantes n'arriveraient jamais.
+   - **La langue de l'agenda est celle de la page**, donc la date aussi :
+     sortie française d'un côté, américaine de l'autre, comme au radar.
+   - **Les univers sont ceux que `radar.py` suit**, pas ceux du site. Un
+     univers qui n'est pas au radar n'a pas de fichier.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+
+  var UNIS = [
+    ['',               FR ? 'Tous les univers' : 'All universes'],
+    ['starwars',       'Star Wars'],
+    ['marvel',         'Marvel'],
+    ['dc',             'DC'],
+    ['avatar',         'Avatar Legends'],
+    ['startrek',       'Star Trek'],
+    ['twd',            'The Walking Dead'],
+    ['assassinscreed', 'Assassin’s Creed'],
+    ['witcher',        'The Witcher']
+  ];
+
+  var T = FR ? {
+    titre: 'Les sorties dans votre agenda',
+    dek:   'Un abonnement, et chaque sortie datée arrive toute seule dans votre calendrier — épisodes compris, mis à jour chaque jour.',
+    uni:   'Univers',
+    apple: 'Apple · Outlook',
+    goog:  'Google Agenda',
+    copie: 'Copier l’adresse',
+    ok:    'Adresse copiée'
+  } : {
+    titre: 'Releases in your calendar',
+    dek:   'Subscribe once, and every dated release lands in your calendar on its own — episodes included, updated daily.',
+    uni:   'Universe',
+    apple: 'Apple · Outlook',
+    goog:  'Google Calendar',
+    copie: 'Copy address',
+    ok:    'Address copied'
+  };
+
+  var CSS = [
+    /* Centré, comme l'accroche au-dessus : le héros de la page l'est tout
+       entier, et des boutons calés à gauche y avaient l'air tombés. */
+    '.ag{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;',
+    '  justify-content:center;gap:10px 12px}',
+    '.ag-t{flex:1 1 100%;font-size:13.5px;line-height:1.5;color:rgba(255,253,247,.72)}',
+    '.ag-t b{color:var(--paper);font-weight:700;margin-right:6px}',
+    '.ag select{font:inherit;font-size:13px;background:var(--ink);color:var(--paper);',
+    '  border:1px solid var(--line);padding:7px 10px;border-radius:0}',
+    '.ag a,.ag button{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;',
+    '  font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;',
+    '  padding:7px 14px;border:2px solid var(--hot);color:var(--hot);background:none;',
+    '  text-decoration:none;display:inline-flex;align-items:center;gap:7px}',
+    '.ag a:hover,.ag button:hover{background:var(--hot);color:var(--ink)}',
+    '.ag svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2}',
+    '.ag button.ok{border-color:#81c784;color:#81c784}',
+    '.ag button.ok:hover{background:none}',
+    '@media(max-width:560px){.ag select{flex:1 1 100%}.ag a,.ag button{flex:1 1 auto;justify-content:center}}'
+  ].join('');
+
+  function pose(){
+    var dek = document.querySelector('.attract .dek');
+    if (!dek || !document.getElementById('cal') || document.querySelector('.ag')) return;
+
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    var box = document.createElement('div');
+    box.className = 'ag';
+    box.id = 'agenda';
+    box.innerHTML =
+      '<p class="ag-t"><b></b><span></span></p>' +
+      '<label class="skip" for="ag-u"></label><select id="ag-u"></select>' +
+      '<a id="ag-a"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span></span></a>' +
+      '<a id="ag-g" target="_blank" rel="noopener"><span></span></a>' +
+      '<button type="button" id="ag-c"><span></span></button>';
+    var q = function(s){ return box.querySelector(s); };
+    q('.ag-t b').textContent = T.titre;
+    q('.ag-t span').textContent = T.dek;
+    q('label').textContent = T.uni;
+    q('#ag-a span').textContent = T.apple;
+    q('#ag-g span').textContent = T.goog;
+    q('#ag-c span').textContent = T.copie;
+    var sel = q('#ag-u');
+    UNIS.forEach(function(u){
+      var o = document.createElement('option');
+      o.value = u[0]; o.textContent = u[1];
+      sel.appendChild(o);
+    });
+
+    function adresse(){
+      return location.host + '/agenda/' + (FR ? 'fr' : 'en') +
+             (sel.value ? '-' + sel.value : '') + '.ics';
+    }
+    function maj(){
+      var w = 'webcal://' + adresse();
+      q('#ag-a').href = w;
+      q('#ag-g').href = 'https://calendar.google.com/calendar/r?cid=' + encodeURIComponent(w);
+      var b = q('#ag-c');
+      b.classList.remove('ok');
+      b.firstChild.textContent = T.copie;
+    }
+    sel.addEventListener('change', maj);
+    q('#ag-c').addEventListener('click', function(){
+      var b = this, url = 'https://' + adresse();
+      var fait = function(){ b.classList.add('ok'); b.firstChild.textContent = T.ok; };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(fait, function(){ prompt('', url); });
+      else prompt('', url);
+    });
+    maj();
+
+    var fx = document.querySelector('.fx');
+    var ref = fx || dek;
+    ref.parentNode.insertBefore(box, ref.nextSibling);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
+/* ═══ PARTAGER SA PROGRESSION ══════════════════════════════════════════
+   Les courriers de Reddit disaient tous la même chose : « j'en suis là ».
+   Une image la dit mieux qu'une phrase, et elle porte l'adresse du site
+   là où on la poste. Un bouton de plus dans le panneau de la barre du
+   bas, à côté d'Exporter, sur les douze timelines et le Dossier.
+
+   **Tout est lu dans la page, rien n'est recalculé** : le décompte et le
+   temps restant dans le HUD, que le `tally()` de chaque page tient déjà,
+   le nom dans le h1, l'encre dans `--uni`, le fond dans la bannière de
+   `.attract`. Deux calculs pourraient diverger, un seul ne le peut pas.
+
+   Quatre choses à savoir :
+   - **1200 × 630**, le format des aperçus de lien : Reddit, Discord,
+     Bluesky et X le montrent sans le rogner.
+   - **La bannière est sur le même domaine**, donc le canvas n'est pas
+     « souillé » et `toBlob` répond. Une image d'un autre domaine le
+     bloquerait sans un mot — d'où le fond uni si elle manque.
+   - **Les polices sont attendues avant de dessiner.** `font-display:block`
+     vaut pour le DOM, pas pour le canvas, qui écrirait dans la police de
+     repli sans prévenir.
+   - **`navigator.share` avec un fichier sur téléphone, un téléchargement
+     ailleurs.** Windows et macOS portent l'API, mais leur feuille de
+     partage n'envoie pas une image là où on la veut.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+
+  var T = FR ? {
+    btn:   'Partager',
+    titre: 'Ma progression',
+    faits: 'terminées',
+    fini:  'Timeline terminée',
+    reste: function(t){ return t + ' restantes'; },
+    der:   'J’en suis à',
+    share: 'Partager l’image',
+    dl:    'Télécharger',
+    ferme: 'Fermer',
+    texte: function(nom){ return 'Ma progression ' + nom + ' sur Chronologeek'; },
+    alt:   'Aperçu de l’image à partager'
+  } : {
+    btn:   'Share',
+    titre: 'My progress',
+    faits: 'completed',
+    fini:  'Timeline complete',
+    reste: function(t){ return t + ' to go'; },
+    der:   'Currently at',
+    share: 'Share image',
+    dl:    'Download',
+    ferme: 'Close',
+    texte: function(nom){ return 'My ' + nom + ' progress on Chronologeek'; },
+    alt:   'Preview of the image to share'
+  };
+
+  var CSS = [
+    /* `margin:auto` rappelé : les pages posent `*{margin:0}`, et un
+       dialogue modal sans lui se colle en haut à gauche. */
+    '.pg{margin:auto;padding:0;border:2px solid var(--uni,#f0c97c);background:#0d0b12;',
+    '  color:#fffdf7;max-width:min(760px,calc(100vw - 32px));width:100%}',
+    '.pg::backdrop{background:rgba(8,8,15,.82)}',
+    '.pg img{display:block;width:100%;height:auto;aspect-ratio:1200/630;background:#08080f}',
+    '.pg-act{display:flex;gap:10px;flex-wrap:wrap;padding:14px;justify-content:flex-end}',
+    '.pg-act button{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;font-size:14.5px;',
+    '  letter-spacing:.07em;text-transform:uppercase;cursor:pointer;padding:8px 18px;',
+    '  background:none;border:2px solid var(--uni,#f0c97c);color:var(--uni,#f0c97c)}',
+    '.pg-act button.go{background:var(--uni,#f0c97c);color:#0d0b12}',
+    '.pg-act button[hidden]{display:none}',
+    '@media(max-width:480px){.pg-act button{flex:1 1 auto}}'
+  ].join('');
+
+  function texte(sel){
+    var e = document.querySelector(sel);
+    return e ? e.textContent.replace(/\s+/g, ' ').trim() : '';
+  }
+  function nomUnivers(){
+    var h1 = document.querySelector('h1');
+    if (!h1) return document.title;
+    var nm = h1.querySelector('.nm');
+    if (nm) return nm.textContent.trim();
+    /* Le Dossier : « Dossier » puis « Star Wars » dans un span, sans espace
+       entre les deux dans le DOM. */
+    return Array.prototype.filter.call(h1.childNodes, function(n){
+      return !(n.classList && (n.classList.contains('sub') || n.classList.contains('tag')));
+    }).map(function(n){ return n.textContent.trim(); }).filter(Boolean).join(' ');
+  }
+  function derniere(){
+    var c = document.querySelectorAll('[data-check][aria-checked="true"]');
+    for (var i = c.length - 1; i >= 0; i--) {
+      var row = c[i].closest('[data-id]');
+      var t = row && row.querySelector('.bu-title');
+      if (t) return t.textContent.replace(/\s+/g, ' ').trim();
+    }
+    return '';
+  }
+  function banniere(){
+    var a = document.querySelector('.attract');
+    var bg = a ? getComputedStyle(a).backgroundImage : '';
+    var m = /url\(["']?([^"')]+)["']?\)/.exec(bg || '');
+    return m ? m[1] : '';
+  }
+  function charge(src){
+    return new Promise(function(ok){
+      if (!src) return ok(null);
+      var im = new Image();
+      im.onload = function(){ ok(im); };
+      im.onerror = function(){ ok(null); };
+      im.src = src;
+    });
+  }
+
+  /* Réduit la taille jusqu'à ce que le texte tienne dans `max`. */
+  function ajuste(ctx, txt, poids, taille, famille, max){
+    do { ctx.font = poids + ' ' + taille + 'px ' + famille; taille -= 2; }
+    while (ctx.measureText(txt).width > max && taille > 20);
+  }
+
+  function dessine(){
+    var W = 1200, H = 630, M = 72;
+    var uni = (getComputedStyle(document.body).getPropertyValue('--uni') ||
+               getComputedStyle(document.documentElement).getPropertyValue('--uni') || '').trim() || '#f0c97c';
+    var on = parseInt(texte('#k-on'), 10) || 0;
+    var tot = parseInt(texte('#k-tot'), 10) || 0;
+    var pct = tot ? Math.floor(on / tot * 100) : 0;
+    var temps = texte('#k-time');
+    var nom = nomUnivers();
+    var der = derniere();
+    var D = '"Big Shoulders Display", sans-serif', C = 'Chivo, sans-serif';
+
+    return Promise.all([
+      charge(banniere()),
+      document.fonts ? Promise.all([
+        document.fonts.load('900 100px "Big Shoulders Display"'),
+        document.fonts.load('800 30px "Big Shoulders Display"'),
+        document.fonts.load('400 26px Chivo'),
+        document.fonts.load('700 26px Chivo')
+      ]).catch(function(){}) : null
+    ]).then(function(r){
+      var img = r[0];
+      var cv = document.createElement('canvas');
+      cv.width = W; cv.height = H;
+      var x = cv.getContext('2d');
+
+      x.fillStyle = '#08080f';
+      x.fillRect(0, 0, W, H);
+      if (img) {
+        var s = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+        var iw = img.naturalWidth * s, ih = img.naturalHeight * s;
+        x.drawImage(img, (W - iw) / 2, (H - ih) / 2, iw, ih);
+      }
+      /* Le voile : plein à gauche où l'on lit, plus léger à droite où
+         l'image doit rester reconnaissable. */
+      var g = x.createLinearGradient(0, 0, W, 0);
+      g.addColorStop(0, 'rgba(8,8,15,.94)');
+      g.addColorStop(.5, 'rgba(8,8,15,.78)');
+      g.addColorStop(1, 'rgba(8,8,15,.28)');
+      x.fillStyle = g;
+      x.fillRect(0, 0, W, H);
+      x.fillStyle = uni;
+      x.fillRect(0, 0, 12, H);
+
+      x.textBaseline = 'alphabetic';
+      x.fillStyle = uni;
+      x.font = '800 28px ' + D;
+      x.letterSpacing = '4px';
+      x.fillText(T.titre.toUpperCase(), M, 104);
+      x.letterSpacing = '0px';
+
+      x.fillStyle = '#fffdf7';
+      ajuste(x, nom.toUpperCase(), 900, 104, D, W - 2 * M);
+      x.fillText(nom.toUpperCase(), M, 200);
+
+      /* Le décompte : le nombre fait en grand, le total à côté. */
+      x.fillStyle = uni;
+      x.font = '900 150px ' + D;
+      var a = String(on);
+      x.fillText(a, M, 366);
+      var wa = x.measureText(a).width;
+      x.fillStyle = 'rgba(255,253,247,.85)';
+      x.font = '800 64px ' + D;
+      var b = ' / ' + tot;
+      x.fillText(b, M + wa + 6, 366);
+      var wb = x.measureText(b).width;
+      x.font = '400 26px ' + C;
+      x.fillStyle = 'rgba(255,253,247,.7)';
+      /* Le mot du HUD, pas le nôtre : « terminés » ou « terminées » selon ce
+         que la page compte, et elle le sait mieux que nous. */
+      var mot = texte('#hud-btn .lbl') || T.faits;
+      x.fillText(on >= tot && tot ? T.fini : mot, M + wa + wb + 22, 366);
+
+      /* La barre, et le pourcentage au bout. */
+      var by = 400, bw = W - 2 * M - 110, bh = 20;
+      x.fillStyle = 'rgba(255,253,247,.14)';
+      x.fillRect(M, by, bw, bh);
+      x.fillStyle = uni;
+      x.fillRect(M, by, Math.max(on ? 6 : 0, bw * on / (tot || 1)), bh);
+      x.fillStyle = '#fffdf7';
+      x.font = '900 40px ' + D;
+      x.textAlign = 'right';
+      x.fillText(pct + ' %', W - M, by + 20);
+      x.textAlign = 'left';
+
+      /* Une ligne de détails, ce qui existe seulement. */
+      var bits = [];
+      if (der) bits.push(T.der + (FR ? ' ' : ': ') + der);
+      if (temps && !/^0\s*h?$/.test(temps) && on < tot) bits.push(T.reste(temps));
+      if (bits.length) {
+        x.fillStyle = 'rgba(255,253,247,.82)';
+        var ligne = bits.join('   ·   ');
+        ajuste(x, ligne, 400, 26, C, W - 2 * M);
+        x.fillText(ligne, M, 484);
+      }
+
+      x.fillStyle = '#f0c97c';
+      x.font = '900 40px ' + D;
+      x.letterSpacing = '2px';
+      x.fillText('CHRONOLOGEEK', M, H - 60);
+      x.letterSpacing = '0px';
+      x.fillStyle = 'rgba(255,253,247,.7)';
+      x.font = '400 24px ' + C;
+      x.textAlign = 'right';
+      x.fillText(location.host.replace(/^www\./, '') + location.pathname.replace(/\.html$/, ''), W - M, H - 62);
+      x.textAlign = 'left';
+
+      return new Promise(function(ok){ cv.toBlob(ok, 'image/png'); });
+    }).then(function(blob){ return { blob: blob, nom: nom }; });
+  }
+
+  var dlg = null, courant = null;
+  function dialogue(){
+    if (dlg) return dlg;
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+    dlg = document.createElement('dialog');
+    dlg.className = 'pg';
+    dlg.innerHTML = '<img alt=""/><div class="pg-act">' +
+      '<button type="button" class="go" data-a="share" hidden></button>' +
+      '<button type="button" data-a="dl"></button>' +
+      '<button type="button" data-a="x"></button></div>';
+    dlg.querySelector('img').alt = T.alt;
+    dlg.querySelector('[data-a="share"]').textContent = T.share;
+    dlg.querySelector('[data-a="dl"]').textContent = T.dl;
+    dlg.querySelector('[data-a="x"]').textContent = T.ferme;
+    dlg.addEventListener('click', function(e){
+      var a = e.target.getAttribute && e.target.getAttribute('data-a');
+      if (e.target === dlg || a === 'x') return dlg.close();
+      if (!courant) return;
+      if (a === 'dl') {
+        var l = document.createElement('a');
+        l.href = URL.createObjectURL(courant.blob);
+        l.download = courant.fichier.name;
+        document.body.appendChild(l); l.click(); l.remove();
+      }
+      if (a === 'share') {
+        navigator.share({ files: [courant.fichier], title: 'Chronologeek',
+                          text: T.texte(courant.nom) + ' — ' + location.origin + location.pathname.replace(/\.html$/, '') })
+          .catch(function(){});
+      }
+    });
+    dlg.addEventListener('close', function(){
+      var im = dlg.querySelector('img');
+      if (im.src) URL.revokeObjectURL(im.src);
+      im.removeAttribute('src');
+    });
+    document.body.appendChild(dlg);
+    return dlg;
+  }
+
+  function ouvre(){
+    var d = dialogue();
+    dessine().then(function(r){
+      if (!r.blob) return;
+      var slug = (location.pathname.replace(/\/+$/, '').split('/').pop() || 'chronologeek').replace(/\.html$/, '');
+      var f = new File([r.blob], 'chronologeek-' + slug + '.png', { type: 'image/png' });
+      courant = { blob: r.blob, fichier: f, nom: r.nom };
+      d.querySelector('img').src = URL.createObjectURL(r.blob);
+      var peut = !!(navigator.canShare && navigator.canShare({ files: [f] })) &&
+                 matchMedia('(pointer:coarse)').matches;
+      d.querySelector('[data-a="share"]').hidden = !peut;
+      if (!d.open) d.showModal();
+    });
+  }
+
+  function pose(){
+    var ex = document.getElementById('export');
+    if (!ex || !document.getElementById('k-on') || document.getElementById('share-prog')) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = ex.className;
+    b.id = 'share-prog';
+    b.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg> ';
+    b.appendChild(document.createTextNode(T.btn));
+    b.addEventListener('click', ouvre);
+    var badges = document.getElementById('badges-btn');
+    var apres = badges || document.getElementById('import') || ex;
+    apres.parentNode.insertBefore(b, apres.nextSibling);
   }
 
   if (document.readyState === 'loading')

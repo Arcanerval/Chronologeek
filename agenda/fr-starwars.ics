@@ -1,0 +1,183 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — sorties · Star Wars
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Comic\n\nSmugglers and Scoundrels: The Race for Jabba's Bounty 
+ est une bande dessinée one-shot écrite par Cavan Scott.\n\nhttps://chron
+ ologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f240d160a6dabe9dcc9f-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Star Wars: Galactic Racer
+DESCRIPTION:Jeu vidéo\n\nStar Wars: Galactic Racer is an upcoming canon St
+ ar Wars racing video game developed by Fuse Games and published by Lucasfi
+ lm Games alongside Secret Mode. The game will be released for PC\, PlaySta
+ tion 5\, and Xbox Series X/S on October 6\, 2026.\n\nhttps://chronologeek.
+ app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0f197fda5f1e3c4009bd-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:Rogue One - Chirrut & Baze 1
+DESCRIPTION:Comic\n\nRogue One – Chirrut & Baze 1 est le quatrième numé
+ ro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il es
+ t écrit par Marc Bernardin.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:c62edc60f07314354488-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Hyperspace Stories: Mace
+DESCRIPTION:Comic\n\nHyperspace Stories: Mace est un numéro one-shot de la
+  série de bandes dessinées Star Wars : Histoires de l'hyperespace écrit
+  par Justina Ireland.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:d5c451bfba70b5bee27e-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:The High Republic Adventures – Pathfinders 6
+DESCRIPTION:Comic\n\nThe High Republic Adventures – Pathfinders 6 est le 
+ sixième et dernier numéro de la mini-série de bandes dessinées Star Wa
+ rs: The High Republic Adventures – Pathfinders écrit par George Mann da
+ ns le cadre du projet multimédia Star Wars : La Haute République.\n\nhtt
+ ps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2c0ac82706ba871ea5bb-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:The Mandalorian and Grogu: Nightmare on Nevarro
+DESCRIPTION:Comic\n\nThe Mandalorian and Grogu: Nightmare on Nevarro est un
+ e bande dessinée one-shot écrite par Delilah S. Dawson dans le cadre de 
+ la sortie du film The Mandalorian and Grogu.\n\nhttps://chronologeek.app/f
+ r/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:b09d24afd8af840b9c76-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:The Fall of Kylo Ren 3
+DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 3 est le troisième numéro de la
+  série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Ch
+ arles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5fa1a35dfe64181e9608-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Rogue One - Darth Vader 1
+DESCRIPTION:Comic\n\nRogue One – Darth Vader 1 est le cinquième et derni
+ er numéro de la série de bandes dessinées one-shots Star Wars: Rogue On
+ e. Il est écrit par Chris Condon.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a27e16940a5c88b7d998-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:The Fall of Kylo Ren 4
+DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 4 est le quatrième numéro de la
+  série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Ch
+ arles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:66add89a65343b227b35-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:The Fall of Kylo Ren 5
+DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 5 est le cinquième et dernier nu
+ méro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren é
+ crit par Charles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5083f2adeae7d9c5dc5a-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Ahsoka · S2E01 · Première
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0d876d4bf551dbe1ff2d-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270310
+SUMMARY:Tales from the Outer Rim: The Legend of Beggar's Canyon
+DESCRIPTION:Comic\n\nTales from the Outer Rim: The Legend of Beggar's Canyo
+ n est une bande dessinée one-shot écrite par Greg Pak.\n\nhttps://chrono
+ logeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:920da95001af982d6e6b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:Twin Crossroads
+DESCRIPTION:Roman\n\nTwin Crossroads est un roman écrit par Beth Revis. Il
+  sera publié le 6 avril 2027 par Random House Worlds aux États-Unis.\n\n
+ https://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:34e554f69f9fc12f0568-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270528
+SUMMARY:Star Wars: Starfighter
+DESCRIPTION:Film\n\nStar Wars: Starfighter est un film Star Wars dont la pr
+ oduction a commencé en 2025\, après plusieurs années de développement.
+  Réalisé par Shawn Levy et produit par Shawn Levy et Kathleen Kennedy\, 
+ l'histoire se déroulera environ cinq ans après les événements de Star 
+ Wars épisode IX : L'Ascension de Skywalker.\n\nhttps://chronologeek.app/f
+ r/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,80 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — releases · Marvel
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:875b7dd2d5b3c4a9871e-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:VisionQuest · S1E01 · Premiere
+DESCRIPTION:With a bounty on his head\, Vision must confront his nature and
+  resist Ultron's influence to survive.\n\nhttps://chronologeek.app/upcomin
+ g
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f8a89172681b8631ce3c-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:VisionQuest · S1E03
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:6cb0621d9f210c1520d0-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:VisionQuest · S1E04
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e85118a3183e90922f94-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+SUMMARY:Avengers: Doomsday
+DESCRIPTION:Beloved heroes from three distinct universes are set on a deadl
+ y collision course and face an existential threat unlike anything they've 
+ ever encountered.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0be967bd293514953a4e-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270619
+SUMMARY:Spider-Man: Beyond the Spider-Verse
+DESCRIPTION:Hunted by Miguel O'Hara's Spider Society and betrayed by his fr
+ iends\, Miles finds himself in the darkest corners of the Spider-Verse in 
+ search of a way home. Knowing that his family has been not only fractured 
+ but endangered by his calling\, it's a race against the clock for Miles to
+  travel across the wildest reaches of time and space to fight for and reun
+ ite everything he holds most dear.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e6c628950e63a9c3bbec-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20271217
+DTEND;VALUE=DATE:20271218
+SUMMARY:Avengers: Secret Wars
+DESCRIPTION:An upcoming film in Phase Six of the Marvel Cinematic Universe 
+ (MCU) and the finale of The Multiverse Saga.\n\nhttps://chronologeek.app/u
+ pcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

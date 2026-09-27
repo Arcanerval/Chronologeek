@@ -1,0 +1,211 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — releases · Star Wars
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
+ rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
+  novels published by Mad Cave Studios. Originally announced for a Septembe
+ r 13\, 2026 release before being delayed to October 6 \, it is written by 
+ Cavan Scott and illustrated by Christian Colbert\, and will be released on
+  November 17\, 2026.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f240d160a6dabe9dcc9f-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:Star Wars: Galactic Racer
+DESCRIPTION:Star Wars: Galactic Racer is an upcoming canon Star Wars racing
+  video game developed by Fuse Games and published by Lucasfilm Games along
+ side Secret Mode. The game will be released for PC\, PlayStation 5\, and X
+ box Series X/S on October 6\, 2026.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0f197fda5f1e3c4009bd-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:Rogue One - Chirrut & Baze 1
+DESCRIPTION:Rogue One – Chirrut & Baze 1 is an upcoming canon one-shot co
+ mic focusing on Baze Malbus and Chirrut Îmwe that will be published as pa
+ rt of a 2026 series of one-shots for the ten-year anniversary of Rogue One
+ : A Star Wars Story. The issue was written by Stephanie Phillips\, illustr
+ ated by Sean Chen\, Kieran McKeown\, and Yen Nitro\, and will be published
+  by Marvel Comics on October 14\, 2026.\n\nhttps://chronologeek.app/upcomi
+ ng
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:c62edc60f07314354488-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Hyperspace Stories: Mace
+DESCRIPTION:Hyperspace Stories: Mace is a canceled graphic novel in the Sta
+ r Wars: Hyperspace Stories series of graphic novels featuring a young Mace
+  Windu. The issue was written by Justina Ireland\, illustrated by Georges 
+ Duarte and PH Gomes\, and was announced to be published by Dark Horse Comi
+ cs.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:d5c451bfba70b5bee27e-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:The High Republic Adventures – Pathfinders 6
+DESCRIPTION:The High Republic Adventures – Pathfinders 6 is the upcoming 
+ sixth and final issue of the 2026 comic book series Star Wars: The High Re
+ public Adventures – Pathfinders. The issue will be written by George Man
+ n\, illustrated by Vincenzo Riccardi\, and published by Dark Horse Comics 
+ on October 21\, 2026.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2c0ac82706ba871ea5bb-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:The Mandalorian and Grogu: Nightmare on Nevarro
+DESCRIPTION:The Mandalorian and Grogu: Nightmare on Nevarro is an upcoming 
+ canon one-shot comic written by Delilah S. Dawson and illustrated by Aless
+ andro Ranaldi that will be published on October 21\, 2026 by Mad Cave Stud
+ ios' PaperCutz imprint. First announced at the Mad Cave panel at San Diego
+  Comic-Con on July 24\, Nightmare on Nevarro is a direct sequel to Dawson'
+ s prior one-shot\, The Mandalorian and Grogu…\n\nhttps://chronologeek.ap
+ p/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:b09d24afd8af840b9c76-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:The Fall of Kylo Ren 3
+DESCRIPTION:The Fall of Kylo Ren 3 is the upcoming third issue of the 2026 
+ canon comic book miniseries Star Wars: The Fall of Kylo Ren set between th
+ e events of The Last Jedi and The Rise of Skywalker. The issue will be wri
+ tten by Charles Soule\, illustrated by Will Sliney\, and published by Marv
+ el Comics on October 21\, 2026.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5fa1a35dfe64181e9608-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Rogue One - Darth Vader 1
+DESCRIPTION:Rogue One – Darth Vader 1 is an upcoming canon one-shot comic
+  focusing on Darth Vader that will be published as part of a 2026 series o
+ f one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. 
+ The issue will be written by Chris Condon\, illustrated by Luke Ross\, and
+  published by Marvel Comics on October 28\, 2026.\n\nhttps://chronologeek.
+ app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a27e16940a5c88b7d998-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:The Fall of Kylo Ren 4
+DESCRIPTION:The Fall of Kylo Ren 4 is the upcoming fourth issue of the 2026
+  canon comic book miniseries Star Wars: The Fall of Kylo Ren set between t
+ he events of The Last Jedi and The Rise of Skywalker. The issue will be wr
+ itten by Charles Soule\, illustrated by Will Sliney\, and published by Mar
+ vel Comics on November 18\, 2026.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:66add89a65343b227b35-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:The Fall of Kylo Ren 5
+DESCRIPTION:The Fall of Kylo Ren 5 is the fifth and final issue of the upco
+ ming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set 
+ between the events of The Last Jedi and The Rise of Skywalker. The issue w
+ ill be written by Charles Soule\, illustrated by Will Sliney\, and publish
+ ed by Marvel Comics on December 2\, 2026.\n\nhttps://chronologeek.app/upco
+ ming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5083f2adeae7d9c5dc5a-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Ahsoka · S2E01 · Premiere
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:0d876d4bf551dbe1ff2d-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270310
+SUMMARY:Tales from the Outer Rim: The Legend of Beggar's Canyon
+DESCRIPTION:Tales from the Outer Rim: The Legend of Beggar's Canyon is the 
+ first entry in Star Wars: Tales from the Outer Rim\, a line of canon graph
+ ic novels published by Mad Cave Studios. Written by Greg Pak and illustrat
+ ed by Brent Schoonover\, it will be released on March 9\, 2027.\n\nhttps:/
+ /chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:920da95001af982d6e6b-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:Twin Crossroads
+DESCRIPTION:Twin Crossroads is an upcoming canon adult novel that takes pla
+ ce between the events of Episode VI: Return of the Jedi and Episode VII: T
+ he Force Awakens\, and will be written by Beth Revis and published in hard
+ cover by Random House Worlds on April 6\, 2027. It was first listed on the
+  Penguin Random House website on July 18\, 2026 and was officially announc
+ ed at the Random House Worlds panel at San D…\n\nhttps://chronologeek.ap
+ p/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:34e554f69f9fc12f0568-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270528
+SUMMARY:Star Wars: Starfighter
+DESCRIPTION:Star Wars: Starfighter is a stand-alone live-action film curren
+ tly in post-production at Lucasfilm with filmmaker Shawn Levy serving as t
+ he director and former Lucasfilm president Kathleen Kennedy producing the 
+ project. The film is set to take place around five years after the events 
+ of Star Wars: Episode IX The Rise of Skywalker\, and may include some char
+ acters from the sequel trilogy. Ryan Gosli…\n\nhttps://chronologeek.app/
+ upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
