@@ -2772,6 +2772,26 @@ gardent l'ancien menu et l'ancien pied de page.
 - `cablage.mjs` vérifie `U` (nom de la barre de reprise) et `E` (stations du
   plan) à la place de l'ancienne table `NAMES`.
 
+**Trois écrans communs ont suivi le même jour**, au même dessin :
+
+- **L'écran d'arrivée** (`publier.mjs`) : les cases sont devenues une ligne
+  de métro — douze arrêts vides qui prennent leur encre au passage d'un
+  train doré, la voie se colorant derrière lui — et la phrase se lit sous
+  un « Prochain départ » / « Now departing » (`BOOT_DEPART`). Le fondu des
+  vignettes ne change pas. Le train part avec la planche (`boot-img`) :
+  `--t` vaut `(n-1) × BOOT_PAS`, et l'arrêt k s'allume à k × P, l'instant
+  où le train l'atteint.
+- **Les deux barres du bas** (`e-app.js`) partagent une seule forme,
+  `cgBillet()` : filet aux douze encres, billet papier à souche dorée
+  encochée. Kickers « Voyager hors ligne » et « Consigne ». Pas d'ombre sur
+  le billet : le `mask` des encoches la découperait.
+- **Le dialogue de parcours** (cinq sources : `e-starwars`, `e-marvel`,
+  `e-avatar`, `en-dragonage`, `en-jurassic`) : bandeau « Choisissez votre
+  voie » à l'encre de l'univers, un rond de ligne numéroté par voie. Les
+  libellés ajoutés sont en CSS (`content`) avec leur version
+  `html[lang=en]`, jamais au lexique. Même correctif pour les voies du
+  bandeau Star Wars, qui disaient « Voie » en anglais.
+
 ## Les images
 
 **Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le

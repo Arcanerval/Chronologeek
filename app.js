@@ -61,6 +61,78 @@ window.CG_RES = function(cle, h){
   }, rien);
 })();
 
+/* ═══ LE BILLET DU BAS — la forme des deux barres ═════════════════════
+   La barre d'installation et le rappel de sauvegarde prennent la même
+   place et ne paraissent jamais ensemble : elles ont donc une seule
+   forme, posée une fois par celle qui arrive. Refaite le 28 septembre
+   2026 au dessin du plan de métro : un filet aux douze encres en tête,
+   comme le pied de page, et le message sur un billet papier à souche
+   dorée, comme le « prochain départ » de l'accueil.
+
+   Le billet est découpé par un `mask` (les deux encoches de la souche) :
+   une ombre posée sur lui serait découpée avec, d'où l'absence d'ombre —
+   c'est la barre d'encre autour qui le détache. */
+function cgBillet(){
+  if (document.getElementById('cg-billet')) return;
+  var st = document.createElement('style');
+  st.id = 'cg-billet';
+  st.textContent = [
+    '.cgbar{position:fixed;left:0;right:0;bottom:var(--hud-h,0px);z-index:76;',
+    '  background:var(--ink);animation:cgbUp .35s cubic-bezier(.2,.9,.3,1)}',
+    '@keyframes cgbUp{from{transform:translateY(100%)}to{transform:none}}',
+    /* le bouton « remonter en haut » se cale au-dessus tant qu'elle est là */
+    'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px) + 20px)}',
+    '.cgb-rail{display:block;height:8px;border-top:2px solid var(--paper);',
+    '  background:linear-gradient(90deg,#4d9fff 0 8.33%,#e23636 0 16.66%,#f5c842 0 25%,',
+    '  #7dd3fc 0 33.33%,#b48cf2 0 41.66%,#a8bf4f 0 50%,#e07b39 0 58.33%,#d4a02c 0 66.66%,',
+    '  #2dd4bf 0 75%,#45c46b 0 83.33%,#b0bec5 0 91.66%,#dc0000 0)}',
+    '.cgbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}',
+    /* `--st` est la largeur de la souche : les deux encoches se calent dessus */
+    '.cgb-tk{--st:54px;flex:1;min-width:0;display:flex;align-items:stretch;background:var(--paper);color:var(--ink);',
+    '  -webkit-mask:radial-gradient(circle 7px at var(--st) 0,#0000 98%,#000) top/100% 51% no-repeat,',
+    '    radial-gradient(circle 7px at var(--st) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;',
+    '  mask:radial-gradient(circle 7px at var(--st) 0,#0000 98%,#000) top/100% 51% no-repeat,',
+    '    radial-gradient(circle 7px at var(--st) 100%,#0000 98%,#000) bottom/100% 51% no-repeat}',
+    '.cgb-stub{flex:0 0 var(--st);display:grid;place-items:center;background:var(--hot);',
+    '  border-right:2px dashed var(--ink)}',
+    '.cgb-stub svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:square}',
+    '.cgb-txt{flex:1;min-width:0;padding:10px 18px 11px 16px;font-size:13.5px;line-height:1.38;color:#3a3548}',
+    '.cgb-txt em{display:block;font-style:normal;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;',
+    '  font-weight:800;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6b6480}',
+    '.cgb-txt b{display:block;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:900;',
+    '  font-size:20px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);line-height:1;margin:2px 0 4px}',
+    '.cgb-txt i{font-style:normal;font-weight:700;color:var(--ink)}',
+    '.cgb-act{flex:0 0 auto;display:flex;align-items:center;gap:10px}',
+    '.cgbar button{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;',
+    '  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .1s,box-shadow .1s}',
+    '.cgb-go{background:var(--hot);border:2px solid var(--hot);color:var(--ink);',
+    '  font-size:16px;padding:9px 18px}',
+    '.cgb-go em{font-style:normal}',
+    '.cgb-go:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--paper)}',
+    '.cgb-x{width:40px;height:40px;background:none;border:2px solid var(--line);',
+    '  color:rgba(255,253,247,.65);font-size:14px;line-height:1;padding:0}',
+    '.cgb-x:hover{border-color:var(--paper);color:var(--paper)}',
+    /* en étroit, le billet prend la ligne et les boutons passent dessous :
+       comprimé sur une seule ligne, le texte tombait à deux mots par ligne */
+    '@media(max-width:640px){',
+    '  .cgbar .wrap{flex-wrap:wrap;gap:10px}',
+    '  .cgb-tk{--st:40px;flex:1 0 100%}',
+    '  .cgb-stub svg{width:19px;height:19px}',
+    '  .cgb-txt{padding:9px 12px 10px 13px;font-size:13px}',
+    '  .cgb-txt b{font-size:18px}',
+    '  .cgb-act{flex:1 0 100%}',
+    '  .cgb-go{flex:1}',
+    /* la barre Apple n'a pas de bouton : la croix reste à côté du billet
+       plutôt que de prendre une ligne à elle seule */
+    '  .cgbar .wrap:not(:has(.cgb-go)){flex-wrap:nowrap;align-items:flex-start}',
+    '  .cgbar .wrap:not(:has(.cgb-go)) .cgb-tk{flex:1 1 auto}',
+    '  .cgbar .wrap:not(:has(.cgb-go)) .cgb-act{flex:0 0 auto}',
+    '}',
+    '@media(prefers-reduced-motion:reduce){.cgbar{animation:none}.cgbar button{transition:none}}'
+  ].join('');
+  document.head.appendChild(st);
+}
+
 /* ═══ BARRE D'INSTALLATION — direction E ══════════════════════════════
    Reprend le système de pwa.js : on ne montre rien si l'appli tourne
    déjà en autonome, rien non plus pendant sept jours après une fermeture.
@@ -116,6 +188,8 @@ window.CG_RES = function(cle, h){
   /* les deux libelles hors des trois discours */
   var TITRE = FR ? 'L’application Chronologeek' : 'The Chronologeek app';
   var FERMER = FR ? 'Fermer' : 'Close';
+  /* la ligne de service du billet, au-dessus du titre */
+  var KICKER = FR ? 'Voyager hors ligne' : 'Travel offline';
 
   /* ── pourquoi elle est en bas, depuis le 6 septembre 2026 ──────────
      Elle s'insérait dans le flux au-dessus du bandeau, et poussait donc
@@ -134,44 +208,7 @@ window.CG_RES = function(cle, h){
      réponse, mais elle ne paraît pas à tout le monde — déjà installée,
      fermée depuis moins d'une semaine, Firefox — et le trou aurait été
      pour tous les autres. */
-  var CSS = [
-    '.appbar{background:var(--ink);border-top:2px solid var(--paper);',
-    '  position:fixed;left:0;right:0;bottom:var(--hud-h,0px);z-index:76;',
-    '  animation:abDrop .35s ease}',
-    /* le bouton « remonter en haut » se cale au-dessus d'elle tant
-       qu'elle est là : les deux vivent dans le même coin */
-    'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px)',
-    '  + 20px)}',
-    '.appbar .wrap{display:flex;align-items:center;gap:14px;',
-    '  padding-top:11px;padding-bottom:11px}',
-    '.ab-ico{flex:0 0 auto;width:34px;height:34px;background:var(--hot);',
-    '  display:grid;place-items:center}',
-    '.ab-ico svg{width:19px;height:19px;fill:none;stroke:var(--ink);',
-    '  stroke-width:2;stroke-linecap:square}',
-    '.ab-txt{flex:1;min-width:0;font-size:13.5px;line-height:1.35;',
-    '  color:rgba(255,253,247,.78)}',
-    '.ab-txt b{display:block;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;',
-    '  font-weight:900;font-size:19px;letter-spacing:.03em;text-transform:uppercase;',
-    '  color:var(--paper);line-height:1}',
-    '.ab-txt i{font-style:normal;font-weight:700;color:var(--paper)}',
-    '.appbar button{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;',
-    '  font-size:14.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}',
-    '.ab-go{flex:0 0 auto;background:var(--hot);border:2px solid var(--hot);',
-    '  color:var(--ink);padding:6px 16px}',
-    '.ab-go:hover{background:var(--paper);border-color:var(--paper)}',
-    '.ab-x{flex:0 0 auto;background:none;border:2px solid var(--line);',
-    '  color:rgba(255,253,247,.6);padding:4px 9px;font-size:13px;line-height:1}',
-    '.ab-x:hover{border-color:var(--paper);color:var(--paper)}',
-    '@keyframes abDrop{from{transform:translateY(100%)}to{transform:none}}',
-    /* en étroit, le texte prend la ligne et les boutons passent dessous :
-       comprimé sur une seule ligne, il tombait à deux mots par ligne */
-    '@media(max-width:640px){',
-    '  .appbar .wrap{flex-wrap:wrap;gap:10px 12px;align-items:flex-start}',
-    '  .ab-txt{flex:1 0 calc(100% - 48px)}',
-    '  .ab-go{order:3}.ab-x{order:4;margin-left:auto}',
-    '}',
-    '@media(prefers-reduced-motion:reduce){.appbar{animation:none}}'
-  ].join('');
+  /* La forme vit dans `cgBillet()`, commune au rappel de sauvegarde. */
 
   /* Poser et retirer une barre du bas. La hauteur est relevée après
      coup — elle dépend de la largeur, le texte passant sur deux ou trois
@@ -197,20 +234,23 @@ window.CG_RES = function(cle, h){
     if (document.getElementById('appbar')) return;
     if (document.getElementById('svbar')) return;
 
-    var st = document.createElement('style');
-    st.textContent = CSS;
-    document.head.appendChild(st);
+    cgBillet();
 
     var bar = document.createElement('aside');
-    bar.className = 'appbar';
+    bar.className = 'cgbar';
     bar.id = 'appbar';
     bar.innerHTML =
+      '<i class="cgb-rail" aria-hidden="true"></i>' +
       '<div class="wrap">' +
-        '<span class="ab-ico" aria-hidden="true"><svg viewBox="0 0 24 24">' + v.ico + '</svg></span>' +
-        '<p class="ab-txt"><b>' + TITRE + '</b>' +
-          v.txt.replace(/<b>/g,'<i>').replace(/<\/b>/g,'</i>') + '</p>' +
-        (v.btn ? '<button type="button" class="ab-go">' + v.btn + '</button>' : '') +
-        '<button type="button" class="ab-x" aria-label="' + FERMER + '">✕</button>' +
+        '<div class="cgb-tk">' +
+          '<span class="cgb-stub" aria-hidden="true"><svg viewBox="0 0 24 24">' + v.ico + '</svg></span>' +
+          '<p class="cgb-txt"><em>' + KICKER + '</em><b>' + TITRE + '</b>' +
+            v.txt.replace(/<b>/g,'<i>').replace(/<\/b>/g,'</i>') + '</p>' +
+        '</div>' +
+        '<div class="cgb-act">' +
+          (v.btn ? '<button type="button" class="cgb-go">' + v.btn + ' <em>▸</em></button>' : '') +
+          '<button type="button" class="cgb-x" aria-label="' + FERMER + '">✕</button>' +
+        '</div>' +
       '</div>';
 
     /* en fin de corps et en fixe : posée n'importe où ailleurs, elle
@@ -219,11 +259,11 @@ window.CG_RES = function(cle, h){
     document.body.appendChild(bar);
     pose(bar);
 
-    bar.querySelector('.ab-x').addEventListener('click', function(){
+    bar.querySelector('.cgb-x').addEventListener('click', function(){
       try { localStorage.setItem(KEY, String(Date.now())); } catch(e){}
       retire(bar);
     });
-    var go = bar.querySelector('.ab-go');
+    var go = bar.querySelector('.cgb-go');
     if (go && onGo) go.addEventListener('click', onGo);
     return bar;
   }
@@ -343,6 +383,8 @@ window.CG_RES = function(cle, h){
               'navigateur, qui peut les effacer tout seul — Safari le fait après sept jours sans ' +
               'visite. Le fichier d’export les garde, et les rapporte sur un autre appareil.'; },
     go:     'Exporter',
+    /* la consigne des gares : on y laisse ses bagages à l'abri */
+    kicker: 'Consigne',
     fermer: 'Fermer'
   } : {
     titreP: 'Keep your progress safe',
@@ -358,50 +400,12 @@ window.CG_RES = function(cle, h){
               'and it can wipe them on its own — Safari does after seven days without a visit. ' +
               'The export file keeps them, and carries them to another device.'; },
     go:     'Export',
+    kicker: 'Left luggage',
     fermer: 'Close'
   };
 
-  /* La barre reprend trait pour trait celle de l'installation — même
-     place, même hauteur, même geste pour la fermer — mais elle ne peut
-     pas reprendre ses règles : celles-ci ne sont posées que si cette
-     barre-là se construit, et les deux ne paraissent jamais ensemble. */
-  var CSS = [
-    /* même place que la barre d'installation, donc même correction :
-       en bas, en fixe, au-dessus de la barre de progression. Dans le
-       flux, elle poussait la page à son arrivée — voir le pourquoi
-       au-dessus de `.appbar`. */
-    '.svbar{background:var(--ink);border-top:2px solid var(--paper);',
-    '  position:fixed;left:0;right:0;bottom:var(--hud-h,0px);z-index:76;',
-    '  animation:svUp .35s ease}',
-    '@keyframes svUp{from{transform:translateY(100%)}to{transform:none}}',
-    'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px)',
-    '  + 20px)}',
-    '@media(prefers-reduced-motion:reduce){.svbar{animation:none}}',
-    '.svbar .wrap{display:flex;align-items:center;gap:14px;',
-    '  padding-top:11px;padding-bottom:11px}',
-    '.sv-ico{flex:0 0 auto;width:34px;height:34px;background:var(--hot);',
-    '  display:grid;place-items:center}',
-    '.sv-ico svg{width:19px;height:19px;fill:none;stroke:var(--ink);',
-    '  stroke-width:2;stroke-linecap:square}',
-    '.sv-txt{flex:1;min-width:0;font-size:13.5px;line-height:1.35;',
-    '  color:rgba(255,253,247,.78)}',
-    '.sv-txt b{display:block;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;',
-    '  font-weight:900;font-size:19px;letter-spacing:.03em;text-transform:uppercase;',
-    '  color:var(--paper);line-height:1}',
-    '.svbar button{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;',
-    '  font-size:14.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}',
-    '.sv-go{flex:0 0 auto;background:var(--hot);border:2px solid var(--hot);',
-    '  color:var(--ink);padding:6px 16px}',
-    '.sv-go:hover{background:var(--paper);border-color:var(--paper)}',
-    '.sv-x{flex:0 0 auto;background:none;border:2px solid var(--line);',
-    '  color:rgba(255,253,247,.6);padding:4px 9px;font-size:13px;line-height:1}',
-    '.sv-x:hover{border-color:var(--paper);color:var(--paper)}',
-    '@media(max-width:640px){',
-    '  .svbar .wrap{flex-wrap:wrap;gap:10px 12px;align-items:flex-start}',
-    '  .sv-txt{flex:1 0 calc(100% - 48px)}',
-    '  .sv-go{order:3}.sv-x{order:4;margin-left:auto}',
-    '}'
-  ].join('');
+  /* La barre est celle de l'installation — même place, même billet,
+     même geste pour la fermer : sa forme vit dans `cgBillet()`. */
 
   function rappel(){
     if (document.getElementById('appbar')) return;
@@ -420,33 +424,39 @@ window.CG_RES = function(cle, h){
 
     function range(){ try { localStorage.setItem(SVKEY, String(Date.now())); } catch (_) {} }
 
-    var st = document.createElement('style');
-    st.textContent = CSS;
-    document.head.appendChild(st);
+    cgBillet();
 
     var bar = document.createElement('aside');
-    bar.className = 'svbar';
+    bar.className = 'cgbar';
     bar.id = 'svbar';
     bar.innerHTML =
+      '<i class="cgb-rail" aria-hidden="true"></i>' +
       '<div class="wrap">' +
-        '<span class="sv-ico" aria-hidden="true"><svg viewBox="0 0 24 24">' +
-          '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>' +
-        '</svg></span>' +
-        '<p class="sv-txt"><b></b><span></span></p>' +
-        '<button type="button" class="sv-go"></button>' +
-        '<button type="button" class="sv-x"></button>' +
+        '<div class="cgb-tk">' +
+          '<span class="cgb-stub" aria-hidden="true"><svg viewBox="0 0 24 24">' +
+            '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>' +
+          '</svg></span>' +
+          '<p class="cgb-txt"><em></em><b></b><span></span></p>' +
+        '</div>' +
+        '<div class="cgb-act">' +
+          '<button type="button" class="cgb-go"></button>' +
+          '<button type="button" class="cgb-x"></button>' +
+        '</div>' +
       '</div>';
 
     /* Le titre suit ce qui a déclenché : qui n'a rien coché mais a écrit
        cinq œuvres n'a pas de « progression » à mettre à l'abri. */
     var assez = c >= COCHES;
     /* en texte, pas en HTML : les nombres viennent d'une donnée du visiteur */
-    bar.querySelector('.sv-txt b').textContent = assez ? T.titreP : T.titreA;
-    bar.querySelector('.sv-txt span').textContent =
+    bar.querySelector('.cgb-txt em').textContent = T.kicker;
+    bar.querySelector('.cgb-txt b').textContent = assez ? T.titreP : T.titreA;
+    bar.querySelector('.cgb-txt span').textContent =
       assez && a >= AJOUTS ? T.deux(c, a) : assez ? T.coches(c) : T.ajouts(a);
-    bar.querySelector('.sv-go').textContent = T.go;
+    var go = bar.querySelector('.cgb-go');
+    go.textContent = T.go + ' ';
+    go.appendChild(document.createElement('em')).textContent = '▸';
 
-    var x = bar.querySelector('.sv-x');
+    var x = bar.querySelector('.cgb-x');
     x.textContent = '✕';
     x.setAttribute('aria-label', T.fermer);
 
@@ -464,7 +474,7 @@ window.CG_RES = function(cle, h){
 
     /* On ne refait pas l'export ici : le bouton de la page le tient déjà,
        avec la clé d'univers et les ajouts. Le clic suffit. */
-    bar.querySelector('.sv-go').addEventListener('click', function(){
+    go.addEventListener('click', function(){
       range(); ferme(); sortie.click();
     });
     x.addEventListener('click', function(){ range(); ferme(); });

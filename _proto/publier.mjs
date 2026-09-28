@@ -502,26 +502,55 @@ const BOOT =
   'background-image:url(/images/logo-chronologeek.webp);' +
   'background-position:center center;background-size:min(340px,68vw) auto;' +
   'background-repeat:no-repeat;opacity:1;transition:opacity .34s ease}' +
-  /* les dix cases, une par univers, qui prennent leur encre l'une après
-     l'autre. Elles ne mesurent rien — rien n'est mesurable à cet instant —
-     elles disent ce qu'est le site : dix univers, et on les voit défiler
-     derrière. `translateX(-50%)` et non une marge négative, la largeur
-     dépendant du nombre de cases. */
-  '#cgb{position:fixed;z-index:1001;left:50%;top:calc(50% + 46px);' +
-  'transform:translateX(-50%);display:flex;gap:6px;' +
+  /* **La ligne du multivers**, refaite le 28 septembre 2026 au dessin du
+     plan de métro de l'accueil. Douze arrêts, un par univers, vides —
+     c'est la règle du plan, un arrêt vide est un arrêt qu'on n'a pas
+     encore passé —, et le train qui les parcourt : chacun prend son encre
+     au moment où il l'atteint, et la ligne se colore derrière lui.
+     Rien n'est mesuré — rien n'est mesurable à cet instant — : la ligne
+     dit ce qu'est le site, douze univers qu'on traverse dans l'ordre.
+     `translateX(-50%)` et non une marge négative, la largeur venant d'un
+     `min()`. Le train part avec la planche (`boot-img`), comme le fondu
+     des vignettes : parti au parse, il arrivait au terminus sur un réseau
+     lent avant que l'écran ait rien montré. */
+  '#cgb{position:fixed;z-index:1001;left:50%;top:calc(50% + 50px);' +
+  'transform:translateX(-50%);width:min(560px,80vw);height:22px;' +
   'opacity:1;transition:opacity .34s ease}' +
-  '#cgb i{display:block;width:min(22px,5vw);height:9px;' +
-  'background:rgba(255,253,247,.13);animation:cgcase .5s ease forwards}' +
-  '@keyframes cgcase{to{background:var(--c);box-shadow:0 0 13px var(--c)}}' +
-  /* la phrase, sous les cases : elle change à chaque arrivée, et c'est le
-     seul texte de l'écran. Elle paraît un demi-temps après le reste — d'un
-     coup avec le logo, elle aurait fait bloc avec lui. */
-  '#cgt{position:fixed;z-index:1001;left:50%;top:calc(50% + 74px);' +
+  /* la voie, puis la ligne vive qui la recouvre derrière le train */
+  '#cgb::before,#cgb s{content:"";position:absolute;left:0;right:0;top:9px;height:4px;border-radius:2px}' +
+  '#cgb::before{background:rgba(255,253,247,.16)}' +
+  '#cgb s{transform:scaleX(0);transform-origin:left center}' +
+  'html.boot-img #cgb s{animation:cgvoie var(--t) linear forwards}' +
+  '@keyframes cgvoie{to{transform:none}}' +
+  /* les arrêts : un rond vide, qui prend l'encre de son univers au
+     passage du train */
+  '#cgb i{position:absolute;top:4px;width:14px;height:14px;margin-left:-7px;' +
+  'border-radius:50%;background:#08080f;border:2.5px solid rgba(255,253,247,.55);box-sizing:border-box}' +
+  'html.boot-img #cgb i{animation:cgarret .36s ease forwards}' +
+  '@keyframes cgarret{55%{transform:scale(1.5)}' +
+  'to{background:var(--c);border-color:#fffdf7;box-shadow:0 0 12px var(--c)}}' +
+  /* le train : trois fenêtres sur la caisse dorée, le nez à droite. Son
+     porteur fait toute la largeur de la ligne, si bien que `100%` de sa
+     translation l'amène pile au terminus. */
+  '#cgb u{position:absolute;left:0;right:0;top:0;height:0}' +
+  'html.boot-img #cgb u{animation:cgtrain var(--t) linear forwards}' +
+  '@keyframes cgtrain{to{transform:translateX(100%)}}' +
+  '#cgb u::before{content:"";position:absolute;left:-16px;top:3px;width:32px;height:16px;' +
+  'box-sizing:border-box;border:2px solid #0d0b12;border-radius:6px 11px 11px 6px;' +
+  'background:linear-gradient(90deg,transparent 5px,#0d0b12 5px 9px,transparent 9px 12px,' +
+  '#0d0b12 12px 16px,transparent 16px 19px,#0d0b12 19px 23px,transparent 23px) 0 3px/100% 5px no-repeat,#f0c97c;' +
+  'box-shadow:0 0 14px rgba(240,201,124,.75)}' +
+  /* la phrase, sous la ligne, en panneau de quai : « prochain départ »,
+     puis la phrase tirée au sort. Elle change à chaque arrivée, et c'est
+     le seul texte de l'écran. Elle paraît un demi-temps après le reste —
+     d'un coup avec le logo, elle aurait fait bloc avec lui. */
+  '#cgt{position:fixed;z-index:1001;left:50%;top:calc(50% + 92px);' +
   'transform:translateX(-50%);width:max-content;max-width:min(84vw,460px);' +
   'text-align:center;font-family:\'Big Shoulders Display\',sans-serif;' +
-  'font-weight:800;font-size:14px;line-height:1.3;letter-spacing:.13em;' +
-  'text-transform:uppercase;color:rgba(255,253,247,.6);' +
+  'font-weight:800;font-size:15px;line-height:1.25;letter-spacing:.12em;' +
+  'text-transform:uppercase;color:rgba(255,253,247,.82);' +
   'opacity:0;animation:cgtxt .55s ease .3s forwards;transition:opacity .34s ease}' +
+  '#cgt span{display:block;font-size:11px;letter-spacing:.3em;color:#f0c97c;margin-bottom:5px}' +
   '@keyframes cgtxt{to{opacity:1}}' +
   'html.boot.boot-out::before,html.boot.boot-out::after,' +
   'html.boot.boot-out #cgb,html.boot.boot-out #cgv{opacity:0;pointer-events:none}' +
@@ -536,7 +565,10 @@ const BOOT =
      a plus rien qui remue */
   '@media(prefers-reduced-motion:reduce){' +
   'html.boot-img #cgv b{animation:none}#cgv b:first-child{opacity:1}' +
-  '#cgb i{animation:none}#cgt{animation:none;opacity:1}' +
+  'html.boot-img #cgb i,#cgb i{animation:none;background:var(--c);border-color:#fffdf7}' +
+  'html.boot-img #cgb s,#cgb s{animation:none;transform:none}' +
+  'html.boot-img #cgb u,#cgb u{animation:none;transform:translateX(100%)}' +
+  '#cgt{animation:none;opacity:1}' +
   'html.boot::before,html.boot::after,#cgb,#cgv,#cgt{transition:none}}' +
   '</style>';
 
@@ -606,6 +638,8 @@ const BOOT_PHRASES = {
 // couche part ainsi à 2,25 s, là où la neuvième partait à 2,24 — la durée
 // totale réglée par Niko ne bouge pas. Un onzième demandera 0,225.
 const BOOT_PAS = 0.205;
+// L'intitulé du panneau de quai, au-dessus de la phrase.
+const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing' };
 const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +
@@ -617,16 +651,24 @@ const BOOT_CORPS = langue =>
   'b.style.backgroundPosition="center calc((100vh - "+H+")/2 - "+H+"*"+k+")";' +
   'b.style.animationDelay=(k*P)+"s";v.appendChild(b)}' +
   'document.body.appendChild(v);' +
-  'var d=document.createElement("div");d.id="cgb";' +
-  'for(var i=0;i<C.length;i++){var s=document.createElement("i");' +
-  's.style.cssText="--c:"+C[i]+";animation-delay:"+(i*P)+"s";d.appendChild(s)}' +
+  /* la ligne : la voie vive aux douze encres, un arrêt par univers posé
+     à sa part de la longueur, et le train. `--t` est le temps du départ
+     au terminus : le train atteint l'arrêt k à k × P, l'instant où
+     celui-ci s'allume. */
+  'var d=document.createElement("div"),n=C.length;d.id="cgb";' +
+  'd.style.setProperty("--t",((n-1)*P)+"s");' +
+  'var l=document.createElement("s");l.style.background="linear-gradient(90deg,"+C.join(",")+")";d.appendChild(l);' +
+  'for(var i=0;i<n;i++){var s=document.createElement("i");' +
+  's.style.cssText="--c:"+C[i]+";left:"+(i/(n-1)*100)+"%;animation-delay:"+(i*P)+"s";d.appendChild(s)}' +
+  'd.appendChild(document.createElement("u"));' +
   'document.body.appendChild(d);' +
   /* La phrase est posée en `textContent` : elle porte des apostrophes
      typographiques, et une concaténation de HTML les aurait laissées
      passer sans échappement. */
   `var T=${JSON.stringify(BOOT_PHRASES[langue] || BOOT_PHRASES.en)};` +
   'var p=document.createElement("p");p.id="cgt";' +
-  'p.textContent=T[Math.random()*T.length|0];' +
+  `p.appendChild(document.createElement("span")).textContent=${JSON.stringify(BOOT_DEPART[langue] || BOOT_DEPART.en)};` +
+  'p.appendChild(document.createTextNode(T[Math.random()*T.length|0]));' +
   'document.body.appendChild(p)})()</script>';
 
 const PIED = [
