@@ -695,6 +695,9 @@ const TRADUCTIONS = [
   ['Plan de la ligne Marvel', 'Marvel line map'],
   ['Ligne Marvel terminée', 'Marvel line complete'],
   ['Fin de la ligne Marvel ·', 'End of the Marvel line ·'],
+  ['Plan de la ligne Avatar Legends', 'Avatar Legends line map'],
+  ['Ligne Avatar Legends terminée', 'Avatar Legends line complete'],
+  ['Fin de la ligne Avatar Legends ·', 'End of the Avatar Legends line ·'],
   ['Embranchement', 'Branch line'],
   // la page DC, au plan de métro le 28 septembre 2026 : un réseau
   ['Plan du réseau DC', 'DC network map'],

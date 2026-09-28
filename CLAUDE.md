@@ -2887,6 +2887,21 @@ doit plus tourner.
   `body>header` pour les épargner, et cette règle battait celles du menu de
   l'accueil : la barre du haut restait tassée à gauche.
 
+**Avatar Legends est publié au plan de métro le 28 septembre 2026**, même
+gabarit que Marvel : `e-avatar.html` est la source, la maquette est
+supprimée. Code de ligne **AV**. Les trois Livres portent « Guerre de Cent
+Ans » en sous-titre de plaque (la saga de Marvel), à la place de l'ancien
+chapeau `.epoch` ; les encres d'ère restent celles de `ENCRE`. Pas de table
+`RT` : ni « Trajet restant » dans la bande, ni « de trajet » sur les plaques.
+Huit images d'ère, une par station, dans `ARTS` pour les deux parcours.
+
+**Les étiquettes du plan du haut prennent des étages** (`etage()`, même
+jour, sur les quatre pages métro) : deux rangs ne suffisaient pas quand
+trois stations se suivent de près, et les noms se recouvraient sur
+tablette. Chacune va au premier étage libre, son côté d'abord, et le plan
+grandit d'autant ; mesuré par `offsetLeft`, les stations arrivant avec une
+animation d'échelle.
+
 Marvel ajoute **la voie des autres univers** : une œuvre `dim` roule sur une voie
 parallèle qui se détache à 45° avant la première d'une série et rejoint la
 ligne après la dernière (`dev-a` / `dev-z` posées au rendu). La ligne
