@@ -1537,6 +1537,17 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 /* la page en cours, dans le tiroir */
 .dw-list a.u[aria-current]{border-color:var(--k);color:var(--k)}
 footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent)}
+
+/* ══ Les étiquettes du plan ne se chevauchent plus ════════════════════
+   Deux rangs (dessus, dessous) ne suffisaient pas dès que trois stations
+   se suivent de près — les ères courtes d'Avatar, ou n'importe quelle
+   ligne sur une tablette. Le script (etage) range chaque étiquette au
+   premier étage libre, de son côté d'abord, et pose --lv ; le plan
+   grandit d'autant. */
+.lm-st .lm-lb{bottom:calc(100% + 11px + var(--lv,0px))}
+.lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px + var(--lv,0px))}
+.net .lm-st:not(.lo) .lm-lb{top:auto;bottom:calc(var(--s) / 2 + var(--hh, 44px) + var(--lv,0px))}
+.net .lm-st.lo .lm-lb{bottom:auto;top:calc(var(--s) / 2 + var(--hh, 44px) + var(--lv,0px))}
 </style>
 </head>
 <body>
@@ -2711,6 +2722,51 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function pc(x){return (x*100).toFixed(3)+'%';}
 
 
+  /* Les étiquettes du plan : chacune au premier étage libre, son côté
+     d'abord (l'alternance dessus/dessous reste celle du rang), puis
+     l'autre côté, puis un étage plus loin. Mesuré dans la mise en page
+     (offsetLeft), jamais à l'écran : les stations arrivent avec une
+     animation d'échelle. */
+  function etage(map){
+    var P=[], lh=0;
+    map.style.paddingTop=''; map.style.paddingBottom='';
+    function gx(el){ var x=0; while(el&&el!==map){ x+=el.offsetLeft; el=el.offsetParent; } return x; }
+    [].forEach.call(map.querySelectorAll('.lm-st'),function(st,i){
+      var lb=st.querySelector('.lm-lb'); if(!lb) return;
+      lb.style.removeProperty('--lv');
+      if(st.dataset.lo==null) st.dataset.lo=st.classList.contains('lo')?'1':'';
+      st.classList.toggle('lo',!!st.dataset.lo);
+      if(!lb.offsetWidth) return;
+      lh=Math.max(lh,lb.offsetHeight);
+      var c=gx(st), w=lb.offsetWidth/2;
+      P.push({st:st,lb:lb,a:c-w,b:c+w,lo:!!st.dataset.lo});
+    });
+    if(!P.length) return;
+    P.sort(function(x,y){ return x.a-y.a; });
+    var G=12, pas=lh+6, cote={0:[],1:[]}, max={0:0,1:0};
+    P.forEach(function(p){
+      var ordre=p.lo?[1,0]:[0,1];
+      for(var n=0;n<12;n++){
+        for(var j=0;j<2;j++){
+          var c=ordre[j], rang=cote[c];
+          if(rang[n]!=null && rang[n]>p.a-G) continue;
+          rang[n]=p.b; p.st.classList.toggle('lo',c===1);
+          if(n) p.lb.style.setProperty('--lv',(n*pas)+'px');
+          max[c]=Math.max(max[c],n); return;
+        }
+      }
+    });
+    var cs=getComputedStyle(map);
+    if(max[0]) map.style.paddingTop=(parseFloat(cs.paddingTop)+max[0]*pas)+'px';
+    if(max[1]) map.style.paddingBottom=(parseFloat(cs.paddingBottom)+max[1]*pas)+'px';
+  }
+  var etageRaf=0;
+  function reEtage(){
+    var m=document.getElementById('ln-map');
+    if(m&&!etageRaf) etageRaf=requestAnimationFrame(function(){ etageRaf=0; etage(m); });
+  }
+  addEventListener('resize',reEtage);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(reEtage);
   function dessine(){
     var secs=[].slice.call(document.querySelectorAll('.era-sec')); if(!secs.length) return;
     var rows=[].slice.call(document.querySelectorAll('.era-sec .bu')), tot=rows.length, n=secs.length;
@@ -2749,6 +2805,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       '<span class="lm-cnt"><b>'+faits+'</b> / '+tot+'</span>'+
       '<p class="lm-now">Next station · <em>'+(devant?esc(nom(devant.sec)):'Terminus')+'</em></p>';
     map.innerHTML=h;
+    etage(map);
     if(!map.dataset.vu){
       map.dataset.vu='1';
       if(!REDUIT){ map.classList.add('go'); setTimeout(function(){ map.classList.remove('go'); },2600); }
