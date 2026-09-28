@@ -2807,22 +2807,47 @@ toute page « ligne de métro » à venir :
   « Departure » passait sous le premier arrêt. L'accroche s'élargit à
   800 px pour tenir sa première phrase sur une ligne.
 - **« terminés » est masqué dans la barre du bas des treize pages** par
-  `#hud-btn>b+.lbl{display:none}`, posé dans les sources et pas retiré du
-  DOM : la carte de partage y lit le mot (`texte('#hud-btn .lbl')`), et
-  sans lui elle prendrait le libellé suivant, « Restant 291 h ».
+  `#hud-btn>b+.lbl{display:none}`, posé dans les sources. La carte de
+  partage ne le lit plus depuis qu'elle est un billet ; le retirer du DOM
+  est possible, à condition de vérifier qu'aucun `querySelector('.lbl')`
+  ne tombe alors sur « Restant ».
 - **Les positions de la ligne se lisent dans la mise en page**
   (`offsetTop`), jamais par `getBoundingClientRect` : les bulles arrivent
   avec un glissement (`.rv`), et une mesure prise pendant qu'il court
   décalait tout d'une vingtaine de pixels.
 
+**Troisième passe, même soir :**
+
+- **La ligne est un seul trait SVG** (`.ln-svg`, fonction `rail()` du
+  script de la ligne), tracé d'arrêt en arrêt dans l'ordre de la page ;
+  `#timeline::before/::after` ne s'affichent plus. Le parcouru est le même
+  tracé coupé par `stroke-dasharray` à la hauteur du train. C'est ce qui a
+  réglé les raccords des voies déviées : deux lignes superposées plus des
+  aiguillages dessinés en CSS laissaient des trous à chaque essai.
+- **Une image par ère**, choisie par Niko, dans `images/` à 1920 px au plus
+  en WebP (ses originaux `.jpg` restent à côté, non versionnés). Table
+  `ARTS` de la page, par rang et par parcours ; une ère sans image reprend
+  la vignette de sa première œuvre essentielle. **À faire pour chaque page
+  qui passe au plan de métro.**
+- **Le plan du haut ne porte pas les années de l'ordre de sortie**
+  (`nom()` coupe « · 1977-1983 ») ; sur téléphone ses stations passent aux
+  deux tiers et `padding-left` revient à 8 px.
+- **Le train de « Vous en êtes là » roule dans le sens de la marche**
+  (tourné de 90°). Sur téléphone l'arrêt reste à gauche du bandeau, la
+  date au milieu, et le lien de partage remonte à 4 px.
+- **La carte de partage est un billet** (`e-app.js`, les treize pages) :
+  souche à l'encre de l'univers avec le code de ligne (`.t-stub`, sinon les
+  initiales) et le parcouru, filet aux douze encres, plan de la ligne avec
+  ses stations et le train, trois cases, code-barres. Le fond vient de
+  `.ln-bg` ou des plans de `.attract`.
+
 La maquette Marvel (`maquette-marvel-train.html`, non versionnée) ajoute
 **la voie des autres univers** : une œuvre `dim` roule sur une voie
 parallèle qui se détache à 45° avant la première d'une série et rejoint la
 ligne après la dernière (`dev-a` / `dev-z` posées au rendu). La ligne
-principale est effacée le long de la déviation par un masque (`--trous`,
-calculé par le script) : la déviation se suffit à elle-même. Les rails
-font la largeur de la ligne, à bouts ronds centrés sur le point de
-raccord.
+principale n'existe pas le long de la déviation — le trait unique dévie
+à 45° et revient, dans la couleur de la ligne : la déviation se suffit à
+elle-même.
 
 ## Les images
 

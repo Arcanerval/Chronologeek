@@ -3297,29 +3297,35 @@ function cgBillet(){
   var FR = document.documentElement.lang !== 'en';
 
   var T = FR ? {
-    btn:   'Partager',
-    titre: 'Ma progression',
-    faits: 'terminées',
-    fini:  'Timeline terminée',
-    reste: function(t){ return t + ' restantes'; },
-    der:   'J’en suis à',
-    share: 'Partager l’image',
-    dl:    'Télécharger',
-    ferme: 'Fermer',
+    btn:     'Partager',
+    billet:  'Billet · Ma progression',
+    ligne:   'Ligne',
+    arrets:  'Arrêts',
+    reste:   'Trajet restant',
+    der:     'Dernier arrêt',
+    depart:  'Premier départ',
+    fini:    'Terminus',
+    parcouru:'Parcouru',
+    share:   'Partager l’image',
+    dl:      'Télécharger',
+    ferme:   'Fermer',
     texte: function(nom){ return 'Ma progression ' + nom + ' sur Chronologeek'; },
-    alt:   'Aperçu de l’image à partager'
+    alt:     'Aperçu de l’image à partager'
   } : {
-    btn:   'Share',
-    titre: 'My progress',
-    faits: 'completed',
-    fini:  'Timeline complete',
-    reste: function(t){ return t + ' to go'; },
-    der:   'Currently at',
-    share: 'Share image',
-    dl:    'Download',
-    ferme: 'Close',
+    btn:     'Share',
+    billet:  'Ticket · My progress',
+    ligne:   'Line',
+    arrets:  'Stops',
+    reste:   'Time to go',
+    der:     'Last stop',
+    depart:  'First departure',
+    fini:    'Terminus',
+    parcouru:'Travelled',
+    share:   'Share image',
+    dl:      'Download',
+    ferme:   'Close',
     texte: function(nom){ return 'My ' + nom + ' progress on Chronologeek'; },
-    alt:   'Preview of the image to share'
+    alt:     'Preview of the image to share'
   };
 
   var CSS = [
@@ -3362,11 +3368,15 @@ function cgBillet(){
     }
     return '';
   }
+  /* Le fond : le décor du premier écran — `.ln-bg` sur les pages au plan
+     de métro, les plans de `.attract` sur les autres. */
   function banniere(){
-    var a = document.querySelector('.attract');
-    var bg = a ? getComputedStyle(a).backgroundImage : '';
-    var m = /url\(["']?([^"')]+)["']?\)/.exec(bg || '');
-    return m ? m[1] : '';
+    var el = document.querySelectorAll('.ln-bg, .attract .plane, .attract');
+    for (var i = 0; i < el.length; i++) {
+      var m = /url\(["']?([^"')]+)["']?\)/.exec(getComputedStyle(el[i]).backgroundImage || '');
+      if (m) return m[1];
+    }
+    return '';
   }
   function charge(src){
     return new Promise(function(ok){
@@ -3377,32 +3387,65 @@ function cgBillet(){
       im.src = src;
     });
   }
+  /* Le code de ligne de la souche : celui du billet de la page quand elle
+     en porte un (« SW », « MCU »), sinon les initiales du nom. */
+  function codeLigne(nom){
+    var s = document.querySelector('.t-stub span');
+    if (s && s.textContent.trim()) return s.textContent.trim();
+    var m = nom.replace(/^(the|le|la|les)\s+/i, '').split(/[\s:'’\-]+/).filter(Boolean);
+    if (!m.length) return '';
+    return (m.length > 1 ? m.slice(0, 3).map(function(w){ return w[0]; }).join('') : m[0].slice(0, 3)).toUpperCase();
+  }
+  /* Où commence chaque station, en fraction de la ligne : le nombre
+     d'œuvres de chaque ère, tel que la page l'a rendu. */
+  function stations(){
+    var n = [], tot = 0, c = 0, out = [];
+    Array.prototype.forEach.call(document.querySelectorAll('.era-sec'), function(s){
+      var k = s.querySelectorAll('[data-id]').length; n.push(k); tot += k;
+    });
+    n.forEach(function(k){ if (tot) out.push(c / tot); c += k; });
+    return out;
+  }
 
   /* Réduit la taille jusqu'à ce que le texte tienne dans `max`. */
   function ajuste(ctx, txt, poids, taille, famille, max){
     do { ctx.font = poids + ' ' + taille + 'px ' + famille; taille -= 2; }
-    while (ctx.measureText(txt).width > max && taille > 20);
+    while (ctx.measureText(txt).width > max && taille > 14);
   }
+  function rond(x, px, py, w, h, r){
+    x.beginPath();
+    x.moveTo(px + r, py);
+    x.arcTo(px + w, py, px + w, py + h, r); x.arcTo(px + w, py + h, px, py + h, r);
+    x.arcTo(px, py + h, px, py, r); x.arcTo(px, py, px + w, py, r);
+    x.closePath();
+  }
+  var ENCRES = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
+                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000'];
 
+  /* Le billet : même papier, même souche encochée et même filet aux douze
+     encres que les barres du bas (`cgBillet`). Souche à l'encre de
+     l'univers avec son code de ligne et le parcouru ; à droite, le nom de
+     la ligne, son plan avec le train, et trois cases comme sur un titre de
+     transport. Tout est lu dans la page, rien n'est recalculé. */
   function dessine(){
-    var W = 1200, H = 630, M = 72;
+    var W = 1200, H = 630;
     var uni = (getComputedStyle(document.body).getPropertyValue('--uni') ||
                getComputedStyle(document.documentElement).getPropertyValue('--uni') || '').trim() || '#f0c97c';
     var on = parseInt(texte('#k-on'), 10) || 0;
     var tot = parseInt(texte('#k-tot'), 10) || 0;
-    var pct = tot ? Math.floor(on / tot * 100) : 0;
+    var f = tot ? Math.min(1, on / tot) : 0, pct = Math.floor(f * 100);
     var temps = texte('#k-time');
-    var nom = nomUnivers();
-    var der = derniere();
+    var nom = nomUnivers(), code = codeLigne(nom);
+    var der = derniere(), fini = tot && on >= tot;
     var D = '"Big Shoulders Display", sans-serif', C = 'Chivo, sans-serif';
+    var PAPIER = '#fffdf7', ENCRE = '#0d0b12', GRIS = '#6b6480', TRAIT = '#e3ddd0';
 
     return Promise.all([
       charge(banniere()),
       document.fonts ? Promise.all([
         document.fonts.load('900 100px "Big Shoulders Display"'),
         document.fonts.load('800 30px "Big Shoulders Display"'),
-        document.fonts.load('400 26px Chivo'),
-        document.fonts.load('700 26px Chivo')
+        document.fonts.load('400 26px Chivo')
       ]).catch(function(){}) : null
     ]).then(function(r){
       var img = r[0];
@@ -3410,6 +3453,7 @@ function cgBillet(){
       cv.width = W; cv.height = H;
       var x = cv.getContext('2d');
 
+      /* le décor, voilé */
       x.fillStyle = '#08080f';
       x.fillRect(0, 0, W, H);
       if (img) {
@@ -3417,79 +3461,135 @@ function cgBillet(){
         var iw = img.naturalWidth * s, ih = img.naturalHeight * s;
         x.drawImage(img, (W - iw) / 2, (H - ih) / 2, iw, ih);
       }
-      /* Le voile : plein à gauche où l'on lit, plus léger à droite où
-         l'image doit rester reconnaissable. */
-      var g = x.createLinearGradient(0, 0, W, 0);
-      g.addColorStop(0, 'rgba(8,8,15,.94)');
-      g.addColorStop(.5, 'rgba(8,8,15,.78)');
-      g.addColorStop(1, 'rgba(8,8,15,.28)');
-      x.fillStyle = g;
+      x.fillStyle = 'rgba(8,8,15,.66)';
       x.fillRect(0, 0, W, H);
-      x.fillStyle = uni;
-      x.fillRect(0, 0, 12, H);
 
-      x.textBaseline = 'alphabetic';
-      x.fillStyle = uni;
-      x.font = '800 28px ' + D;
-      x.letterSpacing = '4px';
-      x.fillText(T.titre.toUpperCase(), M, 104);
+      /* le billet, dessiné à part pour y percer les encoches */
+      var TX = 70, TY = 70, TW = 1060, TH = 480, ST = 250, R = 22;
+      var tk = document.createElement('canvas');
+      tk.width = W; tk.height = H;
+      var t = tk.getContext('2d');
+      t.save();
+      rond(t, TX, TY, TW, TH, R); t.clip();
+      t.fillStyle = PAPIER; t.fillRect(TX, TY, TW, TH);
+      t.fillStyle = uni; t.fillRect(TX, TY, ST, TH);
+      var fl = (TW - ST) / ENCRES.length;
+      ENCRES.forEach(function(c, i){ t.fillStyle = c; t.fillRect(TX + ST + i * fl, TY, fl + 1, 10); });
+      t.restore();
+      t.strokeStyle = 'rgba(13,11,18,.4)'; t.lineWidth = 3; t.setLineDash([10, 9]);
+      t.beginPath(); t.moveTo(TX + ST, TY + 30); t.lineTo(TX + ST, TY + TH - 30); t.stroke();
+      t.setLineDash([]);
+      t.globalCompositeOperation = 'destination-out';
+      [TY, TY + TH].forEach(function(cy){ t.beginPath(); t.arc(TX + ST, cy, 22, 0, 2 * Math.PI); t.fill(); });
+      t.globalCompositeOperation = 'source-over';
+      x.save();
+      x.shadowColor = '#000'; x.shadowOffsetX = 10; x.shadowOffsetY = 10;
+      x.drawImage(tk, 0, 0);
+      x.restore();
+
+      /* la souche */
+      var cx = TX + ST / 2;
+      x.textAlign = 'center';
+      x.fillStyle = ENCRE;
+      x.font = '800 22px ' + D; x.letterSpacing = '5px';
+      x.fillText(T.ligne.toUpperCase(), cx + 2, TY + 78);
       x.letterSpacing = '0px';
+      ajuste(x, code, 900, 118, D, ST - 44);
+      x.fillText(code, cx, TY + 200);
+      x.font = '800 20px ' + D; x.letterSpacing = '4px';
+      x.fillText(T.parcouru.toUpperCase(), cx + 2, TY + TH - 132);
+      x.letterSpacing = '0px';
+      x.font = '900 76px ' + D;
+      x.fillText(pct + ' %', cx, TY + TH - 60);
 
-      x.fillStyle = '#fffdf7';
-      ajuste(x, nom.toUpperCase(), 900, 104, D, W - 2 * M);
-      x.fillText(nom.toUpperCase(), M, 200);
-
-      /* Le décompte : le nombre fait en grand, le total à côté. */
-      x.fillStyle = uni;
-      x.font = '900 150px ' + D;
-      var a = String(on);
-      x.fillText(a, M, 366);
-      var wa = x.measureText(a).width;
-      x.fillStyle = 'rgba(255,253,247,.85)';
-      x.font = '800 64px ' + D;
-      var b = ' / ' + tot;
-      x.fillText(b, M + wa + 6, 366);
-      var wb = x.measureText(b).width;
-      x.font = '400 26px ' + C;
-      x.fillStyle = 'rgba(255,253,247,.7)';
-      /* Le mot du HUD, pas le nôtre : « terminés » ou « terminées » selon ce
-         que la page compte, et elle le sait mieux que nous. */
-      var mot = texte('#hud-btn .lbl') || T.faits;
-      x.fillText(on >= tot && tot ? T.fini : mot, M + wa + wb + 22, 366);
-
-      /* La barre, et le pourcentage au bout. */
-      var by = 400, bw = W - 2 * M - 110, bh = 20;
-      x.fillStyle = 'rgba(255,253,247,.14)';
-      x.fillRect(M, by, bw, bh);
-      x.fillStyle = uni;
-      x.fillRect(M, by, Math.max(on ? 6 : 0, bw * on / (tot || 1)), bh);
-      x.fillStyle = '#fffdf7';
-      x.font = '900 40px ' + D;
-      x.textAlign = 'right';
-      x.fillText(pct + ' %', W - M, by + 20);
+      /* le corps */
+      var X0 = TX + ST + 50, XR = TX + TW - 50, LW = XR - X0;
       x.textAlign = 'left';
+      x.fillStyle = GRIS;
+      x.font = '800 21px ' + D; x.letterSpacing = '4px';
+      x.fillText(T.billet.toUpperCase(), X0, TY + 64);
+      x.letterSpacing = '0px';
+      x.fillStyle = ENCRE;
+      ajuste(x, nom.toUpperCase(), 900, 88, D, LW);
+      x.fillText(nom.toUpperCase(), X0, TY + 148);
 
-      /* Une ligne de détails, ce qui existe seulement. */
-      var bits = [];
-      if (der) bits.push(T.der + (FR ? ' ' : ': ') + der);
-      if (temps && !/^0\s*h?$/.test(temps) && on < tot) bits.push(T.reste(temps));
-      if (bits.length) {
-        x.fillStyle = 'rgba(255,253,247,.82)';
-        var ligne = bits.join('   ·   ');
-        ajuste(x, ligne, 400, 26, C, W - 2 * M);
-        x.fillText(ligne, M, 484);
+      /* le plan de la ligne, et le train */
+      var LY = TY + 206;
+      x.lineCap = 'round';
+      x.lineWidth = 12; x.strokeStyle = TRAIT;
+      x.beginPath(); x.moveTo(X0, LY); x.lineTo(XR, LY); x.stroke();
+      if (f > 0) {
+        x.strokeStyle = uni;
+        x.beginPath(); x.moveTo(X0, LY); x.lineTo(X0 + LW * f, LY); x.stroke();
+      }
+      /* une station trop près de la précédente ne se dessine pas : des ères
+         très inégales (Star Trek) les empilaient en fin de ligne */
+      var prec = -99;
+      stations().forEach(function(p){
+        var px = X0 + LW * p, passe = p <= f && f > 0;
+        if (px - prec < 30 || XR - px < 30) return;
+        prec = px;
+        x.beginPath(); x.arc(px, LY, 11, 0, 2 * Math.PI);
+        x.fillStyle = passe ? uni : PAPIER; x.fill();
+        x.lineWidth = 4; x.strokeStyle = ENCRE; x.stroke();
+      });
+      x.fillStyle = fini ? uni : PAPIER; x.lineWidth = 4; x.strokeStyle = ENCRE;
+      rond(x, XR - 12, LY - 12, 24, 24, 5); x.fill(); x.stroke();
+      var tx = Math.max(X0 + 22, Math.min(XR - 22, X0 + LW * f));
+      x.save();
+      x.shadowColor = 'rgba(240,201,124,.9)'; x.shadowBlur = 14;
+      x.fillStyle = '#f0c97c'; rond(x, tx - 24, LY - 14, 48, 28, 11); x.fill();
+      x.restore();
+      x.lineWidth = 3; x.strokeStyle = ENCRE; rond(x, tx - 24, LY - 14, 48, 28, 11); x.stroke();
+      x.fillStyle = ENCRE;
+      [-13, -3, 7].forEach(function(dx){ x.fillRect(tx + dx, LY - 6, 7, 7); });
+
+      /* les trois cases */
+      var FY = TY + 282, cases = [
+        [T.arrets, on + ' / ' + tot, 180],
+        [T.reste, fini ? '0 h' : (temps || '—'), 220],
+        [fini ? T.fini : (der ? T.der : T.depart), fini ? nom : (der || '—'), LW - 400]
+      ], cxs = X0;
+      cases.forEach(function(c, i){
+        x.fillStyle = GRIS; x.font = '800 18px ' + D; x.letterSpacing = '3px';
+        x.fillText(c[0].toUpperCase(), cxs, FY);
+        x.letterSpacing = '0px';
+        x.fillStyle = ENCRE;
+        if (i < 2) x.font = '900 44px ' + D;
+        else ajuste(x, c[1].toUpperCase(), 800, 34, D, c[2]);
+        x.fillText(i < 2 ? c[1] : c[1].toUpperCase(), cxs, FY + 46);
+        cxs += c[2];
+      });
+
+      /* le pied : un filet, l'adresse, la marque et un code-barres */
+      x.strokeStyle = TRAIT; x.lineWidth = 2; x.setLineDash([8, 7]);
+      x.beginPath(); x.moveTo(X0, TY + 364); x.lineTo(XR, TY + 364); x.stroke();
+      x.setLineDash([]);
+      x.fillStyle = GRIS; x.font = '400 20px ' + C;
+      x.fillText(location.host.replace(/^www\./, '') + location.pathname.replace(/\.html$/, ''), X0, TY + TH - 84);
+      x.fillStyle = ENCRE;
+      x.font = '900 34px ' + D; x.letterSpacing = '2px';
+      x.fillText('CHRONOLOGEEK', X0, TY + TH - 42);
+      x.letterSpacing = '0px';
+      var h = 0, bx = XR - 250, u = location.pathname + nom;
+      for (var k = 0; k < u.length; k++) h = (h * 31 + u.charCodeAt(k)) >>> 0;
+      while (bx < XR) {
+        h = (h * 1103515245 + 12345) >>> 0;
+        var bw = 2 + (h >>> 28) % 4;
+        x.fillRect(bx, TY + TH - 100, Math.min(bw, XR - bx), 64);
+        bx += bw + 2 + (h >>> 24) % 3;
       }
 
-      x.fillStyle = '#f0c97c';
-      x.font = '900 40px ' + D;
-      x.letterSpacing = '2px';
-      x.fillText('CHRONOLOGEEK', M, H - 60);
-      x.letterSpacing = '0px';
-      x.fillStyle = 'rgba(255,253,247,.7)';
-      x.font = '400 24px ' + C;
-      x.textAlign = 'right';
-      x.fillText(location.host.replace(/^www\./, '') + location.pathname.replace(/\.html$/, ''), W - M, H - 62);
-      x.textAlign = 'left';
+      /* timeline terminée : le tampon */
+      if (fini) {
+        x.save();
+        x.translate(XR - 170, TY + 300); x.rotate(-0.16);
+        x.strokeStyle = uni; x.fillStyle = uni; x.lineWidth = 5; x.globalAlpha = .9;
+        rond(x, -130, -44, 260, 76, 10); x.stroke();
+        x.textAlign = 'center'; x.font = '900 46px ' + D; x.letterSpacing = '4px';
+        x.fillText(T.fini.toUpperCase(), 0, 14);
+        x.restore();
+      }
 
       return new Promise(function(ok){ cv.toBlob(ok, 'image/png'); });
     }).then(function(blob){ return { blob: blob, nom: nom }; });

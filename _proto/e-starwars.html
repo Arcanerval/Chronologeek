@@ -1367,9 +1367,6 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 .bu{--cy:var(--mid,50%)}
 .bu-side .bu-chk{top:var(--cy);transform:translate(-50%,-50%)}
 .bu-side::after{top:calc(var(--cy) - 2.5px)}
-/* la ligne principale s'efface le long d'une voie déviée (le script pose
-   --trous) */
-#timeline::before,#timeline::after{-webkit-mask-image:var(--trous,none);mask-image:var(--trous,none)}
 @media(max-width:720px){
   .bu-card{grid-template-columns:minmax(0,1fr)}
   .bu-card>.bu-time{grid-column:1;grid-row:1;margin:0}
@@ -1398,6 +1395,32 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   .expand-inner::after{content:'';display:block;clear:both}
   .expand-poster{float:left;width:96px;margin:0 12px 8px 0}
   .expand-info{min-width:0}
+}
+/* ══ Retouches du 28 septembre 2026, troisième passe ════════════════
+   La ligne est un seul trait SVG, tracé par le script d'arrêt en arrêt :
+   devant une œuvre d'un autre univers il dévie à 45°, longe la voie, et
+   revient. Plus de ligne principale doublée, plus de raccords à caler —
+   une seule couleur, celle de la ligne, et l'encre de l'univers jusqu'au
+   train. */
+#timeline::before,#timeline::after{display:none}
+.ln-svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.ln-svg path{fill:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.ln-svg .r{stroke:var(--rest)}
+.ln-svg .f{stroke:var(--uni);transition:stroke-dasharray .35s cubic-bezier(.3,.9,.3,1)}
+/* le train de « Vous en êtes là » roule dans le sens de la marche */
+.rows>.ici::before{transform:rotate(90deg)}
+@media(max-width:720px){
+  /* le plan du haut reprend sa largeur : le décalage de « Départ » ne
+     vaut que là où le mot s'affiche */
+  .ln-map{padding-left:8px}
+  /* les stations du plan au deux tiers : pleine taille, elles se chevauchaient */
+  .lm-st{width:calc(var(--s) * .62);height:calc(var(--s) * .62);border-width:2px}
+  /* l'arrêt reste à gauche du bandeau, la date au milieu */
+  .bu-card>.bu-time{display:grid;grid-template-columns:1fr auto auto 1fr;column-gap:8px;align-items:center}
+  .bu-card>.bu-time .bu-n{grid-column:1;justify-self:start}
+  .bu-card>.bu-time .d{grid-column:2}
+  .bu-card>.bu-time .rel{grid-column:3}
+  .bu-link{top:4px}
 }
 /* le nombre suffit : « terminés » est masqué, et reste lu par la carte de partage */#hud-btn>b+.lbl{display:none}</style>
 </head>
@@ -1951,8 +1974,16 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   /* une station : la plaque de l'ère, posée sur la ligne. Les
      correspondances sont les types de média qu'on croise à cette station. */
+  /* Les images d'ère, choisies par Niko le 28 septembre 2026 : une par
+     station, par rang, dans chacun des trois parcours. Une ère sans image
+     reprend la vignette de sa première œuvre essentielle. */
+  var ARTS={first:['/images/republicera.webp','/images/clonewarsera.webp','/images/imperialera.webp','/images/rebellionera.webp','/images/newrepublicera.webp','/images/firstorderera.webp'],
+    rewatch:['/images/republicera.webp','/images/clonewarsera.webp','/images/imperialera.webp','/images/rebellionera.webp','/images/newrepublicera.webp','/images/firstorderera.webp'],
+    release:['/images/rebellionera.webp','/images/republicera.webp','/images/firstorderera.webp','/images/newrepublicera.webp']};
+  function artEre(era,i){ return ((ARTS[MODE]||ARTS.first)[i])||eraArt(era); }
+
   function plaque(era,i){
-    var art=eraArt(era), n={}, ordre=[];
+    var art=artEre(era,i), n={}, ordre=[];
     era.entries.forEach(function(x){ if(!n[x.type]){ n[x.type]=0; ordre.push(x.type); } n[x.type]++; });
     var cx=ordre.map(function(k){
       var bd=CFG.badgeLabels[k]||['b',k];
@@ -2527,7 +2558,9 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     '<rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/>'+
     '<rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg>';
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  function nom(sec){var h=sec.querySelector('.stn-nm');return h?h.textContent.trim():'';}
+  /* le plan ne porte pas les années de l'ordre de sortie (« · 1977-1983 ») :
+     elles doublaient la place des étiquettes */
+  function nom(sec){var h=sec.querySelector('.stn-nm');return h?h.textContent.trim().replace(/\s+·\s+\d.*$/,''):'';}
   function titre(r){var h=r.querySelector('.bu-title');return h?h.textContent.trim():'';}
   function coche(r){var b=r.querySelector('[data-check]');return !!b&&b.getAttribute('aria-checked')==='true';}
   function pc(x){return (x*100).toFixed(3)+'%';}
@@ -2614,27 +2647,44 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       else b.style.removeProperty('--mid');
     });
   }
-  /* la ligne principale s'efface là où la voie déviée la double : du
-     départ de l'aiguillage à son retour */
-  function trous(base,haut){
+  /* Le trait : d'arrêt en arrêt, dans l'ordre de la page. Devant une œuvre
+     d'un autre univers il dévie à 45° pour arriver sur elle, et revient à
+     45° en la quittant. Le parcouru est le même tracé, coupé à la hauteur
+     du train (stroke-dasharray). */
+  var NS='http://www.w3.org/2000/svg', svg=null, pR=null, pF=null;
+  function gauche_(el){ var t=0; while(el&&el!==tl){ t+=el.offsetLeft; el=el.offsetParent; } return t; }
+  function rail(haut,bas,fait){
+    var tm=tl.querySelector('.terminus .stn-dot'); if(!tm) return;
+    if(!svg){
+      svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','ln-svg'); svg.setAttribute('aria-hidden','true');
+      pR=document.createElementNS(NS,'path'); pR.setAttribute('class','r');
+      pF=document.createElementNS(NS,'path'); pF.setAttribute('class','f');
+      svg.appendChild(pR); svg.appendChild(pF); tl.insertBefore(svg,tl.firstChild);
+    }
     var off=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--off'))||0;
-    if(!off){ tl.style.removeProperty('--trous'); return; }
-    var ev=[];
-    [].forEach.call(tl.querySelectorAll('.era-sec.seg:not([hidden]) .stn-rail'),function(r){
-      ev.push([haut_(r)-base-haut-off,1]); });
-    [].forEach.call(tl.querySelectorAll('.bu.dev-a:not([hidden]) [data-check]'),function(c){
-      ev.push([centre(c)-base-haut-off,1]); });
-    [].forEach.call(tl.querySelectorAll('.bu.dev-z:not([hidden]) [data-check]'),function(c){
-      ev.push([centre(c)-base-haut+off,-1]); });
-    ev.sort(function(a,b){ return a[0]-b[0]; });
-    var g=[], ouv=null;
-    ev.forEach(function(e){
-      if(e[1]>0){ if(ouv===null) ouv=e[0]; }
-      else if(ouv!==null){ g.push('#000 '+ouv.toFixed(1)+'px','transparent '+ouv.toFixed(1)+'px',
-        'transparent '+e[0].toFixed(1)+'px','#000 '+e[0].toFixed(1)+'px'); ouv=null; }
+    var X0=gauche_(tm)+tm.offsetWidth/2, X1=X0+off, pts=[];
+    [].forEach.call(tl.querySelectorAll('.era-sec:not([hidden]) .stn-dot, .bu:not([hidden]) [data-check]'),function(el){
+      pts.push({y:centre(el), b:off>0 && !!(el.closest('.era-sec.seg .stn')||el.closest('.bu.dev'))});
     });
-    if(g.length) tl.style.setProperty('--trous','linear-gradient(#000 0,'+g.join(',')+',#000 100%)');
-    else tl.style.removeProperty('--trous');
+    pts.push({y:bas,b:false});
+    var v=[[pts[0].b?X1:X0,pts[0].y]];
+    for(var i=1;i<pts.length;i++){
+      var p=pts[i], q=pts[i-1];
+      if(p.b&&!q.b) v.push([X0,Math.max(q.y,p.y-off)]);
+      else if(!p.b&&q.b) v.push([X0,Math.min(p.y,q.y+off)]);
+      v.push([p.b?X1:X0,p.y]);
+    }
+    pR.setAttribute('d','M'+v.map(function(a){return a[0].toFixed(1)+' '+a[1].toFixed(1);}).join(' L'));
+    pF.setAttribute('d',pR.getAttribute('d'));
+    var L=0;
+    for(var k=1;k<v.length;k++){
+      var a=v[k-1], b=v[k], l=Math.hypot(b[0]-a[0],b[1]-a[1]);
+      if(fait>=b[1]){ L+=l; continue; }
+      if(fait>a[1]) L+=l*(fait-a[1])/(b[1]-a[1]);
+      break;
+    }
+    pF.style.visibility=L>0?'':'hidden';
+    pF.style.strokeDasharray=L.toFixed(1)+' 100000';
   }
   function trait(){
     if(!tl) return;
@@ -2654,7 +2704,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     tl.style.setProperty('--l-top',haut+'px');
     tl.style.setProperty('--l-h',Math.max(0,bas-haut)+'px');
     tl.style.setProperty('--f-h',Math.max(0,fait-haut)+'px');
-    trous(base,haut);
+    rail(haut,bas,fait);
   }
 
   var tk=document.getElementById('ticket');
