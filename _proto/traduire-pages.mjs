@@ -687,6 +687,7 @@ const TRADUCTIONS = [
   ['Prochain arrêt', 'Next stop'],
   ['Prochaine station ·', 'Next station ·'],
   ['Terminus atteint', 'Terminus reached'],
+  ['Arrêt manqué', 'Missed stop'],
   ['Ligne Star Wars terminée', 'Star Wars line complete'],
   ['Fin de la ligne Star Wars ·', 'End of the Star Wars line ·'],
   ['Correspondances', 'Connections'],

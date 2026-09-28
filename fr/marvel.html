@@ -2754,7 +2754,10 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       e.sec.classList.toggle('fin', e.n>0 && e.v===e.n);
       e.sec.classList.toggle('reach', e.v>0 || (!!prec && prec.n>0 && prec.v===prec.n));
     });
-    var suiv=rows[der+1]||null;
+    var suiv=rows[der+1]||null, manque=false;
+    /* la dernière case cochée est tout au bout, mais un arrêt a été sauté
+       plus haut : le terminus n'est pas atteint, le billet y renvoie */
+    if(!suiv && faits<tot){ suiv=rows.filter(function(r){return !coche(r);})[0]||null; manque=!!suiv; }
     var cur=suiv?info.filter(function(e){return e.sec.contains(suiv);})[0]:null;
     /* la prochaine station : la première posée DEVANT le train. Celle de
        l'œuvre suivante peut être derrière lui — le train vient d'y passer. */
@@ -2783,7 +2786,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     /* le billet */
     var k=document.getElementById('t-k'), nm=document.getElementById('t-nm'), st=document.getElementById('t-st');
     if(nm){
-      k.textContent=der<0?'Premier départ':(suiv?'Prochain arrêt':'Terminus atteint');
+      k.textContent=der<0?'Premier départ':(manque?'Arrêt manqué':(suiv?'Prochain arrêt':'Terminus atteint'));
       nm.textContent=suiv?titre(suiv):'Ligne Marvel terminée';
       st.textContent=cur?'Station '+(info.indexOf(cur)+1)+' · '+nom(cur.sec):faits+' arrêts sur '+tot;
     }
