@@ -2542,12 +2542,9 @@ stockage, qu'une écriture directe dans `prog` aurait perdus.
   « 39 / 62 affichées ». « Reprendre » remet tous les filtres à zéro sans
   passer par les boutons — il est donc écouté lui aussi, sinon le stockage
   gardait l'état d'avant.
-- **Le temps restant s'écrit aussi en soirées**, à trois heures l'une :
-  « 294 h » ne se convertit pas de tête, « ≈ 98 soirées » se pose tout de
-  suite. On lit `#k-time` par un `MutationObserver` plutôt que de refaire la
-  somme : elle est déjà faite par le `tally()` de chaque page, à partir de sa
-  table `RT` et des durées des ajouts perso, et deux calculs pourraient
-  diverger. Les quatre pages sans `#k-time` ne voient rien.
+- ~~Le temps restant en soirées~~ — **retiré le 28 septembre 2026**, à la
+  demande de Niko : la barre du bas ne porte plus que le nombre et le temps
+  restant. Ne pas le remettre.
 - **« Vous en êtes là »**, un trait posé sous la dernière entrée cochée. Le
   bouton « Reprendre » vit tout en haut ; en défilant, plus rien ne disait où
   l'on s'était arrêté.
@@ -2791,6 +2788,41 @@ gardent l'ancien menu et l'ancien pied de page.
   libellés ajoutés sont en CSS (`content`) avec leur version
   `html[lang=en]`, jamais au lexique. Même correctif pour les voies du
   bandeau Star Wars, qui disaient « Voie » en anglais.
+
+**Retouches du même soir, demandées par Niko** — pour Star Wars et pour
+toute page « ligne de métro » à venir :
+
+- **La colonne horaire est une colonne de la bulle**, plus un morceau du
+  bouton : `row()` pose `.bu-time` avant `.bu-head`, et `.bu-card` est une
+  grille. Les pointillés descendent jusqu'en bas quelle que soit la hauteur,
+  la date et l'arrêt se centrent dans la hauteur. Fiche ouverte, l'arrêt
+  reste en face de la date : le script pose `--mid` sur la ligne. Un clic
+  sur la date ouvre toujours la fiche (renvoyé au bouton).
+- **La fiche TMDB prend toute la largeur, collée à gauche**, et sur
+  téléphone l'affiche flotte : le texte à côté, puis dessous.
+- **L'affiche se cale en haut** de la bulle : centrée, elle descendait dès
+  que le titre passait sur deux lignes. Sur téléphone la date se centre
+  dans son bandeau — à droite, elle passait sous le lien de partage.
+- **« Départ » se cale par la droite** du plan, à distance fixe de la voie :
+  « Departure » passait sous le premier arrêt. L'accroche s'élargit à
+  800 px pour tenir sa première phrase sur une ligne.
+- **« terminés » est masqué dans la barre du bas des treize pages** par
+  `#hud-btn>b+.lbl{display:none}`, posé dans les sources et pas retiré du
+  DOM : la carte de partage y lit le mot (`texte('#hud-btn .lbl')`), et
+  sans lui elle prendrait le libellé suivant, « Restant 291 h ».
+- **Les positions de la ligne se lisent dans la mise en page**
+  (`offsetTop`), jamais par `getBoundingClientRect` : les bulles arrivent
+  avec un glissement (`.rv`), et une mesure prise pendant qu'il court
+  décalait tout d'une vingtaine de pixels.
+
+La maquette Marvel (`maquette-marvel-train.html`, non versionnée) ajoute
+**la voie des autres univers** : une œuvre `dim` roule sur une voie
+parallèle qui se détache à 45° avant la première d'une série et rejoint la
+ligne après la dernière (`dev-a` / `dev-z` posées au rendu). La ligne
+principale est effacée le long de la déviation par un masque (`--trous`,
+calculé par le script) : la déviation se suffit à elle-même. Les rails
+font la largeur de la ligne, à bouts ronds centrés sur le point de
+raccord.
 
 ## Les images
 

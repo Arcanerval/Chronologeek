@@ -2740,51 +2740,6 @@ function cgBillet(){
   });
 })();
 
-/* ═══ LE TEMPS RESTANT, EN SOIRÉES ════════════════════════════════════
-   « Restant à voir 937 h » ne se convertit pas de tête : on lit un grand
-   nombre et on n'en fait rien. « ≈ 312 soirées » se pose tout de suite —
-   c'est la même donnée, dans l'unité où le visiteur la vivra.
-
-   Trois choses à savoir :
-
-   - **Trois heures par soirée**, ce qui est un film et demi ou quatre
-     épisodes. Le chiffre est rond et se dit dans l'infobulle plutôt que
-     dans la ligne, qui est déjà chargée.
-   - **On lit `#k-time`, on ne recalcule rien.** Le total restant est
-     déjà additionné par le `tally()` de chaque page, à partir de sa
-     table `RT` et des durées des ajouts perso ; le refaire ici demanderait
-     de connaître cinq pages, et les deux chiffres pourraient diverger.
-     Un `MutationObserver` suffit à suivre.
-   - **Six pages sur dix comptent le temps** — Star Wars, Marvel, DC,
-     Star Trek, The Walking Dead et DC Animation, dont la table `RT` de
-     80 entrées est écrite à la main dans sa source anglaise, comme celles
-     des deux précédentes. Avatar Legends, Dragon Age, Assassin's Creed et
-     le Dossier n'ont pas de `#k-time`, et le bloc s'arrête là de lui-même.
-   ══════════════════════════════════════════════════════════════════ */
-(function(){
-  'use strict';
-
-  var k = document.getElementById('k-time');
-  if (!k) return;
-  var FR = document.documentElement.lang !== 'en', SOIR = 3;
-
-  var out = document.createElement('i');
-  out.id = 'k-soirs';
-  out.style.cssText = 'font-style:normal;font-size:11px;letter-spacing:.04em;' +
-    'opacity:.7;margin-left:7px;white-space:nowrap';
-  k.insertAdjacentElement('afterend', out);
-
-  function pose(){
-    var h = parseInt((k.textContent || '').replace(/[^0-9]/g, ''), 10);
-    if (!h || h < SOIR) { out.textContent = ''; out.removeAttribute('title'); return; }
-    var n = Math.round(h / SOIR);
-    out.textContent = '≈ ' + n + (FR ? ' soirées' : ' evenings');
-    out.title = FR ? 'à 3 h par soirée' : 'at 3 h an evening';
-  }
-  pose();
-  new MutationObserver(pose).observe(k, { childList: true, characterData: true, subtree: true });
-})();
-
 /* ═══ « VOUS EN ÊTES LÀ » ═════════════════════════════════════════════
    Le bouton « Reprendre » ramène à la dernière entrée vue, mais il vit
    tout en haut de la page : en défilant, plus rien ne dit où l'on s'était

@@ -1340,7 +1340,66 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 /* la page en cours, dans le tiroir */
 .dw-list a.u[aria-current]{border-color:var(--k);color:var(--k)}
 footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent)}
-</style>
+
+/* ══ Retouches du 28 septembre 2026 ══════════════════════════════════
+   Le mot « Départ » se calait à gauche du plan et passait sous le premier
+   arrêt dès qu'il s'allongeait (« Departure ») : il se cale maintenant
+   par la droite, à distance fixe de la voie. L'accroche s'élargit pour
+   que sa première phrase tienne sur une ligne. */
+.ln-map{padding-left:132px}
+.lm-dep{left:auto;right:calc(100% - 100px)}
+.ln-hero .dek{max-width:800px;text-wrap:pretty}
+
+/* La colonne horaire sort du bouton et devient une colonne de la bulle :
+   ses pointillés descendent jusqu'en bas quelle que soit la hauteur (les
+   saisons, les notes), et la date se centre dans toute la hauteur. La
+   fiche TMDB, dessous, prend la largeur entière, collée à gauche. */
+.bu-card{display:grid;grid-template-columns:118px minmax(0,1fr);position:relative}
+.bu-card>.bu-time{grid-column:1;grid-row:1/span 2;cursor:pointer}
+.bu-card>.bu-head{grid-column:2;grid-row:1;grid-template-columns:184px minmax(0,1fr) 34px;padding-left:18px}
+.bu-card>.bu-sub{grid-column:2;grid-row:2;padding-left:220px}
+.bu-card>.bu-panel{grid-column:1/-1;grid-row:3;padding-left:16px}
+.bu-card>.bu-head .bu-fig{grid-column:1}
+.bu-card>.bu-head .bu-txt{grid-column:2}
+.bu-card>.bu-head .bu-end{grid-column:3}
+/* l'arrêt suit la date : au milieu de la bulle (fiche ouverte, au milieu
+   de la partie haute — le script pose --mid) */
+.bu{--cy:var(--mid,50%)}
+.bu-side .bu-chk{top:var(--cy);transform:translate(-50%,-50%)}
+.bu-side::after{top:calc(var(--cy) - 2.5px)}
+/* la ligne principale s'efface le long d'une voie déviée (le script pose
+   --trous) */
+#timeline::before,#timeline::after{-webkit-mask-image:var(--trous,none);mask-image:var(--trous,none)}
+@media(max-width:720px){
+  .bu-card{grid-template-columns:minmax(0,1fr)}
+  .bu-card>.bu-time{grid-column:1;grid-row:1;margin:0}
+  .bu-card>.bu-head{grid-column:1;grid-row:2;grid-template-columns:92px minmax(0,1fr) 22px;padding-left:10px}
+  .bu-card>.bu-sub{grid-column:1;grid-row:3;padding-left:12px}
+  .bu-card>.bu-panel{grid-column:1;grid-row:4;padding-left:12px}
+  .bu-card>.bu-head .bu-fig,.bu-card>.bu-head .bu-txt,.bu-card>.bu-head .bu-end{grid-row:1}
+  .bu{--cy:22px}
+  .bu-side .bu-chk{top:9px;transform:translateX(-50%)}
+  .bu-side::after{top:21px}
+}
+
+/* ══ Retouches du 28 septembre 2026, deuxième passe ══════════════════
+   L'affiche se cale en haut de la bulle, en face de la première ligne
+   du texte : centrée, elle descendait dès que le titre prenait deux
+   lignes. */
+.bu-card>.bu-head .bu-fig{align-self:start}
+/* « terminés » masqué, le train de la barre du bas se collait au nombre */
+.hud .bar{margin-left:14px}
+@media(max-width:720px){
+  /* la date se centre dans son bandeau : à droite, elle passait sous le
+     lien de partage de la bulle */
+  .bu-card>.bu-time{justify-content:center;gap:14px}
+  /* la fiche TMDB : le texte à côté de l'affiche, et dessous s'il est long */
+  .expand-inner{display:block}
+  .expand-inner::after{content:'';display:block;clear:both}
+  .expand-poster{float:left;width:96px;margin:0 12px 8px 0}
+  .expand-info{min-width:0}
+}
+/* le nombre suffit : « terminés » est masqué, et reste lu par la carte de partage */#hud-btn>b+.lbl{display:none}</style>
 </head>
 <body>
 
@@ -1859,12 +1918,12 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
           esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
       '</span>'+
       '<div class="bu-card">'+
+        '<span class="bu-time">'+
+          '<span class="bu-n">Arrêt '+String(e.n).padStart(2,'0')+'</span>'+
+          '<span class="d">'+esc(e.date||'—')+'</span>'+
+          (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+esc(e.rel)+'</b></span>':'')+
+        '</span>'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
-          '<span class="bu-time">'+
-            '<span class="bu-n">Arrêt '+String(e.n).padStart(2,'0')+'</span>'+
-            '<span class="d">'+esc(e.date||'—')+'</span>'+
-            (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+esc(e.rel)+'</b></span>':'')+
-          '</span>'+
           '<span class="bu-fig">'+
             (e.img?'<img src="'+e.img+'" alt="'+esc(e.title)+'" loading="lazy" decoding="async"/>':'')+
             '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
@@ -2541,10 +2600,46 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   /* le trait : de la première station visible au terminus, et le
      parcouru jusqu'au train. Mesuré, jamais additionné carte par carte. */
   var tl=document.getElementById('timeline');
-  function centre(el){ var r=el.getBoundingClientRect(); return r.top+r.height/2; }
+  /* Les positions se lisent dans la mise en page, jamais à l'écran : les
+     bulles arrivent avec un glissement (.rv), et une mesure prise pendant
+     qu'il court décalait les trous de la ligne d'une vingtaine de pixels. */
+  function haut_(el){ var t=0; while(el&&el!==tl){ t+=el.offsetTop; el=el.offsetParent; } return t; }
+  function centre(el){ return haut_(el)+el.offsetHeight/2; }
+  /* fiche ouverte : l'arrêt reste au milieu de la partie haute de la
+     bulle, celle de la date, pas de la bulle entière */
+  function milieux(){
+    [].forEach.call(tl.querySelectorAll('.bu'),function(b){
+      var p=b.querySelector('.bu-panel'), t=b.querySelector('.bu-card>.bu-time');
+      if(p&&t&&!p.hidden) b.style.setProperty('--mid',(2+t.offsetTop+t.offsetHeight/2)+'px');
+      else b.style.removeProperty('--mid');
+    });
+  }
+  /* la ligne principale s'efface là où la voie déviée la double : du
+     départ de l'aiguillage à son retour */
+  function trous(base,haut){
+    var off=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--off'))||0;
+    if(!off){ tl.style.removeProperty('--trous'); return; }
+    var ev=[];
+    [].forEach.call(tl.querySelectorAll('.era-sec.seg:not([hidden]) .stn-rail'),function(r){
+      ev.push([haut_(r)-base-haut-off,1]); });
+    [].forEach.call(tl.querySelectorAll('.bu.dev-a:not([hidden]) [data-check]'),function(c){
+      ev.push([centre(c)-base-haut-off,1]); });
+    [].forEach.call(tl.querySelectorAll('.bu.dev-z:not([hidden]) [data-check]'),function(c){
+      ev.push([centre(c)-base-haut+off,-1]); });
+    ev.sort(function(a,b){ return a[0]-b[0]; });
+    var g=[], ouv=null;
+    ev.forEach(function(e){
+      if(e[1]>0){ if(ouv===null) ouv=e[0]; }
+      else if(ouv!==null){ g.push('#000 '+ouv.toFixed(1)+'px','transparent '+ouv.toFixed(1)+'px',
+        'transparent '+e[0].toFixed(1)+'px','#000 '+e[0].toFixed(1)+'px'); ouv=null; }
+    });
+    if(g.length) tl.style.setProperty('--trous','linear-gradient(#000 0,'+g.join(',')+',#000 100%)');
+    else tl.style.removeProperty('--trous');
+  }
   function trait(){
     if(!tl) return;
-    var base=tl.getBoundingClientRect().top;
+    milieux();
+    var base=0;
     var st=[].slice.call(tl.querySelectorAll('.era-sec:not([hidden]) .stn-dot'));
     var tm=tl.querySelector('.terminus .stn-dot');
     if(!st.length||!tm) return;
@@ -2559,12 +2654,18 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     tl.style.setProperty('--l-top',haut+'px');
     tl.style.setProperty('--l-h',Math.max(0,bas-haut)+'px');
     tl.style.setProperty('--f-h',Math.max(0,fait-haut)+'px');
+    trous(base,haut);
   }
 
   var tk=document.getElementById('ticket');
   if(tk) tk.addEventListener('click',function(ev){ if(!ev.target.closest('#start')) document.getElementById('start').click(); });
   dessine();
   document.addEventListener('click',function(){setTimeout(dessine,0);});
+  /* la date est hors du bouton : un clic dessus ouvre la fiche comme avant */
+  document.addEventListener('click',function(ev){
+    var t=ev.target.closest&&ev.target.closest('.bu-card>.bu-time');
+    if(t){ var h=t.parentNode.querySelector('.bu-head'); if(h) h.click(); }
+  });
   if(tl) new MutationObserver(function(){setTimeout(dessine,0);}).observe(tl,{childList:true});
   /* le train de « Vous en êtes là » est posé par e-app.js juste après
      nous : on remesure quand il bouge, quand une fiche s'ouvre, quand
