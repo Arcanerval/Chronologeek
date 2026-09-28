@@ -146,7 +146,12 @@ for (const u of univers) {
   }
   // 8. l'accueil : la case, le nom de la barre de reprise
   note(u, "case de l'accueil", F.accueil.includes(`data-u="${exp || u.cle}"`));
-  note(u, "NAMES de l'accueil (barre de reprise)", new RegExp(`\\b${exp || u.cle}:\\s*'`).test(F.accueil.slice(F.accueil.indexOf('NAMES='), F.accueil.indexOf('}', F.accueil.indexOf('NAMES=')))));
+  /* Depuis le plan de métro (28 septembre 2026), NAMES se déduit de la
+     table U des lignes, et chaque ligne porte ses stations dans la table E. */
+  const ligneU = F.accueil.slice(F.accueil.indexOf('var U='), F.accueil.indexOf('];', F.accueil.indexOf('var U=')));
+  const ligneE = F.accueil.slice(F.accueil.indexOf('var E='), F.accueil.indexOf(';', F.accueil.indexOf('var E=')));
+  note(u, "NAMES de l'accueil (barre de reprise)", new RegExp(`"u":"${exp || u.cle}"[^}]*"name":"`).test(ligneU));
+  note(u, "stations du plan de l'accueil (table E)", ligneE.includes(`"${exp || u.cle}":[[`));
   // 9. le journal
   note(u, 'table UNI des Nouveautés', new RegExp(`\\b${exp || u.cle}:\\s*\\[`).test(F.news));
   // 10. les ajouts perso

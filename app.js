@@ -2637,7 +2637,10 @@ window.CG_RES = function(cle, h){
 
   function pose(){
     var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
-                  .replace(/\.html$/, '').replace(/^en?-/, '');
+                  .replace(/\.html$/, '').replace(/^en?-/, '')
+                  /* les maquettes de refonte (`maquette-starwars-train`)
+                     gardent les sources de leur page */
+                  .replace(/^maquette-([a-z]+)-.*$/, '$1');
     var liste = SOURCES[PROTO[route] || route];
     var corps = document.querySelector('#sieve .filt-body') || document.getElementById('sieve')
              || document.querySelector('.sieve .filt-body');

@@ -2746,6 +2746,32 @@ son libellé, et la dernière entrée cochée. Rien n'est recalculé. Le nombre 
 badges n'y est pas : les pages ne le calculent qu'à l'ouverture de leur
 boîte. Feuille de partage native sur téléphone, téléchargement ailleurs.
 
+## Le plan de métro, publié le 28 septembre 2026
+
+L'accueil et la page Star Wars sont passés au design « ligne de métro ».
+**Les maquettes ne sont plus la source** : `maquette-accueil-train*.html` et
+`maquette-starwars-train.html` ont été recopiées dans `e-accueil.html` et
+`e-starwars.html`, et c'est là qu'on édite désormais. Les dix autres pages
+gardent l'ancien menu et l'ancien pied de page.
+
+- **L'anglais de l'accueil est celui de la maquette anglaise validée par
+  Niko**, reporté dans `TRADUCTIONS` de `traduire-pages.mjs` ; celui de la
+  page Star Wars y est écrit dans le même registre. Une phrase écrite exacte
+  l'emporte maintenant sur le lexique qui ne la connaît qu'à la casse près —
+  sans ça, « septembre 2026 » sortait « september 2026 ».
+- **Les tables `U` et `E` du plan sont bilingues**, en `i18n-off`, et le
+  script choisit la langue à l'exécution. **`E` est écrite à la main** : le
+  nombre d'œuvres par ère, comme « 79 stations, 1 028 arrêts » de l'accroche,
+  suit chaque ajout de média — c'est un décompte en dur de plus.
+- **Un grand nombre `<b>1 028</b>` passe en `<b>1,028</b>`** côté anglais
+  (`traduire-pages.mjs`, avant la traduction) : sans lettre, le lexique ne le
+  voit pas.
+- **Resident Evil comptait zéro sur l'accueil depuis sa publication** :
+  `read()` lisait `cg-proto-residentevil`, sa clé est `cg-proto-re`. Corrigé
+  dans la même table de correspondance que Star Trek et DC Animation.
+- `cablage.mjs` vérifie `U` (nom de la barre de reprise) et `E` (stations du
+  plan) à la place de l'ancienne table `NAMES`.
+
 ## Les images
 
 **Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le

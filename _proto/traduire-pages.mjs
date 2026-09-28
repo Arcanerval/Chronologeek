@@ -108,6 +108,12 @@ const collisions = new Map();
 for (const s of ['Chronologeek — Avatar Legends (proto E)', 'Opening Credits',
                  'Star Trek', 'Avatar Legends']) identiques.add(s);
 
+/* La refonte « ligne de métro » du 28 septembre 2026 : les codes de ligne,
+   comme sur un plan, et les mots que le métro écrit pareil dans les deux
+   langues. */
+for (const s of ['SW', 'MCU', 'DC', 'AV', 'ST', 'TWD', 'DA', 'AC', 'DCA', 'JW', 'TW', 'RE',
+                 'DD', 'Station', 'Terminus', 'stations,', '· station', 'stations ·', '· from']) identiques.add(s);
+
 function ajoute(fr, en) {
   fr = net(fr); en = net(en);
   if (!fr || !en) return;
@@ -640,6 +646,52 @@ const TRADUCTIONS = [
      à colonnes, et la retirer les laisserait sans traduction. */
   ['Faites glisser ou cliquez sur les noms pour changer de colonne',
    'Swipe or tap a name to switch column'],
+
+  /* ── la refonte « ligne de métro », 28 septembre 2026 ─────────────
+     L'accueil devient un plan de métro, chaque univers une ligne, chaque
+     ère une station, chaque œuvre un arrêt. L'anglais de l'accueil est
+     celui de la maquette que Niko a validée (maquette-accueil-train-en) ;
+     celui de la page Star Wars est écrit ici, dans le même registre. */
+  ['Tous les univers, dans l’ordre', 'Every universe, in order'],
+  ['Montez à bord du Train multiversel. Explorez les timelines de vos univers préférés. Douze lignes, un seul départ : le Nexus.',
+   'Hop aboard the Multiverse Train. Explore the timelines of your favorite universes. Twelve tracks, one departure point: the Nexus.'],
+  ['arrêts.', 'stops.'],
+  ['Chaque station est une ère, chaque arrêt une œuvre — dans l’ordre chronologique, tous supports confondus.',
+   'Each station represents an era in a timeline, and each stop represents a new work—all in chronological order.'],
+  ["une station = une ère, sa taille = son nombre d'œuvres", 'one station = one era, its size = its number of works'],
+  ['votre train : vous en êtes là', 'your train: this is where you are'],
+  ['Prochain départ', 'Next departure'],
+  ['Toutes les lignes', 'All lines'],
+  ['Douze chronologies tenues à jour, en français et en anglais.', 'Twelve timelines kept up to date, in French and English.'],
+  // le décompte d'une case ; les nombres varient, le gabarit suffit
+  ['/ 62 · 6 stations', '/ 62 · 6 stations'],
+  // le mois de la case, seul : le lexique le rendait en minuscules
+  ['septembre 2026', 'September 2026'],
+  ['août 2026', 'August 2026'],
+  ['Lignes en', 'Lines under'],
+  ['chantier', 'construction'],
+  ['D’autres univers sont en préparation.', 'More universes are on the way.'],
+  ['Correspondance', 'Connection'],
+  ['œuvres · Star Wars', 'works · Star Wars'],
+  ['NEXUS · GARE CENTRALE', 'NEXUS · CENTRAL STATION'],
+  // la page Star Wars
+  ['Plan de la ligne Star Wars', 'Star Wars line map'],
+  ['Arrêts', 'Stops'],
+  ['Arrêt', 'Stop'],
+  ['arrêts', 'stops'],
+  ['arrêts sur', 'stops out of'],
+  ['Trajet restant', 'Journey left'],
+  ['de trajet', 'of travel'],
+  ['Premier départ', 'First departure'],
+  ['Départ', 'Departure'],
+  ['Prochain arrêt', 'Next stop'],
+  ['Prochaine station ·', 'Next station ·'],
+  ['Terminus atteint', 'Terminus reached'],
+  ['Ligne Star Wars terminée', 'Star Wars line complete'],
+  ['Fin de la ligne Star Wars ·', 'End of the Star Wars line ·'],
+  ['Correspondances', 'Connections'],
+  ['Validé', 'Validated'],
+  ['À gagner', 'To earn'],
 ];
 
 const ECRITES = new Map(TRADUCTIONS.map(([f, e]) => [net(f), e]));
@@ -697,6 +749,12 @@ const EXPRESSIONS = [
   // L'information n'a pas d'objet pour un lecteur anglophone, qui lit
   // justement cette version : la page de prod anglaise ne l'affiche
   // nulle part, alors que la française le pose 1 fois. On fait pareil.
+  // ── l'accueil « ligne de métro » : l'accord et l'espace fine ────
+  ["' ères, '+x.total+' œuvres, '+p.done+' vues'", "' eras, '+x.total+' works, '+p.done+' seen'"],
+  ["(e[1]?e[1]+' œuvre'+(e[1]>1?'s':''):'Événement')+(e[2]?' · dès '",
+   "(e[1]?e[1]+' work'+(e[1]>1?'s':''):'Event')+(e[2]?' · from '"],
+  ["/x.total*100)+' %'", "/x.total*100)+'%'"],
+
   ["(x.vo?'<span class=\"vo\" title=\"'+att(T.voTitle)+'\">VO</span>':'')",
    "'' /* pas de badge VO en anglais : voir traduire-pages.mjs */"],
 ];
@@ -816,6 +874,11 @@ function traduitOuEcrit(fr, signale) {
      côtés parce qu'il sert de clé de support, mais dans le tableau des
      jours c'est l'abréviation de jeudi et il faut bien « Thu ». */
   if (e !== undefined && (t === undefined || t === cle)) { signale(cle, e); return e; }
+  /* Une phrase écrite telle quelle l'emporte aussi sur un lexique qui
+     ne la connaît qu'à la casse près : « septembre 2026 » y retrouvait
+     « Septembre 2026 » et rendait « september 2026 », le mois anglais
+     remis en minuscule. */
+  if (ECRITES.has(cle) && !table.has(cle)) { signale(cle, e); return e; }
   if (t !== undefined) return t;
   if (e !== undefined) { signale(cle, e); return e; }
   return undefined;
@@ -1083,7 +1146,10 @@ function redirigeSources(html) {
       return a + src.replace(/\.js$/, '-en.js') + c;
     }
     return t;
-  }).replace(/(href|src)="e-([a-z0-9-]+\.html)/g, '$1="en-$2');
+  }).replace(/(href|src)="e-([a-z0-9-]+\.html)/g, '$1="en-$2')
+    /* les lignes du plan de l'accueil portent leur lien dans une table
+       JSON, recopiée telle quelle (i18n-off) */
+    .replace(/("href":")e-([a-z0-9-]+\.html)/g, '$1en-$2');
 }
 
 /* ── ce qu'un renommage rend caduc ────────────────────────────────
@@ -1112,6 +1178,9 @@ const rapport = [];
 for (const P of PAGES) {
   let src = lire(`_proto/${P.fr}`);
   const avant = [];
+  /* un grand nombre s'écrit « 1 028 » en français, « 1,028 » en anglais :
+     sans lettre, la traduction ne le voit pas */
+  src = src.replace(/<b>(\d{1,3})[   ](\d{3})<\/b>/g, '<b>$1,$2</b>');
 
   /* On ne touche ni au CSS ni aux commentaires de direction : on
      découpe la page en zones, et on ne traite que le HTML et les

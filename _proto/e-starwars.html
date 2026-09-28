@@ -819,6 +819,505 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 /* « Repères » prend sa ligne, comme « Niveau » et « Types de média » : posé
    en tête de rangée, il se lisait comme un repère de plus. */
 .filt-body .marks>span:first-child{width:100%;text-align:center;margin-bottom:2px}
+
+/* ══ MAQUETTE — LA LIGNE STAR WARS ═══════════════════════════════════
+   La page entière passe au plan de transport de l'accueil : l'univers
+   est une ligne, une ère est une station, une œuvre est un arrêt. Le
+   premier écran est le plan de la ligne, les ères sont des plaques de
+   station posées sur le trait, chaque œuvre est un quai avec son horaire
+   (la date du monde, en or, comme un tableau des départs) et la case à
+   cocher est l'arrêt lui-même : un rond vide tant qu'on n'y est pas
+   passé, plein une fois desservi. Le trait se colore jusqu'au train. */
+:root{--rest:color-mix(in srgb,var(--uni) 26%,#1c1a26);--rail:64px;--board:#07060b;--cleared:#3ddc84;
+  --led:radial-gradient(rgba(255,253,247,.06) 1px,transparent 1.4px) 0 0/4px 4px}
+
+/* ── la barre du bas : la ligne en miniature, avec ses stations ── */
+.hud .bar{height:10px;border:0;border-radius:5px;background:var(--rest);overflow:visible}
+.hud .bar i{border-radius:5px}
+.hud .bar .hs{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--paper);
+  border:2px solid var(--ink);transform:translate(-50%,-50%)}
+.hud .bar .hs.v{background:var(--uni);border-color:var(--paper)}
+.hud-train{position:absolute;top:50%;z-index:2;width:30px;height:16px;transform:translate(-50%,-50%);
+  transition:left .45s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.hud-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud-train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
+.hud-train .win{fill:var(--ink)}
+.hud-train .ping{display:none}
+.hud .btn{border-radius:8px}
+
+/* ── le premier écran : le titre, puis le plan de la ligne ── */
+.ln-hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--paper)}
+.ln-bg{position:absolute;inset:-24px;z-index:-2;background:url(/images/starwars-banner.webp) center 30%/cover;
+  filter:blur(3px) saturate(.85);opacity:.34;transform:scale(1.05)}
+.ln-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(130% 100% at 50% 30%,rgba(13,11,18,.25) 0%,rgba(13,11,18,.75) 60%,var(--ink) 100%)}
+.ln-hero .wrap{padding-top:40px;padding-bottom:40px;text-align:center}
+.ln-head h1{text-align:center;font-size:clamp(58px,10.5vw,138px);line-height:.84;text-shadow:5px 5px 0 var(--ink)}
+.ln-head h1 .tag{display:block;width:max-content;max-width:100%;margin:0 auto 14px;text-shadow:none;line-height:1}
+.ln-head h1 .nm{display:block}
+.ln-hero .dek{max-width:640px;margin:18px auto 0;font-size:16.5px}
+.ln-hero .upd{justify-content:center}
+
+/* le plan de la ligne : un trait, une pastille par œuvre, une station par
+   ère — sa taille dit son nombre d'œuvres, comme à l'accueil */
+.ln-map{position:relative;max-width:1120px;margin:22px auto 0;padding:66px 92px 70px 64px}
+.lm-dep,.lm-cnt{position:absolute;top:50%;transform:translateY(-50%);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,253,247,.6)}
+.lm-dep{left:0}
+.lm-cnt{right:0;color:var(--paper)}
+.lm-cnt b{color:var(--hot);font-size:17px}
+.lm-track{position:relative;height:10px;border-radius:5px;background:var(--rest);box-shadow:0 0 0 3px var(--ink)}
+.lm-fill{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--uni);
+  transition:width .5s cubic-bezier(.3,.9,.3,1)}
+.lm-t{position:absolute;top:50%;width:4px;height:4px;border-radius:50%;background:rgba(255,253,247,.55);
+  transform:translate(-50%,-50%)}
+.lm-t.v{background:var(--ink)}
+.lm-st{position:absolute;top:50%;z-index:1;display:block;border-radius:50%;text-decoration:none;
+  width:var(--s);height:var(--s);transform:translate(-50%,-50%);
+  background:var(--paper);border:3px solid var(--ink);box-shadow:0 0 0 2px var(--rest);transition:transform .15s}
+.lm-st.v{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 2px var(--ink)}
+.lm-st.cur{box-shadow:0 0 0 3px var(--hot)}
+.lm-st:hover,.lm-st:focus-visible{transform:translate(-50%,-50%) scale(1.2);outline:none}
+.lm-st.tm{border-radius:6px;width:30px;height:30px;border-width:4px}
+.lm-lb{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 11px);width:max-content;
+  max-width:170px;text-align:center;line-height:1;pointer-events:none;color:var(--paper);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;
+  text-shadow:0 2px 0 var(--ink),0 0 8px var(--ink)}
+.lm-lb small{display:block;margin-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,253,247,.58)}
+.lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px)}
+.lm-st.cur .lm-lb{color:var(--hot)}
+.lm-train{position:absolute;top:50%;z-index:2;width:38px;height:20px;transform:translate(-50%,-50%);
+  transition:left .5s cubic-bezier(.3,.9,.3,1);pointer-events:none}
+.lm-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px var(--hot))}
+.lm-train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
+.lm-train .win{fill:var(--ink)}
+.lm-train .ping{fill:none;stroke:var(--hot);stroke-width:2;transform-box:fill-box;transform-origin:center;
+  animation:lm-ping 1.8s ease-out infinite}
+@keyframes lm-ping{from{transform:scale(.7);opacity:.9}to{transform:scale(1.9);opacity:0}}
+.lm-now{display:none}
+
+/* le tableau des départs : les chiffres de la ligne, en diodes */
+.ln-board{display:flex;flex-wrap:nowrap;justify-content:center;margin:12px auto 0;width:fit-content;max-width:100%;
+  background:var(--led),var(--board);border:2px solid var(--paper);border-radius:10px;overflow:hidden;
+  box-shadow:6px 6px 0 var(--ink)}
+.ln-board .s{padding:11px 22px 12px;border-right:2px dashed rgba(255,253,247,.16);min-width:0}
+.ln-board .s:last-child{border-right:0}
+.ln-board b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:34px;line-height:.9;
+  color:var(--hot);text-shadow:0 0 12px rgba(240,201,124,.45);white-space:nowrap}
+.ln-board span{display:block;margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,253,247,.66)}
+
+/* le billet : prochain arrêt, et le bouton qui y mène */
+.ln-go{display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:30px}
+.ticket{display:flex;align-items:center;gap:18px;max-width:100%;color:var(--ink);background:var(--paper);
+  padding:10px 12px 10px 0;transform:rotate(-1.2deg);cursor:pointer;text-align:left;
+  box-shadow:6px 6px 0 var(--ink),6px 6px 0 2px var(--paper);
+  transition:transform .15s cubic-bezier(.2,.9,.3,1);
+  -webkit-mask:radial-gradient(circle 9px at 84px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at 84px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+          mask:radial-gradient(circle 9px at 84px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at 84px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.ticket:hover{transform:rotate(0) translateY(-2px)}
+.t-stub{align-self:stretch;flex:none;width:84px;display:grid;place-items:center;margin:-10px 0;
+  background:var(--uni);border-right:2px dashed var(--ink)}
+.t-stub span{font-family:'Big Shoulders Display';font-weight:900;font-size:30px;color:var(--ink)}
+.t-txt{display:flex;flex-direction:column;min-width:0;max-width:420px}
+.t-k{font-family:'Big Shoulders Display';font-weight:800;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:#6b6480}
+.t-nm{font-family:'Big Shoulders Display';font-weight:900;font-size:29px;line-height:.95;text-transform:uppercase;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-st{font-size:13px;font-weight:600;color:#3a3548;margin-top:3px}
+.ticket .start.t-go{margin:0;flex:none;clip-path:none;background:var(--ink);color:var(--paper);
+  font-size:17px;letter-spacing:.1em;padding:12px 16px}
+.ticket .start.t-go:hover{transform:none;background:#231f2e}
+.ticket .start em{color:var(--hot)}
+
+/* les trois parcours sont trois voies */
+.ln-hero .par{margin:0}
+.ln-hero .par-b{counter-reset:voie;gap:10px;border:0}
+.ln-hero .par-b button{counter-increment:voie;display:flex;flex-direction:column;align-items:center;gap:3px;
+  border:2px solid var(--paper);border-radius:8px;background:rgba(13,11,18,.72);padding:7px 16px 8px;
+  font-family:'Big Shoulders Display';font-size:16px;font-weight:800;letter-spacing:.06em;color:var(--paper)}
+.ln-hero .par-b button+button{border-left:2px solid var(--paper)}
+.ln-hero .par-b button::before{content:'Voie ' counter(voie);font-size:10px;letter-spacing:.2em;
+  color:rgba(255,253,247,.55)}
+.ln-hero .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink);border-color:var(--hot);
+  box-shadow:4px 4px 0 var(--ink)}
+.ln-hero .par-b button[aria-pressed="true"]::before{color:rgba(13,11,18,.6)}
+
+/* ── l'intro : des panneaux d'information ── */
+.intro .itag{border-radius:8px;border-left-width:6px}
+.key{position:relative;border-radius:10px;padding-top:20px;overflow:hidden}
+.key::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--uni)}
+.cuts{border-radius:10px;overflow:hidden}
+
+/* ── la barre collante ── */
+.sieve{background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sieve button,.search{border-radius:999px}
+.sieve button i{border-radius:50%}
+
+/* ── la ligne : un trait de fond, et le trait parcouru jusqu'au train.
+   Les deux sont mesurés par le script (de la première station au
+   terminus, et jusqu'au train) : un trait par carte laissait des trous
+   partout où la page met de l'air, entre une plaque et ses arrêts. ── */
+#timeline{position:relative;padding:6px 0 30px}
+#timeline::before,#timeline::after{content:'';position:absolute;z-index:0;width:8px;border-radius:4px;
+  left:calc(max(0px,(100% - 1280px) / 2) + 20px + var(--rail) / 2 - 4px);top:var(--l-top,0px)}
+#timeline::before{height:var(--l-h,0px);background:var(--rest)}
+#timeline::after{height:var(--f-h,0px);background:var(--uni);transition:height .35s cubic-bezier(.3,.9,.3,1)}
+.era-sec,.terminus{position:relative;z-index:1}
+
+.stn{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;padding-top:34px}
+.stn-rail{position:relative;display:grid;place-items:center}
+.stn-dot{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--paper);
+  border:7px solid var(--ink);box-shadow:0 0 0 4px var(--rest)}
+.era-sec.reach .stn-dot{box-shadow:0 0 0 4px var(--uni)}
+.era-sec.fin .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
+.stn-dot.tm{border-radius:9px}
+/* la plaque : l'image de l'ère sur toute sa largeur, le texte par-dessus */
+.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:12px;overflow:hidden;
+  background:color-mix(in srgb,var(--era) 58%,var(--ink));box-shadow:7px 7px 0 var(--ink);min-height:200px;
+  display:flex;align-items:center}
+.stn-img{position:absolute;inset:0;z-index:-1;background:var(--ink) center 30%/cover no-repeat;
+  filter:saturate(.85) contrast(1.05)}
+.stn-img::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--era) 92%,var(--ink)) 0%,
+    color-mix(in srgb,var(--era) 72%,transparent) 42%,color-mix(in srgb,var(--era) 18%,transparent) 100%)}
+.stn-txt{position:relative;padding:20px 26px 20px;display:flex;flex-direction:column;gap:8px;max-width:760px}
+.stn-k{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.85)}
+.code{display:inline-grid;place-items:center;background:var(--uni);color:var(--ink);border:2px solid var(--ink);
+  border-radius:5px;padding:2px 7px 1px;font-family:'Big Shoulders Display';font-weight:900;font-size:14px;letter-spacing:.04em}
+.stn-nm{font-size:clamp(36px,5.2vw,68px);line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+.stn-meta{display:flex;gap:6px 20px;flex-wrap:wrap;font-size:13px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;text-shadow:0 1px 3px var(--ink)}
+.stn-meta b{color:var(--hot)}
+.stn-cx{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px}
+.stn-cx .lab{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,253,247,.7);margin-right:4px;text-shadow:0 1px 3px var(--ink)}
+.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:5px;
+  background:var(--k);color:var(--ink);border:2px solid var(--ink);
+  font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.cx b{background:var(--ink);color:var(--k);border-radius:3px;padding:0 5px;font-family:'Big Shoulders Display';
+  font-size:13px;letter-spacing:0}
+
+/* ── les arrêts ── */
+.rows{display:flex;flex-direction:column;gap:12px;padding:18px 0 4px}
+.bu{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:start}
+.bu-side{position:relative;z-index:1;width:auto;margin:0;align-self:stretch;display:block}
+.bu-side .bu-chk{position:absolute;left:50%;top:32px;transform:translateX(-50%)}
+.bu-side::after{content:'';position:absolute;top:45px;left:calc(50% + 15px);right:-14px;height:5px;
+  background:var(--rest)}
+.bu.done .bu-side::after{background:var(--uni)}
+/* un rond vide : on comprend qu'il se coche. Plein une fois desservi. */
+.bu-chk{width:30px;height:30px;border-radius:50%;background:var(--ink);border:3px solid var(--paper);
+  box-shadow:0 0 0 3px var(--ink);color:transparent;transition:border-color .12s,box-shadow .12s}
+.bu-chk:hover{border-color:var(--uni);box-shadow:0 0 0 3px var(--ink),0 0 0 6px color-mix(in srgb,var(--uni) 40%,transparent)}
+.bu-chk[aria-checked=true]{background:var(--uni);border-color:var(--paper);color:var(--ink)}
+.bu-chk svg{width:15px;height:15px}
+
+.bu-card{border:2px solid var(--line);border-radius:12px;overflow:hidden;
+  background:color-mix(in srgb,var(--era) 12%,#0f0d16);
+  transition:transform .12s cubic-bezier(.2,.9,.3,1),box-shadow .12s,border-color .12s}
+.bu-card:hover{transform:translate(-4px,-4px);border-color:var(--uni);box-shadow:4px 4px 0 var(--uni)}
+.bu.done .bu-card{border-color:color-mix(in srgb,var(--uni) 55%,transparent)}
+.bu-head{display:grid;grid-template-columns:118px 184px minmax(0,1fr) 34px;column-gap:18px;row-gap:0;
+  align-items:stretch;padding:0 6px 0 0}
+.bu-fig{grid-column:2;width:184px;align-self:center;margin:12px 0;border-radius:8px;border:2px solid var(--ink);
+  box-shadow:0 0 0 1px var(--line)}
+.bu-fig .bu-n{display:none}
+.bu-txt{grid-column:3;padding:14px 0 13px;align-self:center}
+.bu-time{grid-column:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
+  padding:12px 8px;text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
+.bu-time .bu-n{position:static;background:none;clip-path:none;padding:0;color:rgba(255,253,247,.5);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.bu-time .d{font-family:'Big Shoulders Display';font-weight:900;font-size:25px;line-height:.95;letter-spacing:.02em;
+  color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4)}
+.bu-time .rel{display:inline-flex;flex-direction:column;align-items:center;gap:1px;padding:3px 8px;border-radius:5px;
+  border:1px solid color-mix(in srgb,var(--uni) 50%,transparent);background:color-mix(in srgb,var(--uni) 14%,transparent);
+  color:var(--uni);font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.bu-time .rel i{font-style:normal}
+.bu-time .rel b{font-family:'Big Shoulders Display';font-size:17px;letter-spacing:.02em;line-height:1}
+.bu-end{grid-column:4;align-self:center;justify-content:center}
+.bu-tags{gap:6px;margin-bottom:6px}
+.bu-tags .b{clip-path:none;border-radius:5px;border:2px solid var(--ink);padding:1px 7px;font-size:10.5px;font-weight:800}
+.bu-tags .ft{border-radius:5px}
+.bu-tags .lv{display:inline-grid;place-items:center;line-height:0}
+.bu-tags .lv .ic{width:20px;height:20px}
+.bu-title{font-size:25px;line-height:1}
+.bu-meta{margin-top:6px}
+.bu-meta .dur{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:.1em}
+.bu-meta .dur::before{content:'';width:10px;height:10px;border-radius:50%;border:2px solid currentColor;
+  box-sizing:border-box;background:linear-gradient(currentColor,currentColor) 50% 20%/2px 40% no-repeat}
+.bu-meta:empty{display:none}
+.bu-done{place-items:end start;padding:7px}
+.bu-done span{transform:none;border-radius:5px;font-size:13px;padding:2px 8px;letter-spacing:.14em}
+.bu.done .bu-title{color:rgba(255,253,247,.66)}
+.bu.done .bu-time .d{color:color-mix(in srgb,var(--hot) 60%,var(--ink));text-shadow:none}
+.bu-sub{padding:0 16px 13px 338px}
+.si{border-radius:4px}
+.bu-panel{border-top:2px dashed var(--line);padding:16px 16px 16px 136px}
+.expand-trailer-link{clip-path:none;border-radius:6px}
+.faq{border-radius:0 8px 8px 0}
+
+/* « Vous en êtes là » : le train, posé sur le trait */
+.rows>.ici{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) auto minmax(0,1fr);
+  column-gap:14px;align-items:center;margin:-4px 0;padding:6px 0;color:var(--hot);font-size:12px;letter-spacing:.18em}
+.rows>.ici::before{justify-self:center;width:38px;height:20px;transform:none;border-radius:7px 10px 10px 7px;
+  background:linear-gradient(var(--ink),var(--ink)) 8px 5px/6px 6px no-repeat,
+             linear-gradient(var(--ink),var(--ink)) 17px 5px/6px 6px no-repeat,var(--hot);
+  border:2px solid var(--ink);box-shadow:0 0 10px var(--hot)}
+.rows>.ici::after{height:0;border-top:2px dashed currentColor;background:none;opacity:.55}
+
+/* le terminus */
+.terminus{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:center;padding-top:26px}
+.terminus p{display:flex;align-items:baseline;gap:6px 16px;flex-wrap:wrap}
+.terminus b{font-family:'Big Shoulders Display';font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:.03em}
+.terminus span{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.62)}
+.terminus.fin .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
+
+/* ── les badges : un carnet de tickets ── */
+.bx{background:rgba(8,8,12,.72);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.bx-in{max-width:760px;border:3px solid var(--paper);border-radius:14px;padding:0;overflow:auto;
+  box-shadow:8px 8px 0 var(--ink);background:var(--ink)}
+.bx-h{position:sticky;top:0;z-index:2;margin:0;padding:16px 18px 14px;gap:12px;
+  background:var(--led),var(--board);border-bottom:2px dashed rgba(255,253,247,.2)}
+.bx-h h3{font-size:28px;letter-spacing:.03em}
+.bx-h .n{order:3;margin-left:auto;background:none;color:var(--hot);padding:0;
+  font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:.02em;
+  text-shadow:0 0 10px rgba(240,201,124,.4)}
+.bx-h button{order:4;margin-left:6px;border-radius:50%;width:36px;height:36px;font-weight:700}
+.bx-g{padding:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.bg1{position:relative;padding:0;gap:0;align-items:stretch;border:2px dashed rgba(255,253,247,.28);border-radius:4px;
+  background:none;opacity:1;filter:none;min-height:86px}
+.bg1 .bg-stub{flex:none;width:66px;display:grid;place-items:center;border-right:2px dashed rgba(255,253,247,.28)}
+.bg1 .i{font-size:28px;filter:grayscale(1);opacity:.4}
+.bg1 .bg-b{display:flex;flex-direction:column;justify-content:center;padding:10px 12px 10px 14px;min-width:0}
+.bg1 .t{font-size:18px;color:rgba(255,253,247,.55)}
+.bg1 .d{color:rgba(255,253,247,.5)}
+.bg1 .st{margin-top:7px;font-family:'Big Shoulders Display';font-weight:800;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,253,247,.4)}
+.bg1.on{border:0;border-radius:0;background:var(--paper);color:var(--ink);box-shadow:5px 5px 0 var(--c);
+  transform:rotate(-.8deg);
+  -webkit-mask:radial-gradient(circle 8px at 66px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 8px at 66px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+          mask:radial-gradient(circle 8px at 66px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 8px at 66px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.bg1.on:nth-child(even){transform:rotate(.8deg)}
+.bg1.on .bg-stub{background:var(--c);border-right:2px dashed var(--ink)}
+.bg1.on .i{filter:none;opacity:1}
+.bg1.on .t{color:var(--ink)}
+.bg1.on .d{color:#3a3548}
+.bg1.on .st{color:var(--ink)}
+.bg1.on .st::before{content:'✓ '}
+.bpop{border-radius:12px;border-width:3px}
+
+@media(max-width:720px){
+  :root{--rail:40px}
+  .ln-hero .wrap{padding-top:28px;padding-bottom:30px}
+  .ln-head h1{font-size:clamp(50px,15vw,68px)}
+  .ln-head h1 .tag{font-size:11px;padding:4px 9px;margin-bottom:9px}
+  .ln-hero .dek{font-size:14.5px}
+  .ln-map{padding:26px 8px 12px;margin-top:10px}
+  .lm-dep,.lm-cnt{display:none}
+  .lm-lb{display:none}
+  .lm-st.tm{width:22px;height:22px;border-width:3px}
+  .lm-now{display:block;margin-top:18px;font-family:'Big Shoulders Display';font-weight:800;font-size:16px;
+    letter-spacing:.06em;text-transform:uppercase}
+  .lm-now em{font-style:normal;color:var(--hot)}
+  .ln-board{width:100%;margin-top:14px}
+  .ln-board .s{flex:1 1 0;padding:9px 6px}
+  .ln-board b{font-size:22px}
+  .ln-board span{font-size:8.5px;letter-spacing:.04em}
+  .ticket{gap:12px;padding-right:10px;width:100%;
+    -webkit-mask:radial-gradient(circle 8px at 58px 0,#0000 98%,#000) top/100% 51% no-repeat,
+                 radial-gradient(circle 8px at 58px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+            mask:radial-gradient(circle 8px at 58px 0,#0000 98%,#000) top/100% 51% no-repeat,
+                 radial-gradient(circle 8px at 58px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+  .t-stub{width:58px}
+  .t-stub span{font-size:21px}
+  .t-txt{flex:1}
+  .t-nm{font-size:21px;white-space:normal}
+  .t-st{font-size:11.5px}
+  .ticket .start.t-go{font-size:14px;padding:10px 10px;letter-spacing:.06em}
+  .ln-hero .par-b{gap:6px}
+  .ln-hero .par-b button{font-size:13px;padding:6px 9px 7px}
+  .stn{padding-top:26px;column-gap:10px}
+  .stn-dot{width:34px;height:34px;border-width:5px;box-shadow:0 0 0 3px var(--rest)}
+  .era-sec.reach .stn-dot{box-shadow:0 0 0 3px var(--uni)}
+  .stn-plate{min-height:0}
+  .stn-img{opacity:.6}
+  .stn-img::before{background:linear-gradient(90deg,color-mix(in srgb,var(--era) 88%,var(--ink)) 25%,
+    color-mix(in srgb,var(--era) 45%,transparent))}
+  .stn-txt{padding:14px 14px 15px}
+  .stn-k{font-size:12px;letter-spacing:.14em}
+  .stn-nm{font-size:clamp(28px,9vw,40px)}
+  .stn-meta{font-size:11.5px}
+  .rows{gap:10px;padding-top:14px}
+  .bu{column-gap:10px}
+  .bu-side .bu-chk{top:9px}
+  .bu-side::after{top:21px;left:calc(50% + 13px);right:-10px}
+  .bu-chk{width:26px;height:26px}
+  .bu-head{grid-template-columns:92px minmax(0,1fr) 22px;column-gap:10px;padding:0 8px 0 10px}
+  .bu-time{grid-row:1;grid-column:1/-1;flex-direction:row;justify-content:space-between;gap:10px;
+    margin:0 -8px 0 -10px;padding:7px 12px;border-right:0;border-bottom:2px dashed rgba(255,253,247,.16)}
+  .bu-fig{grid-row:2;grid-column:1;width:92px;margin:10px 0}
+  .bu-txt{grid-row:2;grid-column:2;padding:10px 0 11px}
+  .bu-end{grid-row:2;grid-column:3}
+  .bu-time .d{font-size:19px}
+  .bu-time .rel{flex-direction:row;gap:5px;padding:1px 6px}
+  .bu-time .rel b{font-size:13px}
+  .bu-title{font-size:19px}
+  .bu-done span{font-size:10px;padding:1px 5px}
+  .bu-sub{padding:0 10px 11px 12px}
+  .bu-panel{padding:14px 12px}
+  .rows>.ici{column-gap:10px}
+  .rows>.ici::before{width:32px;height:17px;background:linear-gradient(var(--ink),var(--ink)) 6px 4px/5px 5px no-repeat,
+    linear-gradient(var(--ink),var(--ink)) 14px 4px/5px 5px no-repeat,var(--hot)}
+  .terminus{column-gap:10px}
+  .terminus b{font-size:26px}
+  .bx{padding:12px}
+  .bx-g{padding:14px;grid-template-columns:1fr}
+  .bx-h h3{font-size:22px}
+}
+@media(max-width:400px){
+  .ln-hero .par-b button{font-size:12px;padding:6px 7px}
+  .ticket .start.t-go{font-size:12.5px;padding:9px 8px}
+}
+@media(prefers-reduced-motion:reduce){.lm-train .ping{display:none}}
+:root{--sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f;
+  --da:#e07b39; --ac:#d4a02c; --dca:#2dd4bf; --jw:#45c46b; --wi:#b0bec5; --re:#dc0000; --soon:#8a8ab0;
+  --doss-deep:#5c2060}
+/* ══ MAQUETTE — les bandes revues ═══════════════════════════════════
+   Le badge de ligne du pied de page : carré, à l'encre de l'univers,
+   cerné de noir, comme sur le plan. */
+.f-uni i{font-style:normal;display:inline-grid;place-items:center;
+  min-width:34px;height:22px;padding:0 5px;flex:none;background:var(--k);color:var(--ink);
+  font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:13px;letter-spacing:.04em;
+  line-height:1;border:2px solid var(--ink)}
+.f-uni i.w{color:#fff}
+
+/* ── les deux correspondances : Dossiers et export, en panneaux ─────
+   Deux cartes de même hauteur, côte à côte, un filet d'encre en tête
+   comme une ligne. L'export est posé par e-app.js après .deep : il
+   tombe tout seul dans la seconde case. */
+.duo{padding:8px 0 50px}
+.duo-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:22px;align-items:stretch}
+.duo .deep,.duo .sy{position:relative;border:2px solid var(--paper);box-shadow:6px 6px 0 rgba(0,0,0,.55);
+  padding:22px 24px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.duo .deep{background:color-mix(in srgb,var(--doss-deep) 52%,var(--ink));border-top:8px solid var(--c-doss)}
+.duo .sy{background:color-mix(in srgb,var(--hot) 8%,var(--ink));border-top:8px solid var(--hot)}
+.duo .sy .wrap{padding:0;max-width:none;width:100%;gap:14px}
+.k-lab,.duo .sy .sy-txt::before{display:inline-flex;align-items:center;gap:8px;
+  font-family:'Big Shoulders Display';font-weight:800;font-size:12.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,253,247,.66)}
+.duo .sy .sy-txt::before{content:'Your pass';display:block;margin-bottom:10px}
+.k-bdg{font-style:normal;background:var(--c-doss);color:var(--ink);font-weight:900;font-size:13px;
+  letter-spacing:.04em;padding:2px 6px;border:2px solid var(--ink);line-height:1}
+.duo .deep h2{font-size:clamp(28px,3.4vw,40px);color:var(--c-doss);text-shadow:3px 3px 0 var(--ink)}
+.duo .sy h2{font-size:clamp(24px,2.8vw,32px);color:var(--hot);text-shadow:3px 3px 0 var(--ink)}
+.duo .deep p{margin:0 auto;max-width:44ch;font-size:14.5px}
+.k-meta{font-family:'Big Shoulders Display';font-weight:800;font-size:14px;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,253,247,.66)}
+.k-meta b{color:var(--c-doss);font-size:1.3em;font-weight:900}
+.duo .deep .go{margin:auto 0 0}
+
+/* ── le pied : les douze lignes en tête, tout au centre ───────────── */
+footer{border-top:0;padding:0 0 30px}
+.f-lines{display:flex;height:10px;border-top:2px solid var(--paper)}
+.f-lines i{flex:1}
+footer .foot{grid-template-columns:1fr;justify-items:center;text-align:center;gap:24px;padding-top:32px}
+footer .foot>div:first-child{grid-column:auto}
+.f-head{display:flex;flex-direction:column;align-items:center;gap:12px}
+.f-logo{width:min(300px,72vw);height:auto}
+footer .f-head p{max-width:58ch;margin:0 auto;font-size:13.5px}
+footer .f-uni{width:100%;max-width:1080px}
+footer .f-uni h4{font-size:13px;letter-spacing:.22em;color:rgba(255,253,247,.55);margin-bottom:12px}
+.f-uni ul{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+footer .f-uni a{display:flex;align-items:center;gap:9px;height:100%;padding:8px 10px;border:2px solid var(--line);
+  text-decoration:none;font-family:'Big Shoulders Display';font-weight:800;font-size:15px;text-transform:uppercase;
+  letter-spacing:.03em;line-height:1.05;color:var(--paper);text-align:left}
+footer .f-uni a:hover{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent);text-decoration:none}
+.f-more ul{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 28px}
+footer .f-more a{font-family:'Big Shoulders Display';font-weight:800;font-size:16px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--paper)}
+footer .f-more a.doss{color:var(--c-doss)}
+footer .f-more a.upc{color:var(--c-upc)}
+footer .f-more a.news{color:var(--c-news)}
+footer .legal{width:100%;max-width:1080px;text-align:center}
+@media(max-width:1080px){
+  .f-uni ul{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:720px){
+  .f-uni ul{grid-template-columns:1fr 1fr;gap:6px}
+  footer .f-uni a{font-size:14px;padding:7px 8px;gap:7px}
+  footer .f-uni li a{display:flex}
+  footer .f-more a{font-size:15px}
+  .duo .deep,.duo .sy{padding:18px 16px 22px}
+}
+
+/* ══ retouches — barre A, tiroir, légende, réseaux ═════════════════
+   La barre prend toute la largeur : le logo au bord gauche, le drapeau
+   au bord droit, les liens au centre de l'écran — trois colonnes, les
+   deux du bord de même largeur, sans quoi le centre ne l'est pas. */
+header .wrap{max-width:none;display:grid;grid-template-columns:1fr auto 1fr;
+  padding-left:clamp(14px,2vw,32px);padding-right:clamp(14px,2vw,32px)}
+header .brand{justify-self:start;width:clamp(170px,16vw,310px);flex:none}
+header .brand img{max-height:none}
+header .nav-links{margin-left:0;justify-content:center;flex-wrap:nowrap}
+header .nav-tools{margin-left:0;justify-self:end}
+@media(max-width:1080px){
+  header .wrap{grid-template-columns:1fr auto}
+  header .brand{width:min(260px,58vw)}
+}
+/* le tiroir : le menu de l'ordinateur, dans le même ordre, en boutons
+   du pied de page — les neuf autres univers sous « More universes » */
+.dw-list{display:flex;flex-direction:column;gap:6px;padding:12px 16px 16px}
+.dw-list>a,.dw-more>summary,.dw-pop a{display:flex;align-items:center;gap:9px;min-height:44px;padding:8px 12px;
+  border:2px solid var(--line);text-decoration:none;font-family:'Big Shoulders Display';font-weight:800;
+  font-size:17px;text-transform:uppercase;letter-spacing:.05em;line-height:1.05;color:var(--paper)}
+.dw-list>a:hover,.dw-pop a:hover{border-color:var(--paper)}
+.dw-list>a.u:hover,.dw-pop a:hover{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent)}
+.dw-list>a.home[aria-current]{color:var(--hot);border-color:var(--hot)}
+.dw-list a i{font-style:normal;display:inline-grid;place-items:center;min-width:34px;height:22px;padding:0 5px;flex:none;
+  background:var(--k);color:var(--ink);font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:13px;
+  letter-spacing:.04em;line-height:1;border:2px solid var(--ink)}
+.dw-list a i.w{color:#fff}
+.dw-more>summary{list-style:none;cursor:pointer;justify-content:space-between}
+.dw-more>summary::-webkit-details-marker{display:none}
+.dw-more>summary::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.dw-more[open]>summary{border-color:var(--paper)}
+.dw-more[open]>summary::after{transform:translateY(2px) rotate(225deg)}
+.dw-pop{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding-top:6px}
+.dw-pop a{font-size:15px;padding:7px 9px;gap:8px;min-height:40px}
+/* au-dessus du téléphone, ni burger ni tiroir, même resté ouvert */
+@media(min-width:720.02px){
+  .burger{display:none!important}
+  .drawer,.drawer.open{display:none!important}
+}
+/* le menu de l'ordinateur tient jusqu'à 721 px : le burger est pour
+   le téléphone seul. Entre 721 et 1080, le logo et les liens se serrent. */
+@media(min-width:720.02px) and (max-width:1080px){
+  .nav-links{display:flex}
+  header .wrap{grid-template-columns:auto 1fr auto;gap:12px}
+  header .brand{width:clamp(118px,15vw,170px)}
+  header .nav-links{gap:10px}
+  .nav-links a,.nav-more>summary{font-size:13.5px;letter-spacing:.05em}
+}
+/* la case « en chantier » : tout au centre */
+.l-grid .lock .lock-bd{flex:1;align-items:center;text-align:center}
+.l-grid .lock .sg-p{display:flex;justify-content:center}
+/* les réseaux : leur propre rangée, au centre */
+footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
+@media(max-width:720px){
+  .m-foot{justify-content:center}
+  .m-leg{justify-content:center;text-align:center}
+}
+/* la page en cours, dans le tiroir */
+.dw-list a.u[aria-current]{border-color:var(--k);color:var(--k)}
+footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent)}
 </style>
 </head>
 <body>
@@ -851,42 +1350,53 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
-    <span class="dw-lab">Les univers</span>
-    <div class="dw-uni"><a href="#" class="u-sw" aria-current="page"><i aria-hidden="true"></i>Star Wars</a><a href="e-marvel.html" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="e-dc.html" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="e-avatar.html" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="e-startrek.html" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="e-twd.html" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="e-dragonage.html" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="e-assassinscreed.html" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a><a href="e-dcanimation.html" class="u-dca"><i aria-hidden="true"></i>DC Animation</a><a href="e-jurassic.html" class="u-jw"><i aria-hidden="true"></i>Jurassic World</a><a href="e-witcher.html" class="u-wi"><i aria-hidden="true"></i>The Witcher</a><a href="e-residentevil.html" class="u-re"><i aria-hidden="true"></i>Resident Evil</a></div>
-    <span class="dw-lab">Le site</span>
-    <div class="dw-site"><a href="e-accueil.html">Accueil</a><a href="e-dossiers.html" class="doss">Dossiers</a><a href="e-a-venir.html" class="upc">À venir</a><a href="e-nouveautes.html" class="news">Nouveautés</a></div>
+    <div class="dw-list">
+      <a href="e-accueil.html" class="home">Accueil</a>
+      <a href="e-dossiers.html" class="doss">Dossiers</a>
+      <a href="#" aria-current="page" class="u" style="--k:var(--sw)"><i>SW</i>Star Wars</a>
+      <a href="e-marvel.html" class="u" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a>
+      <a href="e-dc.html" class="u" style="--k:var(--dc)"><i>DC</i>DC Multivers</a>
+      <details class="dw-more"><summary>Plus d’univers</summary><div class="dw-pop"><a href="e-avatar.html" class="u" style="--k:var(--av)"><i>AV</i>Avatar Legends</a><a href="e-startrek.html" class="u" style="--k:var(--st)"><i>ST</i>Star Trek</a><a href="e-twd.html" class="u" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a><a href="e-dragonage.html" class="u" style="--k:var(--da)"><i>DA</i>Dragon Age</a><a href="e-assassinscreed.html" class="u" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a><a href="e-dcanimation.html" class="u" style="--k:var(--dca)"><i>DCA</i>DC Animation</a><a href="e-jurassic.html" class="u" style="--k:var(--jw)"><i>JW</i>Jurassic World</a><a href="e-witcher.html" class="u" style="--k:var(--wi)"><i>TW</i>The Witcher</a><a href="e-residentevil.html" class="u" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></div></details>
+      <a href="e-a-venir.html" class="upc">À venir</a>
+      <a href="e-nouveautes.html" class="news">Nouveautés</a>
+    </div>
   </nav>
 </header>
 
 <!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
-<section class="attract">
-  <div class="plane p1" aria-hidden="true"></div>
-  <div class="plane p2" aria-hidden="true"></div>
-  <div class="halftone" aria-hidden="true"></div>
-  <div class="veil" aria-hidden="true"></div>
+<section class="ln-hero" id="top">
+  <div class="ln-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <h1 class="disp off"><span class="tag">Chronologie canon complète</span>
-      <span class="nm">Star Wars</span></h1>
+    <div class="ln-head">
+      <h1 class="disp"><span class="tag">Chronologie canon complète</span>
+        <span class="nm">Star Wars</span></h1>
+    </div>
     <p class="dek">Films · Séries · Animés · Jeux vidéo — toute la saga dans l’ordre où ça s’est passé.
       <b>Cochez ce que vous avez complété, votre progression est sauvegardée.</b></p>
     <p class="upd"><i aria-hidden="true"></i> Mis à jour · septembre 2026</p>
-    <div class="stats">
+
+    <div class="ln-map" id="ln-map" aria-label="Plan de la ligne Star Wars"></div>
+
+    <div class="ln-board stats">
       <div class="s"><b>13</b><span>Longs métrages</span></div>
       <div class="s"><b>13</b><span>Séries</span></div>
       <div class="s"><b>6</b><span>Jeux vidéo</span></div>
-      <div class="s"><b id="s-tot">62</b><span>Entrées</span></div>
-      <div class="s"><b id="s-h">294 h</b><span>Restant</span></div>
+      <div class="s"><b id="s-tot">62</b><span>Arrêts</span></div>
+      <div class="s"><b id="s-h">294 h</b><span>Trajet restant</span></div>
     </div>
-    <button class="start" id="start" type="button">Commencer <em>▸</em></button>
-    <!-- La bascule vit sous le bouton d'entrée : le choix fait à l'arrivée
-         reste sous les yeux et se reprend à tout moment. `first` est marqué
-         d'emblée — le JS corrige au chargement, et sans ça la bascule
-         paraîtrait un instant sans rien de choisi. -->
-    <div class="par" id="par">
-      <div class="par-b" role="group" aria-label="Choisir le parcours">
-        <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
-        <button type="button" data-parcours="rewatch" aria-pressed="false">Je revois</button>
-        <button type="button" data-parcours="release" aria-pressed="false">Ordre de sortie</button>
+
+    <div class="ln-go">
+      <div class="ticket" id="ticket">
+        <span class="t-stub" aria-hidden="true"><span>SW</span></span>
+        <span class="t-txt"><span class="t-k" id="t-k">Premier départ</span><span class="t-nm" id="t-nm"></span><span class="t-st" id="t-st"></span></span>
+        <button class="start t-go" id="start" type="button">Commencer <em>▸</em></button>
+      </div>
+      <div class="par" id="par">
+        <div class="par-b" role="group" aria-label="Choisir le parcours">
+          <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
+          <button type="button" data-parcours="rewatch" aria-pressed="false">Je revois</button>
+          <button type="button" data-parcours="release" aria-pressed="false">Ordre de sortie</button>
+        </div>
       </div>
     </div>
   </div>
@@ -941,25 +1451,21 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </main>
 
 <footer>
+  <div class="f-lines" aria-hidden="true"><i style="background:var(--sw)"></i><i style="background:var(--mcu)"></i><i style="background:var(--dc)"></i><i style="background:var(--av)"></i><i style="background:var(--st)"></i><i style="background:var(--twd)"></i><i style="background:var(--da)"></i><i style="background:var(--ac)"></i><i style="background:var(--dca)"></i><i style="background:var(--jw)"></i><i style="background:var(--wi)"></i><i style="background:var(--re)"></i></div>
   <div class="foot">
-    <div>
-      <h4>Chronologeek</h4>
+    <div class="f-head">
+      <img class="f-logo" src="/images/logo-chronologeek.webp" alt="Chronologeek" width="1143" height="101"/>
       <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
         dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
         qui regarde tout deux fois.</p>
     </div>
-    <div><h4>Timelines</h4><ul>
-      <li><a href="#" aria-current="page">Star Wars</a></li>
-      <li><a href="e-marvel.html">Marvel — MCU</a></li>
-      <li><a href="e-dc.html">DC Multiverse</a></li>
-      <li><a href="e-avatar.html">Avatar Legends</a></li><li><a href="e-startrek.html">Star Trek</a></li><li><a href="e-twd.html">The Walking Dead</a></li><li><a href="e-dragonage.html">Dragon Age</a></li><li><a href="e-assassinscreed.html">Assassin’s Creed</a></li><li><a href="e-dcanimation.html">DC Animation</a></li><li><a href="e-jurassic.html">Jurassic World</a></li><li><a href="e-witcher.html">The Witcher</a></li><li><a href="e-residentevil.html">Resident Evil</a></li>
-      <li><a href="e-dossiers.html">Dossiers</a></li>
-    </ul></div>
-    <div><h4>Plus</h4><ul>
-      <li><a href="e-a-venir.html">Sorties à venir</a></li>
-      <li><a href="e-nouveautes.html">Nouveautés</a></li>
+    <nav class="f-uni" aria-label="Timelines"><h4>Timelines</h4><ul><li><a href="#" aria-current="page" style="--k:var(--sw)"><i>SW</i>Star Wars</a></li><li><a href="e-marvel.html" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a></li><li><a href="e-dc.html" style="--k:var(--dc)"><i>DC</i>DC Multivers</a></li><li><a href="e-avatar.html" style="--k:var(--av)"><i>AV</i>Avatar Legends</a></li><li><a href="e-startrek.html" style="--k:var(--st)"><i>ST</i>Star Trek</a></li><li><a href="e-twd.html" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a></li><li><a href="e-dragonage.html" style="--k:var(--da)"><i>DA</i>Dragon Age</a></li><li><a href="e-assassinscreed.html" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a></li><li><a href="e-dcanimation.html" style="--k:var(--dca)"><i>DCA</i>DC Animation</a></li><li><a href="e-jurassic.html" style="--k:var(--jw)"><i>JW</i>Jurassic World</a></li><li><a href="e-witcher.html" style="--k:var(--wi)"><i>TW</i>The Witcher</a></li><li><a href="e-residentevil.html" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></li></ul></nav>
+    <nav class="f-more" aria-label="Plus"><ul>
+      <li><a href="e-dossiers.html" class="doss">Dossiers</a></li>
+      <li><a href="e-a-venir.html" class="upc">Sorties à venir</a></li>
+      <li><a href="e-nouveautes.html" class="news">Nouveautés</a></li>
       <li><a href="#contact" data-contact>Contact</a></li>
-    </ul></div>
+    </ul></nav>
     <div class="legal">
       Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       mais n'est ni approuvé ni certifié par TMDB. Données livres :
@@ -1001,7 +1507,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </div>
 
 <div class="bx" id="bx" hidden><div class="bx-in">
-  <div class="bx-h"><h3>Mes Badges</h3><span class="n" id="bx-n">0 débloqués</span>
+  <div class="bx-h"><span class="code">SW</span><h3>Mes Badges</h3><span class="n" id="bx-n">0 débloqués</span>
     <button type="button" id="bx-x" aria-label="Fermer">✕</button></div>
   <div class="bx-g" id="bx-g"></div>
 </div></div>
@@ -1041,7 +1547,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   /* « ⭐ Essentiel » → « Essentiel » : on ne garde que le mot de Niko. */
   function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
   var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
-  var KEY='cg-proto-sw';
+  var KEY='cg-proto-sw';
   var AKEY=KEY+'-alt';
   /* L'accueil rouvre sa reprise sur la timeline où l'on a coché en dernier, et
      non sur la dernière visitée : `marque()` ne s'appelle qu'au clic d'une
@@ -1329,26 +1835,26 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         '<button type="button" class="bu-chk" role="checkbox" aria-checked="'+
           (prog[e.id]?'true':'false')+'" data-check aria-label="'+
           esc(T.markWatched.replace('{t}',e.title))+'">'+ICO.check+'</button>'+
-        (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
-          LVICO[e.level]+'</span>':'')+
       '</span>'+
       '<div class="bu-card">'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
+          '<span class="bu-time">'+
+            '<span class="bu-n">Arrêt '+String(e.n).padStart(2,'0')+'</span>'+
+            '<span class="d">'+esc(e.date||'—')+'</span>'+
+            (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+esc(e.rel)+'</b></span>':'')+
+          '</span>'+
           '<span class="bu-fig">'+
             (e.img?'<img src="'+e.img+'" alt="'+esc(e.title)+'" loading="lazy" decoding="async"/>':'')+
-            '<span class="halftone"></span>'+
-            '<span class="bu-n">'+String(e.n).padStart(2,'0')+'</span>'+
             '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
           '</span>'+
           '<span class="bu-txt">'+
-            '<span class="bu-tags">'+fb+'<span class="b" style="--k:var(--t-'+e.type+')">'+
-              esc(bd[1])+'</span></span>'+
-            '<h3 class="bu-title">'+esc(e.title)+'</h3>'+
-            '<span class="bu-meta"><span class="d">'+esc(e.date||'—')+'</span>'+
-              (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+
-                esc(e.rel)+'</b></span>':'')+
-              (d?'<span>'+hm(d)+'</span>':'')+
+            '<span class="bu-tags">'+
+              (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+                LVICO[e.level]+'</span>':'')+
+              '<span class="b" style="--k:var(--t-'+e.type+')">'+esc(bd[1])+'</span>'+fb+
             '</span>'+
+            '<h3 class="bu-title">'+esc(e.title)+'</h3>'+
+            '<span class="bu-meta">'+(d?'<span class="dur">'+hm(d)+'</span>':'')+'</span>'+
             (e.note?'<span class="bu-note">'+esc(e.note)+'</span>':'')+
           '</span>'+
           '<span class="bu-end">'+ICO.chev+'</span>'+
@@ -1362,26 +1868,40 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     '</article>';
   }
 
+  /* une station : la plaque de l'ère, posée sur la ligne. Les
+     correspondances sont les types de média qu'on croise à cette station. */
+  function plaque(era,i){
+    var art=eraArt(era), n={}, ordre=[];
+    era.entries.forEach(function(x){ if(!n[x.type]){ n[x.type]=0; ordre.push(x.type); } n[x.type]++; });
+    var cx=ordre.map(function(k){
+      var bd=CFG.badgeLabels[k]||['b',k];
+      return '<span class="cx" style="--k:var(--t-'+k+')">'+esc(bd[1])+'<b>'+n[k]+'</b></span>';
+    }).join('');
+    return '<div class="stn wrap">'+
+      '<span class="stn-rail" aria-hidden="true"><span class="stn-dot"></span></span>'+
+      '<div class="stn-plate">'+
+        '<span class="stn-img" aria-hidden="true"'+(art?' style="background-image:url('+art+')"':'')+'></span>'+
+        '<div class="stn-txt">'+
+          '<span class="stn-k"><span class="code">SW</span>Station '+(i+1)+' / '+ERAS.length+'</span>'+
+          '<h2 class="stn-nm disp">'+esc(era.title)+'</h2>'+
+          '<p class="stn-meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' terminés</span>'+
+            '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' de trajet</span></p>'+
+          '<p class="stn-cx"><span class="lab">Correspondances</span>'+cx+'</p>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+
   (function build(){
     var html='';
     ERAS.forEach(function(era,i){
-      var art=eraArt(era);
       html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
-        '<div class="map">'+
-          '<div class="layers" aria-hidden="true">'+
-            '<div class="lay lay1" style="background-image:url('+art+')"></div>'+
-            '<div class="lay lay2" style="background-image:url('+art+')"></div>'+
-            '<div class="tint"></div><div class="halftone"></div></div>'+
-          '<div class="wrap">'+
-            '<span class="chev">Ère '+(i+1)+' / '+ERAS.length+'</span>'+
-            '<h2 class="disp off">'+esc(era.title)+'</h2>'+
-            '<p class="meta"><span><b data-done="'+i+'">0</b> / '+era.entries.length+' terminés</span>'+
-            '<span>'+hm(era.entries.reduce(function(s,x){return s+rt(x);},0))+' au total</span></p>'+
-          '</div></div>'+
-        '<div class="list"><div class="wrap"><div class="rows">'+
-          era.entries.map(row).join('')+
-        '</div></div></div></section>';
+        plaque(era,i)+
+        '<div class="wrap"><div class="rows">'+era.entries.map(row).join('')+'</div></div>'+
+      '</section>';
     });
+    html+='<div class="terminus wrap"><span class="stn-rail" aria-hidden="true"><span class="stn-dot tm"></span></span>'+
+      '<p><b>Terminus</b><span>Fin de la ligne Star Wars · '+ERAS.length+' stations · '+ALL.length+' arrêts</span></p></div>';
     $('#timeline').innerHTML=html;
   })();
 
@@ -1797,11 +2317,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       var got=!!won[b.id];
       if(got) n++;
       return '<div class="bg1'+(got?' on':'')+'" style="--c:'+b.color+'">'+
-        '<span class="i">'+b.icon+'</span><span><span class="t">'+esc(b.label)+'</span>'+
-        '<span class="d">'+esc(descDe(b))+'</span></span></div>';
+        '<span class="bg-stub"><span class="i">'+b.icon+'</span></span><span class="bg-b"><span class="t">'+esc(b.label)+'</span>'+
+        '<span class="d">'+esc(descDe(b))+'</span><span class="st">'+(got?'Validé':'À gagner')+'</span></span></div>';
     }).join('');
     $('#bx-g').innerHTML=html;
-    $('#bx-n').textContent=n+' '+T.unlockedN;
+    $('#bx-n').textContent=n+' / '+BADGES.length;
     $('#bx').hidden=false; $('#bx').classList.add('o');
   }
   $('#badges-btn').addEventListener('click',badges);
@@ -1913,6 +2433,125 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       },60);
     }
   }
+})();
+</script>
+<script>
+/* ══ MAQUETTE — le plan de la ligne, le billet, la station en cours ════
+   Tout est lu dans le DOM que la page vient de construire : les stations,
+   leurs titres, les arrêts et leurs cases. Rien ne touche au moteur. */
+(function(){
+  var map=document.getElementById('ln-map'); if(!map) return;
+  var TRAIN='<svg viewBox="0 0 38 20" aria-hidden="true"><rect class="ping" x="1" y="1" width="36" height="18" rx="8"/>'+
+    '<rect class="body" x="1" y="1" width="36" height="18" rx="8"/>'+
+    '<rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/>'+
+    '<rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg>';
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function nom(sec){var h=sec.querySelector('.stn-nm');return h?h.textContent.trim():'';}
+  function titre(r){var h=r.querySelector('.bu-title');return h?h.textContent.trim():'';}
+  function coche(r){var b=r.querySelector('[data-check]');return !!b&&b.getAttribute('aria-checked')==='true';}
+  function pc(x){return (x*100).toFixed(3)+'%';}
+
+
+  function dessine(){
+    var secs=[].slice.call(document.querySelectorAll('.era-sec')); if(!secs.length) return;
+    var rows=[].slice.call(document.querySelectorAll('.era-sec .bu')), tot=rows.length, n=secs.length;
+    var der=-1; rows.forEach(function(r,k){ if(coche(r)) der=k; });
+    var faits=rows.filter(coche).length;
+    var info=secs.map(function(sec,i){
+      var rs=[].slice.call(sec.querySelectorAll('.bu')), v=rs.filter(coche).length;
+      return {sec:sec,deb:rows.indexOf(rs[0]),n:rs.length,v:v};
+    });
+    info.forEach(function(e,i){
+      var prec=info[i-1];
+      e.sec.classList.toggle('fin', e.n>0 && e.v===e.n);
+      e.sec.classList.toggle('reach', e.v>0 || (!!prec && prec.n>0 && prec.v===prec.n));
+    });
+    var suiv=rows[der+1]||null;
+    var cur=suiv?info.filter(function(e){return e.sec.contains(suiv);})[0]:null;
+    /* la prochaine station : la première posée DEVANT le train. Celle de
+       l'œuvre suivante peut être derrière lui — le train vient d'y passer. */
+    var devant=info.filter(function(e){return e.deb>der+1;})[0]||null;
+
+    /* le plan */
+    var pos=(der+1)/tot;
+    var h='<span class="lm-dep">Départ</span><div class="lm-track"><i class="lm-fill" style="width:'+pc(pos)+'"></i>';
+    rows.forEach(function(r,k){
+      if(info.some(function(e){return e.deb===k;})) return;
+      h+='<i class="lm-t'+(k<=der?' v':'')+'" style="left:'+pc(k/tot)+'"></i>';
+    });
+    info.forEach(function(e,i){
+      var s=Math.round(18+Math.min(e.n,20)*0.8);
+      var cls='lm-st'+(e.n&&e.v===e.n?' v':'')+(devant===e?' cur':'')+(i%2?' lo':'');
+      h+='<a class="'+cls+'" href="#'+e.sec.id+'" style="left:'+pc(e.deb/tot)+';--s:'+s+'px" title="'+esc(nom(e.sec))+'">'+
+        '<span class="lm-lb">'+esc(nom(e.sec))+'<small>'+e.n+' arrêts</small></span></a>';
+    });
+    h+='<a class="lm-st tm'+(faits===tot?' v':'')+(!devant?' cur':'')+'" href="#top" style="left:100%;--s:30px" title="Terminus">'+
+      '<span class="lm-lb">Terminus</span></a>'+
+      '<span class="lm-train" style="left:'+pc(pos)+'">'+TRAIN+'</span></div>'+
+      '<span class="lm-cnt"><b>'+faits+'</b> / '+tot+'</span>'+
+      '<p class="lm-now">Prochaine station · <em>'+(devant?esc(nom(devant.sec)):'Terminus')+'</em></p>';
+    map.innerHTML=h;
+
+    /* le billet */
+    var k=document.getElementById('t-k'), nm=document.getElementById('t-nm'), st=document.getElementById('t-st');
+    if(nm){
+      k.textContent=der<0?'Premier départ':(suiv?'Prochain arrêt':'Terminus atteint');
+      nm.textContent=suiv?titre(suiv):'Ligne Star Wars terminée';
+      st.textContent=cur?'Station '+(info.indexOf(cur)+1)+' · '+nom(cur.sec):faits+' arrêts sur '+tot;
+    }
+
+    /* la barre du bas : les stations sur la jauge */
+    var bar=document.querySelector('.hud .bar');
+    if(bar){
+      [].forEach.call(bar.querySelectorAll('.hs'),function(x){x.remove();});
+      info.forEach(function(e){
+        var i=document.createElement('span'); i.className='hs'+(e.n&&e.v===e.n?' v':'');
+        i.style.left=pc(e.deb/tot); bar.appendChild(i);
+      });
+      var tr=bar.querySelector('.hud-train');
+      if(!tr){ tr=document.createElement('span'); tr.className='hud-train'; tr.innerHTML=TRAIN; }
+      tr.style.left=pc(faits/tot); bar.appendChild(tr);
+    }
+    var tm=document.querySelector('.terminus'); if(tm) tm.classList.toggle('fin', faits===tot);
+    trait();
+  }
+
+  /* le trait : de la première station visible au terminus, et le
+     parcouru jusqu'au train. Mesuré, jamais additionné carte par carte. */
+  var tl=document.getElementById('timeline');
+  function centre(el){ var r=el.getBoundingClientRect(); return r.top+r.height/2; }
+  function trait(){
+    if(!tl) return;
+    var base=tl.getBoundingClientRect().top;
+    var st=[].slice.call(tl.querySelectorAll('.era-sec:not([hidden]) .stn-dot'));
+    var tm=tl.querySelector('.terminus .stn-dot');
+    if(!st.length||!tm) return;
+    var haut=centre(st[0])-base, bas=centre(tm)-base;
+    var ici=tl.querySelector('.rows>.ici'), fait;
+    var rows=[].slice.call(tl.querySelectorAll('.bu:not([hidden])'));
+    var cochees=rows.filter(coche);
+    if(ici && ici.offsetParent) fait=centre(ici)-base;
+    else if(cochees.length && cochees.length===rows.length) fait=bas;
+    else if(cochees.length){ var d=cochees[cochees.length-1].querySelector('[data-check]'); fait=centre(d)-base; }
+    else fait=haut;
+    tl.style.setProperty('--l-top',haut+'px');
+    tl.style.setProperty('--l-h',Math.max(0,bas-haut)+'px');
+    tl.style.setProperty('--f-h',Math.max(0,fait-haut)+'px');
+  }
+
+  var tk=document.getElementById('ticket');
+  if(tk) tk.addEventListener('click',function(ev){ if(!ev.target.closest('#start')) document.getElementById('start').click(); });
+  dessine();
+  document.addEventListener('click',function(){setTimeout(dessine,0);});
+  if(tl) new MutationObserver(function(){setTimeout(dessine,0);}).observe(tl,{childList:true});
+  /* le train de « Vous en êtes là » est posé par e-app.js juste après
+     nous : on remesure quand il bouge, quand une fiche s'ouvre, quand
+     une image arrive. */
+  if(tl){
+    new MutationObserver(function(){ requestAnimationFrame(trait); }).observe(tl,{childList:true,subtree:true});
+    if(window.ResizeObserver) new ResizeObserver(function(){ requestAnimationFrame(trait); }).observe(tl);
+  }
+  addEventListener('load',trait);
 })();
 </script>
 <script src="e-app.js"></script>
