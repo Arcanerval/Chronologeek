@@ -251,6 +251,11 @@ const TRADUCTIONS = [
   ['Plus de retour en arrière', 'No turning back'],
   ['Si vous comptiez regarder le DCEU (au moins jusqu\'à Justice League inclus) et les deux origines de Batman et Superman (les éléments Important) faites le avant de continuer l\'Arrowverse.',
    'If you were planning to watch the DCEU (at least up to and including Justice League) and the two Batman and Superman origins (the Important entries), do it before going on with the Arrowverse.'],
+  /* ── les Terres, corrigées par Niko le 28 septembre 2026 ──
+     Le DCEU passe de la Terre-1 à la Terre-TUD13, et l'Arrowverse d'avant
+     l'événement de la Terre-Prime à la Terre-1 — celle-ci se retrouve au
+     lexique. Même graphie que les autres repères anglais, « EARTH-TUD5 ». */
+  ['TERRE-TUD13', 'EARTH-TUD13'],
 
   /* ── la carte Star Trek du journal, écrite le 11 août 2026 ──
      Le cinquième univers est postérieur à la prod : il n'y a rien à

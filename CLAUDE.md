@@ -2887,6 +2887,15 @@ de l'univers : celle-là ne montre pas l'œuvre, elle dit d'où l'entrée vient.
 Lui prêter le titre serait faux, et le titre est de toute façon la ligne d'à
 côté — `alt=""` y est la bonne réponse. Sept vignettes nommées, trois muettes.
 
+**Les 147 vignettes DC sont locales depuis le 28 septembre 2026**, déposées par
+Niko : `img` de `_proto/data-dc.js` pointe `/images/<œuvre>.webp`, apparié par
+identifiant TMDB, plus aucune URL TMDB. Quatre WebP arrivés trop grands ont été
+réduits à 760 px, leurs originaux gardés dans `images/originaux/`, non versionné.
+Le même jour, les Terres : le DCEU passe à `TERRE-TUD13` (`EARTH-TUD13` dans
+`TRADUCTIONS`), l'Arrowverse d'avant l'événement à `TERRE-1` ; après
+l'événement il reste sur la `TERRE-PRIME`. L'accroche (« la Terre-Prime et la
+Terre-1 ») et la FAQ de Man of Steel sont des textes de Niko et n'ont pas bougé.
+
 **Il n'y a pas de `width`/`height` sur les vignettes, et il n'en faut pas** :
 `.bu-fig` fixe 128×72 en CSS avec `object-fit:cover`, donc la place est réservée
 avant le chargement et rien ne se décale. Ne pas les ajouter en croyant régler un

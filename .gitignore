@@ -53,3 +53,6 @@ _proto/a-traduire-witcher.json
 _proto/a-relire-witcher.json
 _proto/a-traduire-residentevil.json
 _proto/a-relire-residentevil.json
+
+# Originaux de Niko mis de cote avant reduction d'un WebP trop grand — jamais servis.
+images/originaux/
