@@ -2857,6 +2857,36 @@ onde. `prefers-reduced-motion` coupe tout et dessine la ligne entière.
 **Le plan du haut n'a plus un point par œuvre** — sur Marvel ils se
 touchaient ; les stations suffisent.
 
+**DC est publié au plan de métro le 28 septembre 2026**, et c'est un
+**réseau**, pas une ligne : chaque branche est une ligne à sa couleur et à son
+code (SUP, BAT, ARW, DCEU, ELS, DCU — table `CODES`, par rang de bande), une
+zone à plusieurs colonnes est une station de correspondance, l'événement
+majeur un nœud rouge « Toutes lignes ». `e-dc.html` est la source ; son
+générateur (scratchpad `dc2.py`) repart d'une copie d'avant la bascule et ne
+doit plus tourner.
+
+- **Une ligne à la fois, à toutes les largeurs.** Deux essais écartés le même
+  jour : les onglets seuls cachaient le parallélisme sur PC, et les colonnes
+  côte à côte avec un train par voie ont été jugées trop chargées — ne pas les
+  reproposer. Le parallélisme est dit par le **tableau des départs** en tête
+  de chaque correspondance (une carte par ligne : code, années, décompte,
+  jauge), qui commande l'onglet du même rang ; la barre compacte des onglets,
+  centrée, ne paraît qu'une fois le tableau sorti de l'écran. `MOB` vaut donc
+  `all` et la borne de 1440 px de la section suivante ne joue plus.
+- **Au bout de chaque ligne, ses correspondances** et « Continuer vers » la
+  station suivante ; les codes du plan du haut mènent à leur ligne.
+- **« Plus de retour en arrière » est rappelé avant l'événement** pour toutes
+  les lignes (`.sep-fin`), et se tait quand l'Arrowverse est affiché : il y
+  est déjà à sa place, avant les épisodes du crossover.
+- **Le train du plan roule sur la ligne suivie** — l'onglet affiché dans la
+  zone où l'on a changé de ligne en dernier ; au changement, il revient au
+  nœud de la station puis repart sur la nouvelle voie.
+- **Le trait vertical prend la couleur de la ligne qu'il traverse**, par un
+  dégradé à paliers francs.
+- **Les têtes de colonne ne sont plus des `<header>`.** DC visait
+  `body>header` pour les épargner, et cette règle battait celles du menu de
+  l'accueil : la barre du haut restait tassée à gauche.
+
 Marvel ajoute **la voie des autres univers** : une œuvre `dim` roule sur une voie
 parallèle qui se détache à 45° avant la première d'une série et rejoint la
 ligne après la dernière (`dev-a` / `dev-z` posées au rendu). La ligne

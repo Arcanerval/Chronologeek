@@ -695,6 +695,17 @@ const TRADUCTIONS = [
   ['Ligne Marvel terminée', 'Marvel line complete'],
   ['Fin de la ligne Marvel ·', 'End of the Marvel line ·'],
   ['Embranchement', 'Branch line'],
+  // la page DC, au plan de métro le 28 septembre 2026 : un réseau
+  ['Plan du réseau DC', 'DC network map'],
+  ['Réseau DC terminé', 'DC network complete'],
+  ['Fin du réseau DC ·', 'End of the DC network ·'],
+  ['Fin de la ligne', 'End of the line'],
+  ['Choisir une ligne', 'Choose a line'],
+  ['Toutes lignes', 'All lines'],
+  ['Continuer vers', 'Continue to'],
+  ['Départs', 'Departures'],
+  ['Choisissez votre ligne — elles se suivent en parallèle', 'Choose your line — they run in parallel'],
+  ['· ligne', '· line'],
   ['Validé', 'Validated'],
   ['À gagner', 'To earn'],
 ];

@@ -647,6 +647,30 @@ const RETOUCHES = [
     de: 'the same as on the main timeline',
     a: 'the same as on <a href="e-starwars.html">the main timeline</a>' },
 ];
+/* ── une phrase corrigée dans le proto, que la prod anglaise dit encore ──
+   Les Terres de DC, corrigées par Niko le 28 septembre 2026. L'accroche est
+   un seul bloc de plusieurs milliers de signes : trois mots changés, et le
+   témoin de fraîcheur la déclarait entière périmée — elle ressortait en
+   français sur la page anglaise. On lui montre donc la phrase telle que la
+   prod l'avait (`commeEnProd`), et `RETOUCHES` corrige ensuite l'anglais.
+   Les deux vont ensemble, comme pour les liens enrobés. */
+const REECRITS = [
+  { ou: 'DC', neuf: 'se passent sur la Terre-1 et la Terre-TUD13.',
+    ancien: 'se passent sur la Terre-Prime et la Terre-1.' },
+  { ou: 'DC', neuf: 'le début du DCEU sur la Terre-TUD13.',
+    ancien: 'le début du DCEU sur la Terre-1.' },
+];
+function commeEnProd(s, ou) {
+  if (typeof s !== 'string') return s;
+  for (const r of REECRITS) if (r.ou === ou && s.includes(r.neuf)) s = s.split(r.neuf).join(r.ancien);
+  return s;
+}
+RETOUCHES.push(
+  { quoi: 'DC · l’accroche nomme la Terre-1 et la Terre-TUD13', ou: 'DC',
+    de: 'take place on <strong>Earth-Prime</strong> and <strong>Earth-1</strong>.',
+    a: 'take place on <strong>Earth-1</strong> and <strong>Earth-TUD13</strong>.' },
+  { quoi: 'DC · Man of Steel ouvre le DCEU sur la Terre-TUD13', ou: 'DC',
+    de: 'marks the start of the DCEU on Earth-1.', a: 'marks the start of the DCEU on Earth-TUD13.' });
 const retouchesFaites = new Map();
 
 /* ── un lien interne pointe la page de sa langue ────────────────────
@@ -917,7 +941,7 @@ export function creerTraducteur(lex, manques, contexte, identiques) {
       if (RENOMMES_NOUVEAUX.has(fr.trim())) return fr;
 
       const perime = typeof refFr === 'string'
-        && net(refFr) !== net(sansLiensInternes(fr));
+        && net(refFr) !== net(sansLiensInternes(commeEnProd(fr, contexte)));
       if (perime) {
         /* Le cas courant : le proto a coupé la fin du titre — « The Clone
            Wars — 22 BBY » est devenu « The Clone Wars », la date étant
@@ -949,7 +973,8 @@ export function creerTraducteur(lex, manques, contexte, identiques) {
          une seule chaîne de plusieurs milliers de signes — un `<a>` de
          plus la rendait introuvable, donc française sur la page anglaise.
          `RETOUCHES` repose ensuite le lien côté anglais. */
-      const trouve = lex.cherche(fr) ?? lex.cherche(sansLiensInternes(fr));
+      const trouve = lex.cherche(fr) ?? lex.cherche(sansLiensInternes(fr))
+        ?? lex.cherche(sansLiensInternes(commeEnProd(fr, contexte)));
       if (trouve !== undefined) return retouche(memeEchappement(fr, trouve), contexte);
       /* dernier recours : une des dix phrases écrites à la main. On
          l'applique, mais on la consigne quand même — elle doit passer
