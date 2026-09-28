@@ -1422,6 +1422,33 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   .bu-card>.bu-time .rel{grid-column:3}
   .bu-link{top:4px}
 }
+/* ══ Les animations de l'accueil, sur le plan et sur la ligne ═══════
+   Au premier affichage le plan du haut se dessine depuis le départ, ses
+   stations s'allument quand le tracé les atteint, puis le train paraît.
+   Des impulsions de lumière filent sur le parcouru, vers le terminus. La
+   ligne verticale se dessine à mesure qu'on descend et ne s'efface pas en
+   remontant ; ses impulsions courent jusqu'au train, qui émet son onde. */
+.lm-fill::after{content:'';position:absolute;inset:0;border-radius:5px;opacity:.75;
+  background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 0 50%/16px 100% repeat-x;
+  animation:lm-flow .8s linear infinite}
+@keyframes lm-flow{to{background-position:16px 50%}}
+.ln-map.go .lm-track{animation:lm-draw 1.15s cubic-bezier(.65,0,.25,1) both}
+@keyframes lm-draw{from{clip-path:inset(-140px 100% -140px -220px)}to{clip-path:inset(-140px -220px -140px -220px)}}
+.ln-map.go .lm-st{animation:lm-pop .4s cubic-bezier(.2,1.6,.4,1) both;animation-delay:var(--d,0s)}
+@keyframes lm-pop{from{transform:translate(-50%,-50%) scale(0)}}
+.ln-map.go .lm-train,.ln-map.go .lm-cnt,.ln-map.go .lm-now{animation:lm-in .45s ease-out both;animation-delay:1.1s}
+@keyframes lm-in{from{opacity:0}}
+.ln-svg .r{transition:stroke-dasharray .6s ease-out}
+.ln-svg .p{fill:none;stroke:#fffdf7;stroke-width:3.4;opacity:.7;stroke-dasharray:.1 16;
+  animation:ln-flow .8s linear infinite}
+@keyframes ln-flow{to{stroke-dashoffset:-16.1}}
+.rows>.ici::before{animation:ici-ping 1.8s ease-out infinite}
+@keyframes ici-ping{from{box-shadow:0 0 10px var(--hot),0 0 0 0 rgba(240,201,124,.85)}
+  to{box-shadow:0 0 10px var(--hot),0 0 0 13px rgba(240,201,124,0)}}
+@media(prefers-reduced-motion:reduce){
+  .lm-fill::after,.ln-svg .p,.rows>.ici::before{animation:none}
+  .ln-svg .r{transition:none}
+}
 /* le nombre suffit : « terminés » est masqué, et reste lu par la carte de partage */#hud-btn>b+.lbl{display:none}</style>
 </head>
 <body>
@@ -2553,6 +2580,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
    leurs titres, les arrêts et leurs cases. Rien ne touche au moteur. */
 (function(){
   var map=document.getElementById('ln-map'); if(!map) return;
+  var REDUIT=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var TRAIN='<svg viewBox="0 0 38 20" aria-hidden="true"><rect class="ping" x="1" y="1" width="36" height="18" rx="8"/>'+
     '<rect class="body" x="1" y="1" width="36" height="18" rx="8"/>'+
     '<rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/>'+
@@ -2589,22 +2617,22 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     /* le plan */
     var pos=(der+1)/tot;
     var h='<span class="lm-dep">Départ</span><div class="lm-track"><i class="lm-fill" style="width:'+pc(pos)+'"></i>';
-    rows.forEach(function(r,k){
-      if(info.some(function(e){return e.deb===k;})) return;
-      h+='<i class="lm-t'+(k<=der?' v':'')+'" style="left:'+pc(k/tot)+'"></i>';
-    });
     info.forEach(function(e,i){
       var s=Math.round(18+Math.min(e.n,20)*0.8);
       var cls='lm-st'+(e.n&&e.v===e.n?' v':'')+(devant===e?' cur':'')+(i%2?' lo':'');
-      h+='<a class="'+cls+'" href="#'+e.sec.id+'" style="left:'+pc(e.deb/tot)+';--s:'+s+'px" title="'+esc(nom(e.sec))+'">'+
+      h+='<a class="'+cls+'" href="#'+e.sec.id+'" style="left:'+pc(e.deb/tot)+';--s:'+s+'px;--d:'+(e.deb/tot*1.1).toFixed(2)+'s" title="'+esc(nom(e.sec))+'">'+
         '<span class="lm-lb">'+esc(nom(e.sec))+'<small>'+e.n+' arrêts</small></span></a>';
     });
-    h+='<a class="lm-st tm'+(faits===tot?' v':'')+(!devant?' cur':'')+'" href="#top" style="left:100%;--s:30px" title="Terminus">'+
+    h+='<a class="lm-st tm'+(faits===tot?' v':'')+(!devant?' cur':'')+'" href="#top" style="left:100%;--s:30px;--d:1.1s" title="Terminus">'+
       '<span class="lm-lb">Terminus</span></a>'+
       '<span class="lm-train" style="left:'+pc(pos)+'">'+TRAIN+'</span></div>'+
       '<span class="lm-cnt"><b>'+faits+'</b> / '+tot+'</span>'+
       '<p class="lm-now">Prochaine station · <em>'+(devant?esc(nom(devant.sec)):'Terminus')+'</em></p>';
     map.innerHTML=h;
+    if(!map.dataset.vu){
+      map.dataset.vu='1';
+      if(!REDUIT){ map.classList.add('go'); setTimeout(function(){ map.classList.remove('go'); },2600); }
+    }
 
     /* le billet */
     var k=document.getElementById('t-k'), nm=document.getElementById('t-nm'), st=document.getElementById('t-st');
@@ -2676,16 +2704,47 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     }
     pR.setAttribute('d','M'+v.map(function(a){return a[0].toFixed(1)+' '+a[1].toFixed(1);}).join(' L'));
     pF.setAttribute('d',pR.getAttribute('d'));
+    V=v; FAIT=fait; vue();
+  }
+  /* Le tracé se dessine à mesure qu'on descend, comme les lignes de
+     l'accueil au premier affichage : jusqu'au bas de ce qu'on a vu, et il
+     ne s'efface pas en remontant. Les impulsions filent sur le parcouru,
+     jusqu'au train. */
+  var V=null, FAIT=0, VU=REDUIT?1e9:0, pP=null, vueRaf=0;
+  function long(y){
     var L=0;
-    for(var k=1;k<v.length;k++){
-      var a=v[k-1], b=v[k], l=Math.hypot(b[0]-a[0],b[1]-a[1]);
-      if(fait>=b[1]){ L+=l; continue; }
-      if(fait>a[1]) L+=l*(fait-a[1])/(b[1]-a[1]);
+    for(var k=1;k<V.length;k++){
+      var a=V[k-1], b=V[k], l=Math.hypot(b[0]-a[0],b[1]-a[1]);
+      if(y>=b[1]){ L+=l; continue; }
+      if(y>a[1]) L+=l*(y-a[1])/(b[1]-a[1]);
       break;
     }
+    return L;
+  }
+  function tronque(y){
+    var o=[V[0]];
+    for(var k=1;k<V.length;k++){
+      var a=V[k-1], b=V[k];
+      if(y>=b[1]){ o.push(b); continue; }
+      if(y>a[1]) o.push([a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1]),y]);
+      break;
+    }
+    return o;
+  }
+  function vue(){
+    if(!V||!pR) return;
+    VU=Math.max(VU,innerHeight-tl.getBoundingClientRect().top);
+    pR.style.strokeDasharray=long(VU).toFixed(1)+' 100000';
+    var yf=Math.min(FAIT,VU), L=long(yf);
     pF.style.visibility=L>0?'':'hidden';
     pF.style.strokeDasharray=L.toFixed(1)+' 100000';
+    if(!pP){ pP=document.createElementNS(NS,'path'); pP.setAttribute('class','p'); svg.appendChild(pP); }
+    var t=tronque(yf);
+    pP.setAttribute('d',L>0&&t.length>1?'M'+t.map(function(a){return a[0].toFixed(1)+' '+a[1].toFixed(1);}).join(' L'):'');
   }
+  addEventListener('scroll',function(){
+    if(!vueRaf) vueRaf=requestAnimationFrame(function(){ vueRaf=0; vue(); });
+  },{passive:true});
   function trait(){
     if(!tl) return;
     milieux();

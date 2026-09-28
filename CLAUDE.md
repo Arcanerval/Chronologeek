@@ -2841,8 +2841,23 @@ toute page « ligne de métro » à venir :
   ses stations et le train, trois cases, code-barres. Le fond vient de
   `.ln-bg` ou des plans de `.attract`.
 
-La maquette Marvel (`maquette-marvel-train.html`, non versionnée) ajoute
-**la voie des autres univers** : une œuvre `dim` roule sur une voie
+**Marvel est publié au plan de métro le même soir** : la maquette a été
+recopiée dans `e-marvel.html`, qui est désormais la source, et supprimée. Ses
+trois phrases propres (« Plan de la ligne Marvel », « Fin de la ligne
+Marvel · », « Ligne Marvel terminée ») et « Embranchement » sont dans
+`TRADUCTIONS` de `traduire-pages.mjs`.
+
+**Les animations de l'accueil, posées sur les deux pages** : le plan du haut
+se dessine au premier affichage (`.ln-map.go`, stations allumées à `--d`,
+proportionnel à leur place), des impulsions filent sur son parcouru
+(`.lm-fill::after`) ; la ligne verticale se dessine à mesure qu'on descend
+(`vue()`, jamais plus bas que ce qu'on a vu, jamais effacée en remontant),
+ses impulsions (`.ln-svg .p`) courent jusqu'au train, et le train émet son
+onde. `prefers-reduced-motion` coupe tout et dessine la ligne entière.
+**Le plan du haut n'a plus un point par œuvre** — sur Marvel ils se
+touchaient ; les stations suffisent.
+
+Marvel ajoute **la voie des autres univers** : une œuvre `dim` roule sur une voie
 parallèle qui se détache à 45° avant la première d'une série et rejoint la
 ligne après la dernière (`dev-a` / `dev-z` posées au rendu). La ligne
 principale n'existe pas le long de la déviation — le trait unique dévie

@@ -690,6 +690,11 @@ const TRADUCTIONS = [
   ['Ligne Star Wars terminée', 'Star Wars line complete'],
   ['Fin de la ligne Star Wars ·', 'End of the Star Wars line ·'],
   ['Correspondances', 'Connections'],
+  // la page Marvel
+  ['Plan de la ligne Marvel', 'Marvel line map'],
+  ['Ligne Marvel terminée', 'Marvel line complete'],
+  ['Fin de la ligne Marvel ·', 'End of the Marvel line ·'],
+  ['Embranchement', 'Branch line'],
   ['Validé', 'Validated'],
   ['À gagner', 'To earn'],
 ];
