@@ -2895,6 +2895,32 @@ chapeau `.epoch` ; les encres d'ère restent celles de `ENCRE`. Pas de table
 `RT` : ni « Trajet restant » dans la bande, ni « de trajet » sur les plaques.
 Huit images d'ère, une par station, dans `ARTS` pour les deux parcours.
 
+**Star Trek est publié au plan de métro le 29 septembre 2026**, et c'est la
+première page métro dont la source est **anglaise** : la maquette a été bâtie
+sur `en-startrek.html` avec le gabarit métro anglais de Marvel publié, puis
+recopiée dans `en-startrek.html`, et le français descend comme toujours par
+`traduire-startrek.mjs` — les textes du gabarit y sont retrouvés dans la paire
+`e-marvel` / `en-marvel`, les trois phrases propres sont dans
+`traductions-startrek.mjs`. Code de ligne **ST**.
+
+- **Le 21e siècle n'a qu'un bandeau** : sa plaque n'a ni décompte ni
+  correspondances, et il ne se pose pas sur le plan du haut (une station sans
+  arrêt se compte au rang de l'arrêt qui la suit).
+- **Les bandeaux de spoil sont dans la colonne des bulles**, hors ligne : la
+  voie passe à côté sans s'y arrêter.
+- **Le plan du haut est à échelle mixte** (`ech()`, demandée par Niko) : la
+  moitié de la place à parts égales entre stations, l'autre au prorata des
+  arrêts. Le 24e siècle porte 206 arrêts sur 248, et au seul prorata les
+  quatre derniers siècles s'empilaient dans les 3 % de droite. Le train, le
+  parcouru et les stations de la barre du bas suivent la même échelle. À
+  reprendre sur une autre page si une ère y écrase les autres.
+- **Images locales, posées dans les données** : `art` des huit ères
+  (`21century.webp` … `43century.webp`) et `img` des 248 entrées (27
+  vignettes, une par œuvre) dans `data-startrek-en.js` — plus une seule URL
+  TMDB. Pas de table `ARTS` : les données portaient déjà `art`.
+- **`body>header` est devenu `header`**, comme chez DC : il battait le CSS du
+  menu de l'accueil.
+
 **Les étiquettes du plan du haut prennent des étages** (`etage()`, même
 jour, sur les quatre pages métro) : deux rangs ne suffisaient pas quand
 trois stations se suivent de près, et les noms se recouvraient sur

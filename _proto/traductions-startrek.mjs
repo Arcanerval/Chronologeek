@@ -38,6 +38,8 @@
    rapport de relecture — il n'y a rien à y relire. */
 export const ST_IDENTIQUES = [
   'Star Trek',
+  // la plaque de station : « Station » s'écrit pareil, et le code de ligne ne se traduit pas
+  '<span class="stn-k"><span class="code">ST</span>Station',
   /* Le nom du quatrième univers, renommé pour ne plus se confondre avec
      les films de James Cameron. Il ne se traduit pas. */
   'Avatar Legends',
@@ -96,6 +98,14 @@ export const ST_GABARITS = [
 export const ST_TRADUCTIONS = [
   // « Remaining » et « completed » à l'accroche depuis le 21 septembre 2026
   ['Remaining', 'Restant'],
+  // le décompte des bandes d'ère : Marvel, passé au métro, ne l'écrit plus,
+  // et le lexique ne le retrouvait plus
+  ['in total</span></p>', 'au total</span></p>'],
+  // le plan de métro, 29 septembre 2026
+  ['Star Trek line map', 'Plan de la ligne Star Trek'],
+  ['Star Trek line complete', 'Ligne Star Trek terminée'],
+  ['End of the Star Trek line ·', 'Fin de la ligne Star Trek ·'],
+  ['<p><b>Terminus</b><span>End of the Star Trek line ·', '<p><b>Terminus</b><span>Fin de la ligne Star Trek ·'],
   ['Check off what you\'ve completed — your progress is saved.', 'Cochez ce que vous avez complété, votre progression est sauvegardée.'],
   // « completed » partout depuis le 21 septembre 2026 : une timeline qui mêle
   // livres, jeux et écrans ne dit plus un verbe en oubliant les autres
