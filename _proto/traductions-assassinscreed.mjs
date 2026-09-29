@@ -74,6 +74,8 @@ export const AC_IDENTIQUES = [
   'Robert Fraser', 'Charlotte de la Cruz', 'Owen Meyers', 'Sean Molloy',
   'Simon Hathaway', 'Callum Lynch', 'Layla Hassan', 'Maxime Gorm',
   'Tomo Sakagawa', 'Basim', 'Joey', 'Noa Kim',
+  // la plaque de station du plan de métro : le code de ligne ne se traduit pas
+  '<span class="stn-k"><span class="code">AC</span>',
 ];
 
 /* ── ce qui est écrit ────────────────────────────────────────────── */
@@ -537,6 +539,10 @@ export const AC_TRADUCTIONS = [
     'À Bayonne, courant dans le Château-Vieux, le juge Pierre de Lancre serrait ses documents et s\'installa pour échapper à la chaleur.'],
   ['Japan, 1868. The opposition between the Tokugawa Shogunate and the Emperor\'s supporters is growing under the influence of external forces. The Templars have infiltrated the Emperor\'s court and are pushing him to go to war against Tokugawa, an ally of the Assassin Brotherhood. Could the glorious era of the Samurai be on the verge of collapse? Atsuko, a 16-year-old Japanese girl, grew up in the wealthy neighborhoods of the city of Aizu.',
     'Japon, 1868. L\'opposition entre le shogunat Tokugawa et les partisans de l\'Empereur s\'aggrave sous l\'influence de forces extérieures. Les Templiers ont infiltré la cour impériale et poussent l\'Empereur à faire la guerre aux Tokugawa, alliés de la Confrérie des Assassins. La glorieuse ère des samouraïs serait-elle sur le point de s\'effondrer ? Atsuko, une Japonaise de 16 ans, a grandi dans les quartiers riches de la ville d\'Aizu.'],
+  // le plan de métro
+  ['Assassin’s Creed line map', 'Plan de la ligne Assassin’s Creed'],
+  ['Assassin’s Creed line complete', 'Ligne Assassin’s Creed terminée'],
+  ['<p><b>Terminus</b><span>End of the Assassin’s Creed line ·', '<p><b>Terminus</b><span>Fin de la ligne Assassin’s Creed ·'],
 ];
 
 /* ── les vidéos, une adresse par langue ──────────────────────────────

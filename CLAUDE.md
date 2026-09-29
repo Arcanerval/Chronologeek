@@ -2949,6 +2949,22 @@ données** (`art`) — fifthblight, kirkwall, magetemplarwar, inquisitionera,
 dreadwolf — et valables pour les deux parcours, le rejeu reprenant les ères par
 leur rang.
 
+**Assassin's Creed est publié au plan de métro le 29 septembre 2026**, sur le
+modèle de Dragon Age : source anglaise, `en-assassinscreed.html` repris de la
+maquette bâtie sur le gabarit métro anglais de Marvel, français tiré par
+`traduire-assassinscreed.mjs` ; les phrases métro et le code de plaque sont
+dans `traductions-assassinscreed.mjs`. Code de ligne **AC**, sept stations
+« SAGA N / 7 », un seul parcours. **Les deux dates passent dans la colonne
+horaire** : le présent en grand et en or, les souvenirs dans leur cadre rouge
+juste dessous — la disposition de l'année de sortie chez Marvel, à l'encre
+`--memory`. Sans présent, rien ne s'écrit à sa place, et sur téléphone le
+cadre se recentre (`.bu-n+.mem`). Plan du haut à **échelle mixte**
+(`ech()`) : Altaïr n'a que trois arrêts, les deux dernières sagas sept et
+quatre. Pas de table `RT`. **Images de saga posées dans les données**
+(`art`) — altair, ezio, kenway, helixsaga, laylahassan, animushub,
+assassinstroughhistory. **Ne plus lancer `construire-page-assassinscreed.mjs`** :
+il réécrirait `en-assassinscreed.html` depuis l'ancien gabarit.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par
