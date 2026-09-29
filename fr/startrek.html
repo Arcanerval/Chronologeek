@@ -2438,7 +2438,8 @@ Nous revenons donc à la chronologie Prime, déjà en cours, quatorze ans après
       });
       var tr=bar.querySelector('.hud-train');
       if(!tr){ tr=document.createElement('span'); tr.className='hud-train'; tr.innerHTML=TRAIN; }
-      tr.style.left=pc(ech(faits)); bar.appendChild(tr);
+      var ou=ech(der+1); tr.style.left=pc(ou); bar.appendChild(tr);
+      var kf=document.getElementById('k-fill'); if(kf) kf.style.transform='scaleX('+ou+')';
     }
     var tm=document.querySelector('.terminus'); if(tm) tm.classList.toggle('fin', faits===tot);
     trait();

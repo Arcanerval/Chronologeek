@@ -2803,7 +2803,24 @@ function cgBillet(){
     return r.checkVisibility ? r.checkVisibility() : true;
   }
   function retire(){ if (trait.parentNode) trait.parentNode.removeChild(trait); }
+  /* Le train est partout à la dernière case cochée — l'intro, la barre du
+     bas, ce trait, « Reprendre » — et l'accueil doit dire la même chose.
+     Il n'a que les coches sous la main, pas l'ordre des œuvres : la page
+     lui laisse donc sa position, en part de la ligne, sous le nom de sa
+     route (`cg-train`). Sans elle, l'accueil retombe sur le décompte. */
+  function route(p){ return (p.split('/').pop() || '').replace(/\.html$/, '').replace(/^en?-/, ''); }
+  function retient(){
+    var cases = document.querySelectorAll('[data-id] [data-check]'), der = -1;
+    for (var i = 0; i < cases.length; i++)
+      if (cases[i].getAttribute('aria-checked') === 'true') der = i;
+    try {
+      var t = JSON.parse(localStorage.getItem('cg-train') || '{}');
+      t[route(location.pathname)] = cases.length ? (der + 1) / cases.length : 0;
+      localStorage.setItem('cg-train', JSON.stringify(t));
+    } catch (e) {}
+  }
   function pose(){
+    retient();
     var vues = document.querySelectorAll('[data-check][aria-checked="true"]');
     if (!vues.length || vues.length >= document.querySelectorAll('[data-check]').length)
       return retire();

@@ -2690,7 +2690,8 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       });
       var tr=bar.querySelector('.hud-train');
       if(!tr){ tr=document.createElement('span'); tr.className='hud-train'; tr.innerHTML=TRAIN; }
-      tr.style.left=pc(faits/tot); bar.appendChild(tr);
+      var ou=tot?(der+1)/tot:0; tr.style.left=pc(ou); bar.appendChild(tr);
+      var kf=document.getElementById('k-fill'); if(kf) kf.style.transform='scaleX('+ou+')';
     }
     var tm=document.querySelector('.terminus'); if(tm) tm.classList.toggle('fin', faits===tot);
     trait();

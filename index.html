@@ -1081,7 +1081,11 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
     var eras=E[x.u], sum=0, i;
     for(i=0;i<eras.length;i++) sum+=eras[i][1];
     var done=Math.min(read(x.u),x.total);
-    var d=x.total?done/x.total*sum:0, cum=0;
+    /* le train à la dernière case cochée, comme sur la page (cg-train,
+       posé par e-app.js) ; le décompte ne sert qu'à défaut */
+    var r=null;
+    try{ r=JSON.parse(localStorage.getItem('cg-train')||'{}')[(x.href.split('/').pop()||'').replace(/\.html$/,'').replace(/^en?-/,'')]; }catch(e){}
+    var d=x.total?(typeof r==='number'?r:done/x.total)*sum:0, cum=0;
     if(done<=0) return {done:0,pos:0,era:-1};
     for(i=0;i<eras.length;i++){
       var n=eras[i][1];
