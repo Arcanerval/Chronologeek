@@ -763,9 +763,10 @@ async function main() {
   const poids = (fs.statSync(mp4).size / 1048576).toFixed(1);
   console.log(`${nomFichier} — ${cartes.length} cartes a ${dur.toFixed(3)} s, ${secondes.toFixed(1)} s, ${poids} Mo`);
   console.log(`→ promo/${nomFichier}.mp4`);
-  /* les Shorts acceptent trois minutes depuis octobre 2024 ; au-dela, plus rien
-     ne passe partout */
-  if (secondes > 180.05) console.warn('  ⚠ au-dela de 3 min : hors format Shorts');
+  /* TikTok ne pose pas plus d'une minute de musique sur une video ; les Shorts
+     acceptent trois minutes depuis octobre 2024 */
+  if (secondes > 180.05) console.warn('  ⚠ au-dela de 3 min : hors format Shorts et TikTok');
+  else if (secondes > 60.05) console.warn('  ⚠ au-dela de 60 s : trop long pour une musique TikTok (--total 60)');
 }
 
 main().catch(e => { console.error(e.message || e); process.exit(1); });
