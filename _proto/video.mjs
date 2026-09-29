@@ -22,7 +22,13 @@
    chacune sa duree. Une video de 42 s coute 64 captures, pas 1 260.
 
    L'anglais est la langue par defaut : le compte vise l'international, et le
-   site dit lui-meme qu'il existe en francais. */
+   site dit lui-meme qu'il existe en francais.
+
+   Depuis le 29 septembre 2026, la DA est celle du plan de metro : l'accroche
+   montre la ligne entiere en plan vertical, chaque ere ouvre sur sa plaque de
+   station (PLAQUE, 1 s, comptee dans --total), chaque oeuvre est un arret avec
+   son horaire en diodes, et la fin est le terminus. Code de ligne, encres
+   d'ere (`--eraN`) et de type (`--t-*`) sont relus dans la page de l'univers. */
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -35,18 +41,18 @@ const ICI = path.dirname(fileURLToPath(import.meta.url));
 const RACINE = path.resolve(ICI, '..');
 
 const UNIVERS = {
-  sw:             { data: 'data',                encre: '#4d9fff', cover: 'starwars-banner' },
-  mcu:            { data: 'data-mcu',            encre: '#e23636', cover: 'mcu' },
-  dc:             { data: 'data-dc',             encre: '#f5c842', cover: 'dcmultivers' },
-  avatar:         { data: 'data-avatar',         encre: '#7dd3fc', cover: 'avatar' },
-  startrek:       { data: 'data-startrek',       encre: '#b48cf2', cover: 'startrek' },
-  twd:            { data: 'data-twd',            encre: '#a8bf4f', cover: 'twd' },
-  dragonage:      { data: 'data-dragonage',      encre: '#e07b39', cover: 'dragonage' },
-  assassinscreed: { data: 'data-assassinscreed', encre: '#d4a02c', cover: 'acuniverse' },
-  dcanimation:    { data: 'data-dcanimation',    encre: '#2dd4bf', cover: 'dcanimation' },
-  jurassic:       { data: 'data-jurassic',       encre: '#45c46b', cover: 'jurassicworld' },
-  witcher:        { data: 'data-witcher',        encre: '#b0bec5', cover: 'witcher' },
-  residentevil:   { data: 'data-re',             encre: '#dc0000', cover: 'residentevil' },
+  sw:             { code: 'SW',  page: 'e-starwars',        data: 'data',                encre: '#4d9fff', cover: 'starwars-banner' },
+  mcu:            { code: 'MCU', page: 'e-marvel',          data: 'data-mcu',            encre: '#e23636', cover: 'mcu' },
+  dc:             { code: 'DC',  page: 'e-dc',              data: 'data-dc',             encre: '#f5c842', cover: 'dcmultivers' },
+  avatar:         { code: 'AV',  page: 'e-avatar',          data: 'data-avatar',         encre: '#7dd3fc', cover: 'avatar' },
+  startrek:       { code: 'ST',  page: 'en-startrek',       data: 'data-startrek',       encre: '#b48cf2', cover: 'startrek' },
+  twd:            { code: 'TWD', page: 'en-twd',            data: 'data-twd',            encre: '#a8bf4f', cover: 'twd' },
+  dragonage:      { code: 'DA',  page: 'en-dragonage',      data: 'data-dragonage',      encre: '#e07b39', cover: 'dragonage' },
+  assassinscreed: { code: 'AC',  page: 'en-assassinscreed', data: 'data-assassinscreed', encre: '#d4a02c', cover: 'acuniverse' },
+  dcanimation:    { code: 'DCA', page: 'en-dcanimation',    data: 'data-dcanimation',    encre: '#2dd4bf', cover: 'dcanimation' },
+  jurassic:       { code: 'JW',  page: 'en-jurassic',       data: 'data-jurassic',       encre: '#45c46b', cover: 'jurassicworld' },
+  witcher:        { code: 'TW',  page: 'en-witcher',        data: 'data-witcher',        encre: '#b0bec5', cover: 'witcher' },
+  residentevil:   { code: 'RE',  page: 'en-residentevil',   data: 'data-re',             encre: '#dc0000', cover: 'residentevil' },
 };
 
 const TYPES = {
@@ -58,6 +64,7 @@ const TYPES = {
   /* "roman" et "short" : les ecritures de Jurassic World et d'autres donnees ;
      sans elles la video anglaise affichait "ROMAN" en francais */
   roman:['#c5a880','ROMAN','NOVEL'], short:['#f472b6','COURT MÉTRAGE','SHORT FILM'],
+  audio:['#80cbc4','AUDIO','AUDIO'],
 };
 
 const T = {
@@ -65,12 +72,16 @@ const T = {
         essentiels:'THE ESSENTIALS', essentielsN:'essentials', importants:'THE IMPORTANTS', total:'in total',
         premiere:'FIRST WATCH ORDER', essentiel:'Essential', important:'Important',
         outro1:'The full order', outro2:'free, no account',
+        station:'Station', stop:'Stop', stops:'stops', stations:'stations', spoil:'spoilers',
+        souvenirs:'Memories', terminus:'Terminus', fin:'End of the line', prochain:'Next departure',
         outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR`,
         cta:'chronologeek.app' },
   fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères', ere1:'ère',
         essentiels:'LES ESSENTIELS', essentielsN:'essentiels', importants:'LES IMPORTANTS', total:'au total',
         premiere:'PREMIÈRE VISION', essentiel:'Essentiel', important:'Important',
         outro1:"L'ordre complet", outro2:'gratuit, sans compte',
+        station:'Station', stop:'Arrêt', stops:'arrêts', stations:'stations', spoil:'spoiler',
+        souvenirs:'Souvenirs', terminus:'Terminus', fin:'Fin de la ligne', prochain:'Prochain départ',
         outro3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN`,
         cta:'chronologeek.app' },
 };
@@ -102,7 +113,9 @@ function charge(fichier) {
   const D = [...Object.values(ctx.window), ...Object.values(ctx)]
     .find(v => v && typeof v === 'object' && Array.isArray(v.eras));
   if (!D) throw new Error(`aucun objet avec "eras" dans ${fichier}.js`);
-  return D;
+  /* CG porte les libelles de type de la page (badgeLabels) : la video les
+     reprend plutot que de tenir les siens */
+  return { D, CG: ctx.window.CG || ctx.CG || null };
 }
 
 function couverture(cle) {
@@ -139,9 +152,10 @@ function suite(D, opts) {
       if (!force && opts.only === 'must+' && niveau !== 'must' && !IMPORTANT.has(niveau)) continue;
       /* une entree tiree par --plus est mise au rang des essentiels : sans ca elle
          sortirait sans etoile ni bordure au milieu de cartes qui les portent. */
-      out.push({ ...e, rang, ere: ere.title || '', must: niveau === 'must' || !!force,
+      out.push({ ...e, rang, ereI: i, ere: ere.title || '', must: niveau === 'must' || !!force,
         imp: IMPORTANT.has(niveau) && !force,
-        flashback: (e.tags || []).includes('flashback') });
+        flashback: (e.tags || []).includes('flashback'),
+        flashforward: (e.tags || []).includes('flashforward') });
     }
   });
   return out;
@@ -151,12 +165,9 @@ function suite(D, opts) {
 
 /* l'accroche et la fin tiennent plus longtemps : on y lit une adresse */
 const ACCROCHE = 3.0, FIN = 3.4;
-
-/* le triangle des importants est celui des pages (LVICO de e-starwars.html),
-   trait et encre compris : le spectateur qui arrive sur le site doit y
-   reconnaitre le signe qu'il a vu passer dans la video. */
-const IMP = '<svg class="imp" viewBox="0 0 24 24" aria-hidden="true">' +
-  '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>';
+/* la plaque de station se lit en un regard — un nom et un decompte — mais
+   elle doit tenir plus qu'un arret : c'est elle qui dit qu'on change d'ere */
+const PLAQUE = 1.0;
 
 /* Les episodes d'une entree, en une ligne qui se lit en moins d'une seconde.
    Sans eux, six cartes "The Clone Wars" se suivent sans qu'on comprenne
@@ -223,189 +234,405 @@ function ouverture(D, cartes, lang, total, sel) {
     /* --sans retire des eres : la video complete ne montre alors plus toute la
        page, et l'accroche compte ce qui passe a l'ecran, pas ce que la page porte.
        Une branche seule n'en laisse qu'une, et "1 eras" se lit a l'accroche. */
-    st: [[cartes.length, t.entries], [eres, eres === 1 ? t.ere1 : t.eras], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
+    st: [[cartes.length, t.stops], [eres, eres === 1 ? t.station : t.stations], ['0', t.spoil]],
   };
   return {
     ord: sel.nom,
-    st: [[cartes.length, sel.unite], [total, t.total], [t.hookSub, lang === 'en' ? 'guaranteed' : 'garanti']],
+    st: [[cartes.length, sel.unite], [total, t.total], ['0', t.spoil]],
   };
 }
 
-function page(cle, D, cartes, lang, total, sel, titre, cadre, couv) {
+/* ---------- rendu : le plan de metro ---------- */
+
+/* La DA des pages depuis le 28 septembre 2026 : une timeline est une ligne,
+   une ere une station, une oeuvre un arret. La video reprend le meme
+   dessin — plaque de station a l'image de l'ere, horaire en diodes, train
+   dore — pour qu'on reconnaisse la page en y arrivant. Rien n'y bouge pour
+   autant : c'est toujours une PNG par plan et une coupe nette. */
+
+/* le train des pages (TRAIN de en-assassinscreed.html), sans son onde */
+const TRAIN = '<svg class="train" viewBox="0 0 38 20" aria-hidden="true">' +
+  '<rect class="body" x="1" y="1" width="36" height="18" rx="8"/>' +
+  '<rect class="win" x="8" y="6" width="5" height="5" rx="1"/>' +
+  '<rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/>' +
+  '<rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg>';
+
+/* les deux signes de niveau des pages (LVICO), trait compris */
+const ETOILE = '<svg class="lvi must" viewBox="0 0 24 24" aria-hidden="true">' +
+  '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>';
+const TRIANGLE = '<svg class="lvi imp" viewBox="0 0 24 24" aria-hidden="true">' +
+  '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>';
+
+/* le filet aux douze encres du pied de page et des barres du bas */
+const DOUZE = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
+               '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000'];
+const FILET = 'linear-gradient(90deg,' + DOUZE.map((c, i) =>
+  `${c} ${(i * 100 / 12).toFixed(2)}% ${((i + 1) * 100 / 12).toFixed(2)}%`).join(',') + ')';
+
+/* Les encres de la page : `--eraN` des plaques et `--t-<type>` des badges
+   sont ecrites dans son CSS, et nulle part ailleurs. Les relire evite une
+   troisieme copie de la charte qui divergerait au premier changement —
+   Assassin's Creed est passe du rouge a l'or le 24 septembre. */
+function encresPage(cle) {
+  const f = path.join(ICI, UNIVERS[cle].page + '.html');
+  const css = fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : '';
+  const eres = {}, types = {};
+  for (const m of css.matchAll(/--era(\d+):\s*(#[0-9a-f]{3,8})/gi)) eres[m[1]] ??= m[2];
+  for (const m of css.matchAll(/--t-([a-z]+):\s*(#[0-9a-f]{3,8})/gi)) types[m[1]] ??= m[2];
+  return { eres, types };
+}
+
+/* Les stations de la video : les eres qui ont au moins une carte, dans
+   l'ordre, avec leur rang dans la page et le nombre de cartes qu'elles
+   portent. Une selection (--only, --ere) n'a donc que ses propres stations. */
+function stations(D, cartes) {
+  const out = [];
+  cartes.forEach((c, i) => {
+    const der = out[out.length - 1];
+    if (der && der.i === c.ereI) { der.n++; return; }
+    out.push({ i: c.ereI, ere: D.eras[c.ereI], debut: i, n: 1 });
+  });
+  return out;
+}
+
+/* L'echelle mixte des pages (ech() de en-startrek.html) : la moitie de la
+   ligne a parts egales entre stations, l'autre au prorata des arrets. Au
+   seul prorata, les trois arrets d'Altair tiennent dans les 3 % de gauche
+   et sa station colle au depart. */
+function echelle(st, total) {
+  const S = st.length;
+  return (k, j) => {
+    const n = st[k].n;
+    return 0.5 * (k + j / n) / S + 0.5 * (st[k].debut + j) / total;
+  };
+}
+
+function page(cle, D, CG, cartes, lang, total, sel, titre, cadre, couv) {
   const t = T[lang];
-  const encre = UNIVERS[cle].encre;
+  const U = UNIVERS[cle];
+  const encre = U.encre;
   const nom = titre || decode(D.title || cle);
   const ouv = ouverture(D, cartes, lang, total, sel);
-  /* --couv remplace la banniere de l'univers a l'accroche : une branche qui n'y
-     figure pas montrerait sinon une autre continuite. La banniere DC tient
-     l'Arrowverse a gauche et le DCEU a droite, et le DCU n'y est nulle part —
-     aucun cadrage ne le rattrape. */
+  const { eres: inkEre, types: inkType } = encresPage(cle);
   const cover = couv ? (/^https?:/.test(couv)
     ? couv
     : 'file:///' + path.resolve(RACINE, couv).replace(/\\/g,'/')) : couverture(cle);
   const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
-  /* la legende des signes, et seulement de ceux que la video montre : Star Trek
-     n'a pas de niveaux, un univers sans flashback n'a pas de pastille. Les mots
-     sont ceux des filtres du site. */
-  const legende = [
-    cartes.some(c => c.must) && `<span><i class="lstar">★</i>${esc(t.essentiel)}</span>`,
-    cartes.some(c => c.imp) && `<span>${IMP.replace('class="imp"', 'class="limp"')}${esc(t.important)}</span>`,
-    cartes.some(c => c.flashback) && `<span><i class="lfb">FLASHBACK</i></span>`,
-  ].filter(Boolean);
+  const ST = stations(D, cartes);
+  const X = echelle(ST, cartes.length);
+  const encreEre = s => inkEre[s.ere.ink || s.i + 1] || encre;
+  /* l'image d'une ere : son `art`, sinon la vignette de sa premiere oeuvre
+     essentielle, comme la plaque de la page */
+  const artEre = s => {
+    if (s.ere.art) return visuel(s.ere.art);
+    const e = (s.ere.entries || []).find(x => x.img && x.level === 'must') ||
+              (s.ere.entries || []).find(x => x.img);
+    return e ? visuel(e.img) : '';
+  };
+  const nomEre = s => decode(s.ere.title || '').split(/\s+[—–-]\s+/)[0];
+  const rangEre = s => s.ere.phase
+    ? `${decode(s.ere.phase)} / ${ST.length}`
+    : `${t.station} ${ST.indexOf(s) + 1} / ${ST.length}`;
+  const arrets = n => `${n} ${n > 1 ? t.stops : t.stop}`;
 
-  const carte = (e, i) => {
+  const typeDe = e => {
     const [bt, fr, en] = TYPES[e.type] || ['#8f8fa8', String(e.type||'').toUpperCase(), String(e.type||'').toUpperCase()];
-    const pct = ((i + 1) / cartes.length * 100).toFixed(2);
-    const titre = decode(e.title);
-    /* le corps du titre suit sa longueur : "Andor" et "Episode I: The Phantom
-       Menace" ne peuvent pas tenir le meme corps sans que l'un deborde. */
-    const taille = titre.length > 40 ? ' t3' : titre.length > 24 ? ' t2' : '';
+    const lib = CG && CG.badgeLabels && CG.badgeLabels[e.type] && CG.badgeLabels[e.type][1];
+    return { k: inkType[e.type] || bt, lib: lib || (lang === 'en' ? en : fr) };
+  };
+
+  /* le plan en miniature, celui de la barre du bas des pages : une station
+     par ere, le parcouru jusqu'au train, le terminus en carre. `pos` va de
+     0 a 1 ; `cur` est le rang de la station ou l'on est. */
+  const plan = (pos, cur, legende) => `<div class="mini">
+      <div class="mtrack"><i class="mfill" style="width:${(pos * 100).toFixed(2)}%"></i>
+        ${ST.map((s, k) => {
+          const x = X(k, 0);
+          return `<span class="mst${x <= pos + 1e-6 ? ' v' : ''}${k === cur ? ' cur' : ''}" style="left:${(x * 100).toFixed(2)}%"></span>`;
+        }).join('')}
+        <span class="mst tm${pos >= 1 ? ' v' : ''}" style="left:100%"></span>
+        <span class="mtrain" style="left:${(pos * 100).toFixed(2)}%">${TRAIN}</span>
+      </div>
+      ${legende ? `<p class="mlab">${legende}</p>` : ''}
+    </div>`;
+
+  const oeil = `<p class="eye"><span class="code">${esc(U.code)}</span>${esc(nom)} · ${esc(parcours)}</p>`;
+
+  /* ---- la plaque de station : une par ere, l'image en plein ecran ---- */
+  const plaque = (s, k) => `<section class="f plate" style="--era:${encreEre(s)}">
+      ${artEre(s) ? `<img class="pbg" src="${esc(artEre(s))}" alt="">` : ''}
+      ${oeil}
+      <div class="pbody">
+        <div class="prail"><span class="pdot${k === 0 ? '' : ' v'}"></span></div>
+        <div class="ptxt">
+          <p class="pk"><span class="code">${esc(U.code)}</span>${esc(rangEre(s))}</p>
+          <h2 class="${nomEre(s).length > 22 ? 'n3' : nomEre(s).length > 14 ? 'n2' : ''}">${esc(nomEre(s))}</h2>
+          <p class="pm"><b>${s.n}</b> ${esc(s.n > 1 ? t.stops : t.stop)}</p>
+        </div>
+      </div>
+      ${plan(X(k, 0), k, `<b>${esc(t.station)} ${k + 1}</b> / ${ST.length}`)}
+      <p class="url">${esc(t.cta)}</p>
+    </section>`;
+
+  /* ---- l'arret : une oeuvre ---- */
+  const carte = (e, i) => {
+    const k = ST.findIndex(s => s.i === e.ereI);
+    const s = ST[k];
+    const ty = typeDe(e);
+    const titreE = decode(e.title);
+    const taille = titreE.length > 40 ? 't3' : titreE.length > 24 ? 't2' : '';
     const ep = episodes(e.subitems, lang);
-    return `<section class="f card${e.must ? ' must' : ''}">
-      <p class="eye"><span class="pill"></span>${esc(nom)} · ${esc(parcours)}</p>
-      <div class="vis">
-        ${e.img ? `<img src="${esc(visuel(e.img))}" alt="">` : '<div class="ph"></div>'}
-        <span class="no">${String(e.rang).padStart(2,'0')}</span>
-        ${e.must ? '<span class="star">★</span>' : ''}
-        ${e.imp ? IMP : ''}
-        ${e.flashback ? '<span class="fb">FLASHBACK</span>' : ''}
-      </div>
-      <div class="txt">
-        <p class="era">${esc(decode(e.ere))}</p>
-        <h2 class="${taille.trim()}">${esc(titre)}</h2>
-        <p class="line">
-          <span class="bt" style="--bt:${bt}">${esc(lang === 'en' ? en : fr)}</span>
-          ${e.date ? `<span class="dt">${esc(decode(e.date))}</span>` : ''}
-        </p>
-        ${ep ? `<div class="eps${ep.txt.length > 150 ? ' e3' : ep.txt.length > 80 ? ' e2' : ''}">` +
-          `${ep.tete ? `<b>${esc(ep.tete)}</b>` : ''}<p>${esc(ep.txt)}</p></div>` : ''}
-      </div>
-      <div class="bar"><i style="width:${pct}%"></i></div>
+    /* l'horaire des pages : la date en or ; chez Assassin's Creed le present
+       en or et les souvenirs dans leur cadre rouge, dessous. Sans present,
+       rien ne s'ecrit a sa place — un tiret se lirait comme un manque. */
+    const grand = e.present ? decode(e.present) : e.date ? decode(e.date) : '';
+    const souvenir = e.present && e.date ? decode(e.date) : '';
+    const marques = [
+      e.flashback && `<span class="mk" style="--k:#f0c97c">FLASHBACK</span>`,
+      e.flashforward && `<span class="mk" style="--k:#8fd6c4">FLASHFORWARD</span>`,
+    ].filter(Boolean).join('');
+    return `<section class="f card" style="--era:${encreEre(s)}">
+      ${oeil}
+      <div class="stop"><div class="row">
+        <div class="rail"><span class="dot"></span></div>
+        <div class="bulle">
+          <div class="vis">
+            ${e.img ? `<img src="${esc(visuel(e.img))}" alt="">` : '<div class="ph"></div>'}
+            ${marques ? `<div class="mks">${marques}</div>` : ''}
+          </div>
+          <div class="time">
+            <div class="tn"><small>${esc(t.stop)}</small><b>${String(e.rang).padStart(2,'0')}</b></div>
+            ${grand ? `<p class="d${grand.length > 11 ? ' dl' : ''}">${esc(grand)}</p>` : '<p class="d"></p>'}
+            ${souvenir ? `<p class="mem"><small>${esc(t.souvenirs)}</small><b>${esc(souvenir)}</b></p>` : ''}
+          </div>
+          <div class="txt">
+            <p class="tags"><span class="b" style="--k:${ty.k}">${esc(ty.lib)}</span>${e.must ? ETOILE : ''}${e.imp ? TRIANGLE : ''}<span class="sn">${esc(nomEre(s))}</span></p>
+            <h2 class="${taille}">${esc(titreE)}</h2>
+            ${ep ? `<div class="eps${ep.txt.length > 150 ? ' e3' : ep.txt.length > 80 ? ' e2' : ''}">` +
+              `${ep.tete ? `<b>${esc(ep.tete)}</b>` : ''}<p>${esc(ep.txt)}</p></div>` : ''}
+          </div>
+        </div>
+      </div></div>
+      ${plan(X(k, i - s.debut), k, `<b>${esc(t.stop)} ${i + 1}</b> / ${cartes.length}`)}
       <p class="url">${esc(t.cta)}</p>
     </section>`;
   };
 
+  /* la legende des signes, et seulement de ceux que la video montre */
+  const legende = [
+    cartes.some(c => c.must) && `<span>${ETOILE}${esc(t.essentiel)}</span>`,
+    cartes.some(c => c.imp) && `<span>${TRIANGLE}${esc(t.important)}</span>`,
+    cartes.some(c => c.flashback) && `<span><i class="mk" style="--k:#f0c97c">FLASHBACK</i></span>`,
+    cartes.some(c => c.flashforward) && `<span><i class="mk" style="--k:#8fd6c4">FLASHFORWARD</i></span>`,
+  ].filter(Boolean);
+
+  /* le plan vertical de l'accroche : toute la ligne d'un coup d'oeil, avant
+     d'y monter. Le pas se resserre avec le nombre de stations — sept chez
+     Assassin's Creed, quatorze chez The Walking Dead. */
+  const pas = Math.min(96, Math.floor(690 / ST.length));
+  const corps = Math.min(46, Math.round(pas * 0.5));
+  const vplan = `<div class="vplan" style="--pas:${pas}px;--corps:${corps}px">
+      ${ST.map((s, k) => `<div class="vs" style="--era:${encreEre(s)}"><span class="vd${k === 0 ? ' cur' : ''}"></span>` +
+        `<b>${esc(nomEre(s))}</b><small>${esc(arrets(s.n))}</small></div>`).join('')}
+      <div class="vs tm"><span class="vd"></span><b>${esc(t.terminus)}</b></div>
+    </div>`;
+
+  const suite = [];
+  cartes.forEach((c, i) => {
+    const k = ST.findIndex(s => s.i === c.ereI);
+    if (ST[k].debut === i) suite.push(plaque(ST[k], k));
+    suite.push(carte(c, i));
+  });
+
+  const police = n => 'file:///' + path.join(RACINE, 'fonts', n).replace(/\\/g,'/');
   return `<!doctype html><meta charset="utf-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600;700&display=swap">
 <style>
+@font-face{font-family:'Big Shoulders Display';font-weight:100 900;src:url(${police('bigshoulders-latin.woff2')}) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:'Big Shoulders Display';font-weight:100 900;src:url(${police('bigshoulders-latin-ext.woff2')}) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+2020,U+20A0-20AB}
+@font-face{font-family:'Chivo';font-weight:100 900;src:url(${police('chivo-latin.woff2')}) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F}
+@font-face{font-family:'Chivo';font-weight:100 900;src:url(${police('chivo-latin-ext.woff2')}) format('woff2');
+  unicode-range:U+0100-02BA,U+1E00-1E9F}
+:root{--ink:#0d0b12;--paper:#fffdf7;--line:rgba(255,253,247,.26);--hot:#f0c97c;--uni:${encre};
+  --rest:color-mix(in srgb,var(--uni) 26%,#1c1a26);--board:#07060b;--memory:#e2515f;
+  --led:radial-gradient(rgba(255,253,247,.07) 1.6px,transparent 2.2px) 0 0/7px 7px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;font-family:Archivo,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-.f{position:relative;width:1080px;height:1920px;overflow:hidden;background:#08080f;color:#fff;
-   display:flex;flex-direction:column}
-.f::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:radial-gradient(120% 46% at 50% 0%, ${encre}26, transparent 60%)}
+body{background:#000;font-family:Chivo,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.disp,h1,h2,.eye,.code,.b,.mk,.url,.mlab,.tn,.d,.mem,.pk,.pm,.vs,.st,.lg,.tk{font-family:'Big Shoulders Display',sans-serif}
+.f{position:relative;isolation:isolate;width:1080px;height:1920px;overflow:hidden;background:var(--ink);color:var(--paper);
+   display:flex;flex-direction:column;--era:var(--uni)}
+/* rien ne se tasse : un tableau ecrase perdait ses libelles sans un mot */
+.f>*{flex-shrink:0}
+.f::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 42% at 50% 0%,color-mix(in srgb,var(--era) 42%,transparent),transparent 62%)}
 
-/* ---- carte ---- */
-/* le bas de l'ecran appartient a l'application : legende, boutons et nom du
-   compte couvrent environ 300 px sur TikTok et Reels. Rien de lisible n'y
-   descend — la barre et l'adresse s'arretent au-dessus. */
-.card{padding:150px 58px 300px;justify-content:flex-start}
-.eye{position:relative;z-index:3;font-family:"Big Shoulders Display";font-weight:700;font-size:31px;
-  letter-spacing:.16em;text-transform:uppercase;color:#8d8ba3;display:flex;align-items:center;gap:15px}
-.pill{width:40px;height:6px;background:${encre};flex:none;border-radius:1px}
-.vis{position:relative;z-index:3;margin-top:44px;width:100%;aspect-ratio:16/9;border-radius:6px;
-  overflow:hidden;background:#16161f;border:1px solid #262632}
-.card.must .vis{border-color:${encre}}
+/* le haut et le bas de l'ecran appartiennent a l'application : l'en-tete
+   de TikTok couvre environ 130 px, la legende, les boutons et le nom du
+   compte environ 300. Rien de lisible n'y descend. */
+.card,.plate{padding:140px 56px 300px}
+.eye{display:flex;align-items:center;gap:16px;font-weight:800;font-size:31px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,253,247,.66);white-space:nowrap;overflow:hidden}
+.code{display:inline-grid;place-items:center;flex:none;background:var(--uni);color:var(--ink);border:3px solid var(--ink);
+  border-radius:9px;padding:3px 13px 1px;font-weight:900;font-size:32px;letter-spacing:.04em;line-height:1.1;
+  box-shadow:0 0 0 2px var(--paper)}
+
+/* ---- l'arret ---- */
+/* l'arret se centre dans la place qui reste ; la ligne court au-dela de la
+   bulle jusqu'aux bords de cette place, et s'y coupe (overflow) */
+.stop{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  margin-top:26px;--dy:626px}
+.row{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:22px;padding:0 12px 12px 0}
+.rail{position:relative}
+.rail::before{content:"";position:absolute;left:50%;top:-1600px;bottom:-1600px;width:14px;margin-left:-7px;border-radius:7px;
+  background:linear-gradient(var(--uni) 0 calc(1600px + var(--dy)),var(--rest) calc(1600px + var(--dy)))}
+.dot{position:absolute;left:50%;top:var(--dy);width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;
+  background:var(--uni);border:6px solid var(--paper);box-shadow:0 0 0 6px var(--ink),0 0 34px 8px color-mix(in srgb,var(--hot) 55%,transparent)}
+.rail::after{content:"";position:absolute;top:var(--dy);left:calc(50% + 30px);right:-22px;height:10px;margin-top:-5px;background:var(--uni)}
+.bulle{border:3px solid var(--line);border-radius:22px;overflow:hidden;align-self:start;
+  background:color-mix(in srgb,var(--era) 16%,#0f0d16);box-shadow:10px 10px 0 #000}
+.vis{position:relative;aspect-ratio:16/10;background:#16141f;border-bottom:3px solid var(--ink)}
 .vis img{width:100%;height:100%;object-fit:cover;display:block}
-.vis .ph{width:100%;height:100%;background:#16161f}
-.no{position:absolute;left:0;bottom:0;z-index:4;font-family:"Big Shoulders Display";font-weight:900;
-  font-size:132px;line-height:.78;color:#fff;padding:0 26px 12px;font-variant-numeric:tabular-nums;
-  text-shadow:0 6px 34px #000c,0 2px 8px #000e}
-.card.must .no{color:${encre}}
-.star{position:absolute;right:26px;top:20px;z-index:4;font-family:"Big Shoulders Display";
-  font-weight:900;font-size:76px;color:${encre};line-height:1;text-shadow:0 4px 22px #000c}
-.imp{position:absolute;right:24px;top:18px;z-index:4;width:84px;height:84px;fill:none;
-  stroke:#ff9d5c;stroke-width:2.3;stroke-linejoin:miter;stroke-linecap:square;
-  filter:drop-shadow(0 4px 14px #000c)}
-/* la pastille du site (.ft), en plein plutot qu'au trait : sur une image elle
-   doit se lire en moins d'une seconde, quel que soit le visuel dessous. */
-.fb{position:absolute;left:0;top:0;z-index:4;background:#f0c97c;color:#08080f;
-  font-family:"Big Shoulders Display";font-weight:900;font-size:44px;letter-spacing:.12em;
-  line-height:1;padding:14px 30px 12px 24px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%)}
-.txt{position:relative;z-index:3;margin-top:48px;flex:1;display:flex;flex-direction:column;
-  justify-content:center}
-.era{font-family:"Big Shoulders Display";font-weight:800;font-size:34px;letter-spacing:.13em;
-  text-transform:uppercase;color:${encre};margin-bottom:20px}
-.txt h2{font-family:"Big Shoulders Display";font-weight:900;font-size:112px;line-height:.94;
-  text-transform:uppercase;letter-spacing:.004em;text-wrap:balance}
-.txt h2.t2{font-size:96px} .txt h2.t3{font-size:78px;line-height:.98}
-.line{display:flex;align-items:center;gap:24px;margin-top:34px;flex-wrap:wrap}
-.bt{font-family:"Big Shoulders Display";font-weight:800;font-size:32px;letter-spacing:.1em;
-  color:var(--bt);border:2px solid color-mix(in srgb,var(--bt) 50%,transparent);
-  padding:5px 16px;border-radius:3px;line-height:1.2}
-.dt{font-family:"Big Shoulders Display";font-weight:900;font-size:52px;color:#cfcde0;line-height:1}
-/* les episodes : sous la ligne type + date, bornes a six lignes pour ne jamais
-   descendre dans la barre de progression */
-.eps{margin-top:30px;padding-top:24px;border-top:2px solid #262632;
-  font-family:"Big Shoulders Display";font-weight:800;font-size:46px;line-height:1.22;
-  letter-spacing:.03em;color:#cfcde0}
-.eps p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden}
-.eps.e2{font-size:41px} .eps.e3{font-size:37px}
-.eps b{display:block;font-weight:900;font-size:30px;letter-spacing:.14em;text-transform:uppercase;
-  color:${encre};margin-bottom:8px}
-.bar{position:relative;z-index:3;height:7px;background:#22222c;border-radius:4px;overflow:hidden}
-.bar i{display:block;height:100%;background:${encre}}
-.url{position:relative;z-index:3;margin-top:30px;text-align:center;
-  font-family:"Big Shoulders Display";font-weight:800;font-size:38px;letter-spacing:.19em;
-  text-transform:uppercase;color:#9d9bb2}
+.vis .ph{width:100%;height:100%;background:#16141f}
+.mks{position:absolute;left:22px;top:22px;display:flex;gap:12px}
+.mk{font-style:normal;display:inline-block;background:var(--k);color:var(--ink);border:3px solid var(--ink);border-radius:9px;
+  font-weight:900;font-size:38px;letter-spacing:.1em;line-height:1;padding:10px 18px 7px;box-shadow:0 6px 22px #000a}
+/* l'horaire, en diodes : le numero de l'arret, la date en or, les souvenirs */
+.time{height:150px;display:flex;align-items:center;gap:30px;padding:0 34px;background:var(--led),var(--board);
+  border-bottom:3px dashed rgba(255,253,247,.16)}
+.tn{display:flex;flex-direction:column;align-items:center;padding-right:30px;border-right:3px dashed rgba(255,253,247,.16)}
+.tn small{font-weight:800;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,253,247,.55)}
+.tn b{font-weight:900;font-size:62px;line-height:.9;font-variant-numeric:tabular-nums}
+.d{flex:1;font-weight:900;font-size:84px;line-height:.9;color:var(--hot);text-shadow:0 0 22px rgba(240,201,124,.45);white-space:nowrap}
+.d.dl{font-size:62px}
+.mem{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 18px 9px;border-radius:10px;
+  border:2px solid color-mix(in srgb,var(--memory) 60%,transparent);background:color-mix(in srgb,var(--memory) 16%,transparent);color:var(--memory)}
+.mem small{font-weight:800;font-size:20px;letter-spacing:.16em;text-transform:uppercase}
+.mem b{font-weight:900;font-size:44px;line-height:1;white-space:nowrap}
+.txt{padding:30px 34px 38px}
+.tags{display:flex;align-items:center;gap:14px;margin-bottom:18px;min-width:0}
+.b{display:inline-block;flex:none;background:var(--k);color:var(--ink);border:3px solid var(--ink);border-radius:9px;
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--k) 40%,transparent);
+  font-weight:800;font-size:32px;letter-spacing:.09em;text-transform:uppercase;line-height:1;padding:8px 14px 6px}
+.lvi{width:50px;height:50px;flex:none;fill:none;stroke-width:2;stroke-linejoin:miter;stroke-linecap:square}
+.lvi.must{stroke:var(--hot);fill:color-mix(in srgb,var(--hot) 30%,transparent)}
+.lvi.imp{stroke:#ff9d5c}
+.sn{margin-left:auto;font-family:'Big Shoulders Display';font-weight:800;font-size:28px;letter-spacing:.12em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--era) 45%,var(--paper));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.txt h2{font-weight:900;font-size:112px;line-height:.92;text-transform:uppercase;text-wrap:balance;text-shadow:5px 5px 0 var(--ink)}
+.txt h2.t2{font-size:94px} .txt h2.t3{font-size:76px;line-height:.96}
+.eps{margin-top:24px;padding-top:20px;border-top:3px dashed rgba(255,253,247,.16);
+  font-family:'Big Shoulders Display';font-weight:800;font-size:44px;line-height:1.2;letter-spacing:.03em;color:#e4e1ee}
+.eps p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.eps.e2{font-size:39px} .eps.e3{font-size:35px}
+.eps b{display:block;font-weight:900;font-size:28px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:6px}
 
-/* ---- accroche ---- */
-.hook{justify-content:flex-end;padding:0}
-.hook .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
-.hook::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,#08080fbb 0%,#08080f44 30%,#08080fe8 70%,#08080f 100%)}
-.hook .in{position:relative;z-index:3;padding:0 58px 280px}
-.hook h1{font-family:"Big Shoulders Display";font-weight:900;font-size:186px;line-height:.84;
-  text-transform:uppercase}
-.hook .ord{font-family:"Big Shoulders Display";font-weight:900;font-size:112px;line-height:.9;
-  color:${encre};text-transform:uppercase;margin-top:8px}
-.hook .st{display:flex;gap:56px;margin-top:56px;padding-top:34px;border-top:3px solid ${encre}}
-.hook .st div b{display:block;font-family:"Big Shoulders Display";font-weight:900;font-size:86px;
-  line-height:.9;font-variant-numeric:tabular-nums}
-.hook .st div span{display:block;margin-top:10px;font-family:"Big Shoulders Display";font-weight:800;
-  font-size:30px;letter-spacing:.13em;text-transform:uppercase;color:#a8a6bc}
-.hook .lg{display:flex;align-items:center;gap:44px;margin-top:44px;flex-wrap:wrap;
-  font-family:"Big Shoulders Display";font-weight:800;font-size:38px;letter-spacing:.12em;
-  text-transform:uppercase;color:#cfcde0}
-.hook .lg span{display:flex;align-items:center;gap:14px}
-.lstar{font-style:normal;font-weight:900;font-size:50px;line-height:1;color:${encre}}
-.limp{width:50px;height:50px;fill:none;stroke:#ff9d5c;stroke-width:2.3;stroke-linejoin:miter;
-  stroke-linecap:square}
-.lfb{font-style:normal;background:#f0c97c;color:#08080f;font-weight:900;font-size:32px;
-  letter-spacing:.12em;line-height:1;padding:10px 24px 8px 18px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+/* ---- le plan en miniature, en bas ---- */
+.mini{flex:none;margin-top:34px;padding:0 36px}
+.mtrack{position:relative;height:16px;border-radius:8px;background:var(--rest);box-shadow:0 0 0 4px var(--ink)}
+.mfill{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:var(--uni)}
+.mst{position:absolute;top:50%;width:32px;height:32px;transform:translate(-50%,-50%);border-radius:50%;
+  background:var(--paper);border:5px solid var(--ink);box-shadow:0 0 0 3px var(--rest)}
+.mst.v{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 3px var(--ink)}
+.mst.cur{box-shadow:0 0 0 5px var(--hot)}
+.mst.tm{border-radius:7px;width:36px;height:36px}
+.mtrain{position:absolute;top:50%;z-index:2;width:66px;height:34px;transform:translate(-50%,-50%)}
+.train{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 12px var(--hot))}
+.train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
+.train .win{fill:var(--ink)}
+.mlab{margin-top:34px;text-align:right;font-weight:800;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.6)}
+.mlab b{color:var(--hot);font-weight:900}
+.url{margin-top:14px;text-align:center;font-weight:800;font-size:38px;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,253,247,.66)}
 
-/* ---- fin ---- */
-.out{justify-content:center;align-items:center;text-align:center;padding:0 58px;gap:0}
-.out h2{font-family:"Big Shoulders Display";font-weight:900;font-size:128px;line-height:.9;
-  text-transform:uppercase;position:relative;z-index:3}
-.out .u{position:relative;z-index:3;font-family:"Big Shoulders Display";font-weight:900;font-size:104px;
-  color:${encre};margin-top:44px;letter-spacing:.01em}
-.out .s{position:relative;z-index:3;font-family:"Big Shoulders Display";font-weight:800;font-size:44px;
-  letter-spacing:.13em;text-transform:uppercase;color:#a8a6bc;margin-top:26px}
-.out .t{position:relative;z-index:3;margin-top:78px;padding-top:34px;border-top:2px solid #262632;
-  font-family:"Big Shoulders Display";font-weight:800;font-size:34px;letter-spacing:.12em;
-  text-transform:uppercase;color:#6f6d85}
+/* ---- la plaque de station ---- */
+.plate .pbg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+.plate::before{z-index:-1;background:
+  linear-gradient(180deg,var(--ink) 0%,color-mix(in srgb,var(--ink) 55%,transparent) 22%,
+    color-mix(in srgb,var(--era) 30%,transparent) 50%,color-mix(in srgb,var(--era) 78%,var(--ink)) 72%,var(--ink) 100%)}
+.pbody{flex:1;display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:22px;align-items:end;padding-bottom:40px}
+.prail{position:relative;align-self:stretch}
+.prail::before{content:"";position:absolute;left:50%;top:-40px;bottom:-40px;width:14px;margin-left:-7px;border-radius:7px;
+  background:linear-gradient(var(--uni) 0 70%,var(--rest) 70%)}
+.pdot{position:absolute;left:50%;top:70%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;
+  background:var(--paper);border:14px solid var(--ink);box-shadow:0 0 0 7px var(--uni),0 0 44px 10px color-mix(in srgb,var(--hot) 45%,transparent)}
+.ptxt{padding:34px 40px 38px;border:4px solid var(--paper);border-radius:22px;background:color-mix(in srgb,var(--era) 64%,rgba(13,11,18,.55));
+  box-shadow:12px 12px 0 var(--ink);display:flex;flex-direction:column;gap:18px}
+.pk{display:flex;align-items:center;gap:16px;font-weight:800;font-size:34px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,253,247,.9)}
+.ptxt h2{font-weight:900;font-size:150px;line-height:.86;text-transform:uppercase;text-shadow:7px 7px 0 var(--ink);text-wrap:balance}
+.ptxt h2.n2{font-size:124px} .ptxt h2.n3{font-size:100px;line-height:.9}
+.pm{font-weight:800;font-size:40px;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 2px 6px var(--ink)}
+.pm b{color:var(--hot);font-weight:900}
+
+/* ---- l'accroche ---- */
+.hook,.out{padding:0 56px 300px}
+.filet{position:absolute;left:0;right:0;top:0;height:14px;background:${FILET};border-bottom:3px solid var(--paper)}
+.hook .bg{position:absolute;inset:-30px;z-index:-2;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;
+  filter:blur(5px) saturate(.85);opacity:.4}
+.hook::before{background:radial-gradient(140% 90% at 50% 26%,rgba(13,11,18,.2) 0%,rgba(13,11,18,.78) 60%,var(--ink) 100%)}
+.hook .tag{align-self:center;margin-top:170px;background:var(--paper);color:var(--ink);font-family:'Big Shoulders Display';
+  font-weight:900;font-size:38px;letter-spacing:.14em;text-transform:uppercase;padding:9px 22px 6px;border-radius:8px;box-shadow:6px 6px 0 var(--ink)}
+.hook h1{margin-top:22px;text-align:center;font-weight:900;font-size:172px;line-height:.84;text-transform:uppercase;
+  text-shadow:9px 9px 0 var(--ink);text-wrap:balance}
+.vplan{position:relative;margin:48px auto 0;width:max-content;max-width:100%;padding-left:6px}
+.vplan::before{content:"";position:absolute;left:calc(6px + 23px);top:calc(var(--pas) / 2);bottom:calc(var(--pas) / 2);width:12px;
+  margin-left:-6px;border-radius:6px;background:var(--rest);box-shadow:0 0 0 4px var(--ink)}
+.vs{position:relative;display:flex;align-items:center;gap:26px;height:var(--pas)}
+.vd{flex:none;position:relative;z-index:1;width:46px;height:46px;border-radius:50%;background:var(--paper);border:8px solid var(--ink);
+  box-shadow:0 0 0 5px var(--era)}
+.vd.cur{box-shadow:0 0 0 6px var(--hot),0 0 26px 6px color-mix(in srgb,var(--hot) 50%,transparent)}
+.vs.tm .vd{border-radius:10px;background:var(--paper);box-shadow:0 0 0 5px var(--rest)}
+.vs b{font-weight:900;font-size:var(--corps);letter-spacing:.03em;text-transform:uppercase;line-height:1;text-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+.vs small{font-weight:800;font-size:calc(var(--corps) * .6);letter-spacing:.12em;text-transform:uppercase;color:var(--hot);white-space:nowrap}
+.vs.tm b{color:rgba(255,253,247,.7)}
+.st{display:flex;align-self:center;margin-top:44px;background:var(--led),var(--board);border:3px solid var(--paper);border-radius:16px;
+  overflow:hidden;box-shadow:9px 9px 0 var(--ink)}
+.st div{padding:18px 36px 18px;border-right:3px dashed rgba(255,253,247,.16);text-align:center}
+.st div:last-child{border-right:0}
+.st b{display:block;font-weight:900;font-size:74px;line-height:.9;color:var(--hot);text-shadow:0 0 18px rgba(240,201,124,.45);white-space:nowrap}
+.st span{display:block;margin-top:8px;font-family:Chivo;font-weight:700;font-size:21px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.7)}
+.lg{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:40px;flex-wrap:wrap;font-weight:800;font-size:36px;
+  letter-spacing:.12em;text-transform:uppercase;color:#e4e1ee}
+.lg span{display:flex;align-items:center;gap:12px}
+.lg .mk{font-size:28px;padding:8px 14px 5px;box-shadow:none}
+
+/* ---- le terminus ---- */
+.out{justify-content:center;align-items:center;text-align:center}
+.out .tmk{width:120px;height:120px;border-radius:24px;background:var(--uni);border:16px solid var(--ink);box-shadow:0 0 0 8px var(--paper),0 0 50px 12px color-mix(in srgb,var(--hot) 40%,transparent)}
+.out .k{margin-top:46px;font-family:'Big Shoulders Display';font-weight:800;font-size:40px;letter-spacing:.24em;text-transform:uppercase;color:var(--hot)}
+.out h2{margin-top:14px;font-weight:900;font-size:136px;line-height:.86;text-transform:uppercase;text-shadow:8px 8px 0 #000}
+.tk{--st:150px;display:flex;align-items:stretch;margin-top:64px;background:var(--paper);color:var(--ink);text-align:left;transform:rotate(-1.6deg);
+  -webkit-mask:radial-gradient(circle 16px at var(--st) 0,#0000 98%,#000) top/100% 51% no-repeat,
+    radial-gradient(circle 16px at var(--st) 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.tk .stub{flex:0 0 var(--st);display:grid;place-items:center;background:var(--uni);border-right:4px dashed var(--ink);
+  font-weight:900;font-size:54px}
+.tk .tx{padding:24px 40px 26px 32px}
+.tk em{display:block;font-style:normal;font-weight:800;font-size:26px;letter-spacing:.22em;text-transform:uppercase;color:#6b6480}
+.tk b{display:block;font-weight:900;font-size:78px;line-height:.95;text-transform:uppercase;margin:4px 0 6px}
+.tk span{display:block;font-family:Chivo;font-weight:600;font-size:30px;color:#3a3548}
+.out .t{margin-top:70px;font-family:'Big Shoulders Display';font-weight:800;font-size:34px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.55)}
+.out .rail12{position:absolute;left:0;right:0;bottom:250px;height:14px;background:${FILET};border-top:3px solid var(--paper)}
 </style>
 
-<section class="f hook">
+<section class="f hook" style="--era:${encre}">
   ${cover ? `<img class="bg" src="${esc(cover)}"${cadre ? ` style="object-position:${esc(cadre)} 50%"` : ''} alt="">` : ''}
-  <div class="in">
-    <h1>${esc(nom)}</h1>
-    <p class="ord" style="font-size:${ouv.ord.length > 24 ? 66 : ouv.ord.length > 15 ? 86 : 112}px">${esc(ouv.ord)}</p>
-    <div class="st">
-      ${ouv.st.map(([b, s]) => `<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('\n      ')}
-    </div>
-    ${legende.length ? `<div class="lg">${legende.join('')}</div>` : ''}
+  <span class="filet"></span>
+  <p class="tag">${esc(ouv.ord)}</p>
+  <h1 style="font-size:${nom.length > 22 ? 120 : nom.length > 14 ? 150 : 172}px">${esc(nom)}</h1>
+  ${vplan}
+  <div class="st">
+    ${ouv.st.map(([b, s]) => `<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('\n    ')}
   </div>
+  ${legende.length ? `<div class="lg">${legende.join('')}</div>` : ''}
 </section>
-${cartes.map(carte).join('')}
+${suite.join('')}
 <section class="f out">
+  <span class="tmk"></span>
+  <p class="k">${esc(t.fin)}</p>
   <h2>${esc(t.outro1)}</h2>
-  <p class="u">${esc(t.cta)}</p>
-  <p class="s">${esc(t.outro2)}</p>
+  <div class="tk"><span class="stub">${esc(U.code)}</span><div class="tx"><em>${esc(t.prochain)}</em><b>${esc(t.cta)}</b><span>${esc(t.outro2)}</span></div></div>
   <p class="t">${esc(t.outro3(...decompte()))}</p>
+  <span class="rail12"></span>
 </section>`;
 }
 
@@ -476,7 +703,7 @@ async function main() {
   }
   if (audio && !fs.existsSync(audio)) throw new Error(`--audio : fichier introuvable "${audio}"`);
 
-  const D = charge(UNIVERS[cle].data + (lang === 'en' ? '-en' : ''));
+  const { D, CG } = charge(UNIVERS[cle].data + (lang === 'en' ? '-en' : ''));
   const cartes = suite(D, { only, ere, plus, sans });
   for (const id of plus) {
     if (!cartes.some(c => c.id === id)) throw new Error(`--plus : aucune entree "${id}"`);
@@ -492,7 +719,8 @@ async function main() {
      est le format que Niko vise, et le nombre de cartes change d'un univers et
      d'un ajout a l'autre. L'accroche et la fin gardent leurs 3 et 3,4 s. */
   if (cible) {
-    dur = (cible - ACCROCHE - FIN) / cartes.length;
+    const nPlaques = new Set(cartes.map(c => c.ereI)).size;
+    dur = (cible - ACCROCHE - FIN - nPlaques * PLAQUE) / cartes.length;
     if (dur < 0.3) throw new Error(`--total ${cible} : ${dur.toFixed(2)} s par carte, illisible`);
   }
 
@@ -507,7 +735,7 @@ async function main() {
     : only === 'must+' ? { nom: T[lang].importants, unite: T[lang].entries }
     : null;
 
-  const html = page(cle, D, cartes, lang, total, sel, titre, cadre, couv);
+  const html = page(cle, D, CG, cartes, lang, total, sel, titre, cadre, couv);
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
 
@@ -523,7 +751,8 @@ async function main() {
     const img = path.join(dossier, String(i).padStart(3, '0') + '.png');
     await cadres[i].screenshot({ path: img });
     /* l'accroche et la fin tiennent plus longtemps : on y lit une adresse */
-    plans.push({ img, dur: i === 0 ? ACCROCHE : i === cadres.length - 1 ? FIN : dur });
+    const plaque = await cadres[i].evaluate(n => n.classList.contains('plate'));
+    plans.push({ img, dur: i === 0 ? ACCROCHE : i === cadres.length - 1 ? FIN : plaque ? PLAQUE : dur });
   }
   await nav.close();
 
