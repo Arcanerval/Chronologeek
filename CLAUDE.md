@@ -2935,6 +2935,20 @@ dans les données** : `art` des quatorze phases et `img` des 44 entrées
 Quand Niko dépose un `.webp` puis un `.jpg` du même nom, le `.jpg` est son
 recadrage et l'emporte ; l'ancien part dans `images/originaux/`.
 
+**Dragon Age est publié au plan de métro le 29 septembre 2026**, sur le
+modèle de The Walking Dead : source anglaise, `en-dragonage.html` repris de la
+maquette bâtie sur le gabarit métro anglais de Marvel, français tiré par
+`traduire-dragonage.mjs` ; les phrases métro et le code de plaque sont dans
+`traductions-dragonage.mjs`. Code de ligne **DA**, cinq stations « PHASE N / 5 ».
+C'est la première page métro d'une source anglaise **à deux parcours** :
+la bascule « First time / Playing again » passe dans `.ln-go`, sous le plan,
+comme chez Marvel, et le script de la page n'a pas bougé. Pas de table `RT` :
+ni « Trajet restant » dans la bande, ni « de trajet » sur les plaques. Pas
+d'échelle mixte, les phases sont équilibrées. **Images d'ère posées dans les
+données** (`art`) — fifthblight, kirkwall, magetemplarwar, inquisitionera,
+dreadwolf — et valables pour les deux parcours, le rejeu reprenant les ères par
+leur rang.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par
@@ -2949,7 +2963,7 @@ premier écran. Une page métro à venir le pose au même endroit.
 barre du bas et l'accueil le décompte, et des cases éparpillées donnaient
 trois trains à trois endroits. C'est la règle de « Reprendre » et de « Vous
 en êtes là ». La barre du bas et son remplissage (`#k-fill`) se posent dans
-`dessine()` des six pages métro, après `tally()`, qui écrit encore le
+`dessine()` des sept pages métro, après `tally()`, qui écrit encore le
 décompte. **L'accueil n'a pas l'ordre des œuvres** : `e-app.js` laisse la
 position de chaque page dans `cg-train` (part de la ligne, clé = la route),
 et l'accueil retombe sur le décompte tant que la page n'a pas été revue.

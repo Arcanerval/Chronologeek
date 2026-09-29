@@ -101,6 +101,8 @@ export const DA_IDENTIQUES = [
   'replay',
   '#replay',
   '[replay] référence morte :',
+  // la plaque de station du plan de métro : le code de ligne ne se traduit pas
+  '<span class="stn-k"><span class="code">DA</span>',
 ];
 
 /* Les formes, plutôt que des tables. L'ordre compte — le plus précis
@@ -427,4 +429,7 @@ export const DA_TRADUCTIONS = [
    'Des horreurs anciennes. Des envahisseurs en maraude. Des mages puissants. Et un monde qui refuse de rester en place. Bienvenue à Thédas. Des stoïques Gardes des Ombres aux nécromanciens Mortalitasi venus d\'ailleurs, des fiers elfes dalatiens aux assassins retors des Corbeaux d\'Antiva, Dragon Age regorge de monstres, de magie et de personnages marquants qui avancent dans un monde dangereux dont la seule constante est le changement.'],
   ['Varric Tethras and Lace Harding descend into the abandoned Deep Roads beneath Marnas Pell in pursuit of a former friend.',
    'Varric Tethras et Lace Harding descendent dans les Tréfonds abandonnés sous Marnas Pell, à la poursuite d\'un ancien ami.'],
-];
+  // le plan de métro
+  ['Dragon Age line map', 'Plan de la ligne Dragon Age'],
+  ['Dragon Age line complete', 'Ligne Dragon Age terminée'],
+  ['<p><b>Terminus</b><span>End of the Dragon Age line ·', '<p><b>Terminus</b><span>Fin de la ligne Dragon Age ·'],];
