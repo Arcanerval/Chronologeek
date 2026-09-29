@@ -2921,6 +2921,15 @@ recopiée dans `en-startrek.html`, et le français descend comme toujours par
 - **`body>header` est devenu `header`**, comme chez DC : il battait le CSS du
   menu de l'accueil.
 
+**Le billet est à cheval sur le filet blanc du premier écran**, comme celui
+de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
+par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par
+`overflow:hidden` — dans un `<div class="wrap ticket-row">` posé juste après,
+à `margin-top:-34px` ; le premier écran garde en bas la place de sa moitié
+(`section.ln-hero>.wrap`, 66 px, 56 sur téléphone — le sélecteur plus lourd
+bat la règle mobile écrite plus bas). Les voies du parcours restent dans le
+premier écran. Une page métro à venir le pose au même endroit.
+
 **Les étiquettes du plan du haut prennent des étages** (`etage()`, même
 jour, sur les quatre pages métro) : deux rangs ne suffisaient pas quand
 trois stations se suivent de près, et les noms se recouvraient sur

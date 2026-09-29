@@ -928,6 +928,13 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .ticket .start.t-go:hover{transform:none;background:#231f2e}
 .ticket .start em{color:var(--hot)}
 
+/* le billet est posé sur le filet blanc du bas du premier écran, à cheval,
+   comme celui de l'accueil. Il vit hors du premier écran, qui rogne
+   (overflow) son fond flouté ; celui-ci garde en bas la place de sa moitié. */
+.ticket-row{position:relative;z-index:3;display:flex;justify-content:center;margin-top:-34px;margin-bottom:6px}
+section.ln-hero>.wrap{padding-bottom:66px}
+@media(max-width:720px){section.ln-hero>.wrap{padding-bottom:56px}}
+
 /* les trois parcours sont trois voies */
 .ln-hero .par{margin:0}
 .ln-hero .par-b{counter-reset:voie;gap:10px;border:0}
@@ -1538,11 +1545,6 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     </div>
 
     <div class="ln-go">
-      <div class="ticket" id="ticket">
-        <span class="t-stub" aria-hidden="true"><span>AV</span></span>
-        <span class="t-txt"><span class="t-k" id="t-k">Premier départ</span><span class="t-nm" id="t-nm"></span><span class="t-st" id="t-st"></span></span>
-        <button class="start t-go" id="start" type="button">Commencer <em>▸</em></button>
-      </div>
       <div class="par" id="par">
         <div class="par-b" role="group" aria-label="Choisir le parcours">
           <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
@@ -1552,6 +1554,15 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     </div>
   </div>
 </section>
+
+<!-- le billet, à cheval sur le filet du bas du premier écran, comme sur l'accueil -->
+<div class="wrap ticket-row">
+  <div class="ticket" id="ticket">
+    <span class="t-stub" aria-hidden="true"><span>AV</span></span>
+    <span class="t-txt"><span class="t-k" id="t-k">Premier départ</span><span class="t-nm" id="t-nm"></span><span class="t-st" id="t-st"></span></span>
+    <button class="start t-go" id="start" type="button">Commencer <em>▸</em></button>
+  </div>
+</div>
 
 <!-- ══ LE CHOIX DU PARCOURS ════════════════════════════════════════
      Posé une fois, au centre, le reste flouté. Fermer sans répondre
