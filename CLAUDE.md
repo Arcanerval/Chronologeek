@@ -2944,6 +2944,17 @@ par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par
 bat la règle mobile écrite plus bas). Les voies du parcours restent dans le
 premier écran. Une page métro à venir le pose au même endroit.
 
+**Le train est partout à la dernière case cochée**, depuis le 29 septembre
+2026, sur signalement de Niko : l'intro suivait la dernière case cochée, la
+barre du bas et l'accueil le décompte, et des cases éparpillées donnaient
+trois trains à trois endroits. C'est la règle de « Reprendre » et de « Vous
+en êtes là ». La barre du bas et son remplissage (`#k-fill`) se posent dans
+`dessine()` des six pages métro, après `tally()`, qui écrit encore le
+décompte. **L'accueil n'a pas l'ordre des œuvres** : `e-app.js` laisse la
+position de chaque page dans `cg-train` (part de la ligne, clé = la route),
+et l'accueil retombe sur le décompte tant que la page n'a pas été revue.
+Le nombre affiché, lui, reste le décompte.
+
 **Les étiquettes du plan du haut prennent des étages** (`etage()`, même
 jour, sur les quatre pages métro) : deux rangs ne suffisaient pas quand
 trois stations se suivent de près, et les noms se recouvraient sur
