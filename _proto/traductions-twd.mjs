@@ -72,6 +72,8 @@ export const TWD_IDENTIQUES = [
   'Phases',
   '#a8bf4f',
   'Chronologeek — The Walking Dead (proto E)',
+  // la plaque de station du plan de métro : le code de ligne ne se traduit pas
+  '<span class="stn-k"><span class="code">TWD</span>',
 ];
 
 /* Les formes, plutôt que des tables : « Season 6 Episodes 1-4 » n'a rien
@@ -203,4 +205,9 @@ export const TWD_TRADUCTIONS = [
      univers au lieu de cinq, ici comme dans `seo.json`. */
   ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  // le plan de métro
+  ['The Walking Dead line map', 'Plan de la ligne The Walking Dead'],
+  ['The Walking Dead line complete', 'Ligne The Walking Dead terminée'],
+  ['End of The Walking Dead line ·', 'Fin de la ligne The Walking Dead ·'],
+  ['<p><b>Terminus</b><span>End of The Walking Dead line ·', '<p><b>Terminus</b><span>Fin de la ligne The Walking Dead ·'],
 ];

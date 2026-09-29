@@ -2921,6 +2921,20 @@ recopiée dans `en-startrek.html`, et le français descend comme toujours par
 - **`body>header` est devenu `header`**, comme chez DC : il battait le CSS du
   menu de l'accueil.
 
+**The Walking Dead est publié au plan de métro le 29 septembre 2026**, sur
+le modèle de Star Trek : source anglaise, `en-twd.html` repris de la maquette
+bâtie sur le gabarit métro anglais de Marvel, français tiré par
+`traduire-twd.mjs` ; les quatre phrases propres sont dans
+`traductions-twd.mjs`. Code de ligne **TWD**, quatorze stations, et chaque
+plaque dit « PHASE N / 14 », l'intitulé du document de Niko. Le plan du haut
+est à **échelle mixte** (`ech()`), les phases 10 à 13 n'ayant qu'un arrêt
+chacune. Les niveaux passent dans les pastilles de la carte, comme chez
+Marvel ; le badge VO reste, en français seulement. **Images locales, posées
+dans les données** : `art` des quatorze phases et `img` des 44 entrées
+(Flight 462 garde la sienne) dans `data-twd-en.js` — plus une URL TMDB.
+Quand Niko dépose un `.webp` puis un `.jpg` du même nom, le `.jpg` est son
+recadrage et l'emporte ; l'ancien part dans `images/originaux/`.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par
