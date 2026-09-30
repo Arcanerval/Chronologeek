@@ -3076,6 +3076,17 @@ garde `.slot[data-u="dossier-sw"]`, donc le bloc « Tout exporter » de
 `e-app.js` s'y pose, comme avant. `e-dossiers.html` est la source ; ses
 phrases neuves sont dans `TRADUCTIONS` de `traduire-pages.mjs`.
 
+**Le Dossier Star Wars est publié au plan de métro le même jour.** Son
+gabarit est celui de `e-starwars.html` (plan, billet, ligne SVG, barre du
+bas sans badges), son script de ligne rejoué à **échelle mixte** ; son moteur
+reste le sien, mais pose chaque lecture au format d'un arrêt (`.bu`) : case,
+horaire « Arrêt 001 » et date, nature en couleur, VO, note — ni vignette ni
+fiche, et le titre reste un span, pas un h3. Les 63 repères écran sont des
+**correspondances « SW »** posées sur la voie (`.scr`), hors ligne et hors
+compte. Une image par station : `highrepublic.webp` (déposée par Niko) puis
+les ères de la timeline Star Wars. « Star Wars » ne se coupe jamais dans le
+titre (`.nw`). `e-dossier-star-wars.html` est la source.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

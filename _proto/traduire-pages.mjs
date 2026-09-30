@@ -562,6 +562,11 @@ const TRADUCTIONS = [
   ["D'autres", 'More'],
   ['Ligne en chantier', 'Line under construction'],
   ['Composition de la rame', 'Train composition'],
+  // le plan de métro du Dossier Star Wars, publié le 30 septembre 2026
+  ['Fin de la ligne Dossier Star Wars ·', 'End of the Star Wars Deep Dive line ·'],
+  ['SW · À l’écran', 'SW · On screen'],
+  ['À l’écran', 'On screen'],
+  ['Dossier Star Wars terminé', 'Star Wars Deep Dive completed'],
 
   // ── à venir ────────────────────────────────────────────────────
   ['Chronologeek — À venir (proto E)', 'Chronologeek — Upcoming (proto E)'],
