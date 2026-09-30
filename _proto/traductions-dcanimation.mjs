@@ -21,6 +21,16 @@
    ═════════════════════════════════════════════════════════════════════ */
 
 export const DCA_IDENTIQUES = [
+  /* le réseau de métro : codes de ligne et fragments de gabarit */
+  "ARK",
+  "station",
+  '<span class="stn-k"><span class="code">DCA</span>Station',
+  '" style="left:100%;top:',
+  '<span class="lm-lb">Terminus',
+  '<span class="lm-lb">Terminus</span>',
+  '" title="Terminus',
+  ';--tk:',
+  'px;--d:1.1s',
   "305 h",
   /* le nom du fichier d'export : une seule copie sert les deux langues,
      comme sur les huit autres pages */
@@ -514,6 +524,16 @@ export const DCA_RETROUVES = [
 
 /* Le seul vrai écrit. Rempli depuis le bilan du script. */
 export const DCA_TRADUCTIONS = [
+  /* ── le réseau de métro, posé le 29 septembre 2026 ── */
+  ['DC Animation network map', 'Plan du réseau DC Animation'],
+  ['<p class="zdep-k"><span>Departures</span>Choose your line</p>', '<p class="zdep-k"><span>Départs</span>Choisissez votre ligne</p>'],
+  ['<p><b>Terminus</b><span>End of the DC Animation network ·', '<p><b>Terminus</b><span>Fin du réseau DC Animation ·'],
+  ['<p class="stn-lines"><span class="lab">Lines</span>', '<p class="stn-lines"><span class="lab">Lignes</span>'],
+  ['<h3><span class="k">Continuity</span>', '<h3><span class="k">Continuité</span>'],
+  ['DC Animation network complete', 'Réseau DC Animation terminé'],
+  ['Next station · <em>Terminus</em>', 'Prochaine station · <em>Terminus</em>'],
+  ['Next stop · <em>', 'Prochain arrêt · <em>'],
+  ['Next station · <em>', 'Prochaine station · <em>'],
   // « Remaining » et « completed » à l'accroche depuis le 21 septembre 2026
   ['Remaining', 'Restant'],
   ['Check off what you\'ve completed — your progress is saved.', 'Cochez ce que vous avez complété, votre progression est sauvegardée.'],
@@ -615,8 +635,8 @@ export const DCA_TRADUCTIONS = [
    "Pendant et après Batman, la relève"],
   ["Animation Guide",
    "Guide de l'animation"],
-  ["DCAU · DCAMU · Arkhamverse — three parallel timelines, side by side, spoiler-free.",
-   "DCAU · DCAMU · Arkhamverse — trois chronologies parallèles, côte à côte, sans spoil."],
+  ["DCAU · DCAMU · Arkhamverse — three independent universes, spoiler-free.",
+   "DCAU · DCAMU · Arkhamverse — trois univers indépendants, sans spoil."],
   ["Animated movies",
    "Films animés"],
   ["Games &amp; DLC",

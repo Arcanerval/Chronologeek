@@ -2965,6 +2965,28 @@ quatre. Pas de table `RT`. **Images de saga posées dans les données**
 assassinstroughhistory. **Ne plus lancer `construire-page-assassinscreed.mjs`** :
 il réécrirait `en-assassinscreed.html` depuis l'ancien gabarit.
 
+**DC Animation est publié au plan de métro le 30 septembre 2026**, et c'est
+un **réseau**, comme DC : `en-dcanimation.html` a été repris du réseau DC
+publié (`en-dc.html`), avec les écarts qui séparaient les deux pages, et le
+français descend par `traduire-dcanimation.mjs` ; les phrases du réseau sont
+dans `traductions-dcanimation.mjs`. Une seule correspondance, trois lignes
+**DCAU / DCAMU / ARK** (code d'univers DCA).
+
+- **Trois univers indépendants, pas trois lignes parallèles** — tranché par
+  Niko. Les voies du plan du haut ne se rejoignent pas : chacune finit à son
+  **terminus**, bordé de son encre, une seule étiquette sur la voie du
+  milieu. Le tableau des départs dit « Choose your line » et rien de plus, et
+  l'accroche « three independent universes ». Ne pas y remettre le
+  parallélisme de DC.
+- **New 52 et Tomorrowverse sont des sous-stations** du DCAMU (`.sep-row.sub`,
+  « Continuity »), pas des signaux rouges, et pas de rappel en fin de zone.
+  Tomorrowverse est marquée d'un anneau sur la voie du plan.
+- **Une seule station** : sous le plan, le prochain arrêt plutôt que
+  « Terminus » dès le départ.
+- **Vignettes locales, dans les données** : 79 des 80 `img` pointent
+  `/images/*.webp` (fichiers de Niko, ≤ 760 px) ; seul *Nightwing and Robin*
+  garde son image TMDB, faute de fichier.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

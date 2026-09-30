@@ -157,7 +157,8 @@ for (const u of univers) {
   // 10. les ajouts perso
   note(u, "NOMS d'e-perso.js", g.length > 0 && g.some(n => F.perso.includes(`'${n}'`)));
   // 11. la promo
-  note(u, 'video.mjs', new RegExp(`\\b${u.cle}:\\s*\\{\\s*data:`).test(F.video));
+  // `code:` passe avant `data:` dans la table de video.mjs depuis la DA du métro
+  note(u, 'video.mjs', new RegExp(`\\b${u.cle}:\\s*\\{[^}]*\\bdata:`).test(F.video));
   note(u, 'carrousel.mjs (données)', new RegExp(`\\b${u.cle}:\\s*\\{\\s*data:`).test(F.carrousel));
   note(u, 'carrousel.mjs (visuel)', new RegExp(`\\b${u.cle}:\\s*'`).test(F.carrousel.slice(F.carrousel.indexOf('sw:'))));
   /* `stories.mjs` part de `radar.json`, donc de SES clés : « starwars » là
