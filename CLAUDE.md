@@ -3000,6 +3000,17 @@ d'abord, et `resolve()` reporte `art` : sans lui le rewatch perdait ses images.
 `ingenislands.webp` est recadré dans le fichier (ciel retiré), pas par un
 `background-position` propre à une plaque.
 
+**The Witcher est publié au plan de métro le 30 septembre 2026**, et c'est
+un **réseau**, comme DC Animation : `en-witcher.html` a été repris du réseau
+DC Animation publié, avec les écarts qui séparaient les deux pages, et le
+français descend par `traduire-witcher.mjs` ; les phrases du réseau sont dans
+`traductions-witcher.mjs`. Une correspondance, deux lignes **SAP / CDPR**
+(code d'univers TW), un terminus par voie : les livres et les jeux sont deux
+canons, pas deux lignes parallèles — l'accroche dit « deux chronologies
+indépendantes ». Pas de table `RT`. Badge VO sur les quatorze comics sans
+édition française. Pas encore d'image de station : `ARTS` reprend la
+bannière `witcher.webp`.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

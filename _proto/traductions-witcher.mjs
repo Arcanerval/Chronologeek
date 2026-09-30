@@ -23,6 +23,10 @@
    ═════════════════════════════════════════════════════════════════════ */
 
 export const W_IDENTIQUES = [
+  /* le réseau de métro : codes de ligne et fragment de gabarit */
+  'SAP',
+  'CDPR',
+  '<span class="stn-k"><span class="code">TW</span>Station',
   /* le nom du fichier d'export : une seule copie sert les deux langues */
   'chronologeek-witcher.json',
   'Sapkowski',
@@ -413,6 +417,16 @@ export const W_TRADUCTIONS = [
    'Les livres de Sapkowski · les jeux et les comics de CD Projekt RED — deux chronologies parallèles, côte à côte, sans spoil.'],
   ['Check off what you&#x27;ve read and played — your progress is saved.',
    'Cochez ce que vous avez lu et joué — votre progression est sauvegardée.'],
+  /* le réseau de métro */
+  ['Chronologeek — The Witcher (mock-up: metro network)',
+   'Chronologeek — The Witcher (maquette : réseau de métro)'],
+  ["Sapkowski's books · CD Projekt RED's games and comics — two independent timelines, spoiler-free.",
+   'Les livres de Sapkowski · les jeux et les comics de CD Projekt RED — deux chronologies indépendantes, sans spoil.'],
+  ['Sapkowski&#x27;s books · CD Projekt RED&#x27;s games and comics — two independent timelines, spoiler-free.',
+   'Les livres de Sapkowski · les jeux et les comics de CD Projekt RED — deux chronologies indépendantes, sans spoil.'],
+  ['The Witcher network map', 'Plan du réseau The Witcher'],
+  ['<p><b>Terminus</b><span>End of the Witcher network ·', '<p><b>Terminus</b><span>Fin du réseau The Witcher ·'],
+  ['Witcher network complete', 'Réseau The Witcher terminé'],
 ];
 
 /* Aucun gabarit : cette page n'a ni sous-items d'épisodes ni titres de
