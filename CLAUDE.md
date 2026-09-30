@@ -2987,6 +2987,19 @@ dans `traductions-dcanimation.mjs`. Une seule correspondance, trois lignes
   `/images/*.webp` (fichiers de Niko, ≤ 760 px) ; seul *Nightwing and Robin*
   garde son image TMDB, faute de fichier.
 
+**Jurassic World est publié au plan de métro le 30 septembre 2026**, sur le
+modèle de Dragon Age : source anglaise, `en-jurassic.html` repris de la
+maquette bâtie sur le gabarit métro anglais de Marvel, français tiré par
+`traduire-jurassic.mjs` ; les phrases métro sont dans `traductions-jurassic.mjs`.
+Code de ligne **JW**, quatre stations « Era N / 4 », deux parcours (la bascule
+dans `.ln-go`), et la table `RT` : « Trajet restant » dans la bande, « de
+trajet » sur les plaques. Pas d'échelle mixte. **Images posées dans les
+données** : `art` des quatre ères et `img` des treize entrées dans
+`data-jurassic-en.js` — plus une URL TMDB ni Penguin. `eraArt()` lit `era.art`
+d'abord, et `resolve()` reporte `art` : sans lui le rewatch perdait ses images.
+`ingenislands.webp` est recadré dans le fichier (ciel retiré), pas par un
+`background-position` propre à une plaque.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

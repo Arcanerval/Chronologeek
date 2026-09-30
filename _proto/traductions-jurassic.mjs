@@ -23,6 +23,8 @@ export const JW_IDENTIQUES = [
   'Jurassic Park',
   'Jurassic Park III',
   'Chronologeek — Jurassic World (proto E)',
+  // le titre de la maquette métro, remplacé à sa génération
+  'Chronologeek — Jurassic World (mock-up: metro line)',
   '50 h',
   /* les deux surnoms de bande : ce sont des noms propres, comme
      Flashpoint ou Knightfall chez DC Animation */
@@ -117,6 +119,12 @@ export const JW_TRADUCTIONS = [
   /* la mention légale du pied de page, qui compte désormais Jurassic World */
   ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+
+  /* le plan de métro */
+  ['Jurassic World line map', 'Plan de la ligne Jurassic World'],
+  ['Jurassic World line complete', 'Ligne Jurassic World terminée'],
+  ['<p><b>Terminus</b><span>End of the Jurassic World line ·', '<p><b>Terminus</b><span>Fin de la ligne Jurassic World ·'],
+  ['<span class="stn-k"><span class="code">JW</span>Era', '<span class="stn-k"><span class="code">JW</span>Ère'],
 ];
 
 export const JW_GABARITS = [
