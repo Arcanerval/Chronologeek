@@ -3063,6 +3063,19 @@ toujours française ; ses phrases neuves sont dans `TRADUCTIONS` et
 premier porte la place réservée par `publier.mjs`, le second fait poser la
 ligne du flux RSS par `e-app.js`.
 
+**« Dossiers » est publié au plan de métro le 30 septembre 2026**, sur le
+modèle de « Nouveautés ». Un Dossier est une ligne de correspondance : le plan
+du haut est la ligne *Dossier Star Wars*, sept stations en noms courts (table
+`E` bilingue, en `i18n-off`, **écrite à la main** comme celle de l'accueil —
+elle suit chaque ajout au Dossier), à **échelle mixte** (la Rébellion porte
+295 arrêts sur 536), terminus en anneau, train à `cg-train` (`dossier-star-wars`
+en proto, `star-wars` en ligne) sinon au décompte. Tableau, billet à cheval
+(« Premier départ » / « Prochain départ »), deux tuiles de l'accueil — la
+seconde en chantier, voie en tirets — et « Composition de la rame ». La page
+garde `.slot[data-u="dossier-sw"]`, donc le bloc « Tout exporter » de
+`e-app.js` s'y pose, comme avant. `e-dossiers.html` est la source ; ses
+phrases neuves sont dans `TRADUCTIONS` de `traduire-pages.mjs`.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

@@ -553,6 +553,15 @@ const TRADUCTIONS = [
   ['Ouverture', 'Opening'],
   ['lignes ouvertes', 'lines opened'],
   ['ligne ouverte', 'line opened'],
+  // le plan de métro des Dossiers, publié le 30 septembre 2026
+  ['œuvres', 'works'],
+  ['stations', 'stations'],
+  ['repères écran', 'on-screen markers'],
+  ['terminées', 'completed'],
+  ['Plan de la ligne Dossier Star Wars', 'Map of the Star Wars Deep Dive line'],
+  ["D'autres", 'More'],
+  ['Ligne en chantier', 'Line under construction'],
+  ['Composition de la rame', 'Train composition'],
 
   // ── à venir ────────────────────────────────────────────────────
   ['Chronologeek — À venir (proto E)', 'Chronologeek — Upcoming (proto E)'],
