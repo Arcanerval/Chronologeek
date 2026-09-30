@@ -3047,6 +3047,22 @@ toujours française ; ses phrases neuves sont dans `TRADUCTIONS` de
   (`e-app.js`) reste à huit** : Dragon Age, DC Animation, Jurassic World et
   Resident Evil y entrent le jour où le radar leur trouve une sortie.
 
+**« Nouveautés » est publié au plan de métro le 30 septembre 2026**, sur
+le modèle d'« À venir ». La ligne **remonte le temps** : le train est à
+aujourd'hui, chaque mois du journal est une station, et le fond sans date
+(« Et avant ça ») devient la station « Terminus · Aux origines », plaque en
+tirets et anneau sur le plan — le dépliant des mois anciens a disparu, tout
+est sur la ligne. Une timeline ou un Dossier ouvert est un **nœud de
+correspondance** (arrêt plein cerclé de papier, horaire = code de ligne et
+« Ouverture », vignette = la bannière de l'univers sur l'accueil, table
+`BANNIERE`) ; un média ajouté est un arrêt (horaire = sa date dans le monde
+et son code). Billet « Dernier ajout » à cheval, tableau (changements,
+ouvertures, arrêts ajoutés, mois). `e-nouveautes.html` est la source,
+toujours française ; ses phrases neuves sont dans `TRADUCTIONS` et
+`EXPRESSIONS` de `traduire-pages.mjs`. `#log` et `#tag-t` restent : le
+premier porte la place réservée par `publier.mjs`, le second fait poser la
+ligne du flux RSS par `e-app.js`.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

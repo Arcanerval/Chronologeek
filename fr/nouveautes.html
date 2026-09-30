@@ -33,28 +33,6 @@
 <link rel="canonical" href="https://chronologeek.app/fr/nouveautes"/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
-<!--
-  ═══ CONTRAT DE DIRECTION — E · NOUVEAUTÉS ═══════════════════════════
-  THÈSE : la page actuelle dit qu'un média a été ajouté et s'arrête là.
-  Elle donne une bonne nouvelle et aucune porte. Ici chaque ligne devient
-  une carte qui mène à l'entrée exacte dans sa timeline : on lit qu'un
-  truc est arrivé, on est à un clic de sa place. Le journal cesse d'être
-  une preuve de vie pour devenir un point d'entrée.
-  DEUX NATURES, DEUX FORMES. Un média ajouté a une vignette, un univers,
-  un type, une date in-universe — c'est une carte dense. Une timeline ou
-  un Dossier qui ouvre n'est pas de la même taille : pas de vignette,
-  titrage large, chevron plein. Le lecteur doit voir la différence avant
-  de la lire.
-  MONDE PROPRE : celui de la direction E. Couleur noyée, champs à bords
-  francs, chevrons en diagonale, trame de demi-teinte, titrage condensé à
-  ombre portée dure. Aucun halo, aucun arrondi.
-  RÉCIT : le dernier changement en vedette, puis le journal mois par
-  mois. Les trois mois récents sont ouverts ; le fond dort dans un
-  dépliant, parce qu'un journal qui grossit sans fin cesse d'être lu.
-  TEXTES : tout vient de fr/nouveautes.html, mot pour mot. Le titre et sa
-  suite sont deux champs, donc la suite reçoit sa majuscule initiale —
-  seule retouche, contrôlée par verif-textes.py.
--->
 <style>
 /* ══ POLICES : servies par le site, plus par Google ═════════════════
    Le `display=swap` de Google montrait la police de secours le temps que
@@ -83,11 +61,20 @@
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
   --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
-  --hot:#f0c97c; --gold-deep:#d5a05f;
-  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f; --da:#e07b39; --ac:#d4a02c; --dca:#2dd4bf; --jw:#45c46b; --wi:#b0bec5; --re:#dc0000; --soon:#8a8ab0;
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières :
+     échantillonné sur logo-chronologeek.png, médiane #d5a05f, crête #f0c97c */
+  --hot:#f0c97c; --gold-deep:#d5a05f; --steel:#779fc3;
+  --cleared:#3ddc84;
+  /* les dix encres de la charte, plus le gris des univers à venir.
+     Le lilas de Star Trek est celui des consoles LCARS. */
+  --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f;
+  --da:#e07b39; --ac:#d4a02c; --dca:#2dd4bf; --jw:#45c46b; --wi:#b0bec5;
+  --re:#dc0000; --soon:#8a8ab0;
+  /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
+     pour répondre au violet profond de leur bande, et le rose à « À venir » */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
-  /* la page s'ouvre dans le bleu de « Nouveautés » — sa couleur dans la nav */
-  --uc:var(--c-news);
+  --doss-deep:#5c2060;
+  --uc:var(--sw);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-x:none}
@@ -108,9 +95,12 @@ a{color:inherit}
   font-weight:700;padding:10px 16px}
 .skip:focus{left:0}
 
+/* le champ de couleur : il inonde la page derrière tout le reste et
+   bascule d'un univers à l'autre sans fondu mou */
 .field{position:fixed;inset:0;z-index:-1;background:var(--ink)}
 .field i{position:absolute;inset:0;background:var(--uc);opacity:.13;
   transition:background-color .18s steps(3,end)}
+
 .halftone{position:absolute;inset:0;pointer-events:none;
   background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
   mix-blend-mode:multiply}
@@ -130,11 +120,10 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   padding:2px 0;border-bottom:2px solid transparent}
 .nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
 .nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+/* les trois entrées que le site colore déjà gardent leur couleur ici */
 .nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
 .nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
 .nav-links a.news,.drawer a.news{color:var(--c-news)}
-/* la page courante prime sur la couleur d'entrée : c'est l'or qui marque où on est */
-.nav-links a.news[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
 .nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
 .nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
 .nav-links a.news:hover{border-bottom-color:var(--c-news)}
@@ -143,9 +132,11 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
   background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
 .icon-btn:hover{border-color:var(--paper)}
+/* le drapeau se passe de cadre : c'est déjà une forme fermée */
 .lang-btn{border:0;width:auto;height:auto;padding:2px}
 .lang-btn:hover{border:0;transform:translateY(-1px)}
-.lang-btn svg{width:34px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.lang-btn svg{width:34px;height:auto;display:block;
+  box-shadow:0 0 0 2px rgba(13,11,18,.6)}
 .burger{display:none}
 .burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
 /* Un bouton, deux dessins : les trois barres tant que le tiroir est ferme,
@@ -203,177 +194,6 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a:first-child{border-top:0}
 
-/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════ */
-.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper)}
-.veil{position:absolute;inset:0;
-  background:linear-gradient(to top,var(--ink) 8%,
-             color-mix(in srgb,var(--uc) 46%,var(--ink)) 88%)}
-.attract .wrap{position:relative;z-index:2;padding-top:34px;padding-bottom:26px}
-.attract h1{font-size:clamp(46px,9vw,104px)}
-.attract .head{display:flex;align-items:baseline;justify-content:space-between;
-  gap:16px;flex-wrap:wrap}
-.tag{display:inline-block;background:var(--paper);color:var(--ink);
-  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.14em;
-  text-transform:uppercase;padding:5px 12px;flex:0 0 auto;
-  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
-.tag em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
-.dek{margin-top:13px;font-size:17px;color:rgba(255,253,247,.92)}
-@keyframes blink{50%{opacity:.25}}
-
-/* ══ LE DERNIER CHANGEMENT ═════════════════════════════════════════
-   Le pendant du « prochaine » d'À venir : la page répond à sa question
-   avant qu'on ait scrollé. Il redouble la première carte du journal,
-   exactement comme la borne de l'accueil redouble la première entrée —
-   c'est la grammaire de la direction, pas un oubli. */
-.last{border-bottom:2px solid var(--paper);
-  background:color-mix(in srgb,var(--c,var(--hot)) 30%,var(--ink))}
-.last[hidden]{display:none}
-.last .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;
-  padding-top:15px;padding-bottom:15px}
-.last .chev{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:13px;letter-spacing:.2em;
-  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:4px 11px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);flex:0 0 auto}
-.last .txt{min-width:0;flex:1}
-.last .t{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
-  font-size:clamp(23px,3.6vw,38px);text-transform:uppercase;line-height:.95}
-.last .m{display:flex;gap:14px;flex-wrap:wrap;margin-top:5px;
-  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,253,247,.86)}
-.last .big{flex:0 0 auto;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
-  font-size:clamp(28px,5vw,52px);line-height:.82;color:var(--hot);
-  text-shadow:4px 4px 0 var(--ink);text-align:right;text-transform:uppercase}
-.last .big small{display:block;font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.72);
-  text-shadow:none;margin-top:5px}
-
-/* ══ filtres ═══════════════════════════════════════════════════════
-   Pas de recherche : on ne cherche pas dans un journal de trente lignes,
-   on le parcourt. Deux groupes suffisent — de qui ça parle, et de quelle
-   nature c'est. */
-.sieve{border-bottom:2px solid var(--paper);background:var(--ink);
-  position:sticky;top:var(--hh,53px);z-index:50}
-.sieve .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
-  padding-top:10px;padding-bottom:10px}
-.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,253,247,.5);margin-right:2px}
-.sieve button{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14.5px;
-  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
-  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:6px}
-.sieve button:hover{border-color:var(--paper);color:var(--paper)}
-.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
-.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
-.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
-.srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1px}
-.fcount{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:rgba(255,253,247,.6)}
-
-/* ══ LE JOURNAL ════════════════════════════════════════════════════ */
-.mo-sec[hidden]{display:none}
-.mo{position:relative;overflow:hidden;background:var(--ink);
-  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
-.mo .wrap{position:relative;z-index:2;display:flex;align-items:baseline;gap:16px;
-  flex-wrap:wrap;padding-top:20px;padding-bottom:14px}
-.mo h2{font-size:clamp(30px,5.4vw,60px)}
-.mo .n{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.1em;
-  text-transform:uppercase;color:rgba(255,253,247,.66)}
-.mo .now{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:13px;letter-spacing:.2em;
-  text-transform:uppercase;background:var(--hot);color:var(--ink);padding:3px 10px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-.mo-sec .list{background:rgba(13,11,18,.42);padding:16px 0 26px}
-.rows{list-style:none;display:flex;flex-direction:column;gap:11px}
-.ch[hidden]{display:none}
-
-/* la carte : le lien EST la carte, tout le rectangle est cliquable */
-.card{position:relative;display:flex;gap:14px;text-decoration:none;
-  border:2px solid var(--line);border-left:6px solid var(--c);
-  background:rgba(13,11,18,.5);padding:11px 13px;
-  transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
-.card:hover{border-color:var(--hot);border-left-color:var(--c);transform:translate(-3px,-3px)}
-/* sans cible, la carte reste une carte mais cesse de se comporter en lien */
-.card.dead{cursor:default}
-.card.dead:hover{border-color:var(--line);transform:none}
-.card.dead .cta{display:none}
-/* les équerres du curseur, comme sur les slots de l'accueil */
-.cur{position:absolute;inset:-7px;opacity:0;pointer-events:none}
-.card:hover .cur{opacity:1}
-.card.dead:hover .cur{opacity:0}
-.cur i{position:absolute;width:14px;height:14px;border:3px solid var(--c)}
-.cur i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
-.cur i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
-.cur i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
-.cur i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
-
-/* la vignette, en 16/9 comme les visuels d'entrée des timelines : c'est
-   le ratio natif des images du site, donc rien n'est recadré. Les romans
-   et comics du Dossier n'ont pas d'image propre — la carte reprend la
-   bannière du Dossier, et à défaut un aplat dans l'encre du type. */
-.vig{flex:0 0 auto;width:156px;aspect-ratio:16/9;align-self:flex-start;
-  border:2px solid var(--line);overflow:hidden;
-  background:var(--ink);position:relative}
-.vig img{width:100%;height:100%;object-fit:cover}
-.vig.none{display:grid;place-items:center;background:color-mix(in srgb,var(--k) 22%,var(--ink));
-  border-color:color-mix(in srgb,var(--k) 50%,var(--line))}
-.vig.none b{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;
-  color:color-mix(in srgb,var(--k) 70%,var(--paper));line-height:1}
-
-.card .txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
-.tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.b{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
-  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
-.u{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:var(--c);border:1px solid var(--c)}
-.era{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
-.vo{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:2px 8px;color:var(--hot);border:1px solid var(--hot)}
-.ti{font-family:'Big Shoulders Display','BSD repli';font-weight:700;font-size:22px;
-  line-height:1.02;text-transform:uppercase}
-.dsc{font-size:13.5px;color:rgba(255,253,247,.84)}
-.cta{margin-top:2px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;
-  letter-spacing:.09em;text-transform:uppercase;color:var(--c)}
-.cta em{font-style:normal}
-.card:hover .cta{color:var(--hot)}
-
-/* la carte de site : pas de vignette, pas de badge de type, un chevron
-   plein et un titre qui prend toute la ligne. Elle ne pèse pas comme un
-   ajout de média parce que ce n'en est pas un. */
-.card.site{border-left-width:6px;padding:14px 15px}
-.card.site .ti{font-size:clamp(24px,3.2vw,34px);font-weight:900;line-height:.98}
-.card.site .dsc{font-size:14.5px;max-width:78ch}
-.sb{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:12px;letter-spacing:.16em;
-  text-transform:uppercase;background:var(--c);color:var(--ink);padding:3px 10px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-
-/* ══ LE FOND, REPLIÉ ═══════════════════════════════════════════════
-   Trois mois ouverts, le reste ici. Une page de journal doit rester
-   lisible dans deux ans, quand il y aura quarante mois derrière. */
-.older{border-top:2px solid var(--paper)}
-.older[hidden]{display:none}
-.older>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;
-  max-width:1280px;margin:0 auto;padding:18px 20px}
-.older>summary::-webkit-details-marker{display:none}
-.older>summary:hover{color:var(--hot)}
-.older .lab{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:clamp(22px,3vw,34px);
-  text-transform:uppercase;line-height:1}
-.older .cnt{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:rgba(255,253,247,.6)}
-.older .chevd{margin-left:auto;width:22px;height:22px;fill:none;stroke:currentColor;
-  stroke-width:2.4;stroke-linecap:square;transition:transform .18s}
-.older[open] .chevd{transform:rotate(180deg)}
-
-.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
-.empty[hidden]{display:none}
-.note{padding:22px 0 6px;font-size:12px;color:rgba(255,253,247,.5)}
-
-/* ══ révélation au défilement, purement CSS ════════════════════════ */
-@supports (animation-timeline: view()){
-  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 4% cover 12%}
-}
-
 /* ══ pied ══════════════════════════════════════════════════════════ */
 footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
 .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
@@ -388,9 +208,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
 .legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
 
-/* ══ barre de bas d'écran ══════════════════════════════════════════
-   Un cran par changement, dans l'encre de son univers, dans l'ordre du
-   journal : la frise dit d'un coup d'œil sur quoi le site a travaillé. */
+/* ══ barre de bas d'écran : le score global, toujours là ═══════════ */
 .hud{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);
   border-top:2px solid var(--paper);padding:8px 20px;
   padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
@@ -399,9 +217,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .hud b em{font-style:normal;color:var(--hot)}
 .hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
   color:rgba(255,253,247,.66)}
-.hud .bar{flex:1;min-width:120px;height:12px;border:2px solid var(--paper);
-  display:flex;gap:1px;padding:1px}
-.hud .bar i{flex:1;background:var(--c,var(--soon))}
+.hud .bar{flex:1;min-width:120px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--cleared);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+
 
 @media(max-width:1080px){
   .nav-links{display:none}
@@ -409,6 +228,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .foot{grid-template-columns:1fr 1fr}
 }
 @media(max-width:720px){
+  .slots{grid-template-columns:1fr}
   /* Le pied tenait 722 px de haut sur un telephone, presque un ecran
      entier : les deux listes passent cote a cote, le bloc de tete garde
      la largeur, et tout le reste se resserre. Rien n'est retire. */
@@ -428,88 +248,445 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .legal{padding-top:11px;font-size:10.5px;line-height:1.5}
   .legal a{font-size:10.5px}
   .hud .lbl{display:none}
+  .deep .go{margin-left:0}
   .icon-btn{width:44px;height:44px}
   .dw-site a{padding:13px 20px}
-  /* la vedette s'empile : à trois blocs sur une ligne, un titre long se
-     retrouvait écrasé dans une colonne de six mots de haut */
-  .last .wrap{flex-direction:column;align-items:flex-start;gap:11px}
-  .last .txt{width:100%}
-  .last .big{text-align:left;font-size:clamp(26px,9vw,40px)}
-  .last .big small{margin-top:2px}
-  /* en étroit la vignette maigrit plutôt que d'étrangler le texte */
-  .vig{width:112px}
-  .vig.none b{font-size:26px}
-  .card{gap:11px}
-  .ti{font-size:19px}
-  .card.site .ti{font-size:23px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .tag em{opacity:1}
+  .js .rv{opacity:1;transform:none}
+  .resume .chev,.start em{opacity:1}
+}
+/* ── le pied : les douze lignes en tête, tout au centre ───────────── */
+footer{border-top:0;padding:0 0 30px}
+.f-lines{display:flex;height:10px;border-top:2px solid var(--paper)}
+.f-lines i{flex:1}
+footer .foot{grid-template-columns:1fr;justify-items:center;text-align:center;gap:24px;padding-top:32px}
+footer .foot>div:first-child{grid-column:auto}
+.f-head{display:flex;flex-direction:column;align-items:center;gap:12px}
+.f-logo{width:min(300px,72vw);height:auto}
+footer .f-head p{max-width:58ch;margin:0 auto;font-size:13.5px}
+footer .f-uni{width:100%;max-width:1080px}
+footer .f-uni h4{font-size:13px;letter-spacing:.22em;color:rgba(255,253,247,.55);margin-bottom:12px}
+.f-uni ul{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+footer .f-uni a{display:flex;align-items:center;gap:9px;height:100%;padding:8px 10px;border:2px solid var(--line);
+  text-decoration:none;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;text-transform:uppercase;
+  letter-spacing:.03em;line-height:1.05;color:var(--paper);text-align:left}
+footer .f-uni a:hover{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent);text-decoration:none}
+.f-more ul{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 28px}
+footer .f-more a{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--paper)}
+footer .f-more a.doss{color:var(--c-doss)}
+footer .f-more a.upc{color:var(--c-upc)}
+footer .f-more a.news{color:var(--c-news)}
+footer .legal{width:100%;max-width:1080px;text-align:center}
+@media(max-width:1080px){
+  .f-uni ul{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:720px){
+  .f-uni ul{grid-template-columns:1fr 1fr;gap:6px}
+  footer .f-uni a{font-size:14px;padding:7px 8px;gap:7px}
+  footer .f-uni li a{display:flex}
+  footer .f-more a{font-size:15px}
+  .duo .deep,.duo .sy{padding:18px 16px 22px}
 }
 
-/* ══ CENTRAGE ══════════════════════════════════════════════════════
-   Bandeaux, accroche, stats, intro et bandes d'ère au centre. Les
-   fiches de médias, les filtres et le pied gardent leur alignement :
-   une liste qu'on parcourt du regard se lit sur un bord franc. */
-.attract .wrap{text-align:center}
-.attract h1,.dek,.intro-lead{margin-left:auto;margin-right:auto}
-.attract .head{justify-content:center}
-/* dans un flex, une marge auto mange l espace : le titre pousserait le tag au bord */
-.attract .head h1{margin-left:0;margin-right:0}
-.upd{justify-content:center}
-.crumb{margin-left:auto;margin-right:auto}
-.stats{margin-left:auto;margin-right:auto}
-.intro-lead{text-align:center}
-.intro-tags{text-align:center}
-.keys-title{text-align:center}
-.key-h{justify-content:center}
-.key p{text-align:center}
-.map .wrap{text-align:center}
-.map .meta{justify-content:center}
-.pick h2,.pick .sub{text-align:center}
-.pick .sub{margin-left:auto;margin-right:auto}
-.slot .nm,.slot .body,.slot .d{text-align:center}
-.score{justify-content:center;gap:16px}
-.deep .wrap{justify-content:center;text-align:center}
-.deep p{margin-left:auto;margin-right:auto}
-.deep .go{margin-left:0}
-/* ── retouches du 17/08 ────────────────────────────────────────────
-   Même geste qu'à « À venir » : pastille sous le titre, bande de mois
-   centrée, décompte en dessous. */
-.attract .head{flex-direction:column;align-items:center}
-.mo .wrap{flex-direction:column;align-items:center;text-align:center;gap:8px}
-/* ── les filtres, repliés ──────────────────────────────────────────
-   Ouverts en permanence en haut de l’écran, ils mangeaient deux rangées
-   avant la première sortie. Repliés, ils tiennent une ligne, et le
-   décompte reste lisible sans rien ouvrir. */
-.sieve .wrap{display:block;padding-top:0;padding-bottom:0}
-.filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;
-  cursor:pointer;list-style:none;padding:11px 4px;
-  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;
-  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.86)}
+/* ══ retouches — barre A, tiroir, légende, réseaux ═════════════════
+   La barre prend toute la largeur : le logo au bord gauche, le drapeau
+   au bord droit, les liens au centre de l'écran — trois colonnes, les
+   deux du bord de même largeur, sans quoi le centre ne l'est pas. */
+header .wrap{max-width:none;display:grid;grid-template-columns:1fr auto 1fr;
+  padding-left:clamp(14px,2vw,32px);padding-right:clamp(14px,2vw,32px)}
+header .brand{justify-self:start;width:clamp(170px,16vw,310px);flex:none}
+header .brand img{max-height:none}
+header .nav-links{margin-left:0;justify-content:center;flex-wrap:nowrap}
+header .nav-tools{margin-left:0;justify-self:end}
+@media(max-width:1080px){
+  header .wrap{grid-template-columns:1fr auto}
+  header .brand{width:min(260px,58vw)}
+}
+/* le tiroir : le menu de l'ordinateur, dans le même ordre, en boutons
+   du pied de page — les neuf autres univers sous « More universes » */
+.dw-list{display:flex;flex-direction:column;gap:6px;padding:12px 16px 16px}
+.dw-list>a,.dw-more>summary,.dw-pop a{display:flex;align-items:center;gap:9px;min-height:44px;padding:8px 12px;
+  border:2px solid var(--line);text-decoration:none;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
+  font-size:17px;text-transform:uppercase;letter-spacing:.05em;line-height:1.05;color:var(--paper)}
+.dw-list>a:hover,.dw-pop a:hover{border-color:var(--paper)}
+.dw-list>a.u:hover,.dw-pop a:hover{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent)}
+.dw-list>a.home[aria-current]{color:var(--hot);border-color:var(--hot)}
+.dw-list a i{font-style:normal;display:inline-grid;place-items:center;min-width:34px;height:22px;padding:0 5px;flex:none;
+  background:var(--k);color:var(--ink);font-family:'Big Shoulders Display','BSD repli',sans-serif;font-weight:900;font-size:13px;
+  letter-spacing:.04em;line-height:1;border:2px solid var(--ink)}
+.dw-list a i.w{color:#fff}
+.dw-more>summary{list-style:none;cursor:pointer;justify-content:space-between}
+.dw-more>summary::-webkit-details-marker{display:none}
+.dw-more>summary::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.dw-more[open]>summary{border-color:var(--paper)}
+.dw-more[open]>summary::after{transform:translateY(2px) rotate(225deg)}
+.dw-pop{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding-top:6px}
+.dw-pop a{font-size:15px;padding:7px 9px;gap:8px;min-height:40px}
+/* au-dessus du téléphone, ni burger ni tiroir, même resté ouvert */
+@media(min-width:720.02px){
+  .burger{display:none!important}
+  .drawer,.drawer.open{display:none!important}
+}
+/* le menu de l'ordinateur tient jusqu'à 721 px : le burger est pour
+   le téléphone seul. Entre 721 et 1080, le logo et les liens se serrent. */
+@media(min-width:720.02px) and (max-width:1080px){
+  .nav-links{display:flex}
+  header .wrap{grid-template-columns:auto 1fr auto;gap:12px}
+  header .brand{width:clamp(118px,15vw,170px)}
+  header .nav-links{gap:10px}
+  .nav-links a,.nav-more>summary{font-size:13.5px;letter-spacing:.05em}
+}
+/* la case « en chantier » : tout au centre */
+.l-grid .lock .lock-bd{flex:1;align-items:center;text-align:center}
+.l-grid .lock .sg-p{display:flex;justify-content:center}
+/* les réseaux : leur propre rangée, au centre */
+footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
+@media(max-width:720px){
+  .m-foot{justify-content:center}
+  .m-leg{justify-content:center;text-align:center}
+}
+/* ══ MAQUETTE — LE JOURNAL DU RÉSEAU ══════════════════════════════════
+   « Nouveautés » passe au plan de transport, comme « À venir ». Ici la
+   ligne remonte le temps : le train est à aujourd'hui, chaque mois du
+   journal est une station, et chaque changement un arrêt à l'encre de son
+   univers. Une timeline ouverte est une ligne inaugurée — son arrêt est un
+   nœud de correspondance ; un média ajouté est un arrêt de plus sur sa
+   ligne. Rien ne se coche ici. */
+:root{--uni:var(--c-news);--rest:color-mix(in srgb,var(--c-news) 30%,#1c1a26);--rail:64px;--board:#07060b;
+  --led:radial-gradient(rgba(255,253,247,.06) 1px,transparent 1.4px) 0 0/4px 4px}
+
+/* ── le premier écran ── */
+.ln-hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--paper)}
+.ln-bg{position:absolute;inset:-24px;z-index:-2;background:var(--ink) center 30%/cover no-repeat;
+  filter:blur(3px) saturate(.85);opacity:.34;transform:scale(1.05)}
+.ln-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(130% 100% at 50% 30%,rgba(13,11,18,.25) 0%,rgba(13,11,18,.75) 60%,var(--ink) 100%)}
+.ln-hero .wrap{padding-top:40px;padding-bottom:66px;text-align:center}
+.ln-head h1{font-size:clamp(58px,10.5vw,138px);line-height:.84;text-shadow:5px 5px 0 var(--ink)}
+.ln-head h1 .nm{display:block}
+.ln-head .tag{margin:16px auto 0;clip-path:none;border-radius:5px}
+.tag em{font-style:normal}
+.ln-hero .dek{max-width:800px;margin:16px auto 0;font-size:16.5px;text-wrap:pretty}
+
+/* le plan du journal : aujourd'hui à gauche, un mois par station, l'origine au bout */
+.ln-map{position:relative;max-width:1120px;margin:22px auto 0;padding:66px 156px 70px 132px}
+.lm-dep,.lm-cnt{position:absolute;top:50%;transform:translateY(-50%);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,253,247,.6)}
+.lm-dep{right:calc(100% - 100px);color:var(--hot)}
+.lm-cnt{right:0;color:var(--paper)}
+.lm-cnt b{color:var(--hot);font-size:17px}
+.lm-track{position:relative;height:10px;border-radius:5px;background:var(--rest);box-shadow:0 0 0 3px var(--ink)}
+.lm-fill{position:absolute;inset:0;border-radius:5px;background:var(--uni)}
+.lm-fill::after{content:'';position:absolute;inset:0;border-radius:5px;opacity:.75;
+  background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 0 50%/16px 100% repeat-x;
+  animation:lm-flow .8s linear infinite}
+@keyframes lm-flow{to{background-position:16px 50%}}
+.lm-st{position:absolute;top:50%;z-index:1;display:block;border-radius:50%;text-decoration:none;
+  width:var(--s);height:var(--s);transform:translate(-50%,-50%);
+  background:var(--paper);border:3px solid var(--ink);box-shadow:0 0 0 2px var(--uni);transition:transform .15s}
+.lm-st[hidden]{display:none}
+.lm-st.cur{background:var(--hot);box-shadow:0 0 0 3px var(--ink),0 0 0 5px var(--hot)}
+/* l'origine : le terminus du journal, un anneau plutôt qu'un plein */
+.lm-st.org{background:var(--ink);border:4px solid var(--uni);box-shadow:0 0 0 3px var(--ink)}
+.lm-st:hover,.lm-st:focus-visible{transform:translate(-50%,-50%) scale(1.2);outline:none}
+.lm-lb{position:absolute;left:50%;transform:translateX(-50%);width:max-content;
+  max-width:170px;text-align:center;line-height:1;pointer-events:none;color:var(--paper);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;
+  text-shadow:0 2px 0 var(--ink),0 0 8px var(--ink)}
+.lm-st .lm-lb{bottom:calc(100% + 11px + var(--lv,0px))}
+.lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px + var(--lv,0px))}
+.lm-lb small{display:block;margin-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,253,247,.58)}
+.lm-st.cur .lm-lb{color:var(--hot)}
+.lm-train{position:absolute;top:50%;left:0;z-index:2;width:38px;height:20px;transform:translate(-50%,-50%);pointer-events:none}
+.lm-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px var(--hot))}
+.lm-train .body,.hud-trn .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
+.lm-train .win,.hud-trn .win{fill:var(--ink)}
+.lm-train .ping{fill:none;stroke:var(--hot);stroke-width:2;transform-box:fill-box;transform-origin:center;
+  animation:lm-ping 1.8s ease-out infinite}
+@keyframes lm-ping{from{transform:scale(.7);opacity:.9}to{transform:scale(1.9);opacity:0}}
+.lm-now{display:none}
+.ln-map.go .lm-track{animation:lm-draw 1.15s cubic-bezier(.65,0,.25,1) both}
+@keyframes lm-draw{from{clip-path:inset(-140px 100% -140px -220px)}to{clip-path:inset(-140px -220px -140px -220px)}}
+.ln-map.go .lm-st{animation:lm-pop .4s cubic-bezier(.2,1.6,.4,1) both;animation-delay:var(--d,0s)}
+@keyframes lm-pop{from{transform:translate(-50%,-50%) scale(0)}}
+.ln-map.go .lm-train,.ln-map.go .lm-cnt,.ln-map.go .lm-now{animation:lm-in .45s ease-out both;animation-delay:1.1s}
+@keyframes lm-in{from{opacity:0}}
+
+/* le tableau : les chiffres du journal, en diodes */
+.ln-board{display:flex;flex-wrap:nowrap;justify-content:center;margin:12px auto 0;width:fit-content;max-width:100%;
+  background:var(--led),var(--board);border:2px solid var(--paper);border-radius:10px;overflow:hidden;
+  box-shadow:6px 6px 0 var(--ink)}
+.ln-board .s{padding:11px 22px 12px;border-right:2px dashed rgba(255,253,247,.16);min-width:0}
+.ln-board .s:last-child{border-right:0}
+.ln-board b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;line-height:.9;
+  color:var(--hot);text-shadow:0 0 12px rgba(240,201,124,.45);white-space:nowrap}
+.ln-board span{display:block;margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,253,247,.66)}
+
+/* ── le billet : le dernier changement, à cheval sur le filet du premier écran ── */
+.ticket-row{position:relative;z-index:3;display:flex;justify-content:center;margin-top:-34px;margin-bottom:6px}
+.ticket{display:flex;align-items:center;gap:18px;max-width:100%;color:var(--ink);background:var(--paper);
+  padding:10px 20px 10px 0;transform:rotate(-1.2deg);text-decoration:none;text-align:left;
+  box-shadow:6px 6px 0 var(--ink),6px 6px 0 2px var(--paper);
+  transition:transform .15s cubic-bezier(.2,.9,.3,1);
+  -webkit-mask:radial-gradient(circle 9px at 84px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at 84px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+          mask:radial-gradient(circle 9px at 84px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at 84px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.ticket:hover,.ticket:focus-visible{transform:rotate(0) translateY(-2px)}
+.ticket[aria-hidden=true]{visibility:hidden}
+.t-stub{align-self:stretch;flex:none;width:84px;display:flex;flex-direction:column;margin:-10px 0;
+  border-right:2px dashed var(--ink)}
+.t-stub span{flex:1;display:grid;place-items:center;background:var(--k);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:28px;color:var(--ink)}
+.t-stub span.w{color:#fff}
+.t-txt{display:flex;flex-direction:column;min-width:0;max-width:520px}
+.t-k{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:#6b6480}
+.t-nm{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:29px;line-height:.95;text-transform:uppercase;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-st{font-size:13px;font-weight:600;color:#3a3548;margin-top:3px}
+.t-pc{flex:none;white-space:nowrap;padding-left:18px;border-left:2px solid #d9d4c8;text-align:center;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:40px;line-height:1;text-transform:uppercase}
+.t-pc small{display:block;font-family:'Chivo','Chivo repli';font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:#6b6480;margin-top:3px}
+
+/* ── la barre collante des filtres ── */
+.sieve{border-bottom:2px solid var(--paper);position:sticky;top:var(--hh,53px);z-index:50;
+  background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sieve .wrap{display:block}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:center}
+.sieve button{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);border-radius:999px;
+  color:rgba(255,253,247,.76);padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:10px;height:10px;border-radius:50%;background:var(--k,var(--paper));display:block}
+.sieve button small{font-family:'Chivo','Chivo repli';font-size:10.5px;font-weight:700;letter-spacing:0;opacity:.6}
+.sieve button.vide{border-style:dashed;opacity:.55}
+.filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;list-style:none;padding:11px 4px;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,253,247,.86)}
 .filt>summary::-webkit-details-marker{display:none}
 .filt>summary:hover{color:var(--paper)}
-.filt>summary .chev{width:19px;height:19px;fill:none;stroke:currentColor;
-  stroke-width:2.4;stroke-linecap:square;transition:transform .16s steps(3,end)}
+.filt>summary .chev{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square;transition:transform .16s}
 .filt[open]>summary .chev{transform:rotate(180deg)}
-@media(max-width:560px){
-  .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
-  .filt>summary .fcount{font-size:10px;letter-spacing:.04em}
+.fcount{font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
+.filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;padding:13px 0 16px;border-top:2px solid var(--line)}
+.filt-body .srow{display:flex;flex-direction:column;gap:11px}
+.lab{width:100%;text-align:center;margin:0 0 2px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,253,247,.5)}
+
+/* ── la ligne du journal ── */
+.cal-in{position:relative;padding-top:18px;padding-bottom:34px}
+.cal-in::before{content:'';position:absolute;z-index:0;width:8px;border-radius:4px;
+  left:calc(20px + var(--rail) / 2 - 4px);top:var(--l-top,0px);height:var(--l-h,0px);
+  background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 50% 0/100% 16px repeat-y,var(--rest);
+  animation:ln-flow .8s linear infinite reverse}
+@keyframes ln-flow{to{background-position:50% 16px,0 0}}
+
+/* vous êtes ici : le train, en tête de la ligne */
+.ici{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:center;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+.trn{justify-self:center;width:38px;height:20px;border-radius:7px 10px 10px 7px;transform:rotate(90deg);
+  background:linear-gradient(var(--ink),var(--ink)) 8px 5px/6px 6px no-repeat,
+             linear-gradient(var(--ink),var(--ink)) 17px 5px/6px 6px no-repeat,var(--hot);
+  border:2px solid var(--ink);animation:ici-ping 1.8s ease-out infinite}
+@keyframes ici-ping{from{box-shadow:0 0 10px var(--hot),0 0 0 0 rgba(240,201,124,.85)}
+  to{box-shadow:0 0 10px var(--hot),0 0 0 13px rgba(240,201,124,0)}}
+.ici-t b{color:var(--paper)}
+
+/* la station : un mois, sa plaque, ses correspondances */
+.mon-sec{position:relative;z-index:1;scroll-margin-top:calc(var(--hh,53px) + 56px)}
+.mon-sec[hidden]{display:none}
+.stn{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;padding-top:34px}
+.stn-rail{position:relative;display:grid;place-items:center}
+.stn-dot{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--paper);
+  border:7px solid var(--ink);box-shadow:0 0 0 4px var(--uni)}
+.mon-sec.now .stn-dot{background:var(--hot);box-shadow:0 0 0 4px var(--hot)}
+.mon-sec.org .stn-dot{background:var(--ink);border-color:var(--uni);box-shadow:0 0 0 4px var(--ink)}
+.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:12px;overflow:hidden;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c-news) 40%,var(--ink)) 0%,
+    color-mix(in srgb,var(--c-news) 14%,var(--ink)) 70%);
+  box-shadow:7px 7px 0 var(--ink);min-height:156px;display:flex;align-items:center}
+.stn-plate::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--led);opacity:.8}
+.mon-sec.now .stn-plate{border-color:var(--hot)}
+.mon-sec.org .stn-plate{border-style:dashed}
+.stn-txt{position:relative;padding:18px 26px 19px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:640px}
+.stn-k{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
+  font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.85)}
+.stn-k .now{background:var(--hot);color:var(--ink);border-radius:5px;padding:2px 8px 1px;font-size:12px;letter-spacing:.16em}
+.stn-nm{font-size:clamp(36px,5.2vw,64px);line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+.stn-meta{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-shadow:0 1px 3px var(--ink)}
+.stn-cx{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.stn-cx .lab{width:auto;margin:0 4px 0 0;font-size:10.5px;letter-spacing:.14em;color:rgba(255,253,247,.7)}
+.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:5px;
+  background:var(--k);color:var(--ink);border:2px solid var(--ink);
+  font-family:'Big Shoulders Display','BSD repli';font-size:13px;font-weight:900;letter-spacing:.05em}
+.cx[data-w]{color:#fff}
+.cx b{background:var(--ink);color:var(--k);border-radius:3px;padding:0 5px;font-size:13px}
+/* les vignettes du mois, en éventail sur la droite de la plaque */
+.stn-po{position:absolute;right:26px;top:50%;display:flex;transform:translateY(-50%);pointer-events:none}
+.stn-po img{width:118px;aspect-ratio:16/9;object-fit:cover;border:2px solid var(--ink);border-radius:6px;
+  box-shadow:4px 4px 0 var(--ink);background:#000;margin-left:-38px;transform:rotate(var(--r,0deg))}
+.stn-po img:nth-child(odd){--r:-4deg}
+.stn-po img:nth-child(even){--r:3deg;margin-top:14px}
+
+/* ── les changements ── */
+.rows{list-style:none;display:flex;flex-direction:column;gap:12px;padding:18px 0 4px}
+.rel{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:start;--cy:50px}
+.rel[hidden]{display:none}
+/* l'arrêt : l'encre de la ligne, et le raccord jusqu'au quai */
+.stop{grid-column:1;grid-row:1;justify-self:center;position:relative;z-index:1;margin-top:calc(var(--cy) - 13px);
+  width:26px;height:26px;border-radius:50%;background:var(--ink);border:6px solid var(--c);box-shadow:0 0 0 3px var(--ink)}
+.stop::after{content:'';position:absolute;top:50%;left:calc(100% + 6px);width:calc(var(--rail) / 2 + 1px);height:5px;
+  transform:translateY(-50%);background:var(--c);opacity:.6}
+/* une ligne inaugurée : le nœud de correspondance, plein, cerclé de papier */
+.rel.site .stop{width:34px;height:34px;margin-top:calc(var(--cy) - 17px);background:var(--c);
+  border:5px solid var(--paper);box-shadow:0 0 0 3px var(--ink),0 0 14px color-mix(in srgb,var(--c) 70%,transparent)}
+.rel.site .stop::after{left:calc(100% + 5px);width:calc(var(--rail) / 2 - 3px)}
+
+.card{grid-column:2;grid-row:1;min-width:0;position:relative;display:grid;
+  grid-template-columns:118px 168px minmax(0,1fr) 34px;column-gap:18px;align-items:stretch;min-height:100px;
+  border:2px solid var(--line);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none;
+  background:color-mix(in srgb,var(--c) 9%,#0f0d16);
+  transition:transform .12s cubic-bezier(.2,.9,.3,1),box-shadow .12s,border-color .12s}
+a.card:hover,a.card:focus-visible{transform:translate(-4px,-4px);border-color:var(--c);box-shadow:4px 4px 0 var(--c);outline:none}
+.rel.site .card{border-color:color-mix(in srgb,var(--c) 55%,transparent);
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c) 22%,#0f0d16),color-mix(in srgb,var(--c) 7%,#0f0d16) 70%)}
+/* l'horaire : l'époque dans le monde, sur fond de diodes ; le code de ligne pour une ligne neuve */
+.bu-time{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:10px 6px;
+  text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
+.bu-time .wd,.bu-time .mo{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,253,247,.55);line-height:1.05}
+.bu-time .mo{color:rgba(255,253,247,.78)}
+.bu-time .dn{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:24px;line-height:.95;
+  color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4);overflow-wrap:anywhere}
+.rel.site .bu-time .dn{font-size:40px;line-height:.85;color:var(--c);text-shadow:0 0 12px color-mix(in srgb,var(--c) 55%,transparent)}
+/* la vignette : l'œuvre, la bannière de son Dossier, ou celle de l'univers */
+.vig{align-self:center;display:block;aspect-ratio:16/9;border:2px solid var(--ink);border-radius:7px;overflow:hidden;
+  background:#000;box-shadow:0 0 0 1px var(--line)}
+.vig img{display:block;width:100%;height:100%;object-fit:cover}
+.vig.none{display:grid;place-items:center;background:color-mix(in srgb,var(--k) 30%,#0f0d16)}
+.vig.none b{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:40px;color:var(--k)}
+.txt{align-self:center;min-width:0;padding:13px 0}
+.tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.code{display:inline-grid;place-items:center;background:var(--c);color:var(--ink);border:2px solid var(--ink);
+  border-radius:5px;padding:1px 7px 0;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.04em;line-height:1.1}
+.code.w{color:#fff}
+.u{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--c)}
+.b,.sb{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;color:var(--ink);
+  background:var(--k,var(--paper));border:2px solid var(--ink);border-radius:5px}
+.sb{background:var(--hot)}
+.vo{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:2px 7px;
+  color:rgba(255,253,247,.7);border:1px dashed rgba(255,253,247,.4);border-radius:5px}
+.ti{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:25px;line-height:1;text-transform:uppercase}
+.dsc{display:block;margin-top:6px;font-size:13.5px;line-height:1.45;color:rgba(255,253,247,.8);text-wrap:pretty}
+.cta{display:inline-block;margin-top:8px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.cta em{font-style:normal}
+.arr{align-self:center;justify-self:center;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;color:rgba(255,253,247,.5);transition:transform .15s,color .15s}
+a.card:hover .arr{transform:translateX(3px);color:var(--c)}
+
+/* le terminus : là où le journal commence */
+.terminus{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;
+  align-items:center;padding-top:28px}
+.terminus .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
+.terminus p{display:flex;align-items:baseline;gap:6px 16px;flex-wrap:wrap}
+.terminus b{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:.03em}
+.terminus span{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.62)}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7);text-align:center}
+.empty[hidden]{display:none}
+.note{padding:10px 0 6px;font-size:12px;color:rgba(255,253,247,.5);text-align:center}
+
+@supports (animation-timeline: view()){
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 4% cover 12%}
 }
-.filt>summary .fcount{margin-left:0;font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;
-  letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
-.filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;
-  padding:13px 0 16px;border-top:2px solid var(--line)}
-.filt-body>*{width:auto;max-width:100%}
-.filt-body .search{flex:0 0 auto;width:min(430px,100%)}
-.filt-body .sgroup,.filt-body .srow{justify-content:center}
-/* dans une colonne, flex-basis:100% porte sur la hauteur : les deux
-   rangées héritées de la barre étalée s’y étiraient sur tout le dépliant */
-.filt-body #f-uni{flex:0 1 auto}
-.filt-body .srow{flex:0 1 auto;flex-direction:column;gap:11px}
-.filt-body .lab{width:100%;text-align:center;margin:0 0 2px;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+
+/* ── la barre du bas : un cran par changement, à l'encre de sa ligne ── */
+.hud-trn{flex:none;width:30px;height:16px}
+.hud-trn svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud .bar{flex:1;min-width:120px;height:10px;border:0;border-radius:5px;overflow:hidden;
+  display:flex;gap:2px;padding:0;background:none;position:relative}
+.hud .bar i{position:static;flex:1;background:var(--c,var(--soon));transform:none}
+
+@media(max-width:720px){
+  :root{--rail:40px}
+  .ln-hero .wrap{padding-top:28px;padding-bottom:56px}
+  .ln-head h1{font-size:clamp(46px,14vw,68px)}
+  .ln-hero .dek{font-size:14.5px}
+  .ln-map{padding:26px 8px 12px;margin-top:10px}
+  .lm-dep,.lm-cnt,.lm-lb{display:none}
+  .lm-st{width:calc(var(--s) * .62);height:calc(var(--s) * .62);border-width:2px}
+  .lm-now{display:block;margin-top:18px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;
+    letter-spacing:.06em;text-transform:uppercase}
+  .lm-now em{font-style:normal;color:var(--hot)}
+  .ln-board{width:100%;margin-top:14px}
+  .ln-board .s{flex:1 1 0;padding:9px 6px}
+  .ln-board b{font-size:22px}
+  .ln-board span{font-size:8.5px;letter-spacing:.04em}
+  .ticket{gap:12px;padding-right:12px;width:100%;
+    -webkit-mask:radial-gradient(circle 8px at 58px 0,#0000 98%,#000) top/100% 51% no-repeat,
+                 radial-gradient(circle 8px at 58px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+            mask:radial-gradient(circle 8px at 58px 0,#0000 98%,#000) top/100% 51% no-repeat,
+                 radial-gradient(circle 8px at 58px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+  .t-stub{width:58px}
+  .t-stub span{font-size:19px}
+  .t-txt{flex:1}
+  .t-nm{font-size:21px;white-space:normal}
+  .t-st{font-size:11.5px}
+  .t-pc{font-size:24px;padding-left:10px}
+  .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
+  .fcount{font-size:10px;letter-spacing:.04em}
+  .stn{padding-top:26px;column-gap:10px}
+  .stn-dot{width:34px;height:34px;border-width:5px;box-shadow:0 0 0 3px var(--uni)}
+  .mon-sec.now .stn-dot{box-shadow:0 0 0 3px var(--hot)}
+  .mon-sec.org .stn-dot{box-shadow:0 0 0 3px var(--ink)}
+  .stn-plate{min-height:0}
+  .stn-txt{padding:14px 14px 15px;max-width:none}
+  .stn-k{font-size:12px;letter-spacing:.14em}
+  .stn-nm{font-size:clamp(28px,9vw,40px)}
+  .stn-meta{font-size:11.5px}
+  .stn-po{display:none}
+  .tags .u{display:none}
+  .ici{column-gap:10px;font-size:13px;letter-spacing:.1em}
+  .trn{width:32px;height:17px;background:linear-gradient(var(--ink),var(--ink)) 6px 4px/5px 5px no-repeat,
+    linear-gradient(var(--ink),var(--ink)) 14px 4px/5px 5px no-repeat,var(--hot)}
+  .rows{gap:10px;padding-top:14px}
+  .rel{column-gap:10px;--cy:18px}
+  .stop{width:22px;height:22px;border-width:5px;margin-top:calc(var(--cy) - 11px)}
+  .stop::after{width:calc(var(--rail) / 2 - 1px)}
+  .rel.site .stop{width:26px;height:26px;border-width:4px;margin-top:calc(var(--cy) - 13px)}
+  .rel.site .stop::after{width:calc(var(--rail) / 2 - 3px)}
+  /* l'horaire devient le bandeau du haut de la carte, la vignette flotte à gauche du texte */
+  .card{grid-template-columns:96px minmax(0,1fr) 18px;column-gap:10px;min-height:0;padding:0 10px 12px 12px}
+  .bu-time{grid-column:1/-1;flex-direction:row;justify-content:center;gap:10px;margin:0 -10px 0 -12px;
+    padding:7px 12px;border-right:0;border-bottom:2px dashed rgba(255,253,247,.16)}
+  .bu-time .dn,.rel.site .bu-time .dn{font-size:20px;line-height:1}
+  /* le texte se déplie dans la grille : les étiquettes et le titre à
+     côté de la vignette, le résumé et le lien sur toute la largeur */
+  .txt{display:contents}
+  .vig{grid-column:1;grid-row:2/span 2;align-self:start;margin-top:11px}
+  .tags{grid-column:2;grid-row:2;align-self:end;margin:11px 0 5px}
+  .ti{grid-column:2;grid-row:3;align-self:start;font-size:20px}
+  .dsc{grid-column:1/-1;margin-top:9px;font-size:12.5px}
+  .cta{grid-column:1/-1;justify-self:start}
+  .card>span:last-child,.arr{grid-column:3;grid-row:2/span 2}
+  .terminus{column-gap:10px}
+  .terminus b{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lm-fill::after,.lm-train .ping,.cal-in::before,.trn{animation:none}
+}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://chronologeek.app/fr/"},{"@type":"ListItem","position":2,"name":"Nouveautés","item":"https://chronologeek.app/fr/nouveautes"}]}</script>
 </head>
@@ -541,37 +718,49 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
-    <span class="dw-lab">Les univers</span>
-    <div class="dw-uni"><a href="/fr/starwars" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="/fr/marvel" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="/fr/dc" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="/fr/avatar" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="/fr/startrek" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="/fr/walkingdead" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="/fr/dragonage" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="/fr/assassinscreed" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a><a href="/fr/dcanimation" class="u-dca"><i aria-hidden="true"></i>DC Animation</a><a href="/fr/jurassicworld" class="u-jw"><i aria-hidden="true"></i>Jurassic World</a><a href="/fr/witcher" class="u-wi"><i aria-hidden="true"></i>The Witcher</a><a href="/fr/residentevil" class="u-re"><i aria-hidden="true"></i>Resident Evil</a></div>
-    <span class="dw-lab">Le site</span>
-    <div class="dw-site"><a href="/fr/">Accueil</a><a href="/fr/dossiers/" class="doss">Dossiers</a><a href="/fr/a-venir" class="upc">À venir</a><a href="#" class="news" aria-current="page">Nouveautés</a></div>
+    <div class="dw-list">
+      <a href="/fr/" class="home">Accueil</a>
+      <a href="/fr/dossiers/" class="doss">Dossiers</a>
+      <a href="/fr/starwars" class="u" style="--k:var(--sw)"><i>SW</i>Star Wars</a>
+      <a href="/fr/marvel" class="u" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a>
+      <a href="/fr/dc" class="u" style="--k:var(--dc)"><i>DC</i>DC Multivers</a>
+      <details class="dw-more"><summary>Plus d’univers</summary><div class="dw-pop"><a href="/fr/avatar" class="u" style="--k:var(--av)"><i>AV</i>Avatar Legends</a><a href="/fr/startrek" class="u" style="--k:var(--st)"><i>ST</i>Star Trek</a><a href="/fr/walkingdead" class="u" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a><a href="/fr/dragonage" class="u" style="--k:var(--da)"><i>DA</i>Dragon Age</a><a href="/fr/assassinscreed" class="u" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a><a href="/fr/dcanimation" class="u" style="--k:var(--dca)"><i>DCA</i>DC Animation</a><a href="/fr/jurassicworld" class="u" style="--k:var(--jw)"><i>JW</i>Jurassic World</a><a href="/fr/witcher" class="u" style="--k:var(--wi)"><i>TW</i>The Witcher</a><a href="/fr/residentevil" class="u" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></div></details>
+      <a href="/fr/a-venir" class="upc">À venir</a>
+      <a href="#" class="news" aria-current="page">Nouveautés</a>
+    </div>
   </nav>
 </header>
 
 <main id="main">
 
-<section class="attract">
-  <div class="veil" aria-hidden="true"></div>
-  <div class="halftone" aria-hidden="true"></div>
+<!-- ══ LE PREMIER ÉCRAN : le titre, puis le plan du journal ═══════════
+     La ligne remonte le temps : le train est à aujourd'hui, chaque mois du
+     journal est une station, et le fond sans date est le terminus. -->
+<section class="attract ln-hero">
+  <div class="ln-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="head">
-      <h1 class="disp off">Nouveautés</h1>
+    <div class="ln-head">
+      <h1 class="disp"><span class="nm">Nouveautés</span></h1>
       <span class="tag" id="tag"><em>▸</em> <span id="tag-t"></span></span>
     </div>
     <p class="dek">Tout ce qui bouge sur Chronologeek — le site est vivant, et voici la preuve.</p>
+    <div class="ln-map" id="ln-map" aria-label="Plan du journal"></div>
+    <div class="ln-board" id="ln-board">
+      <div class="s"><b id="b-n">…</b><span>changements</span></div>
+      <div class="s"><b id="b-l">…</b><span>ouvertures</span></div>
+      <div class="s"><b id="b-a">…</b><span>arrêts ajoutés</span></div>
+      <div class="s"><b id="b-m">…</b><span>mois au journal</span></div>
+    </div>
   </div>
 </section>
 
-<!-- ══ LE DERNIER CHANGEMENT ═════════════════════════════════════ -->
-<div class="last" id="last" hidden>
-  <div class="wrap">
-    <span class="chev">Dernier ajout</span>
-    <span class="txt">
-      <span class="t" id="last-t"></span>
-      <span class="m" id="last-m"></span>
-    </span>
-    <span class="big" id="last-d"></span>
-  </div>
+<!-- ══ LE BILLET : le dernier changement ═════════════════════════════ -->
+<div class="wrap ticket-row">
+  <a class="ticket" id="last" href="#log" aria-hidden="true" tabindex="-1">
+    <span class="t-stub" id="last-stub"><span style="--k:var(--soon)">·</span></span>
+    <span class="t-txt"><span class="t-k">Dernier ajout</span><span class="t-nm" id="last-t">&nbsp;</span><span class="t-st" id="last-m">&nbsp;</span></span>
+    <span class="t-pc" id="last-d"></span>
+  </a>
 </div>
 
 <!-- ══ FILTRES ═══════════════════════════════════════════════════ -->
@@ -591,15 +780,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 <div id="log"></div>
 
-<details class="older" id="older" hidden>
-  <summary>
-    <span class="lab" id="older-lab">Et avant ça</span>
-    <span class="cnt" id="older-cnt"></span>
-    <svg class="chevd" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg>
-  </summary>
-  <div id="older-body"></div>
-</details>
-
 <div class="wrap">
   <p class="empty" id="empty" hidden>Rien ne correspond. Rallumez les filtres que vous avez éteints.</p>
   <p class="note" id="note"></p>
@@ -608,25 +788,21 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </main>
 
 <footer>
+  <div class="f-lines" aria-hidden="true"><i style="background:var(--sw)"></i><i style="background:var(--mcu)"></i><i style="background:var(--dc)"></i><i style="background:var(--av)"></i><i style="background:var(--st)"></i><i style="background:var(--twd)"></i><i style="background:var(--da)"></i><i style="background:var(--ac)"></i><i style="background:var(--dca)"></i><i style="background:var(--jw)"></i><i style="background:var(--wi)"></i><i style="background:var(--re)"></i></div>
   <div class="foot">
-    <div>
-      <h4>Chronologeek</h4>
-      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
-        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
-        qui regarde tout deux fois.</p>
+    <div class="f-head">
+      <img class="f-logo" src="/images/logo-chronologeek.webp" alt="Chronologeek" width="1143" height="101"/>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre.
+        Tous les médias, dans l'ordre chronologique, sans spoil. Construit et maintenu
+        par une seule personne qui regarde tout deux fois.</p>
     </div>
-    <div><h4>Timelines</h4><ul>
-      <li><a href="/fr/starwars">Star Wars</a></li>
-      <li><a href="/fr/marvel">Marvel — MCU</a></li>
-      <li><a href="/fr/dc">DC Multiverse</a></li>
-      <li><a href="/fr/avatar">Avatar Legends</a></li><li><a href="/fr/startrek">Star Trek</a></li><li><a href="/fr/walkingdead">The Walking Dead</a></li><li><a href="/fr/dragonage">Dragon Age</a></li><li><a href="/fr/assassinscreed">Assassin’s Creed</a></li><li><a href="/fr/dcanimation">DC Animation</a></li><li><a href="/fr/jurassicworld">Jurassic World</a></li><li><a href="/fr/witcher">The Witcher</a></li><li><a href="/fr/residentevil">Resident Evil</a></li>
-      <li><a href="/fr/dossiers/">Dossiers</a></li>
-    </ul></div>
-    <div><h4>Plus</h4><ul>
-      <li><a href="/fr/a-venir">Sorties à venir</a></li>
-      <li><a href="#" aria-current="page">Nouveautés</a></li>
+    <nav class="f-uni" aria-label="Timelines"><h4>Timelines</h4><ul><li><a href="/fr/starwars" style="--k:var(--sw)"><i>SW</i>Star Wars</a></li><li><a href="/fr/marvel" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a></li><li><a href="/fr/dc" style="--k:var(--dc)"><i>DC</i>DC Multivers</a></li><li><a href="/fr/avatar" style="--k:var(--av)"><i>AV</i>Avatar Legends</a></li><li><a href="/fr/startrek" style="--k:var(--st)"><i>ST</i>Star Trek</a></li><li><a href="/fr/walkingdead" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a></li><li><a href="/fr/dragonage" style="--k:var(--da)"><i>DA</i>Dragon Age</a></li><li><a href="/fr/assassinscreed" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a></li><li><a href="/fr/dcanimation" style="--k:var(--dca)"><i>DCA</i>DC Animation</a></li><li><a href="/fr/jurassicworld" style="--k:var(--jw)"><i>JW</i>Jurassic World</a></li><li><a href="/fr/witcher" style="--k:var(--wi)"><i>TW</i>The Witcher</a></li><li><a href="/fr/residentevil" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></li></ul></nav>
+    <nav class="f-more" aria-label="Plus"><ul>
+      <li><a href="/fr/dossiers/" class="doss">Dossiers</a></li>
+      <li><a href="/fr/a-venir" class="upc">Sorties à venir</a></li>
+      <li><a href="#" class="news" aria-current="page">Nouveautés</a></li>
       <li><a href="#contact" data-contact>Contact</a></li>
-    </ul></div>
+    </ul></nav>
     <div class="legal">
       Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       mais n'est ni approuvé ni certifié par TMDB. Données livres :
@@ -641,6 +817,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud"><div class="in">
   <b><em id="h-n">…</em></b>
   <span class="lbl" id="h-lbl">changements</span>
+  <span class="hud-trn" aria-hidden="true"><svg viewBox="0 0 38 20"><rect class="body" x="1" y="1" width="36" height="18" rx="8"/><rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/><rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg></span>
   <div class="bar" id="h-bar"></div>
   <span class="lbl" id="h-last"></span>
 </div></div>
@@ -659,9 +836,30 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
            jurassic:['Jurassic World','var(--jw)'],
            witcher:['The Witcher','var(--wi)'],
            residentevil:['Resident Evil','var(--re)']};
-  /* les types de média reprennent la table d'« À venir » ; « timeline » et
-     « dossier » ne sont pas des médias, ils n'ont pas de badge de type —
-     leur encre est celle de leur univers. */
+  /* i18n-off — les codes de ligne, ceux du plan de l'accueil et du pied de
+     page. Marvel et Resident Evil sont écrits en blanc : leur rouge est trop
+     sombre pour l'encre. */
+  var CODE={sw:'SW',mcu:'MCU',dc:'DC',avatar:'AV',startrek:'ST',twd:'TWD',
+            dragonage:'DA',assassinscreed:'AC',dcanimation:'DCA',jurassic:'JW',
+            witcher:'TW',residentevil:'RE'};
+  var BLANC={mcu:1,residentevil:1};
+  /* la bannière de chaque univers, celle de sa case sur l'accueil : une
+     ligne inaugurée la montre, faute de vignette à elle */
+  var BANNIERE={sw:'/images/starwars-banner.webp',mcu:'/images/mcu.webp',dc:'/images/dcmultivers.webp',
+    avatar:'/images/avatar.webp',startrek:'/images/startrek.webp',twd:'/images/twd.webp',
+    dragonage:'/images/dragonage.webp',assassinscreed:'/images/acuniverse.webp',
+    dcanimation:'/images/dcanimation.webp',jurassic:'/images/jurassicworld.webp',
+    witcher:'/images/witcher.webp',residentevil:'/images/residentevil.webp'};
+  var FR = document.documentElement.lang !== 'en';
+  var MOIS = FR
+    ? ['janvier','février','mars','avril','mai','juin',
+       'juillet','août','septembre','octobre','novembre','décembre']
+    : ['January','February','March','April','May','June',
+       'July','August','September','October','November','December'];
+  var JOURS_L = FR
+    ? ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi']
+    : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  /* i18n-on */
   var KIND={film:['Film','#64b5f6'],filmanim:['Film animé','#90caf9'],
             serie:['Série','#81c784'],anime:['Série animée','#ce93d8'],
             comic:['Comic','#fb923c'],roman:['Roman','#a78bfa'],
@@ -669,20 +867,23 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
             jeu:['Jeu vidéo','#ffb74d'],special:['Spécial','#ffa726'],
             video:['Vidéo','#f472b6'],livre:['Livre','#94a3b8']};
   var NAT={media:'Ajouts',site:'Site'};
-  /* la bannière du Dossier de chaque univers. Un roman ou un comic n'a
-     pas de visuel dans le catalogue : plutôt qu'un aplat, la carte montre
-     d'où vient l'entrée. Un univers sans Dossier n'a pas de ligne ici et
-     retombe sur l'aplat. */
+  /* la bannière du Dossier : un roman ou un comic n'a pas de visuel, la
+     carte montre alors d'où vient l'entrée */
   var DOSS={sw:'/images/starwarscomics.webp'};
-  /* combien de mois restent dépliés — le fond sans date descend toujours
-     dans le dépliant, quel que soit ce nombre */
-  var OPEN=3;
+  var TRAIN='<svg viewBox="0 0 38 20" aria-hidden="true"><rect class="ping" x="1" y="1" width="36" height="18" rx="8"/>'+
+    '<rect class="body" x="1" y="1" width="36" height="18" rx="8"/>'+
+    '<rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/>'+
+    '<rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg>';
+  var ARR='<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>';
 
   function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':s; return d.innerHTML; }
   function ink(u){ return UNI[u]?UNI[u][1]:'var(--soon)'; }
+  function pl(n,mot){ return n+' '+mot+(n>1?'s':''); }
 
-  var DATA=window.CG_NEWS, host=document.getElementById('log'),
-      olderBox=document.getElementById('older'), olderBody=document.getElementById('older-body');
+  var TODAY=new Date();
+  var NOW_M=new Date(TODAY.getTime()-TODAY.getTimezoneOffset()*60000).toISOString().slice(0,7);
+
+  var DATA=window.CG_NEWS, host=document.getElementById('log'), ROWS=[];
 
   if(!DATA||!DATA.months){
     host.innerHTML='<div class="wrap"><p class="empty">Le journal n’a pas pu être chargé. '+
@@ -690,166 +891,269 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     return;
   }
 
+  /* Le fond sans date va au bout : c'est le terminus du journal, ce qui
+     existait avant qu'on le tienne. */
+  var MONTHS=DATA.months.filter(function(m){ return !!m.key; })
+    .concat(DATA.months.filter(function(m){ return !m.key; }));
+  var dated=MONTHS.filter(function(m){ return !!m.key; });
+  var newest=dated[0];
 
-  /* ── une carte ─────────────────────────────────────────────────── */
-  function card(e){
+  /* ── un changement : l'arrêt, puis le quai ────────────────────────
+     De gauche à droite, comme sur les pages d'univers : l'arrêt à l'encre
+     de sa ligne, l'horaire, la vignette, le texte. L'horaire d'un ajout est
+     son époque dans le monde ; celui d'une ligne neuve, son code. */
+  var NUM=0;
+  function row(e){
     var u=UNI[e.uni], c=ink(e.uni), k=KIND[e.kind], site=(e.nat==='site');
-    var dead=!e.href;
+    var code=CODE[e.uni]||'', dead=!e.href;
+
+    var time=site
+      ? '<span class="bu-time"><span class="wd">'+(e.kind==='dossier'?'Nouveau Dossier':'Nouvelle ligne')+'</span>'+
+          '<b class="dn">'+(code||'·')+'</b><span class="mo">Ouverture</span></span>'
+      : '<span class="bu-time"><span class="wd">Nouvel arrêt</span>'+
+          '<b class="dn">'+esc(e.meta||'—')+'</b><span class="mo">'+(code||'')+'</span></span>';
+
+    /* L'`alt` ne se pose que sur la vignette de l'œuvre, `e.img`. La
+       bannière qui la remplace montre d'où vient l'entrée, pas l'œuvre :
+       `alt=""`, le titre est la ligne d'à côté. */
+    var src=e.img||(site?BANNIERE[e.uni]:DOSS[e.uni]);
+    var vig=src
+      ? '<span class="vig"><img src="'+esc(src)+'" alt="'+(e.img?esc(e.title):'')+'" loading="lazy" decoding="async"/></span>'
+      : '<span class="vig none" style="--k:'+(k?k[1]:'var(--soon)')+'" aria-hidden="true">'+
+          '<b>'+esc(e.title.trim().charAt(0))+'</b></span>';
 
     var tags='';
+    if(code) tags+='<span class="code'+(BLANC[e.uni]?' w':'')+'">'+code+'</span>';
     if(u) tags+='<span class="u">'+u[0]+'</span>';
     if(site) tags+='<span class="sb">'+(e.kind==='dossier'?'Dossier':'Timeline')+'</span>';
     else if(k) tags+='<span class="b" style="--k:'+k[1]+'">'+k[0]+'</span>';
-    if(e.meta) tags+='<span class="era">'+esc(e.meta)+'</span>';
     if(e.vo) tags+='<span class="vo">VO</span>';
 
-    /* la vignette n'existe que sur les ajouts de média ; sans image
-       propre, la bannière du Dossier de l'univers, et sans Dossier un
-       aplat dans l'encre du type plutôt qu'un trou dans la rangée */
-    /* L'`alt` ne se pose que sur la vignette de l'œuvre, `e.img` : elle la
-       montre, elle porte donc son titre, comme les vignettes de timeline
-       depuis le 5 septembre 2026. La bannière de Dossier qui la remplace,
-       elle, ne montre pas l'œuvre mais d'où elle vient — lui prêter le
-       titre serait faux, et le titre est de toute façon la ligne d'à
-       côté : `alt=""` est là ce qu'il faut, comme sur les deux images du
-       bouton « remonter en haut ». */
-    var vig='', src=e.img||DOSS[e.uni];
-    if(!site){
-      vig=src
-        ? '<span class="vig"><img src="'+esc(src)+'" alt="'+(e.img?esc(e.title):'')+'" loading="lazy"/></span>'
-        : '<span class="vig none" style="--k:'+(k?k[1]:'var(--soon)')+'" aria-hidden="true">'+
-            '<b>'+esc(e.title.trim().charAt(0))+'</b></span>';
-    }
+    var txt='<span class="txt">'+
+        (tags?'<span class="tags">'+tags+'</span>':'')+
+        '<span class="ti">'+esc(e.title)+'</span>'+
+        '<span class="dsc">'+esc(e.txt)+'</span>'+
+        (dead?'':'<span class="cta">'+esc(e.cta||'Voir')+' <em>▸</em></span>')+
+      '</span>';
 
-    return '<li class="ch rv" data-u="'+esc(e.uni||'')+'" data-n="'+esc(e.nat)+'">'+
-      '<a class="card'+(site?' site':'')+(dead?' dead':'')+'" style="--c:'+c+'"'+
-        (dead?'':' href="'+esc(e.href)+'"')+'>'+
-        vig+
-        '<span class="txt">'+
-          (tags?'<span class="tags">'+tags+'</span>':'')+
-          '<span class="ti">'+esc(e.title)+'</span>'+
-          '<span class="dsc">'+esc(e.txt)+'</span>'+
-          (dead?'':'<span class="cta">'+esc(e.cta||'Voir')+' <em>▸</em></span>')+
-        '</span>'+
-        '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'+
-      '</a></li>';
+    var inner=time+vig+txt+(dead?'<span></span>':ARR);
+    var card=dead
+      ? '<div class="card">'+inner+'</div>'
+      : '<a class="card" href="'+esc(e.href)+'">'+inner+'</a>';
+
+    return '<li class="rel rv'+(site?' site':'')+'" id="c-'+(NUM++)+'" style="--c:'+c+'"'+
+      ' data-u="'+esc(e.uni||'')+'" data-n="'+esc(e.nat)+'">'+
+      '<span class="stop" aria-hidden="true"></span>'+card+'</li>';
   }
 
-  /* `nue` : la section renonce à sa bande de mois. Sert au fond du journal
-     quand il est seul dans le dépliant — le résumé porte déjà son nom, et
-     l'écrire deux fois de suite ne dit rien de plus. */
-  function section(m,first,nue){
-    return '<section class="mo-sec" data-key="'+esc(m.key)+'">'+
-      (nue?'':
-      '<div class="mo"><div class="halftone" aria-hidden="true"></div><div class="wrap">'+
-        '<h2 class="disp off">'+esc(m.label)+'</h2>'+
-        (first?'<span class="now">Le plus récent</span>':'')+
-        '<span class="n" data-cnt>'+m.items.length+' changement'+(m.items.length>1?'s':'')+'</span>'+
-      '</div></div>')+
-      '<div class="list"><div class="wrap"><ul class="rows">'+
-        m.items.map(card).join('')+
-      '</ul></div></div></section>';
+  /* ── une station : le mois, sa plaque, ses correspondances ─────── */
+  function station(m,i,n){
+    var org=!m.key, cnt={}, lignes=0;
+    m.items.forEach(function(e){ if(e.uni) cnt[e.uni]=(cnt[e.uni]||0)+1; if(e.nat==='site') lignes++; });
+    var cx=Object.keys(UNI).filter(function(u){ return cnt[u]; }).map(function(u){
+      return '<span class="cx" style="--k:'+UNI[u][1]+'"'+(BLANC[u]?' data-w':'')+'>'+CODE[u]+'<b>'+cnt[u]+'</b></span>';
+    }).join('');
+    var pos=[];
+    m.items.forEach(function(e){
+      var s=e.img||(e.nat==='site'?BANNIERE[e.uni]:DOSS[e.uni]);
+      if(s&&pos.indexOf(s)<0&&pos.length<4) pos.push(s);
+    });
+    var kick=org?'Terminus · Aux origines':'Station '+(i+1)+' / '+n+
+      (m.key===NOW_M?'<span class="now">Ce mois-ci</span>':'');
+    return '<section class="mon-sec'+(m.key===NOW_M?' now':'')+(org?' org':'')+'" id="m-'+(m.key||'avant')+'" data-m="'+(m.key||'avant')+'">'+
+      '<div class="stn"><span class="stn-rail"><span class="stn-dot"></span></span>'+
+        '<div class="stn-plate">'+
+          '<div class="stn-txt">'+
+            '<span class="stn-k">'+kick+'</span>'+
+            '<h2 class="disp stn-nm">'+esc(m.label)+'</h2>'+
+            '<span class="stn-meta" data-cnt>'+meta(m.items.length,lignes)+'</span>'+
+            '<span class="stn-cx"><span class="lab">Correspondances</span>'+cx+'</span>'+
+          '</div>'+
+          (pos.length?'<span class="stn-po" aria-hidden="true">'+pos.map(function(p){
+            return '<img src="'+esc(p)+'" alt="" loading="lazy" decoding="async"/>';
+          }).join('')+'</span>':'')+
+        '</div></div>'+
+      '<ol class="rows">'+m.items.map(row).join('')+'</ol>'+
+    '</section>';
+  }
+  function meta(n,l){
+    return pl(n,'changement')+(l?' · '+l+(l>1?' lignes ouvertes':' ligne ouverte'):'');
+  }
+
+  /* ── le plan du haut : aujourd'hui, puis un mois par station ─────
+     La taille d'une station dit son nombre de changements, comme à
+     l'accueil ; l'origine est un anneau au bout de la ligne. */
+  function plan(total){
+    var map=document.getElementById('ln-map'); if(!map) return;
+    var n=MONTHS.length, max=1, h='', an='';
+    MONTHS.forEach(function(m){ max=Math.max(max,m.items.length); });
+    MONTHS.forEach(function(m,i){
+      var k=m.items.length, s=Math.round(20+20*Math.sqrt(k/max)), x=(i+1)/n, nom;
+      if(m.key){
+        var mi=parseInt(m.key.slice(5),10)-1, y=m.key.slice(0,4);
+        nom=MOIS[mi]+(y!==an?' '+y:''); an=y;
+      } else nom='Aux origines';
+      h+='<a class="lm-st'+(i%2?' lo':'')+(m.key===NOW_M?' cur':'')+(m.key?'':' org')+'" href="#m-'+(m.key||'avant')+'"'+
+        ' data-m="'+(m.key||'avant')+'"'+
+        ' style="left:'+(x*100).toFixed(3)+'%;--s:'+s+'px;--d:'+(0.12+0.95*x).toFixed(2)+'s"'+
+        ' aria-label="'+esc(nom)+'"><span class="lm-lb">'+esc(nom)+'<small>'+pl(k,'changement')+'</small></span></a>';
+    });
+    map.innerHTML='<span class="lm-dep">Aujourd’hui</span>'+
+      '<div class="lm-track"><div class="lm-fill"></div>'+h+'<span class="lm-train">'+TRAIN+'</span></div>'+
+      '<span class="lm-cnt"><b id="lm-n">'+total+'</b> '+(total>1?'changements':'changement')+'</span>'+
+      '<p class="lm-now">Dernière station : <em>'+esc(newest?newest.label:'')+'</em></p>';
+    etage(map);
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
+      requestAnimationFrame(function(){ map.classList.add('go'); });
+  }
+
+  /* Les étiquettes du plan : chacune au premier étage libre — la fonction
+     des pages d'univers et d'« À venir ». */
+  function etage(map){
+    var P=[], lh=0;
+    map.style.paddingTop=''; map.style.paddingBottom='';
+    function gx(el){ var x=0; while(el&&el!==map){ x+=el.offsetLeft; el=el.offsetParent; } return x; }
+    [].forEach.call(map.querySelectorAll('.lm-st'),function(st){
+      var lb=st.querySelector('.lm-lb'); if(!lb) return;
+      lb.style.removeProperty('--lv');
+      if(st.dataset.lo==null) st.dataset.lo=st.classList.contains('lo')?'1':'';
+      st.classList.toggle('lo',!!st.dataset.lo);
+      if(!lb.offsetWidth) return;
+      lh=Math.max(lh,lb.offsetHeight);
+      var c=gx(st), w=lb.offsetWidth/2;
+      P.push({st:st,lb:lb,a:c-w,b:c+w,lo:!!st.dataset.lo});
+    });
+    if(!P.length) return;
+    P.sort(function(x,y){ return x.a-y.a; });
+    var G=12, pas=lh+6, cote={0:[],1:[]}, max={0:0,1:0};
+    P.forEach(function(p){
+      var ordre=p.lo?[1,0]:[0,1];
+      for(var n=0;n<12;n++){
+        for(var j=0;j<2;j++){
+          var c=ordre[j], rang=cote[c];
+          if(rang[n]!=null && rang[n]>p.a-G) continue;
+          rang[n]=p.b; p.st.classList.toggle('lo',c===1);
+          if(n) p.lb.style.setProperty('--lv',(n*pas)+'px');
+          max[c]=Math.max(max[c],n); return;
+        }
+      }
+    });
+    var cs=getComputedStyle(map);
+    if(max[0]) map.style.paddingTop=(parseFloat(cs.paddingTop)+max[0]*pas)+'px';
+    if(max[1]) map.style.paddingBottom=(parseFloat(cs.paddingBottom)+max[1]*pas)+'px';
+  }
+  var etageRaf=0;
+  function reEtage(){
+    var m=document.getElementById('ln-map');
+    if(m&&!etageRaf) etageRaf=requestAnimationFrame(function(){ etageRaf=0; etage(m); });
+  }
+  addEventListener('resize',reEtage);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(reEtage);
+
+  /* ── le billet : le dernier changement ─────────────────────────── */
+  function billet(){
+    var h=newest&&newest.items[0]; if(!h) return;
+    var tk=document.getElementById('last'), u=UNI[h.uni];
+    document.getElementById('last-stub').innerHTML='<span style="--k:'+ink(h.uni)+'"'+
+      (BLANC[h.uni]?' class="w"':'')+'>'+(CODE[h.uni]||'·')+'</span>';
+    document.getElementById('last-t').textContent=h.title;
+    var bits=[];
+    if(u) bits.push(u[0]);
+    if(h.nat==='site') bits.push(h.kind==='dossier'?'Nouveau Dossier':'Nouvelle timeline');
+    else if(KIND[h.kind]) bits.push(KIND[h.kind][0]);
+    if(h.meta) bits.push(h.meta);
+    document.getElementById('last-m').textContent=bits.join(' · ');
+    var mo=newest.label.split(' ');
+    document.getElementById('last-d').innerHTML=esc(mo[0].slice(0,4)+(mo[0].length>4?'.':''))+
+      '<small>'+esc(mo[1]||'')+'</small>';
+    tk.href=h.href||'#c-0';
+    tk.removeAttribute('aria-hidden'); tk.removeAttribute('tabindex');
+    /* le premier écran prend le visuel du dernier changement, flouté */
+    var af=h.img||(h.nat==='site'?BANNIERE[h.uni]:DOSS[h.uni]);
+    if(af) document.querySelector('.ln-bg').style.backgroundImage='url('+af+')';
   }
 
   /* ── construction ──────────────────────────────────────────────── */
-  var dated=DATA.months.filter(function(m){ return !!m.key; });
-  var back =DATA.months.filter(function(m){ return !m.key; });
-  var top=dated.slice(0,OPEN), rest=dated.slice(OPEN).concat(back);
+  var total=MONTHS.reduce(function(s,m){ return s+m.items.length; },0);
+  var html='<div class="wrap cal-in">'+
+    '<div class="ici"><span class="trn" aria-hidden="true"></span>'+
+      '<span class="ici-t">Vous êtes ici · <b>aujourd’hui</b>, '+JOURS_L[TODAY.getDay()]+' '+
+      TODAY.getDate()+' '+MOIS[TODAY.getMonth()]+'</span></div>';
+  var nd=dated.length;
+  MONTHS.forEach(function(m,i){ html+=station(m,i,nd); });
+  html+='<div class="terminus"><span class="stn-rail"><span class="stn-dot"></span></span>'+
+    '<p><b>Terminus</b><span>Le journal commence ici</span></p></div></div>';
+  host.innerHTML=html;
+  plan(total);
+  billet();
 
-  host.innerHTML=top.map(function(m,i){ return section(m,i===0,false); }).join('');
-  if(rest.length){
-    /* le dépliant ne contient que le fond : il en prend le nom, et le fond
-       se passe de bande. Dès qu'un mois daté descend avec lui, chacun
-       reprend sa bande et le dépliant se nomme pour ce qu'il est. */
-    var seul=rest.length===1&&!rest[0].key;
-    olderBody.innerHTML=rest.map(function(m){ return section(m,false,seul&&!m.key); }).join('');
-    olderBox.hidden=false;
-    var n=rest.reduce(function(s,m){ return s+m.items.length; },0);
-    document.getElementById('older-lab').textContent=
-      seul?rest[0].label:'Les mois précédents';
-    document.getElementById('older-cnt').textContent=
-      n+' changement'+(n>1?'s':'');
-  }
-
-  /* le tag du premier écran : la date du journal, pas une promesse de
-     mise à jour quotidienne — ici c'est Niko qui écrit, pas un cron */
-  var newest=dated[0];
   document.getElementById('tag-t').textContent=
     newest?('Dernière mise à jour · '+newest.label):'Journal du site';
-
-  /* ── la vedette : le premier changement du mois le plus récent ──── */
-  var head=newest&&newest.items[0];
-  if(head){
-    var box=document.getElementById('last');
-    box.hidden=false;
-    box.style.setProperty('--c',ink(head.uni));
-    document.getElementById('last-t').textContent=head.title;
-    var bits=[];
-    if(UNI[head.uni]) bits.push(UNI[head.uni][0]);
-    if(head.nat==='site') bits.push(head.kind==='dossier'?'Nouveau Dossier':'Nouvelle timeline');
-    else if(KIND[head.kind]) bits.push(KIND[head.kind][0]);
-    if(head.meta) bits.push(head.meta);
-    document.getElementById('last-m').innerHTML=
-      bits.map(function(b){ return '<span>'+esc(b)+'</span>'; }).join('');
-    document.getElementById('last-d').innerHTML=
-      esc(newest.label.split(' ')[0])+'<small>'+esc(newest.label.split(' ')[1]||'')+'</small>';
-  }
+  document.getElementById('note').textContent=
+    'Le journal est tenu à la main : une ligne par changement, la plus récente en haut.';
 
   /* ── filtres ───────────────────────────────────────────────────── */
   var fu=document.getElementById('f-uni'), fn=document.getElementById('f-nat');
+  var all=[]; MONTHS.forEach(function(m){ all=all.concat(m.items); });
   Object.keys(UNI).forEach(function(u){
+    var nb=all.filter(function(e){ return e.uni===u; }).length;
     fu.insertAdjacentHTML('beforeend','<button type="button" data-u="'+u+'" aria-pressed="true"'+
-      ' style="--k:'+UNI[u][1]+'"><i></i>'+UNI[u][0]+'</button>');
+      (nb?'':' class="vide"')+' style="--k:'+UNI[u][1]+'"><i></i>'+UNI[u][0]+'<small>'+nb+'</small></button>');
   });
   Object.keys(NAT).forEach(function(n){
+    var nb=all.filter(function(e){ return e.nat===n; }).length;
     fn.insertAdjacentHTML('beforeend','<button type="button" data-n="'+n+'" aria-pressed="true"'+
-      ' style="--k:var(--hot)"><i></i>'+NAT[n]+'</button>');
+      ' style="--k:var(--hot)"><i></i>'+NAT[n]+'<small>'+nb+'</small></button>');
   });
 
-  var ROWS=[].slice.call(document.querySelectorAll('.ch')).map(function(el){
+  ROWS=[].slice.call(host.querySelectorAll('.rel')).map(function(el){
     return {el:el,uni:el.dataset.u,nat:el.dataset.n};
   });
   var offU={}, offN={};
 
   function apply(){
-    var n=0, segs='', first=null;
+    var n=0, segs='', lignes=0, arrets=0, mois=0;
     ROWS.forEach(function(r){
       /* un changement sans univers ne parle d'aucun monde : le filtre
          d'univers n'a pas à le faire disparaître */
       var ok=(!r.uni||!offU[r.uni])&&!offN[r.nat];
       r.el.hidden=!ok;
-      if(ok){ n++; segs+='<i style="--c:'+ink(r.uni)+'"></i>'; if(!first) first=r; }
+      if(ok){
+        n++; segs+='<i style="--c:'+ink(r.uni)+'"></i>';
+        if(r.nat==='site') lignes++; else arrets++;
+      }
     });
-
-    /* un mois dont plus rien n'est visible n'a plus de bande à afficher */
-    [].forEach.call(document.querySelectorAll('.mo-sec'),function(sec){
-      var vis=[].slice.call(sec.querySelectorAll('.ch')).filter(function(el){ return !el.hidden; }).length;
-      sec.hidden=(vis===0);
-      /* `data-cnt`, pas `data-n` : les cartes portent leur nature dans
-         `data-n`, et une section sans bande de mois faisait alors écraser
-         le contenu de sa première carte par le compte. */
+    [].forEach.call(host.querySelectorAll('.mon-sec'),function(sec){
+      var vis=[].slice.call(sec.querySelectorAll('.rel')).filter(function(el){ return !el.hidden; });
+      sec.hidden=(vis.length===0);
+      if(vis.length&&sec.dataset.m!=='avant') mois++;
+      var l=vis.filter(function(el){ return el.dataset.n==='site'; }).length;
       var lab=sec.querySelector('[data-cnt]');
-      if(lab) lab.textContent=vis+' changement'+(vis>1?'s':'');
+      if(lab) lab.textContent=meta(vis.length,l);
+      var st=document.querySelector('.lm-st[data-m="'+sec.dataset.m+'"]');
+      if(st){
+        st.hidden=(vis.length===0);
+        var sm=st.querySelector('small'); if(sm) sm.textContent=pl(vis.length,'changement');
+      }
     });
-    var visBack=[].slice.call(olderBody.querySelectorAll('.ch'))
-      .filter(function(el){ return !el.hidden; }).length;
-    olderBox.hidden=(visBack===0);
-    document.getElementById('older-cnt').textContent=
-      visBack+' changement'+(visBack>1?'s':'');
+    var lmn=document.getElementById('lm-n'); if(lmn) lmn.textContent=n;
 
-    document.getElementById('fcount').textContent=
-      n+' changement'+(n>1?'s':'')+' affiché'+(n>1?'s':'');
+    document.getElementById('fcount').textContent=n+' changement'+(n>1?'s':'')+' affiché'+(n>1?'s':'');
     document.getElementById('empty').hidden=(n>0);
     document.getElementById('h-n').textContent=n;
     document.getElementById('h-lbl').textContent='changement'+(n>1?'s':'');
     document.getElementById('h-bar').innerHTML=segs;
     document.getElementById('h-last').textContent=
       newest?('dernier · '+newest.label.toLowerCase()):'';
+    document.getElementById('b-n').textContent=n;
+    document.getElementById('b-l').textContent=lignes;
+    document.getElementById('b-a').textContent=arrets;
+    document.getElementById('b-m').textContent=mois;
 
     /* un seul univers allumé : la page entière bascule dans son encre */
     var on=Object.keys(UNI).filter(function(u){ return !offU[u]; });
-    document.body.style.setProperty('--uc',
-      on.length===1?UNI[on[0]][1]:'var(--c-news)');
+    document.body.style.setProperty('--uc',on.length===1?UNI[on[0]][1]:'var(--c-news)');
+    reEtage();
   }
 
   fu.addEventListener('click',function(ev){
@@ -864,22 +1168,31 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     b.setAttribute('aria-pressed',on?'false':'true');
     offN[b.dataset.n]=on; apply();
   });
-
-  document.getElementById('note').textContent=
-    'Le journal est tenu à la main : une ligne par changement, la plus récente en haut.';
-
   apply();
+
+  /* La ligne se mesure : du train au terminus. */
+  function rail(){
+    var box=host.querySelector('.cal-in'); if(!box) return;
+    var a=box.querySelector('.ici .trn'), z=box.querySelector('.terminus .stn-dot');
+    if(!a||!z) return;
+    function y(el){ var t=0; while(el&&el!==box){ t+=el.offsetTop; el=el.offsetParent; } return t; }
+    var top=y(a)+a.offsetHeight/2, bas=y(z)+z.offsetHeight/2;
+    box.style.setProperty('--l-top',top+'px');
+    box.style.setProperty('--l-h',Math.max(0,bas-top)+'px');
+  }
+  rail();
+  if(window.ResizeObserver) new ResizeObserver(rail).observe(host.querySelector('.cal-in'));
+  else addEventListener('resize',rail);
 
   /* ── la hauteur du bandeau, donnée au collant ──────────────────── */
   var hdr=document.querySelector('header');
-  function head2(){
+  function head(){
     document.documentElement.style.setProperty('--hh',
       (Math.round(hdr.getBoundingClientRect().height)-1)+'px');
   }
-  head2();
-  addEventListener('resize',head2);
-  /* les polices arrivent après : la hauteur du bandeau bouge avec elles */
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(head2);
+  head();
+  addEventListener('resize',head);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(head);
 
   /* ── menu replié ───────────────────────────────────────────────── */
   var bg=document.getElementById('burger'), dr=document.getElementById('drawer');

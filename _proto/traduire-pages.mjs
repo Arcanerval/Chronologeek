@@ -539,6 +539,20 @@ const TRADUCTIONS = [
   ['Nouvelle timeline', 'New timeline'],
   ['dernier ·', 'latest ·'],
   ['affiché', 'shown'],
+  // le plan de métro du journal, publié le 30 septembre 2026
+  ['ouvertures', 'openings'],
+  ['arrêts ajoutés', 'stops added'],
+  ['mois au journal', 'months logged'],
+  ['Plan du journal', 'Map of the log'],
+  ['Le journal commence ici', 'The log starts here'],
+  ['Dernière station :', 'Latest station:'],
+  ['Aux origines', 'Where it began'],
+  ['Terminus · Aux origines', 'Terminus · Where it began'],
+  ['Nouvel arrêt', 'New stop'],
+  ['Nouvelle ligne', 'New line'],
+  ['Ouverture', 'Opening'],
+  ['lignes ouvertes', 'lines opened'],
+  ['ligne ouverte', 'line opened'],
 
   // ── à venir ────────────────────────────────────────────────────
   ['Chronologeek — À venir (proto E)', 'Chronologeek — Upcoming (proto E)'],
@@ -767,11 +781,11 @@ const EXPRESSIONS = [
   // donne qu'un seul `s` en anglais.
   ["n+' changement'+(n>1?'s':'')+' affiché'+(n>1?'s':'')",
    "n+' change'+(n>1?'s':'')+' shown'"],
-  ["m.items.length+' changement'+(m.items.length>1?'s':'')",
-   "m.items.length+' change'+(m.items.length>1?'s':'')"],
-  ["vis+' changement'+(vis>1?'s':'')", "vis+' change'+(vis>1?'s':'')"],
-  ["visBack+' changement'+(visBack>1?'s':'')", "visBack+' change'+(visBack>1?'s':'')"],
-  ["n+' changement'+(n>1?'s':'')", "n+' change'+(n>1?'s':'')"],
+  // le plan de métro du journal, publié le 30 septembre 2026
+  ["pl(n,'changement')", "pl(n,'change')"],
+  ["pl(k,'changement')", "pl(k,'change')"],
+  ["pl(vis.length,'changement')", "pl(vis.length,'change')"],
+  ["(total>1?'changements':'changement')", "(total>1?'changes':'change')"],
   ["'changement'+(n>1?'s':'')", "'change'+(n>1?'s':'')"],
 
   // Le journal pose le même badge VO, sur la carte de Legacy. Même
