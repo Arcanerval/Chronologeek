@@ -46,6 +46,8 @@ export const RE_IDENTIQUES = [
   'filmanim',
   'cg-proto-re',
   '/images/residentevil.webp',
+  // la plaque de station du plan de métro : le code de ligne ne se traduit pas
+  '<span class="stn-k"><span class="code">RE</span>',
 ];
 
 export const RE_RETROUVES = [];
@@ -163,6 +165,10 @@ export const RE_TRADUCTIONS = [
    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
    + 'Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de '
    + 'leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  // le plan de métro
+  ['Resident Evil line map', 'Plan de la ligne Resident Evil'],
+  ['Resident Evil line complete', 'Ligne Resident Evil terminée'],
+  ['<p><b>Terminus</b><span>End of the Resident Evil line ·', '<p><b>Terminus</b><span>Fin de la ligne Resident Evil ·'],
 ];
 
 export const RE_GABARITS = [

@@ -3011,6 +3011,16 @@ indépendantes ». Pas de table `RT`. Badge VO sur les quatorze comics sans
 édition française. Pas encore d'image de station : `ARTS` reprend la
 bannière `witcher.webp`.
 
+**Resident Evil est publié au plan de métro le 30 septembre 2026**, sur le
+modèle d'Assassin's Creed, sur lequel il avait été bâti : `en-residentevil.html`
+est repris de la page AC métro publiée, avec les écarts qui séparaient les deux
+pages, et le français descend par `traduire-residentevil.mjs` ; les phrases
+métro sont dans `traductions-residentevil.mjs`. Code de ligne **RE**, quatre
+stations « PHASE N / 4 », un seul parcours. **Une seule date dans la colonne
+horaire**, l'année dans le monde : pas de cadre « Souvenirs ». Pas d'échelle
+mixte (9/5/9/7), pas de table `RT`. **Images de phase posées dans les données**
+(`art`) — raccooncity, afterumbrella, bioterrorism, backtohorror.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par
