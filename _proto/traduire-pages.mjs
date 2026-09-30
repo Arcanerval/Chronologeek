@@ -548,8 +548,23 @@ const TRADUCTIONS = [
   // en ajoute un. The Witcher y entre le 20 septembre 2026, son remaster étant
 // daté ; Star Trek y était entré le 13 août 2026, comme dans les deux
   // titres de référencement de `seo.json` et dans le pied de page.
-  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et The Witcher — mises à jour chaque jour.',
-   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and The Witcher release — updated every single day.'],
+  // Depuis le 30 septembre 2026 elle énumère les douze univers, suivis ou non
+  // par le radar : aucun n'est terminé, une annonce peut tomber (Niko).
+  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher et Resident Evil — mises à jour chaque jour.',
+   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher and Resident Evil release — updated every single day.'],
+  // le plan de métro du radar, publié le 30 septembre 2026
+  ['univers au départ', 'universes departing'],
+  ['prochain départ', 'next departure'],
+  ['mois au programme', 'months ahead'],
+  ['Plan de la ligne du temps', 'Map of the timeline'],
+  ['Prochain départ ·', 'Next departure ·'],
+  ['&nbsp;', '&nbsp;'],
+  ['Prochaine station :', 'Next station:'],
+  ['Terminus provisoire', 'Terminus for now'],
+  ['De nouvelles sorties s’ajoutent chaque nuit', 'New releases are added every night'],
+  ['Vous êtes ici ·', 'You are here ·'],
+  ['Aujourd’hui', 'Today'],
+  ['aujourd’hui', 'today'],
   ['Rechercher une sortie', 'Search a release'],
   ['Support', 'Format'],                   // filtre par type de média
   ['Rien ne correspond. Essayez une autre orthographe, ou rallumez les filtres que vous avez éteints.',
@@ -730,7 +745,7 @@ const EXPRESSIONS = [
   ["n+' sortie'+(n>1?'s':'')+' affichée'+(n>1?'s':'')",
    "n+' release'+(n>1?'s':'')+' shown'"],
   // le compteur d'une section de mois
-  ["vis+' sortie'+(vis>1?'s':'')", "vis+' release'+(vis>1?'s':'')"],
+  ["pl(vis,'sortie')", "pl(vis,'release')"],
   // CG.t.tracked donne « releases tracked »
   ["'sortie'+(n>1?'s':'')+' suivie'+(n>1?'s':'')",
    "'release'+(n>1?'s':'')+' tracked'"],

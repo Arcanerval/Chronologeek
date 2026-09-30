@@ -3021,6 +3021,32 @@ horaire**, l'année dans le monde : pas de cadre « Souvenirs ». Pas d'échelle
 mixte (9/5/9/7), pas de table `RT`. **Images de phase posées dans les données**
 (`art`) — raccooncity, afterumbrella, bioterrorism, backtohorror.
 
+**« À venir » est publié au plan de métro le 30 septembre 2026.** La ligne
+y est le temps : le train est à aujourd'hui, chaque mois est une station
+(plaque « Station N / M », correspondances = codes d'univers avec leur
+décompte, éventail d'affiches TMDB w185, masqué sur téléphone), chaque sortie
+un arrêt plein à l'encre de son univers — rien ne s'y coche —, avec son
+horaire en diodes et son compte à rebours en afficheur. Plan du haut : un mois
+par station, l'année à chaque changement. Tableau des départs, billet
+« Prochain départ » à cheval (une souche par sortie du même jour), fond du
+premier écran = affiche du prochain départ. `e-a-venir.html` est la source,
+toujours française ; ses phrases neuves sont dans `TRADUCTIONS` de
+`traduire-pages.mjs`. Deux points de tuyauterie :
+
+- **`<span class="fx" hidden>` en bas du premier écran est l'ancre de
+  l'agenda** : `e-app.js` pose « Les sorties dans votre agenda » juste après
+  `.fx` (sinon après `.dek`), et la place réservée par `publier.mjs` est en
+  fin de `.attract .wrap`. Sans l'ancre, l'agenda se glissait entre
+  l'accroche et le plan, et poussait tout le premier écran.
+- **Les douze univers sont dans l'accroche et dans les filtres**, suivis ou
+  non par le radar — décision de Niko du même jour : aucun univers n'est
+  officiellement terminé. Un univers sans sortie garde son bouton, en
+  pointillés, avec « 0 ». Ça remplace, pour l'accroche de la page, la règle
+  de « Ce qui reste à faire » qui n'énumérait que les univers suivis. Les
+  `ogTitle` et `desc` de `seo.json` n'ont pas bougé. **`UNIS` de l'agenda
+  (`e-app.js`) reste à huit** : Dragon Age, DC Animation, Jurassic World et
+  Resident Evil y entrent le jour où le radar leur trouve une sortie.
+
 **Le billet est à cheval sur le filet blanc du premier écran**, comme celui
 de l'accueil, depuis le 29 septembre 2026, sur les cinq pages métro (demandé
 par Niko). Il est sorti de `.ln-hero` — qui rogne son fond flouté par

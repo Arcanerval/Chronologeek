@@ -34,27 +34,6 @@
 <link rel="preconnect" href="https://image.tmdb.org"/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bigshoulders-latin.woff2" crossorigin/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/chivo-latin.woff2" crossorigin/>
-<!--
-  ═══ CONTRAT DE DIRECTION — E · À VENIR ══════════════════════════════
-  THÈSE : « À venir » n'est pas quatre listes côte à côte, c'est un
-  calendrier. La question posée par la page est « c'est quand », pas
-  « c'est chez qui » — le temps tient l'axe, l'univers tient la couleur.
-  Les quatre colonnes de la page actuelle répondaient à l'inverse : elles
-  obligeaient à lire quatre fois pour savoir ce qui sort la semaine
-  prochaine.
-  MONDE PROPRE : celui de la direction E. Couleur noyée, champs à bords
-  francs, chevrons en diagonale, trame de demi-teinte, titrage condensé à
-  ombre portée dure. Aucun halo, aucun arrondi, les bascules claquent.
-  RÉCIT : ce qui tombe en premier, puis le calendrier, mois par mois.
-  FORME : la prochaine sortie est traitée comme le « continue » de
-  l'accueil — pleine largeur, dans la couleur de son monde, compte à
-  rebours en grand. Une bande par mois, une ligne par sortie, la pastille
-  de jour à gauche comme sur un calendrier mural. Filtrer sur un seul
-  univers fait basculer la page entière dans son encre : le filtre se voit
-  avant d'être lu.
-  DONNÉES : radar.json est lu à chaud, exactement comme cg-upcoming.js.
-  Rien n'est figé dans la page, radar.py continue de travailler seul.
--->
 <style>
 /* ══ POLICES : servies par le site, plus par Google ═════════════════
    Le `display=swap` de Google montrait la police de secours le temps que
@@ -83,13 +62,20 @@
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
   --ink:#0d0b12; --paper:#fffdf7; --line:rgba(255,253,247,.26);
-  --hot:#f0c97c; --gold-deep:#d5a05f;
+  /* l'accent est l'or du logo, relevé au niveau de ses hautes lumières :
+     échantillonné sur logo-chronologeek.png, médiane #d5a05f, crête #f0c97c */
+  --hot:#f0c97c; --gold-deep:#d5a05f; --steel:#779fc3;
+  --cleared:#3ddc84;
+  /* les dix encres de la charte, plus le gris des univers à venir.
+     Le lilas de Star Trek est celui des consoles LCARS. */
   --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f;
-  --ac:#d4a02c; --wi:#b0bec5; --re:#dc0000; --soon:#8a8ab0;
+  --da:#e07b39; --ac:#d4a02c; --dca:#2dd4bf; --jw:#45c46b; --wi:#b0bec5;
+  --re:#dc0000; --soon:#8a8ab0;
+  /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
+     pour répondre au violet profond de leur bande, et le rose à « À venir » */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
   --doss-deep:#5c2060;
-  /* la page s'ouvre dans le rose de « À venir » — sa couleur dans la nav */
-  --uc:var(--c-upc);
+  --uc:var(--sw);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-x:none}
@@ -110,9 +96,12 @@ a{color:inherit}
   font-weight:700;padding:10px 16px}
 .skip:focus{left:0}
 
+/* le champ de couleur : il inonde la page derrière tout le reste et
+   bascule d'un univers à l'autre sans fondu mou */
 .field{position:fixed;inset:0;z-index:-1;background:var(--ink)}
 .field i{position:absolute;inset:0;background:var(--uc);opacity:.13;
   transition:background-color .18s steps(3,end)}
+
 .halftone{position:absolute;inset:0;pointer-events:none;
   background-image:repeating-linear-gradient(0deg,rgba(13,11,18,.34) 0 1px,transparent 1px 3px);
   mix-blend-mode:multiply}
@@ -132,11 +121,10 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   padding:2px 0;border-bottom:2px solid transparent}
 .nav-links a:hover{color:var(--paper);border-bottom-color:var(--paper)}
 .nav-links a[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
+/* les trois entrées que le site colore déjà gardent leur couleur ici */
 .nav-links a.doss,.drawer a.doss{color:var(--c-doss)}
 .nav-links a.upc,.drawer a.upc{color:var(--c-upc)}
 .nav-links a.news,.drawer a.news{color:var(--c-news)}
-/* la page courante prime sur la couleur d'entrée : c'est l'or qui marque où on est */
-.nav-links a.upc[aria-current]{color:var(--hot);border-bottom-color:var(--hot)}
 .nav-links a.doss:hover{border-bottom-color:var(--c-doss)}
 .nav-links a.upc:hover{border-bottom-color:var(--c-upc)}
 .nav-links a.news:hover{border-bottom-color:var(--c-news)}
@@ -145,9 +133,11 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .icon-btn{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;
   background:none;border:2px solid var(--line);color:var(--paper);cursor:pointer;padding:0}
 .icon-btn:hover{border-color:var(--paper)}
+/* le drapeau se passe de cadre : c'est déjà une forme fermée */
 .lang-btn{border:0;width:auto;height:auto;padding:2px}
 .lang-btn:hover{border:0;transform:translateY(-1px)}
-.lang-btn svg{width:34px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}
+.lang-btn svg{width:34px;height:auto;display:block;
+  box-shadow:0 0 0 2px rgba(13,11,18,.6)}
 .burger{display:none}
 .burger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square}
 /* Un bouton, deux dessins : les trois barres tant que le tiroir est ferme,
@@ -205,241 +195,6 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a:first-child{border-top:0}
 
-/* ══ PREMIER ÉCRAN ═════════════════════════════════════════════════
-   Court : la page n'a pas de bannière à montrer, et ce qu'on vient
-   chercher est trois centimètres plus bas. */
-.attract{position:relative;overflow:hidden;border-bottom:2px solid var(--paper)}
-.veil{position:absolute;inset:0;
-  background:linear-gradient(to top,var(--ink) 8%,
-             color-mix(in srgb,var(--uc) 46%,var(--ink)) 88%)}
-.attract .wrap{position:relative;z-index:2;padding-top:34px;padding-bottom:26px}
-.attract h1{font-size:clamp(46px,9vw,104px)}
-/* l'étiquette ne se colle plus au-dessus du titre : elle lui fait face,
-   posée sur la même ligne de base, poussée au bout de la ligne */
-.attract .head{display:flex;align-items:baseline;justify-content:space-between;
-  gap:16px;flex-wrap:wrap}
-.tag{display:inline-block;background:var(--paper);color:var(--ink);
-  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.14em;
-  text-transform:uppercase;padding:5px 12px;flex:0 0 auto;
-  clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
-.tag em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
-.dek{margin-top:13px;font-size:17px;color:rgba(255,253,247,.92)}
-@keyframes blink{50%{opacity:.25}}
-
-/* ══ LA PROCHAINE SORTIE : le « continue » de la page ══════════════ */
-.next{border-bottom:2px solid var(--paper);
-  background:color-mix(in srgb,var(--c,var(--hot)) 30%,var(--ink))}
-.next[hidden]{display:none}
-.next .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;
-  padding-top:15px;padding-bottom:15px}
-.next .chev{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:13px;letter-spacing:.2em;
-  text-transform:uppercase;background:var(--paper);color:var(--ink);padding:4px 11px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);
-  animation:blink 1.5s steps(1,end) infinite;flex:0 0 auto}
-.next .txt{min-width:0;flex:1}
-/* La date une seule fois, sous la pastille : les sorties du bloc tombent
-   toutes le même jour, la répéter sur chacune n'apprend rien. */
-.next .lead{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
-.next .nd{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:rgba(255,253,247,.86);font-variant-numeric:tabular-nums}
-.next .t{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
-  font-size:clamp(23px,3.6vw,38px);text-transform:uppercase;line-height:.95}
-/* Plusieurs sorties le même jour : elles montent TOUTES ici, séparées d'un
-   filet. Le titre se resserre alors — trois noms à 38 px poussaient le
-   calendrier hors de l'écran. */
-.next .one{display:block}
-.next .one+.one{margin-top:10px;padding-top:10px;
-  border-top:1px solid rgba(255,253,247,.22)}
-.next.multi .t{font-size:clamp(20px,2.7vw,28px)}
-/* L'univers et le support en pastilles, comme sur les cartes du calendrier :
-   la même donnée écrite deux fois de deux façons se lit deux fois. */
-.next .m{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;
-  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,253,247,.86)}
-.next .m .ep{margin-top:0}
-.next .big{flex:0 0 auto;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
-  font-size:clamp(40px,7vw,72px);line-height:.82;color:var(--hot);
-  text-shadow:4px 4px 0 var(--ink);text-align:right}
-.next .big small{display:block;font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.72);
-  text-shadow:none;margin-top:5px}
-/* « AUJOURD’HUI » n'est pas « J‑2 » : onze signes contre trois, et le cadran
-   venait manger le titre. Il se lit aussi bien plus petit — c'est un mot,
-   pas un décompte. */
-.next .big.mot{font-size:clamp(26px,4.4vw,44px)}
-
-/* ══ filtres et recherche ══════════════════════════════════════════ */
-/* le collant se cale sur la hauteur réelle du bandeau, mesurée par le
-   script : en dur, il laissait un filet de contenu défiler dans l'écart */
-.sieve{border-bottom:2px solid var(--paper);background:var(--ink);
-  position:sticky;top:var(--hh,53px);z-index:50}
-.sieve .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
-  padding-top:10px;padding-bottom:10px}
-.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-.sgroup>.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,253,247,.5);margin-right:2px}
-.sieve button{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14.5px;
-  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);
-  color:rgba(255,253,247,.76);padding:5px 11px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:6px}
-.sieve button:hover{border-color:var(--paper);color:var(--paper)}
-.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
-.sieve button i{width:9px;height:9px;background:var(--k,var(--paper));display:block}
-.sieve button[aria-pressed=true] i{background:var(--k,var(--ink))}
-.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);
-  padding:4px 9px;min-width:210px;flex:0 1 280px}
-.search:focus-within{border-color:var(--hot)}
-.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);
-  stroke-width:2.2;stroke-linecap:square}
-.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);
-  font-family:'Chivo','Chivo repli';font-size:14px;padding:3px 0}
-.search input:focus{outline:none}
-.search input::placeholder{color:rgba(255,253,247,.44)}
-.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);
-  display:none}
-.search button:hover{color:var(--paper);border:0}
-.search.on button{display:block}
-/* la recherche garde sa ligne à elle : sans ça, les univers remontaient
-   à côté d'elle dès qu'il restait de la place sur la ligne */
-#f-uni{flex:1 0 100%}
-.srow{flex:1 0 100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1px}
-.fcount{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:rgba(255,253,247,.6)}
-
-/* ══ LE CALENDRIER ═════════════════════════════════════════════════
-   Une bande par mois, et rien pour les mois vides : un calendrier de
-   sorties n'a pas à dérouler les semaines où rien ne sort. */
-.mon-sec[hidden]{display:none}
-.mon{position:relative;overflow:hidden;background:var(--ink);
-  border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
-.mon .wrap{position:relative;z-index:2;display:flex;align-items:baseline;gap:16px;
-  flex-wrap:wrap;padding-top:20px;padding-bottom:14px}
-.mon h2{font-size:clamp(30px,5.4vw,60px)}
-.mon .n{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.1em;
-  text-transform:uppercase;color:rgba(255,253,247,.66)}
-.mon .now{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:13px;letter-spacing:.2em;
-  text-transform:uppercase;background:var(--hot);color:var(--ink);padding:3px 10px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-.mon-sec .list{background:rgba(13,11,18,.42);padding:16px 0 26px}
-.rows{list-style:none;display:flex;flex-direction:column;gap:9px}
-.rel[hidden]{display:none}
-
-/* la ligne de sortie : pastille de jour, puis la carte */
-.rel{position:relative;display:flex;align-items:stretch;gap:12px}
-.day{flex:0 0 auto;width:66px;border:2px solid var(--line);background:rgba(13,11,18,.6);
-  text-align:center;padding:6px 2px 7px;align-self:flex-start}
-.day b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:32px;
-  line-height:.86;color:var(--paper)}
-.day span{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:rgba(255,253,247,.6);margin-top:3px}
-/* le jour même se signale : c'est la seule ligne qui compte aujourd'hui */
-.rel.today .day{border-color:var(--hot);background:var(--hot)}
-.rel.today .day b,.rel.today .day span{color:var(--ink)}
-
-.card{flex:1;min-width:0;position:relative;border:2px solid var(--line);
-  border-left:6px solid var(--c);background:rgba(13,11,18,.5);
-  transition:border-color .08s steps(1,end),transform .09s cubic-bezier(.2,.9,.3,1)}
-.card:hover{border-color:var(--hot);border-left-color:var(--c);transform:translate(-3px,-3px)}
-/* les équerres du curseur, comme sur les slots de l'accueil */
-.cur{position:absolute;inset:-7px;opacity:0;z-index:5;pointer-events:none}
-.card:hover .cur,.hd:focus-visible+.cur,details[open] .cur{opacity:1}
-.cur i{position:absolute;width:14px;height:14px;border:3px solid var(--c)}
-.cur i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
-.cur i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
-.cur i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
-.cur i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
-
-.hd{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;
-  color:inherit;font:inherit;text-align:left;padding:10px 12px}
-details>summary.hd{cursor:pointer;list-style:none}
-details>summary.hd::-webkit-details-marker{display:none}
-.hd .txt{flex:1;min-width:0}
-.tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
-.b{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  padding:2px 8px;color:var(--ink);background:var(--k,var(--paper));
-  clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
-.u{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:var(--c);border:1px solid var(--c)}
-.era{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
-/* le repère d'épisode : S2E05, et la pastille des deux épisodes qui comptent.
-   Contour plutôt qu'aplat — le pavé plein est déjà pris par le support.
-
-   Il vit SOUS le nom de la série, et non dans la rangée de pastilles du
-   dessus : la carte d'un épisode porte le nom de sa série et rien d'autre,
-   c'est ce repère-là qui dit lequel. En étroit, le titre passe sur deux ou
-   trois lignes et la rangée du haut s'en trouvait repoussée loin de lui. */
-.ep{display:inline-flex;align-items:center;gap:5px;margin-top:5px;
-  font-size:10px;font-weight:700;
-  letter-spacing:.11em;text-transform:uppercase;font-variant-numeric:tabular-nums;
-  padding:2px 8px;color:rgba(255,253,247,.66);border:1px solid var(--line)}
-.ep svg{width:9px;height:9px;fill:currentColor;flex:0 0 auto}
-.ep b{font-weight:700;letter-spacing:.09em}
-.ep.premiere{color:#7ed6a5;border-color:#7ed6a5}
-.ep.finale{color:#f0956a;border-color:#f0956a}
-/* la saison d'un bloc : ni une ouverture ni une fin, les deux à la fois */
-.ep.saison{color:#8fb8f0;border-color:#8fb8f0}
-.ti{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:700;font-size:22px;
-  line-height:1.02;text-transform:uppercase}
-/* le compte à rebours : le cadran de la borne, à droite de chaque ligne */
-.cd{flex:0 0 auto;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:23px;
-  letter-spacing:.02em;color:var(--c);text-align:right;line-height:1;white-space:nowrap}
-.cd.soonest{color:var(--hot)}
-.chevd{flex:0 0 auto;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;
-  stroke-linecap:square;color:rgba(255,253,247,.6);transition:transform .18s}
-details[open] .chevd{transform:rotate(180deg)}
-.bd{border-top:2px solid var(--line);padding:11px 12px 13px;
-  display:flex;gap:12px;align-items:flex-start}
-.inf{flex:1;min-width:0}
-.syn{font-size:13.5px;
-  color:rgba(255,253,247,.86)}
-.po{flex:0 0 82px;aspect-ratio:2/3;border:2px solid var(--line);background:#000}
-.po img{width:100%;height:100%;object-fit:cover}
-.syn .en{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--hot);border:1px solid var(--hot);padding:1px 6px;margin-right:6px}
-/* ══ la fiche TMDB, sous le synopsis ═══════════════════════════════
-   Le radar porte le synopsis et l'affiche, rien de plus : la note bouge
-   avec les votes et la bande-annonce paraît quand elle paraît. Les
-   figer dans un fichier régénéré chaque nuit ne les tiendrait pas plus
-   à jour que l'appel direct, et alourdirait `radar.json` de quarante
-   fiches dont on n'ouvre qu'une poignée. La carte va donc les chercher
-   à l'ouverture, du même appel que les six pages d'univers font déjà.
-
-   La disposition est celle des six pages d'univers, au pixel près : les
-   quatre mesures sur une ligne, chacune sous son intitulé en petites
-   capitales chaudes, et la bande-annonce en dessous, seule. Une même
-   donnée doit se lire au même endroit d'une page à l'autre.
-
-   Seule l'encre du bouton change : les pages d'univers n'en ont qu'une,
-   le radar en aligne six, et `var(--c)` porte celle de la ligne. */
-.tm{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;
-  color:rgba(255,253,247,.72)}
-.tm strong{color:var(--hot);font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;margin-right:5px}
-.tr{display:inline-block;margin-top:12px;background:var(--c);color:var(--ink);
-  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;
-  letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;
-  text-decoration:none;clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
-.tr:hover{filter:brightness(1.12)}
-/* Le résumé de la série, sous celui de l'épisode. Les deux ne disent pas
-   la même chose : « une panne de téléporteur change l'équipage en
-   marionnettes » ne remplace pas ce qu'est Strange New Worlds, et qui
-   arrive au radar sans connaître la série n'a que ça pour situer. Plus
-   petit et plus pâle : c'est le décor, l'épisode est le sujet. */
-.ser{margin-top:9px;font-size:12.5px;color:rgba(255,253,247,.6)}
-.ser b{display:block;font-size:10px;font-weight:700;letter-spacing:.11em;
-  text-transform:uppercase;color:rgba(255,253,247,.42);margin-bottom:2px}
-
-.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7)}
-.empty[hidden]{display:none}
-.note{padding:22px 0 6px;font-size:12px;color:rgba(255,253,247,.5)}
-
-/* ══ révélation au défilement, purement CSS ════════════════════════ */
-@supports (animation-timeline: view()){
-  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 4% cover 12%}
-}
-
 /* ══ pied ══════════════════════════════════════════════════════════ */
 footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34px}
 .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;max-width:1280px;margin:0 auto;padding:0 20px}
@@ -454,10 +209,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   font-size:11.5px;color:rgba(255,253,247,.5);line-height:1.6}
 .legal a{font-size:11.5px;color:rgba(255,253,247,.62);text-decoration:underline}
 
-/* ══ barre de bas d'écran ══════════════════════════════════════════
-   Pas de progression à tenir ici : la barre porte la densité du
-   calendrier. Un cran par sortie, dans l'encre de son univers, dans
-   l'ordre des dates — la frise dit d'un coup d'œil qui sort quoi. */
+/* ══ barre de bas d'écran : le score global, toujours là ═══════════ */
 .hud{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);
   border-top:2px solid var(--paper);padding:8px 20px;
   padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
@@ -466,9 +218,10 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .hud b em{font-style:normal;color:var(--hot)}
 .hud .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
   color:rgba(255,253,247,.66)}
-.hud .bar{flex:1;min-width:120px;height:12px;border:2px solid var(--paper);
-  display:flex;gap:1px;padding:1px}
-.hud .bar i{flex:1;background:var(--c,var(--soon))}
+.hud .bar{flex:1;min-width:120px;height:10px;border:2px solid var(--paper);position:relative}
+.hud .bar i{position:absolute;inset:0;background:var(--cleared);transform:scaleX(0);
+  transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+
 
 @media(max-width:1080px){
   .nav-links{display:none}
@@ -476,6 +229,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .foot{grid-template-columns:1fr 1fr}
 }
 @media(max-width:720px){
+  .slots{grid-template-columns:1fr}
   /* Le pied tenait 722 px de haut sur un telephone, presque un ecran
      entier : les deux listes passent cote a cote, le bloc de tete garde
      la largeur, et tout le reste se resserre. Rien n'est retire. */
@@ -495,112 +249,485 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   .legal{padding-top:11px;font-size:10.5px;line-height:1.5}
   .legal a{font-size:10.5px}
   .hud .lbl{display:none}
+  .deep .go{margin-left:0}
   .icon-btn{width:44px;height:44px}
   .dw-site a{padding:13px 20px}
-  /* En étroit, la pastille « Prochaine » passe AU-DESSUS du titre au lieu de
-     lui prendre sa gauche : le nom de l'œuvre récupère la largeur entière,
-     et le cadran vient dessous plutôt que de le serrer contre le bord. */
-  .next .wrap{flex-direction:column;align-items:flex-start;gap:9px}
-  .next .txt{flex:none;width:100%}
-  .next .big{text-align:left}
-  .day{width:56px}
-  .day b{font-size:26px}
-  /* La colonne de date prend déjà 56 px : une affiche de 82 px laissait
-     142 px au synopsis, soit une vingtaine de signes par ligne. Elle descend
-     à 56 px, ce qui rend 26 px au texte sans la rendre méconnaissable. */
-  .bd{gap:10px;display:grid;grid-template-columns:56px 1fr;align-items:start}
-  /* La colonne de texte fait 170 px : les quatre pastilles de la fiche s'y
-     empilaient l'une sous l'autre, et la carte ouverte gagnait cent pixels.
-     En grille, `.inf` s'efface et la bande passe sous l'affiche, sur la
-     largeur entière — deux lignes au lieu de quatre, rien de retiré. */
-  .inf{display:contents}
-  .syn{grid-column:2}
-  .ser,.tm,.tr{grid-column:1/-1}
-  .tm{margin-top:0}
-  /* un `inline-block` devenu item de grille s'étire sur toute la colonne, et
-     le biseau du bouton partait à deux cents pixels de son texte */
-  .tr{justify-self:start}
-  /* en étroit, le compte à rebours passe sous le titre plutôt que de
-     comprimer la ligne à deux mots par ligne */
-  .hd{flex-wrap:wrap;gap:8px 12px}
-  .cd{order:3;text-align:left;font-size:19px}
-  .chevd{order:4;margin-left:auto}
-  /* Ce repli-là ne se déclenchait jamais : `.txt` porte `min-width:0`, donc
-     il se comprimait au lieu de forcer le retour à la ligne. « J‑2 » y
-     survit, « AUJOURD’HUI » non — il prend la largeur de trois compteurs et
-     réduisait « Star Trek: Strange New Worlds » à 97 px, soit trois lignes de
-     dix signes. Les deux derniers jours, la carte rend donc sa ligne entière
-     au nom de l'œuvre. Les autres gardent leur compteur à droite : le passer
-     dessous partout ajouterait une ligne à chacune des quarante cartes. */
-  .hd:has(.cd.mot) .txt{flex:1 0 100%}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .next .chev,.tag em{opacity:1}
+  .js .rv{opacity:1;transform:none}
+  .resume .chev,.start em{opacity:1}
+}
+/* ── le pied : les douze lignes en tête, tout au centre ───────────── */
+footer{border-top:0;padding:0 0 30px}
+.f-lines{display:flex;height:10px;border-top:2px solid var(--paper)}
+.f-lines i{flex:1}
+footer .foot{grid-template-columns:1fr;justify-items:center;text-align:center;gap:24px;padding-top:32px}
+footer .foot>div:first-child{grid-column:auto}
+.f-head{display:flex;flex-direction:column;align-items:center;gap:12px}
+.f-logo{width:min(300px,72vw);height:auto}
+footer .f-head p{max-width:58ch;margin:0 auto;font-size:13.5px}
+footer .f-uni{width:100%;max-width:1080px}
+footer .f-uni h4{font-size:13px;letter-spacing:.22em;color:rgba(255,253,247,.55);margin-bottom:12px}
+.f-uni ul{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+footer .f-uni a{display:flex;align-items:center;gap:9px;height:100%;padding:8px 10px;border:2px solid var(--line);
+  text-decoration:none;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;text-transform:uppercase;
+  letter-spacing:.03em;line-height:1.05;color:var(--paper);text-align:left}
+footer .f-uni a:hover{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent);text-decoration:none}
+.f-more ul{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 28px}
+footer .f-more a{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--paper)}
+footer .f-more a.doss{color:var(--c-doss)}
+footer .f-more a.upc{color:var(--c-upc)}
+footer .f-more a.news{color:var(--c-news)}
+footer .legal{width:100%;max-width:1080px;text-align:center}
+@media(max-width:1080px){
+  .f-uni ul{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:720px){
+  .f-uni ul{grid-template-columns:1fr 1fr;gap:6px}
+  footer .f-uni a{font-size:14px;padding:7px 8px;gap:7px}
+  footer .f-uni li a{display:flex}
+  footer .f-more a{font-size:15px}
+  .duo .deep,.duo .sy{padding:18px 16px 22px}
 }
 
-/* ══ CENTRAGE ══════════════════════════════════════════════════════
-   Bandeaux, accroche, stats, intro et bandes d'ère au centre. Les
-   fiches de médias, les filtres et le pied gardent leur alignement :
-   une liste qu'on parcourt du regard se lit sur un bord franc. */
-.attract .wrap{text-align:center}
-.attract h1,.dek,.intro-lead{margin-left:auto;margin-right:auto}
-.attract .head{justify-content:center}
-/* dans un flex, une marge auto mange l espace : le titre pousserait le tag au bord */
-.attract .head h1{margin-left:0;margin-right:0}
-.upd{justify-content:center}
-.crumb{margin-left:auto;margin-right:auto}
-.stats{margin-left:auto;margin-right:auto}
-.intro-lead{text-align:center}
-.intro-tags{text-align:center}
-.keys-title{text-align:center}
-.key-h{justify-content:center}
-.key p{text-align:center}
-.map .wrap{text-align:center}
-.map .meta{justify-content:center}
-.pick h2,.pick .sub{text-align:center}
-.pick .sub{margin-left:auto;margin-right:auto}
-.slot .nm,.slot .body,.slot .d{text-align:center}
-.score{justify-content:center;gap:16px}
-.deep .wrap{justify-content:center;text-align:center}
-.deep p{margin-left:auto;margin-right:auto}
-.deep .go{margin-left:0}
-/* ── retouches du 17/08 ────────────────────────────────────────────
-   La pastille passe sous le titre, et la bande de mois se centre avec
-   son décompte en dessous. */
-.attract .head{flex-direction:column;align-items:center}
-.mon .wrap{flex-direction:column;align-items:center;text-align:center;gap:8px}
-/* ── les filtres, repliés ──────────────────────────────────────────
-   Ouverts en permanence en haut de l’écran, ils mangeaient deux rangées
-   avant la première sortie. Repliés, ils tiennent une ligne, et le
-   décompte reste lisible sans rien ouvrir. */
-.sieve .wrap{display:block;padding-top:0;padding-bottom:0}
-.filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;
-  cursor:pointer;list-style:none;padding:11px 4px;
-  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;
-  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.86)}
+/* ══ retouches — barre A, tiroir, légende, réseaux ═════════════════
+   La barre prend toute la largeur : le logo au bord gauche, le drapeau
+   au bord droit, les liens au centre de l'écran — trois colonnes, les
+   deux du bord de même largeur, sans quoi le centre ne l'est pas. */
+header .wrap{max-width:none;display:grid;grid-template-columns:1fr auto 1fr;
+  padding-left:clamp(14px,2vw,32px);padding-right:clamp(14px,2vw,32px)}
+header .brand{justify-self:start;width:clamp(170px,16vw,310px);flex:none}
+header .brand img{max-height:none}
+header .nav-links{margin-left:0;justify-content:center;flex-wrap:nowrap}
+header .nav-tools{margin-left:0;justify-self:end}
+@media(max-width:1080px){
+  header .wrap{grid-template-columns:1fr auto}
+  header .brand{width:min(260px,58vw)}
+}
+/* le tiroir : le menu de l'ordinateur, dans le même ordre, en boutons
+   du pied de page — les neuf autres univers sous « More universes » */
+.dw-list{display:flex;flex-direction:column;gap:6px;padding:12px 16px 16px}
+.dw-list>a,.dw-more>summary,.dw-pop a{display:flex;align-items:center;gap:9px;min-height:44px;padding:8px 12px;
+  border:2px solid var(--line);text-decoration:none;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
+  font-size:17px;text-transform:uppercase;letter-spacing:.05em;line-height:1.05;color:var(--paper)}
+.dw-list>a:hover,.dw-pop a:hover{border-color:var(--paper)}
+.dw-list>a.u:hover,.dw-pop a:hover{border-color:var(--k);background:color-mix(in srgb,var(--k) 15%,transparent)}
+.dw-list>a.home[aria-current]{color:var(--hot);border-color:var(--hot)}
+.dw-list a i{font-style:normal;display:inline-grid;place-items:center;min-width:34px;height:22px;padding:0 5px;flex:none;
+  background:var(--k);color:var(--ink);font-family:'Big Shoulders Display','BSD repli',sans-serif;font-weight:900;font-size:13px;
+  letter-spacing:.04em;line-height:1;border:2px solid var(--ink)}
+.dw-list a i.w{color:#fff}
+.dw-more>summary{list-style:none;cursor:pointer;justify-content:space-between}
+.dw-more>summary::-webkit-details-marker{display:none}
+.dw-more>summary::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.dw-more[open]>summary{border-color:var(--paper)}
+.dw-more[open]>summary::after{transform:translateY(2px) rotate(225deg)}
+.dw-pop{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding-top:6px}
+.dw-pop a{font-size:15px;padding:7px 9px;gap:8px;min-height:40px}
+/* au-dessus du téléphone, ni burger ni tiroir, même resté ouvert */
+@media(min-width:720.02px){
+  .burger{display:none!important}
+  .drawer,.drawer.open{display:none!important}
+}
+/* le menu de l'ordinateur tient jusqu'à 721 px : le burger est pour
+   le téléphone seul. Entre 721 et 1080, le logo et les liens se serrent. */
+@media(min-width:720.02px) and (max-width:1080px){
+  .nav-links{display:flex}
+  header .wrap{grid-template-columns:auto 1fr auto;gap:12px}
+  header .brand{width:clamp(118px,15vw,170px)}
+  header .nav-links{gap:10px}
+  .nav-links a,.nav-more>summary{font-size:13.5px;letter-spacing:.05em}
+}
+/* la case « en chantier » : tout au centre */
+.l-grid .lock .lock-bd{flex:1;align-items:center;text-align:center}
+.l-grid .lock .sg-p{display:flex;justify-content:center}
+/* les réseaux : leur propre rangée, au centre */
+footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
+@media(max-width:720px){
+  .m-foot{justify-content:center}
+  .m-leg{justify-content:center;text-align:center}
+}
+
+/* ══ MAQUETTE — LE TABLEAU DES DÉPARTS ════════════════════════════════
+   « À venir » passe au plan de transport des pages d'univers. Ici la
+   ligne n'est pas un univers mais le temps : le train est à aujourd'hui,
+   les stations sont les mois, et chaque sortie est un départ, affiché à
+   son quai avec son horaire (le jour en or, sur fond de diodes) et son
+   compte à rebours. L'arrêt porte l'encre de sa ligne — de son univers.
+   Rien ne se coche ici : les arrêts sont des correspondances pleines,
+   pas des ronds vides à remplir. */
+:root{--uni:var(--c-upc);--rest:color-mix(in srgb,var(--c-upc) 30%,#1c1a26);--rail:64px;--board:#07060b;
+  --led:radial-gradient(rgba(255,253,247,.06) 1px,transparent 1.4px) 0 0/4px 4px}
+
+/* ── le premier écran ── */
+.ln-hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--paper)}
+.ln-bg{position:absolute;inset:-24px;z-index:-2;background:var(--ink) center 25%/cover no-repeat;
+  filter:blur(3px) saturate(.85);opacity:.34;transform:scale(1.05)}
+.ln-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(130% 100% at 50% 30%,rgba(13,11,18,.25) 0%,rgba(13,11,18,.75) 60%,var(--ink) 100%)}
+.ln-hero .wrap{padding-top:40px;padding-bottom:66px;text-align:center}
+.ln-head h1{font-size:clamp(58px,10.5vw,138px);line-height:.84;text-shadow:5px 5px 0 var(--ink)}
+.ln-head h1 .nm{display:block}
+.ln-head .tag{margin:16px auto 0;clip-path:none;border-radius:5px}
+.tag em{font-style:normal;animation:blink 1.5s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.25}}
+.ln-hero .dek{max-width:800px;margin:16px auto 0;font-size:16.5px;text-wrap:pretty}
+
+/* le plan de la ligne du temps : aujourd'hui à gauche, un mois par station */
+.ln-map{position:relative;max-width:1120px;margin:22px auto 0;padding:66px 92px 70px 132px}
+.lm-dep,.lm-cnt{position:absolute;top:50%;transform:translateY(-50%);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,253,247,.6)}
+.lm-dep{right:calc(100% - 100px);color:var(--hot)}
+.lm-cnt{right:0;color:var(--paper)}
+.lm-cnt b{color:var(--hot);font-size:17px}
+.lm-track{position:relative;height:10px;border-radius:5px;background:var(--rest);box-shadow:0 0 0 3px var(--ink)}
+.lm-fill{position:absolute;inset:0;border-radius:5px;background:var(--uni)}
+.lm-fill::after{content:'';position:absolute;inset:0;border-radius:5px;opacity:.75;
+  background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 0 50%/16px 100% repeat-x;
+  animation:lm-flow .8s linear infinite}
+@keyframes lm-flow{to{background-position:16px 50%}}
+.lm-st{position:absolute;top:50%;z-index:1;display:block;border-radius:50%;text-decoration:none;
+  width:var(--s);height:var(--s);transform:translate(-50%,-50%);
+  background:var(--paper);border:3px solid var(--ink);box-shadow:0 0 0 2px var(--uni);transition:transform .15s}
+.lm-st[hidden]{display:none}
+.lm-st.cur{background:var(--hot);box-shadow:0 0 0 3px var(--ink),0 0 0 5px var(--hot)}
+.lm-st:hover,.lm-st:focus-visible{transform:translate(-50%,-50%) scale(1.2);outline:none}
+.lm-lb{position:absolute;left:50%;transform:translateX(-50%);width:max-content;
+  max-width:170px;text-align:center;line-height:1;pointer-events:none;color:var(--paper);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;
+  text-shadow:0 2px 0 var(--ink),0 0 8px var(--ink)}
+.lm-st .lm-lb{bottom:calc(100% + 11px + var(--lv,0px))}
+.lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px + var(--lv,0px))}
+.lm-lb small{display:block;margin-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,253,247,.58)}
+.lm-st.cur .lm-lb{color:var(--hot)}
+.lm-train{position:absolute;top:50%;left:0;z-index:2;width:38px;height:20px;transform:translate(-50%,-50%);pointer-events:none}
+.lm-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px var(--hot))}
+.lm-train .body,.hud-trn .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
+.lm-train .win,.hud-trn .win{fill:var(--ink)}
+.lm-train .ping{fill:none;stroke:var(--hot);stroke-width:2;transform-box:fill-box;transform-origin:center;
+  animation:lm-ping 1.8s ease-out infinite}
+@keyframes lm-ping{from{transform:scale(.7);opacity:.9}to{transform:scale(1.9);opacity:0}}
+.lm-now{display:none}
+.ln-map.go .lm-track{animation:lm-draw 1.15s cubic-bezier(.65,0,.25,1) both}
+@keyframes lm-draw{from{clip-path:inset(-140px 100% -140px -220px)}to{clip-path:inset(-140px -220px -140px -220px)}}
+.ln-map.go .lm-st{animation:lm-pop .4s cubic-bezier(.2,1.6,.4,1) both;animation-delay:var(--d,0s)}
+@keyframes lm-pop{from{transform:translate(-50%,-50%) scale(0)}}
+.ln-map.go .lm-train,.ln-map.go .lm-cnt,.ln-map.go .lm-now{animation:lm-in .45s ease-out both;animation-delay:1.1s}
+@keyframes lm-in{from{opacity:0}}
+
+/* le tableau des départs : les chiffres du radar, en diodes */
+.ln-board{display:flex;flex-wrap:nowrap;justify-content:center;margin:12px auto 0;width:fit-content;max-width:100%;
+  background:var(--led),var(--board);border:2px solid var(--paper);border-radius:10px;overflow:hidden;
+  box-shadow:6px 6px 0 var(--ink)}
+.ln-board .s{padding:11px 22px 12px;border-right:2px dashed rgba(255,253,247,.16);min-width:0}
+.ln-board .s:last-child{border-right:0}
+.ln-board b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;line-height:.9;
+  color:var(--hot);text-shadow:0 0 12px rgba(240,201,124,.45);white-space:nowrap}
+.ln-board span{display:block;margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,253,247,.66)}
+
+/* ── le billet : le prochain départ, à cheval sur le filet du premier écran ── */
+.ticket-row{position:relative;z-index:3;display:flex;justify-content:center;margin-top:-34px;margin-bottom:6px}
+.ticket{display:flex;align-items:center;gap:18px;max-width:100%;color:var(--ink);background:var(--paper);
+  padding:10px 20px 10px 0;transform:rotate(-1.2deg);text-decoration:none;text-align:left;
+  box-shadow:6px 6px 0 var(--ink),6px 6px 0 2px var(--paper);
+  transition:transform .15s cubic-bezier(.2,.9,.3,1);
+  -webkit-mask:radial-gradient(circle 9px at 84px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at 84px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+          mask:radial-gradient(circle 9px at 84px 0,#0000 98%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at 84px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.ticket:hover,.ticket:focus-visible{transform:rotate(0) translateY(-2px)}
+.ticket[aria-hidden=true]{visibility:hidden}
+.t-stub{align-self:stretch;flex:none;width:84px;display:flex;flex-direction:column;margin:-10px 0;
+  border-right:2px dashed var(--ink)}
+.t-stub span{flex:1;display:grid;place-items:center;background:var(--k);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:28px;color:var(--ink)}
+.t-stub span.w{color:#fff}
+.t-stub.multi span{font-size:18px}
+.t-txt{display:flex;flex-direction:column;min-width:0;max-width:520px}
+.t-k{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:#6b6480}
+.t-nm{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:29px;line-height:.95;text-transform:uppercase;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-txt.multi .t-nm{font-size:21px}
+.t-txt.multi .t-nm+.t-nm{margin-top:3px}
+.t-st{font-size:13px;font-weight:600;color:#3a3548;margin-top:3px}
+.t-pc{flex:none;white-space:nowrap;padding-left:18px;border-left:2px solid #d9d4c8;text-align:center;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:44px;line-height:1}
+.t-pc small{display:block;font-family:'Chivo','Chivo repli';font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:#6b6480;margin-top:3px}
+.t-pc.mot{font-size:28px}
+
+/* ── la barre collante des filtres ── */
+.sieve{border-bottom:2px solid var(--paper);position:sticky;top:var(--hh,53px);z-index:50;
+  background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sieve .wrap{display:block}
+.sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:center}
+.sieve button{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14.5px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);border-radius:999px;
+  color:rgba(255,253,247,.76);padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.sieve button:hover{border-color:var(--paper);color:var(--paper)}
+.sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.sieve button i{width:10px;height:10px;border-radius:50%;background:var(--k,var(--paper));display:block}
+.sieve button small{font-family:'Chivo','Chivo repli';font-size:10.5px;font-weight:700;letter-spacing:0;opacity:.6}
+/* un univers sans rien d'annoncé : son bouton est là, en pointillés */
+.sieve button.vide{border-style:dashed;opacity:.55}
+.search{display:flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;
+  padding:4px 12px;width:min(430px,100%)}
+.search:focus-within{border-color:var(--hot)}
+.search svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:rgba(255,253,247,.62);stroke-width:2.2;stroke-linecap:square}
+.search input{flex:1;min-width:0;background:none;border:0;color:var(--paper);font-family:'Chivo','Chivo repli';font-size:14px;padding:3px 0}
+.search input:focus{outline:none}
+.search input::placeholder{color:rgba(255,253,247,.44)}
+.search button{border:0;padding:0 4px;font-size:14px;line-height:1;color:rgba(255,253,247,.6);display:none}
+.search button:hover{color:var(--paper);border:0}
+.search.on button{display:block}
+.filt>summary{display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;list-style:none;padding:11px 4px;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,253,247,.86)}
 .filt>summary::-webkit-details-marker{display:none}
 .filt>summary:hover{color:var(--paper)}
-.filt>summary .chev{width:19px;height:19px;fill:none;stroke:currentColor;
-  stroke-width:2.4;stroke-linecap:square;transition:transform .16s steps(3,end)}
+.filt>summary .chev{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square;transition:transform .16s}
 .filt[open]>summary .chev{transform:rotate(180deg)}
-@media(max-width:560px){
-  .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
-  .filt>summary .fcount{font-size:10px;letter-spacing:.04em}
+.fcount{font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
+.filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;padding:13px 0 16px;border-top:2px solid var(--line)}
+.filt-body .srow{display:flex;flex-direction:column;gap:11px}
+.lab{width:100%;text-align:center;margin:0 0 2px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,253,247,.5)}
+
+/* ── la ligne du temps ── */
+.cal-in{position:relative;padding-top:18px;padding-bottom:34px}
+.cal-in::before{content:'';position:absolute;z-index:0;width:8px;border-radius:4px;
+  left:calc(20px + var(--rail) / 2 - 4px);top:var(--l-top,0px);height:var(--l-h,0px);
+  background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 50% 0/100% 16px repeat-y,var(--rest);
+  animation:ln-flow .8s linear infinite}
+@keyframes ln-flow{to{background-position:50% 16px,0 0}}
+
+/* vous êtes ici : le train, posé en tête de la ligne */
+.ici{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:center;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+.trn{justify-self:center;width:38px;height:20px;border-radius:7px 10px 10px 7px;transform:rotate(90deg);
+  background:linear-gradient(var(--ink),var(--ink)) 8px 5px/6px 6px no-repeat,
+             linear-gradient(var(--ink),var(--ink)) 17px 5px/6px 6px no-repeat,var(--hot);
+  border:2px solid var(--ink);animation:ici-ping 1.8s ease-out infinite}
+@keyframes ici-ping{from{box-shadow:0 0 10px var(--hot),0 0 0 0 rgba(240,201,124,.85)}
+  to{box-shadow:0 0 10px var(--hot),0 0 0 13px rgba(240,201,124,0)}}
+.ici-t b{color:var(--paper)}
+
+/* la station : un mois, sa plaque, ses correspondances */
+.mon-sec{position:relative;z-index:1;scroll-margin-top:calc(var(--hh,53px) + 56px)}
+.mon-sec[hidden]{display:none}
+.stn{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;padding-top:34px}
+.stn-rail{position:relative;display:grid;place-items:center}
+.stn-dot{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--paper);
+  border:7px solid var(--ink);box-shadow:0 0 0 4px var(--uni)}
+.mon-sec.now .stn-dot{background:var(--hot);box-shadow:0 0 0 4px var(--hot)}
+.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:12px;overflow:hidden;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c-upc) 40%,var(--ink)) 0%,
+    color-mix(in srgb,var(--c-upc) 14%,var(--ink)) 70%);
+  box-shadow:7px 7px 0 var(--ink);min-height:156px;display:flex;align-items:center}
+.stn-plate::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--led);opacity:.8}
+.mon-sec.now .stn-plate{border-color:var(--hot)}
+.stn-txt{position:relative;padding:18px 26px 19px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:680px}
+.stn-k{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
+  font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.85)}
+.stn-k .now{background:var(--hot);color:var(--ink);border-radius:5px;padding:2px 8px 1px;font-size:12px;letter-spacing:.16em}
+.stn-nm{font-size:clamp(36px,5.2vw,64px);line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+.stn-meta{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-shadow:0 1px 3px var(--ink)}
+.stn-cx{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.stn-cx .lab{width:auto;margin:0 4px 0 0;font-size:10.5px;letter-spacing:.14em;color:rgba(255,253,247,.7)}
+.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:5px;
+  background:var(--k);color:var(--ink);border:2px solid var(--ink);
+  font-family:'Big Shoulders Display','BSD repli';font-size:13px;font-weight:900;letter-spacing:.05em}
+.cx[data-w]{color:#fff}
+.cx b{background:var(--ink);color:var(--k);border-radius:3px;padding:0 5px;font-size:13px}
+/* les affiches du mois, en éventail sur la droite de la plaque */
+.stn-po{position:absolute;right:22px;top:50%;display:flex;transform:translateY(-50%);pointer-events:none}
+.stn-po img{width:66px;aspect-ratio:2/3;object-fit:cover;border:2px solid var(--ink);border-radius:6px;
+  box-shadow:4px 4px 0 var(--ink);background:#000;margin-left:-14px;transform:rotate(var(--r,0deg))}
+.stn-po img:nth-child(odd){--r:-4deg}
+.stn-po img:nth-child(even){--r:3deg;margin-top:10px}
+
+/* ── les départs ── */
+.rows{list-style:none;display:flex;flex-direction:column;gap:12px;padding:18px 0 4px}
+.rel{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:start;--cy:46px}
+.rel[hidden]{display:none}
+/* l'arrêt : l'encre de la ligne, et le raccord jusqu'au quai */
+.stop{grid-column:1;grid-row:1;justify-self:center;position:relative;z-index:1;margin-top:calc(var(--cy) - 13px);
+  width:26px;height:26px;border-radius:50%;background:var(--ink);border:6px solid var(--c);box-shadow:0 0 0 3px var(--ink)}
+.stop::after{content:'';position:absolute;top:50%;left:calc(100% + 6px);width:calc(var(--rail) / 2 + 1px);height:5px;
+  transform:translateY(-50%);background:var(--c);opacity:.6}
+.rel.today .stop{background:var(--hot);border-color:var(--hot);animation:ici-ping 1.8s ease-out infinite}
+
+.card{grid-column:2;grid-row:1;min-width:0;position:relative;border:2px solid var(--line);border-radius:12px;overflow:hidden;
+  background:color-mix(in srgb,var(--c) 9%,#0f0d16);
+  transition:transform .12s cubic-bezier(.2,.9,.3,1),box-shadow .12s,border-color .12s}
+.card:hover{transform:translate(-4px,-4px);border-color:var(--c);box-shadow:4px 4px 0 var(--c)}
+details.card[open]{border-color:var(--c)}
+.rel.today .card{border-color:var(--hot)}
+.hd{display:grid;grid-template-columns:118px minmax(0,1fr) auto 34px;column-gap:18px;align-items:stretch;min-height:92px}
+details>summary.hd{cursor:pointer;list-style:none}
+details>summary.hd::-webkit-details-marker{display:none}
+div.hd{grid-template-columns:118px minmax(0,1fr) auto 16px}
+.hd:focus-visible{outline:3px solid var(--hot);outline-offset:-3px}
+/* l'horaire : le jour en or, sur fond de diodes */
+.bu-time{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:10px 6px;
+  text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
+.bu-time .wd,.bu-time .mo{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,253,247,.55)}
+.bu-time .mo{color:rgba(255,253,247,.78)}
+.bu-time .dn{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:38px;line-height:.85;
+  color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4)}
+.txt{align-self:center;min-width:0;padding:13px 0}
+.tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.code{display:inline-grid;place-items:center;background:var(--c);color:var(--ink);border:2px solid var(--ink);
+  border-radius:5px;padding:1px 7px 0;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.04em;line-height:1.1}
+.code.w{color:#fff}
+.u{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--c)}
+.b{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;color:var(--ink);
+  background:var(--k,var(--paper));border:2px solid var(--ink);border-radius:5px}
+.era{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:2px 8px;
+  color:rgba(255,253,247,.66);border:1px solid var(--line);border-radius:5px}
+.ti{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:25px;line-height:1;text-transform:uppercase}
+/* le repère d'épisode : S2E05, et la pastille des deux épisodes qui comptent */
+.ep{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:10px;font-weight:700;
+  letter-spacing:.11em;text-transform:uppercase;font-variant-numeric:tabular-nums;padding:2px 8px;
+  color:rgba(255,253,247,.66);border:1px solid var(--line);border-radius:5px}
+.ep svg{width:9px;height:9px;fill:currentColor;flex:0 0 auto}
+.ep b{font-weight:700;letter-spacing:.09em}
+.ep.premiere{color:#7ed6a5;border-color:#7ed6a5}
+.ep.finale{color:#f0956a;border-color:#f0956a}
+.ep.saison{color:#8fb8f0;border-color:#8fb8f0}
+/* le compte à rebours : l'afficheur du quai */
+.cd{align-self:center;white-space:nowrap;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:24px;line-height:1;
+  letter-spacing:.03em;color:var(--c);padding:7px 11px 6px;border-radius:7px;
+  background:var(--led),var(--board);border:2px solid color-mix(in srgb,var(--c) 45%,transparent)}
+.cd.soonest{color:var(--hot);border-color:color-mix(in srgb,var(--hot) 55%,transparent);text-shadow:0 0 10px rgba(240,201,124,.4)}
+.cd.mot{font-size:18px}
+.rel.today .cd{background:var(--hot);color:var(--ink);border-color:var(--hot);text-shadow:none}
+.chevd{align-self:center;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:square;color:rgba(255,253,247,.6);transition:transform .18s}
+details[open] .chevd{transform:rotate(180deg)}
+/* la fiche : l'affiche et le texte, sur toute la largeur */
+.bd{border-top:2px dashed var(--line);padding:14px 16px 16px;display:flex;gap:16px;align-items:flex-start}
+.inf{flex:1;min-width:0}
+.syn{font-size:13.5px;color:rgba(255,253,247,.86)}
+.syn .en{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--hot);border:1px solid var(--hot);border-radius:4px;padding:1px 6px;margin-right:6px}
+.po{flex:0 0 96px;aspect-ratio:2/3;border:2px solid var(--ink);border-radius:8px;overflow:hidden;background:#000;
+  box-shadow:0 0 0 1px var(--line)}
+.po img{width:100%;height:100%;object-fit:cover}
+.tm{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;color:rgba(255,253,247,.72)}
+.tm strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-right:5px}
+.tr{display:inline-block;margin-top:12px;background:var(--c);color:var(--ink);border-radius:6px;
+  font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 13px;text-decoration:none}
+.tr:hover{filter:brightness(1.12)}
+.ser{margin-top:9px;font-size:12.5px;color:rgba(255,253,247,.6)}
+.ser b{display:block;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:rgba(255,253,247,.42);margin-bottom:2px}
+
+/* le terminus : provisoire, le radar s'allonge chaque nuit */
+.terminus{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;
+  align-items:center;padding-top:28px}
+.terminus .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
+.terminus p{display:flex;align-items:baseline;gap:6px 16px;flex-wrap:wrap}
+.terminus b{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:.03em}
+.terminus span{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.62)}
+
+.empty{padding:44px 0;font-size:15px;color:rgba(255,253,247,.7);text-align:center}
+.empty[hidden]{display:none}
+.note{padding:10px 0 6px;font-size:12px;color:rgba(255,253,247,.5);text-align:center}
+
+@supports (animation-timeline: view()){
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 4% cover 12%}
 }
-.filt>summary .fcount{margin-left:0;font-family:'Chivo','Chivo repli';font-size:11px;font-weight:700;
-  letter-spacing:.09em;text-transform:uppercase;color:rgba(255,253,247,.52)}
-.filt-body{display:flex;flex-direction:column;align-items:center;gap:13px;
-  padding:13px 0 16px;border-top:2px solid var(--line)}
-.filt-body>*{width:auto;max-width:100%}
-.filt-body .search{flex:0 0 auto;width:min(430px,100%)}
-.filt-body .sgroup,.filt-body .srow{justify-content:center}
-/* dans une colonne, flex-basis:100% porte sur la hauteur : les deux
-   rangées héritées de la barre étalée s’y étiraient sur tout le dépliant */
-.filt-body #f-uni{flex:0 1 auto}
-.filt-body .srow{flex:0 1 auto;flex-direction:column;gap:11px}
-.filt-body .lab{width:100%;text-align:center;margin:0 0 2px;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+
+/* ── la barre du bas : un cran par départ, à l'encre de sa ligne, derrière le train ── */
+.hud-trn{flex:none;width:30px;height:16px}
+.hud-trn svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud .bar{flex:1;min-width:120px;height:10px;border:0;border-radius:5px;overflow:hidden;
+  display:flex;gap:2px;padding:0;background:none;position:relative}
+.hud .bar i{position:static;flex:1;background:var(--c,var(--soon));transform:none}
+
+@media(max-width:720px){
+  :root{--rail:40px}
+  .ln-hero .wrap{padding-top:28px;padding-bottom:56px}
+  .ln-head h1{font-size:clamp(50px,15vw,68px)}
+  .ln-hero .dek{font-size:14.5px}
+  .ln-map{padding:26px 8px 12px;margin-top:10px}
+  .lm-dep,.lm-cnt,.lm-lb{display:none}
+  .lm-st{width:calc(var(--s) * .62);height:calc(var(--s) * .62);border-width:2px}
+  .lm-now{display:block;margin-top:18px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;
+    letter-spacing:.06em;text-transform:uppercase}
+  .lm-now em{font-style:normal;color:var(--hot)}
+  .ln-board{width:100%;margin-top:14px}
+  .ln-board .s{flex:1 1 0;padding:9px 6px}
+  .ln-board b{font-size:22px}
+  .ln-board span{font-size:8.5px;letter-spacing:.04em}
+  .ticket{gap:12px;padding-right:12px;width:100%;
+    -webkit-mask:radial-gradient(circle 8px at 58px 0,#0000 98%,#000) top/100% 51% no-repeat,
+                 radial-gradient(circle 8px at 58px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+            mask:radial-gradient(circle 8px at 58px 0,#0000 98%,#000) top/100% 51% no-repeat,
+                 radial-gradient(circle 8px at 58px 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+  .t-stub{width:58px}
+  .t-stub span{font-size:19px}
+  .t-stub.multi span{font-size:14px}
+  .t-txt{flex:1}
+  .t-nm{font-size:21px;white-space:normal}
+  .t-txt.multi .t-nm{font-size:17px}
+  .t-st{font-size:11.5px}
+  .t-pc{font-size:28px;padding-left:10px}
+  .t-pc small{display:none}
+  .t-pc.mot{font-size:17px}
+  .filt>summary{gap:8px;padding:9px 2px;font-size:13px;letter-spacing:.06em}
+  .fcount{font-size:10px;letter-spacing:.04em}
+  .stn{padding-top:26px;column-gap:10px}
+  .stn-dot{width:34px;height:34px;border-width:5px;box-shadow:0 0 0 3px var(--uni)}
+  .mon-sec.now .stn-dot{box-shadow:0 0 0 3px var(--hot)}
+  .stn-plate{min-height:0}
+  .stn-txt{padding:14px 14px 15px;max-width:none}
+  .stn-k{font-size:12px;letter-spacing:.14em}
+  .stn-nm{font-size:clamp(28px,9vw,40px)}
+  .stn-meta{font-size:11.5px}
+  /* les affiches du mois serraient le nom de la station : sur téléphone,
+     la plaque garde toute sa largeur au texte */
+  .stn-po{display:none}
+  .tags .u{display:none}
+  .ici{column-gap:10px;font-size:13px;letter-spacing:.1em}
+  .trn{width:32px;height:17px;background:linear-gradient(var(--ink),var(--ink)) 6px 4px/5px 5px no-repeat,
+    linear-gradient(var(--ink),var(--ink)) 14px 4px/5px 5px no-repeat,var(--hot)}
+  .rows{gap:10px;padding-top:14px}
+  .rel{column-gap:10px;--cy:18px}
+  .stop{width:22px;height:22px;border-width:5px;margin-top:calc(var(--cy) - 11px)}
+  .stop::after{width:calc(var(--rail) / 2 - 1px)}
+  /* l'horaire devient le bandeau du haut de la carte */
+  .hd,div.hd{grid-template-columns:minmax(0,1fr) auto 22px;column-gap:10px;min-height:0;padding:0 10px 0 12px}
+  .bu-time{grid-column:1/-1;flex-direction:row;justify-content:center;gap:10px;margin:0 -10px 0 -12px;
+    padding:7px 12px;border-right:0;border-bottom:2px dashed rgba(255,253,247,.16)}
+  .bu-time .dn{font-size:22px}
+  .txt{padding:10px 0 11px}
+  .ti{font-size:20px}
+  .cd{font-size:17px;padding:5px 8px 4px}
+  .cd.mot{font-size:13px}
+  /* « AUJOURD'HUI » prend la largeur de trois compteurs : il passe sous le titre */
+  .hd:has(.cd.mot) .txt{grid-column:1/-1}
+  .hd:has(.cd.mot) .cd{justify-self:start;margin-bottom:11px}
+  .bd{padding:12px;gap:12px;display:block}
+  .bd::after{content:'';display:block;clear:both}
+  .po{float:left;width:80px;margin:0 12px 8px 0}
+  .terminus{column-gap:10px}
+  .terminus b{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lm-fill::after,.lm-train .ping,.cal-in::before,.trn,.rel.today .stop,.tag em{animation:none}
+}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://chronologeek.app/fr/"},{"@type":"ListItem","position":2,"name":"À venir","item":"https://chronologeek.app/fr/a-venir"}]}</script>
 </head>
@@ -632,38 +759,56 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     </div>
   </div>
   <nav class="drawer" id="drawer" aria-label="Navigation repliée">
-    <span class="dw-lab">Les univers</span>
-    <div class="dw-uni"><a href="/fr/starwars" class="u-sw"><i aria-hidden="true"></i>Star Wars</a><a href="/fr/marvel" class="u-mcu"><i aria-hidden="true"></i>Marvel</a><a href="/fr/dc" class="u-dc"><i aria-hidden="true"></i>DC</a><a href="/fr/avatar" class="u-av"><i aria-hidden="true"></i>Avatar Legends</a><a href="/fr/startrek" class="u-st"><i aria-hidden="true"></i>Star Trek</a><a href="/fr/walkingdead" class="u-twd"><i aria-hidden="true"></i>The Walking Dead</a><a href="/fr/dragonage" class="u-da"><i aria-hidden="true"></i>Dragon Age</a><a href="/fr/assassinscreed" class="u-ac"><i aria-hidden="true"></i>Assassin’s Creed</a><a href="/fr/dcanimation" class="u-dca"><i aria-hidden="true"></i>DC Animation</a><a href="/fr/jurassicworld" class="u-jw"><i aria-hidden="true"></i>Jurassic World</a><a href="/fr/witcher" class="u-wi"><i aria-hidden="true"></i>The Witcher</a><a href="/fr/residentevil" class="u-re"><i aria-hidden="true"></i>Resident Evil</a></div>
-    <span class="dw-lab">Le site</span>
-    <div class="dw-site"><a href="/fr/">Accueil</a><a href="/fr/dossiers/" class="doss">Dossiers</a><a href="#" class="upc" aria-current="page">À venir</a><a href="/fr/nouveautes" class="news">Nouveautés</a></div>
+    <div class="dw-list">
+      <a href="/fr/" class="home">Accueil</a>
+      <a href="/fr/dossiers/" class="doss">Dossiers</a>
+      <a href="/fr/starwars" class="u" style="--k:var(--sw)"><i>SW</i>Star Wars</a>
+      <a href="/fr/marvel" class="u" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a>
+      <a href="/fr/dc" class="u" style="--k:var(--dc)"><i>DC</i>DC Multivers</a>
+      <details class="dw-more"><summary>Plus d’univers</summary><div class="dw-pop"><a href="/fr/avatar" class="u" style="--k:var(--av)"><i>AV</i>Avatar Legends</a><a href="/fr/startrek" class="u" style="--k:var(--st)"><i>ST</i>Star Trek</a><a href="/fr/walkingdead" class="u" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a><a href="/fr/dragonage" class="u" style="--k:var(--da)"><i>DA</i>Dragon Age</a><a href="/fr/assassinscreed" class="u" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a><a href="/fr/dcanimation" class="u" style="--k:var(--dca)"><i>DCA</i>DC Animation</a><a href="/fr/jurassicworld" class="u" style="--k:var(--jw)"><i>JW</i>Jurassic World</a><a href="/fr/witcher" class="u" style="--k:var(--wi)"><i>TW</i>The Witcher</a><a href="/fr/residentevil" class="u" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></div></details>
+      <a href="#" class="upc" aria-current="page">À venir</a>
+      <a href="/fr/nouveautes" class="news">Nouveautés</a>
+    </div>
   </nav>
 </header>
 
 <main id="main">
 
-<section class="attract">
-  <div class="veil" aria-hidden="true"></div>
-  <div class="halftone" aria-hidden="true"></div>
+<!-- ══ LE PREMIER ÉCRAN : le titre, puis le plan de la ligne du temps ══
+     La classe `attract` reste : c'est à elle que `e-app.js` accroche le
+     bloc « Les sorties dans votre agenda ». -->
+<section class="attract ln-hero">
+  <div class="ln-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="head">
-      <h1 class="disp off">À venir</h1>
+    <div class="ln-head">
+      <h1 class="disp"><span class="nm">À venir</span></h1>
       <span class="tag"><em>▸</em> Mis à jour chaque jour</span>
     </div>
-    <p class="dek">Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et The Witcher
-      — mises à jour chaque jour.</p>
+    <p class="dek">Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age,
+      Assassin’s Creed, DC Animation, Jurassic World, The Witcher et Resident Evil — mises à jour chaque jour.</p>
+    <div class="ln-map" id="ln-map" aria-label="Plan de la ligne du temps"></div>
+    <div class="ln-board" id="ln-board">
+      <div class="s"><b id="b-n">…</b><span>sorties à venir</span></div>
+      <div class="s"><b id="b-u">…</b><span>univers au départ</span></div>
+      <div class="s"><b id="b-p">…</b><span>prochain départ</span></div>
+      <div class="s"><b id="b-m">…</b><span>mois au programme</span></div>
+    </div>
+    <!-- l'agenda de e-app.js se pose juste après ce repère, en bas du premier
+         écran, sous le tableau des départs -->
+    <span class="fx" hidden></span>
   </div>
 </section>
 
-<!-- ══ LA PROCHAINE SORTIE ═══════════════════════════════════════ -->
-<div class="next" id="next" hidden>
-  <div class="wrap">
-    <span class="lead">
-      <span class="chev">Prochaine</span>
-      <span class="nd" id="next-d"></span>
-    </span>
-    <span class="txt" id="next-list"></span>
-    <span class="big" id="next-cd"></span>
-  </div>
+<!-- ══ LE BILLET : le prochain départ ════════════════════════════════
+     Posé à cheval sur le filet du premier écran, comme sur les pages
+     d'univers. Il tient sa place dès le premier rendu (invisible tant que
+     le radar n'est pas lu) : sans ça, il poussait toute la page en arrivant. -->
+<div class="wrap ticket-row">
+  <a class="ticket" id="next" href="#cal" aria-hidden="true" tabindex="-1">
+    <span class="t-stub" id="next-stub"><span style="--k:var(--soon)">·</span></span>
+    <span class="t-txt" id="next-list"><span class="t-k">Prochain départ · <span id="next-d"></span></span><span class="t-nm">&nbsp;</span><span class="t-st">&nbsp;</span></span>
+    <span class="t-pc" id="next-cd"></span>
+  </a>
 </div>
 
 <!-- ══ FILTRES ═══════════════════════════════════════════════════ -->
@@ -698,25 +843,21 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 </main>
 
 <footer>
+  <div class="f-lines" aria-hidden="true"><i style="background:var(--sw)"></i><i style="background:var(--mcu)"></i><i style="background:var(--dc)"></i><i style="background:var(--av)"></i><i style="background:var(--st)"></i><i style="background:var(--twd)"></i><i style="background:var(--da)"></i><i style="background:var(--ac)"></i><i style="background:var(--dca)"></i><i style="background:var(--jw)"></i><i style="background:var(--wi)"></i><i style="background:var(--re)"></i></div>
   <div class="foot">
-    <div>
-      <h4>Chronologeek</h4>
-      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre. Tous les médias,
-        dans l'ordre chronologique, sans spoil. Construit et maintenu par une seule personne
-        qui regarde tout deux fois.</p>
+    <div class="f-head">
+      <img class="f-logo" src="/images/logo-chronologeek.webp" alt="Chronologeek" width="1143" height="101"/>
+      <p>Les timelines des univers dans lesquels ça vaut le coup de se perdre.
+        Tous les médias, dans l'ordre chronologique, sans spoil. Construit et maintenu
+        par une seule personne qui regarde tout deux fois.</p>
     </div>
-    <div><h4>Timelines</h4><ul>
-      <li><a href="/fr/starwars">Star Wars</a></li>
-      <li><a href="/fr/marvel">Marvel — MCU</a></li>
-      <li><a href="/fr/dc">DC Multiverse</a></li>
-      <li><a href="/fr/avatar">Avatar Legends</a></li><li><a href="/fr/startrek">Star Trek</a></li><li><a href="/fr/walkingdead">The Walking Dead</a></li><li><a href="/fr/dragonage">Dragon Age</a></li><li><a href="/fr/assassinscreed">Assassin’s Creed</a></li><li><a href="/fr/dcanimation">DC Animation</a></li><li><a href="/fr/jurassicworld">Jurassic World</a></li><li><a href="/fr/witcher">The Witcher</a></li><li><a href="/fr/residentevil">Resident Evil</a></li>
-      <li><a href="/fr/dossiers/">Dossiers</a></li>
-    </ul></div>
-    <div><h4>Plus</h4><ul>
-      <li><a href="#" aria-current="page">Sorties à venir</a></li>
-      <li><a href="/fr/nouveautes">Nouveautés</a></li>
+    <nav class="f-uni" aria-label="Timelines"><h4>Timelines</h4><ul><li><a href="/fr/starwars" style="--k:var(--sw)"><i>SW</i>Star Wars</a></li><li><a href="/fr/marvel" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a></li><li><a href="/fr/dc" style="--k:var(--dc)"><i>DC</i>DC Multivers</a></li><li><a href="/fr/avatar" style="--k:var(--av)"><i>AV</i>Avatar Legends</a></li><li><a href="/fr/startrek" style="--k:var(--st)"><i>ST</i>Star Trek</a></li><li><a href="/fr/walkingdead" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a></li><li><a href="/fr/dragonage" style="--k:var(--da)"><i>DA</i>Dragon Age</a></li><li><a href="/fr/assassinscreed" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a></li><li><a href="/fr/dcanimation" style="--k:var(--dca)"><i>DCA</i>DC Animation</a></li><li><a href="/fr/jurassicworld" style="--k:var(--jw)"><i>JW</i>Jurassic World</a></li><li><a href="/fr/witcher" style="--k:var(--wi)"><i>TW</i>The Witcher</a></li><li><a href="/fr/residentevil" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></li></ul></nav>
+    <nav class="f-more" aria-label="Plus"><ul>
+      <li><a href="/fr/dossiers/" class="doss">Dossiers</a></li>
+      <li><a href="#" class="upc" aria-current="page">Sorties à venir</a></li>
+      <li><a href="/fr/nouveautes" class="news">Nouveautés</a></li>
       <li><a href="#contact" data-contact>Contact</a></li>
-    </ul></div>
+    </ul></nav>
     <div class="legal">
       Ce produit utilise l'API <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       mais n'est ni approuvé ni certifié par TMDB. Données livres :
@@ -731,6 +872,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 <div class="hud"><div class="in">
   <b><em id="h-n">…</em></b>
   <span class="lbl" id="h-lbl">sorties suivies</span>
+  <span class="hud-trn" aria-hidden="true"><svg viewBox="0 0 38 20"><rect class="body" x="1" y="1" width="36" height="18" rx="8"/><rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/><rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg></span>
   <div class="bar" id="h-bar"></div>
   <span class="lbl" id="h-next"></span>
 </div></div>
@@ -743,9 +885,20 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var UNI={starwars:['Star Wars','var(--sw)'],marvel:['Marvel','var(--mcu)'],
            dc:['DC','var(--dc)'],avatar:['Avatar Legends','var(--av)'],
            startrek:['Star Trek','var(--st)'],twd:['The Walking Dead','var(--twd)'],
+           dragonage:['Dragon Age','var(--da)'],
            assassinscreed:['Assassin’s Creed','var(--ac)'],
+           dcanimation:['DC Animation','var(--dca)'],
+           jurassic:['Jurassic World','var(--jw)'],
            witcher:['The Witcher','var(--wi)'],
            residentevil:['Resident Evil','var(--re)']};
+  /* i18n-off — les codes de ligne, ceux du plan de l'accueil et du pied de
+     page. Ils s'écrivent pareil dans les deux langues. Marvel et Resident
+     Evil sont écrits en blanc : leur rouge est trop sombre pour l'encre. */
+  var CODE={starwars:'SW',marvel:'MCU',dc:'DC',avatar:'AV',startrek:'ST',twd:'TWD',
+            dragonage:'DA',assassinscreed:'AC',dcanimation:'DCA',jurassic:'JW',
+            witcher:'TW',residentevil:'RE'};
+  var BLANC={marvel:1,residentevil:1};
+  /* i18n-on */
   var KIND={film:['Film','#64b5f6'],tv:['Série','#81c784'],comic:['Comic','#fb923c'],
             novel:['Roman','#a78bfa'],game:['Jeu vidéo','#ffb74d'],book:['Livre','#94a3b8'],
             video:['Vidéo','#f472b6'],special:['Spécial','#ffa726'],other:['Autre','#6b7280']};
@@ -762,9 +915,19 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
        'juillet','août','septembre','octobre','novembre','décembre']
     : ['January','February','March','April','May','June',
        'July','August','September','October','November','December'];
+  var MOIS_C = FR
+    ? ['janv','févr','mars','avr','mai','juin','juil','août','sept','oct','nov','déc']
+    : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var JOURS = FR
     ? ['dim','lun','mar','mer','jeu','ven','sam']
     : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var JOURS_L = FR
+    ? ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi']
+    : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function jourLong(d){
+    return FR ? JOURS_L[d.getDay()]+' '+d.getDate()+' '+MOIS[d.getMonth()]
+              : JOURS_L[d.getDay()]+', '+MOIS[d.getMonth()]+' '+d.getDate();
+  }
   /* i18n-on */
   /* quelques entrées Avatar ont un `kind` corrompu ; `kindKey` est propre.
 
@@ -790,9 +953,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     return 'other';
   }
   function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':s; return d.innerHTML; }
+  function pl(n,mot){ return n+' '+mot+(n>1?'s':''); }
 
   var TODAY=new Date(); TODAY.setHours(0,0,0,0);
   var TODAY_ISO=new Date(TODAY.getTime()-TODAY.getTimezoneOffset()*60000).toISOString().slice(0,10);
+  var NOW_M=TODAY_ISO.slice(0,7);
 
   /* i18n-off — Un film ne sort pas le même jour des deux côtés de
      l'Atlantique. `radar.py` écrit la sortie **US** dans `date_sort` et
@@ -815,6 +980,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     return 'J‑'+n;
   }
 
+  var TRAIN='<svg viewBox="0 0 38 20" aria-hidden="true"><rect class="ping" x="1" y="1" width="36" height="18" rx="8"/>'+
+    '<rect class="body" x="1" y="1" width="36" height="18" rx="8"/>'+
+    '<rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/>'+
+    '<rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg>';
+
   var host=document.getElementById('cal');
 
   fetch('/radar.json',{cache:'no-cache'})
@@ -826,51 +996,16 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
         'pas le dossier <code>_proto</code>.</p></div>';
     });
 
-  var ROWS=[];   /* {el, uni, kind, hay} */
+  var ROWS=[];   /* {el, uni, kind, hay, d} */
+  var NUM=0;
 
   function build(data){
     var list=data.filter(function(e){ return stillUpcoming(e); })
                  .sort(function(a,b){ return iso(a).localeCompare(iso(b)); });
 
-    /* ── la ou les prochaines sorties ──────────────────────────────────
-       Une journée sort rarement seule : le 20/08 porte un épisode de
-       Strange New Worlds, un de Lanterns et un de Dead City. N'en montrer
-       qu'un faisait passer les autres pour plus lointains qu'ils ne sont,
-       et le premier ne devait sa place qu'à l'ordre du fichier. Tout ce qui
-       tombe le jour le plus proche monte donc ici, et la date, commune, ne
-       s'écrit qu'une fois. */
-    if(list.length){
-      var n0=list[0], u0=UNI[n0.universe]||['—','var(--soon)'];
-      var jour=list.filter(function(e){ return iso(e)===iso(n0); });
-      var nx=document.getElementById('next');
-      nx.hidden=false;
-      nx.classList.toggle('multi',jour.length>1);
-      nx.style.setProperty('--c',u0[1]);
-      document.getElementById('next-d').textContent=dateTxt(n0);
-      document.getElementById('next-list').innerHTML=jour.map(function(e){
-        var u=UNI[e.universe]||['—','var(--soon)'], kk=KIND[keyOf(e)]||KIND.other;
-        return '<span class="one" style="--c:'+u[1]+'">'+
-          '<span class="t">'+esc(titleOf(e))+'</span>'+
-          '<span class="m">'+
-            '<span class="u">'+u[0]+'</span>'+
-            '<span class="b" style="--k:'+kk[1]+'">'+kk[0]+'</span>'+
-            epTag(e)+
-          '</span></span>';
-      }).join('');
-      /* Le compte à rebours s'écrit en toutes lettres les deux derniers
-         jours : « AUJOURD’HUI » est cinq fois plus large que « J‑2 » à la
-         même taille, et il passait par-dessus le titre. La classe le
-         rétrécit, et « avant la sortie » saute — la phrase ne dit plus rien
-         qu'« aujourd'hui » n'ait déjà dit, et « demain avant la sortie » se
-         lit mal. */
-      var n0d=days(iso(n0)), cible=document.getElementById('next-cd');
-      cible.classList.toggle('mot',n0d<=1);
-      cible.innerHTML=cd(n0d)+(n0d<=1?'':'<small>avant la sortie</small>');
-      /* la page s’ouvre dans l’encre du monde qui sort en premier */
-      document.body.style.setProperty('--uc',u0[1]);
-    }
+    if(list.length) billet(list);
 
-    /* ── le calendrier : une bande par mois habité ─────────────────── */
+    /* ── la ligne : un mois par station, un départ par arrêt ───────── */
     var months=[], seen={};
     list.forEach(function(e){
       var m=iso(e).slice(0,7);
@@ -878,30 +1013,27 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       seen[m].push(e);
     });
 
-    var nowM=TODAY_ISO.slice(0,7), html='';
-    months.forEach(function(m){
-      var y=m.slice(0,4), mi=parseInt(m.slice(5),10)-1;
-      var rows=seen[m].map(row).join('');
-      html+='<section class="mon-sec" data-m="'+m+'">'+
-        '<div class="mon"><div class="halftone" aria-hidden="true"></div><div class="wrap">'+
-          '<h2 class="disp off">'+MOIS[mi]+' '+y+'</h2>'+
-          (m===nowM?'<span class="now">Ce mois-ci</span>':'')+
-          '<span class="n" data-n>'+seen[m].length+' sortie'+(seen[m].length>1?'s':'')+'</span>'+
-        '</div></div>'+
-        '<div class="list"><div class="wrap"><ol class="rows">'+rows+'</ol></div></div>'+
-      '</section>';
-    });
+    var html='<div class="wrap cal-in">'+
+      '<div class="ici"><span class="trn" aria-hidden="true"></span>'+
+        '<span class="ici-t">Vous êtes ici · <b>aujourd’hui</b>, '+jourLong(TODAY)+'</span></div>';
+    months.forEach(function(m,i){ html+=station(m,i,months.length,seen[m]); });
+    html+='<div class="terminus"><span class="stn-rail"><span class="stn-dot"></span></span>'+
+      '<p><b>Terminus provisoire</b><span>De nouvelles sorties s’ajoutent chaque nuit</span></p></div></div>';
     host.innerHTML=html;
+    plan(months,seen,list.length);
 
     document.getElementById('note').textContent=
       'Mis à jour automatiquement chaque jour';
 
     /* ── les boutons de filtre, tirés des données ──────────────────── */
     var fu=document.getElementById('f-uni'), fk=document.getElementById('f-kind');
+    /* Les douze univers ont leur bouton, même sans rien d'annoncé : aucun
+       n'est terminé, et une annonce peut tomber n'importe quelle nuit. Le
+       décompte dit lequel a quelque chose au programme aujourd'hui. */
     Object.keys(UNI).forEach(function(u){
-      if(!list.some(function(e){ return e.universe===u; })) return;
+      var nb=list.filter(function(e){ return e.universe===u; }).length;
       fu.insertAdjacentHTML('beforeend','<button type="button" data-u="'+u+'" aria-pressed="true"'+
-        ' style="--k:'+UNI[u][1]+'"><i></i>'+UNI[u][0]+'</button>');
+        (nb?'':' class="vide"')+' style="--k:'+UNI[u][1]+'"><i></i>'+UNI[u][0]+'<small>'+nb+'</small></button>');
     });
     var kinds=[];
     list.forEach(function(e){ var k=keyOf(e); if(kinds.indexOf(k)<0) kinds.push(k); });
@@ -911,7 +1043,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     });
 
     ROWS=[].slice.call(document.querySelectorAll('.rel')).map(function(el){
-      return {el:el,uni:el.dataset.u,kind:el.dataset.k,hay:el.dataset.q};
+      return {el:el,uni:el.dataset.u,kind:el.dataset.k,hay:el.dataset.q,d:el.dataset.d};
     });
     /* i18n-off — l'affiche n'est demandée qu'à l'ouverture de sa carte.
        `loading="lazy"` ne suffit pas : un <img> dans un <details> fermé est
@@ -933,7 +1065,164 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     /* i18n-on */
     wire();
     apply();
+
+    /* La ligne se mesure : de la tête (le train) au terminus. Une carte qui
+       s'ouvre, un filtre, une police qui arrive changent sa longueur — un
+       ResizeObserver les couvre tous sans rien savoir de la cause. */
+    var box=host.querySelector('.cal-in');
+    rail();
+    if(window.ResizeObserver) new ResizeObserver(rail).observe(box);
+    else addEventListener('resize',rail);
   }
+
+  function rail(){
+    var box=host.querySelector('.cal-in'); if(!box) return;
+    var a=box.querySelector('.ici .trn'), z=box.querySelector('.terminus .stn-dot');
+    if(!a||!z) return;
+    function y(el){ var t=0; while(el&&el!==box){ t+=el.offsetTop; el=el.offsetParent; } return t; }
+    var top=y(a)+a.offsetHeight/2, bas=y(z)+z.offsetHeight/2;
+    box.style.setProperty('--l-top',top+'px');
+    box.style.setProperty('--l-h',Math.max(0,bas-top)+'px');
+  }
+
+  /* ── le billet : la ou les prochaines sorties ─────────────────────
+     Une journée sort rarement seule : le 20/08 porte un épisode de
+     Strange New Worlds, un de Lanterns et un de Dead City. N'en montrer
+     qu'un faisait passer les autres pour plus lointains qu'ils ne sont,
+     et le premier ne devait sa place qu'à l'ordre du fichier. Tout ce qui
+     tombe le jour le plus proche monte donc sur le billet, une souche par
+     ligne, et la date, commune, ne s'écrit qu'une fois. */
+  function billet(list){
+    var n0=list[0], u0=UNI[n0.universe]||['—','var(--soon)'];
+    var jour=list.filter(function(e){ return iso(e)===iso(n0); });
+    var tk=document.getElementById('next');
+    var multi=jour.length>1;
+    document.getElementById('next-stub').className='t-stub'+(multi?' multi':'');
+    document.getElementById('next-stub').innerHTML=jour.slice(0,4).map(function(e){
+      var u=UNI[e.universe]?e.universe:'';
+      return '<span style="--k:'+(u?UNI[u][1]:'var(--soon)')+'"'+(BLANC[u]?' class="w"':'')+'>'+(CODE[u]||'·')+'</span>';
+    }).join('');
+    var tx=document.getElementById('next-list');
+    tx.classList.toggle('multi',multi);
+    tx.innerHTML='<span class="t-k">Prochain départ · <span id="next-d">'+esc(dateTxt(n0))+'</span></span>'+
+      jour.map(function(e){ return '<span class="t-nm">'+esc(titleOf(e))+'</span>'; }).join('')+
+      (multi?'':'<span class="t-st">'+esc(u0[0]+' · '+(KIND[keyOf(n0)]||KIND.other)[0]+
+        (n0.ep?' · '+epNum(n0.ep)+(EP_MOT[n0.ep.mark]?' · '+EP_MOT[n0.ep.mark]:''):''))+'</span>');
+    /* Le compte à rebours s'écrit en toutes lettres les deux derniers
+       jours : « AUJOURD’HUI » est cinq fois plus large que « J‑2 » à la
+       même taille. La classe le rétrécit, et « avant la sortie » saute — la
+       phrase ne dit plus rien qu'« aujourd'hui » n'ait déjà dit. */
+    var n0d=days(iso(n0)), cible=document.getElementById('next-cd');
+    cible.classList.toggle('mot',n0d<=1);
+    cible.innerHTML=cd(n0d)+(n0d<=1?'':'<small>avant la sortie</small>');
+    tk.href='#r-0';
+    /* le premier écran prend l'affiche du prochain départ, floutée derrière
+       le plan : la page n'a pas de bannière à elle, et c'est ce qu'on vient
+       y chercher */
+    var af=jour.filter(function(e){ return e.poster; })[0];
+    if(af) document.querySelector('.ln-bg').style.backgroundImage=
+      'url(https://image.tmdb.org/t/p/w780'+af.poster+')';
+    tk.removeAttribute('aria-hidden'); tk.removeAttribute('tabindex');
+    /* la page s’ouvre dans l’encre du monde qui sort en premier */
+    document.body.style.setProperty('--uc',u0[1]);
+  }
+
+  /* ── une station : le mois, sa plaque, ses correspondances ─────── */
+  function station(m,i,n,items){
+    var y=m.slice(0,4), mi=parseInt(m.slice(5),10)-1;
+    var cnt={}; items.forEach(function(e){ cnt[e.universe]=(cnt[e.universe]||0)+1; });
+    var cx=Object.keys(UNI).filter(function(u){ return cnt[u]; }).map(function(u){
+      return '<span class="cx" style="--k:'+UNI[u][1]+'"'+(BLANC[u]?' data-w':'')+'>'+CODE[u]+'<b>'+cnt[u]+'</b></span>';
+    }).join('');
+    /* les affiches du mois : une par œuvre, les épisodes d'une même série
+       partageant la sienne */
+    var pos=[], vu={};
+    items.forEach(function(e){ if(e.poster&&!vu[e.poster]&&pos.length<5){ vu[e.poster]=1; pos.push(e.poster); } });
+    return '<section class="mon-sec'+(m===NOW_M?' now':'')+'" id="m-'+m+'" data-m="'+m+'">'+
+      '<div class="stn"><span class="stn-rail"><span class="stn-dot"></span></span>'+
+        '<div class="stn-plate">'+
+          '<div class="stn-txt">'+
+            '<span class="stn-k">Station '+(i+1)+' / '+n+(m===NOW_M?'<span class="now">Ce mois-ci</span>':'')+'</span>'+
+            '<h2 class="disp stn-nm">'+MOIS[mi]+' '+y+'</h2>'+
+            '<span class="stn-meta" data-n>'+pl(items.length,'sortie')+'</span>'+
+            '<span class="stn-cx"><span class="lab">Correspondances</span>'+cx+'</span>'+
+          '</div>'+
+          (pos.length?'<span class="stn-po" aria-hidden="true">'+pos.map(function(p){
+            return '<img src="https://image.tmdb.org/t/p/w185'+p+'" alt="" loading="lazy" decoding="async"/>';
+          }).join('')+'</span>':'')+
+        '</div></div>'+
+      '<ol class="rows">'+items.map(row).join('')+'</ol>'+
+    '</section>';
+  }
+
+  /* ── le plan du haut : aujourd'hui, puis un mois par station ─────
+     La taille d'une station dit son nombre de sorties, comme à l'accueil. */
+  function plan(months,seen,total){
+    var map=document.getElementById('ln-map'); if(!map||!months.length) return;
+    var n=months.length, max=1, h='', an='';
+    months.forEach(function(m){ max=Math.max(max,seen[m].length); });
+    months.forEach(function(m,i){
+      var k=seen[m].length, s=Math.round(20+20*Math.sqrt(k/max)), x=(i+1)/n;
+      var mi=parseInt(m.slice(5),10)-1, y=m.slice(0,4);
+      /* l'année s'écrit à la première station et chaque fois qu'elle change */
+      var nom=MOIS[mi]+(y!==an?' '+y:''); an=y;
+      h+='<a class="lm-st'+(i%2?' lo':'')+(m===NOW_M?' cur':'')+'" href="#m-'+m+'" data-m="'+m+'"'+
+        ' style="left:'+(x*100).toFixed(3)+'%;--s:'+s+'px;--d:'+(0.12+0.95*x).toFixed(2)+'s"'+
+        ' aria-label="'+esc(nom)+'"><span class="lm-lb">'+esc(nom)+'<small>'+pl(k,'sortie')+'</small></span></a>';
+    });
+    map.innerHTML='<span class="lm-dep">Aujourd’hui</span>'+
+      '<div class="lm-track"><div class="lm-fill"></div>'+h+'<span class="lm-train">'+TRAIN+'</span></div>'+
+      '<span class="lm-cnt"><b id="lm-n">'+total+'</b> '+(total>1?'sorties':'sortie')+'</span>'+
+      '<p class="lm-now">Prochaine station : <em>'+esc(MOIS[parseInt(months[0].slice(5),10)-1]+' '+months[0].slice(0,4))+'</em></p>';
+    etage(map);
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
+      requestAnimationFrame(function(){ map.classList.add('go'); });
+  }
+
+  /* Les étiquettes du plan : chacune au premier étage libre, son côté
+     d'abord, puis l'autre, puis un étage plus loin — celui des pages
+     d'univers. Mesuré dans la mise en page (offsetLeft), jamais à l'écran :
+     les stations arrivent avec une animation d'échelle. */
+  function etage(map){
+    var P=[], lh=0;
+    map.style.paddingTop=''; map.style.paddingBottom='';
+    function gx(el){ var x=0; while(el&&el!==map){ x+=el.offsetLeft; el=el.offsetParent; } return x; }
+    [].forEach.call(map.querySelectorAll('.lm-st'),function(st){
+      var lb=st.querySelector('.lm-lb'); if(!lb) return;
+      lb.style.removeProperty('--lv');
+      if(st.dataset.lo==null) st.dataset.lo=st.classList.contains('lo')?'1':'';
+      st.classList.toggle('lo',!!st.dataset.lo);
+      if(!lb.offsetWidth) return;
+      lh=Math.max(lh,lb.offsetHeight);
+      var c=gx(st), w=lb.offsetWidth/2;
+      P.push({st:st,lb:lb,a:c-w,b:c+w,lo:!!st.dataset.lo});
+    });
+    if(!P.length) return;
+    P.sort(function(x,y){ return x.a-y.a; });
+    var G=12, pas=lh+6, cote={0:[],1:[]}, max={0:0,1:0};
+    P.forEach(function(p){
+      var ordre=p.lo?[1,0]:[0,1];
+      for(var n=0;n<12;n++){
+        for(var j=0;j<2;j++){
+          var c=ordre[j], rang=cote[c];
+          if(rang[n]!=null && rang[n]>p.a-G) continue;
+          rang[n]=p.b; p.st.classList.toggle('lo',c===1);
+          if(n) p.lb.style.setProperty('--lv',(n*pas)+'px');
+          max[c]=Math.max(max[c],n); return;
+        }
+      }
+    });
+    var cs=getComputedStyle(map);
+    if(max[0]) map.style.paddingTop=(parseFloat(cs.paddingTop)+max[0]*pas)+'px';
+    if(max[1]) map.style.paddingBottom=(parseFloat(cs.paddingBottom)+max[1]*pas)+'px';
+  }
+  var etageRaf=0;
+  function reEtage(){
+    var m=document.getElementById('ln-map');
+    if(m&&!etageRaf) etageRaf=requestAnimationFrame(function(){ etageRaf=0; etage(m); });
+  }
+  addEventListener('resize',reEtage);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(reEtage);
 
   /* i18n-off — le titre et la date, dans la langue de la page.
 
@@ -1035,8 +1324,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       })
       .then(function(o){
         /* Une carte d'épisode porte sa saison et son numéro : TMDB a alors un
-           synopsis à lui, que le radar n'avait pas — douze des vingt épisodes
-           du jour sortaient sans une ligne de texte. Une saison entière
+           synopsis à lui, que le radar n'avait pas. Une saison entière
            (`e:0`) n'en a pas et n'est donc pas demandée. */
         var ep=d.dataset.ep;
         if(!ep) return [o,null];
@@ -1048,9 +1336,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       })
       .then(function(p){
         /* La période in-universe se lit dans la pastille de l'en-tête plutôt
-           que d'être portée deux fois : c'est la même donnée, et la carte
-           l'affiche déjà. Seul Wookieepedia en pose, et ses entrées n'ont pas
-           de fiche TMDB — la mesure attend celle qui en aura une. */
+           que d'être portée deux fois. */
         var era=d.querySelector('.era');
         peintFiche(inf,p[0],p[1],era?era.textContent.trim():'');
       })
@@ -1058,17 +1344,8 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
 
   function peintFiche(inf,o,ep,era){
-    /* Le synopsis de l'épisode passe avant celui de la série : « Lanterns
-       S1E2 » ne raconte pas la même chose que Lanterns.
-
-       Et quand TMDB n'a pas l'épisode dans la langue de la page, ce que
-       `radar.json` portait déjà l'emporte sur le pitch de la série : Strange
-       New Worlds S4E5 a son résumé en anglais et aucun en français, et « une
-       panne de téléporteur change tout l'équipage en marionnettes » apprend
-       plus que « suivez Christopher Pike dans la décennie qui précède Kirk ».
-       Il garde son badge EN, posé au rendu de la carte. La série ne reprend
-       la main que si la carte n'avait rien du tout — ou s'il ne s'agit pas
-       d'un épisode, auquel cas c'est la même fiche, mieux traduite. */
+    /* Le synopsis de l'épisode passe avant celui de la série, et ce que
+       `radar.json` portait déjà l'emporte sur le pitch de la série. */
     var deEp=ep?(ep.overview||'').trim():'';
     var deFiche=(o&&o.overview||'').trim();
     var p=inf.querySelector('.syn');
@@ -1076,11 +1353,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     var txt=deEp||((!ep||!avait)?deFiche:'');
     if(txt&&p) p.innerHTML=esc(txt);
 
-    /* Un épisode a son résumé, sa série en a un autre : Star Trek n'affichait
-       que le premier, et la carte ne disait plus ce qu'est Strange New Worlds.
-       Les deux tiennent maintenant, l'épisode d'abord. Rien à ajouter quand la
-       carte affiche déjà le résumé de la série — Lanterns S1E2, faute d'en
-       avoir un à lui. */
     var affiche=p?p.textContent.trim():'';
     if(ep&&deFiche&&affiche.indexOf(deFiche)<0){
       var s=document.createElement('p');
@@ -1089,15 +1361,11 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       inf.appendChild(s);
     }
 
-    /* Les quatre mesures, dans l'ordre et sous les intitulés des six pages
-       d'univers : `<strong>Année</strong> 2026`. */
     var bits=[];
     function m(lab,val){
       if(val) bits.push('<span><strong>'+lab+'</strong> '+esc(val)+'</span>');
     }
     m(T_M.annee,((o&&(o.release_date||o.first_air_date))||'').slice(0,4));
-    /* Deux genres au plus : TMDB en donne jusqu'à cinq, et la ligne partait
-       alors sur trois rangs au téléphone. */
     m(T_M.genre,((o&&o.genres)||[]).map(function(x){ return x.name; })
       .slice(0,2).join(' · '));
     /* Une œuvre qui n'est pas sortie n'a pas de votes : TMDB rend 0, et
@@ -1130,25 +1398,30 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   /* i18n-on */
 
+  /* ── un départ : l'arrêt, puis le quai ────────────────────────────
+     De gauche à droite, comme sur les pages d'univers : l'arrêt à l'encre
+     de sa ligne, l'horaire (le jour en or), le code de ligne et le titre,
+     le compte à rebours de l'afficheur. */
   function row(e){
     var u=UNI[e.universe]||['—','var(--soon)'], k=keyOf(e), kk=KIND[k]||KIND.other;
     var d=iso(e), dt=new Date(d+'T00:00:00'), n=days(d);
-    var t=titleOf(e);
+    var t=titleOf(e), code=CODE[e.universe]||'';
     /* i18n-off — radar.json porte les deux synopsis et sert les deux langues :
        c'est la page qui choisit. Le français prend `syn_fr` et retombe sur
-       l'anglais en le signalant ; l'anglais prend `syn` et ne retombe pas. Un
-       synopsis français n'a rien à faire sur la page anglaise, pour la même
-       raison que la bande-annonce. Sans ce test, la page anglaise affichait le
-       résumé français de chaque sortie. */
+       l'anglais en le signalant ; l'anglais prend `syn` et ne retombe pas. */
     var syn='', marque='';
     if(FR){ if(e.syn_fr){ syn=e.syn_fr; } else if(e.syn){ syn=e.syn; marque='<span class="en">EN</span>'; } }
     else { syn=e.syn||''; }
     /* i18n-on */
 
     var head=
+      '<span class="bu-time"><span class="wd">'+JOURS[dt.getDay()]+'</span>'+
+        '<b class="dn">'+parseInt(d.slice(8),10)+'</b>'+
+        '<span class="mo">'+MOIS_C[dt.getMonth()]+'</span></span>'+
       '<span class="txt">'+
         '<span class="tags">'+
-          '<span class="u">'+u[0]+'</span>'+
+          (code?'<span class="code'+(BLANC[e.universe]?' w':'')+'">'+code+'</span>':'')+
+          (u[0]!==code?'<span class="u">'+u[0]+'</span>':'')+
           '<span class="b" style="--k:'+kk[1]+'">'+kk[0]+'</span>'+
           (e.era?'<span class="era">'+esc(e.era)+'</span>':'')+
         '</span>'+
@@ -1159,22 +1432,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
     var chev='<svg class="chevd" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg>';
 
-    /* L'affiche ne se montre qu'une fois la carte ouverte : repliée, la ligne
-       reste exactement ce qu'elle était. L'URL attend dans `data-po`, et c'est
-       le `toggle` capté plus bas qui pose le <img> — voir là-bas pourquoi
-       `loading="lazy"` n'y suffisait pas. Le chemin nu vient de radar.json, la
-       taille est choisie ici : 82 px de rendu, donc w342 par la règle du ×4.
-       Rien du tout quand TMDB n'a pas d'affiche — les comics de Wookieepedia
-       et les romans de l'Almanach n'en ont aucune. */
+    /* L'affiche ne se montre qu'une fois la carte ouverte. Le chemin nu vient
+       de radar.json, la taille est choisie ici : 96 px de rendu, donc w342
+       par la règle du ×4. */
     var po=e.poster
       ? '<span class="po" data-po="https://image.tmdb.org/t/p/w342'+e.poster+'"></span>'
       : '';
-    /* La fiche TMDB s'ajoute dans `.inf` à l'ouverture — synopsis affiné,
-       note, genre, bande-annonce. Une carte sans identifiant garde ce qu'elle
-       a toujours eu : les comics de Wookieepedia et les romans de l'Almanach
-       n'ont pas de fiche, et leur synopsis vient déjà de leur source. Un
-       épisode a en plus sa saison et son numéro, qui donnent le synopsis de
-       l'épisode plutôt que celui de la série. */
     var fiche=e.tmdb
       ? ' data-tm="'+e.media+'/'+e.tmdb+'"'+
         (e.ep&&e.ep.e?' data-ep="'+e.ep.s+'/'+e.ep.e+'"':'')
@@ -1185,17 +1448,15 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
       : '';
 
     var card=corps
-      ? '<details class="card"'+fiche+'><summary class="hd">'+head+chev+'</summary>'+corps+
-          '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></details>'
-      : '<div class="card"><div class="hd">'+head+'</div>'+
-          '<span class="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>';
+      ? '<details class="card"'+fiche+'><summary class="hd">'+head+chev+'</summary>'+corps+'</details>'
+      : '<div class="card"><div class="hd">'+head+'<span></span></div></div>';
 
-    return '<li class="rel rv'+(n<=0?' today':'')+'" style="--c:'+u[1]+'"'+
+    return '<li class="rel rv'+(n<=0?' today':'')+'" id="r-'+(NUM++)+'" style="--c:'+u[1]+'"'+
       ' data-u="'+e.universe+'" data-k="'+k+'" data-d="'+d+'"'+
-      ' data-q="'+esc((t+' '+e.title+' '+u[0]+' '+kk[0]+
+      ' data-q="'+esc((t+' '+e.title+' '+u[0]+' '+code+' '+kk[0]+
         (e.ep?' '+epNum(e.ep)+' '+(EP_MOT[e.ep.mark]||''):'')).toLowerCase())
         .replace(/"/g,'')+'">'+
-      '<span class="day"><b>'+parseInt(d.slice(8),10)+'</b><span>'+JOURS[dt.getDay()]+'</span></span>'+
+      '<span class="stop" aria-hidden="true"></span>'+
       card+'</li>';
   }
 
@@ -1203,23 +1464,32 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   var offU={}, offK={}, q=document.getElementById('q');
 
   function apply(){
-    var v=q.value.trim().toLowerCase(), n=0, segs='', first=null;
+    var v=q.value.trim().toLowerCase(), n=0, segs='', first=null, unis={};
     ROWS.forEach(function(r){
       var ok=!offU[r.uni]&&!offK[r.kind]&&(!v||r.hay.indexOf(v)>-1);
       r.el.hidden=!ok;
       if(ok){
-        n++;
+        n++; unis[r.uni]=1;
         segs+='<i style="--c:'+(UNI[r.uni]?UNI[r.uni][1]:'var(--soon)')+'"></i>';
         if(!first) first=r;
       }
     });
-    /* un mois sans sortie visible n’a plus de raison d’être affiché */
+    /* un mois sans sortie visible n’a plus de raison d’être affiché — ni sa
+       plaque, ni sa station sur le plan du haut */
+    var mois=0;
     [].forEach.call(document.querySelectorAll('.mon-sec'),function(sec){
       var vis=[].slice.call(sec.querySelectorAll('.rel')).filter(function(el){ return !el.hidden; }).length;
       sec.hidden=(vis===0);
+      if(vis) mois++;
       var lab=sec.querySelector('[data-n]');
-      if(lab) lab.textContent=vis+' sortie'+(vis>1?'s':'');
+      if(lab) lab.textContent=pl(vis,'sortie');
+      var st=document.querySelector('.lm-st[data-m="'+sec.dataset.m+'"]');
+      if(st){
+        st.hidden=(vis===0);
+        var sm=st.querySelector('small'); if(sm) sm.textContent=pl(vis,'sortie');
+      }
     });
+    var lmn=document.getElementById('lm-n'); if(lmn) lmn.textContent=n;
 
     document.getElementById('fcount').textContent=n+' sortie'+(n>1?'s':'')+' affichée'+(n>1?'s':'');
     document.getElementById('empty').hidden=(n>0);
@@ -1227,13 +1497,18 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
     document.getElementById('h-lbl').textContent='sortie'+(n>1?'s':'')+' suivie'+(n>1?'s':'');
     document.getElementById('h-bar').innerHTML=segs;
     document.getElementById('h-next').textContent=
-      first?('prochaine · '+cd(days(first.el.dataset.d||''))):'';
+      first?('prochaine · '+cd(days(first.d||''))):'';
+    document.getElementById('b-n').textContent=n;
+    document.getElementById('b-u').textContent=Object.keys(unis).length;
+    document.getElementById('b-p').textContent=first?cd(days(first.d||'')):'—';
+    document.getElementById('b-m').textContent=mois;
     q.parentNode.classList.toggle('on',!!q.value);
 
     /* un seul univers allumé : la page entière bascule dans son encre */
     var on=Object.keys(UNI).filter(function(u){ return !offU[u]; });
     if(on.length===1) document.body.style.setProperty('--uc',UNI[on[0]][1]);
     else if(first) document.body.style.setProperty('--uc',UNI[first.uni]?UNI[first.uni][1]:'var(--c-upc)');
+    reEtage();
   }
 
   function wire(){
@@ -1267,7 +1542,6 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
   }
   head();
   addEventListener('resize',head);
-  /* les polices arrivent après : la hauteur du bandeau bouge avec elles */
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(head);
 
   /* ── menu replié ───────────────────────────────────────────────── */
