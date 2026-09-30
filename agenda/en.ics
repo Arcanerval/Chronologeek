@@ -7,43 +7,12 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:6c182ac9ae8ff887541d-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20260929
-DTEND;VALUE=DATE:20260930
-SUMMARY:The Witcher · The Witcher 3: Wild Hunt — Remastered
-DESCRIPTION:The Witcher 3: Wild Hunt is the third installment in the series
-  of games developed by CD PROJEKT RED featuring the witcher Geralt of Rivi
- a. The game was originally scheduled for release in late 2014\, then pushe
- d back to 24 February 2015\, and finally released on 19 May 2015. During t
- he first two weeks since release it had sold more than 4 million copies wo
- rldwide\, more than doubling the total sales…\n\nhttps://chronologeek.ap
- p/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:8f2e17d8d23f41077099-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:DC · Lanterns · S1E08 · Finale
 DESCRIPTION:https://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:a6158bda2b4f3310e378-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Star Wars · Smugglers and Scoundrels: The Race for Jabba's Bounty
-DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
- rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
-  novels published by Mad Cave Studios. Originally announced for a Septembe
- r 13\, 2026 release before being delayed to October 6 \, it is written by 
- Cavan Scott and illustrated by Christian Colbert\, and will be released on
-  November 17\, 2026.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -239,6 +208,21 @@ DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
 DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Star Wars · Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
+ rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
+  novels published by Mad Cave Studios. Originally announced for a Septembe
+ r 13\, 2026 release before being delayed to October 6 \, it is written by 
+ Cavan Scott and illustrated by Christian Colbert\, and will be released on
+  November 17\, 2026.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT

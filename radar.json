@@ -1,22 +1,5 @@
 [
  {
-  "universe": "witcher",
-  "title": "The Witcher 3: Wild Hunt — Remastered",
-  "date_sort": "2026-09-29",
-  "date_txt": "29/09/2026",
-  "kind": "Jeu vidéo",
-  "source": "Witcher Wiki",
-  "precision": "day",
-  "era": "",
-  "syn": "The Witcher 3: Wild Hunt is the third installment in the series of games developed by CD PROJEKT RED featuring the witcher Geralt of Rivia. The game was originally scheduled for release in late 2014, then pushed back to 24 February 2015, and finally released on 19 May 2015. During the first two weeks since release it had sold more than 4 million copies worldwide, more than doubling the total sales…",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "game",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "dc",
   "title": "Lanterns",
   "date_sort": "2026-10-04",
@@ -40,23 +23,6 @@
   "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
   "tmdb": 95350,
   "media": "tv"
- },
- {
-  "universe": "starwars",
-  "title": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
-  "date_sort": "2026-10-06",
-  "date_txt": "06/10/2026",
-  "kind": "Comic",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "",
-  "syn": "Smugglers and Scoundrels: The Race for Jabba's Bounty is the first entry in Star Wars: Smugglers and Scoundrels, a line of canon graphic novels published by Mad Cave Studios. Originally announced for a September 13, 2026 release before being delayed to October 6 , it is written by Cavan Scott and illustrated by Christian Colbert, and will be released on November 17, 2026.",
-  "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
-  "syn_fr": "Smugglers and Scoundrels: The Race for Jabba's Bounty est une bande dessinée one-shot écrite par Cavan Scott.",
-  "kindKey": "comic",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
  },
  {
   "universe": "starwars",
@@ -376,6 +342,23 @@
   "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
   "tmdb": 284833,
   "media": "tv"
+ },
+ {
+  "universe": "starwars",
+  "title": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
+  "date_sort": "2026-11-17",
+  "date_txt": "17/11/2026",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "day",
+  "era": "",
+  "syn": "Smugglers and Scoundrels: The Race for Jabba's Bounty is the first entry in Star Wars: Smugglers and Scoundrels, a line of canon graphic novels published by Mad Cave Studios. Originally announced for a September 13, 2026 release before being delayed to October 6 , it is written by Cavan Scott and illustrated by Christian Colbert, and will be released on November 17, 2026.",
+  "wiki": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
+  "syn_fr": "Smugglers and Scoundrels: The Race for Jabba's Bounty est une bande dessinée one-shot écrite par Cavan Scott.",
+  "kindKey": "comic",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",

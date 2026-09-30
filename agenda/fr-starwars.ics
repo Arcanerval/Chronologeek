@@ -7,18 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:a6158bda2b4f3310e378-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
-DESCRIPTION:Comic\n\nSmugglers and Scoundrels: The Race for Jabba's Bounty 
- est une bande dessinée one-shot écrite par Cavan Scott.\n\nhttps://chron
- ologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:f240d160a6dabe9dcc9f-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261006
@@ -104,6 +92,18 @@ SUMMARY:Rogue One - Darth Vader 1
 DESCRIPTION:Comic\n\nRogue One – Darth Vader 1 est le cinquième et derni
  er numéro de la série de bandes dessinées one-shots Star Wars: Rogue On
  e. Il est écrit par Chris Condon.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Comic\n\nSmugglers and Scoundrels: The Race for Jabba's Bounty 
+ est une bande dessinée one-shot écrite par Cavan Scott.\n\nhttps://chron
+ ologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT

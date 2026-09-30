@@ -7,40 +7,12 @@ X-WR-CALNAME:Chronologeek — sorties
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:6c182ac9ae8ff887541d-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20260929
-DTEND;VALUE=DATE:20260930
-SUMMARY:The Witcher · The Witcher 3: Wild Hunt — Remastered
-DESCRIPTION:Jeu vidéo\n\nThe Witcher 3: Wild Hunt is the third installment
-  in the series of games developed by CD PROJEKT RED featuring the witcher 
- Geralt of Rivia. The game was originally scheduled for release in late 201
- 4\, then pushed back to 24 February 2015\, and finally released on 19 May 
- 2015. During the first two weeks since release it had sold more than 4 mil
- lion copies worldwide\, more than doubling the total sales…\n\nhttps://c
- hronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:8f2e17d8d23f41077099-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261004
 DTEND;VALUE=DATE:20261005
 SUMMARY:DC · Lanterns · S1E08 · Finale
 DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:a6158bda2b4f3310e378-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Star Wars · Smugglers and Scoundrels: The Race for Jabba's Bounty
-DESCRIPTION:Comic\n\nSmugglers and Scoundrels: The Race for Jabba's Bounty 
- est une bande dessinée one-shot écrite par Cavan Scott.\n\nhttps://chron
- ologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -232,6 +204,18 @@ DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
 DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Star Wars · Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Comic\n\nSmugglers and Scoundrels: The Race for Jabba's Bounty 
+ est une bande dessinée one-shot écrite par Cavan Scott.\n\nhttps://chron
+ ologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT

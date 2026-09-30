@@ -7,21 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:a6158bda2b4f3310e378-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
-DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
- rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
-  novels published by Mad Cave Studios. Originally announced for a Septembe
- r 13\, 2026 release before being delayed to October 6 \, it is written by 
- Cavan Scott and illustrated by Christian Colbert\, and will be released on
-  November 17\, 2026.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:f240d160a6dabe9dcc9f-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261006
@@ -120,6 +105,21 @@ DESCRIPTION:Rogue One – Darth Vader 1 is an upcoming canon one-shot comic
  The issue will be written by Chris Condon\, illustrated by Luke Ross\, and
   published by Marvel Comics on October 28\, 2026.\n\nhttps://chronologeek.
  app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a6158bda2b4f3310e378-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
+DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
+ rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
+  novels published by Mad Cave Studios. Originally announced for a Septembe
+ r 13\, 2026 release before being delayed to October 6 \, it is written by 
+ Cavan Scott and illustrated by Christian Colbert\, and will be released on
+  November 17\, 2026.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
