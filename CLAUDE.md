@@ -3200,6 +3200,21 @@ tablette. Chacune va au premier étage libre, son côté d'abord, et le plan
 grandit d'autant ; mesuré par `offsetLeft`, les stations arrivant avec une
 animation d'échelle.
 
+**Une ligne terminée se voit, depuis le 1er octobre 2026** (demandé par Niko).
+Sur les treize pages à timeline, le billet du premier écran passe à l'or, son
+« Terminus atteint » devient un tampon rouge et la souche prend une coche ; la
+barre du bas passe en jauge dorée animée, et la pastille « Ligne terminée »
+remplace le libellé du temps restant (sa coche seule sous 480 px, sinon la barre
+passait sur deux lignes). **Tout est dans `e-app.js`**, classe `cg-fini` sur
+`<html>`, décidée par `#k-on` contre `#k-tot` du HUD — rien dans les protos. Le
+tampon ne tombe qu'au passage, quand la dernière case se coche (`cg-fini-go`).
+
+**Les cartes de l'accueil portent leur départ, leur terminus et un wagon**,
+même jour : la première et la dernière station de `E`, avec leur date quand elle
+porte un chiffre (« ??? » de Star Trek écarté), et le wagon à la place du train
+du plan (`cg-train`). Ligne finie : bord doré, « Terminus atteint ». Les
+libellés sont dans `BOUTS`, en `i18n-off`.
+
 Marvel ajoute **la voie des autres univers** : une œuvre `dim` roule sur une voie
 parallèle qui se détache à 45° avant la première d'une série et rejoint la
 ligne après la dernière (`dev-a` / `dev-z` posées au rendu). La ligne

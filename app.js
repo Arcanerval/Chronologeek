@@ -4415,3 +4415,110 @@ function cgBillet(){
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
 })();
+
+/* ══ LIGNE TERMINÉE : le billet composté et la barre dorée ═══════════
+   Posé le 1er octobre 2026, demandé par Niko : une timeline finie doit se
+   voir d'un coup d'œil, sur le billet du premier écran comme sur la barre
+   du bas. Une copie pour les treize pages — elles portent toutes `#ticket`,
+   `#k-on`, `#k-tot` et `.hud .bar` — et rien dans les protos.
+
+   Trois choses à savoir :
+   - **Le décompte du HUD fait foi**, `#k-on` contre `#k-tot`, que chaque
+     page écrit déjà dans `tally()`. On l'observe plutôt que de recompter :
+     le pont de rejeu et les parcours sont déjà dedans.
+   - **Le tampon n'est joué qu'au passage**, quand la dernière case se coche
+     sous les yeux du visiteur (`cg-fini-go`). À l'arrivée sur une page déjà
+     finie, il est simplement là.
+   - **Le libellé d'après la jauge s'efface** (« Restant 0 h », « 0 left ») :
+     la pastille « Ligne terminée » prend sa place, il ne disait plus rien.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var FR = document.documentElement.lang !== 'en';
+  var MOT = FR ? 'Ligne terminée' : 'Line complete';
+  var OK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l5 5L19.5 7"/></svg>';
+  var CSS =
+    '.ticket{position:relative}' +
+    '.cg-fini .ticket{background:linear-gradient(105deg,#f3d48e 0%,#fff1c9 18%,#e9bd62 40%,#f7dc9c 58%,#d9a849 80%,#f6e0a8 100%);' +
+      'box-shadow:6px 6px 0 var(--ink),6px 6px 0 2px var(--hot),0 0 44px rgba(240,201,124,.5)}' +
+    '.cg-fini .ticket::after{content:"";position:absolute;inset:0;pointer-events:none;' +
+      'background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%) 0 0/260% 100% no-repeat;' +
+      'animation:cg-reflet 4.2s ease-in-out infinite}' +
+    '@keyframes cg-reflet{0%,35%{background-position:120% 0}75%,100%{background-position:-20% 0}}' +
+    '.cg-fini .t-stub{grid-auto-flow:row;align-content:center;gap:3px}' +
+    '.t-stub .cg-ok{display:none}' +
+    '.cg-fini .t-stub .cg-ok{display:block;width:26px;height:26px;margin:0 auto;border-radius:50%;' +
+      'background:var(--ink);padding:4px;box-sizing:border-box}' +
+    '.t-stub .cg-ok path,.cg-fin-chip svg path{fill:none;stroke:var(--hot);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}' +
+    '.cg-fini .t-k{align-self:flex-start;color:#a3201c;border:2px solid currentColor;border-radius:4px;' +
+      'padding:2px 7px 1px;margin:0 0 5px;transform:rotate(-3deg);letter-spacing:.16em;' +
+      'box-shadow:inset 0 0 0 1px rgba(163,32,28,.35);mix-blend-mode:multiply}' +
+    '.cg-fini .t-st{color:#2a2536}' +
+    '.cg-fini-go .t-k{animation:cg-tampon .55s cubic-bezier(.2,1.6,.4,1) both}' +
+    '.cg-fini-go .ticket{animation:cg-choc .55s ease-out .18s both}' +
+    '@keyframes cg-tampon{0%{transform:rotate(-14deg) scale(2.4);opacity:0}100%{transform:rotate(-3deg) scale(1);opacity:1}}' +
+    '@keyframes cg-choc{0%,100%{translate:0 0}30%{translate:0 3px}}' +
+    /* la barre du bas */
+    '.cg-fini .hud{border-top-color:var(--hot);box-shadow:0 -14px 34px -16px rgba(240,201,124,.75)}' +
+    '.cg-fini .hud .bar i{background:linear-gradient(90deg,var(--uni) 0%,var(--hot) 40%,#fff3d6 50%,var(--hot) 60%,var(--uni) 100%) 0 0/250% 100%;' +
+      'animation:cg-bande 3.4s linear infinite}' +
+    '@keyframes cg-bande{to{background-position:-250% 0}}' +
+    '.cg-fini .hud .bar .hs,.cg-fini .hud .bar .hs.v{background:var(--hot);border-color:var(--ink)}' +
+    '.cg-fini #k-on{color:var(--hot)}' +
+    '.cg-fini #hud-btn .bar~.lbl{display:none}' +
+    '.cg-fin-chip{display:none}' +
+    '.cg-fini .cg-fin-chip{display:inline-flex;align-items:center;gap:6px;flex:none;white-space:nowrap;' +
+      'background:var(--hot);color:var(--ink);border-radius:999px;padding:3px 11px 3px 5px;' +
+      'font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:14px;letter-spacing:.08em;' +
+      'text-transform:uppercase;box-shadow:0 0 14px rgba(240,201,124,.55)}' +
+    '.cg-fin-chip svg{width:18px;height:18px;border-radius:50%;background:var(--ink);padding:3px;box-sizing:border-box}' +
+    '.cg-fini-go .cg-fin-chip{animation:cg-tampon .55s cubic-bezier(.2,1.6,.4,1) .1s both}' +
+    '@media(max-width:560px){.cg-fini .cg-fin-chip{font-size:12px;padding:2px 9px 2px 4px}.cg-fin-chip svg{width:16px;height:16px}}' +
+    /* sur téléphone la pastille ne garde que sa coche : avec son mot, la
+       barre passait sur deux lignes */
+    '@media(max-width:480px){.cg-fini .cg-fin-chip{padding:3px}.cg-fin-chip span{display:none}.cg-fin-chip svg{width:18px;height:18px}}' +
+    '@media(prefers-reduced-motion:reduce){.cg-fini .ticket::after,.cg-fini .hud .bar i{animation:none}' +
+      '.cg-fini-go .t-k,.cg-fini-go .ticket,.cg-fini-go .cg-fin-chip{animation:none}}';
+
+  function pose(){
+    var on = document.getElementById('k-on'), tot = document.getElementById('k-tot');
+    var tk = document.getElementById('ticket');
+    if (!on || !tot || !tk) return;
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    var stub = tk.querySelector('.t-stub');
+    if (stub) { var ok = document.createElement('span'); ok.className = 'cg-ok'; ok.innerHTML = OK; stub.appendChild(ok); }
+    var bar = document.querySelector('#hud-btn .bar');
+    if (bar) {
+      var chip = document.createElement('span');
+      chip.className = 'cg-fin-chip';
+      chip.innerHTML = OK + '<span>' + MOT + '</span>';
+      chip.title = MOT;
+      bar.parentNode.insertBefore(chip, bar.nextSibling);
+    }
+
+    var html = document.documentElement, avant = null, minuterie = 0;
+    function etat(){
+      var n = parseInt(on.textContent, 10), t = parseInt(tot.textContent, 10);
+      var fini = t > 0 && n >= t;
+      if (fini === avant) return;
+      html.classList.toggle('cg-fini', fini);
+      /* le tampon ne tombe qu'au passage, pas à l'arrivée */
+      if (fini && avant === false) {
+        html.classList.add('cg-fini-go');
+        clearTimeout(minuterie);
+        minuterie = setTimeout(function(){ html.classList.remove('cg-fini-go'); }, 1200);
+      }
+      avant = fini;
+    }
+    etat();
+    var obs = new MutationObserver(etat);
+    obs.observe(on, { childList: true, characterData: true, subtree: true });
+    obs.observe(tot, { childList: true, characterData: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();

@@ -677,6 +677,35 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .tl-line i{position:absolute;top:50%;width:10px;height:10px;border-radius:50%;
   background:var(--paper);border:2px solid var(--ink);transform:translate(-50%,-50%)}
 .tl-line i.v{background:var(--c);border-color:var(--paper)}
+/* les deux bouts de la ligne, et le wagon : posés le 1er octobre 2026.
+   Le départ et le terminus sont les deux stations extrêmes de la ligne,
+   le wagon est au même endroit que le train du plan (cg-train). */
+.tl-line::before,.tl-line::after{content:'';position:absolute;top:50%;width:4px;height:16px;
+  border-radius:2px;background:var(--c);transform:translateY(-50%)}
+.tl-line::before{left:-2px}
+.tl-line::after{right:-2px;opacity:.55}
+.slot.fin .tl-line::after{opacity:1;background:var(--hot);box-shadow:0 0 8px var(--hot)}
+.tl-wag{position:absolute;top:50%;z-index:2;width:30px;height:15px;transform:translate(-50%,-50%);
+  transition:left .5s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.tl-wag svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 4px rgba(240,201,124,.8))}
+.tl-wag .wb{fill:var(--hot);stroke:var(--ink);stroke-width:2}
+.tl-wag .ww{fill:var(--ink)}
+.tl-wag .wr{fill:var(--ink);stroke:var(--hot);stroke-width:1.2}
+.tl-wag.zero{opacity:.55}
+.l-grid a.slot:hover .tl-wag:not(.end){animation:tl-roule .9s ease-in-out infinite alternate}
+@keyframes tl-roule{to{translate:5px 0}}
+.tl-ends{display:flex;justify-content:space-between;gap:12px;margin:-6px 14px 14px;min-width:0}
+.tl-ends>span{display:flex;flex-direction:column;min-width:0;max-width:50%}
+.tl-ends>span:last-child{text-align:right;align-items:flex-end}
+.tl-ends i{font-style:normal;font-family:'Big Shoulders Display','BSD repli',sans-serif;font-weight:800;font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.5)}
+.tl-ends b{font-family:'Big Shoulders Display','BSD repli',sans-serif;font-weight:800;font-size:13.5px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--paper);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tl-ends small{font-size:11px;font-weight:600;color:rgba(255,253,247,.55)}
+.slot.fin .tl-ends>span:last-child i{color:var(--hot)}
+.slot.fin .tl-ends>span:last-child b{color:var(--hot)}
+.l-grid .slot.fin{border-color:color-mix(in srgb,var(--hot) 75%,transparent)}
+@media(prefers-reduced-motion:reduce){.l-grid a.slot:hover .tl-wag{animation:none}}
 
 /* ══ MAQUETTE — les bandes revues ═══════════════════════════════════
    Le badge de ligne du pied de page : carré, à l'encre de l'univers,
@@ -893,84 +922,84 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
         <span class="tl-code">SW</span><span class="tl-nm">Star Wars</span></span>
       <span class="tl-d">Movies · TV Shows · Animation · Video Games · Full chronological timeline</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 62 · 6 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/marvel" style="--c:var(--mcu)" data-u="mcu" data-total="122">
       <span class="tl-img"><img src="/images/mcu.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code w">MCU</span><span class="tl-nm">Marvel</span></span>
       <span class="tl-d">Movies · TV Shows · Animation · Other realities · Full chronological timeline</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 122 · 10 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/dc" style="--c:var(--dc)" data-u="dc" data-total="147">
       <span class="tl-img"><img src="/images/dcmultivers.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">DC</span><span class="tl-nm">DC Multiverse</span></span>
       <span class="tl-d">Elseworlds · Arrowverse · DCEU · DCU · Multiverse guide</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 147 · 8 stations</span><span>August 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/avatar" style="--c:var(--av)" data-u="avatar" data-total="72">
       <span class="tl-img"><img src="/images/avatar.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">AV</span><span class="tl-nm">Avatar Legends</span></span>
       <span class="tl-d">The Last Airbender · Korra · Comics · Novels · Chronological timeline</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 72 · 8 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/startrek" style="--c:var(--st)" data-u="startrek" data-total="248">
       <span class="tl-img"><img src="/images/startrek.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">ST</span><span class="tl-nm">Star Trek</span></span>
       <span class="tl-d">Movies · TV Shows · Animated Shows · Shorts · Full chronological timeline</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 248 · 8 stations</span><span>August 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/walkingdead" style="--c:var(--twd)" data-u="twd" data-total="45">
       <span class="tl-img"><img src="/images/twd.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">TWD</span><span class="tl-nm">The Walking Dead</span></span>
       <span class="tl-d">TV Shows · Web Series · Full chronological order</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 45 · 14 stations</span><span>August 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/dragonage" style="--c:var(--da)" data-u="dragonage" data-total="44">
       <span class="tl-img"><img src="/images/dragonage.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">DA</span><span class="tl-nm">Dragon Age</span></span>
       <span class="tl-d">Games · DLC · Books · Comics · TV Shows · Full chronological order</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 44 · 5 stations</span><span>August 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/assassinscreed" style="--c:var(--ac)" data-u="assassinscreed" data-total="112">
       <span class="tl-img"><img src="/images/acuniverse.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">AC</span><span class="tl-nm">Assassin’s Creed</span></span>
       <span class="tl-d">Games · DLC · Books · Comics · Short Films · Full chronological order</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 112 · 7 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/dcanimation" style="--c:var(--dca)" data-u="dcanimation" data-total="80">
       <span class="tl-img"><img src="/images/dcanimation.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">DCA</span><span class="tl-nm">DC Animation</span></span>
       <span class="tl-d">Animated Series · Animated Films · Games · DLC · Short Films · Full chronological order</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 80 · 3 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/jurassicworld" style="--c:var(--jw)" data-u="jurassic" data-total="13">
       <span class="tl-img"><img src="/images/jurassicworld.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">JW</span><span class="tl-nm">Jurassic World</span></span>
       <span class="tl-d">Movies · Animated Series · Books · Short Film · Full chronological order</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 13 · 4 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/witcher" style="--c:var(--wi)" data-u="witcher" data-total="54">
       <span class="tl-img"><img src="/images/witcher.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code">TW</span><span class="tl-nm">The Witcher</span></span>
       <span class="tl-d">Books · Comics · Games · Both timelines, side by side</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 54 · 2 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
     <a class="slot" href="/residentevil" style="--c:var(--re)" data-u="residentevil" data-total="30">
       <span class="tl-img"><img src="/images/residentevil.webp" alt="" loading="lazy" decoding="async" width="640" height="360"/>
         <span class="tl-code w">RE</span><span class="tl-nm">Resident Evil</span></span>
       <span class="tl-d">Games · Movies · Mangas · From Raccoon City to Requiem</span>
       <span class="tl-meta"><span><b class="d-n">0</b> / 30 · 4 stations</span><span>September 2026</span></span>
-      <span class="tl-line"></span>
+      <span class="tl-line"></span><span class="tl-ends"></span>
     </a>
 
     <div class="slot lock">
@@ -1056,6 +1085,7 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   var E={"sw":[["L'ÈRE DE LA RÉPUBLIQUE","THE REPUBLIC ERA",5,"32 BBY"],["LA GUERRE DES CLONES","THE CLONE WARS",12,"22 BBY"],["L'ÈRE DE L'EMPIRE","THE IMPERIAL ERA",12,"19 BBY"],["L'ÈRE DE LA RÉBELLION","THE REBELLION ERA",17,"5 BBY"],["L'ÈRE DE LA NOUVELLE RÉPUBLIQUE","THE NEW REPUBLIC ERA",11,"9 ABY"],["L'ÈRE DU PREMIER ORDRE","THE FIRST ORDER ERA",5,"34 ABY"]],"mcu":[["PHASE I — Saga de l'Infini","PHASE I — The Infinity Saga",11,"1942–1945"],["PHASE II — Saga de l'Infini","PHASE II — The Infinity Saga",21,"2013"],["PHASE III — Saga de l'Infini","PHASE III — The Infinity Saga",27,"2016"],["PHASE IV — Saga du Multivers","PHASE IV — The Multiverse Saga",7,""],["SEGMENT SPIDER-VERSE — avant Spider-Man : No Way Home","SPIDER-VERSE SEGMENT — before Spider-Man: No Way Home",8,"2002"],["SUITE PHASE IV — Saga du Multivers","PHASE IV CONTINUED — The Multiverse Saga",8,"2024"],["PHASE V — Saga du Multivers","PHASE V — The Multiverse Saga",13,"2025"],["SEGMENT FOX — avant Deadpool & Wolverine et Avengers : Doomsday","FOX SEGMENT — before Deadpool & Wolverine and Avengers: Doomsday",12,"1962"],["SUITE PHASE V — Saga du Multivers","PHASE V CONTINUED — The Multiverse Saga",8,"2024"],["PHASE VI — Saga du Multivers (en cours)","PHASE VI — The Multiverse Saga (ongoing)",7,"2022"]],"dc":[["Origines de Superman","Superman origins",3,"2001–2011"],["Origines de Batman","Batman origins",8,"1989"],["Arrowverse","Arrowverse",88,"2012–2014"],["DCEU","DCEU",16,"2013"],["Événement Majeur","Major Event",0,""],["Arrowverse — Après l'événement","Arrowverse — After the event",16,"2019–2020"],["Elseworlds post-événement","Post-event Elseworlds",8,"2020"],["DCU — Nouvel Univers","DCU — New Universe",8,"2016"]],"avatar":[["LIVRE 1 : L'EAU","BOOK ONE: WATER",4,"99 AG"],["LIVRE 2 : LA TERRE","BOOK TWO: EARTH",12,"100 AG"],["LIVRE 3 : LE FEU","BOOK THREE: FIRE",14,"100 AG"],["ÈRE DE AANG","THE AANG ERA",18,"100 AG"],["ÈRE DE YANGCHEN","THE YANGCHEN ERA",2,"483 BG"],["ÈRE DE KYOSHI","THE KYOSHI ERA",3,"296 BG"],["ÈRE DE ROKU","THE ROKU ERA",2,"66 BG"],["ÈRE DE KORRA","THE KORRA ERA",17,"170 AG"]],"startrek":[["21E SIÈCLE","21ST CENTURY",0,"2063"],["22E SIÈCLE","22ND CENTURY",8,"2151"],["23E SIÈCLE","23RD CENTURY",27,"~2230"],["24E SIÈCLE","24TH CENTURY",204,"~2324"],["25E SIÈCLE","25TH CENTURY",1,"2401"],["31E SIÈCLE","31ST CENTURY",1,"~3074"],["32E SIÈCLE","32ND CENTURY",6,"3188"],["43E SIÈCLE","43RD CENTURY",1,"???"]],"twd":[["Épidémie à Los Angeles et au Mexique","Los Angeles & Mexico Outbreak",6,"2010"],["Épidémie à Atlanta","Atlanta Outbreak",6,"2010"],["Géorgie","Georgia",4,"2011"],["Virginie","Virginia",4,"2012"],["Texas","Texas",4,"2012"],["Retour en Virginie","Back to Virginia",2,"2014"],["Retour au Texas","Back to Texas",3,"2010"],["Sur la route","Roadtrip",3,"2020"],["Retour en Virginie","Back to Virginia",5,"2020"],["Retour en Géorgie","Back to Georgia",1,"2022"],["Retour en Virginie","Back to Virginia",1,"2022"],["CRM","CRM",1,"2022"],["De l'autre côté de l'océan","Across the ocean",1,"2023"],["New-York","New-York",4,"2025"]],"dragonage":[["Le Cinquième Enclin","The Fifth Blight",14,"9:30"],["Le Champion de Kirkwall","The Champion of Kirkwall",9,"9:30-9:31"],["La Guerre des Mages et des Templiers","The Mage-Templar War",6,"9:38"],["L'Inquisition","The Inquisition",6,"9:41"],["L'Ascension du Loup Implacable","The Dread Wolf Rises",9,"~9:41"]],"assassinscreed":[["Saga d'Altaïr","Altaïr Saga",3,"1191"],["Saga d'Ezio","Ezio Saga",17,"1476"],["Saga des Kenway","Kenway Saga",16,"1754-1778"],["Saga Helix & Abstergo","Helix & Abstergo Saga",26,"1789-1794"],["Saga de Layla Hassan","Layla Hassan Saga",39,"70-56 BC"],["Saga de l'Animus Hub","Animus Hub Saga",7,"1724-1725"],["Saga des Assassins à travers l'Histoire","Assassins Through History Saga",4,"751-758"]],"dcanimation":[["DCAU","DCAU",26,"1992–1993"],["DCAMU","DCAMU",32,"2013"],["Arkhamverse","Arkhamverse",22,"YEAR 0"]],"jurassic":[["LES ÎLES D’INGEN","THE INGEN ISLANDS",3,"1993"],["LE PARC ROUVRE","THE PARK REOPENS",3,"2015"],["UN MONDE DE DINOSAURES","A WORLD OF DINOSAURS",6,"2018"],["UNE NOUVELLE ÈRE","A NEW ERA",1,"2027"]],"witcher":[["La chronologie de Sapkowski","Sapkowski's Timeline",21,"~1210"],["La chronologie de CD Projekt RED","CD Projekt Red's Timeline",33,"~1235 p.R."]],"residentevil":[["Raccoon City","Raccoon City",9,"1998"],["Après Umbrella","After Umbrella",5,"2004"],["Bioterrorisme mondial","Global Bioterrorism",9,"2009"],["Retour à l’horreur","Back to Horror",7,"2017"]]};
   U.forEach(function(x){ if(EN&&x.nameEn) x.name=x.nameEn; });
   Object.keys(E).forEach(function(k){ E[k]=E[k].map(function(e){ return [EN?e[1]:e[0],e[2],e[3]]; }); });
+  var BOUTS=EN?['Departure','Terminus','Terminus reached']:['Départ','Terminus','Terminus atteint'];
   /* i18n-on */
   var NAMES={}; U.forEach(function(x){ NAMES[x.u]=x.name; });
 
@@ -1157,6 +1187,10 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   }
 
   /* le train : trois fenêtres et un nez plus clair, dans le sens de la marche */
+  /* le petit wagon des tuiles : celui du plan, à plat */
+  var WAGON='<svg viewBox="0 0 30 15" aria-hidden="true"><rect class="wb" x="1" y="1" width="28" height="10" rx="4"/>'+
+    '<rect class="ww" x="6" y="3.6" width="4.5" height="4" rx="1"/><rect class="ww" x="12.8" y="3.6" width="4.5" height="4" rx="1"/><rect class="ww" x="19.6" y="3.6" width="4.5" height="4" rx="1"/>'+
+    '<circle class="wr" cx="8" cy="12.4" r="2.2"/><circle class="wr" cx="22" cy="12.4" r="2.2"/></svg>';
   function train(x,y,ang,k){
     var w=28*k, h=12*k;
     return '<g class="m-train" transform="translate('+x.toFixed(1)+' '+y.toFixed(1)+') rotate('+(ang*180/Math.PI).toFixed(1)+')">'+
@@ -1308,7 +1342,13 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
           var v=p.done>0&&(j+.5)<=p.pos;
           dots+='<i style="left:'+((j+.5)/m*100)+'%" class="'+(v?'v':'')+'"></i>';
         });
+        var fin=x.total>0&&p.done>=x.total, at=fin?m:p.pos;
+        dots+='<span class="tl-wag'+(p.done?'':' zero')+(fin?' end':'')+'" style="left:clamp(15px,'+(at/m*100)+'%,calc(100% - 15px))">'+WAGON+'</span>';
         el.querySelector('.tl-line').innerHTML=h+dots;
+        el.classList.toggle('fin',fin);
+        var a=eras[0], z=eras[m-1], te=el.querySelector('.tl-ends');
+        if(te) te.innerHTML='<span><i>'+BOUTS[0]+'</i><b>'+esc(nice(a[0]))+'</b>'+(/\d/.test(a[2])?'<small>'+esc(a[2])+'</small>':'')+'</span>'+
+          '<span><i>'+(fin?BOUTS[2]:BOUTS[1])+'</i><b>'+esc(nice(z[0]))+'</b>'+(/\d/.test(z[2])?'<small>'+esc(z[2])+'</small>':'')+'</span>';
       }
       if(p.done>0&&p.done<x.total) running.push({x:x,p:p});
     });
