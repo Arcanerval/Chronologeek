@@ -2649,7 +2649,17 @@ Cinq choses à savoir :
   Premium, Essential, chaînes Apple, Amazon et Roku. Six logos au plus.
 - **JustWatch est cité**, condition de TMDB pour ces données ; le lien mène à
   la page TMDB de l'œuvre, qui renvoie vers chaque plateforme.
-- **« À venir » n'en a pas** : ce qui n'est pas sorti n'est nulle part.
+- **Une marque, l'offre directe** : à rang égal de marque, l'offre en
+  propre passe devant la chaîne revendue — TMDB classe « HBO Max Amazon
+  Channel » devant HBO Max aux États-Unis.
+- **« À venir » l'a aussi**, posée le même jour, par le même bloc. La carte
+  porte sa fiche dans `data-tm` (« tv/95350 »), et une carte d'épisode
+  celle de sa série. Sa clé TMDB vit dans le script de la page, hors de
+  portée : `e-app.js` en garde une copie (`CLE_RADAR`). La fiche du radar
+  s'écrit en plusieurs retours de TMDB, donc la ligne se recale devant `.tr`
+  quand la bande-annonce arrive. Ce qui n'est pas sorti n'a rien chez TMDB
+  et reste sans ligne ; en pratique, ce sont les séries en diffusion
+  (Lanterns, Ahsoka) qui en ont une.
 
 Les logos restent chez TMDB (`w92` pour 28 px), comme les affiches.
 

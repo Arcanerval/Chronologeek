@@ -4291,10 +4291,17 @@ function cgBillet(){
       var vus = {}, out = [];
       cles.forEach(function(k){ (p[k] || []).forEach(function(x){ out.push(x); }); });
       out.sort(function(a, b){ return (a.display_priority || 99) - (b.display_priority || 99); });
-      return out.filter(function(x){
-        if (vus[marqueDe(x.provider_name)] || !x.logo_path) return false;
-        return (vus[marqueDe(x.provider_name)] = true);
-      }).slice(0, 6);
+      /* La marque garde le rang de sa meilleure offre, mais montre l'offre
+         directe plutôt qu'une chaîne revendue : TMDB classe « HBO Max
+         Amazon Channel » devant HBO Max aux États-Unis. */
+      var ordre = [];
+      out.forEach(function(x){
+        if (!x.logo_path) return;
+        var m = marqueDe(x.provider_name), deja = vus[m];
+        if (!deja) { vus[m] = x; ordre.push(m); }
+        else if (/channel/i.test(deja.provider_name) && !/channel/i.test(x.provider_name)) vus[m] = x;
+      });
+      return ordre.map(function(m){ return vus[m]; }).slice(0, 6);
     }
     var flux = liste(['flatrate', 'free', 'ads']);
     if (flux.length) return { liste: flux, location: false };
@@ -4318,27 +4325,78 @@ function cgBillet(){
     if (!ECRAN[typeDe(art.dataset.id)]) return;
 
     plateformes(media, id, CG.tmdbKey).then(function(p){
-      var c = p && choisir(p);
-      if (!c || !info.isConnected || info.querySelector('.wt')) return;
-      var html = '<strong>' + L.titre + '</strong><span class="wt-l">' +
-        c.liste.map(function(x){
-          return '<img src="https://image.tmdb.org/t/p/w92' + esc(x.logo_path) + '" alt="' +
-            esc(x.provider_name) + '" title="' + esc(x.provider_name) + '" loading="lazy">';
-        }).join('') + '</span>' +
-        (c.location ? '<span class="wt-k">' + L.location + '</span>' : '') +
-        (p.link ? '<a class="wt-s" href="' + esc(p.link) + '" target="_blank" rel="noopener">' +
-          L.source + '</a>' : '<span class="wt-s">' + L.source + '</span>');
-      var ligne = document.createElement('div');
-      ligne.className = 'wt';
-      ligne.innerHTML = html;
+      var ligne = ligneDe(p);
+      if (!ligne || !info.isConnected || info.querySelector('.wt')) return;
       // sous les mesures, au-dessus de la bande-annonce
       var tr = info.querySelector('.expand-trailer-link');
       info.insertBefore(ligne, tr || null);
     });
   }
 
+  function ligneDe(p){
+    var c = p && choisir(p);
+    if (!c) return null;
+    var ligne = document.createElement('div');
+    ligne.className = 'wt';
+    ligne.innerHTML = '<strong>' + L.titre + '</strong><span class="wt-l">' +
+      c.liste.map(function(x){
+        return '<img src="https://image.tmdb.org/t/p/w92' + esc(x.logo_path) + '" alt="' +
+          esc(x.provider_name) + '" title="' + esc(x.provider_name) + '" loading="lazy">';
+      }).join('') + '</span>' +
+      (c.location ? '<span class="wt-k">' + L.location + '</span>' : '') +
+      (p.link ? '<a class="wt-s" href="' + esc(p.link) + '" target="_blank" rel="noopener">' +
+        L.source + '</a>' : '<span class="wt-s">' + L.source + '</span>');
+    return ligne;
+  }
+
+  /* ── le radar ───────────────────────────────────────────────────────
+     « À venir » ne charge aucun fichier de données : sa clé TMDB est dans
+     son propre script, hors de portée d'ici, d'où la même clé publique en
+     repli. Sa carte porte sa fiche dans `data-tm` (« tv/12345 »), une
+     carte d'épisode celle de sa série — ce sont bien les plateformes de la
+     série qu'on cherche. Ce qui n'est pas encore sorti n'a rien chez
+     TMDB, et la carte reste sans ligne : c'est la bonne réponse. Seules
+     servent les séries en diffusion et les films déjà sortis d'un côté.
+
+     La fiche du radar s'écrit en plusieurs fois — mesures, résumé de la
+     série, bande-annonce, chacun à son retour de TMDB. La ligne se pose
+     donc à la fin de `.inf`, et un observateur la remet devant `.tr`
+     quand la bande-annonce arrive après elle. */
+  var CLE_RADAR = '6257b37bf29ab31357853fce00232314';
+
+  function radar(d){
+    if (!d.open || d.dataset.wt || !d.dataset.tm) return;
+    d.dataset.wt = '1';
+    var ref = d.dataset.tm.split('/'), inf = d.querySelector('.inf');
+    if (!inf || (ref[0] !== 'movie' && ref[0] !== 'tv') || !+ref[1]) return;
+    plateformes(ref[0], ref[1], CLE_RADAR).then(function(p){
+      var ligne = ligneDe(p);
+      if (!ligne || inf.querySelector('.wt')) return;
+      function place(){
+        var tr = inf.querySelector('.tr');
+        if (tr && ligne.nextSibling !== tr) inf.insertBefore(ligne, tr);
+        else if (!tr && inf.lastChild !== ligne) inf.appendChild(ligne);
+      }
+      place();
+      var obs = new MutationObserver(place);
+      obs.observe(inf, { childList: true });
+      setTimeout(function(){ obs.disconnect(); }, 20000);
+    });
+  }
+
   function pose(){
+    var cal = document.getElementById('cal');
     var tl = document.getElementById('timeline');
+    if (cal) {
+      var s = document.createElement('style');
+      s.textContent = CSS;
+      document.head.appendChild(s);
+      // `toggle` ne remonte pas : il se capte, comme dans la page
+      cal.addEventListener('toggle', function(ev){
+        if (ev.target && ev.target.tagName === 'DETAILS') radar(ev.target);
+      }, true);
+      return;
+    }
     if (!tl || !document.querySelector('.bu-panel[data-tmdb]')) return;
     var st = document.createElement('style');
     st.textContent = CSS;
