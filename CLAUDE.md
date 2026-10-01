@@ -3273,6 +3273,35 @@ pas de date et que le titre+date seul les perdait.
 - Ne pas remettre l'échappatoire `showTypes.size===0` dans `applyFilters` : zéro type
   coché doit afficher zéro entrée, sinon décocher tout réaffiche toute la timeline.
 
+## Registre et ponctuation, harmonisés le 30 septembre 2026
+
+Relevés par un audit complet du site (36 pages × 5 largeurs, de 320 à
+1 366 px). Trois règles, chacune tenue par la chaîne et non à la main :
+
+- **Le site vouvoie, partout.** `CG.t` tutoyait encore (« Essaie une autre
+  orthographe », « ta progression »), comme les descriptions SEO (« Coche ce
+  que tu as complété », devenu « Cochez ce que vous avez fini » pour tenir
+  sous 160 signes) et le h1 de l'accueil, devenu « Choisissez votre
+  univers ». `REGISTRE` de `traduire-pages.mjs` reste : il sert à retrouver
+  l'anglais de la prod, qui tutoyait. Les quatre libellés de `CG.t` ont leur
+  anglais dans `TRADUCTIONS` de `traduire.mjs` — le témoin de fraîcheur
+  l'écartait, la phrase française ayant bougé.
+- **L'anglais ne met pas d'espace devant « : ? ! ».** `typoEn()` de
+  `traduire.mjs` le retire à la sérialisation : 241 titres du Dossier, 44
+  chez Avatar. Dans les sources anglaises, ça se corrige à la main — et la
+  clé de `traductions-<u>.mjs` avec, sans quoi le français ne se retrouve
+  plus.
+- **Le français espace le deux-points, même dans un titre resté anglais**
+  — « Dragon Age : Origins », comme « Star Trek : Voyager ».
+  `_proto/typo-fr.mjs` l'applique à la sortie des chaînes inversées (TWD,
+  Dragon Age, DC Animation, The Witcher) sur `title`, `desc`, `note(s)` et
+  `intro`, et le Dossier a été corrigé dans sa source. Une chaîne inversée
+  qui recopierait un deux-points collé l'importe : la brancher là.
+
+Et le témoin de fraîcheur de `traduire.mjs` compare désormais **sans la
+graphie** — espace du deux-points, apostrophe, casse : corriger
+« Vader'S Castle » ne doit pas faire jeter l'anglais juste.
+
 ## Les textes de Niko
 
 **Ne jamais réécrire ses textes.** Quand il fournit un texte, l'extraire mot pour mot
