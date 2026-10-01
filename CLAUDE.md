@@ -3212,7 +3212,10 @@ tampon ne tombe qu'au passage, quand la dernière case se coche (`cg-fini-go`).
 **Les cartes de l'accueil portent leur départ, leur terminus et un wagon**,
 même jour : la première et la dernière station de `E`, avec leur date quand elle
 porte un chiffre (« ??? » de Star Trek écarté), et le wagon à la place du train
-du plan (`cg-train`). Ligne finie : bord doré, « Terminus atteint ». Les
+du plan (`cg-train`), au dessin du train du site — sans roues. DC Animation et
+The Witcher disent « Réseau · 3 / 2 lignes indépendantes » à la place (`INDEP`) :
+un départ et un terminus y feraient croire qu'on passe d'un univers à l'autre.
+Ligne finie : bord doré, « Terminus atteint ». Les
 libellés sont dans `BOUTS`, en `i18n-off`.
 
 Marvel ajoute **la voie des autres univers** : une œuvre `dim` roule sur une voie
