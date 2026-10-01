@@ -2622,6 +2622,37 @@ Les quatre s'appuient sur des repères que les dix pages portent toutes —
 `--uni` — et sur rien d'autre. Une onzième page les reçoit d'elle-même si elle
 les porte.
 
+### Où regarder, dans la fiche TMDB
+
+Posé le 1er octobre 2026, dans `e-app.js`. La fiche ouverte porte une ligne
+de plus, entre les mesures et la bande-annonce : les plateformes où l'œuvre
+est incluse, par leur logo, lues chez TMDB (`/watch/providers`) — la France
+sur la page française, les États-Unis sur l'anglaise. **Une copie pour les
+douze timelines** : toutes rendent leur fiche dans un `.bu-panel` qui porte
+`data-tmdb` et `data-media`, et un `MutationObserver` sur `#timeline`
+complète chaque `.expand-info` à son arrivée. Le code de rendu des pages n'a
+pas bougé.
+
+Cinq choses à savoir :
+
+- **Le type de l'œuvre décide, en plus de `media`.** Seuls film, film animé,
+  série, série animée, court métrage, spécial et web passent, lus dans les
+  données de la page (second parcours compris, par `ref`). Les jeux et les
+  scènes post-génériques tombent déjà par `media`, et les romans et comics
+  d'Avatar n'ont pas de fiche (`tmdb:"0"`) ; le type est le garde-fou du jour
+  où une œuvre écrite empruntera la fiche de sa série.
+- **L'abonnement et le gratuit d'abord, la location et l'achat seulement à
+  défaut**, avec la mention « location ou achat ». Rien n'est affiché si TMDB
+  n'a rien : une ligne vide se lirait comme « nulle part ».
+- **Une marque, une fois** (`marqueDe()`). TMDB sépare les offres d'une même
+  plateforme, et la série Avatar alignait Netflix et quatre Paramount+ —
+  Premium, Essential, chaînes Apple, Amazon et Roku. Six logos au plus.
+- **JustWatch est cité**, condition de TMDB pour ces données ; le lien mène à
+  la page TMDB de l'œuvre, qui renvoie vers chaque plateforme.
+- **« À venir » n'en a pas** : ce qui n'est pas sorti n'est nulle part.
+
+Les logos restent chez TMDB (`w92` pour 28 px), comme les affiches.
+
 ### La prochaine sortie, en tête de sa timeline
 
 Posée le 6 septembre 2026, dans `e-app.js` comme les quatre conforts.

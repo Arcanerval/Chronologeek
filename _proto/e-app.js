@@ -4184,3 +4184,176 @@ function cgBillet(){
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
 })();
+
+/* ══ Où regarder, dans la fiche TMDB ══════════════════════════════════════
+   Posé le 1er octobre 2026. La fiche ouverte disait tout d'une œuvre sauf
+   la seule chose qu'on fait juste après l'avoir lue : la regarder. TMDB
+   tient les plateformes pays par pays (`/watch/providers`), avec la clé
+   déjà présente dans `CG.tmdbKey` ; la France pour la page française, les
+   États-Unis pour l'anglaise, comme les dates du radar.
+
+   Une seule copie pour les douze timelines, parce que toutes rendent leur
+   fiche pareil : un `.bu-panel` qui porte `data-tmdb` et `data-media`, et
+   un `.expand-info` qui n'est écrit qu'à l'ouverture. On observe donc
+   `#timeline` et l'on complète la fiche quand elle arrive, sans toucher au
+   code de rendu des pages.
+
+   Quatre choses à savoir :
+
+   - **Le type de l'œuvre décide, jamais `media`.** Les romans et comics
+     d'Avatar, les DLC de Dragon Age empruntent la fiche de leur série
+     (`media:"tv"`) : sans ce filtre, *Le Cycle de Kyoshi* annoncerait
+     Netflix. Seuls les types d'écran passent, lus dans les données de la
+     page — le même piège que `typeSchema()` de `jsonld.mjs`.
+   - **L'abonnement d'abord, la location seulement à défaut.** Une ligne
+     qui aligne quatorze boutiques de location ne dit plus où l'œuvre est
+     incluse. Rien n'est affiché si TMDB n'a rien : une ligne vide se
+     lirait comme « nulle part ».
+   - **JustWatch est cité, et c'est une condition.** TMDB tient ces données
+     de JustWatch et demande de le dire ; le lien mène à la page TMDB de
+     l'œuvre, qui renvoie chez chaque plateforme.
+   - **Les logos restent chez TMDB**, comme les affiches : `w92` pour un
+     rendu de 28 px, le palier au-dessus du ×3.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var EN = document.documentElement.lang === 'en';
+  var PAYS = EN ? 'US' : 'FR';
+  var L = EN
+    ? { titre: 'Where to watch', location: 'rent or buy', source: 'Data: JustWatch' }
+    : { titre: 'Où regarder', location: 'location ou achat', source: 'Données : JustWatch' };
+  var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
+  var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
+              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE'];
+
+  var CSS = [
+    '.wt{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:10px;',
+    '  font-size:11.5px;color:rgba(255,253,247,.72)}',
+    '.wt strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-right:2px}',
+    '.wt-l{display:inline-flex;gap:6px;flex-wrap:wrap}',
+    '.wt-l img{width:28px;height:28px;border-radius:6px;display:block;background:rgba(255,255,255,.08)}',
+    '.wt-k{font-style:italic}',
+    '.wt a.wt-s{color:rgba(255,253,247,.55);font-size:10.5px;text-decoration:none}',
+    '.wt a.wt-s:hover{color:var(--paper);text-decoration:underline}'
+  ].join('');
+
+  /* identifiant d'entrée → type, second parcours compris (`ref`) */
+  var TYPES = null;
+  function typeDe(id){
+    if (!TYPES) {
+      var D = null;
+      for (var i = 0; i < NOMS.length && !D; i++) {
+        var v = window[NOMS[i]];
+        if (v && typeof v === 'object' && v.eras && v.eras.length) D = v;
+      }
+      if (!D) return null;
+      TYPES = {};
+      var refs = [];
+      ['eras', 'erasRewatch', 'erasReplay', 'erasRelease'].forEach(function(cle){
+        (D[cle] || []).forEach(function(era){
+          (era.entries || []).forEach(function(e){
+            if (!e || !e.id) return;
+            if (e.type) TYPES[e.id] = e.type;
+            else if (e.ref) refs.push([e.id, e.ref]);
+          });
+        });
+      });
+      refs.forEach(function(r){ if (!TYPES[r[0]]) TYPES[r[0]] = TYPES[r[1]]; });
+    }
+    return TYPES[id] || null;
+  }
+
+  var cache = {};
+  function plateformes(media, id, cle){
+    if (cache[media + id]) return cache[media + id];
+    return (cache[media + id] = fetch('https://api.themoviedb.org/3/' + media + '/' + id +
+        '/watch/providers?api_key=' + cle)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ return d && d.results && d.results[PAYS] || null; })
+      .catch(function(){ return null; }));
+  }
+
+  /* Une marque, une fois. TMDB sépare les offres d'une même plateforme —
+     « Paramount Plus Premium », « Paramount Plus Essential », « Paramount+
+     Amazon Channel », « … Roku Premium Channel » — et la série Avatar
+     alignait quatre Paramount+ à côté d'un Netflix. */
+  function marqueDe(nom){
+    return String(nom).toLowerCase()
+      .replace(/\s*\bplus\b/g, '+')
+      .replace(/\b(amazon|apple tv|roku( premium)?) channel\b|\bchannel\b|\bwith ads\b|\b(premium|essential|basic|standard|ads)\b/g, '')
+      .replace(/\s+/g, ' ').trim();
+  }
+
+  /* l'abonnement et le gratuit, sinon la location et l'achat, sans doublon */
+  function choisir(p){
+    function liste(cles){
+      var vus = {}, out = [];
+      cles.forEach(function(k){ (p[k] || []).forEach(function(x){ out.push(x); }); });
+      out.sort(function(a, b){ return (a.display_priority || 99) - (b.display_priority || 99); });
+      return out.filter(function(x){
+        if (vus[marqueDe(x.provider_name)] || !x.logo_path) return false;
+        return (vus[marqueDe(x.provider_name)] = true);
+      }).slice(0, 6);
+    }
+    var flux = liste(['flatrate', 'free', 'ads']);
+    if (flux.length) return { liste: flux, location: false };
+    var achat = liste(['rent', 'buy']);
+    return achat.length ? { liste: achat, location: true } : null;
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+
+  function completer(info){
+    if (info.dataset.wt) return;
+    info.dataset.wt = '1';
+    var panel = info.closest('.bu-panel'), art = info.closest('[data-id]');
+    var CG = window.CG || {};
+    if (!panel || !art || !CG.tmdbKey) return;
+    var id = panel.dataset.tmdb, media = panel.dataset.media;
+    if (!id || id === '0' || (media !== 'movie' && media !== 'tv')) return;
+    if (!ECRAN[typeDe(art.dataset.id)]) return;
+
+    plateformes(media, id, CG.tmdbKey).then(function(p){
+      var c = p && choisir(p);
+      if (!c || !info.isConnected || info.querySelector('.wt')) return;
+      var html = '<strong>' + L.titre + '</strong><span class="wt-l">' +
+        c.liste.map(function(x){
+          return '<img src="https://image.tmdb.org/t/p/w92' + esc(x.logo_path) + '" alt="' +
+            esc(x.provider_name) + '" title="' + esc(x.provider_name) + '" loading="lazy">';
+        }).join('') + '</span>' +
+        (c.location ? '<span class="wt-k">' + L.location + '</span>' : '') +
+        (p.link ? '<a class="wt-s" href="' + esc(p.link) + '" target="_blank" rel="noopener">' +
+          L.source + '</a>' : '<span class="wt-s">' + L.source + '</span>');
+      var ligne = document.createElement('div');
+      ligne.className = 'wt';
+      ligne.innerHTML = html;
+      // sous les mesures, au-dessus de la bande-annonce
+      var tr = info.querySelector('.expand-trailer-link');
+      info.insertBefore(ligne, tr || null);
+    });
+  }
+
+  function pose(){
+    var tl = document.getElementById('timeline');
+    if (!tl || !document.querySelector('.bu-panel[data-tmdb]')) return;
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+    new MutationObserver(function(muts){
+      for (var i = 0; i < muts.length; i++) {
+        var n = muts[i].target;
+        if (n.nodeType !== 1) continue;
+        var infos = n.querySelectorAll('.expand-info:not([data-wt])');
+        for (var j = 0; j < infos.length; j++) completer(infos[j]);
+      }
+    }).observe(tl, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
