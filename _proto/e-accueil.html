@@ -294,6 +294,22 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .hud .bar{flex:1;min-width:120px;height:10px;border:2px solid var(--paper);position:relative}
 .hud .bar i{position:absolute;inset:0;background:var(--cleared);transform:scaleX(0);
   transform-origin:left center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+/* le rail global, celui des Dossiers, d'« À venir » et des Nouveautés :
+   la jauge arrondie, le train devant, une station par univers. Chaque
+   tronçon a la longueur de son univers et se remplit à son encre. */
+.hud-trn{flex:none;width:30px;height:16px}
+.hud-trn svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud-trn .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
+.hud-trn .win{fill:var(--ink)}
+.hud .bar{border:0;border-radius:5px;background:color-mix(in srgb,var(--hot) 22%,#1c1a26);overflow:visible}
+.hud .bar i{display:none}
+.hud .bar u{position:absolute;top:0;bottom:0;width:0;background:var(--c);transition:width .45s cubic-bezier(.16,1,.3,1)}
+.hud .bar u.a{border-radius:5px 0 0 5px}
+.hud .bar u.z{border-radius:0 5px 5px 0}
+.hud .bar s{position:absolute;top:50%;width:8px;height:8px;border-radius:50%;background:var(--paper);
+  border:2px solid var(--ink);transform:translate(-50%,-50%);box-sizing:content-box;z-index:1}
+.hud .bar s.v{background:var(--c)}
+@media(max-width:720px){.hud .bar s{width:5px;height:5px;border-width:1.5px}}
 
 /* echafaudage-debut — hors design : voir la page avec de la progression */
 .demo{border:0;background:none;color:rgba(255,253,247,.42);font:inherit;font-size:11px;
@@ -1040,7 +1056,8 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
        `data-total`, corrigé du même coup. -->
   <b><em id="k-on">0</em> / 1029</b>
   <span class="lbl">entrées terminées</span>
-  <div class="bar"><i id="k-fill"></i></div>
+  <span class="hud-trn" aria-hidden="true"><svg viewBox="0 0 38 20"><rect class="body" x="1" y="1" width="36" height="18" rx="8"/><rect class="win" x="8" y="6" width="5" height="5" rx="1"/><rect class="win" x="16.5" y="6" width="5" height="5" rx="1"/><rect class="win" x="25" y="6" width="5" height="5" rx="1"/></svg></span>
+  <div class="bar" id="k-bar"><i id="k-fill"></i></div>
   <span class="lbl">12 univers · 536 au dossier</span>
 </div></div>
 
@@ -1333,7 +1350,18 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
       if(p.done>0&&p.done<x.total) running.push({x:x,p:p});
     });
     document.getElementById('k-on').textContent=doneAll;
-    document.getElementById('k-fill').style.transform='scaleX('+(totalAll?doneAll/totalAll:0)+')';
+    /* le rail du bas : un tronçon par univers, rempli à son encre, et une
+       station à son départ, pleine quand la ligne est terminée */
+    var kb=document.getElementById('k-bar'), cum=0, rh='<i id="k-fill"></i>';
+    if(kb&&totalAll){
+      U.forEach(function(x,i){
+        var d=progress(x).done, g=cum/totalAll*100;
+        rh+='<u class="'+(i?'':'a')+(i===U.length-1&&d>=x.total?' z':'')+'" style="--c:var('+x.c+');left:'+g.toFixed(2)+'%;width:'+(d/totalAll*100).toFixed(2)+'%"></u>'+
+          '<s class="'+(x.total&&d>=x.total?'v':'')+'" style="--c:var('+x.c+');left:'+g.toFixed(2)+'%" title="'+esc(x.name)+'"></s>';
+        cum+=x.total;
+      });
+      kb.innerHTML=rh+'<s class="'+(doneAll>=totalAll?'v':'')+'" style="--c:var(--hot);left:100%"></s>';
+    }
 
     var r=document.getElementById('resume');
     if(!running.length){ r.hidden=true; return; }
