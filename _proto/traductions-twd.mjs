@@ -131,7 +131,7 @@ export const TWD_TRADUCTIONS = [
      La clé est neuve, donc sans homologue à retrouver — et le tutoiement
      est celui de Star Trek, dont elle est le voisin de table. */
   ['Reset your Walking Dead progress?',
-   'Réinitialiser ta progression The Walking Dead ?'],
+   'Réinitialiser votre progression The Walking Dead ?'],
 
   /* ── les trois repères de lecture ─────────────────────────────────
      L'intitulé et deux des trois titres sont ceux de Star Trek. */

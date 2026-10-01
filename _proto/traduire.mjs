@@ -120,6 +120,18 @@ const APPOINT = [
    anglaise, citée en commentaire, pour ne pas introduire un registre
    qui détonnerait au milieu des 900 autres entrées. */
 const TRADUCTIONS = [
+  /* ── le vouvoiement, posé partout le 30 septembre 2026 ──
+     Quatre libellés de CG.t tutoyaient encore là où le reste du site
+     vouvoie. Leur phrase française ne correspond plus à celle de la
+     prod : le témoin de fraîcheur écarte donc l'anglais, qui n'a pas
+     bougé — il est reposé ici tel qu'il était. */
+  ['Votre progression est sauvegardée sur ce navigateur — utilisez',
+   'Your progression is saved in this browser — use'],
+  ['Essayez une autre orthographe, ou remettez les filtres que vous avez décochés.',
+   'Try another spelling, or bring back the filters you turned off.'],
+  ['Essayez une autre orthographe.', 'Try another spelling.'],
+  ['▶ À l’écran — où se placent les films et séries. Non comptés dans votre progression.',
+   '▶ On screen — where the movies and shows fall. Not counted in your progress.'],
   /* ── l'ordre de sortie, posé le 23 septembre 2026 ──
      Le troisième parcours de Star Wars. Ses six ères sont des époques de
      sortie et non des ères de l'univers : rien en prod ne les porte, et
@@ -1031,7 +1043,17 @@ export function creerTraducteur(lex, manques, contexte, identiques) {
    Une entrée par ligne, ères indentées : le fichier reste diffable, et
    une entrée qui bouge se voit sur une seule ligne. */
 function js(v) {
-  return JSON.stringify(v);
+  return JSON.stringify(v, (k, x) => typeof x === 'string' ? typoEn(x) : x);
+}
+
+/* L'anglais ne met pas d'espace devant « : », « ? » ni « ! ». Le
+   français en met, et il passait tel quel dans les titres repris ou
+   écrits : « The High Republic : Convergence » sur 241 lignes du
+   Dossier, « Book One : Water » chez Avatar. Corrigé le 30 septembre
+   2026, à la sérialisation, donc pour tout ce que ce script écrit. */
+function typoEn(s) {
+  return s.replace(/(\S)[   ]+:(?=[  ])/g, '$1:')
+          .replace(/([\w.)…'’])[   ]+([?!]+)(?=$|[\s"<)])/g, '$1$2');
 }
 
 function serialiseTimeline(nom, D) {

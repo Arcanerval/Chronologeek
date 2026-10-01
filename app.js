@@ -3740,11 +3740,13 @@ function cgBillet(){
 
   var T = FR ? {
     ph:   'Chercher une œuvre — film, série, jeu, roman, comic…',
+    phC:  'Chercher une œuvre…',
     lab:  'Chercher dans les timelines',
     rien: 'Aucune œuvre de ce nom.',
     plus: function(n, t){ return n + ' sur ' + t + ' résultats'; }
   } : {
-    ph:   'Search a title — film, series, game, novel, comic…',
+    ph:   'Search a title — movie, show, game, novel, comic…',
+    phC:  'Search a title…',
     lab:  'Search the timelines',
     rien: 'No work by that name.',
     plus: function(n, t){ return n + ' of ' + t + ' results'; }
@@ -3949,7 +3951,9 @@ function cgBillet(){
 
     var champ = bloc.querySelector('.sr-q');
     var out   = bloc.querySelector('.sr-out');
-    champ.placeholder = T.ph;
+    /* Sur un téléphone, la phrase entière était coupée net après « jeu, » :
+       le champ n'en montre que la moitié. La forme courte dit l'essentiel. */
+    champ.placeholder = matchMedia('(max-width:560px)').matches ? T.phC : T.ph;
     champ.setAttribute('aria-label', T.lab);
     out.setAttribute('aria-label', T.lab);
 

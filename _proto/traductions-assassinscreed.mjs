@@ -264,7 +264,7 @@ export const AC_TRADUCTIONS = [
      Ce sont les mots de Niko : on les traduit, on ne les réécrit pas.
      Les noms de séquences et de mémoires suivent la VF du jeu. */
   ['Until end of Sequence 12 (Battle of Forli)', 'Jusqu\'à la fin de la Séquence 12 (La bataille de Forlì)'],
-  ['I highly recommend you to complete the optional 20 hidden glyphs but if you don\'t like collectibles look for "The Truth" video on YouTube when you completed the game it\'s pretty important !',
+  ['I highly recommend you to complete the optional 20 hidden glyphs but if you don\'t like collectibles look for "The Truth" video on YouTube when you completed the game it\'s pretty important!',
     'Je vous recommande vivement de trouver les 20 glyphes cachés facultatifs, mais si vous n\'aimez pas les collectibles cherchez la vidéo « La Vérité » sur YouTube une fois le jeu terminé, c\'est assez important !'],
   ['Bonfire of the Vanities and endgame', 'Le Bûcher des Vanités et la fin du jeu'],
   ['Until end of Sequence 8 (The Borgia)', 'Jusqu\'à la fin de la Séquence 8 (Les Borgia)'],
@@ -278,7 +278,7 @@ export const AC_TRADUCTIONS = [
   ['So... these games don\'t have present time parts but still happen much later... We will not bother about that for now. I highly recommend you to complete the optional 3 hidden Assassin logos (in the 3 Chronicles games) to unlock a secret ending cinematic in the last game but we will come back to it much later so don\'t watch it now.',
     'Alors... ces jeux n\'ont pas de parties au présent mais se déroulent quand même bien plus tard... On ne va pas s\'en occuper pour l\'instant. Je vous recommande vivement de trouver les 3 logos Assassins cachés facultatifs (dans les 3 jeux Chronicles) pour débloquer une cinématique de fin secrète dans le dernier jeu, mais on y reviendra bien plus tard, alors ne la regardez pas maintenant.'],
   ['Until end of Sequence 10 (Battle of Monmouth)', 'Jusqu\'à la fin de la Séquence 10 (La bataille de Monmouth)'],
-  ['I highly recommend you to complete all the optional Citizen E glitchs to unlock the real end of the game but if you don\'t like to do this look at the video in the panel below when you completed the game it\'s pretty important !',
+  ['I highly recommend you to complete all the optional Citizen E glitchs to unlock the real end of the game but if you don\'t like to do this look at the video in the panel below when you completed the game it\'s pretty important!',
     'Je vous recommande vivement de faire tous les bugs Citizen E facultatifs pour débloquer la vraie fin du jeu, mais si vous n\'aimez pas ça regardez la vidéo dans le panneau ci-dessous une fois le jeu terminé, c\'est assez important !'],
   ['Also available in a standalone game titled Assassin\'s Creed: Freedom Cry',
     'Également disponible en jeu autonome sous le titre Assassin\'s Creed : Le Prix de la Liberté'],
@@ -293,7 +293,7 @@ export const AC_TRADUCTIONS = [
     'Comme le montre le comic, l\'Eivor féminine est le personnage canonique'],
   ['Don\'t forget to do the important quest A Fated Encounter on the isle of Skye while doing the game',
     'N\'oubliez pas de faire l\'importante quête Une rencontre prédestinée sur l\'île de Skye pendant votre partie'],
-  ['I highly recommend you to complete the optional 10 Animus anomalies but if you don\'t like them look for "The Hidden Truth" video on YouTube when you completed the game it\'s pretty important !',
+  ['I highly recommend you to complete the optional 10 Animus anomalies but if you don\'t like them look for "The Hidden Truth" video on YouTube when you completed the game it\'s pretty important!',
     'Je vous recommande vivement de faire les 10 anomalies de l\'Animus facultatives, mais si vous n\'aimez pas ça cherchez la vidéo « The Hidden Truth » sur YouTube une fois le jeu terminé, c\'est assez important !'],
   ['Read it after the main game or while playing after meeting Ivarr and Halfdan',
     'À lire après le jeu principal, ou en cours de partie après avoir rencontré Ivarr et Halfdan'],
@@ -310,7 +310,7 @@ export const AC_TRADUCTIONS = [
   /* « Resynced » ne se traduit pas : c'est le nom que porte la version
      refaite de Black Flag, et l'avertissement dit qu'elle n'existe pas
      encore. Décision de Niko, 25 août 2026. */
-  ['Not Resynced !!! (yet...)', 'Pas Resynced !!! (pour l\'instant...)'],
+  ['Not Resynced!!! (yet...)', 'Pas Resynced !!! (pour l\'instant...)'],
 
   /* ════ L'ACCROCHE ET LES REPÈRES DE LECTURE ═══════════════════
      Le texte de Niko, traduit phrase par phrase. Les entités HTML de

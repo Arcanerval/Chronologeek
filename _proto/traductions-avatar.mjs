@@ -313,7 +313,7 @@ export const AVATAR_TRADUCTIONS = [
    "Chronological Timeline"],
   ["Séries animées · Comics · Livres",
    "Animation · Comics · Books"],
-  ["Effacer toute ta progression Avatar Legends ? Cette action est définitive.",
+  ["Effacer toute votre progression Avatar Legends ? Cette action est définitive.",
    "Erase all your Avatar Legends progress? This cannot be undone."],
   ["LIVRE",
    "BOOK"],

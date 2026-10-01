@@ -180,7 +180,7 @@ export const ST_TRADUCTIONS = [
   ['Animated Shows', 'Séries animées'],
   ['248 / 248 shown', '248 / 248 affichées'],
   ['SHORT', 'COURT'],
-  ['Why now ?', 'Pourquoi maintenant ?'],
+  ['Why now?', 'Pourquoi maintenant ?'],
 
   /* ── les repères, les spoils, la remise à zéro ──────────────────── */
   // « FLASHBACK » s'écrit pareil ; la ligne Kelvin est nommée par les
@@ -191,7 +191,7 @@ export const ST_TRADUCTIONS = [
   ['Reveal the minor spoilers', 'Révéler les spoilers mineurs'],
   ['Reveal the major spoilers', 'Révéler les spoilers majeurs'],
   // la formule des quatre autres univers, au mot près
-  ['Reset your Star Trek progress?', 'Réinitialiser ta progression Star Trek ?'],
+  ['Reset your Star Trek progress?', 'Réinitialiser votre progression Star Trek ?'],
   // le pied de page compte un univers de plus que celui des autres pages
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
@@ -250,7 +250,7 @@ export const ST_TRADUCTIONS = [
   ['CONSISTENCY', 'La cohérence'],
   ['Star Trek celebrated its 60th birthday in 2026, this guide covers the saga from the start and we will switch from old shows to modern shows and you will probably see a lot of consistency mistakes. Some characters change personality (and of course face), some events are depicted another way, some technologies disappear... The Original Series is also available in two versions: the classic 1960s version and a CGI- enhanced remastered version made from 2006-08. The remastered versions do not alter the stories in any way making the version you choose a matter of personal preference.',
    'Star Trek a fêté ses 60 ans en 2026 ; ce guide couvre la saga depuis le début, et comme nous passerons des séries anciennes aux séries modernes, vous verrez probablement beaucoup d\'incohérences. Certains personnages changent de personnalité (et bien sûr de visage), certains événements sont racontés autrement, certaines technologies disparaissent… La série originale existe aussi en deux versions : la version classique des années 1960 et une version remasterisée aux effets refaits en images de synthèse entre 2006 et 2008. Les versions remasterisées ne modifient en rien les histoires : le choix de la version tient donc à votre seule préférence.'],
-  ['What\'s left out, and why ?', 'Ce qui est écarté et pourquoi'],
+  ['What\'s left out, and why?', 'Ce qui est écarté et pourquoi'],
   ['1 entry', '1 entrée'],
   ['Books, novels, comics, video games...', 'Livres, romans, comics, jeux vidéo…'],
   ['The Star Trek primary canon is called Alpha Canon and covers only movies and shows, the rest is Beta Canon and can change whenever an autor or director wants to. If you plan on staying stuck in the Star Trek universe for the reste of your life there\'s about 850 novels and hundred of comics waiting for you... We\'ll stay in the cinematographic experience for now.',

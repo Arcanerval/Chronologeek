@@ -292,7 +292,7 @@ const TRADUCTIONS = [
   ['Chronologeek — Accueil (proto E)', 'Chronologeek — Home (proto E)'],
   ['Navigation repliée', 'Collapsed navigation'],
   ['Chaque univers, dans l\'ordre', 'Every universe, in order'],
-  ['Choisis ton', 'Choose your'],          // « Choisis ton <span>univers</span> »
+  ['Choisissez votre', 'Choose your'],     // « Choisissez votre <em>univers</em> »
   ['univers', 'universe'],
   ['Sélection de l\'univers', 'Universe selection'],
   ['Sélectionner', 'Select'],
