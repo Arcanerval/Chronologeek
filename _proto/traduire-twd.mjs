@@ -36,6 +36,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { typoFr } from './typo-fr.mjs';
 import { TWD_IDENTIQUES, TWD_TRADUCTIONS, TWD_GABARITS } from './traductions-twd.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
@@ -596,7 +597,7 @@ if (!CHECK) {
     console.log('\n  rien n\'a été écrit : le bilan n\'est pas propre.');
     process.exit(1);
   }
-  fs.writeFileSync(path.join(RACINE, '_proto/data-twd.js'), sortie, 'utf8');
+  fs.writeFileSync(path.join(RACINE, '_proto/data-twd.js'), typoFr(sortie), 'utf8');
   fs.writeFileSync(path.join(RACINE, '_proto/e-twd.html'), pageFR, 'utf8');
   console.log('\n  → _proto/data-twd.js\n  → _proto/e-twd.html');
   fs.writeFileSync(path.join(RACINE, '_proto/a-relire-twd.json'),

@@ -40,6 +40,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { typoFr } from './typo-fr.mjs';
 import { DCA_IDENTIQUES, DCA_RETROUVES, DCA_TRADUCTIONS, DCA_GABARITS }
   from './traductions-dcanimation.mjs';
 
@@ -645,7 +646,7 @@ if (!CHECK) {
     console.log('\n  rien n\'a été écrit : le bilan n\'est pas propre.');
     process.exit(1);
   }
-  fs.writeFileSync(path.join(RACINE, '_proto/data-dcanimation.js'), sortie, 'utf8');
+  fs.writeFileSync(path.join(RACINE, '_proto/data-dcanimation.js'), typoFr(sortie), 'utf8');
   fs.writeFileSync(path.join(RACINE, '_proto/e-dcanimation.html'), pageFR, 'utf8');
   console.log('\n  → _proto/data-dcanimation.js\n  → _proto/e-dcanimation.html');
   fs.writeFileSync(path.join(RACINE, '_proto/a-relire-dcanimation.json'),

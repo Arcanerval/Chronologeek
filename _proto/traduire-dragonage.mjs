@@ -52,6 +52,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { typoFr } from './typo-fr.mjs';
 import { DA_IDENTIQUES, DA_TRADUCTIONS, DA_GABARITS } from './traductions-dragonage.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
@@ -684,7 +685,7 @@ if (!CHECK) {
     console.log('\n  rien n\'a été écrit : le bilan n\'est pas propre.');
     process.exit(1);
   }
-  fs.writeFileSync(path.join(RACINE, '_proto/data-dragonage.js'), sortie, 'utf8');
+  fs.writeFileSync(path.join(RACINE, '_proto/data-dragonage.js'), typoFr(sortie), 'utf8');
   fs.writeFileSync(path.join(RACINE, '_proto/e-dragonage.html'), pageFR, 'utf8');
   console.log('\n  → _proto/data-dragonage.js\n  → _proto/e-dragonage.html');
   fs.writeFileSync(path.join(RACINE, '_proto/a-relire-dragonage.json'),

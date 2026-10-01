@@ -952,8 +952,13 @@ export function creerTraducteur(lex, manques, contexte, identiques) {
          rendrait « sans traduction » à chaque passage. */
       if (RENOMMES_NOUVEAUX.has(fr.trim())) return fr;
 
+      /* Une retouche de graphie — l'espace du deux-points, l'apostrophe,
+         une capitale de travers (« Vader'S Castle ») — ne change pas ce
+         que dit la phrase : le témoin la compare sans elles, sans quoi
+         l'anglais, juste, était écarté. Corrigé le 30 septembre 2026. */
+      const graphie = s => net(s).replace(/\s*:\s/g, ' : ').replace(/’/g, "'").toLowerCase();
       const perime = typeof refFr === 'string'
-        && net(refFr) !== net(sansLiensInternes(commeEnProd(fr, contexte)));
+        && graphie(refFr) !== graphie(sansLiensInternes(commeEnProd(fr, contexte)));
       if (perime) {
         /* Le cas courant : le proto a coupé la fin du titre — « The Clone
            Wars — 22 BBY » est devenu « The Clone Wars », la date étant

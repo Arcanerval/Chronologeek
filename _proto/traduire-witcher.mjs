@@ -40,6 +40,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { typoFr } from './typo-fr.mjs';
 import { W_IDENTIQUES, W_RETROUVES, W_TRADUCTIONS, W_GABARITS, W_TITRES }
   from './traductions-witcher.mjs';
 
@@ -689,7 +690,7 @@ if (!CHECK) {
     console.log('\n  rien n\'a été écrit : le bilan n\'est pas propre.');
     process.exit(1);
   }
-  fs.writeFileSync(path.join(RACINE, '_proto/data-witcher.js'), sortie, 'utf8');
+  fs.writeFileSync(path.join(RACINE, '_proto/data-witcher.js'), typoFr(sortie), 'utf8');
   fs.writeFileSync(path.join(RACINE, '_proto/e-witcher.html'), pageFR, 'utf8');
   console.log('\n  → _proto/data-witcher.js\n  → _proto/e-witcher.html');
   fs.writeFileSync(path.join(RACINE, '_proto/a-relire-witcher.json'),
