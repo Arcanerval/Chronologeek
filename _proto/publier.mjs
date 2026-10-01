@@ -34,6 +34,7 @@ import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
 import { recherche } from './recherche.mjs';
 import { flux } from './flux.mjs';
+import { decomptes, appliquer } from './decomptes.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 const RACINE = join(ICI, '..');
@@ -777,6 +778,10 @@ const TRACES = [
 
 const problemes = [];
 const bilan = [];
+// Les chiffres de l'accueil et des Dossiers, comptés une fois dans les
+// données. Voir `decomptes.mjs` : chaque ajout de média en faisait autant de
+// retouches à la main.
+const DECOMPTES = decomptes(RACINE);
 
 function publier(route, langue) {
   const c = route[langue];
@@ -788,6 +793,11 @@ function publier(route, langue) {
 
   let h = lire(`_proto/${c.proto}`);
   const avant = h;
+
+  // 0. les décomptes écrits dans la page, recalculés depuis les données
+  let recalcules = 0;
+  const dc = appliquer(h, route.cle, langue, DECOMPTES, c.proto);
+  if (dc) { h = dc.html; recalcules = dc.changes.length; problemes.push(...dc.manquants); }
 
   // 1. le proto ne doit plus s'interdire aux moteurs
   h = h.replace(/[ \t]*<meta name="robots"[^>]*noindex[^>]*>\r?\n?/gi, '');
@@ -904,7 +914,7 @@ function publier(route, langue) {
 
   if (h === avant) problemes.push(`${c.sortie} : aucune transformation appliquée`);
 
-  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires, ld: ld.length, entrees });
+  bilan.push({ sortie: c.sortie, titre: seo.title, octets: h.length, retires, recalcules, ld: ld.length, entrees });
   if (!CHECK) ecrire(c.sortie, h);
 }
 
@@ -1036,7 +1046,8 @@ console.log(CHECK ? '— contrôle, rien n’est écrit —\n' : '— publicatio
 for (const b of bilan) console.log(`  ${b.sortie.padEnd(34)} ${String(b.octets).padStart(7)} o   ` +
   `${String('ld ' + (b.ld < 1024 ? b.ld + ' o' : Math.round(b.ld / 1024) + ' Ko')).padEnd(10)} ` +
   `${String(b.entrees ? b.entrees + ' entrées' : '').padEnd(12)} ` +
-  `${b.retires ? `[${b.retires} bloc(s) d'échafaudage retiré(s)] ` : ''}${b.titre}`);
+  `${b.retires ? `[${b.retires} bloc(s) d'échafaudage retiré(s)] ` : ''}` +
+  `${b.recalcules ? `[${b.recalcules} décompte(s) recalculé(s)] ` : ''}${b.titre}`);
 console.log('');
 // Un pré-rendu qui tombe à zéro sur une page qui en avait est le genre de
 // silence que ce dépôt paie cher : il se lit ici, pas dans la page.

@@ -1813,11 +1813,26 @@ Rien de neuf n'est traduit là : on réapplique une traduction déjà relue à u
 phrase dont seul un chiffre a bougé. Ce qui change vraiment de mots — « à jour ·
 juillet 2026 » devenu « août 2026 » — reste à écrire à la main.
 
-Quatre décomptes sont écrits en dur dans les protos et doivent suivre un ajout :
-`e-dossier-star-wars.html` (le bandeau `.upd`, `s-tot`, `fcount`, `k-tot`,
-`k-left`), `e-dossiers.html` (`data-total`, le score, le bandeau, le HUD) et
-`e-accueil.html` (« 8 univers · 536 au dossier »). Le reste est calculé au
-chargement. Le rail des ères du Dossier divisait par 533 en dur : il divise
+**Les décomptes de l'accueil, des Dossiers et du Dossier se recalculent à la
+publication**, depuis le 1er octobre 2026, par `_proto/decomptes.mjs` : les
+douze `data-total` et leur ligne « 0 / 62 · 6 stations », `total` de la
+table `U`, la table `E` (noms d'ères et comptes), « 79 stations, 1 029
+arrêts », le HUD et « 12 univers · 536 au dossier » ; côté Dossiers,
+`data-total`, la carte, la bande, le HUD, `TOTAL` et les comptes de `E` ;
+côté Dossier, `s-tot`, `fcount`, `k-tot`, `k-left`. `publier.mjs` les pose
+dans les deux langues, et `node _proto/decomptes.mjs` dit ce qui a dérivé
+dans les protos (`--ecrire` corrige les protos français, puis
+`traduire-pages.mjs`).
+
+Un arrêt est **toute entrée qui n'est ni `separator` ni `note`** — c'est ce
+qui redonnait exactement les douze cartes —, et une œuvre du Dossier un item
+`kind:'it'`. Trois choses restent à la main, et c'est voulu : **les dates de
+départ de `E`**, choisies (2063 pour un 21e siècle qui ne porte qu'une note),
+gardées par ère, une ère neuve recevant la date de sa première entrée ;
+**le mois « À jour · … »**, éditorial ; et **les nombres en toutes lettres** —
+« Douze lignes », « Douze chronologies » —, qui ne bougent qu'à l'ajout d'un
+univers et sont dans sa checklist. Un motif qui ne trouve plus sa cible
+fait sortir la publication en erreur. Le reste est calculé au chargement. Le rail des ères du Dossier divisait par 533 en dur : il divise
 maintenant par `ALL.length`, sinon la progression n'atteint jamais 100 %.
 
 ### Les quatre garde-fous, et pourquoi ils existent
@@ -2787,9 +2802,9 @@ gardent l'ancien menu et l'ancien pied de page.
   l'emporte maintenant sur le lexique qui ne la connaît qu'à la casse près —
   sans ça, « septembre 2026 » sortait « september 2026 ».
 - **Les tables `U` et `E` du plan sont bilingues**, en `i18n-off`, et le
-  script choisit la langue à l'exécution. **`E` est écrite à la main** : le
-  nombre d'œuvres par ère, comme « 79 stations, 1 028 arrêts » de l'accroche,
-  suit chaque ajout de média — c'est un décompte en dur de plus.
+  script choisit la langue à l'exécution. **`E` se recalcule à la
+  publication** (`decomptes.mjs`), comme « 79 stations, 1 029 arrêts » de
+  l'accroche : noms et comptes depuis les données, dates gardées.
 - **Un grand nombre `<b>1 028</b>` passe en `<b>1,028</b>`** côté anglais
   (`traduire-pages.mjs`, avant la traduction) : sans lettre, le lexique ne le
   voit pas.
@@ -3096,8 +3111,8 @@ ligne du flux RSS par `e-app.js`.
 **« Dossiers » est publié au plan de métro le 30 septembre 2026**, sur le
 modèle de « Nouveautés ». Un Dossier est une ligne de correspondance : le plan
 du haut est la ligne *Dossier Star Wars*, sept stations en noms courts (table
-`E` bilingue, en `i18n-off`, **écrite à la main** comme celle de l'accueil —
-elle suit chaque ajout au Dossier), à **échelle mixte** (la Rébellion porte
+`E` bilingue, en `i18n-off`, noms courts écrits à la main, **comptes
+recalculés à la publication** comme ceux de l'accueil), à **échelle mixte** (la Rébellion porte
 295 arrêts sur 536), terminus en anneau, train à `cg-train` (`dossier-star-wars`
 en proto, `star-wars` en ligne) sinon au décompte. Tableau, billet à cheval
 (« Premier départ » / « Prochain départ »), deux tuiles de l'accueil — la
@@ -3451,9 +3466,9 @@ le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
   L'accroche anglaise se tient dans `TRADUCTIONS` de `traduire-pages.mjs`, la
   prod n'ayant jamais porté cette phrase-là.
 
-  Trois autres décomptes suivent sur l'accueil, et aucun n'est calculé : le
-  sous-titre (« Huit chronologies… »), le HUD (`0 / 845`, « 8 univers · 536 au
-  dossier ») et le numéro de la case verrouillée. Huit univers plus elle font
+  Sur l'accueil, le HUD et « N univers · N au dossier » se recalculent à la
+  publication (`decomptes.mjs`) ; le sous-titre (« Douze chronologies… ») et
+  le numéro de la case verrouillée restent à la main. Huit univers plus elle font
   **neuf** cases dans une grille à deux colonnes : la case « Bientôt » tombe
   seule sur la dernière rangée, et `.slot.lock` prend alors la largeur entière
   parce qu'elle est sur un rang impair (`:nth-child(odd)`). À sept univers la
