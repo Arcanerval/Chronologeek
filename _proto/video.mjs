@@ -1,5 +1,5 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--cadre 0%] [--couv img]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--types jeu,dlc] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--cadre 0%] [--couv img]
 
    --cadre cale la couverture de l'accroche (object-position horizontal) : la
    bannière DC montre l'Arrowverse à gauche et le DCEU à droite, et une vidéo
@@ -11,6 +11,10 @@
    --titre remplace le nom de l'univers a l'accroche, en tete de carte et a la fin :
    une video DC sans les origines ne montre plus le « Multiverse Guide » entier,
    elle montre « Arrowverse, DCEU & DCU ».
+
+   --types ne garde que ces types de la donnee (`jeu,dlc` : les jeux d'Assassin's
+   Creed sans les romans, comics et videos). C'est une selection, comme --only :
+   le rang de la page reste, et l'accroche dit ce qu'on montre.
 
    --plus tire une entree hors du filtre et la met au rang des essentiels : Rogue One
    est "important" dans les donnees, et le site n'a pas a changer pour une video.
@@ -146,6 +150,7 @@ function suite(D, opts) {
       rang++;
       if (opts.ere != null && i !== opts.ere) continue;
       if (opts.sans && opts.sans.has(i)) continue;
+      if (opts.types && !opts.types.has(e.type)) continue;
       const niveau = e.level || e.imp || '';
       const force = opts.plus && opts.plus.has(e.id);
       if (!force && opts.only === 'must' && niveau !== 'must') continue;
@@ -691,6 +696,7 @@ async function main() {
   const ere = a.includes('--ere') ? Number(val('--ere')) : null;
   const sans = new Set(String(val('--sans', '')).split(',').filter(Boolean).map(Number));
   const plus = new Set(String(val('--plus', '')).split(',').map(s => s.trim()).filter(Boolean));
+  const types = a.includes('--types') ? new Set(String(val('--types')).split(',').map(s => s.trim()).filter(Boolean)) : null;
   const audio = val('--audio', null);
   const titre = val('--titre', null);
   const cadre = val('--cadre', null);
@@ -698,13 +704,13 @@ async function main() {
 
   if (!cle) {
     console.error('usage : node _proto/video.mjs <' + Object.keys(UNIVERS).join('|') +
-      '> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--ere N] [--sans N,N] [--plus id,id] [--couv img] [--audio piste.mp3]');
+      '> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--types jeu,dlc] [--ere N] [--sans N,N] [--plus id,id] [--couv img] [--audio piste.mp3]');
     process.exit(1);
   }
   if (audio && !fs.existsSync(audio)) throw new Error(`--audio : fichier introuvable "${audio}"`);
 
   const { D, CG } = charge(UNIVERS[cle].data + (lang === 'en' ? '-en' : ''));
-  const cartes = suite(D, { only, ere, plus, sans });
+  const cartes = suite(D, { only, ere, plus, sans, types });
   for (const id of plus) {
     if (!cartes.some(c => c.id === id)) throw new Error(`--plus : aucune entree "${id}"`);
   }
@@ -724,13 +730,16 @@ async function main() {
     if (dur < 0.3) throw new Error(`--total ${cible} : ${dur.toFixed(2)} s par carte, illisible`);
   }
 
-  const suffixe = [only, ere != null ? 'ere' + ere : null, sans.size ? 'sans' + [...sans].join('') : null, plus.size ? 'plus' : null]
+  const suffixe = [types ? [...types].join('-') : null, only, ere != null ? 'ere' + ere : null, sans.size ? 'sans' + [...sans].join('') : null, plus.size ? 'plus' : null]
     .filter(Boolean).join('-');
   const nomFichier = `${cle}-${lang}${suffixe ? '-' + suffixe : ''}`;
   const dossier = path.join(RACINE, 'promo', 'video-' + nomFichier);
   fs.mkdirSync(dossier, { recursive: true });
 
-  const sel = only === 'must' ? { nom: T[lang].essentiels, unite: T[lang].essentielsN }
+  const sel = types ? { nom: lang === 'en' ? ([...types].join(' & ').replace('jeu', 'GAMES').replace('dlc', 'DLC'))
+                                          : ([...types].join(' ET ').replace('jeu', 'JEUX').replace('dlc', 'DLC')),
+                        unite: T[lang].stops }
+    : only === 'must' ? { nom: T[lang].essentiels, unite: T[lang].essentielsN }
     : ere != null ? { nom: decode(D.eras[ere].title || ''), unite: T[lang].entries }
     : only === 'must+' ? { nom: T[lang].importants, unite: T[lang].entries }
     : null;
