@@ -1545,6 +1545,36 @@ ne suffit pas : il ne connaît pas les URL sans extension, et toute la navigatio
 la refonte passe par `/starwars`, pas `/starwars.html`. Une vérification locale qui
 tombe en 404 sur chaque lien ne prouve rien.
 
+**`node _proto/verifier.mjs` ouvre les trente-quatre pages dans Chromium**, à
+1366 et à 375 px, et sort en erreur sur ce qui casse sans le dire. Posé le
+1er octobre 2026. `publier.mjs` l'appelle à la fin — hors `--check`, hors
+GitHub Actions (`CI`, pas de navigateur), et `--sans-navigateur` le saute. **Un
+échec veut dire : ne pas commiter**, les pages étant déjà écrites. Il sert le
+site lui-même, au mappage de `serveur.py`, sur un port libre ; 30 s pour tout,
+`node _proto/verifier.mjs starwars dc` pour quelques pages (sous Git Bash, pas
+de `/` en tête : il le prend pour un chemin Windows).
+
+Ce qu'il relève : erreur JS (console ou non rattrapée), ressource du site en
+4xx, image locale morte (lazy forcées), « undefined » / « NaN » / « [object
+Object] » dans le texte, `<details>` fermés compris, nombre de h1, pré-rendu
+`.pr` resté, ancre de l'`ItemList` absente du DOM, service worker non installé
+(le piège de `PRECACHE`), contenu coupé par le bord de l'écran, lien interne
+mort. Ce qui vient de l'extérieur (TMDB) n'est qu'un avertissement, `--tout`
+les montre. GoatCounter est coupé, pour ne pas compter nos passages.
+
+Deux choses à savoir :
+
+- **Le débordement ne se mesure pas par `scrollWidth`.** `html` porte
+  `overflow-x:clip` : un bloc trop large ne fait plus défiler la page, il est
+  rogné, et `scrollWidth` reste égal à la fenêtre. On cherche donc le contenu
+  réel — texte, image, bouton, champ — **à cheval** sur un bord, hors d'un
+  conteneur qui rogne ou défile et hors `position:fixed`. Ce qui est
+  entièrement dehors est voulu : les `.skip` sont à −10 000 px.
+- **Chaque détecteur a été vu échouer** avant d'être cru : texte
+  « undefined », image et script absents, erreur JS, lien fantôme, bloc de
+  2 000 px, identifiant renommé dans `data/starwars-en.js`. Un contrôle ajouté
+  se prouve de la même façon, sur une copie qu'on restaure ensuite.
+
 ### Star Trek, la chaîne inversée
 
 Le cinquième univers est parti de l'anglais — Niko a écrit ce guide-là dans cette

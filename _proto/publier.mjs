@@ -1056,3 +1056,19 @@ if (problemes.length) {
   process.exit(1);
 }
 console.log('  Aucun problème.');
+
+/* ── Au navigateur, une fois tout écrit ─────────────────────────────────
+   Les contrôles ci-dessus lisent des fichiers ; la moitié des pages est
+   écrite par le JS au chargement, et c'est là que ce dépôt casse sans le
+   dire. `verifier.mjs` ouvre les trente-quatre pages à deux largeurs. Il
+   ne tourne ni en `--check`, rien n'étant écrit, ni dans GitHub Actions,
+   qui n'a pas de navigateur. Un échec ici veut dire : ne pas commiter. */
+if (!CHECK && !process.env.CI && !process.argv.includes('--sans-navigateur')) {
+  console.log('');
+  const v = spawnSync(process.execPath, [join(ICI, 'verifier.mjs')], { stdio: 'inherit' });
+  if (v.status === 2) console.log('  (vérification au navigateur sautée : Chromium absent)');
+  else if (v.status !== 0) {
+    console.error('\n  Les pages sont écrites, mais fausses au navigateur : ne pas commiter.');
+    process.exit(1);
+  }
+}
