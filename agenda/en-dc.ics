@@ -7,18 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · DC
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:63a03608efc802563d11-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261003
-DTEND;VALUE=DATE:20261004
-SUMMARY:Krypto Saves the Day!: Robo-Pal
-DESCRIPTION:Lex Luthor deploys a robo-dog to hunt Superman and Supergirl\, 
- but the mission unravels when Krypto and the machine become best friends.\
- n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:8f2e17d8d23f41077099-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261004
