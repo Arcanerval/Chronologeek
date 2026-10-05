@@ -87,8 +87,10 @@ const FIN = {
   en: { l1: 'Free', l2: 'No account', l3: 'No spoilers', bio: 'Link in bio' },
   fr: { l1: 'Gratuit', l2: 'Sans compte', l3: 'Sans spoiler', bio: 'Lien en bio' },
 };
-/* voix feminines, choix de Niko du 5 octobre 2026 */
-const VOIX = { en: 'en-US-AvaMultilingualNeural', fr: 'fr-FR-VivienneMultilingualNeural' };
+/* voix feminines, choix de Niko du 5 octobre 2026. L'anglaise n'est pas la
+   « Multilingual » : celle-ci devine la langue phrase par phrase, et sur
+   « Chronolo-geek dot app » elle changeait d'accent a la derniere phrase. */
+const VOIX = { en: 'en-US-AvaNeural', fr: 'fr-FR-VivienneMultilingualNeural' };
 /* « geek » se dit « guik », comme le mot : d'un seul tenant, la synthese lisait
    « chronolo-djik ». Le texte affiche n'est pas touche, seul ce qui est lu. */
 const PRONONCE = { en: [/Chronologeek/g, 'Chronolo-geek'], fr: [/Chronologeek/g, 'Chronolo-guik'] };
