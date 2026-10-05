@@ -1,30 +1,5 @@
 [
  {
-  "universe": "dc",
-  "title": "Lanterns",
-  "date_sort": "2026-10-04",
-  "date_txt": "04/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 8,
-   "mark": "finale"
-  },
-  "poster": "/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
-  "tmdb": 95350,
-  "media": "tv"
- },
- {
   "universe": "starwars",
   "title": "Star Wars: Galactic Racer",
   "date_sort": "2026-10-06",
@@ -89,7 +64,7 @@
    "mark": "premiere",
    "eFin": 2
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/kSLKCUUsYXjXomMIPEFGcNbeByV.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
