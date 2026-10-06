@@ -12,11 +12,10 @@ DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261006
 DTEND;VALUE=DATE:20261007
 SUMMARY:Star Wars · Star Wars: Galactic Racer
-DESCRIPTION:Jeu vidéo\n\nStar Wars: Galactic Racer is an upcoming canon St
- ar Wars racing video game developed by Fuse Games and published by Lucasfi
- lm Games alongside Secret Mode. The game will be released for PC\, PlaySta
- tion 5\, and Xbox Series X/S on October 6\, 2026.\n\nhttps://chronologeek.
- app/fr/a-venir
+DESCRIPTION:Jeu vidéo\n\nStar Wars: Galactic Racer is a canon Star Wars ra
+ cing video game developed by Fuse Games and published by Lucasfilm Games a
+ longside Secret Mode. The game was released for PC\, PlayStation 5\, and X
+ box Series X/S on October 6\, 2026.\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -198,6 +197,18 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:63a03608efc802563d11-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:DC · Krypto Saves the Day!: Robo-Pal
+DESCRIPTION:Film\n\nLex Luthor deploys a robo-dog to hunt Superman and Supe
+ rgirl\, but the mission unravels when Krypto and the machine become best f
+ riends.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:a6158bda2b4f3310e378-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261117
@@ -338,11 +349,11 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:14beadae805e3856d8c0-fr@chronologeek.app
+UID:17a4ba10deb8e8d2c896-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270720
 DTEND;VALUE=DATE:20270721
-SUMMARY:Avatar Legends · Untitled Chronicles of the Avatar Book #7
+SUMMARY:Avatar Legends · The Tempest of Sonam
 DESCRIPTION:Young Adult Novel Release Date: July 20\, 2027\n\nhttps://chron
  ologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir

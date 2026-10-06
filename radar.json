@@ -8,7 +8,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "Star Wars: Galactic Racer is an upcoming canon Star Wars racing video game developed by Fuse Games and published by Lucasfilm Games alongside Secret Mode. The game will be released for PC, PlayStation 5, and Xbox Series X/S on October 6, 2026.",
+  "syn": "Star Wars: Galactic Racer is a canon Star Wars racing video game developed by Fuse Games and published by Lucasfilm Games alongside Secret Mode. The game was released for PC, PlayStation 5, and Xbox Series X/S on October 6, 2026.",
   "wiki": "Star Wars: Galactic Racer",
   "syn_fr": "",
   "kindKey": "game",
@@ -149,7 +149,7 @@
    "e": 3,
    "mark": ""
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/kSLKCUUsYXjXomMIPEFGcNbeByV.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -271,7 +271,7 @@
    "e": 4,
    "mark": ""
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/kSLKCUUsYXjXomMIPEFGcNbeByV.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -317,6 +317,25 @@
   "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
   "tmdb": 284833,
   "media": "tv"
+ },
+ {
+  "universe": "dc",
+  "title": "Krypto Saves the Day!: Robo-Pal",
+  "date_sort": "2026-10-31",
+  "date_txt": "31/10/2026",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Lex Luthor deploys a robo-dog to hunt Superman and Supergirl, but the mission unravels when Krypto and the machine become best friends.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "tmdb": 1786298,
+  "media": "movie"
  },
  {
   "universe": "starwars",
@@ -524,7 +543,7 @@
  },
  {
   "universe": "avatar",
-  "title": "Untitled Chronicles of the Avatar Book #7",
+  "title": "The Tempest of Sonam",
   "date_sort": "2027-07-20",
   "date_txt": "20/07/2027",
   "kind": "Young Adult Novel Release Date: July 20, 2027",
