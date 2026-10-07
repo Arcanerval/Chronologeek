@@ -74,7 +74,7 @@ const TYPES = {
 const T = {
   en: { ordre:'IN ORDER', hookSub:'no spoilers', entries:'entries', eras:'eras', ere1:'era',
         essentiels:'THE ESSENTIALS', essentielsN:'essentials', importants:'THE IMPORTANTS', total:'in total',
-        premiere:'FIRST WATCH ORDER', essentiel:'Essential', important:'Important',
+        premiere:'FIRST WATCH ORDER', premiereJeu:'FIRST PLAYTHROUGH', essentiel:'Essential', important:'Important',
         outro1:'The full order', outro2:'free, no account',
         station:'Station', stop:'Stop', stops:'stops', stations:'stations', spoil:'spoilers',
         souvenirs:'Memories', terminus:'Terminus', fin:'End of the line', prochain:'Next departure',
@@ -82,7 +82,7 @@ const T = {
         cta:'chronologeek.app' },
   fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères', ere1:'ère',
         essentiels:'LES ESSENTIELS', essentielsN:'essentiels', importants:'LES IMPORTANTS', total:'au total',
-        premiere:'PREMIÈRE VISION', essentiel:'Essentiel', important:'Important',
+        premiere:'PREMIÈRE VISION', premiereJeu:'PREMIÈRE PARTIE', essentiel:'Essentiel', important:'Important',
         outro1:"L'ordre complet", outro2:'gratuit, sans compte',
         station:'Station', stop:'Arrêt', stops:'arrêts', stations:'stations', spoil:'spoiler',
         souvenirs:'Souvenirs', terminus:'Terminus', fin:'Fin de la ligne', prochain:'Prochain départ',
@@ -235,7 +235,7 @@ function ouverture(D, cartes, lang, total, sel) {
      chronologie du monde, qui est l'autre parcours. */
   const eres = new Set(cartes.map(c => c.ere)).size;
   if (!sel) return {
-    ord: (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre,
+    ord: D.erasReplay ? t.premiereJeu : D.erasRewatch ? t.premiere : t.ordre,
     /* --sans retire des eres : la video complete ne montre alors plus toute la
        page, et l'accroche compte ce qui passe a l'ecran, pas ce que la page porte.
        Une branche seule n'en laisse qu'une, et "1 eras" se lit a l'accroche. */
@@ -322,7 +322,8 @@ function page(cle, D, CG, cartes, lang, total, sel, titre, cadre, couv) {
   const cover = couv ? (/^https?:/.test(couv)
     ? couv
     : 'file:///' + path.resolve(RACINE, couv).replace(/\\/g,'/')) : couverture(cle);
-  const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
+  /* Dragon Age se rejoue (#replay), il ne se revoit pas : la page le dit, la video aussi */
+  const parcours = D.erasReplay ? t.premiereJeu : D.erasRewatch ? t.premiere : t.ordre;
   const ST = stations(D, cartes);
   const X = echelle(ST, cartes.length);
   const encreEre = s => inkEre[s.ere.ink || s.i + 1] || encre;
@@ -477,7 +478,8 @@ body{background:#000;font-family:Chivo,"Segoe UI",sans-serif;-webkit-font-smooth
    de TikTok couvre environ 130 px, la legende, les boutons et le nom du
    compte environ 300. Rien de lisible n'y descend. */
 .card,.plate{padding:140px 56px 300px}
-.eye{display:flex;align-items:center;gap:16px;font-weight:800;font-size:31px;letter-spacing:.14em;
+/* au-dessus de la voie : sur les plaques elle monte jusqu'a la pastille et la coupait */
+.eye{position:relative;z-index:3;display:flex;align-items:center;gap:16px;font-weight:800;font-size:31px;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(255,253,247,.66);white-space:nowrap;overflow:hidden}
 .code{display:inline-grid;place-items:center;flex:none;background:var(--uni);color:var(--ink);border:3px solid var(--ink);
   border-radius:9px;padding:3px 13px 1px;font-weight:900;font-size:32px;letter-spacing:.04em;line-height:1.1;
