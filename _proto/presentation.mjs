@@ -90,6 +90,10 @@ const FIN = {
 };
 /* la voix, sa prononciation et son rendu vivent dans voix.mjs, avec video.mjs */
 
+/* respiration apres chaque phrase, et la fin tient plus longtemps : on y lit
+   une adresse */
+const SOUFFLE = 0.35, ENTREE = 0.12, FIN_EN_PLUS = 1.6;
+
 /* ---------- voix ---------- */
 
 function voix(plans, lang, voixNom, debit, dossier) {
