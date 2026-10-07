@@ -1,5 +1,5 @@
 /* Videos verticales 1080x1920 (TikTok, Reels, Shorts) produites depuis les donnees.
-   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--types jeu,dlc] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--cadre 0%] [--couv img]
+   node _proto/video.mjs <univers> [--lang en|fr] [--dur 0.62 | --total 60] [--only must|must+] [--types jeu,dlc] [--ere N] [--sans N,N] [--plus id,id] [--titre "..."] [--muet] [--cadre 0%] [--couv img]
 
    --cadre cale la couverture de l'accroche (object-position horizontal) : la
    bannière DC montre l'Arrowverse à gauche et le DCEU à droite, et une vidéo
@@ -40,6 +40,7 @@ import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { parle } from './voix.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const RACINE = path.resolve(ICI, '..');
@@ -79,7 +80,13 @@ const T = {
         station:'Station', stop:'Stop', stops:'stops', stations:'stations', spoil:'spoilers',
         souvenirs:'Memories', terminus:'Terminus', fin:'End of the line', prochain:'Next departure',
         outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR`,
-        cta:'chronologeek.app' },
+        cta:'chronologeek.app',
+        /* la voix off : l'accroche et la fin seulement, une carte ne tient pas une phrase */
+        dit:{ jeu: n => `${n}, in the order to play it the first time.`,
+              vue: n => `${n}, in the order to watch it the first time.`,
+              ordre: n => `${n}, in story order.`,
+              sel: (n, s) => `${n}: ${s.toLowerCase()}.`,
+              fin: 'The full timeline is on Chronologeek dot app.' } },
   fr: { ordre:"DANS L'ORDRE", hookSub:'sans spoil', entries:'œuvres', eras:'ères', ere1:'ère',
         essentiels:'LES ESSENTIELS', essentielsN:'essentiels', importants:'LES IMPORTANTS', total:'au total',
         premiere:'PREMIÈRE VISION', premiereJeu:'PREMIÈRE PARTIE', essentiel:'Essentiel', important:'Important',
@@ -87,7 +94,12 @@ const T = {
         station:'Station', stop:'Arrêt', stops:'arrêts', stations:'stations', spoil:'spoiler',
         souvenirs:'Souvenirs', terminus:'Terminus', fin:'Fin de la ligne', prochain:'Prochain départ',
         outro3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN`,
-        cta:'chronologeek.app' },
+        cta:'chronologeek.app',
+        dit:{ jeu: n => `${n}, dans l’ordre pour une première partie.`,
+              vue: n => `${n}, dans l’ordre pour un premier visionnage.`,
+              ordre: n => `${n}, dans l’ordre de l’histoire.`,
+              sel: (n, s) => `${n} : ${s.toLowerCase()}.`,
+              fin: 'La timeline complète est sur Chronologeek point app.' } },
 };
 
 /* Le decompte de fin se lit dans l'index de la recherche, que la publication
@@ -169,7 +181,9 @@ function suite(D, opts) {
 /* ---------- rendu ---------- */
 
 /* l'accroche et la fin tiennent plus longtemps : on y lit une adresse */
-const ACCROCHE = 3.0, FIN = 3.4;
+let ACCROCHE = 3.0, FIN = 3.4;
+/* la voix part un peu apres l'image, et la fin garde de quoi lire l'adresse apres elle */
+const VOIX_ENTREE = 0.2, VOIX_SOUFFLE = 0.5, FIN_APRES = 0.9;
 /* la plaque de station se lit en un regard — un nom et un decompte — mais
    elle doit tenir plus qu'un arret : c'est elle qui dit qu'on change d'ere */
 const PLAQUE = 1.0;
@@ -572,12 +586,16 @@ body{background:#000;font-family:Chivo,"Segoe UI",sans-serif;-webkit-font-smooth
 .pm b{color:var(--hot);font-weight:900}
 
 /* ---- l'accroche ---- */
-.hook,.out{padding:0 56px 300px}
+.out{padding:0 56px 300px}
+/* l'accroche est la couverture : TikTok et Instagram la rognent en 3:4 au
+   centre (y 240 a 1680) sur la grille du profil. Tout se centre donc sur la
+   hauteur, symetrique, et rien ne doit deborder de cette bande. */
+.hook{padding:0 56px;justify-content:center}
 .filet{position:absolute;left:0;right:0;top:0;height:14px;background:${FILET};border-bottom:3px solid var(--paper)}
 .hook .bg{position:absolute;inset:-30px;z-index:-2;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;
   filter:blur(5px) saturate(.85);opacity:.4}
 .hook::before{background:radial-gradient(140% 90% at 50% 26%,rgba(13,11,18,.2) 0%,rgba(13,11,18,.78) 60%,var(--ink) 100%)}
-.hook .tag{align-self:center;margin-top:170px;background:var(--paper);color:var(--ink);font-family:'Big Shoulders Display';
+.hook .tag{align-self:center;background:var(--paper);color:var(--ink);font-family:'Big Shoulders Display';
   font-weight:900;font-size:38px;letter-spacing:.14em;text-transform:uppercase;padding:9px 22px 6px;border-radius:8px;box-shadow:6px 6px 0 var(--ink)}
 .hook h1{margin-top:22px;text-align:center;font-weight:900;font-size:172px;line-height:.84;text-transform:uppercase;
   text-shadow:9px 9px 0 var(--ink);text-wrap:balance}
@@ -645,7 +663,7 @@ ${suite.join('')}
 
 /* ---------- assemblage ---------- */
 
-function monte(dossier, plans, sortie, audio) {
+function monte(dossier, plans, sortie, audio, voix) {
   /* le demuxer concat rejoue la derniere image sans duree : elle est repetee,
      sinon ffmpeg coupe la fin de la video au lieu de la tenir. */
   const liste = plans.map(p =>
@@ -665,21 +683,31 @@ function monte(dossier, plans, sortie, audio) {
      TikTok et Instagram refusent une video sans aucune piste audio. */
   const entree = audio
     ? ['-stream_loop', '-1', '-i', audio]
-    : ['-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100'];
+    : ['-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000'];
   const fondu = Math.min(1.5, total / 4);
-  const filtre = audio
-    ? ['-af', `afade=t=in:st=0:d=0.5,afade=t=out:st=${(total - fondu).toFixed(3)}:d=${fondu.toFixed(3)}`]
-    : [];
+  const musique = `afade=t=in:st=0:d=0.5,afade=t=out:st=${(total - fondu).toFixed(3)}:d=${fondu.toFixed(3)}`;
+  /* la voix se pose sur l'accroche et sur la fin ; une musique passe dessous,
+     baissee, et le tout sort a -16 LUFS comme la video de presentation */
+  const voixIn = voix ? voix.flatMap(v => ['-i', v.wav]) : [];
+  const filtre = voix
+    ? ['-filter_complex',
+        `[1:a]aresample=48000,${audio ? musique + ',volume=0.35' : 'anull'}[m];` +
+        voix.map((v, i) => `[${i + 2}:a]adelay=${Math.round(v.t * 1000)}:all=1[v${i}];`).join('') +
+        `[m]${voix.map((_, i) => `[v${i}]`).join('')}amix=inputs=${voix.length + 1}:duration=first:normalize=0,` +
+        `loudnorm=I=-16:TP=-1.5:LRA=11[a]`,
+       '-map', '0:v', '-map', '[a]']
+    : audio ? ['-af', musique] : [];
 
   execFileSync('ffmpeg', [
     '-y', '-loglevel', 'error',
     '-f', 'concat', '-safe', '0', '-i', f,
     ...entree,
+    ...voixIn,
     '-t', total.toFixed(3),
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '19',
     '-vf', 'fps=30,format=yuv420p', '-r', '30',
     ...filtre,
-    '-c:a', 'aac', '-b:a', audio ? '192k' : '96k',
+    '-c:a', 'aac', '-b:a', audio || voix ? '192k' : '96k', '-ar', '48000',
     '-movflags', '+faststart',
     sortie,
   ], { stdio: ['ignore', 'ignore', 'pipe'] });
@@ -726,11 +754,12 @@ async function main() {
   /* --total fixe la duree de la video et en deduit celle d'une carte : une minute
      est le format que Niko vise, et le nombre de cartes change d'un univers et
      d'un ajout a l'autre. L'accroche et la fin gardent leurs 3 et 3,4 s. */
-  if (cible) {
+  const parCarte = () => {
     const nPlaques = new Set(cartes.map(c => c.ereI)).size;
     dur = (cible - ACCROCHE - FIN - nPlaques * PLAQUE) / cartes.length;
     if (dur < 0.3) throw new Error(`--total ${cible} : ${dur.toFixed(2)} s par carte, illisible`);
-  }
+  };
+  if (cible) parCarte();
 
   const suffixe = [types ? [...types].join('-') : null, only, ere != null ? 'ere' + ere : null, sans.size ? 'sans' + [...sans].join('') : null, plus.size ? 'plus' : null]
     .filter(Boolean).join('-');
@@ -745,6 +774,22 @@ async function main() {
     : ere != null ? { nom: decode(D.eras[ere].title || ''), unite: T[lang].entries }
     : only === 'must+' ? { nom: T[lang].importants, unite: T[lang].entries }
     : null;
+
+  /* La voix off, depuis le 7 octobre 2026 (demande de Niko) : une phrase sur
+     l'accroche, une sur la fin. L'accroche et la fin s'allongent si la phrase
+     depasse, et --total reprend sur les cartes. --muet la retire. */
+  let voix = null;
+  if (!a.includes('--muet')) {
+    const nomDit = titre || decode(D.title || cle);
+    const d = T[lang].dit;
+    const debut = sel ? d.sel(nomDit, sel.nom) : D.erasReplay ? d.jeu(nomDit) : D.erasRewatch ? d.vue(nomDit) : d.ordre(nomDit);
+    const wD = path.join(dossier, '_voix-debut.wav'), wF = path.join(dossier, '_voix-fin.wav');
+    const tD = parle(debut, lang, wD), tF = parle(d.fin, lang, wF);
+    ACCROCHE = Math.max(ACCROCHE, VOIX_ENTREE + tD + VOIX_SOUFFLE);
+    FIN = Math.max(FIN, VOIX_ENTREE + tF + FIN_APRES);
+    if (cible) parCarte();
+    voix = [{ wav: wD, t: VOIX_ENTREE, dit: debut }, { wav: wF, fin: true, dit: d.fin }];
+  }
 
   const html = page(cle, D, CG, cartes, lang, total, sel, titre, cadre, couv);
   const apercu = path.join(dossier, '_apercu.html');
@@ -768,7 +813,12 @@ async function main() {
   await nav.close();
 
   const mp4 = path.join(RACINE, 'promo', nomFichier + '.mp4');
-  monte(dossier, plans, mp4, audio);
+  if (voix) {
+    const total = plans.reduce((s, p) => s + p.dur, 0);
+    voix[1].t = total - FIN + VOIX_ENTREE;
+  }
+  monte(dossier, plans, mp4, audio, voix);
+  if (voix) console.log(voix.map(v => '  voix : « ' + v.dit + ' »').join('\n'));
 
   const secondes = plans.reduce((s, p) => s + p.dur, 0);
   const poids = (fs.statSync(mp4).size / 1048576).toFixed(1);

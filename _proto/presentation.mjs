@@ -1,5 +1,5 @@
 /* Video de presentation du site, verticale 1080x1920, avec voix off.
-   node _proto/presentation.mjs [--lang en|fr] [--voix en-US-AndrewMultilingualNeural] [--debit +8%] [--sans-capture]
+   node _proto/presentation.mjs [--lang en|fr] [--voix en-US-AvaNeural] [--debit +8%] [--sans-capture]
 
    Pour l'epingle de TikTok, Instagram et YouTube : ce que fait le site, en dix
    plans, chacun une vraie capture du site a 390 px. Coupe nette entre les
@@ -21,6 +21,7 @@ import net from 'node:net';
 import { spawn, execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { VOIX, DEBIT, parle } from './voix.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const RACINE = path.resolve(ICI, '..');
@@ -87,95 +88,14 @@ const FIN = {
   en: { l1: 'Free', l2: 'No account', l3: 'No spoilers', bio: 'Link in bio' },
   fr: { l1: 'Gratuit', l2: 'Sans compte', l3: 'Sans spoiler', bio: 'Lien en bio' },
 };
-/* voix feminines, choix de Niko du 5 octobre 2026. L'anglaise n'est pas la
-   « Multilingual » : celle-ci devine la langue phrase par phrase, et sur
-   « Chronolo-geek dot app » elle changeait d'accent a la derniere phrase. */
-const VOIX = { en: 'en-US-AvaNeural', fr: 'fr-FR-VivienneMultilingualNeural' };
-/* « geek » se dit « guik », comme le mot : d'un seul tenant, la synthese lisait
-   « chronolo-djik ». Le texte affiche n'est pas touche, seul ce qui est lu. */
-const PRONONCE = { en: [/Chronologeek/g, 'Chronolo-geek'], fr: [/Chronologeek/g, 'Chronolo-guik'] };
-
-/* respiration apres chaque phrase, et la fin tient plus longtemps : on y lit
-   une adresse */
-const SOUFFLE = 0.35, ENTREE = 0.12, FIN_EN_PLUS = 1.6;
-
-/* ---------- captures ---------- */
-
-const VUE = { width: 390, height: 744 };   /* 780x1488 a x2, le cadre du telephone */
-
-function portLibre() {
-  return new Promise(r => { const s = net.createServer(); s.listen(0, () => { const p = s.address().port; s.close(() => r(p)); }); });
-}
-
-async function captures(lang, dossier) {
-  const port = await portLibre();
-  const serveur = spawn('py', [path.join(ICI, 'serveur.py'), String(port)], { cwd: RACINE, stdio: 'ignore' });
-  const B = `http://localhost:${port}` + (lang === 'fr' ? '/fr' : '');
-  const SW = lang === 'fr' ? '/starwars' : '/starwars', UP = lang === 'fr' ? '/a-venir' : '/upcoming';
-  try {
-    for (let i = 0; i < 40; i++) {
-      try { await fetch(B + '/'); break; } catch { await new Promise(r => setTimeout(r, 250)); }
-    }
-    const nav = await chromium.launch();
-    const ctx = await nav.newContext({ viewport: VUE, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-    /* une progression de visiteur : sept arrets coches, pour que la ligne ait un
-       train et des coches a montrer. Pas d'ecran d'arrivee, pas de barre
-       d'installation : ils couvriraient la page. */
-    await ctx.addInitScript(() => { try {
-      sessionStorage.setItem('cg-boot', '1');
-      const sw = {}; ['sw-ep1','sw-ep2','sw-tcw-film','sw-ep3','sw-solo','sw-kenobi','sw-andor1'].forEach(i => sw[i] = 1);
-      localStorage.setItem('cg-proto-sw', JSON.stringify(sw));
-      localStorage.setItem('cg-proto-sw-mode', 'first');
-      localStorage.removeItem('cg-proto-mcu-mode');
-    } catch (e) {} });
-    const p = await ctx.newPage();
-    const va = async u => {
-      await p.goto(B + u, { waitUntil: 'networkidle' });
-      await p.evaluate(() => document.fonts.ready);
-      await p.waitForTimeout(1600);
-    };
-    const prends = async nom => { await p.waitForTimeout(500); await p.screenshot({ path: path.join(dossier, nom + '.png') }); };
-
-    await va('/');                                   await prends('home');
-    await p.evaluate(() => window.scrollTo(0, 1500)); await prends('cartes');
-    await va(SW);                                    await prends('sw');
-    await p.evaluate(() => window.scrollTo(0, 1800)); await prends('arrets');
-    await va('/marvel');                             await prends('voies');
-
-    await va('/');
-    const champ = p.locator('input[type=search]').first();
-    await champ.scrollIntoViewIfNeeded(); await champ.click();
-    await champ.type('andor', { delay: 60 }); await p.waitForTimeout(1200);
-    await p.evaluate(() => { const r = document.activeElement.getBoundingClientRect(); window.scrollBy(0, r.top - 150); });
-    await prends('cherche');
-
-    /* la fiche attend TMDB : synopsis, note, plateformes, bande-annonce */
-    await va(SW + '#sw-rogue');
-    const tete = p.locator('[data-id="sw-rogue"] .bu-head').first();
-    await tete.scrollIntoViewIfNeeded(); await tete.click(); await p.waitForTimeout(3500);
-    await p.evaluate(() => { const r = document.querySelector('[data-id="sw-rogue"]').getBoundingClientRect(); window.scrollBy(0, r.top - 120); });
-    await prends('fiche');
-
-    await va(UP); await p.evaluate(() => window.scrollTo(0, 1000)); await prends('radar');
-    await nav.close();
-  } finally { serveur.kill(); }
-}
+/* la voix, sa prononciation et son rendu vivent dans voix.mjs, avec video.mjs */
 
 /* ---------- voix ---------- */
 
-const duree = f => Number(execFileSync('ffprobe', ['-v','error','-show_entries','format=duration','-of','csv=p=0', f]).toString().trim());
-
 function voix(plans, lang, voixNom, debit, dossier) {
   plans.forEach((pl, i) => {
-    const mp3 = path.join(dossier, `voix-${i}.mp3`);
-    execFileSync('py', ['-m', 'edge_tts', '--voice', voixNom, `--rate=${debit}`, '--text', pl.dit.replace(...PRONONCE[lang]), '--write-media', mp3], { stdio: 'ignore' });
-    /* edge-tts laisse un tiers de seconde de silence en fin de phrase : on le
-       retire, sinon il s'ajoute a la respiration et le montage traine */
-    const wav = path.join(dossier, `voix-${i}.wav`);
-    execFileSync('ffmpeg', ['-y','-loglevel','error','-i', mp3,
-      '-af', 'areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse', '-ar','48000','-ac','2', wav]);
-    pl.mp3 = wav;
-    pl.parle = duree(wav);
+    pl.mp3 = path.join(dossier, `voix-${i}.wav`);
+    pl.parle = parle(pl.dit, lang, pl.mp3, { voix: voixNom, debit });
     pl.dur = ENTREE + pl.parle + SOUFFLE + (pl.fin ? FIN_EN_PLUS : 0);
   });
 }
@@ -297,7 +217,7 @@ async function main() {
   const val = (n, d) => a.includes(n) ? a[a.indexOf(n) + 1] : d;
   const lang = val('--lang', 'en') === 'fr' ? 'fr' : 'en';
   const voixNom = val('--voix', VOIX[lang]);
-  const debit = val('--debit', '+8%');
+  const debit = val('--debit', DEBIT);
   const plans = PLANS[lang].map(p => ({ ...p }));
 
   const dossier = path.join(RACINE, 'promo', 'presentation-' + lang);
