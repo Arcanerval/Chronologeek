@@ -43,6 +43,7 @@ const UNIVERS = {
       'sw-survivor': '2023-04-28',    // Jedi: Survivor
       'sw-outlaws': '2024-08-30',     // Outlaws
       'sw-zerocompany': '2026-08',    // Zero Company, mois seul
+      'sw-galacticracer': '2026-10-06', // Galactic Racer
       /* The Clone Wars entre à la date de sa première télé, et non de
          sa saison 1 : le bloc tient les sept saisons d'un coup, rangées
          dans l'ordre du guide et non dans celui des sorties. C'est le

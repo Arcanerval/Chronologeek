@@ -159,8 +159,10 @@ for (const u of univers) {
   // 11. la promo
   // `code:` passe avant `data:` dans la table de video.mjs depuis la DA du métro
   note(u, 'video.mjs', new RegExp(`\\b${u.cle}:\\s*\\{[^}]*\\bdata:`).test(F.video));
-  note(u, 'carrousel.mjs (données)', new RegExp(`\\b${u.cle}:\\s*\\{\\s*data:`).test(F.carrousel));
-  note(u, 'carrousel.mjs (visuel)', new RegExp(`\\b${u.cle}:\\s*'`).test(F.carrousel.slice(F.carrousel.indexOf('sw:'))));
+  /* carrousel.mjs n'a plus qu'une table depuis le plan de métro (1er octobre
+     2026) : les données et le visuel (`cover`) sont sur la même ligne. */
+  note(u, 'carrousel.mjs (données)', new RegExp(`\\b${u.cle}:\\s*\\{[^}]*\\bdata:`).test(F.carrousel));
+  note(u, 'carrousel.mjs (visuel)', new RegExp(`\\b${u.cle}:\\s*\\{[^}]*\\bcover:`).test(F.carrousel));
   /* `stories.mjs` part de `radar.json`, donc de SES clés : « starwars » là
      où le dépôt dit « sw ». L'une ou l'autre fait l'affaire. */
   note(u, 'stories.mjs', new RegExp(`\\b(?:${u.cle}|${u.route}):\\s*\\{\\s*encre:`).test(F.stories));

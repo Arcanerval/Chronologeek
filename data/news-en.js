@@ -6,6 +6,9 @@
    Ne pas editer a la main : relancer le script. */
 window.CG_NEWS = {
   months: [
+    { key:"2026-10", label:"October 2026", items:[
+      {"nat":"media","uni":"sw","kind":"jeu","title":"Star Wars: Galactic Racer","meta":"5-10 ABY","txt":"Added to the Star Wars timeline, in 5-10 ABY, just before The Mandalorian.","img":"/images/galacticracer.webp","href":"/starwars#sw-galacticracer","cta":"See in the timeline"}
+    ]},
     { key:"2026-09", label:"September 2026", items:[
       {"nat":"site","uni":"residentevil","kind":"timeline","title":"New timeline: Resident Evil","txt":"The games, the animated movies and the mangas in chronological order — 30 works, from the Raccoon City outbreak in 1998 to Shadows of Rose in 2037.","img":"/images/residentevil.webp","href":"/residentevil","cta":"Open the timeline"},
       {"nat":"site","uni":"witcher","kind":"timeline","title":"New timeline: The Witcher","txt":"Sapkowski's books and CD Projekt RED's games and comics, in two columns side by side — 54 works, from The Road of No Return to Blood Stone.","href":"/witcher","cta":"Open the timeline"},

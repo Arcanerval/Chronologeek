@@ -290,6 +290,7 @@ const TRADUCTIONS = [
   // whats-new.html · « July 2026 », « June 2026 »
   ['Août 2026', 'August 2026'],
   ['Septembre 2026', 'September 2026'],
+  ['Octobre 2026', 'October 2026'],
 
   /* ── la carte The Walking Dead du journal, écrite le 16 août 2026 ──
      Même situation que Star Trek : le sixième univers est postérieur à
@@ -449,6 +450,21 @@ const TRADUCTIONS = [
      découverte les découpe, et n'écrit donc que « Saison 5 Épisodes
      1-13 ». Les quatre autres se retrouvent au lexique, celle-ci non. */
   ['Saison 5', 'Season 5'],
+
+  /* ── Star Wars : Galactic Racer, ajouté le 8 octobre 2026 ──────────
+     Le jeu entre juste avant The Mandalorian. Les deux réponses de FAQ
+     sont de Niko, écrites en anglais et reprises mot pour mot ; le
+     français en est la traduction. Le synopsis suit le moule des autres
+     jeux, et la carte du journal celui de Zero Company. */
+  ['Star Wars : Galactic Racer', 'Star Wars: Galactic Racer'],
+  ["Le jeu se déroule dans les premières années qui suivent la chute de l'Empire, entre 5 ABY et 10 ABY",
+   'The game takes place in the first years after the fall of the Empire between 5 ABY and 10 ABY'],
+  ["Parce qu'il n'est lié à aucun autre média mais se déroule après la chute de l'Empire, il trouve donc mieux sa place ici",
+   "Because it's not tied to any other media but happens after the fall of the Empire so it fits better here"],
+  ['Star Wars : Galactic Racer est un jeu de course développé par Fuse Games, studio fondé par d\'anciens membres de Criterion Games, et édité par Secret Mode. Il se déroule dans les années qui suivent la chute de l\'Empire et fait revenir les courses de speeders et de podracers aux quatre coins de la galaxie.',
+   'Star Wars: Galactic Racer is a racing game developed by Fuse Games, a studio founded by former Criterion Games staff, and published by Secret Mode. It takes place in the years following the fall of the Empire and brings speeder and podracer races back across the galaxy.'],
+  ['Ajouté à la timeline Star Wars, en 5-10 ABY, juste avant The Mandalorian.',
+   'Added to the Star Wars timeline, in 5-10 ABY, just before The Mandalorian.'],
 
   /* ── Star Wars Zero Company, ajouté le 30 août 2026 ─────────────────
      Le jeu entre juste avant l'Épisode III. Les deux réponses de FAQ
@@ -1177,6 +1193,8 @@ const TITRES_IDENTIQUES = [
   // 2026, quand il a rejoint l'ère de l'Empire : une date ne se traduit pas.
   'Star Wars Zero Company',
   '19-18 BBY',
+  // Galactic Racer, le 8 octobre 2026 : sa date ne se traduit pas.
+  '5-10 ABY',
   /* Dossier Star Wars · le roman jeune adulte VO ajouté le 1er septembre
      2026, et sa date. « ABY » est une unité inventée : elle ne se
      traduit pas. */

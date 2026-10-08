@@ -59,6 +59,7 @@ GAME_MINUTES = {
     "sw-survivor":      30 * 60,   # Jedi: Survivor
     "sw-outlaws":       38 * 60,   # Outlaws + DLC
     "sw-squadrons":      9 * 60,   # Squadrons
+    "sw-galacticracer": 10 * 60,   # Galactic Racer (campagne, 8-12 h)
     "sw-bf2-prologue":      30,    # BF2 — prologue (1 mission)
     "sw-bf2-c1":           180,    # BF2 — missions 1-6
     "sw-bf2-c2":           150,    # BF2 — missions 7-11

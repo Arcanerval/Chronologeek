@@ -36,6 +36,18 @@ window.CG_NEWS = {
 
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
+    { key:"2026-10", label:"Octobre 2026", items:[
+
+      { nat:"media", uni:"sw", kind:"jeu",
+        title:"Star Wars : Galactic Racer", meta:"5-10 ABY",
+        txt:"Ajouté à la timeline Star Wars, en 5-10 ABY, juste avant "+
+            "The Mandalorian.",
+        img:"/images/galacticracer.webp",
+        href:"/fr/starwars#sw-galacticracer",
+        cta:"Voir dans la timeline" }
+
+    ]},
+
     { key:"2026-09", label:"Septembre 2026", items:[
 
       { nat:"site", uni:"residentevil", kind:"timeline",
