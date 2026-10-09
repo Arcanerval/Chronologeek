@@ -187,18 +187,6 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:63a03608efc802563d11-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:DC · Krypto Saves the Day!: Robo-Pal
-DESCRIPTION:Film\n\nLex Luthor deploys a robo-dog to hunt Superman and Supe
- rgirl\, but the mission unravels when Krypto and the machine become best f
- riends.\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:a6158bda2b4f3310e378-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261117

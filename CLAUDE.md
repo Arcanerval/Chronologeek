@@ -169,7 +169,8 @@ Deux exclusions DC du 13 août 2026, même règle que Knightfall : **Teen Titans
 Go!** et **My Adventures with Superman** sont de l'animation télé, hors du
 périmètre du guide. Elles sont arrivées avec la lecture des épisodes — DC Studios
 produit l'animation aussi, et interroger `air_date` la fait remonter là où la
-seule date de première ne la montrait pas.
+seule date de première ne la montrait pas. **Krypto Saves the Day!** (courts
+animés pour enfants) les a rejointes le 9 octobre 2026, motif `\bkrypto\b`.
 
 Retirer une entrée de `radar.json` à la main ne suffit pas : le fichier est régénéré
 chaque jour. C'est dans `EXCLUDE` que l'exclusion doit vivre — le JSON n'est nettoyé

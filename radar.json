@@ -295,25 +295,6 @@
   "media": "tv"
  },
  {
-  "universe": "dc",
-  "title": "Krypto Saves the Day!: Robo-Pal",
-  "date_sort": "2026-10-31",
-  "date_txt": "31/10/2026",
-  "kind": "Film",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Lex Luthor deploys a robo-dog to hunt Superman and Supergirl, but the mission unravels when Krypto and the machine become best friends.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "film",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "tmdb": 1786298,
-  "media": "movie"
- },
- {
   "universe": "starwars",
   "title": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
   "date_sort": "2026-11-17",

@@ -143,9 +143,13 @@ EXCLUDE = {
     # continuités, pas un catalogue d'éditeur. Un chef sushi dans un Los
     # Angeles post-apocalyptique n'a pas de place dans une timeline du
     # multivers.
+    #
+    # Krypto Saves the Day! (9 octobre 2026, à la demande de Niko) : des
+    # courts métrages animés pour enfants autour du chien de Superman, même
+    # règle que Teen Titans Go! — de l'animation hors des continuités suivies.
     "dc":       [r"\blego\b", r"\bknightfall\b",
                  r"\bteen titans go\b", r"\bmy adventures with superman\b",
-                 r"\bget jiro\b"],
+                 r"\bget jiro\b", r"\bkrypto\b"],
     # Le guide Star Trek ne couvre que l'Alpha Canon — films et séries. Niko
     # l'écrit noir sur blanc dans « What's left out, and why ? » : romans,
     # comics et jeux vidéo sont du Beta Canon et restent dehors. TMDB ne
