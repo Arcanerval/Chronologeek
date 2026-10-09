@@ -41,6 +41,16 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:3b88843dffe9339ba348-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Your Friendly Neighborhood Spider-Man · S2E01 · Premiere
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:0be967bd293514953a4e-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270618
@@ -52,6 +62,17 @@ DESCRIPTION:Hunted by Miguel O'Hara's Spider Society and betrayed by his fr
  but endangered by his calling\, it's a race against the clock for Miles to
   travel across the wildest reaches of time and space to fight for and reun
  ite everything he holds most dear.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8373aaed536a494d0888-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Marvel Zombies: The Winter Soldier
+DESCRIPTION:The first of three specials following the events of the Marvel 
+ Zombies series.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT

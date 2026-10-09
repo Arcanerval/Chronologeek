@@ -27,9 +27,9 @@
   "era": "",
   "syn": "In a world shattered by a devastating cataclysm, a young Earthbender discovers she's the new Avatar after Korra. But in this dangerous era, that title marks her as humanity's destroyer, not its savior. Hunted by both human and spirit enemies, she and her long-lost twin must uncover their mysterious origins and save the Seven Havens before civilization's last strongholds collapse.",
   "wiki": "",
-  "syn_fr": "",
+  "syn_fr": "Après un cataclysme planétaire, une enfant découvre qu'elle est l'Avatar dans un monde qui la craint. Traquée par humains et esprits, elle doit, avec sa jumelle tout juste retrouvée, percer le mystère de leurs origines et sauver l'humanité.",
   "kindKey": "tv",
-  "title_fr": "",
+  "title_fr": "Avatar : Les Sept Refuges",
   "date_sort_fr": "",
   "date_txt_fr": "",
   "ep": {
@@ -38,7 +38,7 @@
    "mark": "premiere",
    "eFin": 3
   },
-  "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
+  "poster": "/lrWh0pKLjPKfNkuUhQV1bhbruEP.jpg",
   "tmdb": 284833,
   "media": "tv"
  },
@@ -366,6 +366,31 @@
   "media": "movie"
  },
  {
+  "universe": "marvel",
+  "title": "Your Friendly Neighborhood Spider-Man",
+  "date_sort": "2027-01-13",
+  "date_txt": "13/01/2027",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 2,
+   "e": 1,
+   "mark": "premiere"
+  },
+  "poster": "/kjcsNeqF52YUQ2rUBGLMHwLkxvR.jpg",
+  "tmdb": 138503,
+  "media": "tv"
+ },
+ {
   "universe": "starwars",
   "title": "Ahsoka",
   "date_sort": "2027-01-20",
@@ -436,6 +461,23 @@
   "syn": "Twin Crossroads is an upcoming canon adult novel that takes place between the events of Episode VI: Return of the Jedi and Episode VII: The Force Awakens, and will be written by Beth Revis and published in hardcover by Random House Worlds on April 6, 2027. It was first listed on the Penguin Random House website on July 18, 2026 and was officially announced at the Random House Worlds panel at San D…",
   "wiki": "Twin Crossroads",
   "syn_fr": "Twin Crossroads est un roman écrit par Beth Revis. Il sera publié le 6 avril 2027 par Random House Worlds aux États-Unis.",
+  "kindKey": "novel",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "starwars",
+  "title": "Princess of the Rebellion",
+  "date_sort": "2027-05-04",
+  "date_txt": "04/05/2027",
+  "kind": "Roman",
+  "source": "Wookieepedia",
+  "precision": "day",
+  "era": "0 ABY",
+  "syn": "Princess of the Rebellion is a forthcoming young adult novel focusing on Princess Leia that will be published by Random House on May 4, 2027, as part of the 50th anniversary of Star Wars: Episode IV A New Hope. Written by Claudia Gray, the book will focus on Leia in the aftermath of A New Hope as the Rebel Alliance evacuates their base on Yavin 4. The book will be published in both hardcover and a…",
+  "wiki": "Princess of the Rebellion",
+  "syn_fr": "",
   "kindKey": "novel",
   "title_fr": "",
   "date_sort_fr": "",
@@ -514,6 +556,26 @@
   "title_fr": "",
   "date_sort_fr": "",
   "date_txt_fr": ""
+ },
+ {
+  "universe": "marvel",
+  "title": "Marvel Zombies: The Winter Soldier",
+  "date_sort": "2027-10-31",
+  "date_txt": "31/10/2027",
+  "kind": "Film",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "The first of three specials following the events of the Marvel Zombies series.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "film",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "poster": "/c0oRgXpM2MKJNUVDPIvGGfqFkCf.jpg",
+  "tmdb": 1792131,
+  "media": "movie"
  },
  {
   "universe": "marvel",

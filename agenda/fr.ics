@@ -24,14 +24,12 @@ UID:1eb91b86308f32d4d055-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261009
 DTEND;VALUE=DATE:20261010
-SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E01 · Première
-DESCRIPTION:Série\n\nIn a world shattered by a devastating cataclysm\, a y
- oung Earthbender discovers she's the new Avatar after Korra. But in this d
- angerous era\, that title marks her as humanity's destroyer\, not its savi
- or. Hunted by both human and spirit enemies\, she and her long-lost twin m
- ust uncover their mysterious origins and save the Seven Havens before civi
- lization's last strongholds collapse.\n\nhttps://chronologeek.app/fr/a-ven
- ir
+SUMMARY:Avatar Legends · Avatar : Les Sept Refuges · S1E01 · Première
+DESCRIPTION:Série\n\nAprès un cataclysme planétaire\, une enfant découv
+ re qu'elle est l'Avatar dans un monde qui la craint. Traquée par humains 
+ et esprits\, elle doit\, avec sa jumelle tout juste retrouvée\, percer le
+  mystère de leurs origines et sauver l'humanité.\n\nhttps://chronologeek
+ .app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -238,6 +236,17 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:3b88843dffe9339ba348-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Marvel · Your Friendly Neighborhood Spider-Man · S2E01 · Premiè
+ re
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:5083f2adeae7d9c5dc5a-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270120
@@ -280,6 +289,22 @@ SUMMARY:Star Wars · Twin Crossroads
 DESCRIPTION:Roman\n\nTwin Crossroads est un roman écrit par Beth Revis. Il
   sera publié le 6 avril 2027 par Random House Worlds aux États-Unis.\n\n
  https://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:c9cae61596e2b5c5ef8b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270504
+DTEND;VALUE=DATE:20270505
+SUMMARY:Star Wars · Princess of the Rebellion
+DESCRIPTION:Roman\n\nPrincess of the Rebellion is a forthcoming young adult
+  novel focusing on Princess Leia that will be published by Random House on
+  May 4\, 2027\, as part of the 50th anniversary of Star Wars: Episode IV A
+  New Hope. Written by Claudia Gray\, the book will focus on Leia in the af
+ termath of A New Hope as the Rebel Alliance evacuates their base on Yavin 
+ 4. The book will be published in both hardcover and a…\n\nhttps://chrono
+ logeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -334,6 +359,17 @@ DTEND;VALUE=DATE:20270721
 SUMMARY:Avatar Legends · The Tempest of Sonam
 DESCRIPTION:Young Adult Novel Release Date: July 20\, 2027\n\nhttps://chron
  ologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8373aaed536a494d0888-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Marvel · Marvel Zombies: The Winter Soldier
+DESCRIPTION:Film\n\nThe first of three specials following the events of the
+  Marvel Zombies series.\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT

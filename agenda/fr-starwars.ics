@@ -165,6 +165,22 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:c9cae61596e2b5c5ef8b-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270504
+DTEND;VALUE=DATE:20270505
+SUMMARY:Princess of the Rebellion
+DESCRIPTION:Roman\n\nPrincess of the Rebellion is a forthcoming young adult
+  novel focusing on Princess Leia that will be published by Random House on
+  May 4\, 2027\, as part of the 50th anniversary of Star Wars: Episode IV A
+  New Hope. Written by Claudia Gray\, the book will focus on Leia in the af
+ termath of A New Hope as the Rebel Alliance evacuates their base on Yavin 
+ 4. The book will be published in both hardcover and a…\n\nhttps://chrono
+ logeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:34e554f69f9fc12f0568-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270527

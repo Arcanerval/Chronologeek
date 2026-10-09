@@ -248,6 +248,17 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:3b88843dffe9339ba348-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Marvel · Your Friendly Neighborhood Spider-Man · S2E01 · Premier
+ e
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:5083f2adeae7d9c5dc5a-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270120
@@ -294,6 +305,22 @@ DESCRIPTION:Twin Crossroads is an upcoming canon adult novel that takes pla
  cover by Random House Worlds on April 6\, 2027. It was first listed on the
   Penguin Random House website on July 18\, 2026 and was officially announc
  ed at the Random House Worlds panel at San D…\n\nhttps://chronologeek.ap
+ p/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:c9cae61596e2b5c5ef8b-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270504
+DTEND;VALUE=DATE:20270505
+SUMMARY:Star Wars · Princess of the Rebellion
+DESCRIPTION:Princess of the Rebellion is a forthcoming young adult novel fo
+ cusing on Princess Leia that will be published by Random House on May 4\, 
+ 2027\, as part of the 50th anniversary of Star Wars: Episode IV A New Hope
+ . Written by Claudia Gray\, the book will focus on Leia in the aftermath o
+ f A New Hope as the Rebel Alliance evacuates their base on Yavin 4. The bo
+ ok will be published in both hardcover and a…\n\nhttps://chronologeek.ap
  p/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
@@ -348,6 +375,17 @@ DTSTART;VALUE=DATE:20270720
 DTEND;VALUE=DATE:20270721
 SUMMARY:Avatar Legends · The Tempest of Sonam
 DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:8373aaed536a494d0888-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Marvel · Marvel Zombies: The Winter Soldier
+DESCRIPTION:The first of three specials following the events of the Marvel 
+ Zombies series.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
