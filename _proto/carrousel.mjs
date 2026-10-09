@@ -61,14 +61,14 @@ const TYPES = {
 };
 
 const T = {
-  fr: { ordre:"DANS L'ORDRE", premiere:'PREMIÈRE VISION', suite:'suite', entries:'œuvres',
+  fr: { ordre:"DANS L'ORDRE", premiere:'PREMIÈRE VISION', premiereJeu:'PREMIÈRE PARTIE', suite:'suite', entries:'œuvres',
         essentiel:'Essentiel', important:'Important', station:'Station', stations:'stations',
         stop:'Arrêt', stops:'arrêts', spoil:'spoiler', souvenirs:'Souvenirs', terminus:'Terminus',
         fin:'Fin de la ligne', fin1:'La timeline complète, gratuite', prochain:'Prochain départ',
         fin2:'Cochez ce que vous avez vu. Le site retient votre progression.',
         swipe:'Faites glisser',
         fin3:(u, n) => `${u} univers · ${n.toLocaleString('fr-FR').replace(/\s/g, ' ')} œuvres · FR + EN` },
-  en: { ordre:'IN ORDER', premiere:'FIRST WATCH ORDER', suite:'cont.', entries:'entries',
+  en: { ordre:'IN ORDER', premiere:'FIRST WATCH ORDER', premiereJeu:'FIRST PLAYTHROUGH', suite:'cont.', entries:'entries',
         essentiel:'Essential', important:'Important', station:'Station', stations:'stations',
         stop:'Stop', stops:'stops', spoil:'spoilers', souvenirs:'Memories', terminus:'Terminus',
         fin:'End of the line', fin1:'The full timeline, free', prochain:'Next departure',
@@ -217,7 +217,8 @@ function page(cle, D, CG, decoupage, lang) {
   const nSlides = slides.length + 2;
   /* un univers a deux parcours ne montre que l'un des deux : le carrousel suit
      `eras`, la decouverte, et le dit — comme la video */
-  const parcours = (D.erasRewatch || D.erasReplay) ? t.premiere : t.ordre;
+  /* Dragon Age se rejoue (#replay), il ne se revoit pas : comme video.mjs */
+  const parcours = D.erasReplay ? t.premiereJeu : D.erasRewatch ? t.premiere : t.ordre;
 
   const encreEre = s => inkEre[s.ere.ink || s.i + 1] || encre;
   /* l'image d'une ere : son `art`, sinon la vignette de sa premiere oeuvre
