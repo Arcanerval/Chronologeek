@@ -17,32 +17,6 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "avatar",
-  "title": "Avatar: Seven Havens",
-  "date_sort": "2026-10-09",
-  "date_txt": "09/10/2026",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "In a world shattered by a devastating cataclysm, a young Earthbender discovers she's the new Avatar after Korra. But in this dangerous era, that title marks her as humanity's destroyer, not its savior. Hunted by both human and spirit enemies, she and her long-lost twin must uncover their mysterious origins and save the Seven Havens before civilization's last strongholds collapse.",
-  "wiki": "",
-  "syn_fr": "Après un cataclysme planétaire, une enfant découvre qu'elle est l'Avatar dans un monde qui la craint. Traquée par humains et esprits, elle doit, avec sa jumelle tout juste retrouvée, percer le mystère de leurs origines et sauver l'humanité.",
-  "kindKey": "tv",
-  "title_fr": "Avatar : Les Sept Refuges",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 1,
-   "mark": "premiere",
-   "eFin": 3
-  },
-  "poster": "/lrWh0pKLjPKfNkuUhQV1bhbruEP.jpg",
-  "tmdb": 284833,
-  "media": "tv"
- },
- {
   "universe": "marvel",
   "title": "VisionQuest",
   "date_sort": "2026-10-14",
@@ -107,7 +81,7 @@
    "mark": "",
    "eFin": 6
   },
-  "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
+  "poster": "/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
   "tmdb": 284833,
   "media": "tv"
  },
@@ -247,7 +221,7 @@
    "mark": "",
    "eFin": 9
   },
-  "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
+  "poster": "/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
   "tmdb": 284833,
   "media": "tv"
  },
@@ -290,7 +264,7 @@
    "mark": "finale",
    "eFin": 13
   },
-  "poster": "/vYNar1VtdNyQXXUt16uPbIT6wzr.jpg",
+  "poster": "/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
   "tmdb": 284833,
   "media": "tv"
  },
@@ -337,7 +311,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "The Fall of Kylo Ren 5 is the fifth and final issue of the upcoming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney, and published by Marvel Comics on December 2, 2026.",
+  "syn": "The Fall of Kylo Ren 5 is the upcoming fifth and final issue of the 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set between the events of The Last Jedi and The Rise of Skywalker. The issue will be written by Charles Soule, illustrated by Will Sliney, and published by Marvel Comics on December 2, 2026.",
   "wiki": "The Fall of Kylo Ren 5",
   "syn_fr": "The Fall of Kylo Ren 5 est le cinquième et dernier numéro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Charles Soule.",
   "kindKey": "comic",
@@ -416,6 +390,23 @@
   "media": "tv"
  },
  {
+  "universe": "starwars",
+  "title": "Ahsoka — Escape from Thrawn 1",
+  "date_sort": "2027-01-20",
+  "date_txt": "20/01/2027",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "day",
+  "era": "c. 9 ABY",
+  "syn": "Ahsoka — Escape from Thrawn 1 is the first issue of the five-issue miniseries Star Wars: Ahsoka — Escape from Thrawn, which will tell the story of Ezra Bridger's escape from the Chimaera during the events of the finale of the first season of the television series Star Wars: Ahsoka. It will be written by Rodney Barnes using a story by Dave Filoni, drawn by Andrea Di Vito, and will be published by M…",
+  "wiki": "Ahsoka — Escape from Thrawn 1",
+  "syn_fr": "",
+  "kindKey": "comic",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "avatar",
   "title": "Enter the Blue Spirit",
   "date_sort": "2027-02-23",
@@ -477,7 +468,7 @@
   "era": "0 ABY",
   "syn": "Princess of the Rebellion is a forthcoming young adult novel focusing on Princess Leia that will be published by Random House on May 4, 2027, as part of the 50th anniversary of Star Wars: Episode IV A New Hope. Written by Claudia Gray, the book will focus on Leia in the aftermath of A New Hope as the Rebel Alliance evacuates their base on Yavin 4. The book will be published in both hardcover and a…",
   "wiki": "Princess of the Rebellion",
-  "syn_fr": "",
+  "syn_fr": "Princess of the Rebellion est un roman jeunes adultes écrit par Claudia Gray. Il sera publié le 4 mai 2027 par Disney–Lucasfilm Press aux États-Unis. Il sera adapté en livre audio aux États-Unis.",
   "kindKey": "novel",
   "title_fr": "",
   "date_sort_fr": "",
@@ -558,24 +549,21 @@
   "date_txt_fr": ""
  },
  {
-  "universe": "marvel",
-  "title": "Marvel Zombies: The Winter Soldier",
-  "date_sort": "2027-10-31",
-  "date_txt": "31/10/2027",
-  "kind": "Film",
-  "source": "TMDB",
+  "universe": "starwars",
+  "title": "Reign of the Empire: From the Ashes",
+  "date_sort": "2027-08-10",
+  "date_txt": "10/08/2027",
+  "kind": "Roman",
+  "source": "Wookieepedia",
   "precision": "day",
   "era": "",
-  "syn": "The first of three specials following the events of the Marvel Zombies series.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "film",
+  "syn": "Reign of the Empire: From the Ashes is an upcoming novel and the final entry in the Star Wars: Reign of the Empire trilogy written by Fran Wilde and set to be published by Random House Worlds on August 10, 2027.",
+  "wiki": "Reign of the Empire: From the Ashes",
+  "syn_fr": "Reign of the Empire: From the Ashes est un roman écrit par Fran Wilde. Il est le troisième roman de la trilogie Star Wars : Le Règne de l'Empire. Il sera publié le 8 juin 2027 par Random House Worlds aux États-Unis.",
+  "kindKey": "novel",
   "title_fr": "",
   "date_sort_fr": "",
-  "date_txt_fr": "",
-  "poster": "/c0oRgXpM2MKJNUVDPIvGGfqFkCf.jpg",
-  "tmdb": 1792131,
-  "media": "movie"
+  "date_txt_fr": ""
  },
  {
   "universe": "marvel",

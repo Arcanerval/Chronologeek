@@ -141,6 +141,22 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:b0a2cfe525ee6aadbc42-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Ahsoka — Escape from Thrawn 1
+DESCRIPTION:Comic\n\nAhsoka — Escape from Thrawn 1 is the first issue of 
+ the five-issue miniseries Star Wars: Ahsoka — Escape from Thrawn\, which
+  will tell the story of Ezra Bridger's escape from the Chimaera during the
+  events of the finale of the first season of the television series Star Wa
+ rs: Ahsoka. It will be written by Rodney Barnes using a story by Dave Filo
+ ni\, drawn by Andrea Di Vito\, and will be published by M…\n\nhttps://ch
+ ronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:0d876d4bf551dbe1ff2d-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270309
@@ -170,13 +186,10 @@ DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270504
 DTEND;VALUE=DATE:20270505
 SUMMARY:Princess of the Rebellion
-DESCRIPTION:Roman\n\nPrincess of the Rebellion is a forthcoming young adult
-  novel focusing on Princess Leia that will be published by Random House on
-  May 4\, 2027\, as part of the 50th anniversary of Star Wars: Episode IV A
-  New Hope. Written by Claudia Gray\, the book will focus on Leia in the af
- termath of A New Hope as the Rebel Alliance evacuates their base on Yavin 
- 4. The book will be published in both hardcover and a…\n\nhttps://chrono
- logeek.app/fr/a-venir
+DESCRIPTION:Roman\n\nPrincess of the Rebellion est un roman jeunes adultes 
+ écrit par Claudia Gray. Il sera publié le 4 mai 2027 par Disney–Lucasf
+ ilm Press aux États-Unis. Il sera adapté en livre audio aux États-Unis.
+ \n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -192,6 +205,19 @@ DESCRIPTION:Film\n\nStar Wars: Starfighter est un film Star Wars dont la pr
  l'histoire se déroulera environ cinq ans après les événements de Star 
  Wars épisode IX : L'Ascension de Skywalker.\n\nhttps://chronologeek.app/f
  r/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f22ca36cb85489e44af7-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270810
+DTEND;VALUE=DATE:20270811
+SUMMARY:Reign of the Empire: From the Ashes
+DESCRIPTION:Roman\n\nReign of the Empire: From the Ashes est un roman écri
+ t par Fran Wilde. Il est le troisième roman de la trilogie Star Wars : Le
+  Règne de l'Empire. Il sera publié le 8 juin 2027 par Random House World
+ s aux États-Unis.\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT

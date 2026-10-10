@@ -66,17 +66,6 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:8373aaed536a494d0888-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20271031
-DTEND;VALUE=DATE:20271101
-SUMMARY:Marvel Zombies: The Winter Soldier
-DESCRIPTION:The first of three specials following the events of the Marvel 
- Zombies series.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:e6c628950e63a9c3bbec-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20271217

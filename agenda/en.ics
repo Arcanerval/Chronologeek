@@ -20,21 +20,6 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:1eb91b86308f32d4d055-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261010
-SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E01 · Premiere
-DESCRIPTION:In a world shattered by a devastating cataclysm\, a young Earth
- bender discovers she's the new Avatar after Korra. But in this dangerous e
- ra\, that title marks her as humanity's destroyer\, not its savior. Hunted
-  by both human and spirit enemies\, she and her long-lost twin must uncove
- r their mysterious origins and save the Seven Havens before civilization's
-  last strongholds collapse.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:875b7dd2d5b3c4a9871e-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261014
@@ -226,8 +211,8 @@ DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Star Wars · The Fall of Kylo Ren 5
-DESCRIPTION:The Fall of Kylo Ren 5 is the fifth and final issue of the upco
- ming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set 
+DESCRIPTION:The Fall of Kylo Ren 5 is the upcoming fifth and final issue of
+  the 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set 
  between the events of The Last Jedi and The Rise of Skywalker. The issue w
  ill be written by Charles Soule\, illustrated by Will Sliney\, and publish
  ed by Marvel Comics on December 2\, 2026.\n\nhttps://chronologeek.app/upco
@@ -265,6 +250,22 @@ DTSTART;VALUE=DATE:20270120
 DTEND;VALUE=DATE:20270121
 SUMMARY:Star Wars · Ahsoka · S2E01 · Premiere
 DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:b0a2cfe525ee6aadbc42-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Star Wars · Ahsoka — Escape from Thrawn 1
+DESCRIPTION:Ahsoka — Escape from Thrawn 1 is the first issue of the five-
+ issue miniseries Star Wars: Ahsoka — Escape from Thrawn\, which will tel
+ l the story of Ezra Bridger's escape from the Chimaera during the events o
+ f the finale of the first season of the television series Star Wars: Ahsok
+ a. It will be written by Rodney Barnes using a story by Dave Filoni\, draw
+ n by Andrea Di Vito\, and will be published by M…\n\nhttps://chronologee
+ k.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -379,13 +380,15 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:8373aaed536a494d0888-en@chronologeek.app
+UID:f22ca36cb85489e44af7-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20271031
-DTEND;VALUE=DATE:20271101
-SUMMARY:Marvel · Marvel Zombies: The Winter Soldier
-DESCRIPTION:The first of three specials following the events of the Marvel 
- Zombies series.\n\nhttps://chronologeek.app/upcoming
+DTSTART;VALUE=DATE:20270810
+DTEND;VALUE=DATE:20270811
+SUMMARY:Star Wars · Reign of the Empire: From the Ashes
+DESCRIPTION:Reign of the Empire: From the Ashes is an upcoming novel and th
+ e final entry in the Star Wars: Reign of the Empire trilogy written by Fra
+ n Wilde and set to be published by Random House Worlds on August 10\, 2027
+ .\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT

@@ -7,21 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · Avatar Legends
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:1eb91b86308f32d4d055-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261009
-DTEND;VALUE=DATE:20261010
-SUMMARY:Avatar: Seven Havens · S1E01 · Premiere
-DESCRIPTION:In a world shattered by a devastating cataclysm\, a young Earth
- bender discovers she's the new Avatar after Korra. But in this dangerous e
- ra\, that title marks her as humanity's destroyer\, not its savior. Hunted
-  by both human and spirit enemies\, she and her long-lost twin must uncove
- r their mysterious origins and save the Seven Havens before civilization's
-  last strongholds collapse.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:575d161e3a6c6db7476b-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261016

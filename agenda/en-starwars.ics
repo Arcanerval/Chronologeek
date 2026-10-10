@@ -143,8 +143,8 @@ DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:The Fall of Kylo Ren 5
-DESCRIPTION:The Fall of Kylo Ren 5 is the fifth and final issue of the upco
- ming 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set 
+DESCRIPTION:The Fall of Kylo Ren 5 is the upcoming fifth and final issue of
+  the 2026 canon comic book miniseries Star Wars: The Fall of Kylo Ren set 
  between the events of The Last Jedi and The Rise of Skywalker. The issue w
  ill be written by Charles Soule\, illustrated by Will Sliney\, and publish
  ed by Marvel Comics on December 2\, 2026.\n\nhttps://chronologeek.app/upco
@@ -159,6 +159,22 @@ DTSTART;VALUE=DATE:20270120
 DTEND;VALUE=DATE:20270121
 SUMMARY:Ahsoka · S2E01 · Premiere
 DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:b0a2cfe525ee6aadbc42-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Ahsoka — Escape from Thrawn 1
+DESCRIPTION:Ahsoka — Escape from Thrawn 1 is the first issue of the five-
+ issue miniseries Star Wars: Ahsoka — Escape from Thrawn\, which will tel
+ l the story of Ezra Bridger's escape from the Chimaera during the events o
+ f the finale of the first season of the television series Star Wars: Ahsok
+ a. It will be written by Rodney Barnes using a story by Dave Filoni\, draw
+ n by Andrea Di Vito\, and will be published by M…\n\nhttps://chronologee
+ k.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -221,6 +237,19 @@ DESCRIPTION:Star Wars: Starfighter is a stand-alone live-action film curren
  of Star Wars: Episode IX The Rise of Skywalker\, and may include some char
  acters from the sequel trilogy. Ryan Gosli…\n\nhttps://chronologeek.app/
  upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f22ca36cb85489e44af7-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270810
+DTEND;VALUE=DATE:20270811
+SUMMARY:Reign of the Empire: From the Ashes
+DESCRIPTION:Reign of the Empire: From the Ashes is an upcoming novel and th
+ e final entry in the Star Wars: Reign of the Empire trilogy written by Fra
+ n Wilde and set to be published by Random House Worlds on August 10\, 2027
+ .\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
