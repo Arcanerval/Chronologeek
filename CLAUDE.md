@@ -2671,7 +2671,26 @@ Cinq choses à savoir :
   et reste sans ligne ; en pratique, ce sont les séries en diffusion
   (Lanterns, Ahsoka) qui en ont une.
 
+- **Le repli sur le diffuseur**, posé le 10 octobre 2026 avec *Avatar :
+  Seven Havens*. Une série sortie la veille n'a encore **aucune** plateforme
+  chez TMDB — JustWatch met des jours à la relever —, et sa fiche restait
+  sans ligne. `diffuseur()` lit alors `networks` dans la fiche de la série
+  (Paramount+ ici). Deux garde-fous : le repli ne joue que si TMDB n'a de
+  plateforme pour **aucun pays** — une vieille série absente d'un seul pays
+  ne doit pas annoncer sa chaîne d'origine —, et le diffuseur doit être une
+  plateforme du pays de la page, retrouvée par sa marque dans
+  `/watch/providers/tv?watch_region=` : on en tire le logo carré des autres
+  lignes. La source citée devient « Données : TMDB ». Il vaut aussi sur
+  « À venir » : une série annoncée y montre désormais son diffuseur.
+  **À chaque média ajouté, ouvrir sa fiche et vérifier que la ligne y est.**
+
 Les logos restent chez TMDB (`w92` pour 28 px), comme les affiches.
+
+**Les pastilles de ligne du pied de page** (`.f-uni i`) manquaient sur
+« À venir » et « Nouveautés » depuis leur passage au plan de métro : la
+règle n'avait pas été recopiée, et les codes SW, MCU, DC… sortaient en texte
+nu. Corrigé le 10 octobre 2026 dans `e-a-venir.html` et `e-nouveautes.html`.
+Une page neuve qui porte `<nav class="f-uni">` doit porter aussi cette règle.
 
 ### La prochaine sortie, en tête de sa timeline
 

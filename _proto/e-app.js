@@ -4221,8 +4221,8 @@ function cgBillet(){
   var EN = document.documentElement.lang === 'en';
   var PAYS = EN ? 'US' : 'FR';
   var L = EN
-    ? { titre: 'Where to watch', location: 'rent or buy', source: 'Data: JustWatch' }
-    : { titre: 'Où regarder', location: 'location ou achat', source: 'Données : JustWatch' };
+    ? { titre: 'Where to watch', location: 'rent or buy', source: 'Data: JustWatch', tmdb: 'Data: TMDB' }
+    : { titre: 'Où regarder', location: 'location ou achat', source: 'Données : JustWatch', tmdb: 'Données : TMDB' };
   var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
               'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE'];
@@ -4270,8 +4270,63 @@ function cgBillet(){
     return (cache[media + id] = fetch('https://api.themoviedb.org/3/' + media + '/' + id +
         '/watch/providers?api_key=' + cle)
       .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(d){ return d && d.results && d.results[PAYS] || null; })
+      .then(function(d){
+        var res = d && d.results;
+        if (res && res[PAYS]) return res[PAYS];
+        // aucun pays du tout : JustWatch ne connaît pas encore l'œuvre
+        if (media === 'tv' && res && !Object.keys(res).length) return diffuseur(id, cle);
+        return null;
+      })
       .catch(function(){ return null; }));
+  }
+
+  /* Le repli sur le diffuseur, posé le 10 octobre 2026 avec *Avatar: Seven
+     Havens*. Une série sortie la veille n'a encore AUCUNE plateforme chez
+     TMDB — JustWatch met des jours à la relever —, et sa fiche restait sans
+     ligne au moment précis où on la cherche. Sa fiche TMDB nomme pourtant
+     son diffuseur (`networks`), Paramount+ ici.
+
+     Deux garde-fous. Le repli ne joue que si TMDB n'a de plateforme pour
+     AUCUN pays : une vieille série absente d'un seul pays ne doit pas
+     annoncer sa chaîne d'origine. Et le diffuseur doit être une plateforme
+     du pays de la page, retrouvée par sa marque dans le catalogue TMDB du
+     pays — on en tire son logo carré, celui des autres lignes. La source
+     citée devient TMDB : ce n'est plus une donnée JustWatch. */
+  function cleMarque(nom){ return marqueDe(nom).replace(/^amazon /, ''); }
+
+  var catalogueP = null;
+  function catalogue(cle){
+    if (catalogueP) return catalogueP;
+    return (catalogueP = fetch('https://api.themoviedb.org/3/watch/providers/tv?watch_region=' +
+        PAYS + '&api_key=' + cle)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        var m = {};
+        ((d && d.results) || []).forEach(function(x){
+          if (!x.logo_path) return;
+          var k = cleMarque(x.provider_name), deja = m[k];
+          if (!deja || (/channel/i.test(deja.provider_name) && !/channel/i.test(x.provider_name))) m[k] = x;
+        });
+        return m;
+      })
+      .catch(function(){ return {}; }));
+  }
+
+  function diffuseur(id, cle){
+    return Promise.all([
+      fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=' + cle)
+        .then(function(r){ return r.ok ? r.json() : null; }),
+      catalogue(cle)
+    ]).then(function(v){
+      var cat = v[1] || {}, liste = [];
+      ((v[0] && v[0].networks) || []).forEach(function(n){
+        var x = cat[cleMarque(n.name)];
+        if (x) liste.push(x);
+      });
+      return liste.length
+        ? { flatrate: liste, link: 'https://www.themoviedb.org/tv/' + id, reseau: true }
+        : null;
+    }).catch(function(){ return null; });
   }
 
   /* Une marque, une fois. TMDB sépare les offres d'une même plateforme —
@@ -4345,7 +4400,7 @@ function cgBillet(){
       }).join('') + '</span>' +
       (c.location ? '<span class="wt-k">' + L.location + '</span>' : '') +
       (p.link ? '<a class="wt-s" href="' + esc(p.link) + '" target="_blank" rel="noopener">' +
-        L.source + '</a>' : '<span class="wt-s">' + L.source + '</span>');
+        (p.reseau ? L.tmdb : L.source) + '</a>' : '<span class="wt-s">' + L.source + '</span>');
     return ligne;
   }
 

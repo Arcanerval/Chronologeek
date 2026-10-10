@@ -77,12 +77,12 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
   </url>
   <url><loc>https://chronologeek.app/whats-new</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
   <url><loc>https://chronologeek.app/upcoming</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
   </url>
@@ -162,12 +162,12 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
   </url>
   <url><loc>https://chronologeek.app/fr/nouveautes</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
   <url><loc>https://chronologeek.app/fr/a-venir</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
   </url>
