@@ -39,7 +39,7 @@ window.CG_NEWS = {
     { key:"2026-10", label:"Octobre 2026", items:[
 
       { nat:"media", uni:"avatar", kind:"anime",
-        title:"Avatar : Seven Havens", meta:"399 AG",
+        title:"Avatar : Les Sept Refuges", meta:"399 AG",
         txt:"Ajouté à la fin de la timeline Avatar Legends, en 399 AG, dans "+
             "une nouvelle ère : l'ère de Pavi & Nisha.",
         img:"/images/sevenhavens.webp",

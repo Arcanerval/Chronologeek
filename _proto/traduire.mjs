@@ -453,9 +453,9 @@ const TRADUCTIONS = [
 
   /* ── la carte Seven Havens du 10 octobre 2026 ────────────────────
      La saison 1 ouvre une neuvième ère en fin de timeline Avatar Legends.
-     Le titre de la série ne se traduit pas ; la carte suit le moule de
-     celle de Jet. */
-  ['Avatar : Seven Havens', 'Avatar: Seven Havens'],
+     La page française porte le titre français de la série, tranché par
+     Niko ; la carte suit le moule de celle de Jet. */
+  ['Avatar : Les Sept Refuges', 'Avatar: Seven Havens'],
   ["Ajouté à la fin de la timeline Avatar Legends, en 399 AG, dans une nouvelle ère : l'ère de Pavi & Nisha.",
    'Added at the end of the Avatar Legends timeline, in 399 AG, in a new era: the Pavi & Nisha Era.'],
 

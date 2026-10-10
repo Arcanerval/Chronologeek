@@ -285,11 +285,11 @@ export const AVATAR_TRADUCTIONS = [
   ["ÈRE DE KORRA",
    "THE KORRA ERA"],
   /* Seven Havens, ajouté le 10 octobre 2026 : la neuvième ère, nommée par
-     Niko en anglais. Le titre de la série ne se traduit pas ; typoEn() lui
-     retire l'espace du deux-points. */
+     Niko en anglais. La série porte son titre français sur la page française
+     (« Les Sept Refuges », celui de TMDB), tranché par Niko le jour même. */
   ["ÈRE DE PAVI & NISHA",
    "THE PAVI & NISHA ERA"],
-  ["Avatar : Seven Havens",
+  ["Avatar : Les Sept Refuges",
    "Avatar: Seven Havens"],
   ["Saison 1",
    "Season 1"],

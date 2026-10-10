@@ -574,7 +574,9 @@ Les sept entrées de ces trois ères portent donc `tags:["flashback"]` dans
 
 **Une neuvième ère depuis le 10 octobre 2026 : « ÈRE DE PAVI & NISHA »**
 (« THE PAVI & NISHA ERA »), nommée par Niko, en fin de timeline dans les
-deux parcours. Elle porte la saison 1 d'*Avatar : Seven Havens*
+deux parcours. Elle porte la saison 1 d'*Avatar : Les Sept Refuges* —
+*Avatar: Seven Havens* en anglais, le titre français étant celui de TMDB,
+tranché par Niko le jour même —
 (`avt-seven-havens-s1`, 399 AG, TMDB `tv/284833`). Une ère de plus se pose
 à trois endroits de `e-avatar.html` : `--era9` (`#3d3a94`), une image dans
 chacune des deux listes d'`ARTS` (`pavinisha.webp`), et rien d'autre —
