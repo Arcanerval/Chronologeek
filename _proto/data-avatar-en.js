@@ -100,6 +100,9 @@ const AVATAR={
       {"id":"avt-mystery-of-penquan-island","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/penquan.webp","title":"Mystery of Penquan Island","date":"~174 AG","lang":"vo","desc":"A short story from the Korra era."},
       {"id":"avt-patterns-in-time-clearing-the-air","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/patternsintime.webp","title":"Patterns in Time: Clearing the Air","date":"~174 AG","lang":"vf"},
       {"id":"avt-patterns-in-time-a-change-in-the-wind","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/patternsintime.webp","title":"Patterns in Time: A Change in the Wind","date":"~174 AG","lang":"vf"}
+    ]},
+    {title:"THE PAVI & NISHA ERA",entries:[
+      {"id":"avt-seven-havens-s1","type":"anime","level":"must","tmdb":"284833","media":"tv","img":"/images/sevenhavens.webp","title":"Avatar: Seven Havens","date":"399 AG","subitems":["Season 1"]}
     ]}
   ],
   erasRewatch:[
@@ -189,6 +192,9 @@ const AVATAR={
       {"ref":"avt-mystery-of-penquan-island"},
       {"ref":"avt-patterns-in-time-clearing-the-air"},
       {"ref":"avt-patterns-in-time-a-change-in-the-wind"}
+    ]},
+    {title:"THE PAVI & NISHA ERA",entries:[
+      {"ref":"avt-seven-havens-s1"}
     ]}
   ]
 };

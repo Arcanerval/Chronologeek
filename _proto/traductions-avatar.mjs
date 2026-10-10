@@ -97,6 +97,7 @@ export const AVATAR_IDENTIQUES = [
   "Mystery of Penquan Island",
   "Patterns in Time : Clearing the Air",
   "Patterns in Time : A Change in the Wind",
+  "399 AG",
   "avatar",
   "br",
 ];
@@ -283,6 +284,15 @@ export const AVATAR_TRADUCTIONS = [
    "An in-universe book: Aang passes his memories and relics on to his son Tenzin."],
   ["ÈRE DE KORRA",
    "THE KORRA ERA"],
+  /* Seven Havens, ajouté le 10 octobre 2026 : la neuvième ère, nommée par
+     Niko en anglais. Le titre de la série ne se traduit pas ; typoEn() lui
+     retire l'espace du deux-points. */
+  ["ÈRE DE PAVI & NISHA",
+   "THE PAVI & NISHA ERA"],
+  ["Avatar : Seven Havens",
+   "Avatar: Seven Havens"],
+  ["Saison 1",
+   "Season 1"],
   ["Amies pour la Vie (Free Comic Book Day 2016)",
    "Friends for Life (Free Comic Book Day 2016)"],
   ["Aussi disponible dans le recueil Patterns in Time",

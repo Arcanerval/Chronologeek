@@ -724,6 +724,8 @@ const TRADUCTIONS = [
   ['Arrêts', 'Stops'],
   ['Arrêt', 'Stop'],
   ['arrêts', 'stops'],
+  // la station de Seven Havens n'a qu'un arrêt : le plan d'Avatar accorde.
+  ['arrêt', 'stop'],
   ['arrêts sur', 'stops out of'],
   ['Trajet restant', 'Journey left'],
   ['de trajet', 'of travel'],

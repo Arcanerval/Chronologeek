@@ -569,8 +569,17 @@ Avatars du passé — Yangchen, Kyoshi, Roku — viennent **après**, en flashba
 avant l'ère de Korra. En rejeu tout revient à sa date, donc à l'ordre
 chronologique : Yangchen, Kyoshi, Roku, puis les trois Livres, Aang, Korra.
 Les sept entrées de ces trois ères portent donc `tags:["flashback"]` dans
-`eras`, et `drop:["tags"]` dans `erasRewatch`. **72 entrées en découverte,
-71 en rejeu.**
+`eras`, et `drop:["tags"]` dans `erasRewatch`. **73 entrées en découverte,
+72 en rejeu.**
+
+**Une neuvième ère depuis le 10 octobre 2026 : « ÈRE DE PAVI & NISHA »**
+(« THE PAVI & NISHA ERA »), nommée par Niko, en fin de timeline dans les
+deux parcours. Elle porte la saison 1 d'*Avatar : Seven Havens*
+(`avt-seven-havens-s1`, 399 AG, TMDB `tv/284833`). Une ère de plus se pose
+à trois endroits de `e-avatar.html` : `--era9` (`#3d3a94`), une image dans
+chacune des deux listes d'`ARTS` (`pavinisha.webp`), et rien d'autre —
+`ENCRE` la numérote seule. Le plan du haut accorde « 1 arrêt ». La saison 2
+s'y ajoutera comme une entrée de plus, avec son `{ref}` dans `erasRewatch`.
 
 Quatre choses à savoir :
 
@@ -2980,7 +2989,7 @@ supprimée. Code de ligne **AV**. Les trois Livres portent « Guerre de Cent
 Ans » en sous-titre de plaque (la saga de Marvel), à la place de l'ancien
 chapeau `.epoch` ; les encres d'ère restent celles de `ENCRE`. Pas de table
 `RT` : ni « Trajet restant » dans la bande, ni « de trajet » sur les plaques.
-Huit images d'ère, une par station, dans `ARTS` pour les deux parcours.
+Neuf images d'ère, une par station, dans `ARTS` pour les deux parcours.
 
 **Star Trek est publié au plan de métro le 29 septembre 2026**, et c'est la
 première page métro dont la source est **anglaise** : la maquette a été bâtie
@@ -3332,7 +3341,7 @@ DC et Avatar écrivent `imp` là où Star Wars et Marvel écrivent `important` :
 parseur doit accepter les deux.
 Répartitions actuelles :
 Star Wars 62 (9 must / 37 important / 16 bonus), Marvel 121 (49 / 30 / 42),
-DC 147 (117 imp / 30 bonus), Avatar 72 (18 / 18 / 36),
+DC 147 (117 imp / 30 bonus), Avatar 73 (19 / 18 / 36),
 The Walking Dead 45 (29 must / 3 important / 13 bonus),
 Dragon Age 44 (15 must / 10 important / 19 bonus),
 Assassin's Creed 112 (34 must / 37 important / 41 bonus),

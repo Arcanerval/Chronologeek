@@ -38,6 +38,14 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
 
+      { nat:"media", uni:"avatar", kind:"anime",
+        title:"Avatar : Seven Havens", meta:"399 AG",
+        txt:"Ajouté à la fin de la timeline Avatar Legends, en 399 AG, dans "+
+            "une nouvelle ère : l'ère de Pavi & Nisha.",
+        img:"/images/sevenhavens.webp",
+        href:"/fr/avatar#avt-seven-havens-s1",
+        cta:"Voir dans la timeline" },
+
       { nat:"media", uni:"sw", kind:"jeu",
         title:"Star Wars : Galactic Racer", meta:"5-10 ABY",
         txt:"Ajouté à la timeline Star Wars, en 5-10 ABY, juste avant "+

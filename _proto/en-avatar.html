@@ -57,11 +57,11 @@
   --hot:#f0c97c; --gold-deep:#d5a05f;
   /* la marque « terminé » prend la couleur de l'univers, pas un vert générique */
   --uni:#7dd3fc;
-  /* huit encres d'ère : la page se noie dedans, une région à la fois.
+  /* neuf encres d'ère : la page se noie dedans, une région à la fois.
      Elles suivent les nations — l'air d'abord, puis la terre, le feu, et
      les trois Livres qui reprennent chacun l'élément de son titre. */
   --era1:#8a6a12; --era2:#2d6a3f; --era3:#a8331b; --era4:#134a72;
-  --era5:#4a6b1f; --era6:#8f3b1e; --era7:#0f6d63; --era8:#5c2060;
+  --era5:#4a6b1f; --era6:#8f3b1e; --era7:#0f6d63; --era8:#5c2060; --era9:#3d3a94;
   /* les trois entrées colorées de la nav */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
   /* badges de type, charte du site */
@@ -1502,18 +1502,18 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     </div>
     <p class="dek">Animation · Comics · Books — the whole Avatar Legends universe in its most optimized order.
       <b>Check off what you've completed — your progress is saved.</b></p>
-    <p class="upd"><i aria-hidden="true"></i> Updated · September 2026</p>
+    <p class="upd"><i aria-hidden="true"></i> Updated · October 2026</p>
 
     <div class="ln-map" id="ln-map" aria-label="Avatar Legends line map"></div>
 
     <!-- Pas de case « Trajet restant » : Avatar n'a pas de table RT, et une
          case qui annonce « 0 h » ment plus qu'elle n'informe. -->
     <div class="ln-board stats">
-      <div class="s"><b>2</b><span>Animated series</span></div>
+      <div class="s"><b>3</b><span>Animated series</span></div>
       <div class="s"><b>1</b><span>Animated movie</span></div>
       <div class="s"><b>43</b><span>Comics</span></div>
       <div class="s"><b>10</b><span>Books</span></div>
-      <div class="s"><b id="s-tot">72</b><span>Stops</span></div>
+      <div class="s"><b id="s-tot">73</b><span>Stops</span></div>
     </div>
 
     <div class="ln-go">
@@ -1561,7 +1561,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
-      <summary>Filters, search, legend and sources<span class="fcount" id="fcount">72 / 72 shown</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <summary>Filters, search, legend and sources<span class="fcount" id="fcount">73 / 73 shown</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
       <div class="filt-body">
     <div class="search" id="searchbox">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -2016,9 +2016,9 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      parcours, choisies par Niko le 28 septembre 2026. Roku ajouté le même soir ;
      une ère sans image reprend la vignette de sa première œuvre essentielle. */
   var ARTS={first:['/images/bookonewater.webp','/images/booktwoearth.webp','/images/bookthreefire.webp',
-    '/images/aangera.webp','/images/yangchenera.webp','/images/kyoshiera.webp','/images/rokuera.webp','/images/korraera.webp'],
+    '/images/aangera.webp','/images/yangchenera.webp','/images/kyoshiera.webp','/images/rokuera.webp','/images/korraera.webp','/images/pavinisha.webp'],
     rewatch:['/images/yangchenera.webp','/images/kyoshiera.webp','/images/rokuera.webp','/images/bookonewater.webp',
-    '/images/booktwoearth.webp','/images/bookthreefire.webp','/images/aangera.webp','/images/korraera.webp']};
+    '/images/booktwoearth.webp','/images/bookthreefire.webp','/images/aangera.webp','/images/korraera.webp','/images/pavinisha.webp']};
   function artEre(era,i){ return ((ARTS[MODE]||ARTS.first)[i])||eraArt(era); }
 
   function plaque(era,i){
@@ -2658,7 +2658,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       var s=Math.round(18+Math.min(e.n,20)*0.8);
       var cls='lm-st'+(e.n&&e.v===e.n?' v':'')+(devant===e?' cur':'')+(i%2?' lo':'');
       h+='<a class="'+cls+'" href="#'+e.sec.id+'" style="left:'+pc(e.deb/tot)+';--s:'+s+'px;--d:'+(e.deb/tot*1.1).toFixed(2)+'s" title="'+esc(nom(e.sec))+'">'+
-        '<span class="lm-lb">'+esc(nom(e.sec))+'<small>'+e.n+' stops</small></span></a>';
+        '<span class="lm-lb">'+esc(nom(e.sec))+'<small>'+e.n+(e.n>1?' stops':' stop')+'</small></span></a>';
     });
     h+='<a class="lm-st tm'+(faits===tot?' v':'')+(!devant?' cur':'')+'" href="#top" style="left:100%;--s:30px;--d:1.1s" title="Terminus">'+
       '<span class="lm-lb">Terminus</span></a>'+

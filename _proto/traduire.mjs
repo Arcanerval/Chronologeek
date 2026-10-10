@@ -451,6 +451,14 @@ const TRADUCTIONS = [
      1-13 ». Les quatre autres se retrouvent au lexique, celle-ci non. */
   ['Saison 5', 'Season 5'],
 
+  /* ── la carte Seven Havens du 10 octobre 2026 ────────────────────
+     La saison 1 ouvre une neuvième ère en fin de timeline Avatar Legends.
+     Le titre de la série ne se traduit pas ; la carte suit le moule de
+     celle de Jet. */
+  ['Avatar : Seven Havens', 'Avatar: Seven Havens'],
+  ["Ajouté à la fin de la timeline Avatar Legends, en 399 AG, dans une nouvelle ère : l'ère de Pavi & Nisha.",
+   'Added at the end of the Avatar Legends timeline, in 399 AG, in a new era: the Pavi & Nisha Era.'],
+
   /* ── Star Wars : Galactic Racer, ajouté le 8 octobre 2026 ──────────
      Le jeu entre juste avant The Mandalorian. Les deux réponses de FAQ
      sont de Niko, écrites en anglais et reprises mot pour mot ; le
@@ -1195,6 +1203,8 @@ const TITRES_IDENTIQUES = [
   '19-18 BBY',
   // Galactic Racer, le 8 octobre 2026 : sa date ne se traduit pas.
   '5-10 ABY',
+  // Seven Havens, le 10 octobre 2026 : idem.
+  '399 AG',
   /* Dossier Star Wars · le roman jeune adulte VO ajouté le 1er septembre
      2026, et sa date. « ABY » est une unité inventée : elle ne se
      traduit pas. */
