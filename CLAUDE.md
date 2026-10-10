@@ -580,7 +580,9 @@ tranché par Niko le jour même —
 (`avt-seven-havens-s1`, 399 AG, TMDB `tv/284833`). Une ère de plus se pose
 à trois endroits de `e-avatar.html` : `--era9` (`#3d3a94`), une image dans
 chacune des deux listes d'`ARTS` (`pavinisha.webp`), et rien d'autre —
-`ENCRE` la numérote seule. Le plan du haut accorde « 1 arrêt ». La saison 2
+`ENCRE` la numérote seule. Le plan du haut accorde « 1 arrêt » — sur les
+treize pages à ligne depuis le même jour : The Walking Dead, Star Trek et
+Jurassic World écrivaient « 1 arrêts » sur leurs stations à une seule œuvre. La saison 2
 s'y ajoutera comme une entrée de plus, avec son `{ref}` dans `erasRewatch`.
 
 Quatre choses à savoir :

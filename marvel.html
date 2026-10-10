@@ -2837,7 +2837,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       var s=Math.round(18+Math.min(e.n,20)*0.8);
       var cls='lm-st'+(e.n&&e.v===e.n?' v':'')+(devant===e?' cur':'')+(i%2?' lo':'');
       h+='<a class="'+cls+'" href="#'+e.sec.id+'" style="left:'+pc(e.deb/tot)+';--s:'+s+'px;--d:'+(e.deb/tot*1.1).toFixed(2)+'s" title="'+esc(nom(e.sec))+'">'+
-        '<span class="lm-lb">'+esc(nom(e.sec))+'<small>'+e.n+' stops</small></span></a>';
+        '<span class="lm-lb">'+esc(nom(e.sec))+'<small>'+e.n+(e.n>1?' stops':' stop')+'</small></span></a>';
     });
     h+='<a class="lm-st tm'+(faits===tot?' v':'')+(!devant?' cur':'')+'" href="#top" style="left:100%;--s:30px;--d:1.1s" title="Terminus">'+
       '<span class="lm-lb">Terminus</span></a>'+
