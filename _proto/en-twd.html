@@ -1871,8 +1871,8 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      ne servait quasiment à rien : la page répète « The Walking Dead »
      seize fois, et c'est « Season 5 Episodes 1-8 » qu'on cherche. */
   function hay(e){
-    if(e._h) return e._h;
-    e._h=(e.title+' '+(e.date||'')+' '+(e.subitems||[]).join(' ')).toLowerCase();
+    if(e._h&&e._a===window.CG_ALT) return e._h;
+    e._a=window.CG_ALT; e._h=(e.title+' '+(e.date||'')+' '+(e.subitems||[]).join(' ')+' '+((e._a||{})[e.id]||'')).toLowerCase();
     return e._h;
   }
   function applyFilters(){

@@ -1913,7 +1913,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         if(x.kind!=='it') return;
         var el=document.getElementById(x.id);
         var ok=!offK[x.k] && !(hideDone&&prog[x.id]) &&
-               (!q || el.dataset.t.indexOf(q)>-1);
+               (!q || el.dataset.t.indexOf(q)>-1 || ((window.CG_ALT||{})[x.id]||'').indexOf(q)>-1);
         el.hidden=!ok;
         if(ok){ vis++; shown++; }
       });

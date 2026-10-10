@@ -32,6 +32,14 @@
 //     « Les Agents du S.H.I.E.L.D. » chez Marvel. Sans elle, treize résultats
 //     identiques dont rien ne distingue la cible.
 //
+//   · **Le titre de l'autre langue voyage avec l'entrée**, en sixième place,
+//     quand il diffère. Posé le 10 octobre 2026, demandé par Niko : *Avatar :
+//     Les Sept Refuges* ne répondait plus à « Seven Havens » sur l'accueil
+//     français, et le titre d'origine est celui que la moitié des gens tapent.
+//     Les deux index ont les mêmes identifiants : on apparie par `id`. Deux
+//     titres qui ne diffèrent que par la graphie — l'espace du deux-points,
+//     un accent — ne sont pas portés deux fois.
+//
 //   · **Le Dossier en est**, avec ses 535 romans et comics. C'est le contenu
 //     le plus profond du site et le moins accessible : personne ne le
 //     parcourt, on y cherche un titre. Il n'est pas dans `SOURCES` — il range
@@ -55,7 +63,22 @@ const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js
 
 const rendable = it => it && it.type !== 'separator' && it.type !== 'note' && it.id && it.title;
 
-function entrees(eras, rang) {
+// La forme de comparaison de la page (`compact()` dans `e-app.js`) : sans
+// accent, sans casse, sans ponctuation.
+const compact = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// identifiant → titre, pour l'autre langue
+function titres(eras) {
+  const m = {};
+  for (const era of eras || []) {
+    for (const it of era.entries || era.items || []) {
+      if (rendable(it)) m[it.id] = decode(it.title);
+    }
+  }
+  return m;
+}
+
+function entrees(eras, rang, autres = {}) {
   const out = [];
   const vus = {};
   const brut = [];
@@ -73,7 +96,11 @@ function entrees(eras, rang) {
     const p = vus[titre] > 1
       ? (it.subitems || []).map(decode).filter(Boolean).join(' · ')
       : '';
-    out.push([rang, titre, it.id, decode(it.date || ''), p]);
+    const ligne = [rang, titre, it.id, decode(it.date || ''), p];
+    // l'autre titre, seulement s'il dit autre chose
+    const alias = autres[it.id];
+    if (alias && compact(alias) !== compact(titre)) ligne.push(alias);
+    out.push(ligne);
   }
   return out;
 }
@@ -85,17 +112,22 @@ function entrees(eras, rang) {
 export function recherche({ racine, langue, urls }) {
   const univers = [];
   const items = [];
+  const autre = langue === 'fr' ? 'en' : 'fr';
+  let alias = 0;
 
   for (const cle of Object.keys(SOURCES)) {
     const [fichier, global] = SOURCES[cle][langue];
     const u = charge(racine, fichier, global)[global];
-    items.push(...entrees(u.eras, univers.length));
+    const [fichierB, globalB] = SOURCES[cle][autre];
+    const b = charge(racine, fichierB, globalB)[globalB];
+    items.push(...entrees(u.eras, univers.length, titres(b.eras)));
     univers.push({ k: cle, n: decode(u.title), h: urls[cle], c: ENCRES[cle] });
   }
 
   const [fichier, global] = DOSSIER[langue];
   const d = charge(racine, fichier, global)[global];
-  items.push(...entrees(d.eras, univers.length));
+  const [fichierD, globalD] = DOSSIER[autre];
+  items.push(...entrees(d.eras, univers.length, titres(charge(racine, fichierD, globalD)[globalD].eras)));
   // **Le Dossier n'a pas de titre dans ses données** — `CGD` ne porte que
   // `eras` et `intro`. Son nom se compose donc comme `jsonld.mjs` compose son
   // fil d'Ariane, à partir des libellés de navigation : « Dossiers — Star
@@ -121,5 +153,8 @@ export function recherche({ racine, langue, urls }) {
       throw new Error(`recherche : l'univers « ${u.k} » sort sans nom ou sans URL (${u.n} / ${u.h})`);
     }
   }
+  // Aucun alias sur 1 500 œuvres, c'est un appariement par `id` qui a raté.
+  alias = items.filter(e => e.length > 5).length;
+  if (alias < 100) throw new Error(`recherche : ${alias} titre(s) de l'autre langue seulement`);
   return JSON.stringify({ u: univers, e: items });
 }

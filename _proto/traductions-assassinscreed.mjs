@@ -572,6 +572,15 @@ export const AC_LIENS = [
 
 /* ── les formes ──────────────────────────────────────────────────── */
 export const AC_GABARITS = [
+  /* « Updated · September 2026 » est une forme, pas un libellé : le mois
+     change à chaque ajout. Au lexique, il se retrouvait par la première page
+     qui porte le même mois — le Dossier, qui écrit « À jour · » —, et cinq
+     pages ont failli perdre leur « Mis à jour · » le 10 octobre 2026, le jour
+     où Avatar est passé à octobre. Le gabarit passe avant le lexique. */
+  [/^Updated · (January|February|March|April|May|June|July|August|September|October|November|December) (\d{4})$/,
+    m => `Mis à jour · ${({ January: 'janvier', February: 'février', March: 'mars', April: 'avril',
+      May: 'mai', June: 'juin', July: 'juillet', August: 'août', September: 'septembre',
+      October: 'octobre', November: 'novembre', December: 'décembre' })[m[1]]} ${m[2]}`],
   /* Les sept bandeaux de saga. « SAGA » se dit pareil des deux côtés,
      et le chiffre ne bouge pas — c'est une forme, pas un libellé. */
   [/^SAGA (\d+)$/, m => `SAGA ${m[1]}`],

@@ -3826,8 +3826,15 @@ function cgBillet(){
         /* Les deux formes sont calculées une fois pour toutes : les refaire à
            chaque frappe, c'est 1 463 `normalize()` par lettre tapée. */
         for (var i = 0; i < d.e.length; i++) {
+          /* La sixième place porte le titre de l'autre langue quand il
+             diffère (« Seven Havens » pour « Les Sept Refuges ») : on le
+             range plus loin avant d'écrire les formes de comparaison. */
+          var alias = typeof d.e[i][5] === 'string' ? d.e[i][5] : '';
           d.e[i][5] = norm(d.e[i][1]);
           d.e[i][6] = compact(d.e[i][1]);
+          d.e[i][7] = alias;
+          d.e[i][8] = alias ? norm(alias) : '';
+          d.e[i][9] = alias ? compact(alias) : '';
         }
         index = d;
         return d;
@@ -3845,12 +3852,24 @@ function cgBillet(){
      tri par longueur de titre avait l'air plus fin et rendait les huit jeux
      Arkham dans le désordre — VR, City, Shadow, Asylum — là où l'ordre de
      lecture est précisément ce que le site a à dire. */
-  function score(e, q, qc){
-    var i = e[5].indexOf(q);
+  function rang(n, c, q, qc){
+    var i = n.indexOf(q);
     if (i === 0) return 0;
-    if (i > 0) return /[a-z0-9]/.test(e[5].charAt(i - 1)) ? 2 : 1;
-    if (qc.length > 2 && e[6].indexOf(qc) >= 0) return 3;
+    if (i > 0) return /[a-z0-9]/.test(n.charAt(i - 1)) ? 2 : 1;
+    if (qc.length > 2 && c.indexOf(qc) >= 0) return 3;
     return -1;
+  }
+  /* Le titre de la page d'abord ; celui de l'autre langue ne compte que s'il
+     fait mieux, et à rang égal il passe juste derrière. `e[10]` retient par
+     lequel des deux l'entrée a répondu : le rendu le montre. */
+  function score(e, q, qc){
+    var s = rang(e[5], e[6], q, qc);
+    e[10] = 0;
+    if (!e[7]) return s;
+    var a = rang(e[8], e[9], q, qc);
+    if (a < 0 || (s >= 0 && s <= a)) return s;
+    e[10] = 1;
+    return a + 0.5;
   }
 
   function cherche(texte){
@@ -3911,6 +3930,14 @@ function cgBillet(){
           p.className = 'p';
           p.textContent = '  ' + it[4];
           t.appendChild(p);
+        }
+        /* trouvé par son titre dans l'autre langue : on le dit, sans quoi
+           « seven havens » rendrait un titre où le mot ne paraît pas */
+        if (it[10] && it[7]) {
+          var al = document.createElement('span');
+          al.className = 'p';
+          al.textContent = '  ' + it[7];
+          t.appendChild(al);
         }
         a.appendChild(t);
         if (it[3]) {
@@ -4183,6 +4210,41 @@ function cgBillet(){
   if (document.readyState === 'loading')
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
+})();
+
+/* ══ Le titre de l'autre langue, dans la recherche des pages ══════════════
+   Posé le 10 octobre 2026, demandé par Niko : un titre d'origine doit se
+   trouver quelle que soit la langue de la page. *Avatar : Les Sept Refuges*
+   ne répondait plus à « seven havens » dans le champ de `/fr/avatar`.
+
+   L'index de l'accueil porte déjà l'autre titre de chaque œuvre, en sixième
+   place (`recherche.mjs`). On le lit au premier focus du champ `#q` et on le
+   range dans `window.CG_ALT`, identifiant → titre en minuscules ; la ligne de
+   filtre de chacune des treize pages le consulte après son propre titre. Tant
+   qu'il n'est pas arrivé, ou s'il n'arrive pas, la recherche fait ce qu'elle
+   faisait. Une frappe partie avant lui est rejouée à son arrivée.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  var q = document.getElementById('q');
+  if (!q || !document.getElementById('timeline')) return;
+  var fait = false;
+  function charge(){
+    if (fait) return;
+    fait = true;
+    fetch(document.documentElement.lang === 'en' ? '/search-en.json' : '/search-fr.json')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d || !d.e) return;
+        var m = {};
+        for (var i = 0; i < d.e.length; i++)
+          if (typeof d.e[i][5] === 'string') m[d.e[i][2]] = d.e[i][5].toLowerCase();
+        window.CG_ALT = m;
+        if (q.value) q.dispatchEvent(new Event('input', { bubbles: true }));
+      })
+      .catch(function(){});
+  }
+  q.addEventListener('focus', charge);
+  q.addEventListener('input', charge);
 })();
 
 /* ══ Où regarder, dans la fiche TMDB ══════════════════════════════════════

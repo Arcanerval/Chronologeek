@@ -172,6 +172,15 @@ export const RE_TRADUCTIONS = [
 ];
 
 export const RE_GABARITS = [
+  /* « Updated · September 2026 » est une forme, pas un libellé : le mois
+     change à chaque ajout. Au lexique, il se retrouvait par la première page
+     qui porte le même mois — le Dossier, qui écrit « À jour · » —, et cinq
+     pages ont failli perdre leur « Mis à jour · » le 10 octobre 2026, le jour
+     où Avatar est passé à octobre. Le gabarit passe avant le lexique. */
+  [/^Updated · (January|February|March|April|May|June|July|August|September|October|November|December) (\d{4})$/,
+    m => `Mis à jour · ${({ January: 'janvier', February: 'février', March: 'mars', April: 'avril',
+      May: 'mai', June: 'juin', July: 'juillet', August: 'août', September: 'septembre',
+      October: 'octobre', November: 'novembre', December: 'décembre' })[m[1]]} ${m[2]}`],
   [/^Season (\d+)$/, m => `Saison ${m[1]}`],
   [/^Season (\d+) Episodes? (\d+(?:-\d+)?)$/, m =>
     `Saison ${m[1]} ${m[2].includes('-') ? 'Épisodes' : 'Épisode'} ${m[2]}`],

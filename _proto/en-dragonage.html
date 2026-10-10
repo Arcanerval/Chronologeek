@@ -2060,7 +2060,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       era.entries.forEach(function(e){
         var el=document.getElementById(e.id);
         var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
-               (!q || e.title.toLowerCase().indexOf(q)>-1);
+               (!q || e.title.toLowerCase().indexOf(q)>-1 || ((window.CG_ALT||{})[e.id]||'').indexOf(q)>-1);
         el.hidden=!ok; if(ok){ vis++; shown++; }
       });
       document.querySelector('.era-sec[data-era="'+i+'"]').hidden=(vis===0);

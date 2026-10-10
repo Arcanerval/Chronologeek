@@ -2801,6 +2801,38 @@ Cinq choses à savoir :
 - **Rien ne s'ouvre si l'index manque.** Un champ de recherche qui ne cherche
   pas vaut moins que pas de champ.
 
+### Un titre d'origine se trouve dans les deux langues
+
+Posé le 10 octobre 2026, demandé par Niko le jour où *Avatar : Seven Havens*
+a pris son titre français (« Les Sept Refuges ») : **tout titre doit rester
+trouvable, quelle que soit la langue de la page.**
+
+- **L'index porte l'autre titre en sixième place**, quand il diffère
+  (`recherche.mjs`, apparié par `id` avec les données de l'autre langue) :
+  708 œuvres sur 1 567, +5 Ko brotli. Deux titres qui ne diffèrent que par
+  la graphie n'y sont pas. Les identifiants ne bougent pas, donc l'empreinte
+  du lien de transfert non plus.
+- **Sur l'accueil**, le titre de la page passe d'abord ; celui de l'autre
+  langue ne compte que s'il fait mieux, et le résultat l'affiche alors en
+  petit à côté — sans quoi « seven havens » rendrait un titre où le mot ne
+  paraît pas.
+- **Dans les treize pages**, la ligne de filtre consulte `window.CG_ALT`
+  après son propre titre. `e-app.js` le remplit au premier focus de `#q`,
+  depuis le même `/search-<langue>.json`, et rejoue la frappe à son arrivée.
+  Star Trek et The Walking Dead mettent en cache leur champ de recherche
+  (`e._h`) : il se recalcule quand `CG_ALT` arrive (`e._a`). **Une page
+  neuve reprend cette ligne** — sans elle sa recherche marche, mais dans une
+  seule langue, et rien ne le dit.
+
+**Et « Updated · <mois> <année> » est un gabarit dans cinq chaînes
+inversées** (Assassin's Creed, DC Animation, Jurassic World, The Witcher,
+Resident Evil). Au lexique, la phrase se retrouvait par la première page
+portant le même mois ; quand Avatar est passé à octobre, il ne restait que
+le Dossier, qui écrit « À jour · », et les cinq pages perdaient leur « Mis
+à jour · » au premier passage de leur chaîne. **Changer le mois d'une page
+peut changer le lexique des autres** : relire le diff des `e-*` après un
+passage de chaîne inversée.
+
 ### Trois canaux de plus, posés le 27 septembre 2026
 
 Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne
