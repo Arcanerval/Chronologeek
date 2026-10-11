@@ -36,6 +36,36 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:d00e421dcfdcc116eafe-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:VisionQuest · S1E05
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f2627e3803b11d53bb18-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:VisionQuest · S1E07
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:58d32c0da9a34aa99b62-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:VisionQuest · S1E08 · Finale
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:e85118a3183e90922f94-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261216
@@ -63,8 +93,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:0be967bd293514953a4e-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20270623
-DTEND;VALUE=DATE:20270624
+DTSTART;VALUE=DATE:20270616
+DTEND;VALUE=DATE:20270617
 SUMMARY:Spider-Man: Beyond the Spider-Verse
 DESCRIPTION:Film\n\nHunted by Miguel O'Hara's Spider Society and betrayed b
  y his friends\, Miles finds himself in the darkest corners of the Spider-V

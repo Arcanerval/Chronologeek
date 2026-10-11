@@ -7,19 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:f240d160a6dabe9dcc9f-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Star Wars · Star Wars: Galactic Racer
-DESCRIPTION:Jeu vidéo\n\nStar Wars: Galactic Racer is a canon Star Wars ra
- cing video game developed by Fuse Games and published by Lucasfilm Games a
- longside Secret Mode. The game was released for PC\, PlayStation 5\, and X
- box Series X/S on October 6\, 2026.\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:875b7dd2d5b3c4a9871e-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261014
@@ -149,6 +136,16 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:d00e421dcfdcc116eafe-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Marvel · VisionQuest · S1E05
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:5fa1a35dfe64181e9608-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261028
@@ -166,6 +163,26 @@ DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f2627e3803b11d53bb18-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Marvel · VisionQuest · S1E07
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:58d32c0da9a34aa99b62-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Marvel · VisionQuest · S1E08 · Finale
 DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
@@ -325,8 +342,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:0be967bd293514953a4e-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20270623
-DTEND;VALUE=DATE:20270624
+DTSTART;VALUE=DATE:20270616
+DTEND;VALUE=DATE:20270617
 SUMMARY:Marvel · Spider-Man: Beyond the Spider-Verse
 DESCRIPTION:Film\n\nHunted by Miguel O'Hara's Spider Society and betrayed b
  y his friends\, Miles finds himself in the darkest corners of the Spider-V

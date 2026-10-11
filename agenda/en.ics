@@ -7,19 +7,6 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:f240d160a6dabe9dcc9f-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261006
-DTEND;VALUE=DATE:20261007
-SUMMARY:Star Wars · Star Wars: Galactic Racer
-DESCRIPTION:Star Wars: Galactic Racer is a canon Star Wars racing video gam
- e developed by Fuse Games and published by Lucasfilm Games alongside Secre
- t Mode. The game was released for PC\, PlayStation 5\, and Xbox Series X/S
-  on October 6\, 2026.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:875b7dd2d5b3c4a9871e-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261014
@@ -152,6 +139,16 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:d00e421dcfdcc116eafe-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:Marvel · VisionQuest · S1E05
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:5fa1a35dfe64181e9608-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261028
@@ -172,6 +169,26 @@ DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:f2627e3803b11d53bb18-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Marvel · VisionQuest · S1E07
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:58d32c0da9a34aa99b62-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Marvel · VisionQuest · S1E08 · Finale
 DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
@@ -317,12 +334,12 @@ DTSTART;VALUE=DATE:20270504
 DTEND;VALUE=DATE:20270505
 SUMMARY:Star Wars · Princess of the Rebellion
 DESCRIPTION:Princess of the Rebellion is a forthcoming young adult novel fo
- cusing on Princess Leia that will be published by Random House on May 4\, 
- 2027\, as part of the 50th anniversary of Star Wars: Episode IV A New Hope
- . Written by Claudia Gray\, the book will focus on Leia in the aftermath o
- f A New Hope as the Rebel Alliance evacuates their base on Yavin 4. The bo
- ok will be published in both hardcover and a…\n\nhttps://chronologeek.ap
- p/upcoming
+ cusing on Princess Leia that takes place between the events of Episode IV:
+  A New Hope and Episode V: The Empire Strikes Back\, and will be published
+  by Random House on May 4\, 2027\, as part of the 50th anniversary of A Ne
+ w Hope. Written by Claudia Gray\, the book will focus on Leia in the after
+ math of the Battle of Yavin as the Rebel Alli…\n\nhttps://chronologeek.a
+ pp/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -387,8 +404,8 @@ DTEND;VALUE=DATE:20270811
 SUMMARY:Star Wars · Reign of the Empire: From the Ashes
 DESCRIPTION:Reign of the Empire: From the Ashes is an upcoming novel and th
  e final entry in the Star Wars: Reign of the Empire trilogy written by Fra
- n Wilde and set to be published by Random House Worlds on August 10\, 2027
- .\n\nhttps://chronologeek.app/upcoming
+ n Wilde and set to be published by Random House Worlds on June 8\, 2027.\n
+ \nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
