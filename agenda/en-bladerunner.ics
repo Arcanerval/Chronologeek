@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — releases · Blade Runner
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:7b5e01cf11fdc2159196-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:Blade Runner 2099 · S1 · Full season
+DESCRIPTION:Fifty years after the events of Blade Runner 2049\, Los Angeles
+  has been reborn\, just not by humanity. Cora\, a fugitive in a final bid 
+ to stop running\, takes on one last identity: a Blade Runner. Forced to pa
+ rtner with Olwen\, a Replicant days from dying\, she hunts down a runaway 
+ hiding a truth that could collapse their fragile city.\n\nhttps://chronolo
+ geek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

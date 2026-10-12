@@ -203,8 +203,8 @@ export const TWD_TRADUCTIONS = [
      à ligne la manque. Elle est donc recopiée telle quelle. Le jour où
      The Walking Dead sera publié, les deux langues devront nommer six
      univers au lieu de cinq, ici comme dans `seo.json`. */
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are trademarks of their respective owners; Chronologeek is an independent fan project.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil et Blade Runner sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   // le plan de métro
   ['The Walking Dead line map', 'Plan de la ligne The Walking Dead'],
   ['The Walking Dead line complete', 'Ligne The Walking Dead terminée'],

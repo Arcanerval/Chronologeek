@@ -32,6 +32,7 @@ const UNIVERS = {
   jurassic:       { encre:'#45c46b', nom:'Jurassic World',   img:'jurassicworld' },
   witcher:        { encre:'#b0bec5', nom:'The Witcher',      img:'witcher' },
   residentevil:   { encre:'#dc0000', nom:'Resident Evil',    img:'residentevil' },
+  bladerunner:    { encre:'#ff5f1f', nom:'Blade Runner',     img:'bladerunnertimeline' },
 };
 
 /* radar.json reste francais dans les deux langues — c'est le meme fichier qui

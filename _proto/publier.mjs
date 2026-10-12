@@ -119,6 +119,12 @@ const ROUTES = [
   { cle: 'residentevil',
     fr: { proto: 'e-residentevil.html',       sortie: 'fr/residentevil.html',     url: '/fr/residentevil' },
     en: { proto: 'en-residentevil.html',      sortie: 'residentevil.html',        url: '/residentevil' } },
+  // Blade Runner est le neuvième à prendre la chaîne à l'envers :
+  // `en-bladerunner.html` est la source, `e-bladerunner.html` en descend
+  // par traduire-bladerunner.mjs.
+  { cle: 'bladerunner',
+    fr: { proto: 'e-bladerunner.html',        sortie: 'fr/bladerunner.html',      url: '/fr/bladerunner' },
+    en: { proto: 'en-bladerunner.html',       sortie: 'bladerunner.html',         url: '/bladerunner' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -178,6 +184,8 @@ const ASSETS = {
   'data-witcher-en.js':        '/data/witcher-en.js',
   'data-re.js':                '/data/residentevil-fr.js',
   'data-re-en.js':             '/data/residentevil-en.js',
+  'data-bladerunner.js':       '/data/bladerunner-fr.js',
+  'data-bladerunner-en.js':    '/data/bladerunner-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',
@@ -439,7 +447,7 @@ const BOOT_PLANCHE = '/images/boot-univers.webp';
 // L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
 const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
                      '#a8bf4f', '#e07b39', '#d4a02c', '#2dd4bf', '#45c46b',
-                     '#b0bec5', '#dc0000'];
+                     '#b0bec5', '#dc0000', '#ff5f1f'];
 
 const BOOT =
   /* **Pas de `<link rel="preload">`**, et c'est voulu : il est inconditionnel,
@@ -638,7 +646,8 @@ const BOOT_PHRASES = {
 // Le dixième univers a fait passer le pas de 0,28 à 0,25 s : la dernière
 // couche part ainsi à 2,25 s, là où la neuvième partait à 2,24 — la durée
 // totale réglée par Niko ne bouge pas. Un onzième demandera 0,225.
-const BOOT_PAS = 0.205;
+// Treize univers depuis Blade Runner, le 12 octobre 2026 : 12 × 0,188 = 2,256 s.
+const BOOT_PAS = 0.188;
 // L'intitulé du panneau de quai, au-dessus de la phrase.
 const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing' };
 const BOOT_CORPS = langue =>

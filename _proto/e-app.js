@@ -83,9 +83,9 @@ function cgBillet(){
     /* le bouton « remonter en haut » se cale au-dessus tant qu'elle est là */
     'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px) + 20px)}',
     '.cgb-rail{display:block;height:8px;border-top:2px solid var(--paper);',
-    '  background:linear-gradient(90deg,#4d9fff 0 8.33%,#e23636 0 16.66%,#f5c842 0 25%,',
-    '  #7dd3fc 0 33.33%,#b48cf2 0 41.66%,#a8bf4f 0 50%,#e07b39 0 58.33%,#d4a02c 0 66.66%,',
-    '  #2dd4bf 0 75%,#45c46b 0 83.33%,#b0bec5 0 91.66%,#dc0000 0)}',
+    '  background:linear-gradient(90deg,#4d9fff 0 7.69%,#e23636 0 15.38%,#f5c842 0 23.08%,',
+    '  #7dd3fc 0 30.77%,#b48cf2 0 38.46%,#a8bf4f 0 46.15%,#e07b39 0 53.85%,#d4a02c 0 61.54%,',
+    '  #2dd4bf 0 69.23%,#45c46b 0 76.92%,#b0bec5 0 84.62%,#dc0000 0 92.31%,#ff5f1f 0)}',
     '.cgbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}',
     /* `--st` est la largeur de la souche : les deux encoches se calent dessus */
     '.cgb-tk{--st:54px;flex:1;min-width:0;display:flex;align-items:stretch;background:var(--paper);color:var(--ink);',
@@ -1591,6 +1591,7 @@ function cgBillet(){
     { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic',       alt:'cg-proto-jurassic-alt' },
     { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher' },
     { u:'residentevil',   prog:'cg-proto-re',             perso:'cg-perso-re' },
+    { u:'bladerunner',    prog:'cg-proto-bladerunner',    perso:'cg-perso-bladerunner' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -2629,6 +2630,8 @@ function cgBillet(){
     residentevil: [['Eklecty-City', 'https://www.eklecty-city.fr/jeux-video/resident-evil-requiem-chronologie-complete-histoire/'],
                    ['Fandom', 'https://residentevil.fandom.com/wiki/Prime_universe'],
                    ['RETimelineApp', 'https://residenteviltimelineapp.com/']],
+    bladerunner: [['Fandom', 'https://bladerunner.fandom.com/wiki/Main_Page'],
+                  ['DeviantArt', 'https://www.deviantart.com/morsoth/art/Timeline-Blade-Runner-1021386153']],
     witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
               ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
               ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']],
@@ -2921,7 +2924,8 @@ function cgBillet(){
     startrek:       { u: 'startrek' },
     walkingdead:    { u: 'twd' },
     assassinscreed: { u: 'assassinscreed' },
-    witcher:        { u: 'witcher' }
+    witcher:        { u: 'witcher' },
+    bladerunner:    { u: 'bladerunner' }
   };
 
   var T = FR ? {
@@ -3018,7 +3022,11 @@ function cgBillet(){
 
     var mot = jours <= 1;
     var cd  = jours <= 0 ? T.auj : jours === 1 ? T.dem : T.cd(jours);
-    var ep  = entree.ep ? 'S' + entree.ep.s + 'E' + String(entree.ep.e).replace(/^(\d)$/, '0$1') : '';
+    /* Une saison qui sort d'un bloc porte `e:0` : elle n'a pas de numéro
+       d'épisode, et s'arrête à « S1 » comme sur « À venir ». Sans ce test,
+       Blade Runner 2099 s'annonçait « S1E00 ». */
+    var ep  = entree.ep ? 'S' + entree.ep.s +
+      (entree.ep.e ? 'E' + String(entree.ep.e).replace(/^(\d)$/, '0$1') : '') : '';
 
     var box = document.createElement('div');
     box.className = 'nx wrap';
@@ -3175,7 +3183,8 @@ function cgBillet(){
     ['startrek',       'Star Trek'],
     ['twd',            'The Walking Dead'],
     ['assassinscreed', 'Assassin’s Creed'],
-    ['witcher',        'The Witcher']
+    ['witcher',        'The Witcher'],
+    ['bladerunner',    'Blade Runner']
   ];
 
   var T = FR ? {
@@ -3437,7 +3446,7 @@ function cgBillet(){
     x.closePath();
   }
   var ENCRES = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
-                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000'];
+                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f'];
 
   /* Le billet : même papier, même souche encochée et même filet aux douze
      encres que les barres du bas (`cgBillet`). Souche à l'encre de
@@ -4287,7 +4296,7 @@ function cgBillet(){
     : { titre: 'Où regarder', location: 'location ou achat', source: 'Données : JustWatch', tmdb: 'Données : TMDB' };
   var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
-              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE'];
+              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER'];
 
   var CSS = [
     '.wt{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:10px;',

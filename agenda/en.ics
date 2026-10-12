@@ -75,10 +75,10 @@ DTSTART;VALUE=DATE:20261021
 DTEND;VALUE=DATE:20261022
 SUMMARY:Star Wars · The High Republic Adventures – Pathfinders 6
 DESCRIPTION:The High Republic Adventures – Pathfinders 6 is the upcoming 
- sixth and final issue of the 2026 comic book series Star Wars: The High Re
- public Adventures – Pathfinders. The issue will be written by George Man
- n\, illustrated by Vincenzo Riccardi\, and published by Dark Horse Comics 
- on October 21\, 2026.\n\nhttps://chronologeek.app/upcoming
+ sixth and final issue of the 2026 comic book miniseries Star Wars: The Hig
+ h Republic Adventures – Pathfinders. The issue will be written by George
+  Mann\, illustrated by Vincenzo Riccardi\, and published by Dark Horse Com
+ ics on October 21\, 2026.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -223,6 +223,21 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:7b5e01cf11fdc2159196-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:Blade Runner · Blade Runner 2099 · S1 · Full season
+DESCRIPTION:Fifty years after the events of Blade Runner 2049\, Los Angeles
+  has been reborn\, just not by humanity. Cora\, a fugitive in a final bid 
+ to stop running\, takes on one last identity: a Blade Runner. Forced to pa
+ rtner with Olwen\, a Replicant days from dying\, she hunts down a runaway 
+ hiding a truth that could collapse their fragile city.\n\nhttps://chronolo
+ geek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:66add89a65343b227b35-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261202
@@ -336,9 +351,9 @@ SUMMARY:Star Wars · Princess of the Rebellion
 DESCRIPTION:Princess of the Rebellion is a forthcoming young adult novel fo
  cusing on Princess Leia that takes place between the events of Episode IV:
   A New Hope and Episode V: The Empire Strikes Back\, and will be published
-  by Random House on May 4\, 2027\, as part of the 50th anniversary of A Ne
- w Hope. Written by Claudia Gray\, the book will focus on Leia in the after
- math of the Battle of Yavin as the Rebel Alli…\n\nhttps://chronologeek.a
+  by Random House/Star Wars on May 4\, 2027\, as part of the 50th anniversa
+ ry of A New Hope. Written by Claudia Gray\, the book will focus on Leia in
+  the aftermath of the Battle of Yavin as the …\n\nhttps://chronologeek.a
  pp/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT

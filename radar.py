@@ -45,6 +45,7 @@ UNIVERSES = {
     "assassinscreed": {"label": "Assassin's Creed", "color": "#d4a02c",
                        "file": "assassinscreed.html"},
     "witcher":  {"label": "The Witcher", "color": "#b0bec5", "file": "witcher.html"},
+    "bladerunner": {"label": "Blade Runner", "color": "#ff5f1f", "file": "bladerunner.html"},
 }
 
 # Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
@@ -62,6 +63,10 @@ TMDB_COMPANY_NAMES = {
     # Splinter Cell, Far Cry et Mythic Quest. D'ou le garde-fou de titre
     # ci-dessous, comme pour Avatar et The Walking Dead.
     "assassinscreed": ["Ubisoft Film & Television", "Ubisoft"],
+    # Alcon tient la franchise depuis 2049 — Black Lotus, puis Blade Runner 2099
+    # (tv/171802), la raison de cette ligne. Il produit aussi tout le reste de
+    # son catalogue : d'ou le garde-fou de titre ci-dessous.
+    "bladerunner": ["Alcon Entertainment", "Alcon Television Group"],
 }
 
 # Quand la société couvre plus large que l'univers, le titre doit encore
@@ -88,6 +93,9 @@ UNIVERS_TITRE = {
     # Splinter Cell: Deathwatch, Side Quest et Mythic Quest arrivent au radar
     # Assassin's Creed. L'apostrophe est facultative — TMDB ecrit les deux.
     "assassinscreed": re.compile(r"\bassassin.?s creed\b", re.I),
+    # Alcon produit The Expanse, Prisoners et le reste : seul ce qui s'appelle
+    # « Blade Runner » entre au radar de la saga.
+    "bladerunner": re.compile(r"\bblade runner\b", re.I),
 }
 
 

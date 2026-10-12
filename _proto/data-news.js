@@ -19,7 +19,7 @@
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
          assassinscreed | dcanimation | jurassic | witcher |
-         residentevil, ou "" si le changement ne vise pas un univers
+         residentevil | bladerunner, ou "" si le changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -37,6 +37,14 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
+
+      { nat:"site", uni:"bladerunner", kind:"timeline",
+        title:"Nouvelle timeline : Blade Runner",
+        txt:"Les deux films, les trois courts métrages, la série Black "+
+            "Lotus et les comics dans l'ordre chronologique — 16 œuvres, "+
+            "de Blade Runner : Origins en 2009 à Blade Runner 2049.",
+        img:"/images/bladerunnertimeline.webp",
+        href:"e-bladerunner.html", cta:"Ouvrir la timeline" },
 
       { nat:"media", uni:"avatar", kind:"anime",
         title:"Avatar : Les Sept Refuges", meta:"399 AG",

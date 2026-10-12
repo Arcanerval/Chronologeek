@@ -181,6 +181,20 @@
       "image": "https://chronologeek.app/images/residentevil.webp"
     }
   },
+  "bladerunner": {
+    "fr": {
+      "title": "Chronologie Blade Runner : films et comics | Chronologeek",
+      "ogTitle": "Timeline Blade Runner — Chronologeek",
+      "desc": "La timeline Blade Runner dans l’ordre chronologique — 16 œuvres, les films, les courts métrages, Black Lotus et les comics, de 2009 à 2049, sans spoil.",
+      "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
+    },
+    "en": {
+      "title": "Blade Runner Timeline &amp; Watch Order | Chronologeek",
+      "ogTitle": "Blade Runner Timeline — Chronologeek",
+      "desc": "The Blade Runner timeline in chronological order — 16 entries, the movies, the shorts, Black Lotus and the comics, from 2009 to 2049, spoiler-free.",
+      "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers : ordres de lecture et guides | Chronologeek",
@@ -226,14 +240,14 @@
   "a-venir": {
     "fr": {
       "title": "Prochaines sorties — Star Wars, Marvel, DC | Chronologeek",
-      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead &amp; The Witcher | Chronologeek",
-      "desc": "Les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead et The Witcher — films, séries, comics et jeux datés, mis à jour chaque jour.",
+      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher &amp; Blade Runner | Chronologeek",
+      "desc": "Les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher et Blade Runner — films, séries, comics et jeux datés.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Upcoming Releases — Star Wars, Marvel, DC | Chronologeek",
-      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead &amp; The Witcher | Chronologeek",
-      "desc": "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and The Witcher release — movies, shows, comics and games, with dates. Updated daily.",
+      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher &amp; Blade Runner | Chronologeek",
+      "desc": "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher and Blade Runner release — movies, shows, comics, games.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   }

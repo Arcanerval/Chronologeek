@@ -154,16 +154,16 @@ export const RE_TRADUCTIONS = [
    'Jeux · Films · Série · Livres · Comics — tout l’univers Resident Evil dans son ordre le '
    + 'plus optimisé.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are trademarks of '
    + 'their respective owners; Chronologeek is an independent fan project.',
    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil et Blade Runner sont des marques de '
    + 'leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are trademarks of '
    + 'their respective owners; Chronologeek is an independent fan project.',
    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil et Blade Runner sont des marques de '
    + 'leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   // le plan de métro
   ['Resident Evil line map', 'Plan de la ligne Resident Evil'],

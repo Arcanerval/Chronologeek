@@ -17,11 +17,11 @@
 <style>:root{--res-nx:var(--res-nx-d);--res-sr:var(--res-sr-d);--res-ag:var(--res-ag-d);--res-fx:var(--res-fx-d)}@media(max-width:560px){:root{--res-nx:var(--res-nx-m);--res-sr:var(--res-sr-m);--res-ag:var(--res-ag-m);--res-fx:var(--res-fx-m)}}.res-nx main::before{content:"";display:block;height:var(--res-nx)}.res-sr #uni{margin-top:var(--res-sr)}.res-ag .attract .wrap::after{content:"";display:block;height:var(--res-ag)}.res-fx .attract .wrap::after{content:"";display:block;height:var(--res-fx)}.js #cal:empty{min-height:100vh}</style>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>Upcoming Releases — Star Wars, Marvel, DC | Chronologeek</title>
-<meta name="description" content="Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and The Witcher release — movies, shows, comics and games, with dates. Updated daily."/>
+<meta name="description" content="Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher and Blade Runner release — movies, shows, comics, games."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Chronologeek"/>
-<meta property="og:title" content="Upcoming Releases — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead &amp; The Witcher | Chronologeek"/>
-<meta property="og:description" content="Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead and The Witcher release — movies, shows, comics and games, with dates. Updated daily."/>
+<meta property="og:title" content="Upcoming Releases — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher &amp; Blade Runner | Chronologeek"/>
+<meta property="og:description" content="Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher and Blade Runner release — movies, shows, comics, games."/>
 <meta property="og:image" content="https://chronologeek.app/images/og-banner.webp"/>
 <meta property="og:url" content="https://chronologeek.app/upcoming"/>
 <meta property="og:locale" content="en_US"/>
@@ -70,7 +70,7 @@
      Le lilas de Star Trek est celui des consoles LCARS. */
   --sw:#4d9fff; --mcu:#e23636; --dc:#f5c842; --av:#7dd3fc; --st:#b48cf2; --twd:#a8bf4f;
   --da:#e07b39; --ac:#d4a02c; --dca:#2dd4bf; --jw:#45c46b; --wi:#b0bec5;
-  --re:#dc0000; --soon:#8a8ab0;
+  --re:#dc0000; --br:#ff5f1f; --soon:#8a8ab0;
   /* les trois entrées colorées de la nav : le violet passe aux Dossiers,
      pour répondre au violet profond de leur bande, et le rose à « À venir » */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
@@ -187,7 +187,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .dw-uni a:hover{border-color:var(--paper);color:var(--paper)}
 .dw-uni a i{width:10px;height:10px;flex:0 0 auto;background:var(--k)}
 .u-sw{--k:#4d9fff}.u-mcu{--k:#e23636}.u-dc{--k:#f5c842}
-.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#d4a02c}.u-dca{--k:#2dd4bf}.u-jw{--k:#45c46b}.u-wi{--k:#b0bec5}.u-re{--k:#dc0000}
+.u-av{--k:#7dd3fc}.u-st{--k:#b48cf2}.u-twd{--k:#a8bf4f}.u-da{--k:#e07b39}.u-ac{--k:#d4a02c}.u-dca{--k:#2dd4bf}.u-jw{--k:#45c46b}.u-wi{--k:#b0bec5}.u-re{--k:#dc0000}.u-br{--k:#ff5f1f}
 .dw-uni a[aria-current]{border-color:var(--k);color:var(--k)}
 .dw-site{border-top:2px solid rgba(255,253,247,.14)}
 .dw-site a{display:block;padding:11px 20px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
@@ -753,7 +753,7 @@ details[open] .chevd{transform:rotate(180deg)}
       <a href="/starwars">Star Wars</a>
       <a href="/marvel">Marvel</a>
       <a href="/dc">DC</a>
-      <details class="nav-more"><summary>More universes</summary><div class="more-pop"><a href="/avatar">Avatar Legends</a><a href="/startrek">Star Trek</a><a href="/walkingdead">The Walking Dead</a><a href="/dragonage">Dragon Age</a><a href="/assassinscreed">Assassin’s Creed</a><a href="/dcanimation">DC Animation</a><a href="/jurassicworld">Jurassic World</a><a href="/witcher">The Witcher</a><a href="/residentevil">Resident Evil</a></div></details>
+      <details class="nav-more"><summary>More universes</summary><div class="more-pop"><a href="/avatar">Avatar Legends</a><a href="/startrek">Star Trek</a><a href="/walkingdead">The Walking Dead</a><a href="/dragonage">Dragon Age</a><a href="/assassinscreed">Assassin’s Creed</a><a href="/dcanimation">DC Animation</a><a href="/jurassicworld">Jurassic World</a><a href="/witcher">The Witcher</a><a href="/residentevil">Resident Evil</a><a href="/bladerunner">Blade Runner</a></div></details>
       <a href="#" class="upc" aria-current="page">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
     </nav>
@@ -773,7 +773,7 @@ details[open] .chevd{transform:rotate(180deg)}
       <a href="/starwars" class="u" style="--k:var(--sw)"><i>SW</i>Star Wars</a>
       <a href="/marvel" class="u" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a>
       <a href="/dc" class="u" style="--k:var(--dc)"><i>DC</i>DC Multiverse</a>
-      <details class="dw-more"><summary>More universes</summary><div class="dw-pop"><a href="/avatar" class="u" style="--k:var(--av)"><i>AV</i>Avatar Legends</a><a href="/startrek" class="u" style="--k:var(--st)"><i>ST</i>Star Trek</a><a href="/walkingdead" class="u" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a><a href="/dragonage" class="u" style="--k:var(--da)"><i>DA</i>Dragon Age</a><a href="/assassinscreed" class="u" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a><a href="/dcanimation" class="u" style="--k:var(--dca)"><i>DCA</i>DC Animation</a><a href="/jurassicworld" class="u" style="--k:var(--jw)"><i>JW</i>Jurassic World</a><a href="/witcher" class="u" style="--k:var(--wi)"><i>TW</i>The Witcher</a><a href="/residentevil" class="u" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></div></details>
+      <details class="dw-more"><summary>More universes</summary><div class="dw-pop"><a href="/avatar" class="u" style="--k:var(--av)"><i>AV</i>Avatar Legends</a><a href="/startrek" class="u" style="--k:var(--st)"><i>ST</i>Star Trek</a><a href="/walkingdead" class="u" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a><a href="/dragonage" class="u" style="--k:var(--da)"><i>DA</i>Dragon Age</a><a href="/assassinscreed" class="u" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a><a href="/dcanimation" class="u" style="--k:var(--dca)"><i>DCA</i>DC Animation</a><a href="/jurassicworld" class="u" style="--k:var(--jw)"><i>JW</i>Jurassic World</a><a href="/witcher" class="u" style="--k:var(--wi)"><i>TW</i>The Witcher</a><a href="/residentevil" class="u" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a><a href="/bladerunner" class="u" style="--k:var(--br)"><i>BR</i>Blade Runner</a></div></details>
       <a href="#" class="upc" aria-current="page">Upcoming</a>
       <a href="/whats-new" class="news">What's New</a>
     </div>
@@ -792,8 +792,8 @@ details[open] .chevd{transform:rotate(180deg)}
       <h1 class="disp"><span class="nm">Upcoming</span></h1>
       <span class="tag"><em>▸</em> Updated every day</span>
     </div>
-    <p class="dek">Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s
-      Creed, DC Animation, Jurassic World, The Witcher and Resident Evil release — updated every single day.</p>
+    <p class="dek">Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed,
+      DC Animation, Jurassic World, The Witcher, Resident Evil and Blade Runner release — updated every single day.</p>
     <div class="ln-map" id="ln-map" aria-label="Map of the timeline"></div>
     <div class="ln-board" id="ln-board">
       <div class="s"><b id="b-n">…</b><span>upcoming releases</span></div>
@@ -851,7 +851,7 @@ details[open] .chevd{transform:rotate(180deg)}
 </main>
 
 <footer>
-  <div class="f-lines" aria-hidden="true"><i style="background:var(--sw)"></i><i style="background:var(--mcu)"></i><i style="background:var(--dc)"></i><i style="background:var(--av)"></i><i style="background:var(--st)"></i><i style="background:var(--twd)"></i><i style="background:var(--da)"></i><i style="background:var(--ac)"></i><i style="background:var(--dca)"></i><i style="background:var(--jw)"></i><i style="background:var(--wi)"></i><i style="background:var(--re)"></i></div>
+  <div class="f-lines" aria-hidden="true"><i style="background:var(--sw)"></i><i style="background:var(--mcu)"></i><i style="background:var(--dc)"></i><i style="background:var(--av)"></i><i style="background:var(--st)"></i><i style="background:var(--twd)"></i><i style="background:var(--da)"></i><i style="background:var(--ac)"></i><i style="background:var(--dca)"></i><i style="background:var(--jw)"></i><i style="background:var(--wi)"></i><i style="background:var(--re)"></i><i style="background:var(--br)"></i></div>
   <div class="foot">
     <div class="f-head">
       <img class="f-logo" src="/images/logo-chronologeek.webp" alt="Chronologeek — Geek Timelines" width="1143" height="101"/>
@@ -859,7 +859,7 @@ details[open] .chevd{transform:rotate(180deg)}
         Every medium, chronological order, spoiler-free. Built and maintained
         by one person who watches everything twice.</p>
     </div>
-    <nav class="f-uni" aria-label="Timelines"><h4>Timelines</h4><ul><li><a href="/starwars" style="--k:var(--sw)"><i>SW</i>Star Wars</a></li><li><a href="/marvel" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a></li><li><a href="/dc" style="--k:var(--dc)"><i>DC</i>DC Multiverse</a></li><li><a href="/avatar" style="--k:var(--av)"><i>AV</i>Avatar Legends</a></li><li><a href="/startrek" style="--k:var(--st)"><i>ST</i>Star Trek</a></li><li><a href="/walkingdead" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a></li><li><a href="/dragonage" style="--k:var(--da)"><i>DA</i>Dragon Age</a></li><li><a href="/assassinscreed" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a></li><li><a href="/dcanimation" style="--k:var(--dca)"><i>DCA</i>DC Animation</a></li><li><a href="/jurassicworld" style="--k:var(--jw)"><i>JW</i>Jurassic World</a></li><li><a href="/witcher" style="--k:var(--wi)"><i>TW</i>The Witcher</a></li><li><a href="/residentevil" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></li></ul></nav>
+    <nav class="f-uni" aria-label="Timelines"><h4>Timelines</h4><ul><li><a href="/starwars" style="--k:var(--sw)"><i>SW</i>Star Wars</a></li><li><a href="/marvel" style="--k:var(--mcu)"><i class="w">MCU</i>Marvel</a></li><li><a href="/dc" style="--k:var(--dc)"><i>DC</i>DC Multiverse</a></li><li><a href="/avatar" style="--k:var(--av)"><i>AV</i>Avatar Legends</a></li><li><a href="/startrek" style="--k:var(--st)"><i>ST</i>Star Trek</a></li><li><a href="/walkingdead" style="--k:var(--twd)"><i>TWD</i>The Walking Dead</a></li><li><a href="/dragonage" style="--k:var(--da)"><i>DA</i>Dragon Age</a></li><li><a href="/assassinscreed" style="--k:var(--ac)"><i>AC</i>Assassin’s Creed</a></li><li><a href="/dcanimation" style="--k:var(--dca)"><i>DCA</i>DC Animation</a></li><li><a href="/jurassicworld" style="--k:var(--jw)"><i>JW</i>Jurassic World</a></li><li><a href="/witcher" style="--k:var(--wi)"><i>TW</i>The Witcher</a></li><li><a href="/residentevil" style="--k:var(--re)"><i class="w">RE</i>Resident Evil</a></li><li><a href="/bladerunner" style="--k:var(--br)"><i>BR</i>Blade Runner</a></li></ul></nav>
     <nav class="f-more" aria-label="More"><ul>
       <li><a href="/deep-dives/" class="doss">Deep Dives</a></li>
       <li><a href="#" class="upc" aria-current="page">Upcoming releases</a></li>
@@ -869,8 +869,8 @@ details[open] .chevd{transform:rotate(180deg)}
     <div class="legal">
       This product uses the <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>
       API but is not endorsed or certified by TMDB. Book data from
-      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead,
-      Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are
+      <a href="https://openlibrary.org/" rel="noopener">Open Library</a>. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon
+      Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are
       trademarks of their respective owners; Chronologeek is an independent fan project.
       <br/>© 2026 Chronologeek — <a href="/">chronologeek.app</a>
     </div>
@@ -898,13 +898,14 @@ details[open] .chevd{transform:rotate(180deg)}
            dcanimation:['DC Animation','var(--dca)'],
            jurassic:['Jurassic World','var(--jw)'],
            witcher:['The Witcher','var(--wi)'],
-           residentevil:['Resident Evil','var(--re)']};
+           residentevil:['Resident Evil','var(--re)'],
+           bladerunner:['Blade Runner','var(--br)']};
   /* i18n-off — les codes de ligne, ceux du plan de l'accueil et du pied de
      page. Ils s'écrivent pareil dans les deux langues. Marvel et Resident
      Evil sont écrits en blanc : leur rouge est trop sombre pour l'encre. */
   var CODE={starwars:'SW',marvel:'MCU',dc:'DC',avatar:'AV',startrek:'ST',twd:'TWD',
             dragonage:'DA',assassinscreed:'AC',dcanimation:'DCA',jurassic:'JW',
-            witcher:'TW',residentevil:'RE'};
+            witcher:'TW',residentevil:'RE',bladerunner:'BR'};
   var BLANC={marvel:1,residentevil:1};
   /* i18n-on */
   var KIND={film:['Movie','#64b5f6'],tv:['TV show','#81c784'],comic:['Comic','#fb923c'],

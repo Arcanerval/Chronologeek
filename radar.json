@@ -120,7 +120,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "c. 362 BBY",
-  "syn": "The High Republic Adventures – Pathfinders 6 is the upcoming sixth and final issue of the 2026 comic book series Star Wars: The High Republic Adventures – Pathfinders. The issue will be written by George Mann, illustrated by Vincenzo Riccardi, and published by Dark Horse Comics on October 21, 2026.",
+  "syn": "The High Republic Adventures – Pathfinders 6 is the upcoming sixth and final issue of the 2026 comic book miniseries Star Wars: The High Republic Adventures – Pathfinders. The issue will be written by George Mann, illustrated by Vincenzo Riccardi, and published by Dark Horse Comics on October 21, 2026.",
   "wiki": "The High Republic Adventures – Pathfinders 6",
   "syn_fr": "The High Republic Adventures – Pathfinders 6 est le sixième et dernier numéro de la mini-série de bandes dessinées Star Wars: The High Republic Adventures – Pathfinders écrit par George Mann dans le cadre du projet multimédia Star Wars : La Haute République.",
   "kindKey": "comic",
@@ -362,6 +362,31 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "bladerunner",
+  "title": "Blade Runner 2099",
+  "date_sort": "2026-11-25",
+  "date_txt": "25/11/2026",
+  "kind": "Série",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Fifty years after the events of Blade Runner 2049, Los Angeles has been reborn, just not by humanity. Cora, a fugitive in a final bid to stop running, takes on one last identity: a Blade Runner. Forced to partner with Olwen, a Replicant days from dying, she hunts down a runaway hiding a truth that could collapse their fragile city.",
+  "wiki": "",
+  "syn_fr": "Dans le Los Angeles de 2099, Cora a vécu toute sa vie en cavale, un caméléon forcé d'adopter de nombreuses identités. Pour assurer un avenir stable à son frère, elle prend une dernière identité et est contrainte de s'associer à Olwen, une Blade Runner confrontée à la fin de sa vie. Les deux sont entraînés dans une conspiration grandissante qui représente une menace existentielle pour une ville qui lutte pour renaître.",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 0,
+   "mark": "saison"
+  },
+  "poster": "/piXH0UI5m0m1d0CCC5ExDabWeDt.jpg",
+  "tmdb": 171802,
+  "media": "tv"
+ },
+ {
   "universe": "starwars",
   "title": "The Fall of Kylo Ren 5",
   "date_sort": "2026-12-02",
@@ -394,7 +419,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
+  "poster": "/sLYCyO58UvBuBtbHTQjPCCgJ4dG.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },
@@ -525,7 +550,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "0 ABY",
-  "syn": "Princess of the Rebellion is a forthcoming young adult novel focusing on Princess Leia that takes place between the events of Episode IV: A New Hope and Episode V: The Empire Strikes Back, and will be published by Random House on May 4, 2027, as part of the 50th anniversary of A New Hope. Written by Claudia Gray, the book will focus on Leia in the aftermath of the Battle of Yavin as the Rebel Alli…",
+  "syn": "Princess of the Rebellion is a forthcoming young adult novel focusing on Princess Leia that takes place between the events of Episode IV: A New Hope and Episode V: The Empire Strikes Back, and will be published by Random House/Star Wars on May 4, 2027, as part of the 50th anniversary of A New Hope. Written by Claudia Gray, the book will focus on Leia in the aftermath of the Battle of Yavin as the …",
   "wiki": "Princess of the Rebellion",
   "syn_fr": "Princess of the Rebellion est un roman jeunes adultes écrit par Claudia Gray. Il sera publié le 4 mai 2027 par Disney–Lucasfilm Press aux États-Unis. Il sera adapté en livre audio aux États-Unis.",
   "kindKey": "novel",

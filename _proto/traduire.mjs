@@ -335,6 +335,13 @@ const TRADUCTIONS = [
   ['⚠️ Pas la version Endgame Encore !!! Elle spoile de futurs projets !',
    'Not Endgame Encore version !!! It spoils future projects !'],
 
+  /* ── la carte Blade Runner du 12 octobre 2026 ───────────────────
+     Rien n'y change de nom : les films, Black Lotus et les comics portent
+     le même titre des deux côtés. */
+  ['Nouvelle timeline : Blade Runner', 'New timeline: Blade Runner'],
+  ["Les deux films, les trois courts métrages, la série Black Lotus et les comics dans l'ordre chronologique — 16 œuvres, de Blade Runner : Origins en 2009 à Blade Runner 2049.",
+   'The two movies, the three shorts, the Black Lotus show and the comics in chronological order — 16 works, from Blade Runner: Origins in 2009 to Blade Runner 2049.'],
+
   /* ── la carte Resident Evil du 24 septembre 2026 ────────────────
      Aucune œuvre de la saga n'a de titre français : Raccoon City, Shadows
      of Rose et les mangas gardent le leur des deux côtés. */

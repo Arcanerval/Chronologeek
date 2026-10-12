@@ -69,6 +69,12 @@ sont la source, `node _proto/traduire-residentevil.mjs` écrit
 et douze univers. Trente œuvres en quatre phases, aucune traduite — Capcom
 n'a jamais sorti un titre de la saga en français, et c'est la seule page du
 site dont `RETROUVES` est vide.
+**Blade Runner est le neuvième** — `en-bladerunner.html` +
+`data-bladerunner-en.js` sont la source, `node _proto/traduire-bladerunner.mjs`
+écrit `e-bladerunner.html` et `data-bladerunner.js`. Publié le 12 octobre 2026
+sous `/bladerunner` et `/fr/bladerunner` : le site compte trente-six pages et
+treize univers. Seize œuvres en trois ères — voir « Blade Runner, le treizième
+univers » plus bas.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -83,7 +89,7 @@ Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
 Assassin's Creed `#d4a02c`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
 DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`,
 The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`),
-Resident Evil `#dc0000`.
+Resident Evil `#dc0000`, Blade Runner `#ff5f1f`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Assassin's Creed est passé du rouge à l'or le 24 septembre 2026**, sur
@@ -509,6 +515,48 @@ Quatre points qui ont demandé un arbitrage :
 
 Tout cela vit dans un bloc `i18n-off` : les deux libellés (« Bande-annonce » /
 « Trailer ») sont choisis à l'exécution, comme les noms de mois.
+
+## Blade Runner, le treizième univers
+
+Publié le 12 octobre 2026, directement au plan de métro, bâti sur la page
+Resident Evil : une ligne, un parcours, une seule date, pas de table `RT` —
+dix des seize arrêts sont des comics. Code de ligne **BR**, trois stations
+« ÈRE N / 3 ».
+
+- **Les données sortent d'un script** : `node _proto/construire-bladerunner.mjs`
+  écrit `data-bladerunner-en.js` depuis le document de Niko, et c'est lui qu'on
+  corrige. La page `en-bladerunner.html`, elle, s'édite à la main — le
+  générateur qui l'a tirée de Resident Evil ne doit plus tourner.
+- **Trois ères posées par moi**, le document étant une liste plate, validées à
+  l'écran : The Tyrell Era (2009-2019), The Blackout (2022-2032), The Wallace
+  Era (2036-2049). Les niveaux, eux, sont dans le document : E = `must`,
+  I = `important`, sans marque = `bonus` — Black Lotus comprise.
+- **L'orange `#ff5f1f`** est demandé par Niko — le logo Tyrell, les titres de
+  2049. Il est poussé vers le vermillon et saturé à fond parce que Dragon Age
+  tient déjà un orange brûlé (`#e07b39`) : deux oranges voisins sur l'accueil
+  sont le risque que les trois rouges avaient posé à Assassin's Creed.
+- **« Final Cut » est un `bignote`**, rendu comme « Ultimate Edition » chez DC :
+  l'avertissement est dans le texte, à l'encre `--hot`, et la page n'ajoute pas
+  de gyrophare.
+- **Les dix synopsis de comics (`desc`) sont écrits**, courts et sans spoil,
+  d'après le wiki Blade Runner — TMDB ne connaît pas les comics, et rien n'est
+  recopié de l'éditeur.
+- **Huit comics sur dix portent le badge VO.** Seuls *Blade Runner 2019* et
+  *Blade Runner 2029* ont une édition française, chez Delcourt — relevé au
+  catalogue de la BnF (`catalogue.bnf.fr/api/SRU`), qui répond à un script là
+  où Google Books coupe au quota.
+- **Le bouton « remonter en haut » est plus grand que les autres** : 136 px, et
+  100 sur téléphone. La licorne en origami est une silhouette fine, et dans le
+  carré de 96 px elle paraissait deux fois plus petite que Grogu.
+  `brtop1.webp` est blanche, `brtop2.webp` orange et penchée de 10°.
+- ***Blade Runner 2099* n'est pas dans la timeline**, décision de Niko : elle y
+  entrera à sa sortie (TMDB `tv/171802`, 25 novembre 2026). D'ici là c'est le
+  radar qui l'annonce — `TMDB_COMPANY_NAMES["bladerunner"]` interroge Alcon,
+  et `UNIVERS_TITRE` exige `blade runner`, Alcon produisant tout le reste
+  de son catalogue.
+- **La clé de stockage est `cg-proto-bladerunner`**, celle du `data-u` de
+  l'accueil : pas d'exception à ajouter dans `read()`, contrairement à Star
+  Trek, DC Animation et Resident Evil.
 
 ## Les parcours
 
@@ -1597,7 +1645,7 @@ français en descend, par `node _proto/traduire-startrek.mjs`. C'est le seul end
 du dépôt où l'on traduit dans ce sens.
 
 **Ne jamais inscrire Star Trek, The Walking Dead, Dragon Age, Assassin's Creed,
-DC Animation, Jurassic World, The Witcher ni Resident Evil dans `PAGES` de
+DC Animation, Jurassic World, The Witcher, Resident Evil ni Blade Runner dans `PAGES` de
 `traduire-pages.mjs`.** Ce script produit l'anglais depuis le français : il
 écraserait la source avec une retraduction de sa propre sortie, sans erreur et
 sans message.
@@ -3412,6 +3460,8 @@ jeux de la ligne principale en `must` ; les quatre films d'animation, la
 série Infinite Darkness, les deux Outbreak et les deux Chronicles — qui
 récapitulent ce qui a déjà été joué — en `important` ; le reste en `bonus`,
 dont les deux démos, Beginning Hour et Maiden.
+Blade Runner 16 (2 must / 3 important / 11 bonus) — les marques « E » et « I »
+du document, le reste étant « bonus content ».
 
 **Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
 repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un

@@ -111,7 +111,7 @@ for (const s of ['Chronologeek — Avatar Legends (proto E)', 'Opening Credits',
 /* La refonte « ligne de métro » du 28 septembre 2026 : les codes de ligne,
    comme sur un plan, et les mots que le métro écrit pareil dans les deux
    langues. */
-for (const s of ['SW', 'MCU', 'DC', 'AV', 'ST', 'TWD', 'DA', 'AC', 'DCA', 'JW', 'TW', 'RE',
+for (const s of ['SW', 'MCU', 'DC', 'AV', 'ST', 'TWD', 'DA', 'AC', 'DCA', 'JW', 'TW', 'RE', 'BR',
                  'DD', 'Station', 'Terminus', 'stations,', '· station', 'stations ·', '· from']) identiques.add(s);
 
 function ajoute(fr, en) {
@@ -417,12 +417,15 @@ const TRADUCTIONS = [
      pour les douze cases d'un coup. Raccoon City et Requiem ne se
      traduisent pas : aucun titre de la saga n'a de version française. */
   ['Resident Evil', 'Resident Evil'],
-  ['Douze chronologies tenues à jour, en français et en anglais.',
-   'Twelve timelines kept up to date, in French and English.'],
+  /* ── la case Blade Runner de l'accueil, 12 octobre 2026 ──────── */
+  ['Blade Runner', 'Blade Runner'],
+  ['Films · Série · Comics · Des origines à 2049', 'Movies · Show · Comics · From the origins to 2049'],
+  ['Treize chronologies tenues à jour, en français et en anglais.',
+   'Thirteen timelines kept up to date, in French and English.'],
   ['Jeux · Films · Mangas · De Raccoon City à Requiem',
    'Games · Movies · Mangas · From Raccoon City to Requiem'],
-  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher et Resident Evil sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
-   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher and Resident Evil are trademarks of their respective owners; Chronologeek is an independent fan project.'],
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil et Blade Runner sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.',
+   '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are trademarks of their respective owners; Chronologeek is an independent fan project.'],
 
   /* ── la case The Witcher de l'accueil, 20 septembre 2026 ────────
      « faits » plutôt que « vus » : cette timeline se lit et se joue autant
@@ -579,8 +582,8 @@ const TRADUCTIONS = [
   // titres de référencement de `seo.json` et dans le pied de page.
   // Depuis le 30 septembre 2026 elle énumère les douze univers, suivis ou non
   // par le radar : aucun n'est terminé, une annonce peut tomber (Niko).
-  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher et Resident Evil — mises à jour chaque jour.',
-   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher and Resident Evil release — updated every single day.'],
+  ['Toutes les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil et Blade Runner — mises à jour chaque jour.',
+   'Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil and Blade Runner release — updated every single day.'],
   // le plan de métro du radar, publié le 30 septembre 2026
   ['univers au départ', 'universes departing'],
   ['prochain départ', 'next departure'],
@@ -697,8 +700,8 @@ const TRADUCTIONS = [
      celui de la maquette que Niko a validée (maquette-accueil-train-en) ;
      celui de la page Star Wars est écrit ici, dans le même registre. */
   ['Tous les univers, dans l’ordre', 'Every universe, in order'],
-  ['Montez à bord du Train multiversel. Explorez les timelines de vos univers préférés. Douze lignes, un seul départ : le Nexus.',
-   'Hop aboard the Multiverse Train. Explore the timelines of your favorite universes. Twelve tracks, one departure point: the Nexus.'],
+  ['Montez à bord du Train multiversel. Explorez les timelines de vos univers préférés. Treize lignes, un seul départ : le Nexus.',
+   'Hop aboard the Multiverse Train. Explore the timelines of your favorite universes. Thirteen tracks, one departure point: the Nexus.'],
   ['arrêts.', 'stops.'],
   ['Chaque station est une ère, chaque arrêt une œuvre — dans l’ordre chronologique, tous supports confondus.',
    'Each station represents an era in a timeline, and each stop represents a new work—all in chronological order.'],
@@ -706,7 +709,6 @@ const TRADUCTIONS = [
   ['votre train : vous en êtes là', 'your train: this is where you are'],
   ['Prochain départ', 'Next departure'],
   ['Toutes les lignes', 'All lines'],
-  ['Douze chronologies tenues à jour, en français et en anglais.', 'Twelve timelines kept up to date, in French and English.'],
   // le décompte d'une case ; les nombres varient, le gabarit suffit
   ['/ 62 · 6 stations', '/ 62 · 6 stations'],
   // le mois de la case, seul : le lexique le rendait en minuscules

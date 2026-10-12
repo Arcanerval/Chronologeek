@@ -85,6 +85,7 @@ export const SOURCES = {
   jurassic: { fr: ['data-jurassic.js', 'JURASSIC'], en: ['data-jurassic-en.js', 'JURASSIC'] },
   witcher: { fr: ['data-witcher.js', 'WITCHER'], en: ['data-witcher-en.js', 'WITCHER'] },
   residentevil: { fr: ['data-re.js', 'RE'], en: ['data-re-en.js', 'RE'] },
+  bladerunner: { fr: ['data-bladerunner.js', 'BLADERUNNER'], en: ['data-bladerunner-en.js', 'BLADERUNNER'] },
 };
 
 // Le fil d'Ariane des pages qui n'ont pas de timeline. La clé du libellé est
@@ -348,7 +349,7 @@ export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) 
   if (cle === 'accueil') {
     blocs.push(blocSite(site, t, moi));
     // Les dix univers : la liste que l'accueil montre, et la seule de la page.
-    const huit = ['sw', 'mcu', 'dc', 'avatar', 'startrek', 'twd', 'dragonage', 'assassinscreed', 'dcanimation', 'jurassic', 'witcher', 'residentevil'].map(k => ({
+    const huit = ['sw', 'mcu', 'dc', 'avatar', 'startrek', 'twd', 'dragonage', 'assassinscreed', 'dcanimation', 'jurassic', 'witcher', 'residentevil', 'bladerunner'].map(k => ({
       t: 'CollectionPage',
       nom: nomUnivers(k),
       url: site + urls[k],
