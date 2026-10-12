@@ -111,9 +111,17 @@ const vignette = (local, tmdb) => {
    bignote   : la ligne que Niko pose sous le film, rendue comme
                « Ultimate Edition » chez DC
    desc      : le synopsis d'un comic — TMDB ne les connait pas
-   lang      : 'vo' quand le comic n'a pas d'edition francaise. Seuls
-               Blade Runner 2019 et 2029 en ont une, chez Delcourt (catalogue
-               de la BnF, releve le 12 octobre 2026) */
+   lang      : 'vo' quand l'oeuvre n'a pas de version francaise — pas
+               d'edition francaise pour un comic, jamais doublee pour ce qui
+               se regarde, la regle des webseries de The Walking Dead et de
+               Battle at Big Rock. Releve le 12 octobre 2026 :
+               · comics : seuls Blade Runner 2019 et 2029 ont une edition
+                 francaise, chez Delcourt (catalogue de la BnF) ;
+               · les trois courts : sortis en France en bonus du DVD et du
+                 Blu-ray de 2049 (« Prologues »), sous-titres, jamais doubles ;
+               · Black Lotus : sous-titree en francais chez Crunchyroll, qui
+                 ne la double qu'en espagnol d'Amerique latine.
+               Les deux films, eux, sont doubles. */
 const E = [
   { ere: 0, id: 'br-fcbd2021-origins', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'A short story from the Free Comic Book Day 2021 special, set alongside Blade Runner: Origins: LAPD Detective Cal Moreaux and the case of a Tyrell Corporation bioengineer found dead.',
@@ -137,7 +145,7 @@ const E = [
     img: vignette('bladerunnermovie.webp', '/2spEHYDcyE9r9mS7AFEscfKVDzO.jpg'),
     bignote: '⚠️ Final Cut version!!!' },
 
-  { ere: 1, id: 'br-blackout2022', type: 'short', level: 'important', tmdb: '475946', media: 'movie',
+  { ere: 1, id: 'br-blackout2022', type: 'short', level: 'important', lang: 'vo', tmdb: '475946', media: 'movie',
     title: 'Blade Runner: Black Out 2022', date: '2022',
     img: vignette('blackout2022.webp', '/7gZR9nztTzZIskcRCuDfhvrd5Ds.jpg') },
   { ere: 1, id: 'br-fcbd2021-2029', type: 'comic', level: 'bonus', lang: 'vo',
@@ -147,7 +155,7 @@ const E = [
   { ere: 1, id: 'br-2029', type: 'comic', level: 'bonus',
     desc: 'Los Angeles, 2029. Replicants are banned and the Tyrell Corporation is bankrupt. Back on the job as a Blade Runner, Ash investigates replicants said to be working on the Sepulveda Sea Wall, and crosses the path of one she failed to retire years earlier — who is now raising an army.',
     title: 'Blade Runner 2029', date: '2029', img: vignette('bladerunner2029.webp') },
-  { ere: 1, id: 'br-blacklotus', type: 'anime', level: 'bonus', tmdb: '84553', media: 'tv',
+  { ere: 1, id: 'br-blacklotus', type: 'anime', level: 'bonus', lang: 'vo', tmdb: '84553', media: 'tv',
     title: 'Blade Runner: Black Lotus', date: '2032',
     img: vignette('blacklotus.webp', '/vRyC5WT7ytRflfEFFyRmGeZc0Cf.jpg') },
   { ere: 1, id: 'br-bl-leavingla', type: 'comic', level: 'bonus', lang: 'vo',
@@ -159,13 +167,13 @@ const E = [
     title: 'Blade Runner: Black Lotus - Las Vegas', date: '2032',
     img: vignette('lasvegas.webp') },
 
-  { ere: 2, id: 'br-nexusdawn', type: 'short', level: 'important', tmdb: '473072', media: 'movie',
+  { ere: 2, id: 'br-nexusdawn', type: 'short', level: 'important', lang: 'vo', tmdb: '473072', media: 'movie',
     title: 'Blade Runner: 2036 Nexus Dawn', date: '2036',
     img: vignette('2036nexusdawn.webp', '/pMYSFleKKpLGhIbTiqd3o5r96jo.jpg') },
   { ere: 2, id: 'br-2039', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'Los Angeles, 2039. Niander Wallace’s new replicants obey without question, and one of them, Luv, is now a Blade Runner hunting older models. Someone from Ash’s first case comes back to the city to ask for her help. The conclusion of Ash’s story, begun in Blade Runner 2019.',
     title: 'Blade Runner 2039', date: '2039', img: vignette('bladerunner2039.webp') },
-  { ere: 2, id: 'br-nowheretorun', type: 'short', level: 'important', tmdb: '475759', media: 'movie',
+  { ere: 2, id: 'br-nowheretorun', type: 'short', level: 'important', lang: 'vo', tmdb: '475759', media: 'movie',
     title: 'Blade Runner: 2048 Nowhere to Run', date: '2048',
     img: vignette('2048nowheretorun.webp', '/gps88CAZeTTuorh66xwMXg0lBG4.jpg') },
   { ere: 2, id: 'br-2049', type: 'film', level: 'must', tmdb: '335984', media: 'movie',

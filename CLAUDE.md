@@ -541,10 +541,16 @@ dix des seize arrêts sont des comics. Code de ligne **BR**, trois stations
 - **Les dix synopsis de comics (`desc`) sont écrits**, courts et sans spoil,
   d'après le wiki Blade Runner — TMDB ne connaît pas les comics, et rien n'est
   recopié de l'éditeur.
-- **Huit comics sur dix portent le badge VO.** Seuls *Blade Runner 2019* et
-  *Blade Runner 2029* ont une édition française, chez Delcourt — relevé au
-  catalogue de la BnF (`catalogue.bnf.fr/api/SRU`), qui répond à un script là
-  où Google Books coupe au quota.
+- **Douze œuvres sur seize portent le badge VO**, et seuls les deux films et
+  deux comics y échappent. Côté comics, *Blade Runner 2019* et *Blade Runner
+  2029* sont les seuls à avoir une édition française, chez Delcourt — relevé
+  au catalogue de la BnF (`catalogue.bnf.fr/api/SRU`), qui répond à un script
+  là où Google Books coupe au quota. Côté écran, la règle est celle des
+  webséries de The Walking Dead et de *Battle at Big Rock* : **jamais doublé
+  vaut VO, même sous-titré**. Les trois courts sont sortis en France en bonus
+  de 2049, sous-titrés ; *Black Lotus* est sous-titrée chez Crunchyroll, qui
+  ne la double qu'en espagnol. Corrigé le 12 octobre 2026 sur une remarque de
+  Niko : le premier jet n'avait regardé que les comics.
 - **Le bouton « remonter en haut » est plus grand que les autres** : 136 px, et
   100 sur téléphone. La licorne en origami est une silhouette fine, et dans le
   carré de 96 px elle paraissait deux fois plus petite que Grogu.
