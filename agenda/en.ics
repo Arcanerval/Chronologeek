@@ -9,8 +9,8 @@ X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:875b7dd2d5b3c4a9871e-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
 SUMMARY:Marvel · VisionQuest · S1E01 · Premiere
 DESCRIPTION:With a bounty on his head\, Vision must confront his nature and
   resist Ultron's influence to survive.\n\nhttps://chronologeek.app/upcomin
@@ -45,6 +45,16 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:f8a89172681b8631ce3c-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Marvel · VisionQuest · S1E03
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:c62edc60f07314354488-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -55,16 +65,6 @@ DESCRIPTION:Hyperspace Stories: Mace is a canceled graphic novel in the Sta
   Windu. The issue was written by Justina Ireland\, illustrated by Georges 
  Duarte and PH Gomes\, and was announced to be published by Dark Horse Comi
  cs.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:f8a89172681b8631ce3c-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261021
-DTEND;VALUE=DATE:20261022
-SUMMARY:Marvel · VisionQuest · S1E03
-DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -141,8 +141,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:d00e421dcfdcc116eafe-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261029
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
 SUMMARY:Marvel · VisionQuest · S1E05
 DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
@@ -176,8 +176,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f2627e3803b11d53bb18-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261104
-DTEND;VALUE=DATE:20261105
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261104
 SUMMARY:Marvel · VisionQuest · S1E07
 DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
@@ -186,8 +186,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:58d32c0da9a34aa99b62-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
 SUMMARY:Marvel · VisionQuest · S1E08 · Finale
 DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
