@@ -7,25 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties · Marvel
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:875b7dd2d5b3c4a9871e-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-SUMMARY:VisionQuest · S1E01 · Première
-DESCRIPTION:Série\n\nUne nouvelle version de Vision ayant échappé à ceu
- x qui cherchaient à faire de lui une arme\, vit dans la clandestinité. E
- n quête d’un nouveau sens à sa vie\, il consulte les IA intégrées à
-  son programme\, notamment Friday\, Edith\, Jarvis et le tristement célè
- bre Ultron. Son existence discrète prend fin lorsque sa tête est mise à
-  prix\, le contraignant à prendre la fuite avec Thomas Shepherd\, un gar
- çon mystérieux qui pourrait bien être la réincarnation du fils de Visi
- on. Tout en échappant à ses poursuivants\, Vision doit se confronter à 
- sa propre nature\, résister à l’influence d’Ultron et percer le…\n
- \nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:f8a89172681b8631ce3c-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020

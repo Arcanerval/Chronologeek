@@ -7,30 +7,17 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:875b7dd2d5b3c4a9871e-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-SUMMARY:Marvel · VisionQuest · S1E01 · Premiere
-DESCRIPTION:With a bounty on his head\, Vision must confront his nature and
-  resist Ultron's influence to survive.\n\nhttps://chronologeek.app/upcomin
- g
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:0f197fda5f1e3c4009bd-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261015
 SUMMARY:Star Wars · Rogue One - Chirrut & Baze 1
-DESCRIPTION:Rogue One – Chirrut & Baze 1 is an upcoming canon one-shot co
- mic focusing on Baze Malbus and Chirrut Îmwe that will be published as pa
- rt of a 2026 series of one-shots for the ten-year anniversary of Rogue One
- : A Star Wars Story. The issue was written by Stephanie Phillips\, illustr
- ated by Sean Chen\, Kieran McKeown\, and Yen Nitro\, and will be published
-  by Marvel Comics on October 14\, 2026.\n\nhttps://chronologeek.app/upcomi
- ng
+DESCRIPTION:Rogue One – Chirrut & Baze 1 is a canon one-shot comic focusi
+ ng on Baze Malbus and Chirrut Îmwe that was published as part of a 2026 s
+ eries of one-shots for the ten-year anniversary of Rogue One: A Star Wars 
+ Story. The issue was written by Stephanie Phillips\, illustrated by Sean C
+ hen and Yen Nitro\, and was published by Marvel Comics on October 14\, 202
+ 6.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT

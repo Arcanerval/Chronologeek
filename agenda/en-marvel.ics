@@ -7,18 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · Marvel
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:875b7dd2d5b3c4a9871e-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-SUMMARY:VisionQuest · S1E01 · Premiere
-DESCRIPTION:With a bounty on his head\, Vision must confront his nature and
-  resist Ultron's influence to survive.\n\nhttps://chronologeek.app/upcomin
- g
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:f8a89172681b8631ce3c-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020

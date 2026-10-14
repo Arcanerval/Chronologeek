@@ -1,31 +1,5 @@
 [
  {
-  "universe": "marvel",
-  "title": "VisionQuest",
-  "date_sort": "2026-10-13",
-  "date_txt": "13/10/2026",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
-  "wiki": "",
-  "syn_fr": "Une nouvelle version de Vision ayant échappé à ceux qui cherchaient à faire de lui une arme, vit dans la clandestinité. En quête d’un nouveau sens à sa vie, il consulte les IA intégrées à son programme, notamment Friday, Edith, Jarvis et le tristement célèbre Ultron. Son existence discrète prend fin lorsque sa tête est mise à prix, le contraignant à prendre la fuite avec Thomas Shepherd, un garçon mystérieux qui pourrait bien être la réincarnation du fils de Vision. Tout en échappant à ses poursuivants, Vision doit se confronter à sa propre nature, résister à l’influence d’Ultron et percer le mystère qui entoure son jeune compagnon s’il veut survivre.",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 1,
-   "mark": "premiere",
-   "eFin": 2
-  },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
-  "tmdb": 213375,
-  "media": "tv"
- },
- {
   "universe": "starwars",
   "title": "Rogue One - Chirrut & Baze 1",
   "date_sort": "2026-10-14",
@@ -34,7 +8,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "1 BBY",
-  "syn": "Rogue One – Chirrut & Baze 1 is an upcoming canon one-shot comic focusing on Baze Malbus and Chirrut Îmwe that will be published as part of a 2026 series of one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. The issue was written by Stephanie Phillips, illustrated by Sean Chen, Kieran McKeown, and Yen Nitro, and will be published by Marvel Comics on October 14, 2026.",
+  "syn": "Rogue One – Chirrut & Baze 1 is a canon one-shot comic focusing on Baze Malbus and Chirrut Îmwe that was published as part of a 2026 series of one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. The issue was written by Stephanie Phillips, illustrated by Sean Chen and Yen Nitro, and was published by Marvel Comics on October 14, 2026.",
   "wiki": "Rogue One – Chirrut & Baze 1",
   "syn_fr": "Rogue One – Chirrut & Baze 1 est le quatrième numéro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il est écrit par Marc Bernardin.",
   "kindKey": "comic",
