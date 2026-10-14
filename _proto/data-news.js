@@ -38,6 +38,13 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
 
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"Rogue One : Chirrut & Baze", meta:"1 BBY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après "+
+            "Rogue One : Cassian Andor et juste avant le film.",
+        href:"e-dossier-star-wars.html#1-bby-rogue-one-chirrut-baze",
+        cta:"Voir dans le Dossier" },
+
       { nat:"site", uni:"bladerunner", kind:"timeline",
         title:"Nouvelle timeline : Blade Runner",
         txt:"Les deux films, les trois courts métrages, la série Black "+
@@ -45,13 +52,6 @@ window.CG_NEWS = {
             "de Blade Runner : Origins en 2009 à Blade Runner 2049.",
         img:"/images/bladerunnertimeline.webp",
         href:"e-bladerunner.html", cta:"Ouvrir la timeline" },
-
-      { nat:"media", uni:"sw", kind:"comic",
-        title:"Rogue One : Chirrut & Baze", meta:"1 BBY", vo:true,
-        txt:"Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après "+
-            "Rogue One : Cassian Andor et juste avant le film.",
-        href:"e-dossier-star-wars.html#1-bby-rogue-one-chirrut-baze",
-        cta:"Voir dans le Dossier" },
 
       { nat:"media", uni:"avatar", kind:"anime",
         title:"Avatar : Les Sept Refuges", meta:"399 AG",

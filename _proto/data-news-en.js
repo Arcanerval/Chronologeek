@@ -7,8 +7,8 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-10", label:"October 2026", items:[
-      {"nat":"site","uni":"bladerunner","kind":"timeline","title":"New timeline: Blade Runner","txt":"The two movies, the three shorts, the Black Lotus show and the comics in chronological order — 16 works, from Blade Runner: Origins in 2009 to Blade Runner 2049.","img":"/images/bladerunnertimeline.webp","href":"en-bladerunner.html","cta":"Open the timeline"},
       {"nat":"media","uni":"sw","kind":"comic","title":"Rogue One: Chirrut & Baze","meta":"1 BBY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Cassian Andor and just before the movie.","href":"en-dossier-star-wars.html#1-bby-rogue-one-chirrut-baze","cta":"See in the Deep Dive"},
+      {"nat":"site","uni":"bladerunner","kind":"timeline","title":"New timeline: Blade Runner","txt":"The two movies, the three shorts, the Black Lotus show and the comics in chronological order — 16 works, from Blade Runner: Origins in 2009 to Blade Runner 2049.","img":"/images/bladerunnertimeline.webp","href":"en-bladerunner.html","cta":"Open the timeline"},
       {"nat":"media","uni":"avatar","kind":"anime","title":"Avatar: Seven Havens","meta":"399 AG","txt":"Added at the end of the Avatar Legends timeline, in 399 AG, in a new era: the Pavi & Nisha Era.","img":"/images/sevenhavens.webp","href":"en-avatar.html#avt-seven-havens-s1","cta":"See in the timeline"},
       {"nat":"media","uni":"sw","kind":"jeu","title":"Star Wars: Galactic Racer","meta":"5-10 ABY","txt":"Added to the Star Wars timeline, in 5-10 ABY, just before The Mandalorian.","img":"/images/galacticracer.webp","href":"en-starwars.html#sw-galacticracer","cta":"See in the timeline"}
     ]},
