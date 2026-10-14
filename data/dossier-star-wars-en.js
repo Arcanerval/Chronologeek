@@ -313,6 +313,7 @@ window.CGD={"eras":[
   {"kind":"it","k":"jeunesse","c":"#4ade80","id":"13-1-bby-rebel-rising","date":"13-1 BBY","title":"Rebel Rising","type":"Young adult novel","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-rogue-one-jyn-erso","date":"1 BBY","title":"Rogue One: Jyn Erso","type":"Comic","vo":true,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-rogue-one-cassian-andor","date":"1 BBY","title":"Rogue One: Cassian Andor","type":"Comic","vo":true,"note":""},
+  {"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-rogue-one-chirrut-baze","date":"1 BBY","title":"Rogue One: Chirrut &amp; Baze","type":"Comic","vo":true,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"1 BBY","title":"ROGUE ONE","type":"On screen"},
   {"kind":"it","k":"comic","c":"#fb923c","id":"1-bby-age-of-rebellion-grand-moff-tarkin","date":"1 BBY","title":"Age of Rebellion: Grand Moff Tarkin","type":"Comic","vo":false,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"1 BBY-0 ABY","title":"EPISODE IV: A NEW HOPE","type":"On screen"},

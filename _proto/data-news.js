@@ -46,6 +46,13 @@ window.CG_NEWS = {
         img:"/images/bladerunnertimeline.webp",
         href:"e-bladerunner.html", cta:"Ouvrir la timeline" },
 
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"Rogue One : Chirrut & Baze", meta:"1 BBY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après "+
+            "Rogue One : Cassian Andor et juste avant le film.",
+        href:"e-dossier-star-wars.html#1-bby-rogue-one-chirrut-baze",
+        cta:"Voir dans le Dossier" },
+
       { nat:"media", uni:"avatar", kind:"anime",
         title:"Avatar : Les Sept Refuges", meta:"399 AG",
         txt:"Ajouté à la fin de la timeline Avatar Legends, en 399 AG, dans "+

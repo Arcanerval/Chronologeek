@@ -335,6 +335,14 @@ const TRADUCTIONS = [
   ['⚠️ Pas la version Endgame Encore !!! Elle spoile de futurs projets !',
    'Not Endgame Encore version !!! It spoils future projects !'],
 
+  /* ── le comic Rogue One : Chirrut & Baze, ajouté le 14 octobre 2026 ──
+     Le one-shot des dix ans de Rogue One, entre Cassian Andor et le
+     film. Même moule que Edge of the Abyss. */
+  ['Rogue One : Chirrut & Baze', 'Rogue One: Chirrut & Baze'],
+  ['Rogue One : Chirrut &amp; Baze', 'Rogue One: Chirrut &amp; Baze'],
+  ['Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après Rogue One : Cassian Andor et juste avant le film.',
+   'Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Cassian Andor and just before the movie.'],
+
   /* ── la carte Blade Runner du 12 octobre 2026 ───────────────────
      Rien n'y change de nom : les films, Black Lotus et les comics portent
      le même titre des deux côtés. */

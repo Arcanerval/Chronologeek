@@ -337,6 +337,7 @@ const TRADUCTIONS = [
   /* Le Dossier et sa case passent à septembre le 1er septembre 2026, avec
      l'ajout de Hiding from the Dark. Même moule, seul le mois change. */
   ['À jour · septembre 2026', 'Updated · September 2026'],
+  ['À jour · octobre 2026', 'Updated · October 2026'],
 
   /* ── le bandeau de la page DC, passé à août le 18 août 2026 ──────
      La prod écrit « Updated · July 2026 » sur les quatre bandeaux ; seul
