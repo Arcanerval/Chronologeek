@@ -24,8 +24,19 @@ export const duree = f => Number(execFileSync('ffprobe',
    s'ajoute a la respiration et le montage traine. */
 export function parle(texte, lang, wav, { voix = VOIX[lang], debit = DEBIT } = {}) {
   const mp3 = wav.replace(/\.wav$/, '') + '.mp3';
-  execFileSync('py', ['-m', 'edge_tts', '--voice', voix, `--rate=${debit}`,
-    '--text', texte.replace(...PRONONCE[lang]), '--write-media', mp3], { stdio: 'ignore' });
+  /* le service refuse parfois une phrase au milieu d'une serie (403) : on
+     reessaie. Un refus a chaque essai veut dire edge-tts perime :
+     `py -m pip install -U edge-tts` (passe de 7.2.8 a 7.3.1 le 14 octobre 2026) */
+  for (let essai = 1; ; essai++) {
+    try {
+      execFileSync('py', ['-m', 'edge_tts', '--voice', voix, `--rate=${debit}`,
+        '--text', texte.replace(...PRONONCE[lang]), '--write-media', mp3], { stdio: 'ignore' });
+      break;
+    } catch (e) {
+      if (essai >= 4) throw e;
+      execFileSync('py', ['-c', `import time; time.sleep(${essai * 2})`]);
+    }
+  }
   execFileSync('ffmpeg', ['-y','-loglevel','error','-i', mp3,
     '-af', 'areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse', '-ar','48000','-ac','2', wav]);
   return duree(wav);
