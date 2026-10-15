@@ -38,6 +38,13 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
 
+      { nat:"media", uni:"mcu", kind:"serie",
+        title:"VisionQuest", meta:"2028",
+        txt:"Ajouté à la timeline Marvel, en 2028, juste après "+
+            "Spider-Man : Brand New Day.",
+        img:"/images/visionquest.webp",
+        href:"e-marvel.html#mcu-vq", cta:"Voir dans la timeline" },
+
       { nat:"media", uni:"sw", kind:"comic",
         title:"Rogue One : Chirrut & Baze", meta:"1 BBY", vo:true,
         txt:"Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après "+

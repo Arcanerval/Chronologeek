@@ -335,6 +335,16 @@ const TRADUCTIONS = [
   ['⚠️ Pas la version Endgame Encore !!! Elle spoile de futurs projets !',
    'Not Endgame Encore version !!! It spoils future projects !'],
 
+  /* ── la série VisionQuest, ajoutée le 15 octobre 2026 ─────────────
+     Après Spider-Man : Brand New Day, en 2028. La FAQ est celle de
+     Niko, en anglais, mot pour mot — « series takes » corrigé. */
+  ["La série se déroule environ 2 ans après Agatha All Along, quelque part entre l'automne et l'hiver 2028",
+   'The series takes place about 2 years after Agatha All Along, somewhere between fall and winter 2028'],
+  ['Parce que la série se situe ici chronologiquement',
+   'Because this is where the show falls chronologically'],
+  ['Ajouté à la timeline Marvel, en 2028, juste après Spider-Man : Brand New Day.',
+   'Added to the Marvel timeline, in 2028, right after Spider-Man: Brand New Day.'],
+
   /* ── le comic Rogue One : Chirrut & Baze, ajouté le 14 octobre 2026 ──
      Le one-shot des dix ans de Rogue One, entre Cassian Andor et le
      film. Même moule que Edge of the Abyss. */
@@ -1220,6 +1230,8 @@ const TITRES_IDENTIQUES = [
   '5-10 ABY',
   // Seven Havens, le 10 octobre 2026 : idem.
   '399 AG',
+  // Marvel · la série VisionQuest, le 15 octobre 2026 : même titre partout.
+  'VisionQuest',
   /* Dossier Star Wars · le roman jeune adulte VO ajouté le 1er septembre
      2026, et sa date. « ABY » est une unité inventée : elle ne se
      traduit pas. */
