@@ -7,21 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:0f197fda5f1e3c4009bd-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-SUMMARY:Rogue One - Chirrut & Baze 1
-DESCRIPTION:Rogue One – Chirrut & Baze 1 is a canon one-shot comic focusi
- ng on Baze Malbus and Chirrut Îmwe that was published as part of a 2026 s
- eries of one-shots for the ten-year anniversary of Rogue One: A Star Wars 
- Story. The issue was written by Stephanie Phillips\, illustrated by Sean C
- hen and Yen Nitro\, and was published by Marvel Comics on October 14\, 202
- 6.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:c62edc60f07314354488-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020

@@ -7,18 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:0f197fda5f1e3c4009bd-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-SUMMARY:Rogue One - Chirrut & Baze 1
-DESCRIPTION:Comic\n\nRogue One – Chirrut & Baze 1 est le quatrième numé
- ro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il es
- t écrit par Marc Bernardin.\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:c62edc60f07314354488-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020

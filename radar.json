@@ -1,22 +1,5 @@
 [
  {
-  "universe": "starwars",
-  "title": "Rogue One - Chirrut & Baze 1",
-  "date_sort": "2026-10-14",
-  "date_txt": "14/10/2026",
-  "kind": "Comic",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "1 BBY",
-  "syn": "Rogue One – Chirrut & Baze 1 is a canon one-shot comic focusing on Baze Malbus and Chirrut Îmwe that was published as part of a 2026 series of one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. The issue was written by Stephanie Phillips, illustrated by Sean Chen and Yen Nitro, and was published by Marvel Comics on October 14, 2026.",
-  "wiki": "Rogue One – Chirrut & Baze 1",
-  "syn_fr": "Rogue One – Chirrut & Baze 1 est le quatrième numéro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il est écrit par Marc Bernardin.",
-  "kindKey": "comic",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "avatar",
   "title": "Avatar: Seven Havens",
   "date_sort": "2026-10-16",
@@ -25,7 +8,7 @@
   "source": "TMDB",
   "precision": "day",
   "era": "",
-  "syn": "",
+  "syn": "Team Avatar sets out to find a missing bender, leading them into a dangerous confrontation with a ruthless gang of bandits.",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
@@ -356,7 +339,7 @@
    "e": 0,
    "mark": "saison"
   },
-  "poster": "/hr5aLuCdLC5X423c9G1pPkWR6Ud.jpg",
+  "poster": "/zgMUz8bScHMs3PSDNkDtJ0A0rLN.jpg",
   "tmdb": 171802,
   "media": "tv"
  },
