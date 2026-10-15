@@ -30,6 +30,7 @@ const RACINE = path.resolve(ICI, '..');
 
 const UNIVERS = {
   avatar: { code: 'AV', page: 'e-avatar', data: 'data-avatar', encre: '#7dd3fc' },
+  mcu: { code: 'MCU', page: 'e-marvel', data: 'data-mcu', encre: '#e23636' },
 };
 
 /* Une sortie : son univers, ses plans. `ere` designe une station par son
@@ -69,6 +70,39 @@ const SORTIES = {
         dit: '399 AG. Après une catastrophe, une jeune maîtresse de la terre découvre qu’elle est l’Avatar qui succède à Korra, et le monde la voit comme un présage de fin.' },
       { t: 'avant', lit: 'À voir *avant*',
         dit: 'Avant de commencer, les essentiels : Le Dernier Maître de l’Air, le film d’Aang, et La Légende de Korra.' },
+      { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },
+    ],
+  },
+
+  /* Le placement est la FAQ de Niko : environ 2 ans après Agatha All Along,
+     entre l'automne et l'hiver 2028, juste après Brand New Day. La trilogie
+     est demandée par Niko le 15 octobre 2026. */
+  'mcu-vq': {
+    univers: 'mcu',
+    en: [
+      { t: 'hook', lit: 'Where does *VisionQuest* fit?',
+        dit: 'VisionQuest is out. So where does it fit in the Marvel timeline?' },
+      { t: 'ligne', lit: '*10 stations*, {stops} stops',
+        dit: 'The Marvel timeline runs through ten stations, from Phase One to Phase Six.' },
+      { t: 'station', ere: 'PHASE VI — The Multiverse Saga (ongoing)', lit: 'The latest station: *Phase VI*',
+        dit: 'VisionQuest sits in Phase Six, the latest station on the line.' },
+      { t: 'fiche', lit: '*2028*, after Brand New Day',
+        dit: 'Fall to winter 2028, right after Spider-Man: Brand New Day. With a bounty on his head, Vision must confront his nature and resist Ultron’s influence to survive.' },
+      { t: 'trilogie', ids: ['mcu-wv', 'mcu-agatha', 'mcu-vq'], lit: 'The end of the *WandaVision trilogy*',
+        dit: 'And it closes the WandaVision trilogy: WandaVision, then Agatha All Along, and now VisionQuest, about two years later.' },
+      { t: 'fin', dit: 'All {stops} stops, in order, on Chronologeek dot app.' },
+    ],
+    fr: [
+      { t: 'hook', lit: 'Où placer *VisionQuest* ?',
+        dit: 'VisionQuest est sortie. Alors, où se place la série dans la chronologie Marvel ?' },
+      { t: 'ligne', lit: '*10 stations*, {stops} arrêts',
+        dit: 'La chronologie Marvel traverse dix stations, de la Phase Un à la Phase Six.' },
+      { t: 'station', ere: 'PHASE VI — The Multiverse Saga (ongoing)', lit: 'Dernière station : *Phase VI*',
+        dit: 'VisionQuest se place dans la Phase Six, la dernière station de la ligne.' },
+      { t: 'fiche', lit: '*2028*, après Brand New Day',
+        dit: 'Entre l’automne et l’hiver 2028, juste après Spider-Man : Brand New Day. Sa tête mise à prix, Vision doit fuir, résister à l’influence d’Ultron et se confronter à sa propre nature.' },
+      { t: 'trilogie', ids: ['mcu-wv', 'mcu-agatha', 'mcu-vq'], lit: 'La fin de la *trilogie WandaVision*',
+        dit: 'Et elle clôt la trilogie WandaVision : WandaVision, puis Agatha All Along, et enfin VisionQuest, environ deux ans plus tard.' },
       { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },
     ],
   },
@@ -167,7 +201,9 @@ const dateLongue = (iso, lang) => iso ? new Date(iso + 'T12:00:00Z').toLocaleDat
 /* ---------- rendu ---------- */
 
 function page(ctx) {
-  const { lang, U, ST, cible, sCible, ink, art, F, fiche, essentiels, nomUnivers, typeLib, stops } = ctx;
+  const { lang, U, ST, cible, sCible, ink, art, F, fiche, essentiels, nomUnivers, typeLib, stops, oeuvre } = ctx;
+  /* le rang de la sortie sur la ligne, dans l'ordre du monde */
+  const rang = ST.flatMap(s => s.entrees).findIndex(x => x.id === cible.id) + 1;
   const t = T[lang];
   const oeil = `<p class="eye"><span class="code">${esc(U.code)}</span>${esc(nomUnivers)} · ${esc(t.ordre)}</p>`;
   const titre = (pl, cls = '') => `<h2 class="lit ${cls}">${or(pl.lit || '')}</h2>`;
@@ -181,7 +217,8 @@ function page(ctx) {
     <p class="url">${esc(t.cta)}</p>`;
 
   const station = s => ST.find(x => x.titre === s) || (() => { throw new Error(`station inconnue : ${s}`); })();
-  const nomEre = s => decode(s.titreAff || s.titre);
+  /* « PHASE VI — The Multiverse Saga (ongoing) » : le nom de station s'arrete au tiret */
+  const nomEre = s => decode(s.titreAff || s.titre).split(/\s+[—–]\s+/)[0];
 
   const plan = (pl) => {
     if (pl.t === 'hook') return `<section class="f hook">
@@ -243,7 +280,7 @@ function page(ctx) {
       ${oeil}${titre(pl)}
       <div class="bulle">
         <div class="vis"><img src="${esc(url(cible.img) || fiche.fond)}" alt=""></div>
-        <div class="time"><div class="tn"><small>${esc(t.stop)}</small><b>${stops}</b></div>
+        <div class="time"><div class="tn"><small>${esc(t.stop)}</small><b>${rang}</b></div>
           <p class="d">${esc(decode(cible.date))}</p><span class="tag">${esc(t.nouveau)}</span></div>
         <div class="txt">
           <p class="tags"><span class="b" style="--k:${TYPES[cible.type] || '#8f8fa8'}">${esc(typeLib(cible.type))}</span>${cible.level === 'must' ? ETOILE : ''}<span class="sn">${esc(nomEre(sCible))}</span></p>
@@ -263,6 +300,19 @@ function page(ctx) {
           <b>${esc(e.titre)}</b><small>${esc(e.n > 1 ? `${e.n} ${t.stops}` : e.date)}</small></div></div>`).join('')}
         <div class="li new" style="--era:${ink(sCible)}"><span class="vd"></span>
           <div><p class="tags"><span class="tag">${esc(t.ici)}</span></p><b>${esc(decode(cible.title))}</b><small>${esc(decode(cible.date))}</small></div></div>
+      </div>
+      ${mini(sCible.k)}
+    </section>`;
+
+    /* quelques oeuvres liees, dans l'ordre du monde, la sortie en dernier */
+    if (pl.t === 'trilogie') return `<section class="f std">
+      ${oeil}${titre(pl)}
+      <div class="liste tri">
+        ${pl.ids.map(x => { const { e, s } = oeuvre(x), neuf = x === cible.id;
+          return `<div class="li${neuf ? ' new' : ''}" style="--era:${ink(s)}"><span class="vd"></span>
+          <div class="tv"><img src="${esc(url(e.img))}" alt=""></div>
+          <div><p class="tags"><span class="b" style="--k:${TYPES[e.type] || '#8f8fa8'}">${esc(typeLib(e.type))}</span>${neuf ? `<span class="tag">${esc(t.ici)}</span>` : ''}</p>
+          <b>${esc(decode(e.title))}</b><small>${esc(decode(e.date))} · ${esc(nomEre(s))}</small></div></div>`; }).join('')}
       </div>
       ${mini(sCible.k)}
     </section>`;
@@ -378,6 +428,11 @@ em{font-style:normal;color:var(--hot)}
 .li b{display:block;font-weight:900;font-size:70px;line-height:.92;text-transform:uppercase;text-wrap:balance}
 .li small{display:block;margin-top:8px;font-weight:800;font-size:40px;letter-spacing:.06em;color:var(--hot)}
 .li .tags{margin-bottom:10px}
+.tri .li{display:flex;align-items:center;gap:30px}
+.tri .tv{flex:0 0 300px;aspect-ratio:16/9;border:3px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:8px 8px 0 #000}
+.tri .tv img{width:100%;height:100%;object-fit:cover;display:block}
+.tri .li.new .tv{border-color:var(--hot)}
+.tri .li b{font-size:64px}
 .li.new .vd{background:var(--hot);border-color:var(--paper);box-shadow:0 0 0 6px var(--ink),0 0 40px 12px rgba(240,201,124,.6)}
 
 /* ---- le plan en miniature ---- */
@@ -484,7 +539,8 @@ async function main() {
     if (sub) fiche.saison = decode(sub);
   }
 
-  const plans = S[lang].map(p => ({ ...p, dit: p.dit.replace('{stops}', stops) }));
+  const plans = S[lang].map(p => ({ ...p, dit: p.dit.replace('{stops}', stops),
+    ...(p.lit ? { lit: p.lit.replace('{stops}', stops) } : {}) }));
   const dossier = path.join(RACINE, 'promo', `sortie-${id}-${lang}`);
   fs.mkdirSync(dossier, { recursive: true });
 
@@ -500,8 +556,14 @@ async function main() {
     p.dur = ENTREE + parleDur + SOUFFLE + (p.t === 'fin' ? FIN_EN_PLUS : 0);
   });
 
+  /* une oeuvre par son id : l'entree et sa station dans l'ordre du monde */
+  const oeuvre = x => {
+    const st = ST.find(s => s.entrees.some(y => y.id === x));
+    if (!st) throw new Error(`oeuvre inconnue : ${x}`);
+    return { e: st.entrees.find(y => y.id === x), s: st };
+  };
   const html = page({ lang, U, ST, cible, sCible, ink, art, F: t.fin, fiche, essentiels, plans, stops,
-    nomUnivers: decode(D.title), typeLib });
+    nomUnivers: decode(D.title), typeLib, oeuvre });
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
   const nav = await chromium.launch();
