@@ -7,18 +7,6 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:575d161e3a6c6db7476b-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261016
-DTEND;VALUE=DATE:20261017
-SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E04
-DESCRIPTION:Team Avatar sets out to find a missing bender\, leading them in
- to a dangerous confrontation with a ruthless gang of bandits.\n\nhttps://c
- hronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:f8a89172681b8631ce3c-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020

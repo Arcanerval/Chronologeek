@@ -1,31 +1,5 @@
 [
  {
-  "universe": "avatar",
-  "title": "Avatar: Seven Havens",
-  "date_sort": "2026-10-16",
-  "date_txt": "16/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "Team Avatar sets out to find a missing bender, leading them into a dangerous confrontation with a ruthless gang of bandits.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 4,
-   "mark": "",
-   "eFin": 6
-  },
-  "poster": "/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
-  "tmdb": 284833,
-  "media": "tv"
- },
- {
   "universe": "marvel",
   "title": "VisionQuest",
   "date_sort": "2026-10-20",
