@@ -768,8 +768,11 @@ async function main() {
   const dossier = path.join(RACINE, 'promo', 'video-' + nomFichier);
   fs.mkdirSync(dossier, { recursive: true });
 
-  const sel = types ? { nom: lang === 'en' ? ([...types].join(' & ').replace('jeu', 'GAMES').replace('dlc', 'DLC'))
-                                          : ([...types].join(' ET ').replace('jeu', 'JEUX').replace('dlc', 'DLC')),
+  /* le nom d'un type de la donnee, tel que l'accroche et la voix le disent :
+     sans lui, `--types film` faisait dire « Star Trek: film. » */
+  const NOM_TYPE = { en: { jeu: 'GAMES', dlc: 'DLC', film: 'MOVIES', serie: 'SERIES', anime: 'ANIMATED SERIES', short: 'SHORTS' },
+                     fr: { jeu: 'JEUX', dlc: 'DLC', film: 'FILMS', serie: 'SÉRIES', anime: 'SÉRIES ANIMÉES', short: 'COURTS MÉTRAGES' } };
+  const sel = types ? { nom: [...types].map(t => NOM_TYPE[lang][t] || t).join(lang === 'en' ? ' & ' : ' ET '),
                         unite: T[lang].stops }
     : only === 'must' ? { nom: T[lang].essentiels, unite: T[lang].essentielsN }
     : ere != null ? { nom: decode(D.eras[ere].title || ''), unite: T[lang].entries }
