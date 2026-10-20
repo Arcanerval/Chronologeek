@@ -200,6 +200,15 @@ que le radar suit.
 `source_wookieepedia` la timeline des médias canon Star Wars, et
 `source_witcher` les jeux, livres et comics de The Witcher — voir plus bas.
 
+**Un wiki muet reprend la veille**, depuis le 20 octobre 2026. Ce jour-là
+Fandom a rendu 503 à l'API et 403 à la page : les quatorze comics et romans
+Star Wars ont quitté le radar d'un coup, et rien d'autre que deux lignes de
+journal ne le disait. `main()` relit donc `radar.json` avant de tourner, et
+une source wiki (Almanac, Wookieepedia, AC, Witcher) qui ne rend **aucune**
+entrée reprend les siennes de la veille, tant qu'elles sont à venir dans l'un
+des deux pays. TMDB n'y est pas : il sert six univers, et une panne s'y
+verrait partout.
+
 **DC Animation n'est pas au radar non plus, publié le 4 septembre 2026.**
 Ses trois continuités sont closes — le DCAU s'est terminé en 2019, le DCAMU
 en 2020, et l'Arkhamverse n'a rien d'annoncé après *Arkham Shadow*. Le studio

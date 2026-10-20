@@ -1903,12 +1903,34 @@ def main():
         with open("radar.json", encoding="utf-8") as f:
             ecrire_agendas(json.load(f))
         return
+    # Un wiki qui ne répond pas ne veut pas dire qu'il n'y a plus rien à venir.
+    # Le 20 octobre 2026, Fandom a rendu 503 à l'API et 403 à la page : les
+    # treize comics et romans Star Wars ont disparu du radar d'un coup, sans
+    # autre trace que deux lignes de journal. Une source wiki qui ne rend
+    # aucune entrée reprend donc celles de la veille, tant qu'elles sont à
+    # venir dans l'un des deux pays. TMDB n'y est pas : il sert six univers à
+    # la fois, et une panne s'y verrait partout.
+    try:
+        with open("radar.json", encoding="utf-8") as f:
+            veille = json.load(f)
+    except Exception:
+        veille = []
+    WIKIS = {source_avatar_almanac: "Avatar Almanac", source_wookieepedia: "Wookieepedia",
+             source_assassinscreed: "Assassin's Creed Wiki", source_witcher: "Witcher Wiki"}
     for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
                source_startrek, source_assassinscreed, source_witcher):
+        avant = len(results)
         try:
             fn()
         except Exception:
             log(f"{fn.__name__} : crash inattendu\n{traceback.format_exc(limit=2)}")
+        nom = WIKIS.get(fn)
+        if nom and len(results) == avant:
+            repris = [e for e in veille if e.get("source") == nom
+                      and max(e.get("date_sort") or "", e.get("date_sort_fr") or "") >= TODAY.isoformat()]
+            results.extend(repris)
+            if repris:
+                log(f"{nom} : rien lu — {len(repris)} entrée(s) reprise(s) du radar de la veille")
 
     # Dédoublonnage : même titre, même univers. Les épisodes portent tous le
     # nom de leur série et rien d'autre — c'est leur repère de saison qui les
