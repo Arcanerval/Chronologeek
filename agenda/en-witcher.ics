@@ -6,4 +6,19 @@ METHOD:PUBLISH
 X-WR-CALNAME:Chronologeek — releases · The Witcher
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:862b25a564295fb8b765-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Andrzej Sapkowski's The Witcher: The Last Wish–The Complete Colle
+ ction
+DESCRIPTION:Andrzej Sapkowski's The Witcher: The Last Wish–The Complete C
+ ollection is a book published by Dark Horse Comics that features the comic
+  adaptations of the short stories from and one never before published adap
+ tation of The Voice of Reason. It will be released on December 15\, 2026.\
+ n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

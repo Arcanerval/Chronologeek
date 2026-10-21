@@ -7,16 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:f8a89172681b8631ce3c-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Marvel · VisionQuest · S1E03
-DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:c62edc60f07314354488-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -195,6 +185,21 @@ SUMMARY:Star Wars · The Fall of Kylo Ren 5
 DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 5 est le cinquième et dernier nu
  méro de la série de bandes dessinées Star Wars: The Fall of Kylo Ren é
  crit par Charles Soule.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:862b25a564295fb8b765-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:The Witcher · Andrzej Sapkowski's The Witcher: The Last Wish–The
+  Complete Collection
+DESCRIPTION:Comic\n\nAndrzej Sapkowski's The Witcher: The Last Wish–The C
+ omplete Collection is a book published by Dark Horse Comics that features 
+ the comic adaptations of the short stories from and one never before publi
+ shed adaptation of The Voice of Reason. It will be released on December 15
+ \, 2026.\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
