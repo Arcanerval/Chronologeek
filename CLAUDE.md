@@ -1652,6 +1652,88 @@ Deux choses à savoir :
   2 000 px, identifiant renommé dans `data/starwars-en.js`. Un contrôle ajouté
   se prouve de la même façon, sur une copie qu'on restaure ensuite.
 
+### Les badges VO devenus faux : `verifier-vf.mjs`
+
+Posé le 21 octobre 2026, demandé par Niko. Le badge VO dit qu'une œuvre
+n'existe pas en français ; c'est vrai le jour où on le pose, et ça cesse de
+l'être le jour où un éditeur français la sort — sans que rien dans le dépôt
+ne le sache. **`node _proto/verifier-vf.mjs` relit toutes les œuvres écrites
+qui portent le badge**, sur les timelines et le Dossier, et demande à la BnF
+si elle en connaît une édition française. **Il signale, il ne corrige
+rien** : le rapport (`_proto/rapport-vf.md`, non versionné) donne la notice
+trouvée — titre français, éditeur, date, lien vers le catalogue —, un niveau
+de confiance et le fichier où retirer le badge, et c'est Niko qui tranche.
+
+```
+node _proto/verifier-vf.mjs                  tout le site
+node _proto/verifier-vf.mjs witcher dossier  quelques univers (clé ou route)
+node _proto/verifier-vf.mjs --temoin         la preuve qu'il voit juste
+node _proto/verifier-vf.mjs --rafraichir     sans le cache
+```
+
+- **Ce qui entre** : `lang:'vo'` dans les timelines, `vo:true` dans le
+  Dossier, lus dans les sources de `_proto/` comme `jsonld.mjs` les charge.
+  **Ce qui se regarde n'y entre pas** — la règle y est « jamais doublé vaut
+  VO, même sous-titré », et la BnF n'en dit rien. La liste est noire
+  (`ECRAN`) : un type d'écrit imprévu entre au contrôle plutôt que d'en
+  sortir sans un mot. Le titre cherché est celui de l'anglais, apparié par
+  `id` — c'est le titre original.
+- **Deux sources.** La **BnF** (`catalogue.bnf.fr/api/SRU`, notices UNIMARC)
+  répond à un script là où Google Books coupe au quota. **Open Library**
+  donne l'auteur et l'année de l'original, que nos données ne portent pas :
+  un titre français ressemble rarement à l'original, et c'est par l'auteur
+  qu'on retrouve ses traductions. Une traduction datée d'avant l'original
+  est écartée — c'est l'auteur qui a écrit autre chose avant.
+- **Le faux positif à écarter est l'import.** Une édition anglaise
+  cataloguée en France porte `eng` en zone 101 ; seule une notice `fre`
+  est retenue. Une recherche par ISBN — Avatar et Jurassic World en portent
+  — ne ramène justement que ces imports, et ils ne comptent pas.
+- **Ce que le guide connaît déjà ne remonte pas.** Une notice dont le titre
+  ou la série, franchise ôtée (`cle()`), est celui d'une entrée sans badge
+  du même univers est une autre œuvre de la série : « Le trône volé » ne
+  doit pas se proposer pour *The Calling*, ni *Blade Runner 2019* pour le
+  FCBD qui le précède.
+- **Trois niveaux, trois notices au plus par œuvre.** *Haute* : le titre
+  original est dans la notice (zones 454, 500, « Trad. de… »), à une
+  lettre près — la BnF a catalogué *Brotherhood* sous « brotherwood » —,
+  le titre est le même, ou l'œuvre est au sommaire d'un recueil.
+  *Moyenne* : le résumé de l'éditeur **l'annonce en complément** (« Et en
+  plus : plongez dans le passé de Kelnacca »), ses mots sont dans le titre
+  avec la franchise, ou c'est un titre d'un seul mot — « Legacy » est aussi
+  le titre d'un comic Legends. *Basse* : une traduction du même auteur
+  dans la franchise, titre à confirmer. Un résumé qui cite seulement le
+  nom ne compte pas : celui de l'adaptation de *Rogue One* cite Jyn Erso.
+- **Le premier auteur seulement, nom entier.** Le second est souvent le
+  dessinateur de la couverture — Phil Noto ramenait tous les *Poe Dameron*
+  —, et un nom seul confond : « Wein » rendait Len Wein pour Elizabeth.
+- **Un titre qui n'est que la franchise** — le comic *The Witcher* — ne se
+  reconnaît pas au titre, toutes les notices le portant : il ne reste que
+  l'auteur.
+- **Le cache** (`_proto/.cache-vf.json`, non versionné) garde chaque
+  réponse trente jours, déjà réduite : changer `notices()` ou la lecture
+  d'Open Library demande de monter son numéro dans `FORME`. Une requête par
+  seconde à la BnF, une toutes les 350 ms chez Open Library ; un premier
+  passage complet prend cinq à six minutes, le suivant quarante secondes.
+  Hors ligne, le passage va au bout, les œuvres sortent « non vérifiées »
+  et le script rend 3.
+- **`--temoin` rejoue deux cas connus** — *Blade Runner 2019* et *2029*,
+  chez Delcourt, sans badge depuis le 12 octobre 2026 — et sort en erreur
+  si l'un n'est pas trouvé en confiance haute.
+
+**Le déclencheur est dans `publier.mjs`**, en dernier : quand une route
+apparaît dans `ROUTES` que `_proto/verifier-vf.json` (versionné) ne connaît
+pas, il lance le contrôle sur tout le site — le jour où un univers entre est
+le bon moment de relire tous les autres. Jamais en `--check` ni dans GitHub
+Actions, et `--sans-vf` le saute. **Il ne bloque jamais** : une panne de
+réseau le fait sortir en 3, la publication continue, et les routes ne sont
+pas retenues, pour qu'il retente à la publication suivante.
+
+**Premier passage, le 21 octobre 2026** : 94 écrits badgés sur sept
+univers et le Dossier, trois signalements, tous au Dossier — *The Acolyte:
+Kelnacca*, au bout du tome 2 de *La Haute République* chez Panini (2025) ;
+*Brotherhood*, devenu *Comme des frères* chez Pocket (2023) ; et *Legacy*,
+faux positif, le comic Legends de Delcourt. Rien ailleurs.
+
 ### Star Trek, la chaîne inversée
 
 Le cinquième univers est parti de l'anglais — Niko a écrit ce guide-là dans cette
@@ -3581,7 +3663,9 @@ le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
 - **La publication** : `ROUTES` et `ASSETS` de `publier.mjs`, `seo.json`,
   `SOURCES` et la liste d'univers de `jsonld.mjs`, `PAGES` de `sync.py` avec
   `langue_source`, `PRECACHE` de `sw.js`, la couleur dans `recherche.mjs` et
-  dans `erreur404.mjs`.
+  dans `erreur404.mjs`. Et `FRANCHISE` de `verifier-vf.mjs` si le nom de
+  l'univers ne suffit pas à le trouver à la BnF — sans entrée, c'est ce nom
+  qui sert ; la publication lance d'elle-même le contrôle des badges VO.
 - **L'écran d'arrivée** : `BOOT_ENCRES`, `BOOT_PAS` et la vignette de plus dans
   `images/boot-univers.webp`.
 - **`e-app.js`** : la table `UNIVERS` de l'export global, et `RADAR` pour

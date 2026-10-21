@@ -1092,3 +1092,28 @@ if (!CHECK && !process.env.CI && !process.argv.includes('--sans-navigateur')) {
     process.exit(1);
   }
 }
+
+/* ── Les badges VO, à chaque univers neuf ─────────────────────────────────
+   Un éditeur français peut sortir une œuvre des années après qu'on lui a
+   posé le badge VO, et rien dans le dépôt ne le sait. `verifier-vf.mjs`
+   demande à la BnF une édition française pour chaque écrit badgé, sur tout
+   le site — mais il coûte quelques minutes de réseau, et ne se lance donc
+   que quand une route apparaît dans `ROUTES` : c'est le jour où un univers
+   entre, et le bon moment de relire tous les autres. `verifier-vf.json`
+   garde les routes déjà vues. Il signale, ne corrige rien et ne bloque
+   jamais : une panne de réseau le fait sortir en 3, et les routes ne sont
+   alors pas retenues, pour qu'il retente à la publication suivante. */
+if (!CHECK && !process.env.CI && !process.argv.includes('--sans-vf')) {
+  const etat = join(ICI, 'verifier-vf.json');
+  let vues = [];
+  try { vues = JSON.parse(readFileSync(etat, 'utf8')).routes || []; } catch {}
+  const neuves = ROUTES.map(r => r.cle).filter(c => !vues.includes(c));
+  if (neuves.length) {
+    console.log(`\n  Route(s) neuve(s) : ${neuves.join(', ')} — contrôle des badges VO à la BnF.`);
+    const v = spawnSync(process.execPath, [join(ICI, 'verifier-vf.mjs')], { stdio: 'inherit', timeout: 20 * 60e3 });
+    if (v.status === 0) {
+      writeFileSync(etat, JSON.stringify({ routes: ROUTES.map(r => r.cle),
+        passage: new Date().toISOString().slice(0, 10) }, null, 2) + '\n');
+    } else console.log('  (contrôle VF incomplet : il sera relancé à la prochaine publication)');
+  }
+}

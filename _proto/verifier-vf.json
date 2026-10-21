@@ -1,0 +1,23 @@
+{
+  "routes": [
+    "accueil",
+    "sw",
+    "mcu",
+    "dc",
+    "avatar",
+    "startrek",
+    "twd",
+    "dragonage",
+    "assassinscreed",
+    "dcanimation",
+    "jurassic",
+    "witcher",
+    "residentevil",
+    "bladerunner",
+    "dossiers",
+    "dossier-sw",
+    "nouveautes",
+    "a-venir"
+  ],
+  "passage": "2026-10-21"
+}
