@@ -95,7 +95,7 @@ window.CGD={"eras":[
   {"kind":"it","k":"jeunesse","c":"#4ade80","id":"228-bby-the-high-republic-a-valiant-vow","date":"228 BBY","title":"The High Republic: A Valiant Vow","type":"Young adult novel","vo":true,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-adventures-2023-18-20","date":"228 BBY","title":"The High Republic Adventures (2023) 18-20","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"228-bby-the-high-republic-the-finale","date":"228 BBY","title":"The High Republic: The Finale","type":"Comic","vo":false,"note":""},
-  {"kind":"it","k":"comic","c":"#fb923c","id":"149-bby-the-acolyte-kelnacca","date":"149 BBY","title":"The Acolyte: Kelnacca","type":"Comic","vo":true,"note":""},
+  {"kind":"it","k":"comic","c":"#fb923c","id":"149-bby-the-acolyte-kelnacca","date":"149 BBY","title":"The Acolyte: Kelnacca","type":"Comic","vo":false,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"148 BBY","title":"THE ACOLYTE — EPISODES 1-2","type":"On screen"},
   {"kind":"it","k":"jeunesse","c":"#4ade80","id":"134-bby-the-acolyte-the-crystal-crown","date":"134 BBY","title":"The Acolyte: The Crystal Crown","type":"Young adult novel","vo":true,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"132 BBY","title":"THE ACOLYTE — EPISODES 3-8","type":"On screen"}
@@ -131,7 +131,7 @@ window.CGD={"eras":[
 {"title":"THE CLONE WARS","items":[
   {"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-jar-jar","date":"22 BBY","title":"Jar Jar","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-jedi-of-the-republic-mace-windu-1-5","date":"22 BBY","title":"Jedi of the Republic: Mace Windu 1-5","type":"Comic","vo":false,"note":""},
-  {"kind":"it","k":"roman","c":"#a78bfa","id":"22-bby-brotherhood","date":"22 BBY","title":"Brotherhood","type":"Novel","vo":true,"note":""},
+  {"kind":"it","k":"roman","c":"#a78bfa","id":"22-bby-brotherhood","date":"22 BBY","title":"Brotherhood","type":"Novel","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"22-20-bby-hyperspace-stories-grievous","date":"22-20 BBY","title":"Hyperspace Stories: Grievous","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-hyperspace-stories-11","date":"22 BBY","title":"Hyperspace Stories 11","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"22-bby-hyperspace-stories-1","date":"22 BBY","title":"Hyperspace Stories 1","type":"Comic","vo":false,"note":""},

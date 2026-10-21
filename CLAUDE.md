@@ -1732,7 +1732,8 @@ pas retenues, pour qu'il retente à la publication suivante.
 univers et le Dossier, trois signalements, tous au Dossier — *The Acolyte:
 Kelnacca*, au bout du tome 2 de *La Haute République* chez Panini (2025) ;
 *Brotherhood*, devenu *Comme des frères* chez Pocket (2023) ; et *Legacy*,
-faux positif, le comic Legends de Delcourt. Rien ailleurs.
+faux positif, le comic Legends de Delcourt. Rien ailleurs. Les deux badges
+ont été retirés le jour même.
 
 ### Star Trek, la chaîne inversée
 
