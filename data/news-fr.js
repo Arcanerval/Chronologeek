@@ -38,6 +38,13 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
 
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"The Mandalorian and Grogu : Nightmare on Nevarro", meta:"9 ABY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le comic, en 9 ABY, juste après "+
+            "The Mandalorian and Grogu : Danger in the Dark, dont il est la suite.",
+        href:"/fr/dossiers/star-wars#9-aby-the-mandalorian-and-grogu-nightmare-on-nevarro",
+        cta:"Voir dans le Dossier" },
+
       { nat:"media", uni:"mcu", kind:"serie",
         title:"VisionQuest", meta:"2028",
         txt:"Ajouté à la timeline Marvel, en 2028, juste après "+

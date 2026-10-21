@@ -345,6 +345,12 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline Marvel, en 2028, juste après Spider-Man : Brand New Day.',
    'Added to the Marvel timeline, in 2028, right after Spider-Man: Brand New Day.'],
 
+  /* ── le comic The Mandalorian and Grogu : Nightmare on Nevarro, ajouté
+     le 21 octobre 2026 ── la suite de Danger in the Dark, en 9 ABY. */
+  ['The Mandalorian and Grogu : Nightmare on Nevarro', 'The Mandalorian and Grogu: Nightmare on Nevarro'],
+  ['Ajouté au Dossier Star Wars — le comic, en 9 ABY, juste après The Mandalorian and Grogu : Danger in the Dark, dont il est la suite.',
+   'Added to the Star Wars Deep Dive — the comic, in 9 ABY, just after The Mandalorian and Grogu: Danger in the Dark, its sequel.'],
+
   /* ── le comic Rogue One : Chirrut & Baze, ajouté le 14 octobre 2026 ──
      Le one-shot des dix ans de Rogue One, entre Cassian Andor et le
      film. Même moule que Edge of the Abyss. */

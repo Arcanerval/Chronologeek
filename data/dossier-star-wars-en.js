@@ -547,6 +547,7 @@ window.CGD={"eras":[
   {"kind":"it","k":"comic","c":"#fb923c","id":"6-aby-star-wars-2025-1-10","date":"6 ABY","title":"Star Wars (2025) 1-10","type":"Comic","vo":false,"note":""},
   {"kind":"it","k":"roman","c":"#a78bfa","id":"7-aby-last-shot","date":"7 ABY","title":"Last Shot","type":"Novel","vo":false,"note":""},
   {"kind":"it","k":"comic","c":"#fb923c","id":"9-aby-the-mandalorian-and-grogu-danger-in-the-dark","date":"9 ABY","title":"The Mandalorian and Grogu: Danger in the Dark","type":"Comic","vo":true,"note":""},
+  {"kind":"it","k":"comic","c":"#fb923c","id":"9-aby-the-mandalorian-and-grogu-nightmare-on-nevarro","date":"9 ABY","title":"The Mandalorian and Grogu: Nightmare on Nevarro","type":"Comic","vo":true,"note":""},
   {"kind":"screen","c":"#64b5f6","date":"9-11 ABY","title":"THE MANDALORIAN AND GROGU","type":"On screen"},
   {"kind":"it","k":"jeunesse","c":"#4ade80","id":"18-19-aby-poe-dameron-free-fall","date":"18-19 ABY","title":"Poe Dameron: Free Fall","type":"Young adult novel","vo":false,"note":""},
   {"kind":"it","k":"roman","c":"#a78bfa","id":"21-aby-shadow-of-the-sith","date":"21 ABY","title":"Shadow of the Sith","type":"Novel","vo":false,"note":""},
