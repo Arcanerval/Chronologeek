@@ -104,7 +104,7 @@ const vignette = (local, tmdb) => {
   return tmdb ? TMDB_IMG + tmdb : undefined;
 };
 
-/* ── Les seize entrees ───────────────────────────────────────────────────
+/* ── Les dix-sept entrees ───────────────────────────────────────────────────
    type      : film, short, anime, comic
    tmdb      : identifiant TMDB, pour ce qui se regarde
    date      : celle du document, jamais traduite
@@ -130,16 +130,16 @@ const E = [
   { ere: 0, id: 'br-origins', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'Los Angeles, 2009. LAPD Detective Cal Moreaux is sent to look into the apparent suicide of a Tyrell Corporation bioengineer. The case quickly stops looking like a suicide, and puts him on the trail of an experimental replicant that went missing the same night. This is the story of the first Blade Runner.',
     title: 'Blade Runner: Origins', date: '2009', img: vignette('bladerunnerorigins.webp') },
-  { ere: 0, id: 'br-fcbd2020-2019', type: 'comic', level: 'bonus', lang: 'vo',
-    desc: 'A short Free Comic Book Day story about the childhood of Aahna “Ash” Ashina: a sick girl raised by her grandmother in Los Angeles after her mother left for the Off-world colonies, years before she becomes a Blade Runner.',
-    title: 'FCBD 2020: Blade Runner 2019', date: '2000-2013',
-    img: vignette('fcbd2020bladerunner.webp') },
   { ere: 0, id: 'br-tokyonexus', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'Tokyo, 2015. Stix and Mead, two veterans of the Kalanthia war, set up as private detectives while they hunt the comrade who abandoned them on the battlefield. A missing-person case drops them in the middle of a patent war between the Yakuza, the Tyrell Corporation and a rival corporation.',
     title: 'Blade Runner: Tokyo Nexus', date: '2015', img: vignette('tokyonexus.webp') },
+  { ere: 0, id: 'br-fcbd2020-2019', type: 'comic', level: 'bonus', lang: 'vo', tags: ['flashback'],
+    desc: 'A short Free Comic Book Day story about the childhood of Aahna “Ash” Ashina: a sick girl raised by her grandmother in Los Angeles after her mother left for the Off-world colonies, years before she becomes a Blade Runner.',
+    title: 'FCBD 2020: Blade Runner 2019', date: '2000-2013',
+    img: vignette('fcbd2020bladerunner.webp') },
   { ere: 0, id: 'br-2019', type: 'comic', level: 'bonus',
     desc: 'Los Angeles, 2019. Detective Aahna “Ash” Ashina, one of the first Blade Runners, is hired to find the missing wife and daughter of a powerful businessman. The deeper she digs, the more the case forces her to choose between her client, her career and the people she was sent to find.',
-    title: 'Blade Runner 2019', date: '2019', img: vignette('bladerunner2019.webp') },
+    title: 'Blade Runner 2019 1-4', date: '2019', img: vignette('bladerunner2019.webp') },
   { ere: 0, id: 'br-bladerunner', type: 'film', level: 'must', tmdb: '78', media: 'movie',
     title: 'Blade Runner', date: '2019',
     img: vignette('bladerunnermovie.webp', '/2spEHYDcyE9r9mS7AFEscfKVDzO.jpg'),
@@ -148,6 +148,9 @@ const E = [
   { ere: 1, id: 'br-blackout2022', type: 'short', level: 'important', lang: 'vo', tmdb: '475946', media: 'movie',
     title: 'Blade Runner: Black Out 2022', date: '2022',
     img: vignette('blackout2022.webp', '/7gZR9nztTzZIskcRCuDfhvrd5Ds.jpg') },
+  { ere: 1, id: 'br-2019-5-12', type: 'comic', level: 'bonus',
+    desc: '2026. Ash is far from Los Angeles, hiding in the Off-world colonies, and a new bounty hunter is on her trail. The second and third arcs of Blade Runner 2019, the ones that bring her back home.',
+    title: 'Blade Runner 2019 5-12', date: '2026-2027', img: vignette('bladerunner2019.webp') },
   { ere: 1, id: 'br-fcbd2021-2029', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'A short story from the Free Comic Book Day 2021 special, set alongside Blade Runner 2029: Ash is back on the streets of Los Angeles, seven years after the Blackout.',
     title: 'FCBD 2021: Blade Runner 2029', date: '2029',
@@ -224,7 +227,7 @@ const CG = {
     film: ['bf', 'MOVIE'], short: ['bh', 'SHORT'],
     anime: ['ba', 'ANIMATED SHOW'], comic: ['bc', 'COMIC']
   },
-  markLabels: {},
+  markLabels: { flashback: 'FLASHBACK' },
   badges: BADGES,
   resetMsg: 'Reset your Blade Runner progress?',
   tmdbLang: 'en-US',

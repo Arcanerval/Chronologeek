@@ -21,6 +21,8 @@ export const BR_IDENTIQUES = [
   /* l'univers, et les titres que la ponctuation ne touche pas */
   'Blade Runner',
   'Blade Runner 2019',
+  'Blade Runner 2019 1-4',
+  'Blade Runner 2019 5-12',
   'Blade Runner 2029',
   'Blade Runner 2039',
   'Blade Runner 2049',
@@ -103,6 +105,8 @@ export const BR_TRADUCTIONS = [
    + 'apparent d’une bio-ingénieure de la Tyrell Corporation. L’affaire cesse vite de ressembler '
    + 'à un suicide, et le met sur la piste d’un réplicant expérimental disparu la même nuit. '
    + 'C’est l’histoire du premier Blade Runner.'],
+  ['2026. Ash is far from Los Angeles, hiding in the Off-world colonies, and a new bounty hunter is on her trail. The second and third arcs of Blade Runner 2019, the ones that bring her back home.',
+   '2026. Ash est loin de Los Angeles, cachée dans les colonies de l’espace, et un nouveau chasseur de primes est sur sa piste. Les deuxième et troisième arcs de Blade Runner 2019, ceux qui la ramènent chez elle.'],
   ['A short Free Comic Book Day story about the childhood of Aahna “Ash” Ashina: a sick girl '
    + 'raised by her grandmother in Los Angeles after her mother left for the Off-world '
    + 'colonies, years before she becomes a Blade Runner.',

@@ -65,6 +65,8 @@
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
   /* badges de type, charte du site. Quatre formes, celles du document. */
   --t-film:#64b5f6; --t-short:#ffa726; --t-anime:#ce93d8; --t-comic:#4dd0e1;
+  /* le seul repère du guide : l’enfance d’Ash, lue avant son premier cas. */
+  --m-flashback:#f0c97c;
   --era:var(--era1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -1512,14 +1514,14 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
     <div class="ln-map" id="ln-map" aria-label="Blade Runner line map"></div>
 
-    <!-- Pas de case « Trajet restant » : dix des seize arrêts sont des comics,
+    <!-- Pas de case « Trajet restant » : onze des dix-sept arrêts sont des comics,
          qui n'ont pas de durée. Même raison qu'Avatar Legends. -->
     <div class="ln-board stats">
       <div class="s"><b id="s-film">2</b><span>Movies</span></div>
       <div class="s"><b id="s-short">3</b><span>Shorts</span></div>
       <div class="s"><b id="s-anime">1</b><span>Show</span></div>
-      <div class="s"><b id="s-comic">10</b><span>Comics</span></div>
-      <div class="s"><b id="s-tot">16</b><span>Stops</span></div>
+      <div class="s"><b id="s-comic">11</b><span>Comics</span></div>
+      <div class="s"><b id="s-tot">17</b><span>Stops</span></div>
     </div>
 
   </div>
@@ -1540,7 +1542,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
-      <summary>Filters, search, legend and sources<span class="fcount" id="fcount">16 / 16 shown</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <summary>Filters, search, legend and sources<span class="fcount" id="fcount">17 / 17 shown</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
       <div class="filt-body">
     <div class="search" id="searchbox">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1551,6 +1553,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     <div class="sgroup" id="f-levels"><span class="lab">Level</span></div>
     <div class="sgroup" id="f-types"><span class="lab">Media types</span></div>
     <div class="srow">
+      <div class="marks"><span>Markers</span><span class="ft" style="--k:var(--m-flashback)">FLASHBACK</span></div>
       <button class="last" type="button" id="hide-done" aria-pressed="false">Hide completed</button>
     </div>
       </div>
