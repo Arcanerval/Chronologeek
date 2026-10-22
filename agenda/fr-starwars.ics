@@ -19,45 +19,6 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:d5c451bfba70b5bee27e-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261021
-DTEND;VALUE=DATE:20261022
-SUMMARY:The High Republic Adventures – Pathfinders 6
-DESCRIPTION:Comic\n\nThe High Republic Adventures – Pathfinders 6 est le 
- sixième et dernier numéro de la mini-série de bandes dessinées Star Wa
- rs: The High Republic Adventures – Pathfinders écrit par George Mann da
- ns le cadre du projet multimédia Star Wars : La Haute République.\n\nhtt
- ps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:2c0ac82706ba871ea5bb-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261021
-DTEND;VALUE=DATE:20261022
-SUMMARY:The Mandalorian and Grogu: Nightmare on Nevarro
-DESCRIPTION:Comic\n\nThe Mandalorian and Grogu: Nightmare on Nevarro est un
- e bande dessinée one-shot écrite par Delilah S. Dawson dans le cadre de 
- la sortie du film The Mandalorian and Grogu.\n\nhttps://chronologeek.app/f
- r/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:b09d24afd8af840b9c76-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261021
-DTEND;VALUE=DATE:20261022
-SUMMARY:The Fall of Kylo Ren 3
-DESCRIPTION:Comic\n\nThe Fall of Kylo Ren 3 est le troisième numéro de la
-  série de bandes dessinées Star Wars: The Fall of Kylo Ren écrit par Ch
- arles Soule.\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:5fa1a35dfe64181e9608-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261028
