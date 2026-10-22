@@ -278,11 +278,19 @@ html[lang=en] .ask::before{content:'Choose your track'}
 .par-b button+button{border-left:2px solid var(--paper)}
 .par-b button:hover{color:var(--paper)}
 .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink)}
-/* L'accroche dit lequel des deux parcours on suit. Les deux phrases sont
-   dans les données — écrites, donc traduisibles — et c'est le parcours en
-   cours qui en montre une. Rien à réécrire en JS. */
-body[data-parcours="rewatch"] .pc-first,
-body:not([data-parcours="rewatch"]) .pc-rewatch{display:none}
+/* L'accroche dit lequel des parcours on suit. Les phrases sont dans les
+   données — écrites, donc traduisibles — et c'est le parcours en cours qui
+   en montre une. Rien à réécrire en JS.
+   Masquer par défaut et rallumer celle du parcours, plutôt que d'éteindre
+   les autres : la liste des `:not()` est l'endroit où l'on oublie un cas,
+   et un oubli montre deux accroches contradictoires sans une ligne dans la
+   console.
+   Deux classes pour masquer : `.itag` déclare `display` et peut venir
+   plus bas dans la feuille — une classe seule y perdait. */
+.itag.pc-first,.itag.pc-rewatch,.itag.pc-release{display:none}
+body[data-parcours="first"] .pc-first,
+body[data-parcours="rewatch"] .pc-rewatch,
+body[data-parcours="release"] .pc-release{display:inline-flex}
 
 /* ══ INTRO : la prose de la page, ses repères, ses omissions ════════ */
 .intro{padding:34px 0 8px}
@@ -1273,7 +1281,12 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
   .bu-card>.bu-time{display:grid;grid-template-columns:1fr auto auto 1fr;column-gap:8px;align-items:center}
   .bu-card>.bu-time .bu-n{grid-column:1;justify-self:start}
   .bu-card>.bu-time .d{grid-column:2}
-  .bu-card>.bu-time .rel{grid-column:3}
+  /* L'année de sortie prend une ligne à elle, sous la date et centrée
+     avec elle : sur la même ligne, elle passait sous le lien de partage dès
+     que la date du monde est longue (« ~1235-1253 p.R. », « 9:30-9:37 »).
+     Star Wars l'avait déjà sur Épisode IV. */
+  .bu-card>.bu-time:has(.rel) .d{grid-column:2/4}
+  .bu-card>.bu-time .rel{grid-column:2/4;grid-row:2;justify-self:center}
   .bu-link{top:4px}
 }
 
@@ -1521,6 +1534,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         <div class="par-b" role="group" aria-label="Choisir le parcours">
           <button type="button" data-parcours="first" aria-pressed="true">Je découvre</button>
           <button type="button" data-parcours="rewatch" aria-pressed="false">Je revois</button>
+          <button type="button" data-parcours="release" aria-pressed="false">Ordre de sortie</button>
         </div>
       </div>
     </div>
@@ -1546,12 +1560,13 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      réponses se valent. L'attribut `autofocus` sur le dialogue ne suffit
      pas — Chrome ne le lit que sur un descendant. -->
 <dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
-  <b id="ask-t">Vous découvrez, ou vous revoyez ?</b>
+  <b id="ask-t">Vous découvrez, vous revoyez, ou vous suivez les sorties ?</b>
   <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
        fond blanc plein — les deux boutons y disparaissaient. -->
   <div class="ask-b">
     <button type="button" data-parcours="first">Je découvre</button>
     <button type="button" data-parcours="rewatch">Je revois</button>
+    <button type="button" data-parcours="release">Ordre de sortie</button>
   </div>
 </dialog>
 
@@ -1703,45 +1718,51 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
   function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'avatar'})); }catch(_){} }
 
-  /* ── les deux parcours ────────────────────────────────────────────────
-     La page en sert deux : celui qu'on suit la première fois (`eras`), où
-     les trois Avatars du passé sont des flashbacks posés après l'ère de
-     Aang, et celui qu'on suit quand on connaît déjà (`erasRewatch`), qui
-     remet tout à sa date. La bascule recharge la page plutôt que de
-     redessiner — `ALL` numérote les entrées en les mutant, et un rang
-     périmé enverrait « Reprendre » ailleurs. */
+  /* ── les parcours ─────────────────────────────────────────────────────
+     La page en sert jusqu'à trois : celui qu'on suit la première fois
+     (`eras`), celui qu'on suit quand on connaît déjà (`erasRewatch`, ou
+     `erasReplay` chez Dragon Age) quand la page en a un, et l'ordre où les
+     œuvres sont sorties (`erasRelease`). La bascule recharge la page
+     plutôt que de redessiner — `ALL` numérote les entrées en les mutant,
+     et un rang périmé enverrait « Reprendre » ailleurs. */
   /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
      fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
      choix retenu de la dernière visite. À défaut, on découvre.
-     Un seul hash, `#rewatch` : la découverte est le parcours de base et
-     s'écrit donc `/avatar` tout court. C'est le lien qu'on partage, et
-     un visiteur qui n'a rien choisi y trouve la question. */
+     La découverte est le parcours de base et s'écrit sans hash : c'est le
+     lien qu'on partage, et un visiteur qui n'a rien choisi y trouve la
+     question. `MODES` fait foi partout — le hash, le choix retenu, la
+     bascule : un mode inconnu retombe sur la découverte plutôt que sur une
+     page vide. */
+  var MODES={rewatch:1,release:1};
   var MKEY=KEY+'-mode', CHOIX=null;
   try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
-  var HASHMODE=location.hash==='#rewatch'?'rewatch':null;
+  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
   var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
-  if(MODE!=='rewatch') MODE='first';
-  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des deux
+  if(!MODES[MODE]) MODE='first';
+  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des
      accroches de l'intro s'affiche. */
   document.body.dataset.parcours=MODE;
   var BYID={};
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
-  /* Une entrée de rejeu est soit une référence à l'entrée de découverte,
-     soit une entrée à elle qui hérite de la première entrée qu'elle
-     couvre. `drop` retire un champ : le repère « flashback » de Jet et
-     d'Earth & Water, remis à leur date, n'a plus rien à signaler. Une
-     référence morte rendrait une carte vide sans une erreur — elle sort
-     en console. `group` est reporté : c'est lui qui chapeaute les trois
-     Livres sous la Guerre de Cent Ans. */
-  function resolve(eras){
-    return eras.map(function(era){
-      var t={title:era.title};
-      if(era.group) t.group=era.group;
-      t.entries=era.entries.map(function(x){
+  /* Une entrée d'un autre parcours est soit une référence à l'entrée de
+     découverte, soit une entrée à elle qui hérite de la première entrée
+     qu'elle couvre. `drop` retire un champ : la FAQ « pourquoi le regarder
+     ici » d'un flashback remis à sa place n'a plus rien à justifier, et
+     l'ordre de sortie la retire partout. Une référence morte rendrait une
+     carte vide sans une erreur — elle sort en console.
+     L'en-tête de l'ère est reporté entier, pas seulement son titre : une
+     image, un intitulé de phase ou une saga se perdraient sans un mot.
+     `parRang` : un parcours qui ne redonne pas ses ères — le rejeu de
+     Dragon Age — les reprend à la découverte, par leur rang. */
+  function resolve(eras,parRang){
+    return eras.map(function(era,i){
+      var o=Object.assign({},parRang&&D.eras[i],era);
+      o.entries=era.entries.map(function(x){
         var src=BYID[x.ref||(x.covers||[])[0]];
-        if(!src){ console.error('[rewatch] référence morte :',x.ref||x.covers); return x; }
+        if(!src){ console.error('[parcours] référence morte :',x.ref||x.covers); return x; }
         var e=Object.assign({},src,x);
         e.id=x.ref||x.id;
+        if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
         (x.drop||[]).forEach(function(k){
           var p=k.split('.');
           if(p.length===1){ delete e[p[0]]; }
@@ -1750,24 +1771,26 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         delete e.ref; delete e.drop;
         return e;
       });
-      return t;
+      return o;
     });
   }
   var RW=D.erasRewatch?resolve(D.erasRewatch):null;
-  var ERAS=(MODE==='rewatch'&&RW)?RW:D.eras;
+  var RL=D.erasRelease?resolve(D.erasRelease):null;
+  var AUTRES={rewatch:RW,release:RL};
+  var ERAS=AUTRES[MODE]||D.eras;
   /* Les huit encres d'ère suivent les nations, dans l'ordre du monde — et
      c'est exactement l'ordre du rejeu. On numérote donc par lui plutôt que
      par le rang à l'écran : sans ça le Livre de l'Eau prenait l'or de
      Yangchen dès que la découverte a changé d'ordre, et les deux parcours
-     n'auraient pas donné la même couleur à la même ère. */
+     n'auraient pas donné la même couleur à la même ère. L'ordre de sortie
+     a ses propres ères : chacune nomme l'encre qu'elle emprunte (`ink`). */
   var ENCRE={};
   (D.erasRewatch||D.eras).forEach(function(era,i){ ENCRE[era.title]=i+1; });
-
   var ALL=[];
   ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
   /* ── deux clés, et la séparation est structurelle ─────────────────
-     Les œuvres dans `KEY`, les entrées de second parcours dans `AKEY`.
+     Les œuvres dans `KEY`, les entrées d'un autre parcours dans `AKEY`.
      L'accueil et l'export global comptent les clés du stockage sans avoir
      les données sous la main : tant que tout vivait dans la même clé, il
      leur fallait deviner à la forme de l'identifiant si c'en était une
@@ -1775,10 +1798,9 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      119 %. Une clé à part ne se devine pas.
 
      Ces entrées ne sont pas dérivables, et c'est pour ça qu'on les garde :
-     quand un parcours COUPE un panneau en deux — Rebels saison par saison,
-     les deux moitiés de The Clone Wars en 20 BBY —, son état est plus fin
-     que celui de l'œuvre couverte, qui ne connaît que vu ou pas vu. Seuls
-     les REGROUPEMENTS se déduiraient.
+     quand un parcours COUPE un panneau en deux, son état est plus fin que
+     celui de l'œuvre couverte, qui ne connaît que vu ou pas vu. Seuls les
+     REGROUPEMENTS se déduiraient.
 
      `prog` reste un seul objet en mémoire : rien d'autre dans la page ne
      change, la séparation ne se fait qu'au contact du stockage. */
@@ -1800,35 +1822,49 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     }catch(_){}
   }
 
-  /* ── le pont entre les deux parcours ──────────────────────────────────
+  /* ── le pont entre les parcours ───────────────────────────────────────
      Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
-     ne l'a pas vue. Quand le rejeu recolle deux entrées — les deux moitiés
-     de la saison 2, que Jet sépare en découverte — l'entrée porte `covers`
-     et dit de quelles entrées de découverte elle tient lieu. Une entrée de
-     découverte est cochée quand toutes les entrées de rejeu qui la couvrent
-     le sont ; une entrée de rejeu, quand tout ce qu'elle couvre l'est. Les
-     deux tables se construisent dans les deux modes, sinon cocher dans l'un
-     ne se verrait pas dans l'autre — et le badge « Maître de la Terre »,
-     qui vise `avt-s2e18-20`, ne tomberait jamais en rejeu. */
+     ne l'a pas vue. Quand un parcours coupe un panneau en deux ou en
+     recolle plusieurs, l'entrée porte `covers` et dit de quelles entrées de
+     découverte elle tient lieu. Une entrée de découverte est cochée quand
+     toutes les entrées qui la couvrent le sont ; une entrée d'un autre
+     parcours, quand tout ce qu'elle couvre l'est. Les tables se
+     construisent dans tous les modes, sinon cocher dans l'un ne se verrait
+     pas dans l'autre.
+
+     Et « toutes les entrées qui la couvrent » se compte **par parcours**,
+     pas en bloc : une série coupée par le rewatch et coupée autrement par
+     l'ordre de sortie a deux jeux de morceaux, et sur une table commune
+     cocher l'un ne la cochait plus. Rien dans la console : une coche qui
+     ne prend pas. */
   var COVERS={}, COVERED={};
-  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
-    if(!e.covers) return;
-    COVERS[e.id]=e.covers;
-    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
-  }); });
+  function indexeCouvertures(eras,parcours){
+    (eras||[]).forEach(function(era){ era.entries.forEach(function(e){
+      if(!e.covers) return;
+      if(COVERS[e.id]) console.error('[parcours] identifiant en double :',e.id);
+      COVERS[e.id]={p:parcours,d:e.covers};
+      e.covers.forEach(function(d){
+        COVERED[d]=COVERED[d]||{};
+        (COVERED[d][parcours]=COVERED[d][parcours]||[]).push(e.id);
+      });
+    }); });
+  }
+  for(var _p in AUTRES) indexeCouvertures(AUTRES[_p],_p);
   function bridge(id){
-    if(COVERS[id]) COVERS[id].forEach(function(d){
-      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
-    });
-    else if(COVERED[id]) COVERED[id].forEach(function(r){
-      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
-    });
+    var c=COVERS[id];
+    if(c){ c.d.forEach(function(d){
+      if(COVERED[d][c.p].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    }); return; }
+    var m=COVERED[id]; if(!m) return;
+    Object.keys(m).forEach(function(p){ m[p].forEach(function(r){
+      if(prog[id] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    }); });
   }
   /* Au chargement, la découverte fait foi : une progression écrite avant que
-     le rejeu existe n'a que ses identifiants. */
+     les autres parcours existent n'a que ses identifiants. */
   function bootBridge(){
     Object.keys(COVERS).forEach(function(r){
-      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+      if(!prog[r] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1;
     });
   }
   bootBridge();
@@ -1852,17 +1888,18 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      le hash au lieu d'en poser un — `location.hash=''` laisserait un `#`
      nu dans la barre d'adresse et ne déclencherait rien. */
   function vaVers(m){
-    if(m==='rewatch'){ location.hash='#rewatch'; return; }
+    if(MODES[m]){ location.hash='#'+m; return; }
     if(history.replaceState){
       history.replaceState(null,'',location.pathname+location.search);
       location.reload();
     } else location.hash='';
   }
-  (function posePar(){
+  function posePar(){
     [].forEach.call(document.querySelectorAll('#par [data-parcours]'),function(b){
       b.setAttribute('aria-pressed',b.dataset.parcours===MODE?'true':'false'); });
-  })();
-  var ask=document.getElementById('ask');
+  }
+  posePar();
+  var ask=$('#ask');
   /* `#choix` repose la question à qui a déjà répondu — c'est la porte de
      service pour la revoir sans vider le stockage. */
   function poseAsk(){
@@ -1892,12 +1929,12 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     vaVers(m);
   });
   /* On ne recharge que si le parcours change vraiment : la page porte
-     d'autres ancres — `#reprendre`, `#contact`, le `#` du menu — et un
-     rechargement à chacune ferait passer le formulaire de contact pour
-     cassé. */
+     d'autres ancres — `#contact`, le `#` du menu — et un rechargement à
+     chacune ferait passer le formulaire de contact pour cassé. */
   addEventListener('hashchange',function(){
     if(location.hash==='#choix'){ poseAsk(); return; }
-    var m=location.hash==='#rewatch'?'rewatch':(location.hash?null:'first');
+    var h=location.hash.slice(1);
+    var m=MODES[h]?h:(location.hash?null:'first');
     if(m&&m!==MODE) location.reload();
   });
 
@@ -2012,13 +2049,14 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      correspondances sont les types de média qu'on croise à cette station.
      Les trois Livres portent leur chapeau, « Guerre de Cent Ans », sous le
      nom de station — là où Marvel écrit sa saga. */
-  /* Les images d'ère : une par station, par rang, dans chacun des deux
+  /* Les images d'ère : une par station, par rang, dans chacun des trois
      parcours, choisies par Niko le 28 septembre 2026. Roku ajouté le même soir ;
      une ère sans image reprend la vignette de sa première œuvre essentielle. */
   var ARTS={first:['/images/bookonewater.webp','/images/booktwoearth.webp','/images/bookthreefire.webp',
     '/images/aangera.webp','/images/yangchenera.webp','/images/kyoshiera.webp','/images/rokuera.webp','/images/korraera.webp','/images/pavinisha.webp'],
     rewatch:['/images/yangchenera.webp','/images/kyoshiera.webp','/images/rokuera.webp','/images/bookonewater.webp',
-    '/images/booktwoearth.webp','/images/bookthreefire.webp','/images/aangera.webp','/images/korraera.webp','/images/pavinisha.webp']};
+    '/images/booktwoearth.webp','/images/bookthreefire.webp','/images/aangera.webp','/images/korraera.webp','/images/pavinisha.webp'],
+    release:['/images/bookonewater.webp','/images/korraera.webp','/images/kyoshiera.webp','/images/pavinisha.webp']};
   function artEre(era,i){ return ((ARTS[MODE]||ARTS.first)[i])||eraArt(era); }
 
   function plaque(era,i){
@@ -2050,7 +2088,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   (function build(){
     var html='';
     ERAS.forEach(function(era,i){
-      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(ENCRE[era.title]||(i+1))+')">'+
+      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(ENCRE[era.title]||era.ink||(i+1))+')">'+
         plaque(era,i)+
         '<div class="wrap"><div class="rows">'+era.entries.map(function(e,k,a){ return row(e,k,a,era); }).join('')+'</div></div>'+
       '</section>';
@@ -2406,8 +2444,19 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     return -1;
   }
   /* Les repères de progression, remis dans l'ordre de la timeline. */
+  /* L'ordre de sortie ne découpe pas le monde en ères : un badge `last` y
+     demande le même bloc qu'en découverte, compté sur la découverte. Ce
+     sont des entrées de découverte, que le pont tient cochées quand une
+     saison recollée les couvre. Sans ça, le seul repère encore présent
+     aurait réclamé toutes les sorties qui le précèdent. */
+  var SUITE=MODE==='release'?[].concat.apply([],D.eras.map(function(era){
+    return era.entries.filter(function(e){ return e.type!=='note'; }); })):ALL;
+  function rangDe(id){
+    for(var i=0;i<SUITE.length;i++) if(SUITE[i].id===id) return i;
+    return -1;
+  }
   var MARKS=BADGES.filter(function(b){ return b.trigger==='last'; })
-    .map(function(b){ return {b:b,i:ixOf((b.ids||[])[0])}; })
+    .map(function(b){ return {b:b,i:rangDe((b.ids||[])[0])}; })
     .filter(function(x){ return x.i>-1; })
     .sort(function(a,c){ return a.i-c.i; });
   /* `last` nomme la dernière entrée d'un bloc, pas la seule à cocher : le
@@ -2421,7 +2470,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var k=-1;
     for(var i=0;i<MARKS.length;i++) if(MARKS[i].b===b) k=i;
     if(k<0) return b.ids||[];
-    return ALL.slice(k?MARKS[k-1].i+1:0,MARKS[k].i+1).map(function(e){ return e.id; });
+    return SUITE.slice(k?MARKS[k-1].i+1:0,MARKS[k].i+1).map(function(e){ return e.id; });
   }
   function earned(b){
     if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });

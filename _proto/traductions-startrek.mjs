@@ -92,6 +92,10 @@ export const ST_GABARITS = [
    m => `Saison ${m[1]} Épisode ${m[2]}`],
   // les huit ères : « 21ST CENTURY » → « 21E SIÈCLE »
   [/^(\d+)(?:ST|ND|RD|TH) CENTURY$/, m => `${m[1]}E SIÈCLE`],
+  // Season 3  →  Saison 3 — une saison entière, celle de l'ordre de sortie
+  [/^Season (\d+)$/, m => `Saison ${m[1]}`],
+  // ERA 2  →  ÈRE 2, les quatre ères de l'ordre de sortie
+  [/^ERA (\d+)$/, m => `ÈRE ${m[1]}`],
 ];
 
 /* Chaque ligne part au rapport de relecture. */
@@ -337,4 +341,16 @@ export const ST_TRADUCTIONS = [
    'La dernière fois que nous avons vu l\'équipage du Discovery, il était envoyé loin dans le futur. Plusieurs siècles plus tard, nous retrouvons Star Trek : Discovery, et une Fédération très différente…'],
   ['While the Section 31 movie actually takes place way back in 2324, it wouldn’t have made sense why Georgiou was there if you’d watched it then.',
    'Le film Section 31 se déroule en réalité bien plus tôt, en 2324, mais la présence de Georgiou n\'aurait eu aucun sens si vous l\'aviez regardé à ce moment-là.'],
+
+  /* l'ordre de sortie, posé le 21 octobre 2026 : la bascule et la question
+     à deux voies, l'accroche et les quatre ères, découpées par période
+     de production — une saison y est une sortie */
+  ['Chronological order', 'Ordre chronologique'],
+  ['Chronological order, or release order?', 'Ordre chronologique, ou ordre de sortie ?'],
+  ['This guide follows the order the works came out, from 1966 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 1966 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+  ['THE ORIGINAL SERIES ERA · 1966-1986', 'L’ÈRE DE LA SÉRIE ORIGINALE · 1966-1986'],
+  ['THE NEXT GENERATION ERA · 1987-2005', 'L’ÈRE NEXT GENERATION · 1987-2005'],
+  ['THE KELVIN TIMELINE · 2009-2016', 'LA CHRONOLOGIE KELVIN · 2009-2016'],
+  ['THE STREAMING ERA · 2017-2026', 'L’ÈRE DU STREAMING · 2017-2026'],
 ];

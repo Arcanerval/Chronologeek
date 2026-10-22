@@ -103,6 +103,14 @@ export const JW_TRADUCTIONS = [
   ['A WORLD OF DINOSAURS', 'UN MONDE DE DINOSAURES'],
   ['A NEW ERA', 'UNE NOUVELLE ÈRE'],
 
+  /* l'ordre de sortie, posé le 21 octobre 2026 : ses trois ères et son
+     accroche, sur le modèle de Star Wars et de Marvel */
+  ['THE JURASSIC PARK TRILOGY · 1993-2001', 'LA TRILOGIE JURASSIC PARK · 1993-2001'],
+  ['THE JURASSIC WORLD TRILOGY · 2015-2022', 'LA TRILOGIE JURASSIC WORLD · 2015-2022'],
+  ['A NEW ERA · 2024-2025', 'UNE NOUVELLE ÈRE · 2024-2025'],
+  ['This guide follows the order the works came out, from 1993 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 1993 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+
   /* les deux romans sans édition française : le titre reste, le
      deux-points prend son espace */
   ['Jurassic World: Maisie Lockwood Adventures 1 - Off the Grid', 'Jurassic World : Maisie Lockwood Adventures 1 - Off the Grid'],

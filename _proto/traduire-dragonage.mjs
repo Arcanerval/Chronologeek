@@ -309,7 +309,7 @@ const TECHNIQUES = new Set([
    dates du calendrier de la Chantrie — « 9:30 », « 9:52 » — et le champ
    est déclaré ici plutôt que dans la liste des identiques, qui
    compterait 43 lignes sans rien apprendre. */
-const IDENTIQUES_PAR_CHAMP = new Set(['date']);
+const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel']);
 
 function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v) => traduitObjet(v, `${chemin}[]`, cle));

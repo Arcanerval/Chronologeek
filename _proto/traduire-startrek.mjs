@@ -248,12 +248,14 @@ const TECHNIQUES = new Set([
   'id', 'ids', 'universe', 'color', 'glow', 'img', 'type', 'level', 'kind',
   'tmdb', 'media', 'href', 'key', 'lang', 'locale', 'tags', 'trigger',
   'otherFlag', 'otherHref', 'flag', 'art',
+  // les renvois de l'ordre de sortie vers les entrées de découverte
+  'ref', 'covers', 'drop',
 ]);
 
 /* Une date in-universe s'écrit pareil des deux côtés — « 2151 »,
    « 2156-2160 ». Le champ est déclaré ici plutôt que dans la liste des
    identiques, qui compterait 66 lignes sans rien apprendre. */
-const IDENTIQUES_PAR_CHAMP = new Set(['date']);
+const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel']);
 
 function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v, i) => traduitObjet(v, `${chemin}[]`, cle));

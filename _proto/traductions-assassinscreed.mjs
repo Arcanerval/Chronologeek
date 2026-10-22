@@ -543,6 +543,33 @@ export const AC_TRADUCTIONS = [
   ['Assassin’s Creed line map', 'Plan de la ligne Assassin’s Creed'],
   ['Assassin’s Creed line complete', 'Ligne Assassin’s Creed terminée'],
   ['<p><b>Terminus</b><span>End of the Assassin’s Creed line ·', '<p><b>Terminus</b><span>Fin de la ligne Assassin’s Creed ·'],
+
+  /* l'ordre de sortie, posé le 21 octobre 2026 : la bascule et la question
+     à deux voies, l'accroche et les quatre ères, découpées par période
+     de production chez Ubisoft */
+  ['Chronological order', 'Ordre chronologique'],
+  ['Chronological order, or release order?', 'Ordre chronologique, ou ordre de sortie ?'],
+  ['This guide follows the order the works came out, from 2007 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 2007 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+  ['THE DESMOND SAGA · 2007-2013', 'LA SAGA DE DESMOND · 2007-2013'],
+  ['THE ABSTERGO ENTERTAINMENT YEARS · 2013-2016', 'LES ANNÉES ABSTERGO ENTERTAINMENT · 2013-2016'],
+  ['THE MYTHOLOGY TRILOGY · 2017-2022', 'LA TRILOGIE MYTHOLOGIQUE · 2017-2022'],
+  ['THE ANIMUS HUB YEARS · 2023-2026', 'LES ANNÉES ANIMUS HUB · 2023-2026'],
+  ['ERA 1', 'ÈRE 1'],
+  ['ERA 2', 'ÈRE 2'],
+  ['ERA 3', 'ÈRE 3'],
+  ['ERA 4', 'ÈRE 4'],
+
+  /* les regroupements de l'ordre de sortie, 22 octobre 2026 : le numéro
+     FCBD 2016 garde son titre, comme ses deux histoires ; l'extension
+     Legacy of the First Blade reprend le titre français de ses épisodes */
+  ['Assassin\'s Creed FCBD 2016', 'Assassin\'s Creed FCBD 2016'],
+  ['Great Wall', 'Great Wall'],
+  ['The Chair', 'The Chair'],
+  ['Legacy of the First Blade', 'L\'Héritage de la Première lame'],
+  ['Hunted', 'La traque'],
+  ['Shadow Heritage', 'L\'héritage de l\'ombre'],
+  ['Bloodline', 'Lignée'],
 ];
 
 /* ── les vidéos, une adresse par langue ──────────────────────────────

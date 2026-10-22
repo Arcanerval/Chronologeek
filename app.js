@@ -1577,21 +1577,23 @@ function cgBillet(){
   /* `alt` n'est là que pour les univers qui servent plus d'un parcours :
      leurs entrées recoupées vivent dans une clé à part, et elles doivent
      voyager avec le reste, sinon un export-import fait perdre le détail
-     d'une série suivie saison par saison. Les sept autres n'en ont pas. */
+     d'une série suivie saison par saison. Depuis l'ordre de sortie du
+     21 octobre 2026, seuls DC, DC Animation, Resident Evil et le Dossier
+     n'en ont pas : leurs parcours ne recollent ni ne coupent rien. */
   var UNIVERS = [
     { u:'sw',             prog:'cg-proto-sw',             perso:'cg-perso-sw',             alt:'cg-proto-sw-alt' },
     { u:'mcu',            prog:'cg-proto-mcu',            perso:'cg-perso-mcu',            alt:'cg-proto-mcu-alt' },
     { u:'dc',             prog:'cg-proto-dc',             perso:'cg-perso-dc' },
     { u:'avatar',         prog:'cg-proto-avatar',         perso:'cg-perso-avatar',         alt:'cg-proto-avatar-alt' },
-    { u:'startrek',       prog:'cg-proto-st',             perso:'cg-perso-st' },
-    { u:'twd',            prog:'cg-proto-twd',            perso:'cg-perso-twd' },
+    { u:'startrek',       prog:'cg-proto-st',             perso:'cg-perso-st',             alt:'cg-proto-st-alt' },
+    { u:'twd',            prog:'cg-proto-twd',            perso:'cg-perso-twd',            alt:'cg-proto-twd-alt' },
     { u:'dragonage',      prog:'cg-proto-dragonage',      perso:'cg-perso-data_da',        alt:'cg-proto-dragonage-alt' },
-    { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed' },
+    { u:'assassinscreed', prog:'cg-proto-assassinscreed', perso:'cg-perso-assassinscreed', alt:'cg-proto-assassinscreed-alt' },
     { u:'dcanimation',    prog:'cg-proto-dcanim',         perso:'cg-perso-dcanim' },
     { u:'jurassic',       prog:'cg-proto-jurassic',       perso:'cg-perso-jurassic',       alt:'cg-proto-jurassic-alt' },
-    { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher' },
+    { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher',        alt:'cg-proto-witcher-alt' },
     { u:'residentevil',   prog:'cg-proto-re',             perso:'cg-perso-re' },
-    { u:'bladerunner',    prog:'cg-proto-bladerunner',    perso:'cg-perso-bladerunner' },
+    { u:'bladerunner',    prog:'cg-proto-bladerunner',    perso:'cg-perso-bladerunner',    alt:'cg-proto-bladerunner-alt' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 

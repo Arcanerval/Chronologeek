@@ -236,6 +236,8 @@ const TECHNIQUES = new Set([
   'id', 'ids', 'universe', 'color', 'glow', 'img', 'type', 'level', 'kind',
   'tmdb', 'media', 'href', 'key', 'lang', 'locale', 'tags', 'trigger',
   'otherFlag', 'otherHref', 'flag', 'art', 'ink',
+  // les renvois de l'ordre de sortie vers les entrées de découverte
+  'ref', 'covers', 'drop',
 ]);
 
 /* Une date s'écrit pareil des deux côtés — « 1191-1193 », « 70-56 BC »,
@@ -250,7 +252,7 @@ const TECHNIQUES = new Set([
    d'une page à l'autre. « av. J.-C. » avait été essayé, et il allongeait
    la pastille sans rien apprendre à personne. C'est déjà ce que font
    « BBY » chez Star Wars et « BG » chez Avatar Legends. */
-const IDENTIQUES_PAR_CHAMP = new Set(['date', 'present']);
+const IDENTIQUES_PAR_CHAMP = new Set(['date', 'present', 'rel']);
 
 function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v) => traduitObjet(v, `${chemin}[]`, cle));

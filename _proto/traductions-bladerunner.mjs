@@ -195,6 +195,19 @@ export const BR_TRADUCTIONS = [
   ['Blade Runner line map', 'Plan de la ligne Blade Runner'],
   ['Blade Runner line complete', 'Ligne Blade Runner terminée'],
   ['<p><b>Terminus</b><span>End of the Blade Runner line ·', '<p><b>Terminus</b><span>Fin de la ligne Blade Runner ·'],
+
+  /* l'ordre de sortie, posé le 21 octobre 2026 : l'accroche et les trois
+     ères, découpées par période de production */
+  ['This guide follows the order the works came out, from 1982 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 1982 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+  ['The Films · 1982-2017', 'Les films · 1982-2017'],
+  ['The Titan Comics · 2019-2021', 'Les comics Titan · 2019-2021'],
+  ['The Black Lotus Era · 2021-2025', 'L’ère Black Lotus · 2021-2025'],
+
+  /* les regroupements de l'ordre de sortie, 22 octobre 2026 */
+  ['Blade Runner 2019 1-12', 'Blade Runner 2019 1-12'],
+  ['FCBD 2021: Blade Runner', 'FCBD 2021 : Blade Runner'],
+  ['Blade Runner 2029', 'Blade Runner 2029'],
 ];
 
 export const BR_GABARITS = [

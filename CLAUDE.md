@@ -867,6 +867,89 @@ avant Civil War, et termine donc la Phase II — qui déborde sur 2016 ; Les 4
 Fantastiques ouvre la Phase VI le 25 juillet 2025, et Eyes of Wakanda comme
 Marvel Zombies, qui sortent après lui, y sont aussi.
 
+### L'ordre de sortie partout, posé le 22 octobre 2026
+
+Demandé par Niko le 21 octobre 2026 : **toutes les timelines l'ont, sauf DC
+et DC Animation**. Neuf univers de plus — Avatar Legends, Dragon Age et
+Jurassic World en troisième parcours, Star Trek, The Walking Dead, Assassin's
+Creed, The Witcher, Resident Evil et Blade Runner en second. Les ères sont
+des choix à moi, que Niko corrigera à l'écran : périodes de production,
+jamais époques du monde, avec les années dans le titre comme chez Star Wars.
+
+| univers | entrées | découverte | ères de sortie |
+|---|---|---|---|
+| Avatar Legends | 54 | 73 | série originale, Korra, Chroniques, Avatar Studios |
+| Star Trek | 66 | 248 | série originale, Next Generation, Kelvin, streaming |
+| The Walking Dead | 37 | 45 | série originale, Fear et webséries, fins, séries dérivées |
+| Dragon Age | 37 | 44 | années Origins, DA II, Inquisition, Veilguard |
+| Assassin's Creed | 99 | 112 | Desmond, Abstergo Entertainment, mythologie, Animus Hub |
+| Jurassic World | 20 | 13 | trilogie Park, trilogie World, nouvelle ère |
+| The Witcher | 43 | 54 | les deux colonnes, chacune en ordre de sortie |
+| Resident Evil | 30 | 30 | ère originale, action, RE Engine |
+| Blade Runner | 15 | 17 | films, comics Titan, Black Lotus |
+
+**Le moteur est celui de Star Wars, posé à l'identique dans les neuf
+pages** : `MODES`, `resolve()` qui reporte l'en-tête entier de l'ère (et
+qui, avec `parRang`, reprend les ères de la découverte pour le rejeu de
+Dragon Age), `KEY` / `AKEY`, le pont indexé par parcours, la question et la
+bascule. Les six pages qui n'avaient qu'un parcours ont reçu en plus le
+dialogue, la bascule dans `.ln-go` (« Ordre chronologique » / « Ordre de
+sortie », libellés validés par Niko) et **un appel à `bridge(id)` au clic
+et à `bootBridge()` à l'import** — sans lui, cocher une saison recollée ne
+cochait rien, sans un mot. Leur accroche unique est devenue `pc-first`,
+texte inchangé.
+
+Sept choses à savoir :
+
+- **Une saison est une sortie, un livre aussi** — tranché par Niko le
+  22 octobre 2026. Les demi-saisons et les blocs d'épisodes se recollent par
+  `covers`, et une série d'un seul bloc en découverte se coupe saison par
+  saison (Camp Cretaceous, Chaos Theory, Daryl Dixon) quand une autre
+  sortie tombe entre deux. Ce qui a paru **dans un même livre ou un même
+  numéro** est une seule sortie : les deux recueils de Sapkowski (*L'Épée de
+  la providence*, *Le Dernier Vœu*), le numéro 2 de *Nick Mag Presents* et
+  le recueil des *Lost Adventures* chez Avatar, son FCBD 2021 et l'anthologie
+  *Patterns in Time*, les FCBD d'Assassin's Creed 2016 et de Blade Runner
+  2021, *Blade Runner 2019* en douze numéros, *Fumée et Ombre* en trois
+  tomes, les trois épisodes de *Legacy of the First Blade*.
+- **Star Trek se bâtit par un générateur**, pas à la main : un bloc de
+  découverte peut tenir deux saisons (« Season 1 Episodes 20-26, Season 2
+  Episodes 1-19 »), donc chaque saison couvre **tous** les blocs qui la
+  nomment, et le pont coche un bloc quand toutes ses saisons le sont. Une
+  saison porte sa propre `rt`, relevée chez TMDB : sommer les blocs couverts
+  compterait deux fois ceux qui en tiennent deux. `rt()` des pages à un
+  parcours lit désormais `e.rt`, puis `RT`, puis la somme des `covers`.
+- **Resident Evil est daté par la version que la timeline conseille** —
+  RE 2 Remake en 2019, l'HD Remaster en 2015, Code: Veronica X en 2001 —,
+  tranché par Niko. Les jeux portent un identifiant RAWG dans `tmdb` : tout
+  est écrit dans `ordre-sortie.mjs`.
+- **The Witcher garde ses deux colonnes**, tranché par Niko : livres et jeux
+  sont deux canons, et l'ordre de sortie ne les mélange pas. Les ères de
+  sortie gardent `zone` et `branch`, le réseau se dessine pareil. Les
+  nouvelles d'un recueil se traduisent **par l'identifiant de la nouvelle
+  couverte** (`traduire-witcher.mjs`, rang de `covers`) : au texte, « The
+  Witcher » restait anglais, le lexique le gardant comme nom de franchise.
+- **Un badge `last` se compte sur la découverte en ordre de sortie**
+  (`SUITE` dans les pages à badges d'ère) : sans ça, le seul repère encore
+  présent réclamait toutes les sorties qui le précèdent.
+- **La seconde clé voyage dans l'export global** : `alt` de la table
+  `UNIVERS` de `e-app.js` pour tout univers dont un parcours porte un
+  `covers` — `cablage.mjs` le vérifie et la publication refuse sans.
+- **`ordre-sortie.mjs` contrôle aussi l'année affichée** : `rel` doit valoir
+  l'année de la date relevée (la première d'une saison à cheval). Et une
+  date partielle qui préfixe la précédente — « 2011 » après « 2011-05-17 »
+  — n'est pas hors ordre : on ne sait pas, et elle ne fait pas reculer le
+  repère. Les sources des dates sont dites univers par univers dans le
+  script ; tout ce qui n'est pas chez TMDB vient des wikis Fandom par l'API
+  MediaWiki, la BnF ou l'éditeur.
+
+**Les ères s'écrivent dans la source** — `data-avatar.js` pour Avatar,
+`construire-bladerunner.mjs` pour Blade Runner, le `data-*-en.js` des
+chaînes inversées pour les autres — et leur français dans
+`traductions-<u>.mjs` (`ERA N` → `ÈRE N` par gabarit chez Star Trek et
+The Walking Dead). `rel`, `ref`, `covers` et `drop` sont identiques ou
+techniques dans les neuf scripts de traduction.
+
 ## Les colonnes parallèles sous 1440 px
 
 DC est le seul univers à colonnes, et depuis le **2 septembre 2026** elles ne

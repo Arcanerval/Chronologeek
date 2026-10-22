@@ -427,6 +427,12 @@ export const W_TRADUCTIONS = [
   ['The Witcher network map', 'Plan du réseau The Witcher'],
   ['<p><b>Terminus</b><span>End of the Witcher network ·', '<p><b>Terminus</b><span>Fin du réseau The Witcher ·'],
   ['Witcher network complete', 'Réseau The Witcher terminé'],
+
+  /* l'ordre de sortie, posé le 21 octobre 2026 : son accroche. Les deux
+     colonnes gardent leur titre ; la bascule et la question se retrouvent
+     chez Resident Evil */
+  ['This guide follows the order the works came out, from 1988 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 1988 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
 ];
 
 /* Aucun gabarit : cette page n'a ni sous-items d'épisodes ni titres de

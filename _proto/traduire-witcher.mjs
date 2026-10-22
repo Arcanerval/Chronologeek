@@ -287,13 +287,15 @@ const TECHNIQUES = new Set([
   'tmdb', 'media', 'href', 'key', 'lang', 'locale', 'tags', 'trigger',
   'otherFlag', 'otherHref', 'flag', 'art', 'banner', 'branch',
   'tmdbKey', 'rawgKey', 'icon', 'c', 'lang',
+  // les renvois de l'ordre de sortie vers les entrées de découverte
+  'ref', 'covers', 'drop',
 ]);
 
 /* Une date in-universe s'écrit pareil des deux côtés — « 2010 »,
    « 2010-2012 », et le « ??? » de la phase 6. Le champ est déclaré ici
    plutôt que dans la liste des identiques, qui compterait 45 lignes
    sans rien apprendre. */
-const IDENTIQUES_PAR_CHAMP = new Set(['date']);
+const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel']);
 
 /* UN LIEN QUI NE VAUT QUE POUR L'ANGLAIS. « La Route d'où l'on ne revient
    pas » a une édition française — dans le recueil « Le Dernier Vœu » chez
@@ -321,9 +323,19 @@ function traduitObjet(o, chemin = '', cle = '') {
        celui-la meme qui pose le badge VO. Le titre s'apparie donc par
        IDENTIFIANT (`W_TITRES`), jamais par son texte : « The Witcher » designe
        la nouvelle (« Le Sorceleur »), un comic sans VF et un jeu dont le titre
-       ne bouge pas — trois oeuvres pour une seule chaine. */
+       ne bouge pas — trois oeuvres pour une seule chaine.
+       Meme regle pour un recueil de l'ordre de sortie : ses sous-items sont
+       les titres des nouvelles qu'il couvre, dans l'ordre de `covers`, et
+       chacun se traduit par l'identifiant de la nouvelle. */
+    const parCouvert = Array.isArray(o.covers) && Array.isArray(o.subitems) &&
+      o.covers.length === o.subitems.length;
     for (const [k, v] of Object.entries(o)) {
       if (k === 'link' && SANS_LIEN.has(o.id)) continue;
+      if (k === 'subitems' && parCouvert) {
+        out[k] = v.map((s, i) => W_TITRES[o.covers[i]] !== undefined
+          ? W_TITRES[o.covers[i]] : traduitObjet(s, `${chemin}.${k}`, k));
+        continue;
+      }
       out[k] = (k === 'title' && o.id && W_TITRES[o.id] !== undefined)
         ? W_TITRES[o.id] : traduitObjet(v, `${chemin}.${k}`, k);
     }

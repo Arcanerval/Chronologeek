@@ -169,6 +169,21 @@ export const RE_TRADUCTIONS = [
   ['Resident Evil line map', 'Plan de la ligne Resident Evil'],
   ['Resident Evil line complete', 'Ligne Resident Evil terminée'],
   ['<p><b>Terminus</b><span>End of the Resident Evil line ·', '<p><b>Terminus</b><span>Fin de la ligne Resident Evil ·'],
+
+  /* l'ordre de sortie, posé le 21 octobre 2026 : la bascule et la question
+     à deux voies, l'accroche et les trois ères, découpées par génération
+     de la saga — chaque jeu y est daté par la version que la timeline
+     conseille, remake compris */
+  ['Chronological order', 'Ordre chronologique'],
+  ['Chronological order, or release order?', 'Ordre chronologique, ou ordre de sortie ?'],
+  ['This guide follows the order the works came out, from 2001 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 2001 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+  ['THE ORIGINAL ERA · 2001-2009', 'L’ÈRE ORIGINALE · 2001-2009'],
+  ['THE ACTION ERA · 2012-2016', 'L’ÈRE ACTION · 2012-2016'],
+  ['THE RE ENGINE ERA · 2017-2026', 'L’ÈRE RE ENGINE · 2017-2026'],
+  ['ERA 1', 'ÈRE 1'],
+  ['ERA 2', 'ÈRE 2'],
+  ['ERA 3', 'ÈRE 3'],
 ];
 
 export const RE_GABARITS = [

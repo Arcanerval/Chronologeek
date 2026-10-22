@@ -78,8 +78,10 @@ const NOTES =
   'discover the other media or want to watch and read everything at once. If you don’t want to ' +
   'read the comics, just uncheck them, they are bonus content. This guide is spoiler free like ' +
   'the others.</p>' +
-  '<div class="intro-tags"><span class="itag">' + ic.check +
-  'This guide works for first-time watch as well as rewatches.</span></div>' +
+  '<div class="intro-tags"><span class="itag pc-first">' + ic.check +
+  'This guide works for first-time watch as well as rewatches.</span>' +
+  '<span class="itag pc-release">' + ic.check +
+  'This guide follows the order the works came out, from 1982 to today, but you can switch back to a chronological version higher up.</span></div>' +
   '<div class="keys-title">How to read this</div><div class="keys">' +
   '<div class="key"><div class="key-h">' + ic.cal + 'The Calendar</div>' +
   '<p>The saga happens in &quot;our&quot; world so we’ll count in years like we do.</p></div>' +
@@ -200,6 +202,33 @@ const ERES = [
     art: art('wallaceera.webp', '/gNdLJU9TxrpGx4dkZidjys3fyy0.jpg') }
 ];
 
+/* ── L'ordre de sortie ─────────────────────────────────────────────────
+   Le troisième parcours, posé le 21 octobre 2026, sur le modèle de Star
+   Wars et de Marvel : les œuvres dans l'ordre où elles sont sorties, une
+   année (`rel`) affichée à côté de la date du monde. Les trois ères
+   découpent des années de production, pas des époques du monde — elles
+   sont écrites ici, le document n'en ayant pas. Les dates complètes, et
+   la vérification de l'ordre, sont dans `ordre-sortie.mjs`. Le repère
+   flashback tombe : il ne parle que du placement chronologique.
+   Une ligne est `[ref, année]`, ou `[{ id, covers, … }, année]` quand
+   plusieurs entrées de la timeline sont une seule sortie : les douze numéros
+   de Blade Runner 2019, coupés en deux par la chronologie, et les deux
+   histoires du même numéro du Free Comic Book Day 2021. */
+const SORTIE = [
+  { title: 'The Films · 1982-2017', phase: 'ERA 1', ink: 1, art: ERES[0].art, ids: [
+    ['br-bladerunner', '1982'], ['br-nexusdawn', '2017'], ['br-nowheretorun', '2017'],
+    ['br-blackout2022', '2017'], ['br-2049', '2017']] },
+  { title: 'The Titan Comics · 2019-2021', phase: 'ERA 2', ink: 2, art: ERES[1].art, ids: [
+    [{ id: 'br-rl-2019', covers: ['br-2019', 'br-2019-5-12'], title: 'Blade Runner 2019 1-12',
+       date: '2019-2027' }, '2019'],
+    ['br-fcbd2020-2019', '2020'], ['br-2029', '2020'], ['br-origins', '2021'],
+    [{ id: 'br-rl-fcbd2021', covers: ['br-fcbd2021-2029', 'br-fcbd2021-origins'], title: 'FCBD 2021: Blade Runner',
+       subitems: ['Blade Runner 2029', 'Blade Runner: Origins'], date: '2009-2029' }, '2021']] },
+  { title: 'The Black Lotus Era · 2021-2025', phase: 'ERA 3', ink: 3, art: ERES[2].art, ids: [
+    ['br-blacklotus', '2021'], ['br-bl-leavingla', '2022'], ['br-2039', '2022'],
+    ['br-tokyonexus', '2024'], ['br-bl-lasvegas', '2025']] }
+];
+
 const ECRAN = E.filter(e => e.type !== 'comic').map(e => e.id);
 
 const BADGES = [
@@ -250,8 +279,25 @@ const DATA = {
   eras: ERES.map((er, i) => ({
     title: er.title, phase: er.phase, ink: er.ink, art: er.art,
     entries: E.filter(e => e.ere === i).map(({ ere, ...reste }) => reste)
+  })),
+  erasRelease: SORTIE.map(({ ids, ...er }) => ({
+    ...er,
+    entries: ids.map(([a, rel]) => {
+      const x = typeof a === 'string' ? { ref: a } : { ...a };
+      const srcs = (x.ref ? [x.ref] : x.covers).map(id => E.find(e => e.id === id));
+      if (srcs.some(e => !e)) throw new Error('Ordre de sortie : entree inconnue ' + (x.ref || x.covers));
+      x.rel = rel;
+      if (srcs.some(e => (e.tags || []).includes('flashback'))) x.drop = ['tags'];
+      return x;
+    })
   }))
 };
+{
+  const places = DATA.erasRelease.flatMap(er => er.entries.flatMap(e => e.ref ? [e.ref] : e.covers));
+  const oubli = E.filter(e => !places.includes(e.id)).map(e => e.id);
+  if (oubli.length) throw new Error('Absentes de l\'ordre de sortie : ' + oubli.join(', '));
+  if (new Set(places).size !== places.length) throw new Error('Ordre de sortie : entree en double');
+}
 
 for (const er of DATA.eras) {
   if (!er.entries.length) throw new Error('Ere vide : ' + er.title);
@@ -276,8 +322,8 @@ const sortie = ENTETE + '*/\n' +
   'window.BLADERUNNER=' + JSON.stringify(DATA) + ';\n';
 
 fs.writeFileSync(path.join(ICI, 'data-bladerunner-en.js'), sortie, 'utf8');
-console.log('data-bladerunner-en.js ecrit : %d entrees, %d eres, %d badges, %d Ko',
-  E.length, DATA.eras.length, BADGES.length, Math.round(sortie.length / 1024));
+console.log('data-bladerunner-en.js ecrit : %d entrees, %d eres (%d en ordre de sortie), %d badges, %d Ko',
+  E.length, DATA.eras.length, DATA.erasRelease.length, BADGES.length, Math.round(sortie.length / 1024));
 console.log('  niveaux : %s',
   ['must', 'important', 'bonus'].map(l => l + ' ' + E.filter(e => e.level === l).length).join(' · '));
 console.log('  types   : %s',

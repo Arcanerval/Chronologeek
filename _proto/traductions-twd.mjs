@@ -88,6 +88,10 @@ export const TWD_GABARITS = [
   [/^Season (\d+) Episodes ([\d\s,–-]+)$/, m => `Saison ${m[1]} Épisodes ${m[2].trim()}`],
   // Season 1 Episode 2  →  Saison 1 Épisode 2
   [/^Season (\d+) Episode (\d+)$/, m => `Saison ${m[1]} Épisode ${m[2]}`],
+  // Season 9  →  Saison 9 — une saison entière, celle de l'ordre de sortie
+  [/^Season (\d+)$/, m => `Saison ${m[1]}`],
+  // ERA 2  →  ÈRE 2, les quatre ères de l'ordre de sortie
+  [/^ERA (\d+)$/, m => `ÈRE ${m[1]}`],
   // « PHASE 12 » s'écrit pareil dans les deux langues, mais il faut le
   // dire : sans ce gabarit, les quatorze phases partent au rapport des
   // textes manquants et le bilan n'est jamais propre.
@@ -210,4 +214,16 @@ export const TWD_TRADUCTIONS = [
   ['The Walking Dead line complete', 'Ligne The Walking Dead terminée'],
   ['End of The Walking Dead line ·', 'Fin de la ligne The Walking Dead ·'],
   ['<p><b>Terminus</b><span>End of The Walking Dead line ·', '<p><b>Terminus</b><span>Fin de la ligne The Walking Dead ·'],
+
+  /* l'ordre de sortie, posé le 21 octobre 2026 : la bascule et la question
+     à deux voies, l'accroche et les quatre ères, découpées par période
+     de la franchise — une saison y est une sortie */
+  ['Chronological order', 'Ordre chronologique'],
+  ['Chronological order, or release order?', 'Ordre chronologique, ou ordre de sortie ?'],
+  ['This guide follows the order the works came out, from 2010 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 2010 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+  ['THE ORIGINAL SERIES · 2010-2014', 'LA SÉRIE ORIGINALE · 2010-2014'],
+  ['FEAR AND THE WEB SERIES · 2015-2019', 'FEAR ET LES WEBSÉRIES · 2015-2019'],
+  ['THE ENDINGS · 2020-2022', 'LES FINS · 2020-2022'],
+  ['THE SPIN-OFFS · 2023-2026', 'LES SÉRIES DÉRIVÉES · 2023-2026'],
 ];

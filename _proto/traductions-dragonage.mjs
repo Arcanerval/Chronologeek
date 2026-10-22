@@ -199,6 +199,16 @@ export const DA_TRADUCTIONS = [
   ['Playing again', 'Je rejoue'],
   ['First time, or playing again?', 'Vous découvrez, ou vous rejouez ?'],
 
+  /* l'ordre de sortie, posé le 21 octobre 2026 : la question à trois
+     voies, l'accroche et les quatre ères, découpées par jeu principal */
+  ['First time, playing again, or following the releases?', 'Vous découvrez, vous rejouez, ou vous suivez les sorties ?'],
+  ['This guide follows the order the works came out, from 2009 to today, but you can switch back to a chronological version higher up.',
+   'Ce guide suit ici l’ordre de sortie des œuvres, de 2009 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
+  ['THE ORIGINS YEARS · 2009-2010', 'LES ANNÉES ORIGINS · 2009-2010'],
+  ['THE DRAGON AGE II YEARS · 2011-2013', 'LES ANNÉES DRAGON AGE II · 2011-2013'],
+  ['THE INQUISITION YEARS · 2014-2021', 'LES ANNÉES INQUISITION · 2014-2021'],
+  ['THE VEILGUARD YEARS · 2022-2024', 'LES ANNÉES VEILGUARD · 2022-2024'],
+
   /* ── les trois repères de lecture ────────────────────────────────
      L'intitulé et « Le calendrier » sont ceux de Star Trek et de The
      Walking Dead ; les deux autres titres n'existent que sur cette

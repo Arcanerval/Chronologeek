@@ -11,7 +11,7 @@ const AVATAR={
   color:"#7dd3fc",
   glow:"rgba(125,211,252,.3)",
   tmdb_banner:{"type":"tv","id":"246"},
-  notes:"<p class=\"intro-lead\">If you're here, it's because you want to read and watch the Avatar Legends universe in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class=\"intro-tags\"><span class=\"itag pc-first\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for first-time watches but you can switch to the rewatch version higher up.</span><span class=\"itag pc-rewatch\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for rewatches but you can switch to the first-watch version higher up.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the year of the Air Nomad Genocide, so BG = Before Genocide / AG = After Genocide.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z\"/><path d=\"M8 7h6M8 11h6\"/></svg>The novels and comics</div><p>Most of the novels belong to the \"Chronicles of the Avatar\" collection and tell the stories of the Avatars of the past. They are far from required, but they add context — read summaries instead if you prefer.</p><p>The comics are an integral part of the work and continue some of the storylines from the shows. Some are very important and others are minor, and it is all marked.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">6 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Lost Adventures</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Team Avatar Tales</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Masters of the Elements Vol.1</dt><dd>The 4 first little stories already existed and some are in the timeline, the last two are about Yangchen but not important at all.</dd></div><div class=\"cut\"><dt>Kids' novels</dt><dd>Only if you are a child.</dd></div><div class=\"cut\"><dt>The tabletop RPG stories</dt><dd>The tabletop role-playing books are a goldmine of lore, but impossible to fit into a chronological timeline.</dd></div><div class=\"cut\"><dt>The mobile game Avatar Generations and the Korra games</dt><dd>The servers are offline and/or the games are no longer on sale.</dd></div></dl></div></details>",
+  notes:"<p class=\"intro-lead\">If you're here, it's because you want to read and watch the Avatar Legends universe in its most optimized order, a mix of chronological order and release order. You'll find extra details by clicking on each media, and this entire site is guaranteed free of major spoilers.</p><div class=\"intro-tags\"><span class=\"itag pc-first\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for first-time watches but you can switch to the rewatch version higher up.</span><span class=\"itag pc-rewatch\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide works best for rewatches but you can switch to the first-watch version higher up.</span><span class=\"itag pc-release\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>This guide follows the order the works came out, from 2005 to today, but you can switch back to a chronological version higher up.</span></div><div class=\"keys-title\">How to read this</div><div class=\"keys\"><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"/><path d=\"M8 2v4M16 2v4M3 10h18\"/></svg>The calendar</div><p>Year 0 of the calendar is the year of the Air Nomad Genocide, so BG = Before Genocide / AG = After Genocide.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z\"/></svg>Flashbacks</div><p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z\"/><path d=\"M8 7h6M8 11h6\"/></svg>The novels and comics</div><p>Most of the novels belong to the \"Chronicles of the Avatar\" collection and tell the stories of the Avatars of the past. They are far from required, but they add context — read summaries instead if you prefer.</p><p>The comics are an integral part of the work and continue some of the storylines from the shows. Some are very important and others are minor, and it is all marked.</p></div></div><details class=\"cuts\"><summary>What's left out, and why<span class=\"n\">6 entries</span><svg class=\"chev\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"cuts-body\"><dl class=\"cuts-list\"><div class=\"cut\"><dt>The Lost Adventures</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Team Avatar Tales</dt><dd>Most of the stories are just sketches with no character development and no plot progress; the few exceptions are in the timeline.</dd></div><div class=\"cut\"><dt>Masters of the Elements Vol.1</dt><dd>The 4 first little stories already existed and some are in the timeline, the last two are about Yangchen but not important at all.</dd></div><div class=\"cut\"><dt>Kids' novels</dt><dd>Only if you are a child.</dd></div><div class=\"cut\"><dt>The tabletop RPG stories</dt><dd>The tabletop role-playing books are a goldmine of lore, but impossible to fit into a chronological timeline.</dd></div><div class=\"cut\"><dt>The mobile game Avatar Generations and the Korra games</dt><dd>The servers are offline and/or the games are no longer on sale.</dd></div></dl></div></details>",
   eras:[
     {title:"BOOK ONE: WATER",group:"HUNDRED YEAR WAR",entries:[
       {"id":"avt-s1e01-10","type":"anime","level":"must","tmdb":"246","media":"tv","img":"/images/thelastairbender.webp","title":"Avatar: The Last Airbender","date":"99 AG","subitems":["Season 1 Episodes 1-10"]},
@@ -53,12 +53,12 @@ const AVATAR={
       {"id":"avt-avatar-legends-city-of-echoes","type":"roman","level":"bonus","tmdb":"0","media":"tv","img":"/images/cityofechoes.webp","title":"City of Echoes","date":"100 AG","lang":"vo","tags":["flashback"],"desc":"A young readers novel set in the Avatar Legends universe, between spirits and mysteries."},
       {"id":"avt-la-promesse-the-promise","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/promise.webp","title":"The Promise 1-3","date":"101 AG","lang":"vf","isbn":"9781595828118","desc":"Aang and Zuko clash over the fate of the Fire Nation colonies — the painful birth of a new world after the war."},
       {"id":"avt-matcha-makers","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/matcha.webp","title":"Matcha Makers (Free Comic Book Day 2021)","date":"102 AG","lang":"vo","tags":["flashback"]},
-      {"id":"avt-rebound","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/rebound.webp","title":"Rebound (Free Comic Book Day 2012)","date":"101 AG","lang":"vf","desc":"Also available in the Team Avatar Tales collection"},
+      {"id":"avt-rebound","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/rebound.webp","title":"Rebound (Free Comic Book Day 2013)","date":"101 AG","lang":"vf","desc":"Also available in the Team Avatar Tales collection"},
       {"id":"avt-la-recherche-the-search","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/search.webp","title":"The Search 1-3","date":"101 AG","lang":"vf","isbn":"9781616550547","desc":"Zuko finally sets out to find his mother Ursa, with an unpredictable Azula in tow. The truth is waiting for him in a valley full of spirits."},
       {"id":"avt-smoke-and-shadow-partie-1","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/smokeandshadow.webp","title":"Smoke and Shadow 1","date":"102 AG","lang":"vf","isbn":"9781616557614","desc":"Zuko comes home to a Fire Nation eaten away by fear: the New Ozai Society is plotting and children are disappearing, taken by the mysterious Kemurikage."},
       {"id":"avt-the-rift","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/therift.webp","title":"The Rift 1-3","date":"102 AG","lang":"vf","isbn":"9781616552954","desc":"Aang sets out to honor a forgotten Air Nomad festival, but finds a refinery on sacred ground — run by Toph's father."},
       {"id":"avt-shells","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/shells.webp","title":"Shells (Free Comic Book Day 2014)","date":"102 AG","lang":"vf","desc":"Also available in the Team Avatar Tales collection","tags":["flashback"]},
-      {"id":"avt-sisters","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/sisters.webp","title":"Sisters (Free Comic Book Day 2013)","date":"102 AG","lang":"vf","desc":"Also available in the Team Avatar Tales collection","tags":["flashback"]},
+      {"id":"avt-sisters","type":"comic","level":"bonus","tmdb":"0","media":"tv","img":"/images/sisters.webp","title":"Sisters (Free Comic Book Day 2015)","date":"102 AG","lang":"vf","desc":"Also available in the Team Avatar Tales collection","tags":["flashback"]},
       {"id":"avt-smoke-and-shadow-parties-2-3","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/smokeandshadow2.webp","title":"Smoke and Shadow 2-3","date":"102 AG","lang":"vf","isbn":"9781616557904","desc":"The hunt for the Kemurikage intensifies — Zuko has to choose between fear and trust, while Azula pulls the strings from the shadows."},
       {"id":"avt-north-and-south","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/northandsouth.webp","title":"North and South 1-3","date":"102 AG","lang":"vf","isbn":"9781506700229","desc":"Katara and Sokka return to the South Pole and find their tribe transformed by modernity — and coveted by foreign interests."},
       {"id":"avt-azula-in-the-spirit-temple","type":"comic","level":"important","tmdb":"0","media":"tv","img":"/images/azulainthespirittemple.webp","title":"Azula in the Spirit Temple","date":"102 AG","lang":"vf","isbn":"9781506737713","desc":"Alone and on the run, Azula reaches a mysterious temple where spirits confront her with her memories and her choices."},
@@ -195,6 +195,70 @@ const AVATAR={
     ]},
     {title:"THE PAVI & NISHA ERA",entries:[
       {"ref":"avt-seven-havens-s1"}
+    ]}
+  ],
+  erasRelease:[
+    {title:"THE ORIGINAL SERIES · 2005-2011",ink:4,entries:[
+      {"id":"avt-rl-s1","covers":["avt-s1e01-10","avt-s1e11-16","avt-s1e17-20"],"date":"99-100 AG","subitems":["Season 1"],"rel":"2005"},
+      {"id":"avt-rl-s2","covers":["avt-s2e01-09","avt-s2e10-17","avt-s2e18-20"],"subitems":["Season 2"],"rel":"2006"},
+      {"ref":"avt-sokka-the-avatar","rel":"2006"},
+      {"ref":"avt-divided-we-fall","rel":"2007"},
+      {"ref":"avt-escape-from-the-spirit-world","rel":"2007"},
+      {"id":"avt-rl-nickmag2","covers":["avt-it-s-only-natural","avt-going-home-again","avt-the-bridge"],"title":"The Lost Adventures","subitems":["It's Only Natural","Going Home Again","The Bridge"],"rel":"2007"},
+      {"id":"avt-rl-s3","covers":["avt-s3e01-02","avt-s3e03-06","avt-s3e07-07","avt-s3e08-13","avt-s3e14-14","avt-s3e15-19","avt-s3e20-21"],"subitems":["Season 3"],"rel":"2007"},
+      {"ref":"avt-private-fire","rel":"2007"},
+      {"ref":"avt-bumi-vs-toph-round-one","rel":"2009"},
+      {"ref":"avt-relics","rel":"2011"},
+      {"id":"avt-rl-lostadventures","covers":["avt-combustion-man-on-a-train","avt-dragon-days","avt-love-is-a-battlefield"],"title":"The Lost Adventures","subitems":["Combustion Man on a Train","Dragon Days","Love Is a Battlefield"],"rel":"2011"}
+    ]},
+    {title:"THE LEGEND OF KORRA · 2012-2018",ink:8,entries:[
+      {"ref":"avt-la-promesse-the-promise","rel":"2012"},
+      {"ref":"avt-la-legende-de-korra-livre-1-l-air","rel":"2012"},
+      {"ref":"avt-la-recherche-the-search","rel":"2013"},
+      {"ref":"avt-rebound","rel":"2013"},
+      {"ref":"avt-la-legende-de-korra-livre-2-les-esprits","rel":"2013"},
+      {"ref":"avt-the-rift","rel":"2014"},
+      {"ref":"avt-shells","rel":"2014","drop":["tags"]},
+      {"ref":"avt-la-legende-de-korra-livre-3-le-changemen","rel":"2014"},
+      {"ref":"avt-la-legende-de-korra-livre-4-l-equilibre","rel":"2014"},
+      {"ref":"avt-sisters","rel":"2015","drop":["tags"]},
+      {"id":"avt-rl-smoke","covers":["avt-smoke-and-shadow-partie-1","avt-smoke-and-shadow-parties-2-3"],"title":"Smoke and Shadow 1-3","rel":"2015"},
+      {"ref":"avt-legacy","rel":"2015"},
+      {"ref":"avt-amies-pour-la-vie-free-comic-book-day-2016","rel":"2016","drop":["tags"]},
+      {"ref":"avt-north-and-south","rel":"2016"},
+      {"ref":"avt-turf-wars","rel":"2017"},
+      {"ref":"avt-lost-pets-free-comic-book-day-2018","rel":"2018"},
+      {"ref":"avt-imbalance","rel":"2018"}
+    ]},
+    {title:"THE CHRONICLES OF THE AVATAR · 2019-2024",ink:2,entries:[
+      {"ref":"avt-ruins-of-the-empire","rel":"2019"},
+      {"ref":"avt-the-rise-of-kyoshi","rel":"2019","drop":["tags"]},
+      {"ref":"avt-an-avatar-s-chronicle","rel":"2019"},
+      {"ref":"avt-legacy-of-the-fire-nation","rel":"2020"},
+      {"ref":"avt-the-shadow-of-kyoshi","rel":"2020","drop":["tags"]},
+      {"ref":"avt-katara-and-the-pirate-s-silver","rel":"2020"},
+      {"ref":"avt-toph-beifong-s-metalbending-academy","rel":"2021"},
+      {"ref":"avt-suki-alone","rel":"2021","drop":["tags"]},
+      {"id":"avt-rl-fcbd2021","covers":["avt-matcha-makers","avt-patterns-in-time-clearing-the-air"],"title":"Free Comic Book Day 2021","subitems":["Matcha Makers","Clearing the Air"],"date":"102-174 AG","rel":"2021","drop":["tags"]},
+      {"ref":"avt-the-dawn-of-yangchen","rel":"2022","drop":["tags"]},
+      {"id":"avt-rl-patterns","covers":["avt-patterns-in-time-skyscrapers","avt-patterns-in-time-weavers-ball","avt-patterns-in-time-cat-owls-cradle","avt-patterns-in-time-a-change-in-the-wind"],"title":"Patterns in Time","subitems":["Skyscrapers","Weaver's Ball","Cat-Owl's Cradle","A Change in the Wind"],"date":"~158-174 AG","rel":"2022","drop":["tags"]},
+      {"ref":"avt-the-legacy-of-yangchen","rel":"2023","drop":["tags"]},
+      {"ref":"avt-azula-in-the-spirit-temple","rel":"2023"},
+      {"ref":"avt-the-reckoning-of-roku","rel":"2024","drop":["tags"]},
+      {"ref":"avt-the-bounty-hunter-and-the-tea-brewer","rel":"2024"}
+    ]},
+    {title:"THE AVATAR STUDIOS ERA · 2025-2026",ink:9,entries:[
+      {"ref":"avt-mystery-of-penquan-island","rel":"2025"},
+      {"ref":"avt-ashes-of-the-academy","rel":"2025"},
+      {"ref":"avt-avatar-legends-city-of-echoes","rel":"2025","drop":["tags"]},
+      {"ref":"avt-the-awakening-of-roku","rel":"2025","drop":["tags"]},
+      {"ref":"avt-earth-and-water-comics-giveaway-day-2026","rel":"2026","drop":["tags"]},
+      {"ref":"avt-the-kyoshi-warriors-13","rel":"2026"},
+      {"ref":"avt-aang-the-last-airbender","rel":"2026"},
+      {"ref":"avt-kya-and-the-secret-of-the-sand","rel":"2026"},
+      {"ref":"avt-masters-of-the-elements-off-duty","rel":"2026","drop":["tags"]},
+      {"ref":"avt-jet-rebels-and-rhinos","rel":"2026","drop":["tags"]},
+      {"ref":"avt-seven-havens-s1","rel":"2026"}
     ]}
   ]
 };

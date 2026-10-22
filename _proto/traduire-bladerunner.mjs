@@ -321,7 +321,7 @@ const TECHNIQUES = new Set([
 
 /* Une date de timeline ne se traduit jamais — « 1993 », « 2015-2016 ».
    Le champ est déclaré ici plutôt que dans la liste des identiques. */
-const IDENTIQUES_PAR_CHAMP = new Set(['date']);
+const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel']);
 
 function traduitObjet(o, chemin = '', cle = '') {
   if (Array.isArray(o)) return o.map((v) => traduitObjet(v, `${chemin}[]`, cle));

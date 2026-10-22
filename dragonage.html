@@ -356,11 +356,19 @@ html[lang=en] .ask::before{content:'Choose your track'}
 .par-b button+button{border-left:2px solid var(--paper)}
 .par-b button:hover{color:var(--paper)}
 .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink)}
-/* L'accroche dit lequel des deux parcours on suit. Les deux phrases sont
-   dans les données — écrites, donc traduisibles — et c'est le parcours en
-   cours qui en montre une. Rien à réécrire en JS. */
-body[data-parcours="replay"] .pc-first,
-body:not([data-parcours="replay"]) .pc-replay{display:none}
+/* L'accroche dit lequel des parcours on suit. Les phrases sont dans les
+   données — écrites, donc traduisibles — et c'est le parcours en cours qui
+   en montre une. Rien à réécrire en JS.
+   Masquer par défaut et rallumer celle du parcours, plutôt que d'éteindre
+   les autres : la liste des `:not()` est l'endroit où l'on oublie un cas,
+   et un oubli montre deux accroches contradictoires sans une ligne dans la
+   console.
+   Deux classes pour masquer : `.itag` déclare `display` et peut venir
+   plus bas dans la feuille — une classe seule y perdait. */
+.itag.pc-first,.itag.pc-replay,.itag.pc-release{display:none}
+body[data-parcours="first"] .pc-first,
+body[data-parcours="replay"] .pc-replay,
+body[data-parcours="release"] .pc-release{display:inline-flex}
 
 /* ══ filtres, recherche, repères ════════════════════════════════════ */
 .sieve{border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);background:var(--ink);
@@ -1314,7 +1322,12 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
   .bu-card>.bu-time{display:grid;grid-template-columns:1fr auto auto 1fr;column-gap:8px;align-items:center}
   .bu-card>.bu-time .bu-n{grid-column:1;justify-self:start}
   .bu-card>.bu-time .d{grid-column:2}
-  .bu-card>.bu-time .rel{grid-column:3}
+  /* L'année de sortie prend une ligne à elle, sous la date et centrée
+     avec elle : sur la même ligne, elle passait sous le lien de partage dès
+     que la date du monde est longue (« ~1235-1253 p.R. », « 9:30-9:37 »).
+     Star Wars l'avait déjà sur Épisode IV. */
+  .bu-card>.bu-time:has(.rel) .d{grid-column:2/4}
+  .bu-card>.bu-time .rel{grid-column:2/4;grid-row:2;justify-self:center}
   .bu-link{top:4px}
 }
 
@@ -1565,6 +1578,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       <div class="par-b" role="group" aria-label="Choose your path">
         <button type="button" data-parcours="first" aria-pressed="true">First time</button>
         <button type="button" data-parcours="replay" aria-pressed="false">Playing again</button>
+        <button type="button" data-parcours="release" aria-pressed="false">Release order</button>
       </div>
     </div>
     </div>
@@ -1590,18 +1604,19 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      réponses se valent. L'attribut `autofocus` sur le dialogue ne suffit
      pas — Chrome ne le lit que sur un descendant. -->
 <dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
-  <b id="ask-t">First time, or playing again?</b>
+  <b id="ask-t">First time, playing again, or following the releases?</b>
   <!-- `.ask-b` et non `.b` : `.b` est déjà le badge de type des entrées,
        fond blanc plein — les deux boutons y disparaissaient. -->
   <div class="ask-b">
     <button type="button" data-parcours="first">First time</button>
     <button type="button" data-parcours="replay">Playing again</button>
+    <button type="button" data-parcours="release">Release order</button>
   </div>
 </dialog>
 
 <main id="body">
 
-  <div class="wrap nx-hote"><div class="intro" id="intro"><p class="intro-lead">If you're here it's either because you did all the games and want to discover the lore of Thedas or want to do all the games again and add the books, comics and shows. If you just want to discover the games in chronological order uncheck the rest, all other medias are bonus content (some very important). This guide is spoiler free like the others.</p><div class="intro-tags"><span class="itag pc-first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works best for first plays but you can switch to the replay version higher up.</span><span class="itag pc-replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works best for replays but you can switch to the first play version higher up.</span></div><div class="keys-title">How to read this</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>The Calendar</div><p>Three main calendars exist in this world but the most common is the Chantry calendar, which measures time in &quot;Ages&quot;. Each age lasts 100 years, the current Age is the Dragon Age (got it ?), the ninth since the founding of the Chantry and the crowning of Justinia I the first Divine giving the first Age its name.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 8v5l3 2"/></svg>Flashbacks and DLC placement</div><p>Some events work better as a FLASHBACK because they spoil details from the games or gives your character an unnatural omniscience that can break immersion.</p><p>DLC placement was studied to be the best possible with the flow of the games.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg>Canonicity</div><p>The games offer different choices and endings that other medias can't follow. So there is a &quot;Bioware Canon&quot; and your own canon. For exemple if you do Dragon Age 2 without doing Origins they will explain events with the &quot;Bioware Canon&quot; but you can also import your save if you did it. The other medias follow this canon so you can find things weird depending on your choices in the games.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Dragon Age Keep</div><p>Dragon Age Keep is an official companion-app made by Bioware to keep track of all decisions made and import your state of the world in Inquisition. For the first 2 games it uses your saves and for Veilguard the game will ask you questions.</p></div></div><details class="cuts"><summary>What&#x27;s left out and why?<span class="n">8 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><dl class="cuts-list"><div class="cut"><dt>Dragon Age (IDW, 2010)</dt><dd>Dragon Age IDW comic from 2010 has too many inconsistencies and the events are never referenced again so it's considered non-canon.</dd></div><div class="cut"><dt>The Darkspawn Chronicles</dt><dd>The Darkspawn Chronicles DLC from Origins is a &quot;what-if&quot; scenario, you can do it after the main game but it's not canon.</dd></div><div class="cut"><dt>Hard in Hightown</dt><dd>Hard in Hightown is a in-universe story written by one of the characters, it's pretty cool to read if you want to but it's not in the timeline.</dd></div><div class="cut"><dt>The Final Conversation</dt><dd>The Final Conversation is a fanfiction written by an ex-Bioware employee, even if he created the character the story is about it can't be considered canon but you can read it.</dd></div><div class="cut"><dt>The webcomics</dt><dd>The webcomics are very short stories not really important.</dd></div><div class="cut"><dt>The short stories</dt><dd>The short stories of DA2, DAI and DAV can be found on internet but it's hard to place them so i prefer not to risk myself, read them after each game if you want.</dd></div><div class="cut"><dt>Browser and mobile games</dt><dd>The browser and mobile games are not available anymore, except The Last Court which is in the timeline.</dd></div><div class="cut"><dt>Vows and Vengeance</dt><dd>Dragon Age: Vows and Vengeance is a narrative podcast available on YouTube, it's canon but lacking any images I'm struggling placing it here but if you want listen to it before playing DAV.</dd></div></div></dl></div></details></div></div>
+  <div class="wrap nx-hote"><div class="intro" id="intro"><p class="intro-lead">If you're here it's either because you did all the games and want to discover the lore of Thedas or want to do all the games again and add the books, comics and shows. If you just want to discover the games in chronological order uncheck the rest, all other medias are bonus content (some very important). This guide is spoiler free like the others.</p><div class="intro-tags"><span class="itag pc-first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works best for first plays but you can switch to the replay version higher up.</span><span class="itag pc-replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide works best for replays but you can switch to the first play version higher up.</span><span class="itag pc-release"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>This guide follows the order the works came out, from 2009 to today, but you can switch back to a chronological version higher up.</span></div><div class="keys-title">How to read this</div><div class="keys"><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>The Calendar</div><p>Three main calendars exist in this world but the most common is the Chantry calendar, which measures time in &quot;Ages&quot;. Each age lasts 100 years, the current Age is the Dragon Age (got it ?), the ninth since the founding of the Chantry and the crowning of Justinia I the first Divine giving the first Age its name.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 8v5l3 2"/></svg>Flashbacks and DLC placement</div><p>Some events work better as a FLASHBACK because they spoil details from the games or gives your character an unnatural omniscience that can break immersion.</p><p>DLC placement was studied to be the best possible with the flow of the games.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg>Canonicity</div><p>The games offer different choices and endings that other medias can't follow. So there is a &quot;Bioware Canon&quot; and your own canon. For exemple if you do Dragon Age 2 without doing Origins they will explain events with the &quot;Bioware Canon&quot; but you can also import your save if you did it. The other medias follow this canon so you can find things weird depending on your choices in the games.</p></div><div class="key"><div class="key-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Dragon Age Keep</div><p>Dragon Age Keep is an official companion-app made by Bioware to keep track of all decisions made and import your state of the world in Inquisition. For the first 2 games it uses your saves and for Veilguard the game will ask you questions.</p></div></div><details class="cuts"><summary>What&#x27;s left out and why?<span class="n">8 entries</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="cuts-body"><dl class="cuts-list"><div class="cut"><dt>Dragon Age (IDW, 2010)</dt><dd>Dragon Age IDW comic from 2010 has too many inconsistencies and the events are never referenced again so it's considered non-canon.</dd></div><div class="cut"><dt>The Darkspawn Chronicles</dt><dd>The Darkspawn Chronicles DLC from Origins is a &quot;what-if&quot; scenario, you can do it after the main game but it's not canon.</dd></div><div class="cut"><dt>Hard in Hightown</dt><dd>Hard in Hightown is a in-universe story written by one of the characters, it's pretty cool to read if you want to but it's not in the timeline.</dd></div><div class="cut"><dt>The Final Conversation</dt><dd>The Final Conversation is a fanfiction written by an ex-Bioware employee, even if he created the character the story is about it can't be considered canon but you can read it.</dd></div><div class="cut"><dt>The webcomics</dt><dd>The webcomics are very short stories not really important.</dd></div><div class="cut"><dt>The short stories</dt><dd>The short stories of DA2, DAI and DAV can be found on internet but it's hard to place them so i prefer not to risk myself, read them after each game if you want.</dd></div><div class="cut"><dt>Browser and mobile games</dt><dd>The browser and mobile games are not available anymore, except The Last Court which is in the timeline.</dd></div><div class="cut"><dt>Vows and Vengeance</dt><dd>Dragon Age: Vows and Vengeance is a narrative podcast available on YouTube, it's canon but lacking any images I'm struggling placing it here but if you want listen to it before playing DAV.</dd></div></div></dl></div></details></div></div>
 
   <div class="sieve"><div class="wrap" id="sieve">
     <details class="filt">
@@ -1748,39 +1763,48 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
   function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'dragonage'})); }catch(_){} }
 
-  /* ── les deux parcours ───────────────────────────────────────────────
-     Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
+  /* ── les parcours ─────────────────────────────────────────────────────
+     La page en sert jusqu'à trois : celui qu'on suit la première fois
+     (`eras`), celui qu'on suit quand on connaît déjà (`erasRewatch`, ou
+     `erasReplay` chez Dragon Age) quand la page en a un, et l'ordre où les
+     œuvres sont sorties (`erasRelease`). La bascule recharge la page
+     plutôt que de redessiner — `ALL` numérote les entrées en les mutant,
+     et un rang périmé enverrait « Reprendre » ailleurs. */
+  /* Trois voix, dans cet ordre : la page (`data-mode`, qui sera l'URL une
      fois publiée), le hash (la bascule qu'on vient de cliquer), puis le
      choix retenu de la dernière visite. À défaut, on découvre.
-     Un seul hash, `#replay` : la découverte est le parcours de base et
-     s'écrit donc `/dragonage` tout court. C'est le lien qu'on partage, et
-     un visiteur qui n'a rien choisi y trouve la question. */
+     La découverte est le parcours de base et s'écrit sans hash : c'est le
+     lien qu'on partage, et un visiteur qui n'a rien choisi y trouve la
+     question. `MODES` fait foi partout — le hash, le choix retenu, la
+     bascule : un mode inconnu retombe sur la découverte plutôt que sur une
+     page vide. */
+  var MODES={replay:1,release:1};
   var MKEY=KEY+'-mode', CHOIX=null;
   try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
-  var HASHMODE=location.hash==='#replay'?'replay':null;
+  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
   var MODE=document.body.dataset.mode||HASHMODE||CHOIX||'first';
-  if(MODE!=='replay') MODE='first';
-  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des deux
+  if(!MODES[MODE]) MODE='first';
+  /* Posé sur `<body>` : c'est ce qui choisit, en CSS, laquelle des
      accroches de l'intro s'affiche. */
   document.body.dataset.parcours=MODE;
   var BYID={};
   D.eras.forEach(function(era){ era.entries.forEach(function(e){ BYID[e.id]=e; }); });
-  /* Une entrée du rejeu est soit une référence à l'entrée de découverte —
-     la même œuvre, à une autre place —, soit une entrée à elle qui hérite
-     de la première entrée qu'elle couvre. `drop` retire un champ : le
-     repère « flashback » et la FAQ « pourquoi ici » n'ont plus rien à
-     justifier une fois l'œuvre remise dans l'ordre du monde. Une
-     référence morte rendrait une carte vide sans une erreur — elle sort
-     en console. */
-  /* Les cinq ères sont les mêmes, dans le même ordre : le rejeu ne
-     redonne ni leur titre, ni leur phase, ni leur visuel — il les reprend
-     par le rang. `erasReplay` ne porte donc que des identifiants, et rien
-     n'y est à traduire. */
-  function resolve(eras){
+  /* Une entrée d'un autre parcours est soit une référence à l'entrée de
+     découverte, soit une entrée à elle qui hérite de la première entrée
+     qu'elle couvre. `drop` retire un champ : la FAQ « pourquoi le regarder
+     ici » d'un flashback remis à sa place n'a plus rien à justifier, et
+     l'ordre de sortie la retire partout. Une référence morte rendrait une
+     carte vide sans une erreur — elle sort en console.
+     L'en-tête de l'ère est reporté entier, pas seulement son titre : une
+     image, un intitulé de phase ou une saga se perdraient sans un mot.
+     `parRang` : un parcours qui ne redonne pas ses ères — le rejeu de
+     Dragon Age — les reprend à la découverte, par leur rang. */
+  function resolve(eras,parRang){
     return eras.map(function(era,i){
-      return Object.assign({},D.eras[i],era,{entries:era.entries.map(function(x){
+      var o=Object.assign({},parRang&&D.eras[i],era);
+      o.entries=era.entries.map(function(x){
         var src=BYID[x.ref||(x.covers||[])[0]];
-        if(!src){ console.error('[replay] référence morte :',x.ref||x.covers); return x; }
+        if(!src){ console.error('[parcours] référence morte :',x.ref||x.covers); return x; }
         var e=Object.assign({},src,x);
         e.id=x.ref||x.id;
         if(src.faq) e.faq=Object.assign({},src.faq,x.faq);
@@ -1791,17 +1815,19 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         });
         delete e.ref; delete e.drop;
         return e;
-      })});
+      });
+      return o;
     });
   }
-  var RW=D.erasReplay?resolve(D.erasReplay):null;
-  var ERAS=(MODE==='replay'&&RW)?RW:D.eras;
-
+  var RW=D.erasReplay?resolve(D.erasReplay,true):null;
+  var RL=D.erasRelease?resolve(D.erasRelease):null;
+  var AUTRES={replay:RW,release:RL};
+  var ERAS=AUTRES[MODE]||D.eras;
   var ALL=[];
   ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
   /* ── deux clés, et la séparation est structurelle ─────────────────
-     Les œuvres dans `KEY`, les entrées de second parcours dans `AKEY`.
+     Les œuvres dans `KEY`, les entrées d'un autre parcours dans `AKEY`.
      L'accueil et l'export global comptent les clés du stockage sans avoir
      les données sous la main : tant que tout vivait dans la même clé, il
      leur fallait deviner à la forme de l'identifiant si c'en était une
@@ -1809,10 +1835,9 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      119 %. Une clé à part ne se devine pas.
 
      Ces entrées ne sont pas dérivables, et c'est pour ça qu'on les garde :
-     quand un parcours COUPE un panneau en deux — Rebels saison par saison,
-     les deux moitiés de The Clone Wars en 20 BBY —, son état est plus fin
-     que celui de l'œuvre couverte, qui ne connaît que vu ou pas vu. Seuls
-     les REGROUPEMENTS se déduiraient.
+     quand un parcours COUPE un panneau en deux, son état est plus fin que
+     celui de l'œuvre couverte, qui ne connaît que vu ou pas vu. Seuls les
+     REGROUPEMENTS se déduiraient.
 
      `prog` reste un seul objet en mémoire : rien d'autre dans la page ne
      change, la séparation ne se fait qu'au contact du stockage. */
@@ -1834,34 +1859,49 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     }catch(_){}
   }
 
-  /* ── le pont entre les deux parcours ──────────────────────────────────
-     Une seule progression, partagée : c'est la même œuvre, on l'a jouée ou
-     on ne l'a pas jouée. Une seule entrée du rejeu en recolle deux — les
-     deux segments d'Origins que Leliana's Song séparait —, et elle porte
-     `covers` pour dire de quelles entrées de découverte elle tient lieu.
-     Une entrée de découverte est cochée quand toutes celles du rejeu qui
-     la couvrent le sont ; une entrée du rejeu, quand tout ce qu'elle
-     couvre l'est. Les deux tables se construisent dans les deux modes,
-     sinon cocher dans l'un ne se verrait pas dans l'autre. */
+  /* ── le pont entre les parcours ───────────────────────────────────────
+     Une seule progression, partagée : c'est la même œuvre, on l'a vue ou on
+     ne l'a pas vue. Quand un parcours coupe un panneau en deux ou en
+     recolle plusieurs, l'entrée porte `covers` et dit de quelles entrées de
+     découverte elle tient lieu. Une entrée de découverte est cochée quand
+     toutes les entrées qui la couvrent le sont ; une entrée d'un autre
+     parcours, quand tout ce qu'elle couvre l'est. Les tables se
+     construisent dans tous les modes, sinon cocher dans l'un ne se verrait
+     pas dans l'autre.
+
+     Et « toutes les entrées qui la couvrent » se compte **par parcours**,
+     pas en bloc : une série coupée par le rewatch et coupée autrement par
+     l'ordre de sortie a deux jeux de morceaux, et sur une table commune
+     cocher l'un ne la cochait plus. Rien dans la console : une coche qui
+     ne prend pas. */
   var COVERS={}, COVERED={};
-  (RW||[]).forEach(function(era){ era.entries.forEach(function(e){
-    if(!e.covers) return;
-    COVERS[e.id]=e.covers;
-    e.covers.forEach(function(d){ (COVERED[d]=COVERED[d]||[]).push(e.id); });
-  }); });
-  function bridge(id){
-    if(COVERS[id]) COVERS[id].forEach(function(d){
-      if(COVERED[d].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
-    });
-    else if(COVERED[id]) COVERED[id].forEach(function(r){
-      if(prog[id] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
-    });
+  function indexeCouvertures(eras,parcours){
+    (eras||[]).forEach(function(era){ era.entries.forEach(function(e){
+      if(!e.covers) return;
+      if(COVERS[e.id]) console.error('[parcours] identifiant en double :',e.id);
+      COVERS[e.id]={p:parcours,d:e.covers};
+      e.covers.forEach(function(d){
+        COVERED[d]=COVERED[d]||{};
+        (COVERED[d][parcours]=COVERED[d][parcours]||[]).push(e.id);
+      });
+    }); });
   }
-  /* Au chargement, la découverte fait foi : une progression écrite avant
-     que le rejeu existe n'a que ses identifiants. */
+  for(var _p in AUTRES) indexeCouvertures(AUTRES[_p],_p);
+  function bridge(id){
+    var c=COVERS[id];
+    if(c){ c.d.forEach(function(d){
+      if(COVERED[d][c.p].every(function(r){ return prog[r]; })) prog[d]=1; else delete prog[d];
+    }); return; }
+    var m=COVERED[id]; if(!m) return;
+    Object.keys(m).forEach(function(p){ m[p].forEach(function(r){
+      if(prog[id] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1; else delete prog[r];
+    }); });
+  }
+  /* Au chargement, la découverte fait foi : une progression écrite avant que
+     les autres parcours existent n'a que ses identifiants. */
   function bootBridge(){
     Object.keys(COVERS).forEach(function(r){
-      if(!prog[r] && COVERS[r].every(function(d){ return prog[d]; })) prog[r]=1;
+      if(!prog[r] && COVERS[r].d.every(function(d){ return prog[d]; })) prog[r]=1;
     });
   }
   bootBridge();
@@ -1885,7 +1925,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      le hash au lieu d'en poser un — `location.hash=''` laisserait un `#`
      nu dans la barre d'adresse et ne déclencherait rien. */
   function vaVers(m){
-    if(m==='replay'){ location.hash='#replay'; return; }
+    if(MODES[m]){ location.hash='#'+m; return; }
     if(history.replaceState){
       history.replaceState(null,'',location.pathname+location.search);
       location.reload();
@@ -1930,7 +1970,8 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      chacune ferait passer le formulaire de contact pour cassé. */
   addEventListener('hashchange',function(){
     if(location.hash==='#choix'){ poseAsk(); return; }
-    var m=location.hash==='#replay'?'replay':(location.hash?null:'first');
+    var h=location.hash.slice(1);
+    var m=MODES[h]?h:(location.hash?null:'first');
     if(m&&m!==MODE) location.reload();
   });
 
@@ -2010,6 +2051,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         '<span class="bu-time">'+
           '<span class="bu-n">Stop '+String(e.n).padStart(2,'0')+'</span>'+
           '<span class="d">'+esc(e.date||'—')+'</span>'+
+          (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+esc(e.rel)+'</b></span>':'')+
         '</span>'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
           '<span class="bu-fig">'+
