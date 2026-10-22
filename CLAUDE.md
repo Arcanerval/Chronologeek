@@ -958,6 +958,16 @@ Sept choses à savoir :
   script ; tout ce qui n'est pas chez TMDB vient des wikis Fandom par l'API
   MediaWiki, la BnF ou l'éditeur.
 
+**Le référencement le dit aussi**, depuis le 22 octobre 2026 : les vingt-quatre
+`desc` de `seo.json` des onze pages et de l'accueil annoncent « ordre
+chronologique ou de sortie » / « chronological or release order », sous les
+160 signes. Pour tenir, l'appel final « Cochez ce que vous avez fini » est
+tombé chez Star Wars et Avatar Legends — les neuf autres univers n'en
+portaient déjà pas — et les énumérations ont perdu leurs articles. Six
+titres anglais avaient la place de « Release Order » (Star Wars, Marvel,
+Star Trek, Dragon Age, Resident Evil, Blade Runner) ; les titres français
+sont tous au plafond de soixante signes et n'ont pas bougé.
+
 **Les ères s'écrivent dans la source** — `data-avatar.js` pour Avatar,
 `construire-bladerunner.mjs` pour Blade Runner, le `data-*-en.js` des
 chaînes inversées pour les autres — et leur français dans

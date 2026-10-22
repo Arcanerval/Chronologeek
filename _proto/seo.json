@@ -3,13 +3,13 @@
     "fr": {
       "title": "Chronologeek — Chronologies et ordres de visionnage",
       "ogTitle": "Chronologeek — Timelines Geek",
-      "desc": "Les timelines complètes de vos univers préférés — tous supports, ordre chronologique, 100% canon. Cochez ce que vous avez fini.",
+      "desc": "Les timelines complètes de vos univers préférés — tous supports, ordre chronologique ou de sortie, 100% canon. Cochez ce que vous avez fini.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Chronologeek — Geek Timelines &amp; Watch Orders",
       "ogTitle": "Chronologeek — Geek Timelines",
-      "desc": "Complete timelines for your favorite universes — every medium, chronological order, 100% canon. Track what you've completed.",
+      "desc": "Complete timelines for your favorite universes — every medium, chronological or release order, 100% canon. Track what you've completed.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
@@ -17,13 +17,13 @@
     "fr": {
       "title": "Chronologie Star Wars : l'ordre de visionnage | Chronologeek",
       "ogTitle": "Timeline Star Wars — Chronologeek",
-      "desc": "La timeline Star Wars canon — 62 films, séries et jeux dans l'ordre chronologique, de la République au Premier Ordre, sans spoil. Cochez ce que vous avez fini.",
+      "desc": "La timeline Star Wars canon — 62 films, séries et jeux dans l'ordre chronologique ou de sortie, de la République au Premier Ordre, sans spoil.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     },
     "en": {
-      "title": "Star Wars Timeline &amp; Watch Order | Chronologeek",
+      "title": "Star Wars Timeline, Watch &amp; Release Order | Chronologeek",
       "ogTitle": "Star Wars Timeline — Chronologeek",
-      "desc": "The Star Wars canon timeline — 62 movies, shows and games in chronological order, Republic to First Order, spoiler-free. Track what you've completed.",
+      "desc": "The Star Wars canon timeline — 62 movies, shows and games in chronological or release order, Republic to First Order, spoiler-free.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },
@@ -31,13 +31,13 @@
     "fr": {
       "title": "Chronologie Marvel : l'ordre de visionnage MCU | Chronologeek",
       "ogTitle": "Timeline Marvel MCU — Chronologeek",
-      "desc": "Le MCU dans son ordre de visionnage optimisé — 121 films et séries, guide des scènes post-crédits, sans spoil. Cochez ce que vous avez fini.",
+      "desc": "Le MCU dans son ordre de visionnage optimisé ou de sortie — 121 films et séries, guide des scènes post-crédits, sans spoil. Cochez ce que vous avez fini.",
       "image": "https://chronologeek.app/images/mcu.webp"
     },
     "en": {
-      "title": "Marvel MCU Timeline &amp; Watch Order | Chronologeek",
+      "title": "Marvel MCU Timeline, Watch &amp; Release Order | Chronologeek",
       "ogTitle": "Marvel MCU Timeline — Chronologeek",
-      "desc": "The MCU in its optimized watch order — 121 movies and shows, full post-credits guide, spoiler-free. Track what you've completed.",
+      "desc": "The MCU in its optimized watch or release order — 121 movies and shows, full post-credits guide, spoiler-free. Track what you've completed.",
       "image": "https://chronologeek.app/images/mcu.webp"
     }
   },
@@ -59,13 +59,13 @@
     "fr": {
       "title": "Chronologie Avatar : Maître de l'Air et Korra | Chronologeek",
       "ogTitle": "Timeline Avatar Legends — Chronologeek",
-      "desc": "Le Dernier Maître de l’Air, Korra, Les Sept Refuges, 43 comics et 10 romans dans un seul ordre chronologique, sans spoil. Cochez ce que vous avez fini.",
+      "desc": "Le Dernier Maître de l’Air, Korra, Les Sept Refuges, 43 comics et 10 romans dans l'ordre chronologique ou de sortie, sans spoil.",
       "image": "https://chronologeek.app/images/avatar.webp"
     },
     "en": {
       "title": "Avatar Watch Order: Last Airbender &amp; Korra | Chronologeek",
       "ogTitle": "Avatar Legends Timeline — Chronologeek",
-      "desc": "The Last Airbender, The Legend of Korra, Seven Havens, 43 comics and 10 novels in one chronological order, spoiler-free. Track what you've completed.",
+      "desc": "The Last Airbender, The Legend of Korra, Seven Havens, 43 comics and 10 novels in chronological or release order, spoiler-free.",
       "image": "https://chronologeek.app/images/avatar.webp"
     }
   },
@@ -73,13 +73,13 @@
     "fr": {
       "title": "Chronologie Star Trek : l'ordre de visionnage | Chronologeek",
       "ogTitle": "Timeline Star Trek — Chronologeek",
-      "desc": "La timeline Star Trek dans l'ordre chronologique interne — films, séries et séries animées, du 21e au 43e siècle, sans spoil.",
+      "desc": "La timeline Star Trek dans l'ordre chronologique ou de sortie — films, séries et séries animées, du 21e au 43e siècle, sans spoil.",
       "image": "https://chronologeek.app/images/startrek.webp"
     },
     "en": {
-      "title": "Star Trek Timeline &amp; Watch Order | Chronologeek",
+      "title": "Star Trek Timeline, Watch &amp; Release Order | Chronologeek",
       "ogTitle": "Star Trek Timeline — Chronologeek",
-      "desc": "The Star Trek timeline in in-universe order — movies, TV shows and animated shows, from the 21st to the 43rd century, spoiler-free.",
+      "desc": "The Star Trek timeline in in-universe or release order — movies, TV shows and animated shows, from the 21st to the 43rd century, spoiler-free.",
       "image": "https://chronologeek.app/images/startrek.webp"
     }
   },
@@ -87,13 +87,13 @@
     "fr": {
       "title": "Chronologie The Walking Dead : Fear, Daryl Dixon | Chronologeek",
       "ogTitle": "Timeline The Walking Dead — Chronologeek",
-      "desc": "La timeline The Walking Dead dans l'ordre chronologique interne — les sept séries et les huit webséries, de l'épidémie de Los Angeles à New York, sans spoil.",
+      "desc": "La timeline The Walking Dead dans l'ordre chronologique ou de sortie — sept séries et huit webséries, de l'épidémie de Los Angeles à New York, sans spoil.",
       "image": "https://chronologeek.app/images/twd.webp"
     },
     "en": {
       "title": "The Walking Dead Watch Order: Fear &amp; Daryl Dixon | Chronologeek",
       "ogTitle": "The Walking Dead Timeline — Chronologeek",
-      "desc": "The Walking Dead timeline in in-universe order — all seven shows and the eight web series, from the Los Angeles outbreak to New York, spoiler-free.",
+      "desc": "The Walking Dead timeline in in-universe or release order — all seven shows and the eight web series, from the Los Angeles outbreak to New York, spoiler-free.",
       "image": "https://chronologeek.app/images/twd.webp"
     }
   },
@@ -101,13 +101,13 @@
     "fr": {
       "title": "Chronologie Dragon Age : l'ordre des jeux | Chronologeek",
       "ogTitle": "Timeline Dragon Age — Chronologeek",
-      "desc": "La timeline Dragon Age dans l'ordre chronologique interne — les jeux et leurs DLC, les romans, les comics et les séries, du Trône Volé au Veilguard, sans spoil.",
+      "desc": "La timeline Dragon Age dans l'ordre chronologique ou de sortie — jeux et DLC, romans, comics et séries, du Trône Volé au Veilguard, sans spoil.",
       "image": "https://chronologeek.app/images/dragonage.webp"
     },
     "en": {
-      "title": "Dragon Age Timeline &amp; Game Order | Chronologeek",
+      "title": "Dragon Age Timeline, Game &amp; Release Order | Chronologeek",
       "ogTitle": "Dragon Age Timeline — Chronologeek",
-      "desc": "The Dragon Age timeline in in-universe order — the games, the books, the comics and the shows, from The Stolen Throne to The Veilguard, spoiler-free.",
+      "desc": "The Dragon Age timeline in in-universe or release order — games, books, comics and shows, from The Stolen Throne to The Veilguard, spoiler-free.",
       "image": "https://chronologeek.app/images/dragonage.webp"
     }
   },
@@ -129,13 +129,13 @@
     "fr": {
       "title": "Chronologie Jurassic Park et Jurassic World | Chronologeek",
       "ogTitle": "Timeline Jurassic World — Chronologeek",
-      "desc": "La timeline Jurassic World dans l’ordre chronologique — 7 films, 2 séries animées, 3 romans et un court métrage, de Jurassic Park à Renaissance, sans spoil.",
+      "desc": "Jurassic World en ordre chronologique ou de sortie — 7 films, 2 séries animées, 3 romans, un court métrage, de Jurassic Park à Renaissance, sans spoil.",
       "image": "https://chronologeek.app/images/jurassicworld.webp"
     },
     "en": {
       "title": "Jurassic Park &amp; Jurassic World Watch Order | Chronologeek",
       "ogTitle": "Jurassic World Timeline — Chronologeek",
-      "desc": "The Jurassic World timeline in chronological order — 7 movies, 2 animated shows, 3 books and a short film, from Jurassic Park to Rebirth, spoiler-free.",
+      "desc": "The Jurassic World timeline in chronological or release order — 7 movies, 2 animated shows, 3 books, a short film, from Jurassic Park to Rebirth, spoiler-free.",
       "image": "https://chronologeek.app/images/jurassicworld.webp"
     }
   },
@@ -143,13 +143,13 @@
     "fr": {
       "title": "Chronologie The Witcher : livres et jeux | Chronologeek",
       "ogTitle": "Timeline The Witcher — Chronologeek",
-      "desc": "La chronologie The Witcher en deux colonnes — 21 livres de Sapkowski et 33 jeux et comics de CD Projekt RED, du Chemin sans retour à Blood Stone, sans spoil.",
+      "desc": "The Witcher, ordre chronologique ou de sortie — 21 livres de Sapkowski, 33 jeux et comics de CD Projekt RED, du Chemin sans retour à Blood Stone, sans spoil.",
       "image": "https://chronologeek.app/images/witcher.webp"
     },
     "en": {
       "title": "The Witcher Timeline: Books &amp; Games | Chronologeek",
       "ogTitle": "The Witcher Timeline — Chronologeek",
-      "desc": "The Witcher timeline in two columns — Sapkowski's 21 books and CD Projekt RED's 33 games and comics, from The Road of No Return to Blood Stone, spoiler-free.",
+      "desc": "The Witcher in chronological or release order — 21 Sapkowski books, 33 CDPR games and comics, from The Road of No Return to Blood Stone, spoiler-free.",
       "image": "https://chronologeek.app/images/witcher.webp"
     }
   },
@@ -157,13 +157,13 @@
     "fr": {
       "title": "Chronologie Assassin’s Creed : l’ordre des jeux | Chronologeek",
       "ogTitle": "Timeline Assassin’s Creed — Chronologeek",
-      "desc": "La timeline Assassin’s Creed dans l’ordre chronologique — les jeux, les romans, les comics et les courts métrages, d’Altaïr à l’Animus Hub, sans spoil.",
+      "desc": "La timeline Assassin’s Creed dans l’ordre chronologique ou de sortie — jeux, romans, comics et courts métrages, d’Altaïr à l’Animus Hub, sans spoil.",
       "image": "https://chronologeek.app/images/acuniverse.webp"
     },
     "en": {
       "title": "Assassin’s Creed Timeline &amp; Game Order | Chronologeek",
       "ogTitle": "Assassin’s Creed Timeline — Chronologeek",
-      "desc": "The Assassin’s Creed timeline in chronological order — the games, the novels, the comics and the short films, from Altaïr to the Animus Hub, spoiler-free.",
+      "desc": "The Assassin’s Creed timeline in chronological or release order — games, novels, comics and short films, from Altaïr to the Animus Hub, spoiler-free.",
       "image": "https://chronologeek.app/images/acuniverse.webp"
     }
   },
@@ -171,13 +171,13 @@
     "fr": {
       "title": "Chronologie Resident Evil : l’ordre des jeux | Chronologeek",
       "ogTitle": "Timeline Resident Evil — Chronologeek",
-      "desc": "La timeline Resident Evil dans l’ordre chronologique — 30 œuvres, les jeux, les films d’animation et les mangas, de Raccoon City à Requiem, sans spoil.",
+      "desc": "La timeline Resident Evil dans l’ordre chronologique ou de sortie — 30 œuvres, jeux, films d’animation et mangas, de Raccoon City à Requiem, sans spoil.",
       "image": "https://chronologeek.app/images/residentevil.webp"
     },
     "en": {
-      "title": "Resident Evil Timeline &amp; Game Order | Chronologeek",
+      "title": "Resident Evil Timeline, Game &amp; Release Order | Chronologeek",
       "ogTitle": "Resident Evil Timeline — Chronologeek",
-      "desc": "The Resident Evil timeline in chronological order — 30 entries, the games, the animated movies and the mangas, from Raccoon City to Requiem, spoiler-free.",
+      "desc": "The Resident Evil timeline in chronological or release order — 30 entries, games, animated movies and mangas, from Raccoon City to Requiem, spoiler-free.",
       "image": "https://chronologeek.app/images/residentevil.webp"
     }
   },
@@ -185,13 +185,13 @@
     "fr": {
       "title": "Chronologie Blade Runner : films et comics | Chronologeek",
       "ogTitle": "Timeline Blade Runner — Chronologeek",
-      "desc": "La timeline Blade Runner dans l’ordre chronologique — 17 œuvres, les films, les courts métrages, Black Lotus et les comics, de 2009 à 2049, sans spoil.",
+      "desc": "La timeline Blade Runner dans l’ordre chronologique ou de sortie — 17 œuvres, films, courts métrages, Black Lotus et comics, de 2009 à 2049, sans spoil.",
       "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
     },
     "en": {
-      "title": "Blade Runner Timeline &amp; Watch Order | Chronologeek",
+      "title": "Blade Runner Timeline, Watch &amp; Release Order | Chronologeek",
       "ogTitle": "Blade Runner Timeline — Chronologeek",
-      "desc": "The Blade Runner timeline in chronological order — 17 entries, the movies, the shorts, Black Lotus and the comics, from 2009 to 2049, spoiler-free.",
+      "desc": "The Blade Runner timeline in chronological or release order — 17 entries, movies, shorts, Black Lotus and comics, from 2009 to 2049, spoiler-free.",
       "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
     }
   },
