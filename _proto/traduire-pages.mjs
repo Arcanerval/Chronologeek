@@ -706,6 +706,10 @@ const TRADUCTIONS = [
   ['arrêts.', 'stops.'],
   ['Chaque station est une ère, chaque arrêt une œuvre — dans l’ordre chronologique, tous supports confondus.',
    'Each station represents an era in a timeline, and each stop represents a new work—all in chronological order.'],
+  /* l'ordre de sortie, posé sur onze timelines le 22 octobre 2026 : toutes
+     sauf DC et DC Animation */
+  ['Onze lignes se parcourent aussi dans l’ordre de sortie des œuvres.',
+   'Eleven tracks also run in release order.'],
   ["une station = une ère, sa taille = son nombre d'œuvres", 'one station = one era, its size = its number of works'],
   ['votre train : vous en êtes là', 'your train: this is where you are'],
   ['Prochain départ', 'Next departure'],
