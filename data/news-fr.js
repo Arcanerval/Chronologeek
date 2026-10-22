@@ -38,14 +38,6 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
 
-      { nat:"media", uni:"bladerunner", kind:"comic",
-        title:"Blade Runner 2019 5-12", meta:"2026-2027",
-        txt:"Ajouté à la timeline Blade Runner, en 2026-2027, juste après "+
-            "Blade Runner : Black Out 2022. Blade Runner 2019 devient "+
-            "Blade Runner 2019 1-4, et le FCBD 2020 passe juste avant lui, "+
-            "en flashback.",
-        href:"/fr/bladerunner#br-2019-5-12", cta:"Voir dans la timeline" },
-
       { nat:"media", uni:"sw", kind:"comic",
         title:"The Mandalorian and Grogu : Nightmare on Nevarro", meta:"9 ABY", vo:true,
         txt:"Ajouté au Dossier Star Wars — le comic, en 9 ABY, juste après "+

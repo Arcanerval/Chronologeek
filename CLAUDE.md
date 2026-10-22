@@ -935,6 +935,21 @@ Sept choses à savoir :
 - **La seconde clé voyage dans l'export global** : `alt` de la table
   `UNIVERS` de `e-app.js` pour tout univers dont un parcours porte un
   `covers` — `cablage.mjs` le vérifie et la publication refuse sans.
+- **Une note qui dit où s'arrêter tombe.** Un jeu recollé hérite des notes
+  de son premier segment, et « Until end of Sequence 12 » n'a pas de sens
+  quand on joue le jeu d'une traite : retirées des jeux d'Assassin's Creed
+  (`drop:['notes']`, ou `notes` réécrit sans la ligne quand une autre
+  reste, texte intact), comme les « lisez-le pendant le jeu » des romans de
+  Valhalla et les « accessible tôt » de ses deux extensions — demandé par
+  Niko le 22 octobre 2026. Les notes de conseil (glyphes, personnage
+  canon) restent.
+- **Les bornes d'ères suivies par Niko le même jour** : la mythologie
+  d'Assassin's Creed s'ouvre sur *Desert Oath* (le roman prequel d'Origins,
+  sorti dix-sept jours avant le jeu) et se ferme sur *The Hidden Codex* ;
+  la dernière saison de Fear the Walking Dead clôt « The Endings » ; la
+  démo *Beginning Hour* ouvre l'ère RE Engine. Et *The Stolen Throne* et
+  *The Calling* sont bien sortis avant *Origins* (mars et octobre 2009,
+  Tor) : ne pas les remettre après le jeu.
 - **`ordre-sortie.mjs` contrôle aussi l'année affichée** : `rel` doit valoir
   l'année de la date relevée (la première d'une saison à cheval). Et une
   date partielle qui préfixe la précédente — « 2011 » après « 2011-05-17 »
