@@ -1235,6 +1235,59 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .ln-hero .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink);border-color:var(--hot);
   box-shadow:4px 4px 0 var(--ink)}
 .ln-hero .par-b button[aria-pressed="true"]::before{color:rgba(13,11,18,.6)}
+html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
+.ln-hero .par-b{flex-wrap:wrap;justify-content:center}
+
+/* ══ la ligne choisie : tout le multivers, ou une seule ══════════════
+   Posée une fois, à l'arrivée, comme la question des parcours de Star
+   Wars : `dialog.ask`. Ensuite elle vit sous le plan, en bascule. Ce
+   n'est pas un ordre de plus, c'est un sous-ensemble : la page ne
+   garde que les bandes de la ligne choisie, et tout le reste — plan,
+   billet, compteurs, terminus — suit sans rien savoir du choix.
+   `margin:auto` est rappelé : `*{margin:0}` décolle sinon le dialogue
+   en haut à gauche. */
+.par{display:flex;justify-content:center;margin-top:15px}
+.par-b{display:inline-flex;border:2px solid var(--paper)}
+.par-b button{font-family:'Chivo';font-size:11.5px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;background:none;color:rgba(255,253,247,.8);
+  border:0;padding:7px 13px;cursor:pointer}
+.ask{margin:auto;border:2px solid var(--paper);background:var(--ink);color:var(--paper);
+  padding:0;max-width:680px;width:calc(100% - 32px);box-shadow:8px 8px 0 rgba(0,0,0,.55)}
+.ask:focus-visible{outline:none}
+.ask::backdrop{background:rgba(8,8,12,.62);
+  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.ask::before{content:'Choisissez votre ligne';display:block;background:var(--uni);color:var(--ink);
+  font-family:'Big Shoulders Display';font-weight:900;font-size:13px;letter-spacing:.24em;
+  text-transform:uppercase;padding:8px 22px 7px;border-bottom:2px solid var(--paper)}
+html[lang=en] .ask::before{content:'Choose your line'}
+.ask b{display:block;font-family:'Big Shoulders Display';font-weight:900;
+  font-size:clamp(24px,6vw,31px);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;
+  color:var(--paper);text-align:center;padding:22px 26px 0;text-shadow:3px 3px 0 #000}
+.ask-b{display:flex;gap:12px;padding:20px 22px 24px;counter-reset:voie}
+.ask-b button{flex:1 1 0;min-width:0;counter-increment:voie;display:flex;flex-direction:column;
+  align-items:center;gap:10px;font-family:'Big Shoulders Display';font-weight:800;font-size:18px;
+  letter-spacing:.05em;text-transform:uppercase;line-height:1.05;background:rgba(255,253,247,.04);
+  border:2px solid var(--line);color:var(--paper);padding:14px 10px 16px;cursor:pointer;
+  transition:transform .1s,box-shadow .1s,border-color .1s}
+.ask-b button::before{content:counter(voie);display:grid;place-items:center;width:42px;height:42px;
+  border-radius:50%;background:var(--uni);color:var(--ink);border:3px solid var(--paper);
+  box-shadow:0 0 0 2px var(--ink);font-weight:900;font-size:23px;letter-spacing:0;line-height:1}
+.ask-b button:hover,.ask-b button:focus-visible{border-color:var(--uni);transform:translate(-3px,-3px);
+  box-shadow:4px 4px 0 var(--uni);outline:none}
+@media(max-width:620px){
+  .ask-b{flex-direction:column;gap:10px;padding:18px 16px 20px}
+  .ask-b button{flex-direction:row;gap:14px;padding:10px 14px;text-align:left;font-size:17px}
+  .ask-b button::before{width:36px;height:36px;font-size:20px;flex:none}
+  .ask-b button::after{content:'▸';margin-left:auto;color:var(--uni);font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.ask-b button{transition:none}}
+/* L'accroche du premier écran dit quelle ligne on suit. Les quatre
+   phrases sont dans le HTML, donc traduites ; on les masque toutes sauf
+   celle de la ligne, et sans JS c'est celle du multivers qui reste. */
+.pl-arrowverse,.pl-dceu,.pl-dcu{display:none}
+body[data-ligne="arrowverse"] .pl-all,body[data-ligne="dceu"] .pl-all,body[data-ligne="dcu"] .pl-all{display:none}
+body[data-ligne="arrowverse"] .pl-arrowverse,body[data-ligne="dceu"] .pl-dceu,body[data-ligne="dcu"] .pl-dcu{display:inline}
+.ln-board .s[hidden]{display:none}
 
 /* ── l'intro : des panneaux d'information ── */
 .intro .itag{border-radius:8px;border-left-width:6px}
@@ -2014,23 +2067,35 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
 <!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
 <section class="ln-hero" id="top">
+<script>(function(){var M={arrowverse:1,dceu:1,dcu:1},h=location.hash.slice(1),c=null;try{c=localStorage.getItem('cg-proto-dc-mode');}catch(_){}document.body.dataset.ligne=M[h]?h:(M[c]?c:'all');})();</script>
   <div class="ln-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="ln-head">
       <h1 class="disp"><span class="tag">Multiverse guide</span>
         <span class="nm">DC</span></h1>
     </div>
-    <p class="dek">Elseworlds · Arrowverse · DCEU · DCU — the complete multiverse guide, major event kept spoiler-free.
+    <p class="dek"><span class="pl-all">Elseworlds · Arrowverse · DCEU · DCU — the complete multiverse guide, major event kept spoiler-free.</span><span class="pl-arrowverse">The Arrowverse alone — its shows interwoven episode by episode, major event spoiler-free.</span><span class="pl-dceu">The DCEU alone — from Man of Steel to The Flash, spoiler-free.</span><span class="pl-dcu">The DCU alone — the new DC universe in order, spoiler-free.</span>
       <b>Check off what you've completed — your progress is saved.</b></p>
     <p class="upd"><i aria-hidden="true"></i> Updated · August 2026</p>
 
     <div class="ln-map dc-net" id="ln-map" aria-label="DC network map"></div>
 
     <div class="ln-board stats">
-      <div class="s"><b>24</b><span>Feature films</span></div>
-      <div class="s"><b>17</b><span>Series</span></div>
+      <div class="s"><b id="s-film">24</b><span>Feature films</span></div>
+      <div class="s"><b id="s-serie">17</b><span>Series</span></div>
       <div class="s"><b id="s-tot">147</b><span>Stops</span></div>
       <div class="s"><b id="s-h">932 h</b><span>Journey left</span></div>
+    </div>
+
+    <div class="ln-go">
+      <div class="par" id="par">
+        <div class="par-b" role="group" aria-label="Choose a line">
+          <button type="button" data-ligne="all" aria-pressed="true">DC Multiverse (all)</button>
+          <button type="button" data-ligne="arrowverse" aria-pressed="false">Arrowverse only</button>
+          <button type="button" data-ligne="dceu" aria-pressed="false">DCEU only</button>
+          <button type="button" data-ligne="dcu" aria-pressed="false">DCU only</button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -2044,6 +2109,19 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     <button class="start t-go" id="start" type="button">Start <em>▸</em></button>
   </div>
 </div>
+
+<!-- ══ LE CHOIX DE LA LIGNE ══════════════════════════════════════
+     Posé une fois, au centre, le reste flouté. Fermer sans répondre
+     garde le multivers, et la bascule sous le plan reste là. -->
+<dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
+  <b id="ask-t">The whole multiverse, or a single line?</b>
+  <div class="ask-b">
+    <button type="button" data-ligne="all">DC Multiverse (all)</button>
+    <button type="button" data-ligne="arrowverse">Arrowverse only</button>
+    <button type="button" data-ligne="dceu">DCEU only</button>
+    <button type="button" data-ligne="dcu">DCU only</button>
+  </div>
+</dialog>
 
 <main id="body">
 
@@ -2209,6 +2287,41 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
   function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'dc'})); }catch(_){} }
 
+  /* ── la ligne choisie ─────────────────────────────────────────────
+     Tout le multivers, ou une seule de ses lignes : l'Arrowverse (avec
+     l'événement majeur, qui en est le cœur), le DCEU ou le DCU. Ce n'est
+     pas un ordre de plus, c'est un sous-ensemble : on ne garde que les
+     bandes de la ligne AVANT que quiconque lise `D.eras`, et le reste de
+     la page suit. La progression est la même clé : une œuvre cochée en
+     Arrowverse l'est aussi dans le multivers.
+     Trois voix, comme les parcours de Star Wars : le hash, puis le choix
+     retenu, puis le multivers. Le multivers est la page de base, sans
+     hash — c'est le lien qu'on partage. */
+  var MODES={arrowverse:1,dceu:1,dcu:1};
+  var MKEY=KEY+'-mode', CHOIX=null;
+  try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
+  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
+  var MODE=HASHMODE||CHOIX||'all';
+  if(!MODES[MODE]) MODE='all';
+  /* Un lien partagé vers une œuvre d'une autre ligne ne doit pas tomber
+     dans le vide : il rouvre le multivers, sans toucher au choix retenu. */
+  (function(){
+    var c=decodeURIComponent(location.hash.slice(1));
+    if(MODE==='all'||!c||MODES[c]) return;
+    var ici=false, ailleurs=false;
+    D.eras.forEach(function(era){ era.entries.forEach(function(e){
+      if(e.id===c){ if(era.branch===MODE) ici=true; else ailleurs=true; } }); });
+    if(ailleurs&&!ici) MODE='all';
+  })();
+  document.body.dataset.ligne=MODE;
+  /* tous les identifiants, avant le tri : un saut d'ancre vers une œuvre
+     d'une autre ligne doit savoir qu'elle existe */
+  var TOUS={};
+  D.eras.forEach(function(era,i){ era.rang=i; era.entries.forEach(function(e){ TOUS[e.id]=1; }); });
+  if(MODE!=='all') D.eras=D.eras.filter(function(era){ return era.branch===MODE; });
+  var NOM={arrowverse:'Arrowverse',dceu:'DCEU',dcu:'DCU'};
+  var LCODE={arrowverse:'ARW',dceu:'DCEU',dcu:'DCU'};
+
   /* Les séparateurs ne sont pas des œuvres : ils ne se cochent pas, ne se
      comptent pas et ne prennent pas de numéro. `crisis-start` est le seul
      de DC, il annonce l'événement au milieu de l'Arrowverse. */
@@ -2225,6 +2338,67 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
 
   var offLv={}, offK={}, offOpt={}, hideDone=false;
+
+  /* ── la ligne choisie : le premier écran, la question, la bascule ──
+     Le billet prend le code de la ligne, la bande ses propres comptes.
+     La question n'est posée qu'à qui n'a rien répondu — ni hash, ni choix
+     retenu — et `#choix` la repose. Le clic retient le choix et change
+     l'adresse : c'est le rechargement qui rebâtit la page. Revenir au
+     multivers retire le hash au lieu d'en poser un. */
+  if(MODE!=='all'){
+    var stub=document.querySelector('.t-stub span');
+    if(stub) stub.textContent=LCODE[MODE];
+    var nf=0, ser={};
+    ALL.forEach(function(e){
+      if(e.type==='film') nf++;
+      else if(e.type==='serie'||e.type==='anime') ser[e.title]=1;
+    });
+    [['s-film',nf],['s-serie',Object.keys(ser).length]].forEach(function(p){
+      var b=document.getElementById(p[0]); if(!b) return;
+      b.textContent=p[1]; b.parentNode.hidden=!p[1];
+    });
+  }
+  function vaVers(m){
+    if(MODES[m]){ location.hash='#'+m; return; }
+    if(history.replaceState){
+      history.replaceState(null,'',location.pathname+location.search);
+      location.reload();
+    } else location.hash='';
+  }
+  [].forEach.call(document.querySelectorAll('#par button[data-ligne]'),function(b){
+    b.setAttribute('aria-pressed',b.dataset.ligne===MODE?'true':'false'); });
+  var ask=document.getElementById('ask');
+  function poseAsk(){ if(ask && ask.showModal && !ask.open){ ask.showModal(); ask.focus(); } }
+  if(location.hash==='#choix') poseAsk();
+  else if(!HASHMODE && !CHOIX) poseAsk();
+  if(ask){
+    ask.addEventListener('click',function(ev){ if(ev.target===ask) ask.close(); });
+    ask.addEventListener('close',function(){
+      try{ localStorage.setItem(MKEY,MODE); }catch(_){}
+      if(location.hash==='#choix' && history.replaceState)
+        history.replaceState(null,'',location.pathname+location.search);
+    });
+  }
+  /* `button[data-ligne]` et non `[data-ligne]` : `<body>` porte aussi
+     l'attribut, et tout clic de la page serait passé pour un choix. */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest&&ev.target.closest('button[data-ligne]'); if(!b) return;
+    var m=b.dataset.ligne;
+    try{ localStorage.setItem(MKEY,m); }catch(_){}
+    if(m===MODE){ if(ask&&ask.open) ask.close(); return; }
+    vaVers(m);
+  });
+  /* On ne recharge que si la ligne change vraiment : le lien d'une œuvre,
+     `#contact` ou le `#` du menu ne doivent rien rebâtir. */
+  addEventListener('hashchange',function(){
+    if(location.hash==='#choix'){ poseAsk(); return; }
+    var h=location.hash.slice(1);
+    var m=MODES[h]?h:(location.hash?null:'all');
+    if(m&&m!==MODE) location.reload();
+    /* un badge ou un lien copié qui vise une œuvre d'une autre ligne :
+       le rechargement rouvre le multivers sur elle */
+    else if(!m && TOUS[h] && !document.getElementById(h)) location.reload();
+  });
 
   function $(s,r){ return (r||document).querySelector(s); }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
@@ -2398,10 +2572,13 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   /* Le code de chaque ligne, par rang de bande dans les données : c'est
      le même rang dans les deux langues, là où les titres changent. */
   var CODES=['SUP','BAT','ARW','DCEU','','ARW','ELS','DCU'];
-  function code(i){ return CODES[i]||'DC'; }
+  function code(i){ var e=D.eras[i]; return CODES[e&&e.rang!=null?e.rang:i]||'DC'; }
   /* une image par station, choisie par Niko ; à défaut, la vignette de la
      première œuvre la plus haute de la zone */
-  var ARTS=['/images/dcorigins.webp','/images/majorevent.webp','/images/arrowverseafterevent.webp','/images/dcu.webp'];
+  /* une ligne seule a ses propres stations : le rang de zone n'est plus
+     le même, la table non plus */
+  var ARTS={all:['/images/dcorigins.webp','/images/majorevent.webp','/images/arrowverseafterevent.webp','/images/dcu.webp'],
+    arrowverse:['','/images/majorevent.webp','/images/arrowverseafterevent.webp'],dceu:[],dcu:['/images/dcu.webp']}[MODE];
   function artZone(z,zi){
     if(ARTS[zi]) return ARTS[zi];
     var a=''; z.cols.some(function(c){ a=eraArt(c.era); return !!a; });
@@ -2526,7 +2703,9 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   var ZONES=(function(){
     var out=[];
     D.eras.forEach(function(era,i){
-      var solo=!!era.event || era.branch==='dcu';
+      /* une ligne seule n'a plus de correspondance : chaque bande est
+         sa propre station, sous son propre nom */
+      var solo=!!era.event || era.branch==='dcu' || MODE!=='all';
       var last=out[out.length-1];
       if(last && !solo && !last.solo && era.zone && last.zone===era.zone){
         last.cols.push({era:era,i:i}); return;
@@ -2640,7 +2819,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         '<div class="wrap zbody">'+body+'</div></section>';
     });
     html+='<div class="terminus wrap"><span class="stn-rail" aria-hidden="true"><span class="stn-dot tm"></span></span>'+
-      '<p><b>Terminus</b><span>End of the DC network · '+ZONES.length+' stations · '+ALL.length+' stops</span></p></div>';
+      '<p><b>Terminus</b><span>'+(MODE==='all'?'End of the DC network · ':'End of the line '+NOM[MODE]+' · ')+ZONES.length+(ZONES.length>1?' stations · ':' station · ')+ALL.length+' stops</span></p></div>';
     $('#timeline').innerHTML=html;
   })();
 

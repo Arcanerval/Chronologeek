@@ -753,6 +753,18 @@ const TRADUCTIONS = [
   ['Ligne Avatar Legends terminée', 'Avatar Legends line complete'],
   ['Fin de la ligne Avatar Legends ·', 'End of the Avatar Legends line ·'],
   ['Embranchement', 'Branch line'],
+  /* DC · le choix de ligne à l'arrivée, posé le 23 octobre 2026 */
+  ["L'Arrowverse seul — ses séries entrelacées épisode par épisode, événement majeur sans spoil.",
+   'The Arrowverse alone — its shows interwoven episode by episode, major event spoiler-free.'],
+  ['Le DCEU seul — de Man of Steel à The Flash, sans spoil.',
+   'The DCEU alone — from Man of Steel to The Flash, spoiler-free.'],
+  ["Le DCU seul — le nouvel univers DC dans l'ordre, sans spoil.",
+   'The DCU alone — the new DC universe in order, spoiler-free.'],
+  ['Tout le multivers, ou une seule ligne ?', 'The whole multiverse, or a single line?'],
+  ['Multivers DC (tout)', 'DC Multiverse (all)'],
+  ['Arrowverse seul', 'Arrowverse only'],
+  ['DCEU seul', 'DCEU only'],
+  ['DCU seul', 'DCU only'],
   // la page DC, au plan de métro le 28 septembre 2026 : un réseau
   ['Plan du réseau DC', 'DC network map'],
   ['Réseau DC terminé', 'DC network complete'],

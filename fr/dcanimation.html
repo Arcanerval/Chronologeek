@@ -1260,6 +1260,56 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .ln-hero .par-b button[aria-pressed="true"]{background:var(--hot);color:var(--ink);border-color:var(--hot);
   box-shadow:4px 4px 0 var(--ink)}
 .ln-hero .par-b button[aria-pressed="true"]::before{color:rgba(13,11,18,.6)}
+html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
+.ln-hero .par-b{flex-wrap:wrap;justify-content:center}
+
+/* ══ la ligne choisie : les trois timelines, ou une seule ════════════
+   Posée une fois, à l'arrivée, comme sur DC : `dialog.ask`, puis la
+   bascule sous le plan. Un sous-ensemble, pas un ordre de plus : la page
+   ne garde que la bande de la ligne choisie, et le reste suit.
+   `margin:auto` est rappelé : `*{margin:0}` décolle sinon le dialogue
+   en haut à gauche. */
+.par{display:flex;justify-content:center;margin-top:15px}
+.par-b{display:inline-flex;border:2px solid var(--paper)}
+.par-b button{font-family:'Chivo','Chivo repli';font-size:11.5px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;background:none;color:rgba(255,253,247,.8);
+  border:0;padding:7px 13px;cursor:pointer}
+.ask{margin:auto;border:2px solid var(--paper);background:var(--ink);color:var(--paper);
+  padding:0;max-width:680px;width:calc(100% - 32px);box-shadow:8px 8px 0 rgba(0,0,0,.55)}
+.ask:focus-visible{outline:none}
+.ask::backdrop{background:rgba(8,8,12,.62);
+  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.ask::before{content:'Choisissez votre ligne';display:block;background:var(--uni);color:var(--ink);
+  font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:13px;letter-spacing:.24em;
+  text-transform:uppercase;padding:8px 22px 7px;border-bottom:2px solid var(--paper)}
+html[lang=en] .ask::before{content:'Choose your line'}
+.ask b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
+  font-size:clamp(24px,6vw,31px);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;
+  color:var(--paper);text-align:center;padding:22px 26px 0;text-shadow:3px 3px 0 #000}
+.ask-b{display:flex;gap:12px;padding:20px 22px 24px;counter-reset:voie}
+.ask-b button{flex:1 1 0;min-width:0;counter-increment:voie;display:flex;flex-direction:column;
+  align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:18px;
+  letter-spacing:.05em;text-transform:uppercase;line-height:1.05;background:rgba(255,253,247,.04);
+  border:2px solid var(--line);color:var(--paper);padding:14px 10px 16px;cursor:pointer;
+  transition:transform .1s,box-shadow .1s,border-color .1s}
+.ask-b button::before{content:counter(voie);display:grid;place-items:center;width:42px;height:42px;
+  border-radius:50%;background:var(--uni);color:var(--ink);border:3px solid var(--paper);
+  box-shadow:0 0 0 2px var(--ink);font-weight:900;font-size:23px;letter-spacing:0;line-height:1}
+.ask-b button:hover,.ask-b button:focus-visible{border-color:var(--uni);transform:translate(-3px,-3px);
+  box-shadow:4px 4px 0 var(--uni);outline:none}
+@media(max-width:620px){
+  .ask-b{flex-direction:column;gap:10px;padding:18px 16px 20px}
+  .ask-b button{flex-direction:row;gap:14px;padding:10px 14px;text-align:left;font-size:17px}
+  .ask-b button::before{width:36px;height:36px;font-size:20px;flex:none}
+  .ask-b button::after{content:'▸';margin-left:auto;color:var(--uni);font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.ask-b button{transition:none}}
+/* L'accroche du premier écran dit quelle ligne on suit ; sans JS, c'est
+   celle des trois timelines qui reste. */
+.pl-dcau,.pl-dcamu,.pl-arkham{display:none}
+body[data-ligne="dcau"] .pl-all,body[data-ligne="dcamu"] .pl-all,body[data-ligne="arkham"] .pl-all{display:none}
+body[data-ligne="dcau"] .pl-dcau,body[data-ligne="dcamu"] .pl-dcamu,body[data-ligne="arkham"] .pl-arkham{display:inline}
+.ln-board .s[hidden]{display:none}
 
 /* ── l'intro : des panneaux d'information ── */
 .intro .itag{border-radius:8px;border-left-width:6px}
@@ -2057,23 +2107,35 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
 <!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
 <section class="ln-hero" id="top">
+<script>(function(){var M={dcau:1,dcamu:1,arkham:1},h=location.hash.slice(1),c=null;try{c=localStorage.getItem('cg-proto-dcanim-mode');}catch(_){}document.body.dataset.ligne=M[h]?h:(M[c]?c:'all');})();</script>
   <div class="ln-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="ln-head">
       <h1 class="disp"><span class="tag">Chronologies DCAU, DCAMU et Arkhamverse</span>
         <span class="nm">DC Animation</span></h1>
     </div>
-    <p class="dek">DCAU · DCAMU · Arkhamverse — trois univers indépendants, sans spoil.
+    <p class="dek"><span class="pl-all">DCAU · DCAMU · Arkhamverse — trois univers indépendants, sans spoil.</span><span class="pl-dcau">Le DCAU seul — ses séries et ses films dans l’ordre, sans spoil.</span><span class="pl-dcamu">Le DCAMU seul — ses films animés dans l’ordre, sans spoil.</span><span class="pl-arkham">L’Arkhamverse seul — les jeux et leurs DLC dans l’ordre chronologique, sans spoil.</span>
       <b>Cochez ce que vous avez complété, votre progression est sauvegardée.</b></p>
     <p class="upd"><i aria-hidden="true"></i> Mis à jour · septembre 2026</p>
 
     <div class="ln-map dc-net" id="ln-map" aria-label="Plan du réseau DC Animation"></div>
 
     <div class="ln-board stats">
-      <div class="s"><b>32</b><span>Films animés</span></div>
-      <div class="s"><b>22</b><span>Jeux et DLC</span></div>
+      <div class="s"><b id="s-film">32</b><span>Films animés</span></div>
+      <div class="s"><b id="s-jeu">22</b><span>Jeux et DLC</span></div>
       <div class="s"><b id="s-tot">80</b><span>Arrêts</span></div>
       <div class="s"><b id="s-h">305 h</b><span>Trajet restant</span></div>
+    </div>
+
+    <div class="ln-go">
+      <div class="par" id="par">
+        <div class="par-b" role="group" aria-label="Choisir une ligne">
+          <button type="button" data-ligne="all" aria-pressed="true">Les 3 timelines</button>
+          <button type="button" data-ligne="dcau" aria-pressed="false">DCAU</button>
+          <button type="button" data-ligne="dcamu" aria-pressed="false">DCAMU</button>
+          <button type="button" data-ligne="arkham" aria-pressed="false">Arkhamverse</button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -2087,6 +2149,19 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     <button class="start t-go" id="start" type="button">Commencer <em>▸</em></button>
   </div>
 </div>
+
+<!-- ══ LE CHOIX DE LA LIGNE ══════════════════════════════════════
+     Posé une fois, au centre, le reste flouté. Fermer sans répondre
+     garde les trois timelines, et la bascule sous le plan reste là. -->
+<dialog class="ask" id="ask" aria-labelledby="ask-t" tabindex="-1">
+  <b id="ask-t">Les trois timelines, ou une seule ?</b>
+  <div class="ask-b">
+    <button type="button" data-ligne="all">Les 3 timelines</button>
+    <button type="button" data-ligne="dcau">DCAU</button>
+    <button type="button" data-ligne="dcamu">DCAMU</button>
+    <button type="button" data-ligne="arkham">Arkhamverse</button>
+  </div>
+</dialog>
 
 <main id="body">
 
@@ -2250,6 +2325,34 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      est celle du `data-u` de l'accueil, sinon son filtre ne retrouve rien. */
   function marque(){ try{ localStorage.setItem('cg_last',JSON.stringify({u:'dcanimation'})); }catch(_){} }
 
+  /* ── la ligne choisie ─────────────────────────────────────────────
+     Les trois timelines, ou une seule : DCAU, DCAMU ou Arkhamverse. Un
+     sous-ensemble, comme sur DC : on ne garde que la bande de la ligne
+     AVANT que quiconque lise `D.eras`. La progression est la même clé.
+     Le hash, puis le choix retenu, puis les trois — la page de base,
+     sans hash, celle qu'on partage. */
+  var MODES={dcau:1,dcamu:1,arkham:1};
+  var MKEY=KEY+'-mode', CHOIX=null;
+  try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
+  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
+  var MODE=HASHMODE||CHOIX||'all';
+  if(!MODES[MODE]) MODE='all';
+  /* Un lien partagé vers une œuvre d'une autre ligne rouvre les trois. */
+  (function(){
+    var c=decodeURIComponent(location.hash.slice(1));
+    if(MODE==='all'||!c||MODES[c]) return;
+    var ici=false, ailleurs=false;
+    D.eras.forEach(function(era){ era.entries.forEach(function(e){
+      if(e.id===c){ if(era.branch===MODE) ici=true; else ailleurs=true; } }); });
+    if(ailleurs&&!ici) MODE='all';
+  })();
+  document.body.dataset.ligne=MODE;
+  var TOUS={};
+  D.eras.forEach(function(era,i){ era.rang=i; era.entries.forEach(function(e){ TOUS[e.id]=1; }); });
+  if(MODE!=='all') D.eras=D.eras.filter(function(era){ return era.branch===MODE; });
+  var NOM={dcau:'DCAU',dcamu:'DCAMU',arkham:'Arkhamverse'};
+  var LCODE={dcau:'DCAU',dcamu:'DCAMU',arkham:'ARK'};
+
   /* Les séparateurs ne sont pas des œuvres : ils ne se cochent pas, ne se
      comptent pas et ne prennent pas de numéro. `crisis-start` est le seul
      de DC, il annonce l'événement au milieu de l'Arrowverse. */
@@ -2266,6 +2369,60 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function save(){ try{ localStorage.setItem(KEY,JSON.stringify(prog)); }catch(_){} }
 
   var offLv={}, offK={}, offOpt={}, hideDone=false;
+
+  /* ── la ligne choisie : le premier écran, la question, la bascule ──
+     Même geste que DC : le billet prend le code de la ligne, la bande ses
+     comptes, la question n'est posée qu'à qui n'a rien répondu et
+     `#choix` la repose. */
+  if(MODE!=='all'){
+    var stub=document.querySelector('.t-stub span');
+    if(stub) stub.textContent=LCODE[MODE];
+    var nf=0, nj=0;
+    ALL.forEach(function(e){
+      if(e.type==='filmanim') nf++;
+      else if(e.type==='jeu'||e.type==='dlc') nj++;
+    });
+    [['s-film',nf],['s-jeu',nj]].forEach(function(p){
+      var b=document.getElementById(p[0]); if(!b) return;
+      b.textContent=p[1]; b.parentNode.hidden=!p[1];
+    });
+  }
+  function vaVers(m){
+    if(MODES[m]){ location.hash='#'+m; return; }
+    if(history.replaceState){
+      history.replaceState(null,'',location.pathname+location.search);
+      location.reload();
+    } else location.hash='';
+  }
+  [].forEach.call(document.querySelectorAll('#par button[data-ligne]'),function(b){
+    b.setAttribute('aria-pressed',b.dataset.ligne===MODE?'true':'false'); });
+  var ask=document.getElementById('ask');
+  function poseAsk(){ if(ask && ask.showModal && !ask.open){ ask.showModal(); ask.focus(); } }
+  if(location.hash==='#choix') poseAsk();
+  else if(!HASHMODE && !CHOIX) poseAsk();
+  if(ask){
+    ask.addEventListener('click',function(ev){ if(ev.target===ask) ask.close(); });
+    ask.addEventListener('close',function(){
+      try{ localStorage.setItem(MKEY,MODE); }catch(_){}
+      if(location.hash==='#choix' && history.replaceState)
+        history.replaceState(null,'',location.pathname+location.search);
+    });
+  }
+  /* `button[data-ligne]` : `<body>` porte aussi l'attribut. */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest&&ev.target.closest('button[data-ligne]'); if(!b) return;
+    var m=b.dataset.ligne;
+    try{ localStorage.setItem(MKEY,m); }catch(_){}
+    if(m===MODE){ if(ask&&ask.open) ask.close(); return; }
+    vaVers(m);
+  });
+  addEventListener('hashchange',function(){
+    if(location.hash==='#choix'){ poseAsk(); return; }
+    var h=location.hash.slice(1);
+    var m=MODES[h]?h:(location.hash?null:'all');
+    if(m&&m!==MODE) location.reload();
+    else if(!m && TOUS[h] && !document.getElementById(h)) location.reload();
+  });
 
   function $(s,r){ return (r||document).querySelector(s); }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
@@ -2443,10 +2600,11 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   /* Le code de chaque ligne, par rang de bande dans les données : c'est
      le même rang dans les deux langues, là où les titres changent. */
   var CODES=['DCAU','DCAMU','ARK'];
-  function code(i){ return CODES[i]||'DCA'; }
+  function code(i){ var e=D.eras[i]; return CODES[e&&e.rang!=null?e.rang:i]||'DCA'; }
   /* une image par station, choisie par Niko ; à défaut, la vignette de la
      première œuvre la plus haute de la zone */
-  var ARTS=['/images/dcanimation.webp'];
+  /* une ligne seule prend la vignette de sa première œuvre essentielle */
+  var ARTS=MODE==='all'?['/images/dcanimation.webp']:[];
   function artZone(z,zi){
     if(ARTS[zi]) return ARTS[zi];
     var a=''; z.cols.some(function(c){ a=eraArt(c.era); return !!a; });
@@ -2561,7 +2719,8 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   var ZONES=(function(){
     var out=[];
     D.eras.forEach(function(era,i){
-      var solo=!!era.event;
+      /* une ligne seule est sa propre station, sous son propre nom */
+      var solo=!!era.event || MODE!=='all';
       var last=out[out.length-1];
       if(last && !solo && !last.solo && era.zone && last.zone===era.zone){
         last.cols.push({era:era,i:i}); return;
@@ -2665,7 +2824,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         '<div class="wrap zbody">'+body+'</div></section>';
     });
     html+='<div class="terminus wrap"><span class="stn-rail" aria-hidden="true"><span class="stn-dot tm"></span></span>'+
-      '<p><b>Terminus</b><span>Fin du réseau DC Animation · '+ZONES.length+' station'+(ZONES.length>1?'s':'')+' · '+ALL.length+' arrêts</span></p></div>';
+      (MODE==='all'?'<p><b>Terminus</b><span>Fin du réseau DC Animation · ':'<p><b>Terminus</b><span>Fin de la ligne '+NOM[MODE]+' · ')+ZONES.length+' station'+(ZONES.length>1?'s':'')+' · '+ALL.length+' arrêts</span></p></div>';
     $('#timeline').innerHTML=html;
   })();
 

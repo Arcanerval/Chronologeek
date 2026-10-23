@@ -975,6 +975,40 @@ chaînes inversées pour les autres — et leur français dans
 The Walking Dead). `rel`, `ref`, `covers` et `drop` sont identiques ou
 techniques dans les neuf scripts de traduction.
 
+### DC et DC Animation : une ligne au choix, posé le 23 octobre 2026
+
+Demandé par Niko : les deux réseaux n’ont pas d’ordre de sortie, mais ils
+posent une question à l’arrivée — **tout le réseau, ou une seule ligne**.
+DC propose « Multivers DC (tout) », « Arrowverse seul », « DCEU seul »,
+« DCU seul » ; DC Animation « Les 3 timelines », « DCAU », « DCAMU »,
+« Arkhamverse ». Même dialogue `dialog.ask` que les parcours, bandeau
+« Choisissez votre ligne », puis la bascule dans `.ln-go`, sous le plan.
+
+Cinq choses à savoir :
+
+- **Ce n’est pas un ordre, c’est un sous-ensemble.** Le script garde les
+  bandes dont `branch` vaut la ligne (`D.eras.filter`) **avant** que
+  quiconque lise `D.eras` : plan, billet, compteurs, terminus suivent
+  sans rien savoir du choix. L’Arrowverse garde l’événement majeur, qui
+  porte `branch:"arrowverse"`. La progression est la même clé — une
+  œuvre cochée en Arrowverse l’est dans le multivers. Hash `#arrowverse`,
+  `#dceu`, `#dcu` (DC) et `#dcau`, `#dcamu`, `#arkham` (DC Animation),
+  choix retenu sous `<KEY>-mode`, `#choix` repose la question.
+- **Une ligne seule n’a plus de correspondance** : chaque bande devient
+  sa station (`solo`), sous son propre nom. `code()` lit le rang
+  d’origine (`era.rang`), sans quoi le DCEU seul prenait le code SUP.
+- **Un lien vers une œuvre d’une autre ligne rouvre tout le réseau**, au
+  chargement comme au saut d’ancre (`TOUS`), sans toucher au choix retenu.
+- **L’accroche du premier écran a une phrase par ligne** (`.pl-*`,
+  masquées sauf celle de `body[data-ligne]`), posée par un script en
+  tête du héros pour ne rien décaler ; sans JS, c’est celle du réseau
+  entier. La bande recompte films et séries (ou jeux), une case à zéro se
+  masque, et le billet prend le code de la ligne.
+- **La phrase de Niko qui renvoyait aux cases à décocher** (« vous
+  pouvez choisir de le faire plus bas en décochant… ») dit maintenant
+  qu’on choisit sa ligne à l’arrivée ou sous le plan — `REECRITS` et
+  `RETOUCHES` de `traduire.mjs`, comme les Terres.
+
 ## Les colonnes parallèles sous 1440 px
 
 DC est le seul univers à colonnes, et depuis le **2 septembre 2026** elles ne

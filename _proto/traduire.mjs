@@ -726,6 +726,10 @@ const REECRITS = [
     ancien: 'se passent sur la Terre-Prime et la Terre-1.' },
   { ou: 'DC', neuf: 'le début du DCEU sur la Terre-TUD13.',
     ancien: 'le début du DCEU sur la Terre-1.' },
+  /* le choix de ligne à l'arrivée, posé le 23 octobre 2026 : la phrase
+     ne renvoie plus aux cases à décocher */
+  { ou: 'DC', neuf: 'vous pouvez choisir votre ligne en arrivant sur la page, ou plus haut, sous le plan du réseau.',
+    ancien: 'vous pouvez choisir de le faire plus bas en décochant ce que vous ne voulez pas voir.' },
 ];
 function commeEnProd(s, ou) {
   if (typeof s !== 'string') return s;
@@ -737,7 +741,10 @@ RETOUCHES.push(
     de: 'take place on <strong>Earth-Prime</strong> and <strong>Earth-1</strong>.',
     a: 'take place on <strong>Earth-1</strong> and <strong>Earth-TUD13</strong>.' },
   { quoi: 'DC · Man of Steel ouvre le DCEU sur la Terre-TUD13', ou: 'DC',
-    de: 'marks the start of the DCEU on Earth-1.', a: 'marks the start of the DCEU on Earth-TUD13.' });
+    de: 'marks the start of the DCEU on Earth-1.', a: 'marks the start of the DCEU on Earth-TUD13.' },
+  { quoi: 'DC · on choisit sa ligne à l’arrivée, plus en décochant', ou: 'DC',
+    de: "you can pick below by unchecking what you don't want to see.",
+    a: 'you can pick your line when you arrive on the page, or higher up, under the network map.' });
 const retouchesFaites = new Map();
 
 /* ── un lien interne pointe la page de sa langue ────────────────────

@@ -21,6 +21,8 @@
    ═════════════════════════════════════════════════════════════════════ */
 
 export const DCA_IDENTIQUES = [
+  // le type lu par la bande du premier écran quand une seule ligne est choisie
+  'filmanim',
   /* le réseau de métro : codes de ligne et fragments de gabarit */
   "ARK",
   "station",
@@ -526,6 +528,16 @@ export const DCA_RETROUVES = [
 export const DCA_TRADUCTIONS = [
   /* ── le réseau de métro, posé le 29 septembre 2026 ── */
   ['DC Animation network map', 'Plan du réseau DC Animation'],
+  /* ── le choix de ligne à l'arrivée, posé le 23 octobre 2026 ── */
+  ['<p><b>Terminus</b><span>End of the line', '<p><b>Terminus</b><span>Fin de la ligne'],
+  ['All three timelines, or just one?', 'Les trois timelines, ou une seule ?'],
+  ['The 3 timelines', 'Les 3 timelines'],
+  ['The DCAU alone — its shows and movies in order, spoiler-free.',
+   'Le DCAU seul — ses séries et ses films dans l’ordre, sans spoil.'],
+  ['The DCAMU alone — its animated movies in order, spoiler-free.',
+   'Le DCAMU seul — ses films animés dans l’ordre, sans spoil.'],
+  ['The Arkhamverse alone — the games and their DLC in chronological order, spoiler-free.',
+   'L’Arkhamverse seul — les jeux et leurs DLC dans l’ordre chronologique, sans spoil.'],
   ['<p class="zdep-k"><span>Departures</span>Choose your line</p>', '<p class="zdep-k"><span>Départs</span>Choisissez votre ligne</p>'],
   ['<p><b>Terminus</b><span>End of the DC Animation network ·', '<p><b>Terminus</b><span>Fin du réseau DC Animation ·'],
   ['<p class="stn-lines"><span class="lab">Lines</span>', '<p class="stn-lines"><span class="lab">Lignes</span>'],
