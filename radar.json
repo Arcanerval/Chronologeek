@@ -1,22 +1,5 @@
 [
  {
-  "universe": "starwars",
-  "title": "Hyperspace Stories: Mace",
-  "date_sort": "2026-10-20",
-  "date_txt": "20/10/2026",
-  "kind": "Comic",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "",
-  "syn": "Hyperspace Stories: Mace is a canceled graphic novel in the Star Wars: Hyperspace Stories series of graphic novels featuring a young Mace Windu. The issue was written by Justina Ireland, illustrated by Georges Duarte and PH Gomes, and was announced to be published by Dark Horse Comics.",
-  "wiki": "Hyperspace Stories: Mace",
-  "syn_fr": "Hyperspace Stories: Mace est un numéro one-shot de la série de bandes dessinées Star Wars : Histoires de l'hyperespace écrit par Justina Ireland.",
-  "kindKey": "comic",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "dc",
   "title": "Clayface",
   "date_sort": "2026-10-23",
@@ -32,7 +15,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-10-21",
   "date_txt_fr": "21/10/2026",
-  "poster": "/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
+  "poster": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
   "tmdb": 1400940,
   "media": "movie"
  },
@@ -84,7 +67,7 @@
    "mark": "",
    "eFin": 6
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -152,7 +135,7 @@
    "e": 7,
    "mark": ""
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -177,7 +160,7 @@
    "e": 8,
    "mark": "finale"
   },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
   "tmdb": 213375,
   "media": "tv"
  },

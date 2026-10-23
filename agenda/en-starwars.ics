@@ -7,20 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:c62edc60f07314354488-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Hyperspace Stories: Mace
-DESCRIPTION:Hyperspace Stories: Mace is a canceled graphic novel in the Sta
- r Wars: Hyperspace Stories series of graphic novels featuring a young Mace
-  Windu. The issue was written by Justina Ireland\, illustrated by Georges 
- Duarte and PH Gomes\, and was announced to be published by Dark Horse Comi
- cs.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:5fa1a35dfe64181e9608-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261028
