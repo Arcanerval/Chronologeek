@@ -339,14 +339,17 @@ const TRADUCTIONS = [
      Après Spider-Man : Brand New Day, en 2028. La FAQ est celle de
      Niko, en anglais, mot pour mot — « series takes » corrigé. */
   /* Replacée le 24 octobre 2026 : les épisodes la datent de mai 2028,
-     l'anniversaire de la bataille de Sokovie — elle passe donc avant
-     The Punisher : One Last Kill. */
+     l'anniversaire de la bataille de Sokovie. Le même jour Niko date
+     The Punisher : One Last Kill du début à la mi-2028 : VisionQuest
+     passe juste après lui, et Wonder Man s'étend sur 2027-2028. */
+  ["Le téléfilm se déroule entre le début et le milieu de l'année 2028",
+   'The TV special takes place in early to mid 2028'],
   ["La série se déroule en mai 2028, pendant l'anniversaire de la bataille de Sokovie d'Avengers : L'Ère d'Ultron",
    'The series takes place in May 2028, during the anniversary of the Battle of Sokovia from Avengers: Age of Ultron'],
   ['Parce que la série se situe ici chronologiquement',
    'Because this is where the show falls chronologically'],
-  ['Ajouté à la timeline Marvel, en mai 2028, juste avant The Punisher : One Last Kill.',
-   'Added to the Marvel timeline, in May 2028, right before The Punisher: One Last Kill.'],
+  ['Ajouté à la timeline Marvel, en mai 2028, juste après The Punisher : One Last Kill.',
+   'Added to the Marvel timeline, in May 2028, right after The Punisher: One Last Kill.'],
 
   /* ── le comic The Mandalorian and Grogu : Nightmare on Nevarro, ajouté
      le 21 octobre 2026 ── la suite de Danger in the Dark, en 9 ABY. */

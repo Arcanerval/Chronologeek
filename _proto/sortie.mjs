@@ -77,7 +77,7 @@ const SORTIES = {
   /* Le placement est la FAQ de Niko. D'abord « entre l'automne et l'hiver
      2028, juste après Brand New Day » ; le 24 octobre 2026 les épisodes l'ont
      datée de mai 2028, l'anniversaire de la bataille de Sokovie, et elle passe
-     avant The Punisher : One Last Kill. La trilogie est demandée par Niko le
+     juste après The Punisher : One Last Kill (début à mi-2028). La trilogie est demandée par Niko le
      15 octobre 2026. */
   'mcu-vq': {
     univers: 'mcu',
