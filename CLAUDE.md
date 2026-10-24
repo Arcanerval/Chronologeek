@@ -1008,6 +1008,14 @@ Cinq choses à savoir :
   pouvez choisir de le faire plus bas en décochant… ») dit maintenant
   qu’on choisit sa ligne à l’arrivée ou sous le plan — `REECRITS` et
   `RETOUCHES` de `traduire.mjs`, comme les Terres.
+- **Chaque ligne seule a ses niveaux**, tranchés par Niko le 24 octobre 2026
+  (table `NIVEAUX` de `e-dc.html`, en `i18n-off`) : l’Arrowverse est tout
+  essentiel sauf Constantine et Black Lightning ; le DCEU tout essentiel sauf
+  Peacemaker (important), Wonder Woman 1984 et Blue Beetle (optionnels) ; le
+  DCU met Superman en essentiel, Suicide Squad, Clayface et Creature
+  Commandos en optionnel, le reste en important. `defaut` vaut pour ce que
+  la table ne nomme pas, et le multivers garde les niveaux des données. Les
+  boutons de niveau se rebâtissent sur ce qui reste.
 
 ## Les colonnes parallèles sous 1440 px
 

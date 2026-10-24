@@ -2320,6 +2320,31 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   D.eras.forEach(function(era,i){ era.rang=i; era.entries.forEach(function(e){ TOUS[e.id]=1; }); });
   if(MODE!=='all') D.eras=D.eras.filter(function(era){ return era.branch===MODE; });
   var NOM={arrowverse:'Arrowverse',dceu:'DCEU',dcu:'DCU'};
+  /* i18n-off — les niveaux d'une ligne seule, tranchés par Niko le
+     24 octobre 2026. Une œuvre ne pèse pas pareil selon ce qu'on suit : la
+     Suicide Squad de 2016 est importante dans le multivers, optionnelle pour
+     qui ne suit que le DCU. `defaut` vaut pour toute œuvre de la ligne que
+     la table ne nomme pas ; une ligne absente garde les niveaux du multivers.
+     Les filtres de niveau se rebâtissent sur ce qui reste (`LVRANK`), donc
+     « Essentiel » paraît de lui-même. */
+  var NIVEAUX={
+    arrowverse:{defaut:'must',bonus:['av-constantine','av-bl-s1e1-6','av-bl-s1e7-13',
+      'av-bl-s2e1-7','av-bl-s2e8-16','av-bl-s3e1-7','av-bl-s3e8','av-bl-s3e9','av-bl-s3e10-16','av-bl-s4']},
+    dceu:{defaut:'must',imp:['dceu-peacemaker'],bonus:['dceu-ww84','dceu-bluebeetle']},
+    dcu:{must:['dcu-superman'],
+      imp:['dceu-tss-sc','dceu-peacemaker-sc','dcu-peacemaker2','dcu-supergirl','dcu-lanterns'],
+      bonus:['dcu-ss-sc','dcu-clayface','dcu-cc']}
+  };
+  /* i18n-on */
+  (function(){
+    var t=NIVEAUX[MODE]; if(!t) return;
+    var lv={};
+    ['must','imp','bonus'].forEach(function(k){ (t[k]||[]).forEach(function(id){ lv[id]=k; }); });
+    D.eras.forEach(function(era){ era.entries.forEach(function(e){
+      if(e.type==='separator') return;
+      var n=lv[e.id]||t.defaut; if(n) e.level=n;
+    }); });
+  })();
   var LCODE={arrowverse:'ARW',dceu:'DCEU',dcu:'DCU'};
 
   /* Les séparateurs ne sont pas des œuvres : ils ne se cochent pas, ne se
