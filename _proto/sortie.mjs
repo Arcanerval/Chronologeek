@@ -78,7 +78,9 @@ const SORTIES = {
   /* Le placement est celui de Niko, le 24 octobre 2026 : le film ne donne
      aucune année, mais sa technologie le dit récent, et il précède
      Creature Commandos, où Clayface apparaît — donc le début des années
-     2020. DC est un réseau : la vidéo ne montre que la station du DCU. */
+     2020. DC est un réseau : la vidéo ne montre que la station du DCU.
+     Anglais seulement, tranché par Niko le 24 octobre 2026 : tous les
+     réseaux sont en anglais, une vidéo française ne sert à rien. */
   'dcu-clayface': {
     univers: 'dc',
     en: [
@@ -88,20 +90,9 @@ const SORTIES = {
         dit: 'Clayface belongs to the DCU, the new DC universe, the last station on the line.' },
       { t: 'fiche', lit: '*Early 2020s*, before Creature Commandos',
         dit: 'The movie never gives a year, but its technology points to the early 2020s, and it has to come before Creature Commandos, where Clayface appears. A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
-      { t: 'trilogie', ids: ['dceu-peacemaker-sc', 'dcu-clayface', 'dcu-cc'], lit: 'Right after *Peacemaker*',
-        dit: 'In story order: Peacemaker season one, then Clayface, then Creature Commandos.' },
+      { t: 'trilogie', ids: ['dcu-clayface', 'dcu-cc', 'dcu-superman'], lit: 'Before *Creature Commandos*',
+        dit: 'In story order: Clayface, then Creature Commandos, then Superman.' },
       { t: 'fin', dit: 'All {stops} stops, in order, on Chronologeek dot app.' },
-    ],
-    fr: [
-      { t: 'hook', lit: 'Où placer *Clayface* ?',
-        dit: 'Clayface est sorti. Alors, où se place le film dans la chronologie DC ?' },
-      { t: 'station', ere: 'DCU — New Universe', art: 'images/dcu.webp', de: '2016', a: '2026', lit: 'Le nouveau *DCU*',
-        dit: 'Clayface appartient au DCU, le nouvel univers DC, la dernière station de la ligne.' },
-      { t: 'fiche', lit: '*Début des années 2020*, avant Creature Commandos',
-        dit: 'Le film ne donne aucune année, mais sa technologie le situe au début des années 2020, et il se place forcément avant Creature Commandos, où Clayface apparaît. Un acteur de Gotham en pleine ascension, défiguré par un baron du crime, se tourne vers un traitement expérimental qui change bien plus que son visage.' },
-      { t: 'trilogie', ids: ['dceu-peacemaker-sc', 'dcu-clayface', 'dcu-cc'], lit: 'Juste après *Peacemaker*',
-        dit: 'Dans l’ordre de l’histoire : la saison un de Peacemaker, puis Clayface, puis Creature Commandos.' },
-      { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },
     ],
   },
 
