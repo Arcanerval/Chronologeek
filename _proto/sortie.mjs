@@ -92,7 +92,7 @@ const SORTIES = {
         dit: 'The movie never gives a year, but its technology points to the early 2020s, and it has to come before Creature Commandos, where Clayface appears. A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
       { t: 'trilogie', ids: ['dcu-clayface', 'dcu-cc', 'dcu-superman'], lit: 'Before *Creature Commandos*',
         dit: 'In story order: Clayface, then Creature Commandos, then Superman.' },
-      { t: 'fin', dit: 'All {stops} stops, in order, on Chronologeek dot app.' },
+      { t: 'fin', dit: 'All {ligne} DCU stops, in order, on Chronologeek dot app.' },
     ],
   },
 
@@ -582,8 +582,11 @@ async function main() {
     if (sub) fiche.saison = decode(sub);
   }
 
-  const plans = S[lang].map(p => ({ ...p, dit: p.dit.replace('{stops}', stops),
-    ...(p.lit ? { lit: p.lit.replace('{stops}', stops) } : {}) }));
+  /* `{stops}` compte toute la page, `{ligne}` la seule station de la sortie :
+     DC est un reseau, et 148 arrets ne disent rien a qui ne suit que le DCU */
+  const remplit = x => x.replace('{stops}', stops).replace('{ligne}', sCible.n);
+  const plans = S[lang].map(p => ({ ...p, dit: remplit(p.dit),
+    ...(p.lit ? { lit: remplit(p.lit) } : {}) }));
   const dossier = path.join(RACINE, 'promo', `sortie-${id}-${lang}`);
   fs.mkdirSync(dossier, { recursive: true });
 
