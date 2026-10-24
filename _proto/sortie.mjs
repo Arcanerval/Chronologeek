@@ -31,6 +31,7 @@ const RACINE = path.resolve(ICI, '..');
 const UNIVERS = {
   avatar: { code: 'AV', page: 'e-avatar', data: 'data-avatar', encre: '#7dd3fc' },
   mcu: { code: 'MCU', page: 'e-marvel', data: 'data-mcu', encre: '#e23636' },
+  dc: { code: 'DC', page: 'e-dc', data: 'data-dc', encre: '#f5c842' },
 };
 
 /* Une sortie : son univers, ses plans. `ere` designe une station par son
@@ -70,6 +71,36 @@ const SORTIES = {
         dit: '399 AG. Après une catastrophe, une jeune maîtresse de la terre découvre qu’elle est l’Avatar qui succède à Korra, et le monde la voit comme un présage de fin.' },
       { t: 'avant', lit: 'À voir *avant*',
         dit: 'Avant de commencer, les essentiels : Le Dernier Maître de l’Air, le film d’Aang, et La Légende de Korra.' },
+      { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },
+    ],
+  },
+
+  /* Le placement est celui de Niko, le 24 octobre 2026 : le film ne donne
+     aucune année, mais sa technologie le dit récent, et il précède
+     Creature Commandos, où Clayface apparaît — donc le début des années
+     2020. DC est un réseau : la vidéo ne montre que la station du DCU. */
+  'dcu-clayface': {
+    univers: 'dc',
+    en: [
+      { t: 'hook', lit: 'Where does *Clayface* fit?',
+        dit: 'Clayface is out. So where does it fit in the DC timeline?' },
+      { t: 'station', ere: 'DCU — New Universe', art: 'images/dcu.webp', de: '2016', a: '2026', lit: 'The new *DCU*',
+        dit: 'Clayface belongs to the DCU, the new DC universe, the last station on the line.' },
+      { t: 'fiche', lit: '*Early 2020s*, before Creature Commandos',
+        dit: 'The movie never gives a year, but its technology points to the early 2020s, and it has to come before Creature Commandos, where Clayface appears. A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
+      { t: 'trilogie', ids: ['dceu-peacemaker-sc', 'dcu-clayface', 'dcu-cc'], lit: 'Right after *Peacemaker*',
+        dit: 'In story order: Peacemaker season one, then Clayface, then Creature Commandos.' },
+      { t: 'fin', dit: 'All {stops} stops, in order, on Chronologeek dot app.' },
+    ],
+    fr: [
+      { t: 'hook', lit: 'Où placer *Clayface* ?',
+        dit: 'Clayface est sorti. Alors, où se place le film dans la chronologie DC ?' },
+      { t: 'station', ere: 'DCU — New Universe', art: 'images/dcu.webp', de: '2016', a: '2026', lit: 'Le nouveau *DCU*',
+        dit: 'Clayface appartient au DCU, le nouvel univers DC, la dernière station de la ligne.' },
+      { t: 'fiche', lit: '*Début des années 2020*, avant Creature Commandos',
+        dit: 'Le film ne donne aucune année, mais sa technologie le situe au début des années 2020, et il se place forcément avant Creature Commandos, où Clayface apparaît. Un acteur de Gotham en pleine ascension, défiguré par un baron du crime, se tourne vers un traitement expérimental qui change bien plus que son visage.' },
+      { t: 'trilogie', ids: ['dceu-peacemaker-sc', 'dcu-clayface', 'dcu-cc'], lit: 'Juste après *Peacemaker*',
+        dit: 'Dans l’ordre de l’histoire : la saison un de Peacemaker, puis Clayface, puis Creature Commandos.' },
       { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },
     ],
   },
@@ -250,13 +281,16 @@ function page(ctx) {
 
     if (pl.t === 'station') {
       const s = station(pl.ere);
+      /* `art`, `de` et `a` du plan l'emportent : la bande DCU de DC va de
+         « 2016 » à « 2016-2026 », et sa premiere image est Suicide Squad */
+      const de = pl.de || s.debut, a = pl.a || s.fin;
       return `<section class="f plate" style="--era:${ink(s)}">
-      <img class="pbg" src="${esc(art(s))}" alt="">
+      <img class="pbg" src="${esc(pl.art ? url(pl.art) : art(s))}" alt="">
       ${oeil}
       <div class="pbody">
         <p class="pk"><span class="code">${esc(U.code)}</span>${esc(t.station)} ${s.k + 1} / ${ST.length}</p>
         <h2 class="pn">${esc(nomEre(s))}</h2>
-        <div class="diodes"><b>${esc(s.debut)}</b>${s.fin && s.fin !== s.debut ? `<i>→</i><b>${esc(s.fin)}</b>` : ''}</div>
+        <div class="diodes"><b>${esc(de)}</b>${a && a !== de ? `<i>→</i><b>${esc(a)}</b>` : ''}</div>
         ${titre(pl, 'bas')}
       </div>
       ${mini(s.k)}
