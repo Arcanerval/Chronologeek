@@ -74,9 +74,11 @@ const SORTIES = {
     ],
   },
 
-  /* Le placement est la FAQ de Niko : environ 2 ans après Agatha All Along,
-     entre l'automne et l'hiver 2028, juste après Brand New Day. La trilogie
-     est demandée par Niko le 15 octobre 2026. */
+  /* Le placement est la FAQ de Niko. D'abord « entre l'automne et l'hiver
+     2028, juste après Brand New Day » ; le 24 octobre 2026 les épisodes l'ont
+     datée de mai 2028, l'anniversaire de la bataille de Sokovie, et elle passe
+     avant The Punisher : One Last Kill. La trilogie est demandée par Niko le
+     15 octobre 2026. */
   'mcu-vq': {
     univers: 'mcu',
     en: [
@@ -86,8 +88,8 @@ const SORTIES = {
         dit: 'The Marvel timeline runs through ten stations, from Phase One to Phase Six.' },
       { t: 'station', ere: 'PHASE VI — The Multiverse Saga (ongoing)', lit: 'The latest station: *Phase VI*',
         dit: 'VisionQuest sits in Phase Six, the latest station on the line.' },
-      { t: 'fiche', lit: '*2028*, after Brand New Day',
-        dit: 'Fall to winter 2028, right after Spider-Man: Brand New Day. With a bounty on his head, Vision must confront his nature and resist Ultron’s influence to survive.' },
+      { t: 'fiche', lit: '*May 2028*, the Sokovia anniversary',
+        dit: 'May 2028, during the anniversary of the Battle of Sokovia from Avengers: Age of Ultron. With a bounty on his head, Vision must confront his nature and resist Ultron’s influence to survive.' },
       { t: 'trilogie', ids: ['mcu-wv', 'mcu-agatha', 'mcu-vq'], lit: 'The end of the *WandaVision trilogy*',
         dit: 'And it closes the WandaVision trilogy: WandaVision, then Agatha All Along, and now VisionQuest, about two years later.' },
       { t: 'fin', dit: 'All {stops} stops, in order, on Chronologeek dot app.' },
@@ -99,8 +101,8 @@ const SORTIES = {
         dit: 'La chronologie Marvel traverse dix stations, de la Phase Un à la Phase Six.' },
       { t: 'station', ere: 'PHASE VI — The Multiverse Saga (ongoing)', lit: 'Dernière station : *Phase VI*',
         dit: 'VisionQuest se place dans la Phase Six, la dernière station de la ligne.' },
-      { t: 'fiche', lit: '*2028*, après Brand New Day',
-        dit: 'Entre l’automne et l’hiver 2028, juste après Spider-Man : Brand New Day. Sa tête mise à prix, Vision doit fuir, résister à l’influence d’Ultron et se confronter à sa propre nature.' },
+      { t: 'fiche', lit: '*Mai 2028*, l’anniversaire de Sokovie',
+        dit: 'Mai 2028, pendant l’anniversaire de la bataille de Sokovie d’Avengers : L’Ère d’Ultron. Sa tête mise à prix, Vision doit fuir, résister à l’influence d’Ultron et se confronter à sa propre nature.' },
       { t: 'trilogie', ids: ['mcu-wv', 'mcu-agatha', 'mcu-vq'], lit: 'La fin de la *trilogie WandaVision*',
         dit: 'Et elle clôt la trilogie WandaVision : WandaVision, puis Agatha All Along, et enfin VisionQuest, environ deux ans plus tard.' },
       { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },

@@ -47,8 +47,8 @@ window.CG_NEWS = {
 
       { nat:"media", uni:"mcu", kind:"serie",
         title:"VisionQuest", meta:"2028",
-        txt:"Ajouté à la timeline Marvel, en 2028, juste après "+
-            "Spider-Man : Brand New Day.",
+        txt:"Ajouté à la timeline Marvel, en mai 2028, juste avant "+
+            "The Punisher : One Last Kill.",
         img:"/images/visionquest.webp",
         href:"/fr/marvel#mcu-vq", cta:"Voir dans la timeline" },
 

@@ -338,12 +338,15 @@ const TRADUCTIONS = [
   /* ── la série VisionQuest, ajoutée le 15 octobre 2026 ─────────────
      Après Spider-Man : Brand New Day, en 2028. La FAQ est celle de
      Niko, en anglais, mot pour mot — « series takes » corrigé. */
-  ["La série se déroule environ 2 ans après Agatha All Along, quelque part entre l'automne et l'hiver 2028",
-   'The series takes place about 2 years after Agatha All Along, somewhere between fall and winter 2028'],
+  /* Replacée le 24 octobre 2026 : les épisodes la datent de mai 2028,
+     l'anniversaire de la bataille de Sokovie — elle passe donc avant
+     The Punisher : One Last Kill. */
+  ["La série se déroule en mai 2028, pendant l'anniversaire de la bataille de Sokovie d'Avengers : L'Ère d'Ultron",
+   'The series takes place in May 2028, during the anniversary of the Battle of Sokovia from Avengers: Age of Ultron'],
   ['Parce que la série se situe ici chronologiquement',
    'Because this is where the show falls chronologically'],
-  ['Ajouté à la timeline Marvel, en 2028, juste après Spider-Man : Brand New Day.',
-   'Added to the Marvel timeline, in 2028, right after Spider-Man: Brand New Day.'],
+  ['Ajouté à la timeline Marvel, en mai 2028, juste avant The Punisher : One Last Kill.',
+   'Added to the Marvel timeline, in May 2028, right before The Punisher: One Last Kill.'],
 
   /* ── le comic The Mandalorian and Grogu : Nightmare on Nevarro, ajouté
      le 21 octobre 2026 ── la suite de Danger in the Dark, en 9 ABY. */
