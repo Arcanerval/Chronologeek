@@ -81,6 +81,8 @@ const SORTIES = {
      15 octobre 2026. */
   'mcu-vq': {
     univers: 'mcu',
+    /* refaite le 24 octobre 2026 : la couverture le dit */
+    revise: true,
     en: [
       { t: 'hook', lit: 'Where does *VisionQuest* fit?',
         dit: 'VisionQuest is out. So where does it fit in the Marvel timeline?' },
@@ -91,7 +93,7 @@ const SORTIES = {
       { t: 'fiche', lit: '*May 2028*, the Sokovia anniversary',
         dit: 'May 2028, during the anniversary of the Battle of Sokovia from Avengers: Age of Ultron. With a bounty on his head, Vision must confront his nature and resist Ultron’s influence to survive.' },
       { t: 'trilogie', ids: ['mcu-wv', 'mcu-agatha', 'mcu-vq'], lit: 'The end of the *WandaVision trilogy*',
-        dit: 'And it closes the WandaVision trilogy: WandaVision, then Agatha All Along, and now VisionQuest, about two years later.' },
+        dit: 'And it closes the WandaVision trilogy: WandaVision, then Agatha All Along, and now VisionQuest, about a year and a half later.' },
       { t: 'fin', dit: 'All {stops} stops, in order, on Chronologeek dot app.' },
     ],
     fr: [
@@ -104,18 +106,18 @@ const SORTIES = {
       { t: 'fiche', lit: '*Mai 2028*, l’anniversaire de Sokovie',
         dit: 'Mai 2028, pendant l’anniversaire de la bataille de Sokovie d’Avengers : L’Ère d’Ultron. Sa tête mise à prix, Vision doit fuir, résister à l’influence d’Ultron et se confronter à sa propre nature.' },
       { t: 'trilogie', ids: ['mcu-wv', 'mcu-agatha', 'mcu-vq'], lit: 'La fin de la *trilogie WandaVision*',
-        dit: 'Et elle clôt la trilogie WandaVision : WandaVision, puis Agatha All Along, et enfin VisionQuest, environ deux ans plus tard.' },
+        dit: 'Et elle clôt la trilogie WandaVision : WandaVision, puis Agatha All Along, et enfin VisionQuest, environ un an et demi plus tard.' },
       { t: 'fin', dit: 'Les {stops} arrêts, dans l’ordre, sur Chronologeek point app.' },
     ],
   },
 };
 
 const T = {
-  en: { nouveau: 'New release', ordre: 'In story order', station: 'Station', stops: 'stops', stop: 'stop',
+  en: { nouveau: 'New release', revise: 'Revised', ordre: 'In story order', station: 'Station', stops: 'stops', stop: 'stop',
         ans: 'years', essentiels: 'The essentials', episodes: 'episodes', saison: 'Season', sortie: 'Out',
         terminus: 'Terminus', cta: 'chronologeek.app', ici: 'You are here',
         fin: { l1: 'Free', l2: 'No account', l3: 'No spoilers', bio: 'Link in bio' } },
-  fr: { nouveau: 'Nouvelle sortie', ordre: 'Dans l’ordre de l’histoire', station: 'Station', stops: 'arrêts', stop: 'arrêt',
+  fr: { nouveau: 'Nouvelle sortie', revise: 'Mise à jour', ordre: 'Dans l’ordre de l’histoire', station: 'Station', stops: 'arrêts', stop: 'arrêt',
         ans: 'ans', essentiels: 'Les essentiels', episodes: 'épisodes', saison: 'Saison', sortie: 'Sortie',
         terminus: 'Terminus', cta: 'chronologeek.app', ici: 'Vous êtes ici',
         fin: { l1: 'Gratuit', l2: 'Sans compte', l3: 'Sans spoiler', bio: 'Lien en bio' } },
@@ -203,7 +205,7 @@ const dateLongue = (iso, lang) => iso ? new Date(iso + 'T12:00:00Z').toLocaleDat
 /* ---------- rendu ---------- */
 
 function page(ctx) {
-  const { lang, U, ST, cible, sCible, ink, art, F, fiche, essentiels, nomUnivers, typeLib, stops, oeuvre } = ctx;
+  const { lang, U, ST, cible, sCible, ink, art, F, fiche, essentiels, nomUnivers, typeLib, stops, oeuvre, revise } = ctx;
   /* le rang de la sortie sur la ligne, dans l'ordre du monde */
   const rang = ST.flatMap(s => s.entrees).findIndex(x => x.id === cible.id) + 1;
   const t = T[lang];
@@ -227,7 +229,7 @@ function page(ctx) {
       <div class="flou" style="background-image:url('${esc(fiche.affiche || art(sCible))}')"></div>
       <div class="filet"></div>
       <p class="kick"><span class="code">${esc(U.code)}</span>${esc(t.nouveau)}</p>
-      <div class="aff"><img src="${esc(fiche.affiche || art(sCible))}" alt=""></div>
+      <div class="aff"><img src="${esc(fiche.affiche || art(sCible))}" alt="">${revise ? `<span class="tampon">${esc(t.revise)}</span>` : ''}</div>
       <h1>${or(pl.lit)}</h1>
       <p class="sous">${esc([fiche.date, fiche.reseau].filter(Boolean).join(' · '))}</p>
       <div class="rail12"></div>
@@ -340,7 +342,7 @@ function page(ctx) {
   --led:radial-gradient(rgba(255,253,247,.07) 1.6px,transparent 2.2px) 0 0/7px 7px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;font-family:Chivo,sans-serif;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.eye,.code,.kick,.sous,.b,.tag,.url,.url2,.pk,.diodes,.vs,.gs,.big,.d,.tn,.sn,.inf,.li,.trois,.bio{font-family:'Big Shoulders Display',sans-serif}
+h1,h2,h3,.eye,.code,.kick,.sous,.b,.tag,.url,.url2,.pk,.diodes,.vs,.gs,.big,.d,.tn,.sn,.inf,.li,.trois,.bio,.tampon{font-family:'Big Shoulders Display',sans-serif}
 em{font-style:normal;color:var(--hot)}
 .f{position:relative;isolation:isolate;width:1080px;height:1920px;overflow:hidden;background:var(--ink);color:var(--paper);
   display:flex;flex-direction:column;--era:var(--uni)}
@@ -364,6 +366,12 @@ em{font-style:normal;color:var(--hot)}
 .kick{display:flex;align-items:center;gap:16px;font-weight:900;font-size:40px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
 .aff{margin-top:40px;width:560px;border-radius:24px;overflow:hidden;border:4px solid var(--paper);box-shadow:14px 14px 0 #000,0 30px 90px #000c}
 .aff img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
+/* une video refaite (placement corrige) : un tampon sur l'affiche, comme
+   le « Terminus atteint » du site — rouge, penche, a l'encre epaisse */
+.aff{position:relative}
+.tampon{position:absolute;top:30px;right:22px;transform:rotate(8deg);background:#e5484d;color:var(--paper);
+  border:5px solid var(--paper);border-radius:12px;box-shadow:8px 8px 0 #000;font-weight:900;font-size:54px;
+  letter-spacing:.1em;text-transform:uppercase;line-height:1;padding:14px 26px 10px}
 .hook h1{margin-top:44px;padding:0 60px;font-weight:900;font-size:124px;line-height:.9;text-transform:uppercase;text-align:center;text-wrap:balance;text-shadow:6px 6px 0 var(--ink)}
 .sous{margin-top:26px;font-weight:800;font-size:40px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.8)}
 
@@ -565,7 +573,7 @@ async function main() {
     return { e: st.entrees.find(y => y.id === x), s: st };
   };
   const html = page({ lang, U, ST, cible, sCible, ink, art, F: t.fin, fiche, essentiels, plans, stops,
-    nomUnivers: decode(D.title), typeLib, oeuvre });
+    nomUnivers: decode(D.title), typeLib, oeuvre, revise: !!S.revise });
   const apercu = path.join(dossier, '_apercu.html');
   fs.writeFileSync(apercu, html, 'utf8');
   const nav = await chromium.launch();
