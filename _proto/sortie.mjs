@@ -216,7 +216,8 @@ const annee = d => {
 };
 
 async function tmdb(cle, media, id, lang) {
-  const r = await fetch(`https://api.themoviedb.org/3/${media}/${id}?api_key=${cle}&language=${lang === 'fr' ? 'fr-FR' : 'en-US'}`);
+  const plus = media === 'movie' ? '&append_to_response=release_dates' : '';
+  const r = await fetch(`https://api.themoviedb.org/3/${media}/${id}?api_key=${cle}&language=${lang === 'fr' ? 'fr-FR' : 'en-US'}${plus}`);
   if (!r.ok) throw new Error(`TMDB ${media}/${id} : ${r.status}`);
   return r.json();
 }
@@ -567,7 +568,14 @@ async function main() {
     const j = await tmdb(cle, cible.media || 'tv', cible.tmdb, lang);
     if (j.poster_path) fiche.affiche = 'https://image.tmdb.org/t/p/w780' + j.poster_path;
     if (j.backdrop_path) fiche.fond = 'https://image.tmdb.org/t/p/w1280' + j.backdrop_path;
-    fiche.date = `${t.sortie} ${dateLongue(j.first_air_date || j.release_date, lang)}`;
+    /* Un film : la sortie en salles du pays de la langue (type 3), puis
+       limitee (2), puis numerique (4). `release_date` est la premiere sortie
+       au monde — Clayface y annoncait le 19 octobre pour une sortie
+       americaine le 23, l'avant-premiere du 13 etant de type 1. */
+    const pays = ((j.release_dates || {}).results || []).find(x => x.iso_3166_1 === (lang === 'fr' ? 'FR' : 'US'));
+    const parType = ty => ((pays || {}).release_dates || []).filter(x => x.type === ty).map(x => x.release_date.slice(0, 10)).sort()[0];
+    const sortiePays = pays && (parType(3) || parType(2) || parType(4));
+    fiche.date = `${t.sortie} ${dateLongue(j.first_air_date || sortiePays || j.release_date, lang)}`;
     fiche.reseau = (j.networks || [])[0]?.name || '';
     if (j.number_of_episodes) fiche.episodes = `${j.number_of_episodes} ${t.episodes}`;
     const sub = (cible.subitems || [])[0];
