@@ -351,6 +351,10 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline Marvel, en mai 2028, juste après The Punisher : One Last Kill.',
    'Added to the Marvel timeline, in May 2028, right after The Punisher: One Last Kill.'],
 
+  /* ── le film Clayface, ajouté au DCU le 24 octobre 2026 ── */
+  ['Ajouté à la timeline DC, dans le DCU, juste avant Creature Commandos.',
+   'Added to the DC timeline, in the DCU, right before Creature Commandos.'],
+
   /* ── le comic The Mandalorian and Grogu : Nightmare on Nevarro, ajouté
      le 21 octobre 2026 ── la suite de Danger in the Dark, en 9 ABY. */
   ['The Mandalorian and Grogu : Nightmare on Nevarro', 'The Mandalorian and Grogu: Nightmare on Nevarro'],
@@ -1223,6 +1227,9 @@ const GLOBAL = new Lexique();
    Ce n'est PAS l'endroit d'un titre traduit : celui-là va dans
    TRADUCTIONS, où son emploi est consigné et part en relecture. */
 const TITRES_IDENTIQUES = [
+  // DC · le film Clayface, ajouté le 24 octobre 2026, et sa date
+  'Clayface',
+  '~202X',
   // Dossier Star Wars · 34 ABY, comic VO ajouté le 13 août 2026
   'The Fall of Kylo Ren 1-5',
   // DC · la série du DCU ajoutée le 18 août 2026, sans titre français

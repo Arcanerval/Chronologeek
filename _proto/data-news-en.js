@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-10", label:"October 2026", items:[
+      {"nat":"media","uni":"dc","kind":"film","title":"Clayface","meta":"~202X","txt":"Added to the DC timeline, in the DCU, right before Creature Commandos.","img":"/images/clayface.webp","href":"en-dc.html#dcu-clayface","cta":"See in the timeline"},
       {"nat":"media","uni":"sw","kind":"comic","title":"The Mandalorian and Grogu: Nightmare on Nevarro","meta":"9 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 9 ABY, just after The Mandalorian and Grogu: Danger in the Dark, its sequel.","href":"en-dossier-star-wars.html#9-aby-the-mandalorian-and-grogu-nightmare-on-nevarro","cta":"See in the Deep Dive"},
       {"nat":"media","uni":"mcu","kind":"serie","title":"VisionQuest","meta":"2028","txt":"Added to the Marvel timeline, in May 2028, right after The Punisher: One Last Kill.","img":"/images/visionquest.webp","href":"en-marvel.html#mcu-vq","cta":"See in the timeline"},
       {"nat":"media","uni":"sw","kind":"comic","title":"Rogue One: Chirrut & Baze","meta":"1 BBY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Cassian Andor and just before the movie.","href":"en-dossier-star-wars.html#1-bby-rogue-one-chirrut-baze","cta":"See in the Deep Dive"},

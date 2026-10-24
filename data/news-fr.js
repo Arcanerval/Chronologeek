@@ -38,6 +38,13 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
 
+      { nat:"media", uni:"dc", kind:"film",
+        title:"Clayface", meta:"~202X",
+        txt:"Ajouté à la timeline DC, dans le DCU, juste avant "+
+            "Creature Commandos.",
+        img:"/images/clayface.webp",
+        href:"/fr/dc#dcu-clayface", cta:"Voir dans la timeline" },
+
       { nat:"media", uni:"sw", kind:"comic",
         title:"The Mandalorian and Grogu : Nightmare on Nevarro", meta:"9 ABY", vo:true,
         txt:"Ajouté au Dossier Star Wars — le comic, en 9 ABY, juste après "+
