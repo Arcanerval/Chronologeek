@@ -3409,8 +3409,23 @@ cadre se recentre (`.bu-n+.mem`). Plan du haut à **échelle mixte**
 (`ech()`) : Altaïr n'a que trois arrêts, les deux dernières sagas sept et
 quatre. Pas de table `RT`. **Images de saga posées dans les données**
 (`art`) — altair, ezio, kenway, helixsaga, laylahassan, animushub,
-assassinstroughhistory. **Ne plus lancer `construire-page-assassinscreed.mjs`** :
-il réécrirait `en-assassinscreed.html` depuis l'ancien gabarit.
+assassinstroughhistory. Ses générateurs d'origine ont été **supprimés le
+26 octobre 2026** — voir « Les générateurs supprimés ».
+
+**Les générateurs supprimés, le 26 octobre 2026.** `construire-assassinscreed.mjs`,
+`construire-page-assassinscreed.mjs`, `construire-dragonage.py`,
+`construire-page-dragonage.py`, `construire-twd.py`, `construire-residentevil.mjs`,
+leurs trois aides (`descriptions-assassinscreed.py`, `descriptions-dragonage.py`,
+`visuels-assassinscreed.py`) et leurs JSON (`desc-*.json`,
+`visuels-assassinscreed.json`) ont bâti les données et les pages au départ ; leurs
+documents sources ne sont plus dans le dépôt, et leurs sorties ont été retouchées
+à la main une vingtaine de fois depuis — relancés, ils les auraient écrasées.
+Les sources sont désormais les `data-*-en.js` et `en-*.html` eux-mêmes. Partis
+le même jour : `verif-liens.py`, `verif-textes.py` et `verif-textes-dossier.py`,
+qui comparaient à la prod d'avant la refonte et ne rendaient plus que de faux
+échecs — `verifier.mjs` tient les liens et les ressources. Comme `dossier.py` et
+`construire-avatar.mjs`, **ne pas les rétablir depuis l'historique git**.
+`construire-bladerunner.mjs` reste : c'est toujours la source de Blade Runner.
 
 **DC Animation est publié au plan de métro le 30 septembre 2026**, et c'est
 un **réseau**, comme DC : `en-dcanimation.html` a été repris du réseau DC
