@@ -7,27 +7,17 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:d00e421dcfdcc116eafe-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261027
-DTEND;VALUE=DATE:20261028
-SUMMARY:Marvel · VisionQuest · S1E05
-DESCRIPTION:https://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:5fa1a35dfe64181e9608-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:Star Wars · Rogue One - Darth Vader 1
-DESCRIPTION:Rogue One – Darth Vader 1 is an upcoming canon one-shot comic
-  focusing on Darth Vader that will be published as part of a 2026 series o
- f one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. 
- The issue will be written by Christopher Condon\, illustrated by Luke Ross
-  and Michael Atiyeh\, and published by Marvel Comics on October 28\, 2026.
- \n\nhttps://chronologeek.app/upcoming
+DESCRIPTION:Rogue One – Darth Vader 1 is a canon one-shot comic focusing 
+ on Darth Vader that was published as part of a 2026 series of one-shots fo
+ r the ten-year anniversary of Rogue One: A Star Wars Story. The issue was 
+ written by Christopher Condon\, illustrated by Luke Ross and Michael Atiye
+ h\, and published by Marvel Comics on October 28\, 2026.\n\nhttps://chrono
+ logeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -244,16 +234,12 @@ END:VEVENT
 BEGIN:VEVENT
 UID:34e554f69f9fc12f0568-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20270527
-DTEND;VALUE=DATE:20270528
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270529
 SUMMARY:Star Wars · Star Wars: Starfighter
-DESCRIPTION:Star Wars: Starfighter is a stand-alone live-action film curren
- tly in post-production at Lucasfilm with filmmaker Shawn Levy serving as t
- he director and former Lucasfilm president Kathleen Kennedy producing the 
- project. The film is set to take place around five years after the events 
- of Star Wars: Episode IX The Rise of Skywalker\, and may include some char
- acters from the sequel trilogy. Ryan Gosli…\n\nhttps://chronologeek.app/
- upcoming
+DESCRIPTION:When a cynical rogue is confronted by his mysterious past\, he 
+ is hurled into a dangerous adventure across the galaxy that puts him on a 
+ crash course with destiny.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT

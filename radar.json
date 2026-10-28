@@ -1,31 +1,5 @@
 [
  {
-  "universe": "marvel",
-  "title": "VisionQuest",
-  "date_sort": "2026-10-27",
-  "date_txt": "27/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 5,
-   "mark": "",
-   "eFin": 6
-  },
-  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
-  "tmdb": 213375,
-  "media": "tv"
- },
- {
   "universe": "starwars",
   "title": "Rogue One - Darth Vader 1",
   "date_sort": "2026-10-28",
@@ -34,7 +8,7 @@
   "source": "Wookieepedia",
   "precision": "day",
   "era": "1 BBY",
-  "syn": "Rogue One – Darth Vader 1 is an upcoming canon one-shot comic focusing on Darth Vader that will be published as part of a 2026 series of one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. The issue will be written by Christopher Condon, illustrated by Luke Ross and Michael Atiyeh, and published by Marvel Comics on October 28, 2026.",
+  "syn": "Rogue One – Darth Vader 1 is a canon one-shot comic focusing on Darth Vader that was published as part of a 2026 series of one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. The issue was written by Christopher Condon, illustrated by Luke Ross and Michael Atiyeh, and published by Marvel Comics on October 28, 2026.",
   "wiki": "Rogue One – Darth Vader 1",
   "syn_fr": "Rogue One – Darth Vader 1 est le cinquième et dernier numéro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il est écrit par Chris Condon.",
   "kindKey": "comic",
@@ -89,7 +63,7 @@
    "e": 7,
    "mark": ""
   },
-  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
+  "poster": "/ajbVvETMM7NMq4Gc5FauOoyeEnu.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -114,7 +88,7 @@
    "e": 8,
    "mark": "finale"
   },
-  "poster": "/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
+  "poster": "/ajbVvETMM7NMq4Gc5FauOoyeEnu.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -369,19 +343,22 @@
  {
   "universe": "starwars",
   "title": "Star Wars: Starfighter",
-  "date_sort": "2027-05-27",
-  "date_txt": "27/05/2027",
+  "date_sort": "2027-05-28",
+  "date_txt": "28/05/2027",
   "kind": "Film",
-  "source": "Wookieepedia",
+  "source": "TMDB",
   "precision": "day",
-  "era": "40 ABY",
-  "syn": "Star Wars: Starfighter is a stand-alone live-action film currently in post-production at Lucasfilm with filmmaker Shawn Levy serving as the director and former Lucasfilm president Kathleen Kennedy producing the project. The film is set to take place around five years after the events of Star Wars: Episode IX The Rise of Skywalker, and may include some characters from the sequel trilogy. Ryan Gosli…",
-  "wiki": "Star Wars: Starfighter",
-  "syn_fr": "Star Wars: Starfighter est un film Star Wars dont la production a commencé en 2025, après plusieurs années de développement. Réalisé par Shawn Levy et produit par Shawn Levy et Kathleen Kennedy, l'histoire se déroulera environ cinq ans après les événements de Star Wars épisode IX : L'Ascension de Skywalker.",
+  "era": "",
+  "syn": "When a cynical rogue is confronted by his mysterious past, he is hurled into a dangerous adventure across the galaxy that puts him on a crash course with destiny.",
+  "wiki": "",
+  "syn_fr": "",
   "kindKey": "film",
   "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
+  "date_sort_fr": "2027-05-26",
+  "date_txt_fr": "26/05/2027",
+  "poster": "/6LJetiEQjXUE9kDpXavXpZN1Vjk.jpg",
+  "tmdb": 1417668,
+  "media": "movie"
  },
  {
   "universe": "marvel",

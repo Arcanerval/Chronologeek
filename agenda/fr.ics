@@ -7,16 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:d00e421dcfdcc116eafe-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261027
-DTEND;VALUE=DATE:20261028
-SUMMARY:Marvel · VisionQuest · S1E05
-DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:5fa1a35dfe64181e9608-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261028
@@ -229,15 +219,12 @@ END:VEVENT
 BEGIN:VEVENT
 UID:34e554f69f9fc12f0568-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20270527
-DTEND;VALUE=DATE:20270528
+DTSTART;VALUE=DATE:20270526
+DTEND;VALUE=DATE:20270527
 SUMMARY:Star Wars · Star Wars: Starfighter
-DESCRIPTION:Film\n\nStar Wars: Starfighter est un film Star Wars dont la pr
- oduction a commencé en 2025\, après plusieurs années de développement.
-  Réalisé par Shawn Levy et produit par Shawn Levy et Kathleen Kennedy\, 
- l'histoire se déroulera environ cinq ans après les événements de Star 
- Wars épisode IX : L'Ascension de Skywalker.\n\nhttps://chronologeek.app/f
- r/a-venir
+DESCRIPTION:Film\n\nWhen a cynical rogue is confronted by his mysterious pa
+ st\, he is hurled into a dangerous adventure across the galaxy that puts h
+ im on a crash course with destiny.\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
