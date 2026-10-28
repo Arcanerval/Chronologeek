@@ -355,6 +355,13 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline DC, dans le DCU, juste avant Creature Commandos.',
    'Added to the DC timeline, in the DCU, right before Creature Commandos.'],
 
+  /* ── le comic Rogue One : Dark Vador, ajouté le 28 octobre 2026 ──
+     Le cinquième one-shot des dix ans de Rogue One, entre Chirrut & Baze
+     et le film. */
+  ['Rogue One : Dark Vador', 'Rogue One: Darth Vader'],
+  ['Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après Rogue One : Chirrut & Baze et juste avant le film.',
+   'Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Chirrut & Baze and just before the movie.'],
+
   /* ── le comic The Mandalorian and Grogu : Nightmare on Nevarro, ajouté
      le 21 octobre 2026 ── la suite de Danger in the Dark, en 9 ABY. */
   ['The Mandalorian and Grogu : Nightmare on Nevarro', 'The Mandalorian and Grogu: Nightmare on Nevarro'],

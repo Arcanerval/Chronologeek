@@ -37,6 +37,13 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-10", label:"Octobre 2026", items:[
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"Rogue One : Dark Vador", meta:"1 BBY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après "+
+            "Rogue One : Chirrut & Baze et juste avant le film.",
+        href:"/fr/dossiers/star-wars#1-bby-rogue-one-darth-vader",
+        cta:"Voir dans le Dossier" },
+
 
       { nat:"media", uni:"dc", kind:"film",
         title:"Clayface", meta:"~202X",
