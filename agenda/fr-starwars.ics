@@ -7,18 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:5fa1a35dfe64181e9608-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261029
-SUMMARY:Rogue One - Darth Vader 1
-DESCRIPTION:Comic\n\nRogue One – Darth Vader 1 est le cinquième et derni
- er numéro de la série de bandes dessinées one-shots Star Wars: Rogue On
- e. Il est écrit par Chris Condon.\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:a6158bda2b4f3310e378-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261117

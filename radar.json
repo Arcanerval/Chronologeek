@@ -1,22 +1,5 @@
 [
  {
-  "universe": "starwars",
-  "title": "Rogue One - Darth Vader 1",
-  "date_sort": "2026-10-28",
-  "date_txt": "28/10/2026",
-  "kind": "Comic",
-  "source": "Wookieepedia",
-  "precision": "day",
-  "era": "1 BBY",
-  "syn": "Rogue One – Darth Vader 1 is a canon one-shot comic focusing on Darth Vader that was published as part of a 2026 series of one-shots for the ten-year anniversary of Rogue One: A Star Wars Story. The issue was written by Christopher Condon, illustrated by Luke Ross and Michael Atiyeh, and published by Marvel Comics on October 28, 2026.",
-  "wiki": "Rogue One – Darth Vader 1",
-  "syn_fr": "Rogue One – Darth Vader 1 est le cinquième et dernier numéro de la série de bandes dessinées one-shots Star Wars: Rogue One. Il est écrit par Chris Condon.",
-  "kindKey": "comic",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": ""
- },
- {
   "universe": "avatar",
   "title": "Avatar: Seven Havens",
   "date_sort": "2026-10-30",
@@ -25,7 +8,7 @@
   "source": "TMDB",
   "precision": "day",
   "era": "",
-  "syn": "",
+  "syn": "Pavi uncovers a piece of her past; Nisha confronts a painful memory.",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
@@ -63,7 +46,7 @@
    "e": 7,
    "mark": ""
   },
-  "poster": "/ajbVvETMM7NMq4Gc5FauOoyeEnu.jpg",
+  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
   "tmdb": 213375,
   "media": "tv"
  },
@@ -88,7 +71,7 @@
    "e": 8,
    "mark": "finale"
   },
-  "poster": "/ajbVvETMM7NMq4Gc5FauOoyeEnu.jpg",
+  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
   "tmdb": 213375,
   "media": "tv"
  },

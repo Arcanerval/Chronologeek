@@ -7,27 +7,13 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:5fa1a35dfe64181e9608-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261029
-SUMMARY:Star Wars · Rogue One - Darth Vader 1
-DESCRIPTION:Rogue One – Darth Vader 1 is a canon one-shot comic focusing 
- on Darth Vader that was published as part of a 2026 series of one-shots fo
- r the ten-year anniversary of Rogue One: A Star Wars Story. The issue was 
- written by Christopher Condon\, illustrated by Luke Ross and Michael Atiye
- h\, and published by Marvel Comics on October 28\, 2026.\n\nhttps://chrono
- logeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:b803b86c39b015a0843e-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
-DESCRIPTION:https://chronologeek.app/upcoming
+DESCRIPTION:Pavi uncovers a piece of her past\; Nisha confronts a painful m
+ emory.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
