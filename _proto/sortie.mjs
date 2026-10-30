@@ -14,8 +14,13 @@
    portent pas.
 
    Les plans : hook (affiche), ligne (toutes les stations), station (une ere),
-   saut (l'ecart entre deux eres), fiche (la sortie), avant (les essentiels
-   qui la precedent), fin. */
+   saut (l'ecart entre deux eres), fiche (la sortie), film (des images du
+   film pendant le synopsis, une coupe nette par image), avant (les
+   essentiels qui la precedent), fin.
+
+   `film` prend ses images chez TMDB (`/movie/{id}/images`, celles sans
+   texte), par leur chemin : ce sont des plans du film, souvent ceux de la
+   bande-annonce. On ne decoupe pas la bande-annonce elle-meme. */
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -92,7 +97,12 @@ const SORTIES = {
         dit: 'Clayface belongs to the DCU, the new DC universe, the last station on the line.' },
       { t: 'fiche', lit: '*Early 2020s*, before Creature Commandos',
         dit: 'The movie never gives a year. It spans most of a year, somewhere between 2016 and 2024. It has to come before Creature Commandos, where Clayface appears, leaving him time to become the character we meet there. And given the technology on screen, it most likely takes place in the early 2020s.' },
-      { t: 'fiche', lit: 'A *Gotham* actor',
+      { t: 'film', lit: 'A *Gotham* actor',
+        /* dans l'ordre du synopsis : la star, l'agression, les bandages, le
+           traitement, le visage qui se modele, le corps d'argile */
+        images: ['/4eWTdWzbKQjckW5dPxBmt8vMbP5.jpg', '/mEVNRsP4csNzB9vv9JGmQlW7rNB.jpg',
+          '/pwWR1DRjoFxwdH0jI2elBdXTF1F.jpg', '/d4H3z8JmfHsE8enEhGAFjwZYQJc.jpg',
+          '/yKaa3pJQoDzIT5BucWbgmWru5Mc.jpg', '/4BRLV5ZWnoKZPQEMgrKZxZTViNX.jpg'],
         dit: 'A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
       { t: 'trilogie', ids: ['dcu-clayface', 'dcu-cc', 'dcu-superman'], lit: 'Before *Creature Commandos*',
         dit: 'In story order: Clayface, then Creature Commandos, then Superman.' },
@@ -219,6 +229,8 @@ const annee = d => {
   return /^(BG|BBY|BC)$/.test(m[2] || '') ? -Number(m[1]) : Number(m[1]);
 };
 
+const TMDB_IMG = 'https://image.tmdb.org/t/p/w1280';
+
 async function tmdb(cle, media, id, lang) {
   const plus = media === 'movie' ? '&append_to_response=release_dates' : '';
   const r = await fetch(`https://api.themoviedb.org/3/${media}/${id}?api_key=${cle}&language=${lang === 'fr' ? 'fr-FR' : 'en-US'}${plus}`);
@@ -325,6 +337,15 @@ function page(ctx) {
       ${mini(sCible.k)}
     </section>`;
     }
+
+    /* une section par image : le titre et la ligne restent, seule l'image
+       change, en coupe nette */
+    if (pl.t === 'film') return pl.images.map(im => `<section class="f std film" style="--era:${ink(sCible)}">
+      <img class="pbg dim" src="${esc(TMDB_IMG + im)}" alt="">
+      ${oeil}${titre(pl)}
+      <div class="cine"><img src="${esc(TMDB_IMG + im)}" alt=""></div>
+      ${mini(sCible.k)}
+    </section>`).join('');
 
     if (pl.t === 'avant') return `<section class="f std">
       ${oeil}${titre(pl)}
@@ -445,6 +466,9 @@ em{font-style:normal;color:var(--hot)}
 .bulle{margin-top:46px;border:3px solid var(--line);border-radius:22px;overflow:hidden;background:color-mix(in srgb,var(--era) 18%,#0f0d16);box-shadow:10px 10px 0 #000}
 .vis{aspect-ratio:16/8;background:#16141f;border-bottom:3px solid var(--ink)}
 .vis img{width:100%;height:100%;object-fit:cover;display:block}
+/* ---- film : l'image d'un bord a l'autre, sur toute la hauteur libre ---- */
+.cine{flex:1 1 0;margin:56px -56px 60px;border-block:3px solid var(--paper);box-shadow:0 14px 0 #000;background:#000}
+.cine img{width:100%;height:100%;object-fit:cover;display:block}
 .time{height:150px;display:flex;align-items:center;gap:30px;padding:0 34px;background:var(--led),var(--board);border-bottom:3px dashed rgba(255,253,247,.16)}
 .tn{display:flex;flex-direction:column;align-items:center;padding-right:30px;border-right:3px dashed rgba(255,253,247,.16)}
 .tn small{font-weight:800;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,253,247,.55)}
@@ -505,9 +529,10 @@ ${ctx.plans.map(plan).join('\n')}
 
 function monte(plans, dossier, sortie) {
   const total = plans.reduce((s, p) => s + p.dur, 0);
+  const vues = plans.flatMap(p => p.vues);
   fs.writeFileSync(path.join(dossier, '_plans.txt'),
-    plans.map(p => `file '${p.img.replace(/\\/g,'/')}'\nduration ${p.dur.toFixed(3)}`).join('\n')
-    + `\nfile '${plans[plans.length - 1].img.replace(/\\/g,'/')}'\n`, 'utf8');
+    vues.map(v => `file '${v.img.replace(/\\/g,'/')}'\nduration ${v.dur.toFixed(3)}`).join('\n')
+    + `\nfile '${vues[vues.length - 1].img.replace(/\\/g,'/')}'\n`, 'utf8');
   const morceaux = plans.map((p, i) => {
     const wav = path.join(dossier, `piste-${i}.wav`);
     execFileSync('ffmpeg', ['-y','-loglevel','error','-i', p.wav,
@@ -624,10 +649,17 @@ async function main() {
   const morts = await pg.evaluate(() => [...document.images].filter(i => !i.naturalWidth).map(i => i.src));
   if (morts.length) throw new Error('image morte : ' + morts.join(', '));
   const cadres = await pg.$$('.f');
-  for (let i = 0; i < cadres.length; i++) {
-    plans[i].img = path.join(dossier, 'plan-' + String(i).padStart(2, '0') + '.png');
-    await cadres[i].screenshot({ path: plans[i].img });
+  let c = 0;
+  for (const [i, p] of plans.entries()) {
+    const n = p.t === 'film' ? p.images.length : 1;
+    p.vues = [];
+    for (let k = 0; k < n; k++, c++) {
+      const img = path.join(dossier, `plan-${String(i).padStart(2, '0')}${n > 1 ? '-' + k : ''}.png`);
+      await cadres[c].screenshot({ path: img });
+      p.vues.push({ img, dur: p.dur / n });
+    }
   }
+  if (c !== cadres.length) throw new Error(`${cadres.length} cadres pour ${c} vues`);
   await nav.close();
 
   const mp4 = path.join(RACINE, 'promo', `sortie-${id}-${lang}.mp4`);
