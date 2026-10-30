@@ -98,11 +98,16 @@ const SORTIES = {
       { t: 'fiche', lit: '*Early 2020s*, before Creature Commandos',
         dit: 'The movie never gives a year. It spans most of a year, somewhere between 2016 and 2024. It has to come before Creature Commandos, where Clayface appears, leaving him time to become the character we meet there. And given the technology on screen, it most likely takes place in the early 2020s.' },
       { t: 'film', lit: 'A *Gotham* actor',
-        /* dans l'ordre du synopsis : la star, l'agression, les bandages, le
-           traitement, le visage qui se modele, le corps d'argile */
-        images: ['/4eWTdWzbKQjckW5dPxBmt8vMbP5.jpg', '/mEVNRsP4csNzB9vv9JGmQlW7rNB.jpg',
-          '/pwWR1DRjoFxwdH0jI2elBdXTF1F.jpg', '/d4H3z8JmfHsE8enEhGAFjwZYQJc.jpg',
-          '/yKaa3pJQoDzIT5BucWbgmWru5Mc.jpg', '/4BRLV5ZWnoKZPQEMgrKZxZTViNX.jpg'],
+        /* dans l'ordre du synopsis, chacune avec le bout de phrase lu au
+           meme moment (la duree du plan est partagee a parts egales) : la
+           star, l'agression, les bandages, le traitement, le visage qui se
+           modele, le corps d'argile */
+        images: [['/4eWTdWzbKQjckW5dPxBmt8vMbP5.jpg', 'A rising *Gotham* actor'],
+          ['/mEVNRsP4csNzB9vv9JGmQlW7rNB.jpg', 'Disfigured by a *crime boss*'],
+          ['/pwWR1DRjoFxwdH0jI2elBdXTF1F.jpg', 'Disfigured by a *crime boss*'],
+          ['/d4H3z8JmfHsE8enEhGAFjwZYQJc.jpg', 'An *experimental* treatment'],
+          ['/yKaa3pJQoDzIT5BucWbgmWru5Mc.jpg', 'That changes *far more*'],
+          ['/4BRLV5ZWnoKZPQEMgrKZxZTViNX.jpg', 'Than his *face*']],
         dit: 'A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
       { t: 'trilogie', ids: ['dcu-clayface', 'dcu-cc', 'dcu-superman'], lit: 'Before *Creature Commandos*',
         dit: 'In story order: Clayface, then Creature Commandos, then Superman.' },
@@ -340,9 +345,11 @@ function page(ctx) {
 
     /* une section par image : le titre et la ligne restent, seule l'image
        change, en coupe nette */
-    if (pl.t === 'film') return pl.images.map(im => `<section class="f std film" style="--era:${ink(sCible)}">
+    /* une image est un chemin, ou [chemin, texte] : le texte remplace alors
+       `lit` le temps de cette image */
+    if (pl.t === 'film') return pl.images.map(x => [].concat(x)).map(([im, lit]) => `<section class="f std film" style="--era:${ink(sCible)}">
       <img class="pbg dim" src="${esc(TMDB_IMG + im)}" alt="">
-      ${oeil}${titre(pl)}
+      ${oeil}${titre({ lit: lit || pl.lit })}
       <div class="cine"><img src="${esc(TMDB_IMG + im)}" alt=""></div>
       ${mini(sCible.k)}
     </section>`).join('');
@@ -467,6 +474,8 @@ em{font-style:normal;color:var(--hot)}
 .vis{aspect-ratio:16/8;background:#16141f;border-bottom:3px solid var(--ink)}
 .vis img{width:100%;height:100%;object-fit:cover;display:block}
 /* ---- film : l'image d'un bord a l'autre, sur toute la hauteur libre ---- */
+/* deux lignes reservees au texte : sinon l'image saute d'une coupe a l'autre */
+.film .lit{min-height:calc(2 * .92em)}
 .cine{flex:1 1 0;margin:56px -56px 60px;border-block:3px solid var(--paper);box-shadow:0 14px 0 #000;background:#000}
 .cine img{width:100%;height:100%;object-fit:cover;display:block}
 .time{height:150px;display:flex;align-items:center;gap:30px;padding:0 34px;background:var(--led),var(--board);border-bottom:3px dashed rgba(255,253,247,.16)}
