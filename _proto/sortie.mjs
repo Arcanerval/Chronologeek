@@ -75,9 +75,11 @@ const SORTIES = {
     ],
   },
 
-  /* Le placement est celui de Niko, le 24 octobre 2026 : le film ne donne
-     aucune année, mais sa technologie le dit récent, et il précède
-     Creature Commandos, où Clayface apparaît — donc le début des années
+  /* Le placement est celui de Niko, précisé le 30 octobre 2026 : le film ne
+     donne aucune année et couvre une grande partie d'une année, quelque part
+     entre 2016 et 2024. Il précède Creature Commandos, où Clayface apparaît,
+     avec le temps qu'il faut au personnage pour devenir celui qu'on y voit,
+     et sa technologie est récente — donc probablement le début des années
      2020. DC est un réseau : la vidéo ne montre que la station du DCU.
      Anglais seulement, tranché par Niko le 24 octobre 2026 : tous les
      réseaux sont en anglais, une vidéo française ne sert à rien. */
@@ -89,7 +91,9 @@ const SORTIES = {
       { t: 'station', ere: 'DCU — New Universe', art: 'images/dcu.webp', de: '2016', a: '2026', lit: 'The new *DCU*',
         dit: 'Clayface belongs to the DCU, the new DC universe, the last station on the line.' },
       { t: 'fiche', lit: '*Early 2020s*, before Creature Commandos',
-        dit: 'The movie never gives a year, but its technology points to the early 2020s, and it has to come before Creature Commandos, where Clayface appears. A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
+        dit: 'The movie never gives a year. It spans most of a year, somewhere between 2016 and 2024. It has to come before Creature Commandos, where Clayface appears, leaving him time to become the character we meet there. And given the technology on screen, it most likely takes place in the early 2020s.' },
+      { t: 'fiche', lit: 'A *Gotham* actor',
+        dit: 'A rising Gotham actor, disfigured by a crime boss, turns to an experimental treatment that changes far more than his face.' },
       { t: 'trilogie', ids: ['dcu-clayface', 'dcu-cc', 'dcu-superman'], lit: 'Before *Creature Commandos*',
         dit: 'In story order: Clayface, then Creature Commandos, then Superman.' },
       { t: 'fin', dit: 'All {ligne} DCU stops, in order, on Chronologeek dot app.' },
