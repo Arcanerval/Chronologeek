@@ -40,17 +40,6 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:b373113f9fcd8b1d79a9-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:Marvel · Iron Man and His Awesome Friends · S1E71
-DESCRIPTION:Absorbing Man absorbs super-strong Vibranium.\n\nhttps://chrono
- logeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:a6158bda2b4f3310e378-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261117
@@ -91,16 +80,6 @@ DESCRIPTION:Fifty years after the events of Blade Runner 2049\, Los Angeles
  rtner with Olwen\, a Replicant days from dying\, she hunts down a runaway 
  hiding a truth that could collapse their fragile city.\n\nhttps://chronolo
  geek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:0265c2843d6bbe7ffd3d-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261130
-DTEND;VALUE=DATE:20261201
-SUMMARY:Marvel · Iron Man and His Awesome Friends · S1E73 · Finale
-DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT

@@ -131,7 +131,9 @@ EXCLUDE = {
     # Teen Titans Go! et My Adventures with Superman cote DC. Le motif porte
     # sur « spidey », qui ne designe que cette serie — le guide ecrit
     # « Spider-Man » partout ailleurs.
-    "marvel":   [r"\blego\b", r"\bspidey\b"],
+    # « Iron Man and His Awesome Friends » est la serie suivante de Disney
+    # Junior, meme regle (30 octobre 2026).
+    "marvel":   [r"\blego\b", r"\bspidey\b", r"\bawesome friends\b"],
     # Batman: Knightfall est un film d'animation du Tomorrowverse, hors du
     # périmètre du guide : la timeline DC suit les Elseworlds, l'Arrowverse,
     # le DCEU et le DCU, pas les longs métrages animés. Le motif attrape les

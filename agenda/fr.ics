@@ -41,17 +41,6 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:b373113f9fcd8b1d79a9-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:Marvel · Iron Man and His Awesome Friends · S1E71
-DESCRIPTION:Épisode\n\nAbsorbing Man absorbs super-strong Vibranium.\n\nht
- tps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:a6158bda2b4f3310e378-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261117
@@ -88,16 +77,6 @@ DESCRIPTION:Série\n\nDans le Los Angeles de 2099\, Cora a vécu toute sa v
  ée à la fin de sa vie. Les deux sont entraînés dans une conspiration g
  randissante qui représente une menace existentielle pour une ville qui lu
  tte pour renaître.\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:0265c2843d6bbe7ffd3d-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261130
-DTEND;VALUE=DATE:20261201
-SUMMARY:Marvel · Iron Man and His Awesome Friends · S1E73 · Finale
-DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
