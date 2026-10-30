@@ -8,7 +8,7 @@
   "source": "TMDB",
   "precision": "day",
   "era": "",
-  "syn": "Pavi uncovers a piece of her past; Nisha confronts a painful memory.",
+  "syn": "With Ellora under lockdown, Pavi steals away to the Eastern Outskirts and finally discovers her old home. Meanwhile, out in the Harshlands, Nisha makes a new spirit friend who leads her to unlock a memory she wishes she could forget.",
   "wiki": "",
   "syn_fr": "",
   "kindKey": "tv",
@@ -76,6 +76,32 @@
   "media": "tv"
  },
  {
+  "universe": "marvel",
+  "title": "Iron Man and His Awesome Friends",
+  "date_sort": "2026-11-13",
+  "date_txt": "13/11/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "Absorbing Man absorbs super-strong Vibranium.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 71,
+   "mark": "",
+   "eFin": 72
+  },
+  "poster": "/3NlFaIdOkBg2VC3Imi1kbeeGynw.jpg",
+  "tmdb": 274388,
+  "media": "tv"
+ },
+ {
   "universe": "starwars",
   "title": "Smugglers and Scoundrels: The Race for Jabba's Bounty",
   "date_sort": "2026-11-17",
@@ -135,6 +161,32 @@
   "media": "tv"
  },
  {
+  "universe": "marvel",
+  "title": "Iron Man and His Awesome Friends",
+  "date_sort": "2026-11-30",
+  "date_txt": "30/11/2026",
+  "kind": "Épisode",
+  "source": "TMDB",
+  "precision": "day",
+  "era": "",
+  "syn": "",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "tv",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": "",
+  "ep": {
+   "s": 1,
+   "e": 73,
+   "mark": "finale",
+   "eFin": 74
+  },
+  "poster": "/3NlFaIdOkBg2VC3Imi1kbeeGynw.jpg",
+  "tmdb": 274388,
+  "media": "tv"
+ },
+ {
   "universe": "starwars",
   "title": "The Fall of Kylo Ren 5",
   "date_sort": "2026-12-02",
@@ -184,7 +236,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/sLYCyO58UvBuBtbHTQjPCCgJ4dG.jpg",
+  "poster": "/7UN7WiNgXnKNneFx7V4nDm92luk.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },
