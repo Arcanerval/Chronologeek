@@ -7,19 +7,6 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:b803b86c39b015a0843e-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:Avatar Legends · Avatar: Seven Havens · S1E10 · Finale
-DESCRIPTION:With Ellora under lockdown\, Pavi steals away to the Eastern Ou
- tskirts and finally discovers her old home. Meanwhile\, out in the Harshla
- nds\, Nisha makes a new spirit friend who leads her to unlock a memory she
-  wishes she could forget.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:f2627e3803b11d53bb18-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261103

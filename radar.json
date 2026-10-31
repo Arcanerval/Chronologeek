@@ -1,31 +1,5 @@
 [
  {
-  "universe": "avatar",
-  "title": "Avatar: Seven Havens",
-  "date_sort": "2026-10-30",
-  "date_txt": "30/10/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "With Ellora under lockdown, Pavi steals away to the Eastern Outskirts and finally discovers her old home. Meanwhile, out in the Harshlands, Nisha makes a new spirit friend who leads her to unlock a memory she wishes she could forget.",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 10,
-   "mark": "finale",
-   "eFin": 13
-  },
-  "poster": "/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
-  "tmdb": 284833,
-  "media": "tv"
- },
- {
   "universe": "marvel",
   "title": "VisionQuest",
   "date_sort": "2026-11-03",
@@ -184,7 +158,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/7UN7WiNgXnKNneFx7V4nDm92luk.jpg",
+  "poster": "/zHTxblqPcqRpA93ex2Hj0RdpVBs.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },
@@ -379,7 +353,7 @@
   "title_fr": "",
   "date_sort_fr": "2027-07-07",
   "date_txt_fr": "07/07/2027",
-  "poster": "/tYLgfKk3cEk7LskgxWyW37Nty01.jpg",
+  "poster": "/sPypqBGhwKuJgN7DDinOz9aKNCs.jpg",
   "tmdb": 1523140,
   "media": "movie"
  },
