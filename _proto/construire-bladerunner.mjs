@@ -62,7 +62,8 @@ const ic = {
        '<path d="M8 2v4M16 2v4M3 10h18"/></svg>',
   canon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 ' +
          '4.6-.7 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>',
-  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>',
+  flash: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 19 2 12l9-7v14zM22 19l-9-7 9-7v14z"/></svg>'
 };
 
 const ECARTES = [
@@ -88,7 +89,9 @@ const NOTES =
   '<div class="key"><div class="key-h">' + ic.canon + 'Canonicity</div>' +
   '<p>The first movie is an adaptation of the 1968 novel &quot;Do Androids Dream of Electric ' +
   'Sheep?&quot; by Philip K. Dick, and this book has sequels, prequels and various adaptations. ' +
-  'Here we only follow the canon around this movie and its sequel.</p></div></div>' +
+  'Here we only follow the canon around this movie and its sequel.</p></div>' +
+  '<div class="key"><div class="key-h">' + ic.flash + 'Flashbacks</div>' +
+  '<p>Some events work better as a FLASHBACK for understanding, and are marked as such.</p></div></div>' +
   '<details class="cuts"><summary>What’s left out and why?<span class="n">' +
   ECARTES.length + ' entries</span>' +
   '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' +

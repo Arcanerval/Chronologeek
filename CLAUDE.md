@@ -2986,6 +2986,26 @@ Cinq choses à savoir :
 
 Les logos restent chez TMDB (`w92` pour 28 px), comme les affiches.
 
+**Les jeux ont leur ligne depuis le 1er novembre 2026, « Où jouer » / « Where to
+play »**, demandée par Niko : le même bloc de `e-app.js`, lue chez RAWG
+(`platforms`), sur les six timelines qui ont des jeux. Des pastilles de texte,
+RAWG ne fournissant aucun logo, du plus récent au plus ancien et le mobile après ;
+« Web » est écarté. Quatre choses à savoir :
+
+- **`media:"game"` et un type `jeu` ou `dlc`**, les deux. Les DLC de Dragon Age
+  en `media:"tv"` n'ont pas de fiche, donc pas de ligne.
+- **L'identifiant RAWG quand il y en a un, sinon le titre.** Star Wars, DC
+  Animation et The Witcher n'ont que le titre, et un titre français ne trouve
+  rien : la page française prend le titre anglais dans `search-fr.json` (sixième
+  place). `meme()` refuse un résultat dont les mots ne recoupent pas le titre, et
+  un titre d'un seul mot doit être exact : rien plutôt qu'une ligne fausse.
+- **`CONSOLES_FIXES` l'emporte sur RAWG**, par identifiant d'entrée. RAWG n'a pas
+  de plateforme pour *Arkham Shadow*, rend un autre *Side Effects*, compte le jeu
+  mobile d'*Arkham Origins*. **À chaque jeu ajouté, ouvrir sa fiche et relire la
+  ligne** : RAWG est souvent incomplet sur les portages récents, et rien ne le
+  signale.
+- **RAWG demande d'être cité avec un lien** : « Data: RAWG » mène à la page du jeu.
+
 **Les pastilles de ligne du pied de page** (`.f-uni i`) manquaient sur
 « À venir » et « Nouveautés » depuis leur passage au plan de métro : la
 règle n'avait pas été recopiée, et les codes SW, MCU, DC… sortaient en texte

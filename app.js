@@ -4287,6 +4287,9 @@ function cgBillet(){
      l'œuvre, qui renvoie chez chaque plateforme.
    - **Les logos restent chez TMDB**, comme les affiches : `w92` pour un
      rendu de 28 px, le palier au-dessus du ×3.
+
+   Les jeux ont la même ligne depuis le 1er novembre 2026, « Où jouer »,
+   lue chez RAWG (`platforms`) : voir `consoles()` plus bas.
    ══════════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
@@ -4294,8 +4297,10 @@ function cgBillet(){
   var EN = document.documentElement.lang === 'en';
   var PAYS = EN ? 'US' : 'FR';
   var L = EN
-    ? { titre: 'Where to watch', location: 'rent or buy', source: 'Data: JustWatch', tmdb: 'Data: TMDB' }
-    : { titre: 'Où regarder', location: 'location ou achat', source: 'Données : JustWatch', tmdb: 'Données : TMDB' };
+    ? { titre: 'Where to watch', location: 'rent or buy', source: 'Data: JustWatch', tmdb: 'Data: TMDB',
+        jouer: 'Where to play', rawg: 'Data: RAWG' }
+    : { titre: 'Où regarder', location: 'location ou achat', source: 'Données : JustWatch', tmdb: 'Données : TMDB',
+        jouer: 'Où jouer', rawg: 'Données : RAWG' };
   var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
               'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER'];
@@ -4307,12 +4312,14 @@ function cgBillet(){
     '.wt-l{display:inline-flex;gap:6px;flex-wrap:wrap}',
     '.wt-l img{width:28px;height:28px;border-radius:6px;display:block;background:rgba(255,255,255,.08)}',
     '.wt-k{font-style:italic}',
+    '.wt-p{display:inline-grid;place-items:center;min-height:28px;padding:0 9px;border:1px solid rgba(255,253,247,.34);',
+    '  border-radius:6px;background:rgba(255,255,255,.08);color:var(--paper);font-weight:700;font-size:11.5px;white-space:nowrap}',
     '.wt a.wt-s{color:rgba(255,253,247,.55);font-size:10.5px;text-decoration:none}',
     '.wt a.wt-s:hover{color:var(--paper);text-decoration:underline}'
   ].join('');
 
   /* identifiant d'entrée → type, second parcours compris (`ref`) */
-  var TYPES = null;
+  var TYPES = null, TITRES = {}, ORIGINE = {};
   function typeDe(id){
     if (!TYPES) {
       var D = null;
@@ -4329,10 +4336,14 @@ function cgBillet(){
             if (!e || !e.id) return;
             if (e.type) TYPES[e.id] = e.type;
             else if (e.ref) refs.push([e.id, e.ref]);
+            if (e.title) TITRES[e.id] = e.title;
           });
         });
       });
-      refs.forEach(function(r){ if (!TYPES[r[0]]) TYPES[r[0]] = TYPES[r[1]]; });
+      refs.forEach(function(r){
+        if (!TYPES[r[0]]) TYPES[r[0]] = TYPES[r[1]];
+        ORIGINE[r[0]] = r[1];
+      });
     }
     return TYPES[id] || null;
   }
@@ -4449,6 +4460,7 @@ function cgBillet(){
     var CG = window.CG || {};
     if (!panel || !art || !CG.tmdbKey) return;
     var id = panel.dataset.tmdb, media = panel.dataset.media;
+    if (media === 'game') { consoles(info, art.dataset.id, id); return; }
     if (!id || id === '0' || (media !== 'movie' && media !== 'tv')) return;
     if (!ECRAN[typeDe(art.dataset.id)]) return;
 
@@ -4475,6 +4487,124 @@ function cgBillet(){
       (p.link ? '<a class="wt-s" href="' + esc(p.link) + '" target="_blank" rel="noopener">' +
         (p.reseau ? L.tmdb : L.source) + '</a>' : '<span class="wt-s">' + L.source + '</span>');
     return ligne;
+  }
+
+  /* ── où jouer ───────────────────────────────────────────────────────
+     Un jeu n'a pas de plateforme de flux : la question devient « sur quoi »,
+     et RAWG, qui sert déjà les fiches de jeux, la tient dans `platforms`.
+     Des pastilles de texte et pas des logos : RAWG n'en fournit aucun.
+
+     Quatre choses à savoir :
+
+     - **RAWG est interrogé une seconde fois**, comme TMDB ici : les pages
+       gardent leur réponse dans leur script, hors de portée d'ici.
+     - **L'identifiant, puis le titre.** Star Wars, DC Animation et The
+       Witcher n'ont pas d'identifiant RAWG et cherchent par titre, et un
+       titre français ne trouve rien : la page française prend le titre
+       anglais dans son index de recherche (sixième place).
+     - **Le premier résultat n'est pas toujours le bon**, d'où `meme()` : si
+       ses mots ne sont pas tous dans le titre cherché, ou l'inverse, on se
+       tait. Une ligne fausse vaut moins que pas de ligne.
+     - **`CONSOLES_FIXES` l'emporte sur RAWG**, là où RAWG se trompe : le
+       *Side Effects* qu'il rend n'est pas le module de The Witcher, *Arkham
+       Shadow* n'y a aucune plateforme, et la version Android d'*Arkham
+       Origins* est un autre jeu. */
+  var JEU = { jeu: 1, dlc: 1 };
+  var CONSOLES_FIXES = {
+    'ark-shadow': ['Meta Quest 3'],
+    'ark-origins': ['Wii U', 'PC', 'PS3', 'Xbox 360'],
+    'wg-sideeffects': ['PC'],
+    'sw-galacticracer': ['PS5', 'Xbox Series', 'PC'],
+    'sw-outlaws': ['PS5', 'Xbox Series', 'Switch 2', 'PC']
+  };
+  var COURTS = { 'PlayStation 5': 'PS5', 'PlayStation 4': 'PS4', 'PlayStation 3': 'PS3', 'PlayStation 2': 'PS2',
+    'PlayStation': 'PS1', 'Xbox Series S/X': 'Xbox Series', 'Nintendo Switch 2': 'Switch 2', 'Nintendo Switch': 'Switch',
+    'Nintendo 3DS': '3DS', 'Nintendo DS': 'DS', 'macOS': 'Mac' };
+  // du plus récent au plus ancien, le mobile après
+  var RANG = ['PS5', 'Xbox Series', 'Switch 2', 'Switch', 'Meta Quest 3', 'PC', 'Mac', 'Linux', 'PS4', 'Xbox One', 'Wii U',
+    'PS Vita', '3DS', 'PS3', 'Xbox 360', 'Wii', 'PSP', 'DS', 'PS2', 'Xbox', 'GameCube', 'PS1', 'iOS', 'Android'];
+
+  function dec(s){
+    var t = document.createElement('textarea');
+    t.innerHTML = String(s);
+    return t.value;
+  }
+  function mots(s){
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ')
+      .split(/\s+/).filter(function(m){ return m && !/^(the|a|an|of|and|le|la|les|de|du|des|et)$/.test(m); });
+  }
+  function meme(a, b){
+    var x = mots(a), y = mots(b);
+    function dans(p, g){ return p.every(function(m){ return g.indexOf(m) !== -1; }); }
+    // un seul mot ne suffit pas : « The Witcher » n'est pas The Witcher 3
+    if (Math.min(x.length, y.length) < 2 && x.length !== y.length) return false;
+    return !!x.length && !!y.length && (dans(x, y) || dans(y, x));
+  }
+
+  // la page française cherche sous le titre anglais, celui que RAWG connaît
+  var INDEX = null;
+  function titreDeRecherche(id){
+    var ici = TITRES[id] || TITRES[ORIGINE[id]] || '';
+    if (EN) return Promise.resolve(dec(ici));
+    INDEX = INDEX || fetch('/search-fr.json').then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; });
+    return INDEX.then(function(j){
+      var cle = TITRES[id] ? id : ORIGINE[id];
+      var l = j && j.e && j.e.filter(function(x){ return x[2] === id || x[2] === cle; })[0];
+      return dec((l && (l[5] || l[1])) || ici);
+    });
+  }
+
+  var fiches = {};
+  function rawg(cle, rawgId, id){
+    if (+rawgId) {
+      return fiches[rawgId] || (fiches[rawgId] = fetch('https://api.rawg.io/api/games/' + (+rawgId) + '?key=' + cle)
+        .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }));
+    }
+    return titreDeRecherche(id).then(function(t){
+      // la même coupe que les pages : ni les DLC, ni « Campaign » ne sont des noms de jeux
+      var q = t.split(/\s\+\s|\s—\s/)[0].replace(/[:.+]/g, ' ').trim();
+      if (!q) return null;
+      return fetch('https://api.rawg.io/api/games?search=' + encodeURIComponent(q) + '&page_size=1&key=' + cle)
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(j){
+          var g = j && j.results && j.results[0];
+          return g && meme(g.name, q) ? g : null;
+        }).catch(function(){ return null; });
+    });
+  }
+
+  function ligneConsoles(noms, slug){
+    var vus = {}, liste = noms.filter(function(n){
+      if (vus[n] || n === 'Web') return false;
+      return (vus[n] = true);
+    });
+    function rang(n){ var i = RANG.indexOf(n); return i === -1 ? 99 : i; }
+    liste.sort(function(a, b){ return rang(a) - rang(b); });
+    if (!liste.length) return null;
+    var ligne = document.createElement('div');
+    ligne.className = 'wt';
+    ligne.innerHTML = '<strong>' + L.jouer + '</strong><span class="wt-l">' +
+      liste.map(function(n){ return '<span class="wt-p">' + esc(n) + '</span>'; }).join('') + '</span>' +
+      (slug ? '<a class="wt-s" href="https://rawg.io/games/' + esc(slug) + '" target="_blank" rel="noopener">' + L.rawg + '</a>' : '');
+    return ligne;
+  }
+
+  function consoles(info, id, rawgId){
+    var CG = window.CG || {};
+    if (!JEU[typeDe(id)] || !CG.rawgKey) return;
+    function pose(ligne){
+      if (!ligne || !info.isConnected || info.querySelector('.wt')) return;
+      info.insertBefore(ligne, info.querySelector('.expand-trailer-link') || null);
+    }
+    var fixe = CONSOLES_FIXES[id] || CONSOLES_FIXES[ORIGINE[id]];
+    if (fixe) { pose(ligneConsoles(fixe)); return; }
+    rawg(CG.rawgKey, rawgId, id).then(function(g){
+      if (!g || !g.platforms) return;
+      pose(ligneConsoles(g.platforms.map(function(p){
+        return COURTS[p.platform.name] || p.platform.name;
+      }), g.slug));
+    });
   }
 
   /* ── le radar ───────────────────────────────────────────────────────
