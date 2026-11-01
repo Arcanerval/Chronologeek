@@ -4314,6 +4314,7 @@ function cgBillet(){
     '.wt-k{font-style:italic}',
     '.wt-p{display:inline-grid;place-items:center;min-height:28px;padding:0 9px;border:1px solid rgba(255,253,247,.34);',
     '  border-radius:6px;background:rgba(255,255,255,.08);color:var(--paper);font-weight:700;font-size:11.5px;white-space:nowrap}',
+    '.wt-l .wt-p img{width:auto;height:18px;max-width:66px;object-fit:contain;border-radius:0;background:none;filter:brightness(0) invert(1)}',
     '.wt a.wt-s{color:rgba(255,253,247,.55);font-size:10.5px;text-decoration:none}',
     '.wt a.wt-s:hover{color:var(--paper);text-decoration:underline}'
   ].join('');
@@ -4492,7 +4493,9 @@ function cgBillet(){
   /* ── où jouer ───────────────────────────────────────────────────────
      Un jeu n'a pas de plateforme de flux : la question devient « sur quoi »,
      et RAWG, qui sert déjà les fiches de jeux, la tient dans `platforms`.
-     Des pastilles de texte et pas des logos : RAWG n'en fournit aucun.
+     RAWG ne fournit aucun logo : les vingt-quatre de `images/consoles/`
+     sont servis par le site, et passés en blanc par un filtre CSS. Une
+     plateforme sans logo garde son nom écrit.
 
      Quatre choses à savoir :
 
@@ -4520,6 +4523,10 @@ function cgBillet(){
   var COURTS = { 'PlayStation 5': 'PS5', 'PlayStation 4': 'PS4', 'PlayStation 3': 'PS3', 'PlayStation 2': 'PS2',
     'PlayStation': 'PS1', 'Xbox Series S/X': 'Xbox Series', 'Nintendo Switch 2': 'Switch 2', 'Nintendo Switch': 'Switch',
     'Nintendo 3DS': '3DS', 'Nintendo DS': 'DS', 'macOS': 'Mac' };
+  var LOGOS = { 'PS5': 'ps5', 'PS4': 'ps4', 'PS3': 'ps3', 'PS2': 'ps2', 'PS1': 'ps1', 'PSP': 'psp', 'PS Vita': 'psvita',
+    'Xbox Series': 'xboxseries', 'Xbox One': 'xboxone', 'Xbox 360': 'xbox360', 'Xbox': 'xbox',
+    'Switch 2': 'switch2', 'Switch': 'switch', 'Wii U': 'wiiu', 'Wii': 'wii', 'GameCube': 'gamecube', '3DS': '3ds', 'DS': 'ds',
+    'PC': 'pc', 'Mac': 'mac', 'iOS': 'ios', 'Android': 'android', 'Linux': 'linux', 'Meta Quest 3': 'quest' };
   // du plus récent au plus ancien, le mobile après
   var RANG = ['PS5', 'Xbox Series', 'Switch 2', 'Switch', 'Meta Quest 3', 'PC', 'Mac', 'Linux', 'PS4', 'Xbox One', 'Wii U',
     'PS Vita', '3DS', 'PS3', 'Xbox 360', 'Wii', 'PSP', 'DS', 'PS2', 'Xbox', 'GameCube', 'PS1', 'iOS', 'Android'];
@@ -4585,7 +4592,11 @@ function cgBillet(){
     var ligne = document.createElement('div');
     ligne.className = 'wt';
     ligne.innerHTML = '<strong>' + L.jouer + '</strong><span class="wt-l">' +
-      liste.map(function(n){ return '<span class="wt-p">' + esc(n) + '</span>'; }).join('') + '</span>' +
+      liste.map(function(n){
+        return '<span class="wt-p">' + (LOGOS[n]
+          ? '<img src="/images/consoles/' + LOGOS[n] + '.svg" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">'
+          : esc(n)) + '</span>';
+      }).join('') + '</span>' +
       (slug ? '<a class="wt-s" href="https://rawg.io/games/' + esc(slug) + '" target="_blank" rel="noopener">' + L.rawg + '</a>' : '');
     return ligne;
   }

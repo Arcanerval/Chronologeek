@@ -2248,6 +2248,9 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function rawgSyn(g){
     var t=g&&g.description_raw?String(g.description_raw):'';
     if(!t) return '';
+    /* RAWG laisse parfois du HTML dans son texte brut : Resident Evil HD
+       Remaster portait ses <br/> et ses <ul>, affiches tels quels. */
+    t=t.replace(/<br\s*\/?>|<\/(p|li|ul|ol|h\d)>/gi,'\n').replace(/<[^>]+>/g,'');
     var l=t.split('\n').map(function(s){return s.trim();}).filter(Boolean);
     return l.filter(function(s){return s.length>80;})[0]||l[0]||'';
   }

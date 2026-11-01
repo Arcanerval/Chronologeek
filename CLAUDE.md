@@ -2988,9 +2988,14 @@ Les logos restent chez TMDB (`w92` pour 28 px), comme les affiches.
 
 **Les jeux ont leur ligne depuis le 1er novembre 2026, « Où jouer » / « Where to
 play »**, demandée par Niko : le même bloc de `e-app.js`, lue chez RAWG
-(`platforms`), sur les six timelines qui ont des jeux. Des pastilles de texte,
-RAWG ne fournissant aucun logo, du plus récent au plus ancien et le mobile après ;
-« Web » est écarté. Quatre choses à savoir :
+(`platforms`), sur les six timelines qui ont des jeux, du plus récent au plus ancien
+et le mobile après ; « Web » est écarté. **Les vrais logos sont dans
+`images/consoles/`**, vingt-quatre SVG servis par le site : Simple Icons (CC0) pour
+PlayStation, Apple, iOS, Android, Linux et Oculus, Wikimedia Commons (domaine public)
+pour Xbox, Nintendo et Windows, Simple Icons ayant retiré ces marques à leur demande.
+Ils sont recadrés au plus juste (`viewBox`) — ceux de PlayStation sortaient
+minuscules dans leur carré — et passés en blanc par un filtre CSS. Une plateforme
+absente de `LOGOS` garde son nom écrit. Quatre choses à savoir :
 
 - **`media:"game"` et un type `jeu` ou `dlc`**, les deux. Les DLC de Dragon Age
   en `media:"tv"` n'ont pas de fiche, donc pas de ligne.
@@ -3005,6 +3010,11 @@ RAWG ne fournissant aucun logo, du plus récent au plus ancien et le mobile apr�
   ligne** : RAWG est souvent incomplet sur les portages récents, et rien ne le
   signale.
 - **RAWG demande d'être cité avec un lien** : « Data: RAWG » mène à la page du jeu.
+
+**RAWG laisse parfois du HTML dans `description_raw`** : *Resident Evil HD Remaster*
+affichait ses `<br/>` et ses `<ul>` en toutes lettres, seule fiche sur les soixante-huit
+relevées le 1er novembre 2026. `rawgSyn()` les retire, dans les quatre pages qui la
+portent.
 
 **Les pastilles de ligne du pied de page** (`.f-uni i`) manquaient sur
 « À venir » et « Nouveautés » depuis leur passage au plan de métro : la
