@@ -1,0 +1,370 @@
+[
+ {
+  "title": "LA SÉRIE ORIGINALE · 2005-2011",
+  "ink": 4,
+  "entries": [
+   {
+    "id": "avt-rl-s1",
+    "covers": [
+     "avt-s1e01-10",
+     "avt-s1e11-16",
+     "avt-s1e17-20"
+    ],
+    "date": "99-100 AG",
+    "subitems": [
+     "Saison 1"
+    ],
+    "rel": "2005"
+   },
+   {
+    "id": "avt-rl-s2",
+    "covers": [
+     "avt-s2e01-09",
+     "avt-s2e10-17",
+     "avt-s2e18-20"
+    ],
+    "subitems": [
+     "Saison 2"
+    ],
+    "rel": "2006"
+   },
+   {
+    "ref": "avt-sokka-the-avatar",
+    "rel": "2006"
+   },
+   {
+    "ref": "avt-divided-we-fall",
+    "rel": "2007"
+   },
+   {
+    "ref": "avt-escape-from-the-spirit-world",
+    "rel": "2007"
+   },
+   {
+    "id": "avt-rl-nickmag2",
+    "covers": [
+     "avt-it-s-only-natural",
+     "avt-going-home-again",
+     "avt-the-bridge"
+    ],
+    "title": "Les Aventures Perdues",
+    "subitems": [
+     "C'est Bien Naturel",
+     "Retour à la Maison",
+     "Le Pont"
+    ],
+    "rel": "2007"
+   },
+   {
+    "id": "avt-rl-s3",
+    "covers": [
+     "avt-s3e01-02",
+     "avt-s3e03-06",
+     "avt-s3e07-07",
+     "avt-s3e08-13",
+     "avt-s3e14-14",
+     "avt-s3e15-19",
+     "avt-s3e20-21"
+    ],
+    "subitems": [
+     "Saison 3"
+    ],
+    "rel": "2007"
+   },
+   {
+    "ref": "avt-private-fire",
+    "rel": "2007"
+   },
+   {
+    "ref": "avt-bumi-vs-toph-round-one",
+    "rel": "2009"
+   },
+   {
+    "ref": "avt-relics",
+    "rel": "2011"
+   },
+   {
+    "id": "avt-rl-lostadventures",
+    "covers": [
+     "avt-combustion-man-on-a-train",
+     "avt-dragon-days",
+     "avt-love-is-a-battlefield"
+    ],
+    "title": "Les Aventures Perdues",
+    "subitems": [
+     "L'Homme Explosif Dans un Train",
+     "L'Epoque des Dragons",
+     "L'Amour est un Champ de Bataille"
+    ],
+    "rel": "2011"
+   }
+  ]
+ },
+ {
+  "title": "LA LÉGENDE DE KORRA · 2012-2019",
+  "ink": 8,
+  "entries": [
+   {
+    "ref": "avt-la-promesse-the-promise",
+    "rel": "2012"
+   },
+   {
+    "ref": "avt-la-legende-de-korra-livre-1-l-air",
+    "rel": "2012"
+   },
+   {
+    "ref": "avt-la-recherche-the-search",
+    "rel": "2013"
+   },
+   {
+    "ref": "avt-rebound",
+    "rel": "2013"
+   },
+   {
+    "ref": "avt-la-legende-de-korra-livre-2-les-esprits",
+    "rel": "2013"
+   },
+   {
+    "ref": "avt-the-rift",
+    "rel": "2014"
+   },
+   {
+    "ref": "avt-shells",
+    "rel": "2014",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-la-legende-de-korra-livre-3-le-changemen",
+    "rel": "2014"
+   },
+   {
+    "ref": "avt-la-legende-de-korra-livre-4-l-equilibre",
+    "rel": "2014"
+   },
+   {
+    "ref": "avt-sisters",
+    "rel": "2015",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "avt-rl-smoke",
+    "covers": [
+     "avt-smoke-and-shadow-partie-1",
+     "avt-smoke-and-shadow-parties-2-3"
+    ],
+    "title": "Fumée et Ombre 1-3",
+    "rel": "2015"
+   },
+   {
+    "ref": "avt-legacy",
+    "rel": "2015"
+   },
+   {
+    "ref": "avt-amies-pour-la-vie-free-comic-book-day-2016",
+    "rel": "2016",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-north-and-south",
+    "rel": "2016"
+   },
+   {
+    "ref": "avt-turf-wars",
+    "rel": "2017"
+   },
+   {
+    "ref": "avt-lost-pets-free-comic-book-day-2018",
+    "rel": "2018"
+   },
+   {
+    "ref": "avt-imbalance",
+    "rel": "2018"
+   }
+  ]
+ },
+ {
+  "title": "LES CHRONIQUES DE L’AVATAR · 2019-2024",
+  "ink": 2,
+  "entries": [
+   {
+    "ref": "avt-ruins-of-the-empire",
+    "rel": "2019"
+   },
+   {
+    "ref": "avt-the-rise-of-kyoshi",
+    "rel": "2019",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-an-avatar-s-chronicle",
+    "rel": "2019"
+   },
+   {
+    "ref": "avt-legacy-of-the-fire-nation",
+    "rel": "2020"
+   },
+   {
+    "ref": "avt-the-shadow-of-kyoshi",
+    "rel": "2020",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-katara-and-the-pirate-s-silver",
+    "rel": "2020"
+   },
+   {
+    "ref": "avt-toph-beifong-s-metalbending-academy",
+    "rel": "2021"
+   },
+   {
+    "ref": "avt-suki-alone",
+    "rel": "2021",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "avt-rl-fcbd2021",
+    "covers": [
+     "avt-matcha-makers",
+     "avt-patterns-in-time-clearing-the-air"
+    ],
+    "title": "Free Comic Book Day 2021",
+    "subitems": [
+     "Matcha Makers",
+     "Clearing the Air"
+    ],
+    "date": "102-174 AG",
+    "rel": "2021",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-the-dawn-of-yangchen",
+    "rel": "2022",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "avt-rl-patterns",
+    "covers": [
+     "avt-patterns-in-time-skyscrapers",
+     "avt-patterns-in-time-weavers-ball",
+     "avt-patterns-in-time-cat-owls-cradle",
+     "avt-patterns-in-time-a-change-in-the-wind"
+    ],
+    "title": "Patterns in Time",
+    "subitems": [
+     "Skyscrapers",
+     "Weaver's Ball",
+     "Cat-Owl's Cradle",
+     "A Change in the Wind"
+    ],
+    "date": "~158-174 AG",
+    "rel": "2022",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-the-legacy-of-yangchen",
+    "rel": "2023",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-azula-in-the-spirit-temple",
+    "rel": "2023"
+   },
+   {
+    "ref": "avt-the-reckoning-of-roku",
+    "rel": "2024",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-the-bounty-hunter-and-the-tea-brewer",
+    "rel": "2024"
+   }
+  ]
+ },
+ {
+  "title": "L’ÈRE AVATAR STUDIOS · 2025-2026",
+  "ink": 9,
+  "entries": [
+   {
+    "ref": "avt-mystery-of-penquan-island",
+    "rel": "2025"
+   },
+   {
+    "ref": "avt-ashes-of-the-academy",
+    "rel": "2025"
+   },
+   {
+    "ref": "avt-avatar-legends-city-of-echoes",
+    "rel": "2025",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-the-awakening-of-roku",
+    "rel": "2025",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-earth-and-water-comics-giveaway-day-2026",
+    "rel": "2026",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-the-kyoshi-warriors-13",
+    "rel": "2026"
+   },
+   {
+    "ref": "avt-aang-the-last-airbender",
+    "rel": "2026"
+   },
+   {
+    "ref": "avt-kya-and-the-secret-of-the-sand",
+    "rel": "2026"
+   },
+   {
+    "ref": "avt-masters-of-the-elements-off-duty",
+    "rel": "2026",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-jet-rebels-and-rhinos",
+    "rel": "2026",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "avt-seven-havens-s1",
+    "rel": "2026"
+   }
+  ]
+ }
+]

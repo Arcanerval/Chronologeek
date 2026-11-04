@@ -1,0 +1,984 @@
+[
+ {
+  "title": "THE ORIGINAL SERIES ERA · 1966-1986",
+  "phase": "ERA 1",
+  "art": "/images/23century.webp",
+  "entries": [
+   {
+    "id": "st-rl-tos-s1",
+    "covers": [
+     "st-tos-1",
+     "st-tos-2",
+     "st-tos-3"
+    ],
+    "date": "2254-2267",
+    "rt": 1454,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "1966",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-tos-s2",
+    "covers": [
+     "st-tos-4"
+    ],
+    "date": "2267-2268",
+    "rt": 1305,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "1967"
+   },
+   {
+    "id": "st-rl-tos-s3",
+    "covers": [
+     "st-tos-5",
+     "st-tos-6"
+    ],
+    "date": "2268-2269",
+    "rt": 1223,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "1968"
+   },
+   {
+    "id": "st-rl-tas-s1",
+    "covers": [
+     "st-tas-1"
+    ],
+    "date": "2269-2270",
+    "rt": 384,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "1973",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-tas-s2",
+    "covers": [
+     "st-tas-1"
+    ],
+    "date": "2269-2270",
+    "rt": 144,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "1974",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "ref": "st-tmp-1",
+    "rel": "1979",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "ref": "st-twok-1",
+    "rel": "1982"
+   },
+   {
+    "ref": "st-tsfs-1",
+    "rel": "1984"
+   },
+   {
+    "ref": "st-tvh-1",
+    "rel": "1986"
+   }
+  ]
+ },
+ {
+  "title": "THE NEXT GENERATION ERA · 1987-2005",
+  "phase": "ERA 2",
+  "art": "/images/24century.webp",
+  "entries": [
+   {
+    "id": "st-rl-tng-s1",
+    "covers": [
+     "st-tng-1"
+    ],
+    "date": "2364",
+    "rt": 1195,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "1987",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-tng-s2",
+    "covers": [
+     "st-tng-2"
+    ],
+    "date": "2365",
+    "rt": 1011,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "1988"
+   },
+   {
+    "ref": "st-tff-1",
+    "rel": "1989"
+   },
+   {
+    "id": "st-rl-tng-s3",
+    "covers": [
+     "st-tng-3"
+    ],
+    "date": "2366",
+    "rt": 1196,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "1989"
+   },
+   {
+    "id": "st-rl-tng-s4",
+    "covers": [
+     "st-tng-4"
+    ],
+    "date": "2367",
+    "rt": 1196,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "1990"
+   },
+   {
+    "id": "st-rl-tng-s5",
+    "covers": [
+     "st-tng-5"
+    ],
+    "date": "2368",
+    "rt": 1196,
+    "subitems": [
+     "Season 5"
+    ],
+    "rel": "1991"
+   },
+   {
+    "ref": "st-tuc-1",
+    "rel": "1991",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-tng-s6",
+    "covers": [
+     "st-tng-6",
+     "st-tng-7",
+     "st-tng-8",
+     "st-tng-9",
+     "st-tng-10",
+     "st-tng-11",
+     "st-tng-12",
+     "st-tng-13",
+     "st-tng-14",
+     "st-tng-15",
+     "st-tng-16"
+    ],
+    "date": "2369",
+    "rt": 1179,
+    "subitems": [
+     "Season 6"
+    ],
+    "rel": "1992"
+   },
+   {
+    "id": "st-rl-ds9-s1",
+    "covers": [
+     "st-ds9-1",
+     "st-ds9-2",
+     "st-ds9-3",
+     "st-ds9-4",
+     "st-ds9-5",
+     "st-ds9-6",
+     "st-ds9-7",
+     "st-ds9-8",
+     "st-ds9-9",
+     "st-ds9-10"
+    ],
+    "date": "2369",
+    "rt": 898,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "1993",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-tng-s7",
+    "covers": [
+     "st-tng-17",
+     "st-tng-18",
+     "st-tng-19",
+     "st-tng-20",
+     "st-tng-21",
+     "st-tng-22",
+     "st-tng-23",
+     "st-tng-24",
+     "st-tng-25",
+     "st-tng-26",
+     "st-tng-27",
+     "st-tng-28",
+     "st-tng-29",
+     "st-tng-30",
+     "st-tng-31",
+     "st-tng-32",
+     "st-tng-33",
+     "st-tng-34"
+    ],
+    "date": "2370",
+    "rt": 1172,
+    "subitems": [
+     "Season 7"
+    ],
+    "rel": "1993"
+   },
+   {
+    "id": "st-rl-ds9-s2",
+    "covers": [
+     "st-ds9-11",
+     "st-ds9-12",
+     "st-ds9-13",
+     "st-ds9-14",
+     "st-ds9-15",
+     "st-ds9-16",
+     "st-ds9-17",
+     "st-ds9-18",
+     "st-ds9-19",
+     "st-ds9-20",
+     "st-ds9-21",
+     "st-ds9-22",
+     "st-ds9-23",
+     "st-ds9-24",
+     "st-ds9-25",
+     "st-ds9-26"
+    ],
+    "date": "2370",
+    "rt": 1170,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "1993"
+   },
+   {
+    "id": "st-rl-ds9-s3",
+    "covers": [
+     "st-ds9-27",
+     "st-ds9-28",
+     "st-ds9-29",
+     "st-ds9-30",
+     "st-ds9-31",
+     "st-ds9-32",
+     "st-ds9-33",
+     "st-ds9-34",
+     "st-ds9-35",
+     "st-ds9-36",
+     "st-ds9-37",
+     "st-ds9-38",
+     "st-ds9-39",
+     "st-ds9-40"
+    ],
+    "date": "2371",
+    "rt": 1170,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "1994"
+   },
+   {
+    "ref": "st-gen-1",
+    "rel": "1994"
+   },
+   {
+    "id": "st-rl-voy-s1",
+    "covers": [
+     "st-voy-1",
+     "st-voy-2",
+     "st-voy-3",
+     "st-voy-4",
+     "st-voy-5",
+     "st-voy-6",
+     "st-voy-7",
+     "st-voy-8",
+     "st-voy-9",
+     "st-voy-10",
+     "st-voy-11",
+     "st-voy-12",
+     "st-voy-13"
+    ],
+    "date": "2371",
+    "rt": 736,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "1995",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-voy-s2",
+    "covers": [
+     "st-voy-13",
+     "st-voy-14",
+     "st-voy-15",
+     "st-voy-16",
+     "st-voy-17",
+     "st-voy-18",
+     "st-voy-19",
+     "st-voy-20",
+     "st-voy-21",
+     "st-voy-22",
+     "st-voy-23",
+     "st-voy-24",
+     "st-voy-25",
+     "st-voy-26",
+     "st-voy-27"
+    ],
+    "date": "2371-2372",
+    "rt": 1196,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "1995"
+   },
+   {
+    "id": "st-rl-ds9-s4",
+    "covers": [
+     "st-ds9-41",
+     "st-ds9-42",
+     "st-ds9-43",
+     "st-ds9-44",
+     "st-ds9-45",
+     "st-ds9-46",
+     "st-ds9-47",
+     "st-ds9-48",
+     "st-ds9-49",
+     "st-ds9-50",
+     "st-ds9-51",
+     "st-ds9-52"
+    ],
+    "date": "2372",
+    "rt": 1170,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "1995"
+   },
+   {
+    "id": "st-rl-voy-s3",
+    "covers": [
+     "st-voy-28",
+     "st-voy-29",
+     "st-voy-30",
+     "st-voy-31",
+     "st-voy-32",
+     "st-voy-33",
+     "st-voy-34",
+     "st-voy-35",
+     "st-voy-36",
+     "st-voy-37",
+     "st-voy-38",
+     "st-voy-39",
+     "st-voy-40"
+    ],
+    "date": "2373",
+    "rt": 1196,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "1996"
+   },
+   {
+    "id": "st-rl-ds9-s5",
+    "covers": [
+     "st-ds9-53",
+     "st-ds9-54",
+     "st-ds9-55",
+     "st-ds9-56",
+     "st-ds9-57",
+     "st-ds9-58",
+     "st-ds9-59",
+     "st-ds9-60",
+     "st-ds9-61",
+     "st-ds9-62",
+     "st-ds9-63",
+     "st-ds9-64"
+    ],
+    "date": "2373",
+    "rt": 1170,
+    "subitems": [
+     "Season 5"
+    ],
+    "rel": "1996"
+   },
+   {
+    "ref": "st-fc-1",
+    "rel": "1996"
+   },
+   {
+    "id": "st-rl-voy-s4",
+    "covers": [
+     "st-voy-41",
+     "st-voy-42",
+     "st-voy-43",
+     "st-voy-44",
+     "st-voy-45",
+     "st-voy-46",
+     "st-voy-47",
+     "st-voy-48",
+     "st-voy-49",
+     "st-voy-50",
+     "st-voy-51",
+     "st-voy-52",
+     "st-voy-53",
+     "st-voy-66"
+    ],
+    "date": "~2374-3074",
+    "rt": 1194,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "1997",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-ds9-s6",
+    "covers": [
+     "st-ds9-65",
+     "st-ds9-66",
+     "st-ds9-67",
+     "st-ds9-68",
+     "st-ds9-69",
+     "st-ds9-70",
+     "st-ds9-71",
+     "st-ds9-72",
+     "st-ds9-73",
+     "st-ds9-74",
+     "st-ds9-75",
+     "st-ds9-76",
+     "st-ds9-77"
+    ],
+    "date": "2374",
+    "rt": 1170,
+    "subitems": [
+     "Season 6"
+    ],
+    "rel": "1997"
+   },
+   {
+    "id": "st-rl-ds9-s7",
+    "covers": [
+     "st-ds9-78",
+     "st-ds9-79",
+     "st-ds9-80",
+     "st-ds9-81",
+     "st-ds9-82",
+     "st-ds9-83",
+     "st-ds9-84",
+     "st-ds9-85",
+     "st-ds9-86"
+    ],
+    "date": "2375",
+    "rt": 1170,
+    "subitems": [
+     "Season 7"
+    ],
+    "rel": "1998"
+   },
+   {
+    "id": "st-rl-voy-s5",
+    "covers": [
+     "st-voy-54",
+     "st-voy-55",
+     "st-voy-56",
+     "st-voy-57",
+     "st-voy-58",
+     "st-voy-59",
+     "st-voy-60",
+     "st-voy-61",
+     "st-voy-62"
+    ],
+    "date": "2375",
+    "rt": 1192,
+    "subitems": [
+     "Season 5"
+    ],
+    "rel": "1998"
+   },
+   {
+    "ref": "st-ins-1",
+    "rel": "1998",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-voy-s6",
+    "covers": [
+     "st-voy-63"
+    ],
+    "date": "2376",
+    "rt": 1144,
+    "subitems": [
+     "Season 6"
+    ],
+    "rel": "1999"
+   },
+   {
+    "id": "st-rl-voy-s7",
+    "covers": [
+     "st-voy-64",
+     "st-voy-65"
+    ],
+    "date": "2377-2378",
+    "rt": 1139,
+    "subitems": [
+     "Season 7"
+    ],
+    "rel": "2000"
+   },
+   {
+    "id": "st-rl-ent-s1",
+    "covers": [
+     "st-ent-1",
+     "st-ent-2",
+     "st-ent-3",
+     "st-ent-4"
+    ],
+    "date": "2151-2152",
+    "rt": 1143,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2001",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-ent-s2",
+    "covers": [
+     "st-ent-4",
+     "st-ent-5",
+     "st-ent-6",
+     "st-ent-11"
+    ],
+    "date": "2152-2153",
+    "rt": 1118,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2002",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "ref": "st-nem-1",
+    "rel": "2002"
+   },
+   {
+    "id": "st-rl-ent-s3",
+    "covers": [
+     "st-ent-6",
+     "st-ent-7"
+    ],
+    "date": "2153-2154",
+    "rt": 1032,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "2003",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-ent-s4",
+    "covers": [
+     "st-ent-7",
+     "st-ent-8",
+     "st-ent-9",
+     "st-ent-10"
+    ],
+    "date": "2154-2370",
+    "rt": 946,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "2004",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "THE KELVIN TIMELINE · 2009-2016",
+  "phase": "ERA 3",
+  "art": "/images/22century.webp",
+  "entries": [
+   {
+    "ref": "st-st09-1",
+    "rel": "2009",
+    "tags": [
+     "kelvin"
+    ]
+   },
+   {
+    "ref": "st-into-1",
+    "rel": "2013",
+    "tags": [
+     "kelvin"
+    ]
+   },
+   {
+    "ref": "st-bey-1",
+    "rel": "2016",
+    "tags": [
+     "kelvin"
+    ],
+    "drop": [
+     "faq.pourquoi"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "THE STREAMING ERA · 2017-2026",
+  "phase": "ERA 4",
+  "art": "/images/32century.webp",
+  "entries": [
+   {
+    "id": "st-rl-disco-s1",
+    "covers": [
+     "st-disco-1",
+     "st-disco-2"
+    ],
+    "date": "2256-2257",
+    "rt": 677,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2017",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-st-s1",
+    "covers": [
+     "st-st-2",
+     "st-st-4",
+     "st-st-8"
+    ],
+    "date": "2239-2257",
+    "rt": 63,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2018"
+   },
+   {
+    "id": "st-rl-disco-s2",
+    "covers": [
+     "st-disco-3"
+    ],
+    "date": "2257",
+    "rt": 714,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2019",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-st-s2",
+    "covers": [
+     "st-st-1",
+     "st-st-3",
+     "st-st-5",
+     "st-st-6",
+     "st-st-7"
+    ],
+    "date": "~2230-2385",
+    "rt": 61,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2019",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-pic-s1",
+    "covers": [
+     "st-pic-1"
+    ],
+    "date": "2399",
+    "rt": 495,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2020"
+   },
+   {
+    "id": "st-rl-ld-s1",
+    "covers": [
+     "st-ld-1"
+    ],
+    "date": "2380",
+    "rt": 267,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2020",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-disco-s3",
+    "covers": [
+     "st-disco-4",
+     "st-disco-5"
+    ],
+    "date": "3188-3189",
+    "rt": 670,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "2020",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-ld-s2",
+    "covers": [
+     "st-ld-2"
+    ],
+    "date": "2381",
+    "rt": 268,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2021"
+   },
+   {
+    "id": "st-rl-pro-s1",
+    "covers": [
+     "st-pro-1"
+    ],
+    "date": "2383",
+    "rt": 476,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2021",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-disco-s4",
+    "covers": [
+     "st-disco-6"
+    ],
+    "date": "3190",
+    "rt": 658,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "2021"
+   },
+   {
+    "id": "st-rl-pic-s2",
+    "covers": [
+     "st-pic-2"
+    ],
+    "date": "2401",
+    "rt": 481,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2022"
+   },
+   {
+    "id": "st-rl-snw-s1",
+    "covers": [
+     "st-snw-1"
+    ],
+    "date": "2259",
+    "rt": 529,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2022",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-ld-s3",
+    "covers": [
+     "st-ld-2",
+     "st-ld-3"
+    ],
+    "date": "2381",
+    "rt": 276,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "2022"
+   },
+   {
+    "id": "st-rl-pic-s3",
+    "covers": [
+     "st-pic-2"
+    ],
+    "date": "2401",
+    "rt": 537,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "2023"
+   },
+   {
+    "id": "st-rl-snw-s2",
+    "covers": [
+     "st-snw-1",
+     "st-snw-2",
+     "st-snw-5"
+    ],
+    "date": "2259-2381",
+    "rt": 562,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2023",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-ld-s4",
+    "covers": [
+     "st-ld-3"
+    ],
+    "date": "2381",
+    "rt": 264,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "2023"
+   },
+   {
+    "id": "st-rl-disco-s5",
+    "covers": [
+     "st-disco-7"
+    ],
+    "date": "3191",
+    "rt": 581,
+    "subitems": [
+     "Season 5"
+    ],
+    "rel": "2024"
+   },
+   {
+    "id": "st-rl-pro-s2",
+    "covers": [
+     "st-pro-2",
+     "st-pro-3"
+    ],
+    "date": "2384-2385",
+    "rt": 480,
+    "subitems": [
+     "Season 2"
+    ],
+    "rel": "2024"
+   },
+   {
+    "id": "st-rl-ld-s5",
+    "covers": [
+     "st-ld-4"
+    ],
+    "date": "2382",
+    "rt": 271,
+    "subitems": [
+     "Season 5"
+    ],
+    "rel": "2024"
+   },
+   {
+    "ref": "st-s31-1",
+    "rel": "2025",
+    "drop": [
+     "tags",
+     "faq.pourquoi"
+    ]
+   },
+   {
+    "id": "st-rl-snw-s3",
+    "covers": [
+     "st-snw-2",
+     "st-snw-3"
+    ],
+    "date": "2260-2261",
+    "rt": 512,
+    "subitems": [
+     "Season 3"
+    ],
+    "rel": "2025"
+   },
+   {
+    "id": "st-rl-sfa-s1",
+    "covers": [
+     "st-sfa-1"
+    ],
+    "date": "3195",
+    "rt": 621,
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2026"
+   },
+   {
+    "id": "st-rl-snw-s4",
+    "covers": [
+     "st-snw-4"
+    ],
+    "date": "2262",
+    "rt": 550,
+    "subitems": [
+     "Season 4"
+    ],
+    "rel": "2026"
+   }
+  ]
+ }
+]

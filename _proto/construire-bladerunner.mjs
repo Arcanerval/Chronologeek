@@ -33,6 +33,7 @@
    Pas de table RT : dix des seize entrees sont des comics, qui n'ont pas de
    duree. Meme raison qu'Avatar Legends. */
 
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -227,7 +228,7 @@ const SORTIE = [
     ['br-fcbd2020-2019', '2020'], ['br-2029', '2020'], ['br-origins', '2021'],
     [{ id: 'br-rl-fcbd2021', covers: ['br-fcbd2021-2029', 'br-fcbd2021-origins'], title: 'FCBD 2021: Blade Runner',
        subitems: ['Blade Runner 2029', 'Blade Runner: Origins'], date: '2009-2029' }, '2021']] },
-  { title: 'The Black Lotus Era · 2021-2025', phase: 'ERA 3', ink: 3, art: ERES[2].art, ids: [
+  { title: 'The Black Lotus Era · 2021-2026', phase: 'ERA 3', ink: 3, art: ERES[2].art, ids: [
     ['br-blacklotus', '2021'], ['br-bl-leavingla', '2022'], ['br-2039', '2022'],
     ['br-tokyonexus', '2024'], ['br-bl-lasvegas', '2025']] }
 ];
@@ -325,6 +326,10 @@ const sortie = ENTETE + '*/\n' +
   'window.BLADERUNNER=' + JSON.stringify(DATA) + ';\n';
 
 fs.writeFileSync(path.join(ICI, 'data-bladerunner-en.js'), sortie, 'utf8');
+/* L'ordre de sortie écrit ici est celui des œuvres entières : c'est la source de
+   `detailler-sortie.mjs`, qui pose les morceaux dans le fichier de données. */
+fs.writeFileSync(path.join(ICI, 'sorties', 'bladerunner.json'), JSON.stringify(DATA.erasRelease, null, 1) + '\n');
+execFileSync('node', [path.join(ICI, 'detailler-sortie.mjs'), 'bladerunner'], { stdio: 'inherit' });
 console.log('data-bladerunner-en.js ecrit : %d entrees, %d eres (%d en ordre de sortie), %d badges, %d Ko',
   E.length, DATA.eras.length, DATA.erasRelease.length, BADGES.length, Math.round(sortie.length / 1024));
 console.log('  niveaux : %s',

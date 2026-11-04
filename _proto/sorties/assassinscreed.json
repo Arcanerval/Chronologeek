@@ -1,0 +1,580 @@
+[
+ {
+  "title": "THE DESMOND SAGA · 2007-2013",
+  "phase": "ERA 1",
+  "ink": 1,
+  "art": "/images/altair.webp",
+  "entries": [
+   {
+    "ref": "ac-game-1",
+    "rel": "2007"
+   },
+   {
+    "ref": "ac-altairs-chronicles-1",
+    "rel": "2008",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-lineage-1",
+    "rel": "2009"
+   },
+   {
+    "id": "ac-rl-ii",
+    "covers": [
+     "ac-ii-1",
+     "ac-ii-2"
+    ],
+    "date": "1476-1499",
+    "notes": [
+     "I highly recommend you to complete the optional 20 hidden glyphs but if you don't like collectibles look for \"The Truth\" video on YouTube when you completed the game it's pretty important!"
+    ],
+    "rel": "2009"
+   },
+   {
+    "ref": "ac-ii-discovery-1",
+    "rel": "2009"
+   },
+   {
+    "ref": "ac-bloodlines-1",
+    "rel": "2009"
+   },
+   {
+    "ref": "ac-the-fall-1",
+    "rel": "2010",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-ascendance-1",
+    "rel": "2010"
+   },
+   {
+    "id": "ac-rl-brotherhood",
+    "covers": [
+     "ac-brotherhood-1",
+     "ac-brotherhood-2"
+    ],
+    "date": "1499-1507",
+    "rel": "2010",
+    "drop": [
+     "notes"
+    ]
+   },
+   {
+    "ref": "ac-the-da-vinci-1",
+    "rel": "2011"
+   },
+   {
+    "ref": "ac-the-secret-crusade-1",
+    "rel": "2011"
+   },
+   {
+    "ref": "ac-embers-1",
+    "rel": "2011"
+   },
+   {
+    "ref": "ac-revelations-1",
+    "rel": "2011"
+   },
+   {
+    "ref": "ac-brotherhood-revelations-animi-1",
+    "rel": "2011"
+   },
+   {
+    "ref": "ac-the-lost-archive-1",
+    "rel": "2012"
+   },
+   {
+    "ref": "ac-the-chain-1",
+    "rel": "2012",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "ac-rl-iii",
+    "covers": [
+     "ac-iii-1",
+     "ac-iii-2"
+    ],
+    "date": "1754-1783",
+    "rel": "2012",
+    "drop": [
+     "notes"
+    ]
+   },
+   {
+    "ref": "ac-iii-liberation-1",
+    "rel": "2012"
+   },
+   {
+    "ref": "ac-benedict-arnold-1",
+    "rel": "2012"
+   },
+   {
+    "ref": "ac-iii-abstergo-hacked-1",
+    "rel": "2012"
+   },
+   {
+    "ref": "ac-forsaken-1",
+    "rel": "2012",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-the-tyranny-of-1",
+    "rel": "2013"
+   }
+  ]
+ },
+ {
+  "title": "THE ABSTERGO ENTERTAINMENT YEARS · 2013-2017",
+  "phase": "ERA 2",
+  "ink": 3,
+  "art": "/images/kenway.webp",
+  "entries": [
+   {
+    "ref": "ac-iv-black-flag-2",
+    "rel": "2013"
+   },
+   {
+    "ref": "ac-iv-black-flag-1",
+    "rel": "2013"
+   },
+   {
+    "ref": "ac-brahman-1",
+    "rel": "2013"
+   },
+   {
+    "ref": "ac-freedom-cry-1",
+    "rel": "2013"
+   },
+   {
+    "ref": "ac-iv-black-flag-3",
+    "rel": "2014",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-unity-abstergo-entertainment-1",
+    "rel": "2014",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-unity-1",
+    "rel": "2014"
+   },
+   {
+    "ref": "ac-rogue-1",
+    "rel": "2014"
+   },
+   {
+    "ref": "ac-unity-novel-1",
+    "rel": "2014",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-dead-kings-1",
+    "rel": "2015",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-chronicles-china-1",
+    "rel": "2015",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "ac-rl-syndicate",
+    "covers": [
+     "ac-syndicate-1",
+     "ac-syndicate-2"
+    ],
+    "date": "1868",
+    "rel": "2015",
+    "drop": [
+     "notes"
+    ]
+   },
+   {
+    "ref": "ac-underworld-1",
+    "rel": "2015",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-jack-the-ripper-1",
+    "rel": "2015"
+   },
+   {
+    "ref": "ac-chronicles-india-1",
+    "rel": "2016",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-chronicles-russia-1",
+    "rel": "2016",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-chronicles-russia-secret-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-the-last-maharaja-1",
+    "rel": "2016"
+   },
+   {
+    "id": "ac-rl-fcbd2016",
+    "covers": [
+     "ac-fcbd-2016-great-1",
+     "ac-fcbd-2016-the-1"
+    ],
+    "title": "Assassin's Creed FCBD 2016",
+    "subitems": [
+     "Great Wall",
+     "The Chair"
+    ],
+    "date": "1791-1927",
+    "rel": "2016",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-assassins-trial-by-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-last-descendants-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-conspiracies-die-glocke-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-assassins-setting-sun-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-templars-black-cross-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-heresy-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-movie-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-last-descendants-tomb-1",
+    "rel": "2016"
+   },
+   {
+    "ref": "ac-reflections-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-templars-cross-of-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-last-descendants-locus-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-assassins-homecoming-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-uprising-common-ground-1",
+    "rel": "2017"
+   }
+  ]
+ },
+ {
+  "title": "THE MYTHOLOGY TRILOGY · 2017-2023",
+  "phase": "ERA 3",
+  "ink": 5,
+  "art": "/images/laylahassan.webp",
+  "entries": [
+   {
+    "ref": "ac-origins-desert-oath-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-origins-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-conspiracies-project-rainbow-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-last-descendants-fate-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "ac-uprising-inflection-point-1",
+    "rel": "2018"
+   },
+   {
+    "ref": "ac-the-hidden-ones-1",
+    "rel": "2018"
+   },
+   {
+    "ref": "ac-origins-2",
+    "rel": "2018"
+   },
+   {
+    "ref": "ac-the-curse-of-1",
+    "rel": "2018"
+   },
+   {
+    "id": "ac-rl-odyssey",
+    "covers": [
+     "ac-odyssey-1",
+     "ac-odyssey-2",
+     "ac-odyssey-3",
+     "ac-odyssey-4"
+    ],
+    "date": "431-421 BC",
+    "notes": [
+     "Kassandra is the canon character so you should play her"
+    ],
+    "rel": "2018"
+   },
+   {
+    "ref": "ac-uprising-finale-1",
+    "rel": "2018"
+   },
+   {
+    "id": "ac-rl-legacy",
+    "covers": [
+     "ac-legacy-of-the-1",
+     "ac-legacy-of-the-2",
+     "ac-legacy-of-the-3"
+    ],
+    "title": "Legacy of the First Blade",
+    "subitems": [
+     "Hunted",
+     "Shadow Heritage",
+     "Bloodline"
+    ],
+    "date": "~429-425 BC",
+    "rel": "2018"
+   },
+   {
+    "ref": "ac-bloodstone-1",
+    "rel": "2019"
+   },
+   {
+    "ref": "ac-odyssey-the-lost-1",
+    "rel": "2019"
+   },
+   {
+    "ref": "ac-the-fate-of-1",
+    "rel": "2019"
+   },
+   {
+    "ref": "ac-gold-1",
+    "rel": "2020"
+   },
+   {
+    "ref": "ac-valhalla-song-of-1",
+    "rel": "2020"
+   },
+   {
+    "id": "ac-rl-valhalla",
+    "covers": [
+     "ac-valhalla-1",
+     "ac-valhalla-2"
+    ],
+    "date": "872-887",
+    "rel": "2020"
+   },
+   {
+    "ref": "ac-valhalla-geirmunds-saga-1",
+    "rel": "2020",
+    "drop": [
+     "notes",
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-dynasty-1",
+    "rel": "2021"
+   },
+   {
+    "ref": "ac-fragments-the-blade-1",
+    "rel": "2021"
+   },
+   {
+    "ref": "ac-wrath-of-the-1",
+    "rel": "2021",
+    "drop": [
+     "notes"
+    ]
+   },
+   {
+    "ref": "ac-the-siege-of-1",
+    "rel": "2021",
+    "drop": [
+     "notes"
+    ]
+   },
+   {
+    "ref": "ac-valhalla-blood-brothers-1",
+    "rel": "2021",
+    "drop": [
+     "notes",
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-the-silk-road-1",
+    "rel": "2021"
+   },
+   {
+    "ref": "ac-fragments-the-highlands-1",
+    "rel": "2021"
+   },
+   {
+    "ref": "ac-those-who-are-1",
+    "rel": "2021"
+   },
+   {
+    "ref": "ac-fragments-the-witches-1",
+    "rel": "2022"
+   },
+   {
+    "ref": "ac-dawn-of-ragnarok-1",
+    "rel": "2022"
+   },
+   {
+    "ref": "ac-valhalla-forgotten-myths-1",
+    "rel": "2022"
+   },
+   {
+    "ref": "ac-valhalla-sword-of-1",
+    "rel": "2022"
+   },
+   {
+    "ref": "ac-the-engine-of-1",
+    "rel": "2022",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-escape-room-puzzle-1",
+    "rel": "2022"
+   },
+   {
+    "ref": "ac-valhalla-the-hidden-1",
+    "rel": "2023"
+   }
+  ]
+ },
+ {
+  "title": "THE ANIMUS HUB YEARS · 2023-2026",
+  "phase": "ERA 4",
+  "ink": 6,
+  "art": "/images/animushub.webp",
+  "entries": [
+   {
+    "ref": "ac-forgotten-temple-1",
+    "rel": "2023"
+   },
+   {
+    "ref": "ac-the-golden-city-1",
+    "rel": "2023"
+   },
+   {
+    "ref": "ac-the-engine-of-2",
+    "rel": "2023",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "ac-rl-mirage",
+    "covers": [
+     "ac-mirage-1",
+     "ac-mirage-2"
+    ],
+    "date": "861-862",
+    "rel": "2023",
+    "drop": [
+     "notes"
+    ]
+   },
+   {
+    "ref": "ac-nexus-vr-1",
+    "rel": "2023"
+   },
+   {
+    "ref": "ac-mirage-daughter-of-1",
+    "rel": "2023",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-mirage-a-soar-1",
+    "rel": "2025",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "ac-rl-shadows",
+    "covers": [
+     "ac-shadows-1",
+     "ac-shadows-2"
+    ],
+    "date": "1579-1585",
+    "rel": "2025"
+   },
+   {
+    "ref": "ac-shadows-tales-of-1",
+    "rel": "2025",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "ac-claws-of-awaji-1",
+    "rel": "2025"
+   },
+   {
+    "ref": "ac-valley-of-memories-1",
+    "rel": "2025"
+   },
+   {
+    "ref": "ac-black-flag-resynced-1",
+    "rel": "2026"
+   }
+  ]
+ }
+]

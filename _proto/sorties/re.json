@@ -1,0 +1,155 @@
+[
+ {
+  "title": "THE ORIGINAL ERA · 2001-2009",
+  "phase": "ERA 1",
+  "ink": 1,
+  "art": "/images/raccooncity.webp",
+  "entries": [
+   {
+    "ref": "re-cvx",
+    "rel": "2001"
+   },
+   {
+    "ref": "re-re0",
+    "rel": "2002"
+   },
+   {
+    "ref": "re-outbreak",
+    "rel": "2004"
+   },
+   {
+    "ref": "re-outbreak2",
+    "rel": "2005"
+   },
+   {
+    "ref": "re-umbrella",
+    "rel": "2007",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "re-degeneration",
+    "rel": "2008"
+   },
+   {
+    "ref": "re-re5",
+    "rel": "2009"
+   },
+   {
+    "ref": "re-darkside",
+    "rel": "2009",
+    "drop": [
+     "tags"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "THE ACTION ERA · 2012-2015",
+  "phase": "ERA 2",
+  "ink": 2,
+  "art": "/images/afterumbrella.webp",
+  "entries": [
+   {
+    "ref": "re-revelations",
+    "rel": "2012"
+   },
+   {
+    "ref": "re-marhawa",
+    "rel": "2012"
+   },
+   {
+    "ref": "re-damnation",
+    "rel": "2012"
+   },
+   {
+    "ref": "re-lasplagas",
+    "rel": "2012"
+   },
+   {
+    "ref": "re-re6",
+    "rel": "2012"
+   },
+   {
+    "ref": "re-re1",
+    "rel": "2015"
+   },
+   {
+    "ref": "re-revelations2",
+    "rel": "2015"
+   },
+   {
+    "ref": "re-heavenly",
+    "rel": "2015"
+   }
+  ]
+ },
+ {
+  "title": "THE RE ENGINE ERA · 2016-2026",
+  "phase": "ERA 3",
+  "ink": 4,
+  "art": "/images/backtohorror.webp",
+  "entries": [
+   {
+    "ref": "re-beginninghour",
+    "rel": "2016"
+   },
+   {
+    "ref": "re-re7",
+    "rel": "2017"
+   },
+   {
+    "ref": "re-vendetta",
+    "rel": "2017"
+   },
+   {
+    "ref": "re-re2",
+    "rel": "2019"
+   },
+   {
+    "ref": "re-re3",
+    "rel": "2020"
+   },
+   {
+    "ref": "re-maiden",
+    "rel": "2021"
+   },
+   {
+    "ref": "re-village",
+    "rel": "2021"
+   },
+   {
+    "ref": "re-id",
+    "rel": "2021"
+   },
+   {
+    "ref": "re-shadowsofrose",
+    "rel": "2022"
+   },
+   {
+    "ref": "re-id-comic",
+    "rel": "2022"
+   },
+   {
+    "ref": "re-re4",
+    "rel": "2023"
+   },
+   {
+    "ref": "re-deathisland",
+    "rel": "2023"
+   },
+   {
+    "ref": "re-evilname",
+    "rel": "2026",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "re-requiem",
+    "rel": "2026"
+   }
+  ]
+ }
+]

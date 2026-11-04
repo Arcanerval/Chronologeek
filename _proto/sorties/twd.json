@@ -1,0 +1,270 @@
+[
+ {
+  "title": "THE ORIGINAL SERIES · 2010-2015",
+  "phase": "ERA 1",
+  "ink": 2,
+  "art": "/images/atlanta.webp",
+  "entries": [
+   {
+    "ref": "twd-twd-1",
+    "rel": "2010"
+   },
+   {
+    "ref": "twd-torn-1",
+    "rel": "2011",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-twd-2",
+    "rel": "2011"
+   },
+   {
+    "ref": "twd-cold-1",
+    "rel": "2012",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-twd-3",
+    "rel": "2012"
+   },
+   {
+    "ref": "twd-oath-1",
+    "rel": "2013",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-twd-4",
+    "rel": "2013"
+   },
+   {
+    "ref": "twd-twd-5",
+    "rel": "2014"
+   }
+  ]
+ },
+ {
+  "title": "FEAR AND THE WEB SERIES · 2015-2020",
+  "phase": "ERA 2",
+  "ink": 1,
+  "art": "/images/losangelesmexico.webp",
+  "entries": [
+   {
+    "id": "twd-rl-ftwd-s1",
+    "covers": [
+     "twd-ftwd-1",
+     "twd-ftwd-2"
+    ],
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2015"
+   },
+   {
+    "ref": "twd-flight-1",
+    "rel": "2015",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-twd-6",
+    "rel": "2015"
+   },
+   {
+    "ref": "twd-ftwd-3",
+    "rel": "2016"
+   },
+   {
+    "ref": "twd-passage-1",
+    "rel": "2016",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-twd-7",
+    "rel": "2016"
+   },
+   {
+    "ref": "twd-ftwd-4",
+    "rel": "2017"
+   },
+   {
+    "ref": "twd-twd-8",
+    "rel": "2017"
+   },
+   {
+    "ref": "twd-machete-1",
+    "rel": "2017",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-ftwd-5",
+    "rel": "2018"
+   },
+   {
+    "id": "twd-rl-twd-s9",
+    "covers": [
+     "twd-twd-9",
+     "twd-twd-10",
+     "twd-twd-11"
+    ],
+    "subitems": [
+     "Season 9"
+    ],
+    "date": "2014-2021",
+    "rel": "2018"
+   },
+   {
+    "id": "twd-rl-ftwd-s5",
+    "covers": [
+     "twd-ftwd-6",
+     "twd-ftwd-7"
+    ],
+    "subitems": [
+     "Season 5"
+    ],
+    "rel": "2019"
+   },
+   {
+    "ref": "twd-althea-1",
+    "rel": "2019",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "twd-twd-12",
+    "rel": "2019"
+   }
+  ]
+ },
+ {
+  "title": "THE ENDINGS · 2020-2023",
+  "phase": "ERA 3",
+  "ink": 6,
+  "art": "/images/ontheroad.webp",
+  "entries": [
+   {
+    "ref": "twd-wb-1",
+    "rel": "2020"
+   },
+   {
+    "ref": "twd-ftwd-8",
+    "rel": "2020"
+   },
+   {
+    "id": "twd-rl-twd-s11",
+    "covers": [
+     "twd-twd-13",
+     "twd-twd-14"
+    ],
+    "subitems": [
+     "Season 11"
+    ],
+    "date": "2021-2022",
+    "rel": "2021"
+   },
+   {
+    "ref": "twd-wb-2",
+    "rel": "2021"
+   },
+   {
+    "ref": "twd-ftwd-9",
+    "rel": "2021"
+   },
+   {
+    "ref": "twd-water-1",
+    "rel": "2022",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "id": "twd-rl-tales",
+    "covers": [
+     "twd-tales-2",
+     "twd-tales-1",
+     "twd-tales-5",
+     "twd-tales-4",
+     "twd-tales-6",
+     "twd-tales-3"
+    ],
+    "date": "2010-2025",
+    "subitems": [
+     "Season 1"
+    ],
+    "rel": "2022"
+   },
+   {
+    "ref": "twd-ftwd-10",
+    "rel": "2023"
+   }
+  ]
+ },
+ {
+  "title": "THE SPIN-OFFS · 2023-2026",
+  "phase": "ERA 4",
+  "ink": 8,
+  "art": "/images/othersideofocean.webp",
+  "entries": [
+   {
+    "ref": "twd-dc-1",
+    "rel": "2023"
+   },
+   {
+    "id": "twd-rl-dd-s1",
+    "covers": [
+     "twd-dd-1"
+    ],
+    "subitems": [
+     "Season 1"
+    ],
+    "rt": 334,
+    "rel": "2023"
+   },
+   {
+    "ref": "twd-towl-1",
+    "rel": "2024"
+   },
+   {
+    "id": "twd-rl-dd-s2",
+    "covers": [
+     "twd-dd-1"
+    ],
+    "subitems": [
+     "Season 2"
+    ],
+    "rt": 344,
+    "rel": "2024"
+   },
+   {
+    "ref": "twd-dc-2",
+    "rel": "2025"
+   },
+   {
+    "id": "twd-rl-dd-s3",
+    "covers": [
+     "twd-dd-1"
+    ],
+    "subitems": [
+     "Season 3"
+    ],
+    "rt": 363,
+    "rel": "2025"
+   },
+   {
+    "ref": "twd-dc-3",
+    "rel": "2026"
+   }
+  ]
+ }
+]

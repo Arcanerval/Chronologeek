@@ -154,7 +154,7 @@ const TRADUCTIONS = [
   ['Saga de l’Infini', 'The Infinity Saga'],
   ['Saga du Multivers', 'The Multiverse Saga'],
   ['LA TRILOGIE ORIGINALE · 1977-1983', 'THE ORIGINAL TRILOGY · 1977-1983'],
-  ['L’ÈRE DE LA PRÉLOGIE · 1999-2020', 'THE PREQUEL ERA · 1999-2020'],
+  ['L’ÈRE DE LA PRÉLOGIE · 1999-2014', 'THE PREQUEL ERA · 1999-2014'],
   ['LE RACHAT PAR DISNEY · 2014-2018', 'THE DISNEY TAKEOVER · 2014-2018'],
   ['L’ÈRE DISNEY+ · 2019-2026', 'THE DISNEY+ ERA · 2019-2026'],
   /* Les sous-items des entrées regroupées : la saison ou l'épisode sans
@@ -1030,6 +1030,11 @@ export function creerTraducteur(lex, manques, contexte, identiques) {
          langues. Le laisser passer par le témoin de fraîcheur le
          rendrait « sans traduction » à chaque passage. */
       if (RENOMMES_NOUVEAUX.has(fr.trim())) return fr;
+
+      /* Un morceau de l'ordre de sortie : seuls les chiffres changent, et
+         `detailler-sortie.mjs` en écrit plusieurs dizaines par univers. */
+      const morceau = /^Saison (\d+)(?: Épisode(s?) (\d+(?:-\d+)?))?$/.exec(fr.trim());
+      if (morceau) return 'Season ' + morceau[1] + (morceau[3] ? ' Episode' + morceau[2] + ' ' + morceau[3] : '');
 
       /* Une retouche de graphie — l'espace du deux-points, l'apostrophe,
          une capitale de travers (« Vader'S Castle ») — ne change pas ce

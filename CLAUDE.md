@@ -888,6 +888,9 @@ jamais époques du monde, avec les années dans le titre comme chez Star Wars.
 | Resident Evil | 30 | 30 | ère originale, action, RE Engine |
 | Blade Runner | 15 | 17 | films, comics Titan, Black Lotus |
 
+Ces décomptes sont ceux des œuvres entières. Le découpage à l'écran est dans
+« Le détail, épisode par épisode ».
+
 **Le moteur est celui de Star Wars, posé à l'identique dans les neuf
 pages** : `MODES`, `resolve()` qui reporte l'en-tête entier de l'ère (et
 qui, avec `parRang`, reprend les ères de la découverte pour le rejeu de
@@ -901,18 +904,17 @@ texte inchangé.
 
 Sept choses à savoir :
 
-- **Une saison est une sortie, un livre aussi** — tranché par Niko le
-  22 octobre 2026. Les demi-saisons et les blocs d'épisodes se recollent par
-  `covers`, et une série d'un seul bloc en découverte se coupe saison par
-  saison (Camp Cretaceous, Chaos Theory, Daryl Dixon) quand une autre
-  sortie tombe entre deux. Ce qui a paru **dans un même livre ou un même
-  numéro** est une seule sortie : les deux recueils de Sapkowski (*L'Épée de
-  la providence*, *Le Dernier Vœu*), le numéro 2 de *Nick Mag Presents* et
-  le recueil des *Lost Adventures* chez Avatar, son FCBD 2021 et l'anthologie
-  *Patterns in Time*, les FCBD d'Assassin's Creed 2016 et de Blade Runner
-  2021, *Blade Runner 2019* en douze numéros, *Fumée et Ombre* en trois
-  tomes, les trois épisodes de *Legacy of the First Blade*.
-- **Star Trek se bâtit par un générateur**, pas à la main : un bloc de
+- **Une saison n'est une sortie que si rien ne s'y intercale**, corrigé par
+  Niko le 4 novembre 2026 : voir « Le détail, épisode par épisode ». Ce qui a
+  paru **dans un même livre ou un même numéro** reste une seule sortie, et ça
+  tient toujours : les deux recueils de Sapkowski (*L'Épée de la providence*,
+  *Le Dernier Vœu*), le numéro 2 de *Nick Mag Presents* et le recueil des
+  *Lost Adventures* chez Avatar, son FCBD 2021 et l'anthologie *Patterns in
+  Time*, les FCBD d'Assassin's Creed 2016 et de Blade Runner 2021, les trois
+  épisodes de *Legacy of the First Blade*. *Blade Runner 2019* et *Fumée et
+  Ombre*, cités le 22 octobre, se découpent maintenant : leurs numéros et leurs
+  tomes ne sont pas sortis ensemble.
+- **Star Trek** : un bloc de
   découverte peut tenir deux saisons (« Season 1 Episodes 20-26, Season 2
   Episodes 1-19 »), donc chaque saison couvre **tous** les blocs qui la
   nomment, et le pont coche un bloc quand toutes ses saisons le sont. Une
@@ -968,12 +970,90 @@ titres anglais avaient la place de « Release Order » (Star Wars, Marvel,
 Star Trek, Dragon Age, Resident Evil, Blade Runner) ; les titres français
 sont tous au plafond de soixante signes et n'ont pas bougé.
 
-**Les ères s'écrivent dans la source** — `data-avatar.js` pour Avatar,
-`construire-bladerunner.mjs` pour Blade Runner, le `data-*-en.js` des
-chaînes inversées pour les autres — et leur français dans
+**Les ères s'écrivent dans `_proto/sorties/<u>.json`** —
+`construire-bladerunner.mjs` pour Blade Runner — et leur français dans
 `traductions-<u>.mjs` (`ERA N` → `ÈRE N` par gabarit chez Star Trek et
 The Walking Dead). `rel`, `ref`, `covers` et `drop` sont identiques ou
 techniques dans les neuf scripts de traduction.
+
+### Le détail, épisode par épisode, posé le 4 novembre 2026
+
+Demandé par Niko : « les séries qui sortent en même temps tu mets épisode par
+épisodes, les comics certains sont sortis sur plusieurs années ». **`erasRelease`
+ne s'écrit plus à la main.** La source est `_proto/sorties/<u>.json`, l'ordre par
+œuvres entières, et `node _proto/detailler-sortie.mjs <u>` fusionne tout par date
+puis pose le résultat dans le fichier de données. **Une œuvre ajoutée se met dans
+ce JSON, puis on relance** ; le script refuse de tourner si une entrée de
+découverte n'y est pas. Blade Runner écrit son JSON depuis
+`construire-bladerunner.mjs`, qui relance le détail tout seul.
+
+La règle : un atome par épisode (`air_date` de TMDB), par numéro de comic, par
+film, jeu ou livre, tous triés par date. Des atomes consécutifs de la même saison
+ou de la même série restent une carte. Donc une saison sans rien au milieu reste
+entière, deux séries qui alternent font une carte par épisode, un film coupe une
+saison en deux, et une saison sortie d'un coup reste une carte.
+
+| univers | œuvres entières | cartes |
+|---|---|---|
+| Star Trek | 66 | 319 |
+| Marvel | 110 | 137 |
+| Assassin's Creed | 99 | 133 |
+| The Walking Dead | 37 | 74 |
+| Avatar Legends | 54 | 71 |
+| Star Wars | 40 | 62 |
+| The Witcher | 43 | 47 |
+| Dragon Age | 37 | 38 |
+| Blade Runner | 15 | 33 |
+| Resident Evil, Jurassic World | 30, 20 | sans coupe |
+
+Dix choses à savoir :
+
+- **`rel` porte la date, plus seulement l'année** : `2015-10-11`, ou
+  `2015-10-11/2016-04-03` pour une période. Deux séries qui alternent tombent la
+  même année, et seul le jour dit laquelle passe devant. La case est rendue par
+  `CG_REL()` (`e-perso.js`, une copie pour les onze pages) : l'année en gros, les
+  années quand ça déborde, le jour dessous, dans la langue de la page.
+- **Une websérie reste une carte** (`type:"web"`), avec sa période : seize
+  épisodes d'une minute intercalés dans une saison font trente-deux cartes pour
+  seize minutes. Choix à moi, une ligne dans `atomesDe()` si Niko veut l'inverse.
+- **Les ères se recoupent à la place de leur première œuvre.** Tout ce qui sort
+  après elle est de son ère, même la fin d'une saison commencée avant : la fin de
+  *Fear* saison 8 passe donc dans « The Spin-Offs », et *The Clone Wars* saison 7
+  dans l'ère Disney+. Une ère qui ne doit pas fusionner se déclare par `flux` dans
+  `UNIVERS` : les segments de Marvel et les deux colonnes de The Witcher.
+- **Un bloc de découverte peut être couvert par plusieurs morceaux, et un morceau
+  couvrir plusieurs blocs** (`Season 11 Episodes 9-16` tient sur `twd-twd-13` et
+  `twd-twd-14`). `covers` ne porte que les blocs qui ont un épisode du morceau, et
+  `bridge()` fait le reste : rien de neuf dans le moteur. Vérifié dans les deux
+  sens sur les onze pages, en français et en anglais.
+- **Un morceau est nommé d'après sa carte** : `twd-rl-twd-s11-e9-16`, ou
+  `twd-twd-2-rl-e1-7` quand la carte était un `ref`, et `-n5-8` pour des numéros.
+  C'est ce qui permet la reprise : une entrée qui a quitté le parcours passe sa
+  coche aux morceaux qui commencent par son identifiant, et quitte le stockage
+  (bloc juste après `indexeCouvertures` dans les onze pages). Restée là, elle
+  retombait dans la clé des œuvres, et l'accueil la comptait.
+- **Le guide compte deux fois les épisodes doubles, TMDB une seule.** « Encounter
+  at Farpoint » y vaut 1 et 2 ; tout ce qui suit est décalé d'un cran, et les
+  libellés partiraient sur le voisin. `doubles` dans `UNIVERS` nomme les épisodes
+  TMDB concernés, et un libellé parle toujours le numéro du guide. Enterprise et
+  Prodigy n'en ont pas besoin : TMDB y saute le numéro 2.
+- **Une série qui ne nomme aucune saison est la saison 1 entière** (Kenobi, Ahsoka,
+  Boba Fett). Les quatre livres de Korra passent par `plages`, et Flight 462, saison
+  0 de *Fear* chez TMDB, par `saisons`. Un bloc qui ne nomme rien à côté de blocs qui
+  nomment — l'épilogue de Rebels — se rattache au dernier épisode de la carte.
+- **Les comics vivent dans `sorties/numeros.mjs`**, relevé sur les wikis Fandom. Les
+  dates écrites jusque-là pour Assassin's Creed étaient parfois celles du recueil :
+  *Trial by Fire* passait pour mai 2016, son premier numéro est d'octobre 2015. Un
+  morceau de comic s'écrit `#5-8`, qui se lit pareil dans les deux langues.
+- **La traduction** : `Saison N Épisodes a-b` par `valeur()` dans `traduire.mjs`, et
+  par gabarit dans `traductions-<u>.mjs` pour les chaînes inversées — ajouté pour
+  Blade Runner, dont Black Lotus se coupe. Un morceau qui manque au gabarit bloque
+  l'écriture du français (« le bilan n'est pas propre »), et le français reste alors
+  sur l'ancien découpage sans rien casser : `fr/bladerunner` a affiché 15 cartes là
+  où `/bladerunner` en avait 33 le temps de le voir. **Relancer les chaînes inversées
+  après le détail, et lire leur bilan.**
+- **Le poids** : 319 cartes chez Star Trek font 30 Ko de données en plus, et le lien
+  de transfert prend 1,2 Ko de base64 quand tout est coché.
 
 ### DC et DC Animation : une ligne au choix, posé le 23 octobre 2026
 
@@ -3878,6 +3958,8 @@ le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
   `e-a-venir.html`, la nav des seize protos source (déroulant, tiroir, pied de
   page, mention légale), une carte dans `data-news.js` et sa traduction dans
   `traduire.mjs`.
+- **L'ordre de sortie**, s'il l'a : `_proto/sorties/<u>.json`, l'entrée de
+  `UNIVERS` dans `ordre-sortie.mjs`, puis `detailler-sortie.mjs <u>`.
 - **Le radar**, s'il le suit : `UNIVERSES`, la source, `EXCLUDE` et
   `UNIVERS_TITRE` au besoin, puis l'accroche de « À venir » et le `seo.json` de
   la page — ces derniers seulement quand une sortie est datée. Et `UNIS` du

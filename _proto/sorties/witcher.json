@@ -1,0 +1,243 @@
+[
+ {
+  "title": "Sapkowski's Timeline",
+  "zone": "The 2 timelines",
+  "branch": "sapkowski",
+  "entries": [
+   {
+    "ref": "w-road",
+    "rel": "1988"
+   },
+   {
+    "id": "w-rl-sword",
+    "covers": [
+     "w-bounds",
+     "w-shard",
+     "w-flame",
+     "w-sacrifice",
+     "w-sword",
+     "w-more"
+    ],
+    "title": "Sword of Destiny",
+    "date": "1254-1264 p.R.",
+    "subitems": [
+     "The Bounds of Reason",
+     "A Shard of Ice",
+     "Eternal Flame",
+     "A Little Sacrifice",
+     "The Sword of Destiny",
+     "Something More"
+    ],
+    "rel": "1992",
+    "drop": [
+     "desc",
+     "note"
+    ]
+   },
+   {
+    "id": "w-rl-lastwish",
+    "covers": [
+     "w-witcher",
+     "w-grain",
+     "w-lesser",
+     "w-price",
+     "w-edge",
+     "w-lastwish",
+     "w-voice"
+    ],
+    "title": "The Last Wish",
+    "date": "~1235-1253 p.R.",
+    "subitems": [
+     "The Witcher",
+     "A Grain of Truth",
+     "The Lesser Evil",
+     "A Question of Price",
+     "The Edge of the World",
+     "The Last Wish",
+     "The Voice of Reason"
+    ],
+    "rel": "1993",
+    "drop": [
+     "desc",
+     "note"
+    ]
+   },
+   {
+    "ref": "w-blood",
+    "rel": "1994"
+   },
+   {
+    "ref": "w-contempt",
+    "rel": "1995"
+   },
+   {
+    "ref": "w-baptism",
+    "rel": "1996"
+   },
+   {
+    "ref": "w-tower",
+    "rel": "1997"
+   },
+   {
+    "ref": "w-lady",
+    "rel": "1999"
+   },
+   {
+    "ref": "w-storms",
+    "rel": "2013",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "w-crossroads",
+    "rel": "2024"
+   }
+  ]
+ },
+ {
+  "title": "CD Projekt Red's Timeline",
+  "zone": "The 2 timelines",
+  "branch": "cdpr",
+  "entries": [
+   {
+    "ref": "wg-w1",
+    "rel": "2007"
+   },
+   {
+    "ref": "wg-neutrality",
+    "rel": "2008",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "wg-sideeffects",
+    "rel": "2008",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "wg-w2",
+    "rel": "2011"
+   },
+   {
+    "ref": "wc-reasons",
+    "rel": "2011"
+   },
+   {
+    "ref": "wv-killing",
+    "rel": "2013"
+   },
+   {
+    "ref": "wc-glass",
+    "rel": "2014"
+   },
+   {
+    "ref": "wc-fox",
+    "rel": "2015"
+   },
+   {
+    "ref": "wv-night",
+    "rel": "2015"
+   },
+   {
+    "ref": "wg-w3",
+    "rel": "2015"
+   },
+   {
+    "ref": "wc-killing",
+    "rel": "2015"
+   },
+   {
+    "ref": "wg-hos",
+    "rel": "2015"
+   },
+   {
+    "ref": "wc-conscience",
+    "rel": "2015"
+   },
+   {
+    "ref": "wg-baw",
+    "rel": "2016"
+   },
+   {
+    "ref": "wc-crows",
+    "rel": "2016"
+   },
+   {
+    "ref": "wg-thronebreaker",
+    "rel": "2018"
+   },
+   {
+    "ref": "wc-flesh",
+    "rel": "2018"
+   },
+   {
+    "ref": "wc-fading",
+    "rel": "2020"
+   },
+   {
+    "ref": "wc-lament",
+    "rel": "2021"
+   },
+   {
+    "ref": "wc-woods",
+    "rel": "2021"
+   },
+   {
+    "ref": "wc-grain",
+    "rel": "2022"
+   },
+   {
+    "ref": "wc-kiddo",
+    "rel": "2022"
+   },
+   {
+    "ref": "wc-wolves",
+    "rel": "2022"
+   },
+   {
+    "ref": "wc-frog",
+    "rel": "2023"
+   },
+   {
+    "ref": "wc-wild",
+    "rel": "2023"
+   },
+   {
+    "ref": "wc-lesser",
+    "rel": "2023"
+   },
+   {
+    "ref": "wc-corvo",
+    "rel": "2024"
+   },
+   {
+    "ref": "wc-edge",
+    "rel": "2025"
+   },
+   {
+    "ref": "wc-bear",
+    "rel": "2025"
+   },
+   {
+    "ref": "wc-price",
+    "rel": "2025"
+   },
+   {
+    "ref": "wc-witcher",
+    "rel": "2025"
+   },
+   {
+    "ref": "wc-bloodstone",
+    "rel": "2026"
+   },
+   {
+    "ref": "wc-lastwish",
+    "rel": "2026"
+   }
+  ]
+ }
+]

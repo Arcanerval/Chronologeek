@@ -1,0 +1,105 @@
+[
+ {
+  "title": "The Films · 1982-2017",
+  "phase": "ERA 1",
+  "ink": 1,
+  "art": "/images/tyrellera.webp",
+  "entries": [
+   {
+    "ref": "br-bladerunner",
+    "rel": "1982"
+   },
+   {
+    "ref": "br-nexusdawn",
+    "rel": "2017"
+   },
+   {
+    "ref": "br-nowheretorun",
+    "rel": "2017"
+   },
+   {
+    "ref": "br-blackout2022",
+    "rel": "2017"
+   },
+   {
+    "ref": "br-2049",
+    "rel": "2017"
+   }
+  ]
+ },
+ {
+  "title": "The Titan Comics · 2019-2021",
+  "phase": "ERA 2",
+  "ink": 2,
+  "art": "/images/blackoutera.webp",
+  "entries": [
+   {
+    "id": "br-rl-2019",
+    "covers": [
+     "br-2019",
+     "br-2019-5-12"
+    ],
+    "title": "Blade Runner 2019 1-12",
+    "date": "2019-2027",
+    "rel": "2019"
+   },
+   {
+    "ref": "br-fcbd2020-2019",
+    "rel": "2020",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "br-2029",
+    "rel": "2020"
+   },
+   {
+    "ref": "br-origins",
+    "rel": "2021"
+   },
+   {
+    "id": "br-rl-fcbd2021",
+    "covers": [
+     "br-fcbd2021-2029",
+     "br-fcbd2021-origins"
+    ],
+    "title": "FCBD 2021: Blade Runner",
+    "subitems": [
+     "Blade Runner 2029",
+     "Blade Runner: Origins"
+    ],
+    "date": "2009-2029",
+    "rel": "2021"
+   }
+  ]
+ },
+ {
+  "title": "The Black Lotus Era · 2021-2026",
+  "phase": "ERA 3",
+  "ink": 3,
+  "art": "/images/wallaceera.webp",
+  "entries": [
+   {
+    "ref": "br-blacklotus",
+    "rel": "2021"
+   },
+   {
+    "ref": "br-bl-leavingla",
+    "rel": "2022"
+   },
+   {
+    "ref": "br-2039",
+    "rel": "2022"
+   },
+   {
+    "ref": "br-tokyonexus",
+    "rel": "2024"
+   },
+   {
+    "ref": "br-bl-lasvegas",
+    "rel": "2025"
+   }
+  ]
+ }
+]

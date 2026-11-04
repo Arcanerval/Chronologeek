@@ -1,3 +1,37 @@
+/* ── la case « Sortie » de l'ordre de sortie ─────────────────────────────
+   Une seule copie pour les onze pages qui ont ce parcours : elles passent
+   toutes par ici avant de rendre une ligne. `rel` vaut une année, un mois, un
+   jour, ou « début/fin » pour ce qui sort sur une période. L'année reste le
+   gros de la case, le jour vient dessous : deux séries qui alternent tombent
+   la même année, et seul le jour dit laquelle passe devant.
+   La langue du navigateur n'y est pour rien : c'est celle de la page. */
+window.CG_REL = function (rel, mot) {
+  var loc = document.documentElement.lang === 'en' ? 'en-US' : 'fr-FR';
+  function quand(d) {
+    var p = d.split('-');
+    return new Date(Date.UTC(+p[0], +p[1] - 1, +(p[2] || 1)));
+  }
+  function fmt(d) {
+    var o = { month: 'short', timeZone: 'UTC' };
+    if (d.length > 7) o.day = 'numeric';
+    return new Intl.DateTimeFormat(loc, o);
+  }
+  var q = String(rel).split('/'), a = q[0], z = q[1] || a;
+  var an = a.slice(0, 4) === z.slice(0, 4) ? a.slice(0, 4) : a.slice(0, 4) + '-' + z.slice(0, 4);
+  var j = '';
+  if (a.length > 4) {
+    /* « 10 – 17 oct. » plutôt que « 10 oct. – 17 oct. » : la case fait 100 px. */
+    try {
+      if (z === a) j = fmt(a).format(quand(a));
+      /* Sur deux années, formatRange les redit : elles sont déjà au-dessus. */
+      else if (a.slice(0, 4) !== z.slice(0, 4)) j = fmt(a).format(quand(a)) + ' – ' + fmt(z).format(quand(z));
+      else j = fmt(a).formatRange(quand(a), quand(z));
+    }
+    catch (_) { j = fmt(a).format(quand(a)); }
+  }
+  return '<span class="rel"><i>' + mot + '</i><b>' + an + '</b>' + (j ? '<i style="letter-spacing:.04em">' + j + '</i>' : '') + '</span>';
+};
+
 /* ═══════════════════════════════════════════════════════════════════
    MES AJOUTS — les entrées que le visiteur pose lui-même
    ═══════════════════════════════════════════════════════════════════

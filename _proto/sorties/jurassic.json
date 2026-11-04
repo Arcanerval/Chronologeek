@@ -1,0 +1,194 @@
+[
+ {
+  "title": "THE JURASSIC PARK TRILOGY · 1993-2001",
+  "art": "/images/ingenislands.webp",
+  "entries": [
+   {
+    "ref": "jw-jp",
+    "rel": "1993"
+   },
+   {
+    "ref": "jw-tlw",
+    "rel": "1997"
+   },
+   {
+    "ref": "jw-jp3",
+    "rel": "2001"
+   }
+  ]
+ },
+ {
+  "title": "THE JURASSIC WORLD TRILOGY · 2015-2022",
+  "art": "/images/parkreopens.webp",
+  "entries": [
+   {
+    "ref": "jw-jw",
+    "rel": "2015"
+   },
+   {
+    "ref": "jw-fk",
+    "rel": "2018"
+   },
+   {
+    "ref": "jw-claire",
+    "rel": "2018",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "jw-babr",
+    "rel": "2019"
+   },
+   {
+    "id": "jw-rl-cc-s1",
+    "covers": [
+     "jw-cc"
+    ],
+    "rel": "2020",
+    "rt": 192,
+    "date": "2015",
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 1"
+    ]
+   },
+   {
+    "id": "jw-rl-cc-s2",
+    "covers": [
+     "jw-cc"
+    ],
+    "rel": "2021",
+    "rt": 192,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 2"
+    ]
+   },
+   {
+    "id": "jw-rl-cc-s3",
+    "covers": [
+     "jw-cc"
+    ],
+    "rel": "2021",
+    "rt": 240,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 3"
+    ]
+   },
+   {
+    "id": "jw-rl-cc-s4",
+    "covers": [
+     "jw-cc"
+    ],
+    "rel": "2021",
+    "rt": 264,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 4"
+    ]
+   },
+   {
+    "ref": "jw-dominion",
+    "rel": "2022"
+   },
+   {
+    "ref": "jw-maisie1",
+    "rel": "2022"
+   },
+   {
+    "id": "jw-rl-cc-s5",
+    "covers": [
+     "jw-cc"
+    ],
+    "rel": "2022",
+    "rt": 285,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 5"
+    ]
+   },
+   {
+    "ref": "jw-maisie2",
+    "rel": "2022"
+   }
+  ]
+ },
+ {
+  "title": "A NEW ERA · 2024-2025",
+  "art": "/images/newera.webp",
+  "entries": [
+   {
+    "id": "jw-rl-ct-s1",
+    "covers": [
+     "jw-ct"
+    ],
+    "rel": "2024",
+    "rt": 240,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 1"
+    ]
+   },
+   {
+    "id": "jw-rl-ct-s2",
+    "covers": [
+     "jw-ct"
+    ],
+    "rel": "2024",
+    "rt": 241,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 2"
+    ]
+   },
+   {
+    "id": "jw-rl-ct-s3",
+    "covers": [
+     "jw-ct"
+    ],
+    "rel": "2025",
+    "rt": 238,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 3"
+    ]
+   },
+   {
+    "ref": "jw-rebirth",
+    "rel": "2025"
+   },
+   {
+    "id": "jw-rl-ct-s4",
+    "covers": [
+     "jw-ct"
+    ],
+    "rel": "2025",
+    "rt": 204,
+    "drop": [
+     "tags"
+    ],
+    "subitems": [
+     "Season 4"
+    ]
+   }
+  ]
+ }
+]

@@ -1066,7 +1066,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .bu-txt{grid-column:3;padding:14px 0 13px;align-self:center}
 .bu-time{grid-column:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
   padding:12px 8px;text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
-.bu-time .bu-n{position:static;background:none;clip-path:none;padding:0;color:rgba(255,253,247,.5);
+.bu-time .bu-n{white-space:nowrap;position:static;background:none;clip-path:none;padding:0;color:rgba(255,253,247,.5);
   font-family:'Big Shoulders Display';font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .bu-time .d{font-family:'Big Shoulders Display';font-weight:900;font-size:25px;line-height:.95;letter-spacing:.02em;
   color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4)}
@@ -1861,6 +1861,19 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     }); });
   }
   for(var _p in AUTRES) indexeCouvertures(AUTRES[_p],_p);
+  /* Une entrée qui a quitté le parcours — une saison découpée depuis en
+     morceaux — passe sa coche aux morceaux qui la remplacent, et quitte le
+     stockage : restée là, elle retombait dans la clé des œuvres, et l'accueil
+     la comptait. */
+  (function(){
+    var perimes=[];
+    try{ perimes=Object.keys(JSON.parse(localStorage.getItem(AKEY)||'{}')||{}).filter(function(k){ return !COVERS[k]; }); }catch(_){}
+    perimes.forEach(function(k){
+      delete prog[k];
+      Object.keys(COVERS).forEach(function(r){ if(r.indexOf(k+'-')===0) prog[r]=1; });
+    });
+    if(perimes.length) setTimeout(save,0);
+  })();
   function bridge(id){
     var c=COVERS[id];
     if(c){ c.d.forEach(function(d){
@@ -2047,7 +2060,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         '<span class="bu-time">'+
           '<span class="bu-n">Stop '+String(e.n).padStart(2,'0')+'</span>'+
           '<span class="d">'+esc(e.date||'—')+'</span>'+
-          (e.rel?'<span class="rel"><i>'+esc(T.mReleased)+'</i><b>'+esc(e.rel)+'</b></span>':'')+
+          (e.rel&&window.CG_REL?CG_REL(e.rel,esc(T.mReleased)):'')+
         '</span>'+
         '<button type="button" class="bu-head" data-toggle aria-expanded="false">'+
           '<span class="bu-fig">'+

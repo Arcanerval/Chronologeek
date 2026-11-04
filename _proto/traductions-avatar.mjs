@@ -292,7 +292,7 @@ export const AVATAR_TRADUCTIONS = [
   /* l'ordre de sortie, posé le 21 octobre 2026 : ses quatre ères,
      découpées par période de production */
   ["LA SÉRIE ORIGINALE · 2005-2011", "THE ORIGINAL SERIES · 2005-2011"],
-  ["LA LÉGENDE DE KORRA · 2012-2018", "THE LEGEND OF KORRA · 2012-2018"],
+  ["LA LÉGENDE DE KORRA · 2012-2019", "THE LEGEND OF KORRA · 2012-2019"],
   ["LES CHRONIQUES DE L’AVATAR · 2019-2024", "THE CHRONICLES OF THE AVATAR · 2019-2024"],
   ["L’ÈRE AVATAR STUDIOS · 2025-2026", "THE AVATAR STUDIOS ERA · 2025-2026"],
   ["Avatar : Les Sept Refuges",

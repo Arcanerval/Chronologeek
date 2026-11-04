@@ -1,0 +1,254 @@
+[
+ {
+  "title": "THE ORIGINS YEARS · 2009-2010",
+  "ink": 1,
+  "art": "/images/fifthblight.webp",
+  "entries": [
+   {
+    "ref": "da-throne-1",
+    "rel": "2009",
+    "drop": [
+     "tags",
+     "faq.read"
+    ]
+   },
+   {
+    "ref": "da-calling-1",
+    "rel": "2009",
+    "drop": [
+     "tags",
+     "faq.read"
+    ]
+   },
+   {
+    "id": "da-rl-origins",
+    "covers": [
+     "da-origins-1",
+     "da-origins-2",
+     "da-origins-3",
+     "da-origins-4"
+    ],
+    "rel": "2009",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-stone-1",
+    "rel": "2009",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-keep-1",
+    "rel": "2009",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-ostagar-1",
+    "rel": "2010",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-awakening-1",
+    "rel": "2010"
+   },
+   {
+    "ref": "da-wfall-1",
+    "rel": "2010"
+   },
+   {
+    "ref": "da-leliana-1",
+    "rel": "2010",
+    "drop": [
+     "tags",
+     "faq.play",
+     "note"
+    ]
+   },
+   {
+    "ref": "da-amgarrak-1",
+    "rel": "2010"
+   },
+   {
+    "ref": "da-witch-1",
+    "rel": "2010"
+   }
+  ]
+ },
+ {
+  "title": "THE DRAGON AGE II YEARS · 2011-2013",
+  "ink": 2,
+  "art": "/images/kirkwall.webp",
+  "entries": [
+   {
+    "id": "da-rl-da2",
+    "covers": [
+     "da-da2-1",
+     "da-da2-2",
+     "da-da2-3",
+     "da-da2-4"
+    ],
+    "rel": "2011",
+    "date": "9:30-9:37",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-exiled-1",
+    "rel": "2011",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-legacy-1",
+    "rel": "2011",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-redemption-1",
+    "rel": "2011",
+    "drop": [
+     "tags",
+     "faq.watch"
+    ]
+   },
+   {
+    "ref": "da-assassin-1",
+    "rel": "2011"
+   },
+   {
+    "ref": "da-asunder-1",
+    "rel": "2011",
+    "drop": [
+     "faq.read"
+    ]
+   },
+   {
+    "ref": "da-grove-1",
+    "rel": "2012"
+   },
+   {
+    "ref": "da-seeker-1",
+    "rel": "2012",
+    "drop": [
+     "tags",
+     "faq.watch"
+    ]
+   },
+   {
+    "ref": "da-speak-1",
+    "rel": "2012"
+   },
+   {
+    "ref": "da-sleep-1",
+    "rel": "2013"
+   }
+  ]
+ },
+ {
+  "title": "THE INQUISITION YEARS · 2014-2021",
+  "ink": 4,
+  "art": "/images/inquisitionera.webp",
+  "entries": [
+   {
+    "ref": "da-masked-1",
+    "rel": "2014",
+    "drop": [
+     "tags",
+     "faq.read"
+    ]
+   },
+   {
+    "ref": "da-lastflight-1",
+    "rel": "2014"
+   },
+   {
+    "ref": "da-lastcourt-1",
+    "rel": "2014"
+   },
+   {
+    "id": "da-rl-inquisition",
+    "covers": [
+     "da-inquisition-1",
+     "da-inquisition-2"
+    ],
+    "rel": "2014",
+    "date": "9:41-9:42",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "da-hakkon-1",
+    "rel": "2015"
+   },
+   {
+    "ref": "da-descent-1",
+    "rel": "2015"
+   },
+   {
+    "ref": "da-trespasser-1",
+    "rel": "2015"
+   },
+   {
+    "ref": "da-magekiller-1",
+    "rel": "2015",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "da-errant-1",
+    "rel": "2017"
+   },
+   {
+    "ref": "da-deception-1",
+    "rel": "2018"
+   },
+   {
+    "ref": "da-wraith-1",
+    "rel": "2020"
+   },
+   {
+    "ref": "da-tevinter-1",
+    "rel": "2020",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "da-fortress-1",
+    "rel": "2021"
+   }
+  ]
+ },
+ {
+  "title": "THE VEILGUARD YEARS · 2022-2024",
+  "ink": 5,
+  "art": "/images/dreadwolf.webp",
+  "entries": [
+   {
+    "ref": "da-absolution-1",
+    "rel": "2022"
+   },
+   {
+    "ref": "da-missing-1",
+    "rel": "2023"
+   },
+   {
+    "ref": "da-veilguard-1",
+    "rel": "2024"
+   }
+  ]
+ }
+]

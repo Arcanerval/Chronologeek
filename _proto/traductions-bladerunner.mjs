@@ -202,7 +202,7 @@ export const BR_TRADUCTIONS = [
    'Ce guide suit ici l’ordre de sortie des œuvres, de 1982 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
   ['The Films · 1982-2017', 'Les films · 1982-2017'],
   ['The Titan Comics · 2019-2021', 'Les comics Titan · 2019-2021'],
-  ['The Black Lotus Era · 2021-2025', 'L’ère Black Lotus · 2021-2025'],
+  ['The Black Lotus Era · 2021-2026', 'L’ère Black Lotus · 2021-2026'],
 
   /* les regroupements de l'ordre de sortie, 22 octobre 2026 */
   ['Blade Runner 2019 1-12', 'Blade Runner 2019 1-12'],
@@ -218,6 +218,7 @@ export const BR_GABARITS = [
       May: 'mai', June: 'juin', July: 'juillet', August: 'août', September: 'septembre',
       October: 'octobre', November: 'novembre', December: 'décembre' })[m[1]]} ${m[2]}`],
   [/^Season (\d+)$/, m => `Saison ${m[1]}`],
+  [/^Season (\d+) Episodes ([\d-]+)$/, m => `Saison ${m[1]} Épisodes ${m[2]}`],
   [/^(\d+) \/ (\d+) shown$/, m => `${m[1]} / ${m[2]} affichées`],
   [/^(\d+) entries$/, m => `${m[1]} entrées`],
 ];

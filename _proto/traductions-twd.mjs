@@ -222,8 +222,8 @@ export const TWD_TRADUCTIONS = [
   ['Chronological order, or release order?', 'Ordre chronologique, ou ordre de sortie ?'],
   ['This guide follows the order the works came out, from 2010 to today, but you can switch back to a chronological version higher up.',
    'Ce guide suit ici l’ordre de sortie des œuvres, de 2010 à aujourd’hui, mais vous pouvez repasser à une version chronologique plus haut.'],
-  ['THE ORIGINAL SERIES · 2010-2014', 'LA SÉRIE ORIGINALE · 2010-2014'],
-  ['FEAR AND THE WEB SERIES · 2015-2019', 'FEAR ET LES WEBSÉRIES · 2015-2019'],
+  ['THE ORIGINAL SERIES · 2010-2015', 'LA SÉRIE ORIGINALE · 2010-2015'],
+  ['FEAR AND THE WEB SERIES · 2015-2020', 'FEAR ET LES WEBSÉRIES · 2015-2020'],
   ['THE ENDINGS · 2020-2023', 'LES FINS · 2020-2023'],
   ['THE SPIN-OFFS · 2023-2026', 'LES SÉRIES DÉRIVÉES · 2023-2026'],
 ];

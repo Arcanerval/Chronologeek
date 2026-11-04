@@ -11,13 +11,16 @@
    l'écran — les deux cartes disent « SORTIE 2026 » —, seul ce script la
    dit.
 
+   `detailler-sortie.mjs` écrit cet ordre, jusqu'à l'épisode et au numéro :
+   ce script-ci est son contrôle, et il relit les dates de son côté.
+
    Quatre choses à savoir :
 
-   - **Une série est datée par SA SAISON, jamais par sa première.** Une
-     saison 2 datée par la série entière remonte de plusieurs années et
-     casse tout l'ordre autour d'elle. Le numéro vient du champ `season`
-     quand il existe — Marvel le pose — et sinon du premier sous-item,
-     « Saison 3 », qui est la seule marque que Star Wars en donne.
+   - **Un morceau est daté par SON PREMIER ÉPISODE, jamais par sa saison.**
+     « Season 3 Episodes 5-8 » se date au cinquième, une saison entière à son
+     premier, et une série à sa saison et non à sa première. Le numéro vient
+     du sous-item de la carte, du champ `season` — Marvel le pose — ou du
+     premier sous-item du bloc. Un comic se date dans `sorties/numeros.mjs`.
    - **La sortie américaine, pas la première au monde.** `release_date`
      d'un film peut être une projection de festival ; on lit d'abord les
      dates par pays et on ne retombe sur elle qu'à défaut.
@@ -31,8 +34,10 @@
      se range bien entre juillet et septembre ; l'affichage le dit avec
      des points d'interrogation plutôt que d'inventer un jour. */
 import fs from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { NUMEROS } from './sorties/numeros.mjs';
 
-const UNIVERS = {
+export const UNIVERS = {
   sw: {
     fichier: '_proto/data.js', global: 'DATA_SW',
     dates: {
@@ -44,17 +49,17 @@ const UNIVERS = {
       'sw-outlaws': '2024-08-30',     // Outlaws
       'sw-zerocompany': '2026-08',    // Zero Company, mois seul
       'sw-galacticracer': '2026-10-06', // Galactic Racer
-      /* The Clone Wars entre à la date de sa première télé, et non de
-         sa saison 1 : le bloc tient les sept saisons d'un coup, rangées
-         dans l'ordre du guide et non dans celui des sorties. C'est le
-         seul endroit du parcours où l'ordre de sortie ne descend pas
-         jusqu'à l'intérieur de l'entrée — la série a diffusé sur douze
-         ans, et ses arcs ne sortent pas dans l'ordre où on les regarde. */
-      'sw-rl-tcw': '2008-10-03',
+      /* Le guide saute les six premiers épisodes de la saison 4 de The Clone
+         Wars : la carte commence au septième. */
+      'sw-rl-tcw-s4': '2011-10-28',
     },
+    doubles: { '60554|3': [1] },
   },
   mcu: {
     fichier: '_proto/data-mcu.js', global: 'DATA_MCU',
+    /* Les deux segments restent à leur place de la découverte : leurs films
+       sont d'une autre époque, et ils ne fusionnent pas avec les phases. */
+    flux: era => era.special || 'phases',
     dates: {
       'mcu-consultant': '2011-09-13',  // bonus du Blu-ray Thor
       'mcu-item47': '2012-09-25',      // bonus du Blu-ray Avengers
@@ -74,6 +79,7 @@ const UNIVERS = {
   },
   dragonage: {
     fichier: '_proto/data-dragonage-en.js', global: 'DATA_DA',
+    temps: false,
     /* Rien de Dragon Age ne se date chez TMDB : ses fiches de jeux
        empruntent un visuel, et la date qui vient avec est celle d'un autre
        titre. Tout est donc écrit ici, relevé sur le wiki Dragon Age (API
@@ -88,29 +94,31 @@ const UNIVERS = {
       'da-amgarrak-1': '2010-08-10', 'da-witch-1': '2010-09-07',
       'da-rl-da2': '2011-03-08', 'da-exiled-1': '2011-03-08', 'da-legacy-1': '2011-07-26',
       'da-redemption-1': '2011-10-11', 'da-assassin-1': '2011-10-11',
-      'da-asunder-1': '2011-12-20', 'da-grove-1': '2012-02-22',
+      'da-asunder-1': '2011-12-20',
       /* sorti au Japon le 11 février, en DVD aux États-Unis le 29 mai */
       'da-seeker-1': '2012-05-29',
-      'da-speak-1': '2012-08-22', 'da-sleep-1': '2013-03-27',
       'da-masked-1': '2014-04-08', 'da-lastflight-1': '2014-09-16',
       'da-lastcourt-1': '2014-11-07', 'da-rl-inquisition': '2014-11-18',
       'da-hakkon-1': '2015-03-24', 'da-descent-1': '2015-08-11',
-      'da-trespasser-1': '2015-09-08', 'da-magekiller-1': '2015-12-16',
-      'da-errant-1': '2017-05-10', 'da-deception-1': '2018-10-17',
-      'da-wraith-1': '2020-01-15', 'da-tevinter-1': '2020-03-10',
-      'da-fortress-1': '2021-03-31', 'da-absolution-1': '2022-12-09',
-      'da-missing-1': '2023-01-25', 'da-veilguard-1': '2024-10-31',
+      'da-trespasser-1': '2015-09-08', 'da-tevinter-1': '2020-03-10', 'da-absolution-1': '2022-12-09', 'da-veilguard-1': '2024-10-31',
     },
   },
   avatar: {
     fichier: '_proto/data-avatar.js', global: 'window.AVATAR',
+    temps: false,
+    /* Les quatre livres de Korra ne nomment aucune saison. */
+    plages: {
+      'avt-la-legende-de-korra-livre-1-l-air': [{ s: 1, a: null, b: null }],
+      'avt-la-legende-de-korra-livre-2-les-esprits': [{ s: 2, a: null, b: null }],
+      'avt-la-legende-de-korra-livre-3-le-changemen': [{ s: 3, a: null, b: null }],
+      'avt-la-legende-de-korra-livre-4-l-equilibre': [{ s: 4, a: null, b: null }],
+    },
     /* L'écrit, relevé sur le wiki Avatar (API MediaWiki, champ
        `publishdate`) : un comic à sa première parution — numéro de
        Nickelodeon Magazine, Free Comic Book Day ou premier tome chez Dark
        Horse —, un roman à sa sortie en grand format. Les trois histoires
        des Lost Adventures qui n'ont jamais paru dans le magazine datent du
-       recueil. Les quatre livres de Korra n'ont pas de sous-item « Saison » :
-       sans ces lignes, ils prendraient tous la première de la série. */
+       recueil. */
     dates: {
       'avt-sokka-the-avatar': '2006-09-12', 'avt-divided-we-fall': '2007-01-23',
       /* le jeu en ligne : sa page n'a pas de date, mais le concours qui
@@ -122,20 +130,13 @@ const UNIVERS = {
          Time, et les trois tomes de Fumée et Ombre au premier */
       'avt-rl-nickmag2': '2007-09-18', 'avt-private-fire': '2007-10-30',
       'avt-bumi-vs-toph-round-one': '2009-05', 'avt-relics': '2011-05-07',
-      'avt-rl-lostadventures': '2011-06-14',
-      'avt-la-promesse-the-promise': '2012-01-25',
-      'avt-la-legende-de-korra-livre-1-l-air': '2012-04-14',
-      'avt-la-recherche-the-search': '2013-03-20', 'avt-rebound': '2013-05-04',
-      'avt-la-legende-de-korra-livre-2-les-esprits': '2013-09-13',
-      'avt-the-rift': '2014-03-05', 'avt-shells': '2014-05-03',
-      'avt-la-legende-de-korra-livre-3-le-changemen': '2014-06-27',
-      'avt-la-legende-de-korra-livre-4-l-equilibre': '2014-10-03',
-      'avt-sisters': '2015-05-02', 'avt-rl-smoke': '2015-09-23',
+      'avt-rl-lostadventures': '2011-06-14', 'avt-rebound': '2013-05-04', 'avt-shells': '2014-05-03',
+      
+      
+      'avt-sisters': '2015-05-02',
       'avt-legacy': '2015-10-13',
       'avt-amies-pour-la-vie-free-comic-book-day-2016': '2016-05-07',
-      'avt-north-and-south': '2016-09-14', 'avt-turf-wars': '2017-07-26',
-      'avt-lost-pets-free-comic-book-day-2018': '2018-05-05', 'avt-imbalance': '2018-12-18',
-      'avt-ruins-of-the-empire': '2019-05-21', 'avt-the-rise-of-kyoshi': '2019-07-16',
+      'avt-lost-pets-free-comic-book-day-2018': '2018-05-05', 'avt-the-rise-of-kyoshi': '2019-07-16',
       'avt-an-avatar-s-chronicle': '2019-08-06', 'avt-legacy-of-the-fire-nation': '2020-02-04',
       'avt-the-shadow-of-kyoshi': '2020-07-21', 'avt-katara-and-the-pirate-s-silver': '2020-10-13',
       'avt-toph-beifong-s-metalbending-academy': '2021-02-16', 'avt-suki-alone': '2021-07-27',
@@ -153,6 +154,7 @@ const UNIVERS = {
   },
   re: {
     fichier: '_proto/data-re-en.js', global: 'window.RE',
+    temps: false,
     /* Les jeux portent un identifiant RAWG dans `tmdb` : rien à demander à
        TMDB pour eux, tout est écrit ici, relevé sur le wiki Resident Evil
        (API MediaWiki), sortie nord-américaine. Un jeu est daté par la
@@ -176,21 +178,19 @@ const UNIVERS = {
   },
   bladerunner: {
     fichier: '_proto/data-bladerunner-en.js', global: 'window.BLADERUNNER',
+    temps: false,
     /* Les comics de Titan, relevés sur le wiki Blade Runner (API MediaWiki,
        `publication_date`), datés de leur premier numéro. Les deux
        histoires du Free Comic Book Day 2021 sortent dans le même numéro. */
     dates: {
       /* une série ou un numéro est une sortie, datée de son premier numéro */
-      'br-rl-2019': '2019-07-17',
-      'br-fcbd2020-2019': '2020-08-12', 'br-2029': '2020-12-16',
-      'br-origins': '2021-03-10', 'br-rl-fcbd2021': '2021-08-14',
+      'br-fcbd2020-2019': '2020-08-12', 'br-rl-fcbd2021': '2021-08-14',
       /* « Leaving L.A. » est la première série Black Lotus de Titan */
-      'br-bl-leavingla': '2022-08-10', 'br-2039': '2022-12-07',
-      'br-tokyonexus': '2024-07-31', 'br-bl-lasvegas': '2025-09-17',
     },
   },
   assassinscreed: {
     fichier: '_proto/data-assassinscreed-en.js', global: 'window.ASSASSINSCREED',
+    temps: false,
     /* Tout sauf le film est écrit ici : les jeux portent un identifiant
        RAWG dans `tmdb`. Relevé sur le wiki Assassin's Creed (API
        MediaWiki) : un jeu et un DLC à leur sortie nord-américaine, un livre
@@ -204,8 +204,7 @@ const UNIVERS = {
     dates: {
       'ac-game-1': '2007-11-14', 'ac-altairs-chronicles-1': '2008-02-05',
       'ac-lineage-1': '2009-10-26', 'ac-rl-ii': '2009-11-17',
-      'ac-ii-discovery-1': '2009-11-17', 'ac-bloodlines-1': '2009-11-17',
-      'ac-the-fall-1': '2010-11-10', 'ac-ascendance-1': '2010-11-16',
+      'ac-ii-discovery-1': '2009-11-17', 'ac-bloodlines-1': '2009-11-17', 'ac-ascendance-1': '2010-11-16',
       'ac-rl-brotherhood': '2010-11-16', 'ac-the-da-vinci-1': '2011-03-08',
       'ac-the-secret-crusade-1': '2011-06-23', 'ac-embers-1': '2011-11-15',
       'ac-revelations-1': '2011-11-15', 'ac-brotherhood-revelations-animi-1': '2011-11-15',
@@ -222,34 +221,26 @@ const UNIVERS = {
       'ac-underworld-1': '2015-11-05', 'ac-jack-the-ripper-1': '2015-12-15',
       'ac-chronicles-india-1': '2016-01-12', 'ac-chronicles-russia-1': '2016-02-09',
       'ac-chronicles-russia-secret-1': '2016-02-09', 'ac-the-last-maharaja-1': '2016-03-01',
-      'ac-rl-fcbd2016': '2016-05-07',
-      'ac-assassins-trial-by-1': '2016-05-25', 'ac-last-descendants-1': '2016-08-30',
-      'ac-conspiracies-die-glocke-1': '2016-10-21', 'ac-assassins-setting-sun-1': '2016-11-02',
-      'ac-templars-black-cross-1': '2016-11-09', 'ac-heresy-1': '2016-11-15',
-      'ac-last-descendants-tomb-1': '2016-12-27', 'ac-reflections-1': '2017-03-08',
-      'ac-templars-cross-of-1': '2017-04-19', 'ac-last-descendants-locus-1': '2017-05-09',
-      'ac-assassins-homecoming-1': '2017-05-10', 'ac-uprising-common-ground-1': '2017-08-02',
+      'ac-rl-fcbd2016': '2016-05-07', 'ac-last-descendants-1': '2016-08-30',
+      'ac-conspiracies-die-glocke-1': '2016-10-21', 'ac-heresy-1': '2016-11-15',
+      'ac-last-descendants-tomb-1': '2016-12-27', 'ac-last-descendants-locus-1': '2017-05-09',
       'ac-origins-desert-oath-1': '2017-10-10', 'ac-origins-1': '2017-10-27',
-      'ac-conspiracies-project-rainbow-1': '2017-12-01', 'ac-last-descendants-fate-1': '2017-12-26',
-      'ac-uprising-inflection-point-1': '2018-01-17', 'ac-the-hidden-ones-1': '2018-01-23',
-      'ac-origins-2': '2018-03-07', 'ac-the-curse-of-1': '2018-03-13',
-      'ac-rl-odyssey': '2018-10-05', 'ac-uprising-finale-1': '2018-10-23',
+      'ac-conspiracies-project-rainbow-1': '2017-12-01', 'ac-last-descendants-fate-1': '2017-12-26', 'ac-the-hidden-ones-1': '2018-01-23', 'ac-the-curse-of-1': '2018-03-13',
+      'ac-rl-odyssey': '2018-10-05',
       'ac-rl-legacy': '2018-12-04',
-      'ac-bloodstone-1': '2019-03-29',
       'ac-odyssey-the-lost-1': '2019-04', 'ac-the-fate-of-1': '2019-04-23',
-      'ac-gold-1': '2020-02-27', 'ac-valhalla-song-of-1': '2020-10-21',
+      'ac-gold-1': '2020-02-27',
       'ac-rl-valhalla': '2020-11-10', 'ac-valhalla-geirmunds-saga-1': '2020-11-10',
       'ac-dynasty-1': '2021-04-01', 'ac-fragments-the-blade-1': '2021-04-15',
       'ac-wrath-of-the-1': '2021-05-13', 'ac-the-siege-of-1': '2021-08-12',
       'ac-valhalla-blood-brothers-1': '2021-08-14', 'ac-the-silk-road-1': '2021-09-08',
       'ac-fragments-the-highlands-1': '2021-09-16', 'ac-those-who-are-1': '2021-12-14',
-      'ac-fragments-the-witches-1': '2022-01-20', 'ac-dawn-of-ragnarok-1': '2022-03-10',
-      'ac-valhalla-forgotten-myths-1': '2022-03-16', 'ac-valhalla-sword-of-1': '2022-04-05',
+      'ac-fragments-the-witches-1': '2022-01-20', 'ac-dawn-of-ragnarok-1': '2022-03-10', 'ac-valhalla-sword-of-1': '2022-04-05',
       'ac-the-engine-of-1': '2022-08-02', 'ac-escape-room-puzzle-1': '2022-11-29',
       'ac-valhalla-the-hidden-1': '2023-01-25', 'ac-forgotten-temple-1': '2023-04-25',
       'ac-the-golden-city-1': '2023-05-02', 'ac-the-engine-of-2': '2023-07-04',
       'ac-rl-mirage': '2023-10-05', 'ac-nexus-vr-1': '2023-11-16',
-      'ac-mirage-daughter-of-1': '2023-11-21', 'ac-mirage-a-soar-1': '2025-03-12',
+      'ac-mirage-daughter-of-1': '2023-11-21',
       'ac-rl-shadows': '2025-03-20', 'ac-shadows-tales-of-1': '2025-08-20',
       'ac-claws-of-awaji-1': '2025-09-16', 'ac-valley-of-memories-1': '2025-11-18',
       'ac-black-flag-resynced-1': '2026-07-09',
@@ -259,14 +250,16 @@ const UNIVERS = {
     fichier: '_proto/data-twd-en.js', global: 'DATA_TWD',
     /* Les webséries d'AMC, relevées sur le wiki The Walking Dead : TMDB ne
        connaît pas les trois premières, et range Flight 462 sous la fiche
-       de Fear the Walking Dead, dont il prendrait la date de première. */
+       de Fear the Walking Dead : sa saison 0 chez TMDB, d'où `saisons`. */
     dates: {
       'twd-torn-1': '2011-10-03', 'twd-cold-1': '2012-10-01', 'twd-oath-1': '2013-10-01',
-      'twd-flight-1': '2015-10-04', 'twd-passage-1': '2016-10-17',
     },
+    saisons: { 'twd-flight-1': 0 },
   },
   witcher: {
     fichier: '_proto/data-witcher-en.js', global: 'window.WITCHER',
+    temps: false,
+    flux: era => era.branch || era.zone || 'tout',
     /* Deux colonnes, deux ordres : le script les lit l'une après l'autre,
        comme deux ères. Rien ne se date chez TMDB. Sapkowski : une nouvelle
        sort avec son recueil — L'Épée de la providence en 1992, Le Dernier
@@ -280,16 +273,13 @@ const UNIVERS = {
       'w-blood': '1994', 'w-contempt': '1995', 'w-baptism': '1996', 'w-tower': '1997',
       'w-lady': '1999', 'w-storms': '2013-11-06', 'w-crossroads': '2024-11-28',
       'wg-w1': '2007-10-26', 'wg-neutrality': '2008-04-10', 'wg-sideeffects': '2008-09-16',
-      'wg-w2': '2011-05-17', 'wc-reasons': '2011', 'wv-killing': '2013-08-14',
-      'wc-glass': '2014-03-19', 'wc-fox': '2015-04-01', 'wv-night': '2015-05-14',
+      'wg-w2': '2011-05-17', 'wc-reasons': '2011', 'wv-killing': '2013-08-14', 'wv-night': '2015-05-14',
       'wg-w3': '2015-05-19', 'wc-killing': '2015-05-19', 'wg-hos': '2015-10-13',
-      'wc-conscience': '2015-10-13', 'wg-baw': '2016-05-31', 'wc-crows': '2016-08-31',
-      'wg-thronebreaker': '2018-10-23', 'wc-flesh': '2018-12-19', 'wc-fading': '2020-11-25',
-      'wc-lament': '2021-05-26', 'wc-woods': '2021-08-14', 'wc-grain': '2022-06-22',
-      'wc-kiddo': '2022-12-14', 'wc-wolves': '2022-12-21', 'wc-frog': '2023-05-06',
-      'wc-wild': '2023-09-20', 'wc-lesser': '2023-12-22', 'wc-corvo': '2024-05-08',
-      'wc-edge': '2025-01-21', 'wc-bear': '2025-04-23', 'wc-price': '2025-07-29',
-      'wc-witcher': '2025-12-16', 'wc-bloodstone': '2026-01-28', 'wc-lastwish': '2026-08-11',
+      'wc-conscience': '2015-10-13', 'wg-baw': '2016-05-31',
+      'wg-thronebreaker': '2018-10-23', 'wc-woods': '2021-08-14', 'wc-grain': '2022-06-22',
+      'wc-kiddo': '2022-12-14', 'wc-frog': '2023-05-06', 'wc-lesser': '2023-12-22',
+      'wc-edge': '2025-01-21', 'wc-price': '2025-07-29',
+      'wc-witcher': '2025-12-16', 'wc-lastwish': '2026-08-11',
     },
   },
   startrek: {
@@ -297,11 +287,15 @@ const UNIVERS = {
     /* Tout se date chez TMDB : une saison par son `air_date`, un film par
        sa sortie américaine. Rien à écrire ici. */
     dates: {},
+    doubles: {
+      '655|1': [1], '655|7': [25], '580|1': [1], '580|4': [1], '580|7': [25],
+      '1855|1': [1], '1855|5': [15], '1855|7': [25],
+    },
   },
 };
 
 const cache = new Map();
-async function api(chemin, cle) {
+export async function api(chemin, cle) {
   if (cache.has(chemin)) return cache.get(chemin);
   const r = await fetch('https://api.themoviedb.org/3' + chemin +
     (chemin.includes('?') ? '&' : '?') + 'api_key=' + cle);
@@ -312,82 +306,127 @@ async function api(chemin, cle) {
 
 /* Le numéro de saison : le champ quand il existe, le premier sous-item
    qui le nomme sinon. Les sous-items de l'entrée de parcours priment —
-   c'est là qu'une saison recollée dit laquelle elle est. */
-function saisonDe(x, s) {
-  if (s.season) return s.season;
-  for (const t of [...(x.subitems || []), ...(s.subitems || [])]) {
+   c'est là qu'une saison recollée dit laquelle elle est. Rend aussi le
+   premier épisode quand le libellé en nomme un : c'est lui qui date un
+   morceau, jamais la saison. */
+export function saisonDe(x, s) {
+  for (const t of x.subitems || []) {
+    const m = /^\s*(?:Saison|Season)\s+(\d+)(?:\s+(?:Épisodes?|Episodes?)\s*(\d+)?.*)?\s*$/i.exec(t);
+    if (m) return { n: +m[1], e: m[2] ? +m[2] : null };
+  }
+  if (s.season) return { n: s.season, e: null };
+  for (const t of s.subitems || []) {
     /* « Season 9 Episodes 1-5 » aussi : The Walking Dead et Star Trek
        numérotent leurs blocs ainsi, et c'est la saison qui date. */
-    const m = /^\s*(?:Saison|Season)\s+(\d+)(?:\s+(?:Épisodes?|Episodes?)\b.*)?\s*$/i.exec(t);
-    if (m) return +m[1];
+    const m = /^\s*(?:Saison|Season)\s+(\d+)(?:\s+(?:Épisodes?|Episodes?)\s*(\d+)?.*)?\s*$/i.exec(t);
+    if (m) return { n: +m[1], e: null };
   }
   return null;
 }
 
-async function dateDe(x, s, cle) {
-  if (!s.tmdb || s.tmdb === '0') return null;
-  if (s.media === 'tv') {
-    const n = saisonDe(x, s);
-    if (n) {
-      const sa = await api('/tv/' + s.tmdb + '/season/' + n, cle);
-      if (sa && sa.air_date) return sa.air_date;
-    }
-    const t = await api('/tv/' + s.tmdb, cle);
-    return t ? t.first_air_date : null;
-  }
-  const rd = await api('/movie/' + s.tmdb + '/release_dates', cle);
+/* Le guide compte deux fois un épisode double, là où TMDB lui donne un seul
+   numéro : « Encounter at Farpoint » y vaut 1 et 2, et tout ce qui suit est
+   décalé d'un cran. `doubles` nomme, saison par saison, les épisodes TMDB
+   concernés ; un libellé parle toujours le numéro du guide. */
+export const doubles = (U, tmdb, s) => (U.doubles || {})[tmdb + '|' + s] || [];
+export const numGuide = (n, dbl) => n + dbl.filter(d => d < n).length;
+
+/* La sortie américaine d'un film, et la première au monde à défaut. */
+export async function dateFilm(tmdb, cle) {
+  const rd = await api('/movie/' + tmdb + '/release_dates', cle);
   const us = rd && (rd.results || []).find(p => p.iso_3166_1 === 'US');
   if (us) {
     const th = us.release_dates.filter(p => [2, 3, 4, 6].includes(p.type))
       .map(p => p.release_date).sort()[0];
     if (th) return th.slice(0, 10);
   }
-  const m = await api('/movie/' + s.tmdb, cle);
+  const m = await api('/movie/' + tmdb, cle);
   return m ? m.release_date : null;
 }
 
-let fauxTotal = 0;
-const demandes = process.argv.slice(2).filter(a => UNIVERS[a]);
-for (const nom of (demandes.length ? demandes : Object.keys(UNIVERS))) {
-  const U = UNIVERS[nom];
-  const src = fs.readFileSync(U.fichier, 'utf8');
-  const { CG, D } = new Function('window', 'var CGD;' + src +
-    ';return {CG:window.CG,D:' + U.global + '};')({});
-  if (!D.erasRelease) { console.log('\n### ' + nom + ' — pas de parcours par ordre de sortie'); continue; }
-  const BYID = {};
-  D.eras.forEach(e => e.entries.forEach(x => { BYID[x.id] = x; }));
-
-  console.log('\n### ' + nom.toUpperCase() + ' — ' + D.title);
-  let faux = 0, sans = 0, n = 0;
-  for (const era of D.erasRelease) {
-    console.log('\n== ' + era.title);
-    let prec = null;
-    for (const x of era.entries) {
-      const id = x.ref || x.id;
-      const s = BYID[x.ref || (x.covers || [])[0]] || {};
-      const d = U.dates[id] || await dateDe(x, s, CG.tmdbKey);
-      n++;
-      if (!d) sans++;
-      /* L'année affichée — la première, pour une saison à cheval sur deux
-         ans — doit être celle de la date relevée : c'est la
-         seule des deux que le visiteur voit, et rien d'autre ne la
-         contrôle. */
-      const an = d && x.rel && d.slice(0, 4) !== String(x.rel).slice(0, 4);
-      /* Une date partielle qui préfixe la précédente — « 2011 » après
-         « 2011-05-17 » — ne la contredit pas : on ne sait pas dans quel
-         ordre elles tombent, et elle ne fait pas reculer le repère. */
-      const flou = prec && d && prec.startsWith(d);
-      const casse = (prec && d && d < prec && !flou) || an;
-      if (casse) faux++;
-      /* « 2026-08 » s'affiche « 2026-08-?? » : le tiret dit que c'est un
-         jour qui manque, pas trois caractères de date en plus. */
-      const vue = d ? (d.length === 7 ? d + '-??' : d) : '????-??-??';
-      console.log((casse ? '  ⚠ ' : '    ') + vue +
-        '   ' + String(x.rel || '—').padEnd(10) + s.title + '   [' + id + ']' + (an ? '   ← l’année affichée n’est pas la bonne' : ''));
-      if (d && !flou) prec = d;
-    }
-  }
-  console.log('\n' + n + ' entrées · ' + faux + ' hors ordre · ' + sans + ' sans date');
-  fauxTotal += faux + sans;
+/* Un comic : son premier numéro, ou celui que nomme l'identifiant du morceau. */
+function dateNumero(id) {
+  if (NUMEROS[id]) return NUMEROS[id][0].d;
+  const m = /^(.+?)(?:-rl)?-n(\d+)(?:-\d+)?$/.exec(id);
+  const l = m && NUMEROS[m[1]];
+  const n = l && l.find(q => q.n === +m[2]);
+  return n ? n.d : null;
 }
-if (fauxTotal) process.exitCode = 1;
+
+async function dateDe(x, s, cle, U) {
+  if (!s.tmdb || s.tmdb === '0') return null;
+  if (s.media === 'tv') {
+    const pl = (U.plages || {})[s.id];
+    const q = !(x.subitems || []).length && pl ? { n: pl[0].s, e: null } : saisonDe(x, s);
+    if (q) {
+      /* Une saison que TMDB range ailleurs que sous son numéro du guide :
+         Flight 462 est la saison 0 de Fear the Walking Dead. */
+      const num = (U.saisons || {})[s.id] ?? q.n;
+      const sa = await api('/tv/' + s.tmdb + '/season/' + num, cle);
+      if (sa) {
+        const eps = (sa.episodes || []).filter(e => e.air_date);
+        const dbl = doubles(U, s.tmdb, q.n);
+        const ep = q.e ? eps.find(e => {
+          const g = numGuide(e.episode_number, dbl);
+          return g === q.e || (dbl.includes(e.episode_number) && g + 1 === q.e);
+        }) : eps[0];
+        if (ep) return ep.air_date;
+        if (sa.air_date) return sa.air_date;
+      }
+    }
+    const t = await api('/tv/' + s.tmdb, cle);
+    return t ? t.first_air_date : null;
+  }
+  return dateFilm(s.tmdb, cle);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  let fauxTotal = 0;
+  const demandes = process.argv.slice(2).filter(a => UNIVERS[a]);
+  for (const nom of (demandes.length ? demandes : Object.keys(UNIVERS))) {
+    const U = UNIVERS[nom];
+    const src = fs.readFileSync(new URL('../' + U.fichier, import.meta.url), 'utf8');
+    const { CG, D } = new Function('window', 'var CGD;' + src +
+      ';return {CG:window.CG,D:' + U.global + '};')({});
+    if (!D.erasRelease) { console.log('\n### ' + nom + ' — pas de parcours par ordre de sortie'); continue; }
+    const BYID = {};
+    D.eras.forEach(e => e.entries.forEach(x => { BYID[x.id] = x; }));
+
+    console.log('\n### ' + nom.toUpperCase() + ' — ' + D.title);
+    let faux = 0, sans = 0, n = 0;
+    for (const era of D.erasRelease) {
+      console.log('\n== ' + era.title);
+      let prec = null;
+      for (const x of era.entries) {
+        const id = x.ref || x.id;
+        const s = BYID[x.ref || (x.covers || [])[0]] || {};
+        const d = dateNumero(id) || U.dates[id] || await dateDe(x, s, CG.tmdbKey, U);
+        n++;
+        if (!d) sans++;
+        /* L'année affichée — la première, pour une saison à cheval sur deux
+           ans — doit être celle de la date relevée : c'est la
+           seule des deux que le visiteur voit, et rien d'autre ne la
+           contrôle. */
+        const an = d && x.rel && (d.slice(0, 4) !== String(x.rel).slice(0, 4) ||
+          /* `rel` porte désormais le jour, et c'est celui du premier épisode
+             ou du premier numéro : relevé deux fois, il ne doit pas diverger. */
+          (d.length === 10 && String(x.rel).length >= 10 && String(x.rel).slice(0, 10) !== d));
+        /* Une date partielle qui préfixe la précédente — « 2011 » après
+           « 2011-05-17 » — ne la contredit pas : on ne sait pas dans quel
+           ordre elles tombent, et elle ne fait pas reculer le repère. */
+        const flou = prec && d && prec.startsWith(d);
+        const casse = (prec && d && d < prec && !flou) || an;
+        if (casse) faux++;
+        /* « 2026-08 » s'affiche « 2026-08-?? » : le tiret dit que c'est un
+           jour qui manque, pas trois caractères de date en plus. */
+        const vue = d ? (d.length === 7 ? d + '-??' : d) : '????-??-??';
+        console.log((casse ? '  ⚠ ' : '    ') + vue +
+          '   ' + String(x.rel || '—').padEnd(10) + s.title + '   [' + id + ']' + (an ? '   ← l’année affichée n’est pas la bonne' : ''));
+        if (d && !flou) prec = d;
+      }
+    }
+    console.log('\n' + n + ' entrées · ' + faux + ' hors ordre · ' + sans + ' sans date');
+    fauxTotal += faux + sans;
+  }
+  if (fauxTotal) process.exitCode = 1;
+}
