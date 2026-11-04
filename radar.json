@@ -2,31 +2,6 @@
  {
   "universe": "marvel",
   "title": "VisionQuest",
-  "date_sort": "2026-11-03",
-  "date_txt": "03/11/2026",
-  "kind": "Épisode",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 7,
-   "mark": ""
-  },
-  "poster": "/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
-  "tmdb": 213375,
-  "media": "tv"
- },
- {
-  "universe": "marvel",
-  "title": "VisionQuest",
   "date_sort": "2026-11-10",
   "date_txt": "10/11/2026",
   "kind": "Épisode",
@@ -158,7 +133,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
+  "poster": "/9jlZ59UALLLOE279HMT19rP9XQs.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },
