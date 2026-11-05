@@ -6,6 +6,12 @@
    Ne pas editer a la main : relancer le script. */
 window.CG_NEWS = {
   months: [
+    { key:"2026-11", label:"November 2026", items:[
+      {"nat":"media","uni":"sw","kind":"comic","title":"Jedi Knights 1-10","meta":"40-34 BBY","txt":"Added to the Star Wars Deep Dive — the comic, in 40-34 BBY, just after Master and Apprentice.","href":"en-dossier-star-wars.html#40-34-bby-jedi-knights-1-10","cta":"See in the Deep Dive"},
+      {"nat":"media","uni":"sw","kind":"comic","title":"Hyperspace Stories: Tides of Terror 1-4","meta":"21 BBY","txt":"Added to the Star Wars Deep Dive — the comic, in 21 BBY, just after Rogue Agents.","href":"en-dossier-star-wars.html#21-bby-hyperspace-stories-tides-of-terror-1-4","cta":"See in the Deep Dive"},
+      {"nat":"media","uni":"sw","kind":"comic","title":"The High Republic: The Edge of Balance","meta":"232-228 BBY","txt":"Added to the Star Wars Deep Dive — the manga, its four volumes, Precedent and Premonition, throughout the High Republic.","href":"en-dossier-star-wars.html#232-231-bby-the-high-republic-the-edge-of-balance-1","cta":"See in the Deep Dive"},
+      {"nat":"media","uni":"sw","kind":"comic","title":"Path of the Lightsaber 1","meta":"34 ABY","vo":true,"txt":"Added to the Star Wars Deep Dive — the manga, in 34 ABY, just after The Fall of Kylo Ren.","href":"en-dossier-star-wars.html#34-aby-path-of-the-lightsaber-1","cta":"See in the Deep Dive"}
+    ]},
     { key:"2026-10", label:"October 2026", items:[
       {"nat":"media","uni":"sw","kind":"comic","title":"Rogue One: Darth Vader","meta":"1 BBY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Chirrut & Baze and just before the movie.","href":"en-dossier-star-wars.html#1-bby-rogue-one-darth-vader","cta":"See in the Deep Dive"},
       {"nat":"media","uni":"dc","kind":"film","title":"Clayface","meta":"~202X","txt":"Added to the DC timeline, in the DCU, right before Creature Commandos.","img":"/images/clayface.webp","href":"en-dc.html#dcu-clayface","cta":"See in the timeline"},

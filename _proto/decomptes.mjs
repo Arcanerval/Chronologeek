@@ -53,7 +53,11 @@ export function decomptes(racine) {
   }
   const d = donnees(racine, DOSSIER.fr);
   const eras = d.eras.map(e => (e.items || []).filter(x => x.kind === 'it').length);
-  const dossier = { total: eras.reduce((s, n) => s + n, 0), stations: eras.length, eras };
+  /* Par nature, pour la bande du Dossier : « 436 comics » y est resté écrit à la
+     main depuis la refonte, et la somme des quatre cases ne tombait plus juste. */
+  const natures = {};
+  d.eras.forEach(e => (e.items || []).filter(x => x.kind === 'it').forEach(x => { natures[x.k] = (natures[x.k] || 0) + 1; }));
+  const dossier = { total: eras.reduce((s, n) => s + n, 0), stations: eras.length, eras, natures };
   const total = Object.values(univers).reduce((s, u) => s + u.total, 0);
   const stations = Object.values(univers).reduce((s, u) => s + u.stations, 0);
   return { univers, dossier, total, stations, n: Object.keys(univers).length };
@@ -137,6 +141,9 @@ function dossier(html, langue, V, nom) {
   const r = remplaceur(html, nom);
   const n = V.dossier.total;
   r.sub('s-tot', /(id="s-tot">)\d+/, (_, a) => a + n);
+  const k = V.dossier.natures;
+  r.sub('bande', /(class="ln-board stats">\s*<div class="s"><b>)\d+(<\/b>[\s\S]*?<div class="s"><b>)\d+(<\/b>[\s\S]*?<div class="s"><b>)\d+(<\/b>[\s\S]*?<div class="s"><b>)\d+/,
+    (_, a, b, c, d) => a + k.roman + b + k.jeunesse + c + k.comic + d + k.audio);
   r.sub('fcount', /(id="fcount">)\d+ \/ \d+/, (_, a) => `${a}${n} / ${n}`);
   r.sub('k-tot', /(id="k-tot">)\d+/, (_, a) => a + n);
   r.sub('k-left', /(id="k-left">)\d+/, (_, a) => a + n);

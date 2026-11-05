@@ -355,6 +355,28 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline DC, dans le DCU, juste avant Creature Commandos.',
    'Added to the DC timeline, in the DCU, right before Creature Commandos.'],
 
+  /* ── les quatre ajouts au Dossier du 5 novembre 2026 ──
+     Trouvés en comparant le Dossier à Wookieepedia. Les titres français sont ceux
+     de la BnF : Panini pour Vague de Terreur, Nobi Nobi pour Un Équilibre Fragile. */
+  ["Histoires de l'Hyperespace : Vague de Terreur 1-4", 'Hyperspace Stories: Tides of Terror 1-4'],
+  ['Histoires de l&#x27;Hyperespace : Vague de Terreur 1-4', 'Hyperspace Stories: Tides of Terror 1-4'],
+  ['La Haute République : Un Équilibre Fragile', 'The High Republic: The Edge of Balance'],
+  ['La Haute République : Un Équilibre Fragile 1', 'The High Republic: The Edge of Balance 1'],
+  ['La Haute République : Un Équilibre Fragile 2', 'The High Republic: The Edge of Balance 2'],
+  ['La Haute République : Un Équilibre Fragile 3', 'The High Republic: The Edge of Balance 3'],
+  ['La Haute République : Un Équilibre Fragile 4', 'The High Republic: The Edge of Balance 4'],
+  ['La Haute République : Un Équilibre Fragile - Prologue', 'The High Republic: The Edge of Balance - Precedent'],
+  ['La Haute République : Un Équilibre Fragile - Prémonition', 'The High Republic: The Edge of Balance - Premonition'],
+  ['Novembre 2026', 'November 2026'],
+  ['Ajouté au Dossier Star Wars — le comic, en 40-34 BBY, juste après Maître et Apprenti.',
+   'Added to the Star Wars Deep Dive — the comic, in 40-34 BBY, just after Master and Apprentice.'],
+  ['Ajouté au Dossier Star Wars — le comic, en 21 BBY, juste après Rogue Agents.',
+   'Added to the Star Wars Deep Dive — the comic, in 21 BBY, just after Rogue Agents.'],
+  ['Ajouté au Dossier Star Wars — le manga, ses quatre tomes, son Prologue et Prémonition, au fil de la Haute République.',
+   'Added to the Star Wars Deep Dive — the manga, its four volumes, Precedent and Premonition, throughout the High Republic.'],
+  ['Ajouté au Dossier Star Wars — le manga, en 34 ABY, juste après The Fall of Kylo Ren.',
+   'Added to the Star Wars Deep Dive — the manga, in 34 ABY, just after The Fall of Kylo Ren.'],
+
   /* ── le comic Rogue One : Dark Vador, ajouté le 28 octobre 2026 ──
      Le cinquième one-shot des dix ans de Rogue One, entre Chirrut & Baze
      et le film. */
@@ -1242,6 +1264,16 @@ const TITRES_IDENTIQUES = [
   // DC · le film Clayface, ajouté le 24 octobre 2026, et sa date
   'Clayface',
   '~202X',
+  // Dossier Star Wars · les ajouts du 5 novembre 2026, et le repère de manga
+  'Jedi Knights 1-10',
+  'Path of the Lightsaber 1',
+  'Manga',
+  '232-231 BBY',
+  '231-230 BBY',
+  '~230 BBY',
+  '40-34 BBY',
+  '232-228 BBY',
+  'Rogue One - Saw Gerrera',
   // Dossier Star Wars · 34 ABY, comic VO ajouté le 13 août 2026
   'The Fall of Kylo Ren 1-5',
   // DC · la série du DCU ajoutée le 18 août 2026, sans titre français

@@ -11,7 +11,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
   `assassinscreed.html`, `dcanimation.html`, `jurassicworld.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
-  (536 romans, comics et fictions audio, plus 63 repères écran)
+  (548 romans, comics, mangas et fictions audio, plus 63 repères écran)
 - `index.html`, `whats-new.html` / `nouveautes.html`, `upcoming.html` / `a-venir.html`
 - `/data/` — les entrées de chaque page, `<nom de page>-fr.js` et `-en.js`
 - `app.js` — le moteur, bilingue, un seul fichier
@@ -2049,6 +2049,24 @@ Six points qui ont coûté quelque chose :
 
 `en-startrek.html` est en **LF**, contrairement aux autres protos qui sont en CRLF.
 
+### Ce que le Dossier contient, comparé à Wookieepedia
+
+Le Dossier n'était relu contre rien : son premier jet vient de la prod d'avant la
+refonte, et les œuvres n'y entrent qu'à mesure qu'on les remarque. **Le 5 novembre
+2026, la comparaison avec la « Timeline of canon media » a trouvé deux trous** —
+*Jedi Knights 1-10* et *Vague de Terreur 1-4*, sortis en 2025 —, et Niko a fait entrer
+deux mangas : *La Haute République : Un Équilibre Fragile* (quatre tomes, Prologue,
+Prémonition) et *Path of the Lightsaber 1*. Un manga reste `k:"comic"`, avec
+`note:"Manga"`. **Les adaptations d'œuvres déjà au guide n'y entrent pas** (*The Book
+of Boba Fett*, les mangas de *The Mandalorian* et de *Fallen Order*), ni *Beyond
+Victory*, qui accompagne un jeu en réalité virtuelle : tranché par Niko le même jour.
+
+Le titre français se cherche à la BnF, par le titre de la série en anglais : le
+catalogue range *Jedi Knights* sous « Les gardiens de la République » et « Une voie
+plus noble », *Tides of Terror* sous « Vague de terreur », *Precedent* sous
+« Prologue ». Comparer au seul titre rend de faux manques : le Dossier écrivait « Saw
+Guerrera », et une série rangée sous son nom français ne se retrouve pas toujours.
+
 ### Avatar, la seule exception
 
 **La source d'Avatar est `_proto/data-avatar.js` lui-même, et il s'édite à la
@@ -2227,7 +2245,8 @@ douze `data-total` et leur ligne « 0 / 62 · 6 stations », `total` de la
 table `U`, la table `E` (noms d'ères et comptes), « 79 stations, 1 029
 arrêts », le HUD et « 12 univers · 536 au dossier » ; côté Dossiers,
 `data-total`, la carte, la bande, le HUD, `TOTAL` et les comptes de `E` ;
-côté Dossier, `s-tot`, `fcount`, `k-tot`, `k-left`. `publier.mjs` les pose
+côté Dossier, `s-tot`, `fcount`, `k-tot`, `k-left` et, depuis le 5 novembre 2026,
+les quatre cases de sa bande (romans, jeunesse, comics, audio). `publier.mjs` les pose
 dans les deux langues, et `node _proto/decomptes.mjs` dit ce qui a dérivé
 dans les protos (`--ecrire` corrige les protos français, puis
 `traduire-pages.mjs`).

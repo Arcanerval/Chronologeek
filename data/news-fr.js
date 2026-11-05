@@ -36,6 +36,31 @@ window.CG_NEWS = {
 
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
+    { key:"2026-11", label:"Novembre 2026", items:[
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"Jedi Knights 1-10", meta:"40-34 BBY",
+        txt:"Ajouté au Dossier Star Wars — le comic, en 40-34 BBY, juste après Maître et Apprenti.",
+        href:"/fr/dossiers/star-wars#40-34-bby-jedi-knights-1-10",
+        cta:"Voir dans le Dossier" },
+
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"Histoires de l'Hyperespace : Vague de Terreur 1-4", meta:"21 BBY",
+        txt:"Ajouté au Dossier Star Wars — le comic, en 21 BBY, juste après Rogue Agents.",
+        href:"/fr/dossiers/star-wars#21-bby-hyperspace-stories-tides-of-terror-1-4",
+        cta:"Voir dans le Dossier" },
+
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"La Haute République : Un Équilibre Fragile", meta:"232-228 BBY",
+        txt:"Ajouté au Dossier Star Wars — le manga, ses quatre tomes, son Prologue et Prémonition, au fil de la Haute République.",
+        href:"/fr/dossiers/star-wars#232-231-bby-the-high-republic-the-edge-of-balance-1",
+        cta:"Voir dans le Dossier" },
+
+      { nat:"media", uni:"sw", kind:"comic",
+        title:"Path of the Lightsaber 1", meta:"34 ABY", vo:true,
+        txt:"Ajouté au Dossier Star Wars — le manga, en 34 ABY, juste après The Fall of Kylo Ren.",
+        href:"/fr/dossiers/star-wars#34-aby-path-of-the-lightsaber-1",
+        cta:"Voir dans le Dossier" }
+    ]},
     { key:"2026-10", label:"Octobre 2026", items:[
       { nat:"media", uni:"sw", kind:"comic",
         title:"Rogue One : Dark Vador", meta:"1 BBY", vo:true,
