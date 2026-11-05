@@ -13,7 +13,7 @@
      phases. Le decoupage suit ses propres dates et les trois temps du
      monde : les annees Tyrell, jusqu'au film de 2019 ; le Blackout de 2022
      et ce qui le suit ; puis les annees Wallace, qui s'ouvrent avec
-     « 2036: Nexus Dawn » et menent a 2049. Ce sont des intitules de
+     Black Lotus en 2032, sur decision de Niko, et menent a 2049. Ce sont des intitules de
      structure, l'exception que le CLAUDE.md admet quand la prose n'en a pas.
    - Les niveaux, eux, sont dans le document : « E » vaut `must`, « I »
      `important`, et une ligne sans marque est `bonus` — « they are bonus
@@ -164,14 +164,14 @@ const E = [
   { ere: 1, id: 'br-2029', type: 'comic', level: 'bonus',
     desc: 'Los Angeles, 2029. Replicants are banned and the Tyrell Corporation is bankrupt. Back on the job as a Blade Runner, Ash investigates replicants said to be working on the Sepulveda Sea Wall, and crosses the path of one she failed to retire years earlier — who is now raising an army.',
     title: 'Blade Runner 2029', date: '2029', img: vignette('bladerunner2029.webp') },
-  { ere: 1, id: 'br-blacklotus', type: 'anime', level: 'bonus', lang: 'vo', tmdb: '84553', media: 'tv',
+  { ere: 2, id: 'br-blacklotus', type: 'anime', level: 'bonus', lang: 'vo', tmdb: '84553', media: 'tv',
     title: 'Blade Runner: Black Lotus', date: '2032',
     img: vignette('blacklotus.webp', '/vRyC5WT7ytRflfEFFyRmGeZc0Cf.jpg') },
-  { ere: 1, id: 'br-bl-leavingla', type: 'comic', level: 'bonus', lang: 'vo',
+  { ere: 2, id: 'br-bl-leavingla', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'Picks up right after the finale of the animated show: Elle leaves Los Angeles behind and tries to build herself a new life.',
     title: 'Blade Runner: Black Lotus - Leaving L.A.', date: '2032',
     img: vignette('leavingla.webp') },
-  { ere: 1, id: 'br-bl-lasvegas', type: 'comic', level: 'bonus', lang: 'vo',
+  { ere: 2, id: 'br-bl-lasvegas', type: 'comic', level: 'bonus', lang: 'vo',
     desc: 'Elle finds a community of replicants living in Las Vegas, while a squad of mercenaries working for Niander Wallace closes in on her.',
     title: 'Blade Runner: Black Lotus - Las Vegas', date: '2032',
     img: vignette('lasvegas.webp') },

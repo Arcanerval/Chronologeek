@@ -537,8 +537,8 @@ dix des seize arrêts sont des comics. Code de ligne **BR**, trois stations
   corrige. La page `en-bladerunner.html`, elle, s'édite à la main — le
   générateur qui l'a tirée de Resident Evil ne doit plus tourner.
 - **Trois ères posées par moi**, le document étant une liste plate, validées à
-  l'écran : The Tyrell Era (2009-2019), The Blackout (2022-2032), The Wallace
-  Era (2036-2049). Les niveaux, eux, sont dans le document : E = `must`,
+  l'écran : The Tyrell Era (2009-2019), The Blackout (2022-2029), The Wallace
+  Era (2032-2049), qui s'ouvre sur *Black Lotus* depuis le 5 novembre 2026, décision de Niko. Les niveaux, eux, sont dans le document : E = `must`,
   I = `important`, sans marque = `bonus` — Black Lotus comprise.
 - **L'orange `#ff5f1f`** est demandé par Niko — le logo Tyrell, les titres de
   2049. Il est poussé vers le vermillon et saturé à fond parce que Dragon Age
