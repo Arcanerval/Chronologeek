@@ -129,6 +129,9 @@ async function atomesDe(x, carte, BYID, U, cle) {
   const id = x.ref || x.id;
   const num = NUMEROS[id];
   if (num) return num.map((n, i) => ({ carte, d: n.d, num: n, i }));
+  /* Un feuilleton : une carte, sa période. */
+  const per = (U.periodes || {})[id];
+  if (per) return [{ carte, d: per[0], fin: per[1], seul: true }];
   const eps = await episodesDeCarte(x, BYID, U, cle);
   const src = BYID[x.ref || (x.covers || [])[0]] || {};
   /* Une websérie reste une carte : seize épisodes d'une minute intercalés dans

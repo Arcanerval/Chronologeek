@@ -1273,8 +1273,12 @@ WI_WIKI = "https://witcher.fandom.com/api.php"
 WI_CATEGORIES = {"Games": "Jeu vidéo", "The Witcher 3 expansions": "DLC",
                  "Books": "Livre", "Comics": "Comic"}
 # Les champs de date des trois infobox.
-WI_DATE = re.compile(r"^\s*\|\s*(?:release_date|publication_date|published)\s*=(.*)$",
+# Le champ peut tenir sur plusieurs lignes : « 1st issue: May 26, 2021 », puis
+# « 2nd issue: June 30, 2021 » dessous. Lu sur une seule, seul le premier numéro
+# d'une série serait vu, jamais ceux à venir.
+WI_DATE = re.compile(r"^\s*\|\s*(?:release_date|publication_date|published)\s*=(.*(?:\n(?!\s*[|}]).*)*)",
                      re.I | re.M)
+WI_NUMERO = re.compile(r"(\d+)(?:st|nd|rd|th) issue", re.I)
 # La mention qui suit une date : « {{Small|Remastered, anticipated}} ». Elle
 # dit de quelle sortie il s'agit, et « anticipated » n'en fait pas partie.
 WI_MENTION = re.compile(r"\{\{\s*small\s*\|([^{}]*)\}\}", re.I)
@@ -1343,8 +1347,9 @@ def source_witcher():
                          lambda m: WI_MODELES[m.group(1).lower()], wikitexte, flags=re.I)
         syn = clean_wikitext(lisible)
         # une page porte toutes ses sorties sur une ligne, séparées par <br/>
-        for morceau in re.split(r"<br\s*/?>", champ.group(1)):
+        for morceau in re.split(r"<br\s*/?>|\n", champ.group(1)):
             morceau = re.sub(r"<ref[^>]*>.*?</ref>|<ref[^>]*/>", " ", morceau, flags=re.S)
+            numero = WI_NUMERO.search(morceau)
             mention = WI_MENTION.search(morceau)
             precision_txt = ""
             if mention:
@@ -1354,6 +1359,9 @@ def source_witcher():
                                        mention.group(1), flags=re.I).strip(" ,")
             brut = re.sub(r"\{\{[^{}]*\}\}|\[\[|\]\]|'{2,}", " ", morceau)
             brut = re.sub(r"\s+", " ", brut).strip(" ,;")
+            # « 1st issue: May 26, 2021 » : `loose_date` veut la date en tête,
+            # sinon elle n'y voit que l'année et la série sort « sans date ».
+            brut = re.sub(r"^\d+(?:st|nd|rd|th) issue:?\s*", "", brut, flags=re.I)
             if not brut:
                 continue
             ds, dt, prec = loose_date(brut)
@@ -1372,6 +1380,8 @@ def source_witcher():
             if ds > HORIZON.isoformat():
                 continue
             nom = WI_PREFIXE.get(kind, "") + titre
+            if numero:
+                nom = f"{nom} #{numero.group(1)}"
             if precision_txt:
                 nom = f"{nom} — {precision_txt}"
             add("witcher", nom, ds, dt, kind, "Witcher Wiki", prec, syn=syn)

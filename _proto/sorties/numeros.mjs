@@ -12,7 +12,12 @@
    `v` nomme le volume et `k` le numéro à l'intérieur (les `n` se suivent d'un
    volume à l'autre). Die With Honor #2 et #3 viennent des annonces de Titan chez
    Bleeding Cool, le wiki écrivant encore « TBA » ; le #4 n'a pas de date, il
-   entrera ici le jour où il en aura une. */
+   entrera ici le jour où il en aura une.
+
+   Revérifié le 5 novembre 2026 contre les wikis, comic par comic. Un comic sans
+   ligne ici est un seul numéro, un seul livre ou un seul tome. Ce qui paraît en
+   feuilleton — un chapitre par semaine en ligne — n'a pas de numéros à compter : sa
+   période est dans `periodes` de `ordre-sortie.mjs`. */
 export const NUMEROS = {
   'br-rl-2019': [{ n: 1, d: '2019-07-17', c: 'br-2019' }, { n: 2, d: '2019-08-21', c: 'br-2019' }, { n: 3, d: '2019-09-18', c: 'br-2019' }, { n: 4, d: '2019-10-09', c: 'br-2019' }, { n: 5, d: '2019-12-18', c: 'br-2019-5-12' }, { n: 6, d: '2020-02-19', c: 'br-2019-5-12' }, { n: 7, d: '2020-03-25', c: 'br-2019-5-12' }, { n: 8, d: '2020-08-05', c: 'br-2019-5-12' }, { n: 9, d: '2020-08-26', c: 'br-2019-5-12' }, { n: 10, d: '2020-09-23', c: 'br-2019-5-12' }, { n: 11, d: '2020-10-21', c: 'br-2019-5-12' }, { n: 12, d: '2020-11-18', c: 'br-2019-5-12' }],
   'br-2029': [{ n: 1, d: '2020-12-16' }, { n: 2, d: '2021-01-13' }, { n: 3, d: '2021-03-10' }, { n: 4, d: '2021-04-07' }, { n: 5, d: '2021-06-30' }, { n: 6, d: '2021-08-04' }, { n: 7, d: '2021-08-24' }, { n: 8, d: '2021-09-29' }, { n: 9, d: '2021-11-03' }, { n: 10, d: '2021-12-01' }, { n: 11, d: '2022-01-05' }, { n: 12, d: '2022-02-09' }],
@@ -58,9 +63,11 @@ export const NUMEROS = {
   'ac-assassins-homecoming-1': [{ n: 11, d: '2016-08-24' }, { n: 12, d: '2016-10-05' }, { n: 13, d: '2016-11-23' }, { n: 14, d: '2016-12-28' }],
   'ac-templars-black-cross-1': [{ n: 1, d: '2016-03-23' }, { n: 2, d: '2016-04-27' }, { n: 3, d: '2016-06-15' }, { n: 4, d: '2016-07-27' }, { n: 5, d: '2016-09-07' }],
   'ac-templars-cross-of-1': [{ n: 6, d: '2016-10-19' }, { n: 7, d: '2016-11-16' }, { n: 8, d: '2016-12-07' }, { n: 9, d: '2017-01-25' }],
-  'ac-uprising-common-ground-1': [{ n: 1, d: '2017-02-01' }, { n: 2, d: '2017-03-08' }, { n: 3, d: '2017-04-19' }, { n: 4, d: '2017-05-24' }, { n: 5, d: '2017-07-05' }],
-  'ac-uprising-inflection-point-1': [{ n: 6, d: '2017-08-02' }, { n: 7, d: '2017-09-06' }, { n: 8, d: '2017-10-18' }, { n: 9, d: '2018-03-07' }],
-  'ac-uprising-finale-1': [{ n: 10, d: '2018-04-04' }, { n: 11, d: '2018-05-02' }, { n: 12, d: '2018-06-13' }],
+  'ac-uprising-common-ground-1': [{ n: 1, d: '2017-02-01' }, { n: 2, d: '2017-03-08' }, { n: 3, d: '2017-04-19' }, { n: 4, d: '2017-05-24' }],
+  'ac-uprising-inflection-point-1': [{ n: 5, d: '2017-07-05' }, { n: 6, d: '2017-08-02' }, { n: 7, d: '2017-09-06' }, { n: 8, d: '2017-10-18' }],
+  'ac-uprising-finale-1': [{ n: 9, d: '2018-03-07' }, { n: 10, d: '2018-04-04' }, { n: 11, d: '2018-05-02' }, { n: 12, d: '2018-06-13' }],
+  'ac-last-descendants-locus-1': [{ n: 1, d: '2016-09-21' }, { n: 2, d: '2016-10-19' }, { n: 3, d: '2016-11-16' }, { n: 4, d: '2016-12-21' }],
+  'avt-the-kyoshi-warriors-13': [{ n: 1, d: '2026-05-06' }, { n: 2, d: '2026-06-17' }, { n: 3, d: '2026-07-15' }],
   'ac-the-fall-1': [{ n: 1, d: '2010-11-10' }, { n: 2, d: '2010-12-15' }, { n: 3, d: '2011-02-09' }],
   'ac-reflections-1': [{ n: 1, d: '2017-03-08' }, { n: 2, d: '2017-04-12' }, { n: 3, d: '2017-05-17' }, { n: 4, d: '2017-07-05' }],
   'ac-origins-2': [{ n: 1, d: '2018-03-07' }, { n: 2, d: '2018-04-11' }, { n: 3, d: '2018-05-16' }, { n: 4, d: '2018-06-13' }],

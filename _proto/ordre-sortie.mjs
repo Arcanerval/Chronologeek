@@ -106,6 +106,11 @@ export const UNIVERS = {
   avatar: {
     fichier: '_proto/data-avatar.js', global: 'window.AVATAR',
     temps: false,
+    /* Deux comics parus en feuilleton dans les DVD de la série. */
+    periodes: {
+      'avt-divided-we-fall': ['2007-01-23', '2007-08-14'],
+      'avt-private-fire': ['2007-10-30', '2008-07-29'],
+    },
     /* Les quatre livres de Korra ne nomment aucune saison. */
     plages: {
       'avt-la-legende-de-korra-livre-1-l-air': [{ s: 1, a: null, b: null }],
@@ -120,7 +125,7 @@ export const UNIVERS = {
        des Lost Adventures qui n'ont jamais paru dans le magazine datent du
        recueil. */
     dates: {
-      'avt-sokka-the-avatar': '2006-09-12', 'avt-divided-we-fall': '2007-01-23',
+      'avt-sokka-the-avatar': '2006-09-12',
       /* le jeu en ligne : sa page n'a pas de date, mais le concours qui
          l'accompagnait était en ligne en février 2007 */
       'avt-escape-from-the-spirit-world': '2007-02',
@@ -128,7 +133,7 @@ export const UNIVERS = {
          sortie : le deuxième Nick Mag Presents, le recueil des Lost
          Adventures, le Free Comic Book Day 2021, l'anthologie Patterns in
          Time, et les trois tomes de Fumée et Ombre au premier */
-      'avt-rl-nickmag2': '2007-09-18', 'avt-private-fire': '2007-10-30',
+      'avt-rl-nickmag2': '2007-09-18',
       'avt-bumi-vs-toph-round-one': '2009-05', 'avt-relics': '2011-05-07',
       'avt-rl-lostadventures': '2011-06-14', 'avt-rebound': '2013-05-04', 'avt-shells': '2014-05-03',
       
@@ -147,8 +152,7 @@ export const UNIVERS = {
       'avt-the-reckoning-of-roku': '2024-07-23', 'avt-the-bounty-hunter-and-the-tea-brewer': '2024-08-20',
       'avt-mystery-of-penquan-island': '2025-03-04', 'avt-ashes-of-the-academy': '2025-03-25',
       'avt-avatar-legends-city-of-echoes': '2025-07-22', 'avt-the-awakening-of-roku': '2025-12-30',
-      'avt-earth-and-water-comics-giveaway-day-2026': '2026-05-02',
-      'avt-the-kyoshi-warriors-13': '2026-05-06', 'avt-kya-and-the-secret-of-the-sand': '2026-07-28',
+      'avt-earth-and-water-comics-giveaway-day-2026': '2026-05-02', 'avt-kya-and-the-secret-of-the-sand': '2026-07-28',
       'avt-masters-of-the-elements-off-duty': '2026-08-25', 'avt-jet-rebels-and-rhinos': '2026-09-08',
     },
   },
@@ -191,6 +195,13 @@ export const UNIVERS = {
   assassinscreed: {
     fichier: '_proto/data-assassinscreed-en.js', global: 'window.ASSASSINSCREED',
     temps: false,
+    /* Deux feuilletons en ligne, à leur première parution et non à leur premier
+       volume relié : Dynasty de 2020 à 2022, Forgotten Temple de 2023 à 2026. Un
+       chapitre par semaine : une carte, qui dit sa période. */
+    periodes: {
+      'ac-dynasty-1': ['2020-08-26', '2022-08-31'],
+      'ac-forgotten-temple-1': ['2023-04-25', '2026-03-17'],
+    },
     /* Tout sauf le film est écrit ici : les jeux portent un identifiant
        RAWG dans `tmdb`. Relevé sur le wiki Assassin's Creed (API
        MediaWiki) : un jeu et un DLC à leur sortie nord-américaine, un livre
@@ -223,21 +234,20 @@ export const UNIVERS = {
       'ac-chronicles-russia-secret-1': '2016-02-09', 'ac-the-last-maharaja-1': '2016-03-01',
       'ac-rl-fcbd2016': '2016-05-07', 'ac-last-descendants-1': '2016-08-30',
       'ac-conspiracies-die-glocke-1': '2016-10-21', 'ac-heresy-1': '2016-11-15',
-      'ac-last-descendants-tomb-1': '2016-12-27', 'ac-last-descendants-locus-1': '2017-05-09',
+      'ac-last-descendants-tomb-1': '2016-12-27',
       'ac-origins-desert-oath-1': '2017-10-10', 'ac-origins-1': '2017-10-27',
       'ac-conspiracies-project-rainbow-1': '2017-12-01', 'ac-last-descendants-fate-1': '2017-12-26', 'ac-the-hidden-ones-1': '2018-01-23', 'ac-the-curse-of-1': '2018-03-13',
       'ac-rl-odyssey': '2018-10-05',
       'ac-rl-legacy': '2018-12-04',
       'ac-odyssey-the-lost-1': '2019-04', 'ac-the-fate-of-1': '2019-04-23',
       'ac-gold-1': '2020-02-27',
-      'ac-rl-valhalla': '2020-11-10', 'ac-valhalla-geirmunds-saga-1': '2020-11-10',
-      'ac-dynasty-1': '2021-04-01', 'ac-fragments-the-blade-1': '2021-04-15',
+      'ac-rl-valhalla': '2020-11-10', 'ac-valhalla-geirmunds-saga-1': '2020-11-10', 'ac-fragments-the-blade-1': '2021-04-15',
       'ac-wrath-of-the-1': '2021-05-13', 'ac-the-siege-of-1': '2021-08-12',
       'ac-valhalla-blood-brothers-1': '2021-08-14', 'ac-the-silk-road-1': '2021-09-08',
       'ac-fragments-the-highlands-1': '2021-09-16', 'ac-those-who-are-1': '2021-12-14',
       'ac-fragments-the-witches-1': '2022-01-20', 'ac-dawn-of-ragnarok-1': '2022-03-10', 'ac-valhalla-sword-of-1': '2022-04-05',
       'ac-the-engine-of-1': '2022-08-02', 'ac-escape-room-puzzle-1': '2022-11-29',
-      'ac-valhalla-the-hidden-1': '2023-01-25', 'ac-forgotten-temple-1': '2023-04-25',
+      'ac-valhalla-the-hidden-1': '2023-01-25',
       'ac-the-golden-city-1': '2023-05-02', 'ac-the-engine-of-2': '2023-07-04',
       'ac-rl-mirage': '2023-10-05', 'ac-nexus-vr-1': '2023-11-16',
       'ac-mirage-daughter-of-1': '2023-11-21',
@@ -400,7 +410,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       for (const x of era.entries) {
         const id = x.ref || x.id;
         const s = BYID[x.ref || (x.covers || [])[0]] || {};
-        const d = dateNumero(id) || U.dates[id] || await dateDe(x, s, CG.tmdbKey, U);
+        const d = dateNumero(id) || ((U.periodes || {})[id] || [])[0] || U.dates[id] || await dateDe(x, s, CG.tmdbKey, U);
         n++;
         if (!d) sans++;
         /* L'année affichée — la première, pour une saison à cheval sur deux

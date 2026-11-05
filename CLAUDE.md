@@ -257,6 +257,11 @@ Trois choses à savoir :
 - **`loose_date` lit « 29 September 2026 » depuis ce jour-là.** Elle ne
   connaissait que « September 29, 2026 » ; le wiki Witcher écrit l'autre
   forme, et toutes ses dates tombaient en « vague » sur l'année seule.
+- **Une série de comics se lit numéro par numéro depuis le 5 novembre 2026.** Le
+  champ écrit « 1st issue: May 26, 2021 », parfois sur plusieurs lignes : la mention
+  devant la date la faisait tomber en « vague », et seule la première ligne était
+  lue. Aucun numéro de série n'arrivait donc au radar, sans rien dans le journal
+  que « sans date ». La carte s'appelle maintenant « … #2 ».
 
 **Assassin's Creed est au radar depuis le 25 août 2026, et sa colonne est vide.**
 C'est voulu, et ce n'est pas le cas de Dragon Age : la saga a bien sept œuvres
@@ -1054,6 +1059,10 @@ Dix choses à savoir :
   (« Die With Honor #1-3 »), et un numéro annoncé y entre le jour où il a une date,
   dans `numeros.mjs`, avec son `BR_ANNONCES` côté radar. L'avoir arrêtée au premier
   volume, le 4 novembre, faisait dire au site que la série s'était finie en 2024.
+  **Tous les comics ont été revérifiés le 5 novembre 2026**, un par un contre les
+  wikis. Un comic sans ligne dans `numeros.mjs` est un seul numéro ou un seul livre ;
+  un feuilleton en ligne ou en DVD (*Dynasty*, *Forgotten Temple*, *Divided We Fall*,
+  *Private Fire*) n'a qu'une carte, avec sa période dans `periodes` d'`UNIVERS`.
 - **La traduction** : `Saison N Épisodes a-b` par `valeur()` dans `traduire.mjs`, et
   par gabarit dans `traductions-<u>.mjs` pour les chaînes inversées — ajouté pour
   Blade Runner, dont Black Lotus se coupe. Un morceau qui manque au gabarit bloque
