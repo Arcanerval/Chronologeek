@@ -32,7 +32,7 @@
 
 import { chromium } from 'playwright-core';
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { join, dirname, extname, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -274,6 +274,16 @@ async function verifier(nav, base, url, vue) {
 
 async function main() {
   let urls = urlsDeRoutes();
+  /* Les pages d'œuvres sont plus de mille : `publier.mjs` les contrôle toutes en
+     lecture, et on en ouvre ici la première de chaque univers, dans chaque langue. */
+  for (const base of ['works', 'fr/oeuvres']) {
+    const dossier = join(RACINE, base);
+    if (!existsSync(dossier)) continue;
+    for (const u of readdirSync(dossier, { withFileTypes: true }).filter(d => d.isDirectory())) {
+      const f = readdirSync(join(dossier, u.name)).find(n => n.endsWith('.html'));
+      if (f) urls.push(`/${base}/${u.name}/${f.replace(/\.html$/, '')}`);
+    }
+  }
   if (FILTRES.length) urls = urls.filter(u => FILTRES.some(f => u.includes(f)));
   if (!urls.length) { console.error('aucune page ne correspond'); process.exit(1); }
 

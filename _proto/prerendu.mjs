@@ -43,6 +43,11 @@
 // que pour sa description.
 
 import { charge, SOURCES, decode } from './jsonld.mjs';
+import { baseOeuvres } from './oeuvres.mjs';
+
+// Le segment d'URL d'un univers, quand il n'est pas sa clé.
+const ROUTE = { sw:'starwars', mcu:'marvel', twd:'walkingdead', jurassic:'jurassicworld' };
+const routeDe = cle => ROUTE[cle] || cle;
 
 /* ── Ce qui n'est pas du texte de lecture ───────────────────────────────── */
 
@@ -101,10 +106,14 @@ const rendable = it => it && it.type !== 'separator' && it.id && it.title;
 
 // Une œuvre d'une timeline : un `<article>` nommé par un `<h3>`, la hiérarchie
 // que la page rend elle-même — un h1, un h2 par ère, un h3 par œuvre.
+let fiche = null;
 function article(it) {
   if (!rendable(it)) return '';
   const { titre, corps } = contenu(it);
-  return `<article id="${esc(it.id)}"><h3>${titre}</h3>${corps}</article>`;
+  // Le lien vers la page de l'œuvre : c'est par lui qu'un moteur qui n'exécute
+  // pas le JS la trouve autrement que par le plan du site.
+  const f = fiche && fiche(it.id);
+  return `<article id="${esc(it.id)}"><h3>${f ? `<a href="${f}">${titre}</a>` : titre}</h3>${corps}</article>`;
 }
 
 // **Le Dossier n'a pas de h3, et c'est délibéré** : ses 535 lignes sont une
@@ -135,7 +144,8 @@ const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js
  * Rend le pré-rendu d'une page, ou '' si elle n'a pas de timeline (l'accueil,
  * « À venir », les Nouveautés, la liste des Dossiers).
  */
-export function prerendu({ racine, cle, langue }) {
+export function prerendu({ racine, cle, langue, oeuvres }) {
+  fiche = null;
   let eras = null;
   const liste = cle === 'dossier-sw';
   if (SOURCES[cle]) {
@@ -146,6 +156,11 @@ export function prerendu({ racine, cle, langue }) {
     eras = charge(racine, fichier, global)[global].eras;
   }
   if (!eras) return '';
+  if (oeuvres && SOURCES[cle]) {
+    const route = routeDe(cle);
+    const t = oeuvres[route] || {};
+    fiche = id => t[id] ? `${baseOeuvres(langue)}/${route}/${t[id]}` : '';
+  }
 
   const corps = eras.map(e => section(e, liste)).join('');
   // Une page qui a des ères et rien à rendre est un appariement qui a raté, pas

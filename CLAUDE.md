@@ -1274,7 +1274,7 @@ du script concerné, puis relancer.
 
 ## La publication
 
-`node _proto/publier.mjs` fait neuf choses, et rien d'autre.
+`node _proto/publier.mjs` fait douze choses, et rien d'autre.
 
 **1. Le référencement.** Les protos n'ont aucune des lignes que portent les pages
 en ligne — canonique, `hreflang`, Open Graph, Twitter Card, description — et ils
@@ -1862,6 +1862,32 @@ des pages — un outil qui découvre les univers en listant la racine y compte.
 
 `data/sources.json` dit d'où vient chaque fichier publié. `sync.py` le lit pour
 nommer le fichier à éditer plutôt que celui qui en sort.
+
+**12. Une page par œuvre**, posée le 5 novembre 2026, dans `_proto/oeuvres.mjs` :
+`/works/<route>/<chemin>` et `/fr/oeuvres/<route>/<chemin>`, 609 œuvres, 1 218 pages,
+5 Mo par langue. Une ancre n'est pas une page : ni Google ni un partage ne voient
+`/starwars#sw-andor`, alors que la question du site vise une œuvre. Chaque page dit où
+placer l'œuvre, ses arrêts voisins, les essentiels du guide avant elle et les textes des
+données, à l'identique. Rien à écrire à l'ajout d'une œuvre : elle a sa page.
+
+- **Une œuvre, c'est le titre anglais et la fiche TMDB**, pas l'entrée : les blocs d'une
+  série tiennent une page, deux « Superman » de fiches différentes en font deux.
+- **Le chemin vient du titre anglais** : renommer un titre anglais change l'URL.
+- **Le Dossier n'en a pas** : 550 pages sans texte nuiraient au reste.
+- **`publier.mjs` vide `works/` et `fr/oeuvres/` avant d'écrire** : sans ça une œuvre
+  renommée laisserait sa vieille page en ligne. Il relit toutes les pages (valeurs
+  vides, liens morts) ; `verifier.mjs` ouvre la première de chaque univers.
+- **L'habillage est relu dans la page Star Wars publiée** : menu, tiroir, pied et tout son CSS, plus les règles `.f-*`, dans `/works/fiche.css`. Les fiches portent donc les vrais composants (premier écran, afficheur, billet), et suivent toute retouche du menu.
+- **Trois chemins y mènent** : le plan du site, un lien dans le pré-rendu, et
+  « Fiche complète » dans la carte ouverte (`e-app.js`, par `/works/<route>.json`).
+
+**L'itinéraire**, même jour, à la fin de `e-app.js` : « Calculer mon itinéraire » dans
+`.ln-go`, ou `?vers=<id>` depuis une page d'œuvre. On choisit une arrivée et un niveau,
+et le dialogue rend les arrêts à voir, chaque case rejouant un vrai clic sur celle de la
+page. **Il ne filtre pas la timeline** : le rail de treize pages serait à redessiner, et
+les guides ne se réordonnent pas. Il suit le parcours affiché et la branche de l'arrivée.
+**Star Trek et le Dossier n'en ont pas**, faute de niveaux. Le niveau dit ce que le guide
+juge essentiel, pas ce dont l'intrigue dépend : jamais « requis » dans les libellés.
 
 ### Vérifier avant de pousser
 

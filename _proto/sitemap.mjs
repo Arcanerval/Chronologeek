@@ -65,7 +65,7 @@ const aujourdhui = () => new Date().toISOString().slice(0, 10);
  * Rend le sitemap des routes publiées. `sources(cle, langue)` doit rendre la
  * liste des fichiers dont la page dépend, relatifs à la racine du dépôt.
  */
-export function sitemap({ racine, site, routes, sources }) {
+export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
   const lignes = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
@@ -85,6 +85,29 @@ export function sitemap({ racine, site, routes, sources }) {
         `    <lastmod>${date}</lastmod>`,
         `    <xhtml:link rel="alternate" hreflang="en" href="${site}${r.en.url}"/>`,
         `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${r.fr.url}"/>`,
+        '  </url>',
+      );
+    }
+  }
+
+  // Les pages d'œuvres prennent la date des données de leur univers : un git log
+  // par univers, pas par page, il y en a plus de mille.
+  const dates = {};
+  const dateDe = (cle, langue) => {
+    const k = cle + langue;
+    if (!dates[k]) {
+      const f = sources(cle, langue);
+      dates[k] = modifieMaintenant(racine, f) ? aujourdhui() : (dernierCommit(racine, f) || aujourdhui());
+    }
+    return dates[k];
+  };
+  for (const langue of ['en', 'fr']) {
+    for (const o of oeuvres) {
+      lignes.push(
+        `  <url><loc>${site}${o[langue]}</loc>`,
+        `    <lastmod>${dateDe(o.cle, langue)}</lastmod>`,
+        `    <xhtml:link rel="alternate" hreflang="en" href="${site}${o.en}"/>`,
+        `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${o.fr}"/>`,
         '  </url>',
       );
     }

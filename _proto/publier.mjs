@@ -23,7 +23,7 @@
 //
 // `--check` n'écrit rien et affiche le bilan.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -34,6 +34,7 @@ import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
 import { recherche } from './recherche.mjs';
 import { flux } from './flux.mjs';
+import { oeuvres, habillage } from './oeuvres.mjs';
 import { decomptes, appliquer } from './decomptes.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
@@ -207,6 +208,9 @@ for (const r of ROUTES) { LIENS[r.fr.proto] = r.fr.url; LIENS[r.en.proto] = r.en
 const URLS = { fr: {}, en: {} };
 for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; }
 
+// Une page par œuvre : calculées ici parce que le pré-rendu y fait des liens.
+const OEUVRES = oeuvres({ racine: RACINE, site: SITE, urls: URLS });
+
 const IMAGES = Object.fromEntries(['fr', 'en'].map(langue => [langue,
   Object.fromEntries(Object.entries(SEO).map(([k, v]) => [k, v[langue] && v[langue].image]))]));
 
@@ -337,6 +341,11 @@ const RES_NX = { d: 84.2, m: 141.15 };
 const RES_SR = { d: 76.08, m: 65.35 };
 const RES_AG = { d: 83.75, m: 210.65 };
 const RES_FX = { d: 30.85, m: 30.85 };
+
+// La place du bouton « Calculer mon itinéraire », que `e-app.js` pose dans `.ln-go`
+// après le premier rendu : +0,015 de décalage sur téléphone sans elle. Star Trek
+// n'a pas de niveaux, donc pas de bouton.
+const RES_ITI = "<style>.ln-go:not(:has(.iti-b))::after{content:'';display:block;height:27px}</style>";
 
 function reservations(cle, langue) {
   const R = {};
@@ -828,6 +837,8 @@ function publier(route, langue) {
   h = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i,
                 `$1\n${PWA}\n${LIEN_FLUX(langue)}\n${PRERENDU_CSS}` +
                 (reservations(route.cle, langue) ? `\n${reservations(route.cle, langue)}` : '') +
+                (SOURCES[route.cle] && route.cle !== 'startrek' ? `
+${RES_ITI}` : '') +
                 (route.cle === 'accueil' ? `\n${BOOT}` : ''));
   if (route.cle === 'accueil') {
     const avantCorps = h;
@@ -898,7 +909,7 @@ function publier(route, langue) {
   // avant le premier rendu. Une page sans timeline rend '' et n'est pas touchée.
   let entrees = 0;
   try {
-    const pr = prerendu({ racine: RACINE, cle: route.cle, langue });
+    const pr = prerendu({ racine: RACINE, cle: route.cle, langue, oeuvres: OEUVRES.tables });
     if (pr) {
       const avantPr = h;
       h = h.replace(/(<div id="timeline")(\s*)(><\/div>)/, `$1$2>${pr}</div>`);
@@ -1042,11 +1053,49 @@ for (const [sortie, langue] of Object.entries(INDEX)) {
   autres.push({ dest: '/' + sortie, octets: index.length, note: `${n} œuvres` });
 }
 
-const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe });
+/* Les pages d'œuvres : le dossier est vidé d'abord, sans quoi une œuvre renommée
+   laisserait son ancienne page en ligne, sans lien et toujours indexable. */
+{
+  // Le menu, le pied et le CSS sont ceux de la page Star Wars tout juste écrite.
+  const ch = {};
+  for (const langue of ['fr', 'en']) {
+    const r = ROUTES.find(x => x.cle === 'sw')[langue];
+    ch[langue] = habillage(readFileSync(join(RACINE, r.sortie), 'utf8'), r.url);
+  }
+  const rendu = OEUVRES.rendre(ch);
+  OEUVRES.pages = rendu.pages;
+  OEUVRES.css = rendu.css;
+  const connues = new Set(OEUVRES.pages.map(p => '/' + p.sortie.replace(/\.html$/, '')));
+  connues.add('/works/fiche.css');
+  for (const p of OEUVRES.pages) {
+    if (/undefined|\[object Object\]|NaN/.test(p.html)) {
+      problemes.push(`${p.url} : valeur vide dans la page`);
+    }
+    for (const [, h] of p.html.matchAll(/href="(\/(?:fr\/oeuvres|works)\/[^"#?]+)"/g)) {
+      if (!connues.has(h)) problemes.push(`${p.url} : lien mort ${h}`);
+    }
+  }
+  if (!CHECK) {
+    rmSync(join(RACINE, 'works'), { recursive: true, force: true });
+    rmSync(join(RACINE, 'fr/oeuvres'), { recursive: true, force: true });
+    for (const p of OEUVRES.pages) {
+      mkdirSync(dirname(join(RACINE, p.sortie)), { recursive: true });
+      writeFileSync(join(RACINE, p.sortie), p.html);
+    }
+    writeFileSync(join(RACINE, 'works/fiche.css'), OEUVRES.css);
+    for (const [route, table] of Object.entries(OEUVRES.tables)) {
+      writeFileSync(join(RACINE, 'works', route + '.json'), JSON.stringify(table));
+    }
+  }
+  autres.push({ dest: '/works/ et /fr/oeuvres/', octets: OEUVRES.pages.reduce((a, p) => a + p.html.length, 0),
+                note: `${OEUVRES.pages.length} pages d'œuvres` });
+}
+
+const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe, oeuvres: OEUVRES.plan });
 if (!CHECK) writeFileSync(join(RACINE, 'sitemap.xml'), plan);
 const urls = (plan.match(/<loc>/g) || []).length;
-if (urls !== ROUTES.length * 2) {
-  problemes.push(`sitemap.xml : ${urls} URL pour ${ROUTES.length * 2} pages attendues`);
+if (urls !== (ROUTES.length + OEUVRES.plan.length) * 2) {
+  problemes.push(`sitemap.xml : ${urls} URL pour ${(ROUTES.length + OEUVRES.plan.length) * 2} pages attendues`);
 }
 
 /* ── Bilan ──────────────────────────────────────────────────────────────── */

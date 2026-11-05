@@ -107,7 +107,7 @@ const FIL = {
 // `media` — et `media` reprend la main pour tout le reste, où il est plus sûr
 // que le `type` (DC et Avatar écrivent `imp` là où Star Wars écrit
 // `important` : les vocabulaires ne sont pas alignés d'une page à l'autre).
-function typeSchema(it) {
+export function typeSchema(it) {
   switch (it.type) {
     case 'roman': case 'jeunesse': return 'Book';
     case 'comic':                  return 'ComicStory';

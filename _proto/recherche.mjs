@@ -51,7 +51,7 @@ import { charge, SOURCES, decode } from './jsonld.mjs';
 // Les dix encres de la charte, écrites ici comme dans `erreur404.mjs` : c'est
 // le seul endroit du site où la couleur d'un univers doit être connue hors de
 // sa propre page, et la variable CSS de l'accueil ne porte pas ces clés-là.
-const ENCRES = {
+export const ENCRES = {
   sw: '#4d9fff', mcu: '#e23636', dc: '#f5c842', avatar: '#7dd3fc',
   startrek: '#b48cf2', twd: '#a8bf4f', dragonage: '#e07b39',
   assassinscreed: '#d4a02c', dcanimation: '#2dd4bf', jurassic: '#45c46b',

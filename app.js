@@ -4851,3 +4851,278 @@ function cgBillet(){
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
 })();
+
+/* ═══ L'ITINÉRAIRE, ET LE LIEN VERS LA PAGE DE L'ŒUVRE ═════════════════════
+   Posés le 5 novembre 2026. « Je veux voir Thunderbolts*, quel est le minimum ?
+   » est la question qu'une timeline de 123 arrêts ne sait pas poser. On choisit
+   une arrivée, on répond en arrêts et en heures, comme une appli de transport.
+
+   **Rien ne bouge dans la timeline, et rien n'est filtré** : le visiteur ne
+   réordonne pas les guides (« Ce qui est tranché »), et masquer des lignes
+   demanderait de redessiner le rail de treize pages. L'itinéraire est une liste
+   dans un dialogue, dont chaque case rejoue un vrai clic sur la case de la page :
+   ponts, badges, dates et compteurs passent donc par leur chemin habituel.
+
+   **Il suit ce qui est à l'écran.** L'ordre est celui des lignes du DOM, donc du
+   parcours choisi ; le niveau vient des données, une entrée de second parcours
+   héritant de celle qu'elle reprend (`ref`, ou son premier `covers`). Chez DC, DC
+   Animation et The Witcher on reste sur la branche de l'arrivée, et chez Marvel
+   les autres univers (`dim`) ne s'imposent pas à une œuvre de la ligne.
+
+   **Star Trek n'en a pas** : sans niveaux, l'itinéraire serait la ligne entière.
+   Le Dossier non plus. Le niveau dit ce que le guide juge essentiel, pas ce dont
+   l'intrigue dépend : les libellés restent « essentiels », jamais « requis ». */
+(function(){
+  'use strict';
+  var P = window.CGP;
+  if (!P || !P.data || P.nom === 'CGD' || !document.querySelector('.bu[data-id]')) return;
+  var FR = document.documentElement.lang !== 'en';
+  var D = P.data, info = {};
+
+  var RTS = {};
+  try { if (typeof RT !== 'undefined') RTS = RT; else if (window.RT) RTS = window.RT; } catch (_) {}
+
+  (D.eras || []).forEach(function(era){
+    (era.entries || []).forEach(function(e){
+      if (e && e.id) info[e.id] = { e:e, lv:e.level, br:era.branch || '', rt:e.rt || RTS[e.id] || 0, src:e.id };
+    });
+  });
+  ['erasRewatch', 'erasReplay', 'erasRelease'].forEach(function(k){
+    (D[k] || []).forEach(function(era){
+      (era.entries || []).forEach(function(e){
+        if (!e) return;
+        var id = e.id || e.ref;
+        if (!id || info[id]) return;
+        var couv = e.covers || [];
+        var s = info[e.ref] || info[couv[0]];
+        if (!s) return;
+        var rt = e.rt || 0;
+        if (!rt) couv.forEach(function(c){ if (info[c]) rt += info[c].rt; });
+        info[id] = { e:s.e, lv:e.level || s.lv, br:s.br, rt:rt || s.rt, src:s.src };
+      });
+    });
+  });
+
+  var st = document.createElement('style');
+  st.textContent = [
+    '.iti-b{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;font-size:15px;letter-spacing:.06em;',
+    'text-transform:uppercase;color:var(--paper,#fffdf7);background:none;border:0;border-bottom:2px solid currentColor;',
+    'padding:3px 1px;cursor:pointer}.iti-b:hover{color:var(--hot,#f5c842)}',
+    '.iti-fiche{display:inline-block;margin-top:12px;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;',
+    'font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:4px 11px;border-radius:6px;',
+    'border:2px solid var(--hot,#f0c97c);color:var(--hot,#f0c97c)}',
+    '.iti-fiche:hover{background:var(--hot,#f0c97c);color:var(--ink,#0d0b12)}',
+    '.expand-trailer-link+.iti-fiche{margin-left:8px}',
+    'dialog.iti{margin:auto;width:min(620px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;',
+    'background:#101019;color:#fffdf7;border:2px solid var(--uni,#f5c842);border-radius:12px;padding:20px;',
+    'font:15px/1.5 \'Chivo\',sans-serif}dialog.iti::backdrop{background:rgba(4,4,10,.78)}',
+    '.iti-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}',
+    '.iti-h h2{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:900;font-size:28px;line-height:1;text-transform:uppercase}',
+    '.iti-x{background:none;border:0;color:inherit;font-size:22px;line-height:1;cursor:pointer;width:32px;height:32px}',
+    '.iti label{display:block}.iti-t{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.66;margin-bottom:4px}',
+    '.iti select{width:100%;font:inherit;color:#fffdf7;background:#08080f;border:1px solid rgba(255,253,247,.3);border-radius:7px;padding:8px}',
+    '.iti fieldset{border:0;margin:12px 0 0}.iti legend{padding:0}.iti-o{display:flex;flex-wrap:wrap;gap:6px 14px}',
+    '.iti-o label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px}',
+    '.iti-d{display:flex!important;align-items:center;gap:7px;margin-top:10px;font-size:14px;cursor:pointer}',
+    '.iti-s{margin-top:16px;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;font-size:24px;line-height:1.15;color:var(--uni,#f5c842)}',
+    '.iti-p{font-size:12.5px;opacity:.66;margin-top:2px}',
+    '.iti ol{list-style:none;margin:12px 0 0 7px;padding:0 0 0 18px;border-left:3px solid var(--uni,#f5c842)}',
+    '.iti li{position:relative;padding:5px 0}',
+    '.iti li button{position:absolute;left:-30px;top:8px;width:18px;height:18px;border-radius:50%;cursor:pointer;',
+    'background:#101019;border:3px solid var(--uni,#f5c842);padding:0}',
+    '.iti li button[aria-checked=true]{background:var(--uni,#f5c842)}',
+    '.iti li a{color:inherit;text-decoration:none;font-weight:700}.iti li a:hover{text-decoration:underline}',
+    '.iti li small{display:block;font-weight:400;opacity:.66;font-size:12.5px}',
+    '.iti li.fin a{color:var(--uni,#f5c842)}'
+  ].join('');
+  document.head.appendChild(st);
+
+  /* ── Le lien vers la page de l'œuvre, à l'ouverture d'une carte ───────── */
+  var ROUTE = location.pathname.split('/').pop().replace(/\.html$/, '');
+  var BASE = (FR ? '/fr/oeuvres/' : '/works/') + ROUTE + '/';
+  var table = null;
+  function chargeTable(){
+    if (!table) table = fetch('/works/' + ROUTE + '.json').then(function(r){ return r.ok ? r.json() : {}; })
+      .catch(function(){ return {}; });
+    return table;
+  }
+  function poseFiche(zone){
+    zone.setAttribute('data-fi', '');
+    var art = zone.closest('[data-id]');
+    var id = art && art.getAttribute('data-id');
+    var i = id && info[id];
+    if (!i || /^p-/.test(id)) return;
+    chargeTable().then(function(t){
+      var s = t[id] || t[i.src];
+      if (!s) return;
+      var a = document.createElement('a');
+      a.className = 'iti-fiche';
+      a.href = BASE + s;
+      a.textContent = FR ? 'Fiche complète' : 'Full page';
+      zone.appendChild(a);
+    });
+  }
+  var tl = document.getElementById('timeline');
+  if (tl && !/^e(n)?-/.test(ROUTE)) new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      [].forEach.call(m.addedNodes, function(n){
+        if (n.nodeType !== 1) return;
+        if (n.matches && n.matches('.expand-info:not([data-fi])')) poseFiche(n);
+        if (n.querySelectorAll) [].forEach.call(n.querySelectorAll('.expand-info:not([data-fi])'), poseFiche);
+      });
+    });
+  }).observe(tl, { childList:true, subtree:true });
+
+  /* ── L'itinéraire ─────────────────────────────────────────────────────── */
+  var ids = Object.keys(info);
+  var haut = ids.some(function(i){ return info[i].lv === 'must'; }) ? 'must'
+           : ids.some(function(i){ return info[i].lv === 'imp'; }) ? 'imp' : null;
+  if (!haut) return;
+  var aImp = haut === 'must' && ids.some(function(i){ return info[i].lv === 'important'; });
+
+  var T = FR ? {
+    btn:'Calculer mon itinéraire', titre:'Votre itinéraire', arr:'Arrivée', rang:'Arrêts',
+    ess:'Les essentiels', imp:'Essentiels et importants', tout:'Tous', deja:'Retirer ce que j’ai déjà coché',
+    fermer:'Fermer', arret:function(n){ return n + (n > 1 ? ' arrêts' : ' arrêt'); }, finale:'Arrivée',
+    retire:function(n){ return n + (n > 1 ? ' déjà cochés retirés' : ' déjà coché retiré'); },
+    guide:'Selon les niveaux du guide, dans l’ordre du parcours affiché.', coche:'Cocher', moins:'au moins'
+  } : {
+    btn:'Plan my route', titre:'Your route', arr:'Destination', rang:'Stops',
+    ess:'Essentials only', imp:'Essentials and important', tout:'All', deja:'Remove what I’ve already ticked',
+    fermer:'Close', arret:function(n){ return n + (n > 1 ? ' stops' : ' stop'); }, finale:'Destination',
+    retire:function(n){ return n + ' already ticked, removed'; },
+    guide:'Based on the guide’s levels, in the order of the route on screen.', coche:'Tick', moins:'at least'
+  };
+
+  function dec(s){ var t = document.createElement('textarea'); t.innerHTML = String(s == null ? '' : s); return t.value; }
+  function hm(m){ var h = Math.floor(m / 60), r = m % 60; return h ? h + ' h' + (r ? ' ' + (r < 10 ? '0' : '') + r : '') : r + ' min'; }
+  function lignes(){
+    return [].filter.call(document.querySelectorAll('.bu[data-id]'), function(a){ return info[a.getAttribute('data-id')]; });
+  }
+  function titreDe(a){ var t = a.querySelector('.bu-title'); return t ? t.textContent.trim() : dec(info[a.getAttribute('data-id')].e.title); }
+  function coche(a){ var c = a.querySelector('[data-check]'); return !!c && c.getAttribute('aria-checked') === 'true'; }
+
+  var dlg = null, sel, liste, resume;
+
+  function calcule(){
+    var rs = lignes();
+    var cible = document.getElementById(sel.value);
+    var i = rs.indexOf(cible);
+    if (i < 0) { liste.textContent = ''; resume.textContent = ''; return; }
+    var c = info[sel.value];
+    var rang = (dlg.querySelector('[name=iti-n]:checked') || {}).value || 'ess';
+    var sans = dlg.querySelector('#iti-d').checked;
+    var etapes = [], retires = 0, min = 0, trou = false;
+    rs.slice(0, i).forEach(function(a){
+      var f = info[a.getAttribute('data-id')];
+      if (f.br && c.br && f.br !== c.br) return;
+      if (f.e.dim && !c.e.dim && D === window.MCU) return;
+      var ok = rang === 'tout' || f.lv === haut || (rang === 'imp' && f.lv === 'important');
+      if (!ok) return;
+      if (sans && coche(a)) { retires++; return; }
+      etapes.push(a);
+    });
+    etapes.push(cible);
+    liste.textContent = '';
+    etapes.forEach(function(a){
+      var id = a.getAttribute('data-id'), f = info[id];
+      if (f.rt) min += f.rt; else trou = true;
+      var li = document.createElement('li');
+      if (a === cible) li.className = 'fin';
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'checkbox');
+      b.setAttribute('aria-checked', coche(a) ? 'true' : 'false');
+      b.setAttribute('aria-label', T.coche + ' : ' + titreDe(a));
+      b.addEventListener('click', function(){
+        var k = a.querySelector('[data-check]');
+        if (k) k.click();
+        b.setAttribute('aria-checked', coche(a) ? 'true' : 'false');
+      });
+      var l = document.createElement('a');
+      l.href = '#' + id;
+      l.textContent = titreDe(a);
+      l.addEventListener('click', function(){ dlg.close(); });
+      var sub = (f.e.subitems || [])[0];
+      if (sub) { var s = document.createElement('small'); s.textContent = dec(sub); l.appendChild(s); }
+      li.appendChild(b); li.appendChild(l);
+      liste.appendChild(li);
+    });
+    resume.querySelector('b').textContent = T.arret(etapes.length) + (min ? ' · ' + (trou ? T.moins + ' ' : '') + hm(min) : '');
+    resume.querySelector('span').textContent = (retires ? T.retire(retires) + '. ' : '') + T.guide;
+  }
+
+  function bati(){
+    dlg = document.createElement('dialog');
+    dlg.className = 'iti';
+    dlg.innerHTML = '<div class="iti-h"><h2>' + T.titre + '</h2><button type="button" class="iti-x" aria-label="' + T.fermer + '">✕</button></div>' +
+      '<label><span class="iti-t">' + T.arr + '</span><select id="iti-a"></select></label>' +
+      '<fieldset><legend class="iti-t">' + T.rang + '</legend><div class="iti-o">' +
+      '<label><input type="radio" name="iti-n" value="ess" checked> ' + T.ess + '</label>' +
+      (aImp ? '<label><input type="radio" name="iti-n" value="imp"> ' + T.imp + '</label>' : '') +
+      '<label><input type="radio" name="iti-n" value="tout"> ' + T.tout + '</label></div></fieldset>' +
+      '<label class="iti-d"><input type="checkbox" id="iti-d" checked> ' + T.deja + '</label>' +
+      '<div class="iti-resume"><p class="iti-s"><b></b></p><p class="iti-p"><span></span></p></div><ol></ol>';
+    document.body.appendChild(dlg);
+    sel = dlg.querySelector('#iti-a');
+    liste = dlg.querySelector('ol');
+    resume = dlg.querySelector('.iti-resume');
+    var vus = {};
+    lignes().forEach(function(a){
+      var id = a.getAttribute('data-id'), f = info[id], t = titreDe(a);
+      if (/^p-/.test(id)) return;
+      var k = t + '|' + f.br;
+      if (vus[k]) return;
+      vus[k] = 1;
+      var o = document.createElement('option');
+      o.value = id;
+      o.textContent = t;
+      sel.appendChild(o);
+    });
+    dlg.querySelector('.iti-x').addEventListener('click', function(){ dlg.close(); });
+    dlg.addEventListener('change', calcule);
+    dlg.addEventListener('click', function(ev){ if (ev.target === dlg) dlg.close(); });
+  }
+  function ouvre(id){
+    if (!dlg) bati();
+    if (id) sel.value = id;
+    /* Sans arrivée demandée, la dernière choisie, sinon le terminus : un select
+       s'ouvre sur sa première option, et un itinéraire d'un seul arrêt n'apprend rien. */
+    else if (!dlg.dataset.vu && sel.options.length) sel.selectedIndex = sel.options.length - 1;
+    dlg.dataset.vu = '1';
+    calcule();
+    if (!dlg.open) dlg.showModal();
+  }
+
+  var go = document.querySelector('.ln-go');
+  if (go) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'iti-b'; b.textContent = T.btn;
+    b.addEventListener('click', function(){ ouvre(); });
+    go.appendChild(b);
+  }
+
+  /* Un lien de page d'œuvre : `?vers=<id>`. On le retire de l'URL aussitôt,
+     sans quoi recharger la page rouvrirait le dialogue. */
+  var q = null;
+  try { q = new URLSearchParams(location.search).get('vers'); } catch (_) {}
+  if (q) {
+    var cible = document.getElementById(q);
+    if (!cible || !info[q]) {
+      var t = lignes().filter(function(a){ return info[a.getAttribute('data-id')].src === q; })[0];
+      cible = t || cible;
+    }
+    if (cible && info[cible.getAttribute('data-id')]) {
+      var vid = cible.getAttribute('data-id');
+      if (!dlg) bati();
+      /* La liste ne garde qu'un représentant par titre : on y ajoute celui-ci. */
+      var f = [].filter.call(sel.options, function(o){ return o.value === vid; })[0];
+      if (!f) {
+        var op = [].filter.call(sel.options, function(o){ return o.textContent === titreDe(cible); })[0];
+        if (op) op.value = vid;
+      }
+      ouvre(vid);
+    }
+    if (history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
+  }
+})();
