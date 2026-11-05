@@ -3062,6 +3062,21 @@ Les quatre s'appuient sur des repères que les dix pages portent toutes —
 `--uni` — et sur rien d'autre. Une onzième page les reçoit d'elle-même si elle
 les porte.
 
+### La date de chaque coche, posée le 5 novembre 2026
+
+`prog[id]` ne dit que 1 ou rien. **`cg-dates`, une clé globale `{id:"AAAA-MM-JJ"}`**,
+porte le jour de chaque coche, depuis `e-app.js` : pas de quoi faire un bilan
+aujourd'hui, mais un historique qui ne se rattrape pas. Elle prépare le récap,
+sans encore rien afficher.
+
+- **Seule la case cliquée est datée**, pas ce que `bridge()` coche par ricochet :
+  ce serait compter deux fois la même œuvre. Le Maj + clic y passe.
+- **Qui lit la clé la croise avec la progression** : « Réinitialiser » vide celle-ci
+  sans passer par `e-app.js`, et une date peut survivre à sa coche.
+- **Les quatorze exports la portent** (`dates`), posée dans les **sources** ; l'import
+  fusionne, le plus récent gagnant. **Le lien de transfert ne la porte pas** : il doit
+  tenir dans un QR code.
+
 ### Où regarder, dans la fiche TMDB
 
 Posé le 1er octobre 2026, dans `e-app.js`. La fiche ouverte porte une ligne

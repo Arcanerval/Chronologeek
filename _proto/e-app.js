@@ -20,6 +20,63 @@ window.CG_RES = function(cle, h){
   } catch (_) {}
 };
 
+/* ═══ LA DATE DE CHAQUE COCHE ═══════════════════════════════════════════
+   Posée le 5 novembre 2026. `prog[id]` ne dit que 1 ou rien : sans date, ni
+   bilan de l'année, ni « cette semaine », et un historique qui ne se
+   rattrape pas — chaque mois sans date est perdu pour de bon.
+
+   **Une clé à part, `cg-dates`, `{id:"AAAA-MM-JJ"}`, le jour et pas l'heure**
+   : l'heure n'apprendrait rien et dirait quand le visiteur regarde. Rien dans
+   les pages : ce bloc écoute après elles, comme le Maj + clic, et lit l'état
+   neuf dans `aria-checked` — les clics rejoués d'une plage passent donc ici.
+
+   **Seule la case cliquée est datée.** Ce que `bridge()` coche par ricochet
+   est la même œuvre, vue une seule fois : la dater ferait compter deux fois.
+   Une coche d'avant ce bloc n'a pas de date, et n'en recevra pas. Et une date
+   ne vaut que si la coche existe encore : « Réinitialiser » vide la progression
+   sans passer par ici, donc qui lit cette clé la croise avec la progression.
+
+   L'export des pages et celui de l'accueil la portent (`dates`), l'import
+   fusionne, le plus récent gagnant. Le lien de transfert ne la porte pas : il
+   doit tenir dans un QR code, et rien n'y est perdu — comme les images des
+   ajouts, elle reste sur l'appareil qui l'a. */
+window.CG_DATES = function(entrants){
+  var k = 'cg-dates', d = {};
+  try { d = JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (_) {}
+  if (entrants && typeof entrants === 'object') {
+    Object.keys(entrants).forEach(function(i){
+      if (/^\d{4}-\d{2}-\d{2}$/.test(entrants[i]) && !(d[i] >= entrants[i])) d[i] = entrants[i];
+    });
+    try { localStorage.setItem(k, JSON.stringify(d)); } catch (_) {}
+  }
+  return d;
+};
+(function(){
+  'use strict';
+  document.addEventListener('click', function(ev){
+    var c = ev.target.closest && ev.target.closest('[data-check]');
+    var l = c && c.closest('[data-id]');
+    if (!l) return;
+    var d = window.CG_DATES(), id = l.getAttribute('data-id');
+    if (c.getAttribute('aria-checked') === 'true') {
+      var n = new Date();
+      d[id] = n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2);
+    } else delete d[id];
+    try { localStorage.setItem('cg-dates', JSON.stringify(d)); } catch (_) {}
+  });
+  /* L'import d'une page est à elle : on relit le même fichier à côté, en
+     capture, avant que la page ne vide le champ. */
+  document.addEventListener('change', function(ev){
+    var f = ev.target && ev.target.id === 'import-file' && ev.target.files && ev.target.files[0];
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function(){
+      try { window.CG_DATES(JSON.parse(r.result).dates); } catch (_) {}
+    };
+    r.readAsText(f);
+  }, true);
+})();
+
 /* ═══ STOCKAGE PERSISTANT ═════════════════════════════════════════════
    Un navigateur peut effacer tout seul ce que le site a écrit, et le
    visiteur n'y est pour rien : Safari le fait après sept jours sans
@@ -1774,7 +1831,7 @@ function cgBillet(){
       coches += cles.filter(function(k){ return !PARCOURS.test(k); }).length;
       ajouts += m.length;
     });
-    return { universes: out, n: n, coches: coches, ajouts: ajouts };
+    return { universes: out, dates: window.CG_DATES(), n: n, coches: coches, ajouts: ajouts };
   }
 
   /* ── la fusion des ajouts, celle de `e-perso.js` ──────────────────
@@ -2293,7 +2350,7 @@ function cgBillet(){
     out.addEventListener('click', function(){
       var r = recolte();
       var f = { chronologeek: 1, kind: 'all', date: new Date().toISOString(),
-                universes: r.universes };
+                universes: r.universes, dates: r.dates };
       var last = lis('cg_last', null);
       if (last) f.last = last;
       var a = document.createElement('a');
@@ -2341,6 +2398,7 @@ function cgBillet(){
         }
       });
       if (d.last && typeof d.last === 'object') pose('cg_last', d.last);
+      window.CG_DATES(d.dates);
 
       if (refus) return dit(T.plein);
       if (!faits) return dit(T.vide);

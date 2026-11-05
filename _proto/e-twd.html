@@ -2411,7 +2411,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({universe:'twd',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    var blob=new Blob([JSON.stringify({dates:window.CG_DATES?CG_DATES():undefined,universe:'twd',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-twd.json';
