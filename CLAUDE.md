@@ -11,7 +11,7 @@ Des scripts Python génèrent ou enrichissent les pages et sont lancés par GitH
   `assassinscreed.html`, `dcanimation.html`, `jurassicworld.html`
 - `/fr/` = version **française**, mêmes noms de fichiers
 - `/deep-dives/star-wars.html` et `/fr/dossiers/star-wars.html` = le Dossier
-  (548 romans, comics, mangas et fictions audio, plus 63 repères écran)
+  (550 romans, comics, mangas et fictions audio, plus 63 repères écran)
 - `index.html`, `whats-new.html` / `nouveautes.html`, `upcoming.html` / `a-venir.html`
 - `/data/` — les entrées de chaque page, `<nom de page>-fr.js` et `-en.js`
 - `app.js` — le moteur, bilingue, un seul fichier
@@ -2054,12 +2054,23 @@ Six points qui ont coûté quelque chose :
 Le Dossier n'était relu contre rien : son premier jet vient de la prod d'avant la
 refonte, et les œuvres n'y entrent qu'à mesure qu'on les remarque. **Le 5 novembre
 2026, la comparaison avec la « Timeline of canon media » a trouvé deux trous** —
-*Jedi Knights 1-10* et *Vague de Terreur 1-4*, sortis en 2025 —, et Niko a fait entrer
+*Jedi Knights* et *Vague de Terreur 1-4*, sortis en 2025 —, et Niko a fait entrer
 deux mangas : *La Haute République : Un Équilibre Fragile* (quatre tomes, Prologue,
 Prémonition) et *Path of the Lightsaber 1*. Un manga reste `k:"comic"`, avec
 `note:"Manga"`. **Les adaptations d'œuvres déjà au guide n'y entrent pas** (*The Book
 of Boba Fett*, les mangas de *The Mandalorian* et de *Fallen Order*), ni *Beyond
-Victory*, qui accompagne un jeu en réalité virtuelle : tranché par Niko le même jour.
+Victory*, qui accompagne un jeu en réalité virtuelle, ni les one-shots sans histoire
+— *Life Day*, *Tales from the Rancor Pit*, *Tales from the Death Star*, l'annuel
+*Jaxxon*, *Journey to Danger!* : tranché par Niko le même jour, ne pas les reproposer.
+
+**L'ordre écrit par Wookieepedia n'est pas celui du Dossier.** Niko a placé *Vague de
+Terreur* en 23 BBY, juste avant l'Épisode II, là où le wiki dit « By 21 BBY », et
+coupé *Jedi Knights* autour du Free Comic Book Day 2025 : le wiki donne le rang d'une
+œuvre, il ne tranche pas.
+
+**Rattraper un oubli n'est pas une nouveauté** : aucune carte au journal pour ces
+ajouts-là. Niko le redit le 5 novembre 2026, « les corrections c'est pas des
+nouveautés ». Nouveautés ne porte que ce qui entre au guide parce que c'est neuf.
 
 Le titre français se cherche à la BnF, par le titre de la série en anglais : le
 catalogue range *Jedi Knights* sous « Les gardiens de la République » et « Une voie

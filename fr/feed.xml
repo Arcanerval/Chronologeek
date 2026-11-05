@@ -5,36 +5,8 @@
   <link rel="self" type="application/atom+xml" href="https://chronologeek.app/fr/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/nouveautes"/>
   <id>https://chronologeek.app/fr/feed.xml</id>
-  <updated>2026-11-01T12:00:00Z</updated>
+  <updated>2026-10-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
-  <entry>
-    <title>Jedi Knights 1-10</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#40-34-bby-jedi-knights-1-10"/>
-    <id>tag:chronologeek.app,2026-11:jedi-knights-1-10</id>
-    <updated>2026-11-01T12:00:00Z</updated>
-    <summary>Ajouté au Dossier Star Wars — le comic, en 40-34 BBY, juste après Maître et Apprenti.</summary>
-  </entry>
-  <entry>
-    <title>Histoires de l'Hyperespace : Vague de Terreur 1-4</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#21-bby-hyperspace-stories-tides-of-terror-1-4"/>
-    <id>tag:chronologeek.app,2026-11:histoires-de-l-hyperespace-vague-de-terreur-1-4</id>
-    <updated>2026-11-01T11:59:00Z</updated>
-    <summary>Ajouté au Dossier Star Wars — le comic, en 21 BBY, juste après Rogue Agents.</summary>
-  </entry>
-  <entry>
-    <title>La Haute République : Un Équilibre Fragile</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#232-231-bby-the-high-republic-the-edge-of-balance-1"/>
-    <id>tag:chronologeek.app,2026-11:la-haute-republique-un-equilibre-fragile</id>
-    <updated>2026-11-01T11:58:00Z</updated>
-    <summary>Ajouté au Dossier Star Wars — le manga, ses quatre tomes, son Prologue et Prémonition, au fil de la Haute République.</summary>
-  </entry>
-  <entry>
-    <title>Path of the Lightsaber 1</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#34-aby-path-of-the-lightsaber-1"/>
-    <id>tag:chronologeek.app,2026-11:path-of-the-lightsaber-1</id>
-    <updated>2026-11-01T11:57:00Z</updated>
-    <summary>Ajouté au Dossier Star Wars — le manga, en 34 ABY, juste après The Fall of Kylo Ren.</summary>
-  </entry>
   <entry>
     <title>Rogue One : Dark Vador</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#1-bby-rogue-one-darth-vader"/>
@@ -216,5 +188,33 @@
     <id>tag:chronologeek.app,2026-07:legacy</id>
     <updated>2026-07-01T11:59:00Z</updated>
     <summary>Ajouté au Dossier Star Wars — le nouveau roman, en 34 ABY, juste avant Le Prix de la Liberté.</summary>
+  </entry>
+  <entry>
+    <title>Supergirl (2026)</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc#dcu-supergirl"/>
+    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
+    <updated>2026-07-01T11:58:00Z</updated>
+    <summary>Ajoutée à la timeline DC, à la suite du DCU.</summary>
+  </entry>
+  <entry>
+    <title>Nouveau Dossier : romans &amp; comics Star Wars</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars"/>
+    <id>tag:chronologeek.app,2026-07:nouveau-dossier-romans-comics-star-wars</id>
+    <updated>2026-07-01T11:57:00Z</updated>
+    <summary>533 entrées dans l'ordre de lecture, avec 63 repères à l'écran pour situer les films et les séries.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : Avatar Legends</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/avatar"/>
+    <id>tag:chronologeek.app,2026-07:nouvelle-timeline-avatar-legends</id>
+    <updated>2026-07-01T11:56:00Z</updated>
+    <summary>69 entrées, des romans de Yangchen, Kyoshi et Roku jusqu'à l'ère de Korra. Épisodes, comics et romans dans l'ordre chronologique, avec la disponibilité VF/VO de chaque média.</summary>
+  </entry>
+  <entry>
+    <title>Nouvelle timeline : DC Multivers</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc"/>
+    <id>tag:chronologeek.app,2026-06:nouvelle-timeline-dc-multivers</id>
+    <updated>2026-06-01T12:00:00Z</updated>
+    <summary>Le guide complet Elseworlds · Arrowverse · DCEU · DCU, avec l'événement majeur sans spoil.</summary>
   </entry>
 </feed>
