@@ -168,7 +168,7 @@ function dateMonde(blocs) {
    saison, ou de la même série de numéros. */
 function memeSuite(p, q) {
   if (p.carte !== q.carte) return false;
-  if (p.num || q.num) return !!(p.num && q.num && p.i + 1 === q.i);
+  if (p.num || q.num) return !!(p.num && q.num && p.i + 1 === q.i && p.num.v === q.num.v);
   if (p.seul || q.seul) return false;
   return p.t === q.t && p.s === q.s;
 }
@@ -220,7 +220,10 @@ function morceauNumeros(x, m, BYID) {
   const id = (x.id || (x.ref + '-rl')) + '-n' + a + (a === z ? '' : '-' + z);
   const tous = x.ref ? [x.ref] : x.covers;
   const covers = [...new Set(m.map(t => t.num.c || tous).flat())];
-  const out = { id, covers, subitems: [a === z ? '#' + a : '#' + a + '-' + z] };
+  /* Le numéro à l'intérieur de son volume : « Die With Honor #1-3 ». */
+  const nu = m[0].num, nz = m[m.length - 1].num;
+  const pa = nu.v ? nu.k : a, pz = nu.v ? nz.k : z;
+  const out = { id, covers, subitems: [(nu.v ? nu.v + ' ' : '') + (pa === pz ? '#' + pa : '#' + pa + '-' + pz)] };
   const d = dateMonde(covers.map(i => BYID[i]));
   if (d) out.date = d;
   if (x.drop) out.drop = x.drop;

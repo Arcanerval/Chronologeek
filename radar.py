@@ -1380,6 +1380,72 @@ def source_witcher():
         f"{passees} déjà sortie(s) — {len(textes)} page(s) lue(s)")
 
 
+# Blade Runner : TMDB porte les films et les séries, pas les comics de Titan. Le
+# wiki les tient, série par série, dans un tableau : un lien « … #2 » et sa date.
+BR_WIKI = "https://bladerunner.fandom.com/api.php"
+# Le wiki écrit « TBA » tant que personne ne l'a mis à jour, alors que Titan a
+# déjà annoncé la date. Elle sert en attendant, et le wiki l'emporte dès qu'il en
+# porte une. Relevé dans les annonces de Titan chez Bleeding Cool (décembre 2026,
+# janvier 2027).
+BR_ANNONCES = {
+    "Blade Runner: Tokyo Nexus: Die With Honor #2": "2026-12-02",
+    "Blade Runner: Tokyo Nexus: Die With Honor #3": "2027-01-13",
+}
+
+
+def source_bladerunner():
+    try:
+        r = requests.get(BR_WIKI, timeout=30, headers=UA_BROWSER, params={
+            "action": "query", "list": "categorymembers", "cmlimit": 100,
+            "cmnamespace": 0, "cmtitle": "Category:Comic books",
+            "format": "json", "formatversion": 2})
+        r.raise_for_status()
+        titres = [m["title"] for m in r.json().get("query", {}).get("categorymembers", [])]
+    except Exception as e:
+        log(f"Blade Runner : ÉCHEC — catégorie illisible — {str(e)[:100]}")
+        return
+    n = sans_date = passees = 0
+    textes = {}
+    for i in range(0, len(titres), 50):
+        try:
+            r = requests.get(BR_WIKI, timeout=45, headers=UA_BROWSER, params={
+                "action": "query", "prop": "revisions", "rvprop": "content",
+                "rvslots": "main", "redirects": 1, "titles": "|".join(titres[i:i + 50]),
+                "format": "json", "formatversion": 2})
+            r.raise_for_status()
+            for p in r.json().get("query", {}).get("pages", []):
+                revs = p.get("revisions") or []
+                if revs:
+                    textes[p["title"]] = (revs[0].get("slots", {})
+                                          .get("main", {}) or {}).get("content", "")
+        except Exception as e:
+            log(f"Blade Runner : lot de pages illisible — {str(e)[:100]}")
+    for wikitexte in textes.values():
+        syn = clean_wikitext(wikitexte)
+        for ligne in re.split(r"\n\|-", wikitexte):
+            propre = re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", ligne)
+            propre = re.sub(r"'{2,}|align=\"?center\"?\s*\|", "", propre)
+            cellules = [c.strip() for c in re.split(r"\n\|", propre) if c.strip()]
+            if len(cellules) < 2 or not re.search(r"#\d+$", cellules[0]):
+                continue
+            nom = re.sub(r"\s+", " ", cellules[0])
+            ds, dt, prec = loose_date(cellules[1])
+            if prec != "day" and nom in BR_ANNONCES:
+                ds, dt, prec = loose_date(BR_ANNONCES[nom])
+            if prec != "day":
+                sans_date += 1
+                continue
+            if ds < TODAY.isoformat():
+                passees += 1
+                continue
+            if ds > HORIZON.isoformat():
+                continue
+            add("bladerunner", nom, ds, dt, "Comic", "Blade Runner Wiki", prec, syn=syn)
+            n += 1
+    log(f"Blade Runner : {n} numéro(s) daté(s) · {sans_date} sans date · "
+        f"{passees} déjà sorti(s) — {len(textes)} page(s) lue(s)")
+
+
 def normalize(s):
     s = html.unescape(s or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s)
@@ -1918,9 +1984,10 @@ def main():
     except Exception:
         veille = []
     WIKIS = {source_avatar_almanac: "Avatar Almanac", source_wookieepedia: "Wookieepedia",
-             source_assassinscreed: "Assassin's Creed Wiki", source_witcher: "Witcher Wiki"}
+             source_assassinscreed: "Assassin's Creed Wiki", source_witcher: "Witcher Wiki",
+             source_bladerunner: "Blade Runner Wiki"}
     for fn in (source_tmdb, source_avatar_almanac, source_wookieepedia,
-               source_startrek, source_assassinscreed, source_witcher):
+               source_startrek, source_assassinscreed, source_witcher, source_bladerunner):
         avant = len(results)
         try:
             fn()

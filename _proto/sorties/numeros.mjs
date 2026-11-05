@@ -6,15 +6,23 @@
    Relevé le 4 novembre 2026 sur les wikis Fandom, par l'API MediaWiki — les
    tableaux de numéros de Blade Runner et d'Assassin's Creed, l'infobox de The
    Witcher et de Dragon Age, la page de chaque tome d'Avatar. Assassin's Creed :
-   première parution, en France pour Bloodstone. Blade Runner : Tokyo Nexus
-   s'arrête aux quatre numéros du premier volume, les deux suivants n'étant pas
-   au guide. */
+   première parution, en France pour Bloodstone.
+
+   Une série qui n'est pas finie reste ouverte : Tokyo Nexus compte trois volumes,
+   `v` nomme le volume et `k` le numéro à l'intérieur (les `n` se suivent d'un
+   volume à l'autre). Die With Honor #2 et #3 viennent des annonces de Titan chez
+   Bleeding Cool, le wiki écrivant encore « TBA » ; le #4 n'a pas de date, il
+   entrera ici le jour où il en aura une. */
 export const NUMEROS = {
   'br-rl-2019': [{ n: 1, d: '2019-07-17', c: 'br-2019' }, { n: 2, d: '2019-08-21', c: 'br-2019' }, { n: 3, d: '2019-09-18', c: 'br-2019' }, { n: 4, d: '2019-10-09', c: 'br-2019' }, { n: 5, d: '2019-12-18', c: 'br-2019-5-12' }, { n: 6, d: '2020-02-19', c: 'br-2019-5-12' }, { n: 7, d: '2020-03-25', c: 'br-2019-5-12' }, { n: 8, d: '2020-08-05', c: 'br-2019-5-12' }, { n: 9, d: '2020-08-26', c: 'br-2019-5-12' }, { n: 10, d: '2020-09-23', c: 'br-2019-5-12' }, { n: 11, d: '2020-10-21', c: 'br-2019-5-12' }, { n: 12, d: '2020-11-18', c: 'br-2019-5-12' }],
   'br-2029': [{ n: 1, d: '2020-12-16' }, { n: 2, d: '2021-01-13' }, { n: 3, d: '2021-03-10' }, { n: 4, d: '2021-04-07' }, { n: 5, d: '2021-06-30' }, { n: 6, d: '2021-08-04' }, { n: 7, d: '2021-08-24' }, { n: 8, d: '2021-09-29' }, { n: 9, d: '2021-11-03' }, { n: 10, d: '2021-12-01' }, { n: 11, d: '2022-01-05' }, { n: 12, d: '2022-02-09' }],
   'br-origins': [{ n: 1, d: '2021-03-10' }, { n: 2, d: '2021-03-24' }, { n: 3, d: '2021-04-21' }, { n: 4, d: '2021-05-19' }, { n: 5, d: '2021-08-18' }, { n: 6, d: '2021-09-15' }, { n: 7, d: '2021-10-13' }, { n: 8, d: '2021-11-19' }, { n: 9, d: '2022-02-16' }, { n: 10, d: '2022-03-16' }, { n: 11, d: '2022-04-20' }, { n: 12, d: '2022-06-08' }],
   'br-2039': [{ n: 1, d: '2022-12-07' }, { n: 2, d: '2023-01-11' }, { n: 3, d: '2023-02-08' }, { n: 4, d: '2023-04-19' }, { n: 5, d: '2023-07-26' }, { n: 6, d: '2023-08-23' }, { n: 7, d: '2023-09-27' }, { n: 8, d: '2023-10-25' }, { n: 9, d: '2024-01-24' }, { n: 10, d: '2024-02-14' }, { n: 11, d: '2024-03-20' }, { n: 12, d: '2024-04-17' }],
-  'br-tokyonexus': [{ n: 1, d: '2024-07-31' }, { n: 2, d: '2024-08-28' }, { n: 3, d: '2024-09-25' }, { n: 4, d: '2024-10-23' }],
+  'br-tokyonexus': [{ n: 1, d: '2024-07-31' }, { n: 2, d: '2024-08-28' }, { n: 3, d: '2024-09-25' }, { n: 4, d: '2024-10-23' },
+    { n: 5, d: '2026-05-06', v: 'To Lose is to Win', k: 1 }, { n: 6, d: '2026-06-03', v: 'To Lose is to Win', k: 2 },
+    { n: 7, d: '2026-07-01', v: 'To Lose is to Win', k: 3 }, { n: 8, d: '2026-08-12', v: 'To Lose is to Win', k: 4 },
+    { n: 9, d: '2026-11-04', v: 'Die With Honor', k: 1 }, { n: 10, d: '2026-12-02', v: 'Die With Honor', k: 2 },
+    { n: 11, d: '2027-01-13', v: 'Die With Honor', k: 3 }],
   'br-bl-leavingla': [{ n: 1, d: '2022-08-10' }, { n: 2, d: '2022-09-07' }, { n: 3, d: '2022-10-05' }, { n: 4, d: '2022-11-02' }],
   'br-bl-lasvegas': [{ n: 1, d: '2025-09-17' }, { n: 2, d: '2025-10-15' }, { n: 3, d: '2025-12-17' }, { n: 4, d: '2026-03-04' }],
   'avt-la-promesse-the-promise': [{ n: 1, d: '2012-01-25' }, { n: 2, d: '2012-05-30' }, { n: 3, d: '2012-09-26' }],

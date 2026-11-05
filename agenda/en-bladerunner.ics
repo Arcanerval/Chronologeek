@@ -21,4 +21,26 @@ DESCRIPTION:Fifty years after the events of Blade Runner 2049\, Los Angeles
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:ab5c2e2503c92ec5205c-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Blade Runner: Tokyo Nexus: Die With Honor #2
+DESCRIPTION:Blade Runner: Tokyo Nexus is a comic book series by Titan Comic
+ s.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:9d348bab0adb5af9d98c-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Blade Runner: Tokyo Nexus: Die With Honor #3
+DESCRIPTION:Blade Runner: Tokyo Nexus is a comic book series by Titan Comic
+ s.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

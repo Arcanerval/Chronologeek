@@ -101,6 +101,23 @@
   "date_txt_fr": ""
  },
  {
+  "universe": "bladerunner",
+  "title": "Blade Runner: Tokyo Nexus: Die With Honor #2",
+  "date_sort": "2026-12-02",
+  "date_txt": "02/12/2026",
+  "kind": "Comic",
+  "source": "Blade Runner Wiki",
+  "precision": "day",
+  "era": "",
+  "syn": "Blade Runner: Tokyo Nexus is a comic book series by Titan Comics.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "comic",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
   "universe": "witcher",
   "title": "Andrzej Sapkowski's The Witcher: The Last Wish–The Complete Collection",
   "date_sort": "2026-12-15",
@@ -161,6 +178,23 @@
   "poster": "/kjcsNeqF52YUQ2rUBGLMHwLkxvR.jpg",
   "tmdb": 138503,
   "media": "tv"
+ },
+ {
+  "universe": "bladerunner",
+  "title": "Blade Runner: Tokyo Nexus: Die With Honor #3",
+  "date_sort": "2027-01-13",
+  "date_txt": "13/01/2027",
+  "kind": "Comic",
+  "source": "Blade Runner Wiki",
+  "precision": "day",
+  "era": "",
+  "syn": "Blade Runner: Tokyo Nexus is a comic book series by Titan Comics.",
+  "wiki": "",
+  "syn_fr": "",
+  "kindKey": "comic",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
  },
  {
   "universe": "starwars",

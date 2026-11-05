@@ -22,4 +22,26 @@ DESCRIPTION:Série\n\nDans le Los Angeles de 2099\, Cora a vécu toute sa v
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:ab5c2e2503c92ec5205c-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Blade Runner: Tokyo Nexus: Die With Honor #2
+DESCRIPTION:Comic\n\nBlade Runner: Tokyo Nexus is a comic book series by Ti
+ tan Comics.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:9d348bab0adb5af9d98c-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Blade Runner: Tokyo Nexus: Die With Honor #3
+DESCRIPTION:Comic\n\nBlade Runner: Tokyo Nexus is a comic book series by Ti
+ tan Comics.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

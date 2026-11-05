@@ -2645,7 +2645,8 @@ function cgBillet(){
                 ['Wookieepedia', 'https://starwars.fandom.com/wiki/Timeline_of_canon_media#js'],
                 ['Avatar Almanac', 'https://avataralmanac.com/'],
                 ['Assassin’s Creed Wiki', 'https://assassinscreed.fandom.com/'],
-                ['Witcher Wiki', 'https://witcher.fandom.com/']]
+                ['Witcher Wiki', 'https://witcher.fandom.com/'],
+                ['Blade Runner Wiki', 'https://bladerunner.fandom.com/']]
   };
   SOURCES.upcoming = SOURCES['a-venir'];
   var PROTO = { twd: 'walkingdead', jurassic: 'jurassicworld', 'dossier-star-wars': 'star-wars' };

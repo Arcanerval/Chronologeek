@@ -199,6 +199,11 @@ que le radar suit.
 `source_avatar_almanac` y ajoute l'écrit, que TMDB ne couvre pas,
 `source_wookieepedia` la timeline des médias canon Star Wars, et
 `source_witcher` les jeux, livres et comics de The Witcher — voir plus bas.
+`source_bladerunner`, posée le 5 novembre 2026, lit les comics de Titan sur
+bladerunner.fandom.com : un tableau par série, un lien « … #2 » et sa date. Le wiki
+écrit souvent « TBA » alors que Titan a déjà annoncé le numéro : `BR_ANNONCES` porte
+ces dates, relevées dans les annonces de Titan chez Bleeding Cool, et le wiki
+l'emporte dès qu'il en a une.
 
 **Un wiki muet reprend la veille**, depuis le 20 octobre 2026. Ce jour-là
 Fandom a rendu 503 à l'API et 403 à la page : les quatorze comics et romans
@@ -1044,7 +1049,11 @@ Dix choses à savoir :
 - **Les comics vivent dans `sorties/numeros.mjs`**, relevé sur les wikis Fandom. Les
   dates écrites jusque-là pour Assassin's Creed étaient parfois celles du recueil :
   *Trial by Fire* passait pour mai 2016, son premier numéro est d'octobre 2015. Un
-  morceau de comic s'écrit `#5-8`, qui se lit pareil dans les deux langues.
+  morceau de comic s'écrit `#5-8`, qui se lit pareil dans les deux langues. **Une
+  série en cours reste ouverte** : *Tokyo Nexus* a trois volumes, nommés par `v`
+  (« Die With Honor #1-3 »), et un numéro annoncé y entre le jour où il a une date,
+  dans `numeros.mjs`, avec son `BR_ANNONCES` côté radar. L'avoir arrêtée au premier
+  volume, le 4 novembre, faisait dire au site que la série s'était finie en 2024.
 - **La traduction** : `Saison N Épisodes a-b` par `valeur()` dans `traduire.mjs`, et
   par gabarit dans `traductions-<u>.mjs` pour les chaînes inversées — ajouté pour
   Blade Runner, dont Black Lotus se coupe. Un morceau qui manque au gabarit bloque

@@ -219,6 +219,7 @@ export const BR_GABARITS = [
       October: 'octobre', November: 'novembre', December: 'décembre' })[m[1]]} ${m[2]}`],
   [/^Season (\d+)$/, m => `Saison ${m[1]}`],
   [/^Season (\d+) Episodes ([\d-]+)$/, m => `Saison ${m[1]} Épisodes ${m[2]}`],
+  [/^(To Lose is to Win|Die With Honor) (#[\d-]+)$/, m => `${m[1]} ${m[2]}`],
   [/^(\d+) \/ (\d+) shown$/, m => `${m[1]} / ${m[2]} affichées`],
   [/^(\d+) entries$/, m => `${m[1]} entrées`],
 ];
