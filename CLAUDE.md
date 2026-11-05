@@ -2071,6 +2071,8 @@ coupé *Jedi Knights* autour du Free Comic Book Day 2025 : le wiki donne le rang
 **Rattraper un oubli n'est pas une nouveauté** : aucune carte au journal pour ces
 ajouts-là. Niko le redit le 5 novembre 2026, « les corrections c'est pas des
 nouveautés ». Nouveautés ne porte que ce qui entre au guide parce que c'est neuf.
+**Et le mois « À jour · … » ne bouge pas non plus**, ni sur la page ni sur la carte
+de l'accueil : tranché par Niko le même jour.
 
 Le titre français se cherche à la BnF, par le titre de la série en anglais : le
 catalogue range *Jedi Knights* sous « Les gardiens de la République » et « Une voie
@@ -4082,7 +4084,8 @@ le dialogue « Mes ajouts » ne s'ouvrait pas sur la page.
   *éditoriale* de l'univers, ce que Niko sait et qu'aucun fichier ne dit — la
   date git d'un `data-*.js` bouge à la moindre correction globale (`legal3` a
   touché les sept le 18 août 2026 sans qu'une seule œuvre soit ajoutée). Il se
-  met à jour à la main, à l'ajout d'un média, et il est dans la checklist.
+  met à jour à la main, à l'ajout d'un média, et il est dans la checklist. **Une
+  correction ou un oubli rattrapé ne le fait pas bouger.**
   Ce qui a été corrigé le 18 août, c'est l'anglais : trois cases disaient
   « Updated » et trois « Up to date ». Les neuf portent maintenant « Updated · »,
   ou « In progress » pour la case verrouillée.

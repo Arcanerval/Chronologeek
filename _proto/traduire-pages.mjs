@@ -338,7 +338,6 @@ const TRADUCTIONS = [
      l'ajout de Hiding from the Dark. Même moule, seul le mois change. */
   ['À jour · septembre 2026', 'Updated · September 2026'],
   ['À jour · octobre 2026', 'Updated · October 2026'],
-  ['À jour · novembre 2026', 'Updated · November 2026'],
 
   /* ── le bandeau de la page DC, passé à août le 18 août 2026 ──────
      La prod écrit « Updated · July 2026 » sur les quatre bandeaux ; seul
@@ -720,7 +719,6 @@ const TRADUCTIONS = [
   // le mois de la case, seul : le lexique le rendait en minuscules
   ['septembre 2026', 'September 2026'],
   ['octobre 2026', 'October 2026'],
-  ['novembre 2026', 'November 2026'],
   ['août 2026', 'August 2026'],
   ['Lignes en', 'Lines under'],
   ['chantier', 'construction'],
