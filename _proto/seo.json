@@ -195,6 +195,20 @@
       "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
     }
   },
+  "monsterverse": {
+    "fr": {
+      "title": "Chronologie Monsterverse : Godzilla et Kong | Chronologeek",
+      "ogTitle": "Timeline Monsterverse — Chronologeek",
+      "desc": "La timeline Monsterverse dans l’ordre chronologique ou de sortie — 18 œuvres, films, séries, comics et jeu, de Skull Island en 1973 à 2027, sans spoil.",
+      "image": "https://chronologeek.app/images/monsterverse.webp"
+    },
+    "en": {
+      "title": "Monsterverse Timeline, Watch &amp; Release Order | Chronologeek",
+      "ogTitle": "Monsterverse Timeline — Chronologeek",
+      "desc": "The Monsterverse timeline in chronological or release order — 18 entries, movies, shows, comics and a game, from Skull Island in 1973 to 2027, spoiler-free.",
+      "image": "https://chronologeek.app/images/monsterverse.webp"
+    }
+  },
   "dossiers": {
     "fr": {
       "title": "Dossiers : ordres de lecture et guides | Chronologeek",
@@ -240,14 +254,14 @@
   "a-venir": {
     "fr": {
       "title": "Prochaines sorties — Star Wars, Marvel, DC | Chronologeek",
-      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher &amp; Blade Runner | Chronologeek",
-      "desc": "Les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher et Blade Runner — films, séries, comics et jeux datés.",
+      "ogTitle": "Prochaines sorties — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner &amp; Monsterverse | Chronologeek",
+      "desc": "Les prochaines sorties Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner et Monsterverse — films, séries, jeux.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     },
     "en": {
       "title": "Upcoming Releases — Star Wars, Marvel, DC | Chronologeek",
-      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher &amp; Blade Runner | Chronologeek",
-      "desc": "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher and Blade Runner release — movies, shows, comics, games.",
+      "ogTitle": "Upcoming Releases — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner &amp; Monsterverse | Chronologeek",
+      "desc": "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner and Monsterverse release — movies, shows, games.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   }

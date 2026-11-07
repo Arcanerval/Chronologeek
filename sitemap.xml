@@ -71,6 +71,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/bladerunner"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/bladerunner"/>
   </url>
+  <url><loc>https://chronologeek.app/monsterverse</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/monsterverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/monsterverse"/>
+  </url>
   <url><loc>https://chronologeek.app/deep-dives/</loc>
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
@@ -82,7 +87,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
   </url>
   <url><loc>https://chronologeek.app/whats-new</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
@@ -161,6 +166,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/bladerunner"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/bladerunner"/>
   </url>
+  <url><loc>https://chronologeek.app/fr/monsterverse</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/monsterverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/monsterverse"/>
+  </url>
   <url><loc>https://chronologeek.app/fr/dossiers/</loc>
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/deep-dives/"/>
@@ -172,7 +182,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dossiers/star-wars"/>
   </url>
   <url><loc>https://chronologeek.app/fr/nouveautes</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/whats-new"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/nouveautes"/>
   </url>
@@ -3226,6 +3236,91 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/bladerunner/blade-runner-2049"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/bladerunner/blade-runner-2049"/>
   </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/kong-skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/kong-skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/kong-skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/return-to-skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/return-to-skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/return-to-skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/escape-from-skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/escape-from-skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/escape-from-skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/skull-island-the-birth-of-kong</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/skull-island-the-birth-of-kong"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/skull-island-the-birth-of-kong"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-aftershock</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-aftershock"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-aftershock"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/monarch-legacy-of-monsters</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/monarch-legacy-of-monsters"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/monarch-legacy-of-monsters"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-king-of-the-monsters</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-king-of-the-monsters"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-king-of-the-monsters"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/kingdom-kong</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/kingdom-kong"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/kingdom-kong"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-dominion</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-dominion"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-dominion"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-fight-or-flight</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-fight-or-flight"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-fight-or-flight"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-vs-kong</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-vs-kong"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-vs-kong"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/kong-survivor-instinct</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/kong-survivor-instinct"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/kong-survivor-instinct"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-x-kong-the-hunted</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-x-kong-the-hunted"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-x-kong-the-hunted"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/monsterverse-declassified</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/monsterverse-declassified"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/monsterverse-declassified"/>
+  </url>
+  <url><loc>https://chronologeek.app/works/monsterverse/godzilla-x-kong-the-new-empire</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-x-kong-the-new-empire"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-x-kong-the-new-empire"/>
+  </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/starwars/episode-i-the-phantom-menace</loc>
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/starwars/episode-i-the-phantom-menace"/>
@@ -6270,5 +6365,90 @@
     <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/bladerunner/blade-runner-2049"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/bladerunner/blade-runner-2049"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/kong-skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/kong-skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/kong-skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/return-to-skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/return-to-skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/return-to-skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/escape-from-skull-island</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/escape-from-skull-island"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/escape-from-skull-island"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/skull-island-the-birth-of-kong</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/skull-island-the-birth-of-kong"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/skull-island-the-birth-of-kong"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-aftershock</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-aftershock"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-aftershock"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/monarch-legacy-of-monsters</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/monarch-legacy-of-monsters"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/monarch-legacy-of-monsters"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-king-of-the-monsters</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-king-of-the-monsters"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-king-of-the-monsters"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/kingdom-kong</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/kingdom-kong"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/kingdom-kong"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-dominion</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-dominion"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-dominion"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-fight-or-flight</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-fight-or-flight"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-fight-or-flight"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-vs-kong</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-vs-kong"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-vs-kong"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/kong-survivor-instinct</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/kong-survivor-instinct"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/kong-survivor-instinct"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-x-kong-the-hunted</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-x-kong-the-hunted"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-x-kong-the-hunted"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/monsterverse-declassified</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/monsterverse-declassified"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/monsterverse-declassified"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-x-kong-the-new-empire</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/monsterverse/godzilla-x-kong-the-new-empire"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/monsterverse/godzilla-x-kong-the-new-empire"/>
   </url>
 </urlset>

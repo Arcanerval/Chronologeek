@@ -42,6 +42,7 @@ const UNIVERS = {
   witcher:        { code: 'TW',  page: 'en-witcher',        data: 'data-witcher',        encre: '#b0bec5', cover: 'witcher' },
   residentevil:   { code: 'RE',  page: 'en-residentevil',   data: 'data-re',             encre: '#dc0000', cover: 'residentevil' },
   bladerunner:    { code: 'BR',  page: 'en-bladerunner',    data: 'data-bladerunner',    encre: '#ff5f1f', cover: 'bladerunnertimeline' },
+  monsterverse:   { code: 'MV',  page: 'en-monsterverse',   data: 'data-monsterverse',   encre: '#d946ef', cover: 'monsterverse' },
 };
 
 /* encres des badges de type, charte du site — repli si la page n'a pas son --t-* */
@@ -202,7 +203,7 @@ const TRIANGLE = '<svg class="lvi imp" viewBox="0 0 24 24" aria-hidden="true">' 
 
 /* le filet aux douze encres du pied de page et des barres du bas */
 const DOUZE = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
-               '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f'];
+               '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f','#d946ef'];
 const FILET = 'linear-gradient(90deg,' + DOUZE.map((c, i) =>
   `${c} ${(i * 100 / DOUZE.length).toFixed(2)}% ${((i + 1) * 100 / DOUZE.length).toFixed(2)}%`).join(',') + ')';
 

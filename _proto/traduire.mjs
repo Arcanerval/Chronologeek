@@ -388,6 +388,14 @@ const TRADUCTIONS = [
   ['Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après Rogue One : Cassian Andor et juste avant le film.',
    'Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Cassian Andor and just before the movie.'],
 
+  /* ── la carte Monsterverse du 7 novembre 2026 ───────────────────
+     Trois films ont un titre français, pris chez TMDB ; l'anglais reprend
+     les titres d'origine. */
+  ['Nouvelle timeline : Monsterverse', 'New timeline: Monsterverse'],
+  ["Les films, les séries Monarch et Skull Island, les comics et le jeu dans l'ordre chronologique — 18 œuvres, de Kong : Skull Island en 1973 à Godzilla x Kong : Le Nouvel Empire.",
+   'The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.'],
+  ['Novembre 2026', 'November 2026'],
+
   /* ── la carte Blade Runner du 12 octobre 2026 ───────────────────
      Rien n'y change de nom : les films, Black Lotus et les comics portent
      le même titre des deux côtés. */

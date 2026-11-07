@@ -177,16 +177,16 @@ export const BR_TRADUCTIONS = [
    'Films · Courts métrages · Série · Comics — tout l’univers Blade Runner dans son ordre le '
    + 'plus optimisé.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner and Monsterverse are '
    + 'trademarks of their respective owners; Chronologeek is an independent fan project.',
    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil et Blade Runner sont des '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner et Monsterverse sont des '
    + 'marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil and Blade Runner are '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner and Monsterverse are '
    + 'trademarks of their respective owners; Chronologeek is an independent fan project.',
    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil et Blade Runner sont des '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner et Monsterverse sont des '
    + 'marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   /* les cases du tableau du premier écran */
   ['Shorts', 'Courts'],

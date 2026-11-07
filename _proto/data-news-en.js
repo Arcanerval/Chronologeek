@@ -6,6 +6,9 @@
    Ne pas editer a la main : relancer le script. */
 window.CG_NEWS = {
   months: [
+    { key:"2026-11", label:"November 2026", items:[
+      {"nat":"site","uni":"monsterverse","kind":"timeline","title":"New timeline: Monsterverse","txt":"The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.","img":"/images/monsterverse.webp","href":"en-monsterverse.html","cta":"Open the timeline"}
+    ]},
     { key:"2026-10", label:"October 2026", items:[
       {"nat":"media","uni":"sw","kind":"comic","title":"Rogue One: Darth Vader","meta":"1 BBY","vo":true,"txt":"Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Chirrut & Baze and just before the movie.","href":"en-dossier-star-wars.html#1-bby-rogue-one-darth-vader","cta":"See in the Deep Dive"},
       {"nat":"media","uni":"dc","kind":"film","title":"Clayface","meta":"~202X","txt":"Added to the DC timeline, in the DCU, right before Creature Commandos.","img":"/images/clayface.webp","href":"en-dc.html#dcu-clayface","cta":"See in the timeline"},

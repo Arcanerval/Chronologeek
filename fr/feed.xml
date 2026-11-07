@@ -5,8 +5,15 @@
   <link rel="self" type="application/atom+xml" href="https://chronologeek.app/fr/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/nouveautes"/>
   <id>https://chronologeek.app/fr/feed.xml</id>
-  <updated>2026-10-01T12:00:00Z</updated>
+  <updated>2026-11-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
+  <entry>
+    <title>Nouvelle timeline : Monsterverse</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/monsterverse"/>
+    <id>tag:chronologeek.app,2026-11:nouvelle-timeline-monsterverse</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Les films, les séries Monarch et Skull Island, les comics et le jeu dans l'ordre chronologique — 18 œuvres, de Kong : Skull Island en 1973 à Godzilla x Kong : Le Nouvel Empire.</summary>
+  </entry>
   <entry>
     <title>Rogue One : Dark Vador</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dossiers/star-wars#1-bby-rogue-one-darth-vader"/>
@@ -209,12 +216,5 @@
     <id>tag:chronologeek.app,2026-07:nouvelle-timeline-avatar-legends</id>
     <updated>2026-07-01T11:56:00Z</updated>
     <summary>69 entrées, des romans de Yangchen, Kyoshi et Roku jusqu'à l'ère de Korra. Épisodes, comics et romans dans l'ordre chronologique, avec la disponibilité VF/VO de chaque média.</summary>
-  </entry>
-  <entry>
-    <title>Nouvelle timeline : DC Multivers</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc"/>
-    <id>tag:chronologeek.app,2026-06:nouvelle-timeline-dc-multivers</id>
-    <updated>2026-06-01T12:00:00Z</updated>
-    <summary>Le guide complet Elseworlds · Arrowverse · DCEU · DCU, avec l'événement majeur sans spoil.</summary>
   </entry>
 </feed>

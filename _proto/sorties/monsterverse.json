@@ -1,0 +1,98 @@
+[
+ {
+  "title": "The First Films · 2014-2017",
+  "phase": "ERA 1",
+  "ink": 1,
+  "art": "/images/godzillareturnsera.webp",
+  "entries": [
+   {
+    "ref": "mv-godzilla",
+    "rel": "2014"
+   },
+   {
+    "ref": "mv-kongskullisland",
+    "rel": "2017"
+   },
+   {
+    "ref": "mv-birthofkong",
+    "rel": "2017"
+   }
+  ]
+ },
+ {
+  "title": "Clash of the Titans · 2019-2021",
+  "phase": "ERA 2",
+  "ink": 3,
+  "art": "/images/titansawakensera.webp",
+  "entries": [
+   {
+    "ref": "mv-aftershock",
+    "rel": "2019"
+   },
+   {
+    "ref": "mv-kotm",
+    "rel": "2019"
+   },
+   {
+    "ref": "mv-gvk",
+    "rel": "2021"
+   },
+   {
+    "ref": "mv-dominion",
+    "rel": "2021"
+   },
+   {
+    "ref": "mv-kingdomkong",
+    "rel": "2021"
+   }
+  ]
+ },
+ {
+  "title": "The Expanded Universe · 2023-2026",
+  "phase": "ERA 3",
+  "ink": 4,
+  "art": "/images/hollowearthera.webp",
+  "entries": [
+   {
+    "ref": "mv-skullisland",
+    "rel": "2023"
+   },
+   {
+    "ref": "mv-monarch-s1",
+    "rel": "2023"
+   },
+   {
+    "ref": "mv-fightorflight",
+    "rel": "2024"
+   },
+   {
+    "ref": "mv-hunted",
+    "rel": "2024"
+   },
+   {
+    "ref": "mv-newempire",
+    "rel": "2024"
+   },
+   {
+    "ref": "mv-survivorinstinct",
+    "rel": "2024"
+   },
+   {
+    "ref": "mv-declassified",
+    "rel": "2025"
+   },
+   {
+    "ref": "mv-returntoskullisland",
+    "rel": "2025"
+   },
+   {
+    "ref": "mv-escapefromskullisland",
+    "rel": "2026"
+   },
+   {
+    "ref": "mv-monarch-s2",
+    "rel": "2026"
+   }
+  ]
+ }
+]

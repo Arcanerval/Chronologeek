@@ -38,7 +38,7 @@ import { TETE_REGLAGES } from './reglages.mjs';
 import { ENCRES } from './recherche.mjs';
 
 const CODES = { sw:'SW', mcu:'MCU', dc:'DC', avatar:'AV', startrek:'ST', twd:'TWD', dragonage:'DA',
-  assassinscreed:'AC', dcanimation:'DCA', jurassic:'JW', witcher:'TW', residentevil:'RE', bladerunner:'BR' };
+  assassinscreed:'AC', dcanimation:'DCA', jurassic:'JW', witcher:'TW', residentevil:'RE', bladerunner:'BR', monsterverse:'MV' };
 
 const T = {
   fr: { base:'/fr/oeuvres', accueil:'Accueil', sur:'Sur la ligne', premier:'Départ de la ligne', dernier:'Terminus de la ligne',

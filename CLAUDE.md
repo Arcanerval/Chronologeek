@@ -75,6 +75,11 @@ site dont `RETROUVES` est vide.
 sous `/bladerunner` et `/fr/bladerunner` : le site compte trente-six pages et
 treize univers. Seize œuvres en trois ères — voir « Blade Runner, le treizième
 univers » plus bas.
+**Le Monsterverse est le dixième** — `en-monsterverse.html` +
+`data-monsterverse-en.js` sont la source, `node _proto/traduire-monsterverse.mjs`
+écrit `e-monsterverse.html` et `data-monsterverse.js`. Publié le 7 novembre 2026
+sous `/monsterverse` et `/fr/monsterverse` : le site compte trente-huit pages et
+quatorze univers. Voir « Le Monsterverse, le quatorzième univers » plus bas.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -89,7 +94,7 @@ Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
 Assassin's Creed `#d4a02c`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
 DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`,
 The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`),
-Resident Evil `#dc0000`, Blade Runner `#ff5f1f`.
+Resident Evil `#dc0000`, Blade Runner `#ff5f1f`, Monsterverse `#d946ef`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Assassin's Creed est passé du rouge à l'or le 24 septembre 2026**, sur
@@ -582,6 +587,37 @@ dix des seize arrêts sont des comics. Code de ligne **BR**, trois stations
 - **La clé de stockage est `cg-proto-bladerunner`**, celle du `data-u` de
   l'accueil : pas d'exception à ajouter dans `read()`, contrairement à Star
   Trek, DC Animation et Resident Evil.
+
+## Le Monsterverse, le quatorzième univers
+
+Publié le 7 novembre 2026, bâti sur la page Blade Runner : une ligne, deux
+parcours (chronologique et sortie), pas de table `RT` — neuf des dix-huit
+arrêts sont des comics. Code de ligne **MV**, quatre stations « ÈRE N / 4 ».
+
+- **Les données sortent d'un script** : `node _proto/construire-monsterverse.mjs`
+  écrit `data-monsterverse-en.js` et `sorties/monsterverse.json` depuis le
+  document de Niko, puis relance `detailler-sortie.mjs`. C'est lui qu'on corrige ;
+  la page `en-monsterverse.html` s'édite à la main.
+- **Ères et niveaux posés par moi**, le document n'en ayant pas, validés par
+  Niko à l'écran : Skull Island, Godzilla Returns, The Titans Awaken, Hollow
+  Earth. Films `must`, Monarch `important`, la série Skull Island (tranché par
+  Niko), les neuf comics et le jeu `bonus`.
+- **Le fuchsia `#d946ef`** est celui des plaques de Godzilla dans *Le Nouvel
+  Empire* : les bleus de son souffle sont déjà pris trois fois sur l'accueil.
+- **Badge VO sur les neuf comics** : aucun n'a d'édition française à la BnF.
+  Le jeu n'en porte pas, comme ceux de Resident Evil.
+- ***Godzilla: Fight or Flight*** est l'histoire inédite de l'omnibus *Legends
+  of the Monsterverse* (librairie le 5 mars 2024) : le wiki Godzilla ne la
+  connaît pas, Wikizilla si.
+- **Le jeu n'a pas d'identifiant RAWG** : RAWG répondait 522 le jour de la
+  publication. Sa fiche passe par le titre ; poser l'identifiant dans `tmdb`
+  quand RAWG revient.
+- **Le bouton « remonter en haut » est l'écusson de Monarch, redessiné** (PIL,
+  d'après le logo en nœud papillon de Wikizilla — Fandom bloque les scripts) :
+  intact au repos, brisé au survol à la demande de Niko. 96 px.
+- **Au radar** par Legendary (`TMDB_COMPANY_NAMES`), avec le garde-fou
+  `UNIVERS_TITRE` — Legendary produit aussi Dune et Pacific Rim. *Godzilla x
+  Kong: Supernova* (`movie/1288438`, mars 2027) est la raison de cette ligne.
 
 ## Les parcours
 

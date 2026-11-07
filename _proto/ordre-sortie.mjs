@@ -192,6 +192,21 @@ export const UNIVERS = {
       /* « Leaving L.A. » est la première série Black Lotus de Titan */
     },
   },
+  monsterverse: {
+    fichier: '_proto/data-monsterverse-en.js', global: 'window.MONSTERVERSE',
+    temps: false,
+    /* Films et séries chez TMDB. L'écrit et le jeu viennent du wiki Godzilla
+       (API MediaWiki), relevés le 7 novembre 2026 : un roman graphique à sa
+       sortie en librairie, les trois séries de comics numéro par numéro dans
+       `sorties/numeros.mjs`. Fight or Flight est l'histoire inédite de
+       l'omnibus Legends of the Monsterverse, daté de son édition en librairie
+       (les contributeurs Kickstarter l'ont eu en août 2023). */
+    dates: {
+      'mv-aftershock': '2019-05-21', 'mv-dominion': '2021-04-06', 'mv-kingdomkong': '2021-04-06',
+      'mv-fightorflight': '2024-03-05', 'mv-hunted': '2024-03-26',
+      'mv-survivorinstinct': '2024-10-22', 'mv-declassified': '2025-05-13',
+    },
+  },
   assassinscreed: {
     fichier: '_proto/data-assassinscreed-en.js', global: 'window.ASSASSINSCREED',
     temps: false,

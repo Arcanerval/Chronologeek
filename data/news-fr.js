@@ -19,7 +19,7 @@
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
          assassinscreed | dcanimation | jurassic | witcher |
-         residentevil | bladerunner, ou "" si le changement ne vise pas un univers
+         residentevil | bladerunner | monsterverse, ou "" si le changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -36,6 +36,16 @@ window.CG_NEWS = {
 
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
+    { key:"2026-11", label:"Novembre 2026", items:[
+      { nat:"site", uni:"monsterverse", kind:"timeline",
+        title:"Nouvelle timeline : Monsterverse",
+        txt:"Les films, les séries Monarch et Skull Island, les comics et le "+
+            "jeu dans l'ordre chronologique — 18 œuvres, de Kong : Skull "+
+            "Island en 1973 à Godzilla x Kong : Le Nouvel Empire.",
+        img:"/images/monsterverse.webp",
+        href:"/fr/monsterverse", cta:"Ouvrir la timeline" },
+    ]},
+
     { key:"2026-10", label:"Octobre 2026", items:[
       { nat:"media", uni:"sw", kind:"comic",
         title:"Rogue One : Dark Vador", meta:"1 BBY", vo:true,

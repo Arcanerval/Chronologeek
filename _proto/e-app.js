@@ -144,9 +144,9 @@ function cgBillet(){
     /* le bouton « remonter en haut » se cale au-dessus tant qu'elle est là */
     'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px) + 20px)}',
     '.cgb-rail{display:block;height:8px;border-top:2px solid var(--paper);',
-    '  background:linear-gradient(90deg,#4d9fff 0 7.69%,#e23636 0 15.38%,#f5c842 0 23.08%,',
-    '  #7dd3fc 0 30.77%,#b48cf2 0 38.46%,#a8bf4f 0 46.15%,#e07b39 0 53.85%,#d4a02c 0 61.54%,',
-    '  #2dd4bf 0 69.23%,#45c46b 0 76.92%,#b0bec5 0 84.62%,#dc0000 0 92.31%,#ff5f1f 0)}',
+    '  background:linear-gradient(90deg,#4d9fff 0 7.14%,#e23636 0 14.29%,#f5c842 0 21.43%,',
+    '  #7dd3fc 0 28.57%,#b48cf2 0 35.71%,#a8bf4f 0 42.86%,#e07b39 0 50.00%,#d4a02c 0 57.14%,',
+    '  #2dd4bf 0 64.29%,#45c46b 0 71.43%,#b0bec5 0 78.57%,#dc0000 0 85.71%,#ff5f1f 0 92.86%,#d946ef 0)}',
     '.cgbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}',
     /* `--st` est la largeur de la souche : les deux encoches se calent dessus */
     '.cgb-tk{--st:54px;flex:1;min-width:0;display:flex;align-items:stretch;background:var(--paper);color:var(--ink);',
@@ -1655,6 +1655,7 @@ function cgBillet(){
     { u:'witcher',        prog:'cg-proto-witcher',        perso:'cg-perso-witcher',        alt:'cg-proto-witcher-alt' },
     { u:'residentevil',   prog:'cg-proto-re',             perso:'cg-perso-re' },
     { u:'bladerunner',    prog:'cg-proto-bladerunner',    perso:'cg-perso-bladerunner',    alt:'cg-proto-bladerunner-alt' },
+    { u:'monsterverse',   prog:'cg-proto-monsterverse',   perso:'cg-perso-monsterverse',   alt:'cg-proto-monsterverse-alt' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -2701,6 +2702,7 @@ function cgBillet(){
                    ['RETimelineApp', 'https://residenteviltimelineapp.com/']],
     bladerunner: [['Fandom', 'https://bladerunner.fandom.com/wiki/Main_Page'],
                   ['DeviantArt', 'https://www.deviantart.com/morsoth/art/Timeline-Blade-Runner-1021386153']],
+    monsterverse: [['Fandom', 'https://godzilla.fandom.com/wiki/MonsterVerse'], [WIKI], ['Reddit']],
     witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
               ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
               ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']],
@@ -2998,7 +3000,8 @@ function cgBillet(){
     walkingdead:    { u: 'twd' },
     assassinscreed: { u: 'assassinscreed' },
     witcher:        { u: 'witcher' },
-    bladerunner:    { u: 'bladerunner' }
+    bladerunner:    { u: 'bladerunner' },
+    monsterverse:   { u: 'monsterverse' }
   };
 
   var T = FR ? {
@@ -3257,7 +3260,8 @@ function cgBillet(){
     ['twd',            'The Walking Dead'],
     ['assassinscreed', 'Assassin’s Creed'],
     ['witcher',        'The Witcher'],
-    ['bladerunner',    'Blade Runner']
+    ['bladerunner',    'Blade Runner'],
+    ['monsterverse',   'Monsterverse']
   ];
 
   var T = FR ? {
@@ -3519,7 +3523,7 @@ function cgBillet(){
     x.closePath();
   }
   var ENCRES = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
-                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f'];
+                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f','#d946ef'];
 
   /* Le billet : même papier, même souche encochée et même filet aux douze
      encres que les barres du bas (`cgBillet`). Souche à l'encre de
@@ -4381,7 +4385,7 @@ function cgBillet(){
         jouer: 'Où jouer', rawg: 'Données : RAWG' };
   var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
-              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER'];
+              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE'];
 
   var CSS = [
     '.wt{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:10px;',
@@ -5261,7 +5265,7 @@ function cgBillet(){
      pastilles arrondies, les codes de ligne des univers. Redessiné le
      7 novembre 2026, à la demande de Niko. */
   var ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2', '#a8bf4f', '#e07b39',
-                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f'];
+                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef'];
   var FILET = 'linear-gradient(90deg,' + ENCRES.map(function(c, i){
     return c + ' ' + (i * 100 / ENCRES.length).toFixed(2) + '% ' + ((i + 1) * 100 / ENCRES.length).toFixed(2) + '%';
   }).join(',') + ')';

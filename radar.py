@@ -46,6 +46,7 @@ UNIVERSES = {
                        "file": "assassinscreed.html"},
     "witcher":  {"label": "The Witcher", "color": "#b0bec5", "file": "witcher.html"},
     "bladerunner": {"label": "Blade Runner", "color": "#ff5f1f", "file": "bladerunner.html"},
+    "monsterverse": {"label": "Monsterverse", "color": "#d946ef", "file": "monsterverse.html"},
 }
 
 # Sociétés recherchées par nom sur TMDB (les IDs sont résolus automatiquement)
@@ -67,6 +68,10 @@ TMDB_COMPANY_NAMES = {
     # (tv/171802), la raison de cette ligne. Il produit aussi tout le reste de
     # son catalogue : d'ou le garde-fou de titre ci-dessous.
     "bladerunner": ["Alcon Entertainment", "Alcon Television Group"],
+    # Legendary porte le Monsterverse depuis Godzilla (2014), et Godzilla x Kong:
+    # Supernova (movie/1288438, mars 2027) est la raison de cette ligne. Il
+    # produit aussi Dune, Pacific Rim et le reste : garde-fou de titre ci-dessous.
+    "monsterverse": ["Legendary Pictures", "Legendary Television"],
 }
 
 # Quand la société couvre plus large que l'univers, le titre doit encore
@@ -96,6 +101,9 @@ UNIVERS_TITRE = {
     # Alcon produit The Expanse, Prisoners et le reste : seul ce qui s'appelle
     # « Blade Runner » entre au radar de la saga.
     "bladerunner": re.compile(r"\bblade runner\b", re.I),
+    # Legendary produit Dune et Pacific Rim : seul ce qui nomme un Titan, Monarch
+    # ou Skull Island entre au radar du Monsterverse.
+    "monsterverse": re.compile(r"\b(godzilla|kong|monarch|monsterverse|skull island)\b", re.I),
 }
 
 

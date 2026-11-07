@@ -125,7 +125,7 @@ const arret = e => e && e.id && e.type !== 'separator' && e.type !== 'note';
 
 // Les codes de ligne du plan de l'accueil : le panneau les pose comme des pastilles.
 const CODES = { sw: 'SW', mcu: 'MCU', dc: 'DC', avatar: 'AV', startrek: 'ST', twd: 'TWD', dragonage: 'DA',
-  assassinscreed: 'AC', dcanimation: 'DCA', jurassic: 'JW', witcher: 'TW', residentevil: 'RE', bladerunner: 'BR' };
+  assassinscreed: 'AC', dcanimation: 'DCA', jurassic: 'JW', witcher: 'TW', residentevil: 'RE', bladerunner: 'BR', monsterverse: 'MV' };
 
 export function reglages({ racine }) {
   const types = {}, u = {};

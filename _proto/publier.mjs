@@ -127,6 +127,11 @@ const ROUTES = [
   { cle: 'bladerunner',
     fr: { proto: 'e-bladerunner.html',        sortie: 'fr/bladerunner.html',      url: '/fr/bladerunner' },
     en: { proto: 'en-bladerunner.html',       sortie: 'bladerunner.html',         url: '/bladerunner' } },
+  // `en-monsterverse.html` est la source, `e-monsterverse.html` en descend
+  // par traduire-monsterverse.mjs.
+  { cle: 'monsterverse',
+    fr: { proto: 'e-monsterverse.html',       sortie: 'fr/monsterverse.html',     url: '/fr/monsterverse' },
+    en: { proto: 'en-monsterverse.html',      sortie: 'monsterverse.html',        url: '/monsterverse' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
@@ -188,6 +193,8 @@ const ASSETS = {
   'data-re-en.js':             '/data/residentevil-en.js',
   'data-bladerunner.js':       '/data/bladerunner-fr.js',
   'data-bladerunner-en.js':    '/data/bladerunner-en.js',
+  'data-monsterverse.js':      '/data/monsterverse-fr.js',
+  'data-monsterverse-en.js':   '/data/monsterverse-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',
@@ -460,7 +467,7 @@ const BOOT_PLANCHE = '/images/boot-univers.webp';
 // L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
 const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
                      '#a8bf4f', '#e07b39', '#d4a02c', '#2dd4bf', '#45c46b',
-                     '#b0bec5', '#dc0000', '#ff5f1f'];
+                     '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef'];
 
 const BOOT =
   /* **Pas de `<link rel="preload">`**, et c'est voulu : il est inconditionnel,
@@ -660,7 +667,8 @@ const BOOT_PHRASES = {
 // couche part ainsi à 2,25 s, là où la neuvième partait à 2,24 — la durée
 // totale réglée par Niko ne bouge pas. Un onzième demandera 0,225.
 // Treize univers depuis Blade Runner, le 12 octobre 2026 : 12 × 0,188 = 2,256 s.
-const BOOT_PAS = 0.188;
+// Quatorze depuis le Monsterverse, le 7 novembre 2026 : 13 × 0,174 = 2,262 s.
+const BOOT_PAS = 0.174;
 // L'intitulé du panneau de quai, au-dessus de la phrase.
 const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing' };
 const BOOT_CORPS = langue =>
