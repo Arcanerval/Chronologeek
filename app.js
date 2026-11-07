@@ -4611,7 +4611,10 @@ function cgBillet(){
     'ark-origins': ['Wii U', 'PC', 'PS3', 'Xbox 360'],
     'wg-sideeffects': ['PC'],
     'sw-galacticracer': ['PS5', 'Xbox Series', 'PC'],
-    'sw-outlaws': ['PS5', 'Xbox Series', 'Switch 2', 'PC']
+    'sw-outlaws': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
+    /* RAWG ne répondait plus (522) le jour de la publication du Monsterverse,
+       le 7 novembre 2026 : les plateformes viennent du wiki Godzilla. */
+    'mv-survivorinstinct': ['PS5', 'Xbox Series', 'PC']
   };
   var COURTS = { 'PlayStation 5': 'PS5', 'PlayStation 4': 'PS4', 'PlayStation 3': 'PS3', 'PlayStation 2': 'PS2',
     'PlayStation': 'PS1', 'Xbox Series S/X': 'Xbox Series', 'Nintendo Switch 2': 'Switch 2', 'Nintendo Switch': 'Switch',
