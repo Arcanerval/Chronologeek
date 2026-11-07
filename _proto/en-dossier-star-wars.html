@@ -1761,6 +1761,40 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   /* ── mise à plat : seules les entrées `it` comptent ────────────────
      Les 63 `screen` sont des repères. Les compter dans la progression
      ferait passer un titre de film pour une lecture. */
+  /* ── les réglages : le Dossier ne charge pas e-perso.js ──────────────
+     Même règle que les timelines (`CG_OPT.voit`, posé dans le <head>) :
+     la nature d'œuvre et le badge VO. Les repères écran restent tant que
+     leur ère garde une lecture. Un lien vers une œuvre masquée suspend le
+     tri, et des réglages qui videraient tout le Dossier aussi. Les titres
+     du Dossier sont stockés échappés : le titre original l'est aussi. */
+  (function(){
+    var O=window.CG_OPT; if(!O) return;
+    var hors={}, cible='';
+    try{ cible=decodeURIComponent(location.hash.slice(1)); }catch(_){}
+    O.voitId=function(id){ return !hors[id]; };
+    if(O.o.vo&&!O.en){
+      var m=null;
+      try{ m=(JSON.parse(localStorage.getItem('cg-titres-vo')||'null')||{}).m; }catch(_){}
+      if(m) D.eras.forEach(function(era){ era.items.forEach(function(x){
+        if(x.kind==='it'&&m[x.id]) x.title=String(m[x.id]).replace(/[&<>"']/g,function(c){
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;'}[c]; }); }); });
+    }
+    if(!O.masque) return;
+    var total=0, reste=0, R={t:{},vf:false};
+    var eras=D.eras.map(function(era,i){
+      var n=0, r=0, items=era.items.filter(function(x){
+        if(x.kind!=='it') return true;
+        n++;
+        if(O.voit(x.k,null,!!x.vo)){ r++; return true; }
+        hors[x.id]=1; if((O.o.t||[]).indexOf(x.k)>-1) R.t[x.k]=1; else R.vf=true; return false;
+      });
+      total+=n; reste+=r;
+      return n&&!r ? null : Object.assign({},era,{items:items,rg:i});
+    }).filter(Boolean);
+    O.stat={total:total,reste:reste,t:R.t,vf:R.vf};
+    if(hors[cible]||!reste){ hors={}; O.stat.suspendu=reste?'lien':'vide'; return; }
+    D.eras=eras;
+  })();
   var ALL=[];
   D.eras.forEach(function(era){
     era.items.forEach(function(x){ if(x.kind==='it'){ ALL.push(x); x.n=ALL.length; } });
@@ -1844,7 +1878,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     return '<div class="stn wrap">'+
       '<span class="stn-rail" aria-hidden="true"><span class="stn-dot"></span></span>'+
       '<div class="stn-plate">'+
-        '<span class="stn-img" aria-hidden="true" style="background-image:url('+ARTS[i]+')"></span>'+
+        '<span class="stn-img" aria-hidden="true" style="background-image:url('+ARTS[era.rg!=null?era.rg:i]+')"></span>'+
         '<div class="stn-txt">'+
           '<span class="stn-k"><span class="code">SW</span>Station '+(i+1)+' / '+D.eras.length+'</span>'+
           '<h2 class="stn-nm disp">'+era.title+'</h2>'+
@@ -1859,7 +1893,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   (function build(){
     var html='';
     D.eras.forEach(function(era,i){
-      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+((era.rg!=null?era.rg:i)+1)+')">'+
         plaque(era,i)+
         '<div class="wrap"><div class="rows">'+
           era.items.map(function(x){ return x.kind==='screen'?screenRow(x):itemRow(x); }).join('')+
@@ -2010,7 +2044,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({dates:window.CG_DATES?CG_DATES():undefined,universe:'dossier-sw',progress:prog},null,1)],
+    var blob=new Blob([JSON.stringify({options:window.CG_OPT?CG_OPT.ex():undefined,dates:window.CG_DATES?CG_DATES():undefined,universe:'dossier-sw',progress:prog},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-dossier-starwars.json';

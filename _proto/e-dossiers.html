@@ -751,6 +751,7 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   <span class="lbl">1 dossier ouvert · 63 repères écran</span>
 </div></div>
 
+<script>/* i18n-off */if(window.CG_OPT&&CG_OPT.masque)document.write('<script src="/reglages.js"><\/script>');/* i18n-on */</script>
 <script>
 (function(){
   'use strict';
@@ -772,6 +773,22 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   /* i18n-on */
   var N=0; E.forEach(function(e){ N+=e[1]; });
   var TOTAL=550;
+  /* Les réglages masquent des natures d'œuvre ou la VO : le total et les
+     stations se recomptent sur ce que le Dossier affichera (`/reglages.js`). */
+  var VIS=null;
+  (function(){
+    var O=window.CG_OPT, rows=O&&O.masque&&window.CG_TABLE&&CG_TABLE.u['dossier-sw']&&CG_TABLE.u['dossier-sw'].e;
+    if(!rows) return;
+    var vis={}, n=0, c=rows.map(function(e){
+      var k=0; e.forEach(function(r){ if(O.voit(r[1],0,r[3])){ vis[r[0]]=1; k++; } }); n+=k; return k; });
+    if(!n) return;
+    VIS=vis; TOTAL=n;
+    if(c.length===E.length){
+      E=E.map(function(e,j){ return [e[0],c[j],e[2]]; }).filter(function(e,j){ return c[j]>0; });
+      N=0; E.forEach(function(e){ N+=e[1]; });
+    }
+    var sl=document.querySelector('.slot[data-u="dossier-sw"]'); if(sl) sl.dataset.total=n;
+  })();
 
   /* échelle mixte : moitié à parts égales, moitié au prorata des œuvres */
   var W=E.map(function(e){ return .5/E.length+.5*e[1]/N; }), B=[0];
@@ -780,7 +797,7 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   /* echafaudage-debut */ var fake=null; /* echafaudage-fin */
   function read(){
     /* echafaudage-debut */ if(fake!==null) return fake; /* echafaudage-fin */
-    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-dossier-sw')||'{}')).length; }
+    try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-dossier-sw')||'{}')).filter(function(k){ return !VIS||VIS[k]; }).length; }
     catch(e){ return 0; }
   }
   /* le train à la dernière case cochée, que la page du Dossier laisse

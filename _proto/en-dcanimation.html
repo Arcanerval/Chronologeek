@@ -2325,6 +2325,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   D.eras.forEach(function(era,i){ era.rang=i; era.entries.forEach(function(e){ TOUS[e.id]=1; }); });
   if(MODE!=='all') D.eras=D.eras.filter(function(era){ return era.branch===MODE; });
   var NOM={dcau:'DCAU',dcamu:'DCAMU',arkham:'Arkhamverse'};
+  D.eras=CG_OPT.garde(D.eras,D);
   var LCODE={dcau:'DCAU',dcamu:'DCAMU',arkham:'ARK'};
 
   /* Les séparateurs ne sont pas des œuvres : ils ne se cochent pas, ne se
@@ -3379,7 +3380,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({dates:window.CG_DATES?CG_DATES():undefined,universe:'dcanimation',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    var blob=new Blob([JSON.stringify({options:CG_OPT.ex(),dates:window.CG_DATES?CG_DATES():undefined,universe:'dcanimation',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-dcanimation.json';
@@ -3463,9 +3464,10 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   }
   function earned(b){
     if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });
-    var need=needOf(b);
+    var need=needOf(b).filter(CG_OPT.voitId);
     return need.length>0 && need.every(function(i){ return prog[i]; });
   }
+  BADGES=BADGES.filter(function(b){ return b.trigger==='100pct'||!b.ids||needOf(b).filter(CG_OPT.voitId).length>0; });
   /* Rend les badges tout juste obtenus ; `pop` décide s'ils s'annoncent. */
   function syncBadges(pop){
     var fresh=BADGES.filter(function(b){ return !won[b.id] && earned(b); });

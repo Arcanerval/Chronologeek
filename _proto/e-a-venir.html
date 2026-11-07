@@ -873,6 +873,21 @@ details[open] .chevd{transform:rotate(180deg)}
            witcher:['The Witcher','var(--wi)'],
            residentevil:['Resident Evil','var(--re)'],
            bladerunner:['Blade Runner','var(--br)']};
+  /* i18n-off — les réglages du visiteur : un univers masqué quitte la page
+     (bouton et sorties), un favori passe devant. Le radar écrit `starwars`
+     et `marvel` là où le site dit `sw` et `mcu`. */
+  var CACHE={};
+  (function(){
+    var O=window.CG_OPT; if(!O) return;
+    var uo=O.o.u||{}, SITE={starwars:'sw',marvel:'mcu'}, off=0, a={}, b={};
+    Object.keys(UNI).forEach(function(u){
+      var v=uo[SITE[u]||u];
+      if(v==='off'){ CACHE[u]=1; off++; } else (v==='fav'?a:b)[u]=UNI[u];
+    });
+    UNI=Object.assign(a,b);
+    O.accueil={off:off};
+  })();
+  /* i18n-on */
   /* i18n-off — les codes de ligne, ceux du plan de l'accueil et du pied de
      page. Ils s'écrivent pareil dans les deux langues. Marvel et Resident
      Evil sont écrits en blanc : leur rouge est trop sombre pour l'encre. */
@@ -982,7 +997,7 @@ details[open] .chevd{transform:rotate(180deg)}
   var NUM=0;
 
   function build(data){
-    var list=data.filter(function(e){ return stillUpcoming(e); })
+    var list=data.filter(function(e){ return stillUpcoming(e)&&!CACHE[e.universe]; })
                  .sort(function(a,b){ return iso(a).localeCompare(iso(b)); });
 
     if(list.length) billet(list);

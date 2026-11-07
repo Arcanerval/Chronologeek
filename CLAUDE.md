@@ -3103,6 +3103,88 @@ sans encore rien afficher.
   fusionne, le plus récent gagnant. **Le lien de transfert ne la porte pas** : il doit
   tenir dans un QR code.
 
+### Les réglages, posés le 5 novembre 2026
+
+Une roue dentée à côté du drapeau ouvre un dialogue. Tout tient dans **`cg-options`**,
+dans le navigateur, sans compte, et voyage dans les quatorze exports, celui de
+l'accueil et le lien de transfert (`s` dans `serre()`). Une option à sa valeur par
+défaut n'est pas écrite. Retenu par Niko : masquer des types (A), un niveau minimum
+(B), la VO (N, français seulement), ses coches partout (P), les titres originaux (M,
+français seulement), ses univers masqués ou favoris (D, accueil et « À venir »),
+l'anti-spoil (E : le synopsis attend la coche, **la FAQ reste**, affiches floutées en
+option), les cartes compactes (F), le grand texte et le contraste (G), le calme (H :
+ni écran d'arrivée ni animations de la ligne), son pays (J), ses plateformes (K) et
+ses consoles (L). **Écartés par Niko** : le parcours par défaut, le thème clair,
+« À venir » allégé — ne pas les reproposer.
+
+Où ça vit :
+
+- **`_proto/reglages.mjs`** pose dans le `<head>` de toutes les pages, œuvres
+  comprises, un script qui lit la clé avant le premier rendu : `CG_OPT` (`o`, `voit()`,
+  `masque`, `ex()`), le CSS des seules options actives, et `matchMedia` remplacé pour
+  le mouvement réduit — les pages coupent déjà leurs animations sur ce test. Il pose
+  aussi la roue (`publier.mjs`, juste avant `.lang-btn`, jamais au chargement : la
+  barre sauterait) et, **sous 440 px, la roue passe dans le tiroir** (`.dw-rg`) : le
+  logo est fixe et le burger sortait de 19 px. Il écrit **`/reglages.js`** : libellés
+  des types, noms et encres des univers, et chaque arrêt `[id, type, niveau, vo]` par
+  ère. Le panneau le charge à l'ouverture, l'accueil et la liste des Dossiers par un
+  `document.write` **seulement si une option masque quelque chose**.
+- **`voit()` est la seule règle de masquage**, partout. `sansMust` : DC n'a pas
+  d'essentiels en multivers, « essentiels seulement » y garde son niveau le plus haut.
+  Star Trek, sans niveaux, n'est pas touché. Les ajouts `p-` ne sont jamais masqués.
+- **Le tri se fait après la résolution des parcours** (`CG_OPT.garde()` de
+  `e-perso.js`, appelé sur `ERAS` dans les treize pages, sur `D.eras` après les niveaux
+  de ligne chez DC et DC Animation). Fait dans `D.eras` avant le script de la page, il
+  aurait vidé `BYID` et `COVERS` : les coches des entrées masquées seraient passées
+  pour périmées et **effacées du stockage**. Une option ne retire jamais rien du
+  stockage. Un bloc qui recolle plusieurs entrées reste tant que l'une d'elles reste.
+  Une ère vidée disparaît, et **ce qui se lisait par rang garde son rang d'origine**
+  (`era.rg`, `CG_OPT.rang()`) : encres `--eraN`, `ARTS`, codes de ligne de The Witcher.
+- **Les badges** se calent sur la suite entière (`PLEIN`) et ne comptent que ce qui
+  reste à l'écran (`CG_OPT.voitId`) ; un badge dont tout est masqué quitte la boîte.
+- **Un lien vers une œuvre masquée** (hash, `?vers=`) suspend le tri pour ce
+  chargement, et des réglages qui videraient toute la page aussi. Le rappel le dit.
+- **Le Dossier** ne charge pas `e-perso.js` : son tri est en ligne, avant `ALL`, sur
+  la nature (`k`) et `vo`. Ses titres sont stockés échappés, le titre original aussi.
+- **`e-app.js`** (bloc « Les réglages ») tient le panneau, le rappel (« Masqués :
+  Comics · 30 / 73 arrêts affichés · Tout réafficher · Réglages », qui ne nomme que ce
+  que la page a vraiment retiré, `O.stat`), les boutons de filtres masqués, P (le
+  bouton `#hide-done` écrit le réglage, et `relit()` des filtres retenus l'ignore
+  désormais), le cache des titres originaux (`cg-titres-vo`, refait chaque semaine
+  depuis la sixième place de `/search-fr.json`), et les plateformes sur la timeline.
+  Les cases de la bande du premier écran sans identifiant (films, séries, jeux,
+  écrites à la publication) se masquent quand des médias le sont : elles mentiraient.
+- **L'accueil recompte** totaux, stations et coches sur les arrêts visibles (`VIS`),
+  le train lisant `cg-train` que la page pose déjà ; la liste des Dossiers aussi.
+  « À venir » retire les univers masqués et met les favoris devant (`starwars` →
+  `sw`, `marvel` → `mcu`).
+- **Les plateformes** : `_proto/plateformes.mjs` écrit **`/plateformes.json`** (270
+  fiches, 13 pays, abonnement, gratuit et pub seulement, 39 Ko, 7 Ko compressés),
+  refait chaque nuit à 4 h 30 UTC par `plateformes.yml`, une heure et demie avant le
+  radar, et commité seulement s'il change. Coût : zéro (API TMDB gratuite, minutes
+  gratuites d'un dépôt public). La page ne le demande que si le visiteur a coché des
+  plateformes ; les siennes passent devant dans « Où regarder », cerclées d'or, et un
+  petit logo se pose dans `.bu-tags`. Le pays (J) vaut pour « Où regarder » et le
+  radar ; les consoles (L) passent devant dans « Où jouer ».
+
+**Le dessin, revu par Niko le 7 novembre 2026** : la roue est celle de Lucide
+(licence ISC), au trait fin, moyeu doré, **sans le cadre carré** des autres boutons du
+menu (`header .cg-roue` dans le `<head>`, pour qu'elle ne saute pas au chargement), et
+elle tourne d'un quart au survol. Le panneau reprend le site : le filet aux treize
+encres du billet en tête, une ligne dorée dont chaque section est une station
+numérotée, des pastilles arrondies (un type masqué est barré en pointillés, comme une
+voie fermée), un sélecteur à trois voies pour le niveau, des interrupteurs en bout de
+ligne, et les univers sous leur code de ligne à leur encre (`k` de `/reglages.js`).
+**TMDB laisse parfois une espace au bout d'un nom de plateforme** (« Cine+ OCS Amazon
+Channel ␠ ») : `nomCourt()` de `plateformes.mjs` rogne avant de retirer la chaîne
+revendeuse, sans quoi le panneau affichait les « … Amazon Channel ».
+
+Google n'est pas touché : le pré-rendu et le JSON-LD restent entiers. **Un attribut
+`hidden` ne suffit pas ici non plus** : `#sieve button[hidden]{display:none!important}`.
+Un type ajouté au site entre au panneau tout seul (`badgeLabels`, `kindLabels`) ; son
+pluriel s'écrit dans `PLURIELS` de `reglages.mjs` et `PLUR` de `e-app.js`, faute de
+quoi il garde le libellé de la carte.
+
 ### Où regarder, dans la fiche TMDB
 
 Posé le 1er octobre 2026, dans `e-app.js`. La fiche ouverte porte une ligne

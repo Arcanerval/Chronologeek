@@ -34,6 +34,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { charge, SOURCES, decode, typeSchema } from './jsonld.mjs';
+import { TETE_REGLAGES } from './reglages.mjs';
 import { ENCRES } from './recherche.mjs';
 
 const CODES = { sw:'SW', mcu:'MCU', dc:'DC', avatar:'AV', startrek:'ST', twd:'TWD', dragonage:'DA',
@@ -383,6 +384,7 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, autr
 <html lang="${langue}" style="--uni:${encre}">
 <head>
 <meta charset="utf-8"/>
+${TETE_REGLAGES}
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>${esc((q60 + ' | Chronologeek').length <= 60 ? q60 + ' | Chronologeek' : q60)}</title>
 <meta name="description" content="${esc(desc)}"/>

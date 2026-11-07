@@ -32,6 +32,83 @@ window.CG_REL = function (rel, mot) {
   return '<span class="rel"><i>' + mot + '</i><b>' + an + '</b>' + (j ? '<i style="letter-spacing:.04em">' + j + '</i>' : '') + '</span>';
 };
 
+/* ── les réglages : ce qui reste à l'écran ───────────────────────────────
+   `voit()` et les options viennent du <head> (reglages.mjs). Le tri se fait
+   APRÈS la résolution des parcours, sur `ERAS` et non sur `D.eras` : `BYID`,
+   `COVERS` et le pont restent complets, et une coche ne se perd pas. Un lien
+   vers une œuvre masquée suspend le tri pour ce chargement, et une page que
+   les réglages videraient s'affiche entière. */
+(function(){
+  var O = window.CG_OPT || (window.CG_OPT = { o: {}, en: false, masque: false,
+    ex: function(){}, voit: function(){ return true; } });
+  var hors = {};
+  function arret(e){ return e.type !== 'separator' && e.type !== 'note'; }
+  O.voitId = function(id){ return !hors[id]; };
+  O.rang = function(era, i){ return (era.rg != null ? era.rg : i) + 1; };
+  O.plein = function(eras){
+    var l = [];
+    eras.forEach(function(era){ era.entries.forEach(function(e){ if (arret(e)) l.push(e); }); });
+    return l;
+  };
+  /* M : les titres originaux, sur la page française. Le cache est écrit par
+     `e-app.js` depuis l'index de la recherche (sixième place). Une entrée de
+     second parcours sans titre à elle prend celui de ce qu'elle couvre. Les
+     titres des timelines sont du texte brut : rien à échapper. */
+  O.titres = function(eras, D){
+    if (!O.o.vo || O.en) return;
+    var m = null;
+    try { m = (JSON.parse(localStorage.getItem('cg-titres-vo') || 'null') || {}).m; } catch (_) {}
+    if (!m) return;
+    var avant = {};
+    D.eras.forEach(function(era){ era.entries.forEach(function(e){
+      avant[e.id] = e.title; if (m[e.id]) e.title = m[e.id]; }); });
+    eras.forEach(function(era){ era.entries.forEach(function(e){
+      if (m[e.id]) e.title = m[e.id];
+      else if (e.covers && m[e.covers[0]] && avant[e.covers[0]] === e.title) e.title = m[e.covers[0]];
+    }); });
+  };
+  O.garde = function(eras, D){
+    O.titres(eras, D);
+    if (!O.masque) return eras;
+    var BY = {}, sansMust = true;
+    D.eras.forEach(function(era){ era.entries.forEach(function(e){
+      BY[e.id] = e; if (e.level === 'must') sansMust = false; }); });
+    function passeE(e){ return !arret(e) || e.perso || O.voit(e.type, e.level, e.lang === 'vo', sansMust); }
+    /* Un bloc qui recolle plusieurs entrées reste tant que l'une d'elles reste. */
+    function passe(e){
+      return e.covers && e.covers.length
+        ? e.covers.some(function(d){ return BY[d] ? passeE(BY[d]) : true; }) : passeE(e);
+    }
+    /* Ce que le rappel dira : seulement ce que la page a vraiment retiré. */
+    var R = { t: {}, lv: false, vf: false }, MT = {};
+    (O.o.t || []).forEach(function(k){ MT[k] = 1; });
+    function pourquoi(e){
+      if (MT[e.type]) R.t[e.type] = 1;
+      else if (e.lang === 'vo' && O.o.vf && !O.en) R.vf = true;
+      else R.lv = true;
+    }
+    var cible = '';
+    try { cible = decodeURIComponent(location.hash.slice(1)) ||
+      new URLSearchParams(location.search).get('vers') || ''; } catch (_) {}
+    var total = 0, reste = 0, vise = false;
+    D.eras.forEach(function(era){ era.entries.forEach(function(e){ if (!passeE(e)) hors[e.id] = 1; }); });
+    var out = eras.map(function(era, i){
+      var n = era.entries.filter(arret).length, k = era.entries.filter(function(e){
+        var ok = passe(e);
+        if (!ok) { hors[e.id] = 1; if (e.id === cible) vise = true; pourquoi(e); }
+        return ok;
+      });
+      var r = k.filter(arret).length;
+      total += n; reste += r;
+      return n && !r ? null : Object.assign({}, era, { entries: k, rg: i });
+    }).filter(Boolean);
+    if (hors[cible]) vise = true;
+    O.stat = { total: total, reste: reste, t: R.t, lv: R.lv, vf: R.vf };
+    if (vise || !reste) { hors = {}; O.stat.suspendu = vise ? 'lien' : 'vide'; return eras; }
+    return out;
+  };
+})();
+
 /* ═══════════════════════════════════════════════════════════════════
    MES AJOUTS — les entrées que le visiteur pose lui-même
    ═══════════════════════════════════════════════════════════════════

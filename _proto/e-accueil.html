@@ -1070,6 +1070,7 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   <span class="lbl">13 univers · 550 au dossier</span>
 </div></div>
 
+<script>/* i18n-off */if(window.CG_OPT&&CG_OPT.masque)document.write('<script src="/reglages.js"><\/script>');/* i18n-on */</script>
 <script>
 (function(){
   'use strict';
@@ -1088,6 +1089,46 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   var BOUTS=EN?['Departure','Terminus','Terminus reached','Network','independent lines']:['Départ','Terminus','Terminus atteint','Réseau','lignes indépendantes'];
   var INDEP={dcanimation:3,witcher:2};
   /* i18n-on */
+  /* ── les réglages ──────────────────────────────────────────────────
+     Les univers masqués quittent l'accueil, les favoris passent devant.
+     Quand une option masque des médias, les totaux se recomptent sur ce qui
+     reste à l'écran des pages, depuis `/reglages.js` — sans quoi une ligne
+     plafonnerait sous 100 % pour toujours. Le train lit `cg-train`, que la
+     page pose déjà sur ce qu'elle affiche. */
+  var VIS={};
+  (function(){
+    var O=window.CG_OPT; if(!O) return;
+    var uo=O.o.u||{}, off=0, un=document.querySelector('.slot[data-u]'), grille=un&&un.parentNode;
+    U=U.filter(function(x){
+      if(uo[x.u]!=='off') return true;
+      off++;
+      var el=document.querySelector('.slot[data-u="'+x.u+'"]'); if(el) el.remove();
+      return false;
+    });
+    U=U.filter(function(x){ return uo[x.u]==='fav'; }).concat(U.filter(function(x){ return uo[x.u]!=='fav'; }));
+    if(grille){
+      var lock=grille.querySelector('.slot.lock');
+      U.forEach(function(x){ var el=grille.querySelector('.slot[data-u="'+x.u+'"]'); if(el) grille.insertBefore(el,lock); });
+    }
+    O.accueil={off:off};
+    var Tb=O.masque&&window.CG_TABLE&&CG_TABLE.u;
+    U.forEach(function(x){
+      var rows=Tb&&Tb[x.u]&&Tb[x.u].e; if(!rows) return;
+      var sans=!rows.some(function(e){ return e.some(function(r){ return r[2]==='must'; }); });
+      var vis={}, n=0, c=rows.map(function(e){
+        var k=0; e.forEach(function(r){ if(O.voit(r[1],r[2],r[3],sans)){ vis[r[0]]=1; k++; } }); n+=k; return k; });
+      if(!n) return;                    /* tout masqué : la page s'ouvre entière */
+      VIS[x.u]=vis; x.total=n;
+      if(E[x.u]&&c.length===E[x.u].length)
+        E[x.u]=E[x.u].map(function(e,j){ return [e[0],c[j],e[2]]; }).filter(function(e,j){ return c[j]>0||!rows[j].length; });
+      var el=document.querySelector('.slot[data-u="'+x.u+'"]'), b=el&&el.querySelector('.tl-meta .d-n');
+      if(el) el.dataset.total=n;
+      if(b&&b.nextSibling) b.nextSibling.textContent=b.nextSibling.textContent
+        .replace(/\/\s*[\d\s\u202f\u00a0,]+/,'/ '+n+' ').replace(/\d+(\s+stations)/,E[x.u].length+'$1');
+    });
+    var k=document.getElementById('k-on'), tot=U.reduce(function(s,x){ return s+x.total; },0);
+    if(k&&k.nextSibling) k.nextSibling.textContent=' / '+tot;
+  })();
   var NAMES={}; U.forEach(function(x){ NAMES[x.u]=x.name; });
 
   /* echafaudage-debut */ var fake=null; /* echafaudage-fin */
@@ -1095,7 +1136,7 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   function read(u){
     /* echafaudage-debut */ if(fake) return fake[u]||0; /* echafaudage-fin */
     try{ return Object.keys(JSON.parse(localStorage.getItem('cg-proto-'+(u==='startrek'?'st':u==='dcanimation'?'dcanim':u==='residentevil'?'re':u))||'{}'))
-      .filter(function(k){ return !PARCOURS.test(k); }).length; }
+      .filter(function(k){ return !PARCOURS.test(k)&&(!VIS[u]||VIS[u][k]); }).length; }
     catch(e){ return 0; }
   }
   var WHITE={mcu:1,residentevil:1};

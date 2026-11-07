@@ -71,7 +71,11 @@ window.CG_DATES = function(entrants){
     if (!f) return;
     var r = new FileReader();
     r.onload = function(){
-      try { window.CG_DATES(JSON.parse(r.result).dates); } catch (_) {}
+      try {
+        var j = JSON.parse(r.result);
+        window.CG_DATES(j.dates);
+        if (j.options && window.CG_OPT && CG_OPT.ecrire) CG_OPT.ecrire(j.options);
+      } catch (_) {}
     };
     r.readAsText(f);
   }, true);
@@ -1831,7 +1835,8 @@ function cgBillet(){
       coches += cles.filter(function(k){ return !PARCOURS.test(k); }).length;
       ajouts += m.length;
     });
-    return { universes: out, dates: window.CG_DATES(), n: n, coches: coches, ajouts: ajouts };
+    return { universes: out, dates: window.CG_DATES(), options: window.CG_OPT ? CG_OPT.ex() : undefined,
+             n: n, coches: coches, ajouts: ajouts };
   }
 
   /* ── la fusion des ajouts, celle de `e-perso.js` ──────────────────
@@ -1950,6 +1955,8 @@ function cgBillet(){
     });
     var d = cat ? { v: 2, h: cat.h, u: u } : { v: 1, u: u };
     if (last) d.l = last;
+    /* les réglages, quelques dizaines de signes une fois serrés */
+    if (r.options) d.s = r.options;
     return d;
   }
   /* Rend le fichier d'import, `null` si le lien n'en est pas un, et
@@ -1974,6 +1981,7 @@ function cgBillet(){
     });
     var f = { chronologeek: 1, kind: 'all', universes: out };
     if (d.l) f.last = d.l;
+    if (d.s && typeof d.s === 'object') f.options = d.s;
     return f;
   }
 
@@ -2350,7 +2358,7 @@ function cgBillet(){
     out.addEventListener('click', function(){
       var r = recolte();
       var f = { chronologeek: 1, kind: 'all', date: new Date().toISOString(),
-                universes: r.universes, dates: r.dates };
+                universes: r.universes, dates: r.dates, options: r.options };
       var last = lis('cg_last', null);
       if (last) f.last = last;
       var a = document.createElement('a');
@@ -2399,6 +2407,7 @@ function cgBillet(){
       });
       if (d.last && typeof d.last === 'object') pose('cg_last', d.last);
       window.CG_DATES(d.dates);
+      if (d.options && window.CG_OPT && CG_OPT.ecrire) CG_OPT.ecrire(d.options);
 
       if (refus) return dit(T.plein);
       if (!faits) return dit(T.vide);
@@ -2788,6 +2797,9 @@ function cgBillet(){
     try { o = JSON.parse(localStorage.getItem(CLE) || 'null'); } catch (_) {}
     if (!o || typeof o !== 'object') return;
     boutons().forEach(function(b){
+      /* « Masquer les terminés » se règle pour tout le site (bloc des
+         réglages), plus page par page. */
+      if (b.id === 'hide-done') return;
       var v = o[nom(b)];
       if ((v === 'true' || v === 'false') && v !== b.getAttribute('aria-pressed')) b.click();
     });
@@ -4354,7 +4366,14 @@ function cgBillet(){
   'use strict';
 
   var EN = document.documentElement.lang === 'en';
-  var PAYS = EN ? 'US' : 'FR';
+  /* Le pays se règle dans le panneau des réglages ; à défaut, la France pour
+     la page française et les États-Unis pour l'anglaise. */
+  var MES = (window.CG_OPT && CG_OPT.o) || {};
+  var PAYS = MES.pays || (EN ? 'US' : 'FR');
+  var MIENNES = {}, MIENNES_N = 0;
+  (MES.pf || []).forEach(function(k){ MIENNES[k] = 1; MIENNES_N++; });
+  var MES_CS = {};
+  (MES.cs || []).forEach(function(k){ MES_CS[k] = 1; });
   var L = EN
     ? { titre: 'Where to watch', location: 'rent or buy', source: 'Data: JustWatch', tmdb: 'Data: TMDB',
         jouer: 'Where to play', rawg: 'Data: RAWG' }
@@ -4375,7 +4394,11 @@ function cgBillet(){
     '  border-radius:6px;background:rgba(255,255,255,.08);color:var(--paper);font-weight:700;font-size:11.5px;white-space:nowrap}',
     '.wt-l .wt-p img{width:auto;height:18px;max-width:66px;object-fit:contain;border-radius:0;background:none;filter:brightness(0) invert(1)}',
     '.wt a.wt-s{color:rgba(255,253,247,.55);font-size:10.5px;text-decoration:none}',
-    '.wt a.wt-s:hover{color:var(--paper);text-decoration:underline}'
+    '.wt a.wt-s:hover{color:var(--paper);text-decoration:underline}',
+    '.wt-l img.on{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--hot)}',
+    '.wt-p.on{border-color:var(--hot);box-shadow:0 0 0 1px var(--hot)}',
+    '.wt-m{display:inline-flex;gap:3px;align-items:center;margin-left:2px;vertical-align:middle}',
+    '.wt-m img{width:20px;height:20px;border-radius:4px;display:block;box-shadow:0 0 0 1px var(--hot)}'
   ].join('');
 
   /* identifiant d'entrée → type, second parcours compris (`ref`) */
@@ -4500,6 +4523,9 @@ function cgBillet(){
         if (!deja) { vus[m] = x; ordre.push(m); }
         else if (/channel/i.test(deja.provider_name) && !/channel/i.test(x.provider_name)) vus[m] = x;
       });
+      /* Les plateformes du visiteur passent devant, et ne tombent jamais
+         sous la coupe des six. */
+      if (MIENNES_N) ordre.sort(function(a, b){ return (MIENNES[b] ? 1 : 0) - (MIENNES[a] ? 1 : 0); });
       return ordre.map(function(m){ return vus[m]; }).slice(0, 6);
     }
     var flux = liste(['flatrate', 'free', 'ads']);
@@ -4512,6 +4538,10 @@ function cgBillet(){
     return String(s).replace(/[&<>"]/g, function(c){
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
   }
+
+  /* Le panneau des réglages reprend la marque, le pays et l'ordre des consoles
+     d'ici : deux écritures divergeraient. */
+  window.CG_WT = { marque: marqueDe, pays: PAYS };
 
   function completer(info){
     if (info.dataset.wt) return;
@@ -4540,7 +4570,7 @@ function cgBillet(){
     ligne.className = 'wt';
     ligne.innerHTML = '<strong>' + L.titre + '</strong><span class="wt-l">' +
       c.liste.map(function(x){
-        return '<img src="https://image.tmdb.org/t/p/w92' + esc(x.logo_path) + '" alt="' +
+        return '<img' + (MIENNES[marqueDe(x.provider_name)] ? ' class="on"' : '') + ' src="https://image.tmdb.org/t/p/w92' + esc(x.logo_path) + '" alt="' +
           esc(x.provider_name) + '" title="' + esc(x.provider_name) + '" loading="lazy">';
       }).join('') + '</span>' +
       (c.location ? '<span class="wt-k">' + L.location + '</span>' : '') +
@@ -4589,6 +4619,7 @@ function cgBillet(){
   // du plus récent au plus ancien, le mobile après
   var RANG = ['PS5', 'Xbox Series', 'Switch 2', 'Switch', 'Meta Quest 3', 'PC', 'Mac', 'Linux', 'PS4', 'Xbox One', 'Wii U',
     'PS Vita', '3DS', 'PS3', 'Xbox 360', 'Wii', 'PSP', 'DS', 'PS2', 'Xbox', 'GameCube', 'PS1', 'iOS', 'Android'];
+  window.CG_WT.rang = RANG; window.CG_WT.logos = LOGOS;
 
   function dec(s){
     var t = document.createElement('textarea');
@@ -4646,13 +4677,13 @@ function cgBillet(){
       return (vus[n] = true);
     });
     function rang(n){ var i = RANG.indexOf(n); return i === -1 ? 99 : i; }
-    liste.sort(function(a, b){ return rang(a) - rang(b); });
+    liste.sort(function(a, b){ return (MES_CS[b] ? 1 : 0) - (MES_CS[a] ? 1 : 0) || rang(a) - rang(b); });
     if (!liste.length) return null;
     var ligne = document.createElement('div');
     ligne.className = 'wt';
     ligne.innerHTML = '<strong>' + L.jouer + '</strong><span class="wt-l">' +
       liste.map(function(n){
-        return '<span class="wt-p">' + (LOGOS[n]
+        return '<span class="wt-p' + (MES_CS[n] ? ' on' : '') + '">' + (LOGOS[n]
           ? '<img src="/images/consoles/' + LOGOS[n] + '.svg" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">'
           : esc(n)) + '</span>';
       }).join('') + '</span>' +
@@ -5125,4 +5156,634 @@ function cgBillet(){
     }
     if (history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
   }
+})();
+
+/* ═══ LES RÉGLAGES ══════════════════════════════════════════════════════
+   Posés le 5 novembre 2026, demandés par Niko. Une roue dentée dans le menu,
+   à côté du drapeau (posée par `publier.mjs`, voir `reglages.mjs`), ouvre un
+   dialogue. Tout tient dans une clé, `cg-options`, sans compte.
+
+   Ce qui se joue où :
+   - **Masquer des types, un niveau, la VO** : `CG_OPT.garde()` de
+     `e-perso.js`, après la résolution des parcours, sur les treize timelines ;
+     le Dossier a son tri en ligne ; l'accueil recompte avec `/reglages.js`.
+   - **Le reste de l'affichage** (cartes compactes, grand texte, contraste,
+     calme, anti-spoil) : le CSS du <head>, avant le premier rendu.
+   - **Ici** : le panneau, le rappel « Tout réafficher », les coches masquées
+     partout, les boutons de filtres qui n'ont plus d'objet, les titres
+     originaux, et les plateformes mises en avant sur la timeline.
+
+   Une option ne retire jamais rien du stockage : la progression d'une œuvre
+   masquée reste où elle est, et revient avec elle.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var O = window.CG_OPT;
+  if (!O) return;                  /* un proto servi sans publication */
+  var EN = document.documentElement.lang === 'en';
+  var KEY = 'cg-options';
+
+  function lis(){
+    try { var o = JSON.parse(localStorage.getItem(KEY)); return o && typeof o === 'object' ? o : {}; }
+    catch (_) { return {}; }
+  }
+  /* Une option à sa valeur par défaut n'est pas écrite : le fichier
+     d'export et le lien de transfert n'emportent que ce qui a été choisi. */
+  function propre(o){
+    var r = {};
+    Object.keys(o).forEach(function(k){
+      var v = o[k];
+      if (v === 0 || v === false || v === '' || v == null) return;
+      if (Array.isArray(v) && !v.length) return;
+      if (v && typeof v === 'object' && !Array.isArray(v) && !Object.keys(v).length) return;
+      r[k] = v;
+    });
+    return r;
+  }
+  O.ecrire = function(v){
+    try {
+      var o = propre(v || {});
+      if (Object.keys(o).length) localStorage.setItem(KEY, JSON.stringify(o));
+      else localStorage.removeItem(KEY);
+      return true;
+    } catch (_) { return false; }
+  };
+
+  var T = EN ? {
+    titre: 'Settings', dek: 'Saved in this browser, no account. Your settings travel with your exports and transfer link.',
+    contenu: 'Content', types: 'Hide these media everywhere', niveau: 'Level', nTout: 'Everything',
+    nImp: 'Essentials and important', nMust: 'Essentials only', nNote: 'Star Trek has no levels and is not affected.',
+    vf: 'Only what exists in French', vus: 'Hide what I’ve finished, on every page', vo: 'Original titles',
+    univers: 'My universes', uNote: 'On the home page and on Upcoming. A star puts it first.',
+    fav: 'Favourite', cacher: 'Hide', spoil: 'Spoilers', sp: 'Hide the synopsis until the box is ticked (the FAQ stays)',
+    flou: 'Blur posters until ticked', aff: 'Display', cp: 'Compact cards, no thumbnails', txt: 'Larger text',
+    ctr: 'Stronger contrast', calme: 'No intro screen, no line animations',
+    regarder: 'Where to watch', pays: 'My country', defaut: 'Default', pf: 'My platforms',
+    pfNote: 'Shown first in “Where to watch”, and marked on the timeline.', pfVide: 'The platform list is unavailable right now.',
+    jouer: 'Where to play', cs: 'My consoles', csNote: 'Shown first in “Where to play”.',
+    raz: 'Reset all', fermer: 'Close', applique: 'Apply',
+    masques: 'Hidden', stops: function(a, b){ return a + ' / ' + b + ' stops shown'; },
+    tout: 'Show everything', modifier: 'Settings',
+    vusR: 'Finished works hidden', lvMust: 'essentials only', lvImp: 'essentials and important', voR: 'original-language only',
+    susLien: 'Settings paused to show the work you asked for', reapp: 'Apply them again',
+    susVide: 'Your settings would hide the whole timeline: it is shown in full',
+    uOff: function(n){ return n + (n > 1 ? ' universes hidden' : ' universe hidden'); }
+  } : {
+    titre: 'Réglages', dek: 'Enregistrés dans ce navigateur, sans compte. Vos réglages voyagent dans vos exports et dans le lien de transfert.',
+    contenu: 'Contenu', types: 'Masquer ces médias sur tout le site', niveau: 'Niveau', nTout: 'Tout',
+    nImp: 'Essentiels et importants', nMust: 'Essentiels seulement', nNote: 'Star Trek n’a pas de niveaux : il n’est pas concerné.',
+    vf: 'Seulement ce qui existe en français', vus: 'Masquer ce que j’ai terminé, sur toutes les pages', vo: 'Titres originaux',
+    univers: 'Mes univers', uNote: 'À l’accueil et sur « À venir ». L’étoile le met en premier.',
+    fav: 'Favori', cacher: 'Masquer', spoil: 'Anti-spoil', sp: 'Cacher le synopsis tant que la case n’est pas cochée (la FAQ reste)',
+    flou: 'Flouter les affiches non cochées', aff: 'Affichage', cp: 'Cartes compactes, sans vignette', txt: 'Texte plus grand',
+    ctr: 'Contraste renforcé', calme: 'Sans écran d’arrivée ni animations de la ligne',
+    regarder: 'Où regarder', pays: 'Mon pays', defaut: 'Par défaut', pf: 'Mes plateformes',
+    pfNote: 'Mises en premier dans « Où regarder », et signalées sur la timeline.', pfVide: 'La liste des plateformes est indisponible pour l’instant.',
+    jouer: 'Où jouer', cs: 'Mes consoles', csNote: 'Mises en premier dans « Où jouer ».',
+    raz: 'Tout réinitialiser', fermer: 'Fermer', applique: 'Appliquer',
+    masques: 'Masqués', stops: function(a, b){ return a + ' / ' + b + ' arrêts affichés'; },
+    tout: 'Tout réafficher', modifier: 'Réglages',
+    vusR: 'Œuvres terminées masquées', lvMust: 'essentiels seulement', lvImp: 'essentiels et importants', voR: 'VO masquée',
+    susLien: 'Réglages suspendus pour montrer l’œuvre demandée', reapp: 'Les réappliquer',
+    susVide: 'Vos réglages masqueraient toute la timeline : elle s’affiche entière',
+    uOff: function(n){ return n + (n > 1 ? ' univers masqués' : ' univers masqué'); }
+  };
+
+  /* Les pays où l'on regarde le plus le site, et ceux qu'on a demandés :
+     la Belgique, la Suisse, le Canada. Les noms viennent du navigateur. */
+  var PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU'];
+  function nomPays(c){
+    try { return new Intl.DisplayNames([EN ? 'en' : 'fr'], { type: 'region' }).of(c); } catch (_) { return c; }
+  }
+
+  /* Le panneau reprend le dessin du site : le filet aux treize encres du
+     billet, une ligne de métro dont chaque section est une station, des
+     pastilles arrondies, les codes de ligne des univers. Redessiné le
+     7 novembre 2026, à la demande de Niko. */
+  var ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2', '#a8bf4f', '#e07b39',
+                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f'];
+  var FILET = 'linear-gradient(90deg,' + ENCRES.map(function(c, i){
+    return c + ' ' + (i * 100 / ENCRES.length).toFixed(2) + '% ' + ((i + 1) * 100 / ENCRES.length).toFixed(2) + '%';
+  }).join(',') + ')';
+  var BS = "'Big Shoulders Display','BSD repli',sans-serif";
+  var CSS = [
+    /* Un attribut `hidden` ne suffit jamais sur ce site. */
+    '#sieve button[hidden]{display:none!important}',
+    '.rg-rap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;width:max-content;max-width:100%;',
+    '  margin:18px auto 4px;padding:8px 16px;border:1.5px dashed var(--hot);border-radius:999px;color:var(--paper);font-size:13px;line-height:1.4;text-align:center}',
+    '.rg-rap b{font-family:' + BS + ';font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--hot)}',
+    '.rg-rap button{font:inherit;font-size:12.5px;background:none;border:0;padding:0;color:var(--paper);text-decoration:underline;cursor:pointer}',
+    '.rg-rap button:hover{color:var(--hot)}',
+
+    '.rg{width:min(640px,calc(100vw - 20px));max-height:calc(100dvh - 20px);margin:auto;padding:0;color:var(--paper);',
+    '  background:#0f0d16;border:0;border-radius:16px;overflow:hidden auto;overscroll-behavior:contain;',
+    '  box-shadow:0 30px 90px rgba(0,0,0,.65),0 0 0 1px rgba(255,253,247,.14)}',
+    '.rg::backdrop{background:rgba(8,8,15,.78);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}',
+    '.rg-tete{position:sticky;top:0;z-index:3;background:#0f0d16;padding:0 0 14px;border-bottom:1px solid rgba(255,253,247,.1)}',
+    '.rg-filet{height:5px;background:' + FILET + '}',
+    '.rg h2{display:flex;align-items:center;gap:11px;margin:18px 70px 6px 24px;font-family:' + BS + ';font-weight:900;',
+    '  font-size:30px;letter-spacing:.02em;text-transform:uppercase;line-height:1}',
+    '.rg h2 svg{width:26px;height:26px;flex:0 0 auto;color:var(--hot)}',
+    '.rg h2 svg .moyeu{fill:var(--hot)}',
+    '.rg-dek{margin:0 24px;font-size:12.5px;line-height:1.5;color:rgba(255,253,247,.62)}',
+    '.rg-x{position:absolute;top:16px;right:18px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;',
+    '  background:rgba(255,253,247,.06);border:1px solid rgba(255,253,247,.18);color:rgba(255,253,247,.75);cursor:pointer;font-size:13px;line-height:1}',
+    '.rg-x:hover{background:var(--paper);color:var(--ink)}',
+
+    /* la ligne : un trait doré le long des sections, une station par section */
+    '.rg-corps{position:relative;padding:4px 24px 10px 60px;min-height:120px}',
+    '.rg-corps::before{content:"";position:absolute;left:35px;top:34px;bottom:40px;width:3px;border-radius:2px;',
+    '  background:linear-gradient(var(--hot),rgba(240,201,124,.12))}',
+    '.rg-s{position:relative;padding:20px 0 8px}',
+    '.rg-s+.rg-s{border-top:1px dashed rgba(255,253,247,.12)}',
+    '.rg-s::before{content:attr(data-n);position:absolute;left:-38px;top:18px;width:26px;height:26px;box-sizing:border-box;',
+    '  border-radius:50%;background:#0f0d16;border:3px solid var(--hot);color:var(--hot);',
+    '  font:800 12px/20px ' + BS + ';text-align:center}',
+    '.rg-s h3{margin:0 0 4px;font-family:' + BS + ';font-weight:800;font-size:18px;letter-spacing:.07em;',
+    '  text-transform:uppercase;line-height:1.3;color:var(--paper)}',
+    '.rg-l{margin:14px 0 8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,247,.5)}',
+    '.rg-n{margin:8px 0 0;font-size:11.5px;line-height:1.45;color:rgba(255,253,247,.48);font-style:italic}',
+
+    /* les pastilles */
+    '.rg-ch{display:flex;flex-wrap:wrap;gap:7px}',
+    '.rg-ch button{display:inline-flex;align-items:center;gap:7px;min-height:32px;padding:6px 13px;border-radius:999px;cursor:pointer;',
+    '  font:600 12.5px/1.1 inherit;color:var(--paper);background:rgba(255,253,247,.05);border:1.5px solid rgba(255,253,247,.2);',
+    '  transition:background .15s,border-color .15s,color .15s}',
+    '.rg-ch button:hover{border-color:rgba(255,253,247,.6)}',
+    '.rg-ch:not(.barre) button[aria-pressed=true]{background:var(--hot);border-color:var(--hot);color:var(--ink)}',
+    '.rg-ch:not(.barre) button[aria-pressed=true]::before{content:"";width:8px;height:4px;margin:-3px 1px 0 -2px;',
+    '  border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg)}',
+    /* un type masqué : barré, en pointillés, comme une voie fermée */
+    '.rg-ch.barre button[aria-pressed=true]{background:none;border-style:dashed;border-color:rgba(255,253,247,.28);',
+    '  color:rgba(255,253,247,.42);text-decoration:line-through}',
+    '.rg-ch img{height:20px;width:auto;max-width:58px;display:block;border-radius:5px}',
+    '.rg-ch img.cs{border-radius:0;filter:brightness(0) invert(1)}',
+    '.rg-ch button[aria-pressed=true] img.cs{filter:brightness(0)}',
+    '.rg-ch button:has(img.cs){padding:6px 14px}',
+
+    /* le niveau : un sélecteur à trois voies */
+    '.rg-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:12px;background:rgba(255,253,247,.06)}',
+    '.rg-seg button{min-height:38px;padding:7px 6px;border:0;border-radius:9px;background:none;cursor:pointer;',
+    '  font:600 12.5px/1.15 inherit;color:rgba(255,253,247,.78)}',
+    '.rg-seg button:hover{color:var(--paper);background:rgba(255,253,247,.06)}',
+    '.rg-seg button[aria-pressed=true]{background:var(--hot);color:var(--ink);font-weight:700}',
+
+    /* les interrupteurs */
+    '.rg-sw{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:7px 0;padding:11px 14px;cursor:pointer;',
+    '  font-size:13.5px;line-height:1.35;border-radius:11px;background:rgba(255,253,247,.04);border:1px solid rgba(255,253,247,.08)}',
+    '.rg-sw:hover{border-color:rgba(255,253,247,.22)}',
+    '.rg-sw input{appearance:none;-webkit-appearance:none;flex:0 0 auto;position:relative;width:40px;height:23px;margin:0;',
+    '  border-radius:999px;background:rgba(255,253,247,.18);cursor:pointer;transition:background .2s}',
+    '.rg-sw input::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;',
+    '  background:var(--paper);transition:transform .2s cubic-bezier(.3,1.4,.5,1)}',
+    '.rg-sw input:checked{background:var(--hot)}',
+    '.rg-sw input:checked::after{transform:translateX(17px);background:var(--ink)}',
+    '.rg-sw input:focus-visible,.rg-ch button:focus-visible,.rg-seg button:focus-visible,.rg-uc button:focus-visible,.rg select:focus-visible',
+    '  {outline:2px solid var(--hot);outline-offset:2px}',
+
+    /* les univers : leur code de ligne, à leur encre */
+    '.rg-u{display:grid;grid-template-columns:1fr 1fr;gap:7px}',
+    '.rg-uc{display:flex;align-items:center;gap:9px;padding:7px 7px 7px 9px;border-radius:11px;',
+    '  background:rgba(255,253,247,.04);border:1px solid rgba(255,253,247,.08);transition:opacity .2s,border-color .2s}',
+    '.rg-uc b{flex:0 0 auto;min-width:36px;padding:3px 6px;border-radius:5px;text-align:center;background:var(--k);color:#0d0b12;',
+    '  font:800 12px/1.2 ' + BS + ';letter-spacing:.06em}',
+    '.rg-uc b.w{color:#fffdf7}',
+    '.rg-uc span{flex:1;min-width:0;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
+    '.rg-uc button{flex:0 0 auto;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;border:0;',
+    '  background:none;color:rgba(255,253,247,.4);cursor:pointer}',
+    '.rg-uc button:hover{color:var(--paper);background:rgba(255,253,247,.08)}',
+    '.rg-uc button svg{width:17px;height:17px;display:block}',
+    '.rg-uc button[data-v=fav][aria-pressed=true]{color:var(--hot)}',
+    '.rg-uc button[data-v=off][aria-pressed=true]{color:var(--paper);background:rgba(255,253,247,.12)}',
+    '.rg-uc.fav{border-color:color-mix(in srgb,var(--hot) 55%,transparent)}',
+    '.rg-uc.off{opacity:.45}',
+    '.rg-uc.off span{text-decoration:line-through}',
+
+    '.rg select{appearance:none;-webkit-appearance:none;max-width:100%;padding:9px 38px 9px 13px;border-radius:11px;cursor:pointer;',
+    '  font:600 13.5px inherit;color:var(--paper);background-color:rgba(255,253,247,.06);border:1px solid rgba(255,253,247,.18);',
+    '  background-image:linear-gradient(45deg,transparent 50%,var(--hot) 50%),linear-gradient(135deg,var(--hot) 50%,transparent 50%);',
+    '  background-position:calc(100% - 19px) 55%,calc(100% - 13px) 55%;background-size:6px 6px;background-repeat:no-repeat}',
+    '.rg option{background:#0f0d16;color:var(--paper)}',
+
+    '.rg-bar{position:sticky;bottom:0;z-index:3;display:flex;gap:12px;align-items:center;justify-content:space-between;',
+    '  padding:14px 24px;background:#0f0d16;border-top:1px solid rgba(255,253,247,.1)}',
+    '.rg-raz{font:inherit;font-size:12.5px;background:none;border:0;padding:0;color:rgba(255,253,247,.6);text-decoration:underline;cursor:pointer}',
+    '.rg-raz:hover{color:var(--paper)}',
+    '.rg-go{font-family:' + BS + ';font-weight:800;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;',
+    '  background:var(--hot);border:0;border-radius:999px;color:var(--ink);padding:10px 26px;transition:background .15s}',
+    '.rg-go:hover{background:var(--paper)}',
+    '@media(max-width:560px){.rg h2{font-size:26px;margin-left:18px}.rg-dek{margin:0 18px}',
+    '  .rg-corps{padding:2px 16px 10px 48px}.rg-corps::before{left:25px}.rg-s::before{left:-34px}',
+    '  .rg-u{grid-template-columns:1fr}.rg-bar{padding:12px 16px}.rg-x{right:14px}.rg-seg button{font-size:11.5px;padding:7px 3px}}'
+  ].join('');
+  var st = document.createElement('style');
+  st.textContent = CSS;
+  document.head.appendChild(st);
+
+  var ETOILE = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>';
+  var OEIL = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 20 20 4"/></svg>';
+
+  function cap(s){ s = String(s).toLowerCase(); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function dec(s){ var t = document.createElement('textarea'); t.innerHTML = String(s == null ? '' : s); return t.value; }
+
+  /* ── P : les coches masquées partout ────────────────────────────────
+     Le bouton de la page ne vaut plus pour elle seule : il écrit le
+     réglage, et chaque page le reprend à son chargement. Le rappel
+     « Reprendre » qui remet les filtres à zéro ne le touche pas — il ne
+     passe pas par le bouton. */
+  var hd = document.getElementById('hide-done');
+  if (hd) {
+    if (O.o.vus && hd.getAttribute('aria-pressed') !== 'true') hd.click();
+    hd.addEventListener('click', function(){
+      setTimeout(function(){
+        var o = lis();
+        if (hd.getAttribute('aria-pressed') === 'true') o.vus = 1; else delete o.vus;
+        O.ecrire(o); O.o.vus = o.vus;
+        rappel();
+      }, 0);
+    });
+  }
+
+  /* ── les boutons de filtres qui n'ont plus d'objet ──────────────────
+     Un type masqué n'a plus rien à filtrer : son bouton s'en va, sans quoi
+     le panneau de la page et celui des réglages se contrediraient. */
+  if (O.stat && !O.stat.suspendu) {
+    var T_ = {};
+    (O.o.t || []).forEach(function(k){ T_[k] = 1; });
+    [].forEach.call(document.querySelectorAll('#sieve [data-k]'), function(b){ if (T_[b.dataset.k]) b.hidden = true; });
+    var aMust = !!document.querySelector('#sieve [data-lv="must"]');
+    [].forEach.call(document.querySelectorAll('#sieve [data-lv]'), function(b){
+      var l = b.dataset.lv;
+      if (O.o.n && l === 'bonus') b.hidden = true;
+      if (O.o.n === 'must' && aMust && (l === 'imp' || l === 'important')) b.hidden = true;
+    });
+  }
+
+  /* La bande du premier écran compte les films, les séries, les jeux sur la
+     page entière, écrits à la publication : avec des médias masqués, ces
+     cases mentiraient. Seules restent celles que la page recalcule (arrêts,
+     trajet), qui portent un identifiant. */
+  if (O.stat && !O.stat.suspendu && O.stat.reste < O.stat.total)
+    [].forEach.call(document.querySelectorAll('.ln-board.stats .s'), function(s){
+      if (!s.querySelector('[id]')) s.style.display = 'none';
+    });
+
+  /* ── le rappel ───────────────────────────────────────────────────────
+     Une page à quarante arrêts au lieu de soixante-deux aurait l'air
+     cassée : dès que quelque chose est masqué, la page le dit, avec de
+     quoi tout réafficher. */
+  var rap = null;
+  /* Le rappel nomme des familles, pas une carte : le pluriel des types connus,
+     le libellé de la page pour les autres. Les mêmes que `reglages.mjs`. */
+  var PLUR = {
+    film: ['Films', 'Movies'], filmanim: ['Films animés', 'Animated movies'], serie: ['Séries', 'Series'],
+    anime: ['Séries animées', 'Animated series'], jeu: ['Jeux vidéo', 'Video games'], dlc: ['DLC', 'DLC'],
+    comic: ['Comics', 'Comics'], roman: ['Romans', 'Novels'], jeunesse: ['Romans jeune adulte', 'Young adult novels'],
+    audio: ['Livres audio', 'Audiobooks'], short: ['Courts métrages', 'Short films'], video: ['Vidéos', 'Videos'],
+    web: ['Webséries', 'Web series'], special: ['Spéciaux', 'Specials']
+  };
+  function labels(){
+    var CG = window.CG || {}, l = {};
+    var l0 = l;
+    Object.keys(PLUR).forEach(function(k){ l0['_' + k] = PLUR[k][EN ? 1 : 0]; });
+    var b = CG.badgeLabels || {};
+    Object.keys(b).forEach(function(k){ l[k] = cap(dec(b[k][1])); });
+    var kl = CG.kindLabels || (window.CGDT && CGDT.kindLabels) || {};
+    Object.keys(kl).forEach(function(k){ l[k] = cap(dec(kl[k])); });
+    Object.keys(l).forEach(function(k){ if (k.charAt(0) !== '_' && l['_' + k]) l[k] = l['_' + k]; });
+    return l;
+  }
+  function ancre(){
+    var i = document.getElementById('intro');
+    if (i) return i.closest('.wrap') || i;
+    var s = document.querySelector('.slot[data-u]');
+    if (s) return s.parentNode;
+    return document.getElementById('cal');
+  }
+  function rappel(){
+    var bouts = [], actions = '';
+    var S = O.stat;
+    if (S && S.suspendu === 'lien') {
+      bouts.push(T.susLien);
+      actions = '<button type="button" data-rg="reapp">' + T.reapp + '</button>';
+    } else if (S && S.suspendu === 'vide') {
+      bouts.push(T.susVide);
+      actions = '<button type="button" data-reglages>' + T.modifier + '</button>';
+    } else {
+      /* sur une page qui a des entrées, seulement ce qu'elle a vraiment retiré ;
+         ailleurs (accueil, Dossiers), tout ce qui est réglé */
+      var global = !S && O.masque && !!document.querySelector('.slot[data-u]');
+      if ((S && S.reste < S.total) || global) {
+        var l = labels(), noms = (O.o.t || []).filter(function(k){ return global ? PLUR[k] || l[k] : l[k] && (!S.t || S.t[k]); })
+          .map(function(k){ return global && PLUR[k] ? PLUR[k][EN ? 1 : 0] : l[k]; });
+        var q = [];
+        if (noms.length) q.push(noms.join(', '));
+        if (O.o.n === 'must' && (global || S.lv)) q.push(T.lvMust);
+        if (O.o.n === 'imp' && (global || S.lv)) q.push(T.lvImp);
+        if (O.o.vf && !EN && (global || S.vf)) q.push(T.voR);
+        bouts.push('<b>' + T.masques + '</b> ' + q.join(' · '));
+        if (S) bouts.push(T.stops(S.reste, S.total));
+      }
+      if (O.o.vus && hd) bouts.push(T.vusR);
+      if (O.accueil && O.accueil.off) bouts.push(T.uOff(O.accueil.off));
+      if (bouts.length) actions = '<button type="button" data-rg="tout">' + T.tout + '</button> · ' +
+        '<button type="button" data-reglages>' + T.modifier + '</button>';
+    }
+    if (!bouts.length) { if (rap) { rap.remove(); rap = null; } return; }
+    if (!rap) {
+      var a = ancre();
+      if (!a) return;
+      rap = document.createElement('p');
+      rap.className = 'rg-rap';
+      rap.setAttribute('role', 'status');
+      a.parentNode.insertBefore(rap, a);
+    }
+    rap.innerHTML = bouts.join(' · ') + (actions ? ' · ' + actions : '');
+  }
+  rappel();
+  O.rappel = rappel;
+
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest && ev.target.closest('[data-rg]');
+    if (!b) return;
+    if (b.dataset.rg === 'reapp') {
+      if (history.replaceState) history.replaceState(null, '', location.pathname);
+      location.reload();
+    } else if (b.dataset.rg === 'tout') {
+      var o = lis();
+      delete o.t; delete o.n; delete o.vf; delete o.vus;
+      if (o.u) Object.keys(o.u).forEach(function(k){ if (o.u[k] === 'off') delete o.u[k]; });
+      O.ecrire(o);
+      try {
+        var c = 'cg-filtres-' + location.pathname, f = JSON.parse(localStorage.getItem(c) || 'null');
+        if (f) { delete f['hide-done']; localStorage.setItem(c, JSON.stringify(f)); }
+      } catch (_) {}
+      location.reload();
+    }
+  });
+
+  /* Un lien vers une œuvre masquée, suivi sans quitter la page : on
+     recharge, et `garde()` suspend le tri pour la montrer. */
+  addEventListener('hashchange', function(){
+    var id = '';
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) {}
+    if (id && O.voitId && !O.voitId(id) && !document.getElementById(id)) location.reload();
+  });
+
+  /* ── M : les titres originaux ────────────────────────────────────────
+     `garde()` les pose avant le rendu, depuis un cache : l'index de la
+     recherche porte le titre anglais en sixième place, et il arrive trop
+     tard pour un rendu synchrone. Le cache se refait chaque semaine. */
+  var TKEY = 'cg-titres-vo';
+  function titres(){
+    return fetch('/search-fr.json').then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+      if (!j || !j.e) return null;
+      var m = {};
+      j.e.forEach(function(x){ if (x[5]) m[x[2]] = x[5]; });
+      try { localStorage.setItem(TKEY, JSON.stringify({ d: Date.now(), m: m })); } catch (_) {}
+      return m;
+    }).catch(function(){ return null; });
+  }
+  if (O.o.vo && !EN) {
+    var c0 = null;
+    try { c0 = JSON.parse(localStorage.getItem(TKEY) || 'null'); } catch (_) {}
+    if (!c0 || !c0.d || Date.now() - c0.d > 7 * 864e5) titres().then(function(m){
+      /* première fois : la page est déjà rendue, on reprend les titres à l'écran */
+      if (!m || c0) return;
+      [].forEach.call(document.querySelectorAll('.bu[data-id]'), function(a){
+        var t = m[a.dataset.id], h = a.querySelector('.bu-title');
+        if (t && h) h.textContent = t;
+      });
+    });
+  }
+
+  /* ── K : mes plateformes, sur la timeline ────────────────────────────
+     `/plateformes.json` est refait chaque nuit par une action (voir
+     `plateformes.mjs`) : une seule requête au lieu d'une par œuvre. Il n'est
+     demandé que si le visiteur a choisi ses plateformes. */
+  var PF = null;
+  function plateformesJson(){
+    return PF || (PF = fetch('/plateformes.json').then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; }));
+  }
+  if ((O.o.pf || []).length && document.querySelector('.bu-panel[data-tmdb]')) {
+    plateformesJson().then(function(j){
+      if (!j || !j.w) return;
+      var pays = (window.CG_WT && CG_WT.pays) || O.o.pays || (EN ? 'US' : 'FR');
+      var mes = {};
+      O.o.pf.forEach(function(k){ mes[k] = 1; });
+      [].forEach.call(document.querySelectorAll('.bu[data-id]'), function(a){
+        var p = a.querySelector('.bu-panel[data-tmdb]'), tg = a.querySelector('.bu-tags');
+        if (!p || !tg || tg.querySelector('.wt-m')) return;
+        var w = j.w[p.dataset.media + '/' + p.dataset.tmdb], l = w && w[pays];
+        if (!l) return;
+        var ici = l.map(function(i){ return j.p[i]; }).filter(function(x){ return x && mes[x[0]]; });
+        if (!ici.length) return;
+        var s = document.createElement('span');
+        s.className = 'wt-m';
+        ici.slice(0, 3).forEach(function(x){
+          var im = document.createElement('img');
+          im.src = 'https://image.tmdb.org/t/p/w92' + x[2];
+          im.alt = x[1]; im.title = x[1]; im.loading = 'lazy';
+          s.appendChild(im);
+        });
+        tg.appendChild(s);
+      });
+    });
+  }
+
+  /* ── le panneau ──────────────────────────────────────────────────── */
+  var dlg = null, avant = '';
+  function table(){
+    if (window.CG_TABLE) return Promise.resolve(window.CG_TABLE);
+    return new Promise(function(ok){
+      var s = document.createElement('script');
+      s.src = '/reglages.js';
+      s.onload = function(){ ok(window.CG_TABLE || null); };
+      s.onerror = function(){ ok(null); };
+      document.head.appendChild(s);
+    });
+  }
+  function bouton(txt, on, attrs){
+    return '<button type="button" aria-pressed="' + (on ? 'true' : 'false') + '"' + (attrs || '') + '>' + txt + '</button>';
+  }
+  /* le texte d'abord, l'interrupteur au bout de la ligne */
+  function sw(id, txt, on){
+    return '<label class="rg-sw" for="rg-' + id + '"><span>' + txt + '</span><input type="checkbox" id="rg-' + id + '"' + (on ? ' checked' : '') + '/></label>';
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var NOIR = { mcu: 1, residentevil: 1 };   /* leur rouge est trop sombre pour l'encre */
+  function section(n, titre, corps){
+    return '<section class="rg-s" data-n="' + n + '"><h3>' + titre + '</h3>' + corps + '</section>';
+  }
+
+  function remplis(tab, pf){
+    var o = lis(), h = '', c = '';
+    var T_ = {};
+    (o.t || []).forEach(function(k){ T_[k] = 1; });
+    c = '<p class="rg-l">' + T.types + '</p><div class="rg-ch barre" id="rg-t">';
+    if (tab) Object.keys(tab.types).sort(function(a, b){
+      return tab.types[a][EN ? 1 : 0].localeCompare(tab.types[b][EN ? 1 : 0]);
+    }).forEach(function(k){ c += bouton(esc(tab.types[k][EN ? 1 : 0]), T_[k], ' data-t="' + k + '"'); });
+    c += '</div><p class="rg-l">' + T.niveau + '</p><div class="rg-seg" id="rg-n">' +
+      bouton(T.nTout, !o.n, ' data-n=""') + bouton(T.nImp, o.n === 'imp', ' data-n="imp"') +
+      bouton(T.nMust, o.n === 'must', ' data-n="must"') + '</div><p class="rg-n">' + T.nNote + '</p><p class="rg-l"></p>';
+    if (!EN) c += sw('vf', T.vf, o.vf);
+    c += sw('vus', T.vus, o.vus);
+    if (!EN) c += sw('vo', T.vo, o.vo);
+    h += section(1, T.contenu, c);
+
+    c = '<div class="rg-u" id="rg-u">';
+    if (tab) Object.keys(tab.u).forEach(function(k){
+      var u = tab.u[k];
+      if (u.dossier) return;
+      var e = (o.u || {})[k], nom = esc(u.n[EN ? 1 : 0]);
+      c += '<div class="rg-uc' + (e ? ' ' + e : '') + '" data-u="' + k + '" style="--k:' + u.c + '">' +
+        '<b' + (NOIR[k] ? ' class="w"' : '') + '>' + esc(u.k || '') + '</b><span>' + nom + '</span>' +
+        '<button type="button" data-v="fav" aria-pressed="' + (e === 'fav') + '" aria-label="' + T.fav + ' : ' + nom + '" title="' + T.fav + '">' + ETOILE + '</button>' +
+        '<button type="button" data-v="off" aria-pressed="' + (e === 'off') + '" aria-label="' + T.cacher + ' : ' + nom + '" title="' + T.cacher + '">' + OEIL + '</button></div>';
+    });
+    h += section(2, T.univers, c + '</div><p class="rg-n">' + T.uNote + '</p>');
+
+    h += section(3, T.spoil, sw('sp', T.sp, o.sp) + sw('flou', T.flou, o.flou));
+    h += section(4, T.aff, sw('cp', T.cp, o.cp) + sw('txt', T.txt, o.txt) + sw('ctr', T.ctr, o.ctr) + sw('calme', T.calme, o.calme));
+
+    h += section(5, T.regarder, '<p class="rg-l"><label for="rg-pays">' + T.pays + '</label></p><select id="rg-pays">' +
+      '<option value="">' + T.defaut + ' (' + esc(nomPays(EN ? 'US' : 'FR')) + ')</option>' +
+      PAYS.map(function(p){ return '<option value="' + p + '"' + (o.pays === p ? ' selected' : '') + '>' + esc(nomPays(p)) + '</option>'; }).join('') +
+      '</select><p class="rg-l">' + T.pf + '</p><div class="rg-ch" id="rg-pf">' + pfChips(pf, o) + '</div><p class="rg-n">' + T.pfNote + '</p>');
+
+    var W = window.CG_WT, mesC = {};
+    (o.cs || []).forEach(function(k){ mesC[k] = 1; });
+    c = '<p class="rg-l">' + T.cs + '</p><div class="rg-ch" id="rg-cs">';
+    if (W) W.rang.forEach(function(n){
+      c += bouton(W.logos[n] ? '<img class="cs" src="/images/consoles/' + W.logos[n] + '.svg" alt="' + esc(n) + '" title="' + esc(n) + '">' : esc(n),
+        mesC[n], ' data-c="' + esc(n) + '" title="' + esc(n) + '"');
+    });
+    h += section(6, T.jouer, c + '</div><p class="rg-n">' + T.csNote + '</p>');
+    dlg.querySelector('.rg-corps').innerHTML = h;
+  }
+  function pfChips(pf, o){
+    if (!pf || !pf.p) return '<span class="rg-n">' + T.pfVide + '</span>';
+    var pays = o.pays || (EN ? 'US' : 'FR'), mes = {};
+    (o.pf || []).forEach(function(k){ mes[k] = 1; });
+    var l = (pf.n && pf.n[pays]) || [];
+    /* les vingt plus présentes dans le pays, plus celles déjà choisies */
+    var ids = l.slice(0, 20);
+    pf.p.forEach(function(x, i){ if (mes[x[0]] && ids.indexOf(i) < 0) ids.push(i); });
+    return ids.map(function(i){
+      var x = pf.p[i];
+      return bouton('<img src="https://image.tmdb.org/t/p/w92' + esc(x[2]) + '" alt="">' + esc(x[1]), mes[x[0]], ' data-p="' + esc(x[0]) + '"');
+    }).join('');
+  }
+
+  function change(fn){
+    var o = lis();
+    fn(o);
+    O.ecrire(o);
+    /* l'affichage suit tout de suite ; le reste au rechargement */
+    var d = document.documentElement.dataset;
+    ['cp', 'txt', 'ctr', 'calme', 'sp', 'flou'].forEach(function(k){
+      var a = 'cg' + k.charAt(0).toUpperCase() + k.slice(1);
+      if (!o[k]) delete d[a];
+    });
+  }
+
+  function bati(){
+    dlg = document.createElement('dialog');
+    dlg.className = 'rg';
+    dlg.setAttribute('aria-labelledby', 'rg-h');
+    /* la roue du menu, en grand à côté du titre (même dessin) */
+    var roue = (document.querySelector('.cg-roue svg') || {}).outerHTML || '';
+    dlg.innerHTML = '<div class="rg-in"><div class="rg-tete"><div class="rg-filet"></div>' +
+      '<button type="button" class="rg-x" aria-label="' + T.fermer + '">✕</button>' +
+      '<h2 id="rg-h">' + roue + T.titre + '</h2><p class="rg-dek">' + T.dek + '</p></div><div class="rg-corps"></div>' +
+      '<div class="rg-bar"><button type="button" class="rg-raz">' + T.raz + '</button>' +
+      '<button type="button" class="rg-go">' + T.applique + '</button></div></div>';
+    document.body.appendChild(dlg);
+    dlg.querySelector('.rg-x').addEventListener('click', function(){ dlg.close(); });
+    dlg.querySelector('.rg-go').addEventListener('click', function(){ dlg.close(); });
+    dlg.addEventListener('click', function(ev){ if (ev.target === dlg) dlg.close(); });
+    dlg.querySelector('.rg-raz').addEventListener('click', function(){
+      O.ecrire({});
+      try { localStorage.removeItem(TKEY); } catch (_) {}
+      dlg.close();
+    });
+    /* Fermer, c'est appliquer : un réglage qui change la timeline demande
+       de la rebâtir, et c'est le rechargement qui le fait. */
+    dlg.addEventListener('close', function(){
+      if (JSON.stringify(lis()) !== avant) location.reload();
+    });
+    dlg.addEventListener('click', function(ev){
+      var b = ev.target.closest('button');
+      if (!b || !dlg.contains(b)) return;
+      var r = b.closest('[data-u]');
+      if (b.dataset.t) {
+        change(function(o){
+          var l = o.t || [], i = l.indexOf(b.dataset.t);
+          if (i < 0) l.push(b.dataset.t); else l.splice(i, 1);
+          o.t = l;
+        });
+      } else if (b.dataset.n != null) {
+        change(function(o){ o.n = b.dataset.n; });
+        [].forEach.call(dlg.querySelectorAll('[data-n]'), function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        return;
+      } else if (r && b.dataset.v) {
+        var on = b.getAttribute('aria-pressed') !== 'true';
+        change(function(o){
+          o.u = o.u || {};
+          if (on) o.u[r.dataset.u] = b.dataset.v; else delete o.u[r.dataset.u];
+        });
+        [].forEach.call(r.querySelectorAll('[data-v]'), function(x){ x.setAttribute('aria-pressed', on && x === b ? 'true' : 'false'); });
+        r.classList.toggle('off', on && b.dataset.v === 'off');
+        r.classList.toggle('fav', on && b.dataset.v === 'fav');
+        return;
+      } else if (b.dataset.p) {
+        change(function(o){
+          var l = o.pf || [], i = l.indexOf(b.dataset.p);
+          if (i < 0) l.push(b.dataset.p); else l.splice(i, 1);
+          o.pf = l;
+        });
+      } else if (b.dataset.c) {
+        change(function(o){
+          var l = o.cs || [], i = l.indexOf(b.dataset.c);
+          if (i < 0) l.push(b.dataset.c); else l.splice(i, 1);
+          o.cs = l;
+        });
+      } else return;
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+    dlg.addEventListener('change', function(ev){
+      var t = ev.target;
+      if (t.id === 'rg-pays') {
+        change(function(o){ o.pays = t.value; });
+        plateformesJson().then(function(pf){ dlg.querySelector('#rg-pf').innerHTML = pfChips(pf, lis()); });
+        return;
+      }
+      if (!t.id || t.id.indexOf('rg-') !== 0 || t.type !== 'checkbox') return;
+      var k = t.id.slice(3);
+      change(function(o){ o[k] = t.checked ? 1 : 0; });
+      if (k === 'vo' && t.checked && !EN) titres();
+    });
+  }
+
+  function ouvre(){
+    /* depuis le tiroir d'un téléphone : on le referme derrière nous */
+    var dr = document.getElementById('drawer'), bg = document.getElementById('burger');
+    if (dr && dr.classList.contains('open')) {
+      dr.classList.remove('open');
+      if (bg) bg.setAttribute('aria-expanded', 'false');
+    }
+    if (!dlg) bati();
+    avant = JSON.stringify(lis());
+    dlg.querySelector('.rg-corps').innerHTML = '';
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    Promise.all([table(), plateformesJson()]).then(function(v){ remplis(v[0], v[1]); });
+  }
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest && ev.target.closest('[data-reglages]');
+    if (!b) return;
+    ev.preventDefault();
+    ouvre();
+  });
 })();

@@ -1786,7 +1786,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   }
   var RL=D.erasRelease?resolve(D.erasRelease):null;
   var AUTRES={release:RL};
-  var ERAS=AUTRES[MODE]||D.eras;
+  var ERAS0=AUTRES[MODE]||D.eras, ERAS=CG_OPT.garde(ERAS0,D), PLEIN=CG_OPT.plein(ERAS0);
   var ALL=[];
   /* ── deux natures d'items dans une ère ────────────────────────────
      Les entrées comptent dans la progression, les bandeaux non. On les
@@ -2090,7 +2090,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      les bandeaux n'en sont pas. Pas encore d'image d'ère choisie par Niko :
      la plaque reprend le visuel de l'ère que portent les données. */
   var ARTS=[];
-  function artEre(era,i){ return ARTS[i]||era.art; }
+  function artEre(era,i){ return ARTS[CG_OPT.rang(era,i)-1]||era.art; }
   function plaque(era,i){
     var art=artEre(era,i), n={}, ordre=[];
     var real=era.entries.filter(function(e){ return e.type!=='note'; });
@@ -2120,7 +2120,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   (function build(){
     var html='', bi=0;
     ERAS.forEach(function(era,i){
-      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+CG_OPT.rang(era,i)+')">'+
         plaque(era,i)+
         '<div class="wrap"><div class="rows">'+era.entries.map(function(e){
           return e.type==='note' ? banner(e,bi++) : row(e);
@@ -2372,7 +2372,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   /* export / import / réinitialisation */
   $('#export').addEventListener('click',function(){
-    var blob=new Blob([JSON.stringify({dates:window.CG_DATES?CG_DATES():undefined,universe:'startrek',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    var blob=new Blob([JSON.stringify({options:CG_OPT.ex(),dates:window.CG_DATES?CG_DATES():undefined,universe:'startrek',progress:prog,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-startrek.json';
@@ -2424,7 +2424,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function saveWon(){ try{ localStorage.setItem(BKEY,JSON.stringify(won)); }catch(_){} }
 
   function ixOf(id){
-    for(var i=0;i<ALL.length;i++) if(ALL[i].id===id) return i;
+    for(var i=0;i<PLEIN.length;i++) if(PLEIN[i].id===id) return i;
     return -1;
   }
   /* L'ordre de sortie ne découpe pas le monde en ères : un badge `last` y
@@ -2433,7 +2433,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      saison recollée les couvre. Sans ça, le seul repère encore présent
      aurait réclamé toutes les sorties qui le précèdent. */
   var SUITE=MODE==='release'?[].concat.apply([],D.eras.map(function(era){
-    return era.entries.filter(function(e){ return e.type!=='note'; }); })):ALL;
+    return era.entries.filter(function(e){ return e.type!=='note'; }); })):PLEIN;
   function rangDe(id){
     for(var i=0;i<SUITE.length;i++) if(SUITE[i].id===id) return i;
     return -1;
@@ -2454,9 +2454,10 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   }
   function earned(b){
     if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });
-    var need=needOf(b);
+    var need=needOf(b).filter(CG_OPT.voitId);
     return need.length>0 && need.every(function(i){ return prog[i]; });
   }
+  BADGES=BADGES.filter(function(b){ return b.trigger==='100pct'||!b.ids||needOf(b).filter(CG_OPT.voitId).length>0; });
   function syncBadges(pop){
     var fresh=BADGES.filter(function(b){ return !won[b.id] && earned(b); });
     if(!fresh.length) return fresh;

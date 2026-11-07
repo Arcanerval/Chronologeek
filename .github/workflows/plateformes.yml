@@ -1,0 +1,36 @@
+name: Plateformes par oeuvre
+
+# Refait /plateformes.json (voir _proto/plateformes.mjs) : ou regarder chaque
+# oeuvre, pays par pays, pour l'option "Mes plateformes" des reglages.
+# Une heure et demie avant le radar, pour ne pas pousser en meme temps.
+on:
+  schedule:
+    - cron: "30 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  plateformes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Lire les plateformes
+        env:
+          TMDB_KEY: ${{ secrets.TMDB_KEY }}
+        run: node _proto/plateformes.mjs
+
+      - name: Commit si changement
+        run: |
+          git config user.name  "Plateformes bot"
+          git config user.email "actions@github.com"
+          git add plateformes.json
+          git diff --staged --quiet || git commit -m "Plateformes : mise a jour"
+          git pull --rebase
+          git push

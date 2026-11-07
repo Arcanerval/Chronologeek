@@ -1743,7 +1743,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   var RW=D.erasRewatch?resolve(D.erasRewatch):null;
   var RL=D.erasRelease?resolve(D.erasRelease):null;
   var AUTRES={rewatch:RW,release:RL};
-  var ERAS=AUTRES[MODE]||D.eras;
+  var ERAS0=AUTRES[MODE]||D.eras, ERAS=CG_OPT.garde(ERAS0,D), PLEIN=CG_OPT.plein(ERAS0);
   var ALL=[];
   ERAS.forEach(function(era){ era.entries.forEach(function(e){ ALL.push(e); e.n=ALL.length; }); });
 
@@ -2043,7 +2043,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   (function build(){
     var html='';
     ERAS.forEach(function(era,i){
-      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+(i+1)+')">'+
+      html+='<section class="era-sec" id="era'+(i+1)+'" data-era="'+i+'" style="--era:var(--era'+CG_OPT.rang(era,i)+')">'+
         plaque(era,i)+
         '<div class="wrap"><div class="rows">'+era.entries.map(row).join('')+'</div></div>'+
       '</section>';
@@ -2334,7 +2334,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
        fichier exporté avant cette séparation a tout dans `progress`, et
        l'import ci-dessous le recolle sans rien perdre. */
     var _p=parts();
-    var blob=new Blob([JSON.stringify({dates:window.CG_DATES?CG_DATES():undefined,universe:'jurassic',progress:_p.oeuvres,alt:_p.autres,mine:window.CGP?window.CGP.lis():[]},null,1)],
+    var blob=new Blob([JSON.stringify({options:CG_OPT.ex(),dates:window.CG_DATES?CG_DATES():undefined,universe:'jurassic',progress:_p.oeuvres,alt:_p.autres,mine:window.CGP?window.CGP.lis():[]},null,1)],
                       {type:'application/json'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='chronologeek-jurassicworld.json';
@@ -2396,7 +2396,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function saveWon(){ try{ localStorage.setItem(BKEY,JSON.stringify(won)); }catch(_){} }
 
   function ixOf(id){
-    for(var i=0;i<ALL.length;i++) if(ALL[i].id===id) return i;
+    for(var i=0;i<PLEIN.length;i++) if(PLEIN[i].id===id) return i;
     return -1;
   }
   /* Un badge d'ère nomme la dernière entrée de son ère dans le parcours de
@@ -2405,14 +2405,14 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      débloquerait avant l'Épisode II. Le repère se retrouve donc par son rang
      d'ère, pas par son identifiant. */
   function markId(id){
-    if(ERAS===D.eras) return id;
+    if(MODE==='first') return id;
     /* L'ordre de sortie n'a pas les ères de la découverte : le rang n'y
        veut rien dire. Un badge qui y vise un repère le nomme lui-même. */
-    if(ERAS===RL) return id;
+    if(MODE==='release') return id;
     for(var i=0;i<D.eras.length;i++){
       var d=D.eras[i].entries;
-      if(d[d.length-1].id===id && ERAS[i]){
-        var r=ERAS[i].entries; return r[r.length-1].id;
+      if(d[d.length-1].id===id && ERAS0[i]){
+        var r=ERAS0[i].entries; return r[r.length-1].id;
       }
     }
     return id;
@@ -2433,13 +2433,14 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var k=-1;
     for(var i=0;i<MARKS.length;i++) if(MARKS[i].b===b) k=i;
     if(k<0) return b.ids||[];
-    return ALL.slice(k?MARKS[k-1].i+1:0,MARKS[k].i+1).map(function(e){ return e.id; });
+    return PLEIN.slice(k?MARKS[k-1].i+1:0,MARKS[k].i+1).map(function(e){ return e.id; });
   }
   function earned(b){
     if(b.trigger==='100pct') return ALL.every(function(e){ return prog[e.id]; });
-    var need=needOf(b);
+    var need=needOf(b).filter(CG_OPT.voitId);
     return need.length>0 && need.every(function(i){ return prog[i]; });
   }
+  BADGES=BADGES.filter(function(b){ return b.trigger==='100pct'||!b.ids||needOf(b).filter(CG_OPT.voitId).length>0; });
   /* Rend les badges tout juste obtenus ; `pop` décide s'ils s'annoncent. */
   function syncBadges(pop){
     var fresh=BADGES.filter(function(b){ return !won[b.id] && earned(b); });

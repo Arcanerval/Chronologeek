@@ -33,6 +33,7 @@ import { SOURCES } from './jsonld.mjs';
 import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
 import { recherche } from './recherche.mjs';
+import { reglages, TETE_REGLAGES, boutonReglages, tiroirReglages } from './reglages.mjs';
 import { flux } from './flux.mjs';
 import { oeuvres, habillage } from './oeuvres.mjs';
 import { decomptes, appliquer } from './decomptes.mjs';
@@ -399,7 +400,10 @@ function reservations(cle, langue) {
     '</style>';
 }
 
+// Les réglages du visiteur passent en premier : leur CSS doit être là avant
+// le premier rendu (voir reglages.mjs).
 const PRERENDU_CSS =
+  TETE_REGLAGES + '\n' +
   '<script>document.documentElement.className+=" js"</script>\n' +
   '<style>.js .pr{visibility:hidden}</style>\n' + FONTES_REPLI;
 
@@ -465,7 +469,7 @@ const BOOT =
      deux `new Image()` ci-dessous font le même travail au même endroit du
      `<head>`, et seulement quand il se joue. Le CSS ne charge rien non plus
      de son côté : un fond n'est demandé que si un élément le porte. */
-  '<script>try{if(!sessionStorage.getItem("cg-boot")||/[?&]boot\\b/.test(location.search)){' +
+  '<script>try{if((!sessionStorage.getItem("cg-boot")&&!(window.CG_OPT&&CG_OPT.o.calme))||/[?&]boot\\b/.test(location.search)){' +
   'var r=document.documentElement,f=0;r.className+=" boot";sessionStorage.setItem("cg-boot","1");' +
   'var s=function(d){if(f)return;f=1;setTimeout(function(){r.classList.add("boot-out");' +
   'setTimeout(function(){r.classList.remove("boot","boot-out");' +
@@ -840,6 +844,15 @@ function publier(route, langue) {
                 (SOURCES[route.cle] && route.cle !== 'startrek' ? `
 ${RES_ITI}` : '') +
                 (route.cle === 'accueil' ? `\n${BOOT}` : ''));
+  // La roue dentée des réglages, juste avant le drapeau de langue (voir reglages.mjs).
+  {
+    const avantRoue = h;
+    h = h.replace(/<a class="icon-btn lang-btn"/, m => boutonReglages(langue) + '\n      ' + m);
+    if (h === avantRoue) problemes.push(`${c.sortie} : drapeau de langue introuvable pour la roue des réglages`);
+    const avantTiroir = h;
+    h = h.replace(/(<nav class="drawer"[\s\S]*?<a [^>]*class="news"[^>]*>[^<]*<\/a>)/, m => m + '\n      ' + tiroirReglages(langue));
+    if (h === avantTiroir) problemes.push(`${c.sortie} : tiroir introuvable pour les réglages`);
+  }
   if (route.cle === 'accueil') {
     const avantCorps = h;
     h = h.replace(/(<body[^>]*>)/i, `$1\n${BOOT_CORPS(langue)}`);
@@ -1039,6 +1052,11 @@ for (const [sortie, langue] of Object.entries(ERREURS)) {
 
 // L'index de la recherche de l'accueil, un fichier par langue, à la racine
 // comme `radar.json` : les titres et les URL diffèrent d'une langue à l'autre.
+try {
+  const t = reglages({ racine: RACINE });
+  if (!CHECK) writeFileSync(join(RACINE, 'reglages.js'), t);
+  autres.push({ dest: '/reglages.js', octets: t.length, note: 'réglages : types et arrêts' });
+} catch (e) { problemes.push(`reglages.js : ${e.message}`); }
 const INDEX = { 'search-fr.json': 'fr', 'search-en.json': 'en' };
 for (const [sortie, langue] of Object.entries(INDEX)) {
   let index = '';
