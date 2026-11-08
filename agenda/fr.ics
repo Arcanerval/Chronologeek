@@ -182,6 +182,20 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:03bc79392a58cad3a6fb-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+SUMMARY:Monsterverse · Godzilla x Kong: Supernova
+DESCRIPTION:Film\n\nGodzilla and Kong return in an all-new adventure as Ear
+ th's greatest titans face an unthinkable threat from beyond the stars. Whe
+ n a cosmic predator\, Apex\, sets its sights on Earth\, only the combined 
+ might of monsters and humanity can avert total extinction.\n\nhttps://chro
+ nologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:920da95001af982d6e6b-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270406
@@ -231,6 +245,26 @@ DESCRIPTION:Film\n\nHunted by Miguel O'Hara's Spider Society and betrayed b
  Miles to travel across the wildest reaches of time and space to fight for 
  and reunite everything he holds most dear.\n\nhttps://chronologeek.app/fr/
  a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:6c09116f2356b801f0b6-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270707
+DTEND;VALUE=DATE:20270708
+SUMMARY:DC · Mister Terrific · S1E01 · Première
+DESCRIPTION:Série\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:186f764780f69b67577a-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270707
+DTEND;VALUE=DATE:20270708
+SUMMARY:DC · Blue Beetle · S1E01 · Première
+DESCRIPTION:Série\n\nhttps://chronologeek.app/fr/a-venir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT

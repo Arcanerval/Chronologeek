@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chronologeek//Radar//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Chronologeek — sorties · Monsterverse
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:03bc79392a58cad3a6fb-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+SUMMARY:Godzilla x Kong: Supernova
+DESCRIPTION:Film\n\nGodzilla and Kong return in an all-new adventure as Ear
+ th's greatest titans face an unthinkable threat from beyond the stars. Whe
+ n a cosmic predator\, Apex\, sets its sights on Earth\, only the combined 
+ might of monsters and humanity can avert total extinction.\n\nhttps://chro
+ nologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
