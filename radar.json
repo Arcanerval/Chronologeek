@@ -150,7 +150,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
+  "poster": "/9jlZ59UALLLOE279HMT19rP9XQs.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },
@@ -365,56 +365,6 @@
   "poster": "/9KAe39xqyZnv9J4W3DRGdQqX82h.jpg",
   "tmdb": 911916,
   "media": "movie"
- },
- {
-  "universe": "dc",
-  "title": "Mister Terrific",
-  "date_sort": "2027-07-07",
-  "date_txt": "07/07/2027",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 1,
-   "mark": "premiere"
-  },
-  "poster": "/rta2YChrG3vXGd6RVapcTCCudru.jpg",
-  "tmdb": 341402,
-  "media": "tv"
- },
- {
-  "universe": "dc",
-  "title": "Blue Beetle",
-  "date_sort": "2027-07-07",
-  "date_txt": "07/07/2027",
-  "kind": "Série",
-  "source": "TMDB",
-  "precision": "day",
-  "era": "",
-  "syn": "",
-  "wiki": "",
-  "syn_fr": "",
-  "kindKey": "tv",
-  "title_fr": "",
-  "date_sort_fr": "",
-  "date_txt_fr": "",
-  "ep": {
-   "s": 1,
-   "e": 1,
-   "mark": "premiere"
-  },
-  "poster": "/iZplsc5yIKAguuagjDJRWWy2LBo.jpg",
-  "tmdb": 341401,
-  "media": "tv"
  },
  {
   "universe": "dc",
