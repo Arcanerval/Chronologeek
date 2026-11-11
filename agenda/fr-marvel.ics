@@ -7,16 +7,6 @@ X-WR-CALNAME:Chronologeek — sorties · Marvel
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:58d32c0da9a34aa99b62-fr@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261110
-DTEND;VALUE=DATE:20261111
-SUMMARY:VisionQuest · S1E08 · Finale
-DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
-URL:https://chronologeek.app/fr/a-venir
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:e85118a3183e90922f94-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261216
@@ -66,6 +56,18 @@ SUMMARY:Avengers: Secret Wars
 DESCRIPTION:Film\n\nAdaptation de Secret Wars de Jim Shooter et un prochain
   film de la phase 6 du Marvel Cinematic Universe qui conclura la saga du m
  ultivers.\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:7f85edd0b67be3036609-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20280505
+DTEND;VALUE=DATE:20280506
+SUMMARY:Untitled X-Men Film
+DESCRIPTION:Film\n\nA film set in the Marvel Cinematic Universe (MCU) based
+  on the Marvel Comics team. Plot TBA.\n\nhttps://chronologeek.app/fr/a-ven
+ ir
 URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT

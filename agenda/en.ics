@@ -7,16 +7,6 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:58d32c0da9a34aa99b62-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261110
-DTEND;VALUE=DATE:20261111
-SUMMARY:Marvel · VisionQuest · S1E08 · Finale
-DESCRIPTION:https://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:a6158bda2b4f3310e378-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261117
@@ -314,6 +304,17 @@ DTEND;VALUE=DATE:20280219
 SUMMARY:DC · The Batman: Part II
 DESCRIPTION:Sequel to the 2022 film The Batman.\n\nhttps://chronologeek.app
  /upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:7f85edd0b67be3036609-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20280505
+DTEND;VALUE=DATE:20280506
+SUMMARY:Marvel · Untitled X-Men Film
+DESCRIPTION:A film set in the Marvel Cinematic Universe (MCU) based on the 
+ Marvel Comics team. Plot TBA.\n\nhttps://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
