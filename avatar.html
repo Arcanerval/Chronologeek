@@ -113,7 +113,7 @@ a{color:inherit}
   text-transform:uppercase;line-height:.9;letter-spacing:.005em}
 /* l'ombre décalée dure : réservée aux grands titres, jamais aux entrées —
    sur une bulle elle débordait de la case et passait sur le titre voisin */
-.off{text-shadow:4px 4px 0 var(--ink)}
+.off{}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
   font-weight:700;padding:10px 16px}
 .skip:focus{left:0}
@@ -218,7 +218,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    la bannière et le visuel part en bouillie. */
 .plane{position:absolute;inset:0 -2%;background-size:cover;background-position:center;
   background-image:url(/images/avatar.webp)}
-.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p1{filter:saturate(.42) brightness(.5)}
 .plane.p2{inset:0 -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
   clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
 .veil{position:absolute;inset:0;
@@ -267,8 +267,8 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .ask{margin:auto;border:2px solid var(--paper);background:var(--ink);color:var(--paper);
   padding:0;max-width:600px;width:calc(100% - 32px);box-shadow:8px 8px 0 rgba(0,0,0,.55)}
 .ask:focus-visible{outline:none}
-.ask::backdrop{background:rgba(8,8,12,.62);
-  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.ask::backdrop{background:rgba(8,8,12,0.85);
+  }
 /* Refait le 28 septembre 2026 au dessin du plan de métro : un bandeau de
    quai à l'encre de l'univers, et chaque parcours est une voie — son
    numéro dans un rond de ligne, son nom dessous. Les deux libellés ajoutés (le bandeau et « Voie ») sont en CSS,
@@ -279,7 +279,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 html[lang=en] .ask::before{content:'Choose your track'}
 .ask b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
   font-size:clamp(24px,6vw,31px);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;
-  color:var(--paper);text-align:center;padding:22px 26px 0;text-shadow:3px 3px 0 #000}
+  color:var(--paper);text-align:center;padding:22px 26px 0;}
 .ask-b{display:flex;gap:12px;padding:20px 22px 24px;counter-reset:voie}
 .ask-b button{flex:1 1 0;min-width:0;counter-increment:voie;display:flex;flex-direction:column;
   align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:18px;
@@ -416,7 +416,7 @@ body[data-parcours="release"] .pc-release{display:inline-flex}
   border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
 .map .layers{position:absolute;inset:0}
 .map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
-.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay1{filter:saturate(.4) brightness(.55);opacity:.85}
 .map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
   clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
 .map .tint{position:absolute;inset:0;
@@ -834,30 +834,30 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
    cocher est l'arrêt lui-même : un rond vide tant qu'on n'y est pas
    passé, plein une fois desservi. Le trait se colore jusqu'au train. */
 :root{--rest:color-mix(in srgb,var(--uni) 26%,#1c1a26);--rail:64px;--board:#07060b;--cleared:#3ddc84;
-  --led:radial-gradient(rgba(255,253,247,.06) 1px,transparent 1.4px) 0 0/4px 4px}
+  }
 
 /* ── la barre du bas : la ligne en miniature, avec ses stations ── */
 .hud .bar{height:10px;border:0;border-radius:5px;background:var(--rest);overflow:visible}
-.hud .bar i{border-radius:5px}
+.hud .bar i{border-radius:3px}
 .hud .bar .hs{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--paper);
   border:2px solid var(--ink);transform:translate(-50%,-50%)}
 .hud .bar .hs.v{background:var(--uni);border-color:var(--paper)}
 .hud-train{position:absolute;top:50%;z-index:2;width:30px;height:16px;transform:translate(-50%,-50%);
   transition:left .45s cubic-bezier(.16,1,.3,1);pointer-events:none}
-.hud-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud-train svg{display:block;width:100%;height:100%;overflow:visible;}
 .hud-train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
 .hud-train .win{fill:var(--ink)}
 .hud-train .ping{display:none}
-.hud .btn{border-radius:8px}
+.hud .btn{border-radius:3px}
 
 /* ── le premier écran : le titre, puis le plan de la ligne ── */
 .ln-hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--paper)}
 .ln-bg{position:absolute;inset:-24px;z-index:-2;background:url(/images/avatar.webp) center 30%/cover;
-  filter:blur(3px) saturate(.85);opacity:.34;transform:scale(1.05)}
+  filter:saturate(.85);opacity:.34;transform:scale(1.05)}
 .ln-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(130% 100% at 50% 30%,rgba(13,11,18,.25) 0%,rgba(13,11,18,.75) 60%,var(--ink) 100%)}
 .ln-hero .wrap{padding-top:40px;padding-bottom:40px;text-align:center}
-.ln-head h1{text-align:center;font-size:clamp(58px,10.5vw,138px);line-height:.84;text-shadow:5px 5px 0 var(--ink)}
+.ln-head h1{text-align:center;font-size:clamp(58px,10.5vw,138px);line-height:.84;}
 .ln-head h1 .tag{display:block;width:max-content;max-width:100%;margin:0 auto 14px;text-shadow:none;line-height:1}
 .ln-head h1 .nm{display:block}
 .ln-hero .dek{max-width:640px;margin:18px auto 0;font-size:16.5px}
@@ -873,7 +873,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .lm-cnt{right:0;color:var(--paper)}
 .lm-cnt b{color:var(--hot);font-size:17px}
 .lm-track{position:relative;height:10px;border-radius:5px;background:var(--rest);box-shadow:0 0 0 3px var(--ink)}
-.lm-fill{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--uni);
+.lm-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--uni);
   transition:width .5s cubic-bezier(.3,.9,.3,1)}
 .lm-t{position:absolute;top:50%;width:4px;height:4px;border-radius:50%;background:rgba(255,253,247,.55);
   transform:translate(-50%,-50%)}
@@ -884,17 +884,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .lm-st.v{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 2px var(--ink)}
 .lm-st.cur{box-shadow:0 0 0 3px var(--hot)}
 .lm-st:hover,.lm-st:focus-visible{transform:translate(-50%,-50%) scale(1.2);outline:none}
-.lm-st.tm{border-radius:6px;width:30px;height:30px;border-width:4px}
+.lm-st.tm{border-radius:3px;width:30px;height:30px;border-width:4px}
 .lm-lb{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 11px);width:max-content;
   max-width:170px;text-align:center;line-height:1;pointer-events:none;color:var(--paper);
   font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;
-  text-shadow:0 2px 0 var(--ink),0 0 8px var(--ink)}
+  }
 .lm-lb small{display:block;margin-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,253,247,.58)}
 .lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px)}
 .lm-st.cur .lm-lb{color:var(--hot)}
 .lm-train{position:absolute;top:50%;z-index:2;width:38px;height:20px;transform:translate(-50%,-50%);
   transition:left .5s cubic-bezier(.3,.9,.3,1);pointer-events:none}
-.lm-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px var(--hot))}
+.lm-train svg{display:block;width:100%;height:100%;overflow:visible;}
 .lm-train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
 .lm-train .win{fill:var(--ink)}
 .lm-train .ping{fill:none;stroke:var(--hot);stroke-width:2;transform-box:fill-box;transform-origin:center;
@@ -904,12 +904,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 /* le tableau des départs : les chiffres de la ligne, en diodes */
 .ln-board{display:flex;flex-wrap:nowrap;justify-content:center;margin:12px auto 0;width:fit-content;max-width:100%;
-  background:var(--led),var(--board);border:2px solid var(--paper);border-radius:10px;overflow:hidden;
+  background:var(--board);border:2px solid var(--paper);border-radius:3px;overflow:hidden;
   box-shadow:6px 6px 0 var(--ink)}
 .ln-board .s{padding:11px 22px 12px;border-right:2px dashed rgba(255,253,247,.16);min-width:0}
 .ln-board .s:last-child{border-right:0}
 .ln-board b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;line-height:.9;
-  color:var(--hot);text-shadow:0 0 12px rgba(240,201,124,.45);white-space:nowrap}
+  color:var(--hot);white-space:nowrap}
 .ln-board span{display:block;margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,253,247,.66)}
 
@@ -949,7 +949,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .ln-hero .par{margin:0}
 .ln-hero .par-b{counter-reset:voie;gap:10px;border:0}
 .ln-hero .par-b button{counter-increment:voie;display:flex;flex-direction:column;align-items:center;gap:3px;
-  border:2px solid var(--paper);border-radius:8px;background:rgba(13,11,18,.72);padding:7px 16px 8px;
+  border:2px solid var(--paper);border-radius:3px;background:rgba(13,11,18,.72);padding:7px 16px 8px;
   font-family:'Big Shoulders Display','BSD repli';font-size:16px;font-weight:800;letter-spacing:.06em;color:var(--paper)}
 .ln-hero .par-b button+button{border-left:2px solid var(--paper)}
 .ln-hero .par-b button::before{content:'Voie ' counter(voie);font-size:10px;letter-spacing:.2em;
@@ -959,14 +959,14 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .ln-hero .par-b button[aria-pressed="true"]::before{color:rgba(13,11,18,.6)}
 
 /* ── l'intro : des panneaux d'information ── */
-.intro .itag{border-radius:8px;border-left-width:6px}
-.key{position:relative;border-radius:10px;padding-top:20px;overflow:hidden}
+.intro .itag{border-radius:3px;border-left-width:6px}
+.key{position:relative;border-radius:3px;padding-top:20px;overflow:hidden}
 .key::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--uni)}
-.cuts{border-radius:10px;overflow:hidden}
+.cuts{border-radius:3px;overflow:hidden}
 
 /* ── la barre collante ── */
-.sieve{background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.sieve button,.search{border-radius:999px}
+.sieve{background:rgba(13,11,18,0.98);}
+.sieve button,.search{border-radius:3px}
 .sieve button i{border-radius:50%}
 
 /* ── la ligne : un trait de fond, et le trait parcouru jusqu'au train.
@@ -986,9 +986,9 @@ section.ln-hero>.wrap{padding-bottom:66px}
   border:7px solid var(--ink);box-shadow:0 0 0 4px var(--rest)}
 .era-sec.reach .stn-dot{box-shadow:0 0 0 4px var(--uni)}
 .era-sec.fin .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
-.stn-dot.tm{border-radius:9px}
+.stn-dot.tm{border-radius:3px}
 /* la plaque : l'image de l'ère sur toute sa largeur, le texte par-dessus */
-.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:12px;overflow:hidden;
+.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:3px;overflow:hidden;
   background:color-mix(in srgb,var(--era) 58%,var(--ink));box-shadow:7px 7px 0 var(--ink);min-height:200px;
   display:flex;align-items:center}
 .stn-img{position:absolute;inset:0;z-index:-1;background:var(--ink) center 30%/cover no-repeat;
@@ -1000,15 +1000,15 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .stn-k{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
   font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.85)}
 .code{display:inline-grid;place-items:center;background:var(--uni);color:var(--ink);border:2px solid var(--ink);
-  border-radius:5px;padding:2px 7px 1px;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.04em}
-.stn-nm{font-size:clamp(36px,5.2vw,68px);line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+  border-radius:3px;padding:2px 7px 1px;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.04em}
+.stn-nm{font-size:clamp(36px,5.2vw,68px);line-height:.88;}
 .stn-meta{display:flex;gap:6px 20px;flex-wrap:wrap;font-size:13px;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;text-shadow:0 1px 3px var(--ink)}
+  text-transform:uppercase;}
 .stn-meta b{color:var(--hot)}
 .stn-cx{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px}
 .stn-cx .lab{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,253,247,.7);margin-right:4px;text-shadow:0 1px 3px var(--ink)}
-.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:5px;
+  color:rgba(255,253,247,.7);margin-right:4px;}
+.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:3px;
   background:var(--k);color:var(--ink);border:2px solid var(--ink);
   font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .cx b{background:var(--ink);color:var(--k);border-radius:3px;padding:0 5px;font-family:'Big Shoulders Display','BSD repli';
@@ -1029,32 +1029,32 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .bu-chk[aria-checked=true]{background:var(--uni);border-color:var(--paper);color:var(--ink)}
 .bu-chk svg{width:15px;height:15px}
 
-.bu-card{border:2px solid var(--line);border-radius:12px;overflow:hidden;
+.bu-card{border:2px solid var(--line);border-radius:3px;overflow:hidden;
   background:color-mix(in srgb,var(--era) 12%,#0f0d16);
   transition:transform .12s cubic-bezier(.2,.9,.3,1),box-shadow .12s,border-color .12s}
 .bu-card:hover{transform:translate(-4px,-4px);border-color:var(--uni);box-shadow:4px 4px 0 var(--uni)}
 .bu.done .bu-card{border-color:color-mix(in srgb,var(--uni) 55%,transparent)}
 .bu-head{display:grid;grid-template-columns:118px 184px minmax(0,1fr) 34px;column-gap:18px;row-gap:0;
   align-items:stretch;padding:0 6px 0 0}
-.bu-fig{grid-column:2;width:184px;align-self:center;margin:12px 0;border-radius:8px;border:2px solid var(--ink);
+.bu-fig{grid-column:2;width:184px;align-self:center;margin:12px 0;border-radius:3px;border:2px solid var(--ink);
   box-shadow:0 0 0 1px var(--line)}
 .bu-fig .bu-n{display:none}
 .bu-txt{grid-column:3;padding:14px 0 13px;align-self:center}
 .bu-time{grid-column:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
-  padding:12px 8px;text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
+  padding:12px 8px;text-align:center;background:var(--board);border-right:2px dashed rgba(255,253,247,.16)}
 .bu-time .bu-n{white-space:nowrap;position:static;background:none;clip-path:none;padding:0;color:rgba(255,253,247,.5);
   font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .bu-time .d{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:25px;line-height:.95;letter-spacing:.02em;
-  color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4)}
-.bu-time .rel{display:inline-flex;flex-direction:column;align-items:center;gap:1px;padding:3px 8px;border-radius:5px;
+  color:var(--hot);}
+.bu-time .rel{display:inline-flex;flex-direction:column;align-items:center;gap:1px;padding:3px 8px;border-radius:3px;
   border:1px solid color-mix(in srgb,var(--uni) 50%,transparent);background:color-mix(in srgb,var(--uni) 14%,transparent);
   color:var(--uni);font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .bu-time .rel i{font-style:normal}
 .bu-time .rel b{font-family:'Big Shoulders Display','BSD repli';font-size:17px;letter-spacing:.02em;line-height:1}
 .bu-end{grid-column:4;align-self:center;justify-content:center}
 .bu-tags{gap:6px;margin-bottom:6px}
-.bu-tags .b{clip-path:none;border-radius:5px;border:2px solid var(--ink);padding:1px 7px;font-size:10.5px;font-weight:800}
-.bu-tags .ft{border-radius:5px}
+.bu-tags .b{clip-path:none;border-radius:3px;border:2px solid var(--ink);padding:1px 7px;font-size:10.5px;font-weight:800}
+.bu-tags .ft{border-radius:3px}
 .bu-tags .lv{display:inline-grid;place-items:center;line-height:0}
 .bu-tags .lv .ic{width:20px;height:20px}
 .bu-title{font-size:25px;line-height:1}
@@ -1064,14 +1064,14 @@ section.ln-hero>.wrap{padding-bottom:66px}
   box-sizing:border-box;background:linear-gradient(currentColor,currentColor) 50% 20%/2px 40% no-repeat}
 .bu-meta:empty{display:none}
 .bu-done{place-items:end start;padding:7px}
-.bu-done span{transform:none;border-radius:5px;font-size:13px;padding:2px 8px;letter-spacing:.14em}
+.bu-done span{transform:none;border-radius:3px;font-size:13px;padding:2px 8px;letter-spacing:.14em}
 .bu.done .bu-title{color:rgba(255,253,247,.66)}
 .bu.done .bu-time .d{color:color-mix(in srgb,var(--hot) 60%,var(--ink));text-shadow:none}
 .bu-sub{padding:0 16px 13px 338px}
-.si{border-radius:4px}
+.si{border-radius:3px}
 .bu-panel{border-top:2px dashed var(--line);padding:16px 16px 16px 136px}
-.expand-trailer-link{clip-path:none;border-radius:6px}
-.faq{border-radius:0 8px 8px 0}
+.expand-trailer-link{clip-path:none;border-radius:3px}
+.faq{border-radius:0 3px 3px 0}
 
 /* « Vous en êtes là » : le train, posé sur le trait */
 .rows>.ici{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) auto minmax(0,1fr);
@@ -1079,7 +1079,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .rows>.ici::before{justify-self:center;width:38px;height:20px;transform:none;border-radius:7px 10px 10px 7px;
   background:linear-gradient(var(--ink),var(--ink)) 8px 5px/6px 6px no-repeat,
              linear-gradient(var(--ink),var(--ink)) 17px 5px/6px 6px no-repeat,var(--hot);
-  border:2px solid var(--ink);box-shadow:0 0 10px var(--hot)}
+  border:2px solid var(--ink);}
 .rows>.ici::after{height:0;border-top:2px dashed currentColor;background:none;opacity:.55}
 
 /* le terminus */
@@ -1090,18 +1090,18 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .terminus.fin .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
 
 /* ── les badges : un carnet de tickets ── */
-.bx{background:rgba(8,8,12,.72);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
-.bx-in{max-width:760px;border:3px solid var(--paper);border-radius:14px;padding:0;overflow:auto;
+.bx{background:rgba(8,8,12,0.89);}
+.bx-in{max-width:760px;border:3px solid var(--paper);border-radius:3px;padding:0;overflow:auto;
   box-shadow:8px 8px 0 var(--ink);background:var(--ink)}
 .bx-h{position:sticky;top:0;z-index:2;margin:0;padding:16px 18px 14px;gap:12px;
-  background:var(--led),var(--board);border-bottom:2px dashed rgba(255,253,247,.2)}
+  background:var(--board);border-bottom:2px dashed rgba(255,253,247,.2)}
 .bx-h h3{font-size:28px;letter-spacing:.03em}
 .bx-h .n{order:3;margin-left:auto;background:none;color:var(--hot);padding:0;
   font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:22px;letter-spacing:.02em;
-  text-shadow:0 0 10px rgba(240,201,124,.4)}
+  }
 .bx-h button{order:4;margin-left:6px;border-radius:50%;width:36px;height:36px;font-weight:700}
 .bx-g{padding:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.bg1{position:relative;padding:0;gap:0;align-items:stretch;border:2px dashed rgba(255,253,247,.28);border-radius:4px;
+.bg1{position:relative;padding:0;gap:0;align-items:stretch;border:2px dashed rgba(255,253,247,.28);border-radius:3px;
   background:none;opacity:1;filter:none;min-height:86px}
 .bg1 .bg-stub{flex:none;width:66px;display:grid;place-items:center;border-right:2px dashed rgba(255,253,247,.28)}
 .bg1 .i{font-size:28px;filter:grayscale(1);opacity:.4}
@@ -1123,7 +1123,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .bg1.on .d{color:#3a3548}
 .bg1.on .st{color:var(--ink)}
 .bg1.on .st::before{content:'✓ '}
-.bpop{border-radius:12px;border-width:3px}
+.bpop{border-radius:3px;border-width:3px}
 
 @media(max-width:720px){
   :root{--rail:40px}
@@ -1205,11 +1205,11 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
    Studios : ce sont des embranchements, posés à l'endroit où les films qui
    les convoquent les croisent. Plaque en tirets, arrêt carré. */
 .stn-saga{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--hot);text-shadow:0 1px 3px var(--ink)}
+  text-transform:uppercase;color:var(--hot);}
 .stn-saga::before{content:'';width:26px;height:2px;background:var(--hot)}
-.stn-k .emb{border:2px dashed var(--paper);border-radius:5px;padding:1px 7px 0;font-size:12px;letter-spacing:.14em}
+.stn-k .emb{border:2px dashed var(--paper);border-radius:3px;padding:1px 7px 0;font-size:12px;letter-spacing:.14em}
 .era-sec.seg .stn-plate{border-style:dashed}
-.era-sec.seg .stn-dot{border-radius:10px;transform:rotate(45deg) scale(.86)}
+.era-sec.seg .stn-dot{border-radius:3px;transform:rotate(45deg) scale(.86)}
 /* la carte « Canonicité non confirmée » des repères : le filet rouge du
    haut suffit, le liseré doré de gauche est retiré */
 .key.wide{border-left-width:2px;border-left-color:var(--line)}
@@ -1228,7 +1228,7 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .era-sec.seg .stn-rail{transform:translateX(var(--off))}
 .era-sec.seg .stn-plate{margin-left:var(--off)}
 @media(max-width:720px){:root{--off:28px}}
-.bu-tags .nt,.bu-tags .dim{border-radius:5px}
+.bu-tags .nt,.bu-tags .dim{border-radius:3px}
 
 /* ══ Retouches du 28 septembre 2026 ══════════════════════════════════
    Le mot « Départ » se calait à gauche du plan et passait sous le premier
@@ -1339,8 +1339,8 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
   animation:ln-flow .8s linear infinite}
 @keyframes ln-flow{to{stroke-dashoffset:-16.1}}
 .rows>.ici::before{animation:ici-ping 1.8s ease-out infinite}
-@keyframes ici-ping{from{box-shadow:0 0 10px var(--hot),0 0 0 0 rgba(240,201,124,.85)}
-  to{box-shadow:0 0 10px var(--hot),0 0 0 13px rgba(240,201,124,0)}}
+@keyframes ici-ping{from{box-shadow:0 0 0 0 rgba(240,201,124,.85)}
+  to{box-shadow:0 0 0 13px rgba(240,201,124,0)}}
 @media(prefers-reduced-motion:reduce){
   .lm-fill::after,.ln-svg .p,.rows>.ici::before{animation:none}
   .ln-svg .r{transition:none}
@@ -1374,8 +1374,8 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .duo .sy .sy-txt::before{content:'Your pass';display:block;margin-bottom:10px}
 .k-bdg{font-style:normal;background:var(--c-doss);color:var(--ink);font-weight:900;font-size:13px;
   letter-spacing:.04em;padding:2px 6px;border:2px solid var(--ink);line-height:1}
-.duo .deep h2{font-size:clamp(28px,3.4vw,40px);color:var(--c-doss);text-shadow:3px 3px 0 var(--ink)}
-.duo .sy h2{font-size:clamp(24px,2.8vw,32px);color:var(--hot);text-shadow:3px 3px 0 var(--ink)}
+.duo .deep h2{font-size:clamp(28px,3.4vw,40px);color:var(--c-doss);}
+.duo .sy h2{font-size:clamp(24px,2.8vw,32px);color:var(--hot);}
 .duo .deep p{margin:0 auto;max-width:44ch;font-size:14.5px}
 .k-meta{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;color:rgba(255,253,247,.66)}
@@ -1488,6 +1488,44 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 .lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px + var(--lv,0px))}
 .net .lm-st:not(.lo) .lm-lb{top:auto;bottom:calc(var(--s) / 2 + var(--hh, 44px) + var(--lv,0px))}
 .net .lm-st.lo .lm-lb{bottom:auto;top:calc(var(--s) / 2 + var(--hh, 44px) + var(--lv,0px))}
+/* ══ les aplats, posés le 12 novembre 2026 ══════════════════════════
+   Validés par Niko sur la maquette « signalétique » : ni lueur, ni flou,
+   ni trame de diodes, ni dégradé. Des aplats, des filets nets, des coins
+   à 3 px, et une seule ombre, décalée et dure, au survol d'une carte. */
+:root{--ink:#131215;--plaque:#1c1b20;--plaque2:#26252b;--rest:#3b3a41}
+.ln-bg{filter:none;opacity:1;transform:none;inset:0}
+.ln-hero::before{background:rgba(19,18,21,.8)}
+.ln-board{background:var(--plaque);border-radius:3px;box-shadow:none}
+.ln-board .s{border-right:2px solid var(--ink)}
+.ln-board .s:last-child{border-right:0}
+.lm-fill::after,.lm-train .ping,.ln-svg .p{display:none}
+.lm-st.cur{box-shadow:0 0 0 3px var(--ink),0 0 0 6px var(--hot)}
+.ln-hero .par-b button{border-radius:3px;background:var(--plaque)}
+.ln-hero .par-b button[aria-pressed="true"]{box-shadow:none;background:var(--hot);color:var(--ink)}
+.rows>.ici::before{animation:none}
+.sieve{background:var(--ink)}
+/* la plaque de station : l'aplat de l'ère à gauche, l'image nette à droite */
+.stn-plate{box-shadow:none}
+.stn-plate:has(>.stn-img){background:var(--era);min-height:188px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);align-items:stretch}
+.stn-img{position:relative;inset:auto;z-index:0;grid-column:2;grid-row:1;filter:none;opacity:1;
+  border-left:3px solid var(--paper)}
+.stn-img::before{display:none}
+.stn-txt{grid-column:1;grid-row:1;justify-content:center;max-width:none}
+.stn-meta b{color:var(--paper)}
+.bu-chk:hover{box-shadow:0 0 0 3px var(--ink)}
+/* la carte d'œuvre : un aplat, la colonne horaire un cran plus claire */
+.bu-card{border-color:transparent;background:var(--plaque)}
+.bu.done .bu-card,.bu-card:hover{border-color:transparent}
+.bu-card:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--uni)}
+.bu-time{background:var(--plaque2);border-right:0}
+.bu-fig{border:0;box-shadow:none}
+.bu-panel{border-top:2px solid var(--ink)}
+@media(max-width:720px){
+  .stn-plate:has(>.stn-img){grid-template-columns:minmax(0,1fr);min-height:0}
+  .stn-img{grid-column:1;grid-row:1;height:92px;border-left:0;border-bottom:3px solid var(--paper)}
+  .stn-txt{grid-row:2}
+}
+/* ══ fin des aplats ══ */
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://chronologeek.app/"},{"@type":"ListItem","position":2,"name":"Avatar Legends","item":"https://chronologeek.app/avatar"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Avatar Legends","inLanguage":"en-US","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":73,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s1e01-10","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":2,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s1e11-16","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":3,"item":{"@type":"ComicStory","name":"The Lost Adventures: Relics","url":"https://chronologeek.app/avatar#avt-relics","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":4,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s1e17-20","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":5,"item":{"@type":"ComicStory","name":"The Kyoshi Warriors","url":"https://chronologeek.app/avatar#avt-the-kyoshi-warriors-13","image":"https://chronologeek.app/images/kyoshiwarriors.webp"}},{"@type":"ListItem","position":6,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s2e01-09","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":7,"item":{"@type":"ComicStory","name":"Katara and the Pirate's Silver","url":"https://chronologeek.app/avatar#avt-katara-and-the-pirate-s-silver","image":"https://chronologeek.app/images/katara.webp"}},{"@type":"ListItem","position":8,"item":{"@type":"ComicStory","name":"The Lost Adventures: Sokka the Avatar","url":"https://chronologeek.app/avatar#avt-sokka-the-avatar","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":9,"item":{"@type":"ComicStory","name":"The Lost Adventures: Divided We Fall","url":"https://chronologeek.app/avatar#avt-divided-we-fall","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":10,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s2e10-17","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":11,"item":{"@type":"ComicStory","name":"Jet: Rebels and Rhinos","url":"https://chronologeek.app/avatar#avt-jet-rebels-and-rhinos","image":"https://chronologeek.app/images/jet.webp"}},{"@type":"ListItem","position":12,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s2e18-20","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":13,"item":{"@type":"VideoObject","name":"Escape from the Spirit World","url":"https://chronologeek.app/avatar#avt-escape-from-the-spirit-world","image":"https://chronologeek.app/images/escape.webp"}},{"@type":"ListItem","position":14,"item":{"@type":"ComicStory","name":"The Lost Adventures: It's Only Natural","url":"https://chronologeek.app/avatar#avt-it-s-only-natural","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":15,"item":{"@type":"ComicStory","name":"The Lost Adventures: Going Home Again","url":"https://chronologeek.app/avatar#avt-going-home-again","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":16,"item":{"@type":"ComicStory","name":"The Lost Adventures: The Bridge","url":"https://chronologeek.app/avatar#avt-the-bridge","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":17,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e01-02","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":18,"item":{"@type":"ComicStory","name":"The Lost Adventures: Private Fire","url":"https://chronologeek.app/avatar#avt-private-fire","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":19,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e03-06","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":20,"item":{"@type":"ComicStory","name":"Earth & Water (Comics Giveaway Day 2026)","url":"https://chronologeek.app/avatar#avt-earth-and-water-comics-giveaway-day-2026","image":"https://chronologeek.app/images/earthandwater.webp"}},{"@type":"ListItem","position":21,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e07-07","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":22,"item":{"@type":"ComicStory","name":"The Lost Adventures: Combustion Man on a Train","url":"https://chronologeek.app/avatar#avt-combustion-man-on-a-train","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":23,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e08-13","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":24,"item":{"@type":"ComicStory","name":"The Lost Adventures: Dragon Days","url":"https://chronologeek.app/avatar#avt-dragon-days","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":25,"item":{"@type":"ComicStory","name":"Suki, Alone","url":"https://chronologeek.app/avatar#avt-suki-alone","image":"https://chronologeek.app/images/suki.webp"}},{"@type":"ListItem","position":26,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e14-14","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":27,"item":{"@type":"ComicStory","name":"The Lost Adventures: Love Is a Battlefield","url":"https://chronologeek.app/avatar#avt-love-is-a-battlefield","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":28,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e15-19","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":29,"item":{"@type":"ComicStory","name":"The Lost Adventures: Bumi vs. Toph, Round One","url":"https://chronologeek.app/avatar#avt-bumi-vs-toph-round-one","image":"https://chronologeek.app/images/lostadventures.webp"}},{"@type":"ListItem","position":30,"item":{"@type":"TVSeries","name":"Avatar: The Last Airbender","url":"https://chronologeek.app/avatar#avt-s3e20-21","image":"https://chronologeek.app/images/thelastairbender.webp"}},{"@type":"ListItem","position":31,"item":{"@type":"Book","name":"City of Echoes","url":"https://chronologeek.app/avatar#avt-avatar-legends-city-of-echoes","image":"https://chronologeek.app/images/cityofechoes.webp"}},{"@type":"ListItem","position":32,"item":{"@type":"ComicStory","name":"The Promise 1-3","url":"https://chronologeek.app/avatar#avt-la-promesse-the-promise","image":"https://chronologeek.app/images/promise.webp"}},{"@type":"ListItem","position":33,"item":{"@type":"ComicStory","name":"Matcha Makers (Free Comic Book Day 2021)","url":"https://chronologeek.app/avatar#avt-matcha-makers","image":"https://chronologeek.app/images/matcha.webp"}},{"@type":"ListItem","position":34,"item":{"@type":"ComicStory","name":"Rebound (Free Comic Book Day 2013)","url":"https://chronologeek.app/avatar#avt-rebound","image":"https://chronologeek.app/images/rebound.webp"}},{"@type":"ListItem","position":35,"item":{"@type":"ComicStory","name":"The Search 1-3","url":"https://chronologeek.app/avatar#avt-la-recherche-the-search","image":"https://chronologeek.app/images/search.webp"}},{"@type":"ListItem","position":36,"item":{"@type":"ComicStory","name":"Smoke and Shadow 1","url":"https://chronologeek.app/avatar#avt-smoke-and-shadow-partie-1","image":"https://chronologeek.app/images/smokeandshadow.webp"}},{"@type":"ListItem","position":37,"item":{"@type":"ComicStory","name":"The Rift 1-3","url":"https://chronologeek.app/avatar#avt-the-rift","image":"https://chronologeek.app/images/therift.webp"}},{"@type":"ListItem","position":38,"item":{"@type":"ComicStory","name":"Shells (Free Comic Book Day 2014)","url":"https://chronologeek.app/avatar#avt-shells","image":"https://chronologeek.app/images/shells.webp"}},{"@type":"ListItem","position":39,"item":{"@type":"ComicStory","name":"Sisters (Free Comic Book Day 2015)","url":"https://chronologeek.app/avatar#avt-sisters","image":"https://chronologeek.app/images/sisters.webp"}},{"@type":"ListItem","position":40,"item":{"@type":"ComicStory","name":"Smoke and Shadow 2-3","url":"https://chronologeek.app/avatar#avt-smoke-and-shadow-parties-2-3","image":"https://chronologeek.app/images/smokeandshadow2.webp"}},{"@type":"ListItem","position":41,"item":{"@type":"ComicStory","name":"North and South 1-3","url":"https://chronologeek.app/avatar#avt-north-and-south","image":"https://chronologeek.app/images/northandsouth.webp"}},{"@type":"ListItem","position":42,"item":{"@type":"ComicStory","name":"Azula in the Spirit Temple","url":"https://chronologeek.app/avatar#avt-azula-in-the-spirit-temple","image":"https://chronologeek.app/images/azulainthespirittemple.webp"}},{"@type":"ListItem","position":43,"item":{"@type":"ComicStory","name":"Imbalance 1-3","url":"https://chronologeek.app/avatar#avt-imbalance","image":"https://chronologeek.app/images/imbalance.webp"}},{"@type":"ListItem","position":44,"item":{"@type":"ComicStory","name":"Toph Beifong's Metalbending Academy","url":"https://chronologeek.app/avatar#avt-toph-beifong-s-metalbending-academy","image":"https://chronologeek.app/images/tophbeifongmetalbendingacademy.webp"}},{"@type":"ListItem","position":45,"item":{"@type":"ComicStory","name":"Ashes of the Academy","url":"https://chronologeek.app/avatar#avt-ashes-of-the-academy","image":"https://chronologeek.app/images/ashesoftheacademy.webp"}},{"@type":"ListItem","position":46,"item":{"@type":"ComicStory","name":"The Bounty Hunter and the Tea Brewer","url":"https://chronologeek.app/avatar#avt-the-bounty-hunter-and-the-tea-brewer","image":"https://chronologeek.app/images/bountyhunterandteabrewer.webp"}},{"@type":"ListItem","position":47,"item":{"@type":"Movie","name":"Aang: The Last Airbender","url":"https://chronologeek.app/avatar#avt-aang-the-last-airbender","image":"https://chronologeek.app/images/avataraang.webp"}},{"@type":"ListItem","position":48,"item":{"@type":"Book","name":"Legacy","url":"https://chronologeek.app/avatar#avt-legacy","image":"https://chronologeek.app/images/legacy.webp"}},{"@type":"ListItem","position":49,"item":{"@type":"Book","name":"Chronicles of the Avatar 3: The Dawn of Yangchen","url":"https://chronologeek.app/avatar#avt-the-dawn-of-yangchen","isbn":"9781419756771","image":"https://chronologeek.app/images/thedawnofyangchen.webp"}},{"@type":"ListItem","position":50,"item":{"@type":"Book","name":"Chronicles of the Avatar 4: The Legacy of Yangchen","url":"https://chronologeek.app/avatar#avt-the-legacy-of-yangchen","isbn":"9781419756795","image":"https://chronologeek.app/images/thelegacyofyangchen.webp"}},{"@type":"ListItem","position":51,"item":{"@type":"Book","name":"Chronicles of the Avatar 1: The Rise of Kyoshi","url":"https://chronologeek.app/avatar#avt-the-rise-of-kyoshi","isbn":"9781419735042","image":"https://chronologeek.app/images/theriseofkyoshi.webp"}},{"@type":"ListItem","position":52,"item":{"@type":"Book","name":"Chronicles of the Avatar 2: The Shadow of Kyoshi","url":"https://chronologeek.app/avatar#avt-the-shadow-of-kyoshi","isbn":"9781419735059","image":"https://chronologeek.app/images/theshadowofkyoshi.webp"}},{"@type":"ListItem","position":53,"item":{"@type":"ComicStory","name":"Masters of the Elements Vol.1: Off Duty","url":"https://chronologeek.app/avatar#avt-masters-of-the-elements-off-duty","image":"https://chronologeek.app/images/mastersoftheelements.webp"}},{"@type":"ListItem","position":54,"item":{"@type":"Book","name":"Chronicles of the Avatar 5: The Reckoning of Roku","url":"https://chronologeek.app/avatar#avt-the-reckoning-of-roku","image":"https://chronologeek.app/images/thereckoningofroku.webp"}},{"@type":"ListItem","position":55,"item":{"@type":"Book","name":"Chronicles of the Avatar 6: The Awakening of Roku","url":"https://chronologeek.app/avatar#avt-the-awakening-of-roku","image":"https://chronologeek.app/images/theawakeningofroku.webp"}},{"@type":"ListItem","position":56,"item":{"@type":"TVSeries","name":"The Legend of Korra - Book One: Air","url":"https://chronologeek.app/avatar#avt-la-legende-de-korra-livre-1-l-air","image":"https://chronologeek.app/images/thelegendofkorra.webp"}},{"@type":"ListItem","position":57,"item":{"@type":"ComicStory","name":"Friends for Life (Free Comic Book Day 2016)","url":"https://chronologeek.app/avatar#avt-amies-pour-la-vie-free-comic-book-day-2016","image":"https://chronologeek.app/images/friendsforlife.webp"}},{"@type":"ListItem","position":58,"item":{"@type":"ComicStory","name":"Patterns in Time: Skyscrapers","url":"https://chronologeek.app/avatar#avt-patterns-in-time-skyscrapers","image":"https://chronologeek.app/images/patternsintime.webp"}},{"@type":"ListItem","position":59,"item":{"@type":"ComicStory","name":"Patterns in Time: Weaver's Ball","url":"https://chronologeek.app/avatar#avt-patterns-in-time-weavers-ball","image":"https://chronologeek.app/images/patternsintime.webp"}},{"@type":"ListItem","position":60,"item":{"@type":"TVSeries","name":"The Legend of Korra - Book Two: Spirits","url":"https://chronologeek.app/avatar#avt-la-legende-de-korra-livre-2-les-esprits","image":"https://chronologeek.app/images/thelegendofkorra.webp"}},{"@type":"ListItem","position":61,"item":{"@type":"TVSeries","name":"The Legend of Korra - Book Three: Change","url":"https://chronologeek.app/avatar#avt-la-legende-de-korra-livre-3-le-changemen","image":"https://chronologeek.app/images/thelegendofkorra.webp"}},{"@type":"ListItem","position":62,"item":{"@type":"ComicStory","name":"Kya and the Secret of the Sand","url":"https://chronologeek.app/avatar#avt-kya-and-the-secret-of-the-sand","image":"https://chronologeek.app/images/kyaandthesecretofthesand.webp"}},{"@type":"ListItem","position":63,"item":{"@type":"ComicStory","name":"Patterns in Time: Cat-Owl's Cradle","url":"https://chronologeek.app/avatar#avt-patterns-in-time-cat-owls-cradle","image":"https://chronologeek.app/images/patternsintime.webp"}},{"@type":"ListItem","position":64,"item":{"@type":"TVSeries","name":"The Legend of Korra - Book Four: Balance","url":"https://chronologeek.app/avatar#avt-la-legende-de-korra-livre-4-l-equilibre","image":"https://chronologeek.app/images/thelegendofkorra.webp"}},{"@type":"ListItem","position":65,"item":{"@type":"ComicStory","name":"Turf Wars 1-3","url":"https://chronologeek.app/avatar#avt-turf-wars","image":"https://chronologeek.app/images/turfwars.webp"}},{"@type":"ListItem","position":66,"item":{"@type":"Book","name":"An Avatar's Chronicle","url":"https://chronologeek.app/avatar#avt-an-avatar-s-chronicle","image":"https://chronologeek.app/images/anavatarschronicles.webp"}},{"@type":"ListItem","position":67,"item":{"@type":"ComicStory","name":"Lost Pets (Free Comic Book Day 2018)","url":"https://chronologeek.app/avatar#avt-lost-pets-free-comic-book-day-2018","image":"https://chronologeek.app/images/lostpets.webp"}},{"@type":"ListItem","position":68,"item":{"@type":"ComicStory","name":"Ruins of the Empire 1-3","url":"https://chronologeek.app/avatar#avt-ruins-of-the-empire","image":"https://chronologeek.app/images/ruinsoftheempire.webp"}},{"@type":"ListItem","position":69,"item":{"@type":"Book","name":"Legacy of the Fire Nation","url":"https://chronologeek.app/avatar#avt-legacy-of-the-fire-nation","image":"https://chronologeek.app/images/legacyofthefirenation.webp"}},{"@type":"ListItem","position":70,"item":{"@type":"ComicStory","name":"Mystery of Penquan Island","url":"https://chronologeek.app/avatar#avt-mystery-of-penquan-island","image":"https://chronologeek.app/images/penquan.webp"}},{"@type":"ListItem","position":71,"item":{"@type":"ComicStory","name":"Patterns in Time: Clearing the Air","url":"https://chronologeek.app/avatar#avt-patterns-in-time-clearing-the-air","image":"https://chronologeek.app/images/patternsintime.webp"}},{"@type":"ListItem","position":72,"item":{"@type":"ComicStory","name":"Patterns in Time: A Change in the Wind","url":"https://chronologeek.app/avatar#avt-patterns-in-time-a-change-in-the-wind","image":"https://chronologeek.app/images/patternsintime.webp"}},{"@type":"ListItem","position":73,"item":{"@type":"TVSeries","name":"Avatar: Seven Havens","url":"https://chronologeek.app/avatar#avt-seven-havens-s1","image":"https://chronologeek.app/images/sevenhavens.webp"}}]}</script>

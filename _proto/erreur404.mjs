@@ -75,15 +75,15 @@ h1{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:800
   color:rgba(255,253,247,.5)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
 .grid a{display:block;padding:11px 12px;text-decoration:none;color:var(--paper);
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:9px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:3px;
   border-left:3px solid var(--u);font-weight:700;font-size:14px;transition:background .15s}
 .grid a:hover{background:rgba(255,255,255,.09)}
 .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .row a{padding:9px 14px;text-decoration:none;color:rgba(255,253,247,.82);font-size:13.5px;
-  border:1px solid rgba(255,255,255,.10);border-radius:9px}
+  border:1px solid rgba(255,255,255,.10);border-radius:3px}
 .row a:hover{color:var(--paper);border-color:rgba(255,255,255,.28)}
 .home{display:inline-block;margin-top:28px;padding:12px 22px;background:var(--hot);
-  color:var(--ink);text-decoration:none;font-weight:800;border-radius:9px;
+  color:var(--ink);text-decoration:none;font-weight:800;border-radius:3px;
   font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-size:17px;
   letter-spacing:.06em;text-transform:uppercase;
   clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%);padding-right:30px}`;

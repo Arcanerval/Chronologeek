@@ -64,7 +64,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--hot);outline-offset:3px}
 .disp{font-family:'Big Shoulders Display',sans-serif;font-weight:900;
   text-transform:uppercase;line-height:.9;letter-spacing:.005em}
-.off{text-shadow:4px 4px 0 var(--ink)}
+.off{}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
   font-weight:700;padding:10px 16px}
 .skip:focus{left:0}
@@ -339,18 +339,18 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
    nœud de correspondance ; un média ajouté est un arrêt de plus sur sa
    ligne. Rien ne se coche ici. */
 :root{--uni:var(--c-news);--rest:color-mix(in srgb,var(--c-news) 30%,#1c1a26);--rail:64px;--board:#07060b;
-  --led:radial-gradient(rgba(255,253,247,.06) 1px,transparent 1.4px) 0 0/4px 4px}
+  }
 
 /* ── le premier écran ── */
 .ln-hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--paper)}
 .ln-bg{position:absolute;inset:-24px;z-index:-2;background:var(--ink) center 30%/cover no-repeat;
-  filter:blur(3px) saturate(.85);opacity:.34;transform:scale(1.05)}
+  filter:saturate(.85);opacity:.34;transform:scale(1.05)}
 .ln-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(130% 100% at 50% 30%,rgba(13,11,18,.25) 0%,rgba(13,11,18,.75) 60%,var(--ink) 100%)}
 .ln-hero .wrap{padding-top:40px;padding-bottom:66px;text-align:center}
-.ln-head h1{font-size:clamp(58px,10.5vw,138px);line-height:.84;text-shadow:5px 5px 0 var(--ink)}
+.ln-head h1{font-size:clamp(58px,10.5vw,138px);line-height:.84;}
 .ln-head h1 .nm{display:block}
-.ln-head .tag{margin:16px auto 0;clip-path:none;border-radius:5px}
+.ln-head .tag{margin:16px auto 0;clip-path:none;border-radius:3px}
 .tag em{font-style:normal}
 .ln-hero .dek{max-width:800px;margin:16px auto 0;font-size:16.5px;text-wrap:pretty}
 
@@ -363,8 +363,8 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 .lm-cnt{right:0;color:var(--paper)}
 .lm-cnt b{color:var(--hot);font-size:17px}
 .lm-track{position:relative;height:10px;border-radius:5px;background:var(--rest);box-shadow:0 0 0 3px var(--ink)}
-.lm-fill{position:absolute;inset:0;border-radius:5px;background:var(--uni)}
-.lm-fill::after{content:'';position:absolute;inset:0;border-radius:5px;opacity:.75;
+.lm-fill{position:absolute;inset:0;border-radius:3px;background:var(--uni)}
+.lm-fill::after{content:'';position:absolute;inset:0;border-radius:3px;opacity:.75;
   background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 0 50%/16px 100% repeat-x;
   animation:lm-flow .8s linear infinite}
 @keyframes lm-flow{to{background-position:16px 50%}}
@@ -379,13 +379,13 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 .lm-lb{position:absolute;left:50%;transform:translateX(-50%);width:max-content;
   max-width:170px;text-align:center;line-height:1;pointer-events:none;color:var(--paper);
   font-family:'Big Shoulders Display';font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;
-  text-shadow:0 2px 0 var(--ink),0 0 8px var(--ink)}
+  }
 .lm-st .lm-lb{bottom:calc(100% + 11px + var(--lv,0px))}
 .lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px + var(--lv,0px))}
 .lm-lb small{display:block;margin-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,253,247,.58)}
 .lm-st.cur .lm-lb{color:var(--hot)}
 .lm-train{position:absolute;top:50%;left:0;z-index:2;width:38px;height:20px;transform:translate(-50%,-50%);pointer-events:none}
-.lm-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px var(--hot))}
+.lm-train svg{display:block;width:100%;height:100%;overflow:visible;}
 .lm-train .body,.hud-trn .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
 .lm-train .win,.hud-trn .win{fill:var(--ink)}
 .lm-train .ping{fill:none;stroke:var(--hot);stroke-width:2;transform-box:fill-box;transform-origin:center;
@@ -401,12 +401,12 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 
 /* le tableau : les chiffres du journal, en diodes */
 .ln-board{display:flex;flex-wrap:nowrap;justify-content:center;margin:12px auto 0;width:fit-content;max-width:100%;
-  background:var(--led),var(--board);border:2px solid var(--paper);border-radius:10px;overflow:hidden;
+  background:var(--board);border:2px solid var(--paper);border-radius:3px;overflow:hidden;
   box-shadow:6px 6px 0 var(--ink)}
 .ln-board .s{padding:11px 22px 12px;border-right:2px dashed rgba(255,253,247,.16);min-width:0}
 .ln-board .s:last-child{border-right:0}
 .ln-board b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:34px;line-height:.9;
-  color:var(--hot);text-shadow:0 0 12px rgba(240,201,124,.45);white-space:nowrap}
+  color:var(--hot);white-space:nowrap}
 .ln-board span{display:block;margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,253,247,.66)}
 
@@ -440,11 +440,11 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 
 /* ── la barre collante des filtres ── */
 .sieve{border-bottom:2px solid var(--paper);position:sticky;top:var(--hh,53px);z-index:50;
-  background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  background:rgba(13,11,18,0.98);}
 .sieve .wrap{display:block}
 .sgroup{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:center}
 .sieve button{font-family:'Big Shoulders Display';font-weight:800;font-size:14.5px;
-  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);border-radius:999px;
+  letter-spacing:.07em;text-transform:uppercase;background:none;border:2px solid var(--line);border-radius:3px;
   color:rgba(255,253,247,.76);padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
 .sieve button:hover{border-color:var(--paper);color:var(--paper)}
 .sieve button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--ink)}
@@ -468,19 +468,18 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
 .cal-in{position:relative;padding-top:18px;padding-bottom:34px}
 .cal-in::before{content:'';position:absolute;z-index:0;width:8px;border-radius:4px;
   left:calc(20px + var(--rail) / 2 - 4px);top:var(--l-top,0px);height:var(--l-h,0px);
-  background:radial-gradient(circle,#fffdf7 1.7px,transparent 2.3px) 50% 0/100% 16px repeat-y,var(--rest);
-  animation:ln-flow .8s linear infinite reverse}
+  background:var(--rest)}
 @keyframes ln-flow{to{background-position:50% 16px,0 0}}
 
 /* vous êtes ici : le train, en tête de la ligne */
 .ici{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:14px;align-items:center;
   font-family:'Big Shoulders Display';font-weight:800;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
-.trn{justify-self:center;width:38px;height:20px;border-radius:7px 10px 10px 7px;transform:rotate(90deg);
+.trn{justify-self:center;width:38px;height:20px;border-radius:3px 10px 10px 3px;transform:rotate(90deg);
   background:linear-gradient(var(--ink),var(--ink)) 8px 5px/6px 6px no-repeat,
              linear-gradient(var(--ink),var(--ink)) 17px 5px/6px 6px no-repeat,var(--hot);
-  border:2px solid var(--ink);animation:ici-ping 1.8s ease-out infinite}
-@keyframes ici-ping{from{box-shadow:0 0 10px var(--hot),0 0 0 0 rgba(240,201,124,.85)}
-  to{box-shadow:0 0 10px var(--hot),0 0 0 13px rgba(240,201,124,0)}}
+  border:2px solid var(--ink)}
+@keyframes ici-ping{from{box-shadow:0 0 0 0 rgba(240,201,124,.85)}
+  to{box-shadow:0 0 0 13px rgba(240,201,124,0)}}
 .ici-t b{color:var(--paper)}
 
 /* la station : un mois, sa plaque, ses correspondances */
@@ -492,29 +491,27 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   border:7px solid var(--ink);box-shadow:0 0 0 4px var(--uni)}
 .mon-sec.now .stn-dot{background:var(--hot);box-shadow:0 0 0 4px var(--hot)}
 .mon-sec.org .stn-dot{background:var(--ink);border-color:var(--uni);box-shadow:0 0 0 4px var(--ink)}
-.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:12px;overflow:hidden;
-  background:linear-gradient(90deg,color-mix(in srgb,var(--c-news) 40%,var(--ink)) 0%,
-    color-mix(in srgb,var(--c-news) 14%,var(--ink)) 70%);
+.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:3px;overflow:hidden;
+  background:color-mix(in srgb,var(--c-news) 40%,var(--ink));
   box-shadow:7px 7px 0 var(--ink);min-height:156px;display:flex;align-items:center}
-.stn-plate::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--led);opacity:.8}
 .mon-sec.now .stn-plate{border-color:var(--hot)}
 .mon-sec.org .stn-plate{border-style:dashed}
 .stn-txt{position:relative;padding:18px 26px 19px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:640px}
 .stn-k{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display';font-weight:800;
   font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.85)}
-.stn-k .now{background:var(--hot);color:var(--ink);border-radius:5px;padding:2px 8px 1px;font-size:12px;letter-spacing:.16em}
-.stn-nm{font-size:clamp(36px,5.2vw,64px);line-height:.88;text-shadow:4px 4px 0 var(--ink)}
-.stn-meta{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-shadow:0 1px 3px var(--ink)}
+.stn-k .now{background:var(--hot);color:var(--ink);border-radius:3px;padding:2px 8px 1px;font-size:12px;letter-spacing:.16em}
+.stn-nm{font-size:clamp(36px,5.2vw,64px);line-height:.88;}
+.stn-meta{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
 .stn-cx{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .stn-cx .lab{width:auto;margin:0 4px 0 0;font-size:10.5px;letter-spacing:.14em;color:rgba(255,253,247,.7)}
-.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:5px;
+.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:3px;
   background:var(--k);color:var(--ink);border:2px solid var(--ink);
   font-family:'Big Shoulders Display';font-size:13px;font-weight:900;letter-spacing:.05em}
 .cx[data-w]{color:#fff}
 .cx b{background:var(--ink);color:var(--k);border-radius:3px;padding:0 5px;font-size:13px}
 /* les vignettes du mois, en éventail sur la droite de la plaque */
 .stn-po{position:absolute;right:26px;top:50%;display:flex;transform:translateY(-50%);pointer-events:none}
-.stn-po img{width:118px;aspect-ratio:16/9;object-fit:cover;border:2px solid var(--ink);border-radius:6px;
+.stn-po img{width:118px;aspect-ratio:16/9;object-fit:cover;border:2px solid var(--ink);border-radius:3px;
   box-shadow:4px 4px 0 var(--ink);background:#000;margin-left:-38px;transform:rotate(var(--r,0deg))}
 .stn-po img:nth-child(odd){--r:-4deg}
 .stn-po img:nth-child(even){--r:3deg;margin-top:14px}
@@ -530,28 +527,27 @@ footer .f-more li.soc{flex:0 0 100%;display:flex;justify-content:center}
   transform:translateY(-50%);background:var(--c);opacity:.6}
 /* une ligne inaugurée : le nœud de correspondance, plein, cerclé de papier */
 .rel.site .stop{width:34px;height:34px;margin-top:calc(var(--cy) - 17px);background:var(--c);
-  border:5px solid var(--paper);box-shadow:0 0 0 3px var(--ink),0 0 14px color-mix(in srgb,var(--c) 70%,transparent)}
+  border:5px solid var(--paper);box-shadow:0 0 0 3px var(--ink)}
 .rel.site .stop::after{left:calc(100% + 5px);width:calc(var(--rail) / 2 - 3px)}
 
 .card{grid-column:2;grid-row:1;min-width:0;position:relative;display:grid;
   grid-template-columns:118px 168px minmax(0,1fr) 34px;column-gap:18px;align-items:stretch;min-height:100px;
-  border:2px solid var(--line);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none;
-  background:color-mix(in srgb,var(--c) 9%,#0f0d16);
+  border:2px solid transparent;border-radius:3px;overflow:hidden;color:inherit;text-decoration:none;
+  background:var(--plaque);
   transition:transform .12s cubic-bezier(.2,.9,.3,1),box-shadow .12s,border-color .12s}
-a.card:hover,a.card:focus-visible{transform:translate(-4px,-4px);border-color:var(--c);box-shadow:4px 4px 0 var(--c);outline:none}
-.rel.site .card{border-color:color-mix(in srgb,var(--c) 55%,transparent);
-  background:linear-gradient(90deg,color-mix(in srgb,var(--c) 22%,#0f0d16),color-mix(in srgb,var(--c) 7%,#0f0d16) 70%)}
+a.card:hover,a.card:focus-visible{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--c);outline:none}
+.rel.site .card{background:color-mix(in srgb,var(--c) 22%,var(--plaque))}
 /* l'horaire : l'époque dans le monde, sur fond de diodes ; le code de ligne pour une ligne neuve */
 .bu-time{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:10px 6px;
-  text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
+  text-align:center;background:var(--board);border-right:2px dashed rgba(255,253,247,.16)}
 .bu-time .wd,.bu-time .mo{font-family:'Big Shoulders Display';font-weight:800;font-size:11.5px;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(255,253,247,.55);line-height:1.05}
 .bu-time .mo{color:rgba(255,253,247,.78)}
 .bu-time .dn{font-family:'Big Shoulders Display';font-weight:900;font-size:24px;line-height:.95;
-  color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4);overflow-wrap:anywhere}
-.rel.site .bu-time .dn{font-size:40px;line-height:.85;color:var(--c);text-shadow:0 0 12px color-mix(in srgb,var(--c) 55%,transparent)}
+  color:var(--hot);overflow-wrap:anywhere}
+.rel.site .bu-time .dn{font-size:40px;line-height:.85;color:var(--c);}
 /* la vignette : l'œuvre, la bannière de son Dossier, ou celle de l'univers */
-.vig{align-self:center;display:block;aspect-ratio:16/9;border:2px solid var(--ink);border-radius:7px;overflow:hidden;
+.vig{align-self:center;display:block;aspect-ratio:16/9;border:2px solid var(--ink);border-radius:3px;overflow:hidden;
   background:#000;box-shadow:0 0 0 1px var(--line)}
 .vig img{display:block;width:100%;height:100%;object-fit:cover}
 .vig.none{display:grid;place-items:center;background:color-mix(in srgb,var(--k) 30%,#0f0d16)}
@@ -559,14 +555,14 @@ a.card:hover,a.card:focus-visible{transform:translate(-4px,-4px);border-color:va
 .txt{align-self:center;min-width:0;padding:13px 0}
 .tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
 .code{display:inline-grid;place-items:center;background:var(--c);color:var(--ink);border:2px solid var(--ink);
-  border-radius:5px;padding:1px 7px 0;font-family:'Big Shoulders Display';font-weight:900;font-size:14px;letter-spacing:.04em;line-height:1.1}
+  border-radius:3px;padding:1px 7px 0;font-family:'Big Shoulders Display';font-weight:900;font-size:14px;letter-spacing:.04em;line-height:1.1}
 .code.w{color:#fff}
 .u{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--c)}
 .b,.sb{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;color:var(--ink);
-  background:var(--k,var(--paper));border:2px solid var(--ink);border-radius:5px}
+  background:var(--k,var(--paper));border:2px solid var(--ink);border-radius:3px}
 .sb{background:var(--hot)}
 .vo{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:2px 7px;
-  color:rgba(255,253,247,.7);border:1px dashed rgba(255,253,247,.4);border-radius:5px}
+  color:rgba(255,253,247,.7);border:1px dashed rgba(255,253,247,.4);border-radius:3px}
 .ti{display:block;font-family:'Big Shoulders Display';font-weight:800;font-size:25px;line-height:1;text-transform:uppercase}
 .dsc{display:block;margin-top:6px;font-size:13.5px;line-height:1.45;color:rgba(255,253,247,.8);text-wrap:pretty}
 .cta{display:inline-block;margin-top:8px;font-family:'Big Shoulders Display';font-weight:800;font-size:14px;
@@ -595,7 +591,7 @@ a.card:hover .arr{transform:translateX(3px);color:var(--c)}
 
 /* ── la barre du bas : un cran par changement, à l'encre de sa ligne ── */
 .hud-trn{flex:none;width:30px;height:16px}
-.hud-trn svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud-trn svg{display:block;width:100%;height:100%;overflow:visible;}
 .hud .bar{flex:1;min-width:120px;height:10px;border:0;border-radius:5px;overflow:hidden;
   display:flex;gap:2px;padding:0;background:none;position:relative}
 .hud .bar i{position:static;flex:1;background:var(--c,var(--soon));transform:none}
@@ -669,6 +665,44 @@ a.card:hover .arr{transform:translateX(3px);color:var(--c)}
   .lm-fill::after,.lm-train .ping,.cal-in::before,.trn{animation:none}
 }
 
+/* ══ les aplats, posés le 12 novembre 2026 ══════════════════════════
+   Validés par Niko sur la maquette « signalétique » : ni lueur, ni flou,
+   ni trame de diodes, ni dégradé. Des aplats, des filets nets, des coins
+   à 3 px, et une seule ombre, décalée et dure, au survol d'une carte. */
+:root{--ink:#131215;--plaque:#1c1b20;--plaque2:#26252b;--rest:#3b3a41}
+.ln-bg{filter:none;opacity:1;transform:none;inset:0}
+.ln-hero::before{background:rgba(19,18,21,.8)}
+.ln-board{background:var(--plaque);border-radius:3px;box-shadow:none}
+.ln-board .s{border-right:2px solid var(--ink)}
+.ln-board .s:last-child{border-right:0}
+.lm-fill::after,.lm-train .ping,.ln-svg .p{display:none}
+.lm-st.cur{box-shadow:0 0 0 3px var(--ink),0 0 0 6px var(--hot)}
+.ln-hero .par-b button{border-radius:3px;background:var(--plaque)}
+.ln-hero .par-b button[aria-pressed="true"]{box-shadow:none;background:var(--hot);color:var(--ink)}
+.rows>.ici::before{animation:none}
+.sieve{background:var(--ink)}
+/* la plaque de station : l'aplat de l'ère à gauche, l'image nette à droite */
+.stn-plate{box-shadow:none}
+.stn-plate:has(>.stn-img){background:var(--era);min-height:188px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);align-items:stretch}
+.stn-img{position:relative;inset:auto;z-index:0;grid-column:2;grid-row:1;filter:none;opacity:1;
+  border-left:3px solid var(--paper)}
+.stn-img::before{display:none}
+.stn-txt{grid-column:1;grid-row:1;justify-content:center;max-width:none}
+.stn-meta b{color:var(--paper)}
+.bu-chk:hover{box-shadow:0 0 0 3px var(--ink)}
+/* la carte d'œuvre : un aplat, la colonne horaire un cran plus claire */
+.bu-card{border-color:transparent;background:var(--plaque)}
+.bu.done .bu-card,.bu-card:hover{border-color:transparent}
+.bu-card:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--uni)}
+.bu-time{background:var(--plaque2);border-right:0}
+.bu-fig{border:0;box-shadow:none}
+.bu-panel{border-top:2px solid var(--ink)}
+@media(max-width:720px){
+  .stn-plate:has(>.stn-img){grid-template-columns:minmax(0,1fr);min-height:0}
+  .stn-img{grid-column:1;grid-row:1;height:92px;border-left:0;border-bottom:3px solid var(--paper)}
+  .stn-txt{grid-row:2}
+}
+/* ══ fin des aplats ══ */
 </style>
 </head>
 <body>

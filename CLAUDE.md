@@ -3920,6 +3920,52 @@ principale n'existe pas le long de la déviation — le trait unique dévie
 à 45° et revient, dans la couleur de la ligne : la déviation se suffit à
 elle-même.
 
+## Les aplats, posés le 12 novembre 2026
+
+Niko trouvait le site trop « codé par une IA ». Testé sur une maquette de la
+page Star Wars : le plan imprimé calé à gauche, les badges en tampons, en
+plaques émaillées ou en billets, et un haut de page « affiche » ont été
+**refusés** ; la hiérarchie de la liste par niveau plaisait mais n'est pas
+retenue. Sa décision : « on va juste tout passer en plat ». Ne pas
+reproposer les pistes refusées.
+
+**Ce que « plat » veut dire, sur tout le site** : aucune lueur (ni
+`text-shadow`, ni ombre floue `0 0 Npx`, ni `drop-shadow`), aucun flou (ni
+`backdrop-filter`, ni image floutée sous le premier écran), ni trame de
+diodes (`--led` n'existe plus), ni dégradé décoratif, ni onde « ping » ou
+impulsion animée sur les voies ; des coins à 3 px au plus. Une seule ombre
+reste permise : décalée et dure (`3px 3px 0`), au survol d'une carte et sur
+les billets. Les dégradés à paliers francs qui **dessinent** quelque chose
+restent — l'horloge de `.dur`, les fenêtres du train, le filet des encres,
+les encoches des billets (`mask`), les rayures « en chantier », le dégradé
+SVG de la voie DC. Les ronds restent ronds (`50%`, et les pastilles dont le
+rayon vaut la demi-hauteur). **Le flou de l'anti-spoil** (`reglages.mjs`)
+n'est pas une lueur : il cache, il reste.
+
+Où ça vit :
+
+- **Dans chaque source, sans exception** : les règles ont été retirées en
+  place (lueurs, flous, diodes, rayons), puis un bloc **« les aplats »**
+  est posé à la fin du `<style>` de tête des dix-neuf sources — mêmes
+  lignes partout : `--ink:#131215`, `--plaque:#1c1b20`,
+  `--plaque2:#26252b`, `--rest:#3b3a41`, le voile uni du premier écran
+  (`.ln-bg` net sous `rgba(19,18,21,.8)`), le tableau des départs en aplat,
+  la plaque de station (aplat `--era` à gauche, image nette à droite
+  derrière un filet papier, en bandeau au-dessus sur téléphone — par
+  `:has(>.stn-img)`, À venir et Nouveautés n'ayant pas d'image), la carte
+  d'œuvre (`--plaque`, horaire `--plaque2`, bordure transparente — elle
+  garde sa place pour l'éclair de saut d'ancre). **Une page neuve recopie
+  ce bloc.**
+- **`e-app.js`** : ses chaînes CSS ont suivi (billet doré de la ligne
+  terminée en aplat sans reflet, jauge dorée fixe, encart « prochaine
+  sortie » en aplat, trait des réglages uni, carte de partage sans halo).
+- **`publier.mjs`** (écran d'arrivée sans halo), **`oeuvres.mjs`** (premier
+  écran des fiches net), **`erreur404.mjs`** (coins).
+
+Un nouveau composant se pose donc sans `box-shadow:0 0`, sans `blur`, sans
+`border-radius` au-delà de 3 px : rien ne le contrôle à la publication, et
+une lueur ajoutée ne casse rien — elle se voit seulement.
+
 ## Les images
 
 **Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le

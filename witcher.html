@@ -132,7 +132,7 @@ a{color:inherit}
   text-transform:uppercase;line-height:.9;letter-spacing:.005em}
 /* l'ombre décalée dure : réservée aux grands titres, jamais aux entrées —
    sur une bulle elle débordait de la case et passait sur le titre voisin */
-.off{text-shadow:4px 4px 0 var(--ink)}
+.off{}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--hot);color:var(--ink);
   font-weight:700;padding:10px 16px}
 .skip:focus{left:0}
@@ -241,7 +241,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
    la bannière et le visuel part en bouillie. */
 .plane{position:absolute;inset:0 -2%;background-size:cover;background-position:center;
   background-image:url(/images/witcher.webp)}
-.plane.p1{filter:saturate(.42) brightness(.5) blur(2px)}
+.plane.p1{filter:saturate(.42) brightness(.5)}
 .plane.p2{inset:0 -4%;filter:saturate(1.05) contrast(1.12);opacity:.55;
   clip-path:polygon(0 34%,100% 6%,100% 100%,0 100%)}
 .veil{position:absolute;inset:0;
@@ -303,8 +303,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
   align-items:start}
 .intro-note{border-left:4px solid var(--gold-deep);padding:14px 18px;font-size:14.5px;
   line-height:1.6;color:rgba(255,253,247,.88);
-  background:linear-gradient(90deg,color-mix(in srgb,var(--gold-deep) 15%,transparent),
-             transparent 78%)}
+  background:color-mix(in srgb,var(--gold-deep) 10%,transparent)}
 .intro-qa{border:2px solid var(--line);background:rgba(255,253,247,.035);padding:14px 18px}
 .intro-qa .q{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:22px;
   line-height:1.05;text-transform:uppercase;letter-spacing:.03em;color:var(--hot);
@@ -355,8 +354,8 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 .ask{margin:auto;border:2px solid var(--paper);background:var(--ink);color:var(--paper);
   padding:0;max-width:600px;width:calc(100% - 32px);box-shadow:8px 8px 0 rgba(0,0,0,.55)}
 .ask:focus-visible{outline:none}
-.ask::backdrop{background:rgba(8,8,12,.62);
-  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.ask::backdrop{background:rgba(8,8,12,0.85);
+  }
 /* Refait le 28 septembre 2026 au dessin du plan de métro : un bandeau de
    quai à l'encre de l'univers, et chaque parcours est une voie — son
    numéro dans un rond de ligne, son nom dessous. Les deux libellés ajoutés (le bandeau et « Voie ») sont en CSS,
@@ -367,7 +366,7 @@ header .wrap{display:flex;align-items:center;gap:14px;padding-top:9px;padding-bo
 html[lang=en] .ask::before{content:'Choose your track'}
 .ask b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;
   font-size:clamp(24px,6vw,31px);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;
-  color:var(--paper);text-align:center;padding:22px 26px 0;text-shadow:3px 3px 0 #000}
+  color:var(--paper);text-align:center;padding:22px 26px 0;}
 .ask-b{display:flex;gap:12px;padding:20px 22px 24px;counter-reset:voie}
 .ask-b button{flex:1 1 0;min-width:0;counter-increment:voie;display:flex;flex-direction:column;
   align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:18px;
@@ -466,7 +465,7 @@ body[data-parcours="release"] .pc-release{display:inline-flex}
   border-top:2px solid var(--paper);border-bottom:2px solid var(--paper)}
 .map .layers{position:absolute;inset:0}
 .map .lay{position:absolute;inset:-7% 0;background-size:cover;background-position:center}
-.map .lay1{filter:saturate(.4) brightness(.55) blur(1.5px);opacity:.85}
+.map .lay1{filter:saturate(.4) brightness(.55);opacity:.85}
 .map .lay2{filter:saturate(.9) contrast(1.14);opacity:.42;
   clip-path:polygon(0 42%,100% 12%,100% 100%,0 100%)}
 .map .tint{position:absolute;inset:0;
@@ -1202,30 +1201,30 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
    cocher est l'arrêt lui-même : un rond vide tant qu'on n'y est pas
    passé, plein une fois desservi. Le trait se colore jusqu'au train. */
 :root{--rest:color-mix(in srgb,var(--uni) 26%,#1c1a26);--rail:64px;--board:#07060b;--cleared:#3ddc84;
-  --led:radial-gradient(rgba(255,253,247,.06) 1px,transparent 1.4px) 0 0/4px 4px}
+  }
 
 /* ── la barre du bas : la ligne en miniature, avec ses stations ── */
 .hud .bar{height:10px;border:0;border-radius:5px;background:var(--rest);overflow:visible}
-.hud .bar i{border-radius:5px}
+.hud .bar i{border-radius:3px}
 .hud .bar .hs{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--paper);
   border:2px solid var(--ink);transform:translate(-50%,-50%)}
 .hud .bar .hs.v{background:var(--uni);border-color:var(--paper)}
 .hud-train{position:absolute;top:50%;z-index:2;width:30px;height:16px;transform:translate(-50%,-50%);
   transition:left .45s cubic-bezier(.16,1,.3,1);pointer-events:none}
-.hud-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 5px var(--hot))}
+.hud-train svg{display:block;width:100%;height:100%;overflow:visible;}
 .hud-train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
 .hud-train .win{fill:var(--ink)}
 .hud-train .ping{display:none}
-.hud .btn{border-radius:8px}
+.hud .btn{border-radius:3px}
 
 /* ── le premier écran : le titre, puis le plan de la ligne ── */
 .ln-hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--paper)}
 .ln-bg{position:absolute;inset:-24px;z-index:-2;background:url(/images/mcu.webp) center 30%/cover;
-  filter:blur(3px) saturate(.85);opacity:.34;transform:scale(1.05)}
+  filter:saturate(.85);opacity:.34;transform:scale(1.05)}
 .ln-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(130% 100% at 50% 30%,rgba(13,11,18,.25) 0%,rgba(13,11,18,.75) 60%,var(--ink) 100%)}
 .ln-hero .wrap{padding-top:40px;padding-bottom:40px;text-align:center}
-.ln-head h1{text-align:center;font-size:clamp(58px,10.5vw,138px);line-height:.84;text-shadow:5px 5px 0 var(--ink)}
+.ln-head h1{text-align:center;font-size:clamp(58px,10.5vw,138px);line-height:.84;}
 .ln-head h1 .tag{display:block;width:max-content;max-width:100%;margin:0 auto 14px;text-shadow:none;line-height:1}
 .ln-head h1 .nm{display:block}
 .ln-hero .dek{max-width:640px;margin:18px auto 0;font-size:16.5px}
@@ -1241,7 +1240,7 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .lm-cnt{right:0;color:var(--paper)}
 .lm-cnt b{color:var(--hot);font-size:17px}
 .lm-track{position:relative;height:10px;border-radius:5px;background:var(--rest);box-shadow:0 0 0 3px var(--ink)}
-.lm-fill{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--uni);
+.lm-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--uni);
   transition:width .5s cubic-bezier(.3,.9,.3,1)}
 .lm-t{position:absolute;top:50%;width:4px;height:4px;border-radius:50%;background:rgba(255,253,247,.55);
   transform:translate(-50%,-50%)}
@@ -1252,17 +1251,17 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 .lm-st.v{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 2px var(--ink)}
 .lm-st.cur{box-shadow:0 0 0 3px var(--hot)}
 .lm-st:hover,.lm-st:focus-visible{transform:translate(-50%,-50%) scale(1.2);outline:none}
-.lm-st.tm{border-radius:6px;width:30px;height:30px;border-width:4px}
+.lm-st.tm{border-radius:3px;width:30px;height:30px;border-width:4px}
 .lm-lb{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 11px);width:max-content;
   max-width:170px;text-align:center;line-height:1;pointer-events:none;color:var(--paper);
   font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;
-  text-shadow:0 2px 0 var(--ink),0 0 8px var(--ink)}
+  }
 .lm-lb small{display:block;margin-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,253,247,.58)}
 .lm-st.lo .lm-lb{bottom:auto;top:calc(100% + 11px)}
 .lm-st.cur .lm-lb{color:var(--hot)}
 .lm-train{position:absolute;top:50%;z-index:2;width:38px;height:20px;transform:translate(-50%,-50%);
   transition:left .5s cubic-bezier(.3,.9,.3,1);pointer-events:none}
-.lm-train svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px var(--hot))}
+.lm-train svg{display:block;width:100%;height:100%;overflow:visible;}
 .lm-train .body{fill:var(--hot);stroke:var(--ink);stroke-width:2.2}
 .lm-train .win{fill:var(--ink)}
 .lm-train .ping{fill:none;stroke:var(--hot);stroke-width:2;transform-box:fill-box;transform-origin:center;
@@ -1272,12 +1271,12 @@ footer{border-top:2px solid var(--paper);background:var(--ink);padding:30px 0 34
 
 /* le tableau des départs : les chiffres de la ligne, en diodes */
 .ln-board{display:flex;flex-wrap:nowrap;justify-content:center;margin:12px auto 0;width:fit-content;max-width:100%;
-  background:var(--led),var(--board);border:2px solid var(--paper);border-radius:10px;overflow:hidden;
+  background:var(--board);border:2px solid var(--paper);border-radius:3px;overflow:hidden;
   box-shadow:6px 6px 0 var(--ink)}
 .ln-board .s{padding:11px 22px 12px;border-right:2px dashed rgba(255,253,247,.16);min-width:0}
 .ln-board .s:last-child{border-right:0}
 .ln-board b{display:block;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:34px;line-height:.9;
-  color:var(--hot);text-shadow:0 0 12px rgba(240,201,124,.45);white-space:nowrap}
+  color:var(--hot);white-space:nowrap}
 .ln-board span{display:block;margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,253,247,.66)}
 
@@ -1317,7 +1316,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .ln-hero .par{margin:0}
 .ln-hero .par-b{counter-reset:voie;gap:10px;border:0}
 .ln-hero .par-b button{counter-increment:voie;display:flex;flex-direction:column;align-items:center;gap:3px;
-  border:2px solid var(--paper);border-radius:8px;background:rgba(13,11,18,.72);padding:7px 16px 8px;
+  border:2px solid var(--paper);border-radius:3px;background:rgba(13,11,18,.72);padding:7px 16px 8px;
   font-family:'Big Shoulders Display','BSD repli';font-size:16px;font-weight:800;letter-spacing:.06em;color:var(--paper)}
 .ln-hero .par-b button+button{border-left:2px solid var(--paper)}
 .ln-hero .par-b button::before{content:'Voie ' counter(voie);font-size:10px;letter-spacing:.2em;
@@ -1327,14 +1326,14 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .ln-hero .par-b button[aria-pressed="true"]::before{color:rgba(13,11,18,.6)}
 
 /* ── l'intro : des panneaux d'information ── */
-.intro .itag{border-radius:8px;border-left-width:6px}
-.key{position:relative;border-radius:10px;padding-top:20px;overflow:hidden}
+.intro .itag{border-radius:3px;border-left-width:6px}
+.key{position:relative;border-radius:3px;padding-top:20px;overflow:hidden}
 .key::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--uni)}
-.cuts{border-radius:10px;overflow:hidden}
+.cuts{border-radius:3px;overflow:hidden}
 
 /* ── la barre collante ── */
-.sieve{background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.sieve button,.search{border-radius:999px}
+.sieve{background:rgba(13,11,18,0.98);}
+.sieve button,.search{border-radius:3px}
 .sieve button i{border-radius:50%}
 
 /* ── la ligne : un trait de fond, et le trait parcouru jusqu'au train.
@@ -1354,9 +1353,9 @@ section.ln-hero>.wrap{padding-bottom:66px}
   border:7px solid var(--ink);box-shadow:0 0 0 4px var(--rest)}
 .era-sec.reach .stn-dot{box-shadow:0 0 0 4px var(--uni)}
 .era-sec.fin .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
-.stn-dot.tm{border-radius:9px}
+.stn-dot.tm{border-radius:3px}
 /* la plaque : l'image de l'ère sur toute sa largeur, le texte par-dessus */
-.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:12px;overflow:hidden;
+.stn-plate{position:relative;isolation:isolate;border:3px solid var(--paper);border-radius:3px;overflow:hidden;
   background:color-mix(in srgb,var(--era) 58%,var(--ink));box-shadow:7px 7px 0 var(--ink);min-height:200px;
   display:flex;align-items:center}
 .stn-img{position:absolute;inset:0;z-index:-1;background:var(--ink) center 30%/cover no-repeat;
@@ -1368,15 +1367,15 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .stn-k{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:800;
   font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,253,247,.85)}
 .code{display:inline-grid;place-items:center;background:var(--uni);color:var(--ink);border:2px solid var(--ink);
-  border-radius:5px;padding:2px 7px 1px;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.04em}
-.stn-nm{font-size:clamp(36px,5.2vw,68px);line-height:.88;text-shadow:4px 4px 0 var(--ink)}
+  border-radius:3px;padding:2px 7px 1px;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.04em}
+.stn-nm{font-size:clamp(36px,5.2vw,68px);line-height:.88;}
 .stn-meta{display:flex;gap:6px 20px;flex-wrap:wrap;font-size:13px;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;text-shadow:0 1px 3px var(--ink)}
+  text-transform:uppercase;}
 .stn-meta b{color:var(--hot)}
 .stn-cx{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px}
 .stn-cx .lab{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,253,247,.7);margin-right:4px;text-shadow:0 1px 3px var(--ink)}
-.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:5px;
+  color:rgba(255,253,247,.7);margin-right:4px;}
+.cx{display:inline-flex;align-items:center;gap:6px;padding:2px 3px 2px 8px;border-radius:3px;
   background:var(--k);color:var(--ink);border:2px solid var(--ink);
   font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .cx b{background:var(--ink);color:var(--k);border-radius:3px;padding:0 5px;font-family:'Big Shoulders Display','BSD repli';
@@ -1397,32 +1396,32 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .bu-chk[aria-checked=true]{background:var(--uni);border-color:var(--paper);color:var(--ink)}
 .bu-chk svg{width:15px;height:15px}
 
-.bu-card{border:2px solid var(--line);border-radius:12px;overflow:hidden;
+.bu-card{border:2px solid var(--line);border-radius:3px;overflow:hidden;
   background:color-mix(in srgb,var(--era) 12%,#0f0d16);
   transition:transform .12s cubic-bezier(.2,.9,.3,1),box-shadow .12s,border-color .12s}
 .bu-card:hover{transform:translate(-4px,-4px);border-color:var(--uni);box-shadow:4px 4px 0 var(--uni)}
 .bu.done .bu-card{border-color:color-mix(in srgb,var(--uni) 55%,transparent)}
 .bu-head{display:grid;grid-template-columns:118px 184px minmax(0,1fr) 34px;column-gap:18px;row-gap:0;
   align-items:stretch;padding:0 6px 0 0}
-.bu-fig{grid-column:2;width:184px;align-self:center;margin:12px 0;border-radius:8px;border:2px solid var(--ink);
+.bu-fig{grid-column:2;width:184px;align-self:center;margin:12px 0;border-radius:3px;border:2px solid var(--ink);
   box-shadow:0 0 0 1px var(--line)}
 .bu-fig .bu-n{display:none}
 .bu-txt{grid-column:3;padding:14px 0 13px;align-self:center}
 .bu-time{grid-column:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
-  padding:12px 8px;text-align:center;background:var(--led),var(--board);border-right:2px dashed rgba(255,253,247,.16)}
+  padding:12px 8px;text-align:center;background:var(--board);border-right:2px dashed rgba(255,253,247,.16)}
 .bu-time .bu-n{white-space:nowrap;position:static;background:none;clip-path:none;padding:0;color:rgba(255,253,247,.5);
   font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .bu-time .d{font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:25px;line-height:.95;letter-spacing:.02em;
-  color:var(--hot);text-shadow:0 0 10px rgba(240,201,124,.4)}
-.bu-time .rel{display:inline-flex;flex-direction:column;align-items:center;gap:1px;padding:3px 8px;border-radius:5px;
+  color:var(--hot);}
+.bu-time .rel{display:inline-flex;flex-direction:column;align-items:center;gap:1px;padding:3px 8px;border-radius:3px;
   border:1px solid color-mix(in srgb,var(--uni) 50%,transparent);background:color-mix(in srgb,var(--uni) 14%,transparent);
   color:var(--uni);font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .bu-time .rel i{font-style:normal}
 .bu-time .rel b{font-family:'Big Shoulders Display','BSD repli';font-size:17px;letter-spacing:.02em;line-height:1}
 .bu-end{grid-column:4;align-self:center;justify-content:center}
 .bu-tags{gap:6px;margin-bottom:6px}
-.bu-tags .b{clip-path:none;border-radius:5px;border:2px solid var(--ink);padding:1px 7px;font-size:10.5px;font-weight:800}
-.bu-tags .ft{border-radius:5px}
+.bu-tags .b{clip-path:none;border-radius:3px;border:2px solid var(--ink);padding:1px 7px;font-size:10.5px;font-weight:800}
+.bu-tags .ft{border-radius:3px}
 .bu-tags .lv{display:inline-grid;place-items:center;line-height:0}
 .bu-tags .lv .ic{width:20px;height:20px}
 .bu-title{font-size:25px;line-height:1}
@@ -1432,14 +1431,14 @@ section.ln-hero>.wrap{padding-bottom:66px}
   box-sizing:border-box;background:linear-gradient(currentColor,currentColor) 50% 20%/2px 40% no-repeat}
 .bu-meta:empty{display:none}
 .bu-done{place-items:end start;padding:7px}
-.bu-done span{transform:none;border-radius:5px;font-size:13px;padding:2px 8px;letter-spacing:.14em}
+.bu-done span{transform:none;border-radius:3px;font-size:13px;padding:2px 8px;letter-spacing:.14em}
 .bu.done .bu-title{color:rgba(255,253,247,.66)}
 .bu.done .bu-time .d{color:color-mix(in srgb,var(--hot) 60%,var(--ink));text-shadow:none}
 .bu-sub{padding:0 16px 13px 338px}
-.si{border-radius:4px}
+.si{border-radius:3px}
 .bu-panel{border-top:2px dashed var(--line);padding:16px 16px 16px 136px}
-.expand-trailer-link{clip-path:none;border-radius:6px}
-.faq{border-radius:0 8px 8px 0}
+.expand-trailer-link{clip-path:none;border-radius:3px}
+.faq{border-radius:0 3px 3px 0}
 
 /* « Vous en êtes là » : le train, posé sur le trait */
 .rows>.ici{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) auto minmax(0,1fr);
@@ -1447,7 +1446,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .rows>.ici::before{justify-self:center;width:38px;height:20px;transform:none;border-radius:7px 10px 10px 7px;
   background:linear-gradient(var(--ink),var(--ink)) 8px 5px/6px 6px no-repeat,
              linear-gradient(var(--ink),var(--ink)) 17px 5px/6px 6px no-repeat,var(--hot);
-  border:2px solid var(--ink);box-shadow:0 0 10px var(--hot)}
+  border:2px solid var(--ink);}
 .rows>.ici::after{height:0;border-top:2px dashed currentColor;background:none;opacity:.55}
 
 /* le terminus */
@@ -1458,18 +1457,18 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .terminus.fin .stn-dot{background:var(--uni);border-color:var(--paper);box-shadow:0 0 0 4px var(--ink)}
 
 /* ── les badges : un carnet de tickets ── */
-.bx{background:rgba(8,8,12,.72);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
-.bx-in{max-width:760px;border:3px solid var(--paper);border-radius:14px;padding:0;overflow:auto;
+.bx{background:rgba(8,8,12,0.89);}
+.bx-in{max-width:760px;border:3px solid var(--paper);border-radius:3px;padding:0;overflow:auto;
   box-shadow:8px 8px 0 var(--ink);background:var(--ink)}
 .bx-h{position:sticky;top:0;z-index:2;margin:0;padding:16px 18px 14px;gap:12px;
-  background:var(--led),var(--board);border-bottom:2px dashed rgba(255,253,247,.2)}
+  background:var(--board);border-bottom:2px dashed rgba(255,253,247,.2)}
 .bx-h h3{font-size:28px;letter-spacing:.03em}
 .bx-h .n{order:3;margin-left:auto;background:none;color:var(--hot);padding:0;
   font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:22px;letter-spacing:.02em;
-  text-shadow:0 0 10px rgba(240,201,124,.4)}
+  }
 .bx-h button{order:4;margin-left:6px;border-radius:50%;width:36px;height:36px;font-weight:700}
 .bx-g{padding:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.bg1{position:relative;padding:0;gap:0;align-items:stretch;border:2px dashed rgba(255,253,247,.28);border-radius:4px;
+.bg1{position:relative;padding:0;gap:0;align-items:stretch;border:2px dashed rgba(255,253,247,.28);border-radius:3px;
   background:none;opacity:1;filter:none;min-height:86px}
 .bg1 .bg-stub{flex:none;width:66px;display:grid;place-items:center;border-right:2px dashed rgba(255,253,247,.28)}
 .bg1 .i{font-size:28px;filter:grayscale(1);opacity:.4}
@@ -1491,7 +1490,7 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .bg1.on .d{color:#3a3548}
 .bg1.on .st{color:var(--ink)}
 .bg1.on .st::before{content:'✓ '}
-.bpop{border-radius:12px;border-width:3px}
+.bpop{border-radius:3px;border-width:3px}
 
 @media(max-width:720px){
   :root{--rail:40px}
@@ -1573,11 +1572,11 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
    Studios : ce sont des embranchements, posés à l'endroit où les films qui
    les convoquent les croisent. Plaque en tirets, arrêt carré. */
 .stn-saga{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--hot);text-shadow:0 1px 3px var(--ink)}
+  text-transform:uppercase;color:var(--hot);}
 .stn-saga::before{content:'';width:26px;height:2px;background:var(--hot)}
-.stn-k .emb{border:2px dashed var(--paper);border-radius:5px;padding:1px 7px 0;font-size:12px;letter-spacing:.14em}
+.stn-k .emb{border:2px dashed var(--paper);border-radius:3px;padding:1px 7px 0;font-size:12px;letter-spacing:.14em}
 .era-sec.seg .stn-plate{border-style:dashed}
-.era-sec.seg .stn-dot{border-radius:10px;transform:rotate(45deg) scale(.86)}
+.era-sec.seg .stn-dot{border-radius:3px;transform:rotate(45deg) scale(.86)}
 /* la carte « Canonicité non confirmée » des repères : le filet rouge du
    haut suffit, le liseré doré de gauche est retiré */
 .key.wide{border-left-width:2px;border-left-color:var(--line)}
@@ -1596,7 +1595,7 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .era-sec.seg .stn-rail{transform:translateX(var(--off))}
 .era-sec.seg .stn-plate{margin-left:var(--off)}
 @media(max-width:720px){:root{--off:28px}}
-.bu-tags .nt,.bu-tags .dim{border-radius:5px}
+.bu-tags .nt,.bu-tags .dim{border-radius:3px}
 
 /* ══ Retouches du 28 septembre 2026 ══════════════════════════════════
    Le mot « Départ » se calait à gauche du plan et passait sous le premier
@@ -1707,8 +1706,8 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
   animation:ln-flow .8s linear infinite}
 @keyframes ln-flow{to{stroke-dashoffset:-16.1}}
 .rows>.ici::before{animation:ici-ping 1.8s ease-out infinite}
-@keyframes ici-ping{from{box-shadow:0 0 10px var(--hot),0 0 0 0 rgba(240,201,124,.85)}
-  to{box-shadow:0 0 10px var(--hot),0 0 0 13px rgba(240,201,124,0)}}
+@keyframes ici-ping{from{box-shadow:0 0 0 0 rgba(240,201,124,.85)}
+  to{box-shadow:0 0 0 13px rgba(240,201,124,0)}}
 @media(prefers-reduced-motion:reduce){
   .lm-fill::after,.ln-svg .p,.rows>.ici::before{animation:none}
   .ln-svg .r{transition:none}
@@ -1732,22 +1731,22 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
   font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:13px;letter-spacing:.05em;line-height:1}
 
 /* ── la plaque de station ── */
-.stn-k .emb{border:2px dashed var(--paper);border-radius:5px;padding:1px 7px 0;font-size:12px;letter-spacing:.14em}
+.stn-k .emb{border:2px dashed var(--paper);border-radius:3px;padding:1px 7px 0;font-size:12px;letter-spacing:.14em}
 .stn-k .ln-code{height:22px;font-size:12px}
-.stn-hint{max-width:640px;font-size:14px;line-height:1.5;color:rgba(255,253,247,.88);text-shadow:0 1px 3px var(--ink)}
+.stn-hint{max-width:640px;font-size:14px;line-height:1.5;color:rgba(255,253,247,.88);}
 .stn-lines{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .stn-lines .lab{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,253,247,.7);margin-right:4px;text-shadow:0 1px 3px var(--ink)}
-.era-sec.multi .stn-dot{width:54px;height:54px;border-radius:16px;border-width:8px}
+  color:rgba(255,253,247,.7);margin-right:4px;}
+.era-sec.multi .stn-dot{width:54px;height:54px;border-radius:3px;border-width:8px}
 
 /* le nœud de l'événement : rouge, et toutes lignes */
-.era-sec.evt .stn-plate{border-color:#e5484d;box-shadow:7px 7px 0 var(--ink),0 0 0 3px var(--ink),0 0 26px rgba(229,72,77,.35)}
-.era-sec.evt .stn-dot{width:52px;height:52px;border-radius:10px;transform:rotate(45deg) scale(.86);
+.era-sec.evt .stn-plate{border-color:#e5484d;box-shadow:7px 7px 0 var(--ink),0 0 0 3px var(--ink)}
+.era-sec.evt .stn-dot{width:52px;height:52px;border-radius:3px;transform:rotate(45deg) scale(.86);
   background:#e5484d;border-color:var(--ink);box-shadow:0 0 0 4px #e5484d}
 .era-sec.evt .stn-k .emb{border-color:#e5484d;color:#ff8a8e}
 .era-sec.evt .zbody{padding-left:calc(20px + var(--rail) + 14px)}
 .crisis-wrap .crisis-content{padding:18px 0 4px}
-.crisis-spoil{border-radius:10px;overflow:hidden;border-color:#e5484d;background:rgba(13,11,18,.6)}
+.crisis-spoil{border-radius:3px;overflow:hidden;border-color:#e5484d;background:rgba(13,11,18,.6)}
 
 /* ── les onglets : le choix de la ligne ──
    Toujours là, à toutes les largeurs : les colonnes côte à côte ne tenaient
@@ -1759,9 +1758,9 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .zsw-n{display:none}
 .ztabs{justify-content:center;gap:8px;margin:8px -20px 0;
   padding:9px 20px 10px;
-  background:rgba(13,11,18,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  background:rgba(13,11,18,0.98);
   border-bottom:2px solid var(--line);box-shadow:0 -8px 0 0 var(--ink)}
-.ztabs button{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;
+.ztabs button{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:3px;
   background:rgba(13,11,18,.72);color:rgba(255,253,247,.78);padding:3px 12px 3px 3px;
   font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase}
 .ztabs button:hover{border-color:var(--k);color:var(--paper)}
@@ -1781,8 +1780,8 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .sep-row[hidden]{display:none}
 .sep-sig{display:grid;place-items:center}
 .sep-sig i{width:26px;height:26px;background:#e5484d;border:4px solid var(--ink);transform:rotate(45deg);
-  box-shadow:0 0 0 3px #e5484d,0 0 14px rgba(229,72,77,.6)}
-.sep-row .sep{margin:0;border-radius:12px;border-color:#e5484d;
+  box-shadow:0 0 0 3px #e5484d}
+.sep-row .sep{margin:0;border-radius:3px;border-color:#e5484d;
   background:color-mix(in srgb,#e5484d 12%,#0f0d16);box-shadow:5px 5px 0 var(--ink)}
 .sep-row .sep h3{color:#ff8a8e}
 
@@ -1793,7 +1792,7 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .net-svg path{fill:none;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .net-svg .r{stroke:var(--rest)}
 .net .lm-st{z-index:2}
-.net .lm-st.evt{border-radius:7px;background:#e5484d;border-color:var(--ink);box-shadow:0 0 0 2px #e5484d}
+.net .lm-st.evt{border-radius:3px;background:#e5484d;border-color:var(--ink);box-shadow:0 0 0 2px #e5484d}
 .net .lm-st.evt .lm-lb small{color:#ff8a8e}
 .net .lm-lb{bottom:auto;top:auto}
 .net .lm-st:not(.lo) .lm-lb{bottom:calc(var(--s) / 2 + var(--hh, 44px))}
@@ -1828,7 +1827,7 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
   .col-h .col-n{margin-left:auto;font-size:10.5px}
   .col-hint{margin-left:calc(var(--rail) + 10px)}
   .era-sec.evt .zbody{padding-left:calc(20px + var(--rail) + 10px)}
-  .era-sec.multi .stn-dot{width:36px;height:36px;border-radius:11px;border-width:5px}
+  .era-sec.multi .stn-dot{width:36px;height:36px;border-radius:3px;border-width:5px}
   .era-sec.evt .stn-dot{width:34px;height:34px;border-width:5px}
   .sep-row{column-gap:10px}
   .sep-sig i{width:20px;height:20px;border-width:3px}
@@ -1847,17 +1846,17 @@ html[lang=en] .ln-hero .par-b button::before{content:'Track ' counter(voie)}
 .zdep{margin:24px 0 0 calc(var(--rail) + 14px)}
 .zdep-k{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;
   font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.66)}
-.zdep-k span{background:var(--hot);color:var(--ink);border-radius:5px;padding:2px 8px 1px;
+.zdep-k span{background:var(--hot);color:var(--ink);border-radius:3px;padding:2px 8px 1px;
   font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:14px;letter-spacing:.12em}
 .zdep-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
 .dep{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:7px;text-align:left;
-  padding:12px 14px 13px;border:2px solid var(--line);border-radius:12px;cursor:pointer;
-  background:var(--led),var(--board);color:var(--paper);box-shadow:4px 4px 0 var(--ink);
+  padding:12px 14px 13px;border:2px solid var(--line);border-radius:3px;cursor:pointer;
+  background:var(--board);color:var(--paper);box-shadow:4px 4px 0 var(--ink);
   transition:transform .12s cubic-bezier(.2,.9,.3,1),border-color .12s,box-shadow .12s}
 .dep:hover{border-color:var(--k);transform:translate(-2px,-2px)}
 .dep.on{border-color:var(--k);box-shadow:4px 4px 0 var(--k);background:
-  var(--led),color-mix(in srgb,var(--k) 16%,var(--board))}
-.dep.on::after{content:'Ligne affichée';position:absolute;top:-11px;right:12px;padding:2px 7px 1px;border-radius:4px;
+  color-mix(in srgb,var(--k) 16%,var(--board))}
+.dep.on::after{content:'Ligne affichée';position:absolute;top:-11px;right:12px;padding:2px 7px 1px;border-radius:3px;
   background:var(--k);color:var(--ink);border:2px solid var(--ink);
   font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 html[lang=en] .dep.on::after{content:'Now showing'}
@@ -1878,15 +1877,15 @@ html[lang=en] .dep.on::after{content:'Now showing'}
 .fin-ligne{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
   column-gap:14px;align-items:center;padding:16px 0 6px}
 .fl-rail{display:grid;place-items:center}
-.fl-dot{width:28px;height:28px;border-radius:8px;background:var(--br);border:5px solid var(--ink);
+.fl-dot{width:28px;height:28px;border-radius:3px;background:var(--br);border:5px solid var(--ink);
   box-shadow:0 0 0 3px var(--br)}
-.fl-box{border:2px dashed color-mix(in srgb,var(--br) 70%,transparent);border-radius:12px;padding:14px 16px 15px;
+.fl-box{border:2px dashed color-mix(in srgb,var(--br) 70%,transparent);border-radius:3px;padding:14px 16px 15px;
   background:color-mix(in srgb,var(--br) 8%,#0f0d16)}
 .fl-t{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display','BSD repli';font-weight:900;font-size:24px;
   line-height:1;text-transform:uppercase}
 .fl-k{margin:12px 0 8px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.6)}
 .fl-g{display:flex;flex-wrap:wrap;gap:8px}
-.fl-go{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;cursor:pointer;
+.fl-go{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:3px;cursor:pointer;
   background:rgba(13,11,18,.72);color:var(--paper);padding:3px 12px 3px 3px;
   font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase}
 .fl-go:hover{border-color:var(--k)}
@@ -1948,8 +1947,8 @@ a.nt-code:hover{transform:translate(-50%,-50%) scale(1.25)}
 .duo .sy .sy-txt::before{content:'Your pass';display:block;margin-bottom:10px}
 .k-bdg{font-style:normal;background:var(--c-doss);color:var(--ink);font-weight:900;font-size:13px;
   letter-spacing:.04em;padding:2px 6px;border:2px solid var(--ink);line-height:1}
-.duo .deep h2{font-size:clamp(28px,3.4vw,40px);color:var(--c-doss);text-shadow:3px 3px 0 var(--ink)}
-.duo .sy h2{font-size:clamp(24px,2.8vw,32px);color:var(--hot);text-shadow:3px 3px 0 var(--ink)}
+.duo .deep h2{font-size:clamp(28px,3.4vw,40px);color:var(--c-doss);}
+.duo .sy h2{font-size:clamp(24px,2.8vw,32px);color:var(--hot);}
 .duo .deep p{margin:0 auto;max-width:44ch;font-size:14.5px}
 .k-meta{font-family:'Big Shoulders Display','BSD repli';font-weight:800;font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;color:rgba(255,253,247,.66)}
@@ -2079,7 +2078,45 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   border:2.5px solid var(--k);transform:translate(-50%,-50%);z-index:2}
 .nt-sub.v{background:var(--k)}
 .vo{font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:1px 5px;
-  color:var(--uni);border:1px solid var(--uni);border-radius:5px}
+  color:var(--uni);border:1px solid var(--uni);border-radius:3px}
+/* ══ les aplats, posés le 12 novembre 2026 ══════════════════════════
+   Validés par Niko sur la maquette « signalétique » : ni lueur, ni flou,
+   ni trame de diodes, ni dégradé. Des aplats, des filets nets, des coins
+   à 3 px, et une seule ombre, décalée et dure, au survol d'une carte. */
+:root{--ink:#131215;--plaque:#1c1b20;--plaque2:#26252b;--rest:#3b3a41}
+.ln-bg{filter:none;opacity:1;transform:none;inset:0}
+.ln-hero::before{background:rgba(19,18,21,.8)}
+.ln-board{background:var(--plaque);border-radius:3px;box-shadow:none}
+.ln-board .s{border-right:2px solid var(--ink)}
+.ln-board .s:last-child{border-right:0}
+.lm-fill::after,.lm-train .ping,.ln-svg .p{display:none}
+.lm-st.cur{box-shadow:0 0 0 3px var(--ink),0 0 0 6px var(--hot)}
+.ln-hero .par-b button{border-radius:3px;background:var(--plaque)}
+.ln-hero .par-b button[aria-pressed="true"]{box-shadow:none;background:var(--hot);color:var(--ink)}
+.rows>.ici::before{animation:none}
+.sieve{background:var(--ink)}
+/* la plaque de station : l'aplat de l'ère à gauche, l'image nette à droite */
+.stn-plate{box-shadow:none}
+.stn-plate:has(>.stn-img){background:var(--era);min-height:188px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);align-items:stretch}
+.stn-img{position:relative;inset:auto;z-index:0;grid-column:2;grid-row:1;filter:none;opacity:1;
+  border-left:3px solid var(--paper)}
+.stn-img::before{display:none}
+.stn-txt{grid-column:1;grid-row:1;justify-content:center;max-width:none}
+.stn-meta b{color:var(--paper)}
+.bu-chk:hover{box-shadow:0 0 0 3px var(--ink)}
+/* la carte d'œuvre : un aplat, la colonne horaire un cran plus claire */
+.bu-card{border-color:transparent;background:var(--plaque)}
+.bu.done .bu-card,.bu-card:hover{border-color:transparent}
+.bu-card:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--uni)}
+.bu-time{background:var(--plaque2);border-right:0}
+.bu-fig{border:0;box-shadow:none}
+.bu-panel{border-top:2px solid var(--ink)}
+@media(max-width:720px){
+  .stn-plate:has(>.stn-img){grid-template-columns:minmax(0,1fr);min-height:0}
+  .stn-img{grid-column:1;grid-row:1;height:92px;border-left:0;border-bottom:3px solid var(--paper)}
+  .stn-txt{grid-row:2}
+}
+/* ══ fin des aplats ══ */
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://chronologeek.app/"},{"@type":"ListItem","position":2,"name":"The Witcher","item":"https://chronologeek.app/witcher"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"The Witcher","inLanguage":"en-US","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":54,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Book","name":"The Road of No Return","url":"https://chronologeek.app/witcher#w-road","image":"https://chronologeek.app/images/roadnoreturn.webp"}},{"@type":"ListItem","position":2,"item":{"@type":"Book","name":"Crossroads of Ravens","url":"https://chronologeek.app/witcher#w-crossroads","image":"https://chronologeek.app/images/crossroadsofravens.webp"}},{"@type":"ListItem","position":3,"item":{"@type":"Book","name":"A Grain of Truth","url":"https://chronologeek.app/witcher#w-grain","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":4,"item":{"@type":"Book","name":"The Lesser Evil","url":"https://chronologeek.app/witcher#w-lesser","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":5,"item":{"@type":"Book","name":"The Edge of the World","url":"https://chronologeek.app/witcher#w-edge","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":6,"item":{"@type":"Book","name":"The Last Wish","url":"https://chronologeek.app/witcher#w-lastwish","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":7,"item":{"@type":"Book","name":"A Question of Price","url":"https://chronologeek.app/witcher#w-price","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":8,"item":{"@type":"Book","name":"The Witcher","url":"https://chronologeek.app/witcher#w-witcher","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":9,"item":{"@type":"Book","name":"The Voice of Reason","url":"https://chronologeek.app/witcher#w-voice","image":"https://chronologeek.app/images/thelastwish.webp"}},{"@type":"ListItem","position":10,"item":{"@type":"Book","name":"The Bounds of Reason","url":"https://chronologeek.app/witcher#w-bounds","image":"https://chronologeek.app/images/swordofdestiny.webp"}},{"@type":"ListItem","position":11,"item":{"@type":"Book","name":"A Shard of Ice","url":"https://chronologeek.app/witcher#w-shard","image":"https://chronologeek.app/images/swordofdestiny.webp"}},{"@type":"ListItem","position":12,"item":{"@type":"Book","name":"Eternal Flame","url":"https://chronologeek.app/witcher#w-flame","image":"https://chronologeek.app/images/swordofdestiny.webp"}},{"@type":"ListItem","position":13,"item":{"@type":"Book","name":"A Little Sacrifice","url":"https://chronologeek.app/witcher#w-sacrifice","image":"https://chronologeek.app/images/swordofdestiny.webp"}},{"@type":"ListItem","position":14,"item":{"@type":"Book","name":"The Sword of Destiny","url":"https://chronologeek.app/witcher#w-sword","image":"https://chronologeek.app/images/swordofdestiny.webp"}},{"@type":"ListItem","position":15,"item":{"@type":"Book","name":"Something More","url":"https://chronologeek.app/witcher#w-more","image":"https://chronologeek.app/images/swordofdestiny.webp"}},{"@type":"ListItem","position":16,"item":{"@type":"Book","name":"Blood of Elves","url":"https://chronologeek.app/witcher#w-blood","image":"https://chronologeek.app/images/bloodofelves.webp"}},{"@type":"ListItem","position":17,"item":{"@type":"Book","name":"Time of Contempt","url":"https://chronologeek.app/witcher#w-contempt","image":"https://chronologeek.app/images/timeofcontempt.webp"}},{"@type":"ListItem","position":18,"item":{"@type":"Book","name":"Baptism of Fire","url":"https://chronologeek.app/witcher#w-baptism","image":"https://chronologeek.app/images/baptismoffire.webp"}},{"@type":"ListItem","position":19,"item":{"@type":"Book","name":"The Tower of the Swallow","url":"https://chronologeek.app/witcher#w-tower","image":"https://chronologeek.app/images/towerswallow.webp"}},{"@type":"ListItem","position":20,"item":{"@type":"Book","name":"The Lady of the Lake","url":"https://chronologeek.app/witcher#w-lady","image":"https://chronologeek.app/images/ladyofthelake.webp"}},{"@type":"ListItem","position":21,"item":{"@type":"Book","name":"Season of Storms","url":"https://chronologeek.app/witcher#w-storms","image":"https://chronologeek.app/images/seasonofstorms.webp"}},{"@type":"ListItem","position":22,"item":{"@type":"ComicStory","name":"The Witcher: A Grain of Truth","url":"https://chronologeek.app/witcher#wc-grain","image":"https://chronologeek.app/images/grainoftruthcomic.webp"}},{"@type":"ListItem","position":23,"item":{"@type":"ComicStory","name":"The Witcher: The Lesser Evil","url":"https://chronologeek.app/witcher#wc-lesser","image":"https://chronologeek.app/images/lesserevilcomic.webp"}},{"@type":"ListItem","position":24,"item":{"@type":"ComicStory","name":"The Witcher: House of Glass","url":"https://chronologeek.app/witcher#wc-glass","image":"https://chronologeek.app/images/houseofglass.webp"}},{"@type":"ListItem","position":25,"item":{"@type":"ComicStory","name":"Kiddo","url":"https://chronologeek.app/witcher#wc-kiddo","image":"https://chronologeek.app/images/kiddo.webp"}},{"@type":"ListItem","position":26,"item":{"@type":"ComicStory","name":"The Edge of the World","url":"https://chronologeek.app/witcher#wc-edge","image":"https://chronologeek.app/images/edgeoftheworldcomic.webp"}},{"@type":"ListItem","position":27,"item":{"@type":"ComicStory","name":"The Last Wish","url":"https://chronologeek.app/witcher#wc-lastwish","image":"https://chronologeek.app/images/lastwishcomic.webp"}},{"@type":"ListItem","position":28,"item":{"@type":"ComicStory","name":"The Witcher: Fox Children","url":"https://chronologeek.app/witcher#wc-fox","image":"https://chronologeek.app/images/foxchildren.webp"}},{"@type":"ListItem","position":29,"item":{"@type":"ComicStory","name":"A Question of Price","url":"https://chronologeek.app/witcher#wc-price","image":"https://chronologeek.app/images/aquestionofpricecomic.webp"}},{"@type":"ListItem","position":30,"item":{"@type":"ComicStory","name":"The Witcher","url":"https://chronologeek.app/witcher#wc-witcher","image":"https://chronologeek.app/images/thewitchercomic.webp"}},{"@type":"ListItem","position":31,"item":{"@type":"ComicStory","name":"The Witcher: Reasons of State","url":"https://chronologeek.app/witcher#wc-reasons","image":"https://chronologeek.app/images/reasonsofstate.webp"}},{"@type":"ListItem","position":32,"item":{"@type":"VideoGame","name":"Thronebreaker: The Witcher Tales","url":"https://chronologeek.app/witcher#wg-thronebreaker","image":"https://chronologeek.app/images/thronebreaker.webp"}},{"@type":"ListItem","position":33,"item":{"@type":"VideoGame","name":"The Witcher","url":"https://chronologeek.app/witcher#wg-w1","image":"https://chronologeek.app/images/witcher1.webp"}},{"@type":"ListItem","position":34,"item":{"@type":"VideoGame","name":"The Price of Neutrality","url":"https://chronologeek.app/witcher#wg-neutrality","image":"https://chronologeek.app/images/priceofneutrality.webp"}},{"@type":"ListItem","position":35,"item":{"@type":"VideoGame","name":"Side Effects","url":"https://chronologeek.app/witcher#wg-sideeffects","image":"https://chronologeek.app/images/sideeffects.webp"}},{"@type":"ListItem","position":36,"item":{"@type":"VideoGame","name":"The Witcher 2: Assassins of Kings","url":"https://chronologeek.app/witcher#wg-w2","image":"https://chronologeek.app/images/witcher2.webp"}},{"@type":"ListItem","position":37,"item":{"@type":"ComicStory","name":"The Witcher: Matters of Conscience","url":"https://chronologeek.app/witcher#wc-conscience","image":"https://chronologeek.app/images/mattersofconscience.webp"}},{"@type":"ListItem","position":38,"item":{"@type":"ComicStory","name":"The Witcher: Killing Monsters","url":"https://chronologeek.app/witcher#wc-killing","image":"https://chronologeek.app/images/killingmonsterscomic.webp"}},{"@type":"ListItem","position":39,"item":{"@type":"VideoObject","name":"Killing Monsters","url":"https://chronologeek.app/witcher#wv-killing","image":"https://chronologeek.app/images/killingmonsters.webp"}},{"@type":"ListItem","position":40,"item":{"@type":"VideoGame","name":"The Witcher 3: Wild Hunt","url":"https://chronologeek.app/witcher#wg-w3","image":"https://chronologeek.app/images/witcher3.webp"}},{"@type":"ListItem","position":41,"item":{"@type":"VideoGame","name":"Hearts of Stone","url":"https://chronologeek.app/witcher#wg-hos","image":"https://chronologeek.app/images/heartsofstone.webp"}},{"@type":"ListItem","position":42,"item":{"@type":"ComicStory","name":"The Witcher: Curse of Crows","url":"https://chronologeek.app/witcher#wc-crows","image":"https://chronologeek.app/images/curseofcrows.webp"}},{"@type":"ListItem","position":43,"item":{"@type":"ComicStory","name":"The Witcher: Of Flesh and Flame","url":"https://chronologeek.app/witcher#wc-flesh","image":"https://chronologeek.app/images/offleshandflame.webp"}},{"@type":"ListItem","position":44,"item":{"@type":"ComicStory","name":"The Witcher: Witch's Lament","url":"https://chronologeek.app/witcher#wc-lament","image":"https://chronologeek.app/images/witchslament.webp"}},{"@type":"ListItem","position":45,"item":{"@type":"ComicStory","name":"The Witcher: The Ballad of Two Wolves","url":"https://chronologeek.app/witcher#wc-wolves","image":"https://chronologeek.app/images/balladoftwowolves.webp"}},{"@type":"ListItem","position":46,"item":{"@type":"ComicStory","name":"The Witcher: Once Upon a Time in the Woods","url":"https://chronologeek.app/witcher#wc-woods","image":"https://chronologeek.app/images/onceuponatimeinthewoods.webp"}},{"@type":"ListItem","position":47,"item":{"@type":"ComicStory","name":"The Witcher: Frog Kiss","url":"https://chronologeek.app/witcher#wc-frog","image":"https://chronologeek.app/images/frogkiss.webp"}},{"@type":"ListItem","position":48,"item":{"@type":"ComicStory","name":"The Witcher: Wild Animals","url":"https://chronologeek.app/witcher#wc-wild","image":"https://chronologeek.app/images/wildanimals.webp"}},{"@type":"ListItem","position":49,"item":{"@type":"VideoGame","name":"Blood and Wine","url":"https://chronologeek.app/witcher#wg-baw","image":"https://chronologeek.app/images/bloodandwine.webp"}},{"@type":"ListItem","position":50,"item":{"@type":"VideoObject","name":"A Night to Remember","url":"https://chronologeek.app/witcher#wv-night","image":"https://chronologeek.app/images/nighttoremember.webp"}},{"@type":"ListItem","position":51,"item":{"@type":"ComicStory","name":"The Witcher: Corvo Bianco","url":"https://chronologeek.app/witcher#wc-corvo","image":"https://chronologeek.app/images/corvobianco.webp"}},{"@type":"ListItem","position":52,"item":{"@type":"ComicStory","name":"The Witcher: Fading Memories","url":"https://chronologeek.app/witcher#wc-fading","image":"https://chronologeek.app/images/fadingmemories.webp"}},{"@type":"ListItem","position":53,"item":{"@type":"ComicStory","name":"The Witcher: The Bear and the Butterfly","url":"https://chronologeek.app/witcher#wc-bear","image":"https://chronologeek.app/images/bearbutterfly.webp"}},{"@type":"ListItem","position":54,"item":{"@type":"ComicStory","name":"The Witcher: Blood Stone","url":"https://chronologeek.app/witcher#wc-bloodstone","image":"https://chronologeek.app/images/bloodstonewitcher.webp"}}]}</script>

@@ -557,7 +557,7 @@ const BOOT =
   'border-radius:50%;background:#08080f;border:2.5px solid rgba(255,253,247,.55);box-sizing:border-box}' +
   'html.boot-img #cgb i{animation:cgarret .36s ease forwards}' +
   '@keyframes cgarret{55%{transform:scale(1.5)}' +
-  'to{background:var(--c);border-color:#fffdf7;box-shadow:0 0 12px var(--c)}}' +
+  'to{background:var(--c);border-color:#fffdf7}}' +
   /* le train : trois fenêtres sur la caisse dorée, le nez à droite. Son
      porteur fait toute la largeur de la ligne, si bien que `100%` de sa
      translation l'amène pile au terminus. */
@@ -567,8 +567,7 @@ const BOOT =
   '#cgb u::before{content:"";position:absolute;left:-16px;top:3px;width:32px;height:16px;' +
   'box-sizing:border-box;border:2px solid #0d0b12;border-radius:6px 11px 11px 6px;' +
   'background:linear-gradient(90deg,transparent 5px,#0d0b12 5px 9px,transparent 9px 12px,' +
-  '#0d0b12 12px 16px,transparent 16px 19px,#0d0b12 19px 23px,transparent 23px) 0 3px/100% 5px no-repeat,#f0c97c;' +
-  'box-shadow:0 0 14px rgba(240,201,124,.75)}' +
+  '#0d0b12 12px 16px,transparent 16px 19px,#0d0b12 19px 23px,transparent 23px) 0 3px/100% 5px no-repeat,#f0c97c}' +
   /* la phrase, sous la ligne, en panneau de quai : « prochain départ »,
      puis la phrase tirée au sort. Elle change à chaque arrivée, et c'est
      le seul texte de l'écran. Elle paraît un demi-temps après le reste —
