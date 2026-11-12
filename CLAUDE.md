@@ -3966,6 +3966,18 @@ Un nouveau composant se pose donc sans `box-shadow:0 0`, sans `blur`, sans
 `border-radius` au-delà de 3 px : rien ne le contrôle à la publication, et
 une lueur ajoutée ne casse rien — elle se voit seulement.
 
+**L'accueil a suivi le même jour** (« piste A », choisie par Niko sur trois
+maquettes). Le premier écran **garde ses images qui défilent** — demandé
+par Niko ; la pastille blanche du titre devient un texte doré, et l'étiquette
+« Nexus » passe en coins de 3 px. Les cartes : image en couleurs franches,
+filet de 5 px à l'encre de la ligne dessous, **code et nom sortis de
+l'image** dans un `<span class="tl-hd">` posé juste après `.tl-img`, sur
+l'aplat `--plaque`. Grille à 4 colonnes, 3 sous 1080 px, 1 sous 720 px ; la
+case « en chantier » prend deux colonnes et ferme la dernière rangée.
+Écartées le même jour : **l'index des lignes en rangées serrées** et **trois
+têtes de ligne en grand au-dessus de l'index**, ainsi que le premier écran
+sans images. Ne pas les reproposer.
+
 ## Les images
 
 **Une vignette d'entrée porte le titre de son œuvre en `alt`**, depuis le
