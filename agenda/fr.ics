@@ -196,6 +196,23 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:08ffbeed4363def7d5af-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270504
+DTEND;VALUE=DATE:20270505
+SUMMARY:Star Wars · The Hero Awakens
+DESCRIPTION:Film\n\nOn May the 4th\, also known as Star Wars Day\, Lucasfil
+ m will release a brand new documentary\, The Hero Awakens\, from acclaimed
+  filmmaker R.J. Cutler\, available exclusively to watch on Disney+. Detail
+ ing the making of Star Wars\, this film features archival footage and audi
+ o captured during and around the making of the historic film in 1977. The 
+ Hero Awakens is produced by Lucasfilm\, Cutler and This Machine - a part o
+ f Sony Pictures Television\, and Kennedy Marshall.\n\nhttps://chronologeek
+ .app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:c9cae61596e2b5c5ef8b-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270504
