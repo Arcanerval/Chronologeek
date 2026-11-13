@@ -3978,6 +3978,21 @@ principale n'existe pas le long de la déviation — le trait unique dévie
 à 45° et revient, dans la couleur de la ligne : la déviation se suffit à
 elle-même.
 
+### Un véhicule par univers, posé le 13 novembre 2026
+
+Le train doré devient le véhicule de l'univers sur le plan du haut (`.lm-train`), la
+barre du bas (`.hud-train`) et « Vous en êtes là » (`.rows>.ici::before`), depuis le
+bloc « UN VÉHICULE PAR UNIVERS » en tête de `e-app.js` (table `VEHICULES`, par
+route). **Ce sont les silhouettes fournies par Niko**, un dessin de mémoire ne
+ressemblant pas : `images/vehicules/*.webp`, tournées nez vers la droite, la coque
+à l'or (#f0c97c), les détails **comblés à l'encre** (#131215) — Niko ne veut pas voir
+à travers —, 240 × 136 px au plus. Faucon (Star Wars et Dossier), Batmobile (DC),
+Appa, Enterprise, camping-car (TWD), griffon (Dragon Age), Jeep (Jurassic), Ablette
+(The Witcher), hélicoptère (Resident Evil), Spinner, porte-avions (Monsterverse).
+**Marvel, DC Animation et Assassin's Creed gardent le train**, faute d'image (l'aigle
+proposé portait un filigrane). Jamais d'image filigranée ou payante. La carte de
+partage et les wagons de l'accueil gardent le train.
+
 ## Les aplats, posés le 12 novembre 2026
 
 Niko trouvait le site trop « codé par une IA ». Testé sur une maquette de la

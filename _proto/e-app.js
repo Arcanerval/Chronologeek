@@ -97,6 +97,56 @@ window.CG_RES = function(cle, h){
   document.head.appendChild(st);
 })();
 
+/* ═══ UN VÉHICULE PAR UNIVERS ══════════════════════════════════════════
+   Proto du 13 novembre 2026 (n° 6 de la liste du 5 novembre) : le train doré
+   devient le véhicule de l'univers, aux trois endroits où il roule — le plan
+   du haut (`.lm-train`), la barre du bas (`.hud-train`) et « Vous en êtes
+   là » sur la ligne (`.rows>.ici::before`).
+
+   Le véhicule est une **image déjà colorée** (`images/vehicules/*.webp`) :
+   la silhouette que Niko fournit, tournée nez vers la droite (le sens de la
+   marche — la ligne verticale la tourne déjà de 90°), la coque à l'or du site
+   (#f0c97c) et ses détails comblés à l'encre (#131215) : Niko ne veut pas
+   voir à travers. Un dessin de mémoire ne ressemblait pas.
+   `r` est le rapport largeur / hauteur du fichier. Une page sans véhicule
+   dans `VEHICULES` garde son train. */
+(function(){
+  function v(nom, w, h){ return { img: '/images/vehicules/' + nom + '.webp', r: w / h }; }
+  var VEHICULES = {
+    starwars: v('faucon', 191, 140), dc: v('batmobile', 240, 83), avatar: v('appa', 240, 133),
+    startrek: v('enterprise', 192, 90), walkingdead: v('campingcar', 240, 109), dragonage: v('griffon', 202, 136),
+    jurassicworld: v('jeep', 240, 117), witcher: v('ablette', 164, 136), residentevil: v('helicoptere', 240, 97),
+    bladerunner: v('spinner', 240, 70), monsterverse: v('porteavions', 240, 55)
+  };
+  // les noms des protos et du Dossier
+  VEHICULES['star-wars'] = VEHICULES['dossier-star-wars'] = VEHICULES.starwars;
+  VEHICULES.twd = VEHICULES.walkingdead; VEHICULES.jurassic = VEHICULES.jurassicworld;
+  var route = (location.pathname.split('/').filter(Boolean).pop() || '')
+    .replace(/\.html$/, '').replace(/^en?-/, '');
+  var V = VEHICULES[route];
+  if (!V) return;
+  // le véhicule tient dans sa boîte : un porte-avions est plafonné en largeur
+  function taille(lmax, h){
+    var w = Math.round(h * V.r);
+    if (w > lmax) { w = lmax; h = Math.round(lmax / V.r); }
+    return 'width:' + w + 'px;height:' + h + 'px';
+  }
+  var image = 'url("' + V.img + '") center/contain no-repeat';
+  var st = document.createElement('style');
+  st.textContent =
+    '.lm-train{' + taille(64, 34) + '}.hud-train{' + taille(50, 26) + '}' +
+    '.veh{display:block;width:100%;height:100%;background:' + image + '}' +
+    '.rows>.ici::before{' + taille(60, 32) + ';border:0;border-radius:0;background:' + image + '}';
+  document.head.appendChild(st);
+  function remplace(){
+    [].forEach.call(document.querySelectorAll('.lm-train,.hud-train'), function(t){
+      if (!t.querySelector('.veh')) t.innerHTML = '<i class="veh" aria-hidden="true"></i>';
+    });
+  }
+  remplace();
+  new MutationObserver(remplace).observe(document.body, { childList: true, subtree: true });
+})();
+
 /* ═══ LA DATE DE CHAQUE COCHE ═══════════════════════════════════════════
    Posée le 5 novembre 2026. `prog[id]` ne dit que 1 ou rien : sans date, ni
    bilan de l'année, ni « cette semaine », et un historique qui ne se
