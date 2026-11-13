@@ -3969,8 +3969,8 @@ elle-même.
 Niko trouvait le site trop « codé par une IA ». Testé sur une maquette de la
 page Star Wars : le plan imprimé calé à gauche, les badges en tampons, en
 plaques émaillées ou en billets, et un haut de page « affiche » ont été
-**refusés** ; la hiérarchie de la liste par niveau plaisait mais n'est pas
-retenue. Sa décision : « on va juste tout passer en plat ». Ne pas
+**refusés** ; la hiérarchie de la liste par niveau, d'abord laissée de côté, est posée
+le 13 novembre 2026 (voir plus bas). Sa décision : « on va juste tout passer en plat ». Ne pas
 reproposer les pistes refusées.
 
 **Ce que « plat » veut dire, sur tout le site** : aucune lueur (ni
@@ -4021,6 +4021,15 @@ case « en chantier » prend deux colonnes et ferme la dernière rangée.
 Écartées le même jour : **l'index des lignes en rangées serrées** et **trois
 têtes de ligne en grand au-dessus de l'index**, ainsi que le premier écran
 sans images. Ne pas les reproposer.
+
+**La hiérarchie de la liste, posée le 13 novembre 2026**, demandée par Niko : la
+taille de la carte suit le niveau. Essentiel : vignette 236 px, titre 33 px,
+horaire sur plaque blanche ; important : 150 px ; optionnel : ligne serrée, fond
+effacé, vignette 96 px (Niko voulait qu'il garde son image). Tout est dans un bloc
+synchrone en tête de `e-app.js`, lu par `:has()` sur le `.lv` que les treize pages
+posent déjà dans `.bu-tags` — rien dans les gabarits. `cg-niv` n'est posé que si la
+timeline porte un `.lv` : Star Trek et le Dossier restent tels quels. Les cartes
+compactes des réglages l'emportent (leurs règles sont en `!important`).
 
 ## Les images
 
