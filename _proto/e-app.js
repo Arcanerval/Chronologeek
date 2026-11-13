@@ -111,12 +111,13 @@ window.CG_RES = function(cle, h){
    `r` est le rapport largeur / hauteur du fichier. Une page sans véhicule
    dans `VEHICULES` garde son train. */
 (function(){
-  function v(nom, w, h){ return { img: '/images/vehicules/' + nom + '.webp', r: w / h }; }
+  // `dy` : la part de la hauteur dont on remonte l'image pour que le gros du véhicule soit sur la ligne
+  function v(nom, w, h, dy){ return { img: '/images/vehicules/' + nom + '.webp', r: w / h, dy: dy || 0 }; }
   var VEHICULES = {
     starwars: v('faucon', 195, 146), dc: v('batmobile', 250, 93), avatar: v('appa', 250, 143),
     startrek: v('enterprise', 202, 100), walkingdead: v('campingcar', 250, 119), dragonage: v('griffon', 212, 146),
     jurassicworld: v('jeep', 250, 146), witcher: v('ablette', 174, 146), residentevil: v('helicoptere', 250, 107),
-    bladerunner: v('spinner', 204, 74), monsterverse: v('porteavions', 250, 138),
+    bladerunner: v('spinner', 204, 74), monsterverse: v('porteavions', 250, 138, .25),
     marvel: v('helicarrier', 250, 128), assassinscreed: v('aigle', 123, 146), dcanimation: v('batmobile', 250, 93)
   };
   // les noms des protos et du Dossier
@@ -141,8 +142,11 @@ window.CG_RES = function(cle, h){
   var st = document.createElement('style');
   st.textContent =
     '.lm-train{' + taille(1900, 86, 44) + '}.hud-train{' + taille(1000, 64, 30) + '}' +
-    '.veh{display:block;width:100%;height:100%;background:' + image + '}' +
-    '.rows>.ici::before{' + taille(1700, 80, 42) + ';border:0;border-radius:0;background:' + image + '}';
+    '.veh{display:block;width:100%;height:100%;background:' + image +
+    (V.dy ? ';transform:translateY(' + (-V.dy * 100) + '%)' : '') + '}' +
+    '.rows>.ici::before{' + taille(1700, 80, 42) + ';border:0;border-radius:0;background:' + image +
+    // la ligne verticale tourne l'image de 90° : le décalage se fait dans son repère à elle
+    (V.dy ? ';transform:rotate(90deg) translateY(' + (-V.dy * 100) + '%)' : '') + '}';
   document.head.appendChild(st);
   function remplace(){
     [].forEach.call(document.querySelectorAll('.lm-train,.hud-train'), function(t){
