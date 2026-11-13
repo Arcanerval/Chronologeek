@@ -33,6 +33,7 @@ import { SOURCES } from './jsonld.mjs';
 import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
 import { recherche } from './recherche.mjs';
+import { films } from './films.mjs';
 import { reglages, TETE_REGLAGES, boutonReglages, tiroirReglages } from './reglages.mjs';
 import { flux } from './flux.mjs';
 import { oeuvres, habillage } from './oeuvres.mjs';
@@ -1077,6 +1078,16 @@ for (const [sortie, langue] of Object.entries(INDEX)) {
   if (!CHECK) writeFileSync(join(RACINE, sortie), index);
   autres.push({ dest: '/' + sortie, octets: index.length, note: `${n} œuvres` });
 }
+
+// L'index des films de l'import Letterboxd (`films.mjs`) : titres et années
+// TMDB, gardés en cache dans `_proto/films-cache.json`.
+try {
+  const r = await films({ racine: RACINE });
+  if (!CHECK) writeFileSync(join(RACINE, 'films.json'), r.json);
+  autres.push({ dest: '/films.json', octets: r.json.length,
+    note: `${r.n} films` + (r.nouveaux ? `, ${r.nouveaux} demandés à TMDB` : '') +
+          (r.echecs ? `, ${r.echecs} sans réponse — hors de l'import` : '') });
+} catch (e) { problemes.push(`films.json : ${e.message}`); }
 
 /* Les pages d'œuvres : le dossier est vidé d'abord, sans quoi une œuvre renommée
    laisserait son ancienne page en ligne, sans lien et toujours indexable. */

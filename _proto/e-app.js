@@ -2546,6 +2546,331 @@ function cgBillet(){
   else demarre();
 })();
 
+/* ═══ IMPORTER DEPUIS LETTERBOXD ══════════════════════════════════════
+   Posé le 13 novembre 2026 (n° 3 de la liste du 5 novembre). Quelqu'un qui
+   arrive avec quarante films vus devait faire quarante clics. Letterboxd
+   donne à chacun l'export de son compte (Settings → Import & Export →
+   Export your data) : un .zip dont `watched.csv` liste chaque film vu,
+   « Date, Name, Year ». On le lit ici, dans le navigateur — rien ne part
+   nulle part —, et l'on coche ce qu'il reconnaît, après validation.
+
+   - **L'appariement est fait par `/films.json`** (`_proto/films.mjs`), écrit
+     à la publication : pour chaque film des timelines, son année et ses
+     titres TMDB, ceux que Letterboxd exporte. Un film est reconnu quand son
+     titre normalisé est l'un des siens et que l'année tombe à un an près.
+   - **On ne coche rien sans montrer la liste.** Elle est groupée par
+     univers, tout est coché d'office, ce qui l'était déjà est dit et grisé.
+   - **On écrit dans la clé de chaque univers** (`UNIVERS` du bloc d'export,
+     recopié ici), l'identifiant de découverte à 1, et le jour du visionnage
+     dans `cg-dates` quand il n'y en avait pas. Les seconds parcours suivent
+     au chargement de la page, par son pont (`bootBridge`).
+   - **Le zip se lit sans bibliothèque** : répertoire central, puis
+     `DecompressionStream('deflate-raw')`. Un navigateur qui ne l'a pas
+     demande le `watched.csv` décompressé, et le dit.
+   Seul l'accueil le porte (`#sync`, le bloc « Toutes vos timelines »).
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if (!document.querySelector('.slot[data-u]')) return;
+  var FR = document.documentElement.lang !== 'en';
+  var CLES = { sw: 'cg-proto-sw', mcu: 'cg-proto-mcu', dc: 'cg-proto-dc', avatar: 'cg-proto-avatar',
+    startrek: 'cg-proto-st', twd: 'cg-proto-twd', dragonage: 'cg-proto-dragonage',
+    assassinscreed: 'cg-proto-assassinscreed', dcanimation: 'cg-proto-dcanim', jurassic: 'cg-proto-jurassic',
+    witcher: 'cg-proto-witcher', residentevil: 'cg-proto-re', bladerunner: 'cg-proto-bladerunner',
+    monsterverse: 'cg-proto-monsterverse' };
+  var T = FR ? {
+    bouton: 'Importer Letterboxd',
+    titre: 'Importer depuis Letterboxd',
+    aide: 'Sur Letterboxd : Settings → Import & Export → Export your data. Déposez ici le fichier .zip reçu, ou le watched.csv qu’il contient. Il est lu dans votre navigateur : rien n’est envoyé.',
+    choisir: 'Choisir le fichier',
+    lecture: 'Lecture…',
+    pasCsv: 'Ce fichier n’est pas un export Letterboxd : il faut le .zip, ou watched.csv.',
+    pasZip: 'Votre navigateur ne sait pas ouvrir ce .zip : décompressez-le et déposez watched.csv.',
+    pasIndex: 'La liste des films du site n’a pas pu être chargée. Réessayez dans un instant.',
+    rien: function(n){ return n + ' films lus, aucun n’est dans les timelines.'; },
+    bilan: function(n, k){ return n + ' films lus · ' + k + (k > 1 ? ' sont dans les timelines' : ' est dans les timelines'); },
+    deja: 'déjà coché',
+    valider: function(k){ return 'Cocher ' + k + (k > 1 ? ' œuvres' : ' œuvre'); },
+    fait: function(k){ return k + (k > 1 ? ' œuvres cochées.' : ' œuvre cochée.') + ' La page se recharge.'; },
+    plein: 'Le navigateur a refusé d’enregistrer : mémoire pleine, ou navigation privée.',
+    fermer: 'Fermer'
+  } : {
+    bouton: 'Import Letterboxd',
+    titre: 'Import from Letterboxd',
+    aide: 'On Letterboxd: Settings → Import & Export → Export your data. Drop the .zip you receive here, or the watched.csv inside it. It is read in your browser: nothing is sent anywhere.',
+    choisir: 'Choose the file',
+    lecture: 'Reading…',
+    pasCsv: 'This is not a Letterboxd export: use the .zip, or watched.csv.',
+    pasZip: 'Your browser can’t open this .zip: unzip it and drop watched.csv.',
+    pasIndex: 'The site’s film list could not be loaded. Try again in a moment.',
+    rien: function(n){ return n + ' films read, none of them is in the timelines.'; },
+    bilan: function(n, k){ return n + ' films read · ' + k + (k > 1 ? ' are in the timelines' : ' is in the timelines'); },
+    deja: 'already checked',
+    valider: function(k){ return 'Check ' + k + (k > 1 ? ' works' : ' work'); },
+    fait: function(k){ return k + (k > 1 ? ' works checked.' : ' work checked.') + ' The page is reloading.'; },
+    plein: 'The browser refused to save: storage full, or private browsing.',
+    fermer: 'Close'
+  };
+
+  var CSS = [
+    'dialog.lb{margin:auto;width:min(620px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;',
+    'background:#101019;color:#fffdf7;border:2px solid var(--hot,#f0c97c);border-radius:3px;padding:20px;',
+    'font:15px/1.5 \'Chivo\',sans-serif}dialog.lb::backdrop{background:rgba(4,4,10,.78)}',
+    '.lb-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}',
+    '.lb-h h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;font-size:26px;line-height:1;text-transform:uppercase}',
+    '.lb-x{background:none;border:0;color:inherit;font-size:22px;line-height:1;cursor:pointer;width:32px;height:32px}',
+    '.lb p{font-size:13.5px;color:rgba(255,253,247,.72)}',
+    '.lb-b{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:.07em;',
+    'text-transform:uppercase;cursor:pointer;padding:9px 20px;margin-top:14px;background:var(--hot,#f0c97c);',
+    'border:2px solid var(--hot,#f0c97c);color:var(--ink,#131215)}',
+    '.lb-b:hover{background:#fffdf7;border-color:#fffdf7}.lb-b[hidden],.lb [hidden]{display:none}',
+    '.lb-s{margin-top:14px;font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;font-size:20px;color:var(--hot,#f0c97c)}',
+    '.lb-e{margin-top:12px;font-weight:700;color:#e5484d}',
+    '.lb-g{margin-top:14px}.lb-g h3{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;',
+    'border-left:4px solid var(--c,#f0c97c);padding-left:8px;margin-bottom:6px}',
+    '.lb-g label{display:flex;align-items:baseline;gap:8px;padding:3px 0;font-size:14px;cursor:pointer}',
+    '.lb-g label small{opacity:.55;font-size:12px}',
+    '.lb-g input{accent-color:var(--hot,#f0c97c)}',
+    '.lb-g label.d{opacity:.5;cursor:default}'
+  ].join('');
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+  function norme(s){
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/&/g, ' and ').replace(/[^a-z0-9]/g, '');
+  }
+  function lis(k){
+    try { var v = JSON.parse(localStorage.getItem(k) || '{}'); return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; }
+    catch (_) { return {}; }
+  }
+
+  /* ── le CSV : guillemets doublés, virgules et sauts de ligne dans un champ ── */
+  function csv(txt){
+    var lignes = [], l = [], c = '', g = false;
+    txt = txt.replace(/^﻿/, '');
+    for (var i = 0; i < txt.length; i++) {
+      var ch = txt[i];
+      if (g) {
+        if (ch === '"' && txt[i + 1] === '"') { c += '"'; i++; }
+        else if (ch === '"') g = false;
+        else c += ch;
+      } else if (ch === '"') g = true;
+      else if (ch === ',') { l.push(c); c = ''; }
+      else if (ch === '\n' || ch === '\r') {
+        if (ch === '\r' && txt[i + 1] === '\n') i++;
+        l.push(c); c = '';
+        if (l.length > 1 || l[0]) lignes.push(l);
+        l = [];
+      } else c += ch;
+    }
+    if (c || l.length) { l.push(c); lignes.push(l); }
+    return lignes;
+  }
+
+  /* ── le zip : le répertoire central, puis l'entrée cherchée ────────── */
+  function dezip(buf){
+    var v = new DataView(buf), u8 = new Uint8Array(buf), fin = -1;
+    for (var i = buf.byteLength - 22; i >= Math.max(0, buf.byteLength - 65557); i--) {
+      if (v.getUint32(i, true) === 0x06054b50) { fin = i; break; }
+    }
+    if (fin < 0) return Promise.reject(new Error('zip'));
+    var n = v.getUint16(fin + 10, true), p = v.getUint32(fin + 16, true), trouve = null, repli = null;
+    for (var k = 0; k < n; k++) {
+      if (v.getUint32(p, true) !== 0x02014b50) break;
+      var meth = v.getUint16(p + 10, true), taille = v.getUint32(p + 20, true);
+      var ln = v.getUint16(p + 28, true), le = v.getUint16(p + 30, true), lc = v.getUint16(p + 32, true);
+      var loc = v.getUint32(p + 42, true);
+      var nom = new TextDecoder().decode(u8.subarray(p + 46, p + 46 + ln));
+      var e = { meth: meth, taille: taille, loc: loc };
+      if (/(^|\/)watched\.csv$/i.test(nom)) trouve = e;
+      else if (/(^|\/)diary\.csv$/i.test(nom)) repli = e;
+      p += 46 + ln + le + lc;
+    }
+    var e2 = trouve || repli;
+    if (!e2) return Promise.reject(new Error('csv'));
+    var deb = e2.loc + 30 + v.getUint16(e2.loc + 26, true) + v.getUint16(e2.loc + 28, true);
+    var brut = u8.subarray(deb, deb + e2.taille);
+    if (e2.meth === 0) return Promise.resolve(new TextDecoder().decode(brut));
+    if (e2.meth !== 8 || typeof DecompressionStream === 'undefined') return Promise.reject(new Error('zip'));
+    var flux = new Blob([brut]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+    return new Response(flux).text();
+  }
+
+  function lireFichier(f){
+    return f.arrayBuffer().then(function(buf){
+      var u8 = new Uint8Array(buf);
+      if (u8[0] === 0x50 && u8[1] === 0x4b) return dezip(buf);
+      return new TextDecoder().decode(u8);
+    });
+  }
+
+  /* ── Name + Year → œuvres du site ─────────────────────────────────── */
+  var INDEX = null;
+  function index(){
+    INDEX = INDEX || fetch('/films.json').then(function(r){ if (!r.ok) throw 0; return r.json(); });
+    return INDEX;
+  }
+  function apparie(rows, idx){
+    var tete = rows[0].map(function(x){ return x.trim().toLowerCase(); });
+    var iN = tete.indexOf('name'), iY = tete.indexOf('year');
+    var iD = tete.indexOf('watched date'); if (iD < 0) iD = tete.indexOf('date');
+    if (iN < 0 || iY < 0) return null;
+    var parTitre = {};
+    idx.f.forEach(function(f){
+      f[2].forEach(function(t){ (parTitre[t] = parTitre[t] || []).push(f); });
+    });
+    var vus = {}, lus = 0;
+    rows.slice(1).forEach(function(r){
+      if (!r[iN]) return;
+      lus++;
+      var y = +r[iY], cands = parTitre[norme(r[iN])] || [];
+      var f = cands.filter(function(c){ return !y || !c[1] || Math.abs(c[1] - y) <= 1; })
+        .sort(function(a, b){ return Math.abs(a[1] - y) - Math.abs(b[1] - y); })[0];
+      if (!f) return;
+      var d = /^\d{4}-\d{2}-\d{2}$/.test(r[iD] || '') ? r[iD] : '';
+      var deja = vus[f[0]];
+      if (!deja || (d && (!deja.d || d < deja.d))) vus[f[0]] = { f: f, d: d };
+    });
+    return { lus: lus, films: Object.keys(vus).map(function(k){ return vus[k]; }) };
+  }
+
+  /* ── la fenêtre ────────────────────────────────────────────────────── */
+  var dlg = null, choix = [];
+  function bati(){
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+    dlg = document.createElement('dialog');
+    dlg.className = 'lb';
+    dlg.setAttribute('aria-labelledby', 'lb-t');
+    dlg.innerHTML = '<div class="lb-h"><h2 id="lb-t"></h2><button type="button" class="lb-x" aria-label="">✕</button></div>' +
+      '<p class="lb-a"></p><input type="file" accept=".zip,.csv,application/zip,text/csv" hidden>' +
+      '<button type="button" class="lb-b lb-f"></button>' +
+      '<div class="lb-s" hidden></div><div class="lb-e" hidden></div><div class="lb-l"></div>' +
+      '<button type="button" class="lb-b lb-v" hidden></button>';
+    dlg.querySelector('h2').textContent = T.titre;
+    dlg.querySelector('.lb-x').setAttribute('aria-label', T.fermer);
+    dlg.querySelector('.lb-a').textContent = T.aide;
+    dlg.querySelector('.lb-f').textContent = T.choisir;
+    document.body.appendChild(dlg);
+    var champ = dlg.querySelector('input'), err = dlg.querySelector('.lb-e'), s = dlg.querySelector('.lb-s');
+    var liste = dlg.querySelector('.lb-l'), v = dlg.querySelector('.lb-v');
+    dlg.querySelector('.lb-x').addEventListener('click', function(){ dlg.close(); });
+    dlg.querySelector('.lb-f').addEventListener('click', function(){ champ.click(); });
+    function erreur(t){ err.textContent = t; err.hidden = false; s.hidden = true; }
+    champ.addEventListener('change', function(){
+      var f = champ.files && champ.files[0];
+      champ.value = '';
+      if (!f) return;
+      err.hidden = true; liste.innerHTML = ''; v.hidden = true;
+      s.textContent = T.lecture; s.hidden = false;
+      Promise.all([lireFichier(f), index()]).then(function(r){
+        var res = apparie(csv(r[0]), r[1]);
+        if (!res) return erreur(T.pasCsv);
+        montre(res, r[1]);
+      }).catch(function(e){
+        erreur(e && e.message === 'zip' ? T.pasZip : e && e.message === 'csv' ? T.pasCsv : T.pasIndex);
+      });
+    });
+    v.addEventListener('click', function(){ ecris(); });
+    dlg.addEventListener('change', function(ev){
+      if (ev.target.closest && ev.target.closest('.lb-l')) compte();
+    });
+  }
+
+  function compte(){
+    var n = dlg.querySelectorAll('.lb-l input:checked:not([disabled])').length, v = dlg.querySelector('.lb-v');
+    v.textContent = T.valider(n);
+    v.hidden = !n;
+  }
+
+  function montre(res, idx){
+    var s = dlg.querySelector('.lb-s'), liste = dlg.querySelector('.lb-l');
+    if (!res.films.length) { s.textContent = T.rien(res.lus); return; }
+    s.textContent = T.bilan(res.lus, res.films.length);
+    // une ligne par œuvre du site, rangée par univers
+    var parU = {}, ordre = Object.keys(CLES), progs = {};
+    choix = [];
+    res.films.forEach(function(x){
+      x.f[3].forEach(function(p){
+        var u = p[0];
+        if (!CLES[u]) return;
+        progs[u] = progs[u] || lis(CLES[u]);
+        (parU[u] = parU[u] || []).push({ id: p[1], titre: FR ? x.f[4] : x.f[5], an: x.f[1], d: x.d, fait: !!progs[u][p[1]] });
+      });
+    });
+    var h = '';
+    ordre.forEach(function(u){
+      if (!parU[u]) return;
+      var c = (idx.u[u] || {}).c || '';
+      h += '<div class="lb-g"' + (c ? ' style="--c:' + esc(c.trim()) + '"' : '') + '><h3>' +
+        esc((idx.u[u] || {})[FR ? 'fr' : 'en'] || u) + '</h3>';
+      parU[u].forEach(function(o){
+        var i = choix.push({ u: u, id: o.id, d: o.d }) - 1;
+        h += '<label' + (o.fait ? ' class="d"' : '') + '><input type="checkbox" data-i="' + i + '" checked' +
+          (o.fait ? ' disabled' : '') + '> <span>' + esc(o.titre) + ' <small>' + esc(o.an || '') +
+          (o.fait ? ' · ' + T.deja : '') + '</small></span></label>';
+      });
+      h += '</div>';
+    });
+    liste.innerHTML = h;
+    compte();
+  }
+
+  function ecris(){
+    var parU = {}, dates = {}, n = 0;
+    [].forEach.call(dlg.querySelectorAll('.lb-l input:checked:not([disabled])'), function(c){
+      var o = choix[+c.dataset.i];
+      (parU[o.u] = parU[o.u] || []).push(o.id);
+      if (o.d) dates[o.id] = o.d;
+      n++;
+    });
+    var ok = true;
+    Object.keys(parU).forEach(function(u){
+      var p = lis(CLES[u]);
+      parU[u].forEach(function(id){ p[id] = 1; });
+      try { localStorage.setItem(CLES[u], JSON.stringify(p)); } catch (_) { ok = false; }
+    });
+    if (!ok) { var e = dlg.querySelector('.lb-e'); e.textContent = T.plein; e.hidden = false; return; }
+    // le jour du visionnage, seulement là où la coche n'en avait pas
+    var tous = window.CG_DATES ? window.CG_DATES() : {}, neufs = {};
+    Object.keys(dates).forEach(function(id){ if (!tous[id]) neufs[id] = dates[id]; });
+    if (window.CG_DATES && Object.keys(neufs).length) window.CG_DATES(neufs);
+    var s = dlg.querySelector('.lb-s');
+    s.textContent = T.fait(n);
+    dlg.querySelector('.lb-v').hidden = true;
+    setTimeout(function(){ location.reload(); }, 1200);
+  }
+
+  function ouvre(){
+    if (!dlg) bati();
+    index().catch(function(){ INDEX = null; });
+    dlg.showModal();
+  }
+
+  function pose(){
+    var act = document.querySelector('#sync .sy-act');
+    if (!act || act.querySelector('#sy-lb')) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sy-b alt';
+    b.id = 'sy-lb';
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="3"/><circle cx="12" cy="12" r="3"/>' +
+      '<circle cx="19" cy="12" r="3"/></svg><span></span>';
+    b.querySelector('span').textContent = T.bouton;
+    b.addEventListener('click', ouvre);
+    var f = act.querySelector('input[type=file]');
+    act.insertBefore(b, f || null);
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
 /* ═══ COCHER EN SÉRIE — Maj + clic ════════════════════════════════════
    Le Dossier porte 535 lignes et Star Trek 248 : quelqu'un qui arrive en
    ayant déjà vu quarante œuvres devait faire quarante clics, et rien dans

@@ -3462,6 +3462,25 @@ le Dossier, qui écrit « À jour · », et les cinq pages perdaient leur « Mis
 peut changer le lexique des autres** : relire le diff des `e-*` après un
 passage de chaîne inversée.
 
+### L'import Letterboxd, posé le 13 novembre 2026
+
+Bouton « Importer Letterboxd » du bloc « Toutes vos timelines » de l'accueil
+(`e-app.js`, bloc juste après celui-ci). On dépose l'export Letterboxd (.zip, ou
+`watched.csv`) ; il est lu dans le navigateur, sans bibliothèque (zip par
+`DecompressionStream`), la liste reconnue s'affiche par univers, et rien n'est
+coché sans validation. La coche va dans la clé de l'univers (`CLES`, recopie de
+`UNIVERS`), le jour du visionnage dans `cg-dates` s'il n'y en avait pas ; les
+seconds parcours suivent au chargement par `bootBridge`.
+
+**L'appariement vient de `/films.json`**, écrit par `_proto/films.mjs` à la
+publication : chaque entrée de découverte `media:"movie"` avec un identifiant
+TMDB, son année et ses titres TMDB (anglais, original, variantes US/GB) plus les
+deux de nos données, normalisés. Reconnu = même titre normalisé et année à un an
+près. Les réponses TMDB sont gardées dans **`_proto/films-cache.json`**
+(versionné) : un film neuf est demandé à la publication suivante, avec la clé
+publique des données, et reste hors de l'import si TMDB ne répond pas — le bilan
+le dit. `node _proto/films.mjs` remplit le cache seul.
+
 ### Trois canaux de plus, posés le 27 septembre 2026
 
 Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne
