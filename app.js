@@ -113,11 +113,11 @@ window.CG_RES = function(cle, h){
 (function(){
   function v(nom, w, h){ return { img: '/images/vehicules/' + nom + '.webp', r: w / h }; }
   var VEHICULES = {
-    starwars: v('faucon', 191, 140), dc: v('batmobile', 240, 83), avatar: v('appa', 240, 133),
-    startrek: v('enterprise', 192, 90), walkingdead: v('campingcar', 240, 109), dragonage: v('griffon', 202, 136),
-    jurassicworld: v('jeep', 240, 117), witcher: v('ablette', 164, 136), residentevil: v('helicoptere', 240, 97),
-    bladerunner: v('spinner', 240, 70), monsterverse: v('porteavions', 240, 55),
-    marvel: v('helicarrier', 240, 118), assassinscreed: v('aigle', 113, 136), dcanimation: v('batmobile', 240, 83)
+    starwars: v('faucon', 195, 146), dc: v('batmobile', 250, 93), avatar: v('appa', 250, 143),
+    startrek: v('enterprise', 202, 100), walkingdead: v('campingcar', 250, 119), dragonage: v('griffon', 212, 146),
+    jurassicworld: v('jeep', 250, 127), witcher: v('ablette', 174, 146), residentevil: v('helicoptere', 250, 107),
+    bladerunner: v('spinner', 250, 80), monsterverse: v('porteavions', 250, 65),
+    marvel: v('helicarrier', 250, 128), assassinscreed: v('aigle', 123, 146), dcanimation: v('batmobile', 250, 93)
   };
   // les noms des protos et du Dossier
   VEHICULES['star-wars'] = VEHICULES['dossier-star-wars'] = VEHICULES.starwars;
@@ -126,22 +126,25 @@ window.CG_RES = function(cle, h){
     .replace(/\.html$/, '').replace(/^en?-/, '');
   var V = VEHICULES[route];
   if (!V) return;
-  // le véhicule tient dans sa boîte : un porte-avions est plafonné en largeur
-  function taille(lmax, h){
-    var w = Math.round(h * V.r);
-    if (w > lmax) { w = lmax; h = Math.round(lmax / V.r); }
-    return 'width:' + w + 'px;height:' + h + 'px';
+  /* Tous à la même surface plutôt que dans la même boîte : dans une boîte, un
+     porte-avions tombait à 15 px de haut et l'aigle à 28 de large. Plafonds
+     en largeur et en hauteur pour les formes extrêmes. */
+  function taille(aire, lmax, hmax){
+    var h = Math.sqrt(aire / V.r), w = h * V.r;
+    if (w > lmax) { w = lmax; h = w / V.r; }
+    if (h > hmax) { h = hmax; w = h * V.r; }
+    return 'width:' + Math.round(w) + 'px;height:' + Math.round(h) + 'px';
   }
   var image = 'url("' + V.img + '") center/contain no-repeat';
   var st = document.createElement('style');
   st.textContent =
-    '.lm-train{' + taille(64, 34) + '}.hud-train{' + taille(50, 26) + '}' +
+    '.lm-train{' + taille(1900, 86, 44) + '}.hud-train{' + taille(1000, 64, 30) + '}' +
     '.veh{display:block;width:100%;height:100%;background:' + image + '}' +
-    '.rows>.ici::before{' + taille(60, 32) + ';border:0;border-radius:0;background:' + image + '}';
+    '.rows>.ici::before{' + taille(1700, 80, 42) + ';border:0;border-radius:0;background:' + image + '}';
   document.head.appendChild(st);
   function remplace(){
     [].forEach.call(document.querySelectorAll('.lm-train,.hud-train'), function(t){
-      if (!t.querySelector('.veh')) t.innerHTML = '<i class="veh" aria-hidden="true"></i>';
+      if (!t.querySelector('.veh')) t.innerHTML = '<span class="veh" aria-hidden="true"></span>';
     });
   }
   remplace();

@@ -3986,7 +3986,14 @@ bloc « UN VÉHICULE PAR UNIVERS » en tête de `e-app.js` (table `VEHICULES`, p
 route). **Ce sont les silhouettes fournies par Niko**, un dessin de mémoire ne
 ressemblant pas : `images/vehicules/*.webp`, tournées nez vers la droite, la coque
 à l'or (#f0c97c), les détails **comblés à l'encre** (#131215) — Niko ne veut pas voir
-à travers —, 240 × 136 px au plus. Faucon (Star Wars et Dossier), Batmobile (DC),
+à travers —, et **un contour à l'encre de 5 px cuit dans l'image** (≈ 1,5 px à l'écran :
+sans lui le véhicule disparaissait sur le terminus blanc ; un `drop-shadow` CSS est
+interdit par les aplats), 250 × 146 px au plus. **Tous à la même surface**
+(`taille(aire, lmax, hmax)`), pas dans la même boîte : un porte-avions y tombait à
+15 px de haut. **Le véhicule est un `<span class="veh">`, jamais un `<i>`** : la règle
+`.hud .bar i` des pages (la jauge, `scaleX(0)`) l'écrasait, et la barre du bas n'avait
+plus de véhicule, sans un mot. Le script de conversion n'est pas versionné ; il
+détecte le fond, comble les trous, met la coque en or, tourne nez à droite. Faucon (Star Wars et Dossier), Batmobile (DC),
 Appa, Enterprise, camping-car (TWD), griffon (Dragon Age), Jeep (Jurassic), Ablette
 (The Witcher), hélicoptère (Resident Evil), Spinner, porte-avions (Monsterverse),
 héliporteur du S.H.I.E.L.D. (Marvel), aigle (Assassin's Creed) ; DC Animation reprend
