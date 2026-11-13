@@ -3988,9 +3988,9 @@ ressemblant pas : `images/vehicules/*.webp`, tournées nez vers la droite, la co
 à l'or (#f0c97c), les détails **comblés à l'encre** (#131215) — Niko ne veut pas voir
 à travers —, 240 × 136 px au plus. Faucon (Star Wars et Dossier), Batmobile (DC),
 Appa, Enterprise, camping-car (TWD), griffon (Dragon Age), Jeep (Jurassic), Ablette
-(The Witcher), hélicoptère (Resident Evil), Spinner, porte-avions (Monsterverse).
-**Marvel, DC Animation et Assassin's Creed gardent le train**, faute d'image (l'aigle
-proposé portait un filigrane). Jamais d'image filigranée ou payante. La carte de
+(The Witcher), hélicoptère (Resident Evil), Spinner, porte-avions (Monsterverse),
+héliporteur du S.H.I.E.L.D. (Marvel), aigle (Assassin's Creed) ; DC Animation reprend
+la Batmobile, choix de Niko. Jamais d'image filigranée ou payante. La carte de
 partage et les wagons de l'accueil gardent le train.
 
 ## Les aplats, posés le 12 novembre 2026

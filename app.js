@@ -116,7 +116,8 @@ window.CG_RES = function(cle, h){
     starwars: v('faucon', 191, 140), dc: v('batmobile', 240, 83), avatar: v('appa', 240, 133),
     startrek: v('enterprise', 192, 90), walkingdead: v('campingcar', 240, 109), dragonage: v('griffon', 202, 136),
     jurassicworld: v('jeep', 240, 117), witcher: v('ablette', 164, 136), residentevil: v('helicoptere', 240, 97),
-    bladerunner: v('spinner', 240, 70), monsterverse: v('porteavions', 240, 55)
+    bladerunner: v('spinner', 240, 70), monsterverse: v('porteavions', 240, 55),
+    marvel: v('helicarrier', 240, 118), assassinscreed: v('aigle', 113, 136), dcanimation: v('batmobile', 240, 83)
   };
   // les noms des protos et du Dossier
   VEHICULES['star-wars'] = VEHICULES['dossier-star-wars'] = VEHICULES.starwars;
