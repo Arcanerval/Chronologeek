@@ -3481,6 +3481,19 @@ près. Les réponses TMDB sont gardées dans **`_proto/films-cache.json`**
 publique des données, et reste hors de l'import si TMDB ne répond pas — le bilan
 le dit. `node _proto/films.mjs` remplit le cache seul.
 
+### Le récap de l'année, posé le 13 novembre 2026
+
+Une bande « Votre année 2026 » sous le duo Dossiers / « Toutes vos timelines » de
+l'accueil (`e-app.js`, bloc « LE RÉCAP DE L'ANNÉE »), qui ne paraît que s'il y a
+une coche datée ; « Voir mon récap » ouvre le détail (par univers, mois par mois,
+par nature, première et dernière, mois le plus chargé, sélecteur d'année) et
+l'image 1080 × 1350 en aplats. Il lit `cg-dates`, croisé avec l'union de toutes
+les clés `cg-proto-*` (une date dont la coche est partie ne compte pas), et
+**`/recap.json`** (`_proto/recap.mjs`, à la publication) : univers, nature et
+minutes de chaque identifiant, seconds parcours compris — un morceau sans `rt`
+prend la part de chaque bloc couvert, un bloc partagé comptant à moitié. Les
+titres viennent de `/search-<langue>.json`. Les ajouts `p-` n'y sont pas.
+
 ### Trois canaux de plus, posés le 27 septembre 2026
 
 Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne

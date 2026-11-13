@@ -2871,6 +2871,326 @@ function cgBillet(){
   else pose();
 })();
 
+/* ═══ LE RÉCAP DE L'ANNÉE ═════════════════════════════════════════════
+   Posé le 13 novembre 2026 (n° 13 de la liste du 5 novembre). Il lit
+   `cg-dates`, le jour de chaque coche depuis le 5 novembre 2026 (et le jour
+   de visionnage Letterboxd pour un film importé), et `/recap.json`
+   (`_proto/recap.mjs`) pour l'univers, la nature et la durée de chaque
+   identifiant, seconds parcours compris.
+
+   - **Une date ne compte que si la coche est encore là** : « Réinitialiser »
+     vide la progression d'une page sans passer par `cg-dates`. On fait
+     l'union de toutes les clés `cg-proto-*` du stockage, `-alt` comprises.
+   - **Les ajouts du visiteur (`p-`) n'y sont pas** : ils n'ont ni univers
+     ni durée connus du fichier.
+   - **Sur l'accueil seulement** : une bande sous « Toutes vos timelines »,
+     qui ne paraît que s'il y a une coche datée, et la fenêtre détaillée.
+     L'image à partager est un canvas 1080 × 1350, le format portrait des
+     réseaux, en aplats comme le reste du site.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if (!document.querySelector('.slot[data-u]')) return;
+  var FR = document.documentElement.lang !== 'en';
+  var MOIS = FR ? ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+                : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var NAT = FR ? { f: ['film', 'films'], s: ['série', 'séries'], j: ['jeu', 'jeux'], l: ['lecture', 'lectures'], a: ['écoute', 'écoutes'], v: ['vidéo', 'vidéos'] }
+               : { f: ['film', 'films'], s: ['series', 'series'], j: ['game', 'games'], l: ['read', 'reads'], a: ['listen', 'listens'], v: ['video', 'videos'] };
+  var T = FR ? {
+    titre: function(a){ return 'Votre année ' + a; },
+    oeuvres: function(n){ return n > 1 ? 'œuvres terminées' : 'œuvre terminée'; },
+    heures: 'heures', univers: function(n){ return n > 1 ? 'univers' : 'univers'; },
+    voir: 'Voir mon récap', partager: 'Partager l’image', telecharger: 'Télécharger l’image', fermer: 'Fermer',
+    parU: 'Par univers', parM: 'Mois par mois', parN: 'Par nature',
+    premiere: 'Première', derniere: 'Dernière', record: function(m, n){ return 'Le mois le plus chargé : ' + m + ', ' + n + ' œuvre' + (n > 1 ? 's' : '') + '.'; },
+    note: 'Compté depuis le 5 novembre 2026, le jour où les coches ont commencé à garder leur date. Les films importés de Letterboxd gardent leur date de visionnage.',
+    image: 'MON ANNÉE', site: 'chronologeek.app', texte: function(a){ return 'Mon année ' + a + ' sur Chronologeek'; }
+  } : {
+    titre: function(a){ return 'Your ' + a + ' in review'; },
+    oeuvres: function(n){ return n > 1 ? 'works completed' : 'work completed'; },
+    heures: 'hours', univers: function(n){ return n > 1 ? 'universes' : 'universe'; },
+    voir: 'See my recap', partager: 'Share the image', telecharger: 'Download the image', fermer: 'Close',
+    parU: 'By universe', parM: 'Month by month', parN: 'By kind',
+    premiere: 'First', derniere: 'Latest', record: function(m, n){ return 'Busiest month: ' + m + ', ' + n + ' work' + (n > 1 ? 's' : '') + '.'; },
+    note: 'Counted since November 5, 2026, when checkmarks started keeping their date. Films imported from Letterboxd keep their watch date.',
+    image: 'MY YEAR', site: 'chronologeek.app', texte: function(a){ return 'My ' + a + ' on Chronologeek'; }
+  };
+
+  var CSS = [
+    '.rc{border-bottom:2px solid var(--paper)}',
+    '.rc .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 26px;padding-top:22px;padding-bottom:22px;text-align:center}',
+    '.rc h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;font-size:clamp(21px,2.6vw,28px);',
+    '  letter-spacing:.02em;text-transform:uppercase;line-height:.95}',
+    '.rc-n{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}',
+    '.rc-n span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,247,.66)}',
+    '.rc-n b{display:block;font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;font-size:30px;line-height:1;color:var(--hot);letter-spacing:.02em}',
+    '.rc-b,.rcd-b{font-family:\'Big Shoulders Display\',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:.07em;',
+    '  text-transform:uppercase;cursor:pointer;padding:9px 20px;background:var(--hot);border:2px solid var(--hot);color:var(--ink)}',
+    '.rc-b:hover,.rcd-b:hover{background:var(--paper);border-color:var(--paper)}',
+    '.rcd-b.alt{background:none;color:var(--hot)}.rcd-b.alt:hover{background:var(--hot);color:var(--ink)}',
+    'dialog.rcd{margin:auto;width:min(680px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;',
+    '  background:#131215;color:#fffdf7;border:2px solid var(--hot,#f0c97c);border-radius:3px;padding:0;font:15px/1.5 \'Chivo\',sans-serif}',
+    'dialog.rcd::backdrop{background:rgba(4,4,10,.78)}',
+    '.rcd-f{height:8px;display:flex}.rcd-f i{flex:1}',
+    '.rcd-in{padding:18px 20px 22px}',
+    '.rcd-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}',
+    '.rcd-h h2{font-family:\'Big Shoulders Display\',sans-serif;font-weight:900;font-size:34px;line-height:.95;text-transform:uppercase}',
+    '.rcd-x{background:none;border:0;color:inherit;font-size:22px;line-height:1;cursor:pointer;width:32px;height:32px;flex:none}',
+    '.rcd-ans{display:flex;gap:6px;margin-top:10px}.rcd-ans button{font:inherit;font-size:13px;font-weight:700;cursor:pointer;',
+    '  padding:3px 10px;border-radius:3px;border:1px solid rgba(255,253,247,.34);background:none;color:inherit}',
+    '.rcd-ans button[aria-pressed=true]{background:var(--hot,#f0c97c);border-color:var(--hot,#f0c97c);color:#131215}',
+    '.rcd .rc-n{justify-content:flex-start;margin-top:16px;gap:26px}',
+    '.rcd h3{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.6);margin:20px 0 8px}',
+    '.rcd-u{display:grid;grid-template-columns:minmax(0,9em) 1fr auto;gap:5px 10px;align-items:center;font-size:13.5px}',
+    '.rcd-u i{display:block;height:12px;background:var(--c);min-width:3px}',
+    '.rcd-u small{color:rgba(255,253,247,.6);font-size:12px;white-space:nowrap}',
+    '.rcd-m{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;align-items:end;height:90px}',
+    '.rcd-m div{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:3px;font-size:10.5px;color:rgba(255,253,247,.6)}',
+    '.rcd-m i{display:block;width:100%;background:var(--hot,#f0c97c);min-height:2px}',
+    '.rcd-m b{font-size:11px;color:#fffdf7}',
+    '.rcd-k{display:flex;flex-wrap:wrap;gap:6px}.rcd-k span{border:1px solid rgba(255,253,247,.34);border-radius:3px;padding:2px 9px;font-size:13px}',
+    '.rcd-k b{color:var(--hot,#f0c97c)}',
+    '.rcd-p{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rcd-p div{border-left:4px solid var(--c,#f0c97c);padding-left:9px;font-size:13.5px}',
+    '.rcd-p small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,247,.6)}',
+    '.rcd-r{margin-top:14px;font-size:13.5px}.rcd-note{margin-top:14px;font-size:12px;color:rgba(255,253,247,.55)}',
+    '.rcd-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.rcd [hidden]{display:none}',
+    '@media(max-width:520px){.rcd-p{grid-template-columns:1fr}.rcd-h h2{font-size:28px}}'
+  ].join('');
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+  function dec(s){ var t = document.createElement('textarea'); t.innerHTML = String(s || ''); return t.value; }
+  function nb(n){ return FR ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
+  /* ── ce qui est coché, toutes clés confondues ─────────────────────── */
+  function coches(){
+    var on = {};
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (!/^cg-proto-/.test(k) || /-mode$/.test(k)) continue;
+        var v = JSON.parse(localStorage.getItem(k) || '{}');
+        if (v && typeof v === 'object' && !Array.isArray(v)) Object.keys(v).forEach(function(id){ if (v[id]) on[id] = 1; });
+      }
+    } catch (_) {}
+    return on;
+  }
+  function datees(){
+    var d = window.CG_DATES ? window.CG_DATES() : {}, on = coches(), out = [];
+    Object.keys(d).forEach(function(id){ if (on[id] && !/^p-/.test(id)) out.push({ id: id, d: d[id] }); });
+    return out;
+  }
+
+  var DATA = null, TITRES = null;
+  function donnees(){
+    DATA = DATA || Promise.all([
+      fetch('/recap.json').then(function(r){ if (!r.ok) throw 0; return r.json(); }),
+      fetch('/search-' + (FR ? 'fr' : 'en') + '.json').then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+    ]).then(function(v){
+      TITRES = {};
+      ((v[1] && v[1].e) || []).forEach(function(x){ TITRES[x[2]] = dec(x[1]); });
+      return v[0];
+    });
+    return DATA;
+  }
+
+  function bilan(rc, liste, an){
+    var res = { an: an, n: 0, min: 0, u: {}, m: [0,0,0,0,0,0,0,0,0,0,0,0], k: {}, items: [] };
+    liste.forEach(function(x){
+      if (x.d.slice(0, 4) !== String(an)) return;
+      var e = rc.e[x.id];
+      if (!e) return;
+      res.n++; res.min += e[2] || 0;
+      var u = rc.u[e[0]];
+      var bu = res.u[u[0]] = res.u[u[0]] || { nom: FR ? u[1] : u[2], c: u[3], n: 0, min: 0 };
+      bu.n++; bu.min += e[2] || 0;
+      res.m[+x.d.slice(5, 7) - 1]++;
+      res.k[e[1]] = (res.k[e[1]] || 0) + 1;
+      res.items.push({ d: x.d, titre: TITRES[x.id] || TITRES[e[3]] || x.id, c: u[3] });
+    });
+    res.items.sort(function(a, b){ return a.d < b.d ? -1 : a.d > b.d ? 1 : 0; });
+    res.liste = Object.keys(res.u).map(function(k){ return res.u[k]; })
+      .sort(function(a, b){ return b.n - a.n || b.min - a.min; });
+    return res;
+  }
+  function annees(liste){
+    var a = {};
+    liste.forEach(function(x){ a[x.d.slice(0, 4)] = 1; });
+    return Object.keys(a).sort();
+  }
+  function hdur(min){ return Math.round(min / 60); }
+
+  function chiffres(r){
+    var h = hdur(r.min);
+    return '<div class="rc-n"><span><b>' + nb(r.n) + '</b>' + T.oeuvres(r.n) + '</span>' +
+      (h ? '<span><b>' + nb(h) + '</b>' + T.heures + '</span>' : '') +
+      '<span><b>' + r.liste.length + '</b>' + T.univers(r.liste.length) + '</span></div>';
+  }
+
+  /* ── la fenêtre ────────────────────────────────────────────────────── */
+  var dlg = null, courant = null, RC = null, LISTE = null;
+  function fenetre(){
+    if (dlg) return dlg;
+    dlg = document.createElement('dialog');
+    dlg.className = 'rcd';
+    dlg.setAttribute('aria-labelledby', 'rcd-t');
+    document.body.appendChild(dlg);
+    dlg.addEventListener('click', function(ev){
+      if (ev.target === dlg) return dlg.close();
+      var b = ev.target.closest && ev.target.closest('button');
+      if (!b) return;
+      if (b.classList.contains('rcd-x')) dlg.close();
+      else if (b.dataset.an) remplit(+b.dataset.an);
+      else if (b.dataset.a) image(b.dataset.a);
+    });
+    return dlg;
+  }
+
+  function remplit(an){
+    var r = courant = bilan(RC, LISTE, an), ans = annees(LISTE);
+    var max = Math.max.apply(null, r.m) || 1, umax = r.liste.length ? r.liste[0].n : 1;
+    var rec = r.m.indexOf(Math.max.apply(null, r.m));
+    var peut = !!(navigator.canShare && window.File && navigator.canShare({ files: [new File([''], 'x.png', { type: 'image/png' })] })) &&
+               matchMedia('(pointer:coarse)').matches;
+    var prem = r.items[0], der = r.items[r.items.length - 1];
+    dlg.innerHTML =
+      '<div class="rcd-f">' + RC.u.map(function(u){ return '<i style="background:' + esc(u[3]) + '"></i>'; }).join('') + '</div>' +
+      '<div class="rcd-in"><div class="rcd-h"><h2 id="rcd-t">' + esc(T.titre(an)) + '</h2>' +
+      '<button type="button" class="rcd-x" aria-label="' + esc(T.fermer) + '">✕</button></div>' +
+      (ans.length > 1 ? '<div class="rcd-ans">' + ans.map(function(a){
+        return '<button type="button" data-an="' + a + '" aria-pressed="' + (+a === an) + '">' + a + '</button>'; }).join('') + '</div>' : '') +
+      chiffres(r) +
+      '<h3>' + T.parU + '</h3><div class="rcd-u">' + r.liste.map(function(u){
+        var h = hdur(u.min);
+        return '<span>' + esc(u.nom) + '</span><i style="--c:' + esc(u.c) + ';width:' + Math.max(2, Math.round(u.n / umax * 100)) + '%"></i>' +
+          '<small>' + u.n + (h ? ' · ' + h + ' h' : '') + '</small>';
+      }).join('') + '</div>' +
+      '<h3>' + T.parM + '</h3><div class="rcd-m">' + r.m.map(function(n, i){
+        return '<div title="' + esc(MOIS[i]) + ' : ' + n + '">' + (n ? '<b>' + n + '</b>' : '') +
+          '<i style="height:' + Math.round(n / max * 64) + 'px"></i>' + MOIS[i].charAt(0).toUpperCase() + '</div>';
+      }).join('') + '</div>' +
+      '<h3>' + T.parN + '</h3><div class="rcd-k">' + ['f', 's', 'j', 'l', 'a', 'v'].filter(function(k){ return r.k[k]; }).map(function(k){
+        return '<span><b>' + r.k[k] + '</b> ' + NAT[k][r.k[k] > 1 ? 1 : 0] + '</span>'; }).join('') + '</div>' +
+      (prem ? '<h3>' + T.premiere + ' · ' + T.derniere + '</h3><div class="rcd-p">' +
+        '<div style="--c:' + esc(prem.c) + '"><small>' + esc(jour(prem.d)) + '</small>' + esc(prem.titre) + '</div>' +
+        '<div style="--c:' + esc(der.c) + '"><small>' + esc(jour(der.d)) + '</small>' + esc(der.titre) + '</div></div>' : '') +
+      (r.n > 1 ? '<p class="rcd-r">' + esc(T.record(MOIS[rec], r.m[rec])) + '</p>' : '') +
+      '<div class="rcd-act">' + (peut ? '<button type="button" class="rcd-b" data-a="share">' + T.partager + '</button>' : '') +
+      '<button type="button" class="rcd-b' + (peut ? ' alt' : '') + '" data-a="dl">' + T.telecharger + '</button></div>' +
+      '<p class="rcd-note">' + esc(T.note) + '</p></div>';
+  }
+  function jour(d){
+    var j = +d.slice(8, 10), m = MOIS[+d.slice(5, 7) - 1];
+    return FR ? (j === 1 ? '1er' : j) + ' ' + m : m + ' ' + j;
+  }
+
+  /* ── l'image : 1080 × 1350, en aplats ─────────────────────────────── */
+  function dessine(r){
+    var D = '"Big Shoulders Display", sans-serif', C = 'Chivo, sans-serif';
+    var att = document.fonts ? Promise.all([document.fonts.load('900 100px "Big Shoulders Display"'),
+      document.fonts.load('800 30px "Big Shoulders Display"'), document.fonts.load('400 26px Chivo')]).catch(function(){}) : Promise.resolve();
+    return att.then(function(){
+      var W = 1080, H = 1350, cv = document.createElement('canvas'), x = cv.getContext('2d');
+      cv.width = W; cv.height = H;
+      var OR = '#f0c97c', PA = '#fffdf7', GR = 'rgba(255,253,247,.6)';
+      x.fillStyle = '#131215'; x.fillRect(0, 0, W, H);
+      var bw = W / RC.u.length;
+      RC.u.forEach(function(u, i){ x.fillStyle = u[3]; x.fillRect(Math.floor(i * bw), 0, Math.ceil(bw), 16); });
+      x.textBaseline = 'alphabetic';
+      x.fillStyle = OR; x.font = '800 30px ' + D; x.letterSpacing = '8px';
+      x.fillText('CHRONOLOGEEK', 72, 110);
+      x.fillStyle = PA; x.font = '900 120px ' + D; x.letterSpacing = '2px';
+      x.fillText(T.image, 68, 230);
+      x.fillStyle = OR; x.font = '900 250px ' + D;
+      x.fillText(String(r.an), 62, 450);
+      // les trois chiffres
+      var h = hdur(r.min), cases = [[nb(r.n), T.oeuvres(r.n)]];
+      if (h) cases.push([nb(h), T.heures]);
+      cases.push([String(r.liste.length), T.univers(r.liste.length)]);
+      cases.forEach(function(c, i){
+        var cx = 72 + i * 330;
+        x.fillStyle = PA; x.font = '900 104px ' + D; x.letterSpacing = '1px'; x.fillText(c[0], cx, 600);
+        x.fillStyle = GR; x.font = '700 24px ' + C; x.letterSpacing = '2px'; x.fillText(c[1].toUpperCase(), cx, 640);
+      });
+      // les univers, six au plus
+      var top = r.liste.slice(0, 6), umax = top.length ? top[0].n : 1, y0 = 720;
+      top.forEach(function(u, i){
+        var y = y0 + i * 62;
+        x.fillStyle = PA; x.font = '800 30px ' + D; x.letterSpacing = '2px';
+        x.fillText(u.nom.toUpperCase().slice(0, 26), 72, y + 24);
+        x.fillStyle = u.c; x.fillRect(470, y + 2, Math.max(8, Math.round((W - 470 - 150) * u.n / umax)), 26);
+        x.fillStyle = OR; x.textAlign = 'right'; x.font = '900 34px ' + D; x.fillText(String(u.n), W - 72, y + 27);
+        x.textAlign = 'left';
+      });
+      // les mois
+      var mb = 1090, mh = 130, mmax = Math.max.apply(null, r.m) || 1, cw = (W - 144) / 12;
+      r.m.forEach(function(n, i){
+        var hh = Math.round(n / mmax * mh);
+        x.fillStyle = n ? OR : 'rgba(255,253,247,.16)';
+        x.fillRect(72 + i * cw + 6, mb + mh - Math.max(hh, 4), cw - 12, Math.max(hh, 4));
+        x.fillStyle = GR; x.font = '700 22px ' + C; x.letterSpacing = '0px'; x.textAlign = 'center';
+        x.fillText(MOIS[i].charAt(0).toUpperCase(), 72 + i * cw + cw / 2, mb + mh + 34);
+        x.textAlign = 'left';
+      });
+      x.fillStyle = PA; x.font = '800 28px ' + D; x.letterSpacing = '6px'; x.textAlign = 'right';
+      x.fillText(T.site.toUpperCase(), W - 72, H - 50);
+      x.textAlign = 'left';
+      return new Promise(function(res){ cv.toBlob(function(b){ res(b); }, 'image/png'); });
+    });
+  }
+  function image(a){
+    if (!courant) return;
+    dessine(courant).then(function(blob){
+      if (!blob) return;
+      var f = new File([blob], 'chronologeek-' + courant.an + '.png', { type: 'image/png' });
+      if (a === 'share' && navigator.share) {
+        navigator.share({ files: [f], title: 'Chronologeek', text: T.texte(courant.an) + ' — ' + location.origin }).catch(function(){});
+        return;
+      }
+      var l = document.createElement('a');
+      l.href = URL.createObjectURL(blob);
+      l.download = f.name;
+      document.body.appendChild(l); l.click(); l.remove();
+      setTimeout(function(){ URL.revokeObjectURL(l.href); }, 4000);
+    });
+  }
+
+  /* ── la bande de l'accueil ─────────────────────────────────────────── */
+  function pose(){
+    LISTE = datees();
+    if (!LISTE.length) return;
+    donnees().then(function(rc){
+      RC = rc;
+      var ans = annees(LISTE), cette = String(new Date().getFullYear());
+      var an = +(ans.indexOf(cette) > -1 ? cette : ans[ans.length - 1]);
+      var r = bilan(rc, LISTE, an);
+      if (!r.n) return;
+      var st = document.createElement('style');
+      st.textContent = CSS;
+      document.head.appendChild(st);
+      var sec = document.createElement('section');
+      sec.className = 'rc';
+      sec.id = 'recap';
+      sec.innerHTML = '<div class="wrap"><h2>' + esc(T.titre(an)) + '</h2>' + chiffres(r) +
+        '<button type="button" class="rc-b">' + esc(T.voir) + '</button></div>';
+      sec.querySelector('.rc-b').addEventListener('click', function(){
+        fenetre(); remplit(an); dlg.showModal();
+      });
+      // sous le duo « Les Dossiers » / « Toutes vos timelines », sur toute la largeur
+      var sync = document.getElementById('sync');
+      var ap = sync && (sync.closest('.duo') || sync);
+      if (ap) ap.parentNode.insertBefore(sec, ap.nextSibling);
+      else (document.getElementById('main') || document.body).appendChild(sec);
+    }).catch(function(){});
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
 /* ═══ COCHER EN SÉRIE — Maj + clic ════════════════════════════════════
    Le Dossier porte 535 lignes et Star Trek 248 : quelqu'un qui arrive en
    ayant déjà vu quarante œuvres devait faire quarante clics, et rien dans

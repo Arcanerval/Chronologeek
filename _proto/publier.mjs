@@ -34,6 +34,7 @@ import { sitemap } from './sitemap.mjs';
 import { erreur404 } from './erreur404.mjs';
 import { recherche } from './recherche.mjs';
 import { films } from './films.mjs';
+import { recap } from './recap.mjs';
 import { reglages, TETE_REGLAGES, boutonReglages, tiroirReglages } from './reglages.mjs';
 import { flux } from './flux.mjs';
 import { oeuvres, habillage } from './oeuvres.mjs';
@@ -1088,6 +1089,14 @@ try {
     note: `${r.n} films` + (r.nouveaux ? `, ${r.nouveaux} demandés à TMDB` : '') +
           (r.echecs ? `, ${r.echecs} sans réponse — hors de l'import` : '') });
 } catch (e) { problemes.push(`films.json : ${e.message}`); }
+
+// Le récap de l'année (`recap.mjs`) : univers, nature et durée de chaque
+// identifiant, seconds parcours compris.
+try {
+  const r = recap({ racine: RACINE });
+  if (!CHECK) writeFileSync(join(RACINE, 'recap.json'), r.json);
+  autres.push({ dest: '/recap.json', octets: r.json.length, note: `${r.n} identifiants` });
+} catch (e) { problemes.push(`recap.json : ${e.message}`); }
 
 /* Les pages d'œuvres : le dossier est vidé d'abord, sans quoi une œuvre renommée
    laisserait son ancienne page en ligne, sans lien et toujours indexable. */
