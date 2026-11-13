@@ -3995,7 +3995,7 @@ interdit par les aplats), 250 × 146 px au plus. **Tous à la même surface**
 plus de véhicule, sans un mot. Le script de conversion n'est pas versionné ; il
 détecte le fond, comble les trous, met la coque en or, tourne nez à droite. Faucon (Star Wars et Dossier), Batmobile (DC),
 Appa, Enterprise, camping-car (TWD), griffon (Dragon Age), Jeep (Jurassic), Ablette
-(The Witcher), hélicoptère (Resident Evil), Spinner, l'Argo de Monarch (Monsterverse, vue de trois quarts : tournée nez à droite elle devenait une flèche illisible),
+(The Witcher), hélicoptère (Resident Evil), Spinner, l'Argo de Monarch (Monsterverse : nez à droite, donc haute et étroite, d'où une hauteur plafonnée 1,4 fois plus haut pour les formes étroites — Niko a refusé la vue de trois quarts),
 héliporteur du S.H.I.E.L.D. (Marvel), aigle (Assassin's Creed) ; DC Animation reprend
 la Batmobile, choix de Niko. Jamais d'image filigranée ou payante. La carte de
 partage et les wagons de l'accueil gardent le train.

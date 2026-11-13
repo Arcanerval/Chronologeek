@@ -116,7 +116,7 @@ window.CG_RES = function(cle, h){
     starwars: v('faucon', 195, 146), dc: v('batmobile', 250, 93), avatar: v('appa', 250, 143),
     startrek: v('enterprise', 202, 100), walkingdead: v('campingcar', 250, 119), dragonage: v('griffon', 212, 146),
     jurassicworld: v('jeep', 250, 146), witcher: v('ablette', 174, 146), residentevil: v('helicoptere', 250, 107),
-    bladerunner: v('spinner', 204, 74), monsterverse: v('argo', 244, 146),
+    bladerunner: v('spinner', 204, 74), monsterverse: v('argo', 63, 146),
     marvel: v('helicarrier', 250, 128), assassinscreed: v('aigle', 123, 146), dcanimation: v('batmobile', 250, 93)
   };
   // les noms des protos et du Dossier
@@ -132,6 +132,8 @@ window.CG_RES = function(cle, h){
   function taille(aire, lmax, hmax){
     var h = Math.sqrt(aire / V.r), w = h * V.r;
     if (w > lmax) { w = lmax; h = w / V.r; }
+    // une aile volante vue de dessus est haute et étroite : elle a droit à plus de hauteur
+    if (V.r < .6) hmax = Math.round(hmax * 1.4);
     if (h > hmax) { h = hmax; w = h * V.r; }
     return 'width:' + Math.round(w) + 'px;height:' + Math.round(h) + 'px';
   }
