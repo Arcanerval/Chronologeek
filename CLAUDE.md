@@ -3305,6 +3305,18 @@ affichait ses `<br/>` et ses `<ul>` en toutes lettres, seule fiche sur les soixa
 relevées le 1er novembre 2026. `rawgSyn()` les retire, dans les quatre pages qui la
 portent.
 
+**« Où lire » / « Where to read », posé le 13 novembre 2026** (même fichier, bloc juste
+après « Où regarder ») : romans, comics et livres audio des huit timelines qui en ont, et
+les 550 lectures du Dossier (bouton livre à côté du lien de partage, la ligne se déplie
+sous le titre). **Des liens de recherche**, pas des fiches : Librairies indépendantes
+(Place des Libraires), Fnac et Amazon en français, Bookshop.org, Amazon et WorldCat en
+anglais, Audible pour l'audio. Le titre de la page, sauf la VO en français (titre anglais,
+sixième place de `/search-fr.json`) ; l'ISBN en anglais seulement (c'est celui de
+l'édition anglaise) ; les numéros d'une série de comics tombent ; la franchise est ajoutée
+quand le titre ne la porte pas (`FRANCHISE`, par route). **`AFFIL` attend les
+identifiants Amazon Partenaires** : posés, la ligne dit « liens affiliés » et les liens
+prennent `rel="sponsored"`.
+
 **Les pastilles de ligne du pied de page** (`.f-uni i`) manquaient sur
 « À venir » et « Nouveautés » depuis leur passage au plan de métro : la
 règle n'avait pas été recopiée, et les codes SW, MCU, DC… sortaient en texte

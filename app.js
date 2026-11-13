@@ -4781,6 +4781,259 @@ function cgBillet(){
   else pose();
 })();
 
+/* ══ Où lire ══════════════════════════════════════════════════════════
+   Posé le 13 novembre 2026 (n° 11 de la liste du 5 novembre). La ligne qui
+   manquait à côté de « Où regarder » et « Où jouer » : les romans, comics et
+   livres audio de huit timelines et les 550 lectures du Dossier.
+
+   Ce sont des **liens de recherche**, pas des fiches : aucune base libre ne
+   dit quel libraire a quel livre, et une recherche ne peut pas être fausse.
+   Le titre cherché est celui de la page, sauf pour une œuvre VO sur la page
+   française — elle n'existe qu'en anglais, on cherche donc son titre anglais
+   (sixième place de `/search-fr.json`). Le nom de la franchise est ajouté
+   quand le titre ne le porte pas : « The Road of No Return » seul ramène
+   n'importe quoi. Les numéros d'une série de comics (« 1-5 », « #5-8 »)
+   tombent : on cherche le recueil. L'ISBN des données n'est pris que sur la
+   page anglaise — c'est celui de l'édition anglaise.
+
+   Affiliation : `AFFIL` porte les identifiants Amazon Partenaires, vides
+   tant qu'aucun compte n'est ouvert. Dès qu'un identifiant est posé, la
+   ligne le dit (« liens affiliés »), c'est une obligation.
+
+   Timelines : la ligne se pose à la fin de la fiche dépliée (`.en-rich`),
+   écrite par la page au clic ; on l'attend par un observateur, comme « Où
+   regarder ». Dossier : pas de fiche, donc un bouton livre à côté du lien
+   de partage, qui déplie la ligne sous le titre.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var EN = document.documentElement.lang === 'en';
+  var AFFIL = { fr: '', en: '' };
+  var ECRIT = { roman: 1, comic: 1, jeunesse: 1, manga: 1, livre: 1, audio: 1 };
+  var L = EN
+    ? { lire: 'Where to read', ecouter: 'Where to listen', note: 'search links', affil: 'affiliate links',
+        bouton: 'Where to read' }
+    : { lire: 'Où lire', ecouter: 'Où écouter', note: 'liens de recherche', affil: 'liens affiliés',
+        bouton: 'Où lire' };
+  var FRANCHISE = { starwars: 'Star Wars', 'star-wars': 'Star Wars', 'dossier-star-wars': 'Star Wars',
+    avatar: 'Avatar', witcher: EN ? 'Witcher' : 'Sorceleur', assassinscreed: 'Assassin’s Creed',
+    dragonage: 'Dragon Age', jurassic: 'Jurassic', jurassicworld: 'Jurassic', bladerunner: 'Blade Runner',
+    residentevil: 'Resident Evil', monsterverse: 'Godzilla' };
+  var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA', 'ASSASSINSCREED', 'DCANIM',
+              'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE'];
+
+  var route = (location.pathname.split('/').filter(Boolean).pop() || '')
+    .replace(/\.html$/, '').replace(/^en?-/, '');
+  var MARQUE = FRANCHISE[route] || '';
+
+  var CSS = [
+    '.wl{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:10px;',
+    '  font-size:11.5px;color:rgba(255,253,247,.72)}',
+    '.wl strong{color:var(--hot);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-right:2px}',
+    '.wl-l{display:inline-flex;gap:6px;flex-wrap:wrap}',
+    '.wl-l a{display:inline-grid;place-items:center;min-height:28px;padding:0 10px;border:1px solid rgba(255,253,247,.34);',
+    '  border-radius:3px;background:rgba(255,255,255,.08);color:var(--paper);font-weight:700;font-size:11.5px;',
+    '  white-space:nowrap;text-decoration:none}',
+    '.wl-l a:hover,.wl-l a:focus-visible{border-color:var(--hot);color:var(--hot)}',
+    '.wl-k{color:rgba(255,253,247,.5);font-size:10.5px;font-style:italic}',
+    /* Dossier : le bouton se range à gauche du lien de partage, et se montre comme lui */
+    '.bu-buy{position:absolute;top:9px;right:38px;z-index:4;width:26px;height:26px;display:grid;place-items:center;',
+    '  padding:0;border:0;background:none;color:rgba(255,253,247,.5);cursor:pointer;opacity:0;transition:opacity .15s}',
+    '.bu-card:hover .bu-buy,.bu-buy:focus-visible,.bu-buy[aria-expanded=true]{opacity:1}',
+    '.bu-buy:hover,.bu-buy[aria-expanded=true]{color:var(--hot)}',
+    '.bu-buy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round}',
+    '@media(hover:none){.bu-buy{opacity:1}}',
+    '.bu-txt .wl{margin-top:9px}'
+  ].join('');
+  var LIVRE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6a2 2 0 0 1 2 2V20a1.6 1.6 0 0 0-1.6-1.6H4z"/>' +
+    '<path d="M20 4.5h-6a2 2 0 0 0-2 2V20a1.6 1.6 0 0 1 1.6-1.6H20z"/></svg>';
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+  function dec(s){
+    var t = document.createElement('textarea');
+    t.innerHTML = String(s || '');
+    return t.value;
+  }
+  function plat(s){
+    return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+  }
+
+  /* identifiant → { type, titre, vo, isbn }, second parcours compris (`ref`) */
+  var FICHES = null;
+  function ficheDe(id){
+    if (!FICHES) {
+      var D = null;
+      for (var i = 0; i < NOMS.length && !D; i++) {
+        var v = window[NOMS[i]];
+        if (v && typeof v === 'object' && v.eras && v.eras.length) D = v;
+      }
+      FICHES = {};
+      if (!D) return null;
+      var refs = [];
+      ['eras', 'erasRewatch', 'erasReplay', 'erasRelease'].forEach(function(cle){
+        (D[cle] || []).forEach(function(era){
+          (era.entries || []).forEach(function(e){
+            if (!e || !e.id) return;
+            if (e.ref && !e.type) { refs.push([e.id, e.ref]); return; }
+            FICHES[e.id] = { type: e.type, titre: dec(e.title), vo: e.lang === 'vo', isbn: e.isbn || '' };
+          });
+        });
+      });
+      refs.forEach(function(r){ if (!FICHES[r[0]] && FICHES[r[1]]) FICHES[r[0]] = FICHES[r[1]]; });
+    }
+    return FICHES[id] || null;
+  }
+
+  // la page française cherche une œuvre VO sous son titre anglais
+  var INDEX = null;
+  function titreAnglais(id, repli){
+    INDEX = INDEX || fetch('/search-fr.json').then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; });
+    return INDEX.then(function(j){
+      var l = j && j.e && j.e.filter(function(x){ return x[2] === id; })[0];
+      return dec((l && l[5]) || repli);
+    });
+  }
+
+  function requete(titre){
+    var q = dec(titre)
+      .replace(/\s*\([^)]*\)/g, ' ')
+      .replace(/\s+#?\d+(\s*[-–]\s*\d+)?\s*$/, '')
+      .replace(/\s+/g, ' ').trim();
+    // « Sorceleur » est ajouté sur la page française, mais un titre qui dit déjà « Witcher » suffit
+    var deja = [MARQUE].concat(MARQUE === 'Sorceleur' ? ['Witcher'] : []).some(function(m){
+      return plat(q).indexOf(plat(m)) !== -1; });
+    if (MARQUE && !deja) q += ' ' + MARQUE;
+    return q;
+  }
+
+  function boutiques(q, audio){
+    var e = encodeURIComponent(q);
+    if (audio) return [['Audible', (EN ? 'https://www.audible.com' : 'https://www.audible.fr') + '/search?keywords=' + e]];
+    return EN ? [
+      ['Bookshop.org', 'https://bookshop.org/search?keywords=' + e],
+      ['Amazon', 'https://www.amazon.com/s?k=' + e + '&i=stripbooks' + (AFFIL.en ? '&tag=' + AFFIL.en : '')],
+      ['Library', 'https://search.worldcat.org/search?q=' + e]
+    ] : [
+      ['Librairies indépendantes', 'https://www.placedeslibraires.fr/listeliv.php?base=allbooks&mots_recherche=' + e],
+      ['Fnac', 'https://www.fnac.com/SearchResult/ResultList.aspx?Search=' + e],
+      ['Amazon', 'https://www.amazon.fr/s?k=' + e + '&i=stripbooks' + (AFFIL.fr ? '&tag=' + AFFIL.fr : '')]
+    ];
+  }
+
+  function ligne(q, audio, tag){
+    var el = document.createElement(tag || 'div');
+    el.className = 'wl';
+    el.innerHTML = '<strong>' + (audio ? L.ecouter : L.lire) + '</strong><span class="wl-l">' +
+      boutiques(q, audio).map(function(b){
+        return '<a href="' + esc(b[1]) + '" target="_blank" rel="noopener' +
+          (/amazon/.test(b[1]) && (AFFIL.fr || AFFIL.en) ? ' sponsored' : '') + '">' + esc(b[0]) + '</a>';
+      }).join('') + '</span><span class="wl-k">' +
+      ((EN ? AFFIL.en : AFFIL.fr) ? L.affil : L.note) + '</span>';
+    return el;
+  }
+
+  // la requête d'une œuvre : ISBN en anglais, titre anglais pour la VO en français
+  function requeteDe(id, f){
+    if (EN && f.isbn) return Promise.resolve(f.isbn);
+    if (!EN && f.vo) return titreAnglais(id, f.titre).then(requete);
+    return Promise.resolve(requete(f.titre));
+  }
+
+  /* ── les timelines ─────────────────────────────────────────────── */
+  function completer(rich){
+    if (rich.querySelector('.wl, .expand-loading') || !rich.firstChild) return;
+    var art = rich.closest('[data-id]');
+    var f = art && ficheDe(art.dataset.id);
+    if (!f || !ECRIT[f.type]) return;
+    rich.dataset.wl = '1';
+    requeteDe(art.dataset.id, f).then(function(q){
+      if (!q || !rich.isConnected || rich.querySelector('.wl, .expand-loading')) return;
+      var hote = rich.querySelector('.expand-info') || rich;
+      hote.appendChild(ligne(q, f.type === 'audio'));
+    });
+  }
+
+  /* ── le Dossier ────────────────────────────────────────────────── */
+  function bouton(row){
+    var card = row.querySelector('.bu-card');
+    if (!card || card.querySelector('.bu-buy')) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'bu-buy';
+    b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-label', L.bouton);
+    b.title = L.bouton;
+    b.innerHTML = LIVRE;
+    card.appendChild(b);
+  }
+  function deplie(b){
+    var row = b.closest('.bu'), txt = row && row.querySelector('.bu-txt');
+    if (!txt) return;
+    var deja = txt.querySelector('.wl');
+    if (deja) { deja.remove(); b.setAttribute('aria-expanded', 'false'); return; }
+    var t = row.querySelector('.bu-title'), id = row.dataset.id;
+    var titre = t ? t.textContent.trim() : '', vo = !!row.querySelector('.bu-tags .vo');
+    var audio = row.dataset.k === 'audio';
+    (!EN && vo ? titreAnglais(id, titre) : Promise.resolve(titre)).then(function(x){
+      if (txt.querySelector('.wl')) return;
+      txt.appendChild(ligne(requete(x), audio, 'span'));
+      b.setAttribute('aria-expanded', 'true');
+    });
+  }
+
+  function pose(){
+    var tl = document.getElementById('timeline');
+    if (!tl) return;
+    var dossier = !!tl.querySelector('.bu.dr');
+    if (!dossier) {
+      // une page sans aucun écrit n'a rien à observer
+      var D = null;
+      for (var i = 0; i < NOMS.length && !D; i++) {
+        var v = window[NOMS[i]];
+        if (v && typeof v === 'object' && v.eras) D = v;
+      }
+      if (!D || !D.eras.some(function(era){
+        return (era.entries || []).some(function(e){ return e && ECRIT[e.type]; }); })) return;
+    }
+    var st = document.createElement('style');
+    st.textContent = CSS;
+    document.head.appendChild(st);
+
+    if (dossier) {
+      [].forEach.call(tl.querySelectorAll('.bu.dr'), bouton);
+      tl.addEventListener('click', function(ev){
+        var b = ev.target.closest && ev.target.closest('.bu-buy');
+        if (!b) return;
+        ev.preventDefault(); ev.stopPropagation();
+        deplie(b);
+      }, true);
+      new MutationObserver(function(){
+        [].forEach.call(tl.querySelectorAll('.bu.dr'), bouton);
+      }).observe(tl, { childList: true, subtree: true });
+      return;
+    }
+    new MutationObserver(function(muts){
+      for (var i = 0; i < muts.length; i++) {
+        var n = muts[i].target;
+        if (n.nodeType !== 1) continue;
+        var rich = n.closest && n.closest('.en-rich');
+        if (rich) { completer(rich); continue; }
+        var riches = n.querySelectorAll ? n.querySelectorAll('.en-rich') : [];
+        for (var j = 0; j < riches.length; j++) if (riches[j].firstChild) completer(riches[j]);
+      }
+    }).observe(tl, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
 /* ══ LIGNE TERMINÉE : le billet composté et la barre dorée ═══════════
    Posé le 1er octobre 2026, demandé par Niko : une timeline finie doit se
    voir d'un coup d'œil, sur le billet du premier écran comme sur la barre
