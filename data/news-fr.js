@@ -37,6 +37,13 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-11", label:"Novembre 2026", items:[
+      { nat:"media", uni:"mcu", kind:"video",
+        title:"Avengers : Endgame Encore", meta:"2028",
+        txt:"Ajouté à la toute fin de la timeline Marvel : la scène pré-générique "+
+            "et les deux scènes post-crédits de la réédition, avant Avengers : Doomsday.",
+        img:"/images/avengers-endgame-2019.webp",
+        href:"/fr/marvel#mcu-egenc", cta:"Voir dans la timeline" },
+
       { nat:"site", uni:"monsterverse", kind:"timeline",
         title:"Nouvelle timeline : Monsterverse",
         txt:"Les films, les séries Monarch et Skull Island, les comics et le "+

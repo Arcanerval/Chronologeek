@@ -908,6 +908,13 @@
     ]
    },
    {
+    "ref": "mcu-egenc",
+    "rel": "2026",
+    "drop": [
+     "faq.pourquoi"
+    ]
+   },
+   {
     "ref": "mcu-vq",
     "rel": "2026",
     "drop": [

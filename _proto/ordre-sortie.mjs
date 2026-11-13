@@ -65,6 +65,7 @@ export const UNIVERS = {
       'mcu-item47': '2012-09-25',      // bonus du Blu-ray Avengers
       'mcu-ac-os': '2013-09-09',       // bonus du Blu-ray Iron Man 3
       'mcu-roi': '2014-02-04',         // bonus du Blu-ray Thor 2
+      'mcu-egenc': '2026-09-25',       // réédition Endgame Encore, en salles
     },
   },
   jurassic: {

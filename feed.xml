@@ -8,10 +8,17 @@
   <updated>2026-11-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
   <entry>
+    <title>Avengers: Endgame Encore</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-egenc"/>
+    <id>tag:chronologeek.app,2026-11:avengers-endgame-encore</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.</summary>
+  </entry>
+  <entry>
     <title>New timeline: Monsterverse</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/monsterverse"/>
     <id>tag:chronologeek.app,2026-11:new-timeline-monsterverse</id>
-    <updated>2026-11-01T12:00:00Z</updated>
+    <updated>2026-11-01T11:59:00Z</updated>
     <summary>The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.</summary>
   </entry>
   <entry>
@@ -209,12 +216,5 @@
     <id>tag:chronologeek.app,2026-07:new-deep-dive-star-wars-novels-comics</id>
     <updated>2026-07-01T11:57:00Z</updated>
     <summary>533 entries in reading order, with 63 on-screen markers to place the movies and shows.</summary>
-  </entry>
-  <entry>
-    <title>New timeline: Avatar Legends</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/avatar"/>
-    <id>tag:chronologeek.app,2026-07:new-timeline-avatar-legends</id>
-    <updated>2026-07-01T11:56:00Z</updated>
-    <summary>69 entries, from the Yangchen, Kyoshi and Roku novels all the way to the Korra era. Episodes, comics and novels in chronological order, every medium included.</summary>
   </entry>
 </feed>

@@ -354,6 +354,7 @@ const TRADUCTIONS = [
   ['Mis à jour · août 2026', 'Updated · August 2026'],
   ['Mis à jour · septembre 2026', 'Updated · September 2026'],
   ['Mis à jour · octobre 2026', 'Updated · October 2026'],
+  ['Mis à jour · novembre 2026', 'Updated · November 2026'],
 
   /* ── la case The Walking Dead ───────────────────────────────────
      Sixième univers, même situation que Star Trek : rien à retrouver

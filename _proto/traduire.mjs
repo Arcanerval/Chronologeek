@@ -351,6 +351,21 @@ const TRADUCTIONS = [
   ['Ajouté à la timeline Marvel, en mai 2028, juste après The Punisher : One Last Kill.',
    'Added to the Marvel timeline, in May 2028, right after The Punisher: One Last Kill.'],
 
+  /* ── Avengers : Endgame Encore, ajouté le 13 novembre 2026 ──
+     Les trois scènes de la réédition, à la toute fin de la timeline. La
+     FAQ est celle de Niko, en anglais, mot pour mot — « spoils » accordé. */
+  ['Avengers : Endgame Encore', 'Avengers: Endgame Encore'],
+  ['Scène pré-générique (Peggy & Steve) + les deux scènes post-crédits',
+   'Pre-credits scene (Peggy & Steve) + Both post-credits scenes'],
+  ["La scène pré-générique se déroule après la scène d'origine d'Avengers : Endgame, les deux scènes post-crédits se déroulent après Spider-Man : Brand New Day",
+   'The pre-credits scene takes place after the original scene in Endgame, the 2 post-credits scenes take place after Spider-Man: Brand New Day'],
+  ['Les scènes se passent dans la timeline principale',
+   'The scenes take place in the main timeline'],
+  ['Les scènes spoilent des projets sortis après Endgame et teasent Avengers : Doomsday, il faut donc les regarder avant',
+   'The scenes spoil projects after Endgame and tease Doomsday so they should be watched before it'],
+  ['Ajouté à la toute fin de la timeline Marvel : la scène pré-générique et les deux scènes post-crédits de la réédition, avant Avengers : Doomsday.',
+   'Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.'],
+
   /* ── le film Clayface, ajouté au DCU le 24 octobre 2026 ── */
   ['Ajouté à la timeline DC, dans le DCU, juste avant Creature Commandos.',
    'Added to the DC timeline, in the DCU, right before Creature Commandos.'],
