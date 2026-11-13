@@ -38,10 +38,10 @@ window.CG_NEWS = {
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-11", label:"Novembre 2026", items:[
       { nat:"media", uni:"mcu", kind:"video",
-        title:"Avengers : Endgame Encore", meta:"2028",
+        title:"Scène pré-générique (Peggy & Steve) et scènes post-crédits Avengers : Endgame Encore", meta:"2028",
         txt:"Ajouté à la toute fin de la timeline Marvel : la scène pré-générique "+
             "et les deux scènes post-crédits de la réédition, avant Avengers : Doomsday.",
-        img:"/images/avengers-endgame-2019.webp",
+        img:"/images/endgameencore.webp",
         href:"/fr/marvel#mcu-egenc", cta:"Voir dans la timeline" },
 
       { nat:"site", uni:"monsterverse", kind:"timeline",

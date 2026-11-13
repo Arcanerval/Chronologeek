@@ -7,7 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-11", label:"November 2026", items:[
-      {"nat":"media","uni":"mcu","kind":"video","title":"Avengers: Endgame Encore","meta":"2028","txt":"Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.","img":"/images/avengers-endgame-2019.webp","href":"en-marvel.html#mcu-egenc","cta":"See in the timeline"},
+      {"nat":"media","uni":"mcu","kind":"video","title":"Avengers: Endgame Encore — Pre-Credits Scene (Peggy & Steve) + Both Post-Credits Scenes","meta":"2028","txt":"Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.","img":"/images/endgameencore.webp","href":"en-marvel.html#mcu-egenc","cta":"See in the timeline"},
       {"nat":"site","uni":"monsterverse","kind":"timeline","title":"New timeline: Monsterverse","txt":"The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.","img":"/images/monsterverse.webp","href":"en-monsterverse.html","cta":"Open the timeline"}
     ]},
     { key:"2026-10", label:"October 2026", items:[

@@ -348,15 +348,18 @@ const TRADUCTIONS = [
    'The series takes place in May 2028, during the anniversary of the Battle of Sokovia from Avengers: Age of Ultron'],
   ['Parce que la série se situe ici chronologiquement',
    'Because this is where the show falls chronologically'],
+  /* La FAQ 4 de VisionQuest, posée par Niko le 13 novembre 2026, mot pour mot. */
+  ['Le dernier épisode a 2 scènes post-crédits, la dernière est TRÈS importante',
+   'Last episode has 2 post-credits scenes, the last one is VERY important'],
   ['Ajouté à la timeline Marvel, en mai 2028, juste après The Punisher : One Last Kill.',
    'Added to the Marvel timeline, in May 2028, right after The Punisher: One Last Kill.'],
 
   /* ── Avengers : Endgame Encore, ajouté le 13 novembre 2026 ──
      Les trois scènes de la réédition, à la toute fin de la timeline. La
      FAQ est celle de Niko, en anglais, mot pour mot — « spoils » accordé. */
-  ['Avengers : Endgame Encore', 'Avengers: Endgame Encore'],
-  ['Scène pré-générique (Peggy & Steve) + les deux scènes post-crédits',
-   'Pre-credits scene (Peggy & Steve) + Both post-credits scenes'],
+  /* Écrit comme les scènes de Thunderbolts* : un titre de scène, pas de film. */
+  ['Scène pré-générique (Peggy & Steve) et scènes post-crédits Avengers : Endgame Encore',
+   'Avengers: Endgame Encore — Pre-Credits Scene (Peggy & Steve) + Both Post-Credits Scenes'],
   ["La scène pré-générique se déroule après la scène d'origine d'Avengers : Endgame, les deux scènes post-crédits se déroulent après Spider-Man : Brand New Day",
    'The pre-credits scene takes place after the original scene in Endgame, the 2 post-credits scenes take place after Spider-Man: Brand New Day'],
   ['Les scènes se passent dans la timeline principale',
