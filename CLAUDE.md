@@ -3494,6 +3494,20 @@ minutes de chaque identifiant, seconds parcours compris — un morceau sans `rt`
 prend la part de chaque bloc couvert, un bloc partagé comptant à moitié. Les
 titres viennent de `/search-<langue>.json`. Les ajouts `p-` n'y sont pas.
 
+### Le vote pour la prochaine ligne, posé le 13 novembre 2026
+
+Bouton « Voter pour la prochaine ligne » à côté de « Suggérer une timeline », sur la
+case « Lignes en chantier » de l'accueil (`e-app.js`, bloc « LE VOTE »). Douze
+candidats choisis par Niko, dans `CANDIDATS` : Borderlands, Alien / Predator,
+Zelda, Stargate, God of War, Gears of War, Mass Effect, Donjons & Dragons,
+Terminator, Avatar (les films de Cameron), Pokémon, Dragons. **La clé d'un
+candidat ne bouge plus une fois des votes reçus** : c'est l'événement GoatCounter
+`vote-<clé>`. Un vote par candidat et par navigateur (`cg-votes`), plusieurs
+candidats permis, pas de retrait. **Résultats publics**, choix de Niko, lus sur
+`https://arcanerval.goatcounter.com/counter/vote-<clé>.json` — ce point répond 403
+tant que l'option « Allow adding visitor counts on your website » n'est pas cochée
+dans les réglages GoatCounter ; la liste reste alors sans chiffres.
+
 ### Trois canaux de plus, posés le 27 septembre 2026
 
 Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne

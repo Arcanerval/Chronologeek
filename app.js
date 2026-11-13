@@ -2948,6 +2948,171 @@ function cgBillet(){
   else pose();
 })();
 
+/* ═══ LE VOTE POUR LA PROCHAINE LIGNE ═════════════════════════════════
+   Posé le 13 novembre 2026 (n° 14 de la liste du 5 novembre). Un bouton à
+   côté de « Suggérer une timeline », sur la case « Lignes en chantier » de
+   l'accueil, ouvre la liste des candidats choisis par Niko.
+
+   - **Le vote est un événement GoatCounter** (`vote-<clé>`), le compteur
+     déjà présent sur le site : rien à héberger, rien de stocké chez nous.
+     Un bloqueur de publicité qui coupe GoatCounter coupe aussi le vote, et
+     la fenêtre ne prétend alors rien.
+   - **Un vote par univers et par navigateur**, retenu dans `cg-votes`. On
+     peut soutenir plusieurs candidats ; on ne peut pas retirer un vote,
+     GoatCounter ne décompte pas.
+   - **Les résultats sont publics**, choix de Niko : lus sur
+     `/counter/vote-<clé>.json`, qui ne répond que si l'option « Allow adding
+     visitor counts on your website » est cochée dans GoatCounter. Sans
+     elle, la liste reste dans son ordre, sans chiffres, et rien ne casse.
+   - **Les candidats se changent dans `CANDIDATS`** : la clé ne doit plus
+     bouger une fois des votes reçus, c'est elle que GoatCounter compte.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var lock = document.querySelector('.slot.lock');
+  if (!lock || !document.querySelector('.slot[data-u]')) return;
+  var FR = document.documentElement.lang !== 'en';
+  var GC = 'https://arcanerval.goatcounter.com';
+  var CANDIDATS = [
+    ['borderlands', 'Borderlands'], ['alien-predator', 'Alien / Predator'], ['zelda', 'The Legend of Zelda'],
+    ['stargate', 'Stargate'], ['god-of-war', 'God of War'], ['gears-of-war', 'Gears of War'],
+    ['mass-effect', 'Mass Effect'], ['dnd', FR ? 'Donjons & Dragons' : 'Dungeons & Dragons'],
+    ['terminator', 'Terminator'], ['avatar-cameron', FR ? 'Avatar (les films de James Cameron)' : 'Avatar (James Cameron’s films)'],
+    ['pokemon', 'Pokémon'], ['dragons', FR ? 'Dragons (How to Train Your Dragon)' : 'How to Train Your Dragon']
+  ];
+  var T = FR ? {
+    bouton: 'Voter pour la prochaine ligne', titre: 'La prochaine ligne',
+    aide: 'Quel univers aimeriez-vous voir arriver ? Votez pour autant de candidats que vous voulez, une fois chacun.',
+    voter: 'Je vote', vote: 'Voté', fermer: 'Fermer',
+    total: function(n){ return n + (n > 1 ? ' votes' : ' vote') + ' au total'; },
+    sansRes: 'Les résultats paraîtront ici bientôt.',
+    bloque: 'Votre navigateur bloque le compteur du site : ce vote n’a pas pu être envoyé.'
+  } : {
+    bouton: 'Vote for the next line', titre: 'The next line',
+    aide: 'Which universe would you like to see next? Vote for as many candidates as you like, once each.',
+    voter: 'Vote', vote: 'Voted', fermer: 'Close',
+    total: function(n){ return n + (n > 1 ? ' votes' : ' vote') + ' in total'; },
+    sansRes: 'Results will show up here soon.',
+    bloque: 'Your browser blocks the site’s counter: this vote could not be sent.'
+  };
+  var CSS = [
+    'dialog.vt{margin:auto;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;',
+    'background:#131215;color:#fffdf7;border:2px solid var(--hot,#f0c97c);border-radius:3px;padding:20px;font:15px/1.5 \'Chivo\',sans-serif}',
+    'dialog.vt::backdrop{background:rgba(4,4,10,.78)}',
+    '.vt-h{display:flex;justify-content:space-between;align-items:center;gap:12px}',
+    '.vt-h h2{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:900;font-size:28px;line-height:1;text-transform:uppercase}',
+    '.vt-x{background:none;border:0;color:inherit;font-size:22px;line-height:1;cursor:pointer;width:32px;height:32px}',
+    '.vt p{font-size:13.5px;color:rgba(255,253,247,.72);margin-top:6px}',
+    '.vt ol{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}',
+    '.vt li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;',
+    'padding:8px 10px;background:#1c1b20;border-radius:3px}',
+    '.vt li b{font-size:14.5px}',
+    '.vt li .vt-g{grid-column:1;height:6px;background:rgba(255,253,247,.1)}',
+    '.vt li .vt-g i{display:block;height:100%;background:var(--hot,#f0c97c)}',
+    '.vt li small{grid-column:1;font-size:11.5px;color:rgba(255,253,247,.6)}',
+    '.vt li button{grid-column:2;grid-row:1/span 3;font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;',
+    'font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;padding:6px 14px;',
+    'background:none;border:2px solid var(--hot,#f0c97c);color:var(--hot,#f0c97c)}',
+    '.vt li button:hover{background:var(--hot,#f0c97c);color:#131215}',
+    '.vt li button[disabled]{cursor:default;border-color:#81c784;color:#81c784;background:none}',
+    '.vt-t{margin-top:12px;font-size:12.5px!important}.vt-e{color:#e5484d!important;font-weight:700}.vt [hidden]{display:none}'
+  ].join('');
+
+  function lis(){ try { return JSON.parse(localStorage.getItem('cg-votes') || '{}') || {}; } catch (_) { return {}; } }
+  function garde(v){ try { localStorage.setItem('cg-votes', JSON.stringify(v)); } catch (_) {} }
+
+  // le compteur public d'un événement ; null si l'option est fermée
+  function compte(cle){
+    return fetch(GC + '/counter/' + encodeURIComponent('vote-' + cle) + '.json')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ return j ? +String(j.count).replace(/[^\d]/g, '') || 0 : null; })
+      .catch(function(){ return null; });
+  }
+
+  function envoie(c){
+    var path = 'vote-' + c[0], titre = 'Vote : ' + c[1];
+    if (window.goatcounter && goatcounter.count) {
+      goatcounter.count({ path: path, title: titre, event: true });
+      return true;
+    }
+    return false;
+  }
+
+  var dlg = null, RES = null;
+  function dessine(){
+    var v = lis(), ol = dlg.querySelector('ol'), tot = 0, max = 0;
+    var liste = CANDIDATS.slice();
+    if (RES) {
+      liste.forEach(function(c){ var n = RES[c[0]] || 0; tot += n; if (n > max) max = n; });
+      liste.sort(function(a, b){ return (RES[b[0]] || 0) - (RES[a[0]] || 0); });
+    }
+    ol.innerHTML = liste.map(function(c){
+      var n = RES ? RES[c[0]] || 0 : null;
+      return '<li><b></b>' +
+        (RES ? '<span class="vt-g"><i style="width:' + (max ? Math.round(n / max * 100) : 0) + '%"></i></span>' +
+               '<small>' + n + (tot ? ' · ' + Math.round(n / tot * 100) + ' %' : '') + '</small>' : '') +
+        '<button type="button" data-v="' + c[0] + '"' + (v[c[0]] ? ' disabled' : '') + '>' +
+        (v[c[0]] ? '✓ ' + T.vote : T.voter) + '</button></li>';
+    }).join('');
+    [].forEach.call(ol.querySelectorAll('li b'), function(b, i){ b.textContent = liste[i][1]; });
+    var t = dlg.querySelector('.vt-t');
+    t.textContent = RES ? T.total(tot) : T.sansRes;
+  }
+
+  function ouvre(){
+    if (!dlg) {
+      var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
+      dlg = document.createElement('dialog');
+      dlg.className = 'vt';
+      dlg.setAttribute('aria-labelledby', 'vt-t');
+      dlg.innerHTML = '<div class="vt-h"><h2 id="vt-t"></h2><button type="button" class="vt-x">✕</button></div>' +
+        '<p class="vt-a"></p><ol></ol><p class="vt-t"></p><p class="vt-e" hidden></p>';
+      dlg.querySelector('h2').textContent = T.titre;
+      dlg.querySelector('.vt-x').setAttribute('aria-label', T.fermer);
+      dlg.querySelector('.vt-a').textContent = T.aide;
+      dlg.querySelector('.vt-e').textContent = T.bloque;
+      document.body.appendChild(dlg);
+      dlg.addEventListener('click', function(ev){
+        if (ev.target === dlg || (ev.target.closest && ev.target.closest('.vt-x'))) return dlg.close();
+        var b = ev.target.closest && ev.target.closest('button[data-v]');
+        if (!b || b.disabled) return;
+        var c = CANDIDATS.filter(function(x){ return x[0] === b.dataset.v; })[0];
+        if (!c) return;
+        if (!envoie(c)) { dlg.querySelector('.vt-e').hidden = false; return; }
+        var v = lis(); v[c[0]] = 1; garde(v);
+        if (RES) RES[c[0]] = (RES[c[0]] || 0) + 1;
+        dessine();
+      });
+    }
+    dessine();
+    dlg.showModal();
+    // les résultats, une fois par visite
+    if (!RES) Promise.all(CANDIDATS.map(function(c){ return compte(c[0]); })).then(function(ns){
+      if (ns.every(function(n){ return n === null; })) return;
+      RES = {};
+      CANDIDATS.forEach(function(c, i){ RES[c[0]] = ns[i] || 0; });
+      // un vote de cette visite n'est peut-être pas encore compté par GoatCounter
+      var v = lis();
+      Object.keys(v).forEach(function(k){ if (RES[k] === 0) RES[k] = 1; });
+      if (dlg.open) dessine();
+    });
+  }
+
+  function pose(){
+    var p = lock.querySelector('.sg-p');
+    if (!p || p.querySelector('.sg-vote')) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sg sg-vote';
+    b.textContent = T.bouton;
+    b.addEventListener('click', ouvre);
+    p.appendChild(b);
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
 /* ═══ LE RÉCAP DE L'ANNÉE ═════════════════════════════════════════════
    Posé le 13 novembre 2026 (n° 13 de la liste du 5 novembre). Il lit
    `cg-dates`, le jour de chaque coche depuis le 5 novembre 2026 (et le jour
