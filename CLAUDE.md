@@ -1922,7 +1922,7 @@ données, à l'identique. Rien à écrire à l'ajout d'une œuvre : elle a sa pa
 et le dialogue rend les arrêts à voir, chaque case rejouant un vrai clic sur celle de la
 page. **Il ne filtre pas la timeline** : le rail de treize pages serait à redessiner, et
 les guides ne se réordonnent pas. Il suit le parcours affiché et la branche de l'arrivée.
-**Star Trek et le Dossier n'en ont pas**, faute de niveaux. Le niveau dit ce que le guide
+**Le Dossier n'en a pas**, faute de niveaux (Star Trek l'a depuis le 13 novembre 2026). Le niveau dit ce que le guide
 juge essentiel, pas ce dont l'intrigue dépend : jamais « requis » dans les libellés.
 
 ### Vérifier avant de pousser
@@ -3167,7 +3167,7 @@ Où ça vit :
   `document.write` **seulement si une option masque quelque chose**.
 - **`voit()` est la seule règle de masquage**, partout. `sansMust` : DC n'a pas
   d'essentiels en multivers, « essentiels seulement » y garde son niveau le plus haut.
-  Star Trek, sans niveaux, n'est pas touché. Les ajouts `p-` ne sont jamais masqués.
+  Star Trek a ses niveaux depuis le 13 novembre 2026. Les ajouts `p-` ne sont jamais masqués.
 - **Le tri se fait après la résolution des parcours** (`CG_OPT.garde()` de
   `e-perso.js`, appelé sur `ERAS` dans les treize pages, sur `D.eras` après les niveaux
   de ligne chez DC et DC Animation). Fait dans `D.eras` avant le script de la page, il
@@ -4028,7 +4028,7 @@ horaire sur plaque blanche ; important : 150 px ; optionnel : ligne serrée, fon
 effacé, vignette 96 px (Niko voulait qu'il garde son image). Tout est dans un bloc
 synchrone en tête de `e-app.js`, lu par `:has()` sur le `.lv` que les treize pages
 posent déjà dans `.bu-tags` — rien dans les gabarits. `cg-niv` n'est posé que si la
-timeline porte un `.lv` : Star Trek et le Dossier restent tels quels. Les cartes
+timeline porte un `.lv` : le Dossier reste tel quel. Les cartes
 compactes des réglages l'emportent (leurs règles sont en `!important`).
 
 ## Les images
@@ -4156,12 +4156,15 @@ dont les deux démos, Beginning Hour et Maiden.
 Blade Runner 16 (2 must / 3 important / 11 bonus) — les marques « E » et « I »
 du document, le reste étant « bonus content ».
 
-**Star Trek n'a pas de niveaux du tout** : sa page trie par type de média et par
-repère, pas par importance. Ses 248 entrées sortent donc « sans niveau ». Un
-parseur qui reconnaît une entrée à son seul niveau les fait toutes tomber du côté
-ignoré, sans erreur et sans message : une entrée se reconnaît à son niveau **ou**
-à son couple titre+date. Les deux ensemble, parce que cinq entrées Marvel n'ont
-pas de date et que le titre+date seul les perdait.
+**Star Trek a ses niveaux depuis le 13 novembre 2026**, donnés par Niko série par
+série : essentiels The Original Series, The Next Generation, les films I à VI,
+Generations, First Contact, Insurrection, Nemesis et Picard ; importants
+Enterprise, Discovery, Strange New Worlds, Deep Space Nine et Voyager ; optionnels
+Short Treks, The Animated Series, Lower Decks, Prodigy, les trois films Kelvin,
+Section 31 et Starfleet Academy. 248 entrées : 52 / 175 / 21. Ils sont dans
+`data-startrek-en.js`, et la page a reçu le filtre Niveau, les icônes et
+`offLv` sur le modèle de The Walking Dead. Un parseur doit toujours accepter une
+entrée sans niveau (les ajouts du visiteur, les notes).
 
 ## Pièges déjà rencontrés
 

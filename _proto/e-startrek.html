@@ -27,11 +27,11 @@
      anglais, et le français reste à écrire. Le sélecteur de langue est
      donc absent de l'en-tête — `e-startrek.html` n'existe pas encore, et
      un drapeau qui tombe en 404 ment plus qu'il n'informe.
-  2. PAS DE NIVEAUX. La section FILTERS du document ne liste que deux
-     groupes, « Types de médias » et « Markers ». Il n'y a donc ni ⭐ ni 🚨
-     sur cette page, et pas de groupe Niveau dans le tamis. Ne pas en
-     rajouter sans que Niko ait écrit les niveaux : les inventer ferait
-     passer un jugement éditorial pour une donnée.
+  2. LES NIVEAUX, POSÉS PAR NIKO LE 13 NOVEMBRE 2026. Le document n'en
+     avait pas ; Niko les a donnés série par série (Original Series, TNG,
+     les films I à VI, ceux de TNG et Picard essentiels ; Enterprise,
+     Discovery, Strange New Worlds, DS9 et Voyager importants ; le reste
+     optionnel). Ils vivent dans `data-startrek-en.js`, un par entrée.
   3. LES REPÈRES LÉGENDENT. Le document les range sous « FILTERS », mais
      c'est une légende partout ailleurs sur le site — Star Wars, Marvel et
      DC posent FLASHBACK sous la ligne des filtres, sans bouton. Star Trek
@@ -1080,6 +1080,13 @@ section.ln-hero>.wrap{padding-bottom:66px}
 .bu-tags .b{clip-path:none;border-radius:3px;border:2px solid var(--ink);padding:1px 7px;font-size:10.5px;font-weight:800}
 .bu-tags .ft{border-radius:3px}
 .bu-tags .lv{display:inline-grid;place-items:center;line-height:0}
+.ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:miter;stroke-linecap:square}
+.sieve .ic{width:15px;height:15px}
+.lv.must{color:var(--hot)}
+.lv.imp{color:#ff9d5c}
+.sieve button.must{color:var(--hot)}
+.sieve button.imp{color:#ff9d5c}
+.sieve button.must[aria-pressed=true],.sieve button.imp[aria-pressed=true]{color:var(--ink)}
 .bu-tags .lv .ic{width:20px;height:20px}
 .bu-title{font-size:25px;line-height:1}
 .bu-meta{margin-top:6px}
@@ -1670,6 +1677,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       <input id="q" type="search" placeholder="Rechercher… ( / )" autocomplete="off"/>
       <button type="button" id="q-clear" aria-label="Effacer la recherche">✕</button>
     </div>
+    <div class="sgroup" id="f-levels"><span class="lab">Niveau</span></div>
     <button class="last" type="button" id="hide-done" aria-pressed="false">Masquer les terminés</button>
     <div class="srow"><div class="sgroup" id="f-types"><span class="lab">Types de média</span></div></div>
     <div class="srow">
@@ -1757,6 +1765,17 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
   var CFG=window.CG, D=window.ST, RT=window.RT||{};
   var T=CFG.t;
+  /* Les niveaux, posés le 13 novembre 2026 sur demande de Niko : Star Trek
+     était la seule timeline sans. Même tracé que les autres pages. */
+  var LVICO={
+    must:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="m12 3.6 2.5 5.4 5.9.8-4.3 4.1 1.1 5.9-5.2-2.8-5.2 2.8 1.1-5.9L3.6 9.8l5.9-.8z"/></svg>',
+    important:'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+
+         '<path d="M12 3.8 2.6 20.2h18.8z"/><path d="M12 9.6v4.2M12 16.9h.01"/></svg>',
+    bonus:''};
+  var LVCLS={must:'must',important:'imp',bonus:''};
+  function lvWord(s){ return String(s).replace(/^[^\p{L}]+/u,''); }
+  var LVTXT={must:lvWord(T.essential),important:lvWord(T.important),bonus:lvWord(T.optional)};
   var KEY='cg-proto-st';
   var AKEY=KEY+'-alt';
   /* L'accueil rouvre sa reprise sur la timeline où l'on a coché en dernier, et
@@ -2000,7 +2019,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     if(m&&m!==MODE) location.reload();
   });
 
-  var offK={}, hideDone=false;
+  var offLv={}, offK={}, hideDone=false;
 
   function $(s,r){ return (r||document).querySelector(s); }
   function hm(m){ if(!m) return '—'; var h=Math.floor(m/60),r=m%60;
@@ -2036,7 +2055,11 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
      sont rendus en légende, en dur dans le HTML — voir le contrat de
      direction en tête de fichier. Pas de niveaux non plus. */
   (function(){
-    var tp=$('#f-types');
+    var lv=$('#f-levels'), tp=$('#f-types');
+    ['must','important','bonus'].forEach(function(k){
+      lv.insertAdjacentHTML('beforeend','<button type="button" data-lv="'+k+'" aria-pressed="true"'+
+        (LVCLS[k]?' class="'+LVCLS[k]+'"':'')+'>'+LVICO[k]+esc(LVTXT[k])+'</button>');
+    });
     Object.keys(CFG.badgeLabels).forEach(function(k){
       tp.insertAdjacentHTML('beforeend','<button type="button" data-k="'+k+'" style="--k:var(--t-'+k+')"'+
         ' aria-pressed="true"><i></i>'+esc(CFG.badgeLabels[k][1])+'</button>');
@@ -2106,7 +2129,10 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
             '<span class="bu-done" aria-hidden="true"><span>terminé</span></span>'+
           '</span>'+
           '<span class="bu-txt">'+
-            '<span class="bu-tags"><span class="b" style="--k:var(--t-'+e.type+')">'+
+            '<span class="bu-tags">'+
+              (LVICO[e.level]?'<span class="lv '+LVCLS[e.level]+'" title="'+esc(LVTXT[e.level])+'">'+
+                LVICO[e.level]+'</span>':'')+
+              '<span class="b" style="--k:var(--t-'+e.type+')">'+
               esc(bd[1])+'</span>'+marks(e)+'</span>'+
             '<h3 class="bu-title">'+esc(e.title)+'</h3>'+
             '<span class="bu-meta">'+(d?'<span class="dur">'+hm(d)+'</span>':'')+'</span>'+
@@ -2186,7 +2212,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       era.entries.forEach(function(e){
         if(e.type==='note') return;
         var el=document.getElementById(e.id);
-        var ok=!offK[e.type] && !(hideDone&&prog[e.id]) &&
+        var ok=!offLv[e.level] && !offK[e.type] && !(hideDone&&prog[e.id]) &&
                (!q || hay(e).indexOf(q)>-1);
         el.hidden=!ok; if(ok){ vis++; shown++; }
       });
@@ -2234,7 +2260,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var el=document.getElementById(next.id);
     if(el.hidden){ // une entrée masquée par un filtre ne se rejoint pas
       $('#q').value=''; $('#searchbox').classList.remove('on');
-      offK={}; hideDone=false;
+      offLv={}; offK={}; hideDone=false;
       [].forEach.call(document.querySelectorAll('#sieve button[aria-pressed]'),function(b){
         b.setAttribute('aria-pressed',b.id==='hide-done'?'false':'true'); });
       applyFilters();
@@ -2357,6 +2383,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       var on=f.getAttribute('aria-pressed')==='true';
       f.setAttribute('aria-pressed',on?'false':'true');
       if(f.id==='hide-done') hideDone=!on;
+      else if(f.dataset.lv) offLv[f.dataset.lv]=on;
       else if(f.dataset.k) offK[f.dataset.k]=on;
       applyFilters();
       return;

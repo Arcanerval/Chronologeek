@@ -5875,8 +5875,8 @@ function cgBillet(){
    Animation et The Witcher on reste sur la branche de l'arrivée, et chez Marvel
    les autres univers (`dim`) ne s'imposent pas à une œuvre de la ligne.
 
-   **Star Trek n'en a pas** : sans niveaux, l'itinéraire serait la ligne entière.
-   Le Dossier non plus. Le niveau dit ce que le guide juge essentiel, pas ce dont
+   **Le Dossier n'en a pas** : sans niveaux, l'itinéraire serait la ligne entière.
+   Star Trek l'a depuis ses niveaux, le 13 novembre 2026. Le niveau dit ce que le guide juge essentiel, pas ce dont
    l'intrigue dépend : les libellés restent « essentiels », jamais « requis ». */
 (function(){
   'use strict';
