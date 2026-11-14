@@ -2605,7 +2605,7 @@ function cgBillet(){
          récente, les réglages restent ceux de l'appareil.
        - **`DRIVE_ID` vide = bouton caché.** L'identifiant OAuth est celui du
          projet Google Cloud de Niko ; il est public par nature. */
-    var DRIVE_ID = '';
+    var DRIVE_ID = '462461566472-odtqk1klk077r2g6cclceq0o9v98r91s.apps.googleusercontent.com';
     var gd = sec.querySelector('#sy-gd');
     var GSI = null, jeton = null;
     function gsi(){

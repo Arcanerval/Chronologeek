@@ -3521,10 +3521,12 @@ visiteur, la fenêtre de Google serait bloquée. **La fusion est une union**
 coche faite d'un côté reste — une coche retirée revient donc si l'autre appareil l'a
 encore, le moindre défaut —, ajouts réunis par identifiant (l'appareil gagne), dates
 les plus récentes, réglages de l'appareil. Puis réécriture du fichier, et
-rechargement par `applique()` si Drive apportait du neuf. **`DRIVE_ID` vide = bouton
-caché** : l'identifiant OAuth du projet Google Cloud de Niko, public par nature, à
-poser dans cette constante (origines autorisées : `https://chronologeek.app` et
-`http://localhost:8951`).
+rechargement par `applique()` si Drive apportait du neuf. **`DRIVE_ID`** porte l'identifiant OAuth du projet Google Cloud de Niko (posé le 14 novembre
+2026, public par nature ; vide, le bouton se cache). Origines autorisées :
+`https://chronologeek.app` et `http://localhost:8951`. **Jamais le code secret
+(`GOCSPX-…`)** : un site sans serveur n'en a pas l'usage. **Le navigateur intégré de
+l'appli n'ouvre pas les fenêtres de Google** : la synchro se teste dans un vrai
+navigateur. Une fenêtre bloquée ou fermée a son propre message, distinct du refus.
 
 ### La politique de confidentialité, posée le 14 novembre 2026
 
