@@ -3567,6 +3567,18 @@ son libellé, et la dernière entrée cochée. Rien n'est recalculé. Le nombre 
 badges n'y est pas : les pages ne le calculent qu'à l'ouverture de leur
 boîte. Feuille de partage native sur téléphone, téléchargement ailleurs.
 
+**L'affiche de la ligne**, posée le 14 novembre 2026 : bouton « Affiche » à côté de
+« Partager » dans le panneau de la barre du bas (treize timelines et Dossier), bloc
+juste après la carte de partage dans `e-app.js`, qui lui prête `window.CG_CARTE` (nom,
+fond, chargement, code de ligne). Toute la ligne en JPEG 2 400 px de large : en-tête
+au décor du premier écran, puis chaque station (`.era-sec`, encre `--era`), chaque
+colonne de réseau (`.col`, `--br`) et chaque arrêt coché ou non, relus dans la page,
+donc dans le parcours affiché. Une à six colonnes pour approcher le format A ; au-delà
+l'affiche s'allonge (Dossier : 2 400 × 5 452). Un titre répété reçoit son premier
+sous-titre, et le nom de la franchise en tête de titre tombe (`PREFIXE`). Le plan
+général du réseau (n° 7) a été essayé en maquette le même jour et écarté par Niko :
+il redisait les cartes de l'accueil. Ne pas le reproposer.
+
 ## Le plan de métro, publié le 28 septembre 2026
 
 L'accueil et la page Star Wars sont passés au design « ligne de métro ».

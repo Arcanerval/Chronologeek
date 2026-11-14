@@ -4446,6 +4446,8 @@ function cgBillet(){
     if (!m.length) return '';
     return (m.length > 1 ? m.slice(0, 3).map(function(w){ return w[0]; }).join('') : m[0].slice(0, 3)).toUpperCase();
   }
+  // l'affiche de la ligne (bloc suivant) reprend ces quatre-là
+  window.CG_CARTE = { nomUnivers: nomUnivers, banniere: banniere, charge: charge, codeLigne: codeLigne };
   /* Où commence chaque station, en fraction de la ligne : le nombre
      d'œuvres de chaque ère, tel que la page l'a rendu. */
   function stations(){
@@ -4715,6 +4717,289 @@ function cgBillet(){
     apres.parentNode.insertBefore(b, apres.nextSibling);
   }
 
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
+/* ═══ L'AFFICHE DE LA LIGNE ═════════════════════════════════════════════
+   Posée le 14 novembre 2026 (n° 8 de la liste du 5 novembre) : la ligne
+   entière en grand format, chaque arrêt coché ou non, à télécharger ou à
+   imprimer. Le bouton « Affiche » se pose à côté de « Partager », dans le
+   panneau de la barre du bas des treize timelines et du Dossier.
+
+   - **Tout se relit dans la page**, comme la carte de partage : les
+     stations (`.era-sec`, leur nom et leur encre `--era`), les colonnes
+     des réseaux (`.col`, nom `.col-t`, encre `--br`), chaque arrêt
+     (`.bu[data-id]`, son titre, sa case). Le parcours affiché est celui
+     de l'affiche, et rien n'est recalculé.
+   - **Le format suit la ligne** : 2 400 px de large, une à six colonnes,
+     choisies pour approcher le format A (largeur × √2). Au-delà de six
+     colonnes pleines l'affiche s'allonge — le Dossier et ses 550 lectures.
+   - **Un titre qui se répète** (« Star Trek: The Next Generation » trente
+     fois) reçoit son premier sous-titre (« Saison 1 Épisodes 1-10 »).
+   - **En JPEG à 92** : une photo d'en-tête et 2 400 px de large pèsent
+     plusieurs mégaoctets en PNG pour rien de plus à l'impression.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var FR = document.documentElement.lang !== 'en';
+  var MOIS = FR ? ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+                : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var T = FR ? {
+    btn: 'Affiche', dl: 'Télécharger', share: 'Partager', ferme: 'Fermer', alt: 'Affiche de votre ligne',
+    ma: 'Ma ligne', arrets: 'arrêts terminés', fini: 'Ligne terminée',
+    edite: function(d){ return 'Édité le ' + (d.getDate() === 1 ? '1er' : d.getDate()) + ' ' + MOIS[d.getMonth()] + ' ' + d.getFullYear(); },
+    texte: function(n){ return 'Ma ligne ' + n + ' sur Chronologeek'; }, prep: 'Préparation de l’affiche…'
+  } : {
+    btn: 'Poster', dl: 'Download', share: 'Share', ferme: 'Close', alt: 'Poster of your line',
+    ma: 'My line', arrets: 'stops completed', fini: 'Line completed',
+    edite: function(d){ return 'Printed ' + MOIS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); },
+    texte: function(n){ return 'My ' + n + ' line on Chronologeek'; }, prep: 'Preparing the poster…'
+  };
+  var CSS = [
+    '.af{margin:auto;padding:0;border:2px solid var(--uni,#f0c97c);background:#131215;color:#fffdf7;',
+    '  max-width:min(620px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 32px);display:flex;flex-direction:column}',
+    '.af:not([open]){display:none}',
+    '.af::backdrop{background:rgba(8,8,15,.82)}',
+    '.af-v{overflow:auto;flex:1 1 auto;min-height:0;background:#08080f}',
+    '.af-v img{display:block;width:100%;height:auto}',
+    '.af-v p{padding:40px 20px;text-align:center;color:rgba(255,253,247,.66)}',
+    '.af-act{display:flex;gap:10px;flex-wrap:wrap;padding:14px;justify-content:flex-end}',
+    '.af-act button{font-family:\'Big Shoulders Display\',\'BSD repli\',sans-serif;font-weight:800;font-size:14.5px;',
+    '  letter-spacing:.07em;text-transform:uppercase;cursor:pointer;padding:8px 18px;',
+    '  background:none;border:2px solid var(--uni,#f0c97c);color:var(--uni,#f0c97c)}',
+    '.af-act button.go{background:var(--uni,#f0c97c);color:#131215}',
+    '.af-act button[hidden],.af [hidden]{display:none}'
+  ].join('');
+
+  function txt(e){ return e ? e.textContent.replace(/\s+/g, ' ').trim() : ''; }
+  function encre(el, v){ var c = getComputedStyle(el).getPropertyValue(v).trim(); return c || ''; }
+
+  /* ── ce que porte la ligne, dans l'ordre de la page ─────────────────── */
+  function releve(){
+    var uni = encre(document.body, '--uni') || '#f0c97c';
+    var vus = {}, out = [];
+    [].forEach.call(document.querySelectorAll('#timeline .bu[data-id]'), function(b){
+      var t = txt(b.querySelector('.bu-title')); vus[t] = (vus[t] || 0) + 1;
+    });
+    function arret(b){
+      var t = txt(b.querySelector('.bu-title'));
+      var s = vus[t] > 1 ? txt(b.querySelector('.bu-sub .si')) : '';
+      var c = b.querySelector('[data-check]');
+      return { t: 'bu', titre: t, sub: s, fait: !!c && c.getAttribute('aria-checked') === 'true' };
+    }
+    [].forEach.call(document.querySelectorAll('#timeline .era-sec'), function(sec){
+      var rows = sec.querySelectorAll('.bu[data-id]');
+      if (!rows.length) return;
+      var fa = 0; [].forEach.call(rows, function(b){ var c = b.querySelector('[data-check]'); if (c && c.getAttribute('aria-checked') === 'true') fa++; });
+      out.push({ t: 'st', nom: txt(sec.querySelector('.stn-nm')), c: encre(sec, '--era') || uni, n: rows.length, f: fa });
+      var cols = sec.querySelectorAll('.col');
+      if (cols.length) {
+        [].forEach.call(cols, function(col){
+          var r = col.querySelectorAll('.bu[data-id]');
+          if (!r.length) return;
+          out.push({ t: 'col', nom: txt(col.querySelector('.col-t')), code: col.getAttribute('data-code') || '', c: encre(col, '--br') || uni });
+          [].forEach.call(r, function(b){ out.push(arret(b)); });
+        });
+      } else [].forEach.call(rows, function(b){ out.push(arret(b)); });
+    });
+    return { uni: uni, lignes: out };
+  }
+
+  /* ── la mise en colonnes ──────────────────────────────────────────── */
+  var W = 2400, M = 110, G = 64, HAUT = 860, BAS = 210, PAPIER = 2400 * Math.SQRT2;
+  var POIDS = { st: 1.7, col: 1.25, bu: 1 };
+  function colonnes(lignes){
+    var tot = lignes.reduce(function(s, l){ return s + POIDS[l.t]; }, 0);
+    var corps = PAPIER - HAUT - BAS, C = Math.max(1, Math.min(6, Math.ceil(tot / (corps / 46))));
+    var parCol = tot / C, rowH = Math.max(46, Math.min(74, corps / parCol));
+    var cols = [[]], acc = 0;
+    lignes.forEach(function(l, i){
+      // une station ne finit jamais une colonne : elle passe à la suivante avec ses arrêts
+      var seuil = parCol * cols.length;
+      if (acc + POIDS[l.t] > seuil + .01 && cols.length < C && cols[cols.length - 1].length) cols.push([]);
+      if (l.t !== 'bu' && cols.length < C && acc + POIDS[l.t] + 2 > seuil && cols[cols.length - 1].length) cols.push([]);
+      cols[cols.length - 1].push(l); acc += POIDS[l.t];
+    });
+    var haut = Math.max.apply(null, cols.map(function(c){ return c.reduce(function(s, l){ return s + POIDS[l.t]; }, 0); }));
+    return { cols: cols, C: C, rowH: rowH, H: Math.round(Math.max(PAPIER, HAUT + BAS + haut * rowH + 40)) };
+  }
+
+  function rogne(x, s, w){
+    if (x.measureText(s).width <= w) return s;
+    while (s.length > 1 && x.measureText(s + '…').width > w) s = s.slice(0, -1);
+    return s.trim() + '…';
+  }
+  function cover(x, im, dx, dy, dw, dh){
+    var r = Math.max(dw / im.width, dh / im.height), sw = dw / r, sh = dh / r;
+    x.drawImage(im, (im.width - sw) / 2, (im.height - sh) / 2, sw, sh, dx, dy, dw, dh);
+  }
+
+  function dessine(){
+    var C0 = window.CG_CARTE || {};
+    var D = '"Big Shoulders Display", sans-serif';
+    var R = releve(), L = colonnes(R.lignes), H = L.H, rowH = L.rowH;
+    var nom = C0.nomUnivers ? C0.nomUnivers() : document.title, code = C0.codeLigne ? C0.codeLigne(nom) : '';
+    var arrets = R.lignes.filter(function(l){ return l.t === 'bu'; }), fait = arrets.filter(function(l){ return l.fait; }).length;
+    var PREFIXE = new RegExp('^' + nom.replace(/^Dossier\s+/i, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*:\\s*', 'i');
+    var polices = document.fonts ? Promise.all([document.fonts.load('900 100px "Big Shoulders Display"'),
+      document.fonts.load('700 40px "Big Shoulders Display"')]).catch(function(){}) : Promise.resolve();
+    return Promise.all([polices, C0.charge ? C0.charge(C0.banniere()) : Promise.resolve(null)]).then(function(v){
+      var im = v[1], cv = document.createElement('canvas'), x = cv.getContext('2d');
+      cv.width = W; cv.height = H;
+      var OR = '#f0c97c', PA = '#fffdf7', INK = '#131215', uni = R.uni;
+      x.fillStyle = INK; x.fillRect(0, 0, W, H);
+
+      // l'en-tête : le décor du premier écran sous un voile uni
+      if (im) { cover(x, im, 0, 0, W, HAUT); x.fillStyle = 'rgba(19,18,21,.74)'; x.fillRect(0, 0, W, HAUT); }
+      x.fillStyle = uni; x.fillRect(0, 0, W, 18);
+      x.fillStyle = PA; x.fillRect(0, HAUT - 6, W, 6);
+      x.textBaseline = 'alphabetic';
+      if (code) {
+        x.font = '900 58px ' + D; var cw = x.measureText(code).width + 48;
+        x.fillStyle = uni; x.fillRect(M, 120, cw, 84);
+        x.fillStyle = INK; x.fillText(code, M + 24, 184);
+        x.fillStyle = OR; x.font = '800 44px ' + D; x.letterSpacing = '10px';
+        x.fillText(T.ma.toUpperCase(), M + cw + 34, 180); x.letterSpacing = '0px';
+      }
+      var taille = 230; x.font = '900 ' + taille + 'px ' + D;
+      while (x.measureText(nom.toUpperCase()).width > W - 2 * M && taille > 90) { taille -= 8; x.font = '900 ' + taille + 'px ' + D; }
+      x.fillStyle = PA; x.fillText(nom.toUpperCase(), M, 220 + taille * .9);
+      x.fillStyle = OR; x.font = '900 150px ' + D;
+      var chiffre = fait + ' / ' + arrets.length; x.fillText(chiffre, M, HAUT - 90);
+      var cx0 = M + x.measureText(chiffre).width + 40;
+      x.fillStyle = 'rgba(255,253,247,.72)'; x.font = '800 46px ' + D; x.letterSpacing = '6px';
+      x.fillText(T.arrets.toUpperCase(), cx0, HAUT - 140);
+      x.fillText(Math.round(arrets.length ? fait / arrets.length * 100 : 0) + ' %', cx0, HAUT - 90);
+      x.letterSpacing = '0px';
+      if (arrets.length && fait === arrets.length) {
+        x.save(); x.translate(W - M - 300, HAUT - 200); x.rotate(-.14);
+        x.strokeStyle = '#e5484d'; x.fillStyle = '#e5484d'; x.lineWidth = 8;
+        x.strokeRect(-280, -70, 560, 120); x.textAlign = 'center'; x.font = '900 72px ' + D; x.letterSpacing = '6px';
+        x.fillText(T.fini.toUpperCase(), 0, 16); x.restore(); x.letterSpacing = '0px';
+      }
+
+      // les colonnes
+      var cwid = (W - 2 * M - (L.C - 1) * G) / L.C, y0 = HAUT + 70;
+      L.cols.forEach(function(col, ci){
+        var cx = M + ci * (cwid + G), y = y0, rail = cx + rowH * .45, pts = [];
+        col.forEach(function(l){
+          var h = rowH * POIDS[l.t];
+          if (l.t === 'st') {
+            x.fillStyle = l.c; x.fillRect(cx, y + h * .12, cwid, h * .8);
+            x.fillStyle = PA; x.font = '900 ' + Math.round(rowH * .62) + 'px ' + D;
+            var cpt = l.f + ' / ' + l.n, wc = x.measureText(cpt).width;
+            x.fillText(rogne(x, l.nom.toUpperCase(), cwid - wc - 70), cx + 22, y + h * .12 + h * .8 * .7);
+            x.textAlign = 'right'; x.fillText(cpt, cx + cwid - 22, y + h * .12 + h * .8 * .7); x.textAlign = 'left';
+            pts.push(null);
+          } else if (l.t === 'col') {
+            x.fillStyle = l.c; x.font = '900 ' + Math.round(rowH * .55) + 'px ' + D; x.letterSpacing = '3px';
+            x.fillText(rogne(x, (l.code && l.code !== l.nom.toUpperCase() ? l.code + ' · ' : '') + l.nom.toUpperCase(), cwid), cx, y + h * .72);
+            x.letterSpacing = '0px'; pts.push(null);
+          } else {
+            pts.push({ y: y + h / 2, fait: l.fait });
+            x.fillStyle = l.fait ? PA : 'rgba(255,253,247,.55)';
+            x.font = '700 ' + Math.round(rowH * .5) + 'px ' + D;
+            var tx = rail + rowH * .6, place = cx + cwid - tx, base = y + h / 2 + rowH * .18;
+            // « Star Trek : » répété à chaque ligne ne dit rien sur l'affiche de Star Trek
+            var t = l.titre.replace(PREFIXE, '') || l.titre; x.fillText(rogne(x, t, place), tx, base);
+            if (l.sub) {
+              var wt = Math.min(place, x.measureText(t).width);
+              if (place - wt > 120) {
+                x.fillStyle = 'rgba(255,253,247,.5)'; x.font = '700 ' + Math.round(rowH * .4) + 'px ' + D;
+                x.fillText(rogne(x, '· ' + l.sub, place - wt - 18), tx + wt + 14, base);
+              }
+            }
+          }
+          y += h;
+        });
+        // la voie, puis ses arrêts : plein entre deux arrêts faits
+        var seg = [];
+        pts.forEach(function(p){ if (p) seg.push(p); else if (seg.length) { voie(seg); seg = []; } });
+        if (seg.length) voie(seg);
+        function voie(s){
+          x.lineCap = 'round'; x.lineWidth = rowH * .16;
+          x.strokeStyle = uni; x.globalAlpha = .3;
+          x.beginPath(); x.moveTo(rail, s[0].y); x.lineTo(rail, s[s.length - 1].y); x.stroke(); x.globalAlpha = 1;
+          for (var i = 1; i < s.length; i++) if (s[i].fait && s[i - 1].fait) {
+            x.beginPath(); x.moveTo(rail, s[i - 1].y); x.lineTo(rail, s[i].y); x.stroke();
+          }
+          s.forEach(function(p){
+            x.beginPath(); x.arc(rail, p.y, rowH * .22, 0, 2 * Math.PI);
+            x.fillStyle = p.fait ? uni : INK; x.fill();
+            x.lineWidth = rowH * .07; x.strokeStyle = p.fait ? PA : uni; x.stroke();
+          });
+        }
+      });
+
+      // le pied
+      x.fillStyle = uni; x.fillRect(0, H - 18, W, 18);
+      x.fillStyle = OR; x.font = '900 56px ' + D; x.letterSpacing = '10px';
+      x.fillText('CHRONOLOGEEK.APP', M, H - 90); x.letterSpacing = '0px';
+      x.fillStyle = 'rgba(255,253,247,.6)'; x.font = '800 38px ' + D; x.textAlign = 'right';
+      x.fillText(T.edite(new Date()).toUpperCase(), W - M, H - 92); x.textAlign = 'left';
+      return new Promise(function(ok){ cv.toBlob(ok, 'image/jpeg', .92); }).then(function(b){ return { blob: b, nom: nom }; });
+    });
+  }
+
+  var dlg = null, courant = null;
+  function dialogue(){
+    if (dlg) return dlg;
+    var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
+    dlg = document.createElement('dialog');
+    dlg.className = 'af';
+    dlg.innerHTML = '<div class="af-v"><p></p><img alt="" hidden/></div><div class="af-act">' +
+      '<button type="button" class="go" data-a="share" hidden></button>' +
+      '<button type="button" data-a="dl"></button><button type="button" data-a="x"></button></div>';
+    dlg.querySelector('img').alt = T.alt;
+    dlg.querySelector('p').textContent = T.prep;
+    dlg.querySelector('[data-a="share"]').textContent = T.share;
+    dlg.querySelector('[data-a="dl"]').textContent = T.dl;
+    dlg.querySelector('[data-a="x"]').textContent = T.ferme;
+    dlg.addEventListener('click', function(e){
+      var a = e.target.getAttribute && e.target.getAttribute('data-a');
+      if (e.target === dlg || a === 'x') return dlg.close();
+      if (!courant) return;
+      if (a === 'dl') {
+        var l = document.createElement('a');
+        l.href = URL.createObjectURL(courant.blob); l.download = courant.fichier.name;
+        document.body.appendChild(l); l.click(); l.remove();
+      }
+      if (a === 'share') navigator.share({ files: [courant.fichier], title: 'Chronologeek', text: T.texte(courant.nom) }).catch(function(){});
+    });
+    dlg.addEventListener('close', function(){
+      var im = dlg.querySelector('img');
+      if (im.src) URL.revokeObjectURL(im.src);
+      im.removeAttribute('src'); im.hidden = true; dlg.querySelector('p').hidden = false; courant = null;
+    });
+    document.body.appendChild(dlg);
+    return dlg;
+  }
+  function ouvre(){
+    var d = dialogue();
+    if (!d.open) d.showModal();
+    dessine().then(function(r){
+      if (!r.blob || !d.open) return;
+      var slug = (location.pathname.replace(/\/+$/, '').split('/').pop() || 'chronologeek').replace(/\.html$/, '');
+      var f = new File([r.blob], 'chronologeek-affiche-' + slug + '.jpg', { type: 'image/jpeg' });
+      courant = { blob: r.blob, fichier: f, nom: r.nom };
+      var im = d.querySelector('img'); im.src = URL.createObjectURL(r.blob); im.hidden = false;
+      d.querySelector('p').hidden = true;
+      d.querySelector('[data-a="share"]').hidden = !(navigator.canShare && navigator.canShare({ files: [f] }) &&
+        matchMedia('(pointer:coarse)').matches);
+    });
+  }
+  function pose(){
+    var avant = document.getElementById('share-prog');
+    if (!avant || !document.querySelector('#timeline .era-sec') || document.getElementById('affiche')) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = avant.className; b.id = 'affiche';
+    b.innerHTML = '<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg> ';
+    b.appendChild(document.createTextNode(T.btn));
+    b.addEventListener('click', ouvre);
+    avant.parentNode.insertBefore(b, avant.nextSibling);
+  }
   if (document.readyState === 'loading')
     document.addEventListener('DOMContentLoaded', pose);
   else pose();
