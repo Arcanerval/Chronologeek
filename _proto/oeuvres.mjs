@@ -67,7 +67,22 @@ const T = {
     q:(t,u,c)=>c?`Where does ${t} fit in ${u}?`:`Where does ${t} fit?`,
     d:(t,u,pos,av,ap,date)=>`${t} on the ${u} line: ${pos}${av?`, after ${av}`:''}${ap?`, before ${ap}`:''}.${date?` Date: ${date}.`:''} Spoiler-free chronological order.`,
     pos1:'first stop', posN:'last stop', posK:(n,N)=>`stop ${n} of ${N}`, posB:n=>`${n} places`, menu:['Open menu','Close menu'] },
+  // Espagnol neutre, tutoiement ; posé le 14 novembre 2026.
+  es: { base:'/es/obras', accueil:'Inicio', sur:'En la línea', premier:'Salida de la línea', dernier:'Terminal de la línea',
+    ici:'Estás aquí', voir:'Ver en la línea', billet:'Tu parada', calcul:'Calcular mi itinerario',
+    essentiels:'Lo esencial antes de esta parada', aucun:'Nada: la línea puede empezar aquí.',
+    autres:n=>`Mostrar las otras ${n}`, type:'Tipo', date:'Fecha', present:'Presente', niveau:'Nivel', duree:'Duración',
+    arret:'Parada', arretDe:(n,N)=>`Parada ${n} de ${N}`, places:'Lugares', lignes:'Línea', station:'Estación', saut:n=>`${n} parada${n>1?'s':''} más adelante`,
+    notes:'Para saber', blocs:n=>`Esta obra aparece ${n} veces en la línea.`, depart:'Salida', terminus:'Terminal',
+    niveaux:{must:'Esencial',important:'Importante',imp:'Importante',bonus:'Opcional'},
+    mem:'Recuerdos', compte:n=>`${n} obra${n>1?'s':''}`, heures:h=>`unas ${h} h`, fil:'Ruta de navegación',
+    guide:'Según los niveles de la guía.',
+    tag:'Dónde va', fin:(u,c)=>c?`en ${u}?`:'?',
+    q:(t,u,c)=>c?`¿Dónde va ${t} en ${u}?`:`¿Dónde va ${t}?`,
+    d:(t,u,pos,av,ap,date)=>`${t} en la línea ${u}: ${pos}${av?`, después de ${av}`:''}${ap?`, antes de ${ap}`:''}.${date?` Fecha: ${date}.`:''} Orden cronológico sin spoilers.`,
+    pos1:'primera parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir el menú','Cerrar el menú'] },
 };
+const LOC = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' };
 
 const nb = s => s.replace(/ ([?:!])/g, '\u00a0$1');
 const esc = s => String(s).replace(/<[^>]+>/g, '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -218,7 +233,7 @@ export function habillage(html, urlSw) {
   return { css: repli + '\n' + principal, header: propre(m1[0]), footer: propre(m2[0]) };
 }
 
-function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, autreUrl, labelsRepli, ch }) {
+function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch }) {
   const t = T[langue];
   const encre = ENCRES[cle];
   const lignes = ids.map(i => m.parId[i]).filter(Boolean);
@@ -361,7 +376,7 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, autr
   if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', '', dat));
   if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', '', ''));
 
-  const enUrl = langue === 'en' ? moi : autreUrl, frUrl = langue === 'fr' ? moi : autreUrl;
+  const enUrl = urlsL.en, frUrl = urlsL.fr, esUrl = urlsL.es;
   const fil = { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:[
     { '@type':'ListItem', position:1, name:t.accueil, item:site+sAccueil },
     { '@type':'ListItem', position:2, name:m.nom, item:site+urlU },
@@ -373,11 +388,10 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, autr
 
   // Le menu du site, avec l'univers de l'œuvre allumé et le drapeau vers sa version.
   const ici = h => h.split(`<a href="${urlU}"`).join(`<a href="${urlU}" aria-current="true"`);
-  // la pastille de l'espagnol (publier.mjs) mène à la page Star Wars : les fiches n'ont pas d'espagnol
-  const header = ici(ch.header).replace(/(class="icon-btn lang-btn" href=")[^"]*"/g, `$1${autreUrl}"`)
-    // le sélecteur de langue (publier.mjs) : l'autre langue mène à cette fiche-ci, l'espagnol n'a pas de fiches
+  // le sélecteur de langue (publier.mjs) : chaque langue mène à cette fiche-ci
+  const header = ici(ch.header)
     .replace(/<a class="lp-i" href="[^"]*" hreflang="(\w+)"([\s\S]*?)<\/a>/g,
-      (t, l, reste) => l === 'es' ? '' : `<a class="lp-i" href="${autreUrl}" hreflang="${l}"${reste}</a>`);
+      (t, l, reste) => urlsL[l] ? `<a class="lp-i" href="${urlsL[l]}" hreflang="${l}"${reste}</a>` : '');
   const footer = ici(ch.footer);
   const L = compact(titre).length;
   const taille = L <= 10 ? '' : L <= 18 ? ' l2' : L <= 30 ? ' l3' : ' l4';
@@ -394,14 +408,15 @@ ${TETE_REGLAGES}
 <link rel="canonical" href="${site}${moi}"/>
 <link rel="alternate" hreflang="en" href="${site}${enUrl}"/>
 <link rel="alternate" hreflang="fr" href="${site}${frUrl}"/>
+<link rel="alternate" hreflang="es" href="${site}${esUrl}"/>
 <link rel="alternate" hreflang="x-default" href="${site}${enUrl}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Chronologeek"/>
 <meta property="og:title" content="${esc(q60)}"/>
 <meta property="og:description" content="${esc(desc)}"/>
 <meta property="og:url" content="${site}${moi}"/>
-${img ? `<meta property="og:image" content="${esc(img)}"/>\n` : ''}<meta property="og:locale" content="${langue === 'fr' ? 'fr_FR' : 'en_US'}"/>
-<meta property="og:locale:alternate" content="${langue === 'fr' ? 'en_US' : 'fr_FR'}"/>
+${img ? `<meta property="og:image" content="${esc(img)}"/>\n` : ''}<meta property="og:locale" content="${LOC[langue]}"/>
+${Object.keys(LOC).filter(l => l !== langue).map(l => `<meta property="og:locale:alternate" content="${LOC[l]}"/>`).join('\n')}
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
@@ -438,7 +453,7 @@ ${footer}
 <script>(function(){var b=document.getElementById('burger'),d=document.getElementById('drawer');if(b&&d)b.addEventListener('click',function(){var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',${JSON.stringify(t.menu[1])}.replace(/.*/,o?${JSON.stringify(t.menu[1])}:${JSON.stringify(t.menu[0])}))})})();</script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script src="/pwa.js"></script>
-<script src="/app.js"></script>
+<script src="${langue === 'es' ? '/app-es.js' : '/app.js'}"></script>
 </body>
 </html>
 `;
@@ -455,10 +470,11 @@ export function oeuvres({ racine, site, urls }) {
   const repli = {
     fr: charge(racine, 'data.js').CG.badgeLabels,
     en: charge(racine, 'data-en.js').CG.badgeLabels,
+    es: charge(racine, 'data-es.js').CG.badgeLabels,
   };
   for (const cle of Object.keys(SOURCES)) {
     const route = urls.en[cle].split('/').pop();
-    const mo = { fr: modele(racine, cle, 'fr'), en: modele(racine, cle, 'en') };
+    const mo = { fr: modele(racine, cle, 'fr'), en: modele(racine, cle, 'en'), es: modele(racine, cle, 'es') };
     const liste = oeuvresDe(mo.en);
     const chemin = {};
     for (const o of liste) for (const i of o.ids) chemin[i] = o.s;
@@ -468,21 +484,20 @@ export function oeuvres({ racine, site, urls }) {
     tables[route] = chemin;
     for (const o of liste) {
       const url = l => `${T[l].base}/${route}/${o.s}`;
-      for (const langue of ['fr', 'en']) {
-        const autre = langue === 'fr' ? 'en' : 'fr';
+      const urlsL = { fr: url('fr'), en: url('en'), es: url('es') };
+      for (const langue of ['fr', 'en', 'es']) {
         taches.push(ch => page({ cle, route, langue, m: mo[langue], ids: o.ids, s: o.s, site, ch: ch[langue],
           urlDe: id => `${T[langue].base}/${route}/${chemin[id]}`,
-          urlU: urls[langue][cle], sAccueil: urls[langue].accueil, autreUrl: url(autre),
+          urlU: urls[langue][cle], sAccueil: urls[langue].accueil, urlsL,
           labelsRepli: repli[langue] }));
       }
-      plan.push({ cle, en: url('en'), fr: url('fr') });
+      plan.push({ cle, en: url('en'), fr: url('fr'), es: url('es') });
     }
   }
-  if (taches.length < 1000) throw new Error(`oeuvres : ${taches.length} pages seulement`);
+  if (taches.length < 1500) throw new Error(`oeuvres : ${taches.length} pages seulement`);
   return { tables, plan,
     rendre: ch => ({ pages: taches.map(f => f(ch)), css: ch.en.css + CSS_FICHE }) };
 }
 
 /** L'adresse d'une œuvre, pour le pré-rendu. */
-// L'espagnol n'a pas encore ses fiches : il renvoie aux anglaises.
 export const baseOeuvres = langue => (T[langue] || T.en).base;

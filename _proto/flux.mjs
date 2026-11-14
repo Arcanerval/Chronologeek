@@ -39,13 +39,15 @@
 
 import { charge } from './jsonld.mjs';
 
-const SOURCES = { fr: ['data-news.js', 'CG_NEWS'], en: ['data-news-en.js', 'CG_NEWS'] };
+const SOURCES = { fr: ['data-news.js', 'CG_NEWS'], en: ['data-news-en.js', 'CG_NEWS'], es: ['data-news-es.js', 'CG_NEWS'] };
 
 const T = {
   fr: { titre: 'Chronologeek — Nouveautés',
         sous: 'Les ajouts et les mises à jour des timelines et des Dossiers.' },
   en: { titre: 'Chronologeek — What’s new',
         sous: 'Additions and updates across the timelines and deep dives.' },
+  es: { titre: 'Chronologeek — Novedades',
+        sous: 'Lo añadido y lo actualizado en las cronologías y los Expedientes.' },
 };
 
 const esc = s => String(s)

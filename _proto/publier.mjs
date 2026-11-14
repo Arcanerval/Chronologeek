@@ -301,10 +301,10 @@ const PWA = [
 // Le flux du journal, dans les deux langues. Le `<link rel="alternate">` qui le
 // désigne est posé sur les vingt-huit pages : c'est ce qu'un navigateur et un
 // lecteur de flux vont chercher, et personne ne devine une URL de flux.
-const FLUX = { 'fr/feed.xml': 'fr', 'feed.xml': 'en' };
+const FLUX = { 'fr/feed.xml': 'fr', 'feed.xml': 'en', 'es/feed.xml': 'es' };
 const LIEN_FLUX = langue =>
-  `<link rel="alternate" type="application/atom+xml" href="/${langue === 'fr' ? 'fr/' : ''}feed.xml" ` +
-  `title="${langue === 'fr' ? 'Chronologeek — Nouveautés' : 'Chronologeek — What’s new'}"/>`;
+  `<link rel="alternate" type="application/atom+xml" href="/${langue === 'en' ? '' : langue + '/'}feed.xml" ` +
+  `title="${{ fr: 'Chronologeek — Nouveautés', en: 'Chronologeek — What’s new', es: 'Chronologeek — Novedades' }[langue]}"/>`;
 
 // Les polices de repli, posées le 27 septembre 2026.
 //
@@ -1069,7 +1069,7 @@ ${RES_ITI}` : '') +
   // au menu du haut : personne ne la cherche là, choix de Niko)
   {
     const lien = langue === 'fr' ? '<li><a href="/fr/confidentialite">Confidentialité</a></li>'
-               : langue === 'es' ? '<li><a href="/privacy" hreflang="en">Privacidad</a></li>'
+               : langue === 'es' ? '<li><a href="/es/privacidad">Privacidad</a></li>'
                                  : '<li><a href="/privacy">Privacy</a></li>';
     const avantLien = h;
     h = h.replace(/(<li><a href="#contact" data-contact>[^<]*<\/a><\/li>)/, `$1\n      ${lien}`);
@@ -1175,7 +1175,7 @@ for (const [sortie, langue] of Object.entries(FLUX)) {
   autres.push({ dest: '/' + sortie, octets: f.length, note: `${n} entrées` });
 }
 
-const ERREURS = { 'fr/404.html': 'fr', '404.html': 'en' };
+const ERREURS = { 'fr/404.html': 'fr', '404.html': 'en', 'es/404.html': 'es' };
 for (const [sortie, langue] of Object.entries(ERREURS)) {
   const page = erreur404({ racine: RACINE, langue, urls: URLS[langue] });
   if (!/name="robots" content="noindex/.test(page)) {
@@ -1229,7 +1229,7 @@ try {
 {
   // Le menu, le pied et le CSS sont ceux de la page Star Wars tout juste écrite.
   const ch = {};
-  for (const langue of ['fr', 'en']) {
+  for (const langue of ['fr', 'en', 'es']) {
     const r = ROUTES.find(x => x.cle === 'sw')[langue];
     ch[langue] = habillage(readFileSync(join(RACINE, r.sortie), 'utf8'), r.url);
   }
@@ -1242,13 +1242,14 @@ try {
     if (/undefined|\[object Object\]|NaN/.test(p.html)) {
       problemes.push(`${p.url} : valeur vide dans la page`);
     }
-    for (const [, h] of p.html.matchAll(/href="(\/(?:fr\/oeuvres|works)\/[^"#?]+)"/g)) {
+    for (const [, h] of p.html.matchAll(/href="(\/(?:fr\/oeuvres|es\/obras|works)\/[^"#?]+)"/g)) {
       if (!connues.has(h)) problemes.push(`${p.url} : lien mort ${h}`);
     }
   }
   if (!CHECK) {
     rmSync(join(RACINE, 'works'), { recursive: true, force: true });
     rmSync(join(RACINE, 'fr/oeuvres'), { recursive: true, force: true });
+    rmSync(join(RACINE, 'es/obras'), { recursive: true, force: true });
     for (const p of OEUVRES.pages) {
       mkdirSync(dirname(join(RACINE, p.sortie)), { recursive: true });
       writeFileSync(join(RACINE, p.sortie), p.html);
@@ -1258,12 +1259,12 @@ try {
       writeFileSync(join(RACINE, 'works', route + '.json'), JSON.stringify(table));
     }
   }
-  autres.push({ dest: '/works/ et /fr/oeuvres/', octets: OEUVRES.pages.reduce((a, p) => a + p.html.length, 0),
+  autres.push({ dest: '/works/, /fr/oeuvres/ et /es/obras/', octets: OEUVRES.pages.reduce((a, p) => a + p.html.length, 0),
                 note: `${OEUVRES.pages.length} pages d'œuvres` });
 
   // La politique de confidentialité, au même habillage (`confidentialite.mjs`).
-  const urlsCf = { fr: '/fr/confidentialite', en: '/privacy' };
-  for (const langue of ['fr', 'en']) {
+  const urlsCf = { fr: '/fr/confidentialite', en: '/privacy', es: '/es/privacidad' };
+  for (const langue of ['fr', 'en', 'es']) {
     const r = confidentialite({ langue, ch: ch[langue], site: SITE, urls: urlsCf });
     if (/undefined|NaN/.test(r.html)) problemes.push(`${r.url} : valeur vide dans la page`);
     if (!CHECK) writeFileSync(join(RACINE, r.sortie), r.html);
@@ -1274,7 +1275,7 @@ try {
 const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe, oeuvres: OEUVRES.plan });
 if (!CHECK) writeFileSync(join(RACINE, 'sitemap.xml'), plan);
 const urls = (plan.match(/<loc>/g) || []).length;
-const pagesAttendues = ROUTES.reduce((n, r) => n + LANGUES.filter(l => r[l]).length, 0) + OEUVRES.plan.length * 2;
+const pagesAttendues = ROUTES.reduce((n, r) => n + LANGUES.filter(l => r[l]).length, 0) + OEUVRES.plan.length * LANGUES.length;
 if (urls !== pagesAttendues) {
   problemes.push(`sitemap.xml : ${urls} URL pour ${pagesAttendues} pages attendues`);
 }

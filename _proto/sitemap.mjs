@@ -104,13 +104,14 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
     }
     return dates[k];
   };
-  for (const langue of ['en', 'fr']) {
+  for (const langue of ['en', 'fr', 'es']) {
     for (const o of oeuvres) {
       lignes.push(
         `  <url><loc>${site}${o[langue]}</loc>`,
         `    <lastmod>${dateDe(o.cle, langue)}</lastmod>`,
         `    <xhtml:link rel="alternate" hreflang="en" href="${site}${o.en}"/>`,
         `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${o.fr}"/>`,
+        `    <xhtml:link rel="alternate" hreflang="es" href="${site}${o.es}"/>`,
         '  </url>',
       );
     }

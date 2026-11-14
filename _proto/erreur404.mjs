@@ -45,6 +45,13 @@ const T = {
     accueil: 'Back to the home page',
     nav: { dossiers: 'Deep dives', 'a-venir': 'Upcoming', nouveautes: 'What’s new' },
   },
+  es: {
+    lang: 'es', code: '404', titre: 'Página no encontrada',
+    dek: 'Esta dirección no lleva a ninguna parte. Quizá ha cambiado o se copió mal.',
+    univers: 'Las cronologías', pages: 'El resto del sitio',
+    accueil: 'Volver al inicio',
+    nav: { dossiers: 'Expedientes', 'a-venir': 'Próximamente', nouveautes: 'Novedades' },
+  },
 };
 
 // Les dix univers, dans l'ordre de l'accueil, avec leur encre de la charte.

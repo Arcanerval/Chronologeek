@@ -13,7 +13,7 @@
 
 import { TETE_REGLAGES } from './reglages.mjs';
 
-const MAJ = { fr: '14 novembre 2026', en: 'November 14, 2026' };
+const MAJ = { fr: '14 novembre 2026', en: 'November 14, 2026', es: '14 de noviembre de 2026' };
 
 const TEXTE = {
   fr: {
@@ -91,6 +91,44 @@ const TEXTE = {
         'This page changes when the site changes. The update date is at the top.'
       ]]
     ]
+  },
+  es: {
+    titre: 'Privacidad', h1: 'Política de privacidad', tag: 'Tus datos',
+    desc: 'Qué guarda Chronologeek, qué no envía nunca y los servicios a los que llama tu navegador por el camino.',
+    maj: 'Actualizado el ' + MAJ.es,
+    sections: [
+      ['En resumen', [
+        'Chronologeek <b>no tiene cuentas, ni servidor de datos, ni cookies publicitarias</b>. Tu progreso, tus propias obras añadidas y tus ajustes se quedan en tu navegador, en tu dispositivo. No los vemos ni podemos verlos.',
+        'El sitio es un proyecto fan independiente, llevado por una sola persona, sin publicidad y sin reventa de datos.'
+      ]],
+      ['Lo que se queda en tu dispositivo', [
+        'El sitio guarda en el almacenamiento local de tu navegador (<code>localStorage</code>): las obras que marcaste y el día en que las marcaste, las obras que añadiste tú (imágenes incluidas), tus ajustes, el recorrido elegido en cada página, tus votos para la próxima línea y algunas preferencias de visualización. Una caché sin conexión (service worker) guarda además una copia de las páginas.',
+        'Nada de esto sale de tu dispositivo salvo que lo hagas tú: un archivo exportado, un enlace de transferencia (tu progreso viaja dentro del enlace, sin servidor de por medio) o la sincronización con Google Drive descrita más abajo.',
+        'Para borrarlo todo, elimina los datos del sitio en los ajustes de tu navegador. Los archivos que importas (exportaciones de Chronologeek o de Letterboxd) se leen en tu navegador y no se envían a ninguna parte.'
+      ]],
+      ['Medición de audiencia', [
+        'Contamos las visitas con <a href="https://www.goatcounter.com/" rel="noopener">GoatCounter</a>, una herramienta de código abierto que <b>no pone cookies ni guarda tu dirección IP</b>. Registra la página vista, el sitio de procedencia, el tamaño de pantalla, el navegador y el país aproximado, sin poder identificarte ni seguirte de un sitio a otro.',
+        'Un voto para la próxima línea se cuenta igual, como un evento anónimo. Los totales de votos son públicos.',
+        'Un bloqueador de anuncios que bloquee GoatCounter no rompe nada del sitio, salvo los votos.'
+      ]],
+      ['Alojamiento', [
+        'El sitio está alojado en <a href="https://pages.github.com/" rel="noopener">GitHub Pages</a>. Como cualquier alojamiento, GitHub recibe tu dirección IP para servirte las páginas y proteger su servicio; consulta la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaración de privacidad de GitHub</a>. Las fuentes del sitio las sirve el propio sitio.'
+      ]],
+      ['Servicios a los que llama tu navegador', [
+        'Para mostrar los detalles de cada obra, tu navegador consulta directamente servicios públicos, que reciben así tu dirección IP y el tipo de navegador, como con cualquier imagen cargada en la web. No les enviamos ningún dato sobre ti.',
+        '<b>TMDB</b> (The Movie Database): pósteres, sinopsis, tráileres y plataformas de streaming; estas últimas vienen de JustWatch, a través de TMDB. <b>RAWG</b>: datos y plataformas de los videojuegos. <b>Open Library</b>: datos de los libros. Los tráileres son enlaces a YouTube: no se carga nada de YouTube hasta que haces clic.',
+        'Los enlaces «Dónde leer», «Dónde ver», Ko-fi, suscripción al calendario y fuentes llevan a otros sitios, que tienen sus propias normas. De momento no se usa ningún enlace de afiliado; si eso cambia, la línea correspondiente lo dirá.'
+      ]],
+      ['Sincronización con Google Drive', [
+        'Si eliges sincronizar tu progreso con Google Drive, tu navegador carga el script de inicio de sesión de Google y pide el permiso de Google. El sitio solo pide acceso a <b>los archivos que crea él mismo</b> (<code>drive.file</code>): guarda tu progreso en un archivo <code>chronologeek.json</code> de tu Drive y no ve ninguno de tus otros archivos.',
+        'El token de acceso se queda en la página mientras dura la sincronización y solo se envía a Google. No se copia nada en un servidor de Chronologeek: no hay ninguno. Puedes retirar el acceso cuando quieras desde <a href="https://myaccount.google.com/permissions" rel="noopener">tu cuenta de Google</a> y borrar el archivo de tu Drive.',
+        'El uso que hace Chronologeek de la información recibida de las API de Google cumple la <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Política de datos de usuario de los servicios de API de Google</a>, incluidos los requisitos de uso limitado.'
+      ]],
+      ['Tus derechos y contacto', [
+        'Como no guardamos ningún dato sobre ti, no hay nada que consultar, corregir o borrar por nuestra parte: todo está en tu dispositivo o en tu Drive, bajo tu control. Para cualquier pregunta, escríbenos con el enlace <a href="#contact" data-contact>Contacto</a> al pie de la página.',
+        'Esta página cambia cuando cambia el sitio. La fecha de actualización está arriba.'
+      ]]
+    ]
   }
 };
 
@@ -107,11 +145,11 @@ const CSS = `.cf{max-width:780px;margin:0 auto;padding:48px 20px 64px}
 
 export function confidentialite({ langue, ch, site, urls }) {
   const t = TEXTE[langue];
-  const moi = urls[langue], autre = urls[langue === 'fr' ? 'en' : 'fr'];
-  const header = ch.header.replace(/(class="icon-btn lang-btn" href=")[^"]*"/g, `$1${autre}"`)
-    // le sélecteur de langue (publier.mjs) : l'autre langue mène à sa confidentialité, pas d'espagnol ici
+  const moi = urls[langue];
+  // le sélecteur de langue (publier.mjs) : chaque langue mène à sa confidentialité
+  const header = ch.header
     .replace(/<a class="lp-i" href="[^"]*" hreflang="(\w+)"([\s\S]*?)<\/a>/g,
-      (t, l, reste) => l === 'es' ? '' : `<a class="lp-i" href="${autre}" hreflang="${l}"${reste}</a>`);
+      (t, l, reste) => urls[l] ? `<a class="lp-i" href="${urls[l]}" hreflang="${l}"${reste}</a>` : '');
   const corps = t.sections.map(([h, ps]) =>
     `<h2>${esc(h)}</h2>\n` + ps.map(p => `<p>${p}</p>`).join('\n')).join('\n');
   const html = `<!doctype html>
@@ -125,10 +163,11 @@ ${TETE_REGLAGES}
 <link rel="canonical" href="${site}${moi}"/>
 <link rel="alternate" hreflang="fr" href="${site}${urls.fr}"/>
 <link rel="alternate" hreflang="en" href="${site}${urls.en}"/>
+<link rel="alternate" hreflang="es" href="${site}${urls.es}"/>
 <link rel="alternate" hreflang="x-default" href="${site}${urls.en}"/>
 <meta property="og:title" content="${esc(t.h1)}"/>
 <meta property="og:description" content="${esc(t.desc)}"/>
-<meta property="og:locale" content="${langue === 'fr' ? 'fr_FR' : 'en_US'}"/>
+<meta property="og:locale" content="${{ fr: 'fr_FR', en: 'en_US', es: 'es_ES' }[langue]}"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#08080f"/>
@@ -147,9 +186,9 @@ ${ch.footer}
 <script>(function(){var b=document.getElementById('burger'),d=document.getElementById('drawer');if(b&&d)b.addEventListener('click',function(){var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')})})();</script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script src="/pwa.js"></script>
-<script src="/app.js"></script>
+<script src="${langue === 'es' ? '/app-es.js' : '/app.js'}"></script>
 </body>
 </html>
 `;
-  return { sortie: (langue === 'fr' ? 'fr/confidentialite' : 'privacy') + '.html', url: moi, html };
+  return { sortie: moi.slice(1) + '.html', url: moi, html };
 }

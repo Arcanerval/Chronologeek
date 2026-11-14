@@ -6734,7 +6734,7 @@ function cgBillet(){
 
   /* ── Le lien vers la page de l'œuvre, à l'ouverture d'une carte ───────── */
   var ROUTE = location.pathname.split('/').pop().replace(/\.html$/, '');
-  var BASE = (FR ? '/works/' : '/works/') + ROUTE + '/';
+  var BASE = (FR ? '/es/obras/' : '/works/') + ROUTE + '/';
   var table = null;
   function chargeTable(){
     if (!table) table = fetch('/works/' + ROUTE + '.json').then(function(r){ return r.ok ? r.json() : {}; })

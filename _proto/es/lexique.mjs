@@ -291,6 +291,8 @@ export const LEXIQUE = {
   'When does {name} take place?': '¿Cuándo transcurre {name}?',
   'Why watch {name} at this point?': '¿Por qué ver {name} en este punto?',
   'Why watch {name} at this point in the timeline?': '¿Por qué ver {name} en este punto de la cronología?',
+  'Why play {name} at this point in the timeline?': '¿Por qué jugar a {name} en este punto de la cronología?',
+  'Why read {name} at this point in the timeline?': '¿Por qué leer {name} en este punto de la cronología?',
   'Choose your line': 'Elige tu línea', 'Choose a line': 'Elige una línea', 'Now showing': 'En pantalla',
   'SOFT-CANON': 'CANON BLANDO',
   'End of the line': 'Fin de la línea', 'Continue to': 'Continuar hacia', 'Departures': 'Salidas',

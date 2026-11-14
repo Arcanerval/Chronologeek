@@ -78,10 +78,11 @@ const TECHNIQUES = new Set([
   'tmdb', 'media', 'href', 'key', 'lang', 'locale', 'tags', 'trigger', 'uni', 'nat', 'vo',
   'otherFlag', 'otherHref', 'flag', 'art', 'banner', 'tmdb_banner', 'softcanon', 'open',
   'cols', 'groups', 'special', 'ref', 'covers', 'drop', 'rt', 'branch', 'ol', 'zone',
-  'tmdbLang', 'tmdbKey', 'rawgKey', 'rawg', 'isbn', 'season', 'ep', 'icon', 'emoji', 'defenders', 'q', 'inc', 'exc', 'universe_key',
+  'tmdbLang', 'tmdbKey', 'rawgKey', 'rawg', 'isbn', 'season', 'ep', 'icon', 'emoji', 'defenders', 'universe_key',
 ]);
 /* Une date de timeline ne se traduit jamais (« BBY » reste « BBY »). */
 const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel', 'present']);
+const BLOCS_TECHNIQUES = new Set(['ol']);
 
 /* ═══ LE LEXIQUE ═══════════════════════════════════════════════════════ */
 const identiques = new Set(IDENTIQUES.map(net));
@@ -202,6 +203,10 @@ const TEXTES = />([^<>]+)</g;
 const ATTRS = /(?:aria-label|title|placeholder|alt|data-label)="([^"]*)"/g;
 
 function traduitObjet(o, traduit, chemin = '', cle = '') {
+  /* Un bloc technique entier (la requête Open Library `ol` : `q`, `inc`,
+     `exc`) : sa clé `q` ne doit pas devenir technique ailleurs — c'est aussi
+     la question de `faqCats`. */
+  if (BLOCS_TECHNIQUES.has(cle)) return o;
   if (Array.isArray(o)) return o.map(v => traduitObjet(v, traduit, `${chemin}[]`, cle));
   if (o && typeof o === 'object') {
     const out = {};
