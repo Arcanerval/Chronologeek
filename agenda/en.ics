@@ -30,8 +30,9 @@ SUMMARY:Star Wars · The Fall of Kylo Ren 4
 DESCRIPTION:The Fall of Kylo Ren 4 is the upcoming fourth issue of the 2026
   canon comic book miniseries Star Wars: The Fall of Kylo Ren set between t
  he events of The Last Jedi and The Rise of Skywalker. The issue will be wr
- itten by Charles Soule\, illustrated by Will Sliney\, and published by Mar
- vel Comics on November 18\, 2026.\n\nhttps://chronologeek.app/upcoming
+ itten by Charles Soule\, illustrated by Will Sliney and Guru-eFX\, and pub
+ lished by Marvel Comics on November 18\, 2026.\n\nhttps://chronologeek.app
+ /upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -240,6 +241,16 @@ URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:1afd42eef86df2de36e2-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270522
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S2E01 · Premiere
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:34e554f69f9fc12f0568-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270528
@@ -248,6 +259,36 @@ SUMMARY:Star Wars · Star Wars: Starfighter
 DESCRIPTION:When a cynical rogue is confronted by his mysterious past\, he 
  is hurled into a dangerous adventure across the galaxy that puts him on a 
  crash course with destiny.\n\nhttps://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:e47adffb2e705068431b-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270529
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S2E04
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:da75da9a0d11f045250e-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270604
+DTEND;VALUE=DATE:20270605
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S2E07
+DESCRIPTION:https://chronologeek.app/upcoming
+URL:https://chronologeek.app/upcoming
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:a382711fbbc066904d34-en@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270611
+DTEND;VALUE=DATE:20270612
+SUMMARY:Avatar Legends · Avatar: Seven Havens · S2E10 · Finale
+DESCRIPTION:https://chronologeek.app/upcoming
 URL:https://chronologeek.app/upcoming
 TRANSP:TRANSPARENT
 END:VEVENT
