@@ -619,6 +619,38 @@ arrêts sont des comics. Code de ligne **MV**, quatre stations « ÈRE N / 4 ».
   `UNIVERS_TITRE` — Legendary produit aussi Dune et Pacific Rim. *Godzilla x
   Kong: Supernova* (`movie/1288438`, mars 2027) est la raison de cette ligne.
 
+## L'espagnol, troisième langue, posé le 14 novembre 2026
+
+Demandé par Niko. **Espagnol neutre** (Espagne et Amérique latine),
+**tutoiement**, **titres d'œuvres en anglais**, y compris dans les phrases —
+l'Espagne et l'Amérique latine ne traduisent pas les titres pareil. Badge VO
+masqué en espagnol pour l'instant. En ligne : `/es/` et `/es/starwars`.
+
+- **L'espagnol descend de l'anglais** : `node _proto/traduire-es.mjs` écrit
+  `es-*.html` et `data-*-es.js` depuis les `en-*`, avec les tables de
+  `_proto/es/` (`lexique.mjs` commun, `<cle>.mjs` par univers, `gabarits.mjs`).
+  À lancer **après** les chaînes française et anglaise. Ce qui manque sort dans
+  `a-traduire-es-<cle>.json`, et un univers incomplet n'est pas écrit.
+- **Le moteur** : `moteur-es.mjs` tire `e-app-es.js` de `e-app.js` en
+  remplaçant la branche française de chaque `FR ? … : …` par la traduction de
+  la branche anglaise. Ce qui n'est pas un libellé se tranche dans `RETOUCHES`
+  de `es/moteur.mjs` (radar en date US et titre original, pays par défaut lu
+  dans `navigator.language`). Ne jamais éditer `e-app-es.js`.
+- **Publication** : `ROUTES` porte `es` route par route ; une route sans `es`
+  n'a pas de page espagnole, et les liens espagnols y mènent à l'anglaise.
+  `DONNEES_ES` de `jsonld.mjs` donne les données espagnoles, l'anglais sert de
+  repli partout ailleurs. Une pastille « ES » / « EN » s'ajoute au drapeau,
+  dans le tiroir sous 560 px — pas de drapeau espagnol, l'espagnol visant aussi
+  l'Amérique latine. `/reglages.js` a une troisième colonne.
+- **Un univers de plus en espagnol** : sa table `es/<cle>.mjs`, son entrée dans
+  `UNIVERS` de `traduire-es.mjs`, `DONNEES_ES`, `ASSETS` et `ROUTES` de
+  `publier.mjs`, `seo.json`, puis `PRECACHE` de `sw.js` une fois publié
+  (`addAll` est tout ou rien).
+- **Les libellés posés en CSS** (`html[lang=en] …{content:…}`) reçoivent leur
+  règle `html[lang=es]` à la traduction ; les bascules `EN ? … : …` des scripts
+  de page se tranchent dans `RETOUCHES` de la table de la page
+  (`es/accueil.mjs`).
+
 ## Les parcours
 
 Star Wars et Marvel ont deux ordres de lecture depuis la refonte, Dragon Age
