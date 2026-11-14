@@ -1843,6 +1843,8 @@ function cgBillet(){
     driveOk: function(q){ return 'Synchronisé avec votre Google Drive · ' + q + '. Le fichier chronologeek.json y garde votre progression : rien ne passe par Chronologeek.'; },
     driveKo: 'Google Drive n’a pas répondu. Réessayez dans un instant.',
     driveRefus: 'Accès à Google Drive refusé : rien n’a été synchronisé.',
+    driveBloque: 'Votre navigateur a bloqué la fenêtre de Google : autorisez les fenêtres pour chronologeek.app, puis recliquez.',
+    driveFerme: 'La fenêtre de Google a été fermée : rien n’a été synchronisé.',
     ignorer: 'Ignorer'
   } : {
     titre: 'All your timelines, in one file',
@@ -1883,6 +1885,8 @@ function cgBillet(){
     driveOk: function(q){ return 'Synced with your Google Drive · ' + q + '. The chronologeek.json file there keeps your progress: nothing goes through Chronologeek.'; },
     driveKo: 'Google Drive did not answer. Try again in a moment.',
     driveRefus: 'Google Drive access denied: nothing was synced.',
+    driveBloque: 'Your browser blocked Google’s window: allow pop-ups for chronologeek.app, then click again.',
+    driveFerme: 'Google’s window was closed: nothing was synced.',
     ignorer: 'Dismiss'
   };
 
@@ -2623,7 +2627,8 @@ function cgBillet(){
           var c = g.accounts.oauth2.initTokenClient({
             client_id: DRIVE_ID, scope: 'https://www.googleapis.com/auth/drive.file',
             callback: function(r){ if (r && r.access_token) { jeton = r.access_token; ok(jeton); } else ko('refus'); },
-            error_callback: function(){ ko('refus'); }
+            // la fenêtre bloquée ou fermée n'est pas un refus : le dire autrement
+            error_callback: function(e){ ko(e && e.type === 'popup_failed_to_open' ? 'bloque' : e && e.type === 'popup_closed' ? 'ferme' : 'refus'); }
           });
           c.requestAccessToken({ prompt: lis('cg-drive', null) ? '' : 'consent' });
         });
@@ -2713,7 +2718,7 @@ function cgBillet(){
               applique(m, false);
             });
           });
-        }).catch(function(e){ dit(e === 'refus' ? T.driveRefus : T.driveKo); });
+        }).catch(function(e){ dit(e === 'refus' ? T.driveRefus : e === 'bloque' ? T.driveBloque : e === 'ferme' ? T.driveFerme : T.driveKo); });
       });
     }
 
