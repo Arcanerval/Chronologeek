@@ -1838,6 +1838,11 @@ function cgBillet(){
              '. Il remplace la progression de ces univers sur cet appareil ; vos ajouts sont conservés.';
     },
     appliquer: 'Remplacer ici',
+    drive: 'Google Drive',
+    driveEn: 'Synchronisation…',
+    driveOk: function(q){ return 'Synchronisé avec votre Google Drive · ' + q + '. Le fichier chronologeek.json y garde votre progression : rien ne passe par Chronologeek.'; },
+    driveKo: 'Google Drive n’a pas répondu. Réessayez dans un instant.',
+    driveRefus: 'Accès à Google Drive refusé : rien n’a été synchronisé.',
     ignorer: 'Ignorer'
   } : {
     titre: 'All your timelines, in one file',
@@ -1873,6 +1878,11 @@ function cgBillet(){
              '. It replaces the progress of these universes on this device; your own additions are kept.';
     },
     appliquer: 'Replace here',
+    drive: 'Google Drive',
+    driveEn: 'Syncing…',
+    driveOk: function(q){ return 'Synced with your Google Drive · ' + q + '. The chronologeek.json file there keeps your progress: nothing goes through Chronologeek.'; },
+    driveKo: 'Google Drive did not answer. Try again in a moment.',
+    driveRefus: 'Google Drive access denied: nothing was synced.',
     ignorer: 'Dismiss'
   };
 
@@ -1910,6 +1920,7 @@ function cgBillet(){
        sans ce rappel, le message occupe sa ligne avant d'exister. */
     '.sy-err{display:block;font-size:13px;font-weight:700;color:var(--mcu)}',
     '.sy-err[hidden]{display:none}',
+    '.sy-err.ok{color:#81c784}',
     /* Étroit, les deux boutons prennent la ligne chacun : côte à côte ils
        tombaient à deux mots par ligne. */
     '@media(max-width:420px){',
@@ -2415,6 +2426,9 @@ function cgBillet(){
           '<button type="button" class="sy-b alt" id="sy-lk" aria-expanded="false" aria-controls="sy-l">' +
             '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>' +
             '<span></span></button>' +
+          '<button type="button" class="sy-b alt" id="sy-gd" hidden>' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l6 11-4 7H6l-4-7z"/><path d="M8 3l10 18M16 3 6 21M2 14h20"/></svg>' +
+            '<span></span></button>' +
           '<input type="file" accept="application/json,.json" id="sy-f" hidden/>' +
         '</div>' +
         '<span class="sy-err" hidden></span>' +
@@ -2457,6 +2471,7 @@ function cgBillet(){
     sec.querySelector('#sy-out span').textContent = T.exp;
     sec.querySelector('#sy-in span').textContent = T.imp;
     sec.querySelector('#sy-lk span').textContent = T.lien;
+    sec.querySelector('#sy-gd span').textContent = T.drive;
     sec.querySelector('label[for="sy-url"]').textContent = T.lien;
     sec.querySelector('#sy-cp span').textContent = T.copier;
     sec.querySelector('#sy-sh span').textContent = T.partager;
@@ -2481,7 +2496,7 @@ function cgBillet(){
     var out = sec.querySelector('#sy-out');
     var champ = sec.querySelector('#sy-f');
 
-    function dit(m){ err.textContent = m || ''; err.hidden = !m; }
+    function dit(m, bon){ err.textContent = m || ''; err.hidden = !m; err.classList.toggle('ok', !!bon); }
 
     /* Le compte dit ce que le fichier contiendra. Vide, il n'apprendrait
        rien à personne : le bouton se ferme, et la ligne dit pourquoi. */
@@ -2570,6 +2585,137 @@ function cgBillet(){
       };
       r.readAsText(f);
     });
+
+    /* ── la synchro Google Drive ─────────────────────────────────────────
+       Posée le 14 novembre 2026 (n° 5 de la liste du 5 novembre). Le visiteur
+       range sa progression dans un fichier `chronologeek.json` de SON Google
+       Drive : rien n'est stocké chez nous, rien ne passe par nous. Portée
+       `drive.file` : l'appli ne voit que les fichiers qu'elle a créés, et
+       Google la classe « non sensible ».
+
+       - **Un bouton, jamais en arrière-plan** : une page ne peut pas demander
+         de jeton à Google sans un geste du visiteur (la fenêtre serait
+         bloquée). Le script de Google n'est chargé qu'au survol ou au clic du
+         bouton — aucune requête vers Google pour qui ne s'en sert pas.
+       - **La fusion est une union** : une coche faite sur l'un ou l'autre
+         appareil reste. Une coche retirée sur un appareil revient donc si
+         l'autre l'a encore ; c'est le prix d'une synchro sans horodatage par
+         case, et le moins grave des deux défauts (on ne perd rien). Les
+         ajouts se rejoignent par identifiant, les dates gardent la plus
+         récente, les réglages restent ceux de l'appareil.
+       - **`DRIVE_ID` vide = bouton caché.** L'identifiant OAuth est celui du
+         projet Google Cloud de Niko ; il est public par nature. */
+    var DRIVE_ID = '';
+    var gd = sec.querySelector('#sy-gd');
+    var GSI = null, jeton = null;
+    function gsi(){
+      GSI = GSI || new Promise(function(ok, ko){
+        var s = document.createElement('script');
+        s.src = 'https://accounts.google.com/gsi/client'; s.async = true;
+        s.onload = function(){ ok(window.google); }; s.onerror = ko;
+        document.head.appendChild(s);
+      });
+      return GSI;
+    }
+    function demandeJeton(){
+      return gsi().then(function(g){
+        return new Promise(function(ok, ko){
+          var c = g.accounts.oauth2.initTokenClient({
+            client_id: DRIVE_ID, scope: 'https://www.googleapis.com/auth/drive.file',
+            callback: function(r){ if (r && r.access_token) { jeton = r.access_token; ok(jeton); } else ko('refus'); },
+            error_callback: function(){ ko('refus'); }
+          });
+          c.requestAccessToken({ prompt: lis('cg-drive', null) ? '' : 'consent' });
+        });
+      });
+    }
+    function api(url, o){
+      o = o || {}; o.headers = o.headers || {}; o.headers.Authorization = 'Bearer ' + jeton;
+      return fetch(url, o).then(function(r){ if (!r.ok) throw r.status; return r; });
+    }
+    function trouve(){
+      var memo = lis('cg-drive', null);
+      var q = encodeURIComponent("name='chronologeek.json' and trashed=false");
+      return api('https://www.googleapis.com/drive/v3/files?spaces=drive&fields=files(id,modifiedTime)&orderBy=modifiedTime%20desc&q=' + q)
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          var f = (j.files || [])[0];
+          return f ? f.id : (memo && memo.id) || null;
+        });
+    }
+    function ecrit(id, corps){
+      var b = JSON.stringify(corps);
+      if (id) return api('https://www.googleapis.com/upload/drive/v3/files/' + id + '?uploadType=media',
+        { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: b }).then(function(){ return id; });
+      var lim = 'cg' + Date.now();
+      var multi = '--' + lim + '\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n' +
+        JSON.stringify({ name: 'chronologeek.json', mimeType: 'application/json' }) + '\r\n--' + lim +
+        '\r\nContent-Type: application/json\r\n\r\n' + b + '\r\n--' + lim + '--';
+      return api('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',
+        { method: 'POST', headers: { 'Content-Type': 'multipart/related; boundary=' + lim }, body: multi })
+        .then(function(r){ return r.json(); }).then(function(j){ return j.id; });
+    }
+    // l'union de ce qui est ici et de ce qui est sur Drive
+    function union(ici, la){
+      var out = { chronologeek: 1, kind: 'all', date: new Date().toISOString(), universes: {}, dates: {}, options: ici.options };
+      var U = {};
+      Object.keys(ici.universes || {}).concat(Object.keys((la && la.universes) || {})).forEach(function(k){ U[k] = 1; });
+      Object.keys(U).forEach(function(k){
+        var a = (ici.universes || {})[k] || {}, b = ((la && la.universes) || {})[k] || {}, m = {};
+        ['progress', 'alt'].forEach(function(c){
+          var o = {}, x = a[c] || {}, y = b[c] || {};
+          Object.keys(y).forEach(function(i){ if (y[i]) o[i] = y[i]; });
+          Object.keys(x).forEach(function(i){ if (x[i]) o[i] = x[i]; });
+          if (Object.keys(o).length) m[c] = o;
+        });
+        var vus = {}, mine = [];
+        (a.mine || []).concat(b.mine || []).forEach(function(e){ if (e && e.id && !vus[e.id]) { vus[e.id] = 1; mine.push(e); } });
+        if (mine.length) m.mine = mine;
+        if (a.mode || b.mode) m.mode = a.mode || b.mode;
+        out.universes[k] = m;
+      });
+      [la && la.dates, ici.dates].forEach(function(d){
+        Object.keys(d || {}).forEach(function(i){ if (!(out.dates[i] >= d[i])) out.dates[i] = d[i]; });
+      });
+      var last = lis('cg_last', null) || (la && la.last);
+      if (last) out.last = last;
+      return out;
+    }
+    function compte(d){
+      var n = 0;
+      Object.keys(d.universes || {}).forEach(function(k){
+        var u = d.universes[k];
+        n += Object.keys(u.progress || {}).length + Object.keys(u.alt || {}).length + (u.mine || []).length;
+      });
+      return n;
+    }
+    function quand(){
+      var n = new Date();
+      return n.toLocaleDateString(FR ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long' }) + ' ' +
+        n.toLocaleTimeString(FR ? 'fr-FR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+    }
+    window.CG_DRIVE_UNION = union;   // pour la vérifier sans compte Google
+    if (DRIVE_ID) {
+      gd.hidden = false;
+      gd.addEventListener('pointerenter', function(){ gsi().catch(function(){}); }, { once: true });
+      gd.addEventListener('click', function(){
+        var r = recolte(), ici = { universes: r.universes, dates: r.dates, options: r.options };
+        dit(T.driveEn);
+        demandeJeton().then(trouve).then(function(id){
+          var lecture = id ? api('https://www.googleapis.com/drive/v3/files/' + id + '?alt=media')
+            .then(function(x){ return x.json(); }).catch(function(){ return null; }) : Promise.resolve(null);
+          return lecture.then(function(la){
+            var m = union(ici, la);
+            return ecrit(id, m).then(function(nid){
+              pose('cg-drive', { id: nid, quand: new Date().toISOString() });
+              // rien de neuf venu de Drive : pas de rechargement
+              if (compte(m) === compte(ici)) { dit(T.driveOk(quand()), true); return; }
+              applique(m, false);
+            });
+          });
+        }).catch(function(e){ dit(e === 'refus' ? T.driveRefus : T.driveKo); });
+      });
+    }
 
     /* ── le lien ── */
     var lk = sec.querySelector('#sy-lk'), pan = sec.querySelector('#sy-l');

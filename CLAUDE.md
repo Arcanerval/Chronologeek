@@ -3508,6 +3508,24 @@ candidats permis, pas de retrait. **Résultats publics**, choix de Niko, lus sur
 tant que l'option « Allow adding visitor counts on your website » n'est pas cochée
 dans les réglages GoatCounter ; la liste reste alors sans chiffres.
 
+### La synchro Google Drive, posée le 14 novembre 2026
+
+Bouton « Google Drive » du bloc « Toutes vos timelines » de l'accueil (`e-app.js`, dans
+`demarre()` du bloc d'export, après l'import par fichier). Le visiteur range sa
+progression dans **un fichier `chronologeek.json` de son propre Drive** : rien n'est
+stocké chez nous. Portée `drive.file` (non sensible : l'appli ne voit que ses
+fichiers), jeton par Google Identity Services, script de Google chargé au survol ou
+au clic du bouton seulement. **Un bouton, jamais en arrière-plan** : sans geste du
+visiteur, la fenêtre de Google serait bloquée. **La fusion est une union**
+(`union()`, exposée en `window.CG_DRIVE_UNION` pour la vérifier sans compte) : une
+coche faite d'un côté reste — une coche retirée revient donc si l'autre appareil l'a
+encore, le moindre défaut —, ajouts réunis par identifiant (l'appareil gagne), dates
+les plus récentes, réglages de l'appareil. Puis réécriture du fichier, et
+rechargement par `applique()` si Drive apportait du neuf. **`DRIVE_ID` vide = bouton
+caché** : l'identifiant OAuth du projet Google Cloud de Niko, public par nature, à
+poser dans cette constante (origines autorisées : `https://chronologeek.app` et
+`http://localhost:8951`).
+
 ### Trois canaux de plus, posés le 27 septembre 2026
 
 Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne
