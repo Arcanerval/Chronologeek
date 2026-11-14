@@ -5016,6 +5016,124 @@ function cgBillet(){
   else pose();
 })();
 
+/* ═══ LA VERSION IMPRIMABLE ═════════════════════════════════════════════
+   Posée le 14 novembre 2026 (n° 9 de la liste du 5 novembre) : imprimer une
+   timeline donne une checklist papier, en noir sur blanc. Bouton « Imprimer »
+   à côté de « Affiche », mais Ctrl+P donne le même résultat : tout est dans
+   une feuille `@media print`, une seule copie pour les treize timelines et le
+   Dossier, posée sur les mêmes repères que l'affiche (`.era-sec`, `.col`,
+   `.bu`).
+
+   - **Ce qui reste** : un en-tête (univers, parcours, décompte, adresse),
+     chaque station en titre, chaque arrêt sur une ligne — case, arrêt, date,
+     titre, sous-titres —, sur deux colonnes. La case cochée à l'écran sort
+     cochée. Les filtres de la page s'appliquent : ce qui est masqué ne
+     s'imprime pas.
+   - **Ce qui part** : images, menus, premier écran, plan, barre du bas,
+     fiches dépliées, liens et boutons. Les arrêts animés à l'arrivée (`.rv`)
+     sont forcés visibles : sinon ceux sous la ligne de flottaison sortaient
+     blancs.
+   - **Tout en `!important`** : les pages posent leurs règles en dur, à
+     plusieurs poids selon la largeur ; c'est le seul moyen d'en sortir sans
+     les relire une à une.
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if (!document.querySelector('#timeline .era-sec')) return;
+  var FR = document.documentElement.lang !== 'en';
+  var T = FR ? { btn: 'Imprimer', arrets: 'arrêts terminés' } : { btn: 'Print', arrets: 'stops completed' };
+  var I = '!important';
+  var R = [
+    '@page{margin:12mm}',
+    'html,body{background:#fff' + I + ';color:#000' + I + '}',
+    'body *{box-shadow:none' + I + ';text-shadow:none' + I + '}',
+    '.cg-imp{display:block' + I + ';font:11pt/1.3 Chivo,sans-serif' + I + ';border-bottom:2pt solid #000;padding-bottom:4mm;margin-bottom:5mm}',
+    '.cg-imp b{display:block;font:900 26pt/1 "Big Shoulders Display",sans-serif;text-transform:uppercase}',
+    'main,.wrap,#timeline,.rows,.era-sec,.col,.zone,.cols{display:block' + I + ';width:auto' + I + ';max-width:none' + I + ';margin:0' + I + ';padding:0' + I + ';' +
+    'background:none' + I + ';border:0' + I + ';position:static' + I + ';transform:none' + I + '}',
+    '#timeline{columns:2;column-gap:9mm}',
+    '.col[hidden]{display:block' + I + '}',
+    '.stn,.stn-plate,.stn-txt{display:block' + I + ';background:none' + I + ';color:#000' + I + ';padding:0' + I + ';margin:0' + I + ';border:0' + I + ';min-height:0' + I + '}',
+    '.era-sec{break-inside:auto;margin-top:4mm' + I + '}',
+    '.stn-nm{font:900 13pt/1.1 "Big Shoulders Display",sans-serif' + I + ';color:#000' + I + ';margin:3mm 0 1mm' + I + ';' +
+    'border-bottom:1pt solid #000' + I + ';break-after:avoid;text-transform:uppercase}',
+    '.stn-k{display:none' + I + '}',
+    '.stn-meta{display:block' + I + ';font:8pt/1.2 Chivo,sans-serif' + I + ';color:#444' + I + ';margin:0 0 1.5mm' + I + '}',
+    '.stn-meta b{display:inline' + I + ';color:#000' + I + ';font-weight:700' + I + '}',
+    '.stn-meta span+span::before{content:" · "}',
+    '.col-h{display:block' + I + ';font:800 10pt/1.2 "Big Shoulders Display",sans-serif' + I + ';margin:2mm 0 1mm' + I + ';color:#000' + I + ';background:none' + I + ';border:0' + I + '}',
+    '.bu,.bu.rv{display:grid' + I + ';grid-template-columns:5mm 1fr;column-gap:2mm;align-items:start;break-inside:avoid;' +
+    'opacity:1' + I + ';transform:none' + I + ';margin:0 0 1.2mm' + I + ';padding:0' + I + ';animation:none' + I + '}',
+    '.bu[hidden]{display:none' + I + '}',
+    '.bu-side{display:block' + I + ';position:static' + I + ';width:auto' + I + '}',
+    '.bu-chk{position:static' + I + ';transform:none' + I + ';width:3.6mm' + I + ';height:3.6mm' + I + ';border:1pt solid #000' + I + ';' +
+    'border-radius:0' + I + ';background:#fff' + I + ';display:grid' + I + ';place-items:center;padding:0' + I + ';margin-top:.4mm' + I + '}',
+    '.bu-chk svg{width:3mm' + I + ';height:3mm' + I + ';stroke:#000' + I + ';opacity:0' + I + '}',
+    '.bu-chk[aria-checked="true"] svg{opacity:1' + I + '}',
+    // un bouton ne se met jamais « en ligne » dans Chrome : la carte passe en flex, heure et titre côte à côte
+    '.bu-card{display:flex' + I + ';flex-wrap:wrap;align-items:baseline;column-gap:1.5mm;background:none' + I + ';border:0' + I + ';padding:0' + I + ';color:#000' + I + ';transform:none' + I + '}',
+    '.bu-head{display:block' + I + ';width:auto' + I + ';flex:1 1 0;min-width:0;text-align:left' + I + '}',
+    '.bu-sub{flex-basis:100%}',
+    '.bu-time{display:inline' + I + ';background:none' + I + ';border:0' + I + ';padding:0' + I + ';margin:0 1.5mm 0 0' + I + '}',
+    '.bu-time .bu-n,.bu-time .d,.bu-time .rel,.bu-time .mem{display:inline' + I + ';font:8pt Chivo,sans-serif' + I + ';color:#555' + I + ';' +
+    'background:none' + I + ';border:0' + I + ';padding:0' + I + ';margin:0 1.2mm 0 0' + I + '}',
+    '.bu-head{display:inline' + I + ';background:none' + I + ';border:0' + I + ';padding:0' + I + ';color:#000' + I + '}',
+    '.bu-txt{display:inline' + I + ';padding:0' + I + '}',
+    '.bu-tags{display:inline' + I + ';margin:0' + I + '}',
+    '.bu-tags .b{background:none' + I + ';color:#555' + I + ';border:0' + I + ';padding:0' + I + ';font:8pt Chivo,sans-serif' + I + ';margin-right:1.2mm' + I + '}',
+    '.bu-tags .lv,.bu-tags .vo{display:none' + I + '}',
+    '.bu-title{display:inline' + I + ';font:700 10pt/1.25 Chivo,sans-serif' + I + ';color:#000' + I + ';text-transform:none' + I + '}',
+    '.bu.dr .bu-title{font-weight:600' + I + '}',
+    '.bu-sub{display:block' + I + ';padding:0' + I + ';margin:0' + I + '}',
+    '.bu-sub .arc{display:inline' + I + ';border:0' + I + ';padding:0' + I + '}',
+    '.bu-sub .si{display:inline' + I + ';background:none' + I + ';border:0' + I + ';padding:0' + I + ';font:8pt Chivo,sans-serif' + I + ';color:#444' + I + '}',
+    '.bu-sub .si+.si::before,.bu-sub .arc+.arc::before{content:" · "}',
+    'a{color:#000' + I + ';text-decoration:none' + I + '}',
+    // tout ce qui n'est pas la liste, en dernier : `.wrap` plus haut réaffichait le billet
+    'header,nav,footer,.drawer,.attract,.ln-hero,.ticket-row,.ln-map,.hud,.sieve,#sieve,#totop,.cg-bar,dialog,' +
+    '.bu-fig,.bu-link,.bu-panel,.bu-end,.bu-done,.stn-img,.stn-rail,.stn-cx,.ln-svg,.rows>.ici,.ztabs,.col-tabs,' +
+    '.dep,.board,.cuts,#intro,.pr,.sg-p,.mine-act,.bu-side::after,.lv .ic,.sep-row,.sep-fin,.scr,.bu-buy,.wl,.wt,' +
+    '.next-out,.rc,.sy,.bu-tags .ft,.bu-meta,.bu-note{display:none' + I + '}'
+  ].join('');
+  var st = document.createElement('style');
+  st.media = 'print';
+  st.textContent = R;
+  document.head.appendChild(st);
+  window.CG_IMPRIME = R;   // pour vérifier à l'écran sans imprimer
+
+  // l'en-tête, invisible à l'écran : univers, parcours, décompte, adresse
+  function entete(){
+    var h = document.querySelector('.cg-imp');
+    if (!h) {
+      h = document.createElement('div'); h.className = 'cg-imp'; h.style.display = 'none';
+      var tl = document.getElementById('timeline'); tl.parentNode.insertBefore(h, tl);
+    }
+    var C0 = window.CG_CARTE || {}, nom = C0.nomUnivers ? C0.nomUnivers() : document.title;
+    var par = document.querySelector('.par [aria-pressed="true"], .ln-go [aria-pressed="true"]');
+    var tous = document.querySelectorAll('#timeline .bu[data-id]'), faits = 0;
+    [].forEach.call(tous, function(b){ var c = b.querySelector('[data-check]'); if (c && c.getAttribute('aria-checked') === 'true') faits++; });
+    h.innerHTML = '<b></b><span></span>';
+    h.querySelector('b').textContent = nom;
+    h.querySelector('span').textContent = (par ? par.textContent.replace(/\s+/g, ' ').trim() + ' · ' : '') +
+      faits + ' / ' + tous.length + ' ' + T.arrets + ' · ' + location.host + location.pathname.replace(/\.html$/, '');
+  }
+  window.addEventListener('beforeprint', entete);
+
+  function pose(){
+    var avant = document.getElementById('affiche') || document.getElementById('share-prog');
+    if (!avant || document.getElementById('imprime')) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = avant.className; b.id = 'imprime';
+    b.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 18H4v-7h16v7h-3"/><rect x="7" y="14" width="10" height="7"/></svg> ';
+    b.appendChild(document.createTextNode(T.btn));
+    b.addEventListener('click', function(){ entete(); window.print(); });
+    avant.parentNode.insertBefore(b, avant.nextSibling);
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', pose);
+  else pose();
+})();
+
 /* ═══ LA RECHERCHE, DEPUIS L'ACCUEIL ═══════════════════════════════════
    Chaque page cherchait dans la sienne, et rien ne cherchait dans les
    autres. Qui arrive en se demandant où se place *Andor*, *Le Cycle de

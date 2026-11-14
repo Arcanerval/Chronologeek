@@ -3579,6 +3579,18 @@ sous-titre, et le nom de la franchise en tête de titre tombe (`PREFIXE`). Le pa
 général du réseau (n° 7) a été essayé en maquette le même jour et écarté par Niko :
 il redisait les cartes de l'accueil. Ne pas le reproposer.
 
+**La version imprimable**, posée le 14 novembre 2026 : une feuille `@media print` dans
+`e-app.js` (bloc « LA VERSION IMPRIMABLE », chaîne exposée en `window.CG_IMPRIME`
+pour la vérifier à l'écran), donc Ctrl+P comme le bouton « Imprimer » du panneau
+donnent une checklist noir sur blanc : en-tête (univers, parcours, décompte,
+adresse, `.cg-imp` posé au `beforeprint`), stations en titre, une ligne par arrêt
+— case, arrêt, date, type, titre, sous-titres — sur deux colonnes. Tout en
+`!important`, et **la règle de masquage en dernier** : `.wrap` plus haut
+réaffichait le billet. **La carte passe en flex** : un `<button>` ne se met jamais
+vraiment `inline` dans Chrome, et l'heure, le type et le titre partaient sur trois
+lignes. `.rv` est forcé visible, et `.col[hidden]` aussi : toutes les lignes d'un
+réseau s'impriment.
+
 ## Le plan de métro, publié le 28 septembre 2026
 
 L'accueil et la page Star Wars sont passés au design « ligne de métro ».
