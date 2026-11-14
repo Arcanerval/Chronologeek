@@ -75,16 +75,19 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
   // Les vingt-huit URL dans l'ordre du fichier écrit à la main : les anglaises
   // d'abord, les françaises ensuite. Rien ne l'impose, mais un plan de site qui
   // change d'ordre sans raison se relit mal d'une version à l'autre.
-  for (const langue of ['en', 'fr']) {
+  // L'espagnol depuis le 14 novembre 2026, route par route : une route qui
+  // n'a pas encore d'espagnol n'en porte pas.
+  for (const langue of ['en', 'fr', 'es']) {
     for (const r of routes) {
+      if (!r[langue]) continue;
       const f = sources(r.cle, langue);
       const date = modifieMaintenant(racine, f) ? aujourdhui()
                                                 : (dernierCommit(racine, f) || aujourdhui());
       lignes.push(
         `  <url><loc>${site}${r[langue].url}</loc>`,
         `    <lastmod>${date}</lastmod>`,
-        `    <xhtml:link rel="alternate" hreflang="en" href="${site}${r.en.url}"/>`,
-        `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${r.fr.url}"/>`,
+        ...['en', 'fr', 'es'].filter(l => r[l]).map(l =>
+          `    <xhtml:link rel="alternate" hreflang="${l}" href="${site}${r[l].url}"/>`),
         '  </url>',
       );
     }

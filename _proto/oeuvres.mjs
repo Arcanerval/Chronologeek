@@ -373,7 +373,9 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, autr
 
   // Le menu du site, avec l'univers de l'œuvre allumé et le drapeau vers sa version.
   const ici = h => h.split(`<a href="${urlU}"`).join(`<a href="${urlU}" aria-current="true"`);
-  const header = ici(ch.header).replace(/(class="icon-btn lang-btn" href=")[^"]*"/g, `$1${autreUrl}"`);
+  // la pastille de l'espagnol (publier.mjs) mène à la page Star Wars : les fiches n'ont pas d'espagnol
+  const header = ici(ch.header).replace(/(class="icon-btn lang-btn" href=")[^"]*"/g, `$1${autreUrl}"`)
+    .replace(/<a class="icon-btn lang-x"[^>]*>[\s\S]*?<\/a>/g, '').replace(/\s*<a class="dw-lang"[^>]*>[^<]*<\/a>/g, '');
   const footer = ici(ch.footer);
   const L = compact(titre).length;
   const taille = L <= 10 ? '' : L <= 18 ? ' l2' : L <= 30 ? ' l3' : ' l4';
@@ -480,4 +482,5 @@ export function oeuvres({ racine, site, urls }) {
 }
 
 /** L'adresse d'une œuvre, pour le pré-rendu. */
-export const baseOeuvres = langue => T[langue].base;
+// L'espagnol n'a pas encore ses fiches : il renvoie aux anglaises.
+export const baseOeuvres = langue => (T[langue] || T.en).base;

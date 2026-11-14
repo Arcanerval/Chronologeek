@@ -43,7 +43,10 @@ const PRECACHE = [
   '/data/assassinscreed-fr.js', '/data/dcanimation-fr.js', '/data/jurassicworld-fr.js', '/data/witcher-fr.js',
   '/data/residentevil-fr.js', '/data/bladerunner-fr.js', '/data/monsterverse-fr.js',
   '/data/news-fr.js',
-  '/data/dossier-star-wars-en.js', '/data/dossier-star-wars-fr.js'
+  '/data/dossier-star-wars-en.js', '/data/dossier-star-wars-fr.js',
+  // l'espagnol, page par page depuis le 14 novembre 2026 : n'ajouter ici
+  // qu'une page espagnole vraiment publiee (addAll est tout ou rien)
+  '/es/', '/es/starwars.html', '/app-es.js', '/data/starwars-es.js'
 ];
 
 self.addEventListener('install', e => {

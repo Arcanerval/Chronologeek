@@ -11,6 +11,12 @@
       "ogTitle": "Chronologeek — Geek Timelines",
       "desc": "Complete timelines for your favorite universes — every medium, chronological or release order, 100% canon. Track what you've completed.",
       "image": "https://chronologeek.app/images/og-banner.webp"
+    },
+    "es": {
+      "title": "Chronologeek — Cronologías geek y orden para ver",
+      "ogTitle": "Chronologeek — Cronologías geek",
+      "desc": "Cronologías completas de tus universos favoritos: todos los formatos, en orden cronológico o de estreno, 100 % canon. Marca lo que ya terminaste.",
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "sw": {
@@ -24,6 +30,12 @@
       "title": "Star Wars Timeline, Watch &amp; Release Order | Chronologeek",
       "ogTitle": "Star Wars Timeline — Chronologeek",
       "desc": "The Star Wars canon timeline — 62 movies, shows and games in chronological or release order, Republic to First Order, spoiler-free.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
+    },
+    "es": {
+      "title": "Star Wars en orden cronológico y de estreno | Chronologeek",
+      "ogTitle": "Star Wars en orden — Chronologeek",
+      "desc": "La cronología canon de Star Wars: 62 películas, series y juegos en orden cronológico o de estreno, de la República a la Primera Orden, sin spoilers.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },

@@ -89,6 +89,14 @@ export const SOURCES = {
   monsterverse: { fr: ['data-monsterverse.js', 'MONSTERVERSE'], en: ['data-monsterverse-en.js', 'MONSTERVERSE'] },
 };
 
+/* L'espagnol, posé le 14 novembre 2026, univers par univers : un univers
+   qui n'a pas encore ses données espagnoles (`traduire-es.mjs`) prend
+   les anglaises, et sa page espagnole n'existe pas encore. */
+export const DONNEES_ES = { sw: 'data-es.js' };
+for (const [k, s] of Object.entries(SOURCES)) s.es = DONNEES_ES[k] ? [DONNEES_ES[k], s.en[1]] : s.en;
+/* Le fichier qui porte `CG.t` dans chaque langue. */
+export const CG_DE = { fr: 'data.js', en: 'data-en.js', es: 'data-es.js' };
+
 // Le fil d'Ariane des pages qui n'ont pas de timeline. La clé du libellé est
 // celle de `CG.t.nav`, lue dans les données : rien n'est réécrit ici.
 const FIL = {
@@ -336,7 +344,7 @@ function blocFaq(langue, qr) {
  * a pas. `urls` donne l'URL de chaque clé de route dans la langue demandée.
  */
 export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) {
-  const t = charge(racine, langue === 'fr' ? 'data.js' : 'data-en.js').CG.t;
+  const t = charge(racine, CG_DE[langue]).CG.t;
   const blocs = [];
 
   // Le nom que porte un univers dans ses propres données — « The Walking Dead »

@@ -5,11 +5,13 @@
     <lastmod>2026-11-13</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/"/>
   </url>
   <url><loc>https://chronologeek.app/starwars</loc>
     <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/starwars"/>
   </url>
   <url><loc>https://chronologeek.app/marvel</loc>
     <lastmod>2026-11-13</lastmod>
@@ -100,11 +102,13 @@
     <lastmod>2026-11-13</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/"/>
   </url>
   <url><loc>https://chronologeek.app/fr/starwars</loc>
     <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/starwars"/>
   </url>
   <url><loc>https://chronologeek.app/fr/marvel</loc>
     <lastmod>2026-11-13</lastmod>
@@ -190,6 +194,18 @@
     <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/upcoming"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/a-venir"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/starwars</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/starwars"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/starwars"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/starwars"/>
   </url>
   <url><loc>https://chronologeek.app/works/starwars/episode-i-the-phantom-menace</loc>
     <lastmod>2026-11-12</lastmod>

@@ -32,5 +32,7 @@
   "data/news-fr.js": "_proto/data-news.js",
   "data/news-en.js": "_proto/data-news-en.js",
   "app.js": "_proto/e-app.js",
+  "data/starwars-es.js": "_proto/data-es.js",
+  "app-es.js": "_proto/e-app-es.js",
   "perso.js": "_proto/e-perso.js"
 }

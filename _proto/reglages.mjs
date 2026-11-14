@@ -99,21 +99,22 @@ const ROUE = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="cu
   '<circle class="moyeu" cx="12" cy="12" r="3"/></svg>';
 
 export const tiroirReglages = langue =>
-  `<button type="button" class="dw-rg" data-reglages>${langue === 'en' ? 'Settings' : 'Réglages'}</button>`;
+  `<button type="button" class="dw-rg" data-reglages>${({ en: 'Settings', es: 'Ajustes' })[langue] || 'Réglages'}</button>`;
 
 export const boutonReglages = langue => {
-  const n = langue === 'en' ? 'Settings' : 'Réglages';
+  const n = ({ en: 'Settings', es: 'Ajustes' })[langue] || 'Réglages';
   return `<button type="button" class="icon-btn cg-roue" data-reglages aria-label="${n}" title="${n}">${ROUE}</button>`;
 };
 
 // Les noms que le visiteur lit dans le panneau. Le type lui-même vient toujours des
 // `badgeLabels` et des `kindLabels` : un type absent d'ici garde son libellé.
 const PLURIELS = {
-  film: ['Films', 'Movies'], filmanim: ['Films animés', 'Animated movies'], serie: ['Séries', 'Series'],
-  anime: ['Séries animées', 'Animated series'], jeu: ['Jeux vidéo', 'Video games'], dlc: ['DLC', 'DLC'],
-  comic: ['Comics', 'Comics'], roman: ['Romans', 'Novels'], jeunesse: ['Romans jeune adulte', 'Young adult novels'],
-  audio: ['Livres audio', 'Audiobooks'], short: ['Courts métrages', 'Short films'], video: ['Vidéos', 'Videos'],
-  web: ['Webséries', 'Web series'], special: ['Spéciaux', 'Specials'],
+  // [français, anglais, espagnol] — la troisième colonne depuis le 14 novembre 2026
+  film: ['Films', 'Movies', 'Películas'], filmanim: ['Films animés', 'Animated movies', 'Películas animadas'], serie: ['Séries', 'Series', 'Series'],
+  anime: ['Séries animées', 'Animated series', 'Series animadas'], jeu: ['Jeux vidéo', 'Video games', 'Videojuegos'], dlc: ['DLC', 'DLC', 'DLC'],
+  comic: ['Comics', 'Comics', 'Cómics'], roman: ['Romans', 'Novels', 'Novelas'], jeunesse: ['Romans jeune adulte', 'Young adult novels', 'Novelas juveniles'],
+  audio: ['Livres audio', 'Audiobooks', 'Audiolibros'], short: ['Courts métrages', 'Short films', 'Cortometrajes'], video: ['Vidéos', 'Videos', 'Videos'],
+  web: ['Webséries', 'Web series', 'Webseries'], special: ['Spéciaux', 'Specials', 'Especiales'],
 };
 
 const casse = s => {
@@ -129,19 +130,19 @@ const CODES = { sw: 'SW', mcu: 'MCU', dc: 'DC', avatar: 'AV', startrek: 'ST', tw
 
 export function reglages({ racine }) {
   const types = {}, u = {};
-  function type(k, fr, en) {
-    if (!types[k]) types[k] = PLURIELS[k] || [casse(fr || k), casse(en || fr || k)];
+  function type(k, fr, en, es) {
+    if (!types[k]) types[k] = PLURIELS[k] || [casse(fr || k), casse(en || fr || k), casse(es || en || fr || k)];
   }
   for (const [cle, s] of Object.entries(SOURCES)) {
-    const wf = charge(racine, s.fr[0], s.fr[1]), we = charge(racine, s.en[0], s.en[1]);
+    const wf = charge(racine, s.fr[0], s.fr[1]), we = charge(racine, s.en[0], s.en[1]), ws = charge(racine, s.es[0], s.es[1]);
     const D = wf[s.fr[1]];
     if (!D || !D.eras) throw new Error(`reglages : ${cle} sans ères`);
-    const lf = (wf.CG && wf.CG.badgeLabels) || {}, le = (we.CG && we.CG.badgeLabels) || {};
-    for (const k of Object.keys(lf)) type(k, lf[k][1], (le[k] || [])[1]);
+    const lf = (wf.CG && wf.CG.badgeLabels) || {}, le = (we.CG && we.CG.badgeLabels) || {}, ls = (ws.CG && ws.CG.badgeLabels) || {};
+    for (const k of Object.keys(lf)) type(k, lf[k][1], (le[k] || [])[1], (ls[k] || [])[1]);
     u[cle] = {
       c: ENCRES[cle], k: CODES[cle],
       // le nom court, celui du menu : « DC — Guide du Multivers » s'arrête à « DC »
-      n: [decode(D.title), decode((we[s.en[1]] || D).title)]
+      n: [decode(D.title), decode((we[s.en[1]] || D).title), decode((ws[s.es[1]] || we[s.en[1]] || D).title)]
         .map(t => t.replace(/\s+[—–-]\s.*$/, '').replace(/^Marvel Cinematic Universe$/, 'Marvel')),
       // Une rangée par ère, dans l'ordre de la table `E` de l'accueil.
       e: D.eras.map(era => (era.entries || []).filter(arret).map(x => [x.id, x.type, x.level || 0, x.lang === 'vo' ? 1 : 0])),
@@ -149,7 +150,7 @@ export function reglages({ racine }) {
   }
   const wf = charge(racine, 'data-dossier-sw.js', 'CGD'), we = charge(racine, 'data-dossier-sw-en.js', 'CGD');
   const kf = ((wf.CGDT || wf.CG) || {}).kindLabels || {}, ke = ((we.CGDT || we.CG) || {}).kindLabels || {};
-  for (const k of Object.keys(kf)) type(k, kf[k], ke[k]);
+  for (const k of Object.keys(kf)) type(k, kf[k], ke[k], ke[k]);
   u['dossier-sw'] = {
     c: ENCRES.sw, dossier: 1,
     e: wf.CGD.eras.map(era => era.items.filter(x => x.kind === 'it').map(x => [x.id, x.k, 0, x.vo ? 1 : 0])),

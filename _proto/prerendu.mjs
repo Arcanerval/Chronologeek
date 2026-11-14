@@ -138,7 +138,7 @@ function section(era, liste) {
 
 // Le Dossier n'est pas dans `SOURCES` : il range ses 598 lignes sous `CGD`, et
 // ses ères portent `items` là où les timelines portent `entries`.
-const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'] };
+const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-en.js', 'CGD'] };
 
 /**
  * Rend le pré-rendu d'une page, ou '' si elle n'a pas de timeline (l'accueil,

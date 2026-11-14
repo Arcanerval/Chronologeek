@@ -70,10 +70,12 @@ const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel', 'present']);
 const identiques = new Set(IDENTIQUES.map(net));
 const commun = new Map(Object.entries(LEXIQUE).map(([k, v]) => [net(k), v]));
 
-function chargeTable(cle) {
+async function chargeTable(cle) {
   const f = path.join(ICI, 'es', `${cle}.mjs`);
-  if (!fs.existsSync(f)) return new Map();
-  return import(pathToFileURL(f)).then(m => new Map(Object.entries(m.default || {}).map(([k, v]) => [net(k), v])));
+  if (!fs.existsSync(f)) return { table: new Map(), retouches: [] };
+  const m = await import(pathToFileURL(f));
+  return { table: new Map(Object.entries(m.default || {}).map(([k, v]) => [net(k), v])),
+           retouches: m.RETOUCHES || [] };
 }
 
 /* Les sauts de paragraphe des FAQ ne peuvent venir que de la traduction :
@@ -273,6 +275,17 @@ function traduitPage(src, traduit) {
     if (z.type === 'brut') {
       if (z.txt.includes('i18n-off')) off = true;
       if (z.txt.includes('i18n-on')) off = false;
+      /* Les libellés posés en CSS (`html[lang=en] .ask::before{content:'…'}`,
+         le français étant la règle par défaut) : une règle espagnole juste
+         après chaque règle anglaise, sinon la page espagnole parle français. */
+      if (z.txt.startsWith('<style')) {
+        return z.txt.replace(/html\[lang=en\]([^{}]+)\{([^{}]*?)content:'((?:[^'\\]|\\.)*)'([^{}]*)\}/g, (t, sel, av, txt, ap) => {
+          const coeur = txt.trim();
+          const es = /\p{L}/u.test(coeur) ? traduit(coeur, 'css') : coeur;
+          const rendu = txt.replace(coeur, String(es).replace(/'/g, "\\'"));
+          return t + `html[lang=es]${sel}{${av}content:'${rendu}'${ap}}`;
+        });
+      }
       return z.txt;
     }
     if (z.type === 'js') return traduitJs(z.txt, traduit, 'js');
@@ -317,7 +330,7 @@ let sale = 0;
 const tousManques = [];
 for (const cle of cles) {
   const u = UNIVERS[cle];
-  const propre = await chargeTable(cle);
+  const { table: propre, retouches } = await chargeTable(cle);
   controleSauts(propre, cle);
   const manques = [];
   const traduit = traducteur(propre, manques, cle);
@@ -329,7 +342,11 @@ for (const cle of cles) {
       + `   Ne pas éditer à la main : corriger _proto/es/${cle}.mjs ou _proto/es/lexique.mjs, puis relancer. */\n`;
     ecrits.push([es, entete + out]);
   }
-  const page = recable(traduitPage(lire(u.page), traduit), u);
+  let page = recable(traduitPage(lire(u.page), traduit), u);
+  for (const [avant, apres] of retouches) {
+    if (!page.includes(avant)) { manques.push({ ou: `${cle}:retouche`, en: 'retouche sans cible : ' + avant.slice(0, 90) }); continue; }
+    page = page.split(avant).join(apres);
+  }
   ecrits.push([u.sortie, page]);
 
   const uniques = new Map();

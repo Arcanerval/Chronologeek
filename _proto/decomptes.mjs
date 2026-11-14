@@ -32,7 +32,7 @@ import { charge, SOURCES } from './jsonld.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 
-const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'] };
+const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-en.js', 'CGD'] };
 
 const arret = x => x && x.type !== 'separator' && x.type !== 'note';
 const donnees = (racine, [f, g]) => charge(racine, f, g)[g];
@@ -42,12 +42,12 @@ const donnees = (racine, [f, g]) => charge(racine, f, g)[g];
 export function decomptes(racine) {
   const univers = {};
   for (const [k, src] of Object.entries(SOURCES)) {
-    const fr = donnees(racine, src.fr), en = donnees(racine, src.en);
+    const fr = donnees(racine, src.fr), en = donnees(racine, src.en), es = donnees(racine, src.es);
     if (!fr?.eras?.length || !en?.eras?.length) throw new Error(`${k} : données sans ères`);
     if (fr.eras.length !== en.eras.length) throw new Error(`${k} : ${fr.eras.length} ères en français, ${en.eras.length} en anglais`);
     const eras = fr.eras.map((e, i) => {
       const a = (e.entries || []).filter(arret);
-      return { fr: e.title, en: en.eras[i].title, n: a.length, date: (a[0] || {}).date || '' };
+      return { fr: e.title, en: en.eras[i].title, es: (es.eras[i] || en.eras[i]).title, n: a.length, date: (a[0] || {}).date || '' };
     });
     univers[k] = { total: eras.reduce((s, e) => s + e.n, 0), stations: eras.length, eras };
   }
@@ -99,7 +99,7 @@ function accueil(html, langue, V, nom) {
   r.sub('stations et arrêts', new RegExp(`(m-nb"><b>)${NB}(</b>[^<]*<b>)${NB}(</b>)`),
     (_, a, b, c) => a + nombre(V.stations, langue) + b + nombre(V.total, langue) + c);
   r.sub('HUD', /(<em id="k-on">0<\/em> \/ )\d+/, (_, a) => a + V.total);
-  r.sub('univers et Dossier', /(<span class="lbl">)\d+( univers(?:es)? · )\d+/,
+  r.sub('univers et Dossier', /(<span class="lbl">)\d+( univers(?:es|os)? · )\d+/,
     (_, a, b) => a + V.n + b + V.dossier.total);
 
   // La table du plan : noms et comptes depuis les données, dates gardées.
@@ -110,7 +110,8 @@ function accueil(html, langue, V, nom) {
       const ancien = E[k] || [];
       neuf[k] = u.eras.map((e, i) => {
         const garde = ancien[i] && (ancien[i][0] === e.fr || ancien[i][1] === e.en) ? ancien[i][3] : e.date;
-        return [e.fr, e.en, e.n, garde];
+        // la page espagnole lit la colonne anglaise : l'espagnol va dans les deux
+        return langue === 'es' ? [e.es, e.es, e.n, garde] : [e.fr, e.en, e.n, garde];
       });
     }
     return a + JSON.stringify(neuf) + ';' + nl;

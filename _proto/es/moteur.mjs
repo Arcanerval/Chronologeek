@@ -231,6 +231,9 @@ export default {
   'Search a title — movie, show, game, novel, comic…': 'Busca un título: película, serie, juego, novela, cómic…',
   'Support me on Ko-fi': 'Apóyame en Ko-fi',
   'US': 'ES',
+  /* les valeurs techniques recopiées de la branche anglaise */
+  '/search-en.json': '/search-es.json',
+  'en-US': 'es-ES',
   'Data: RAWG': 'Datos: RAWG',
   'Where to play': 'Dónde jugar',
   'Data: TMDB': 'Datos: TMDB',
@@ -329,6 +332,12 @@ export const RETOUCHES = [
   ["(EN ? AFFIL.en : AFFIL.fr)", "(EN ? AFFIL.en : AFFIL.en)"],
   /* « series » est singulier et pluriel en anglais, pas en espagnol */
   ["s: ['series', 'series']", "s: ['serie', 'series']"],
+  /* /reglages.js a une troisième colonne, l'espagnol ; PLUR de e-app.js porte
+     l'espagnol dans sa première (voir plus bas) */
+  ["tab.types[a][EN ? 1 : 1].localeCompare(tab.types[b][EN ? 1 : 1])", "tab.types[a][EN ? 1 : 2].localeCompare(tab.types[b][EN ? 1 : 2])"],
+  ["bouton(esc(tab.types[k][EN ? 1 : 1])", "bouton(esc(tab.types[k][EN ? 1 : 2])"],
+  ["nom = esc(u.n[EN ? 1 : 1])", "nom = esc(u.n[EN ? 1 : 2])"],
+  ["PLUR[k][EN ? 1 : 1]", "PLUR[k][EN ? 1 : 0]"],
   /* les pluriels des types, rangés [français, anglais] et lus par FR ? 0 : 1 */
   ["film: ['Films', 'Movies'], filmanim: ['Films animés', 'Animated movies'], serie: ['Séries', 'Series'],",
    "film: ['Películas', 'Movies'], filmanim: ['Películas animadas', 'Animated movies'], serie: ['Series', 'Series'],"],

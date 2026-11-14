@@ -61,12 +61,17 @@ const ecrire = (rel, contenu) => {
 /* ── Les douze pages, dans leurs deux langues ────────────────────────────── */
 
 const ROUTES = [
+  // `es` : l'espagnol, posé le 14 novembre 2026 page par page. Une route qui
+  // n'a pas encore d'espagnol n'en porte pas, et la page espagnole qui y mène
+  // renvoie à l'anglaise. Les protos `es-*` sortent de traduire-es.mjs.
   { cle: 'accueil',
     fr: { proto: 'e-accueil.html',            sortie: 'fr/index.html',            url: '/fr/' },
-    en: { proto: 'en-accueil.html',           sortie: 'index.html',               url: '/' } },
+    en: { proto: 'en-accueil.html',           sortie: 'index.html',               url: '/' },
+    es: { proto: 'es-accueil.html',           sortie: 'es/index.html',            url: '/es/' } },
   { cle: 'sw',
     fr: { proto: 'e-starwars.html',           sortie: 'fr/starwars.html',         url: '/fr/starwars' },
-    en: { proto: 'en-starwars.html',          sortie: 'starwars.html',            url: '/starwars' } },
+    en: { proto: 'en-starwars.html',          sortie: 'starwars.html',            url: '/starwars' },
+    es: { proto: 'es-starwars.html',          sortie: 'es/starwars.html',         url: '/es/starwars' } },
   { cle: 'mcu',
     fr: { proto: 'e-marvel.html',             sortie: 'fr/marvel.html',           url: '/fr/marvel' },
     en: { proto: 'en-marvel.html',            sortie: 'marvel.html',              url: '/marvel' } },
@@ -203,6 +208,9 @@ const ASSETS = {
   'data-news.js':          '/data/news-fr.js',
   'data-news-en.js':       '/data/news-en.js',
   'e-app.js':              '/app.js',
+  // L'espagnol : ses données une à une, et son moteur, tiré de e-app.js par moteur-es.mjs.
+  'data-es.js':            '/data/starwars-es.js',
+  'e-app-es.js':           '/app-es.js',
   // Chargé entre les données et le script de page, sur les huit univers :
   // il pose les entrées du visiteur dans `D.eras` avant que la page les lise.
   'e-perso.js':            '/perso.js',
@@ -211,19 +219,20 @@ const ASSETS = {
 /* ── Table des liens : nom de maquette → URL réelle ─────────────────────── */
 
 const LIENS = {};
-for (const r of ROUTES) { LIENS[r.fr.proto] = r.fr.url; LIENS[r.en.proto] = r.en.url; }
+const LANGUES = ['fr', 'en', 'es'];
+for (const r of ROUTES) for (const l of LANGUES) if (r[l]) LIENS[r[l].proto] = r[l].url;
 
 /* L'URL de chaque page par clé de route, dans les deux langues, et l'image de
    chaque univers reprise de son référencement. `jsonld.mjs` en tire les fils
    d'Ariane et les deux listes qui renvoient d'une page à l'autre. */
-const URLS = { fr: {}, en: {} };
-for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; }
+const URLS = { fr: {}, en: {}, es: {} };
+for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; URLS.es[r.cle] = (r.es || r.en).url; }
 
 // Une page par œuvre : calculées ici parce que le pré-rendu y fait des liens.
 const OEUVRES = oeuvres({ racine: RACINE, site: SITE, urls: URLS });
 
-const IMAGES = Object.fromEntries(['fr', 'en'].map(langue => [langue,
-  Object.fromEntries(Object.entries(SEO).map(([k, v]) => [k, v[langue] && v[langue].image]))]));
+const IMAGES = Object.fromEntries(LANGUES.map(langue => [langue,
+  Object.fromEntries(Object.entries(SEO).map(([k, v]) => [k, (v[langue] || v.en) && (v[langue] || v.en).image]))]));
 
 /* ── Le bloc PWA, identique sur toutes les pages en ligne ───────────────── */
 
@@ -611,6 +620,29 @@ const BOOT =
 // **Seules les vingt de la page sont injectées** : `publier.mjs` connaît la
 // langue de chaque route, il n'y a donc aucune raison d'envoyer les quarante.
 const BOOT_PHRASES = {
+  // L'espagnol, posé le 14 novembre 2026 : les trois de Niko, puis le même ton.
+  es: [
+    'Restaurando el multiverso',
+    'Borrando las anomalías cronológicas',
+    'Reiniciando el bucle temporal',
+    'Alineando las cronologías',
+    'Recalibrando el Animus',
+    'Ordenando catorce universos',
+    'Desenredando los flashbacks',
+    'Consultando los archivos',
+    'Despertando la Fuerza',
+    'Cargando el núcleo de curvatura',
+    'Verificando el canon',
+    'Contando escenas poscréditos',
+    'Volviendo al episodio uno',
+    'Clasificando los retcons',
+    'Cruzando fechas de estreno',
+    'Desfragmentando la continuidad',
+    'Puliendo los escudos antispoiler',
+    'Invocando el orden de visionado',
+    'Calentando el proyector',
+    'Desempolvando los cómics',
+  ],
   en: [
     'Restoring the multiverse',
     'Erasing the chronological anomalies',
@@ -672,7 +704,7 @@ const BOOT_PHRASES = {
 // Quatorze depuis le Monsterverse, le 7 novembre 2026 : 13 × 0,174 = 2,262 s.
 const BOOT_PAS = 0.174;
 // L'intitulé du panneau de quai, au-dessus de la phrase.
-const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing' };
+const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing', es: 'Próxima salida' };
 const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +
@@ -713,11 +745,13 @@ const PIED = [
 // Les partages sociaux ne disaient pas leur langue : les hreflang etaient poses
 // depuis toujours, og:locale non. Facebook et LinkedIn en tirent la langue de
 // l'apercu et le lien vers l'autre version ; sans lui, ils devinent.
-const LOCALES = { fr: 'fr_FR', en: 'en_US' };
+const LOCALES = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' };
 
-function blocSeo(seo, urlEn, urlFr, moi, langue) {
+// Toutes les versions d'une route se désignent l'une l'autre ; `hreflang="es"`
+// sans pays, l'espagnol du site étant neutre (Espagne et Amérique latine).
+function blocSeo(seo, route, moi, langue) {
   const e = s => s.replace(/&(?!(amp|lt|gt|quot|#\d+|#x[0-9a-f]+);)/gi, '&amp;');
-  const autre = langue === 'fr' ? 'en' : 'fr';
+  const autres = LANGUES.filter(l => l !== langue && route[l]);
   return [
     `<title>${seo.title}</title>`,
     `<meta name="description" content="${e(seo.desc)}"/>`,
@@ -728,11 +762,10 @@ function blocSeo(seo, urlEn, urlFr, moi, langue) {
     `<meta property="og:image" content="${seo.image}"/>`,
     `<meta property="og:url" content="${SITE}${moi}"/>`,
     `<meta property="og:locale" content="${LOCALES[langue]}"/>`,
-    `<meta property="og:locale:alternate" content="${LOCALES[autre]}"/>`,
+    ...autres.map(l => `<meta property="og:locale:alternate" content="${LOCALES[l]}"/>`),
     '<meta name="twitter:card" content="summary_large_image"/>',
-    `<link rel="alternate" hreflang="en" href="${SITE}${urlEn}"/>`,
-    `<link rel="alternate" hreflang="fr" href="${SITE}${urlFr}"/>`,
-    `<link rel="alternate" hreflang="x-default" href="${SITE}${urlEn}"/>`,
+    ...["en", "fr", "es"].filter(l => route[l]).map(l => `<link rel="alternate" hreflang="${l}" href="${SITE}${route[l].url}"/>`),
+    `<link rel="alternate" hreflang="x-default" href="${SITE}${route.en.url}"/>`,
     `<link rel="canonical" href="${SITE}${moi}"/>`,
   ].join('\n');
 }
@@ -753,8 +786,8 @@ function blocSeo(seo, urlEn, urlFr, moi, langue) {
 // « en-dcanimation.html » — un lien mort qu'aucune lecture de page ne montre,
 // exactement le defaut que ce recablage existe pour empecher. L'echappement
 // est donc capture, et la fermeture doit porter le meme.
-const LIEN_RE = /(\\?)(["'])((?:e|en)-[a-z0-9-]+\.html)(#[^"'\\]*)?\1\2/g;
-const ASSET_RE = /(\\?)(["'])((?:data[a-z0-9-]*|e-app|e-perso)\.js)\1\2/g;
+const LIEN_RE = /(\\?)(["'])((?:e|en|es)-[a-z0-9-]+\.html)(#[^"'\\]*)?\1\2/g;
+const ASSET_RE = /(\\?)(["'])((?:data[a-z0-9-]*|e-app(?:-es)?|e-perso)\.js)\1\2/g;
 
 function recabler(texte, ou, problemes) {
   let out = texte.replace(LIEN_RE, (tout, ech, q, nom, ancre) =>
@@ -863,6 +896,31 @@ ${RES_ITI}` : '') +
     h = h.replace(/(<nav class="drawer"[\s\S]*?<a [^>]*class="news"[^>]*>[^<]*<\/a>)/, m => m + '\n      ' + tiroirReglages(langue));
     if (h === avantTiroir) problemes.push(`${c.sortie} : tiroir introuvable pour les réglages`);
   }
+  // 3 ter. la troisième langue (14 novembre 2026). Le drapeau du proto reste
+  // et mène à l'autre langue du couple français-anglais — au français depuis
+  // une page espagnole. À côté, une pastille de deux lettres pour chaque autre
+  // version : pas de drapeau pour l'espagnol, qui vise autant l'Amérique latine
+  // que l'Espagne. Sous 560 px la pastille quitte la barre (le burger y sortait
+  // déjà de l'écran) et passe dans le tiroir.
+  {
+    const proto = route[langue === 'es' ? 'fr' : langue === 'fr' ? 'en' : 'fr'];
+    const extra = LANGUES.filter(l => l !== langue && route[l] && route[l] !== proto);
+    if (extra.length) {
+      const NOMS = { en: ['EN', 'English', 'Switch to English'], es: ['ES', 'Español', 'Cambiar a español'],
+                     fr: ['FR', 'Français', 'Passer en français'] };
+      const pastilles = extra.map(l => `<a class="icon-btn lang-x" href="${route[l].url}" hreflang="${l}" lang="${l}" ` +
+        `aria-label="${NOMS[l][2]}" title="${NOMS[l][1]}"><span>${NOMS[l][0]}</span></a>`).join('');
+      const avantLx = h;
+      h = h.replace(/(<a class="icon-btn lang-btn"[\s\S]*?<\/a>)/, m => m + pastilles);
+      if (h === avantLx) problemes.push(`${c.sortie} : drapeau de langue introuvable pour la pastille ${extra.join(', ')}`);
+      const tiroir = extra.map(l => `<a class="dw-lang" href="${route[l].url}" hreflang="${l}" lang="${l}">${NOMS[l][1]}</a>`).join('');
+      h = h.replace(/(<nav class="drawer"[\s\S]*?<a [^>]*class="news"[^>]*>[^<]*<\/a>)/, m => m + '\n      ' + tiroir);
+      h = h.replace(/<\/head>/i, '<style>.lang-x{border:0;width:auto;height:auto;padding:2px;text-decoration:none}' +
+        ".lang-x span{display:block;font:900 14px/1 'Big Shoulders Display',sans-serif;letter-spacing:.08em;color:#f0c97c;" +
+        'border:2px solid #f0c97c;border-radius:2px;padding:4px 6px}.lang-x:hover span{background:#f0c97c;color:#131215}' +
+        '@media(max-width:559.98px){header .lang-x{display:none}}@media(min-width:560px){.dw-lang{display:none}}</style>\n</head>');
+    }
+  }
   if (route.cle === 'accueil') {
     const avantCorps = h;
     h = h.replace(/(<body[^>]*>)/i, `$1\n${BOOT_CORPS(langue)}`);
@@ -874,11 +932,11 @@ ${RES_ITI}` : '') +
   }
 
   // 4. titre et référencement à la place du titre de maquette
-  const bloc = blocSeo(seo, route.en.url, route.fr.url, c.url, langue);
+  const bloc = blocSeo(seo, route, c.url, langue);
   const avantTitre = h;
   h = h.replace(/<title>[\s\S]*?<\/title>/, () => bloc);
   if (h === avantTitre) problemes.push(`${c.sortie} : <title> introuvable`);
-  for (const attendu of [`content="${LOCALES[langue]}"`, 'og:locale:alternate']) {
+  for (const attendu of [`content="${LOCALES[langue]}"`, 'og:locale:alternate', `hreflang="${langue}"`]) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
   }
 
@@ -955,6 +1013,7 @@ ${RES_ITI}` : '') +
   // au menu du haut : personne ne la cherche là, choix de Niko)
   {
     const lien = langue === 'fr' ? '<li><a href="/fr/confidentialite">Confidentialité</a></li>'
+               : langue === 'es' ? '<li><a href="/privacy" hreflang="en">Privacidad</a></li>'
                                  : '<li><a href="/privacy">Privacy</a></li>';
     const avantLien = h;
     h = h.replace(/(<li><a href="#contact" data-contact>[^<]*<\/a><\/li>)/, `$1\n      ${lien}`);
@@ -987,7 +1046,7 @@ ${RES_ITI}` : '') +
   }
 }
 
-for (const r of ROUTES) { publier(r, 'fr'); publier(r, 'en'); }
+for (const r of ROUTES) for (const l of LANGUES) if (r[l]) publier(r, l);
 
 /* ── Les données et le moteur, copiés sous leur nom de production ───────── */
 
@@ -1077,7 +1136,7 @@ try {
   if (!CHECK) writeFileSync(join(RACINE, 'reglages.js'), t);
   autres.push({ dest: '/reglages.js', octets: t.length, note: 'réglages : types et arrêts' });
 } catch (e) { problemes.push(`reglages.js : ${e.message}`); }
-const INDEX = { 'search-fr.json': 'fr', 'search-en.json': 'en' };
+const INDEX = { 'search-fr.json': 'fr', 'search-en.json': 'en', 'search-es.json': 'es' };
 for (const [sortie, langue] of Object.entries(INDEX)) {
   let index = '';
   try {
@@ -1159,8 +1218,9 @@ try {
 const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe, oeuvres: OEUVRES.plan });
 if (!CHECK) writeFileSync(join(RACINE, 'sitemap.xml'), plan);
 const urls = (plan.match(/<loc>/g) || []).length;
-if (urls !== (ROUTES.length + OEUVRES.plan.length) * 2) {
-  problemes.push(`sitemap.xml : ${urls} URL pour ${(ROUTES.length + OEUVRES.plan.length) * 2} pages attendues`);
+const pagesAttendues = ROUTES.reduce((n, r) => n + LANGUES.filter(l => r[l]).length, 0) + OEUVRES.plan.length * 2;
+if (urls !== pagesAttendues) {
+  problemes.push(`sitemap.xml : ${urls} URL pour ${pagesAttendues} pages attendues`);
 }
 
 /* ── Bilan ──────────────────────────────────────────────────────────────── */

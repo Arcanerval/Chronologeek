@@ -2050,7 +2050,7 @@ function cgBillet(){
   var catalogue = null;
   function charge(){
     if (catalogue) return catalogue;
-    catalogue = fetch(FR ? '/search-en.json' : '/search-en.json')
+    catalogue = fetch(FR ? '/search-es.json' : '/search-en.json')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(ix){
         if (!ix || !ix.u || !ix.e) return null;
@@ -2694,8 +2694,8 @@ function cgBillet(){
     }
     function quand(){
       var n = new Date();
-      return n.toLocaleDateString(FR ? 'en-US' : 'en-US', { day: 'numeric', month: 'long' }) + ' ' +
-        n.toLocaleTimeString(FR ? 'en-US' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+      return n.toLocaleDateString(FR ? 'es-ES' : 'en-US', { day: 'numeric', month: 'long' }) + ' ' +
+        n.toLocaleTimeString(FR ? 'es-ES' : 'en-US', { hour: '2-digit', minute: '2-digit' });
     }
     window.CG_DRIVE_UNION = union;   // pour la vérifier sans compte Google
     if (DRIVE_ID) {
@@ -5414,7 +5414,7 @@ function cgBillet(){
 
   function charge(){
     if (chargement) return chargement;
-    chargement = fetch(FR ? '/search-en.json' : '/search-en.json')
+    chargement = fetch(FR ? '/search-es.json' : '/search-en.json')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if (!d || !d.e || !d.e.length) return null;
@@ -7208,7 +7208,7 @@ function cgBillet(){
   function labels(){
     var CG = window.CG || {}, l = {};
     var l0 = l;
-    Object.keys(PLUR).forEach(function(k){ l0['_' + k] = PLUR[k][EN ? 1 : 1]; });
+    Object.keys(PLUR).forEach(function(k){ l0['_' + k] = PLUR[k][EN ? 1 : 0]; });
     var b = CG.badgeLabels || {};
     Object.keys(b).forEach(function(k){ l[k] = cap(dec(b[k][1])); });
     var kl = CG.kindLabels || (window.CGDT && CGDT.kindLabels) || {};
@@ -7238,7 +7238,7 @@ function cgBillet(){
       var global = !S && O.masque && !!document.querySelector('.slot[data-u]');
       if ((S && S.reste < S.total) || global) {
         var l = labels(), noms = (O.o.t || []).filter(function(k){ return global ? PLUR[k] || l[k] : l[k] && (!S.t || S.t[k]); })
-          .map(function(k){ return global && PLUR[k] ? PLUR[k][EN ? 1 : 1] : l[k]; });
+          .map(function(k){ return global && PLUR[k] ? PLUR[k][EN ? 1 : 0] : l[k]; });
         var q = [];
         if (noms.length) q.push(noms.join(', '));
         if (O.o.n === 'must' && (global || S.lv)) q.push(T.lvMust);
@@ -7386,8 +7386,8 @@ function cgBillet(){
     (o.t || []).forEach(function(k){ T_[k] = 1; });
     c = '<p class="rg-l">' + T.types + '</p><div class="rg-ch barre" id="rg-t">';
     if (tab) Object.keys(tab.types).sort(function(a, b){
-      return tab.types[a][EN ? 1 : 1].localeCompare(tab.types[b][EN ? 1 : 1]);
-    }).forEach(function(k){ c += bouton(esc(tab.types[k][EN ? 1 : 1]), T_[k], ' data-t="' + k + '"'); });
+      return tab.types[a][EN ? 1 : 2].localeCompare(tab.types[b][EN ? 1 : 2]);
+    }).forEach(function(k){ c += bouton(esc(tab.types[k][EN ? 1 : 2]), T_[k], ' data-t="' + k + '"'); });
     c += '</div><p class="rg-l">' + T.niveau + '</p><div class="rg-seg" id="rg-n">' +
       bouton(T.nTout, !o.n, ' data-n=""') + bouton(T.nImp, o.n === 'imp', ' data-n="imp"') +
       bouton(T.nMust, o.n === 'must', ' data-n="must"') + '</div><p class="rg-n">' + T.nNote + '</p><p class="rg-l"></p>';
@@ -7400,7 +7400,7 @@ function cgBillet(){
     if (tab) Object.keys(tab.u).forEach(function(k){
       var u = tab.u[k];
       if (u.dossier) return;
-      var e = (o.u || {})[k], nom = esc(u.n[EN ? 1 : 1]);
+      var e = (o.u || {})[k], nom = esc(u.n[EN ? 1 : 2]);
       c += '<div class="rg-uc' + (e ? ' ' + e : '') + '" data-u="' + k + '" style="--k:' + u.c + '">' +
         '<b' + (NOIR[k] ? ' class="w"' : '') + '>' + esc(u.k || '') + '</b><span>' + nom + '</span>' +
         '<button type="button" data-v="fav" aria-pressed="' + (e === 'fav') + '" aria-label="' + T.fav + ' : ' + nom + '" title="' + T.fav + '">' + ETOILE + '</button>' +

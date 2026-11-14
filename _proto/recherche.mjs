@@ -46,7 +46,7 @@
 //     ses lignes sous `CGD`, et ses ères portent `items` là où les timelines
 //     portent `entries`.
 
-import { charge, SOURCES, decode } from './jsonld.mjs';
+import { charge, SOURCES, decode, CG_DE } from './jsonld.mjs';
 
 // Les dix encres de la charte, écrites ici comme dans `erreur404.mjs` : c'est
 // le seul endroit du site où la couleur d'un univers doit être connue hors de
@@ -59,7 +59,7 @@ export const ENCRES = {
 };
 
 // Le Dossier reprend l'encre de Star Wars : c'est le sien.
-const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'] };
+const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-en.js', 'CGD'] };
 
 const rendable = it => it && it.type !== 'separator' && it.type !== 'note' && it.id && it.title;
 
@@ -112,7 +112,7 @@ function entrees(eras, rang, autres = {}) {
 export function recherche({ racine, langue, urls }) {
   const univers = [];
   const items = [];
-  const autre = langue === 'fr' ? 'en' : 'fr';
+  const autre = langue === 'en' ? 'fr' : 'en';   // l'espagnol garde les titres anglais : son autre langue est le français, sans intérêt ici
   let alias = 0;
 
   for (const cle of Object.keys(SOURCES)) {
@@ -133,7 +133,7 @@ export function recherche({ racine, langue, urls }) {
   // fil d'Ariane, à partir des libellés de navigation : « Dossiers — Star
   // Wars », et l'anglais suit sans qu'on écrive quoi que ce soit. Il faut bien
   // qu'il se distingue du groupe « Star Wars », qui est juste au-dessus.
-  const t = charge(racine, langue === 'fr' ? 'data.js' : 'data-en.js').CG.t;
+  const t = charge(racine, CG_DE[langue]).CG.t;
   univers.push({
     k: 'dossier-sw',
     n: `${decode(t.nav.deep)} — ${decode(t.nav.sw)}`,
@@ -155,6 +155,7 @@ export function recherche({ racine, langue, urls }) {
   }
   // Aucun alias sur 1 500 œuvres, c'est un appariement par `id` qui a raté.
   alias = items.filter(e => e.length > 5).length;
-  if (alias < 100) throw new Error(`recherche : ${alias} titre(s) de l'autre langue seulement`);
+  // l'espagnol garde les titres anglais : ses alias sont rares, et c'est voulu
+  if (langue !== 'es' && alias < 100) throw new Error(`recherche : ${alias} titre(s) de l'autre langue seulement`);
   return JSON.stringify({ u: univers, e: items });
 }
