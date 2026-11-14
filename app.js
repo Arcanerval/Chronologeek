@@ -1806,7 +1806,7 @@ function cgBillet(){
 
   var T = FR ? {
     titre: 'Toutes vos timelines, en un fichier',
-    dek:   'Ce que vous avez complété sur les douze timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
+    dek:   'Ce que vous avez complété sur toutes les timelines et le Dossier, et les œuvres que vous avez ajoutées vous-même. Un seul fichier à emporter sur un autre appareil ou un autre navigateur, au lieu d’exporter page par page.',
     exp:   'Tout exporter',
     imp:   'Importer',
     nom:   'chronologeek-tout.json',
@@ -1848,7 +1848,7 @@ function cgBillet(){
     ignorer: 'Ignorer'
   } : {
     titre: 'All your timelines, in one file',
-    dek:   'What you’ve completed across the twelve timelines and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
+    dek:   'What you’ve completed across every timeline and the Deep Dive, plus the works you added yourself. One file to carry to another device or browser, instead of exporting page by page.',
     exp:   'Export everything',
     imp:   'Import',
     nom:   'chronologeek-all.json',
