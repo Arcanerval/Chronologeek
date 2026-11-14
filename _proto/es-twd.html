@@ -2131,7 +2131,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     /* « VO » : les huit webséries n'ont jamais été doublées. Il ne se pose
        qu'en français : pour qui lit l'anglais, « pas de version française »
        n'a pas d'objet. */
-    var vo=(e.lang==='vo' && T.lang==='fr') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
     return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
       '<span class="bu-side">'+

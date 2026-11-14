@@ -232,6 +232,35 @@ function traduitObjet(o, traduit, chemin = '', cle = '') {
   return tete + traduit(coeur, chemin) + queue;
 }
 
+/* ═══ LES TITRES ESPAGNOLS ET LE BADGE VO ══════════════════════════════
+   `es/titres.json` (titres-es.mjs) : `tes` / `tmx` pour l'option « Títulos
+   en español », et la VO de l'espagnol — pas celle du français, que les
+   données anglaises recopient. Une entrée de second parcours sans ligne à
+   elle prend celle de la première entrée qu'elle couvre. */
+const TITRES = existe('es/titres.json') ? JSON.parse(lire('es/titres.json')) : null;
+function poseTitres(o) {
+  if (!TITRES || !o || typeof o !== 'object') return;
+  const listes = ['eras', 'erasRewatch', 'erasReplay', 'erasRelease'].filter(k => Array.isArray(o[k]));
+  for (const k of listes) for (const era of o[k]) {
+    for (const e of era.entries || []) {
+      const r = TITRES[e.id] || (e.covers && TITRES[e.covers[0]]) || null;
+      if (e.ref) continue;                       // hérite de l'entrée qu'il désigne
+      delete e.tes; delete e.tmx;
+      if (e.lang === 'vo') delete e.lang;
+      if (!r) continue;
+      if (r.es) e.tes = r.es;
+      if (r.mx) e.tmx = r.mx;
+      if (r.vo) e.lang = 'vo';
+    }
+    for (const x of era.items || []) {
+      if (x.kind !== 'it') continue;
+      const r = TITRES[x.id];
+      delete x.tes; x.vo = !!(r && r.vo);
+      if (r && r.es) x.tes = r.es.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;' }[c]));
+    }
+  }
+}
+
 /* Chaque déclaration de premier niveau qui porte un littéral est remplacée
    en place par sa traduction : même squelette, mêmes commentaires. */
 function traduitDonnees(src, traduit) {
@@ -256,6 +285,7 @@ function traduitDonnees(src, traduit) {
     let t = traduitObjet(valeur, traduit, nom);
     if (t && t.t && t.t.lang) { t.t.lang = 'es'; t.t.locale = 'es-ES'; }
     if (t && t.tmdbLang) t.tmdbLang = 'es-ES';
+    poseTitres(t);
     sorties[nom] = t;
     out = out.slice(0, debut) + JSON.stringify(t) + out.slice(fin);
   }
@@ -377,9 +407,9 @@ function recable(html, u) {
     h = h.split(`src="${en}"`).join(`src="${es}"`);
   }
   h = h.replace(/src="e-app\.js"/g, 'src="e-app-es.js"');
-  /* Le badge VO dit qu'une œuvre n'existe pas en français : sans objet en
-     espagnol, comme en anglais (décision de Niko, 14 novembre 2026). */
-  h = h.split("T.lang!=='en')").join("T.lang==='fr')");
+  /* Le badge VO s'affiche en espagnol depuis le 14 novembre 2026 : il dit ce
+     qui n'existe pas en espagnol (`lang:'vo'` posé par poseTitres, d'après
+     titres-es.mjs), pas ce qui manque en français. */
   h = h.replace(/(["'])en-([a-z0-9-]+\.html)/g, (t, q, nom) =>
     PROTOS_ES.has('es-' + nom) ? q + 'es-' + nom : t);
   return h;

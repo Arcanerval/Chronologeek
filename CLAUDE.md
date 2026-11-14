@@ -624,11 +624,11 @@ arrêts sont des comics. Code de ligne **MV**, quatre stations « ÈRE N / 4 ».
 Demandé par Niko. **Espagnol neutre** (Espagne et Amérique latine),
 **tutoiement**, **titres d'œuvres en anglais**, y compris dans les phrases —
 l'Espagne et l'Amérique latine ne traduisent pas les titres pareil. Badge VO
-masqué en espagnol (`T.lang!=='en'` devient `T.lang==='fr'` au recâblage).
-**Tout le site est en espagnol depuis le 14 novembre 2026** : les quatorze
-univers, `/es/proximamente`, `/es/novedades`, `/es/expedientes/` et le
-Dossier. Restent en anglais les fiches d'œuvres, la confidentialité, le flux
-et la page d'erreur.
+**en espagnol, le badge VO dit ce qui n'existe pas en espagnol** (voir plus
+bas). **Tout le site est en espagnol depuis le 14 novembre 2026** : les
+quatorze univers, `/es/proximamente`, `/es/novedades`, `/es/expedientes/`, le
+Dossier, les fiches d'œuvres (`/es/obras/<univers>/<œuvre>`), `/es/privacidad`,
+`/es/feed.xml` et `/es/404.html`.
 
 - **L'espagnol descend de l'anglais** : `node _proto/traduire-es.mjs` écrit
   `es-*.html` et `data-*-es.js` depuis les `en-*`, avec les tables de
@@ -672,6 +672,31 @@ et la page d'erreur.
   `FR = lang !== 'en'` : sur la page espagnole, `RETOUCHES` force la branche
   anglaise (sortie américaine, titre original) et en traduit les mois, les
   jours et les libellés. Une date se lit « 14 de noviembre de 2026 ».
+- **Les titres espagnols et la VO de l'espagnol**, demandés par Niko le
+  14 novembre 2026. `node _proto/titres-es.mjs` écrit `_proto/es/titres.json`
+  (versionné, `{id: {es, mx, vo}}`, cache `.cache-es.json` non versionné) ;
+  `poseTitres()` de `traduire-es.mjs` en tire `tes` (Espagne), `tmx`
+  (Amérique latine, s'il diffère) et `lang:'vo'` — ou `vo` au Dossier — dans
+  les données espagnoles, à la place de la VO du français. L'option
+  **« Títulos en español »** (`o.tes`, Ajustes, page espagnole seulement)
+  remplace le titre anglais par `tes`/`tmx` selon le pays réglé
+  (`O.titreEs` de `e-perso.js` ; ligne en propre au Dossier) ; par défaut
+  l'espagnol garde l'anglais. La recherche espagnole porte le titre espagnol
+  en alias (sixième place de `/search-es.json`).
+  - **L'écran** vient des traductions TMDB (`es-ES`, `es-MX`) ; un titre égal
+    à celui de TMDB en anglais n'en est pas un. Le badge de l'écran est écrit
+    à la main : `SANS_DOUBLAGE` (la VO du français, moins *Black Lotus*).
+  - **L'écrit** vient de la BNE (`catalogo.bne.es/view/sru/34BNE_INST`,
+    MARC) : notice en espagnol, titre original **exactement** celui de
+    l'œuvre, **franchise présente dans la notice** (`FRANCHISE`, sans quoi
+    « The Lesser Evil » rendait un essai de philosophie), jamais pour un comic
+    en série numérotée (le titre d'un recueil n'est pas celui des numéros).
+  - **Le badge VO de l'écrit demande deux absences** : la BNE ne connaît pas
+    l'œuvre, et le français non plus (sa VO, vérifiée à la BnF). La BNE seule
+    rate trop d'éditions (Amérique latine, comics de Planeta) : le premier jet
+    en marquait 508. Corriger un cas dans `CORRECTIONS`, puis relancer
+    `titres-es.mjs` et `traduire-es.mjs`.
+  - Les jeux n'ont ni titre ni badge.
 - **« Où regarder » couvre l'Amérique latine, le Brésil et le Portugal** : MX, AR, CO, CL, PE, VE, EC, UY, BR, PT
   dans `PAYS` de `e-app.js` et de `plateformes.mjs` (23 pays, 65 Ko ; SkyShowtime fusionné par `marqueDe()`). Sur la
   page espagnole le pays par défaut vient de `navigator.language` (es-419

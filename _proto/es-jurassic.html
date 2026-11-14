@@ -2010,7 +2010,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   function row(e){
     var bd=CFG.badgeLabels[e.type]||['b',e.type];
     var fb=(e.tags||[]).indexOf('flashback')>-1 ? '<span class="ft">FLASHBACK</span>' : '';
-    var vo=(e.lang==='vo' && T.lang==='fr') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
     return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
       '<span class="bu-side">'+

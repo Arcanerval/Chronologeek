@@ -358,6 +358,10 @@ export const RETOUCHES = [
   ["new Intl.DisplayNames([EN ? 'en' : 'en']", "new Intl.DisplayNames([EN ? 'en' : 'es']"],
   ["'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT'];",
    "'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT'];\n  PAYS = ['ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT', 'US', 'FR', 'BE', 'CH', 'LU', 'CA', 'GB', 'IE', 'DE', 'IT', 'NL', 'AU'];"],
+  /* « Títulos en español » (e-perso.js, titres-es.mjs) à la place des
+     titres originaux du français : par défaut, l'espagnol garde l'anglais */
+  ["if (!EN) c += sw('vo', T.vo, o.vo);", "if (!EN) c += sw('tes', 'Títulos en español', o.tes);"],
+  ["if (O.o.vo && !EN) {", "if (false) {"],
   /* les fiches d'œuvres espagnoles (oeuvres.mjs) */
   ["var BASE = (FR ? '/works/' : '/works/')", "var BASE = (FR ? '/es/obras/' : '/works/')"],
   /* le pays par défaut */

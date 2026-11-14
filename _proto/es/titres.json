@@ -1,0 +1,2055 @@
+{
+ "sw-ep1": {
+  "es": "La guerra de las galaxias. Episodio I: La amenaza fantasma",
+  "mx": "Star Wars: Episodio I - La amenaza fantasma"
+ },
+ "sw-ep2": {
+  "es": "La guerra de las galaxias. Episodio II: El ataque de los clones",
+  "mx": "Star Wars: Episodio II: El Ataque de los Clones"
+ },
+ "sw-toj2": {
+  "es": "Star Wars: Las crónicas jedi — Episode 2",
+  "mx": "Star Wars: Historias de los Jedi — Episode 2"
+ },
+ "sw-toj3": {
+  "es": "Star Wars: Las crónicas jedi — Episode 3",
+  "mx": "Star Wars: Historias de los Jedi — Episode 3"
+ },
+ "sw-toj4": {
+  "es": "Star Wars: Las crónicas jedi — Episode 4",
+  "mx": "Star Wars: Historias de los Jedi — Episode 4"
+ },
+ "sw-tcw-pre": {
+  "es": "Star Wars: The Clone Wars",
+  "mx": "Star Wars: La Guerra de los Clones"
+ },
+ "sw-toj1": {
+  "es": "Star Wars: Las crónicas jedi — Episode 1",
+  "mx": "Star Wars: Historias de los Jedi — Episode 1"
+ },
+ "sw-tcwfilm": {
+  "es": "Star Wars: Clone Wars",
+  "mx": "Star Wars: Las Guerras Clónicas"
+ },
+ "sw-tcw-22": {
+  "es": "Star Wars: The Clone Wars",
+  "mx": "Star Wars: La Guerra de los Clones"
+ },
+ "sw-tcw-21": {
+  "es": "Star Wars: The Clone Wars",
+  "mx": "Star Wars: La Guerra de los Clones"
+ },
+ "sw-tcw-20": {
+  "es": "Star Wars: The Clone Wars",
+  "mx": "Star Wars: La Guerra de los Clones"
+ },
+ "sw-tcw-19": {
+  "es": "Star Wars: The Clone Wars",
+  "mx": "Star Wars: La Guerra de los Clones"
+ },
+ "sw-ep3": {
+  "es": "La guerra de las galaxias. Episodio III: La venganza de los Sith",
+  "mx": "Star Wars: Episodio III - La Venganza de los Sith"
+ },
+ "sw-tcw-rsith": {
+  "es": "Star Wars: The Clone Wars",
+  "mx": "Star Wars: La Guerra de los Clones"
+ },
+ "sw-toj5": {
+  "es": "Star Wars: Las crónicas jedi — Episode 5",
+  "mx": "Star Wars: Historias de los Jedi — Episode 5"
+ },
+ "sw-toe4": {
+  "es": "Star Wars: Crónicas del Imperio — Episode 4",
+  "mx": "Star Wars: Historias del Imperio — Episode 4"
+ },
+ "sw-toe5": {
+  "es": "Star Wars: Crónicas del Imperio — Episode 5",
+  "mx": "Star Wars: Historias del Imperio — Episode 5"
+ },
+ "sw-bb1": {
+  "es": "Star Wars: La remesa mala"
+ },
+ "sw-bb2": {
+  "es": "Star Wars: La remesa mala"
+ },
+ "sw-totu1": {
+  "es": "Star Wars: Crónicas del submundo — Episode 1",
+  "mx": "Star Wars: Historias del inframundo — Episode 1"
+ },
+ "sw-totu23": {
+  "es": "Star Wars: Crónicas del submundo — Episodes 2-3",
+  "mx": "Star Wars: Historias del inframundo — Episodes 2-3"
+ },
+ "sw-maul": {
+  "es": "Star Wars: Maul - Señor de las sombras"
+ },
+ "sw-toj6": {
+  "es": "Star Wars: Las crónicas jedi — Episode 6",
+  "mx": "Star Wars: Historias de los Jedi — Episode 6"
+ },
+ "sw-solo": {
+  "es": "Han Solo: Una historia de Star Wars"
+ },
+ "sw-toe6": {
+  "es": "Star Wars: Crónicas del Imperio — Episode 6",
+  "mx": "Star Wars: Historias del Imperio — Episode 6"
+ },
+ "sw-rebels-s1": {
+  "es": "Star Wars Rebels"
+ },
+ "sw-rebels-s2": {
+  "es": "Star Wars Rebels"
+ },
+ "sw-rebels-s3": {
+  "es": "Star Wars Rebels"
+ },
+ "sw-rebels-s4": {
+  "es": "Star Wars Rebels"
+ },
+ "sw-rogue": {
+  "es": "Rogue One: Una historia de Star Wars",
+  "mx": "Star Wars: Rogue One"
+ },
+ "sw-ep4": {
+  "es": "La guerra de las galaxias"
+ },
+ "sw-ep5": {
+  "es": "El imperio contraataca",
+  "mx": "El Imperio contraataca"
+ },
+ "sw-ep6": {
+  "es": "El retorno del Jedi",
+  "mx": "El regreso del Jedi"
+ },
+ "sw-toe1": {
+  "es": "Star Wars: Crónicas del Imperio — Episode 1",
+  "mx": "Star Wars: Historias del Imperio — Episode 1"
+ },
+ "sw-toe2": {
+  "es": "Star Wars: Crónicas del Imperio — Episode 2",
+  "mx": "Star Wars: Historias del Imperio — Episode 2"
+ },
+ "sw-toe3": {
+  "es": "Star Wars: Crónicas del Imperio — Episode 3",
+  "mx": "Star Wars: Historias del Imperio — Episode 3"
+ },
+ "sw-boba": {
+  "es": "El libro de Boba Fett"
+ },
+ "sw-mag": {
+  "mx": "Star Wars: The Mandalorian and Grogu"
+ },
+ "sw-rebels-ep": {
+  "es": "Star Wars Rebels — Epilogue"
+ },
+ "sw-skelcrew": {
+  "es": "Star Wars: Tripulación perdida",
+  "mx": "Star Wars Skeleton Crew: Viaje a lo desconocido"
+ },
+ "sw-ep7": {
+  "es": "Star Wars: El despertar de la fuerza"
+ },
+ "sw-ep8": {
+  "es": "Star Wars: Los últimos Jedi"
+ },
+ "sw-ep9": {
+  "es": "Star Wars: El ascenso de Skywalker"
+ },
+ "mcu-cap1": {
+  "es": "Capitán América: El primer vengador",
+  "mx": "Capitán América: El Primer Vengador"
+ },
+ "mcu-ac-serie": {
+  "es": "Agente Carter"
+ },
+ "mcu-cm": {
+  "es": "Capitana Marvel"
+ },
+ "mcu-im1": {
+  "mx": "Iron man - El hombre de hierro"
+ },
+ "mcu-hulk": {
+  "es": "El increíble Hulk",
+  "mx": "Hulk: El hombre increíble"
+ },
+ "mcu-av1": {
+  "es": "Vengadores",
+  "mx": "Avengers: Los Vengadores"
+ },
+ "mcu-aos-s1a": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-thor2": {
+  "es": "Thor: el mundo oscuro",
+  "mx": "Thor: un mundo oscuro"
+ },
+ "mcu-aos-s1b": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-aos-s1b2": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-cap2": {
+  "es": "Capitán América: El Soldado de Invierno",
+  "mx": "Capitán América y el Soldado del Invierno"
+ },
+ "mcu-aos-s1c": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-gotg1": {
+  "es": "Guardianes de la galaxia"
+ },
+ "mcu-gotg2": {
+  "es": "Guardianes de la galaxia Vol. 2",
+  "mx": "Guardianes de la Galaxia Vol. 2"
+ },
+ "mcu-dd1": {
+  "es": "Marvel - Daredevil"
+ },
+ "mcu-jj1": {
+  "es": "Marvel - Jessica Jones"
+ },
+ "mcu-aos-s2a": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-aou": {
+  "es": "Vengadores: La era de Ultrón",
+  "mx": "Avengers 2: Era de Ultrón"
+ },
+ "mcu-aos-s2b": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-antman1": {
+  "mx": "Ant-Man: El hombre Hormiga"
+ },
+ "mcu-dd2": {
+  "es": "Marvel - Daredevil"
+ },
+ "mcu-lc1": {
+  "es": "Marvel - Luke Cage"
+ },
+ "mcu-if1": {
+  "es": "Marvel - Iron Fist"
+ },
+ "mcu-aos-s3a": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-defenders": {
+  "es": "Marvel - The Defenders"
+ },
+ "mcu-cw": {
+  "es": "Capitán América: Civil War"
+ },
+ "mcu-aos-s3b": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-bw": {
+  "es": "Viuda Negra"
+ },
+ "mcu-bp1": {
+  "mx": "Pantera Negra"
+ },
+ "mcu-eow": {
+  "es": "Los ojos de Wakanda"
+ },
+ "mcu-sm1": {
+  "mx": "Spider-Man: De regreso a casa"
+ },
+ "mcu-pun1": {
+  "es": "Marvel - The Punisher"
+ },
+ "mcu-ds1": {
+  "mx": "Doctor Strange: Hechicero supremo"
+ },
+ "mcu-aos-s4": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-jj2": {
+  "es": "Marvel - Jessica Jones"
+ },
+ "mcu-lc2": {
+  "es": "Marvel - Luke Cage"
+ },
+ "mcu-if2": {
+  "es": "Marvel - Iron Fist"
+ },
+ "mcu-dd3": {
+  "es": "Marvel - Daredevil"
+ },
+ "mcu-aos-s5a": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-pun2": {
+  "es": "Marvel - The Punisher"
+ },
+ "mcu-jj3": {
+  "es": "Marvel - Jessica Jones"
+ },
+ "mcu-antman2": {
+  "es": "Ant-Man y la Avispa",
+  "mx": "Ant-Man 2: La Avispa"
+ },
+ "mcu-aos-s5b": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-iw": {
+  "es": "Vengadores: Infinity War"
+ },
+ "mcu-aos-s5c": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-aos-s6": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-aos-s7": {
+  "es": "Marvel Agentes de S.H.I.E.L.D."
+ },
+ "mcu-eg": {
+  "es": "Vengadores: Endgame"
+ },
+ "mcu-wi1": {
+  "es": "¿Qué pasaría si...?"
+ },
+ "mcu-wv": {
+  "es": "Bruja Escarlata y Visión"
+ },
+ "mcu-sc": {
+  "es": "Shang-Chi y la leyenda de los Diez Anillos"
+ },
+ "mcu-fatws": {
+  "es": "Falcon y el Soldado de Invierno",
+  "mx": "Falcon Y El Soldado Del Invierno"
+ },
+ "mcu-smffh": {
+  "es": "Spider-Man: Lejos de casa"
+ },
+ "mcu-smr1": {
+  "mx": "El hombre araña"
+ },
+ "mcu-smr2": {
+  "mx": "El hombre araña 2"
+ },
+ "mcu-smr3": {
+  "mx": "El hombre araña 3"
+ },
+ "mcu-tasm1": {
+  "mx": "El sorprendente Hombre Araña"
+ },
+ "mcu-tasm2": {
+  "es": "The Amazing Spider-Man 2: El poder de Electro",
+  "mx": "El sorprendente Hombre Araña 2: La amenaza de Electro"
+ },
+ "mcu-itsv": {
+  "es": "Spider-Man: un nuevo universo",
+  "mx": "Spider-Man: Un nuevo universo"
+ },
+ "mcu-venom2": {
+  "es": "Venom: habrá matanza",
+  "mx": "Venom: Carnage Liberado"
+ },
+ "mcu-nwh": {
+  "mx": "Spider-Man: Sin camino a casa"
+ },
+ "mcu-venom3": {
+  "es": "Venom: El último baile"
+ },
+ "mcu-atsv": {
+  "es": "Spider-Man: Cruzando el Multiverso",
+  "mx": "Spider-Man: A través del Spider-Verso"
+ },
+ "mcu-mom": {
+  "es": "Doctor Strange en el multiverso de la locura"
+ },
+ "mcu-hawkeye": {
+  "es": "Ojo de Halcón"
+ },
+ "mcu-mk": {
+  "es": "Caballero Luna"
+ },
+ "mcu-bp2": {
+  "mx": "Pantera Negra: Wakanda por siempre"
+ },
+ "mcu-shehulk": {
+  "es": "She-Hulk: abogada Hulka",
+  "mx": "She-Hulk: Defensora de héroes"
+ },
+ "mcu-thor4": {
+  "mx": "Thor: Amor y Trueno"
+ },
+ "mcu-wwbn": {
+  "es": "La maldición del hombre lobo",
+  "mx": "Hombre Lobo por la noche"
+ },
+ "mcu-gotgxmas": {
+  "es": "Guardianes de la Galaxia: especial felices fiestas",
+  "mx": "Guardianes de la Galaxia: Especial de las fiestas"
+ },
+ "mcu-gotg3": {
+  "es": "Guardianes de la Galaxia: Volumen 3",
+  "mx": "Guardianes de la Galaxia volumen 3"
+ },
+ "mcu-antman3": {
+  "es": "Ant-Man y la Avispa: Quantumanía"
+ },
+ "mcu-si": {
+  "es": "Invasión secreta"
+ },
+ "mcu-wi2": {
+  "es": "¿Qué pasaría si...?"
+ },
+ "mcu-xfc": {
+  "es": "X-Men: Primera Generación",
+  "mx": "X-Men: Primera generación"
+ },
+ "mcu-xow": {
+  "es": "X-Men orígenes: Lobezno",
+  "mx": "X-Men orígenes: Wolverine"
+ },
+ "mcu-xm2": {
+  "es": "X-Men II"
+ },
+ "mcu-xm3": {
+  "es": "X-Men III: La decisión final",
+  "mx": "X-Men 3: La Batalla Final"
+ },
+ "mcu-twolv": {
+  "es": "Lobezno inmortal",
+  "mx": "Wolverine: Inmortal"
+ },
+ "mcu-dofp": {
+  "es": "X-Men: Días del futuro pasado"
+ },
+ "mcu-xma": {
+  "es": "X-Men: Apocalipsis"
+ },
+ "mcu-xdp": {
+  "es": "X-Men: Fénix Oscura"
+ },
+ "mcu-logan": {
+  "mx": "Logan: Wolverine"
+ },
+ "mcu-dpw": {
+  "es": "Deadpool y Lobezno"
+ },
+ "mcu-agatha": {
+  "es": "Agatha, ¿quién si no?",
+  "mx": "Agatha en todas partes"
+ },
+ "mcu-wi3": {
+  "es": "¿Qué pasaría si...?"
+ },
+ "mcu-vfsm": {
+  "es": "Tu amigo y vecino Spider-Man"
+ },
+ "mcu-cabf": {
+  "es": "Capitán América: Brave New World",
+  "mx": "Capitán América: Un nuevo mundo"
+ },
+ "mcu-mz": {
+  "es": "Marvel Zombis"
+ },
+ "mcu-pun-olk": {
+  "mx": "The Punisher: La última muerte"
+ },
+ "mcu-smbnd": {
+  "mx": "Spider-Man: Un nuevo día"
+ },
+ "mcu-ff": {
+  "es": "Los Cuatro Fantásticos: Primeros pasos",
+  "mx": "Los 4 Fantásticos: Primeros pasos"
+ },
+ "dc-supermanreturns": {
+  "mx": "Superman Regresa"
+ },
+ "dc-batmanreturns": {
+  "es": "Batman vuelve",
+  "mx": "Batman regresa"
+ },
+ "dc-batmanbegins": {
+  "mx": "Batman inicia"
+ },
+ "dc-tdk": {
+  "es": "El caballero oscuro",
+  "mx": "Batman: El caballero de la noche"
+ },
+ "dc-tdkr": {
+  "es": "El caballero oscuro: La leyenda renace",
+  "mx": "Batman: El caballero de la noche asciende"
+ },
+ "dc-titans-s1": {
+  "es": "Titanes"
+ },
+ "dc-titans-s2": {
+  "es": "Titanes"
+ },
+ "av-flash-s1e1-4": {
+  "mx": "Flash"
+ },
+ "av-flash-s1e5": {
+  "mx": "Flash"
+ },
+ "av-flash-s1e6-7": {
+  "mx": "Flash"
+ },
+ "av-flash-s1e8": {
+  "mx": "Flash"
+ },
+ "av-flash-s1e9-23": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e1-4": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e5-6": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e7": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e8": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e9-10": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e11-18": {
+  "mx": "Flash"
+ },
+ "av-flash-s2e19-23": {
+  "mx": "Flash"
+ },
+ "av-lot-s1": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s3e1-7": {
+  "mx": "Flash"
+ },
+ "av-lot-s2e1-6": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s3e8": {
+  "mx": "Flash"
+ },
+ "av-lot-s2e7": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s3e9-23": {
+  "mx": "Flash"
+ },
+ "av-lot-s2e8-17": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s4e1-7": {
+  "mx": "Flash"
+ },
+ "av-lot-s3e1-7": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s4e8": {
+  "mx": "Flash"
+ },
+ "av-lot-s3e8": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s4e9-23": {
+  "mx": "Flash"
+ },
+ "av-lot-s3e9-18": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s5e1-7": {
+  "mx": "Flash"
+ },
+ "av-lot-s4e1-7": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s5e8-9": {
+  "mx": "Flash"
+ },
+ "av-flash-s5e10-22": {
+  "mx": "Flash"
+ },
+ "av-lot-s4e8-16": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s6e1-8": {
+  "mx": "Flash"
+ },
+ "av-flash-s6e9": {
+  "mx": "Flash"
+ },
+ "av-lot-s5e1": {
+  "mx": "Leyendas del Mañana"
+ },
+ "dceu-mos": {
+  "es": "El hombre de acero"
+ },
+ "dceu-bvs": {
+  "es": "Batman vs Superman. El amanecer de la justicia",
+  "mx": "Batman vs Superman: El Origen de la Justicia"
+ },
+ "dceu-ww": {
+  "mx": "Mujer Maravilla"
+ },
+ "dceu-ww84": {
+  "mx": "Mujer Maravilla 1984"
+ },
+ "dceu-ss": {
+  "es": "Escuadrón suicida",
+  "mx": "Escuadrón Suicida"
+ },
+ "dceu-jl": {
+  "es": "La Liga de la Justicia de Zack Snyder"
+ },
+ "dceu-bop": {
+  "es": "Aves de Presa y la fantabulosa emancipación de Harley Quinn",
+  "mx": "Aves De Presa y La Fantabulosa Emancipación De Una Harley Quinn"
+ },
+ "dceu-tss": {
+  "es": "El Escuadrón Suicida"
+ },
+ "dceu-peacemaker": {
+  "es": "El Pacificador"
+ },
+ "dceu-shazam2": {
+  "es": "¡Shazam! La furia de los dioses"
+ },
+ "dceu-aquaman2": {
+  "es": "Aquaman y el reino perdido"
+ },
+ "dceu-theflash": {
+  "es": "Flash"
+ },
+ "av-flash-s6e10-19": {
+  "mx": "Flash"
+ },
+ "av-lot-s5e2-15": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s7": {
+  "mx": "Flash"
+ },
+ "av-lot-s6": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s8e1-5": {
+  "mx": "Flash"
+ },
+ "av-lot-s7": {
+  "mx": "Leyendas del Mañana"
+ },
+ "av-flash-s8e6-20": {
+  "mx": "Flash"
+ },
+ "av-flash-s9": {
+  "mx": "Flash"
+ },
+ "dc-titans-s3": {
+  "es": "Titanes"
+ },
+ "dc-titans-s4": {
+  "es": "Titanes"
+ },
+ "dc-supermanlois": {
+  "es": "Superman y Lois"
+ },
+ "dc-thebatman": {
+  "mx": "Batman"
+ },
+ "dc-thepenguin": {
+  "es": "El Pingüino"
+ },
+ "dcu-ss-sc": {
+  "es": "Escuadrón suicida",
+  "mx": "Escuadrón Suicida"
+ },
+ "dceu-tss-sc": {
+  "es": "El Escuadrón Suicida"
+ },
+ "dceu-peacemaker-sc": {
+  "es": "El Pacificador"
+ },
+ "dcu-cc": {
+  "es": "Comando Monster",
+  "mx": "Comando de Criaturas"
+ },
+ "dcu-peacemaker2": {
+  "es": "El Pacificador"
+ },
+ "dcu-lanterns": {
+  "es": "Linternas"
+ },
+ "avt-s1e01-10": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s1e11-16": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s1e17-20": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-the-kyoshi-warriors-13": {
+  "vo": true
+ },
+ "avt-s2e01-09": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s2e10-17": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-jet-rebels-and-rhinos": {
+  "vo": true
+ },
+ "avt-s2e18-20": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-escape-from-the-spirit-world": {
+  "vo": true
+ },
+ "avt-s3e01-02": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s3e03-06": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-earth-and-water-comics-giveaway-day-2026": {
+  "vo": true
+ },
+ "avt-s3e07-07": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s3e08-13": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s3e14-14": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s3e15-19": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-s3e20-21": {
+  "es": "Avatar: La leyenda de Aang"
+ },
+ "avt-avatar-legends-city-of-echoes": {
+  "vo": true
+ },
+ "avt-matcha-makers": {
+  "vo": true
+ },
+ "avt-aang-the-last-airbender": {
+  "es": "Avatar Aang: El último maestro del aire",
+  "mx": "Avatar: Aang, El último Maestro Aire"
+ },
+ "avt-legacy": {
+  "vo": true
+ },
+ "avt-the-dawn-of-yangchen": {
+  "vo": true
+ },
+ "avt-the-legacy-of-yangchen": {
+  "vo": true
+ },
+ "avt-the-rise-of-kyoshi": {
+  "vo": true
+ },
+ "avt-the-shadow-of-kyoshi": {
+  "vo": true
+ },
+ "avt-masters-of-the-elements-off-duty": {
+  "vo": true
+ },
+ "avt-the-reckoning-of-roku": {
+  "vo": true
+ },
+ "avt-the-awakening-of-roku": {
+  "vo": true
+ },
+ "avt-la-legende-de-korra-livre-1-l-air": {
+  "es": "La leyenda de Korra",
+  "mx": "Avatar: La Leyenda de Korra"
+ },
+ "avt-patterns-in-time-skyscrapers": {
+  "vo": true
+ },
+ "avt-patterns-in-time-weavers-ball": {
+  "vo": true
+ },
+ "avt-la-legende-de-korra-livre-2-les-esprits": {
+  "es": "La leyenda de Korra",
+  "mx": "Avatar: La Leyenda de Korra"
+ },
+ "avt-la-legende-de-korra-livre-3-le-changemen": {
+  "es": "La leyenda de Korra",
+  "mx": "Avatar: La Leyenda de Korra"
+ },
+ "avt-kya-and-the-secret-of-the-sand": {
+  "vo": true
+ },
+ "avt-patterns-in-time-cat-owls-cradle": {
+  "vo": true
+ },
+ "avt-la-legende-de-korra-livre-4-l-equilibre": {
+  "es": "La leyenda de Korra",
+  "mx": "Avatar: La Leyenda de Korra"
+ },
+ "avt-an-avatar-s-chronicle": {
+  "vo": true
+ },
+ "avt-lost-pets-free-comic-book-day-2018": {
+  "vo": true
+ },
+ "avt-legacy-of-the-fire-nation": {
+  "vo": true
+ },
+ "avt-mystery-of-penquan-island": {
+  "vo": true
+ },
+ "avt-seven-havens-s1": {
+  "es": "Avatar: Los Siete Refugios"
+ },
+ "st-ent-1": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-2": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-3": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-4": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-5": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-6": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-7": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ent-8": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-tos-1": {
+  "mx": "Viaje a las estrellas"
+ },
+ "st-snw-1": {
+  "mx": "Star Trek: Nuevos y Extraños Mundos"
+ },
+ "st-snw-2": {
+  "mx": "Star Trek: Nuevos y Extraños Mundos"
+ },
+ "st-snw-3": {
+  "mx": "Star Trek: Nuevos y Extraños Mundos"
+ },
+ "st-snw-4": {
+  "mx": "Star Trek: Nuevos y Extraños Mundos"
+ },
+ "st-tos-2": {
+  "mx": "Viaje a las estrellas"
+ },
+ "st-tos-3": {
+  "mx": "Viaje a las estrellas"
+ },
+ "st-tos-4": {
+  "mx": "Viaje a las estrellas"
+ },
+ "st-tos-5": {
+  "mx": "Viaje a las estrellas"
+ },
+ "st-ent-9": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-tos-6": {
+  "mx": "Viaje a las estrellas"
+ },
+ "st-tas-1": {
+  "es": "Star Trek: La serie animada"
+ },
+ "st-tmp-1": {
+  "es": "Star Trek",
+  "mx": "Viaje a las estrellas: La película"
+ },
+ "st-twok-1": {
+  "es": "Star Trek II. La ira de Khan",
+  "mx": "Viaje a las estrellas II: La ira de Khan"
+ },
+ "st-tsfs-1": {
+  "es": "Star Trek III. En busca de Spock",
+  "mx": "Viaje a las Estrellas III: La Búsqueda de Spock"
+ },
+ "st-tvh-1": {
+  "es": "Star Trek IV. Misión salvar la Tierra",
+  "mx": "Viaje a las estrellas IV: Misión salvar a la Tierra"
+ },
+ "st-tff-1": {
+  "es": "Star Trek V. La última frontera",
+  "mx": "Viaje a las estrellas V: La última frontera"
+ },
+ "st-tuc-1": {
+  "es": "Star Trek VI. Aquel país desconocido",
+  "mx": "Viaje a las estrellas VI: La tierra desconocida"
+ },
+ "st-tng-1": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-tng-2": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-tng-3": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-tng-4": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-tng-5": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-tng-6": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-1": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-7": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-2": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-8": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-3": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-9": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-4": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-10": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-5": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-11": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-6": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-12": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-7": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-13": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-8": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-14": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-9": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-15": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-10": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-16": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-tng-17": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-11": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-18": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-12": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-19": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-13": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-20": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-14": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-21": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-15": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-22": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-16": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-23": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-17": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-24": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ent-10": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-tng-25": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-18": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-26": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-19": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-27": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-20": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-28": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-21": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-29": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-22": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-30": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-23": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-31": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-24": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-32": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-25": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-33": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-26": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-tng-34": {
+  "es": "Star Trek: La nueva generación",
+  "mx": "Viaje a las estrellas: La nueva generación"
+ },
+ "st-ds9-27": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-28": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-gen-1": {
+  "es": "Star Trek. La próxima generación",
+  "mx": "Viaje a las estrellas VII: Generaciones"
+ },
+ "st-ds9-29": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-30": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-31": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-32": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-33": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-34": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-35": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-36": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-37": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-38": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-39": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-40": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-41": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-42": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-43": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-44": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-45": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-46": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-47": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-48": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-49": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-50": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-51": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-52": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-53": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-54": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-55": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-fc-1": {
+  "es": "Star Trek VIII Primer Contacto",
+  "mx": "Viaje a las estrellas VIII: Primer Contacto"
+ },
+ "st-ent-11": {
+  "mx": "Viaje a las estrellas: Enterprise"
+ },
+ "st-ds9-56": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-57": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-58": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-59": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-60": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-61": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-62": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-63": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-64": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-65": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-66": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-67": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-68": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-69": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-70": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-71": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-72": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-73": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-74": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-75": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-76": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-77": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-78": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-79": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-80": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ins-1": {
+  "es": "Star Trek IX Insurreccion",
+  "mx": "Viaje a las estrellas: Insurrección"
+ },
+ "st-ds9-81": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-82": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-83": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-84": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-85": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-ds9-86": {
+  "es": "Star Trek: Espacio profundo nueve",
+  "mx": "Viaje a las estrellas: Espacio Profundo Nueve"
+ },
+ "st-nem-1": {
+  "es": "Star Trek X Nemesis",
+  "mx": "Viaje a las estrellas: Némesis"
+ },
+ "st-ld-1": {
+  "mx": "Viaje a las Estrellas: Rangos Inferiores"
+ },
+ "st-ld-2": {
+  "mx": "Viaje a las Estrellas: Rangos Inferiores"
+ },
+ "st-snw-5": {
+  "mx": "Star Trek: Nuevos y Extraños Mundos"
+ },
+ "st-ld-3": {
+  "mx": "Viaje a las Estrellas: Rangos Inferiores"
+ },
+ "st-ld-4": {
+  "mx": "Viaje a las Estrellas: Rangos Inferiores"
+ },
+ "st-pro-1": {
+  "mx": "Star Trek: Prodigio"
+ },
+ "st-pro-2": {
+  "mx": "Star Trek: Prodigio"
+ },
+ "st-pro-3": {
+  "mx": "Star Trek: Prodigio"
+ },
+ "st-st09-1": {
+  "es": "Star Trek"
+ },
+ "st-into-1": {
+  "es": "Star Trek II. En la oscuridad",
+  "mx": "Star Trek: En la oscuridad"
+ },
+ "st-bey-1": {
+  "es": "Star Trek III. Más allá",
+  "mx": "Star Trek Sin Límites"
+ },
+ "st-s31-1": {
+  "es": "Star Trek: Sección 31"
+ },
+ "st-sfa-1": {
+  "es": "Star Trek: Academia de la Flota Estelar"
+ },
+ "twd-flight-1": {
+  "vo": true,
+  "mx": "Fear the Walking Dead"
+ },
+ "twd-passage-1": {
+  "vo": true
+ },
+ "twd-cold-1": {
+  "vo": true
+ },
+ "twd-oath-1": {
+  "vo": true
+ },
+ "twd-torn-1": {
+  "vo": true
+ },
+ "twd-machete-1": {
+  "vo": true
+ },
+ "twd-althea-1": {
+  "vo": true
+ },
+ "twd-water-1": {
+  "vo": true
+ },
+ "twd-towl-1": {
+  "mx": "The Walking Dead: Sobrevivientes"
+ },
+ "da-throne-1": {
+  "es": "El trono usurpado"
+ },
+ "da-calling-1": {
+  "vo": true
+ },
+ "da-wfall-1": {
+  "vo": true
+ },
+ "da-redemption-1": {
+  "vo": true
+ },
+ "da-asunder-1": {
+  "vo": true
+ },
+ "da-lastflight-1": {
+  "vo": true
+ },
+ "da-magekiller-1": {
+  "es": "Asesino de magos"
+ },
+ "da-errant-1": {
+  "vo": true
+ },
+ "da-deception-1": {
+  "vo": true
+ },
+ "da-wraith-1": {
+  "es": "Espectro azul"
+ },
+ "da-fortress-1": {
+  "es": "Fortaleza Oscura"
+ },
+ "da-tevinter-1": {
+  "vo": true
+ },
+ "da-absolution-1": {
+  "es": "Dragon Age: Absolución"
+ },
+ "da-missing-1": {
+  "vo": true
+ },
+ "ac-ascendance-1": {
+  "vo": true
+ },
+ "ac-the-secret-crusade-1": {
+  "es": "La cruzada secreta: la historia jamás contada de Altaïr, el Maestro Asesino"
+ },
+ "ac-iii-abstergo-hacked-1": {
+  "vo": true
+ },
+ "ac-fcbd-2016-great-1": {
+  "vo": true
+ },
+ "ac-the-engine-of-2": {
+  "vo": true
+ },
+ "ac-fcbd-2016-the-1": {
+  "vo": true
+ },
+ "ac-heresy-1": {
+  "es": "Assassin's Creed: herejía"
+ },
+ "ac-uprising-finale-1": {
+  "vo": true
+ },
+ "ac-gold-1": {
+  "vo": true
+ },
+ "ac-mirage-a-soar-1": {
+  "vo": true
+ },
+ "dca-btas-1": {
+  "es": "Batman: La Serie Animada"
+ },
+ "dca-phantasm": {
+  "es": "Batman: La máscara del fantasma"
+ },
+ "dca-btas-2": {
+  "es": "Batman: La Serie Animada"
+ },
+ "dca-subzero": {
+  "mx": "Batman: Bajo Cero"
+ },
+ "dca-stas-1": {
+  "es": "Superman: La serie animada",
+  "mx": "Superman: La Serie Animada"
+ },
+ "dca-tnba-1": {
+  "es": "Las nuevas aventuras de Batman",
+  "mx": "Las Nuevas Aventuras de Batman"
+ },
+ "dca-static-1": {
+  "es": "Descarga estática"
+ },
+ "dca-stas-2": {
+  "es": "Superman: La serie animada",
+  "mx": "Superman: La Serie Animada"
+ },
+ "dca-tnba-2": {
+  "es": "Las nuevas aventuras de Batman",
+  "mx": "Las Nuevas Aventuras de Batman"
+ },
+ "dca-stas-3": {
+  "es": "Superman: La serie animada",
+  "mx": "Superman: La Serie Animada"
+ },
+ "dca-static-2": {
+  "es": "Descarga estática"
+ },
+ "dca-jl-1": {
+  "es": "La liga de la justicia",
+  "mx": "Liga de la Justicia"
+ },
+ "dca-static-3": {
+  "es": "Descarga estática"
+ },
+ "dca-jl-2": {
+  "es": "La liga de la justicia",
+  "mx": "Liga de la Justicia"
+ },
+ "dca-jlu-1": {
+  "es": "Liga de la Justicia Ilimitada"
+ },
+ "dca-jlu-2": {
+  "es": "Liga de la Justicia Ilimitada"
+ },
+ "dca-batwoman": {
+  "es": "Batman: El misterio de Batwoman",
+  "mx": "Batman: El misterio de Batimujer"
+ },
+ "dca-jlu-3": {
+  "es": "Liga de la Justicia Ilimitada"
+ },
+ "dca-bhq": {
+  "es": "Batman y Harley Quinn"
+ },
+ "dca-jlu-4": {
+  "es": "Liga de la Justicia Ilimitada"
+ },
+ "dca-fatalfive": {
+  "es": "La Liga de la Justicia vs Los Cinco Fatales",
+  "mx": "La Liga de la Justicia vs los cinco fatales"
+ },
+ "dca-beyond-1": {
+  "es": "Batman del futuro"
+ },
+ "dca-rotj": {
+  "es": "Batman del futuro: El regreso del Joker",
+  "mx": "Batman del Futuro: El Regreso del Guasón"
+ },
+ "dca-beyond-2": {
+  "es": "Batman del futuro"
+ },
+ "dca-zeta": {
+  "es": "El proyecto Z",
+  "mx": "El Proyecto Zeta"
+ },
+ "dca-epilogue": {
+  "es": "Liga de la Justicia Ilimitada"
+ },
+ "dcam-flashpoint": {
+  "es": "La Liga de la Justicia: La paradoja del tiempo"
+ },
+ "dcam-sonofbatman": {
+  "es": "El hijo de Batman",
+  "mx": "El Hijo de Batman"
+ },
+ "dcam-jlwar": {
+  "es": "La Liga de la Justicia: Guerra",
+  "mx": "La Liga De La Justicia: Guerra"
+ },
+ "dcam-throne": {
+  "es": "La Liga de la Justicia: El trono de Atlantis",
+  "mx": "La Liga De La Justicia: El Trono De Atlantis"
+ },
+ "dcam-nightwingrobin": {
+  "mx": "Nightwing y Robin"
+ },
+ "dcam-batmanvsrobin": {
+  "es": "Batman contra Robin"
+ },
+ "dcam-badblood": {
+  "es": "Batman: Mala sangre",
+  "mx": "Batman: Mala Sangre"
+ },
+ "dcam-jlvstt": {
+  "es": "La Liga de la Justicia contra los Jóvenes Titanes",
+  "mx": "La Liga de la Justicia y Jóvenes Titanes: Unión en acción"
+ },
+ "dcam-helltopay": {
+  "es": "Escuadrón Suicida: Consecuencias infernales",
+  "mx": "Escuadrón Suicida: Deuda infernal"
+ },
+ "dcam-jld": {
+  "es": "La Liga de la Justicia Oscura"
+ },
+ "dcam-judas": {
+  "es": "Jóvenes titanes: El contrato de Judas",
+  "mx": "Los Jóvenes Titanes: El Contrato de Judas"
+ },
+ "dcam-deathofsuperman": {
+  "es": "La muerte de Superman"
+ },
+ "dcam-reign": {
+  "es": "La muerte de Superman - Parte 2: el reinado de los superhombres",
+  "mx": "Reino de los Supermanes"
+ },
+ "dcam-constantine": {
+  "es": "Constantine: Ciudad de Demonios",
+  "mx": "Constantine: Ciudad de demonios - La película"
+ },
+ "dcam-bloodlines": {
+  "es": "Wonder Woman: Linaje",
+  "mx": "La Mujer Maravilla: Linaje"
+ },
+ "dcam-apokolipswar": {
+  "es": "Liga de la Justicia Oscura: La Guerra Apokolips",
+  "mx": "La Liga de la Justicia Oscura: Guerra Apokolips"
+ },
+ "dcam-houseofmystery": {
+  "es": "Constantine: La Casa de los secretos",
+  "mx": "Constantine: La Casa del Misterio"
+ },
+ "dcam-manoftomorrow": {
+  "es": "Superman: El hombre del mañana",
+  "mx": "Superman: Hombre del Mañana"
+ },
+ "dcam-jsww2": {
+  "es": "La Sociedad De La Justicia De América, II Guerra Mundial",
+  "mx": "La Sociedad De La Justicia De América: Segunda Guerra Mundial"
+ },
+ "dcam-longhalloween1": {
+  "es": "Batman: El Largo Halloween, Parte 1",
+  "mx": "Batman: El Largo Halloween Parte 1"
+ },
+ "dcam-longhalloween2": {
+  "es": "Batman: El Largo Halloween, Parte 2",
+  "mx": "Batman: el largo Halloween parte 2"
+ },
+ "dcam-bewaremypower": {
+  "es": "Linterna Verde: Teman a mi poder"
+ },
+ "dcam-legion": {
+  "es": "Legión de superhéroes",
+  "mx": "Legión de Super Héroes"
+ },
+ "dcam-warworld": {
+  "mx": "Liga de la Justicia: Mundo bélico"
+ },
+ "dcam-bluebeetle": {
+  "mx": "DC Showcase: Escarabajo Azul"
+ },
+ "dcam-coie1": {
+  "es": "Liga de la Justicia: Crisis en Tierras Infinitas - Parte 1",
+  "mx": "La Liga De La Justicia: Crisis En Las Tierras Infinitas Parte 1"
+ },
+ "dcam-coie2": {
+  "es": "Liga de la Justicia: Crisis en Tierras Infinitas - Parte 2",
+  "mx": "La Liga De La Justicia: Crisis En Las Tierras Infinitas Parte 2"
+ },
+ "dcam-coie3": {
+  "es": "Liga de la Justicia: Crisis en Tierras Infinitas – Parte 3",
+  "mx": "La Liga De La Justicia: Crisis En Las Tierras Infinitas Parte 3"
+ },
+ "jw-jp": {
+  "es": "Jurassic Park (Parque Jurásico)",
+  "mx": "Parque Jurásico"
+ },
+ "jw-tlw": {
+  "es": "El mundo perdido: Jurassic Park"
+ },
+ "jw-jp3": {
+  "es": "Jurassic Park III (Parque Jurásico III)",
+  "mx": "Parque Jurásico III"
+ },
+ "jw-cc": {
+  "es": "Jurassic World: Campamento Cretácico"
+ },
+ "jw-fk": {
+  "es": "Jurassic World: El reino caído",
+  "mx": "Jurassic World 2: El Reino Caído"
+ },
+ "jw-maisie1": {
+  "vo": true
+ },
+ "jw-babr": {
+  "vo": true,
+  "es": "La batalla de Big Rock"
+ },
+ "jw-maisie2": {
+  "vo": true
+ },
+ "jw-dominion": {
+  "mx": "Jurassic World Dominio"
+ },
+ "jw-ct": {
+  "es": "Jurassic World: Teoría del dinocaos"
+ },
+ "jw-rebirth": {
+  "es": "Jurassic World: El renacer",
+  "mx": "Jurassic World: Renace"
+ },
+ "wc-lesser": {
+  "vo": true
+ },
+ "wc-kiddo": {
+  "vo": true
+ },
+ "wc-edge": {
+  "vo": true
+ },
+ "wc-lastwish": {
+  "vo": true
+ },
+ "wc-price": {
+  "vo": true
+ },
+ "wc-conscience": {
+  "vo": true
+ },
+ "wc-killing": {
+  "vo": true
+ },
+ "wc-woods": {
+  "vo": true
+ },
+ "wc-frog": {
+  "vo": true
+ },
+ "wc-wild": {
+  "vo": true
+ },
+ "wc-corvo": {
+  "vo": true
+ },
+ "wc-bear": {
+  "vo": true
+ },
+ "wc-bloodstone": {
+  "vo": true
+ },
+ "re-degeneration": {
+  "es": "Resident Evil: Degeneración"
+ },
+ "re-id": {
+  "es": "Resident Evil: Oscuridad infinita",
+  "mx": "Resident Evil: La tiniebla infinita"
+ },
+ "re-damnation": {
+  "es": "Resident Evil: La maldición",
+  "mx": "Resident Evil: Infierno"
+ },
+ "re-vendetta": {
+  "mx": "Resident Evil: Venganza"
+ },
+ "re-deathisland": {
+  "mx": "Resident Evil: Isla de la Muerte"
+ },
+ "br-fcbd2021-origins": {
+  "vo": true
+ },
+ "br-origins": {
+  "vo": true
+ },
+ "br-tokyonexus": {
+  "vo": true
+ },
+ "br-fcbd2020-2019": {
+  "vo": true
+ },
+ "br-blackout2022": {
+  "vo": true,
+  "es": "Blade Runner: Apagón 2022"
+ },
+ "br-fcbd2021-2029": {
+  "vo": true
+ },
+ "br-blacklotus": {
+  "es": "Blade Runner: El Loto Negro"
+ },
+ "br-bl-leavingla": {
+  "vo": true
+ },
+ "br-bl-lasvegas": {
+  "vo": true
+ },
+ "br-nexusdawn": {
+  "vo": true
+ },
+ "br-nowheretorun": {
+  "vo": true
+ },
+ "mv-kongskullisland": {
+  "es": "Kong. La isla Calavera",
+  "mx": "Kong: La Isla Calavera"
+ },
+ "mv-skullisland": {
+  "es": "La isla Calavera"
+ },
+ "mv-returntoskullisland": {
+  "vo": true
+ },
+ "mv-escapefromskullisland": {
+  "vo": true
+ },
+ "mv-birthofkong": {
+  "vo": true
+ },
+ "mv-aftershock": {
+  "vo": true
+ },
+ "mv-monarch-s1": {
+  "es": "Monarch: El legado de los monstruos",
+  "mx": "Monarch: Legado de monstruos"
+ },
+ "mv-monarch-s2": {
+  "es": "Monarch: El legado de los monstruos",
+  "mx": "Monarch: Legado de monstruos"
+ },
+ "mv-kotm": {
+  "es": "Godzilla: Rey de los Monstruos",
+  "mx": "Godzilla 2: El rey de los monstruos"
+ },
+ "mv-kingdomkong": {
+  "vo": true
+ },
+ "mv-dominion": {
+  "vo": true
+ },
+ "mv-fightorflight": {
+  "vo": true
+ },
+ "mv-hunted": {
+  "vo": true
+ },
+ "mv-declassified": {
+  "vo": true
+ },
+ "mv-newempire": {
+  "es": "Godzilla y Kong: El nuevo imperio"
+ },
+ "362-bby-the-high-republic-adventures-pathfinders-1-6": {
+  "vo": true
+ },
+ "232-bby-star-wars-adventures-2020-6-tales-of-villainy-the--c54358": {
+  "vo": true
+ },
+ "228-bby-the-high-republic-a-valiant-vow": {
+  "vo": true
+ },
+ "134-bby-the-acolyte-the-crystal-crown": {
+  "vo": true
+ },
+ "40-bby-master-apprentice": {
+  "es": "Maestro y aprendiz"
+ },
+ "22-bby-queen-s-hope": {
+  "es": "La esperanza de la reina"
+ },
+ "22-bby-star-wars-adventures-the-clone-wars-battle-tales-1--ddb091": {
+  "vo": true
+ },
+ "21-bby-hyperspace-stories-the-bad-batch-rogue-agents-1-4": {
+  "vo": true
+ },
+ "19-bby-dark-disciple": {
+  "es": "Discípulo oscuro"
+ },
+ "21-17-bby-catalyst-a-rogue-one-novel": {
+  "es": "Catalizador: una novela de Rogue One"
+ },
+ "17-bby-rogue-one-saw-guerrera": {
+  "vo": true
+ },
+ "17-bby-shadow-of-maul-1-5": {
+  "vo": true
+ },
+ "14-bby-lords-of-the-sith": {
+  "es": "Los lores Sith"
+ },
+ "13-12-bby-crimson-climb": {
+  "vo": true
+ },
+ "6-bby-reign-of-the-empire-edge-of-the-abyss": {
+  "vo": true
+ },
+ "3-bby-leia-princess-of-alderaan": {
+  "es": "Leia: Princesa de Alderaan"
+ },
+ "2-bby-rogue-one-cassian-k-2so-special": {
+  "vo": true
+ },
+ "2-bby-a-new-legacy-the-grand-imperial-jubilee": {
+  "vo": true
+ },
+ "1-bby-the-mighty-chewbacca-in-the-forest-of-fear": {
+  "vo": true
+ },
+ "1-bby-thrawn-treason": {
+  "es": "Thrawn: Traición"
+ },
+ "1-bby-rogue-one-jyn-erso": {
+  "vo": true
+ },
+ "1-bby-rogue-one-cassian-andor": {
+  "vo": true
+ },
+ "1-bby-rogue-one-chirrut-baze": {
+  "vo": true
+ },
+ "1-bby-rogue-one-darth-vader": {
+  "vo": true
+ },
+ "0-4-aby-hiding-from-the-dark": {
+  "vo": true
+ },
+ "0-aby-heir-to-the-jedi": {
+  "es": "Heredero de los Jedi"
+ },
+ "0-aby-a-new-legacy-rogue-s-gambit": {
+  "vo": true
+ },
+ "0-aby-vader-down": {
+  "es": "Vader derribado"
+ },
+ "0-aby-the-screaming-citadel": {
+  "es": "La ciudadela de los gritos"
+ },
+ "2-aby-a-new-legacy-for-the-love-of-the-empire": {
+  "vo": true
+ },
+ "19-10-bby-star-wars-outlaws-low-red-moon": {
+  "vo": true
+ },
+ "4-aby-the-princess-and-the-scoundrel": {
+  "es": "La princesa y el sinvergüenza"
+ },
+ "6-bby-5-aby-lost-stars": {
+  "es": "Estrellas perdidas"
+ },
+ "9-aby-the-mandalorian-and-grogu-danger-in-the-dark": {
+  "vo": true
+ },
+ "9-aby-the-mandalorian-and-grogu-nightmare-on-nevarro": {
+  "vo": true
+ },
+ "21-aby-shadow-of-the-sith": {
+  "es": "Sombras de los Sith"
+ },
+ "28-34-aby-the-legends-of-luke-skywalker": {
+  "es": "Las leyendas de Luke Skywalker"
+ },
+ "31-34-aby-before-the-awakening": {
+  "es": "Antes del despertar"
+ },
+ "5-aby-star-wars-adventures-destroyer-down-the-ghost-ship": {
+  "vo": true
+ },
+ "34-aby-star-wars-adventures-destroyer-down": {
+  "vo": true
+ },
+ "34-aby-the-last-jedi-cobalt-squadron": {
+  "vo": true
+ },
+ "34-aby-galaxy-s-edge-black-spire": {
+  "vo": true
+ },
+ "34-aby-the-fall-of-kylo-ren-1-5": {
+  "vo": true
+ },
+ "34-aby-path-of-the-lightsaber-1": {
+  "vo": true
+ },
+ "34-aby-resistance-reborn": {
+  "es": "El renacer de la resistencia"
+ },
+ "34-aby-spark-of-the-resistance": {
+  "es": "La chispa de la Resistencia"
+ },
+ "34-aby-legacy": {
+  "vo": true
+ },
+ "34-aby-a-crash-of-fate": {
+  "vo": true
+ },
+ "34-aby-galaxy-s-edge-echoes-of-the-empire-1-5": {
+  "vo": true
+ }
+}

@@ -66,5 +66,10 @@ export default {
 /* Le type d'un repère écran est un libellé, mais `type` est technique
    dans les données : la page le traduit à l'affichage. */
 export const RETOUCHES = [
+  /* le badge VO : l'anglais l'a retiré (traduire-pages.mjs), l'espagnol
+     le rend, sur la table de titres-es.mjs */
+  ["'' /* pas de badge VO en anglais : voir traduire-pages.mjs */", "(x.vo?'<span class=\"vo\" title=\"'+att(T.voTitle)+'\">VO</span>':'')"],
+  /* « Títulos en español » : `tes` est stocké échappé, comme le titre */
+  ["if(O.o.vo&&!O.en){", "if(O.o.tes){ D.eras.forEach(function(era){ era.items.forEach(function(x){ if(x.kind==='it'&&x.tes) x.title=x.tes; }); }); }\n    if(false){"],
   ["'<span class=\"scr-y\">'+att(x.type)+'</span>'", "'<span class=\"scr-y\">'+att(x.type==='On screen'?'En pantalla':x.type)+'</span>'"],
 ];

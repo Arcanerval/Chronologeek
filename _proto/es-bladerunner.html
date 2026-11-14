@@ -2107,7 +2107,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var fb=(e.tags||[]).map(function(k){
       return CFG.markLabels && CFG.markLabels[k]
         ? '<span class="ft" style="--k:var(--m-'+k+')">'+esc(CFG.markLabels[k])+'</span>' : ''; }).join('');
-    var vo=(e.lang==='vo' && T.lang==='fr') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
     return '<article class="bu rv'+(prog[e.id]?' done':'')+'" id="'+e.id+'" data-id="'+e.id+'">'+
       '<span class="bu-side">'+

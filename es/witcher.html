@@ -2737,7 +2737,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var dim=e.dim ? '<span class="dim">'+esc(e.dim)+'</span>' : '';
     /* Le badge VO ne se pose qu'en français : pour qui lit l'anglais, « pas
        de version française » n'a pas d'objet. Repris de Jurassic World. */
-    var vo=(e.lang==='vo' && T.lang==='fr') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
+    var vo=(e.lang==='vo' && T.lang!=='en') ? '<span class="vo" title="'+esc(T.voTitle||'')+'">VO</span>' : '';
     var d=rt(e);
     return '<article class="bu rv'+(prog[e.id]?' done':'')+
       '" id="'+e.id+'" data-id="'+e.id+'">'+

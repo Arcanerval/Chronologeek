@@ -7311,7 +7311,7 @@ function cgBillet(){
       return m;
     }).catch(function(){ return null; });
   }
-  if (O.o.vo && !EN) {
+  if (false) {
     var c0 = null;
     try { c0 = JSON.parse(localStorage.getItem(TKEY) || 'null'); } catch (_) {}
     if (!c0 || !c0.d || Date.now() - c0.d > 7 * 864e5) titres().then(function(m){
@@ -7397,7 +7397,7 @@ function cgBillet(){
       bouton(T.nMust, o.n === 'must', ' data-n="must"') + '</div><p class="rg-n">' + T.nNote + '</p><p class="rg-l"></p>';
     if (!EN) c += sw('vf', T.vf, o.vf);
     c += sw('vus', T.vus, o.vus);
-    if (!EN) c += sw('vo', T.vo, o.vo);
+    if (!EN) c += sw('tes', 'Títulos en español', o.tes);
     h += section(1, T.contenu, c);
 
     c = '<div class="rg-u" id="rg-u">';

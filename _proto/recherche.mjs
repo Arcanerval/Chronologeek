@@ -78,6 +78,18 @@ function titres(eras) {
   return m;
 }
 
+// L'espagnol garde les titres anglais : son alias est le titre espagnol
+// (titres-es.mjs), celui que l'option « Títulos en español » affiche.
+function titresEs(eras) {
+  const m = {};
+  for (const era of eras || []) {
+    for (const it of era.entries || era.items || []) {
+      if (rendable(it) && (it.tes || it.tmx)) m[it.id] = decode(it.tes || it.tmx);
+    }
+  }
+  return m;
+}
+
 function entrees(eras, rang, autres = {}) {
   const out = [];
   const vus = {};
@@ -120,14 +132,15 @@ export function recherche({ racine, langue, urls }) {
     const u = charge(racine, fichier, global)[global];
     const [fichierB, globalB] = SOURCES[cle][autre];
     const b = charge(racine, fichierB, globalB)[globalB];
-    items.push(...entrees(u.eras, univers.length, titres(b.eras)));
+    items.push(...entrees(u.eras, univers.length, langue === 'es' ? titresEs(u.eras) : titres(b.eras)));
     univers.push({ k: cle, n: decode(u.title), h: urls[cle], c: ENCRES[cle] });
   }
 
   const [fichier, global] = DOSSIER[langue];
   const d = charge(racine, fichier, global)[global];
   const [fichierD, globalD] = DOSSIER[autre];
-  items.push(...entrees(d.eras, univers.length, titres(charge(racine, fichierD, globalD)[globalD].eras)));
+  items.push(...entrees(d.eras, univers.length, langue === 'es' ? titresEs(d.eras)
+    : titres(charge(racine, fichierD, globalD)[globalD].eras)));
   // **Le Dossier n'a pas de titre dans ses données** — `CGD` ne porte que
   // `eras` et `intro`. Son nom se compose donc comme `jsonld.mjs` compose son
   // fil d'Ariane, à partir des libellés de navigation : « Dossiers — Star

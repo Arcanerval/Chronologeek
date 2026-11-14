@@ -62,3 +62,4 @@ _proto/a-relire-bladerunner.json
 # verifier-vf.mjs : cache des réponses BnF / Open Library et rapport local
 _proto/.cache-vf.json
 _proto/rapport-vf.md
+_proto/.cache-es.json

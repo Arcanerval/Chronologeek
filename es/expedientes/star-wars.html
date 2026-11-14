@@ -1839,7 +1839,8 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var hors={}, cible='';
     try{ cible=decodeURIComponent(location.hash.slice(1)); }catch(_){}
     O.voitId=function(id){ return !hors[id]; };
-    if(O.o.vo&&!O.en){
+    if(O.o.tes){ D.eras.forEach(function(era){ era.items.forEach(function(x){ if(x.kind==='it'&&x.tes) x.title=x.tes; }); }); }
+    if(false){
       var m=null;
       try{ m=(JSON.parse(localStorage.getItem('cg-titres-vo')||'null')||{}).m; }catch(_){}
       if(m) D.eras.forEach(function(era){ era.items.forEach(function(x){
@@ -1908,7 +1909,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
         '<div class="bu-head">'+
           '<span class="bu-txt">'+
             '<span class="bu-tags"><span class="b" style="--k:'+x.c+'">'+att(x.type)+'</span>'+
-              '' /* pas de badge VO en anglais : voir traduire-pages.mjs */+'</span>'+
+              (x.vo?'<span class="vo" title="'+att(T.voTitle)+'">VO</span>':'')+'</span>'+
             '<span class="bu-title">'+x.title+'</span>'+
             (x.note?'<span class="bu-note">'+x.note+'</span>':'')+
           '</span>'+
