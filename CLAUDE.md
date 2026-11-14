@@ -3526,6 +3526,24 @@ caché** : l'identifiant OAuth du projet Google Cloud de Niko, public par nature
 poser dans cette constante (origines autorisées : `https://chronologeek.app` et
 `http://localhost:8951`).
 
+### La politique de confidentialité, posée le 14 novembre 2026
+
+`/fr/confidentialite` et `/privacy`, écrites par `_proto/confidentialite.mjs` à la
+publication, à l'habillage des fiches d'œuvres (menu, pied, `/works/fiche.css`).
+Demandée par Niko, et exigée par Google pour passer l'identifiant OAuth de la synchro
+Drive en production. **Le lien est dans le pied de page seulement** (liste « Plus »,
+après « Contact », posé par `publier.mjs` étape 7 bis — la publication signale une
+page où il n'a pas pu se poser), **jamais au menu du haut**, choix de Niko.
+
+**Le texte dit ce que le site fait vraiment**, d'après l'inventaire des adresses que le
+code appelle : stockage local seulement, GoatCounter sans cookie ni IP conservée,
+GitHub Pages, TMDB / JustWatch / RAWG / Open Library appelés par le navigateur,
+YouTube en lien seulement, Google Drive en `drive.file` avec la mention « utilisation
+limitée » des API Google. **Un service ajouté au site (API, script, police) se déclare
+dans ce fichier**, sans quoi la page ment sans que rien ne le dise. Le même jour, la
+page d'erreur a cessé de demander ses polices à Google Fonts (`POLICES` d'
+`erreur404.mjs`) : c'était la seule page du site à le faire.
+
 ### Trois canaux de plus, posés le 27 septembre 2026
 
 Tous dans `e-app.js`, bilingues par `documentElement.lang`, et sans une ligne

@@ -38,6 +38,7 @@ import { recap } from './recap.mjs';
 import { reglages, TETE_REGLAGES, boutonReglages, tiroirReglages } from './reglages.mjs';
 import { flux } from './flux.mjs';
 import { oeuvres, habillage } from './oeuvres.mjs';
+import { confidentialite } from './confidentialite.mjs';
 import { decomptes, appliquer } from './decomptes.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
@@ -950,6 +951,16 @@ ${RES_ITI}` : '') +
   if (/"nx":\{"d":[1-9]/.test(h) && !/<main[^>]*>\s*<div class="wrap nx-hote">/.test(h))
     problemes.push(`${c.sortie} : l'accroche n'est plus en tête de <main>, la place de l'encart tomberait à côté`);
 
+  // 7 bis. la politique de confidentialité, dans le pied de page seulement (pas
+  // au menu du haut : personne ne la cherche là, choix de Niko)
+  {
+    const lien = langue === 'fr' ? '<li><a href="/fr/confidentialite">Confidentialité</a></li>'
+                                 : '<li><a href="/privacy">Privacy</a></li>';
+    const avantLien = h;
+    h = h.replace(/(<li><a href="#contact" data-contact>[^<]*<\/a><\/li>)/, `$1\n      ${lien}`);
+    if (h === avantLien) problemes.push(`${c.sortie} : lien « Confidentialité » non posé (pas de « Contact » au pied de page)`);
+  }
+
   // 8. service worker et mesure d'audience
   h = h.replace(/(\r?\n)<\/body>/, `$1${PIED}$1</body>`);
   if (!h.includes('/pwa.js')) problemes.push(`${c.sortie} : pied de page non injecté`);
@@ -1134,6 +1145,15 @@ try {
   }
   autres.push({ dest: '/works/ et /fr/oeuvres/', octets: OEUVRES.pages.reduce((a, p) => a + p.html.length, 0),
                 note: `${OEUVRES.pages.length} pages d'œuvres` });
+
+  // La politique de confidentialité, au même habillage (`confidentialite.mjs`).
+  const urlsCf = { fr: '/fr/confidentialite', en: '/privacy' };
+  for (const langue of ['fr', 'en']) {
+    const r = confidentialite({ langue, ch: ch[langue], site: SITE, urls: urlsCf });
+    if (/undefined|NaN/.test(r.html)) problemes.push(`${r.url} : valeur vide dans la page`);
+    if (!CHECK) writeFileSync(join(RACINE, r.sortie), r.html);
+    autres.push({ dest: r.url, octets: r.html.length, note: 'confidentialité' });
+  }
 }
 
 const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe, oeuvres: OEUVRES.plan });

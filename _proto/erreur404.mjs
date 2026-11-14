@@ -91,6 +91,12 @@ h1{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:800
 /**
  * Rend la page 404 d'une langue. `urls` donne l'URL de chaque clé de route.
  */
+// Les polices du site, servies par lui-même, comme sur toutes les autres pages : la page
+// d'erreur était la seule à les demander à Google Fonts (relevé le 14 novembre 2026, en
+// écrivant la politique de confidentialité, qui dit qu'aucune page n'appelle Google).
+const POLICES = "@font-face{font-family:'Big Shoulders Display';font-weight:100 900;font-display:swap;src:url(/fonts/bigshoulders-latin.woff2) format('woff2')}" +
+  "@font-face{font-family:'Chivo';font-weight:100 900;font-display:swap;src:url(/fonts/chivo-latin.woff2) format('woff2')}";
+
 export function erreur404({ racine, langue, urls }) {
   const t = T[langue];
 
@@ -120,10 +126,7 @@ export function erreur404({ racine, langue, urls }) {
 <title>${esc(t.titre)} | Chronologeek</title>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <meta name="theme-color" content="#08080f"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Chivo:wght@400;700&display=swap"/>
-<style>${CSS}</style>
+<style>${POLICES}${CSS}</style>
 </head>
 <body>
 <main class="box">
