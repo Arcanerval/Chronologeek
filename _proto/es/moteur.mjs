@@ -320,7 +320,7 @@ export default {
 
 /* Le pays par défaut d'une page espagnole se lit dans le navigateur :
    es-MX donne le Mexique, es-AR l'Argentine ; à défaut, l'Espagne. */
-const PNAV = "((/^es-([a-z]{2})$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase())";
+const PNAV = "(function(m){ m = (/^es-(\\w+)$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase(); return m === '419' ? 'MX' : m; })()";
 
 /* Remplacements exacts, appliqués à e-app-es.js une fois les libellés
    basculés. Une retouche qui ne trouve plus sa cible arrête tout. */
@@ -354,6 +354,10 @@ export const RETOUCHES = [
   ["(FR && e.date_sort_fr)", "(false && e.date_sort_fr)"],
   ["(FR && e.title_fr)", "(false && e.title_fr)"],
   ["if (FR) return e.date_txt_fr || e.date_txt || '';", "if (false) return e.date_txt_fr || e.date_txt || '';"],
+  /* les pays : l'Espagne et l'Amérique latine d'abord, leurs noms en espagnol */
+  ["new Intl.DisplayNames([EN ? 'en' : 'en']", "new Intl.DisplayNames([EN ? 'en' : 'es']"],
+  ["'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];",
+   "'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];\n  PAYS = ['ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'US', 'FR', 'BE', 'CH', 'LU', 'CA', 'GB', 'IE', 'DE', 'IT', 'NL', 'AU'];"],
   /* le pays par défaut */
   ["(EN ? 'US' : 'ES')", `(EN ? 'US' : ${PNAV})`],
   /* l'index des titres de l'autre langue, pour le filtre des pages */

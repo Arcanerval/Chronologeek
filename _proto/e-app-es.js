@@ -5882,7 +5882,7 @@ function cgBillet(){
   /* Le pays se règle dans le panneau des réglages ; à défaut, la France pour
      la page française et les États-Unis pour l'anglaise. */
   var MES = (window.CG_OPT && CG_OPT.o) || {};
-  var PAYS = MES.pays || (EN ? 'US' : ((/^es-([a-z]{2})$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase()));
+  var PAYS = MES.pays || (EN ? 'US' : (function(m){ m = (/^es-(\w+)$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase(); return m === '419' ? 'MX' : m; })());
   var MIENNES = {}, MIENNES_N = 0;
   (MES.pf || []).forEach(function(k){ MIENNES[k] = 1; MIENNES_N++; });
   var MES_CS = {};
@@ -7013,10 +7013,13 @@ function cgBillet(){
   };
 
   /* Les pays où l'on regarde le plus le site, et ceux qu'on a demandés :
-     la Belgique, la Suisse, le Canada. Les noms viennent du navigateur. */
-  var PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU'];
+     la Belgique, la Suisse, le Canada ; l'Amérique latine depuis l'espagnol
+     (14 novembre 2026). Les noms viennent du navigateur. */
+  var PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU',
+    'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];
+  PAYS = ['ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'US', 'FR', 'BE', 'CH', 'LU', 'CA', 'GB', 'IE', 'DE', 'IT', 'NL', 'AU'];
   function nomPays(c){
-    try { return new Intl.DisplayNames([EN ? 'en' : 'en'], { type: 'region' }).of(c); } catch (_) { return c; }
+    try { return new Intl.DisplayNames([EN ? 'en' : 'es'], { type: 'region' }).of(c); } catch (_) { return c; }
   }
 
   /* Le panneau reprend le dessin du site : le filet aux treize encres du
@@ -7332,7 +7335,7 @@ function cgBillet(){
   if ((O.o.pf || []).length && document.querySelector('.bu-panel[data-tmdb]')) {
     plateformesJson().then(function(j){
       if (!j || !j.w) return;
-      var pays = (window.CG_WT && CG_WT.pays) || O.o.pays || (EN ? 'US' : ((/^es-([a-z]{2})$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase()));
+      var pays = (window.CG_WT && CG_WT.pays) || O.o.pays || (EN ? 'US' : (function(m){ m = (/^es-(\w+)$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase(); return m === '419' ? 'MX' : m; })());
       var mes = {};
       O.o.pf.forEach(function(k){ mes[k] = 1; });
       [].forEach.call(document.querySelectorAll('.bu[data-id]'), function(a){
@@ -7412,7 +7415,7 @@ function cgBillet(){
     h += section(4, T.aff, sw('cp', T.cp, o.cp) + sw('txt', T.txt, o.txt) + sw('ctr', T.ctr, o.ctr) + sw('calme', T.calme, o.calme));
 
     h += section(5, T.regarder, '<p class="rg-l"><label for="rg-pays">' + T.pays + '</label></p><select id="rg-pays">' +
-      '<option value="">' + T.defaut + ' (' + esc(nomPays(EN ? 'US' : ((/^es-([a-z]{2})$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase()))) + ')</option>' +
+      '<option value="">' + T.defaut + ' (' + esc(nomPays(EN ? 'US' : (function(m){ m = (/^es-(\w+)$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase(); return m === '419' ? 'MX' : m; })())) + ')</option>' +
       PAYS.map(function(p){ return '<option value="' + p + '"' + (o.pays === p ? ' selected' : '') + '>' + esc(nomPays(p)) + '</option>'; }).join('') +
       '</select><p class="rg-l">' + T.pf + '</p><div class="rg-ch" id="rg-pf">' + pfChips(pf, o) + '</div><p class="rg-n">' + T.pfNote + '</p>');
 
@@ -7428,7 +7431,7 @@ function cgBillet(){
   }
   function pfChips(pf, o){
     if (!pf || !pf.p) return '<span class="rg-n">' + T.pfVide + '</span>';
-    var pays = o.pays || (EN ? 'US' : ((/^es-([a-z]{2})$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase())), mes = {};
+    var pays = o.pays || (EN ? 'US' : (function(m){ m = (/^es-(\w+)$/i.exec(navigator.language || '') || [0, 'ES'])[1].toUpperCase(); return m === '419' ? 'MX' : m; })()), mes = {};
     (o.pf || []).forEach(function(k){ mes[k] = 1; });
     var l = (pf.n && pf.n[pays]) || [];
     /* les vingt plus présentes dans le pays, plus celles déjà choisies */

@@ -624,7 +624,11 @@ arrêts sont des comics. Code de ligne **MV**, quatre stations « ÈRE N / 4 ».
 Demandé par Niko. **Espagnol neutre** (Espagne et Amérique latine),
 **tutoiement**, **titres d'œuvres en anglais**, y compris dans les phrases —
 l'Espagne et l'Amérique latine ne traduisent pas les titres pareil. Badge VO
-masqué en espagnol pour l'instant. En ligne : `/es/` et `/es/starwars`.
+masqué en espagnol (`T.lang!=='en'` devient `T.lang==='fr'` au recâblage).
+**Tout le site est en espagnol depuis le 14 novembre 2026** : les quatorze
+univers, `/es/proximamente`, `/es/novedades`, `/es/expedientes/` et le
+Dossier. Restent en anglais les fiches d'œuvres, la confidentialité, le flux
+et la page d'erreur.
 
 - **L'espagnol descend de l'anglais** : `node _proto/traduire-es.mjs` écrit
   `es-*.html` et `data-*-es.js` depuis les `en-*`, avec les tables de
@@ -654,6 +658,25 @@ masqué en espagnol pour l'instant. En ligne : `/es/` et `/es/starwars`.
   règle `html[lang=es]` à la traduction ; les bascules `EN ? … : …` des scripts
   de page se tranchent dans `RETOUCHES` de la table de la page
   (`es/accueil.mjs`).
+- **Le titre d'une œuvre n'est jamais dans une table** : `titreOeuvre()` de
+  `traduire-es.mjs` garde le `title` d'une entrée ou d'une lecture et ne
+  traduit que son suffixe connu (« — First Post-Credits Scene », « — Episode
+  2 », « — EPISODES 1-2 »). Les épisodes « Season 1 Episode 7 (P.O.V.) »
+  passent par `gabarits.mjs`.
+- **Un mot seul en minuscules, dans le JS, est un identifiant** : `MODE='all'`,
+  `matchMedia('all')`, `indexeCouvertures(RL,'release')`. Traduits, ils
+  vidaient DC et DC Animation (« todo ») et cassaient l'ordre de sortie de
+  Marvel, sans un mot. `traduitJs` les laisse ; un vrai libellé porte son
+  espace (`' stops'`) et se retouche s'il n'en a pas (`pl(n,'release')`).
+- **Les blocs `i18n-off` d'À venir, Nouveautés et Dossiers** posent
+  `FR = lang !== 'en'` : sur la page espagnole, `RETOUCHES` force la branche
+  anglaise (sortie américaine, titre original) et en traduit les mois, les
+  jours et les libellés. Une date se lit « 14 de noviembre de 2026 ».
+- **« Où regarder » couvre l'Amérique latine** : MX, AR, CO, CL, PE, VE, EC, UY
+  dans `PAYS` de `e-app.js` et de `plateformes.mjs` (21 pays, 60 Ko). Sur la
+  page espagnole le pays par défaut vient de `navigator.language` (es-419
+  donne le Mexique), l'Espagne et l'Amérique latine passent en tête de la
+  liste, et leurs noms s'écrivent en espagnol.
 
 ## Les parcours
 

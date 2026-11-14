@@ -7015,8 +7015,10 @@ function cgBillet(){
   };
 
   /* Les pays où l'on regarde le plus le site, et ceux qu'on a demandés :
-     la Belgique, la Suisse, le Canada. Les noms viennent du navigateur. */
-  var PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU'];
+     la Belgique, la Suisse, le Canada ; l'Amérique latine depuis l'espagnol
+     (14 novembre 2026). Les noms viennent du navigateur. */
+  var PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU',
+    'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];
   function nomPays(c){
     try { return new Intl.DisplayNames([EN ? 'en' : 'fr'], { type: 'region' }).of(c); } catch (_) { return c; }
   }

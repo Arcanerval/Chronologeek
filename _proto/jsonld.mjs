@@ -92,7 +92,8 @@ export const SOURCES = {
 /* L'espagnol, posé le 14 novembre 2026, univers par univers : un univers
    qui n'a pas encore ses données espagnoles (`traduire-es.mjs`) prend
    les anglaises, et sa page espagnole n'existe pas encore. */
-export const DONNEES_ES = { sw: 'data-es.js' };
+export const DONNEES_ES = Object.fromEntries(Object.entries(SOURCES).map(([k, s]) =>
+  [k, k === 'sw' ? 'data-es.js' : s.en[0].replace('-en.js', '-es.js')]));
 for (const [k, s] of Object.entries(SOURCES)) s.es = DONNEES_ES[k] ? [DONNEES_ES[k], s.en[1]] : s.en;
 /* Le fichier qui porte `CG.t` dans chaque langue. */
 export const CG_DE = { fr: 'data.js', en: 'data-en.js', es: 'data-es.js' };

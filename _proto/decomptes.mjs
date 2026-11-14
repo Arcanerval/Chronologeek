@@ -32,7 +32,7 @@ import { charge, SOURCES } from './jsonld.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 
-const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-en.js', 'CGD'] };
+const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-es.js', 'CGD'] };
 
 const arret = x => x && x.type !== 'separator' && x.type !== 'note';
 const donnees = (racine, [f, g]) => charge(racine, f, g)[g];
@@ -125,7 +125,7 @@ function dossiers(html, langue, V, nom) {
   r.sub('data-total', /(data-u="dossier-sw" data-total=")\d+/, (_, a) => a + D.total);
   r.sub('carte', /(data-u="dossier-sw"[\s\S]*?<b class="d-n">0<\/b> \/ )\d+( · )\d+/,
     (_, a, b) => a + D.total + b + D.stations);
-  r.sub('bande', /(<div class="s"><b>)\d+(<\/b><span>(?:œuvres|works))/, (_, a, b) => a + D.total + b);
+  r.sub('bande', /(<div class="s"><b>)\d+(<\/b><span>(?:œuvres|works|obras))/, (_, a, b) => a + D.total + b);
   r.sub('HUD', /(<em id="k-on">0<\/em> \/ )\d+/, (_, a) => a + D.total);
   r.sub('TOTAL', /(var TOTAL=)\d+/, (_, a) => a + D.total);
   // `E` : les noms courts sont écrits pour le plan, on ne touche qu'aux comptes.

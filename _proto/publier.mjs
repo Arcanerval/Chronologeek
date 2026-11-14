@@ -74,84 +74,101 @@ const ROUTES = [
     es: { proto: 'es-starwars.html',          sortie: 'es/starwars.html',         url: '/es/starwars' } },
   { cle: 'mcu',
     fr: { proto: 'e-marvel.html',             sortie: 'fr/marvel.html',           url: '/fr/marvel' },
-    en: { proto: 'en-marvel.html',            sortie: 'marvel.html',              url: '/marvel' } },
+    en: { proto: 'en-marvel.html',            sortie: 'marvel.html',              url: '/marvel' },
+    es: { proto: 'es-marvel.html', sortie: 'es/marvel.html', url: '/es/marvel' } },
   { cle: 'dc',
     fr: { proto: 'e-dc.html',                 sortie: 'fr/dc.html',               url: '/fr/dc' },
-    en: { proto: 'en-dc.html',                sortie: 'dc.html',                  url: '/dc' } },
+    en: { proto: 'en-dc.html',                sortie: 'dc.html',                  url: '/dc' },
+    es: { proto: 'es-dc.html', sortie: 'es/dc.html', url: '/es/dc' } },
   { cle: 'avatar',
     fr: { proto: 'e-avatar.html',             sortie: 'fr/avatar.html',                       url: '/fr/avatar' },
-    en: { proto: 'en-avatar.html',            sortie: 'avatar.html',                       url: '/avatar' } },
+    en: { proto: 'en-avatar.html',            sortie: 'avatar.html',                       url: '/avatar' },
+    es: { proto: 'es-avatar.html', sortie: 'es/avatar.html', url: '/es/avatar' } },
   // Star Trek se publie comme les autres, alors que sa chaîne de traduction va
   // en sens inverse : c'est `en-startrek.html` qui est écrit à la main et
   // `e-startrek.html` qui en descend. La publication, elle, ne voit que deux
   // protos et deux sorties — le sens de la traduction ne la regarde pas.
   { cle: 'startrek',
     fr: { proto: 'e-startrek.html',           sortie: 'fr/startrek.html',         url: '/fr/startrek' },
-    en: { proto: 'en-startrek.html',          sortie: 'startrek.html',            url: '/startrek' } },
+    en: { proto: 'en-startrek.html',          sortie: 'startrek.html',            url: '/startrek' },
+    es: { proto: 'es-startrek.html', sortie: 'es/startrek.html', url: '/es/startrek' } },
   // The Walking Dead prend la chaîne à l'envers comme Star Trek : `en-twd.html`
   // est écrit à la main, `e-twd.html` en descend par traduire-twd.mjs.
   { cle: 'twd',
     fr: { proto: 'e-twd.html',                sortie: 'fr/walkingdead.html',      url: '/fr/walkingdead' },
-    en: { proto: 'en-twd.html',               sortie: 'walkingdead.html',         url: '/walkingdead' } },
+    en: { proto: 'en-twd.html',               sortie: 'walkingdead.html',         url: '/walkingdead' },
+    es: { proto: 'es-twd.html', sortie: 'es/walkingdead.html', url: '/es/walkingdead' } },
   // Dragon Age est le troisième à prendre la chaîne à l'envers :
   // `en-dragonage.html` est écrit à la main, `e-dragonage.html` en descend
   // par traduire-dragonage.mjs.
   { cle: 'dragonage',
     fr: { proto: 'e-dragonage.html',          sortie: 'fr/dragonage.html',        url: '/fr/dragonage' },
-    en: { proto: 'en-dragonage.html',         sortie: 'dragonage.html',           url: '/dragonage' } },
+    en: { proto: 'en-dragonage.html',         sortie: 'dragonage.html',           url: '/dragonage' },
+    es: { proto: 'es-dragonage.html', sortie: 'es/dragonage.html', url: '/es/dragonage' } },
   // Assassin's Creed est le quatrième à prendre la chaîne à l'envers :
   // `en-assassinscreed.html` est écrit à la main, `e-assassinscreed.html` en
   // descend par traduire-assassinscreed.mjs.
   { cle: 'assassinscreed',
     fr: { proto: 'e-assassinscreed.html',     sortie: 'fr/assassinscreed.html',   url: '/fr/assassinscreed' },
-    en: { proto: 'en-assassinscreed.html',    sortie: 'assassinscreed.html',      url: '/assassinscreed' } },
+    en: { proto: 'en-assassinscreed.html',    sortie: 'assassinscreed.html',      url: '/assassinscreed' },
+    es: { proto: 'es-assassinscreed.html', sortie: 'es/assassinscreed.html', url: '/es/assassinscreed' } },
   // DC Animation est le cinquième à prendre la chaîne à l'envers :
   // `en-dcanimation.html` est écrit à la main, `e-dcanimation.html` en descend
   // par traduire-dcanimation.mjs.
   { cle: 'dcanimation',
     fr: { proto: 'e-dcanimation.html',        sortie: 'fr/dcanimation.html',      url: '/fr/dcanimation' },
-    en: { proto: 'en-dcanimation.html',       sortie: 'dcanimation.html',         url: '/dcanimation' } },
+    en: { proto: 'en-dcanimation.html',       sortie: 'dcanimation.html',         url: '/dcanimation' },
+    es: { proto: 'es-dcanimation.html', sortie: 'es/dcanimation.html', url: '/es/dcanimation' } },
   // Jurassic World est le sixième à prendre la chaîne à l'envers :
   // `en-jurassic.html` est écrit à la main, `e-jurassic.html` en descend
   // par traduire-jurassic.mjs.
   { cle: 'jurassic',
     fr: { proto: 'e-jurassic.html',           sortie: 'fr/jurassicworld.html',    url: '/fr/jurassicworld' },
-    en: { proto: 'en-jurassic.html',          sortie: 'jurassicworld.html',       url: '/jurassicworld' } },
+    en: { proto: 'en-jurassic.html',          sortie: 'jurassicworld.html',       url: '/jurassicworld' },
+    es: { proto: 'es-jurassic.html', sortie: 'es/jurassicworld.html', url: '/es/jurassicworld' } },
   // The Witcher est le septième à prendre la chaîne à l'envers :
   // `en-witcher.html` est écrit à la main, `e-witcher.html` en descend
   // par traduire-witcher.mjs.
   { cle: 'witcher',
     fr: { proto: 'e-witcher.html',            sortie: 'fr/witcher.html',          url: '/fr/witcher' },
-    en: { proto: 'en-witcher.html',           sortie: 'witcher.html',             url: '/witcher' } },
+    en: { proto: 'en-witcher.html',           sortie: 'witcher.html',             url: '/witcher' },
+    es: { proto: 'es-witcher.html', sortie: 'es/witcher.html', url: '/es/witcher' } },
   // Resident Evil est le huitième à prendre la chaîne à l'envers :
   // `en-residentevil.html` est écrit à la main, `e-residentevil.html` en
   // descend par traduire-residentevil.mjs.
   { cle: 'residentevil',
     fr: { proto: 'e-residentevil.html',       sortie: 'fr/residentevil.html',     url: '/fr/residentevil' },
-    en: { proto: 'en-residentevil.html',      sortie: 'residentevil.html',        url: '/residentevil' } },
+    en: { proto: 'en-residentevil.html',      sortie: 'residentevil.html',        url: '/residentevil' },
+    es: { proto: 'es-residentevil.html', sortie: 'es/residentevil.html', url: '/es/residentevil' } },
   // Blade Runner est le neuvième à prendre la chaîne à l'envers :
   // `en-bladerunner.html` est la source, `e-bladerunner.html` en descend
   // par traduire-bladerunner.mjs.
   { cle: 'bladerunner',
     fr: { proto: 'e-bladerunner.html',        sortie: 'fr/bladerunner.html',      url: '/fr/bladerunner' },
-    en: { proto: 'en-bladerunner.html',       sortie: 'bladerunner.html',         url: '/bladerunner' } },
+    en: { proto: 'en-bladerunner.html',       sortie: 'bladerunner.html',         url: '/bladerunner' },
+    es: { proto: 'es-bladerunner.html', sortie: 'es/bladerunner.html', url: '/es/bladerunner' } },
   // `en-monsterverse.html` est la source, `e-monsterverse.html` en descend
   // par traduire-monsterverse.mjs.
   { cle: 'monsterverse',
     fr: { proto: 'e-monsterverse.html',       sortie: 'fr/monsterverse.html',     url: '/fr/monsterverse' },
-    en: { proto: 'en-monsterverse.html',      sortie: 'monsterverse.html',        url: '/monsterverse' } },
+    en: { proto: 'en-monsterverse.html',      sortie: 'monsterverse.html',        url: '/monsterverse' },
+    es: { proto: 'es-monsterverse.html', sortie: 'es/monsterverse.html', url: '/es/monsterverse' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
-    en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' } },
+    en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' },
+    es: { proto: 'es-dossiers.html', sortie: 'es/expedientes/index.html', url: '/es/expedientes/' } },
   { cle: 'dossier-sw',
     fr: { proto: 'e-dossier-star-wars.html',  sortie: 'fr/dossiers/star-wars.html', url: '/fr/dossiers/star-wars' },
-    en: { proto: 'en-dossier-star-wars.html', sortie: 'deep-dives/star-wars.html',  url: '/deep-dives/star-wars' } },
+    en: { proto: 'en-dossier-star-wars.html', sortie: 'deep-dives/star-wars.html',  url: '/deep-dives/star-wars' },
+    es: { proto: 'es-dossier-star-wars.html', sortie: 'es/expedientes/star-wars.html', url: '/es/expedientes/star-wars' } },
   { cle: 'nouveautes',
     fr: { proto: 'e-nouveautes.html',         sortie: 'fr/nouveautes.html',       url: '/fr/nouveautes' },
-    en: { proto: 'en-nouveautes.html',        sortie: 'whats-new.html',           url: '/whats-new' } },
+    en: { proto: 'en-nouveautes.html',        sortie: 'whats-new.html',           url: '/whats-new' },
+    es: { proto: 'es-nouveautes.html', sortie: 'es/novedades.html', url: '/es/novedades' } },
   { cle: 'a-venir',
     fr: { proto: 'e-a-venir.html',            sortie: 'fr/a-venir.html',          url: '/fr/a-venir' },
-    en: { proto: 'en-a-venir.html',           sortie: 'upcoming.html',            url: '/upcoming' } },
+    en: { proto: 'en-a-venir.html',           sortie: 'upcoming.html',            url: '/upcoming' },
+    es: { proto: 'es-a-venir.html', sortie: 'es/proximamente.html', url: '/es/proximamente' } },
 ];
 
 /* Le référencement de chaque page, dans les deux langues : titre, titre Open
@@ -210,6 +227,21 @@ const ASSETS = {
   'e-app.js':              '/app.js',
   // L'espagnol : ses données une à une, et son moteur, tiré de e-app.js par moteur-es.mjs.
   'data-es.js':            '/data/starwars-es.js',
+  'data-mcu-es.js': '/data/marvel-es.js',
+  'data-dc-es.js': '/data/dc-es.js',
+  'data-avatar-es.js': '/data/avatar-es.js',
+  'data-startrek-es.js': '/data/startrek-es.js',
+  'data-twd-es.js': '/data/walkingdead-es.js',
+  'data-dragonage-es.js': '/data/dragonage-es.js',
+  'data-assassinscreed-es.js': '/data/assassinscreed-es.js',
+  'data-dcanimation-es.js': '/data/dcanimation-es.js',
+  'data-jurassic-es.js': '/data/jurassicworld-es.js',
+  'data-witcher-es.js': '/data/witcher-es.js',
+  'data-re-es.js': '/data/residentevil-es.js',
+  'data-bladerunner-es.js': '/data/bladerunner-es.js',
+  'data-monsterverse-es.js': '/data/monsterverse-es.js',
+  'data-news-es.js': '/data/news-es.js',
+  'data-dossier-sw-es.js': '/data/dossier-star-wars-es.js',
   'e-app-es.js':           '/app-es.js',
   // Chargé entre les données et le script de page, sur les huit univers :
   // il pose les entrées du visiteur dans `D.eras` avant que la page les lise.
@@ -1100,8 +1132,8 @@ if (!CHECK) writeFileSync(join(RACINE, MANIFESTE), JSON.stringify(table, null, 2
 // Ce que chaque page doit à ses sources : son proto, et le fichier de données
 // qui porte ses entrées quand elle en a un. C'est de là que sort son `lastmod`.
 // Le Dossier n'est pas dans `SOURCES` — il range ses 535 lignes sous `CGD`.
-const DONNEES = { 'dossier-sw': { fr: ['data-dossier-sw.js'], en: ['data-dossier-sw-en.js'] },
-                  news:         { fr: ['data-news.js'],       en: ['data-news-en.js'] } };
+const DONNEES = { 'dossier-sw': { fr: ['data-dossier-sw.js'], en: ['data-dossier-sw-en.js'], es: ['data-dossier-sw-es.js'] },
+                  news:         { fr: ['data-news.js'],       en: ['data-news-en.js'], es: ['data-news-es.js'] } };
 
 function sourcesDe(cle, langue) {
   const route = ROUTES.find(r => r.cle === cle);

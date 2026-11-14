@@ -52,6 +52,23 @@ export const UNIVERS = {
   accueil: { page: 'en-accueil.html', sortie: 'es-accueil.html' },
   sw:      { page: 'en-starwars.html', sortie: 'es-starwars.html',
              donnees: [['data-en.js', 'data-es.js']] },
+  mcu:{page:"en-marvel.html",sortie:"es-marvel.html",donnees:[["data-mcu-en.js","data-mcu-es.js"]]},
+  dc:{page:"en-dc.html",sortie:"es-dc.html",donnees:[["data-dc-en.js","data-dc-es.js"]]},
+  avatar:{page:"en-avatar.html",sortie:"es-avatar.html",donnees:[["data-avatar-en.js","data-avatar-es.js"]]},
+  startrek:{page:"en-startrek.html",sortie:"es-startrek.html",donnees:[["data-startrek-en.js","data-startrek-es.js"]]},
+  twd:{page:"en-twd.html",sortie:"es-twd.html",donnees:[["data-twd-en.js","data-twd-es.js"]]},
+  dragonage:{page:"en-dragonage.html",sortie:"es-dragonage.html",donnees:[["data-dragonage-en.js","data-dragonage-es.js"]]},
+  assassinscreed:{page:"en-assassinscreed.html",sortie:"es-assassinscreed.html",donnees:[["data-assassinscreed-en.js","data-assassinscreed-es.js"]]},
+  dcanimation:{page:"en-dcanimation.html",sortie:"es-dcanimation.html",donnees:[["data-dcanimation-en.js","data-dcanimation-es.js"]]},
+  jurassic:{page:"en-jurassic.html",sortie:"es-jurassic.html",donnees:[["data-jurassic-en.js","data-jurassic-es.js"]]},
+  witcher:{page:"en-witcher.html",sortie:"es-witcher.html",donnees:[["data-witcher-en.js","data-witcher-es.js"]]},
+  residentevil:{page:"en-residentevil.html",sortie:"es-residentevil.html",donnees:[["data-re-en.js","data-re-es.js"]]},
+  bladerunner:{page:"en-bladerunner.html",sortie:"es-bladerunner.html",donnees:[["data-bladerunner-en.js","data-bladerunner-es.js"]]},
+  monsterverse:{page:"en-monsterverse.html",sortie:"es-monsterverse.html",donnees:[["data-monsterverse-en.js","data-monsterverse-es.js"]]},
+  avenir:{page:"en-a-venir.html",sortie:"es-a-venir.html"},
+  nouveautes:{page:"en-nouveautes.html",sortie:"es-nouveautes.html",donnees:[["data-news-en.js","data-news-es.js"]]},
+  dossiers:{page:"en-dossiers.html",sortie:"es-dossiers.html"},
+  dossier:{page:"en-dossier-star-wars.html",sortie:"es-dossier-star-wars.html",donnees:[["data-dossier-sw-en.js","data-dossier-sw-es.js"]]},
 };
 
 /* ═══ CE QUI N'EST JAMAIS DU TEXTE ═════════════════════════════════════
@@ -61,7 +78,7 @@ const TECHNIQUES = new Set([
   'tmdb', 'media', 'href', 'key', 'lang', 'locale', 'tags', 'trigger', 'uni', 'nat', 'vo',
   'otherFlag', 'otherHref', 'flag', 'art', 'banner', 'tmdb_banner', 'softcanon', 'open',
   'cols', 'groups', 'special', 'ref', 'covers', 'drop', 'rt', 'branch', 'ol', 'zone',
-  'tmdbLang', 'tmdbKey', 'rawgKey', 'rawg', 'isbn', 'season', 'ep', 'icon', 'emoji',
+  'tmdbLang', 'tmdbKey', 'rawgKey', 'rawg', 'isbn', 'season', 'ep', 'icon', 'emoji', 'defenders', 'q', 'inc', 'exc', 'universe_key',
 ]);
 /* Une date de timeline ne se traduit jamais (« BBY » reste « BBY »). */
 const IDENTIQUES_PAR_CHAMP = new Set(['date', 'rel', 'present']);
@@ -125,6 +142,41 @@ function parGabarit(c, tables) {
    il n'est traduit que si une table le connaît. */
 const resteDuCode = v => /^\s*(?:[-[\/#.]|use strict|\[)|\.(?:json|webp|png|jpe?g|svg|js)\b|^\s*[A-Z]\s*$|\($|^[\w-]+\/[\w.+-]+$|^\s*\d+[a-z]+\s*$|[à-ÿ]|[=;{}\\]|\b(?:var|url|calc|rotate|translate)\(|https?:|^\s*[#.]?[a-z][\w-]*\s*$|^[\W\d_]*$|^&\w+;$|^\(.*\)$/.test(v);
 
+/* Le titre d'une œuvre reste anglais (décision de Niko) : une entrée de
+   timeline ou une lecture du Dossier qu'aucune table ne connaît garde son
+   titre. Seul se traduit ce qui suit le dernier tiret quand c'est une
+   forme connue — « Thor: Ragnarok — First Post-Credits Scene ». Une table
+   d'univers l'emporte toujours. */
+const TITRE = /(?:entries|items)\[\]\.title$/;
+const SUFFIXES = new Map([
+  ['First Post-Credits Scene', 'Primera escena poscréditos'],
+  ['Second Post-Credits Scene', 'Segunda escena poscréditos'],
+  ['Post-Credits Scene', 'Escena poscréditos'],
+  ['Pre-Credits Scene (Peggy & Steve) + Both Post-Credits Scenes', 'Escena precréditos (Peggy y Steve) + las dos escenas poscréditos'],
+  ['SERIES FINALE', 'FINAL DE LA SERIE'],
+  ['THE MOVIE', 'LA PELÍCULA'],
+  ['Secret Ending', 'Final secreto'],
+]);
+function suffixe(s) {
+  if (SUFFIXES.has(s)) return SUFFIXES.get(s);
+  let m;
+  if ((m = s.match(/^SEASON (\d+) FINALE$/))) return `FINAL DE LA TEMPORADA ${m[1]}`;
+  if ((m = s.match(/^SEASON (\d+)$/))) return `TEMPORADA ${m[1]}`;
+  if ((m = s.match(/^MISSIONS? ([\d-]+)$/))) return `${/-/.test(m[1]) ? 'MISIONES' : 'MISIÓN'} ${m[1]}`;
+  const g = gabarit(s);
+  if (g !== undefined || s !== s.toUpperCase()) return g;
+  /* « THE ACOLYTE — EPISODES 1-2 » : les repères écran du Dossier sont en capitales */
+  const bas = s.charAt(0) + s.slice(1).toLowerCase();
+  const r = gabarit(bas);
+  return r === undefined ? undefined : r.toUpperCase();
+}
+function titreOeuvre(c) {
+  const m = c.match(/^(.*\S)(\s+[—–-]\s+)(.+)$/);
+  if (!m) return c;
+  const s = suffixe(m[3]);
+  return s === undefined ? c : m[1] + m[2] + s;
+}
+
 function traducteur(propre, manques, cle) {
   return function traduit(v, ou, strict = false) {
     const brut = String(v);
@@ -139,6 +191,7 @@ function traducteur(propre, manques, cle) {
     const n = parGabarit(c, [propre, commun]);
     if (n !== undefined) return n;
     if (strict && resteDuCode(c)) return brut;
+    if (TITRE.test(ou)) return titreOeuvre(c);
     manques.push({ ou: `${cle}:${ou}`, en: c, sauts: (brut.match(/\n/g) || []).length });
     return brut;
   };
@@ -227,6 +280,10 @@ function traduitJs(js, traduit, ou) {
     const { debut, fin, quote, val } = trouvees[k];
     if (!val || !/\p{L}/u.test(val)) continue;
     if (/^\s*(fr|en|es)\s*$/.test(val)) continue;           // un code de langue n'est pas un mot
+    /* Un seul mot minuscule, sans espace autour, est un identifiant (`MODE='all'`,
+       `matchMedia('all')`) : traduit, il casse la page sans un mot. Un libellé
+       porte son espace (`' stops'`) ou une majuscule. */
+    if (/^[a-z][a-z-]*$/.test(val)) continue;
     if (protegees.some(([a, b]) => debut >= a && fin <= b)) continue;
     if (APPELS_DOM.test(js.slice(Math.max(0, debut - 60), debut))) continue;
     /* comparée, c'est une valeur (x.type==='Trailer', ev.key==='Escape') */
@@ -244,7 +301,7 @@ function traduitJs(js, traduit, ou) {
     let es;
     if (/[<>]/.test(coeur)) {
       es = coeur.replace(/(^|>)([^<>]*)(?=<|$)/g, (t, g, v) => {
-        if (!v.trim() || !/\p{L}{2}/u.test(v) || resteDuCode(v) || /"/.test(v)) return t;
+        if (!v.trim() || !/\p{L}{2}/u.test(v) || /"/.test(v)) return t;   // un mot seul se cherche d'abord aux tables (traduit, strict)
         const a = v.match(/^\s*/)[0], b = v.match(/\s*$/)[0];
         return g + a + traduit(v, ou, true) + b;
       });
@@ -315,6 +372,9 @@ function recable(html, u) {
     h = h.split(`src="${en}"`).join(`src="${es}"`);
   }
   h = h.replace(/src="e-app\.js"/g, 'src="e-app-es.js"');
+  /* Le badge VO dit qu'une œuvre n'existe pas en français : sans objet en
+     espagnol, comme en anglais (décision de Niko, 14 novembre 2026). */
+  h = h.split("T.lang!=='en')").join("T.lang==='fr')");
   h = h.replace(/(["'])en-([a-z0-9-]+\.html)/g, (t, q, nom) =>
     PROTOS_ES.has('es-' + nom) ? q + 'es-' + nom : t);
   return h;

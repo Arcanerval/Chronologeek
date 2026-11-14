@@ -26,7 +26,8 @@ import { charge, SOURCES } from './jsonld.mjs';
 
 const RACINE = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
-const PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU'];
+const PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU',
+  'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];
 const ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
 
 function marqueDe(nom) {

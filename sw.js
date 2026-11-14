@@ -46,7 +46,16 @@ const PRECACHE = [
   '/data/dossier-star-wars-en.js', '/data/dossier-star-wars-fr.js',
   // l'espagnol, page par page depuis le 14 novembre 2026 : n'ajouter ici
   // qu'une page espagnole vraiment publiee (addAll est tout ou rien)
-  '/es/', '/es/starwars.html', '/app-es.js', '/data/starwars-es.js'
+  '/es/', '/es/starwars.html', '/app-es.js', '/data/starwars-es.js',
+  '/es/marvel.html', '/es/dc.html', '/es/avatar.html', '/es/startrek.html', '/es/walkingdead.html',
+  '/es/dragonage.html', '/es/assassinscreed.html', '/es/dcanimation.html', '/es/jurassicworld.html',
+  '/es/witcher.html', '/es/residentevil.html', '/es/bladerunner.html', '/es/monsterverse.html',
+  '/es/novedades.html', '/es/proximamente.html', '/es/expedientes/', '/es/expedientes/star-wars.html',
+  '/data/marvel-es.js', '/data/dc-es.js', '/data/avatar-es.js', '/data/startrek-es.js',
+  '/data/walkingdead-es.js', '/data/dragonage-es.js', '/data/assassinscreed-es.js',
+  '/data/dcanimation-es.js', '/data/jurassicworld-es.js', '/data/witcher-es.js',
+  '/data/residentevil-es.js', '/data/bladerunner-es.js', '/data/monsterverse-es.js',
+  '/data/news-es.js', '/data/dossier-star-wars-es.js'
 ];
 
 self.addEventListener('install', e => {
