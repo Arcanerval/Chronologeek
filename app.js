@@ -4841,6 +4841,9 @@ function cgBillet(){
     var D = '"Big Shoulders Display", sans-serif';
     var R = releve(), L = colonnes(R.lignes), H = L.H, rowH = L.rowH;
     var nom = C0.nomUnivers ? C0.nomUnivers() : document.title, code = C0.codeLigne ? C0.codeLigne(nom) : '';
+    // le bouton enfoncé de la bascule sous le plan (`.par`, `.ln-go`) ; rien sur une page à un seul parcours
+    var par = document.querySelector('.par [aria-pressed="true"], .ln-go [aria-pressed="true"]');
+    var parcours = par ? txt(par) : '';
     var arrets = R.lignes.filter(function(l){ return l.t === 'bu'; }), fait = arrets.filter(function(l){ return l.fait; }).length;
     var PREFIXE = new RegExp('^' + nom.replace(/^Dossier\s+/i, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*:\\s*', 'i');
     var polices = document.fonts ? Promise.all([document.fonts.load('900 100px "Big Shoulders Display"'),
@@ -4862,6 +4865,14 @@ function cgBillet(){
         x.fillStyle = INK; x.fillText(code, M + 24, 184);
         x.fillStyle = OR; x.font = '800 44px ' + D; x.letterSpacing = '10px';
         x.fillText(T.ma.toUpperCase(), M + cw + 34, 180); x.letterSpacing = '0px';
+      }
+      // le parcours choisi : « Je découvre », « Ordre de sortie »… ou la ligne choisie chez DC
+      if (parcours) {
+        x.font = '800 44px ' + D; x.letterSpacing = '6px';
+        var pw = x.measureText(parcours.toUpperCase()).width + 56;
+        x.strokeStyle = uni; x.lineWidth = 5; x.strokeRect(W - M - pw, 122, pw, 80);
+        x.fillStyle = PA; x.textAlign = 'right'; x.fillText(parcours.toUpperCase(), W - M - 28, 178);
+        x.textAlign = 'left'; x.letterSpacing = '0px';
       }
       var taille = 230; x.font = '900 ' + taille + 'px ' + D;
       while (x.measureText(nom.toUpperCase()).width > W - 2 * M && taille > 90) { taille -= 8; x.font = '900 ' + taille + 'px ' + D; }

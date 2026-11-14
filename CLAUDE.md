@@ -3575,7 +3575,7 @@ au décor du premier écran, puis chaque station (`.era-sec`, encre `--era`), ch
 colonne de réseau (`.col`, `--br`) et chaque arrêt coché ou non, relus dans la page,
 donc dans le parcours affiché. Une à six colonnes pour approcher le format A ; au-delà
 l'affiche s'allonge (Dossier : 2 400 × 5 452). Un titre répété reçoit son premier
-sous-titre, et le nom de la franchise en tête de titre tombe (`PREFIXE`). Le plan
+sous-titre, et le nom de la franchise en tête de titre tombe (`PREFIXE`). Le parcours affiché est écrit en haut à droite, dans un cartouche : c'est le texte du bouton enfoncé de la bascule (`.par` ou `.ln-go`, `aria-pressed="true"`) — « Je découvre », « Ordre de sortie », ou la ligne choisie chez DC et DC Animation —, demandé par Niko ; rien sur une page à un seul parcours. Le plan
 général du réseau (n° 7) a été essayé en maquette le même jour et écarté par Niko :
 il redisait les cartes de l'accueil. Ne pas le reproposer.
 
