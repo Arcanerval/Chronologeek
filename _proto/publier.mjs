@@ -742,6 +742,43 @@ const PIED = [
   '        async src="//gc.zgo.at/count.js"></script>',
 ].join('\n');
 
+/* ── Le sélecteur de langue ─────────────────────────────────────────────
+   Un drapeau par langue ; `n` suffixe les identifiants des `clipPath`, le
+   même drapeau paraissant deux fois (le bouton et la liste). */
+const DRAPEAUX = {
+    es: '<svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lxes"><path d="M0 0h60L0 40z"/></clipPath>' +
+      '<clipPath id="lxmx"><path d="M60 0v40H0z"/></clipPath><g clip-path="url(#lxes)"><path d="M0 0h60v40H0z" fill="#AA151B"/>' +
+      '<path d="M0 10h60v20H0z" fill="#F1BF00"/></g><g clip-path="url(#lxmx)"><path d="M0 0h20v40H0z" fill="#006847"/>' +
+      '<path d="M20 0h20v40H20z" fill="#fff"/><path d="M40 0h20v40H40z" fill="#CE1126"/><circle cx="32" cy="28" r="4.2" fill="#8C5A2B"/>' +
+      '<path d="M27.6 31.4q4.4 3 8.8 0" stroke="#006847" stroke-width="1.4" fill="none"/></g>' +
+      '<path d="M60 0L0 40" stroke="#fff" stroke-width="1.8" fill="none"/></svg>',
+    en: '<svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lxus"><path d="M0 0h60L0 40z"/></clipPath><clipPath id="lxuk"><path d="M60 0v40H0z"/></clipPath><g clip-path="url(#lxus)"><path d="M0 0h60v40H0z" fill="#B22234"/><path d="M0 3.08h60v3.08H0zM0 9.23h60v3.08H0zM0 15.38h60v3.08H0zM0 21.54h60v3.08H0zM0 27.69h60v3.08H0zM0 33.85h60v3.08H0z" fill="#fff"/><path d="M0 0h24v21.54H0z" fill="#3C3B6E"/><g fill="#fff"><circle cx="3" cy="3.6" r="1.7"/><circle cx="9" cy="3.6" r="1.7"/><circle cx="15" cy="3.6" r="1.7"/><circle cx="21" cy="3.6" r="1.7"/><circle cx="3" cy="10.8" r="1.7"/><circle cx="9" cy="10.8" r="1.7"/><circle cx="15" cy="10.8" r="1.7"/><circle cx="21" cy="10.8" r="1.7"/><circle cx="3" cy="17.9" r="1.7"/><circle cx="9" cy="17.9" r="1.7"/><circle cx="15" cy="17.9" r="1.7"/><circle cx="21" cy="17.9" r="1.7"/></g></g><g clip-path="url(#lxuk)" fill="none"><path d="M0 0h60v40H0z" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="9"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.6"/><path d="M30 0v40" stroke="#fff" stroke-width="13"/><path d="M0 20h60" stroke="#fff" stroke-width="17"/><path d="M30 0v40" stroke="#C8102E" stroke-width="7"/><path d="M0 20h60" stroke="#C8102E" stroke-width="9"/></g><path d="M60 0L0 40" stroke="#fff" stroke-width="1.8" fill="none"/></svg>',
+    fr: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>',
+  };
+
+const drapeau = (l, n) => DRAPEAUX[l].replace(/id="lx(\w+)"/g, `id="lx$1${n}"`).replace(/url\(#lx(\w+)\)/g, `url(#lx$1${n})`);
+const NOMS_LANGUES = { fr: 'Français', en: 'English', es: 'Español' };
+const TITRE_SELECTEUR = { fr: 'Langue', en: 'Language', es: 'Idioma' };
+function selecteurLangue(route, langue) {
+  const items = ['fr', 'en', 'es'].filter(l => route[l]).map(l => l === langue
+    ? `<span class="lp-i" aria-current="true">${drapeau(l, 'b')}<b>${NOMS_LANGUES[l]}</b></span>`
+    : `<a class="lp-i" href="${route[l].url}" hreflang="${l}" lang="${l}">${drapeau(l, 'b')}<b>${NOMS_LANGUES[l]}</b></a>`);
+  return `<details class="lang-pick"><summary class="icon-btn lang-btn" aria-label="${TITRE_SELECTEUR[langue]}" title="${TITRE_SELECTEUR[langue]}">` +
+    `${drapeau(langue, 'a')}</summary><div class="lp-pop">${items.join('')}</div></details>`;
+}
+// Aplat, coins à 3 px, comme le reste du site. Le petit script ferme la liste
+// au clic à côté et sur Échap, ce que `<details>` ne fait pas seul.
+const SELECTEUR_CSS = '<style>.lang-pick{position:relative}.lang-pick>summary{list-style:none;cursor:pointer}' +
+  '.lang-pick>summary::-webkit-details-marker{display:none}' +
+  '.lang-pick .lp-pop{position:absolute;right:0;top:calc(100% + 8px);z-index:80;min-width:170px;background:#1c1b20;' +
+  'border:2px solid #3b3a41;border-radius:3px;padding:6px;display:grid;gap:2px}' +
+  '.lp-i{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:2px;color:#f4efe6;text-decoration:none;' +
+  "font:700 15px/1 'Chivo',sans-serif}.lp-i svg{width:30px;height:auto;flex:none;box-shadow:0 0 0 2px rgba(13,11,18,.6)}" +
+  'a.lp-i:hover,a.lp-i:focus-visible{background:#26252b}.lp-i[aria-current]{color:#f0c97c}</style>' +
+  '<script>addEventListener("click",function(e){document.querySelectorAll("details.lang-pick[open]").forEach(function(d){' +
+  'if(!d.contains(e.target))d.removeAttribute("open")})});addEventListener("keydown",function(e){if(e.key==="Escape")' +
+  'document.querySelectorAll("details.lang-pick[open]").forEach(function(d){d.removeAttribute("open")})})</script>';
+
 // Les partages sociaux ne disaient pas leur langue : les hreflang etaient poses
 // depuis toujours, og:locale non. Facebook et LinkedIn en tirent la langue de
 // l'apercu et le lien vers l'autre version ; sans lui, ils devinent.
@@ -896,43 +933,17 @@ ${RES_ITI}` : '') +
     h = h.replace(/(<nav class="drawer"[\s\S]*?<a [^>]*class="news"[^>]*>[^<]*<\/a>)/, m => m + '\n      ' + tiroirReglages(langue));
     if (h === avantTiroir) problemes.push(`${c.sortie} : tiroir introuvable pour les réglages`);
   }
-  // 3 ter. la troisième langue (14 novembre 2026). Le drapeau du proto reste
-  // et mène à l'autre langue du couple français-anglais — au français depuis
-  // une page espagnole. À côté, un drapeau de plus pour chaque autre version.
-  // L'espagnol est coupé en diagonale comme l'anglais (États-Unis / Royaume-Uni) :
-  // Espagne en haut à gauche, Mexique en bas à droite — idée de Niko, l'espagnol
-  // du site visant les deux rives. L'aigle mexicain est réduit à un médaillon :
-  // sans lui, le vert-blanc-rouge se lit comme l'Italie. Sous 560 px le drapeau
-  // quitte la barre (le burger y sortait déjà de l'écran) et passe dans le tiroir.
+  // 3 ter. le sélecteur de langue (14 novembre 2026, demandé par Niko). Le
+  // drapeau de la page — celui de sa langue — ouvre au clic la liste des
+  // versions qui existent pour cette route. Un `<details>` natif, comme « Plus
+  // d'univers » : le clavier le pilote seul. Le drapeau espagnol est coupé en
+  // diagonale comme l'anglais : Espagne en haut à gauche, Mexique en bas à
+  // droite, l'aigle réduit à un médaillon (sans lui on lit l'Italie).
   {
-    const proto = route[langue === 'es' ? 'fr' : langue === 'fr' ? 'en' : 'fr'];
-    const extra = LANGUES.filter(l => l !== langue && route[l] && route[l] !== proto);
-    if (extra.length) {
-      const NOMS = { en: ['English', 'Switch to English'], es: ['Español', 'Cambiar a español'],
-                     fr: ['Français', 'Passer en français'] };
-      const DRAPEAUX = {
-        es: '<svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lxes"><path d="M0 0h60L0 40z"/></clipPath>' +
-          '<clipPath id="lxmx"><path d="M60 0v40H0z"/></clipPath><g clip-path="url(#lxes)"><path d="M0 0h60v40H0z" fill="#AA151B"/>' +
-          '<path d="M0 10h60v20H0z" fill="#F1BF00"/></g><g clip-path="url(#lxmx)"><path d="M0 0h20v40H0z" fill="#006847"/>' +
-          '<path d="M20 0h20v40H20z" fill="#fff"/><path d="M40 0h20v40H40z" fill="#CE1126"/><circle cx="32" cy="28" r="4.2" fill="#8C5A2B"/>' +
-          '<path d="M27.6 31.4q4.4 3 8.8 0" stroke="#006847" stroke-width="1.4" fill="none"/></g>' +
-          '<path d="M60 0L0 40" stroke="#fff" stroke-width="1.8" fill="none"/></svg>',
-        en: '<svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lxus"><path d="M0 0h60L0 40z"/></clipPath><clipPath id="lxuk"><path d="M60 0v40H0z"/></clipPath><g clip-path="url(#lxus)"><path d="M0 0h60v40H0z" fill="#B22234"/><path d="M0 3.08h60v3.08H0zM0 9.23h60v3.08H0zM0 15.38h60v3.08H0zM0 21.54h60v3.08H0zM0 27.69h60v3.08H0zM0 33.85h60v3.08H0z" fill="#fff"/><path d="M0 0h24v21.54H0z" fill="#3C3B6E"/><g fill="#fff"><circle cx="3" cy="3.6" r="1.7"/><circle cx="9" cy="3.6" r="1.7"/><circle cx="15" cy="3.6" r="1.7"/><circle cx="21" cy="3.6" r="1.7"/><circle cx="3" cy="10.8" r="1.7"/><circle cx="9" cy="10.8" r="1.7"/><circle cx="15" cy="10.8" r="1.7"/><circle cx="21" cy="10.8" r="1.7"/><circle cx="3" cy="17.9" r="1.7"/><circle cx="9" cy="17.9" r="1.7"/><circle cx="15" cy="17.9" r="1.7"/><circle cx="21" cy="17.9" r="1.7"/></g></g><g clip-path="url(#lxuk)" fill="none"><path d="M0 0h60v40H0z" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="9"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.6"/><path d="M30 0v40" stroke="#fff" stroke-width="13"/><path d="M0 20h60" stroke="#fff" stroke-width="17"/><path d="M30 0v40" stroke="#C8102E" stroke-width="7"/><path d="M0 20h60" stroke="#C8102E" stroke-width="9"/></g><path d="M60 0L0 40" stroke="#fff" stroke-width="1.8" fill="none"/></svg>',
-        fr: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>',
-      };
-      const pastilles = extra.map(l => `<a class="icon-btn lang-x" href="${route[l].url}" hreflang="${l}" lang="${l}" ` +
-        `aria-label="${NOMS[l][1]}" title="${NOMS[l][0]}">${DRAPEAUX[l]}</a>`).join('');
-      const avantLx = h;
-      h = h.replace(/(<a class="icon-btn lang-btn"[\s\S]*?<\/a>)/, m => m + pastilles);
-      if (h === avantLx) problemes.push(`${c.sortie} : drapeau de langue introuvable pour la pastille ${extra.join(', ')}`);
-      const tiroir = extra.map(l => `<a class="dw-lang" href="${route[l].url}" hreflang="${l}" lang="${l}">${NOMS[l][0]}</a>`).join('');
-      h = h.replace(/(<nav class="drawer"[\s\S]*?<a [^>]*class="news"[^>]*>[^<]*<\/a>)/, m => m + '\n      ' + tiroir);
-      // le même dessin que le drapeau du proto (`.lang-btn`) : 38 px, liseré sombre
-      h = h.replace(/<\/head>/i, '<style>.lang-x{border:0;width:auto;height:auto;padding:2px}' +
-        '.lang-x:hover{border:0;transform:translateY(-1px)}' +
-        '.lang-x svg{width:38px;height:auto;display:block;box-shadow:0 0 0 2px rgba(13,11,18,.6)}' +
-        '@media(max-width:559.98px){header .lang-x{display:none}}@media(min-width:560px){.dw-lang{display:none}}</style>\n</head>');
-    }
+    const avantLp = h;
+    h = h.replace(/<a class="icon-btn lang-btn"[\s\S]*?<\/a>/, () => selecteurLangue(route, langue));
+    if (h === avantLp) problemes.push(`${c.sortie} : drapeau de langue introuvable pour le sélecteur`);
+    h = h.replace(/<\/head>/i, () => SELECTEUR_CSS + '\n</head>');
   }
   if (route.cle === 'accueil') {
     const avantCorps = h;

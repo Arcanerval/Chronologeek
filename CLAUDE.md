@@ -639,11 +639,13 @@ masqué en espagnol pour l'instant. En ligne : `/es/` et `/es/starwars`.
 - **Publication** : `ROUTES` porte `es` route par route ; une route sans `es`
   n'a pas de page espagnole, et les liens espagnols y mènent à l'anglaise.
   `DONNEES_ES` de `jsonld.mjs` donne les données espagnoles, l'anglais sert de
-  repli partout ailleurs. Un second drapeau s'ajoute à côté du premier, dans le
-  tiroir sous 560 px : l'espagnol est coupé en diagonale comme l'anglais,
-  Espagne en haut à gauche, Mexique en bas à droite (idée de Niko), l'aigle
-  réduit à un médaillon — sans lui on lit l'Italie. Les pages espagnoles y
-  portent le drapeau anglais. `/reglages.js` a une troisième colonne.
+  repli partout ailleurs. **Le drapeau est un sélecteur** (`selecteurLangue()`
+  de `publier.mjs`, un `<details>`, demandé par Niko) : il montre la langue de
+  la page et ouvre au clic la liste des versions de la route. L'espagnol est
+  coupé en diagonale comme l'anglais, Espagne en haut à gauche, Mexique en bas
+  à droite (idée de Niko), l'aigle réduit à un médaillon — sans lui on lit
+  l'Italie. Les fiches et la confidentialité retirent l'espagnol de la liste.
+  `/reglages.js` a une troisième colonne.
 - **Un univers de plus en espagnol** : sa table `es/<cle>.mjs`, son entrée dans
   `UNIVERS` de `traduire-es.mjs`, `DONNEES_ES`, `ASSETS` et `ROUTES` de
   `publier.mjs`, `seo.json`, puis `PRECACHE` de `sw.js` une fois publié

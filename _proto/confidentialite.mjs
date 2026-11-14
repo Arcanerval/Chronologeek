@@ -109,7 +109,9 @@ export function confidentialite({ langue, ch, site, urls }) {
   const t = TEXTE[langue];
   const moi = urls[langue], autre = urls[langue === 'fr' ? 'en' : 'fr'];
   const header = ch.header.replace(/(class="icon-btn lang-btn" href=")[^"]*"/g, `$1${autre}"`)
-    .replace(/<a class="icon-btn lang-x"[^>]*>[\s\S]*?<\/a>/g, '').replace(/\s*<a class="dw-lang"[^>]*>[^<]*<\/a>/g, '');
+    // le sélecteur de langue (publier.mjs) : l'autre langue mène à sa confidentialité, pas d'espagnol ici
+    .replace(/<a class="lp-i" href="[^"]*" hreflang="(\w+)"([\s\S]*?)<\/a>/g,
+      (t, l, reste) => l === 'es' ? '' : `<a class="lp-i" href="${autre}" hreflang="${l}"${reste}</a>`);
   const corps = t.sections.map(([h, ps]) =>
     `<h2>${esc(h)}</h2>\n` + ps.map(p => `<p>${p}</p>`).join('\n')).join('\n');
   const html = `<!doctype html>

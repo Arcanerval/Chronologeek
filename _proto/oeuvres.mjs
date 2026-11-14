@@ -375,7 +375,9 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, autr
   const ici = h => h.split(`<a href="${urlU}"`).join(`<a href="${urlU}" aria-current="true"`);
   // la pastille de l'espagnol (publier.mjs) mène à la page Star Wars : les fiches n'ont pas d'espagnol
   const header = ici(ch.header).replace(/(class="icon-btn lang-btn" href=")[^"]*"/g, `$1${autreUrl}"`)
-    .replace(/<a class="icon-btn lang-x"[^>]*>[\s\S]*?<\/a>/g, '').replace(/\s*<a class="dw-lang"[^>]*>[^<]*<\/a>/g, '');
+    // le sélecteur de langue (publier.mjs) : l'autre langue mène à cette fiche-ci, l'espagnol n'a pas de fiches
+    .replace(/<a class="lp-i" href="[^"]*" hreflang="(\w+)"([\s\S]*?)<\/a>/g,
+      (t, l, reste) => l === 'es' ? '' : `<a class="lp-i" href="${autreUrl}" hreflang="${l}"${reste}</a>`);
   const footer = ici(ch.footer);
   const L = compact(titre).length;
   const taille = L <= 10 ? '' : L <= 18 ? ' l2' : L <= 30 ? ' l3' : ' l4';
