@@ -27,14 +27,15 @@ import { charge, SOURCES } from './jsonld.mjs';
 const RACINE = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
 const PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU',
-  'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];
+  'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT'];
 const ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
 
 function marqueDe(nom) {
   return String(nom).toLowerCase()
     .replace(/\s*\bplus\b/g, '+')
     .replace(/\b(amazon|apple tv|roku( premium)?) channel\b|\bchannel\b|\bwith ads\b|\b(premium|essential|basic|standard|ads)\b/g, '')
-    .replace(/\s+/g, ' ').trim();
+    .replace(/\s+/g, ' ').trim()
+    .replace(/^sky showtime$/, 'skyshowtime');   // TMDB l'écrit des deux façons au Portugal
 }
 
 // Le nom lu dans le panneau : sans la chaîne qui revend l'offre ni la formule.

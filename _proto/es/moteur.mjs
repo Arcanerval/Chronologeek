@@ -356,8 +356,8 @@ export const RETOUCHES = [
   ["if (FR) return e.date_txt_fr || e.date_txt || '';", "if (false) return e.date_txt_fr || e.date_txt || '';"],
   /* les pays : l'Espagne et l'Amérique latine d'abord, leurs noms en espagnol */
   ["new Intl.DisplayNames([EN ? 'en' : 'en']", "new Intl.DisplayNames([EN ? 'en' : 'es']"],
-  ["'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];",
-   "'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];\n  PAYS = ['ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'US', 'FR', 'BE', 'CH', 'LU', 'CA', 'GB', 'IE', 'DE', 'IT', 'NL', 'AU'];"],
+  ["'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT'];",
+   "'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT'];\n  PAYS = ['ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT', 'US', 'FR', 'BE', 'CH', 'LU', 'CA', 'GB', 'IE', 'DE', 'IT', 'NL', 'AU'];"],
   /* le pays par défaut */
   ["(EN ? 'US' : 'ES')", `(EN ? 'US' : ${PNAV})`],
   /* l'index des titres de l'autre langue, pour le filtre des pages */

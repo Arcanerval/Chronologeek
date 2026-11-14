@@ -6019,7 +6019,8 @@ function cgBillet(){
     return String(nom).toLowerCase()
       .replace(/\s*\bplus\b/g, '+')
       .replace(/\b(amazon|apple tv|roku( premium)?) channel\b|\bchannel\b|\bwith ads\b|\b(premium|essential|basic|standard|ads)\b/g, '')
-      .replace(/\s+/g, ' ').trim();
+      .replace(/\s+/g, ' ').trim()
+      .replace(/^sky showtime$/, 'skyshowtime');   // TMDB l'écrit des deux façons au Portugal
   }
 
   /* l'abonnement et le gratuit, sinon la location et l'achat, sans doublon */
@@ -7018,7 +7019,7 @@ function cgBillet(){
      la Belgique, la Suisse, le Canada ; l'Amérique latine depuis l'espagnol
      (14 novembre 2026). Les noms viennent du navigateur. */
   var PAYS = ['FR', 'BE', 'CH', 'LU', 'CA', 'US', 'GB', 'IE', 'DE', 'ES', 'IT', 'NL', 'AU',
-    'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY'];
+    'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'UY', 'BR', 'PT'];
   function nomPays(c){
     try { return new Intl.DisplayNames([EN ? 'en' : 'fr'], { type: 'region' }).of(c); } catch (_) { return c; }
   }

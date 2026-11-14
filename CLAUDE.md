@@ -672,8 +672,8 @@ et la page d'erreur.
   `FR = lang !== 'en'` : sur la page espagnole, `RETOUCHES` force la branche
   anglaise (sortie américaine, titre original) et en traduit les mois, les
   jours et les libellés. Une date se lit « 14 de noviembre de 2026 ».
-- **« Où regarder » couvre l'Amérique latine** : MX, AR, CO, CL, PE, VE, EC, UY
-  dans `PAYS` de `e-app.js` et de `plateformes.mjs` (21 pays, 60 Ko). Sur la
+- **« Où regarder » couvre l'Amérique latine, le Brésil et le Portugal** : MX, AR, CO, CL, PE, VE, EC, UY, BR, PT
+  dans `PAYS` de `e-app.js` et de `plateformes.mjs` (23 pays, 65 Ko ; SkyShowtime fusionné par `marqueDe()`). Sur la
   page espagnole le pays par défaut vient de `navigator.language` (es-419
   donne le Mexique), l'Espagne et l'Amérique latine passent en tête de la
   liste, et leurs noms s'écrivent en espagnol.
