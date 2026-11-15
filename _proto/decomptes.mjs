@@ -101,6 +101,9 @@ function accueil(html, langue, V, nom) {
   r.sub('HUD', /(<em id="k-on">0<\/em> \/ )\d+/, (_, a) => a + V.total);
   r.sub('univers et Dossier', /(<span class="lbl">)\d+( univers(?:es|os)? · )\d+/,
     (_, a, b) => a + V.n + b + V.dossier.total);
+  // la carte des Dossiers : écrite à la main, elle annonçait encore 536 à 550
+  r.sub('carte Dossiers', /(<span class="k-meta"><b>)\d+(<\/b> (?:œuvres|works|obras) · )/,
+    (_, a, b) => a + V.dossier.total + b);
 
   // La table du plan : noms et comptes depuis les données, dates gardées.
   r.sub('table E', /(var E=)(\{.*?\});(\r?\n)/, (_, a, json, nl) => {
