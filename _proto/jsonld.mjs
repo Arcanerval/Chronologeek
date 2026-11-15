@@ -129,10 +129,12 @@ export function typeSchema(it) {
     // `jeu` et `dlc` pour la même raison que l'écrit : les quinze DLC de Dragon
     // Age portent `media:"tv"` parce qu'ils empruntent une fiche de série faute
     // d'en avoir une à eux. Lus dans l'autre sens, ils ressortaient en
-    // `TVSeries`. Et une vidéo YouTube est un `VideoObject`, quelle que soit la
-    // fiche dont elle emprunte le visuel.
+    // `TVSeries`. Une vidéo YouTube est un `CreativeWork`, pas un `VideoObject` :
+    // Google exige d'un `VideoObject` sa miniature, sa date de mise en ligne et
+    // la vidéo jouable dans la page, or nos pages n'y font que renvoyer. La
+    // Search Console en relevait 42 non valides le 15 novembre 2026.
     case 'jeu': case 'dlc':        return 'VideoGame';
-    case 'video':                  return 'VideoObject';
+    case 'video':                  return 'CreativeWork';
   }
   if (it.media === 'movie') return 'Movie';
   if (it.media === 'tv')    return 'TVSeries';
