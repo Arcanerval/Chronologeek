@@ -350,7 +350,7 @@ function blocFaq(langue, qr) {
  * Rend les `<script type="application/ld+json">` d'une page, ou '' si elle n'en
  * a pas. `urls` donne l'URL de chaque clé de route dans la langue demandée.
  */
-export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) {
+export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers, ligne, nomLigne }) {
   const t = charge(racine, CG_DE[langue]).CG.t;
   const blocs = [];
 
@@ -372,6 +372,12 @@ export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) 
       img: abs(site, imagesUnivers[k]),
     }));
     blocs.push(blocListe('Chronologeek', t.locale, huit));
+  } else if (ligne) {
+    // La page d'une ligne : Accueil › DC › Arrowverse.
+    const fil = blocFil(site, t, cle, urls, urls[cle], nomUnivers);
+    fil.itemListElement.push({ '@type': 'ListItem', position: fil.itemListElement.length + 1,
+                               name: nomLigne, item: site + moi });
+    blocs.push(fil);
   } else {
     blocs.push(blocFil(site, t, cle, urls, moi, nomUnivers));
   }
@@ -382,8 +388,10 @@ export function jsonLd({ racine, site, cle, langue, moi, urls, imagesUnivers }) 
     // les questions. C'est bien celui-ci qu'il faut, pas celui de Star Wars lu
     // plus haut pour `t`.
     const w = charge(racine, fichier, global);
-    const u = w[global];
-    blocs.push(blocListe(decode(u.title), t.locale, elementsTimeline(u, site, moi)));
+    const u0 = w[global];
+    // Une ligne seule ne liste que ses bandes, comme sa page.
+    const u = ligne ? { ...u0, eras: u0.eras.filter(e => e.branch === ligne) } : u0;
+    blocs.push(blocListe(ligne ? nomLigne : decode(u.title), t.locale, elementsTimeline(u, site, moi)));
     const qr = elementsFaq(u, (w.CG || {}).faqCats, site, moi);
     if (qr.length) blocs.push(blocFaq(t.locale, qr));
   } else if (cle === 'dossiers') {

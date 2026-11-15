@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://chronologeek.app/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/"/>
@@ -27,7 +27,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/marvel"/>
   </url>
   <url><loc>https://chronologeek.app/dc</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dc"/>
@@ -75,7 +75,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/assassinscreed"/>
   </url>
   <url><loc>https://chronologeek.app/dcanimation</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcanimation"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcanimation"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcanimation"/>
@@ -154,6 +154,54 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/em-breve"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
   </url>
+  <url><loc>https://chronologeek.app/arrowverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arrowverse"/>
+  </url>
+  <url><loc>https://chronologeek.app/dceu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dceu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dceu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dceu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dceu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dceu"/>
+  </url>
+  <url><loc>https://chronologeek.app/dcu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcu"/>
+  </url>
+  <url><loc>https://chronologeek.app/dcau</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcau"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcau"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcau"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcau"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcau"/>
+  </url>
+  <url><loc>https://chronologeek.app/dcamu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcamu"/>
+  </url>
+  <url><loc>https://chronologeek.app/arkhamverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arkhamverse"/>
+  </url>
   <url><loc>https://chronologeek.app/fr/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
@@ -179,7 +227,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/marvel"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dc</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dc"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dc"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dc"/>
@@ -227,7 +275,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/assassinscreed"/>
   </url>
   <url><loc>https://chronologeek.app/fr/dcanimation</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcanimation"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcanimation"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcanimation"/>
@@ -306,8 +354,56 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/em-breve"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
   </url>
+  <url><loc>https://chronologeek.app/fr/arrowverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arrowverse"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/dceu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dceu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dceu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dceu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dceu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dceu"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/dcu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcu"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/dcau</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcau"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcau"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcau"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcau"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcau"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/dcamu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcamu"/>
+  </url>
+  <url><loc>https://chronologeek.app/fr/arkhamverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arkhamverse"/>
+  </url>
   <url><loc>https://chronologeek.app/es/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/"/>
@@ -457,6 +553,54 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/proximamente"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/em-breve"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/arrowverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arrowverse"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/dceu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dceu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dceu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dceu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dceu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dceu"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/dcu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcu"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/dcau</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcau"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcau"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcau"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcau"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcau"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/dcamu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcamu"/>
+  </url>
+  <url><loc>https://chronologeek.app/es/arkhamverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arkhamverse"/>
   </url>
   <url><loc>https://chronologeek.app/pt/</loc>
     <lastmod>2026-11-15</lastmod>
@@ -609,6 +753,54 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/proximamente"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/em-breve"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/upcoming"/>
+  </url>
+  <url><loc>https://chronologeek.app/pt/arrowverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arrowverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arrowverse"/>
+  </url>
+  <url><loc>https://chronologeek.app/pt/dceu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dceu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dceu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dceu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dceu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dceu"/>
+  </url>
+  <url><loc>https://chronologeek.app/pt/dcu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcu"/>
+  </url>
+  <url><loc>https://chronologeek.app/pt/dcau</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcau"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcau"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcau"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcau"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcau"/>
+  </url>
+  <url><loc>https://chronologeek.app/pt/dcamu</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/dcamu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/dcamu"/>
+  </url>
+  <url><loc>https://chronologeek.app/pt/arkhamverse</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://chronologeek.app/pt/arkhamverse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/arkhamverse"/>
   </url>
   <url><loc>https://chronologeek.app/works/starwars/episode-i-the-phantom-menace</loc>
     <lastmod>2026-11-12</lastmod>
@@ -1952,7 +2144,7 @@
     <image:image><image:loc>https://chronologeek.app/images/endgameencore.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/smallville</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/smallville"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/smallville"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/smallville"/>
@@ -1961,7 +2153,7 @@
     <image:image><image:loc>https://chronologeek.app/images/smallville.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/krypton</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/krypton"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/krypton"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/krypton"/>
@@ -1970,7 +2162,7 @@
     <image:image><image:loc>https://chronologeek.app/images/krypton.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/superman-returns</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/superman-returns"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/superman-returns"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/superman-returns"/>
@@ -1979,7 +2171,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermanreturns.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/batman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman"/>
@@ -1988,7 +2180,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batman89.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/batman-returns</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman-returns"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman-returns"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman-returns"/>
@@ -1997,7 +2189,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanreturns.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/batman-begins</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman-begins"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman-begins"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman-begins"/>
@@ -2006,7 +2198,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanbegins.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-dark-knight</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-dark-knight"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-dark-knight"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-dark-knight"/>
@@ -2015,7 +2207,7 @@
     <image:image><image:loc>https://chronologeek.app/images/darkknight.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-dark-knight-rises</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-dark-knight-rises"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-dark-knight-rises"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-dark-knight-rises"/>
@@ -2024,7 +2216,7 @@
     <image:image><image:loc>https://chronologeek.app/images/darkknightrises.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/gotham</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/gotham"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/gotham"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/gotham"/>
@@ -2033,7 +2225,7 @@
     <image:image><image:loc>https://chronologeek.app/images/gotham.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/titans</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/titans"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/titans"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/titans"/>
@@ -2042,7 +2234,7 @@
     <image:image><image:loc>https://chronologeek.app/images/titans.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/arrow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/arrow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/arrow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/arrow"/>
@@ -2051,7 +2243,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arrow.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-flash</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-flash"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-flash"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-flash"/>
@@ -2060,7 +2252,7 @@
     <image:image><image:loc>https://chronologeek.app/images/theflashseries.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/constantine</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/constantine"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/constantine"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/constantine"/>
@@ -2069,7 +2261,7 @@
     <image:image><image:loc>https://chronologeek.app/images/constantine.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/supergirl</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/supergirl"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/supergirl"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/supergirl"/>
@@ -2078,7 +2270,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supergirlseries.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/legends-of-tomorrow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/legends-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/legends-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/legends-of-tomorrow"/>
@@ -2087,7 +2279,7 @@
     <image:image><image:loc>https://chronologeek.app/images/legendsoftomorrow.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/black-lightning</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/black-lightning"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/black-lightning"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/black-lightning"/>
@@ -2096,7 +2288,7 @@
     <image:image><image:loc>https://chronologeek.app/images/blacklightning.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/batwoman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batwoman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batwoman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batwoman"/>
@@ -2105,7 +2297,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/man-of-steel</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/man-of-steel"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/man-of-steel"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/man-of-steel"/>
@@ -2114,7 +2306,7 @@
     <image:image><image:loc>https://chronologeek.app/images/manofsteel.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/batman-v-superman-dawn-of-justice</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman-v-superman-dawn-of-justice"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman-v-superman-dawn-of-justice"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman-v-superman-dawn-of-justice"/>
@@ -2123,7 +2315,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanvsuperman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/wonder-woman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/wonder-woman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/wonder-woman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/wonder-woman"/>
@@ -2132,7 +2324,7 @@
     <image:image><image:loc>https://chronologeek.app/images/wonderwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/wonder-woman-1984</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/wonder-woman-1984"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/wonder-woman-1984"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/wonder-woman-1984"/>
@@ -2141,7 +2333,7 @@
     <image:image><image:loc>https://chronologeek.app/images/wonderwoman84.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/suicide-squad</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/suicide-squad"/>
@@ -2150,7 +2342,7 @@
     <image:image><image:loc>https://chronologeek.app/images/suicidesquad.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/zack-snyders-justice-league</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/zack-snyders-justice-league"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/zack-snyders-justice-league"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/zack-snyders-justice-league"/>
@@ -2159,7 +2351,7 @@
     <image:image><image:loc>https://chronologeek.app/images/zacksnyderjusticeleague.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/aquaman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/aquaman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/aquaman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/aquaman"/>
@@ -2168,7 +2360,7 @@
     <image:image><image:loc>https://chronologeek.app/images/aquaman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/shazam</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/shazam"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/shazam"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/shazam"/>
@@ -2177,7 +2369,7 @@
     <image:image><image:loc>https://chronologeek.app/images/shazam.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/birds-of-prey</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/birds-of-prey"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/birds-of-prey"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/birds-of-prey"/>
@@ -2186,7 +2378,7 @@
     <image:image><image:loc>https://chronologeek.app/images/birdsofprey.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-suicide-squad</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-suicide-squad"/>
@@ -2195,7 +2387,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thesuicidesquad.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/peacemaker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/peacemaker"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/peacemaker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/peacemaker"/>
@@ -2204,7 +2396,7 @@
     <image:image><image:loc>https://chronologeek.app/images/peacemaker.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/black-adam</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/black-adam"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/black-adam"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/black-adam"/>
@@ -2213,7 +2405,7 @@
     <image:image><image:loc>https://chronologeek.app/images/blackadam.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/shazam-fury-of-the-gods</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/shazam-fury-of-the-gods"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/shazam-fury-of-the-gods"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/shazam-fury-of-the-gods"/>
@@ -2222,7 +2414,7 @@
     <image:image><image:loc>https://chronologeek.app/images/shazamfuryofthegods.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/aquaman-and-the-lost-kingdom</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/aquaman-and-the-lost-kingdom"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/aquaman-and-the-lost-kingdom"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/aquaman-and-the-lost-kingdom"/>
@@ -2231,7 +2423,7 @@
     <image:image><image:loc>https://chronologeek.app/images/aquamanlostkingdom.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/blue-beetle</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/blue-beetle"/>
@@ -2240,7 +2432,7 @@
     <image:image><image:loc>https://chronologeek.app/images/bluebeetle.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-flash-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-flash-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-flash-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-flash-2"/>
@@ -2249,7 +2441,7 @@
     <image:image><image:loc>https://chronologeek.app/images/theflashfilm.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/stargirl</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/stargirl"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/stargirl"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/stargirl"/>
@@ -2258,7 +2450,7 @@
     <image:image><image:loc>https://chronologeek.app/images/stargirl.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/superman-and-lois</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/superman-and-lois"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/superman-and-lois"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/superman-and-lois"/>
@@ -2267,7 +2459,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermanlois.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-batman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-batman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-batman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-batman"/>
@@ -2276,7 +2468,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thebatman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/the-penguin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-penguin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-penguin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-penguin"/>
@@ -2285,7 +2477,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thepenguin.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/clayface</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/clayface"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/clayface"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/clayface"/>
@@ -2294,7 +2486,7 @@
     <image:image><image:loc>https://chronologeek.app/images/clayface.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/creature-commandos</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/creature-commandos"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/creature-commandos"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/creature-commandos"/>
@@ -2303,7 +2495,7 @@
     <image:image><image:loc>https://chronologeek.app/images/creaturecommandos.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/superman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/superman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/superman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/superman"/>
@@ -2312,7 +2504,7 @@
     <image:image><image:loc>https://chronologeek.app/images/superman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/supergirl-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/supergirl-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/supergirl-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/supergirl-2"/>
@@ -2321,7 +2513,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supergirlfilm.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dc/lanterns</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/lanterns"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/lanterns"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/lanterns"/>
@@ -4508,7 +4700,7 @@
     <image:image><image:loc>https://chronologeek.app/images/fragments.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-the-animated-series</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-the-animated-series"/>
@@ -4517,7 +4709,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmantas.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-mask-of-the-phantasm</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-mask-of-the-phantasm"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-mask-of-the-phantasm"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-mask-of-the-phantasm"/>
@@ -4526,7 +4718,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanmask.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-and-mr-freeze-subzero</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-and-mr-freeze-subzero"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-and-mr-freeze-subzero"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-and-mr-freeze-subzero"/>
@@ -4535,7 +4727,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmansubzero.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/superman-the-animated-series</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/superman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/superman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/superman-the-animated-series"/>
@@ -4544,7 +4736,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermantas.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/the-new-batman-adventures</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/the-new-batman-adventures"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/the-new-batman-adventures"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/the-new-batman-adventures"/>
@@ -4553,7 +4745,7 @@
     <image:image><image:loc>https://chronologeek.app/images/newbatmanadventures.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/static-shock</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/static-shock"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/static-shock"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/static-shock"/>
@@ -4562,7 +4754,7 @@
     <image:image><image:loc>https://chronologeek.app/images/staticshock.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league"/>
@@ -4571,7 +4763,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleagueanimated.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-unlimited</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-unlimited"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-unlimited"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-unlimited"/>
@@ -4580,7 +4772,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleagueunlimited.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-mystery-of-the-batwoman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-mystery-of-the-batwoman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-mystery-of-the-batwoman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-mystery-of-the-batwoman"/>
@@ -4589,7 +4781,7 @@
     <image:image><image:loc>https://chronologeek.app/images/mysteryofthebatwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-and-harley-quinn</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-and-harley-quinn"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-and-harley-quinn"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-and-harley-quinn"/>
@@ -4598,7 +4790,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanharley.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-vs-the-fatal-five</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-vs-the-fatal-five"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-vs-the-fatal-five"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-vs-the-fatal-five"/>
@@ -4607,7 +4799,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleaguefatalfive.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-beyond</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-beyond"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-beyond"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-beyond"/>
@@ -4616,7 +4808,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanbeyond.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-beyond-return-of-the-joker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-beyond-return-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-beyond-return-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-beyond-return-of-the-joker"/>
@@ -4625,7 +4817,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanbeyondjoker.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/the-zeta-project</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/the-zeta-project"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/the-zeta-project"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/the-zeta-project"/>
@@ -4634,7 +4826,7 @@
     <image:image><image:loc>https://chronologeek.app/images/zetaproject.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-the-flashpoint-paradox</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-the-flashpoint-paradox"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-the-flashpoint-paradox"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-the-flashpoint-paradox"/>
@@ -4643,7 +4835,7 @@
     <image:image><image:loc>https://chronologeek.app/images/flashpoint.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/son-of-batman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/son-of-batman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/son-of-batman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/son-of-batman"/>
@@ -4652,7 +4844,7 @@
     <image:image><image:loc>https://chronologeek.app/images/sonofbatman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-war</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-war"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-war"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-war"/>
@@ -4661,7 +4853,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleaguewar.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-throne-of-atlantis</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-throne-of-atlantis"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-throne-of-atlantis"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-throne-of-atlantis"/>
@@ -4670,7 +4862,7 @@
     <image:image><image:loc>https://chronologeek.app/images/throneofatlantis.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/nightwing-and-robin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/nightwing-and-robin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/nightwing-and-robin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/nightwing-and-robin"/>
@@ -4678,7 +4870,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/works/dcanimation/nightwing-and-robin"/>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-vs-robin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-vs-robin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-vs-robin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-vs-robin"/>
@@ -4687,7 +4879,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanrobin.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-bad-blood</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-bad-blood"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-bad-blood"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-bad-blood"/>
@@ -4696,7 +4888,7 @@
     <image:image><image:loc>https://chronologeek.app/images/badblood.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-vs-teen-titans</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-vs-teen-titans"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-vs-teen-titans"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-vs-teen-titans"/>
@@ -4705,7 +4897,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleagueteentitans.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/suicide-squad-hell-to-pay</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-hell-to-pay"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-hell-to-pay"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-hell-to-pay"/>
@@ -4714,7 +4906,7 @@
     <image:image><image:loc>https://chronologeek.app/images/helltopay.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-dark</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-dark"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-dark"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-dark"/>
@@ -4723,7 +4915,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleaguedark.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/teen-titans-the-judas-contract</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/teen-titans-the-judas-contract"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/teen-titans-the-judas-contract"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/teen-titans-the-judas-contract"/>
@@ -4732,7 +4924,7 @@
     <image:image><image:loc>https://chronologeek.app/images/judascontract.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/the-death-of-superman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/the-death-of-superman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/the-death-of-superman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/the-death-of-superman"/>
@@ -4741,7 +4933,7 @@
     <image:image><image:loc>https://chronologeek.app/images/deathsuperman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/reign-of-the-supermen</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/reign-of-the-supermen"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/reign-of-the-supermen"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/reign-of-the-supermen"/>
@@ -4750,7 +4942,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermen.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/constantine-city-of-demons</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/constantine-city-of-demons"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/constantine-city-of-demons"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/constantine-city-of-demons"/>
@@ -4759,7 +4951,7 @@
     <image:image><image:loc>https://chronologeek.app/images/cityofdemons.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-hush</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-hush"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-hush"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-hush"/>
@@ -4768,7 +4960,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanhush.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/wonder-woman-bloodlines</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/wonder-woman-bloodlines"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/wonder-woman-bloodlines"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/wonder-woman-bloodlines"/>
@@ -4777,7 +4969,7 @@
     <image:image><image:loc>https://chronologeek.app/images/wonderwomanbloodlines.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-dark-apokolips-war</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-dark-apokolips-war"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-dark-apokolips-war"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-dark-apokolips-war"/>
@@ -4786,7 +4978,7 @@
     <image:image><image:loc>https://chronologeek.app/images/apokolipswar.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/dc-showcase-constantine-house-of-mystery</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-constantine-house-of-mystery"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-constantine-house-of-mystery"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-constantine-house-of-mystery"/>
@@ -4795,7 +4987,7 @@
     <image:image><image:loc>https://chronologeek.app/images/constantinemystery.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/superman-man-of-tomorrow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/superman-man-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/superman-man-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/superman-man-of-tomorrow"/>
@@ -4804,7 +4996,7 @@
     <image:image><image:loc>https://chronologeek.app/images/manoftomorrowanimated.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/kamandi-the-last-boy-on-earth</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/kamandi-the-last-boy-on-earth"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/kamandi-the-last-boy-on-earth"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/kamandi-the-last-boy-on-earth"/>
@@ -4813,7 +5005,7 @@
     <image:image><image:loc>https://chronologeek.app/images/kamandi.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-society-world-war-ii</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-society-world-war-ii"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-society-world-war-ii"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-society-world-war-ii"/>
@@ -4822,7 +5014,7 @@
     <image:image><image:loc>https://chronologeek.app/images/worldwar2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-the-long-halloween-part-1</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-the-long-halloween-part-1"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-long-halloween-part-1"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-the-long-halloween-part-1"/>
@@ -4831,7 +5023,7 @@
     <image:image><image:loc>https://chronologeek.app/images/longhalloween1.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-the-long-halloween-part-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-the-long-halloween-part-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-long-halloween-part-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-the-long-halloween-part-2"/>
@@ -4840,7 +5032,7 @@
     <image:image><image:loc>https://chronologeek.app/images/longhalloween2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/dc-showcase-adam-strange</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-adam-strange"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-adam-strange"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-adam-strange"/>
@@ -4849,7 +5041,7 @@
     <image:image><image:loc>https://chronologeek.app/images/adamstrange.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/green-lantern-beware-my-power</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/green-lantern-beware-my-power"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/green-lantern-beware-my-power"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/green-lantern-beware-my-power"/>
@@ -4858,7 +5050,7 @@
     <image:image><image:loc>https://chronologeek.app/images/bewaremypower.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/legion-of-super-heroes</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/legion-of-super-heroes"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/legion-of-super-heroes"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/legion-of-super-heroes"/>
@@ -4867,7 +5059,7 @@
     <image:image><image:loc>https://chronologeek.app/images/legionofsuperheroes.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-warworld</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-warworld"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-warworld"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-warworld"/>
@@ -4876,7 +5068,7 @@
     <image:image><image:loc>https://chronologeek.app/images/warworld.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/dc-showcase-the-losers</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-the-losers"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-the-losers"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-the-losers"/>
@@ -4885,7 +5077,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thelosers.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/dc-showcase-blue-beetle</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-blue-beetle"/>
@@ -4894,7 +5086,7 @@
     <image:image><image:loc>https://chronologeek.app/images/bluebeetleanimated.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-1</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-1"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-1"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-crisis-on-infinite-earths-1"/>
@@ -4903,7 +5095,7 @@
     <image:image><image:loc>https://chronologeek.app/images/crisis1.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-crisis-on-infinite-earths-2"/>
@@ -4912,7 +5104,7 @@
     <image:image><image:loc>https://chronologeek.app/images/crisis2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-3</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-3"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-3"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-crisis-on-infinite-earths-3"/>
@@ -4921,7 +5113,7 @@
     <image:image><image:loc>https://chronologeek.app/images/crisis3.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-origins-initiation</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins-initiation"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-initiation"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins-initiation"/>
@@ -4930,7 +5122,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamoriginsinitiation.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-origins</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins"/>
@@ -4939,7 +5131,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamorigins.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-origins-cold-cold-heart</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins-cold-cold-heart"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-cold-cold-heart"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins-cold-cold-heart"/>
@@ -4948,7 +5140,7 @@
     <image:image><image:loc>https://chronologeek.app/images/coldcoldheart.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-origins-blackgate</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins-blackgate"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-blackgate"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins-blackgate"/>
@@ -4957,7 +5149,7 @@
     <image:image><image:loc>https://chronologeek.app/images/blackgate.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-shadow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-shadow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-shadow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-shadow"/>
@@ -4966,7 +5158,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamshadows.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family"/>
@@ -4975,7 +5167,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batgirlmatteroffamily.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-asylum</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-asylum"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-asylum"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-asylum"/>
@@ -4984,7 +5176,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamasylum.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-city</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-city"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-city"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-city"/>
@@ -4993,7 +5185,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamcity.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-city-harley-quinns-revenge</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-city-harley-quinns-revenge"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-city-harley-quinns-revenge"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-city-harley-quinns-revenge"/>
@@ -5002,7 +5194,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamharleyquinnrevenge.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-harley-quinn-story-pack</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-harley-quinn-story-pack"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-harley-quinn-story-pack"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-harley-quinn-story-pack"/>
@@ -5011,7 +5203,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamknightharley.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-vr</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-vr"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-vr"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-vr"/>
@@ -5020,7 +5212,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamvr.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight"/>
@@ -5029,7 +5221,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamknight.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-the-season-of-infamy</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-the-season-of-infamy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-the-season-of-infamy"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-the-season-of-infamy"/>
@@ -5038,7 +5230,7 @@
     <image:image><image:loc>https://chronologeek.app/images/seasonofinfamy.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-catwomans-revenge</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-catwomans-revenge"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-catwomans-revenge"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-catwomans-revenge"/>
@@ -5047,7 +5239,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamcatwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-red-hood-story-pack</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-red-hood-story-pack"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-red-hood-story-pack"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-red-hood-story-pack"/>
@@ -5056,7 +5248,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamredhood.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-gcpd-lockdown</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-gcpd-lockdown"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-gcpd-lockdown"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-gcpd-lockdown"/>
@@ -5065,7 +5257,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamgcpd.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/batman-arkham-knight-a-flip-of-a-coin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-a-flip-of-a-coin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-a-flip-of-a-coin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-a-flip-of-a-coin"/>
@@ -5074,7 +5266,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamaflipofacoin.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league"/>
@@ -5083,7 +5275,7 @@
     <image:image><image:loc>https://chronologeek.app/images/suicidesquadkillthejusticeleague.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker"/>
@@ -5092,7 +5284,7 @@
     <image:image><image:loc>https://chronologeek.app/images/killthejusticeleagues1.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze"/>
@@ -5101,7 +5293,7 @@
     <image:image><image:loc>https://chronologeek.app/images/killthejusticeleagues2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless"/>
@@ -5110,7 +5302,7 @@
     <image:image><image:loc>https://chronologeek.app/images/killthejusticeleagues3.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke"/>
@@ -7594,7 +7786,7 @@
     <image:image><image:loc>https://chronologeek.app/images/endgameencore.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/smallville</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/smallville"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/smallville"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/smallville"/>
@@ -7603,7 +7795,7 @@
     <image:image><image:loc>https://chronologeek.app/images/smallville.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/krypton</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/krypton"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/krypton"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/krypton"/>
@@ -7612,7 +7804,7 @@
     <image:image><image:loc>https://chronologeek.app/images/krypton.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/superman-returns</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/superman-returns"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/superman-returns"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/superman-returns"/>
@@ -7621,7 +7813,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermanreturns.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/batman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman"/>
@@ -7630,7 +7822,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batman89.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/batman-returns</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman-returns"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman-returns"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman-returns"/>
@@ -7639,7 +7831,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanreturns.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/batman-begins</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman-begins"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman-begins"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman-begins"/>
@@ -7648,7 +7840,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanbegins.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-dark-knight</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-dark-knight"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-dark-knight"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-dark-knight"/>
@@ -7657,7 +7849,7 @@
     <image:image><image:loc>https://chronologeek.app/images/darkknight.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-dark-knight-rises</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-dark-knight-rises"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-dark-knight-rises"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-dark-knight-rises"/>
@@ -7666,7 +7858,7 @@
     <image:image><image:loc>https://chronologeek.app/images/darkknightrises.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/gotham</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/gotham"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/gotham"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/gotham"/>
@@ -7675,7 +7867,7 @@
     <image:image><image:loc>https://chronologeek.app/images/gotham.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/titans</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/titans"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/titans"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/titans"/>
@@ -7684,7 +7876,7 @@
     <image:image><image:loc>https://chronologeek.app/images/titans.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/arrow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/arrow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/arrow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/arrow"/>
@@ -7693,7 +7885,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arrow.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-flash</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-flash"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-flash"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-flash"/>
@@ -7702,7 +7894,7 @@
     <image:image><image:loc>https://chronologeek.app/images/theflashseries.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/constantine</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/constantine"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/constantine"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/constantine"/>
@@ -7711,7 +7903,7 @@
     <image:image><image:loc>https://chronologeek.app/images/constantine.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/supergirl</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/supergirl"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/supergirl"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/supergirl"/>
@@ -7720,7 +7912,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supergirlseries.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/legends-of-tomorrow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/legends-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/legends-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/legends-of-tomorrow"/>
@@ -7729,7 +7921,7 @@
     <image:image><image:loc>https://chronologeek.app/images/legendsoftomorrow.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/black-lightning</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/black-lightning"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/black-lightning"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/black-lightning"/>
@@ -7738,7 +7930,7 @@
     <image:image><image:loc>https://chronologeek.app/images/blacklightning.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/batwoman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batwoman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batwoman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batwoman"/>
@@ -7747,7 +7939,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/man-of-steel</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/man-of-steel"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/man-of-steel"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/man-of-steel"/>
@@ -7756,7 +7948,7 @@
     <image:image><image:loc>https://chronologeek.app/images/manofsteel.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/batman-v-superman-dawn-of-justice</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/batman-v-superman-dawn-of-justice"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/batman-v-superman-dawn-of-justice"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/batman-v-superman-dawn-of-justice"/>
@@ -7765,7 +7957,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanvsuperman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/wonder-woman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/wonder-woman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/wonder-woman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/wonder-woman"/>
@@ -7774,7 +7966,7 @@
     <image:image><image:loc>https://chronologeek.app/images/wonderwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/wonder-woman-1984</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/wonder-woman-1984"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/wonder-woman-1984"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/wonder-woman-1984"/>
@@ -7783,7 +7975,7 @@
     <image:image><image:loc>https://chronologeek.app/images/wonderwoman84.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/suicide-squad</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/suicide-squad"/>
@@ -7792,7 +7984,7 @@
     <image:image><image:loc>https://chronologeek.app/images/suicidesquad.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/zack-snyders-justice-league</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/zack-snyders-justice-league"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/zack-snyders-justice-league"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/zack-snyders-justice-league"/>
@@ -7801,7 +7993,7 @@
     <image:image><image:loc>https://chronologeek.app/images/zacksnyderjusticeleague.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/aquaman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/aquaman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/aquaman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/aquaman"/>
@@ -7810,7 +8002,7 @@
     <image:image><image:loc>https://chronologeek.app/images/aquaman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/shazam</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/shazam"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/shazam"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/shazam"/>
@@ -7819,7 +8011,7 @@
     <image:image><image:loc>https://chronologeek.app/images/shazam.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/birds-of-prey</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/birds-of-prey"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/birds-of-prey"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/birds-of-prey"/>
@@ -7828,7 +8020,7 @@
     <image:image><image:loc>https://chronologeek.app/images/birdsofprey.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-suicide-squad</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-suicide-squad"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-suicide-squad"/>
@@ -7837,7 +8029,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thesuicidesquad.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/peacemaker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/peacemaker"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/peacemaker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/peacemaker"/>
@@ -7846,7 +8038,7 @@
     <image:image><image:loc>https://chronologeek.app/images/peacemaker.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/black-adam</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/black-adam"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/black-adam"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/black-adam"/>
@@ -7855,7 +8047,7 @@
     <image:image><image:loc>https://chronologeek.app/images/blackadam.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/shazam-fury-of-the-gods</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/shazam-fury-of-the-gods"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/shazam-fury-of-the-gods"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/shazam-fury-of-the-gods"/>
@@ -7864,7 +8056,7 @@
     <image:image><image:loc>https://chronologeek.app/images/shazamfuryofthegods.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/aquaman-and-the-lost-kingdom</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/aquaman-and-the-lost-kingdom"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/aquaman-and-the-lost-kingdom"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/aquaman-and-the-lost-kingdom"/>
@@ -7873,7 +8065,7 @@
     <image:image><image:loc>https://chronologeek.app/images/aquamanlostkingdom.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/blue-beetle</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/blue-beetle"/>
@@ -7882,7 +8074,7 @@
     <image:image><image:loc>https://chronologeek.app/images/bluebeetle.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-flash-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-flash-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-flash-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-flash-2"/>
@@ -7891,7 +8083,7 @@
     <image:image><image:loc>https://chronologeek.app/images/theflashfilm.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/stargirl</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/stargirl"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/stargirl"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/stargirl"/>
@@ -7900,7 +8092,7 @@
     <image:image><image:loc>https://chronologeek.app/images/stargirl.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/superman-and-lois</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/superman-and-lois"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/superman-and-lois"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/superman-and-lois"/>
@@ -7909,7 +8101,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermanlois.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-batman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-batman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-batman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-batman"/>
@@ -7918,7 +8110,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thebatman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/the-penguin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/the-penguin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/the-penguin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/the-penguin"/>
@@ -7927,7 +8119,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thepenguin.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/clayface</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/clayface"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/clayface"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/clayface"/>
@@ -7936,7 +8128,7 @@
     <image:image><image:loc>https://chronologeek.app/images/clayface.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/creature-commandos</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/creature-commandos"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/creature-commandos"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/creature-commandos"/>
@@ -7945,7 +8137,7 @@
     <image:image><image:loc>https://chronologeek.app/images/creaturecommandos.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/superman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/superman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/superman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/superman"/>
@@ -7954,7 +8146,7 @@
     <image:image><image:loc>https://chronologeek.app/images/superman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/supergirl-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/supergirl-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/supergirl-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/supergirl-2"/>
@@ -7963,7 +8155,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supergirlfilm.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dc/lanterns</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dc/lanterns"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dc/lanterns"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dc/lanterns"/>
@@ -10150,7 +10342,7 @@
     <image:image><image:loc>https://chronologeek.app/images/fragments.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-animated-series</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-the-animated-series"/>
@@ -10159,7 +10351,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmantas.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-mask-of-the-phantasm</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-mask-of-the-phantasm"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-mask-of-the-phantasm"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-mask-of-the-phantasm"/>
@@ -10168,7 +10360,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanmask.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-and-mr-freeze-subzero</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-and-mr-freeze-subzero"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-and-mr-freeze-subzero"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-and-mr-freeze-subzero"/>
@@ -10177,7 +10369,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmansubzero.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/superman-the-animated-series</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/superman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/superman-the-animated-series"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/superman-the-animated-series"/>
@@ -10186,7 +10378,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermantas.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/the-new-batman-adventures</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/the-new-batman-adventures"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/the-new-batman-adventures"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/the-new-batman-adventures"/>
@@ -10195,7 +10387,7 @@
     <image:image><image:loc>https://chronologeek.app/images/newbatmanadventures.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/static-shock</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/static-shock"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/static-shock"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/static-shock"/>
@@ -10204,7 +10396,7 @@
     <image:image><image:loc>https://chronologeek.app/images/staticshock.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league"/>
@@ -10213,7 +10405,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleagueanimated.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-unlimited</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-unlimited"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-unlimited"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-unlimited"/>
@@ -10222,7 +10414,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleagueunlimited.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-mystery-of-the-batwoman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-mystery-of-the-batwoman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-mystery-of-the-batwoman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-mystery-of-the-batwoman"/>
@@ -10231,7 +10423,7 @@
     <image:image><image:loc>https://chronologeek.app/images/mysteryofthebatwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-and-harley-quinn</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-and-harley-quinn"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-and-harley-quinn"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-and-harley-quinn"/>
@@ -10240,7 +10432,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanharley.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-vs-the-fatal-five</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-vs-the-fatal-five"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-vs-the-fatal-five"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-vs-the-fatal-five"/>
@@ -10249,7 +10441,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleaguefatalfive.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-beyond</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-beyond"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-beyond"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-beyond"/>
@@ -10258,7 +10450,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanbeyond.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-beyond-return-of-the-joker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-beyond-return-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-beyond-return-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-beyond-return-of-the-joker"/>
@@ -10267,7 +10459,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanbeyondjoker.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/the-zeta-project</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/the-zeta-project"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/the-zeta-project"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/the-zeta-project"/>
@@ -10276,7 +10468,7 @@
     <image:image><image:loc>https://chronologeek.app/images/zetaproject.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-the-flashpoint-paradox</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-the-flashpoint-paradox"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-the-flashpoint-paradox"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-the-flashpoint-paradox"/>
@@ -10285,7 +10477,7 @@
     <image:image><image:loc>https://chronologeek.app/images/flashpoint.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/son-of-batman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/son-of-batman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/son-of-batman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/son-of-batman"/>
@@ -10294,7 +10486,7 @@
     <image:image><image:loc>https://chronologeek.app/images/sonofbatman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-war</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-war"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-war"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-war"/>
@@ -10303,7 +10495,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleaguewar.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-throne-of-atlantis</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-throne-of-atlantis"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-throne-of-atlantis"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-throne-of-atlantis"/>
@@ -10312,7 +10504,7 @@
     <image:image><image:loc>https://chronologeek.app/images/throneofatlantis.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/nightwing-and-robin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/nightwing-and-robin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/nightwing-and-robin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/nightwing-and-robin"/>
@@ -10320,7 +10512,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chronologeek.app/works/dcanimation/nightwing-and-robin"/>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-vs-robin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-vs-robin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-vs-robin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-vs-robin"/>
@@ -10329,7 +10521,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanrobin.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-bad-blood</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-bad-blood"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-bad-blood"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-bad-blood"/>
@@ -10338,7 +10530,7 @@
     <image:image><image:loc>https://chronologeek.app/images/badblood.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-vs-teen-titans</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-vs-teen-titans"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-vs-teen-titans"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-vs-teen-titans"/>
@@ -10347,7 +10539,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleagueteentitans.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-hell-to-pay</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-hell-to-pay"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-hell-to-pay"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-hell-to-pay"/>
@@ -10356,7 +10548,7 @@
     <image:image><image:loc>https://chronologeek.app/images/helltopay.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-dark</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-dark"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-dark"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-dark"/>
@@ -10365,7 +10557,7 @@
     <image:image><image:loc>https://chronologeek.app/images/justiceleaguedark.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/teen-titans-the-judas-contract</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/teen-titans-the-judas-contract"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/teen-titans-the-judas-contract"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/teen-titans-the-judas-contract"/>
@@ -10374,7 +10566,7 @@
     <image:image><image:loc>https://chronologeek.app/images/judascontract.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/the-death-of-superman</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/the-death-of-superman"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/the-death-of-superman"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/the-death-of-superman"/>
@@ -10383,7 +10575,7 @@
     <image:image><image:loc>https://chronologeek.app/images/deathsuperman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/reign-of-the-supermen</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/reign-of-the-supermen"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/reign-of-the-supermen"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/reign-of-the-supermen"/>
@@ -10392,7 +10584,7 @@
     <image:image><image:loc>https://chronologeek.app/images/supermen.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/constantine-city-of-demons</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/constantine-city-of-demons"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/constantine-city-of-demons"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/constantine-city-of-demons"/>
@@ -10401,7 +10593,7 @@
     <image:image><image:loc>https://chronologeek.app/images/cityofdemons.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-hush</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-hush"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-hush"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-hush"/>
@@ -10410,7 +10602,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batmanhush.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/wonder-woman-bloodlines</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/wonder-woman-bloodlines"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/wonder-woman-bloodlines"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/wonder-woman-bloodlines"/>
@@ -10419,7 +10611,7 @@
     <image:image><image:loc>https://chronologeek.app/images/wonderwomanbloodlines.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-dark-apokolips-war</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-dark-apokolips-war"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-dark-apokolips-war"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-dark-apokolips-war"/>
@@ -10428,7 +10620,7 @@
     <image:image><image:loc>https://chronologeek.app/images/apokolipswar.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-constantine-house-of-mystery</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-constantine-house-of-mystery"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-constantine-house-of-mystery"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-constantine-house-of-mystery"/>
@@ -10437,7 +10629,7 @@
     <image:image><image:loc>https://chronologeek.app/images/constantinemystery.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/superman-man-of-tomorrow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/superman-man-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/superman-man-of-tomorrow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/superman-man-of-tomorrow"/>
@@ -10446,7 +10638,7 @@
     <image:image><image:loc>https://chronologeek.app/images/manoftomorrowanimated.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/kamandi-the-last-boy-on-earth</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/kamandi-the-last-boy-on-earth"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/kamandi-the-last-boy-on-earth"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/kamandi-the-last-boy-on-earth"/>
@@ -10455,7 +10647,7 @@
     <image:image><image:loc>https://chronologeek.app/images/kamandi.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-society-world-war-ii</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-society-world-war-ii"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-society-world-war-ii"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-society-world-war-ii"/>
@@ -10464,7 +10656,7 @@
     <image:image><image:loc>https://chronologeek.app/images/worldwar2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-long-halloween-part-1</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-the-long-halloween-part-1"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-long-halloween-part-1"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-the-long-halloween-part-1"/>
@@ -10473,7 +10665,7 @@
     <image:image><image:loc>https://chronologeek.app/images/longhalloween1.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-long-halloween-part-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-the-long-halloween-part-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-the-long-halloween-part-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-the-long-halloween-part-2"/>
@@ -10482,7 +10674,7 @@
     <image:image><image:loc>https://chronologeek.app/images/longhalloween2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-adam-strange</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-adam-strange"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-adam-strange"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-adam-strange"/>
@@ -10491,7 +10683,7 @@
     <image:image><image:loc>https://chronologeek.app/images/adamstrange.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/green-lantern-beware-my-power</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/green-lantern-beware-my-power"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/green-lantern-beware-my-power"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/green-lantern-beware-my-power"/>
@@ -10500,7 +10692,7 @@
     <image:image><image:loc>https://chronologeek.app/images/bewaremypower.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/legion-of-super-heroes</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/legion-of-super-heroes"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/legion-of-super-heroes"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/legion-of-super-heroes"/>
@@ -10509,7 +10701,7 @@
     <image:image><image:loc>https://chronologeek.app/images/legionofsuperheroes.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-warworld</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-warworld"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-warworld"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-warworld"/>
@@ -10518,7 +10710,7 @@
     <image:image><image:loc>https://chronologeek.app/images/warworld.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-the-losers</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-the-losers"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-the-losers"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-the-losers"/>
@@ -10527,7 +10719,7 @@
     <image:image><image:loc>https://chronologeek.app/images/thelosers.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-blue-beetle</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/dc-showcase-blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/dc-showcase-blue-beetle"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/dc-showcase-blue-beetle"/>
@@ -10536,7 +10728,7 @@
     <image:image><image:loc>https://chronologeek.app/images/bluebeetleanimated.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-1</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-1"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-1"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-crisis-on-infinite-earths-1"/>
@@ -10545,7 +10737,7 @@
     <image:image><image:loc>https://chronologeek.app/images/crisis1.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-2"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-2"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-crisis-on-infinite-earths-2"/>
@@ -10554,7 +10746,7 @@
     <image:image><image:loc>https://chronologeek.app/images/crisis2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-3</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/justice-league-crisis-on-infinite-earths-3"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/justice-league-crisis-on-infinite-earths-3"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/justice-league-crisis-on-infinite-earths-3"/>
@@ -10563,7 +10755,7 @@
     <image:image><image:loc>https://chronologeek.app/images/crisis3.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-initiation</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins-initiation"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-initiation"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins-initiation"/>
@@ -10572,7 +10764,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamoriginsinitiation.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins"/>
@@ -10581,7 +10773,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamorigins.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-cold-cold-heart</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins-cold-cold-heart"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-cold-cold-heart"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins-cold-cold-heart"/>
@@ -10590,7 +10782,7 @@
     <image:image><image:loc>https://chronologeek.app/images/coldcoldheart.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-blackgate</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-origins-blackgate"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-origins-blackgate"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-origins-blackgate"/>
@@ -10599,7 +10791,7 @@
     <image:image><image:loc>https://chronologeek.app/images/blackgate.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-shadow</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-shadow"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-shadow"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-shadow"/>
@@ -10608,7 +10800,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamshadows.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-batgirl-a-matter-of-family"/>
@@ -10617,7 +10809,7 @@
     <image:image><image:loc>https://chronologeek.app/images/batgirlmatteroffamily.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-asylum</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-asylum"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-asylum"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-asylum"/>
@@ -10626,7 +10818,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamasylum.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-city</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-city"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-city"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-city"/>
@@ -10635,7 +10827,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamcity.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-city-harley-quinns-revenge</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-city-harley-quinns-revenge"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-city-harley-quinns-revenge"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-city-harley-quinns-revenge"/>
@@ -10644,7 +10836,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamharleyquinnrevenge.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-harley-quinn-story-pack</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-harley-quinn-story-pack"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-harley-quinn-story-pack"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-harley-quinn-story-pack"/>
@@ -10653,7 +10845,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamknightharley.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-vr</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-vr"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-vr"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-vr"/>
@@ -10662,7 +10854,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamvr.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight"/>
@@ -10671,7 +10863,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamknight.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-the-season-of-infamy</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-the-season-of-infamy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-the-season-of-infamy"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-the-season-of-infamy"/>
@@ -10680,7 +10872,7 @@
     <image:image><image:loc>https://chronologeek.app/images/seasonofinfamy.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-catwomans-revenge</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-catwomans-revenge"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-catwomans-revenge"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-catwomans-revenge"/>
@@ -10689,7 +10881,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamcatwoman.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-red-hood-story-pack</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-red-hood-story-pack"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-red-hood-story-pack"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-red-hood-story-pack"/>
@@ -10698,7 +10890,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamredhood.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-gcpd-lockdown</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-gcpd-lockdown"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-gcpd-lockdown"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-gcpd-lockdown"/>
@@ -10707,7 +10899,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamgcpd.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-a-flip-of-a-coin</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/batman-arkham-knight-a-flip-of-a-coin"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/batman-arkham-knight-a-flip-of-a-coin"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/batman-arkham-knight-a-flip-of-a-coin"/>
@@ -10716,7 +10908,7 @@
     <image:image><image:loc>https://chronologeek.app/images/arkhamaflipofacoin.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league"/>
@@ -10725,7 +10917,7 @@
     <image:image><image:loc>https://chronologeek.app/images/suicidesquadkillthejusticeleague.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-the-joker"/>
@@ -10734,7 +10926,7 @@
     <image:image><image:loc>https://chronologeek.app/images/killthejusticeleagues1.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-freeze"/>
@@ -10743,7 +10935,7 @@
     <image:image><image:loc>https://chronologeek.app/images/killthejusticeleagues2.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-lawless"/>
@@ -10752,7 +10944,7 @@
     <image:image><image:loc>https://chronologeek.app/images/killthejusticeleagues3.webp</image:loc></image:image>
   </url>
   <url><loc>https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://chronologeek.app/works/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://chronologeek.app/fr/oeuvres/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://chronologeek.app/es/obras/dcanimation/suicide-squad-kill-the-justice-league-season-of-deathstroke"/>

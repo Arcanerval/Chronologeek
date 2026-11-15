@@ -265,7 +265,7 @@ export function habillage(html, urlSw) {
   return { css: repli + '\n' + principal, header: propre(m1[0]), footer: propre(m2[0]) };
 }
 
-function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch }) {
+function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch, lignesU }) {
   const t = T[langue];
   const encre = ENCRES[cle];
   const lignes = ids.map(i => m.parId[i]).filter(Boolean);
@@ -335,7 +335,11 @@ function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAcc
     const k = compact(l.e.title);
     if (!deja[k]) { deja[k] = 1; liste.push(l); }
   }
-  const vers = `${urlU}?vers=${encodeURIComponent(p.id)}`;
+  // La ligne de l'œuvre quand son univers en a une page (voir LIGNES dans
+  // publier.mjs) : le fil d'Ariane passe par elle, et le billet y mène.
+  const ligneU = lignesU && lignesU[lignes[0].era.branch] || null;
+  const urlL = ligneU ? ligneU.url : urlU;
+  const vers = `${urlL}?vers=${encodeURIComponent(p.id)}`;
   const VISIBLES = 12;
   const grille = liste.slice(0, VISIBLES).map(l => `<li><a href="${urlDe(l.e.id)}">${vignette(l.e)}<span>${txt(l.e.title)}</span></a></li>`).join('');
   const reste = liste.slice(VISIBLES).map(l => `<li><a href="${urlDe(l.e.id)}">${txt(l.e.title)}</a></li>`).join('');
@@ -417,7 +421,8 @@ function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAcc
   const fil = { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:[
     { '@type':'ListItem', position:1, name:t.accueil, item:site+sAccueil },
     { '@type':'ListItem', position:2, name:m.nom, item:site+urlU },
-    { '@type':'ListItem', position:3, name:titre, item:site+moi } ] };
+    ...(ligneU ? [{ '@type':'ListItem', position:3, name:ligneU.nom, item:site+ligneU.url }] : []),
+    { '@type':'ListItem', position:ligneU ? 4 : 3, name:titre, item:site+moi } ] };
   const schema = typeSchema(p);
   // L'entité : ce qui la relie au reste du web (sa fiche TMDB), à sa
   // franchise (`isPartOf`) et à sa date de sortie, lue dans l'ordre de sortie
@@ -480,14 +485,14 @@ ${header}
 <section class="ln-hero f-hero">
   ${p.img ? `<div class="ln-bg" style="background-image:url(${esc(p.img)})" aria-hidden="true"></div>` : '<div class="ln-bg" style="background-image:none" aria-hidden="true"></div>'}
   <div class="wrap">
-    <nav class="f-fil" aria-label="${t.fil}"><a href="${sAccueil}">${t.accueil}</a> › <a href="${urlU}">${esc(m.nom)}</a> › ${esc(titre)}</nav>
+    <nav class="f-fil" aria-label="${t.fil}"><a href="${sAccueil}">${t.accueil}</a> › <a href="${urlU}">${esc(m.nom)}</a> › ${ligneU ? `<a href="${ligneU.url}">${esc(ligneU.nom)}</a> › ` : ''}${esc(titre)}</nav>
     <div class="ln-head"><h1 class="disp"><span class="tag">${t.tag}</span> <span class="nm${taille}">${esc(titre)}</span> <span class="f-fin">${esc(nb(t.fin(m.nom, !contient)))}</span></h1></div>
     <div class="ln-board stats f-board">${cases}</div>
     ${plan}
   </div>
 </section>
 <div class="wrap ticket-row">
-  <a class="ticket" href="${urlU}#${esc(p.id)}" style="text-decoration:none">
+  <a class="ticket" href="${urlL}#${esc(p.id)}" style="text-decoration:none">
     <span class="t-stub" aria-hidden="true"><span>${CODES[cle]}</span></span>
     <span class="t-txt"><span class="t-k">${t.billet}</span><span class="t-nm">${esc(titre)}</span><span class="t-st">${station1 ? esc(station1) : esc(m.nom)}</span></span>
     <span class="start t-go" aria-label="${t.voir}"><span class="f-go-t">${t.voir} </span><em>▸</em></span>
@@ -514,7 +519,7 @@ ${footer}
  * (`{route: {id: chemin}}`, dont le pré-rendu a besoin tôt), `plan` (le sitemap) et
  * `rendre(habillages)`, à appeler une fois la page Star Wars publiée.
  */
-export function oeuvres({ racine, site, urls }) {
+export function oeuvres({ racine, site, urls, lignes }) {
   const tables = {}, plan = [], taches = [];
   const repli = {
     fr: charge(racine, 'data.js').CG.badgeLabels,
@@ -539,6 +544,7 @@ export function oeuvres({ racine, site, urls }) {
         taches.push(ch => page({ cle, route, langue, m: mo[langue], ids: o.ids, s: o.s, homonyme: o.homonyme, site, ch: ch[langue],
           urlDe: id => `${T[langue].base}/${route}/${chemin[id]}`,
           urlU: urls[langue][cle], sAccueil: urls[langue].accueil, urlsL,
+          lignesU: lignes && lignes[langue] && lignes[langue][cle],
           labelsRepli: repli[langue] }));
       }
       const e0 = mo.en.parId[o.ids[0]].e;

@@ -144,7 +144,7 @@ const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js
  * Rend le pré-rendu d'une page, ou '' si elle n'a pas de timeline (l'accueil,
  * « À venir », les Nouveautés, la liste des Dossiers).
  */
-export function prerendu({ racine, cle, langue, oeuvres }) {
+export function prerendu({ racine, cle, langue, oeuvres, ligne, lignes, nomsLignes }) {
   fiche = null;
   let eras = null;
   const liste = cle === 'dossier-sw';
@@ -156,13 +156,22 @@ export function prerendu({ racine, cle, langue, oeuvres }) {
     eras = charge(racine, fichier, global)[global].eras;
   }
   if (!eras) return '';
+  // La page d'une ligne (`/arrowverse`, voir LIGNES dans publier.mjs) ne
+  // rend que ses bandes, comme son script le fait au chargement.
+  if (ligne) eras = eras.filter(e => e.branch === ligne);
   if (oeuvres && SOURCES[cle]) {
     const route = routeDe(cle);
     const t = oeuvres[route] || {};
     fiche = id => t[id] ? `${baseOeuvres(langue)}/${route}/${t[id]}` : '';
   }
 
-  const corps = eras.map(e => section(e, liste)).join('');
+  // La page du réseau mène à la page de chaque ligne : sa bascule est faite
+  // de boutons, et un bouton n'est pas un lien que Google suive.
+  const vers = lignes && nomsLignes
+    ? '<ul>' + Object.entries(nomsLignes).filter(([k]) => lignes[k])
+        .map(([k, n]) => `<li><a href="${lignes[k]}">${n}</a></li>`).join('') + '</ul>'
+    : '';
+  const corps = vers + eras.map(e => section(e, liste)).join('');
   // Une page qui a des ères et rien à rendre est un appariement qui a raté, pas
   // une page vide : c'est le genre de silence que ce dépôt paie cher.
   if (!corps) throw new Error(`prerendu : ${cle}/${langue} a ${eras.length} ère(s) et aucune entrée rendue`);

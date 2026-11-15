@@ -54,6 +54,12 @@ function urlsDeRoutes() {
   for (const u of urls.filter(u => u.startsWith('/es/'))) {
     urls.push(u.replace(/^\/es\//, '/pt/').replace(/expedientes|novedades|proximamente/, m => SLUGS_PT[m]));
   }
+  /* Les pages de ligne de DC et DC Animation (`LIGNES`, 15 novembre 2026) :
+     une par langue, à la racine de chacune. */
+  const dL = src.indexOf('const LIGNES');
+  const blocL = dL < 0 ? '' : src.slice(dL, src.indexOf('\n];', dL));
+  for (const m of blocL.matchAll(/slug:\s*'([^']+)'/g))
+    for (const pre of ['/', '/fr/', '/es/', '/pt/']) urls.push(pre + m[1]);
   return urls;
 }
 

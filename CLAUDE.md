@@ -1301,6 +1301,44 @@ Cinq choses à savoir :
   la table ne nomme pas, et le multivers garde les niveaux des données. Les
   boutons de niveau se rebâtissent sur ce qui reste.
 
+### Une URL par ligne, posée le 15 novembre 2026
+
+« arrowverse ordre » et « chronologie arrowverse » amenaient des clics à `/dc`
+alors que l'Arrowverse n'y existait qu'en `#arrowverse`, qu'un moteur n'indexe
+pas. Chaque ligne a maintenant sa page, **à la racine de sa langue** :
+`/arrowverse`, `/dceu`, `/dcu`, `/dcau`, `/dcamu`, `/arkhamverse`, et leurs
+`/fr/`, `/es/`, `/pt/` — 24 pages. Sous `/dc/`, le dossier aurait disputé `/dc`
+à `dc.html` chez GitHub Pages.
+
+- **Pas de proto de plus.** `LIGNES` de `publier.mjs` (clé, `branch`, slug, nom)
+  publie la page de l'univers une seconde fois sous `ROUTES_LIGNES`, avec
+  `window.CG_LIGNE` (la ligne), `window.CG_CHEMIN` (l'URL du réseau) et
+  `data-ligne` sur `<body>` dès le HTML. Toutes les pages du réseau reçoivent
+  `window.CG_LIGNES`, l'adresse de chaque ligne.
+- **Le script des deux pages** (`e-dc.html`, `en-dcanimation.html`) lit
+  `CG_LIGNE` avant le hash et le choix retenu (`FIXE`), ne pose pas la question,
+  et la bascule mène à l'URL de la ligne (`LADR`) au lieu de poser un hash. Un
+  ancien lien `/dc#arrowverse` est renvoyé à `/arrowverse`, et un lien vers une
+  œuvre d'une autre ligne (`/arrowverse#dceu-mos`) à `/dc#dceu-mos`. Le choix
+  retenu continue d'afficher sa ligne sur `/dc`, sans redirection.
+- **Le référencement de chaque ligne** : une entrée `dc-arrowverse`,
+  `dcanimation-arkham`… dans `seo.json` (titre ≤ 60, description ≤ 160, chiffres
+  relevés dans les données : **à revoir quand une œuvre entre dans la ligne**),
+  la canonique sur elle-même, les `hreflang` entre les quatre langues, un
+  pré-rendu et un `ItemList` limités à ses bandes, et le fil d'Ariane Accueil ›
+  DC › Arrowverse.
+- **Les liens qui y mènent** : le pré-rendu de `/dc` et `/dcanimation` ouvre
+  sur la liste des lignes (la bascule est faite de boutons, qu'un moteur ne
+  suit pas), le plan du site, et les fiches d'œuvres — leur fil d'Ariane passe
+  par la ligne et leur billet « Voir sur la ligne » y mène.
+- **`e-app.js` lit `CG_CHEMIN` avant `location.pathname`** partout où la route
+  sert de clé (véhicule, radar, sources, franchise, lien vers la fiche) : sans
+  lui, `/arkhamverse` n'avait ni Batmobile ni encart. `cg-train` garde la vraie
+  route — la position du train sur une ligne seule ne vaut pas pour le réseau.
+- **Une ligne de plus** : une entrée dans `LIGNES`, une dans `seo.json`, et son
+  nom dans `MODES` de la page si c'est une nouvelle branche. `verifier.mjs` lit
+  `LIGNES` et ouvre ses quatre pages.
+
 ## Les colonnes parallèles sous 1440 px
 
 DC est le seul univers à colonnes, et depuis le **2 septembre 2026** elles ne

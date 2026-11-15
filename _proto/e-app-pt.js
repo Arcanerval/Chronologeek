@@ -125,8 +125,11 @@ window.CG_RES = function(cle, h){
   // les noms des protos et du Dossier
   VEHICULES['star-wars'] = VEHICULES['dossier-star-wars'] = VEHICULES.starwars;
   VEHICULES.twd = VEHICULES.walkingdead; VEHICULES.jurassic = VEHICULES.jurassicworld;
-  var route = (location.pathname.split('/').filter(Boolean).pop() || '')
+  var route = ((window.CG_CHEMIN || location.pathname).split('/').filter(Boolean).pop() || '')
     .replace(/\.html$/, '').replace(/^en?-/, '');
+  // `CG_CHEMIN` : la page d'une ligne (`/arrowverse`) parle au nom de son
+  // univers (`/dc`) partout où la route sert de clé — véhicule, radar,
+  // sources, franchise, fiches. Voir LIGNES dans publier.mjs.
   var V = VEHICULES[route];
   if (!V) return;
   /* Tous à la même surface plutôt que dans la même boîte : dans une boîte, un
@@ -3817,7 +3820,7 @@ function cgBillet(){
   var PROTO = { twd: 'walkingdead', jurassic: 'jurassicworld', 'dossier-star-wars': 'star-wars' };
 
   function pose(){
-    var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
+    var route = ((window.CG_CHEMIN || location.pathname).replace(/\/+$/, '').split('/').pop() || '')
                   .replace(/\.html$/, '').replace(/^en?-/, '')
                   /* les maquettes de refonte (`maquette-starwars-train`)
                      gardent les sources de leur page */
@@ -4229,7 +4232,7 @@ function cgBillet(){
     CG_RES('nx', box.getBoundingClientRect().height);
   }
 
-  var route = (location.pathname.replace(/\/+$/, '').split('/').pop() || '')
+  var route = ((window.CG_CHEMIN || location.pathname).replace(/\/+$/, '').split('/').pop() || '')
                 .replace(/\.html$/, '');
   var page = RADAR[route];
   if (!page) { CG_RES('nx', null); return; }
@@ -6334,7 +6337,7 @@ function cgBillet(){
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA', 'ASSASSINSCREED', 'DCANIM',
               'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE'];
 
-  var route = (location.pathname.split('/').filter(Boolean).pop() || '')
+  var route = ((window.CG_CHEMIN || location.pathname).split('/').filter(Boolean).pop() || '')
     .replace(/\.html$/, '').replace(/^en?-/, '');
   var MARQUE = FRANCHISE[route] || '';
 
@@ -6733,7 +6736,7 @@ function cgBillet(){
   document.head.appendChild(st);
 
   /* ── Le lien vers la page de l'œuvre, à l'ouverture d'une carte ───────── */
-  var ROUTE = location.pathname.split('/').pop().replace(/\.html$/, '');
+  var ROUTE = (window.CG_CHEMIN || location.pathname).split('/').pop().replace(/\.html$/, '');
   var BASE = (FR ? '/pt/obras/' : '/works/') + ROUTE + '/';
   var table = null;
   function chargeTable(){

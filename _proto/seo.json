@@ -492,5 +492,161 @@
       "desc": "Próximos lançamentos de Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner e Monsterverse: filmes, séries, jogos.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
+  },
+  "dc-arrowverse": {
+    "fr": {
+      "title": "Chronologie Arrowverse : l'ordre des séries | Chronologeek",
+      "ogTitle": "Arrowverse dans l'ordre — Chronologeek",
+      "desc": "L'Arrowverse dans l'ordre de visionnage — 7 séries en 104 étapes, d'Arrow à The Flash, crossovers et Crisis on Infinite Earths compris, sans spoil.",
+      "image": "https://chronologeek.app/images/majorevent.webp"
+    },
+    "en": {
+      "title": "Arrowverse Watch Order: Every Show in Order | Chronologeek",
+      "ogTitle": "Arrowverse Watch Order — Chronologeek",
+      "desc": "The Arrowverse watch order — 7 shows in 104 steps, from Arrow to The Flash, crossovers and Crisis on Infinite Earths included, spoiler-free.",
+      "image": "https://chronologeek.app/images/majorevent.webp"
+    },
+    "es": {
+      "title": "Arrowverse en orden: todas las series | Chronologeek",
+      "ogTitle": "Arrowverse en orden — Chronologeek",
+      "desc": "El Arrowverse en orden: 7 series en 104 etapas, de Arrow a The Flash, con los crossovers y Crisis on Infinite Earths, sin spoilers.",
+      "image": "https://chronologeek.app/images/majorevent.webp"
+    },
+    "pt": {
+      "title": "Arrowverse em ordem: todas as séries | Chronologeek",
+      "ogTitle": "Arrowverse em ordem — Chronologeek",
+      "desc": "O Arrowverse em ordem: 7 séries em 104 etapas, de Arrow a The Flash, com os crossovers e Crisis on Infinite Earths, sem spoilers.",
+      "image": "https://chronologeek.app/images/majorevent.webp"
+    }
+  },
+  "dc-dceu": {
+    "fr": {
+      "title": "Chronologie DCEU : l'ordre des films DC | Chronologeek",
+      "ogTitle": "DCEU dans l'ordre — Chronologeek",
+      "desc": "Le DCEU dans l'ordre chronologique — 15 films et la série Peacemaker, de Man of Steel à The Flash, l'univers étendu DC au complet, sans spoil.",
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
+    },
+    "en": {
+      "title": "DCEU Watch Order: Every DC Movie in Order | Chronologeek",
+      "ogTitle": "DCEU Watch Order — Chronologeek",
+      "desc": "The DCEU in chronological order — 15 movies and the Peacemaker series, from Man of Steel to The Flash, the whole DC Extended Universe, spoiler-free.",
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
+    },
+    "es": {
+      "title": "El DCEU en orden cronológico | Chronologeek",
+      "ogTitle": "El DCEU en orden — Chronologeek",
+      "desc": "El DCEU en orden cronológico: 15 películas y la serie Peacemaker, de Man of Steel a The Flash, el universo extendido de DC completo, sin spoilers.",
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
+    },
+    "pt": {
+      "title": "O DCEU em ordem cronológica | Chronologeek",
+      "ogTitle": "O DCEU em ordem — Chronologeek",
+      "desc": "O DCEU em ordem cronológica: 15 filmes e a série Peacemaker, de Man of Steel a The Flash, o universo estendido da DC completo, sem spoilers.",
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
+    }
+  },
+  "dc-dcu": {
+    "fr": {
+      "title": "Chronologie DCU : l'ordre de visionnage | Chronologeek",
+      "ogTitle": "DCU dans l'ordre — Chronologeek",
+      "desc": "Le DCU de James Gunn dans l'ordre — 9 étapes, de Suicide Squad à Lanterns en passant par Superman, Peacemaker et Creature Commandos, sans spoil.",
+      "image": "https://chronologeek.app/images/dcu.webp"
+    },
+    "en": {
+      "title": "DCU Watch Order: James Gunn's DC Universe | Chronologeek",
+      "ogTitle": "DCU Watch Order — Chronologeek",
+      "desc": "James Gunn's DCU in order — 9 steps, from Suicide Squad to Lanterns via Superman, Peacemaker and Creature Commandos, spoiler-free.",
+      "image": "https://chronologeek.app/images/dcu.webp"
+    },
+    "es": {
+      "title": "El DCU en orden: el universo de James Gunn | Chronologeek",
+      "ogTitle": "El DCU en orden — Chronologeek",
+      "desc": "El DCU de James Gunn en orden: 9 etapas, de Suicide Squad a Lanterns, con Superman, Peacemaker y Creature Commandos, sin spoilers.",
+      "image": "https://chronologeek.app/images/dcu.webp"
+    },
+    "pt": {
+      "title": "O DCU em ordem: o universo de James Gunn | Chronologeek",
+      "ogTitle": "O DCU em ordem — Chronologeek",
+      "desc": "O DCU de James Gunn em ordem: 9 etapas, de Suicide Squad a Lanterns, com Superman, Peacemaker e Creature Commandos, sem spoilers.",
+      "image": "https://chronologeek.app/images/dcu.webp"
+    }
+  },
+  "dcanimation-dcau": {
+    "fr": {
+      "title": "Chronologie DCAU : l'ordre de visionnage | Chronologeek",
+      "ogTitle": "DCAU dans l'ordre — Chronologeek",
+      "desc": "Le DCAU dans l'ordre chronologique — 26 étapes, de Batman : La Série animée à La Nouvelle Ligue des justiciers, séries et films animés, sans spoil.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "en": {
+      "title": "DCAU Watch Order: Batman TAS to JLU | Chronologeek",
+      "ogTitle": "DCAU Watch Order — Chronologeek",
+      "desc": "The DCAU in chronological order — 26 steps, from Batman: The Animated Series to Justice League Unlimited, series and animated films, spoiler-free.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "es": {
+      "title": "El DCAU en orden cronológico | Chronologeek",
+      "ogTitle": "El DCAU en orden — Chronologeek",
+      "desc": "El DCAU en orden cronológico: 26 etapas, de Batman: The Animated Series a Justice League Unlimited, series y películas animadas, sin spoilers.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "pt": {
+      "title": "O DCAU em ordem cronológica | Chronologeek",
+      "ogTitle": "O DCAU em ordem — Chronologeek",
+      "desc": "O DCAU em ordem cronológica: 26 etapas, de Batman: The Animated Series a Justice League Unlimited, séries e filmes animados, sem spoilers.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    }
+  },
+  "dcanimation-dcamu": {
+    "fr": {
+      "title": "Chronologie DCAMU et Tomorrowverse | Chronologeek",
+      "ogTitle": "DCAMU dans l'ordre — Chronologeek",
+      "desc": "Le DCAMU dans l'ordre — 26 films animés et 6 courts, New 52 puis Tomorrowverse, du Paradoxe Flashpoint à Crisis on Infinite Earths, sans spoil.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "en": {
+      "title": "DCAMU and Tomorrowverse Watch Order | Chronologeek",
+      "ogTitle": "DCAMU Watch Order — Chronologeek",
+      "desc": "The DCAMU in chronological order — 26 animated films and 6 shorts, New 52 then Tomorrowverse, from The Flashpoint Paradox to Crisis on Infinite Earths.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "es": {
+      "title": "DCAMU y Tomorrowverse en orden | Chronologeek",
+      "ogTitle": "El DCAMU en orden — Chronologeek",
+      "desc": "El DCAMU en orden: 26 películas animadas y 6 cortos, New 52 y luego Tomorrowverse, de The Flashpoint Paradox a Crisis on Infinite Earths.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "pt": {
+      "title": "DCAMU e Tomorrowverse em ordem | Chronologeek",
+      "ogTitle": "O DCAMU em ordem — Chronologeek",
+      "desc": "O DCAMU em ordem: 26 filmes animados e 6 curtas, New 52 e depois Tomorrowverse, de The Flashpoint Paradox a Crisis on Infinite Earths.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    }
+  },
+  "dcanimation-arkham": {
+    "fr": {
+      "title": "Jeux Batman Arkham dans l'ordre chronologique | Chronologeek",
+      "ogTitle": "Arkhamverse dans l'ordre — Chronologeek",
+      "desc": "L'Arkhamverse dans l'ordre chronologique — 8 jeux et 14 DLC, d'Arkham Origins à Suicide Squad : Kill the Justice League, sans spoil.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "en": {
+      "title": "Batman Arkham Games in Order: Arkhamverse | Chronologeek",
+      "ogTitle": "Arkhamverse Timeline — Chronologeek",
+      "desc": "The Arkhamverse in chronological order — 8 games and 14 DLC, from Arkham Origins to Suicide Squad: Kill the Justice League, spoiler-free.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "es": {
+      "title": "Juegos de Batman Arkham en orden | Chronologeek",
+      "ogTitle": "Arkhamverse en orden — Chronologeek",
+      "desc": "El Arkhamverse en orden cronológico: 8 juegos y 14 DLC, de Arkham Origins a Suicide Squad: Kill the Justice League, sin spoilers.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "pt": {
+      "title": "Jogos Batman Arkham em ordem | Chronologeek",
+      "ogTitle": "Arkhamverse em ordem — Chronologeek",
+      "desc": "O Arkhamverse em ordem cronológica: 8 jogos e 14 DLC, de Arkham Origins a Suicide Squad: Kill the Justice League, sem spoilers.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
+    }
   }
 }

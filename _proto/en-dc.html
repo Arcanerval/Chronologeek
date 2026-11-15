@@ -2104,7 +2104,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
 
 <!-- ══ ATTRACT MODE ══════════════════════════════════════════════ -->
 <section class="ln-hero" id="top">
-<script>(function(){var M={arrowverse:1,dceu:1,dcu:1},h=location.hash.slice(1),c=null;try{c=localStorage.getItem('cg-proto-dc-mode');}catch(_){}document.body.dataset.ligne=M[h]?h:(M[c]?c:'all');})();</script>
+<script>(function(){var M={arrowverse:1,dceu:1,dcu:1},h=window.CG_LIGNE||location.hash.slice(1),c=null;try{c=localStorage.getItem('cg-proto-dc-mode');}catch(_){}document.body.dataset.ligne=M[h]?h:(M[c]?c:'all');})();</script>
   <div class="ln-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="ln-head">
@@ -2337,7 +2337,13 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   var MODES={arrowverse:1,dceu:1,dcu:1};
   var MKEY=KEY+'-mode', CHOIX=null;
   try{ CHOIX=localStorage.getItem(MKEY); }catch(_){}
-  var HASHMODE=MODES[location.hash.slice(1)]?location.hash.slice(1):null;
+  /* La page d'une ligne (`/arrowverse`, posée le 15 novembre 2026 par
+     publier.mjs) impose la sienne, avant le hash et le choix retenu, et ne
+     pose pas la question. `CG_LIGNES` donne l'adresse de chaque ligne : une
+     ancienne adresse en hash y renvoie. */
+  var FIXE=MODES[window.CG_LIGNE]?window.CG_LIGNE:null, LADR=window.CG_LIGNES||null;
+  var HASHMODE=FIXE||(MODES[location.hash.slice(1)]?location.hash.slice(1):null);
+  if(!FIXE&&HASHMODE&&LADR&&LADR[HASHMODE]) location.replace(LADR[HASHMODE]);
   var MODE=HASHMODE||CHOIX||'all';
   if(!MODES[MODE]) MODE='all';
   /* Un lien partagé vers une œuvre d'une autre ligne ne doit pas tomber
@@ -2348,7 +2354,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     var ici=false, ailleurs=false;
     D.eras.forEach(function(era){ era.entries.forEach(function(e){
       if(e.id===c){ if(era.branch===MODE) ici=true; else ailleurs=true; } }); });
-    if(ailleurs&&!ici) MODE='all';
+    if(ailleurs&&!ici){ if(FIXE&&LADR&&LADR.all) location.replace(LADR.all+location.hash); MODE='all'; }
   })();
   document.body.dataset.ligne=MODE;
   /* tous les identifiants, avant le tri : un saut d'ancre vers une œuvre
@@ -2422,6 +2428,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
     });
   }
   function vaVers(m){
+    if(LADR&&LADR[m]){ location.href=LADR[m]; return; }
     if(MODES[m]){ location.hash='#'+m; return; }
     if(history.replaceState){
       history.replaceState(null,'',location.pathname+location.search);
@@ -2456,8 +2463,8 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
   addEventListener('hashchange',function(){
     if(location.hash==='#choix'){ poseAsk(); return; }
     var h=location.hash.slice(1);
-    var m=MODES[h]?h:(location.hash?null:'all');
-    if(m&&m!==MODE) location.reload();
+    var m=MODES[h]?h:(location.hash?null:(FIXE||'all'));
+    if(m&&m!==MODE){ if(LADR&&LADR[m]) location.href=LADR[m]; else location.reload(); }
     /* un badge ou un lien copié qui vise une œuvre d'une autre ligne :
        le rechargement rouvre le multivers sur elle */
     else if(!m && TOUS[h] && !document.getElementById(h)) location.reload();

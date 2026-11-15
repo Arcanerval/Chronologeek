@@ -180,6 +180,47 @@ for (const r of ROUTES) if (r.es) {
   r.pt = { proto: r.es.proto.replace(/^es-/, 'pt-'), sortie: versPt(r.es.sortie), url: versPt(r.es.url) };
 }
 
+/* Une URL par ligne de DC et de DC Animation, posée le 15 novembre 2026.
+   « arrowverse ordre » et « chronologie arrowverse » amenaient des clics à
+   `/dc`, alors que l'Arrowverse n'y existait que comme `#arrowverse` — un
+   hash que Google n'indexe pas. Chaque ligne a maintenant sa page, à la
+   racine de sa langue (`/arrowverse`, `/fr/arrowverse`…) : sous `/dc/`, le
+   dossier aurait disputé `/dc` à `dc.html` chez GitHub Pages.
+
+   Ce n'est pas un proto de plus : la page de ligne est la page de l'univers,
+   publiée une seconde fois avec `window.CG_LIGNE` posé dans le `<head>`. Son
+   script lit la ligne là avant le hash et le choix retenu, et ne pose pas la
+   question. `window.CG_LIGNES` donne à toutes les pages du réseau l'adresse
+   de chaque ligne : la bascule y mène au lieu de poser un hash.
+
+   `slug` est l'URL, `ligne` la valeur de `branch` dans les données. */
+const LIGNES = [
+  { cle: 'dc',          ligne: 'arrowverse', slug: 'arrowverse',  nom: 'Arrowverse' },
+  { cle: 'dc',          ligne: 'dceu',       slug: 'dceu',        nom: 'DCEU' },
+  { cle: 'dc',          ligne: 'dcu',        slug: 'dcu',         nom: 'DCU' },
+  { cle: 'dcanimation', ligne: 'dcau',       slug: 'dcau',        nom: 'DCAU' },
+  { cle: 'dcanimation', ligne: 'dcamu',      slug: 'dcamu',       nom: 'DCAMU' },
+  { cle: 'dcanimation', ligne: 'arkham',     slug: 'arkhamverse', nom: 'Arkhamverse' },
+];
+const LANGUES_L = ['fr', 'en', 'es', 'pt'];
+const ROUTES_LIGNES = LIGNES.map(L => {
+  const base = ROUTES.find(r => r.cle === L.cle);
+  const r = { cle: L.cle, seo: `${L.cle}-${L.ligne}`, ligne: L.ligne, nomLigne: L.nom };
+  for (const l of LANGUES_L) {
+    if (!base[l]) continue;
+    const dossier = base[l].url.replace(/[^/]*$/, '');
+    r[l] = { proto: base[l].proto, sortie: dossier.slice(1) + L.slug + '.html', url: dossier + L.slug };
+  }
+  return r;
+});
+// `{dc: {fr: {all:'/fr/dc', arrowverse:'/fr/arrowverse', …}}}`
+const CARTE_LIGNES = {};
+for (const r of ROUTES_LIGNES) for (const l of LANGUES_L) {
+  const c = (CARTE_LIGNES[r.cle] = CARTE_LIGNES[r.cle] || {});
+  c[l] = c[l] || { all: ROUTES.find(x => x.cle === r.cle)[l].url };
+  c[l][r.ligne] = r[l].url;
+}
+
 /* Le référencement de chaque page, dans les deux langues : titre, titre Open
    Graph, description, image. Il vient des pages en ligne d'avant la refonte,
    extrait une fois dans `seo.json`.
@@ -288,7 +329,9 @@ const URLS = { fr: {}, en: {}, es: {}, pt: {} };
 for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; URLS.es[r.cle] = (r.es || r.en).url; URLS.pt[r.cle] = (r.pt || r.en).url; }
 
 // Une page par œuvre : calculées ici parce que le pré-rendu y fait des liens.
-const OEUVRES = oeuvres({ racine: RACINE, site: SITE, urls: URLS });
+const OEUVRES = oeuvres({ racine: RACINE, site: SITE, urls: URLS,
+  lignes: Object.fromEntries(LANGUES.map(l => [l, Object.fromEntries(Object.keys(CARTE_LIGNES).map(k =>
+    [k, Object.fromEntries(LIGNES.filter(L => L.cle === k).map(L => [L.ligne, { url: CARTE_LIGNES[k][l][L.ligne], nom: L.nom }]))]))])) });
 
 const IMAGES = Object.fromEntries(LANGUES.map(langue => [langue,
   Object.fromEntries(Object.entries(SEO).map(([k, v]) => [k, (v[langue] || v.en) && (v[langue] || v.en).image]))]));
@@ -973,8 +1016,9 @@ const DECOMPTES = decomptes(RACINE);
 
 function publier(route, langue) {
   const c = route[langue];
-  const seo = SEO[route.cle] && SEO[route.cle][langue];
-  if (!seo) { problemes.push(`${c.sortie} : rien dans _proto/seo.json pour « ${route.cle} »`); return; }
+  const cleSeo = route.seo || route.cle;
+  const seo = SEO[cleSeo] && SEO[cleSeo][langue];
+  if (!seo) { problemes.push(`${c.sortie} : rien dans _proto/seo.json pour « ${cleSeo} »`); return; }
   for (const champ of ['title', 'ogTitle', 'desc', 'image']) {
     if (!seo[champ]) problemes.push(`${c.sortie} : ${champ} manquant dans _proto/seo.json`);
   }
@@ -1037,6 +1081,21 @@ ${RES_ITI}` : '') +
     if (h === avantCorps) problemes.push(`${c.sortie} : <body> introuvable pour l'écran d'arrivée`);
   }
   if (h === avantPwa) problemes.push(`${c.sortie} : bloc PWA non injecté`);
+  // Les lignes du réseau (voir LIGNES) : l'adresse de chacune sur toutes les
+  // pages de l'univers, et la ligne imposée sur la sienne. `data-ligne` est
+  // posé sur `<body>` dès le HTML, pour que l'accroche montre la phrase de la
+  // ligne même sans JS.
+  if (CARTE_LIGNES[route.cle]) {
+    const avantL = h;
+    const js = `window.CG_LIGNES=${JSON.stringify(CARTE_LIGNES[route.cle][langue])};` +
+      (route.ligne ? `window.CG_LIGNE=${JSON.stringify(route.ligne)};` +
+        `window.CG_CHEMIN=${JSON.stringify(CARTE_LIGNES[route.cle][langue].all)};` : '');
+    h = h.replace(/<\/head>/i, () => `<script>${js}</script>
+</head>`);
+    if (route.ligne) h = h.replace(/<body>/, `<body data-ligne="${route.ligne}">`);
+    if (h === avantL || (route.ligne && !h.includes(`<body data-ligne="${route.ligne}">`)))
+      problemes.push(`${c.sortie} : ligne ${route.ligne || ''} non posée`);
+  }
   for (const attendu of ['/manifest.json', 'apple-touch-icon', 'theme-color']) {
     if (!h.includes(attendu)) problemes.push(`${c.sortie} : ${attendu} absent`);
   }
@@ -1054,7 +1113,8 @@ ${RES_ITI}` : '') +
   let ld = '';
   try {
     ld = jsonLd({ racine: RACINE, site: SITE, cle: route.cle, langue,
-                  moi: c.url, urls: URLS[langue], imagesUnivers: IMAGES[langue] });
+                  moi: c.url, urls: URLS[langue], imagesUnivers: IMAGES[langue],
+                  ligne: route.ligne, nomLigne: route.nomLigne });
   } catch (e) {
     problemes.push(`${c.sortie} : JSON-LD — ${e.message}`);
   }
@@ -1100,7 +1160,9 @@ ${RES_ITI}` : '') +
   // avant le premier rendu. Une page sans timeline rend '' et n'est pas touchée.
   let entrees = 0;
   try {
-    const pr = prerendu({ racine: RACINE, cle: route.cle, langue, oeuvres: OEUVRES.tables });
+    const pr = prerendu({ racine: RACINE, cle: route.cle, langue, oeuvres: OEUVRES.tables,
+                          ligne: route.ligne, lignes: route.ligne ? null : (CARTE_LIGNES[route.cle] || {})[langue],
+                          nomsLignes: Object.fromEntries(LIGNES.filter(L => L.cle === route.cle).map(L => [L.ligne, L.nom])) });
     if (pr) {
       const avantPr = h;
       h = h.replace(/(<div id="timeline")(\s*)(><\/div>)/, `$1$2>${pr}</div>`);
@@ -1157,7 +1219,7 @@ ${RES_ITI}` : '') +
   }
 }
 
-for (const r of ROUTES) for (const l of LANGUES) if (r[l]) publier(r, l);
+for (const r of [...ROUTES, ...ROUTES_LIGNES]) for (const l of LANGUES) if (r[l]) publier(r, l);
 
 /* ── Les données et le moteur, copiés sous leur nom de production ───────── */
 
@@ -1333,10 +1395,10 @@ try {
   }
 }
 
-const plan = sitemap({ racine: RACINE, site: SITE, routes: ROUTES, sources: sourcesDe, oeuvres: OEUVRES.plan });
+const plan = sitemap({ racine: RACINE, site: SITE, routes: [...ROUTES, ...ROUTES_LIGNES], sources: sourcesDe, oeuvres: OEUVRES.plan });
 if (!CHECK) writeFileSync(join(RACINE, 'sitemap.xml'), plan);
 const urls = (plan.match(/<loc>/g) || []).length;
-const pagesAttendues = ROUTES.reduce((n, r) => n + LANGUES.filter(l => r[l]).length, 0) + OEUVRES.plan.length * LANGUES.length;
+const pagesAttendues = [...ROUTES, ...ROUTES_LIGNES].reduce((n, r) => n + LANGUES.filter(l => r[l]).length, 0) + OEUVRES.plan.length * LANGUES.length;
 if (urls !== pagesAttendues) {
   problemes.push(`sitemap.xml : ${urls} URL pour ${pagesAttendues} pages attendues`);
 }
