@@ -1,6 +1,7 @@
 /* DC Animation en espagnol neutre, tutoiement ; titres en anglais. Les
    épisodes « Season N Episode M (Titre) » passent par gabarits.mjs. */
 export default {
+  "The 3 universes": "Los 3 universos",
   "Chronologeek — DC Animation (proto E)": "Chronologeek — DC Animation (proto E)",
   "DCAU, DCAMU and Arkhamverse timelines": "Cronologías DCAU, DCAMU y Arkhamverse",
   "DCAU · DCAMU (New 52 and Tomorrowverse) · Arkhamverse": "DCAU · DCAMU (New 52 y Tomorrowverse) · Arkhamverse",

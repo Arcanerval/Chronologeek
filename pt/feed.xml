@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt">
+  <title>Chronologeek — Novidades</title>
+  <subtitle>As adições e as atualizações das cronologias e dos Dossiês.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://chronologeek.app/pt/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://chronologeek.app/pt/novidades"/>
+  <id>https://chronologeek.app/pt/feed.xml</id>
+  <updated>2026-11-01T12:00:00Z</updated>
+  <author><name>Chronologeek</name></author>
+  <entry>
+    <title>Avengers: Endgame Encore — Cena pré-créditos (Peggy e Steve) + as duas cenas pós-créditos</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-egenc"/>
+    <id>tag:chronologeek.app,2026-11:avengers-endgame-encore-cena-pre-creditos-peggy-e-steve-as-duas-cenas-pos-creditos</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Adicionadas bem no fim da cronologia Marvel: a cena pré-créditos e as duas cenas pós-créditos do relançamento, antes de Avengers: Doomsday.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Monsterverse</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/monsterverse"/>
+    <id>tag:chronologeek.app,2026-11:new-timeline-monsterverse</id>
+    <updated>2026-11-01T11:59:00Z</updated>
+    <summary>Os filmes, as séries Monarch e Skull Island, os quadrinhos e o jogo em ordem cronológica: 18 obras, de Kong: Skull Island, em 1973, a Godzilla x Kong: The New Empire.</summary>
+  </entry>
+  <entry>
+    <title>Rogue One: Darth Vader</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#1-bby-rogue-one-darth-vader"/>
+    <id>tag:chronologeek.app,2026-10:rogue-one-darth-vader</id>
+    <updated>2026-10-01T12:00:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o quadrinho, em 1 BBY, logo depois de Rogue One: Chirrut &amp; Baze e logo antes do filme.</summary>
+  </entry>
+  <entry>
+    <title>Clayface</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-clayface"/>
+    <id>tag:chronologeek.app,2026-10:clayface</id>
+    <updated>2026-10-01T11:59:00Z</updated>
+    <summary>Adicionada à cronologia DC, no DCU, logo antes de Creature Commandos.</summary>
+  </entry>
+  <entry>
+    <title>The Mandalorian and Grogu: Nightmare on Nevarro</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#9-aby-the-mandalorian-and-grogu-nightmare-on-nevarro"/>
+    <id>tag:chronologeek.app,2026-10:the-mandalorian-and-grogu-nightmare-on-nevarro</id>
+    <updated>2026-10-01T11:58:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o quadrinho, em 9 ABY, logo depois de The Mandalorian and Grogu: Danger in the Dark, sua continuação.</summary>
+  </entry>
+  <entry>
+    <title>VisionQuest</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-vq"/>
+    <id>tag:chronologeek.app,2026-10:visionquest</id>
+    <updated>2026-10-01T11:57:00Z</updated>
+    <summary>Adicionada à cronologia Marvel, em maio de 2028, logo depois de The Punisher: One Last Kill.</summary>
+  </entry>
+  <entry>
+    <title>Rogue One: Chirrut &amp; Baze</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#1-bby-rogue-one-chirrut-baze"/>
+    <id>tag:chronologeek.app,2026-10:rogue-one-chirrut-baze</id>
+    <updated>2026-10-01T11:56:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o quadrinho, em 1 BBY, logo depois de Rogue One: Cassian Andor e logo antes do filme.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Blade Runner</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/bladerunner"/>
+    <id>tag:chronologeek.app,2026-10:new-timeline-blade-runner</id>
+    <updated>2026-10-01T11:55:00Z</updated>
+    <summary>Os dois filmes, os três curtas, a série Black Lotus e os quadrinhos em ordem cronológica: 16 obras, de Blade Runner: Origins, em 2009, a Blade Runner 2049.</summary>
+  </entry>
+  <entry>
+    <title>Avatar: Seven Havens</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/avatar#avt-seven-havens-s1"/>
+    <id>tag:chronologeek.app,2026-10:avatar-seven-havens</id>
+    <updated>2026-10-01T11:54:00Z</updated>
+    <summary>Adicionada no fim da cronologia Avatar Legends, em 399 AG, em uma nova era: a era de Pavi e Nisha.</summary>
+  </entry>
+  <entry>
+    <title>Star Wars: Galactic Racer</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/starwars#sw-galacticracer"/>
+    <id>tag:chronologeek.app,2026-10:star-wars-galactic-racer</id>
+    <updated>2026-10-01T11:53:00Z</updated>
+    <summary>Adicionado à cronologia Star Wars, em 5-10 ABY, logo antes de The Mandalorian.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Resident Evil</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/residentevil"/>
+    <id>tag:chronologeek.app,2026-09:new-timeline-resident-evil</id>
+    <updated>2026-09-01T12:00:00Z</updated>
+    <summary>Os jogos, os filmes animados e os mangás em ordem cronológica: 30 obras, do surto de Raccoon City, em 1998, a Shadows of Rose, em 2037.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: The Witcher</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/witcher"/>
+    <id>tag:chronologeek.app,2026-09:new-timeline-the-witcher</id>
+    <updated>2026-09-01T11:59:00Z</updated>
+    <summary>Os livros de Sapkowski e os jogos e quadrinhos da CD Projekt RED, em duas colunas lado a lado: 54 obras, de The Road of No Return a Blood Stone.</summary>
+  </entry>
+  <entry>
+    <title>Reign of the Empire: Edge of the Abyss</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#6-bby-reign-of-the-empire-edge-of-the-abyss"/>
+    <id>tag:chronologeek.app,2026-09:reign-of-the-empire-edge-of-the-abyss</id>
+    <updated>2026-09-01T11:58:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o romance, em 6 BBY, no fim da era do Império, logo antes da era da Rebelião.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Jurassic World</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/jurassicworld"/>
+    <id>tag:chronologeek.app,2026-09:new-timeline-jurassic-world</id>
+    <updated>2026-09-01T11:57:00Z</updated>
+    <summary>De Jurassic Park a Rebirth: os sete filmes, as duas séries animadas, três livros e um curta, para assistir pela primeira vez ou rever.</summary>
+  </entry>
+  <entry>
+    <title>Jet: Rebels and Rhinos</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/avatar#avt-jet-rebels-and-rhinos"/>
+    <id>tag:chronologeek.app,2026-09:jet-rebels-and-rhinos</id>
+    <updated>2026-09-01T11:56:00Z</updated>
+    <summary>Adicionado à cronologia Avatar Legends, em ~95 AG, logo depois da temporada 2, episódio 17 de The Last Airbender.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: DC Animation</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dcanimation"/>
+    <id>tag:chronologeek.app,2026-09:new-timeline-dc-animation</id>
+    <updated>2026-09-01T11:55:00Z</updated>
+    <summary>80 obras, do DCAU ao DCAMU e ao Arkhamverse: as séries animadas, os filmes animados e os jogos em um só fio.</summary>
+  </entry>
+  <entry>
+    <title>Hiding from the Dark</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#0-4-aby-hiding-from-the-dark"/>
+    <id>tag:chronologeek.app,2026-09:hiding-from-the-dark</id>
+    <updated>2026-09-01T11:54:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o romance juvenil, em ~0-4 ABY, logo depois de Battlefront II: Inferno Squad.</summary>
+  </entry>
+  <entry>
+    <title>Star Wars Zero Company</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/starwars#sw-zerocompany"/>
+    <id>tag:chronologeek.app,2026-08:star-wars-zero-company</id>
+    <updated>2026-08-01T12:00:00Z</updated>
+    <summary>Adicionado à cronologia Star Wars, em 19-18 BBY, logo depois de Star Wars Jedi: Fallen Order.</summary>
+  </entry>
+  <entry>
+    <title>Dragon Age: The Last Court</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dragonage#da-lastcourt-1"/>
+    <id>tag:chronologeek.app,2026-08:dragon-age-the-last-court</id>
+    <updated>2026-08-01T11:59:00Z</updated>
+    <summary>Adicionado à cronologia Dragon Age, em 9:41, logo depois de Last Flight.</summary>
+  </entry>
+  <entry>
+    <title>Masters of the Elements Vol.1: Off Duty</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/avatar#avt-masters-of-the-elements-off-duty"/>
+    <id>tag:chronologeek.app,2026-08:masters-of-the-elements-vol-1-off-duty</id>
+    <updated>2026-08-01T11:58:00Z</updated>
+    <summary>Adicionado à cronologia Avatar Legends, em 290 BG, logo depois de The Shadow of Kyoshi.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Assassin’s Creed</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/assassinscreed"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-assassin-s-creed</id>
+    <updated>2026-08-01T11:57:00Z</updated>
+    <summary>111 obras, de Altaïr ao Animus Hub: os jogos e seus DLC, os romances, os quadrinhos e os curtas em um só fio.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Dragon Age</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dragonage"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-dragon-age</id>
+    <updated>2026-08-01T11:56:00Z</updated>
+    <summary>43 obras, de The Stolen Throne a The Veilguard: os jogos e seus DLC, os livros, os quadrinhos e as séries em um só fio.</summary>
+  </entry>
+  <entry>
+    <title>Lanterns</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-lanterns"/>
+    <id>tag:chronologeek.app,2026-08:lanterns</id>
+    <updated>2026-08-01T11:55:00Z</updated>
+    <summary>Adicionada à cronologia DC, depois de Supergirl.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: The Walking Dead</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/walkingdead"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-the-walking-dead</id>
+    <updated>2026-08-01T11:54:00Z</updated>
+    <summary>45 obras, do surto de Los Angeles a Nova York: as sete séries e as oito websséries em um só fio.</summary>
+  </entry>
+  <entry>
+    <title>The Fall of Kylo Ren 1-5</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#34-aby-the-fall-of-kylo-ren-1-5"/>
+    <id>tag:chronologeek.app,2026-08:the-fall-of-kylo-ren-1-5</id>
+    <updated>2026-08-01T11:53:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o quadrinho, em 34 ABY, logo depois de Legacy of Vader.</summary>
+  </entry>
+  <entry>
+    <title>New timeline: Star Trek</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/startrek"/>
+    <id>tag:chronologeek.app,2026-08:new-timeline-star-trek</id>
+    <updated>2026-08-01T11:52:00Z</updated>
+    <summary>248 obras, do século XXI ao XLIII: séries, filmes, animação e Short Treks em um só fio.</summary>
+  </entry>
+  <entry>
+    <title>Spider-Man: Brand New Day</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-smbnd"/>
+    <id>tag:chronologeek.app,2026-07:spider-man-brand-new-day</id>
+    <updated>2026-07-01T12:00:00Z</updated>
+    <summary>Adicionada à cronologia Marvel, em 2028, logo depois de The Punisher: One Last Kill.</summary>
+  </entry>
+  <entry>
+    <title>Legacy</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars#34-aby-legacy"/>
+    <id>tag:chronologeek.app,2026-07:legacy</id>
+    <updated>2026-07-01T11:59:00Z</updated>
+    <summary>Adicionado ao Dossiê Star Wars: o novo romance, em 34 ABY, logo antes de Pirate's Price.</summary>
+  </entry>
+  <entry>
+    <title>Supergirl (2026)</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-supergirl"/>
+    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
+    <updated>2026-07-01T11:58:00Z</updated>
+    <summary>Adicionada à cronologia DC, depois do DCU.</summary>
+  </entry>
+  <entry>
+    <title>New Deep Dive: Star Wars novels &amp; comics</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars"/>
+    <id>tag:chronologeek.app,2026-07:new-deep-dive-star-wars-novels-comics</id>
+    <updated>2026-07-01T11:57:00Z</updated>
+    <summary>533 obras em ordem de leitura, com 63 referências na tela para situar os filmes e as séries.</summary>
+  </entry>
+</feed>

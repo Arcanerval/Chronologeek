@@ -17,3 +17,21 @@ export const GABARITS = [
 GABARITS.push([/^EARTH-([\dA-Z\/]+)$/, m => `TIERRA-${m[1]}`]);
 /* « Season 1 Episode 7 (P.O.V.) » : le titre d'épisode reste anglais. */
 GABARITS.push([/^Seasons? (\d+) (Episodes?) ([\d\s,–-]+) \((.+)\)$/, m => `Temporada ${m[1]} ${m[2] === 'Episode' ? 'Episodio' : 'Episodios'} ${m[3]} (${m[4]})`]);
+
+/* Le suffixe d'un titre d'œuvre (« Thor: Ragnarok — First Post-Credits
+   Scene ») : le titre reste anglais, seul ce qui suit le tiret se traduit. */
+export const SUFFIXES = new Map([
+  ['First Post-Credits Scene', 'Primera escena poscréditos'],
+  ['Second Post-Credits Scene', 'Segunda escena poscréditos'],
+  ['Post-Credits Scene', 'Escena poscréditos'],
+  ['Pre-Credits Scene (Peggy & Steve) + Both Post-Credits Scenes', 'Escena precréditos (Peggy y Steve) + las dos escenas poscréditos'],
+  ['SERIES FINALE', 'FINAL DE LA SERIE'],
+  ['THE MOVIE', 'LA PELÍCULA'],
+  ['Secret Ending', 'Final secreto'],
+  ['Epilogue', 'Epílogo'],
+]);
+export const SUFFIXES_RE = [
+  [/^SEASON (\d+) FINALE$/, m => `FINAL DE LA TEMPORADA ${m[1]}`],
+  [/^SEASON (\d+)$/, m => `TEMPORADA ${m[1]}`],
+  [/^MISSIONS? ([\d-]+)$/, m => `${/-/.test(m[1]) ? 'MISIONES' : 'MISIÓN'} ${m[1]}`],
+];

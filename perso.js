@@ -57,14 +57,20 @@ window.CG_REL = function (rel, mot) {
   /* « Títulos en español », sur la page espagnole : les données portent
      `tes` (Espagne) et `tmx` (Amérique latine, quand il diffère). Le pays
      des réglages choisit ; à défaut, celui du navigateur. */
+  /* « Títulos em português », sur la page portugaise (15 novembre 2026) :
+     `tpt` (Brésil) et `tpp` (Portugal, quand il diffère). Le pays par défaut
+     est le Brésil, le Portugal pour un navigateur en pt-PT. */
+  var PT = document.documentElement.lang === 'pt';
   O.pays = function(){
     if (O.o.pays) return O.o.pays;
+    if (PT) return /^pt-pt$/i.test(navigator.language || '') ? 'PT' : 'BR';
     var m = /^es-(\w+)$/i.exec(navigator.language || '');
     m = m ? m[1].toUpperCase() : 'ES';
     return m === '419' ? 'MX' : m;
   };
   O.titreEs = function(e){
     if (!e) return '';
+    if (PT) return (O.pays() === 'PT' && e.tpp) ? e.tpp : (e.tpt || '');
     return (e.tmx && O.pays() !== 'ES') ? e.tmx : (e.tes || '');
   };
   function titresEs(eras, D){
@@ -73,6 +79,7 @@ window.CG_REL = function (rel, mot) {
   }
   O.titres = function(eras, D){
     if (document.documentElement.lang === 'es') { if (O.o.tes) titresEs(eras, D); return; }
+    if (PT) { if (O.o.tpt) titresEs(eras, D); return; }
     if (!O.o.vo || O.en) return;
     var m = null;
     try { m = (JSON.parse(localStorage.getItem('cg-titres-vo') || 'null') || {}).m; } catch (_) {}

@@ -77,7 +77,7 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
   // change d'ordre sans raison se relit mal d'une version à l'autre.
   // L'espagnol depuis le 14 novembre 2026, route par route : une route qui
   // n'a pas encore d'espagnol n'en porte pas.
-  for (const langue of ['en', 'fr', 'es']) {
+  for (const langue of ['en', 'fr', 'es', 'pt']) {
     for (const r of routes) {
       if (!r[langue]) continue;
       const f = sources(r.cle, langue);
@@ -86,7 +86,7 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
       lignes.push(
         `  <url><loc>${site}${r[langue].url}</loc>`,
         `    <lastmod>${date}</lastmod>`,
-        ...['en', 'fr', 'es'].filter(l => r[l]).map(l =>
+        ...['en', 'fr', 'es', 'pt'].filter(l => r[l]).map(l =>
           `    <xhtml:link rel="alternate" hreflang="${l}" href="${site}${r[l].url}"/>`),
         '  </url>',
       );
@@ -104,7 +104,7 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
     }
     return dates[k];
   };
-  for (const langue of ['en', 'fr', 'es']) {
+  for (const langue of ['en', 'fr', 'es', 'pt']) {
     for (const o of oeuvres) {
       lignes.push(
         `  <url><loc>${site}${o[langue]}</loc>`,
@@ -112,6 +112,7 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
         `    <xhtml:link rel="alternate" hreflang="en" href="${site}${o.en}"/>`,
         `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${o.fr}"/>`,
         `    <xhtml:link rel="alternate" hreflang="es" href="${site}${o.es}"/>`,
+        `    <xhtml:link rel="alternate" hreflang="pt" href="${site}${o.pt}"/>`,
         '  </url>',
       );
     }

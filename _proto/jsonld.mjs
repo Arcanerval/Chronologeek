@@ -96,7 +96,11 @@ export const DONNEES_ES = Object.fromEntries(Object.entries(SOURCES).map(([k, s]
   [k, k === 'sw' ? 'data-es.js' : s.en[0].replace('-en.js', '-es.js')]));
 for (const [k, s] of Object.entries(SOURCES)) s.es = DONNEES_ES[k] ? [DONNEES_ES[k], s.en[1]] : s.en;
 /* Le fichier qui porte `CG.t` dans chaque langue. */
-export const CG_DE = { fr: 'data.js', en: 'data-en.js', es: 'data-es.js' };
+/* Le portugais, posé le 15 novembre 2026, suit le même chemin (`traduire-pt.mjs`). */
+export const DONNEES_PT = Object.fromEntries(Object.entries(SOURCES).map(([k, s]) =>
+  [k, k === 'sw' ? 'data-pt.js' : s.en[0].replace('-en.js', '-pt.js')]));
+for (const [k, s] of Object.entries(SOURCES)) s.pt = [DONNEES_PT[k], s.en[1]];
+export const CG_DE = { fr: 'data.js', en: 'data-en.js', es: 'data-es.js', pt: 'data-pt.js' };
 
 // Le fil d'Ariane des pages qui n'ont pas de timeline. La clé du libellé est
 // celle de `CG.t.nav`, lue dans les données : rien n'est réécrit ici.

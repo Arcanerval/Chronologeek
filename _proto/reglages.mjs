@@ -48,7 +48,9 @@ const CSS = {
   // Le synopsis attend la coche. La FAQ reste : elle est sans spoil, tranché par Niko.
   sp: `${DANS}sp] ${NON_COCHE} .expand-synopsis{display:none}` +
       `${DANS}sp] ${NON_COCHE} .expand-info::before{content:"Synopsis masqué jusqu’à la coche";display:block;font-style:italic;font-size:12.5px;opacity:.72;margin-bottom:6px}` +
-      `html[lang=en]${DANS}sp] ${NON_COCHE} .expand-info::before{content:"Synopsis hidden until you tick it"}`,
+      `html[lang=en]${DANS}sp] ${NON_COCHE} .expand-info::before{content:"Synopsis hidden until you tick it"}` +
+      `html[lang=es]${DANS}sp] ${NON_COCHE} .expand-info::before{content:"Sinopsis oculta hasta que la marques"}` +
+      `html[lang=pt]${DANS}sp] ${NON_COCHE} .expand-info::before{content:"Sinopse oculta até você marcar"}`,
   flou: `${DANS}flou] ${NON_COCHE} .bu-fig img,${DANS}flou] ${NON_COCHE} .expand-poster img{filter:blur(9px) saturate(.8)}`,
 };
 
@@ -99,22 +101,23 @@ const ROUE = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="cu
   '<circle class="moyeu" cx="12" cy="12" r="3"/></svg>';
 
 export const tiroirReglages = langue =>
-  `<button type="button" class="dw-rg" data-reglages>${({ en: 'Settings', es: 'Ajustes' })[langue] || 'Réglages'}</button>`;
+  `<button type="button" class="dw-rg" data-reglages>${({ en: 'Settings', es: 'Ajustes', pt: 'Configurações' })[langue] || 'Réglages'}</button>`;
 
 export const boutonReglages = langue => {
-  const n = ({ en: 'Settings', es: 'Ajustes' })[langue] || 'Réglages';
+  const n = ({ en: 'Settings', es: 'Ajustes', pt: 'Configurações' })[langue] || 'Réglages';
   return `<button type="button" class="icon-btn cg-roue" data-reglages aria-label="${n}" title="${n}">${ROUE}</button>`;
 };
 
 // Les noms que le visiteur lit dans le panneau. Le type lui-même vient toujours des
 // `badgeLabels` et des `kindLabels` : un type absent d'ici garde son libellé.
 const PLURIELS = {
-  // [français, anglais, espagnol] — la troisième colonne depuis le 14 novembre 2026
-  film: ['Films', 'Movies', 'Películas'], filmanim: ['Films animés', 'Animated movies', 'Películas animadas'], serie: ['Séries', 'Series', 'Series'],
-  anime: ['Séries animées', 'Animated series', 'Series animadas'], jeu: ['Jeux vidéo', 'Video games', 'Videojuegos'], dlc: ['DLC', 'DLC', 'DLC'],
-  comic: ['Comics', 'Comics', 'Cómics'], roman: ['Romans', 'Novels', 'Novelas'], jeunesse: ['Romans jeune adulte', 'Young adult novels', 'Novelas juveniles'],
-  audio: ['Livres audio', 'Audiobooks', 'Audiolibros'], short: ['Courts métrages', 'Short films', 'Cortometrajes'], video: ['Vidéos', 'Videos', 'Videos'],
-  web: ['Webséries', 'Web series', 'Webseries'], special: ['Spéciaux', 'Specials', 'Especiales'],
+  // [français, anglais, espagnol, portugais] — la troisième colonne depuis le
+  // 14 novembre 2026, la quatrième depuis le 15
+  film: ['Films', 'Movies', 'Películas', 'Filmes'], filmanim: ['Films animés', 'Animated movies', 'Películas animadas', 'Filmes animados'], serie: ['Séries', 'Series', 'Series', 'Séries'],
+  anime: ['Séries animées', 'Animated series', 'Series animadas', 'Séries animadas'], jeu: ['Jeux vidéo', 'Video games', 'Videojuegos', 'Videogames'], dlc: ['DLC', 'DLC', 'DLC', 'DLC'],
+  comic: ['Comics', 'Comics', 'Cómics', 'Quadrinhos'], roman: ['Romans', 'Novels', 'Novelas', 'Romances'], jeunesse: ['Romans jeune adulte', 'Young adult novels', 'Novelas juveniles', 'Romances juvenis'],
+  audio: ['Livres audio', 'Audiobooks', 'Audiolibros', 'Audiolivros'], short: ['Courts métrages', 'Short films', 'Cortometrajes', 'Curtas-metragens'], video: ['Vidéos', 'Videos', 'Videos', 'Vídeos'],
+  web: ['Webséries', 'Web series', 'Webseries', 'Websséries'], special: ['Spéciaux', 'Specials', 'Especiales', 'Especiais'],
 };
 
 const casse = s => {
@@ -130,27 +133,29 @@ const CODES = { sw: 'SW', mcu: 'MCU', dc: 'DC', avatar: 'AV', startrek: 'ST', tw
 
 export function reglages({ racine }) {
   const types = {}, u = {};
-  function type(k, fr, en, es) {
-    if (!types[k]) types[k] = PLURIELS[k] || [casse(fr || k), casse(en || fr || k), casse(es || en || fr || k)];
+  function type(k, fr, en, es, pt) {
+    if (!types[k]) types[k] = PLURIELS[k] || [casse(fr || k), casse(en || fr || k), casse(es || en || fr || k), casse(pt || en || fr || k)];
   }
   for (const [cle, s] of Object.entries(SOURCES)) {
-    const wf = charge(racine, s.fr[0], s.fr[1]), we = charge(racine, s.en[0], s.en[1]), ws = charge(racine, s.es[0], s.es[1]);
+    const wf = charge(racine, s.fr[0], s.fr[1]), we = charge(racine, s.en[0], s.en[1]), ws = charge(racine, s.es[0], s.es[1]), wp = charge(racine, s.pt[0], s.pt[1]);
     const D = wf[s.fr[1]];
     if (!D || !D.eras) throw new Error(`reglages : ${cle} sans ères`);
-    const lf = (wf.CG && wf.CG.badgeLabels) || {}, le = (we.CG && we.CG.badgeLabels) || {}, ls = (ws.CG && ws.CG.badgeLabels) || {};
-    for (const k of Object.keys(lf)) type(k, lf[k][1], (le[k] || [])[1], (ls[k] || [])[1]);
+    const lf = (wf.CG && wf.CG.badgeLabels) || {}, le = (we.CG && we.CG.badgeLabels) || {}, ls = (ws.CG && ws.CG.badgeLabels) || {}, lp = (wp.CG && wp.CG.badgeLabels) || {};
+    for (const k of Object.keys(lf)) type(k, lf[k][1], (le[k] || [])[1], (ls[k] || [])[1], (lp[k] || [])[1]);
     u[cle] = {
       c: ENCRES[cle], k: CODES[cle],
       // le nom court, celui du menu : « DC — Guide du Multivers » s'arrête à « DC »
-      n: [decode(D.title), decode((we[s.en[1]] || D).title), decode((ws[s.es[1]] || we[s.en[1]] || D).title)]
+      n: [decode(D.title), decode((we[s.en[1]] || D).title), decode((ws[s.es[1]] || we[s.en[1]] || D).title), decode((wp[s.pt[1]] || we[s.en[1]] || D).title)]
         .map(t => t.replace(/\s+[—–-]\s.*$/, '').replace(/^Marvel Cinematic Universe$/, 'Marvel')),
       // Une rangée par ère, dans l'ordre de la table `E` de l'accueil.
       e: D.eras.map(era => (era.entries || []).filter(arret).map(x => [x.id, x.type, x.level || 0, x.lang === 'vo' ? 1 : 0])),
     };
   }
   const wf = charge(racine, 'data-dossier-sw.js', 'CGD'), we = charge(racine, 'data-dossier-sw-en.js', 'CGD');
+  const wp = charge(racine, 'data-dossier-sw-pt.js', 'CGD');
   const kf = ((wf.CGDT || wf.CG) || {}).kindLabels || {}, ke = ((we.CGDT || we.CG) || {}).kindLabels || {};
-  for (const k of Object.keys(kf)) type(k, kf[k], ke[k], ke[k]);
+  const kp = ((wp.CGDT || wp.CG) || {}).kindLabels || {};
+  for (const k of Object.keys(kf)) type(k, kf[k], ke[k], ke[k], kp[k]);
   u['dossier-sw'] = {
     c: ENCRES.sw, dossier: 1,
     e: wf.CGD.eras.map(era => era.items.filter(x => x.kind === 'it').map(x => [x.id, x.k, 0, x.vo ? 1 : 0])),

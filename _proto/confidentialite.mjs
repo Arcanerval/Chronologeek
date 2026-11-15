@@ -13,7 +13,7 @@
 
 import { TETE_REGLAGES } from './reglages.mjs';
 
-const MAJ = { fr: '14 novembre 2026', en: 'November 14, 2026', es: '14 de noviembre de 2026' };
+const MAJ = { fr: '14 novembre 2026', en: 'November 14, 2026', es: '14 de noviembre de 2026', pt: '15 de novembro de 2026' };
 
 const TEXTE = {
   fr: {
@@ -129,6 +129,44 @@ const TEXTE = {
         'Esta página cambia cuando cambia el sitio. La fecha de actualización está arriba.'
       ]]
     ]
+  },
+  pt: {
+    titre: 'Privacidade', h1: 'Política de privacidade', tag: 'Seus dados',
+    desc: 'O que o Chronologeek guarda, o que ele nunca envia e os serviços que seu navegador chama pelo caminho.',
+    maj: 'Atualizado em ' + MAJ.pt,
+    sections: [
+      ['Em resumo', [
+        'O Chronologeek <b>não tem contas, nem servidor de dados, nem cookies de publicidade</b>. Seu progresso, as obras que você mesmo adicionou e suas configurações ficam no seu navegador, no seu dispositivo. Nós não os vemos e não temos como vê-los.',
+        'O site é um projeto independente de fã, mantido por uma só pessoa, sem publicidade e sem revenda de dados.'
+      ]],
+      ['O que fica no seu dispositivo', [
+        'O site guarda no armazenamento local do seu navegador (<code>localStorage</code>): as obras que você marcou e o dia em que marcou, as obras que você adicionou (imagens incluídas), suas configurações, o percurso escolhido em cada página, seus votos para a próxima linha e algumas preferências de exibição. Um cache offline (service worker) também guarda uma cópia das páginas.',
+        'Nada disso sai do seu dispositivo, a não ser que você mesmo faça isso: um arquivo exportado, um link de transferência (seu progresso viaja dentro do link, sem servidor no meio) ou a sincronização com o Google Drive descrita abaixo.',
+        'Para apagar tudo, exclua os dados do site nas configurações do seu navegador. Os arquivos que você importa (exportações do Chronologeek ou do Letterboxd) são lidos no seu navegador e não são enviados para lugar nenhum.'
+      ]],
+      ['Medição de audiência', [
+        'Contamos as visitas com o <a href="https://www.goatcounter.com/" rel="noopener">GoatCounter</a>, uma ferramenta de código aberto que <b>não usa cookies nem guarda seu endereço IP</b>. Ele registra a página vista, o site de origem, o tamanho da tela, o navegador e o país aproximado, sem conseguir identificar você nem segui-lo de um site para outro.',
+        'Um voto para a próxima linha é contado do mesmo jeito, como um evento anônimo. Os totais de votos são públicos.',
+        'Um bloqueador de anúncios que bloqueie o GoatCounter não quebra nada no site, exceto os votos.'
+      ]],
+      ['Hospedagem', [
+        'O site é hospedado no <a href="https://pages.github.com/" rel="noopener">GitHub Pages</a>. Como qualquer hospedagem, o GitHub recebe seu endereço IP para servir as páginas e proteger o serviço; veja a <a href="https://docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaração de privacidade do GitHub</a>. As fontes do site são servidas pelo próprio site.'
+      ]],
+      ['Serviços que seu navegador chama', [
+        'Para mostrar os detalhes de cada obra, seu navegador consulta diretamente serviços públicos, que recebem assim seu endereço IP e o tipo de navegador, como em qualquer imagem carregada na web. Não enviamos nenhum dado sobre você a eles.',
+        '<b>TMDB</b> (The Movie Database): pôsteres, sinopses, trailers e plataformas de streaming; estas últimas vêm do JustWatch, por meio do TMDB. <b>RAWG</b>: dados e plataformas dos videogames. <b>Open Library</b>: dados dos livros. Os trailers são links para o YouTube: nada do YouTube é carregado até você clicar.',
+        'Os links “Onde ler”, “Onde assistir”, Ko-fi, assinatura da agenda e fontes levam a outros sites, que têm suas próprias regras. Por enquanto nenhum link de afiliado é usado; se isso mudar, a linha correspondente vai dizer.'
+      ]],
+      ['Sincronização com o Google Drive', [
+        'Se você escolher sincronizar seu progresso com o Google Drive, seu navegador carrega o script de login do Google e pede a permissão do Google. O site só pede acesso <b>aos arquivos que ele mesmo cria</b> (<code>drive.file</code>): ele guarda seu progresso em um arquivo <code>chronologeek.json</code> no seu Drive e não vê nenhum dos seus outros arquivos.',
+        'O token de acesso fica na página enquanto dura a sincronização e só é enviado ao Google. Nada é copiado para um servidor do Chronologeek: não existe nenhum. Você pode retirar o acesso quando quiser na <a href="https://myaccount.google.com/permissions" rel="noopener">sua conta do Google</a> e apagar o arquivo do seu Drive.',
+        'O uso que o Chronologeek faz das informações recebidas das APIs do Google segue a <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Política de dados do usuário dos serviços de API do Google</a>, incluindo os requisitos de uso limitado.'
+      ]],
+      ['Seus direitos e contato', [
+        'Como não guardamos nenhum dado sobre você, não há nada para consultar, corrigir ou apagar do nosso lado: tudo está no seu dispositivo ou no seu Drive, sob seu controle. Para qualquer dúvida, escreva para nós pelo link <a href="#contact" data-contact>Contato</a> no rodapé da página.',
+        'Esta página muda quando o site muda. A data de atualização está no topo.'
+      ]]
+    ]
   }
 };
 
@@ -164,10 +202,11 @@ ${TETE_REGLAGES}
 <link rel="alternate" hreflang="fr" href="${site}${urls.fr}"/>
 <link rel="alternate" hreflang="en" href="${site}${urls.en}"/>
 <link rel="alternate" hreflang="es" href="${site}${urls.es}"/>
+<link rel="alternate" hreflang="pt" href="${site}${urls.pt}"/>
 <link rel="alternate" hreflang="x-default" href="${site}${urls.en}"/>
 <meta property="og:title" content="${esc(t.h1)}"/>
 <meta property="og:description" content="${esc(t.desc)}"/>
-<meta property="og:locale" content="${{ fr: 'fr_FR', en: 'en_US', es: 'es_ES' }[langue]}"/>
+<meta property="og:locale" content="${{ fr: 'fr_FR', en: 'en_US', es: 'es_ES', pt: 'pt_BR' }[langue]}"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#08080f"/>
@@ -186,7 +225,7 @@ ${ch.footer}
 <script>(function(){var b=document.getElementById('burger'),d=document.getElementById('drawer');if(b&&d)b.addEventListener('click',function(){var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')})})();</script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script src="/pwa.js"></script>
-<script src="${langue === 'es' ? '/app-es.js' : '/app.js'}"></script>
+<script src="${langue === 'es' ? '/app-es.js' : langue === 'pt' ? '/app-pt.js' : '/app.js'}"></script>
 </body>
 </html>
 `;

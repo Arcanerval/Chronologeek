@@ -1,5 +1,6 @@
 /* The Witcher en espagnol neutre, tutoiement ; titres d'œuvres en anglais. */
 export default {
+  "The 2 timelines": "Las 2 cronologías",
   "Chronologeek — The Witcher (proto E)": "Chronologeek — The Witcher (proto E)",
   "Books and games timelines": "Cronologías de libros y juegos",
   "Sapkowski's books · CD Projekt RED's games and comics": "Los libros de Sapkowski · Los juegos y cómics de CD Projekt RED",

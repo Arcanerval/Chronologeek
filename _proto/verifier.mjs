@@ -48,6 +48,12 @@ function urlsDeRoutes() {
   const bloc = src.slice(debut, src.indexOf('\n];', debut));
   const urls = [...bloc.matchAll(/url:\s*'([^']+)'/g)].map(m => m[1]);
   if (!urls.length) throw new Error('ROUTES illisible dans publier.mjs');
+  /* Le portugais n'est pas écrit dans ROUTES : publier.mjs le tire de
+     l'espagnol (`versPt`). On refait le même geste. */
+  const SLUGS_PT = { expedientes: 'dossies', novedades: 'novidades', proximamente: 'em-breve' };
+  for (const u of urls.filter(u => u.startsWith('/es/'))) {
+    urls.push(u.replace(/^\/es\//, '/pt/').replace(/expedientes|novedades|proximamente/, m => SLUGS_PT[m]));
+  }
   return urls;
 }
 
@@ -276,7 +282,7 @@ async function main() {
   let urls = urlsDeRoutes();
   /* Les pages d'œuvres sont plus de mille : `publier.mjs` les contrôle toutes en
      lecture, et on en ouvre ici la première de chaque univers, dans chaque langue. */
-  for (const base of ['works', 'fr/oeuvres']) {
+  for (const base of ['works', 'fr/oeuvres', 'es/obras', 'pt/obras']) {
     const dossier = join(RACINE, base);
     if (!existsSync(dossier)) continue;
     for (const u of readdirSync(dossier, { withFileTypes: true }).filter(d => d.isDirectory())) {

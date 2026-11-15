@@ -32,7 +32,7 @@ import { charge, SOURCES } from './jsonld.mjs';
 
 const ICI = dirname(fileURLToPath(import.meta.url));
 
-const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-es.js', 'CGD'] };
+const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-es.js', 'CGD'], pt: ['data-dossier-sw-pt.js', 'CGD'] };
 
 const arret = x => x && x.type !== 'separator' && x.type !== 'note';
 const donnees = (racine, [f, g]) => charge(racine, f, g)[g];
@@ -42,12 +42,12 @@ const donnees = (racine, [f, g]) => charge(racine, f, g)[g];
 export function decomptes(racine) {
   const univers = {};
   for (const [k, src] of Object.entries(SOURCES)) {
-    const fr = donnees(racine, src.fr), en = donnees(racine, src.en), es = donnees(racine, src.es);
+    const fr = donnees(racine, src.fr), en = donnees(racine, src.en), es = donnees(racine, src.es), pt = donnees(racine, src.pt);
     if (!fr?.eras?.length || !en?.eras?.length) throw new Error(`${k} : données sans ères`);
     if (fr.eras.length !== en.eras.length) throw new Error(`${k} : ${fr.eras.length} ères en français, ${en.eras.length} en anglais`);
     const eras = fr.eras.map((e, i) => {
       const a = (e.entries || []).filter(arret);
-      return { fr: e.title, en: en.eras[i].title, es: (es.eras[i] || en.eras[i]).title, n: a.length, date: (a[0] || {}).date || '' };
+      return { fr: e.title, en: en.eras[i].title, es: (es.eras[i] || en.eras[i]).title, pt: (pt.eras[i] || en.eras[i]).title, n: a.length, date: (a[0] || {}).date || '' };
     });
     univers[k] = { total: eras.reduce((s, e) => s + e.n, 0), stations: eras.length, eras };
   }
@@ -65,10 +65,10 @@ export function decomptes(racine) {
 
 /* ── L'application, page par page ─────────────────────────────────────── */
 
-const nombre = (n, langue) => langue === 'en'
-  ? n.toLocaleString('en-US')
+const nombre = (n, langue) => langue === 'en' ? n.toLocaleString('en-US')
+  : langue === 'pt' ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-const NB = '[0-9][0-9  ,]*';
+const NB = '[0-9][0-9  ,.]*';
 
 /* Chaque remplacement doit trouver sa cible : un motif qui ne trouve plus
    rien est un chiffre qui ne serait plus tenu, sans un mot. */
@@ -114,7 +114,8 @@ function accueil(html, langue, V, nom) {
       neuf[k] = u.eras.map((e, i) => {
         const garde = ancien[i] && (ancien[i][0] === e.fr || ancien[i][1] === e.en) ? ancien[i][3] : e.date;
         // la page espagnole lit la colonne anglaise : l'espagnol va dans les deux
-        return langue === 'es' ? [e.es, e.es, e.n, garde] : [e.fr, e.en, e.n, garde];
+        // (le portugais pareil)
+        return langue === 'es' ? [e.es, e.es, e.n, garde] : langue === 'pt' ? [e.pt, e.pt, e.n, garde] : [e.fr, e.en, e.n, garde];
       });
     }
     return a + JSON.stringify(neuf) + ';' + nl;

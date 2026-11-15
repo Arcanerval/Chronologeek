@@ -59,7 +59,7 @@ export const ENCRES = {
 };
 
 // Le Dossier reprend l'encre de Star Wars : c'est le sien.
-const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-en.js', 'CGD'] };
+const DOSSIER = { fr: ['data-dossier-sw.js', 'CGD'], en: ['data-dossier-sw-en.js', 'CGD'], es: ['data-dossier-sw-en.js', 'CGD'], pt: ['data-dossier-sw-pt.js', 'CGD'] };
 
 const rendable = it => it && it.type !== 'separator' && it.type !== 'note' && it.id && it.title;
 
@@ -80,11 +80,15 @@ function titres(eras) {
 
 // L'espagnol garde les titres anglais : son alias est le titre espagnol
 // (titres-es.mjs), celui que l'option « Títulos en español » affiche.
-function titresEs(eras) {
+// Le portugais pareil depuis le 15 novembre 2026 (titres-pt.mjs, « Títulos
+// em português ») : `tpt` (Brésil), `tpp` (Portugal).
+const CHAMPS_LOC = { es: ['tes', 'tmx'], pt: ['tpt', 'tpp'] };
+function titresEs(eras, langue = 'es') {
+  const [a, b] = CHAMPS_LOC[langue];
   const m = {};
   for (const era of eras || []) {
     for (const it of era.entries || era.items || []) {
-      if (rendable(it) && (it.tes || it.tmx)) m[it.id] = decode(it.tes || it.tmx);
+      if (rendable(it) && (it[a] || it[b])) m[it.id] = decode(it[a] || it[b]);
     }
   }
   return m;
@@ -132,14 +136,14 @@ export function recherche({ racine, langue, urls }) {
     const u = charge(racine, fichier, global)[global];
     const [fichierB, globalB] = SOURCES[cle][autre];
     const b = charge(racine, fichierB, globalB)[globalB];
-    items.push(...entrees(u.eras, univers.length, langue === 'es' ? titresEs(u.eras) : titres(b.eras)));
+    items.push(...entrees(u.eras, univers.length, CHAMPS_LOC[langue] ? titresEs(u.eras, langue) : titres(b.eras)));
     univers.push({ k: cle, n: decode(u.title), h: urls[cle], c: ENCRES[cle] });
   }
 
   const [fichier, global] = DOSSIER[langue];
   const d = charge(racine, fichier, global)[global];
   const [fichierD, globalD] = DOSSIER[autre];
-  items.push(...entrees(d.eras, univers.length, langue === 'es' ? titresEs(d.eras)
+  items.push(...entrees(d.eras, univers.length, CHAMPS_LOC[langue] ? titresEs(d.eras, langue)
     : titres(charge(racine, fichierD, globalD)[globalD].eras)));
   // **Le Dossier n'a pas de titre dans ses données** — `CGD` ne porte que
   // `eras` et `intro`. Son nom se compose donc comme `jsonld.mjs` compose son
@@ -169,6 +173,6 @@ export function recherche({ racine, langue, urls }) {
   // Aucun alias sur 1 500 œuvres, c'est un appariement par `id` qui a raté.
   alias = items.filter(e => e.length > 5).length;
   // l'espagnol garde les titres anglais : ses alias sont rares, et c'est voulu
-  if (langue !== 'es' && alias < 100) throw new Error(`recherche : ${alias} titre(s) de l'autre langue seulement`);
+  if (!CHAMPS_LOC[langue] && alias < 100) throw new Error(`recherche : ${alias} titre(s) de l'autre langue seulement`);
   return JSON.stringify({ u: univers, e: items });
 }

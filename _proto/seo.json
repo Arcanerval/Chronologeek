@@ -17,6 +17,12 @@
       "ogTitle": "Chronologeek — Cronologías geek",
       "desc": "Cronologías completas de tus universos favoritos: todos los formatos, en orden cronológico o de estreno, 100 % canon. Marca lo que ya terminaste.",
       "image": "https://chronologeek.app/images/og-banner.webp"
+    },
+    "pt": {
+      "title": "Chronologeek — Cronologias geek e ordem para assistir",
+      "ogTitle": "Chronologeek — Cronologias geek",
+      "desc": "Cronologias completas dos seus universos favoritos: todos os formatos, em ordem cronológica ou de lançamento, 100% cânone. Marque o que já concluiu.",
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "sw": {
@@ -36,6 +42,12 @@
       "title": "Star Wars en orden cronológico y de estreno | Chronologeek",
       "ogTitle": "Star Wars en orden — Chronologeek",
       "desc": "La cronología canon de Star Wars: 62 películas, series y juegos en orden cronológico o de estreno, de la República a la Primera Orden, sin spoilers.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
+    },
+    "pt": {
+      "title": "Star Wars: ordem cronológica e de lançamento | Chronologeek",
+      "ogTitle": "Star Wars em ordem — Chronologeek",
+      "desc": "A cronologia canônica de Star Wars: 62 filmes, séries e jogos em ordem cronológica ou de lançamento, da República à Primeira Ordem, sem spoilers.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },
@@ -57,6 +69,12 @@
       "ogTitle": "Marvel MCU en orden — Chronologeek",
       "desc": "El MCU en su orden optimizado o de estreno: 121 películas y series, guía de escenas poscréditos, sin spoilers. Marca lo que ya terminaste.",
       "image": "https://chronologeek.app/images/mcu.webp"
+    },
+    "pt": {
+      "title": "Marvel MCU: ordem cronológica e de lançamento | Chronologeek",
+      "ogTitle": "Marvel MCU em ordem — Chronologeek",
+      "desc": "O MCU na ordem otimizada ou de lançamento: 121 filmes e séries, guia das cenas pós-créditos, sem spoilers. Marque o que já concluiu.",
+      "image": "https://chronologeek.app/images/mcu.webp"
     }
   },
   "dc": {
@@ -76,6 +94,12 @@
       "title": "Multiverso DC en orden: Arrowverse y DCEU | Chronologeek",
       "ogTitle": "Guía del Multiverso DC — Chronologeek",
       "desc": "La guía completa del Multiverso DC: 25 películas y 17 series, Elseworlds, Arrowverse, DCEU y DCU, todo conectado. Marca lo que ya terminaste.",
+      "image": "https://chronologeek.app/images/dcmultivers.webp"
+    },
+    "pt": {
+      "title": "Multiverso DC em ordem: Arrowverse e DCEU | Chronologeek",
+      "ogTitle": "Guia do Multiverso DC — Chronologeek",
+      "desc": "O guia completo do Multiverso DC: 25 filmes e 17 séries, Elseworlds, Arrowverse, DCEU e DCU, tudo conectado. Marque o que já concluiu.",
       "image": "https://chronologeek.app/images/dcmultivers.webp"
     }
   },
@@ -97,6 +121,12 @@
       "ogTitle": "Avatar Legends en orden — Chronologeek",
       "desc": "The Last Airbender, The Legend of Korra, Seven Havens, 43 cómics y 10 novelas en orden cronológico o de estreno, sin spoilers.",
       "image": "https://chronologeek.app/images/avatar.webp"
+    },
+    "pt": {
+      "title": "Avatar em ordem: The Last Airbender e Korra | Chronologeek",
+      "ogTitle": "Avatar Legends em ordem — Chronologeek",
+      "desc": "The Last Airbender, The Legend of Korra, Seven Havens, 43 quadrinhos e 10 romances em ordem cronológica ou de lançamento, sem spoilers.",
+      "image": "https://chronologeek.app/images/avatar.webp"
     }
   },
   "startrek": {
@@ -116,6 +146,12 @@
       "title": "Star Trek en orden cronológico y de estreno | Chronologeek",
       "ogTitle": "Star Trek en orden — Chronologeek",
       "desc": "La cronología de Star Trek en orden del universo o de estreno: películas, series y series animadas, del siglo XXI al XLIII, sin spoilers.",
+      "image": "https://chronologeek.app/images/startrek.webp"
+    },
+    "pt": {
+      "title": "Star Trek: ordem cronológica e de lançamento | Chronologeek",
+      "ogTitle": "Star Trek em ordem — Chronologeek",
+      "desc": "A cronologia de Star Trek na ordem do universo ou de lançamento: filmes, séries e séries animadas, do século XXI ao XLIII, sem spoilers.",
       "image": "https://chronologeek.app/images/startrek.webp"
     }
   },
@@ -137,6 +173,12 @@
       "ogTitle": "The Walking Dead en orden — Chronologeek",
       "desc": "The Walking Dead en orden del universo o de estreno: las siete series y las ocho webseries, del brote de Los Ángeles a Nueva York, sin spoilers.",
       "image": "https://chronologeek.app/images/twd.webp"
+    },
+    "pt": {
+      "title": "The Walking Dead em ordem: Fear e Daryl Dixon | Chronologeek",
+      "ogTitle": "The Walking Dead em ordem — Chronologeek",
+      "desc": "The Walking Dead na ordem do universo ou de lançamento: as sete séries e as oito websséries, do surto de Los Angeles a Nova York, sem spoilers.",
+      "image": "https://chronologeek.app/images/twd.webp"
     }
   },
   "dragonage": {
@@ -156,6 +198,12 @@
       "title": "Dragon Age en orden cronológico y de estreno | Chronologeek",
       "ogTitle": "Dragon Age en orden — Chronologeek",
       "desc": "La cronología de Dragon Age en orden del universo o de estreno: juegos, libros, cómics y series, de The Stolen Throne a The Veilguard, sin spoilers.",
+      "image": "https://chronologeek.app/images/dragonage.webp"
+    },
+    "pt": {
+      "title": "Dragon Age: ordem cronológica e de lançamento | Chronologeek",
+      "ogTitle": "Dragon Age em ordem — Chronologeek",
+      "desc": "A cronologia de Dragon Age na ordem do universo ou de lançamento: jogos, livros, quadrinhos e séries, de The Stolen Throne a The Veilguard, sem spoilers.",
       "image": "https://chronologeek.app/images/dragonage.webp"
     }
   },
@@ -177,6 +225,12 @@
       "ogTitle": "DC Animation en orden — Chronologeek",
       "desc": "DC Animation en orden cronológico: DCAU, DCAMU (New 52 y Tomorrowverse) y Arkhamverse, 32 películas animadas y 22 juegos, sin spoilers.",
       "image": "https://chronologeek.app/images/dcanimation.webp"
+    },
+    "pt": {
+      "title": "DC Animation em ordem: DCAU, DCAMU, Arkham | Chronologeek",
+      "ogTitle": "DC Animation em ordem — Chronologeek",
+      "desc": "DC Animation em ordem cronológica: DCAU, DCAMU (New 52 e Tomorrowverse) e Arkhamverse, 32 filmes animados e 22 jogos, sem spoilers.",
+      "image": "https://chronologeek.app/images/dcanimation.webp"
     }
   },
   "jurassic": {
@@ -196,6 +250,12 @@
       "title": "Jurassic Park y Jurassic World en orden | Chronologeek",
       "ogTitle": "Jurassic World en orden — Chronologeek",
       "desc": "Jurassic World en orden cronológico o de estreno: 7 películas, 2 series animadas, 3 libros y un corto, de Jurassic Park a Rebirth, sin spoilers.",
+      "image": "https://chronologeek.app/images/jurassicworld.webp"
+    },
+    "pt": {
+      "title": "Jurassic Park e Jurassic World em ordem | Chronologeek",
+      "ogTitle": "Jurassic World em ordem — Chronologeek",
+      "desc": "Jurassic World em ordem cronológica ou de lançamento: 7 filmes, 2 séries animadas, 3 livros e um curta, de Jurassic Park a Rebirth, sem spoilers.",
       "image": "https://chronologeek.app/images/jurassicworld.webp"
     }
   },
@@ -217,6 +277,12 @@
       "ogTitle": "The Witcher en orden — Chronologeek",
       "desc": "The Witcher en orden cronológico o de estreno: 21 libros de Sapkowski, 33 juegos y cómics de CDPR, de The Road of No Return a Blood Stone, sin spoilers.",
       "image": "https://chronologeek.app/images/witcher.webp"
+    },
+    "pt": {
+      "title": "The Witcher em ordem: livros e jogos | Chronologeek",
+      "ogTitle": "The Witcher em ordem — Chronologeek",
+      "desc": "The Witcher em ordem cronológica ou de lançamento: 21 livros de Sapkowski, 33 jogos e quadrinhos da CDPR, de The Road of No Return a Blood Stone.",
+      "image": "https://chronologeek.app/images/witcher.webp"
     }
   },
   "assassinscreed": {
@@ -236,6 +302,12 @@
       "title": "Assassin’s Creed en orden cronológico | Chronologeek",
       "ogTitle": "Assassin’s Creed en orden — Chronologeek",
       "desc": "Assassin’s Creed en orden cronológico o de estreno: juegos, novelas, cómics y cortos, de Altaïr al Animus Hub, sin spoilers.",
+      "image": "https://chronologeek.app/images/acuniverse.webp"
+    },
+    "pt": {
+      "title": "Assassin’s Creed em ordem cronológica | Chronologeek",
+      "ogTitle": "Assassin’s Creed em ordem — Chronologeek",
+      "desc": "Assassin’s Creed em ordem cronológica ou de lançamento: jogos, romances, quadrinhos e curtas, de Altaïr ao Animus Hub, sem spoilers.",
       "image": "https://chronologeek.app/images/acuniverse.webp"
     }
   },
@@ -257,6 +329,12 @@
       "ogTitle": "Resident Evil en orden — Chronologeek",
       "desc": "Resident Evil en orden cronológico o de estreno: 30 obras, juegos, películas animadas y mangas, de Raccoon City a Requiem, sin spoilers.",
       "image": "https://chronologeek.app/images/residentevil.webp"
+    },
+    "pt": {
+      "title": "Resident Evil em ordem cronológica | Chronologeek",
+      "ogTitle": "Resident Evil em ordem — Chronologeek",
+      "desc": "Resident Evil em ordem cronológica ou de lançamento: 30 obras, jogos, filmes animados e mangás, de Raccoon City a Requiem, sem spoilers.",
+      "image": "https://chronologeek.app/images/residentevil.webp"
     }
   },
   "bladerunner": {
@@ -276,6 +354,12 @@
       "title": "Blade Runner en orden cronológico y de estreno | Chronologeek",
       "ogTitle": "Blade Runner en orden — Chronologeek",
       "desc": "Blade Runner en orden cronológico o de estreno: 17 obras, películas, cortos, Black Lotus y cómics, de 2009 a 2049, sin spoilers.",
+      "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
+    },
+    "pt": {
+      "title": "Blade Runner em ordem cronológica | Chronologeek",
+      "ogTitle": "Blade Runner em ordem — Chronologeek",
+      "desc": "Blade Runner em ordem cronológica ou de lançamento: 17 obras, filmes, curtas, Black Lotus e quadrinhos, de 2009 a 2049, sem spoilers.",
       "image": "https://chronologeek.app/images/bladerunnertimeline.webp"
     }
   },
@@ -297,6 +381,12 @@
       "ogTitle": "Monsterverse en orden — Chronologeek",
       "desc": "El Monsterverse en orden cronológico o de estreno: 18 obras, películas, series, cómics y un juego, de Skull Island en 1973 a 2027, sin spoilers.",
       "image": "https://chronologeek.app/images/monsterverse.webp"
+    },
+    "pt": {
+      "title": "Monsterverse em ordem cronológica | Chronologeek",
+      "ogTitle": "Monsterverse em ordem — Chronologeek",
+      "desc": "O Monsterverse em ordem cronológica ou de lançamento: 18 obras, filmes, séries, quadrinhos e um jogo, de Skull Island em 1973 a 2027, sem spoilers.",
+      "image": "https://chronologeek.app/images/monsterverse.webp"
     }
   },
   "dossiers": {
@@ -316,6 +406,12 @@
       "title": "Expedientes: órdenes de lectura y guías | Chronologeek",
       "ogTitle": "Expedientes — Chronologeek",
       "desc": "Los expedientes de Chronologeek: órdenes de lectura, guías y análisis, universo por universo.",
+      "image": "https://chronologeek.app/images/og-banner.webp"
+    },
+    "pt": {
+      "title": "Dossiês: ordens de leitura e guias | Chronologeek",
+      "ogTitle": "Dossiês — Chronologeek",
+      "desc": "Os dossiês do Chronologeek: ordens de leitura, guias e análises, universo por universo.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
@@ -337,6 +433,12 @@
       "ogTitle": "Expediente Star Wars: novelas y cómics en orden | Chronologeek",
       "desc": "El orden de lectura completo de las novelas, los libros juveniles y los cómics canónicos de Star Wars, situados en la cronología de películas y series.",
       "image": "https://chronologeek.app/images/starwars-banner.webp"
+    },
+    "pt": {
+      "title": "Star Wars em ordem de leitura: romances e HQs | Chronologeek",
+      "ogTitle": "Dossiê Star Wars: romances e quadrinhos em ordem | Chronologeek",
+      "desc": "A ordem de leitura completa dos romances, livros juvenis e quadrinhos canônicos de Star Wars, situados na cronologia dos filmes e das séries.",
+      "image": "https://chronologeek.app/images/starwars-banner.webp"
     }
   },
   "nouveautes": {
@@ -357,6 +459,12 @@
       "ogTitle": "Novedades — Chronologeek",
       "desc": "Todo lo nuevo en Chronologeek: cronologías añadidas, obras actualizadas, funciones nuevas.",
       "image": "https://chronologeek.app/images/og-banner.webp"
+    },
+    "pt": {
+      "title": "Novidades | Chronologeek",
+      "ogTitle": "Novidades — Chronologeek",
+      "desc": "Tudo o que há de novo no Chronologeek: cronologias adicionadas, obras atualizadas, recursos novos.",
+      "image": "https://chronologeek.app/images/og-banner.webp"
     }
   },
   "a-venir": {
@@ -376,6 +484,12 @@
       "title": "Próximos estrenos — Star Wars, Marvel, DC | Chronologeek",
       "ogTitle": "Próximos estrenos — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner y Monsterverse | Chronologeek",
       "desc": "Próximos estrenos de Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner y Monsterverse: películas, series, juegos.",
+      "image": "https://chronologeek.app/images/og-banner.webp"
+    },
+    "pt": {
+      "title": "Próximos lançamentos — Star Wars, Marvel, DC | Chronologeek",
+      "ogTitle": "Próximos lançamentos — Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner e Monsterverse | Chronologeek",
+      "desc": "Próximos lançamentos de Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, The Witcher, Blade Runner e Monsterverse: filmes, séries, jogos.",
       "image": "https://chronologeek.app/images/og-banner.webp"
     }
   }

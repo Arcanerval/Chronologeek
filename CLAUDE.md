@@ -708,6 +708,67 @@ Dossier, les fiches d'œuvres (`/es/obras/<univers>/<œuvre>`), `/es/privacidad`
   donne le Mexique), l'Espagne et l'Amérique latine passent en tête de la
   liste, et leurs noms s'écrivent en espagnol.
 
+## Le portugais, quatrième langue, posé le 15 novembre 2026
+
+Demandé pour les 9 % de visiteurs lusophones. **Portugais du Brésil**,
+**« você »**, **titres d'œuvres en anglais** avec l'option « Títulos em
+português » — tranché par Niko. Exactement les fonctionnalités de
+l'espagnol, sous `/pt/` : les quatorze univers, `/pt/em-breve`,
+`/pt/novidades`, `/pt/dossies/`, le Dossier, les fiches
+(`/pt/obras/<univers>/<œuvre>`), `/pt/privacidade`, `/pt/feed.xml`,
+`/pt/404.html`.
+
+- **Une seule chaîne pour les deux langues.** `traduire-langue.mjs` et
+  `moteur-langue.mjs` sont les moteurs ; `traduire-es.mjs` / `traduire-pt.mjs`
+  et `moteur-es.mjs` / `moteur-pt.mjs` ne font que décrire leur langue (code,
+  locale, champs de titres). La refactorisation a été vérifiée à l'octet : les
+  36 fichiers espagnols ressortent identiques. Une cinquième langue = un
+  dossier de tables, deux scripts de dix lignes.
+- **Les tables vivent dans `_proto/pt/`**, comme `_proto/es/` : `lexique.mjs`,
+  `gabarits.mjs` (avec les suffixes de titres, `SUFFIXES` et `SUFFIXES_RE`,
+  sortis de `traduire-es.mjs` pour l'occasion), `moteur.mjs`, une table par
+  univers et par page. **`memes(ES)` (`pt/outils.mjs`) reprend les entrées
+  que l'espagnol rend à l'identique** — titres et noms propres — et la table
+  portugaise n'écrit que ce qui se traduit. Les grosses tables sont coupées
+  dans `pt/parts/` (Marvel, The Witcher, Assassin's Creed).
+- **À lancer après la chaîne espagnole** : `node _proto/traduire-pt.mjs`.
+  Ce qui manque sort dans `a-traduire-pt-<cle>.json`.
+- **Publication** : `ROUTES` ne porte pas le portugais en toutes lettres —
+  `versPt()` de `publier.mjs` le tire de chaque route espagnole
+  (`expedientes` → `dossies`, `novedades` → `novidades`, `proximamente` →
+  `em-breve`), et `verifier.mjs` refait le même geste pour ouvrir les pages
+  `/pt/`. Une route qui reçoit l'espagnol reçoit donc le portugais : il faut
+  alors sa table dans `_proto/pt/`. `DONNEES_PT` de `jsonld.mjs` donne les
+  données, `seo.json` porte une clé `pt` par route (titres ≤ 60 signes,
+  descriptions ≤ 160), `/search-pt.json`, `/reglages.js` a une quatrième
+  colonne, `PRECACHE` de `sw.js` les pages et données portugaises.
+- **Le drapeau** : Brésil en haut à gauche, Portugal en bas à droite, coupés
+  en diagonale avec un trait blanc, chacun centré plein cadre (les emblèmes
+  sont coupés, décision de Niko), WebP 156 × 104 (`images/drapeaux/pt.webp`,
+  SVG de flag-icons 7.2.3, MIT, rendus par playwright-core puis PIL).
+- **« Onde assistir »** : pays par défaut lu dans `navigator.language`
+  (pt-PT donne le Portugal, tout le reste le Brésil), le Brésil et le
+  Portugal en tête de la liste, noms de pays en portugais (`RETOUCHES` de
+  `pt/moteur.mjs`).
+- **Les titres portugais et la VO du portugais** : `node _proto/titres-pt.mjs`
+  écrit `_proto/pt/titres.json` (`{id: {br, pt, vo}}`, cache `.cache-pt.json`
+  non versionné) ; les données portugaises reçoivent `tpt` (Brésil), `tpp`
+  (Portugal, s'il diffère) et `lang:'vo'`. L'option `o.tpt` (Configurações,
+  page portugaise seulement) passe par `O.titreEs` de `e-perso.js`, qui
+  sert les deux langues.
+  - **L'écran** : traductions TMDB `pt-BR` / `pt-PT`. `SANS_DOUBLAGE` est
+    celui de l'espagnol plus *Black Lotus*, que Crunchyroll ne double qu'en
+    espagnol.
+  - **L'écrit** : ni la Biblioteca Nacional de Portugal (porbase, 403) ni la
+    Fundação Biblioteca Nacional (Cloudflare) ne répondent à un script, et
+    Google Books est au quota — relevé le 15 novembre 2026. La source est
+    **Open Library**, éditions `por`, qui en connaît très peu : les titres
+    d'écrit sont rares. Si un SRU brésilien ou portugais ouvre un jour, c'est
+    `ol()` de `titres-pt.mjs` qu'on remplace.
+  - **Le badge VO de l'écrit demande trois absences** : Open Library, le
+    français et l'espagnol (la VO de `es/titres.json`). Relancer
+    `titres-es.mjs` avant `titres-pt.mjs`.
+
 ## Les parcours
 
 Star Wars et Marvel ont deux ordres de lecture depuis la refonte, Dragon Age

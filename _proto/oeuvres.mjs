@@ -81,8 +81,22 @@ const T = {
     q:(t,u,c)=>c?`¿Dónde va ${t} en ${u}?`:`¿Dónde va ${t}?`,
     d:(t,u,pos,av,ap,date)=>`${t} en la línea ${u}: ${pos}${av?`, después de ${av}`:''}${ap?`, antes de ${ap}`:''}.${date?` Fecha: ${date}.`:''} Orden cronológico sin spoilers.`,
     pos1:'primera parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir el menú','Cerrar el menú'] },
+  // Portugais du Brésil, « você » ; posé le 15 novembre 2026.
+  pt: { base:'/pt/obras', accueil:'Início', sur:'Na linha', premier:'Partida da linha', dernier:'Terminal da linha',
+    ici:'Você está aqui', voir:'Ver na linha', billet:'Sua parada', calcul:'Calcular meu itinerário',
+    essentiels:'O essencial antes desta parada', aucun:'Nada: a linha pode começar aqui.',
+    autres:n=>`Mostrar as outras ${n}`, type:'Tipo', date:'Data', present:'Presente', niveau:'Nível', duree:'Duração',
+    arret:'Parada', arretDe:(n,N)=>`Parada ${n} de ${N}`, places:'Lugares', lignes:'Linha', station:'Estação', saut:n=>`${n} parada${n>1?'s':''} mais adiante`,
+    notes:'Bom saber', blocs:n=>`Esta obra aparece ${n} vezes na linha.`, depart:'Partida', terminus:'Terminal',
+    niveaux:{must:'Essencial',important:'Importante',imp:'Importante',bonus:'Opcional'},
+    mem:'Memórias', compte:n=>`${n} obra${n>1?'s':''}`, heures:h=>`cerca de ${h} h`, fil:'Trilha de navegação',
+    guide:'Segundo os níveis do guia.',
+    tag:'Onde fica', fin:(u,c)=>c?`em ${u}?`:'?',
+    q:(t,u,c)=>c?`Onde fica ${t} em ${u}?`:`Onde fica ${t}?`,
+    d:(t,u,pos,av,ap,date)=>`${t} na linha ${u}: ${pos}${av?`, depois de ${av}`:''}${ap?`, antes de ${ap}`:''}.${date?` Data: ${date}.`:''} Ordem cronológica sem spoilers.`,
+    pos1:'primeira parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir o menu','Fechar o menu'] },
 };
-const LOC = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' };
+const LOC = { fr: 'fr_FR', en: 'en_US', es: 'es_ES', pt: 'pt_BR' };
 
 const nb = s => s.replace(/ ([?:!])/g, '\u00a0$1');
 const esc = s => String(s).replace(/<[^>]+>/g, '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -376,7 +390,7 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, urls
   if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', '', dat));
   if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', '', ''));
 
-  const enUrl = urlsL.en, frUrl = urlsL.fr, esUrl = urlsL.es;
+  const enUrl = urlsL.en, frUrl = urlsL.fr, esUrl = urlsL.es, ptUrl = urlsL.pt;
   const fil = { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:[
     { '@type':'ListItem', position:1, name:t.accueil, item:site+sAccueil },
     { '@type':'ListItem', position:2, name:m.nom, item:site+urlU },
@@ -409,6 +423,7 @@ ${TETE_REGLAGES}
 <link rel="alternate" hreflang="en" href="${site}${enUrl}"/>
 <link rel="alternate" hreflang="fr" href="${site}${frUrl}"/>
 <link rel="alternate" hreflang="es" href="${site}${esUrl}"/>
+<link rel="alternate" hreflang="pt" href="${site}${ptUrl}"/>
 <link rel="alternate" hreflang="x-default" href="${site}${enUrl}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Chronologeek"/>
@@ -453,7 +468,7 @@ ${footer}
 <script>(function(){var b=document.getElementById('burger'),d=document.getElementById('drawer');if(b&&d)b.addEventListener('click',function(){var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',${JSON.stringify(t.menu[1])}.replace(/.*/,o?${JSON.stringify(t.menu[1])}:${JSON.stringify(t.menu[0])}))})})();</script>
 <script data-goatcounter="https://arcanerval.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script src="/pwa.js"></script>
-<script src="${langue === 'es' ? '/app-es.js' : '/app.js'}"></script>
+<script src="${langue === 'es' ? '/app-es.js' : langue === 'pt' ? '/app-pt.js' : '/app.js'}"></script>
 </body>
 </html>
 `;
@@ -471,10 +486,11 @@ export function oeuvres({ racine, site, urls }) {
     fr: charge(racine, 'data.js').CG.badgeLabels,
     en: charge(racine, 'data-en.js').CG.badgeLabels,
     es: charge(racine, 'data-es.js').CG.badgeLabels,
+    pt: charge(racine, 'data-pt.js').CG.badgeLabels,
   };
   for (const cle of Object.keys(SOURCES)) {
     const route = urls.en[cle].split('/').pop();
-    const mo = { fr: modele(racine, cle, 'fr'), en: modele(racine, cle, 'en'), es: modele(racine, cle, 'es') };
+    const mo = { fr: modele(racine, cle, 'fr'), en: modele(racine, cle, 'en'), es: modele(racine, cle, 'es'), pt: modele(racine, cle, 'pt') };
     const liste = oeuvresDe(mo.en);
     const chemin = {};
     for (const o of liste) for (const i of o.ids) chemin[i] = o.s;
@@ -484,14 +500,14 @@ export function oeuvres({ racine, site, urls }) {
     tables[route] = chemin;
     for (const o of liste) {
       const url = l => `${T[l].base}/${route}/${o.s}`;
-      const urlsL = { fr: url('fr'), en: url('en'), es: url('es') };
-      for (const langue of ['fr', 'en', 'es']) {
+      const urlsL = { fr: url('fr'), en: url('en'), es: url('es'), pt: url('pt') };
+      for (const langue of ['fr', 'en', 'es', 'pt']) {
         taches.push(ch => page({ cle, route, langue, m: mo[langue], ids: o.ids, s: o.s, site, ch: ch[langue],
           urlDe: id => `${T[langue].base}/${route}/${chemin[id]}`,
           urlU: urls[langue][cle], sAccueil: urls[langue].accueil, urlsL,
           labelsRepli: repli[langue] }));
       }
-      plan.push({ cle, en: url('en'), fr: url('fr'), es: url('es') });
+      plan.push({ cle, en: url('en'), fr: url('fr'), es: url('es'), pt: url('pt') });
     }
   }
   if (taches.length < 1500) throw new Error(`oeuvres : ${taches.length} pages seulement`);

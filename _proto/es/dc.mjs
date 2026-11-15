@@ -1,4 +1,7 @@
 /* DC en espagnol neutre, tutoiement ; titres d'œuvres en anglais. */
+export const RETOUCHES = [
+  ["era.zone==='The 2 main universes'", "era.zone==='Los 2 universos principales'"],
+];
 export default {
   "Chronologeek — DC (proto E)": "Chronologeek — DC (proto E)",
   "DC — Multiverse Guide": "DC — Guía del Multiverso",

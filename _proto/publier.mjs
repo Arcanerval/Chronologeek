@@ -171,6 +171,15 @@ const ROUTES = [
     es: { proto: 'es-a-venir.html', sortie: 'es/proximamente.html', url: '/es/proximamente' } },
 ];
 
+/* Le portugais, posé le 15 novembre 2026 : chaque route qui a l'espagnol a le
+   portugais, sous `/pt/`. Les univers gardent leur nom, les pages du site
+   prennent un mot portugais. Les protos `pt-*` sortent de traduire-pt.mjs. */
+const SLUGS_PT = { expedientes: 'dossies', novedades: 'novidades', proximamente: 'em-breve' };
+const versPt = c => c.replace(/^(\/?)es\//, '$1pt/').replace(/expedientes|novedades|proximamente/, m => SLUGS_PT[m]);
+for (const r of ROUTES) if (r.es) {
+  r.pt = { proto: r.es.proto.replace(/^es-/, 'pt-'), sortie: versPt(r.es.sortie), url: versPt(r.es.url) };
+}
+
 /* Le référencement de chaque page, dans les deux langues : titre, titre Open
    Graph, description, image. Il vient des pages en ligne d'avant la refonte,
    extrait une fois dans `seo.json`.
@@ -243,6 +252,24 @@ const ASSETS = {
   'data-news-es.js': '/data/news-es.js',
   'data-dossier-sw-es.js': '/data/dossier-star-wars-es.js',
   'e-app-es.js':           '/app-es.js',
+  // Le portugais, posé le 15 novembre 2026 : ses données et son moteur (moteur-pt.mjs).
+  'data-pt.js':            '/data/starwars-pt.js',
+  'data-mcu-pt.js': '/data/marvel-pt.js',
+  'data-dc-pt.js': '/data/dc-pt.js',
+  'data-avatar-pt.js': '/data/avatar-pt.js',
+  'data-startrek-pt.js': '/data/startrek-pt.js',
+  'data-twd-pt.js': '/data/walkingdead-pt.js',
+  'data-dragonage-pt.js': '/data/dragonage-pt.js',
+  'data-assassinscreed-pt.js': '/data/assassinscreed-pt.js',
+  'data-dcanimation-pt.js': '/data/dcanimation-pt.js',
+  'data-jurassic-pt.js': '/data/jurassicworld-pt.js',
+  'data-witcher-pt.js': '/data/witcher-pt.js',
+  'data-re-pt.js': '/data/residentevil-pt.js',
+  'data-bladerunner-pt.js': '/data/bladerunner-pt.js',
+  'data-monsterverse-pt.js': '/data/monsterverse-pt.js',
+  'data-news-pt.js': '/data/news-pt.js',
+  'data-dossier-sw-pt.js': '/data/dossier-star-wars-pt.js',
+  'e-app-pt.js':           '/app-pt.js',
   // Chargé entre les données et le script de page, sur les huit univers :
   // il pose les entrées du visiteur dans `D.eras` avant que la page les lise.
   'e-perso.js':            '/perso.js',
@@ -251,14 +278,14 @@ const ASSETS = {
 /* ── Table des liens : nom de maquette → URL réelle ─────────────────────── */
 
 const LIENS = {};
-const LANGUES = ['fr', 'en', 'es'];
+const LANGUES = ['fr', 'en', 'es', 'pt'];
 for (const r of ROUTES) for (const l of LANGUES) if (r[l]) LIENS[r[l].proto] = r[l].url;
 
 /* L'URL de chaque page par clé de route, dans les deux langues, et l'image de
    chaque univers reprise de son référencement. `jsonld.mjs` en tire les fils
    d'Ariane et les deux listes qui renvoient d'une page à l'autre. */
-const URLS = { fr: {}, en: {}, es: {} };
-for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; URLS.es[r.cle] = (r.es || r.en).url; }
+const URLS = { fr: {}, en: {}, es: {}, pt: {} };
+for (const r of ROUTES) { URLS.fr[r.cle] = r.fr.url; URLS.en[r.cle] = r.en.url; URLS.es[r.cle] = (r.es || r.en).url; URLS.pt[r.cle] = (r.pt || r.en).url; }
 
 // Une page par œuvre : calculées ici parce que le pré-rendu y fait des liens.
 const OEUVRES = oeuvres({ racine: RACINE, site: SITE, urls: URLS });
@@ -301,10 +328,10 @@ const PWA = [
 // Le flux du journal, dans les deux langues. Le `<link rel="alternate">` qui le
 // désigne est posé sur les vingt-huit pages : c'est ce qu'un navigateur et un
 // lecteur de flux vont chercher, et personne ne devine une URL de flux.
-const FLUX = { 'fr/feed.xml': 'fr', 'feed.xml': 'en', 'es/feed.xml': 'es' };
+const FLUX = { 'fr/feed.xml': 'fr', 'feed.xml': 'en', 'es/feed.xml': 'es', 'pt/feed.xml': 'pt' };
 const LIEN_FLUX = langue =>
   `<link rel="alternate" type="application/atom+xml" href="/${langue === 'en' ? '' : langue + '/'}feed.xml" ` +
-  `title="${{ fr: 'Chronologeek — Nouveautés', en: 'Chronologeek — What’s new', es: 'Chronologeek — Novedades' }[langue]}"/>`;
+  `title="${{ fr: 'Chronologeek — Nouveautés', en: 'Chronologeek — What’s new', es: 'Chronologeek — Novedades', pt: 'Chronologeek — Novidades' }[langue]}"/>`;
 
 // Les polices de repli, posées le 27 septembre 2026.
 //
@@ -675,6 +702,29 @@ const BOOT_PHRASES = {
     'Calentando el proyector',
     'Desempolvando los cómics',
   ],
+  // Le portugais, posé le 15 novembre 2026 : les mêmes vingt, dans le même ton.
+  pt: [
+    'Restaurando o multiverso',
+    'Apagando as anomalias cronológicas',
+    'Reiniciando o loop temporal',
+    'Alinhando as cronologias',
+    'Recalibrando o Animus',
+    'Organizando catorze universos',
+    'Desembaraçando os flashbacks',
+    'Consultando os arquivos',
+    'Despertando a Força',
+    'Carregando o núcleo de dobra',
+    'Verificando o cânone',
+    'Contando as cenas pós-créditos',
+    'Voltando ao episódio um',
+    'Arquivando os retcons',
+    'Cruzando as datas de lançamento',
+    'Desfragmentando a continuidade',
+    'Polindo os escudos antispoiler',
+    'Invocando a ordem para assistir',
+    'Aquecendo o projetor',
+    'Tirando o pó dos quadrinhos',
+  ],
   en: [
     'Restoring the multiverse',
     'Erasing the chronological anomalies',
@@ -736,7 +786,7 @@ const BOOT_PHRASES = {
 // Quatorze depuis le Monsterverse, le 7 novembre 2026 : 13 × 0,174 = 2,262 s.
 const BOOT_PAS = 0.174;
 // L'intitulé du panneau de quai, au-dessus de la phrase.
-const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing', es: 'Próxima salida' };
+const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing', es: 'Próxima salida', pt: 'Próxima partida' };
 const BOOT_CORPS = langue =>
   '<script>(function(){var r=document.documentElement;' +
   'if(!r.classList.contains("boot"))return;' +
@@ -788,14 +838,15 @@ const PIED = [
 const DRAPEAUX = {
     es: '<svg viewBox="0 0 60 40" aria-hidden="true"><image href="/images/drapeaux/es.webp" width="60" height="40"/></svg>',
     en: '<svg viewBox="0 0 60 40" aria-hidden="true"><image href="/images/drapeaux/en.webp" width="60" height="40"/></svg>',
+    pt: '<svg viewBox="0 0 60 40" aria-hidden="true"><image href="/images/drapeaux/pt.webp" width="60" height="40"/></svg>',
     fr: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#000091"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#E1000F"/></svg>',
   };
 
 const drapeau = (l, n) => DRAPEAUX[l].replace(/id="lx(\w+)"/g, `id="lx$1${n}"`).replace(/url\(#lx(\w+)\)/g, `url(#lx$1${n})`);
-const NOMS_LANGUES = { fr: 'Français', en: 'English', es: 'Español' };
-const TITRE_SELECTEUR = { fr: 'Langue', en: 'Language', es: 'Idioma' };
+const NOMS_LANGUES = { fr: 'Français', en: 'English', es: 'Español', pt: 'Português' };
+const TITRE_SELECTEUR = { fr: 'Langue', en: 'Language', es: 'Idioma', pt: 'Idioma' };
 function selecteurLangue(route, langue) {
-  const items = ['fr', 'en', 'es'].filter(l => route[l]).map(l => l === langue
+  const items = ['fr', 'en', 'es', 'pt'].filter(l => route[l]).map(l => l === langue
     ? `<span class="lp-i" aria-current="true">${drapeau(l, 'b')}<b>${NOMS_LANGUES[l]}</b></span>`
     : `<a class="lp-i" href="${route[l].url}" hreflang="${l}" lang="${l}">${drapeau(l, 'b')}<b>${NOMS_LANGUES[l]}</b></a>`);
   return `<details class="lang-pick"><summary class="icon-btn lang-btn" aria-label="${TITRE_SELECTEUR[langue]}" title="${TITRE_SELECTEUR[langue]}">` +
@@ -817,7 +868,7 @@ const SELECTEUR_CSS = '<style>.lang-pick{position:relative}.lang-pick>summary{li
 // Les partages sociaux ne disaient pas leur langue : les hreflang etaient poses
 // depuis toujours, og:locale non. Facebook et LinkedIn en tirent la langue de
 // l'apercu et le lien vers l'autre version ; sans lui, ils devinent.
-const LOCALES = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' };
+const LOCALES = { fr: 'fr_FR', en: 'en_US', es: 'es_ES', pt: 'pt_BR' };
 
 // Toutes les versions d'une route se désignent l'une l'autre ; `hreflang="es"`
 // sans pays, l'espagnol du site étant neutre (Espagne et Amérique latine).
@@ -836,7 +887,7 @@ function blocSeo(seo, route, moi, langue) {
     `<meta property="og:locale" content="${LOCALES[langue]}"/>`,
     ...autres.map(l => `<meta property="og:locale:alternate" content="${LOCALES[l]}"/>`),
     '<meta name="twitter:card" content="summary_large_image"/>',
-    ...["en", "fr", "es"].filter(l => route[l]).map(l => `<link rel="alternate" hreflang="${l}" href="${SITE}${route[l].url}"/>`),
+    ...["en", "fr", "es", "pt"].filter(l => route[l]).map(l => `<link rel="alternate" hreflang="${l}" href="${SITE}${route[l].url}"/>`),
     `<link rel="alternate" hreflang="x-default" href="${SITE}${route.en.url}"/>`,
     `<link rel="canonical" href="${SITE}${moi}"/>`,
   ].join('\n');
@@ -858,8 +909,8 @@ function blocSeo(seo, route, moi, langue) {
 // « en-dcanimation.html » — un lien mort qu'aucune lecture de page ne montre,
 // exactement le defaut que ce recablage existe pour empecher. L'echappement
 // est donc capture, et la fermeture doit porter le meme.
-const LIEN_RE = /(\\?)(["'])((?:e|en|es)-[a-z0-9-]+\.html)(#[^"'\\]*)?\1\2/g;
-const ASSET_RE = /(\\?)(["'])((?:data[a-z0-9-]*|e-app(?:-es)?|e-perso)\.js)\1\2/g;
+const LIEN_RE = /(\\?)(["'])((?:e|en|es|pt)-[a-z0-9-]+\.html)(#[^"'\\]*)?\1\2/g;
+const ASSET_RE = /(\\?)(["'])((?:data[a-z0-9-]*|e-app(?:-es|-pt)?|e-perso)\.js)\1\2/g;
 
 function recabler(texte, ou, problemes) {
   let out = texte.replace(LIEN_RE, (tout, ech, q, nom, ancre) =>
@@ -1073,6 +1124,7 @@ ${RES_ITI}` : '') +
   {
     const lien = langue === 'fr' ? '<li><a href="/fr/confidentialite">Confidentialité</a></li>'
                : langue === 'es' ? '<li><a href="/es/privacidad">Privacidad</a></li>'
+               : langue === 'pt' ? '<li><a href="/pt/privacidade">Privacidade</a></li>'
                                  : '<li><a href="/privacy">Privacy</a></li>';
     const avantLien = h;
     h = h.replace(/(<li><a href="#contact" data-contact>[^<]*<\/a><\/li>)/, `$1\n      ${lien}`);
@@ -1135,8 +1187,8 @@ if (!CHECK) writeFileSync(join(RACINE, MANIFESTE), JSON.stringify(table, null, 2
 // Ce que chaque page doit à ses sources : son proto, et le fichier de données
 // qui porte ses entrées quand elle en a un. C'est de là que sort son `lastmod`.
 // Le Dossier n'est pas dans `SOURCES` — il range ses 535 lignes sous `CGD`.
-const DONNEES = { 'dossier-sw': { fr: ['data-dossier-sw.js'], en: ['data-dossier-sw-en.js'], es: ['data-dossier-sw-es.js'] },
-                  news:         { fr: ['data-news.js'],       en: ['data-news-en.js'], es: ['data-news-es.js'] } };
+const DONNEES = { 'dossier-sw': { fr: ['data-dossier-sw.js'], en: ['data-dossier-sw-en.js'], es: ['data-dossier-sw-es.js'], pt: ['data-dossier-sw-pt.js'] },
+                  news:         { fr: ['data-news.js'],       en: ['data-news-en.js'], es: ['data-news-es.js'], pt: ['data-news-pt.js'] } };
 
 function sourcesDe(cle, langue) {
   const route = ROUTES.find(r => r.cle === cle);
@@ -1178,7 +1230,7 @@ for (const [sortie, langue] of Object.entries(FLUX)) {
   autres.push({ dest: '/' + sortie, octets: f.length, note: `${n} entrées` });
 }
 
-const ERREURS = { 'fr/404.html': 'fr', '404.html': 'en', 'es/404.html': 'es' };
+const ERREURS = { 'fr/404.html': 'fr', '404.html': 'en', 'es/404.html': 'es', 'pt/404.html': 'pt' };
 for (const [sortie, langue] of Object.entries(ERREURS)) {
   const page = erreur404({ racine: RACINE, langue, urls: URLS[langue] });
   if (!/name="robots" content="noindex/.test(page)) {
@@ -1195,7 +1247,7 @@ try {
   if (!CHECK) writeFileSync(join(RACINE, 'reglages.js'), t);
   autres.push({ dest: '/reglages.js', octets: t.length, note: 'réglages : types et arrêts' });
 } catch (e) { problemes.push(`reglages.js : ${e.message}`); }
-const INDEX = { 'search-fr.json': 'fr', 'search-en.json': 'en', 'search-es.json': 'es' };
+const INDEX = { 'search-fr.json': 'fr', 'search-en.json': 'en', 'search-es.json': 'es', 'search-pt.json': 'pt' };
 for (const [sortie, langue] of Object.entries(INDEX)) {
   let index = '';
   try {
@@ -1232,11 +1284,15 @@ try {
 {
   // Le menu, le pied et le CSS sont ceux de la page Star Wars tout juste écrite.
   const ch = {};
-  for (const langue of ['fr', 'en', 'es']) {
+  for (const langue of LANGUES) {
     const r = ROUTES.find(x => x.cle === 'sw')[langue];
     ch[langue] = habillage(readFileSync(join(RACINE, r.sortie), 'utf8'), r.url);
   }
   const rendu = OEUVRES.rendre(ch);
+  // Le sélecteur de langue des fiches : son CSS n'est pas dans l'habillage
+  // (il est posé dans le <head> des pages), et sans lui la liste n'a ni fond
+  // ni position — « Português » sortait de l'écran.
+  for (const p of rendu.pages) p.html = p.html.replace(/<\/head>/i, () => SELECTEUR_CSS + '\n</head>');
   OEUVRES.pages = rendu.pages;
   OEUVRES.css = rendu.css;
   const connues = new Set(OEUVRES.pages.map(p => '/' + p.sortie.replace(/\.html$/, '')));
@@ -1245,7 +1301,7 @@ try {
     if (/undefined|\[object Object\]|NaN/.test(p.html)) {
       problemes.push(`${p.url} : valeur vide dans la page`);
     }
-    for (const [, h] of p.html.matchAll(/href="(\/(?:fr\/oeuvres|es\/obras|works)\/[^"#?]+)"/g)) {
+    for (const [, h] of p.html.matchAll(/href="(\/(?:fr\/oeuvres|es\/obras|pt\/obras|works)\/[^"#?]+)"/g)) {
       if (!connues.has(h)) problemes.push(`${p.url} : lien mort ${h}`);
     }
   }
@@ -1253,6 +1309,7 @@ try {
     rmSync(join(RACINE, 'works'), { recursive: true, force: true });
     rmSync(join(RACINE, 'fr/oeuvres'), { recursive: true, force: true });
     rmSync(join(RACINE, 'es/obras'), { recursive: true, force: true });
+    rmSync(join(RACINE, 'pt/obras'), { recursive: true, force: true });
     for (const p of OEUVRES.pages) {
       mkdirSync(dirname(join(RACINE, p.sortie)), { recursive: true });
       writeFileSync(join(RACINE, p.sortie), p.html);
@@ -1262,13 +1319,14 @@ try {
       writeFileSync(join(RACINE, 'works', route + '.json'), JSON.stringify(table));
     }
   }
-  autres.push({ dest: '/works/, /fr/oeuvres/ et /es/obras/', octets: OEUVRES.pages.reduce((a, p) => a + p.html.length, 0),
+  autres.push({ dest: '/works/, /fr/oeuvres/, /es/obras/ et /pt/obras/', octets: OEUVRES.pages.reduce((a, p) => a + p.html.length, 0),
                 note: `${OEUVRES.pages.length} pages d'œuvres` });
 
   // La politique de confidentialité, au même habillage (`confidentialite.mjs`).
-  const urlsCf = { fr: '/fr/confidentialite', en: '/privacy', es: '/es/privacidad' };
-  for (const langue of ['fr', 'en', 'es']) {
+  const urlsCf = { fr: '/fr/confidentialite', en: '/privacy', es: '/es/privacidad', pt: '/pt/privacidade' };
+  for (const langue of LANGUES) {
     const r = confidentialite({ langue, ch: ch[langue], site: SITE, urls: urlsCf });
+    r.html = r.html.replace(/<\/head>/i, () => SELECTEUR_CSS + '\n</head>');
     if (/undefined|NaN/.test(r.html)) problemes.push(`${r.url} : valeur vide dans la page`);
     if (!CHECK) writeFileSync(join(RACINE, r.sortie), r.html);
     autres.push({ dest: r.url, octets: r.html.length, note: 'confidentialité' });

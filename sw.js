@@ -55,7 +55,18 @@ const PRECACHE = [
   '/data/walkingdead-es.js', '/data/dragonage-es.js', '/data/assassinscreed-es.js',
   '/data/dcanimation-es.js', '/data/jurassicworld-es.js', '/data/witcher-es.js',
   '/data/residentevil-es.js', '/data/bladerunner-es.js', '/data/monsterverse-es.js',
-  '/data/news-es.js', '/data/dossier-star-wars-es.js'
+  '/data/news-es.js', '/data/dossier-star-wars-es.js',
+  // le portugais, depuis le 15 novembre 2026
+  '/pt/', '/pt/starwars.html', '/app-pt.js', '/data/starwars-pt.js',
+  '/pt/marvel.html', '/pt/dc.html', '/pt/avatar.html', '/pt/startrek.html', '/pt/walkingdead.html',
+  '/pt/dragonage.html', '/pt/assassinscreed.html', '/pt/dcanimation.html', '/pt/jurassicworld.html',
+  '/pt/witcher.html', '/pt/residentevil.html', '/pt/bladerunner.html', '/pt/monsterverse.html',
+  '/pt/novidades.html', '/pt/em-breve.html', '/pt/dossies/', '/pt/dossies/star-wars.html',
+  '/data/marvel-pt.js', '/data/dc-pt.js', '/data/avatar-pt.js', '/data/startrek-pt.js',
+  '/data/walkingdead-pt.js', '/data/dragonage-pt.js', '/data/assassinscreed-pt.js',
+  '/data/dcanimation-pt.js', '/data/jurassicworld-pt.js', '/data/witcher-pt.js',
+  '/data/residentevil-pt.js', '/data/bladerunner-pt.js', '/data/monsterverse-pt.js',
+  '/data/news-pt.js', '/data/dossier-star-wars-pt.js'
 ];
 
 self.addEventListener('install', e => {
