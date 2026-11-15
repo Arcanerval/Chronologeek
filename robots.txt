@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+# Les apercus internes des carrousels de promo (_apercu.html) ne sont pas des
+# pages du site : ils servent a rendre les images, et n ont ni titre ni
+# description.
+Disallow: /promo/
 
 Sitemap: https://chronologeek.app/sitemap.xml

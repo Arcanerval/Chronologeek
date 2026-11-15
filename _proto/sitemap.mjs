@@ -69,7 +69,8 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
   const lignes = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
-    '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    '        xmlns:xhtml="http://www.w3.org/1999/xhtml"',
+    '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
   ];
 
   // Les vingt-huit URL dans l'ordre du fichier écrit à la main : les anglaises
@@ -88,6 +89,7 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
         `    <lastmod>${date}</lastmod>`,
         ...['en', 'fr', 'es', 'pt'].filter(l => r[l]).map(l =>
           `    <xhtml:link rel="alternate" hreflang="${l}" href="${site}${r[l].url}"/>`),
+        `    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${(r.en || r[langue]).url}"/>`,
         '  </url>',
       );
     }
@@ -113,6 +115,11 @@ export function sitemap({ racine, site, routes, sources, oeuvres = [] }) {
         `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${o.fr}"/>`,
         `    <xhtml:link rel="alternate" hreflang="es" href="${site}${o.es}"/>`,
         `    <xhtml:link rel="alternate" hreflang="pt" href="${site}${o.pt}"/>`,
+        `    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${o.en}"/>`,
+        // L'affiche de l'œuvre, pour Google Images : une recherche « andor
+        // poster timeline » n'a que la fiche à montrer. Une image hébergée
+        // ailleurs (TMDB) n'y entre pas — elle n'est pas à nous.
+        ...(o.img ? [`    <image:image><image:loc>${o.img.replace(/&/g, '&amp;')}</image:loc></image:image>`] : []),
         '  </url>',
       );
     }

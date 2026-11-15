@@ -212,7 +212,18 @@ function modele(racine, cle, langue) {
   const seqDe = b => lignes.filter(l => !aBranches ? true : (b ? l.era.branch === b || !l.era.branch : !l.era.branch));
   const seq = b => bl[b || ''] || (bl[b || ''] = seqDe(b));
   const a = lignes.some(l => l.e.level === 'must') ? 'must' : lignes.some(l => l.e.level === 'imp') ? 'imp' : null;
-  return { u, CG: w.CG || {}, lignes, parId, seq, aBranches, a, nom: NOMS[cle] || decode(u.title).split(' — ')[0] };
+  // La date de sortie d'une œuvre, lue dans `erasRelease` : une entrée qui
+  // la référence (`ref`) ou la couvre (`covers`). `rel` vaut « 1977-05-25 »,
+  // « 2015-10-11/2016-04-03 » ou « 1977 » ; on garde le début le plus ancien.
+  const rel = {};
+  for (const era of u.erasRelease || []) for (const e of era.entries || []) {
+    if (!e.rel) continue;
+    const d = String(e.rel).split('/')[0];
+    if (!/^\d{4}(-\d{2}(-\d{2})?)?$/.test(d)) continue;
+    for (const i of [e.ref, e.id, ...(e.covers || [])]) if (i && (!rel[i] || d < rel[i])) rel[i] = d;
+  }
+  const sortie = ids => ids.map(i => rel[i]).filter(Boolean).sort()[0] || '';
+  return { u, CG: w.CG || {}, lignes, parId, seq, aBranches, a, sortie, nom: NOMS[cle] || decode(u.title).split(' — ')[0] };
 }
 
 /* ── L'assemblage : quelles œuvres, sous quel chemin ─────────────────────── */
@@ -229,8 +240,15 @@ function oeuvresDe(en) {
     let s = slug(en.parId[ids[0]].e.title);
     pris[s] = (pris[s] || 0) + 1;
     if (pris[s] > 1) s += '-' + pris[s];
-    out.push({ s, ids });
+    out.push({ s, ids, base: slug(en.parId[ids[0]].e.title) });
   }
+  // Deux œuvres homonymes d'un même univers — le jeu et le film Assassin's
+  // Creed, les deux The Flash de DC — avaient le même <title> : la Search
+  // Console tient deux titres identiques pour un doublon. Elles prennent leur
+  // type entre parenthèses dans le titre et la description, jamais dans le h1.
+  const n = {};
+  for (const o of out) n[o.base] = (n[o.base] || 0) + 1;
+  for (const o of out) o.homonyme = n[o.base] > 1;
   return out;
 }
 
@@ -247,7 +265,7 @@ export function habillage(html, urlSw) {
   return { css: repli + '\n' + principal, header: propre(m1[0]), footer: propre(m2[0]) };
 }
 
-function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch }) {
+function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch }) {
   const t = T[langue];
   const encre = ENCRES[cle];
   const lignes = ids.map(i => m.parId[i]).filter(Boolean);
@@ -378,17 +396,22 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, urls
 
   // Le référencement.
   const contient = compact(titre).includes(compact(m.nom));
-  const q = nb(t.q(titre, m.nom, !contient));
-  const q60 = (q + ' | Chronologeek').length <= 60 ? q : nb(t.q(titre, m.nom, false));
+  // Les libellés de type sont en capitales (« MOVIE ») : le titre les veut en casse de phrase.
+  const typeQ = typeDe(p) === typeDe(p).toUpperCase() ? typeDe(p).charAt(0) + typeDe(p).slice(1).toLowerCase() : typeDe(p);
+  const titreQ = homonyme && typeQ ? `${titre} (${typeQ})` : titre;
+  const q = nb(t.q(titreQ, m.nom, !contient));
+  const q60 = (q + ' | Chronologeek').length <= 60 ? q : nb(t.q(titreQ, m.nom, false));
   const pl0 = places[0];
-  const av0 = pl0.sq[pl0.deb - 1], ap0 = pl0.sq[pl0.fin + 1];
+  // Une œuvre à plusieurs places n'a pas un voisin : « 19 places, après Arrow,
+  // avant Arrow » ne disait rien.
+  const av0 = places.length > 1 ? null : pl0.sq[pl0.deb - 1], ap0 = places.length > 1 ? null : pl0.sq[pl0.fin + 1];
   const posTxt = places.length > 1 ? t.posB(places.length) : pl0.deb === 0 ? t.pos1 : !ap0 ? t.posN : t.posK(pl0.deb + 1, pl0.sq.length);
   const n = x => x ? decode(x.e.title) : '';
   const dat = p.date ? decode(p.date) : '';
-  let desc = nb(t.d(titre, m.nom, posTxt, n(av0), n(ap0), dat));
-  if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', n(ap0), dat));
-  if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', '', dat));
-  if (desc.length > 160) desc = nb(t.d(titre, m.nom, posTxt, '', '', ''));
+  let desc = nb(t.d(titreQ, m.nom, posTxt, n(av0), n(ap0), dat));
+  if (desc.length > 160) desc = nb(t.d(titreQ, m.nom, posTxt, '', n(ap0), dat));
+  if (desc.length > 160) desc = nb(t.d(titreQ, m.nom, posTxt, '', '', dat));
+  if (desc.length > 160) desc = nb(t.d(titreQ, m.nom, posTxt, '', '', ''));
 
   const enUrl = urlsL.en, frUrl = urlsL.fr, esUrl = urlsL.es, ptUrl = urlsL.pt;
   const fil = { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:[
@@ -396,8 +419,19 @@ function page({ cle, route, langue, m, ids, s, site, urlDe, urlU, sAccueil, urls
     { '@type':'ListItem', position:2, name:m.nom, item:site+urlU },
     { '@type':'ListItem', position:3, name:titre, item:site+moi } ] };
   const schema = typeSchema(p);
+  // L'entité : ce qui la relie au reste du web (sa fiche TMDB), à sa
+  // franchise (`isPartOf`) et à sa date de sortie, lue dans l'ordre de sortie
+  // (`rel`, la plus ancienne des entrées de la fiche). Rien n'est écrit ici :
+  // tout vient des données que la page affiche déjà.
+  const tmdbId = p.tmdb && /^\d+$/.test(String(p.tmdb)) && p.tmdb !== '0' ? p.tmdb : '';
+  const sameAs = tmdbId && (p.media === 'movie' || p.media === 'tv') && (schema === 'Movie' || schema === 'TVSeries')
+    ? `https://www.themoviedb.org/${p.media}/${tmdbId}` : '';
+  const sortie = m.sortie(ids);
   const oeuvre = { '@context':'https://schema.org', '@type':schema, name:titre, url:site+moi, inLanguage:langue,
-    ...(img ? { image:img } : {}), ...(p.isbn && schema === 'Book' ? { isbn:p.isbn } : {}) };
+    ...(img ? { image:img } : {}), ...(p.isbn && schema === 'Book' ? { isbn:p.isbn } : {}),
+    ...(sortie ? { datePublished:sortie } : {}),
+    ...(sameAs ? { sameAs } : {}),
+    isPartOf:{ '@type':'CreativeWorkSeries', name:m.nom, url:site+urlU } };
   const ld = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g,'\\u003c')}</script>`;
 
   // Le menu du site, avec l'univers de l'œuvre allumé et le drapeau vers sa version.
@@ -430,7 +464,7 @@ ${TETE_REGLAGES}
 <meta property="og:title" content="${esc(q60)}"/>
 <meta property="og:description" content="${esc(desc)}"/>
 <meta property="og:url" content="${site}${moi}"/>
-${img ? `<meta property="og:image" content="${esc(img)}"/>\n` : ''}<meta property="og:locale" content="${LOC[langue]}"/>
+${img ? `<meta property="og:image" content="${esc(img)}"/>\n<meta property="og:image:alt" content="${esc(titre)}"/>\n` : ''}<meta property="og:locale" content="${LOC[langue]}"/>
 ${Object.keys(LOC).filter(l => l !== langue).map(l => `<meta property="og:locale:alternate" content="${LOC[l]}"/>`).join('\n')}
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
@@ -502,12 +536,14 @@ export function oeuvres({ racine, site, urls }) {
       const url = l => `${T[l].base}/${route}/${o.s}`;
       const urlsL = { fr: url('fr'), en: url('en'), es: url('es'), pt: url('pt') };
       for (const langue of ['fr', 'en', 'es', 'pt']) {
-        taches.push(ch => page({ cle, route, langue, m: mo[langue], ids: o.ids, s: o.s, site, ch: ch[langue],
+        taches.push(ch => page({ cle, route, langue, m: mo[langue], ids: o.ids, s: o.s, homonyme: o.homonyme, site, ch: ch[langue],
           urlDe: id => `${T[langue].base}/${route}/${chemin[id]}`,
           urlU: urls[langue][cle], sAccueil: urls[langue].accueil, urlsL,
           labelsRepli: repli[langue] }));
       }
-      plan.push({ cle, en: url('en'), fr: url('fr'), es: url('es'), pt: url('pt') });
+      const e0 = mo.en.parId[o.ids[0]].e;
+      plan.push({ cle, en: url('en'), fr: url('fr'), es: url('es'), pt: url('pt'),
+        img: e0.img && /^\//.test(e0.img) ? site + e0.img : '' });
     }
   }
   if (taches.length < 1500) throw new Error(`oeuvres : ${taches.length} pages seulement`);

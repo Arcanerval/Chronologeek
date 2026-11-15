@@ -206,6 +206,10 @@ ${TETE_REGLAGES}
 <link rel="alternate" hreflang="x-default" href="${site}${urls.en}"/>
 <meta property="og:title" content="${esc(t.h1)}"/>
 <meta property="og:description" content="${esc(t.desc)}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Chronologeek"/>
+<meta property="og:url" content="${site}${moi}"/>
+<meta property="og:image" content="${site}/images/og-banner.webp"/>
 <meta property="og:locale" content="${{ fr: 'fr_FR', en: 'en_US', es: 'es_ES', pt: 'pt_BR' }[langue]}"/>
 <link rel="icon" type="image/png" href="/images/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>

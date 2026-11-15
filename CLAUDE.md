@@ -2067,6 +2067,34 @@ données, à l'identique. Rien à écrire à l'ajout d'une œuvre : elle a sa pa
 - **Trois chemins y mènent** : le plan du site, un lien dans le pré-rendu, et
   « Fiche complète » dans la carte ouverte (`e-app.js`, par `/works/<route>.json`).
 
+**Le référencement des fiches, revu le 15 novembre 2026** (audit SEO complet, 2 603 pages
+relues hors navigateur, CWV mesurés au navigateur : CLS 0 à 0,014, LCP local 0,3 à 2,1 s) :
+
+- **Deux œuvres homonymes d'un univers** (le jeu et le film *Assassin's Creed*, les deux
+  *The Flash* et *Supergirl* de DC, deux *Origins* et deux *Unity* chez AC) avaient le même
+  `<title>` dans les quatre langues — vingt doublons. `oeuvresDe()` les marque `homonyme`,
+  et le titre, `og:title` et la description prennent leur type en casse de phrase :
+  « Où placer The Flash (Film) dans DC ? ». **Jamais le h1.**
+- **Une œuvre à plusieurs places** n'annonce plus de voisins dans sa description : « 19
+  places, après Arrow, avant Arrow » ne disait rien.
+- **L'entité JSON-LD** porte `datePublished` (le début de `rel` le plus ancien dans
+  `erasRelease`, par `ref` ou `covers`), `sameAs` vers la fiche TMDB (films et séries
+  seulement, identifiant numérique) et `isPartOf` vers la timeline
+  (`CreativeWorkSeries`). Rien d'écrit : tout vient des données. `og:image:alt` en plus.
+- **Le plan du site** porte `x-default` sur chaque URL (comme le HTML) et l'affiche de
+  chaque fiche (`image:image`, images locales seulement — une image TMDB n'est pas à nous).
+  2 504 images.
+- **`robots.txt` écarte `/promo/`** : les `_apercu.html` des carrousels y sont servis sans
+  titre ni description, et rien ne les lie.
+- Les deux pages de confidentialité ont leur `og:image` (la bannière de l'accueil).
+
+Ce qui a été relu et **tient déjà**, à ne pas refaire : un h1 par page, canonique = URL
+partout, `hreflang` réciproques et `x-default` sur toutes les pages publiques, aucune
+description en double, toutes les `og:image` présentes sur le disque, 63 liens vers les
+fiches dans le pré-rendu de chaque timeline, `seo.json` au plafond de 60 / 160 signes dans
+les quatre langues. Les `/a-venir` et `/nouveautes` à la racine sont d'anciennes URL
+françaises en `noindex` + `refresh` : c'est voulu.
+
 **L'itinéraire**, même jour, à la fin de `e-app.js` : « Calculer mon itinéraire » dans
 `.ln-go`, ou `?vers=<id>` depuis une page d'œuvre. On choisit une arrivée et un niveau,
 et le dialogue rend les arrêts à voir, chaque case rejouant un vrai clic sur celle de la
