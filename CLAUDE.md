@@ -647,8 +647,13 @@ Dossier, les fiches d'œuvres (`/es/obras/<univers>/<œuvre>`), `/es/privacidad`
   de `publier.mjs`, un `<details>`, demandé par Niko) : il montre la langue de
   la page et ouvre au clic la liste des versions de la route. L'espagnol est
   coupé en diagonale comme l'anglais, Espagne en haut à gauche, Mexique en bas
-  à droite (idée de Niko), l'aigle réduit à un médaillon — sans lui on lit
-  l'Italie. Les fiches et la confidentialité retirent l'espagnol de la liste.
+  à droite (idée de Niko). **Les drapeaux sont les vrais depuis le 15 novembre
+  2026** (les dessins à la main faisaient parodie, dit Niko) : SVG de flag-icons
+  (MIT) dans `images/drapeaux/`, rendus en WebP ×4 coupés en diagonale
+  (`es.webp`, `en.webp`), l'aigle et les armoiries gardés dans leur triangle ;
+  `DRAPEAUX` de `publier.mjs` les pose dans une enveloppe `<svg>`, le CSS des
+  pages visant `.lang-btn svg`. Le français reste dessiné, en `#000091` /
+  `#E1000F`. Les fiches et la confidentialité retirent l'espagnol de la liste.
   `/reglages.js` a une troisième colonne.
 - **Un univers de plus en espagnol** : sa table `es/<cle>.mjs`, son entrée dans
   `UNIVERS` de `traduire-es.mjs`, `DONNEES_ES`, `ASSETS` et `ROUTES` de

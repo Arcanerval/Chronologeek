@@ -777,15 +777,18 @@ const PIED = [
 /* ── Le sélecteur de langue ─────────────────────────────────────────────
    Un drapeau par langue ; `n` suffixe les identifiants des `clipPath`, le
    même drapeau paraissant deux fois (le bouton et la liste). */
+/* Les drapeaux, refaits le 14 novembre 2026 à la demande de Niko : les
+   dessins à la main (ronds pour étoiles, médaillon pour l'aigle) faisaient
+   parodie. L'Espagne-Mexique et les États-Unis-Royaume-Uni sont des WebP
+   ×4 (`images/drapeaux/`), rendus depuis les SVG de flag-icons (licence MIT,
+   `images/drapeaux/*.svg`), coupés en diagonale, l'aigle et les armoiries
+   gardés dans leur triangle. Ils restent dans une enveloppe `<svg>` : le CSS
+   des pages vise `.lang-btn svg` et `.lp-i svg`. Le français, trois bandes,
+   reste dessiné, aux couleurs officielles. */
 const DRAPEAUX = {
-    es: '<svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lxes"><path d="M0 0h60L0 40z"/></clipPath>' +
-      '<clipPath id="lxmx"><path d="M60 0v40H0z"/></clipPath><g clip-path="url(#lxes)"><path d="M0 0h60v40H0z" fill="#AA151B"/>' +
-      '<path d="M0 10h60v20H0z" fill="#F1BF00"/></g><g clip-path="url(#lxmx)"><path d="M0 0h20v40H0z" fill="#006847"/>' +
-      '<path d="M20 0h20v40H20z" fill="#fff"/><path d="M40 0h20v40H40z" fill="#CE1126"/><circle cx="32" cy="28" r="4.2" fill="#8C5A2B"/>' +
-      '<path d="M27.6 31.4q4.4 3 8.8 0" stroke="#006847" stroke-width="1.4" fill="none"/></g>' +
-      '<path d="M60 0L0 40" stroke="#fff" stroke-width="1.8" fill="none"/></svg>',
-    en: '<svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="lxus"><path d="M0 0h60L0 40z"/></clipPath><clipPath id="lxuk"><path d="M60 0v40H0z"/></clipPath><g clip-path="url(#lxus)"><path d="M0 0h60v40H0z" fill="#B22234"/><path d="M0 3.08h60v3.08H0zM0 9.23h60v3.08H0zM0 15.38h60v3.08H0zM0 21.54h60v3.08H0zM0 27.69h60v3.08H0zM0 33.85h60v3.08H0z" fill="#fff"/><path d="M0 0h24v21.54H0z" fill="#3C3B6E"/><g fill="#fff"><circle cx="3" cy="3.6" r="1.7"/><circle cx="9" cy="3.6" r="1.7"/><circle cx="15" cy="3.6" r="1.7"/><circle cx="21" cy="3.6" r="1.7"/><circle cx="3" cy="10.8" r="1.7"/><circle cx="9" cy="10.8" r="1.7"/><circle cx="15" cy="10.8" r="1.7"/><circle cx="21" cy="10.8" r="1.7"/><circle cx="3" cy="17.9" r="1.7"/><circle cx="9" cy="17.9" r="1.7"/><circle cx="15" cy="17.9" r="1.7"/><circle cx="21" cy="17.9" r="1.7"/></g></g><g clip-path="url(#lxuk)" fill="none"><path d="M0 0h60v40H0z" fill="#012169"/><path d="M0 0l60 40m0-40L0 40" stroke="#fff" stroke-width="9"/><path d="M0 0l60 40m0-40L0 40" stroke="#C8102E" stroke-width="3.6"/><path d="M30 0v40" stroke="#fff" stroke-width="13"/><path d="M0 20h60" stroke="#fff" stroke-width="17"/><path d="M30 0v40" stroke="#C8102E" stroke-width="7"/><path d="M0 20h60" stroke="#C8102E" stroke-width="9"/></g><path d="M60 0L0 40" stroke="#fff" stroke-width="1.8" fill="none"/></svg>',
-    fr: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>',
+    es: '<svg viewBox="0 0 60 40" aria-hidden="true"><image href="/images/drapeaux/es.webp" width="60" height="40"/></svg>',
+    en: '<svg viewBox="0 0 60 40" aria-hidden="true"><image href="/images/drapeaux/en.webp" width="60" height="40"/></svg>',
+    fr: '<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#000091"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#E1000F"/></svg>',
   };
 
 const drapeau = (l, n) => DRAPEAUX[l].replace(/id="lx(\w+)"/g, `id="lx$1${n}"`).replace(/url\(#lx(\w+)\)/g, `url(#lx$1${n})`);
