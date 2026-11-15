@@ -2087,6 +2087,12 @@ relues hors navigateur, CWV mesurés au navigateur : CLS 0 à 0,014, LCP local 0
 - **`robots.txt` écarte `/promo/`** : les `_apercu.html` des carrousels y sont servis sans
   titre ni description, et rien ne les lie.
 - Les deux pages de confidentialité ont leur `og:image` (la bannière de l'accueil).
+- **Le titre français de Marvel suit la Search Console** : « ordre chronologique marvel »
+  pèse 3 195 impressions, « chronologie marvel » 1 306. Il devient « Marvel dans l'ordre
+  chronologique (MCU) », qui couvre aussi « marvel dans l'ordre » et « mcu ordre
+  chronologique ». C'est la page qui rapporte le plus de clics au site.
+- **`BingSiteAuth.xml` à la racine** est la vérification Bing Webmaster Tools de Niko :
+  ne pas le supprimer, sans quoi Bing perd la propriété.
 
 Ce qui a été relu et **tient déjà**, à ne pas refaire : un h1 par page, canonique = URL
 partout, `hreflang` réciproques et `x-default` sur toutes les pages publiques, aucune
