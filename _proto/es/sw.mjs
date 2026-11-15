@@ -39,6 +39,9 @@ export default {
   'FLASHBACK': 'FLASHBACK',
   'for understanding, and are marked as such.': 'para entenderlos, y están marcados como tales.',
   'The video games': 'Los videojuegos',
+  'The Clone Wars': 'The Clone Wars',
+  "Basically, all Star Wars TV shows, animated or not, are spin-offs of The Clone Wars. It introduces and develops many important characters that come back in later shows, movies and even video games. It's the foundation of the expanded universe and even if I don't mark it as essential, it's the most important thing after the main movies.":
+    "Básicamente, todas las series de Star Wars, animadas o no, son spin-offs de The Clone Wars. Presenta y desarrolla muchos personajes importantes que vuelven en series, películas e incluso videojuegos posteriores. Es la base del universo expandido y, aunque no la marco como esencial, es lo más importante después de las películas principales.",
   "If the video games' stories interest you (all of them are very interesting except Squadrons and Outlaws, which are more forgettable) but you don't want to play them, there's a link in each game's description to watch a summary of the story on YouTube.":
     'Si te interesan las historias de los videojuegos (todas son muy interesantes salvo Squadrons y Outlaws, más olvidables) pero no quieres jugarlos, en la descripción de cada juego hay un enlace para ver un resumen de la historia en YouTube.',
   "What's left out, and why": 'Lo que queda fuera, y por qué',

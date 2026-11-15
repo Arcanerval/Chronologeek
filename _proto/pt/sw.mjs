@@ -33,6 +33,9 @@ export default {
   '= Before the Battle of Yavin /': '= antes da Batalha de Yavin (Before the Battle of Yavin) /',
   '= After the Battle of Yavin.': '= depois da Batalha de Yavin (After the Battle of Yavin).',
   'The video games': 'Os videogames',
+  'The Clone Wars': 'The Clone Wars',
+  "Basically, all Star Wars TV shows, animated or not, are spin-offs of The Clone Wars. It introduces and develops many important characters that come back in later shows, movies and even video games. It's the foundation of the expanded universe and even if I don't mark it as essential, it's the most important thing after the main movies.":
+    "Basicamente, todas as séries de Star Wars, animadas ou não, são spin-offs de The Clone Wars. Ela apresenta e desenvolve muitos personagens importantes que voltam em séries, filmes e até videogames posteriores. É a base do universo expandido e, mesmo que eu não a marque como essencial, é o mais importante depois dos filmes principais.",
   "If the video games' stories interest you (all of them are very interesting except Squadrons and Outlaws, which are more forgettable) but you don't want to play them, there's a link in each game's description to watch a summary of the story on YouTube.":
     'Se as histórias dos videogames interessam a você (todas são muito interessantes, menos Squadrons e Outlaws, mais esquecíveis) mas você não quer jogá-los, a descrição de cada jogo tem um link para assistir a um resumo da história no YouTube.',
   'Some media is intentionally left out, and the explanations are below:': 'Algumas obras ficaram de fora de propósito; as explicações estão abaixo:',
