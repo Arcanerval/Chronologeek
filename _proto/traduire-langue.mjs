@@ -59,6 +59,7 @@ const BASE = {
   residentevil: { page: 'en-residentevil.html', sortie: 'residentevil.html', donnees: [['data-re-en.js', 'data-re-{L}.js']] },
   bladerunner: { page: 'en-bladerunner.html', sortie: 'bladerunner.html', donnees: [['data-bladerunner-en.js', 'data-bladerunner-{L}.js']] },
   monsterverse: { page: 'en-monsterverse.html', sortie: 'monsterverse.html', donnees: [['data-monsterverse-en.js', 'data-monsterverse-{L}.js']] },
+  borderlands: { page: 'en-borderlands.html', sortie: 'borderlands.html', donnees: [['data-borderlands-en.js', 'data-borderlands-{L}.js']] },
   avenir: { page: 'en-a-venir.html', sortie: 'a-venir.html' },
   nouveautes: { page: 'en-nouveautes.html', sortie: 'nouveautes.html', donnees: [['data-news-en.js', 'data-news-{L}.js']] },
   dossiers: { page: 'en-dossiers.html', sortie: 'dossiers.html' },
@@ -241,6 +242,11 @@ export async function traduireLangue(L, argv = process.argv.slice(2)) {
       return out;
     }
     if (typeof o !== 'string') return o;
+    /* Les dates de Borderlands sont l'exception à la règle : « 18 y.a. » est
+       une abréviation anglaise, pas une unité du monde comme BBY. Option A
+       tranchée par Niko le 16 novembre 2026 (« −18 años », « Hoy ») : la
+       table de l'univers les porte sous la clé « date:… ». */
+    if (cle === 'date' && /\by\.a\.$|^Present day$/.test(o)) return traduit('date:' + o, `${chemin}`);
     if (TECHNIQUES.has(cle) || IDENTIQUES_PAR_CHAMP.has(cle)) return o;
     /* Un champ qui porte du HTML (les accroches) se traduit nœud par nœud. */
     if (/<[a-z][^>]*>/i.test(o)) {

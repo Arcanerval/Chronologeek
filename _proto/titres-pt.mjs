@@ -59,6 +59,7 @@ const SANS_DOUBLAGE = new Set([
   'da-wfall-1', 'da-redemption-1', 'da-lastcourt-1',
   'ac-ascendance-1', 'ac-iii-abstergo-hacked-1',
   'jw-babr', 'br-blackout2022', 'br-nexusdawn', 'br-nowheretorun',
+  'bl-punching', 'bl-vex', 'bl-rafa', 'bl-amon', 'bl-harlowe', 'bl-c4sh', 'bl-loveless',
   'br-blacklotus',
 ]);
 /* Ce qu'Open Library ignore ou confond : `{ id: { br: 'titre' } }` ou `{ id: { vo: false } }`. */

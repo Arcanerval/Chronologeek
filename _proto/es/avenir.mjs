@@ -2,7 +2,7 @@
 export default {
   "Chronologeek — Upcoming (proto E)": "Chronologeek — Próximamente (proto E)",
   "Updated every day": "Actualizado cada día",
-  "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil, Blade Runner and Monsterverse release — updated every single day.":
+  "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands release — updated every single day.":
     "Todos los próximos estrenos de Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil, Blade Runner y Monsterverse, actualizados cada día.",
   "upcoming releases": "próximos estrenos",
   "universes departing": "universos con salidas",

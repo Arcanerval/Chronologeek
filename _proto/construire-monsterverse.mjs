@@ -54,7 +54,7 @@ const T = JSON.parse(JSON.stringify(bac.window.CG.t));
 T.nav.monsterverse = 'Monsterverse';
 T.markWatched = 'Mark “{t}” as done';
 T.legal3 = 'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, ' +
-  'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner and Monsterverse ' +
+  'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands ' +
   'are trademarks of their respective owners; Chronologeek is an independent fan project.';
 
 /* ── L'accroche, decoupee du document ──────────────────────────────────── */

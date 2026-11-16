@@ -1,0 +1,437 @@
+[
+  {
+    "ou": "CG.badges[].label",
+    "en": "Vault Hunter",
+    "fr": "Chasseur de l’Arche"
+  },
+  {
+    "ou": "CG.badges[].desc",
+    "en": "Welcome to Pandora completed",
+    "fr": "Bienvenue sur Pandore terminé"
+  },
+  {
+    "ou": "CG.badges[].label",
+    "en": "Sanctuary Citizen",
+    "fr": "Citoyen de Sanctuary"
+  },
+  {
+    "ou": "CG.badges[].desc",
+    "en": "Handsome Jack completed",
+    "fr": "Le Beau Jack terminé"
+  },
+  {
+    "ou": "CG.badges[].label",
+    "en": "Crimson Raider",
+    "fr": "Crimson Raider"
+  },
+  {
+    "ou": "CG.badges[].desc",
+    "en": "Children of the Vault completed",
+    "fr": "Descendants de l’Arche terminé"
+  },
+  {
+    "ou": "CG.badges[].label",
+    "en": "Kairos Breakout",
+    "fr": "L’évasion de Kairos"
+  },
+  {
+    "ou": "CG.badges[].desc",
+    "en": "Kairos completed",
+    "fr": "Kairos terminé"
+  },
+  {
+    "ou": "CG.badges[].label",
+    "en": "Season Pass",
+    "fr": "Season Pass"
+  },
+  {
+    "ou": "CG.badges[].desc",
+    "en": "Every DLC played",
+    "fr": "Tous les DLC joués"
+  },
+  {
+    "ou": "CG.badges[].label",
+    "en": "Claptrap’s Best Friend",
+    "fr": "Meilleur ami de Claptrap"
+  },
+  {
+    "ou": "CG.badges[].desc",
+    "en": "Borderlands 100% completed",
+    "fr": "Borderlands terminé à 100 %"
+  },
+  {
+    "ou": "CG.resetMsg",
+    "en": "Reset your Borderlands progress?",
+    "fr": "Réinitialiser votre progression Borderlands ?"
+  },
+  {
+    "ou": "BORDERLANDS.description",
+    "en": "Games · DLC · Videos · Book · Comic",
+    "fr": "Jeux · DLC · Vidéos · Roman · Comic"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "If you’re here it’s because you want to discover or rediscover Borderlands in chronological order. This guide is spoiler free like the others.",
+    "fr": "Si vous êtes ici, c’est que vous voulez découvrir ou redécouvrir Borderlands dans l’ordre chronologique. Ce guide est sans spoiler, comme les autres."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "This guide works for first plays or replays.",
+    "fr": "Ce guide convient aussi bien à une première partie qu’à une nouvelle."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "The official calendar used in Borderlands is never stated: old Facebook pages talked about the year 2854, we see a calendar in a DLC saying 109 AE (After Expansion? Actual Era?) but in another game we learn that a planet has humans on it since at least 1000 years so we can’t have a real date. But we know how much time passes between each games so instead, we’ll go back in time and indicate how long before the last release each other piece of media takes place (XX years ago, written y.a.).",
+    "fr": "Le calendrier officiel de Borderlands n’est jamais donné : d’anciennes pages Facebook parlaient de l’année 2854, on voit dans un DLC un calendrier qui indique 109 AE (After Expansion ? Actual Era ?), mais dans un autre jeu on apprend qu’une planète est habitée par des humains depuis au moins 1000 ans : impossible donc d’avoir une vraie date. On sait en revanche combien de temps passe entre chaque jeu : on remonte donc le temps, et on indique combien d’années avant la dernière sortie se déroule chaque œuvre (il y a XX ans, écrit −XX ans)."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Character choices",
+    "fr": "Le choix des personnages"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "The 4 (sometimes more with the DLC) Vault Hunters that you can choose from at the beginning of each game are ALL canonically present through the events of the story, even if you play solo, they all participate in the official canon. You will cross over them multiple times so even if you play solo remind yourself of the other characters, some can be VERY important sometimes after (even the DLC ones!).",
+    "fr": "Les 4 Chasseurs de l’Arche (parfois plus avec les DLC) que vous pouvez choisir au début de chaque jeu sont TOUS présents dans le canon tout au long de l’histoire : même si vous jouez en solo, ils participent tous au canon officiel. Vous les recroiserez plusieurs fois, donc même en solo, gardez en tête les autres personnages : certains peuvent devenir TRÈS importants par la suite (même ceux des DLC !)."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Borderlands movie",
+    "fr": "Le film Borderlands"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Its own universe.",
+    "fr": "Son propre univers."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Not canon and/or not available anymore.",
+    "fr": "Pas canon et/ou plus disponibles."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Tiny Tina&#x27;s Wonderlands and its sequel comic",
+    "fr": "Tiny Tina’s Wonderlands et sa suite en comic"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Revolves around Tina playing a sort of Dungeons &amp; Dragons with other characters, has no incidence on the games story and the &quot;real world&quot; but you can play it after her Borderlands 2 DLC if you really liked the setting.",
+    "fr": "Tina y joue à une sorte de Donjons &amp; Dragons avec d’autres personnages, sans incidence sur l’histoire des jeux et le « vrai monde », mais vous pouvez y jouer après son DLC de Borderlands 2 si vous avez vraiment aimé l’univers."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "All the DLC that have very little to no story, events, Bounty Packs, Raid Bosses",
+    "fr": "Tous les DLC qui n’ont que peu ou pas d’histoire, les événements, les Bounty Packs, les Raid Bosses"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Do them after their main game.",
+    "fr": "Faites-les après leur jeu principal."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "The Fall of Fyrestone and Tannis &amp; the Vault comics",
+    "fr": "Les comics The Fall of Fyrestone et Tannis &amp; the Vault"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Retelling of the first game.",
+    "fr": "Ils racontent à nouveau le premier jeu."
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Origins comic and the three novels about the first game characters",
+    "fr": "Le comic Origins et les trois romans sur les personnages du premier jeu"
+  },
+  {
+    "ou": "BORDERLANDS.notes",
+    "en": "Not considered officially canon by Gearbox, could be soft canon.",
+    "fr": "Gearbox ne les considère pas comme officiellement canon, ils pourraient l’être à moitié."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].title",
+    "en": "Welcome to Pandora",
+    "fr": "Bienvenue sur Pandore"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].phase",
+    "en": "ERA 1",
+    "fr": "ÈRE 1"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: The Zombie Island of Dr. Ned",
+    "fr": "Borderlands : The Zombie Island of Dr. Ned"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: Mad Moxxi's Underdome Riot",
+    "fr": "Borderlands : Émeute dans l’Underdome de Mad Moxxi"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: The Secret Armory of General Knoxx",
+    "fr": "Borderlands : L’Armurerie Secrète du Général Knoxx"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: Claptrap's New Robot Revolution",
+    "fr": "Borderlands : Nouvelle Révolution"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].title",
+    "en": "Handsome Jack",
+    "fr": "Le Beau Jack"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].phase",
+    "en": "ERA 2",
+    "fr": "ÈRE 2"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 2: Captain Scarlett and Her Pirate's Booty",
+    "fr": "Borderlands 2 : Le Capitaine Scarlett et son Butin de Pirate"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 2: Mr. Torgue's Campaign of Carnage",
+    "fr": "Borderlands 2 : Le Carnage sanglant de Mr. Torgue"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 2: Sir Hammerlock's Big Game Hunt",
+    "fr": "Borderlands 2 : La chasse au gros gibier de Sir Hammerlock"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].links[].label",
+    "en": "Watch the video",
+    "fr": "Regarder la vidéo"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "A short animated prologue to Tiny Tina’s tabletop game: before the dice start rolling, Brick, Mordecai and Lilith get their characters ready.",
+    "fr": "Un court prologue animé à la partie de jeu de rôle de Tiny Tina : avant que les dés ne roulent, Brick, Mordecai et Lilith préparent leurs personnages."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "+5 to Punching: A Bunkers & Badasses Prologue",
+    "fr": "+5 to Punching : A Bunkers & Badasses Prologue"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].note",
+    "en": "During Tales from the Borderlands Episodes 1-3",
+    "fr": "Pendant Tales from the Borderlands, épisodes 1 à 3"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 2: Tiny Tina's Assault on Dragon Keep",
+    "fr": "Borderlands 2 : Tiny Tina et la Forteresse du Dragon"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: The Pre-Sequel",
+    "fr": "Borderlands : The Pre-Sequel"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: The Pre-Sequel - Claptastic Voyage",
+    "fr": "Borderlands : The Pre-Sequel - Claptastic Voyage"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: The Pre-Sequel - The Holodome Onslaught",
+    "fr": "Borderlands : The Pre-Sequel - The Holodome Onslaught"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].note",
+    "en": "You can play them after The Pre-Sequel's intro if you don't want to wait many hours before finishing it, it happens at the same time",
+    "fr": "Vous pouvez y jouer après l’introduction de The Pre-Sequel si vous ne voulez pas attendre des heures avant de le finir : ils se déroulent en même temps"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Fiona and Sasha, the con-artist sisters from Tales from the Borderlands, are back on Pandora with a fortune to spend and a long list of people who would like a piece of it — or of them.",
+    "fr": "Fiona et Sasha, les deux sœurs arnaqueuses de Tales from the Borderlands, sont de retour sur Pandore avec une fortune à dépenser et une longue liste de gens qui en voudraient bien une part — ou leur peau."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: Debt or Alive",
+    "fr": "Borderlands : Debt or Alive"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 2: Commander Lilith & the Fight for Sanctuary",
+    "fr": "Borderlands 2 : Commandant Lilith et la Bataille pour Sanctuary"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].title",
+    "en": "Children of the Vault",
+    "fr": "Descendants de l’Arche"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].phase",
+    "en": "ERA 3",
+    "fr": "ÈRE 3"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 3: Moxxi's Heist of the Handsome Jackpot",
+    "fr": "Borderlands 3 : Le Casse du Beau Jackpot"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 3: Guns, Love, and Tentacles",
+    "fr": "Borderlands 3 : Flingues, Amour et Tentacules"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 3: Bounty of Blood",
+    "fr": "Borderlands 3 : Une prime sanglante"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 3: Psycho Krieg and the Fantastic Fustercluck",
+    "fr": "Borderlands 3 : Krieg le Sadique et l’Incroyable Butin de Pordel"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 3: Director's Cut - Mysteriouslier",
+    "fr": "Borderlands 3 : Director's Cut - Mysteriouslier"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Moxxi sends the Siren Amara after a mysterious keepsake from her past, on a road trip across Pandora that nobody is quite prepared for.",
+    "fr": "Moxxi lance la Sirène Amara sur la piste d’un mystérieux souvenir de son passé, dans un road trip à travers Pandore auquel personne n’est vraiment préparé."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: Moxxi's Mysterious Memento",
+    "fr": "Borderlands : Moxxi's Mysterious Memento"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].phase",
+    "en": "ERA 4",
+    "fr": "ÈRE 4"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An official character short introducing Vex, one of the four new Vault Hunters, before the events of Borderlands 4.",
+    "fr": "Un court métrage officiel qui présente Vex, l’un des quatre nouveaux Chasseurs de l’Arche, avant les événements de Borderlands 4."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Vex: Purple Friday",
+    "fr": "Vex : Purple Friday"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An official character short introducing Rafa, one of the four new Vault Hunters, before the events of Borderlands 4.",
+    "fr": "Un court métrage officiel qui présente Rafa, l’un des quatre nouveaux Chasseurs de l’Arche, avant les événements de Borderlands 4."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Rafa: YOLT",
+    "fr": "Rafa : YOLT"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An official character short introducing Amon, one of the four new Vault Hunters, before the events of Borderlands 4.",
+    "fr": "Un court métrage officiel qui présente Amon, l’un des quatre nouveaux Chasseurs de l’Arche, avant les événements de Borderlands 4."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Amon: Demons",
+    "fr": "Amon : Demons"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An official character short introducing Harlowe, one of the four new Vault Hunters, before the events of Borderlands 4.",
+    "fr": "Un court métrage officiel qui présente Harlowe, l’un des quatre nouveaux Chasseurs de l’Arche, avant les événements de Borderlands 4."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Harlowe: Family Reunion",
+    "fr": "Harlowe : Family Reunion"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An official character short introducing C4SH, the Vault Hunter of the first Borderlands 4 story pack.",
+    "fr": "Un court métrage officiel qui présente C4SH, le Chasseur de l’Arche du premier pack d’histoire de Borderlands 4."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "C4SH: High Roller",
+    "fr": "C4SH : High Roller"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An official character short introducing Loveless, the Vault Hunter of the second Borderlands 4 story pack.",
+    "fr": "Un court métrage officiel qui présente Loveless, la Chasseuse de l’Arche du second pack d’histoire de Borderlands 4."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Loveless: Uncontainable",
+    "fr": "Loveless : Uncontainable"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 4: Mad Ellie and the Vault of the Damned",
+    "fr": "Borderlands 4 : Mad Ellie and the Vault of the Damned"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands 4: FL4K and the Last Resort",
+    "fr": "Borderlands 4 : FL4K and the Last Resort"
+  },
+  {
+    "ou": "BORDERLANDS.erasRelease[].title",
+    "en": "Borderlands · 2009-2010",
+    "fr": "Borderlands · 2009-2010"
+  },
+  {
+    "ou": "BORDERLANDS.erasRelease[].title",
+    "en": "Borderlands 2 · 2012-2015",
+    "fr": "Borderlands 2 · 2012-2015"
+  },
+  {
+    "ou": "BORDERLANDS.erasRelease[].title",
+    "en": "Borderlands 3 · 2019-2022",
+    "fr": "Borderlands 3 · 2019-2022"
+  },
+  {
+    "ou": "BORDERLANDS.erasRelease[].title",
+    "en": "Borderlands 4 · 2024-2026",
+    "fr": "Borderlands 4 · 2024-2026"
+  },
+  {
+    "ou": "page",
+    "en": "Games · DLC · Videos · Book · Comic — the whole Borderlands saga in its most optimized order.",
+    "fr": "Jeux · DLC · Vidéos · Roman · Comic — toute la saga Borderlands dans son ordre le plus optimisé."
+  },
+  {
+    "ou": "attribut",
+    "en": "Borderlands line map",
+    "fr": "Plan de la ligne Borderlands"
+  },
+  {
+    "ou": "page",
+    "en": "Videos",
+    "fr": "Vidéos"
+  },
+  {
+    "ou": "page",
+    "en": ". Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands are trademarks of their respective owners; Chronologeek is an independent fan project.",
+    "fr": ". Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse et Borderlands sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant."
+  },
+  {
+    "ou": "js",
+    "en": "<p><b>Terminus</b><span>End of the Borderlands line ·",
+    "fr": "<p><b>Terminus</b><span>Fin de la ligne Borderlands ·"
+  },
+  {
+    "ou": "js",
+    "en": "Borderlands line complete",
+    "fr": "Ligne Borderlands terminée"
+  }
+]

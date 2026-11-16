@@ -9,7 +9,7 @@ export default {
   ...memes(ES),
   "Chronologeek — Upcoming (proto E)": "Chronologeek — Em breve (proto E)",
   "Updated every day": "Atualizado todos os dias",
-  "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil, Blade Runner and Monsterverse release — updated every single day.":
+  "Every upcoming Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands release — updated every single day.":
     "Todos os próximos lançamentos de Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, DC Animation, Jurassic World, The Witcher, Resident Evil, Blade Runner e Monsterverse, atualizados todos os dias.",
   "upcoming releases": "próximos lançamentos",
   "universes departing": "universos com partidas",

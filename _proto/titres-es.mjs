@@ -57,6 +57,7 @@ const SANS_DOUBLAGE = new Set([
   'da-wfall-1', 'da-redemption-1', 'da-lastcourt-1',
   'ac-ascendance-1', 'ac-iii-abstergo-hacked-1',
   'jw-babr', 'br-blackout2022', 'br-nexusdawn', 'br-nowheretorun',
+  'bl-punching', 'bl-vex', 'bl-rafa', 'bl-amon', 'bl-harlowe', 'bl-c4sh', 'bl-loveless',
 ]);
 /* Ce que la BNE ignore ou confond : `{ id: { es: 'titre' } }` ou `{ id: { vo: false } }`. */
 const CORRECTIONS = {
@@ -171,7 +172,7 @@ const FRANCHISE = {
   sw: /star wars/, mcu: /marvel/, dc: /\b(dc|batman|superman)\b/, avatar: /avatar|korra|aang|kyoshi|yangchen|roku/,
   startrek: /star trek/, twd: /walking dead/, dragonage: /dragon age/, assassinscreed: /assassin/,
   dcanimation: /\b(dc|batman|superman)\b/, jurassic: /jurassic/, witcher: /witcher|brujo|sapkowski/,
-  residentevil: /resident evil|biohazard/, bladerunner: /blade runner/, monsterverse: /godzilla|kong|monsterverse/,
+  residentevil: /resident evil|biohazard/, bladerunner: /blade runner/, monsterverse: /godzilla|kong|monsterverse/, borderlands: /borderlands/,
 };
 async function ecrit(e, nature, univers) {
   const brut = decode(e.title);

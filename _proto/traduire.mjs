@@ -406,6 +406,11 @@ const TRADUCTIONS = [
   ['Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après Rogue One : Cassian Andor et juste avant le film.',
    'Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Cassian Andor and just before the movie.'],
 
+  /* ── la carte Borderlands du 16 novembre 2026 ─────────────────── */
+  ['Nouvelle timeline : Borderlands', 'New timeline: Borderlands'],
+  ["Les jeux, les DLC, les vidéos, le roman et le comic dans l'ordre chronologique — 35 œuvres, de Borderlands à Borderlands 4.",
+   'The games, the DLC, the videos, the novel and the comic in chronological order — 35 works, from Borderlands to Borderlands 4.'],
+
   /* ── la carte Monsterverse du 7 novembre 2026 ───────────────────
      Trois films ont un titre français, pris chez TMDB ; l'anglais reprend
      les titres d'origine. */

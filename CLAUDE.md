@@ -80,6 +80,12 @@ univers » plus bas.
 écrit `e-monsterverse.html` et `data-monsterverse.js`. Publié le 7 novembre 2026
 sous `/monsterverse` et `/fr/monsterverse` : le site compte trente-huit pages et
 quatorze univers. Voir « Le Monsterverse, le quatorzième univers » plus bas.
+**Borderlands est le onzième** — `en-borderlands.html` +
+`data-borderlands-en.js` sont la source, `node _proto/traduire-borderlands.mjs`
+écrit `e-borderlands.html` et `data-borderlands.js`. Publié le 16 novembre
+2026 sous `/borderlands`, `/fr/borderlands`, `/es/borderlands` et
+`/pt/borderlands` : quinze univers. Voir « Borderlands, le quinzième univers »
+plus bas.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -94,7 +100,8 @@ Star Trek `#b48cf2`, The Walking Dead `#a8bf4f`, Dragon Age `#e07b39`,
 Assassin's Creed `#d4a02c`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
 DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`,
 The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`),
-Resident Evil `#dc0000`, Blade Runner `#ff5f1f`, Monsterverse `#d946ef`.
+Resident Evil `#dc0000`, Blade Runner `#ff5f1f`, Monsterverse `#d946ef`,
+Borderlands `#ffe600`.
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Assassin's Creed est passé du rouge à l'or le 24 septembre 2026**, sur
@@ -618,6 +625,48 @@ arrêts sont des comics. Code de ligne **MV**, quatre stations « ÈRE N / 4 ».
 - **Au radar** par Legendary (`TMDB_COMPANY_NAMES`), avec le garde-fou
   `UNIVERS_TITRE` — Legendary produit aussi Dune et Pacific Rim. *Godzilla x
   Kong: Supernova* (`movie/1288438`, mars 2027) est la raison de cette ligne.
+
+## Borderlands, le quinzième univers
+
+Publié le 16 novembre 2026, bâti sur la page Monsterverse : une ligne, deux
+parcours (chronologique et sortie), pas de table `RT` — des jeux, des DLC, des
+vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N / 4 ».
+
+- **Les données sortent d'un script** : `node _proto/construire-borderlands.mjs`
+  écrit `data-borderlands-en.js` et `sorties/borderlands.json` depuis le document
+  de Niko, puis relance `detailler-sortie.mjs`. C'est lui qu'on corrige ; la page
+  `en-borderlands.html` s'édite à la main. Toutes les dates de sortie sont écrites
+  dans `UNIVERS.borderlands` d'`ordre-sortie.mjs` (rien chez TMDB).
+- **35 entrées**, niveaux du document (E `must`, I `important`, le reste
+  `bonus`) : 6 / 10 / 19. **Quatre ères** : Welcome to Pandora (nommée par Niko),
+  Handsome Jack, Children of the Vault, Kairos ; en français Bienvenue sur Pandore,
+  Le Beau Jack, Descendants de l’Arche, Kairos (tranché par Niko).
+- **Le seul flashback** est celui du document, sur *Tales from the Borderlands*
+  Episodes 4-5, avec la note de Niko ; *The Pre-Sequel* n'en porte pas, il est à
+  sa place. L'encadré « Flashbacks » est son texte (« … for understanding, and are
+  marked as such. »), français retrouvé au lexique du site.
+- **Les dates sont la seule exception à « une date ne se traduit jamais »** :
+  « 18 y.a. » est une abréviation anglaise, pas une unité du monde comme BBY.
+  Option A tranchée par Niko : « −18 ans », « −16 à −12 ans », « Aujourd’hui »
+  (`BL_DATE` de `traductions-borderlands.mjs`), « −18 años » / « Hoy » et
+  « −18 anos » / « Hoje » (clés `date:…` des tables `es/` et `pt/borderlands.mjs`,
+  lues par `traduitObjet` de `traduire-langue.mjs`). Une date de plus de dix
+  signes passe en 17 px dans la colonne horaire (classe `mot`), sinon elle déborde.
+- **Les noms français des DLC** sont ceux des versions françaises des jeux, relevés
+  sur le wiki Borderlands francophone par les liens interlangues de l'API MediaWiki
+  du wiki anglais (qui répond aux scripts). Six DLC n'en ont pas et gardent l'anglais.
+- **Le jaune citron `#ffe600`** est celui du logo, demandé par Niko : plus froid
+  et plus saturé que le jaune de DC (`#f5c842`), qui tire vers l'or.
+- **Badge VO** sur le roman et le comic (rien à la BnF, ni à la BNE) et sur les sept
+  vidéos, jamais doublées (`SANS_DOUBLAGE` de `titres-es.mjs` et `titres-pt.mjs`).
+- **Ce qui est écarté** : chaque ligne du document coupée à son deux-points,
+  l'écarté en intitulé, la raison dessous avec sa majuscule. Un intitulé écrit à
+  part plus la ligne entière faisait doublon.
+- **Pas au radar** : rien n'est annoncé après le second story pack de Borderlands 4.
+  Un bouton à zéro sur « À venir », comme les autres univers sans sortie.
+- **Pas de véhicule** dans `VEHICULES` d'`e-app.js` : le train en attendant une
+  silhouette de Niko. Le bouton « remonter » est son logo du Vault détouré
+  (`bltop1/2.webp`, rouille au repos, orange au survol).
 
 ## L'espagnol, troisième langue, posé le 14 novembre 2026
 

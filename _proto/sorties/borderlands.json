@@ -1,0 +1,181 @@
+[
+ {
+  "title": "Borderlands · 2009-2010",
+  "phase": "ERA 1",
+  "ink": 1,
+  "art": "/images/welcometopandoraera.webp",
+  "entries": [
+   {
+    "ref": "bl-bl1",
+    "rel": "2009"
+   },
+   {
+    "ref": "bl-zombieisland",
+    "rel": "2009"
+   },
+   {
+    "ref": "bl-underdome",
+    "rel": "2009"
+   },
+   {
+    "ref": "bl-knoxx",
+    "rel": "2010"
+   },
+   {
+    "ref": "bl-claptraprevolution",
+    "rel": "2010"
+   }
+  ]
+ },
+ {
+  "title": "Borderlands 2 · 2012-2015",
+  "phase": "ERA 2",
+  "ink": 2,
+  "art": "/images/handsomejackera.webp",
+  "entries": [
+   {
+    "ref": "bl-bl2",
+    "rel": "2012"
+   },
+   {
+    "ref": "bl-scarlett",
+    "rel": "2012"
+   },
+   {
+    "ref": "bl-torgue",
+    "rel": "2012"
+   },
+   {
+    "ref": "bl-hammerlock",
+    "rel": "2013"
+   },
+   {
+    "ref": "bl-dragonkeep",
+    "rel": "2013",
+    "drop": [
+     "note"
+    ]
+   },
+   {
+    "ref": "bl-punching",
+    "rel": "2014"
+   },
+   {
+    "ref": "bl-presequel",
+    "rel": "2014"
+   },
+   {
+    "ref": "bl-tales-1",
+    "rel": "2014"
+   },
+   {
+    "ref": "bl-holodome",
+    "rel": "2014"
+   },
+   {
+    "ref": "bl-claptastic",
+    "rel": "2015"
+   },
+   {
+    "ref": "bl-tales-2",
+    "rel": "2015",
+    "drop": [
+     "note",
+     "tags"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Borderlands 3 · 2019-2022",
+  "phase": "ERA 3",
+  "ink": 3,
+  "art": "/images/childrenofthevaultera.webp",
+  "entries": [
+   {
+    "ref": "bl-commanderlilith",
+    "rel": "2019"
+   },
+   {
+    "ref": "bl-bl3",
+    "rel": "2019"
+   },
+   {
+    "ref": "bl-heist",
+    "rel": "2019"
+   },
+   {
+    "ref": "bl-tentacles",
+    "rel": "2020"
+   },
+   {
+    "ref": "bl-bountyofblood",
+    "rel": "2020"
+   },
+   {
+    "ref": "bl-psychokrieg",
+    "rel": "2020"
+   },
+   {
+    "ref": "bl-directorscut",
+    "rel": "2021"
+   },
+   {
+    "ref": "bl-newtales",
+    "rel": "2022"
+   }
+  ]
+ },
+ {
+  "title": "Borderlands 4 · 2024-2026",
+  "phase": "ERA 4",
+  "ink": 4,
+  "art": "/images/kairosera.webp",
+  "entries": [
+   {
+    "ref": "bl-debtoralive",
+    "rel": "2024"
+   },
+   {
+    "ref": "bl-memento",
+    "rel": "2024"
+   },
+   {
+    "ref": "bl-vex",
+    "rel": "2025"
+   },
+   {
+    "ref": "bl-rafa",
+    "rel": "2025"
+   },
+   {
+    "ref": "bl-amon",
+    "rel": "2025"
+   },
+   {
+    "ref": "bl-harlowe",
+    "rel": "2025"
+   },
+   {
+    "ref": "bl-bl4",
+    "rel": "2025"
+   },
+   {
+    "ref": "bl-c4sh",
+    "rel": "2026"
+   },
+   {
+    "ref": "bl-madellie",
+    "rel": "2026"
+   },
+   {
+    "ref": "bl-loveless",
+    "rel": "2026"
+   },
+   {
+    "ref": "bl-fl4k",
+    "rel": "2026"
+   }
+  ]
+ }
+]

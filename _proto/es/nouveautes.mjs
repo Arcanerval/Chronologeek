@@ -39,6 +39,8 @@ export default {
 
   "Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.":
     "Añadidas al final de la cronología Marvel: la escena precréditos y las dos escenas poscréditos del reestreno, antes de Avengers: Doomsday.",
+  "The games, the DLC, the videos, the novel and the comic in chronological order — 35 works, from Borderlands to Borderlands 4.":
+    "Los juegos, los DLC, los vídeos, la novela y el cómic en orden cronológico: 35 obras, de Borderlands a Borderlands 4.",
   "The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.":
     "Las películas, las series Monarch y Skull Island, los cómics y el juego en orden cronológico: 18 obras, de Kong: Skull Island en 1973 a Godzilla x Kong: The New Empire.",
   "Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Chirrut & Baze and just before the movie.":

@@ -286,9 +286,9 @@ function cgBillet(){
     /* le bouton « remonter en haut » se cale au-dessus tant qu'elle est là */
     'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px) + 20px)}',
     '.cgb-rail{display:block;height:8px;border-top:2px solid var(--paper);',
-    '  background:linear-gradient(90deg,#4d9fff 0 7.14%,#e23636 0 14.29%,#f5c842 0 21.43%,',
-    '  #7dd3fc 0 28.57%,#b48cf2 0 35.71%,#a8bf4f 0 42.86%,#e07b39 0 50.00%,#d4a02c 0 57.14%,',
-    '  #2dd4bf 0 64.29%,#45c46b 0 71.43%,#b0bec5 0 78.57%,#dc0000 0 85.71%,#ff5f1f 0 92.86%,#d946ef 0)}',
+    '  background:linear-gradient(90deg,#4d9fff 0 6.67%,#e23636 0 13.33%,#f5c842 0 20.00%,',
+    '  #7dd3fc 0 26.67%,#b48cf2 0 33.33%,#a8bf4f 0 40.00%,#e07b39 0 46.67%,#d4a02c 0 53.33%,',
+    '  #2dd4bf 0 60.00%,#45c46b 0 66.67%,#b0bec5 0 73.33%,#dc0000 0 80.00%,#ff5f1f 0 86.67%,#d946ef 0 93.33%,#ffe600 0)}',
     '.cgbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}',
     /* `--st` est la largeur de la souche : les deux encoches se calent dessus */
     '.cgb-tk{--st:54px;flex:1;min-width:0;display:flex;align-items:stretch;background:var(--paper);color:var(--ink);',
@@ -1794,6 +1794,7 @@ function cgBillet(){
     { u:'residentevil',   prog:'cg-proto-re',             perso:'cg-perso-re' },
     { u:'bladerunner',    prog:'cg-proto-bladerunner',    perso:'cg-perso-bladerunner',    alt:'cg-proto-bladerunner-alt' },
     { u:'monsterverse',   prog:'cg-proto-monsterverse',   perso:'cg-perso-monsterverse',   alt:'cg-proto-monsterverse-alt' },
+    { u:'borderlands',    prog:'cg-proto-borderlands',    perso:'cg-perso-borderlands',    alt:'cg-proto-borderlands-alt' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -2866,7 +2867,7 @@ function cgBillet(){
     startrek: 'cg-proto-st', twd: 'cg-proto-twd', dragonage: 'cg-proto-dragonage',
     assassinscreed: 'cg-proto-assassinscreed', dcanimation: 'cg-proto-dcanim', jurassic: 'cg-proto-jurassic',
     witcher: 'cg-proto-witcher', residentevil: 'cg-proto-re', bladerunner: 'cg-proto-bladerunner',
-    monsterverse: 'cg-proto-monsterverse' };
+    monsterverse: 'cg-proto-monsterverse', borderlands: 'cg-proto-borderlands' };
   var T = FR ? {
     bouton: 'Importar Letterboxd',
     titre: 'Importar desde Letterboxd',
@@ -3802,6 +3803,8 @@ function cgBillet(){
     bladerunner: [['Fandom', 'https://bladerunner.fandom.com/wiki/Main_Page'],
                   ['DeviantArt', 'https://www.deviantart.com/morsoth/art/Timeline-Blade-Runner-1021386153']],
     monsterverse: [['Fandom', 'https://godzilla.fandom.com/wiki/MonsterVerse'], [WIKI], ['Reddit']],
+    borderlands: [['Fandom', 'https://borderlands.fandom.com'], [WIKI],
+                  ['Suggestive Gaming', 'https://www.youtube.com/watch?v=f_HIWZuBN1g'], ['Reddit']],
     witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
               ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
               ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']],
@@ -4100,7 +4103,8 @@ function cgBillet(){
     assassinscreed: { u: 'assassinscreed' },
     witcher:        { u: 'witcher' },
     bladerunner:    { u: 'bladerunner' },
-    monsterverse:   { u: 'monsterverse' }
+    monsterverse:   { u: 'monsterverse' },
+    borderlands:    { u: 'borderlands' }
   };
 
   var T = FR ? {
@@ -4360,7 +4364,8 @@ function cgBillet(){
     ['assassinscreed', 'Assassin’s Creed'],
     ['witcher',        'The Witcher'],
     ['bladerunner',    'Blade Runner'],
-    ['monsterverse',   'Monsterverse']
+    ['monsterverse',   'Monsterverse'],
+    ['borderlands',    'Borderlands']
   ];
 
   var T = FR ? {
@@ -4624,7 +4629,7 @@ function cgBillet(){
     x.closePath();
   }
   var ENCRES = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
-                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f','#d946ef'];
+                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f','#d946ef','#ffe600'];
 
   /* Le billet : même papier, même souche encochée et même filet aux douze
      encres que les barres du bas (`cgBillet`). Souche à l'encre de
@@ -5897,7 +5902,7 @@ function cgBillet(){
         jouer: 'Dónde jugar', rawg: 'Datos: RAWG' };
   var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
-              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE'];
+              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE', 'BORDERLANDS'];
 
   var CSS = [
     '.wt{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:10px;',
@@ -6333,9 +6338,9 @@ function cgBillet(){
   var FRANCHISE = { starwars: 'Star Wars', 'star-wars': 'Star Wars', 'dossier-star-wars': 'Star Wars',
     avatar: 'Avatar', witcher: EN ? 'Witcher' : 'Witcher', assassinscreed: 'Assassin’s Creed',
     dragonage: 'Dragon Age', jurassic: 'Jurassic', jurassicworld: 'Jurassic', bladerunner: 'Blade Runner',
-    residentevil: 'Resident Evil', monsterverse: 'Godzilla' };
+    residentevil: 'Resident Evil', monsterverse: 'Godzilla', borderlands: 'Borderlands' };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA', 'ASSASSINSCREED', 'DCANIM',
-              'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE'];
+              'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE', 'BORDERLANDS'];
 
   var route = ((window.CG_CHEMIN || location.pathname).split('/').filter(Boolean).pop() || '')
     .replace(/\.html$/, '').replace(/^en?-/, '');
@@ -7031,7 +7036,7 @@ function cgBillet(){
      pastilles arrondies, les codes de ligne des univers. Redessiné le
      7 novembre 2026, à la demande de Niko. */
   var ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2', '#a8bf4f', '#e07b39',
-                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef'];
+                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef', '#ffe600'];
   var FILET = 'linear-gradient(90deg,' + ENCRES.map(function(c, i){
     return c + ' ' + (i * 100 / ENCRES.length).toFixed(2) + '% ' + ((i + 1) * 100 / ENCRES.length).toFixed(2) + '%';
   }).join(',') + ')';

@@ -8,17 +8,24 @@
   <updated>2026-11-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
   <entry>
+    <title>New timeline: Borderlands</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/borderlands"/>
+    <id>tag:chronologeek.app,2026-11:new-timeline-borderlands</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Los juegos, los DLC, los vídeos, la novela y el cómic en orden cronológico: 35 obras, de Borderlands a Borderlands 4.</summary>
+  </entry>
+  <entry>
     <title>Avengers: Endgame Encore — Escena precréditos (Peggy y Steve) + las dos escenas poscréditos</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-egenc"/>
     <id>tag:chronologeek.app,2026-11:avengers-endgame-encore-escena-precreditos-peggy-y-steve-las-dos-escenas-poscreditos</id>
-    <updated>2026-11-01T12:00:00Z</updated>
+    <updated>2026-11-01T11:59:00Z</updated>
     <summary>Añadidas al final de la cronología Marvel: la escena precréditos y las dos escenas poscréditos del reestreno, antes de Avengers: Doomsday.</summary>
   </entry>
   <entry>
     <title>New timeline: Monsterverse</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/monsterverse"/>
     <id>tag:chronologeek.app,2026-11:new-timeline-monsterverse</id>
-    <updated>2026-11-01T11:59:00Z</updated>
+    <updated>2026-11-01T11:58:00Z</updated>
     <summary>Las películas, las series Monarch y Skull Island, los cómics y el juego en orden cronológico: 18 obras, de Kong: Skull Island en 1973 a Godzilla x Kong: The New Empire.</summary>
   </entry>
   <entry>
@@ -209,12 +216,5 @@
     <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
     <updated>2026-07-01T11:58:00Z</updated>
     <summary>Añadida a la cronología DC, después del DCU.</summary>
-  </entry>
-  <entry>
-    <title>New Deep Dive: Star Wars novels &amp; comics</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/deep-dives/star-wars"/>
-    <id>tag:chronologeek.app,2026-07:new-deep-dive-star-wars-novels-comics</id>
-    <updated>2026-07-01T11:57:00Z</updated>
-    <summary>533 obras en orden de lectura, con 63 referencias en pantalla para situar las películas y series.</summary>
   </entry>
 </feed>

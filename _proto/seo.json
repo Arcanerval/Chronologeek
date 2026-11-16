@@ -648,5 +648,31 @@
       "desc": "O Arkhamverse em ordem cronológica: 8 jogos e 14 DLC, de Arkham Origins a Suicide Squad: Kill the Justice League, sem spoilers.",
       "image": "https://chronologeek.app/images/dcanimation.webp"
     }
+  },
+  "borderlands": {
+    "fr": {
+      "title": "Borderlands dans l’ordre chronologique | Chronologeek",
+      "ogTitle": "Timeline Borderlands — Chronologeek",
+      "desc": "La timeline Borderlands dans l’ordre chronologique ou de sortie — 35 œuvres, jeux, DLC, vidéos, roman et comic, de Pandore à Kairos, sans spoil.",
+      "image": "https://chronologeek.app/images/borderlands.webp"
+    },
+    "en": {
+      "title": "Borderlands Timeline, Play &amp; Release Order | Chronologeek",
+      "ogTitle": "Borderlands Timeline — Chronologeek",
+      "desc": "The Borderlands timeline in chronological or release order — 35 entries, games, DLC, videos, a novel and a comic, from Pandora to Kairos, spoiler-free.",
+      "image": "https://chronologeek.app/images/borderlands.webp"
+    },
+    "es": {
+      "title": "Borderlands en orden cronológico y de estreno | Chronologeek",
+      "ogTitle": "Borderlands en orden — Chronologeek",
+      "desc": "Borderlands en orden cronológico o de estreno: 35 obras, juegos, DLC, vídeos, una novela y un cómic, de Pandora a Kairos, sin spoilers.",
+      "image": "https://chronologeek.app/images/borderlands.webp"
+    },
+    "pt": {
+      "title": "Borderlands em ordem cronológica | Chronologeek",
+      "ogTitle": "Borderlands em ordem — Chronologeek",
+      "desc": "Borderlands em ordem cronológica ou de lançamento: 35 obras, jogos, DLC, vídeos, um romance e um quadrinho, de Pandora a Kairos, sem spoilers.",
+      "image": "https://chronologeek.app/images/borderlands.webp"
+    }
   }
 }

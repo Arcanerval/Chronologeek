@@ -208,6 +208,33 @@ export const UNIVERS = {
       'mv-survivorinstinct': '2024-10-22', 'mv-declassified': '2025-05-13',
     },
   },
+  borderlands: {
+    fichier: '_proto/data-borderlands-en.js', global: 'window.BORDERLANDS',
+    temps: false,
+    /* Rien chez TMDB. Jeux et DLC d'après Wikipedia (sortie nord-américaine,
+       la première), relevés le 16 novembre 2026 ; les vidéos à leur mise en
+       ligne sur YouTube ; Debt or Alive chez Titan, le comic de Dark Horse à
+       son premier numéro. Les deux moitiés de Tales from the Borderlands
+       tiennent leur période, du premier au dernier épisode. */
+    dates: {
+      'bl-bl1': '2009-10-20', 'bl-zombieisland': '2009-11-24', 'bl-underdome': '2009-12-29',
+      'bl-knoxx': '2010-02-23', 'bl-claptraprevolution': '2010-09-28',
+      'bl-bl2': '2012-09-18', 'bl-scarlett': '2012-10-16', 'bl-torgue': '2012-11-20',
+      'bl-hammerlock': '2013-01-15', 'bl-dragonkeep': '2013-06-25', 'bl-punching': '2014-03-03',
+      'bl-presequel': '2014-10-14', 'bl-holodome': '2014-12-14', 'bl-claptastic': '2015-03-24',
+      'bl-commanderlilith': '2019-06-09', 'bl-bl3': '2019-09-13', 'bl-heist': '2019-12-19',
+      'bl-tentacles': '2020-03-26', 'bl-bountyofblood': '2020-06-25', 'bl-psychokrieg': '2020-09-10',
+      'bl-directorscut': '2021-04-08', 'bl-newtales': '2022-10-21',
+      'bl-debtoralive': '2024-06-25', 'bl-memento': '2024-11-13',
+      'bl-vex': '2025-07-10', 'bl-rafa': '2025-07-30', 'bl-amon': '2025-08-14', 'bl-harlowe': '2025-08-25',
+      'bl-bl4': '2025-09-12', 'bl-c4sh': '2026-03-20', 'bl-madellie': '2026-03-26',
+      'bl-loveless': '2026-09-03', 'bl-fl4k': '2026-09-10',
+    },
+    periodes: {
+      'bl-tales-1': ['2014-11-25', '2015-06-23'],
+      'bl-tales-2': ['2015-08-18', '2015-10-20'],
+    },
+  },
   assassinscreed: {
     fichier: '_proto/data-assassinscreed-en.js', global: 'window.ASSASSINSCREED',
     temps: false,

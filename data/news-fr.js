@@ -19,7 +19,7 @@
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
          assassinscreed | dcanimation | jurassic | witcher |
-         residentevil | bladerunner | monsterverse, ou "" si le changement ne vise pas un univers
+         residentevil | bladerunner | monsterverse | borderlands, ou "" si le changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -37,6 +37,13 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-11", label:"Novembre 2026", items:[
+      { nat:"site", uni:"borderlands", kind:"timeline",
+        title:"Nouvelle timeline : Borderlands",
+        txt:"Les jeux, les DLC, les vidéos, le roman et le comic dans "+
+            "l'ordre chronologique — 35 œuvres, de Borderlands à Borderlands 4.",
+        img:"/images/borderlands.webp",
+        href:"/fr/borderlands", cta:"Ouvrir la timeline" },
+
       { nat:"media", uni:"mcu", kind:"video",
         title:"Scène pré-générique (Peggy & Steve) et scènes post-crédits Avengers : Endgame Encore", meta:"2028",
         txt:"Ajouté à la toute fin de la timeline Marvel : la scène pré-générique "+
