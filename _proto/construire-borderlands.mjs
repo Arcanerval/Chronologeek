@@ -24,9 +24,13 @@
    Les niveaux sont ceux du document : E = `must`, I = `important`, sans
    marque = `bonus`.
 
-   Les fiches : les jeux et les DLC passent par RAWG, par leur titre. Les
-   videos, le roman et le comic n'en ont pas : leur synopsis (`desc`) est
-   ecrit ici, court et sans divulgacher — rien n'en est recopie.
+   Les fiches : les jeux et les DLC passent par RAWG, par leur identifiant
+   (`RAWG` ci-dessous, releve le 16 novembre 2026) — la recherche par titre
+   rendait Q.U.B.E pour Director's Cut et l'Underdome pour Mad Ellie. Six DLC
+   ne sont pas au catalogue RAWG : ils pointent sur leur jeu, pour les
+   plateformes, et portent leur propre synopsis. Les videos, le roman et le
+   comic n'ont pas de fiche : leur synopsis (`desc`) est ecrit ici, court et
+   sans divulgacher — rien n'en est recopie.
 
    Badge VO sur le roman, le comic et les sept videos : aucune edition
    francaise au catalogue de la BnF (releve le 16 novembre 2026), et les
@@ -219,7 +223,43 @@ const E = [
   { ere: 3, id: 'bl-fl4k', type: 'dlc', level: 'bonus', media: 'game',
     title: 'Borderlands 4: FL4K and the Last Resort', date: 'Present day', img: 'fl4klastresort.webp' }
 ];
+/* Les identifiants RAWG. Les six marques « jeu » sont des DLC absents de
+   RAWG : l'identifiant est celui de leur jeu, et le synopsis est le leur. */
+const RAWG = {
+  'bl-bl1': 4828, 'bl-zombieisland': 39955, 'bl-underdome': 39956, 'bl-knoxx': 40014,
+  'bl-claptraprevolution': 40411, 'bl-bl2': 802, 'bl-scarlett': 41704, 'bl-torgue': 41761,
+  'bl-hammerlock': 41796, 'bl-dragonkeep': 42186, 'bl-tales-1': 2100, 'bl-presequel': 3543,
+  'bl-claptastic': 394411, 'bl-holodome': 394410, 'bl-tales-2': 2100, 'bl-commanderlilith': 336810,
+  'bl-bl3': 58617, 'bl-heist': 406954, 'bl-newtales': 836447, 'bl-bl4': 988615,
+  /* jeu */ 'bl-tentacles': 58617, 'bl-bountyofblood': 58617, 'bl-psychokrieg': 58617,
+  /* jeu */ 'bl-directorscut': 58617, 'bl-madellie': 988615, 'bl-fl4k': 988615,
+};
+const DESC_DLC = {
+  /* les DLC que RAWG connaît sans synopsis */
+  'bl-zombieisland': 'Dr. Ned’s experiments have turned the people of Jakobs Cove into zombies, and the Vault Hunters are called in to clean up the mess.',
+  'bl-underdome': 'Mad Moxxi opens her arenas: in three Underdomes, the Vault Hunters fight wave after wave of enemies for glory and loot.',
+  'bl-knoxx': 'The Vault Hunters set out to raid the secret armory of the Atlas corporation, guarded by General Knoxx and his Crimson Lance.',
+  'bl-claptraprevolution': 'A rogue Claptrap leads a robot uprising across Pandora, and the Vault Hunters have to stop the revolution before every Claptrap joins in.',
+  'bl-scarlett': 'Captain Scarlett, a pirate queen of the sand seas, recruits the Vault Hunter to find a legendary treasure buried in the desert of Oasis.',
+  'bl-torgue': 'Mr. Torgue invites the Vault Hunter to a tournament of explosions and arena fights to crown the greatest badass on Pandora.',
+  'bl-hammerlock': 'Sir Hammerlock takes the Vault Hunter hunting in the swamps of Aegrus, where a mad professor has plans of his own.',
+  'bl-dragonkeep': 'Tiny Tina runs a game of Bunkers & Badasses for Lilith, Mordecai and Brick: a fantasy adventure straight out of her imagination, with knights, dragons and skeletons.',
+  'bl-claptastic': 'The Vault Hunters are digitized and sent inside Claptrap’s mind, a world of glitches and buried memories, to retrieve a program hidden in it.',
+  'bl-holodome': 'An arena challenge: the Vault Hunters face wave after wave of enemies in the Holodome, a holographic battle arena.',
+  /* les DLC absents de RAWG */
+  'bl-tentacles': 'Sir Hammerlock and Wainwright Jakobs are getting married on a frozen planet, but the lodge they picked for the ceremony is haunted by a cult that worships an ancient Vault monster.',
+  'bl-bountyofblood': 'A Western on the desert planet Gehenna: the Vault Hunter rides into a frontier town that a ruthless gang, the Devil Riders, is trying to bring to its knees.',
+  'bl-psychokrieg': 'The Vault Hunters dive into the fractured mind of Krieg the Psycho to dig up a secret buried deep inside it, fighting his inner demons along the way.',
+  'bl-directorscut': 'A new murder-mystery story mission, Mysteriouslier: Horror at Scryer’s Crypt, plus a Vault Card and behind-the-scenes content from the developers.',
+  'bl-madellie': 'The first Borderlands 4 story pack: Mad Ellie drags the Vault Hunters into a cosmic-horror Vault, and a new Vault Hunter, C4SH, joins them.',
+  'bl-fl4k': 'The second Borderlands 4 story pack: FL4K is back, at the Last Resort, and a new Vault Hunter, Loveless, joins the roster.',
+};
 for (const e of E) {
+  if (e.media === 'game') {
+    if (!RAWG[e.id]) throw new Error('Identifiant RAWG absent : ' + e.id);
+    e.tmdb = String(RAWG[e.id]);
+  }
+  if (DESC_DLC[e.id]) e.desc = DESC_DLC[e.id];
   e.img = vignette(e.img, e.id);
   if (!e.img) delete e.img;
 }

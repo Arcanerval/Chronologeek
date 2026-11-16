@@ -165,9 +165,19 @@
     "fr": "Borderlands : The Zombie Island of Dr. Ned"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Dr. Ned’s experiments have turned the people of Jakobs Cove into zombies, and the Vault Hunters are called in to clean up the mess.",
+    "fr": "Les expériences du Dr Ned ont changé les habitants de Jakobs Cove en zombies, et les Chasseurs de l’Arche sont appelés pour réparer les dégâts."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands: Mad Moxxi's Underdome Riot",
     "fr": "Borderlands : Émeute dans l’Underdome de Mad Moxxi"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Mad Moxxi opens her arenas: in three Underdomes, the Vault Hunters fight wave after wave of enemies for glory and loot.",
+    "fr": "Mad Moxxi ouvre ses arènes : dans trois Underdomes, les Chasseurs de l’Arche affrontent vague après vague d’ennemis, pour la gloire et le butin."
   },
   {
     "ou": "BORDERLANDS.eras[].entries[].title",
@@ -175,9 +185,19 @@
     "fr": "Borderlands : L’Armurerie Secrète du Général Knoxx"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "The Vault Hunters set out to raid the secret armory of the Atlas corporation, guarded by General Knoxx and his Crimson Lance.",
+    "fr": "Les Chasseurs de l’Arche partent piller l’armurerie secrète de la société Atlas, gardée par le général Knoxx et sa Lance Écarlate."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands: Claptrap's New Robot Revolution",
     "fr": "Borderlands : Nouvelle Révolution"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "A rogue Claptrap leads a robot uprising across Pandora, and the Vault Hunters have to stop the revolution before every Claptrap joins in.",
+    "fr": "Un Claptrap devenu incontrôlable mène une révolte des robots à travers Pandore, et les Chasseurs de l’Arche doivent l’arrêter avant que tous les Claptrap s’y joignent."
   },
   {
     "ou": "BORDERLANDS.eras[].title",
@@ -195,14 +215,29 @@
     "fr": "Borderlands 2 : Le Capitaine Scarlett et son Butin de Pirate"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Captain Scarlett, a pirate queen of the sand seas, recruits the Vault Hunter to find a legendary treasure buried in the desert of Oasis.",
+    "fr": "Le capitaine Scarlett, reine pirate des mers de sable, recrute le Chasseur de l’Arche pour trouver un trésor légendaire enfoui dans le désert d’Oasis."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands 2: Mr. Torgue's Campaign of Carnage",
     "fr": "Borderlands 2 : Le Carnage sanglant de Mr. Torgue"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Mr. Torgue invites the Vault Hunter to a tournament of explosions and arena fights to crown the greatest badass on Pandora.",
+    "fr": "Mr. Torgue invite le Chasseur de l’Arche à un tournoi d’explosions et de combats d’arène pour couronner le plus grand dur à cuire de Pandore."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands 2: Sir Hammerlock's Big Game Hunt",
     "fr": "Borderlands 2 : La chasse au gros gibier de Sir Hammerlock"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Sir Hammerlock takes the Vault Hunter hunting in the swamps of Aegrus, where a mad professor has plans of his own.",
+    "fr": "Sir Hammerlock emmène le Chasseur de l’Arche chasser dans les marais d’Aegrus, où un professeur fou a ses propres projets."
   },
   {
     "ou": "BORDERLANDS.eras[].entries[].links[].label",
@@ -230,6 +265,11 @@
     "fr": "Borderlands 2 : Tiny Tina et la Forteresse du Dragon"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Tiny Tina runs a game of Bunkers & Badasses for Lilith, Mordecai and Brick: a fantasy adventure straight out of her imagination, with knights, dragons and skeletons.",
+    "fr": "Tiny Tina mène une partie de Bunkers & Badasses pour Lilith, Mordecai et Brick : une aventure de fantasy sortie tout droit de son imagination, avec chevaliers, dragons et squelettes."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands: The Pre-Sequel",
     "fr": "Borderlands : The Pre-Sequel"
@@ -240,9 +280,19 @@
     "fr": "Borderlands : The Pre-Sequel - Claptastic Voyage"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "The Vault Hunters are digitized and sent inside Claptrap’s mind, a world of glitches and buried memories, to retrieve a program hidden in it.",
+    "fr": "Les Chasseurs de l’Arche sont numérisés et envoyés dans l’esprit de Claptrap, un monde de bugs et de souvenirs enfouis, pour y récupérer un programme caché."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands: The Pre-Sequel - The Holodome Onslaught",
     "fr": "Borderlands : The Pre-Sequel - The Holodome Onslaught"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "An arena challenge: the Vault Hunters face wave after wave of enemies in the Holodome, a holographic battle arena.",
+    "fr": "Un défi d’arène : les Chasseurs de l’Arche affrontent vague après vague d’ennemis dans l’Holodome, une arène de combat holographique."
   },
   {
     "ou": "BORDERLANDS.eras[].entries[].note",
@@ -285,9 +335,19 @@
     "fr": "Borderlands 3 : Flingues, Amour et Tentacules"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Sir Hammerlock and Wainwright Jakobs are getting married on a frozen planet, but the lodge they picked for the ceremony is haunted by a cult that worships an ancient Vault monster.",
+    "fr": "Sir Hammerlock et Wainwright Jakobs se marient sur une planète gelée, mais le pavillon choisi pour la cérémonie est hanté par une secte qui vénère un ancien monstre de l’Arche."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands 3: Bounty of Blood",
     "fr": "Borderlands 3 : Une prime sanglante"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "A Western on the desert planet Gehenna: the Vault Hunter rides into a frontier town that a ruthless gang, the Devil Riders, is trying to bring to its knees.",
+    "fr": "Un western sur la planète désertique Gehenna : le Chasseur de l’Arche arrive dans une ville de la frontière qu’un gang sans pitié, les Devil Riders, veut mettre à genoux."
   },
   {
     "ou": "BORDERLANDS.eras[].entries[].title",
@@ -295,9 +355,19 @@
     "fr": "Borderlands 3 : Krieg le Sadique et l’Incroyable Butin de Pordel"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "The Vault Hunters dive into the fractured mind of Krieg the Psycho to dig up a secret buried deep inside it, fighting his inner demons along the way.",
+    "fr": "Les Chasseurs de l’Arche plongent dans l’esprit fracturé de Krieg le Sadique pour y déterrer un secret enfoui, en affrontant ses démons intérieurs."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands 3: Director's Cut - Mysteriouslier",
     "fr": "Borderlands 3 : Director's Cut - Mysteriouslier"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "A new murder-mystery story mission, Mysteriouslier: Horror at Scryer’s Crypt, plus a Vault Card and behind-the-scenes content from the developers.",
+    "fr": "Une nouvelle mission d’histoire en forme d’enquête criminelle, Mysteriouslier: Horror at Scryer’s Crypt, avec une Vault Card et des coulisses racontées par les développeurs."
   },
   {
     "ou": "BORDERLANDS.eras[].entries[].desc",
@@ -380,9 +450,19 @@
     "fr": "Borderlands 4 : Mad Ellie and the Vault of the Damned"
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "The first Borderlands 4 story pack: Mad Ellie drags the Vault Hunters into a cosmic-horror Vault, and a new Vault Hunter, C4SH, joins them.",
+    "fr": "Le premier pack d’histoire de Borderlands 4 : Mad Ellie entraîne les Chasseurs de l’Arche dans une Arche d’horreur cosmique, et un nouveau Chasseur, C4SH, les rejoint."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands 4: FL4K and the Last Resort",
     "fr": "Borderlands 4 : FL4K and the Last Resort"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "The second Borderlands 4 story pack: FL4K is back, at the Last Resort, and a new Vault Hunter, Loveless, joins the roster.",
+    "fr": "Le second pack d’histoire de Borderlands 4 : FL4K est de retour, au Last Resort, et une nouvelle Chasseuse de l’Arche, Loveless, rejoint l’équipe."
   },
   {
     "ou": "BORDERLANDS.erasRelease[].title",

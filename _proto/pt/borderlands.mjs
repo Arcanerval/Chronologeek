@@ -66,6 +66,40 @@ export default {
   "An official character short introducing Loveless, the Vault Hunter of the second Borderlands 4 story pack.":
     "Um curta oficial que apresenta Loveless, a Caçadora da Arca do segundo pacote de história de Borderlands 4.",
 
+  "Sir Hammerlock and Wainwright Jakobs are getting married on a frozen planet, but the lodge they picked for the ceremony is haunted by a cult that worships an ancient Vault monster.":
+    "Sir Hammerlock e Wainwright Jakobs vão se casar em um planeta congelado, mas o chalé escolhido para a cerimônia é assombrado por um culto que venera um antigo monstro da Arca.",
+  "A Western on the desert planet Gehenna: the Vault Hunter rides into a frontier town that a ruthless gang, the Devil Riders, is trying to bring to its knees.":
+    "Um faroeste no planeta desértico Gehenna: o Caçador da Arca chega a uma cidade de fronteira que uma gangue implacável, os Devil Riders, quer pôr de joelhos.",
+  "The Vault Hunters dive into the fractured mind of Krieg the Psycho to dig up a secret buried deep inside it, fighting his inner demons along the way.":
+    "Os Caçadores da Arca mergulham na mente fraturada de Krieg, o Psicopata, para desenterrar um segredo escondido nela, enfrentando seus demônios interiores.",
+  "A new murder-mystery story mission, Mysteriouslier: Horror at Scryer’s Crypt, plus a Vault Card and behind-the-scenes content from the developers.":
+    "Uma nova missão de história com um mistério de assassinato, Mysteriouslier: Horror at Scryer’s Crypt, além de um Vault Card e conteúdo de bastidores dos desenvolvedores.",
+  "The first Borderlands 4 story pack: Mad Ellie drags the Vault Hunters into a cosmic-horror Vault, and a new Vault Hunter, C4SH, joins them.":
+    "O primeiro pacote de história de Borderlands 4: Mad Ellie arrasta os Caçadores da Arca para uma Arca de horror cósmico, e um novo Caçador, C4SH, se junta a eles.",
+  "The second Borderlands 4 story pack: FL4K is back, at the Last Resort, and a new Vault Hunter, Loveless, joins the roster.":
+    "O segundo pacote de história de Borderlands 4: FL4K está de volta, no Last Resort, e uma nova Caçadora da Arca, Loveless, entra para a equipe.",
+
+  "Dr. Ned’s experiments have turned the people of Jakobs Cove into zombies, and the Vault Hunters are called in to clean up the mess.":
+    "Os experimentos do Dr. Ned transformaram os moradores de Jakobs Cove em zumbis, e os Caçadores da Arca são chamados para limpar a bagunça.",
+  "Mad Moxxi opens her arenas: in three Underdomes, the Vault Hunters fight wave after wave of enemies for glory and loot.":
+    "Mad Moxxi abre suas arenas: em três Underdomes, os Caçadores da Arca enfrentam onda após onda de inimigos, pela glória e pelo saque.",
+  "The Vault Hunters set out to raid the secret armory of the Atlas corporation, guarded by General Knoxx and his Crimson Lance.":
+    "Os Caçadores da Arca partem para saquear o arsenal secreto da corporação Atlas, guardado pelo general Knoxx e sua Lança Carmesim.",
+  "A rogue Claptrap leads a robot uprising across Pandora, and the Vault Hunters have to stop the revolution before every Claptrap joins in.":
+    "Um Claptrap fora de controle lidera uma revolta de robôs por Pandora, e os Caçadores da Arca precisam detê-la antes que todos os Claptraps se juntem a ela.",
+  "Captain Scarlett, a pirate queen of the sand seas, recruits the Vault Hunter to find a legendary treasure buried in the desert of Oasis.":
+    "A capitã Scarlett, rainha pirata dos mares de areia, recruta o Caçador da Arca para encontrar um tesouro lendário enterrado no deserto de Oasis.",
+  "Mr. Torgue invites the Vault Hunter to a tournament of explosions and arena fights to crown the greatest badass on Pandora.":
+    "Mr. Torgue convida o Caçador da Arca para um torneio de explosões e lutas de arena que vai coroar o maior durão de Pandora.",
+  "Sir Hammerlock takes the Vault Hunter hunting in the swamps of Aegrus, where a mad professor has plans of his own.":
+    "Sir Hammerlock leva o Caçador da Arca para caçar nos pântanos de Aegrus, onde um professor louco tem os próprios planos.",
+  "Tiny Tina runs a game of Bunkers & Badasses for Lilith, Mordecai and Brick: a fantasy adventure straight out of her imagination, with knights, dragons and skeletons.":
+    "Tiny Tina comanda uma partida de Bunkers & Badasses para Lilith, Mordecai e Brick: uma aventura de fantasia saída direto da imaginação dela, com cavaleiros, dragões e esqueletos.",
+  "The Vault Hunters are digitized and sent inside Claptrap’s mind, a world of glitches and buried memories, to retrieve a program hidden in it.":
+    "Os Caçadores da Arca são digitalizados e enviados para dentro da mente de Claptrap, um mundo de falhas e lembranças enterradas, para recuperar um programa escondido nela.",
+  "An arena challenge: the Vault Hunters face wave after wave of enemies in the Holodome, a holographic battle arena.":
+    "Um desafio de arena: os Caçadores da Arca enfrentam onda após onda de inimigos no Holodome, uma arena de combate holográfica.",
+
   "Vault Hunter": "Caçador da Arca", "Welcome to Pandora completed": "Bem-vindo a Pandora concluído",
   "Sanctuary Citizen": "Cidadão de Sanctuary", "Handsome Jack completed": "Jack Bonitão concluído",
   "Crimson Raider": "Saqueador Carmesim", "Children of the Vault completed": "Filhos da Arca concluído",

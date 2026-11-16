@@ -68,6 +68,40 @@ export default {
   "An official character short introducing Loveless, the Vault Hunter of the second Borderlands 4 story pack.":
     "Un corto oficial que presenta a Loveless, la Buscacámaras del segundo paquete de historia de Borderlands 4.",
 
+  "Sir Hammerlock and Wainwright Jakobs are getting married on a frozen planet, but the lodge they picked for the ceremony is haunted by a cult that worships an ancient Vault monster.":
+    "Sir Hammerlock y Wainwright Jakobs se casan en un planeta helado, pero el refugio que eligieron para la ceremonia está acechado por una secta que adora a un antiguo monstruo de la Cámara.",
+  "A Western on the desert planet Gehenna: the Vault Hunter rides into a frontier town that a ruthless gang, the Devil Riders, is trying to bring to its knees.":
+    "Un wéstern en el planeta desértico Gehenna: el Buscacámaras llega a un pueblo fronterizo que una banda despiadada, los Devil Riders, quiere poner de rodillas.",
+  "The Vault Hunters dive into the fractured mind of Krieg the Psycho to dig up a secret buried deep inside it, fighting his inner demons along the way.":
+    "Los Buscacámaras se sumergen en la mente fracturada de Krieg el Psicópata para desenterrar un secreto enterrado en ella, enfrentándose a sus demonios internos.",
+  "A new murder-mystery story mission, Mysteriouslier: Horror at Scryer’s Crypt, plus a Vault Card and behind-the-scenes content from the developers.":
+    "Una nueva misión de historia con un misterio por resolver, Mysteriouslier: Horror at Scryer’s Crypt, además de una Vault Card y contenido entre bastidores de los desarrolladores.",
+  "The first Borderlands 4 story pack: Mad Ellie drags the Vault Hunters into a cosmic-horror Vault, and a new Vault Hunter, C4SH, joins them.":
+    "El primer paquete de historia de Borderlands 4: Mad Ellie arrastra a los Buscacámaras a una Cámara de horror cósmico, y un nuevo Buscacámaras, C4SH, se les une.",
+  "The second Borderlands 4 story pack: FL4K is back, at the Last Resort, and a new Vault Hunter, Loveless, joins the roster.":
+    "El segundo paquete de historia de Borderlands 4: FL4K vuelve, en el Last Resort, y una nueva Buscacámaras, Loveless, se une al equipo.",
+
+  "Dr. Ned’s experiments have turned the people of Jakobs Cove into zombies, and the Vault Hunters are called in to clean up the mess.":
+    "Los experimentos del Dr. Ned han convertido a los habitantes de Jakobs Cove en zombis, y llaman a los Buscacámaras para arreglar el desastre.",
+  "Mad Moxxi opens her arenas: in three Underdomes, the Vault Hunters fight wave after wave of enemies for glory and loot.":
+    "Mad Moxxi abre sus arenas: en tres Underdomes, los Buscacámaras se enfrentan a oleada tras oleada de enemigos, por la gloria y el botín.",
+  "The Vault Hunters set out to raid the secret armory of the Atlas corporation, guarded by General Knoxx and his Crimson Lance.":
+    "Los Buscacámaras se lanzan a saquear la armería secreta de la corporación Atlas, custodiada por el general Knoxx y su Lanza Carmesí.",
+  "A rogue Claptrap leads a robot uprising across Pandora, and the Vault Hunters have to stop the revolution before every Claptrap joins in.":
+    "Un Claptrap descontrolado encabeza una rebelión de robots por todo Pandora, y los Buscacámaras deben detenerla antes de que se unan todos los Claptrap.",
+  "Captain Scarlett, a pirate queen of the sand seas, recruits the Vault Hunter to find a legendary treasure buried in the desert of Oasis.":
+    "La capitana Scarlett, reina pirata de los mares de arena, recluta al Buscacámaras para encontrar un tesoro legendario enterrado en el desierto de Oasis.",
+  "Mr. Torgue invites the Vault Hunter to a tournament of explosions and arena fights to crown the greatest badass on Pandora.":
+    "Mr. Torgue invita al Buscacámaras a un torneo de explosiones y combates de arena para coronar al tipo más duro de Pandora.",
+  "Sir Hammerlock takes the Vault Hunter hunting in the swamps of Aegrus, where a mad professor has plans of his own.":
+    "Sir Hammerlock lleva al Buscacámaras de caza a los pantanos de Aegrus, donde un profesor loco tiene sus propios planes.",
+  "Tiny Tina runs a game of Bunkers & Badasses for Lilith, Mordecai and Brick: a fantasy adventure straight out of her imagination, with knights, dragons and skeletons.":
+    "Tiny Tina dirige una partida de Bunkers & Badasses para Lilith, Mordecai y Brick: una aventura de fantasía salida de su imaginación, con caballeros, dragones y esqueletos.",
+  "The Vault Hunters are digitized and sent inside Claptrap’s mind, a world of glitches and buried memories, to retrieve a program hidden in it.":
+    "Los Buscacámaras son digitalizados y enviados a la mente de Claptrap, un mundo de fallos y recuerdos enterrados, para recuperar un programa oculto en ella.",
+  "An arena challenge: the Vault Hunters face wave after wave of enemies in the Holodome, a holographic battle arena.":
+    "Un desafío de arena: los Buscacámaras se enfrentan a oleada tras oleada de enemigos en el Holodome, una arena de combate holográfica.",
+
   "Vault Hunter": "Buscacámaras", "Welcome to Pandora completed": "Bienvenido a Pandora completado",
   "Sanctuary Citizen": "Ciudadano de Santuario", "Handsome Jack completed": "Jack el Guapo completado",
   "Crimson Raider": "Asaltante Carmesí", "Children of the Vault completed": "Hijos de la Cámara completado",
