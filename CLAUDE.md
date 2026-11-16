@@ -664,8 +664,8 @@ vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N /
   part plus la ligne entière faisait doublon.
 - **Pas au radar** : rien n'est annoncé après le second story pack de Borderlands 4.
   Un bouton à zéro sur « À venir », comme les autres univers sans sortie.
-- **Pas de véhicule** dans `VEHICULES` d'`e-app.js` : le train en attendant une
-  silhouette de Niko. Le bouton « remonter » est son logo du Vault détouré
+- **Le véhicule est la station Helios** (`images/vehicules/helios.webp`, 88 × 146,
+  image de Niko du 16 novembre 2026). Le bouton « remonter » est son logo du Vault détouré
   (`bltop1/2.webp`, rouille au repos, orange au survol).
 
 ## L'espagnol, troisième langue, posé le 14 novembre 2026
