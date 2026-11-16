@@ -3188,7 +3188,7 @@ function cgBillet(){
   var FR = document.documentElement.lang !== 'en';
   var GC = 'https://arcanerval.goatcounter.com';
   var CANDIDATS = [
-    ['borderlands', 'Borderlands'], ['alien-predator', 'Alien / Predator'], ['zelda', 'The Legend of Zelda'],
+    ['alien-predator', 'Alien / Predator'], ['zelda', 'The Legend of Zelda'],
     ['stargate', 'Stargate'], ['god-of-war', 'God of War'], ['gears-of-war', 'Gears of War'],
     ['mass-effect', 'Mass Effect'], ['dnd', FR ? 'Dungeons & Dragons' : 'Dungeons & Dragons'],
     ['terminator', 'Terminator'], ['avatar-cameron', FR ? 'Avatar (las películas de James Cameron)' : 'Avatar (James Cameron’s films)'],
