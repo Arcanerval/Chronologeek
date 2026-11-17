@@ -6,4 +6,14 @@ METHOD:PUBLISH
 X-WR-CALNAME:Chronologeek — sorties · The Walking Dead
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:f39622ed1c39a76829ee-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270222
+DTEND;VALUE=DATE:20270223
+SUMMARY:The Walking Dead: Daryl Dixon · S4E01 · Première
+DESCRIPTION:Épisode\n\nhttps://chronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR
