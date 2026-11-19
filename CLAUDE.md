@@ -637,6 +637,10 @@ vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N /
   de Niko, puis relance `detailler-sortie.mjs`. C'est lui qu'on corrige ; la page
   `en-borderlands.html` s'édite à la main. Toutes les dates de sortie sont écrites
   dans `UNIVERS.borderlands` d'`ordre-sortie.mjs` (rien chez TMDB).
+  Les épisodes 1 à 3 de *Tales from the Borderlands* se délient dans l'ordre de sortie
+  (demandé par Niko le 19 novembre 2026) : leurs dates sont dans `sorties/numeros.mjs`,
+  et `ep` y fait écrire « Episode 2 » au lieu de « #2 » (`morceauNumeros()`). Les
+  épisodes 4 et 5 restent une carte, rien n'étant sorti entre eux.
 - **35 entrées**, niveaux du document (E `must`, I `important`, le reste
   `bonus`) : 6 / 10 / 19. **Quatre ères** : Welcome to Pandora (nommée par Niko),
   Handsome Jack, Children of the Vault, Kairos ; en français Bienvenue sur Pandore,

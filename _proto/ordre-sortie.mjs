@@ -215,7 +215,7 @@ export const UNIVERS = {
        la première), relevés le 16 novembre 2026 ; les vidéos à leur mise en
        ligne sur YouTube ; Debt or Alive chez Titan, le comic de Dark Horse à
        son premier numéro. Les deux moitiés de Tales from the Borderlands
-       tiennent leur période, du premier au dernier épisode. */
+       se découpent épisode par épisode, dans `sorties/numeros.mjs`. */
     dates: {
       'bl-bl1': '2009-10-20', 'bl-zombieisland': '2009-11-24', 'bl-underdome': '2009-12-29',
       'bl-knoxx': '2010-02-23', 'bl-claptraprevolution': '2010-09-28',
@@ -229,10 +229,6 @@ export const UNIVERS = {
       'bl-vex': '2025-07-10', 'bl-rafa': '2025-07-30', 'bl-amon': '2025-08-14', 'bl-harlowe': '2025-08-25',
       'bl-bl4': '2025-09-12', 'bl-c4sh': '2026-03-20', 'bl-madellie': '2026-03-26',
       'bl-loveless': '2026-09-03', 'bl-fl4k': '2026-09-10',
-    },
-    periodes: {
-      'bl-tales-1': ['2014-11-25', '2015-06-23'],
-      'bl-tales-2': ['2015-08-18', '2015-10-20'],
     },
   },
   assassinscreed: {

@@ -218,7 +218,7 @@ function morceauEpisodes(x, m, tous, BYID, M, U, RT) {
 
 /* Un numéro ne se dit qu'avec son chiffre : « #5 », « #5-8 ». Rien à traduire,
    et c'est ce que porte la couverture dans les deux langues. */
-function morceauNumeros(x, m, BYID) {
+function morceauNumeros(x, m, BYID, M) {
   const a = m[0].num.n, z = m[m.length - 1].num.n;
   const id = (x.id || (x.ref + '-rl')) + '-n' + a + (a === z ? '' : '-' + z);
   const tous = x.ref ? [x.ref] : x.covers;
@@ -226,7 +226,11 @@ function morceauNumeros(x, m, BYID) {
   /* Le numéro à l'intérieur de son volume : « Die With Honor #1-3 ». */
   const nu = m[0].num, nz = m[m.length - 1].num;
   const pa = nu.v ? nu.k : a, pz = nu.v ? nz.k : z;
-  const out = { id, covers, subitems: [(nu.v ? nu.v + ' ' : '') + (pa === pz ? '#' + pa : '#' + pa + '-' + pz)] };
+  /* Un épisode de jeu (`ep`, Tales from the Borderlands) se dit comme un épisode
+     de série : « Episode 2 », « Episodes 4-5 ». */
+  const lib = nu.ep ? (pa === pz ? M.ep1 + ' ' + pa : M.epN + ' ' + pa + '-' + pz)
+    : (nu.v ? nu.v + ' ' : '') + (pa === pz ? '#' + pa : '#' + pa + '-' + pz);
+  const out = { id, covers, subitems: [lib] };
   const d = dateMonde(covers.map(i => BYID[i]));
   if (d) out.date = d;
   if (x.drop) out.drop = x.drop;
@@ -354,7 +358,7 @@ async function detaille(nom, U) {
       if (nbParCarte.get(m[0].carte) === 1 && m.length === c.atomes.length) {
         sortie[eraCourante].entries.push({ ...c.x, rel: relDe(debut, fin) });
       } else {
-        sortie[eraCourante].entries.push(m[0].num ? morceauNumeros(c.x, m, BYID)
+        sortie[eraCourante].entries.push(m[0].num ? morceauNumeros(c.x, m, BYID, M)
           : morceauEpisodes(c.x, m, c.atomes, BYID, M, U, RT));
       }
     });

@@ -274,6 +274,7 @@ export const BL_GABARITS = [
       May: 'mai', June: 'juin', July: 'juillet', August: 'août', September: 'septembre',
       October: 'octobre', November: 'novembre', December: 'décembre' })[m[1]]} ${m[2]}`],
   [/^Episodes (\d+)-(\d+)$/, m => `Épisodes ${m[1]}-${m[2]}`],
+  [/^Episode (\d+)$/, m => `Épisode ${m[1]}`],
   [/^(\d+) \/ (\d+) shown$/, m => `${m[1]} / ${m[2]} affichées`],
   [/^(\d+) entries$/, m => `${m[1]} entrées`],
 ];
