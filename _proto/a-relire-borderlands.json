@@ -270,6 +270,11 @@
     "fr": "Tiny Tina mène une partie de Bunkers & Badasses pour Lilith, Mordecai et Brick : une aventure de fantasy sortie tout droit de son imagination, avec chevaliers, dragons et squelettes."
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Rhys, a Hyperion company man with big ambitions, and Fiona, a Pandoran con artist, each tell their own version of the same deal gone wrong: a fake Vault Key, ten million dollars and a chase across Pandora.",
+    "fr": "Rhys, un cadre d’Hyperion aux grandes ambitions, et Fiona, une arnaqueuse de Pandore, racontent chacun leur version de la même affaire qui tourne mal : une fausse clé de l’Arche, dix millions de dollars et une course-poursuite à travers Pandore."
+  },
+  {
     "ou": "BORDERLANDS.eras[].entries[].title",
     "en": "Borderlands: The Pre-Sequel",
     "fr": "Borderlands : The Pre-Sequel"

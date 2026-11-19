@@ -647,11 +647,16 @@ vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N /
   marked as such. »), français retrouvé au lexique du site.
 - **Les dates sont la seule exception à « une date ne se traduit jamais »** :
   « 18 y.a. » est une abréviation anglaise, pas une unité du monde comme BBY.
-  Option A tranchée par Niko : « −18 ans », « −16 à −12 ans », « Aujourd’hui »
+  Option A tranchée par Niko : « −18 ans », « Aujourd’hui »
   (`BL_DATE` de `traductions-borderlands.mjs`), « −18 años » / « Hoy » et
   « −18 anos » / « Hoje » (clés `date:…` des tables `es/` et `pt/borderlands.mjs`,
   lues par `traduitObjet` de `traduire-langue.mjs`). Une date de plus de dix
   signes passe en 17 px dans la colonne horaire (classe `mot`), sinon elle déborde.
+  **The Pre-Sequel et ses deux DLC s'écrivent « 16 & 12 y.a. »** (« −16 et −12 ans »,
+  « −16 y −12 años », « −16 e −12 anos ») : deux périodes, l'histoire racontée et le
+  récit d'Athena, et non quatre ans d'affilée — tranché par Niko le 19 novembre 2026.
+  Commander Lilith est à « 12 y.a. » (Niko, même jour), et le synopsis de *Tales* est
+  écrit ici : celui de RAWG appelle Rhys « Reese ».
 - **Les noms français des DLC** sont ceux des versions françaises des jeux, relevés
   sur le wiki Borderlands francophone par les liens interlangues de l'API MediaWiki
   du wiki anglais (qui répond aux scripts). Six DLC n'en ont pas et gardent l'anglais.

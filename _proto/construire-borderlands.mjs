@@ -166,11 +166,11 @@ const E = [
   { ere: 1, id: 'bl-tales-1', type: 'jeu', level: 'important', media: 'game',
     title: 'Tales from the Borderlands', subitems: ['Episodes 1-3'], date: '12 y.a.', img: 'talesfromtheborderlands.webp' },
   { ere: 1, id: 'bl-presequel', type: 'jeu', level: 'must', media: 'game',
-    title: 'Borderlands: The Pre-Sequel', date: '16-12 y.a.', img: 'borderlandsthepresequel.webp' },
+    title: 'Borderlands: The Pre-Sequel', date: '16 & 12 y.a.', img: 'borderlandsthepresequel.webp' },
   { ere: 1, id: 'bl-claptastic', type: 'dlc', level: 'important', media: 'game',
-    title: 'Borderlands: The Pre-Sequel - Claptastic Voyage', date: '16-12 y.a.', img: 'claptasticvoyage.webp' },
+    title: 'Borderlands: The Pre-Sequel - Claptastic Voyage', date: '16 & 12 y.a.', img: 'claptasticvoyage.webp' },
   { ere: 1, id: 'bl-holodome', type: 'dlc', level: 'bonus', media: 'game',
-    title: 'Borderlands: The Pre-Sequel - The Holodome Onslaught', date: '16-12 y.a.', img: 'holodomeonslaught.webp' },
+    title: 'Borderlands: The Pre-Sequel - The Holodome Onslaught', date: '16 & 12 y.a.', img: 'holodomeonslaught.webp' },
   { ere: 1, id: 'bl-tales-2', type: 'jeu', level: 'important', media: 'game', tags: ['flashback'],
     note: 'You can play them after The Pre-Sequel\'s intro if you don\'t want to wait many hours before finishing it, it happens at the same time',
     title: 'Tales from the Borderlands', subitems: ['Episodes 4-5'], date: '12 y.a.', img: 'talesfromtheborderlands.webp' },
@@ -178,7 +178,7 @@ const E = [
     desc: 'Fiona and Sasha, the con-artist sisters from Tales from the Borderlands, are back on Pandora with a fortune to spend and a long list of people who would like a piece of it — or of them.',
     title: 'Borderlands: Debt or Alive', date: '12 y.a.', img: 'debtoralive.webp' },
   { ere: 1, id: 'bl-commanderlilith', type: 'dlc', level: 'must', media: 'game',
-    title: 'Borderlands 2: Commander Lilith & the Fight for Sanctuary', date: '11 y.a.', img: 'commanderlilith.webp' },
+    title: 'Borderlands 2: Commander Lilith & the Fight for Sanctuary', date: '12 y.a.', img: 'commanderlilith.webp' },
 
   { ere: 2, id: 'bl-bl3', type: 'jeu', level: 'must', media: 'game',
     title: 'Borderlands 3', date: '6 y.a.', img: 'borderlands3.webp' },
@@ -235,6 +235,9 @@ const RAWG = {
   /* jeu */ 'bl-directorscut': 58617, 'bl-madellie': 988615, 'bl-fl4k': 988615,
 };
 const DESC_DLC = {
+  /* Tales from the Borderlands : le synopsis de RAWG appelle Rhys « Reese » */
+  'bl-tales-1': 'Rhys, a Hyperion company man with big ambitions, and Fiona, a Pandoran con artist, each tell their own version of the same deal gone wrong: a fake Vault Key, ten million dollars and a chase across Pandora.',
+  'bl-tales-2': 'Rhys, a Hyperion company man with big ambitions, and Fiona, a Pandoran con artist, each tell their own version of the same deal gone wrong: a fake Vault Key, ten million dollars and a chase across Pandora.',
   /* les DLC que RAWG connaît sans synopsis */
   'bl-zombieisland': 'Dr. Ned’s experiments have turned the people of Jakobs Cove into zombies, and the Vault Hunters are called in to clean up the mess.',
   'bl-underdome': 'Mad Moxxi opens her arenas: in three Underdomes, the Vault Hunters fight wave after wave of enemies for glory and loot.',

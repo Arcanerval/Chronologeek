@@ -182,6 +182,8 @@ export const BL_TRADUCTIONS = [
    + 'd’histoire de Borderlands 4.'],
 
   /* ── les synopsis des DLC sans fiche RAWG complète ── */
+  ['Rhys, a Hyperion company man with big ambitions, and Fiona, a Pandoran con artist, each tell their own version of the same deal gone wrong: a fake Vault Key, ten million dollars and a chase across Pandora.',
+   'Rhys, un cadre d’Hyperion aux grandes ambitions, et Fiona, une arnaqueuse de Pandore, racontent chacun leur version de la même affaire qui tourne mal : une fausse clé de l’Arche, dix millions de dollars et une course-poursuite à travers Pandore.'],
   ['Dr. Ned’s experiments have turned the people of Jakobs Cove into zombies, and the Vault Hunters are called in to clean up the mess.',
    'Les expériences du Dr Ned ont changé les habitants de Jakobs Cove en zombies, et les Chasseurs de l’Arche sont appelés pour réparer les dégâts.'],
   ['Mad Moxxi opens her arenas: in three Underdomes, the Vault Hunters fight wave after wave of enemies for glory and loot.',
@@ -282,6 +284,10 @@ export const BL_GABARITS = [
    Une date que la fonction ne reconnaît pas fait échouer la traduction. */
 export function BL_DATE(d) {
   if (d === 'Present day') return 'Aujourd’hui';
+  /* The Pre-Sequel et ses DLC : deux périodes, l'histoire racontée et le récit
+     d'Athena, et non une durée (Niko, 19 novembre 2026). */
+  const deux = /^(\d+) & (\d+) y\.a\.$/.exec(d);
+  if (deux) return '−' + deux[1] + ' et −' + deux[2] + ' ans';
   let m = /^(~?)(\d+) y\.a\.$/.exec(d);
   if (m) return m[1] + '−' + m[2] + ' ans';
   m = /^(~?)(\d+)-(\d+) y\.a\.$/.exec(d);

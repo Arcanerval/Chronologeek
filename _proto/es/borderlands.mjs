@@ -102,6 +102,9 @@ export default {
   "An arena challenge: the Vault Hunters face wave after wave of enemies in the Holodome, a holographic battle arena.":
     "Un desafío de arena: los Buscacámaras se enfrentan a oleada tras oleada de enemigos en el Holodome, una arena de combate holográfica.",
 
+  "Rhys, a Hyperion company man with big ambitions, and Fiona, a Pandoran con artist, each tell their own version of the same deal gone wrong: a fake Vault Key, ten million dollars and a chase across Pandora.":
+    "Rhys, un empleado de Hyperion con grandes ambiciones, y Fiona, una estafadora de Pandora, cuentan cada uno su versión del mismo trato que sale mal: una llave de la Cámara falsa, diez millones de dólares y una persecución por Pandora.",
+
   "Vault Hunter": "Buscacámaras", "Welcome to Pandora completed": "Bienvenido a Pandora completado",
   "Sanctuary Citizen": "Ciudadano de Santuario", "Handsome Jack completed": "Jack el Guapo completado",
   "Crimson Raider": "Asaltante Carmesí", "Children of the Vault completed": "Hijos de la Cámara completado",
@@ -111,6 +114,6 @@ export default {
 
   /* les dates, option A tranchée par Niko le 16 novembre 2026 */
   "date:18 y.a.": "−18 años", "date:13 y.a.": "−13 años", "date:12 y.a.": "−12 años",
-  "date:16-12 y.a.": "−16 a −12 años", "date:11 y.a.": "−11 años", "date:6 y.a.": "−6 años",
+  "date:16 & 12 y.a.": "−16 y −12 años", "date:11 y.a.": "−11 años", "date:6 y.a.": "−6 años",
   "date:5 y.a.": "−5 años", "date:~2-4 y.a.": "~−4 a −2 años", "date:Present day": "Hoy",
 };

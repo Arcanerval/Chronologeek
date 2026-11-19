@@ -100,6 +100,9 @@ export default {
   "An arena challenge: the Vault Hunters face wave after wave of enemies in the Holodome, a holographic battle arena.":
     "Um desafio de arena: os Caçadores da Arca enfrentam onda após onda de inimigos no Holodome, uma arena de combate holográfica.",
 
+  "Rhys, a Hyperion company man with big ambitions, and Fiona, a Pandoran con artist, each tell their own version of the same deal gone wrong: a fake Vault Key, ten million dollars and a chase across Pandora.":
+    "Rhys, um funcionário da Hyperion com grandes ambições, e Fiona, uma golpista de Pandora, contam cada um a sua versão do mesmo negócio que dá errado: uma Chave da Arca falsa, dez milhões de dólares e uma perseguição por Pandora.",
+
   "Vault Hunter": "Caçador da Arca", "Welcome to Pandora completed": "Bem-vindo a Pandora concluído",
   "Sanctuary Citizen": "Cidadão de Sanctuary", "Handsome Jack completed": "Jack Bonitão concluído",
   "Crimson Raider": "Saqueador Carmesim", "Children of the Vault completed": "Filhos da Arca concluído",
@@ -108,6 +111,6 @@ export default {
   "Claptrap’s Best Friend": "Melhor amigo do Claptrap", "Borderlands 100% completed": "Borderlands concluído 100 %",
 
   "date:18 y.a.": "−18 anos", "date:13 y.a.": "−13 anos", "date:12 y.a.": "−12 anos",
-  "date:16-12 y.a.": "−16 a −12 anos", "date:11 y.a.": "−11 anos", "date:6 y.a.": "−6 anos",
+  "date:16 & 12 y.a.": "−16 e −12 anos", "date:11 y.a.": "−11 anos", "date:6 y.a.": "−6 anos",
   "date:5 y.a.": "−5 anos", "date:~2-4 y.a.": "~−4 a −2 anos", "date:Present day": "Hoje",
 };
