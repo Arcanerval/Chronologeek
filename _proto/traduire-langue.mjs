@@ -242,11 +242,11 @@ export async function traduireLangue(L, argv = process.argv.slice(2)) {
       return out;
     }
     if (typeof o !== 'string') return o;
-    /* Les dates de Borderlands sont l'exception à la règle : « 18 y.a. » est
+    /* Les dates de Borderlands sont l'exception à la règle : « Year 6 » est
        une abréviation anglaise, pas une unité du monde comme BBY. Option A
        tranchée par Niko le 16 novembre 2026 (« −18 años », « Hoy ») : la
        table de l'univers les porte sous la clé « date:… ». */
-    if (cle === 'date' && /\by\.a\.$|^Present day$/.test(o)) return traduit('date:' + o, `${chemin}`);
+    if (cle === 'date' && /^~?Year \d/.test(o)) return traduit('date:' + o, `${chemin}`);
     if (TECHNIQUES.has(cle) || IDENTIQUES_PAR_CHAMP.has(cle)) return o;
     /* Un champ qui porte du HTML (les accroches) se traduit nœud par nœud. */
     if (/<[a-z][^>]*>/i.test(o)) {

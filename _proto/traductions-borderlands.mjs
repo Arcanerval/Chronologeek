@@ -79,16 +79,15 @@ export const BL_TRADUCTIONS = [
   ['The official calendar used in Borderlands is never stated: old Facebook pages talked about '
    + 'the year 2854, we see a calendar in a DLC saying 109 AE (After Expansion? Actual Era?) but in '
    + 'another game we learn that a planet has humans on it since at least 1000 years so we can’t '
-   + 'have a real date. But we know how much time passes between each games so instead, we’ll go '
-   + 'back in time and indicate how long before the last release each other piece of media takes '
-   + 'place (XX years ago, written y.a.).',
+   + 'have a real date. But we know how much time passes between each games so instead, we’ll count '
+   + 'from the first game, which takes place in Year 0, and date every other piece of media in '
+   + 'years after it.',
    'Le calendrier officiel de Borderlands n’est jamais donné : d’anciennes pages Facebook '
    + 'parlaient de l’année 2854, on voit dans un DLC un calendrier qui indique 109 AE (After '
    + 'Expansion ? Actual Era ?), mais dans un autre jeu on apprend qu’une planète est habitée '
    + 'par des humains depuis au moins 1000 ans : impossible donc d’avoir une vraie date. On sait '
-   + 'en revanche combien de temps passe entre chaque jeu : on remonte donc le temps, et on '
-   + 'indique combien d’années avant la dernière sortie se déroule chaque œuvre (il y a XX ans, '
-   + 'écrit −XX ans).'],
+   + 'en revanche combien de temps passe entre chaque jeu : on compte donc à partir du premier '
+   + 'jeu, qui se déroule en An 0, et chaque autre œuvre est datée en années après lui.'],
   ['Character choices', 'Le choix des personnages'],
   ['The 4 (sometimes more with the DLC) Vault Hunters that you can choose from at the beginning '
    + 'of each game are ALL canonically present through the events of the story, even if you play '
@@ -279,22 +278,12 @@ export const BL_GABARITS = [
   [/^(\d+) entries$/, m => `${m[1]} entrées`],
 ];
 
-/* Les dates du monde, option A tranchée par Niko le 16 novembre 2026 :
-   « 18 y.a. » → « −18 ans », « 16-12 y.a. » → « −16 à −12 ans »,
-   « ~2-4 y.a. » → « ~−4 à −2 ans », « Present day » → « Aujourd’hui ».
+/* Les dates du monde, comptées depuis le premier jeu (Year 0), tranché par
+   Niko le 19 novembre 2026 : « Year 6 » → « An 6 », « Year 2 & 6 » →
+   « An 2 et 6 » (The Pre-Sequel, deux périodes), « ~Year 14-16 » → « ~An 14-16 ».
    Une date que la fonction ne reconnaît pas fait échouer la traduction. */
 export function BL_DATE(d) {
-  if (d === 'Present day') return 'Aujourd’hui';
-  /* The Pre-Sequel et ses DLC : deux périodes, l'histoire racontée et le récit
-     d'Athena, et non une durée (Niko, 19 novembre 2026). */
-  const deux = /^(\d+) & (\d+) y\.a\.$/.exec(d);
-  if (deux) return '−' + deux[1] + ' et −' + deux[2] + ' ans';
-  let m = /^(~?)(\d+) y\.a\.$/.exec(d);
-  if (m) return m[1] + '−' + m[2] + ' ans';
-  m = /^(~?)(\d+)-(\d+) y\.a\.$/.exec(d);
-  if (m) {
-    const [a, b] = [+m[2], +m[3]].sort((x, y) => y - x);
-    return m[1] + '−' + a + ' à −' + b + ' ans';
-  }
+  const m = /^(~?)Year (\d+(?:-\d+)?(?: & \d+)?)$/.exec(d);
+  if (m) return m[1] + 'An ' + m[2].replace(' & ', ' et ');
   throw new Error('date Borderlands non reconnue : ' + d);
 }

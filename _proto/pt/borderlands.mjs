@@ -19,8 +19,8 @@ export default {
   "This guide follows the order the works came out, from 2009 to today, but you can switch back to a chronological version higher up.":
     "Este guia segue a ordem em que as obras foram lançadas, de 2009 até hoje, mas você pode voltar a uma versão cronológica mais acima.",
   "Calendar": "Calendário",
-  "The official calendar used in Borderlands is never stated: old Facebook pages talked about the year 2854, we see a calendar in a DLC saying 109 AE (After Expansion? Actual Era?) but in another game we learn that a planet has humans on it since at least 1000 years so we can’t have a real date. But we know how much time passes between each games so instead, we’ll go back in time and indicate how long before the last release each other piece of media takes place (XX years ago, written y.a.).":
-    "O calendário oficial de Borderlands nunca é informado: antigas páginas do Facebook falavam do ano 2854, vemos em um DLC um calendário que marca 109 AE (After Expansion? Actual Era?), mas em outro jogo descobrimos que um planeta tem humanos há pelo menos 1000 anos, então não dá para ter uma data real. Mas sabemos quanto tempo passa entre cada jogo, então vamos voltar no tempo e indicar quantos anos antes do último lançamento se passa cada obra (há XX anos, escrito −XX anos).",
+  "The official calendar used in Borderlands is never stated: old Facebook pages talked about the year 2854, we see a calendar in a DLC saying 109 AE (After Expansion? Actual Era?) but in another game we learn that a planet has humans on it since at least 1000 years so we can’t have a real date. But we know how much time passes between each games so instead, we’ll count from the first game, which takes place in Year 0, and date every other piece of media in years after it.":
+    "O calendário oficial de Borderlands nunca é informado: antigas páginas do Facebook falavam do ano 2854, vemos em um DLC um calendário que marca 109 AE (After Expansion? Actual Era?), mas em outro jogo descobrimos que um planeta tem humanos há pelo menos 1000 anos, então não dá para ter uma data real. Mas sabemos quanto tempo passa entre cada jogo, então vamos contar a partir do primeiro jogo, que se passa no Ano 0, e datar cada obra em anos depois dele.",
   "Character choices": "A escolha de personagens",
   "The 4 (sometimes more with the DLC) Vault Hunters that you can choose from at the beginning of each game are ALL canonically present through the events of the story, even if you play solo, they all participate in the official canon. You will cross over them multiple times so even if you play solo remind yourself of the other characters, some can be VERY important sometimes after (even the DLC ones!).":
     "Os 4 Caçadores da Arca (às vezes mais, com os DLC) que você pode escolher no início de cada jogo estão TODOS presentes no cânone ao longo da história: mesmo jogando sozinho, todos fazem parte do cânone oficial. Você vai cruzar com eles várias vezes, então, mesmo jogando sozinho, lembre-se dos outros personagens: alguns podem ser MUITO importantes mais tarde (até os dos DLC!).",
@@ -110,7 +110,11 @@ export default {
   "Season Pass": "Passe de temporada", "Every DLC played": "Todos os DLC jogados",
   "Claptrap’s Best Friend": "Melhor amigo do Claptrap", "Borderlands 100% completed": "Borderlands concluído 100 %",
 
-  "date:18 y.a.": "−18 anos", "date:13 y.a.": "−13 anos", "date:12 y.a.": "−12 anos",
-  "date:16 & 12 y.a.": "−16 e −12 anos", "date:11 y.a.": "−11 anos", "date:6 y.a.": "−6 anos",
-  "date:5 y.a.": "−5 anos", "date:~2-4 y.a.": "~−4 a −2 anos", "date:Present day": "Hoje",
+  "date:Year 0": "Ano 0",
+  "date:Year 5": "Ano 5",
+  "date:Year 6": "Ano 6",
+  "date:Year 12": "Ano 12",
+  "date:Year 13": "Ano 13",
+  "date:Year 18": "Ano 18",
+  "date:Year 2 & 6": "Ano 2 e 6", "date:~Year 14-16": "~Ano 14-16",
 };

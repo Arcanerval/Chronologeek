@@ -649,18 +649,20 @@ vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N /
   Episodes 4-5, avec la note de Niko ; *The Pre-Sequel* n'en porte pas, il est à
   sa place. L'encadré « Flashbacks » est son texte (« … for understanding, and are
   marked as such. »), français retrouvé au lexique du site.
+- **La timeline compte depuis le premier jeu, Year 0** (proposé à Niko par un
+  lecteur, adopté le 19 novembre 2026) : le premier jeu en Year 0, Borderlands 2 en
+  Year 5, Tales et Commander Lilith en Year 6, Borderlands 3 en Year 12, New Tales
+  en Year 13, Borderlands 4 en Year 18. Le document comptait en « y.a. » depuis la
+  dernière sortie : le repère bougeait à chaque jeu, et les chiffres descendaient dans
+  le sens de lecture. Le paragraphe « Calendar » a été réécrit en conséquence, avec
+  l'accord de Niko. **The Pre-Sequel et ses deux DLC** sont en « Year 2 & 6 » : deux
+  périodes, l'histoire racontée et le récit d'Athena. Le synopsis de *Tales* est écrit
+  ici : celui de RAWG appelle Rhys « Reese ».
 - **Les dates sont la seule exception à « une date ne se traduit jamais »** :
-  « 18 y.a. » est une abréviation anglaise, pas une unité du monde comme BBY.
-  Option A tranchée par Niko : « −18 ans », « Aujourd’hui »
-  (`BL_DATE` de `traductions-borderlands.mjs`), « −18 años » / « Hoy » et
-  « −18 anos » / « Hoje » (clés `date:…` des tables `es/` et `pt/borderlands.mjs`,
-  lues par `traduitObjet` de `traduire-langue.mjs`). Une date de plus de dix
-  signes passe en 17 px dans la colonne horaire (classe `mot`), sinon elle déborde.
-  **The Pre-Sequel et ses deux DLC s'écrivent « 16 & 12 y.a. »** (« −16 et −12 ans »,
-  « −16 y −12 años », « −16 e −12 anos ») : deux périodes, l'histoire racontée et le
-  récit d'Athena, et non quatre ans d'affilée — tranché par Niko le 19 novembre 2026.
-  Commander Lilith est à « 12 y.a. » (Niko, même jour), et le synopsis de *Tales* est
-  écrit ici : celui de RAWG appelle Rhys « Reese ».
+  « An 6 », « Año 6 », « Ano 6 » (`BL_DATE` de `traductions-borderlands.mjs`, et
+  les clés `date:…` des tables `es/` et `pt/borderlands.mjs`, lues par
+  `traduitObjet` de `traduire-langue.mjs`). Une date de plus de dix signes passe en
+  17 px dans la colonne horaire (classe `mot`), sinon elle déborde.
 - **Les noms français des DLC** sont ceux des versions françaises des jeux, relevés
   sur le wiki Borderlands francophone par les liens interlangues de l'API MediaWiki
   du wiki anglais (qui répond aux scripts). Six DLC n'en ont pas et gardent l'anglais.
