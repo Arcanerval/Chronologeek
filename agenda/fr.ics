@@ -168,6 +168,22 @@ URL:https://chronologeek.app/fr/a-venir
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:ff524e0e35b7c3140a86-fr@chronologeek.app
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20270224
+DTEND;VALUE=DATE:20270225
+SUMMARY:Star Wars · Ahsoka — Escape from Thrawn 2
+DESCRIPTION:Comic\n\nAhsoka — Escape from Thrawn 2 is the second issue of
+  the five-issue miniseries Star Wars: Ahsoka — Escape from Thrawn\, whic
+ h will tell the story of Ezra Bridger's escape from the Chimaera during th
+ e events of the finale of the first season of the television series Star W
+ ars: Ahsoka. It will be written by Rodney Barnes using a story by Dave Fil
+ oni\, drawn by Andrea Di Vito\, and will be published by …\n\nhttps://ch
+ ronologeek.app/fr/a-venir
+URL:https://chronologeek.app/fr/a-venir
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:0d876d4bf551dbe1ff2d-fr@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20270309

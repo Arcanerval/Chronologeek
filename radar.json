@@ -257,6 +257,23 @@
  },
  {
   "universe": "starwars",
+  "title": "Ahsoka — Escape from Thrawn 2",
+  "date_sort": "2027-02-24",
+  "date_txt": "24/02/2027",
+  "kind": "Comic",
+  "source": "Wookieepedia",
+  "precision": "day",
+  "era": "c. 9 ABY",
+  "syn": "Ahsoka — Escape from Thrawn 2 is the second issue of the five-issue miniseries Star Wars: Ahsoka — Escape from Thrawn, which will tell the story of Ezra Bridger's escape from the Chimaera during the events of the finale of the first season of the television series Star Wars: Ahsoka. It will be written by Rodney Barnes using a story by Dave Filoni, drawn by Andrea Di Vito, and will be published by …",
+  "wiki": "Ahsoka — Escape from Thrawn 2",
+  "syn_fr": "",
+  "kindKey": "comic",
+  "title_fr": "",
+  "date_sort_fr": "",
+  "date_txt_fr": ""
+ },
+ {
+  "universe": "starwars",
   "title": "Tales from the Outer Rim: The Legend of Beggar's Canyon",
   "date_sort": "2027-03-09",
   "date_txt": "09/03/2027",
