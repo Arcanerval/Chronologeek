@@ -36,8 +36,8 @@
  {
   "universe": "bladerunner",
   "title": "Blade Runner 2099",
-  "date_sort": "2026-11-25",
-  "date_txt": "25/11/2026",
+  "date_sort": "2026-11-24",
+  "date_txt": "24/11/2026",
   "kind": "Série",
   "source": "TMDB",
   "precision": "day",
@@ -125,7 +125,7 @@
   "title_fr": "",
   "date_sort_fr": "2026-12-16",
   "date_txt_fr": "16/12/2026",
-  "poster": "/zHTxblqPcqRpA93ex2Hj0RdpVBs.jpg",
+  "poster": "/cWXtJhrlruF8CeYuaBGE8vdj3Q9.jpg",
   "tmdb": 1003596,
   "media": "movie"
  },

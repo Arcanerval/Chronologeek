@@ -9,8 +9,8 @@ X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:7b5e01cf11fdc2159196-en@chronologeek.app
 DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261125
-DTEND;VALUE=DATE:20261126
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
 SUMMARY:Blade Runner 2099 · S1 · Full season
 DESCRIPTION:Fifty years after the events of Blade Runner 2049\, Los Angeles
   has been reborn\, just not by humanity. Cora\, a fugitive in a final bid 
