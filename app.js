@@ -22,7 +22,9 @@ window.CG_RES = function(cle, h){
 
 /* ═══ LA TAILLE DES CARTES SELON LE NIVEAU ═════════════════════════════
    Posée le 13 novembre 2026, demandée par Niko : la « hiérarchie de la
-   liste » de la maquette du 12 novembre. L'essentiel en grande carte, son
+   liste » de la maquette du 12 novembre, resserrée le 22 novembre 2026 à
+   sa demande (210 / 176 / 132 px au lieu de 236 / 150 / 96, titres 29 / 24 /
+   20 au lieu de 33 / 22 / 17). L'essentiel en grande carte, son
    horaire sur une plaque blanche ; l'important un cran plus petit ;
    l'optionnel en ligne serrée, sur un fond effacé, avec sa vignette en petit
    (96 px) — Niko voulait que les optionnels gardent leur image.
@@ -50,46 +52,46 @@ window.CG_RES = function(cle, h){
   var st = document.createElement('style');
   st.textContent = [
     // l'essentiel : grande carte, horaire sur plaque blanche
-    M + ' .bu-card>.bu-head{grid-template-columns:236px minmax(0,1fr) 34px}',
-    M + ' .bu-fig{width:236px}',
-    M + ' .bu-title{font-size:33px}',
-    M + ' .bu-card>.bu-sub{padding-left:272px}',
+    M + ' .bu-card>.bu-head{grid-template-columns:210px minmax(0,1fr) 34px}',
+    M + ' .bu-fig{width:210px}',
+    M + ' .bu-title{font-size:29px}',
+    M + ' .bu-card>.bu-sub{padding-left:246px}',
     M + ' .bu-time{background:var(--paper)}',
     M + ' .bu-time .bu-n{color:rgba(19,18,21,.6)}',
-    M + ' .bu-time .d{color:var(--ink);font-size:29px}',
+    M + ' .bu-time .d{color:var(--ink);font-size:26px}',
     M + '.done .bu-time .d{color:rgba(19,18,21,.5)}',
     M + ' .bu-time .rel{background:none;border-color:var(--ink);color:var(--ink)}',
     // l'important : un cran plus petit
-    I + ' .bu-card>.bu-head{grid-template-columns:150px minmax(0,1fr) 34px}',
-    I + ' .bu-fig{width:150px;margin:10px 0}',
-    I + ' .bu-title{font-size:22px}',
-    I + ' .bu-card>.bu-sub{padding-left:186px}',
-    I + ' .bu-time .d{font-size:21px}',
+    I + ' .bu-card>.bu-head{grid-template-columns:176px minmax(0,1fr) 34px}',
+    I + ' .bu-fig{width:176px;margin:10px 0}',
+    I + ' .bu-title{font-size:24px}',
+    I + ' .bu-card>.bu-sub{padding-left:212px}',
+    I + ' .bu-time .d{font-size:23px}',
     // l'optionnel : une ligne serrée, sa vignette en petit, sur un fond effacé
     B + ' .bu-card{background:none;box-shadow:inset 0 0 0 1px rgba(255,253,247,.16)}',
     B + ' .bu-card:hover{box-shadow:inset 0 0 0 1px rgba(255,253,247,.16),3px 3px 0 var(--uni)}',
     B + ' .bu-time{background:none;gap:3px;padding:6px 8px}',
     B + ' .bu-time .bu-n{font-size:10.5px}',
-    B + ' .bu-time .d{font-size:17px;color:rgba(240,201,124,.85)}',
-    B + ' .bu-card>.bu-head{grid-template-columns:96px minmax(0,1fr) 34px}',
-    B + ' .bu-fig{width:96px;margin:7px 0}',
+    B + ' .bu-time .d{font-size:19px;color:rgba(240,201,124,.85)}',
+    B + ' .bu-card>.bu-head{grid-template-columns:132px minmax(0,1fr) 34px}',
+    B + ' .bu-fig{width:132px;margin:8px 0}',
     B + ' .bu-done span{font-size:10px;padding:1px 5px}',
     B + ' .bu-txt{padding:8px 0 7px}',
     B + ' .bu-tags{margin-bottom:3px}',
-    B + ' .bu-title{font-size:17px;color:rgba(255,253,247,.86)}',
+    B + ' .bu-title{font-size:20px;color:rgba(255,253,247,.86)}',
     B + ' .bu-meta{margin-top:3px}',
-    B + ' .bu-card>.bu-sub{padding-left:132px}',
+    B + ' .bu-card>.bu-sub{padding-left:168px}',
     '@media(max-width:720px){',
-    M + ' .bu-card>.bu-head{grid-template-columns:118px minmax(0,1fr) 22px}',
-    M + ' .bu-fig{width:118px}',
-    M + ' .bu-title{font-size:21px}',
-    M + ' .bu-time .d{font-size:21px}',
-    I + ' .bu-card>.bu-head{grid-template-columns:88px minmax(0,1fr) 22px}',
-    I + ' .bu-fig{width:88px}',
-    I + ' .bu-title{font-size:18px}',
-    B + ' .bu-card>.bu-head{grid-template-columns:64px minmax(0,1fr) 22px}',
-    B + ' .bu-fig{width:64px}',
-    B + ' .bu-title{font-size:15.5px}',
+    M + ' .bu-card>.bu-head{grid-template-columns:108px minmax(0,1fr) 22px}',
+    M + ' .bu-fig{width:108px}',
+    M + ' .bu-title{font-size:20px}',
+    M + ' .bu-time .d{font-size:20px}',
+    I + ' .bu-card>.bu-head{grid-template-columns:98px minmax(0,1fr) 22px}',
+    I + ' .bu-fig{width:98px}',
+    I + ' .bu-title{font-size:19px}',
+    B + ' .bu-card>.bu-head{grid-template-columns:82px minmax(0,1fr) 22px}',
+    B + ' .bu-fig{width:82px}',
+    B + ' .bu-title{font-size:17px}',
     B + ' .bu-time{flex-direction:row}',
     M + ' .bu-card>.bu-sub,' + I + ' .bu-card>.bu-sub,' + B + ' .bu-card>.bu-sub{padding-left:12px}',
     '}'
@@ -119,7 +121,7 @@ window.CG_RES = function(cle, h){
     jurassicworld: v('jeep', 250, 146), witcher: v('ablette', 174, 146), residentevil: v('helicoptere', 250, 107),
     bladerunner: v('spinner', 204, 74), monsterverse: v('porteavions', 250, 138, .25),
     marvel: v('helicarrier', 250, 128), assassinscreed: v('aigle', 123, 146), dcanimation: v('batmobile', 250, 93),
-    borderlands: v('helios', 88, 146)
+    borderlands: v('helios', 88, 146), zelda: v('paravoile', 222, 146)
   };
   // les noms des protos et du Dossier
   VEHICULES['star-wars'] = VEHICULES['dossier-star-wars'] = VEHICULES.starwars;
@@ -3808,6 +3810,9 @@ function cgBillet(){
     monsterverse: [['Fandom', 'https://godzilla.fandom.com/wiki/MonsterVerse'], [WIKI], ['Reddit']],
     borderlands: [['Fandom', 'https://borderlands.fandom.com'], [WIKI],
                   ['Suggestive Gaming', 'https://www.youtube.com/watch?v=f_HIWZuBN1g'], ['Reddit']],
+    zelda: [['Nintendo', 'https://www.nintendo.com/us/explore/characters/zelda/timeline/'], [WIKI],
+            ['Fandom', 'https://zelda.fandom.com/wiki/The_Legend_of_Zelda_timeline'],
+            ['Hyrule Historia']],
     witcher: [['Fandom', 'https://witcher.fandom.com/wiki/Timeline'],
               ['Mina86', 'https://mina86.com/2022/witcher-chronological-order/'], ['Reddit'], [WIKI],
               ['BVG', BVG + 'the-witcher-timeline-everything-in-chronological-order/']],
