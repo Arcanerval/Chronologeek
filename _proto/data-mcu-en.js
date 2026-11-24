@@ -196,7 +196,6 @@ const DATA_MCU={
     ]},
     {title:"PHASE III — The Infinity Saga",entries:[
       {"ref":"mcu-cw"},
-      {"ref":"mcu-vfsm","faq":{"pourquoi":"Because this is where it falls chronologically"}},
       {"ref":"mcu-aos-s3b"},
       {"ref":"mcu-bw"},
       {"ref":"mcu-eow"},
@@ -289,6 +288,7 @@ const DATA_MCU={
       {"ref":"mcu-dpw"},
       {"ref":"mcu-marvelspc"},
       {"ref":"mcu-agatha"},
+      {"ref":"mcu-vfsm"},
       {"ref":"mcu-dba1"},
       {"ref":"mcu-cabf"},
       {"ref":"mcu-tb"}

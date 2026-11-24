@@ -218,7 +218,6 @@ const DATA_MCU={
     ]},
     {title:"PHASE III — Saga de l'Infini",entries:[
       {ref:"mcu-cw"},
-      {ref:"mcu-vfsm",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
       {ref:"mcu-aos-s3b"},
       {ref:"mcu-bw"},
       {ref:"mcu-eow"},
@@ -311,6 +310,7 @@ const DATA_MCU={
       {ref:"mcu-dpw"},
       {ref:"mcu-marvelspc"},
       {ref:"mcu-agatha"},
+      {ref:"mcu-vfsm"},
       {ref:"mcu-dba1"},
       {ref:"mcu-cabf"},
       {ref:"mcu-tb"}
