@@ -366,6 +366,15 @@ const PWA = [
   '<meta name="apple-mobile-web-app-capable" content="yes"/>',
   '<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>',
   '<meta name="apple-mobile-web-app-title" content="Chronologeek"/>',
+  /* Installée sur l'écran d'accueil d'un iPhone, l'application se dessine sous
+     la barre d'état (`black-translucent` + `viewport-fit=cover`) : l'en-tête,
+     collé tout en haut, posait le drapeau et le menu à côté de la Dynamic
+     Island, où l'écran ne transmet pas les touches — signalé par un visiteur le
+     24 novembre 2026, qui ne pouvait plus changer de langue. L'en-tête prend
+     donc la hauteur de la zone de sécurité ; elle vaut 0 dans Safari et partout
+     ailleurs. La barre des filtres et le tiroir suivent seuls : ils se calent
+     sur `--hh`, la hauteur mesurée de l'en-tête. */
+  '<style>header{padding-top:env(safe-area-inset-top,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}</style>',
 ].join('\n');
 
 // Le pré-rendu ne doit jamais se voir, et il doit rester lisible sans JS.

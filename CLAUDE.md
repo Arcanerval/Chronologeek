@@ -1675,7 +1675,14 @@ Et trois points de tuyauterie, chacun trouvé par son garde-fou :
   sur `en-dcanimation.html`.
 
 **3. La PWA et l'audience.** Manifeste, icônes, `theme-color`, `pwa.js`,
-GoatCounter : les protos n'en avaient rien.
+GoatCounter : les protos n'en avaient rien. **L'en-tête prend la zone de sécurité
+d'iOS** (`env(safe-area-inset-top)`, dans le bloc `PWA`) depuis le 24 novembre
+2026 : installée sur un iPhone, l'application se dessine sous la barre d'état
+(`black-translucent` + `viewport-fit=cover`), et le drapeau et le menu tombaient
+à côté de la Dynamic Island, où l'écran ne transmet pas les touches — un visiteur
+ne pouvait plus changer de langue. La barre des filtres et le tiroir suivent
+seuls, calés sur `--hh`. Ne pas retirer `black-translucent` pour régler autre
+chose sans relire ceci.
 
 **4. L'échafaudage de maquette.** L'accueil et la liste des Dossiers portent un
 bouton « proto : simuler une progression » qui remplit le HUD de valeurs
