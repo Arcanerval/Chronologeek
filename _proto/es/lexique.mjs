@@ -13,9 +13,9 @@
 export const IDENTIQUES = [
   'Star Wars', 'Marvel', 'DC', 'Avatar Legends', 'Star Trek', 'The Walking Dead', 'Dragon Age',
   'Assassin’s Creed', "Assassin's Creed", 'DC Animation', 'Jurassic World', 'The Witcher',
-  'Resident Evil', 'Blade Runner', 'Monsterverse', 'Borderlands', 'Chronologeek', 'chronologeek.app',
+  'Resident Evil', 'Blade Runner', 'Monsterverse', 'Borderlands', 'The Legend of Zelda', 'Chronologeek', 'chronologeek.app',
   'TMDB', 'Open Library', 'RAWG', 'JustWatch', 'YouTube', 'Ko-fi', 'Wookieepedia',
-  'SW', 'MCU', 'AV', 'ST', 'TWD', 'DA', 'AC', 'DCA', 'JW', 'TW', 'RE', 'BR', 'MV', 'BL', 'DD',
+  'SW', 'MCU', 'AV', 'ST', 'TWD', 'DA', 'AC', 'DCA', 'JW', 'TW', 'RE', 'BR', 'MV', 'BL', 'ZL', 'DD',
   'Spider-Verse', 'Fox / X-Men', 'Elseworlds · Arrowverse · DCEU · DCU · Multiverse guide',
   'Navigation', 'Padawan', 'Trailer', 'Opening Credits', 'Escape',
   'bf', 'bfa', 'bs', 'ba', 'bj', 'bv', 'bsp', 'bw', 'bl', 'bc', 'bn', 'bd', 'bm', 'br', 'bh',
@@ -47,8 +47,8 @@ export const LEXIQUE = {
     'Cronologías de los universos en los que merece la pena perderse. Todos los formatos, en orden cronológico y sin spoilers. Hechas y mantenidas por una sola persona que lo ve todo dos veces.',
   'This product uses the': 'Este producto usa la API de',
   'API but is not endorsed or certified by TMDB. Book data from': 'pero no está respaldado ni certificado por TMDB. Datos de libros de',
-  '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands are trademarks of their respective owners; Chronologeek is an independent fan project.':
-    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse y Borderlands son marcas de sus respectivos propietarios; Chronologeek es un proyecto fan independiente.',
+  '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands and The Legend of Zelda are trademarks of their respective owners; Chronologeek is an independent fan project.':
+    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands y The Legend of Zelda son marcas de sus respectivos propietarios; Chronologeek es un proyecto fan independiente.',
   'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed and Jurassic World are trademarks of their respective owners; Chronologeek is an independent fan project.':
     'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed y Jurassic World son marcas de sus respectivos propietarios; Chronologeek es un proyecto fan independiente.',
   '© {n} Chronologeek —': '© {n} Chronologeek —',
@@ -70,19 +70,19 @@ export const LEXIQUE = {
   'Every universe, in order': 'Todos los universos, en orden',
   'Choose your': 'Elige tu',
   'universe': 'universo',
-  'Hop aboard the Multiverse Train. Explore the timelines of your favorite universes. Fifteen tracks, one departure point: the Nexus.':
-    'Sube al Tren del Multiverso. Explora las cronologías de tus universos favoritos. Quince vías, un único punto de partida: el Nexus.',
+  'Hop aboard the Multiverse Train. Explore the timelines of your favorite universes. Sixteen tracks, one departure point: the Nexus.':
+    'Sube al Tren del Multiverso. Explora las cronologías de tus universos favoritos. Dieciséis vías, un único punto de partida: el Nexus.',
   'stations,': 'estaciones,',
   'stops.': 'paradas.',
   'Each station represents an era in a timeline, and each stop represents a new work—all in chronological order.':
     'Cada estación es una era de una cronología, y cada parada, una obra nueva: todo en orden cronológico.',
-  'Thirteen tracks also run in release order.': 'Trece vías circulan también en orden de estreno.',
+  'Fourteen tracks also run in release order.': 'Catorce vías circulan también en orden de estreno.',
   'one station = one era, its size = its number of works': 'una estación = una era; su tamaño = su número de obras',
   'your train: this is where you are': 'tu tren: estás aquí',
   'Next departure': 'Próxima salida',
   'Resume ▸': 'Continuar ▸',
   'All lines': 'Todas las líneas',
-  'Fifteen timelines kept up to date, in French and English.': 'Quince cronologías al día, en francés, inglés y español.',
+  'Sixteen timelines kept up to date, in French and English.': 'Dieciséis cronologías al día, en francés, inglés y español.',
   'Movies · TV Shows · Animation · Video Games · Full chronological timeline': 'Películas · Series · Animación · Videojuegos · Cronología completa',
   'Movies · TV Shows · Animation · Other realities · Full chronological timeline': 'Películas · Series · Animación · Otras realidades · Cronología completa',
   'The Last Airbender · Korra · Comics · Novels · Chronological timeline': 'The Last Airbender · Korra · Cómics · Novelas · Cronología',
@@ -95,6 +95,7 @@ export const LEXIQUE = {
   'Books · Comics · Games · Both timelines, side by side': 'Libros · Cómics · Juegos · Las dos cronologías, una al lado de la otra',
   'Games · Movies · Mangas · From Raccoon City to Requiem': 'Juegos · Películas · Mangas · De Raccoon City a Requiem',
   'Movies · Show · Comics · From the origins to 2049': 'Películas · Serie · Cómics · De los orígenes a 2049',
+  'Games · Three timelines · From Skyward Sword to Tears of the Kingdom': 'Juegos · Tres líneas temporales · De Skyward Sword a Tears of the Kingdom',
   'Games · DLC · Videos · From Pandora to Kairos': 'Juegos · DLC · Vídeos · De Pandora a Kairos',
   'Movies · Shows · Comics · From Skull Island to The New Empire': 'Películas · Series · Cómics · De Skull Island a The New Empire',
   '/ {n} · {n} stations': '/ {n} · {n} estaciones',
@@ -271,8 +272,8 @@ export const LEXIQUE = {
   'Endgame': 'Final del juego',
   'Hide played': 'Ocultar lo jugado', 'Played': 'Jugado', 'Left to play': 'Por jugar',
   'Mark “{t}” as played': 'Marcar «{t}» como jugado', 'Mark “{t}” as done': 'Marcar «{t}» como hecho',
-  'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands are trademarks of their respective owners; Chronologeek is an independent fan project.':
-    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse y Borderlands son marcas de sus respectivos propietarios; Chronologeek es un proyecto fan independiente.',
+  'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands and The Legend of Zelda are trademarks of their respective owners; Chronologeek is an independent fan project.':
+    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands y The Legend of Zelda son marcas de sus respectivos propietarios; Chronologeek es un proyecto fan independiente.',
   'Reset your Star Trek progress?': '¿Reiniciar tu progreso?',
   'Reveal the minor spoilers': 'Mostrar los spoilers menores', 'Reveal the major spoilers': 'Mostrar los spoilers mayores',
   'Reveal': 'Mostrar', 'Minor spoilers': 'Spoilers menores', 'Major spoilers': 'Spoilers mayores',

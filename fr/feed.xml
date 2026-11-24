@@ -8,24 +8,31 @@
   <updated>2026-11-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
   <entry>
+    <title>Nouvelle timeline : The Legend of Zelda</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/zelda"/>
+    <id>tag:chronologeek.app,2026-11:nouvelle-timeline-the-legend-of-zelda</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Tous les jeux à histoire dans l'ordre chronologique — 22 jeux, une chronologie qui se sépare en trois puis se rejoint.</summary>
+  </entry>
+  <entry>
     <title>Nouvelle timeline : Borderlands</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/borderlands"/>
     <id>tag:chronologeek.app,2026-11:nouvelle-timeline-borderlands</id>
-    <updated>2026-11-01T12:00:00Z</updated>
+    <updated>2026-11-01T11:59:00Z</updated>
     <summary>Les jeux, les DLC, les vidéos, le roman et le comic dans l'ordre chronologique — 35 œuvres, de Borderlands à Borderlands 4.</summary>
   </entry>
   <entry>
     <title>Scène pré-générique (Peggy &amp; Steve) et scènes post-crédits Avengers : Endgame Encore</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/marvel#mcu-egenc"/>
     <id>tag:chronologeek.app,2026-11:scene-pre-generique-peggy-steve-et-scenes-post-credits-avengers-endgame-encore</id>
-    <updated>2026-11-01T11:59:00Z</updated>
+    <updated>2026-11-01T11:58:00Z</updated>
     <summary>Ajouté à la toute fin de la timeline Marvel : la scène pré-générique et les deux scènes post-crédits de la réédition, avant Avengers : Doomsday.</summary>
   </entry>
   <entry>
     <title>Nouvelle timeline : Monsterverse</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/monsterverse"/>
     <id>tag:chronologeek.app,2026-11:nouvelle-timeline-monsterverse</id>
-    <updated>2026-11-01T11:58:00Z</updated>
+    <updated>2026-11-01T11:57:00Z</updated>
     <summary>Les films, les séries Monarch et Skull Island, les comics et le jeu dans l'ordre chronologique — 18 œuvres, de Kong : Skull Island en 1973 à Godzilla x Kong : Le Nouvel Empire.</summary>
   </entry>
   <entry>
@@ -209,12 +216,5 @@
     <id>tag:chronologeek.app,2026-07:legacy</id>
     <updated>2026-07-01T11:59:00Z</updated>
     <summary>Ajouté au Dossier Star Wars — le nouveau roman, en 34 ABY, juste avant Le Prix de la Liberté.</summary>
-  </entry>
-  <entry>
-    <title>Supergirl (2026)</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/fr/dc#dcu-supergirl"/>
-    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
-    <updated>2026-07-01T11:58:00Z</updated>
-    <summary>Ajoutée à la timeline DC, à la suite du DCU.</summary>
   </entry>
 </feed>

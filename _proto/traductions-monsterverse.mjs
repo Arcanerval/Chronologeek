@@ -170,17 +170,17 @@ export const MV_TRADUCTIONS = [
   ['Movies · Shows · Comics · Game — the whole Monsterverse in its most optimized order.',
    'Films · Séries · Comics · Jeu — tout le Monsterverse dans son ordre le plus optimisé.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands and The Legend of Zelda '
    + 'are trademarks of their respective owners; Chronologeek is an independent fan project.',
    'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse et Borderlands '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands et The Legend of Zelda '
    + 'sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan '
    + 'indépendant.'],
   ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and Borderlands '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands and The Legend of Zelda '
    + 'are trademarks of their respective owners; Chronologeek is an independent fan project.',
    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
-   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse et Borderlands '
+   + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands et The Legend of Zelda '
    + 'sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan '
    + 'indépendant.'],
   /* les cases du tableau du premier écran */

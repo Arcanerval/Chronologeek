@@ -8,24 +8,31 @@
   <updated>2026-11-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
   <entry>
+    <title>New timeline: The Legend of Zelda</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/zelda"/>
+    <id>tag:chronologeek.app,2026-11:new-timeline-the-legend-of-zelda</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Every story game in chronological order — 22 games, one timeline that splits in three and comes back together.</summary>
+  </entry>
+  <entry>
     <title>New timeline: Borderlands</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/borderlands"/>
     <id>tag:chronologeek.app,2026-11:new-timeline-borderlands</id>
-    <updated>2026-11-01T12:00:00Z</updated>
+    <updated>2026-11-01T11:59:00Z</updated>
     <summary>The games, the DLC, the videos, the novel and the comic in chronological order — 35 works, from Borderlands to Borderlands 4.</summary>
   </entry>
   <entry>
     <title>Avengers: Endgame Encore — Pre-Credits Scene (Peggy &amp; Steve) + Both Post-Credits Scenes</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-egenc"/>
     <id>tag:chronologeek.app,2026-11:avengers-endgame-encore-pre-credits-scene-peggy-steve-both-post-credits-scenes</id>
-    <updated>2026-11-01T11:59:00Z</updated>
+    <updated>2026-11-01T11:58:00Z</updated>
     <summary>Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.</summary>
   </entry>
   <entry>
     <title>New timeline: Monsterverse</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/monsterverse"/>
     <id>tag:chronologeek.app,2026-11:new-timeline-monsterverse</id>
-    <updated>2026-11-01T11:58:00Z</updated>
+    <updated>2026-11-01T11:57:00Z</updated>
     <summary>The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.</summary>
   </entry>
   <entry>
@@ -209,12 +216,5 @@
     <id>tag:chronologeek.app,2026-07:legacy</id>
     <updated>2026-07-01T11:59:00Z</updated>
     <summary>Added to the Star Wars Deep Dive — the new novel, in 34 ABY, just before Pirate's Price.</summary>
-  </entry>
-  <entry>
-    <title>Supergirl (2026)</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-supergirl"/>
-    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
-    <updated>2026-07-01T11:58:00Z</updated>
-    <summary>Added to the DC timeline, following the DCU.</summary>
   </entry>
 </feed>

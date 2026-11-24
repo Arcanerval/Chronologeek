@@ -289,9 +289,9 @@ function cgBillet(){
     /* le bouton « remonter en haut » se cale au-dessus tant qu'elle est là */
     'html.cg-bar #totop{bottom:calc(var(--hud-h,0px) + var(--cg-bar-h,64px) + 20px)}',
     '.cgb-rail{display:block;height:8px;border-top:2px solid var(--paper);',
-    '  background:linear-gradient(90deg,#4d9fff 0 6.67%,#e23636 0 13.33%,#f5c842 0 20.00%,',
-    '  #7dd3fc 0 26.67%,#b48cf2 0 33.33%,#a8bf4f 0 40.00%,#e07b39 0 46.67%,#d4a02c 0 53.33%,',
-    '  #2dd4bf 0 60.00%,#45c46b 0 66.67%,#b0bec5 0 73.33%,#dc0000 0 80.00%,#ff5f1f 0 86.67%,#d946ef 0 93.33%,#ffe600 0)}',
+    '  background:linear-gradient(90deg,#4d9fff 0 6.25%,#e23636 0 12.50%,#f5c842 0 18.75%,',
+    '  #7dd3fc 0 25.00%,#b48cf2 0 31.25%,#a8bf4f 0 37.50%,#e07b39 0 43.75%,#d4a02c 0 50.00%,',
+    '  #2dd4bf 0 56.25%,#45c46b 0 62.50%,#b0bec5 0 68.75%,#dc0000 0 75.00%,#ff5f1f 0 81.25%,#d946ef 0 87.50%,#ffe600 0 93.75%,#43b02a 0)}',
     '.cgbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}',
     /* `--st` est la largeur de la souche : les deux encoches se calent dessus */
     '.cgb-tk{--st:54px;flex:1;min-width:0;display:flex;align-items:stretch;background:var(--paper);color:var(--ink);',
@@ -1798,6 +1798,7 @@ function cgBillet(){
     { u:'bladerunner',    prog:'cg-proto-bladerunner',    perso:'cg-perso-bladerunner',    alt:'cg-proto-bladerunner-alt' },
     { u:'monsterverse',   prog:'cg-proto-monsterverse',   perso:'cg-perso-monsterverse',   alt:'cg-proto-monsterverse-alt' },
     { u:'borderlands',    prog:'cg-proto-borderlands',    perso:'cg-perso-borderlands',    alt:'cg-proto-borderlands-alt' },
+    { u:'zelda',          prog:'cg-proto-zelda',          perso:'cg-perso-zelda',          alt:'cg-proto-zelda-alt' },
     { u:'dossier-sw',     prog:'cg-proto-dossier-sw',     perso:null }
   ];
 
@@ -2870,7 +2871,7 @@ function cgBillet(){
     startrek: 'cg-proto-st', twd: 'cg-proto-twd', dragonage: 'cg-proto-dragonage',
     assassinscreed: 'cg-proto-assassinscreed', dcanimation: 'cg-proto-dcanim', jurassic: 'cg-proto-jurassic',
     witcher: 'cg-proto-witcher', residentevil: 'cg-proto-re', bladerunner: 'cg-proto-bladerunner',
-    monsterverse: 'cg-proto-monsterverse', borderlands: 'cg-proto-borderlands' };
+    monsterverse: 'cg-proto-monsterverse', borderlands: 'cg-proto-borderlands', zelda: 'cg-proto-zelda' };
   var T = FR ? {
     bouton: 'Importar Letterboxd',
     titre: 'Importar do Letterboxd',
@@ -3190,7 +3191,7 @@ function cgBillet(){
   var FR = document.documentElement.lang !== 'en';
   var GC = 'https://arcanerval.goatcounter.com';
   var CANDIDATS = [
-    ['alien-predator', 'Alien / Predator'], ['zelda', 'The Legend of Zelda'],
+    ['alien-predator', 'Alien / Predator'],
     ['stargate', 'Stargate'], ['god-of-war', 'God of War'], ['gears-of-war', 'Gears of War'],
     ['mass-effect', 'Mass Effect'], ['dnd', FR ? 'Dungeons & Dragons' : 'Dungeons & Dragons'],
     ['terminator', 'Terminator'], ['avatar-cameron', FR ? 'Avatar (os filmes de James Cameron)' : 'Avatar (James Cameron’s films)'],
@@ -4110,7 +4111,8 @@ function cgBillet(){
     witcher:        { u: 'witcher' },
     bladerunner:    { u: 'bladerunner' },
     monsterverse:   { u: 'monsterverse' },
-    borderlands:    { u: 'borderlands' }
+    borderlands:    { u: 'borderlands' },
+    zelda:          { u: 'zelda' }
   };
 
   var T = FR ? {
@@ -4371,7 +4373,8 @@ function cgBillet(){
     ['witcher',        'The Witcher'],
     ['bladerunner',    'Blade Runner'],
     ['monsterverse',   'Monsterverse'],
-    ['borderlands',    'Borderlands']
+    ['borderlands',    'Borderlands'],
+    ['zelda',          'The Legend of Zelda']
   ];
 
   var T = FR ? {
@@ -4635,7 +4638,7 @@ function cgBillet(){
     x.closePath();
   }
   var ENCRES = ['#4d9fff','#e23636','#f5c842','#7dd3fc','#b48cf2','#a8bf4f',
-                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f','#d946ef','#ffe600'];
+                '#e07b39','#d4a02c','#2dd4bf','#45c46b','#b0bec5','#dc0000','#ff5f1f','#d946ef','#ffe600','#43b02a'];
 
   /* Le billet : même papier, même souche encochée et même filet aux douze
      encres que les barres du bas (`cgBillet`). Souche à l'encre de
@@ -5908,7 +5911,7 @@ function cgBillet(){
         jouer: 'Onde jogar', rawg: 'Dados: RAWG' };
   var ECRAN = { film: 1, filmanim: 1, serie: 1, anime: 1, short: 1, special: 1, web: 1 };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA',
-              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE', 'BORDERLANDS'];
+              'ASSASSINSCREED', 'DCANIM', 'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE', 'BORDERLANDS', 'ZELDA'];
 
   var CSS = [
     '.wt{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:10px;',
@@ -6138,7 +6141,14 @@ function cgBillet(){
     'sw-outlaws': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
     /* RAWG ne répondait plus (522) le jour de la publication du Monsterverse,
        le 7 novembre 2026 : les plateformes viennent du wiki Godzilla. */
-    'mv-survivorinstinct': ['PS5', 'Xbox Series', 'PC']
+    'mv-survivorinstinct': ['PS5', 'Xbox Series', 'PC'],
+    /* Zelda, relevé le 23 novembre 2026 : RAWG range les jeux Switch 2 en
+       Switch, et ignore les éditions Switch 2 de Breath of the Wild et de
+       Tears of the Kingdom. */
+    'zl-oot': ['Switch 2'],
+    'zl-aoi': ['Switch 2'],
+    'zl-botw': ['Switch 2', 'Switch', 'Wii U'],
+    'zl-totk': ['Switch 2', 'Switch']
   };
   var COURTS = { 'PlayStation 5': 'PS5', 'PlayStation 4': 'PS4', 'PlayStation 3': 'PS3', 'PlayStation 2': 'PS2',
     'PlayStation': 'PS1', 'Xbox Series S/X': 'Xbox Series', 'Nintendo Switch 2': 'Switch 2', 'Nintendo Switch': 'Switch',
@@ -6344,9 +6354,9 @@ function cgBillet(){
   var FRANCHISE = { starwars: 'Star Wars', 'star-wars': 'Star Wars', 'dossier-star-wars': 'Star Wars',
     avatar: 'Avatar', witcher: EN ? 'Witcher' : 'Witcher', assassinscreed: 'Assassin’s Creed',
     dragonage: 'Dragon Age', jurassic: 'Jurassic', jurassicworld: 'Jurassic', bladerunner: 'Blade Runner',
-    residentevil: 'Resident Evil', monsterverse: 'Godzilla', borderlands: 'Borderlands' };
+    residentevil: 'Resident Evil', monsterverse: 'Godzilla', borderlands: 'Borderlands', zelda: 'Zelda' };
   var NOMS = ['SW', 'MCU', 'DC', 'AVATAR', 'ST', 'TWD', 'DATA_DA', 'ASSASSINSCREED', 'DCANIM',
-              'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE', 'BORDERLANDS'];
+              'JURASSIC', 'WITCHER', 'RE', 'BLADERUNNER', 'MONSTERVERSE', 'BORDERLANDS', 'ZELDA'];
 
   var route = ((window.CG_CHEMIN || location.pathname).split('/').filter(Boolean).pop() || '')
     .replace(/\.html$/, '').replace(/^en?-/, '');
@@ -7042,7 +7052,7 @@ function cgBillet(){
      pastilles arrondies, les codes de ligne des univers. Redessiné le
      7 novembre 2026, à la demande de Niko. */
   var ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2', '#a8bf4f', '#e07b39',
-                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef', '#ffe600'];
+                '#d4a02c', '#2dd4bf', '#45c46b', '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef', '#ffe600', '#43b02a'];
   var FILET = 'linear-gradient(90deg,' + ENCRES.map(function(c, i){
     return c + ' ' + (i * 100 / ENCRES.length).toFixed(2) + '% ' + ((i + 1) * 100 / ENCRES.length).toFixed(2) + '%';
   }).join(',') + ')';

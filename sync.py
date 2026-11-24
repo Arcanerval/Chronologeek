@@ -29,7 +29,7 @@ Usage :
                                              puis rappelle quoi relancer
 
 Pages : sw, mcu, dc, avatar, startrek, twd, dragonage, assassinscreed, dcanimation,
-        jurassic, witcher, residentevil, bladerunner, monsterverse, borderlands, dossier, news, accueil, avenir, dossiers
+        jurassic, witcher, residentevil, bladerunner, monsterverse, borderlands, zelda, dossier, news, accueil, avenir, dossiers
 """
 
 import re
@@ -91,6 +91,8 @@ PAGES = {
                           "e-monsterverse.html", langue_source="en"),
     "borderlands": Paire("borderlands.html", "fr/borderlands.html", "borderlands",
                          "e-borderlands.html", langue_source="en"),
+    "zelda": Paire("zelda.html", "fr/zelda.html", "zelda",
+                   "e-zelda.html", langue_source="en"),
     "dossier":  Paire("deep-dives/star-wars.html", "fr/dossiers/star-wars.html",
                       "dossier-star-wars", "e-dossier-star-wars.html"),
     "news":     Paire("whats-new.html", "fr/nouveautes.html", "news", "e-nouveautes.html"),

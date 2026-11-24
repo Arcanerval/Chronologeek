@@ -86,6 +86,11 @@ quatorze univers. Voir « Le Monsterverse, le quatorzième univers » plus bas.
 2026 sous `/borderlands`, `/fr/borderlands`, `/es/borderlands` et
 `/pt/borderlands` : quinze univers. Voir « Borderlands, le quinzième univers »
 plus bas.
+**The Legend of Zelda est le douzième** — `en-zelda.html` + `data-zelda-en.js`
+sont la source, `node _proto/traduire-zelda.mjs` écrit `e-zelda.html` et
+`data-zelda.js`. Publié le 24 novembre 2026 sous `/zelda`, `/fr/zelda`,
+`/es/zelda` et `/pt/zelda` : seize univers. Voir « The Legend of Zelda, le
+seizième univers » plus bas.
 
 `py sync.py check` vérifie ensuite la parité des deux langues.
 
@@ -101,7 +106,8 @@ Assassin's Creed `#d4a02c`, DC Animation `#2dd4bf` (branches DCAU `#5aa9f8`,
 DCAMU `#c084fc`, Arkhamverse `#4ade80`), Jurassic World `#45c46b`,
 The Witcher `#b0bec5` (colonnes Sapkowski `#d4a857`, CD Projekt RED `#e5484d`),
 Resident Evil `#dc0000`, Blade Runner `#ff5f1f`, Monsterverse `#d946ef`,
-Borderlands `#ffe600`.
+Borderlands `#ffe600`, The Legend of Zelda `#43b02a` (branches Fallen Hero
+`#e5484d`, Child `#f5a524`, Adult `#38bdf8`).
 Chaque page pose `data-universe` sur `<body>` (`sw`, `mcu`, `dc`, `avatar`) et `--tl-color`.
 
 **Assassin's Creed est passé du rouge à l'or le 24 septembre 2026**, sur
@@ -678,6 +684,45 @@ vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N /
 - **Le véhicule est la station Helios** (`images/vehicules/helios.webp`, 88 × 146,
   image de Niko du 16 novembre 2026). Le bouton « remonter » est son logo du Vault détouré
   (`bltop1/2.webp`, rouille au repos, orange au survol).
+
+## The Legend of Zelda, le seizième univers
+
+Publié le 24 novembre 2026, bâti sur la page The Witcher (réseau) : une ligne
+commune qui **se sépare en trois puis se rejoint**. Code **ZL**, cinq stations :
+Sky Era, Force Era, Era of the Hero of Time (une colonne chacune), « Three
+Timelines » (trois colonnes FH / CT / AT : Fallen Hero, Child, Adult), Era of the
+Wilds. Deux parcours (chronologique et sortie), pas de table `RT` : 22 jeux.
+
+- **Les données sortent d'un script** : `node _proto/construire-zelda.mjs` écrit
+  `data-zelda-en.js` et `sorties/zelda.json` depuis le document de Niko, puis
+  relance `detailler-sortie.mjs`. La page `en-zelda.html` s'édite à la main. Les
+  dates de sortie (version conseillée, la plus récente, comme Resident Evil : le
+  remake Switch 2 d'Ocarina of Time) sont dans `UNIVERS.zelda` d'`ordre-sortie.mjs`.
+- **Les ères d'une branche sont des plaques de station** (`.stn-sub`, image,
+  « Era N / M », décompte `data-sdone`), posées par les séparateurs des données.
+  Sur le plan du haut, les voies se rejoignent (la zone n'est pas la dernière).
+  **Les codes de ligne se lisent par branche** (`CODES` objet), pas par rang :
+  l'ordre de sortie n'a pas les mêmes bandes. On arrive sur la branche Child
+  (`first:true`, `data-first`), le conseil de Niko.
+- **L'intitulé de chaque branche divulgue la fin d'Ocarina of Time** : il est dans
+  un bandeau de spoil replié, au dessin de Star Trek (`.bn.major`), centré.
+- **Les noms d'ères traduits sont ceux des wikis Zelda** FR / ES / PT-BR (pages
+  liées depuis « The Legend of Zelda timeline »), sauf Era of the Wilds (aucun ne
+  la nomme) et, en français, l'Ère de la Force.
+- **Les dates sont des durées** (« + ~200-500 YEARS ») : leur unité se traduit
+  (ANS, AÑOS, ANOS), seconde exception à la règle des dates après Borderlands —
+  dans `traduire-zelda.mjs` et, en ES/PT, par les clés `date:` d'`es/zelda.mjs`
+  (`traduire-langue.mjs` ne les lit que si la date commence par « + » ou « - » :
+  l'Arkhamverse écrit « YEAR 0 »).
+- **Les synopsis officiels viennent de RAWG**, lu en direct ; `rawgSyn()` de la
+  page recolle les lignes coupées et écarte la notice Virtual Console, les
+  palmarès, « Click here » et les textes de wiki. Cinq jeux sans texte officiel
+  portent un synopsis écrit (`DESC` de `construire-zelda.mjs`). `CONSOLES_FIXES`
+  corrige RAWG pour les jeux Switch 2.
+- **Le vert de Link `#43b02a`**, demandé par Niko. Véhicule : la paravoile
+  (`images/vehicules/paravoile.webp`, son image) ; bouton « remonter » : ses deux
+  Triforce (`zltop1/2.webp`, la première rendue depuis son SVG).
+- **Pas au radar.**
 
 ## L'espagnol, troisième langue, posé le 14 novembre 2026
 
@@ -3779,11 +3824,12 @@ titres viennent de `/search-<langue>.json`. Les ajouts `p-` n'y sont pas.
 ### Le vote pour la prochaine ligne, posé le 13 novembre 2026
 
 Bouton « Voter pour la prochaine ligne » à côté de « Suggérer une timeline », sur la
-case « Lignes en chantier » de l'accueil (`e-app.js`, bloc « LE VOTE »). Onze
+case « Lignes en chantier » de l'accueil (`e-app.js`, bloc « LE VOTE »). Dix
 candidats choisis par Niko, dans `CANDIDATS` : Alien / Predator,
-Zelda, Stargate, God of War, Gears of War, Mass Effect, Donjons & Dragons,
+Stargate, God of War, Gears of War, Mass Effect, Donjons & Dragons,
 Terminator, Avatar (les films de Cameron), Pokémon, Dragons. Borderlands en est
-sorti à sa publication, le 16 novembre 2026 : **un univers publié quitte le vote**.
+sorti à sa publication, le 16 novembre 2026, et Zelda le 24 : **un univers publié
+quitte le vote**.
 **La clé d'un
 candidat ne bouge plus une fois des votes reçus** : c'est l'événement GoatCounter
 `vote-<clé>`. Un vote par candidat et par navigateur (`cg-votes`), plusieurs

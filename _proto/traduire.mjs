@@ -406,6 +406,11 @@ const TRADUCTIONS = [
   ['Ajouté au Dossier Star Wars — le comic, en 1 BBY, juste après Rogue One : Cassian Andor et juste avant le film.',
    'Added to the Star Wars Deep Dive — the comic, in 1 BBY, just after Rogue One: Cassian Andor and just before the movie.'],
 
+  /* ── la carte Zelda du 24 novembre 2026 ───────────────────────── */
+  ['Nouvelle timeline : The Legend of Zelda', 'New timeline: The Legend of Zelda'],
+  ["Tous les jeux à histoire dans l'ordre chronologique — 22 jeux, une chronologie qui se sépare en trois puis se rejoint.",
+   'Every story game in chronological order — 22 games, one timeline that splits in three and comes back together.'],
+
   /* ── la carte Borderlands du 16 novembre 2026 ─────────────────── */
   ['Nouvelle timeline : Borderlands', 'New timeline: Borderlands'],
   ["Les jeux, les DLC, les vidéos, le roman et le comic dans l'ordre chronologique — 35 œuvres, de Borderlands à Borderlands 4.",

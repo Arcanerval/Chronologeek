@@ -231,6 +231,24 @@ export const UNIVERS = {
       'bl-loveless': '2026-09-03', 'bl-fl4k': '2026-09-10',
     },
   },
+  zelda: {
+    fichier: '_proto/data-zelda-en.js', global: 'window.ZELDA',
+    temps: false,
+    /* Rien chez TMDB. Sortie nord-américaine d'après Wikipedia, relevée le
+       22 novembre 2026, dans la version que la timeline conseille — la plus
+       récente, comme Resident Evil : Ocarina of Time est le remake Switch 2,
+       Link's Awakening celui de 2019, et les HD et 3D à leur sortie. */
+    dates: {
+      'zl-loz': '1987-08-22', 'zl-aol': '1988-12-01', 'zl-alttp': '1992-04-13',
+      'zl-oos': '2001-05-14', 'zl-ooa': '2001-05-14', 'zl-foursw': '2002-12-02',
+      'zl-fsa': '2004-06-07', 'zl-minish': '2005-01-10', 'zl-ph': '2007-10-01',
+      'zl-st': '2009-12-07', 'zl-ww': '2013-09-20', 'zl-albw': '2013-11-22',
+      'zl-mm': '2015-02-13', 'zl-tfh': '2015-10-23', 'zl-tp': '2016-03-04',
+      'zl-botw': '2017-03-03', 'zl-la': '2019-09-20', 'zl-ss': '2021-07-16',
+      'zl-totk': '2023-05-12', 'zl-eow': '2024-09-26', 'zl-aoi': '2025-11-06',
+      'zl-oot': '2026-11-05',
+    },
+  },
   assassinscreed: {
     fichier: '_proto/data-assassinscreed-en.js', global: 'window.ASSASSINSCREED',
     temps: false,

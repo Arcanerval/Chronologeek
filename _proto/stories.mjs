@@ -35,6 +35,7 @@ const UNIVERS = {
   bladerunner:    { encre:'#ff5f1f', nom:'Blade Runner',     img:'bladerunnertimeline' },
   monsterverse:   { encre:'#d946ef', nom:'Monsterverse',     img:'monsterverse' },
   borderlands:    { encre:'#ffe600', nom:'Borderlands',      img:'borderlands' },
+  zelda:          { encre:'#43b02a', nom:'The Legend of Zelda', img:'zelda' },
 };
 
 /* radar.json reste francais dans les deux langues — c'est le meme fichier qui

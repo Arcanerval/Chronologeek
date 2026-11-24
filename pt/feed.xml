@@ -8,24 +8,31 @@
   <updated>2026-11-01T12:00:00Z</updated>
   <author><name>Chronologeek</name></author>
   <entry>
+    <title>New timeline: The Legend of Zelda</title>
+    <link rel="alternate" type="text/html" href="https://chronologeek.app/zelda"/>
+    <id>tag:chronologeek.app,2026-11:new-timeline-the-legend-of-zelda</id>
+    <updated>2026-11-01T12:00:00Z</updated>
+    <summary>Todos os jogos com história em ordem cronológica: 22 jogos, uma cronologia que se divide em três e depois volta a se juntar.</summary>
+  </entry>
+  <entry>
     <title>New timeline: Borderlands</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/borderlands"/>
     <id>tag:chronologeek.app,2026-11:new-timeline-borderlands</id>
-    <updated>2026-11-01T12:00:00Z</updated>
+    <updated>2026-11-01T11:59:00Z</updated>
     <summary>Os jogos, os DLC, os vídeos, o romance e o quadrinho em ordem cronológica: 35 obras, de Borderlands a Borderlands 4.</summary>
   </entry>
   <entry>
     <title>Avengers: Endgame Encore — Cena pré-créditos (Peggy e Steve) + as duas cenas pós-créditos</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/marvel#mcu-egenc"/>
     <id>tag:chronologeek.app,2026-11:avengers-endgame-encore-cena-pre-creditos-peggy-e-steve-as-duas-cenas-pos-creditos</id>
-    <updated>2026-11-01T11:59:00Z</updated>
+    <updated>2026-11-01T11:58:00Z</updated>
     <summary>Adicionadas bem no fim da cronologia Marvel: a cena pré-créditos e as duas cenas pós-créditos do relançamento, antes de Avengers: Doomsday.</summary>
   </entry>
   <entry>
     <title>New timeline: Monsterverse</title>
     <link rel="alternate" type="text/html" href="https://chronologeek.app/monsterverse"/>
     <id>tag:chronologeek.app,2026-11:new-timeline-monsterverse</id>
-    <updated>2026-11-01T11:58:00Z</updated>
+    <updated>2026-11-01T11:57:00Z</updated>
     <summary>Os filmes, as séries Monarch e Skull Island, os quadrinhos e o jogo em ordem cronológica: 18 obras, de Kong: Skull Island, em 1973, a Godzilla x Kong: The New Empire.</summary>
   </entry>
   <entry>
@@ -209,12 +216,5 @@
     <id>tag:chronologeek.app,2026-07:legacy</id>
     <updated>2026-07-01T11:59:00Z</updated>
     <summary>Adicionado ao Dossiê Star Wars: o novo romance, em 34 ABY, logo antes de Pirate's Price.</summary>
-  </entry>
-  <entry>
-    <title>Supergirl (2026)</title>
-    <link rel="alternate" type="text/html" href="https://chronologeek.app/dc#dcu-supergirl"/>
-    <id>tag:chronologeek.app,2026-07:supergirl-2026</id>
-    <updated>2026-07-01T11:58:00Z</updated>
-    <summary>Adicionada à cronologia DC, depois do DCU.</summary>
   </entry>
 </feed>

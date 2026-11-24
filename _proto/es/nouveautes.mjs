@@ -39,6 +39,8 @@ export default {
 
   "Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.":
     "Añadidas al final de la cronología Marvel: la escena precréditos y las dos escenas poscréditos del reestreno, antes de Avengers: Doomsday.",
+  "Every story game in chronological order — 22 games, one timeline that splits in three and comes back together.":
+    "Todos los juegos con historia en orden cronológico: 22 juegos, una cronología que se divide en tres y luego vuelve a unirse.",
   "The games, the DLC, the videos, the novel and the comic in chronological order — 35 works, from Borderlands to Borderlands 4.":
     "Los juegos, los DLC, los vídeos, la novela y el cómic en orden cronológico: 35 obras, de Borderlands a Borderlands 4.",
   "The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.":

@@ -1,0 +1,125 @@
+[
+ {
+  "title": "Classic Era · 1987-2005",
+  "zone": "Classic Era · 1987-2005",
+  "branch": "main",
+  "art": "https://media.rawg.io/media/resize/1920/-/games/087/08727beb32c364d30e8b2a1aa8595f8e.jpg",
+  "entries": [
+   {
+    "ref": "zl-loz",
+    "rel": "1987"
+   },
+   {
+    "ref": "zl-aol",
+    "rel": "1988"
+   },
+   {
+    "ref": "zl-alttp",
+    "rel": "1992"
+   },
+   {
+    "ref": "zl-oos",
+    "rel": "2001"
+   },
+   {
+    "ref": "zl-ooa",
+    "rel": "2001"
+   },
+   {
+    "ref": "zl-foursw",
+    "rel": "2002"
+   },
+   {
+    "ref": "zl-fsa",
+    "rel": "2004"
+   },
+   {
+    "ref": "zl-minish",
+    "rel": "2005"
+   }
+  ]
+ },
+ {
+  "title": "DS Era · 2007-2009",
+  "zone": "DS Era · 2007-2009",
+  "branch": "main",
+  "art": "https://media.rawg.io/media/resize/1920/-/screenshots/b23/b23b3b0f25b10123c0338cf9f5c8bc12.jpg",
+  "entries": [
+   {
+    "ref": "zl-ph",
+    "rel": "2007"
+   },
+   {
+    "ref": "zl-st",
+    "rel": "2009"
+   }
+  ]
+ },
+ {
+  "title": "3DS & Wii U Era · 2013-2016",
+  "zone": "3DS & Wii U Era · 2013-2016",
+  "branch": "main",
+  "art": "https://media.rawg.io/media/resize/1920/-/screenshots/c75/c75f83d346ded0cb785e0649e0ac10cd.jpg",
+  "entries": [
+   {
+    "ref": "zl-ww",
+    "rel": "2013"
+   },
+   {
+    "ref": "zl-albw",
+    "rel": "2013"
+   },
+   {
+    "ref": "zl-mm",
+    "rel": "2015"
+   },
+   {
+    "ref": "zl-tfh",
+    "rel": "2015"
+   },
+   {
+    "ref": "zl-tp",
+    "rel": "2016"
+   }
+  ]
+ },
+ {
+  "title": "Switch Era · 2017-2026",
+  "zone": "Switch Era · 2017-2026",
+  "branch": "main",
+  "art": "https://media.rawg.io/media/resize/1920/-/games/cc1/cc196a5ad763955d6532cdba236f730c.jpg",
+  "entries": [
+   {
+    "ref": "zl-botw",
+    "rel": "2017"
+   },
+   {
+    "ref": "zl-la",
+    "rel": "2019"
+   },
+   {
+    "ref": "zl-ss",
+    "rel": "2021"
+   },
+   {
+    "ref": "zl-totk",
+    "rel": "2023"
+   },
+   {
+    "ref": "zl-eow",
+    "rel": "2024"
+   },
+   {
+    "ref": "zl-aoi",
+    "rel": "2025",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
+    "ref": "zl-oot",
+    "rel": "2026"
+   }
+  ]
+ }
+]

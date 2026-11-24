@@ -19,7 +19,7 @@
          "site"  une timeline, un Dossier, une fonctionnalité
    uni   sw | mcu | dc | avatar | startrek | twd | dragonage |
          assassinscreed | dcanimation | jurassic | witcher |
-         residentevil | bladerunner | monsterverse | borderlands, ou "" si le changement ne vise pas un univers
+         residentevil | bladerunner | monsterverse | borderlands | zelda, ou "" si le changement ne vise pas un univers
    kind  la clé de type, pour le badge et son encre (voir KIND dans la page)
    meta  la date in-universe, telle qu'elle s'affiche dans la timeline
    img   la vignette, au format 16/9 comme les visuels d'entrée des
@@ -37,6 +37,13 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-11", label:"Novembre 2026", items:[
+      { nat:"site", uni:"zelda", kind:"timeline",
+        title:"Nouvelle timeline : The Legend of Zelda",
+        txt:"Tous les jeux à histoire dans l'ordre chronologique — "+
+            "22 jeux, une chronologie qui se sépare en trois puis se rejoint.",
+        img:"/images/zelda.webp",
+        href:"e-zelda.html", cta:"Ouvrir la timeline" },
+
       { nat:"site", uni:"borderlands", kind:"timeline",
         title:"Nouvelle timeline : Borderlands",
         txt:"Les jeux, les DLC, les vidéos, le roman et le comic dans "+

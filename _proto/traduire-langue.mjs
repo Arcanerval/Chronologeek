@@ -60,6 +60,7 @@ const BASE = {
   bladerunner: { page: 'en-bladerunner.html', sortie: 'bladerunner.html', donnees: [['data-bladerunner-en.js', 'data-bladerunner-{L}.js']] },
   monsterverse: { page: 'en-monsterverse.html', sortie: 'monsterverse.html', donnees: [['data-monsterverse-en.js', 'data-monsterverse-{L}.js']] },
   borderlands: { page: 'en-borderlands.html', sortie: 'borderlands.html', donnees: [['data-borderlands-en.js', 'data-borderlands-{L}.js']] },
+  zelda: { page: 'en-zelda.html', sortie: 'zelda.html', donnees: [['data-zelda-en.js', 'data-zelda-{L}.js']] },
   avenir: { page: 'en-a-venir.html', sortie: 'a-venir.html' },
   nouveautes: { page: 'en-nouveautes.html', sortie: 'nouveautes.html', donnees: [['data-news-en.js', 'data-news-{L}.js']] },
   dossiers: { page: 'en-dossiers.html', sortie: 'dossiers.html' },
@@ -247,6 +248,11 @@ export async function traduireLangue(L, argv = process.argv.slice(2)) {
        tranchée par Niko le 16 novembre 2026 (« −18 años », « Hoy ») : la
        table de l'univers les porte sous la clé « date:… ». */
     if (cle === 'date' && /^~?Year \d/.test(o)) return traduit('date:' + o, `${chemin}`);
+    /* Zelda, même exception (23 novembre 2026) : ses dates sont des durées en
+       toutes lettres, « + ~200-500 YEARS », dont l'unité se traduit. */
+    /* Le « + » ou le « - » de tête est ce qui les distingue : l'Arkhamverse
+       écrit « YEAR 0 », une date du monde, qui ne se traduit pas. */
+    if (cle === 'date' && /^[+-] ~?[\dX].*\b(YEARS?|MONTHS|DAYS)\b/.test(o)) return traduit('date:' + o, `${chemin}`);
     if (TECHNIQUES.has(cle) || IDENTIQUES_PAR_CHAMP.has(cle)) return o;
     /* Un champ qui porte du HTML (les accroches) se traduit nœud par nœud. */
     if (/<[a-z][^>]*>/i.test(o)) {

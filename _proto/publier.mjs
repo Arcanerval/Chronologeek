@@ -159,6 +159,12 @@ const ROUTES = [
     fr: { proto: 'e-borderlands.html',        sortie: 'fr/borderlands.html',      url: '/fr/borderlands' },
     en: { proto: 'en-borderlands.html',       sortie: 'borderlands.html',         url: '/borderlands' },
     es: { proto: 'es-borderlands.html', sortie: 'es/borderlands.html', url: '/es/borderlands' } },
+  // `en-zelda.html` est la source, `e-zelda.html` en descend
+  // par traduire-zelda.mjs.
+  { cle: 'zelda',
+    fr: { proto: 'e-zelda.html',              sortie: 'fr/zelda.html',            url: '/fr/zelda' },
+    en: { proto: 'en-zelda.html',             sortie: 'zelda.html',               url: '/zelda' },
+    es: { proto: 'es-zelda.html', sortie: 'es/zelda.html', url: '/es/zelda' } },
   { cle: 'dossiers',
     fr: { proto: 'e-dossiers.html',           sortie: 'fr/dossiers/index.html',   url: '/fr/dossiers/' },
     en: { proto: 'en-dossiers.html',          sortie: 'deep-dives/index.html',    url: '/deep-dives/' },
@@ -278,6 +284,8 @@ const ASSETS = {
   'data-monsterverse-en.js':   '/data/monsterverse-en.js',
   'data-borderlands.js':       '/data/borderlands-fr.js',
   'data-borderlands-en.js':    '/data/borderlands-en.js',
+  'data-zelda.js':             '/data/zelda-fr.js',
+  'data-zelda-en.js':          '/data/zelda-en.js',
   'data-dossier-sw.js':    '/data/dossier-star-wars-fr.js',
   'data-dossier-sw-en.js': '/data/dossier-star-wars-en.js',
   'data-news.js':          '/data/news-fr.js',
@@ -299,6 +307,7 @@ const ASSETS = {
   'data-bladerunner-es.js': '/data/bladerunner-es.js',
   'data-monsterverse-es.js': '/data/monsterverse-es.js',
   'data-borderlands-es.js': '/data/borderlands-es.js',
+  'data-zelda-es.js': '/data/zelda-es.js',
   'data-news-es.js': '/data/news-es.js',
   'data-dossier-sw-es.js': '/data/dossier-star-wars-es.js',
   'e-app-es.js':           '/app-es.js',
@@ -318,6 +327,7 @@ const ASSETS = {
   'data-bladerunner-pt.js': '/data/bladerunner-pt.js',
   'data-monsterverse-pt.js': '/data/monsterverse-pt.js',
   'data-borderlands-pt.js': '/data/borderlands-pt.js',
+  'data-zelda-pt.js': '/data/zelda-pt.js',
   'data-news-pt.js': '/data/news-pt.js',
   'data-dossier-sw-pt.js': '/data/dossier-star-wars-pt.js',
   'e-app-pt.js':           '/app-pt.js',
@@ -591,7 +601,7 @@ const BOOT_PLANCHE = '/images/boot-univers.webp';
 // L'ordre est celui du site : les trois en clair, puis « Plus d'univers ».
 const BOOT_ENCRES = ['#4d9fff', '#e23636', '#f5c842', '#7dd3fc', '#b48cf2',
                      '#a8bf4f', '#e07b39', '#d4a02c', '#2dd4bf', '#45c46b',
-                     '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef', '#ffe600'];
+                     '#b0bec5', '#dc0000', '#ff5f1f', '#d946ef', '#ffe600', '#43b02a'];
 
 const BOOT =
   /* **Pas de `<link rel="preload">`**, et c'est voulu : il est inconditionnel,
@@ -838,7 +848,8 @@ const BOOT_PHRASES = {
 // Treize univers depuis Blade Runner, le 12 octobre 2026 : 12 × 0,188 = 2,256 s.
 // Quatorze depuis le Monsterverse, le 7 novembre 2026 : 13 × 0,174 = 2,262 s.
 // Quinze depuis Borderlands, le 16 novembre 2026 : 14 × 0,162 = 2,268 s.
-const BOOT_PAS = 0.162;
+// Seize depuis Zelda, le 24 novembre 2026 : 15 × 0,151 = 2,265 s.
+const BOOT_PAS = 0.151;
 // L'intitulé du panneau de quai, au-dessus de la phrase.
 const BOOT_DEPART = { fr: 'Prochain départ', en: 'Now departing', es: 'Próxima salida', pt: 'Próxima partida' };
 const BOOT_CORPS = langue =>

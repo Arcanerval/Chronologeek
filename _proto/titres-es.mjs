@@ -172,7 +172,7 @@ const FRANCHISE = {
   sw: /star wars/, mcu: /marvel/, dc: /\b(dc|batman|superman)\b/, avatar: /avatar|korra|aang|kyoshi|yangchen|roku/,
   startrek: /star trek/, twd: /walking dead/, dragonage: /dragon age/, assassinscreed: /assassin/,
   dcanimation: /\b(dc|batman|superman)\b/, jurassic: /jurassic/, witcher: /witcher|brujo|sapkowski/,
-  residentevil: /resident evil|biohazard/, bladerunner: /blade runner/, monsterverse: /godzilla|kong|monsterverse/, borderlands: /borderlands/,
+  residentevil: /resident evil|biohazard/, bladerunner: /blade runner/, monsterverse: /godzilla|kong|monsterverse/, borderlands: /borderlands/, zelda: /zelda/,
 };
 async function ecrit(e, nature, univers) {
   const brut = decode(e.title);

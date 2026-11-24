@@ -674,5 +674,31 @@
       "desc": "Borderlands em ordem cronológica ou de lançamento: 35 obras, jogos, DLC, vídeos, um romance e um quadrinho, de Pandora a Kairos, sem spoilers.",
       "image": "https://chronologeek.app/images/borderlands.webp"
     }
+  },
+  "zelda": {
+    "fr": {
+      "title": "Zelda dans l’ordre chronologique | Chronologeek",
+      "ogTitle": "Timeline The Legend of Zelda — Chronologeek",
+      "desc": "La timeline Zelda dans l’ordre chronologique ou de sortie — 22 jeux, de Skyward Sword à Tears of the Kingdom, et trois timelines qui se rejoignent.",
+      "image": "https://chronologeek.app/images/zelda.webp"
+    },
+    "en": {
+      "title": "Zelda Timeline, Chronological &amp; Release Order | Chronologeek",
+      "ogTitle": "The Legend of Zelda Timeline — Chronologeek",
+      "desc": "The Zelda timeline in chronological or release order — 22 games, from Skyward Sword to Tears of the Kingdom, three timelines that come back together.",
+      "image": "https://chronologeek.app/images/zelda.webp"
+    },
+    "es": {
+      "title": "Zelda en orden cronológico y de lanzamiento | Chronologeek",
+      "ogTitle": "The Legend of Zelda en orden — Chronologeek",
+      "desc": "Zelda en orden cronológico o de lanzamiento: 22 juegos, de Skyward Sword a Tears of the Kingdom, y tres líneas temporales que vuelven a unirse.",
+      "image": "https://chronologeek.app/images/zelda.webp"
+    },
+    "pt": {
+      "title": "Zelda em ordem cronológica | Chronologeek",
+      "ogTitle": "The Legend of Zelda em ordem — Chronologeek",
+      "desc": "Zelda em ordem cronológica ou de lançamento: 22 jogos, de Skyward Sword a Tears of the Kingdom, e três linhas do tempo que voltam a se juntar.",
+      "image": "https://chronologeek.app/images/zelda.webp"
+    }
   }
 }

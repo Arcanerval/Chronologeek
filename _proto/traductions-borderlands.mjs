@@ -38,6 +38,9 @@ export const BL_IDENTIQUES = [
 export const BL_RETROUVES = [];
 
 export const BL_TRADUCTIONS = [
+  /* la mention légale du pied de page, depuis Zelda (24 novembre 2026) */
+  ['. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands and The Legend of Zelda are trademarks of their respective owners; Chronologeek is an independent fan project.',
+    '. Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands et The Legend of Zelda sont des marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   /* ── les titres : le nom reste, le deux-points prend son espace ──── */
   ['Borderlands: The Zombie Island of Dr. Ned', 'Borderlands : The Zombie Island of Dr. Ned'],
   ['Borderlands: Mad Moxxi\'s Underdome Riot', 'Borderlands : Émeute dans l’Underdome de Mad Moxxi'],

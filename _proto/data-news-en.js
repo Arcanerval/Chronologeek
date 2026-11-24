@@ -7,6 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-11", label:"November 2026", items:[
+      {"nat":"site","uni":"zelda","kind":"timeline","title":"New timeline: The Legend of Zelda","txt":"Every story game in chronological order — 22 games, one timeline that splits in three and comes back together.","img":"/images/zelda.webp","href":"en-zelda.html","cta":"Open the timeline"},
       {"nat":"site","uni":"borderlands","kind":"timeline","title":"New timeline: Borderlands","txt":"The games, the DLC, the videos, the novel and the comic in chronological order — 35 works, from Borderlands to Borderlands 4.","img":"/images/borderlands.webp","href":"en-borderlands.html","cta":"Open the timeline"},
       {"nat":"media","uni":"mcu","kind":"video","title":"Avengers: Endgame Encore — Pre-Credits Scene (Peggy & Steve) + Both Post-Credits Scenes","meta":"2028","txt":"Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.","img":"/images/endgameencore.webp","href":"en-marvel.html#mcu-egenc","cta":"See in the timeline"},
       {"nat":"site","uni":"monsterverse","kind":"timeline","title":"New timeline: Monsterverse","txt":"The movies, the Monarch and Skull Island shows, the comics and the game in chronological order — 18 works, from Kong: Skull Island in 1973 to Godzilla x Kong: The New Empire.","img":"/images/monsterverse.webp","href":"en-monsterverse.html","cta":"Open the timeline"}
