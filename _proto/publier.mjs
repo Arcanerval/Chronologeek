@@ -1408,6 +1408,12 @@ try {
       writeFileSync(join(RACINE, p.sortie), p.html);
     }
     writeFileSync(join(RACINE, 'works/fiche.css'), OEUVRES.css);
+    // le script des fiches (« En bref », filtres) et la ligne de chaque univers
+    writeFileSync(join(RACINE, 'works/fiche.js'), readFileSync(join(RACINE, '_proto/e-fiche.js'), 'utf8'));
+    for (const f of OEUVRES.fichiers) {
+      mkdirSync(dirname(join(RACINE, f.sortie)), { recursive: true });
+      writeFileSync(join(RACINE, f.sortie), f.json);
+    }
     for (const [route, table] of Object.entries(OEUVRES.tables)) {
       writeFileSync(join(RACINE, 'works', route + '.json'), JSON.stringify(table));
     }

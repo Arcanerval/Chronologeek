@@ -53,7 +53,7 @@ const T = {
     tag:'Où placer', fin:(u,c)=>c?`dans ${u} ?`:'?',
     q:(t,u,c)=>c?`Où placer ${t} dans ${u} ?`:`Où placer ${t} ?`,
     d:(t,u,pos,av,ap,date)=>`${t} sur la ligne ${u} : ${pos}${av?`, après ${av}`:''}${ap?`, avant ${ap}`:''}.${date?` Date : ${date}.`:''} Ordre chronologique sans spoil.`,
-    pos1:'premier arrêt', posN:'terminus', posK:(n,N)=>`arrêt ${n} sur ${N}`, posB:n=>`${n} places`, menu:['Ouvrir le menu','Fermer le menu'] },
+    pos1:'premier arrêt', posN:'terminus', posK:(n,N)=>`arrêt ${n} sur ${N}`, posB:n=>`${n} places`, menu:['Ouvrir le menu','Fermer le menu'], bref:'En bref', filtrer:'Filtrer la ligne', infos:'Plus d’infos' },
   en: { base:'/works', accueil:'Home', sur:'On the line', premier:'Start of the line', dernier:'End of the line',
     ici:'You are here', voir:'See it on the line', billet:'Your stop', calcul:'Plan my route',
     essentiels:'The essentials before this stop', aucun:'None: the line can start here.',
@@ -66,7 +66,7 @@ const T = {
     tag:'Where does', fin:(u,c)=>c?`fit in ${u}?`:'fit?',
     q:(t,u,c)=>c?`Where does ${t} fit in ${u}?`:`Where does ${t} fit?`,
     d:(t,u,pos,av,ap,date)=>`${t} on the ${u} line: ${pos}${av?`, after ${av}`:''}${ap?`, before ${ap}`:''}.${date?` Date: ${date}.`:''} Spoiler-free chronological order.`,
-    pos1:'first stop', posN:'last stop', posK:(n,N)=>`stop ${n} of ${N}`, posB:n=>`${n} places`, menu:['Open menu','Close menu'] },
+    pos1:'first stop', posN:'last stop', posK:(n,N)=>`stop ${n} of ${N}`, posB:n=>`${n} places`, menu:['Open menu','Close menu'], bref:'At a glance', filtrer:'Filter the line', infos:'More info' },
   // Espagnol neutre, tutoiement ; posé le 14 novembre 2026.
   es: { base:'/es/obras', accueil:'Inicio', sur:'En la línea', premier:'Salida de la línea', dernier:'Terminal de la línea',
     ici:'Estás aquí', voir:'Ver en la línea', billet:'Tu parada', calcul:'Calcular mi itinerario',
@@ -80,7 +80,7 @@ const T = {
     tag:'Dónde va', fin:(u,c)=>c?`en ${u}?`:'?',
     q:(t,u,c)=>c?`¿Dónde va ${t} en ${u}?`:`¿Dónde va ${t}?`,
     d:(t,u,pos,av,ap,date)=>`${t} en la línea ${u}: ${pos}${av?`, después de ${av}`:''}${ap?`, antes de ${ap}`:''}.${date?` Fecha: ${date}.`:''} Orden cronológico sin spoilers.`,
-    pos1:'primera parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir el menú','Cerrar el menú'] },
+    pos1:'primera parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir el menú','Cerrar el menú'], bref:'De un vistazo', filtrer:'Filtrar la línea', infos:'Más información' },
   // Portugais du Brésil, « você » ; posé le 15 novembre 2026.
   pt: { base:'/pt/obras', accueil:'Início', sur:'Na linha', premier:'Partida da linha', dernier:'Terminal da linha',
     ici:'Você está aqui', voir:'Ver na linha', billet:'Sua parada', calcul:'Calcular meu itinerário',
@@ -94,7 +94,7 @@ const T = {
     tag:'Onde fica', fin:(u,c)=>c?`em ${u}?`:'?',
     q:(t,u,c)=>c?`Onde fica ${t} em ${u}?`:`Onde fica ${t}?`,
     d:(t,u,pos,av,ap,date)=>`${t} na linha ${u}: ${pos}${av?`, depois de ${av}`:''}${ap?`, antes de ${ap}`:''}.${date?` Data: ${date}.`:''} Ordem cronológica sem spoilers.`,
-    pos1:'primeira parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir o menu','Fechar o menu'] },
+    pos1:'primeira parada', posN:'última parada', posK:(n,N)=>`parada ${n} de ${N}`, posB:n=>`${n} lugares`, menu:['Abrir o menu','Fechar o menu'], bref:'Em resumo', filtrer:'Filtrar a linha', infos:'Mais informações' },
 };
 const LOC = { fr: 'fr_FR', en: 'en_US', es: 'es_ES', pt: 'pt_BR' };
 
@@ -181,12 +181,57 @@ a.f-card:hover{border-color:var(--hot);transform:translate(-3px,-3px)}
   .f-qr{grid-template-columns:minmax(0,1fr)}.f-plus ul{columns:1}
 }`;
 
+/* « En bref » et les filtres de la ligne, posés le 24 novembre 2026. */
+const CSS_FICHE2 = `
+.f-bref{padding:24px 26px;border:2px solid var(--line);border-top:6px solid var(--uni);border-radius:3px;background:var(--plaque);text-align:center}
+.f-syn{margin:14px auto 0;max-width:680px;font-size:16.5px;line-height:1.62;color:rgba(255,253,247,.9)}
+.f-inf{margin-top:12px}
+.f-inf:has(.f-me:empty){display:none}
+.f-inf>summary{padding:8px 4px}
+.f-inf[open]>summary{border-bottom:2px solid var(--line)}
+.f-syn:empty{min-height:4.9em;background:repeating-linear-gradient(to bottom,rgba(255,253,247,.07) 0 1em,transparent 1em 1.62em)}
+.f-syn .f-en{display:inline-block;margin-right:7px;padding:0 5px;border:1px solid rgba(255,253,247,.4);border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.08em;vertical-align:2px;color:rgba(255,253,247,.72)}
+.f-me{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;margin-top:14px}
+.f-me div{min-width:0;max-width:240px}
+.f-me dt{font-family:'Big Shoulders Display';font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+.f-me dd{margin:2px 0 0;font-size:15px;line-height:1.35;color:var(--paper);overflow-wrap:anywhere}
+.f-act{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:18px}
+.f-act:empty{display:none}
+.f-act .wt{margin-top:0;font-size:12.5px;justify-content:center}
+.f-srcs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px}
+.f-srcs .wt-s,.f-srcs .f-src{font-size:11.5px;color:rgba(255,253,247,.55);text-decoration:none}
+.f-srcs a:hover{color:var(--paper);text-decoration:underline}
+.f-tr{display:inline-flex;align-items:center;gap:8px;font-family:'Big Shoulders Display';font-weight:800;font-size:17px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--hot);padding:10px 18px;border-radius:3px}
+.f-tr::before{content:'';width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent currentColor}
+.f-tr:hover{filter:brightness(1.1)}
+.f-src{font-size:11.5px;color:rgba(255,253,247,.55);text-decoration:none}
+.f-src:hover{color:var(--paper);text-decoration:underline}
+/* les filtres : la barre repliée des timelines (.sieve, .filt), sans le collage */
+.sieve.f-sieve{position:relative;top:auto;z-index:auto;margin-top:18px;padding:0 12px;
+  --t-film:#64b5f6;--t-filmanim:#90caf9;--t-serie:#81c784;--t-anime:#ce93d8;--t-jeu:#ffb74d;--t-dlc:#ffcc80;
+  --t-video:#f472b6;--t-special:#ffa726;--t-short:#ffa726;--t-web:#ffa726;--t-roman:#a99cf9;--t-comic:#4dd0e1;--t-audio:#80cbc4}
+.f-sieve .opts .obr,.f-sieve .opts .onc{display:contents}
+.f-sieve .srow{flex-direction:row;justify-content:center}
+.f-vue{margin-top:14px;padding:10px 14px;border-left:6px solid var(--hot);border-radius:3px;background:var(--plaque);font-size:14px;line-height:1.45;color:rgba(255,253,247,.86)}
+.f-vue[hidden]{display:none}
+.f-vue b{color:var(--paper)}
+.f-vue button{font:inherit;font-weight:700;color:var(--hot);background:none;border:0;padding:0;margin-left:6px;cursor:pointer;text-decoration:underline}
+@media(max-width:640px){
+  .f-bref{padding:16px}
+  .f-syn{font-size:15.5px}
+  .f-me{gap:10px 20px}
+  .f-me dd{font-size:14px}
+}`;
+
 /* Une table `RT` est un `const` du fichier : hors de portée de `charge()`. */
 function tableRT(racine, fichier) {
   const m = readFileSync(join(racine, '_proto', fichier), 'utf8').match(/\bRT\s*=\s*(\{[^}]*\})/);
   if (!m) return {};
   try { return new Function(`return ${m[1]}`)(); } catch (_) { return {}; }
 }
+
+// Les types qui ont une fiche TMDB à montrer dans « En bref ».
+const ECRAN_F = { film:1, filmanim:1, serie:1, anime:1, short:1, special:1, web:1, video:1 };
 
 // Le nom d'un univers dans une phrase : « Marvel Cinematic Universe » y pèse trop.
 const NOMS = { mcu: 'Marvel' };
@@ -224,6 +269,43 @@ function modele(racine, cle, langue) {
   }
   const sortie = ids => ids.map(i => rel[i]).filter(Boolean).sort()[0] || '';
   return { u, CG: w.CG || {}, lignes, parId, seq, aBranches, a, sortie, nom: NOMS[cle] || decode(u.title).split(' — ')[0] };
+}
+
+/* ── La ligne d'un univers, pour les filtres des fiches ──────────────────────
+   `/works/lignes/<route>-<langue>.json`, lu par `/works/fiche.js` : la fiche
+   redessine son rail sans les arrêts qu'on a retirés. Une entrée est un
+   tableau `[id, chemin, titre, sous-titres, date, image, type, niveau, ère]`,
+   et `q` donne l'ordre de chaque ligne (branche) en rangs dans `e`. */
+const PROG = { startrek: 'cg-proto-st', dcanimation: 'cg-proto-dcanim', residentevil: 'cg-proto-re' };
+function ligneJson(m, chemin, labelsRepli, cle) {
+  const labels = m.CG.badgeLabels || labelsRepli || {};
+  const e = [], rang = new Map(), er = [], types = {};
+  const ereRang = new Map();
+  for (const l of m.lignes) {
+    if (!ereRang.has(l.era)) { ereRang.set(l.era, er.length); er.push(decode(l.era.title || '')); }
+    rang.set(l, e.length);
+    if (l.e.type && !types[l.e.type]) types[l.e.type] = labels[l.e.type] ? decode(labels[l.e.type][1]) : l.e.type;
+    e.push([l.e.id, chemin[l.e.id] || '', decode(l.e.title), (l.e.subitems || []).map(decode), l.e.date ? decode(l.e.date) : '',
+      l.e.img || '', l.e.type || '', l.e.level || '', ereRang.get(l.era)]);
+  }
+  const cles = new Set(['']);
+  if (m.aBranches) for (const l of m.lignes) if (l.era.branch) cles.add(l.era.branch);
+  const q = {};
+  for (const k of cles) q[k] = m.seq(k || undefined).map(l => rang.get(l));
+  // Les branches du panneau de la timeline (`OPTS` des pages) : canonicité
+  // non confirmée (`tags:["nc"]`), `defenders`, puis chaque groupe de `groups`.
+  const ct = m.CG.t || {}, o = [];
+  const rangs = test => m.lignes.filter(test).map(l => rang.get(l));
+  const nc = rangs(l => (l.e.tags || []).includes('nc'));
+  if (nc.length) o.push(['nc', decode(ct.ncLabel || 'NC'), '#ff8f8f', nc]);
+  const def = m.CG.defenders || [];
+  const nd = rangs(l => def.includes(l.e.id));
+  if (nd.length) o.push(['def', decode(ct.defLabel || 'Defenders'), '#a99fff', nd]);
+  for (const [g, d] of Object.entries(m.CG.groups || {})) {
+    const n = rangs(l => (d.ids || []).includes(l.e.id));
+    if (n.length) o.push([g, decode(d.label), d.color, n]);
+  }
+  return { t: types, er, e, q, o, br: decode(ct.secBranches || 'Branches'), k: PROG[cle] || 'cg-proto-' + cle };
 }
 
 /* ── L'assemblage : quelles œuvres, sous quel chemin ─────────────────────── */
@@ -265,7 +347,7 @@ export function habillage(html, urlSw) {
   return { css: repli + '\n' + principal, header: propre(m1[0]), footer: propre(m2[0]) };
 }
 
-function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch, lignesU }) {
+function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAccueil, urlsL, labelsRepli, ch, lignesU, te }) {
   const t = T[langue];
   const encre = ENCRES[cle];
   const lignes = ids.map(i => m.parId[i]).filter(Boolean);
@@ -315,7 +397,8 @@ function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAcc
     }
     station(pl.items[0]);
     const subs = pl.items.flatMap(l => l.e.subitems || []).map(x => `<li>${txt(x)}</li>`).join('');
-    rail.push(`<li class="f-a f-ici"><div class="f-card"><span class="f-hor">${p.date ? txt(pl.items[0].e.date || p.date) : '—'}</span>${vignette(p)}` +
+    // la vignette du morceau (saison 2 de Jessica Jones), celle de l'œuvre à défaut
+    rail.push(`<li class="f-a f-ici"><div class="f-card"><span class="f-hor">${p.date ? txt(pl.items[0].e.date || p.date) : '—'}</span>${vignette(pl.items[0].e.img ? pl.items[0].e : p)}` +
       `<div class="f-tx"><span class="f-k">${t.ici} · ${t.arretDe(pl.deb + 1, pl.sq.length)}</span><b>${esc(titre)}</b>${subs ? `<ul>${subs}</ul>` : ''}</div></div></li>`);
     if (ap) { carte(ap); derI = pl.fin + 1; }
     else { rail.push(`<li class="f-bout">${t.dernier}</li>`); derI = pl.fin; }
@@ -354,6 +437,13 @@ function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAcc
   const textes = [];
   const vus = new Set();
   const garde = v => { const k = compact(v); if (!k || vus.has(k)) return false; vus.add(k); return true; };
+  // « En bref » : la fiche TMDB d'un film ou d'une série, celle de RAWG pour un
+  // jeu, et pour le reste le résumé des données — qui ne se répète pas plus bas.
+  const tmdbOk = p.tmdb && /^\d+$/.test(String(p.tmdb)) && String(p.tmdb) !== '0';
+  const ecran = !!(tmdbOk && ECRAN_F[p.type] && /^(movie|tv|video)$/.test(p.media || ''));
+  const jeu = p.media === 'game' || p.type === 'jeu' || p.type === 'dlc';
+  const synServeur = !ecran && typeof p.desc === 'string' && p.desc ? p.desc : '';
+  if (synServeur) garde(synServeur);
   for (const l of lignes) {
     const e = l.e;
     for (const c of ['desc', 'bignote', 'note']) {
@@ -378,13 +468,13 @@ function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAcc
   const lv = p.level && t.niveaux[p.level];
   const typeNom = typeDe(p);
   const cases = [
-    places.length > 1 ? [String(places.length), t.places] : [`${places[0].deb + 1} / ${places[0].sq.length}`, t.arret],
+    places.length > 1 ? [String(places.length), t.places] : [`${places[0].deb + 1} / ${places[0].sq.length}`, t.arret, 'pos'],
     p.present && [decode(p.present), t.present],
     p.date && [decode(p.date), p.present ? t.mem : t.date],
     dur > 0 && !lignes.some(l => !l.rt) && [hm(dur), t.duree],
     lv && [lv, t.niveau],
     typeNom && [typeNom, t.type],
-  ].filter(Boolean).map(([v, l]) => `<div class="s"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join('');
+  ].filter(Boolean).map(([v, l, k]) => `<div class="s"><b${k ? ` data-f="${k}"` : ''}>${esc(v)}</b><span>${esc(l)}</span></div>`).join('');
 
   // Le plan du haut : la ligne entière, et où l'œuvre y tombe.
   const sq0 = places[0].sq;
@@ -397,6 +487,17 @@ function page({ cle, route, langue, m, ids, s, homonyme, site, urlDe, urlU, sAcc
     `</div><div class="f-bouts"><span>${t.depart}</span><span>${t.terminus}</span></div></div>`;
 
   const img = abs(site, p.img);
+
+  // « En bref » : posé ici avec ce que les données savent, complété au
+  // chargement par `/works/fiche.js` (TMDB, RAWG). Pas d'image : le premier
+  // écran et le rail la montrent déjà (retirée par Niko le 24 novembre 2026).
+  const bref = (ecran || jeu || synServeur) ? `<section class="f-sec f-bref" id="bref"><div class="f-in">` +
+    `<h2 class="f-h2">${t.bref}</h2><p class="f-syn" id="f-syn">${synServeur ? txt(synServeur) : ''}</p>` +
+    `<details class="filt f-inf"><summary>${t.infos}<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>` +
+    `<dl class="f-me" id="f-me"></dl></details><div class="f-act" id="f-act"></div></div></section>` : '';
+  const donnees = JSON.stringify({ r: route, l: langue, base: t.base, s, ids, b: lignes.map(l => l.era.branch || ''),
+    tm: tmdbOk ? String(p.tmdb) : '', md: p.media || '', ty: p.type || '', ec: ecran ? 1 : 0, jeu: jeu ? 1 : 0,
+    te: decode(te || p.title), syn: synServeur ? 1 : 0 }).replace(/</g, '\\u003c');
 
   // Le référencement.
   const contient = compact(titre).includes(compact(m.nom));
@@ -499,7 +600,8 @@ ${header}
   </a>
 </div>
 <main class="wrap f-corps">
-<section class="f-sec"><h2 class="f-h2">${t.sur}</h2>${places.length > 1 ? `<p class="f-dek">${t.blocs(places.length)}</p>` : ''}<ol class="f-rail">${rail.join('')}</ol></section>
+${bref}
+<section class="f-sec" id="ligne"><h2 class="f-h2">${t.sur}</h2>${places.length > 1 ? `<p class="f-dek">${t.blocs(places.length)}</p>` : ''}<div class="sieve f-sieve"><details class="filt" id="f-fl"><summary>${t.filtrer}<span class="fcount" id="f-cpt"></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="filt-body f-flc"></div></details></div><p class="f-vue" id="f-vue" hidden></p><ol class="f-rail" id="f-rail">${rail.join('')}</ol></section>
 ${blocEss}
 ${blocTx}
 </main>
@@ -508,6 +610,8 @@ ${footer}
 <script data-goatcounter="https://arcanerval.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script src="/pwa.js"></script>
 <script src="${langue === 'es' ? '/app-es.js' : langue === 'pt' ? '/app-pt.js' : '/app.js'}"></script>
+<script type="application/json" id="f-data">${donnees}</script>
+<script src="/works/fiche.js"></script>
 </body>
 </html>
 `;
@@ -520,7 +624,7 @@ ${footer}
  * `rendre(habillages)`, à appeler une fois la page Star Wars publiée.
  */
 export function oeuvres({ racine, site, urls, lignes }) {
-  const tables = {}, plan = [], taches = [];
+  const tables = {}, plan = [], taches = [], fichiers = [];
   const repli = {
     fr: charge(racine, 'data.js').CG.badgeLabels,
     en: charge(racine, 'data-en.js').CG.badgeLabels,
@@ -537,6 +641,8 @@ export function oeuvres({ racine, site, urls, lignes }) {
       if (!chemin[i]) throw new Error(`oeuvres : ${i} existe en français seulement`);
     }
     tables[route] = chemin;
+    for (const langue of ['fr', 'en', 'es', 'pt']) fichiers.push({ sortie: `works/lignes/${route}-${langue}.json`,
+      json: JSON.stringify(ligneJson(mo[langue], chemin, repli[langue], cle)) });
     for (const o of liste) {
       const url = l => `${T[l].base}/${route}/${o.s}`;
       const urlsL = { fr: url('fr'), en: url('en'), es: url('es'), pt: url('pt') };
@@ -545,7 +651,7 @@ export function oeuvres({ racine, site, urls, lignes }) {
           urlDe: id => `${T[langue].base}/${route}/${chemin[id]}`,
           urlU: urls[langue][cle], sAccueil: urls[langue].accueil, urlsL,
           lignesU: lignes && lignes[langue] && lignes[langue][cle],
-          labelsRepli: repli[langue] }));
+          labelsRepli: repli[langue], te: mo.en.parId[o.ids[0]].e.title }));
       }
       const e0 = mo.en.parId[o.ids[0]].e;
       plan.push({ cle, en: url('en'), fr: url('fr'), es: url('es'), pt: url('pt'),
@@ -553,8 +659,8 @@ export function oeuvres({ racine, site, urls, lignes }) {
     }
   }
   if (taches.length < 1500) throw new Error(`oeuvres : ${taches.length} pages seulement`);
-  return { tables, plan,
-    rendre: ch => ({ pages: taches.map(f => f(ch)), css: ch.en.css + CSS_FICHE }) };
+  return { tables, plan, fichiers,
+    rendre: ch => ({ pages: taches.map(f => f(ch)), css: ch.en.css + CSS_FICHE + CSS_FICHE2 }) };
 }
 
 /** L'adresse d'une œuvre, pour le pré-rendu. */

@@ -6161,6 +6161,13 @@ function cgBillet(){
   var RANG = ['PS5', 'Xbox Series', 'Switch 2', 'Switch', 'Meta Quest 3', 'PC', 'Mac', 'Linux', 'PS4', 'Xbox One', 'Wii U',
     'PS Vita', '3DS', 'PS3', 'Xbox 360', 'Wii', 'PSP', 'DS', 'PS2', 'Xbox', 'GameCube', 'PS1', 'iOS', 'Android'];
   window.CG_WT.rang = RANG; window.CG_WT.logos = LOGOS;
+  /* Les fiches d'œuvres (`/works/fiche.js`, posé le 24 novembre 2026) n'ont ni
+     timeline ni données chargées : elles demandent leur ligne par ici. */
+  window.CG_WT.regarder = function(media, id, cle){ return plateformes(media, id, cle).then(ligneDe); };
+  window.CG_WT.consoles = function(noms, slug){ return ligneConsoles(noms, slug); };
+  window.CG_WT.fixes = CONSOLES_FIXES; window.CG_WT.courts = COURTS;
+  window.CG_WT.meme = function(a, b){ return meme(a, b); };
+  window.CG_WT.css = CSS;
 
   function dec(s){
     var t = document.createElement('textarea');

@@ -2216,6 +2216,19 @@ données, à l'identique. Rien à écrire à l'ajout d'une œuvre : elle a sa pa
 - **L'habillage est relu dans la page Star Wars publiée** : menu, tiroir, pied et tout son CSS, plus les règles `.f-*`, dans `/works/fiche.css`. Les fiches portent donc les vrais composants (premier écran, afficheur, billet), et suivent toute retouche du menu.
 - **Trois chemins y mènent** : le plan du site, un lien dans le pré-rendu, et
   « Fiche complète » dans la carte ouverte (`e-app.js`, par `/works/<route>.json`).
+- **« En bref » et les filtres, posés le 24 novembre 2026** (demandés par Niko : « où
+  placer Jessica Jones sans Agents of S.H.I.E.L.D. »). Le script est `_proto/e-fiche.js`,
+  publié en `/works/fiche.js` (quatre langues écrites dedans, hors chaînes de traduction).
+  « En bref », centré et **sans image** (choix de Niko) : le résumé TMDB (RAWG pour un jeu,
+  `desc` des données pour l'écrit), puis la bande-annonce, « Où regarder / Où jouer »
+  (`CG_WT.regarder` / `CG_WT.consoles` d'`e-app.js`) et les sources, une ligne chacun ; les
+  infos (année, création, saisons, genres, note, distribution…) repliées sous « Plus
+  d'infos ». Les filtres sont **ceux de la timeline parente**, au dessin de sa barre
+  (`.sieve`, `.filt`) : niveaux, types, branches (`OPTS` : `nc`, `defenders`, `groups`) et
+  « Masquer les terminés ». Le rail se redessine depuis `/works/lignes/<route>-<langue>.json`
+  (`ligneJson()` d'`oeuvres.mjs`), et l'URL garde la vue (`?o=nc&t=serie&n=bonus`), sauf
+  « terminés », qui dépend du visiteur. Des ✕ par arrêt ont été essayés et retirés par Niko :
+  ne pas les reproposer.
 
 **Le référencement des fiches, revu le 15 novembre 2026** (audit SEO complet, 2 603 pages
 relues hors navigateur, CWV mesurés au navigateur : CLS 0 à 0,014, LCP local 0,3 à 2,1 s) :

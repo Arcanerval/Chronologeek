@@ -1554,3 +1554,42 @@ a.f-card:hover{border-color:var(--hot);transform:translate(-3px,-3px)}
   .f-tx b{font-size:19px}.f-ici .f-tx b{font-size:24px}.f-tx{padding:8px 11px}
   .f-qr{grid-template-columns:minmax(0,1fr)}.f-plus ul{columns:1}
 }
+.f-bref{padding:24px 26px;border:2px solid var(--line);border-top:6px solid var(--uni);border-radius:3px;background:var(--plaque);text-align:center}
+.f-syn{margin:14px auto 0;max-width:680px;font-size:16.5px;line-height:1.62;color:rgba(255,253,247,.9)}
+.f-inf{margin-top:12px}
+.f-inf:has(.f-me:empty){display:none}
+.f-inf>summary{padding:8px 4px}
+.f-inf[open]>summary{border-bottom:2px solid var(--line)}
+.f-syn:empty{min-height:4.9em;background:repeating-linear-gradient(to bottom,rgba(255,253,247,.07) 0 1em,transparent 1em 1.62em)}
+.f-syn .f-en{display:inline-block;margin-right:7px;padding:0 5px;border:1px solid rgba(255,253,247,.4);border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.08em;vertical-align:2px;color:rgba(255,253,247,.72)}
+.f-me{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;margin-top:14px}
+.f-me div{min-width:0;max-width:240px}
+.f-me dt{font-family:'Big Shoulders Display';font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+.f-me dd{margin:2px 0 0;font-size:15px;line-height:1.35;color:var(--paper);overflow-wrap:anywhere}
+.f-act{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:18px}
+.f-act:empty{display:none}
+.f-act .wt{margin-top:0;font-size:12.5px;justify-content:center}
+.f-srcs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px}
+.f-srcs .wt-s,.f-srcs .f-src{font-size:11.5px;color:rgba(255,253,247,.55);text-decoration:none}
+.f-srcs a:hover{color:var(--paper);text-decoration:underline}
+.f-tr{display:inline-flex;align-items:center;gap:8px;font-family:'Big Shoulders Display';font-weight:800;font-size:17px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--hot);padding:10px 18px;border-radius:3px}
+.f-tr::before{content:'';width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent currentColor}
+.f-tr:hover{filter:brightness(1.1)}
+.f-src{font-size:11.5px;color:rgba(255,253,247,.55);text-decoration:none}
+.f-src:hover{color:var(--paper);text-decoration:underline}
+/* les filtres : la barre repliée des timelines (.sieve, .filt), sans le collage */
+.sieve.f-sieve{position:relative;top:auto;z-index:auto;margin-top:18px;padding:0 12px;
+  --t-film:#64b5f6;--t-filmanim:#90caf9;--t-serie:#81c784;--t-anime:#ce93d8;--t-jeu:#ffb74d;--t-dlc:#ffcc80;
+  --t-video:#f472b6;--t-special:#ffa726;--t-short:#ffa726;--t-web:#ffa726;--t-roman:#a99cf9;--t-comic:#4dd0e1;--t-audio:#80cbc4}
+.f-sieve .opts .obr,.f-sieve .opts .onc{display:contents}
+.f-sieve .srow{flex-direction:row;justify-content:center}
+.f-vue{margin-top:14px;padding:10px 14px;border-left:6px solid var(--hot);border-radius:3px;background:var(--plaque);font-size:14px;line-height:1.45;color:rgba(255,253,247,.86)}
+.f-vue[hidden]{display:none}
+.f-vue b{color:var(--paper)}
+.f-vue button{font:inherit;font-weight:700;color:var(--hot);background:none;border:0;padding:0;margin-left:6px;cursor:pointer;text-decoration:underline}
+@media(max-width:640px){
+  .f-bref{padding:16px}
+  .f-syn{font-size:15.5px}
+  .f-me{gap:10px 20px}
+  .f-me dd{font-size:14px}
+}
