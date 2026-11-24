@@ -290,7 +290,8 @@ const DATA_MCU={
       {ref:"mcu-marvels"},
       {ref:"mcu-loki2"},
       {ref:"mcu-wi2"},
-      {ref:"mcu-wi3",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}}
+      {ref:"mcu-wi3",faq:{pourquoi:"Parce qu'elle se situe ici chronologiquement"}},
+      {ref:"mcu-vfsm"}
     ]},
     {title:"SEGMENT FOX — avant Deadpool & Wolverine et Avengers : Doomsday",entries:[
       {ref:"mcu-xfc"},
@@ -310,7 +311,6 @@ const DATA_MCU={
       {ref:"mcu-dpw"},
       {ref:"mcu-marvelspc"},
       {ref:"mcu-agatha"},
-      {ref:"mcu-vfsm"},
       {ref:"mcu-dba1"},
       {ref:"mcu-cabf"},
       {ref:"mcu-tb"}
