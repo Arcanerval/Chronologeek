@@ -302,7 +302,7 @@ export default {
   'Original titles': 'Títulos originales',
   'Hide what I’ve finished, on every page': 'Ocultar lo que he terminado, en todas las páginas',
   'Only what exists in French': 'Solo lo que existe en español',
-  'Star Trek has no levels and is not affected.': 'Star Trek no tiene niveles y no se ve afectado.',
+  'The Star Wars Deep Dive has no levels and is not affected.': 'El Expediente Star Wars no tiene niveles y no se ve afectado.',
   'Everything': 'Todo',
   'Hide these media everywhere': 'Ocultar estos formatos en todas partes',
   'Content': 'Contenido',

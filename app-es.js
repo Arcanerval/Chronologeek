@@ -7007,7 +7007,7 @@ function cgBillet(){
   var T = EN ? {
     titre: 'Settings', dek: 'Saved in this browser, no account. Your settings travel with your exports and transfer link.',
     contenu: 'Content', types: 'Hide these media everywhere', niveau: 'Level', nTout: 'Everything',
-    nImp: 'Essentials and important', nMust: 'Essentials only', nNote: 'Star Trek has no levels and is not affected.',
+    nImp: 'Essentials and important', nMust: 'Essentials only', nNote: 'The Star Wars Deep Dive has no levels and is not affected.',
     vf: 'Only what exists in French', vus: 'Hide what I’ve finished, on every page', vo: 'Original titles',
     univers: 'My universes', uNote: 'On the home page and on Upcoming. A star puts it first.',
     fav: 'Favourite', cacher: 'Hide', spoil: 'Spoilers', sp: 'Hide the synopsis until the box is ticked (the FAQ stays)',
@@ -7026,7 +7026,7 @@ function cgBillet(){
   } : {
     titre: 'Ajustes', dek: 'Guardados en este navegador, sin cuenta. Tus ajustes viajan con tus exportaciones y tu enlace de transferencia.',
     contenu: 'Contenido', types: 'Ocultar estos formatos en todas partes', niveau: 'Nivel', nTout: 'Todo',
-    nImp: 'Esenciales e importantes', nMust: 'Solo esenciales', nNote: 'Star Trek no tiene niveles y no se ve afectado.',
+    nImp: 'Esenciales e importantes', nMust: 'Solo esenciales', nNote: 'El Expediente Star Wars no tiene niveles y no se ve afectado.',
     vf: 'Solo lo que existe en español', vus: 'Ocultar lo que he terminado, en todas las páginas', vo: 'Títulos originales',
     univers: 'Mis universos', uNote: 'En el inicio y en Próximamente. Una estrella lo pone primero.',
     fav: 'Favorito', cacher: 'Ocultar', spoil: 'Spoilers', sp: 'Ocultar la sinopsis hasta marcar la casilla (las preguntas se quedan)',
