@@ -7,35 +7,6 @@ X-WR-CALNAME:Chronologeek — releases · Star Wars
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:a6158bda2b4f3310e378-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261117
-DTEND;VALUE=DATE:20261118
-SUMMARY:Smugglers and Scoundrels: The Race for Jabba's Bounty
-DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
- rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
-  novels published by Mad Cave Studios. Originally announced for a Septembe
- r 13\, 2026 release before being delayed to October 6 it is written by Cav
- an Scott and illustrated by Christian Colbert\, and was released on Novemb
- er 17\, 2026.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:a27e16940a5c88b7d998-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261118
-DTEND;VALUE=DATE:20261119
-SUMMARY:The Fall of Kylo Ren 4
-DESCRIPTION:The Fall of Kylo Ren 4 is the fourth issue of the 2026 canon co
- mic book miniseries Star Wars: The Fall of Kylo Ren set between the events
-  of The Last Jedi and The Rise of Skywalker. The issue was written by Char
- les Soule\, illustrated by Will Sliney and Guru-eFX\, and published by Mar
- vel Comics on November 18\, 2026.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:66add89a65343b227b35-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261202

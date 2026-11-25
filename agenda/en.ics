@@ -7,50 +7,6 @@ X-WR-CALNAME:Chronologeek — releases
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:a6158bda2b4f3310e378-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261117
-DTEND;VALUE=DATE:20261118
-SUMMARY:Star Wars · Smugglers and Scoundrels: The Race for Jabba's Bounty
-DESCRIPTION:Smugglers and Scoundrels: The Race for Jabba's Bounty is the fi
- rst entry in Star Wars: Smugglers and Scoundrels\, a line of canon graphic
-  novels published by Mad Cave Studios. Originally announced for a Septembe
- r 13\, 2026 release before being delayed to October 6 it is written by Cav
- an Scott and illustrated by Christian Colbert\, and was released on Novemb
- er 17\, 2026.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:a27e16940a5c88b7d998-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261118
-DTEND;VALUE=DATE:20261119
-SUMMARY:Star Wars · The Fall of Kylo Ren 4
-DESCRIPTION:The Fall of Kylo Ren 4 is the fourth issue of the 2026 canon co
- mic book miniseries Star Wars: The Fall of Kylo Ren set between the events
-  of The Last Jedi and The Rise of Skywalker. The issue was written by Char
- les Soule\, illustrated by Will Sliney and Guru-eFX\, and published by Mar
- vel Comics on November 18\, 2026.\n\nhttps://chronologeek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:7b5e01cf11fdc2159196-en@chronologeek.app
-DTSTAMP:20260927T000000Z
-DTSTART;VALUE=DATE:20261124
-DTEND;VALUE=DATE:20261125
-SUMMARY:Blade Runner · Blade Runner 2099 · S1 · Full season
-DESCRIPTION:Fifty years after the events of Blade Runner 2049\, Los Angeles
-  has been reborn\, just not by humanity. Cora\, a fugitive in a final bid 
- to stop running\, takes on one last identity: a Blade Runner. Forced to pa
- rtner with Olwen\, a Replicant days from dying\, she hunts down a runaway 
- hiding a truth that could collapse their fragile city.\n\nhttps://chronolo
- geek.app/upcoming
-URL:https://chronologeek.app/upcoming
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:66add89a65343b227b35-en@chronologeek.app
 DTSTAMP:20260927T000000Z
 DTSTART;VALUE=DATE:20261202
