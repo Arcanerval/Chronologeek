@@ -83,7 +83,7 @@ const T = {
         outro1:'The full order', outro2:'free, no account',
         station:'Station', stop:'Stop', stops:'stops', stations:'stations', spoil:'spoilers',
         souvenirs:'Memories', terminus:'Terminus', fin:'End of the line', prochain:'Next departure',
-        outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR`,
+        outro3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN · FR · ES · PT`,
         cta:'chronologeek.app',
         /* la voix off : l'accroche et la fin seulement, une carte ne tient pas une phrase */
         dit:{ jeu: n => `${n}, in the order to play it the first time.`,

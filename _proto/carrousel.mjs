@@ -78,7 +78,7 @@ const T = {
         fin:'End of the line', fin1:'The full timeline, free', prochain:'Next departure',
         fin2:'Check off what you have seen. The site remembers.',
         swipe:'Swipe',
-        fin3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN + FR` },
+        fin3:(u, n) => `${u} universes · ${n.toLocaleString('en-US')} entries · EN · FR · ES · PT` },
 };
 
 /* Le decompte de fin se lit dans l'index de la recherche, que la publication
