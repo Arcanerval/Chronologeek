@@ -22,6 +22,38 @@ window.CG_RES = function(cle, h){
   } catch (_) {}
 };
 
+/* ═══ QUATRE REPÈRES DE LECTURE ════════════════════════════════════════
+   Posé le 26 novembre 2026, demandé par Niko : quand « Repères de
+   lecture » porte quatre cartes, la plus longue passe toujours dessous,
+   en pleine largeur, et les trois autres tiennent sur une rangée. À deux
+   colonnes, la troisième courte prend aussi la largeur, sans quoi elle
+   laissait un trou à côté d'elle. Ici et non dans les pages : sept
+   univers ont quatre cartes, et la longueur ne se connaît qu'au texte. */
+(function(){
+  var st = document.createElement('style');
+  st.textContent = '.keys.cg-k4{grid-template-columns:repeat(3,minmax(0,1fr))}'
+    + '.keys.cg-k4>.cg-kl{grid-column:1/-1;order:9}'
+    + '@media(max-width:900px){.keys.cg-k4{grid-template-columns:repeat(2,minmax(0,1fr))}'
+    + '.keys.cg-k4>.cg-k3{grid-column:1/-1}}'
+    + '@media(max-width:600px){.keys.cg-k4{grid-template-columns:1fr}}';
+  document.head.appendChild(st);
+  function range(){
+    document.querySelectorAll('.keys').forEach(function(g){
+      var k = [].filter.call(g.children, function(e){ return e.classList.contains('key'); });
+      if (k.length !== 4) { g.classList.remove('cg-k4'); return; }
+      if (g.classList.contains('cg-k4')) return;
+      var l = k.reduce(function(a, b){ return b.textContent.length > a.textContent.length ? b : a; });
+      g.classList.add('cg-k4');
+      l.classList.add('cg-kl');
+      k.filter(function(e){ return e !== l; })[2].classList.add('cg-k3');
+    });
+  }
+  range();
+  document.addEventListener('DOMContentLoaded', range);
+  var intro = document.getElementById('intro');
+  if (intro && window.MutationObserver) new MutationObserver(range).observe(intro, {childList:true, subtree:true});
+})();
+
 /* ═══ LA TAILLE DES CARTES SELON LE NIVEAU ═════════════════════════════
    Posée le 13 novembre 2026, demandée par Niko : la « hiérarchie de la
    liste » de la maquette du 12 novembre, resserrée le 22 novembre 2026 à
