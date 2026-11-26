@@ -739,6 +739,11 @@ const RETOUCHES = [
   { quoi: 'Star Wars · la carte « The Clone Wars » remplace « The video games »',
     ou: 'SW', de: "<rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"4\"/><path d=\"M6 12h4M8 10v4M15 13h.01M18 11h.01\"/></svg>The video games</div><p>If the video games' stories interest you (all of them are very interesting except Squadrons and Outlaws, which are more forgettable) but you don't want to play them, there's a link in each game's description to watch a summary of the story on YouTube.</p>",
     a: "<rect x=\"3\" y=\"5\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M8 21h8M12 17v4\"/></svg>The Clone Wars</div><p>Basically, all Star Wars TV shows, animated or not, are spin-offs of The Clone Wars. It introduces and develops many important characters that come back in later shows, movies and even video games. It's the foundation of the expanded universe and even if I don't mark it as essential, it's the most important thing after the main movies.</p>" },
+  /* Star Wars : la carte « Canon vs Legends » s'ajoute le 26 novembre 2026,
+     texte de Niko mot pour mot. */
+  { quoi: 'Star Wars · la carte « Canon vs Legends » suit celle de The Clone Wars',
+    ou: 'SW', de: "it's the most important thing after the main movies.</p></div></div>",
+    a: "it's the most important thing after the main movies.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3v12M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9a9 9 0 0 1-9 9\"/></svg>Canon vs Legends</div><p>When Disney acquired Star Wars back in 2014, they erased the expanded universe already existing, keeping only the movies and The Clone Wars show. This guide follows only the new Canon universe, everything else is considered Legends universe, it still continues now with the Old Republic video games, still updated.</p></div></div>" },
   { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
     ou: 'SW', de: PARCOURS_DE, a: PARCOURS_A },
   { quoi: 'Star Wars · l’accroche annonce aussi l’ordre de sortie',
