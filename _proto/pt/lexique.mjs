@@ -94,7 +94,7 @@ export const LEXIQUE = {
   'Movies · Animated Series · Books · Short Film · Full chronological order': 'Filmes · Séries animadas · Livros · Curta · Ordem cronológica completa',
   'Books · Comics · Games · Both timelines, side by side': 'Livros · Quadrinhos · Jogos · As duas cronologias, lado a lado',
   'Games · Movies · Mangas · From Raccoon City to Requiem': 'Jogos · Filmes · Mangás · De Raccoon City a Requiem',
-  'Movies · Show · Comics · From the origins to 2049': 'Filmes · Série · Quadrinhos · Das origens a 2049',
+  'Movies · Shows · Comics · From the origins to 2099': 'Filmes · Séries · Quadrinhos · Das origens a 2099',
   'Games · Three timelines · From Skyward Sword to Tears of the Kingdom': 'Jogos · Três linhas do tempo · De Skyward Sword a Tears of the Kingdom',
   'Games · DLC · Videos · From Pandora to Kairos': 'Jogos · DLC · Vídeos · De Pandora a Kairos',
   'Movies · Shows · Comics · From Skull Island to The New Empire': 'Filmes · Séries · Quadrinhos · De Skull Island a The New Empire',

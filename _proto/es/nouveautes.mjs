@@ -55,6 +55,7 @@ export default {
     "Añadido al Expediente Star Wars: el cómic, en 1 BBY, justo después de Rogue One: Cassian Andor y justo antes de la película.",
   "The two movies, the three shorts, the Black Lotus show and the comics in chronological order — 16 works, from Blade Runner: Origins in 2009 to Blade Runner 2049.":
     "Las dos películas, los tres cortos, la serie Black Lotus y los cómics en orden cronológico: 16 obras, de Blade Runner: Origins en 2009 a Blade Runner 2049.",
+  "Added at the end of the Blade Runner timeline, in 2099: the series opens a fourth era, The New Era.": "Añadida al final de la cronología Blade Runner, en 2099: la serie abre una cuarta era, la nueva era.",
   "Added at the end of the Avatar Legends timeline, in 399 AG, in a new era: the Pavi & Nisha Era.": "Añadida al final de la cronología Avatar Legends, en 399 AG, en una nueva era: la era de Pavi y Nisha.",
   "Added to the Star Wars timeline, in 5-10 ABY, just before The Mandalorian.": "Añadida a la cronología Star Wars, en 5-10 ABY, justo antes de The Mandalorian.",
   "The games, the animated movies and the mangas in chronological order — 30 works, from the Raccoon City outbreak in 1998 to Shadows of Rose in 2037.":

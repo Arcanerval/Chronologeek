@@ -1,11 +1,11 @@
 /* Blade Runner en espagnol neutre, tutoiement ; titres en anglais. */
 export default {
   "Chronologeek — Blade Runner (proto E)": "Chronologeek — Blade Runner (proto E)",
-  "Movies · Shorts · Show · Comics": "Películas · Cortos · Serie · Cómics",
-  "Movies · Shorts · Show · Comics — the whole Blade Runner universe in its most optimized order.":
+  "Movies · Shorts · Shows · Comics": "Películas · Cortos · Series · Cómics",
+  "Movies · Shorts · Shows · Comics — the whole Blade Runner universe in its most optimized order.":
     "Películas · Cortos · Serie · Cómics: todo el universo Blade Runner en su orden más optimizado.",
   "Blade Runner line map": "Plano de la línea Blade Runner",
-  "Shorts": "Cortos", "Show": "Serie",
+  "Shorts": "Cortos", "Shows": "Series",
   "End of the Blade Runner line ·": "Fin de la línea Blade Runner ·",
   "Blade Runner line complete": "Línea Blade Runner completada",
   "Reset your Blade Runner progress?": "¿Reiniciar tu progreso de Blade Runner?",
@@ -22,7 +22,7 @@ export default {
 
   "The Tyrell Era": "La era Tyrell",
   "The Blackout": "El Apagón",
-  "The Wallace Era": "La era Wallace",
+  "The Wallace Era": "La era Wallace", "The New Era": "La nueva era",
   "The Films · 1982-2017": "Las películas · 1982-2017",
   "The Titan Comics · 2019-2021": "Los cómics de Titan · 2019-2021",
   "The Black Lotus Era · 2021-2026": "La era Black Lotus · 2021-2026",
@@ -30,6 +30,8 @@ export default {
   "Blade Runner: Origins": "Blade Runner: Origins",
   "To Lose is to Win #1-4": "To Lose is to Win #1-4",
   "Die With Honor #1-3": "Die With Honor #1-3",
+  "Die With Honor #1": "Die With Honor #1", "Die With Honor #2-3": "Die With Honor #2-3",
+  "SERIES": "SERIE",
   "⚠️ Final Cut version!!!": "⚠️ ¡¡¡Versión Final Cut!!!",
 
   "A short story from the Free Comic Book Day 2021 special, set alongside Blade Runner: Origins: LAPD Detective Cal Moreaux and the case of a Tyrell Corporation bioengineer found dead.":
@@ -58,5 +60,6 @@ export default {
   "More Human Than Human": "Más humano que los humanos", "The Tyrell era completed": "Era Tyrell completada",
   "Lights Out": "Luces fuera", "The Blackout completed": "El Apagón completado",
   "Cells Interlinked": "Células interconectadas", "The Wallace era completed": "Era Wallace completada",
+  "A New Los Angeles": "Una nueva Los Ángeles", "The New Era completed": "Nueva era completada",
   "Tears in Rain": "Lágrimas en la lluvia", "Blade Runner 100% completed": "Blade Runner completado al 100 %",
 };

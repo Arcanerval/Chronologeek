@@ -26,6 +26,7 @@ export const BR_IDENTIQUES = [
   'Blade Runner 2029',
   'Blade Runner 2039',
   'Blade Runner 2049',
+  'Blade Runner 2099',
   /* la page elle-même, et ce qui n'est pas du texte affiché */
   'Chronologeek — Blade Runner (proto E)',
   'chronologeek-bladerunner.json',
@@ -85,7 +86,8 @@ export const BR_TRADUCTIONS = [
   ['The Tyrell Era', 'L’ère Tyrell'],
   ['The Blackout', 'Le Blackout'],
   ['The Wallace Era', 'L’ère Wallace'],
-  ['ERA 1', 'ÈRE 1'], ['ERA 2', 'ÈRE 2'], ['ERA 3', 'ÈRE 3'],
+  ['The New Era', 'La nouvelle ère'],
+  ['ERA 1', 'ÈRE 1'], ['ERA 2', 'ÈRE 2'], ['ERA 3', 'ÈRE 3'], ['ERA 4', 'ÈRE 4'],
 
   /* ── la note du film, comme « Version Ultimate Edition !!! » chez DC ── */
   ['⚠️ Final Cut version!!!', '⚠️ Version Final Cut !!!'],
@@ -165,16 +167,19 @@ export const BR_TRADUCTIONS = [
   ['The Blackout completed', 'Le Blackout terminé'],
   ['Cells Interlinked', 'Cellules interconnectées'],
   ['The Wallace era completed', 'L’ère Wallace terminée'],
+  ['A New Los Angeles', 'Un nouveau Los Angeles'],
+  ['SERIES', 'SÉRIE'],
+  ['The New Era completed', 'La nouvelle ère terminée'],
   ['Everything on screen watched', 'Les films, les courts et la série vus'],
   ['Tears in Rain', 'Des larmes dans la pluie'],
   ['Blade Runner 100% completed', 'Blade Runner terminé à 100 %'],
 
   /* ── le reste du gabarit, propre à cet univers ───────────────────── */
   ['Reset your Blade Runner progress?', 'Réinitialiser votre progression Blade Runner ?'],
-  ['Movies · Shorts · Show · Comics', 'Films · Courts métrages · Série · Comics'],
-  ['Movies · Shorts · Show · Comics — the whole Blade Runner universe in its most optimized '
+  ['Movies · Shorts · Shows · Comics', 'Films · Courts métrages · Séries · Comics'],
+  ['Movies · Shorts · Shows · Comics — the whole Blade Runner universe in its most optimized '
    + 'order.',
-   'Films · Courts métrages · Série · Comics — tout l’univers Blade Runner dans son ordre le '
+   'Films · Courts métrages · Séries · Comics — tout l’univers Blade Runner dans son ordre le '
    + 'plus optimisé.'],
   ['Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, '
    + 'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, Borderlands and The Legend of Zelda are '
@@ -190,7 +195,7 @@ export const BR_TRADUCTIONS = [
    + 'marques de leurs ayants droit respectifs ; Chronologeek est un projet de fan indépendant.'],
   /* les cases du tableau du premier écran */
   ['Shorts', 'Courts'],
-  ['Show', 'Série'],
+  ['Shows', 'Séries'],
   // le plan de métro
   ['Blade Runner line map', 'Plan de la ligne Blade Runner'],
   ['Blade Runner line complete', 'Ligne Blade Runner terminée'],

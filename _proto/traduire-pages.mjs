@@ -421,7 +421,7 @@ const TRADUCTIONS = [
   ['Resident Evil', 'Resident Evil'],
   /* ── la case Blade Runner de l'accueil, 12 octobre 2026 ──────── */
   ['Blade Runner', 'Blade Runner'],
-  ['Films · Série · Comics · Des origines à 2049', 'Movies · Show · Comics · From the origins to 2049'],
+  ['Films · Séries · Comics · Des origines à 2099', 'Movies · Shows · Comics · From the origins to 2099'],
   ['Seize chronologies tenues à jour, en français et en anglais.',
    'Sixteen timelines kept up to date, in French and English.'],
   /* ── la case Monsterverse de l'accueil, 7 novembre 2026 ──────── */

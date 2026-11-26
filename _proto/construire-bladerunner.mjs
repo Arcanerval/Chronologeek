@@ -15,6 +15,8 @@
      et ce qui le suit ; puis les annees Wallace, qui s'ouvrent avec
      Black Lotus en 2032, sur decision de Niko, et menent a 2049. Ce sont des intitules de
      structure, l'exception que le CLAUDE.md admet quand la prose n'en a pas.
+     Une quatrieme, « The New Era », ouverte le 26 novembre 2026 par Blade
+     Runner 2099, nommee par Niko.
    - Les niveaux, eux, sont dans le document : « E » vaut `must`, « I »
      `important`, et une ligne sans marque est `bonus` — « they are bonus
      content ». La serie Black Lotus n'en porte pas : elle sort donc en
@@ -110,8 +112,8 @@ const vignette = (local, tmdb) => {
   return tmdb ? TMDB_IMG + tmdb : undefined;
 };
 
-/* ── Les dix-sept entrees ───────────────────────────────────────────────────
-   type      : film, short, anime, comic
+/* ── Les dix-huit entrees ───────────────────────────────────────────────────
+   type      : film, short, serie, anime, comic
    tmdb      : identifiant TMDB, pour ce qui se regarde
    date      : celle du document, jamais traduite
    bignote   : la ligne que Niko pose sous le film, rendue comme
@@ -187,7 +189,13 @@ const E = [
     img: vignette('2048nowheretorun.webp', '/gps88CAZeTTuorh66xwMXg0lBG4.jpg') },
   { ere: 2, id: 'br-2049', type: 'film', level: 'must', tmdb: '335984', media: 'movie',
     title: 'Blade Runner 2049', date: '2049',
-    img: vignette('bladerunner2049.webp', '/gNdLJU9TxrpGx4dkZidjys3fyy0.jpg') }
+    img: vignette('bladerunner2049.webp', '/gNdLJU9TxrpGx4dkZidjys3fyy0.jpg') },
+
+  /* Sortie le 24 novembre 2026 sur Prime Video, la saison d'un bloc. Elle
+     attendait au radar ; elle ouvre la quatrieme ere, nommee par Niko. */
+  { ere: 3, id: 'br-2099', type: 'serie', level: 'important', tmdb: '171802', media: 'tv', season: 1,
+    title: 'Blade Runner 2099', date: '2099', subitems: ['Season 1'],
+    img: vignette('bladerunner2099.webp', '/rACaCUxa8WAxkqdpZl0vGqBmIJg.jpg') }
 ];
 for (const e of E) if (!e.img) delete e.img;
 
@@ -203,7 +211,9 @@ const ERES = [
   { title: 'The Blackout', phase: 'ERA 2', ink: 2,
     art: art('blackoutera.webp', '/7gZR9nztTzZIskcRCuDfhvrd5Ds.jpg') },
   { title: 'The Wallace Era', phase: 'ERA 3', ink: 3,
-    art: art('wallaceera.webp', '/gNdLJU9TxrpGx4dkZidjys3fyy0.jpg') }
+    art: art('wallaceera.webp', '/gNdLJU9TxrpGx4dkZidjys3fyy0.jpg') },
+  { title: 'The New Era', phase: 'ERA 4', ink: 4,
+    art: art('newera.webp', '/rACaCUxa8WAxkqdpZl0vGqBmIJg.jpg') }
 ];
 
 /* ── L'ordre de sortie ─────────────────────────────────────────────────
@@ -230,7 +240,7 @@ const SORTIE = [
        subitems: ['Blade Runner 2029', 'Blade Runner: Origins'], date: '2009-2029' }, '2021']] },
   { title: 'The Black Lotus Era · 2021-2026', phase: 'ERA 3', ink: 3, art: ERES[2].art, ids: [
     ['br-blacklotus', '2021'], ['br-bl-leavingla', '2022'], ['br-2039', '2022'],
-    ['br-tokyonexus', '2024'], ['br-bl-lasvegas', '2025']] }
+    ['br-tokyonexus', '2024'], ['br-bl-lasvegas', '2025'], ['br-2099', '2026']] }
 ];
 
 const ECRAN = E.filter(e => e.type !== 'comic').map(e => e.id);
@@ -245,6 +255,9 @@ const BADGES = [
   { id: 'br_wallace', universe: 'br', icon: '🏜️', color: '#f08a2c', trigger: 'oeuvre',
     ids: E.filter(e => e.ere === 2).map(e => e.id),
     label: 'Cells Interlinked', desc: 'The Wallace era completed' },
+  { id: 'br_newera', universe: 'br', icon: '🌆', color: '#3d6bd9', trigger: 'oeuvre',
+    ids: E.filter(e => e.ere === 3).map(e => e.id),
+    label: 'A New Los Angeles', desc: 'The New Era completed' },
   { id: 'br_screen', universe: 'br', icon: '🎬', color: '#64b5f6', trigger: 'oeuvre',
     ids: ECRAN,
     label: 'Blade Runner', desc: 'Everything on screen watched' },
@@ -258,7 +271,7 @@ const CG = {
   universe: 'br',
   badgeLabels: {
     film: ['bf', 'MOVIE'], short: ['bh', 'SHORT'],
-    anime: ['ba', 'ANIMATED SHOW'], comic: ['bc', 'COMIC']
+    serie: ['bs', 'SERIES'], anime: ['ba', 'ANIMATED SHOW'], comic: ['bc', 'COMIC']
   },
   markLabels: { flashback: 'FLASHBACK' },
   badges: BADGES,
@@ -272,7 +285,7 @@ const DATA = {
   id: 'br',
   title: 'Blade Runner',
   subtitle: 'Complete canon timeline',
-  description: 'Movies · Shorts · Show · Comics',
+  description: 'Movies · Shorts · Shows · Comics',
   /* l'orange du logo Tyrell et des titres de 2049, demande par Niko. Il est
      pousse vers le vermillon et sature a fond : Dragon Age tient deja un
      orange brule (#e07b39), et deux oranges voisins ne se distingueraient

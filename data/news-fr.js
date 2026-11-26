@@ -37,6 +37,13 @@ window.CG_NEWS = {
     /* Le plus récent en haut : un journal se lit par le début, et la
        vedette du premier écran reprend simplement cette première ligne. */
     { key:"2026-11", label:"Novembre 2026", items:[
+      { nat:"media", uni:"bladerunner", kind:"serie",
+        title:"Blade Runner 2099", meta:"2099",
+        txt:"Ajouté à la fin de la timeline Blade Runner, en 2099 : la série "+
+            "ouvre une quatrième ère, la nouvelle ère.",
+        img:"https://image.tmdb.org/t/p/w780/rACaCUxa8WAxkqdpZl0vGqBmIJg.jpg",
+        href:"/fr/bladerunner#br-2099", cta:"Voir dans la timeline" },
+
       { nat:"site", uni:"zelda", kind:"timeline",
         title:"Nouvelle timeline : The Legend of Zelda",
         txt:"Tous les jeux à histoire dans l'ordre chronologique — "+

@@ -547,6 +547,10 @@ const TRADUCTIONS = [
      1-13 ». Les quatre autres se retrouvent au lexique, celle-ci non. */
   ['Saison 5', 'Season 5'],
 
+  /* ── la carte Blade Runner 2099 du 26 novembre 2026 ────────────── */
+  ["Ajouté à la fin de la timeline Blade Runner, en 2099 : la série ouvre une quatrième ère, la nouvelle ère.",
+   'Added at the end of the Blade Runner timeline, in 2099: the series opens a fourth era, The New Era.'],
+
   /* ── la carte Seven Havens du 10 octobre 2026 ────────────────────
      La saison 1 ouvre une neuvième ère en fin de timeline Avatar Legends.
      La page française porte le titre français de la série, tranché par
@@ -1332,6 +1336,9 @@ const TITRES_IDENTIQUES = [
   '5-10 ABY',
   // Seven Havens, le 10 octobre 2026 : idem.
   '399 AG',
+  // Blade Runner 2099, le 26 novembre 2026 : même titre partout, et sa date.
+  'Blade Runner 2099',
+  '2099',
   // Marvel · la série VisionQuest, le 15 octobre 2026 : même titre partout.
   'VisionQuest',
   /* Dossier Star Wars · le roman jeune adulte VO ajouté le 1er septembre
