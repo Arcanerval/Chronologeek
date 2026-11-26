@@ -193,7 +193,7 @@ const E = [
 
   /* Sortie le 24 novembre 2026 sur Prime Video, la saison d'un bloc. Elle
      attendait au radar ; elle ouvre la quatrieme ere, nommee par Niko. */
-  { ere: 3, id: 'br-2099', type: 'serie', level: 'important', tmdb: '171802', media: 'tv', season: 1,
+  { ere: 3, id: 'br-2099', type: 'serie', level: 'must', tmdb: '171802', media: 'tv', season: 1,
     title: 'Blade Runner 2099', date: '2099', subitems: ['Season 1'],
     img: vignette('bladerunner2099.webp', '/rACaCUxa8WAxkqdpZl0vGqBmIJg.jpg') }
 ];

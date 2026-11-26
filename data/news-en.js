@@ -7,7 +7,7 @@
 window.CG_NEWS = {
   months: [
     { key:"2026-11", label:"November 2026", items:[
-      {"nat":"media","uni":"bladerunner","kind":"serie","title":"Blade Runner 2099","meta":"2099","txt":"Added at the end of the Blade Runner timeline, in 2099: the series opens a fourth era, The New Era.","img":"https://image.tmdb.org/t/p/w780/rACaCUxa8WAxkqdpZl0vGqBmIJg.jpg","href":"/bladerunner#br-2099","cta":"See in the timeline"},
+      {"nat":"media","uni":"bladerunner","kind":"serie","title":"Blade Runner 2099","meta":"2099","txt":"Added at the end of the Blade Runner timeline, in 2099: the series opens a fourth era, The New Era.","img":"/images/bladerunner2099.webp","href":"/bladerunner#br-2099","cta":"See in the timeline"},
       {"nat":"site","uni":"zelda","kind":"timeline","title":"New timeline: The Legend of Zelda","txt":"Every story game in chronological order — 22 games, one timeline that splits in three and comes back together.","img":"/images/zelda.webp","href":"/zelda","cta":"Open the timeline"},
       {"nat":"site","uni":"borderlands","kind":"timeline","title":"New timeline: Borderlands","txt":"The games, the DLC, the videos, the novel and the comic in chronological order — 35 works, from Borderlands to Borderlands 4.","img":"/images/borderlands.webp","href":"/borderlands","cta":"Open the timeline"},
       {"nat":"media","uni":"mcu","kind":"video","title":"Avengers: Endgame Encore — Pre-Credits Scene (Peggy & Steve) + Both Post-Credits Scenes","meta":"2028","txt":"Added at the very end of the Marvel timeline: the pre-credits scene and both post-credits scenes of the re-release, before Avengers: Doomsday.","img":"/images/endgameencore.webp","href":"/marvel#mcu-egenc","cta":"See in the timeline"},

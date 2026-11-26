@@ -595,10 +595,9 @@ dix des seize arrêts sont des comics. Code de ligne **BR**, trois stations
 - ***Blade Runner 2099* est entrée le 26 novembre 2026**, à sa sortie (TMDB
   `tv/171802`, saison 1 d'un bloc le 24 novembre sur Prime Video), dans une
   **quatrième ère, « The New Era »** (« La nouvelle ère »), nommée par Niko :
-  `serie`, `important` (choix à moi), `--era4` `#26458f`, badge `br_newera`.
-  18 entrées. Images d'ère et de vignette encore chez TMDB (`newera.webp` et
-  `bladerunner2099.webp` attendus de Niko, pris dès qu'ils sont dans `images/`
-  au prochain `construire-bladerunner.mjs`). Le radar continue d'interroger
+  `serie`, `must` (Niko), `--era4` `#26458f`, badge `br_newera`.
+  18 entrées. Images de Niko : `newera.webp` (ère) et `bladerunner2099.webp`
+  (vignette), originaux dans `images/originaux/`. Le radar continue d'interroger
   Alcon (`TMDB_COMPANY_NAMES`, garde-fou `UNIVERS_TITRE`) pour la saison 2.
 - **La clé de stockage est `cg-proto-bladerunner`**, celle du `data-u` de
   l'accueil : pas d'exception à ajouter dans `read()`, contrairement à Star

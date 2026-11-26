@@ -41,7 +41,7 @@ window.CG_NEWS = {
         title:"Blade Runner 2099", meta:"2099",
         txt:"Ajouté à la fin de la timeline Blade Runner, en 2099 : la série "+
             "ouvre une quatrième ère, la nouvelle ère.",
-        img:"https://image.tmdb.org/t/p/w780/rACaCUxa8WAxkqdpZl0vGqBmIJg.jpg",
+        img:"/images/bladerunner2099.webp",
         href:"e-bladerunner.html#br-2099", cta:"Voir dans la timeline" },
 
       { nat:"site", uni:"zelda", kind:"timeline",
