@@ -743,7 +743,7 @@ const RETOUCHES = [
      texte de Niko mot pour mot. */
   { quoi: 'Star Wars · la carte « Canon vs Legends » suit celle de The Clone Wars',
     ou: 'SW', de: "it's the most important thing after the main movies.</p></div></div>",
-    a: "it's the most important thing after the main movies.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3v12M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9a9 9 0 0 1-9 9\"/></svg>Canon vs Legends</div><p>When Disney acquired Star Wars back in 2014, they erased the expanded universe already existing, keeping only the movies and The Clone Wars show. This guide follows only the new Canon universe, everything else is considered Legends universe. It's still a bit updated nowadays, mainly with the Old Republic video games, but that's pretty much all.</p></div></div>" },
+    a: "it's the most important thing after the main movies.</p></div><div class=\"key\"><div class=\"key-h\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3v12M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9a9 9 0 0 1-9 9\"/></svg>Canon vs Legends</div><p>When Disney acquired Star Wars back in 2012, they erased the expanded universe already existing, keeping only the movies and The Clone Wars show. This guide follows only the new Canon universe, everything else is considered Legends universe. It's still a bit updated nowadays, mainly with the Old Republic video games, but that's pretty much all.</p></div></div>" },
   { quoi: 'Star Wars · l’accroche dit maintenant quel parcours on suit',
     ou: 'SW', de: PARCOURS_DE, a: PARCOURS_A },
   { quoi: 'Star Wars · l’accroche annonce aussi l’ordre de sortie',
