@@ -58,8 +58,8 @@ const T = JSON.parse(JSON.stringify(bac.window.CG.t));
 T.nav.borderlands = 'Borderlands';
 T.markWatched = 'Mark “{t}” as done';
 T.legal3 = 'Star Wars, Marvel, DC, Avatar Legends, Star Trek, The Walking Dead, Dragon Age, ' +
-  'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse and ' +
-  'Borderlands are trademarks of their respective owners; Chronologeek is an independent fan project.';
+  'Assassin’s Creed, Jurassic World, The Witcher, Resident Evil, Blade Runner, Monsterverse, ' +
+  'Borderlands and The Legend of Zelda are trademarks of their respective owners; Chronologeek is an independent fan project.';
 
 /* ── L'accroche, decoupee du document ──────────────────────────────────── */
 const ic = {
@@ -221,7 +221,17 @@ const E = [
   { ere: 3, id: 'bl-madellie', type: 'dlc', level: 'bonus', media: 'game',
     title: 'Borderlands 4: Mad Ellie and the Vault of the Damned', date: 'Year 18', img: 'madellievaultdamned.webp' },
   { ere: 3, id: 'bl-fl4k', type: 'dlc', level: 'bonus', media: 'game',
-    title: 'Borderlands 4: FL4K and the Last Resort', date: 'Year 18', img: 'fl4klastresort.webp' }
+    title: 'Borderlands 4: FL4K and the Last Resort', date: 'Year 18', img: 'fl4klastresort.webp' },
+  /* Ajoute le 27 novembre 2026, demande par Niko : en flashback, a la toute
+     fin de la timeline, « ~Year 17-18 ». Le premier podcast de fiction de
+     Gearbox, dix episodes (le dixieme en deux parties) mis en ligne sur
+     YouTube du 20 juillet au 28 septembre 2026 ; le lien mene a la liste de
+     lecture. Niveau et synopsis poses ici, le synopsis ecrit sans recopier
+     celui de Gearbox. */
+  { ere: 3, id: 'bl-deadechos', type: 'audio', level: 'bonus', lang: 'vo', tags: ['flashback'],
+    links: [{ href: 'https://www.youtube.com/playlist?list=PLrIrx8C5BtV3AO4l3K_EiQlJzac5vWVko', label: 'Listen on YouTube' }],
+    desc: 'Gearbox’s first scripted audio drama. Watts, a bored DAHL ECHO operator, earns a little extra by selling the secrets he finds in undeliverable ECHO logs, until Junie, a stranger with a past she would rather keep quiet, turns his side hustle into something much more dangerous.',
+    title: 'Borderlands: DeadECHOs', date: '~Year 17-18', img: 'borderlandsdeadechos.webp' }
 ];
 /* Les identifiants RAWG. Les six marques « jeu » sont des DLC absents de
    RAWG : l'identifiant est celui de leur jeu, et le synopsis est le leur. */
@@ -295,7 +305,7 @@ const SORTIE = [
   { title: 'Borderlands 4 · 2024-2026', phase: 'ERA 4', ink: 4, art: ERES[3].art, ids: [
     ['bl-debtoralive', '2024'], ['bl-memento', '2024'], ['bl-vex', '2025'], ['bl-rafa', '2025'],
     ['bl-amon', '2025'], ['bl-harlowe', '2025'], ['bl-bl4', '2025'], ['bl-c4sh', '2026'],
-    ['bl-madellie', '2026'], ['bl-loveless', '2026'], ['bl-fl4k', '2026']] }
+    ['bl-madellie', '2026'], ['bl-deadechos', '2026'], ['bl-loveless', '2026'], ['bl-fl4k', '2026']] }
 ];
 
 const DLC = E.filter(e => e.type === 'dlc').map(e => e.id);
@@ -326,7 +336,7 @@ const CG = {
   universe: 'bl',
   badgeLabels: {
     jeu: ['bj', 'VIDEO GAME'], dlc: ['bd', 'DLC'], video: ['bv', 'VIDEO'],
-    roman: ['br', 'BOOK'], comic: ['bc', 'COMIC']
+    roman: ['br', 'BOOK'], comic: ['bc', 'COMIC'], audio: ['bau', 'AUDIO']
   },
   markLabels: { flashback: 'FLASHBACK' },
   badges: BADGES,

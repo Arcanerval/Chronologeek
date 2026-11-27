@@ -9,6 +9,11 @@ export default {
     "Jogos · DLC · Vídeos · Romance · Quadrinho: toda a saga Borderlands na ordem mais otimizada.",
   "Borderlands line map": "Mapa da linha Borderlands",
   "Videos": "Vídeos",
+  "bau": "bau", "AUDIO": "AUDIO",
+  "Podcast": "Podcast",
+  "Listen on YouTube": "Ouvir no YouTube",
+  "Gearbox’s first scripted audio drama. Watts, a bored DAHL ECHO operator, earns a little extra by selling the secrets he finds in undeliverable ECHO logs, until Junie, a stranger with a past she would rather keep quiet, turns his side hustle into something much more dangerous.":
+    "O primeiro drama em áudio roteirizado da Gearbox. Watts, um entediado operador ECHO da DAHL, ganha um dinheiro extra vendendo os segredos que encontra em registros ECHO que não podem ser entregues, até que Junie, uma desconhecida com um passado sobre o qual prefere não falar, transforma seu pequeno esquema em algo muito mais perigoso.",
   "End of the Borderlands line ·": "Fim da linha Borderlands ·",
   "Borderlands line complete": "Linha Borderlands concluída",
   "Reset your Borderlands progress?": "Reiniciar seu progresso de Borderlands?",
@@ -117,4 +122,5 @@ export default {
   "date:Year 13": "Ano 13",
   "date:Year 18": "Ano 18",
   "date:Year 2 & 6": "Ano 2 e 6", "date:~Year 14-16": "~Ano 14-16",
+  "date:~Year 17-18": "~Ano 17-18",
 };

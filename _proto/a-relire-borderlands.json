@@ -470,6 +470,21 @@
     "fr": "Le second pack d’histoire de Borderlands 4 : FL4K est de retour, au Last Resort, et une nouvelle Chasseuse de l’Arche, Loveless, rejoint l’équipe."
   },
   {
+    "ou": "BORDERLANDS.eras[].entries[].links[].label",
+    "en": "Listen on YouTube",
+    "fr": "Écouter sur YouTube"
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].desc",
+    "en": "Gearbox’s first scripted audio drama. Watts, a bored DAHL ECHO operator, earns a little extra by selling the secrets he finds in undeliverable ECHO logs, until Junie, a stranger with a past she would rather keep quiet, turns his side hustle into something much more dangerous.",
+    "fr": "Le premier drame audio scénarisé de Gearbox. Watts, opérateur ECHO de DAHL qui s’ennuie ferme, arrondit ses fins de mois en revendant les secrets des journaux ECHO impossibles à livrer, jusqu’à ce que Junie, une inconnue au passé qu’elle préfère taire, transforme sa petite combine en quelque chose de bien plus dangereux."
+  },
+  {
+    "ou": "BORDERLANDS.eras[].entries[].title",
+    "en": "Borderlands: DeadECHOs",
+    "fr": "Borderlands : DeadECHOs"
+  },
+  {
     "ou": "BORDERLANDS.erasRelease[].title",
     "en": "Borderlands · 2009-2010",
     "fr": "Borderlands · 2009-2010"
@@ -503,6 +518,11 @@
     "ou": "page",
     "en": "Videos",
     "fr": "Vidéos"
+  },
+  {
+    "ou": "page",
+    "en": "Podcast",
+    "fr": "Podcast"
   },
   {
     "ou": "page",

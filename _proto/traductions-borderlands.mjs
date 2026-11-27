@@ -30,7 +30,7 @@ export const BL_IDENTIQUES = [
   'chronologeek-borderlands.json',
   'borderlands',
   'cg-proto-borderlands',
-  'BL', 'jeu', 'dlc', 'video', 'roman', 'comic',
+  'BL', 'jeu', 'dlc', 'video', 'roman', 'comic', 'audio',
   '/images/borderlands.webp',
   '<span class="stn-k"><span class="code">BL</span>',
 ];
@@ -55,6 +55,7 @@ export const BL_TRADUCTIONS = [
   ['Borderlands: The Pre-Sequel - Claptastic Voyage', 'Borderlands : The Pre-Sequel - Claptastic Voyage'],
   ['Borderlands: The Pre-Sequel - The Holodome Onslaught', 'Borderlands : The Pre-Sequel - The Holodome Onslaught'],
   ['Borderlands: Debt or Alive', 'Borderlands : Debt or Alive'],
+  ['Borderlands: DeadECHOs', 'Borderlands : DeadECHOs'],
   ['Borderlands 2: Commander Lilith & the Fight for Sanctuary', 'Borderlands 2 : Commandant Lilith et la Bataille pour Sanctuary'],
   ['Borderlands 3: Moxxi\'s Heist of the Handsome Jackpot', 'Borderlands 3 : Le Casse du Beau Jackpot'],
   ['Borderlands 3: Guns, Love, and Tentacles', 'Borderlands 3 : Flingues, Amour et Tentacules'],
@@ -134,6 +135,7 @@ export const BL_TRADUCTIONS = [
   ['ERA 1', 'ÈRE 1'], ['ERA 2', 'ÈRE 2'], ['ERA 3', 'ÈRE 3'], ['ERA 4', 'ÈRE 4'],
 
   ['Watch the video', 'Regarder la vidéo'],
+  ['Listen on YouTube', 'Écouter sur YouTube'],
 
 
   /* ── les deux notes de placement ─────────────────────────────────── */
@@ -154,6 +156,13 @@ export const BL_TRADUCTIONS = [
    'Fiona et Sasha, les deux sœurs arnaqueuses de Tales from the Borderlands, sont de retour sur '
    + 'Pandore avec une fortune à dépenser et une longue liste de gens qui en voudraient bien une '
    + 'part — ou leur peau.'],
+  ['Gearbox’s first scripted audio drama. Watts, a bored DAHL ECHO operator, earns a little extra by '
+   + 'selling the secrets he finds in undeliverable ECHO logs, until Junie, a stranger with a past she '
+   + 'would rather keep quiet, turns his side hustle into something much more dangerous.',
+   'Le premier drame audio scénarisé de Gearbox. Watts, opérateur ECHO de DAHL qui s’ennuie ferme, '
+   + 'arrondit ses fins de mois en revendant les secrets des journaux ECHO impossibles à livrer, '
+   + 'jusqu’à ce que Junie, une inconnue au passé qu’elle préfère taire, transforme sa petite combine '
+   + 'en quelque chose de bien plus dangereux.'],
   ['Moxxi sends the Siren Amara after a mysterious keepsake from her past, on a road trip across '
    + 'Pandora that nobody is quite prepared for.',
    'Moxxi lance la Sirène Amara sur la piste d’un mystérieux souvenir de son passé, dans un '
@@ -255,6 +264,7 @@ export const BL_TRADUCTIONS = [
   /* les cases du tableau du premier écran */
   ['Games', 'Jeux'],
   ['Videos', 'Vidéos'],
+  ['Podcast', 'Podcast'],
   ['Book', 'Roman'],
   // le plan de métro
   ['Borderlands line map', 'Plan de la ligne Borderlands'],

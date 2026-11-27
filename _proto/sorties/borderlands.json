@@ -169,6 +169,13 @@
     "rel": "2026"
    },
    {
+    "ref": "bl-deadechos",
+    "rel": "2026",
+    "drop": [
+     "tags"
+    ]
+   },
+   {
     "ref": "bl-loveless",
     "rel": "2026"
    },

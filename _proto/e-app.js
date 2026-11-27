@@ -6455,7 +6455,9 @@ function cgBillet(){
           (era.entries || []).forEach(function(e){
             if (!e || !e.id) return;
             if (e.ref && !e.type) { refs.push([e.id, e.ref]); return; }
-            FICHES[e.id] = { type: e.type, titre: dec(e.title), vo: e.lang === 'vo', isbn: e.isbn || '' };
+            FICHES[e.id] = { type: e.type, titre: dec(e.title), vo: e.lang === 'vo', isbn: e.isbn || '',
+              /* gratuit sur YouTube (le podcast DeadECHOs) : rien à chercher en boutique */
+              yt: /youtube\.com|youtu\.be/.test(JSON.stringify(e.links || e.link || '')) };
           });
         });
       });
@@ -6525,7 +6527,7 @@ function cgBillet(){
     if (rich.querySelector('.wl, .expand-loading') || !rich.firstChild) return;
     var art = rich.closest('[data-id]');
     var f = art && ficheDe(art.dataset.id);
-    if (!f || !ECRIT[f.type]) return;
+    if (!f || !ECRIT[f.type] || f.yt) return;
     rich.dataset.wl = '1';
     requeteDe(art.dataset.id, f).then(function(q){
       if (!q || !rich.isConnected || rich.querySelector('.wl, .expand-loading')) return;

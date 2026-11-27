@@ -649,8 +649,12 @@ vidéos, un roman et un comic. Code de ligne **BL**, quatre stations « ÈRE N /
   (demandé par Niko le 19 novembre 2026) : leurs dates sont dans `sorties/numeros.mjs`,
   et `ep` y fait écrire « Episode 2 » au lieu de « #2 » (`morceauNumeros()`). Les
   épisodes 4 et 5 restent une carte, rien n'étant sorti entre eux.
-- **35 entrées**, niveaux du document (E `must`, I `important`, le reste
-  `bonus`) : 6 / 10 / 19. **Quatre ères** : Welcome to Pandora (nommée par Niko),
+- **36 entrées**, niveaux du document (E `must`, I `important`, le reste
+  `bonus`) : 6 / 10 / 20. ***Borderlands: DeadECHOs*** (podcast de fiction de Gearbox, sur YouTube du 20 juillet au
+  28 septembre 2026) est entré le 27 novembre 2026, demandé par Niko : en flashback à la toute fin,
+  « ~Year 17-18 », `bonus`, type `audio` (badge AUDIO, case « Podcast » de la bande), une carte à
+  sa période (`periodes` d'`ordre-sortie.mjs`), vignette de Niko. Pas de « Où écouter » : `e-app.js`
+  saute les liens de boutique d'une œuvre dont le lien est YouTube (`f.yt`). **Quatre ères** : Welcome to Pandora (nommée par Niko),
   Handsome Jack, Children of the Vault, Kairos ; en français Bienvenue sur Pandore,
   Le Beau Jack, Descendants de l’Arche, Kairos (tranché par Niko).
 - **Le seul flashback** est celui du document, sur *Tales from the Borderlands*

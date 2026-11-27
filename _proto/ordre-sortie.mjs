@@ -230,6 +230,11 @@ export const UNIVERS = {
       'bl-bl4': '2025-09-12', 'bl-c4sh': '2026-03-20', 'bl-madellie': '2026-03-26',
       'bl-loveless': '2026-09-03', 'bl-fl4k': '2026-09-10',
     },
+    /* Le podcast DeadECHOs, un épisode par semaine sur YouTube : une carte,
+       qui dit sa période, du premier épisode au dernier. */
+    periodes: {
+      'bl-deadechos': ['2026-07-20', '2026-09-28'],
+    },
   },
   zelda: {
     fichier: '_proto/data-zelda-en.js', global: 'window.ZELDA',

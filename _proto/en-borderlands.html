@@ -64,7 +64,7 @@
   /* les trois entrées colorées de la nav */
   --c-doss:#a99cf9; --c-upc:#f06292; --c-news:#4fc3f7;
   /* badges de type, charte du site. Cinq formes, celles du document. */
-  --t-jeu:#ffb74d; --t-dlc:#ffcc80; --t-video:#f472b6; --t-roman:#a99cf9; --t-comic:#4dd0e1;
+  --t-jeu:#ffb74d; --t-dlc:#ffcc80; --t-video:#f472b6; --t-roman:#a99cf9; --t-comic:#4dd0e1; --t-audio:#80cbc4;
   /* aucun repère dans ce guide : la règle reste pour le jour où il en aura un. */
   --m-flashback:#f0c97c;
   --era:var(--era1);
@@ -1628,9 +1628,10 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
       <div class="s"><b id="s-jeu">8</b><span>Games</span></div>
       <div class="s"><b id="s-dlc">18</b><span>DLC</span></div>
       <div class="s"><b id="s-video">7</b><span>Videos</span></div>
+      <div class="s"><b id="s-audio">1</b><span>Podcast</span></div>
       <div class="s"><b id="s-roman">1</b><span>Book</span></div>
       <div class="s"><b id="s-comic">1</b><span>Comic</span></div>
-      <div class="s"><b id="s-tot">35</b><span>Stops</span></div>
+      <div class="s"><b id="s-tot">36</b><span>Stops</span></div>
     </div>
 
     <div class="ln-go">
@@ -2229,7 +2230,7 @@ footer .f-uni a[aria-current]{border-color:var(--k);background:color-mix(in srgb
        document les laissait faux sans rien signaler : « 34 games » pour
        33 jeux. Ils se comptent maintenant dans les données, comme le
        total juste au-dessus. */
-    ['jeu','dlc','video','roman','comic'].forEach(function(t){
+    ['jeu','dlc','video','audio','roman','comic'].forEach(function(t){
       var b=$('#s-'+t);
       if(b) b.textContent=ALL.filter(function(e){return e.type===t;}).length;
     });
